@@ -3,21 +3,21 @@ title: IP-Adressen in Azure Functions
 description: Erfahren Sie, wie Sie eingehende und ausgehende IP-Adressen für Funktionen-Apps finden und wodurch diese geändert werden.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2c248756899459e17082bcab863a4e857b594909
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726730"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104608230"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-Adressen in Azure Functions
 
-In diesem Artikel erfahren Sie mehr über die folgenden Themen im Zusammenhang mit IP-Adressen von Funktionen-Apps:
+In diesem Artikel erfahren Sie mehr über die folgenden Konzepte im Zusammenhang mit IP-Adressen von Funktions-Apps:
 
-* Wie Sie die IP-Adressen finden, die derzeit von einer Funktionen-App verwendet werden.
-* Wodurch die IP-Adressen einer Funktionen-App geändert werden.
-* Wie Sie die IP-Adressen einschränken, die auf eine Funktionen-App zugreifen können.
-* Wie Sie dedizierte IP-Adressen für eine Funktionen-App erhalten.
+* Finden der IP-Adressen, die derzeit von einer Funktions-App verwendet werden.
+* Bedingungen, die bewirken, dass Funktions-App-IP-Adressen geändert werden.
+* Einschränken der IP-Adressen, die auf eine Funktions-App zugreifen können.
+* Definieren dedizierter IP-Adressen für eine Funktions-App.
 
 IP-Adressen werden Funktionen-Apps zugeordnet, nicht einzelnen Funktionen. Eingehende HTTP-Anforderungen können die eingehende IP-Adresse nicht verwenden, um einzelne Funktionen aufzurufen. Sie müssen den Standarddomänennamen (functionappname.azurewebsites.net) oder einen benutzerdefinierten Domänennamen verwenden.
 
@@ -56,7 +56,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 Wenn Sie einer Whitelist die von Ihrer Funktions-Apps verwendeten ausgehenden IP-Adressen hinzufügen möchten, haben Sie die zusätzliche Möglichkeit, das Rechenzentrum der Funktions-App (Azure-Region) auf eine Whitelist zu setzen. Sie können [eine JSON-Datei herunterladen, die IP-Adressen für alle Azure-Rechenzentren auflistet](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Suchen Sie dann das JSON-Fragment, das der Region entspricht, in der Ihre Funktions-App ausgeführt wird.
 
-Das JSON-Fragment für Westeuropa könnte beispielsweise folgendermaßen aussehen:
+Beispielsweise könnte die Positivliste für Westeuropa etwa folgendem JSON-Fragment ähneln:
 
 ```
 {
@@ -99,10 +99,12 @@ Der Satz der verfügbaren ausgehenden IP-Adressen für eine Funktionen-App kann 
 
 Wenn Ihre Funktions-App in einem [Verbrauchstarif](consumption-plan.md) oder [Premium-Tarif](functions-premium-plan.md) ausgeführt wird, kann sich die ausgehende IP-Adresse auch ändern, selbst wenn Sie noch keine der [oben aufgeführten](#inbound-ip-address-changes) Aktionen ausgeführt haben.
 
-So erzwingen Sie eine Änderung der ausgehenden IP-Adresse:
+Gehen Sie folgendermaßen vor, um die Änderung einer ausgehenden IP-Adresse zu erzwingen:
 
 1. Skalieren Sie Ihren App Service-Plan zwischen Standard- und Premium v2-Tarifen hoch oder herunter.
+
 2. Warten Sie 10 Minuten.
+
 3. Skalieren Sie zur Ausgangssituation zurück.
 
 ## <a name="ip-address-restrictions"></a>Einschränkungen für IP-Adressen
@@ -111,7 +113,15 @@ Sie können eine Liste der IP-Adressen konfigurieren, denen Sie den Zugriff auf 
 
 ## <a name="dedicated-ip-addresses"></a>Dedizierte IP-Adressen
 
-Wenn Sie statische, dedizierte IP-Adressen benötigen, empfehlen wir [App Service Environments](../app-service/environment/intro.md) (der [isolierte Tarif](https://azure.microsoft.com/pricing/details/app-service/) von App Service-Plänen). Weitere Informationen finden Sie unter [ASE-IP-Adressen](../app-service/environment/network-info.md#ase-ip-addresses) und [Steuern von eingehendem Datenverkehr in eine App Service-Umgebung](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
+Wenn Ihre Funktions-App statische, dedizierte IP-Adressen erfordert, können Sie verschiedene Strategien erforschen. 
+
+### <a name="virtual-network-nat-gateway-for-outbound-static-ip"></a>NAT-Gateway eines virtuellen Netzwerks für ausgehende statische IP-Adressen
+
+Sie können die IP-Adresse des von Ihren Funktionen ausgehenden Datenverkehrs steuern, indem Sie mithilfe eines NAT-Gateways eines virtuellen Netzwerks Datenverkehr über eine statische öffentliche IP-Adresse weiterleiten. Sie können diese Topologie für Ausführungen in einem [Premium-Plan](functions-premium-plan.md) verwenden. Weitere Informationen finden Sie unter [Tutorial: Steuern der IP-Adresse für ausgehenden Datenverkehr von Azure Functions mit einem Virtual Network NAT-Gateway in Azure](functions-how-to-use-nat-gateway.md).
+
+### <a name="app-service-environments"></a>App Service-Umgebungen
+
+Um die vollständige Kontrolle sowohl über Eingangs- als auch Ausgangs-IP-Adressen zu erhalten, empfehlen wir [App Service-Umgebungen](../app-service/environment/intro.md) (die [Dienstebene „Isoliert“](https://azure.microsoft.com/pricing/details/app-service/) von App Service-Plänen). Weitere Informationen finden Sie unter [ASE-IP-Adressen](../app-service/environment/network-info.md#ase-ip-addresses) und [Steuern von eingehendem Datenverkehr in eine App Service-Umgebung](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
 
 So finden Sie heraus, ob Ihre Funktionen-App in einer App Service-Umgebung ausgeführt wird:
 

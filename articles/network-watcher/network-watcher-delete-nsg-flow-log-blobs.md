@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 1b73b8fa14271619d07fca63b01e4197f4f7c8cb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98017849"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Löschen von Speicherblobs für Flowprotokolle für Netzwerksicherheitsgruppen in Network Watcher
@@ -126,8 +126,8 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
 ```
 
 1. Geben Sie bei Bedarf die folgenden Parameter im Skript ein:
-   - **SubscriptionId** [erforderlich]: Die Abonnement-ID, über die die Blobs für die NSG-Flowprotokolle gelöscht werden sollen.
-   - **Location** [erforderlich]: Die _Standortzeichenfolge_ der Region der Netzwerksicherheitsgruppen, für die die Blobs der NSG-Flowprotokolle gelöscht werden sollen. Diese Informationen können Sie im Azure-Portal oder über [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23) anzeigen.
+   - **SubscriptionId** [obligatorisch]: Die Abonnement-ID, über die die Blobs für die NSG-Flowprotokolle gelöscht werden sollen.
+   - **Location** [obligatorisch]: Die _Standortzeichenfolge_ der Region der Netzwerksicherheitsgruppen, für die die Blobs der NSG-Flowprotokolle gelöscht werden sollen. Diese Informationen können Sie im Azure-Portal oder über [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23) anzeigen.
    - **Confirm** [optional]: Übergeben Sie das confirm-Flag, wenn Sie den Löschvorgang der einzelnen Speicherblobs manuell überprüfen und bestätigen möchten.
 
 1. Führen Sie das gespeicherte Skript wie im folgenden Beispiel gezeigt aus. In diesem Beispiel wurde die Skriptdatei unter dem Namen **Delete-NsgFlowLogsBlobs.ps1** gespeichert:

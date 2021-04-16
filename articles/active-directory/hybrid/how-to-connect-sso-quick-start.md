@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c320c8497506a0269e65cd79e18aea1972354729
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762252"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589521"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -41,6 +41,9 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
     >[!NOTE]
     >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](./reference-connect-version-history.md).
+    
+    >[!NOTE]
+    >Wenn Sie über einen ausgehenden HTTP-Proxy verfügen, stellen Sie sicher, dass die entsprechende URL „autologon.microsoftazuread-sso.com“ zur Whitelist hinzugefügt wurde. Sie sollten diese URL explizit angeben, da der Platzhalter möglicherweise nicht akzeptiert wird. 
 
 * **Verwenden Sie eine unterstützte Azure AD Connect-Topologie:** Stellen Sie sicher, dass Sie eine der [hier](plan-connect-topologies.md) beschriebenen, von Azure AD Connect unterstützten Topologien verwenden.
 
@@ -161,10 +164,10 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
     ![Screenshot, in dem die Optionen „Registrierung“ und „Registrierungselement“ ausgewählt sind.](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Geben Sie die folgenden Werte in die entsprechenden Felder ein, und klicken Sie anschließend auf **OK**.
-   - **Schlüsselpfad**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon_* _
-   - _*Wertname**: **_https_*_
-   - _*Werttyp**: **_REG_DWORD_*_
-   - _*Wertdaten**: **_00000001_*_
+   - **Schlüsselpfad**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon_**
+   - **Wertname**: **_https_**
+   - **Werttyp**: **_REG_DWORD_**
+   - **Wertdaten**: **_00000001_**
  
      ![Screenshot des Fensters „Neue Registrierungseigenschaften“.](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,7 +179,7 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
 
 Mozilla Firefox verwendet nicht automatisch die Kerberos-Authentifizierung. Jeder Benutzer muss den Firefox-Einstellungen manuell die Azure AD-URL mithilfe der folgenden Schritte hinzufügen:
 1. Führen Sie Firefox aus, und geben Sie in die Adressleiste `about:config` ein. Schließen Sie alle Benachrichtigungen, die Sie sehen.
-2. Suchen Sie nach der Einstellung _ *network.negotiate-auth.trusted-uris**. In dieser Einstellung werden in Firefox die vertrauenswürdigen Sites für die Kerberos-Authentifizierung aufgeführt.
+2. Suchen Sie nach der Einstellung **network.negotiate-auth.trusted-uris**. In dieser Einstellung werden in Firefox die vertrauenswürdigen Sites für die Kerberos-Authentifizierung aufgeführt.
 3. Klicken Sie mit der rechten Maustaste, und wählen Sie dann **Ändern** aus.
 4. Geben Sie `https://autologon.microsoftazuread-sso.com` in das Feld ein.
 5. Klicken Sie auf **OK**, und öffnen Sie den Browser erneut.
@@ -205,7 +208,7 @@ Das Rollout der Azure AD-URL für Firefox und Google Chrome unter Mac mithilfe v
 
 #### <a name="known-browser-limitations"></a>Bekannte Browsereinschränkungen
 
-Das nahtlose einmalige Anmelden funktioniert in den Browsern Firefox und Microsoft Edge nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird. Bei der nächsten Version von Microsoft Edge auf Chromium-Basis funktioniert das einmalige Anmelden konstruktionsbedingt nicht mehr im privaten Modus und im Gastmodus.
+Das nahtlose einmalige Anmelden funktioniert in den Browsern Firefox und Microsoft Edge (Vorgängerversion) nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird. In der nächsten Version von Microsoft Edge auf Chromium-Basis wird das einmalige Anmelden unterstützt und kann im InPrivate- und Gastmodus erfolgen.
 
 ## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
 
@@ -216,10 +219,10 @@ Um das Feature für einen bestimmten Benutzer zu testen, stellen Sie sicher, das
   - Sie haben [das Feature für diesen Benutzer mithilfe von Gruppenrichtlinien ausgerollt](#step-3-roll-out-the-feature).
 
 So testen Sie das Szenario, wenn der Benutzer nur den Benutzernamen eingibt, jedoch kein Kennwort:
-   - Melden Sie sich in einer neuen privaten Browsersitzung bei `https://myapps.microsoft.com/` an.
+   - Melden Sie sich bei https://myapps.microsoft.com/ an. Löschen Sie den Browsercache, oder verwenden Sie eine neue private Browsersitzung in einem der unterstützten Browser, der im privaten Modus ausgeführt wird.
 
 Führen Sie zum Testen des Szenarios, in dem der Benutzer weder den Benutzernamen noch das Kennwort eingeben muss, einen der folgenden Schritte aus: 
-   - Melden Sie sich in einer neuen privaten Browsersitzung bei `https://myapps.microsoft.com/contoso.onmicrosoft.com` an. Ersetzen Sie *contoso* durch den Namen Ihres Mandanten.
+   - Melden Sie sich bei `https://myapps.microsoft.com/contoso.onmicrosoft.com` an. Löschen Sie den Browsercache, oder verwenden Sie eine neue private Browsersitzung in einem der unterstützten Browser, der im privaten Modus ausgeführt wird. Ersetzen Sie *contoso* durch den Namen Ihres Mandanten.
    - Melden Sie sich in einer neuen privaten Browsersitzung bei `https://myapps.microsoft.com/contoso.com` an. Ersetzen Sie *contoso.com* durch eine überprüfte Domäne (keine Verbunddomäne) in Ihrem Mandanten.
 
 ## <a name="step-5-roll-over-keys"></a>Schritt 5: Ausführen des Rollovers für Schlüssel

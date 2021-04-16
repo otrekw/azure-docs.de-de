@@ -5,12 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6c96651fa48acc2f88658148c7e60be2f3fa09da
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008275"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800158"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Einführung in die Service Fabric-Integritätsüberwachung
 Mit Azure Service Fabric wird ein Integritätsmodell eingeführt, das eine umfassende, flexible und erweiterbare Integritätsevaluierung und -berichterstellung bietet. Mithilfe dieses Modells lässt sich der Zustand des Clusters und der darin ausgeführten Dienste nahezu in Echtzeit überwachen. Sie können mühelos Integritätsdaten ermitteln und potenzielle Probleme beheben, bevor sie sich ausbreiten und umfangreiche Ausfälle verursachen. In einem typischen Modell senden die Dienste Berichte basierend auf ihren lokalen Informationen. Anhand dieser Informationen wird ein Gesamtüberblick auf Clusterebene erstellt.
@@ -79,6 +79,7 @@ Standardmäßig wendet Service Fabric strenge Regeln (alles muss fehlerfrei sein
 
 ### <a name="cluster-health-policy"></a>Clusterintegritätsrichtlinie
 Die [Clusterintegritätsrichtlinie](/dotnet/api/system.fabric.health.clusterhealthpolicy) wird zum Auswerten des Integritätszustands des Clusters und der Knoten verwendet. Die Richtlinie kann im Clustermanifest definiert werden. Falls sie nicht vorhanden ist, wird die Standardrichtlinie (keine Fehler zulässig) verwendet.
+
 Die Clusterintegritätsrichtlinie enthält Folgendes:
 
 * [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Gibt an, ob während der Integritätsevaluierung Integritätsberichte mit dem Ergebnis „Warning“ als Fehler zu behandeln sind. Standardwert: false.
@@ -87,18 +88,33 @@ Die Clusterintegritätsrichtlinie enthält Folgendes:
 * [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). Die Zuordnung der Anwendungstyp-Integritätsrichtlinie kann während der Clusterintegritätsevaluierung verwendet werden, um spezielle Anwendungstypen zu beschreiben. Standardmäßig werden alle Anwendungen in einen Pool eingefügt und anhand von MaxPercentUnhealthyApplications bewertet. Sollte bei bestimmten Anwendungstypen eine abweichende Behandlung erforderlich sein, können diese vom globalen Pool ausgenommen werden. Sie werden dann stattdessen auf der Grundlage der Prozentwerte bewertet, die dem Namen ihres Anwendungstyps in der Zuordnung zugeordnet sind. Beispielsweise enthält ein Cluster Tausende von Anwendungen mit unterschiedlichen Typen und wenige Steueranwendungsinstanzen eines besonderen Anwendungstyps. Die Steueranwendungen dürfen niemals einen Fehlerstatus aufweisen. Sie können den globalen MaxPercentUnhealthyApplications-Wert auf 20 Prozent festlegen, um einige Fehler zu tolerieren, für den Anwendungstyp „ControlApplicationType“ muss der MaxPercentUnhealthyApplications-Wert jedoch auf „0“ festgelegt werden. Wenn einige der zahlreichen Anwendungen fehlerhaft sind, aber unter dem globalen Prozentsatz für fehlerhafte Anwendungen liegen, wird der Cluster mit einer Warnung ausgewertet. Der Integritätszustand „Warnung“ wirkt sich nicht auf ein Clusterupgrade oder auf andere Überwachungen aus, die durch den Integritätszustand „Fehler“ ausgelöst werden. Weist aber auch nur eine einzelne Steueranwendung den Zustand „Fehler“ auf, ist der gesamte Cluster fehlerhaft, was je nach Upgradekonfiguration zu einem Rollback oder zum Anhalten des Clusters führt.
   Für die in der Zuordnung definierten Anwendungstypen werden alle Anwendungsinstanzen aus dem globalen Anwendungspool entfernt. Sie werden anhand des speziellen MaxPercentUnhealthyApplications-Werts aus der Zuordnung basierend auf der Gesamtanzahl von Anwendungen des Anwendungstyps ausgewertet. Die restlichen Anwendungen verbleiben im globalen Pool und werden mit MaxPercentUnhealthyApplications ausgewertet.
 
-Das folgende Beispiel zeigt einen Auszug aus einem Clustermanifest. Ordnen Sie dem Parameternamen „ApplicationTypeMaxPercentUnhealthyApplications-“ gefolgt von dem Namen des Anwendungstyps als Präfixe zu, um Einträge in der Anwendungstypzuordnung zu definieren.
+  Das folgende Beispiel zeigt einen Auszug aus einem Clustermanifest. Ordnen Sie dem Parameternamen „ApplicationTypeMaxPercentUnhealthyApplications-“ gefolgt von dem Namen des Anwendungstyps als Präfixe zu, um Einträge in der Anwendungstypzuordnung zu definieren.
 
-```xml
-<FabricSettings>
-  <Section Name="HealthManager/ClusterHealthPolicy">
-    <Parameter Name="ConsiderWarningAsError" Value="False" />
-    <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
-    <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
-    <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
-  </Section>
-</FabricSettings>
-```
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
+
+* [NodeTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.nodetypehealthpolicymap). Die Zuordnung der Knotentyp-Integritätsrichtlinie kann während der Clusterintegritätsevaluierung verwendet werden, um spezielle Knotentypen zu beschreiben. Die Knotentypen werden auf der Grundlage der Prozentwerte bewertet, die dem Namen ihres Knotentyps in der Zuordnung zugeordnet sind. Das Festlegen dieses Werts hat keine Auswirkung auf den globalen Pool von Knoten, der für `MaxPercentUnhealthyNodes` verwendet wird. Ein Cluster hat z. B. Hunderte von Knoten verschiedener Typen und einige Knotentypen, die wichtige Aufgaben hosten. Es sollten keine Knoten mit diesem Typ ausfallen. Sie können die globalen `MaxPercentUnhealthyNodes` auf 20 % festlegen, um einige Ausfälle bei allen Knoten zuzulassen, für den Knotentyp `SpecialNodeType` legen Sie `MaxPercentUnhealthyNodes` jedoch auf 0 fest. Wenn einige der zahlreichen Knoten fehlerhaft sind, aber unter dem globalen Prozentsatz für fehlerhafte Knoten liegen, ergibt die Auswertung des Clusters, dass er sich im Integritätszustand „Warnung“ befindet. Der Integritätszustand „Warnung“ wirkt sich nicht auf ein Clusterupgrade oder auf andere Überwachungen aus, die durch den Integritätszustand „Fehler“ ausgelöst werden. Aber auch ein Knoten vom Typ `SpecialNodeType` mit dem Integritätszustand „Fehler“ führt dazu, dass der Cluster fehlerhaft ist, und löst je nach Upgradekonfiguration ein Rollback aus oder hält das Clusterupgrade an. Umgekehrt würde das Festlegen des globalen `MaxPercentUnhealthyNodes` auf 0 und das Festlegen des maximalen Prozentsatzes fehlerhafter `SpecialNodeType`-Knoten auf 100 mit einem Knoten vom Typ `SpecialNodeType` in einem Fehlerzustand weiterhin den Cluster in einen Fehlerzustand versetzen, da die globale Einschränkung in diesem Fall strenger ist. 
+
+  Das folgende Beispiel zeigt einen Auszug aus einem Clustermanifest. Zum Definieren von Einträgen in der Knotentypzuordnung stellen Sie dem Parameternamen das Präfix „NodeTypeMaxPercentUnhealthyNodes-“ gefolgt vom Knotentypnamen voran.
+
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="NodeTypeMaxPercentUnhealthyNodes-SpecialNodeType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
 
 ### <a name="application-health-policy"></a>Anwendungsintegritätsrichtlinie
 Die [Anwendungsintegritätsrichtlinie](/dotnet/api/system.fabric.health.applicationhealthpolicy) beschreibt, wie die Auswertung von Ereignissen und Aggregationen der Zustände von untergeordneten Elementen für eine Anwendung und ihre untergeordneten Elemente erfolgen soll. Diese Richtlinie kann im Anwendungsmanifest ( **ApplicationManifest.xml**) im Anwendungspaket definiert werden. Wenn keine Richtlinien angegeben sind, geht Service Fabric davon aus, dass die Entität fehlerhaft ist, sofern sie über einen Integritätsbericht oder ein untergeordnetes Element mit dem Integritätsstatus „Warning“ oder „Error“ verfügt.

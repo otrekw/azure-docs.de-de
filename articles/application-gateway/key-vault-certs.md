@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 694868f2a75cc66bf9e3ede9d12e30a2cc3d7af9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8a64956deb7849568e70e94c9b58170df60db1e3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185936"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104775736"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-Terminierung mit Key Vault-Zertifikaten
 
@@ -47,10 +47,19 @@ Die Application Gateway-Integration in Key Vault erfolgt über eine Konfiguratio
 
 1. **Konfigurieren Ihres Schlüsseltresors**
 
-   Sie importieren dann entweder ein vorhandenes Zertifikat oder erstellen ein neues in Ihrem Schlüsseltresor. Das Zertifikat wird von Anwendungen verwendet, die über das Anwendungsgateway ausgeführt werden. In diesem Schritt kann auch ein Key Vault-Geheimnis verwendet werden, das als base-64-codierte PFX-Datei ohne Kennwort gespeichert ist. Die Verwendung eines Zertifikattyps wird empfohlen, da für Zertifikattypobjekte im Schlüsseltresor Funktionen für die automatische Verlängerung zur Verfügung stehen. Nach dem Erstellen eines Zertifikats oder Geheimnisses definieren Sie Zugriffsrichtlinien im Schlüsseltresor, durch die der Identität der *get*-Zugriff zum Erhalten des Geheimnisses gewährt werden kann.
+   Sie importieren dann entweder ein vorhandenes Zertifikat oder erstellen ein neues in Ihrem Schlüsseltresor. Das Zertifikat wird von Anwendungen verwendet, die über das Anwendungsgateway ausgeführt werden. In diesem Schritt kann auch ein Key Vault-Geheimnis verwendet werden, das auch die Speicherung einer base-64-codierten PFX-Datei ohne Kennwort ermöglicht. Die Verwendung eines „Zertifikat“-Typs wird empfohlen, da für Objekte dieses Typs in Key Vault Funktionen für die automatische Verlängerung zur Verfügung stehen. Nach dem Erstellen eines Zertifikats oder Geheimnisses müssen Sie Zugriffsrichtlinien in der Key Vault-Instanz definieren, damit der Identität der GET-Zugriff auf das Geheimnis gewährt werden kann.
    
    > [!IMPORTANT]
-   > Application Gateway erfordert derzeit Key Vault, um den Zugriff aus allen Netzwerken zuzulassen und die Integration zu nutzen. Die Key Vault-Integration wird nicht unterstützt, wenn Key Vault so festgelegt ist, dass nur private Endpunkte zulässig sind und der Netzwerkzugriff ausgewählt wird. Die Unterstützung für private Endpunkte und das Auswählen der Netzwerke für die vollständige Integration von Key Vault mit Application Gateway befindet sich derzeit in Bearbeitung. 
+   > Ab dem 15. März 2021 wird Azure Application Gateway von Key Vault als einer der vertrauenswürdigen Dienste anerkannt, sodass Sie eine sichere Netzwerkgrenze in Azure erstellen können. Dadurch haben Sie die Möglichkeit, den Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) auf die Key Vault-Instanz zu verweigern, aber weiterhin der Application Gateway-Ressource in Ihrem Abonnement den Zugriff zu ermöglichen. 
+
+   > Sie können Ihre Application Gateway-Instanz in einem eingeschränkten Key Vault-Netzwerk wie folgt konfigurieren. <br />
+   > a) Unter dem Blatt „Netzwerk“ von Key Vault <br />
+   > b) Wählen Sie in der Registerkarte „Firewall und virtuelle Netzwerke“ die Option „Privater Endpunkt und ausgewählte Netzwerke“ aus. <br/>
+   > c) Verwenden Sie dann „Virtuelle Netzwerke“, und fügen Sie das virtuelle Netzwerk und Subnetz Ihrer Application Gateway-Instanz hinzu. Konfigurieren Sie während des Prozesses auch den Dienstendpunkt „Microsoft.KeyVault“, indem Sie das zugehörige Kontrollkästchen aktivieren. <br/>
+   > d) Wählen Sie abschließend „Ja“ aus, damit vertrauenswürdige Dienste die Key Vault-Firewall umgehen können. <br/>
+   > 
+   > ![Key Vault-Firewall](media/key-vault-certs/key-vault-firewall.png)
+
 
    > [!NOTE]
    > Wenn Sie das Anwendungsgateway über eine ARM-Vorlage, entweder mithilfe der Azure CLI oder mit PowerShell, oder über eine im Azure-Portal bereitgestellte Azure-Anwendung bereitstellen, wird das SSL-Zertifikat im Schlüsseltresor als Base64-codierte PFX-Datei gespeichert. Sie müssen die unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](../azure-resource-manager/templates/key-vault-parameter.md) aufgeführten Schritte durchführen. 

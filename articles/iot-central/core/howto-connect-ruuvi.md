@@ -11,10 +11,10 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96006386"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Verbinden eines RuuviTag-Sensors mit Ihrer Azure IoT Central-Anwendung
@@ -45,10 +45,10 @@ Für das Onboarding eines RuuviTag-Sensors in Ihrer Azure IoT Central-Anwendungs
 
 So fügen Sie eine RuuviTag-Gerätevorlage hinzu
 
-1. Navigieren Sie im linken Bereich zur Registerkarte ***Gerätevorlagen** _, und wählen Sie aus _*+ Neu**:  ![Neue Gerätevorlage erstellen](./media/howto-connect-ruuvi/devicetemplate-new.png). Auf der dann angezeigten Seite gibt es eine Option zum **_Erstellen einer benutzerdefinierten Vorlage_*_ oder zum _*_Verwenden einer vorkonfigurierten Gerätevorlage_*_.
+1. Navigieren Sie im linken Bereich zur Registerkarte ***Gerätevorlagen** _, und wählen Sie aus _*+ Neu**: ![Neue Gerätevorlage erstellen](./media/howto-connect-ruuvi/devicetemplate-new.png). Auf der dann angezeigten Seite gibt es eine Option zum ***Erstellen einer benutzerdefinierten Vorlage**_ oder zum _ *_Verwenden einer vorkonfigurierten Gerätevorlage_**.
 1. Wählen Sie in der Liste der vorkonfigurierten Gerätevorlagen die RuuviTag-Gerätevorlage aus, wie unten dargestellt:  ![Auswählen der RuuviTag-Gerätevorlage](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
-1. Wählen Sie _*_Weiter: Anpassen_*_ aus, um mit dem nächsten Schritt fortzufahren.
-1. Wählen Sie auf dem nächsten Bildschirm _*_Erstellen_*_ aus, um das Onboarding der C500-Gerätevorlage in Ihrer IoT Central-Anwendung durchzuführen.
+1. Klicken Sie auf ***Weiter: Anpassen***, um mit dem nächsten Schritt fortzufahren.
+1. Wählen Sie auf dem nächsten Bildschirm ***Erstellen*** aus, um das Onboarding der C500-Gerätevorlage in Ihrer IoT Central-Anwendung durchzuführen.
 
 ## <a name="connect-a-ruuvitag-sensor"></a>Verbinden eines RuuviTag-Sensors
 
@@ -68,7 +68,7 @@ Wenn Sie nicht über ein physisches RuuviTag-Gerät verfügen, können Sie einen
 
 So erstellen Sie ein simuliertes RuuviTag-Gerät
 
-1. Wählen Sie _*Geräte > RuuviTag** aus.
+1. Wählen Sie **Geräte > RuuviTag** aus.
 1. Wählen Sie **+ Neu** aus.
 1. Geben Sie eine eindeutige **Geräte-ID** und einen benutzerfreundlichen **Gerätenamen** an.  
 1. Aktivieren Sie die Einstellung **Simuliert**.
@@ -78,5 +78,5 @@ So erstellen Sie ein simuliertes RuuviTag-Gerät
 
 Wenn Sie ein Geräteentwickler sind, werden einige der folgenden nächsten Schritte empfohlen:
 
-- Informieren Sie sich über [Gerätekonnektivität in Azure IoT Central](./concepts-get-connected.md).
+- Informieren Sie sich zu [Gerätekonnektivität in Azure IoT Central](./concepts-get-connected.md).
 - Informieren Sie sich über [Überwachen der Gerätekonnektivität per Azure CLI](./howto-monitor-devices-azure-cli.md).

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/20/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1adb9b009a250942bab7e9b0e3b4b3e52840341c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85481594"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Gängige Szenarien für die Verwendung von Azure DevTest Labs
@@ -66,7 +66,7 @@ Ein Lab in Azure DevTest Labs fungiert als idealer Container für zeitlich begre
 Weitere Informationen finden Sie unter [Verwenden von Azure DevTest Labs zu Schulungszwecken](devtest-lab-training-lab.md).  
 
 ## <a name="proof-of-concept-vs-scaled-deployment"></a>Vergleich: Proof of Concept und Skalierte Bereitstellung
-Wenn Sie sich für die Erkundung von DevTest Labs entschieden haben, haben Sie zwei Möglichkeiten: „Proof of Concept“ und „Skalierte Bereitstellung“.  
+Wenn Sie DevTest Labs erkunden möchten, stehen Ihnen zwei allgemeine Pfade zur Verfügung: Proof of Concept und skalierte Bereitstellung.  
 
 Eine **skalierte Bereitstellung** umfasst Wochen/Monate des Überprüfens und Planens mit dem Zweck, DevTest Labs für das gesamte Unternehmen mit Hunderten oder Tausenden von Entwicklern bereitzustellen.
 
@@ -76,5 +76,5 @@ Bei einer **Proof of Concept**-Bereitstellung geht es um einen konzentrierten Ei
 Lesen Sie die folgenden Artikel:
 
 - [DevTest Labs-Konzepte](devtest-lab-concepts.md)
-- [Häufig gestellte Fragen zu DevTest Labs](devtest-lab-faq.md)
+- [DevTest Labs – Häufig gestellte Fragen](devtest-lab-faq.md)
 

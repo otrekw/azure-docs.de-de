@@ -2,13 +2,13 @@
 title: Azure Service Bus-Tarife Premium und Standard
 description: Dieser Artikel beschreibt die Tarife Standard und Premium von Azure Service Bus. Er vergleicht diese Tarife und erläutert technische Unterschiede.
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/17/2021
+ms.openlocfilehash: aa08a99009ef3d20e831e214ae5811059817d13c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90966792"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104607550"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 
@@ -26,9 +26,9 @@ In der folgenden Tabelle sind einige allgemeine Unterschiede hervorgehoben:
 | Möglichkeit zur Herauf- und Herunterskalierung der Workload |– |
 | Nachrichtengröße bis 1 MB. Dieser Grenzwert kann in Zukunft ggf. erhöht werden. Aktuelle wichtige Updates für den Dienst finden Sie unter [„Messaging“ im Azure-Blog](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog). |Nachrichtengröße bis 256 KB |
 
-**Service Bus Premium-Messaging** bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die Workloads der einzelnen Kunden isoliert ausgeführt werden. Dieser Ressourcencontainer wird als *Messaging-Einheit* bezeichnet. Jedem Premium-Namespace wird mindestens eine Messaging-Einheit zugeordnet. Sie können 1, 2, 4 oder 8 Messagingeinheiten für jeden Service Bus Premium-Namespace erwerben. Eine einzelne Workload oder Entität kann mehrere Messagingeinheiten umfassen, und die Anzahl der Einheiten kann beliebig geändert werden. Das Ergebnis ist eine vorhersehbare und wiederholbare Leistung Ihrer Service Bus-basierten Lösung.
+**Service Bus Premium-Messaging** bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die Workloads der einzelnen Kunden isoliert ausgeführt werden. Dieser Ressourcencontainer wird als *Messaging-Einheit* bezeichnet. Jedem Premium-Namespace wird mindestens eine Messaging-Einheit zugeordnet. Sie können 1, 2, 4, 8 oder 16 Messagingeinheiten für jeden Service Bus Premium-Namespace erwerben. Eine einzelne Workload oder Entität kann mehrere Messagingeinheiten umfassen, und die Anzahl der Einheiten kann beliebig geändert werden. Das Ergebnis ist eine vorhersehbare und wiederholbare Leistung Ihrer Service Bus-basierten Lösung.
 
-Diese Leistung ist nicht nur besser vorhersehbar und verfügbar, sondern auch schneller. Service Bus Premium-Messaging basiert auf der in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) eingeführten Speicher-Engine. Mit Premium-Messaging wird bei Spitzenleistung eine viel höhere Geschwindigkeit als beim Standard-Tarif erzielt.
+Diese Leistung ist nicht nur besser vorhersehbar und verfügbar, sondern auch schneller. Mit Premium-Messaging wird bei Spitzenleistung eine viel höhere Geschwindigkeit als beim Standard-Tarif erzielt.
 
 ## <a name="premium-messaging-technical-differences"></a>Premium-Messaging – technische Unterschiede
 
@@ -40,9 +40,7 @@ Partitionierte Warteschlangen und Themen werden bei Premium-Messaging nicht unte
 
 ### <a name="express-entities"></a>Expressentitäten
 
-Da Premium-Messaging in einer isolierten Laufzeitumgebung ausgeführt wird, werden Expressentitäten in Premium-Namespaces nicht unterstützt. Weitere Informationen zur Expressfunktion finden Sie in der [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress)-Eigenschaft.
-
-Wenn Sie unter Standard-Messaging über Code verfügen und diesen auf den Premium-Tarif portieren möchten, stellen Sie sicher, dass die Eigenschaft [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) auf **false** (Standardwert) gesetzt ist.
+Da Premium-Messaging in einer isolierten Laufzeitumgebung ausgeführt wird, werden Expressentitäten in Premium-Namespaces nicht unterstützt. Bei einer Express-Entität wird eine Nachricht vorübergehend im Arbeitsspeicher abgelegt, bevor sie in den persistenten Speicher geschrieben wird. Wenn Code unter Standardmessaging ausgeführt wird, den Sie auf den Premium-Tarif portieren möchten, stellen Sie sicher, dass das Feature für Express-Entitäten deaktiviert ist.
 
 ## <a name="premium-messaging-resource-usage"></a>Premium-Messaging-Ressourcennutzung
 Grundsätzlich kann jeder Vorgang für eine Entität CPU- und Arbeitsspeichernutzung verursachen. Nachstehend sind einige dieser Vorgänge aufgeführt: 
@@ -69,8 +67,8 @@ Bei der Entscheidung über die Anzahl von Messagingeinheiten für Ihre Architekt
 
 - Beginnen Sie mit ***ein bis zwei Messagingeinheiten***, die Ihrem Namespace zugeordnet sind.
 - Sehen Sie sich in den [Metriken zur Ressourcennutzung](service-bus-metrics-azure-monitor.md#resource-usage-metrics) für Ihren Namespace die Metriken zur CPU-Auslastung an.
-    - Bei einer CPU-Auslastung von ***unter 20 Prozent*** können Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, ggf. ***zentral herunterskalieren***.
-    - Bei einer CPU-Auslastung von ***über 70 Prozent*** verbessert sich die Leistung Ihrer Anwendung, wenn Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, ***zentral hochskalieren***.
+    - Bei einer CPU-Auslastung von ***unter 20 Prozent** _ können Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, ggf. _ *_herunterskalieren_**.
+    - Bei einer CPU-Auslastung von ***über 70 Prozent** _ verbessert sich die Leistung Ihrer Anwendung, wenn Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, _ *_hochskalieren_**.
 
 Informationen zum Konfigurieren eines Service Bus-Namespace für automatisches Skalieren (Erhöhen oder Verringern von Messagingeinheiten) finden Sie unter [Automatisches Aktualisieren von Messagingeinheiten](automate-update-messaging-units.md).
 

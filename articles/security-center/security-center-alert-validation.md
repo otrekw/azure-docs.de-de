@@ -1,24 +1,18 @@
 ---
 title: Warnungsüberprüfung in Azure Security Center | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie überprüfen können, ob Ihre Sicherheitswarnungen in Azure Security Center ordnungsgemäß konfiguriert sind.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/17/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 74323c63ab8985dee2391a546d82258dcb8d0114
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b90ca39d7bf01b84400464240bb581a5e7bc922a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099521"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104602382"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Warnungsüberprüfung in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
@@ -39,7 +33,7 @@ Verwenden Sie Beispielwarnungen für Folgendes:
 
 So erstellen Sie Beispielwarnungen:
 
-1. Klicken Sie auf der Seite mit Warnungen in der Symbolleiste auf **Beispielwarnungen erstellen**. 
+1. Wählen Sie als Benutzer mit der Rolle **Sicherheitsadministrator** oder **Abonnementmitwirkender** auf der Symbolleiste auf der Seite „Warnungen“ die Option **Create sample alerts** (Beispielwarnungen erstellen) aus.
 1. Wählen Sie das Abonnement aus.
 1. Wählen Sie den entsprechenden Azure Defender-Plan aus, für den Sie Warnungen anzeigen möchten. 
 1. Klicken Sie auf **Beispielwarnungen erstellen**.

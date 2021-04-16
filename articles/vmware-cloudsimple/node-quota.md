@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 83dc9e26e03eb955d88340d1ed21084d4e685ed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77019637"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>CloudSimple-Knotenkontingentgrenzen
@@ -28,7 +28,7 @@ Sie können das Knotenkontingent erhöhen, indem Sie eine Supportanfrage übermi
 * Diensttyp: **VMware Solution by CloudSimple**
 * Problemtyp: **Kontingent dedizierter Knoten**
 * Problemuntertyp: **Erhöhen des Kontingents der dedizierten Knoten**
-* Antragsteller: **Kontingenterhöhung**
+* Betreff: **Kontingenterhöhung**
 
 Geben Sie in den Details des Supporttickets die erforderliche Anzahl von Knoten und Knoten-SKUs ein.
 

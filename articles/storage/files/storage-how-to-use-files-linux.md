@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4ace5620bf98b06956c294a12b6b08881422e718
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673686"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952336"
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können mithilfe des [SMB-Kernelclients](https://wiki.samba.org/index.php/LinuxCIFS) in Linux-Distributionen eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bedarfsgesteuert mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
@@ -94,7 +94,7 @@ uname -r
     Wenn Sie Port 445 nicht in Ihrem Unternehmensnetzwerk öffnen können oder der Internetdienstanbieter dies nicht zulässt, können Sie eine VPN-Verbindung oder ExpressRoute verwenden, um Port 445 zu umgehen. Weitere Informationen finden Sie unter [Überlegungen zum Netzwerk für den direkten Zugriff auf Azure-Dateifreigaben](storage-files-networking-overview.md).
 
 ## <a name="mounting-azure-file-share"></a>Einbinden von Azure-Dateifreigaben
-Wenn Sie eine Azure-Dateifreigabe mit Ihrer Linux-Distribution verwenden möchten, müssen Sie ein Verzeichnis erstellen, das als Bereitstellungspunkt für die Azure-Dateifreigabe fungiert. Der Bereitstellungspunkt kann zwar an einem beliebigen Ort auf Ihrem Linux-System erstellt werden, üblicherweise erfolgt die Erstellung jedoch unter „/mnt“. Nach dem Bereitstellungspunkt können Sie den Befehl `mount` verwenden, um auf die Azure-Dateifreigabe zuzugreifen.
+Wenn Sie eine Azure-Dateifreigabe mit Ihrer Linux-Distribution verwenden möchten, müssen Sie ein Verzeichnis erstellen, das als Bereitstellungspunkt für die Azure-Dateifreigabe fungiert. Der Bereitstellungspunkt kann zwar an einem beliebigen Ort auf Ihrem Linux-System erstellt werden, üblicherweise erfolgt die Erstellung jedoch unter „/mount“. Nach dem Bereitstellungspunkt können Sie den Befehl `mount` verwenden, um auf die Azure-Dateifreigabe zuzugreifen.
 
 Falls gewünscht, können Sie dieselbe Azure-Dateifreigabe in mehrere Bereitstellungspunkte einbinden.
 
@@ -106,7 +106,7 @@ Falls gewünscht, können Sie dieselbe Azure-Dateifreigabe in mehrere Bereitstel
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -135,14 +135,14 @@ Falls gewünscht, können Sie dieselbe Azure-Dateifreigabe in mehrere Bereitstel
 Wenn Sie die Azure-Dateifreigabe nicht mehr benötigen, können Sie `sudo umount $mntPath` verwenden, um die Einbindung der Freigabe aufzuheben.
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Erstellen eines permanenten Bereitstellungspunkts für die Azure-Dateifreigabe mit `/etc/fstab`
-1. **Erstellen Sie einen Ordner für den Bereitstellungspunkt**: Ein Ordner für einen Bereitstellungspunkt kann zwar an einem beliebigen Ort im Dateisystem erstellt werden, üblicherweise erfolgt die Erstellung jedoch unter „/mnt“. Mit dem folgenden Befehl wird beispielsweise ein neues Verzeichnis erstellt. Ersetzen Sie `<your-resource-group>`,`<your-storage-account>` und `<your-file-share>` durch die entsprechenden Informationen für Ihre Umgebung:
+1. **Erstellen Sie einen Ordner für den Bereitstellungspunkt**: Ein Ordner für einen Bereitstellungspunkt kann zwar an einem beliebigen Ort im Dateisystem erstellt werden, üblicherweise erfolgt die Erstellung jedoch unter „/mount“. Mit dem folgenden Befehl wird beispielsweise ein neues Verzeichnis erstellt. Ersetzen Sie `<your-resource-group>`,`<your-storage-account>` und `<your-file-share>` durch die entsprechenden Informationen für Ihre Umgebung:
 
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```

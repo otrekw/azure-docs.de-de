@@ -4,12 +4,12 @@ description: Erörterung und Analyse möglicher Ursachen und Lösungen für vera
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: e31e5d5a5b27f4dcb267905eae6329666fc3292c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 22985f295e504a2d73015f1dc96064f89be47bd7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946709"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866929"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Szenario: Veraltete Apache Ambari-Warnungen in Azure HDInsight
 
@@ -19,7 +19,7 @@ In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen 
 
 Auf der Benutzeroberfläche von Apache Ambari werden unter Umständen Warnungen wie die folgende angezeigt:
 
-![Beispiel für veraltete Apache Ambari-Warnung](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
+:::image type="content" source="./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png" alt-text="Beispiel für veraltete Apache Ambari-Warnung" border="true":::
 
 ## <a name="cause"></a>Ursache
 

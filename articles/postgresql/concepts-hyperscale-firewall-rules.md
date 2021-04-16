@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: 559c5eca6fa8a6eceb37ade003d4f1983c0a1a1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90902094"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Firewallregeln in Azure Database for PostgreSQL – Hyperscale (Citus)
@@ -32,16 +32,16 @@ Die Firewall einer Hyperscale (Citus)-Servergruppe steuert, wer eine Verbindung 
 
 Wenn die Firewall Verbindungen blockiert, können Anwendungsfehler auftreten. Die Verwendung des PostgreSQL-JDBC-Treibers kann einen mit folgendem vergleichbaren Fehler auslösen:
 
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: KRITISCH: kein pg\_hba.conf-Eintrag für Host „123.45.67.890“, Benutzer „citus“, Datenbank „citus“, SSL
+> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: FATAL: Kein pg\_hba.conf-Eintrag für Host „123.45.67.890“, Benutzer „citus“, Datenbank „citus“, SSL
 
 Unter [Erstellen und Verwalten von Firewallregeln](howto-hyperscale-manage-firewall-using-portal.md) erfahren Sie, wie die Regeln definiert werden.
 
 ## <a name="troubleshooting-the-database-server-firewall"></a>Problembehandlung der Datenbankserverfirewall
 Wenn der Zugriff auf den Microsoft Azure Database for PostgreSQL – Hyperscale (Citus)-Dienst nicht das erwartete Verhalten aufweist, sollten Sie Folgendes beachten:
 
-* **Änderungen an der Zulassungsliste sind noch nicht wirksam**: Änderungen der Firewallkonfiguration für Hyperscale (Citus) werden möglicherweise erst nach fünf Minuten wirksam.
+* **Änderungen an der Zulassungsliste sind noch nicht wirksam:** Änderungen der Firewallkonfiguration für Hyperscale (Citus) werden möglicherweise erst nach fünf Minuten wirksam.
 
-* **Der Benutzer ist nicht autorisiert, oder es wurde ein falsches Kennwort verwendet**: Wenn ein Benutzer keine Berechtigungen für den Server hat oder das verwendete Kennwort falsch ist, wird die Verbindung mit dem Server verweigert. Durch das Erstellen einer Firewalleinstellung wird Clients lediglich die Möglichkeit gegeben, eine Verbindung mit dem Server herzustellen. Jeder Client muss weiterhin die erforderlichen Sicherheitsanmeldeinformationen bereitstellen.
+* **Der Benutzer ist nicht autorisiert, oder ein falsches Kennwort wurde verwendet**: Wenn ein Benutzer nicht über Berechtigungen für den Server verfügt oder das verwendete Kennwort falsch ist, wird die Verbindung mit dem Server verweigert. Durch das Erstellen einer Firewalleinstellung wird Clients lediglich die Möglichkeit gegeben, eine Verbindung mit dem Server herzustellen. Jeder Client muss weiterhin die erforderlichen Sicherheitsanmeldeinformationen bereitstellen.
 
 Beispielsweise kann bei der Verwendung eines JDBC-Clients folgende Fehlermeldung angezeigt werden.
 > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: KRITISCH: Fehler bei der Kennwortauthentifizierung für Benutzer „IhrBenutzername“

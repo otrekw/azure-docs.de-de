@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/03/2021
+ms.date: 03/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a212975817eefe75443bad98ccb72e0a8c3bf58c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5ab23b9c2ba4b4ef3c20188b2207d7718c30cfe6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038627"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599883"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -82,7 +82,8 @@ In diesem Abschnitt finden Sie Dokumente zur Integration von Microsoft Power BI
 
 
 ## <a name="change-log"></a>Änderungsprotokoll
-
+- 17.03.2021: Änderung in [Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server](./sap-hana-high-availability.md), [Hochverfügbarkeit von SAP HANA auf Azure-VMs unter Red Hat Enterprise Linux](./sap-hana-high-availability-rhel.md) und [Hochverfügbarkeit bei hochskalierten SAP HANA-Lösungen mit Azure NetApp Files unter Red Hat Enterprise Linux](./sap-hana-high-availability-netapp-files-red-hat.md), um Anweisungen für HANA-„Aktiv/Lesezugriff“-Systemreplikation im Pacemaker-Cluster hinzuzufügen.
+- 15.03.2021: Änderung in [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure](./sap-high-availability-guide-wsfc-file-share.md), [Installieren von SAP NetWeaver-Hochverfügbarkeit in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS-/SCS-Instanzen in Azure](./sap-high-availability-installation-wsfc-file-share.md) und [Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigaben in Azure](./sap-ascs-ha-multi-sid-wsfc-file-share.md), um zu verdeutlichen, dass die SAP ASCS/SCS-Instanzen und die SOFS-Freigabe in separaten Clustern bereitgestellt werden müssen.
 - 03.03.2021: Änderung in [Leitfaden für Hochverfügbarkeit für SAP ASCS/SCS mit WSFC und Azure NetApp Files(SMB)](./high-availability-guide-windows-netapp-files-smb.md), um eine Warnmeldung hinzuzufügen, dass für den Benutzer, der SWPM ausführt, während der Installation des SAP-Systems erweiterte Berechtigungen erforderlich sind
 - 11.02.2021: Änderungen der [Hochverfügbarkeit von IBM Db2 LUW auf Azure-VM unter Red Hat Enterprise Linux Server](./high-availability-guide-rhel-ibm-db2-luw.md) zum Ändern der Pacemaker-Clusterbefehle für RHEL 8.x
 - 02/03/2021: Änderung in [Einrichten von Pacemaker unter RHEL in Azure](./high-availability-guide-rhel-pacemaker.md), um pcmk_host_map im Befehl „stonith create“ zu aktualisieren

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 5b7943b2026d640ae7e5d119e165bd752ae2fe7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90898820"
 ---
 # <a name="clean-missing-data-module"></a>Modul „Clean Missing Data“
@@ -71,7 +71,7 @@ Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine 
     > [!WARNING]
     > Diese Bedingung muss von jeder einzelnen Spalte erfüllt werden, damit der angegebene Vorgang angewendet werden kann. Angenommen beispielsweise, Sie haben drei Spalten ausgewählt und dann als Mindestverhältnis für fehlende Werte „0,2“ (20%) festgelegt, doch nur in einer einzigen Spalte fehlen tatsächlich 20% der Werte. In diesem Fall würde der Bereinigungsvorgang nur auf die Spalte angewendet, in der mehr als 20% der Werte fehlen. Die anderen Spalten würden unverändert beibehalten.
     > 
-    > Wenn Sie unsicher sind, ob fehlende Werte geändert wurden, wählen Sie die Option **Generate missing value indicator column** (Indikatorspalte für fehlende Werte generieren) aus. Dann wird eine Spalte an das Dataset angefügt, um anzugeben, ob jede Spalte die festgelegten Kriterien für den minimalen und maximalen Bereich erfüllt hat oder nicht.  
+    > Wenn Sie unsicher sind, ob fehlende Werte geändert wurden, wählen Sie die Option **Generate missing value indicator column** aus. Dann wird eine Spalte an das Dataset angefügt, um anzugeben, ob jede Spalte die festgelegten Kriterien für den minimalen und maximalen Bereich erfüllt hat oder nicht.  
   
 4. Geben Sie für **Maximum missing value ratio** die maximale Anzahl von Werten an, die fehlen können, damit der Vorgang ausgeführt wird.   
   
@@ -84,7 +84,7 @@ Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine 
 5. Wählen Sie für **Cleaning Mode** (Bereinigungsmodus) eine der folgenden Optionen zum Ersetzen oder Entfernen fehlender Werte aus:  
   
   
-    + **Custom substitution value** (Benutzerdefinierter Ersatzwert): Verwenden Sie diese Option zur Angabe eines Platzhalterwerts (z.B. „0“ oder „N/V“), der für alle fehlenden Werte gilt. Der Wert, den Sie als Ersatz angeben, muss mit dem Datentyp der Spalte kompatibel sein.
+    + **Custom substitution value** (Benutzerdefinierter Ersatzwert): Verwenden Sie diese Option zur Angabe eines Platzhalterwerts (z. B. „0“ oder „N/V“), der für alle fehlenden Werte gilt. Der Wert, den Sie als Ersatz angeben, muss mit dem Datentyp der Spalte kompatibel sein.
   
     + **Replace with mean** (Durch Mittelwert ersetzen): Berechnet den Mittelwert der Spalte und verwendet ihn als Ersatzwert für jeden fehlenden Wert in der Spalte.  
   
@@ -94,13 +94,13 @@ Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine 
   
         Gilt nur für Spalten mit den Datentypen „Integer“ oder „Double“. 
   
-    + **Replace with mode** (Durch Modus ersetzen): Berechnet den Modus für die Spalte und verwendet ihn als Ersatzwert für jeden fehlenden Wert in der Spalte.  
+    + **Replace with mode** (Durch Modus ersetzen) Berechnet den Modus für die Spalte und verwendet ihn als Ersatzwert für jeden fehlenden Wert in der Spalte.  
   
         Gilt für Spalten mit den Datentypen „Integer“, „Double“, „Boolean“ oder „Categorical“. 
   
-    + **Remove entire row** (Ganze Zeile entfernen): Entfernt jede Zeile im Dataset vollständig, in der mindestens ein Wert fehlt. Dies ist hilfreich, wenn der fehlende Wert als zufällig fehlend betrachtet werden kann.  
+    + **Remove entire row** (Gesamte Zeile entfernen): Entfernt jede Zeile im Dataset vollständig, in der mindestens ein Wert fehlt. Dies ist hilfreich, wenn der fehlende Wert als zufällig fehlend betrachtet werden kann.  
   
-    + **Remove entire column** (Ganze Spalte entfernen): Entfernt jede Spalte im Dataset vollständig, in der mindestens ein Wert fehlt.  
+    + **Remove entire column** (Gesamte Spalte entfernen): Entfernt jede Spalte im Dataset vollständig, in der mindestens ein Wert fehlt.  
   
     
   
@@ -108,7 +108,7 @@ Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine 
   
     Beachten Sie, dass Sie diese Option nur in Spalten mit den Datentypen „Integer“, „Double“, „Boolean“ oder „String“ verwenden können.
   
-7. **Generate missing value indicator column** (Indikatorspalte für fehlende Werte generieren): Wählen Sie diese Option aus, wenn Sie einen Hinweis darauf ausgeben möchten, dass die Werte in der Spalte die Kriterien für eine Bereinigung von fehlenden Werten erfüllt haben. Diese Option ist besonders hilfreich, wenn Sie beim Einrichten eines neuen Bereinigungsvorgangs sicherstellen möchten, dass er wie vorgesehen funktioniert.
+7. **Generate missing value indicator column** (Indikatorspalte für fehlende Werte generieren): Wählen Sie diese Option aus, wenn Sie einen Hinweis darauf ausgeben möchten, ob die Werte in der Spalte die Kriterien für eine Bereinigung von fehlenden Werten erfüllt haben. Diese Option ist besonders hilfreich, wenn Sie beim Einrichten eines neuen Bereinigungsvorgangs sicherstellen möchten, dass er wie vorgesehen funktioniert.
   
 8. Übermitteln Sie die Pipeline.
 
@@ -116,7 +116,7 @@ Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine 
 
 Das Modul gibt zwei Ausgaben zurück:  
 
--   **Cleaned dataset** (Bereinigtes Dataset): Ein Dataset, das besteht aus den ausgewählten Spalten, in denen fehlende Werte wie angegeben behandelt werden, und einer Indikatorspalte, wenn Sie diese Option ausgewählt haben.  
+-   **Cleaned dataset** (Bereinigtes Dataset): Ein Dataset, das aus den ausgewählten Spalten besteht, in denen fehlende Werte wie angegeben behandelt werden, und einer Indikatorspalte, wenn Sie diese Option ausgewählt haben.  
 
     Spalten, die nicht zur Bereinigung ausgewählt wurden, werden auch „per Pass-Through übergeben“.  
   

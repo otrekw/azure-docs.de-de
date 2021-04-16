@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94649261"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen
@@ -34,8 +34,9 @@ Dieser Artikel enthält eine Anleitung zum Erstellen und Konfigurieren einer IPs
 
 > [!IMPORTANT]
 > 1. Die IPsec/IKE-Richtlinie kann nur für folgende Gateways verwendet werden:
->    * ***VpnGw1, VpnGw2, VpnGw3** _ (routenbasiert) _ ***Standard** _ und _*_HighPerformance_*_ (routenbasiert)
-> 2. Pro Verbindung kann jeweils nur _*_eine_*_ Richtlinienkombination angegeben werden.
+>    * ***VpnGw1, VpnGw2, VpnGw3*** (routenbasiert)
+>    * ***Standard** und *_HighPerformance_* (routenbasiert)
+> 2. Pro Verbindung kann jeweils nur ***eine*** Richtlinienkombination angegeben werden.
 > 3. Sie müssen alle Algorithmen und Parameter für IKE (Hauptmodus) und IPsec (Schnellmodus) angeben. Partielle Richtlinien sind nicht zulässig.
 > 4. Vergewissern Sie sich in den Spezifikationen Ihres VPN-Geräteanbieters, dass die Richtlinie von Ihren lokalen VPN-Geräten unterstützt wird. S2S- bzw. VNet-zu-VNet-Verbindungen können nicht hergestellt werden, wenn die Richtlinien inkompatibel sind.
 
@@ -55,7 +56,7 @@ Die Anleitung in diesem Artikel dient zum Einrichten und Konfigurieren von IPsec
 
 Die folgende Tabelle gibt Aufschluss über die unterstützten Kryptografiealgorithmen und Schlüsselstärken, die von den Kunden konfiguriert werden können:
 
-| _ *IPsec/IKEv2**  | **Optionen**    |
+| **IPsec/IKEv2**  | **Optionen**    |
 | ---  | --- 
 | IKEv2-Verschlüsselung | AES256, AES192, AES128, DES3, DES  
 | IKEv2-Integrität  | SHA384, SHA256, SHA1, MD5  |

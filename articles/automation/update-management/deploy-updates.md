@@ -3,14 +3,14 @@ title: Erstellen von Updatebereitstellungen für die Azure Automation-Updateverw
 description: In diesem Artikel wird beschrieben, wie Sie Updatebereitstellungen planen und deren Status anzeigen.
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6d35d6b49ab72d8aa7b25506011147ab624273fd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575889"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104669677"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
@@ -21,6 +21,9 @@ In jedem Szenario zielt die von Ihnen erstellte Bereitstellung auf diesen ausgew
 * Das Betriebssystem wird automatisch vorab ausgewählt, basierend auf dem Betriebssystem des Computers.
 * Der zu aktualisierende Zielcomputer wird automatisch auf sich selbst als Ziel festgelegt.
 * Wenn Sie den Zeitplan konfigurieren, können Sie **Jetzt aktualisieren**, „Einmalig am“ oder „Verwendet einen wiederkehrenden Zeitplan“ angeben.
+
+> [!IMPORTANT]
+> Mit dem Erstellen einer Updatebereitstellung akzeptieren Sie die Software-Lizenzbedingungen (EULA) des Unternehmens, das die Updates für das Betriebssystem anbietet.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 

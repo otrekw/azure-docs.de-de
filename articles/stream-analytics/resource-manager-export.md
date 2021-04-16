@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
 ms.openlocfilehash: aa17d83dcc14675db5ff6aa4597314baffbffdbb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98015418"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Exportieren einer Azure Resource Manager-Vorlage für einen Azure Stream Analytics-Auftrag
@@ -38,7 +38,7 @@ Als Nächstes muss das Auftragsskript als Azure Resource Manager-Vorlage kompi
 
    ![Datei „Transformation.asaql“ in Visual Studio Code](./media/resource-manager-export/transformation-asaql.png)
 
-1. Klicken Sie mit der rechten Maustaste auf die Datei *Transformation.asaql*, und wählen Sie **ASA: Skript kompilieren** aus dem Menü aus.
+1. Klicken Sie mit der rechten Maustaste auf die Datei *Transformation.asaql*, und wählen Sie im Menü **ASA: Skript kompilieren** aus.
 
 1. Daraufhin wird im Arbeitsbereich Ihres Stream Analytics-Auftrags ein Ordner namens **Deploy** angezeigt.
 

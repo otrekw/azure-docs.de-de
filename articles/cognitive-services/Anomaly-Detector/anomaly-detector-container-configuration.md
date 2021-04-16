@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
 ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94363713"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurieren von Containern für die Anomalieerkennung
@@ -45,7 +45,7 @@ Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem di
 
 Diese Einstellung finden Sie hier:
 
-* Azure-Portal: Ressourcenverwaltung der **Anomalieerkennung** (unter **Schlüssel** )
+* Azure-Portal: Ressourcenverwaltung der **Anomalieerkennung** (unter **Schlüssel**)
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights-Einstellung
 
@@ -97,7 +97,7 @@ Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Be
 
 Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veranschaulichen, wie `docker run`-Befehle geschrieben und verwendet werden.  Nach dem Ausführen wird der Container so lange ausgeführt, bis Sie ihn [beenden](anomaly-detector-container-howto.md#stop-the-container).
 
-* **Zeilenfortsetzungszeichen:** In den Docker-Befehlen in den folgenden Abschnitten wird der umgekehrte Schrägstrich (`\`) als Zeilenfortsetzungszeichen für eine Bash-Shell verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Hostbetriebssystems. Das Zeilenfortsetzungszeichen für Windows ist z. B. das Caretzeichen `^`. Ersetzen Sie den umgekehrten Schrägstrich durch das Caretzeichen. 
+* **Zeilenfortsetzungszeichen**: In den Docker-Befehlen in den folgenden Abschnitten wird der umgekehrte Schrägstrich `\` als Zeilenfortsetzungszeichen für eine Bash-Shell verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Hostbetriebssystems. Das Zeilenfortsetzungszeichen für Windows ist z. B. das Caretzeichen `^`. Ersetzen Sie den umgekehrten Schrägstrich durch das Caretzeichen. 
 * **Argumentreihenfolge:** Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern sehr gut vertraut sind.
 
 Ersetzen Sie Werte in Klammern `{}` durch Ihre eigenen Werte:

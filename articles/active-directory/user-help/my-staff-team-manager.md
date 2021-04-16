@@ -1,5 +1,5 @@
 ---
-title: 'Verwalten von Kennwörtern und Telefonnummern mit „Meine Mitarbeiter“ (Vorschau): Azure AD | Microsoft-Dokumentation'
+title: 'Verwalten von Kennwörtern und Telefonnummern mit „Meine Mitarbeiter“: Azure AD | Microsoft-Dokumentation'
 description: Verwalten von Kennwörtern und Telefonnummern für Ihre Benutzer mit „Meine Mitarbeiter“
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ ms.topic: end-user-help
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/14/2020
+ms.date: 03/17/2021
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b435c56f53001275fbdb1a3b3cfae25536a9a63
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537089"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583597"
 ---
-# <a name="delegate-user-management-with-my-staff-preview"></a>Delegieren der Benutzerverwaltung mit „Meine Mitarbeiter“ (Vorschau)
+# <a name="delegate-user-management-with-my-staff"></a>Delegieren der Benutzerverwaltung mit „Meine Mitarbeiter“
 
 Sie können in Ihrer Organisation das Portal **Meine Mitarbeiter** verwenden, um die Aufgaben der Benutzerverwaltung an Führungspersonen zu delegieren, z. B. Store Manager oder Teamleiter. Diese können für ihre Mitarbeiter dann den Zugriff auf die benötigten Anwendungen ermöglichen. Falls ein Teammitglied nicht auf eine Anwendung zugreifen kann, weil es das Kennwort vergessen hat, beeinträchtigt dies die Produktivität. Darüber hinaus steigen die Supportkosten, und in Ihren Verwaltungsabläufen entsteht ein Engpass.  Bei Verwendung von „Meine Mitarbeiter“ können Teammitglieder, die nicht auf ihr Konto zugreifen können, ohne die Hilfe eines Administrators mit wenigen Klicks den Zugriff wiedererlangen.
 

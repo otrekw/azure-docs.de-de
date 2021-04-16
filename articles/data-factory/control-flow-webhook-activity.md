@@ -3,22 +3,25 @@ title: Webhook-Aktivität in Azure Data Factory
 description: Die Webhook-Aktivität setzt die Ausführung der Pipeline erst fort, nachdem sie das angefügte Dataset mit bestimmten vom Benutzer angegebenen Kriterien überprüft hat.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 435cad4d1ef002261b194431dbdb787e072808f5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4c3ff5d7139f4167769f78aa858c7d7a693539a3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361484"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785936"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-Aktivität in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Eine Webhook-Aktivität kann die Ausführung von Pipelines über Ihren benutzerdefinierten Code steuern. Mithilfe der Webhook-Aktivität kann Kundencode einen Endpunkt aufrufen und ihm eine Rückruf-URL übergeben. Die Pipelineausführung wartet, bis der Rückruf aufgerufen wurde, bevor sie mit der nächsten Aktivität fortfährt.
+
+> [!IMPORTANT]
+> Mit der Webhook-Aktivität können Sie nun Fehlerstatus- und benutzerdefinierte Meldungen an die Aktivität und die Pipeline zurückgeben. Legen Sie _reportStatusOnCallBack_ auf „true“ fest, und geben Sie _StatusCode_ und _Error_ in der Rückrufnutzlast an. Weitere Informationen finden Sie unter [Weitere Hinweise](#additional-notes).
 
 ## <a name="syntax"></a>Syntax
 
@@ -37,6 +40,7 @@ Eine Webhook-Aktivität kann die Ausführung von Pipelines über Ihren benutzerd
             "key": "value"
         },
         "timeout": "00:03:00",
+        "reportStatusOnCallBack": false,
         "authentication": {
             "type": "ClientCertificate",
             "pfx": "****",
@@ -59,7 +63,7 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 **body** | Stellt die an den Endpunkt gesendete Nutzlast dar. | Gültiges JSON-Format oder ein Ausdruck mit dem **resultType**-JSON-Wert. Weitere Informationen zum Schema der Anforderungsnutzlast finden Sie unter [Schema der Anforderungsnutzlast](./control-flow-web-activity.md#request-payload-schema). | Ja |
 **Authentifizierung** | Die zum Aufrufen des Endpunkts verwendete Authentifizierungsmethode. Unterstützte Typen sind „Basic“ und „ClientCertificate“. Weitere Informationen finden Sie unter [Authentifizierung](./control-flow-web-activity.md#authentication). Wenn keine Authentifizierung erforderlich ist, schließen Sie diese Eigenschaft aus. | Eine Zeichenfolge oder ein Ausdruck mit dem **resultType**-Wert einer Zeichenfolge. | Nein |
 **timeout** | Legt fest, wie lange die Aktivität darauf warten soll, dass der mittels **callBackUri** festgelegte Rückruf aufgerufen wird. Der Standardwert ist 10 Minuten („00:10:00“). Werte haben das TimeSpan-Format *t*.*hh*:*mm*:*ss*. | String | Nein |
-**Status bei Rückruf melden** | Ermöglicht einem Benutzer, den Fehlerstatus einer Webhook-Aktivität zu melden. | Boolean | Nein |
+**Report status on callback** | Ermöglicht einem Benutzer, den Fehlerstatus einer Webhook-Aktivität zu melden. | Boolesch | Nein |
 
 ## <a name="authentication"></a>Authentifizierung
 

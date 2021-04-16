@@ -1,22 +1,18 @@
 ---
-title: Arbeiten mit Sensorwarnungen
+title: Informationen zu Sensorwarnungen
 description: Arbeiten Sie mit Warnungen, um die Sicherheit und den Betrieb Ihres Netzwerks zu verbessern.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 3ae17ebce564de465a91739a210ae7f18f86a3b9
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 178d3aedb44c29f53aab481894defeb4b9355d39
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523548"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781346"
 ---
-# <a name="work-with-alerts-on-your-sensor"></a>Arbeiten mit Sensorwarnungen
+# <a name="about-sensor-alerts"></a>Informationen zu Sensorwarnungen
 
-Arbeiten Sie mit Warnungen, um die Sicherheit und den Betrieb Ihres Netzwerks zu verbessern. Warnungen bieten Informationen zu folgenden Aspekten:
+Mit Warnungen können Sie die Sicherheit und den Betrieb Ihres Netzwerks verbessern. Warnungen bieten Informationen zu folgenden Aspekten:
 
 - Abweichungen von autorisierten Netzwerkaktivitäten
 
@@ -68,9 +64,9 @@ Beispiel:
 
   - Auf Netzwerkgeräten erkannte Malwareereignisse werden in Risikobewertungsberichten gemeldet. Wenn Warnungen zu Malwareereignissen *stummgeschaltet* werden, können betroffene Geräte nicht im Risikobewertungsbericht berechnet werden.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
-[Lernmodi und Smart IT-Lernmodi](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
-[Anzeigen der in Warnungen angegebenen Informationen](how-to-view-information-provided-in-alerts.md)
-[Verwalten des Warnungsereignisses](how-to-manage-the-alert-event.md)
-[Beschleunigen von Warnungsworkflows](how-to-accelerate-alert-incident-response.md)
+- [Lernmodus und Smart IT-Lernmodus](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
+- [Anzeigen der in Warnungen angegebenen Informationen](how-to-view-information-provided-in-alerts.md)
+- [Verwalten des Warnungsereignisses](how-to-manage-the-alert-event.md)
+- [Beschleunigen des Warnungsworkflows](how-to-accelerate-alert-incident-response.md)

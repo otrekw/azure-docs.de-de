@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 0a6e837284917129bb56c6230e68927b79e95dac
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 20a7a7392070a6f888add630398516b2f872cd7d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945271"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865484"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -20,13 +20,13 @@ Die Verwaltung von HDInsight-Clusterprotokollen umfasst auch das Vorhalten von I
 
 Typische Schritte der HDInsight-Protokollverwaltung sind:
 
-* Schritt 1: Bestimmen der Richtlinien für die Protokollaufbewahrung
+* Schritt 1: Ermitteln der Richtlinien für die Protokollaufbewahrung
 * Schritt 2: Verwalten von Konfigurationsprotokollen für Clusterdienstversionen
 * Schritt 3: Verwalten von Protokolldateien zur Ausführung von Clusteraufträgen
 * Schritt 4: Prognostizieren von Speichergrößen und Kosten für das Protokollvolumen
 * Schritt 5: Ermitteln der Richtlinien und Prozesse für die Protokollarchivierung
 
-## <a name="step-1-determine-log-retention-policies"></a>Schritt 1: Bestimmen der Richtlinien für die Protokollaufbewahrung
+## <a name="step-1-determine-log-retention-policies"></a>Schritt 1: Ermitteln der Richtlinien für die Protokollaufbewahrung
 
 Der erste Schritt beim Erstellen einer Strategie für die Protokollverwaltung eines HDInsight-Clusters ist das Sammeln von Informationen zu Geschäftsszenarien und zu den Speicheranforderungen des Auftragsausführungsverlaufs.
 
@@ -64,9 +64,9 @@ Es ist wichtig, dass Sie die in Ihren HDInsight-Clustern ausgeführten Workloadt
 
 * Überlegen Sie, wie Sie Protokolle für den Cluster oder mehr als einen Cluster sammeln und für Zwecke wie Auditing, Überwachung, Planung und Warnung zusammenstellen können. Sie können ggf. eine benutzerdefinierte Lösung nutzen, um regelmäßig auf die Protokolldateien zuzugreifen und diese herunterzuladen und dann zu kombinieren und zu analysieren, um eine entsprechende Dashboardanzeige bereitzustellen. Außerdem können Sie weitere Funktionen für Sicherheitswarnungen oder die Fehlererkennung hinzufügen. Sie können diese Hilfsprogramme mit PowerShell, den HDInsight SDKs oder Code erstellen, mit dem auf das klassische Azure-Bereitstellungsmodell zugegriffen wird.
 
-* Überlegen Sie, ob eine Überwachungslösung oder ein entsprechender Dienst nützlich wäre. In Microsoft System Center ist ein [HDInsight Management Pack](https://systemcenter.wiki/?Get_ManagementPackBundle=Microsoft.HDInsight.mpb&FileMD5=10C7D975C6096FFAA22C84626D211259) verfügbar. Sie können auch Drittanbietertools verwenden, z. B. Apache Chukwa und Ganglia, um Protokolle zu sammeln und zu zentralisieren. Viele Unternehmen bieten Dienste, um Hadoop-basierte Big Data-Lösungen zu überwachen, zum Beispiel: Centerity, Compuware APM, Sematext SPM und Zettaset Orchestrator.
+* Überlegen Sie, ob eine Überwachungslösung oder ein entsprechender Dienst nützlich wäre. In Microsoft System Center ist ein [HDInsight Management Pack](https://systemcenter.wiki/?Get_ManagementPackBundle=Microsoft.HDInsight.mpb&FileMD5=10C7D975C6096FFAA22C84626D211259) verfügbar. Sie können auch Drittanbietertools verwenden, z. B. Apache Chukwa und Ganglia, um Protokolle zu sammeln und zu zentralisieren. Viele Unternehmen bieten Dienste zum Überwachen von Hadoop-basierten Big Data-Lösungen an, z. B. Centerity, Compuware APM, Sematext SPM und Zettaset Orchestrator.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>Schritt 2: Verwalten von Clusterdienstversionen und Anzeigen von Protokollen
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>Schritt 2: Verwalten von Clusterdienstversionen und Anzeigen von Protokollen
 
 Für einen typischen HDInsight-Cluster werden mehrere Dienste und Open-Source-Softwarepakete verwendet (z.B. Apache HBase, Apache Spark usw.). Bei einigen Workloads, z. B. der Bioinformatik, kann es ggf. erforderlich sein, zusätzlich zu den Protokollen zur Auftragsausführung den Protokollierungsverlauf der Dienstkonfiguration aufzubewahren.
 
@@ -76,11 +76,11 @@ Mit Apache Ambari wird die Verwaltung, Konfiguration und Überwachung eines HDIn
 
 Wählen Sie zum Öffnen einer Liste mit den Dienstansichten im Azure-Portal auf der Seite „HDInsight“ den Bereich **Ambari Views**.  Der Inhalt der Liste variiert in Abhängigkeit davon, welche Bibliotheken Sie installiert haben.  Beispielsweise werden ggf. YARN Queue Manager, Hive View und Tez View angezeigt.  Wählen Sie einen beliebigen Dienstlink aus, um die Konfigurations- und Dienstinformationen anzuzeigen.  Die Seite **Stack and Versions** (Stapel und Versionen) der Ambari-Benutzeroberfläche enthält Informationen zur Konfiguration und zum Dienstversionsverlauf der Clusterdienste. Wählen Sie zum Navigieren dieses Abschnitts der Ambari-Benutzeroberfläche das Menü **Admin** und dann die Option **Stack and Versions** (Stapel und Versionen).  Wählen Sie die Registerkarte **Versions** (Versionen), um Informationen zur Dienstversion anzuzeigen.
 
-![Apache Ambari – Admin – Stapel und Versionen](./media/hdinsight-log-management/ambari-stack-versions.png)
+:::image type="content" source="./media/hdinsight-log-management/ambari-stack-versions.png" alt-text="Apache Ambari – Admin – Stapel und Versionen":::
 
 Mit der Ambari-Benutzeroberfläche können Sie die Konfiguration für beliebige (oder alle) Dienste herunterladen, die auf einem bestimmten Host (oder Knoten) im Cluster ausgeführt werden.  Wählen Sie das Menü **Hosts** und anschließend den Link für den gewünschten Host. Wählen Sie auf der Seite des Hosts die Schaltfläche **Host Actions** (Hostaktionen) und dann **Download Client Configs** (Clientkonfigurationen herunterladen).
 
-![Apache Ambari – Herunterladen von Hostclientkonfigurationen](./media/hdinsight-log-management/download-client-configs.png)
+:::image type="content" source="./media/hdinsight-log-management/download-client-configs.png" alt-text="Apache Ambari – Herunterladen von Hostclientkonfigurationen":::
 
 ### <a name="view-the-script-action-logs"></a>Anzeigen der Skriptaktionsprotokolle
 
@@ -102,7 +102,7 @@ log4j.logger.alerts=DEBUG,alerts
 
 Im nächsten Schritt werden die Protokolldateien zur Auftragsausführung für die verschiedenen Dienste überprüft.  Beispiele für diese Dienste sind Apache HBase, Apache Spark und viele weitere. Ein Hadoop-Cluster erzeugt eine große Zahl von ausführlichen Protokollen, sodass die Ermittlung, welche Protokolle nützlich sind (und welche nicht), ein zeitaufwändiger Vorgang sein kann.  Es ist wichtig, das Protokollierungssystem zu verstehen, um eine zielgerichtete Verwaltung von Protokolldateien zu ermöglichen.  Die folgende Abbildung zeigt ein Beispiel für eine Protokolldatei.
 
-![HDInsight – Beispielausgabe für Beispielprotokolldatei](./media/hdinsight-log-management/hdi-log-file-example.png)
+:::image type="content" source="./media/hdinsight-log-management/hdi-log-file-example.png" alt-text="HDInsight – Beispielausgabe für Beispielprotokolldatei":::
 
 ### <a name="access-the-hadoop-log-files"></a>Zugreifen auf die Hadoop-Protokolldateien
 
@@ -157,7 +157,7 @@ Nachdem Sie festgelegt haben, welche Protokolle gelöscht werden können, könne
 
 Für bestimmte Protokolldateien können Sie einen kostengünstigeren Ansatz zur Archivierung von Protokolldateien verwenden. Für Azure Resource Manager-Aktivitätsprotokolle können Sie diesen Ansatz über das Azure-Portal untersuchen.  Richten Sie die Archivierung der Resource Manager-Protokolle ein, indem Sie im Azure-Portal für Ihre HDInsight-Instanz den Link **Aktivitätsprotokoll** wählen.  Wählen Sie oben auf der Seite „Aktivitätsprotokoll“ das Menüelement **Exportieren**, um den Bereich **Aktivitätsprotokoll exportieren** zu öffnen.  Geben Sie an, welches Abonnement und welche Region verwendet werden sollen, ob der Export in ein Speicherkonto durchgeführt werden soll und wie viele Tage die Protokolle aufbewahrt werden sollen. In diesem Bereich können Sie auch angeben, ob ein Event Hub exportiert werden soll.
 
-![Azure-Portal – Exportieren des Aktivitätsprotokolls (Vorschau)](./media/hdinsight-log-management/hdi-export-log-files.png)
+:::image type="content" source="./media/hdinsight-log-management/hdi-export-log-files.png" alt-text="Azure-Portal – Exportieren des Aktivitätsprotokolls (Vorschau)":::
 
 Alternativ hierzu können Sie auch mit PowerShell ein Skript für die Protokollarchivierung erstellen.  Ein PowerShell-Beispielskript finden Sie unter [Archive Azure Automation logs to Azure BLOB Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8) (Archivieren von Azure Automation-Protokollen in Azure Blob Storage).
 

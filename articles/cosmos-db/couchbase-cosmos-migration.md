@@ -9,10 +9,10 @@ ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
 ms.openlocfilehash: a15c6b5919f428b28daab86fea9c3b6473d19162
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97606197"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrieren von Couchbase zu Azure Cosmos DB-SQL-API
@@ -433,9 +433,9 @@ Abonnieren Sie dann Mono, und verweisen Sie dafür im Einfügungsvorgang auf den
 
 Es gibt zwei Möglichkeiten zum Migrieren von Daten.
 
-* **Mit Azure Data Factory:** Dies ist die empfehlenswerteste Methode zum Migrieren der Daten. Konfigurieren Sie die Quelle als Couchbase und die Senke als Azure Cosmos DB-SQL-API. Die dafür erforderlichen Schritte finden Sie im Artikel zum [Azure Cosmos DB Data Factory-Connector](../data-factory/connector-azure-cosmos-db.md).
+* **Azure Data Factory verwenden:** Dies ist die empfehlenswerteste Methode zum Migrieren der Daten. Konfigurieren Sie die Quelle als Couchbase und die Senke als Azure Cosmos DB-SQL-API. Die dafür erforderlichen Schritte finden Sie im Artikel zum [Azure Cosmos DB Data Factory-Connector](../data-factory/connector-azure-cosmos-db.md).
 
-* **Mit dem Azure Cosmos DB-Datenimporttool:** Diese Option wird zum Migrieren einer geringeren Datenmenge mithilfe von VMs empfohlen. Detaillierte Schritte finden Sie im Artikel [Data importer](./import-data.md) (Datenimportprogramm).
+* **Datenimporttool von Azure Cosmos DB verwenden:** Diese Option wird empfohlen, um mithilfe von VMs mit geringerer Datenmenge zu migrieren. Detaillierte Schritte finden Sie im Artikel [Data importer](./import-data.md) (Datenimportprogramm).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

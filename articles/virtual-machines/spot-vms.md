@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 0ed079dbfef50ae74914998c6b2e558b7e41aeae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fb53fc37227e040ed7bd7fc8e47de9aed538bc2e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673937"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104721391"
 ---
 # <a name="use-azure-spot-virtual-machines"></a>Verwenden von Azure-Spot-VMs 
 
@@ -58,9 +58,9 @@ Mit Ausnahme von Microsoft Azure China 21ViaNet können Azure-Spot-VMs in jeder 
 
 Folgende [Angebotstypen](https://azure.microsoft.com/support/legal/offer-details/) werden derzeit unterstützt:
 
--   Enterprise Agreement
--   Angebotscode für nutzungsbasierte Bezahlung: 003P
--   Sponsoren
+-   Enterprise Agreement 
+-   Angebotscode für nutzungsbasierte Bezahlung (003P)
+-   Gesponsert (0036P und 0136P)
 - Wenden Sie sich hinsichtlich des Cloud-Dienstanbieters (CSP) an Ihren Partner.
 
 

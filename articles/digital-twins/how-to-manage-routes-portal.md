@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e61d2ff3807b65022d72414615af9fa729359358
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: df826a682eec15d09b60857e63c363b0f9941c01
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715716"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779935"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (Portal)
 
@@ -151,6 +151,9 @@ Sie können die Ereignistypen beschränken, die gesendet werden, indem Sie einen
 Verwenden Sie auf der Seite *Create an event route* (Ereignisroute erstellen) den Abschnitt _Add an event route filter_ (Ereignisroutenfilter hinzufügen), um beim Erstellen einer Ereignisroute einen Ereignisfilter hinzuzufügen. 
 
 Sie können entweder eine Auswahl aus einigen grundlegenden allgemeinen Filteroptionen treffen oder die erweiterten Filteroptionen verwenden, um Ihre eigenen benutzerdefinierten Filter zu schreiben.
+
+>[!NOTE]
+> Filter sind **fallspezifisch** und müssen nach Nutzlastfall vergleichen (der nicht notwendigerweise mit dem Modellfall übereinstimmt).
 
 #### <a name="use-the-basic-filters"></a>Verwenden der grundlegenden Filter
 

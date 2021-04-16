@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
 ms.openlocfilehash: 9c3908c81e7d89efe3da90f9707023cb7c184795
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94365006"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Externe Inhalte und Community-Inhalte für die Textanalyse in Cognitive Service
@@ -33,7 +33,7 @@ ms.locfileid: "94365006"
 
 + [Sentiment analysis with Dynamics 365 CRM Online (MSDN blog) (Standpunktanalyse mit Dynamics 365 CRM Online (MSDN-Blog))](/archive/blogs/geoffreyinnis/sentiment-analysis-in-usd-with-cognitive-services-text-analytics) 
 
-+ Power BI-Blog: Extraction of key phrases from Facebook messages: [Part 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) and [Part 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487) (Power BI-Blog: Schlüsselbegriffserkennung bei Facebook-Nachrichten): Teil 1 und Teil 2).
++ PowerBI blog: Extraction of key phrases from Facebook messages (Power BI-Blog: Schlüsselbegriffserkennung bei Facebook-Nachrichten): [Teil 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) und [Teil 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
 + [Identify the sentiment of comments in a Yammer group with MS Flow (Microsoft tech community)](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure) (Identifizieren der Stimmung von Kommentaren in einer Yammer-Gruppe mit MS Flow (Microsoft Tech Community))
 
@@ -51,7 +51,7 @@ ms.locfileid: "94365006"
 
 Benötigen Sie Informationen zu einem Feature oder einem Anwendungsfall, die wir nicht abdecken? Ziehen Sie in Betracht, eine Anforderung auf [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics) zu erstellen oder dafür abzustimmen. 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
- [StackOverflow: Azure Textanalyse-API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Text Analytics API (StackOverflow: Textanalyse-API)](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

@@ -1,5 +1,5 @@
 ---
-title: 'Resource Manager für Service Fabric-Cluster: Verschiebungskosten'
+title: Der Clusterressourcen-Manager von Service Fabric – Verschiebungskosten
 description: Erfahren Sie mehr über die Verschiebungskosten für Service Fabric-Dienste und wie diese für alle architektonischen Anforderungen (einschließlich dynamischer Konfigurationen) festgelegt werden können.
 author: masnider
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0fdcfb02851d56ed996ae4bf32671ab545782733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89005342"
 ---
 # <a name="service-movement-cost"></a>Kosten von Dienstverschiebungen
@@ -25,7 +25,7 @@ Diese Strategie funktioniert sehr gut. Aber wie bei standardmäßigen oder stati
 ## <a name="setting-move-costs"></a>Festlegen der Verschiebungskosten 
 Sie können die Standardverschiebungskosten für einen Dienst bei dessen Erstellung angeben:
 
-Mit PowerShell:
+PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -DefaultMoveCost Medium
@@ -43,7 +43,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 
 Sie können MoveCost für einen Dienst auch nach dessen Erstellung dynamisch angeben oder aktualisieren: 
 
-Mit PowerShell: 
+PowerShell: 
 
 ```posh
 Update-ServiceFabricService -Stateful -ServiceName "fabric:/AppName/ServiceName" -DefaultMoveCost High
@@ -68,7 +68,7 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>Auswirkungen von Verschiebungskosten
-MoveCost hat fünf Stufen: Zero, Low, Medium, High und VeryHigh. Es gelten die folgenden Regeln:
+MoveCost hat fünf Ebenen: Zero, Low, Medium, High und VeryHigh. Es gelten die folgenden Regeln:
 
 * MoveCosts stehen zueinander in einem Verhältnis, mit Ausnahme von Zero und VeryHigh. 
 * Zero bedeutet, dass das Verschieben keine Kosten generiert und die Bewertung der Lösung nicht negativ beeinflussen sollte.

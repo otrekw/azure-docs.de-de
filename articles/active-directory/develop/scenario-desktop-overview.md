@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: feedc0065419162237c4f4826fe275a6fd947e53
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ea6ecf456bbcea01bf4c1eef5377d918bf0918fd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753735"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798951"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Szenario: Desktop-App, die Web-APIs aufruft
 
@@ -30,6 +30,7 @@ Erstellen Sie, falls noch nicht geschehen, Ihre erste App, indem Sie einen der f
 - [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus](./quickstart-v2-windows-desktop.md)
 - [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer UWP-App aus](./quickstart-v2-uwp.md)
 - [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API aus einer nativen macOS-App](./quickstart-v2-ios.md)
+- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Node.js & Electron-App aus](./quickstart-v2-nodejs-desktop.md)
 
 ## <a name="overview"></a>Übersicht
 
@@ -39,6 +40,7 @@ Sie schreiben eine Desktopanwendung und möchten Benutzer bei Ihrer Anwendung an
 
   - Wenn Ihre Desktopanwendung grafische Steuerelemente unterstützt (z. B. bei einer Windows.Form-Anwendung, einer WPF-Anwendung oder einer nativen macOS-Anwendung).
   - Wenn es sich um eine .NET Core-Anwendung handelt, und Sie zustimmen, dass die Authentifizierungsinteraktion mit Azure Active Directory (Azure AD) im Systembrowser erfolgt.
+  - Wenn es sich um eine Node.js Electron-Anwendung handelt, die in einer Chromium-Instanz ausgeführt wird.
 
 - Bei Anwendungen, die von Windows gehostet werden, kann ein Token mithilfe der integrierten Windows-Authentifizierung automatisch abgerufen werden, wenn die Anwendungen auf Computern ausgeführt werden, die zu einer Windows-Domäne gehören oder in Azure AD eingebunden sind.
 - Schließlich können Sie, obwohl dies nicht empfohlen wird, in öffentlichen Clientanwendungen Benutzername und Kennwort verwenden. Dies wird noch bei einigen Szenarien (z. B. DevOps) benötigt. Die Verwendung ist allerdings mit Einschränkungen für Ihre Anwendung verbunden. Beispielsweise kann sich ein Benutzer, der die [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md) (bedingter Zugriff) durchführen muss, nicht darüber anmelden. Auch einmaliges Anmelden wäre für Ihre Anwendung dann nicht möglich.

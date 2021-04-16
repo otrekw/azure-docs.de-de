@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91303606"
 ---
 # <a name="how-personalizer-works"></a>Funktionsweise der Personalisierung
@@ -20,8 +20,8 @@ Die Personalisierungsressource, Ihre _Lernschleife_, verwendet maschinelles Lern
 
 Sie senden _Aktionen mit Features_ und _Kontextfeatures_ an die Rang-API. Die **Rangfolge**-API entscheidet über die Verwendung einer der beiden folgenden Optionen:
 
-* _Exploit_ (Nutzen): Das aktuelle Modell entscheidet über die beste Aktion auf Grundlage zurückliegender Daten.
-* _Explore_ (Erkunden): Eine andere Aktion anstelle der Top-Aktion auswählen. Sie [konfigurieren diesen Prozentsatz](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) für Ihre Personalisierungsressource im Azure-Portal.
+* _Exploit_ (Nutzen): Das aktuelle Modell entscheidet über die beste Aktion auf Grundlage früherer Daten.
+* _Erkunden_: Auswählen einer anderen Aktion als der Top-Aktion. Sie [konfigurieren diesen Prozentsatz](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) für Ihre Personalisierungsressource im Azure-Portal.
 
 Sie bestimmen den Relevanzwert und senden diesen Wert an die Relevanz-API. Die **Relevanz**-API:
 
@@ -39,7 +39,7 @@ Die folgende Abbildung zeigt den Fluss der Rangfolge- und Relevanzaufrufe durch 
     * Die Personalisierung entscheidet, ob das aktuelle Modell genutzt oder neue Auswahlmöglichkeiten für das Modell erkundet werden sollen.
     * Das Rangfolgeergebnis wird an EventHub gesendet.
 1. Der oberste Rang wird als _Relevanzaktions-ID_ an Ihr System zurückgegeben.
-    Ihr System stellt diesen Inhalt dar und bestimmt eine Relevanzbewertung, die auf Ihren eigenen Geschäftsregeln basiert.
+    Ihr System zeigt diesen Inhalt an und bestimmt anhand Ihrer Geschäftsregeln einen Belohnungsscore.
 1. Ihr System gibt die Relevanzbewertung an die Lernschleife zurück.
     * Wenn die Personalisierung die Relevanz empfängt, wird diese an EventHub gesendet.
     * Rang und Relevanz sind korreliert.

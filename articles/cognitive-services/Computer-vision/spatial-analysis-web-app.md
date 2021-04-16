@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: de011fb0f827ea90efe33e237bbf1c5100dc76a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6d3be90cc81b1bcd9a55fc8e53cb9f2238e8c6de
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98183471"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285976"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Gewusst wie: Bereitstellen einer Webanwendung für die Erfassung der Personenanzahl
 
@@ -172,7 +172,7 @@ docker tag rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0 [desired local
 docker push [desired local image name]
 ```
 
-Um den Container zu installieren, erstellen Sie eine neue Azure-Web-App für Container, und geben Sie die erforderlichen Parameter an. Wechseln Sie dann zur Registerkarte **Docker**, und wählen Sie **Einzelner Container** und dann **Azure Container Registry** aus. Verwenden Sie Ihre Instanz von Azure Container Registry, in die Sie das Image zuvor gepusht haben.
+Erstellen Sie zum Installieren des Containers eine neue Azure App Service-Instanz, und geben Sie die erforderlichen Parameter an. Wechseln Sie dann zur Registerkarte **Docker**, und wählen Sie **Einzelner Container** und dann **Azure Container Registry** aus. Verwenden Sie Ihre Instanz von Azure Container Registry, in die Sie das Image zuvor gepusht haben.
 
 ![Eingeben von Imagedetails](./media/spatial-analysis/solution-app-create-screen.png)
 
@@ -189,7 +189,7 @@ Nachdem diese beiden Einstellungen hinzugefügt wurden, klicken Sie auf **Speich
 
 ### <a name="test-the-app"></a>Testen der App
 
-Wechseln Sie zur Azure-Web-App, und vergewissern Sie sich, dass die Bereitstellung erfolgreich war und die Web-App ausgeführt wird. Navigieren Sie zur konfigurierten URL `<yourapp>.azurewebsites.net`, um die ausgeführte App anzuzeigen.
+Wechseln Sie zum Azure-Dienst, und vergewissern Sie sich, dass die Bereitstellung erfolgreich war und die Web-App ausgeführt wird. Navigieren Sie zur konfigurierten URL `<yourapp>.azurewebsites.net`, um die ausgeführte App anzuzeigen.
 
 ![Testen der Bereitstellung](./media/spatial-analysis/solution-app-output.png)
 
@@ -198,7 +198,7 @@ Wenn Sie den Quellcode für diese Anwendung anzeigen oder ändern möchten, find
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Konfigurieren von Vorgängen zur räumlichen Analysen](./spatial-analysis-operations.md)
+* [Konfigurieren von Vorgängen zur räumlichen Analyse](./spatial-analysis-operations.md)
 * [Protokollierung und Problembehandlung](spatial-analysis-logging.md)
 * [Leitfaden zur Kameraplatzierung](spatial-analysis-camera-placement.md)
 * [Leitfaden zur Platzierung von Zonen und Linien](spatial-analysis-zone-line-placement.md)

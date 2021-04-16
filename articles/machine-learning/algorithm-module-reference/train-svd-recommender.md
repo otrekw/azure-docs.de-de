@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: a5740e851fbd8f7ba82e179f7e5299d6c7090596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: 77407f253bb347160ea331bd7384d8085f21b040
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890250"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654457"
 ---
 # <a name="train-svd-recommender"></a>Train SVD Recommender
 
 In diesem Artikel wird die Verwendung des Moduls Train SVD Recommender im Azure Machine Learning-Designer beschrieben. Verwenden Sie dieses Modul, um ein Empfehlungsmodell zu trainieren, das auf dem SVD-Algorithmus (Singular Value Decomposition, Singulärwertzerlegung) basiert.  
 
-Das Modul „Train SVD Recommender“ liest ein Dataset mit „user-item-rating-Tripeln“ (dreiteiliges Element mit „Benutzer-Element-Bewertung“). Es gibt ein trainiertes SVD-Empfehlungsmodul zurück. Mithilfe des trainierten Modells können Sie dann Bewertungen vorhersagen oder Empfehlungen generieren, indem Sie das Modul [Score SVD Recommender](score-svd-recommender.md) verwenden.  
+Das Modul „Train SVD Recommender“ liest ein Dataset mit „user-item-rating-Tripeln“ (dreiteiliges Element mit „Benutzer-Element-Bewertung“). Es gibt ein trainiertes SVD-Empfehlungsmodul zurück. Mithilfe des trainierten Modells können Sie dann Bewertungen vorhersagen oder Empfehlungen generieren, indem Sie eine Verbindung mit dem Modul [Score SVD Recommender](score-svd-recommender.md) herstellen.  
 
 
   
@@ -35,7 +35,7 @@ Es gibt zwei grundlegende Ansätze für Empfehlungssysteme:
 
 Das SVD-Empfehlungsmodul verwendet Bezeichner der Benutzer und Elemente sowie eine Matrix der Bewertungen, die von den Benutzern für die Elemente abgegeben wurden. Hierbei handelt es sich um ein *Empfehlungsmodul mit Zusammenarbeit*. 
 
-Weitere Informationen zum SVD-Empfehlungsmodul finden Sie in der entsprechenden Forschungsarbeit: [Matrix factorization techniques for recommender systems](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf) (Matrixfaktorisierungstechniken für Empfehlungssysteme).
+Weitere Informationen zu SVD Recommender finden Sie im entsprechenden Forschungsbericht [Matrixfaktorisierungstechniken für Empfehlungssysteme](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
 
 
 ## <a name="how-to-configure-train-svd-recommender"></a>Konfigurieren von Train SVD Recommender  
@@ -70,6 +70,9 @@ In diesem Beispiel können Sie sehen, dass ein einzelner Benutzer mehrere Filme 
   
 5.  Übermitteln Sie die Pipeline.  
 
+## <a name="results"></a>Ergebnisse
+
+Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie nach Abschluss der Pipelineausführung [Train SVD Recommender](train-svd-recommender.md) mit [Score SVD Recommender](score-svd-recommender.md), um Werte für neue Eingabebeispiele vorherzusagen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

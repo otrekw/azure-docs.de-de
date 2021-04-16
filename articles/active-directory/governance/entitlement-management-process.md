@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb84eae2db01180865db54250598f45c7b2ddca0
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97746234"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Anforderungsprozess und E-Mail-Benachrichtigungen in der Azure AD-Berechtigungsverwaltung
@@ -72,19 +72,19 @@ Die folgende Tabelle enthält weitere Details zu den einzelnen E-Mail-Benachrich
 | # | E-Mail-Betreff | Sendeszenario | Gesendet an |
 | --- | --- | --- | --- |
 | 1 | Aktion erforderlich: Weitergeleitete Anforderung bis zum *[Datum]* genehmigen oder verweigern | Diese E-Mail wird an alternative genehmigende Personen auf Stufe 1 gesendet (nach Eskalieren der Anforderung), um Maßnahmen zu ergreifen. | Alternative genehmigende Personen auf Stufe 1 |
-| 2 | Aktion erforderlich: Anforderung bis zum *[Datum]* genehmigen oder ablehnen | Diese E-Mail wird an die erste genehmigende Person gesendet (bei deaktivierter Eskalation), um Maßnahmen zu ergreifen. | Erste genehmigende Person |
+| 2 | Aktion erforderlich: Anforderung bis zum *[Datum]* genehmigen oder verweigern | Diese E-Mail wird an die erste genehmigende Person gesendet (bei deaktivierter Eskalation), um Maßnahmen zu ergreifen. | Erste genehmigende Person |
 | 3 | Erinnerung: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die erste genehmigende Personen gesendet (bei deaktivierter Eskalation). In der E-Mail wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Erste genehmigende Person |
 | 4 | Anforderung bis zum *[Datum]* um *[Uhrzeit]* genehmigen oder ablehnen | Diese E-Mail wird an die erste genehmigende Person gesendet (bei aktivierter Eskalation), um Maßnahmen zu ergreifen. | Erste genehmigende Person |
-| 5 | Erinnerung – Aktion erforderlich: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die erste genehmigende Person gesendet (bei aktivierter Eskalation). In der E-Mail wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Erste genehmigende Person |
+| 5 | Erinnerung an erforderliche Aktion: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die erste genehmigende Person gesendet (bei aktivierter Eskalation). In der E-Mail wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Erste genehmigende Person |
 | 6 | Anforderung für *[Zugriffspaket]* ist abgelaufen | Diese E-Mail wird an die erste genehmigende Person und an die alternativen genehmigenden Personen auf Stufe 1 gesendet, nachdem die Anforderung abgelaufen ist. | Erste genehmigende Person, alternative genehmigende Personen auf Stufe 1 |
 | 7 | Anforderung von *[Anforderer]* für *[Zugriffspaket]* genehmigt | Diese E-Mail wird an die erste genehmigende Person und an die alternativen genehmigenden Personen auf Stufe 1 gesendet, wenn die Anforderung abgeschlossen ist. | Erste genehmigende Person, alternative genehmigende Personen auf Stufe 1 |
 | 8 | Anforderung von *[Anforderer]* für *[Zugriffspaket]* genehmigt | Diese E-Mail wird bei einer zweistufigen Anforderung an die erste genehmigende Person und alternative genehmigende Personen auf Stufe 1 gesendet, wenn die Anforderung auf Stufe 1 genehmigt wurde. | Erste genehmigende Person, alternative genehmigende Personen auf Stufe 1 |
 | 9 | Anforderung für *[Zugriffspaket]* abgelehnt | Diese E-Mail wird an den Anforderer gesendet, wenn seine Anforderung abgelehnt wurde. | Anforderer |
 | 10 | Ihre Anforderung für *[Zugriffspaket]* ist abgelaufen | Diese E-Mail wird am Ende einer Anforderung mit ein- oder zweistufiger Genehmigung an den Anforderer gesendet. In der E-Mail wird der Anforderer informiert, dass die Anforderung abgelaufen ist. | Anforderer |
-| 11 | Aktion erforderlich: Anforderung bis zum *[Datum]* genehmigen oder ablehnen | Diese E-Mail wird an die zweite genehmigende Personen gesendet (bei deaktivierter Eskalation), um Maßnahmen zu ergreifen. | Zweite genehmigende Person |
-| 12 | Erinnerung – Aktion erforderlich: Anforderung bis zum *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die zweite genehmigende Person gesendet (bei deaktivierter Eskalation). In der Benachrichtigung wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Zweite genehmigende Person |
+| 11 | Aktion erforderlich: Anforderung bis zum *[Datum]* genehmigen oder verweigern | Diese E-Mail wird an die zweite genehmigende Personen gesendet (bei deaktivierter Eskalation), um Maßnahmen zu ergreifen. | Zweite genehmigende Person |
+| 12 | Erinnerung an erforderliche Aktion: Anforderung bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die zweite genehmigende Person gesendet (bei deaktivierter Eskalation). In der Benachrichtigung wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Zweite genehmigende Person |
 | 13 | Aktion erforderlich: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese E-Mail wird an die zweite genehmigende Person gesendet (bei aktivierter Eskalation), um Maßnahmen zu ergreifen. | Zweite genehmigende Person |
-| 14 | Erinnerung – Aktion erforderlich: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die zweite genehmigende Personen gesendet (bei aktivierter Eskalation). In der Benachrichtigung wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Zweite genehmigende Person |
+| 14 | Erinnerung an erforderliche Aktion: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die zweite genehmigende Personen gesendet (bei aktivierter Eskalation). In der Benachrichtigung wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Zweite genehmigende Person |
 | 15 | Aktion erforderlich: Weitergeleitete Anforderung bis zum *[Datum]* genehmigen oder verweigern | Diese E-Mail wird an die alternativen genehmigenden Personen auf Stufe 2 gesendet (bei aktivierter Eskalation), um Maßnahmen zu ergreifen. | Alternative genehmigende Personen auf Stufe 2 |
 | 16 | Anforderung von *[Anforderer]* für *[Zugriffspaket]* genehmigt | Diese E-Mail wird an die zweite genehmigende Person und an die alternativen genehmigenden Personen auf Stufe 2 gesendet, wenn die Anforderung genehmigt wird. | Zweite genehmigende Person, alternative genehmigende Personen auf Stufe 2 |
 | 17 | Anforderung für *[Zugriffspaket]* ist abgelaufen | Diese E-Mail wird an die zweite genehmigende Person oder an alternative genehmigende Personen gesendet, nachdem die Anforderung abgelaufen ist. | Zweite genehmigende Person, alternative genehmigende Personen auf Stufe 2 |

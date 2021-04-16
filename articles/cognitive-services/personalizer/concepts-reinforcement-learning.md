@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "87132737"
 ---
 # <a name="what-is-reinforcement-learning"></a>Was ist vertiefendes Lernen?
@@ -62,7 +62,7 @@ Die Personalisierung verwendet derzeit [Vowpal Wabbit](https://github.com/Vowpal
 * [Making Contextual Decisions with Low Technical Debt](https://arxiv.org/abs/1606.03966) (Treffen von Kontextentscheidungen mit geringem technischem Aufwand)
 * [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453) (Ein Reduzierungsansatz zu fairer Klassifizierung)
 * [Efficient Contextual Bandits in Non-stationary Worlds](https://arxiv.org/abs/1708.01799) (Effiziente kontextabhängige Banditen in nicht stationären Welten)
-* [Residual Loss Prediction: Reinforcement: learning With No Incremental Feedback](https://openreview.net/pdf?id=HJNMYceCW) (Residual Loss-Vorhersage: Vertiefung: Lernen ohne inkrementelles Feedback)
+* [Residual Loss Prediction: Reinforcement learning With No Incremental Feedback](https://openreview.net/pdf?id=HJNMYceCW) (Residual Loss Prediction: vertiefendes Lernen ohne inkrementelles Feedback)
 * [Mapping Instructions and Visual Observations to Actions with Reinforcement Learning](https://arxiv.org/abs/1704.08795) (Zuordnungsanweisungen und visuelle Beobachtungen zu Aktionen mit vertiefendem Lernen)
 * [Learning to Search Better Than Your Teacher](https://arxiv.org/abs/1502.02206) (Lernen, besser zu suchen als dein Lehrer)
 

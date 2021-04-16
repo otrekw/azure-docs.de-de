@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: ce713167272c9e97754fdf6f6d065519aaea3d15
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d7dd7105ddb0d6503faefb996b84c0e53a62ce49
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421174"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104655375"
 ---
 # <a name="train-wide--deep-recommender"></a>Train Wide & Deep Recommender
 In diesem Artikel wird die Verwendung des Moduls **Train Wide & Deep Recommender** im Azure Machine Learning-Designer zum Trainieren eines Empfehlungsmodells beschrieben. Dieses Modul basiert auf Wide & Deep Learning von Google.
@@ -136,6 +136,10 @@ Ein typischer Satz von Elementfeatures könnte z. B. wie folgt aussehen:
      Die Batchnormalisierung ist eine Technik zur Bekämpfung interner Kovariantenabweichungen beim Netzwerktraining. Im Allgemeinen kann es hilfreich sein, um die Geschwindigkeit, die Leistung und die Stabilität der Netzwerke zu verbessern. 
 
 17.  Ausführen der Pipeline.
+
+## <a name="results"></a>Ergebnisse
+
+Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie nach Abschluss der Pipelineausführung [Train Wide and Deep Recommender](train-wide-and-deep-recommender.md) mit [Score Wide and Deep Recommender](score-wide-and-deep-recommender.md), um Werte für neue Eingabebeispiele vorherzusagen.
 
 ##  <a name="technical-notes"></a>Technische Hinweise
 

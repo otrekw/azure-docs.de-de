@@ -7,16 +7,16 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 67f1f2fe3f6ac1061f1edcd22532bffaf0a1e815
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 392ecff2ab120e713a07d130493a4a8339dae5ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366869"
 ---
 # <a name="options"></a>Tastatur #
 
-## <a name="setting-options"></a>Festlegen von Optionen ##
+## <a name="setting-options"></a>Einstellungsoptionen ##
 
 Der Einbindungscode für Azure Media Player ist einfach ein HTML5-Videotag, daher können Sie zum Festlegen vieler Optionen die Tag-Standardattribute verwenden.
 
@@ -36,7 +36,7 @@ Schließlich können Sie, wenn Sie nicht das data-setup-Attribut zum Auslösen d
 ## <a name="individual-options"></a>Einzelne Optionen ##
 
 > [!NOTE]
->Videotagattribute können nur wahr oder falsch sein (boolesch). Sie nehmen ein Attribut (ohne Gleichheitszeichen) einfach auf, um es zu aktivieren, oder schließen es aus, um es zu deaktivieren. Um beispielsweise die Steuerelemente zu aktivieren: FALSCH `<video controls="true" ...>` RICHTIG `<video controls ...>` Das größte Problem, dem Benutzer begegnen, tritt bei dem Versuch auf, diese Werte mithilfe von „false“ als falsch festzulegen (z. B. controls="false"), womit das Gegenteil des beabsichtigten Verhaltens erreicht und der Wert auf „true“ festgelegt wird, da das Attribut enthalten ist.
+>Videotagattribute können nur wahr oder falsch sein (boolesch). Sie nehmen ein Attribut (ohne Gleichheitszeichen) einfach auf, um es zu aktivieren, oder schließen es aus, um es zu deaktivieren. Um beispielsweise die Steuerelemente zu aktivieren: FALSCH `<video controls="true" ...>` RICHTIG `<video controls ...>` Das größte Problem, dem Benutzer begegnen, tritt bei dem Versuch auf, diese Werte mithilfe von „false“ als falsch festzulegen (z. B. controls="false"), womit das Gegenteil des beabsichtigten Verhaltens erreicht und der Wert auf „true“ festgelegt wird, da das Attribut immer noch enthalten ist.
 
 ### <a name="controls"></a>controls ###
 
@@ -102,7 +102,7 @@ Die `playbackSpeed`-Option steuert das playbackSpeed-Steuerelement und eine Reih
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-Weitere Eigenschaften der `playbackSpeed`-Einstellung stehen über das [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/playbackspeedoptions)-Objekt zur Verfügung.
+Weitere Eigenschaften der `playbackSpeed`-Einstellung stehen über das [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)-Objekt zur Verfügung.
 
 Beispiel zum Festlegen von Optionen für die Wiedergabegeschwindigkeit in JavaScript:
 

@@ -9,10 +9,10 @@ ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: fdd4e26839661ab9765b7d496e7f60c3686ba637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67178328"
 ---
 ### <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
@@ -37,7 +37,7 @@ Führen Sie `npm install hyco-https` über eine Node-Eingabeaufforderung in Ihre
    3. `const keyrule` – der Name des SAS-Schlüssels
    4. `const key` – der Wert des SAS-Schlüssels
 
-3. Fügen Sie der Datei `listener.js` den folgenden Code hinzu. decodiert werden:
+3. Fügen Sie der Datei `listener.js` den folgenden Code hinzu. :
 
     Sie werden feststellen, dass der Code sich nicht wesentlich von einem einfachen HTTP-Serverbeispiel unterscheidet, wie Sie es in Node.js-Einsteigertutorials finden, mit Ausnahme der Verwendung von `createRelayedServer` anstelle der normalen `createServer`-Funktion.
 

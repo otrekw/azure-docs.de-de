@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über die Netzwerkfeatures in Azure App Service u
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 10/18/2020
+ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 9ba85ecfe2b57ceb1eed5c51929107a95f5a4669
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593128"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889143"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
@@ -129,11 +129,15 @@ Einige Anwendungsfälle für diese Funktion:
 ![Diagramm, das die Verwendung von Dienstendpunkten mit Application Gateway veranschaulicht.](media/networking-features/service-endpoints-appgw.png)
 
 Weitere Informationen zum Konfigurieren von Dienstendpunkten mit Ihrer App finden Sie unter [Azure App Service-Zugriffseinschränkungen][serviceendpoints].
-#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>Auf Diensttags basierende Zugriffseinschränkungsregeln (Vorschau)
+
+#### <a name="access-restriction-rules-based-on-service-tags"></a>Auf Diensttags basierende Zugriffseinschränkungsregeln
+
 Bei [Azure-Diensttags][servicetags] handelt es sich um gut definierte Sätze mit IP-Adressen für Azure-Dienste. Mit Diensttags werden die IP-Adressbereiche gruppiert, die in den verschiedenen Azure-Diensten genutzt werden. Häufig sind sie auch auf bestimmte Regionen festgelegt. Dies ermöglicht es Ihnen, den *eingehenden* Datenverkehr bestimmter Azure-Dienste zu filtern. 
 
 Eine vollständige Liste mit Tags und weiteren Informationen finden Sie oben unter dem Link zu Diensttags. Informationen, wie Sie diese Funktion aktivieren, finden Sie unter [Konfigurieren von Zugriffseinschränkungen][iprestrictions].
-#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>Filterung von HTTP-Headern für Zugriffseinschränkungsregeln (Vorschau)
+
+#### <a name="http-header-filtering-for-access-restriction-rules"></a>Filterung von HTTP-Headern für Zugriffseinschränkungsregeln
+
 Für jede Zugriffseinschränkungsregel können Sie eine zusätzliche Filterung von HTTP-Headern hinzufügen. Dies ermöglicht Ihnen die weitere Untersuchung der eingehenden Anforderung und die Filterung basierend auf bestimmten HTTP-Headerwerten. Jeder Header kann bis zu acht Werte pro Regel umfassen. Derzeit werden HTTP-Header unterstützt, die in der folgenden Liste enthalten sind: 
 * X-Forwarded-For
 * X-Forwarded-Host
@@ -143,6 +147,7 @@ Für jede Zugriffseinschränkungsregel können Sie eine zusätzliche Filterung v
 Beispiele für Anwendungsfälle für die Filterung von HTTP-Headern:
 * Einschränken des Zugriffs auf Datenverkehr von Proxyservern, die den Hostnamen weiterleiten
 * Einschränken des Zugriffs auf eine bestimmte Azure Front Door-Instanz mit einer Diensttagregel und X-Azure-FDID-Headereinschränkung
+
 ### <a name="private-endpoint"></a>Privater Endpunkt
 
 Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie über eine private und sichere Verbindung mit Azure Private Link mit Ihrer Web-App verbindet. Ein privater Endpunkt verwendet eine private IP-Adresse aus Ihrem virtuellen Netzwerk und bindet die Web-App dadurch in Ihr virtuelles Netzwerk ein. Diese Funktion gilt nur für bei Ihrer Web-App *eingehenden* Flows.

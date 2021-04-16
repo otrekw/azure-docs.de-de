@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: a1f0a0dff4eb8a1aad0cd5e142959a636827a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90898491"
 ---
 # <a name="partition-and-sample-module"></a>Modul „Partition and Sample“
@@ -51,13 +51,13 @@ Dieses Modul unterstützt die folgenden Methoden zum Unterteilen Ihrer Daten in 
 
 ### <a name="get-top-n-rows-from-a-dataset"></a>Abrufen der obersten n Zeilen aus einem Dataset
 
-Verwenden Sie diesen Modus, wenn Sie nur die ersten *n* Zeilen abrufen möchten. Diese Option ist hilfreich, wenn Sie eine Pipeline für eine kleine Anzahl von Zeilen testen möchten und die Daten nicht ausgeglichen oder in irgendeiner Form für eine Stichprobenentnahme verfügbar sein müssen.
+Verwenden Sie diesen Modus, um nur die ersten *n* Zeilen abzurufen. Diese Option ist hilfreich, wenn Sie eine Pipeline für eine kleine Anzahl von Zeilen testen möchten und die Daten nicht ausgeglichen oder in irgendeiner Form für eine Stichprobenentnahme verfügbar sein müssen.
 
 1. Fügen Sie das Modul **Partition and Sample** Ihrer Pipeline auf der Oberfläche hinzu, und verbinden Sie das Dataset.  
 
-1. **Partition or sample mode** (Partitions- oder Stichprobenmodus): Legen Sie für diese Option **Head** (Anfang) fest.
+1. **Partition or sample mode** (Partitions- oder Stichprobenmodus): Legen Sie diese Option auf **Head** (Anfang) fest.
 
-1. **Number of rows to select** (Anzahl der auszuwählenden Zeilen): Geben Sie Anzahl von Zeilen ein, die zurückgegeben werden sollen.
+1. **Number of rows to select** (Anzahl der auszuwählenden Zeilen): Geben Sie die Anzahl der zurückzugebenden Zeilen ein.
 
    Die Anzahl der Zeilen muss eine nicht negative ganze Zahl sein. Wenn die Anzahl der ausgewählten Zeilen größer als die Anzahl der Zeilen im Dataset ist, wird das ganze Dataset zurückgegeben.
 
@@ -73,13 +73,13 @@ Diese Option unterstützt einfache Zufallsstichproben oder geschichtete Zufallss
 
 1. **Partition or sample mode** (Partitions- oder Stichprobenmodus): Legen Sie diese Option auf **Sampling** (Stichprobenentnahme) fest.
 
-1. **Rate of Sampling** (Stichprobenrate): Geben Sie einen Wert im Bereich 0 bis 1 ein. Dieser Wert gibt den Prozentsatz von Zeilen aus dem Quelldataset an, der in das Ausgabedataset einbezogen werden soll.
+1. **Rate of Sampling** (Stichprobenrate): Geben Sie einen Wert zwischen 0 und 1 ein. Dieser Wert gibt den Prozentsatz von Zeilen aus dem Quelldataset an, der in das Ausgabedataset einbezogen werden soll.
 
    Wenn Sie beispielsweise nur die Hälfte des ursprünglichen Datasets einbeziehen möchten, geben Sie durch Eingabe von `0.5` an, dass die Stichprobenrate 50 % betragen soll.
 
    Die Zeilen des Eingabedatasets werden gemischt und – entsprechend der angegebenen Rate – selektiv in das Ausgabedataset eingefügt.
 
-1. **Random seed for sampling** (Zufälliger Ausgangswert für Stichprobenentnahme): Geben Sie optional eine ganze Zahl ein, die als Ausgangswert verwendet werden soll.
+1. **Random seed for sampling** (Zufälliger Ausgangswert für Stichprobenentnahme): Geben Sie optional eine Ganzzahl ein, die als Ausgangswert verwendet werden soll.
 
    Diese Option ist wichtig, wenn die Zeilen immer auf dieselbe Weise unterteilt werden sollen. Der Standardwert ist **0**, was bedeutet, dass ein Ausgangswert anhand der Systemuhr generiert wird. Dieser Wert kann bei jeder Ausführung der Pipeline zu geringfügig unterschiedlichen Ergebnissen führen.
 
@@ -120,7 +120,7 @@ Verwenden Sie diese Option, wenn Sie das Dataset in Teilmengen der Daten unterte
 
    - **Partition evenly** (Gleichmäßig partitionieren): Verwenden Sie diese Option, um in jeder Partition die gleiche Anzahl von Zeilen zu platzieren. Wenn Sie die Anzahl der Ausgabepartitionen angeben möchten, geben Sie im Feld **Specify number of folds to split evenly into** (Anzahl der Folds, in die gleichmäßig aufgeteilt werden soll) eine ganze Zahl ein.
 
-   - **Partition with customized proportions** (Mit angepassten Anteilen partitionieren): Verwenden Sie diese Option, um die Größe jeder Partition als eine durch Trennzeichen getrennte Liste anzugeben.
+   - **Partition with customized proportion** (Mit angepassten Anteilen partitionieren): Verwenden Sie diese Option, um die Größe jeder Partition als eine durch Trennzeichen getrennte Liste anzugeben.
 
      Angenommen, Sie möchten drei Partitionen erstellen. Die erste Partition enthält 50 % der Daten. Die verbleibenden zwei Partitionen enthalten jeweils 25 % der Daten. Geben Sie in das Feld **List of proportions separated by comma** (Liste der durch Komma getrennten Anteile) diese Werte ein: **0,5, 0,25, 0,25**.
 
@@ -134,7 +134,7 @@ Verwenden Sie diese Option, wenn Sie das Dataset in Teilmengen der Daten unterte
 
 1. Übermitteln Sie die Pipeline.
 
-   Bei dieser Option gibt das Modul mehrere Datasets aus, die anhand der von Ihnen angegebenen Regeln partitioniert wurden.
+   Mit dieser Option gibt das Modul mehrere Datasets aus. Die Datasets werden gemäß den von Ihnen angegebenen Regeln partitioniert.
 
 ### <a name="use-data-from-a-predefined-partition"></a>Verwenden von Daten aus einer vordefinierten Partition  
 
@@ -144,11 +144,11 @@ Wählen Sie diese Option, wenn Sie ein Dataset in mehrere Partitionen unterteilt
 
 1. Verbinden Sie das Modul mit der Ausgabe einer vorherigen Instanz von **Partition and Sample**. Diese Instanz muss die Option **Assign to Folds** (Zu Folds zuweisen) verwendet haben, um eine Anzahl von Partitionen zu generieren.
 
-1. **Partition or sample mode** (Partitions- oder Stichprobenmodus): Wählen Sie **Pick Fold** (Fold aussuchen) aus.
+1. **Partition or sample mode**(Partitions- oder Stichprobenmodus): Wählen Sie **Pick Fold** (Fold auswählen) aus.
 
 1. **Specify which fold to be sampled from** (Angeben, aus welchem Fold Stichproben entnommen werden sollen): Wählen Sie die gewünschte Partition aus, indem Sie deren Index eingeben. Partitionsindizes sind 1-basiert. Wenn Sie das Dataset beispielsweise in drei Teile unterteilt haben, hätten die Partitionen die Indizes „1“, „2“ und „3“.
 
-   Wenn Sie einen ungültigen Indexwert eingeben, wird zur Entwurfszeit ein Fehler ausgelöst: „Fehler 0018: DataSet enthält ungültige Daten.“
+   Wenn Sie einen ungültigen Indexwert eingeben, wird der folgende Entwurfszeitfehler ausgelöst: „Error 0018: Dataset contains invalid data.“ (Fehler 0018: Dataset enthält ungültige Daten.)
 
    Zusätzlich zum Gruppieren des Datasets nach Folds können Sie es in zwei Gruppen aufteilen: einen Zielfold und alles andere. Geben Sie dazu den Index eines einzelnen Folds ein, und wählen Sie die Option **Pick complement of the selected fold** (Komplement des ausgewählten Folds aussuchen) aus, um alles außer den Daten in den angegebenen Fold abzurufen.
 
@@ -156,15 +156,15 @@ Wählen Sie diese Option, wenn Sie ein Dataset in mehrere Partitionen unterteilt
 
    Beispielsweise ist das Modul **Partition and Sample** in der zweiten Zeile auf **Assign to Folds** (Zu Folds zuweisen) festgelegt, und das Modul in der dritten Zeile ist auf **Pick Fold** (Fold auswählen) festgelegt.   
 
-   ![Partition and Sample](./media/module/partition-and-sample.png)
+   ![Partition und Beispiel](./media/module/partition-and-sample.png)
 
 1. Übermitteln Sie die Pipeline.
 
    Bei dieser Option gibt das Modul ein einzelnes Dataset mit nur den Zeilen aus, die diesem Fold zugewiesen wurden.
 
 > [!NOTE]
->  Sie können die Foldbezeichnungen nicht direkt anzeigen, da sie nur in den Metadaten vorhanden sind.
+>  Die Foldbezeichnungen können nicht direkt angezeigt werden. Sie sind nur in den Metadaten vorhanden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

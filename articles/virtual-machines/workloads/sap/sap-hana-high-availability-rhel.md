@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 03/16/2021
 ms.author: radeltch
-ms.openlocfilehash: a98fd5785174d681b333cdaa29fe53ae06f137e1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: daa0a6b15d4c187efdea96fd8067b08c89fa0e82
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675369"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599866"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter Red Hat Enterprise Linux
 
@@ -647,6 +647,112 @@ Stellen Sie sicher, dass der Clusterstatus gültig ist und alle Ressourcen gesta
 #      nc_HN1_03  (ocf::heartbeat:azure-lb):      Started hn1-db-0
 #      vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
+
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Konfigurieren der „Aktiv/Lesezugriff“-HANA-Systemreplikation im Pacemaker-Cluster
+
+Ab SAP HANA 2.0 SPS 01 SAP sind „Aktiv/Lesezugriff“-Setups für die SAP HANA-Systemreplikation möglich, bei denen die sekundären Systeme der SAP HANA-Systemreplikation aktiv für Workloads mit vielen Lesevorgängen verwendet werden können. Zur Unterstützung eines solchen Setups in einem Cluster ist eine zweite virtuelle IP-Adresse erforderlich, mit der Clients auf die sekundäre SAP HANA-Datenbank mit aktivierten Lesevorgängen zugreifen können. Damit nach einer Übernahme weiterhin auf die sekundäre Replikationswebsite zugegriffen werden kann, muss der Cluster die virtuelle IP-Adresse zusammen mit der sekundären Instanz der SAP HANA-Ressource verschieben.
+
+In diesem Abschnitt werden die zusätzlichen Schritte beschrieben, die zum Verwalten der „Aktiv/Lesezugriff“-HANA-Systemreplikation in einem Red Hat-Hochverfügbarkeitscluster mit zweiter virtueller IP-Adresse erforderlich sind.    
+
+Bevor Sie fortfahren, vergewissern Sie sich, dass Sie den Red Hat-Hochverfügbarkeitscluster, der die SAP HANA-Datenbank verwaltet, wie in den obigen Abschnitten der Dokumentation beschrieben vollständig konfiguriert haben.  
+
+![SAP HANA-Hochverfügbarkeit mit sekundärer Instanz mit Lesezugriff](./media/sap-hana-high-availability/ha-hana-read-enabled-secondary.png)
+
+### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>Zusätzliches Setup in Azure Load Balancer für „Aktiv/Lesezugriff“-Setup
+
+Um mit zusätzlichen Schritten für die Bereitstellung der zweiten virtuellen IP-Adresse fortzufahren, stellen Sie sicher, dass Sie Azure Load Balancer wie im Abschnitt [Manuelle Bereitstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#manual-deployment) beschrieben konfiguriert haben.
+
+1. Führen Sie für den **standardmäßigen** Lastenausgleich die unten aufgeführten zusätzlichen Schritte für denselben Lastenausgleich aus, den Sie im vorherigen Abschnitt erstellt haben.
+
+   a. Erstellen eines zweiten Front-End-IP-Pools: 
+
+   - Öffnen Sie den Lastenausgleich, und wählen Sie den **Front-End-IP-Pool** und dann **Hinzufügen** aus.
+   - Geben Sie den Namen des zweiten Front-End-IP-Pools ein (z. B. **hana-secondaryIP**).
+   - Legen Sie die **Zuweisung** auf **Statisch** fest, und geben Sie die IP-Adresse ein (z. B. **10.0.0.14**).
+   - Klicken Sie auf **OK**.
+   - Notieren Sie nach Erstellen des neuen Front-End-IP-Pools dessen IP-Adresse.
+
+   b. Erstellen Sie als Nächstes einen Integritätstest:
+
+   - Öffnen Sie den Lastenausgleich, und wählen Sie **Integritätstests** und dann **Hinzufügen** aus.
+   - Geben Sie den Namen des neuen Integritätstests ein (z. B. **hana-secondaryhp**).
+   - Wählen Sie **TCP** als Protokoll und den Port **62603** aus. Behalten Sie für das **Intervall** den Wert „5“ und als **Fehlerschwellenwert** „2“ bei.
+   - Klicken Sie auf **OK**.
+
+   c. Erstellen Sie als Nächstes die Lastenausgleichsregeln:
+
+   - Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
+   - Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **hana-secondarylb**).
+   - Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **hana-secondaryIP**, **hana-backend** und **hana-secondaryhp**).
+   - Wählen Sie **HA-Ports** aus.
+   - Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
+   - Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
+   - Klicken Sie auf **OK**.
+
+### <a name="configure-hana-activeread-enabled-system-replication"></a>Konfigurieren der „Aktiv/Lesezugriff“-HANA-Systemreplikation
+
+Die Schritte zum Konfigurieren der HANA-Systemreplikation werden im Abschnitt [Konfigurieren der SAP Hana 2.0-Systemreplikation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication) beschrieben. Wenn Sie ein sekundäres Szenario mit Lesezugriff bereitstellen, während Sie die Systemreplikation auf dem zweiten Knoten konfigurieren, führen Sie den folgenden Befehl als **hanasid** adm aus:
+
+```
+sapcontrol -nr 03 -function StopWait 600 10 
+
+hdbnsutil -sr_register --remoteHost=hn1-db-0 --remoteInstance=03 --replicationMode=sync --name=SITE2 --operationMode=logreplay_readaccess 
+```
+
+### <a name="adding-a-secondary-virtual-ip-address-resource-for-an-activeread-enabled-setup"></a>Hinzufügen einer sekundären virtuellen IP-Adressressource für ein „Aktiv/Lesezugriff“-Setup
+
+Die zweite virtuelle IP-Adresse und die geeignete Zusammenstellungseinschränkung können mit den folgenden Befehlen konfiguriert werden:
+
+```
+pcs property set maintenance-mode=true
+
+pcs resource create secvip_HN1_03 ocf:heartbeat:IPaddr2 ip="10.40.0.16"
+
+pcs resource create secnc_HN1_03 ocf:heartbeat:azure-lb port=62603
+
+pcs resource group add g_secip_HN1_03 secnc_HN1_03 secvip_HN1_03
+
+RHEL 8.x: 
+pcs constraint colocation add g_secip_HN1_03 with slave SAPHana_HN1_03-clone 4000
+RHEL 7.x:
+pcs constraint colocation add g_secip_HN1_03 with slave SAPHana_HN1_03-master 4000
+
+pcs property set maintenance-mode=false
+```
+Stellen Sie sicher, dass der Clusterstatus gültig ist und alle Ressourcen gestartet sind. Die zweite virtuelle IP-Adresse wird zusammen mit der sekundären SAPHana-Ressource am sekundären Standort ausgeführt.
+
+```
+sudo pcs status
+
+# Online: [ hn1-db-0 hn1-db-1 ]
+#
+# Full List of Resources:
+#   rsc_hdb_azr_agt     (stonith:fence_azure_arm):      Started hn1-db-0
+#   Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]:
+#     Started: [ hn1-db-0 hn1-db-1 ]
+#   Clone Set: SAPHana_HN1_03-clone [SAPHana_HN1_03] (promotable):
+#     Masters: [ hn1-db-0 ]
+#     Slaves: [ hn1-db-1 ]
+#   Resource Group: g_ip_HN1_03:
+#     nc_HN1_03         (ocf::heartbeat:azure-lb):      Started hn1-db-0
+#     vip_HN1_03        (ocf::heartbeat:IPaddr2):       Started hn1-db-0
+#   Resource Group: g_secip_HN1_03:
+#     secnc_HN1_03      (ocf::heartbeat:azure-lb):      Started hn1-db-1
+#     secvip_HN1_03     (ocf::heartbeat:IPaddr2):       Started hn1-db-1
+```
+
+Im nächsten Abschnitt finden Sie den typischen Satz auszuführender Failovertests.
+
+Beachten Sie beim Testen eines mit lesbarem sekundärem Replikat konfigurierten HANA-Clusters das Verhalten der zweiten virtuellen IP-Adresse:
+
+1. Wenn Sie die Clusterressource **SAPHana_HN1_HDB03** zu **hn1-db-1** migrieren, wird die zweite virtuelle IP-Adresse auf den anderen Server **hn1-db-0** verschoben. Wenn Sie AUTOMATED_REGISTER="false" konfiguriert haben und die HANA-Systemreplikation nicht automatisch registriert wird, wird die zweite virtuelle IP-Adresse auf **hn1-db-0** ausgeführt, da der Server verfügbar ist und die Clusterdienste online sind.  
+
+2. Beim Testen eines Serverabsturzes werden die zweiten virtuellen IP-Ressourcen (**rsc_secip_HN1_HDB03**) und die Azure Load Balancer-Portressource (**rsc_secnc_HN1_HDB03**) auf dem primären Server neben den primären virtuellen IP-Ressourcen ausgeführt.  Während der sekundäre Server ausgefallen ist, stellen die Anwendungen, die mit einer HANA-Datenbank mit Lesezugriff verbunden sind, eine Verbindung mit der primären HANA-Datenbank her. Das Verhalten wird erwartet, da Sie nicht möchten, dass auf Anwendungen, die mit einer HANA-Datenbank mit Lesezugriff verbunden sind, nicht zugegriffen werden kann, während der sekundäre Zeitserver nicht verfügbar ist.
+
+3. Wenn der sekundäre Server verfügbar ist und die Clusterdienste online sind, werden die zweiten virtuellen IP- und die Portressourcen automatisch auf den sekundären Server verschoben, auch wenn die HANA-Systemreplikation möglicherweise nicht als sekundär registriert ist. Sie müssen sicherstellen, dass Sie die sekundäre HANA-Datenbank als gelesen registrieren, bevor Sie Clusterdienste auf diesem Server starten. Sie können die Clusterressource der HANA-Instanz mit der Parameterfestlegung AUTOMATED_REGISTER=true so konfigurieren, dass die sekundäre Instanz automatisch registriert wird.
+   
+4. Während des Failovers und Fallbacks werden die vorhandenen Verbindungen für Anwendungen unter Verwendung der zweiten virtuellen IP-Adresse zum Herstellen einer Verbindung mit der HANA-Datenbank möglicherweise unterbrochen.  
 
 ## <a name="test-the-cluster-setup"></a>Testen der Clustereinrichtung
 

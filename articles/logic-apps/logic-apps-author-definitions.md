@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96014396"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Erstellen, Bearbeiten oder Erweitern von JSON-Code für Logik-App-Workflowdefinitionen in Azure Logic Apps
@@ -67,7 +67,7 @@ Wählen Sie **Öffnen mit Logik-App-Designer** aus.
 
 Der Bereitstellungslebenszyklus umfasst in der Regel verschiedene Umgebungen zur Entwicklung, zum Testen, Staging und für die Produktion. Wenn Sie Werte haben, die Sie in ihrer Logik-App wieder verwenden möchten, ohne hartcodieren oder – je nach Ihren Bereitstellungsanforderungen – variieren zu müssen, können Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/management/overview.md) für die Workflowdefinition erstellen, um auch die Bereitstellung von Logik-Apps zu automatisieren.
 
-Führen Sie diese allgemeinen Schritte aus, um stattdessen diese Werte zu *parametrisieren* bzw. Parameter für diese zu definieren und zu verwenden. Anschließend können Sie die Werte in einer separaten Parameterdatei bereitstellen, die diese Werte an Ihre Vorlage übergibt. Auf diese Weise können Sie diese Werte einfacher ändern, ohne Ihre Logik-App aktualisieren und erneut bereitstellen zu müssen. Ausführlichere Informationen finden Sie unter [Overview: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Führen Sie diese allgemeinen Schritte aus, um stattdessen diese Werte zu *parametrisieren* bzw. Parameter für diese zu definieren und zu verwenden. Anschließend können Sie die Werte in einer separaten Parameterdatei bereitstellen, die diese Werte an Ihre Vorlage übergibt. Auf diese Weise können Sie diese Werte einfacher ändern, ohne Ihre Logik-App aktualisieren und erneut bereitstellen zu müssen. Weitere Informationen finden Sie unter [Übersicht: Automatisieren der Bereitstellung für Azure Logik-Apps mit Azure Resource Manager-Vorlagen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 1. Definieren Sie in Ihrer Vorlage Vorlagenparameter und Workflowdefinitionsparameter, um die Werte zu akzeptieren, die zur Bereitstellung bzw. zur Laufzeit verwendet werden sollen.
 

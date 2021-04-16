@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9483b0a8829c042a7cf8d516c6007cbbf14a97ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d1f0728a9a8da264f0960be2b956516b3c93742e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639753"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258076"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Microsoft Dynamics 365 Fraud Protection mit Azure Active Directory B2C
 
@@ -56,7 +56,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 
 ![Abbildung des Microsoft Dynamics 365 Fraud Protection-Architekturdiagramms](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Schritt | Beschreibung |
+|Schritt | BESCHREIBUNG |
 |:-----| :-----------|
 | 1. | Der Benutzer gelangt auf eine Anmeldeseite. Der Benutzer wählt die Registrierung zum Erstellen eines neuen Kontos aus und gibt Informationen auf der Seite ein. Azure AD B2C erfasst die Benutzerattribute.
 | 2. | Azure AD B2C ruft die API der mittleren Ebene auf und übergibt die Benutzerattribute.
@@ -68,7 +68,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 ## <a name="set-up-the-solution"></a>Einrichten der Lösung
 
 1. [Erstellen Sie eine Facebook-Anwendung](./identity-provider-facebook.md#create-a-facebook-application), die so konfiguriert ist, dass sie den Verbund mit Azure AD B2C zulässt.
-2. [Fügen Sie das von Ihnen erstellte Facebook-Geheimnis](./custom-policy-get-started.md#create-the-facebook-key) als Identity Experience Framework-Richtlinienschlüssel hinzu.
+2. [Fügen Sie das von Ihnen erstellte Facebook-Geheimnis](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#create-the-facebook-key) als Identity Experience Framework-Richtlinienschlüssel hinzu.
 
 ## <a name="configure-your-application-under-microsoft-dfp"></a>Konfigurieren Ihrer Anwendung unter Microsoft DFP
 
@@ -148,7 +148,7 @@ Der Wert der Benutzer-ID (userId) muss mit dem entsprechenden Wert in der Azure�
 
 1. Wechseln Sie im Richtlinienordner zur [Azure AD B2C-Richtlinie](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies).
 
-2. Folgen Sie den Anweisungen in diesem [Dokument](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack), um das [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) herunterzuladen.
+2. Folgen Sie den Anweisungen in diesem [Dokument](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack), um das [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) herunterzuladen.
 
 3. Konfigurieren Sie die Richtlinie für den Azure AD B2C-Mandanten.
 
@@ -184,4 +184,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Benutzerdefinierte Richtlinien in Azure AD B2C](./custom-policy-overview.md)
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)

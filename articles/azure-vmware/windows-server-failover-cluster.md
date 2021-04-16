@@ -3,12 +3,12 @@ title: Windows Server Failover Cluster in Azure VMware Solution vSAN mit nativen
 description: Einrichten von Windows Server Failover Cluster (WSFC) in Azure VMware Solution und Nutzen von Lösungen, die WSFC-Funktionen erfordern.
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518992"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562238"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Windows Server Failover Cluster in Azure VMware Solution vSAN mit nativen freigegebenen Datenträgern
 
@@ -30,7 +30,7 @@ Dabei ist es wichtig, eine unterstützte WSFC-Konfiguration bereitzustellen. Die
 
 Dieser Artikel bezieht sich auf WSFC unter Windows Server 2016 und Windows Server 2019. Ältere Windows Server-Versionen unterliegen nicht mehr dem [grundlegenden Support](https://support.microsoft.com/lifecycle/search?alpha=windows%20server) und werden daher hier nicht berücksichtigt.
 
-Sie müssen zunächst [eine WSFC-Instanz](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster) erstellen. Weitere Informationen zu WSFC finden Sie unter [Failoverclustering in Windows Server](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview). Verwenden Sie die Informationen in diesem Artikel für die Besonderheiten einer WSFC-Bereitstellung in Azure VMware Solution.
+Sie müssen zunächst [eine WSFC-Instanz](/windows-server/failover-clustering/create-failover-cluster) erstellen. Weitere Informationen zu WSFC finden Sie unter [Failoverclustering in Windows Server](/windows-server/failover-clustering/failover-clustering-overview). Verwenden Sie die Informationen in diesem Artikel für die Besonderheiten einer WSFC-Bereitstellung in Azure VMware Solution.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -150,7 +150,7 @@ Die folgenden Aktivitäten werden nicht unterstützt und führen möglicherweise
 
 ## <a name="related-information"></a>Verwandte Informationen
 
-- [Failoverclustering in Windows Server](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Failoverclustering in Windows Server](/windows-server/failover-clustering/failover-clustering-overview)
 - [Guidelines for Microsoft Clustering on vSphere (1037959) (vmware.com)](https://kb.vmware.com/s/article/1037959) (Richtlinien für Microsoft-Clustering in vSphere)
 - [About Setup for Failover Clustering and Microsoft Cluster Service (vmware.com)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.mscs.doc/GUID-1A2476C0-CA66-4B80-B6F9-8421B6983808.html) (Informationen zum Setup für Failoverclustering und Microsoft Cluster Service)
 - [vSAN 6.7 U3 – WSFC with Shared Disks &amp; SCSI-3 Persistent Reservations (vmware.com)](https://blogs.vmware.com/virtualblocks/2019/08/23/vsan67-u3-wsfc-shared-disksupport/) (vSAN 6.7 U3 – WSFC mit freigegebenen Datenträgern und SCSI-3 Persistent Reservations)
@@ -162,5 +162,5 @@ Nachdem Sie sich mit dem Einrichten von WSFC in Azure VMware Solution vertraut g
 
 - Einrichten der neuen WSFC-Instanz durch Hinzufügen weiterer Anwendungen, die WSFC-Funktionen erfordern, z. B. SQL Server und SAP ASCS
 - Einrichten einer Sicherungslösung:
-  - [Einrichten von Azure Backup Server für Azure VMware Solution](https://docs.microsoft.com/azure/azure-vmware/set-up-backup-server-for-azure-vmware-solution)
-  - [Sicherungslösungen für virtuelle Azure VMware Solution-Computer](https://docs.microsoft.com/azure/azure-vmware/ecosystem-back-up-vms)
+  - [Einrichten von Azure Backup Server für Azure VMware Solution](./set-up-backup-server-for-azure-vmware-solution.md)
+  - [Sicherungslösungen für virtuelle Azure VMware Solution-Computer](./ecosystem-back-up-vms.md)

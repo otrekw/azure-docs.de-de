@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4f4a8fb82a42c5121105ddf7bb9d3d886b531350
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b84b7387411e7df8e092a2e810591697319f9554
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321335"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774676"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Erweitertes Untersuchen und Modellieren von Daten mit Spark
 
@@ -35,10 +35,11 @@ Eine hier häufig verwendete Methode für die Hyperparameteroptimierung besteht 
 
 Die Modelle, die wir verwenden, umfassen logistische und lineare Regression, Random Forests und Gradient-Boosted-Strukturen:
 
-* [Lineare Regression mit SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) ist ein lineares Regressionsmodell, das eine SGD-Methode (Stochastic Gradient Descent, stochastisches Gradientenverfahren) zur Optimierung und Featureskalierung verwendet, um die gezahlten Trinkgeldbeträge vorherzusagen. 
+* [Lineare Regression mit SGD](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html#pyspark.mllib.regression.LinearRegressionWithSGD
+) ist ein lineares Regressionsmodell, das eine SGD-Methode (Stochastic Gradient Descent, stochastisches Gradientenverfahren) zur Optimierung und Featureskalierung verwendet, um die gezahlten Trinkgeldbeträge vorherzusagen. 
 * [Logistische Regression mit LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) oder „Logit“-Regression ist ein Regressionsmodell, das verwendet werden kann, wenn die abhängige Variable für Datenklassifizierung kategorisch ist. LBFGS ist ein quasi-Newtonscher Optimierungsalgorithmus, der sich dem Broyden-Fletcher-Goldfarb-Shanno-Algorithmus (BFGS) unter Verwendung einer begrenzten Menge an Arbeitsspeicher annähert und häufig im Machine Learning verwendet wird.
 * [Random Forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forests werden für Regression und Klassifizierung genutzt, können Kategoriefeatures verarbeiten und in eine Klassifizierungseinstellung mit mehreren Klassen erweitert werden. Sie erfordern keine Featureskalierung und können Nichtlinearitäten und Interaktionen von Features erfassen. Random Forest zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
-* [Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) sind Gruppen von Entscheidungsstrukturen. GBTS trainieren Entscheidungsstrukturen iterativ, um eine Verlustfunktion zu minimieren. GBTS werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
+* [Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) sind Gruppen von Entscheidungsstrukturen. GBTS trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTS werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
 
 Beispiele für die Modellierung mit Kreuzvalidierung und Hyperparameter-Sweeping werden für das binäre Klassifizierungsproblem gezeigt. Einfachere Beispiele (ohne Parameter-Sweeping) finden sich im Hauptthema zu Regressionsaufgaben. Im Anhang werden jedoch auch die Validierung mit Elastic Net für die lineare Regression und die Kreuzvalidierung mit Parameter-Sweeping für eine Regression der Random Forest veranschaulicht. **Elastic Net** ist eine regularisierte Regressionsmethode zum Anpassen linearer Regressionsmodelle, die die Metriken L1 und L2 als Abzüge für die Methoden [Lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) und [Ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) kombiniert.   
 
@@ -58,7 +59,7 @@ Die Einrichtungsschritte und der Code in dieser exemplarischen Vorgehensweise be
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0-Notebooks
 
-[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Diese Datei bietet Informationen zum Durchführen von Datenuntersuchungen, Modellieren und Bewerten in Spark 2.0-Clustern.
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -90,7 +91,7 @@ datetime.datetime.now()
 
 datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 
-### <a name="import-libraries"></a>Importieren von Bibliotheken
+### <a name="import-libraries"></a>Importbibliotheken
 Importieren Sie die erforderlichen Bibliotheken mit dem unten angegebenen Code.
 
 ```python
@@ -193,7 +194,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 276,62 Sekunden
+Time taken to execute above cell: 276.62 seconds
 
 ## <a name="data-exploration--visualization"></a>Durchsuchen und Visualisierung von Daten
 Nachdem die Daten in Spark eingegeben wurden, besteht der nächste Schritt im Data Science-Prozess darin, durch Durchsuchen und Visualisieren eine tiefer gehende Einsicht in die Daten zu erhalten. In diesem Abschnitt untersuchen wir die Taxidaten mit SQL-Abfragen und zeichnen Diagramme der Zielvariablen und künftigen Merkmale zur Sichtprüfung. Insbesondere stellen wir die Häufigkeit der Fahrgastzahlen bei Taxifahrten, die Häufigkeit der Trinkgeldbeträge und die Variation der Trinkgelder nach Zahlungsbetrag und -art im Diagramm dar.
@@ -403,7 +404,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 3,14 Sekunden
+Time taken to execute above cell: 3.14 seconds
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Erstellen von bezeichneten Punktobjekten für die Eingabe in ML-Funktionen
 Dieser Abschnitt enthält Code, der zeigt, wie kategorische Textdaten als bezeichneter Punktdatentyp indiziert und codiert werden. Diese Transformation bereitet Textdaten auf das Trainieren der logistischen MLlib-Regressions- und anderer Klassifizierungsmodelle vor. Bezeichnete Punktobjekte sind robuste verteilte Datasets (RDD), die in einer Weise formatiert sind, die von den meisten ML-Algorithmen in MLlib als Eingabedaten benötigt wird. Ein [bezeichneter Punkt](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) ist ein lokaler Vektor, entweder dicht oder platzsparend, der mit einer Bezeichnung/Antwort verknüpft ist.
@@ -457,7 +458,7 @@ def parseRowOneHotRegression(line):
 ```
 
 ### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Erstellen einer Zufallsunterauswahl der Daten und Aufteilen in Trainings- und Testsätze
-Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verwendet). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigen wir Ihnen, wie Sie hier Stichproben erfassen können. Sie können dann dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden. Bei großen Stichproben kann die Stichprobenentnahme beim Trainieren von Modellen deutlich Zeit sparen. Als Nächstes teilen wir die Stichprobe in einen Trainingsteil (hier 75 %) und einen Testteil (hier 25 %) zur Klassifizierung und Regressionsmodellierung.
+Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verwendet). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigen wir Ihnen, wie Sie hier Stichproben erfassen können. Sie können dann dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden. Bei großen Stichproben kann die Stichprobenentnahme das Trainieren von Modellen erheblich beschleunigen. Als Nächstes teilen wir die Stichprobe in einen Trainingsteil (hier 75 %) und einen Testteil (hier 25 %) zur Klassifizierung und Regressionsmodellierung.
 
 ```python
 # RECORD START TIME
@@ -500,7 +501,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 0,31 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 0,31 Sekunden
 
 ### <a name="feature-scaling"></a>Featureskalierung
 Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (Stochastic Gradient Descent, SGD) bereitgestellt. SGD ist ein beliebter Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z.B. normalisierte Regressionen oder Support Vector Machines (SVM).   
@@ -543,7 +544,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 11,67 Sekunden
+Time taken to execute above cell: 11.67 seconds
 
 ### <a name="cache-objects-in-memory"></a>Zwischenspeichern von Objekten im Arbeitsspeicher
 Die Zeit zum Trainieren und Testen von ML-Algorithmen kann durch Zwischenspeichern der Eingabedatenrahmen-Objekte für Klassifizierung, Regression und skalierte Features verwendet werden.
@@ -576,7 +577,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT** 
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 0,13 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 0,13 Sekunden
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Vorhersage, ob ein Trinkgeld bezahlt wird, mit Modellen zur binären Klassifizierung
 Dieser Abschnitt beschreibt die Verwendung von drei Modellen für die Aufgabe der binären Klassifizierung der Vorhersage, ob für eine Taxifahrt ein Trinkgeld bezahlt wird. Die präsentierten Modelle sind:
@@ -760,7 +761,7 @@ Recall = 0.984174341679
 
 F1 Score = 0.984174341679
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 2,67 Sekunden
+Time taken to execute above cell: 2.67 seconds
 
 **Plotten Sie die ROC-Kurve.**
 
@@ -831,7 +832,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 34,57 Sekunden
+Time taken to execute above cell: 34.57 seconds
 
 ### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>Verwenden der CrossValidator-Pipeline-Funktion von MLlib mit dem logistischen Regressionsmodell (elastische Regression)
 Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das im Dataset der Taxifahrten und Fahrpreise in NYC vorhersagt, ob ein Trinkgeld für eine Fahrt gezahlt wird, mit [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) trainiert, evaluiert und gespeichert werden kann. Das Modell wird mithilfe der Kreuzvalidierung und des Hyperparameter-Sweeping trainiert. Dies wurde mit der MLlib CrossValidator-Pipeline-Funktion für die Kreuzvalidierung mit Hyperparameter-Sweeping implementiert.   
@@ -891,7 +892,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 107,98 Sekunden
+Time taken to execute above cell: 107.98 seconds
 
 **Plotten Sie die ROC-Kurve.**
 
@@ -982,7 +983,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 Area under ROC = 0.985336538462
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 26,72 Sekunden
+Time taken to execute above cell: 26.72 seconds
 
 ### <a name="gradient-boosting-trees-classification"></a>Klassifizierung von Gradient-Boosted-Strukturen
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das vorhersagt, ob ein Trinkgeld für eine Fahrt im NYC-Taxifahrten- und Fahrpreisedataset gezahlt wird, trainiert, evaluiert und gespeichert werden kann.
@@ -1028,7 +1029,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 Area under ROC = 0.985336538462
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 28,13 Sekunden
+Time taken to execute above cell: 28.13 seconds
 
 ## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>Vorhersage von Trinkgeldbeträgen mit Regressionsmodellen (ohne Kreuzvalidierung)
 Dieser Abschnitt zeigt Ihnen die Verwendung von drei Modellen für die Regressionsaufgabe: Vorhersage des Trinkgeldbetrags, der für eine Taxifahrt gezahlt wird, auf der Basis anderer Trinkgeldfeatures. Die präsentierten Modelle sind:
@@ -1115,7 +1116,7 @@ RMSE = 1.23485131376
 
 R-sqr = 0.597963951127
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 38,62 Sekunden
+Time taken to execute above cell: 38.62 seconds
 
 ### <a name="random-forest-regression"></a>Regression der Random Forest
 Der Code in diesem Abschnitt zeigt, wie ein Random Forest-Modell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.   
@@ -1175,7 +1176,7 @@ RMSE = 0.931981967875
 
 R-sqr = 0.733445485802
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 25,98 Sekunden
+Time taken to execute above cell: 25.98 seconds
 
 ### <a name="gradient-boosting-trees-regression"></a>Gradient-Boosted-Strukturenregression
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
@@ -1227,7 +1228,7 @@ RMSE = 0.928172197114
 
 R-sqr = 0.732680354389
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 20,9 Sekunden
+Time taken to execute above cell: 20.9 seconds
 
 **Diagrammausgabe**
 
@@ -1443,7 +1444,7 @@ RMSE = 0.906972198262
 
 R-sqr = 0.740751197012
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 69,17 Sekunden
+Time taken to execute above cell: 69.17 seconds
 
 ### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>Bereinigen von Objekten aus dem Arbeitsspeicher und Drucken von Modellspeicherorten
 Löschen Sie mit `unpersist()` zwischengespeicherte Objekte aus dem Arbeitsspeicher.

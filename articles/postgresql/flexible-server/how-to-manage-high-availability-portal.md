@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90930315"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>Verwalten zonenredundanter Hochverfügbarkeit in flexiblen Servern
@@ -30,29 +30,29 @@ Zonenredundante Hochverfügbarkeit ist nur in Regionen verfügbar, in denen mehr
 
 In diesem Abschnitt finden Sie spezifische Informationen für auf Hochverfügbarkeit bezogene Felder. Sie können diese Schritte ausführen, um Hochverfügbarkeit während der Erstellung Ihres flexiblen Servers bereitzustellen.
 
-1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option „Flexibler Server“ aus, und klicken Sie auf „Erstellen“.  Ausführliche Informationen zum Ausfüllen von Details wie **Abonnement**, **Ressourcengruppe**, **Servername**, **Region** und anderen Feldern finden Sie in der Dokumentation zur Vorgehensweise beim Erstellen des Servers.
+1.  Wählen Sie im[Azure-Portal](https://portal.azure.com/) die Option „Flexibler Server“ aus, und klicken Sie auf „Erstellen“.  Ausführliche Informationen zum Ausfüllen von Details wie **Abonnement**, **Ressourcengruppe**, **Servername**, **Region** und anderen Feldern finden Sie in der Dokumentation zur Vorgehensweise beim Erstellen des Servers.
    
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="Anzeigen von Abonnement und der Region":::
 
 2.  Wählen Sie Ihre **Verfügbarkeitszone** aus. Dies ist hilfreich, wenn Sie Ihre Anwendung in derselben Verfügbarkeitszone wie der der Datenbank platzieren möchten, um die Wartezeit zu verringern. Wählen Sie **Keine Präferenz** aus, wenn der flexible Server in einer beliebigen Verfügbarkeitszone bereitgestellt werden soll.
-    ![AZ Selection]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Anzeigen von Abonnement und der Region":::  
+    ![AZ Selection]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Verfügbarkeitszonenauswahl":::  
 
 3.  Aktivieren Sie das Kontrollkästchen für **Zonenredundante Hochverfügbarkeit** in der Option „Verfügbarkeit“.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Anzeigen von Abonnement und der Region":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Kontrollkästchen „Hochverfügbarkeit“":::
 
 4.  Wenn Sie die Standardwerte für „Compute“ und „Speicher“ ändern möchten, klicken Sie auf  **Server konfigurieren**.
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="Anzeigen von Abonnement und der Region":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="Server konfigurieren: Compute und Speicher":::  
 
 5.  Wenn die Option „Hochverfügbarkeit“ aktiviert ist, steht die Ebene „Burstfähig“ nicht zur Auswahl. Sie können die Computeebene **Allgemeiner Zweck** oder **Arbeitsspeicheroptimiert** auswählen. Anschließend können Sie in der Dropdownliste für Ihre Auswahl **Computegröße** auswählen.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Anzeigen von Abonnement und der Region":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Auswahl der Computeebene":::  
 
 
 6.  Wählen Sie die **Speichergröße** in GiB mithilfe der Schiebereglerleiste aus, und wählen Sie den **Aufbewahrungszeitraum für Sicherungen** zwischen 7 Tagen und 35 Tagen aus.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Anzeigen von Abonnement und der Region"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Speichersicherung"::: 
 
 7. Klicken Sie auf **Speichern**. 
 
@@ -60,15 +60,15 @@ In diesem Abschnitt finden Sie spezifische Informationen für auf Hochverfügbar
 
 Führen Sie diese Schritte aus, um Hochverfügbarkeit für Ihren vorhandenen flexiblen Server zu aktivieren.
 
-1.  Wählen Sie im  [Azure-Portal](https://portal.azure.com/) Ihren vorhandenen flexiblen PostgreSQL-Server aus.
+1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren vorhandenen flexiblen PostgreSQL-Server aus.
 
-2.  Klicken Sie auf der Seite „Flexibler Server“ im linken Bereich auf  **Hochverfügbarkeit**, um die Seite „Hochverfügbarkeit“ zu öffnen.
+2.  Klicken Sie auf der Seite „Flexibler Server“ im linken Bereich auf **Hochverfügbarkeit**, um die Seite „Hochverfügbarkeit“ zu öffnen.
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Anzeigen von Abonnement und der Region"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Auswahl des linken Bereichs"::: 
 
-3.  Klicken Sie auf das Kontrollkästchen **Zonenredundante Hochverfügbarkeit**, um die Option zu **aktivieren**, und klicken Sie auf  **Speichern** , um die Änderung zu speichern.
+3.  Klicken Sie auf das Kontrollkästchen **Zonenredundante Hochverfügbarkeit**, um die Option zu **aktivieren**, und klicken Sie auf **Speichern**, um die Änderung zu speichern.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Anzeigen von Abonnement und der Region"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Aktivieren der Hochverfügbarkeit"::: 
 
 4.  Es wird ein Bestätigungsdialogfeld angezeigt, das besagt, dass sich durch die Aktivierung der Hochverfügbarkeit Ihre Kosten aufgrund zusätzlicher Server- und Speicherbereitstellungen erhöhen werden.
 
@@ -80,15 +80,15 @@ Führen Sie diese Schritte aus, um Hochverfügbarkeit für Ihren vorhandenen fle
 
 Führen Sie diese Schritte aus, um die Hochverfügbarkeit für Ihren flexiblen Server zu deaktivieren, der bereits mit Zonenredundanz konfiguriert ist.
 
-1.  Wählen Sie im  [Azure-Portal](https://portal.azure.com/) Ihre vorhandene Azure Database for PostgreSQL – Flexible Server-Instanz aus.
+1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre vorhandene Azure Database for PostgreSQL – Flexible Server-Instanz aus.
 
-2.  Klicken Sie auf der Seite „Flexibler Server“ im vorderen Bereich auf  **Hochverfügbarkeit**, um die Seite „Hochverfügbarkeit“ zu öffnen.
+2.  Klicken Sie auf der Seite „Flexibler Server“ im vorderen Bereich auf **Hochverfügbarkeit**, um die Seite „Hochverfügbarkeit“ zu öffnen.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Anzeigen von Abonnement und der Region"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Auswahl des linken Bereichs"::: 
 
-3.  Klicken Sie auf das Kontrollkästchen **Zonenredundante Hochverfügbarkeit**, um die Option zu **deaktivieren**. Klicken Sie dann auf  **Speichern**, um die Änderung zu speichern.
+3.  Klicken Sie auf das Kontrollkästchen **Zonenredundante Hochverfügbarkeit**, um die Option zu **deaktivieren**. Klicken Sie dann auf **Speichern**, um die Änderung zu speichern.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Anzeigen von Abonnement und der Region"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Deaktivieren der Hochverfügbarkeit"::: 
 
 4.  Ein Bestätigungsdialogfeld wird angezeigt, in dem Sie die Deaktivierung der Hochverfügbarkeit bestätigen können.
 
@@ -99,4 +99,4 @@ Führen Sie diese Schritte aus, um die Hochverfügbarkeit für Ihren flexiblen S
 ## <a name="next-steps"></a>Nächste Schritte
 
 -   Weitere Informationen zur [Geschäftskontinuität](./concepts-business-continuity.md)
--   Weitere Informationen zur  [zonenredundanten Hochverfügbarkeit](./concepts-high-availability.md)
+-   Weitere Informationen zur [zonenredundanten Hochverfügbarkeit](./concepts-high-availability.md)

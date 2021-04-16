@@ -3,12 +3,12 @@ title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 description: Beschreibt das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5c3bc66c2111c347f8ed0e32c9e597a52ed404ed
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172750"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104670425"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -117,6 +117,8 @@ Wenn Sie ausgewählt haben, eine neue Sicherungsrichtlinie zu erstellen, geben S
 4. Geben Sie unter **Beibehaltungsdauer** an, wie lange die täglichen oder wöchentlichen Sicherungspunkte beibehalten werden sollen.
 5. Geben Sie unter **Aufbewahrung für monatlichen Sicherungspunkt** und **Aufbewahrung für jährlichen Sicherungspunkt** an, ob eine monatliche oder jährliche Sicherung Ihrer täglichen oder wöchentlichen Sicherungen beibehalten werden soll.
 6. Wählen Sie **OK** aus, um die Richtlinie zu speichern.
+    > [!NOTE]
+    > Zum Speichern der Wiederherstellungspunktsammlung (Restore Point Collection, RPC) erstellt der Sicherungsdienst eine separate Ressourcengruppe (RG). Diese RG unterscheidet sich von der RG der VM. [Weitere Informationen](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)
 
     ![Neue Sicherungsrichtlinie](./media/backup-azure-arm-vms-prepare/new-policy.png)
 

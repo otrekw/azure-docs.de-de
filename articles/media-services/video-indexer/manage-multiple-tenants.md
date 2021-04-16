@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7596aa4cef6c4bc601c15018e8ede4265f395eb7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76990503"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312857"
 ---
 # <a name="manage-multiple-tenants"></a>Verwalten mehrerer Mandanten
 
@@ -45,7 +45,7 @@ Wenn Sie diese Architektur verwenden, wird für jeden Mandanten ein Video Indexe
 * Schwierigere Verwaltung aufgrund mehrerer Video Indexer- (und zugehöriger Media Services-) Konten pro Mandant.
 
 > [!TIP]
-> Erstellen Sie im [Video Indexer-Entwicklerportal](https://api-portal.videoindexer.ai/) einen Administratorbenutzer für Ihr System, und stellen Sie Ihren Mandanten mithilfe der Autorisierungs-API das entsprechende [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token) zur Verfügung.
+> Erstellen Sie im [Video Indexer-Entwicklerportal](https://api-portal.videoindexer.ai/) einen Administratorbenutzer für Ihr System, und stellen Sie Ihren Mandanten mithilfe der Autorisierungs-API das entsprechende [Kontozugriffstoken](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account-Access-Token) zur Verfügung.
 
 ## <a name="single-video-indexer-account-for-all-users"></a>Einzelnes Video Indexer-Konto für alle Benutzer
 
@@ -55,7 +55,7 @@ Bei Verwenden dieser Architektur ist der Kunde für die Isolation von Mandanten 
 
 Mit dieser Option können Anpassungsmodelle (Person, Sprache und Marken) gemeinsam genutzt oder zwischen Mandanten durch Filtern der Modelle nach Mandant isoliert werden.
 
-Wenn Sie [Videos hochladen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), können Sie pro Mandant ein anderes Partitionsattribut angeben. Dies ermöglicht die Isolation in der [Such-API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Durch Angabe des Partitionsattributs in der Such-API erhalten Sie nur die Ergebnisse der angegebenen Partition. 
+Wenn Sie [Videos hochladen](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video), können Sie pro Mandant ein anderes Partitionsattribut angeben. Dies ermöglicht die Isolation in der [Such-API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Search-Videos). Durch Angabe des Partitionsattributs in der Such-API erhalten Sie nur die Ergebnisse der angegebenen Partition. 
 
 ### <a name="considerations"></a>Überlegungen
 

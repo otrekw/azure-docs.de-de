@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 955b541bdb4ae38066f1eb4d2f09363ec51be1d2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895765"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104864073"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verwalten der Authentifizierung in Azure Maps
 
@@ -63,7 +63,7 @@ Navigieren Sie zum Anzeigen der für Azure Maps verfügbaren Azure-Rollen zu **Z
 
 ## <a name="view-role-assignments"></a>Anzeigen von Rollenzuweisungen
 
-Um Benutzer und Apps anzuzeigen, denen Zugriff für Azure Maps gewährt wurde, navigieren Sie zu **Zugriffssteuerung (IAM)** . Wählen Sie dort die Option **Rollenzuweisungen** aus, und filtern Sie dann nach **Azure Maps** .
+Um Benutzer und Apps anzuzeigen, denen Zugriff für Azure Maps gewährt wurde, navigieren Sie zu **Zugriffssteuerung (IAM)** . Wählen Sie dort die Option **Rollenzuweisungen** aus, und filtern Sie dann nach **Azure Maps**.
 
 > [!div class="mx-imgBorder"]
 > ![Anzeigen von Benutzern und Apps, denen Zugriff gewährt wurde](./media/how-to-manage-authentication/how-to-view-amrbac.png)
@@ -78,6 +78,31 @@ Anfordern eines Tokens vom Azure AD-Tokenendpunkt. Verwenden Sie in Ihrer Azure
 | Azure Government-Cloud | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
 Weitere Informationen zum Anfordern von Zugriffstoken aus Azure AD für Benutzer und Dienstprinzipale finden Sie unter [Authentifizierungszenarien für Azure AD](../active-directory/develop/authentication-vs-authorization.md), und sehen Sie sich spezifische Szenarien in der Tabelle mit [Szenarien](./how-to-manage-authentication.md#determine-authentication-and-authorization) an.
+
+## <a name="manage-and-rotate-shared-keys"></a>Verwalten und Rotieren von gemeinsam verwendeten Schlüsseln
+
+Ihre Azure Maps-Abonnementschlüssel ähneln einem Stammkennwort für Ihr Azure Maps-Konto. Achten Sie darauf, die Abonnementschlüssel immer gut zu schützen. Verwenden Sie Azure Key Vault zum sicheren Verwalten und Rotieren Ihrer Schlüssel. Geben Sie Zugriffsschlüssel nicht an andere Benutzer weiter, vermeiden Sie das Hartcodieren, und speichern Sie die Schlüssel nicht als Klartext, auf den andere Benutzer Zugriff haben. Rotieren Sie die Schlüssel, wenn Sie glauben, dass sie möglicherweise gefährdet sind.
+
+> [!NOTE]
+> Microsoft empfiehlt nach Möglichkeit die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen anstelle eines gemeinsam verwendeten Schlüssels. Azure AD bietet überlegene Sicherheit und Benutzerfreundlichkeit gegenüber dem gemeinsam verwendeten Schüssel.
+
+### <a name="manually-rotate-subscription-keys"></a>Manuelles Rotieren von Abonnementschlüsseln
+
+Microsoft empfiehlt, Ihre Abonnementschlüssel regelmäßig zu rotieren, um die Sicherheit Ihres Azure Maps-Kontos zu gewährleisten. Verwenden Sie nach Möglichkeit Azure Key Vault zum Verwalten Ihrer Zugriffsschlüssel. Wenn Sie Key Vault nicht verwenden, müssen Sie die Schlüssel manuell rotieren.
+
+Es werden zwei Abonnementschlüssel zugewiesen, sodass Sie Ihre Schlüssel rotieren können. Durch das Vorhandensein von zwei Schlüsseln ist sichergestellt, dass der Zugriff Ihrer Anwendung auf Azure Maps während des Prozesses erhalten bleibt.
+
+So rotieren Sie Ihre Azure Maps-Abonnementschlüssel im Azure-Portal
+
+1. Aktualisieren Sie Ihren Anwendungscode so, dass er auf den sekundären Schlüssel für das Azure Maps-Konto verweist, und stellen Sie ihn bereit.
+2. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Azure Maps-Konto.
+3. Wählen Sie unter **Einstellungen** die Option **Authentifizierung** aus.
+4. Klicken Sie auf die Schaltfläche **Neu generieren** neben dem primären Schlüssel, um den primären Schlüssel für Ihr Azure Maps-Konto neu zu generieren.
+5. Aktualisieren Sie Ihren Anwendungscode so, dass auf den neuen Primärschlüssel verwiesen wird, und stellen Sie ihn bereit.
+6. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu.
+
+> [!WARNING]
+> Es wird empfohlen, in allen Ihren Anwendungen jeweils nur einen Schlüssel gleichzeitig zu verwenden. Wenn Sie „Key 1“ an einigen Stellen und „Key 2“ an anderen verwenden, können Sie die Verwendung der Schlüssel nicht wechseln, ohne dass einige Anwendungen den Zugriff verlieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

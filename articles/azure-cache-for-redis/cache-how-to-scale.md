@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d91b62afacad31d78feb7d4743cd4050fcc1bd4e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382394"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104581642"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>Skalieren einer Azure Cache for Redis-Instanz
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Bei einem Basic-, Standard- oder Premium-Cache können Sie nach dem Erstellen die Größe und den Tarif ändern, um ihn an die Anforderungen Ihrer Anwendung anzupassen. In diesem Artikel wird erläutert, wie Sie Ihren Cache im Azure-Portal mithilfe von Tools wie Azure PowerShell und der Azure-Befehlszeilenschnittstelle skalieren.
@@ -45,7 +45,7 @@ Sie können mit den folgenden Einschränkungen zu einem anderen Tarif wechseln:
   * Ein **Standard**-Cache kann nicht auf einen niedrigeren **Basic**-Cache skaliert werden.
 * Ein **Basic**-Cache kann auf einen **Standard**-Cache skaliert werden, die Größe kann jedoch nicht gleichzeitig geändert werden. Wenn Sie eine andere Größe benötigen, können Sie anschließend einen Skalierungsvorgang auf die gewünschte Größe durchführen.
 * Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Skalieren Sie zunächst in einem ersten Skalierungsvorgang von **Basic** auf **Standard** und dann in einem nachfolgenden Skalierungsvorgang von **Standard** auf **Premium**.
-* Von einer größeren Größe kann nicht auf **C0 (250 MB)** herunterskaliert werden.
+* Von einer größeren Größe kann nicht auf **C0 (250 MB)** herunterskaliert werden. Allerdings ist ein Herunterskalieren auf eine beliebige andere Größe innerhalb desselben Tarifs möglich. Beispielsweise können Sie von „C5 Standard“ auf „C1 Standard“ herunterskalieren.
  
 Während der Cache in den neuen Tarif skaliert wird, wird auf dem Blatt **Azure Cache for Redis** der Status **Wird skaliert** angezeigt.
 

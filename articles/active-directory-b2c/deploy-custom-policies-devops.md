@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 13f5f8da0bd58cef0974e8ea8f5f3c5172daa0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ca4464f40c0807e51adffca8e3e68c622314de6
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928731"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256887"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Bereitstellen benutzerdefinierter Richtlinien mit Azure Pipelines
 
@@ -34,7 +34,7 @@ Drei Hauptschritte sind erforderlich, um Azure Pipelines zum Verwalten benutzerd
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Azure AD B2C-Mandant](tutorial-create-tenant.md) und Anmeldeinformationen für einen Benutzer im Verzeichnis mit der Rolle [B2C-IEF-Richtlinienadministrator](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)
-* [Benutzerdefinierte Richtlinien](custom-policy-get-started.md), die in Ihren Mandanten hochgeladen wurden
+* [Benutzerdefinierte Richtlinien](tutorial-create-user-flows.md?pivots=b2c-custom-policy), die in Ihren Mandanten hochgeladen wurden
 * [Verwaltungs-App](microsoft-graph-get-started.md), die mit der Microsoft Graph-API-Berechtigung *Policy.ReadWrite.TrustFramework* in Ihrem Mandanten registriert wurde
 * [Azure-Pipeline](https://azure.microsoft.com/services/devops/pipelines/) und Zugriff auf ein [Azure DevOps Services-Projekt][devops-create-project]
 

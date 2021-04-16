@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: de0a23ca9dea210d91fe259b06622226549ba3b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90890452"
 ---
 # <a name="normalize-data-module"></a>Modul „Normalize Data“ (Normalisieren von Daten)
@@ -54,7 +54,7 @@ Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwen
     > [!TIP]
     > Um sicherzustellen, dass Spalten eines bestimmten Typs als Eingabe zur Verfügung gestellt werden, sollten Sie das Modul [Select Columns in Dataset](./select-columns-in-dataset.md) (Spalten im Datensatz auswählen) vor **Normalize Data** verwenden.
 
-4. **Use 0 for constant columns when checked** (0 für konstante Spalten verwenden, falls aktiviert):  Aktivieren Sie diese Option, wenn eine numerische Spalte einen einzelnen unveränderlichen Wert enthält. Dadurch wird sichergestellt, dass solche Spalten bei Normalisierungsvorgängen nicht berücksichtigt werden.
+4. **Use 0 for constant columns when checked** (0 für konstante Spalten verwenden, falls aktiviert): Aktivieren Sie diese Option, wenn eine numerische Spalte einen einzelnen unveränderlichen Wert enthält. Dadurch wird sichergestellt, dass solche Spalten bei Normalisierungsvorgängen nicht berücksichtigt werden.
 
 5. Wählen Sie in der Dropdownliste **Transformation method** (Transformationsmethode) eine einzelne mathematische Funktion, die auf alle ausgewählten Spalten angewendet wird. 
   
@@ -66,7 +66,7 @@ Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwen
   
       Mittlere und Standardabweichung werden für jede Spalte getrennt berechnet. Die Standardabweichung der Grundgesamtheit wird verwendet.
   
-    - **MinMax**: Der Min-Max-Normalisierer skaliert jedes Feature linear in das Intervall [0,1] um.
+    - **MinMax**: Die Min-Max Normalisierungsfunktion skaliert jede Funktion linear auf das Intervall [0,1].
     
       Die Umskalierung in das Intervall [0,1] erfolgt durch Verschieben der Werte jedes Features, sodass der Minimalwert 0 ist. Anschließend erfolgt eine Division durch den neuen Maximalwert (was die Differenz zwischen dem ursprünglichen Maximal- und Minimalwert ergibt).
       
@@ -74,7 +74,7 @@ Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwen
   
       ![Normalisierung mithilfe der Min-Max-Funktion](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
   
-    - **Logistic** (Logistisch): Die Werte in der Spalte werden mithilfe der folgenden Formel transformiert:
+    - **Logistic**: Die Werte in der Spalte werden mithilfe der folgenden Formel transformiert:
 
       ![Formel für die Normalisierung durch logistische Funktion](media/module/aml-normalization-logistic.png "AML_normalization-logistic")  
   
@@ -86,7 +86,7 @@ Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwen
     
       Hier sind μ und σ die Parameter der Verteilung, die empirisch anhand der Daten als Maximum-Likelihood-Schätzungen berechnet werden, und zwar für jede Spalte einzeln.  
   
-    - **tanh**: Alle Werte werden in einen hyperbolischer Tangens konvertiert.
+    - **TanH**: Alle Werte werden in einen hyperbolischen Tangens konvertiert.
     
       Die Werte in der Spalte werden mithilfe der folgenden Formel transformiert:
     

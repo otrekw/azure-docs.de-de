@@ -8,20 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a42cb97d123d0943dab02bf1f70fcf306d6bcd96
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: cd63144074577d4ff3564da41e672dd1ca226dcb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629124"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257159"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortänderung mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+In Azure Active Directory B2C (Azure AD B2C) können Sie mit einem lokalen Konto angemeldeten Benutzern ermöglichen, ihr Kennwort zu ändern, ohne ihre Identität durch E-Mail-Überprüfung nachweisen zu müssen. Der Kennwortänderungsflow umfasst die folgenden Schritte:
+
+1. Der Benutzer meldet sich bei seinem lokalen Konto an. Wenn die Sitzung noch aktiv ist, autorisiert Azure AD B2C den Benutzer und fährt mit dem nächsten Schritt fort.
+1. Der Benutzer überprüft das **Alte Kennwort** und erstellt und bestätigt dann das **Neue Kennwort**.
+
+![Kennwortänderungsflow](./media/add-password-change-policy/password-change-flow.png)  
+
+> [!TIP]
+> Der Ablauf der Kennwortänderung ermöglicht Benutzern nur dann, ihr Kennwort zu ändern, wenn sie ihr Kennwort kennen und es ändern möchten. Sie sollten auch die [Self-Service-Kennwortzurücksetzung](add-password-reset-policy.md) aktivieren für Fälle, in denen der Benutzer sein Kennwort vergessen hat.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -31,18 +41,9 @@ ms.locfileid: "97629124"
 
 ::: zone pivot="b2c-custom-policy"
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-In Azure Active Directory B2C (Azure AD B2C) können Sie es mit einem lokalen Konto angemeldeten Benutzern ermöglichen, ihr Kennwort zu ändern, ohne die Authentizität durch E-Mail-Überprüfung nachweisen zu müssen. Der Kennwortänderungsflow umfasst die folgenden Schritte:
-
-1. Melden Sie sich mit einem lokalen Konto an. Wenn die Sitzung noch aktiv ist, autorisiert Azure AD B2C den Benutzer und fährt mit dem nächsten Schritt fort.
-1. Benutzer müssen das **alte Kennwort** überprüfen und dann das **neue Kennwort** erstellen und bestätigen.
-
-![Kennwortänderungsflow](./media/add-password-change-policy/password-change-flow.png)
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) beschriebenen Schritte aus.
+* Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy) beschriebenen Schritte aus.
 * Wenn dies noch nicht erfolgt ist, [registrieren Sie eine Webanwendung in Azure Active Directory B2C](tutorial-register-applications.md).
 
 ## <a name="add-the-elements"></a>Hinzufügen der Elemente

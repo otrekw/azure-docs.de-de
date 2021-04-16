@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: de7d23689ae984ea0abece5edb03cf8a0c3a9be1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331011"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104670340"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Abrufen von Verbindungsendpunkten und Erstellen von Verbindungszeichenfolgen für eine Arc-fähige PostgreSQL Hyperscale-Servergruppe
 
@@ -43,22 +43,23 @@ Führen Sie den folgenden Befehl aus:
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
-Es wird eine ähnliche Ausgabe wie die folgende zurückgegeben:
+Beispiel:
 ```console
-[
-  {
-    "Description": "PostgreSQL Instance",
-    "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
-  },
-  {
-    "Description": "Log Search Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:\"postgres01\"'))"
-  },
-  {
-    "Description": "Metrics Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
-  }
-]
+azdata arc postgres endpoint list -n postgres01
+```
+
+Es wird die Liste der Endpunkte angezeigt: der PostgreSQL-Endpunkt, den Sie zum Verbinden Ihrer Anwendung verwenden, und die verwendeten Datenbank-, Kibana- und Grafana-Endpunkte für die Protokollanalyse und Überwachung. Beispiel: 
+```console
+Arc
+ ===================================================================================================================
+ Postgres01 Instance
+ -------------------------------------------------------------------------------------------------------------------
+ Description           Endpoint
+
+ PostgreSQL Instance   postgresql://postgres:<replace with password>@12.345.567.89:5432
+ Log Search Dashboard  https://89.345.712.81:30777/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:postgres01'))
+ Metrics Dashboard     https://89.345.712.81:30777/grafana/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01
+
 ```
 Verwenden Sie diese Endpunkte für die folgenden Zwecke:
 - Erstellen von Verbindungszeichenfolgen und Herstellen einer Verbindung mit Ihren Clienttools oder -anwendungen
@@ -66,7 +67,7 @@ Verwenden Sie diese Endpunkte für die folgenden Zwecke:
 
 Beispielsweise können Sie den Endpunkt _PostgreSQL-Instanz_ verwenden, um über psql eine Verbindung mit Ihrer Servergruppe herzustellen. Zum Beispiel:
 ```console
-psql postgresql://postgres:MyPassworkd@12.345.123.456:1234
+psql postgresql://postgres:MyPassworkd@12.345.567.89:5432
 psql (10.14 (Ubuntu 10.14-0ubuntu0.18.04.1), server 12.4 (Ubuntu 12.4-1.pgdg16.04+1))
 WARNING: psql major version 10, server major version 12.
          Some psql features might not work.
@@ -86,11 +87,11 @@ postgres=#
 ## <a name="from-cli-with-kubectl"></a>Über die CLI mit kubectl
 - Wenn die Servergruppe Version 12 (Standard) von Postgres verwendet, führen Sie den folgenden Befehl aus:
 ```console
-kubectl get postgresql-12/<server group name>
+kubectl get postgresql-12/<server group name> -n <namespace name>
 ```
 - Wenn die Servergruppe Version 11 von Postgres verwendet, führen Sie den folgenden Befehl aus:
 ```console
-kubectl get postgresql-11/<server group name>
+kubectl get postgresql-11/<server group name> -n <namespace name>
 ```
 
 Mit diesen Befehlen wird eine Ausgabe ähnlich der folgenden erzeugt. Diese Informationen können Sie verwenden, um Ihre Verbindungszeichenfolgen zu erstellen:
@@ -151,14 +152,8 @@ dbname='postgres' user='postgres' host='192.168.1.121' password='{your_password_
 host=192.168.1.121; dbname=postgres user=postgres password={your_password_here} port=24276 sslmode=require
 ```
 
-### <a name="web-app"></a>Webanwendung
-
-```webapp
-Database=postgres; Data Source=192.168.1.121; User Id=postgres; Password={your_password_here}
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
-- Hier erfahren Sie mehr über das [horizontale Skalieren (Hinzufügen von Workerknoten)](scale-out-postgresql-hyperscale-server-group.md) Ihrer Servergruppe.
-- Hier erfahren Sie mehr über das [zentrale Hoch- oder Herunterskalieren (Erhöhen oder Verringern von Arbeitsspeicher/virtuellen Kernen)](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) Ihrer Servergruppe.
+- Erfahren Sie mehr über das [Aufskalieren](scale-out-postgresql-hyperscale-server-group.md) der Servergruppe (Hinzufügen von Workerknoten).
+- Erfahren Sie mehr über das [zentrale Hoch- oder Herunterskalieren](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) der Servergruppe (Vergrößern/Verkleinern von Arbeitsspeicher/virtuellen Kernen).
 
 

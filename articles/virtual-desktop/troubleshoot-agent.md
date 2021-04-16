@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 2f321413a275676d0abb1a075ba958885ffcd821
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099947"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505024"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Behandeln häufiger Probleme beim Windows Virtual Desktop-Agent
 
@@ -21,6 +21,14 @@ Der Windows Virtual Desktop-Agent kann aufgrund verschiedener Faktoren Verbindun
    - Probleme während der Agent-Installation, wodurch die Verbindung mit dem Sitzungshost unterbrochen wird.
 
 In diesem Artikel werden Lösungen für diese häufigen Szenarien vorgestellt und erläutert, wie Sie Verbindungsprobleme beheben können.
+
+>[!NOTE]
+>Zum Beheben von Problemen mit der Sitzungskonnektivität und dem Windows Virtual Desktop-Agent empfiehlt es sich, die Ereignisprotokolle unter **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung** zu untersuchen. Suchen Sie nach Ereignissen mit einer der folgenden Quellen, um Ihr Problem zu identifizieren:
+>
+>- WVD-Agent
+>- WVD-Agent-Updater
+>- RDAgentBootLoader
+>- MsiInstaller
 
 ## <a name="error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running"></a>Error: Die Ausführung von RDAgentBootLoader und/oder Remote Desktop Agent Loader wurde beendet
 
@@ -63,9 +71,9 @@ Um dieses Problem zu lösen, erstellen Sie ein gültiges Registrierungstoken:
    > [!div class="mx-imgBorder"]
    > ![Screenshot von IsRegistered mit dem Wert 1](media/isregistered-registry.png)
 
-## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>Error: Agent kann keine Verbindung mit Broker herstellen: INVALID_FORM- oder NOT_FOUND- URL
+## <a name="error-agent-cannot-connect-to-broker-with-invalid_form"></a>Fehler: Agent kann keine Verbindung mit Broker herstellen: INVALID_FORM
 
-Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3277 und der Beschreibung **INVALID_FORM** oder **NOT_FOUND- URL** feststellen, ist in der Kommunikation zwischen Agent und Broker etwas schiefgegangen. Der Agent kann keine Verbindung mit dem Broker herstellen und eine bestimmte URL nicht erreichen. Dies kann an den Firewall- oder DNS-Einstellungen liegen.
+Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3277 und der Meldung „INVALID_FORM“ in der Beschreibung feststellen, ist in der Kommunikation zwischen Agent und Broker etwas schiefgegangen. Der Agent kann aufgrund bestimmter Firewall- oder DNS-Einstellungen keine Verbindung mit dem Broker herstellen oder eine bestimmte URL nicht erreichen.
 
 Um dieses Problem zu lösen, überprüfen Sie, ob BrokerURI und BrokerURIGlobal erreichbar sind:
 1. Öffnen Sie den Registrierungs-Editor. 
@@ -98,15 +106,45 @@ Um dieses Problem zu lösen, überprüfen Sie, ob BrokerURI und BrokerURIGlobal 
    > ![Screenshot: nicht erfolgreicher Zugriff auf den geladenen globalen Broker-URI](media/unsuccessful-broker-global.png)
 
 8. Wenn das Netzwerk diese URLs blockiert, müssen Sie diese Blockierung für die erforderlichen URLs aufheben. Weitere Informationen finden Sie unter [Liste der erforderlichen URLs](safe-url-list.md).
-9. Wenn Ihr Problem damit nicht gelöst wird, stellen Sie sicher, dass keine Gruppenrichtlinien mit Verschlüsselungsverfahren vorhanden sind, die die Verbindung zwischen Agent und Broker blockieren. Windows Virtual Desktop verwendet dasselbe TLS 1.2-Verschlüsselungsverfahren wie [Azure Front Door](../frontdoor/front-door-faq.MD#what-are-the-current-cipher-suites-supported-by-azure-front-door). Weitere Informationen finden Sie unter [Verbindungssicherheit](network-connectivity.md#connection-security).
+9. Wenn Ihr Problem damit nicht gelöst wird, stellen Sie sicher, dass keine Gruppenrichtlinien mit Verschlüsselungsverfahren vorhanden sind, die die Verbindung zwischen Agent und Broker blockieren. Windows Virtual Desktop verwendet dasselbe TLS 1.2-Verschlüsselungsverfahren wie [Azure Front Door](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-). Weitere Informationen finden Sie unter [Verbindungssicherheit](network-connectivity.md#connection-security).
 
-## <a name="error-3703-or-3019"></a>Error: 3703 oder 3019
+## <a name="error-3703"></a>Fehler: 3703
 
-Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3703 und der Beschreibung **RD-Gateway-URL nicht zugänglich** oder ein Ereignis mit der ID 3019 in der Beschreibung feststellen, kann der Agent die Gateway-URLs oder die Websockettransport-URLs nicht erreichen. Um erfolgreich eine Verbindung mit Ihrem Sitzungshost herzustellen und zuzulassen, dass Netzwerkdatenverkehr zu diesen Endpunkten Einschränkungen umgeht, müssen Sie die Blockierung der URLs in der [Liste der erforderlichen URLs](safe-url-list.md) aufheben. Stellen Sie auch sicher, dass Ihre Firewall- oder Proxyeinstellungen diese URLs nicht blockieren. Damit Windows Virtual Desktop verwendet werden kann, muss die Blockierung dieser URLs aufgehoben werden.
+Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3703 und der Meldung „RD-Gateway-URL ist nicht zugänglich“ in der Beschreibung feststellen, kann der Agent die Gateway-URLs nicht erreichen. Um erfolgreich eine Verbindung mit Ihrem Sitzungshost herzustellen und zuzulassen, dass Netzwerkdatenverkehr zu diesen Endpunkten Einschränkungen umgeht, müssen Sie die Blockierung der URLs in der [Liste der erforderlichen URLs](safe-url-list.md) aufheben. Stellen Sie auch sicher, dass Ihre Firewall- oder Proxyeinstellungen diese URLs nicht blockieren. Damit Windows Virtual Desktop verwendet werden kann, muss die Blockierung dieser URLs aufgehoben werden.
 
 Um dieses Problem zu lösen, vergewissern Sie sich, dass Ihre Firewall- und/oder DNS-Einstellungen diese URLs nicht blockieren:
 1. [Verwenden Sie Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md).
 2. Konfigurieren Sie die [DNS-Einstellungen für Azure Firewall](../firewall/dns-settings.md).
+
+## <a name="error-3019"></a>Fehler: 3019
+
+Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3019 feststellen, bedeutet dies, dass der Agent die WebSocket-Transport-URLs nicht erreichen kann. Um erfolgreich eine Verbindung mit Ihrem Sitzungshost herzustellen und zuzulassen, dass Netzwerkdatenverkehr Einschränkungen umgeht, müssen Sie die Blockierung der URLs in der [Liste der erforderlichen URLs](safe-url-list.md) aufheben. Arbeiten Sie mit dem Azure-Netzwerkteam zusammen, um sicherzustellen, dass Firewall-, Proxy- und DNS-Einstellungen diese URLs nicht blockieren. Sie können auch Ihre Netzwerk-Ablaufverfolgungsprotokolle prüfen, um zu ermitteln, wo der Windows Virtual Desktop-Dienst blockiert wird. Wenn Sie eine Supportanfrage zu diesem Problem eröffnen, fügen Sie die Netzwerk-Ablaufverfolgungsprotokolle unbedingt an die Anfrage an.
+
+## <a name="error-installationhealthcheckfailedexception"></a>Fehler: InstallationHealthCheckFailedException
+
+Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3277 und der Meldung „InstallationHealthCheckFailedException“ in der Beschreibung feststellen, bedeutet dies, dass der Stapellistener nicht funktioniert, weil der Terminalserver den Registrierungsschlüssel für den Listener gewechselt hat.
+
+So lösen Sie das Problem:
+1. Überprüfen Sie, ob [der Stapellistener funktioniert](#error-stack-listener-isnt-working-on-windows-10-2004-vm).
+2. Wenn der Listener nicht funktioniert, [deinstallieren Sie die Stapelkomponente manuell, und installieren Sie sie neu](#error-vms-are-stuck-in-unavailable-or-upgrading-state).
+
+## <a name="error-endpoint_not_found"></a>Fehler: ENDPOINT_NOT_FOUND
+
+Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3277 und der Meldung „ENDPOINT_NOT_FOUND“ in der Beschreibung feststellen, bedeutet dies, dass der Broker keinen Endpunkt gefunden hat, mit dem eine Verbindung hergestellt werden kann. Dieses Verbindungsproblem kann aus einem der folgenden Gründe auftreten:
+
+- In Ihrem Hostpool sind keine VMs vorhanden.
+- Die VMs in Ihrem Hostpool sind nicht aktiv.
+- Alle VMs in Ihrem Hostpool haben die maximale Anzahl von Sitzungen überschritten.
+- Auf keiner der VMs in Ihrem Hostpool wird der Agent-Dienst ausgeführt.
+
+So lösen Sie das Problem:
+
+1. Stellen Sie sicher, dass die VM eingeschaltet ist und nicht aus dem Hostpool entfernt wurde.
+2. Stellen Sie sicher, dass die VM die maximale Anzahl von Sitzungen nicht überschritten hat.
+3. Stellen Sie sicher, dass [der Agent-Dienst ausgeführt wird](#error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running) und [der Stapellistener funktioniert](#error-stack-listener-isnt-working-on-windows-10-2004-vm).
+4. Stellen Sie sicher, dass [der Agent eine Verbindung mit dem Broker herstellen kann](#error-agent-cannot-connect-to-broker-with-invalid_form).
+5. Stellen Sie sicher, dass [Ihre VM über ein gültiges Registrierungstoken verfügt](#error-invalid_registration_token).
+6. Stellen Sie sicher, dass [das Registrierungstoken der VM nicht abgelaufen ist](faq.md#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues). 
 
 ## <a name="error-installmsiexception"></a>Error: InstallMsiException
 
@@ -176,11 +214,17 @@ So lösen Sie das Problem:
 8. Suchen Sie unter **ClusterSettings** nach **SessionDirectoryListener**, und stellen Sie sicher, dass der Datenwert **rdp-sxs...** lautet.
 9. Wenn **SessionDirectoryListener** nicht auf **rdp-sxs...** festgelegt ist, müssen Sie die Schritte im Abschnitt [Deinstallieren sämtlicher Komponenten für Agent, Bootloader und Stapel](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs) ausführen. Damit werden zunächst der Agent, der Bootloader und die Stapelkomponenten deinstalliert. [Installieren Sie Agent und Bootloader danach neu](#step-4-reinstall-the-agent-and-boot-loader). Damit wird der parallele Stapel neu installiert.
 
-## <a name="error-users-keep-getting-disconnected-from-session-hosts"></a>Error: Die Verbindung von Benutzern mit dem Sitzungshosts wird immer wieder getrennt
+## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>Fehler: Heartbeatproblem, bei dem die Verbindung von Benutzern mit Sitzungshosts immer wieder getrennt wird
 
-Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 0 und der Beschreibung **CheckSessionHostDomainIsReachableAsync** feststellen und/oder Benutzer immer wieder von ihren Sitzungshosts getrennt werden, erfasst Ihr Server keinen Heartbeat vom Windows Virtual Desktop-Dienst.
+Wenn Ihr Server kein Heartbeatsignal vom Windows Virtual Desktop-Dienst empfängt, müssen Sie den Schwellenwert für den Heartbeat ändern. Dadurch werden die Problemsymptome vorübergehend minimiert, das zugrunde liegende Netzwerkproblem wird jedoch nicht behoben. Führen Sie die Anweisungen in diesem Abschnitt aus, wenn mindestens eines der folgenden Szenarien auf Sie zutrifft:
 
-Um dieses Problem zu lösen, ändern Sie den Schwellenwert für den Heartbeat:
+- Sie erhalten einen **CheckSessionHostDomainIsReachableAsync**-Fehler.
+- Sie erhalten einen **ConnectionBrokenMissedHeartbeatThresholdExceeded**-Fehler.
+- Sie erhalten einen **ConnectionEstablished:UnexpectedNetworkDisconnect**-Fehler.
+- Benutzerclients werden immer wieder getrennt.
+- Die Verbindung von Benutzern mit ihren Sitzungshosts wird immer wieder getrennt.
+
+So ändern Sie den Schwellenwert für den Heartbeat:
 1. Öffnen Sie eine Eingabeaufforderung als Administrator.
 2. Geben Sie den Befehl **qwinsta** ein, und führen Sie ihn aus.
 3. Es sollten zwei Stapelkomponenten angezeigt werden: **rdp-tcp** und **rdp-sxs**. 
@@ -194,6 +238,9 @@ Um dieses Problem zu lösen, ändern Sie den Schwellenwert für den Heartbeat:
    - HeartbeatDropCount: 60 
 8. Starten Sie den virtuellen Computer neu.
 
+>[!NOTE]
+>Wenn das Problem durch Ändern des Heartbeatschwellenwerts nicht gelöst wird, liegt möglicherweise ein grundlegendes Netzwerkproblem vor, und Sie müssen das Azure-Netzwerkteam kontaktieren.
+
 ## <a name="error-downloadmsiexception"></a>Error: DownloadMsiException
 
 Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3277 und der Beschreibung **DownloadMsiException** feststellen, ist auf dem Datenträger nicht genügend Speicherplatz für den RDAgent vorhanden.
@@ -201,6 +248,11 @@ Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. We
 Um dieses Problem zu beheben, geben Sie durch eine der folgenden Aktionen Speicherplatz auf dem Datenträger frei:
    - Löschen von nicht mehr benötigten Dateien
    - Erhöhen der Speicherkapazität der VM
+
+## <a name="error-agent-fails-to-update-with-missingmethodexception"></a>Fehler: Agent kann nicht aktualisiert werden: MissingMethodException
+
+Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3389 und der Meldung „MissingMethodException:Methode nicht gefunden“ in der Beschreibung feststellen, bedeutet dies, dass der Windows Virtual Desktop-Agent nicht erfolgreich aktualisiert wurde und auf eine frühere Version zurückgesetzt wurde. Dies liegt möglicherweise daran, dass die Versionsnummer des derzeit auf Ihrer VM installierte .NET Framework niedriger ist als 4.7.2. Um dieses Problem zu lösen, müssen Sie ein Upgrade von .NET auf Version 4.7.2 oder höher durchführen. Befolgen Sie dazu die Installationsanweisungen in der [.NET Framework-Dokumentation](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2).
+
 
 ## <a name="error-vms-are-stuck-in-unavailable-or-upgrading-state"></a>Error: VMs verbleiben im Zustand „Nicht verfügbar“ oder „Upgrade wird durchgeführt“
 
@@ -210,7 +262,7 @@ Um dieses Problem zu beheben, geben Sie durch eine der folgenden Aktionen Speich
 Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
-Wenn der Status für den Sitzungshost oder die Hosts im Hostpool immer **Nicht verfügbar** oder **Upgrade wird durchgeführt** lautet, liegt möglicherweise ein Fehler in der Agent- oder Stapelinstallation vor.
+Wenn der Status für den Sitzungshost oder die Hosts im Hostpool immer „Nicht verfügbar“ oder „Upgrade wird durchgeführt“ lautet, wurden Agent oder Stapel möglicherweise nicht erfolgreich installiert.
 
 Um dieses Problem zu beheben, installieren Sie den parallelen Stapel neu:
 1. Öffnen Sie eine Eingabeaufforderung als Administrator.
@@ -253,7 +305,7 @@ Der Name Ihrer VM wurde bereits registriert und ist wahrscheinlich ein Duplikat.
 So lösen Sie das Problem:
 1. Führen Sie die Schritte im Abschnitt [Entfernen des Sitzungshosts aus dem Hostpool](#step-2-remove-the-session-host-from-the-host-pool) aus.
 2. [Erstellen Sie eine andere VM](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal). Stellen Sie sicher, dass Sie einen eindeutigen Namen für diese VM auswählen.
-3. Wechseln Sie zum Azure-Portal (https://portal.azure.com), und öffnen Sie die Seite **Übersicht** für den Hostpool, in dem sich Ihre VM befand. 
+3. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und öffnen Sie die Seite **Übersicht** für den Hostpool, in dem sich Ihre VM befand. 
 4. Öffnen Sie die Registerkarte **Sitzungshosts**, und überprüfen Sie, ob sich alle Sitzungshosts in diesem Hostpool befinden.
 5. Warten Sie 5–10 Minuten, bis der Status des Sitzungshosts **Verfügbar** lautet.
 
@@ -264,11 +316,12 @@ So lösen Sie das Problem:
 
 Wenn Ihr Problem in diesem Artikel nicht erläutert wurde oder die Anweisungen Ihr Problem nicht lösen konnten, empfiehlt es sich, den Windows Virtual Desktop-Agent zu deinstallieren, erneut zu installieren und erneut zu registrieren. In diesem Abschnitt wird erläutert, wie Sie Ihre VM erneut beim Windows Virtual Desktop-Dienst registrieren, indem Sie den sämtliche Komponenten für Agent, Bootloader und Stapel deinstallieren, den Sitzungshost aus dem Hostpool entfernen, einen neuen Registrierungsschlüssel für die VM generieren und Agent und Bootloader erneut installieren. Wenn eines (oder mehrere) der folgenden Szenarien auf Sie zutrifft, führen Sie die folgenden Schritte aus:
 - Ihre VM verbleibt im Zustand **Nicht verfügbar** oder **Upgrade wird durchgeführt**.
-- Der Stapellistener funktioniert nicht, und Sie führen Windows 10 in der Version 1809, 1903 oder 1904 aus.
+- Der Stapellistener funktioniert nicht, und Sie führen Windows 10 in der Version 1809, 1903 oder 1909 aus.
 - Sie erhalten den Fehler **EXPIRED_REGISTRATION_TOKEN**.
 - Ihre VMs werden in der Liste der Sitzungshosts nicht angezeigt.
 - **Remote Desktop Agent Loader** wird im Fenster „Dienste“ nicht angezeigt.
 - Die Komponente **RdAgentBootLoader** wird im Task-Manager nicht angezeigt.
+- Sie erhalten den Fehler **Verbindungsbroker konnte Einstellungen nicht überprüfen** auf VMs mit benutzerdefinierten Images.
 - Mit den Anweisungen in diesem Artikel lässt sich Ihr Problem nicht lösen.
 
 ### <a name="step-1-uninstall-all-agent-boot-loader-and-stack-component-programs"></a>Schritt 1: Deinstallieren sämtlicher Komponentenprogramme für Agent, Bootloader und Stapel
@@ -319,12 +372,12 @@ Sie müssen einen neuen Registrierungsschlüssel generieren, mit dem Ihre VM bei
 ### <a name="step-4-reinstall-the-agent-and-boot-loader"></a>Schritt 4: Neuinstallieren von Agent und Bootloader
 
 Wenn Sie die neueste Version von Agent und Bootloader installieren, werden der parallele Stapel und der Geneva-Überwachungs-Agent automatisch ebenfalls installiert. So installieren Sie Agent und Bootloader neu:
-1. Melden Sie sich bei Ihrer VM als Administrator an, und befolgen Sie die Anweisungen unter [Registrieren der virtuellen Computer](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool), um den **Windows Virtual Desktop-Agent** und den **Bootloader für Windows Virtual Desktop-Agents** herunterzuladen.
+1. Melden Sie sich als Administrator bei der VM an, und verwenden Sie die richtige Version des Agent-Installationsprogramms für Ihre Bereitstellung je nach Windows-Version, die auf Ihrer VM ausgeführt wird. Für VMs unter Windows 10 befolgen Sie die Anweisungen unter [Registrieren der virtuellen Computer](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool), um den **Windows Virtual Desktop-Agent** und den **Bootloader für Windows Virtual Desktop-Agents** herunterzuladen. Für VMs unter Windows 7 führen Sie die Schritte 13–14 in [Registrieren der virtuellen Computer](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine) aus, um den **Windows Virtual Desktop-Agent** und den **Windows Virtual Desktop-Agent-Manager** herunterzuladen.
 
    > [!div class="mx-imgBorder"]
    > ![Screenshot der Downloadseite für Agent und Bootloader](media/download-agent.png)
 
-2. Klicken Sie mit der rechten Maustaste auf die Installationsprogramme für den Agent und den Bootloader, die Sie gerade heruntergeladen haben.
+2. Klicken Sie mit der rechten Maustaste auf die Installationsprogramme für den Agent und den Bootloader, die Sie heruntergeladen haben.
 3. Wählen Sie **Eigenschaften** aus.
 4. Klicken Sie auf **Unblock** (Entsperren).
 5. Klicken Sie auf **OK**.

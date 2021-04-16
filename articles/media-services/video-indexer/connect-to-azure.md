@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 35d01fd60d0549a528a45013add48bd203b86d6e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727259"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654678"
 ---
 # <a name="create-a-video-indexer-account"></a>Erstellen eines Video Indexer-Kontos
 
@@ -203,7 +203,7 @@ Die Automatisierung des Erstellens des Kontos ist ein Prozess in zwei Schritten:
 
 -   Ein Abonnement in [Azure Government](../../azure-government/index.yml)
 - Ein Azure AD-Konto in Azure Government
-- Alle Voraussetzungen für Berechtigungen und Ressourcen, wie oben unter [Voraussetzungen zum Herstellen einer Verbindung mit Azure](#prerequisites-for-connecting-to-azure) beschrieben.
+- Alle Voraussetzungen für Berechtigungen und Ressourcen, wie oben unter [Voraussetzungen zum Herstellen einer Verbindung mit Azure](#prerequisites-for-connecting-to-azure) beschrieben. Informieren Sie sich über die [zusätzlichen Voraussetzungen für den automatischen Flow](#additional-prerequisites-for-automatic-flow) und die [zusätzlichen Voraussetzungen für den manuellen Flow](#additional-prerequisites-for-manual-flow).
 
 ### <a name="create-new-account-via-the-azure-government-portal"></a>Erstellen eines neuen Kontos über das Azure Government-Portal
 

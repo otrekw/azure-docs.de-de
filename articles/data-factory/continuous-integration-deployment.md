@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: aa2c5801e61fb73219934c5d38e894520c41ab26
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.date: 04/01/2021
+ms.openlocfilehash: 7ffcb93493ada36df59c0a8305e941176e8320b8
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104784032"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121471"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -335,7 +335,7 @@ Im Folgenden wird das Erstellen der obigen Vorlage mit einer Aufschlüsselung na
 * Für Datasets steht zwar eine typspezifische Anpassung zur Verfügung, aber Sie können die Konfiguration durchführen, ohne dass eine explizite Konfiguration auf der Ebene \* vorhanden sein muss. Im vorherigen Beispiel werden alle Dataseteigenschaften unter `typeProperties` parametrisiert.
 
 > [!NOTE]
-> **Azure-Warnungen und -Matrizen** werden, wenn sie für eine Pipeline konfiguriert sind, derzeit nicht als Parameter für ARM-Bereitstellungen unterstützt. Befolgen Sie [Überwachen von Data Factory, Warnungen und Matrizen](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics), um die Warnungen und Matrizen in der neuen Umgebung erneut anzuwenden.
+> **Azure-Warnungen und -Matrizen** werden, wenn sie für eine Pipeline konfiguriert sind, derzeit nicht als Parameter für ARM-Bereitstellungen unterstützt. Befolgen Sie [Überwachen von Data Factory, Warnungen und Matrizen](./monitor-using-azure-monitor.md#data-factory-metrics), um die Warnungen und Matrizen in der neuen Umgebung erneut anzuwenden.
 > 
 
 ### <a name="default-parameterization-template"></a>Standardvorlage für die Parametrisierung
@@ -697,6 +697,9 @@ Wenn Sie ein Skript vor der Bereitstellung ausführen, müssen Sie im Feld **Skr
 Wenn Sie ein Skript nach der Bereitstellung ausführen, müssen Sie im Feld **Skriptargumente** eine Variation der folgenden Parameter angeben.
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+> [!NOTE]
+> Das `-deleteDeployment`-Flag wird verwendet, um das Löschen des ADF-Bereitstellungseintrags aus dem Bereitstellungsverlauf in ARM anzugeben.
 
 ![Azure PowerShell-Aufgabe](media/continuous-integration-deployment/continuous-integration-image11.png)
 

@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b6a1ead2fe3c1ec4e2206d1ffbaea4e5ec57433
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98059380"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222520"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -42,7 +42,7 @@ Angenommen, Sie arbeiten bei der Woodgrove Bank und möchten mit zwei externen O
 - Graphic Design Institute verwendet Azure AD, und die Benutzer haben einen Benutzerprinzipalnamen, der mit *graphicdesigninstitute.com* endet.
 - Contoso verwendet Azure AD noch nicht. Contoso-Benutzer haben ein Benutzerprinzipalnamen, der mit *contoso.com* endet.
 
-In diesem Fall können Sie zwei verbundene Organisationen konfigurieren. Sie erstellen eine verbundene Organisation für Graphic Design Institute und eine für Contoso. Wenn Sie diese beiden verbundenen Unternehmen anschließend zu einer Richtlinie hinzufügen, können Benutzer beider Organisationen, deren Benutzername der Richtlinie entspricht, Zugriffspakete anfordern. Benutzer mit einem Benutzerprinzipalnamen mit der Domäne *graphicdesigninstitute.com* entsprächen der mit Graphic Design Institute verbundenen Organisation und dürften Anfragen übermitteln. Benutzer mit einem Benutzerprinzipalnamen mit der Domäne *contoso.com* entsprächen der mit Contoso verbundenen Organisation und dürften ebenfalls Pakete anfordern. Da Graphic Design Institute Azure AD verwendet, könnten außerdem alle Benutzer mit einem Prinzipalnamen, der einer [verifizierten Domäne](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) entspricht, die zu ihrem Mandanten hinzugefügt wurde (z. B. *graphicdesigninstitute.example*), über dieselbe Richtlinie Zugriffspakete anfordern.
+In diesem Fall können Sie zwei verbundene Organisationen konfigurieren. Sie erstellen eine verbundene Organisation für Graphic Design Institute und eine für Contoso. Wenn Sie diese beiden verbundenen Unternehmen anschließend zu einer Richtlinie hinzufügen, können Benutzer beider Organisationen, deren Benutzername der Richtlinie entspricht, Zugriffspakete anfordern. Benutzer mit einem Benutzerprinzipalnamen mit der Domäne „contoso.com“ entsprächen der mit Contoso verbundenen Organisation und dürften ebenfalls Pakete anfordern. Benutzer mit einem Benutzerprinzipalnamen mit der Domäne *graphicdesigninstitute.com* entsprächen der mit Graphic Design Institute verbundenen Organisation und dürften Anfragen übermitteln. Da Graphic Design Institute Azure AD verwendet, könnten außerdem alle Benutzer mit einem Prinzipalnamen, der einer [verifizierten Domäne](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) entspricht, die zu ihrem Mandanten hinzugefügt wurde (z. B. *graphicdesigninstitute.example*), über dieselbe Richtlinie Zugriffspakete anfordern. Wenn Sie die [Authentifizierung mit Einmalkennung per E-Mail](../external-identities/one-time-passcode.md) aktiviert haben, beinhaltet dies Benutzer aus den Domänen, die noch keine Azure AD-Konten besitzen und sich beim Zugriff auf Ihre Ressourcen mithilfe der Einmalkennung per E-Mail authentifizieren. 
 
 ![Beispiel für eine verbundene Organisation](./media/entitlement-management-organization/connected-organization-example.png)
 
