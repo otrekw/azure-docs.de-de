@@ -36,16 +36,15 @@
     - name: Verwenden des Gesichtserkennungscontainers
       items:
         - name: "Dokumentation zu Cognitive\_Services-Containern"
-          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/face/context/context
         - name: Übersicht über Container
-          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/face/context/context
         - name: Installieren und Ausführen von Containern
           href: face-how-to-install-containers.md
         - name: Konfigurieren von Containern
           href: face-resource-container-config.md
         - name: Verwenden von Containerinstanzen
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
+          href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
 - name: Konzepte
   items:
     - name: Gesichtserkennung
@@ -54,8 +53,6 @@
       href: concepts/face-recognition.md
 - name: Tutorials
   items:
-    - name: Erstellen einer Gesichtserkennungs-App
-      href: Tutorials/FaceAPIinCSharpTutorial.md
     - name: Hinzufügen von Benutzern zu einem Gesichtserkennungsdienst
       items:
         - name: Best Practices für das Hinzufügen von Benutzern

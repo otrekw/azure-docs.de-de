@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9ce87584373bd87a8f89ecb4ea692b44d3fab4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9eb5950b5cf7d4e7d0270deed72866ee28e3962
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102202959"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106903"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau): Azure CLI
 
@@ -40,7 +40,7 @@ Beide dieser Erstellungsmethoden bieten Ihnen dieselben Konfigurationsoptionen u
 
 In diesem Abschnitt erfahren Sie, wie Sie eine systemseitig verwaltete Identität für eine Azure Digital Twins-Instanz aktivieren, die derzeit erstellt wird. 
 
-Hierzu wird ein `--assign-identity`-Parameter zum `az dt create`-Befehl hinzugefügt, der zum Erstellen der Instanz verwendet wird. (Weitere Informationen zu diesem Befehl finden Sie in der zugehörigen [Referenzdokumentation](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create) oder in den [allgemeinen Anweisungen zum Einrichten einer Azure Digital Twins-Instanz](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).)
+Hierzu wird ein `--assign-identity`-Parameter zum `az dt create`-Befehl hinzugefügt, der zum Erstellen der Instanz verwendet wird. (Weitere Informationen zu diesem Befehl finden Sie in der zugehörigen [Referenzdokumentation](/cli/azure/dt#az_dt_create) oder in den [allgemeinen Anweisungen zum Einrichten einer Azure Digital Twins-Instanz](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance).)
 
 Fügen Sie zum Erstellen einer Instanz mit einer systemseitig verwalteten Identität den `--assign-identity`-Parameter wie folgt hinzu:
 
@@ -97,7 +97,7 @@ Hier sehen Sie ein Beispiel, bei dem eine Instanz mit einer systemseitig verwalt
 az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
 ```
 
-Weitere Beispiele für Rollenzuweisungen mit diesem Befehl finden Sie in der [Referenzdokumentation zu **az dt create**](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create).
+Weitere Beispiele für Rollenzuweisungen mit diesem Befehl finden Sie in der [Referenzdokumentation zu **az dt create**](/cli/azure/dt#az_dt_create).
 
 Alternativ können Sie auch die Befehlsgruppe [**az role assignment**](/cli/azure/role/assignment) verwenden, um Rollen zu erstellen und zu verwalten. Sie können diese Vorgehensweise verwenden, um weitere Szenarios zu unterstützen, in denen Sie die Rollenzuweisung nicht mit dem Erstellbefehl gruppieren möchten.
 
@@ -108,7 +108,7 @@ Nachdem Sie eine systemseitig verwaltete Identität für Ihre Azure Digital Twin
 >[!NOTE]
 > Sie können einen Endpunkt nicht bearbeiten, der bereits mit einer schlüsselbasierten Identität erstellt wurde, um zur identitätsbasierten Authentifizierung zu wechseln. Sie müssen den Authentifizierungstyp auswählen, wenn der Endpunkt erstellt wird.
 
-Hierzu wird ein `--auth-type`-Parameter zum `az dt endpoint create`-Befehl hinzugefügt, der zum Erstellen des Endpunkts verwendet wird. (Weitere Informationen zu diesem Befehl finden Sie in der zugehörigen [Referenzdokumentation](/cli/azure/ext/azure-iot/dt/endpoint/create) oder in den [allgemeinen Anweisungen zum Einrichten eines Azure Digital Twins-Endpunkts](how-to-manage-routes-apis-cli.md#create-the-endpoint).)
+Hierzu wird ein `--auth-type`-Parameter zum `az dt endpoint create`-Befehl hinzugefügt, der zum Erstellen des Endpunkts verwendet wird. (Weitere Informationen zu diesem Befehl finden Sie in der zugehörigen [Referenzdokumentation](/cli/azure/dt/endpoint/create) oder in den [allgemeinen Anweisungen zum Einrichten eines Azure Digital Twins-Endpunkts](how-to-manage-routes-apis-cli.md#create-the-endpoint).)
 
 Zum Erstellen eines Endpunkts, der die identitätsbasierte Authentifizierung verwendet, legen Sie den Authentifizierungstyp `IdentityBased` mit dem Parameter `--auth-type` fest. Im folgenden Beispiel wird diese Vorgehensweise für einen Event Hubs-Endpunkt veranschaulicht.
 
