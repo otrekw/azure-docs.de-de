@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de6a80f73a97a5732f00e10107fff2330038210a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732563"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122015"
 ---
 # <a name="networking"></a>Netzwerk
 
@@ -87,7 +87,7 @@ Weitere Informationen zu den Eingangssicherheitsregeln:
 
 * **Anwendung**. Der Portbereich der Anwendung sollte ausreichend sein, um die Endpunktanforderung Ihrer Anwendungen abzudecken. Dieser Bereich sollte vom dynamischen Portbereich auf dem Computer (dem „ephemeralPorts“-Bereich in der Konfiguration) getrennt sein. Service Fabric greift auf diese Ports zurück, wenn neue Ports benötigt werden, und öffnet die Firewall für diese Ports auf den Knoten.
 
-* **SMB**. Das SMB-Protokoll wird vom Imagespeicherdienst für zwei Szenarien verwendet. Dieser Port wird zum Herunterladen der Pakete aus dem Imagespeicher von den Knoten sowie zum Replizieren zwischen den Replikaten benötigt. 
+* **SMB**. Optional verwendet die Runtime-Version 7.1 und höher nicht standardmäßig SMB. Das SMB-Protokoll wird vom Imagespeicherdienst für zwei Szenarien verwendet. Dieser Port wird zum Herunterladen der Pakete aus dem Imagespeicher von den Knoten sowie zum Replizieren zwischen den Replikaten benötigt. 
 
 * **RDP**. Optional, wenn RDP aus dem Internet oder dem virtuellen Netzwerk für Jumpboxszenarien erforderlich ist. 
 

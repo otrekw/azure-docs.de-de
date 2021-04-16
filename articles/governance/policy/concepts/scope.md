@@ -1,20 +1,19 @@
 ---
 title: Erläuterungen zum Bereich in Azure Policy
 description: Beschreibt das Konzept des Bereichs in Azure Resource Manager und wie es auf Azure Policy angewendet wird, um zu steuern, welche Ressourcen von Azure Policy ausgewertet werden.
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c198d2d2961b6d9e10a3b78481183cba7f7197ca
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90984441"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167735"
 ---
 # <a name="understand-scope-in-azure-policy"></a>Erläuterungen zum Bereich in Azure Policy
 
-Es gibt eine Reihe von Einstellungen, die bestimmen, welche Ressourcen ausgewertet werden können und welche Ressourcen von Azure Policy ausgewertet werden. Das primäre Konzept für diese Steuerungen ist der _Bereich_.
-Eine allgemeine Übersicht finden Sie im [Abschnitt „Bereich“ der Übersicht über Azure Resource Manager](../../../azure-resource-manager/management/overview.md#understand-scope).
-In diesem Artikel werden die Bedeutung des _Bereichs_ in Azure Policy und die entsprechenden Objekte und Eigenschaften erläutert.
+Es gibt eine Reihe von Einstellungen, die bestimmen, welche Ressourcen ausgewertet werden können und welche Ressourcen von Azure Policy ausgewertet werden. Das primäre Konzept für diese Steuerungen ist der _Bereich_. Der Bereich in Azure Policy basiert auf der Funktionsweise des Bereichs in Azure Resource Manager. Eine allgemeine Übersicht finden Sie im [Abschnitt „Bereich“ der Übersicht über Azure Resource Manager](../../../azure-resource-manager/management/overview.md#understand-scope).
+In diesem Artikel werden die Wichtigkeit des _Bereichs_ in Azure Policy und die entsprechenden Objekte und Eigenschaften erläutert.
 
 ## <a name="definition-location"></a>Definitionsspeicherort
 

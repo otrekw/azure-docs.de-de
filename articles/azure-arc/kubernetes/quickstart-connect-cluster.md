@@ -6,14 +6,14 @@ ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
 ms.date: 03/03/2021
-ms.custom: template-quickstart
+ms.custom: template-quickstart, references_regions
 keywords: Kubernetes, Arc, Azure, Cluster
-ms.openlocfilehash: 3fc522c4bdda9eb1047d5258bcc431d0268990b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b4cbd45f8478674c7c6bacc50f068bc0ec691a14
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121642"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449918"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Schnellstart: Herstellen einer Verbindung eines vorhandenen Kubernetes-Clusters mit Azure Arc 
 
@@ -23,36 +23,35 @@ In diesem Schnellstart werden wir die Vorteile von Kubernetes mit Azure Arc-Akti
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-* Überprüfen Sie, ob Folgendes vorhanden ist:
-    * Ein funktionierender Kubernetes-Cluster.
-    * Eine `kubeconfig`-Datei, die auf den Cluster verweist, den Sie mit Azure Arc verbinden möchten
-    * Lese- und Schreibberechtigungen für den Benutzer oder Dienstprinzipal, der die Verbindung herstellt und den Kubernetes-Ressourcentyp mit Azure Arc-Aktivierung (`Microsoft.Kubernetes/connectedClusters`) erstellt.
+* Ein funktionierender Kubernetes-Cluster. Wenn Sie über keinen verfügen, haben Sie die folgenden drei Möglichkeiten, um einen Cluster zu erstellen:
+    * [Kubernetes in Docker (KIND)](https://kind.sigs.k8s.io/)
+    * Erstellen eines Kubernetes-Clusters mithilfe von Docker für [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) oder [Windows](https://docs.docker.com/docker-for-windows/#kubernetes)
+    * Selbst verwalteter Kubernetes-Cluster mithilfe der [Cluster-API](https://cluster-api.sigs.k8s.io/user/quick-start.html)
+
+    >[!NOTE]
+    > Der Cluster muss mindestens einen Knoten des Betriebssystems und des Architektur Typs `linux/amd64` aufweisen. Cluster mit nur `linux/arm64`-Knoten werden noch nicht unterstützt.
+    
+* Eine `kubeconfig`-Datei und ein Kontext, der auf Ihren Cluster verweist.
+* Lese- und Schreibberechtigungen für den Azure Arc-aktivierten Kubernetes-Ressourcentyp (`Microsoft.Kubernetes/connectedClusters`).
+
 * Installieren Sie das [neueste Release von Helm 3](https://helm.sh/docs/intro/install).
-* Installieren Sie die folgenden Kubernetes-CLI-Erweiterungen mit Azure Arc-Aktivierung der Versionen >= 1.0.0:
+
+- [Installieren oder aktualisieren Sie Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) auf eine Version >= 2.16.0
+* Installieren Sie die Azure CLI-Erweiterung `connectedk8s` in einer Version >= 1.0.0:
   
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8s-configuration
-  ```
-  * Führen Sie die folgenden Befehle aus, um diese Erweiterungen auf die aktuelle Version zu aktualisieren:
-  
-  ```azurecli
-  az extension update --name connectedk8s
-  az extension update --name k8s-configuration
   ```
 
+>[!TIP]
+> Wenn die Erweiterung `connectedk8s` bereits installiert ist, können Sie sie mit dem folgenden Befehl auf die neueste Version aktualisieren: `az extension update --name connectedk8s`
+
+
 >[!NOTE]
->**Unterstützte Regionen:**
->* East US
->* Europa, Westen
->* USA, Westen-Mitte
->* USA Süd Mitte
->* Asien, Südosten
->* UK, Süden
->* USA, Westen 2
->* Australien (Osten)
->* USA (Ost) 2
->* Nordeuropa
+>Die Liste der Regionen, die von Azure Arc-aktiviertem Kubernetes unterstützt werden, finden Sie [hier](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
+
+>[!NOTE]
+> Wenn Sie benutzerdefinierte Speicherorte im Cluster verwenden möchten, verwenden Sie die Regionen „USA, Osten“ oder „Europa, Westen“, um Ihren Cluster zu verbinden, da benutzerdefinierte Speicherorte derzeit nur in diesen Regionen verfügbar sind. Alle anderen Azure Arc-aktivierten Kubernetes-Funktionen sind in allen oben aufgeführten Regionen verfügbar.
 
 ## <a name="meet-network-requirements"></a>Erfüllen von Netzwerkanforderungen
 
@@ -64,7 +63,7 @@ In diesem Schnellstart werden wir die Vorteile von Kubernetes mit Azure Arc-Akti
 | Endpunkt (DNS) | BESCHREIBUNG |  
 | ----------------- | ------------- |  
 | `https://management.azure.com`                                                                                 | Erforderlich, damit der Agent eine Verbindung mit Azure herstellen und den Cluster registrieren kann.                                                        |  
-| `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com`, `https://westcentralus.dp.kubernetesconfiguration.azure.com`, `https://southcentralus.dp.kubernetesconfiguration.azure.com`, `https://southeastasia.dp.kubernetesconfiguration.azure.com`, `https://uksouth.dp.kubernetesconfiguration.azure.com`, `https://westus2.dp.kubernetesconfiguration.azure.com`, `https://australiaeast.dp.kubernetesconfiguration.azure.com`, `https://eastus2.dp.kubernetesconfiguration.azure.com`, `https://northeurope.dp.kubernetesconfiguration.azure.com` | Endpunkt auf Datenebene, über den der Agent Statusinformationen mithilfe von Push übermitteln und Konfigurationsinformationen abrufen kann                                      |  
+| `https://<region>.dp.kubernetesconfiguration.azure.com` | Endpunkt auf Datenebene, über den der Agent Statusinformationen mithilfe von Push übermitteln und Konfigurationsinformationen abrufen kann                                      |  
 | `https://login.microsoftonline.com`                                                                            | Erforderlich zum Abrufen und Aktualisieren von Azure Resource Manager-Token.                                                                                    |  
 | `https://mcr.microsoft.com`                                                                            | Erforderlich zum Pullen von Containerimages für Azure Arc-Agents.                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  Erforderlich zum Pullen vom System zugewiesener Zertifikate für verwaltete Dienstidentitäten (MSI).                                                                  |
@@ -75,11 +74,13 @@ In diesem Schnellstart werden wir die Vorteile von Kubernetes mit Azure Arc-Akti
     ```azurecli
     az provider register --namespace Microsoft.Kubernetes
     az provider register --namespace Microsoft.KubernetesConfiguration
+    az provider register --namespace Microsoft.ExtendedLocation
     ```
 2. Überwachen Sie den Registrierungsprozess. Die Registrierung kann bis zu 10 Minuten dauern.
     ```azurecli
     az provider show -n Microsoft.Kubernetes -o table
-    az provider show -n Microsoft.KubernetesConfiguration -o table    
+    az provider show -n Microsoft.KubernetesConfiguration -o table
+    az provider show -n Microsoft.ExtendedLocation -o table
     ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/23/2021
-ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c94d6f7d4d06d7dbaa6a2ad54f94575a6cc85d33
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739261"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644658"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Freigeben und Empfangen von Daten aus Azure Blob Storage und Azure Data Lake Storage
 
@@ -178,7 +178,7 @@ Befolgen Sie die Schritte in diesem Abschnitt, um einen Speicherort zum Empfang 
 
    ![Screenshot: Position zum Auswählen eines Zielspeicherkontos](./media/map-target.png "Zielspeicher") 
 
-1. Wenn der Datenanbieter bei einer Freigabe basierend auf Momentaufnahmen einen Momentaufnahmezeitplan verwendet, um die Daten regelmäßig zu aktualisieren, können Sie den Zeitplan auf der Registerkarte **Momentaufnahmezeitplan** aktivieren. Aktivieren Sie das Kontrollkästchen neben dem Momentaufnahmezeitplan. Wählen Sie anschließend **Aktivieren** aus.
+1. Wenn der Datenanbieter bei einer Freigabe basierend auf Momentaufnahmen einen Momentaufnahmezeitplan verwendet, um die Daten regelmäßig zu aktualisieren, können Sie den Zeitplan auf der Registerkarte **Momentaufnahmezeitplan** aktivieren. Aktivieren Sie das Kontrollkästchen neben dem Momentaufnahmezeitplan. Wählen Sie anschließend **Aktivieren** aus. Beachten Sie, dass die erste geplante Momentaufnahme innerhalb einer Minute ab der geplanten Zeit beginnt und nachfolgende Momentaufnahmen innerhalb von Sekunden ab der geplanten Zeit gestartet werden.
 
    ![Screenshot: Aktivieren eines Momentaufnahmezeitplans](./media/enable-snapshot-schedule.png "Aktivieren des Momentaufnahmezeitplans")
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: twooley
 ms.openlocfilehash: 4ac2bbb21fd1a987d544a536d0f52628824e0bf4
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97723795"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Leitfaden zur Leistungsoptimierung für die Verwendung von PowerShell mit Azure Data Lake Storage Gen1
@@ -44,7 +44,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 Als Nächstes möchten Sie vielleicht wissen, wie Sie ermitteln, welcher Wert für die leistungsbezogenen Eigenschaften angegeben werden soll. Hier sind einige hilfreiche Informationen zur Vorgehensweise angegeben.
 
-* **Schritt 1: Ermitteln der Gesamtanzahl von Threads** – Beginnen Sie, indem Sie die Gesamtanzahl der Threads berechnen, die verwendet werden sollen. Als Faustregel gilt, dass Sie sechs Threads für jeden physischen Kern verwenden sollten.
+* **Schritt 1: Ermitteln der Gesamtanzahl von Threads**: Beginnen Sie, indem Sie die Gesamtanzahl der Threads berechnen, die verwendet werden sollen. Als Faustregel gilt, dass Sie sechs Threads für jeden physischen Kern verwenden sollten.
 
     `Total thread count = total physical cores * 6`
 
@@ -54,7 +54,7 @@ Als Nächstes möchten Sie vielleicht wissen, wie Sie ermitteln, welcher Wert f�
 
     `Total thread count = 16 cores * 6 = 96 threads`
 
-* **Schritt 2: Berechnen von „PerFileThreadCount“** – Der Wert für „PerFileThreadCount“ wird basierend auf der Größe der Dateien berechnet. Für Dateien, die kleiner als 2,5 GB sind, muss dieser Parameter nicht geändert werden, da die Standardeinstellung 10 ausreicht. Für Dateien, die größer als 2,5 GB sind, sollten Sie zehn Threads als Basis für die ersten 2,5 GB nutzen und für jede weitere Steigerung der Dateigröße um 256 MB einen Thread hinzufügen. Wenn Sie einen Ordner mit Dateien mit stark variierender Größe haben, können Sie erwägen, die Dateien nach Größe zu gruppieren. Wenn die Dateigrößen sehr unterschiedlich sind, kann dies die Leistung beeinträchtigen. Falls das Gruppieren nach ähnlichen Dateigrößen nicht möglich sein sollte, ist es ratsam, den Wert für PerFileThreadCount basierend auf der größten Datei festzulegen.
+* **Schritt 2: Berechnen von PerFileThreadCount**: Wir berechnen den Wert für PerFileThreadCount basierend auf der Größe der Dateien. Für Dateien, die kleiner als 2,5 GB sind, muss dieser Parameter nicht geändert werden, da die Standardeinstellung 10 ausreicht. Für Dateien, die größer als 2,5 GB sind, sollten Sie zehn Threads als Basis für die ersten 2,5 GB nutzen und für jede weitere Steigerung der Dateigröße um 256 MB einen Thread hinzufügen. Wenn Sie einen Ordner mit Dateien mit stark variierender Größe haben, können Sie erwägen, die Dateien nach Größe zu gruppieren. Wenn die Dateigrößen sehr unterschiedlich sind, kann dies die Leistung beeinträchtigen. Falls das Gruppieren nach ähnlichen Dateigrößen nicht möglich sein sollte, ist es ratsam, den Wert für PerFileThreadCount basierend auf der größten Datei festzulegen.
 
     `PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size`
 
@@ -64,7 +64,7 @@ Als Nächstes möchten Sie vielleicht wissen, wie Sie ermitteln, welcher Wert f�
 
     `PerFileThreadCount = 10 + ((10 GB - 2.5 GB) / 256 MB) = 40 threads`
 
-* **Schritt 3: Berechnen von „ConcurrentFilecount“** – Verwenden Sie die Gesamtanzahl der Threads und den Wert von „PerFileThreadCount“, um „ConcurrentFileCount“ basierend auf der folgenden Gleichung zu berechnen:
+* **Schritt 3: Berechnen von „ConcurrentFilecount“:** Verwenden Sie die Gesamtzahl der Threads und den Wert von „PerFileThreadCount“, um „ConcurrentFileCount“ basierend auf der folgenden Gleichung zu berechnen:
 
     `Total thread count = PerFileThreadCount * ConcurrentFileCount`
 
@@ -88,13 +88,13 @@ Sie können diese Einstellungen weiter optimieren, indem Sie den Wert für **Per
 
 ### <a name="limitation"></a>Einschränkung
 
-* **Anzahl von Dateien ist geringer als „ConcurrentFileCount“:** Wenn die Anzahl der hochgeladenen Dateien kleiner als der von Ihnen berechnete Wert von **ConcurrentFileCount** ist, sollten Sie **ConcurrentFileCount** reduzieren und gemäß der Anzahl von Dateien festlegen. Sie können alle verbleibenden Threads verwenden, um **PerFileThreadCount** zu erhöhen.
+* **Anzahl von Dateien ist geringer als ConcurrentFileCount**: Wenn die Anzahl von hochgeladenen Dateien kleiner als der von Ihnen berechnete Wert von **ConcurrentFileCount** ist, sollten Sie **ConcurrentFileCount** reduzieren und gemäß der Anzahl von Dateien festlegen. Sie können alle verbleibenden Threads verwenden, um **PerFileThreadCount** zu erhöhen.
 
-* **Zu viele Threads:** Wenn Sie die Anzahl von Threads zu stark erhöhen, ohne die Clustergröße zu erhöhen, können sich Leistungseinbußen ergeben. Es kann zu Problemen aufgrund von Konflikten kommen, die beim Kontextwechsel in der CPU entstehen.
+* **Zu viele Threads**: Wenn Sie die Anzahl von Threads zu stark erhöhen, ohne die Clustergröße zu erhöhen, können sich Leistungseinbußen ergeben. Es kann zu Problemen aufgrund von Konflikten kommen, die beim Kontextwechsel in der CPU entstehen.
 
-* **Unzureichende Parallelität:** Wenn die Parallelität nicht ausreicht, ist Ihr Cluster eventuell zu klein. Sie können die Anzahl von Knoten in Ihrem Cluster erhöhen, um mehr Parallelität zu erzielen.
+* **Unzureichende Parallelität**: Falls die Parallelität nicht ausreicht, ist Ihr Cluster ggf. zu klein. Sie können die Anzahl von Knoten in Ihrem Cluster erhöhen, um mehr Parallelität zu erzielen.
 
-* **Drosselungsfehler:** Es können Drosselungsfehler auftreten, wenn die Parallelität zu hoch ist. Falls es zu Drosselungsfehlern kommt, sollten Sie entweder die Parallelität reduzieren oder mit uns Kontakt aufnehmen.
+* **Drosselungsfehler**: Es können Drosselungsfehler auftreten, wenn die Parallelität zu hoch ist. Falls es zu Drosselungsfehlern kommt, sollten Sie entweder die Parallelität reduzieren oder mit uns Kontakt aufnehmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0231f7f3882218ef88d6151488da6aa23e4cb8e4
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572994"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106686"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Überwachen von Azure AD B2C mit Azure Monitor
 
@@ -46,7 +46,7 @@ Im folgenden Diagramm sind die Komponenten dargestellt, die Sie in Ihrem Azure 
 
 ![Ressourcengruppenprojektion](./media/azure-monitor/resource-group-projection.png)
 
-Bei dieser Bereitstellung konfigurieren Sie sowohl Ihren Azure AD B2C-Mandanten als auch Ihren Azure AD-Mandanten, auf dem der Log Analytics-Arbeitsbereich gehostet wird. Dem Konto, mit dem die Bereitstellung ausgeführt wird, muss in beiden Mandanten die Rolle [Globaler Administrator](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) zugewiesen sein. Es ist auch wichtig sicherzustellen, dass Sie beim richtigen Verzeichnis angemeldet sind, wenn Sie die einzelnen Schritte wie beschrieben ausführen.
+Bei dieser Bereitstellung konfigurieren Sie sowohl Ihren Azure AD B2C-Mandanten als auch Ihren Azure AD-Mandanten, auf dem der Log Analytics-Arbeitsbereich gehostet wird. Dem Azure AD B2C-Konto sollte die Rolle [Globaler Administrator](../active-directory/roles/permissions-reference.md#global-administrator) für den Azure AD B2C-Mandanten zugewiesen werden. Dem Azure AD-Konto, das zum Ausführen der Bereitstellung verwendet wird, muss die Rolle [Besitzer](../role-based-access-control/built-in-roles.md#owner) im Azure AD-Abonnement zugewiesen werden. Außerdem ist es wichtig, sicherzustellen, dass Sie beim Ausführen der beschrieben Schritte im richtigen Verzeichnis angemeldet sind.
 
 ## <a name="1-create-or-choose-resource-group"></a>1. Erstellen oder Auswählen einer Ressourcengruppe
 
@@ -97,7 +97,7 @@ Als Nächstes erstellen Sie eine Azure Resource Manager-Vorlage, die Azure AD 
 2. Wählen Sie im Portal auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren **Azure AD**-Mandanten enthält.
 3. Verwenden Sie die Schaltfläche **In Azure bereitstellen**, um das Azure-Portal zu öffnen und die Vorlage direkt im Portal bereitzustellen. Weitere Informationen finden Sie unter [Erstellen einer Azure Resource Manager-Vorlage](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template).
 
-   [![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Lighthouse-samples%2Fmaster%2Ftemplates%2Frg-delegated-resource-management%2FrgDelegatedResourceManagement.json)
+   [![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
 
 5. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein:
 

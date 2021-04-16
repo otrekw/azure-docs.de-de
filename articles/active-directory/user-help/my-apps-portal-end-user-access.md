@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e72667ab562a9e12d233f45dc50efc9b70d2141b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100095000"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642117"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses
 
@@ -39,11 +39,12 @@ Wenn Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich fü
 
 ## <a name="supported-browsers"></a>Unterstützte Browser
 
-Auf das Portal **Meine Apps** können Sie über einen der folgenden Webbrowser zugreifen:
+Auf das Portal **Meine Apps** können Sie über einen der folgenden Webbrowser zugreifen: Mircrosoft empfiehlt, den neuesten Browser zu verwenden, der mit Ihrem Betriebssystem kompatibel ist.
 
-- Microsoft Edge (der einzige derzeit unterstützte mobile Browser ist die mobile Version von Edge)
-- Google Chrome
-- Mozilla Firefox ab Version 26.0
+- Microsoft Edge (neueste Version, Desktop und Mobile)
+- Safari (neueste Version, nur auf Mac)
+- Chrome (neueste Version, Desktop und Mobil)
+- Firefox (neueste Version)
 
 Sie können auf das Portal „Meine Apps“ auf Ihrem Computer oder in der mobilen Version des Microsoft Edge-Browsers auf einem iOS- oder Android-Mobilgerät zugreifen und es dort nutzen.
 

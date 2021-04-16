@@ -2,21 +2,21 @@
 title: Auslösen von Chaos in Service Fabric-Clustern
 description: Verwenden von Fault Injection und Cluster Analysis Service-APIs zum Verwalten von Chaostests im Cluster.
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 72b8f7e9e4934b516f843ae8bc9bb7adc1c349ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 759e2d1c8d2a326583625fbbbcadb4f4fa950510
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720509"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732430"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Auslösen von kontrolliertem Chaos in Service Fabric-Clustern
 Große verteilte Systeme wie Cloudinfrastrukturen sind grundsätzlich unzuverlässig. Azure Service Fabric ermöglicht Entwicklern, aufbauend auf einer unzuverlässigen Infrastruktur zuverlässige verteilte Dienste zu erstellen. Um robuste, verteilte Dienste in einer unzuverlässigen Infrastruktur zu schreiben, müssen Entwickler in der Lage sein, die Stabilität ihrer Dienste zu testen, während die zugrunde liegende unzuverlässige Infrastruktur komplizierte Statusübergänge aufgrund von Fehlern durchläuft.
 
 Der [Fault Injection and Cluster Analysis Service](./service-fabric-testability-overview.md) (auch als Fault Analysis Service (FAS) bezeichnet) gibt Entwicklern die Möglichkeit, Fehler einzuschleusen, um ihre Dienste zu testen. Solche zielgerichteten simulierten Fehler, wie z.B. das [Neustarten einer Partition](/powershell/module/servicefabric/start-servicefabricpartitionrestart), können dazu beitragen, die am häufigsten auftretenden Zustandsübergänge zu üben. Zielgerichtete simulierte Fehler sind jedoch definitionsgemäß nicht objektiv und können damit keine Fehler aufzeigen, die nur bei schwierig vorherzusagenden, langen und komplizierten Abfolgen von Zustandsübergängen auftreten. Für ausgewogene Tests können Sie Chaos verwenden.
 
-Mithilfe von Chaos werden im Cluster über längere Zeiträume hinweg periodische verschachtelte Fehler simuliert (sowohl ordnungsgemäß als auch nicht ordnungsgemäß). Ein ordnungsgemäßer Fehler besteht aus einer Reihe von Aufrufen der Service Fabric-API. Beispielsweise ist der Fehler „Replikat neu starten“ ein ordnungsgemäßer Fehler, da hier auf das Schließen das Öffnen eines Replikats folgt. „Replikat entfernen“, „primäres Replikat verschieben“ und „sekundäres Replikat verschieben“ sind andere ordnungsgemäße Fehler, die von Chaos angewendet werden. Nicht ordnungsgemäße Fehler sind Prozessabbrüche wie „Knoten neu starten“ und „Codepaket neu starten“. 
+Mithilfe von Chaos werden im Cluster über längere Zeiträume hinweg periodische verschachtelte Fehler simuliert (sowohl ordnungsgemäß als auch nicht ordnungsgemäß). Ein ordnungsgemäßer Fehler besteht aus einer Reihe von Aufrufen der Service Fabric-API. Beispielsweise ist der Fehler „Replikat neu starten“ ein ordnungsgemäßer Fehler, da hier auf das Schließen das Öffnen eines Replikats folgt. Replikat entfernen, primäres Replikat verschieben, sekundäres Replikat verschieben und Instanz verschieben sind die anderen von Chaos ausgeübten anmutigen Fehler. Nicht ordnungsgemäße Fehler sind Prozessabbrüche wie „Knoten neu starten“ und „Codepaket neu starten“.
 
 Nachdem Sie Chaos mit der Rate und Art der Fehler konfiguriert haben, können Sie Chaos über die C#-, PowerShell- oder REST-API starten, um Fehler im Cluster und in Ihren Diensten zu generieren. Sie können Chaos für die Ausführung über einen angegebenen Zeitraum (z. B. für eine Stunde) konfigurieren. Chaos wird danach automatisch beendet. Sie können aber auch jederzeit die StopChaos-API (C#, PowerShell oder REST) aufrufen, um die Ausführung zu beenden.
 
@@ -37,6 +37,7 @@ Der Chaostest verursacht Fehler in den folgenden Kategorien:
 * Neustart eines Replikats
 * Verschiebung eines primären Replikats (konfigurierbar)
 * Verschiebung eines sekundären Replikats (konfigurierbar)
+* Eine Instanz verschieben
 
 Chaos wird in mehreren Iterationen ausgeführt. Jede Iteration besteht aus Fehlern und der Clusterüberprüfung für den angegebenen Zeitraum. Sie können die Dauer der Stabilisierung des Clusters und des erfolgreichen Abschlusses der Überprüfung konfigurieren. Wenn bei der Clusterüberprüfung ein Fehler gefunden wird, wird vom Chaostest ein „ValidationFailedEvent“-Ereignis mit dem UTC-Zeitstempel und den Fehlerdetails generiert und gespeichert. Nehmen wir beispielsweise an, ein Chaostest soll eine Stunde lang ausgeführt werden und maximal drei gleichzeitige Fehler umfassen. Beim Chaostest werden drei Fehler eingeschleust, und anschließend wird die Clusterintegrität überprüft. Es erfolgt eine Iteration durch den vorherigen Schritt, bis dieser explizit mithilfe der StopChaosAsync-API beendet wird oder eine Stunde vergangen ist. Wenn der Cluster bei einer der Iterationen fehlerhaft wird (also sich nicht innerhalb des mit MaxClusterStabilizationTimeout übergebenen Zeitraums stabilisiert oder fehlerfrei wird), generiert Chaos ein Ereignis vom Typ „ValidationFailedEvent“. Dieses Ereignis bedeutet, dass etwas schiefgelaufen ist und ggf. eine nähere Untersuchung erforderlich ist.
 
@@ -56,14 +57,14 @@ Wenn Sie herausfinden möchten, welche Fehler Chaos induziert hat, können Sie d
 > Der Chaos-Test garantiert unabhängig von der Höhe des Werts von *MaxConcurrentFaults*, dass es bei Nichtauftreten externer Fehler nicht zu einem Quorum- oder Datenverlust kommt.
 >
 
-* **EnableMoveReplicaFaults**: Aktiviert oder deaktiviert die Fehler, die zur Verschiebung der primären oder sekundären Replikate führen. Diese Fehler sind standardmäßig aktiviert.
+* **EnableMoveReplicaFaults**: Aktiviert oder deaktiviert die Fehler, die eine Verschiebung der primären, sekundären Replikate oder Instanzen verursachen. Diese Fehler sind standardmäßig aktiviert.
 * **WaitTimeBetweenIterations:** die Zeitspanne, die zwischen Iterationen gewartet wird. Dies ist also die Zeitspanne, die Chaos nach einem Fehlerdurchlauf und den zugehörigen Überprüfungen der Integrität des Clusters unterbrochen wird. Je höher der Wert, desto niedriger ist die durchschnittliche Fault Injection-Rate.
 * **WaitTimeBetweenFaults:** Wartezeit zwischen zwei aufeinanderfolgenden Fehlern in einer Iteration. Je höher der Wert, desto niedriger ist die Parallelität (oder Überlappung) der Fehler.
 * **ClusterHealthPolicy:** Die Clusterintegritätsrichtlinie wird verwendet, um die Integrität des Clusters zwischen Iterationen von Chaos zu überprüfen. Wenn die Clusterintegrität beeinträchtigt ist oder bei der Fehlerausführung eine unerwartete Ausnahme auftritt, wartet Chaos 30 Minuten bis zur nächsten Integritätsüberprüfung, damit der Cluster sich normalisieren kann.
 * **Context:** eine Sammlung von Schlüssel-Wert-Paaren vom Typ (string, string). Die Zuordnung kann verwendet werden, um Informationen zur Ausführung von Chaos aufzuzeichnen. Es kann nicht mehr als 100 solcher Paare geben, und jede Zeichenfolge (Schlüssel oder Wert) darf höchstens 4.095 Zeichen lang sein. Diese Zuordnung wird beim Start der Chaos-Ausführung festgelegt, um optional den Kontext der jeweiligen Ausführung zu speichern.
 * **ChaosTargetFilter**: Dieser Filter kann verwendet werden, um Chaos-Fehler nur auf bestimmte Knotentypen oder nur auf bestimmte Anwendungsinstanzen auszurichten. Wenn „ChaosTargetFilter“ nicht verwendet wird, stört Chaos alle Clusterentitäten. Wenn „ChaosTargetFilter“ verwendet wird, stört Chaos nur die Entitäten, die der ChaosTargetFilter-Spezifikation entsprechen. „NodeTypeInclusionList“ und „ApplicationInclusionList“ gestatten lediglich die Vereinigungssemantik. Mit anderen Worten, es ist nicht möglich, eine Schnittmenge von „NodeTypeInclusionList“ und „ApplicationInclusionList“ anzugeben. Es ist z. B. nicht möglich, Folgendes anzugeben: „Diese Anwendung nur bemängeln, wenn sie sich auf diesem Knotentyp befindet“. Sobald eine Entität entweder in „NodeTypeInclusionList“ oder „ApplicationInclusionList“ enthalten ist, kann diese Entität nicht mit „ChaosTargetFilter“ ausgeschlossen werden. Selbst wenn „applicationX“ nicht in „ApplicationInclusionList“ enthalten ist, kann „applicationX“ in manchen Chaos-Iterationen fehlerhaft sein, da es sich anscheinend auf einem Knoten von „nodeTypeY“ befindet, der in „NodeTypeInclusionList“ enthalten ist. Wenn sowohl „NodeTypeInclusionList“ als auch „ApplicationInclusionList“ NULL oder leer sind, wird „ArgumentException“ ausgelöst.
-    * **NodeTypeInclusionList**: Eine Liste von Knotentypen, die in Chaos-Fehler einbezogen werden sollen. Für die Knoten dieser Knotentypen sind alle Arten von Fehlern („Knoten neu starten“, „Codepaket neu starten“, „Replikat entfernen“, „Replikat neu starten“, „primäres Replikat verschieben“ und „sekundäres Replikat verschieben“) aktiviert. Wenn ein Knotentyp (z. B. „NodeTypeX“) nicht in „NodeTypeInclusionList“ enthalten ist, dann werden Fehler auf Knotenebene (z. B. „NodeRestart“) niemals für die Knoten von „NodeTypeX“ aktiviert, aber Codepaket- und Replikatfehler können für „NodeTypeX“ weiterhin aktiviert werden, wenn sich eine Anwendung in „ApplicationInclusionList“ zufällig auf einem Knoten von „NodeTypeX“ befindet. Es können maximal 100 Knotentypnamen in diese Liste aufgenommen werden. Um diese Zahl zu erhöhen, ist ein Upgrade für die MaxNumberOfNodeTypesInChaosTargetFilter-Konfiguration erforderlich.
-    * **ApplicationInclusionList**: Eine Liste der Anwendungs-URIs, die in Chaos-Fehler einbezogen werden sollen. Alle Replikate, die zu den Diensten dieser Anwendungen gehören, sind durch Chaos für Replikatfehler anfällig („Replikat neu starten“, „Replikat entfernen“, „primäres Replikat verschieben“ und „sekundäres Replikat verschieben“). Chaos startet ein Codepaket möglicherweise nur neu, wenn das Codepaket nur Replikate dieser Anwendungen hostet. Wenn eine Anwendung nicht in dieser Liste enthalten ist, kann sie dennoch in einer Chaos-Iteration gestört werden, wenn die Anwendung auf einem Knoten eines Knotentyps landet, der in NodeTypeInclusionList enthalten ist. Wenn „applicationX“ jedoch durch Platzierungseinschränkungen an „nodeTypeY“ gebunden ist und „applicationX“ in „ApplicationInclusionList“ fehlt und „nodeTypeY“ in „NodeTypeInclusionList“ fehlt, dann wird „applicationX“ niemals fehlerhaft sein. Es können maximal 1000 Anwendungsnamen in diese Liste aufgenommen werden. Um diese Zahl zu erhöhen, ist ein Upgrade für die MaxNumberOfApplicationsInChaosTargetFilter-Konfiguration erforderlich.
+    * **NodeTypeInclusionList**: Eine Liste von Knotentypen, die in Chaos-Fehler einbezogen werden sollen. Alle Fehlertypen (Knoten neu starten, Codepaket neu starten, Replikat entfernen, Replikat neu starten, primär verschieben, sekundär verschieben und Instanz verschieben) sind für die Knoten dieser Knotentypen aktiviert. Wenn ein Knotentyp (z. B. „NodeTypeX“) nicht in „NodeTypeInclusionList“ enthalten ist, dann werden Fehler auf Knotenebene (z. B. „NodeRestart“) niemals für die Knoten von „NodeTypeX“ aktiviert, aber Codepaket- und Replikatfehler können für „NodeTypeX“ weiterhin aktiviert werden, wenn sich eine Anwendung in „ApplicationInclusionList“ zufällig auf einem Knoten von „NodeTypeX“ befindet. Es können maximal 100 Knotentypnamen in diese Liste aufgenommen werden. Um diese Zahl zu erhöhen, ist ein Upgrade für die MaxNumberOfNodeTypesInChaosTargetFilter-Konfiguration erforderlich.
+    * **ApplicationInclusionList**: Eine Liste der Anwendungs-URIs, die in Chaos-Fehler einbezogen werden sollen. Alle Replikate, die zu Diensten dieser Anwendungen gehören, sind für Replikatfehler (Replikat neu starten, Replikat entfernen, primäres Replikat verschieben, sekundäres Replikat verschieben und Instanz verschieben) durch Chaos zugänglich. Chaos startet ein Codepaket möglicherweise nur neu, wenn das Codepaket nur Replikate dieser Anwendungen hostet. Wenn eine Anwendung nicht in dieser Liste enthalten ist, kann sie dennoch in einer Chaos-Iteration gestört werden, wenn die Anwendung auf einem Knoten eines Knotentyps landet, der in NodeTypeInclusionList enthalten ist. Wenn „applicationX“ jedoch durch Platzierungseinschränkungen an „nodeTypeY“ gebunden ist und „applicationX“ in „ApplicationInclusionList“ fehlt und „nodeTypeY“ in „NodeTypeInclusionList“ fehlt, dann wird „applicationX“ niemals fehlerhaft sein. Es können maximal 1000 Anwendungsnamen in diese Liste aufgenommen werden. Um diese Zahl zu erhöhen, ist ein Upgrade für die MaxNumberOfApplicationsInChaosTargetFilter-Konfiguration erforderlich.
 
 ## <a name="how-to-run-chaos"></a>Ausführen des Chaostests
 
@@ -137,14 +138,15 @@ class Program
                 MaxPercentUnhealthyNodes = 100
             };
 
-            // All types of faults, restart node, restart code package, restart replica, move primary replica,
-            // and move secondary replica will happen for nodes of type 'FrontEndType'
+            // All types of faults, restart node, restart code package, restart replica, move primary
+            // replica, move secondary replica, and move instance will happen for nodes of type 'FrontEndType'
             var nodetypeInclusionList = new List<string> { "FrontEndType"};
 
             // In addition to the faults included by nodetypeInclusionList,
-            // restart code package, restart replica, move primary replica, move secondary replica faults will
-            // happen for 'fabric:/TestApp2' even if a replica or code package from 'fabric:/TestApp2' is residing
-            // on a node which is not of type included in nodeypeInclusionList.
+            // restart code package, restart replica, move primary replica, move secondary replica,
+            //  and move instance faults will happen for 'fabric:/TestApp2' even if a replica or code
+            // package from 'fabric:/TestApp2' is residing on a node which is not of type included
+            // in nodeypeInclusionList.
             var applicationInclusionList = new List<string> { "fabric:/TestApp2" };
 
             // List of cluster entities to target for Chaos faults.

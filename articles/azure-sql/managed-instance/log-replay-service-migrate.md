@@ -8,20 +8,20 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
-ms.date: 03/01/2021
-ms.openlocfilehash: 0bc00aea67fa2f71599ee62e657e1ca1b0627681
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/31/2021
+ms.openlocfilehash: 8e78db5b9d496c2ac13c9f1214b386770c11e21e
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199848"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075882"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mit dem Protokollwiedergabedienst (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Datenbankmigration von SQL Server 2008 bis 2019 zu Azure SQL Managed Instance konfigurieren, indem Sie den Protokollwiedergabedienst (Log Replay Service, LRS) verwenden, der sich derzeit in der öffentlichen Vorschauphase befindet. Hierbei handelt es sich um einen Clouddienst, der für SQL Managed Instance aktiviert ist und auf der SQL Server-Technologie für den Protokollversand basiert. 
 
-Für [Azure Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance) und den Protokollwiedergabedienst werden die gleiche zugrunde liegende Migrationstechnologie und die gleichen APIs verwendet. Mit der Veröffentlichung des Protokollwiedergabediensts verbessern wir die Voraussetzungen für komplexe benutzerdefinierte Migrationen und die Hybridarchitektur zwischen lokalen SQL Server-Instanzen und SQL Managed Instance.
+Für [Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) und den Protokollwiedergabedienst werden die gleiche zugrunde liegende Migrationstechnologie und die gleichen APIs verwendet. Mit der Veröffentlichung des Protokollwiedergabediensts verbessern wir die Voraussetzungen für komplexe benutzerdefinierte Migrationen und die Hybridarchitektur zwischen lokalen SQL Server-Instanzen und SQL Managed Instance.
 
 ## <a name="when-to-use-log-replay-service"></a>Wann sollte der Protokollwiedergabedienst verwendet werden?
 
@@ -34,6 +34,7 @@ Die Verwendung des Protokollwiedergabediensts kann in den folgenden Fällen hilf
 - Für die ausführbare Datei von Database Migration Service besteht kein Zugriff auf Datenbanksicherungen.
 - Es besteht kein Zugriff auf das Hostbetriebssystem, oder es sind keine Administratorrechte vorhanden.
 - Sie können in Ihrer Umgebung keine Netzwerkports für Azure öffnen.
+- Netzwerk Drosselung oder Proxy Blockierungs Probleme in Ihrer Umgebung.
 - Sicherungen werden über die Option `TO URL` direkt in Azure Blob Storage gespeichert.
 - Sie müssen differenzielle Sicherungen verwenden.
 
@@ -66,11 +67,11 @@ Nachdem der Protokollwiedergabedienst beendet wurde – entweder automatisch bei
     
 | Vorgang | Details |
 | :----------------------------- | :------------------------- |
-| **1. Kopieren von Datenbanksicherungen aus SQL Server in Blob Storage** | Kopieren Sie vollständige, differenzielle und Protokollsicherungen aus SQL Server per [AzCopy](/azure/storage/common/storage-use-azcopy-v10) oder [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) in den Blob Storage-Container. <br /><br />Hierbei können Sie beliebige Dateinamen verwenden. Für den Protokollwiedergabedienst muss keine bestimmte Namenskonvention für Dateien befolgt werden.<br /><br />Bei der Migration mehrerer Datenbanken benötigen Sie für jede Datenbank einen separaten Ordner. |
+| **1. Kopieren von Datenbanksicherungen aus SQL Server in Blob Storage** | Kopieren Sie vollständige, differenzielle und Protokollsicherungen aus SQL Server per [AzCopy](../../storage/common/storage-use-azcopy-v10.md) oder [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) in den Blob Storage-Container. <br /><br />Hierbei können Sie beliebige Dateinamen verwenden. Für den Protokollwiedergabedienst muss keine bestimmte Namenskonvention für Dateien befolgt werden.<br /><br />Bei der Migration mehrerer Datenbanken benötigen Sie für jede Datenbank einen separaten Ordner. |
 | **2. Starten des Protokollwiedergabediensts in der Cloud** | Sie können den Dienst mit den folgenden Cmdlets neu starten: PowerShell ([start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) oder Azure CLI ([az_sql_midb_log_replay_start](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> Starten Sie den Protokollwiedergabedienst separat für jede Datenbank, die auf einen Sicherungsordner in Blob Storage verweist. <br /><br /> Nachdem der Dienst gestartet wurde, wird mit dem Wiederherstellen der Sicherungen aus dem Blob Storage-Container in SQL Managed Instance begonnen.<br /><br /> Wenn Sie den Protokollwiedergabedienst im Modus „Kontinuierlich“ gestartet haben, achtet der Dienst nach der Wiederherstellung aller anfänglich hochgeladenen Sicherungen auf neue Dateien, die in den Ordner hochgeladen werden. Vom Dienst werden basierend auf der Kette mit den Protokollfolgenummern fortlaufend Protokolle angewendet, bis der Dienst beendet wird. |
 | **2.1. Überwachen des Vorgangsstatus** | Sie können den Status des Wiederherstellungsvorgangs mit den folgenden Cmdlets überwachen: PowerShell ([get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) oder Azure CLI ([az_sql_midb_log_replay_show](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
 | **2.2. Beenden des Vorgangs bei Bedarf** | Falls Sie den Migrationsprozess beenden müssen, können Sie die folgenden Cmdlets verwenden: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) oder Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> Wenn Sie den Vorgang beenden, wird die Datenbank gelöscht, die Sie in SQL Managed Instance wiederherstellen. Nachdem Sie einen Vorgang beendet haben, können Sie den Protokollwiedergabedienst für eine Datenbank nicht fortsetzen. Sie müssen den Migrationsprozess ganz neu starten. |
-| **3. Durchführen der Übernahme in die Cloud (bei entsprechender Bereitschaft)** | Beenden Sie die Anwendung und die Workload. Erstellen Sie die letzte Log Tail-Sicherung, und laden Sie sie in Azure Blob Storage hoch.<br /><br /> Beenden Sie die Übernahme, indem Sie für den Protokollwiedergabedienst den Vorgang `complete` mit einem der folgenden Cmdlets initiieren: PowerShell ([complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) oder Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Mit diesem Vorgang wird der Protokollwiedergabedienst beendet. Dies bewirkt, dass die Datenbank in den Onlinezustand versetzt wird und in SQL Managed Instance für Lese- und Schreibvorgänge genutzt werden kann.<br /><br /> Legen Sie für die Verbindungszeichenfolge der Anwendung fest, dass sie nicht mehr auf SQL Server, sondern auf SQL Managed Instance verweist. |
+| **3. Durchführen der Übernahme in die Cloud (bei entsprechender Bereitschaft)** | Beenden Sie die Anwendung und die Workload. Erstellen Sie die letzte Log Tail-Sicherung, und laden Sie sie in Azure Blob Storage hoch.<br /><br /> Beenden Sie die Übernahme, indem Sie für den Protokollwiedergabedienst den Vorgang `complete` mit einem der folgenden Cmdlets initiieren: PowerShell ([complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) oder Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Mit diesem Vorgang wird der Protokollwiedergabedienst beendet. Dies bewirkt, dass die Datenbank in den Onlinezustand versetzt wird und in SQL Managed Instance für Lese- und Schreibvorgänge genutzt werden kann.<br /><br /> Legen Sie für die Verbindungszeichenfolge der Anwendung fest, dass sie nicht mehr auf SQL Server, sondern auf SQL Managed Instance verweist. Sie müssen diesen Schritt selbst orchestrieren, entweder durch eine manuelle Änderung der Verbindungszeichenfolge in Ihrer Anwendung oder automatisch (z. B. wenn Ihre Anwendung die Verbindungszeichenfolge aus einer Eigenschaft oder einer Datenbank lesen kann). |
 
 ## <a name="requirements-for-getting-started"></a>Anforderungen für den Einstieg
 
@@ -164,7 +165,7 @@ Azure Blob Storage wird als zwischengeschalteter Speicher für Sicherungsdateien
 
 Beim Migrieren von Datenbanken zu einer verwalteten Instanz mit dem Protokollwiedergabedienst können Sie die folgenden Ansätze nutzen, um Sicherungen in Blob Storage hochzuladen:
 - Verwenden der nativen SQL Server-Funktion für die [Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url)
-- Verwenden von [AzCopy](/azure/storage/common/storage-use-azcopy-v10) oder des [Azure Storage-Explorers](https://azure.microsoft.com/en-us/features/storage-explorer), um Sicherungen in einen Blobcontainer hochzuladen
+- Verwenden von [AzCopy](../../storage/common/storage-use-azcopy-v10.md) oder des [Azure Storage-Explorers](https://azure.microsoft.com/en-us/features/storage-explorer), um Sicherungen in einen Blobcontainer hochzuladen
 - Verwenden des Storage-Explorers im Azure-Portal
 
 ### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>Erstellen von Sicherungen aus SQL Server direkt in Blob Storage

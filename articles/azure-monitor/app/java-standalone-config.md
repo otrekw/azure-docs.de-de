@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224655"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449969"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -39,14 +39,14 @@ Weitere Informationen und zusätzliche Konfigurationsoptionen finden Sie unten.
 
 ## <a name="configuration-file-path"></a>Pfad der Konfigurationsdatei
 
-Standardmäßig erwartet Application Insights Java 3.0 eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.0.2.jar` befindet.
+Standardmäßig erwartet Application Insights Java 3.0 eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.0.3.jar` befindet.
 
 Verwenden Sie eines der folgenden Elemente, um einen eigenen Pfad für Ihre Konfigurationsdatei anzugeben:
 
 * Umgebungsvariable `APPLICATIONINSIGHTS_CONFIGURATION_FILE` oder
 * Java-Systemeigenschaft `applicationinsights.configuration.file`
 
-Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.0.2.jar` aufgelöst.
+Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.0.3.jar` aufgelöst.
 
 ## <a name="connection-string"></a>Verbindungszeichenfolge
 
@@ -61,7 +61,7 @@ Eine Verbindungszeichenfolge ist erforderlich. Die Verbindungszeichenfolge finde
 }
 ```
 
-Sie können die Verbindungszeichenfolge auch über die Umgebungsvariable `APPLICATIONINSIGHTS_CONNECTION_STRING` festlegen (die dann Vorrang hat, wenn die Verbindungszeichenfolge auch in der JSON-Konfiguration angegeben ist).
+Sie können die Verbindungszeichenfolge auch über die Umgebungsvariable `APPLICATIONINSIGHTS_CONNECTION_STRING` festlegen (diese hat dann Vorrang vor der Verbindungszeichenfolge, die in der JSON-Konfiguration angegeben ist).
 
 Wird die Verbindungszeichenfolge nicht festgelegt, wird der Java-Agent deaktiviert.
 
@@ -81,7 +81,7 @@ Wenn Sie den Cloudrollennamen festlegen möchten:
 
 Falls der Cloudrollenname nicht festgelegt ist, wird der Name der Application Insights-Ressource zur Beschriftung der Komponente in der Anwendungsübersicht verwendet.
 
-Sie können den Cloudrollennamen auch über die Umgebungsvariable `APPLICATIONINSIGHTS_ROLE_NAME` festlegen (die dann Vorrang hat, wenn der Cloudrollenname auch in der JSON-Konfiguration angegeben ist).
+Sie können den Cloudrollennamen auch über die Umgebungsvariable `APPLICATIONINSIGHTS_ROLE_NAME` festlegen (dieser hat dann Vorrang vor dem Cloudrollennamen, der in der JSON-Konfiguration angegeben ist).
 
 ## <a name="cloud-role-instance"></a>Cloudrolleninstanz
 
@@ -98,7 +98,7 @@ Wenn Sie für die Cloudrolleninstanz einen anderen Namen festlegen möchten:
 }
 ```
 
-Sie können die Cloudrolleninstanz auch über die Umgebungsvariable `APPLICATIONINSIGHTS_ROLE_INSTANCE` festlegen (die dann Vorrang hat, wenn die Cloudrolleninstanz auch in der JSON-Konfiguration angegeben ist).
+Sie können die Cloudrolleninstanz auch über die Umgebungsvariable `APPLICATIONINSIGHTS_ROLE_INSTANCE` festlegen (diese hat dann Vorrang vor der Cloudrolleninstanz, die in der JSON-Konfiguration angegeben ist).
 
 ## <a name="sampling"></a>Stichproben
 
@@ -117,10 +117,21 @@ Hier sehen Sie ein Beispiel für das Festlegen der Stichprobenentnahme, um ungef
 }
 ```
 
-Sie können den Prozentsatz der Stichprobenentnahme auch über die Umgebungsvariable `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` festlegen (die dann Vorrang hat, wenn der Prozentsatz der Stichprobenentnahme auch in der JSON-Konfiguration angegeben ist).
+Sie können den Prozentsatz der Stichprobenentnahme auch über die Umgebungsvariable `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` festlegen (dieser hat dann Vorrang vor dem Prozentsatz der Stichprobenentnahme, der in der JSON-Konfiguration angegeben ist).
 
 > [!NOTE]
 > Für den Prozentsatz der Stichprobenerstellung wählen Sie einen Prozentsatz, der sich als Bruch darstellen lässt (100/N, wobei N eine Ganzzahl ist). Andere Werte werden bei der Stichprobenerstellung gegenwärtig nicht unterstützt.
+
+## <a name="sampling-overrides-preview"></a>Stichprobenüberschreibungen (Vorschau)
+
+Dieses Feature befindet sich ab 3.0.3 in der Vorschauphase.
+
+Mithilfe von Stichprobenüberschreibungen können Sie den [Standardprozentsatz der Stichprobenentnahme](#sampling) überschreiben. Hier einige Beispiele:
+* Legen Sie den Prozentsatz der Stichprobenentnahme für überflüssige Integritätsprüfungen auf 0 (oder einen kleinen Wert) fest.
+* Legen Sie den Prozentsatz der Stichprobenentnahme für überflüssige Abhängigkeitsaufrufe auf 0 (oder einen kleinen Wert) fest.
+* Legen Sie den Prozentsatz der Stichprobenentnahme für einen wichtigen Anforderungstyp (z. B. `/login`) auf 100 fest, auch wenn die Standardstichprobenentnahme auf einen niedrigeren Wert festgelegt ist.
+
+Weitere Informationen finden Sie in der Dokumentation zu [Stichprobenüberschreibungen](./java-standalone-sampling-overrides.md).
 
 ## <a name="jmx-metrics"></a>JMX-Metriken
 
@@ -176,9 +187,13 @@ Dieses Feature befindet sich in der Vorschauphase.
 Mit diesem Feature können Sie Regeln konfigurieren, die auf Anforderungs-, Abhängigkeits- und Überwachungstelemetriedaten angewendet werden. Zum Beispiel:
  * Maskieren vertraulicher Daten
  * Bedingtes Hinzufügen benutzerdefinierter Dimensionen
- * Aktualisieren des Telemetrienamens für Aggregation und Anzeige
+ * Aktualisieren des Namens des span-Elements, das zum Aggregieren ähnlicher Telemetriedaten im Azure-Portal verwendet wird
+ * Verwerfen bestimmter span-Attribute zur Senkung von Erfassungskosten
 
 Weitere Informationen finden Sie in der [Dokumentation zu Telemetrieprozessoren](./java-standalone-telemetry-processors.md).
+
+> [!NOTE]
+> Wenn Sie bestimmte (ganze) Span-Elemente zur Senkung von Erfassungskosten verwerfen möchten, finden Sie Informationen dazu unter [Stichprobenüberschreibungen](./java-standalone-sampling-overrides.md).
 
 ## <a name="auto-collected-logging"></a>Automatisch gesammelte Protokolle
 
@@ -200,11 +215,11 @@ Die für Application Insights konfigurierte Standardebene ist `INFO`. Wenn Sie d
 }
 ```
 
-Sie können die Ebene auch über die Umgebungsvariable `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` festlegen (die dann Vorrang hat, wenn die Ebene auch in der JSON-Konfiguration angegeben ist).
+Sie können die Ebene auch über die Umgebungsvariable `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` festlegen (diese hat dann Vorrang vor der Ebene, die in der JSON-Konfiguration angegeben ist).
 
 Nachfolgend werden die gültigen `level`-Werte, die Sie in der Datei `applicationinsights.json` angeben können, und deren Zuordnung zu den Protokolliergraden in verschiedenen Protokollierungsframeworks aufgeführt:
 
-| level             | Log4j  | Logback | JUL     |
+| Level             | Log4j  | Logback | JUL     |
 |-------------------|--------|---------|---------|
 | OFF               | OFF    | OFF     | OFF     |
 | FATAL             | FATAL  | ERROR   | SEVERE  |
@@ -241,9 +256,32 @@ So deaktivieren Sie die automatische Erfassung von Micrometer-Metriken (einschli
 }
 ```
 
+## <a name="auto-collected-azure-sdk-telemetry"></a>Automatisch erfasste Azure SDK-Telemetriedaten
+
+Dieses Feature befindet sich in der Vorschauphase.
+
+Viele der neuesten Azure SDK-Bibliotheken geben Telemetriedaten aus.
+
+Ab Version 3.0.3 können Sie die Erfassung dieser Telemetriedaten aktivieren:
+
+```json
+{
+  "preview": {
+    "instrumentation": {
+      "azureSdk": {
+        "enabled": true
+      }
+    }
+  }
+}
+```
+
+Sie können dieses Feature auch mithilfe der Umgebungsvariablen `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` aktivieren
+(dies hat dann Vorrang vor der Aktivierung, die in der JSON-Konfiguration angegeben ist).
+
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Unterdrücken bestimmter automatisch erfasster Telemetriedaten
 
-Ab Version 3.0.2 können bestimmte automatisch erfasste Telemetriedaten mithilfe der folgenden Konfigurationsoptionen unterdrückt werden:
+Ab Version 3.0.3 können bestimmte automatisch erfasste Telemetriedaten mithilfe der folgenden Konfigurationsoptionen unterdrückt werden:
 
 ```json
 {
@@ -252,6 +290,9 @@ Ab Version 3.0.2 können bestimmte automatisch erfasste Telemetriedaten mithilf
       "enabled": false
     },
     "jdbc": {
+      "enabled": false
+    },
+    "jms": {
       "enabled": false
     },
     "kafka": {
@@ -265,10 +306,28 @@ Ab Version 3.0.2 können bestimmte automatisch erfasste Telemetriedaten mithilf
     },
     "redis": {
       "enabled": false
+    },
+    "springScheduling": {
+      "enabled": false
     }
   }
 }
 ```
+
+Sie können diese Instrumentierungen auch mithilfe der folgenden Umgebungsvariablen unterdrücken:
+
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
+
+(dies hat dann Vorrang vor der Aktivierung, die in der JSON-Konfiguration angegeben ist).
+
+> HINWEIS Wenn Sie eine detailliertere Steuerung wünschen, z. B. um einige, aber nicht alle Redis-Aufrufe zu unterdrücken, finden Sie Informationen dazu unter [Stichprobenüberschreibungen](./java-standalone-sampling-overrides.md).
 
 ## <a name="heartbeat"></a>Heartbeat
 
@@ -306,7 +365,7 @@ Dieses Feature befindet sich in der Vorschauphase.
 
 Standardmäßig werden Metriken alle 60 Sekunden aufgezeichnet.
 
-Ab Version 3.0.3-BETA können Sie dieses Intervall ändern:
+Ab Version 3.0.3 können Sie dieses Intervall ändern:
 
 ```json
 {
@@ -366,13 +425,13 @@ Application Insights Java 3.0 protokolliert standardmäßig auf Ebene `INFO` in
 
 `level` kann `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG` oder `TRACE` sein.
 
-`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.0.2.jar` befindet.
+`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.0.3.jar` befindet.
 
 `maxSizeMb` entspricht der maximalen Größe der Protokolldatei, bevor ein Rollover durchgeführt wird.
 
 `maxHistory` entspricht der Anzahl der beibehaltenen Protokolldateien, für die ein Rollover durchgeführt wurde (zusätzlich zur aktuellen Protokolldatei).
 
-Ab Version 3.0.2 können Sie auch das `level` der Selbstdiagnose über die Umgebungsvariable `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` festlegen (die dann Vorrang hat, wenn das `level` der Selbstdiagnose auch in der JSON-Konfiguration angegeben wird).
+Ab Version 3.0.2 können Sie auch das `level` der Selbstdiagnose über die Umgebungsvariable `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` festlegen (das dann Vorrang vor der Ebene der Selbstdiagnose, die in der JSON-Konfiguration angegeben ist).
 
 ## <a name="an-example"></a>Beispiel
 

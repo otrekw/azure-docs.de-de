@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d80caf767d923ce2539ca254a8312371155a3104
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553730"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607591"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Problembehandlung für Kataloge mit freigegebenen Images in Azure
 
@@ -52,7 +52,7 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Ursache:** Sie haben versucht, einen Katalog zu löschen, der mindestens eine vorhandene Imagedefinition enthält. Ein Katalog muss leer sein, bevor er gelöscht werden kann.  
 **Problemumgehung**: Löschen Sie alle Imagedefinitionen innerhalb des Katalogs, und fahren Sie dann mit dem Löschen des Katalogs fort. Wenn die Imagedefinition Imageversionen enthält, müssen Sie die Imageversionen löschen, bevor Sie die Imagedefinitionen löschen.
 
-**Meldung:** *The gallery name '<galleryName\>' is not unique within the subscription '<subscriptionId>'. (Der Katalogname "<galleryName>" ist innerhalb des Abonnements "[subscriptionID]" nicht eindeutig.) Wählen Sie einen anderen Katalognamen aus.*  
+**Meldung:** *The gallery name '<galleryName\>' is not unique within the subscription '<subscriptionID>'. (Der Katalogname "<galleryName>" ist innerhalb des Abonnements "[subscriptionID]" nicht eindeutig.) Wählen Sie einen anderen Katalognamen aus.*  
 **Ursache:** Es ist bereits ein Katalog mit demselben Namen vorhanden, und Sie haben versucht, einen weiteren Katalog mit diesem Namen zu erstellen.  
 **Problemumgehung:** Wählen Sie einen anderen Namen für den Katalog aus.
 
@@ -127,7 +127,7 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Ursache:** Sie haben versucht, eine Imagedefinition zu löschen, die Imageversionen enthält. Eine Imagedefinition muss leer sein, ehe sie gelöscht werden kann.  
 **Problemumgehung**: Löschen Sie alle Imageversionen innerhalb der Imagedefinition, und fahren Sie dann mit dem Löschen der Imagedefinition fort.
 
-**Meldung:** *Cannot bind parameter <property\>. (Der Parameter <property> kann nicht gebunden werden.) <value\> kann nicht in <propertyType\> konvertiert werden. Der Bezeichnername <value\> kann keinem gültigen Enumeratornamen zugeordnet werden. Geben Sie einen der folgenden Enumeratornamen an, und versuchen Sie es erneut: <choice1\>, <choice2\>, …*  
+**Meldung**: *Kann Parameter nicht binden <property\>. Kann Wert nicht <value\> Typ <propertyType konvertieren\>. Kann Bezeichnername nicht <value\> einem gültigen Enumeratornamen zuordnen. Spezifizieren Sie einen der folgenden Enumeratornamen und versuchen Sie es nocheinmal: <choice\_1\>, <choice\_2\>, …*  
 **Ursache:** Die Eigenschaft verfügt über eine eingeschränkte Liste möglicher Werte, und <value\> gehört nicht dazu.  
 **Problemumgehung**: Wählen Sie einen der möglichen Werte für <choice\> aus.
 
@@ -185,7 +185,7 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Ursache:** Wenn Sie eine Imageversion mithilfe einer Liste von Datenträgern und/oder Datenträgermomentaufnahmen erstellen, weisen zwei oder mehr Datenträger oder Datenträgermomentaufnahmen dieselbe Ressourcen-ID auf.  
 **Problemumgehung**: Entfernen oder ändern Sie doppelte Datenträgerquell-IDs.
 
-**Meldung:** *Property id <resourceID\> at path 'properties.storageProfile.<diskImages\>.source.id' is invalid. (Die Eigenschaften-ID <resourceID> im Pfad "properties.storageProfile.<diskImages>.source.id" ist ungültig.) Es wird eine qualifizierte Ressourcen-ID erwartet, die mit /subscriptions/{{subscriptionId}} oder /providers/{{resourceProviderNamespace}}/ beginnt.*  
+**Meldung**: *Property id <resourceID\> at path 'properties.storageProfile.<diskImages\>.source.id' is invalid. (Die Eigenschaften-ID „<resourceID“ im Pfad „properties.storageProfile.<diskImages.source.id“ ist ungültig.) Es wird eine qualifizierte Ressourcen-ID erwartet, die mit /subscriptions/<subscriptionID> oder /providers/<resourceProviderNamespace>/.* beginnt.  
 **Ursache:** Der <resourceID\>-Wert ist falsch formatiert.  
 **Problemumgehung**: Überprüfen Sie, ob die Ressourcen-ID stimmt.
 
@@ -262,7 +262,7 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Problemumgehung**: Stellen Sie sicher, dass die Ressourcen-ID der Quelle stimmt.
 
 **Meldung:** *A disk encryption set is required for disk 'galleryArtifactVersion.properties.publishingProfile.targetRegions.encryption.osDiskImage.diskEncryptionSetId' in target region '<Region\_1\>' since disk encryption set '<diskEncryptionSetID\>' is used for the corresponding disk in region '<Region\_2\>'* (Ein Datenträgerverschlüsselungssatz ist für den Datenträger "galleryArtifactVersion.properties.publishingProfile.targetRegions.encryption.osDiskImage.diskEncryptionSetId" in der Zielregion "<Region_1>" erforderlich, da der Datenträgerverschlüsselungssatz "<diskEncryptionSetID>" für den entsprechenden Datenträger in der Region "<Region_2>" verwendet wird.)  
-**Ursache:** Verschlüsselung wurde auf dem Betriebssystemdatenträger in < Region\_2\>, jedoch nicht in < Region\_1\> verwendet.  
+**Ursache:** Verschlüsselung wurde auf dem Betriebssystemdatenträger in <Region\_2\>, jedoch nicht in <Region\_1\> verwendet.  
 **Problemumgehung**: Wenn Sie Verschlüsselung auf dem Betriebssystemdatenträger verwenden, müssen Sie sie in allen Regionen verwenden.
 
 **Meldung:** *A disk encryption set is required for disk 'LUN <number\>' in target region '<Region\_1\>' since disk encryption set '<diskEncryptionSetID\>' is used for the corresponding disk in region '<Region\_2\>'* (Ein Datenträgerverschlüsselungssatz ist für den Datenträger "LUN <number>" in der Zielregion "<Region_1>" erforderlich, da der Datenträgerverschlüsselungssatz "<diskEncryptionSetID>" für den entsprechenden Datenträger in der Region "<Region_2>" verwendet wird.)  
@@ -303,7 +303,7 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Ursache:** Die beim Bereitstellen des virtuellen Computers verwendete Imagedefinition enthält keine in der aktuellen Version vorhandenen Imageversionen.  
 **Problemumgehung:** Stellen Sie sicher, dass bei mindestens einer Imageversion die Option „Aus aktueller Version ausschließen“ auf FALSE festgelegt ist. 
 
-**Meldung:** *Der Client besitzt die Berechtigung zum Durchführen der Aktion "Microsoft.Compute/galleries/images/versions/read" für den Bereich <resourceID\>. Der aktuelle Mandant <tenantId1\> ist jedoch nicht autorisiert, auf das verknüpfte Abonnement <subscriptionId2\> zuzugreifen.*  
+**Meldung:** *Der Client besitzt die Berechtigung zum Durchführen der Aktion "Microsoft.Compute/galleries/images/versions/read" für den Bereich <resourceID\>. Der aktuelle Mandant <tenantId1\> ist jedoch nicht autorisiert, auf das verknüpfte Abonnement <subscriptionID\> zuzugreifen.*  
 **Ursache:** Die VM oder Skalierungsgruppe wurde mit einem SIG-Image in einem anderen Mandanten erstellt. Sie haben versucht, eine Änderung an der VM oder Skalierungsgruppe vorzunehmen, aber Sie verfügen nicht über den Zugriff auf das Abonnement, zu dem das Image gehört.  
 **Problemumgehung**: Bitten Sie den Besitzer des Abonnements der Imageversion, Ihnen Lesezugriff auf die Imageversion zu gewähren.
 
@@ -327,12 +327,17 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Ursache:** Das aktuelle Quellimage für die Skalierungsgruppe ist ein generalisiertes Quellimage, aber es wird mit einem spezialisierten Quellimage aktualisiert. Das aktuelle und das neue Quellimage für eine Skalierungsgruppe müssen den gleichen Status aufweisen.  
 **Problemumgehung**: Verwenden Sie ein generalisierte Imageversion, um die Skalierungsgruppe zu aktualisieren.
 
-**Meldung:** *Der Datenträgerverschlüsselungssatz <diskEncryptionSetId\> in der Shared Image Gallery-Instanz <versionId\> gehört zum Abonnement <subscriptionId1\> und kann nicht mit der Ressource im Abonnement <subscriptionId2\> verwendet werden.*  
+**Meldung**: *Der Datenverschlüsselungssatz <diskEncryptionSetID\> in der Shared Image Gallery-Instanz <versionID\> gehört zum Abonnement <subscriptionID\_1\> und und kann nicht mit der Ressource '' im Abonnement <subscriptionID\_2\> verwendet werden*  
 **Ursache:** Der zur Verschlüsselung der Imageversion verwendete Datenträgerverschlüsselungssatz befindet sich in einem anderen Abonnement als dem zum Hosten der Imageversion.  
 **Problemumgehung**: Verwenden Sie dasselbe Abonnement für die Imageversion und den Datenträgerverschlüsselungssatz.
 
 **Meldung:** *The VM or virtual machine scale set creation takes a long time.* (Das Erstellen der VM oder VM-Skalierungsgruppe dauert lange.)  
 **Problemumgehung**: Überprüfen Sie, ob der **OSType** der Imageversion, aus der Sie die VM oder VM-Skalierungsgruppe erstellen möchten, derselbe **OSType** wie der des Quellimages ist, das Sie zum Erstellen der Imageversion verwendet haben. 
+
+**Meldung**: *Die Ressource mit der ID <vmID\> hat ein/en anderen Plan ['{\"name\":\"<name>\",\"Verleger\":\"<publisher>\",\"Produkt\":\"<product>\",\"PromotionCode\":\"<promotionCode>\"}'] als der übergeordnete Gallery-Image-Plan ['null'].*  
+**Ursache**: Die übergeordnete Imagedefinition für die bereitgestellte Imageversion verfügt nicht über eine Kaufplaninformation.  
+**Problemumgehung**: Erstellen Sie eine Imagedefinition mit denselben Kaufplandetails aus der Fehlermeldung, und erstellen Sie die Imageversion innerhalb der Imagedefinition.
+
 
 ## <a name="creating-a-disk-from-an-image-version"></a>Erstellen eines Datenträgers aus einer Imageversion ##
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 7fc1822c219c6c881e3d788f6b0e56675cecc466
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0939216e1d96e898d7c45b9e7a3ec72453b263d6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445629"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958076"
 ---
 Erste Schritte mit Gesichtserkennung unter Verwendung der Gesichtserkennungs-Clientbibliothek für Python. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -22,7 +22,7 @@ Verwenden Sie die Clientbibliothek zur Gesichtserkennung für Python für Folgen
 
 * [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
-* [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group)
+* [Erstellen und Trainieren einer PersonGroup](#create-and-train-a-persongroup)
 * [Identifizieren eines Gesichts](#identify-a-face)
 * [Überprüfen von Gesichtern](#verify-faces)
 
@@ -86,7 +86,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Clien
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
-* [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group)
+* [Erstellen und Trainieren einer PersonGroup](#create-and-train-a-persongroup)
 * [Identifizieren eines Gesichts](#identify-a-face)
 * [Überprüfen von Gesichtern](#verify-faces)
 
@@ -133,7 +133,7 @@ Verwenden Sie den folgenden Code, um die Übereinstimmungsdetails in der Konsole
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar_print)]
 
-## <a name="create-and-train-a-person-group"></a>Erstellen und Trainieren einer Personengruppe
+## <a name="create-and-train-a-persongroup"></a>Erstellen und Trainieren einer PersonGroup
 
 Mit dem folgenden Code wird eine Personengruppe (**PersonGroup**) mit drei verschiedenen Personen (**Person**) erstellt. Er ordnet jeder **Person** verschiedene Beispielbilder zu. Danach folgt ein Trainingsschritt, um die einzelnen Personen zu erkennen. 
 
@@ -174,7 +174,7 @@ Nach dem Zuweisen von Gesichtern müssen Sie das **PersonGroup**-Objekt trainier
 Der Identifizierungsvorgang verwendet ein Bild einer Person (oder mehrerer Personen) und sucht im Bild nach der Identität der einzelnen Gesichter (Gesichtserkennungssuche). Er vergleicht jedes erkannte Gesicht mit einem **PersonGroup**-Objekt, einer Datenbank mit verschiedenen **Person**-Objekten,deren Gesichtsmerkmale bekannt sind.
 
 > [!IMPORTANT]
-> Damit Sie dieses Beispiel ausführen können, müssen Sie zunächst den Code unter [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group) ausführen.
+> Damit Sie dieses Beispiel ausführen können, müssen Sie zunächst den Code unter [Erstellen und Trainieren einer PersonGroup](#create-and-train-a-persongroup) ausführen.
 
 ### <a name="get-a-test-image"></a>Abrufen eines Testbilds
 

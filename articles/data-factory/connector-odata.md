@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Daten aus OData-Quellen mithilfe einer Kopierakti
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/30/2021
 ms.author: jingwang
-ms.openlocfilehash: 90cc4e3f9915db424cec89cfc764771b5be785e9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9dd86b4982edf5d206e64431a5e1458c4b848e9e
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389721"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968494"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopieren von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -326,6 +326,48 @@ Beim Kopieren von Daten aus OData werden die folgenden Zuordnungen zwischen ODat
 
 > [!NOTE]
 > Komplexe OData-Datentypen (z.B. **Object**) werden nicht unterstützt.
+
+## <a name="copy-data-from-project-online"></a>Kopieren von Daten aus Project Online
+
+Zum Kopieren von Daten aus Project Online können Sie den OData-Connector und ein Zugriffstoken verwenden, das von Tools wie Postman abgerufen wird.
+
+> [!CAUTION]
+> Das Zugriffstoken läuft standardmäßig in 1 Stunde ab, Sie müssen ein neues Zugriffstoken erhalten, wenn es abläuft.
+
+1. Verwenden Sie **Postman** , um das Zugriffstoken zu erhalten:
+
+   1. Navigieren Sie auf der Postman-Website zur Registerkarte **Autorisierung**.
+   1. Wählen Sie im Feld **Typ** die Option **OAuth 2,0** aus, und wählen Sie im Feld **Autorisierungsdaten hinzufügen** die Option **Anforderungsheader** aus.
+   1. Füllen Sie die folgenden Informationen auf der Seite **neues Token konfigurieren** aus, um ein neues Zugriffstoken zu erhalten: 
+      - **Gewährungstyp**: Wählen Sie **Autorisierungscode** aus.
+      - **Rückruf-URL**: Eingeben`https://www.localhost.com/`. 
+      - **Auth URL**: Eingeben `https://login.microsoftonline.com/common/oauth2/authorize?resource=https://<your tenant name>.sharepoint.com`. Ersetzen Sie `<your tenant name>` durch Ihren eigenen Tenant-Namen. 
+      - **Zugriffstoken-URL**: Eingeben `https://login.microsoftonline.com/common/oauth2/token`.
+      - **Client-ID**: Geben Sie Ihre AAD-Dienst Prinzipal-ID ein.
+      - **Geheimer Clientschlüssel**: Geben Sie Ihren Dienstprinzipal-Geheimnis ein.
+      - **Client-Authentifizierung**: Wählen Sie **als grundlegenden Authentifizierungsheader senden** aus.
+     
+   1. Sie werden aufgefordert, sich mit Ihrem Benutzernamen und Kennwort anzumelden.
+   1. Nachdem Sie Ihr Zugriffstoken erhalten haben, kopieren Sie es, und speichern Sie es für den nächsten Schritt.
+   
+    Verwenden Sie [Postman![, um das Zugriffstoken zu erhalten](./media/connector-odata/odata-project-online-postman-access-token-inline.png)](./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox)
+
+1. Erstellen Sie den verknüpften OData-Dienst:
+    - **Dienst-URL**: Eingeben`https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata` . Ersetzen Sie `<your tenant name>` durch Ihren eigenen Tenant-Namen. 
+    - **Authentifizierungstyp**: Wählen Sie **Anonym** aus.
+    - **Autorisierungsheader**:
+        - **Eigenschaftsname**: Wählen Sie **Autorisierung** aus.
+        - **Wert**: Geben Sie das in Schritt 1 kopierte **Zugriffstoken** ein.
+    - Testen des verknüpften Dienstes
+
+    ![Erstellen Sie den verknüpften OData-Dienst:](./media/connector-odata/odata-project-online-linked-service.png)
+
+1. Erstellen Sie das OData-Dataset:
+    1. Erstellen Sie das Dataset t mit dem verknüpften OData-Dienst, den Sie in Schritt 2 erstellt haben.
+    1. Datenvorschau
+ 
+    ![Datenvorschau](./media/connector-odata/odata-project-online-preview-data.png)
+ 
 
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität

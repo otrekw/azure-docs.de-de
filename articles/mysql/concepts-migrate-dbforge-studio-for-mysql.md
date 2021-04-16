@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: d5d694820c2ffd09868d81693d4f98f839a139d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 942651aadf4113c1aca32e4e1d2c558b0d764421
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104591876"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377224"
 ---
 # <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>Herstellen einer Verbindung mit Azure Database for MySQL mithilfe von dbForge Studio for MySQL
 
@@ -78,9 +78,7 @@ Als Ergebnis der Datenbankmigration wird die Datenbank *world_x* in Azure MySQL 
 dbForge Studio for MySQL umfasst einige Tools, die das Migrieren von MySQL-Datenbanken sowie von MySQL-Schemas und/oder -Daten zu Azure ermöglichen. Die Auswahl der Funktionalität hängt von Ihren Anforderungen und den Anforderungen Ihres Projekts ab. Wenn Sie eine Datenbank selektiv verschieben, also nur bestimmte MySQL-Tabellen zu Azure migrieren möchten, empfiehlt es sich, die Funktionen „Schemavergleich“ und „Datenvergleich“ zu verwenden.
 In diesem Beispiel wird die Datenbank *world*, die sich in MySQL-Server befindet, zu Azure Database for MySQL migriert. Bei der Migration mithilfe der Tools „Schemavergleich“ und „Datenvergleich“ von dbForge Studio for MySQL wird eine leere Datenbank in Azure Database for MySQL erstellt und erst mithilfe des Tools „Schemavergleich“ und dann mithilfe des Tools „Datenvergleich“ mit der erforderlichen MySQL-Datenbank synchronisiert. Auf diese Weise werden MySQL-Schemas und -Daten exakt nach Azure verschoben.
 
-### <a name="connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>Herstellen einer Verbindung mit Azure Database for MySQL und Erstellen einer leeren Datenbank
-
-Herstellen einer Verbindung mit Azure Database for MySQL und Erstellen einer leeren Datenbank
+### <a name="step-1-connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>Schritt 1: Herstellen einer Verbindung mit Azure Database for MySQL und Erstellen einer leeren Datenbank
 
 ### <a name="step-2-schema-synchronization"></a>Schritt 2: Schemasynchronisierung
 
@@ -95,7 +93,7 @@ Der Assistent „Neuer Schemavergleich“ wird angezeigt.
 
     :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/schema-sync-wizard.png" alt-text="Assistent für die Schemasynchronisierung":::
 
-### <a name="data-comparison"></a>Datenvergleich
+### <a name="step-3-data-comparison"></a>Schritt 3 Datenvergleich
 
 1. Wählen Sie im Menü „Vergleich“ die Option „Neuer Datenvergleich“ aus. Der Assistent „Neuer Datenvergleich“ wird angezeigt.
 

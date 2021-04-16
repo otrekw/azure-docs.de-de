@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/24/2021
-ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef8c1a50cd3568c6cec9bdb053b02e6e14741eb0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740374"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644672"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics
 
@@ -36,7 +36,20 @@ Wenn Daten in einer SQL-Tabelle empfangen werden und die Zieltabelle noch nicht 
 Im Folgenden finden Sie eine Liste der Voraussetzungen für die Freigabe von Daten aus der SQL-Quelle. 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Voraussetzungen für die Freigabe von Daten aus Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW)
-Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Schritt-Demo](https://youtu.be/hIE-TjJD8Dc) orientieren.
+
+
+Wenn Sie Daten mithilfe Azure Active Directory-Authentifizierung freigeben möchten, finden Sie hier eine Liste der Voraussetzungen:
+
+* Eine Instanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) mit Tabellen und Sichten, die Sie freigeben möchten.
+* Berechtigung zum Schreiben in die Datenbanken in SQL Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle **Mitwirkender** vorhanden.
+* SQL Server **Azure Active Directory Admin**
+* SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
+    1. Navigieren Sie im Azure-Portal zu „SQL Server“. Wählen Sie im linken Navigationsbereich die Option *Firewalls und virtuelle Netzwerke* aus.
+    1. Klicken Sie auf **Ja** für *Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten*.
+    1. Klicken Sie auf **+Client-IP hinzufügen**. Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen bei der nächsten Freigabe von SQL-Daten über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen.
+    1. Klicken Sie auf **Speichern**. 
+
+Wenn Sie Daten mithilfe der SQL-Authentifizierung freigeben möchten, finden Sie unten eine Liste der Voraussetzungen. Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Schritt-Demo](https://youtu.be/hIE-TjJD8Dc) orientieren.
 
 * Eine Instanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) mit Tabellen und Sichten, die Sie freigeben möchten.
 * Berechtigung zum Schreiben in die Datenbanken in SQL Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle **Mitwirkender** vorhanden.
@@ -132,7 +145,9 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
     ![AddDatasets](./media/add-datasets.png "Hinzufügen von Datasets")    
 
-1. Wählen Sie Ihre SQL Server-Instanz oder Ihren Synapse-Arbeitsbereich aus, geben Sie auf Aufforderung Ihre Anmeldeinformationen ein, und wählen Sie **Weiter** aus, um zu dem Objekt zu navigieren, das Sie freigeben möchten. Wählen Sie dann „Datasets hinzufügen“ aus. Sie können Tabellen und Sichten aus Azure SQL-Datenbank und Azure Synapse Analytics (ehemals Azure SQL DW) oder Tabellen aus dem dedizierten SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) auswählen. 
+1. Wählen Sie Ihren SQL Server-oder Synapse-Arbeitsbereich aus. Wenn Sie die AAD-Authentifizierung verwenden und das Kontrollkästchen **Datenfreigabe zulassen, um das oben angegebene SQL-Skript ' Benutzer anlegenr ' in meinem Auftrag auszuführen**, angezeigt wird, aktivieren Sie das Kontrollkästchen. Wenn Sie die SQL-Authentifizierung verwenden, geben Sie Anmeldeinformationen an, und befolgen Sie die Schritte in den Voraussetzungen zum Ausführen des Skripts auf dem Bildschirm. Dies gibt der Data Share-Ressource die Berechtigung, von Ihrer SQL-DB zu lesen. 
+
+   Wählen Sie **Weiter** , um zum zum Objekt, das Sie freigeben möchten navigieren, und wählen Sie „Datasets hinzufügen“. Sie können Tabellen und Sichten aus Azure SQL-Datenbank und Azure Synapse Analytics (ehemals Azure SQL DW) oder Tabellen aus dem dedizierten SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) auswählen. 
 
     ![SelectDatasets](./media/select-datasets-sql.png "Auswählen der Datasets")    
 
@@ -176,7 +191,18 @@ Wenn Sie Daten in Azure Storage empfangen möchten, finden Sie nachfolgend eine 
 Wenn Sie Daten in Azure SQL-Datenbank oder Azure Synapse Analytics empfangen möchten, finden Sie nachfolgend eine Liste mit Voraussetzungen, die erfüllt sein müssen. 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Voraussetzungen für den Empfang von Daten in Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW)
-Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Schritt-Demo](https://youtu.be/aeGISgK1xro) orientieren.
+
+Zum Empfangen von Daten in einem SQL Server, auf dem Sie der **Azure Active Directory Administrator** von SQL Server sind, finden Sie hier eine Liste der Voraussetzungen:
+
+* Eine Instanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW).
+* Berechtigung zum Schreiben in die Datenbanken in SQL Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle **Mitwirkender** vorhanden.
+* SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
+    1. Navigieren Sie im Azure-Portal zu „SQL Server“. Wählen Sie im linken Navigationsbereich die Option *Firewalls und virtuelle Netzwerke* aus.
+    1. Klicken Sie auf **Ja** für *Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten*.
+    1. Klicken Sie auf **+Client-IP hinzufügen**. Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen bei der nächsten Freigabe von SQL-Daten über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen.
+    1. Klicken Sie auf **Speichern**. 
+    
+Zum Empfangen von Daten in einem SQL Server, auf dem Sie der **Azure Active Directory Administrator** von SQL Server sind, finden Sie hier eine Liste der Voraussetzungen. Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Schritt-Demo](https://youtu.be/aeGISgK1xro) orientieren.
 
 * Eine Instanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW).
 * Berechtigung zum Schreiben in Datenbanken auf dem SQL-Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle **Mitwirkender** vorhanden. 
@@ -264,11 +290,11 @@ Führen Sie die folgenden Schritte aus, um zu konfigurieren, wo Sie Daten empfan
 
    ![Dem Ziel zuordnen](./media/dataset-map-target.png "Dem Ziel zuordnen") 
 
-1. Wählen Sie einen Zieldatenspeicher aus, in dem die empfangenen Daten gespeichert werden sollen. Alle Datendateien oder -tabellen im Zieldatenspeicher mit demselben Pfad und Namen werden überschrieben. 
+1. Wählen Sie einen Zieldatenspeicher aus, in dem die empfangenen Daten gespeichert werden sollen. Alle Datendateien oder -tabellen im Zieldatenspeicher mit demselben Pfad und Namen werden überschrieben. Wenn Sie Daten in das SQL-Ziel empfangen und das Kontrollkästchen **Datenfreigabe zulassen, um das oben genannte SQL-Skript „Benutzer anlegen“ in meinem Auftrag auszuführen** , angezeigt wird, aktivieren Sie das Kontrollkästchen. Befolgen Sie andernfalls die Anweisung unter Voraussetzungen zum Ausführen des Skripts auf dem Bildschirm. Dadurch erhält die Data Share-Ressource Schreibrechte für Ihre Ziel-SQL-DB.
 
    ![Zielspeicherkonto](./media/dataset-map-target-sql.png "Zieldatenspeicher") 
 
-1. Wenn der Datenanbieter für die momentaufnahmebasierte Freigabe einen Momentaufnahmezeitplan erstellt hat, um die Daten regelmäßig zu aktualisieren, können Sie auch den Momentaufnahmezeitplan aktivieren, indem Sie die Registerkarte **Momentaufnahmezeitplan** auswählen. Aktivieren Sie das Kontrollkästchen neben „Momentaufnahmezeitplan“, und wählen Sie **+ Aktivieren** aus.
+1. Wenn der Datenanbieter für die momentaufnahmebasierte Freigabe einen Momentaufnahmezeitplan erstellt hat, um die Daten regelmäßig zu aktualisieren, können Sie auch den Momentaufnahmezeitplan aktivieren, indem Sie die Registerkarte **Momentaufnahmezeitplan** auswählen. Aktivieren Sie das Kontrollkästchen neben „Momentaufnahmezeitplan“, und wählen Sie **+ Aktivieren** aus. Beachten Sie, dass die erste geplante Momentaufnahme innerhalb einer Minute ab der geplanten Zeit beginnt und nachfolgende Momentaufnahmen innerhalb von Sekunden ab der geplanten Zeit gestartet werden.
 
    ![Aktivieren von „Momentaufnahmezeitplan“](./media/enable-snapshot-schedule.png "Aktivieren des Momentaufnahmezeitplans")
 

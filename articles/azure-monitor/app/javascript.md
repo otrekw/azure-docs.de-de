@@ -4,12 +4,12 @@ description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdate
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 04cda044b002e226c49f8647d4705d7c0f2a514e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102485485"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565264"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -107,7 +107,7 @@ Alle Konfigurationsoptionen wurden an das Ende des Skripts verlagert, damit nich
 Jede Konfigurationsoption ist im Codeausschnitt oben in einer eigenen Zeile aufgeführt. Wenn Sie den Standardwert einer als „[optional]“ gelisteten Konfigurationsoption nicht überschreiben möchten, können Sie die Zeile entfernen, um die Größe der zurückgegebenen Zeile zu verringern.
 
 Folgende Konfigurationsoptionen stehen zur Verfügung:
-
+ 
 | Name | type | BESCHREIBUNG
 |------|------|----------------
 | src | Zeichenfolge **[erforderlich]** | Die vollständige URL, von der das SDK geladen werden soll. Dieser Wert wird für das Attribut „src“ eines dynamisch hinzugefügten &lt;script /&gt;-Tags verwendet. Sie können die öffentliche CDN-Adresse oder eine privat gehostete nehmen.
@@ -171,52 +171,87 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguration
 Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf „false“ festgelegt werden können. Alle Felder mit Ausnahme von `instrumentationKey` sind optional.
 
-| Name | Standard | BESCHREIBUNG |
-|------|---------|-------------|
-| instrumentationKey | NULL | **Erforderlich**<br>Instrumentierungsschlüssel, den Sie aus dem Azure-Portal abgerufen haben. |
-| accountId | NULL | Eine optionale Konto-ID, wenn Ihre App Benutzer in Konten gruppiert. Keine Leerzeichen, Kommas, Semikolons, Gleichheitszeichen oder senkrechten Striche |
-| sessionRenewalMs | 1800000 | Eine Sitzung wird protokolliert, wenn der Benutzer während dieser Zeitspanne (in Millisekunden) inaktiv ist. Die Standardeinstellung ist „30 Minuten“. |
-| sessionExpirationMs | 86400000 | Eine Sitzung wird protokolliert, wenn sie während dieser Zeitspanne (in Millisekunden) fortgesetzt wurde. Die Standardeinstellung ist „24 Stunden“. |
-| maxBatchSizeInBytes | 10000 | Maximale Größe des Telemetriedatenbatches. Wenn ein Batch diesen Grenzwert überschreitet, wird er sofort gesendet, und ein neuer Batch wird gestartet. |
-| maxBatchInterval | 15000 | Dauer der Batchverarbeitung von Telemetriedaten vor dem Senden (Millisekunden) |
-| disableExceptionTracking | false | Bei „true“ werden Ausnahmen nicht automatisch gesammelt. Der Standardwert ist "false". |
-| disableTelemetry | false | Bei „true“ werden Telemetriedaten nicht gesammelt oder gesendet. Der Standardwert ist "false". |
-| enableDebug | false | Bei „true“ werden **interne** Debugdaten als eine Ausnahme ausgelöst **statt** protokolliert zu werden. Dies geschieht unabhängig von den SDK-Protokollierungseinstellungen. Der Standardwert ist "false". <br>**_Hinweis:_** Wenn Sie diese Einstellung aktivieren, werden die Telemetriedaten beim Auftreten eines internen Fehlers verworfen. Dies kann hilfreich sein, um Probleme mit Ihrer Konfiguration oder der Nutzung des SDK schnell zu identifizieren. Wenn beim Debuggen keine Telemetriedaten verloren gehen sollen, empfiehlt es sich, `consoleLoggingLevel` oder `telemetryLoggingLevel` statt `enableDebug` zu verwenden. |
-| loggingLevelConsole | 0 | Protokolliert **interne** Application Insights-Fehler in der Konsole. <br>0: aus, <br>1: Nur schwerwiegende Fehler, <br>2: Alles (Fehler und Warnungen) |
-| loggingLevelTelemetry | 1 | Sendet **interne** Application Insights-Fehler als Telemetriedaten. <br>0: aus, <br>1: Nur schwerwiegende Fehler, <br>2: Alles (Fehler und Warnungen) |
-| diagnosticLogInterval | 10000 | (intern) Abrufintervall (in ms) für interne Protokollierungswarteschlange |
-| samplingPercentage | 100 | Prozentsatz der Ereignisse, die gesendet werden. Die Standardeinstellung ist „100“. Dies bedeutet, dass alle Ereignisse gesendet werden. Legen Sie diesen Wert fest, wenn Sie Ihre Datenobergrenze für umfangreiche Anwendungen beibehalten möchten. |
-| autoTrackPageVisitTime | false | Bei „true“ wird in einem Seitenaufruf die vorherige Ansichtszeit der instrumentierten Seite nachverfolgt und in Form von Telemetriedaten gesendet. Außerdem wird ein neuer Zeitgeber für den aktuellen Seitenaufruf gestartet. Der Standardwert ist "false". |
-| disableAjaxTracking | false | Bei „true“ werden AJAX-Aufrufe nicht automatisch gesammelt. Der Standardwert ist "false". |
-| disableFetchTracking | true | Bei „true“ werden Anforderungen zum Abrufen nicht automatisch gesammelt. Die Standardeinstellung ist „true“. |
-| overridePageViewDuration | false | Bei „true“ wird das Standardverhalten von „trackPageView“ geändert, um bei dessen Aufruf das Ende des Intervalls für die Seitenaufrufdauer aufzuzeichnen. Bei „false“ ohne Angabe eines benutzerdefinierten Zeitraums für „trackPageView“ wird die Seitenaufrufleistung mithilfe der Navigationszeit-API berechnet. Der Standardwert ist "false". |
-| maxAjaxCallsPerView | 500 | Mit der Standardeinstellung „500“ wird gesteuert, wie viele Ajax-Aufrufe pro Seitenaufruf überwacht werden. Legen Sie „–1“ fest, wenn alle (unbegrenzt) Ajax-Aufrufe auf der Seite überwacht werden sollen. |
-| disableDataLossAnalysis | true | Bei „false“ werden interne Absenderpuffer für Telemetriedaten beim Start auf noch nicht gesendete Elemente überprüft. |
-| disableCorrelationHeaders | false | Bei „false“ fügt das SDK allen Abhängigkeitsanforderungen zwei Kopfzeilen (‚Request-Id‘ und ‚Request-Context‘) hinzu, um sie mit entsprechenden serverseitigen Anforderungen zu korrelieren. Der Standardwert ist "false". |
-| correlationHeaderExcludedDomains |  | Korrelations-Header für bestimmte Domänen deaktivieren |
-| correlationHeaderDomains |  | Korrelations-Header für bestimmte Domänen aktivieren |
-| disableFlushOnBeforeUnload | false | Die Standardeinstellung ist „false“. Bei „true“ wird die Methode „Flush“ (Leeren) beim Auslösen eines „onBeforeUnload“-Ereignisses nicht aufgerufen. |
-| enableSessionStorageBuffer | true | Die Standardeinstellung ist „true“. Bei „true“ wird der Puffer mit allen nicht gesendeten Telemetriedaten im Sitzungsspeicher gespeichert. Der Puffer wird beim Laden der Seite wiederhergestellt. |
-| isCookieUseDisabled | false | Die Standardeinstellung ist „false“. Bei „true“ speichert oder liest das SDK keine Daten aus Cookies. Beachten Sie, dass dadurch die Benutzer- und Sitzungscookies deaktiviert werden und die Nutzungsblätter und Benutzeroberflächen unbrauchbar werden. |
-| cookieDomain | NULL | Benutzerdefinierte Cookiedomäne. Diese ist hilfreich, wenn Sie Application Insights-Cookies über untergeordnete Domänen hinweg freigeben möchten. |
-| isRetryDisabled | false | Die Standardeinstellung ist „false“. Bei „false“ wiederholen Sie den Vorgang für 206 (teilweise erfolgreich), 408 (Timeout), 429 (zu viele Anforderungen), 500 (interner Serverfehler), 503 (Dienst nicht verfügbar) und 0 (offline, nur wenn erkannt). |
-| isStorageUseDisabled | false | Bei „true“ speichert und liest das SDK keine Daten aus dem lokalen Speicher und dem Sitzungsspeicher. Der Standardwert ist "false". |
-| isBeaconApiDisabled | true | Bei „false“ sendet das SDK alle Telemetriedaten mithilfe der [Beacon-API](https://www.w3.org/TR/beacon). |
-| onunloadDisableBeacon | false | Die Standardeinstellung ist „false“. Wenn die Registerkarte geschlossen ist, sendet das SDK alle verbleibenden Telemetriedaten mithilfe der [Beacon-API](https://www.w3.org/TR/beacon). |
-| sdkExtension | NULL | Legt den Erweiterungsnamen „sdk“ fest. Hierbei sind nur alphabetische Zeichen zulässig. Der Erweiterungsname wird dem Tag ‚ai.internal.sdkVersion‘ als Präfix hinzugefügt (z.B. ‚ext_javascript:2.0.0‘). Der Standardwert lautet null. |
-| isBrowserLinkTrackingEnabled | false | Der Standardwert ist "false". Bei „true“ wird das SDK alle Anforderungen vom Typ [Browserverknüpfung](/aspnet/core/client-side/using-browserlink) nachverfolgen. |
-| appId | NULL | „AppId“ wird für die Korrelation zwischen AJAX-Abhängigkeiten verwendet, die clientseitig mit den serverseitigen Anforderungen erfolgt. Wenn die Beacon-API aktiviert ist, kann sie nicht automatisch verwendet werden. Sie kann aber in der Konfiguration manuell festgelegt werden. Die Standardeinstellung ist „null“. |
-| enableCorsCorrelation | false | Bei „true“ fügt das SDK allen CORS-Anforderungen zwei Kopfzeilen (‚Request-Id‘ und ‚Request-Context‘) hinzu, um ausgehende AJAX-Abhängigkeiten mit entsprechenden serverseitigen Anforderungen zu korrelieren. Die Standardeinstellung ist „false“. |
-| namePrefix | nicht definiert | Ein optionaler Wert, der als „name“-Postfix für „localStorage“ und den Cookienamen verwendet wird.
-| enableAutoRouteTracking | false | Routenänderungen in Single-Page-Webanwendungen (Single Page Applications, SPA) automatisch nachverfolgen. Bei „true“ sendet jede Routenänderung einen neuen Seitenaufruf an Application Insights. Hashroutenänderungen (`example.com/foo#bar`) werden ebenfalls als neue Seitenaufrufe aufgezeichnet.
-| enableRequestHeaderTracking | false | Bei „true“ werden AJAX- und Fetch-Anforderungsheader nachverfolgt.Der Standardwert ist „false“.
-| enableResponseHeaderTracking | false | Bei „true“ werden Antwortheader für AJAX- und Fetch-Anforderungen nachverfolgt.Der Standardwert ist „false“.
-| distributedTracingMode | `DistributedTracingModes.AI` | Legt den Modus für verteilte Ablaufverfolgung fest. Wenn der AI_AND_W3C-Modus oder der W3C-Modus festgelegt ist, werden Kontextheader für die W3C-Ablaufverfolgung (traceparent/tracestate) generiert und in alle ausgehenden Anforderungen eingeschlossen. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt. Ein Beispiel finden Sie [hier](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).
-| enableAjaxErrorStatusText | false | Die Standardeinstellung ist „false“. Bei TRUE wird der Text zu Antwortfehlerdaten im Abhängigkeitsereignis für fehlerhafte AJAX-Anforderungen aufgeführt.
-| enableAjaxPerfTracking | false | Die Standardeinstellung ist „false“. Flag, das die Suche nach und das Aufnehmen von zusätzlichen „window.performance“-Timings von Browsern in gemeldeten `ajax`-Metriken (XHR und fetch) ermöglicht.
-| maxAjaxPerfLookupAttempts | 3 | Der Standardwert ist 3. Die maximale Anzahl von Malen, die nach „window.performance“-Timings gesucht werden kann (falls vorhanden). Dies ist erforderlich, weil nicht alle Browser „window.performance“ befüllen, bevor das Ende der XHR-Anforderung gemeldet wird. Bei fetch-Anforderungen wird dies nach der Fertigstellung hinzugefügt.
-| ajaxPerfLookupDelay | 25 | Der Standardwert lautet 25 ms. Die Zeitdauer, die gewartet werden muss, bevor noch einmal versucht werden kann, die „windows.performance“-Timings für eine `ajax`-Anforderung zu suchen. Die Zeit wird in Millisekunden angegeben und direkt an setTimeout() übergeben.
-| enableUnhandledPromiseRejectionTracking | false | Bei TRUE werden unverarbeitete Ablehnungen von Zusagen automatisch erfasst und als JavaScript-Fehler gemeldet. Wenn disableExceptionTracking TRUE ist (Ausnahmen werden nicht nachverfolgt), wird der Konfigurationswert ignoriert, und unverarbeitete Ablehnungen von Zusagen werden nicht gemeldet.
+| Name | BESCHREIBUNG | Standard |
+|------|-------------|---------|
+| instrumentationKey | **Erforderlich**<br>Instrumentierungsschlüssel, den Sie aus dem Azure-Portal abgerufen haben. | Zeichenfolge<br/>NULL |
+| accountId | Eine optionale Konto-ID, wenn Ihre App Benutzer in Konten gruppiert. Keine Leerzeichen, Kommas, Semikolons, Gleichheitszeichen oder senkrechten Striche | Zeichenfolge<br/>NULL |
+| sessionRenewalMs | Eine Sitzung wird protokolliert, wenn der Benutzer während dieser Zeitspanne (in Millisekunden) inaktiv ist. | NUMERIC<br/>1800000<br/>(30 Minuten) |
+| sessionExpirationMs | Eine Sitzung wird protokolliert, wenn sie während dieser Zeitspanne (in Millisekunden) fortgesetzt wurde. | NUMERIC<br/>86400000<br/>(24-Stunden) |
+| maxBatchSizeInBytes | Maximale Größe des Telemetriedatenbatches. Wenn ein Batch diesen Grenzwert überschreitet, wird er sofort gesendet, und ein neuer Batch wird gestartet. | NUMERIC<br/>10000 |
+| maxBatchInterval | Dauer der Batchverarbeitung von Telemetriedaten vor dem Senden (Millisekunden) | NUMERIC<br/>15000 |
+| disable&#8203;ExceptionTracking | Bei „true“ werden Ausnahmen nicht automatisch gesammelt. | boolean<br/> false |
+| disableTelemetry | Bei „true“ werden Telemetriedaten nicht gesammelt oder gesendet. | boolean<br/>false |
+| enableDebug | Bei „true“ werden **interne** Debugdaten als eine Ausnahme ausgelöst **statt** protokolliert zu werden. Dies geschieht unabhängig von den SDK-Protokollierungseinstellungen. Der Standardwert ist "false". <br>**_Hinweis:_** Wenn Sie diese Einstellung aktivieren, werden die Telemetriedaten beim Auftreten eines internen Fehlers verworfen. Dies kann hilfreich sein, um Probleme mit Ihrer Konfiguration oder der Nutzung des SDK schnell zu identifizieren. Wenn beim Debuggen keine Telemetriedaten verloren gehen sollen, empfiehlt es sich, `consoleLoggingLevel` oder `telemetryLoggingLevel` statt `enableDebug` zu verwenden. | boolean<br/>false |
+| loggingLevelConsole | Protokolliert **interne** Application Insights-Fehler in der Konsole. <br>0: aus, <br>1: Nur schwerwiegende Fehler, <br>2: Alles (Fehler und Warnungen) | NUMERIC<br/> 0 |
+| loggingLevelTelemetry | Sendet **interne** Application Insights-Fehler als Telemetriedaten. <br>0: aus, <br>1: Nur schwerwiegende Fehler, <br>2: Alles (Fehler und Warnungen) | NUMERIC<br/> 1 |
+| diagnosticLogInterval | (intern) Abrufintervall (in ms) für interne Protokollierungswarteschlange | NUMERIC<br/> 10000 |
+| samplingPercentage | Prozentsatz der Ereignisse, die gesendet werden. Die Standardeinstellung ist „100“. Dies bedeutet, dass alle Ereignisse gesendet werden. Legen Sie diesen Wert fest, wenn Sie Ihre Datenobergrenze für umfangreiche Anwendungen beibehalten möchten. | NUMERIC<br/>100 |
+| autoTrackPageVisitTime | Bei „true“ wird in einem Seitenaufruf die vorherige Ansichtszeit der instrumentierten Seite nachverfolgt und in Form von Telemetriedaten gesendet. Außerdem wird ein neuer Zeitgeber für den aktuellen Seitenaufruf gestartet. | boolean<br/>false |
+| disableAjaxTracking | Bei „true“ werden AJAX-Aufrufe nicht automatisch gesammelt. | boolean<br/> false |
+| disableFetchTracking | Bei „true“ werden Anforderungen zum Abrufen nicht automatisch gesammelt.|boolean<br/>true |
+| overridePageViewDuration | Bei „true“ wird das Standardverhalten von „trackPageView“ geändert, um bei dessen Aufruf das Ende des Intervalls für die Seitenaufrufdauer aufzuzeichnen. Bei „false“ ohne Angabe eines benutzerdefinierten Zeitraums für „trackPageView“ wird die Seitenaufrufleistung mithilfe der Navigationszeit-API berechnet. |boolean<br/>
+| maxAjaxCallsPerView | Mit der Standardeinstellung „500“ wird gesteuert, wie viele Ajax-Aufrufe pro Seitenaufruf überwacht werden. Legen Sie „–1“ fest, wenn alle (unbegrenzt) Ajax-Aufrufe auf der Seite überwacht werden sollen. | NUMERIC<br/> 500 |
+| disableDataLossAnalysis | Bei „false“ werden interne Absenderpuffer für Telemetriedaten beim Start auf noch nicht gesendete Elemente überprüft. | boolean<br/> true |
+| disable&#8203;CorrelationHeaders | Bei „false“ fügt das SDK allen Abhängigkeitsanforderungen zwei Kopfzeilen (‚Request-Id‘ und ‚Request-Context‘) hinzu, um sie mit entsprechenden serverseitigen Anforderungen zu korrelieren. | boolean<br/> false |
+| correlationHeader&#8203;ExcludedDomains | Korrelations-Header für bestimmte Domänen deaktivieren | string[]<br/>nicht definiert |
+| correlationHeader&#8203;ExcludePatterns | Korrelationskopfzeilen mit regulären Ausdrücken deaktivieren | regex[]<br/>nicht definiert |
+| correlationHeader&#8203;Domains | Korrelations-Header für bestimmte Domänen aktivieren | string[]<br/>nicht definiert |
+| disableFlush&#8203;OnBeforeUnload | Bei „true“ wird die Methode „Flush“ (Leeren) beim Auslösen eines „onBeforeUnload“-Ereignisses nicht aufgerufen. | boolean<br/> false |
+| enableSessionStorageBuffer | Bei „true“ wird der Puffer mit allen nicht gesendeten Telemetriedaten im Sitzungsspeicher gespeichert. Der Puffer wird beim Laden der Seite wiederhergestellt. | boolean<br />true |
+| cookieCfg | Standardmäßig ist die Cokieverwendung aktiviert. weitere Standardeinstellungen finden Sie unter [icookiecfgconfig](#icookiemgrconfig)-Einstellungen. | [ICookieCfgConfig](#icookiemgrconfig)<br>(Seit 2.6.0)<br/>nicht definiert |
+| ~~isCookieUseDisabled~~<br>disableCookiesUsage | Bei „true“ speichert oder liest das SDK keine Daten aus Cookies. Beachten Sie, dass dadurch die Benutzer- und Sitzungscookies deaktiviert werden und die Nutzungsblätter und Benutzeroberflächen unbrauchbar werden. isCookieUseDisable ist zugunsten von disableCookiesUsage veraltet, wenn beide vorhanden sind, hat disableCookiesUsage Vorrang.<br>(Seit v 2.6.0) Wenn `cookieCfg.enabled` außerdem definiert ist, hat es Vorrang vor diesen Werten. Die Cookieverwendung kann nach der Initialisierung über Core. getcookiemgr (). SetEnabled (true) wieder aktiviert werden. | Alias für [`cookieCfg.enabled`](#icookiemgrconfig)<br>false |
+| cookieDomain | Benutzerdefinierte Cookiedomäne. Diese ist hilfreich, wenn Sie Application Insights-Cookies über untergeordnete Domänen hinweg freigeben möchten.<br>(Seit v2.6.0) Wenn `cookieCfg.domain` er definiert ist, hat er Vorrang vor diesem Wert. | alias für [`cookieCfg.domain`](#icookiemgrconfig)<br>NULL |
+| cookiePath | Benutzerdefinierter Cookie-Pfad. Dies ist hilfreich, wenn Sie Application Insights-Cookies hinter einem Anwendungs-Gateway freigeben möchten.<br>Wenn `cookieCfg.path` definiert ist, hat es Vorrang vor diesem Wert. | alias für [`cookieCfg.path`](#icookiemgrconfig)<br>(Seit 2.6.0)<br/>NULL |
+| isRetryDisabled | Bei „false“ wiederholen Sie den Vorgang für 206 (teilweise erfolgreich), 408 (Timeout), 429 (zu viele Anforderungen), 500 (interner Serverfehler), 503 (Dienst nicht verfügbar) und 0 (offline, nur wenn erkannt). | boolean<br/>false |
+| isStorageUseDisabled | Bei „true“ speichert und liest das SDK keine Daten aus dem lokalen Speicher und dem Sitzungsspeicher. | boolean<br/> false |
+| isBeaconApiDisabled | Bei „false“ sendet das SDK alle Telemetriedaten mithilfe der [Beacon-API](https://www.w3.org/TR/beacon). | boolean<br/>true |
+| onunloadDisableBeacon | Wenn die Registerkarte geschlossen wird, sendet das SDK alle verbleibenden Telemetriedaten mit dem [Beacon API](https://www.w3.org/TR/beacon) | boolean<br/> false |
+| sdkExtension | Legt den Erweiterungsnamen „sdk“ fest. Hierbei sind nur alphabetische Zeichen zulässig. Der Erweiterungsname wird dem Tag ‚ai.internal.sdkVersion‘ als Präfix hinzugefügt (z.B. ‚ext_javascript:2.0.0‘). | Zeichenfolge<br/> NULL |
+| isBrowserLink&#8203;TrackingEnabled | Bei „true“ wird das SDK alle Anforderungen vom Typ [Browserverknüpfung](/aspnet/core/client-side/using-browserlink) nachverfolgen. | boolean<br/>false |
+| appId | „AppId“ wird für die Korrelation zwischen AJAX-Abhängigkeiten verwendet, die clientseitig mit den serverseitigen Anforderungen erfolgt. Wenn die Beacon-API aktiviert ist, kann sie nicht automatisch verwendet werden. Sie kann aber in der Konfiguration manuell festgelegt werden. |Zeichenfolge<br/> NULL |
+| enable&#8203;CorsCorrelation | Bei „true“ fügt das SDK allen CORS-Anforderungen zwei Kopfzeilen (‚Request-Id‘ und ‚Request-Context‘) hinzu, um ausgehende AJAX-Abhängigkeiten mit entsprechenden serverseitigen Anforderungen zu korrelieren. | boolean<br/>false |
+| namePrefix | Ein optionaler Wert, der als „name“-Postfix für „localStorage“ und den Cookienamen verwendet wird. | Zeichenfolge<br/>nicht definiert |
+| enable&#8203;AutoRoute&#8203;Tracking | Routenänderungen in Single-Page-Webanwendungen (Single Page Applications, SPA) automatisch nachverfolgen. Bei „true“ sendet jede Routenänderung einen neuen Seitenaufruf an Application Insights. Hashroutenänderungen (`example.com/foo#bar`) werden ebenfalls als neue Seitenaufrufe aufgezeichnet.| boolean<br/>false |
+| enableRequest&#8203;HeaderTracking | Falls „true“ werden AJAX- und Fetch-Anfrage-Header nachverfolgt. | boolean<br/> false |
+| enableResponse&#8203;HeaderTracking | Bei „true“ werden die Antwort-Header der AJAX- und Fetch-Anfrage verfolgt. | boolean<br/> false |
+| distributedTracingMode | Legt den Modus für verteilte Ablaufverfolgung fest. Wenn der AI_AND_W3C-Modus oder der W3C-Modus festgelegt ist, werden Kontextheader für die W3C-Ablaufverfolgung (traceparent/tracestate) generiert und in alle ausgehenden Anforderungen eingeschlossen. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt. Ein Beispiel finden Sie [hier](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).| `DistributedTracingModes`oder<br/>NUMERIC<br/>(Seit v2.6.0) `DistributedTracingModes.AI_AND_W3C`<br />(v 2.5.11 oder früher) `DistributedTracingModes.AI` |
+| enable&#8203;AjaxErrorStatusText | Bei TRUE wird der Text zu Antwortfehlerdaten im Abhängigkeitsereignis für fehlerhafte AJAX-Anforderungen aufgeführt. | boolean<br/> false |
+| enable&#8203;AjaxPerfTracking |Flag, das die Suche nach und das Aufnehmen von zusätzlichen „window.performance“-Timings von Browsern in gemeldeten `ajax`-Metriken (XHR und fetch) ermöglicht. | boolean<br/> false |
+| maxAjaxPerf&#8203;LookupAttempts | Die maximale Anzahl von Malen, die nach „window.performance“-Timings gesucht werden kann (falls vorhanden). Dies ist erforderlich, weil nicht alle Browser „window.performance“ befüllen, bevor das Ende der XHR-Anforderung gemeldet wird. Bei fetch-Anforderungen wird dies nach der Fertigstellung hinzugefügt.| NUMERIC<br/> 3 |
+| ajaxPerfLookupDelay | Die Zeitdauer, die gewartet werden muss, bevor noch einmal versucht werden kann, die „windows.performance“-Timings für eine `ajax`-Anforderung zu suchen. Die Zeit wird in Millisekunden angegeben und direkt an setTimeout() übergeben. | NUMERIC<br/> 25 ms |
+| enableUnhandled&#8203;PromiseRejection&#8203;Tracking | Bei TRUE werden unverarbeitete Ablehnungen von Zusagen automatisch erfasst und als JavaScript-Fehler gemeldet. Wenn disableExceptionTracking TRUE ist (Ausnahmen werden nicht nachverfolgt), wird der Konfigurationswert ignoriert, und unverarbeitete Ablehnungen von Zusagen werden nicht gemeldet. | boolean<br/> false |
+| disable&#8203;InstrumentationKey&#8203;Validation | Bei „wahr“ wird die Validierungsprüfung des Instrumentierungsschlüssels umgangen. | boolean<br/>false |
+| enablePerfMgr | Wenn dies aktiviert ist (true), werden lokale PerfEvents für Code erzeugt, der so instrumentiert wurde, dass er PerfEvents ausgibt (über den doPerf()-Helper). Dies kann verwendet werden, um Performance-Probleme innerhalb des SDKs basierend auf Ihrer Nutzung oder optional innerhalb Ihres eigenen instrumentierten Codes zu identifizieren. [Weitere Informationen finden Sie in der grundlegenden Dokumentation](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md). Seit v2.5.7 | boolean<br/>false |
+| perfEvtsSendAll | Wenn _enableperfmgr_ aktiviert ist und [iperfmanager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfManager.ts) ein [inotificationmanager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/INotificationManager.ts). perfevent () auslöst, bestimmt dieses Flag, ob ein Ereignis ausgelöst (und an alle Listener) für alle Ereignisse (true) oder nur für übergeordnete Ereignisse (false &lt; Standard) gesendet wird &gt; .<br />Bei einem übergeordneten [iperfevent](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfEvent.ts) -Element handelt es sich um ein Ereignis, bei dem noch kein anderes iperfevent zum Zeitpunkt der Erstellung dieses Ereignisses ausgeführt wird und die über _geordnete_ Eigenschaft nicht NULL oder nicht definiert ist. Seit v2.5.7 |  boolean<br />false |
+| idLength | Gibt die Standardlänge an, die zum Erzeugen neuer zufälliger Sitzungs- und Benutzer-ID-Werte verwendet wird. Der Standardwert ist 22, der vorherige Standardwert war 5 (v2.5.8 oder weniger), wenn Sie die vorherige maximale Länge beibehalten wollen, sollten Sie diesen Wert auf 5 setzen. |  NUMERIC<br />22 |
+
+## <a name="cookie-handling"></a>Handhabung clientseitiger Cookies
+
+Ab Version 2.6.0 ist die Cookie-Verwaltung nun direkt in der Instanz verfügbar und kann nach der Initialisierung deaktiviert und wieder aktiviert werden.
+
+Wenn Sie während der Initialisierung über `disableCookiesUsage` die `cookieCfg.enabled` Konfigurationen oder deaktiviert sind, können Sie die Funktion jetzt über die [icookiemgr](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts) -Funktion wieder aktivieren `setEnabled`.
+
+Die instanzbasierte Cookieverwaltung ersetzt auch die vorherigen globalen CcoreUtils `disableCookies()`-Funktionen von`setCookie(...)` `getCookie(...)` und `deleteCookie(...)`. Und um von den ebenfalls mit der Version 2.6.0 eingeführten Tree-Shaking-Verbesserungen zu profitieren, sollten Sie die globalen Funktionen nicht mehr verwenden.
+
+### <a name="icookiemgrconfig"></a>ICookieMgrConfig
+
+Cookie-Konfiguration für instanzbasierte Cookie-Verwaltung in Version 2.6.0 hinzugefügt.
+
+| Name | BESCHREIBUNG | Typ und Voreinstellung |
+|------|-------------|------------------|
+| enabled | Ein Boolean, das angibt, ob die Verwendung von Cookies durch das SDK von der aktuellen Instanz aktiviert ist. False gibt an, dass die von dieser Konfiguration initialisierte SDK-Instanz keine Daten aus Cookies speichert oder liest. | boolean<br/> true |
+| Domäne | Benutzerdefinierte Cookiedomäne. Diese ist hilfreich, wenn Sie Application Insights-Cookies über untergeordnete Domänen hinweg freigeben möchten. Wenn nicht angegeben, wird der Wert aus dem `cookieDomain` Stammwert verwendet. | Zeichenfolge<br/>NULL |
+| path | Gibt den Pfad an, der für das Cookie verwendet werden soll. Wenn er nicht angegeben wird, wird ein beliebiger Wert aus dem Stammwert `cookiePath` verwendet. | Zeichenfolge <br/> / |
+| getCookie | Funktion zum Abrufen des benannten Cookie-Werts, wenn nicht angegeben, wird das interne Cookie-Parsing / Caching verwendet. | `(name: string) => string` <br/> NULL |
+| setCookie | Funktion zum Festlegen des benannten Cookies mit dem angegebenen Wert, das nur beim Hinzufügen oder Aktualisieren eines Cookies aufgerufen wird. | `(name: string, value: string) => void` <br/> NULL |
+| delCookie | Funktion zum Löschen des benannten Cookies mit dem angegebenen Wert, getrennt von setCookie, um zu vermeiden, dass der Wert geparst werden muss, um festzustellen, ob das Cookie hinzugefügt oder entfernt wird. Wenn nicht angegeben, wird das interne Cookie-Parsing / Caching verwendet. | `(name: string, value: string) => void` <br/> NULL |
+
+### <a name="simplified-usage-of-new-instance-cookie-manager"></a>Vereinfachte Verwendung des neuen Instanz-Cookie-Managers
+
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).setEnabled(true/false);
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).set("MyCookie", "the%20encoded%20value");
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).get("MyCookie");
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).del("MyCookie");
 
 ## <a name="enable-time-on-page-tracking"></a>Aktivieren der Nachverfolgung der Verweildauer auf der Seite
 

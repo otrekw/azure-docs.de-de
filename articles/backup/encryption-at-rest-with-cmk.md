@@ -2,13 +2,13 @@
 title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
-ms.date: 07/08/2020
-ms.openlocfilehash: 474f4238276f460abde3d600422e309171875a0c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/01/2021
+ms.openlocfilehash: b6cb1a288d0052b39bbeb52ed9fd20e68a6427ed
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716736"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167889"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -33,7 +33,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
 
 - Dieses Feature hängt nicht mit [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) zusammen, das die gastbasierte Verschlüsselung der Datenträger eines virtuellen Computers mithilfe von BitLocker (für Windows) und DM-Crypt (für Linux) verwendet.
 
-- Der Recovery Services-Tresor kann nur mit Schlüsseln verschlüsselt werden, die in einem Azure Key Vault gespeichert sind, der sich in der **gleichen Region** befindet. Außerdem dürfen nur **RSA 2048-Schlüssel** im Zustand **Aktiviert** als Schlüssel verwendet werden.
+- Der Recovery Services-Tresor kann nur mit Schlüsseln verschlüsselt werden, die in einem Azure Key Vault gespeichert sind, der sich in der **gleichen Region** befindet. Außerdem dürfen nur **RSA-Schlüssel** im Zustand **Aktiviert** als Schlüssel verwendet werden.
 
 - Das Verschieben eines mit CMK verschlüsselten Recovery Services-Tresors in andere Ressourcengruppen und Abonnements wird derzeit nicht unterstützt.
 - Wenn Sie einen Recovery Services-Tresor, der bereits mit vom Kunden verwalteten Schlüsseln (CMK) verschlüsselt ist, auf einen neuen Mandanten verschieben, müssen Sie den Recovery Services-Tresor aktualisieren, um die verwaltete Identität des Tresors und die CMK (die sich auf dem neuen Mandanten befinden sollen) neu zu erstellen und zu konfigurieren. Wenn dies nicht getan wird, kommt es zu Fehlern bei den Sicherungs- und Wiederherstellungsvorgängen. Außerdem müssen alle innerhalb des Abonnements eingerichteten Berechtigungen der rollenbasierten Zugriffssteuerung (RBAC) neu konfiguriert werden.
@@ -42,6 +42,9 @@ In diesem Artikel werden die folgenden Themen behandelt:
 
     >[!NOTE]
     >Verwenden Sie das Az-Modul 5.3.0 oder höher, um für Sicherungen im Recovery Services-Tresor kundenseitig verwaltete Schlüssel zu verwenden.
+    
+    >[!Warning]
+    >Wenn Sie PowerShell zum Verwalten von Verschlüsselungsschlüsseln für die Sicherung verwenden, empfiehlt es sich nicht, die Schlüssel über das Portal zu aktualisieren.<br></br>Wenn Sie den Schlüssel über das Portal aktualisieren, können Sie PowerShell nicht verwenden, um den Verschlüsselungsschlüssel weiter zu aktualisieren, bis ein PowerShell-Update zur Unterstützung des neuen Modells verfügbar ist. Sie können jedoch weiterhin den Schlüssel aus der Azure-Portal aktualisieren.
 
 Wenn Sie Ihren Recovery Services-Tresor noch nicht erstellt und konfiguriert haben, erfahren Sie [hier](backup-create-rs-vault.md), wie Sie vorgehen können.
 
@@ -59,22 +62,32 @@ Dieser Vorgang umfasst die folgenden Schritte:
 
 Alle diese Schritte müssen in der oben genannten Reihenfolge ausgeführt werden, um das gewünschte Ergebnis zu erzielen. Die einzelnen Schritte werden im Folgenden näher erläutert.
 
-### <a name="enable-managed-identity-for-your-recovery-services-vault"></a>Aktivieren der verwalteten Identität für den Recovery Services-Tresor
+## <a name="enable-managed-identity-for-your-recovery-services-vault"></a>Aktivieren der verwalteten Identität für den Recovery Services-Tresor
 
 Azure Backup verwendet die vom System zugewiesene verwaltete Identität, um den Recovery Services-Tresor für den Zugriff auf die Verschlüsselungsschlüssel zu authentifizieren, die im Azure Key Vault gespeichert sind. Führen Sie die unten aufgeführten Schritte aus, um die verwaltete Identität für den Recovery Services-Tresor zu aktivieren.
 
 >[!NOTE]
 >Nach der Aktivierung darf die verwaltete Identität **nicht** deaktiviert werden (auch nicht vorübergehend). Die Deaktivierung der verwalteten Identität kann zu inkonsistentem Verhalten führen.
 
+### <a name="enable-system-assigned-managed-identity-for-the-vault"></a>Aktivieren einer systemseitig zugewiesenen verwalteten Identität für den Vault
+
 **Im Portal:**
 
 1. Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Identität**.
 
-    ![Identitätseinstellungen](./media/encryption-at-rest-with-cmk/managed-identity.png)
+    ![Identitätseinstellungen](media/encryption-at-rest-with-cmk/enable-system-assigned-managed-identity-for-vault.png)
 
-1. Ändern Sie den **Status** in **Ein**, und klicken Sie auf **Speichern**.
+1. Navigieren Sie zur Registerkarte " **System zugewiesen** ".
 
-1. Es wird eine Objekt-ID generiert, welche die vom System zugewiesene verwaltete Identität des Tresors darstellt.
+1. Ändern Sie den **Status** zu **An**.
+
+1. Klicken Sie auf **Speichern**, um die Identität für den Tresor zu aktivieren.
+
+Es wird eine Objekt-ID generiert, welche die vom System zugewiesene verwaltete Identität des Tresors darstellt.
+
+>[!NOTE]
+>Nach der Aktivierung darf die verwaltete Identität nicht deaktiviert werden (auch nicht vorübergehend). Die Deaktivierung der verwalteten Identität kann zu inkonsistentem Verhalten führen.
+
 
 **Mit PowerShell:**
 
@@ -98,7 +111,28 @@ TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type        : SystemAssigned
 ```
 
-### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Zuweisen von Berechtigungen zum Recovery Services-Tresor für den Zugriff auf den Verschlüsselungsschlüssel im Azure Key Vault
+### <a name="assign-user-assigned-managed-identity-to-the-vault"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zum Tresor
+
+Führen Sie die folgenden Schritte aus, um die vom Benutzer zugewiesene verwaltete Identität für den Recovery Services Tresor zuzuweisen:
+
+1.  Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Identität**.
+
+    ![Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zum Tresor](media/encryption-at-rest-with-cmk/assign-user-assigned-managed-identity-to-vault.png)
+
+1.  Navigieren Sie zur Registerkarte **Benutzer zugewiesen**.
+
+1.  Klicken Sie auf **+ Hinzufügen**, um eine vom Benutzer zugewiesene verwaltete Identität hinzuzufügen.
+
+1.  Wählen Sie auf dem geöffneten Blatt vom **Benutzer zugewiesene verwaltete Identität hinzufügen** " das Abonnement für Ihre Identität aus.
+
+1.  Wählen Sie die Identität aus der Liste aus. Sie können auch nach dem Namen der Identität oder der Ressourcengruppe filtern.
+
+1.  Klicken Sie anschließend auf **Hinzufügen**, um das Zuweisen der Identität abzuschließen.
+
+## <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Zuweisen von Berechtigungen zum Recovery Services-Tresor für den Zugriff auf den Verschlüsselungsschlüssel im Azure Key Vault
+
+>[!Note]
+>Wenn Sie vom Benutzer zugewiesene Identitäten verwenden, müssen Sie der vom Benutzer zugewiesenen Identität dieselben Berechtigungen zuweisen.
 
 Sie müssen jetzt dem Recovery Services-Tresor gestatten, auf den Azure Key Vault zuzugreifen, der den Verschlüsselungsschlüssel enthält. Dazu erlauben Sie der verwalteten Identität des Recovery Services-Tresors, auf den Key Vault zuzugreifen.
 
@@ -120,7 +154,7 @@ Sie müssen jetzt dem Recovery Services-Tresor gestatten, auf den Azure Key Vaul
 
 1. Wählen Sie **Speichern** aus, um die Änderungen an der Zugriffsrichtlinie von Azure Key Vault zu speichern.
 
-### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Aktivieren des vorläufigen Löschens und des Löschschutzes im Azure Key Vault
+## <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Aktivieren des vorläufigen Löschens und des Löschschutzes im Azure Key Vault
 
 Sie müssen für den Azure Key Vault, in dem Ihr Verschlüsselungsschlüssel gespeichert ist, **vorläufiges Löschen und Löschschutz aktivieren**. Dies können Sie über die Azure Key Vault-Benutzeroberfläche ausführen, wie unten gezeigt. (Alternativ können diese Eigenschaften beim Erstellen des Key Vault festgelegt werden.) Weitere Informationen zu diesen Key Vault-Eigenschaften finden Sie [hier](../key-vault/general/soft-delete-overview.md).
 
@@ -160,7 +194,7 @@ Sie können vorläufiges Löschen und Löschschutz auch über PowerShell aktivie
     Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
-### <a name="assign-encryption-key-to-the-rs-vault"></a>Zuweisen eines Verschlüsselungsschlüssels zum RS-Tresor
+## <a name="assign-encryption-key-to-the-rs-vault"></a>Zuweisen eines Verschlüsselungsschlüssels zum RS-Tresor
 
 >[!NOTE]
 > Überprüfen Sie die folgenden Punkte, bevor Sie fortfahren:
@@ -172,7 +206,7 @@ Sie können vorläufiges Löschen und Löschschutz auch über PowerShell aktivie
 
 Sobald Sie sich versichert haben, dass die genannten Bedingungen erfüllt sind, können Sie mit der Auswahl des Verschlüsselungsschlüssels für Ihren Tresor fortfahren.
 
-#### <a name="to-assign-the-key-in-the-portal"></a>So weisen Sie den Schlüssel im Portal zu
+### <a name="to-assign-the-key-in-the-portal"></a>So weisen Sie den Schlüssel im Portal zu
 
 1. Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Eigenschaften**.
 
@@ -192,7 +226,7 @@ Sobald Sie sich versichert haben, dass die genannten Bedingungen erfüllt sind, 
     1. Suchen Sie über den Schlüsselauswahlbereich nach dem Schlüssel aus dem Key Vault, und wählen Sie ihn aus.
 
         >[!NOTE]
-        >Wenn Sie den Verschlüsselungsschlüssel über den Bereich „Schlüsselauswahl“ angeben, wird er jedes Mal automatisch rotiert, wenn eine neue Version für den Schlüssel aktiviert wird.
+        >Wenn Sie den Verschlüsselungsschlüssel über den Bereich „Schlüsselauswahl“ angeben, wird er jedes Mal automatisch rotiert, wenn eine neue Version für den Schlüssel aktiviert wird. [Weitere Informationen finden Sie](#enabling-auto-rotation-of-encryption-keys) unter Aktivieren der automatischen Rotation von Verschlüsselungsschlüsseln.
 
         ![Auswählen des Schlüssels aus dem Schlüsseltresor](./media/encryption-at-rest-with-cmk/key-vault.png)
 
@@ -206,7 +240,7 @@ Sobald Sie sich versichert haben, dass die genannten Bedingungen erfüllt sind, 
 
     ![Aktivitätsprotokoll](./media/encryption-at-rest-with-cmk/activity-log.png)
 
-#### <a name="to-assign-the-key-with-powershell"></a>So weisen Sie den Schlüssel mit PowerShell zu
+### <a name="to-assign-the-key-with-powershell"></a>So weisen Sie den Schlüssel mit PowerShell zu
 
 Verwenden Sie den Befehl [Set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty), um die Verschlüsselung mithilfe von kundenseitig verwalteten Schlüsseln zu aktivieren und den zu verwendenden Verschlüsselungsschlüssel zuzuweisen oder zu aktualisieren.
 
@@ -249,8 +283,8 @@ Bevor Sie mit der Konfiguration des Schutzes fortfahren, sollten Sie unbedingt d
 > Bevor Sie mit dem Konfigurieren des Schutzes fortfahren, müssen Sie die folgenden Schritte **erfolgreich** ausgeführt haben:
 >
 >1. Ihr Sicherungstresor wurde erstellt.
->1. Die vom System zugewiesene verwaltete Identität des Sicherungstresors wurde aktiviert.
->1. Dem Sicherungstresor wurden Berechtigungen für den Zugriff auf Verschlüsselungsschlüssel in Ihrem Key Vault zugewiesen.
+>1. Die vom System zugewiesene verwaltete Identität des Recovery Services Tresors wurde aktiviert, oder dem Tresor wurde eine vom Benutzer zugewiesene verwaltete Identität zugewiesen.
+>1. Zugewiesene Berechtigungen für Ihren Backup Vault (oder die dem Benutzer zugewiesene verwaltete Identität) für den Zugriff auf Verschlüsselungsschlüssel aus Ihrem Key Vault
 >1. Vorläufiges Löschen und Löschschutz wurden für Ihren Key Vault aktiviert.
 >1. Dem Sicherungstresor wurde ein gültiger Verschlüsselungsschlüssel zugewiesen.
 >
@@ -311,6 +345,44 @@ Beim Ausführen einer Dateiwiederherstellung werden die wiederhergestellten Date
 ### <a name="restoring-sap-hanasql-databases-in-azure-vms"></a>Wiederherstellen von SAP HANA-/SQL-Datenbanken auf Azure-VMs
 
 Beim Wiederherstellen einer gesicherten SAP HANA-/SQL-Datenbank, die auf einer Azure-VM ausgeführt wird, werden die wiederhergestellten Daten mit dem Verschlüsselungsschlüssel verschlüsselt, der am Zielspeicherort verwendet wird. Dabei kann es sich um einen kundenseitig verwalteten Schlüssel oder einen plattformseitig verwalteten Schlüssel handeln, der zum Verschlüsseln der Datenträger der VM verwendet wurde.
+
+## <a name="additional-topics"></a>Weitere Themen
+
+### <a name="enable-encryption-using-customer-managed-keys-at-vault-creation-in-preview"></a>Aktivieren der Verschlüsselung mithilfe von Kunden verwalteten Schlüsseln bei der Tresorerstellung (in der Vorschau)
+
+>[!NOTE]
+>Das Aktivieren der Verschlüsselung bei der Tresorerstellung mithilfe von Kunden verwalteten Schlüsseln befindet sich in der begrenzten öffentlichen Vorschau und erfordert das Zulassen von Abonnements. Um sich für die Vorschau anzumelden, füllen Sie das [Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURDNTVVhGOUxXSVBZMEwxUU5FNDkyQkU4Ny4u) aus und schreiben Sie uns an [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+
+Wenn Ihr Abonnement zugelassen ist, wird die Registerkarte „**Sicherungsverschlüsselung**“ angezeigt. Dies ermöglicht es Ihnen, die Verschlüsselung für die Sicherung mithilfe von Kunden verwalteten Schlüsseln während der Erstellung eines neuen Recovery Services Tresors zu aktivieren. Um die Verschlüsselung zu aktivieren, führen Sie die folgenden Schritte aus:
+
+1. Geben Sie neben der Registerkarte **Grundlagen** auf der Registerkarte **Sicherungsverschlüsselung** den Verschlüsselungsschlüssel und die Identität an, die für die Verschlüsselung verwendet werden sollen.
+
+   ![Aktivieren der Verschlüsselung auf Tresor-Ebene](media/encryption-at-rest-with-cmk/enable-encryption-using-cmk-at-vault.png)
+
+
+   >[!NOTE]
+   >Die Einstellungen gelten nur für die Sicherung und sind optional.
+
+1. Wählen Sie vom **Kunden verwalteten Schlüssel** als Verschlüsselungstyp verwenden aus.
+
+1. Wählen Sie die entsprechende Option aus, um den Schlüssel anzugeben, der für die Verschlüsselung verwendet werden soll.
+
+   Sie können den URI für den Verschlüsselungsschlüssel angeben oder den Schlüssel durchsuchen und auswählen. Wenn Sie den Schlüssel mithilfe der Option **Key Vault auswählen** angeben, wird die automatische Rotation des Verschlüsselungsschlüssels automatisch aktiviert. [Weitere Informationen finden Sie unter Automatische Rotation](#enabling-auto-rotation-of-encryption-keys). 
+
+1. Geben Sie die vom Benutzer zugewiesene verwaltete Identität an, um die Verschlüsselung mit vom Kunden verwalteten Schlüsseln zu verwalten. Klicken Sie auf **auswählen**, um die erforderliche Identität zu durchsuchen und auszuwählen.
+
+1. Fahren Sie anschließend mit dem Hinzufügen von Tags (optional) fort und fahren Sie mit dem Erstellen des Tresors fort.
+
+### <a name="enabling-auto-rotation-of-encryption-keys"></a>Weitere Informationen finden Sie unter Aktivieren der automatischen Rotation von Verschlüsselungsschlüsseln.
+
+Wenn Sie den kundenseitig verwalteten Schlüssel angeben, der zum Verschlüsseln von Sicherungen verwendet werden muss, verwenden Sie die folgenden Methoden, um ihn anzugeben:
+
+- Eingeben des Schlüssel-URI
+- Aus Schlüsseltresor auswählen
+
+Mithilfe der Option **Aus Schlüsseltresor auswählen können Sie** die automatische Drehung für den ausgewählten Schlüssel aktivieren. Dadurch entfällt der manuelle Versuch, auf die nächste Version zu aktualisieren. Mit dieser Option können Sie jedoch Folgendes ausführen:
+- Die Aktualisierung der Aktualisierung der Schlüsselversion kann bis zu einer Stunde dauern.
+- Wenn eine neue Version des Schlüssels in Kraft tritt, sollte die alte Version auch für mindestens einen nachfolgenden Sicherungsauftrag verfügbar sein (in aktiviertem Zustand), nachdem das Schlüsselupdate wirksam wurde.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 565d801fb569f818613fd31b7492c0847eef9a7a
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100580984"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169350"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Beheben von Hybrid Runbook Worker-Problemen
 
@@ -128,7 +128,7 @@ Folgende Probleme kommen als Ursache in Betracht:
 #### <a name="resolution"></a>Lösung
 
 ##### <a name="mistyped-workspace-id-or-key"></a>Fehlerhaft eingegebene Arbeitsbereichs-ID oder fehlerhaft eingegebener Arbeitsbereichsschlüssel
-Sehen Sie sich im Artikel „Verwalten und Warten des Log Analytics-Agents für Windows und Linux“ die Informationen im Abschnitt zum Hinzufügen oder Entfernen von Arbeitsbereichen für den [Windows-Agent](../../azure-monitor/agents/agent-manage.md#windows-agent) bzw. [Linux-Agent](../../azure-monitor/agents/agent-manage.md#linux-agent) an, um zu überprüfen, ob die Arbeitsbereichs-ID oder der Arbeitsbereichsschlüssel des Agents fehlerhaft eingegeben wurde. Stellen Sie sicher, dass Sie die Zeichenfolge im Azure-Portal vollständig markieren, und gehen Sie beim Kopieren und Einfügen sorgfältig vor.
+Sehen Sie sich im Artikel „Verwalten und Warten des Log Analytics-Agents für Windows und Linux“ die Informationen im Abschnitt zum Hinzufügen oder Entfernen von Arbeitsbereichen für den [Windows-Agent](../../azure-monitor/platform/agent-manage.md#windows-agent) bzw. [Linux-Agent](../../azure-monitor/platform/agent-manage.md#linux-agent) an, um zu überprüfen, ob die Arbeitsbereichs-ID oder der Arbeitsbereichsschlüssel des Agents fehlerhaft eingegeben wurde. Stellen Sie sicher, dass Sie die Zeichenfolge im Azure-Portal vollständig markieren, und gehen Sie beim Kopieren und Einfügen sorgfältig vor.
 
 ##### <a name="configuration-not-downloaded"></a>Konfiguration nicht heruntergeladen
 

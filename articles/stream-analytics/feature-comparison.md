@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 037bd8bc823cd8c77241d0ca25174e29d25149b9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98020535"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergleich der Features von Azure Stream Analytics
@@ -29,22 +29,22 @@ Mit Azure Stream Analytics können Sie mit [Azure-Portal](stream-analytics-quick
 |Erstellen von Skripts     |Ja         |Ja         |Ja         |
 |IntelliSense-Skript     |Syntaxhervorhebung         |Syntaxhervorhebung</br>Codevervollständigung</br>Fehlermarkierung         |Syntaxhervorhebung</br>Codevervollständigung</br>Fehlermarkierung         |
 |Definieren aller Typen von Eingaben, Ausgaben und Auftragskonfigurationen     |Ja         |Ja         |Ja         |
-|Quellcodeverwaltung     |Nein          |Ja         |Ja         |
+|Quellcodeverwaltung     |Nein         |Ja         |Ja         |
 |CI/CD-Unterstützung     |Teilweise         |Ja         |Ja         |
-|Mehrere Abfragen übergreifende Freigabe von Eingaben und Ausgaben     |Nein          |Ja         |Ja         |
+|Mehrere Abfragen übergreifende Freigabe von Eingaben und Ausgaben     |Nein         |Ja         |Ja         |
 |Abfragetests mit einer Beispieldatei     |Ja         |Ja        |Ja         |
-|Lokales Testen mit Livedaten     |Nein          |Ja       |Ja      |
+|Lokales Testen mit Livedaten     |Nein         |Ja       |Ja      |
 |Auflisten von Aufträgen und Anzeigen von Auftragsentitäten     |Ja         |Ja        |Ja         |
-|Exportieren eines Auftrags in ein lokales Projekt     |Nein          |Ja         |Ja         |
+|Exportieren eines Auftrags in ein lokales Projekt     |Nein         |Ja         |Ja         |
 |Senden, Starten und Beenden von Aufträgen     |Ja         |Ja         |Ja         |
 |Anzeigen von Auftragsmetriken und Diagramm     |Ja         |Ja         |Im Portal öffnen         |
-|Anzeigen von Auftragslaufzeitfehlern     |Ja         |Ja         |Nein          |
-|Ressourcenprotokolle     |Ja         |Nein          |Nein          |
-|Benutzerdefinierte Nachrichteneigenschaften     |Ja         |Ja         |Nein        |
-|Benutzerdefinierte C#-Codefunktion und Deserialisierer|Schreibgeschützter Modus|Ja|Nein |
+|Anzeigen von Auftragslaufzeitfehlern     |Ja         |Ja         |Nein         |
+|Ressourcenprotokolle     |Ja         |Nein         |Nein         |
+|Benutzerdefinierte Nachrichteneigenschaften     |Ja         |Ja         |Nein       |
+|Benutzerdefinierte C#-Codefunktion und Deserialisierer|Schreibgeschützter Modus|Ja|Nein|
 |JavaScript-UDF und -UDA     |Ja         |Ja         |Nur Windows         |
-|Machine Learning Service     |Ja        |Ja         |Nein          |
-|Azure Machine Learning Studio (klassisch)|Ja, aber die Abfrage kann nicht getestet werden        |Ja |Nein          |
+|Machine Learning Service     |Ja        |Ja         |Nein         |
+|Azure Machine Learning Studio (klassisch)|Ja, aber die Abfrage kann nicht getestet werden        |Ja |Nein         |
 |Kompatibilitätsgrad     |1.0</br>1.1</br>1.2 (Standard)         |1.0</br>1.1</br>1.2 (Standard)           |1.0</br>1.1</br>1.2 (Standard)           |
 |Integrierte Anomalieerkennungsfunktionen auf ML-Basis     |Ja         |Ja         |Ja         |
 |Integrierte Geofunktionen     |Ja         |Ja         |Ja         |
@@ -55,17 +55,17 @@ Mit Azure Stream Analytics können Sie mit [Azure-Portal](stream-analytics-quick
 
 |Funktion  |Portal  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
-|Auftragserstellung     |Ja         |Ja         |Nein          |
-|Quellcodeverwaltung     |Nein          |Ja         |Nein          |
-|Exportieren eines Auftrags in ein lokales Projekt     |Nein          |Ja         |Nein          |
-|Abfragetests mit einer Beispieldatei     |Ja         |Ja         |Nein          |
-|Mehrere Abfragen übergreifende Freigabe von Eingaben und Ausgaben     |Nein          |Ja         |Nein          |
-|C#-UDF     |Nein          |Ja         |Nein          |
-|Übermitteln von Aufträgen     |Ja         |Ja         |Nein          |
-|Auflisten von Aufträgen und Anzeigen von Auftragsentitäten     |Ja         |Ja         |Nein          |
-|Anzeigen von Auftragsmetriken und Diagramm     |Ja         |Teilweise         |Nein          |
-|Anzeigen von Auftragslaufzeitfehlern     |Ja         |Teilweise         |Nein          |
-|CI/CD-Unterstützung     |Nein          |Nein          |Nein          |
+|Auftragserstellung     |Ja         |Ja         |Nein         |
+|Quellcodeverwaltung     |Nein         |Ja         |Nein         |
+|Exportieren eines Auftrags in ein lokales Projekt     |Nein         |Ja         |Nein         |
+|Abfragetests mit einer Beispieldatei     |Ja         |Ja         |Nein         |
+|Mehrere Abfragen übergreifende Freigabe von Eingaben und Ausgaben     |Nein         |Ja         |Nein         |
+|C#-UDF     |Nein         |Ja         |Nein         |
+|Übermitteln von Aufträgen     |Ja         |Ja         |Nein         |
+|Auflisten von Aufträgen und Anzeigen von Auftragsentitäten     |Ja         |Ja         |Nein         |
+|Anzeigen von Auftragsmetriken und Diagramm     |Ja         |Teilweise         |Nein         |
+|Anzeigen von Auftragslaufzeitfehlern     |Ja         |Teilweise         |Nein         |
+|CI/CD-Unterstützung     |Nein         |Nein         |Nein         |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

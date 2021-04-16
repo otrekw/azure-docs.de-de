@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: ce8d4bf36524e3e7e7b3b8c974aa189fa000d845
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: c5b6509cabd743a01a085639a7b76d764555a9f8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773248"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106652"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
@@ -61,7 +61,7 @@ Beim Ändern der Dienstebene, beim Skalieren der Computegröße einer Einzeldate
 > Darüber hinaus ist bei Datenbanken vom Typ „Standard (S2-S12)“ und „Universell“ die Wartezeit beim Verschieben einer Datenbank in einen/aus einem Pool für elastische Datenbanken oder zwischen Pools für elastische Datenbanken proportional zur Datenbankgröße, wenn für die Datenbank [PFS](../../storage/files/storage-files-introduction.md)-Speicher (Premium File Share, Premium-Dateifreigabe) verwendet wird.
 >
 > Um zu ermitteln, ob eine Datenbank PFS-Speicher verwendet, führen Sie die folgende Abfrage im Kontext der Datenbank aus. Wenn der Wert in der Spalte „AccountType“ `PremiumFileStorage` oder `PremiumFileStorage-ZRS` lautet, verwendet die Datenbank PFS-Speicher.
- 
+
 ```sql
 SELECT s.file_id,
        s.type_desc,
@@ -70,6 +70,9 @@ SELECT s.file_id,
 FROM sys.database_files AS s
 WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
+
+> [!NOTE]
+> Die Zonen redundante Eigenschaft bleibt bei der Skalierung von der unternehmenskritisch auf die universell Ebene standardmäßig unverändert. Die Latenz für diese Herabstufung, wenn die Zonenredundanz aktiviert ist, sowie die Latenz für den Wechsel zur Zonenredundanz für die universelle Schicht ist proportional zur Datenbankgröße.
 
 > [!TIP]
 > Weitere Informationen zum Überwachen aktuell ausgeführter Vorgänge finden Sie unter: [Verwalten von Vorgängen mit der SQL-REST-API](/rest/api/sql/operations/list), [Verwalten von Vorgängen mithilfe der CLI](/cli/azure/sql/db/op), [Überwachen von Vorgängen mit T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) und unter diesen beiden PowerShell-Befehlen: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) und [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).

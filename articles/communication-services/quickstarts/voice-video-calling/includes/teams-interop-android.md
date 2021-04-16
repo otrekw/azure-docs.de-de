@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Beitreten zu einer Teams-Besprechung von einer Android-App aus'
-description: In diesem Tutorial erfahren Sie, wie Sie mit der Clientbibliothek für Telefonie von Azure Communication Services für Android einer Teams-Besprechung beitreten.
+description: In diesem Tutorial erfahren Sie, wie Sie mit der Azure Communication Services Calling SDK für Android einer Teams-Besprechung beitreten
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 82e64af5cec8641abacf5afa323fc38382a124c4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: e5361b92c2080c724b872be2ad27bc5bd4554e8d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487991"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108181"
 ---
-In diesem Schnellstart erfahren Sie, wie Sie mit der Clientbibliothek für Telefonie von Azure Communication Services für Android einer Teams-Besprechung beitreten.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure Communication Services Calling SDK für Android einer Teams-Besprechung beitreten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
 ## <a name="get-the-teams-meeting-link"></a>Abrufen des Teams-Besprechungslinks
 
 Der Teams-Besprechungslink kann mithilfe der Graph-APIs abgerufen werden. Dies wird in der [Graph-Dokumentation](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta) erläutert.
-Die Communication Services-Telefonie-Clientbibliothek akzeptiert einen vollständigen Teams-Besprechungslink. Dieser Link wird als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die unter der [`joinWebUrl`-Eigenschaft](/graph/api/resources/onlinemeeting?view=graph-rest-beta) zugegriffen werden kann. Die erforderlichen Besprechungsinformationen können auch der URL für den **Besprechungsbeitritt** aus der Teams-Besprechungseinladung entnommen werden.
+Das Communication Services-SDK für Telefonie akzeptiert einen vollständigen Teams-Besprechungslink. Dieser Link wird als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die unter der [`joinWebUrl`-Eigenschaft](/graph/api/resources/onlinemeeting?view=graph-rest-beta) zugegriffen werden kann. Die erforderlichen Besprechungsinformationen können auch der URL für den **Besprechungsbeitritt** aus der Teams-Besprechungseinladung entnommen werden.
 
 ## <a name="launch-the-app-and-join-teams-meeting"></a>Starten der App und Beitreten zur Teams-Besprechung
 

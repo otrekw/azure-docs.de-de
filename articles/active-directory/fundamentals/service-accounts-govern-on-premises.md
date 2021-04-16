@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ad7cf7fe2ca1ddcb592e895014b1d956e55e1b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557368"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642378"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Steuern lokaler Dienstkonten
 
@@ -60,7 +60,7 @@ Verwenden Sie beim Erstellen eines neuen Dienstkontos die folgenden Kriterien.
 
 Verwenden Sie die folgenden Einstellungen für Benutzerkonten, die als Dienstkonten verwendet werden:
 
-* [**Kontoablaufdatum**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): Legen Sie für das Dienstkonto fest, dass es im Anschluss an den Überprüfungszeitraum nach einer bestimmten Zeit automatisch abläuft, sofern keine weitere Nutzung explizit festgelegt wird.
+* [**Kontoablaufdatum**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true): Legen Sie für das Dienstkonto fest, dass es im Anschluss an den Überprüfungszeitraum nach einer bestimmten Zeit automatisch abläuft, sofern keine weitere Nutzung explizit festgelegt wird.
 
 *  **Anmeldearbeitsstationen**: Schränken Sie die Berechtigungen auf die Standorte ein, von denen sich das Dienstkonto anmelden kann. Wenn es lokal auf einem Computer ausgeführt wird und nur auf Ressourcen auf diesem Computer zugreift, unterbinden Sie die Anmeldung von einem anderen Standort.
 
@@ -149,7 +149,7 @@ Nach Durchführung und Dokumentation kann die Risikobewertung Auswirkungen auf f
 
 Erstellen Sie erst dann ein Dienstkonto, wenn relevante Informationen in ihrer CMDB dokumentiert sind und Sie eine Risikobewertung vorgenommen haben. Die Kontoeinschränkungen sollten sich nach der Risikobewertung richten. Beachten Sie die folgenden Einschränkungen, wenn sie für Ihre Bewertung relevant sind:
 
-* [Kontoablaufdatum](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [Kontoablaufdatum](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
 
    * Definieren Sie für alle Benutzerkonten, die als Dienstkonten verwendet werden, ein realistisches und definitives Enddatum für die Nutzung. Legen Sie diese Einstellung mit dem Flag „Konto läuft ab“ fest. Weitere Einzelheiten finden Sie unter [Set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration). 
 
@@ -193,7 +193,7 @@ Nachdem Sie alle Berechtigungen entfernt haben, verwenden Sie diesen Prozess zum
 
 3. Löschen Sie das Dienstkonto, nachdem die Richtlinie für das Bestehenbleiben deaktivierter Konten erfüllt wurde. 
 
-   * Microsoft-Konten (MSAs) können Sie mithilfe von PowerShell [deinstallieren](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) oder manuell aus dem Container für verwaltete Dienstkonten löschen.
+   * Microsoft-Konten (MSAs) können Sie mithilfe von PowerShell [deinstallieren](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true) oder manuell aus dem Container für verwaltete Dienstkonten löschen.
 
    * Computer- oder Benutzerkonten können Sie manuell in Active Directory löschen.
 

@@ -1,6 +1,6 @@
 ---
 title: Zuweisen einer Azure Key Vault-Zugriffsrichtlinie (Portal)
-description: Erfahren Sie, wie Sie einem Dienstprinzipal oder einer Anwendungsidentität mithilfe des Azure-Portals eine Key Vault-Zugriffsrichtlinie zuweisen.
+description: Erfahren Sie, wie Sie einem Sicherheitsprinzipal oder einer Anwendungsidentität mithilfe des Azure-Portals eine Key Vault-Zugriffsrichtlinie zuweisen.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 910b8dae10036cc2e396be13495fd28363dc971d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a64a91e6f41f3fba7584630380ffb878979b4389
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97934559"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968763"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal
 
-Eine Key Vault-Zugriffsrichtlinie legt fest, ob ein bestimmter Dienstprinzipal (eine Anwendung oder eine Benutzergruppe) verschiedene Vorgänge für [Geheimnisse](../secrets/index.yml), [Schlüssel](../keys/index.yml) und [Zertifikate](../certificates/index.yml) in Key Vault ausführen kann. Sie können mithilfe des Azure-Portals (dieser Artikel), der [Azure-Befehlszeilenschnittstelle](assign-access-policy-cli.md) oder von [Azure PowerShell](assign-access-policy-powershell.md) Zugriffsrichtlinien zuweisen.
+Eine Key Vault-Zugriffsrichtlinie legt fest, ob ein bestimmter Sicherheitsprinzipal (eine Anwendung oder eine Benutzergruppe) verschiedene Vorgänge für [Geheimnisse](../secrets/index.yml), [Schlüssel](../keys/index.yml) und [Zertifikate](../certificates/index.yml) in Key Vault ausführen kann. Sie können mithilfe des Azure-Portals (dieser Artikel), der [Azure-Befehlszeilenschnittstelle](assign-access-policy-cli.md) oder von [Azure PowerShell](assign-access-policy-powershell.md) Zugriffsrichtlinien zuweisen.
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
@@ -37,15 +37,15 @@ Weitere Informationen zum Erstellen von Gruppen in Azure Active Directory über 
 
     ![Angeben von Zugriffsrichtlinienberechtigungen](../media/authentication/assign-policy-portal-02.png)
 
-1. Wählen Sie unter **Prinzipal auswählen** den Link **Keine ausgewählt** aus, um den Auswahlbereich **Prinzipal** zu öffnen. Geben Sie den Namen der App oder des Dienstprinzipals in das Suchfeld ein, wählen Sie das passende Ergebnis aus, und wählen Sie dann **Auswählen** aus.
+1. Wählen Sie unter **Prinzipal auswählen** den Link **Keine ausgewählt** aus, um den Auswahlbereich **Prinzipal** zu öffnen. Geben Sie den Namen des Benutzers, der App oder des Dienstprinzipals in das Suchfeld ein, wählen Sie das entsprechende Ergebnis und wählen Sie dann **Auswählen**.
 
-    ![Auswählen des Dienstprinzipals für die Zugriffsrichtlinie](../media/authentication/assign-policy-portal-03.png)
+    ![Auswählen des Sicherheitsprinzipals für die Zugriffsrichtlinie](../media/authentication/assign-policy-portal-03.png)
 
     Wenn Sie für die App eine verwaltete Identität verwenden, suchen Sie nach dem Namen der App, und wählen Sie ihn aus. (Weitere Informationen zu verwalteten Identitäten und Dienstprinzipalen finden Sie unter [Authentifizierung mit Key Vault: App-Identität und Dienstprinzipale](authentication.md#app-identity-and-security-principals).)
  
 1.  Wählen Sie im Bereich **Zugriffsrichtlinie hinzufügen** die Option **Hinzufügen** aus, um die Zugriffsrichtlinie zu speichern.
 
-    ![Hinzufügen der Zugriffsrichtlinie mit zugewiesenem Dienstprinzipal](../media/authentication/assign-policy-portal-04.png)
+    ![Hinzufügen der Zugriffsrichtlinie mit dem zugewiesenen Sicherheitsprinzipal](../media/authentication/assign-policy-portal-04.png)
 
 1. Vergewissern Sie sich auf der Seite **Zugriffsrichtlinien**, dass Ihre Zugriffsrichtlinie unter **Aktuelle Zugriffsrichtlinien** aufgeführt ist, und wählen Sie dann **Speichern** aus. Zugriffsrichtlinien werden erst angewandt, wenn Sie sie speichern.
 

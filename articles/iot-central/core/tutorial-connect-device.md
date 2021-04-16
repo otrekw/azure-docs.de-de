@@ -11,18 +11,18 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 3beba1db82cc2a618ba7544228975c953b01acd9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bbf94b6e000d5c082debd6a0d41a8d62b8b3f26e
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064901"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491098"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>Tutorial: Erstellen einer Clientanwendung und Verbinden dieser Anwendung mit Ihrer Azure IoT Central-Anwendung
 
 *Dieser Artikel gilt für Lösungsersteller und Geräteentwickler.*
 
-In diesem Tutorial für Geräteentwickler erfahren Sie, wie Sie eine Clientanwendung mit Ihrer Azure IoT Central-Anwendung verbinden. Die Anwendung simuliert das Verhalten eines Thermostats. Wenn die Anwendung eine Verbindung mit IoT Central herstellt, sendet sie die Modell-ID des Thermostatgerätemodells. IoT Central verwendet die Modell-ID, um das Gerätemodell abzurufen und eine Gerätevorlage für Sie zu erstellen. Sie fügen der Gerätevorlage Anpassungen und Ansichten hinzu, um einem Operator die Interaktion mit einem Gerät zu ermöglichen.
+In diesem Tutorial für Geräteentwickler erfahren Sie, wie Sie eine Clientanwendung mit Ihrer Azure IoT Central-Anwendung verbinden. Die Anwendung simuliert das Verhalten eines Thermostatsgerät. Wenn die Anwendung eine Verbindung mit IoT Central herstellt, sendet sie die Modell-ID des Thermostatgerätemodells. IoT Central verwendet die Modell-ID, um das Gerätemodell abzurufen und eine Gerätevorlage für Sie zu erstellen. Sie fügen der Gerätevorlage Anpassungen und Ansichten hinzu, um einem Operator die Interaktion mit einem Gerät zu ermöglichen.
 
 In diesem Tutorial lernen Sie Folgendes:
 

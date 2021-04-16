@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: c766c78705a1c1e40a9385360d35ac06a3db3a5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 675e99797a507cdcf96ad33ab13c4f386f6f372c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99252236"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169027"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region – Azure PowerShell
 
@@ -34,7 +34,7 @@ Wenn Sie Ihre VHD in Azure hochladen möchten, müssen Sie einen leeren verwalte
 
 Diese Art des verwalteten Datenträgers verfügt über zwei eindeutige Zustände:
 
-- „ReadyToUpload“: Der Datenträger ist für den Upload bereit, jedoch wurde keine [SAS (Shared Access Signature)](../../storage/common/storage-sas-overview.md) generiert.
+- ReadyToUpload, was bedeutet, dass der Datenträger bereit ist, einen Upload zu empfangen, aber noch keine [sichere Zugriffssignatur](../../storage/common/storage-sas-overview.md) (SAS) generiert wurde.
 - „ActiveUpload“: Der Datenträger ist für den Upload bereit, und die SAS wurde generiert.
 
 > [!NOTE]
