@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/04/2021
+ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 928b1a6dcff7ad186bf5fe9ce07d1a886d429867
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579551"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933337"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -240,10 +240,10 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
     | `Source`                            | IP-Adressen |
     | IP-Quelladressen/CIDR-Bereiche | Eine gültige IP-Adresse oder ein gültiger IP-Adressbereich für Ihre Umgebung |
     | Source port ranges                | *            |
-    | Ziel                       | Any          |
+    | Destination                       | Any          |
     | Zielportbereiche           | 636          |
     | Protocol                          | TCP          |
-    | Aktion                            | Allow        |
+    | Aktion                            | Zulassen        |
     | Priority                          | 401          |
     | Name                              | AllowLDAPS   |
 
@@ -298,6 +298,21 @@ Wenn Sie der lokalen Datei „hosts“ auf Ihrem Computer einen DNS-Eintrag hinz
 1. Öffnen Sie den *Editor* auf Ihrem lokalen Computer als Administrator.
 1. Navigieren Sie zu *C:\Windows\System32\drivers\etc\hosts*, und öffnen Sie die Datei.
 1. Löschen Sie die Zeile für den von Ihnen hinzugefügten Eintrag, z. B. `168.62.205.103    ldaps.aaddscontoso.com`.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn eine Fehlermeldung mit dem Hinweis angezeigt wird, dass LDAP.exe keine Verbindung herstellen kann, versuchen Sie, die verschiedenen Aspekte der Verbindungs Herstellung zu verwenden: 
+
+1. Konfigurieren des Domänencontrollers
+1. Konfigurieren des Client
+1. Netzwerk
+1. Einrichten der TLS-Sitzung
+
+Für den Antragsteller Namen des Zertifikats wird der Domänen Controller den Azure Adds-Domänen Namen (nicht den Azure AD Domänen Namen) verwenden, um den Zertifikat Speicher nach dem Zertifikat zu durchsuchen. Rechtschreibfehler verhindern z. b., dass der DC das richtige Zertifikat auswählt. 
+
+Der Client versucht, die TLS-Verbindung mit dem von Ihnen angegebenen Namen herzustellen. Der Datenverkehr muss vollständig durchlaufen werden. Der Domänen Controller sendet den öffentlichen Schlüssel des Server Authentifizierungs Zertifikats. Das Zertifikat muss über die richtige Verwendung im Zertifikat verfügen, und der im Antragsteller Namen signierte Name muss kompatibel sein, damit der Client darauf vertrauen kann, dass es sich bei dem Server um den DNS-Namen handelt, mit dem Sie eine Verbindung herstellen (d. h. ein Platzhalter funktioniert, ohne Rechtschreibfehler), und der Client muss dem Aussteller vertrauen. Sie können im Systemprotokoll Ereignisanzeige auf Probleme in dieser Kette überprüfen und die Ereignisse filtern, bei denen die Quelle SChannel ist. Sobald diese Elemente vorhanden sind, bilden Sie einen Sitzungsschlüssel.  
+
+Weitere Informationen finden Sie unter [TLS Handshake](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

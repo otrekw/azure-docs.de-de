@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ccabffc0e5a65e41f31c3c80703e67f78e8b5f9e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 87cd32dcace6fd38180cc09ba999efca76f5ae16
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101000"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605466"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map-android-sdk"></a>Hinzufügen einer Polygonextrusionsebene zur Karte (Android SDK)
 
@@ -106,7 +106,7 @@ map.layers.add(layer, "labels")
 
 ::: zone-end
 
-Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code ein vertikal gestrecktes Polygon mithilfe einer Polygonextrusionsebene gerendet wird.
+Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code ein vertikal gestrecktes Polygon mithilfe einer Polygonextrusionsebene gerendert wird.
 
 ![Karte mit vertikal gestrecktem Polygon unter Verwendung einer Polygonextrusionschicht](media/map-extruded-polygon-android/polygon-extrusion-layer.jpg)
 

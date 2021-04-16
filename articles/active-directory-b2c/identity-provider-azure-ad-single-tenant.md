@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 490880e4a37711a92b44a0ffe01315edfa6ddb26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a31fe8046e6bb0a933ade78ee2c7f4b208767a7
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580122"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028348"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für eine bestimmte Azure Active Directory-Organisation in Azure Active Directory B2C
 
@@ -230,7 +230,7 @@ Um ein Token vom Azure AD-Endpunkt zu erhalten, müssen Sie die Protokolle defin
 ## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
-1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
 1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Contoso Employee** aus, um sich mit dem Azure AD-Konto für „Contoso“ anzumelden.
 

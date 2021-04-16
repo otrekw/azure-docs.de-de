@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 16d2bf39d61961e2f83910735db1d0ddf1c91849
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: fd704d45aa7dc10835a205f12ce26fc01a7ea44f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627364"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584498"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Wie bietet Azure Cosmos DB Hochverfügbarkeit?
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -69,18 +69,20 @@ Für die seltenen Fälle eines regionalen Ausfalls stellt Azure Cosmos DB siche
 
 * Während eines Ausfalls der Schreibregion wird das Azure Cosmos-Konto automatisch eine sekundäre Region zur neuen primären Schreibregion machen, wenn die Option **Automatisches Failover aktivieren** für das Azure Cosmos-Konto konfiguriert ist. Wenn der entsprechende Vorgang aktiviert ist, erfolgt das Failover in eine andere Region in der von Ihnen festgelegten Reihenfolge der Regionspriorität.
 
+* Ein manuelles Failover sollte nicht ausgelöst werden. Bei einem Ausfall der Quell- oder Zielregion verläuft es nicht erfolgreich. Dies liegt daran, dass für die Failoverprozedur eine Konsistenzprüfung erforderlich ist, die Konnektivität zwischen den Regionen erfordert.
+
 * Nachdem die betroffene Region wieder in den Onlinezustand versetzt wurde, stehen sämtliche Daten aus Schreibvorgängen, die während des Ausfalls der Region nicht repliziert wurden, über den [Konfliktfeed](how-to-manage-conflicts.md#read-from-conflict-feed) zur Verfügung. Anwendungen können den Konfliktfeed lesen, die Konflikte auf Grundlage der anwendungsspezifischen Logik lösen und die aktualisierten Daten nach Bedarf in den Azure Cosmos-Container zurückschreiben.
 
 * Wenn die vom Ausfall betroffene Schreibregion wiederhergestellt ist, steht sie automatisch als Leseregion zur Verfügung. Sie können zurück zur wiederhergestellten Region als Schreibregion wechseln. Sie können die Regionen per [PowerShell, Azure CLI oder Azure-Portal](how-to-manage-database-account.md#manual-failover) wechseln. Vor, während und nach dem Wechsel zur Schreibregion tritt kein **Daten- oder Verfügbarkeitsverlust** auf, und Ihre Anwendung ist weiterhin hochverfügbar.
 
 > [!IMPORTANT]
-> Wir empfehlen Ihnen dringend, die für Produktionsworkloads genutzten Azure Cosmos-Konten zu konfigurieren, um **automatische Failover zu ermöglichen**. Für ein manuelles Failover ist eine Verbindung zwischen der sekundären und primären Schreibregion erforderlich, damit eine Konsistenzprüfung durchgeführt und sichergestellt werden kann, dass es beim Failover nicht zu Datenverlust kommt. Wenn die primäre Region nicht verfügbar ist, kann diese Konsistenzprüfung nicht vollständig durchgeführt werden, und das manuelle Failover ist nicht erfolgreich. Dies hat einen Verlust der Schreibverfügbarkeit für die Dauer des regionalen Ausfalls zur Folge.
+> Wir empfehlen Ihnen dringend, die für Produktionsworkloads genutzten Azure Cosmos-Konten zu konfigurieren, um **automatische Failover zu ermöglichen**. Dies ermöglicht Cosmos DB ein automatisches Failover der Kontodatenbanken in verfügbare Regionen. Ohne diese Konfiguration verliert das Konto für die gesamte Dauer des Ausfalls der Schreibregion die Schreibverfügbarkeit, da das manuelle Failover aufgrund der fehlenden Regionskonnektivität nicht erfolgreich verläuft.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Konten mit mehreren Regionen mit einer einzelnen Schreibregion (Ausfall einer Leseregion)
 
 * Bei einem Ausfall der Leseregion besteht für Azure Cosmos-Konten mit einer Konsistenzebene bzw. hoher Konsistenz mit drei oder mehr Leseregionen weiterhin Hochverfügbarkeit für Lese- und Schreibvorgänge.
 
-* Für Azure Cosmos-Konten mit hoher Konsistenz und mit höchstens drei Regionen (eine Lese-, zwei Schreibregionen) geht die Schreibverfügbarkeit bei einem Ausfall der Leseregion verloren. Kunden mit insgesamt mindestens vier Regionen können sich jedoch für die Verwendung von dynamischen Lesequoren registrieren, indem sie ein Supportticket erstellen. Konten mit mindestens zwei Leseregionen in dieser Konfiguration behalten Schreibverfügbarkeit.
+* Für Azure Cosmos-Konten mit hoher Konsistenz und mit drei Regionen (eine Lese-, zwei Schreibregionen) bleibt die Schreibverfügbarkeit bei einem Ausfall der Leseregion erhalten. Bei Konten mit zwei Regionen und aktiviertem automatischem Failover werden Schreibvorgänge von dem Konto nicht mehr akzeptiert, bis die Region als fehlerhaft markiert ist und ein automatisches Failover auftritt.
 
 * Die betreffende Region wird automatisch getrennt und als offline gekennzeichnet. Die [Azure Cosmos DB SDKs](sql-api-sdk-dotnet.md) leiten Leseaufrufe an die nächste verfügbare Region in der Liste der bevorzugten Regionen weiter.
 
@@ -110,7 +112,7 @@ In der folgenden Tabelle ist die Hochverfügbarkeitsfunktion verschiedener Konto
 |Leseverfügbarkeit (SLA)  | 99,99 % | 99,995 % | 99,995 % | 99,999% |
 |Zonenfehler: Datenverlust | Datenverlust | Kein Datenverlust | Kein Datenverlust | Kein Datenverlust |
 |Zonenfehler: Verfügbarkeit | Verlust der Verfügbarkeit | Kein Verlust der Verfügbarkeit | Kein Verlust der Verfügbarkeit | Kein Verlust der Verfügbarkeit |
-|Regionaler Ausfall: Datenverlust | Datenverlust |  Datenverlust | Abhängig von der Konsistenzebene. Weitere Informationen finden Sie unter [Konsistenzebenen in Azure Cosmos DB](consistency-levels-tradeoffs.md). | Abhängig von der Konsistenzebene. Weitere Informationen finden Sie unter [Konsistenzebenen in Azure Cosmos DB](consistency-levels-tradeoffs.md).
+|Regionaler Ausfall: Datenverlust | Datenverlust |  Datenverlust | Abhängig von der Konsistenzebene. Weitere Informationen finden Sie unter [Konsistenzebenen in Azure Cosmos DB](./consistency-levels.md). | Abhängig von der Konsistenzebene. Weitere Informationen finden Sie unter [Konsistenzebenen in Azure Cosmos DB](./consistency-levels.md).
 |Regionaler Ausfall: Verfügbarkeit | Verlust der Verfügbarkeit | Verlust der Verfügbarkeit | Kein Verfügbarkeitsverlust bei einem Fehler in der Leseregion, temporär für Fehler in der Schreibregion | Kein Verlust der Verfügbarkeit |
 |Preis (***1** _) | Nicht zutreffend | Bereitgestellte RU/s x 1,25-Rate | Bereitgestellte RU/s × 1,25-Rate (_*_2_**) | Schreibrate in mehreren Regionen |
 
@@ -138,7 +140,22 @@ Verfügbarkeitszonen können über Folgendes aktiviert werden:
 
 * Auch wenn Ihr Azure Cosmos-Konto hochverfügbar ist, ist Ihre Anwendung unter Umständen nicht richtig dafür konzipiert, hochverfügbar zu bleiben. Um die End-to-End-Hochverfügbarkeit Ihrer Anwendung zu testen, deaktivieren Sie im Rahmen von Übungen für Anwendungstests oder Notfallwiederherstellungen vorübergehend das automatische Failover für das Konto, rufen das [manuelle Failover per PowerShell, Azure CLI oder Azure-Portal](how-to-manage-database-account.md#manual-failover) auf und überwachen dann das Failover Ihrer Anwendung. Nach der Fertigstellung können Sie einen Failover zurück zur primären Region durchführen und den automatischen Failover für das Konto wiederherstellen.
 
+> [!IMPORTANT]
+> Rufen Sie während eines Cosmos DB-Ausfalls weder in der Quell- noch in der Zielregion ein manuelles Failover auf, da hierfür zur Gewährleistung der Datenkonsistenz Regionskonnektivität erforderlich ist und das Failover nicht erfolgreich verläuft.
+
 * Bei einer global verteilten Datenbankumgebung besteht eine direkte Beziehung zwischen der Konsistenzebene und der Datendauerhaftigkeit im Falle eines regionsweiten Ausfalls. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als RTO (Recovery Time Objective) bezeichnet. Sie müssen auch wissen, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als RPO (Recovery Point Objective) bezeichnet. Informationen zum Anzeigen von RPO und RTO für Azure Cosmos DB finden Sie unter [Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung](./consistency-levels.md#rto).
+
+## <a name="what-to-expect-during-a-region-outage"></a>Das geschieht beim Ausfall einer Region
+
+Bei Konten mit einer Region geht die Lese- und Schreibverfügbarkeit verloren.
+
+Bei Konten mit mehreren Regionen treten unterschiedliche Verhaltensweisen auf, die in der folgenden Tabelle aufgeführt sind.
+
+| Schreibregionen | Automatisches Failover | Ausblick | Aktion |
+| -- | -- | -- | -- |
+| Eine Schreibregion | Nicht aktiviert | Bei einem Ausfall in einer Leseregion an andere Regionen umgeleitet. Kein Verlust der Lese- oder Schreibverfügbarkeit. Kein Datenverlust. <p/> Bei einem Ausfall in einer Schreibregion verlieren Clients die Schreibverfügbarkeit. Der Datenverlust hängt von der ausgewählten Konsistenzebene ab. <p/> Cosmos DB stellt die Schreibverfügbarkeit nach einem Ausfall automatisch wieder her. | Stellen Sie sicher, dass während eines Ausfalls in den verbleibenden Regionen genügend Kapazität zur Unterstützung des Lesedatenverkehrs bereitgestellt wird. <p/> Lösen Sie während des Ausfalls *kein* manuelles Failover aus, da es nicht erfolgreich verläuft. <p/> Passen Sie die bereitgestellte Kapazität nach einem Ausfall ggf. an. |
+| Eine Schreibregion | Aktiviert | Bei einem Ausfall in einer Leseregion an andere Regionen umgeleitet. Kein Verlust der Lese- oder Schreibverfügbarkeit. Kein Datenverlust. <p/> Bei einem Ausfall in der Schreibregion, verlieren Clients die Schreibverfügbarkeit, bis Cosmos DB gemäß Ihren Einstellungen automatisch eine neue Region als neue Schreibregion auswählt. Der Datenverlust hängt von der ausgewählten Konsistenzebene ab. | Stellen Sie sicher, dass während eines Ausfalls in den verbleibenden Regionen genügend Kapazität zur Unterstützung des Lesedatenverkehrs bereitgestellt wird. <p/> Lösen Sie während des Ausfalls *kein* manuelles Failover aus, da es nicht erfolgreich verläuft. <p/> Nach dem Ausfall können Sie die nicht replizierten Daten in der ausgefallenen Region aus Ihrem [Konfliktfeed](how-to-manage-conflicts.md#read-from-conflict-feed) wiederherstellen, die Schreibregion wieder in die ursprüngliche Region verschieben und die bereitgestellte Kapazität ggf. anpassen. |
+| Mehrere Schreibregionen | Nicht zutreffend | Kein Verlust der Lese- oder Schreibverfügbarkeit. <p/> Datenverlust je nach ausgewählter Konsistenzebene. | Stellen Sie sicher, dass während eines Ausfalls in den verbleibenden Regionen genügend Kapazität zur Unterstützung des zusätzlichen Datenverkehrs bereitgestellt wird. <p/> Nach dem Ausfall können Sie die nicht replizierten Daten in der ausgefallenen Region aus Ihrem [Konfliktfeed](how-to-manage-conflicts.md#read-from-conflict-feed) wiederherstellen und die bereitgestellte Kapazität ggf. anpassen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

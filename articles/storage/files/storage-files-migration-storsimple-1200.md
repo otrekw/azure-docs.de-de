@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98882279"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200: Migration zur Azure-Dateisynchronisierung
@@ -210,13 +210,13 @@ Sie haben die Migration einer Freigabe/Gruppe von Freigaben zu einem gemeinsamen
 Sie können einige dieser Kopiervorgänge parallel ausführen. Es wird empfohlen, jeweils eine Azure-Dateifreigabe auf einmal zu verarbeiten.
 
 > [!WARNING]
-> Nachdem Sie alle Daten von StorSimple auf den Windows-Server verschoben haben und die Migration abgeschlossen ist, gehen Sie wie folgt vor: Kehren Sie zu ***allen** _ Synchronisierungsgruppen im Azure-Portal zurück, und passen Sie den Wert für den freien Speicherplatz auf dem Cloudtieringvolume auf einen Wert an, der für die Cachenutzung besser geeignet ist, z. B. 20 %. 
+> Nachdem Sie alle Daten von StorSimple auf den Windows-Server verschoben haben und die Migration abgeschlossen ist, gehen Sie wie folgt vor: Kehren Sie zu ***allen*** Synchronisierungsgruppen im Azure-Portal zurück, und passen Sie den Wert für den freien Speicherplatz auf dem Cloudtieringvolume auf einen Wert an, der für die Cachenutzung besser geeignet ist, z. B. 20 %. 
 
 Die Richtlinie für den freien Speicherplatz für das Cloudtiering wirkt sich auf eine Volumeebene aus, von der aus potenziell mehrere Serverendpunkte synchronisiert werden. Wenn Sie vergessen, den freien Speicherplatz auf einem Serverendpunkt anzupassen, wird für die Synchronisierung weiterhin die restriktivste Regel angewandt, und es wird versucht, 99 % freien Speicherplatz beizubehalten. Der lokale Cache funktioniert in diesem Fall nicht wie erwartet. Dies ist nur dann erstrebenswert, wenn Sie lediglich den Namespace für ein Volume erhalten möchten, das ausschließlich selten genutzte Archivdaten enthält.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Das häufigste Problem, auf das Sie stoßen können, besteht darin, dass der RoboCopy-Befehl mit dem Fehler _„Volume voll“* auf Windows Server-Seite beendet wird. Wenn dies der Fall ist, ist die Downloadgeschwindigkeit wahrscheinlich höher als die Uploadgeschwindigkeit. Das Cloudtiering wird einmal stündlich eingesetzt, um Inhalte vom lokalen Windows Server-Datenträger abzurufen, die bereits synchronisiert wurden.
+Das häufigste Problem, auf das Sie stoßen können, besteht darin, dass der RoboCopy-Befehl mit dem Fehler *Volume voll* auf Windows Server-Seite beendet wird. Wenn dies der Fall ist, ist die Downloadgeschwindigkeit wahrscheinlich höher als die Uploadgeschwindigkeit. Das Cloudtiering wird einmal stündlich eingesetzt, um Inhalte vom lokalen Windows Server-Datenträger abzurufen, die bereits synchronisiert wurden.
 
 Warten Sie, bis durch den Synchronisierungsvorgang und das Cloudtiering Speicherplatz freigegeben wurde. Sie können dies im Datei-Explorer auf Ihrem Windows-Server beobachten.
 

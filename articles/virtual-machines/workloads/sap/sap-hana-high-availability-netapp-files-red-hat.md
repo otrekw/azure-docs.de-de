@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: radeltch
-ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c5f94329920f8c850c0a47dd607ade8e83658b29
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671566"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599917"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit bei hochskalierten SAP HANA-Lösungen mit Azure NetApp Files unter Red Hat Enterprise Linux
 
@@ -599,6 +599,15 @@ In diesem Beispiel verfügt jeder Clusterknoten über ein eigenes HANA-NFS-Datei
     nc_HN1_03  (ocf::heartbeat:azure-lb):  Started hanadb1
     vip_HN1_03 (ocf::heartbeat:IPaddr2):   Started hanadb1
     ```
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Konfigurieren der Systemreplikation im Pacemaker-Cluster, für die HANA/Lesevorgänge aktiviert ist/sind
+
+Ab SAP HANA 2.0 SPS 01 SAP sind aktive Setups bzw. Setups mit aktivierten Lesevorgängen für die SAP HANA-Systemreplikation möglich, bei denen die sekundären Systeme der SAP HANA-Systemreplikation aktiv für Workloads mit vielen Lesevorgängen verwendet werden können. Zur Unterstützung eines solchen Setups in einem Cluster ist eine zweite virtuelle IP-Adresse erforderlich, mit der Clients auf die sekundäre SAP HANA-Datenbank mit aktivierten Lesevorgängen zugreifen können. Damit nach einer Übernahme weiterhin auf die sekundäre Replikationswebsite zugegriffen werden kann, muss der Cluster die virtuelle IP-Adresse zusammen mit der sekundären Instanz der SAP HANA-Ressource verschieben.
+
+Informationen zu der zusätzlichen Konfiguration, die erforderlich ist, um Systemreplikationen, für die HANA/Lesevorgänge aktiviert ist/sind, in einem Red Hat-Hochverfügbarkeitscluster mit einer zweiten virtuellen IP-Adresse zu verwalten, finden Sie unter [Konfigurieren der Systemreplikation im Pacemaker-Cluster, für die HANA/Lesevorgänge aktiviert ist/sind](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster).  
+
+Bevor Sie fortfahren, vergewissern Sie sich, dass Sie den Red Hat-Hochverfügbarkeitscluster, der die SAP HANA-Datenbank verwaltet, wie in den obigen Abschnitten der Dokumentation beschrieben vollständig konfiguriert haben.    
+
 
 ## <a name="test-the-cluster-setup"></a>Testen der Clustereinrichtung
 

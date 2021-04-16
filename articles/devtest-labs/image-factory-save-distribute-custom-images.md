@@ -4,10 +4,10 @@ description: In diesem Artikel werden die Schritte erläutert, mit denen Sie ben
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85476239"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs
@@ -86,4 +86,4 @@ Diese Aufgabe überträgt alle benutzerdefinierten Images, die in der Image Fact
 Sobald die Buildaufgabe für die Verteilung abgeschlossen ist, stellen Sie einen neuen Build in die Warteschlange, um sicherzustellen, dass alles funktioniert. Sobald der Build erfolgreich abgeschlossen wurde, werden die neuen benutzerdefinierten Images in dem Ziel-Lab angezeigt, das in der Labs.json-Konfigurationsdatei eingegeben wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Im nächsten Artikel dieser Reihe aktualisieren Sie die Image Factory mit einer Aufbewahrungsrichtlinie und Bereinigungsschritten: [Set retention policy and run cleanup scripts (Festlegen der Aufbewahrungsrichtlinie und Ausführen von Bereinigungsskripts)](image-factory-set-retention-policy-cleanup.md).
+Im nächsten Artikel dieser Reihe aktualisieren Sie die Image Factory mit einer Aufbewahrungsrichtlinie und Bereinigungsschritten: [Festlegen der Aufbewahrungsrichtlinie und Ausführen von Bereinigungsskripts](image-factory-set-retention-policy-cleanup.md).

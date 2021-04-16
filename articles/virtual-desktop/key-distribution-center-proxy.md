@@ -3,15 +3,15 @@ title: 'Einrichten von Windows Virtual Desktop zur Verwendung eines Kerberos-Sch
 description: Es wird beschrieben, wie Sie einen Windows Virtual Desktop-Hostpool für die Verwendung eines Kerberos-Schlüsselverteilungscenter-Proxys einrichten.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 01/30/2021
+ms.date: 03/20/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 102ddc1c8937c66a92416ddb6d5f2d25f2a3c349
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: bcf28fbc0d2f4ec9eeac5bcb8f0b2c9b65a62b6b
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219654"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775028"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Konfigurieren eines Kerberos-Schlüsselverteilungscenter-Proxys (Vorschau)
 
@@ -20,7 +20,27 @@ ms.locfileid: "99219654"
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-In diesem Artikel wird veranschaulicht, wie Sie einen Kerberos-Schlüsselverteilungscenter-Proxy (Key Distribution Center, KDC) (Vorschau) für Ihren Hostpool konfigurieren. Mit diesem Proxy können Organisationen außerhalb ihrer Unternehmensgrenzen die Authentifizierung für Kerberos durchführen. Beispielsweise können Sie den KDC-Proxy nutzen, um die Smartcard-Authentifizierung für externe Clients zu aktivieren.
+Sicherheitsbewusste Kunden, z. B. Finanz- oder Regierungsorganisationen, verwenden häufig die Anmeldung mithilfe von Smartcards. Smartcards erhöhen die Sicherheit von Bereitstellungen, da sie eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) verlangen. Für den RDP-Teil einer Windows Virtual Desktop-Sitzung ist bei Smartcards jedoch für die Kerberos-Authentifizierung eine direkte Verbindung („Line of Sight“) mit einem AD-Domänencontroller (Active Directory) erforderlich. Ohne diese direkte Verbindung können sich Benutzer nicht automatisch über Remoteverbindungen beim Netzwerk der Organisation anmelden. Benutzer in einer Windows Virtual Desktop-Bereitstellung können den KDC-Proxydienst verwenden, um einen Proxy für diesen Authentifizierungsdatenverkehr einzurichten und sich remote anzumelden. Der KDC-Proxy ermöglicht die Authentifizierung für das Remotedesktopprotokoll einer Windows Virtual Desktop-Sitzung, sodass der Benutzer sich sicher anmelden kann. Dies vereinfacht eine Arbeit von zu Hause, und ermöglicht eine reibungslosere Durchführung bestimmter Notfallwiederherstellungsszenarien.
+
+Das Einrichten des KDC-Proxys umfasst in der Regel das Zuweisen der Windows Server-Gatewayrolle in Windows Server 2016 oder höher. Wie verwenden Sie eine Remotedesktopdienste-Rolle, um sich bei Windows Virtual Desktop anzumelden? Um dies zu beantworten, werfen wir einen kurzen Blick auf die Komponenten.
+
+Es gibt zwei Komponenten für den virtuellen Windows Virtual Desktop-Dienst, die authentifiziert werden müssen:
+
+- Der Feed im Windows Virtual Desktop-Client, mit dem Benutzer eine Liste der verfügbaren Desktops oder Anwendungen erhalten, auf die sie Zugriff haben. Dieser Authentifizierungsvorgang erfolgt in Azure Active Directory. Das bedeutet, dass diese Komponente nicht im Mittelpunkt dieses Artikels steht.
+- Die RDP-Sitzung, die sich daraus ergibt, dass ein Benutzer eine dieser verfügbaren Ressourcen auswählt. Diese Komponente verwendet die Kerberos-Authentifizierung und erfordert einen KDC-Proxy für Remotebenutzer.
+
+In diesem Artikel erfahren Sie, wie Sie den Feed im Windows Virtual Desktop-Client im Azure-Portal konfigurieren. Informationen zum Konfigurieren der RD-Gateway-Rolle finden Sie unter [Bereitstellen der RD-Gateway-Rolle](/windows-server/remote/rd-gateway-role).
+
+## <a name="requirements"></a>Anforderungen
+
+Zum Konfigurieren eines Windows Virtual Desktop-Sitzungshosts mit einem KDC-Proxy benötigen Sie Folgendes:
+
+- Zugriff auf das Azure-Portal und ein Azure-Administratorkonto.
+- Auf den Remoteclientcomputern muss entweder Windows 10 oder Windows 7 ausgeführt werden, und der [Windows Desktop-Client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop) muss installiert sein.
+- Auf dem Computer muss bereits ein KDC-Proxy installiert sein. Weitere Informationen hierzu finden Sie unter [Einrichten der RD-Gateway-Rolle für Windows Virtual Desktop](rd-gateway-role.md).
+- Betriebssystem des Computers muss Windows Server 2016 oder höher sein.
+
+Nachdem Sie sichergestellt haben, dass Sie diese Anforderungen erfüllen, kann es losgehen.
 
 ## <a name="how-to-configure-the-kdc-proxy"></a>Konfigurieren des KDC-Proxys
 
@@ -37,15 +57,19 @@ Konfigurieren Sie den KDC-Proxy wie folgt:
 
 4. Wählen Sie die Registerkarte **Erweitert** aus, und geben Sie dann einen Wert im folgenden Format ohne Leerzeichen ein:
 
+    
     > kdcproxyname:s:\<fqdn\>
+    
 
     > [!div class="mx-imgBorder"]
     > ![Screenshot: Ausgewählte Registerkarte „Erweitert“ mit eingegebenem Wert (Schritt 4)](media/advanced-tab-selected.png)
 
 5. Klicken Sie auf **Speichern**.
 
-6. Der ausgewählte Hostpool sollte nun damit beginnen, RDP-Verbindungsdateien mit dem von Ihnen ausgefüllten Feld „kdcproxyname“ auszugeben.
+6. Der ausgewählte Hostpool sollte nun damit beginnen, RDP-Verbindungsdateien mit dem von Ihnen in Schritt 4 eingegebenen Wert für „kdcproxyname“ auszugeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Remotedesktopgateway-Rolle in Remotedesktopdienste enthält einen KDC-Proxydienst. Informationen zur Einrichtung als Ziel für Windows Virtual Desktop finden Sie unter [Bereitstellen der Remotedesktopgateway-Rolle in Windows Virtual Desktop](rd-gateway-role.md).
+Informationen dazu, wie Sie den KDC-Proxy hinsichtlich Remotedesktopdienste verwalten und die RD-Gateway-Rolle zuweisen, finden Sie unter [Bereitstellen der RD-Gateway-Rolle](/windows-server/remote/rd-gateway-role).
+
+Wenn Sie Ihre KDC-Proxyserver skalieren möchten, finden Sie weitere Informationen zum Einrichten der Hochverfügbarkeit für den KDC-Proxy unter [Hinzufügen von Hochverfügbarkeit zu RD-Web und RD-Gateway (Webfront)](/windows-server/remote/remote-desktop-services/rds-rdweb-gateway-ha).

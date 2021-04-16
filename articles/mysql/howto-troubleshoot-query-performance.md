@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 81ec7e6f822f24f2b9e6ca4298e9668358c78149
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d01febec3972dcc26c6e9b5aa8d0c4cca5f32d0a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94540755"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606078"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Verwenden von EXPLAIN zum Analysieren der Abfrageleistung in Azure Database for MySQL
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+
 **EXPLAIN** ist ein praktisches Tool zum Optimieren von Abfragen. Mit einer EXPLAIN-Anweisung können Sie Informationen zur Ausführung von SQL-Anweisungen abrufen. Die folgende Ausgabe zeigt ein Beispiel für die Ausführung einer EXPLAIN-Anweisung.
 
 ```sql
@@ -167,4 +169,4 @@ Durch die Verwendung von EXPLAIN und verschiedener Typen von Indizes kann die Le
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Um Antworten anderer Benutzer auf häufig gestellte Fragen zu erhalten oder eine neue Frage/Antwort zu veröffentlichen, besuchen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-database-mysql.html) oder [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Um Antworten anderer Benutzer auf häufige Fragen zu erhalten oder eine neue Frage/Antwort zu veröffentlichen, besuchen Sie [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

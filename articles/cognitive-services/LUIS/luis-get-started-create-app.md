@@ -4,13 +4,13 @@ description: In dieser Schnellstartanleitung lernen Sie, eine LUIS-App zu erstel
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/13/2020
-ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 03/29/2021
+ms.openlocfilehash: e0972998fad647c1c70be814cb7c13f14a6e1141
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019159"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277027"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Schnellstart: Verwenden der vordefinierten Home Automation-App
 
@@ -220,7 +220,5 @@ Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Clientanwendu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können den Endpunkt im Code aufrufen:
-
 > [!div class="nextstepaction"]
-> [Aufrufen eines LUIS-Endpunkts mithilfe von Code](./luis-get-started-get-intent-from-rest.md)
+> [Iterative App Entwicklung für LUIS](./luis-concept-app-iteration.md)

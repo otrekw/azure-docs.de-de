@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: chrande
 ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93087484"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gewusst wie: Verwenden des Schritts „Ausführungsprofil“ zum Auswerten Ihrer Gremlin-Abfragen
@@ -20,7 +20,7 @@ ms.locfileid: "93087484"
 
 Dieser Artikel enthält eine Übersicht über die Verwendung des Schritts „Ausführungsprofil“ für Graphdatenbanken der Gremlin-API für Azure Cosmos DB. In diesem Schritt werden relevante Informationen zur Problembehandlung und zu Abfrageoptimierungen bereitgestellt. Er ist mit allen Gremlin-Abfragen kompatibel, die für ein Cosmos DB-Gremlin-API-Konto ausgeführt werden können.
 
-Fügen Sie zum Verwenden dieses Schritts einfach den Funktionsaufruf `executionProfile()` am Ende Ihrer Gremlin-Abfrage an. **Ihre Gremlin-Abfrage wird ausgeführt** , und als Ergebnis des Vorgangs wird ein JSON-Antwortobjekt mit dem Ausführungsprofil der Abfrage zurückgegeben.
+Fügen Sie zum Verwenden dieses Schritts einfach den Funktionsaufruf `executionProfile()` am Ende Ihrer Gremlin-Abfrage an. **Ihre Gremlin-Abfrage wird ausgeführt**, und als Ergebnis des Vorgangs wird ein JSON-Antwortobjekt mit dem Ausführungsprofil der Abfrage zurückgegeben.
 
 Beispiel:
 
@@ -139,21 +139,21 @@ Dies ist ein mit Anmerkungen versehenes Beispiel für die Ausgabe, die zurückge
 ## <a name="execution-profile-response-objects"></a>Antwortobjekte des Ausführungsprofils
 
 Die Antwort der Funktion „executionProfile()“ führt zu einer Hierarchie mit JSON-Objekten mit der folgenden Struktur:
-  - **Gremlin-Vorgangsobjekt** : Steht für den gesamten Gremlin-Vorgang, der ausgeführt wurde. Es enthält die folgenden Eigenschaften.
-    - `gremlin`: Die explizite Gremlin-Anweisung, die ausgeführt wurde.
-    - `totalTime`: Die Zeit in Millisekunden für die Ausführung des Schritts. 
-    - `metrics`: Ein Array mit allen Cosmos DB-Runtimeoperatoren, die für die Abfrage ausgeführt wurden. Diese Liste ist in der Reihenfolge der Ausführung sortiert.
+  - **Gremlin-Vorgangsobjekt:** steht für den gesamten Gremlin-Vorgang, der ausgeführt wurde. Es enthält die folgenden Eigenschaften.
+    - `gremlin`: die explizite Gremlin-Anweisung, die ausgeführt wurde.
+    - `totalTime`: die Zeit in Millisekunden für die Ausführung des Schritts. 
+    - `metrics`: ein Array mit allen Cosmos DB-Runtimeoperatoren, die für die Abfrage ausgeführt wurden. Diese Liste ist in der Reihenfolge der Ausführung sortiert.
     
-  - **Cosmos DB-Runtimeoperatoren** : Steht für die Komponenten des gesamten Gremlin-Vorgangs. Diese Liste ist in der Reihenfolge der Ausführung sortiert. Jedes Objekt enthält die folgenden Eigenschaften:
+  - **Cosmos DB-Runtimeoperatoren:** steht für die Komponenten des gesamten Gremlin-Vorgangs. Diese Liste ist in der Reihenfolge der Ausführung sortiert. Jedes Objekt enthält die folgenden Eigenschaften:
     - `name`: Name des Operators. Dies ist der Typ des Schritts, der ausgewertet und ausgeführt wurde. Die Tabelle unten enthält weitere Informationen.
     - `time`: Zeitraum in Millisekunden, der für einen bestimmten Operator benötigt wurde.
-    - `annotations`: Enthält zusätzliche spezifische Informationen zum ausgeführten Operator.
+    - `annotations`: enthält zusätzliche spezifische Informationen zum ausgeführten Operator.
     - `annotations.percentTime`: Prozentsatz des gesamten Zeitraums, der zum Ausführen des spezifischen Operators benötigt wurde.
     - `counts`: Anzahl von Objekten, die von diesem Operator über die Speicherebene zurückgegeben wurden. Diese Angabe ist im Skalarwert `counts.resultCount` enthalten.
-    - `storeOps`: Steht für einen Speichervorgang, der eine oder mehrere Partitionen umfassen kann.
-    - `storeOps.fanoutFactor`: Steht für die Anzahl von Partitionen, auf die von diesem spezifischen Speichervorgang zugegriffen wurde.
-    - `storeOps.count`: Steht für die Anzahl von Ergebnissen, die von diesem Speichervorgang zurückgegeben wurden.
-    - `storeOps.size`: Steht für die Größe des Ergebnisses eines bestimmten Speichervorgangs in Byte.
+    - `storeOps`: steht für einen Speichervorgang, der eine oder mehrere Partitionen umfassen kann.
+    - `storeOps.fanoutFactor`: steht für die Anzahl von Partitionen, auf die von diesem spezifischen Speichervorgang zugegriffen wurde.
+    - `storeOps.count`: steht für die Anzahl von Ergebnissen, die von diesem Speichervorgang zurückgegeben wurden.
+    - `storeOps.size`: steht für die Größe des Ergebnisses eines bestimmten Speichervorgangs in Byte.
 
 Gremlin-Runtimeoperator für Cosmos DB|BESCHREIBUNG
 ---|---

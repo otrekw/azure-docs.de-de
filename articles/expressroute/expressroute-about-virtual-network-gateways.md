@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 038e018a22af3546f5d3c66f6d8ee3963483cce1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 796e35be12939920f9392e6f3ce4cae660415f80
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102615056"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504687"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Informationen zu ExpressRoute-Gateways für virtuelle Netzwerke
 
@@ -39,8 +39,8 @@ In der folgenden Tabelle sind die Gatewaytypen und die geschätzten Leistungen a
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Die Anwendungsleistung hängt von mehreren Faktoren ab, z.B. der End-to-End-Latenz und der Anzahl der Datenflüsse, die die Anwendung öffnet. Die Zahlen in der Tabelle stellen die Obergrenze dar, die die Anwendung theoretisch in einer idealen Umgebung erzielen kann.
->
+> * Die Anzahl der virtuellen Computer im virtuellen Netzwerk umfasst auch virtuelle Computer in über Peering verbundenen virtuellen Netzwerken, die ein ExpressRoute-Remotegateway verwenden.
+> * Die Anwendungsleistung hängt von mehreren Faktoren ab, z.B. der End-to-End-Latenz und der Anzahl der Datenflüsse, die die Anwendung öffnet. Die Zahlen in der Tabelle stellen die Obergrenze dar, die die Anwendung theoretisch in einer idealen Umgebung erzielen kann.
 >
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>Gatewaysubnetz
@@ -53,7 +53,7 @@ Bevor Sie ein ExpressRoute-Gateway erstellen, müssen Sie ein Gatewaysubnetz ers
 
 Bei der Gatewayerstellung geben Sie die Anzahl der im Subnetz enthaltenen IP-Adressen an. Die IP-Adressen im Gatewaysubnetz werden den Gatewaydiensten und -VMs zugeordnet. Einige Konfigurationen erfordern mehr IP-Adressen als andere. 
 
-Beziehen Sie sich beim Planen der Größe Ihres Gatewaysubnetzes auf die Dokumentation für die Konfiguration, die Sie erstellen möchten. Beispielsweise erfordert die Konfiguration für die parallele Ausführung von ExpressRoute/VPN Gateway ein größeres Subnetz als die meisten anderen Konfigurationen. Stellen Sie zusätzlich sicher, dass Ihr Gatewaysubnetz über genügend IP-Adressen verfügt, und berücksichtigen Sie dabei auch mögliche zukünftige Konfigurationen. Sie können zwar ein Gatewaysubnetz mit einer Größe von nur /29 erstellen, aber es empfiehlt sich, ein Gatewaysubnetz mit einer Größe von mindestens /27 oder größer (/27, /26 usw.) zu erstellen, wenn Sie über den erforderlichen Adressraum verfügen. Wenn Sie ein Gatewaysubnetz für den dualen Stapel erstellen, empfiehlt es sich, auch einen IPv6-Bereich von /64 oder höher zu verwenden. Dies bietet Platz für die meisten Konfigurationen .
+Beziehen Sie sich beim Planen der Größe Ihres Gatewaysubnetzes auf die Dokumentation für die Konfiguration, die Sie erstellen möchten. Beispielsweise erfordert die Konfiguration für die parallele Ausführung von ExpressRoute/VPN Gateway ein größeres Subnetz als die meisten anderen Konfigurationen. Stellen Sie zusätzlich sicher, dass Ihr Gatewaysubnetz über genügend IP-Adressen verfügt, und berücksichtigen Sie dabei auch mögliche zukünftige Konfigurationen. Sie können zwar ein Gatewaysubnetz mit einer Größe von nur /29 erstellen, aber es empfiehlt sich, ein Gatewaysubnetz mit einer Größe von mindestens /27 oder größer (/27, /26 usw.) zu erstellen, wenn Sie über den erforderlichen Adressraum verfügen. Wenn Sie 16 ExpressRoute-Leitungen mit Ihrem Gateway verbinden möchten, **müssen** Sie ein Gatewaysubnetz mit einer Größe von mindestens /26 erstellen. Wenn Sie ein Gatewaysubnetz für den dualen Stapel erstellen, empfiehlt es sich, auch einen IPv6-Bereich von /64 oder höher zu verwenden. Dies bietet Platz für die meisten Konfigurationen .
 
 Im folgenden Resource Manager-PowerShell-Beispiel ist ein Gatewaysubnetz mit dem Namen GatewaySubnet zu sehen. Sie erkennen, das mit der CIDR-Notation die Größe /27 angegeben wird. Dies ist für eine ausreichende Zahl von IP-Adressen für die meisten Konfigurationen, die derzeit üblich sind, groß genug.
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 0b1358f67e2b10078e24168bdb779cd708ac2403
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 8aba6f13957d37f843114572f001029baf41ded6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095662"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889347"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Auswählen einer Domäne für ein Custom Vision-Projekt
 
@@ -25,12 +25,17 @@ Auf der Registerkarte „Einstellungen“ Ihres Custom Vision-Projekt können Si
 
 |Domain|Zweck|
 |---|---|
-|__Allgemein__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die allgemeine Domäne. ID: `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Allgemein__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen speziellen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie eine der allgemeinen Domänen. ID: `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
 |__General [A1]__ (Allgemein [A1])| Diese ist optimiert für eine bessere Genauigkeit mit vergleichbarer Rückschlusszeit wie die allgemeine Domäne. Sie wird für größere Datasets oder schwierigere Benutzerszenarios empfohlen. Diese Domäne erfordert mehr Trainingszeit. ID: `a8e3c40f-fb4a-466f-832a-5e457ae4a344`|
+|__Allgemein [A2]__| Diese ist optimiert für eine bessere Genauigkeit mit kürzerer Rückschlusszeit als die Domänen „Allgemein [A1]“ und „Allgemein“. Wird für die meisten Datasets empfohlen. Diese Domäne erfordert weniger Trainingszeit als die Domänen „Allgemein“ und „Allgemein [A1]“. ID: `2e37d7fb-3a54-486a-b4d6-cfc369af0018` |
 |__Food (Lebensmittel)__|Für Fotos von Gerichten optimiert, wie sie beispielsweise auf der Speisekarte von Restaurants abgebildet werden. Wenn Sie Fotos von einzelnen Früchten oder Gemüsen klassifizieren möchten, verwenden Sie die Domäne „Food“. ID: `c151d5b5-dd07-472a-acc8-15d29dea8518`|
 |__Landmarks (Wahrzeichen)__|Optimiert für erkennbare Wahrzeichen (Naturdenkmäler oder künstlich geschaffene Wahrzeichen). Diese Domäne funktioniert am besten, wenn das Wahrzeichen im Foto deutlich zu sehen ist. Die Domäne funktioniert auch, wenn das Wahrzeichen etwas von Personen im Vordergrund verdeckt wird. ID: `ca455789-012d-4b50-9fec-5bb63841c793`|
 |__Retail (Einzelhandel)__|Für Bilder optimiert, wie man sie in einem Einkaufskatalog oder auf einer Einkaufswebsite findet. Wenn Sie eine präzise Klassifizierung zwischen Kleidern, Hosen und Hemden wünschen, verwenden Sie diese Domäne. ID: `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
 |__Kompaktdomänen__| Für die Bedingungen der Echtzeitklassifizierung auf Edgegeräten optimiert.|
+
+
+> [!NOTE]
+> Die Domänen „Allgemein [A1]“ und „Allgemein [A2]“ können für eine Vielzahl von Szenarien verwendet werden und sind für Genauigkeit optimiert. Verwenden Sie das Modell „Allgemein [A2]“ , um eine höhere Rückschlussgeschwindigkeit und eine kürzere Trainingszeit zu erzielen. Bei größeren Datasets empfiehlt es sich unter Umständen, „Allgemein [A1]“ zu verwenden, um eine bessere Genauigkeit als mit „Allgemein [A2]“ zu erzielen, obwohl mehr Trainings- und Rückschlusszeit erforderlich sind. Das Modell „Allgemein“ erfordert mehr Rückschlusszeit als „Allgemein [A1]“ und „Allgemein [A2]“.
 
 ## <a name="object-detection"></a>Objekterkennung
 

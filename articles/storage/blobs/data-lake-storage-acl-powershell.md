@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b606e69baec8d159a6a3fa7373500176260ef0d7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dd522355d30564d84fec15bdc57c7397c1e6cfe4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100656343"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104702540"
 ---
 # <a name="use-powershell-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von PowerShell zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -172,7 +172,7 @@ $dir.ACL
 ```
 
 > [!NOTE]
-> Wenn Sie einen **standardmäßigen** ACL-Eintrag festlegen möchten, verwenden Sie den Parameter **-DefaultScope**, wenn Sie den Befehl **Set-AzDataLakeGen2ItemAclObject** ausführen. Beispiel: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
+> Wenn Sie einen **standardmäßigen** ACL-Eintrag festlegen möchten, verwenden Sie den Parameter **-DefaultScope**, wenn Sie den Befehl **Set-AzDataLakeGen2ItemAclObject** ausführen. Beispiel: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`. 
 
 In diesem Beispiel wird die Zugriffssteuerungsliste auf eine **Datei** für den zuständigen Benutzer, die zuständige Gruppe oder andere Benutzer festgelegt und dann in der Konsole ausgegeben.
 
@@ -188,7 +188,7 @@ $file.ACL
 ```
 
 > [!NOTE]
-> Wenn Sie einen **standardmäßigen** ACL-Eintrag festlegen möchten, verwenden Sie den Parameter **-DefaultScope**, wenn Sie den Befehl **Set-AzDataLakeGen2ItemAclObject** ausführen. Beispiel: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
+> Verwenden Sie die entsprechenden Objekt-IDs, um die Zugriffssteuerungsliste einer spezifischen Gruppe oder eines spezifischen Benutzers festzulegen. Zum Beispiel: `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` oder `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
 Die folgende Abbildung zeigt die Ausgabe nach dem Festlegen der Zugriffssteuerungsliste einer Datei.
 
@@ -267,7 +267,7 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 ```
 
 > [!NOTE]
-> Wenn Sie einen **standardmäßigen** ACL-Eintrag aktualisieren möchten, verwenden Sie den Parameter **-DefaultScope**, wenn Sie den Befehl **Set-AzDataLakeGen2ItemAclObject** ausführen. Beispiel: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`.
+> Verwenden Sie die entsprechenden Objekt-IDs, um die Zugriffssteuerungsliste einer spezifischen Gruppe oder eines spezifischen Benutzers festzulegen. Zum Beispiel: `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` oder `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
 Ein Beispiel, das Zugriffssteuerungslisten durch Angabe einer Batchgröße rekursiv in Batches aktualisiert, finden Sie im Referenzartikel zu [Update-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/update-azdatalakegen2aclrecursive).
 

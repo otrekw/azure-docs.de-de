@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/29/2019
 ms.openlocfilehash: 429659d605cdaf8aad978841e486a17da321cce4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929398"
 ---
 # <a name="scenario-illegalargumentexception-for-apache-spark-activity-in-azure-hdinsight"></a>Szenario: IllegalArgumentException für Apache Spark-Aktivität in Azure HDInsight
@@ -28,7 +28,7 @@ Wrong FS: wasbs://additional@xxx.blob.core.windows.net/spark-examples_2.11-2.1.0
 
 Ein Spark-Auftrag kann nicht ausgeführt werden, wenn sich die JAR-Datei der Anwendung nicht im standardmäßigen oder primären Speicher des Spark-Clusters befindet.
 
-Dies ist ein bekanntes Problem beim Open-Source-Framework von Spark, das in diesem Fehler nachverfolgt wird: [Fehler beim Spark-Auftrag, wenn fs.defaultFS und die JAR-Datei der Anwendung unterschiedliche URLs aufweisen](https://issues.apache.org/jira/browse/SPARK-22587).
+Dies ist ein bekanntes Problem beim Spark-Open-Source-Framework, das in diesem Bug nachverfolgt wird: [Bei einem Spark-Auftrag tritt ein Fehler auf, wenn „fs.defaultFS“ und Anwendungs-JAR-Datei verschiedene URLs haben](https://issues.apache.org/jira/browse/SPARK-22587).
 
 Das Problem wurde in Spark 2.3.0 gelöst.
 

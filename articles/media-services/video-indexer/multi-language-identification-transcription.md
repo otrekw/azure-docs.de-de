@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: 657ccafa0e7b7f640122fd6b397b3fa2a7c5f0fc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98015554"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content"></a>Automatisches Erkennen und Transkribieren mehrsprachiger Inhalte
@@ -41,7 +41,7 @@ Wenn Sie Ihr Video hochladen und indizieren, können Sie die **mehrsprachige Erk
 
 Wählen Sie bei der Indizierung bzw. der [Neuindizierung](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) eines Videos mithilfe der API die Option `multi-language detection` im Parameter `sourceLanguage` aus.
 
-### <a name="model-output"></a>Modellausgabe
+### <a name="model-output"></a>Ausgabe des Modells
 
 Das Modell ruft alle im Video erkannten Sprachen in einer Liste ab.
 
@@ -75,7 +75,7 @@ Darüber hinaus enthält jede Instanz im Transkriptionsabschnitt die Sprache, in
 
 ## <a name="guidelines-and-limitations"></a>Richtlinien und Einschränkungen
 
-* Liste der unterstützten Sprachen: Englisch, Französisch, Deutsch, Spanisch.
+* Unterstützte Sprachen: Englisch, Französisch, Deutsch, Spanisch.
 * Unterstützung für mehrsprachige Inhalte mit bis zu drei unterstützten Sprachen.
 * Falls die Audiodaten andere Sprachen enthalten, die nicht in der obigen Liste mit den unterstützten Sprachen aufgeführt sind, kommt es zu einem unerwarteten Ergebnis.
 * Die Mindestsegmentlänge für die Erkennung der einzelnen Sprachen beträgt 15 Sekunden.

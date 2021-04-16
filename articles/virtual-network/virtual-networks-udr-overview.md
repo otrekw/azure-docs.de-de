@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/26/2017
+ms.date: 03/26/2021
 ms.author: aldomel
-ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98221013"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732600"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -96,6 +96,38 @@ Beim Erstellen einer benutzerdefinierten Route können Sie die folgenden Typen d
 
 Es ist nicht möglich, **VNet-Peering** oder **VirtualNetworkServiceEndpoint** als Typ des nächsten Hops in benutzerdefinierten Routen anzugeben. Routen mit **VNet-Peering** oder **VirtualNetworkServiceEndpoint** als Typ des nächsten Hops werden von Azure nur dann erstellt, wenn Sie ein VNet-Peering oder einen Dienstendpunkt konfigurieren.
 
+### <a name="service-tags-for-user-defined-routes-preview"></a>Diensttags für benutzerdefinierte Routen (Vorschau)
+
+Sie können jetzt ein [Diensttag](service-tags-overview.md) als Adresspräfix für eine benutzerdefinierte Route anstelle eines expliziten IP-Bereichs angeben. Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen aus einem bestimmten Azure-Dienst. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern. Dadurch wird die Komplexität häufiger Aktualisierungen benutzerdefinierter Routen minimiert und die Anzahl der zu erstellenden Routen reduziert. Sie können derzeit 25 oder weniger Routen mit Diensttags in jeder Routentabelle erstellen. </br>
+
+> [!IMPORTANT]
+> Diensttags für benutzerdefinierte Routen befinden sich derzeit in der Vorschau. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+#### <a name="exact-match"></a>Genaue Übereinstimmung
+Wenn es eine exakte Präfixübereinstimmung zwischen einer Route mit einem expliziten IP-Präfix und einer Route mit einem Diensttag gibt, wird der Route mit dem expliziten Präfix der Vorzug gegeben. Wenn mehrere Routen mit Diensttags übereinstimmende IP-Präfixe aufweisen, werden die Routen in der folgenden Reihenfolge ausgewertet: 
+
+   1. Regionale Tags (z. B. Storage.EastUS, AppService.AustraliaCentral)
+   2. Tags der obersten Ebene (z. B. Storage, AppService)
+   3. Regionale AzureCloud-Tags (z. B. AzureCloud.canadacentral, AzureCloud.eastasia)
+   4. AzureCloud-Tag </br></br>
+
+Um dieses Feature zu verwenden, geben Sie einen Diensttagnamen für den Adresspräfixparameter in Routingtabellenbefehlen an. In Powershell können Sie z. B. eine neue Route erstellen, um den an ein Azure Storage-IP-Präfix gesendeten Datenverkehr an ein virtuelles Gerät zu leiten, indem Sie Folgendes verwenden: </br>
+
+```azurepowershell-interactive
+New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
+```
+
+Der gleiche Befehl für die CLI lautet dann: </br>
+
+```azurecli-interactive
+az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
+```
+</br>
+
+
+> [!NOTE] 
+> In der Public Preview gibt es einige Einschränkungen. Das Feature wird derzeit nicht im Azure-Portal unterstützt und ist nur über PowerShell und CLI verfügbar. Es gibt keine Unterstützung für die Verwendung mit Containern. 
+
 ## <a name="next-hop-types-across-azure-tools"></a>Typ des nächsten Hops für Azure-Tools
 
 Der Name, der für Typen des nächsten Hops angezeigt und referenziert wird, unterscheidet sich für das Azure-Portal und Befehlszeilentools und die Bereitstellungsmodelle „Azure Resource Manager“ und „klassisch“. In der folgenden Tabelle sind die Namen aufgeführt, die zum Verweisen auf den Typ des nächsten Hops mit den unterschiedlichen Tools und [Bereitstellungsmodellen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwendet werden:
@@ -109,6 +141,8 @@ Der Name, der für Typen des nächsten Hops angezeigt und referenziert wird, unt
 |Keine                            |Keine                                            |NULL (im ASM-Modus in der klassischen CLI nicht verfügbar)|
 |Peering in virtuellen Netzwerken         |VNet-Peering                                    |Nicht verfügbar|
 |VNET-Dienstendpunkt|VirtualNetworkServiceEndpoint                   |Nicht verfügbar|
+
+
 
 ### <a name="border-gateway-protocol"></a>Border Gateway Protocol
 

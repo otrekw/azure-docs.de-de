@@ -8,10 +8,10 @@ ms.date: 09/03/2020
 ms.author: cherylmc
 ms.topic: how-to
 ms.openlocfilehash: 48e0998719ea19c0b360b50d8c9171d2b448ad19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89440761"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Löschen eines Gateways des virtuellen Netzwerks mit PowerShell
@@ -98,7 +98,7 @@ Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 
 An diesem Punkt wurde Ihr virtuelles Netzwerkgateway gelöscht. In den nächsten Schritten können Sie Ressourcen löschen, die nicht mehr verwendet werden.
 
-### <a name="5-delete-the-local-network-gateways"></a>5\. Löschen Sie die lokalen Netzwerkgateways.
+### <a name="5-delete-the-local-network-gateways"></a>5. Löschen Sie die lokalen Netzwerkgateways.
 
 Rufen Sie die Liste der entsprechenden lokalen Netzwerkgateways ab.
 

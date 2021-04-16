@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 939ffc9e2a8fb8ce3a25dc212e3df34dc6bb2ec1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88950356"
 ---
-# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Anleitung: Senden von Feedback zu Risikoereignissen in Azure AD Identity Protection
+# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Vorgehensweise: Senden von Risikofeedback in Azure AD Identity Protection
 
 Sie können Feedback zur Risikobewertung durch Azure AD Identity Protection geben. Im folgenden Dokument sind die Szenarios aufgelistet, in denen Sie Feedback zur Azure AD Identity Protection-Risikobewertung geben können, und Sie erfahren, wie wir es integrieren.
 
@@ -45,7 +45,7 @@ Azure AD verwendet Ihr Feedback, um das Risiko des zugrunde liegenden Benutzers
 
 Hier finden Sie Szenarios und Mechanismen zum Senden von Risikofeedback an Azure AD.
 
-| Szenario | Wie können Sie Feedback senden? | Was geschieht im Hintergrund? | Notizen |
+| Szenario | Wie können Sie Feedback senden? | Was geschieht im Hintergrund? | Hinweise |
 | --- | --- | --- | --- |
 | **Anmeldung nicht kompromittiert (falsch positiv)** <br> Der Bericht „Riskante Anmeldungen“ zeigt eine riskante Anmeldung [Risikostatus = Gefährdet] an, aber diese Anmeldung war nicht kompromittiert. | Wählen Sie die Anmeldung aus, und klicken Sie auf „Anmeldung als sicher bestätigen“. | Azure AD hebt das aggregierte Risiko der Anmeldung auf [Risikostatus = Als sicher bestätigt; Risikostufe (aggregiert) = -] und macht die Auswirkung auf das Benutzerrisiko rückgängig. | Die Option „Anmeldung als sicher bestätigen“ ist derzeit nur im Bericht „Riskante Anmeldungen“ verfügbar. |
 | **Anmeldung kompromittiert (richtig positiv)** <br> Der Bericht „Riskante Anmeldungen“ zeigt eine gefährdete Anmeldung [Risikostatus = Gefährdet] mit geringem Risiko [Risikostufe (aggregiert) = Niedrig] an, und diese Anmeldung wurde tatsächlich kompromittiert. | Wählen Sie die Anmeldung aus, und klicken Sie auf „Anmeldung als gefährdet bestätigen“. | Azure AD setzt das aggregierte Risiko der Anmeldung auf „Hoch“ [Risikostatus = Gefährdung bestätigen; Risikostufe = Hoch]. | Die Option „Anmeldung als gefährdet bestätigen“ ist derzeit nur im Bericht „Riskante Anmeldungen“ verfügbar. |

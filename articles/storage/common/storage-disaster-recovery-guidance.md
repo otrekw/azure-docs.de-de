@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 03/22/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 11d9b38d71d428a3c6c829b508318389338f5a15
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102506700"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800345"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Notfallwiederherstellung und Speicherkontofailover
 
@@ -23,7 +23,7 @@ Microsoft möcht sicherstellen, dass Azure-Dienste immer verfügbar sind. Es kan
 
 Azure Storage unterstützt Kontofailover für georedundante Speicherkonten. Mit Kontofailover können Sie den Failoverprozess für Ihr Speicherkonto einleiten, wenn der primäre Endpunkt nicht mehr verfügbar ist. Bei einem Failover wird der sekundäre Endpunkt so aktualisiert, dass er zum primären Endpunkt für das Speicherkonto wird. Nach Abschluss des Failovers können Clients in den neuen primären Endpunkt schreiben.
 
-Kontofailover ist für die Kontotypen „Universell V1“, „Universell V2“ und Blobspeicher mit Azure Resource Manager-Bereitstellungen verfügbar. Kontofailover wird für alle öffentlichen Regionen unterstützt, ist jedoch zurzeit in unabhängigen oder nationalen Clouds nicht verfügbar.
+Kontofailover ist für die Kontotypen „Universell V1“, „Universell V2“ und Blobspeicher mit Azure Resource Manager-Bereitstellungen verfügbar. Kontofailover wird für alle öffentlichen Regionen unterstützt, ist jedoch zurzeit in unabhängigen oder nationalen Clouds nicht verfügbar. Ein Kontofailover wird derzeit für Speicherkonten nicht unterstützt, bei denen ein hierarchischer Namespace aktiviert ist.
 
 Dieser Artikel beschreibt die Konzepte und Prozesse, die mit einem Kontofailover verbunden sind, und erläutert, wie Sie Ihr Speicherkonto auf die Wiederherstellung mit dem geringstmöglichen Einfluss auf den Kunden vorbereiten können. Weitere Informationen zum Initiieren eines Kontofailovers im Azure-Portal oder mit PowerShell finden Sie unter [Initiieren eines Kontofailovers](storage-initiate-account-failover.md).
 
@@ -67,6 +67,8 @@ Microsoft empfiehlt Ihnen auch, Ihre Anwendung so zu gestalten, dass sie sich au
 ## <a name="understand-the-account-failover-process"></a>Verstehen des Kontofailoverprozesses
 
 Mit einem von Kunden verwalteten Failover können Sie ein Failover für das gesamte Speicherkonto zur sekundären Region ausführen, wenn die primäre Region aus irgendeinem Grund nicht verfügbar ist. Wenn Sie ein Failover in der sekundären Region erzwingen, können Clients nach Abschluss des Failovers mit dem Schreiben von Daten in den sekundären Endpunkt beginnen. Das Failover dauert i. d. r. etwa eine Stunde.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ### <a name="how-an-account-failover-works"></a>Funktionsweise eines Kontofailovers
 

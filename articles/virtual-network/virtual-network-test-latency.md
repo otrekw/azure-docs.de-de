@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
 ms.openlocfilehash: 7dc8aac730fdf46cab47a3297b8c001cb0b8e314
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99226404"
 ---
 # <a name="test-vm-network-latency"></a>Testen der VM-Netzwerklatenz
@@ -111,7 +111,7 @@ Beispiel: Wenn Sie „latte.exe“ in den Ordner *c:\tools* kopiert haben, laute
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Der resultierende Befehl ist derselbe wie beim Empfänger, nur dass er den Zusatz &nbsp; *-c* enthält, um anzugeben, dass es sich um den *Client* oder *Absender* handelt:
+    Der resultierende Befehl ist derselbe wie beim Empfänger, nur dass er den Zusatz &nbsp;*-c* enthält, um anzugeben, dass es sich um den *Client* oder *Absender* handelt:
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 

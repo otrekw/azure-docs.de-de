@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 94a691badf056c8e93f47ae8d052fc1388b34e4c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3eecb584f468bc170f0325da8d734a1890691483
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737471"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601770"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Verwenden der Azure CLI zum Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host
 
@@ -23,10 +23,6 @@ Wenn Sie die Verschlüsselung auf dem Host aktivieren, werden die auf dem VM-Hos
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>Unterstützte Regionen
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
-
 ### <a name="supported-vm-sizes"></a>Unterstützte VM-Größen
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
@@ -35,7 +31,20 @@ Sie können die VM-Größen auch programmgesteuert ermitteln. Informationen dazu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen das Feature für Ihr Abonnement aktivieren lassen, um die Verschlüsselung auf dem Host für Ihre virtuellen Computer oder VM-Skalierungsgruppen verwenden zu können. Senden Sie eine E-Mail mit Ihren Abonnement-IDs an encryptionAtHost@microsoft.com, um das Feature für Ihre Abonnements aktivieren zu lassen.
+Sie müssen das Feature für Ihr Abonnement aktivieren, bevor Sie die EncryptionAtHost-Eigenschaft für Ihre VM/VMSS verwenden. Führen Sie die folgenden Schritte aus, um das Feature für Ihr Abonnement zu aktivieren:
+
+1.  Führen Sie den folgenden Befehl aus, um das Feature für Ihr Abonnement zu registrieren.
+
+    ```azurecli
+    az feature register --namespace Microsoft.Compute --name EncryptionAtHost
+    ```
+ 
+2.  Überprüfen Sie mithilfe des folgenden Befehls, ob der Registrierungsstatus „Registriert“ lautet (dies dauert einige Minuten), bevor Sie das Feature ausprobieren.
+
+    ```azurecli
+    az feature show --namespace Microsoft.Compute --name EncryptionAtHost
+    ```
+
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>Erstellen einer Azure Key Vault-Instanz und einer DiskEncryptionSet-Klasse
 

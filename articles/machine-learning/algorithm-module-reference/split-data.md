@@ -1,5 +1,5 @@
 ---
-title: 'Split Data (Daten aufteilen): Modulreferenz'
+title: 'Teilen von Daten: Modulreferenz'
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie das Modul „Split Data“ (Daten aufteilen) in Azure Machine Learning verwenden, um ein Dataset in zwei verschiedene Sätze aufzuteilen.
 services: machine-learning
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: a4c93b12ad654e54a7f3c7ee0e75507d5cb45e90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90907812"
 ---
 # <a name="split-data-module"></a>Modul „Split Data“ (Daten aufteilen)
@@ -32,9 +32,9 @@ Dieses Modul ist hilfreich, wenn Sie Daten in Trainings- und Testsätze aufteile
 
 1. Fügen Sie das Modul **Split Data** zu Ihrer Pipeline im Designer hinzu. Sie finden dieses Modul unter **Data Transformation** (Datentransformation) in der Kategorie **Sample and Split** (Stichprobe entnehmen und aufteilen).
 
-1. **Splitting mode** (Aufteilungsmodus): Wählen Sie je nach Datentyp und gewünschter Aufteilung einen der folgenden Modi aus. Jeder Aufteilungsmodus verfügt über unterschiedliche Optionen.
+1. **Aufteilungsmodus**: Wählen Sie je nach Datentyp und gewünschter Aufteilung einen der folgenden Modi aus. Jeder Aufteilungsmodus verfügt über unterschiedliche Optionen.
 
-   - **Split Rows** (Zeilen aufteilen): Verwenden Sie diese Option, wenn Sie Daten einfach in zwei Teile aufteilen möchten. Sie können angeben, wie viel Prozent der Daten jeweils in einem Teil enthalten sein sollen. Die Standardaufteilung der Daten ist 50:50.
+   - **Zeilen aufteilen**: Verwenden Sie diese Option, wenn Sie Daten einfach in zwei Teile aufteilen möchten. Sie können angeben, wie viel Prozent der Daten jeweils in einem Teil enthalten sein sollen. Die Standardaufteilung der Daten ist 50:50.
 
      Sie können Zeilen für die einzelnen Gruppen auch nach dem Zufallsprinzip auswählen und geschichtete Stichproben verwenden. Bei geschichteten Stichproben müssen Sie eine einzelne Datenspalte auswählen, für die Werte gleichmäßig auf zwei Ergebnisdatasets aufgeteilt werden sollen.  
 
@@ -42,7 +42,7 @@ Dieses Modul ist hilfreich, wenn Sie Daten in Trainings- und Testsätze aufteile
 
      Bei Stimmungsanalysen können Sie beispielsweise überprüfen, ob ein bestimmter Produktname in einem Textfeld enthalten ist. Anschließend können Sie das Dataset in Zeilen aufteilen, die den gewünschten Produktnamen enthalten, und Zeilen, die den gewünschten Produktnamen nicht enthalten.
 
-   - **Relative Expression Split** (Nach relativem Ausdruck aufteilen): Verwenden Sie diese Option, wenn Sie eine Bedingung auf eine Ziffernspalte anwenden möchten. Die Ziffer kann für ein Datums-/Uhrzeitfeld, eine Spalte mit Alters- oder Währungsangaben oder sogar für einen Prozentsatz stehen. Beispielsweise ist es möglich, das Dataset basierend auf den Kosten der einzelnen Posten zu unterteilen, Personen nach Alter zu gruppieren oder Daten nach einem Kalenderdatum aufzuteilen.
+   - **Relative Expression Split** (Relative Ausdrucksteilung):Verwenden Sie diese Option, wenn Sie eine Bedingung auf eine Ziffernspalte anwenden möchten. Die Ziffer kann für ein Datums-/Uhrzeitfeld, eine Spalte mit Alters- oder Währungsangaben oder sogar für einen Prozentsatz stehen. Beispielsweise ist es möglich, das Dataset basierend auf den Kosten der einzelnen Posten zu unterteilen, Personen nach Alter zu gruppieren oder Daten nach einem Kalenderdatum aufzuteilen.
 
 ### <a name="split-rows"></a>Aufteilen von Zeilen
 
@@ -58,7 +58,7 @@ Dieses Modul ist hilfreich, wenn Sie Daten in Trainings- und Testsätze aufteile
   
 1. Wählen Sie die Option **Randomized split** (Zufällige Aufteilung), wenn Daten den beiden Gruppen nach dem Zufallsprinzip zugewiesen werden sollen. Dies ist die bevorzugte Option bei der Erstellung von Trainings- und Testdatasets.
 
-1. **Random Seed** (Zufälliger Startwert): Geben Sie einen nicht negativen ganzzahligen Wert ein, mit dem die pseudozufällige Sequenz der zu verwendenden Instanzen starten soll. Dieser standardmäßige Startwert wird in allen Modulen verwendet, die Zufallszahlen generieren. 
+1. **Random Seed** (Zufälliger Ausgangswert): Geben Sie einen nicht negativen ganzzahligen Wert ein, mit dem die pseudozufällige Sequenz der zu verwendenden Instanzen starten soll. Dieser standardmäßige Startwert wird in allen Modulen verwendet, die Zufallszahlen generieren. 
 
    Die Angabe eines Startwerts führt dazu, dass die Ergebnisse reproduzierbar sind. Wenn Sie die Ergebnisse eines Aufteilungsvorgangs wiederholen müssen, muss auch ein Startwert für den Zufallszahlengenerator angegeben werden. Andernfalls wird der zufällige Startwert standardmäßig auf **0** festgelegt, was bedeutet, dass der ursprüngliche Startwert von der Systemuhr abgerufen wird. Daher kann die Verteilung der Daten bei einer neuen Aufteilung geringfügig abweichen. 
 

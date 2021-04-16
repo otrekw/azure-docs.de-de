@@ -1,14 +1,14 @@
 ---
 title: Informationen zu Azure Policy für Kubernetes
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten.
-ms.date: 12/01/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4a6ca7fb5086401cab58d4bfb6a412089c11ef05
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577095"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564304"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster
 
@@ -61,7 +61,7 @@ Die folgenden allgemeinen Einschränkungen gelten für das Azure Policy-Add-On f
 
 Die folgenden Einschränkungen gelten nur für das Azure Policy-Add-On für AKS:
 
-- Die [AKS-Podsicherheitsrichtlinie](../../../aks/use-pod-security-policies.md) und das Azure Policy-Add-On für AKS können nicht beide aktiviert sein. Weitere Informationen hierzu finden Sie unter [Einschränkungen im Hinblick auf die AKS-Podsicherheit](../../../aks/use-pod-security-on-azure-policy.md#limitations).
+- Die [AKS-Podsicherheitsrichtlinie](../../../aks/use-pod-security-policies.md) und das Azure Policy-Add-On für AKS können nicht beide aktiviert sein. Weitere Informationen hierzu finden Sie unter [Einschränkungen im Hinblick auf die AKS-Podsicherheit](../../../aks/use-azure-policy.md).
 - Namespaces, die vom Azure Policy-Add-On bei der Auswertung automatisch ausgeschlossen werden: _kube-system_, _gatekeeper-system_ und _aks-periscope_.
 
 ## <a name="recommendations"></a>Empfehlungen
@@ -70,7 +70,7 @@ Im folgenden finden Sie allgemeine Empfehlungen für die Verwendung des Azure Po
 
 - Zur Verwendung des Azure Policy-Add-Ons müssen drei Gatekeeper-Komponenten ausgeführt werden: ein Überwachungspod und zwei Webhook-Podreplikate. Diese Komponenten nutzen umso mehr Ressourcen, je stärker die Anzahl der Kubernetes-Ressourcen und Richtlinienzuweisungen im Cluster zunimmt. Dadurch werden entsprechende Überwachungs- und Erzwingungsvorgänge erforderlich.
 
-  - Bei weniger als 500 Pods in einem Cluster mit maximal 20 Einschränkungen gilt Folgendes: 2 vCPUs und 350 MB Arbeitsspeicher pro Komponente
+  - Bei weniger als 500 Pods in einem Cluster mit maximal 20 Einschränkungen sind 2 vCPUs und 350 MB Arbeitsspeicher pro Komponente erforderlich.
   - Bei mehr als 500 Pods in einem Cluster mit maximal 40 Einschränkungen gilt Folgendes: 3 vCPUs und 600 MB Arbeitsspeicher pro Komponente
 
 - Windows-Pods [unterstützen keine Sicherheitskontexte](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods).
@@ -85,7 +85,7 @@ Die folgende Empfehlung gilt nur für AKS und das Azure Policy-Add-On:
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>Installieren des Azure Policy-Add-Ons für AKS
 
-Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures aktivieren, müssen in Ihrem Abonnement die Ressourcenanbieter **Microsoft.ContainerService** und **Microsoft.PolicyInsights** aktiviert werden.
+Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures aktivieren, müssen Sie in Ihrem Abonnement den Ressourcenanbieter **Microsoft.PolicyInsights** aktivieren.
 
 1. Azure CLI-Version 2.12.0 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
@@ -93,15 +93,12 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures ak
 
    - Azure-Portal:
 
-     Registrieren Sie die Ressourcenanbieter **Microsoft.ContainerService** und **Microsoft.PolicyInsights**. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+     Registrieren Sie den Ressourcenanbieter **Microsoft.PolicyInsights**. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
    - Azure CLI:
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-
-     # Provider register: Register the Azure Kubernetes Service provider
-     az provider register --namespace Microsoft.ContainerService
 
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
@@ -204,7 +201,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
 1. Installieren Sie [Helm 3](https://v3.helm.sh/docs/intro/install/).
 
-1. Für Ihren Kubernetes-Cluster muss Azure Arc aktiviert werden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung für einen Kubernetes-Cluster mit Azure Arc-Aktivierung (Vorschau)](../../../azure-arc/kubernetes/connect-cluster.md).
+1. Für Ihren Kubernetes-Cluster muss Azure Arc aktiviert werden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung für einen Kubernetes-Cluster mit Azure Arc-Aktivierung (Vorschau)](../../../azure-arc/kubernetes/quickstart-connect-cluster.md).
 
 1. Sie benötigen die vollqualifizierte Azure-Ressourcen-ID des Kubernetes-Clusters mit Azure Arc-Aktivierung.
 
@@ -440,14 +437,13 @@ Einige weitere Überlegungen:
 
 - Wenn das Clusterabonnement bei Azure Security Center registriert ist, werden automatisch Kubernetes-Richtlinien von Azure Security Center auf den Cluster angewendet.
 
-- Wenn eine Ablehnungsrichtlinie auf einen Cluster mit vorhandenen Kubernetes-Ressourcen angewendet wird, werden alle ggf. bereits vorhandenen Ressourcen, die nicht mit der neuen Richtlinie konform sind, weiterhin ausgeführt. Wenn die nicht konforme Ressource auf einem anderen Knoten neu geplant wird, wird die Ressourcenerstellung durch Gatekeeper blockiert.
+- Wenn eine Ablehnungsrichtlinie auf einen Cluster mit vorhandenen Kubernetes-Ressourcen angewendet wird, werden alle bereits vorhandenen Ressourcen, die nicht mit der neuen Richtlinie konform sind, weiterhin ausgeführt. Wenn die nicht konforme Ressource auf einem anderen Knoten neu geplant wird, wird die Ressourcenerstellung durch Gatekeeper blockiert.
 
 - Wenn ein Cluster über eine Ablehnungsrichtlinie verfügt, durch die Ressourcen überprüft werden, wird dem Benutzer beim Erstellen einer Bereitstellung keine Ablehnungsmeldung angezeigt. Stellen Sie sich beispielsweise eine Kubernetes-Bereitstellung vor, die Replikatgruppen und Pods enthält. Wenn ein Benutzer `kubectl describe deployment $MY_DEPLOYMENT` ausführt, wird im Rahmen von Ereignissen keine Ablehnungsmeldung zurückgegeben. Von `kubectl describe replicasets.apps $MY_DEPLOYMENT` werden jedoch die mit der Ablehnung zusammenhängenden Ereignisse zurückgegeben.
 
 ## <a name="logging"></a>Protokollierung
 
-Als Kubernetes-Controller/-Container werden sowohl vom Pod _azure-policy_ als auch vom Pod _gatekeeper_ Protokolle im Kubernetes-Cluster gespeichert. Die Protokolle können auf der Seite **Insights** des Kubernetes-Clusters verfügbar gemacht werden.
-Weitere Informationen finden Sie unter [Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container](../../../azure-monitor/containers/container-insights-analyze.md).
+Als Kubernetes-Controller/-Container speichern die Pods _azure-policy_ und _gatekeeper_ Protokolle im Kubernetes-Cluster. Die Protokolle können auf der Seite **Insights** des Kubernetes-Clusters verfügbar gemacht werden. Weitere Informationen finden Sie unter [Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container](../../../azure-monitor/containers/container-insights-analyze.md).
 
 Verwenden Sie `kubectl`, um die Add-On-Protokolle anzuzeigen:
 

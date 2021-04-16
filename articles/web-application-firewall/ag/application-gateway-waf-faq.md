@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 1fbe930780ff026be748bc42104f821ee9e5c443
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 890688dba70a7fa654e97652b3e474b919f9a077
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785101"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104585382"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Häufig gestellte Fragen zu Azure Web Application Firewall in Application Gateway
 
@@ -53,6 +53,20 @@ WAF unterstützt derzeit CRS [2.2.9](application-gateway-crs-rulegroups-rules.md
 * Erkennung allgemeiner Fehler bei der Anwendungskonfiguration (in Bezug auf Apache, IIS usw.)
 
 Weitere Informationen finden Sie im Artikel zu den [zehn wichtigsten, von OWASP identifizierten Sicherheitsrisiken](https://owasp.org/www-project-top-ten/).
+
+## <a name="what-content-types-does-waf-support"></a>Welche Inhaltstypen werden von WAF unterstützt?
+
+WAF für Application Gateway unterstützt die folgenden Inhaltstypen für verwaltete Regeln:
+
+* Anwendung/json
+* application/xml
+* application/x-www-form-urlencoded
+* multipart/form-data
+
+Für benutzerdefinierte Regeln:
+
+* application/x-www-form-urlencoded
+* multipart/form-data
 
 ## <a name="does-waf-support-ddos-protection"></a>Unterstützt WAF DDoS-Schutz?
 

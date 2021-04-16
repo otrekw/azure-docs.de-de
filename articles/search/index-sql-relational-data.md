@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 6c70b42e7d0f647a3b2b60d29b5098a791e4975f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88924519"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Modellieren von relationalen SQL-Daten für Import und Indizierung in der kognitiven Azure-Suche
@@ -159,4 +159,4 @@ Sie können den [Datenimport-Assistenten](search-import-data-portal.md) mit Ihre
 Verwenden Sie den folgenden Schnellstart, um die grundlegenden Schritte des Datenimport-Assistenten kennen zu lernen.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erstellen eines Suchindex über das Azure-Portal](search-get-started-portal.md)
+> [Schnellstart: Erstellen eines Suchindexes über das Azure-Portal](search-get-started-portal.md)

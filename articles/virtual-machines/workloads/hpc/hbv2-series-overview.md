@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6648f77c5eacf40f848bc9b24aa6e257d8adf626
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 59dd953b2116bc1ec7bd0a581cc181df64fbf49e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674633"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104721157"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>Übersicht über virtuelle Computer der HBv2-Serie 
 
@@ -53,14 +53,16 @@ Eine feste Prozesszuordnung (Process Pinning) funktioniert bei virtuellen Comput
 |-----------------------------|-----------------------------------------------------------|
 | Maximale MPI-Auftragsgröße            | 36000 Kerne (300 VMs in einer einzelnen VM-Skalierungsgruppe mit singlePlacementGroup=true) |
 | MPI-Unterstützung                 | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH, Platform MPI  |
-| Zusätzliche Frameworks       | Unified Communication X, libfabric, PGAS                  |
-| Azure Storage-Unterstützung       | Standard- und Premium-Datenträger (maximal 8 Datenträger)              |
-| Betriebssystemunterstützung für SR-IOV/RDMA   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+           |
-| Orchestratorunterstützung        | CycleCloud, Batch                                         | 
+| Zusätzliche Frameworks       | UCX, libfabric und PGAS |
+| Azure Storage-Unterstützung       | Standard- und Premium-Datenträger (maximal 8 Datenträger) |
+| Betriebssystemunterstützung für SR-IOV/RDMA   | CentOS/RHEL 7.6 und höher, Ubuntu 16.04 und höher, SLES 12 SP4 und höher, Windows Server 2016 und höher  |
+| Orchestratorunterstützung        | CycleCloud, Batch und AKS ([Clusterkonfigurationsoptionen](../../sizes-hpc.md#cluster-configuration-options))  |
 
+> [!NOTE] 
+> Windows Server 2012 R2 wird auf HBv2 und anderen VMs mit mehr als 64 (virtuellen oder physischen) Kernen nicht unterstützt. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die [Architektur von AMD EPYC](https://bit.ly/2Epv3kC) und die [Architekturen mit mehreren Chips](https://bit.ly/2GpQIMb). Ausführlichere Informationen finden Sie im [HPC-Optimierungsleitfaden für AMD EPYC-Prozessoren](https://bit.ly/2T3AWZ9).
-- Informieren Sie sich in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute) über die neuesten Ankündigungen, und machen Sie sich mit einigen HPC-Beispielen vertraut.
-- Eine allgemeinere Architekturübersicht zur Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).
+- Informieren Sie sich über die neuesten Ankündigungen, HPC-Workloadbeispiele und Leistungsergebnisse in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

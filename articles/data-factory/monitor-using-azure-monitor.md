@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 04aba71e49fedc8a4ca22aed576aaa978f733336
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: bceacf0a22b7add0533b72b4ebf06d503366baa4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783641"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932487"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Durchführen der Überwachung und Verwenden von Warnungen für Data Factory mit Azure Monitor
 
@@ -76,7 +76,7 @@ Erstellen Sie Diagnoseeinstellungen für Ihre Data Factory, oder fügen Sie dies
    ![Benennen Ihrer Einstellungen und Auswählen eines Log Analytics-Arbeitsbereichs](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Da eine Azure-Protokolltabelle nicht mehr als 500 Spalten enthalten darf, **empfehlen wir Ihnen dringend**, den _Modus „Ressourcenspezifisch“_ auszuwählen. Weitere Informationen finden Sie in der [Referenz zu AzureDiagnostics-Protokollen](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
+    > Da eine Azure-Protokolltabelle nicht mehr als 500 Spalten enthalten darf, **empfehlen wir Ihnen dringend**, den _Modus „Ressourcenspezifisch“_ auszuwählen. Weitere Informationen finden Sie in der [Referenz zu AzureDiagnostics-Protokollen](/azure/azure-monitor/reference/tables/azurediagnostics).
 
 1. Wählen Sie **Speichern** aus.
 
@@ -269,7 +269,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | --- | --- | --- |
 | **storageAccountId** |String | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
 | **serviceBusRuleId** |String | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID weist das Format `{service bus resource ID}/authorizationrules/{key name}` auf.|
-| **workspaceId** | Komplexer Typ | Ein Array metrischer Zeiteinheiten und ihrer Aufbewahrungsrichtlinien. Der Wert dieser Eigenschaft ist leer. |
+| **workspaceId** | String | Die ID des Arbeitsbereichs, in dem die Protokolle gespeichert werden. |
 |**metrics**| Parameterwerte der Pipelineausführung, die an die aufgerufene Pipeline übergeben werden sollen| Ein JSON-Objekt, das Parameternamen Argumentwerten zuordnet. |
 | **logs**| Komplexer Typ| Der Name einer Diagnoseprotokollkategorie für einen Ressourcentyp. Um die Liste der Diagnoseprotokollkategorien für eine Ressource zu erhalten, führen Sie einen GET-Vorgang zum Abrufen von Diagnoseeinstellungen aus. |
 | **category**| String| Ein Array von Protokollkategorien und ihrer Aufbewahrungsrichtlinien. |

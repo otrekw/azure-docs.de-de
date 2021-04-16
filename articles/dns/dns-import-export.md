@@ -9,10 +9,10 @@ ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
 ms.openlocfilehash: e2b998432f6c4417da0242d86347ed43acb5071a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94968229"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importieren und Exportieren einer DNS-Zonendatei mit der Azure-Befehlszeilenschnittstelle
@@ -54,7 +54,7 @@ Die folgenden Hinweise liefern weitere technische Details zum Zonenimportprozess
 * Die Direktive `$TTL` ist optional und wird unterstützt. Wird die Direktive `$TTL` nicht angegeben, werden Einträge ohne explizite Gültigkeitsdauer mit dem Standardwert der Gültigkeitsdauer von 3.600 Sekunden importiert. Wenn bei zwei Einträgen in demselben Ressourceneintragssatz eine unterschiedliche Gültigkeitsdauer angegeben ist, wird der niedrigere Wert verwendet.
 * Die Direktive `$ORIGIN` ist optional und wird unterstützt. Wird `$ORIGIN` nicht festgelegt, ist der verwendete Standardwert der Zonenname gemäß Angabe in der Befehlszeile (plus abschließendem „.“).
 * Die Direktiven `$INCLUDE` und `$GENERATE` werden nicht unterstützt.
-* Diese Datensatztypen werden unterstützt: A, AAAA, CAA, CNAME, MX, NS, SOA, SRV, TXT.
+* Die folgenden Eintragstypen werden unterstützt: A, AAAA, CAA, CNAME, MX, NS, SOA, SRV und TXT.
 * Der SOA-Eintrag wird von Azure DNS automatisch erstellt, wenn eine Zone erstellt wird. Wenn Sie eine Zonendatei importieren, werden alle SOA-Parameter aus der Zonendatei entnommen, *mit Ausnahme* des Parameters `host`. Für diesen Parameter wird der Wert verwendet, der von Azure DNS bereitgestellt wird. Der Grund ist, dass dieser Parameter auf den von Azure DNS bereitgestellten primären Namenserver verweisen muss.
 * Der Namenserver-Ressourceneintragssatz an der Zonenspitze wird beim Erstellen der Zone auch automatisch von Azure DNS erstellt. Nur die Gültigkeitsdauer dieses Ressourceneintragssatzes wird importiert. Diese Einträge enthalten die von Azure DNS bereitgestellten Namen der Namenserver. Die Eintragsdaten werden von den Werten in der importierten Zonendatei nicht überschrieben.
 * Während der öffentlichen Vorschauphase unterstützt Azure DNS nur TXT-Einträge mit einer einzelnen Zeichenfolge. TXT-Einträge mit mehreren Zeichenfolgen werden verkettet und auf 255 Zeichen verkürzt.
@@ -149,7 +149,7 @@ Um die DNS-Zone zu überprüfen, nachdem Sie die Datei importiert haben, können
         134.170.188.221
     ```
 
-### <a name="step-3-update-dns-delegation"></a>Schritt 3: Aktualisieren der DNS-Delegierung
+### <a name="step-3-update-dns-delegation"></a>Schritt 3: Aktualisieren der DNS-Delegierung
 
 Nachdem Sie sichergestellt haben, dass die Zone richtig importiert wurde, müssen Sie die DNS-Delegierung so aktualisieren, dass auf die Azure DNS-Namenserver verwiesen wird. Weitere Informationen finden Sie im Artikel [Delegieren von Domänen an Azure DNS](dns-domain-delegation.md).
 

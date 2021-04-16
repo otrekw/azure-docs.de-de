@@ -10,22 +10,20 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: f3da6fd75ac485a3e22a428934928795f1feae28
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0504467e387c0875a8e00bd1cf638ec437232092
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487923"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554376"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-Das **Hero-Beispiel für Gruppenanrufe** von Azure Communication Services veranschaulicht, wie die Communication Services-Webclientbibliothek für Anrufe verwendet werden kann, um eine Benutzeroberfläche für Gruppenanrufe zu erstellen.
+Das **Hero-Beispiel für Gruppenanrufe** von Azure Communication Services veranschaulicht, wie das Communication Services Calling Web-SDK für Anrufe verwendet werden kann, um eine Benutzeroberfläche für Gruppenanrufe zu erstellen.
 
 In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie das Beispiel funktioniert, bevor wir es auf Ihrem lokalen Computer ausführen. Anschließend stellen wir das Beispiel in Azure bereit, indem wir Ihre eigenen Azure Communication Services-Ressourcen verwenden.
 
 ## <a name="download-code"></a>Code herunterladen
 
-Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero).
+Suchen Sie das Projekt für dieses Beispiel auf [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero). Eine Version des Beispiels mit [Teams-Interoperabilität](../../concepts/teams-interop.md) kann in einer separaten [Verzweigung](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop) gefunden werden.
 
 ## <a name="overview"></a>Übersicht
 
@@ -48,6 +46,9 @@ Komponenten des Hauptbildschirms für Anrufe:
 - **Medienkatalog**: Der Hauptbereich, in dem die Teilnehmer angezeigt werden. Wenn ein Teilnehmer seine Kamera aktiviert hat, wird der Videofeed hier angezeigt. Jeder Teilnehmer verfügt über eine individuelle Kachel, auf der sein Anzeigename und der Videostream (falls vorhanden) angezeigt werden.
 - **Header**: Hier befinden sich die wichtigsten Anrufsteuerelemente zum Umschalten der Seitenleiste für Einstellungen und Teilnehmer, Aktivieren/Deaktivieren von Videos und der Mischung, Freigeben des Bildschirms und Beenden des Anrufs.
 - **Seitenleiste**: Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Komponente kann mit dem „X“ oben rechts geschlossen werden. In der Seitenleiste für die Teilnehmer werden eine Liste mit Teilnehmern und ein Link zum Einladen von weiteren Benutzern zum Chatten angezeigt. In der Seitenleiste für die Einstellungen können Sie die Mikrofon- und Kameraeinstellungen konfigurieren.
+
+> [!NOTE]
+> Basierend auf den Einschränkungen des Web Calling SDK wird nur ein Remotevideostream gerendert. Weitere Informationen finden Sie unter [Support für den Calling SDK-Datenstrom](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features#calling-sdk-streaming-support).
 
 Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einrichten des Beispiels angegeben.
 
@@ -96,7 +97,7 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- Machen Sie sich mit der [Verwendung der Clientbibliothek für Anrufe](../../quickstarts/voice-video-calling/calling-client-samples.md) vertraut.
+- Machen Sie sich mit der Verwendung des [Calling SDK](../../quickstarts/voice-video-calling/calling-client-samples.md) vertraut
 - Informieren Sie sich über die [Funktionsweise von Anrufen](../../concepts/voice-video-calling/about-call-types.md).
 
 ### <a name="additional-reading"></a>Zusätzliche Lektüre

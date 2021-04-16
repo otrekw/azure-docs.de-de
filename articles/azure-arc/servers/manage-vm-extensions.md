@@ -1,14 +1,14 @@
 ---
 title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern
 description: Mit Azure Arc-fähigen Servern kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 039c52ccbee03636da0f5acc0fc5844be9b646f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9af2700f036352188e646188485285482ee70c69
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687905"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799580"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern
 
@@ -42,6 +42,9 @@ Die Funktionalität der VM-Erweiterungen ist nur in den [unterstützten Regionen
 In dieser Version unterstützen wir die folgenden VM-Erweiterungen auf Windows- und Linux-Computern.
 
 Weitere Informationen zum Azure Connected Machine-Agent-Paket und Details zur Erweiterungs-Agent-Komponente finden Sie in der [Agent-Übersicht](agent-overview.md#agent-component-details).
+
+> [!NOTE]
+> Vor Kurzem wurde die Unterstützung für die DSC-VM-Erweiterung für Azure Arc-fähige Server entfernt. Alternativ empfiehlt es sich, die benutzerdefinierte Skripterweiterung zu verwenden, um die Konfiguration nach der Bereitstellung des Servers oder Computers zu verwalten.
 
 ### <a name="windows-extensions"></a>Windows-Erweiterungen
 

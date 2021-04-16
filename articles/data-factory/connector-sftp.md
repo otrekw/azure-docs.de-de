@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 9b8402e5ae4d0358d17342d30ddf36f5e1228f65
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 19b32bed15a4d292a7427d8401e777c7761e45a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393461"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592029"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Kopieren von Daten von einem und auf einen SFTP-Server mithilfe von Azure Data Factory
 
@@ -34,7 +34,7 @@ Der SFTP-Connector wird für die folgenden Aktivitäten unterstützt:
 
 Der SFTP-Connector unterstützt insbesondere Folgendes:
 
-- Kopieren von Dateien von einem und auf einen SFTP-Server mithilfe der *Basic*- oder *SshPublicKey*-Authentifizierung.
+- Kopieren der Dateien von einem auf einen anderen SFTP-Server mithilfe der **Basic-** , **öffentlichen SSH-Schlüssel-** oder **merhstufigen** Authentifizierung.
 - Kopieren von Dateien im jeweiligen Zustand oder Analysieren oder Generieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -51,21 +51,21 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit SFTP verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf *Sftp* festgelegt werden. |Ja |
 | host | Der Name oder die IP-Adresse des SFTP-Servers. |Ja |
 | port | Der Port, an dem der SFTP-Server lauscht.<br/>Der zulässige Wert ist eine ganze Zahl (Integer), und der Standardwert ist *22*. |Nein |
 | skipHostKeyValidation | Angabe, ob die Überprüfung des Hostschlüssels übersprungen werden soll.<br/>Zulässige Werte sind *true* und *false* (Standard).  | Nein |
 | hostKeyFingerprint | Angabe des Fingerabdrucks des Hostschlüssels. | Ja, sofern die „skipHostKeyValidation“ auf „false“ festgelegt ist.  |
-| authenticationType | Gibt den Authentifizierungstyp an.<br/>Zulässige Werte sind *Basic* und *SshPublicKey*. Weitere Eigenschaften finden Sie im Abschnitt [Verwenden der Standardauthentifizierung](#use-basic-authentication). JSON-Beispiele finden Sie im Abschnitt [Verwenden der Authentifizierung mit öffentlichem SSH-Schlüssel](#use-ssh-public-key-authentication). |Ja |
+| authenticationType | Gibt den Authentifizierungstyp an.<br/>Zulässige Werte sind *Basic*, *öffentlicher SSH-Schlüssel* und *mehrstufig*. Weitere Eigenschaften finden Sie im Abschnitt [Verwenden der Standardauthentifizierung](#use-basic-authentication). JSON-Beispiele finden Sie im Abschnitt [Verwenden der Authentifizierung mit öffentlichem SSH-Schlüssel](#use-ssh-public-key-authentication). |Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn die Integration Runtime nicht angegeben ist, verwendet der Dienst die Standard-Azure Integration Runtime. |Nein |
 
 ### <a name="use-basic-authentication"></a>Verwenden der Standardauthentifizierung
 
 Um die Standardauthentifizierung zu verwenden, legen Sie die Eigenschaft *authenticationType* auf *Basic* fest, und geben zusätzlich zu den im vorherigen Abschnitt eingeführten generischen SFTP-Connectoreigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | userName | Der Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | password | Das Kennwort für den Benutzer (userName). Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
@@ -75,7 +75,6 @@ Um die Standardauthentifizierung zu verwenden, legen Sie die Eigenschaft *authen
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -102,7 +101,7 @@ Um die Standardauthentifizierung zu verwenden, legen Sie die Eigenschaft *authen
 
 Legen Sie zum Verwenden der Authentifizierung mit öffentlichem SSH-Schlüssel die Eigenschaft „authenticationType“ auf **SshPublicKey** fest, und geben Sie neben den im letzten Abschnitt beschriebenen allgemeinen Eigenschaften des SFTP-Connectors die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | userName | Der Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | privateKeyPath | Geben Sie den absoluten Pfad der privaten Schlüsseldatei ein, auf die die Integration Runtime zugreifen kann. Dies ist nur anwendbar, wenn für „connectVia“ eine Integration Runtime vom Typ „selbstgehostet“ angegeben wird. | Geben Sie entweder `privateKeyPath` oder `privateKeyContent` an.  |
@@ -117,7 +116,6 @@ Legen Sie zum Verwenden der Authentifizierung mit öffentlichem SSH-Schlüssel d
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "Linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -171,6 +169,43 @@ Legen Sie zum Verwenden der Authentifizierung mit öffentlichem SSH-Schlüssel d
 }
 ```
 
+### <a name="use-multi-factor-authentication"></a>Verwenden der mehrstufigen Authentifizierung
+
+Um die mehrstufige Authentifizierung zu verwenden, bei der es sich um eine Kombination aus grundlegenden und SSH-Authentifizierungen mit öffentlichem Schlüssel handelt, geben Sie den Benutzernamen, das Kennwort und die privaten Schlüsselinformationen an, wie oben beschrieben.
+
+**Beispiel: mehrstufige Authentifizierung**
+
+```json
+{
+    "name": "SftpLinkedService",
+    "properties": {
+        "type": "Sftp",
+        "typeProperties": {
+            "host": "<host>",
+            "port": 22,
+            "authenticationType": "MultiFactor",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            },
+            "privateKeyContent": {
+                "type": "SecureString",
+                "value": "<base64 encoded private key content>"
+            },
+            "passPhrase": {
+                "type": "SecureString",
+                "value": "<passphrase for private key>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of integration runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Datasets](concepts-datasets-linked-services.md). 
@@ -179,7 +214,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für SFTP unter den `location`-Einstellungen im formatbasierten Dataset unterstützt:
 
-| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft   | Beschreibung                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die *type*-Eigenschaft unter `location` im Dataset muss auf *SftpLocation* festgelegt werden. | Ja      |
 | folderPath | Diese Eigenschaft gibt den Pfad zum Ordner an. Wenn Sie einen Platzhalter verwenden möchten, um den Ordner zu filtern, überspringen Sie diese Einstellung, und geben Sie den Pfad in den Aktivitätsquelleneinstellungen an. | Nein       |
@@ -221,7 +256,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden für SFTP unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | Die *type*-Eigenschaft unter `storeSettings` muss auf *SftpReadSettings* festgelegt werden. | Ja                                           |
 | ***Suchen nach den zu kopierenden Dateien*** |  |  |
@@ -234,9 +269,9 @@ Folgende Eigenschaften werden für SFTP unter den `storeSettings`-Einstellungen 
 | deleteFilesAfterCompletion | Gibt an, ob die Binärdateien nach dem erfolgreichen Verschieben in den Zielspeicher aus dem Quellspeicher gelöscht werden. Die Dateien werden einzeln gelöscht, sodass Sie bei einem Fehler der Kopieraktivität feststellen werden, dass einige Dateien bereits ins Ziel kopiert und aus der Quelle gelöscht wurden, wohingegen sich andere weiter im Quellspeicher befinden. <br/>Diese Eigenschaft ist nur im Szenario zum Kopieren von Binärdateien gültig. Standardwert: FALSE. |Nein |
 | modifiedDatetimeStart    | Die Dateien werden anhand des Attributs *Zuletzt bearbeitet* gefiltert. <br>Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung im Bereich zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format *2018-12-01T05:00:00Z* angewandt. <br> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird.  Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` einen datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.<br/>Diese Eigenschaft gilt nicht, wenn Sie `fileListPath` konfigurieren. | Nein                                            |
 | modifiedDatetimeEnd      | Wie oben.                                               | Nein                                            |
-| enablePartitionDiscovery | Geben Sie bei partitionierten Dateien an, ob die Partitionen anhand des Dateipfads analysiert und als zusätzliche Quellspalten hinzugefügt werden sollen.<br/>Zulässige Werte sind **FALSE** (Standard) und **TRUE**. | Nein                                            |
-| partitionRootPath | Wenn die Partitionsermittlung aktiviert ist, geben Sie den absoluten Stammpfad an, um partitionierte Ordner als Datenspalten zu lesen.<br/><br/>Falls nicht angegeben, gilt standardmäßig:<br/>Wenn Sie den Dateipfad im Dataset oder die Liste der Dateien in der Quelle verwenden, ist der Partitionsstammpfad der im Dataset konfigurierte Pfad.<br/>Wenn Sie einen Platzhalterordnerfilter verwenden, ist der Stammpfad der Partition der Unterpfad vor dem ersten Platzhalter.<br/><br/>Angenommen, Sie konfigurieren den Pfad im Dataset als „root/folder/year=2020/month=08/day=27“:<br/>Wenn Sie den Stammpfad der Partition als „root/folder/year=2020“ angeben, generiert die Kopieraktivität zusätzlich zu den Spalten innerhalb der Dateien die beiden weiteren Spalten `month` und `day` mit den Werten „08“ bzw. „27“.<br/>Wenn der Stammpfad der Partition nicht angegeben ist, wird keine zusätzliche Spalte generiert. | Nein                                            |
-| maxConcurrentConnections | Diese Eigenschaft gibt die Anzahl von Verbindungen an, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein                                            |
+| enablePartitionDiscovery | Geben Sie bei partitionierten Dateien an, ob die Partitionen anhand des Dateipfads analysiert und als zusätzliche Quellspalten hinzugefügt werden sollen.<br/>Zulässige Werte sind **false** (Standard) und **true**. | Nein                                            |
+| partitionRootPath | Wenn die Partitionsermittlung aktiviert ist, geben Sie den absoluten Stammpfad an, um partitionierte Ordner als Datenspalten zu lesen.<br/><br/>Ohne Angabe gilt standardmäßig Folgendes:<br/>- Wenn Sie den Dateipfad im Dataset oder die Liste der Dateien in der Quelle verwenden, ist der Partitionsstammpfad der im Dataset konfigurierte Pfad.<br/>Wenn Sie einen Platzhalterordnerfilter verwenden, ist der Stammpfad der Partition der Unterpfad vor dem ersten Platzhalter.<br/><br/>Angenommen, Sie konfigurieren den Pfad im Dataset als „root/folder/year=2020/month=08/day=27“:<br/>- Wenn Sie den Stammpfad der Partition als „root/folder/year=2020“ angeben, generiert die Kopieraktivität zusätzlich zu den Spalten in den Dateien die beiden weiteren Spalten `month` und `day` mit den Werten „08“ bzw. „27“.<br/>- Wenn kein Stammpfad für die Partition angegeben ist, wird keine zusätzliche Spalte generiert. | Nein                                            |
+| maxConcurrentConnections | Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein                                            |
 
 **Beispiel:**
 
@@ -285,11 +320,11 @@ Folgende Eigenschaften werden für SFTP unter den `storeSettings`-Einstellungen 
 
 Folgende Eigenschaften werden für SFTP unter den `storeSettings`-Einstellungen in einer formatbasierten Kopiersenke unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | Die Eigenschaft *type* unter `storeSettings` muss auf *SftpWriteSettings* festgelegt werden. | Ja      |
 | copyBehavior             | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Dateiname angegeben wurde, entspricht der zusammengeführte Dateiname dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein       |
-| maxConcurrentConnections | Diese Eigenschaft gibt die Anzahl von Verbindungen an, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein       |
+| maxConcurrentConnections | Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten. | Nein       |
 | useTempFileRename | Geben Sie an, ob Sie temporäre Dateien hochladen und umbenennen oder direkt in den Zielordner oder Dateispeicherort schreiben möchten. Standardmäßig schreibt Azure Data Factory zuerst in temporäre Dateien und benennt sie dann um, wenn der Upload abgeschlossen ist. Diese Sequenz hilft, (1) Konflikte zu vermeiden, die zu einer beschädigten Datei führen könnten, wenn andere Prozesse in dieselbe Datei schreiben, und (2) sicherzustellen, dass die Originalversion der Datei während der Übertragung vorhanden ist. Wenn Ihr SFTP-Server keine Umbenennungsvorgänge unterstützt, deaktivieren Sie diese Option, und stellen Sie sicher, dass keine gleichzeitigen Schreibvorgänge für die Zieldatei ausgeführt werden. Weitere Informationen finden Sie im Tipp zur Problembehandlung am Ende dieser Tabelle. | Nein. Der Standardwert lautet *true*. |
 | operationTimeout | Bei der Wartezeit vor jeder Schreibanforderung an den SFTP-Server tritt ein Timeout auf. Der Standardwert ist 60 Minuten (01:00:00).|Nein |
 
@@ -369,7 +404,7 @@ Weitere Informationen zu den Eigenschaften der Löschaktivität finden Sie unter
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die *type*-Eigenschaft des Datasets muss auf *FileShare* festgelegt werden. |Ja |
 | folderPath | Diese Eigenschaft gibt den Pfad zum Ordner an. Ein Platzhalterfilter wird unterstützt. Zulässige Platzhalter sind: `*` (entspricht 0 oder mehr Zeichen) und `?` (entspricht 0 oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Beispiele: Stammordner/Unterordner/. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). |Ja |
@@ -418,11 +453,11 @@ Weitere Informationen zu den Eigenschaften der Löschaktivität finden Sie unter
 
 ### <a name="legacy-copy-activity-source-model"></a>Legacy-Quellenmodell der Kopieraktivität
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die *type*-Eigenschaft der Quelle der Kopieraktivität muss auf *FileSystemSource* festgelegt werden. |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Wenn „recursive“ auf *true* festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, werden leere Ordner und Unterordner nicht in die Senke kopiert oder dort erstellt.<br/>Zulässige Werte sind *true* (Standard) und *false*. | Nein |
-| maxConcurrentConnections | Diese Eigenschaft gibt die Anzahl von Verbindungen an, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie die Anzahl nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein |
+| maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein |
 
 **Beispiel:**
 

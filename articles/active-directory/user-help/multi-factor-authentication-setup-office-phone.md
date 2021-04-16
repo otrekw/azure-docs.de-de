@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 9dd9853bae324a047c673852f14d2b4c1639d914
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83739208"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Einrichten einer Bürotelefonnummer als Methode für die zweistufige Überprüfung
@@ -26,7 +26,7 @@ Sie können Ihre Bürotelefonnummer als Methode für die zweistufige Überprüfu
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>Einrichten Ihrer Bürotelefonnummer als Überprüfungsmethode
 
-1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** die Option **Bürotelefonnummer** im Bereich **Schritt 1: Auf welchem Weg sollen wir Sie kontaktieren?** aus. Wählen Sie anschließend in der Dropdownliste Ihr Land oder Ihre Region aus, und geben Sie Ihre Bürotelefonnummer und ggf. Ihre Durchwahl ein.
+1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** im Bereich **Schritt 1: Wie dürfen wir Sie kontaktieren?** die Option **Telefon (geschäftlich)** aus. Wählen Sie anschließend in der Dropdownliste Ihr Land oder Ihre Region aus, und geben Sie Ihre geschäftliche Telefonnummer und ggf. die Durchwahl ein.
 
     ![Seite „Zusätzliche Sicherheitsüberprüfung“ mit Authentifizierungstelefon und Telefonanruf](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone.png)
 
@@ -34,14 +34,14 @@ Sie können Ihre Bürotelefonnummer als Methode für die zweistufige Überprüfu
 
     ![Testen der angegebenen Telefonnummer](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone-test.png)
 
-3. Kopieren Sie im Bereich **Schritt 3: Verwenden Sie vorhandene Anwendungen weiterhin** das angegebene App-Kennwort, und speichern Sie es an einem sicheren Ort.
+3. Kopieren Sie im Bereich **Schritt 3: Vorhandene Anwendungen weiterhin verwenden** das angegebene App-Kennwort, und speichern Sie es an einem sicheren Ort.
 
     ![Bereich für App-Kennwörter der Seite „Zusätzliche Sicherheitsüberprüfung“](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
     >Informationen zur Verwendung des App-Kennworts mit älteren Apps finden Sie unter [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md). App-Kennwörter sind nur erforderlich, wenn Sie weiterhin ältere Apps verwenden, die die zweistufige Überprüfung nicht unterstützen.
 
-4. Wählen Sie **Fertig**aus.
+4. Wählen Sie **Fertig** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

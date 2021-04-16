@@ -3,17 +3,17 @@ title: Neuheiten in Windows Virtual Desktop - Azure
 description: Neue Features und Produktupdates für Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 02/23/2021
+ms.date: 03/20/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
-manager: lizross
+manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: c0b4ad17c5aefe29a313b9eaf75fc87ce4d88720
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 1c5d846963d7fc0c2207893f5c4094e3f94351b5
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499882"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505415"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Neuheiten in Windows Virtual Desktop
 
@@ -35,6 +35,18 @@ Lesen Sie die folgenden Artikel, um sich über die Updates für unsere Clients f
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="windows-virtual-desktop-agent-updates"></a>Updates für Windows Virtual Desktop-Agents
+
+Der Windows Virtual Desktop-Agent wird mindestens einmal pro Monat aktualisiert.
+
+Nachfolgend sind die Änderungen im Windows Virtual Desktop-Agent aufgeführt:
+
+- Version 1.0.2866.1500: Dieses Update wurde am 26. März 2021 veröffentlicht und hat ein Problem mit der Integritätsprüfung des Stapels behoben.
+- Version 1.0.2800.2802: Dieses Update wurde am 10. März 2021 veröffentlicht und enthält allgemeine Verbesserungen und Fehlerbehebungen.
+- Version 1.0.2800.2800: Dieses Update wurde am 2. März 2, 2021 veröffentlicht. Damit wurde ein Problem mit der umgekehrten Verbindung behoben.
+- Version 1.0.2800.2700: Dieses Update wurde am 10. Februar 2021 veröffentlicht und enthält allgemeine Verbesserungen und Fehlerbehebungen.
+- Version 1.0.2800.2700: Dieses Update wurde am 4. Februar 2021 veröffentlicht. Damit wurde ein Orchestrierungsproblem im Zusammenhang mit verweigertem Zugriff behoben.
 
 ## <a name="fslogix-updates"></a>FSLogix-Updates
 

@@ -1,16 +1,16 @@
 ---
 title: Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich
 description: In diesem Artikel werden die unterstützten Regionszuordnungen zwischen einem Automation-Konto und einem Log Analytics-Arbeitsbereich im Zusammenhang mit bestimmten Features von Azure Automation beschrieben.
-ms.date: 02/17/2021
+ms.date: 04/01/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ac2a575c9fe551d5b1b396ab06b2735a749f9da
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720170"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221873"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich
 
@@ -38,30 +38,44 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 |EastUS2<sup>2</sup>|EastUS|
 |USA, Westen|USA, Westen|
 |WestUS2|WestUS2|
+|NorthCentralUS|NorthCentralUS|
 |USA, Mitte|USA, Mitte|
 |USA, Süden-Mitte|USA, Süden-Mitte|
 |WestCentralUS|WestCentralUS|
+|**Brasilien**||
+|Brasilien, Süden|Brasilien, Süden|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
+|**China**||
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |**Asien-Pazifik**||
-|Australien, Osten|Australien, Osten|
-|AustraliaSoutheast|AustraliaSoutheast|
 |Asien, Osten|Asien, Osten|
 |SoutheastAsia|SoutheastAsia|
+|**Indien**||
 |CentralIndia|CentralIndia|
-|ChinaEast2<sup>3</sup>|ChinaEast2|
+|**Japan**||
 |JapanEast|JapanEast|
+|**Australien**||
+|Australien, Osten|Australien, Osten|
+|AustraliaSoutheast|AustraliaSoutheast|
+|**Korea**||
+|KoreaCentral|KoreaCentral|
+|**Norwegen**||
+|NorwayEast|NorwayEast|
 |**Europa**||
 |Europa, Norden|Europa, Norden|
-|Frankreich, Mitte|Frankreich, Mitte|
-|UKSouth|UKSouth|
 |Europa, Westen|Europa, Westen|
+|**Frankreich**||
+|Frankreich, Mitte|Frankreich, Mitte|
+|**Vereinigtes Königreich**
+|UKSouth|UKSouth|
+|**Schweiz**||
 |SwitzerlandNorth|SwitzerlandNorth|
+|**Vereinigte Arabische Emirate**||
+|UAENorth|UAENorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>3</sup>|USGovArizona|
-
-
 
 <sup>1</sup> Die EastUS-Zuordnung für die Zuordnung von Log Analytics-Arbeitsbereichen zu Automation-Konten ist zwar keine exakte Zuordnung zwischen Regionen, sie ist aber korrekt.
 

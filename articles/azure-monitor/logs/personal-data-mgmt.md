@@ -5,21 +5,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: ff6d532d3c391ffecfbfb54a761c73ff24c823d9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 03c4babc8fa70c951d80b720c4d4693968011532
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040259"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772262"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
 Log Analytics ist ein Datenspeicher, der wahrscheinlich auch personenbezogene Daten enthält. Application Insights speichert die Daten auf einer Log Analytics-Partition. In diesem Artikel erfahren Sie, wo sich solche Daten üblicherweise in Log Analytics und Application Insights befinden und welche Möglichkeiten Sie im Zusammenhang mit diesen Daten haben.
 
 > [!NOTE]
-> Im Rahmen dieses Artikels bezieht sich _Protokolldaten_ auf Daten, die von einem Log Analytics-Arbeitsbereich gesendet werden, während _Anwendungsdaten_ Daten bezeichnet, die von Application Insights gesammelt werden.
+> Im Rahmen dieses Artikels bezieht sich _Protokolldaten_ auf Daten, die von einem Log Analytics-Arbeitsbereich gesendet werden, während _Anwendungsdaten_ Daten bezeichnet, die von Application Insights gesammelt werden. Wenn Sie eine arbeitsbereichsbasierte Application Insights-Ressource verwenden, gelten die Informationen zu Protokolldaten, bei Verwendung der klassischen Application Insights-Ressource gelten jedoch die Informationen zu Anwendungsdaten.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
+
 
 ## <a name="strategy-for-personal-data-handling"></a>Strategie für den Umgang mit personenbezogenen Daten
 
@@ -27,7 +28,7 @@ Die Gestaltung der Strategie für den Umgang mit personenbezogenen Daten liegt l
 
 * Sorgen Sie nach Möglichkeit dafür, dass Daten, die als „personenbezogen“ betrachtet werden können, gar nicht erst gesammelt oder aber verschleiert, anonymisiert oder anderweitig verändert werden. Dies ist _mit Abstand_ die bevorzugte Vorgehensweise und erspart die Erstellung einer wirksamen und äußerst kostspieligen Datenverarbeitungsstrategie.
 * Sollte diese Vorgehensweise nicht möglich sein, versuchen Sie, die Daten zu normalisieren, um die Auswirkungen auf die Datenplattform und auf die Leistung zu verringern. Statt beispielsweise eine explizite Benutzer-ID zu protokollieren, erstellen Sie Nachschlagedaten, die den Benutzernamen und die dazugehörigen Details mit einer internen ID korrelieren, die dann an anderer Stelle protokolliert werden kann. Wenn Sie daraufhin von einem Benutzer gebeten werden, seine personenbezogenen Informationen zu löschen, muss ggf. nur die entsprechende Zeile in der Nachschlagetabelle gelöscht werden. 
-* Falls personenbezogene Daten gesammelt werden müssen, erstellen Sie einen Prozess basierend auf dem Bereinigungs-API-Pfad und dem vorhandenen Abfrage-API-Pfad, um allen Vorschriften zu genügen, die möglicherweise im Zusammenhang mit dem Exportieren und Löschen personenbezogener Daten eines Benutzers gelten. 
+* Falls personenbezogene Daten gesammelt werden müssen, erstellen Sie einen Prozess basierend auf dem Bereinigungs-API-Pfad und dem vorhandenen Abfrage-API-Pfad, um allen Vorschriften zu genügen, die möglicherweise im Zusammenhang mit dem Exportieren und Löschen personenbezogener Daten eines Benutzers gelten.
 
 ## <a name="where-to-look-for-private-data-in-log-analytics"></a>Wo befinden sich personenbezogene Daten in Log Analytics?
 

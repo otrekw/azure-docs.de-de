@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef56db4ef67515d14f8462db2975e68a1a86f238
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101647471"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959856"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory 
 
@@ -193,6 +193,8 @@ Wenn Sie einen in Hybrid-Azure AD eingebundenen Computer neu installieren, danac
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Ich kann nach der Anmeldung mit FIDO kein SSO für meine NTLM-Netzwerkressource nutzen und erhalte eine Aufforderung zur Eingabe von Anmeldeinformationen.
 
 Stellen Sie sicher, dass genügend Domänencontroller gepatcht sind, damit sie rechtzeitig reagieren können, um Ihre Ressourcenanforderung zu bearbeiten. Wenn Sie überprüfen möchten, ob ein Domänencontroller angezeigt wird, auf dem die Funktion ausgeführt wird, sehen Sie sich die Ausgabe von `nltest /dsgetdc:contoso /keylist /kdc` an.
+
+Hinweis: dieser/Keylist-Schalter im Befehl Nltest finden Sie unter Client Windows 10 V2004 und höher.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

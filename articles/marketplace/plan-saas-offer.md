@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879257"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581302"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
 
-In diesem Artikel werden die verschiedenen Optionen und Anforderungen zum Veröffentlichen eines SaaS-Angebots (Software-as-a-Service) für den kommerziellen Marketplace von Microsoft erläutert. Mit SaaS-Angeboten können Sie Softwarelösungen für Ihre Kunden über ein Onlineabonnement bereitstellen und lizenzieren, statt sie lokal auf den einzelnen Computern zu installieren. Dieser Artikel hilft Ihnen, Ihr Angebot für die Veröffentlichung auf dem kommerziellen Marketplace mit dem Partner Center vorzubereiten.
+In diesem Artikel werden die verschiedenen Optionen und Anforderungen zum Veröffentlichen von SaaS-Angeboten (Software-as-a-Service) für den kommerziellen Marketplace von Microsoft erläutert. Mit SaaS-Angeboten können Sie Softwarelösungen für Ihre Kunden über ein Onlineabonnement bereitstellen und lizenzieren. Als SaaS-Herausgeber verwalten und bezahlen Sie die erforderliche Infrastruktur, die für die Nutzung Ihres Angebots durch den Kunden erforderlich ist. Dieser Artikel hilft Ihnen, Ihr Angebot für die Veröffentlichung auf dem kommerziellen Marketplace mit dem Partner Center vorzubereiten.
 
 ## <a name="listing-options"></a>Auflistungsoptionen
 

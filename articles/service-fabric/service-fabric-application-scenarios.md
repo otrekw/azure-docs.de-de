@@ -3,12 +3,12 @@ title: Anwendungsszenarien und -entwurf
 description: Übersicht über die Kategorien von Cloudanwendungen in Service Fabric. Informationen zum Anwendungsentwurf mit zustandsbehafteten und zustandslosen Diensten
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c3cc931a85b91fc02b8086ca5c2481153691e54
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d9459e6e0168657cf8e9062331fec0237f58c70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96575668"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045755"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric-Anwendungsszenarien
 
@@ -68,7 +68,7 @@ Hier sehen Sie eine Beispielanwendung, die zustandsbehaftete Dienste verwendet: 
 
 * Beginnen Sie mit der Erstellung zustandsloser und zustandsbehafteter Dienste mit den Service Fabric-Programmiermodellen [Reliable Services](service-fabric-reliable-services-quick-start.md) und [Reliable Actors](service-fabric-reliable-actors-get-started.md).
 * Besuchen Sie das Azure Architecture Center. Dort finden Sie einen Leitfaden zum [Erstellen von Microservices in Azure](/azure/architecture/microservices/).
-* Einen Entwurfsleitfaden für Anwendungen finden Sie unter [Bewährte Methoden für Azure Service Fabric-Anwendungen und -Cluster](service-fabric-best-practices-overview.md).
+* Einen Entwurfsleitfaden für Anwendungen finden Sie unter [Bewährte Methoden für Azure Service Fabric-Anwendungen und -Cluster](./service-fabric-best-practices-security.md).
 
 * Weitere Informationen:
   * [Grundlegendes zu Microservices](service-fabric-overview-microservices.md)

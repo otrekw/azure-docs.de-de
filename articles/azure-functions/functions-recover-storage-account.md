@@ -3,12 +3,12 @@ title: 'Problembehandlung: Azure Functions-Runtime ist nicht erreichbar'
 description: Erfahren Sie, wie Sie Problembehandlung für ein ungültiges Speicherkonto durchführen.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: a62001cedd695badc72eb76c93ea9c3cb4507403
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 392882fc2f0394e61aee973a20479d8f1fa9bc92
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499627"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606972"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Problembehandlung: „Azure Functions-Runtime ist nicht erreichbar“
 
@@ -59,6 +59,7 @@ Ihre Funktions-App muss auf das Speicherkonto zugreifen können. Häufige Proble
 * Die Funktions-App wird in Ihrer App Service-Umgebung (ASE) ohne die richtigen Netzwerkregeln bereitgestellt, die Datenverkehr zum und vom Speicherkonto zulassen.
 
 * Die Firewall des Speicherkontos ist aktiviert und nicht für das Zulassen von Datenverkehr von und zu Functions konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* Vergewissern Sie sich, dass die Einstellung `allowSharedKeyAccess` auf `true` (Standardwert) festgelegt ist. Weitere Informationen finden Sie unter [Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/shared-key-authorization-prevent?tabs=portal#verify-that-shared-key-access-is-not-allowed). 
 
 ## <a name="daily-execution-quota-is-full"></a>Tägliches Ausführungskontingent erreicht
 

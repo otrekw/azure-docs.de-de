@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
 ms.openlocfilehash: af7900faff18d526686b80f23b9de3b3bce5ec5c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93309614"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Erstellen von CI/CD-Pipelines für KI-Apps mit Azure Pipelines, Docker und Kubernetes
 
-Eine Anwendung für Künstliche Intelligenz (KI) bedeutet, dass Anwendungscode in ein vortrainiertes Machine Learning-Modell (ML) eingebettet wird. Es gibt immer zwei Aufgabenschwerpunkte für eine KI-Anwendung: Data Scientists erstellen das ML-Modell, und App-Entwickler erstellen die App und stellen Sie für die Nutzung durch Endbenutzer bereit. In diesem Artikel wird beschrieben, wie Sie eine CI/CD-Pipeline (Continuous Integration und Continuous Delivery) für eine KI-Anwendung implementieren, die das ML-Modell in den Quellcode der APP einbettet. Im Beispielcode und Tutorial wird eine Python Flask-Webanwendung verwendet, und es wird ein vortrainiertes Modell aus einem privaten Azure Blob Storage-Konto abgerufen. Sie können auch ein AWS S3-Speicherkonto verwenden.
+Eine Anwendung für Künstliche Intelligenz (KI) bedeutet, dass Anwendungscode in ein vortrainiertes Machine Learning-Modell (ML) eingebettet wird. Bei einer KI-Anwendung gibt es immer zwei Arbeitsbereiche: Data Scientists erstellen das ML-Modell, und App-Entwickler erstellen die App und stellen sie für die Verwendung durch Endbenutzer zur Verfügung. In diesem Artikel wird beschrieben, wie Sie eine CI/CD-Pipeline (Continuous Integration und Continuous Delivery) für eine KI-Anwendung implementieren, die das ML-Modell in den Quellcode der APP einbettet. Im Beispielcode und Tutorial wird eine Python Flask-Webanwendung verwendet, und es wird ein vortrainiertes Modell aus einem privaten Azure Blob Storage-Konto abgerufen. Sie können auch ein AWS S3-Speicherkonto verwenden.
 
 > [!NOTE]
 > Der folgende Prozess ist eine von mehreren Möglichkeiten für CI/CD. Es gibt Alternativen zu diesen Tools und den Voraussetzungen.
@@ -60,7 +60,7 @@ In der folgenden Abbildung und in den Schritten wird die Architektur der CI/CD-P
 10. Benutzeranforderungen für die App durchlaufen den DNS-Server.
 11. Der DNS-Server übergibt die Anforderung an einen Load Balancer und sendet Antworten zurück an den Server.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [Team Data Science-Prozess (TDSP)](./index.yml)
 - [Azure Machine Learning (AML)](../index.yml)

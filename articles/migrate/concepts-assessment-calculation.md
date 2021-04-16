@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 7d756b53247206ab4dd4f955c954e6bd105afa1d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c8d625095fc979151ed904fb355b5953e41309b4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778490"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078705"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>Bewertungsübersicht (Migration zu Azure-VMs)
 
-Dieser Artikel bietet einen Überblick über Bewertungen im [Azure Migrate-Tool zur Serverermittlung und -bewertung](migrate-services-overview.md). Mit diesem Tool können Sie lokale Server in der virtuellen VMware- und Hyper-V-Umgebung sowie physische Server für die Migration zu Azure bewerten.
+Dieser Artikel bietet einen Überblick über Bewertungen im Tool [Azure Migrate: Ermittlung und Bewertung](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool). Mit diesem Tool können Sie lokale Server in der virtuellen VMware- und Hyper-V-Umgebung sowie physische Server für die Migration zu Azure bewerten.
 
 ## <a name="whats-an-assessment"></a>Was ist eine Bewertung?
 
@@ -33,6 +33,9 @@ Sie können drei Arten von Bewertungen mit der Azure Migrate-Ermittlung und -Bew
 **Azure-VM** | Bewertungen zum Migrieren Ihrer lokalen Server zu virtuellen Azure-Computern. Sie können Ihre lokalen Server in der [VMware](how-to-set-up-appliance-vmware.md)- und [Hyper-V](how-to-set-up-appliance-hyper-v.md)-Umgebung und [physischen Server](how-to-set-up-appliance-physical.md) für die Migration zu Azure-VMs mit diesem Bewertungstyp bewerten.
 **Azure SQL** | Bewertungen zum Migrieren Ihrer lokalen SQL Server-Instanzen aus Ihrer VMware-Umgebung zu Azure SQL-Datenbank oder Azure SQL Managed Instance.
 **Azure VMware Solution (AVS)** | Bewertungen zum Migrieren Ihrer lokalen Server zu [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). Sie können Ihre lokalen [VMware-VMs](how-to-set-up-appliance-vmware.md) für die Migration zu Azure VMware Solution (AVS) bewerten, indem Sie diesen Bewertungstyp verwenden. [Weitere Informationen](concepts-azure-vmware-solution-assessment-calculation.md)
+
+> [!NOTE]
+> Wenn die Anzahl der Azure VM- oder AVS-Bewertungen im Ermittlungs- und Bewertungstool falsch ist, klicken Sie auf die Gesamtzahl der Bewertungen, um zu allen Bewertungen zu navigieren und die Azure VM- oder AVS-Bewertungen neu zu berechnen. Das Ermittlungs- und Bewertungstool zeigt dann die richtige Anzahl für diesen Bewertungstyp an. 
 
 Bewertungen, die Sie mit Azure Migrate erstellen, sind Momentaufnahmen von Daten zu einem gewissen Zeitpunkt. Eine Azure VM-Bewertung verfügt über zwei Optionen für Größenkriterien:
 

@@ -1,17 +1,17 @@
 ---
 title: Beschränkungen für Azure Database for PostgreSQL – Flexible Server
 description: In diesem Artikel werden die Beschränkungen in Azure Database for PostgreSQL – Flexible Server beschrieben, z. B. die Anzahl der Verbindungen und Optionen für die Speicher-Engine.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 9039bbf006d5e5a677247771346a3a6b43781da2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 351c959a4d3b6cc53064b9d1b65c1282647f308e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594936"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605398"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Beschränkungen in Azure Database for PostgreSQL – Flexible Server
 

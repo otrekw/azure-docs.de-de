@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3481e21a93fbf5f658c5ca00513ea179c8f95400
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899200"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>Ermöglichen Sie es Private CloudSimple-Cloud-DNS-Servern, die DNS-Suche von lokalen Ressourcen an Ihre DNS-Server weiterzuleiten.
@@ -31,7 +31,7 @@ Die Weiterleitung der DNS-Suche für Ihren lokalen DNS-Server ermöglicht es Ihn
 
 Damit die DNS-Weiterleitung funktioniert, muss eine Netzwerkverbindung von Ihrem privaten Cloudnetzwerk zu Ihrem lokalen Netzwerk bestehen.  Sie können die Netzwerkverbindung folgendermaßen einrichten:
 
-* [Herstellen einer Verbindung von lokalen Standorten mit CloudSimple mithilfe von ExpressRoute](on-premises-connection.md)
+* [Herstellen einer Verbindung aus der lokalen Umgebung mit CloudSimple mithilfe von ExpressRoute](on-premises-connection.md)
 * [Einrichten eines Site-to-Site-VPN-Gateways](./vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
 
 Damit die DNS-Weiterleitung funktioniert, müssen an dieser Verbindung Firewallports geöffnet werden.  Die verwendeten Ports sind TCP-Port 53 oder UDP-Port 53.
@@ -44,9 +44,9 @@ Damit die DNS-Weiterleitung funktioniert, müssen an dieser Verbindung Firewallp
 Zum Aktivieren der DNS-Weiterleitung von der privaten Cloud zu lokalen Standorten übermitteln Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) mit den folgenden Informationen.
 
 * Problemtyp: **Technisch**
-* Abonnement: **Abonnement, in dem der CloudSimple-Dienst bereitgestellt wird**
+* Abonnement: **Wählen Sie das Abonnement aus, in dem der CloudSimple-Dienst bereitgestellt wird.**
 * Dienst: **VMware Solution by CloudSimple**
-* Problemtyp: **Empfehlung oder Gewusst wie...**
+* Problemtyp: **Ratgeber oder Fragen**.
 * Problemuntertyp: **Benötige Hilfe bei NW**
 * Geben Sie den Domänennamen Ihrer lokalen Domäne im Detailbereich an.
 * Stellen Sie im Detailbereich die Liste Ihrer lokalen DNS-Server bereit, an die die Suche von Ihrer privaten Cloud weitergeleitet wird.

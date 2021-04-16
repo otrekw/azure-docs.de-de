@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Nutzen von virtuellen VMware-Computern in Azure'
+title: 'Schnellstart: Nutzen von VMware-VMs in Azure'
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Erfahren Sie, wie Sie VMware-VMs aus dem Azure-Portal mit Azure VMware Solution by CloudSimple konfigurieren und nutzen können.
 author: sharaths-cs
@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ab613c251bc43a025e0381046805ec998a04227
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77019552"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>Schnellstart – Nutzen von VMware-VMs in Azure
@@ -40,10 +40,10 @@ Erstellen Sie einen virtuellen Computer über die vCenter-Benutzeroberfläche in
 
     | Feld | BESCHREIBUNG |
     | ------------ | ------------- |
-    | Subscription | Das mit Ihrer privaten Cloud verknüpfte Azure-Abonnement.  |
+    | Abonnement | Das mit Ihrer privaten Cloud verknüpfte Azure-Abonnement.  |
     | Ressourcengruppe | Die Ressourcengruppe, der die VM zugewiesen wird. Wählen Sie eine vorhandene Gruppe auswählen oder eine neue erstellen. |
     | Name | Der Name zur Identifizierung der VM.  |
-    | Position | Azure-Region, in der die VM gehostet wird.  |
+    | Location | Azure-Region, in der die VM gehostet wird.  |
     | Private Cloud | Die private CloudSimple-Cloud, in der Sie den virtuellen Computer erstellen möchten. |
     | Ressourcenpool | Zugeordneter Ressourcenpool für die VM. Wählen Sie aus den verfügbaren Ressourcenpools aus. |
     | vSphere-Vorlage | vSphere-Vorlage für die VM.  |
@@ -75,7 +75,7 @@ Erstellen Sie einen virtuellen Computer über die vCenter-Benutzeroberfläche in
     | Name | Geben Sie einen Namen zur Identifizierung des Datenträgers ein.  |
     | Size | Wählen Sie eine der verfügbaren Größen aus.  |
     | SCSI-Controller | Wählen Sie einen SCSI-Controller für den Datenträger aus.  |
-    | Mode | Bestimmt, wie der Datenträger in Momentaufnahmen beteiligt ist. Wählen Sie eine der Optionen aus: <br> - Unabhängig dauerhaft: Alle Daten, die auf den Datenträger geschrieben werden, werden dauerhaft geschrieben.<br> - Unabhängig nicht dauerhaft: Auf dem Datenträger geschriebene Änderungen werden verworfen, wenn Sie den Computer ausschalten oder zurücksetzen.  Der unabhängige, nicht dauerhafte Modus ermöglicht es Ihnen, die VM immer im gleichen Zustand neu zu starten. Weitere Informationen finden Sie in der <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware-Dokumentation</a>.
+    | Mode | Bestimmt, wie der Datenträger in Momentaufnahmen beteiligt ist. Wählen Sie eine der Optionen aus: <br> – Unabhängig, persistent: Alle Daten, die auf den Datenträger geschrieben werden, werden dauerhaft geschrieben.<br> – Unabhängig, nicht persistent: Auf dem Datenträger geschriebene Änderungen werden verworfen, wenn Sie die VM ausschalten oder zurücksetzen.  Der unabhängige, nicht dauerhafte Modus ermöglicht es Ihnen, die VM immer im gleichen Zustand neu zu starten. Weitere Informationen finden Sie in der <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware-Dokumentation</a>.
 
 7. Wenn die Überprüfung abgeschlossen ist, überprüfen Sie die Einstellungen, und klicken Sie dann auf **Create** (Erstellen). Um Änderungen vorzunehmen, klicken Sie auf die Registerkarten oben.
 
@@ -83,5 +83,5 @@ Erstellen Sie einen virtuellen Computer über die vCenter-Benutzeroberfläche in
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Anzeigen der Liste der virtuelle CloudSimple-VMs](azure-create-vm.md#view-list-of-cloudsimple-virtual-machines)
+* [Anzeigen der Liste der CloudSimple-VMs](azure-create-vm.md#view-list-of-cloudsimple-virtual-machines)
 * [Verwalten eines virtuellen CloudSimple-Computers aus Azure](azure-manage-vm.md)

@@ -1,20 +1,16 @@
 ---
-title: Anzeigen von Informationen in Warnungen
+title: Informationen zu Warnmeldungen
 description: Wählen Sie im Fenster „Warnungen“ eine Warnung aus, um Details dazu anzuzeigen.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 12/03/2020
+ms.date: 3/21/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 5877db6b3bc7366f28e679882a2c784e6828b1c1
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 2fa2b265c7d3983ca6ae2d7507392dd37afabd27
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523582"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781482"
 ---
-# <a name="view-information-in-alerts"></a>Anzeigen von Informationen in Warnungen
+# <a name="about-alert-messages"></a>Informationen zu Warnmeldungen
 
 Wählen Sie im Fenster **Warnungen** eine Warnung aus, um Details zu dieser Warnung anzuzeigen. Folgende Informationen sind enthalten:
 
@@ -90,7 +86,7 @@ Wählen Sie zum Herunterladen der PCAP-Datei das Symbol :::image type="content" 
 
 Der Bereich **Empfehlung** einer Warnung enthält Informationen, die Ihnen helfen können, ein Ereignis besser zu verstehen. Sehen Sie sich diese Informationen an, bevor Sie das Warnungsereignis behandeln oder auf dem Gerät oder im Netzwerk Aktionen ausführen.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Beschleunigen des Warnungsworkflows](how-to-accelerate-alert-incident-response.md)
 

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
 ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92124674"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy
@@ -104,7 +104,7 @@ Hierbei handelt es sich um Fehler in Bezug auf Container- und Freigabenamen.
 - Laden Sie auf der lokalen Webbenutzeroberfläche auf der Seite „Verbinden und kopieren“ die Fehlerdateien herunter, und überprüfen Sie sie, um die Namen der Ordner mit Problemen zu identifizieren. 
 - Benennen Sie das Verzeichnis oder die Container um, um sicherzustellen, dass sie den Azure-Namenskonventionen entsprechen.
 
-Weitere Informationen finden Sie in den Azure-Namenskonventionen für  [Verzeichnisse](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)  und [Container](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
+Weitere Informationen finden Sie in den Azure-Namenskonventionen für [Verzeichnisse](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) und [Container](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
 
 ## <a name="container-or-share-size-limit-errors"></a>Größenbeschränkungsfehler für Container oder Freigaben
 

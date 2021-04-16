@@ -4,16 +4,16 @@ description: Dieser Artikel enthält Anleitungen zur Problembehandlung bei der A
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: wenjiefu
-author: wenjiefu
+author: RodgeFu
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 2bc56d39de392c9e4c20c25b554e3bdeea048bfb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6eecedbc28bcb8bc0bd46534a2c2692636f6f2c1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361875"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934001"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime
 
@@ -121,7 +121,10 @@ Dieser Fehler tritt auf, wenn die SSIS Integration Runtime nicht auf den für da
 Eine mögliche Ursache ist, dass der Benutzername oder das Kennwort mit aktivierter Azure AD Multi-Factor Authentication für die Authentifizierung bei Azure Analysis Services konfiguriert ist. Diese Authentifizierung wird in der SSIS Integration Runtime nicht unterstützt. Versuchen Sie, ein Dienstprinzipal für die Authentifizierung bei Azure Analysis Services zu verwenden:
 
 1. Bereiten Sie ein Dienstprinzipal vor, wie in [Automatisierung mit Dienstprinzipalen](../analysis-services/analysis-services-service-principal.md) beschrieben.
-2. Konfigurieren Sie im Connection Manager die Option **SQL-Server-Authentifizierung verwenden**. Legen Sie **AppID** als Benutzernamen und **clientSecret** als Kennwort fest.
+2. Konfigurieren Sie im Connection Manager die Option **Bestimmten Benutzernamen und bestimmtes Kennwort verwenden**. Legen Sie **app: *&lt;AppID&gt;* @*&lt;TenantID&gt;** * als Benutzernamen und „clientSecret“ als Kennwort fest. Hier sehen Sie ein Beispiel für einen ordnungsgemäß formatierten Benutzernamen:
+ 
+   `app:12345678-9012-3456-789a-bcdef012345678@9abcdef0-1234-5678-9abc-def0123456789abc`
+1. Konfigurieren Sie im Connection Manager die Option **SQL-Server-Authentifizierung verwenden**. Legen Sie **AppID** als Benutzernamen und **clientSecret** als Kennwort fest.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Fehlermeldung: „Fehler beim Abrufen der {GUID}-Verbindung durch die ADO .NET-Quelle. Fehlermeldung: Die Anmeldung für den Benutzer 'NT AUTHORITY\ANONYMOUS LOGON'“ ist fehlgeschlagen, wenn eine verwaltete Identität verwendet wird
 

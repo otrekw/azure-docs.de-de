@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dbd4923dd2843ab2c043da69f1b72efd8e1eb701
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 0bbc799f946d318c305a96d9cb8c6831d9242ff6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573046"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578293"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Szenario: Web-App, die Benutzer anmeldet
 
@@ -43,6 +43,12 @@ Für Java-Entwickler steht die folgende Schnellstartanleitung zur Verfügung:
 
 [Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App](quickstart-v2-java-webapp.md)
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Für Node.js-Entwickler steht der folgende Schnellstart zur Verfügung:
+
+[Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Node.js-Web-App](quickstart-v2-nodejs-webapp-msal.md)
+
 # <a name="python"></a>[Python](#tab/python)
 
 Für Python-Entwickler steht die folgende Schnellstartanleitung zur Verfügung:
@@ -62,7 +68,7 @@ Web-Apps authentifizieren Benutzer in einem Webbrowser. In diesem Szenario weist
 In einem zweiten Schritt können Sie die Anwendung so konfigurieren, dass sie Web-APIs für den angemeldeten Benutzer aufruft. Bei diesem nächsten Schritt handelt es sich um ein anderes Szenario, das unter [Szenario: Web-App, die Web-APIs aufruft](scenario-web-app-call-api-overview.md) beschrieben wird.
 
 > [!NOTE]
-> Das Hinzufügen einer Anmeldung dient zum Schutz der Web-App sowie zur Überprüfung eines Benutzertokens. Zu diesem Zweck werden **Middlewarebibliotheken** verwendet. Im Falle von .NET sind für dieses Szenario noch keine Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) erforderlich. Diese Bibliothek dient zum Abrufen eines Tokens, um geschützte APIs aufrufen zu können. Authentifizierungsbibliotheken werden im nächsten Szenario eingeführt, wenn die Web-App Web-APIs aufrufen muss.
+> Das Hinzufügen einer Anmeldung dient zum Schutz der Web-App sowie zur Überprüfung eines Benutzertokens. Zu diesem Zweck werden **Middlewarebibliotheken** verwendet. Im Falle von .NET sind für dieses Szenario noch keine Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) erforderlich. Diese Bibliothek dient zum Abrufen eines Tokens, um geschützte APIs aufrufen zu können. Authentifizierungsbibliotheken für .NET werden im nächsten Szenario eingeführt, wenn die Web-App Web-APIs aufrufen muss.
 
 ## <a name="specifics"></a>Besonderheiten
 
@@ -87,6 +93,10 @@ Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [App-Registrierung
 # <a name="java"></a>[Java](#tab/java)
 
 Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [App-Registrierung](./scenario-web-app-sign-user-app-registration.md?tabs=java).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [App-Registrierung](./scenario-web-app-sign-user-app-registration.md?tabs=nodejs).
 
 # <a name="python"></a>[Python](#tab/python)
 

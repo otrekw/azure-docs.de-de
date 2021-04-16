@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ccc6acfd27a1430a4f6a31886c06322c5c09e224
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102565819"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628372"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migration einer SQL Server-Instanz zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -78,7 +78,7 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-Weitere Informationen zu In-Memory-Technologien finden Sie unter [Optimieren der Leistung mithilfe von In-Memory-Technologien in Azure SQL-Datenbank und Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview).
+Weitere Informationen zu In-Memory-Technologien finden Sie unter [Optimieren der Leistung mithilfe von In-Memory-Technologien in Azure SQL-Datenbank und Azure SQL Managed Instance](../in-memory-oltp-overview.md).
 
 ### <a name="create-a-performance-baseline"></a>Erstellen einer Leistungsbaseline
 
@@ -89,7 +89,7 @@ Die Leistungsbaseline ist eine Gruppe von Parametern, z. B. durchschnittliche/m
 Die folgenden Parameter sind einige der Parameter, die Sie in Ihrer SQL Server-Instanz messen müssen:
 
 - [Überwachen der CPU-Nutzung in Ihrer SQL Server-Instanz](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) und Aufzeichnen der durchschnittlichen und der maximalen CPU-Nutzung.
-- [Überwachen der Arbeitsspeichernutzung in Ihrer SQL Server-Instanz](/sql/relational-databases/performance-monitor/monitor-memory-usage) und Bestimmen der Menge von Arbeitsspeicher, die von verschiedenen Komponenten, z. B. Pufferpool, Plancache, Columnstorepool, [In-Memory-OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017) usw., verwendet wird. Darüber hinaus sollten Sie die durchschnittlichen und maximalen Werte des Speicherleistungsindikators „Seitenlebenserwartung“ ermitteln.
+- [Überwachen der Arbeitsspeichernutzung in Ihrer SQL Server-Instanz](/sql/relational-databases/performance-monitor/monitor-memory-usage) und Bestimmen der Menge von Arbeitsspeicher, die von verschiedenen Komponenten, z. B. Pufferpool, Plancache, Columnstorepool, [In-Memory-OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage) usw., verwendet wird. Darüber hinaus sollten Sie die durchschnittlichen und maximalen Werte des Speicherleistungsindikators „Seitenlebenserwartung“ ermitteln.
 - Überwachen der Datenträger-E/A-Nutzung in der SQL Server-Instanz mit der [sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)-Sicht oder mit [Leistungsindikatoren](/sql/relational-databases/performance-monitor/monitor-disk-usage).
 - Überwachen der Workload- und Abfrageleistung in Ihrer SQL Server-Instanz durch Auswerten von dynamischen Verwaltungssichten oder „Abfragespeicher“, wenn Sie von SQL Server 2016 oder einer höheren Version migrieren. Ermitteln Sie die durchschnittliche Dauer und CPU-Nutzung für die wichtigsten Abfragen in Ihrer Workload, um die entsprechenden Werte mit denen der Abfragen zu vergleichen, die in der verwalteten Instanz ausgeführt werden.
 

@@ -4,10 +4,10 @@ description: Informationen zum Hinzufügen eines Artefakts zu einem virtuellen C
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85483889"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>Hinzufügen eines Artefakts zu einer VM
@@ -15,7 +15,7 @@ Beim Erstellen eines virtuellen Computers können Sie diesem vorhandene Artefakt
 
 Azure DevTest Labs-*Artefakte* ermöglichen Ihnen die Angabe von *Aktionen*, die ausgeführt werden, wenn der virtuelle Computer bereitgestellt wird, beispielsweise Ausführen von Windows PowerShell-Skripts, Ausführen von Bash-Befehlen und Installieren von Software. Mit *Parametern* für Artefakte können Sie das Artefakt für ein bestimmtes Szenario anpassen.
 
-Informationen zum Erstellen benutzerdefinierter Artefakte finden Sie im Artikel: [Erstellen benutzerdefinierter Artefakte](devtest-lab-artifact-author.md).
+Informationen zum Erstellen benutzerdefinierter Artefakte finden Sie im Artikel [Erstellen benutzerdefinierter Artefakte](devtest-lab-artifact-author.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -155,7 +155,7 @@ if ($virtualMachine -ne $null) {
 ## <a name="next-steps"></a>Nächste Schritte
 Entsprechende Informationen finden Sie in den folgenden Artikeln zu Artefakten:
 
-- [Angeben verbindlicher Artefakte für Ihr Lab](devtest-lab-mandatory-artifacts.md)
+- [Festlegen verbindlicher Artefakte für Ihr Lab](devtest-lab-mandatory-artifacts.md)
 - [Erstellen benutzerdefinierter Artefakte](devtest-lab-artifact-author.md)
 - [Hinzufügen eines Artefaktrepositorys zu einem Lab](devtest-lab-artifact-author.md)
 - [Diagnostizieren von Artefaktfehlern](devtest-lab-troubleshoot-artifact-failure.md)

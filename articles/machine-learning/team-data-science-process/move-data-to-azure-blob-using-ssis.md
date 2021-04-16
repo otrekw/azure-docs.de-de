@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9572d612e7ee8e2fd72850ba14447e8449f0f371
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93322005"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Verschieben Sie Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors.
@@ -42,8 +42,8 @@ Zum Ausführen der in diesem Artikel beschriebenen Aufgaben benötigen Sie ein e
 
 Zum Verwenden der **SSIS-Connectors** müssen Sie Folgendes herunterladen:
 
-* **SQL Server 2014 oder 2016 Standard (oder höher)** : Die Installation umfasst SQL Server Integration Services.
-* **Microsoft SQL Server 2014 oder 2016 Integration Services Feature Pack für Azure** : Diese Connectors können auf den Seiten [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) bzw. [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) heruntergeladen werden.
+* **SQL Server 2014 oder 2016 Standard (oder höher)**: Die Installation umfasst SQL Server Integration Services.
+* **Microsoft SQL Server 2014 oder 2016 Integration Services Feature Pack für Azure**: Diese Connectors können auf den Seiten [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) und [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) heruntergeladen werden.
 
 > [!NOTE]
 > SSIS wird mit SQL Server installiert, ist aber nicht in der Express-Version enthalten. Informationen dazu, welche Anwendungen in verschiedenen Editionen von SQL Server enthalten sind, finden Sie unter [SQL Server-Editionen](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/).

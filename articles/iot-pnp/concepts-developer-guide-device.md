@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 339ae9a0a799a0a03f1fcf37dadf2e1ffa724243
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0cca47269e632e1fcba1f8f9eb1c835f27e63059
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028681"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104582797"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>Leitfaden für IoT Plug & Play-Geräteentwickler
 
@@ -26,7 +26,7 @@ In dieser Anleitung werden die grundlegenden Schritte beschrieben, die zum Erste
 Führen Sie die folgenden Schritte aus, um ein IoT Plug & Play-Gerät, -Modul oder IoT Edge-Modul zu erstellen:
 
 1. Stellen Sie sicher, dass Ihr Gerät entweder das MQTT- oder das MQTT über WebSockets-Protokoll verwendet, um eine Verbindung mit Azure IoT Hub herzustellen.
-1. Erstellen Sie ein [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)-Modell zum Beschreiben Ihres Geräts. Weitere Informationen finden Sie unter [Verstehen der Komponenten in IoT Plug & Play-Modellen](concepts-components.md).
+1. Erstellen Sie ein [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)-Modell zum Beschreiben Ihres Geräts. Weitere Informationen finden Sie unter [Verstehen der Komponenten in IoT Plug & Play-Modellen](concepts-modeling-guide.md).
 1. Aktualisieren Sie Ihr Gerät oder Modul, um `model-id` als Teil der Geräteverbindung anzukündigen.
 1. Implementieren Sie Telemetrie, Eigenschaften und Befehle anhand der [IoT Plug & Play-Konventionen](concepts-convention.md).
 
@@ -69,6 +69,6 @@ Nachdem Sie sich mit der IoT Plug & Play-Geräteentwicklung vertraut gemacht hab
 - [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C-Geräte-SDK](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT-REST-API](/rest/api/iothub/device)
-- [Modellkomponenten](concepts-components.md)
+- [Verstehen der Komponenten in IoT Plug & Play-Modellen](concepts-modeling-guide.md)
 - [Installieren und Verwenden der DTDL-Erstellungstools](howto-use-dtdl-authoring-tools.md)
 - [Leitfaden für IoT Plug & Play-Dienstentwickler](concepts-developer-guide-service.md)

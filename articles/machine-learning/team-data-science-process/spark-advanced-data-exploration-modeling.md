@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b84b7387411e7df8e092a2e810591697319f9554
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 37f0b48190bcbad7ab190da1d690a1a0485501a1
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104774676"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259318"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Erweitertes Untersuchen und Modellieren von Daten mit Spark
 
@@ -37,7 +37,8 @@ Die Modelle, die wir verwenden, umfassen logistische und lineare Regression, Ran
 
 * [Lineare Regression mit SGD](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html#pyspark.mllib.regression.LinearRegressionWithSGD
 ) ist ein lineares Regressionsmodell, das eine SGD-Methode (Stochastic Gradient Descent, stochastisches Gradientenverfahren) zur Optimierung und Featureskalierung verwendet, um die gezahlten Trinkgeldbeträge vorherzusagen. 
-* [Logistische Regression mit LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) oder „Logit“-Regression ist ein Regressionsmodell, das verwendet werden kann, wenn die abhängige Variable für Datenklassifizierung kategorisch ist. LBFGS ist ein quasi-Newtonscher Optimierungsalgorithmus, der sich dem Broyden-Fletcher-Goldfarb-Shanno-Algorithmus (BFGS) unter Verwendung einer begrenzten Menge an Arbeitsspeicher annähert und häufig im Machine Learning verwendet wird.
+* [Logistische Regression mit LBFGS](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.classification.LogisticRegressionWithLBFGS.html
+) oder „Logit“-Regression ist ein Regressionsmodell, das verwendet werden kann, wenn die abhängige Variable für Datenklassifizierung kategorisch ist. LBFGS ist ein quasi-Newtonscher Optimierungsalgorithmus, der sich dem Broyden-Fletcher-Goldfarb-Shanno-Algorithmus (BFGS) unter Verwendung einer begrenzten Menge an Arbeitsspeicher annähert und häufig im Machine Learning verwendet wird.
 * [Random Forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forests werden für Regression und Klassifizierung genutzt, können Kategoriefeatures verarbeiten und in eine Klassifizierungseinstellung mit mehreren Klassen erweitert werden. Sie erfordern keine Featureskalierung und können Nichtlinearitäten und Interaktionen von Features erfassen. Random Forest zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
 * [Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) sind Gruppen von Entscheidungsstrukturen. GBTS trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTS werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
 
@@ -504,7 +505,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 Für die Ausführung der obigen Zelle benötigte Zeit: 0,31 Sekunden
 
 ### <a name="feature-scaling"></a>Featureskalierung
-Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (Stochastic Gradient Descent, SGD) bereitgestellt. SGD ist ein beliebter Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z.B. normalisierte Regressionen oder Support Vector Machines (SVM).   
+Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html
+) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (Stochastic Gradient Descent, SGD) bereitgestellt. SGD ist ein beliebter Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z.B. normalisierte Regressionen oder Support Vector Machines (SVM).   
 
 > [!TIP]
 > Wir haben festgestellt, dass der LinearRegressionWithSGD-Algorithmus für die Featureskalierung zu empfindlich ist.   

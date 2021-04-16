@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988966"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579449"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -138,7 +138,7 @@ Nach dem ersten Zyklus führen alle anderen Zyklen folgende Aktionen aus:
 Der Bereitstellungsdienst führt aufeinander folgende inkrementelle Zyklen in bestimmten (im [jeweiligen Anwendungstutorial](../saas-apps/tutorial-list.md) angegebenen) Intervallen aus. Die inkrementellen Zyklen werden ausgeführt, bis eines der folgenden Ereignisse auftritt:
 
 - Der Dienst wird mit dem Azure-Portal oder mit dem entsprechenden Microsoft Graph-API-Befehl manuell beendet.
-- Ein neuer erster Zyklus wird ausgelöst, indem im Azure-Portal die Option **Clear state and restart** (Status löschen und neu starten) oder der entsprechende Microsoft Graph-API-Befehl verwendet wird. Durch diese Aktion werden alle gespeicherten Grenzwerte gelöscht und alle Quellobjekte erneut ausgewertet.
+- Ein neuer erster Zyklus wird ausgelöst, indem im Azure-Portal die Option **Bereitstellung erneut starten** oder der entsprechende Microsoft Graph-API-Befehl verwendet wird. Durch diese Aktion werden alle gespeicherten Grenzwerte gelöscht und alle Quellobjekte erneut ausgewertet.
 - Ein neuer erster Zyklus wird aufgrund einer Änderung in den Attributzuordnungen oder Bereichsfiltern ausgelöst. Durch diese Aktion werden auch alle gespeicherten Grenzwerte gelöscht und alle Quellobjekte erneut ausgewertet.
 - Der Bereitstellungsprozess wird aufgrund einer hohen Fehlerrate in Quarantäne versetzt (siehe unten) und bleibt mehr als vier Wochen lang in Quarantäne. In diesem Fall wird der Dienst automatisch deaktiviert.
 

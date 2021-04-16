@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dbe06a9f2fff8abf59adbdfc9e41055c85e8f2c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291104"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889296"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Verschieben eines virtuellen Computers in ein anderes Abonnement oder eine andere Ressourcengruppe
 In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer (Virtual Machine, VM) zwischen Ressourcengruppen oder Abonnements verschieben. Das Verschieben einer VM zwischen Abonnements kann nützlich sein, wenn Sie eine VM in einem persönlichen Abonnement erstellt haben und sie nun in das Abonnement Ihres Unternehmens verschieben möchten.
@@ -38,6 +38,7 @@ Um eine VM erfolgreich verschieben zu können, müssen Sie die VM und alle unter
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
+Die Ausgabe von `table` ist nicht verfügbar, wenn Sie `--interactive` verwenden. Ändern Sie die Ausgabe in eine andere Option wie `json`.
 
 Verwenden Sie [az resource move](/cli/azure/resource), um einen virtuellen Computer und die dazugehörigen Ressourcen in eine andere Ressourcengruppe zu verschieben. Im folgenden Beispiel wird gezeigt, wie Sie eine VM und die wichtigsten Ressourcen dafür verschieben. Verwenden Sie den Parameter **-ids**, und übergeben Sie eine kommagetrennte Liste (ohne Leerstellen) mit IDs für die zu verschiebenden Ressourcen.
 

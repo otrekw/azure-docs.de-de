@@ -5,13 +5,13 @@ ms.author: jingwang
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: 38306b2fb3c0a51aeedbf1ebd9079dd787783093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 9c843ededd1fa863cc5eb4dc0db3a6da3478466d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364289"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104597520"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory
 
@@ -56,7 +56,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften für das Definieren 
 
 Folgende Eigenschaften werden für einen mit Azure Synapse Analytics verknüpften Dienst unterstützt:
 
-| Eigenschaft            | BESCHREIBUNG                                                  | Erforderlich                                                     |
+| Eigenschaft            | Beschreibung                                                  | Erforderlich                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | Die „type“-Eigenschaft muss auf **AzureSqlDW** festgelegt sein.             | Ja                                                          |
 | connectionString    | Geben Sie Informationen, die zur Verbindung mit der Instanz von Azure Synapse Analytics erforderlich sind, für die Eigenschaft **connectionString** ein. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort/den Dienstprinzipalschlüssel in Azure Key Vault speichern und bei Verwendung der SQL-Authentifizierung die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie im JSON-Beispiel unter der Tabelle und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja                                                          |
@@ -390,6 +390,7 @@ Legen Sie zum Kopieren von Daten in Azure Synapse Analytics den Senkentyp in der
 | preCopyScript     | Geben Sie eine SQL-Abfrage an, die bei jeder Ausführung von der Kopieraktivität ausgeführt werden soll, bevor Daten in Azure Synapse Analytics geschrieben werden. Sie können diese Eigenschaft nutzen, um vorab geladene Daten zu bereinigen. | Nein                                            |
 | tableOption | Gibt an, ob die [Senkentabelle auf Basis des Quellschemas automatisch erstellt werden soll](copy-activity-overview.md#auto-create-sink-tables), wenn sie nicht vorhanden ist. Zulässige Werte: `none` (Standard), `autoCreate`. |Nein |
 | disableMetricsCollection | Data Factory sammelt Metriken wie Azure Synapse Analytics-DWUs für die Leistungsoptimierung von Kopiervorgängen und Empfehlungen, wodurch zusätzlicher Zugriff auf die Masterdatenbank ermöglicht wird. Wenn Sie sich wegen dieses Verhaltens Gedanken machen, geben Sie `true` an, um es zu deaktivieren. | Nein (Standard = `false`) |
+| maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Beispiel für eine Azure Synapse Analytics-Senke
 
@@ -520,7 +521,7 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
    4. `nullValue` wird als Standardwert übernommen oder ist auf eine **leere Zeichenfolge** („“) festgelegt, und `treatEmptyAsNull` wird als Standardwert übernommen oder ist auf „true“ festgelegt.
    5. `encodingName` wird als Standardwert übernommen oder ist auf **utf-8** festgelegt.
    6. `quoteChar`, `escapeChar` und `skipLineCount` wurden nicht angegeben. PolyBase unterstützt das Überspringen der Kopfzeile, dies kann in ADF als `firstRowAsHeader` konfiguriert werden.
-   7. `compression` kann auf **keine Komprimierung** oder auf **Gzip** oder **Deflate** (Verkleinern) festgelegt sein.
+   7. `compression` kann auf **keine Komprimierung**, **``GZip``** oder **Deflate** (Verkleinern) festgelegt werden.
 
 3. Wenn es sich bei der Quelle um einen Ordner handelt, muss `recursive` in der Kopieraktivität auf „true“ festgelegt werden.
 
@@ -615,7 +616,7 @@ Um dieses Feature verwenden zu können, erstellen Sie einen [mit Azure Blob Stor
 
 ### <a name="best-practices-for-using-polybase"></a>Bewährte Methoden für die Verwendung von PolyBase
 
-Die folgenden Abschnitte enthalten bewährte Methoden zusätzlich zu den in [Bewährte Methoden für Azure Synapse Analytics](../synapse-analytics/sql/best-practices-sql-pool.md) aufgeführten Methoden.
+Die folgenden Abschnitte enthalten bewährte Methoden zusätzlich zu den in [Bewährte Methoden für Azure Synapse Analytics](../synapse-analytics/sql/best-practices-dedicated-sql-pool.md) aufgeführten Methoden.
 
 #### <a name="required-database-permission"></a>Erforderliche Datenbankberechtigungen
 
@@ -709,7 +710,7 @@ Das Verwenden der COPY-Anweisung unterstützt die folgende Konfiguration:
 
 2. Die Formateinstellungen lauten folgendermaßen:
 
-   1. Bei **Parquet**: `compression` kann auf **Keine Komprimierung**, **Snappy** oder **GZip** festgelegt sein.
+   1. Bei **Parquet**: `compression` kann auf **Keine Komprimierung**, **Snappy** oder **``GZip``** festgelegt werden.
    2. Bei **ORC**: kann `compression` auf **Keine Komprimierung**, **```zlib```** oder **Snappy** festgelegt sein.
    3. Bei **Text mit Trennzeichen**:
       1. `rowDelimiter` ist explizit festgelegt auf **einzelnes Zeichen** oder **\r\n**. Der Standardwert wird nicht unterstützt.
@@ -717,7 +718,7 @@ Das Verwenden der COPY-Anweisung unterstützt die folgende Konfiguration:
       3. `encodingName` wird als Standardwert übernommen oder ist auf **utf-8 oder utf-16** festgelegt.
       4. `escapeChar` muss `quoteChar` entsprechen und darf nicht leer sein.
       5. `skipLineCount` wird als Standardwert übernommen oder ist auf 0 festgelegt.
-      6. `compression` kann auf **Keine Komprimierung** oder **GZip** festgelegt sein.
+      6. `compression` kann auf **keine Komprimierung** oder **``GZip``** festgelegt werden.
 
 3. Wenn es sich bei der Quelle um einen Ordner handelt, muss `recursive` beim Kopiervorgang auf „TRUE“ festgelegt sein, und `wildcardFilename` muss `*` sein. 
 
@@ -725,7 +726,7 @@ Das Verwenden der COPY-Anweisung unterstützt die folgende Konfiguration:
 
 Die folgenden Einstellungen der COPY-Anweisung werden unter `allowCopyCommand` in der Kopieraktivität unterstützt:
 
-| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich                                      |
+| Eigenschaft          | Beschreibung                                                  | Erforderlich                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | defaultValues | Gibt die Standardwerte für die einzelnen Zielspalten in Azure Synapse Analytics an.  Die Standardwerte in der Eigenschaft überschreiben die in Data Warehouse festgelegte DEFAULT-Einschränkung, und die Identitätsspalte darf keinen Standardwert haben. | Nein |
 | additionalOptions | Zusätzliche Optionen, die direkt in der WITH-Klausel in der [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql) an eine COPY-Anweisung in Azure Synapse Analytics übergeben werden. Geben Sie den Wert so an, wie er gemäß den Anforderungen der COPY-Anweisung erforderlich ist. | Nein |
@@ -821,7 +822,7 @@ Spezifische Einstellungen für Azure Synapse Analytics sind auf der Registerkart
 - Neu erstellen: Die Tabelle wird gelöscht und neu erstellt. Erforderlich, wenn eine neue Tabelle dynamisch erstellt wird.
 - Abschneiden: Alle Zeilen werden aus der Zieltabelle entfernt.
 
-**Enable staging:** (Staging aktivieren:) Ermittelt, ob [PolyBase](/sql/relational-databases/polybase/polybase-guide) beim Schreiben in Azure Synapse Analytics verwendet werden soll. Der Stagingspeicher wird unter [Datenflussaktivität in Azure Data Factory](control-flow-execute-data-flow-activity.md) konfiguriert. 
+**Staging aktivieren:** Dies ermöglicht das Laden in Azure Synapse Analytics-SQL-Pools mithilfe des Kopierbefehls, was für die meisten Synapse-Senken empfohlen wird. Der Stagingspeicher wird unter [Datenflussaktivität in Azure Data Factory](control-flow-execute-data-flow-activity.md) konfiguriert. 
 
 - Wenn Sie die Authentifizierung per verwalteter Identität für den mit dem Speicher verknüpften Dienst verwenden, machen Sie sich jeweils mit den erforderlichen Konfigurationen für [Azure Blob](connector-azure-blob-storage.md#managed-identity) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) vertraut.
 - Wenn Ihre Azure Storage-Instanz mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität mit für das Speicherkonto aktivierter Option „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).

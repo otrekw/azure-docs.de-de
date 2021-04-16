@@ -5,14 +5,14 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 24a38fde3d1b6bbe1efef9241458da846c186112
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fadb679260582a788eb6408ff3761f00c2ceb1a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97916336"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448824"
 ---
 # <a name="playback-technology-tech"></a>Wiedergabetechnologie („Technologie“) #
 
@@ -21,7 +21,7 @@ Der Begriff „Wiedergabetechnologie“ bezieht sich auf die spezifische Browser
 - **azureHtml5JS**: Nutzt MSE- und EME-Standards in Kombination mit dem Videoelement für eine Plug-In-freie Wiedergabe von DASH-Inhalten mit Unterstützung von Inhalten mit AES-128-Bit-Umschlagsverschlüsselung oder allgemeiner DRM-Verschlüsselung (über PlayReady und Widevine, sofern vom Browser unterstützt) über Azure Media Services.
 - **flashSS**: Nutzt Flash Player-Technologie für die Wiedergabe von Smooth-Inhalten mit Unterstützung von AES-128-Bit-Umschlagsentschlüsselung über Azure Media Services (mindestens Flash-Version 11.4 erforderlich).
 - **html5FairPlayHLS**: Nutzt Safari-spezifische browserbasierte Wiedergabetechnologie über HLS mit dem Videoelement. Diese Technologie ist für die Wiedergabe von FairPlay-geschützten Inhalten über Azure Media Services erforderlich und wurde der Technologiereihenfolge am 19.10.2016 hinzugefügt.
-- **silverlightSS**: Nutzt Silverlight-Technologie für die Wiedergabe von Smooth-Inhalten mit Unterstützung von PlayReady-geschützten Inhalten über Azure Media Services.
+- **silverlightSS**: Nutzt Silverlight-Technologie für die Wiedergabe von Smooth-Inhalten mit Unterstützung von PlayReady-geschützten Inhalten über Azure Media Services.
 - **html5**: Nutzt browserbasierte Wiedergabetechnologie mit dem Videoelement.  Bei Apple iOS-oder Android-Geräten ermöglicht diese Technologie die Wiedergabe von HLS-Datenströmen mit grundlegender Unterstützung von AES-128-Bit-Umschlagverschlüsselung oder DRM-Inhalten (über FairPlay, sofern vom Browser unterstützt).
 
 ## <a name="tech-order"></a>Technologiereihenfolge ##
@@ -45,16 +45,16 @@ Angesichts der empfohlenen Technologiereihenfolge für das Streamen von Inhalten
 | Browser        | Betriebssystem                                                       | Erwartete Technologie (unverschlüsselt)  | Erwartete Technologie (AES)  | Erwartete Technologie (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
 | Microsoft Edge, IE 11      | Windows 10, Windows 8.1, Windows Phone 10<sup>1</sup>               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
-| IE 11          | Windows 7, Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| IE 11          | Windows 7, Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | SilverlightSS (PlayReady)    |
 | IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | Nicht unterstützt                |
 | Microsoft Edge           | Xbox One<sup>1</sup> (Update von Nov 2015)                   | azureHtml5JS           | azureHtml5JS         | Nicht unterstützt                |
 | Chrome ab Version 37     | Windows 10, Windows 8.1, macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
 | Firefox ab Version 47    | Windows 10, Windows 8.1, macOS X ab Yosemite<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Firefox 42–46  | Windows 10, Windows 8.1, macOS X ab Yosemite<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | silverlightSS (PlayReady)    |
-| Firefox 35–41  | Windows 10, Windows 8.1                                  | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| Firefox 42–46  | Windows 10, Windows 8.1, macOS X ab Yosemite<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | SilverlightSS (PlayReady)    |
+| Firefox 35–41  | Windows 10, Windows 8.1                                  | flashSS                | flashSS              | SilverlightSS (PlayReady)    |
 | Safari         | iOS ab Version 6                                                   | html5                  | html5 (ohne Token)³    | Nicht unterstützt                |
 | Safari ab Version 8      | OS X ab Yosemite                                           | azureHtml5JS           | azureHtml5JS         | html5FairPlayHLS (FairPlay)  |
-| Safari 6       | OS X Mountain Lion<sup>1</sup>                           | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| Safari 6       | OS X Mountain Lion<sup>1</sup>                           | flashSS                | flashSS              | SilverlightSS (PlayReady)    |
 | Chrome ab Version 37     | Android ab Version 4.4.4<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
 | Chrome ab Version 37     | Android 4.02                                             | html5                  | html5 (ohne Token)<sup>3</sup>    | Nicht unterstützt                |
 | Firefox ab Version 42    | Android ab Version 5.0<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | Nicht unterstützt                |

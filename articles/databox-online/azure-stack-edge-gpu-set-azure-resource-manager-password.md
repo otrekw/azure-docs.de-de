@@ -8,29 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 62417b575e142d044e599249a529328a41c9b8d7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: a2167d573871481c99b755fc713e18543d74c5bf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102637301"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104602677"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Festlegen eines Azure Resource Manager-Kennworts auf einem Azure Stack Edge Pro-GPU-Gerät
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Ihr Azure Resource Manager-Kennwort festlegen. Sie müssen dieses Kennwort festlegen, wenn Sie sich über den Azure Resource Manager mit den lokalen APIs des Geräts verbinden.
+In diesem Artikel wird beschrieben, wie Sie Ihr Azure Resource Manager-Kennwort festlegen. Sie müssen dieses Kennwort festlegen, wenn Sie sich [über den Azure Resource Manager mit den lokalen APIs des Geräts verbinden](azure-stack-edge-gpu-connect-resource-manager.md). 
 
 <!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Zurücksetzen des Kennworts im Azure-Portal
 
-1. Wechseln Sie im Azure-Portal zur Azure Stack Edge-Ressource, die Sie zum Verwalten Ihres Geräts erstellt haben. Wechseln Sie zu **Edge-Dienste > Cloudspeichergateway**.
+1. Wechseln Sie im Azure-Portal zur Azure Stack Edge-Ressource, die Sie zum Verwalten Ihres Geräts erstellt haben. 
 
-    ![EdgeARM-Kennwort zurücksetzen 1](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-1.png)
-
-2. Wählen Sie im rechten Bereich auf der Befehlsleiste **EdgeARM-Kennwort zurücksetzen** aus. 
+2. Wechseln Sie zu **Eigenschaften**. Wählen Sie im rechten Bereich auf der Befehlsleiste **EdgeARM-Kennwort zurücksetzen** aus. 
 
     ![EdgeARM-Kennwort zurücksetzen 2](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-2.png)
 

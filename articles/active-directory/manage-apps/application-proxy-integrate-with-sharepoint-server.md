@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b5895d016e2d9d9b471218bc083ea7585254b45
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99258680"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy
@@ -51,15 +51,15 @@ In diesem Artikel werden folgende Werte verwendet:
 - Externe URL: `https://spsites-demo1984.msappproxy.net/`
 - Anwendungspoolkonto für die SharePoint-Webanwendung: `Contoso\spapppool`
 
-## <a name="step-1-configure-an-application-in-azure-ad-that-uses-application-proxy"></a>Schritt 1: Konfigurieren einer Anwendung in Azure AD, die den Anwendungsproxy verwendet
+## <a name="step-1-configure-an-application-in-azure-ad-that-uses-application-proxy"></a>Schritt 1: Konfigurieren einer Anwendung in Azure AD, die den Anwendungsproxy verwendet
 
 In diesem Schritt wird in Ihrem Azure Active Directory-Mandanten eine Anwendung erstellt, die den Anwendungsproxy verwendet. Sie legen die externe URL fest und geben die interne URL an. Beide werden später in SharePoint verwendet.
 
 1. Erstellen Sie die App mit den folgenden Einstellungen gemäß der Beschreibung. Eine ausführliche Anleitung finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
-   * **Interne URL:** Interne SharePoint-URL, die später in SharePoint festgelegt wird (Beispiel: `https://sharepoint`).
-   * **Vorauthentifizierung:** Azure Active Directory
-   * **Übersetzen von URLs in Headern**: Nein
-   * **URLs übersetzen in Anwendungstext:** Nein
+   * **Interne URL**: Interne SharePoint-URL, die später in SharePoint festgelegt wird (Beispiel: `https://sharepoint`).
+   * **Vorauthentifizierung**: Azure Active Directory
+   * **URLs übersetzen in Headern**: Nein
+   * **URLs übersetzen in Anwendungstext**: Nein
 
    ![Veröffentlichen von SharePoint als Anwendung](./media/application-proxy-integrate-with-sharepoint-server/publish-app.png)
 
@@ -74,7 +74,7 @@ In diesem Schritt wird in Ihrem Azure Active Directory-Mandanten eine Anwendun
 
 1. Zum Abschluss der Anwendungseinrichtung wechseln Sie zum Abschnitt **Benutzer und Gruppen**. Weisen Sie dort Benutzer zu, die Zugriff auf diese Anwendung erhalten. 
 
-## <a name="step-2-configure-the-sharepoint-web-application"></a>Schritt 2: Konfigurieren der SharePoint-Webanwendung
+## <a name="step-2-configure-the-sharepoint-web-application"></a>Schritt 2: Konfigurieren der SharePoint-Webanwendung
 
 Die SharePoint-Webanwendung muss mit Kerberos und den entsprechenden alternativen Zugriffszuordnungen konfiguriert werden, damit sie ordnungsgemäß mit dem Azure AD-Anwendungsproxy funktioniert. Es gibt zwei mögliche Optionen:
 
@@ -165,7 +165,7 @@ Da die interne URL das HTTPS-Protokoll (`https://SharePoint/`) verwendet, muss a
 
 Nun können Sie extern über den Azure AD-Anwendungsproxy auf die SharePoint-Website zugreifen.
 
-## <a name="step-3-configure-kerberos-constrained-delegation"></a>Schritt 3: Konfigurieren der eingeschränkten Kerberos-Delegierung
+## <a name="step-3-configure-kerberos-constrained-delegation"></a>Schritt 3: Konfigurieren der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation)
 
 Benutzer authentifizieren sich zunächst bei Azure AD und dann bei SharePoint, wobei diese Authentifizierung mithilfe von Kerberos über den Azure AD-Proxyconnector erfolgt. Damit der Connector ein Kerberos-Token im Namen des Azure AD-Benutzers abrufen kann, muss die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) mit Protokollübergang konfiguriert werden. Weitere Informationen zu KCD finden Sie in der [Übersicht über die eingeschränkte Kerberos-Delegierung](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11)).
 
@@ -198,7 +198,7 @@ Nun können Sie sich unter Verwendung der externen URL bei SharePoint anmelden u
 
 ## <a name="troubleshoot-sign-in-errors"></a>Beheben von Anmeldefehlern
 
-Sollte die Anmeldung bei der Website nicht funktionieren, finden Sie weitere Informationen zum Problem in den Connectorprotokollen: Öffnen Sie die Ereignisanzeige auf dem Computer, auf dem der Connector ausgeführt wird, navigieren Sie zu **Anwendungs- und Dienstprotokolle** > **Microsoft** > **AadApplicationProxy** > **Connector**, und überprüfen Sie das Protokoll **Admin**.
+Wenn die Anmeldung bei der Site nicht funktioniert, finden Sie in den Connector-Protokollen weitere Informationen zu dem Problem: Öffnen Sie die Ereignisanzeige auf dem Computer, auf dem der Connector ausgeführt wird, navigieren Sie zu **Anwendungs- und Dienstprotokolle** > **Microsoft** > **AadApplicationProxy** > **Connector**, und überprüfen Sie das **Admin**-Protokoll.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

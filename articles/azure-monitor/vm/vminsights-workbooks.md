@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: bebe9424df24792f7450620657c5e2da5f08196a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 695aa760d554946883f72692f0bed1babad933b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046515"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568799"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Erstellen interaktiver Berichte in VM Insights mit Arbeitsmappen
 
@@ -27,15 +27,15 @@ In der folgenden Tabelle sind die Arbeitsmappen zusammengefasst, die VM Insights
 
 | Arbeitsmappe | BESCHREIBUNG | `Scope` |
 |----------|-------------|-------|
-| Leistung | Eine anpassbare Version unserer Top-N-Liste und der Diagrammansicht in einer einzelnen Arbeitsmappe, die alle von Ihnen aktivierten Log Analytics-Leistungsindikatoren nutzt.| Skalierbar |
-| Leistungsindikatoren | Eine Top-N-Diagrammansicht für ein breites Spektrum von Leistungsindikatoren. | Skalierbar |
-| Verbindungen | Eine detaillierte Darstellung der ein- und ausgehenden Verbindungen Ihrer überwachten virtuellen Computer. | Skalierbar |
-| Aktive Ports | Eine Liste der Prozesse, die an die Ports der überwachten virtuellen Computer gebunden sind, und ihrer Aktivität innerhalb des ausgewählten Zeitrahmens. | Skalierbar |
-| Offene Ports | Die Anzahl geöffneter Ports Ihrer überwachten virtuellen Computer sowie Details zu diesen geöffneten Ports. | Skalierbar |
-| Verbindungsfehler | Die Anzahl von Verbindungsfehlern für Ihre überwachten virtuellen Computer, der Fehlertrend sowie die Angabe, ob sich der Prozentsatz an Fehlern im Laufe der Zeit erhöht. | Skalierbar |
-| Security and Audit | Eine Analyse Ihres TCP/IP-Datenverkehrs mit Informationen zu Verbindungen im Allgemeinen, zu schädlichen Verbindungen sowie dazu, wo sich die IP-Endpunkte global befinden.  Wenn Sie alle Features aktivieren möchten, müssen Sie die Sicherheitserkennung aktivieren. | Skalierbar |
-| TCP-Datenverkehr | Ein Bericht mit einer Rangfolge Ihrer überwachten virtuellen Computer und ihrem gesendeten, empfangenen und gesamten Netzwerkdatenverkehr in einem Raster und als Trendlinie. | Skalierbar |
-| Vergleich von Datenverkehr | Diese Arbeitsmappe ermöglicht den Vergleich von Trends beim Netzwerkdatenverkehr eines einzelnen Computers oder einer Gruppe von Computern. | Skalierbar |
+| Leistung | Eine anpassbare Version unserer Top-N-Liste und der Diagrammansicht in einer einzelnen Arbeitsmappe, die alle von Ihnen aktivierten Log Analytics-Leistungsindikatoren nutzt.| Mehrere VMs |
+| Leistungsindikatoren | Eine Top-N-Diagrammansicht für ein breites Spektrum von Leistungsindikatoren. | Mehrere VMs |
+| Verbindungen | Eine detaillierte Darstellung der ein- und ausgehenden Verbindungen Ihrer überwachten virtuellen Computer. | Mehrere VMs |
+| Aktive Ports | Eine Liste der Prozesse, die an die Ports der überwachten virtuellen Computer gebunden sind, und ihrer Aktivität innerhalb des ausgewählten Zeitrahmens. | Mehrere VMs |
+| Offene Ports | Die Anzahl geöffneter Ports Ihrer überwachten virtuellen Computer sowie Details zu diesen geöffneten Ports. | Mehrere VMs |
+| Verbindungsfehler | Die Anzahl von Verbindungsfehlern für Ihre überwachten virtuellen Computer, der Fehlertrend sowie die Angabe, ob sich der Prozentsatz an Fehlern im Laufe der Zeit erhöht. | Mehrere VMs |
+| Security and Audit | Eine Analyse Ihres TCP/IP-Datenverkehrs mit Informationen zu Verbindungen im Allgemeinen, zu schädlichen Verbindungen sowie dazu, wo sich die IP-Endpunkte global befinden.  Wenn Sie alle Features aktivieren möchten, müssen Sie die Sicherheitserkennung aktivieren. | Mehrere VMs |
+| TCP-Datenverkehr | Ein Bericht mit einer Rangfolge Ihrer überwachten virtuellen Computer und ihrem gesendeten, empfangenen und gesamten Netzwerkdatenverkehr in einem Raster und als Trendlinie. | Mehrere VMs |
+| Vergleich von Datenverkehr | Diese Arbeitsmappe ermöglicht den Vergleich von Trends beim Netzwerkdatenverkehr eines einzelnen Computers oder einer Gruppe von Computern. | Mehrere VMs |
 | Leistung | Eine anpassbare Version unserer Leistungsansicht, die alle von Ihnen aktivierten Log Analytics-Leistungsindikatoren nutzt. | Einzelne VM | 
 | Verbindungen | Eine detaillierte Darstellung der ein- und ausgehenden Verbindungen Ihrer virtuellen Computer. | Einzelne VM |
  
@@ -103,13 +103,13 @@ Jeder Abschnitt verfügt über eigene erweiterte Einstellungen, auf die über da
 
 ![Screenshot: Dialogfeld „Erweiterte Einstellungen“ im Abschnitt für die Virtual Machines-Arbeitsmappe von Azure Monitor. Das Symbol, mit dem das Dialogfeld geöffnet wird, ist hervorgehoben.](media/vminsights-workbooks/007-settings-expanded.png)
 
-|         |          |
+| Einstellung | Beschreibung |
 | ---------------- |:-----|
-| **Benutzerdefinierte Breite**    | Legt ein Element auf eine beliebige Größe fest. Dadurch können Sie zahlreiche Elemente in einer einzelnen Zeile platzieren und Ihre Diagramme und Tabellen besser als umfassende interaktive Berichte strukturieren.  |
-| **Bedingt sichtbar** | Verwenden Sie diese Option, um Schritte im Lesemodus auf der Grundlage eines Parameters auszublenden. |
-| **Parameter exportieren**| Mit dieser Option können durch Auswählen einer Zeile im Raster oder Diagramm die Werte späterer Schritte geändert oder spätere Schritte sichtbar gemacht werden.  |
-| **Abfrage anzeigen, wenn keine Bearbeitung erfolgt** | Zeigt die Abfrage oberhalb des Diagramms oder der Tabelle an, auch wenn der Lesemodus aktiv ist.
-| **Schaltfläche „In Analyse öffnen“ anzeigen, wenn gerade keine Bearbeitung erfolgt** | Fügt in der rechten Ecke des Diagramms das blaue Analytics-Symbol hinzu, um mit einem Klick auf Analytics zugreifen zu können.|
+| Benutzerdefinierte Breite für dieses Element festlegen    | Legt ein Element auf eine beliebige Größe fest. Dadurch können Sie zahlreiche Elemente in einer einzelnen Zeile platzieren und Ihre Diagramme und Tabellen besser als umfassende interaktive Berichte strukturieren.  |
+| Dieses Element bedingt sichtbar machen | Verwenden Sie diese Option, um Schritte im Lesemodus auf der Grundlage eines Parameters auszublenden. |
+| Bei Auswahl eines Elements Parameter exportieren| Mit dieser Option können durch Auswählen einer Zeile im Raster oder Diagramm die Werte späterer Schritte geändert oder spätere Schritte sichtbar gemacht werden.  |
+| Abfrage anzeigen, wenn keine Bearbeitung erfolgt | Zeigt die Abfrage oberhalb des Diagramms oder der Tabelle an, auch wenn der Lesemodus aktiv ist.
+| Schaltfläche „In Analyse öffnen“ anzeigen, wenn gerade keine Bearbeitung erfolgt | Fügt in der rechten Ecke des Diagramms das blaue Analytics-Symbol hinzu, um mit einem Klick auf Analytics zugreifen zu können.|
 
 Die meisten dieser Einstellungen sind recht intuitiv, aber um **Parameter exportieren** zu verstehen, ist es besser, eine Arbeitsmappe zu untersuchen, diese Funktionalität verwendet.
 
@@ -152,12 +152,12 @@ Parameter sind linear, beginnen am Anfang einer Arbeitsmappe und fließen nach u
  
 Aktuell werden vier verschiedene Arten von Parametern unterstützt:
 
-|                  |      |
+| Parameter | BESCHREIBUNG |
 | ---------------- |:-----|
-| **Text**    | Ermöglicht es dem Benutzer, ein Textfeld zu bearbeiten. Sie können optional eine Abfrage bereitstellen, um den Standardwert einzutragen. |
-| **Dropdown** | Ermöglicht es dem Benutzer, aus einer Gruppe von Werten zu wählen. |
-| **Zeitbereichsauswahl**| Ermöglicht es dem Benutzer, aus einem vordefinierten Satz von Zeitbereichswerten oder aus einem benutzerdefinierten Zeitbereich zu wählen.|
-| **Ressourcenauswahl** | Ermöglicht es dem Benutzer, aus den für die Arbeitsmappe ausgewählten Ressourcen zu wählen.|
+| Text    | Ermöglicht es dem Benutzer, ein Textfeld zu bearbeiten. Sie können optional eine Abfrage bereitstellen, um den Standardwert einzutragen. |
+| Dropdown | Ermöglicht es dem Benutzer, aus einer Gruppe von Werten zu wählen. |
+| Zeitbereichsauswahl| Ermöglicht es dem Benutzer, aus einem vordefinierten Satz von Zeitbereichswerten oder aus einem benutzerdefinierten Zeitbereich zu wählen.|
+| Ressourcenauswahl | Ermöglicht es dem Benutzer, aus den für die Arbeitsmappe ausgewählten Ressourcen zu wählen.|
 
 ### <a name="using-a-text-parameter"></a>Verwenden eines Textparameters
 

@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 26c158145de6ce729d8a7060152b19fb14b63d58
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95561962"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Vorbereiten der Authentifizierung von Anforderungen von Azure Resource Manager
@@ -42,8 +42,8 @@ Die folgenden Schritte zeigen, wie Sie die Kennwortauthentifizierung für eine A
    
    * **{Display name}:** ein Anzeigename für Ihre Anwendung, z.B. **MySampleApp**.
    * **{Home page URL}:** Die URL der Startseite der App, z. B. **http:\//mysampleapp/home**. Diese URL muss nicht auf eine echte Anwendung verweisen.
-   * **{Anwendungs-ID}:** Ein eindeutiger Bezeichner, z. B. **http:\//mysampleapp**. Diese URL muss nicht auf eine echte Anwendung verweisen.
-   * **{Kennwort}:** Ein Kennwort, das Sie zur Authentifizierung mit Ihrer App verwenden werden.
+   * **{Application identifier}:** Ein eindeutiger Bezeichner, z. B. **http:\//meinebeispielapp**. Diese URL muss nicht auf eine echte Anwendung verweisen.
+   * **{Password}:** Ein Kennwort, das Sie zur Authentifizierung mit Ihrer App verwenden werden.
      
      ```powershell
      $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force

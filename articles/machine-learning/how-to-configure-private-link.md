@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 6fd497e0bc0fd282d57779c483f1e39e8f5ab60a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 92b5283e5779cc79ce0a745190b57884a6ca0f7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505476"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056010"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurieren von Azure Private Link für einen Azure Machine Learning-Arbeitsbereich
 
@@ -175,7 +175,7 @@ Weitere Informationen zu Azure Virtual Machines finden Sie in der [Dokumentation
 Es kann Situationen geben, in denen Sie jemandem ermöglichen möchten, eine Verbindung mit Ihrem geschützten Arbeitsbereich über einen öffentlichen Endpunkt (anstatt über das VNET) herzustellen. Nachdem Sie einen Arbeitsbereich mit einem privaten Endpunkt konfiguriert haben, können Sie optional den öffentlichen Zugriff auf den Arbeitsbereich aktivieren. Dadurch wird der private Endpunkt nicht entfernt. Die gesamte Kommunikation zwischen Komponenten hinter dem VNET ist weiterhin geschützt. Der öffentliche Zugriff wird nur für den Arbeitsbereich ermöglicht (zusätzlich zum privaten Zugriff über das VNET).
 
 > [!WARNING]
-> Bei der Verbindungsherstellung über den öffentlichen Endpunkt haben einige Features von Studio keinen Zugriff auf Ihre Daten. Dieses Problem tritt auf, wenn die Daten in einem Dienst gespeichert werden, der hinter dem VNet geschützt ist. Dies gilt z. B. für ein Azure Storage-Konto.
+> Bei der Verbindungsherstellung über den öffentlichen Endpunkt haben einige Features von Studio keinen Zugriff auf Ihre Daten. Dieses Problem tritt auf, wenn die Daten in einem Dienst gespeichert werden, der hinter dem VNet geschützt ist. Dies gilt z. B. für ein Azure Storage-Konto. Beachten Sie bitte auch die Compute-Instanz jupyter/jupyterlab/rstudio-Funktionalität, und dass das Ausführen von Notebooks nicht funktioniert.
 
 Führen Sie die folgenden Schritte aus, um den öffentlichen Zugriff auf einen Arbeitsbereich mit aktivierter privater Verbindung zu ermöglichen:
 

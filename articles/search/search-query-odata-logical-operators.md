@@ -20,19 +20,19 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 27d5427d34de591f9cfeab2310d79a2fde217624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88917872"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logische OData-Operatoren in der kognitiven Azure-Suche: `and`, `or`, `not`
 
 [OData-Filterausdrücke](query-odata-filter-orderby-syntax.md) in der kognitiven Azure-Suche sind boolesche Ausdrücke, die in `true` oder `false` ausgewertet werden. Sie können einen komplexen Filter schreiben, indem Sie eine Reihe von [einfacheren Filtern](search-query-odata-comparison-operators.md) erstellen und diese dann mit den logischen Operatoren aus [boolescher Algebra](https://en.wikipedia.org/wiki/Boolean_algebra) zusammensetzen:
 
-- `and`: Ein binärer Operator, der in `true` auswertet wird, wenn sowohl seine linken als auch seine rechten Unterausdrücke in `true` ausgewertet werden.
-- `or`: Ein binärer Operator, der in `true` auswertet wird, wenn einer seiner linken oder rechten Unterausdrücke in `true` ausgewertet wird.
-- `not`: Ein unärer Operator, der in `true` ausgewertet wird, wenn sein Unterausdruck in `false` ausgewertet wird, und umgekehrt.
+- `and`: Ein binärer Operator, der als `true` ausgewertet wird, wenn sein linker und rechter Unterausdruck als `true` ausgewertet werden.
+- `or`: Ein binärer Operator, der als `true` ausgewertet wird, wenn sein linker oder rechter Unterausdruck als `true` ausgewertet wird.
+- `not`: Ein unärer Operator, der als `true` ausgewertet wird, wenn sein Unterausdruck als `false` ausgewertet wird, und umgekehrt.
 
 Diese Operatoren ermöglichen es Ihnen zusammen mit den [Sammlungsoperatoren`any` und `all`](search-query-odata-collection-operators.md), Filter zu erstellen, die sehr komplexe Suchkriterien ausdrücken können.
 

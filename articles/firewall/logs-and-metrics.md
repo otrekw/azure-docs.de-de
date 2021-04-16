@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/16/2021
+ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 8922e6e0d5137a3a900e0f57f685d449c08b3f47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4514717274cfb66fbfc0eee25b09aa9e1234ffad
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596955"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280325"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-Protokolle und -Metriken
 
@@ -181,6 +181,8 @@ Für Azure Firewall sind folgende Metriken verfügbar:
     Einheit: Prozent
 
    Wenn Sie der Firewall weitere öffentliche IP-Adressen hinzufügen, sind zusätzliche SNAT-Ports verfügbar, wodurch die Auslastung der SNAT-Ports reduziert wird. Wenn die Firewall aus unterschiedlichen Gründen horizontal hochskaliert wird (z. B. CPU oder Durchsatz), sind ebenfalls zusätzliche SNAT-Ports verfügbar. Ein bestimmter Prozentsatz der SNAT-Portnutzung kann sich also effektiv verringern, ohne dass Sie öffentliche IP-Adressen hinzufügen, sondern nur weil der Dienst horizontal hochskaliert wurde. Sie können die Anzahl der verfügbaren öffentlichen IP-Adressen direkt steuern, um die für die Firewall verfügbaren Ports zu erhöhen. Die Firewallskalierung können Sie jedoch nicht direkt steuern.
+
+   Wenn bei der Firewall eine SNAT-Portauslastung auftritt, sollten Sie mindestens fünf öffentliche IP-Adressen hinzufügen. Dadurch wird die Anzahl der verfügbaren SNAT-Ports erhöht. Weitere Informationen finden Sie unter [Azure Firewall-Features](features.md#multiple-public-ip-addresses).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

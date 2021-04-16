@@ -10,12 +10,12 @@ ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 51e73222233602491b0c8ed3835d032610c68e0d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802506"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104722785"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)
 
@@ -181,6 +181,9 @@ Mit den folgenden Empfehlungen für die Verwendung von Shared Access Signatures 
 - **Informieren Sie sich darüber, wann keine SAS verwendet wird.** Manchmal überwiegen die Risiken eines bestimmten Vorgangs für Ihr Speicherkonto gegenüber den Vorzügen der Verwendung einer SAS. Für solche Operation sollten Sie einen Dienst auf der mittleren Ebene erstellen, der zunächst Geschäftsregeln validiert sowie Authentifizierung und Überwachung durchführt und die Daten anschließend in Ihr Speicherkonto schreibt. Manchmal gibt es auch einfachere Möglichkeiten der Zugriffsverwaltung. Wenn Sie beispielsweise alle Blobs in einem Container öffentlich lesbar machen möchten, können Sie auch den Container öffentlich machen, anstatt jedem Client für den Zugriff eine SAS zu geben.
 
 - **Verwenden Sie Azure Monitor- und Azure Storage-Protokolle, um Ihre Anwendung zu überwachen.** Autorisierungsfehler können aufgrund eines Ausfalls Ihres SAS-Anbieterdiensts auftreten. Sie können auch durch versehentliches Entfernen einer gespeicherten Zugriffsrichtlinie entstehen. Sie können Azure Monitor und die Protokollierung der Speicheranalyse verwenden, um bei dieser Art von Autorisierungsfehlern etwaige Spitzen zu beobachten. Weitere Informationen finden Sie unter [Azure Storage-Metriken in Azure Monitor](../blobs/monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) und [Azure Storage Analytics-Protokollierung](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+> [!NOTE]
+> Die Anzahl der für ein Speicherkonto generierten Shared Access Signatures wird nicht nachverfolgt, und diese Information kann von keiner API bereitgestellt werden. Sie müssen die Anzahl der für ein Speicherkonto generierten Shared Access Signatures manuell nachverfolgen, wenn Sie diese kennen müssen.
 
 ## <a name="get-started-with-sas"></a>Erste Schritte mit SAS
 

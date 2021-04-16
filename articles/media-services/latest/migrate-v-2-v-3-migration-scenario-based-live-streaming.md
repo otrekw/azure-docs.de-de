@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6a2c6495ca3685aec1bc132ec7f8a88809ad2d87
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d021267c38f0043d2361b1a6392fbacd0634a164
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598285"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279696"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Szenariobasierter Migrationsleitfaden für das Livestreaming
 
@@ -35,12 +35,12 @@ Der Azure-Portal unterstützt jetzt die Einrichtung und Verwaltung von Liveereig
 
 Testen Sie die neue Übertragungsmethode von Liveereignissen mit Media Services, bevor Sie Ihre Inhalte von V2 nach V3 verschieben. Im Folgenden finden Sie die V3-Funktionen, mit denen Sie arbeiten und die Sie für die Migration in Erwägung ziehen sollten.
 
-- Erstellen Sie ein neues V3-[Liveereignis](live-events-outputs-concept.md#live-events) für die Codierung. Sie können [die Codierungsvoreinstellungen 1080p und 720p](live-event-types-comparison.md#system-presets) aktivieren.
-- Verwenden Sie anstelle von Programmen die Entität [Liveausgabe](live-events-outputs-concept.md#live-outputs).
-- Erstellen Sie [Streaminglocators](streaming-locators-concept.md).
-- Bewerten Sie Ihre Anforderungen an das [HLS- und DASH-Livestreaming](dynamic-packaging-overview.md).
-- Wenn Ihre Liveereignisse schnell starten sollen, machen Sie sich mit den neuen Funktionen für den [Standbymodus](live-events-outputs-concept.md#standby-mode) vertraut.
-- Wenn Sie bereits während Ihres Liveereignisses eine Transkription davon erstellen möchten, sehen Sie sich die neue Funktion der [Livetranskription](live-transcription.md) an.
+- Erstellen Sie ein neues V3-[Liveereignis](live-event-outputs-concept.md#live-events) für die Codierung. Sie können [die Codierungsvoreinstellungen 1080p und 720p](live-event-types-comparison-reference.md#system-presets) aktivieren.
+- Verwenden Sie anstelle von Programmen die Entität [Liveausgabe](live-event-outputs-concept.md#live-outputs).
+- Erstellen Sie [Streaminglocators](stream-streaming-locators-concept.md).
+- Bewerten Sie Ihre Anforderungen an das [HLS- und DASH-Livestreaming](encode-dynamic-packaging-concept.md).
+- Wenn Ihre Liveereignisse schnell starten sollen, machen Sie sich mit den neuen Funktionen für den [Standbymodus](live-event-outputs-concept.md#standby-mode) vertraut.
+- Wenn Sie bereits während Ihres Liveereignisses eine Transkription davon erstellen möchten, sehen Sie sich die neue Funktion der [Livetranskription](live-event-live-transcription-how-to.md) an.
 - Erstellen Sie 24/7/365-Liveereignisse in V3, wenn Sie eine längere Streamingdauer benötigen.
 - Verwenden Sie [Event Grid](monitoring/monitor-events-portal-how-to.md), um Ihre Liveereignisse zu überwachen.
 
@@ -50,27 +50,23 @@ Die zugehörigen Schritte finden Sie in den nachstehenden Konzepten, Tutorials u
 
 ### <a name="concepts"></a>Konzepte
 
-- [Livestreaming mit Azure Media Services v3](live-streaming-overview.md)
-- [Liveereignisse und Liveausgaben in Media Services](live-events-outputs-concept.md)
-- [Überprüfte lokale Livestreamingencoder](recommended-on-premises-live-encoders.md)
-- [Verwenden von Timeshift und Liveausgaben zum Erstellen der bedarfsgesteuerten Videowiedergabe](live-event-cloud-dvr.md)
-- [Livetranskription (Vorschau)](live-transcription.md)
-- [Vergleich von Liveereignistypen](live-event-types-comparison.md)
-- [Status und Abrechnung von Liveereignissen](live-event-states-billing.md)
-- [Einstellungen für geringe Wartezeit bei Liveereignissen](live-event-latency.md)
-- [Azure Media Services-Fehlercodes für Liveereignisse](live-event-error-codes.md)
+- [Livestreaming mit Azure Media Services v3](stream-live-streaming-concept.md)
+- [Liveereignisse und Liveausgaben in Media Services](live-event-outputs-concept.md)
+- [Überprüfte lokale Livestreamingencoder](encode-recommended-on-premises-live-encoders.md)
+- [Verwenden von Timeshift und Liveausgaben zum Erstellen der bedarfsgesteuerten Videowiedergabe](live-event-cloud-dvr-time-how-to.md)
+- [live-event-live-transcription-how-to (Vorschau)](live-event-live-transcription-how-to.md)
+- [Vergleich von Liveereignistypen](live-event-types-comparison-reference.md)
+- [Status und Abrechnung von Liveereignissen](live-event-states-billing-concept.md)
+- [Einstellungen für geringe Wartezeit bei Liveereignissen](live-event-latency-reference.md)
+- [Azure Media Services-Fehlercodes für Liveereignisse](live-event-error-codes-reference.md)
 
 ### <a name="tutorials-and-quickstarts"></a>Tutorials und Schnellstarts
 
 - [Tutorial: Livestreaming mit Media Services](stream-live-tutorial-with-api.md)
-- [Erstellen eines Azure Media Services-Livestreams mit OBS](live-events-obs-quickstart.md)
-- [Schnellstart: Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals](manage-assets-quickstart.md)
-- [Schnellstart: Erstellen eines Azure Media Services-Livestreams mit Wirecast](live-events-wirecast-quickstart.md)
+- [Erstellen eines Azure Media Services-Livestreams mit OBS](live-event-obs-quickstart.md)
+- [Schnellstart: Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals](asset-create-asset-upload-portal-quickstart.md)
+- [Schnellstart: Erstellen eines Azure Media Services-Livestreams mit Wirecast](live-event-wirecast-quickstart.md)
 
 ## <a name="samples"></a>Beispiele
 
 Sehen Sie sich auch den [Vergleich von V2- und V3-Code in den Codebeispielen](migrate-v-2-v-3-migration-samples.md) an.
-
-## <a name="next-steps"></a>Nächste Schritte
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

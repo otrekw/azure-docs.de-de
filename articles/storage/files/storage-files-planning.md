@@ -4,16 +4,16 @@ description: Hier finden Sie grundlegende Informationen zur Planung einer Azure 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 267b68fbdae6d894acc3222a8d74a8e15e865dbc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879846"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023519"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -65,7 +65,7 @@ Obwohl es aus technischer Sicht wesentlich einfacher ist, ihre Azure-Dateifreiga
 
 - **Netzwerktunnelung mithilfe von ExpressRoute, Site-to-Site- oder Point-to-Site-VPN**: Das Tunneln in ein virtuelles Netzwerk ermöglicht den Zugriff auf Azure-Dateifreigaben vom lokalen Standort aus, auch wenn Port 445 blockiert ist.
 - **Private Endpunkte**: Private Endpunkte stellen Ihrem Speicherkonto eine dedizierte IP-Adresse innerhalb des Adressraums des virtuellen Netzwerks zur Verfügung. Dies ermöglicht Netzwerktunnelung, ohne dass lokale Netzwerke für alle IP-Adressbereiche, die sich im Besitz der Azure-Speichercluster befinden, geöffnet werden müssen. 
-- **DNS--Weiterleitung**: Konfigurieren Sie das lokale DNS, um den Namen Ihres Speicherkontos (also `storageaccount.file.core.windows.net` für die öffentlichen Cloudregionen) aufzulösen, um die IP-Adresse Ihrer privaten Endpunkte aufzulösen.
+- **DNS-Weiterleitung**: Konfigurieren Sie das lokale DNS, um den Namen Ihres Speicherkontos (`storageaccount.file.core.windows.net` für die öffentlichen Cloudregionen) aufzulösen, um die IP-Adresse Ihrer privaten Endpunkte aufzulösen.
 
 Informationen zum Planen der Netzwerke, die mit der Bereitstellung einer Azure-Dateifreigabe verbunden sind, finden Sie unter [Überlegungen zum Azure Files-Netzwerk](storage-files-networking-overview.md).
 
@@ -94,7 +94,7 @@ Azure Files umfasst einen mehrschichtigen Ansatz, um sicherzustellen, dass Ihre 
 ### <a name="soft-delete"></a>Vorläufiges Löschen
 Das vorläufige Löschen von Dateifreigaben (Vorschauversion) ist eine Einstellung auf Speicherkontoebene, die es Ihnen ermöglicht, Ihre Dateifreigabe wiederherzustellen, wenn diese versehentlich gelöscht wird. Wenn eine Dateifreigabe gelöscht wird, geht sie in einen vorläufig gelöschten Zustand über, anstatt dauerhaft gelöscht zu werden. Sie können den Zeitraum konfigurieren, in dem vorläufig gelöschte Daten wiederhergestellt werden können, ehe sie dauerhaft gelöscht werden, und die Löschung der Freigabe während dieses Aufbewahrungszeitraums jederzeit rückgängig machen. 
 
-Es wird empfohlen, das vorläufige Löschen für die meisten Dateifreigaben zu aktivieren. Wenn Sie über einen Workflow verfügen, bei dem das Löschen von Dateifreigaben üblich und zu erwarten ist, können Sie sich für einen sehr kurzen Aufbewahrungszeitraum oder die Deaktivierung der Funktion für das vorläufige Löschen entscheiden.
+Es wird empfohlen, das vorläufige Löschen für die meisten Dateifreigaben zu aktivieren. Wenn Sie über einen Workflow verfügen, bei dem das Löschen von Dateifreigaben üblich und zu erwarten ist, können Sie sich für einen kurzen Aufbewahrungszeitraum oder die Deaktivierung der Funktion für das vorläufige Löschen entscheiden.
 
 Weitere Informationen zum vorläufigen Löschen finden Sie unter [Verhindern eines versehentlichen Löschens von Azure-Dateifreigaben](./storage-files-prevent-file-share-deletion.md).
 
@@ -107,10 +107,10 @@ Mithilfe von Azure Backup können Sie im Azure-Portal Wiederherstellungen sowohl
 
 Weitere Informationen zur Sicherung finden Sie unter [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-### <a name="advanced-threat-protection-for-azure-files-preview"></a>Advanced Threat Protection für Azure Files (Vorschauversion)
-Advanced Threat Protection (ATP) für Azure Storage bietet eine zusätzliche Ebene der Sicherheitsintelligenz, durch die Warnungen ausgegeben werden, wenn in Ihrem Speicherkonto anomale Aktivitäten wie beispielsweise ungewöhnliche Zugriffsversuche auf das Speicherkonto erkannt werden. ATP führt außerdem eine Analyse in Bezug auf die Malwarehashzuverlässigkeit durch und benachrichtigt Sie über bekannte Schadsoftware. Sie können ATP über das Azure Security Center auf Abonnement- oder Speicherkontoebene konfigurieren. 
+### <a name="azure-defender-for-azure-files"></a>Azure Defender für Azure Files 
+Azure Defender für Azure Storage (ehemals Advanced Threat Protection für Azure Storage) bietet eine zusätzliche Ebene der Sicherheitsintelligenz, durch die Warnungen ausgegeben werden, wenn in Ihrem Speicherkonto anomale Aktivitäten erkannt werden, z. B. ungewöhnliche Zugriffsversuche. Es führt außerdem eine Analyse in Bezug auf die Malwarehashzuverlässigkeit durch und benachrichtigt Sie über bekannte Schadsoftware. Sie können Azure Defender über das Azure Security Center auf Abonnement- oder Speicherkontoebene konfigurieren. 
 
-Weitere Informationen finden Sie unter [Konfigurieren von Advanced Threat Protection für Azure Storage](../common/azure-defender-storage-configure.md).
+Weitere Informationen finden Sie unter [Einführung in Azure Defender für Azure Storage](../../security-center/defender-for-storage-introduction.md).
 
 ## <a name="storage-tiers"></a>Speicherebenen
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]

@@ -1,26 +1,24 @@
 ---
-title: Auflisten von Blobs mit .NET – Azure Storage
-description: Hier erfahren Sie, wie Sie Blobs in einem Container in Ihrem Azure Storage-Konto mithilfe der .NET-Clientbibliothek auflisten. Codebeispiele veranschaulichen, wie Blobs in einer flachen Auflistung angezeigt werden oder wie Blobs hierarchisch aufgelistet werden, als wären Sie in Verzeichnissen oder Ordnern organisiert.
+title: Auflisten von Blobs mit Azure Storage-APIs
+description: Erfahren Sie, wie Sie mithilfe der Azure Storage-Clientbibliotheken Blobs in Ihrem Speicherkonto auflisten. Codebeispiele veranschaulichen, wie Blobs in einer flachen Auflistung angezeigt werden oder wie Blobs hierarchisch aufgelistet werden, als wären Sie in Verzeichnissen oder Ordnern organisiert.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 03/24/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff20b8bd0aab94cadadddbb7a4b7b32b1db1ee85
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95543067"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046941"
 ---
-# <a name="list-blobs-with-net"></a>Auflisten von Blobs mit .NET
+# <a name="list-blobs-with-azure-storage-client-libraries"></a>Auflisten von Blobs mit Azure Storage-Clientbibliotheken
 
 Wenn Sie Blobs über Ihren Code auflisten, können Sie eine Reihe von Optionen angeben, um zu steuern, wie Ergebnisse von Azure Storage zurückgegeben werden. Sie können die Anzahl der Ergebnisse festlegen, die in den einzelnen Ergebnissätzen zurückgegeben werden sollen, und dann die nachfolgenden Sätze abrufen. Sie können ein Präfix angeben, um Blobs zurückzugeben, deren Namen mit dem jeweiligen Zeichen oder der Zeichenfolge beginnen. Sie können Blobs auch in einer flachen Auflistungsstruktur anzeigen oder hierarchisch auflisten. Bei einer hierarchischen Auflistung werden Blobs so zurückgegeben, als wären sie in Ordnern organisiert.
-
-In diesem Artikel wird beschrieben, wie Blobs mithilfe der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage) aufgelistet werden.  
 
 ## <a name="understand-blob-listing-options"></a>Grundlegendes zu den Optionen für das Auflisten von Blobs
 
@@ -45,7 +43,9 @@ Rufen Sie zum Auflisten der Blobs in einem Container eine der folgenden Methoden
 - [CloudBlobContainer.ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
 - [CloudBlobContainer.ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
 
-Die Überladungen dieser Methoden bieten zusätzliche Optionen zum Steuern, wie Blobs durch den Auflistungsvorgang zurückgegeben werden. Diese Optionen sind in den folgenden Abschnitten beschrieben.
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+- [ContainerClient.list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)
 
 ---
 
@@ -61,13 +61,25 @@ Um die Liste der Blobs zu filtern, geben Sie für den `prefix`-Parameter eine Ze
 
 Sie können zusammen mit den Ergebnissen Blobmetadaten zurückgeben.
 
-- Wenn Sie das .NET v12 SDK verwenden, geben Sie den Wert **Metadaten** für die [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits)-Enumeration an.
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-- Wenn Sie das .NET v11 SDK verwenden, geben Sie für die Enumeration [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) den Wert **Metadata** an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes**-Methoden aufrufen, um die Blobmetadaten abzurufen.
+Geben Sie den **Metadatenwert** für die [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits)-Enumeration an.
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Geben Sie den **Metadatenwert** für die [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails)-Enumeration an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes**-Methoden aufrufen, um die Blobmetadaten abzurufen.
+
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+Geben Sie `metadata` für den Parameter `include=` an, wenn Sie [list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)aufrufen.
+
+---
 
 ### <a name="list-blob-versions-or-snapshots"></a>Auflisten von Blobversionen oder-Momentaufnahmen
 
-Geben Sie zum Auflisten von Blobversionen oder Momentaufnahmen bei der .NET v12-Clientbibliothek den Parameter [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) im Feld **Version** oder **Momentaufnahme** an. Versionen und Momentaufnahmen werden von der ältesten zur neuesten aufgeführt. Weitere Informationen zum Auflisten von Versionen finden Sie unter [Auflisten von Blobversionen](versioning-enable.md#list-blob-versions).
+- Geben Sie zum Auflisten von Blobversionen oder Momentaufnahmen bei der .NET v12-Clientbibliothek den Parameter [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) im Feld **Version** oder **Momentaufnahme** an. Versionen und Momentaufnahmen werden von der ältesten zur neuesten aufgeführt. Weitere Informationen zum Auflisten von Versionen finden Sie unter [Auflisten von Blobversionen](versioning-enable.md#list-blob-versions).
+
+- Um die Anzahl der Momentaufnahmen mit der Python v12-Clientbibliothek aufzulisten, geben Sie `num_snapshots` beim Aufruf von [list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) im Parameter `include=` an.
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Flache Auflistung und hierarchische Auflistung im Vergleich
 
@@ -135,11 +147,15 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_ListBlobs":::
+
 ---
 
 Die Beispielausgabe sieht ähnlich wie hier aus:
 
-```
+```console
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt
 Blob name: FolderA/blob3.txt
@@ -153,7 +169,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 ## <a name="use-a-hierarchical-listing"></a>Verwenden einer hierarchischen Auflistung
 
-Wenn Sie einen Auflistungsvorgang hierarchisch aufrufen, gibt Azure Storage die virtuellen Verzeichnisse und Blobs auf der ersten Hiearchieebene zurück. Die Eigenschaft [Prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) der einzelnen virtuellen Verzeichnisse ist so festgelegt, dass Sie das Präfix in einem rekursiven Aufruf übergeben können, um das nächste Verzeichnis abzurufen.
+Wenn Sie einen Auflistungsvorgang hierarchisch aufrufen, gibt Azure Storage die virtuellen Verzeichnisse und Blobs auf der ersten Hiearchieebene zurück.
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
@@ -164,6 +180,8 @@ Im folgenden Beispiel werden die Blobs im angegebenen Container mithilfe einer h
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Die Eigenschaft [Prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) der einzelnen virtuellen Verzeichnisse ist so festgelegt, dass Sie das Präfix in einem rekursiven Aufruf übergeben können, um das nächste Verzeichnis abzurufen.
 
 Wenn Blobs hierarchisch aufgelistet werden sollen, legen Sie den Parameter `useFlatBlobListing` der Auflistungsmethode auf **false** fest.
 
@@ -222,11 +240,19 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 }
 ```
 
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+Um Blobs hierarchisch aufzulisten, rufen Sie die Methode [walk_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#walk-blobs-name-starts-with-none--include-none--delimiter--------kwargs-) auf.
+
+Im folgenden Beispiel werden die Blobs im angegebenen Container mithilfe einer hierarchischen Auflistung aufgeführt, wobei eine optionale Segmentgröße angegeben und der Blobname in das Konsolenfenster geschrieben wird.
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_WalkHierarchy":::
+
 ---
 
 Die Beispielausgabe sieht ähnlich wie hier aus:
 
-```
+```console
 Virtual directory prefix: FolderA/
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt
