@@ -9,10 +9,10 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e3997fc215637175165402a926bffc6ac8d02771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77914857"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Multiprotokollzugriff für Azure Data Lake Storage
@@ -40,7 +40,7 @@ BLOB-APIs und Data Lake Storage Gen2-APIs können in Speicherkonten mit einem hi
 
 Vorhandene Tools und Anwendungen, die die BLOB-API verwenden, profitieren von diesen Vorteilen automatisch. Entwickler müssen sie nicht ändern. Data Lake Storage Gen2 wendet konsistent ACLs auf Verzeichnis- und Dateiebene an, unabhängig von dem Protokoll, das von den Tools und Anwendungen für den Zugriff auf die Daten verwendet wird. 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
 - [Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen](data-lake-storage-supported-azure-services.md)

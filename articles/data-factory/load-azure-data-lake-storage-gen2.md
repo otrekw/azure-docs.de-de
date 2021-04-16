@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 4e2bbe6f0c3b9ff1ffd913365ce21e534208123b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 075778e2650d3b1f67447078eb6cb130849bbb35
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699724"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104593763"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen2 mit Azure Data Factory
 
@@ -53,7 +53,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 4. Nach Abschluss der Erstellung navigieren Sie zu Ihrer Data Factory. Die Startseite **Data Factory** wird wie in der folgenden Abbildung dargestellt angezeigt: 
    
-   ![Data Factory-Startseite](./media/doc-common-process/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
 
    Wählen Sie die Kachel **Erstellen und überwachen** aus, um die Datenintegrationsanwendung auf einer separaten Registerkarte zu starten.
 

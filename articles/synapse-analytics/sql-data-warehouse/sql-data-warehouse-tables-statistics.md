@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3ade41c51cbb8065734e8957cfc8b9f0c22b2df3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 42dd34f0fe4006411f413002eb7c351646e72390
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98673365"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078960"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tabellenstatistiken für den dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -90,7 +90,7 @@ Wenn Ihr dedizierter SQL-Pool allerdings nur ein Land/eine Region enthält und S
 
 Im Folgenden finden Sie Empfehlungen für Updates für Statistiken:
 
-|||
+| Statistik-Attribut | Empfehlung|
 |-|-|
 | **Aktualisierungshäufigkeit für Statistiken**  | Konservativ: Täglich </br> Nach dem Laden oder Transformieren von Daten |
 | **Stichproben** |  Bei weniger als 1 Milliarde Zeilen Standard-Stichprobenentnahme verwenden (20 Prozent). </br> Bei mehr als 1 Milliarde Zeilen Stichprobenentnahme von zwei Prozent verwenden. |

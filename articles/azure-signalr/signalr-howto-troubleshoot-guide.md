@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201653"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589163"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Problembehandlungsleitfaden für häufig bei Azure SignalR Service auftretende Probleme
 
@@ -26,7 +26,7 @@ Dieser Leitfaden hilft Ihnen beim Beheben von häufig auftretenden Problemen, di
 * 413 Nutzlast zu groß
 * Das Zugriffstoken darf nicht länger als 4 K sein. 413 – Anforderungsentität zu groß
 
-### <a name="root-cause"></a>Grundursache:
+### <a name="root-cause"></a>Grundursache
 
 Bei HTTP/2 beträgt die Höchstlänge für einen einzelnen Header **4 K**, wenn Sie daher mit einem Browser auf den Azure-Dienst zugreifen, tritt aufgrund dieser Begrenzung ein `ERR_CONNECTION_`-Fehler auf.
 
@@ -34,18 +34,19 @@ Bei HTTP/1.1 und C#-Clients beträgt die Höchstlänge von URIs **12 K**, und d
 
 Ab der SDK-Version **1.0.6** löst `/negotiate` den Fehler `413 Payload Too Large` aus, wenn das generierte Zugriffstoken größer als **4 K** ist.
 
-### <a name="solution"></a>Projektmappe:
+### <a name="solution"></a>Lösung
 
 Standardmäßig werden Ansprüche von `context.User.Claims` beim Generieren des JWT-Zugriffstokens für **ASRS**(**A** zure **S** ignal **R** **S** ervice) eingeschlossen, sodass die Ansprüche beibehalten werden und von **ASRS** an den `Hub` übergeben werden können, wenn der Client eine Verbindung mit dem `Hub` herstellt.
 
-In einigen Fällen werden `context.User.Claims` genutzt, um große Informationsmengen für App-Server zu speichern, von denen die meisten nicht von `Hub`s, sondern von anderen Komponenten verwendet werden.
+In einigen Fällen werden `context.User.Claims` verwendet, um große Informationsmengen für App-Server zu speichern, von denen die meisten nicht von `Hub`s, sondern von anderen Komponenten verwendet werden.
 
 Das generierte Zugriffstoken wird über das Netzwerk übermittelt, und bei WebSocket-/SSE-Verbindungen werden Zugriffstoken über Abfragezeichenfolgen übermittelt. Als bewährte Methode wird empfohlen, nur **erforderliche** Ansprüche vom Client über **ASRS** an Ihren App-Server zu übergeben, sofern der Hub dies verlangt.
 
 Es wird ein `ClaimsProvider` bereitgestellt, mit dem Sie die Ansprüche anpassen können, die im Zugriffstoken an **ASRS** übermittelt werden.
 
 Für ASP.NET Core:
-```cs
+
+```csharp
 services.AddSignalR()
         .AddAzureSignalR(options =>
             {
@@ -55,7 +56,8 @@ services.AddSignalR()
 ```
 
 Für ASP.NET:
-```cs
+
+```csharp
 services.MapAzureSignalR(GetType().FullName, options =>
             {
                 // pick up necessary claims
@@ -73,7 +75,7 @@ services.MapAzureSignalR(GetType().FullName, options =>
 * ASP.NET-Fehler „Die Verbindung ist nicht aktiv. Es können keine Daten an den Dienst gesendet werden.“ [#324](https://github.com/Azure/azure-signalr/issues/324)
 * „Fehler beim Erstellen der HTTP-Anforderung an https://<API endpoint>. Dies könnte daran liegen, dass das Serverzertifikat nicht richtig mit „HTTP.SYS“ im HTTPS-Fall konfiguriert wurde. Eine andere mögliche Ursache kann eine fehlende Übereinstimmung bei der Sicherheitsbindung zwischen Client und Server sein.“
 
-### <a name="root-cause"></a>Grundursache:
+### <a name="root-cause"></a>Grundursache
 
 Der Azure-Dienst unterstützt aus Sicherheitsgründen nur TLS 1.2. Bei .NET Framework ist es möglich, dass TLS 1.2 nicht das Standardprotokoll ist. Daher können keine Serververbindungen mit ASRS erfolgreich hergestellt werden.
 
@@ -93,16 +95,18 @@ Der Azure-Dienst unterstützt aus Sicherheitsgründen nur TLS 1.2. Bei .NET Fram
         :::image type="content" source="./media/signalr-howto-troubleshoot-guide/tls-throws.png" alt-text="Ausgelöste Ausnahme":::
 
 2. Bei ASP.NET-Dateien können Sie auch folgenden Code der Datei `Startup.cs` hinzufügen, um eine ausführliche Ablaufverfolgung zu aktivieren und die Fehler aus dem Protokoll anzuzeigen.
-```cs
-app.MapAzureSignalR(this.GetType().FullName);
-// Make sure this switch is called after MapAzureSignalR
-GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
-```
 
-### <a name="solution"></a>Projektmappe:
+    ```cs
+    app.MapAzureSignalR(this.GetType().FullName);
+    // Make sure this switch is called after MapAzureSignalR
+    GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
+    ```
+
+### <a name="solution"></a>Lösung
 
 Fügen Sie folgenden Code zu „Startup.cs“ hinzu:
-```cs
+
+```csharp
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
@@ -180,18 +184,21 @@ Dieser Fehler wird gemeldet, wenn keine Serververbindung mit dem Azure SignalR S
 
 Aktivieren Sie die serverseitige Ablaufverfolgung, um die Fehlerdetails zu ermitteln, wenn der Server versucht, eine Verbindung mit dem Azure SignalR Service herzustellen.
 
-#### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Aktivieren der serverseitigen Protokollierung für ASP.NET Core SignalR
+### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Aktivieren der serverseitigen Protokollierung für ASP.NET Core SignalR
 
-Die serverseitige Protokollierung für ASP.NET Core SignalR ist in `ILogger` integriert und beruht auf der [Protokollierung](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1), die im ASP.NET Core-Framework bereitgestellt wird. Sie können die serverseitige Protokollierung mithilfe von `ConfigureLogging` aktivieren, wie im folgenden Beispiel gezeigt:
-```cs
+Die serverseitige Protokollierung für ASP.NET Core SignalR ist in `ILogger` integriert und beruht auf der [Protokollierung](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1&preserve-view=true), die im ASP.NET Core-Framework bereitgestellt wird. Sie können die serverseitige Protokollierung mithilfe von `ConfigureLogging` aktivieren, wie im folgenden Beispiel gezeigt:
+
+```csharp
 .ConfigureLogging((hostingContext, logging) =>
         {
             logging.AddConsole();
             logging.AddDebug();
         })
 ```
+
 Protokollierungskategorien für Azure SignalR beginnen immer mit `Microsoft.Azure.SignalR`. Wenn Sie detaillierte Protokolle von Azure SignalR aktivieren möchten, konfigurieren Sie die Präfixe in der Datei **appsettings.json** mit der Ebene `Debug`, wie hier gezeigt:
-```JSON
+
+```json
 {
     "Logging": {
         "LogLevel": {
@@ -206,6 +213,7 @@ Protokollierungskategorien für Azure SignalR beginnen immer mit `Microsoft.Azur
 #### <a name="enable-server-side-traces-for-aspnet-signalr"></a>Aktivieren serverseitiger Ablaufverfolgungen für ASP.NET SignalR
 
 Ab der SDK-Version `1.0.0` können Sie Ablaufverfolgungen aktivieren, indem Sie in `web.config` Folgendes hinzufügen: ([Details](https://github.com/Azure/azure-signalr/issues/452#issuecomment-478858102))
+
 ```xml
 <system.diagnostics>
     <sources>
@@ -242,7 +250,7 @@ Wenn der Client mit Azure SignalR verbunden ist, kann es vorkommen, dass die per
 * `{"type":7,"error":"Connection closed with an error."}`
 * `{"type":7,"error":"Internal server error."}`
 
-### <a name="root-cause"></a>Grundursache:
+### <a name="root-cause"></a>Grundursache
 
 Clientverbindungen können unter verschiedenen Umständen getrennt werden:
 * Wenn `Hub` Ausnahmen bei Eingehen der Anforderung auslöst.
@@ -268,13 +276,13 @@ Clientverbindungen nehmen in den Metriken von Azure SignalR ständig über einen
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-guide/client-connection-increasing-constantly.jpg" alt-text="Anzahl der Clientverbindungen nimmt beständig zu":::
 
-### <a name="root-cause"></a>Grundursache:
+### <a name="root-cause"></a>Grundursache
 
 Für die SignalR-Clientverbindung wird `DisposeAsync` nie aufgerufen, sodass die Verbindung geöffnet bleibt.
 
 ### <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
-1. Überprüfen Sie, ob der SignalR-Client **nie** geschlossen wird.
+Überprüfen Sie, ob der SignalR-Client **nie** geschlossen wird.
 
 ### <a name="solution"></a>Lösung
 
@@ -282,7 +290,7 @@ Für die SignalR-Clientverbindung wird `DisposeAsync` nie aufgerufen, sodass die
 
 Beispiel:
 
-```C#
+```csharp
 var connection = new HubConnectionBuilder()
     .WithUrl(...)
     .Build();
@@ -324,21 +332,95 @@ In regelmäßigen Abständen werden neue Versionen des Azure SignalR Service ver
 
 In diesem Abschnitt werden verschiedene mögliche Ursachen für die Trennung der Serververbindung beschrieben, und es wird erläutert, wie Sie die Ursache ermitteln können.
 
-### <a name="possible-errors-seen-from-server-side"></a>Mögliche Fehler auf Serverseite:
+### <a name="possible-errors-seen-from-the-server-side"></a>Mögliche Fehler auf Serverseite
 
 * `[Error]Connection "..." to the service was dropped`
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 
-### <a name="root-cause"></a>Grundursache:
+### <a name="root-cause"></a>Grundursache
 
 Die Serverdienstverbindung wird von **ASRS**(**A** zure **S** ignal **R** **S** ervice) geschlossen.
 
+Bei einem Pingtimeout ist dies möglicherweise auf eine hohe CPU-Auslastung oder einen blockierten Threadpool auf Serverseite zurückzuführen.
+
+In SDK 1.6.0 wurde für ASP.NET SignalR ein bekanntes Problem behoben. Führen Sie für das SDK ein Upgrade auf die neueste Version aus.
+
+## <a name="thread-pool-starvation"></a>Blockierung des Threadpools
+
+Wenn der Server blockiert ist, bedeutet das, dass von Threads keine Nachrichten verarbeitet werden. Sämtliche Threads hängen bei einer bestimmten Methode fest.
+
+Dieses Szenario wird normalerweise durch Async-over-Sync oder durch `Task.Result`/`Task.Wait()` in asynchronen Methoden verursacht.
+
+Weitere Informationen finden Sie unter [Best Practices zur Leistung in ASP.NET Core](/aspnet/core/performance/performance-best-practices#avoid-blocking-calls).
+
+Weitere Informationen finden Sie unter [Blockierung des Threadpools](https://docs.microsoft.com/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall).
+
+### <a name="how-to-detect-thread-pool-starvation"></a>Erkennen einer Threadpoolblockierung
+
+Überprüfen Sie die Threadanzahl. Gehen Sie wie folgt vor, wenn derzeit keine Spitzen vorhanden sind:
+* Wenn Sie Azure App Service verwenden, überprüfen Sie die Threadanzahl in Metriken. Überprüfen Sie die Aggregation `Max`:
+    
+  :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Screenshot: Bereich „Max. Threadanzahl“ in Azure App Service":::
+
+* Wenn Sie .NET Framework verwenden, finden Sie [Metriken](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters) im Systemmonitor auf der Server-VM.
+* Wenn Sie .NET Core in einem Container verwenden, finden Sie unter [Sammeln von Diagnosen in Containern](https://docs.microsoft.com/dotnet/core/diagnostics/diagnostics-in-containers) entsprechende Informationen.
+
+Sie können Threadpoolblockierungen auch mithilfe von Code erkennen:
+
+```csharp
+public class ThreadPoolStarvationDetector : EventListener
+{
+    private const int EventIdForThreadPoolWorkerThreadAdjustmentAdjustment = 55;
+    private const uint ReasonForStarvation = 6;
+
+    private readonly ILogger<ThreadPoolStarvationDetector> _logger;
+
+    public ThreadPoolStarvationDetector(ILogger<ThreadPoolStarvationDetector> logger)
+    {
+        _logger = logger;
+    }
+
+    protected override void OnEventSourceCreated(EventSource eventSource)
+    {
+        if (eventSource.Name == "Microsoft-Windows-DotNETRuntime")
+        {
+            EnableEvents(eventSource, EventLevel.Informational, EventKeywords.All);
+        }
+    }
+
+    protected override void OnEventWritten(EventWrittenEventArgs eventData)
+    {
+        // See: https://docs.microsoft.com/en-us/dotnet/framework/performance/thread-pool-etw-events#threadpoolworkerthreadadjustmentadjustment
+        if (eventData.EventId == EventIdForThreadPoolWorkerThreadAdjustmentAdjustment &&
+            eventData.Payload[3] as uint? == ReasonForStarvation)
+        {
+            _logger.LogWarning("Thread pool starvation detected!");
+        }
+    }
+}
+```
+    
+Fügen Sie Ihrem Dienst Folgendes hinzu:
+    
+```csharp
+service.AddSingleton<ThreadPoolStarvationDetector>();
+```
+
+Überprüfen Sie dann Ihr Protokoll, wenn die Serververbindung durch ein Pingtimeout getrennt wird.
+
+### <a name="how-to-find-the-root-cause-of-thread-pool-starvation"></a>Finden der Grundursache einer Threadpoolblockierung
+
+So finden Sie die Grundursache einer Threadpoolblockierung:
+
+* Erstellen Sie ein Arbeitsspeicherabbild, und analysieren Sie anschließend die Aufrufliste. Weitere Informationen finden Sie unter [Collect and analyze memory dumps](https://devblogs.microsoft.com/dotnet/collecting-and-analyzing-memory-dumps/) (Sammeln und Analysieren von Arbeitsspeicherabbildern).
+* Verwenden Sie [clrmd](https://github.com/microsoft/clrmd) zum Erstellen eines Arbeitsspeicherabbilds, wenn eine Threadpoolblockierung erkannt wird. Protokollieren Sie anschließend die Aufrufliste.
+
 ### <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
-1. Öffnen Sie ein serverseitiges App-Protokoll, um festzustellen, ob ein ungewöhnliches Ereignis eingetreten ist.
+1. Öffnen Sie das serverseitige App-Protokoll, um festzustellen, ob ein ungewöhnliches Ereignis eingetreten ist.
 2. Überprüfen Sie im serverseitigen Ereignisprotokoll, ob der App-Server neu gestartet wurde.
-3. Erstellen Sie ein Issue mit Angabe des Zeitrahmens, und senden Sie uns den Ressourcennamen per E-Mail zu.
+3. Erstellen Sie ein Issue. Geben Sie den Zeitrahmen an, und senden Sie uns den Ressourcennamen per E-Mail.
 
 [Haben Sie Probleme oder Feedback zu dieser Problembehandlung? Informieren Sie uns darüber.](https://aka.ms/asrs/survey/troubleshooting)
 

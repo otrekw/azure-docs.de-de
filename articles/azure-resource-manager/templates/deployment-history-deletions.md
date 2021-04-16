@@ -3,12 +3,12 @@ title: Löschung des Bereitstellungsverlaufs
 description: Hier erfahren Sie, wie Azure Resource Manager Bereitstellungen automatisch aus dem Bereitstellungsverlauf löscht. Bereitstellungen werden gelöscht, wenn der Verlauf den Grenzwert von 800 Einträgen überschreitet.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: fc4f7f33cdd7ccce3158aa95bd002f12c8c44c00
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 83383411ec317e228dabb14273e2b566792c774c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951962"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732464"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische Löschungen aus dem Bereitstellungsverlauf
 
@@ -104,7 +104,7 @@ az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGr
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-Verwenden Sie für die REST-API den Befehl [Features – Register](/rest/api/resources/features/register).
+Verwenden Sie für die REST-API den Befehl [Features – Register](/rest/api/resources/features/features/register).
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
@@ -116,7 +116,7 @@ Verwenden Sie den folgenden Befehl, um den aktuellen Status Ihres Abonnements an
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
 ```
 
-Um automatisches Löschen wieder zu aktivieren, verwenden Sie [Features: Registrierung aufheben](/rest/api/resources/features/unregister).
+Um automatisches Löschen wieder zu aktivieren, verwenden Sie [Features: Registrierung aufheben](/rest/api/resources/features/features/unregister).
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/unregister?api-version=2015-12-01

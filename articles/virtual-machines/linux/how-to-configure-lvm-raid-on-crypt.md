@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ec9f99d0a13b5b92bc267f184d364ebabe36a050
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bdd897e76df941130e3acdf9c30ea8edd41147e9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102566106"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601923"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Konfigurieren von LVM und RAID auf verschlüsselten Geräten
 
@@ -261,7 +261,7 @@ Machen Sie sich keine Gedanken über die Bereitstellungspunkte in dieser Datei. 
 Sie heben die Einbindung der Dateisysteme auf den Datenträgern auf, die als Teil von LVM verwendet werden sollen.
 
 ```bash
-for disk in c d e f; do unmount /tempdata${disk}; done
+for disk in c d e f; do umount /tempdata${disk}; done
 ```
 Entfernen Sie außerdem die Einträge in „/etc/fstab“:
 
@@ -423,6 +423,9 @@ mkfs.ext4 /dev/md10
 ```
 
 Erstellen Sie einen neuen Bereitstellungspunkt für das Dateisystem, fügen Sie das neue Dateisystem in „/etc/fstab“ hinzu, und binden Sie es ein:
+
+>[!NOTE] 
+>Dieser Ablauf wird für dieses bestimmte Beispiel nur auf einem Gerät durchgeführt. Er wurde so erstellt, um bei Bedarf für mehrere MD-Geräte verwendet werden zu können.
 
 ```bash
 for device in md10; do diskuuid="$(blkid -s UUID -o value /dev/${device})"; \

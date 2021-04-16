@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d41b06bb0c2b26776f9d9c195c3a713e4dae9f82
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98572798"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626627"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -40,7 +40,7 @@ In Durable Functions gibt es eine Warteschlange für Arbeitsaufgaben pro Aufgabe
 
 ### <a name="control-queues"></a>Steuerelement-Warteschlange(n)
 
-In Durable Functions gibt es mehrere *Steuerelement-Warteschlangen* pro Aufgabenhub. Eine *Steuerelement-Warteschlange* ist komplexer als die einfachere Warteschlange für Arbeitsaufgaben. Steuerwarteschlangen werden verwendet, um zustandsbehaftete Orchestrator- und Entitätsfunktionen auszulösen. Da die Orchestrator- und Entitätsfunktionsinstanzen zustandsbehaftete Singletons sind, ist es nicht möglich, ein konkurrierendes Consumermodell zu verwenden, um die Last zwischen virtuellen Computern zu verteilen. Vielmehr wird bei Orchestrator- und Entitätsnachrichten die Last auf die Steuerwarteschlangen verteilt. Weitere Informationen zu diesem Verhalten finden Sie in den folgenden Abschnitten.
+In Durable Functions gibt es mehrere *Steuerelement-Warteschlangen* pro Aufgabenhub. Eine *Steuerelement-Warteschlange* ist komplexer als die einfachere Warteschlange für Arbeitsaufgaben. Steuerwarteschlangen werden verwendet, um zustandsbehaftete Orchestrator- und Entitätsfunktionen auszulösen. Da es sich bei den Orchestrator- und Entitätsfunktionsinstanzen um zustandsbehaftete Singletons handelt, ist es wichtig, dass jede Orchestrierung oder Entität nur von einem Worker gleichzeitig verarbeitet wird. Um dies zu erreichen, wird jede Orchestrierungsinstanz oder -entität einer einzelnen Steuerungswarteschlange zugewiesen. Für diese Steuerungswarteschlangen wird ein Lastenausgleich über Worker hinweg vorgenommen, um sicherzustellen, dass jede Warteschlange jeweils nur von einem Worker verarbeitet wird. Weitere Informationen zu diesem Verhalten finden Sie in den folgenden Abschnitten.
 
 Steuerelement-Warteschlangen enthalten eine Vielzahl von Orchestrierung-Lebenszyklus-Nachrichtentypen. Beispiele hierfür sind [orchestrator control messages](durable-functions-instance-management.md) (Orchestratorsteuerungsmeldungen), Aktivitätsfunktion-*Antwort*-Nachrichten und Timernachrichten. Bis zu 32 Nachrichten werden in einer einzelnen Abfrage aus einer Steuerelement-Warteschlange entfernt. Diese Nachrichten enthalten Nutzlastdaten sowie Metadaten, einschließlich der Orchestrierungsinstanz, für die eine Nachricht jeweils vorgesehen ist. Wenn mehrere aus der Warteschlange entfernte Nachrichten für dieselbe Orchestrierungsinstanz vorgesehen sind, werden sie als Batch verarbeitet.
 
@@ -56,7 +56,7 @@ Die maximale Abrufverzögerung kann über die Eigenschaft `maxQueuePollingInterv
 ### <a name="orchestration-start-delays"></a>Verzögerungen beim Starten der Orchestrierung
 Orchestrierungsinstanzen werden gestartet, indem eine `ExecutionStarted`-Nachricht zu einer der Steuerungswarteschlangen des Taskhubs hinzugefügt wird. Unter bestimmten Umständen sind möglicherweise Verzögerungen von mehreren Sekunden zwischen der geplanten Ausführung einer Orchestrierung und der tatsächlichen Ausführung zu beobachten. Während dieses Zeitraums verbleibt die Orchestrierungsinstanz im Zustand `Pending`. Für diese Verzögerungen gibt es zwei mögliche Gründe:
 
-1. **Steuerungswarteschlangen im Rückstand:** Wenn die Steuerungswarteschlange für diese Instanz eine große Anzahl von Nachrichten enthält, kann es eine Weile dauern, bis die `ExecutionStarted`-Nachricht von der Runtime empfangen und verarbeitet wird. Nachrichtenrückstände können entstehen, wenn Orchestrierungen viele Ereignisse gleichzeitig verarbeiten. Ereignisse, die zur Steuerungswarteschlange hinzugefügt werden, umfassen Startereignisse für Orchestrierungen, den Abschluss von Aktivitäten, permanente Timer, die Beendigung und externe Ereignisse. Wenn diese Verzögerungen unter normalen Umständen auftreten, sollten Sie das Erstellen eines neuen Taskhubs mit einer größeren Anzahl von Partitionen in Erwägung ziehen. Das Konfigurieren von mehr Partitionen bewirkt, dass die Runtime weitere Steuerungswarteschlangen für die Lastverteilung erstellt.
+1. **Steuerungswarteschlangen im Rückstand:** Wenn die Steuerungswarteschlange für diese Instanz eine große Anzahl von Nachrichten enthält, kann es eine Weile dauern, bis die `ExecutionStarted`-Nachricht von der Runtime empfangen und verarbeitet wird. Nachrichtenrückstände können entstehen, wenn Orchestrierungen viele Ereignisse gleichzeitig verarbeiten. Ereignisse, die zur Steuerungswarteschlange hinzugefügt werden, umfassen Startereignisse für Orchestrierungen, den Abschluss von Aktivitäten, permanente Timer, die Beendigung und externe Ereignisse. Wenn diese Verzögerungen unter normalen Umständen auftreten, sollten Sie das Erstellen eines neuen Taskhubs mit einer größeren Anzahl von Partitionen in Erwägung ziehen. Das Konfigurieren von mehr Partitionen bewirkt, dass die Runtime weitere Steuerungswarteschlangen für die Lastverteilung erstellt. Jede Partition entspricht 1:1 einer Steuerungswarteschlange mit maximal 16 Partitionen.
 
 2. **Verzögerungen durch Backoffabruf:** Eine weitere häufige Ursache für Verzögerungen bei Orchestrierungen ist das [zuvor beschriebene Backoffabrufverhalten für Steuerungswarteschlangen](#queue-polling). Diese Verzögerung wird jedoch nur erwartet, wenn eine App auf zwei oder mehr Instanzen aufskaliert wird. Wenn nur eine App-Instanz vorhanden ist oder die App-Instanz, die die Orchestrierung startet, die Instanz ist, die auch die Zielsteuerungswarteschlange abruft, entstehen bei Warteschlangenabrufen keine Verzögerungen. Sie können Verzögerungen durch Backoffabruf reduzieren, indem Sie die Einstellungen für **host.json** wie zuvor beschrieben aktualisieren.
 
@@ -94,7 +94,12 @@ Wenn kein Konto angegeben ist, wird das Standardspeicherkonto `AzureWebJobsStora
 
 ## <a name="orchestrator-scale-out"></a>Horizontales Skalieren des Orchestrators
 
-Aktivitätsfunktionen sind zustandslos, und die horizontale Hochskalierung wird automatisch durch Hinzufügen von virtuellen Computern ausgeführt. Orchestratorfunktionen und Entitäten dagegen sind über mindestens eine Steuerwarteschlange *partitioniert*. Die Anzahl der Steuerelement-Warteschlangen wird in der Datei **host.json** definiert. Mit dem folgenden Beispielcodeausschnitt in „host.json“ wird die `durableTask/storageProvider/partitionCount`-Eigenschaft (oder `durableTask/partitionCount` in Durable Functions 1.x) auf `3` festgelegt.
+Obwohl Aktivitätsfunktionen unendlich aufskaliert werden können, indem weitere VMs elastisch hinzugefügt werden, sind einzelne Orchestratorinstanzen und -entitäten auf eine einzelne Partition beschränkt, und die maximale Anzahl von Partitionen wird durch die `partitionCount`-Einstellung in Ihrer Datei `host.json` begrenzt. 
+
+> [!NOTE]
+> Im Allgemeinen sollten Orchestratorfunktionen einfach sein und keine große Rechenleistung in Anspruch nehmen. Daher ist es nicht erforderlich, eine große Anzahl von Steuerwarteschlange-Partitionen zu erstellen, um einen erhöhten Durchsatz für Orchestrierungen zu erzielen. Der größte Teil der intensiven Vorgänge sollte in zustandslosen Aktivitätsfunktionen erfolgen, die unbegrenzt horizontal hochskaliert werden können.
+
+Die Anzahl der Steuerelement-Warteschlangen wird in der Datei **host.json** definiert. Mit dem folgenden Beispielcodeausschnitt in „host.json“ wird die `durableTask/storageProvider/partitionCount`-Eigenschaft (oder `durableTask/partitionCount` in Durable Functions 1.x) auf `3` festgelegt. Beachten Sie, dass es so viele Steuerungswarteschlangen gibt, wie Partitionen vorhanden sind.
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
@@ -124,11 +129,25 @@ Aktivitätsfunktionen sind zustandslos, und die horizontale Hochskalierung wird 
 
 Ein Aufgabenhub kann mit 1 bis 16 Partitionen konfiguriert werden. Wenn keine Anzahl angegeben ist, werden standardmäßig **4** Partitionen verwendet.
 
-Wenn mehrere Funktionshostinstanzen (in der Regel auf verschiedenen virtuellen Computern) horizontal hochskaliert werden, erhält jede Instanz eine Sperre auf einer der Steuerelement-Warteschlangen. Diese Sperren werden intern als Blob Storage-Leases implementiert und stellen sicher, dass eine Orchestrierungsinstanz oder Entität jeweils nur in einer einzelnen Hostinstanz ausgeführt wird. Wenn ein Aufgabenhub mit drei Steuerwarteschlangen konfiguriert ist, kann die Last bei Orchestrierungsinstanzen und Entitäten auf bis zu drei virtuelle Computer verteilt werden. Zusätzliche virtuelle Computer können zum Erhöhen der Kapazität für die Ausführung der Aktivitätsfunktion hinzugefügt werden.
+Bei Szenarios mit geringem Datenverkehr wird Ihre Anwendung abskaliert, sodass Partitionen von einer geringen Anzahl von Workern verwaltet werden. Sehen Sie sich als Beispiel das folgende Diagramm an.
+
+![Diagramm der Abskalierung von Orchestrierungen](./media/durable-functions-perf-and-scale/scale-progression-1.png)
+
+Im vorherigen Diagramm ist zu sehen, dass bei den Orchestratoren 1 bis 6 über Partitionen hinweg ein Lastenausgleich erfolgt. Ebenso erfolgt bei Partitionen, ähnlich wie für Aktivitäten, über Worker hinweg ein Lastenausgleich. Der Lastenausgleich bei Partitionen über Worker hinweg erfolgt unabhängig von der Anzahl von Orchestratoren, die gestartet werden.
+
+Wenn Sie den Verbrauchstarif oder den Tarif „Elastisch Premium“ von Azure Functions verwenden, oder wenn Sie Lastenausgleich mit automatischer Skalierung konfiguriert haben, werden mit zunehmendem Datenverkehr mehr Worker zugeordnet, und es erfolgt schließlich ein Lastenausgleich für die Partitionen über alle Worker hinweg. Wenn wir weiterhin aufskalieren, wird schließlich jede Partition von einem einzelnen Worker verwaltet. Für Aktivitäten erfolgt hingegen weiterhin der Lastenausgleich über alle Worker hinweg. Dies ist in der folgenden Abbildung zu sehen.
+
+![Erstes Diagramm aufskalierter Orchestrierungen](./media/durable-functions-perf-and-scale/scale-progression-2.png)
+
+Die Obergrenze der maximalen Anzahl gleichzeitiger _aktiver_ Orchestrierungen *zu jedem Zeitpunkt* ist gleich der Anzahl der Ihrer Anwendung zugeordneten Worker, _multipliziert mit_ Ihrem Wert für `maxConcurrentOrchestratorFunctions`. Diese Obergrenze kann präziser bestimmt werden, wenn Ihre Partitionen vollständig über die Worker hinweg aufskaliert sind. Bei vollständiger Aufskalierung, und weil jeder Worker nur über eine einzelne Functions-Hostinstanz verfügt, entspricht die maximale Anzahl _aktiver_ gleichzeitiger Orchestratorinstanzen Ihrer Anzahl von Partitionen, _multipliziert mit_ Ihrem Wert für `maxConcurrentOrchestratorFunctions`. Die folgende Abbildung veranschaulicht ein vollständig aufskaliertes Szenario, in dem weitere Orchestratoren hinzugefügt werden, wovon aber einige inaktiv sind (grau dargestellt).
+
+![Zweites Diagramm aufskalierter Orchestrierungen](./media/durable-functions-perf-and-scale/scale-progression-3.png)
+
+Beim Aufskalieren werden Steuerungswarteschlangen-Sperren möglicherweise neu über Functions-Hostinstanzen verteilt, um sicherzustellen, dass Partitionen gleichmäßig verteilt werden. Diese Sperren werden intern als Blob Storage-Leases implementiert und stellen sicher, dass jede einzelne Orchestrierungsinstanz oder -entität jeweils nur in einer einzelnen Hostinstanz ausgeführt wird. Wenn ein Aufgabenhub mit drei Partitionen (und somit drei Steuerungswarteschlangen) konfiguriert ist, kann der Lastenausgleich für die Orchestrierungsinstanzen und -entitäten über alle drei Lease-Hostinstanzen ausgeführt werden. Zusätzliche virtuelle Computer können zum Erhöhen der Kapazität für die Ausführung der Aktivitätsfunktion hinzugefügt werden.
 
 Das folgende Diagramm veranschaulicht, wie der Azure Functions-Host mit den Speicherentitäten in einer horizontal skalierten Umgebung interagiert.
 
-![Skalierungsdiagramm](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![Skalierungsdiagramm](./media/durable-functions-perf-and-scale/scale-interactions-diagram.png)
 
 Wie im Diagramm oben dargestellt, konkurrieren alle virtuellen Computer um Nachrichten in der Warteschlange für Arbeitsaufgaben. Allerdings können nur drei virtuelle Computer Nachrichten aus Steuerelement-Warteschlangen abrufen, und jeder virtuelle Computer sperrt eine einzige Steuerelement-Warteschlange.
 

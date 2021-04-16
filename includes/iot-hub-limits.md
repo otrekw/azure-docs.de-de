@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 007c19a10db5e000770c8c80189453d4a80edec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82204463"
 ---
 In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen S1, S2, S3 und F1 zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
@@ -64,8 +64,8 @@ IoT Hub drosselt Anforderungen, wenn die folgenden Kontingente überschritten we
 | Drosselung | Wert pro Hub |
 | --- | --- |
 | Identitätsregistrierungsvorgänge <br/> (Erstellen, Abrufen, Auflisten, Aktualisieren und Löschen), <br/> einzelne Import-/Exportvorgänge oder Massenimport/-export |83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3). <br/> 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) |
-| Geräteverbindungen |6\.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
-| Senden von Nachrichten von Geräten an die Cloud |6\.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
+| Geräteverbindungen |6.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
+| Senden von Nachrichten von Geräten an die Cloud |6.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
 | C2D-Sendevorgänge | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2). |
 | C2D-Empfangsvorgänge |833,33/Sekunde/Einheit (50.000/Minute/Einheit) (für S3), 16,67/Sekunde/Einheit (1.000/Minute/Einheit) (für S1 und S2). |
 | Dateiuploadvorgänge |83,33 Dateiuploadinitiierungen/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67 Dateiuploadinitiierungen/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2). <br/> 10.000 SAS-URIs können gleichzeitig für ein Azure-Speicherkonto geöffnet sein.<br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |

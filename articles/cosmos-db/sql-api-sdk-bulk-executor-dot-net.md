@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 91fcfc614fed95c40aa3fed4368d17399255e8b5
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 23c0787b45a6e3f52dae58c24a33e00437f1e09c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102423878"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577188"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET-BulkExecutor-Bibliothek: Informationen zum Download 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "102423878"
 > * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
-| |  |
+| | Links/Hinweise |
 |---|---|
 | **Beschreibung**| Der .NET-Bulk Executor ermöglicht Clientanwendungen die Ausführung von Massenvorgängen für Azure Cosmos DB-Konten. Diese Bibliothek stellt die Namespaces „BulkImport“, „BulkUpdate“ und „BulkDelete“ bereit. Das BulkImport-Modul kann Dokumente auf optimierte Weise per Massenimport erfassen, sodass der für eine Sammlung bereitgestellte Durchsatz maximal genutzt wird. Das BulkUpdate-Modul kann vorhandene Daten in Azure Cosmos-Containern per Massenvorgang in Form von Patches aktualisieren. Das BulkDelete-Modul kann Dokumente auf optimierte Weise per Massenlöschung entfernen, sodass der für eine Sammlung bereitgestellte Durchsatz maximal genutzt wird.|
 |**SDK-Download**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |

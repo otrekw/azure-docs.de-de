@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 30c73849d07c1495251c17510ea71f29c674c618
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102555005"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967488"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
@@ -28,7 +28,7 @@ Das Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Universell V2�
 > [!NOTE]
 > Obwohl Microsoft für die meisten Szenarien Konten vom Typ „Allgemein v2“ empfiehlt, wird Microsoft weiterhin Konten vom Typ „Universell V1“ für neue und vorhandene Kunden unterstützen. Sie können Speicherkonten vom Typ „Universell V1“ in neuen Regionen erstellen, wenn Azure Storage in diesen Regionen zur Verfügung steht. Microsoft hat zurzeit keinen Plan zum Einstellen der Unterstützung für Konten vom Typ „Universell V1“ und wird mindestens ein Jahr im Voraus informieren, bevor ein Azure Storage-Feature als veraltet gekennzeichnet wird. Microsoft wird weiterhin Sicherheitsupdates für Konten vom Typ „Universell V1“ bereitstellen, aber es wird keine neue Featureentwicklung für diesen Kontotyp erwartet.
 >
-> Ab dem 1. Oktober 2020 entsprechen die Preise für Konten vom Typ „Universell V1“ in neuen Azure Storage-Regionen den Preisen für Konten vom Typ „Allgemein v2“ in diesen Regionen. Die Preise in vorhandenen Azure Storage Regionen haben sich nicht geändert. Preisdetails für Konten vom Typ „Universell V1“ in einer bestimmten Region finden Sie auf der Seite mit der Preisübersicht zu Azure Storage. Wählen Sie Ihre Region und dann neben **Preisangebote** die Option **Sonstige** aus.
+> Für neue Azure-Regionen, die nach dem 1. Oktober 2020 online geschaltet wurden, haben sich die Preise für universelle V1-Konten geändert und entsprechen den Preisen für universelle V2-Konten in diesen Regionen. Die Preise für universelle V1-Konten in Azure-Regionen, die vor dem 1. Oktober 2020 vorhanden waren, haben sich nicht geändert. Preisdetails für Konten vom Typ „Universell V1“ in einer bestimmten Region finden Sie auf der Seite mit der Preisübersicht zu Azure Storage. Wählen Sie Ihre Region und dann neben **Preisangebote** die Option **Sonstige** aus.
 
 ## <a name="upgrade-an-account"></a>Aktualisieren eines Kontos
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 44dfd07a5b749d88552bb1dcac2ee4b4e5ce65e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e14e214a220d9dade4fac028620d23c563d86a8f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565239"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554075"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
@@ -140,7 +140,7 @@ Weitere Informationen zur Verwendung von Azure RBAC zum Verwalten des Zugriffs a
 
 ## <a name="using-conditional-access"></a>Verwenden von bedingtem Zugriff
 
-Sie können Richtlinien für bedingten Zugriff erzwingen, z. B. die mehrstufige Authentifizierung oder Überprüfung des Anmelderisikos für Benutzer, bevor der Zugriff auf virtuelle Linux-Computer in Azure gewährt wird, für die die Azure AD-Anmeldung aktiviert ist. Zum Anwenden einer Richtlinie für bedingten Zugriff müssen Sie die App Azure Linux VM Sign-In über die Zuweisungsoption für Cloud-Apps oder Aktionen auswählen und dann „Anmelderisiko“ als Bedingung und/oder „Mehrstufige Authentifizierung erforderlich“ als Zugriffssteuerung verwenden. 
+Sie können Richtlinien für bedingten Zugriff erzwingen, z. B. die mehrstufige Authentifizierung oder Überprüfung des Anmelderisikos für Benutzer, bevor der Zugriff auf virtuelle Linux-Computer in Azure gewährt wird, für die die Azure AD-Anmeldung aktiviert ist. Zum Anwenden einer Richtlinie für bedingten Zugriff müssen Sie die App „Microsoft Azure Linux Virtual Machine Sign-In“ über die Zuweisungsoption für Cloud-Apps oder Aktionen auswählen und dann „Anmelderisiko“ als Bedingung und/oder „Mehrstufige Authentifizierung erforderlich“ als Zugriffssteuerung verwenden. 
 
 > [!WARNING]
 > Eine aktivierte/erzwungene Authentifizierung über Azure AD Multi-Factor Authentication pro Benutzer wird für VM-Anmeldungen nicht unterstützt.

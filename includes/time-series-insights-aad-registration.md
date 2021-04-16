@@ -9,14 +9,14 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 0ce9575f078058c821ffffe1b9fe45eed5a4ad94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 22411e5a80f555a3ead05d39466a7a175923d9bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101724171"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105105454"
 ---
-* Konfigurieren Sie nach der Auswahl der geeigneten Plattform in Schritt 4 der Einstellungen zu [Plattform konfigurieren](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#configure-platform-settings) die **Umleitungs-URIs** und **Zugriffstoken** im Seitenpanel rechts auf der Benutzeroberfläche.
+* Konfigurieren Sie nach der Auswahl der geeigneten Plattform in Schritt 4 der Einstellungen zu [Plattform konfigurieren](../articles/active-directory/develop/quickstart-register-app.md#configure-platform-settings) die **Umleitungs-URIs** und **Zugriffstoken** im Seitenpanel rechts auf der Benutzeroberfläche.
 
     * **Umleitungs-URIs** müssen mit der in der Authentifizierungsanforderung angegebenen Adresse übereinstimmen:
 
@@ -41,4 +41,4 @@ ms.locfileid: "101724171"
 
     [![Angeben der Art der von Ihrer App benötigten API-Berechtigung](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
 
-* [Fügen Sie Anmeldeinformationen hinzu](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#add-credentials), wenn die Anwendung selbst die APIs Ihrer Umgebung aufruft. Mit den Anmeldeinformationen kann sich Ihre Anwendung selbst authentifizieren und benötigt zur Laufzeit keine Interaktion durch einen Benutzer.
+* [Fügen Sie Anmeldeinformationen hinzu](../articles/active-directory/develop/quickstart-register-app.md#add-credentials), wenn die Anwendung selbst die APIs Ihrer Umgebung aufruft. Mit den Anmeldeinformationen kann sich Ihre Anwendung selbst authentifizieren und benötigt zur Laufzeit keine Interaktion durch einen Benutzer.

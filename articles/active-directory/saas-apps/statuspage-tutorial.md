@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: cc3ce56ecd17d627001f4925355c055afdc09d22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6bc2508220a8c0193efb55eb6cd11f7e151c80be
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729624"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284511"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-statuspage"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit StatusPage
 
-In diesem Tutorial erfahren Sie, wie Sie StatusPage in Azure Active Directory (Azure AD) integrieren.
-Die Integration von StatusPage in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie StatusPage in Azure Active Directory (Azure AD) integrieren. Die Integration von PressPage in Azure AD ermöglicht Folgendes:
 
 * Sie können in Azure AD steuern, wer auf StatusPage Zugriff hat.
-* Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei StatusPage angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei StatusPage anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit StatusPage konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-* StatusPage-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+* StatusPage-Abonnement, für das einmaliges Anmelden aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* StatusPage unterstützt **IDP**-initiiertes einmaliges Anmelden.
+* StatusPage unterstützt **IDP** initiiertes einmaliges Anmelden.
 
-## <a name="adding-statuspage-from-the-gallery"></a>Hinzufügen von StatusPage aus dem Katalog
+## <a name="add-statuspage-from-the-gallery"></a>Hinzufügen von StatusPage aus dem Katalog
 
 Zum Konfigurieren der Integration von StatusPage in Azure AD müssen Sie StatusPage aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
@@ -65,13 +64,13 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines StatusPage-Testbenutzers](#create-statuspage-test-user)** , um eine Entsprechung von Britta Simon in StatusPage zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
 6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **AskYourTeam** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -85,7 +84,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | `https://<subdomain>.statuspage.io/` |
     |
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
 
      | Antwort-URL |
     |--------------|
@@ -152,17 +151,17 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 1. Klicken Sie auf der Hauptsymbolleiste auf **Konto verwalten**.
 
-    ![Screenshot: Auswahl der Option „Konto verwalten“ auf der StatusPage-Unternehmenswebsite](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Screenshot: Auswahl der Option „Konto verwalten“ auf der StatusPage-Unternehmenswebsite](./media/statuspage-tutorial/account.png)
 
 1. Klicken Sie auf die Registerkarte **Einmaliges Anmelden** .
 
-    ![Screenshot: Registerkarte „Einmaliges Anmelden“](./media/statuspage-tutorial/tutorial_statuspage_07.png)
+    ![Screenshot: Registerkarte „Einmaliges Anmelden“](./media/statuspage-tutorial/tab.png)
 
 1. Führen Sie auf der Seite für die SSO-Einrichtung die folgenden Schritte aus:
 
-    ![Screenshot: Seite für die SSO-Einrichtung, auf der Sie die beschriebenen Werte eingeben können](./media/statuspage-tutorial/tutorial_statuspage_08.png)
+    ![Screenshot: Seite für die SSO-Einrichtung, auf der Sie die beschriebenen Werte eingeben können](./media/statuspage-tutorial/setup.png)
 
-    ![Screenshot: Schaltfläche „Konfiguration speichern“](./media/statuspage-tutorial/tutorial_statuspage_09.png)
+    ![Screenshot: Schaltfläche „Konfiguration speichern“](./media/statuspage-tutorial/configuration.png)
 
     a. Fügen Sie in das Textfeld **SSO Target URL** (SSO-Ziel-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -182,25 +181,25 @@ StatusPage unterstützt die Just-in-Time-Bereitstellung. Sie haben sie bereits u
 
 1. Klicken Sie im Menü oben auf **Konto verwalten**.
 
-    ![Screenshot: Auswahl der Option „Konto verwalten“ auf der StatusPage-Unternehmenswebsite](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![Screenshot: Auswahl der Option „Konto verwalten“ auf der StatusPage-Unternehmenswebsite](./media/statuspage-tutorial/account.png)
 
 1. Klicken Sie auf die Registerkarte **Teammitglieder**.
   
-    ![Screenshot: Registerkarte „Teammitglieder“](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
+    ![Screenshot: Registerkarte „Teammitglieder“](./media/statuspage-tutorial/sandbox.png) 
 
 1. Klicken Sie auf **TEAMMITGLIEDER HINZUFÜGEN**.
   
-    ![Screenshot: Schaltfläche „Teammitglied hinzufügen“](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
+    ![Screenshot: Schaltfläche „Teammitglied hinzufügen“](./media/statuspage-tutorial/team.png) 
 
 1. Geben Sie in die Textfelder **E-Mail-Adresse**, **Vorname** und **Nachname** die entsprechenden Informationen eines gültigen Benutzers ein, den Sie bereitstellen möchten. 
 
-    ![Screenshot: Dialogfeld „Benutzer hinzufügen“, in dem Sie die beschriebenen Werte eingeben können](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
+    ![Screenshot: Dialogfeld „Benutzer hinzufügen“, in dem Sie die beschriebenen Werte eingeben können](./media/statuspage-tutorial/user.png) 
 
 1. Wählen Sie als **Rolle** die Option **Clientadministrator** aus.
 
 1. Klicken Sie auf **KONTO ERSTELLEN**.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 

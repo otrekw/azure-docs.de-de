@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: b53af0fda8bb24bf03d0e02f61ce7d195ae69503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55955f883425651749809da951832484f098aeaf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680826"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256122"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -169,11 +169,11 @@ Der Verkehrsinfodienst ist eine Suite von Webdiensten, mit denen Entwickler webb
 
 Weitere Informationen finden Sie in der [Dokumentation zum Verkehrsinfodienst](/rest/api/maps/traffic).
 
-### <a name="weather-services-preview"></a>Wetterinfodienste (Vorschauversion) 
+### <a name="weather-services"></a>Wetterdienste
 
 Wetterinfodienste bieten APIs, mit denen Entwickler Wetterinformationen für einen bestimmten Standort abrufen können. Die Informationen enthalten Details wie z. B das Datum und die Uhrzeit der Beobachtung, eine kurze Beschreibung der Wetterbedingungen, das Wettersymbol, Niederschlagsanzeigen, Temperatur und Windgeschwindigkeit. Weitere Details, wie z. B. RealFeel™-Temperatur und UV-Index, werden ebenfalls zurückgegeben.
 
-Entwickler können die [Get Weather along Route-API](/rest/api/maps/weather/getweatheralongroutepreview) verwenden, um Wetterinformationen auf einer bestimmten Route abzurufen. Außerdem unterstützt der Dienst die Generierung von Wetterbenachrichtigungen für Wegpunkte, die von Wetterrisiken betroffenen sind, z. B. Überflutung oder starker Regen.
+Entwickler können die [Get Weather along Route-API](/rest/api/maps/weather/getweatheralongroute) verwenden, um Wetterinformationen auf einer bestimmten Route abzurufen. Außerdem unterstützt der Dienst die Generierung von Wetterbenachrichtigungen für Wegpunkte, die von Wetterrisiken betroffenen sind, z. B. Überflutung oder starker Regen.
 
 Mit der [Get Map Tile V2-API](/rest/api/maps/renderv2/getmaptilepreview) können Sie frühere, aktuelle und zukünftige Radar- und Satellitenkacheln anfordern.
 

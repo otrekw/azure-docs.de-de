@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75649198"
 ---
 # <a name="custom-resource-proxy-reference"></a>Referenz zu benutzerdefinierten Ressourcenproxys
@@ -324,4 +324,4 @@ Content-Type: application/json; charset=utf-8
 - [Schnellstart: Erstellen eines benutzerdefinierten Azure-Ressourcenanbieters und Bereitstellen benutzerdefinierter Ressourcen](./create-custom-provider.md)
 - [Tutorial: Erstellen von benutzerdefinierten Aktionen und Ressourcen in Azure](./tutorial-get-started-with-custom-providers.md)
 - [Vorgehensweise: Hinzufügen benutzerdefinierter Aktionen zur Azure-REST-API](./custom-providers-action-endpoint-how-to.md)
-- [Referenz: Referenz zum benutzerdefinierten Ressourcencache](proxy-cache-resource-endpoint-reference.md)
+- [Referenz zum benutzerdefinierten Ressourcencache](proxy-cache-resource-endpoint-reference.md)

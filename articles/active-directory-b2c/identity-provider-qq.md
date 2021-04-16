@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0f09b4557f9bbf2f074948bd7c8dbd349cd397bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3456ecb1de4b6197b274f09a0d25c31c51f43ca0
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103488668"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028841"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem QQ-Konto mithilfe von Azure Active Directory B2C
 
@@ -177,7 +177,7 @@ Sie können ein QQ-Konto als Anspruchsanbieter definieren, indem Sie es in der E
 ## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
-1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
 1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **QQ** aus, um sich mit dem QQ-Konto anzumelden.
 

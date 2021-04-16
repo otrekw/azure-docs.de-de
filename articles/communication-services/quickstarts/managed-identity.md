@@ -10,17 +10,17 @@ ms.date: 03/10/2021
 ms.author: peiliu
 ms.reviewer: mikben
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: ffda88da451e25b79112a7adf85026158bd27acc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e4b71cc889615fd4784f11c9edd77b44ef421d9e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492352"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110737"
 ---
 # <a name="use-managed-identities"></a>Verwenden verwalteter Identitäten
-Hier erfahren Sie mehr zu den ersten Schritten bei der Verwendung verwalteter Identitäten mit Azure Communication Services. Die Identitäts- und SMS-Clientbibliotheken von Communication Services unterstützen die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md).
+Hier erfahren Sie mehr zu den ersten Schritten bei der Verwendung verwalteter Identitäten mit Azure Communication Services. Die Identitäts- und SMS-SDKs von Communication Services unterstützen die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md).
 
-In diesem Schnellstart erfahren Sie, wie Sie den Zugriff auf die Identitäts- und SMS-Clientbibliotheken aus einer Azure-Umgebung autorisieren, die verwaltete Identitäten unterstützt. Darüber hinaus erfahren Sie, wie Sie Ihren Code in einer Entwicklungsumgebung testen.
+In diesem Schnellstart erfahren Sie, wie Sie den Zugriff auf die Identitäts- und SMS-SDKs aus einer Azure-Umgebung autorisieren, die verwaltete Identitäten unterstützt. Darüber hinaus erfahren Sie, wie Sie Ihren Code in einer Entwicklungsumgebung testen.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [.NET](./includes/managed-identity-net.md)]

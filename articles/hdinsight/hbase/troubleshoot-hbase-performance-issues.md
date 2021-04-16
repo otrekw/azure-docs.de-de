@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 466fac524601e2d569bfa0ccf90179fe9419210d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98942889"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Troubleshooting bei Apache HBase-Leistungsproblemen in Azure HDInsight
@@ -84,26 +84,26 @@ Im Anschluss finden Sie einige der anderen spezifischen Parameter, mit deren Opt
 
 - Phoenix-spezifische Konfigurationen für die Optimierung von Threadpools:
 
-    - `Phoenix.query.queuesize`: **10.000**
+    - `Phoenix.query.queuesize`: **10000**
 
     - `Phoenix.query.threadpoolsize`: **512**
 
 - Weitere Phoenix-spezifische Konfigurationen:
 
-    - `Phoenix.rpc.index.handler.count`: **50** (im Falle umfangreicher oder zahlreicher Indexsuchvorgänge)
+    - `Phoenix.rpc.index.handler.count`: **50** (im Fall umfangreicher oder zahlreicher Indexsuchvorgänge)
 
-    - `Phoenix.stats.updateFrequency`: **1 Stunde**
+    - `Phoenix.stats.updateFrequency`: **1 Stunde**
 
-    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`: **1 Stunde**
+    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`: **1 Stunde**
 
     - `Phoenix.coprocessor.maxmetadatacachesize`: **50 MB**
 
-- RPC-Timeouts: **Drei Minuten**
+- RPC-Timeouts: **3 Minuten**
 
    - RPC-Timeouts beinhalten HBase-RPC-Timeout, HBase-Clientscannertimeout und Phoenix-Abfragetimeout. 
    - Achten Sie darauf, dass der Parameter `hbase.client.scanner.caching` sowohl auf der Server- als auch auf der Clientseite auf den gleichen Wert festgelegt ist. Andernfalls treten auf der Clientseite Fehler im Zusammenhang mit `OutOfOrderScannerException` auf. Diese Einstellung sollte für umfassende Scans auf einen niedrigen Wert festgelegt werden. Wir haben diesen Wert auf **100** festgelegt.
 
-## <a name="other-considerations"></a>Weitere Überlegungen
+## <a name="other-considerations"></a>Andere Aspekte
 
 Im Anschluss finden Sie weitere Parameter, die ggf. optimiert werden sollten:
 

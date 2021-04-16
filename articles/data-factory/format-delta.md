@@ -1,17 +1,17 @@
 ---
 title: Deltaformat in Azure Data Factory
 description: Transformieren und Verschieben von Daten aus einer Delta Lake-Instanz unter Verwendung des Deltaformats
-author: djpmsft
+author: dcstwh
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.author: daperlov
-ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/26/2020
+ms.author: weetok
+ms.openlocfilehash: 6d9d2b0d185750cf8ed8192661f28a2b82d88b78
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100386491"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222537"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Deltaformat in Azure Data Factory
 
@@ -75,6 +75,8 @@ Die folgende Tabelle enthält die von einer Deltasenke unterstützten Eigenschaf
 | Komprimierungsgrad | Wählen Sie aus, ob die Komprimierung schnellstmöglich abgeschlossen oder die resultierende Datei optimal komprimiert werden soll. | Erforderlich, wenn `compressedType` angegeben wird. | `Optimal` oder `Fastest` | compressionLevel |
 | Vakuum | Geben Sie für ältere Versionen der Tabelle den Schwellenwert für die Aufbewahrung in Stunden an. Bei einem Wert von Null oder weniger werden standardmäßig 30 Tage verwendet. | ja | Integer | vacuum |
 | Updatemethode | Geben Sie an, welche Updatevorgänge für die Delta Lake-Instanz zulässig sind. Für Methoden, bei denen es sich nicht um Einfügevorgänge handelt, ist zuerst eine Zeilenänderungstransformation erforderlich, um Zeilen zu markieren. | ja | `true` oder `false` | deletable <br> insertable <br> updateable <br> merge |
+| Optimierter Schreibvorgang | Erzielen Sie einen höheren Durchsatz für den Schreibvorgang, indem Sie das interne Mischen in Spark-Executors optimieren. Dies führt ggf. zu weniger Partitionen und größeren Dateien. | nein | `true` oder `false` | optimizedWrite: true |
+| Automatisches Komprimieren | Nach dem Abschließen der einzelnen Schreibvorgänge führt Spark automatisch den Befehl ```OPTIMIZE``` aus, um die Daten neu zu organisieren. Dies führt bei Bedarf zu weiteren Partitionen, um künftig eine bessere Leseleistung zu erzielen. | nein | `true` oder `false` |    autoCompact: true |
 
 ### <a name="delta-sink-script-example"></a>Skriptbeispiel für Deltasenke
 

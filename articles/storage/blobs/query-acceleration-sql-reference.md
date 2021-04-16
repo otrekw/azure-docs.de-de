@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ca4fe1410c18357a1fab10cc9c971cf3a81542fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95908777"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963256"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Abfragebeschleunigung – SQL-Sprachreferenz
 
@@ -122,8 +122,8 @@ Die SQL-Sprache für die Abfragebeschleunigung unterstützt die folgenden standa
 |[UPPER](/sql/t-sql/functions/upper-transact-sql)    |Gibt einen Zeichenausdruck zurück, wobei Kleinbuchstaben in Großbuchstaben umgewandelt werden.|
 |[SUBSTRING](/sql/t-sql/functions/substring-transact-sql)    |Gibt einen Teil eines Zeichen-, Binär-, Text- oder Bildausdrucks in SQL Server zurück.|
 |[TRIM](/sql/t-sql/functions/trim-transact-sql)    |Entfernt das Leerzeichen – char(32) – oder andere am Beginn und Ende einer Zeichenfolge angegebene Zeichen.|
-|LEADING    |Beschreibung|
-|TRAILING    |Beschreibung|
+|LEADING    |Entfernt das Leerzeichen – char(32) – oder andere am Beginn einer Zeichenfolge angegebene Zeichen.|
+|TRAILING    |Entfernt das Leerzeichen char(32) oder andere angegebene Zeichen vom Ende einer Zeichenkette.|
 
 Hier einige Beispiele:
 

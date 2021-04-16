@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
 ms.openlocfilehash: 08b21ccd7f7958f00546583f680ecb8cde4a20c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75932616"
 ---
 # <a name="policy-settings-for-web-application-firewall-on-azure-front-door"></a>Richtlinieneinstellungen für Web Application Firewall auf Azure Front Door
@@ -21,7 +21,7 @@ Mit einer Richtlinie für Web Application Firewall (WAF) können Sie den Zugriff
 ## <a name="waf-state"></a>WAF-Status
 
 Eine WAF-Richtlinie für Front Door kann einen der beiden folgenden Zustände aufweisen:
-- **Aktiviert:** Wenn eine Richtlinie aktiviert ist, überprüft WAF aktiv eingehende Anforderungen und führt den Regeldefinitionen entsprechende Aktionen durch.
+- **Aktiviert:** Wenn eine Richtlinie aktiviert ist, überprüft die WAF aktiv eingehende Anforderungen und führt den Regeldefinitionen entsprechende Aktionen durch.
 - **Deaktiviert:** Wenn eine Richtlinie deaktiviert ist, wird die WAF-Überprüfung angehalten. Eingehende Anforderungen umgehen WAF und werden auf dem Front Door-Routing basierend an Back-Ends gesendet.
 
 ## <a name="waf-mode"></a>WAF-Modus

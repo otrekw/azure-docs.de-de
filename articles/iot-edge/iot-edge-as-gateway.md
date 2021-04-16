@@ -4,19 +4,19 @@ description: Verwenden Sie Azure IoT Edge zum Erstellen eines transparenten oder
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ca8f02b375420590bcf1cc732c067a165e22b3fa
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: aa8b7372af91fc7cb194dfc3a6212cb4ce1fa0a2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103492709"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105027345"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Verwendung eines IoT Edge-Geräts als Gateway
 
@@ -24,12 +24,7 @@ ms.locfileid: "103492709"
 
 IoT Edge-Geräte können als Gateways fungieren, die eine Verbindung zwischen anderen Geräten im Netzwerk und IoT Hub bereitstellen.
 
-Das IoT Edge-Hubmodul verhält sich wie IoT Hub und kann somit Verbindungen von allen Geräten verarbeiten, die über eine Identität mit IoT Hub verfügen, einschließlich anderer IoT Edge-Geräte. Dieser Gatewaymustertyp wird als *transparent* bezeichnet, weil Nachrichten von nachgeschalteten Geräten an IoT Hub übergeben werden können, als gäbe es kein Gateway zwischen ihnen.
-
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-Ab Version 1.2 von IoT Edge können transparente Gateways Downstreamverbindungen von anderen IoT Edge-Geräten verarbeiten.
-::: moniker-end
+Das IoT Edge-Hub-Modul verhält sich wie IoT Hub und kann somit Verbindungen von anderen Geräten verarbeiten, die über eine Identität mit IoT Hub verfügen. Dieser Gatewaymustertyp wird als *transparent* bezeichnet, weil Nachrichten von nachgeschalteten Geräten an IoT Hub übergeben werden können, als gäbe es kein Gateway zwischen ihnen.
 
 Für Geräte, die keine eigene Verbindung mit IoT Hub herstellen (können), können IoT Edge-Gateways diese Verbindung bereitstellen. Dieser Gatewaymustertyp wird als *Übersetzung* bezeichnet, weil das IoT Edge-Gerät eingehende Nachrichten nachgeschalteter Geräte verarbeiten muss, bevor sie an IoT Hub weitergeleitet werden können. In diesen Szenarien sind zusätzliche Module auf dem IoT Edge-Gateway für die Ausführung der Verarbeitungsschritte erforderlich.
 
@@ -51,17 +46,19 @@ Weitere Informationen zum Verwalten der Kommunikation zwischen nachgeschalteten 
 
 <!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
-
-IoT Edge-Geräte können keinem IoT Edge-Gateway nachgeschaltet werden.
-
 ![Diagramm des Gatewaymusters „Transparent“](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+>[!NOTE]
+>In IoT Edge, Version 1.1 und älter, können IoT Edge-Geräte einem IoT Edge-Gateway nicht nachgeschaltet werden.
+>
+>Ab Version 1.2 von IoT Edge können transparente Gateways Downstreamverbindungen von anderen IoT Edge-Geräten verarbeiten. Weitere Informationen erhalten Sie, wenn Sie zur Version[IOT Edge 1.2](?view=iotedge-2020-11&preserve-view=true) dieses Artikels wechseln.
 
 ::: moniker-end
 
-<!-- 1.2.0 -->
+<!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
-Ab Version 1.2.0 können IoT Edge-Geräte über transparente Gateways eine Verbindung herstellen.
+Ab Version 1.2 von IoT Edge können transparente Gateways Downstreamverbindungen von anderen IoT Edge-Geräten verarbeiten.
 
 <!-- TODO add a downstream IoT Edge device to graphic -->
 

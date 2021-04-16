@@ -12,12 +12,12 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 92da0b12a3119b048866eef5b18f658916595294
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cde44ddb49ede8002b8a25ab47ae92ccd602a9d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645924"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226369"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Verfolgen des Benutzerverhaltens in Azure AD B2C mithilfe von Application Insights
 
@@ -252,7 +252,7 @@ Um Ihre geschäftlichen Anforderungen zu erfüllen, können Sie weitere Ansprüc
 
 ### <a name="manipulate-claims"></a>Ändern von Ansprüchen
 
-Sie können mit [Eingabeanspruchstransformationen](custom-policy-trust-frameworks.md#manipulating-your-claims) die Eingabeansprüche ändern oder neue generieren, bevor Sie sie an Application Insights senden. Im folgenden Beispiel enthält das technische Profil die Eingabeanspruchstransformation `CheckIsAdmin`.
+Sie können mit [Eingabeanspruchstransformationen](custom-policy-overview.md#manipulating-your-claims) die Eingabeansprüche ändern oder neue generieren, bevor Sie sie an Application Insights senden. Im folgenden Beispiel enthält das technische Profil die Eingabeanspruchstransformation `CheckIsAdmin`.
 
 ```xml
 <TechnicalProfile Id="AppInsights-SignInComplete">
@@ -269,7 +269,7 @@ Sie können mit [Eingabeanspruchstransformationen](custom-policy-trust-framework
 
 ### <a name="add-events"></a>Ereignisse hinzufügen
 
-Um ein Ereignis hinzuzufügen, erstellen Sie ein neues technisches Profil, das das technische `AppInsights-Common`-Profil enthält. Fügen Sie dann der [User Journey](custom-policy-trust-frameworks.md#orchestration-steps) das technische Profil als Orchestrierungsschritt hinzu. Verwenden Sie das Element [Precondition](userjourneys.md#preconditions), um das Ereignis zu initiieren, wenn Sie bereit sind. Lassen Sie das Ereignis beispielsweise nur melden, wenn Benutzer die mehrstufige Authentifizierung durchlaufen.
+Um ein Ereignis hinzuzufügen, erstellen Sie ein neues technisches Profil, das das technische `AppInsights-Common`-Profil enthält. Fügen Sie dann der [User Journey](custom-policy-overview.md#orchestration-steps) das technische Profil als Orchestrierungsschritt hinzu. Verwenden Sie das Element [Precondition](userjourneys.md#preconditions), um das Ereignis zu initiieren, wenn Sie bereit sind. Lassen Sie das Ereignis beispielsweise nur melden, wenn Benutzer die mehrstufige Authentifizierung durchlaufen.
 
 ```xml
 <TechnicalProfile Id="AppInsights-MFA-Completed">

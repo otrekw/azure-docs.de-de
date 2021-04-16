@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/11/2021
-ms.openlocfilehash: bd91c29ca97c2096c4d8f3df19dbb9eab306b8e7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: 9d7ab0498673ad7006087b66575eea9371b96d11
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149748"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565880"
 ---
 # <a name="maintenance-window-preview"></a>Wartungsfenster (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,14 +27,14 @@ Die Funktion „Wartungsfenster“ ermöglicht Ihnen das Konfigurieren von Wartu
 
 ## <a name="overview"></a>Übersicht
 
-Azure führt regelmäßig eine [geplante Wartung](planned-maintenance.md) von Ressourcen in SQL-Datenbank und Azure SQL Managed Instance durch. Während des Azure SQL-Wartungsereignisses sind die Datenbanken vollständig verfügbar, können jedoch innerhalb der entsprechenden Verfügbarkeits-SLAs ([SLA für Azure SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/sql-database) und [SLA für verwaltete SQL-Instanz](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance)) kurzen Failovern unterliegen, weil in einigen Fällen eine Neukonfiguration der Ressourcen erforderlich ist.
+Azure führt regelmäßig eine [geplante Wartung](planned-maintenance.md) von Ressourcen in SQL-Datenbank und Azure SQL Managed Instance durch. Während des Azure SQL-Wartungsereignisses sind Datenbanken vollständig verfügbar, können jedoch innerhalb der entsprechenden Verfügbarkeits-SLAs für [SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/sql-database) und [Azure SQL Managed Instance](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance) kurzen Neukonfigurationen unterliegen.
 
-Das Wartungsfenster ist für Produktionsworkloads vorgesehen, die gegenüber Datenbank- oder Instanzfailovern nicht resilient sind und keine kurzen Verbindungsunterbrechungen durch geplante Wartungsereignisse auffangen können. Durch die Auswahl eines gewünschten Wartungsfensters können Sie die Auswirkungen geplanter Wartungen minimieren, da diese außerhalb Ihrer Hauptgeschäftszeiten stattfinden. Stabile Workloads und Nicht-Produktionsworkloads sind möglicherweise von der Azure SQL-Standardwartungsrichtlinie abhängig.
+Das Wartungsfenster ist für Produktionsworkloads vorgesehen, die gegenüber Neukonfigurationen von Datenbanken oder Instanzen nicht resilient sind und keine kurzen Verbindungsunterbrechungen durch geplante Wartungsereignisse auffangen können. Durch die Auswahl eines gewünschten Wartungsfensters können Sie die Auswirkungen geplanter Wartungen minimieren, da diese außerhalb Ihrer Hauptgeschäftszeiten stattfinden. Stabile Workloads und Nicht-Produktionsworkloads sind möglicherweise von der Azure SQL-Standardwartungsrichtlinie abhängig.
 
 Das Wartungsfenster kann bei der Erstellung oder für vorhandene Azure SQL-Ressourcen konfiguriert werden. Es kann im Azure-Portal, mit PowerShell, der Befehlszeilenschnittstelle oder der Azure-API konfiguriert werden.
 
 > [!Important]
-> Das Konfigurieren des Wartungsfensters ist ein zeitintensiver, asynchroner Vorgang, ähnlich dem Ändern der Dienstebene der Azure SQL-Ressource. Die Ressource bleibt während des Vorgangs verfügbar, mit Ausnahme eines kurzen Failovers, das am Ende des Vorgangs erfolgt und in der Regel etwa 8 Sekunden dauert (auch bei unterbrochenen zeitintensiven Transaktionen). Um die Auswirkungen des Failovers zu minimieren, sollten Sie den Vorgang außerhalb von Spitzenzeiten durchführen.
+> Das Konfigurieren des Wartungsfensters ist ein zeitintensiver, asynchroner Vorgang, ähnlich dem Ändern der Dienstebene der Azure SQL-Ressource. Die Ressource bleibt während des Vorgangs verfügbar – mit Ausnahme einer kurzen Neukonfiguration, die am Ende des Vorgangs erfolgt und normalerweise etwa 8 Sekunden dauert (auch bei unterbrochenen zeitintensiven Transaktionen). Wenn Sie die Auswirkungen der Neukonfiguration minimieren möchten, sollten Sie den Vorgang außerhalb der Spitzenzeiten durchführen.
 
 ### <a name="gain-more-predictability-with-maintenance-window"></a>Mehr Vorhersehbarkeit bei Wartungsfenstern
 
@@ -55,7 +55,7 @@ Nach Auswahl des Wartungsfensters und nach Abschluss der Dienstkonfiguration wer
 Das Konfigurieren und Verwenden des Wartungsfensters ist für alle geeigneten [Angebotstypen](https://azure.microsoft.com/support/legal/offer-details/) (Nutzungsbasierte Bezahlung, Cloud Solution Provider (CSP), Microsoft Enterprise Agreement oder Microsoft-Kundenvereinbarung) kostenlos.
 
 > [!Note]
-> Ein Azure-Angebot ist der Typ von Azure-Abonnement, das Sie besitzen. Zum Beispiel handelt es sich bei Abonnements des Typs [Nutzungsbasierte Bezahlung (Pay-As-You-Go)](https://azure.microsoft.com/offers/ms-azr-0003p/), [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) und [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) insgesamt um Azure-Angebote. Jedes Angebot bzw. jeder Plan hat unterschiedliche Vorteile und unterliegt unterschiedlichen Bestimmungen. Ihr Angebot bzw. Ihr Plan wird in der Abonnementsübersicht angezeigt. Wie Sie mit Ihrem Abonnement zu einem anderen Angebot wechseln können, erfahren Sie unter [Ändern Ihres Azure-Abonnements in ein anderes Angebot](/azure/cost-management-billing/manage/switch-azure-offer).
+> Ein Azure-Angebot ist der Typ von Azure-Abonnement, das Sie besitzen. Zum Beispiel handelt es sich bei Abonnements des Typs [Nutzungsbasierte Bezahlung (Pay-As-You-Go)](https://azure.microsoft.com/offers/ms-azr-0003p/), [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) und [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) insgesamt um Azure-Angebote. Jedes Angebot bzw. jeder Plan hat unterschiedliche Vorteile und unterliegt unterschiedlichen Bestimmungen. Ihr Angebot bzw. Ihr Plan wird in der Abonnementsübersicht angezeigt. Wie Sie mit Ihrem Abonnement zu einem anderen Angebot wechseln können, erfahren Sie unter [Ändern Ihres Azure-Abonnements in ein anderes Angebot](../../cost-management-billing/manage/switch-azure-offer.md).
 
 ## <a name="advance-notifications"></a>Vorabbenachrichtigungen
 
@@ -98,7 +98,7 @@ Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters
 
 Für die optimale Nutzung von Wartungsfenstern müssen Sie sicherstellen, dass Ihre Clientanwendungen die Verbindungsrichtlinie „Umleiten“ verwenden. Empfohlen wird die Verbindungsrichtlinie „Umleiten“, da die Clients Verbindungen direkt mit dem Knoten herstellen, der die Datenbank hostet. Dies führt zu niedrigerer Latenz und verbessertem Durchsatz.  
 
-* In Azure SQL-Datenbank sind möglicherweise alle Verbindungen, die die Verbindungsrichtlinie „Proxy“ verwenden, von dem ausgewählten Wartungsfenster und einem Wartungsfenster für den Gatewayknoten betroffen. Hingegen sind Clientverbindungen, die die empfohlene Verbindungsrichtlinie „Umleiten“ verwenden, von einem Failover bei der Wartung des Gatewayknotens nicht betroffen. 
+* In Azure SQL-Datenbank sind möglicherweise alle Verbindungen, die die Verbindungsrichtlinie „Proxy“ verwenden, von dem ausgewählten Wartungsfenster und einem Wartungsfenster für den Gatewayknoten betroffen. Dagegen sind Clientverbindungen, die die empfohlene Verbindungsrichtlinie „Umleiten“ verwenden, bei der Wartung des Gatewayknotens nicht von einer Neukonfiguration betroffen. 
 
 * In Azure SQL Managed Instance werden die Gatewayknoten [im virtuellen Cluster](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) gehostet, und für sie gilt das gleiche Wartungsfenster wie für die verwaltete Instanz. Es wird jedoch trotzdem empfohlen, die Verbindungsrichtlinie „Umleiten“ zu verwenden, um die Anzahl der Unterbrechungen während des Wartungsereignisses zu minimieren.
 
@@ -108,17 +108,17 @@ Weitere Informationen zur Clientverbindungsrichtlinie in Azure SQL Managed Inst
 
 ## <a name="considerations-for-azure-sql-managed-instance"></a>Hinweise zu Azure SQL Managed Instance
 
-Azure SQL Managed Instance besteht aus Dienstkomponenten, die auf dedizierten isolierten virtuellen Computern gehostet werden, die wiederum im VNet-Subnetz des Kunden ausgeführt werden. Diese virtuellen Computer bilden [virtuelle Cluster](/azure/azure-sql/managed-instance/connectivity-architecture-overview#high-level-connectivity-architecture), in denen mehrere verwaltete Instanzen gehostet werden können. Das für die Instanzen eines Subnetzes konfigurierte Wartungsfenster kann Einfluss auf die Anzahl der virtuellen Cluster innerhalb des Subnetzes und auf die Verteilung von Instanzen zwischen virtuellen Clustern haben. Dies kann die Berücksichtigung einiger Auswirkungen erfordern.
+Azure SQL Managed Instance besteht aus Dienstkomponenten, die auf dedizierten isolierten virtuellen Computern gehostet werden, die wiederum im VNet-Subnetz des Kunden ausgeführt werden. Diese virtuellen Computer bilden [virtuelle Cluster](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture), in denen mehrere verwaltete Instanzen gehostet werden können. Das für die Instanzen eines Subnetzes konfigurierte Wartungsfenster kann Einfluss auf die Anzahl der virtuellen Cluster innerhalb des Subnetzes und auf die Verteilung von Instanzen zwischen virtuellen Clustern haben. Dies kann die Berücksichtigung einiger Auswirkungen erfordern.
 
 ### <a name="maintenance-window-configuration-is-long-running-operation"></a>Die Konfiguration des Wartungsfensters ist ein zeitintensiver Vorgang 
 Für alle in einem virtuellen Cluster gehosteten Instanzen wird dasselbe Wartungsfenster verwendet. Standardmäßig werden alle verwalteten Instanzen im virtuellen Cluster mit dem Standardwartungsfenster gehostet. Wenn Sie während oder nach der Erstellung ein anderes Wartungsfenster für eine verwaltete Instanz angeben, muss sie im virtuellen Cluster mit dem entsprechenden Wartungsfenster platziert werden. Wenn kein solcher virtueller Cluster im Subnetz vorhanden ist, muss zuerst ein neuer Cluster erstellt werden, in dem die Instanz gehostet wird. Wenn Sie dem vorhandenen virtuellen Cluster eine zusätzliche Instanz hinzufügen möchten, muss möglicherweise die Clustergröße geändert werden. Beide Vorgänge wirken sich auf die Dauer der Konfiguration des Wartungsfensters für eine verwaltete Instanz aus.
-Eine Orientierungshilfe zur Berechnung der erwarteten Dauer der Konfiguration des Wartungsfensters für eine verwaltete Instanz finden Sie unter [Geschätzte Dauer von Verwaltungsvorgängen für Instanzen](/azure/azure-sql/managed-instance/management-operations-overview#duration).
+Eine Orientierungshilfe zur Berechnung der erwarteten Dauer der Konfiguration des Wartungsfensters für eine verwaltete Instanz finden Sie unter [Geschätzte Dauer von Verwaltungsvorgängen für Instanzen](../managed-instance/management-operations-overview.md#duration).
 
 > [!Important]
-> Am Ende des Wartungsvorgangs erfolgt ein kurzes Failover, das in der Regel bis zu 8 Sekunden dauert, auch bei unterbrochenen zeitintensiven Transaktionen. Um die Auswirkungen des Failovers zu minimieren, sollten Sie die Ausführung des Vorgangs außerhalb der Spitzenzeiten planen.
+> Am Ende des Wartungsvorgangs erfolgt eine kurze Neukonfiguration, die normalerweise bis zu 8 Sekunden dauert (auch bei unterbrochenen zeitintensiven Transaktionen). Wenn Sie die Auswirkungen der Neukonfiguration minimieren möchten, sollten Sie den Vorgang außerhalb der Spitzenzeiten planen.
 
 ### <a name="ip-address-space-requirements"></a>Anforderungen an den IP-Adressraum
-Für jeden neuen virtuellen Cluster im Subnetz sind zusätzliche IP-Adressen gemäß der [IP-Adresszuordnung des virtuellen Clusters](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#determine-subnet-size) erforderlich. Wenn Sie das Wartungsfenster für eine vorhandene verwaltete Instanz ändern möchten, ist auch [vorübergehend zusätzliche IP-Kapazität](/azure/azure-sql/managed-instance/vnet-subnet-determine-size#address-requirements-for-update-scenarios) erforderlich – wie im Szenario „Skalieren von virtuellen Kernen“ für die entsprechende Dienstebene.
+Für jeden neuen virtuellen Cluster im Subnetz sind zusätzliche IP-Adressen gemäß der [IP-Adresszuordnung des virtuellen Clusters](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size) erforderlich. Wenn Sie das Wartungsfenster für eine vorhandene verwaltete Instanz ändern möchten, ist auch [vorübergehend zusätzliche IP-Kapazität](../managed-instance/vnet-subnet-determine-size.md#address-requirements-for-update-scenarios) erforderlich – wie im Szenario „Skalieren von virtuellen Kernen“ für die entsprechende Dienstebene.
 
 ### <a name="ip-address-change"></a>Änderung der IP-Adresse
 Das Konfigurieren und Ändern des Wartungsfensters führt dazu, dass die IP-Adresse der Instanz innerhalb des IP-Adressbereichs des Subnetzes geändert wird.
@@ -137,8 +137,3 @@ Das Konfigurieren und Ändern des Wartungsfensters führt dazu, dass die IP-Adre
 * [Azure SQL-Datenbank](sql-database-paas-overview.md) 
 * [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)
 * [Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank und Azure SQL Managed Instance](planned-maintenance.md)
-
-
-
-
-

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/18/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 08ed02c65db201e18ce710633b421edb5ecb2db0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365462"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104655698"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
@@ -106,7 +106,7 @@ Sie können die standardmäßigen Einschränkungen aufheben, sodass Gastbenutzer
 ![Screenshot mit der Option für externe Benutzer in den Benutzereinstellungen](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kann ich Gastbenutzer in der globalen Adressliste von Exchange sichtbar machen?
-Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter **Kann ich Gast-Objekte in der globalen Adressliste sichtbar machen?** im Artikel [Verwalten des Zugriffs von Gast in Microsoft 365-Gruppen](/office365/admin/create-groups/manage-guest-access-in-groups).
+Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie im Artikel [Verhindern, dass Gäste einer bestimmten Microsoft 365-Gruppe oder einem Microsoft Teams-Team hinzugefügt werden](/microsoft-365/solutions/per-group-guest-access) unter „Hinzufügen von Gästen zur globalen Adressliste“.
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Kann ich die E-Mail-Adresse eines Gastbenutzers aktualisieren?
 

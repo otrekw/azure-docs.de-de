@@ -5,20 +5,20 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dd183e9088f24aa8b94955bc8ed2a68b4a7eb27c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496173"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106791"
 ---
 ## <a name="joining-the-meeting-chat"></a>Beitritt zum Besprechungschat 
 
-Sobald die Teams-Interoperabilität aktiviert ist, können Communication Services-Benutzer über die Clientbibliothek für Anrufe als externe Benutzer am Teams-Anruf teilnehmen. Durch das Beitreten zur Anrufkonferenz wird er dem Besprechungschat als Teilnehmer hinzugefügt und kann Nachrichten mit anderen Benutzern der Anrufkonferenz austauschen. Der Benutzer besitzt keinen Zugriff auf Chatnachrichten, die gesendet wurden, bevor er der Anrufkonferenz beigetreten ist. Führen Sie die folgenden Schritte aus, um an der Besprechung teilzunehmen und mit dem Chatten zu beginnen.
+Sobald die Teams-Interoperabilität aktiviert ist, können Communication Services-Benutzer über die Callin SDK als externe Benutzer am Teams-Anruf teilnehmen. Durch das Beitreten zur Anrufkonferenz wird er dem Besprechungschat als Teilnehmer hinzugefügt und kann Nachrichten mit anderen Benutzern der Anrufkonferenz austauschen. Der Benutzer besitzt keinen Zugriff auf Chatnachrichten, die gesendet wurden, bevor er der Anrufkonferenz beigetreten ist. Führen Sie die folgenden Schritte aus, um an der Besprechung teilzunehmen und mit dem Chatten zu beginnen.
 
 ## <a name="install-the-chat-packages"></a>Installieren der Chatpakete
 
-Installieren Sie mit dem Befehl `npm install` die erforderlichen Communication Services-Clientbibliotheken für JavaScript.
+Verwenden Sie den Befehl `npm install`, um die notwendigen Communication Services-SDKs für JavaScript zu installieren.
 
 ```console
 npm install @azure/communication-common --save

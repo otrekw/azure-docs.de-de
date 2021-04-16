@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/10/2019
 ms.openlocfilehash: 2f2ca4b56445b3f399477e396de579d8a8c539e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80127013"
 ---
 # <a name="azure-notification-hubs-and-google-firebase-cloud-messaging-migration"></a>Azure Notification Hubs und die Migration von Google Firebase Cloud Messaging
@@ -61,4 +61,4 @@ A: Ein Upgrade ist jederzeit möglich. Google hat noch nicht angekündigt, dass 
 
 **F:** Wann kann ich neue FCM-Features und -Schemas für meine Benachrichtigungen verwenden?
 
-**A:** Sobald wir ein Update für unsere API und SDKs veröffentlicht haben, bleiben Sie dran – wir erwarten, dass wir in den kommenden Monaten eine entsprechende Lösung bereitstellen können.
+**A:** Sobald wir ein Update für unsere API und SDKs veröffentlicht haben. Informieren Sie sich weiterhin, da wir davon ausgehen, dass wir in den kommenden Monaten eine entsprechende Lösung bereitstellen können.

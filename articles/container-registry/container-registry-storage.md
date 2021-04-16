@@ -1,15 +1,15 @@
 ---
 title: Speichern von Containerimages
 description: Hier erhalten Sie ausführliche Informationen dazu, wie Ihre Containerimages und andere Artefakte in Azure Container Registry gespeichert werden, und erfahren u. a. mehr über Sicherheit, Redundanz und Kapazität.
-ms.topic: article
-ms.date: 03/03/2021
+ms.topic: conceptual
+ms.date: 03/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a9c8ec877ddb17603e82b763223278a2e5e36714
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183266"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047744"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Speichern von Containerimages in Azure Container Registry
 
@@ -21,11 +21,9 @@ Alle Containerimages und anderen Artefakte in Ihrer Registrierung werden im Ruhe
 
 ## <a name="regional-storage"></a>Regionaler Speicher
 
-Azure Container Registry speichert Daten in der Region, in der die Registrierung erstellt wurde, um Kunden bei der Erfüllung der Anforderungen an Datenresidenz und Compliance zu unterstützen.
+Azure Container Registry speichert Daten in der Region, in der die Registrierung erstellt wurde, um Kunden bei der Erfüllung der Anforderungen an Datenresidenz und Compliance zu unterstützen. In allen Regionen mit Ausnahme von „Brasilien, Süden“ und „Asien, Südosten“ kann Azure auch Registrierungsdaten in einem Regionspaar in derselben Region speichern. In den Regionen „Brasilien, Süd“ und „Asien, Südosten“ sind Registrierungsdaten immer auf die Region beschränkt, um die Anforderungen an die Datenresidenz für diese Regionen zu erfüllen.
 
-Zum Schutz vor Rechenzentrumsausfällen bieten einige Regionen [Zonenredundanz](zone-redundancy.md). Dabei werden Daten über mehrere Rechenzentren hinweg in einer bestimmten Region repliziert.
-
-Kunden, die Ihre Daten in mehreren Regionen speichern möchten, um die Leistung für verschiedene geografische Regionen zu verbessern, oder die bei einem regionalen Ausfall Resilienz wünschen, sollten [Georeplikation](container-registry-geo-replication.md) aktivieren.
+Wenn ein regionaler Ausfall auftritt, sind die Registrierungsdaten möglicherweise nicht mehr verfügbar und werden nicht automatisch wieder hergestellt. Kunden, die Ihre Daten in mehreren Regionen speichern möchten, um die Leistung für verschiedene geografische Regionen zu verbessern, oder die bei einem regionalen Ausfall Resilienz wünschen, sollten [Georeplikation](container-registry-geo-replication.md) aktivieren.
 
 ## <a name="geo-replication"></a>Georeplikation
 

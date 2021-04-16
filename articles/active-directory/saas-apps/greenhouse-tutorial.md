@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 03/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a14b16e34faa827228594bf6d4f0bd9ed48cf72
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731919"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Tutorial: Azure Active Directory-Integration mit Greenhouse
 
@@ -40,7 +40,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Greenhouse unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Greenhouse unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 
 ## <a name="adding-greenhouse-from-the-gallery"></a>Hinzufügen von Greenhouse aus dem Katalog
 
@@ -73,18 +73,28 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Greenhouse** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.greenhouse.io`.
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<COMPANYNAME>.greenhouse.io`
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<companyname>.greenhouse.io`.
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
+    
+    | Antwort-URL|
+    | -------------- |
+    | `https://<COMPANYNAME>.greenhouse.io/users/saml/consume` |
+    | `https://app.greenhouse.io/<ENTITY ID>/users/saml/consume` |
+    |
+
+1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<COMPANYNAME>.greenhouse.io`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Greenhouse-Client](https://www.greenhouse.io/contact), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Wenden Sie sich an das [Supportteam für den Greenhouse-Client](https://www.greenhouse.io/contact), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -127,7 +137,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Screenshot: Seite für einmaliges Anmelden](./media/greenhouse-tutorial/configure.png)
 
-1. Führen Sie auf der Seite „Single Sign-On“ (Einmaliges Anmelden) die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Einmaliges Anmelden** die folgenden Schritte aus.
 
     ![Screenshot: Seite für die SSO-Konfiguration](./media/greenhouse-tutorial/sso-page.png)
 
@@ -172,15 +182,22 @@ Damit sich Azure AD-Benutzer bei Greenhouse anmelden können, müssen sie in Gre
       >[!NOTE]
       >Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Greenhouse weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+#### <a name="sp-initiated"></a>SP-initiiert:
+
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Greenhouse weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
 * Rufen Sie direkt die Greenhouse-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Greenhouse“ klicken, werden Sie zur Anmelde-URL für Greenhouse weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="idp-initiated"></a>IDP-initiiert:
+
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Greenhouse-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben 
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Greenhouse“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Greenhouse-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

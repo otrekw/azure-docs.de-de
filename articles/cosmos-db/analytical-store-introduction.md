@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 77c84e4b4a8129a95ee18b4ae89b48a687e9fce1
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951588"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046211"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -112,12 +112,12 @@ Die folgenden Einschränkungen gelten für die operativen Daten in Azure Cosmos 
 
 * Erwarten Sie ein anderes Verhalten hinsichtlich expliziter `null` Werte:
   * Spark-Pools in Azure Synapse lesen diese Werte als `0` (null).
-  * SQL Serverless-Pools in Azure Synapse lesen diese Werte so, als `NULL` ob das erste Dokument der Sammlung für dieselbe Eigenschaft einen Wert mit einem anderen Datentyp als hat `integer`.
-  * SQL Serverless-Pools in Azure Synapse lesen diese Werte so, als `0` (null) ob das erste Dokument der Sammlung für dieselbe Eigenschaft einen Wert hat, der eine Ganzzahl ist.
+  * SQL Serverlos-Pools in Azure Synapse lesen diese Werte so, als `NULL` ob das erste Dokument der Sammlung für dieselbe Eigenschaft einen Wert mit einem Datentyp als hat `non-numeric`.
+  * SQL Serverless-Pools in Azure Synapse lesen diese Werte so, als `0`(null) ob das erste Dokument der Sammlung für dieselbe Eigenschaft einen Wert mit einem Datentyp als hat `numeric`.
 
 * Erwarten Sie ein anderes Verhalten hinsichtlich expliziter  Werte:
   * Spark-Pools in Azure Synapse stellen diese Spalten als `undefined` dar.
-  * SQL Serverless-Pools in Azure Synapse stellen diese Spalten als `NULL` dar.
+  * SQL Serverlos-Pools in Azure Synapse stellen diese Spalten als `NULL` dar.
 
 #### <a name="schema-representation"></a>Schemadarstellung
 

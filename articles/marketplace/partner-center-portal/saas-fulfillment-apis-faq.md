@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über einige der Integrationsanforderungen für d
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 03/19/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 760e7210d054e44dfec6d6a6e480baecd04d6807
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88606803"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044123"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Häufig gestellte Fragen zu SaaS-Fulfillment-APIs
 
@@ -40,7 +40,10 @@ Mit dem Abonnement des SaaS-Angebots hat der Benutzer zugestimmt, die Nutzung de
 
 Nachdem ein Benutzer ein Angebot abonniert hat, kann er die erworbenen Angebote in Azure ausfindig machen und verwalten. Standardmäßig wird der Status eines neu abonnierten SaaS-Angebots mit **Bereitstellung, Erfüllung ausstehend** angezeigt. In diesem Status wird dem Azure-Benutzer die Aktion **Konto konfigurieren** angeboten, um zur SaaS-Abonnementverwaltung im Azure-Portal zu wechseln.
 
-Wenn der Benutzer die Option **Konto konfigurieren** auswählt, wird er zur Website des SaaS-Diensts weitergeleitet. Der Herausgeber hat die URL zum Zeitpunkt der Angebotsveröffentlichung konfiguriert. Diese Seite wird als Landing Page des Herausgebers bezeichnet. Azure-Benutzer melden sich basierend auf ihren vorhandenen AAD-Anmeldeinformationen in Azure auf der SaaS-Landing Page an.
+Wenn der Benutzer die Option **Konto konfigurieren** auswählt, wird er zur Website des SaaS-Diensts weitergeleitet. Der Herausgeber hat die URL zum Zeitpunkt der Angebotsveröffentlichung konfiguriert. Diese Seite wird als Landing Page des Herausgebers bezeichnet. Azure-Benutzer melden sich basierend auf ihren vorhandenen Azure AD-Anmeldeinformationen (Azure Active Directory) in Azure auf der SaaS-Landing Page an.
+
+> [!IMPORTANT]
+> Sie müssen den kaufenden Benutzer über einmaliges Anmelden in Azure Active Directory (Azure AD-SSO) gemäß der [Richtlinie](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)anmelden. Die `mail`-Eigenschaft der Benutzerressource, die aus der Microsoft Graph-API abgerufen wird, enthält die Kontaktinformationen für den Fall von Azure AD und `userPrincipalName` für MSA. Es ist möglich, dass das Feld „E-Mail“ für Azure AD leer ist und für den Benutzer keine E-Mail-Adresse erfasst wurde. In diesem Fall wird empfohlen, dies festzustellen und nach einer Kontakt-E-Mail-Adresse zu Fragen. Dies ist die einzige Möglichkeit, eine Kontakt-E-Mail-Adresse zu erhalten, um einen Kunden während oder nach dem Onboardingvorgang zu erreichen.
 
 Wenn der Azure-Benutzer auf die Landing Page umgeleitet wird, wird der Abfrage-URL ein Token hinzugefügt. Es handelt sich hierbei um ein kurzlebiges Token mit einer Gültigkeitsdauer von 24 Stunden. Sie können anschließend das Vorhandensein dieses Tokens ermitteln und die Microsoft-API aufrufen, um weitere mit dem Token verknüpfte Kontextinformationen abzurufen.
 

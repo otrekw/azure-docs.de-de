@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: 491d5f14cc8f456d228a5bc6efaa6686575979c1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557011"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078739"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Erstellen zustandsbehafteter und zustandsloser Workflows in Visual Studio Code mit der Erweiterung „Azure Logic Apps (Vorschau)“
 
@@ -101,8 +101,8 @@ Führen Sie die hier angegebenen Schritte zum Erstellen und Einrichten eines Azu
 1. Speichern Sie die Verbindungszeichenfolge an einem sicheren Ort. Nachdem Sie Ihr Logik-App-Projekt in Visual Studio Code erstellt haben, müssen Sie die Zeichenfolge der Datei **local.settings.json** im Stammebenenordner Ihres Projekts hinzufügen.
 
    > [!IMPORTANT]
-   > Falls Sie die Bereitstellung in einem Docker-Container planen, müssen Sie diese Verbindungszeichenfolge auch der Docker-Datei hinzufügen, die Sie für die Bereitstellung nutzen.
-
+   > Falls Sie die Bereitstellung in einem Docker-Container planen, müssen Sie diese Verbindungszeichenfolge mit der Docker-Datei nutzen, die Sie für die Bereitstellung nutzen. Achten Sie bei Produktionsszenarien darauf, dass Sie solche Geheimnisse und sensiblen Informationen schützen und sichern, z. B. durch die Verwendung eines Schlüsseltresors.
+  
 ### <a name="tools"></a>Tools
 
 * [Visual Studio Code 1.30.1 (Januar 2019) oder höher](https://code.visualstudio.com/) (kostenlos). Laden Sie darüber hinaus diese Tools für Visual Studio Code herunter, und installieren Sie sie, falls sie noch nicht vorhanden sind:
@@ -304,6 +304,9 @@ Bevor Sie Ihre Logik-App erstellen können, erstellen Sie ein lokales Projekt, d
          }
       }
       ```
+
+      > [!IMPORTANT]
+      > Achten Sie bei Produktionsszenarien darauf, dass Sie solche Geheimnisse und sensiblen Informationen schützen und sichern, z. B. durch die Verwendung eines Schlüsseltresors.
 
    1. Achten Sie darauf, dass Sie nach Abschluss des Vorgangs Ihre Änderungen speichern.
 
@@ -1205,7 +1208,10 @@ Wenn Sie mit Docker nicht vertraut sind, lesen Sie die folgenden Themen:
 
 * Eine Docker-Datei für den Workflow, den Sie beim Aufbau Ihres Docker-Containers verwenden
 
-  Mit dieser Docker-Beispieldatei wird beispielsweise eine Logik-App bereitgestellt. Mit der Datei wird die Verbindungszeichenfolge angegeben, die den Zugriffsschlüssel für das Azure Storage-Konto enthält, das im Azure-Portal zum Veröffentlichen der Logik-App verwendet wurde. Informationen zum Ermitteln dieser Zeichenfolge finden Sie unter [Beschaffen der Verbindungszeichenfolge für das Speicherkonto](#find-storage-account-connection-string).
+  Diese Beispiel-Docker-Datei stellt beispielsweise eine Logik-App bereit und gibt die Verbindungszeichenfolge an, die den Zugriffsschlüssel für das Azure-Speicherkonto enthält, das für die Veröffentlichung der Logik-App im Azure-Portal verwendet wurde. Informationen zum Ermitteln dieser Zeichenfolge finden Sie unter [Beschaffen der Verbindungszeichenfolge für das Speicherkonto](#find-storage-account-connection-string). Weitere Informationen finden Sie unter [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) (Bewährte Methoden zum Schreiben von Docker-Dateien).
+  
+  > [!IMPORTANT]
+  > Achten Sie bei Produktionsszenarien darauf, dass Sie solche Geheimnisse und sensiblen Informationen schützen und sichern, z. B. durch die Verwendung eines Schlüsseltresors. Informationen zu Docker-Dateien finden Sie unter [Erstellen von Images mit BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/) und [Verwalten von sensiblen Daten mit Docker-Geheimnissen](https://docs.docker.com/engine/swarm/secrets/).
 
    ```text
    FROM mcr.microsoft.com/azure-functions/node:3.0
@@ -1219,8 +1225,6 @@ Wenn Sie mit Docker nicht vertraut sind, lesen Sie die folgenden Themen:
 
    RUN cd /home/site/wwwroot
    ```
-
-   Weitere Informationen finden Sie unter [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) (Bewährte Methoden zum Schreiben von Docker-Dateien).
 
 <a name="find-storage-account-connection-string"></a>
 

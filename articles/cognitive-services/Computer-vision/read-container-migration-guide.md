@@ -1,5 +1,5 @@
 ---
-title: Migration zu den Read v3.x OCR-Containern
+title: Migration zu den Read v3.x Containern
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie die Migration zu den v3 Read OCR-Containern ausgeführt wird
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/29/2021
 ms.author: aahi
-ms.openlocfilehash: baa91e21979022064aaf13aca6079f8d092d673e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1cc17306265e6e8ba2e7fb3f570d0017b006b84f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221152"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284684"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migration zu den Read v3.x OCR-Containern
 
@@ -24,7 +24,7 @@ Wenn Sie Version 2 des Read OCR-Containers für maschinelles Sehen verwenden, i
 
 ## <a name="configuration-changes"></a>Konfigurationsänderungen
 
-* `ReadEngineConfig:ResultExpirationPeriod` wird nicht mehr unterstützt. Der Read-Container verfügt über einen integrierten Cron-Auftrag, der die einer Anforderung zugeordneten Ergebnisse und Metadaten nach 48 Stunden entfernt.
+* `ReadEngineConfig:ResultExpirationPeriod` wird nicht mehr unterstützt. Der Read OCR-Container verfügt über einen integrierten Cron-Auftrag, der die einer Anforderung zugeordneten Ergebnisse und Metadaten nach 48 Stunden entfernt.
 * `Cache:Redis:Configuration` wird nicht mehr unterstützt. Der Cache wird in den Containern der v3.x nicht verwendet, Sie müssen ihn daher nicht festlegen.
 
 ## <a name="api-changes"></a>API-Änderungen
@@ -39,7 +39,7 @@ Ausführliche Informationen zum Aktualisieren Ihrer Anwendungen für die Verwend
 
 ## <a name="memory-requirements"></a>Speicheranforderungen
 
-Die Anforderungen und Empfehlungen basieren auf Benchmarks mit einer einzelnen Anforderung pro Sekunde, wobei ein 8 MB großes Bild eines gescannten Geschäftsbriefs mit 29 Zeilen und insgesamt 803 Zeichen verwendet wird. In der folgenden Tabelle werden die minimale und empfohlene Zuordnung von Ressourcen für jeden Container für das Lesen beschrieben.
+Die Anforderungen und Empfehlungen basieren auf Benchmarks mit einer einzelnen Anforderung pro Sekunde, wobei ein 8 MB großes Bild eines gescannten Geschäftsbriefs mit 29 Zeilen und insgesamt 803 Zeichen verwendet wird. In der folgenden Tabelle werden die minimale und empfohlene Zuordnung von Ressourcen für jeden OCR-Container für das Lesen beschrieben.
 
 |Container  |Minimum | Empfohlen  |
 |---------|---------|------|
@@ -81,7 +81,7 @@ Legen Sie den Zeitgeber mit `Queue:Azure:QueueVisibilityTimeoutInMilliseconds` f
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Konfigurationseinstellungen finden Sie unter [Konfigurieren von Containern](computer-vision-resource-container-config.md).
-* Lesen Sie [Übersicht über maschinelles Sehen](overview.md), um weitere Informationen zur Erkennung von gedrucktem und handschriftlichem Text zu erhalten.
-* Details zu den vom Container unterstützten Methoden finden Sie unter [Maschinelles Sehen-API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa).
+* Lesen Sie [die OCR Übersicht ](overview-ocr.md), um weitere Informationen zur Erkennung von gedrucktem und handschriftlichem Text zu erhalten.
+* Details zu den vom Container unterstützten Methoden finden Sie unter [Lese-API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa).
 * Unter [Häufig gestellte Fragen (FAQ)](FAQ.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit der Funktionalität des maschinellen Sehens.
 * Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

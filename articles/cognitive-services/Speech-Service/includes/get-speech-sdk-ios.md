@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 0a9ca21cc14bb87797c962a89cf87ac184e73735
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 31634abe2768ec47ee2aa66051a7a363f83c6009
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434482"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043212"
 ---
 :::row:::
     :::column span="3":::
@@ -58,7 +58,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin.iOS macht das vollständige iOS SDK für .NET-Entwickler verfügbar. Erstellen Sie vollständig native iOS-Apps mit C# oder F# in Visual Studio. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/xamarin/ios/" target="_blank">Xamarin.iOS </a>.
+        Xamarin.iOS macht das vollständige iOS SDK für .NET-Entwickler verfügbar. Erstellen Sie vollständig native iOS-Apps mit C# oder F# in Visual Studio. Weitere Informationen finden Sie unter <a href="/xamarin/ios/" target="_blank">Xamarin.iOS </a>.
     :::column-end:::
     :::column:::
         <br>

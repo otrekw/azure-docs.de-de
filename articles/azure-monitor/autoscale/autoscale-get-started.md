@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über das Skalieren Ihrer Ressource in Web-Apps, 
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: edc58ed4af3475a45804e3833424bec79d50ff89
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726052"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641550"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -113,6 +113,10 @@ Nun können Sie die Anzahl der Instanzen festlegen, die manuell skaliert werden 
 
 Sie können immer zur automatischen Skalierung zurückkehren, indem Sie auf **Automatische Skalierung aktivieren** und dann auf **Speichern** klicken.
 
+### <a name="cool-down-period-effects"></a>Auswirkungen der Abkühlphase
+
+Bei der automatischen Skalierung wird eine Abkühlphase verwendet, um eine „Fluktuation“ zu verhindern, d. h. das schnelle, wiederholte Hoch- und Herunterskalieren von Instanzen.  Weitere Informationen finden Sie unter den [Schritten zur Auswertung für die automatische Skalierung](autoscale-understanding-settings.md#autoscale-evaluation).  Weitere nützliche Informationen zur Fluktuation und zum Überwachen der Engine für die automatische Skalierung finden Sie unter [Empfohlene Methoden für die automatische Skalierung](autoscale-best-practices.md#choose-the-thresholds-carefully-for-all-metric-types) bzw. [Problembehandlung für automatische Skalierung](autoscale-troubleshoot.md). 
+
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Weiterleiten von Datenverkehr an fehlerfreie Instanzen (App Service)
 
 <a id="health-check-path"></a>
@@ -121,7 +125,7 @@ Wenn Ihre Azure-Web-App horizontal auf mehrere Instanzen skaliert ist, kann App 
 
 ## <a name="moving-autoscale-to-a-different-region"></a>Verschieben der Autoskalierung in eine andere Region
 In diesem Abschnitt wird beschrieben, wie Sie die Autoskalierung von Azure in eine andere Region im selben Abonnement und in derselben Ressourcengruppe verschieben. Sie können die Einstellungen für die Autoskalierung mithilfe der REST-API verschieben.
-### <a name="prerequisite"></a>Voraussetzungen
+### <a name="prerequisite"></a>Voraussetzung
 1. Stellen Sie sicher, dass das Abonnement und die Ressourcengruppe verfügbar sind und die Details in der Quell- und der Zielregion identisch sind.
 1. Stellen Sie sicher, dass die Autoskalierung von Azure in der [Azure-Zielregion für das Verschieben](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) verfügbar ist.
 
@@ -136,6 +140,7 @@ Weitere Informationen zum Verschieben von Ressourcen zwischen Regionen und zur N
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen einer Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+
 
 <!--Reference-->
 [1]:https://portal.azure.com

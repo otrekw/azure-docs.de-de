@@ -2,23 +2,27 @@
 title: Einbinden eines Azure Files-Volumes in eine Containergruppe
 description: Erfahren Sie, wie Sie ein Azure Files-Volume einbinden, sodass der Zustand bei Azure Container Instances beibehalten wird.
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 03/24/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 09a4d9922a4f9ba4296fc194d72c621fecb8342d
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97954973"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968899"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Einbinden einer Azure-Dateifreigabe in Azure Container Instances
 
 Standardmäßig ist Azure Container Instances zustandslos. Wenn der Container neu gestartet wird, abstürzt oder beendet wird, gehen alle Zustände verloren. Um den Zustand nach Ablauf der Lebensdauer des Containers beizubehalten, müssen Sie ein Volume aus einem externen Speicher einbinden. Wie in diesem Artikel gezeigt, können Azure Container Instances eine mit [Azure Files](../storage/files/storage-files-introduction.md) erstellte Azure-Dateifreigabe einbinden. Azure Files bietet vollständig verwaltete Dateifreigaben gehostet in Azure Storage, auf die über das Branchenstandardprotokoll Server Message Block (SMB) zugegriffen werden kann. Durch das Verwenden einer Azure-Dateifreigabe mit Azure Container Instances werden Dateifreigabefeatures bereitgestellt, die Azure-Dateifreigaben mit virtuellen Azure-Computern ähneln.
 
+## <a name="limitations"></a>Einschränkungen
+
+* Sie können Azure Files-Freigaben nur in Linux-Container einzulegen. Weitere Informationen zu den Unterschieden bei der Funktionsunterstützung für Linux-und Windows-Containergruppen finden Sie in der [Übersicht](container-instances-overview.md#linux-and-windows-containers).
+* Zum Einlegen des Volumens der Azure-Dateifreigabe muss der Linux- *Container als* Stammverzeichnis ausgeführt werden.
+* Die Volumemounts der Azure-Dateifreigabe sind auf die CIFS-Unterstützung beschränkt.
+
 > [!NOTE]
-> Zurzeit ist das Einbinden einer Azure-Dateifreigabe in Linux-Container eingeschränkt. Aktuelle Plattformunterschiede finden Sie in der [Übersicht](container-instances-overview.md#linux-and-windows-containers).
->
-> Das Einbinden einer Azure Files-Freigabe in eine Containerinstanz ähnelt einem [bind mount](https://docs.docker.com/storage/bind-mounts/) bei Docker. Beachten Sie, dass, wenn Sie eine Freigabe in ein Containerverzeichnis einbinden, in dem Dateien oder Verzeichnisse vorhanden sind, diese Dateien oder Verzeichnisse durch die Einbindung verdeckt werden und nicht verfügbar sind, während der Container ausgeführt wird.
+> Das Einbinden einer Azure Files-Freigabe in eine Containerinstanz ähnelt einem [bind mount](https://docs.docker.com/storage/bind-mounts/) bei Docker. Wenn Sie eine Freigabe in ein Container-Verzeichnis einlegen, in dem Dateien oder Verzeichnisse vorhanden sind, werden durch das Einlegen Dateien oder Verzeichnisse unkenntlich gemacht, so dass sie nicht mehr zugänglich sind, während der Container läuft.
 >
 
 > [!IMPORTANT]

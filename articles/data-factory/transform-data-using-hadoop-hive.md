@@ -7,12 +7,12 @@ author: nabhishek
 ms.author: abnarain
 ms.custom: seo-lt-2019
 ms.date: 05/08/2019
-ms.openlocfilehash: de897f6350893f6188c9a97480c0a849fc142fb1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7d312e4a00cdd2b62ee219df807f30c22f0c9790
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375866"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773945"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hadoop Hive-Aktivität in Azure Data Factory
 
@@ -54,7 +54,7 @@ Wenn Sie noch nicht mit Azure Data Factory vertraut sind, lesen Sie zunächst de
 }
 ```
 ## <a name="syntax-details"></a>Syntaxdetails
-| Eigenschaft            | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft            | Beschreibung                                                  | Erforderlich |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | name                | Der Name der Aktivität                                         | Ja      |
 | description         | Ein Text, der beschreibt, wofür die Aktivität verwendet wird.                | Nein       |
@@ -66,6 +66,9 @@ Wenn Sie noch nicht mit Azure Data Factory vertraut sind, lesen Sie zunächst de
 | Argumente           | Gibt ein Array von Argumenten für einen Hadoop-Auftrag an. Die Argumente werden als Befehlszeilenargumente an jeden Vorgang übergeben. | Nein       |
 | defines             | Geben Sie Parameter als Schlüssel-Wert-Paare für Verweise innerhalb des Hive-Skripts an. | Nein       |
 | queryTimeout        | Abfragetimeoutwert (in Minuten). Zutreffend, wenn der HDInsight-Cluster mit dem Enterprise-Sicherheitspaket versehen ist. | Nein       |
+
+>[!NOTE]
+>Der Standardwert für queryTimeout beträgt 120 Minuten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden: 

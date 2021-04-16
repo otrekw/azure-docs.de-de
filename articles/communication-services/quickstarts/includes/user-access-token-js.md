@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: eee020e5d96b301e8278d31c26360639553be0ee
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 68b5fc7c958f611c43ba3f38bf30ceb63608886a
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495307"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106113482"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,7 +41,7 @@ npm init -y
 
 ### <a name="install-the-package"></a>Installieren des Pakets
 
-Verwenden Sie den Befehl `npm install`, um die Clientbibliothek für Identitäten von Azure Communication Services für JavaScript zu installieren.
+Verwenden Sie den Befehl `npm install`, um das Azure Communication Services Identity SDK für JavaScript zu installieren.
 
 ```console
 
@@ -49,7 +49,7 @@ npm install @azure/communication-identity --save
 
 ```
 
-Mit der Option `--save` wird die Bibliothek als Abhängigkeit in Ihrer Datei **package.json** aufgelistet.
+Durch die Option `--save` wird die Bibliothek als Abhängigkeit in der Datei **package.json** aufgeführt.
 
 ## <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
 
@@ -80,7 +80,7 @@ main().catch((error) => {
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Instanziieren Sie einen Kommunikationsidentitätsclient (`CommunicationIdentityClient`) mit Ihrer Verbindungszeichenfolge. Im folgenden Code wird die Verbindungszeichenfolge für die Ressource aus einer Umgebungsvariablen namens `COMMUNICATION_SERVICES_CONNECTION_STRING` abgerufen. Informationen zur Verwaltung der Verbindungszeichenfolge Ihrer Ressource finden Sie [hier](../create-communication-resource.md#store-your-connection-string).
+Instanziieren Sie einen Kommunikationsidentitätsclient (`CommunicationIdentityClient`) mit Ihrer Verbindungszeichenfolge. Im folgenden Code wird die Verbindungszeichenfolge für die Ressource aus einer Umgebungsvariablen namens `COMMUNICATION_SERVICES_CONNECTION_STRING` abgerufen. Informationen zur [Verwaltung der Verbindungszeichenfolge Ihrer Ressource](../create-communication-resource.md#store-your-connection-string).
 
 Fügen Sie der `main`-Methode folgenden Code hinzu:
 
@@ -108,7 +108,7 @@ Wenn Sie die verwaltete Identität eingerichtet haben, finden Sie unter [Verwend
 ```javascript
 const endpoint = process.env["COMMUNICATION_SERVICES_ENDPOINT"];
 const tokenCredential = new DefaultAzureCredential();
-var client = new CommunicationIdentityClient(endpoint, tokenCredential);
+const identityClient = new CommunicationIdentityClient(endpoint, tokenCredential);
 ```
 
 ## <a name="create-an-identity"></a>Erstellen einer Identität
@@ -140,7 +140,7 @@ Verwenden Sie die `createUserAndToken`-Methode, um eine Communication Services-I
 
 ```javascript
 // Issue an identity and an access token with the "voip" scope for the new identity
-let identityTokenResponse = await this.client.createUserAndToken(["voip"]);
+let identityTokenResponse = await identityClient.createUserAndToken(["voip"]);
 const { token, expiresOn, user } = identityTokenResponse;
 console.log(`\nCreated an identity with ID: ${user.communicationUserId}`);
 console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
@@ -153,7 +153,7 @@ Das Aktualisieren von Zugriffstoken ist genau so einfach wie das Aufrufen von `g
 
 ```javascript
 // // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
-let refreshedTokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
+let refreshedTokenResponse = await identityClient.getToken(identityResponse, ["voip"]);
 ```
 
 

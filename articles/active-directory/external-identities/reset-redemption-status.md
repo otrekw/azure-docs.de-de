@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dea13444a6bd18bd67f05d93a38af70b3b7a2368
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 2998c3ea0d65bd3c96bd1ac5bdfa8ff148c6c4cc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556314"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780428"
 ---
 # <a name="reset-redemption-status-for-a-guest-user"></a>Zurücksetzen des Einlösestatus für einen Gastbenutzer
 
@@ -28,9 +28,20 @@ Wenn ein Gastbenutzer Ihre Einladung zu B2B-Zusammenarbeit eingelöst hat, kann 
 
 Früher mussten Sie zum Verwalten dieser Szenarios das Konto des Gastbenutzers manuell aus Ihrem Verzeichnis löschen und den Benutzer erneut einladen. Nun können Sie den Einlösestatus des Benutzers mit PowerShell oder der Einladungs-API von Microsoft Graph zurücksetzen und den Benutzer wieder einladen und gleichzeitig die Objekt-ID, die Gruppenmitgliedschaften und die App-Zuweisungen des Benutzers beibehalten. Wenn der Benutzer die neue Einladung einlöst, ändert sich der UPN des Benutzers nicht. Der Anmeldename des Benutzers wird jedoch in die neue E-Mail-Adresse geändert. Der Benutzer kann sich anschließend mithilfe der neuen E-Mail-Adresse oder einer E-Mail-Adresse anmelden, die Sie der Eigenschaft `otherMails` des Benutzerobjekts hinzugefügt haben.
 
+## <a name="reset-the-email-address-used-for-sign-in"></a>Zurücksetzen der für die Anmeldung verwendeten E-Mail-Adresse
+
+Wenn ein Benutzer sich mit einer anderen E-Mail-Adresse anmelden möchte:
+
+1. Stellen Sie sicher, dass die neue E-Mail-Adresse der `mail`- oder `otherMails`-Eigenschaft des Benutzerobjekts hinzugefügt wird. 
+2.  Ersetzen Sie die E-Mail-Adresse der `InvitedUserEmailAddress`-Eigenschaft durch die neue E-Mail-Adresse.
+3. Verwenden Sie eine der folgenden Methoden, um den Einlösestatus des Benutzers zurückzusetzen.
+
+> [!NOTE]
+>Wenn Sie während der öffentlichen Vorschau die E-Mail-Adresse des Benutzers zurücksetzen, sollten Sie für die `mail`-Eigenschaft die neue E-Mail-Adresse festlegen. Auf diese Weise kann der Benutzer die Einladung einlösen, indem er sich zusätzlich zur Verwendung des Einlösungslinks in der Einladung bei Ihrem Verzeichnis anmeldet.
+>
 ## <a name="use-powershell-to-reset-redemption-status"></a>Zurücksetzen des Einlösestatus mithilfe von PowerShell
 
-Installieren Sie das aktuelle PowerShell-Modul „AzureADPreview“, und erstellen Sie eine neue Einladung, wobei `InvitedUserEMailAddress` auf die neue E-Mail-Adresse und `ResetRedemption` auf `true` festgelegt ist.
+Installieren Sie das aktuelle PowerShell-Modul „AzureADPreview“, und erstellen Sie eine neue Einladung, wobei `InvitedUserEmailAddress` auf die neue E-Mail-Adresse und `ResetRedemption` auf `true` festgelegt ist.
 
 ```powershell  
 Uninstall-Module AzureADPreview 
@@ -43,7 +54,7 @@ New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitat
 
 ## <a name="use-microsoft-graph-api-to-reset-redemption-status"></a>Zurücksetzen des Einlösestatus mithilfe der Microsoft Graph-API
 
-Legen Sie mithilfe der [Microsoft Graph-Einladungs-API](/graph/api/resources/invitation) die Eigenschaft `resetRedemption` auf `true` fest, und geben Sie die neue E-Mail-Adresse in der Eigenschaft `invitedUserEmailAddress` an.
+Legen Sie mithilfe der [Microsoft Graph-Einladungs-API](/graph/api/resources/invitation?view=graph-rest-1.0) die Eigenschaft `resetRedemption` auf `true` fest, und geben Sie die neue E-Mail-Adresse in der Eigenschaft `invitedUserEmailAddress` an.
 
 ```json
 POST https://graph.microsoft.com/beta/invitations  

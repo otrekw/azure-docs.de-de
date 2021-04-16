@@ -5,18 +5,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0c26a7f53609193bf373c3f7f9b1037405d4e518
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509029"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122134"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway in Azure Monitor
-
->[!NOTE]
->Durch den Übergang von Microsoft Operations Management Suite (OMS) in Microsoft Azure Monitor ändert sich die Terminologie. Dieser Artikel bezieht sich auf das OMS-Gateway als das Azure Log Analytics-Gateway. 
->
 
 Dieser Artikel beschreibt, wie Sie die Kommunikation mit Azure Automation and Azure Monitor über das Log Analytics-Gateway konfigurieren, wenn Computer, die direkt verbunden sind oder von Operations Manager überwacht werden, über keinen Internetzugang verfügen. 
 
@@ -89,6 +85,9 @@ Das Log Analytics-Gateway ist in den folgenden Sprachen verfügbar:
 Das Log Analytics-Gateway unterstützt nur Transport Layer Security (TLS) 1.0, 1.1 und 1.2.  Secure Sockets Layer (SSL) wird nicht unterstützt.  Um die Sicherheit der Daten während der Übertragung an Log Analytics zu gewährleisten, konfigurieren Sie das Gateway so, dass es mindestens TLS 1.2 verwendet. Ältere Versionen von TLS- oder SSL sind anfällig. Obwohl sie zurzeit Abwärtskompatibilität zulassen, sollten Sie diese älteren Versionen vermeiden.  
 
 Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](../logs/data-security.md#sending-data-securely-using-tls-12). 
+
+>[!NOTE]
+>Das Gateway ist ein Weiterleitungsproxy, der keine Daten speichert. Nachdem der Agent eine Verbindung mit Azure Monitor hergestellt hat, folgt er demselben Verschlüsselungsablauf mit oder ohne Gateway. Die Daten werden zwischen dem Client und dem Endpunkt verschlüsselt. Da es sich bei dem Gateway lediglich um einen Tunnel handelt, kann es nicht überprüfen, was gesendet wird.
 
 ### <a name="supported-number-of-agent-connections"></a>Unterstützte Anzahl von Agent-Verbindungen
 

@@ -1,18 +1,15 @@
 ---
 title: Architektur der Notfallwiederherstellung für VMware-VMs in Azure Site Recovery
 description: Dieser Artikel enthält eine Übersicht über die Komponenten und Architektur, die beim Einrichten der Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mit Azure Site Recovery verwendet werden.
-author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
-ms.author: raynew
-ms.openlocfilehash: 6b44f0e90acddeca69cc1668c8a05ee095c994f5
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 24333ccc5096e7f04f016444de2b0a7e13ae7bfa
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387076"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579807"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von VMware zu Azure
 
