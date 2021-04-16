@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Dieser Artikel enthält eine Übersicht über Kubernetes mit Azure Arc-Unterstützung.
 keywords: Kubernetes, Arc, Azure, Container
 ms.custom: references_regions
-ms.openlocfilehash: b3296aa1c1d5d463cc7f4cb932b44ad76632e19e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69e9886f214d0076c8e66231fd6ad15bb060828f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121591"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449646"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Was ist Kubernetes mit Azure Arc-Aktivierung?
 
@@ -43,9 +43,11 @@ Kubernetes mit Azure Arc-Aktivierung unterstützt die folgenden Szenarien:
 
 * Bereitstellen von Anwendungen und Anwenden der Konfiguration mithilfe der GitOps-basierten Konfigurationsverwaltung 
 
-* Anzeigen und Überwachen von Clustern mithilfe von Azure Monitor für Container 
+* Anzeigen und Überwachen von Clustern mithilfe von Azure Monitor für Container
 
-* Anwenden von Richtlinien mit Azure Policy für Kubernetes 
+* Erzwingen von Bedrohungsschutz mithilfe von Azure Defender für Kubernetes.
+
+* Anwenden von Richtlinien mit Azure Policy für Kubernetes
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

@@ -4,12 +4,12 @@ description: Übertragen von Sammlungen von Images oder anderen Artefakten aus e
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4fe36366011fb790d25419ac46a54c4bf5ad94bf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935339"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785817"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Übertragen von Artefakten in eine andere Registrierung
 
@@ -368,8 +368,9 @@ IMPORT_RUN_RES_ID=$(az deployment group show \
   --name importPipelineRun \
   --query 'properties.outputResources[0].id' \
   --output tsv)
+```
 
-When deployment completes successfully, verify artifact import by listing the repositories in the target container registry. For example, run [az acr repository list][az-acr-repository-list]:
+Wenn die Bereitstellung erfolgreich abgeschlossen wurde, überprüfen Sie den Artefaktimport, indem Sie die Repositorys in der Zielcontainerregistrierung auflisten. Führen Sie z. B. [az acr repository list][az-acr-repository-list] aus:
 
 ```azurecli
 az acr repository list --name <target-registry-name>
@@ -426,7 +427,8 @@ az resource delete \
   * Nicht alle Artefakte (oder gar keine) werden übertragen. Überprüfen Sie die Schreibweise von Artefakten in der Exportausführung sowie den Namen des Blobs in Export- und Importausführungen. Vergewissern Sie sich, dass Sie maximal 50 Artefakte übertragen.
   * Die Pipelineausführung wurde möglicherweise nicht abgeschlossen. Die Export- oder Importausführung kann einige Zeit in Anspruch nehmen. 
   * Stellen Sie bei anderen Pipelineproblemen dem Azure Container Registry-Team die [Korrelations-ID](../azure-resource-manager/templates/deployment-history.md) der Bereitstellung der Export- oder Importausführung zur Verfügung.
-
+* **Probleme beim Abrufen des Images in einer physisch isolierten Umgebung**
+  * Wenn bei dem Versuch, ein Image in einer physisch isolierten Umgebung abzurufen, Fehler im Zusammenhang mit fremden Ebenen oder der Auflösung von mcr.microsoft.com auftreten, weist das Imagemanifest wahrscheinlich nicht verteilbare Ebenen auf. Diese Images können in einer physisch isolierten Umgebung naturgemäß häufig nicht abgerufen werden. Sie können bestätigen, ob dies der Fall ist, indem Sie das Imagemanifest auf Verweise auf externe Registrierungen überprüfen. Wenn dies der Fall ist, müssen Sie die nicht verteilbaren Ebenen vor dem Bereitstellen einer Exportpipelineausführung für das Image in die Public Cloud-ACR überführen. Anleitungen hierzu finden Sie unter [Wie kann ich nicht verteilbare Ebenen an eine Registrierung pushen?](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

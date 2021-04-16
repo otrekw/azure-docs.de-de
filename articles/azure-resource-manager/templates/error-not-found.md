@@ -2,13 +2,13 @@
 title: Fehler des Typs „Ressource nicht gefunden“
 description: Beschreibt, wie Sie Fehler beheben, wenn eine Ressource nicht gefunden wird. Der Fehler kann auftreten, wenn Sie eine Azure Resource Manager-Vorlage bereitstellen oder Verwaltungsaktionen durchführen.
 ms.topic: troubleshooting
-ms.date: 06/10/2020
-ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.date: 03/23/2021
+ms.openlocfilehash: b80c32683190167d5c0d6e0a7f75acce8bbdb833
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526245"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950874"
 ---
 # <a name="resolve-resource-not-found-errors"></a>Beheben von Fehlern des Typs „Ressource nicht gefunden“
 
@@ -133,3 +133,9 @@ Wenn Sie eine Vorlage bereitstellen, suchen Sie nach Ausdrücken, die die [refer
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
+
+## <a name="solution-6---after-deleting-resource"></a>Lösung 6: Nach dem Löschen der Ressource
+
+Wenn Sie eine Ressource löschen, wird die Ressource möglicherweise für kurze Zeit weiterhin im Portal angezeigt, ist aber tatsächlich nicht verfügbar. Wenn Sie die Ressource auswählen, informiert Sie eine Fehlermeldung darüber, dass die Ressource nicht gefunden wurde. Aktualisieren Sie das Portal, um die aktuelle Ansicht zu erhalten.
+
+Wenn das Problem nach einer kurzen Wartezeit weiterhin auftritt, [wenden Sie sich an den Support](https://azure.microsoft.com/support/options/).

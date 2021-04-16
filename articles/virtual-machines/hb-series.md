@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: f0f5d8f5e5e7077c3438005b58d6ed1a132219f4
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 92a46c7f9d7cf86787bb1707c41ae0e44c37fc60
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102566021"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800906"
 ---
 # <a name="hb-series"></a>HB-Serie
 
@@ -35,7 +35,10 @@ VMs der HB-Serie unterstützen Mellanox EDR InfiniBand mit 100 Gbit/s. Diese VMs
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | AMD EPYC 7551 | 228 | 263 | 2.0 | 2.55 | 2.55 | 100 | All | 700 | 4 | 8 |
 
-Erfahren Sie mehr über die zugrunde liegende [Architektur](./workloads/hpc/hb-series-overview.md) und erwartete [Leistung](./workloads/hpc/hb-series-performance.md) der VM der HB-Serie.
+Weitere Informationen:
+- [Architektur und VM-Topologie](./workloads/hpc/hb-series-overview.md)
+- Unterstützter [Softwarestapel](./workloads/hpc/hb-series-overview.md#software-specifications) einschließlich unterstützter Betriebssysteme
+- Erwartete [Leistung](./workloads/hpc/hb-series-performance.md) bei VMs der HC-Serie
 
 [!INCLUDE [hpc-include.md](./workloads/hpc/includes/hpc-include.md)]
 

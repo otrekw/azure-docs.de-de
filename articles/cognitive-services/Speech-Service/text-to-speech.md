@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Sprachsynthese
-ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 653f9fcd9d3d8d6347d961603acc6eb481ee7f41
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599541"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869173"
 ---
 # <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 
@@ -40,6 +40,11 @@ In dieser Übersicht erfahren Sie mehr über die Vorteile und Funktionen des Spr
 * Neuronale Stimmen: Tiefe neuronale Netzwerke werden verwendet, um die Grenzen der herkömmlichen Sprachsynthese in Bezug auf Betonung und Intonation in gesprochener Sprache zu überwinden. Die Vorhersage der Satzgliederung und die Stimmensynthese werden gleichzeitig ausgeführt, sodass eine flüssigere und natürlicher klingende Ausgabe entsteht. Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassistenten noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern. Eine vollständige Liste der neuronalen Stimmen finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
 
 * Anpassen von Sprachstilen mit SSML: Die Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML) ist eine XML-basierte Markupsprache, mit der Ausgaben der Spracherkennung angepasst werden. Mit SSML können Sie Tonhöhe und Pausen anpassen, die Aussprache verbessern, die Sprechgeschwindigkeit beschleunigen oder verlangsamen, die Lautstärke erhöhen oder verringern und einem einzelnen Dokument mehrere Stimmen zuordnen. Weitere Informationen zum Anpassen von Sprachstilen finden Sie in der [Vorgehensweise](speech-synthesis-markup.md).
+
+* Viseme: [Viseme](how-to-speech-synthesis-viseme.md) (Mundbilder) sind die wichtigsten Gesichtsausdrücke beim Sprechen und umfassen u. a. die Position der Lippen, des Kiefers und der Zunge beim Erzeugen eines bestimmten Phonems. Viseme sind stark mit Stimmen und Phonemen korreliert. Sie können mit Visemereignissen im Speech SDK Gesichtsanimationsdaten generieren. Mit diesen lassen sich Gesichter für die Kommunikation durch Lippenlesen, für Unterricht, Unterhaltung oder Kundendienst animieren.
+
+> [!NOTE]
+> Viseme können derzeit nur für die Stimme `en-US-AriaNeural` in der Region USA, Westen (`westus`) verwendet werden. Sie sind jedoch bis Ende April 2021 für alle `en-US`-Stimmen verfügbar.
 
 ## <a name="get-started"></a>Erste Schritte
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f26813176d4286a052772d2096427231759aacc2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943412"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863376"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Verbinden von HDInsight mit Ihrem lokalen Netzwerk
 
@@ -37,7 +37,7 @@ Diese Konfigurationen ermöglichen folgendes Verhalten:
 
 Im folgenden Diagramm werden Anforderungen für Ressourcen, die auf das DNS-Suffix des virtuellen Netzwerks enden, als grüne Linien dargestellt. Die blauen Linien stehen für Anforderungen von Ressourcen im lokalen Netzwerk oder dem öffentlichen Internet.
 
-![Diagramm zur Veranschaulichung der Auflösung von DNS-Anforderungen in der Konfiguration](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+:::image type="content" source="./media/connect-on-premises-network/on-premises-to-cloud-dns.png" alt-text="Diagramm zur Veranschaulichung der Auflösung von DNS-Anforderungen in der Konfiguration" border="false":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,9 +62,9 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
   
-1. Klicken Sie im oberen Menü auf **+ Ressource erstellen**.
+1. Klicken Sie im oberen Menü auf **+ Ressource erstellen**.
 
-    ![Erstellen eines virtuellen Ubuntu-Computers](./media/connect-on-premises-network/azure-portal-create-resource.png)
+    :::image type="content" source="./media/connect-on-premises-network/azure-portal-create-resource.png" alt-text="Erstellen eines virtuellen Ubuntu-Computers":::
 
 1. Wählen Sie **Compute** > **Virtueller Computer** aus, um zur Seite **Virtuellen Computer erstellen** zu wechseln.
 
@@ -72,18 +72,18 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
   
     | Feld | Wert |
     | --- | --- |
-    |Subscription |Wählen Sie Ihr entsprechendes Abonnement aus.|
-    |Resource group |Wählen Sie die Ressourcengruppe aus, die das zuvor erstellte virtuelle Netzwerk enthält.|
+    |Abonnement |Wählen Sie Ihr entsprechendes Abonnement aus.|
+    |Ressourcengruppe |Wählen Sie die Ressourcengruppe aus, die das zuvor erstellte virtuelle Netzwerk enthält.|
     |Name des virtuellen Computers | Geben Sie einen Anzeigename ein, über den dieser virtuelle Computer identifiziert wird. In diesem Beispiel wird **DNSProxy** verwendet.|
     |Region | Wählen Sie dieselbe Region wie für das virtuelle Netzwerk aus, das zuvor erstellt wurde.  Es sind nicht alle VM-Größen in allen Regionen verfügbar.  |
     |Verfügbarkeitsoptionen |  Wählen Sie die gewünschte Verfügbarkeitsstufe aus.  Azure bietet mehrere Optionen zum Verwalten der Verfügbarkeit und Resilienz für Ihre Anwendungen.  Entwerfen Sie Ihre Projektmappe, um replizierte virtuelle Computer in Verfügbarkeitszonen und Verfügbarkeitsgruppen zu verwenden, um so Ihre Apps und Daten vor Rechenzentrumsausfällen und bei Wartungsereignissen zu schützen. Bei diesem Beispiel wird der Wert **Keine Infrastrukturredundanz erforderlich** verwendet. |
-    |Image | Belassen Sie es bei **Ubuntu Server 18.04 LTS**. |
-    |Authentifizierungsart | __Kennwort__ oder __öffentlicher SSH-Schlüssel__: Die Authentifizierungsmethode für das SSH-Konto. Aus Sicherheitsgründen empfehlen wir die Verwendung öffentlicher Schlüssel. In diesem Beispiel wird **Password** verwendet.  Weitere Informationen finden Sie unter [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../virtual-machines/linux/mac-create-ssh-keys.md).|
+    |Bild | Belassen Sie es bei **Ubuntu Server 18.04 LTS**. |
+    |Authentifizierungsart | __Kennwort__ oder __Öffentlicher SSH-Schlüssel__: Die Authentifizierungsmethode für das SSH-Konto. Aus Sicherheitsgründen empfehlen wir die Verwendung öffentlicher Schlüssel. In diesem Beispiel wird **Password** verwendet.  Weitere Informationen finden Sie unter [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../virtual-machines/linux/mac-create-ssh-keys.md).|
     |Benutzername |Geben Sie den Benutzernamen des Administrators für die VM ein.  In diesem Beispiel wird **sshuser** verwendet.|
     |Kennwort oder öffentlicher SSH-Schlüssel | Das verfügbare Feld wird durch Ihre Auswahl des **Authentifizierungstyps** bestimmt.  Geben Sie den entsprechenden Wert ein.|
     |Öffentliche Eingangsports|Wählen Sie **Ausgewählte Ports zulassen** aus. Wählen Sie dann **SSH (22)** aus der Dropdownliste **Eingehende Ports auswählen** aus.|
 
-    ![Grundlegende Konfiguration des virtuellen Computers](./media/connect-on-premises-network/virtual-machine-basics.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-machine-basics.png" alt-text="Grundlegende Konfiguration des virtuellen Computers":::
 
     Übernehmen Sie für alle weitere Einträge die Standardwerte, und klicken Sie dann auf die Registerkarte **Netzwerk**.
 
@@ -92,10 +92,10 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
     | Feld | Wert |
     | --- | --- |
     |Virtuelles Netzwerk | Wählen Sie das zuvor erstellte virtuelle Netzwerk aus.|
-    |Subnet | Wählen Sie das Standardsubnetz für das zuvor erstellte virtuelle Netzwerk aus. Wählen Sie __nicht__ das Subnetz aus, das vom VPN-Gateway verwendet wird.|
+    |Subnetz | Wählen Sie das Standardsubnetz für das zuvor erstellte virtuelle Netzwerk aus. Wählen Sie __nicht__ das Subnetz aus, das vom VPN-Gateway verwendet wird.|
     |Öffentliche IP-Adresse | Verwenden Sie den automatisch ausgefüllten Wert.  |
 
-    ![Einstellungen für virtuelles HDInsight-Netzwerk](./media/connect-on-premises-network/virtual-network-settings.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-network-settings.png" alt-text="Einstellungen für virtuelles HDInsight-Netzwerk":::
 
     Übernehmen Sie für alle weitere Einstellungen die Standardwerte, und klicken Sie dann auf **Bewerten + erstellen**.
 
@@ -109,7 +109,7 @@ Nachdem der virtuelle Computer erstellt wurde, erhalten Sie die Benachrichtigung
 
 2. Notieren Sie sich die Werte für **ÖFFENTLICHE IP-ADRESSE/DNS-NAMENSBEZEICHNUNG** und **PRIVATE IP-ADRESSE** für den späteren Gebrauch.
 
-   ![Öffentliche und private IP-Adressen](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
+   :::image type="content" source="./media/connect-on-premises-network/virtual-machine-ip-addresses.png" alt-text="Öffentliche und private IP-Adressen":::
 
 ### <a name="install-and-configure-bind-dns-software"></a>Installieren und Konfigurieren von Bind (DNS-Software)
 
@@ -245,7 +245,7 @@ Führen Sie über das [Azure-Portal](https://portal.azure.com) die folgenden Sch
 
 5. Wählen Sie __Speichern__ aus.  <br />  
 
-    ![Festlegen des benutzerdefinierten DNS-Servers für das Netzwerk](./media/connect-on-premises-network/configure-custom-dns.png)
+    :::image type="content" source="./media/connect-on-premises-network/configure-custom-dns.png" alt-text="Festlegen des benutzerdefinierten DNS-Servers für das Netzwerk":::
 
 ## <a name="configure-on-premises-dns-server"></a>Konfigurieren des lokalen DNS-Servers
 
@@ -285,8 +285,8 @@ Sie können Netzwerksicherheitsgruppen (NSGs) oder benutzerdefinierte Routen daz
 
 2. Lassen Sie für die in Schritt 1 identifizierten IP-Adressen eingehenden Datenverkehr von diesen IP-Adressen zu.
 
-   * Wenn Sie eine __Netzwerksicherheitsgruppe__ verwenden: Lassen Sie __eingehenden__ Datenverkehr an Port __443__ für die IP-Adressen zu.
-   * Wenn Sie eine __benutzerdefinierte Route__ verwenden: Legen Sie den Typ des __nächsten Hops__ der Route für die IP-Adressen auf __Internet__ fest.
+   * Bei Verwendung von __NSG__: Lassen Sie __eingehenden__ Datenverkehr an Port __443__ für die IP-Adressen zu.
+   * Bei Verwendung von __UDR__: Legen Sie den Typ des __nächsten Hops__ der Route für die IP-Adressen auf __Internet__ fest.
 
 Ein Beispiel zur Verwendung von Azure PowerShell oder der Azure CLI zum Erstellen von NSGs finden Sie im Dokument [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-create-virtual-network.md#hdinsight-nsg).
 

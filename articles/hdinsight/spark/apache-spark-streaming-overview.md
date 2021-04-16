@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: bde6c5b2bad12df8642dd3c9b4a49548f7bc9a6d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e8a9f771827b870f493d6b0d7590feee7fc52b20
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929520"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104870244"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Übersicht über Apache Spark-Streaming
 
-[Apache Spark Streaming](https://spark.apache.org/) stellt Datenstromverarbeitung auf HDInsight-Spark-Clustern bereit. Dabei wird garantiert, dass jedes Eingabeereignis genau einmal verarbeitet wird, selbst wenn ein Knotenfehler auftritt. Ein Spark-Datenstrom ist ein Auftrag mit langer Ausführungszeit, der Eingabedaten aus einer Vielzahl von Quellen empfängt, einschließlich Azure Event Hubs. Außerdem gilt: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ`, rohen TCP-Sockeln oder von der Überwachung von Apache Hadoop YARN-Dateisystemen. Im Gegensatz zu einem rein ereignisgesteuerten Prozess, gruppiert ein Spark-Datenstrom Eingabedaten in Zeitfenster, z. B. in einen 2-Sekunden-Slice. Anschließend werden die einzelnen Gruppen von Daten mit map-, reduce-, join- und extract-Vorgängen transformiert. Der Spark-Stream schreibt die transformierten Daten dann in Dateisysteme, Datenbanken, Dashboards und die Konsole.
+[Apache Spark Streaming](https://spark.apache.org/) stellt Datenstromverarbeitung auf HDInsight-Spark-Clustern bereit. Dabei wird garantiert, dass jedes Eingabeereignis genau einmal verarbeitet wird, selbst wenn ein Knotenfehler auftritt. Ein Spark-Datenstrom ist ein Auftrag mit langer Ausführungszeit, der Eingabedaten aus einer Vielzahl von Quellen empfängt, einschließlich Azure Event Hubs. Außerdem: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ`, roher TCP-Sockel oder aus der Überwachung von Apache Hadoop YARN-Dateisystemen. Im Gegensatz zu einem rein ereignisgesteuerten Prozess, gruppiert ein Spark-Datenstrom Eingabedaten in Zeitfenster, z. B. in einen 2-Sekunden-Slice. Anschließend werden die einzelnen Gruppen von Daten mit map-, reduce-, join- und extract-Vorgängen transformiert. Der Spark-Stream schreibt die transformierten Daten dann in Dateisysteme, Datenbanken, Dashboards und die Konsole.
 
-![Datenstromverarbeitung mit HDInsight und Spark-Streaming](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png" alt-text="Datenstromverarbeitung mit HDInsight und Spark-Streaming" border="false":::
 
 Spark Streaming-Anwendungen müssen einen Sekundenbruchteil warten, bis alle `micro-batch`-Instanzen von Ereignissen erfasst wurden und bevor dieser Batch zur Verarbeitung übermittelt wird. Im Gegensatz dazu verarbeitet eine ereignisgesteuerte Anwendung jedes Ereignis sofort. Die Spark-Streaming-Latenzzeit liegt in der Regel unter wenigen Sekunden. Die Vorteile des Mikrobatchansatzes sind eine effizientere Datenverarbeitung und eine Vereinfachung aggregierter Berechnungen.
 
@@ -30,7 +30,7 @@ Am Anfang steht ein einzelnes Ereignis, z.B. ein Temperaturwert auf einem vernet
 
 Jedes RDD stellt Ereignisse dar, die in einem als *Batchintervall* bezeichneten benutzerdefinierten Zeitraum gesammelt wurden. Wenn ein Batchintervall verstreicht, wird ein neues RDD erzeugt, das alle Daten dieses Intervalls enthält. Die kontinuierliche Gruppe von RDDs wird in einem DStream gesammelt. Wenn das Batchintervall z.B. eine Sekunde lang ist, gibt Ihr DStream jede Sekunde einen Batch aus, der ein RDD mit allen während dieser Sekunde erfassten Daten enthält. Bei der DStream-Verarbeitung tritt das Temperaturereignis in einem dieser Batches auf. Eine Spark-Streaming-Anwendung verarbeitet die Batches, die die Ereignisse enthalten, und führt die endgültigen Aktionen an den Daten durch, die in den einzelnen RDDs gespeichert werden.
 
-![Beispiel-DStream mit Temperaturereignissen](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png" alt-text="Beispiel-DStream mit Temperaturereignissen" border="false":::
 
 ## <a name="structure-of-a-spark-streaming-application"></a>Struktur einer Spark-Streaming-Anwendung
 
@@ -151,7 +151,7 @@ SELECT * FROM demo_numbers
 
 Die resultierende Ausgabe sollte der folgenden ähneln:
 
-| value | time |
+| Wert | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -168,9 +168,9 @@ Verwenden Sie die in Spark Streaming enthaltenen `sliding window`-Vorgänge, um 
 
 Gleitende Fenster können sich überschneiden, sodass Sie beispielsweise ein Fenster mit einer Länge von zwei Sekunden definieren können, das einmal pro Sekunde verschoben wird. Diese Aktion bedeutet, dass das Fenster jedes Mal, wenn Sie eine Aggregationsberechnung durchführen, Daten der letzten Sekunde des vorherigen Fensters sowie die neuen Daten der nächsten Sekunde enthält.
 
-![Beispiel für das erste Fenster mit Temperaturereignissen](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png" alt-text="Beispiel für das erste Fenster mit Temperaturereignissen" border="false":::
 
-![Beispiel für ein Fenster mit Temperaturereignissen nach dem Gleiten](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png" alt-text="Beispiel für ein Fenster mit Temperaturereignissen nach dem Gleiten" border="false":::
 
 Im folgenden Beispiel wird der Code aktualisiert, der die DummySource verwendet, um die Batches in einem Fenster mit einer Dauer von einer Minute und einem Gleiten in einer Minute zu sammeln.
 
@@ -219,7 +219,7 @@ ssc.start()
 
 Nach der ersten Minute ergibt dies zwölf Einträge – sechs Einträge aus jedem der beiden im Fenster gesammelten Batches.
 
-| value | time |
+| Wert | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158
@@ -244,7 +244,7 @@ Um Resilienz und Fehlertoleranz zu gewährleisten, stellt das Spark-Streaming mi
 
 In der Regel erstellen Sie Spark Streaming-Anwendungen lokal in einer JAR-Datei. Anschließend stellen Sie sie in Spark in HDInsight bereit, indem Sie die JAR-Datei in den angefügten Standardspeicher kopieren. Sie können Ihre Anwendung mit den LIVY-REST-APIs, die in Ihrem Cluster verfügbar sind, mit einem POST-Vorgang starten. Der Text des POST-Vorgangs enthält ein JSON-Dokument, das den Pfad zu Ihrer JAR-Datei und den Namen der Klasse bereitstellt, deren Main-Methode die Streaminganwendung definiert und ausführt. Außerdem kann es optional die Ressourcenanforderungen des Auftrags enthalten (z. B. die Anzahl der Executor-Threads, Arbeitsspeicher und Kerne). Außerdem sind jegliche Konfigurationseinstellungen enthalten, die Ihr Anwendungscode erfordert.
 
-![Bereitstellen von Spark-Streaming-Anwendungen](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png" alt-text="Bereitstellen von Spark-Streaming-Anwendungen" border="false":::
 
 Der Status aller Anwendungen kann auch mit einer GET-Anforderung an einem LIVY-Endpunkt überprüft werden. Außerdem können Sie eine ausgeführte Anwendung durch das Senden einer DELETE-Anforderung an den LIVY-Endpunkt beenden. Weitere Informationen zur LIVY-API finden Sie unter [Übermitteln von Remoteaufträgen mit Apache LIVY](apache-spark-livy-rest-interface.md)
 

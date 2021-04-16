@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: mbullwin
 ms.openlocfilehash: fcd4f73a9cea75877360b2b537776bf59fb22363
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98704455"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>Ausgewählter benutzergenerierter Inhalt für die Anomalieerkennungs-API
@@ -23,7 +23,7 @@ Ermitteln Sie mithilfe dieses Artikels, wie andere Kunden darüber denken, und v
 
 ## <a name="technical-blogs"></a>Technische Blogs
 
-* [Trying the Cognitive Service: Anomaly Detector API (in Japanese)](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/) (Cognitive Service ausprobieren: Anomalieerkennungs-API (in Japanisch))
+* [Cognitive Service: Anomalieerkennungs-API (in japanischer Sprache)](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
 
 ## <a name="open-source-projects"></a>Open-Source-Projekte
 

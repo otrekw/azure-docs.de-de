@@ -7,7 +7,7 @@
       href: overview.md
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Preise und Einschränkungen
+    - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Neues
       href: whats-new.md
@@ -25,6 +25,8 @@
       href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
     - name: 'Python: SDK mit Formularerkennungs-Clientbibliothek'
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
+    - name: 'JavaScript: SDK mit Formularerkennungs-Clientbibliothek'
+      href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
 - name: Anleitungen
   items:
     - name: Erstellen eines Trainingsdatasets
@@ -48,6 +50,14 @@
           href: ../containers/index.yml
     - name: Sichern und Wiederherstellen von Modellen
       href: disaster-recovery.md
+    - name: Unternehmensfähigkeit
+      items:
+        - name: Einrichten von virtuellen Netzwerken
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: Verwenden kundenseitig verwalteter Schlüssel
+          href: encrypt-data-at-rest.md
+        - name: "Verwenden der Azure\_AD-Authentifizierung"
+          href: ../authentication.md?context=/azure/cognitive-services/form-recognizer/context/context
 - name: Konzepte
   items:
     - name: Layout-API
@@ -63,7 +73,7 @@
       href: concept-business-cards.md
     - name: Invoices
       href: concept-invoices.md
-    - name: Ausweise
+    - name: Identitätsdokumente
       href: concept-identification-cards.md
 - name: Tutorials
   items:
@@ -93,15 +103,15 @@
           href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: Ressourcen
   items:
+    - name: Unternehmensfähigkeit
+      items:
+        - name: Unterstützung für Regionen
+          href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+        - name: Konformität und Zertifizierung
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Support- und Hilfeoptionen
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Regionale Verfügbarkeit
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: Compliance
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Verschlüsselung
-      href: encrypt-data-at-rest.md
     - name: Datenschutz und Cookies
       href: 'https://privacy.microsoft.com/en-US/privacystatement'

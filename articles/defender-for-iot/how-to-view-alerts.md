@@ -1,20 +1,19 @@
 ---
-title: Anzeigen von Warnungen
+title: Filtern und Verwalten von Warnungen auf der Seite „Warnungen“
 description: Zeigen Sie Warnungen nach verschiedenen Kategorien an, und verwenden Sie Suchfunktionen zum Suchen nach bestimmten Warnungen.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/02/2020
+ms.date: 3/22/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 391d1872124c7332bdaa6008a244490b47df4bf7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523667"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781584"
 ---
-# <a name="view-alerts"></a>Anzeigen von Warnungen
+# <a name="filter-and-manage-alerts-from-the-alerts-page"></a>Filtern und Verwalten von Warnungen auf der Seite „Warnungen“ 
 
 In diesem Artikel wird beschrieben, wie Sie von Ihrem Sensor ausgelöste Warnungen anzeigen und mit Benachrichtigungstools verwalten.
 

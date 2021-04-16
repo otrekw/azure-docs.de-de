@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab840b46503aed1a318e3b39a4e8fe3e4d11735c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362419"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579126"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
 Ein Administrator kann in einer Richtlinie für bedingten Zugriff Signale von Bedingungen wie Risiko, Geräteplattform oder Standort verwenden, um die Richtlinienentscheidungen zu verbessern. 
 
-[ ![Definieren einer Richtlinie für bedingten Zugriff und Angeben von Bedingungen](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
+[![Definieren einer Richtlinie für bedingten Zugriff und Angeben von Bedingungen](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 Es können mehrere Bedingungen kombiniert werden, um differenzierte und spezifische Richtlinien für bedingten Zugriff zu erstellen.
 
@@ -174,11 +174,11 @@ Diese Einstellung hat Auswirkungen auf Zugriffsversuche von den folgenden mobile
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-Clients
 
-- Organisationen können Exchange ActiveSync-Clients nur auswählen, wenn sie Benutzern oder Gruppen Richtlinien zuweisen. Bei der Auswahl von **Alle Benutzer**, **Alle Gast- und externen Benutzer** oder **Verzeichnisrollen** werden alle Benutzer blockiert.
+- Organisationen können Exchange ActiveSync-Clients nur auswählen, wenn sie Benutzern oder Gruppen Richtlinien zuweisen. Die Auswahl von **Alle Benutzer**, **Alle Gast- und externen Benutzer** oder **Verzeichnisrollen** führt dazu, dass alle Benutzer der Richtlinie unterliegen.
 - Wenn Sie eine Richtlinie erstellen, die Exchange ActiveSync-Clients zugewiesen ist, sollte **Exchange Online** der Richtlinie als einzige Cloudanwendung zugewiesen sein. 
 - Organisationen können den Umfang dieser Richtlinie auf bestimmte Plattformen beschränken, indem sie die Bedingung **Geräteplattformen** verwenden.
 
-Wenn die der Richtlinie zugewiesene Zugriffssteuerung die Option **Genehmigte Client-App erforderlich** verwendet, wird der Benutzer angewiesen, den Outlook Mobile-Client zu installieren und zu verwenden. Wenn die **mehrstufige Authentifizierung** erforderlich ist, werden betroffene Benutzer blockiert, weil die Standardauthentifizierung keine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) unterstützt.
+Wenn die der Richtlinie zugewiesene Zugriffssteuerung die Option **Genehmigte Client-App erforderlich** verwendet, wird der Benutzer angewiesen, den Outlook Mobile-Client zu installieren und zu verwenden. Wenn **mehrstufige Authentifizierung**, **Nutzungsbedingungen** oder **benutzerdefinierte Steuerungen** erforderlich sind, werden betroffene Benutzer blockiert, da die Standardauthentifizierung diese Steuerungen nicht unterstützt.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 

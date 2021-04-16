@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.openlocfilehash: 838a48aa11a1cb36c3a7d822ce88f58936aa976d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8319885de26bf79f5e402c4d06b29e9dd94894de
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734620"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104655850"
 ---
 # <a name="visualizations-for-application-change-analysis-preview"></a>Visualisierungen für die Anwendungsänderungsanalyse (Vorschau)
 
@@ -22,11 +22,11 @@ Suchen Sie im Azure-Portal in der Suchleiste nach „Änderungsanalyse“, um di
 
 ![Screenshot der Suche nach „Änderungsanalyse“ im Azure-Portal](./media/change-analysis/search-change-analysis.png)
 
-Alle Ressourcen unter einem ausgewählten Abonnement werden mit Änderungen der letzten 24 Stunden angezeigt. Zur Optimierung der Seitenladeleistung zeigt der Dienst jeweils 10 Ressourcen gleichzeitig an. Wählen Sie die nächste Seite aus, um weitere Ressourcen anzuzeigen. Wir arbeiten derzeit daran, diese Einschränkung zu beseitigen.
+Alle Ressourcen unter einem ausgewählten Abonnement werden mit Änderungen der letzten 24 Stunden angezeigt. Alle Änderungen werden mit dem alten Wert und dem neuen Wert angezeigt, um auf einen Blick Erkenntnisse gewinnen zu können.
 
 ![Screenshot des Blatts „Änderungsanalyse“ im Azure-Portal](./media/change-analysis/change-analysis-standalone-blade.png)
 
-Klicken Sie auf eine Ressource, um alle ihre Änderungen anzuzeigen. Führen Sie bei Bedarf einen Drilldown in eine Änderung durch, um Änderungsdetails und Erkenntnisse im JSON-Format anzuzeigen.
+Klicken Sie auf eine Änderung, um den vollständigen Resource Manager-Ausschnitt und andere Eigenschaften anzuzeigen.
 
 ![Screenshot von Änderungsdetails](./media/change-analysis/change-details.png)
 
@@ -40,11 +40,6 @@ Die Benutzeroberfläche unterstützt das Auswählen mehrerer Abonnements zum Anz
 
 ![Screenshot: Abonnementfilter, der das Auswählen mehrerer Abonnements unterstützt](./media/change-analysis/multiple-subscriptions-support.png)
 
-### <a name="web-app-diagnose-and-solve-problems"></a>Diagnose und Behandlung von Problemen bei Web-Apps
-
-In Azure Monitor ist die Änderungsanalyse auch in die Self-Service-Umgebung **Diagnose und Problembehandlung** integriert. Der Zugriff auf diese Umgebung erfolgt von der Seite **Übersicht** Ihrer App Service-Anwendung.
-
-![Screenshot der Schaltflächen „Übersicht“ und „Diagnose und Problembehandlung“](./media/change-analysis/change-analysis.png)
 
 ## <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Anwendungsänderungsanalyse im Tool „Diagnose und Problembehandlung“
 
@@ -69,6 +64,13 @@ Bei der Anwendungsänderungsanalyse handelt es sich um ein eigenständiges Erken
 5. Änderungsdaten sind auch in ausgewählten Erkennungsmodulen für **Web-App-Ausfälle** und **Anwendungsabstürze** verfügbar. Im angezeigten Diagramm sind die Arten der Änderungen im Laufe der Zeit und Details zu diesen Änderungen zusammengefasst. Standardmäßig werden Änderungen der letzten 24 Stunden angezeigt, um bei unmittelbaren Problemen sofort reagieren zu können.
 
      ![Screenshot der Gegenüberstellung der Änderungen](./media/change-analysis/change-view.png)
+
+## <a name="diagnose-and-solve-problems-tool"></a>Tool „Diagnose und Problembehandlung“
+Die Änderungsanalyse steht im Tool „Diagnose und Problembehandlung“ als Erkenntniskarte zur Verfügung. Wenn bei einer Ressource Probleme auftreten und in den letzten 72 Stunden Änderungen festgestellt wurden, wird die Anzahl der Änderungen auf der Erkenntniskarte angezeigt. Wenn Sie auf den Link „Änderungsdetails anzeigen“ klicken, wird die gefilterte Ansicht in der eigenständigen Benutzeroberfläche der Änderungsanalyse angezeigt.
+
+![Screenshot der Anzeige von Änderungsinformationen im Tool „Diagnose und Problembehandlung“](./media/change-analysis/change-insight-diagnose-and-solve.png)
+
+
 
 ## <a name="virtual-machine-diagnose-and-solve-problems"></a>Diagnose und Problembehandlung bei virtuellen Computern
 

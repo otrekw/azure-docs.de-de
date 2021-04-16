@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
-ms.sourcegitcommit: e8bd58dbcfe0eae45979d86e071778b9aec40b6c
+ms.openlocfilehash: ee0c673027892e6d3ee55b6ec5f67a30d88be683
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2020
-ms.locfileid: "97770960"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104780343"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Übersicht über Ressourcenlimits für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -76,7 +76,7 @@ SQL Managed Instance umfasst zwei Dienstebenen: [Universell](../database/service
 | Max. Anzahl von Datenbankdateien pro Instanz | Bis zu 280, außer wenn die Instanzspeichergröße oder der Grenzwert für [Azure Premium Disk-Speicherbelegungsplatz](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files) erreicht wurde. | 32.767 Dateien pro Datenbank, außer wenn der Grenzwert für die Instanzspeichergröße erreicht wurde. |
 | Maximale Größe der Datendatei | Begrenzt auf die derzeit verfügbare Instanzspeichergröße (max. 2 TB – 8 TB) und den [Azure Premium Disk-Speicherbelegungsplatz](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files). | Begrenzt auf die derzeit verfügbare Instanzspeichergröße (bis zu 1 TB – 4 TB). |
 | Maximale Protokolldateigröße | Begrenzt auf 2 TB und die derzeit verfügbare Instanzspeichergröße. | Begrenzt auf 2 TB und die derzeit verfügbare Instanzspeichergröße. |
-| Daten-/Protokoll-IOPS (ungefähr) | Bis zu 30-40.000 IOPS pro Instanz*, 500 – 7.500 pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um den IOPS-Wert zu erhöhen](#file-io-characteristics-in-general-purpose-tier)| 10.000 – 200.000 (4.000 IOPS/virtueller Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um die E/A-Leistung zu verbessern. |
+| Daten-/Protokoll-IOPS (ungefähr) | Bis zu 30-40.000 IOPS pro Instanz*, 500 – 7.500 pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um den IOPS-Wert zu erhöhen](#file-io-characteristics-in-general-purpose-tier)| 16.000 – 320.000 (4.000 IOPS/virtueller Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um die E/A-Leistung zu verbessern. |
 | Grenzwert für den Protokollschreibdurchsatz (pro Instanz) | 3 MB/Sek. pro virtuellem Kern<br/>Max. 120 MB/Sek. pro Instanz<br/>22 – 65 MB/Sek. pro Datenbank<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](#file-io-characteristics-in-general-purpose-tier) | 4 MB/Sek. pro virtuellem Kern<br/>Max. 96 MB/Sek. |
 | Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](#file-io-characteristics-in-general-purpose-tier) | Nicht begrenzt. |
 | E/A-Speicherlatenz (ungefähr) | 5 – 10 ms | 1 – 2 ms |

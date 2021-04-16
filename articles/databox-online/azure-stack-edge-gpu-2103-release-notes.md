@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 846d4a259f0fcd204bcad6c898efc999c3765fd3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4d2a345ed49fae2e1d77b3c5da44b305d069874e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962359"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729455"
 ---
 # <a name="azure-stack-edge-2103-release-notes"></a>Versionshinweise zu Azure Stack Edge 2103
 
@@ -25,7 +25,7 @@ Die Versionshinweise werden fortlaufend aktualisiert, und wenn schwerwiegende Pr
 
 Dieser Artikel bezieht sich auf das Release von **Azure Stack Edge Pro 2103**, das der Softwareversionsnummer **2.2.1540.2890** zugeordnet ist. Diese Software kann auf Ihr Gerät angewendet werden, wenn Sie mindestens Azure Stack Edge 2010-Software (2.1.1377.2170) ausführen.
 
-## <a name="whats-new"></a>Neues
+## <a name="whats-new"></a>Neuigkeiten
 
 Die folgenden neuen Funktionen sind im Release Azure Stack Edge 2103 verfügbar. 
  
@@ -98,7 +98,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der bereits aus früheren Rel
 |**19.**|Kubernetes und Updates |Bei früheren Softwareversionen, z. B. Release 2008, treten bei einem Update Probleme durch eine Racebedingung auf, die beim Update zum Fehler ClusterConnectionException führen. |Dieses Problem kann vermieden werden, indem die neueren Builds genutzt werden. Falls dieses Problem weiterhin besteht, sollten Sie erneut versuchen, das Upgrade durchzuführen. Anschließend sollte es funktionieren.|
 |**20**|Internet Explorer|Wenn erweiterte Sicherheitsfunktionen aktiviert sind, können Sie möglicherweise nicht auf Seiten der lokalen Webbenutzeroberfläche zugreifen. | Deaktivieren Sie die erweiterte Sicherheit, und starten Sie den Browser neu.|
 |**21.**|Kubernetes-Dashboard | Der *HTTPS*-Endpunkt für das Kubernetes-Dashboard mit SSL-Zertifikat wird nicht unterstützt. | |
-|**22.**|Kubernetes |Kubernetes unterstützt für Umgebungsvariablen, die von .NET-Anwendungen verwendet werden, keine Namen mit Doppelpunkt („:“). Dies ist auch erforderlich, damit das IoT Edge-Modul für Event Grid auf Azure Stack Edge-Geräten und in anderen Anwendungen funktioniert. Weitere Informationen finden Sie in der [ASP.NET Core-Dokumentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|Ersetzen Sie „:“ durch einen doppelten Unterstrich. Weitere Informationen finden Sie unter [Probleme mit Kubernetes](https://github.com/kubernetes/kubernetes/issues/53201).|
+|**22.**|Kubernetes |Kubernetes unterstützt für Umgebungsvariablen, die von .NET-Anwendungen verwendet werden, keine Namen mit Doppelpunkt („:“). Dies ist auch erforderlich, damit das IoT Edge-Modul für Event Grid auf Azure Stack Edge-Geräten und in anderen Anwendungen funktioniert. Weitere Informationen finden Sie in der [ASP.NET Core-Dokumentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration#environment-variables).|Ersetzen Sie „:“ durch einen doppelten Unterstrich. Weitere Informationen finden Sie unter [Probleme mit Kubernetes](https://github.com/kubernetes/kubernetes/issues/53201).|
 |**23.** |Azure Arc und Kubernetes-Cluster |Wenn `yamls` für Ressourcen aus dem Git-Repository gelöscht werden, werden die entsprechenden Ressourcen standardmäßig nicht aus dem Kubernetes-Cluster entfernt.  |Um das Löschen von Ressourcen zu erlauben, wenn sie aus dem Git-Repository gelöscht werden, legen Sie in Arc OperatorParams `--sync-garbage-collection` fest. Weitere Informationen finden Sie unter [Löschen einer Konfiguration](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
 |**24.**|NFS |Anwendungen, die auf Ihrem Gerät eingebundene NFS-Freigaben zum Schreiben von Daten verwenden, sollten exklusiven Schreibzugriff verwenden. Dies stellt sicher, dass die Schreibvorgänge auf dem Datenträger erfolgen.| |
 |**25.**|Computekonfiguration |In Netzwerkkonfigurationen, in denen Gateways, Switches oder Router auf ARP-Anforderungen (Address Resolution Protocol) für Systeme antworten, die nicht im Netzwerk vorhanden sind, tritt bei der Computekonfiguration ein Fehler auf.| |

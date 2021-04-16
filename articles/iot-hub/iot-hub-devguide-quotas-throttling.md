@@ -6,17 +6,17 @@ ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 03/18/2021
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 4b65d42522f40eb7d0e65356223313a924de3039
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410690"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104656990"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -86,6 +86,8 @@ Ein Beispiel: Sie verwenden ein simuliertes Gerät, um 200 Gerät-zu-Cloud-Nachr
 ### <a name="identity-registry-operations-throttle"></a>Drosselung von Identitätsregistrierungsvorgängen
 
 Geräteidentitätsregistrierungsvorgänge sind für die Verwendung zur Laufzeit in Szenarios für die Geräteverwaltung und -bereitstellung vorgesehen. Das Lesen oder Aktualisieren einer großen Anzahl von Geräteidentitäten wird durch [Import-/Exportaufträge](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) unterstützt.
+
+Beim Initiieren von Identitätsvorgängen durch [Massenregistrierungs-Aktualisierungsvorgänge](https://docs.microsoft.com/rest/api/iothub/service/bulkregistry/updateregistry) (*nicht* Massenimport- und Massenexportaufträge) gelten dieselben Drosselungsgrenzwerte. Wenn Sie z. B. einen Massenvorgang zum Erstellen von 50 Geräten übermitteln möchten und über einen S1-IoT-Hub mit einer Einheit verfügen, werden nur zwei dieser Massenanforderungen pro Minute akzeptiert. Dies liegt daran, dass die Identitätsvorgangsdrosselung für einen S1-IoT-Hub mit einer Einheit 100/Minute/Einheit beträgt. Außerdem würde in diesem Fall eine dritte (und weitere) Anforderung in derselben Minute abgelehnt werden, da der Grenzwert bereits erreicht wurde. 
 
 ### <a name="device-connections-throttle"></a>Drosselung von Geräteverbindungen
 

@@ -4,16 +4,15 @@ description: Erfahren Sie, wie Azure Spatial Anchors in Unity-Apps verwendet wer
 author: msftradford
 ms.author: parkerra
 manager: MehranAzimi-msft
-services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
 ms.date: 2/4/2021
 ms.topic: conceptual
-ms.openlocfilehash: f9d64f4a23bf340f857d5aee8a3e0c99e1859091
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: a6d49864b371599901e8cf5f9945ceae972fe991
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575403"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104669599"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>Erstellen in Unity mit Azure Spatial Anchors
 
@@ -27,10 +26,10 @@ Die folgenden Plattformen werden unterstützt:
 
 [Schnellstart: Erstellen einer Unity HoloLens-App, die Azure Spatial Anchors verwendet](./quickstarts/get-started-unity-hololens.md)
 
-**Unity** für Android
+**Unity für Android**
 
-[Schnellstart: Erstellen einer Unity Android-App, die Azure Spatial Anchors verwendet](./quickstarts/get-started-unity-android.md)
+[Schnellstart: Erstellen einer Unity Android-App mit Azure Spatial Anchors](./quickstarts/get-started-unity-android.md)
 
 **Unity für iOS**
 
-[Schnellstart: Erstellen einer Unity iOS-App, die Azure Spatial Anchors verwendet](./quickstarts/get-started-unity-ios.md)
+[Schnellstart: Erstellen einer Unity iOS-App mit Azure Spatial Anchors](./quickstarts/get-started-unity-ios.md)

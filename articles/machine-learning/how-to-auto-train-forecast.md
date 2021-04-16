@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 161d565aa1d2dd08434ebd8ea155ac5a92e09ac0
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503503"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802912"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -132,7 +132,7 @@ Modelle| BESCHREIBUNG | Vorteile
 ----|----|---
 Prophet (Vorschauversion)|Prophet funktioniert am besten mit Zeitreihen, die starke saisonale Effekte aufweisen und viele Saisons von historischen Daten umfassen. Wenn Sie dieses Modell nutzen möchten, installieren Sie es mithilfe von `pip install fbprophet` lokal. | Schnell und genau, stabil gegenüber Ausreißern, fehlenden Daten und dramatischen Änderungen in den Zeitreihen
 Auto-ARIMA (Vorschauversion)|Die ARIMA-Methode (Auto-Regressive Integrated Moving Average, autoregressiver integrierter gleitender Mittelwert) erzielt die beste Leistung, wenn die Daten stationär sind. Das bedeutet, dass die statistischen Eigenschaften wie der Mittelwert und Varianz für das gesamte Dataset konstant sind. Wenn Sie beispielsweise eine Münze werfen, ist Ihre Wahrscheinlichkeit für Kopf 50 %, ganz egal, ob Sie die Münze heute, morgen oder im nächsten Jahr werfen.| Dies eignet sich für univariate Reihen, da vergangene Werte für die Vorhersage zukünftiger Werte verwendet werden.
-ForecastTCN (Preview)| ForecastTCN ist ein neuronales Netzwerkmodell, das für die aufwändigsten Vorhersageaufgaben konzipiert wurde und nicht lineare lokale und globale Trends in Ihren Daten sowie Beziehungen zwischen Zeitreihen erfasst.|Es kann komplexe Trends in Ihren Daten nutzen und problemlos auf die größten Datasets skaliert werden.
+ForecastTCN (Preview)| ForecastTCN ist ein neuronales Netzwerkmodell, das für die aufwendigsten Vorhersageaufgaben konzipiert wurde. Es erfasst nicht lineare lokale und globale Trends in Ihren Daten sowie Beziehungen zwischen Zeitreihen.|Es kann komplexe Trends in Ihren Daten nutzen und problemlos auf die größten Datasets skaliert werden.
 
 ### <a name="configuration-settings"></a>Konfigurationseinstellungen
 
@@ -146,11 +146,12 @@ Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Sy
 |`forecast_horizon`|Definiert die Anzahl der Zeiträume, die Sie vorhersagen möchten. Der Horizont wird in Einheiten der Zeitreihenhäufigkeit angegeben. Die Einheiten basieren auf dem Zeitintervall Ihrer Trainingsdaten, z. B. monatlich oder wöchentlich, die vorhergesagt werden sollen.|✓|
 |`enable_dnn`|[Aktivieren Sie Vorhersage-DNNs]().||
 |`time_series_id_column_names`|Die verwendeten Spaltennamen dienen zum eindeutigen Identifizieren der Zeitreihe in Daten, die mehrere Zeilen mit demselben Zeitstempel aufweisen. Ohne definierte Zeitreihenbezeichner wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen. Weitere Informationen zu einzelnen Zeitreihen finden Sie unter [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
-|`freq`| Die Häufigkeit der Zeitreihendatasets. Dieser Parameter stellt den Zeitraum dar, in dem Ereignisse zu erwarten sind, z. B. täglich, wöchentlich, jährlich usw. Die Häufigkeit muss ein [Pandas-Offset-Alias](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects) sein.||
+|`freq`| Die Häufigkeit der Zeitreihendatasets. Dieser Parameter stellt den Zeitraum dar, in dem Ereignisse zu erwarten sind, z. B. täglich, wöchentlich, jährlich usw. Die Häufigkeit muss ein [Pandas-Offset-Alias](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects) sein. Weitere Informationen über die [Häufigkeit](#frequency--target-data-aggregation)||
 |`target_lags`|Anzahl der Zeilen, um die die Zielwerte basierend auf der Häufigkeit der Daten verzögert werden sollen. Diese Verzögerung wird als Liste oder als einzelner Integer dargestellt. Die Verzögerung sollte verwendet werden, wenn die Beziehung zwischen den unabhängigen Variablen und der abhängigen Variable standardmäßig nicht übereinstimmt oder korreliert. ||
 |`feature_lags`| Welche Features verzögert werden, wird automatisch durch automatisiertes ML festgelegt, wenn `target_lags` festgelegt und `feature_lags` auf `auto` festgelegt ist. Das Aktivieren von Featureverzögerungen kann zur Verbesserung der Genauigkeit beitragen. Featureverzögerungen sind standardmäßig deaktiviert. ||
 |`target_rolling_window_size`|*n* Historische Zeiträume zum Generieren der vorhergesagten Werte, < = Größe Trainingsmenge. Wenn nicht angegeben, ist *n* die vollständige Trainingsmenge. Geben Sie diesen Parameter an, wenn Sie beim Trainieren des Modells nur eine bestimmte Menge des Verlaufs beachten möchten. Erfahren Sie mehr über [rollierende Zeitfensteraggregationen als Ziel](#target-rolling-window-aggregation).||
-|`short_series_handling_config`| Ermöglicht die Verarbeitung kurzer Zeitreihen, um zu vermeiden, dass diese während des Trainings aufgrund unzureichender Daten fehlschlagen. Die Verarbeitung kurzer Reihen ist standardmäßig auf `auto` festgelegt. Erfahren Sie mehr über die [Verarbeitung kurzer Reihen](#short-series-handling).|
+|`short_series_handling_config`| Ermöglicht die Verarbeitung kurzer Zeitreihen, um zu vermeiden, dass diese während des Trainings aufgrund unzureichender Daten fehlschlagen. Die Verarbeitung kurzer Reihen ist standardmäßig auf `auto` festgelegt. Erfahren Sie mehr über die [Verarbeitung kurzer Reihen](#short-series-handling).||
+|`target_aggregation_function`| Die Funktion, die zum Aggregieren der Zeitreihenzielspalte verwendet wird, um der mit dem Parameter `freq` angegebenen Häufigkeit zu entsprechen. Der Parameter `freq` muss festgelegt werden, damit die `target_aggregation_function` verwendet werden kann. Der Standardwert lautet `None`. Dieser ist für die meisten Szenarien, in denen `sum` verwendet wird, ausreichend.<br> Erfahren Sie mehr über die [Zielspaltenaggregation](#frequency--target-data-aggregation). 
 
 
 Für den folgenden Code gilt: 
@@ -258,12 +259,36 @@ Wenn Sie Azure Machine Learning Studio für Ihr Experiment verwenden, finden Sie
 
 Für Vorhersageaufgaben sind zusätzliche optionale Konfigurationen verfügbar, z. B. das Aktivieren von Deep Learning und das Angeben einer rollierenden Zielfensteraggregation. 
 
+### <a name="frequency--target-data-aggregation"></a>Häufigkeit und Zieldatenaggregation
+
+Verwenden Sie den Häufigkeitsparameter `freq`, um Fehler zu vermeiden, die durch unregelmäßige Daten verursacht werden, d h. Daten, die keinem festgelegten Intervall, z. B. stündliche oder tägliche Daten, entsprechen. 
+
+Für sehr unregelmäßige Daten oder für variierende Geschäftsanforderungen können Benutzer die gewünschte Vorhersagehäufigkeit `freq` festlegen und die `target_aggregation_function` angeben, um die Zielspalte der Zeitreihe zu aggregieren. Wenn Sie diese beiden Einstellungen im `AutoMLConfig`-Objekt verwenden, können Sie bei der Datenaufbereitung Zeit sparen. 
+
+Bei Verwendung des Parameters `target_aggregation_function`:
+* Die Zielspaltenwerte werden basierend auf dem angegebenen Vorgang aggregiert. `sum` eignet sich für die meisten Szenarien.
+
+* Numerische Vorhersagespalten in den Daten werden nach Summe, Mittelwert, Minimalwert und Maximalwert aggregiert. Deshalb werden durch automatisiertes ML neue Spalten mit dem Namen der Aggregationsfunktion als Suffix erstellt und der ausgewählte Aggregationsvorgang angewendet. 
+
+* Bei kategorischen Vorhersagespalten werden die Daten nach Modus aggregiert. Dies ist die auffälligste Kategorie im Fenster.
+
+* Datumsvorhersagespalten werden nach Minimalwert, Maximalwert und Modus aggregiert. 
+
+Unterstützte Aggregationsvorgänge für Zielspaltenwerte:
+
+|Funktion | description
+|---|---
+|`sum`| Summe der Zielwerte
+|`mean`| Mittelwert oder Durchschnitt der Zielwerte
+|`min`| Minimalwert eines Ziels  
+|`max`| Maximalwert eines Ziels  
+
 ### <a name="enable-deep-learning"></a>Aktivieren von Deep Learning
 
 > [!NOTE]
 > Die DNN-Unterstützung für Vorhersagen beim automatisierten maschinellen Lernen befindet sich in der **Vorschauphase** und wird für lokale Ausführungen nicht unterstützt.
 
-Sie können auch Deep Learning mit Deep Neural Networks (DNNs) nutzen, um die Scores des Modells zu verbessern. Deep Learning mit automatisiertem maschinellem Lernen ermöglicht das Vorhersagen von ein- und mehrdimensionalen Zeitreihendaten.
+Sie können auch Deep Learning mit Deep Neural Networks (DNNs) anwenden, um die Scores des Modells zu verbessern. Deep Learning mit automatisiertem maschinellem Lernen ermöglicht das Vorhersagen von ein- und mehrdimensionalen Zeitreihendaten.
 
 Deep Learning-Modelle weisen drei intrinsische Funktionen auf:
 1. Sie können von beliebigen Zuordnungen von Eingaben zu Ausgaben lernen.
@@ -283,10 +308,10 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Informationen zum Aktivieren von DNN für ein AutoML-Experiment, das in Azure Machine Learning Studio erstellt wurde, finden Sie in der [Schrittanleitung für Aufgabentypeinstellungen in Studio](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-Ein detailliertes Codebeispiel für die Nutzung von DNNs finden Sie im [Notebook für die Vorhersage der Getränkeproduktion](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
+Ein detailliertes Codebeispiel für die Verwendung von DNNs finden Sie im [Notebook für die Vorhersage der Getränkeproduktion](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
 
 ### <a name="target-rolling-window-aggregation"></a>Rollierende Zeitfensteraggregationen als Ziel
-In vielen Fällen ist die beste Information, über die ein Vorhersagemodell verfügen kann, der aktuelle Wert des Ziels.  Wenn Sie rollierende Zeitfensteraggregationen als Ziel verwenden, können Sie eine rollierende Aggregation von Datenwerten als Features hinzufügen. Durch Erzeugen und Verwenden dieser zusätzlichen Features als zusätzliche Kontextdaten wird die Genauigkeit des Trainingsmodells gesteigert.
+In vielen Fällen ist die beste Information, über die ein Vorhersagemodell verfügen kann, der aktuelle Wert des Ziels.  Wenn Sie rollierende Zeitfensteraggregationen als Ziel verwenden, können Sie eine rollierende Aggregation von Datenwerten als Features hinzufügen. Durch Erzeugen und Verwenden dieser Features als zusätzliche Kontextdaten wird die Genauigkeit des Trainingsmodells gesteigert.
 
 Angenommen, Sie möchten den Energiebedarf vorhersagen. Sie können ein Feature für rollierende Zeitfenster von drei Tagen hinzufügen, um thermische Änderungen beheizter Räume zu erfassen. In diesem Beispiel erstellen Sie dieses Fenster, indem Sie im `AutoMLConfig`-Konstruktor `target_rolling_window_size= 3` festlegen. 
 
@@ -294,7 +319,7 @@ In der Tabelle wird das resultierende Feature Engineering dargestellt, das auftr
 
 ![Ziel für rollierendes Zeitfenster](./media/how-to-auto-train-forecast/target-roll.svg)
 
-Sehen Sie sich ein Python-Codebeispiel an, in dem das [Feature für rollierende Zeitfensteraggregationen als Ziel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) verwendet wird.
+Sehen Sie sich ein Python-Codebeispiel an, in dem das [Feature für rollierende Zeitfensteraggregationen als Ziel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) angewendet wird.
 
 ### <a name="short-series-handling"></a>Verarbeitung kurzer Reihen
 
@@ -349,7 +374,7 @@ Sie können den Parameter `forecast_destination` in der Funktion `forecast()` au
 ```python
 label_query = test_labels.copy().astype(np.float)
 label_query.fill(np.nan)
-label_fcst, data_trans = fitted_pipeline.forecast(
+label_fcst, data_trans = fitted_model.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
@@ -373,7 +398,7 @@ day_datetime,store,week_of_year
 01/01/2019,A,1
 ```
 
-Wiederholen Sie die erforderlichen Schritte, um diese zukünftigen Daten in einen Datenrahmen zu laden, und führen Sie anschließend `best_run.predict(test_data)` aus, um zukünftige Werte vorherzusagen.
+Wiederholen Sie die erforderlichen Schritte, um diese zukünftigen Daten in einen Datenrahmen zu laden, und führen Sie anschließend `best_run.forecast(test_data)` aus, um zukünftige Werte vorherzusagen.
 
 > [!NOTE]
 > In-Sample-Vorhersagen werden für die Vorhersage mit automatisiertem maschinellen Lernen nicht unterstützt, wenn `target_lags` und/oder `target_rolling_window_size` aktiviert sind.

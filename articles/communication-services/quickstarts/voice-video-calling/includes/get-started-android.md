@@ -1,22 +1,24 @@
 ---
 title: Schnellstart – Hinzufügen von VoIP-Telefonie zu einer Android-App mithilfe von Azure Communication Services
-description: In diesem Tutorial erfahren Sie, wie Sie die Clientbibliothek für Telefonie von Azure Communication Services für Android verwenden.
-author: matthewrobertson
-ms.author: marobert
-ms.date: 08/11/2020
+description: In diesem Tutorial erfahren Sie, wie Sie das Calling SDK von Azure Communication Services für Android verwenden
+author: chpalm
+ms.author: mikben
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a387261b392ea6718941f5eabe889e0c1a41fd5a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 38194ed7290d6cd9c4889d27ff458f950603c5be
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750162"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "106072889"
 ---
-In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibliothek für Telefonie von Azure Communication Services für Android beginnen.
+In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe des Calling SDK von Azure Communication Services für Android beginnen.
+
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
 
 > [!NOTE]
-> Dieses Dokument verwendet Version 1.0.0-beta.8 der aufrufenden Clientbibliothek.
+> Dieses Dokument verwendet Version 1.0.0-beta.8 des Calling SDK.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +39,7 @@ Wählen Sie unter „Phone and Tablet“ (Telefon und Tablet) die Projektvorlage
 
 :::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Screenshot, der die Option „Empty Activity“ (Leere Aktivität) zeigt, die auf dem Bildschirm für die Projektvorlage ausgewählt ist":::
 
-Wählen Sie die Clientbibliothek „API 26: Android 8.0 (Oreo)“ oder höher aus.
+Wählen Sie das SDK „API 26: Android 8.0 (Oreo)“ oder höher aus.
 
 :::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Screenshot, der die Option „Empty Activity“ (Leere Aktivität) zeigt, die auf dem Bildschirm für die Projektvorlage 2 ausgewählt ist":::
 
@@ -110,8 +112,8 @@ Damit Sie Berechtigungen anfordern können, die für einen Anruf erforderlich si
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--Our calling client library depends on the Apache HTTP client library.
-When targeting Android client library 28+, this library needs to be explicitly referenced.
+        <!--Our Calling SDK depends on the Apache HTTP SDK.
+When targeting Android SDK 28+, this library needs to be explicitly referenced.
 See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apache-p-->
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity android:name=".MainActivity">
@@ -260,11 +262,11 @@ private void getAllPermissions() {
 
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features der Azure Communication Services-Clientbibliothek „Calling“:
+Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features des Azure Communication Services Calling SDK:
 
-| Name                                  | Beschreibung                                                  |
+| name                                  | Beschreibung                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient ist der Haupteinstiegspunkt in die Clientbibliothek „Calling“.|
+| CallClient| Der CallClient ist der Haupteinstiegspunkt des Calling SDK.|
 | CallAgent | CallAgent dient zum Starten und Verwalten von Anrufen. |
 | CommunicationUserCredential | „CommunicationUserCredential“ dient als tokengestützte Anmeldeinformation zum Instanziieren von „CallAgent“.|
 | CommunicationIdentifier | „CommunicationIdentifier“ wird als anderer Typ von Teilnehmer verwendet, der Teil eines Anrufs sein könnte.|
@@ -305,7 +307,7 @@ private void startCall() {
     
     StartCallOptions options = new StartCallOptions();
 
-    callAgent.call(
+    callAgent.startCall(
         getApplicationContext(),
         new CommunicationUserIdentifier[] {new CommunicationUserIdentifier(calleeId)},
         options);
