@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 3fd3695490331a1f599db71bf5cafb25e957bf08
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 903147b6c9f102b83f65d67cf41d4df0c62c7b54
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710344"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280563"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -35,7 +35,7 @@ Das Feature PII ist ein Bestandteil von NER und kann vertrauliche Entitäten in 
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Features und Versionen der Erkennung benannter Entitäten
 
-| Funktion                                                         | NER v3.0 | NER v3.1-preview.3 |
+| Funktion                                                         | NER v3.0 | NER v3.1-preview.4 |
 |-----------------------------------------------------------------|--------|----------|
 | Methoden für Einzel- und Batchabfragen                          | X      | X        |
 | Erweiterte Entitätserkennung in verschiedenen Kategorien           | X      | X        |
@@ -47,8 +47,8 @@ Weitere Informationen finden Sie unter [Sprachunterstützung](../language-suppor
 
 Named Entity Recognition v3 bietet erweiterte Erkennung über mehrere Typen hinweg. Derzeit können mit NER v3.0 Entitäten der [Kategorie mit den allgemeinen Entitäten](../named-entity-types.md) erkannt werden.
 
-Named Entity Recognition v3.1-preview.3 enthält die Erkennungsfunktionen von v3.0 sowie Folgendes: 
-* Die Möglichkeit zur Erkennung personenbezogener Informationen (`PII`) mithilfe des Endpunkts `v3.1-preview.3/entities/recognition/pii`. 
+Named Entity Recognition v3.1-preview.4 enthält die Erkennungsfunktionen von v3.0 sowie Folgendes: 
+* Die Möglichkeit zur Erkennung personenbezogener Informationen (`PII`) mithilfe des Endpunkts `v3.1-preview.4/entities/recognition/pii`. 
 * Einen optionalen Parameter `domain=phi` zur Erkennung vertraulicher gesundheitsbezogener Informationen (`PHI`).
 * Einen [asynchronen Vorgang](text-analytics-how-to-call-api.md) mithilfe des Endpunkts `/analyze`.
 
@@ -72,36 +72,40 @@ Erstellen Sie eine POST-Anforderung. Um eine Anforderung schnell zu strukturiere
 
 ### <a name="request-endpoints"></a>Anforderungsendpunkte
 
-#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-preview)
+#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
 
-In „Erkennung benannter Entitäten“ `v3.1-preview.3` werden separate Endpunkte für NER, personenbezogene Informationen und Entitätsverknüpfungsanforderungen verwendet. Verwenden Sie basierend auf Ihrer Anforderung eines der URL-Formate unten.
+In „Erkennung benannter Entitäten“ `v3.1-preview.4` werden separate Endpunkte für NER, personenbezogene Informationen und Entitätsverknüpfungsanforderungen verwendet. Verwenden Sie basierend auf Ihrer Anforderung eines der URL-Formate unten.
 
 **Entitätsverknüpfung**
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/linking`
 
-[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
+[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesLinking)
 
 **Erkennung benannter Entitäten**
-* Allgemeine Entitäten: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
+* Allgemeine Entitäten: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/general`
 
-[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
+[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionGeneral)
 
 **Personenbezogene Informationen (Personally Identifiable Information, PII)**
-* Personenbezogene Informationen (`PII`): `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
+* Personenbezogene Informationen (`PII`): `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii`
 
 Sie können auch den optionalen Parameter `domain=phi` verwenden, um im Text Informationen zur Gesundheit (`PHI`) zu erkennen. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?domain=phi`
 
-Ab `v3.1-preview.3` enthält die JSON-Antwort eine Eigenschaft `redactedText` mit dem geänderten Eingabetext, in dem die erkannten Entitäten personenbezogener Informationen durch ein `*` für jedes Zeichen in den Entitäten ersetzt werden.
+Ab `v3.1-preview.4` enthält die JSON-Antwort eine Eigenschaft `redactedText` mit dem geänderten Eingabetext, in dem die erkannten Entitäten personenbezogener Informationen durch ein `*` für jedes Zeichen in den Entitäten ersetzt werden.
 
-[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
+[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionPii)
+
+Die API versucht, die [aufgelisteten Entitätskategorien](../named-entity-types.md?tabs=personal) für eine bestimmte Dokumentsprache zu erkennen. Wenn Sie angeben möchten, welche Entitäten erkannt und zurückgegeben werden sollen, verwenden Sie den optionalen Parameter „pii-categories“ mit den entsprechenden Entitätskategorien. Mit diesem Parameter lassen sich auch Entitäten erkennen, die für Ihre Dokumentsprache standardmäßig nicht aktiviert sind. Dies kann beispielsweise der Fall sein, wenn in englischem Text das Kfz-Kennzeichen eines französischen Fahrers vorhanden ist.
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
 
 **Asynchroner Vorgang**
 
-Ab `v3.1-preview.3` können Sie NER-Anforderungen mithilfe des `/analyze`-Endpunkts asynchron senden.
+Ab `v3.1-preview.4` können Sie NER- und Entitätsverknüpfungsanforderungen mithilfe des `/analyze`-Endpunkts asynchron senden.
 
-* Asynchroner Vorgang – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+* Asynchroner Vorgang – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze`
 
 Informationen zum Senden von asynchronen Anforderungen finden Sie unter [Aufrufen der Textanalyse-API](text-analytics-how-to-call-api.md).
 
@@ -202,7 +206,7 @@ Version 3.0 enthält nur den synchronen Vorgang. Das folgende JSON-Beispiel zei
 
 ## <a name="post-the-request"></a>Übermitteln der Anforderung
 
-Die Analyse erfolgt, wenn die Anforderung eingeht. Weitere Informationen zur Größe und Anzahl von Anforderungen, die Sie pro Minute und Sekunde senden können, finden Sie in der Übersicht im Abschnitt [Datengrenzwerte](../overview.md#data-limits).
+Die Analyse erfolgt, wenn die Anforderung eingeht. Informationen zur Größe und Anzahl von Anforderungen, die Sie pro Minute und Sekunde senden können, finden Sie im Artikel [Datengrenzwerte](../overview.md#data-limits).
 
 Die Textanalyse-API ist zustandslos. Auf Ihrem Konto werden keine Daten gespeichert, und die Ergebnisse werden sofort in der Antwort zurückgegeben.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 08edd86fd19e7698a791e411f42a2a89084a91f7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 6465acc0d4ce760e0bf89c73dace7c8c66d37c49
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737132"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869938"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>Tipps und Tricks zur Verwendung des Tools für konsistente Momentaufnahmen in Azure-Anwendungen für Azure NetApp Files (Vorschau)
 
@@ -47,6 +47,27 @@ az role definition create --role-definition '{ \
   "AssignableScopes": ["/subscriptions/<insert your subscription id>"] \
 }'
 ```
+
+Damit Wiederherstellungsoptionen erfolgreich funktionieren, muss der AzAcSnap-Dienstprinzipal auch Volumes erstellen können.  In diesem Fall benötigt die Rollendefinition eine zusätzliche Aktion. Daher sollte der gesamte Dienstprinzipal wie im folgenden Beispiel aussehen.
+
+```bash
+az role definition create --role-definition '{ \
+  "Name": "Azure Application Consistent Snapshot tool", \
+  "IsCustom": "true", \
+  "Description": "Perform snapshots and restores on ANF volumes.", \
+  "Actions": [ \
+    "Microsoft.NetApp/*/read", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/delete", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write" \
+  ], \
+  "NotActions": [], \
+  "DataActions": [], \
+  "NotDataActions": [], \
+  "AssignableScopes": ["/subscriptions/<insert your subscription id>"] \
+}'
+```
+
 
 ## <a name="take-snapshots-manually"></a>Manuelles Erstellen von Momentaufnahmen
 
@@ -202,7 +223,7 @@ In einigen Fällen verfügen Kunden bereits über Tools zum Schutz von SAP HANA 
                   {
                     "backupName": "shoasnap",
                     "ipAddress": "10.1.1.10",
-                    "volume": "t210_sles_boot_azsollabbl20a31_vol"
+                    "volume&quot;: &quot;t210_sles_boot_azsollabbl20a31_vol"
                   }
                 ]
               }

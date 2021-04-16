@@ -12,10 +12,10 @@ ms.reviewer: ozge
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89010901"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Aufrufen von REST-API-Vorgängen mit Autorisierung mit gemeinsam verwendetem Schlüssel
@@ -66,11 +66,11 @@ Sehen Sie sich die Referenz zum Vorgang [List Containers](/rest/api/storageservi
 
 **Anforderungsmethode**: GET. Dieses Verb ist die HTTP-Methode, die Sie als Eigenschaft des Anforderungsobjekts angeben. Andere Werte für dieses Verb sind HEAD, PUT und DELETE – je nach aufgerufener API.
 
-**Anforderungs-URI**: `https://myaccount.blob.core.windows.net/?comp=list`.  Der Anforderungs-URI wird aus dem Blob Storage-Kontoendpunkt `https://myaccount.blob.core.windows.net` und der Ressourcenzeichenfolge `/?comp=list` erstellt.
+**Anforderungs-URI**: `https://myaccount.blob.core.windows.net/?comp=list`.  Der Anforderungs-URI wird aus dem Blob Storage-Kontoendpunkt `https://myaccount.blob.core.windows.net` und der Ressourcenzeichenfolge `/?comp=list` erstellt.
 
 [URI-Parameter](/rest/api/storageservices/List-Containers2#uri-parameters): Es sind zusätzliche Abfrageparameter vorhanden, die Sie beim Aufrufen von ListContainers verwenden können. Zwei dieser Parameter sind *timeout* für den Aufruf (in Sekunden) und *prefix* für die Filterung.
 
-Ein weiterer hilfreicher Parameter ist *maxresults:* . Wenn mehr Container als unter diesem Wert angegeben verfügbar sind, enthält der Antworttext ein *NextMarker*-Element, mit dem der nächste Container angegeben wird, der bei der nächsten Anforderung zurückgegeben wird. Zur Verwendung dieses Features geben Sie den Wert von *NextMarker* als Parameter *marker* im URI an, wenn Sie die nächste Anforderung senden. Bei Verwendung dieses Features ist dies analog zum Blättern durch die Ergebnisse.
+Ein weiterer hilfreicher Parameter ist *maxresults:*. Wenn mehr Container als unter diesem Wert angegeben verfügbar sind, enthält der Antworttext ein *NextMarker*-Element, mit dem der nächste Container angegeben wird, der bei der nächsten Anforderung zurückgegeben wird. Zur Verwendung dieses Features geben Sie den Wert von *NextMarker* als Parameter *marker* im URI an, wenn Sie die nächste Anforderung senden. Bei Verwendung dieses Features ist dies analog zum Blättern durch die Ergebnisse.
 
 Falls Sie zusätzliche Parameter verwenden möchten, können Sie sie an die Ressourcenzeichenfolge mit dem Wert anfügen. Beispiel:
 
@@ -78,11 +78,11 @@ Falls Sie zusätzliche Parameter verwenden möchten, können Sie sie an die Ress
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[Anforderungsheader](/rest/api/storageservices/List-Containers2#request-headers) **:** In diesem Abschnitt werden die erforderlichen und optionalen Anforderungsheader aufgeführt. Drei Header sind erforderlich: ein *Authorization*-Header, *x-ms-date* (enthält die UTC-Zeit für die Anforderung) und *x-ms-version* (gibt die Version der zu verwendenden REST-API an). Das Einfügen von *x-ms-client-request-id* in die Header ist optional. Sie können den Wert für dieses Feld beliebig festlegen. Er wird in die Speicheranalyseprotokolle geschrieben, wenn die Protokollierung aktiviert ist.
+[Anforderungsheader](/rest/api/storageservices/List-Containers2#request-headers)**:** In diesem Abschnitt sind die erforderlichen und optionalen Anforderungsheader aufgeführt. Drei Header sind erforderlich: ein *Authorization*-Header, *x-ms-date* (enthält die UTC-Zeit für die Anforderung) und *x-ms-version* (gibt die Version der zu verwendenden REST-API an). Das Einfügen von *x-ms-client-request-id* in die Header ist optional. Sie können den Wert für dieses Feld beliebig festlegen. Er wird in die Speicheranalyseprotokolle geschrieben, wenn die Protokollierung aktiviert ist.
 
-[Anforderungstext](/rest/api/storageservices/List-Containers2#request-body) **:** Für ListContainers ist kein Anforderungstext vorhanden. Der Anforderungstext wird für alle PUT-Vorgänge verwendet, wenn Blobs hochgeladen werden. Außerdem wird das SetContainerAccessPolicy-Element verwendet, mit dem Sie eine XML-Liste mit gespeicherten Zugriffsrichtlinien senden können, die angewendet werden sollen. Gespeicherte Zugriffsrichtlinien werden im Artikel [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md) beschrieben.
+[Anforderungstext](/rest/api/storageservices/List-Containers2#request-body)**:** Für ListContainers ist kein Anforderungstext vorhanden. Der Anforderungstext wird für alle PUT-Vorgänge verwendet, wenn Blobs hochgeladen werden. Außerdem wird das SetContainerAccessPolicy-Element verwendet, mit dem Sie eine XML-Liste mit gespeicherten Zugriffsrichtlinien senden können, die angewendet werden sollen. Gespeicherte Zugriffsrichtlinien werden im Artikel [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md) beschrieben.
 
-[Antwortstatuscode](/rest/api/storageservices/List-Containers2#status-code) **:** Enthält Informationen zu allen Statuscodes, die Sie kennen müssen. In diesem Beispiel bedeutet der HTTP-Statuscode 200, dass alles in Ordnung ist. Eine vollständige Liste mit HTTP-Statuscodes finden Sie unter [Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (Statuscodedefinitionen). Informationen zu spezifischen Fehlercodes der Storage-REST-APIs finden Sie unter [Bekannte REST API-Fehlercodes](/rest/api/storageservices/common-rest-api-error-codes).
+[Antwortstatuscode](/rest/api/storageservices/List-Containers2#status-code)**:** Enthält Informationen zu allen Statuscodes, die Sie kennen müssen. In diesem Beispiel bedeutet der HTTP-Statuscode 200, dass alles in Ordnung ist. Eine vollständige Liste mit HTTP-Statuscodes finden Sie unter [Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (Statuscodedefinitionen). Informationen zu spezifischen Fehlercodes der Storage-REST-APIs finden Sie unter [Bekannte REST API-Fehlercodes](/rest/api/storageservices/common-rest-api-error-codes).
 
 [Antwortheader](/rest/api/storageservices/List-Containers2#response-headers) **:** Hierzu gehören *Content Type*, *x-ms-request-id* (die übergebene Anforderungs-ID), *x-ms-version* (gibt die Version des verwendeten Blob-Diensts an) und *Date* (UTC-Zeitpunkt der Anforderung).
 
@@ -206,7 +206,7 @@ Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
 
-**Antworttext (XML):** Für den Vorgang „List Containers“ (Container auflisten) wird hier die Liste der Container mit den zugehörigen Eigenschaften angezeigt.
+**Antworttext (XML):** Für den Vorgang „Container auflisten“ wird hier die Liste der Container mit den zugehörigen Eigenschaften angezeigt.
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -286,24 +286,24 @@ In diesem Codeausschnitt wird das Format der Signaturzeichenfolge für den gemei
 
 ```csharp  
 StringToSign = VERB + "\n" +  
-               Content-Encoding + "\n" +  
-               Content-Language + "\n" +  
-               Content-Length + "\n" +  
-               Content-MD5 + "\n" +  
-               Content-Type + "\n" +  
-               Date + "\n" +  
-               If-Modified-Since + "\n" +  
-               If-Match + "\n" +  
-               If-None-Match + "\n" +  
-               If-Unmodified-Since + "\n" +  
-               Range + "\n" +  
-               CanonicalizedHeaders +  
-               CanonicalizedResource;  
+               Content-Encoding + "\n" +  
+               Content-Language + "\n" +  
+               Content-Length + "\n" +  
+               Content-MD5 + "\n" +  
+               Content-Type + "\n" +  
+               Date + "\n" +  
+               If-Modified-Since + "\n" +  
+               If-Match + "\n" +  
+               If-None-Match + "\n" +  
+               If-Unmodified-Since + "\n" +  
+               Range + "\n" +  
+               CanonicalizedHeaders +  
+               CanonicalizedResource;  
 ```
 
 Die meisten dieser Felder werden nur selten verwendet. Für Blobspeicher geben Sie „VERB“, „md5“, „content length“, „Canonicalized Headers“ und „Canonicalized Resource“ an. Sie können die anderen Felder leer lassen (mit Angabe von `\n`, damit klar ist, dass sie leer sind).
 
-Was sind CanonicalizedHeaders und CanonicalizedResource? Gute Frage. Was bedeutet „canonicalized“ eigentlich? In Microsoft Word wird dieser Begriff gar nicht als Wort erkannt. [Wikipedia sagt über Kanonisierung](https://en.wikipedia.org/wiki/Canonicalization) Folgendes: *In computer science, canonicalization (sometimes standardization or normalization) is a process for converting data that has more than one possible representation into a "standard", "normal", or canonical form.* (In der Computerwissenschaft ist „Canonicalization“ (Deutsch: Vereinheitlichung, auch als Standardisierung oder Normalisierung bezeichnet) ein Prozess zum Konvertieren von Daten, für die mehr als eine Art der Darstellung möglich ist, in eine „Standardform“, „Normalform“ oder „kanonische Form“.) Vereinfacht ausgedrückt heißt dies, dass die Elemente einer Liste (bei vereinheitlichten Headern also beispielsweise Header) in ein erforderliches Format standardisiert werden. Microsoft hat sich quasi für ein Format entschieden, und Sie müssen es einhalten.
+Was sind CanonicalizedHeaders und CanonicalizedResource? Gute Frage. Was bedeutet „canonicalized“ eigentlich? In Microsoft Word wird dieser Begriff gar nicht als Wort erkannt. Bei [Wikipedia ist die folgende Definition von „Canonicalization“ zu finden](https://en.wikipedia.org/wiki/Canonicalization): *In computer science, canonicalization (sometimes standardization or normalization) is a process for converting data that has more than one possible representation into a "standard", "normal", or canonical form.* (In der Computerwissenschaft ist „Canonicalization“ (Deutsch: Vereinheitlichung; auch als Standardisierung oder Normalisierung bezeichnet) ein Prozess zum Konvertieren von Daten, für die mehr als eine Art der Darstellung möglich ist, in eine „Standardform“, „Normalform“ oder „kanonische Form“.) Vereinfacht ausgedrückt heißt dies, dass die Elemente einer Liste (bei vereinheitlichten Headern also beispielsweise Header) in ein erforderliches Format standardisiert werden. Microsoft hat sich quasi für ein Format entschieden, und Sie müssen es einhalten.
 
 Wir beginnen mit diesen beiden vereinheitlichten Feldern, da sie erforderlich sind, um den Autorisierungsheader zu erstellen.
 
@@ -517,7 +517,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Antworttext (XML):** In dieser XML-Antwort wird die Liste der Blobs und der zugehörigen Eigenschaften angezeigt.
+**Antworttext (XML):** In dieser XML-Antwort wird die Liste mit Blobs und den dazugehörigen Eigenschaften angezeigt.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -573,4 +573,4 @@ In diesem Artikel haben Sie gelernt, wie eine Anforderung an die Blobspeicher-RE
 - [REST-API des Blob-Diensts](/rest/api/storageservices/blob-service-rest-api)
 - [REST-API des Dateidiensts](/rest/api/storageservices/file-service-rest-api)
 - [REST-API des Warteschlangendiensts](/rest/api/storageservices/queue-service-rest-api)
-- [REST-API des Tabellenspeicherdiensts](/rest/api/storageservices/table-service-rest-api)
+- [Table Service REST API (REST-API des Tabellendiensts)](/rest/api/storageservices/table-service-rest-api)

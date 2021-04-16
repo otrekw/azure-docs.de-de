@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 13044b8f087b403f83516a32a490d2dee8db700f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 989535d0bd6f514e63c7cea9e5fd71912f8fb08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054171"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104780156"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Importieren von Updates in Device Update für IoT Hub – Schema und weitere Informationen
 Wenn Sie ein Update in Device Update für IoT Hub importieren möchten, müssen Sie zuerst die [Konzepte](import-concepts.md) und die [Schrittanleitung](import-update.md) lesen. Wenn Sie an den Details des Schemas interessiert sind, das beim Erstellen eines Importmanifests verwendet wird, sowie mehr zu verknüpften Objekten erfahren möchten, informieren Sie sich weiter unten.
@@ -22,8 +22,8 @@ Wenn Sie ein Update in Device Update für IoT Hub importieren möchten, müssen 
 | --------- | --------- | --------- | --------- |
 | UpdateId | `UpdateId`-Objekt | Update-Identität. |
 | UpdateType | Zeichenfolge | Updatetyp: <br/><br/> * Geben Sie `microsoft/apt:1` an, wenn Sie ein paketbasiertes Update mit dem Referenz-Agent ausführen.<br/> * Geben Sie `microsoft/swupdate:1` an, wenn Sie ein imagebasiertes Update mit dem Referenz-Agent ausführen.<br/> Geben Sie `microsoft/simulator:1` an, wenn Sie den Beispiel-Agent-Simulator verwenden.<br/> * Geben Sie einen benutzerdefinierten Typ an, wenn Sie einen benutzerdefinierten Agent entwickeln. | Format: <br/> `{provider}/{type}:{typeVersion}`<br/><br/> Insgesamt maximal 32 Zeichen |
-| InstalledCriteria | Zeichenfolge | Vom Agent interpretierte Zeichenfolge zur Ermittlung, ob das Update erfolgreich angewendet wurde:  <br/> * Geben Sie den **Wert** von „SWVersion“ für den Updatetyp `microsoft/swupdate:1` an.<br/> * Geben Sie `{name}-{version}` für den Updatetyp `microsoft/apt:1` an, dessen Name und Version aus der APT-Datei abgerufen werden.<br/> * Geben Sie den Hash der Updatedatei für den Updatetyp `microsoft/simulator:1` an.<br/> * Geben Sie eine benutzerdefinierte Zeichenfolge an, wenn Sie einen benutzerdefinierten Agent entwickeln.<br/> | Maximal 64 Zeichen |
-| Kompatibilität | Array von `CompatibilityInfo`-Objekten | Kompatibilitätsinformationen des Geräts, das mit diesem Update kompatibel ist. | Maximal 10 Elemente |
+| InstalledCriteria | Zeichenfolge | Vom Agent interpretierte Zeichenfolge zur Ermittlung, ob das Update erfolgreich angewendet wurde:  <br/> * Geben Sie den **Wert** von „SWVersion“ für den Updatetyp `microsoft/swupdate:1` an.<br/> * Geben Sie `{name}-{version}` für den Updatetyp `microsoft/apt:1` an, dessen Name und Version aus der APT-Datei abgerufen werden.<br/> * Geben Sie eine benutzerdefinierte Zeichenfolge an, wenn Sie einen benutzerdefinierten Agent entwickeln.<br/> | Maximal 64 Zeichen |
+| Kompatibilität | Array von `CompatibilityInfo`[-Objekten](#compatibilityinfo-object) | Kompatibilitätsinformationen des Geräts, das mit diesem Update kompatibel ist. | Maximal 10 Elemente |
 | CreatedDateTime | date/time | Datum und Uhrzeit, an dem/zu der das Update erstellt wurde. | Durch Trennzeichen getrenntes ISO 8601-Datums- und Uhrzeitformat, in UTC |
 | ManifestVersion | Zeichenfolge | Schemaversion des Importmanifests. Geben Sie den Wert `2.0` an, der mit der Schnittstelle `urn:azureiot:AzureDeviceUpdateCore:1` und der Schnittstelle `urn:azureiot:AzureDeviceUpdateCore:4` kompatibel ist. | Muss gleich `2.0` sein. |
 | Dateien | Array von `File`-Objekten | Aktualisieren von Nutzlastdateien | Maximal 5 Dateien |

@@ -4,20 +4,19 @@ description: In dieser Schnellstartanleitung wird die Vorgehensweise zum Verwend
 services: frontdoor
 author: duongau
 manager: KumudD
-Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 04/16/2021
 ms.author: duau
-ms.openlocfilehash: 18956948a32a79c1435bf4fc1554b09480c9010c
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 8c6fe355621b4f096814268dea8fd2fc8e1166a7
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100717"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552868"
 ---
 # <a name="quickstart-create-an-azure-front-door-standardpremium-profile---azure-portal"></a>Schnellstart: Erstellen eines Azure Front Door Standard/Premium-Profils im Azure-Portal
 
@@ -58,7 +57,7 @@ Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto e
     | **Endpunktname** | Geben Sie einen global eindeutigen Namen für Ihren Endpunkt ein. |
     | **Ursprungstyp** | Wählen Sie den Ressourcentyp für den Ursprung aus. In diesem Beispiel wählen wir einen App-Dienst als Ursprung aus, für den Private Link aktiviert ist. |
     | **Ursprungshostname** | Geben Sie den Hostnamen für Ihren Ursprung ein. |
-    | **Aktivieren von Private Link** | Wenn Sie eine private Verbindung zwischen Ihrer Azure Front Door-Instanz und Ihrem Ursprung wünschen. Weitere Informationen finden Sie unter [Sichern ihres Ursprungs mit Private Link in Azure Front Door Standard/Premium (Vorschau)](concept-private-link.md) und [Herstellen einer Verbindung von Azure Front Door Premium mit einem Web-App-Ursprung mit Private Link](how-to-enable-private-link.md).
+    | **Aktivieren von Private Link** | Wenn Sie eine private Verbindung zwischen Ihrer Azure Front Door-Instanz und Ihrem Ursprung wünschen. Weitere Informationen finden Sie unter [Sichern ihres Ursprungs mit Private Link in Azure Front Door Standard/Premium (Vorschau)](concept-private-link.md) und [Herstellen einer Verbindung von Azure Front Door Premium mit einem Web-App-Ursprung mit Private Link](./how-to-enable-private-link-web-app.md).
     | **Zwischenspeichern** | Aktivieren Sie dieses Kontrollkästchen, wenn Sie mit den Edge-POPs von Azure Front Door und dem Microsoft-Netzwerk global Inhalte näher bei den Benutzern zwischenspeichern möchten. |
     | **WAF-Richtlinie** | Wählen Sie **Neu erstellen** aus, oder wählen Sie in der Dropdownliste eine vorhandene WAF-Richtlinie aus, wenn Sie dieses Feature aktivieren möchten. |
 
@@ -148,7 +147,7 @@ Konfigurieren Sie Azure Front Door Standard/Premium (Vorschau) zum Weiterleiten 
     
     :::image type="content" source="../media/create-front-door-portal/front-door-custom-create-add-endpoint.png" alt-text="Screenshot des Hinzufügens eines Endpunkts.":::
 
-1. Fügen Sie als Nächstes eine Ursprungsgruppe hinzu, die ihre zwei Web-Apps enthält. Wählen Sie  **+ Hinzufügen**  aus, um die Seite  **Ursprungsgruppe hinzufügen** zu öffnen. Geben Sie unter „Name“  *myOrignGroup* ein, und wählen Sie dann  **+ Ursprung hinzufügen** aus.
+1. Fügen Sie als Nächstes eine Ursprungsgruppe hinzu, die ihre zwei Web-Apps enthält. Wählen Sie  **+ Hinzufügen**  aus, um die Seite  **Ursprungsgruppe hinzufügen** zu öffnen. Geben Sie unter „Name“  *myOrignGroup* ein, und wählen Sie dann  **+ Ursprung hinzufügen** aus.
  
      :::image type="content" source="../media/create-front-door-portal/front-door-custom-create-add-origin-group.png" alt-text="Screenshot des Hinzufügens eines Ursprungs.":::
 

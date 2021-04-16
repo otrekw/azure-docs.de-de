@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: ae3329401a138bc0566ea93a8fbf2071fd44f02c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c86eab249167fab2d1ad72bba22e1d507122138c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503418"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169401"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwalten von Modulen in Azure Automation
 
@@ -142,10 +142,10 @@ Beim Importieren eines Az-Moduls in Ihr Automation-Konto wird das Modul nicht au
 
 * Wenn ein Runbook ein Cmdlet in einem Modul aufruft
 * Wenn ein Runbook das Modul explizit mit dem Cmdlet [Import-Module](/powershell/module/microsoft.powershell.core/import-module) importiert
-* Wenn ein Runbook das Modul explizit mit der [using module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using#module-syntax)-Anweisung importiert. Die using-Anweisung wird ab Windows PowerShell 5.0 unterstützt und unterstützt Klassen und den Enumerationstyp „import“.
+* Wenn ein Runbook das Modul explizit mit der [using module](/powershell/module/microsoft.powershell.core/about/about_using#module-syntax)-Anweisung importiert. Die using-Anweisung wird ab Windows PowerShell 5.0 unterstützt und unterstützt Klassen und den Enumerationstyp „import“.
 * Wenn ein Runbook ein anderes abhängiges Modul importiert
 
-Sie können die Az-Module im Azure-Portal importieren. Denken Sie daran, nicht das gesamte Az.Automation-Modul, sondern nur die benötigten Az-Module zu importieren. Da [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) eine Abhängigkeit für die anderen Az-Module darstellt, muss dieses Modul vor den anderen Modulen importiert werden.
+Sie können die Az-Module aus dem Azure-Portal in das Automation-Konto importieren. Denken Sie daran, nur die benötigten Az-Module zu importieren und nicht alle verfügbaren Az-Module. Da [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) eine Abhängigkeit für die anderen Az-Module darstellt, muss dieses Modul vor den anderen Modulen importiert werden.
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus.
 2. Wählen Sie **Katalog durchsuchen** aus.  
@@ -224,7 +224,7 @@ Fügen Sie eine Zusammenfassung, eine Beschreibung und einen Hilfe-URI für jede
 
   switch ($PSCmdlet.ParameterSetName) {
      "UserAccount" {
-        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $UserName, $Password
+        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $UserName, $Password
         Connect-Contoso -Credential $cred
      }
      "ConnectionObject" {
@@ -249,7 +249,7 @@ Im folgenden Runbookbeispiel wird eine Contoso-Verbindungsressource namens `Cont
   ```powershell
   $contosoConnection = Get-AutomationConnection -Name 'ContosoConnection'
 
-  $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $contosoConnection.UserName, $contosoConnection.Password
+  $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $contosoConnection.UserName, $contosoConnection.Password
   Connect-Contoso -Credential $cred
   }
   ```

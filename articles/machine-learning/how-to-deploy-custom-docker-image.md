@@ -10,13 +10,13 @@ author: saachigopal
 ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 440723167ded15933ba46a3a58f9a873496bd6a7
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: f621bb2a7d4543620d22ab85fb8b44752c9989ac
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609361"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376255"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
 
@@ -72,7 +72,7 @@ Die Informationen in diesem Abschnitt gehen davon aus, dass Sie eine Azure Conta
 Azure Machine Learning unterstützt nur Docker-Images, die die folgende Software enthalten:
 * Ubuntu 16.04 oder höher.
 * Conda 4.5.# oder höher.
-* Python 3.5 oder höher.
+* Python 3.6+
 
 Um Datasets zu verwenden, installieren Sie das libfuse-dev-Paket. Stellen Sie außerdem sicher, dass Sie ggf. erforderliche Benutzerspeicherpakete installieren.
 

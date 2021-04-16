@@ -13,19 +13,19 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80881076"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Gewusst wie: Behandeln von TLS/SSL-Problemen mit der MSAL für iOS und macOS
+# <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Vorgehensweise: Behandeln von TLS/SSL-Problemen mit der MSAL für iOS und macOS
 
 Dieser Artikel enthält Informationen zur Behandlung von Problemen, die bei der Verwendung der [Microsoft Authentication Library (MSAL) für iOS und macOS](reference-v2-libraries.md) auftreten können.
 
 ## <a name="network-issues"></a>Netzwerkfehler
 
-**Fehler 1200**: „Ein SSL-Fehler ist aufgetreten, und es kann keine sichere Verbindung mit dem Server hergestellt werden.“
+**Fehler -1200**: „Ein SSL-Fehler ist aufgetreten, und es kann keine sichere Verbindung mit dem Server hergestellt werden.“
 
 Dieser Fehler bedeutet, dass die Verbindung nicht sicher ist. Er tritt auf, wenn ein Zertifikat ungültig ist. Weitere Informationen, z. B. dazu, welcher Server die TLS-Überprüfung nicht bestanden hat, finden Sie im `userInfo`-Wörterbuch des Fehlerobjekts unter `NSURLErrorFailingURLErrorKey`.
 

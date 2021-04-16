@@ -1,18 +1,19 @@
 ---
-title: Überlegungen zur Bereitstellung von Azure-Dateifreigaben
-description: Bereitstellen von Azure-Dateifreigaben für die Verwendung mit der Azure-Dateisynchronisierung Ein gemeinsamer Textblock der Migrationsdokumentation.
+title: include file
+description: include file
+services: storage
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
-ms.subservice: files
-ms.openlocfilehash: d48baba5ee60a2bf5a4cb5e4d1ce840fce8eec43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file
+ms.openlocfilehash: c003e765574d764b6653823e8554d0718ea85e0e
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82143539"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081106"
 ---
 Eine Azure-Dateifreigabe wird in der Cloud in einem Azure-Speicherkonto gespeichert.
 Im Hinblick auf die Leistung sollten dabei einige wichtige Aspekte berücksichtigt werden.
@@ -22,7 +23,7 @@ Wenn Ihre Freigaben intensiv genutzt werden, z. B. von einer großen Anzahl von
 Als bewährte Methode empfiehlt es sich, Speicherkonten mit je einer Dateifreigabe bereitzustellen.
 Wenn Sie Archivierungsfreigaben bereitstellen möchten oder davon ausgehen, dass Ihre Freigaben selten genutzt werden, können Sie mehrere Azure-Dateifreigaben zu einem Speicherkonto hinzufügen.
 
-Diese Überlegungen gelten eher für den direkten Cloudzugriff (über eine Azure-VM) als für die Azure-Dateisynchronisierung. Wenn Sie Freigaben lediglich für die Azure-Dateisynchronisierung verwenden möchten, können Sie mehrere Freigaben in einem einzelnen Azure-Speicherkonto gruppieren.
+Diese Überlegungen gelten eher für direkten Cloudzugriff (über eine Azure-VM oder Azure-Dateisynchronisierung) als für die Azure-Dateisynchronisierung. Wenn Sie Freigaben lediglich für die Azure-Dateisynchronisierung verwenden möchten, können Sie mehrere Freigaben in einem einzelnen Azure-Speicherkonto gruppieren.
 
 Wenn Sie eine Liste Ihrer Freigaben erstellt haben, sollten Sie jede Freigabe dem Speicherkonto zuordnen, in dem sie sich befindet.
 

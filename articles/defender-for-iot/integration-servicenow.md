@@ -1,19 +1,14 @@
 ---
 title: Informationen zur ServiceNow-Integration
-titleSuffix: Azure Defender for IoT
 description: Die ICS Management-Anwendung für ServiceNow in Defender für IoT bietet SOC-Analysten einen mehrdimensionalen Einblick in die speziellen OT-Protokolle und IoT-Geräte, die in Industrieumgebungen bereitgestellt werden, sowie ICS-fähige Verhaltensanalysen zur schnellen Erkennung von verdächtigem oder anomalem Verhalten.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: f2a4c3e79a762de19c6e8c029256cd70dedfe3dc
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 6e39c3d018003983f6dc5b5e16a9791de84d6005
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556819"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786004"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>ICS Management-Anwendung für ServiceNow in Defender für IoT
 
@@ -153,7 +148,7 @@ So definieren Sie die Regel
 
 ### <a name="send-defender-for-iot-device-attributes"></a>Senden von Defender für IoT-Geräteattributen
 
-In diesem Artikel wird beschrieben, wie Sie Defender für IoT zur Übertragung von umfangreichen Geräteattributen an ServiceNow-Tabellen konfigurieren. Ausführliche Informationen zur Art der an ServiceNow übertragenen Informationen finden Sie unter **_Bestandsinformationen_* _.
+In diesem Artikel wird beschrieben, wie Sie Defender für IoT zur Übertragung von umfangreichen Geräteattributen an ServiceNow-Tabellen konfigurieren. Ausführliche Informationen zur Art der an ServiceNow übertragenen Informationen finden Sie unter ***Bestandsinformationen***.
 
 Zum Senden von Attributen an ServiceNow müssen Sie die lokale Verwaltungskonsole einer ServiceNow-Instanz zuordnen. Dadurch wird die Kommunikation und Authentifizierung der Defender für IoT-Plattform mit dieser Instanz sichergestellt.
 
@@ -161,7 +156,7 @@ So fügen Sie eine ServiceNow-Instanz hinzu
 
 1. Melden Sie sich bei der lokalen Verwaltungskonsole von Defender für IoT an.
 
-1. Wählen Sie _ *Systemeinstellungen** und dann **ServiceNow** im Bereich „Integration“ der lokalen Verwaltungskonsole aus.
+1. Wählen Sie im Bereich „Integration“ der lokalen Verwaltungskonsole **Systemeinstellungen** und dann **ServiceNow** aus.
 
       :::image type="content" source="media/integration-servicenow/servicenow.png" alt-text="Auswählen der Schaltfläche „ServiceNow“":::
 
@@ -359,4 +354,4 @@ In diesem Artikel werden die Warnungstypen beschrieben, die von den einzelnen En
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum [Weiterleiten von Warnungsinformationen](how-to-forward-alert-information-to-partners.md).
+Erfahren Sie, wie Sie [Warnungsinformationen weiterleiten](how-to-forward-alert-information-to-partners.md).

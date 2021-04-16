@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: fe04615e234eaf5b006a80e6f584905626c637ba
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0b49cf4fe28e2a9b4d15f889d227b443777b1efa
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489484"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889245"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>PowerShell-Skripts für IoT Edge für Linux unter Windows
 
@@ -140,7 +140,7 @@ Mit dem Befehl **Get-EflowVmSshKey** wird der vom virtuellen Computer verwendete
 
 ## <a name="ssh-eflowvm"></a>Ssh-EflowVm
 
-Mit dem Befehl **Ssh-EflowVm** wird eine SSH-Anmeldung am virtuellen Computer durchgeführt. Wenn Sie zusätzliche Informationen benötigen, verwenden Sie den Befehl `Get-Help Ssh-EflowVm -full`.
+Mit dem Befehl **Ssh-EflowVm** wird eine SSH-Anmeldung am virtuellen Computer durchgeführt. Das einzige Konto, das zum Herstellen eines SSH mit dem virtuellen Computer zulässig ist, ist der Benutzer, der es erstellt. Wenn Sie zusätzliche Informationen benötigen, verwenden Sie den Befehl `Get-Help Ssh-EflowVm -full`.
 
 | Parameter | Zulässige Werte | Kommentare |
 | --------- | --------------- | -------- |

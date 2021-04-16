@@ -1,19 +1,20 @@
 ---
 title: Azure-Whitepaper zu Mainframethemen mit Azure Virtual Machines und Azure Storage
 description: Enthält Ressourcen zur Mainframemigration, zum erneuten Hosten und zum Umstellen von IBM Z-basierten Systemen auf Microsoft Azure.
-services: multiple
+services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: dd91b4331a6093d1cf208893d5d88746707b473b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03a075cb2098557d72f0d864da4df910f5bc5f8c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74224739"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954291"
 ---
 # <a name="azure-white-papers-about-mainframe-topics"></a>Azure-Whitepaper zu Mainframethemen
 
@@ -33,7 +34,7 @@ Das Planen einer Anwendungsmigration ist der ideale Zeitpunkt, um auch für fest
 
 ### <a name="deploy-ibm-db2-purescale-on-azure"></a>[Bereitstellen von IBM DB2 pureScale in Azure](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
 
-Profitieren Sie von unseren Erfahrungen mit einem Unternehmen, für das die IBM DB2-Umgebung vor Kurzem unter Azure neu gehostet wurde. Dieser Leitfaden wurde von den beteiligten Mitgliedern des AzureCAT- und DMJ-Teams verfasst: Larry Mead, Benjamin Guinebertière, Alessandro Vozza und Jonathon Frost. Sie beschreiben die Schritte, die bei dieser Migration durchgeführt wurden. Die gewonnenen Erkenntnisse wurden von Mitgliedern des IBM Db2 pureScale-Teams überprüft. Die Installationsskripts, die auf GitHub verfügbar sind, basieren auf der Architektur, die vom Team für eine typische OLTP-Workload mittlerer Größe verwendet wurde.
+Profitieren Sie von unseren Erfahrungen mit einem Unternehmen, für das die IBM DB2-Umgebung vor Kurzem unter Azure neu gehostet wurde. Dieser Leitfaden wurde von folgenden Mitgliedern der AzureCAT- und DMJ-Teams verfasst: Larry Mead, Benjamin Guinebertière, Alessandro Vozza und Jonathon Frost. Sie beschreiben die Schritte, die bei dieser Migration durchgeführt wurden. Die gewonnenen Erkenntnisse wurden von Mitgliedern des IBM Db2 pureScale-Teams überprüft. Die Installationsskripts, die auf GitHub verfügbar sind, basieren auf der Architektur, die vom Team für eine typische OLTP-Workload mittlerer Größe verwendet wurde.
 
 ### <a name="install-tmaxsoft-openframe-on-azure"></a>[Install TmaxSoft OpenFrame on Azure (Installieren von TmaxSoft OpenFrame in Azure)](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 

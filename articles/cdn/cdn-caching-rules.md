@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
 ms.openlocfilehash: a5f4f6a6e72b57638688069111071a6e0a035c49
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96018663"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln
@@ -33,7 +33,7 @@ Azure Content Delivery Network (CDN) bietet zwei Möglichkeiten, um zu steuern, 
 
    - Benutzerdefinierte Cacheregeln: Sie können für jeden Endpunkt in Ihrem Profil eine oder mehrere benutzerdefinierte Cacheregeln festlegen. Benutzerdefinierte Cacheregeln, die mit bestimmten Pfaden und Dateierweiterungen übereinstimmen, werden nacheinander verarbeitet und überschreiben die globale Cacheregel, sofern eine solche festgelegt wurde. 
 
-- Zwischenspeicherung von Abfragezeichenfolgen: Sie können festlegen, wie das Azure CDN die Zwischenspeicherung von Anforderungen mit Abfragezeichenfolgen behandelt. Weitere Informationen finden Sie unter [Steuern des Azure Content Delivery Network-Zwischenspeicherverhaltens mit Abfragezeichenfolgen](cdn-query-string.md). Wenn die Datei nicht zwischengespeichert werden kann, hat die Einstellung für die Zwischenspeicherung von Abfragezeichenfolgen basierend auf Cacheregeln und CDN-Standardverhalten keine Auswirkungen.
+- Zwischenspeichern von Abfragezeichenfolgen: Sie können festlegen, wie das Azure CDN die Zwischenspeicherung von Anforderungen mit Abfragezeichenfolgen behandelt. Weitere Informationen finden Sie unter [Steuern des Azure Content Delivery Network-Zwischenspeicherverhaltens mit Abfragezeichenfolgen](cdn-query-string.md). Wenn die Datei nicht zwischengespeichert werden kann, hat die Einstellung für die Zwischenspeicherung von Abfragezeichenfolgen basierend auf Cacheregeln und CDN-Standardverhalten keine Auswirkungen.
 
 Informationen zum Standardverhalten beim Zwischenspeichern und die Header mit Cacheanweisungen finden Sie unter [Funktionsweise der Zwischenspeicherung](cdn-how-caching-works.md). 
 
@@ -67,7 +67,7 @@ Für globale und benutzerdefinierte Cacheregeln können Sie die folgenden Einste
 ## <a name="cache-expiration-duration"></a>Dauer bis Cacheablauf
 Bei globalen und benutzerdefinierten Cacheregeln können Sie die Dauer bis zum Cacheablauf in Tagen, Stunden, Minuten und Sekunden angeben:
 
-- Für die Optionen **Überschreiben** und **Bei Fehlen festlegen** in den Einstellungen **Verhalten beim Zwischenspeichern** liegt der gültige Bereich der Cachedauer zwischen 0 Sekunden und 366 Tagen. Bei einem Wert von 0 Sekunden speichert das CDN den Inhalt im Cache, muss jedoch jede Anforderung mit dem Ursprungsserver erneut überprüfen.
+- Für die Optionen **Überschreiben** und **Bei Fehlen festlegen in den Einstellungen** **Verhalten beim Zwischenspeichern** liegt der gültige Bereich der Cachedauer zwischen 0 Sekunden und 366 Tagen. Bei einem Wert von 0 Sekunden speichert das CDN den Inhalt im Cache, muss jedoch jede Anforderung mit dem Ursprungsserver erneut überprüfen.
 
 - Bei der Einstellung **Cache umgehen** wird die Cachedauer automatisch auf 0 Sekunden gesetzt und kann nicht geändert werden.
 
@@ -86,7 +86,7 @@ Globale und benutzerdefinierte Cacheregeln werden in der folgenden Reihenfolge v
 
 - Benutzerdefinierte Cacheregeln haben gegenüber globalen Cacheregeln Vorrang, sofern diese anwendbar sind. Benutzerdefinierte Cacheregeln werden in der Reihenfolge von oben nach unten verarbeitet. Dies bedeutet, wenn eine Anforderung beide Bedingungen erfüllt, haben Regeln ganz unten in der Liste Vorrang gegenüber Regeln am Anfang der Liste. Aus diesem Grund sollten Sie spezifischere Regeln weiter unten in der Liste platzieren.
 
-**Beispiel:**
+**Beispiel**:
 - Globale Cacheregel: 
    - Verhalten beim Zwischenspeichern: **Überschreiben**
    - Dauer bis Cacheablauf: 1 Tag
@@ -95,7 +95,7 @@ Globale und benutzerdefinierte Cacheregeln werden in der folgenden Reihenfolge v
    - Übereinstimmungsbedingung: **Pfad**
    - Übereinstimmungswert: _/home/*_
    - Verhalten beim Zwischenspeichern: **Überschreiben**
-   - Dauer bis Cacheablauf: 2 Tage
+   - Dauer bis Cacheablauf: 2 Tage
 
 - Benutzerdefinierte Cacheregel 2:
    - Übereinstimmungsbedingung: **Erweiterung**
@@ -113,7 +113,7 @@ Wenn diese Regeln festgelegt sind, löst eine Anforderung für „ _&lt;Endpunkt
 > - Bei Profilen vom Typ **Azure CDN Standard von Verizon** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen.  
 >
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [Funktionsweise der Zwischenspeicherung](cdn-how-caching-works.md)
 - [Tutorial: Festlegen der Azure CDN-Cacheregeln](cdn-caching-rules-tutorial.md)

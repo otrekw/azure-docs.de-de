@@ -1,17 +1,17 @@
 ---
 title: Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate.
-author: vineetvikram
-ms.author: vivikram
+author: rashijoshi
+ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 40afa1d743b8d074fa46dde46163f6479ebf87c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f9fe4109d2b21f7c44ba340db53dc24311652441
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589080"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782349"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -28,64 +28,148 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zur Ermitt
 In der Unterstützungsmatrix für Azure Migrate finden Sie die unterstützten geografischen Regionen für die [öffentliche Cloud](migrate-support-matrix.md#supported-geographies-public-cloud) und für [Azure Government](migrate-support-matrix.md#supported-geographies-azure-government).
 
 
-## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Wie viele VMs können mit einer Appliance ermittelt werden?
+## <a name="how-many-servers-can-i-discover-with-an-appliance"></a>Wie viele Server können mit einer Appliance ermittelt werden?
 
-Sie können bis zu 10.000 VMware-VMs und bis zu 5.000 Hyper-V-VMs sowie bis zu 1.000 physische Server mithilfe einer einzigen Appliance ermitteln. Wenn Sie mehr Computer haben, informieren Sie sich über die Skalierung der [Hyper-V-](scale-hyper-v-assessment.md), [VMware-](scale-vmware-assessment.md) oder [physischen](scale-physical-assessment.md) Bewertung.
+Sie können in der VMware-Umgebung bis zu 10.000, in der Hyper-V-Umgebung bis zu 5.000 und mit einer einzelnen Appliance bis zu 1000 physische Server ermitteln. Wenn Sie mehr Server haben, informieren Sie sich über die Skalierung der [Hyper-V-](scale-hyper-v-assessment.md), [VMware-](scale-vmware-assessment.md) oder [physischen](scale-physical-assessment.md) Bewertung.
 
 ## <a name="how-do-i-choose-the-assessment-type"></a>Wie wähle ich den Bewertungstyp aus?
 
-- Verwenden Sie **Bewertungen vom Typ „Virtueller Azure-Computer“** , wenn Sie Ihre lokalen [virtuellen VMware-Computer](how-to-set-up-appliance-vmware.md), [virtuellen Hyper-V-Computer](how-to-set-up-appliance-hyper-v.md) und [physischen Server](how-to-set-up-appliance-physical.md) für die Migration zu virtuellen Azure-Computern bewerten möchten. [Weitere Informationen](concepts-assessment-calculation.md)
+- Verwenden Sie **Bewertungen vom Typ „Virtueller Azure-Computer“** , wenn Sie Server in der lokalen [VMware](how-to-set-up-appliance-vmware.md)- und [Hyper-V](how-to-set-up-appliance-hyper-v.md)-Umgebung sowie [physische Server](how-to-set-up-appliance-physical.md) für die Migration zu virtuellen Azure-Computern bewerten möchten. [Weitere Informationen](concepts-assessment-calculation.md)
+
+- Verwenden Sie den Bewertungstyp **Azure SQL**, wenn Sie über die VMware-Umgebung die lokale Instanz von SQL Server bewerten möchten, um die Migration zu Azure SQL-Datenbank oder Azure SQL Managed Instance durchzuführen. [Weitere Informationen](concepts-assessment-calculation.md)
 
 - Verwenden Sie Bewertungen vom Typ **Azure VMware Solution (AVS)** , wenn Sie Ihre lokalen [virtuellen VMware-Computer](how-to-set-up-appliance-vmware.md) für die Migration zu [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) mit diesem Bewertungstyp bewerten möchten. [Weitere Informationen](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - Eine allgemeine Gruppe mit VMware-Computern kann nur zum Ausführen beider Bewertungstypen verwendet werden. Wenn Sie erstmals AVS-Bewertungen in Azure Migrate ausführen, empfiehlt es sich, eine neue Gruppe mit VMware-Computern zu erstellen.
  
 
-## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Warum fehlen in meinem Bewertungsbericht die Leistungsdaten für einige oder alle VMs?
+## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>Warum fehlen in meinem Azure-VM- bzw. Azure VMware Solution-Bewertungsbericht die Leistungsdaten für einige oder alle Server?
 
-Für eine Bewertung vom Typ „Leistungsbasiert“ enthält der Bewertungsbericht „PercentageOfCoresUtilizedMissing“ oder „PercentageOfMemoryUtilizedMissing“, wenn die Azure Migrate-Appliance keine Leistungsdaten für die lokalen virtuellen Computer sammeln kann. Überprüfen Sie Folgendes:
+Für eine Bewertung vom Typ „Leistungsbasiert“ enthält der Bewertungsbericht die Angabe „PercentageOfCoresUtilizedMissing“ oder „PercentageOfMemoryUtilizedMissing“, wenn die Azure Migrate-Appliance keine Leistungsdaten für die lokalen Server sammeln kann. Überprüfen Sie Folgendes:
 
-- Ob die VMs im Zeitraum, in dem Sie die Bewertung erstellen, eingeschaltet sind
-- Falls nur Arbeitsspeicher-Leistungsindikatoren fehlen und Sie versuchen, virtuelle Hyper-V-Computer zu bewerten. Aktivieren Sie in diesem Szenario dynamischen Arbeitsspeicher auf den virtuellen Computern, und führen Sie die erneute Berechnung der Bewertung durch, um die neuesten Änderungen widerzuspiegeln. Die Appliance kann Speicherauslastungswerte für Hyper-V-VMs nur erfassen, wenn auf dem virtuellen Computer dynamischer Arbeitsspeicher aktiviert ist.
+- Sind die Server für den Zeitraum, in dem Sie die Bewertung erstellen, eingeschaltet?
+- Fehlen nur Leistungsindikatoren für den Arbeitsspeicher? Versuchen Sie, die Server in einer Hyper-V-Umgebung zu bewerten? Aktivieren Sie in diesem Szenario dynamischen Arbeitsspeicher auf den Servern, und führen Sie die erneute Berechnung der Bewertung durch, um die neuesten Änderungen widerzuspiegeln. Die Appliance kann Werte für die Arbeitsspeicherauslastung für Server in Hyper-V-Umgebungen nur dann sammeln, wenn der dynamische Arbeitsspeicher für den Server aktiviert ist.
 
 - Falls alle Leistungsindikatoren fehlen, sollten Sie sicherstellen, dass ausgehende Verbindungen über Port 443 (HTTPS) zulässig sind.
 
-Hinweis: Falls einer der Leistungsindikatoren fehlt, greift die Azure Migrate-Serverbewertung auf die lokalen zugeordneten Kerne bzw. auf den lokalen zugeordneten Arbeitsspeicher zurück und empfiehlt eine entsprechende VM-Größe.
+    > [!Note]
+    > Falls einer der Leistungsindikatoren fehlt, greift die Azure Migrate-Serverbewertung auf die lokalen zugeordneten Kerne bzw. auf den lokalen zugeordneten Arbeitsspeicher zurück und empfiehlt eine entsprechende VM-Größe.
+
+
+## <a name="why-is-performance-data-missing-for-someall-sql-instancesdatabases-in-my-azure-sql-assessment"></a>Warum fehlen für einige/alle SQL-Instanzen/-Datenbanken in meiner Azure SQL-Bewertung Leistungsdaten?
+
+Überprüfen Sie Folgendes, um sicherzustellen, dass Leistungsdaten erfasst werden:
+
+- Ob die Computer mit SQL Server im Zeitraum, in dem Sie die Bewertung erstellen, eingeschaltet sind
+- Ob der SQL-Agent in Azure Migrate den Verbindungsstatus „Verbunden“ aufweist. (Überprüfen Sie auch den letzten Heartbeat.) 
+- Ob der Azure Migrate-Verbindungsstatus für alle SQL-Instanzen auf dem Blatt der ermittelten SQL-Instanz „Verbunden“ lautet
+- Sollten alle Leistungsindikatoren fehlen, vergewissern Sie sich, dass ausgehende Verbindungen am Port 443 (HTTPS) zugelassen werden.
+
+Wenn einer der Leistungsindikatoren fehlt, empfiehlt die Azure SQL-Bewertung die kleinste Azure SQL-Konfiguration für die Instanz bzw. Datenbank.
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Weshalb weist meine Bewertung eine niedrige Zuverlässigkeitsstufe auf?
 
 Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ anhand des Prozentsatzes von [verfügbaren Datenpunkten](./concepts-assessment-calculation.md#ratings) berechnet, die zum Berechnen der Bewertung benötigt werden. Im Folgenden werden mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertung aufgeführt:
 
-- Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil Ihrer Umgebung erstellt. Wenn Sie beispielsweise eine Bewertung mit einer auf eine Woche festgelegten Leistungsdauer erstellen, müssen Sie nach dem Start der Ermittlung mindestens eine Woche warten, damit alle Datenpunkte erfasst werden können. Falls Sie nicht so lange warten können, sollten Sie die Leistungsdauer in einen kürzeren Zeitraum ändern und die Bewertung neu berechnen (Option „Neu berechnen“).
+- Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil Ihrer Umgebung erstellt. Wenn Sie beispielsweise eine Bewertung mit einer auf eine Woche festgelegten Leistungsdauer erstellen, müssen Sie nach dem Start der Ermittlung mindestens eine Woche warten, damit alle Datenpunkte erfasst werden können. Falls Sie nicht so lange warten können, sollten Sie die Leistungsdauer in einen kürzeren Zeitraum ändern und die Bewertung neu berechnen (Option **Neu berechnen**).
  
-- Die Serverbewertung kann die Leistungsdaten für einige oder alle VMs im Bewertungszeitraum nicht erfassen. Für eine Bewertung mit hoher Konfidenz stellen Sie Folgendes sicher: 
-    - VMs sind für die Dauer der Bewertung eingeschaltet.
+- Die Bewertung kann die Leistungsdaten für einige oder alle Server im Bewertungszeitraum nicht erfassen. Für eine Bewertung mit hoher Konfidenz stellen Sie Folgendes sicher: 
+    - Server sind für die Dauer der Bewertung eingeschaltet.
     - Ausgehende Verbindungen am Port 443 sind zugelassen.
-    - Für Hyper-V-VMs ist dynamischer Arbeitsspeicher aktiviert. 
+    - Für Hyper-V-Server ist dynamischer Arbeitsspeicher aktiviert. 
+    - Agents in Azure Migrate weisen den Verbindungsstatus „Verbunden“ auf. Überprüfen Sie auch den letzten Heartbeat.
+    - In Azure SQL-Bewertungen lautet der Azure Migrate-Verbindungsstatus für alle SQL-Instanzen auf dem Blatt der ermittelten SQL-Instanz „Verbunden“.
 
-    Führen Sie die erneute Berechnung der Bewertung mit der Option „Neu berechnen“ durch, um die neuesten Änderungen an der Zuverlässigkeitsstufe widerzuspiegeln.
+    Führen Sie eine **Neuberechnung** der Bewertung durch, um die neuesten Änderungen bei der Zuverlässigkeitsstufe zu berücksichtigen.
 
-- Nach dem Start der Ermittlung in der Serverbewertung wurden wenige VMs erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige virtuelle Computer erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen VMs zur Verfügung und die Zuverlässigkeitsstufe wäre gering.
+- Für Azure-VM- und Azure VMware Solution-Bewertungen: Nach dem Start der Ermittlung wurden einige Server erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige Server erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen Server zur Verfügung, und die Zuverlässigkeitsstufe wäre gering. [Weitere Informationen](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
-[Weitere Informationen](./concepts-assessment-calculation.md#confidence-ratings-performance-based) zur Zuverlässigkeitsstufe.
+- Bei Azure SQL-Bewertungen wurden einige SQL-Instanzen oder -Datenbanken nach dem Start der Ermittlung erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige SQL-Instanzen oder -Datenbanken erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen Server zur Verfügung, und die Zuverlässigkeitsstufe wäre gering. [Weitere Informationen](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Beim Erstellen einer Azure SQL-Bewertung werden einige Server nicht angezeigt.
+
+- Azure SQL-Bewertungen können nur für aktive Server durchgeführt werden, auf denen SQL-Instanzen erkannt wurden. Falls die Server und SQL-Instanzen, die Sie bewerten möchten, nicht angezeigt werden, warten Sie, bis die Ermittlung abgeschlossen ist, und erstellen Sie dann die Bewertung. 
+- Sollte im Rahmen der Bewertungserstellung eine zuvor erstellte Gruppe nicht angezeigt werden, entfernen Sie alle VMware-fremden Server bzw. alle Server ohne SQL-Instanz aus der Gruppe.
+- Wenn Sie erstmals Azure SQL-Bewertungen in Azure Migrate ausführen, empfiehlt es sich, eine neue Servergruppe zu erstellen.
+
+## <a name="i-want-to-understand-how-was-the-readiness-for-my-instance-computed"></a>Wie wurde die Bereitschaft für meine Instanz berechnet?
+Die Bereitschaft Ihrer SQL-Instanzen wurde im Anschluss an eine Featurekompatibilitätsprüfung mit dem gewünschten Azure SQL-Bereitstellungstyp (Azure SQL-Datenbank oder Azure SQL Managed Instance) berechnet. [Weitere Informationen](./concepts-azure-sql-assessment-calculation.md#calculate-readiness)
+
+## <a name="why-is-the-readiness-for-all-my-sql-instances-marked-as-unknown"></a>Warum ist die Bereitschaft aller SQL-Instanzen als „Unbekannt“ gekennzeichnet?
+Wenn die Ermittlung vor Kurzem gestartet wurde und immer noch ausgeführt wird, wird möglicherweise die Bereitschaft einiger oder aller SQL-Instanzen als „Unbekannt“ angezeigt. Warten Sie etwas, bis die Appliance ein Profil der Umgebung erstellt hat, und führen Sie anschließend eine Neuberechnung der Bewertung durch.
+Die SQL-Ermittlung wird alle 24 Stunden ausgeführt. Es kann also bis zu einem Tag dauern, bis die aktuellen Konfigurationsänderungen berücksichtigt wurden. 
+
+## <a name="why-is-the-readiness-for-some-of-my-sql-instances-marked-as-unknown"></a>Warum ist die Bereitschaft einiger SQL-Instanzen als „Unbekannt“ gekennzeichnet?
+Mögliche Ursachen: 
+- Die Ermittlung wird immer noch ausgeführt. Warten Sie etwas, bis die Appliance ein Profil der Umgebung erstellt hat, und führen Sie anschließend eine Neuberechnung der Bewertung durch.
+- Möglicherweise gibt es auf dem Blatt für Fehler und Benachrichtigungen Erkennungsprobleme, die behoben werden müssen.
+
+Die SQL-Ermittlung wird alle 24 Stunden ausgeführt. Es kann also bis zu einem Tag dauern, bis die aktuellen Konfigurationsänderungen berücksichtigt wurden.
+
+## <a name="my-assessment-is-in-outdated-state"></a>Meine Bewertung ist veraltet.
+
+### <a name="azure-vmavs-assessment"></a>Azure-VM- bzw. Azure VMware Solution-Bewertung
+Wenn es lokale Änderungen an Servern gibt, die sich in einer Gruppe befinden, die bewertet wurde, wird die Bewertung als veraltet gekennzeichnet. Eine Bewertung kann aufgrund von Änderungen in den folgenden Eigenschaften als veraltet gekennzeichnet werden:
+- Anzahl der Prozessorkerne
+- Zugeordneter Arbeitsspeicher
+- Starttyp oder Firmware
+- Name, Version und Architektur des Betriebssystems
+- Anzahl der Datenträger
+- Anzahl der Netzwerkadapter
+- Änderung der Datenträgergröße (zugeordnete GB)
+- Aktualisierung der NIC-Eigenschaften Beispiel: Änderungen der MAC-Adresse, Hinzufügung einer IP-Adresse usw.
+
+Führen Sie eine **Neuberechnung** der Bewertung durch, um die neuesten Änderungen bei der Bewertung zu berücksichtigen.
+
+### <a name="azure-sql-assessment"></a>Azure SQL-Bewertung
+Wenn Änderungen an lokalen SQL-Instanzen und -Datenbanken vorgenommen wurden, die einer bewerteten Gruppe angehören, wird die Bewertung als **Veraltet** gekennzeichnet:
+- Eine SQL-Instanz wurde einem Server hinzugefügt oder von einem Server entfernt.
+- Eine SQL-Datenbank wurde einer SQL-Instanz hinzugefügt oder aus einer SQL-Instanz entfernt.
+- Die Gesamtgröße einer Datenbank in einer SQL-Instanz hat sich um mehr als 20 Prozent geändert.
+- Änderung der Anzahl von Prozessorkernen und/oder zugeordnetem Arbeitsspeicher
+
+Führen Sie eine **Neuberechnung** der Bewertung durch, um die neuesten Änderungen bei der Bewertung zu berücksichtigen.
+
+## <a name="why-was-i-recommended-a-particular-target-deployment-type"></a>Warum wurde mir ein bestimmter Zielbereitstellungstyp empfohlen?
+Von Azure Migrate wird ein bestimmter Azure SQL-Bereitstellungstyp empfohlen, der mit Ihrer SQL-Instanz kompatibel ist. Eine Migration zu einem von Microsoft empfohlenen Ziel ist insgesamt weniger aufwendig. Diese Azure SQL-Konfiguration (SKU) wurde unter Berücksichtigung der Leistungsmerkmale Ihrer SQL-Instanz und der von ihr verwalteten Datenbanken empfohlen. Sollten mehrere Azure SQL-Konfigurationen in Frage kommen, wird die kostengünstigste Lösung empfohlen. [Weitere Informationen](./concepts-azure-sql-assessment-calculation.md#calculate-sizing)
+
+## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>Welches Bereitstellungsziel sollte ich auswählen, wenn meine SQL-Instanz für Azure SQL-Datenbank und für Azure SQL Managed Instance bereit ist? 
+Falls Ihre Instanz sowohl für Azure SQL-Datenbank als auch für Azure SQL Managed Instance bereit ist, empfiehlt sich die Verwendung des Zielbereitstellungstyps, bei dem die voraussichtlichen Kosten für die Azure SQL-Konfiguration geringer sind.
+
+## <a name="why-is-my-instance-marked-as-potentially-ready-for-azure-vm-in-my-azure-sql-assessment"></a>Warum ist meine Instanz in meiner Azure SQL-Bewertung als „Potenziell für virtuellen Azure-Computer bereit“ gekennzeichnet?
+Dieser Fall kann eintreten, wenn der in den Bewertungseigenschaften ausgewählte Zielbereitstellungstyp **Empfohlen** lautet und die SQL-Instanz nicht für Azure SQL-Datenbank und Azure SQL Managed Instance bereit ist. Dem Benutzer wird empfohlen, in Azure Migration eine Bewertung mit dem Bewertungstyp **Azure-VM** zu erstellen, um zu ermitteln, ob der Server, auf dem die Instanz ausgeführt wird, zu einem virtuellen Azure-Computer migriert werden kann.
+Dem Benutzer wird empfohlen, in Azure Migrate eine Bewertung mit dem Bewertungstyp **Azure-VM** zu erstellen, um zu ermitteln, ob der Server, auf dem die Instanz ausgeführt wird, stattdessen zu einem virtuellen Azure-Computer migriert werden kann.
+- Bei Bewertungen vom Typ „Azure-VM“ in Azure Migrate liegt das Hauptaugenmerk aktuell auf Lift & Shift-Migrationen, und die spezifischen Leistungsmetriken für die Ausführung von SQL-Instanzen und -Datenbanken auf dem virtuellen Azure-Computer werden nicht berücksichtigt. 
+- Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) für SQL Server auf virtuellen Azure-Computern.
+
+## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>In meiner Bewertung werden einige Datenbanken nicht angezeigt, obwohl die Instanz Teil der Bewertung ist.
+
+Die Azure SQL-Bewertung enthält nur Datenbanken, die online sind. Bei Datenbank mit einem anderen Status werden Bereitschaft, Dimensionierung und Kostenberechnung ignoriert. Wenn Sie Datenbanken dieser Art bewerten möchten, ändern Sie den Status der Datenbank, warten Sie etwas, und berechnen Sie die Bewertung neu.
+
+## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Ich möchte die Kosten für das Ausführen meiner SQL-Instanzen auf einem virtuellen Azure-Computer mit den Kosten für Azure SQL-Datenbank-Instanzen/Azure SQL Managed Instance vergleichen.
+
+Sie können eine Bewertung mit dem Typ **Azure-VM** in der gleichen Gruppe erstellen, die in Ihrer Bewertung vom Typ **Azure SQL** verwendet wurde. Anschließend können Sie die beiden Berichte miteinander vergleichen. Bei Bewertungen vom Typ „Azure-VM“ in Azure Migrate liegt das Hauptaugenmerk allerdings aktuell auf Lift & Shift-Migrationen, und die spezifischen Leistungsmetriken für die Ausführung von SQL-Instanzen und -Datenbanken auf dem virtuellen Azure-Computer werden nicht berücksichtigt. Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) für SQL Server auf virtuellen Azure-Computern.
+
+## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Die Speicherkosten in meiner Azure SQL-Bewertung liegen bei null.
+Für Azure SQL Managed Instance werden für die ersten 32 GB Speicher pro Instanz und Monat keine Speicherkosten hinzugefügt, und zusätzliche Speicherkosten werden in 32-GB-Schritten hinzugefügt. [Weitere Informationen](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Es werden bei der Erstellung einer Bewertung vom Typ „Azure VMware Solution (AVS)“ einige Gruppen nicht angezeigt.
 
 - AVS-Bewertungen können nur für Gruppen durchgeführt werden, die ausschließlich VMware-Computer enthalten. Entfernen Sie alle VMware-fremden Computer aus der Gruppe, wenn Sie eine AVS-Bewertung durchführen möchten.
 - Wenn Sie erstmals AVS-Bewertungen in Azure Migrate ausführen, empfiehlt es sich, eine neue Gruppe mit VMware-Computern zu erstellen.
 
-## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Einige VM-Typen werden in Azure Government nicht angezeigt
+## <a name="i-cant-see-some-vm-types-and-sizes-in-azure-government"></a>Einige VM-Typen und -Größen werden in Azure Government nicht angezeigt
 
-Die für die Bewertung und Migration unterstützten VM-Typen hängen von der Verfügbarkeit am Azure Government-Standort ab. Sie können die VM-Typen in Azure Government [hier anzeigen und vergleichen](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines).
+Die für die Bewertung und Migration unterstützten VM-Typen und -Größen hängen von der Verfügbarkeit am Azure Government-Standort ab. Sie können die VM-Typen in Azure Government [hier anzeigen und vergleichen](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines).
 
-## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>Die Größe meiner VM hat sich geändert. Kann ich die Bewertung erneut ausführen?
+## <a name="the-size-of-my-server-changed-can-i-run-an-assessment-again"></a>Die Größe meines Servers hat sich geändert. Kann ich die Bewertung erneut ausführen?
 
-Die Azure Migrate-Appliance sammelt kontinuierlich Informationen zur lokalen Umgebung.  Eine Bewertung ist eine Point-in-Time-Momentaufnahme von lokalen VMs. Wenn Sie die Einstellungen für eine VM, die Sie bewerten möchten, ändern, verwenden Sie die Option „Neu berechnen“, um die Bewertung mit den neuesten Änderungen zu aktualisieren.
+Die Azure Migrate-Appliance sammelt kontinuierlich Informationen zur lokalen Umgebung.  Eine Bewertung ist eine Point-in-Time-Momentaufnahme von lokalen Servern. Wenn Sie die Einstellungen für einen Server, den Sie bewerten möchten, ändern, verwenden Sie die Option „Neu berechnen“, um die Bewertung mit den neuesten Änderungen zu aktualisieren.
 
-## <a name="how-do-i-discover-vms-in-a-multitenant-environment"></a>Wie ermittle ich VMs in einer mehrinstanzenfähigen Umgebung?
+## <a name="how-do-i-discover-servers-in-a-multitenant-environment"></a>Wie ermittle ich Server in einer mehrinstanzenfähigen Umgebung?
 
-- **VMware**: Wenn eine Umgebung von Mandanten gemeinsam genutzt wird und Sie die VMs eines Mandanten nicht im Abonnement eines anderen Mandanten ermitteln möchten, erstellen Sie VMware vCenter Server-Anmeldeinformationen mit Zugriff nur auf die VMs, die Sie ermitteln möchten. Verwenden Sie diese Anmeldeinformationen dann, wenn Sie die Ermittlung in der Azure Migrate-Appliance starten.
-- **Hyper-V:** Bei der Ermittlung werden Anmeldeinformationen für den Hyper-V-Host verwendet. Wenn virtuelle Computer denselben Hyper-V-Host nutzen, gibt es derzeit keine Möglichkeit, die Ermittlung zu trennen.  
+- **VMware**: Wenn eine Umgebung von Mandanten gemeinsam genutzt wird und Sie die Server eines Mandanten nicht im Abonnement eines anderen Mandanten ermitteln möchten, erstellen Sie VMware vCenter Server-Anmeldeinformationen mit Zugriff nur auf die Server, die Sie ermitteln möchten. Verwenden Sie diese Anmeldeinformationen dann, wenn Sie die Ermittlung in der Azure Migrate-Appliance starten.
+- **Hyper-V:** Bei der Ermittlung werden Anmeldeinformationen für den Hyper-V-Host verwendet. Wenn Server denselben Hyper-V-Host nutzen, gibt es derzeit keine Möglichkeit, die Ermittlung zu trennen.  
 
 ## <a name="do-i-need-vcenter-server"></a>Benötige ich vCenter Server?
 
@@ -93,9 +177,9 @@ Ja, Azure Migrate erfordert in einer VMware-Umgebung vCenter Server für die Erm
 
 ## <a name="what-are-the-sizing-options-in-an-azure-vm-assessment"></a>Welche Größenoptionen gibt es bei einer Azure VM-Bewertung?
 
-Bei der lokal orientierten Größenanpassung berücksichtigt Azure Migrate keine VM-Leistungsdaten für die Bewertung. Azure Migrate bewertet VM-Größen auf Grundlage der lokalen Konfiguration. Bei der leistungsbasierten Größenanpassung basiert diese auf Auslastungsdaten.
+Bei der lokal orientierten Größenanpassung berücksichtigt Azure Migrate keine Serverleistungsdaten für die Bewertung. Azure Migrate bewertet VM-Größen auf Grundlage der lokalen Konfiguration. Bei der leistungsbasierten Größenanpassung basiert diese auf Auslastungsdaten.
 
-Wenn z. B. eine lokale VM über vier Kerne und 8 GB Arbeitsspeicher bei einer CPU- und Arbeitsspeicherauslastung von jeweils 50 % verfügt:
+Wenn z. B. ein lokaler Server über vier Kerne und 8 GB Arbeitsspeicher bei einer CPU- und Arbeitsspeicherauslastung von jeweils 50 % verfügt:
 - Bei der lokal orientierten Größenanpassung wird eine Azure-VM-SKU mit vier Kernen und 8 GB Arbeitsspeicher empfohlen.
 - Bei der leistungsbasierten Größenanpassung wird jedoch eine VM-SKU mit zwei Kernen und 4 GB Arbeitsspeicher empfohlen, da auch der Auslastungsprozentsatz berücksichtigt wird.
 
@@ -138,7 +222,7 @@ Für Computer, die über eine CSV-Datei importiert wurden, ist das Standardmigra
 
 ## <a name="what-is-dependency-visualization"></a>Was ist die Visualisierung von Abhängigkeiten?
 
-Anhand der Visualisierung von Abhängigkeiten können Sie Gruppen von VMs für eine Migration mit größerer Sicherheit bewerten. Die Visualisierung von Abhängigkeiten überprüft die Abhängigkeiten zwischen Computern, bevor Sie eine Bewertung ausführen. Sie stellt sicher, dass nichts übersehen wird, und hilft, unerwartete Ausfälle bei der Migration zu Azure zu vermeiden. Azure Migrate verwendet die Dienstzuordnungslösung in Azure Monitor, um Abhängigkeitsvisualisierung zu ermöglichen. [Weitere Informationen](concepts-dependency-visualization.md)
+Anhand der Visualisierung von Abhängigkeiten können Sie Gruppen von Servern für eine Migration mit größerer Sicherheit bewerten. Die Visualisierung von Abhängigkeiten überprüft die Abhängigkeiten zwischen Computern, bevor Sie eine Bewertung ausführen. Sie stellt sicher, dass nichts übersehen wird, und hilft, unerwartete Ausfälle bei der Migration zu Azure zu vermeiden. Azure Migrate verwendet die Dienstzuordnungslösung in Azure Monitor, um Abhängigkeitsvisualisierung zu ermöglichen. [Weitere Informationen](concepts-dependency-visualization.md)
 
 > [!NOTE]
 > Die Agent-basierte Abhängigkeitsanalyse ist in Azure Government nicht verfügbar. Sie können die Abhängigkeitsanalyse ohne Agent verwenden.
@@ -149,7 +233,7 @@ Die Unterschiede zwischen der Visualisierung ohne Agent und der Agent-basierten 
 
 **Anforderung** | **Ohne Agent** | **Agent-basiert**
 --- | --- | ---
-Support | Diese Option befindet sich derzeit in der Vorschauphase und ist nur für VMware-VMs verfügbar. [Lesen](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) Sie den Artikel zu den unterstützten Betriebssystemen. | In der allgemeinen Verfügbarkeit (General Availability, GA).
+Support | Diese Option befindet sich derzeit in der Vorschauphase und ist nur für Server in einer VMware-Umgebung verfügbar. [Lesen](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) Sie den Artikel zu den unterstützten Betriebssystemen. | In der allgemeinen Verfügbarkeit (General Availability, GA).
 Agent | Sie müssen keine Agents auf Computern installieren, die Sie überprüfen möchten. | Auf jedem lokalen Computer, den Sie analysieren möchten, müssen Agents installiert sein: Der [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md) und der [Dependency-Agent](../azure-monitor/agents/agents-overview.md#dependency-agent). 
 Voraussetzungen | [Lesen](concepts-dependency-visualization.md#agentless-analysis) Sie den Abschnitt zu Voraussetzungen und Anforderungen für die Bereitstellung. | [Lesen](concepts-dependency-visualization.md#agent-based-analysis) Sie den Abschnitt zu Voraussetzungen und Anforderungen für die Bereitstellung.
 Log Analytics | Nicht erforderlich. | Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnung](../azure-monitor/vm/service-map.md) in [Azure Monitor-Protokolle](../azure-monitor/logs/log-query-overview.md). [Weitere Informationen](concepts-dependency-visualization.md#agent-based-analysis)
@@ -204,9 +288,9 @@ Sie können für die Agent-basierte Visualisierung entsprechende Abhängigkeiten
 
 Zur Visualisierung ohne Agents können Sie das Abhängigkeitsdiagramm eines einzelnen Servers für eine Dauer zwischen einer Stunde und 30 Tagen anzeigen.
 
-## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Kann ich für Gruppen mit mehr als zehn VMs Abhängigkeiten visualisieren?
+## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-servers"></a>Kann ich für Gruppen mit mehr als zehn Servern Abhängigkeiten visualisieren?
 
-Sie können [Abhängigkeiten für Gruppen visualisieren](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping), die bis zu zehn VMs umfassen. Falls eine Gruppe aus mehr als zehn VMs besteht, sollten Sie die Gruppe in kleinere Gruppen aufteilen und die Abhängigkeiten anschließend visualisieren.
+Sie können [Abhängigkeiten für Gruppen visualisieren](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping), die bis zu zehn Server umfassen. Falls eine Gruppe aus mehr als zehn Servern besteht, sollten Sie die Gruppe in kleinere Gruppen aufteilen und die Abhängigkeiten anschließend visualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

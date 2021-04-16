@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ce3bda82e634cd80560d7915a08fa33218173779
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714781"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967194"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 
@@ -122,25 +122,30 @@ In folgenden Fällen müssen Sie eine manuelle Migration ausführen:
 - Sie möchten Daten von ZRS zu LRS, GRS oder RA-GRS migrieren.
 - Ihr Speicherkonto enthält Daten auf Archivebene.
 
-Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) anfordern. Wählen Sie im Portal das Speicherkonto aus, das Sie in ZRS konvertieren möchten.
+Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) anfordern. 
 
-1. Wählen Sie **Neue Supportanfrage** aus.
-2. Geben Sie die **Grundlagen** basierend auf den Informationen Ihres Kontos an: 
+> [!IMPORTANT]
+> Wenn Sie mehr als ein Speicherkonto migrieren müssen, erstellen Sie ein einzelnes Support-Ticket und geben Sie auf der Registerkarte **Details** die Namen der zu konvertierenden Konten an.
+
+Folgen Sie diesen Schritten, um eine Live-Migration anzufordern:
+
+1. Navigieren Sie im Azure-Portal zu einem Speicherkonto, das Sie migrieren möchten.
+1. Wählen Sie unter **Support + Troubleshooting** **Neue Support-Anfrage**.
+1. Füllen Sie die Registerkarte **Grundlagen** anhand Ihrer Kontoinformationen aus:
     - **Problemtyp**: Wählen Sie **Technisch** aus.
     - **Dienst**: Wählen Sie **Meine Dienste** und **Speicherkontenverwaltung** aus.
-    - **Ressource:** Wählen Sie die Ressource aus, die Sie zu ZRS konvertieren möchten.
-3. Wählen Sie **Weiter** aus.
-4. Geben Sie im Abschnitt **Problem** die folgenden Werte an:
-    - **Schweregrad**: Behalten Sie den Standardwert bei.
+    - **Ressource**: Wählen Sie ein Speicherkonto für die Migration aus. Wenn Sie mehrere Speicher Konten angeben müssen, können Sie dies im Abschnitt **Details** tun.
     - **Problemtyp**: Wählen Sie **Datenmigration** aus.
-    - **Kategorie:** Wählen Sie **Zu ZRS migrieren** aus.
-    - **Titel**: Geben Sie einen aussagekräftigen Titel ein, z.B. **ZRS-Kontomigration**.
-    - **Details**: Geben Sie im Feld **Details** weitere Informationen ein, z.B. „Ich möchte von [LRS, GRS] in der Region „\_\_“ zu ZRS migrieren“.
-5. Wählen Sie **Weiter** aus.
-6. Überprüfen Sie, ob die Kontaktinformationen auf dem Blatt **Kontaktinformationen** korrekt sind.
-7. Klicken Sie auf **Erstellen**.
+    - **Problem-Untertyp**: Wählen Sie **zu ZRS, gzrs oder RA-gzrs migrieren** aus.
 
-Ein Supportmitarbeiter wird sich mit Ihnen in Verbindung setzen und Sie nach Bedarf und Wunsch unterstützen.
+    :::image type="content" source="media/redundancy-migration/request-live-migration-basics-portal.png" alt-text="Screenshot: Anfordern einer Live Migration: Registerkarte Grundlagen":::
+
+1. Wählen Sie **Weiter** aus. Auf der Registerkarte **Lösungen** können Sie die Berechtigung ihrer Speicherkonten für die Migration überprüfen.
+1. Wählen Sie **Weiter** aus. Wenn Sie mehr als ein Speicherkonto migrieren möchten, geben Sie auf der Registerkarte **Details** den Namen jedes Kontos getrennt durch ein Semikolon ein.
+
+    :::image type="content" source="media/redundancy-migration/request-live-migration-details-portal.png" alt-text="Screenshot: Anzeigen einer Live Migration: Registerkarte Grundlagen":::
+
+1. Füllen Sie die zusätzlichen erforderlichen Informationen auf der Registerkarte **Details** aus, und wählen Sie dann **überprüfen + erstellen** aus, um Ihr Supportticket zu prüfen und zu übermitteln. Ein Supportmitarbeiter wird sich mit Ihnen in Verbindung setzen, um Sie nach Bedarf und Wunsch unterstützen.
 
 > [!NOTE]
 > Premium-Dateifreigaben (FileStorage-Konten) sind nur für LRS und ZRS verfügbar.

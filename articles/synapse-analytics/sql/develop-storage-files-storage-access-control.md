@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 545331fdea56aef3d7b9dac8062d4fc2d6891254
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501566"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552953"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -36,11 +36,11 @@ Ein bei einem serverlosen SQL-Pool angemeldeter Benutzer muss für den Zugriff a
 Die **Benutzeridentität** (auch „Azure AD-Passthrough“ genannt) ist ein Autorisierungstyp, bei dem die Identität des bei einem serverlosen SQL-Pool angemeldeten Azure AD-Benutzers verwendet wird, um den Datenzugriff zu autorisieren. Vor dem Zugriff auf die Daten muss der Azure Storage-Administrator dem Azure AD-Benutzer die erforderlichen Berechtigungen erteilen. Wie Sie der Tabelle unten entnehmen können, wird diese Art der Autorisierung für den Typ „SQL-Benutzer“ nicht unterstützt.
 
 > [!IMPORTANT]
-> Sie müssen über eine Rolle als Besitzer, Mitwirkender oder Leser für Storage-Blobdaten verfügen, um mithilfe Ihrer Identität auf die Daten zugreifen zu können.
-> Auch wenn Sie Besitzer eines Speicherkontos sind, müssen Sie sich selbst zu einer der Rollen für den Zugriff auf Storage-Blobdaten hinzufügen.
->
-> Weitere Informationen zur Zugriffssteuerung in Azure Data Lake Storage Gen2 finden Sie im Artikel [Zugriffssteuerung in Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md).
->
+> Das AAD-Authentifizierungstoken wird von den Client-Anwendungen möglicherweise zwischengespeichert. Beispielsweise speichert PowerBI das AAD-Token zwischen und verwendet genau dieses Token noch eine Stunde lang. Die Abfragen mit langer Laufzeit können fehlschlagen, wenn das Token während der Ausführung der Abfrage abläuft. Wenn durch ein während der Abfrage ablaufendes AAD-Zugriffstoken Abfragefehler auftreten, sollten Sie eine Umstellung auf [Verwaltete Identität](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) oder [Shared Access Signature](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types)in Erwägung ziehen.
+
+Sie müssen über eine Rolle als Besitzer, Mitwirkender oder Leser für Storage-Blobdaten verfügen, um mithilfe Ihrer Identität auf die Daten zugreifen zu können. Alternativ können Sie differenzierte ACL-Regeln für den Zugriff auf Dateien und Ordner angeben. Auch wenn Sie Besitzer eines Speicherkontos sind, müssen Sie sich selbst zu einer der Rollen für den Zugriff auf Storage-Blobdaten hinzufügen.
+Weitere Informationen zur Zugriffssteuerung in Azure Data Lake Storage Gen2 finden Sie im Artikel [Zugriffssteuerung in Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md).
+
 
 ### <a name="shared-access-signature"></a>[Shared Access Signature (SAS)](#tab/shared-access-signature)
 
@@ -54,6 +54,10 @@ Um ein SAS-Token abzurufen, navigieren Sie zu **Azure-Portal > Speicherkonto > S
 > SAS-Token: ?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
 Um Zugriff über ein SAS-Token zu ermöglichen, müssen Sie datenbankbezogene oder serverbezogene Anmeldeinformationen erstellen. 
+
+
+> [!IMPORTANT]
+> Sie haben mit dem SAS-Token keinen Zugriff auf private Speicherkonten. Ziehen Sie, um auf geschützten Speicher zuzugreifen, einen Wechsel zu Authentifizierung mit [Verwalteter Identität](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) oder [Azure AD Passthrough](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) im Betracht.
 
 ### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
 
@@ -100,6 +104,15 @@ Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann die **Benut
 #### <a name="user-identity"></a>Benutzeridentität
 
 Für den Zugriff auf den mit der Firewall geschützten Speicher über die Benutzeridentität können Sie das PowerShell-Modul „Az.Storage“ verwenden.
+#### <a name="configuration-via-azure-portal"></a>Konfiguration über das Azure-Portal
+
+1. Suchen Sie Ihr neues Speicherkonto im Azure-Portal.
+1. Wechseln Sie zu im Abschnitt „Einstellungen“ zu „Netzwerk“.
+1. Fügen Sie im Abschnitt „Ressourceninstanzen“ eine Ausnahme für Ihren Synapse-Arbeitsbereich hinzu.
+1. Wählen Sie „Microsoft.Synapse/workspaces“ als Ressourcentyp aus.
+1. Wählen Sie den Namen des Arbeitsbereichs als Instanznamen aus.
+1. Klicken Sie auf Speichern.
+
 #### <a name="configuration-via-powershell"></a>Konfiguration per PowerShell
 
 Führen Sie diese Schritte aus, um die Speicherkontofirewall zu konfigurieren und eine Ausnahme für den Synapse-Arbeitsbereich hinzuzufügen.

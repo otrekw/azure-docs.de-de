@@ -3,16 +3,16 @@ title: Pipelineausführung und Trigger in Azure Data Factory
 description: Dieser Artikel enthält Informationen zur Ausführung einer Pipeline in Azure Data Factory entweder bei Bedarf oder durch Erstellen eines Triggers.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: bd36b589424a0d890fc5e1bbab3f234e9b3264c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 271dbd87950018cebbd23841d32324afa42511e7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374778"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785800"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
 
@@ -323,13 +323,8 @@ Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt
 
 Weitere Informationen zu Triggern für ein rollierendes Fenster und Beispiele finden Sie unter [Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster](how-to-create-tumbling-window-trigger.md).
 
-## <a name="event-based-trigger"></a>Ereignisbasierter Trigger
-
-Ein ereignisbasierter Trigger führt Pipelines als Reaktion auf ein Ereignis (etwa den Eingang einer Datei oder die Löschung einer Datei) in Azure Blob Storage aus.
-
-Weitere Informationen zum ereignisbasierten Trigger finden Sie unter [Create a trigger that runs a pipeline in response to an event](how-to-create-event-trigger.md) (Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt).
-
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Beispiele für Wiederholungszeitpläne von Triggern
+
 Dieser Abschnitt enthält Beispiele für Wiederholungszeitpläne. Der Schwerpunkt liegt auf dem **schedule**-Objekt und seinen Elementen.
 
 In den Beispielen wird angenommen, dass der **interval**-Wert „1“ festgelegt ist, und der **frequency**-Wert gemäß der Zeitplandefinition richtig ist. Beispielsweise können nicht gleichzeitig der **frequency**-Wert „day“ und die Änderung **monthDays** im **schedule**-Objekt angegeben werden. Diese Arten von Beschränkungen sind in der Tabelle im vorherigen Abschnitt beschrieben.
@@ -364,6 +359,7 @@ In den Beispielen wird angenommen, dass der **interval**-Wert „1“ festgelegt
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Ausführung um 05:15, 05:45, 17:15 und 17:45 Uhr am dritten Mittwoch jedes Monats. |
 
 ## <a name="trigger-type-comparison"></a>Vergleich von Triggertypen
+
 Der Trigger für ein rollierendes Fenster und der Zeitplantrigger basieren jeweils auf Zeit-Heartbeats. Inwiefern unterscheiden sie sich?
 
 > [!NOTE]
@@ -380,7 +376,17 @@ In der folgenden Tabelle werden der Trigger für ein rollierendes Fenster und de
 | **Systemvariablen** | Neben @trigger().scheduledTime und @trigger().startTime wird auch die Verwendung der Systemvariablen **WindowStart** und **WindowEnd** unterstützt. Benutzer haben Zugriff auf `trigger().outputs.windowStartTime` und `trigger().outputs.windowEndTime` als Systemvariablen in der Triggerdefinition. Die Werte werden jeweils als Start- und Endzeit des Fensters verwendet. Beispiel: Die Definition eines stündlich ausgeführten Triggers für ein rollierendes Fenster lautet für das Fenster von 1:00 Uhr bis 2:00 Uhr `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` und `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z`. | Es werden nur die Standardvariablen @trigger().scheduledTime und @trigger().startTime unterstützt. |
 | **Beziehung zwischen Pipeline und Trigger** | Unterstützt eine 1:1-Beziehung. Nur eine Pipeline kann ausgelöst werden. | Unterstützt m:m-Beziehungen. Mehrere Trigger können eine einzelne Pipeline starten. Ein einzelnder Trigger kann mehrere Pipelines starten. |
 
+## <a name="event-based-trigger"></a>Ereignisbasierter Trigger
+
+Ein ereignisbasierter Auslöser führt Pipelines als Reaktion auf ein Ereignis aus. Es gibt zwei Arten von ereignisbasierten Triggern.
+
+* Ein _Speicherereignisauslöser_ führt eine Pipeline bei Ereignissen aus, die in einem Speicherkonto auftreten, z. B. das Eintreffen einer Datei oder das Löschen einer Datei im Azure Blob Storage-Konto.
+* Ein _Auslöser für benutzerdefinierte Ereignisse_ verarbeitet und behandelt [benutzerdefinierte Themen](../event-grid/custom-topics.md) in Event Grid.
+
+Weitere Informationen zu ereignisbasierten Auslösern finden Sie unter [Speicherereignis auslöser](how-to-create-event-trigger.md) und [Auslöser für benutzerdefinierte Ereignisse](how-to-create-custom-event-trigger.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 Arbeiten Sie die folgenden Tutorials durch:
 
 - [Schnellstart: Erstellen einer Data Factory mit dem .NET SDK](quickstart-create-data-factory-dot-net.md)

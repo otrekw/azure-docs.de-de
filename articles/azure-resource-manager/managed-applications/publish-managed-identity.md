@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82508127"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Verwaltete Azure-Anwendung mit verwalteter Identität
@@ -46,7 +46,7 @@ Für die Erstellung einer verwalteten Anwendung mit einer verwalteten Identität
 }
 ```
 
-Es gibt zwei gängige Möglichkeiten zum Erstellen einer verwalteten Anwendung mit **identity**: [CreateUIDefinition.json](./create-uidefinition-overview.md) und [Azure Resource Manager-Vorlagen](../templates/template-syntax.md). Für einfache Einzelerstellungsszenarien sollte CreateUIDefinition zum Aktivieren der verwalteten Identität verwendet werden, da es eine umfangreichere Benutzeroberfläche bereitstellt. Beim Umgang mit erweiterten oder komplexen Systemen, die automatisierte oder mehrere Bereitstellungen von verwalteten Anwendungen erfordern, können allerdings Vorlagen verwendet werden.
+Es gibt zwei gängige Möglichkeiten, eine verwaltete Anwendung mit **Identität** zu erstellen: [CreateUIDefinition.json](./create-uidefinition-overview.md) und [Azure Resource Manager-Vorlagen](../templates/template-syntax.md). Für einfache Einzelerstellungsszenarien sollte CreateUIDefinition zum Aktivieren der verwalteten Identität verwendet werden, da es eine umfangreichere Benutzeroberfläche bereitstellt. Beim Umgang mit erweiterten oder komplexen Systemen, die automatisierte oder mehrere Bereitstellungen von verwalteten Anwendungen erfordern, können allerdings Vorlagen verwendet werden.
 
 ### <a name="using-createuidefinition"></a>Verwenden von CreateUIDefinition
 

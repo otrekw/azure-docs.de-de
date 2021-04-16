@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88934870"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData-Vergleichsoperatoren in der kognitiven Azure-Suche: `eq`, `ne`, `gt`, `lt`, `ge` und `le`
@@ -33,7 +33,7 @@ Der grundlegendste Vorgang in einem [OData-Filterausdruck](query-odata-filter-or
 Gleichheitsoperatoren:
 
 - `eq`: Testet, ob ein Feld **gleich** einem konstanten Wert ist.
-- `ne`: Testet, ob ein Feld **nicht gleich** einem konstanten Wert ist.
+- `ne`: Testet, ob ein Feld **ungleich** einem konstanten Wert ist.
 
 Bereichsoperatoren:
 
@@ -89,7 +89,7 @@ Die Datentypen auf beiden Seiten eines Vergleichsoperators müssen kompatibel se
 | `Edm.Int32` | `Edm.Int64` | – |
 | `Edm.Int32` | `Edm.Int32` | – |
 
-Für Vergleiche, die unzulässig sind (z. B. Vergleich eines Felds vom Typ `Edm.Int64` mit `NaN`), gibt die REST-API der kognitiven Azure-Suche den Fehler „HTTP 400: Ungültige Anforderung“ aus.
+Für Vergleiche, die unzulässig sind (z. B. Vergleich eines Felds vom Typ `Edm.Int64` mit `NaN`), gibt die REST-API von Azure Cognitive Search die Fehlermeldung „HTTP 400: Ungültige Anforderung“ zurück.
 
 > [!IMPORTANT]
 > Auch wenn numerische Typvergleiche flexibel sind, wird dringend empfohlen, Vergleiche in Filtern zu schreiben, sodass der konstante Wert vom gleichen Datentyp ist wie die Variable oder Funktion, mit der er verglichen wird. Dies ist besonders wichtig beim Mischen von Gleitkomma- und Integerwerten, bei denen implizite Konvertierungen möglich sind, die zu einem Genauigkeitsverlust führen.
@@ -102,10 +102,10 @@ Bei der Verwendung von Vergleichsoperatoren muss berücksichtigt werden, dass al
 
 | Operator | Ergebnis, wenn nur das Feld oder die Variable `null` ist | Ergebnis, wenn nur die Konstante `null` ist | Ergebnis, wenn sowohl das Feld oder die Variable als auch die Konstante `null` sind |
 | --- | --- | --- | --- |
-| `gt` | `false` | Fehler HTTP 400: Ungültige Anforderung | Fehler HTTP 400: Ungültige Anforderung |
-| `lt` | `false` | Fehler HTTP 400: Ungültige Anforderung | Fehler HTTP 400: Ungültige Anforderung |
-| `ge` | `false` | Fehler HTTP 400: Ungültige Anforderung | Fehler HTTP 400: Ungültige Anforderung |
-| `le` | `false` | Fehler HTTP 400: Ungültige Anforderung | Fehler HTTP 400: Ungültige Anforderung |
+| `gt` | `false` | HTTP 400: Ungültige Anforderung | HTTP 400: Ungültige Anforderung |
+| `lt` | `false` | HTTP 400: Ungültige Anforderung | HTTP 400: Ungültige Anforderung |
+| `ge` | `false` | HTTP 400: Ungültige Anforderung | HTTP 400: Ungültige Anforderung |
+| `le` | `false` | HTTP 400: Ungültige Anforderung | HTTP 400: Ungültige Anforderung |
 | `eq` | `false` | `false` | `true` |
 | `ne` | `true` | `true` | `false` |
 

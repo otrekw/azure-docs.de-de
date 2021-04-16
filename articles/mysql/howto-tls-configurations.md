@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 290752c0e577e6c2cd58d83f77fea8a5406388e4
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 5ecf2992fa9ea56f73748a9f1f98c75f9076c68f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240629"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104656888"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>Konfigurieren von TLS-Einstellungen in Azure Database for MySQL mit dem Azure-Portal
 
@@ -31,15 +31,15 @@ Befolgen Sie diese Schritte, um die TLS-Mindestversion des MySQL-Servers festzul
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren vorhandenen Azure Database for MySQL-Server aus.
 
-1. Klicken Sie auf der Seite des MySQL-Servers unter **Einstellungen** auf **Verbindungssicherheit** , um die Seite zur Konfiguration der Verbindungssicherheit zu öffnen.
+1. Klicken Sie auf der Seite des MySQL-Servers unter **Einstellungen** auf **Verbindungssicherheit**, um die Seite zur Konfiguration der Verbindungssicherheit zu öffnen.
 
 1. Wählen Sie in **TLS-Mindestversion** die Option **1.2** aus, um Verbindungen mit TLS-Versionen unter TLS 1.2 für Ihren MySQL-Server zurückzuweisen.
 
     :::image type="content" source="./media/howto-tls-configurations/setting-tls-value.png" alt-text="TLS-Konfiguration für Azure Database for MySQL":::
 
-1. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
+1. Klicken Sie zum Speichern der Änderungen auf **Speichern**. 
 
-1. Eine Benachrichtigung bestätigt, dass die Verbindungssicherheitseinstellung erfolgreich aktiviert wurde.
+1. Eine Benachrichtigung bestätigt, dass die Verbindungssicherheitseinstellung erfolgreich aktiviert und sofort wirksam wurde. Es ist **kein Neustart** des Servers erforderlich, und es wird kein Neustart ausgeführt. Nachdem die Änderungen gespeichert wurden, werden neue Verbindungen mit dem Server nur akzeptiert, wenn die TLS-Version höher als die im Portal festgelegte Mindestversion von TLS ist oder mit dieser übereinstimmt.
 
     :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="TLS-Konfigurationserfolg für Azure Database for MySQL":::
 

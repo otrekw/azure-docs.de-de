@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96860931"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
@@ -55,20 +55,20 @@ Verwenden Sie das folgende Beispiel, um ein Gruppenrichtlinienobjekt (Group Poli
 
 1. Öffnen Sie eine Gruppenrichtlinien-Verwaltungskonsole, und erstellen Sie ein neues Gruppenrichtlinienobjekt in Ihrer Domäne.
    1. Geben Sie Ihrem neu erstellten Gruppenrichtlinienobjekt einen Namen (beispielsweise „ClientSideSCP“).
-1. Bearbeiten Sie das Gruppenrichtlinienobjekt, und suchen Sie nach dem folgenden Pfad: **Computerkonfiguration** > **Voreinstellungen** > **Windows-Einstellungen** > **Registrierung**
+1. Bearbeiten Sie das Gruppenrichtlinienobjekt, und suchen Sie den folgenden Pfad: **Computerkonfiguration** > **Einstellungen** > **Windows-Einstellungen** > **Registrierung**
 1. Klicken Sie mit der rechten Maustaste auf die Registrierung, und wählen Sie **Neu** > **Registrierungselement** aus.
    1. Konfigurieren Sie auf der Seite **Allgemein** Folgendes:
       1. Aktion: **Aktualisieren**
-      1. Hive: **HKEY_LOCAL_MACHINE**
+      1. Struktur: **HKEY_LOCAL_MACHINE**
       1. Schlüsselpfad: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Wertname: **TenantId**
       1. Werttyp: **REG_SZ**
-      1. Wertdaten: Die GUID oder **Verzeichnis-ID** Ihrer Azure AD-Instanz. (Dieser Wert befindet sich unter **Azure-Portal** > **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID**.)
+      1. Wertdaten: Die GUID oder **Verzeichnis-ID** Ihrer Azure AD-Instanz. (Sie finden diesen Wert unter **Azure-Portal** > **Azure Active Directory** > **Eigenschaften** > **Verzeichnis-ID**.)
    1. Klicken Sie auf **OK**
 1. Klicken Sie mit der rechten Maustaste auf die Registrierung, und wählen Sie **Neu** > **Registrierungselement** aus.
    1. Konfigurieren Sie auf der Seite **Allgemein** Folgendes:
       1. Aktion: **Aktualisieren**
-      1. Hive: **HKEY_LOCAL_MACHINE**
+      1. Struktur: **HKEY_LOCAL_MACHINE**
       1. Schlüsselpfad: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Wertname: **TenantName**
       1. Werttyp: **REG_SZ**
@@ -102,4 +102,4 @@ Nachdem Sie sich vergewissert haben, dass alles wie erwartet funktioniert, könn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Planen der Implementierung von Azure Active Directory (Azure AD) Hybrid Join](hybrid-azuread-join-plan.md)
+[Planen der Implementierung Ihrer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md)

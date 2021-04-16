@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74157671"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Leitfaden zur Leistung für Azure SignalR Service
@@ -127,7 +127,7 @@ Jeder Tarif hat seine eigene maximale ein- und ausgehende Bandbreite. Eine einwa
 | Ausgehende Bandbreite | 2 MBit/s   | 4 MBit/s   | 10 MBit/s  | 20 MBit/s   | 40 MBit/s   | 100 MBit/s  | 200 MBit/s   |
 
 
-|     Broadcast             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|     Übertragen             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Verbindungen               | 1\.000 | 2\.000 | 5\.000  | 10.000 | 20.000 | 50.000  | 100.000 |
 | Eingehende Bandbreite  | 4 KBit/s   | 4 KBit/s   | 4 KBit/s    | 4 KBit/s    | 4 KBit/s    | 4 KBit/s     | 4 KBit/s    |
@@ -147,7 +147,7 @@ Jeder Tarif hat seine eigene maximale ein- und ausgehende Bandbreite. Eine einwa
 
 - *sendInterval*: Die Zeit zum Senden einer Nachricht. Normalerweise entspricht dies eine Sekunde pro Nachricht, also wird jede Sekunde eine Nachricht gesendet. Ein kleineres Intervall bedeutet, dass mehr Nachrichten in einem Zeitraum gesendet werden. So bedeutet z. B. ein Wert von 0,5 Sekunden pro Nachricht, dass zwei Nachrichten pro Sekunde gesendet werden.
 
-- *Verbindungen*: Der committete maximale Schwellenwert für den Azure SignalR Service für die einzelnen Tarife. Bei einer weiteren Erhöhung der Verbindungsanzahl kommt es zu einer Verbindungsdrosselung.
+- *Connections*: Der committete maximale Schwellenwert für den Azure SignalR Service für die einzelnen Tarife. Bei einer weiteren Erhöhung der Verbindungsanzahl kommt es zu einer Verbindungsdrosselung.
 
 #### <a name="evaluation-for-complex-use-cases"></a>Auswertung für komplexe Anwendungsfälle
 
@@ -157,7 +157,7 @@ Der tatsächliche Anwendungsfall ist komplizierter. Es wird möglicherweise eine
 
 Die folgende Tabelle zeigt einen realen Anwendungsfall von **Broadcast**. Aber die Nachrichtengröße, die Verbindungsanzahl und die Rate beim Senden der Nachrichten unterscheiden sich von dem, was wir im vorherigen Abschnitt angenommen haben. Die Frage ist, wie wir jedes dieser Elemente (Nachrichtengröße, Verbindungsanzahl oder Nachrichtensendungsrate) ableiten können, wenn nur zwei von ihnen bekannt sind.
 
-| Broadcast  | Nachrichtengröße | Eingehende Nachrichten pro Sekunde | Verbindungen | Sendeintervalle |
+| Übertragen  | Nachrichtengröße | Eingehende Nachrichten pro Sekunde | Verbindungen | Sendeintervalle |
 |---|---------------------|--------------------------|-------------|-------------------------|
 | 1 | 20 KB                | 1                        | 100.000     | 5 Sekunden                      |
 | 2 | 256 KB               | 1                        | 8\.000       | 5 Sekunden                      |
@@ -237,7 +237,7 @@ Selbst für diesen einfachen Hub ist der Datenverkehrsdruck auf dem App-Server m
 > [!NOTE]
 > Die Anzahl der Clientverbindungen, die Nachrichtengröße, die Nachrichtensendungsrate, der SKU-Tarif und CPU/Arbeitsspeicher des App-Servers wirken sich auf die Gesamtleistung von **Echo** aus.
 
-#### <a name="broadcast"></a>Broadcast
+#### <a name="broadcast"></a>Übertragen
 
 Bei **Broadcast** sendet die Web-App, wenn sie die Nachricht empfängt, an alle Clients. Je mehr Clients zu übertragen sind, desto mehr Nachrichtendatenverkehr entsteht zu allen Clients. Sehen Sie sich das folgende Diagramm an.
 
@@ -247,7 +247,7 @@ Eine geringe Anzahl von Clients sendet Nachrichten. Die Bandbreite für eingehen
 
 Die folgende Tabelle fasst die maximalen Clientverbindungen, die Anzahl der eingehenden/ausgehenden Nachrichten und die Bandbreite zusammen.
 
-|     Broadcast             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|     Übertragen             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Verbindungen               | 1\.000 | 2\.000 | 5\.000  | 10.000 | 20.000 | 50.000  | 100.000 |
 | Eingehende Nachrichten pro Sekunde  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
@@ -257,7 +257,7 @@ Die folgende Tabelle fasst die maximalen Clientverbindungen, die Anzahl der eing
 
 Es gibt nicht mehr als vier übertragende Clients, die Nachrichten posten. Sie benötigen im Vergleich zu **Echo** weniger App-Server, da die Anzahl der eingehenden Nachrichten gering ist. Zwei App-Server genügen sowohl für SLA- als auch für Leistungsüberlegungen. Sie sollten jedoch die Standardserververbindungen erhöhen, um ein Ungleichgewicht zu vermeiden, insbesondere bei Unit50 und Unit100.
 
-|   Broadcast      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|   Übertragen      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Verbindungen      | 1\.000 | 2\.000 | 5\.000 | 10.000 | 20.000 | 50.000 | 100.000 |
 | Anzahl der App-Server | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
@@ -374,7 +374,7 @@ Die folgende Tabelle enthält die vorgeschlagene Anzahl der Web-Apps für ASP.NE
 
 Die folgende Tabelle enthält die vorgeschlagene Anzahl der Web-Apps für ASP.NET SignalR **Broadcast**.
 
-|  Broadcast       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|  Übertragen       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Verbindungen      | 1\.000 | 2\.000 | 5\.000 | 10.000 | 20.000 | 50.000 | 100.000 |
 | Anzahl der App-Server | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
@@ -409,8 +409,8 @@ Der Benchmark weist allen Clients Benutzernamen zu, bevor sie beginnen, eine Ver
 |   Über die REST-API an Benutzer senden | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Verbindungen               | 1\.000 | 2\.000 | 5\.000  | 10.000 | 20.000 | 50.000  | 100.000 |
-| Eingehende Nachrichten pro Sekunde  | 300   | 600   | 900    | 1\.300  | 2\.000  | 10.000  | 18.000  |
-| Ausgehende Nachrichten pro Sekunde | 300   | 600   | 900    | 1\.300  | 2\.000  | 10.000  | 18.000 |
+| Eingehende Nachrichten pro Sekunde  | 300   | 600   | 900    | 1.300  | 2\.000  | 10.000  | 18.000  |
+| Ausgehende Nachrichten pro Sekunde | 300   | 600   | 900    | 1.300  | 2\.000  | 10.000  | 18.000 |
 | Eingehende Bandbreite  | 600 KBit/s  | 1,2 MBit/s  | 1,8 MBit/s   | 2,6 MBit/s   | 4 MBit/s     | 10 MBit/s     | 36 MBit/s    |
 | Ausgehende Bandbreite | 600 KBit/s  | 1,2 MBit/s  | 1,8 MBit/s   | 2,6 MBit/s   | 4 MBit/s     | 10 MBit/s     | 36 MBit/s    |
 
@@ -418,9 +418,9 @@ Der Benchmark weist allen Clients Benutzernamen zu, bevor sie beginnen, eine Ver
 
 Für alle zuvor aufgeführten Anwendungsfälle haben wir die Leistungstests in einer Azure-Umgebung durchgeführt. Wir haben höchstens 50 Client-VMs und 20 App-Server-VMs verwendet. Hier sind einige Details:
 
-- Größe der Client-VM: StandardDS2V2 (2 vCPUs, 7G Arbeitsspeicher)
+- Größe der Client-VM: StandardDS2V2 (2 vCPUs, 7 G Arbeitsspeicher)
 
-- Größe der App-Server-VM: StandardF4sV2 (4 vCPUs, 8G Arbeitsspeicher)
+- Größe der App-Server-VM: StandardF4sV2 (4 vCPUs, 8 G Arbeitsspeicher)
 
 - Azure SignalR-SDK-Serververbindungen: 15
 

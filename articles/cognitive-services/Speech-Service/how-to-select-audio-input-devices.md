@@ -12,13 +12,13 @@ ms.date: 07/05/2019
 ms.author: chlandsi
 ms.custom: devx-track-js
 ms.openlocfilehash: 48316d571eac835dd5d4ec7d225048f4fdcdf237
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95026606"
 ---
-# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Gewusst wie: Auswählen eines Audioeingabegeräts mit dem Speech SDK
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Auswählen eines Audioeingabegeräts mit dem Speech SDK
 
 In Version 1.3.0 des Speech SDK wird eine API zum Auswählen der Audioeingabe eingeführt. In diesem Artikel erfahren Sie, wie Sie die IDs der mit einem System verbundenen Audiogeräte abrufen. Diese können dann im Speech SDK verwendet werden, indem Sie das Audiogerät über das Objekt `AudioConfig` konfigurieren:
 
@@ -390,7 +390,7 @@ In JavaScript kann die Methode [MediaDevices.enumerateDevices()](https://develop
 > [!div class="nextstepaction"]
 > [Erkunden unserer Beispiele auf GitHub](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](./how-to-custom-speech-train-model.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](./how-to-custom-speech-train-model.md)

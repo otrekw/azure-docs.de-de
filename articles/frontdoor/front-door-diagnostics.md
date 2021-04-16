@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 58db217ca173acbe0356596de916216c4ab7f241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a972123604cafbfc4c6753c1fe3ad21147b53b2d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715546"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550658"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Überwachung von Metriken und Protokollen in Azure Front Door
 
@@ -71,7 +71,7 @@ So konfigurieren Sie Diagnoseprotokolle für Ihre Front Door-Instanz
 
 3. Wählen Sie **Diagnose aktivieren**. Archivieren Sie Diagnoseprotokolle zusammen mit Metriken in einem Speicherkonto, streamen Sie sie an einen Event Hub, oder senden Sie sie an Azure Monitor-Protokolle.
 
-Front Door stellt derzeit Diagnoseprotokolle bereit (stündlicher Batch). Diagnoseprotokolle enthalten einzelne API-Anforderungen, wobei jeder Eintrag folgendem Schema entspricht:
+Front Door stellt derzeit Diagnoseprotokolle bereit. Diagnoseprotokolle enthalten einzelne API-Anforderungen, wobei jeder Eintrag folgendem Schema entspricht:
 
 | Eigenschaft  | BESCHREIBUNG |
 | ------------- | ------------- |

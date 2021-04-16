@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305695"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
@@ -28,9 +28,9 @@ Die [Anomaly Detection-API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-
 
 Diese API kann die folgenden Arten anomaler Muster in Zeitreihendaten erkennen:
 
-* **Positive und negative Trends** : Bei der Überwachung der Arbeitsspeichernutzung kann ein Aufwärtstrend in Bezug auf das Computing interessant sein, da dies ein Hinweis auf einen Speicherverlust sein kann.
-* **Änderungen in den dynamischen Wertebereich** : Bei der Überwachung der durch einen Clouddienst ausgelösten Ausnahmen können Änderungen im dynamischen Wertebereich z.B. auf eine Instabilität der Dienstintegrität hinweisen.
-* **Spitzen und Abfälle** : Beim Überwachen der Anzahl von fehlerhaften Anmeldeversuchen bei einem Dienst oder der Anzahl von Auscheckvorgängen in einer E-Commerce-Website könnten Spitzen oder Abfälle z.B. auf anormales Verhalten hinweisen.
+* **Positive und negative Trends**: Bei der Überwachung der Arbeitsspeichernutzung kann ein Aufwärtstrend in Bezug auf das Computing interessant sein, da dies ein Hinweis auf einen Speicherverlust sein kann.
+* **Änderungen im dynamischen Wertebereich**: Bei der Überwachung der durch einen Clouddienst ausgelösten Ausnahmen können Änderungen im dynamischen Wertebereich z.B. auf eine Instabilität der Dienstintegrität hinweisen.
+* **Spitzen und Abfälle**: Beim Überwachen der Anzahl von fehlerhaften Anmeldeversuchen bei einem Dienst oder der Anzahl von Auscheckvorgängen in einer E-Commerce-Website könnten Spitzen oder Abfälle z.B. auf anormales Verhalten hinweisen.
 
 Diese Machine Learning-Erkennungselemente verfolgen diese Art von Wertänderungen in Abhängigkeit der Zeit und melden fortlaufende Änderungen der Werte als Anomaliebewertungen. Sie benötigen keine Ad-hoc-Schwellenwertanpassung, und ihre Bewertungen können verwendet werden, um falsch positive Raten zu steuern. Die Anomaly Detection-API ist beispielsweise in den folgenden Szenarios nützlich: Dienstüberwachung durch Nachverfolgen von KPIs in Abhängigkeit der Zeit, Nutzungsüberwachung anhand von Metriken wie der Anzahl von Suchvorgängen oder der Anzahl von Klicks, Leistungsüberwachung anhand von Indikatoren wie Arbeitsspeicher, CPU, Dateilesevorgänge usw. in Abhängigkeit der Zeit.
 
@@ -39,7 +39,7 @@ Das Anomaly Detection-Angebot verfügt über nützliche Tools für die ersten Sc
 * Mit der [Webanwendung](https://anomalydetection-aml.azurewebsites.net/) können Sie die Ergebnisse von Anomaly Detection-APIs für Ihre Daten auswerten und visualisieren.
 
 > [!NOTE]
-> Probieren Sie die **IT Anomaly Insights-Lösung** , die von [dieser API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) unterstützt wird.
+> Probieren Sie die **IT Anomaly Insights-Lösung**, die von [dieser API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) unterstützt wird.
 >
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
@@ -117,10 +117,10 @@ Die Anomaly Detection-API unterstützt Erkennungsmodule in drei allgemeinen Kate
 
 | Kategorie des Erkennungsmoduls | Erkennungsmodul | BESCHREIBUNG | Eingabeparameter | Ausgaben |
 | --- | --- | --- | --- | --- |
-| Spitzenerkennungsmodule |TSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Werte vom ersten und dritten Quartil |*tspikedetector.Sensitivity:* nimmt einen Integerwert im Bereich von 1 bis 10 an, Standardwert: 3. Höhere Werte erfassen extremere Werte und führen zu weniger Empfindlichkeit. |TSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
-| Spitzenerkennungsmodule | ZSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Datenpunkte von ihrem Mittelwert |*zspikedetector.Sensitivity:* nimmt einen Integerwert im Bereich von 1 bis 10 an, Standardwert: 3. Höhere Werte erfassen extremere Werte und führen zu weniger Empfindlichkeit. |ZSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
-| Erkennungsmodul für langsame Trends |Erkennungsmodul für langsame Trends |Erkennen von langsamen positiven Trends anhand der festgelegten Empfindlichkeit |*trenddetector.Sensitivity:* Schwellenwert für den Erkennungswert (Standardwert: 3,25. 3,25 bis 5 ist ein geeigneter Bereich für die Auswahl. Je höher der Wert ist, desto geringer ist die Empfindlichkeit). |tscore: Gleitzahl, die für die Anomaliebewertung des Trends steht. |
-| Erkennungsmodule für Pegeländerungen | Erkennungsmodul für bidirektionale Pegeländerungen |Erkennen von Pegeländerungen in Aufwärts- und Abwärtsrichtung anhand der festgelegten Empfindlichkeit |*bileveldetector.Sensitivity:* Schwellenwert für den Erkennungswert (Standardwert: 3,25. 3,25 bis 5 ist ein geeigneter Bereich für die Auswahl. Je höher der Wert ist, desto geringer ist die Empfindlichkeit). |rpscore: Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärts- und Abwärtsrichtung steht. |
+| Spitzenerkennungsmodule |TSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Werte vom ersten und dritten Quartil |*tspikedetector.sensitivity:* Verwendet einen Ganzzahlwert im Bereich 1-10, Standard: 3. Mit höheren Werten werden Extremwerte erfasst, wodurch die Empfindlichkeit abnimmt. |TSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
+| Spitzenerkennungsmodule | ZSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Datenpunkte von ihrem Mittelwert |*zspikedetector.sensitivity:* Verwendet einen Ganzzahlwert im Bereich 1-10, Standard: 3. Mit höheren Werten werden Extremwerte erfasst, wodurch die Empfindlichkeit abnimmt. |ZSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
+| Erkennungsmodul für langsame Trends |Erkennungsmodul für langsame Trends |Erkennen von langsamen positiven Trends anhand der festgelegten Empfindlichkeit |*trenddetector.sensitivity*: Schwellenwert der Erkennungsmodulbewertung (Standard: 3,25. 3,25 – 5 ist ein geeigneter Bereich; je höher der Wert, desto geringer die Empfindlichkeit) |tscore: Gleitzahl, die für die Anomaliebewertung des Trends steht. |
+| Erkennungsmodule für Pegeländerungen | Erkennungsmodul für bidirektionale Pegeländerungen |Erkennen von Pegeländerungen in Aufwärts- und Abwärtsrichtung anhand der festgelegten Empfindlichkeit |*bileveldetector.sensitivity*: Schwellenwert der Erkennungsmodulbewertung (Standard: 3,25. 3,25 – 5 ist ein geeigneter Bereich; je höher der Wert, desto geringer die Empfindlichkeit) |rpscore: Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärts- und Abwärtsrichtung steht. |
 
 ### <a name="parameters"></a>Parameter
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:
@@ -135,7 +135,7 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |– |
 
-### <a name="output"></a>Output
+### <a name="output"></a>Ausgabe
 Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt.
 
 | Ausgaben | BESCHREIBUNG |
@@ -178,7 +178,7 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | seasonality.transform |Gibt an, ob saisonale (und) Trendkomponenten entfernt werden sollen, bevor die Anomalieerkennung angewendet wird. |deseason |enumerated |none, deseason, deseasontrend |– |
 | postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |– |
 
-### <a name="output"></a>Output
+### <a name="output"></a>Ausgabe
 Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt.
 
 | Ausgaben | BESCHREIBUNG |

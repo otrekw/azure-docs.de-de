@@ -2,23 +2,18 @@
 title: 'Skalieren reservierter Einheiten für Medien: CLI'
 description: In diesem Thema wird gezeigt, wie Sie die CLI zum Skalieren der Medienverarbeitung mit Azure Media Services verwenden.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: a07c4a20b854e09daf3b320b8c99757ca99b2578
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c5fa3aa8397ea6e13500717f035c414af8de8e3d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213809"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121675"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>Skalieren reservierter Einheiten für Medien
 
@@ -26,9 +21,12 @@ ms.locfileid: "102213809"
 
 In diesem Artikel erfahren Sie, wie Sie reservierte Einheiten für Medien für eine schnellere Codierung skalieren.
 
+> [!WARNING]
+> Dieser Befehl funktioniert nicht mehr für Media Services-Konten, die mit der API-Version 2020-05-01 oder höher erstellt werden. Für diese Konten sind keine reservierten Einheiten für Medien mehr erforderlich, da das System je nach Auslastung automatisch zentral hoch- und herunterskaliert wird. Wenn die Option zum Verwalten von reservierten Einheiten für Medien im Azure-Portal nicht angezeigt wird, bedeutet dies, dass Sie ein Konto verwenden, das mit einer API ab Version 2020-05-01 erstellt wurde.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)
+[Erstellen Sie ein Media Services-Konto.](./account-create-how-to.md)
 
 Grundkenntnisse über [reservierte Einheiten für Medien](concept-media-reserved-units.md)
 
@@ -48,8 +46,8 @@ Die Abrechnung erfolgt nach der Anzahl der Minuten, in denen die reservierten Ei
 
 ## <a name="next-step"></a>Nächster Schritt
 
-[Analysieren von Videos](analyze-videos-tutorial-with-api.md)
+[Analysieren von Videos](analyze-videos-tutorial.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Kontingente und Grenzwerte](limits-quotas-constraints.md)
+* [Kontingente und Grenzwerte](limits-quotas-constraints-reference.md)

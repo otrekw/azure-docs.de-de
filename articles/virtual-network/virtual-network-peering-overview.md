@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1356c896abff8c525df283251240d027123405fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216749"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778288"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -25,8 +25,8 @@ Durch das Peering virtueller Netzwerke können mehrere [virtuelle Netzwerke](vir
 
 Azure unterstützt die folgenden Arten von Peering:
 
-* Peering virtueller Netzwerke: Herstellen von Verbindungen zwischen virtuellen Netzwerken in derselben Azure-Region.
-* Globales Peering virtueller Netzwerke: Herstellen von Verbindungen zwischen virtuellen Netzwerken über Azure-Regionen hinweg.
+* **Peering virtueller Netzwerke**: Herstellen von Verbindungen zwischen virtuellen Netzwerken in derselben Azure-Region.
+* **Globales Peering virtueller Netzwerke**: Herstellen von Verbindungen zwischen virtuellen Netzwerken über Azure-Regionen hinweg.
 
 Die Verwendung von VNET-Peering (lokal oder global) bietet unter anderem folgende Vorteile:
 

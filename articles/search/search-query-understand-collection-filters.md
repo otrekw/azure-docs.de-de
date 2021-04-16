@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88932915"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche
@@ -149,7 +149,7 @@ Die Werte des Felds `seasons` werden in einer Struktur namens **invertierter Ind
 | fall | 1, 2 |
 | winter | 2, 3 |
 
-Diese Datenstruktur ist so konzipiert, dass sie eine Frage sehr schnell beantwortet: In welchen Dokumenten kommt ein bestimmter Begriff vor? Die Beantwortung dieser Frage funktioniert eher wie eine einfache Gleichheitsprüfung und nicht wie die Ausführung einer Schleife für eine Sammlung. Genau aus diesem Grund erlaubt die kognitive Azure-Suche für Zeichenfolgensammlungen nur `eq` als Vergleichsoperator innerhalb eines Lambdaausdrucks für `any`.
+Diese Datenstruktur dient der schnellen Beantwortung der Frage: In welchen Dokumenten ist ein bestimmter Begriff vorhanden? Die Beantwortung dieser Frage funktioniert eher wie eine einfache Gleichheitsprüfung und nicht wie die Ausführung einer Schleife für eine Sammlung. Genau aus diesem Grund erlaubt die kognitive Azure-Suche für Zeichenfolgensammlungen nur `eq` als Vergleichsoperator innerhalb eines Lambdaausdrucks für `any`.
 
 Aufbauend auf der Gleichheit untersuchen wir nun, wie es möglich ist, mehrere Gleichheitsüberprüfungen für die gleiche Bereichsvariable mit `or` zu kombinieren. Dies funktioniert dank Algebra und [der distributiven Eigenschaft von Quantifizierern](https://en.wikipedia.org/wiki/Existential_quantification#Negation). Der folgende Ausdruck:
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 03/08/2021
 ms.author: justinha
-ms.openlocfilehash: a89c898e150facc9860d86e18a7acc42f5e0f441
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5fa19e23767af0e121d07872970199a2a1705ea8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618857"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104951934"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Deaktivieren von schwachen Verschlüsselungen und der Kennworthashsynchronisierung zum Schützen einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -34,14 +34,25 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
-* Installieren und konfigurieren Sie Azure PowerShell.
-    * Führen Sie bei Bedarf die Anweisungen zum [Installieren des Azure PowerShell-Moduls und Verbinden mit Ihrem Azure-Abonnement](/powershell/azure/install-az-ps) aus.
-    * Stellen Sie sicher, dass Sie sich mit dem Cmdlet [Connect-AzAccount][Connect-AzAccount] bei Ihrem Azure-Abonnement anmelden.
-* Installieren und konfigurieren Sie Azure AD PowerShell.
-    * Führen Sie bei Bedarf die Anweisungen zum [Installieren des Azure AD PowerShell-Moduls und Verbinden mit Azure AD](/powershell/azure/active-directory/install-adv2) aus.
-    * Stellen Sie sicher, dass Sie sich mit dem Cmdlet [Connect-AzureAD][Connect-AzureAD] bei Ihrem Azure AD-Mandanten anmelden.
 
-## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Deaktivieren von schwachen Verschlüsselungen und der NTLM-Kennworthashsynchronisierung
+## <a name="use-security-settings-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Verwenden von Sicherheitseinstellungen zum Deaktivieren schwacher Verschlüsselungen und der NTLM-Kennworthashsynchronisierung
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach **Azure AD Domain Services**, und wählen Sie den Eintrag aus.
+1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
+1. Wählen Sie auf der linken Seite die Option **Sicherheitseinstellungen** aus.
+1. Klicken Sie bei den folgenden Einstellungen auf **Deaktivieren**:
+   - **Reiner TLS 1.2-Modus**
+   - **NTLM-Authentifizierung**
+   - **NTLM-Kennwortsynchronisierung aus lokaler Umgebung**
+
+   ![Screenshot der Sicherheitseinstellungen zum Deaktivieren schwacher Verschlüsselungen und der NTLM-Kennworthashsynchronisierung](media/secure-your-domain/security-settings.png)
+
+## <a name="use-powershell-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Verwenden von PowerShell zum Deaktivieren schwacher Verschlüsselungen und der NTLM-Kennworthashsynchronisierung
+
+Bei Bedarf [installieren und konfigurieren Sie Azure PowerShell](/powershell/azure/install-az-ps). Stellen Sie sicher, dass Sie sich mit dem Cmdlet [Connect-AzAccount][Connect-AzAccount] bei Ihrem Azure-Abonnement anmelden. 
+
+Bei Bedarf [installieren und konfigurieren Sie außerdem Azure AD PowerShell](/powershell/azure/active-directory/install-adv2). Stellen Sie sicher, dass Sie sich mit dem Cmdlet [Connect-AzureAD][Connect-AzureAD] bei Ihrem Azure AD-Mandanten anmelden.
 
 Wenn Sie schwache Verschlüsselungssammlungen und die NTLM-Kennworthashsynchronisierung deaktivieren möchten, melden Sie sich bei Ihrem Azure-Konto an, und rufen Sie dann mithilfe des Cmdlets [Get-AzResource][Get-AzResource] die Azure AD DS-Ressource ab:
 

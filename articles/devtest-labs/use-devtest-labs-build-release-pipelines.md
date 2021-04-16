@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Azure DevTest Labs in Build- und Releasepipel
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88080333"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Verwenden von DevTest Labs in Build- und Releasepipelines in Azure Pipelines
@@ -26,7 +26,7 @@ Nach dem erfolgreichen Erstellen des Builds verwendet die **Releasepipeline** di
 
 Eine der notwendigen Voraussetzungen besteht darin, dass alle zum Neuerstellen des getesteten Ökosystems erforderlichen Informationen innerhalb der Buildartefakte verfügbar sind, einschließlich der Konfiguration der Azure-Ressourcen. Da für die Verwendung von Azure-Ressourcen Kosten anfallen, möchten Unternehmen die Nutzung dieser Ressourcen kontrollieren oder nachverfolgen. In einigen Fällen können die zum Erstellen und Konfigurieren der Ressourcen verwendeten Azure Resource Manager-Vorlagen in einer anderen Abteilung verwaltet werden, beispielsweise der IT-Abteilung. Außerdem sind diese Vorlagen vielleicht in einem anderen Repository gespeichert. Dies kann zu dem interessanten Szenario führen, in dem ein Build erstellt und getestet wird und sowohl der Code als auch die Konfiguration innerhalb der Buildartefakte gespeichert werden müssen, damit das System in der Produktionsumgebung ordnungsgemäß neu erstellt wird. 
 
-Durch Verwendung von DevTest Labs in der Build- und Testphase können Sie den Buildquellen Azure Resource Manager-Vorlagen und Unterstützungsdateien hinzufügen, sodass während der Releasephase die genaue zum Testen verwendete Konfiguration auch in der Produktionsumgebung bereitgestellt wird. Mit der Aufgabe **Create Azure DevTest Labs Environment** (Azure DevTest Labs-Umgebung erstellen) mit der richtigen Konfiguration werden die Resource Manager-Vorlagen in den Buildartefakten gespeichert. In diesem Beispiel verwenden Sie den Code aus dem [Tutorial: Erstellen einer .NET Core- und SQL-Datenbank-Web-App in Azure App Service](../app-service/tutorial-dotnetcore-sqldb-app.md) zum Bereitstellen und Testen der Web-App in Azure.
+Durch Verwendung von DevTest Labs in der Build- und Testphase können Sie den Buildquellen Azure Resource Manager-Vorlagen und Unterstützungsdateien hinzufügen, sodass während der Releasephase die genaue zum Testen verwendete Konfiguration auch in der Produktionsumgebung bereitgestellt wird. Mit der Aufgabe **Create Azure DevTest Labs Environment** (Azure DevTest Labs-Umgebung erstellen) mit der richtigen Konfiguration werden die Resource Manager-Vorlagen in den Buildartefakten gespeichert. In diesem Beispiel verwenden Sie den Code aus dem [Tutorial: Erstellen einer .NET Core- und SQL-Datenbank-Web-App in Azure App Service](../app-service/tutorial-dotnetcore-sqldb-app.md), um die Web-App in Azure bereitzustellen und zu testen.
 
 ![Allgemeiner Ablauf](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
@@ -72,12 +72,12 @@ Mit der zweiten Aufgabe (Aufgabe **Azure DevTest Labs Populate Environment** (Az
 ![Aufgabe zum Auffüllen der Azure DevTest Labs-Umgebung](./media/use-devtest-labs-build-release-pipelines/populate-environment.png)
 
 ## <a name="app-service-deploy-task"></a>Aufgabe zur App Service-Bereitstellung
-Die dritte Aufgabe ist **Azure App Service-Bereitstellung**. Der App-Typ wird auf **Web-App** festgelegt und der App Service-Name auf **$(WebSite)** .
+Die dritte Aufgabe ist **Azure App Service-Bereitstellung**. Der App-Typ wird auf **Web-App** festgelegt und der App Service-Name auf **$(WebSite)**.
 
 ![Aufgabe zur App Service-Bereitstellung](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
 ## <a name="set-up-release-pipeline"></a>Einrichten der Releasepipeline
-Sie erstellen eine Releasepipeline mit zwei Aufgaben: **Azure-Bereitstellung: Ressourcengruppe erstellen oder aktualisieren** und **Azure App Service bereitstellen**. 
+Sie erstellen eine Releasepipeline mit zwei Aufgaben: **Azure-Bereitstellung: Erstellen oder Aktualisieren einer Ressourcengruppe** und **Bereitstellen von Azure App Service**. 
 
 Geben Sie für die erste Aufgabe den Namen und Speicherort der Ressourcengruppe an. Der Speicherort der Vorlage ist ein verknüpftes Artefakt. Wenn die Resource Manager-Vorlage verknüpfte Vorlagen enthält, muss eine benutzerdefinierte Ressourcengruppenbereitstellung implementiert werden. Die Vorlage befindet sich im veröffentlichten Ablageartefakt. Überschreiben Sie die Vorlagenparameter für die Resource Manager-Vorlage. Sie können die verbleibenden Einstellungen mit den Standardwerten beibehalten. 
 

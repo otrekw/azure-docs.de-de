@@ -4,12 +4,12 @@ description: Beispiele für die Verwendung des Azure Application Insights-ILogge
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 987d5b78c5fe680f43ff6a001e7a31a8ae9f6124
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e7d0bd6f7d93eac944e0d53a8e898463bf9887f9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931460"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592267"
 ---
 # <a name="applicationinsightsloggerprovider-for-microsoftextensionlogging"></a>ApplicationInsightsLoggerProvider für Microsoft.Extension.Logging
 
@@ -484,13 +484,13 @@ Die Application Insights-Erweiterung in Azure-Web-Apps verwendet den neuen Anbie
    }
    ```
 
-Dieser Code ist nur bei Verwendung eines eigenständigen Protokollierungsanbieters erforderlich. Bei der normalen Application Insights-Überwachung wird der Instrumentierungsschlüssel automatisch aus dem Konfigurationspfad *ApplicationInsights: Instrumentationkey* geladen. Die Datei „appsettings.json“ sollte wie folgt aussehen:
+Dieser Code ist nur bei Verwendung eines eigenständigen Protokollierungsanbieters erforderlich. Bei der normalen Application Insights-Überwachung wird der Instrumentierungsschlüssel automatisch aus dem Konfigurationspfad *ApplicationInsights: InstrumentationKey* geladen. Die Datei „appsettings.json“ sollte wie folgt aussehen:
 
    ```json
    {
      "ApplicationInsights":
        {
-           "Instrumentationkey":"putrealikeyhere"
+           "InstrumentationKey":"putrealikeyhere"
        }
    }
    ```

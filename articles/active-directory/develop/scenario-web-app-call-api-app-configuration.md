@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: aa377547f7f4961e199ec8d62bf0f1435296f983
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582316"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104669303"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web-App, die Web-APIs aufruft: Codekonfiguration
 
@@ -28,15 +28,11 @@ Wie im Szenario [Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-over
 
 In den Szenarien [Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md) wurde nur der erste Schritt behandelt. Hier erfahren Sie, wie Sie Ihre Web-App so ändern, dass sie nicht nur Benutzer anmeldet, sondern auch Web-APIs aufruft.
 
-## <a name="libraries-that-support-web-app-scenarios"></a>Bibliotheken mit Unterstützung für Web-App-Szenarien
+## <a name="microsoft-libraries-supporting-web-apps"></a>Microsoft-Bibliotheken, die Web-Apps unterstützen
 
-Die folgenden Bibliotheken in der Microsoft-Authentifizierungsbibliothek (Microsoft Authentification Library, MSAL) unterstützen den Autorisierungscodeflow für Web-Apps:
+Die folgenden Microsoft-Bibliotheken unterstützen Web-Apps:
 
-| MSAL-Bibliothek | BESCHREIBUNG |
-|--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Unterstützung für .NET Framework- und .NET Core-Plattformen. Nicht unterstützt werden UWP (Universal Windows Platform), Xamarin.iOS und Xamarin.Android, da diese Plattformen zum Erstellen öffentlicher Clientanwendungen verwendet werden. <br/><br/>Für ASP.NET Core-Web-Apps und Web-APIs ist MSAL.NET in einer Bibliothek höherer Ebene namens [Microsoft.Identity.Web](https://aka.ms/ms-identity-web) gekapselt. |
-| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL für Python | Unterstützung für Python-Webanwendungen. |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL für Java | Unterstützung für Java-Webanwendungen. |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 Wählen Sie die Registerkarte für die Plattform aus, die Sie interessiert:
 

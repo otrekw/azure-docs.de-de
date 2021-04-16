@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5cd90e994e620960e0d974ef7609a67f8a5eb58b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93335890"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448541"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Abfragen eines Azure Cosmos-Containers
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,19 +26,19 @@ Beim Abfragen von Daten aus Containern wird die Abfrage von Azure Cosmos DB auto
 Stellen Sie sich z. B. die folgende Abfrage mit einem Gleichheitsfilter für `DeviceId` vor. Wenn diese Abfrage für einen Container ausgeführt wird, der auf `DeviceId` partitioniert ist, filtert diese Abfrage eine einzelne physische Partition.
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
 Wie im vorherigen Beispiel filtert auch diese Abfrage eine einzelne Partition. Durch das Hinzufügen des zusätzlichen Filters für `Location` ändert sich nichts:
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
 ```
 
 Im folgenden finden Sie eine Abfrage mit einem Bereichsfilter für den Partitionsschlüssel, der nicht auf eine einzelne physische Partition beschränkt ist. Eine Abfrage innerhalb einer Partition muss einen Gleichheitsfilter aufweisen, der den Partitionsschlüssel enthält:
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 ```
 
 ## <a name="cross-partition-query"></a>Partitionsübergreifende Abfrage
@@ -46,7 +46,7 @@ Im folgenden finden Sie eine Abfrage mit einem Bereichsfilter für den Partition
 Die folgende Abfrage enthält keinen Filter für den Partitionsschlüssel (`DeviceId`). Daher muss sie auf alle physischen Partitionen ausgefächert und für die Indizes der einzelnen Partitionen ausgeführt werden:
 
 ```sql
-    SELECT * FROM c WHERE c.Location = 'Seattle`
+SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
 Jede physische Partition hat einen eigenen Index. Wenn Sie daher eine partitionsübergreifende Abfrage für einen Container ausführen, führen Sie also tatsächlich eine Abfrage *pro* physischer Partition aus. Azure Cosmos DB aggregiert automatisch Ergebnisse über verschiedene physische Partitionen.

@@ -16,13 +16,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25314b4a306678dc877a95194907b3d73979e4f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89275860"
 ---
-# <a name="troubleshoot-azure-ad-connect-install-issues"></a>Problembehandlung: Azure AD Connect-Installationsprobleme
+# <a name="troubleshoot-azure-ad-connect-install-issues"></a>Problembehandlung: Probleme bei der Installation von Azure AD Connect
 
 ## <a name="recommended-steps"></a>**Empfohlene Schritte**
 Überprüfen Sie, welcher [Azure AD Connect-Installationstyp](./how-to-connect-install-select-installation.md) für Sie geeignet ist. Werden die Kriterien für die Express-Installation erfüllt, wird dringend empfohlen, die Express-Installation zu verwenden. Bei der Express-Installation müssen Sie nur geringfügige Optionen angeben, um die Installation abzuschließen. Dadurch reduziert sich die Fehlerwahrscheinlichkeit. 
@@ -52,8 +52,8 @@ Wenn die Kriterien für eine Express-Installation jedoch nicht erfüllt werden u
 * [Auswählen des Installationstyps für Azure AD Connect](./how-to-connect-install-select-installation.md)
 * [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](./how-to-connect-install-express.md)
 * [Benutzerdefinierte Installation von Azure AD Connect](./how-to-connect-install-custom.md)
-* [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](./how-to-upgrade-previous-version.md).
-* [Azure AD Connect: Was ist ein Stagingserver?](./plan-connect-topologies.md#staging-server)
+* [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](./how-to-upgrade-previous-version.md)
+* [Azure AD Connect: Was ist der Stagingserver?](./plan-connect-topologies.md#staging-server)
 * [Was ist das PowerShell-Modul „ADConnectivityTool“?](./how-to-connect-adconnectivitytools.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

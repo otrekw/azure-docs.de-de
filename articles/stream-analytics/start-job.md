@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/03/2019
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 79149d8e9862ece24b4b2da4c2ca4afcceb23d63
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98016251"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Starten eines Azure Stream Analytics-Auftrags
@@ -20,7 +20,7 @@ Sie können Ihren Azure Stream Analytics-Auftrag über das Azure-Portal, Visual 
 
 ## <a name="start-options"></a>Startoptionen
 Zum Starten eines Auftrags stehen die drei folgenden Optionen zur Verfügung. Beachten Sie, dass alle unten aufgeführten Zeiten die in [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) angegebenen Zeiten sind. Wenn „TIMESTAMP BY“ nicht angegeben ist, wird die Eingangszeit verwendet.
-* **Jetzt:** Legt den Startzeitpunkt des Ausgabeereignisstreams als den Zeitpunkt des Auftragsstarts fest. Wenn ein temporaler Operator verwendet wird (z. B. Zeitfenster, „LAG“ oder „JOIN“), werden in Azure Stream Analytics automatisch die in der Vergangenheit liegenden Daten in der Eingabequelle durchsucht. Wenn Sie beispielsweise einen Auftrag mit der Option „Jetzt“ starten und in der Abfrage ein rollierendes 5-Minuten-Fenster verwendet wird, werden in Azure Stream Analytics Daten von vor 5 Minuten in der Eingabe gesucht.
+* **Jetzt**: Legt den Startzeitpunkt des Ausgabeereignisstreams als Zeitpunkt des Auftragsstarts fest. Wenn ein temporaler Operator verwendet wird (z. B. Zeitfenster, „LAG“ oder „JOIN“), werden in Azure Stream Analytics automatisch die in der Vergangenheit liegenden Daten in der Eingabequelle durchsucht. Wenn Sie beispielsweise einen Auftrag mit der Option „Jetzt“ starten und in der Abfrage ein rollierendes 5-Minuten-Fenster verwendet wird, werden in Azure Stream Analytics Daten von vor 5 Minuten in der Eingabe gesucht.
 Das erste mögliche Ausgabeereignis hat einen Zeitstempel, der dem aktuellen Zeitpunkt entspricht oder zeitlich nach diesem liegt. ASA stellt sicher, dass alle Eingabeereignisse, die logisch zur Ausgabe beitragen können, berücksichtigt werden. Beispielsweise werden keine partiellen Aggregate im Fenstermodus generiert. Es wird immer der vollständige aggregierte Wert generiert.
 
 * **Benutzerdefiniert**: Sie können den Startzeitpunkt der Ausgabe auswählen. Wie bei der Option **Jetzt** werden in Azure Stream Analytics automatisch die Daten vor diesem Zeitpunkt gelesen, wenn ein temporaler Operator verwendet wird. 
@@ -38,7 +38,7 @@ Wählen Sie eine der Optionen für **Startzeit der Auftragsausgabe** aus. Mögli
 
 Wählen Sie in der Auftragsansicht die Schaltfläche mit dem grünen Pfeil aus, um den Auftrag zu starten. Legen Sie **Startmodus der Auftragsausgabe** fest, und wählen Sie **Start** aus. Der Auftragsstatus wird in **Wird ausgeführt** geändert.
 
-Es gibt drei Optionen für **Startmodus der Auftragsausgabe**: *JobStartTime*, *CustomTime* und *LastOutputEventTime*. Wenn diese Eigenschaft nicht angegeben wird, lautet der Standardwert *JobStartTime*. Weitere Informationen zu diesen Optionen finden Sie weiter oben.
+Es gibt drei Optionen für den **Startmodus der Auftragsausgabe**: *JobStartTime*, *CustomTime* und *LastOutputEventTime*. Wenn diese Eigenschaft nicht angegeben wird, lautet der Standardwert *JobStartTime*. Weitere Informationen zu diesen Optionen finden Sie weiter oben.
 
 
 ## <a name="powershell"></a>PowerShell

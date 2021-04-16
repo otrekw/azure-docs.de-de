@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: a6225fec30a87ca0bbe57e414733bc21489f87ad
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81683163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577443"
 ---
 # <a name="configure-openssl-for-linux"></a>Konfigurieren von OpenSSL für Linux
 
@@ -50,6 +51,97 @@ Legen Sie die Umgebungsvariable `SSL_CERT_FILE` so fest, dass sie auf diese Date
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
+
+## <a name="certificate-revocation-checks"></a>Überprüfungen der Zertifikatsperre
+Beim Herstellen einer Verbindung mit dem Speech-Dienst überprüft das Speech SDK, ob das vom Speech-Dienst verwendete TLS-Zertifikat widerrufen wurde. Für diese Überprüfung benötigt das Speech SDK Zugriff auf die CRL-Verteilungspunkte für von Azure verwendete Zertifizierungsstellen. Eine Liste der möglichen URLs für den Download von Zertifikatssperrlisten finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes). Wenn ein Zertifikat widerrufen wurde oder die Zertifikatsperrliste nicht heruntergeladen werden kann, bricht das Speech SDK die Verbindung ab und gibt das Canceled-Ereignis aus.
+
+Falls die Konfiguration des Netzwerks, in dem das Speech SDK verwendet wird, den Zugriff auf die URLs für den Download von Zertifikatssperrlisten nicht zulässt, kann die CRL-Überprüfung deaktiviert oder als erfolgreich festgelegt werden, wenn die Zertifikatsperrliste nicht abgerufen werden kann. Diese Konfiguration erfolgt über das Konfigurationsobjekt, das zum Erstellen eines Recognizer-Objekts verwendet wird.
+
+Um die Verbindung fortzusetzen, wenn keine Zertifikatsperrliste abgerufen werden kann, legen Sie die Eigenschaft „OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE“ fest.
+
+::: zone pivot="programming-language-csharp"
+
+```csharp
+config.SetProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+config->SetProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```java
+config.setProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+speech_config.set_property_by_name("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true")?
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```ObjectiveC
+[config setPropertyTo:@"true" byName:"OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE"];
+```
+
+::: zone-end
+Wenn der Wert auf „true“ festgelegt ist, wird versucht, die Zertifikatsperrliste abzurufen. Bei erfolgreichem Abruf wird das Zertifikat auf eine Sperre überprüft. Wenn der Abruf fehlschlägt, wird das Fortsetzen der Verbindung zugelassen.
+
+Um die Zertifikatsperrüberprüfung vollständig zu deaktivieren, legen Sie die Eigenschaft „OPENSSL_DISABLE_CRL_CHECK“ auf „true“ fest.
+::: zone pivot="programming-language-csharp"
+
+```csharp
+config.SetProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+config->SetProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```java
+config.setProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+speech_config.set_property_by_name("OPENSSL_DISABLE_CRL_CHECK", "true")?
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```ObjectiveC
+[config setPropertyTo:@"true" byName:"OPENSSL_DISABLE_CRL_CHECK"];
+```
+
+::: zone-end
+
+
 > [!NOTE]
 > Beachten Sie auch, dass in einigen Linux-Distributionen keine TMP- oder TMPDIR-Umgebungsvariable definiert ist. Dies führt dazu, dass das Speech SDK die Zertifikatsperrliste (Certificate Revocation List, CRL) jedes Mal herunterlädt, statt diese Liste zur Wiederverwendung bis zum Ablauf auf einem Datenträger zwischenzuspeichern. Um die Leistung bei der Verbindungsherstellung zu verbessern, können Sie [eine Umgebungsvariable namens TMPDIR erstellen und auf den Pfad des von Ihnen ausgewählten temporären Verzeichnisses festlegen](https://help.ubuntu.com/community/EnvironmentVariables).
 
