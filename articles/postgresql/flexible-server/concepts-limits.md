@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 58f71ddc470c06e17ff73dd5681cd343bcf8ac7b
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 9039bbf006d5e5a677247771346a3a6b43781da2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102451896"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594936"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Beschränkungen in Azure Database for PostgreSQL – Flexible Server
 
@@ -68,7 +68,7 @@ Eine PostgreSQL-Verbindung kann selbst im Leerlauf ca. 10 MB Arbeitsspeicher be
 
 ### <a name="storage"></a>Storage
 
-- Nach der Konfiguration kann die Speichergröße nicht mehr verringert werden. Sie müssen einen neuen Server mit gewünschter Speichergröße erstellen und einen manuellen Sicherungs- und Wiederherstellungsprozess zum Migrieren Ihrer Datenbanken durchführen.
+- Nach der Konfiguration kann die Speichergröße nicht mehr verringert werden. Sie müssen einen neuen Server mit der gewünschten Speichergröße erstellen und einen manuellen [Sicherungs- und Wiederherstellungsprozess](../howto-migrate-using-dump-and-restore.md) zum Migrieren Ihrer Datenbanken zum neuen Server durchführen.
 - Derzeit ist automatische Speichervergrößerung nicht verfügbar. Überwachen Sie die Nutzung, und vergrößern Sie den Speicher auf einen höheren Wert. 
 - Wenn die Speichernutzung 95 % erreicht oder die verfügbare Kapazität weniger als 5 GiB beträgt, wird der Server automatisch in den **schreibgeschützten Modus** umgeschaltet, um Fehler im Zusammenhang mit vollen Datenträgern zu vermeiden. 
 - Es wird empfohlen, Warnungsregeln für `storage used` oder `storage percent` festzulegen, wenn diese bestimmte Schwellenwerte überschreiten, damit Sie proaktiv Maßnahmen ergreifen können, z. B. eine Erhöhung der Speichergröße. Sie können z. B. eine Warnung festlegen, wenn der Speicherprozentsatz eine Auslastung von 80 % überschreitet.

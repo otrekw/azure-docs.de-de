@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 408e972eb5950baa75fa1bdf33fb2cd507154bcb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89279413"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612839"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.  
@@ -32,12 +32,25 @@ Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßi
 
 Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-Installation integriert. Weitere Informationen zum Releaseverlauf von Azure AD Connect finden Sie [hier](./reference-connect-version-history.md). Featurefeedback können Sie über den [Benutzerfeedbackkanal für Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) abgeben.
 
+## <a name="march-2021"></a>März 2021
+**Agent-Aktualisierung**
+
+- Azure AD Connect Health-Agent für AD FS (Version 3.1.95.0)
+
+  - Korrektur zum Auflösen des Benutzernamens von NT4 in einen UPN bei Anmeldungsereignissen.
+  - Korrektur zur Identifizierung falscher Anwendungsbezeichner-Szenarien mit einem dedizierten Fehlercode.
+  - Ändert das Hinzufügen einer neuen Eigenschaft für den OAuth-Client-Bezeichner.
+  - Korrektur, um korrekte Werte in den Feldern **Protokoll** und **Authentifizierungstyp** in Azure AD Anmeldungsbericht für bestimmte Anmeldeszenarien anzuzeigen.
+  - Korrektur zum Anzeigen von IP-Adressen in Azure AD IP-Kettenfeld des Anmeldeberichtes in der Reihenfolge der Anforderung.
+  - Änderungen an der Einführung eines neuen Felds, um zu unterscheiden, ob bei der Anmeldung eine sekundäre Authentifizierung angefordert wurde.
+  - Korrektur für AD FS Anwendungsbezeichner-Eigenschaft, die in Azure AD Anmeldebericht angezeigt werden soll.
+
 ## <a name="april-2020"></a>April 2020
 **Agent-Aktualisierung**
 
 - Azure AD Connect Health-Agent für AD FS (Version 3.1.77.0)
 
-   1.   Fehlerbehebung für die Warnung "Ungültiger Dienstprinzipalname für AD FS-Dienst", für den die Warnung fehlerhaft ausgegeben wurde.
+   - Fehlerbehebung für die Warnung "Ungültiger Dienstprinzipalname für AD FS-Dienst", für den die Warnung fehlerhaft ausgegeben wurde.
 
 
 ## <a name="july-2019"></a>Juli 2019

@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8488325613b05d54b352a19a06860e08f1779877
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 1d52b017f94785f5fb25a25f127ae52d96e97d8b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063113"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578752"
 ---
 # <a name="logging-in-msal-for-python"></a>Protokollierung in MSAL für Python
 
@@ -26,22 +26,51 @@ ms.locfileid: "99063113"
 
 ## <a name="msal-for-python-logging"></a>MSAL für Python-Protokollierung
 
-Bei der Protokollierung in MSAL Python wird der standardmäßige Python-Protokollierungsmechanismus verwendet (beispielsweise `logging.info("msg")`). Die MSAL-Protokollierung kann wie folgt konfiguriert werden. (Ein Praxisbeispiel finden Sie unter [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32).)
+Die Protokollierung in MSAL für Python nutzt das [logging-Modul in der Python-Standardbibliothek](https://docs.python.org/3/library/logging.html). Die MSAL-Protokollierung kann wie folgt konfiguriert werden. (Ein Praxisbeispiel finden Sie unter [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32).)
 
 ### <a name="enable-debug-logging-for-all-modules"></a>Aktivieren der Debugprotokollierung für alle Module
 
-Standardmäßig ist die Protokollierung in jedem Python-Skript deaktiviert. Wenn Sie die Debugprotokollierung für alle Module in Ihrem gesamten Python-Skript aktivieren möchten, verwenden Sie Folgendes:
+Standardmäßig ist die Protokollierung in jedem Python-Skript deaktiviert. Wenn Sie die ausführliche Protokollierung für **alle** Python-Module im Skript aktivieren möchten, verwenden Sie `logging.basicConfig` mit dem Grad `logging.DEBUG`:
 
 ```python
+import logging
+
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-### <a name="silence-only-msal-logging"></a>Nur Deaktivieren der MSAL-Protokollierung
+Dadurch werden alle Protokollmeldungen, die an das logging-Modul übergeben werden, an der Standardausgabe ausgegeben.
 
-Wenn Sie nur die MSAL-Protokollierung deaktivieren möchten, die Debugprotokollierung in allen anderen Modulen in Ihrem Python-Skript aber aktiviert sein soll, deaktivieren Sie die von MSAL Python verwendete Protokollierung:
+### <a name="configure-msal-logging-level"></a>Konfigurieren des MSAL-Protokolliergrads
 
-```Python
+Sie können den Protokolliergrad für den Protokollanbieter von MSAL für Python konfigurieren, indem Sie die `logging.getLogger()`-Methode mit `"msal"` als Namen der Protokollierung verwenden:
+
+```python
+import logging
+
 logging.getLogger("msal").setLevel(logging.WARN)
+```
+
+### <a name="configure-msal-logging-with-azure-app-insights"></a>Konfigurieren der MSAL-Protokollierung mit Azure Application Insights
+
+Python-Protokolle werden einen Protokollhandler übergeben. Standardmäßig ist dies `StreamHandler`. Um MSAL-Protokolle an eine Application Insights-Instanz mit einem Instrumentierungsschlüssel zu senden, verwenden Sie den von der Bibliothek `opencensus-ext-azure` bereitgestellten `AzureLogHandler`.
+
+Fügen Sie zum Installieren von `opencensus-ext-azure` das Paket `opencensus-ext-azure` aus PyPI Ihren Abhängigkeiten hinzu, oder verwenden Sie pip install:
+
+```console
+pip install opencensus-ext-azure
+```
+
+Ändern Sie dann den Standardhandler des `"msal"`-Protokollanbieters in eine Instanz von `AzureLogHandler`, deren Instrumentierungsschlüssel in der Umgebungsvariable `APP_INSIGHTS_KEY` festgelegt ist:
+
+```python
+import logging
+import os
+
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+APP_INSIGHTS_KEY = os.getenv('APP_INSIGHTS_KEY')
+
+logging.getLogger("msal").addHandler(AzureLogHandler(connection_string='InstrumentationKey={0}'.format(APP_INSIGHTS_KEY))
 ```
 
 ### <a name="personal-and-organizational-data-in-python"></a>Personen- und organisationsbezogene Daten in Python

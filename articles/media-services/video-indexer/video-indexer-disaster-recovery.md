@@ -15,10 +15,10 @@ ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
 ms.openlocfilehash: eab376c44065979de86e5c70b796be952fccffaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87065401"
 ---
 # <a name="video-indexer-failover-and-disaster-recovery"></a>Video Indexer-Failover und -Notfallwiederherstellung
@@ -41,7 +41,7 @@ Um BCDR zu implementieren, müssen Sie über zwei Video Indexer-Konten verfügen
 > [!TIP]
 > Sie können BCDR automatisieren, indem Sie Aktivitätsprotokollwarnungen für Dienstintegritätsbenachrichtigungen gemäß den Ausführungen unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md) einrichten.
 
-Informationen zum Verwenden mehrerer Mandanten finden Sie unter [Verwalten mehrerer Mandanten](manage-multiple-tenants.md). Wählen Sie zum Implementieren von BCDR eine der folgenden beiden Optionen aus: [Video Indexer-Konto pro Mandant](manage-multiple-tenants.md#video-indexer-account-per-tenant) oder [Azure-Abonnement pro Mandant](manage-multiple-tenants.md#azure-subscription-per-tenant).
+Informationen zum Verwenden mehrerer Mandanten finden Sie unter [Verwalten mehrerer Mandanten](manage-multiple-tenants.md). Wählen Sie zum Implementieren von BCDR eine der beiden folgenden Optionen aus: [Video Indexer Konto pro Mandant](manage-multiple-tenants.md#video-indexer-account-per-tenant) oder [Azure-Abonnement pro Mandant](manage-multiple-tenants.md#azure-subscription-per-tenant).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

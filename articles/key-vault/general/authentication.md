@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ed83d52d19df126ef9b0e68f984f88f5dfd40c42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a8fe4ed0c24d2ccda5fb844005a33a93e85a169
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492939"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365517"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Authentifizieren bei Azure Key Vault
 
@@ -59,8 +59,6 @@ Key Vault funktioniert mit zwei separaten Autorisierungsebenen:
     - [Azure portal](../../role-based-access-control/role-assignments-portal.md)
     - [Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md)
     - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-
-    Key Vault unterstützt derzeit die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#key-vault-contributor), die Verwaltungsvorgänge für Key Vault-Ressourcen ermöglicht. Eine Reihe anderer Rollen befinden sich zurzeit in der Vorschauphase. Sie können auch benutzerdefinierte Rollen erstellen, wie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md) beschrieben.
 
     Allgemeine Informationen zu Rollen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 

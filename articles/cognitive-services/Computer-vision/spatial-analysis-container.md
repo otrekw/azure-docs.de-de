@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d257a77940b460bf8be64e3f8376353a859365f7
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108358"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284718"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
-Mit dem Container für räumliche Analyse können Sie in Echtzeit gestreamte Videodaten analysieren, um räumliche Bezüge zwischen Personen, ihre Bewegungen und ihre Interaktionen mit Objekten in der physischen Umgebung zu verstehen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen.
+Mit dem Container für räumliche Analyse können Sie in Echtzeit gestreamte Videodaten analysieren, um räumliche Bezüge zwischen Personen, ihre Bewegungen und ihre Interaktionen mit Objekten in physischen Umgebungen zu verstehen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -249,7 +249,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Konfigurieren von Azure IoT Edge auf dem Hostcomputer
 
-Erstellen Sie zum Bereitstellen des Containers für räumliche Analyse auf dem Hostcomputer eine Instanz des Diensts [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md), indem Sie den Standard- (S1) oder Free-Tarif (F0) verwenden. 
+Erstellen Sie zum Bereitstellen des Containers für räumliche Analyse auf dem Hostcomputer eine Instanz des Diensts [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md), indem Sie den Standard-Tarif (S1) oder Free-Tarif (F0) verwenden. 
 
 Verwenden Sie die Azure CLI, um eine Instanz von Azure IoT Hub zu erstellen. Ersetzen Sie die Parameter nach Bedarf. Alternativ können Sie die Instanz von Azure IoT Hub auch über das [Azure-Portal](https://portal.azure.com/) erstellen.
 
@@ -411,7 +411,7 @@ Nachdem Sie Ihre VM eingerichtet und konfiguriert haben, befolgen Sie die folgen
 
 ## <a name="configure-azure-iot-edge-on-the-vm"></a>Konfigurieren von Azure IoT Edge auf der VM
 
-Erstellen Sie zum Bereitstellen des Containers für räumliche Analyse auf der VM eine Instanz des Diensts [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md), indem Sie den Standard- (S1) oder Free-Tarif (F0) verwenden.
+Erstellen Sie zum Bereitstellen des Containers für räumliche Analyse auf der VM eine Instanz des Diensts [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md), indem Sie den Standard-Tarif (S1) oder Free-Tarif (F0) verwenden.
 
 Verwenden Sie die Azure CLI, um eine Instanz von Azure IoT Hub zu erstellen. Ersetzen Sie die Parameter nach Bedarf. Alternativ können Sie die Instanz von Azure IoT Hub auch über das [Azure-Portal](https://portal.azure.com/) erstellen.
 
@@ -529,7 +529,7 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 | `--target-condition` | Der Name Ihres IoT Edge-Geräts für den Hostcomputer. |
 | `-–subscription` | Abonnement-ID oder -name. |
 
-Mit diesem Befehl wird die Bereitstellung gestartet. Navigieren Sie im Azure-Portal zur Seite mit Ihrer Azure IoT Hub-Instanz, um den Bereitstellungsstatus anzuzeigen. Als Status wird unter Umständen *417 – Die Bereitstellungskonfiguration des Geräts ist nicht festgelegt* angezeigt, bis das Gerät das Herunterladen der Containerimages abgeschlossen hat und gestartet wird.
+Mit diesem Befehl wird die Bereitstellung gestartet. Navigieren Sie im Azure-Portal zur Seite mit Ihrer Azure IoT Hub-Instanz, um den Bereitstellungsstatus anzuzeigen. Als Status wird möglicherweise *417: Die Bereitstellungskonfiguration des Geräts ist nicht festgelegt* angezeigt, bis das Gerät das Herunterladen der Containerimages abgeschlossen hat und gestartet wird.
 
 ## <a name="validate-that-the-deployment-is-successful"></a>Überprüfen der erfolgreichen Bereitstellung
 
@@ -547,12 +547,12 @@ Sie müssen die [Vorgänge der räumlichen Analyse](spatial-analysis-operations.
 
 Falls Sie die vom Container generierte Ausgabe nutzen möchten, helfen Ihnen die Informationen in den folgenden Artikeln weiter:
 
-*   Verwenden Sie das Azure Event Hub-SDK für Ihre gewählte Programmiersprache, um eine Verbindung mit dem Azure IoT Hub-Endpunkt herstellen und die Ereignisse empfangen zu können. Weitere Informationen finden Sie unter [Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt](../../iot-hub/iot-hub-devguide-messages-read-builtin.md). 
-*   Richten Sie das Nachrichtenrouting auf Ihrer Azure IoT Hub-Instanz ein, um Ereignisse an andere Endpunkte zu senden, die Ereignisse unter Azure Blob Storage zu speichern usw. Weitere Informationen finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](../../iot-hub/iot-hub-devguide-messages-d2c.md). 
+*    Verwenden Sie das Azure Event Hub-SDK für Ihre gewählte Programmiersprache, um eine Verbindung mit dem Azure IoT Hub-Endpunkt herstellen und die Ereignisse empfangen zu können. Weitere Informationen finden Sie unter [Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt](../../iot-hub/iot-hub-devguide-messages-read-builtin.md). 
+*    Richten Sie das Nachrichtenrouting auf Ihrer Azure IoT Hub-Instanz ein, um Ereignisse an andere Endpunkte zu senden, die Ereignisse unter Azure Blob Storage zu speichern usw. Weitere Informationen finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](../../iot-hub/iot-hub-devguide-messages-d2c.md). 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>Ausführen der räumlichen Analyse mit einer aufgezeichneten Videodatei
 
-Sie können die räumliche Analyse sowohl für aufgezeichnete als auch für Livevideos verwenden. Versuchen Sie, eine Videodatei aufzuzeichnen und als MP4-Datei zu speichern, um die räumliche Analyse für ein aufgezeichnetes Video zu verwenden. Erstellen Sie ein Blobspeicherkonto in Azure, oder verwenden Sie ein vorhandenes Konto. Aktualisieren Sie anschließend im Azure-Portal die folgenden Blobspeichereinstellungen:
+Sie können die räumliche Analyse sowohl für aufgezeichnete Videos als auch für Livevideos verwenden. Versuchen Sie, eine Videodatei aufzuzeichnen und als MP4-Datei zu speichern, um die räumliche Analyse für ein aufgezeichnetes Video zu verwenden. Erstellen Sie ein Blobspeicherkonto in Azure, oder verwenden Sie ein vorhandenes Konto. Aktualisieren Sie anschließend im Azure-Portal die folgenden Blobspeichereinstellungen:
     1. Ändern Sie **Sichere Übertragung erforderlich** in **Deaktiviert**.
     2. Ändern Sie **Öffentlichen Blobzugriff gestatten** in **Aktiviert**.
 
@@ -605,7 +605,7 @@ In diesem Artikel wurden die Konzepte und der Workflow zum Herunterladen, Instal
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Bereitstellen einer Webanwendung für die Erfassung der Personenanzahl](spatial-analysis-web-app.md)
-* [Konfigurieren von Vorgängen zur räumlichen Analysen](spatial-analysis-operations.md)
+* [Konfigurieren von Vorgängen zur räumlichen Analyse](spatial-analysis-operations.md)
 * [Protokollierung und Problembehandlung](spatial-analysis-logging.md)
 * [Leitfaden zur Kameraplatzierung](spatial-analysis-camera-placement.md)
 * [Leitfaden zur Platzierung von Zonen und Linien](spatial-analysis-zone-line-placement.md)

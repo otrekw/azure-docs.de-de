@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/27/2020
 ms.author: alkohli
 ms.openlocfilehash: efa9e996cbfbc8954c294b4da8900b1d5bcbeeed
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96465465"
 ---
 Zum Überprüfen des virtuellen privaten Netzwerks (VPN) können Sie ein Speicherkonto erstellen, auf das nur über das von Ihnen erstellte virtuelle Netzwerk zugegriffen werden kann. Befolgen Sie diese Schritte, um dieses Speicherkonto zu erstellen und mit dem von Ihnen erstellten virtuellen Netzwerk zu verknüpfen:

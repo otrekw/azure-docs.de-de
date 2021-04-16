@@ -2,13 +2,13 @@
 title: 'Azure Monitor-Ressourcenprotokolle: unterstützte Dienste und Kategorien'
 description: 'Referenz zu Azure Monitor: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.'
 ms.topic: reference
-ms.date: 01/29/2021
-ms.openlocfilehash: 9a04d0f470522dd4689d604756ffd25e70c5d456
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/30/2021
+ms.openlocfilehash: a4ab4a2e425b752198223da5efd1b07466ab83d1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033145"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166937"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Unterstützte Kategorien für Azure-Ressourcenprotokolle
 
@@ -33,7 +33,8 @@ Es folgt eine Liste der Arten von Protokollen, die für jeden Ressourcentyp verf
 Einige Kategorien werden möglicherweise nur für bestimmte Ressourcentypen unterstützt. Wenn Sie der Meinung sind, dass eine Ressource fehlt, lesen Sie die ressourcenspezifische Dokumentation. Beispielsweise sind Kategorien des Typs „Microsoft.Sql/servers/databases“ nicht für alle Datenbanktypen verfügbar. Weitere Informationen finden Sie unter den [Informationen zur SQL-Datenbank-Diagnoseprotokollierung](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
 Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Artikel einen GitHub-Kommentar öffnen.
-## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/domainServices
+
+## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/DomainServices
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
@@ -46,6 +47,13 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |PolicyChange|PolicyChange|Nein|
 |PrivilegeUse|PrivilegeUse|Nein|
 |SystemSecurity|SystemSecurity|Nein|
+
+
+## <a name="microsoftaadiamtenants"></a>microsoft.aadiam/tenants
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Signin|Signin|Ja|
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
@@ -97,6 +105,14 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |JobStreams|Auftragsdatenströme|Nein|
 
 
+## <a name="microsoftautonomousdevelopmentplatformaccounts"></a>Microsoft.AutonomousDevelopmentPlatform/accounts
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Audit|Audit|Ja|
+|Bei Betrieb|Bei Betrieb|Ja|
+
+
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |Category|Anzeigename der Kategorie|Exportkosten|
@@ -135,7 +151,6 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |BotRequest|Anforderungen von den Kanälen an den Bot|Nein|
-|DependencyRequest|Anforderungen von Abhängigkeiten|Nein|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
@@ -182,6 +197,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
+|AuthOperational|Protokolle zum Authentifizierungsbetrieb|Ja|
 |ChatOperational|Protokolle zum Chatbetrieb|Nein|
 |SMSOperational|Protokolle zum SMS-Betrieb|Nein|
 |Verwendung|Verwendungsdatensätze|Nein|
@@ -256,6 +272,8 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |---|---|---|
 |ActivityRuns|Pipeline-Aktivitätsausführungsprotokoll|Nein|
 |PipelineRuns|Pipelineausführungsprotokoll|Nein|
+|SandboxActivityRuns|Sandbox-Aktivitätsausführungsprotokoll|Ja|
+|SandboxPipelineRuns|Sandbox-Pipelineausführungsprotokoll|Ja|
 |SSISIntegrationRuntimeLogs|SSIS Integration Runtime-Protokolle|Nein|
 |SSISPackageEventMessageContext|Kontext von SSIS-Paketereignismeldungen|Nein|
 |SSISPackageEventMessages|SSIS-Paketereignismeldungen|Nein|
@@ -320,6 +338,13 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |PostgreSQLLogs|PostgreSQL-Serverprotokolle|Nein|
+
+
+## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft.DBForPostgreSQL/serverGroupsv2
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL-Serverprotokolle|Ja|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
@@ -531,18 +556,6 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |AppTraces|Traces|Nein|
 
 
-## <a name="microsoftiotspacesgraph"></a>Microsoft.IoTSpaces/Graph
-
-|Category|Anzeigename der Kategorie|Exportkosten|
-|---|---|---|
-|Audit|Audit|Nein|
-|Ausgehende Daten|Ausgehende Daten|Nein|
-|Eingehende Daten|Eingehende Daten|Nein|
-|Bei Betrieb|Bei Betrieb|Nein|
-|Trace|Trace|Nein|
-|UserDefinedFunction|UserDefinedFunction|Nein|
-
-
 ## <a name="microsoftkeyvaultmanagedhsms"></a>microsoft.keyvault/managedhsms
 
 |Category|Anzeigename der Kategorie|Exportkosten|
@@ -747,13 +760,6 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Engine|Engine|Nein|
 
 
-## <a name="microsoftprojectbabylonaccounts"></a>Microsoft.ProjectBabylon/accounts
-
-|Category|Anzeigename der Kategorie|Exportkosten|
-|---|---|---|
-|ScanStatusLogEvent|ScanStatus|Nein|
-
-
 ## <a name="microsoftpurviewaccounts"></a>microsoft.purview/accounts
 
 |Category|Anzeigename der Kategorie|Exportkosten|
@@ -808,6 +814,13 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |AllLogs|Protokolle für Azure SignalR Service|Nein|
+
+
+## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft.SignalRService/WebPubSub
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AllLogs|Azure Web PubSub-Dienstprotokolle|Ja|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
@@ -901,6 +914,9 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |---|---|---|
 |BuiltinSqlReqsEnded|Integrierter SQL-Pool, beendete Anforderungen|Nein|
 |GatewayApiRequests|Synapse-Gateway-API-Anforderungen|Nein|
+|IntegrationActivityRuns|Integrationsaktivitätsausführungen|Ja|
+|IntegrationPipelineRuns|Integrationspipelineausführungen|Ja|
+|IntegrationTriggerRuns|Integrationstriggerausführungen|Ja|
 |SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|Nein|
 |SynapseRbacOperations|Synapse-RBAC-Vorgänge|Nein|
 
@@ -975,7 +991,6 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |AppServiceIPSecAuditLogs|IPSecurity-Überwachungsprotokolle|Nein|
 |AppServicePlatformLogs|App Service-Plattformprotokolle|Nein|
 |FunctionAppLogs|Funktionsanwendungsprotokolle|Nein|
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

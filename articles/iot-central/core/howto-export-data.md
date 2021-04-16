@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie den neuen Datenexport verwenden, um Ihre
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d57f24f8cb4b59ce9b9cd5853be11fb2d104d75
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100522613"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277894"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie das neue Datenexportfeature in Azure
 
 Beispielsweise können Sie folgende Aktionen ausführen:
 
-- Fortlaufendes Exportieren von Telemetriedaten und Eigenschaftsänderungen im JSON-Format nahezu in Echtzeit.
+- Fortlaufendes Exportieren von Telemetriedaten, Eigenschaftsänderungen, Gerätelebenszyklus und Lebenszyklusdaten der Gerätevorlage im JSON-Format nahezu in Echtzeit
 - Filtern der Datenströme zum Exportieren von Daten, die die benutzerdefinierten Bedingungen erfüllen.
 - Anreichern der Datenströme mit benutzerdefinierten Werten und Eigenschaftswerten aus dem Gerät.
 - Senden der Daten an Ziele wie Azure Event Hubs, Azure Service Bus, Azure Blob Storage und Webhookendpunkte.
@@ -133,21 +133,19 @@ Sie haben ein Ziel für den Export Ihrer Daten eingerichtet und richten jetzt de
     | :------------- | :---------- | :----------- |
     |  Telemetrie | Exportiert Telemetrienachrichten von Geräten nahezu in Echtzeit. Jede exportierte Nachricht enthält den vollständigen Inhalt der ursprünglichen Gerätenachricht (normalisiert).   |  [Format der Telemetrienachricht](#telemetry-format)   |
     | Eigenschaftsänderungen | Exportiert Änderungen zu den Geräte- und Cloudeigenschaften nahezu in Echtzeit. Bei schreibgeschützten Geräteeigenschaften werden Änderungen an den gemeldeten Werten exportiert. Bei Lese-/Schreibeigenschaften werden sowohl gemeldete als auch gewünschte Werte exportiert. | [Format der Eigenschaftsänderungsnachricht](#property-changes-format) |
+    | Gerätelebenszyklus | Exportiert registrierte und gelöschte Geräteereignisse. | [Nachrichtenformat der Gerätelebenszyklusänderungen](#device-lifecycle-changes-format) |
+    | Gerätevorlagenlebenszyklus | Exportiert Änderungen an veröffentlichten Gerätevorlagen wie etwa Erstellungs-, Aktualisierungs- und Löschvorgänge. | [Nachrichtenformat der Änderungen des Gerätevorlagenlebenszyklus](#device-template-lifecycle-changes-format) | 
 
-<a name="DataExportFilters"></a>
-1. Fügen Sie optional Filter hinzu, um die Menge der exportierten Daten zu verringern. Für jeden Datenexporttyp gibt es verschiedene Arten von Filtern:
-
-    Zum Filtern von Telemetriedaten können Sie Folgendes ausführen:
-
-    - **Filtern** des exportierten Datenstroms, damit er nur Telemetriedaten von Geräten enthält, die dem Gerätenamen, der Geräte-ID und der Filterbedingung der Gerätevorlage übereinstimmen.
-    - **Filtern** über Funktionen: Wenn Sie ein Telemetrieelement in der Dropdownliste **Name** auswählen, enthält der exportierte Datenstrom nur Telemetriedaten, die die Filterbedingung erfüllen. Wenn Sie ein Gerät oder ein Cloudeigenschaftselement in der Dropdownliste **Name** auswählen, enthält der exportierte Datenstrom nur Telemetriedaten von Geräten mit Eigenschaften, die die Filterbedingung erfüllen.
-    - **Nachrichteneigenschaftenfilter:** Geräte, die die Geräte-SDKs verwenden, können *Nachrichteneigenschaften* oder *Anwendungseigenschaften* für jede Telemetrienachricht senden. Die Eigenschaften sind eine Sammlung von Schlüssel-Wert-Paaren, die die Nachricht mit benutzerdefinierten Bezeichnern kennzeichnen. Zum Erstellen eines Nachrichteneigenschaftenfilters geben Sie den gesuchten Nachrichteneigenschaftsschlüssel ein, und geben Sie eine Bedingung an. Nur Telemetrienachrichten mit Eigenschaften, die die angegebene Filterbedingung erfüllen, werden exportiert. Die folgenden Vergleichsoperatoren für Zeichenfolgen werden unterstützt: „ist gleich“, „ist nicht gleich“, „enthält“, „enthält nicht“, „ist vorhanden“, „ist nicht vorhanden“. [Weitere Informationen zu Anwendungseigenschaften finden Sie in der IoT Hub-Dokumentation](../../iot-hub/iot-hub-devguide-messages-construct.md).
-
-    Verwenden Sie zum Filtern von Eigenschaftsänderungen einen **Funktionsfilter**. Wählen Sie ein Eigenschaftselement in der Dropdownliste aus. Der exportierte Datenstrom enthält nur Änderungen an der ausgewählten Eigenschaft, die die Filterbedingung erfüllt.
-
-<a name="DataExportEnrichmnents"></a>
-1. Reichern Sie optional exportierte Nachrichten mit zusätzlichen Metadaten für Schlüssel-Wert-Paare an. Die folgenden Anreicherungen stehen für die Datenexporttypen „Telemetrie“ und „Eigenschaftsänderungen“ zur Verfügung:
-
+1. Fügen Sie optional Filter hinzu, um die Menge der exportierten Daten zu verringern. Für jeden Datenexporttyp gibt es verschiedene Arten von Filtern: <a name="DataExportFilters"></a>
+    
+    | Datentyp | Verfügbare Filter| 
+    |--------------|------------------|
+    |Telemetrie|<ul><li>Filtern nach Gerätename, Geräte-ID und Gerätevorlage</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten enthält, die den Filterbedingungen entsprechen</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten mit *Nachrichteneigenschaften* enthält, die den Filterbedingungen entsprechen. *Nachrichteneigenschaften* (auch als *Anwendungseigenschaften* bezeichnet) werden in einer Sammlung von Schlüssel-Wert-Paaren für jede Telemetrienachricht gesendet, die optional von Geräten gesendet werden, die die Geräte-SDKs verwenden. Zum Erstellen eines Nachrichteneigenschaftenfilters geben Sie den gesuchten Nachrichteneigenschaftsschlüssel ein, und geben Sie eine Bedingung an. Nur Telemetrienachrichten mit Eigenschaften, die die angegebene Filterbedingung erfüllen, werden exportiert. Weitere Informationen zu Anwendungseigenschaften finden Sie in der [IoT Hub-Dokumentation](../../iot-hub/iot-hub-devguide-messages-construct.md). </li></ul>|
+    |Eigenschaftsänderungen|<ul><li>Filtern nach Gerätename, Geräte-ID und Gerätevorlage</li><li>Filtern des Datenstroms, sodass er nur Eigenschaftsänderungen enthält, die den Filterbedingungen entsprechen</li></ul>|
+    |Gerätelebenszyklus|<ul><li>Filtern nach Gerätename, Geräte-ID und Gerätevorlage</li><li>Filtern des Datenstroms, sodass er nur Änderungen von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li></ul>|
+    |Gerätevorlagenlebenszyklus|<ul><li>Filtern nach Gerätevorlage</li></ul>|
+    
+1. Reichern Sie optional exportierte Nachrichten mit zusätzlichen Metadaten für Schlüssel-Wert-Paare an. Die folgenden Anreicherungen stehen für die Datenexporttypen „Telemetrie“ und „Eigenschaftsänderungen“ zur Verfügung: <a name="DataExportEnrichmnents"></a>
     - **Benutzerdefinierte Zeichenfolge:** Fügt jeder Nachricht eine benutzerdefinierte statische Zeichenfolge hinzu. Geben Sie einen beliebigen Schlüssel und einen beliebigen Zeichenfolgenwert ein.
     - **Property:** Fügt jeder Nachricht die aktuelle vom Gerät gemeldete Eigenschaft oder den Cloudeigenschaftswert hinzu. Geben Sie einen beliebigen Schlüssel ein, und wählen Sie eine Geräte- oder Cloudeigenschaft aus. Wenn die exportierte Nachricht aus einem Gerät stammt, das die angegebene Eigenschaft nicht hat, erhält die exportierte Nachricht die Anreicherung nicht.
 
@@ -207,6 +205,7 @@ Jede exportierte Nachricht enthält eine normalisierte Form der vollständigen N
 - `deviceId`:  Die ID des Geräts, von dem die Telemetrienachricht gesendet wurde.
 - `schema`: Den Namen und die Version des Nutzdatenschemas.
 - `templateId`: Die ID der Gerätevorlage, die dem Gerät zugeordnet ist.
+- `enqueuedTime`: Der Zeitpunkt, zu dem diese Nachricht von IoT Central empfangen wurde
 - `enrichments`: Alle im Export eingerichteten Anreicherungen.
 - `messageProperties`: Zusätzliche Eigenschaften, die das Gerät zusammen mit der Nachricht gesendet hat. Diese Eigenschaften werden manchmal auch als *Anwendungseigenschaften* bezeichnet. [Weitere Informationen zu IoT Hub-Dokumenten](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
@@ -349,6 +348,7 @@ Jede Nachricht bzw. jeder Datensatz stellt eine Änderung an einem Gerät oder e
 - `messageType`: Entweder `cloudPropertyChange`, `devicePropertyDesiredChange` oder `devicePropertyReportedChange`.
 - `deviceId`:  Die ID des Geräts, von dem die Telemetrienachricht gesendet wurde.
 - `schema`: Den Namen und die Version des Nutzdatenschemas.
+- `enqueuedTime`: Der Zeitpunkt, zu dem diese Änderung von IoT Central erkannt wurde
 - `templateId`: Die ID der Gerätevorlage, die dem Gerät zugeordnet ist.
 - `enrichments`: Alle im Export eingerichteten Anreicherungen.
 
@@ -377,13 +377,78 @@ Das folgende Beispiel zeigt eine exportierte Eigenschaftsänderungsnachricht, di
 }
 ```
 
+## <a name="device-lifecycle-changes-format"></a>Format der Gerätelebenszyklusänderungen
+
+Jede Nachricht bzw. jeder Datensatz stellt eine Änderung an einem einzelnen Gerät dar. Die exportierte Nachricht enthält folgende Informationen:
+
+- `applicationId`: Die ID der IoT Central-Anwendung.
+- `messageSource`: Die Quelle für die Nachricht – `deviceLifecycle`.
+- `messageType`: Entweder `registered` oder `deleted`
+- `deviceId`: Die ID des Geräts, das geändert wurde
+- `schema`: Den Namen und die Version des Nutzdatenschemas.
+- `templateId`: Die ID der Gerätevorlage, die dem Gerät zugeordnet ist.
+- `enqueuedTime`: Der Zeitpunkt, zu dem diese Änderung in IoT Central aufgetreten ist
+- `enrichments`: Alle im Export eingerichteten Anreicherungen.
+
+Bei Event Hubs und Service Bus exportiert IoT Central neue Nachrichtendaten nahezu in Echtzeit an Ihren Event Hub oder Ihre Service Bus-Warteschlange bzw. Ihr Service Bus-Thema. In die Benutzereigenschaften (auch als „Anwendungseigenschaften“ bezeichnet) jeder Nachricht werden die Eigenschaften `iotcentral-device-id`, `iotcentral-application-id`, `iotcentral-message-source` und `iotcentral-message-type` automatisch einbezogen.
+
+Bei Blob Storage werden Nachrichten im Batch zusammengefasst und einmal pro Minute exportiert.
+
+Das folgende Beispiel zeigt eine exportierte Gerätelebenszyklusnachricht, die in Azure Blob Storage empfangen wurde:
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceLifecycle",
+  "messageType": "registered",
+  "deviceId": "1vzb5ghlsg1",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+## <a name="device-template-lifecycle-changes-format"></a>Format der Änderungen des Gerätevorlagenlebenszyklus
+
+Jede Nachricht bzw. jeder Datensatz stellt eine Änderung an einer einzelnen veröffentlichten Gerätevorlage dar. Die exportierte Nachricht enthält folgende Informationen:
+
+- `applicationId`: Die ID der IoT Central-Anwendung.
+- `messageSource`: Die Quelle für die Nachricht – `deviceTemplateLifecycle`.
+- `messageType`: Entweder `created`, `updated` oder `deleted`
+- `schema`: Den Namen und die Version des Nutzdatenschemas.
+- `templateId`: Die ID der Gerätevorlage, die dem Gerät zugeordnet ist.
+- `enqueuedTime`: Der Zeitpunkt, zu dem diese Änderung in IoT Central aufgetreten ist
+- `enrichments`: Alle im Export eingerichteten Anreicherungen.
+
+Bei Event Hubs und Service Bus exportiert IoT Central neue Nachrichtendaten nahezu in Echtzeit an Ihren Event Hub oder Ihre Service Bus-Warteschlange bzw. Ihr Service Bus-Thema. In die Benutzereigenschaften (auch als „Anwendungseigenschaften“ bezeichnet) jeder Nachricht werden die Eigenschaften `iotcentral-device-id`, `iotcentral-application-id`, `iotcentral-message-source` und `iotcentral-message-type` automatisch einbezogen.
+
+Bei Blob Storage werden Nachrichten im Batch zusammengefasst und einmal pro Minute exportiert.
+
+Das folgende Beispiel zeigt eine exportierte Gerätelebenszyklusnachricht, die in Azure Blob Storage empfangen wurde:
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceTemplateLifecycle",
+  "messageType": "created",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+
 ## <a name="comparison-of-legacy-data-export-and-data-export"></a>Vergleich zwischen Legacy-Datenexport und Datenexport
 
 Die folgende Tabelle zeigt die Unterschiede zwischen dem [Legacy-Datenexport](howto-export-data-legacy.md) und den Features des neuen Datenexports:
 
 | Funktionen  | Legacy-Datenexport | Neuer Datenexport |
 | :------------- | :---------- | :----------- |
-| Verfügbare Datentypen | Telemetrie, Geräte, Gerätevorlagen | Telemetrie, Eigenschaftsänderungen |
+| Verfügbare Datentypen | Telemetrie, Geräte, Gerätevorlagen | Telemetriedaten, Eigenschaftsänderungen, Änderungen des Gerätelebenszyklus, Änderungen des Gerätevorlagenlebenszyklus |
 | Filterung | Keiner | Hängt vom exportierten Datentyp ab. Für Telemetrie, Filtern nach Telemetrie, Nachrichteneigenschaften, Eigenschaftswerte |
 | Anreicherungen | Keiner | Anreichern mit einer benutzerdefinierten Zeichenfolge oder einem Eigenschaftswert auf dem Gerät |
 | Destinations | Azure Event Hubs, Azure Service Bus-Warteschlangen und -Themen, Azure Blob Storage | Wie bei Legacy-Datenexport plus Webhooks|

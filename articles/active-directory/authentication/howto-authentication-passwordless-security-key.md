@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a29a2a7e379e253b52813eb7a76f669abbf668
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8779ee2d3c4d83c06a2c1803e65219d43f0ef14
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653829"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275803"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln 
 
@@ -89,6 +89,8 @@ Wenn Sie Feedback geben möchten oder Probleme mit diesem Feature auftreten, tei
 ### <a name="security-key-provisioning"></a>Bereitstellung von Sicherheitsschlüsseln
 
 Die Administratorbereitstellung und Bereitstellungsaufhebung von Sicherheitsschlüsseln ist nicht verfügbar.
+
+**Hinweis:** Die zwischengespeicherte FIDO2-Anmeldung ist bei in Azure AD eingebundenen Hybridcomputern nicht erfolgreich. Hierbei handelt es sich um ein spezifisches Problem der Windows 10-Version 20H2 (wenn LOS zu DC nicht verfügbar ist). Dies wird derzeit vom Entwicklungsteam untersucht.
 
 ### <a name="upn-changes"></a>Änderungen des Benutzerprinzipalnamens
 

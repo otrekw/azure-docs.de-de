@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: c11176f0c7760e76b755406bda96b72b302f8857
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102506938"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169571"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Erstellen eines Computeclusters für Azure Machine Learning
 
@@ -44,11 +44,9 @@ Computecluster können Aufträge sicher in einer [virtuellen Netzwerkumgebung](h
 
 ## <a name="limitations"></a>Einschränkungen
 
-* **Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für die gleichen Compute-Ressourcen** in Ihrem Arbeitsbereich. Beispiel: Anfügen eines Computeclusters an einen Arbeitsbereich unter Verwendung von zwei unterschiedlichen Namen. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
-
-    Falls Sie ein Computeziel erneut anfügen möchten (etwa zum Ändern der Clusterkonfigurationseinstellungen), müssen Sie zunächst die vorhandene Anfügung entfernen.
-
 * Einige der in diesem Dokument aufgeführten Szenarien sind als __Vorschau__ gekennzeichnet. Vorschaufunktionen werden ohne Vereinbarung zum Servicelevel bereitgestellt und sind nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+* Zurzeit wird nur die Erstellung (und nicht Aktualisierung) von Clustern über ARM-Vorlagen [https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces/computes?tabs=json ] unterstützt. Zum Aktualisieren von Compute empfiehlt es sich, das SDK, die CLI oder die UX für den Moment zu verwenden.
 
 * Bei Azure Machine Learning Compute gelten Standardgrenzwerte, beispielsweise für die Anzahl von Kernen, die zugeordnet werden können. Weitere Informationen finden Sie unter [Verwalten und Anfordern von Kontingenten für Azure-Ressourcen](how-to-manage-quotas.md).
 

@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: Dokumentation zur räumlichen Analyse
+summary: Der Dienst für räumliche Analysen unterstützt Unternehmen dabei, den Wert ihrer physischen Plätze zu maximieren, indem man die Bewegungen und Präsenz der Menschen in einem bestimmten Bereich versteht. Das Feature bietet Ihnen die Möglichkeit, Videos von Überwachungskameras zu erfassen, KI-Vorgänge durchzuführen, um Erkenntnisse aus Videostreams zu gewinnen, und Ereignisse zu generieren, die von anderen Systemen verwendet werden können.
+metadata:
+  title: 'Dokumentation zur räumlichen Analyse: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  description: Der Dienst für räumliche Analysen unterstützt Unternehmen dabei, den Wert ihrer physischen Plätze zu maximieren, indem die Bewegungen und Präsenz der Menschen in einem bestimmten Bereich nachvollzogen werden. Das Feature bietet Ihnen die Möglichkeit, Videos von Überwachungskameras zu erfassen, KI-Vorgänge durchzuführen, um Erkenntnisse aus Videostreams zu gewinnen, und Ereignisse zu generieren, die von anderen Systemen verwendet werden können.
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: computer-vision
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 30/31/2021
+  ms.openlocfilehash: b57a90d1897fc7dce92cdebd0c0f81e9f59854b7
+  ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 04/03/2021
+  ms.locfileid: "106287476"
+landingContent:
+- title: Informationen zur räumlichen Analyse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht über die räumliche Analyse
+      url: intro-to-spatial-analysis-public-preview.md
+  - linkListType: quickstart
+    links:
+    - text: Einrichten des Hostcomputers und Ausführen des Containers
+      url: spatial-analysis-container.md
+- title: Entwickeln mit räumlicher Analyse
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren von Vorgängen
+      url: spatial-analysis-operations.md
+  - linkListType: concept
+    links:
+    - text: Anordnung von Zonen und Linien
+      url: spatial-analysis-zone-line-placement.md
+    - text: Kameraplatzierung
+      url: spatial-analysis-camera-placement.md
+    - text: Protokollierung und Problembehandlung
+      url: spatial-analysis-logging.md
+- title: Verantwortungsvolle Verwendung von KI
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Hinweis zur Transparenz für die räumliche Analyse
+      url: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+  - linkListType: concept
+    links:
+    - text: Verantwortungsvolle Verwendung bei der KI-Bereitstellung
+      url: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+    - text: Entwurfsrichtlinien für die Offenlegung
+      url: /legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/computer-vision/context/context
+    - text: Daten, Datenschutz und Sicherheit
+      url: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

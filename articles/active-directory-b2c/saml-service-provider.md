@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1035f43642f3884e7cc0f6ab47e9c9afd1f29170
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 652bc9a236a4e4b9d3f99dab640919f2be985984
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107045"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257720"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -47,7 +47,7 @@ Organisationen, die Azure AD B2C als Lösung für die Identitäts- und Zugriff
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](custom-policy-get-started.md) aus. Sie benötigen die benutzerdefinierte Richtlinie *SocialAndLocalAccounts* aus dem Starter Pack für benutzerdefinierte Richtlinien, die in diesem Artikel erläutert wird.
+* Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy) aus. Sie benötigen die benutzerdefinierte Richtlinie *SocialAndLocalAccounts* aus dem Starter Pack für benutzerdefinierte Richtlinien, die in diesem Artikel erläutert wird.
 * Grundlegendes Verständnis des SAML-Protokolls und Vertrautheit mit der SAML-Implementierung der Anwendung.
 * Eine als SAML-Anwendung konfigurierte Webanwendung. Für dieses Tutorial können Sie eine [SAML-Testanwendung][samltest] verwenden, die wir bereitstellen.
 
@@ -78,15 +78,35 @@ Damit eine Vertrauensstellung zwischen Ihrer Anwendung und Azure AD B2C herges
 
 | Verwendung | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| SAML-Antwortsignatur | Ja | Ein in Azure AD B2C gespeichertes Zertifikat mit einem privaten Schlüssel. Dieses Zertifikat wird von Azure AD B2C zum Signieren der SAML-Antwort verwendet, die an Ihre Anwendung gesendet wird. Ihre Anwendung liest den öffentlichen Azure AD B2C-Metadatenschlüssel, um die Signatur der SAML-Antwort zu überprüfen. |
+| SAML-Antwortsignatur | Ja  | Ein in Azure AD B2C gespeichertes Zertifikat mit einem privaten Schlüssel. Dieses Zertifikat wird von Azure AD B2C zum Signieren der SAML-Antwort verwendet, die an Ihre Anwendung gesendet wird. Ihre Anwendung liest den öffentlichen Azure AD B2C-Metadatenschlüssel, um die Signatur der SAML-Antwort zu überprüfen. |
+| Signieren von SAML-Assertionen | Ja | Ein in Azure AD B2C gespeichertes Zertifikat mit einem privaten Schlüssel. Dieses Zertifikat wird von Azure AD B2C zum Signieren der Assertion der SAML-Antwort verwendet. Der Teil `<saml:Assertion>` der SAML-Antwort.  |
 
 In einer Produktionsumgebung empfiehlt sich die Verwendung von Zertifikaten, die von einer öffentlichen Zertifizierungsstelle ausgestellt wurden. Sie können dieses Verfahren jedoch auch mit selbstsignierten Zertifikaten ausführen.
 
-### <a name="prepare-a-self-signed-certificate-for-saml-response-signing"></a>Vorbereiten eines selbstsignierten Zertifikats für die SAML-Antwortsignatur
+### <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
 
-Sie müssen ein SAML-Antwortsignaturzertifikat erstellen, damit Ihre Anwendung die Assertion von Azure AD B2C als vertrauenswürdig einstufen kann.
+Erstellen Sie ein SAML-Antwortsignaturzertifikat, um eine Vertrauensstellung zwischen Ihrer Anwendung und Azure AD B2C einzurichten. Dieses Zertifikat wird von Azure AD B2C zum Signieren der SAML-Antwort verwendet, die an Ihre Anwendung gesendet wird. Ihre Anwendung liest den öffentlichen Azure AD B2C-Metadatenschlüssel, um die Signatur der SAML-Antwort zu überprüfen. 
+
+> [!TIP]
+> Sie können den in diesem Abschnitt erstellten Richtlinienschlüssel für andere Zwecke verwenden, etwa für das Anmelden der [SAML-Assertion](saml-service-provider-options.md#saml-assertions-signature). 
+
+### <a name="obtain-a-certificate"></a>Beschaffung eines Zertifikats
 
 [!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
+
+### <a name="upload-the-certificate"></a>Hochladen des Zertifikats
+
+Sie müssen Ihr Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
+1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+1. Klicken Sie unter **Optionen** auf `Upload`.
+1. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `SamlIdpCert`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
+1. Navigieren Sie zur PFX-Datei Ihres Zertifikats mit dem privaten Schlüssel, und wählen Sie sie aus.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="enable-your-policy-to-connect-with-a-saml-application"></a>Aktivieren Ihrer Richtlinie für das Herstellen einer Verbindung mit einer SAML-Anwendung
 
@@ -111,6 +131,7 @@ Suchen Sie den Abschnitt `<ClaimsProviders>`, und fügen Sie den folgenden XML-C
       </Metadata>
       <CryptographicKeys>
         <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
       </CryptographicKeys>
       <InputClaims/>
       <OutputClaims/>
@@ -147,51 +168,6 @@ Sie können den Wert des `IssuerUri`-Metadatenelements im technischen Profil des
     </TechnicalProfile>
 ```
 
-#### <a name="sign-the-azure-ad-b2c-idp-saml-metadata-optional"></a>Signieren der SAML-IdP-Metadaten von Azure AD B2C (optional)
-
-Sie können Azure AD B2C anweisen, das zugehörige SAML-IdP-Metadatendokument zu signieren, sofern dies für die Anwendung erforderlich ist. Hierzu müssen Sie einen Signaturrichtlinienschlüssel für die SAML-IdP-Metadaten generieren und hochladen, wie unter [Vorbereiten eines selbstsignierten Zertifikats für die SAML-Antwortsignatur](#prepare-a-self-signed-certificate-for-saml-response-signing) beschrieben. Konfigurieren Sie dann das `MetadataSigning`-Metadatenelement im technischen Profil des SAML-Tokenausstellers. Das `StorageReferenceId`-Element muss auf den Namen des Richtlinienschlüssels verweisen.
-
-```xml
-<ClaimsProvider>
-  <DisplayName>Token Issuer</DisplayName>
-  <TechnicalProfiles>
-    <!-- SAML Token Issuer technical profile -->
-    <TechnicalProfile Id="Saml2AssertionIssuer">
-      <DisplayName>Token Issuer</DisplayName>
-      <Protocol Name="SAML2"/>
-      <OutputTokenFormat>SAML2</OutputTokenFormat>
-        ...
-      <CryptographicKeys>
-        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlMetadataCert"/>
-        ...
-      </CryptographicKeys>
-    ...
-    </TechnicalProfile>
-```
-
-#### <a name="sign-the-azure-ad-b2c-idp-saml-response-element-optional"></a>Signieren des SAML-IdP-Antwortelements von Azure AD B2C (optional)
-
-Sie können ein Zertifikat angeben, das zum Signieren der SAML-Nachrichten verwendet werden soll. Die Nachricht ist das `<samlp:Response>`-Element in der SAML-Antwort, die an die Anwendung gesendet wird.
-
-Zum Angeben eines Zertifikats müssen Sie einen Richtlinienschlüssel generieren und hochladen, wie unter [Vorbereiten eines selbstsignierten Zertifikats für die SAML-Antwortsignatur](#prepare-a-self-signed-certificate-for-saml-response-signing) beschrieben. Konfigurieren Sie dann das `SamlMessageSigning`-Metadatenelement im technischen Profil des SAML-Tokenausstellers. Das `StorageReferenceId`-Element muss auf den Namen des Richtlinienschlüssels verweisen.
-
-```xml
-<ClaimsProvider>
-  <DisplayName>Token Issuer</DisplayName>
-  <TechnicalProfiles>
-    <!-- SAML Token Issuer technical profile -->
-    <TechnicalProfile Id="Saml2AssertionIssuer">
-      <DisplayName>Token Issuer</DisplayName>
-      <Protocol Name="SAML2"/>
-      <OutputTokenFormat>SAML2</OutputTokenFormat>
-        ...
-      <CryptographicKeys>
-        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
-        ...
-      </CryptographicKeys>
-    ...
-    </TechnicalProfile>
-```
 ## <a name="configure-your-policy-to-issue-a-saml-response"></a>Konfigurieren Ihrer Richtlinie für das Ausstellen einer SAML-Antwort
 
 Da Ihre Richtlinie nun SAML-Antworten erstellen kann, müssen Sie die Richtlinie so konfigurieren, dass statt der standardmäßigen JWT-Antwort eine SAML-Antwort an Ihre Anwendung ausgegeben wird.

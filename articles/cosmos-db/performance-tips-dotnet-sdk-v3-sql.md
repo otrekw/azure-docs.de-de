@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 06fb087744ff4ecd96bee7a26e4a796e87866322
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1a6439cfa64257e80d113f01f4ed31d56d850ea3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433674"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226055"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,7 +69,7 @@ Wenn Sie auf einem hohen Durchsatzniveau oder bei Raten mit mehr als 50.000 Anf
 
 **Verbindungsrichtlinie: Verwenden des direkten Verbindungsmodus**
 
-Als Standardverbindungsmodus des .NET V3 SDK wird der direkte Modus verwendet. Sie konfigurieren den Verbindungsmodus beim Erstellen der `CosmosClient`-Instanz in `CosmosClientOptions`.  Weitere Informationen zu verschiedenen Konnektivitätsoptionen finden Sie im Artikel zu den [Konnektivitätsmodi](sql-sdk-connection-modes.md).
+Als Standardverbindungsmodus des .NET V3 SDK wird der direkte Modus mit TCP-Protokoll verwendet. Sie konfigurieren den Verbindungsmodus beim Erstellen der `CosmosClient`-Instanz in `CosmosClientOptions`.  Weitere Informationen zu verschiedenen Konnektivitätsoptionen finden Sie im Artikel zu den [Konnektivitätsmodi](sql-sdk-connection-modes.md).
 
 ```csharp
 string connectionString = "<your-account-connection-string>";
@@ -215,7 +215,7 @@ Der Durchsatz wird basierend auf der für jeden Container festgelegten Anzahl vo
 
 Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten für einen Vorgang verbraucht werden. Die Anzahl von Prädikaten, die Art der Prädikate, die Anzahl von UDF-Dateien und die Größe des Quelldatasets beeinflussen die Kosten von Abfragevorgängen.
 
-Untersuchen Sie zum Ermitteln des Aufwands für einen Vorgang (Erstellen, Aktualisieren oder Löschen) den Header [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (oder die entsprechende `RequestCharge`-Eigenschaft in `ResourceResponse\<T>` oder `FeedResponse\<T>` im .NET SDK), um die Anzahl von Anforderungseinheiten zu ermitteln, die von diesen Vorgängen verbraucht werden:
+Untersuchen Sie zum Ermitteln des Aufwands für einen Vorgang (Erstellen, Aktualisieren oder Löschen) den Header [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (oder die entsprechende `RequestCharge`-Eigenschaft in `ResourceResponse<T>` oder `FeedResponse<T>` im .NET SDK), um die Anzahl von Anforderungseinheiten zu ermitteln, die von diesen Vorgängen verbraucht werden:
 
 ```csharp
 // Measure the performance (Request Units) of writes

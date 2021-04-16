@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine Übersicht über verfügbare Azure Relay
 ms.topic: article
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 98bbb1ecc7e870ff9b7687284e7087d44375d275
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 391bd74f2bce8721b6d6359f3990af494277aa45
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935720"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312993"
 ---
 # <a name="available-relay-apis"></a>Verfügbare Relay-APIs
 
@@ -49,4 +49,4 @@ Ausführliche Informationen zu diesen Modulen finden Sie im GitHub-Repository [a
 
 Weitere Informationen zu Azure Relay finden Sie unter diesen Links:
 * [Was ist Azure Relay?](relay-what-is-it.md)
-* [Relay – häufig gestellte Fragen](relay-faq.md)
+* [Relay – häufig gestellte Fragen](relay-faq.yml)

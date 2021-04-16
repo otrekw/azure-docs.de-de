@@ -3,13 +3,13 @@ title: Eingehende/ausgehende IP-Adressen
 description: Hier wird beschrieben, wie ein- und ausgehende IP-Adressen in Azure App Service verwendet werden, wann sie sich ändern und wie Sie diese Adressen für Ihre App ermitteln.
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: seodec18
+ms.openlocfilehash: 4237e51251a7ece05800aa7efa328a9c6cf65e76
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746146"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104591366"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Ein- und ausgehende IP-Adressen in Azure App Service
 
@@ -19,7 +19,7 @@ Mit Ausnahme von [App Service-Umgebungen](environment/intro.md) ist [Azure App S
 
 ## <a name="how-ip-addresses-work-in-app-service"></a>Funktionsweise von IP-Adressen in App Service
 
-Eine App Service-App wird in einem App Service-Plan ausgeführt, und App Service-Pläne werden in einer der Bereitstellungseinheiten in der Azure-Infrastruktur (intern als Webspace bezeichnet) bereitgestellt. Jeder Bereitstellungseinheit werden bis zu fünf virtuelle IP-Adressen zugewiesen, darunter eine öffentliche IP-Adresse für eingehenden Datenverkehr und vier IP-Adressen für ausgehenden Datenverkehr. Alle App Service-Pläne in derselben Bereitstellungseinheit und App-Instanzen, die darin ausgeführt werden, verwenden dieselbe Gruppe von virtuellen IP-Adressen. Für eine App Service-Umgebung (ein App Service-Plan in der [Isolierten Ebene](https://azure.microsoft.com/pricing/details/app-service/)) ist der App Service-Plan die Bereitstellungseinheit selbst, sodass ihr die virtuellen IP-Adressen zugewiesen werden.
+Eine App Service-App wird in einem App Service-Plan ausgeführt, und App Service-Pläne werden in einer der Bereitstellungseinheiten in der Azure-Infrastruktur (intern als Webspace bezeichnet) bereitgestellt. Jeder Bereitstellungseinheit werden mehrere virtuelle IP-Adressen zugewiesen, darunter eine öffentliche IP-Adresse für eingehenden Datenverkehr und mehrere [IP-Adressen für ausgehenden Datenverkehr](#find-outbound-ips). Alle App Service-Pläne in derselben Bereitstellungseinheit und App-Instanzen, die darin ausgeführt werden, verwenden dieselbe Gruppe von virtuellen IP-Adressen. Für eine App Service-Umgebung (ein App Service-Plan in der [Isolierten Ebene](https://azure.microsoft.com/pricing/details/app-service/)) ist der App Service-Plan die Bereitstellungseinheit selbst, sodass ihr die virtuellen IP-Adressen zugewiesen werden.
 
 Da Sie einen App Service-Plan nicht zwischen Bereitstellungseinheiten verschieben dürfen, bleiben die Ihrer Anwendung zugewiesenen virtuellen IP-Adressen in der Regel gleich, aber es gibt Ausnahmen.
 
@@ -51,13 +51,13 @@ Der Satz der ausgehenden IP-Adressen für Ihre Anwendung ändert sich, wenn Sie 
 
 - Sie löschen eine App und erstellen sie in einer anderen Ressourcengruppe neu (die Bereitstellungseinheit kann sich ändern).
 - Sie löschen die letzte App in einer Kombination aus Ressourcengruppe _und_ Region und erstellen sie neu (die Bereitstellungseinheit kann sich ändern).
-- Skalieren Sie die App zwischen den niedrigeren Tarifen ( **Basic** , **Standard** und **Premium** ) und dem Tarif **Premium V2** (IP-Adressen können dem Satz hinzugefügt oder aus ihm entfernt werden).
+- Skalieren Sie die App zwischen den niedrigeren Tarifen (**Basic**, **Standard** und **Premium**) und dem Tarif **Premium V2** (IP-Adressen können dem Satz hinzugefügt oder aus ihm entfernt werden).
 
 Sie finden die Sammlung aller möglichen IP-Ausgangsadressen, die von Ihrer App verwendet werden können, indem Sie nach der Eigenschaft `possibleOutboundIpAddresses` suchen, oder im Feld **Zusätzliche ausgehende IP-Adressen** auf dem Blatt **Eigenschaften** im Azure-Portal. Siehe [Ermitteln der ausgehenden IP-Adressen](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Ermitteln der ausgehenden IP-Adressen
 
-Um die momentan von Ihrer App verwendeten ausgehenden IP-Adressen zu ermitteln, klicken Sie im Azure-Portal im linken Navigationsbereich Ihrer App auf **Eigenschaften** . Sie sind im Feld **Ausgehende IP-Adressen** aufgelistet.
+Um die momentan von Ihrer App verwendeten ausgehenden IP-Adressen zu ermitteln, klicken Sie im Azure-Portal im linken Navigationsbereich Ihrer App auf **Eigenschaften**. Sie sind im Feld **Ausgehende IP-Adressen** aufgelistet.
 
 Die gleichen Informationen erhalten Sie, indem Sie den folgenden Befehl in der [Cloud Shell](../cloud-shell/quickstart.md) ausführen.
 
@@ -69,7 +69,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-Um unabhängig vom Tarif _alle_ möglichen IP-Ausgangsadressen für Ihre App zu finden, klicken Sie im linken Navigationsbereich Ihrer App auf **Eigenschaften** . Sie sind im Feld **Zusätzliche ausgehende IP-Adressen** aufgelistet.
+Um unabhängig vom Tarif _alle_ möglichen IP-Ausgangsadressen für Ihre App zu finden, klicken Sie im linken Navigationsbereich Ihrer App auf **Eigenschaften**. Sie sind im Feld **Zusätzliche ausgehende IP-Adressen** aufgelistet.
 
 Die gleichen Informationen erhalten Sie, indem Sie den folgenden Befehl in der [Cloud Shell](../cloud-shell/quickstart.md) ausführen.
 

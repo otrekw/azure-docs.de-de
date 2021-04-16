@@ -3,12 +3,12 @@ title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketpl
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in Azure Lighthouse durchführt.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 3f790c37a36fa1c5092a50c02429260825158c72
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: f59d9708925b52bcf9432663fe6d3137a54b37ad
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491354"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107447"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -16,7 +16,7 @@ In diesem Artikel erfahren Sie, wie Sie ein öffentliches oder privates Angebot 
 
 ## <a name="publishing-requirements"></a>Veröffentlichungsbedingungen
 
-Sie benötigen ein gültiges [Konto in Partner Center](../../marketplace/partner-center-portal/create-account.md), um Angebote zu erstellen und zu veröffentlichen. Wenn Sie noch nicht über ein Konto verfügen, führt Sie der [Registrierungsvorgang](https://aka.ms/joinmarketplace) durch die Schritte zum Erstellen eines Kontos in Partner Center und die Registrierung beim kommerziellen Marketplace-Programm.
+Sie benötigen ein gültiges [Konto in Partner Center](../../marketplace/create-account.md), um Angebote zu erstellen und zu veröffentlichen. Wenn Sie noch nicht über ein Konto verfügen, führt Sie der [Registrierungsvorgang](https://aka.ms/joinmarketplace) durch die Schritte zum Erstellen eines Kontos in Partner Center und die Registrierung beim kommerziellen Marketplace-Programm.
 
 Gemäß den [Zertifizierungsanforderungen für Angebote für verwaltete Dienste](/legal/marketplace/certification-policies#700-managed-services) müssen Sie über die [Cloudplattform-Kompetenzebene Silver oder Gold](/partner-center/learn-about-competencies) verfügen oder ein [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) sein, um ein Angebot für verwaltete Dienste zu veröffentlichen. Sie müssen außerdem [eine Leadzielgruppe eingeben, die zur Erstellung eines Datensatzes in Ihrem CRM-System führt](../../marketplace/plan-managed-service-offer.md#customer-leads), wann immer ein Kunde Ihr Angebot bereitstellt.
 
@@ -26,7 +26,7 @@ Die folgende Tabelle kann bei der Ermittlung helfen, ob das Onboarding der Kunde
 
 |**Aspekt**  |**Angebot eines verwalteten Diensts**  |**ARM-Vorlagen**  |
 |---------|---------|---------|
-|Erfordert ein [Partner Center-Konto](../../marketplace/partner-center-portal/create-account.md)   |Ja         |Nein        |
+|Erfordert ein [Partner Center-Konto](../../marketplace/create-account.md)   |Ja         |Nein        |
 |Erfordert eine [Silver oder Gold Cloud Platform-Kompetenzebene](/partner-center/learn-about-competencies) oder ein [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp)      |Ja         |Nein         |
 |Verfügbar für neue Kunden über Azure Marketplace     |Ja     |Nein       |
 |Das Angebot kann auf bestimmte Kunden beschränkt werden     |Ja (nur bei privaten Angeboten, die nicht mit Abonnements genutzt werden können, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) abgeschlossen wurden)         |Ja         |

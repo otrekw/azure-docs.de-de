@@ -5,21 +5,61 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d560b261e058d01040616f3c59ede60e5986c672
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4ab2c599bea4b2e3e682755a80a2ee348e4de7ef
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666980"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606775"
 ---
 # <a name="scaling-hpc-applications"></a>Skalieren von HPC-Anwendungen
 
 Um beim zentralen und horizontalen Skalieren von HPC-Anwendungen in Azure eine optimale Leistung zu erzielen, müssen für die betreffende Workload Experimente zur Leistungsoptimierung durchgeführt werden. In diesem Abschnitt sowie auf den spezifischen Seiten der jeweiligen VM-Serie finden Sie allgemeine Informationen zum Skalieren Ihrer Anwendungen.
 
+## <a name="application-setup"></a>Anwendungseinrichtung
+Das [azurehpc](https://github.com/Azure/azurehpc)-Repository enthält viele Beispiele für:
+- Optimale Einrichtung und Ausführung von [Anwendungen](https://github.com/Azure/azurehpc/tree/master/apps).
+- Konfiguration von [Dateisystemen und Clustern](https://github.com/Azure/azurehpc/tree/master/examples).
+- [Tutorials](https://github.com/Azure/azurehpc/tree/master/tutorials) zum einfachen Einstieg in einige gängige Anwendungs-Workflows.
+
+## <a name="optimally-scaling-mpi"></a>Optimale MPI-Skalierung 
+
+Die folgenden Vorschläge dienen zur Optimierung der Skalierungseffizienz, Leistung und Konsistenz von Anwendungen:
+
+- Verwenden Sie für kleinere Aufträge (d. h. weniger als 256.000 Verbindungen) die folgende Option:
+   ```bash
+   UCX_TLS=rc,sm
+   ```
+
+- Verwenden Sie für größere Aufträge (d. h. mehr als 256.000 Verbindungen) die folgende Option:
+   ```bash
+   UCX_TLS=dc,sm
+   ```
+
+- Berechnen Sie die Anzahl der Verbindungen für Ihren MPI-Auftrag wie folgt:
+   ```bash
+   Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
+   ```
+
+## <a name="adaptive-routing"></a>Adaptives Routing
+Adaptives Routing (AR) ermöglicht Azure Virtual Machines (VMs), EDR und auszuführen, und HDR InfiniBand das automatische Erkennen und Vermeiden von Netzwerküberlastung durch dynamisches Auswählen optimaler Netzwerkpfade. Demzufolge bietet AR eine verbesserte Latenz und Bandbreite im InfiniBand-Netzwerk, das wiederum höhere Leistung und Skalierbarkeit ermöglicht. Ausführlichere Informationen finden Sie im [Artikel TechCommunity](https://techcommunity.microsoft.com/t5/azure-compute/adaptive-routing-on-azure-hpc/ba-p/1205217).
+
+## <a name="process-pinning"></a>Feste Prozesszuordnung
+
+- Ordnen Sie Prozesse Kernen mithilfe eines Ansatzes für sequenzielle Zuordnung zu (anstelle eines Ansatzes für einen automatischen Ausgleich). 
+- Die Bindung nach NUMA/Kern/HW-Thread ist besser als die Standardbindung.
+- Verwenden Sie für parallele Hybridanwendungen (OpenMP + MPI) vier Threads und einen MPI-Rang pro CCX auf VM-Größen der HB- und HBv2-Serien.
+- Experimentieren Sie bei reinen MPI-Anwendungen mit einem bis vier MPI-Rängen pro CCX auf VM-Größen der HB- und HBv2-Serien, um eine optimale Leistung zu erzielen.
+- Anwendungen, die in puncto Speicherbandbreite besonders empfindlich sind, profitieren ggf. von der Verwendung einer geringeren Anzahl von Kernen pro CCX. Bei diesen Anwendungen lässt sich durch die Verwendung von drei oder zwei Kernen pro CCX unter Umständen das Ringen um Speicherbandbreite minimieren und in der Praxis eine höhere Leistung oder eine höhere Skalierungskonsistenz erzielen. Von diesem Ansatz kann insbesondere MPI Allreduce profitieren.
+- Bei deutlich umfangreicheren Ausführungen empfiehlt sich die Verwendung von UD-Transporten oder Hybridtransporten (RC + UD). Dies wird von vielen MPI-/Runtimebibliotheken intern gehandhabt (beispielsweise bei UCX oder MVAPICH2). Überprüfen Sie Ihre Transportkonfigurationen für umfangreiche Ausführungen.
+
 ## <a name="compiling-applications"></a>Kompilieren von Anwendungen
+<br>
+<details>
+<summary>Zum Erweitern klicken</summary>
 
 Anwendungen müssen zwar nicht unbedingt mit entsprechenden Optimierungsflags kompiliert werden, diese Vorgehensweise bietet jedoch die beste Leistung beim zentralen Hochskalieren von virtuellen Computern der HB- und HC-Serie.
 
@@ -37,7 +77,7 @@ Der FLANG-Compiler wurde der AOCC erst vor Kurzem (im April 2018) hinzugefügt 
 
 ### <a name="dragonegg"></a>DragonEgg
 
-DragonEgg ist ein GCC-Plug-In, das die GCC-Optimierer und -Codegeneratoren durch Optimierer und Codegeneratoren aus dem LLVM-Projekt ersetzt. DragonEgg ist in AOCC enthalten. Es kann mit gcc-4.8.x verwendet werden, wurde für Ziele vom Typ x86-32/x86-64 getestet und bereits erfolgreich auf verschiedenen Linux-Plattformen eingesetzt.
+DragonEgg ist ein GCC-Plug-In, das die GCC-Optimierer und -Codegeneratoren durch Optimierer und Codegeneratoren aus dem LLVM-Projekt ersetzt. DragonEgg ist in AOCC enthalten. Das Plug-In kann mit gcc-4.8.x verwendet werden, wurde für Ziele vom Typ x86-32/x86-64 getestet und wird bereits erfolgreich auf verschiedenen Linux-Plattformen eingesetzt.
 
 GFortran ist das eigentliche Front-End für Fortran-Programme und dient zur Vorverarbeitung und (semantischen) Analyse beim Generieren der GCC GIMPLE-IR (Intermediate Representation). DragonEgg ist ein GNU-Plug-In für den GFortran-Kompilierungsfluss. Es implementiert die GNU-Plug-In-API. Mit der Plug-In-Architektur wird DragonEgg zum Compilertreiber, der die verschiedenen Kompilierungsphasen steuert.  Nach Ausführung der Download- und Installationsanweisungen kann DragonEgg wie folgt aufgerufen werden: 
 
@@ -68,17 +108,7 @@ Für HPC empfiehlt AMD mindestens die Version 7.3 des GCC-Compilers. Ältere Ve
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 ```
-
-## <a name="scaling-applications"></a>Skalieren von Anwendungen 
-
-Die folgenden Vorschläge dienen zur Optimierung der Skalierungseffizienz, Leistung und Konsistenz von Anwendungen:
-
-* Ordnen Sie Prozesse fest den Kernen 0 bis 59 zu, und verwenden Sie dazu eine sequenzielle Zuordnung (anstelle eines automatischen Ausgleichs). 
-* Die Bindung nach NUMA/Kern/HW-Thread ist besser als die Standardbindung.
-* Verwenden Sie bei parallelen Hybridanwendungen (OpenMP + MPI) vier Threads und einen MPI-Rang pro CCX.
-* Experimentieren Sie bei reinen MPI-Anwendungen mit einem bis vier MPI-Rängen pro CCX, um eine optimale Leistung zu erzielen.
-* Anwendungen, die in puncto Speicherbandbreite besonders empfindlich sind, profitieren ggf. von der Verwendung einer geringeren Anzahl von Kernen pro CCX. Bei diesen Anwendungen lässt sich durch die Verwendung von drei oder zwei Kernen pro CCX unter Umständen das Ringen um Speicherbandbreite minimieren und in der Praxis eine höhere Leistung oder eine höhere Skalierungskonsistenz erzielen. Davon kann insbesondere MPI Allreduce profitieren.
-* Bei deutlich umfangreicheren Ausführungen empfiehlt sich die Verwendung von UD-Transporten oder Hybridtransporten (RC + UD). Dies wird von vielen MPI-/Runtimebibliotheken intern gehandhabt (beispielsweise bei UCX oder MVAPICH2). Überprüfen Sie Ihre Transportkonfigurationen für umfangreiche Ausführungen.
+</details>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

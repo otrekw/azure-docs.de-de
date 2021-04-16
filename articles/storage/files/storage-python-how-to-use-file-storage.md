@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
-ms.openlocfilehash: 8bef69037fad8bf8ee9537e90f26ca967560b9d2
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d45ce3a782d7ee145f769283b82e34647c78f26e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876096"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799869"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Entwickeln für Azure Files mit Python
 
@@ -37,11 +37,11 @@ Lernen Sie die Grundlagen der Verwendung von Python zur Entwicklung von Apps ode
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-Die [Azure File Storage-Clientbibliothek v12.x für Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share) erfordert Python 2.7 oder 3.5.
+Für die [Azure File Storage-Clientbibliothek v12.x für Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share) wird Python 2.7 oder 3.6 oder höher benötigt.
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Das [Azure Storage SDK für Python](https://github.com/azure/azure-storage-python) erfordert Python 2.7, 3.3, 3.4, 3.5 oder 3.6.
+Für das [Azure Storage-SDK für Python](https://github.com/azure/azure-storage-python) wird Python 2.7 oder 3.6 oder höher benötigt.
 
 ---
 

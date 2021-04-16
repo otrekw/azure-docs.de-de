@@ -3,16 +3,16 @@ title: Konfigurieren von NSX-Netzwerkkomponenten in Azure VMware Solution
 description: Erfahren Sie, wie Sie mit der Azure VMware Solution-Konsole NSX-T-Netzwerksegmente konfigurieren können.
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a4702efe8ea26234d074f421d2e6eab871eba5f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716920"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733096"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>Konfigurieren von NSX-Netzwerkkomponenten in Azure VMware Solution
 
-Eine private Azure VMware Solution-Cloud ist standardmäßig als softwaredefiniertes Netzwerk (SDDC) in NSX-T enthalten. Sie wird vorab mit einem NSX-T Tier-0-Gateway im Aktiv/Aktiv-Modus und einem standardmäßigen NSX-T Tier-1-Gateway im Aktiv/Standby-Modus bereitgestellt.  Mit diesen Gateways können Sie eine Verbindung der Segmente herstellen (logische Switches) und Ost-West- und Nord-Süd-Konnektivität bereitstellen. 
+Eine private Azure VMware Solution-Cloud ist standardmäßig als softwaredefiniertes Netzwerk (SDDC) in NSX-T enthalten. Sie wird vorab mit einem NSX-T Tier-0-Gateway im **Aktiv/Aktiv-Modus** und einem standardmäßigen NSX-T Tier-1-Gateway im Aktiv/Standby-Modus bereitgestellt.  Mit diesen Gateways können Sie eine Verbindung der Segmente herstellen (logische Switches) und Ost-West- und Nord-Süd-Konnektivität bereitstellen. 
 
 Nach Bereitstellen der privaten Azure VMware Solution-Cloud können Sie die erforderlichen NSX-T-Objekte über die Azure VMware Solution-Konsole unter **Workloadnetzwerk** konfigurieren.  Die Konsole zeigt die vereinfachte Ansicht von NSX-T-Vorgängen an, die ein VMware-Administrator täglich benötigt, und die für Benutzer bestimmt ist, die mit NSX-T nicht vertraut sind.  
 

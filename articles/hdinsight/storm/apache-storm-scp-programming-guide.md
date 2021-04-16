@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c993b3f70f609fb79c51ba9be08fa3d5dc7e8317
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932645"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864107"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>SCP-Programmierleitfaden für Apache Storm in Azure HDInsight
 
@@ -28,7 +28,7 @@ Die Daten in SCP sind als fortlaufende Streams von Tupeln modelliert. In der Reg
 1. Sie werden von der in einer Storm-Topologie gehosteten Geschäftslogik aufgenommen und transformiert.
 1. Ihre Ausgabe wird entweder als Tupel an ein anderes SCP-System weitergeleitet oder für sie wird ein Commit ausgeführt wie für verteilte Dateisysteme und Datenbanken wie SQL Server.
 
-![Diagramm mit einer Warteschlange mit Weiterleitung der Daten zur Verarbeitung, die wiederum einen Datenspeicher versorgt](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png" alt-text="Diagramm mit einer Warteschlange mit Weiterleitung der Daten zur Verarbeitung, die wiederum einen Datenspeicher versorgt" border="false":::
 
 Eine Anwendungstopologie in Storm definiert einen Berechnungsgraphen. Jeder Knoten in einer Topologie enthält Verarbeitungslogik. Verknüpfungen zwischen Knoten zeigen den Datenfluss an.
 
@@ -152,7 +152,7 @@ public interface ISCPBatchBolt : ISCPPlugin
 
 Die Methode **Execute** wird aufgerufen, wenn ein neues Tupel den Bolt erreicht. Die Methode **FinishBatch** wird aufgerufen, wenn diese Transaktion endet. Der Eingabeparameter *parms* ist für den zukünftigen Gebrauch reserviert.
 
-Für eine transaktionale Topologie ist **StormTxAttempt** eine wichtige Klasse. Sie umfasst zwei Member: **TxId** und **AttemptId**. Das Member **TxId** identifiziert eine bestimmte Transaktion. Eine Transaktion kann mehrmals wiederholt werden, wenn sie fehlerhaft ist und erneut wiedergegeben wird.
+Für eine transaktionale Topologie ist **StormTxAttempt** eine wichtige Klasse. Sie verfügt über zwei Member: **TxId** und **AttemptId**. Das Member **TxId** identifiziert eine bestimmte Transaktion. Eine Transaktion kann mehrmals wiederholt werden, wenn sie fehlerhaft ist und erneut wiedergegeben wird.
 
 SCP.NET erstellt ein neues **ISCPBatchBolt**-Objekt für jedes **StormTxAttempt**-Objekt, analog zum Verhalten von Storm in Java. Der Zweck dieses Entwurfs ist die Unterstützung der parallelen Transaktionsverarbeitung. Nachdem ein Transaktionsversuch abgeschlossen ist, wird das entsprechende **ISCPBatchBolt**-Objekt zerstört und eine Garbage Collection durchgeführt.
 
@@ -476,7 +476,7 @@ Der *classpath*-Parameter ist ebenfalls optional. Er gibt den Java-Klassenpfad a
 
 ### <a name="input-and-output-schema-declarations"></a>Deklarieren von Ein- und Ausgabeschema
 
-Ihre C#-Prozesse können Tupel ausgeben. Dazu serialisiert die Plattform Tupel in **byte[]** -Objekte und überträgt die Objekte auf die Java-Seite. Storm überträgt diese Tupel dann an die Ziele.
+Ihre C#-Prozesse können Tupel ausgeben. Dazu serialisiert die Plattform Tupel in **byte[]**-Objekte und überträgt die Objekte auf die Java-Seite. Storm überträgt diese Tupel dann an die Ziele.
 
 In Downstreamkomponenten erhalten die C#-Prozesse Tupel von der Java-Seite zurück und konvertieren sie in die ursprünglichen Typen der Plattform. All diese Vorgänge werden von der Plattform ausgeblendet.
 
@@ -521,9 +521,9 @@ Das Ausgeben an einen nicht vorhandenen Datenstrom führt zu Laufzeitausnahmen.
 
 ### <a name="fields-grouping"></a>Gruppieren von Feldern
 
-Das integrierte Gruppieren von Feldern in Storm funktioniert in SCP.NET nicht ordnungsgemäß. Auf der Java-Proxyseite ist der Datentyp aller Felder tatsächlich **byte[]** . Die Feldgruppierung verwendet den Hashcode des **byte[]** -Objekts, um die Gruppierung vorzunehmen. Der Hashcode ist die Adresse dieses Objekts im RAM. Die Gruppierung ist also für Multibyte-Objekte, die zwar denselben Inhalt, jedoch nicht dieselbe Adresse haben, falsch.
+Das integrierte Gruppieren von Feldern in Storm funktioniert in SCP.NET nicht ordnungsgemäß. Auf der Java-Proxyseite ist der Datentyp aller Felder tatsächlich **byte[]**. Die Feldgruppierung verwendet den Hashcode des **byte[]**-Objekts, um die Gruppierung vorzunehmen. Der Hashcode ist die Adresse dieses Objekts im RAM. Die Gruppierung ist also für Multibyte-Objekte, die zwar denselben Inhalt, jedoch nicht dieselbe Adresse haben, falsch.
 
-SCP.NET fügt eine angepasste Gruppierungsmethode hinzu und verwendet den Inhalt des **byte[]** -Objekts für die Gruppierung. In einer Spezifikationsdatei sieht die Syntax wie in diesem Beispiel aus:
+SCP.NET fügt eine angepasste Gruppierungsmethode hinzu und verwendet den Inhalt des **byte[]**-Objekts für die Gruppierung. In einer Spezifikationsdatei sieht die Syntax wie in diesem Beispiel aus:
 
 ```csharp
 (bolt-spec
@@ -570,7 +570,7 @@ Hier ist `examples\HybridTopology\java\target\` der Ordner, der die JAR-Datei f�
 
 Eine SCP-Komponente umfasst die Java-Seite und die C#-Seite. Um mit den nativen Java-Spouts/-Bolts zu interagieren, müssen Serialisierung und Deserialisierung zwischen der Java-Seite und der C#-Seite erfolgen, wie in der folgenden Grafik dargestellt:
 
-![Diagramm der Java-Komponente, die an die SCP-Komponente sendet, die dann an eine andere Java-Komponente sendet](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png" alt-text="Diagramm der Java-Komponente, die an die SCP-Komponente sendet, die dann an eine andere Java-Komponente sendet" border="false":::
 
 #### <a name="serialization-in-the-java-side-and-deserialization-in-the-c-side"></a>Serialisierung auf der Java-Seite und Deserialisierung auf der C#-Seite
 
@@ -690,7 +690,7 @@ Kompilieren Sie im Hostmodus Ihren Code als DLL für den Aufruf durch die SCP-Pl
 
 Das folgende einfache HelloWorld-Beispiel bietet einen Eindruck von SCP.NET. Verwendet werden eine nicht transaktionale Topologie mit einem Spout namens **generator** und zwei Bolts namens **splitter** und **counter**. Der Spout **generator** erzeugt zufällige Sätze und übermittelt diese Sätze an **splitter**. Der Bolt **splitter** teilt die Sätze in Wörter auf und übermittelt diese Wörter an den Bolt **counter**. Der Bolt **counter** verwendet ein Wörterbuch, um das Auftreten der einzelnen Wörter aufzuzeichnen.
 
-Dieses Beispiel verfügt über zwei Spezifikationsdateien: „HelloWorld.spec“ und „HelloWorld\_EnableAck.spec“. Der C#-Code kann ermitteln, ob die Bestätigung aktiviert ist, indem das `pluginConf`-Objekt von der Java-Seite abgerufen wird.
+Für dieses Beispiel gibt es zwei Spezifikationsdateien: „HelloWorld.spec“ und „HelloWorld\_EnableAck.spec“. Der C#-Code kann ermitteln, ob die Bestätigung aktiviert ist, indem das `pluginConf`-Objekt von der Java-Seite abgerufen wird.
 
 ```csharp
 /* demo how to get pluginConf info */
@@ -725,7 +725,7 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 
 ### <a name="helloworldtx"></a>HelloWorldTx
 
-Das folgende Beispiel „HelloWorldTx“ verdeutlicht die Implementierung einer transaktionalen Topologie. Das Beispiel enthält einen Spout mit dem Namen **generator**, einen Batch-Bolt mit dem Namen **partial-count** und einen Commit-Bolt mit dem Namen **count-sum**. Das Beispiel verfügt auch über drei vorhandene Textdateien: DataSource0.txt, DataSource1.txt und DataSource2.txt.
+Das folgende Beispiel „HelloWorldTx“ verdeutlicht die Implementierung einer transaktionalen Topologie. Das Beispiel enthält einen Spout mit dem Namen **generator**, einen Batch-Bolt mit dem Namen **partial-count** und einen Commit-Bolt mit dem Namen **count-sum**. Das Beispiel enthält auch drei bereits vorhandene Textdateien: „DataSource0.txt“, „DataSource1.txt“ und „DataSource2.txt“.
 
 Für jede Transaktion wählt der Spout **generator** nach dem Zufallsprinzip zwei der drei vorhandenen Dateien aus und übermittelt die beiden Dateinamen an den Bolt **partial-count**. Der Bolt **partial-count**:
 
@@ -792,5 +792,5 @@ Beispiele für Apache Storm-Topologien, die mit SCP erstellt wurden, finden Sie 
 
 * [Entwickeln von C#-Topologien für Apache Storm in HDInsight mithilfe von Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
 * [Verarbeitung von Ereignissen von Azure Event Hubs mit Apache Storm auf HDInsight](apache-storm-develop-csharp-event-hub-topology.md)
-* [Verarbeiten von Fahrzeugsensordaten von Event Hubs mit Apache Storm auf HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
+* [Verarbeiten von Fahrzeugsensordaten von Event Hubs mit Apache Storm in HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
 * [Extrahieren, Transformieren und Laden (ETL) von Azure Event Hubs auf Apache HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)

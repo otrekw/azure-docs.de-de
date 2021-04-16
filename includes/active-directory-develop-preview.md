@@ -5,11 +5,11 @@ ms.date: 10/22/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: include
-ms.openlocfilehash: 9998fc6a1b37562c55e366c47d404d0668231cfe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ea53e8148744bdb5934c0d1bc853edff005ccc3f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995154"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104674517"
 ---
-befindet sich in der öffentlichen Vorschau. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+befindet sich in der öffentlichen Vorschau. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel (SLA) bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Einige Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

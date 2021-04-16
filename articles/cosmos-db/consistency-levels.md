@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: a480c8f2dfdda0ce7a1eb879554fb79c96adbe1e
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.date: 03/22/2021
+ms.openlocfilehash: 0a203531e026d00b274ac98784076d33b22666d8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347811"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800141"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,15 +51,19 @@ Sie können die Standardkonsistenzebene für Ihr Azure Cosmos-Konto jederzeit ko
 
 Azure Cosmos DB garantiert, dass 100 Prozent aller Leseanforderungen die Konsistenzgarantie für jede ausgewählte Konsistenzebene erfüllen. Die genauen Definitionen der fünf Konsistenzebenen in Azure Cosmos DB – unter Verwendung der TLA+-Spezifikationssprache – finden Sie im GitHub-Repository [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla).
 
-Im Folgenden wird die Semantik der fünf Konsistenzebenen beschrieben:
+In den folgenden Abschnitten wird die Semantik der fünf Konsistenzebenen beschrieben.
 
-- **Starke Konsistenz**: Starke Konsistenz bietet garantierte Linearisierbarkeit. Linearisierbarkeit bedeutet die gleichzeitige Verarbeitung von Anforderungen. Die Lesevorgänge geben garantiert die neueste Version eines Elements zurück, für die ein Commit ausgeführt wurde. Einem Client wird nie ein partieller Schreibvorgang bzw. ein Schreibvorgang, für den kein Commit ausgeführt wurde, angezeigt. Benutzer haben immer die Garantie, dass sie den neuesten Schreibvorgang lesen, für den ein Commit ausgeführt wurde.
+### <a name="strong-consistency"></a>Starke Konsistenz
+
+Starke Konsistenz bietet garantierte Linearisierbarkeit. Linearisierbarkeit bedeutet die gleichzeitige Verarbeitung von Anforderungen. Die Lesevorgänge geben garantiert die neueste Version eines Elements zurück, für die ein Commit ausgeführt wurde. Einem Client wird nie ein partieller Schreibvorgang bzw. ein Schreibvorgang, für den kein Commit ausgeführt wurde, angezeigt. Benutzer haben immer die Garantie, dass sie den neuesten Schreibvorgang lesen, für den ein Commit ausgeführt wurde.
 
   In der folgenden Grafik wird die starke Konsistenz anhand von Noten veranschaulicht. Nachdem die Daten in die Region „USA, Westen 2“ geschrieben wurden, erhalten Sie beim Lesen der Daten aus anderen Regionen den neuesten Wert:
 
   :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Abbildung: Konsistenzebene „Stark“":::
 
-- **Begrenzte Veraltung (Bounded staleness)** : Die Lesevorgänge berücksichtigen immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens um *„K“* Versionen (Updates) eines Elements oder um ein durch *„T“* definiertes Zeitintervall hinter Schreibvorgängen zurück, je nachdem, was zuerst erreicht wird. Wenn Sie also die begrenzte Veraltung auswählen, kann die Veraltung auf zwei Arten konfiguriert werden:
+### <a name="bounded-staleness-consistency"></a>Konsistenzebene „Begrenzte Veraltung“
+
+Bei der Konsistenzebene „Begrenzte Verwaltung“ berücksichtigen die Lesevorgänge immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens um *„K“* Versionen (Updates) eines Elements oder um ein durch *„T“* definiertes Zeitintervall hinter Schreibvorgängen zurück, je nachdem, was zuerst erreicht wird. Wenn Sie also die begrenzte Veraltung auswählen, kann die Veraltung auf zwei Arten konfiguriert werden:
 
 - Anhand der Anzahl von Versionen (*K*) des Elements
 - Das Zeitintervall (*T*) kann hinter den Schreibvorgängen liegen.
@@ -79,7 +83,9 @@ Im Veraltungsfenster bietet die begrenzte Veraltung die folgenden Konsistenzgara
 
   :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Abbildung: Konsistenzebene „Begrenzte Veraltung“":::
 
-- **Sitzung (Session)** :  Innerhalb einer einzelnen Clientsitzung berücksichtigen Lesevorgänge immer die folgenden Garantien: Präfixkonsistenz, monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen. Dabei wird davon ausgegangen, dass eine einzelne Schreibsitzung oder das Sitzungstoken für mehrere Writer gemeinsam genutzt wird.
+### <a name="session-consistency"></a>Sitzungskonsistenz
+
+Bei der Sitzungskonsistenz berücksichtigen Lesevorgänge innerhalb einer einzelnen Clientsitzung immer die folgenden Garantien: Präfixkonsistenz, monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge und Schreibvorgänge folgen Lesevorgängen. Dabei wird davon ausgegangen, dass eine einzelne Schreibsitzung oder das Sitzungstoken für mehrere Writer gemeinsam genutzt wird.
 
 Für Clients außerhalb der Sitzung, die Schreibvorgänge ausführen, gelten folgende Garantien:
 
@@ -92,7 +98,9 @@ Für Clients außerhalb der Sitzung, die Schreibvorgänge ausführen, gelten fol
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Abbildung: Konsistenzebene „Sitzung“":::
 
-- **Präfixkonsistenz**: Die zurückgegebenen Updates enthalten ein bestimmtes Präfix aller Updates ohne Lücken. Die konsistente Präfixkonsistenzebene garantiert, dass für Lesevorgänge niemals Schreibvorgänge in falscher Reihenfolge angezeigt werden.
+### <a name="consistent-prefix-consistency"></a>Präfixkonsistenz
+
+Bei der Präfixkonsistenz enthalten die zurückgegebenen Updates ein bestimmtes Präfix aller Updates ohne Lücken. Die konsistente Präfixkonsistenzebene garantiert, dass für Lesevorgänge niemals Schreibvorgänge in falscher Reihenfolge angezeigt werden.
 
 Wenn Schreibvorgänge in der Reihenfolge `A, B, C` erfolgen, wird einem Client entweder `A`, `A,B` oder `A,B,C`, aber niemals falsche Permutationen wie `A,C` oder `B,A,C` angezeigt. Die Präfixkonsistenz bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie Reihenfolgengarantien für Szenarien bereit, in denen die Reihenfolge relevant ist.
 
@@ -107,7 +115,9 @@ In der folgenden Grafik wird die Präfixkonsistenz anhand von Noten veranschauli
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Abbildung: Präfixkonsistenz":::
 
-- **Letztlich (Eventual)** : Es gibt keine Reihenfolgengarantie für Lesevorgänge. Wenn keine weiteren Schreibvorgänge vorhanden sind, konvergieren die Replikate schließlich.  
+### <a name="eventual-consistency"></a>Letztliche Konsistenz
+
+Bei letztlicher Konsistenz gibt es keine Reihenfolgegarantie für Lesevorgänge. Wenn keine weiteren Schreibvorgänge vorhanden sind, konvergieren die Replikate schließlich.  
 Die letztliche Konsistenz stellt die schwächste Form der Konsistenz dar, da ein Client unter Umständen Werte liest, die älter als die zuvor gelesenen Werte sind. Letztliche Konsistenz ist ideal, wenn die Anwendung keinerlei Reihenfolgengarantien erfordert. Ein Beispiel wäre etwa das Zählen von Retweets, „Gefällt mir“-Markierungen oder Kommentaren ohne Thread. In der folgenden Grafik wird die letztliche Konsistenz anhand von Noten veranschaulicht:
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Abbildung: Letztliche Konsistenz":::

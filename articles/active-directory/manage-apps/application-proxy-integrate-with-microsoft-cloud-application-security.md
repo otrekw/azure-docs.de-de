@@ -12,10 +12,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 139f347a3d1bce7a8f841cd1c39cd250b9a2182d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99259354"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurieren der Echtzeitüberwachung des Anwendungszugriffs mit Microsoft Cloud App Security und Azure Active Directory
@@ -30,7 +30,7 @@ Im Folgenden finden Sie einige Beispiele für die Typen von Richtlinien, die Sie
 
 Weitere Informationen finden Sie unter [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad).
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 Lizenz:
 
@@ -49,8 +49,8 @@ Konfigurieren des Anwendungsproxys:
 
 Fügen Sie Azure AD eine lokale Anwendung hinzu. Unter [Hinzufügen einer lokalen App zu Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad) finden Sie einen Schnellstart. Legen Sie beim Hinzufügen der Anwendung unbedingt die folgenden beiden Einstellungen auf dem Blatt **Lokale Anwendung hinzufügen** fest:
 
-- **Vor der Authentifizierung:** Geben Sie **Azure Active Directory** ein.
-- **URLs übersetzen in Anwendungstext:** Wählen Sie die Option **Ja** aus.
+- **Vorauthentifizierung:** Geben Sie **Azure Active Directory** ein.
+- **URLs übersetzen in Anwendungstext:** Wählen Sie **Ja** aus.
 
 Diese beiden Einstellungen sind erforderlich, damit die Anwendung mit MCAS funktioniert.
 

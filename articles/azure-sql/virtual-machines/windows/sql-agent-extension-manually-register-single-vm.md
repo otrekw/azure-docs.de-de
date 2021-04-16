@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 983cdab0c5f5b856537c661c7427a83099f30ed4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cea15114e125951a8fbec73f965b272a4f8053d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181430"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284157"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrieren einer SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Durch die Registrierung mit der [SQL Server-IaaS-Agent-Erweiterung](sql-server-
 
 Beim Bereitstellen eines Azure Marketplace-Images einer SQL Server-VM über das Azure-Portal wird die SQL Server-VM mit der Erweiterung automatisch registriert. Wenn Sie jedoch SQL Server auf einer Azure-VM selbst installieren oder eine Azure-VM von einer benutzerdefinierten VHD bereitstellen, müssen Sie Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren, um alle Featurevorteile nutzen und von einer einfachen Verwaltbarkeit profitieren zu können. 
 
-Wenn Sie die SQL-IaaS-Agent-Erweiterung verwenden möchten, müssen Sie zunächst [Ihr Abonnement beim Anbieter **Microsoft.SqlVirtualMachine** registrieren](#register-subscription-with-rp). Dadurch kann die SQL-IaaS-Agent-Erweiterung Ressourcen in diesem bestimmten Abonnement erstellen.
+Wenn Sie die SQL-IaaS-Agent-Erweiterung verwenden möchten, müssen Sie zunächst [Ihr Abonnement beim Anbieter **Microsoft.SqlVirtualMachine** registrieren](#register-subscription-with-resource-provider). Dadurch kann die SQL-IaaS-Agent-Erweiterung Ressourcen in diesem bestimmten Abonnement erstellen.
 
 > [!IMPORTANT]
 > Die SQL-IaaS-Agent-Erweiterung sammelt Daten ausschließlich, um Kunden zu ermöglichen, bei der Verwendung von SQL Server in Azure Virtual Machines optionale Vorteile zu nutzen. Microsoft verwendet diese Daten ohne vorherige Zustimmung des Kunden nicht für Lizenzierungsüberprüfungen. Weitere Informationen finden Sie unter [Ergänzende Datenschutzbestimmungen zu SQL Server](/sql/sql-server/sql-server-privacy#non-personal-data).
@@ -50,9 +50,9 @@ Um Ihre SQL Server-VM mit der Erweiterung registrieren zu können, benötigen S
 - Die aktuelle Version von [Azure CLI](/cli/azure/install-azure-cli) oder [Azure PowerShell (mindestens 5.0)](/powershell/azure/install-az-ps). 
 
 
-## <a name="register-subscription-with-rp"></a>Registrieren eines Abonnements mit RP
+## <a name="register-subscription-with-resource-provider"></a>Registrieren eines Abonnements bei einem Ressourcenanbieter
 
-Um Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren zu können, müssen Sie zunächst Ihr Abonnement beim Anbieter **Microsoft.SqlVirtualMachine** registrieren. Dadurch kann die SQL-IaaS-Agent-Erweiterung Ressourcen in Ihrem Abonnement erstellen.  Verwenden Sie hierzu das Azure-Portal, die Azure CLI oder Azure PowerShell.
+Um Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren zu können, müssen Sie zunächst Ihr Abonnement beim Ressourcenanbieter **Microsoft.SqlVirtualMachine** registrieren. Dadurch kann die SQL-IaaS-Agent-Erweiterung Ressourcen in Ihrem Abonnement erstellen.  Verwenden Sie hierzu das Azure-Portal, die Azure CLI oder Azure PowerShell.
 
 ### <a name="azure-portal"></a>Azure-Portal
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Migrieren von Gruppen aus einer Gesamtstruktur in eine andere'
+title: 'Azure AD Connect: Migrieren von Gruppen aus einer Gesamtstruktur zu einer anderen'
 description: In diesem Artikel werden die erforderlichen Schritte zum erfolgreichen Migrieren von Gruppen aus einer Gesamtstruktur in eine andere mit Azure AD Connect beschrieben.
 services: active-directory
 author: billmath
@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ef693a48dc52854e4e1fd8359ef24f65ce236f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85358581"
 ---
 # <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Migrieren von Gruppen aus einer Gesamtstruktur zu einer anderen mit Azure AD Connect

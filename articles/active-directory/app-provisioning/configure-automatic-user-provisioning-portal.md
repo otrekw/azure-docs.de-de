@@ -1,23 +1,22 @@
 ---
-title: Verwaltung der Benutzerbereitstellung für Unternehmens-Apps in Azure AD
-description: Erfahren Sie, wie Sie mithilfe von Azure Active Directory die Benutzerkontobereitstellung für Unternehmens-Apps verwalten.
+title: Verwaltung der Benutzerbereitstellung für Unternehmens-Apps in Azure Active Directory
+description: Hier erfahren Sie, wie Sie mithilfe von Azure Active Directory die Benutzerkontobereitstellung für Unternehmens-Apps verwalten.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/04/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 02d415bd957b0490857081b996c592f90365f031
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 5dceeb11ed9a4d6af88650a6146f58db412748d9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555635"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579415"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 
@@ -63,9 +62,7 @@ Durch Klicken auf **Verbindung testen** können Sie die Anmeldeinformationen tes
 
 Erweitern Sie **Zuordnungen**, um die Benutzerattribute anzuzeigen und zu bearbeiten, die beim Bereitstellen oder Aktualisieren von Benutzerkonten zwischen Azure AD und der Zielanwendung übertragen werden.
 
-Zwischen Azure AD-Benutzerobjekten und Benutzerobjekten der einzelnen SaaS-Apps ist eine vorkonfigurierte Gruppe von Zuordnungen vorhanden. Einige Apps verwalten auch Gruppenobjekte. Wählen Sie in der Tabelle eine Zuordnung aus, um den Zuordnungs-Editor auf der rechten Seite zu öffnen, in dem Sie diese anzeigen und anpassen können.
-
-![Zeigt den Bildschirm „Attributzuordnung“](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+Zwischen Azure AD-Benutzerobjekten und Benutzerobjekten der einzelnen SaaS-Apps ist eine vorkonfigurierte Gruppe von Zuordnungen vorhanden. Einige Apps verwalten auch Gruppenobjekte. Wählen Sie in der Tabelle eine Zuordnung aus, um den Zuordnungs-Editor zu öffnen, in dem Sie diese anzeigen lassen und anpassen können.
 
 Unterstützte Anpassungen umfassen:
 
@@ -79,10 +76,10 @@ Unterstützte Anpassungen umfassen:
 
 ### <a name="settings"></a>Einstellungen
 
-Sie können den Azure AD-Bereitstellungsdienst für die ausgewählte Anwendung im Bildschirm **Bereitstellung** im Bereich **Einstellungen** starten und beenden. Sie können auch den Bereitstellungscache leeren und den Dienst neu starten.
+Erweitern Sie die **Einstellungen**, um eine E-Mail-Adresse für den Empfang von Benachrichtigungen festzulegen und anzugeben, ob Sie Warnungen zu Fehlern erhalten möchten. Sie können auch den Bereich für die Benutzersynchronisierung festlegen. Außerdem können Sie auswählen, ob alle Benutzer und Gruppen oder nur die mit einer Zuweisung synchronisiert werden sollen.
+
+### <a name="provisioning-status"></a>Bereitstellungsstatus 
 
 Wenn die Bereitstellung für eine Anwendung zum ersten Mal aktiviert wird, legen Sie den **Bereitstellungsstatus** auf **Ein** fest, um den Dienst zu aktivieren. Diese Änderung bewirkt, dass der Azure AD-Bereitstellungsdienst eine anfänglichen Zyklus ausführt. Hierbei liest er die im Abschnitt **Benutzer und Gruppen** zugewiesenen Benutzer, fragt die Zielanwendung auf diese Benutzer ab und führt dann die im Azure AD-Abschnitt **Zuordnungen** definierten Bereitstellungsaktionen aus. Während dieses Vorgangs speichert der Bereitstellungsdienst Daten im Cache dazu, welche Benutzerkonten er verwaltet, damit die Bereitstellung nicht verwalteter Konten innerhalb der Zielanwendungen, die nicht im Zuweisungsumfang enthalten waren, nicht aufgehoben wird. Nach dem ersten Zyklus synchronisiert der Bereitstellungsdienst automatisch Benutzer- und Gruppenobjekte in einem 40-Minuten-Intervall.
 
 Durch Ändern des **Bereitstellungsstatus** in **Aus** wird der Bereitstellungsdienst angehalten. In diesem Status werden von Azure keine Benutzer- oder Gruppenobjekte in der App erstellt, aktualisiert oder entfernt. Wenn Sie den Zustand wieder in **Ein** ändern, fährt der Dienst da fort, wo er aufgehört hat.
-
-Durch **Aktuellen Status löschen und Synchronisierung neu starten** wird ein Startzyklus ausgelöst. Der Dienst wertet dann alle Benutzer im Quellsystem nochmal aus und ermittelt, ob sie für die Bereitstellung zulässig sind. Dies kann sich als nützlich erweisen, wenn Ihre Anwendung sich derzeit in Quarantäne befindet oder wenn Sie eine Änderung an der Zuordnung Ihrer Attribute vornehmen müssen. Beachten Sie, dass die Ausführung des Startzyklus aufgrund der Anzahl der auszuwertenden Objekte länger dauert als herkömmliche inkrementelle Zyklen. Weitere Informationen zur Leistung von Startzyklen und inkrementellen Zyklen finden Sie [hier](application-provisioning-when-will-provisioning-finish-specific-user.md).

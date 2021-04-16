@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85202219"
 ---
 # <a name="general-claims-transformations"></a>Transformationen allgemeiner Ansprüche
@@ -115,4 +115,4 @@ Hash des angegebenen Nur-Texts, der Salt und einen geheimen Schlüssel verwendet
   - **salt**: 487624568
   - **randomizerSecret**: B2C_1A_AccountTransformSecret
 - Ausgabeansprüche:
-  - **outputClaim:** CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
+  - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=

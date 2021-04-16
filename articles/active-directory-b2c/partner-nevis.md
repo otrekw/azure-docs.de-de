@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e72cab6d6220b71e93550eec7649752201180a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98674992"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256581"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Tutorial zum Konfigurieren von Nevis mit Azure Active Directory B2C für die kennwortlose Authentifizierung
 
@@ -32,7 +32,7 @@ Zunächst benötigen Sie Folgendes:
 
 - Einen [Azure AD B2C-Mandanten](./tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist
 
-- Eine für die Verwendung von [benutzerdefinierten Richtlinien](./custom-policy-get-started.md) konfigurierte Azure AD B2C-Umgebung, wenn Sie Nevis in Ihren Registrierungsrichtlinienflow integrieren möchten.
+- Eine für die Verwendung von [benutzerdefinierten Richtlinien](./tutorial-create-user-flows.md?pivots=b2c-custom-policy) konfigurierte Azure AD B2C-Umgebung, wenn Sie Nevis in Ihren Registrierungsrichtlinienflow integrieren möchten.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -270,4 +270,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Benutzerdefinierte Richtlinien in Azure AD B2C](./custom-policy-overview.md)
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

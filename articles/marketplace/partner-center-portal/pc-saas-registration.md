@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7bcfe1afc063d89bc6a5339bf62521cd644b8ca
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130016"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048339"
 ---
 # <a name="register-a-saas-application"></a>Registrieren einer SaaS-Anwendung
 
@@ -48,7 +48,7 @@ Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um
 Die **Azure AD-App-ID** ist Ihrer Herausgeber-ID zugeordnet. Achten Sie daher darauf, dass in allen Ihren Angeboten die gleiche *App-ID* verwendet wird.
 
 >[!Note]
->Wenn ein Herausgeber in Partner Center über zwei unterschiedliche Konten verfügt, müssen auch zwei unterschiedliche Azure AD-App-IDs verwendet werden.  Von jedem Partnerkonto in Partner Center muss eine eindeutige Azure AD-App-ID für alle SaaS-Angebote verwendet werden, die über dieses Konto veröffentlicht werden.
+>Wenn der Herausgeber über zwei oder mehr unterschiedliche Konten im Partner Center verfügt, können die Azure AD-App-Registrierungsdetails nur in einem Konto verwendet werden. Das Verwenden desselben Mandanten-ID/App-ID-Paars für ein Angebot unter einem anderen Herausgeberkonto wird nicht unterstützt.
 
 ## <a name="how-to-get-the-publishers-authorization-token"></a>Abrufen des Autorisierungstokens des Herausgebers
 
@@ -89,7 +89,7 @@ Post<br>
 
 ##### <a name="response"></a>*Antwort*
 
-|  Name     |  type         |  BESCHREIBUNG |
+|  Name     |  Typ         |  BESCHREIBUNG |
 |  ------   |  ---------------  | ------------ |
 |  200 – OK   |  TokenResponse    |  Anforderung erfolgreich. |
 

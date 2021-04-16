@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 51c9f924c6fe3ac6db86d60e26749d35bc4ab733
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92109152"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108943"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Verschlüsselung von Daten in Azure Data Lake Storage Gen1
 
@@ -135,4 +135,4 @@ Wenn Sie die Standardverschlüsselungsoptionen verwenden, werden Ihre Daten imme
 Der Vorgang dauert in der Regel weniger als zwei Minuten, und bei der Schlüsselrotation sind keine Ausfallzeiten zu erwarten. Nach Abschluss des Vorgangs wird die neue Version des Schlüssels verwendet.
 
 > [!IMPORTANT]
-> Nach Abschluss der Schlüsselrotation wird die alte Version des Schlüssels nicht mehr aktiv zum Verschlüsseln Ihrer Daten verwendet.  Allerdings können im seltenen Fall eines unerwarteten Fehlers, von dem selbst redundante Kopien Ihrer Daten betroffen sind, Daten aus einer Sicherung wiederhergestellt werden, die weiterhin den alten Schlüssel verwendet. Bewahren Sie daher eine Kopie der früheren Version Ihres Verschlüsselungsschlüssels auf, um in einem solchen Fall auf Ihre Daten zugreifen zu können. Bewährte Methoden für Ihre Notfallwiederherstellungsplanung finden Sie unter [Leitfaden zur Notfallwiederherstellung für Daten in Data Lake Storage Gen1](data-lake-store-disaster-recovery-guidance.md).
+> Nach Abschluss der Schlüsselrotation wird die alte Version des Schlüssels nicht mehr aktiv zum Verschlüsseln neuer Daten verwendet. Es kann jedoch Fälle geben, in denen für den Zugriff auf ältere Daten der alte Schlüssel benötigt wird. Löschen Sie den alten Schlüssel nicht, damit solche älteren Daten gelesen werden können.

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725508"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864889"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -35,7 +35,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
 3. Wählen Sie im Menü des Sicherungsdashboards **Dateiwiederherstellung** aus.
 
-    ![„Dateiwiederherstellung“ auswählen](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![„Dateiwiederherstellung“ auswählen](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)32
 
     Das Menü **Dateiwiederherstellung** wird geöffnet.
 
@@ -60,18 +60,18 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
 ## <a name="step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script"></a>Schritt 2: Sicherstellen, dass der Computer die Anforderungen erfüllt, bevor das Skript ausgeführt wird
 
-Nachdem das Skript erfolgreich heruntergeladen wurde, stellen Sie sicher, dass Sie über den richtigen Computer zum Ausführen dieses Skripts verfügen. Die VM, auf der Sie das Skript ausführen möchten, sollte keine der folgenden nicht unterstützten Konfigurationen aufweisen. Falls doch, wählen Sie einen alternativen Computer aus, vorzugsweise aus derselben Region, der die Anforderungen erfüllt.  
+Nachdem das Skript erfolgreich heruntergeladen wurde, stellen Sie sicher, dass Sie über den richtigen Computer zum Ausführen dieses Skripts verfügen. Die VM, auf der Sie das Skript ausführen möchten, sollte keine der folgenden nicht unterstützten Konfigurationen aufweisen. **Falls doch, wählen Sie einen alternativen Computer aus, vorzugsweise aus derselben Region, der die Anforderungen erfüllt.**  
 
 ### <a name="dynamic-disks"></a>Dynamische Datenträger
 
-Sie können das ausführbare Skript nicht auf einem virtuellen Computer mit einer der folgenden Eigenschaften ausführen:
+Sie können das ausführbare Skript nicht auf einem virtuellen Computer mit einer der folgenden Eigenschaften ausführen: Auswählen eines alternativen Computers.
 
 - Volumes, die mehrere Datenträger umfassen (übergreifende und Stripesetvolumes).
 - Fehlertolerante Volumes (gespiegelte und RAID-5-Volumes) auf dynamischen Datenträgern.
 
 ### <a name="windows-storage-spaces"></a>Windows-Speicherplätze
 
-Die heruntergeladene ausführbare Datei kann nicht auf einem virtuellen Computer ausgeführt werden, der für Windows-Speicherplätze konfiguriert ist.
+Sie können die heruntergeladene ausführbare Datei nicht auf derselben gesicherten VM ausführen, wenn die gesicherte VM über Windows-Speicherplätze verfügt. Wählen Sie einen alternativen Computer aus.
 
 ### <a name="virtual-machine-backups-having-large-disks"></a>Sicherungen virtueller Computer mit großen Datenträgern
 
@@ -81,6 +81,7 @@ Informieren Sie sich über die Anforderungen zum Wiederherstellen von Dateien vo
 [Windows-Betriebssystem](#for-backed-up-vms-with-large-disks-windows)<br>
 [Linux-Betriebssystem](#for-backed-up-vms-with-large-disks-linux)
 
+Nachdem Sie den richtigen Computer zum Ausführen des ILR-Skripts ausgewählt haben, müssen Sie sicherstellen, dass er die [Betriebssystemanforderungen](#step-3-os-requirements-to-successfully-run-the-script) und [Zugriffsanforderungen](#step-4-access-requirements-to-successfully-run-the-script) erfüllt. 
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>Schritt 3: Betriebssystemanforderungen für die erfolgreiche Durchführung des Skripts
 
@@ -126,6 +127,8 @@ Das Skript erfordert auch, dass Python- und Bash-Komponenten ausgeführt werden 
 | .NET | 4.6.2 und höher |
 | TLS | 1.2 muss unterstützt werden.  |
 
+Stellen Sie außerdem sicher, dass Sie über den [richtigen Computer zum Ausführen des ILR-Skripts](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) verfügen und die [Zugriffsanforderungen](#step-4-access-requirements-to-successfully-run-the-script) erfüllen.
+
 ## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>Schritt 4: Zugriffsanforderungen für die erfolgreiche Durchführung des Skripts
 
 Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
@@ -148,12 +151,13 @@ Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederhers
 
 Der Zugriff auf `download.microsoft.com` ist erforderlich, um die Komponenten für das Herstellen eines sicheren Kanals zwischen dem Computer, auf dem das Skript ausgeführt wird, und den Daten am Wiederherstellungspunkt herunterzuladen.
 
+Stellen Sie außerdem sicher, dass Sie über den [richtigen Computer zum Ausführen des ILR-Skripts](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) verfügen und die [Betriebssystemanforderungen](#step-3-os-requirements-to-successfully-run-the-script) erfüllen.
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>Schritt 5: Ausführen des Skripts und Identifizieren von Volumes
 
 ### <a name="for-windows"></a>Für Windows
 
-Nachdem Sie alle in Schritt 2, Schritt 3 und 4 aufgeführten Anforderungen erfüllt haben, kopieren Sie das Skript aus dem heruntergeladenen Speicherort (normalerweise der Ordner „Downloads“), klicken mit der rechten Maustaste auf die ausführbare Datei oder das Skript, und führen es mit Administrator-Anmeldeinformationen aus. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort ein oder fügen es aus der Zwischenablage ein, und drücken Sie die EINGABETASTE. Nach der Eingabe eines gültigen Kennworts stellt das Skript eine Verbindung mit dem Wiederherstellungspunkt her.
+Nachdem Sie alle in [Schritt 2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script), [Schritt 3](#step-3-os-requirements-to-successfully-run-the-script) und [Schritt 4](#step-4-access-requirements-to-successfully-run-the-script) aufgeführten Anforderungen erfüllt haben, kopieren Sie das Skript aus dem heruntergeladenen Speicherort (in der Regel der Ordner „Downloads“). Weitere Informationen zum [Generieren und Herunterladen von Skripts finden Sie in Schritt 1](#step-1-generate-and-download-script-to-browse-and-recover-files). Klicken Sie mit der rechten Maustaste auf die ausführbare Datei, und führen Sie diese als Administrator aus. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort ein oder fügen es aus der Zwischenablage ein, und drücken Sie die EINGABETASTE. Nach der Eingabe eines gültigen Kennworts stellt das Skript eine Verbindung mit dem Wiederherstellungspunkt her.
 
   ![Ausgabe der ausführbaren Datei](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -180,7 +184,7 @@ Wenn die Dateiwiederherstellung nicht mehr reagiert, nachdem Sie das Skript zur 
 
 ### <a name="for-linux"></a>Für Linux
 
-Für Linux-Computer wird ein Python-Skript generiert. Laden Sie das Skript herunter, und kopieren Sie es auf den relevanten/kompatiblen Linux-Server. Für die Ausführung mit ```chmod +x <python file name>``` müssen möglicherweise die Berechtigungen geändert werden. Führen Sie die Python-Datei anschließend mit ```./<python file name>``` aus.
+Generieren Sie ein Python-Skript für Linux-Computer, nachdem Sie alle in [Schritt 2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script), [Schritt 3](#step-3-os-requirements-to-successfully-run-the-script) und [Schritt 4](#step-4-access-requirements-to-successfully-run-the-script) aufgeführten Anforderungen erfüllt haben. Weitere Informationen [zum Generieren und Herunterladen von Skripts finden Sie in Schritt 1](#step-1-generate-and-download-script-to-browse-and-recover-files). Laden Sie das Skript herunter, und kopieren Sie es auf den relevanten/kompatiblen Linux-Server. Für die Ausführung mit ```chmod +x <python file name>``` müssen möglicherweise die Berechtigungen geändert werden. Führen Sie die Python-Datei anschließend mit ```./<python file name>``` aus.
 
 
 Unter Linux werden die Volumes des Wiederherstellungspunkts im Ordner bereitgestellt, in dem das Skript ausgeführt wird. Die angefügten Datenträger, Volumes und entsprechenden Bereitstellungspfade werden entsprechend angezeigt. Diese Bereitstellungspfade werden Benutzern mit der Berechtigung „root“ angezeigt. Durchsuchen Sie die Volumes in der Ausgabe des Skripts.

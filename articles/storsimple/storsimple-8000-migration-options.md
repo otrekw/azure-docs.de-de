@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 316b513f761aa422f87c83658e6c50efec25efb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cc67b678fabeb2a7878490a4ea713acb5709cdbc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94961140"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643792"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Optionen zum Migrieren von Daten aus StorSimple Serie 5000/7000 
 
@@ -63,14 +63,13 @@ Erfahren Sie mehr zur [Migration zu Cohesity DataPlatform](https://info.cohesity
 
 Nasuni erleichtert es für Kunden von StorSimple 5000-7000, zu migrieren und ihre Daten in Azure zu speichern.  Nasuni ist eine führende Lösung für Azure-basierte NAS-Speicher, die Kunden die Leistung und Sicherheit bietet, die sie bei lokalen Lösungen erwarten – mit Wirtschaftlichkeit und Skalierung der Cloud.  Zusätzlich zum Hochleistungsdatenspeicher erledigen Nasuni und Azure Sicherung und Datenwiederherstellung, während Sie Ihre Daten auf der ganzen Welt mit zentralisierter Dateispeicherverwaltung freigeben und daran zusammenarbeiten können. 
 
-Nasuni verfügt über die Erfahrung, damit Ihre Migration möglichst einfach wird – beginnen Sie noch heute: https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni verfügt über die Erfahrung, damit Ihre Migration möglichst einfach wird – beginnen Sie noch heute: https://www.nasuni.com/blog-migrating-off-storsimple/
 
 #### <a name="migrate-to-talon-fast"></a>Migrieren zu Talon FAST
 
 Dank Talon können Kunden mit StorSimple 5000-7000 weiterhin die geschätzten Vorteile der StorSimple-Plattform (platzsparend durch unbegrenzte Cloudressourcen) nutzen und von einem noch größeren Funktionsumfang profitieren.  Mit der Talon FAST-Lösung können Kunden Ihre Daten zu Azure migrieren und dort speichern. Diese reine Softwarelösung ist somit noch platzsparender und bietet zusätzliche Vorteile wie globale Dateisperre, globale Namespaces und Funktionen für die Kollaboration an mehreren Standorten.  Talon ist eine führende Lösung im Azure-Ökosystem und wird weltweit von Kunden dazu genutzt, ihre lokalen Dateiserverworkloads ohne Beeinträchtigung der Benutzerworkflows oder -erfahrungen zu einem konsolidierten, Azure-basierten Speicher zu migrieren.  
 
-Weitere Informationen zur Entwicklung eines cloudkonsolidierten Unternehmens finden Sie unter https://www.talonstorage.com/alliances/microsoft-storsimple.
-
+Weitere Informationen zur Entwicklung eines cloudkonsolidierten Unternehmens finden Sie unter
 
 ## <a name="migration---frequently-asked-questions"></a>Häufig gestellte Fragen zur Migration
 

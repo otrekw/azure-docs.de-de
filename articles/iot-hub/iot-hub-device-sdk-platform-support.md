@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: b8f8403617a5fc8b442e8a3f74ab9226fe1479fe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab450c6ec6ae32cafcf07e88940736f209973d8d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97588759"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168041"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT-Geräte-SDKs – Plattformunterstützung
 
@@ -22,7 +22,7 @@ Zusätzlich zu den Geräte-SDKs bietet Microsoft mehrere andere Wege, um Kunden 
 
 * Microsoft arbeitet mit mehreren Partnerunternehmen zusammen, um ihnen bei der Veröffentlichung von Development Kits auf der Grundlage des Azure IoT C-SDK für ihre eigenen Hardwareplattformen zu helfen.
 
-* Microsoft arbeitet mit vertrauenswürdigen Microsoft-Partnern zusammen, um eine stetig erweiterte Gruppe von Geräten bereitzustellen, die für Azure IoT getestet und zertifiziert wurden. Eine aktuelle Liste dieser Geräte finden Sie im [Azure Certified for IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/).
+* Microsoft arbeitet mit vertrauenswürdigen Microsoft-Partnern zusammen, um eine stetig erweiterte Gruppe von Geräten bereitzustellen, die für Azure IoT getestet und zertifiziert wurden. Eine aktuelle Liste dieser Geräte finden Sie im [Azure Certified for IoT-Gerätekatalog](https://devicecatalog.azure.com/).
 
 * Microsoft stellt im Azure IoT Hub-Geräte-C SDK eine Plattformabstraktionsschicht (Platform Abstraction Layer, PAL) bereit, die Entwickler zum einfachen Portieren des SDKs auf ihre jeweilige Plattform verhilft. Weitere Informationen finden Sie im [C SDK porting guidance](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md) (Leitfaden für C SDK-Portierung).
 
@@ -59,9 +59,9 @@ Das [Azure IoT Hub Python-Geräte-SDK](https://github.com/Azure/azure-iot-sdk-py
 
 | OS                  | Compiler                          |
 |---------------------|-----------------------------------|
-| Linux               | Python 2.7.*, 3.5 oder höher |
-| macOS High Sierra   | Python 2.7.*, 3.5 oder höher |
-| Windows 10-Familie   | Python 2.7.*, 3.5 oder höher |
+| Linux               | Python 2.7.*, 3.6 oder höher |
+| macOS High Sierra   | Python 2.7.*, 3.6 oder höher |
+| Windows 10-Familie   | Python 2.7.*, 3.6 oder höher |
 
 Die asynchronen APIs werden nur von Python-Version 3.5.3 oder höher unterstützt. Wir empfehlen Ihnen, mindestens Version 3.7 zu verwenden.
 
@@ -114,9 +114,9 @@ Wenn Ihre Geräteplattform in keinem der vorstehenden Abschnitte beschrieben wir
 
 Microsoft arbeitet mit einer Reihe von Partnern zusammen, um das Azure IoT-Universum mit getesteten und zertifizierten Azure IoT-Geräten kontinuierlich zu erweitern.
 
-* Informationen zum Navigieren zu zertifizierten Azure IoT-Geräten finden Sie im [Microsoft Azure Certified for IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/).
+* Informationen zum Navigieren zu zertifizierten Azure IoT-Geräten finden Sie im [Microsoft Azure Certified for IoT-Gerätekatalog](https://devicecatalog.azure.com/).
 
-* Weitere Informationen zum Azure Certified for IoT-Ökosystem finden Sie unter [Treten Sie dem Certified für IoT-Ökosystem bei](https://catalog.azureiotsolutions.com/register).
+* Weitere Informationen zum Azure Certified for IoT-Ökosystem finden Sie unter [Treten Sie dem Certified für IoT-Ökosystem bei](../certification/overview.md).
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Herstellen einer Verbindung mit IoT Hub ohne ein SDK
 

@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75649218"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Hinzufügen benutzerdefinierter Ressourcen zur Azure-REST-API
@@ -80,10 +80,10 @@ Weitere Informationen über `Proxy, Cache`-Ressourcen finden Sie in der [Referen
 
 Es gibt prinzipiell zwei Möglichkeiten, eine benutzerdefinierte Ressource aus einem benutzerdefinierten Ressourcenanbieter zu erstellen:
 
-- Azure-Befehlszeilenschnittstelle
+- Azure CLI
 - Azure Resource Manager-Vorlagen
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Erstellen einer benutzerdefinierten Ressource:
 
@@ -135,7 +135,7 @@ id | *Ja* | Die Ressourcen-ID der benutzerdefinierten Ressource. Diese Ressource
 
 Azure Resource Manager-Vorlagen erfordern, dass `id`, `name` und `type` ordnungsgemäß vom Downstreamendpunkt zurückgegeben werden. Eine zurückgegebene Ressourcenantwort sollte folgende Form haben:
 
-Beispiel einer **Endpunkt**antwort:
+Beispiel einer **Endpunkt** antwort:
 
 ``` JSON
 {
@@ -186,5 +186,5 @@ customResourceName | *Ja* | Der Name der benutzerdefinierten Ressource.
 - [Schnellstart: Erstellen eines benutzerdefinierten Azure-Ressourcenanbieters und Bereitstellen benutzerdefinierter Ressourcen](./create-custom-provider.md)
 - [Tutorial: Erstellen von benutzerdefinierten Aktionen und Ressourcen in Azure](./tutorial-get-started-with-custom-providers.md)
 - [Vorgehensweise: Hinzufügen benutzerdefinierter Aktionen zur Azure-REST-API](./custom-providers-action-endpoint-how-to.md)
-- [Referenz: Referenz zu benutzerdefinierten Ressourcenproxys](proxy-resource-endpoint-reference.md)
-- [Referenz: Referenz zum benutzerdefinierten Ressourcencache](proxy-cache-resource-endpoint-reference.md)
+- [Referenz zu benutzerdefinierten Ressourcenproxys](proxy-resource-endpoint-reference.md)
+- [Referenz zum benutzerdefinierten Ressourcencache](proxy-cache-resource-endpoint-reference.md)

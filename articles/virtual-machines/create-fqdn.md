@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 1/12/2020
+ms.date: 04/01/2021
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aadf4000da4ab88a3c3b4dee37d2179eb49d39d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42c53e72de7f6b2943086544f607042957f4b849
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98132063"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220078"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Erstellen eines vollqualifizierten Domänennamens im Azure-Portal für eine Linux-VM
 
@@ -25,11 +25,12 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits einen virtuellen Comp
 
 
 1. Wählen Sie im Portal Ihren virtuellen Computer aus. 
-1. Wählen Sie im linken Menü die Option **Konfiguration** aus.
-1. Geben Sie unter **DNS-Namensbezeichnung** das Präfix ein, das Sie verwenden möchten.
-1. Wählen Sie im oberen Bereich der Seite **Speichern** aus.
-1. Wechseln Sie zum VM-Übersichtsblatt zurück, indem Sie im linken Menü **Übersicht** auswählen. 
-1. Überprüfen Sie, ob der *DNS-Name* richtig angezeigt wird. 
+1. Wählen Sie im Menü auf der linken Seite die Option **Eigenschaften** aus.
+1. Wählen Sie unter **Öffentliche IP-Adresse/DNS-Namensbezeichnung** Ihre IP-Adresse aus.
+2. Geben Sie unter **DNS-Namensbezeichnung** das Präfix ein, das Sie verwenden möchten.
+3. Wählen Sie im oberen Bereich der Seite **Speichern** aus.
+4. Wählen Sie im Menü auf der linken Seite **Übersicht** aus, um zum VM-Übersichtsblatt zurückzukehren.
+5. Überprüfen Sie, ob der **DNS-Name** richtig angezeigt wird. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

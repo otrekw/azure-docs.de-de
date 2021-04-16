@@ -10,40 +10,41 @@ ms.topic: conceptual
 ms.date: 1/31/2021
 ms.author: amberz
 ms.co-author: Donnana
-ms.openlocfilehash: e8352b687a3cdfac7ea2a819e1217906598a6837
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 45cd44cc0678b7f3a006a88bf66be2bca091af76
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563265"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595378"
 ---
-# <a name="process-data-from-automated-machine-learningautoml-models-using-data-flow"></a>Verarbeiten von Daten aus AutoML-Modellen (automatisiertes maschinelles Lernen) mithilfe von Datenflüssen
+# <a name="process-data-from-automated-machine-learning-models-by-using-data-flows"></a>Verarbeiten von Daten aus Modellen für das automatisierte maschinelle Lernen mithilfe von Datenflüssen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Automatisiertes maschinelles Lernen (AutoML) wird in Projekten mit maschinellem Lernen zum Trainieren, Optimieren und automatisierten Modellieren mithilfe der Zielmetriken verwendet, die Sie für Klassifizierung, Regression und Zeitreihenprognosen angeben. 
+Automatisiertes maschinelles Lernen (AutoML) wird in Machine Learning-Projekten zum automatisierten Trainieren, Optimieren und Modellieren mithilfe von Zielmetriken verwendet, die Sie für die Klassifizierung, Regression und Zeitreihenvorhersage angeben.
 
-Eine Herausforderung besteht darin, dass die Rohdaten aus dem Data Warehouse oder der transaktionalen Datenbank ein riesiges Dataset ausmachen würden, z. B. 10 GB. Ein so großes Dataset erfordert sehr viel Zeit für das Trainieren von Modellen. Aus diesem Grund wird vor dem Trainieren von Azure Machine Learning-Modellen eine Optimierung der Datenverarbeitung empfohlen. In diesem Tutorial wird die Verwendung von ADF zum Partitionieren von Datasets in Parquet-Dateien für ein Azure Machine Learning-Dataset erläutert. 
+Eine Herausforderung für AutoML besteht darin, dass die Rohdaten aus einem Data Warehouse oder einer Transaktionsdatenbank möglicherweise ein riesiges Dataset von 10 GB Größe darstellen können. Da große Datasets zum Trainieren von Modellen mehr Zeit benötigen, wird empfohlen, die Datenverarbeitung vor dem Trainieren von Azure Machine Learning-Modellen zu optimieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Data Factory ein Dataset in AutoML-Dateien für ein Machine Learning-Dataset partitionieren.
 
-Im AutoML-Projekt (automatisiertes maschinelles Lernen) werden die folgenden drei Szenarien für die Datenverarbeitung angewandt:
+Das AutoML-Projekt umfasst die folgenden drei Datenverarbeitungsszenarios:
 
-* Partitionieren großer Datenmengen vor dem Trainieren von Modellen in Parquet-Dateien 
+* Partitionieren von großen Datenmengen in AutoML-Dateien vor dem Trainieren von Modellen
 
-     Der [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html)-Datenrahmen wird häufig zum Verarbeiten von Daten vor dem Trainieren von Modellen verwendet und eignet sich gut für Datengrößen unter 1 GB. Wenn die Daten jedoch größer als 1 GB sind, verarbeitet der Pandas-Datenrahmen die Daten sehr viel langsamer. es kann sogar vorkommen, dass eine Fehlermeldung über fehlenden Arbeitsspeicher ausgegeben wird. Für Aufgaben im Bereich maschinelles Lernen werden [Parquet](https://parquet.apache.org/)-Dateiformate empfohlen, da sie ein binäres Spaltenformat aufweisen.
+     Häufig werden Daten vor dem Trainieren von Modellen mit dem [Pandas-Datenrahmen](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) verarbeitet. Der Pandas-Datenrahmen ist für einen Datenumfang von weniger als 1 GB geeignet. Bei größeren Datenmengen wird die Verarbeitung der Daten durch den Pandas-Datenrahmen verlangsamt. Dies kann sogar zu einem Fehler wegen unzureichendem Arbeitsspeicher führen. Es wird empfohlen, für Machine Learning das Dateiformat [Parquet](https://parquet.apache.org/) zu verwenden, da es sich dabei um ein binäres Spaltenformat handelt.
     
-    Azure Data Factorys-Zuordnungsdatenflüsse sind visuell entworfene Datentransformationen, für die Datentechniker keinen Code schreiben müssen. Sie eignen sich sehr gut für die Verarbeitung großer Datenmengen, da die Pipeline horizontal skalierte Spark-Cluster verwendet.
+     Die Zuordnungsdatenflüsse in Data Factory sind visuell gestaltete Datentransformationen, die es Data Engineers ermöglichen, ohne das Schreiben von Code auszukommen. Mit Zuordnungsdatenflüssen können große Datenmengen effektiv verarbeitet werden, da die Pipeline horizontal hochskalierte Spark-Cluster nutzt.
 
-* Aufteilen in Trainingsdataset und Testdataset
+* Teilen des Trainings- und Testdatasets
     
-    Das Trainingsdataset wird für das Trainieren des Modells verwendet und das Testdataset zum Bewerten der Modelle im Projekt mit maschinellem Lernen. Für das Aufteilen in Trainingsdaten und Testdaten wird die Aktivität für bedingtes Teilen in Zuordnungsdatenflüssen verwendet. 
+    Das Trainingsdataset wird für ein Trainingsmodell verwendet. Das Testdataset wird zum Auswerten von Modellen in einem Machine Learning-Projekt genutzt. Die Aktivität für bedingtes Teilen für Zuordnungsdatenflüsse ist für das Aufteilen in Trainingsdaten und Testdaten zuständig.
 
 * Entfernen nicht qualifizierter Daten
 
-    Möglicherweise möchten Sie nicht qualifizierte Daten entfernen, z. B. Parquet Dateien mit null Zeilen. In diesem Tutorial verwenden wir die Aktivität zum Aggregieren, um die Anzahl von Zeilen abzufragen, die dann als Bedingung für das Entfernen nicht qualifizierter Daten verwendet wird. 
-
+    Angenommen, Sie möchten nicht qualifizierte Daten entfernen, wie z. B. eine Parquet-Datei ohne Zeilen. In diesem Tutorial rufen Sie die Anzahl der Zeilen mithilfe der Aggregataktivität ab. Die Zeilenanzahl stellt eine Bedingung zum Entfernen nicht qualifizierter Daten dar.
 
 ## <a name="preparation"></a>Vorbereitung
-Verwenden Sie die folgende Tabelle aus Azure SQL-Datenbank. 
+
+Verwenden Sie die folgende Azure SQL-Datenbanktabelle.
+
 ```
 CREATE TABLE [dbo].[MyProducts](
     [ID] [int] NULL,
@@ -58,56 +59,57 @@ CREATE TABLE [dbo].[MyProducts](
 
 ## <a name="convert-data-format-to-parquet"></a>Konvertieren der Daten in das Parquet-Format
 
-Der Datenfluss konvertiert eine Tabelle aus Azure SQL-Datenbank in das Parquet-Dateiformat. 
+Mit dem folgenden Datenfluss wird eine SQL-Datenbanktabelle in das Parquet-Dateiformat konvertiert:
 
-**Quelldataset:** Transaktionstabelle aus Azure SQL-Datenbank
-
-**Senkendataset:** Blob Storage mit Parquet-Format
-
+- **Quelldataset:** Transaktionstabelle aus SQL-Datenbank
+- **Senkendataset:** Blobspeicher im Parquet-Format
 
 ## <a name="remove-unqualified-data-based-on-row-count"></a>Entfernen nicht qualifizierter Daten basierend auf der Zeilenanzahl
 
-Angenommen, Sie möchten alle Daten mit einer Zeilenanzahl unter 2 entfernen. 
+Angenommen, Sie möchten Daten mit einer Zeilenanzahl kleiner als zwei entfernen.
 
-1. Verwenden Sie die Aktivität zum Aggregieren, um die Zeilenanzahl abzufragen. Verwenden Sie als Grundlage für **Gruppieren nach** in der Spalte „Col2“ **Aggregate** mit „count(1)“ für die Zeilenanzahl. 
+1. Rufen Sie mithilfe der Aggregataktivität die Anzahl der Zeilen ab. Verwenden Sie für **Gruppiert nach** die Option „Col2“ und für **Aggregate** die Option `count(1)`, um die Zeilenanzahl abzurufen.
 
-    ![Konfigurieren der Aktivität zum Aggregieren für Abfragen der Zeilenanzahl](./media/scenario-dataflow-process-data-aml-models/aggregate-activity-addrowcount.png)
+    ![Screenshot der Konfiguration der Aggregataktivität zum Abrufen der Zeilenanzahl](./media/scenario-dataflow-process-data-aml-models/aggregate-activity-addrowcount.png)
 
-1. Wählen Sie für die Senkenaktivität den **Senkentyp** „Cache“ auf der Registerkarte **Senke** aus. Wählen Sie anschließend auf der Registerkarte **Einstellungen** in der Dropdownliste **Schlüsselspalten** die gewünschte Spalte aus. 
+1. Wählen Sie mithilfe der Senkenaktivität auf der Registerkarte **Senke** für **Senkentyp** die Option **Cache** aus. Wählen Sie anschließend auf der Registerkarte **Einstellungen** in der Dropdownliste **Schlüsselspalten** die gewünschte Spalte aus.
 
-    ![Konfigurieren der CacheSink-Aktivität zum Abrufen der Zeilenanzahl in der zwischengespeicherten Senke](./media/scenario-dataflow-process-data-aml-models/cachesink-activity-addrowcount.png)
+    ![Screenshot der Konfiguration der CacheSink-Aktivität zum Abrufen der Zeilenanzahl in einer Cachesenke](./media/scenario-dataflow-process-data-aml-models/cachesink-activity-addrowcount.png)
 
-1. Verwenden Sie die Aktivität für abgeleitete Spalten, um die Spalte mit der Zeilenanzahl im Quelldatenstrom hinzuzufügen. Verwenden Sie auf der Registerkarte mit den **Einstellungen der abgeleiteten Spalte** den Ausdruck „CacheSink#lookup“ zum Abrufen der Zeilenanzahl aus dem Senkencache.
-    ![Konfigurieren der Aktivität für abgeleitete Spalten zum Hinzufügen der Zeilenanzahl in Quelle 1](./media/scenario-dataflow-process-data-aml-models/derived-column-activity-rowcount-source-1.png)
+1. Fügen Sie mithilfe der Aktivität für abgeleitete Spalten dem Quelldatenstrom eine Spalte mit der Zeilenanzahl hinzu. Rufen Sie auf der Registerkarte **Einstellungen der abgeleiteten Spalte** mithilfe des Ausdrucks `CacheSink#lookup` die Zeilenanzahl aus CacheSink ab.
 
-1. Verwenden Sie Aktivität für bedingtes Teilen, um nicht qualifizierte Daten zu entfernen. In diesem Beispiel basiert die Zeilenanzahl auf der Spalte „Col2“, und durch die Bedingung werden Zeilen mit einer Anzahl unter 2 entfernt, sodass zwei Zeilen (ID = 2 und ID = 7) entfernt werden. Sie sollten nicht qualifizierte Daten für die Datenverwaltung in Blob Storage speichern. 
+    ![Screenshot der Konfiguration der Aktivität für abgeleitete Spalten zum Hinzufügen der Zeilenanzahl in „source1“](./media/scenario-dataflow-process-data-aml-models/derived-column-activity-rowcount-source-1.png)
 
-    ![Konfigurieren der Aktivität für bedingtes Teilen zum Abrufen von Daten, die größer oder gleich 2 sind](./media/scenario-dataflow-process-data-aml-models/conditionalsplit-greater-or-equal-than-2.png)
+1. Entfernen Sie mithilfe der Aktivität für bedingtes Teilen nicht qualifizierte Daten. In diesem Beispiel basiert die Zeilenanzahl auf der Spalte „Col2“. Laut Bedingung werden Daten mit einer Zeilenanzahl kleiner als zwei entfernt: Es werden also zwei Zeilen (ID=2 und ID=7) entfernt. Sie sollten nicht qualifizierte Daten für die Datenverwaltung in einem Blobspeicher speichern.
+
+    ![Screenshot der Konfiguration der Aktivität für bedingtes Teilen zum Abrufen von Daten mit einer Zeilenanzahl größer als oder gleich zwei](./media/scenario-dataflow-process-data-aml-models/conditionalsplit-greater-or-equal-than-2.png)
 
 > [!NOTE]
->    *    Erstellen Sie eine neue Quelle zum Abrufen der Zeilenanzahl, die in späteren Schritten in der ursprünglichen Quelle verwendet werden. 
->    *    Verwenden Sie aus Leistungsgründen CacheSink. 
+>    * Erstellen Sie eine neue Quelle, um die Zeilenanzahl der ursprünglichen Quelle später in diesem Modul abrufen zu können.
+>    * Verwenden Sie aus Leistungsgründen CacheSink.
 
-## <a name="split-training-data-and-test-data"></a>Teilen von Trainings- und Testdaten 
+## <a name="split-training-data-and-test-data"></a>Teilen von Trainings- und Testdaten
 
-1. Sie möchten die Trainings- und Testdaten für jede Partition teilen. In diesem Beispiel rufen Sie für denselben Wert von „Col2“ die ersten beiden Zeilen als Testdaten und die übrigen Zeilen als Trainingsdaten ab. 
+Nun sollen die Trainings- und Testdaten für jede Partition geteilt werden. In diesem Beispiel rufen Sie für denselben Wert von „Col2“ die ersten beiden Zeilen als Testdaten und die übrigen Zeilen als Trainingsdaten ab.
 
-    Verwenden Sie die Fenster-Aktivität, um für jede Partition eine Zeilennummer für eine Spalte hinzuzufügen. Wählen Sie auf der Registerkarte **Über** die Spalte für die Partition aus (in diesem Tutorial „Col2“). Geben Sie auf der Registerkarte **Sortieren** eine Reihenfolge an (in diesem Tutorial basierend auf der ID), und fügen Sie auf der Registerkarte **Fensterspalten** eine Spalte als Zeilennummer für jede Partition hinzu. 
-    ![Konfigurieren der Fensteraktivität zum Hinzufügen einer neuen Spalte als Zeilennummer](./media/scenario-dataflow-process-data-aml-models/window-activity-add-row-number.png)
+1. Fügen Sie mithilfe der Fensteraktivität für jede Partition eine Spalte mit der Zeilennummer hinzu. Wählen Sie auf der Registerkarte **Über** eine Spalte für die Partition aus (in diesem Tutorial die Spalte „Col2“). Geben Sie auf der Registerkarte **Sortieren** eine Reihenfolge an (in diesem Tutorial soll anhand der ID sortiert werden). Geben Sie auf der Registerkarte **Fensterspalten** an, dass für jede Partition eine Spalte mit der Zeilennummer hinzugefügt wird.
 
-1. Verwenden Sie die Aktivität für bedingtes Teilen, um die obersten beiden Zeilen der einzelnen Partitionen in das Testdataset und die übrigen Zeilen in das Trainingsdataset aufzuteilen. Geben Sie auf der Registerkarte **Einstellungen für Conditional Split** den Ausdruck „lesserOrEqual(RowNum,2)“ als Bedingung an. 
+    ![Screenshot der Konfiguration der Fensteraktivität zum Hinzufügen einer neuen Spalte für die Zeilennummer](./media/scenario-dataflow-process-data-aml-models/window-activity-add-row-number.png)
 
-    ![Konfigurieren der Aktivität für bedingtes Teilen zum Aufteilen des aktuellen Datasets in Trainings- und Testdataset](./media/scenario-dataflow-process-data-aml-models/split-training-dataset-test-dataset.png)
+1. Teilen Sie mithilfe der Aktivität für bedingtes Teilen die Zeilen folgendermaßen auf: die ersten beiden Zeilen jeder Partition als Testdataset, die restlichen Zeilen als Trainingsdataset. Geben Sie auf der Registerkarte **Einstellungen für bedingtes Teilen** den Ausdruck `lesserOrEqual(RowNum,2)` als Bedingung an.
 
-## <a name="partition-training-dataset-and-test-dataset-with-parquet-format"></a>Partitionieren von Trainings- und Testdataset im Parquet-Format
+    ![Screenshot der Konfiguration der Aktivität für bedingtes Teilen zum Aufteilen des aktuellen Datasets in Trainings- und Testdataset](./media/scenario-dataflow-process-data-aml-models/split-training-dataset-test-dataset.png)
 
-1. Verwenden Sie die Senkenaktivität auf der Registerkarte **Optimieren**, und legen Sie in **Eindeutiger Wert pro Partition** eine Spalte als Spaltenschlüssel für die Partition fest. 
-    ![Konfigurieren der Senkenaktivität zum Festlegen der Partition für das Trainingsdataset](./media/scenario-dataflow-process-data-aml-models/partition-training-dataset-sink.png)
+## <a name="partition-the-training-and-test-datasets-with-parquet-format"></a>Partitionieren des Trainings- und Testdatasets im Parquet-Format
 
-    Sehen Sie sich hier die gesamte Pipelinelogik an.
-    ![Logik der gesamten Pipeline](./media/scenario-dataflow-process-data-aml-models/entire-pipeline.png)
+Legen Sie mithilfe der Senkenaktivität auf der Registerkarte **Optimieren** im Feld **Eindeutiger Wert pro Partition** eine Spalte als Spaltenschlüssel für die Partition fest.
 
+![Screenshot der Konfiguration der Senkenaktivität zum Festlegen der Partition des Trainingsdatasets](./media/scenario-dataflow-process-data-aml-models/partition-training-dataset-sink.png)
+
+Sehen Sie sich nun die gesamte Pipelinelogik an.
+
+![Screenshot der Logik der gesamten Pipeline](./media/scenario-dataflow-process-data-aml-models/entire-pipeline.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erstellen Sie die restliche Datenflusslogik mithilfe von Mapping Data Flow-[Transformationen](concepts-data-flow-overview.md).
+Erstellen Sie die restliche Datenflusslogik mithilfe von [Transformationen](concepts-data-flow-overview.md) der Zuordnungsdatenflüsse.

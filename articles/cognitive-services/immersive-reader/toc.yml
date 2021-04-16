@@ -2,7 +2,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Übersicht über den plastischen Reader
+    - name: Worum handelt es sich beim plastischen Reader?
       href: Overview.md
     - name: Sprachunterstützung
       href: language-support.md
@@ -10,7 +10,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
     - name: Versionshinweise
       href: release-notes.md
-- name: 'Plastischer Reader: Schnellstart'
+- name: Schnellstart
   href: ./quickstarts/client-libraries.md
 - name: Vorgehensweise
   items:
@@ -36,14 +36,24 @@
       href: how-to-store-user-preferences.md
     - name: Verwenden mehrerer Ressourcen für den plastischen Reader
       href: how-to-multiple-resources.md
+    - name: Unternehmensfähigkeit
+      items:
+        - name: Einrichten von virtuellen Netzwerken
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/immersive-reader/context/context
+        - name: "Verwenden der Azure\_AD-Authentifizierung"
+          href: ../authentication.md?context=/azure/cognitive-services/immersive-reader/context/context
 - name: Verweis
   items:
     - name: JavaScript SDK
       href: reference.md
 - name: Ressourcen
   items:
-    - name: Regionsunterstützung
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Unternehmensfähigkeit
+      items:
+        - name: Unterstützung für Regionen
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Konformität und Zertifizierung
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Support- und Hilfeoptionen
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
     - name: Azure-Updates

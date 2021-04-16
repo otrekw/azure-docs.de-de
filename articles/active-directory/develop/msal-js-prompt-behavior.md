@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 85f5269c3c2616070b826ecc38735c31617db537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85477548"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Eingabeaufforderungsverhalten in interaktiven MSAL.js-Anforderungen
@@ -40,13 +40,13 @@ userAgentApplication.loginRedirect(request);
 
 Die folgenden Eingabeaufforderungswerte können während der Authentifizierung bei Azure AD übergeben werden:
 
-**login:** Dieser Wert erzwingt, dass der Benutzer bei der Authentifizierungsanforderung Anmeldeinformationen eingibt.
+**login:** Dieser Wert erzwingt, dass der Benutzer bei der Authentifizierungsanforderung Anmeldeinformationen eingeben muss.
 
-**select_account:** Dieser Wert stellt dem Benutzer die Möglichkeit zur Verfügung, ein Konto auszuwählen. Dazu werden alle Konten aufgeführt, die in der Sitzung vorhanden sind.
+**select_account:** Dieser Wert bietet dem Benutzer die Möglichkeit, ein Konto auszuwählen. Dazu werden alle Konten aufgeführt, die in der Sitzung vorhanden sind.
 
-**consent:** Dieser Wert ruft ein Dialogfeld zur OAuth-Einwilligung auf, mithilfe dessen der Benutzer der App Berechtigungen erteilen kann.
+**consent:** Dieser Wert ruft ein Dialogfeld zur OAuth-Einwilligung auf, in dem der Benutzer der App Berechtigungen erteilen kann.
 
-**none:** Mit diesem Wert ist sichergestellt, dass dem Benutzer keinerlei interaktive Eingabeaufforderung angezeigt wird. Es wird empfohlen, diesen Wert nicht an interaktive Methoden in MSAL.js zu übergeben, da er zu unerwartetem Verhalten führen kann. Verwenden Sie stattdessen die `acquireTokenSilent`-Methode, damit Aufrufe automatisch erfolgen.
+**none:** Mit diesem Wert ist sichergestellt, dass dem Benutzer keine interaktiven Eingabeaufforderungen angezeigt werden. Es wird empfohlen, diesen Wert nicht an interaktive Methoden in MSAL.js zu übergeben, da er zu unerwartetem Verhalten führen kann. Verwenden Sie stattdessen die `acquireTokenSilent`-Methode, damit Aufrufe automatisch erfolgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 03/14/2021
 ms.author: yelevin
 ms.openlocfilehash: 1ff9fbbb6cd4b8827555a6cb1b222ed4eb0a5299
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104608839"
 ---
 # <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>Automatisierung der Vorfallbehandlung in Azure Sentinel mit Automatisierungsregeln
@@ -145,7 +145,7 @@ Sie können Automatisierungsregeln von verschiedenen Punkten in der Azure Sentin
 
 - **Automatisierung**
 
-    Automatisierungsregeln können zentral im neuen  **Automatisierungs-Blade** (das das **Playbooks-Blade** ersetzt) unter der Registerkarte **Automatisierungsregeln**  verwaltet werden. (Sie können jetzt auch Playbooks in diesem Blade unter der Registerkarte **Playbooks** verwalten). Von dort aus können Sie neue Automatisierungsregeln erstellen und die vorhandenen Regeln bearbeiten. Sie können auch Automatisierungsregeln verschieben, um die Reihenfolge der Ausführung zu ändern, und sie aktivieren oder deaktivieren.
+    Automatisierungsregeln können im neuen Blade **Automatisierung** (das das Blade **Playbooks** ersetzt) auf der Registerkarte **Automatisierungsregeln** zentral verwaltet werden. (Sie können jetzt auch Playbooks in diesem Blade unter der Registerkarte **Playbooks** verwalten.) Von dort aus können Sie neue Automatisierungsregeln erstellen und die vorhandenen Regeln bearbeiten. Sie können auch Automatisierungsregeln verschieben, um die Reihenfolge der Ausführung zu ändern, und sie aktivieren oder deaktivieren.
 
     Im **Automatisierung-** Blade werden alle Regeln angezeigt, die im Arbeitsbereich definiert sind, zusammen mit Ihrem Status (aktiviert/deaktiviert) und den Analyseregeln, auf die Sie angewendet werden.
 

@@ -3,7 +3,7 @@ title: 'PowerShell-Beispiel: Auflisten von Benutzern und Gruppen für eine Anwen
 description: Hier finden Sie ein PowerShell-Beispiel, das alle einer bestimmten Anwendungsproxyanwendung von Azure Active Directory (Azure AD) zugewiesenen Benutzer und Gruppen auflistet.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 540df7cbe2d35cd705e9d2b88f66a82604951957
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fdbf2ab7d33978a72e7455f3e2f5ba591cc4ab7
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548540"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375490"
 ---
 # <a name="display-users-and-groups-assigned-to-an-application-proxy-application"></a>Anzeigen der einer Anwendungsproxyanwendung zugewiesenen Benutzer und Gruppen
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5d5aaf84482dae6786ac7fd9f9ee837efca71b34
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948157"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105550"
 ---
 Die Clientbibliothek für die Bing-Websuche erleichtert die Integration der Bing-Websuche in Ihre Python-Anwendung. In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anforderung senden, eine JSON-Antwort empfangen und die Ergebnisse filtern und analysieren.
 
@@ -21,9 +21,9 @@ Möchten Sie den Code sofort sehen? Beispiele für die [Clientbibliotheken für 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Das Bing-Websuche-SDK ist mit Python 2.7, 3.3, 3.4, 3.5 und 3.6 kompatibel. Es wird empfohlen, für diese Schnellstartanleitung eine virtuelle Umgebung zu verwenden.
+Das Bing-Websuche-SDK ist mit Python 2.7 oder 3.6 und höher kompatibel. Es wird empfohlen, für diese Schnellstartanleitung eine virtuelle Umgebung zu verwenden.
 
-* Python 2.7, 3.3, 3.4, 3.5 oder 3.6
+* Python 2.7 oder 3.6 und höher
 * [virtualenv](https://docs.python.org/3/tutorial/venv.html) für Python 2.7
 * [venv](https://pypi.python.org/pypi/virtualenv) für Python 3.x
 
