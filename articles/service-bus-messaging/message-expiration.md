@@ -3,12 +3,12 @@ title: 'Azure Service Bus: Ablauf von Nachrichten'
 description: In diesem Artikel werden der Ablauf und die Gültigkeitsdauer von Azure Service Bus-Nachrichten behandelt. Nach einer solchen Frist wird die Nachricht nicht mehr zugestellt.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 74df8909633c2fa048c23c559ffdd315a8616e11
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5d60d84bdc0d437d97c369296a414d55beda4167
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042826"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952319"
 ---
 # <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 Die Nutzlast in einer Nachricht oder die in einer Nachricht an einen Empfänger übermittelten Befehle/Anforderungen unterliegen fast immer einer Form von Ablauffrist auf Anwendungsebene. Nach Ablauf einer solchen Frist wird der Inhalt nicht mehr zugestellt oder der gewünschte Vorgang nicht mehr ausgeführt.
@@ -46,7 +46,7 @@ Service Bus-Warteschlangen, -Themen und -Abonnements können als temporäre Enti
  
 Die automatische Bereinigung ist in Entwicklungs- und Testszenarien sinnvoll, in denen Entitäten dynamisch erstellt und nach der Nutzung nicht bereinigt werden, da der Test- oder Debuglauf unterbrochen wurde. Sie ist auch nützlich, wenn eine Anwendung dynamische Entitäten erstellt, wie z.B. eine Antwortwarteschlange, um Antworten wieder in einen Webserverprozess oder in einem anderen relativ kurzlebigen Objekt zu empfangen. In diesem Fall ist es schwierig, diese Entitäten zuverlässig zu bereinigen, wenn die Objektinstanz nicht mehr vorhanden ist.
 
-Die Funktion wird mit der Eigenschaft **Automatisches Löschen bei Leerlauf** für den Namespace aktiviert. Diese Eigenschaft wird auf die Dauer festgelegt, die eine Entität inaktiv (im Leerlauf) sein muss, bevor sie automatisch gelöscht wird. Der Mindestwert für diese Eigenschaft lautet 5.
+Die Funktion wird mit der Eigenschaft **Automatisches Löschen bei Leerlauf** für den Namespace aktiviert. Diese Eigenschaft wird auf die Dauer festgelegt, die eine Entität inaktiv (im Leerlauf) sein muss, bevor sie automatisch gelöscht wird. Der Mindestwert für diese Eigenschaft lautet 5 Minuten.
  
 ## <a name="idleness"></a>Leerlauf
 

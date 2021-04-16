@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei der Azure Active Directory-Anwendungsbereitstellung
 description: Neue und aktualisierte Dokumentation für die Azure Active Directory-Anwendungsbereitstellung
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: abee58607a5492548e4d64f44c15fd365876f3f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bb8dfbaf7ee1758811016dd3ddf08367a44bfae
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453680"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443507"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory-Anwendungsbereitstellung: Neues
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Active Directory-Anwendungsbereitstellung. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Bereitstellungsdienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="march-2021"></a>März 2021
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Synchronisieren von Erweiterungsattributen zur Bereitstellung der App](user-provisioning-sync-attributes-for-mapping.md)
+- [Anwendungsbereitstellung im Quarantänestatus](application-provisioning-quarantine-status.md)
+- [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](configure-automatic-user-provisioning-portal.md)
+- [Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure AD](functions-for-customizing-application-data.md)
+- [Tutorial: Entwickeln eines SCIM-Beispielendpunkts](use-scim-to-build-users-and-groups-endpoints.md)
+
 
 ## <a name="february-2021"></a>Februar 2021
 

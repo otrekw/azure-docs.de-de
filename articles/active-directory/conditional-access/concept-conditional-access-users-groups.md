@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d5671626e05145f79c3ad5fc0ecdb5628ac9421
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 4e1f4c7272c3db3b1e4cd834a621b66f519c6f69
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427129"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952812"
 ---
 # <a name="conditional-access-users-and-groups"></a>Bedingter Zugriff: Benutzer und Gruppen
 
-Eine Richtlinie für bedingten Zugriff muss eine Benutzerzuweisung als eines der Signale im Entscheidungsprozess einschließen. Benutzer können in Richtlinien für bedingten Zugriff eingeschlossen oder davon ausgeschlossen werden. Von Azure Active Directory werden alle Richtlinien ausgewertet, und es wird sichergestellt, dass alle Anforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird. Zusätzlich zu diesem Artikel gibt es ein Video über das [Ein- oder Ausschließen von Benutzern in bzw. aus Richtlinien für den bedingten Zugriff](https://www.youtube.com/watch?v=5DsW1hB3Jqs), das Sie durch den nachfolgend erläuterten Prozess führt. 
+Eine Richtlinie für bedingten Zugriff muss eine Benutzerzuweisung als eines der Signale im Entscheidungsprozess einschließen. Benutzer können in Richtlinien für bedingten Zugriff eingeschlossen oder davon ausgeschlossen werden. Von Azure Active Directory werden alle Richtlinien ausgewertet, und es wird sichergestellt, dass alle Anforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird. 
 
-![Benutzer als Signal in den Entscheidungen des bedingten Zugriffs](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
+> [!VIDEO https://www.youtube.com/embed/5DsW1hB3Jqs]
 
 ## <a name="include-users"></a>Einschließen von Benutzern
 
@@ -38,7 +38,7 @@ Beim Erstellen einer Richtlinie für bedingten Zugriff sind die folgenden Option
    - Alle Gastbenutzer und externen Benutzer
       - Diese Auswahl umfasst B2B-Gastbenutzer und externe Benutzer, einschließlich aller Benutzer, deren `user type`-Attribut auf `guest` festgelegt ist. Diese Auswahl gilt auch für externe Benutzer, die sich von einer anderen Organisation wie einem Cloudlösungsanbieter (Cloud Solution Provider, CSP) angemeldet haben. 
    - Verzeichnisrollen
-      - Diese Option ermöglicht Administratoren das Auswählen bestimmter Azure AD-Verzeichnisrollen, die zum Bestimmen der Zuweisung verwendet werden. Beispielsweise können Organisationen eine restriktivere Richtlinie für Benutzer erstellen, denen die Rolle „Globaler Administrator“ zugewiesen ist.
+      - Diese ermöglicht es Administratoren, bestimmte integrierte Azure AD Verzeichnisrollen auszuwählen, die zum Bestimmen der Richtlinienzuweisung verwendet werden. Beispielsweise können Organisationen eine restriktivere Richtlinie für Benutzer erstellen, denen die Rolle „Globaler Administrator“ zugewiesen ist. Andere Rollentypen werden nicht unterstützt, einschließlich Rollen und benutzerdefinierte Rollen, die auf den Bereich der Verwaltungseinheit bezogen sind.
    - Benutzer und Gruppen
       - Ermöglicht das Einbeziehen bestimmter Gruppen von Benutzern. Beispielsweise können Organisationen eine Gruppe auswählen, die alle Mitglieder der Personalabteilung enthält, wenn eine HR-App als Cloud-App ausgewählt wurde. Als Gruppe gilt eine beliebige Gruppe in Azure AD, einschließlich dynamischer oder zugewiesener Sicherheits- und Verteilungsgruppen. Die Richtlinie wird auf geschachtelte Benutzer und Gruppen angewendet.
 
@@ -77,7 +77,7 @@ Standardmäßig bietet die Richtlinie eine Option, um den aktuellen Benutzer von
 
 ![Warnung: Sperren Sie sich nicht aus!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
-[Was ist zu tun, wenn Ihr Zugriff auf das Azure-Portal gesperrt ist?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
+Wenn Sie feststellen, dass Sie ausgesperrt sind[Was ist zu tun, wenn Sie vom Azure-Portal ausgesperrt sind?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

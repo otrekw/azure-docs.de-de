@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9198fa6fdd52c91b5be5697fcecbda89a3dbdb3
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706808"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276891"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Vorgehensweise: Verringern der Wartezeit bei Verwendung des Diensts „Gesichtserkennung“
 
@@ -86,6 +86,7 @@ Wenn der Computer über eine langsame Verbindung mit dem Dienst „Gesichtserken
 Gegenmaßnahmen:
 - Wenn Sie Ihr Abonnement für den Dienst „Gesichtserkennung“ erstellen, sollten Sie darauf achten, die Region auszuwählen, in der Ihre Anwendung gehostet wird.
 - Wenn Sie mehrere Dienstmethoden aufrufen müssen, empfiehlt es sich, diese parallel aufzurufen, sofern Ihr Anwendungsentwurf dies zulässt. Ein Beispiel finden Sie im vorherigen Abschnitt.
+- Wenn sich längere Wartezeiten auf die Benutzererfahrung auswirken, wählen Sie einen Timeoutschwellenwert (z. B. maximal fünf Sekunden) aus, bevor Sie den API-Aufruf wiederholen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

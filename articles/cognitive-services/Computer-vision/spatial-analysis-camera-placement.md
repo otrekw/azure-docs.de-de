@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4c2d1cd1c73b377d85501fd31d0f5a1893df5183
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d58e4303078733eb1014171271d27907ff7a95b0
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102487422"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286265"
 ---
 # <a name="camera-placement-guide"></a>Leitfaden zur Kameraplatzierung
 
@@ -158,6 +158,6 @@ Organische Warteschlangen formieren sich von allein. Diese Art von Warteschlange
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Bereitstellen einer Webanwendung für die Erfassung der Personenanzahl](spatial-analysis-web-app.md)
-* [Konfigurieren von Vorgängen zur räumlichen Analysen](./spatial-analysis-operations.md)
+* [Konfigurieren von Vorgängen zur räumlichen Analyse](./spatial-analysis-operations.md)
 * [Protokollierung und Problembehandlung](spatial-analysis-logging.md)
 * [Leitfaden zur Platzierung von Zonen und Linien](spatial-analysis-zone-line-placement.md)

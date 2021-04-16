@@ -1,18 +1,18 @@
 ---
 title: Steuerungen des Medien-Blaupausenbeispiels
 description: Steuerungszuordnung der Medien-Blaupausenbeispiele Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 04/02/2021
+ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: b489111010c9a4fcb112428ae642332980302849
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 4c04c661d7dd8b2b07a05c20524258d6bb887e62
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386400"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376697"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Steuerungszuordnung des Medien-Blaupausenbeispiels
 
-In diesem Artikel wird erläutert, wie das Medien-Blaupausenbeispiel von Azure Blueprints den Mediensteuerungen zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [Medien](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+In diesem Artikel wird erläutert, wie das Medien-Blaupausenbeispiel von Azure Blueprints den Mediensteuerungen zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [Medien](https://www.motionpictures.org/best-practices).
 
 Die folgenden Zuordnungen gelten für die **Mediensteuerungen**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschauversion\]: Audit Media controls** (Mediensteuerungen überprüfen).
 

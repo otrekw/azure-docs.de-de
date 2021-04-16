@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d36a51865f3ed4a093998b16aaa174432c5308a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489561"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275650"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 
@@ -87,6 +87,8 @@ Geben Sie den DNS-Server für Ihre Umgebung in den Einstellungen der Containeren
 
 In diesem Beispiel wird der DNS-Server auf einen öffentlich zugänglichen DNS-Dienst festgelegt. Wenn das Edgegerät in seiner Umgebung nicht auf diese IP-Adresse zugreifen kann, ersetzen Sie sie durch eine DNS-Serveradresse, die zugänglich ist.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Fügen Sie `daemon.json` im richtigen Pfad für Ihre Plattform ein:
 
 | Plattform | Standort |
@@ -102,6 +104,24 @@ Starten Sie die Containerengine neu, damit die Änderungen wirksam werden.
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (Administrator-PowerShell) | `Restart-Service iotedge-moby -Force` |
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Speichern Sie `daemon.json` im Verzeichnis `/etc/docker` auf Ihrem Gerät.
+
+Wenn die Datei `daemon.json` im Pfad bereits vorhanden ist, fügen Sie ihr den Schlüssel **dns** hinzu, und speichern Sie die Datei.
+
+Starten Sie die Containerengine neu, damit die Änderungen wirksam werden.
+
+```bash
+sudo systemctl restart docker
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 **Option 2: Festlegen des DNS-Servers in der IoT Edge-Bereitstellung pro Modul**
 
@@ -275,6 +295,9 @@ Wenn dieser Fehler angezeigt wird, können Sie ihn durch Konfigurieren des DNS-N
 :::moniker-end
 <!-- end 1.2 -->
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>IoT Edge-Daemonprotokolle in Windows können nicht abgerufen werden.
 
 **Beobachtetes Verhalten:**
@@ -297,6 +320,9 @@ Windows Registry Editor Version 5.00
 "EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
 "TypesSupported"=dword:00000007
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
 
 ## <a name="stability-issues-on-smaller-devices"></a>Stabilitätsprobleme auf kleineren Geräten
 
@@ -388,6 +414,7 @@ IoT Edge-Geräte hinter einem Gateway erhalten ihre Modulimages von dem übergeo
 Stellen Sie sicher, dass das übergeordnete IoT Edge-Gerät eingehende Anforderungen vom untergeordneten IoT Edge-Gerät empfangen kann. Öffnen Sie Netzwerkdatenverkehr an den Ports 443 und 6617 für Anforderungen vom untergeordneten Gerät.
 
 :::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>Nächste Schritte
 
