@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b6d51e05598f60de0e9c8fb85472b7c14bba990e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9dd3525f4efec3c49950839306ee5419c7850c69
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598387"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275412"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Schritt 1: Informieren Sie sich über die Vorteile der Migration zur Media Services-API V3
 
@@ -23,6 +23,8 @@ ms.locfileid: "104598387"
 <hr color="#5ea0ef" size="10">
 
 ![Schritte bei der Migration 2](./media/migration-guide/steps-1.svg)
+
+## <a name="use-the-latest-api"></a>Verwenden der aktuellen API
 
 Wir empfehlen Ihnen, jetzt die Version 2020-05-01 der Azure Media Services-API V3 zu verwenden, um von den Vorteilen zu profitieren, da neue Features, Funktionen und Leistungsoptimierungen nur in der aktuellen API (V3) verfügbar sind.
 
@@ -42,25 +44,21 @@ Mit V3 wurde Media Services erheblich verbessert.
 | Unterstützung für private Verbindungen | Kunden greifen über einen PrivateEndpoint in ihrem VNet auf Media Services-Endpunkte für Schlüsselübermittlung, LiveEvents und StreamingEndpoints zu. |
 | [Kundenseitig verwaltete Schlüssel](concept-use-customer-managed-keys-byok.md) oder BYOK-Unterstützung (Bring Your Own Key) | Kunden können die Daten in ihrem Media Services-Konto mithilfe eines Schlüssels in ihrem Azure Key Vault verschlüsseln. |
 | **Medienobjekte** | |
-| Ein Medienobjekt kann mehrere [Streaminglocators](streaming-locators-concept.md) mit verschiedenen Einstellungen für die [dynamische Paketerstellung](dynamic-packaging-overview.md) und dynamische Verschlüsselung aufweisen. | Für jedes Medienobjekt sind maximal 100 Streaminglocators zulässig. Kunden können eine einzelne Kopie des Medieninhalts im Medienobjekt speichern, aber verschiedene Streaming-URLs mit unterschiedlichen Streamingrichtlinien oder Richtlinien zum Schutz von Inhalten freigeben, die auf einer bestimmten Zielgruppe basieren.
+| Ein Medienobjekt kann mehrere [Streaminglocators](stream-streaming-locators-concept.md) mit verschiedenen Einstellungen für die [dynamische Paketerstellung](encode-dynamic-packaging-concept.md) und dynamische Verschlüsselung aufweisen. | Für jedes Medienobjekt sind maximal 100 Streaminglocators zulässig. Kunden können eine einzelne Kopie des Medieninhalts im Medienobjekt speichern, aber verschiedene Streaming-URLs mit unterschiedlichen Streamingrichtlinien oder Richtlinien zum Schutz von Inhalten freigeben, die auf einer bestimmten Zielgruppe basieren.
 | **Auftragsverarbeitung** ||
-| V3 führt das Konzept von  [Transformationen](transforms-jobs-concept.md)  für dateibasierte Auftragsverarbeitung ein. | Eine Transformation kann verwendet werden, um wiederverwendbare Konfigurationen und Azure Resource Manager-Vorlagen zu erstellen, und um Verarbeitungseinstellungen zwischen mehreren Kunden oder Mandanten zu isolieren. |
+| V3 führt das Konzept von  [Transformationen](transform-jobs-concept.md)  für dateibasierte Auftragsverarbeitung ein. | Eine Transformation kann verwendet werden, um wiederverwendbare Konfigurationen und Azure Resource Manager-Vorlagen zu erstellen, und um Verarbeitungseinstellungen zwischen mehreren Kunden oder Mandanten zu isolieren. |
 | Für dateibasierte Auftragsverarbeitung können Sie als Eingabe eine HTTP(S)-URL verwenden. | Sie müssen noch keine Inhalte in Azure gespeichert haben und müssen auch keine Eingabemedienobjekte erstellen. |
 | **Liveereignisse** ||
 | Premium-1080p-Liveereignisse | Mit der neuen Liveereignis-SKU können Kunden eine Cloudcodierung mit einer Ausgabe in einer Auflösung von bis zu 1080p erhalten. |
-| Neue Unterstützung für Livestreaming mit [niedriger Latenz](live-event-latency.md) für Liveereignisse. | Dadurch können Benutzer Liveereignisse in nahezu Echtzeit verfolgen, was nicht der Fall wäre, wenn sie diese Einstellung nicht aktiviert hätten. |
-| Die Vorschau von Liveereignissen unterstützt die  [dynamische Paketerstellung](dynamic-packaging-overview.md) und dynamische Verschlüsselung. | Dadurch wird in der Vorschau der Inhaltsschutz sowie auch die Paketerstellung für DASH und HLS ermöglicht. |
+| Neue Unterstützung für Livestreaming mit [niedriger Latenz](live-event-latency-reference.md) für Liveereignisse. | Dadurch können Benutzer Liveereignisse in nahezu Echtzeit verfolgen, was nicht der Fall wäre, wenn sie diese Einstellung nicht aktiviert hätten. |
+| Die Vorschau von Liveereignissen unterstützt die  [dynamische Paketerstellung](encode-dynamic-packaging-concept.md) und dynamische Verschlüsselung. | Dadurch wird in der Vorschau der Inhaltsschutz sowie auch die Paketerstellung für DASH und HLS ermöglicht. |
 | Liveausgaben ersetzen Programme | Die Liveausgabe ist einfacher zu verwenden als die Programmentität in den V2-APIs. |
 | Die RTMP-Erfassung für Liveereignisse wurde verbessert, mit Unterstützung für weitere Encoder | Erhöht die Stabilität und bietet Flexibilität hinsichtlich des Quellencoders |
 | Liveereignisse können rund um die Uhr gestreamt werden | Sie können ein Liveereignis hosten und Ihre Zielgruppe über einen längeren Zeitraum binden. |
 | Livetranskription für Liveereignisse | Die Livetranskription ermöglicht Kunden die automatische Transkription von gesprochener Sprache in Text in Echtzeit während der Liveübertragung eines Ereignisses. Dies verbessert die Barrierefreiheit von Liveereignissen erheblich. |
-| [Standbymodus](live-events-outputs-concept.md#standby-mode) für Liveereignisse | Liveereignisse im Standbyzustand sind kostengünstiger als aktive Liveereignisse. Dadurch können Kunden einen Satz von Liveereignissen verwalten, die innerhalb von Sekunden startbereit sind, und das zu geringeren Kosten als die Verwaltung eines Satzes von aktiven Liveereignissen. Die reduzierten Preise für Liveereignisse im Standbyzustand werden im Februar 2021 für die meisten Regionen in Kraft treten, der Rest folgt im April 2021.
+| [Standbymodus](live-event-outputs-concept.md#standby-mode) für Liveereignisse | Liveereignisse im Standbyzustand sind kostengünstiger als aktive Liveereignisse. Dadurch können Kunden einen Satz von Liveereignissen verwalten, die innerhalb von Sekunden startbereit sind, und das zu geringeren Kosten als die Verwaltung eines Satzes von aktiven Liveereignissen. Die reduzierten Preise für Liveereignisse im Standbyzustand werden im Februar 2021 für die meisten Regionen in Kraft treten, der Rest folgt im April 2021.
 |**Inhaltsschutz** ||
-| Der [Inhaltsschutz](content-key-policy-concept.md) unterstützt Features mit mehreren Schlüsseln. | Kunden können jetzt mehrere Verschlüsselungsschlüssel für Inhalte auf ihren Streaminglocators verwenden. |
+| Der [Inhaltsschutz](drm-content-key-policy-concept.md) unterstützt Features mit mehreren Schlüsseln. | Kunden können jetzt mehrere Verschlüsselungsschlüssel für Inhalte auf ihren Streaminglocators verwenden. |
 | **Überwachung** | |
 | Unterstützung von [Azure EventGrid](monitoring/reacting-to-media-services-events.md)-Benachrichtigungen | EventGrid-Benachrichtigungen weisen umfangreichere Features auf. Es gibt mehr Arten von Benachrichtigungen, eine umfassendere SDK-Unterstützung für den Empfang der Benachrichtigungen in Ihrer eigenen Anwendung und mehr bestehende Azure-Dienste, die als Ereignishandler fungieren können. |
 | [Azure Monitor-Unterstützung und -Integration im Azure-Portal](monitoring/monitor-events-portal-how-to.md) | Dies ermöglicht Kunden die Visualisierung der Kontingentnutzung von Media Services, Echtzeitstatistiken von Streamingendpunkten sowie Erfassungs- und Archivstatistiken für Liveereignisse. Kunden sind jetzt in der Lage, Warnungen festzulegen und erforderliche Aktionen auf der Grundlage von Echtzeitmetrikdaten durchzuführen. |
-
-## <a name="next-steps"></a>Nächste Schritte
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

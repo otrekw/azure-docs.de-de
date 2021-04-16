@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 92db62622c37241a76d7847931df030162de8f00
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98209830"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504225"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 
@@ -137,12 +137,16 @@ Dienste, die nach dem 15. Juli 2020 erstellt werden, verfügen über ein ander
 
 Für das neue Verhalten gilt:
 
-* Es werden nur Ausdrücke zurückgegeben, die der vollständigen Ausdrucksabfrage entsprechen. Die Abfrage „super bowl“ führt zu Markierungen wie diesen:
++ Es werden nur Ausdrücke zurückgegeben, die der vollständigen Ausdrucksabfrage entsprechen. Der Abfrageausdruck „super bowl“ führt zu Markierungen wie diesen:
 
-    ```html
-    '<em>super bowl</em> is super awesome with a bowl of chips'
-    ```
-  Beachten Sie, dass für *bowl of chips* keine Markierung erfolgt, weil keine Entsprechung mit dem vollständigen Ausdruck vorliegt.
+  ```json
+  "@search.highlights": {
+      "sentence": [
+          "The <em>super</em> <em>bowl</em> is super awesome with a bowl of chips"
+     ]
+  ```
+
+  Beachten Sie, dass andere Instanzen von *super* und *bowl* keine Markierungen aufweisen, da diese Instanzen nicht mit dem vollständigen Ausdruck identisch sind.
 
 Berücksichtigen Sie diese Änderung, wenn Sie Clientcode mit einer Treffermarkierungsimplementierung schreiben. Beachten Sie, dass dies nur dann für Sie relevant ist, wenn Sie einen vollständig neuen Suchdienst erstellen.
 

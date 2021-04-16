@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d47b4847a12b63532e44a8a1a47101dd065f811b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d842414d3046692c982ca3203957a96f8a01b37
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96446596"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377329"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Entwurfsentscheidungen und Programmiertechniken für Synapse SQL-Features in Azure Synapse Analytics
 Dieser Artikel enthält eine Liste mit Ressourcen zu Funktionen von Synapse SQL für dedizierte SQL-Pools und serverlose SQL-Pools. Die empfohlenen Artikel sind in zwei Abschnitte unterteilt: Wesentliche Entwurfsentscheidungen und Entwicklungs- und Programmiertechniken.
@@ -46,7 +46,7 @@ Im Folgenden finden Sie wichtige Artikel, die bestimmte Programmiertechniken, Ti
 
 | Artikel | Dedizierter SQL-Pool | Serverloser SQL-Pool |
 | ------- | -------- | ------------- |
-| [Gespeicherten Prozeduren](develop-stored-procedures.md)  | Ja                | Nein                      |
+| [Gespeicherten Prozeduren](develop-stored-procedures.md)  | Ja                | Ja                      |
 | [Bezeichnungen](develop-label.md)                           | Ja                | Nein                      |
 | [Ansichten](develop-views.md)                             | Ja                | Ja                     |
 | [Temporäre Tabellen](develop-tables-temporary.md)       | Ja                | Ja                     |

@@ -82,6 +82,12 @@
       items:
         - name: 'Überprüfungen, Workflows und Aufträge'
           href: review-api.md
+    - name: Unternehmensfähigkeit
+      items:
+        - name: Einrichten von virtuellen Netzwerken
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/content-moderator/context/context
+        - name: Verwenden kundenseitig verwalteter Schlüssel
+          href: encrypt-data-at-rest.md
 - name: Konzepte
   items:
     - name: Bildmoderation
@@ -114,19 +120,21 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: Ressourcen
   items:
-    - name: Azure-Webinarreihe
-      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
-    - name: Unterstützung für Regionen
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Microsoft Learn-Module
-      href: /learn/browse/?terms=content+moderator
+    - name: Unternehmensfähigkeit
+      items:
+        - name: Unterstützung für Regionen
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Konformität und Zertifizierung
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Support- und Hilfeoptionen
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
+    - name: Microsoft Learn-Module
+      href: /learn/browse/?terms=content+moderator
+    - name: Azure-Webinarreihe
+      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: Azure Government und globales Azure
       href: ../../azure-government/compare-azure-government-global-azure.md
     - name: Azure-Updates
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Verschlüsselung
-      href: encrypt-data-at-rest.md

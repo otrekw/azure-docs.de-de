@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.service: partner-services
 ms.date: 01/15/2021
 ms.author: tomfitz
-ms.openlocfilehash: b4aa00b7a2cc7ca6bc968be70957c127a8e00738
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fefbc21c385e3beacbf570c31ffbf97238c780fc
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98253254"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109083"
 ---
 # <a name="what-is-apache-kafka-for-confluent-cloud"></a>Was ist Apache Kafka für Confluent Cloud?
 
@@ -56,6 +56,12 @@ Es stehen zwei Abrechnungsoptionen zur Verfügung: ein Plan mit monatlicher nutz
 - Bei einem **Plan mit Mindestabnahme** registrieren Sie sich für einen Mindestbetrag und erhalten einen Rabatt auf Ihre zugesicherte Nutzung von Confluent Cloud.
 
 Sie entscheiden beim Erstellen des Diensts, welche Abrechnungsoption verwendet werden soll.
+
+## <a name="connector-to-azure-cosmos-db"></a>Connector für Azure Cosmos DB
+
+Installieren Sie den Cosmos DB-Connector vom Confluent Hub-Client aus, wie es in der [Confluent Hub-Auflistung](https://www.confluent.io/hub/microsoftcorporation/kafka-connect-cosmos) empfohlen wird. 
+
+Um den Connector manuell zu installieren, laden Sie zuerst eine Uber-JAR-Datei von der [Seite mit Cosmos DB Releases](https://github.com/microsoft/kafka-connect-cosmosdb/releases) herunter. Alternativ können Sie [eine eigene Uber-JAR-Datei direkt aus dem Quellcode erstellen](https://github.com/microsoft/kafka-connect-cosmosdb/blob/dev/doc/README_Sink.md#install-sink-connector). Schließen Sie die Installation ab, indem Sie die Anweisungen befolgen, die in der Confluent-Dokumentation zum [manuellen Installieren von Connectors](https://docs.confluent.io/home/connect/install.html#install-connector-manually) beschrieben sind.  
 
 ## <a name="confluent-links"></a>Confluent-Links
 

@@ -3,12 +3,12 @@ title: Speichern von Helm-Diagrammen
 description: Erfahren Sie, wie Sie Helm-Charts für Ihre Kubernetes-Anwendungen mithilfe von Depots in Azure Container Registry speichern.
 ms.topic: article
 ms.date: 06/12/2020
-ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9897ed6e43813c16314076b0322cd263cd2ed150
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86537866"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223080"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Pushen und Pullen von Helm-Charts in Azure Container Registry
 
@@ -31,7 +31,7 @@ Helm 3 sollte zum Hosten von Helm-Charts in Azure Container Registry verwendet 
 * Pushen, Pullen und Verwalten von Helm-Charts in einer Registrierung mithilfe von Befehlen vom Typ `helm chart` in der Helm-Befehlszeilenschnittstelle
 * Verwenden Sie `helm install`, um Charts aus einem lokalen Repositorycache in einem Kubernetes-Cluster zu installieren.
 > [!NOTE]
-> Ab Helm 3 gelten [az acr helm][az-acr-helm]-Befehle für die Verwendung mit dem Helm 2-Client als veraltet. Siehe die [Produktroadmap](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga). Wenn Sie zuvor Helm 2-Charts bereitgestellt haben, lesen Sie [Migrating Helm v2 to v3](https://helm.sh/docs/topics/v2_v3_migration/) (Migrieren von Helm v2 zu v3).
+> Ab Helm 3 gelten [az acr helm][az-acr-helm]-Befehle für die Verwendung mit dem Helm 2-Client als veraltet. Sie werden mindestens drei Monate im Voraus über das Entfernen eines Befehls informiert. Wenn Sie zuvor Helm 2-Charts bereitgestellt haben, lesen Sie [Migrating Helm v2 to v3](https://helm.sh/docs/topics/v2_v3_migration/) (Migrieren von Helm v2 zu v3).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

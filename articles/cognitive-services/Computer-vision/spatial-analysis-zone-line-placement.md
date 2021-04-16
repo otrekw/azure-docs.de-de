@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 7e2a64c14d7d7a1d20b64b746969aca1e60ab218
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfd3bc406407298c6daf7723cb684911d7c9a9cf
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90931416"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284667"
 ---
 # <a name="zone-and-line-placement-guide"></a>Leitfaden zur Platzierung von Zonen und Linien
 
@@ -82,6 +82,6 @@ In den folgenden Beispielen werden schlecht definierte Linien veranschaulicht.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Bereitstellen einer Webanwendung für die Erfassung der Personenanzahl](spatial-analysis-web-app.md)
-* [Konfigurieren von Vorgängen zur räumlichen Analysen](./spatial-analysis-operations.md)
+* [Konfigurieren von Vorgängen zur räumlichen Analyse](./spatial-analysis-operations.md)
 * [Protokollierung und Problembehandlung](spatial-analysis-logging.md)
 * [Leitfaden zur Kameraplatzierung](spatial-analysis-camera-placement.md)

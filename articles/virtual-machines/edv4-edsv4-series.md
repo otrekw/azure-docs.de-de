@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: d6edee1f349b37c274f71c9db7abac35f9c88c4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 407d208ef0385c795d086bb495ed51a020395cd2
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557113"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443985"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- und Edsv4-Serie
 
@@ -72,7 +72,7 @@ Die Edsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Plati
 | Standard_E32ds_v4 | 32 | 256 | 1200 | 32 | 308.000/1.936(800) | 51200/768  | 8|16000 |
 | Standard_E48ds_v4 | 48 | 384 | 1800 | 32 | 462.000/2.904(1.200) | 76800/1152 | 8|24.000 |
 | Standard_E64ds_v4 <sup>1</sup> | 64 | 504 | 2400 | 32 | 615.000/3.872(1.600) | 80000/1200 | 8|30.000 |
-| Standard_E80ids_v4 <sup>2</sup> | 80 | 504 | 2400 | 32 | 615.000/3.872(1.600) | 80000/1200 | 8|30.000 |
+| Standard_E80ids_v4 <sup>2</sup> | 80 | 504 | 2400 | 32 | 615.000/3.872(1.600) | 80.000/1.500 | 8|30.000 |
 
 <sup>1</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md).
 

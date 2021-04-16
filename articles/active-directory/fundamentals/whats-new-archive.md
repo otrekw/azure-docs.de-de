@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/29/2021
+ms.date: 3/31/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a555d2813030daeca1f2abcdc4b7787444bd0614
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: fef59ef1088582b4ebb29131bd48337e9e0bd406
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453018"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107094"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv für Neuerungen in Azure Active Directory
 
@@ -33,6 +33,186 @@ Der primäre Artikel [Neuerungen in Azure Active Directory – Anmerkungen zu di
 - Pläne für Änderungen
 
 ---
+
+## <a name="september-2020"></a>September 2020
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---september-2020"></a>Neue Bereitstellungsconnectors im Azure AD-Anwendungskatalog – September 2020
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** App-Bereitstellung  
+**Produktfunktion:** Integration von Drittanbieterprodukten
+ 
+Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
+
+- [Coda](../saas-apps/coda-provisioning-tutorial.md)
+- [Cofense Recipient Sync](../saas-apps/cofense-provision-tutorial.md)
+- [InVision](../saas-apps/invision-provisioning-tutorial.md)
+- [myday](../saas-apps/myday-provision-tutorial.md)
+- [SAP Analytics Cloud](../saas-apps/sap-analytics-cloud-provisioning-tutorial.md)
+- [Webroot Security Awareness](../saas-apps/webroot-security-awareness-training-provisioning-tutorial.md)
+
+Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte Bereitstellung von Benutzerkonten besser schützen können, finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
+ 
+---
+### <a name="cloud-provisioning-public-preview-refresh"></a>Cloudbereitstellungsaktualisierung, Public Preview
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Azure AD-Cloudbereitstellung, **Produktfunktion:** Identity Lifecycle Management
+ 
+Die Azure AD Connect-Cloudbereitstellungsaktualisierung (Public Preview) bietet zwei wichtige Verbesserungen, die anhand von Kundenfeedback entwickelt wurden: 
+
+- Attributzuordnung über das Azure-Portal
+
+    Mit diesem Feature können IT-Administratoren Benutzer-, Gruppen- oder Kontaktattribute aus AD in Azure AD mithilfe verschiedener Zuordnungstypen zuordnen, die heute vorhanden sind. Die Attributzuordnung ist eine Funktion zum Standardisieren von Werten der Attribute, die von Active Directory an Azure Active Directory übertragen werden. Sie können bestimmen, ob der Attributwert von AD direkt Azure AD zugeordnet werden soll oder ob Ausdrücke verwendet werden sollen, um die Attributwerte beim Bereitstellen von Benutzern zu transformieren. [Weitere Informationen](../cloud-sync/how-to-attribute-mapping.md)
+
+- Bedarfsgesteuerte Bereitstellung oder Testen der Benutzertransformation
+
+    Nachdem Sie Ihre Konfiguration eingerichtet haben, möchten Sie vermutlich testen, ob die Benutzertransformation wie erwartet funktioniert, bevor Sie diese auf alle Ihre Benutzer im Bereich anwenden. Bei der bedarfsgesteuerten Bereitstellung können IT-Administratoren den Distinguished Name (DN) eines AD-Benutzers eingeben und überprüfen, ob er wie erwartet synchronisiert wird. Die bedarfsgesteuerte Bereitstellung bietet eine gute Möglichkeit, um sicherzustellen, dass die Attributzuordnungen, die Sie zuvor vorgenommen haben, erwartungsgemäß funktionieren. [Weitere Informationen](../cloud-sync/how-to-on-demand-provision.md)
+ 
+---
+
+### <a name="audited-bitlocker-recovery-in-azure-ad---public-preview"></a>Überwachte BitLocker-Wiederherstellung in Azure AD – Public Preview
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Gerätezugriffsverwaltung  
+**Produktfunktion:** Lebenszyklusverwaltung für Geräte
+ 
+Wenn IT-Administratoren oder Endbenutzer den BitLocker-Wiederherstellungsschlüssel lesen, auf den sie zugreifen können, generiert Azure Active Directory jetzt ein Überwachungsprotokoll, das erfasst, wer auf den Wiederherstellungsschlüssel zugegriffen hat. Dieselbe Überwachung liefert Details zu dem Gerät, dem der BitLocker-Schlüssel zugeordnet ist.
+
+Endbenutzer können [über das Portal „Mein Konto“ auf ihre Wiederherstellungsschlüssel zugreifen](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key). IT-Administratoren können über die [BitLocker-Wiederherstellungsschlüssel-API in der Betaversion](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) oder über das Azure AD-Portal auf Wiederherstellungsschlüssel zugreifen. Weitere Informationen finden Sie unter [Anzeigen oder Kopieren von BitLocker-Schlüsseln im Azure AD-Portal](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys).
+
+---
+
+### <a name="teams-devices-administrator-built-in-role"></a>Integrierte Rolle „Teams-Geräteadministrator“
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** RBAC  
+**Produktfunktion:** Zugriffssteuerung
+ 
+Benutzer mit der Rolle [Teams-Geräteadministrator](../roles/permissions-reference.md#teams-devices-administrator) können im Teams Admin Center [von Teams zertifizierte Geräte](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) verwalten. 
+
+Benutzer mit dieser Rolle können alle Geräte auf einen Blick anzeigen und haben die Möglichkeit, Geräte zu suchen und zu filtern. Außerdem kann der Benutzer Details zu jedem Gerät überprüfen, darunter das angemeldete Konto sowie Marke und Modell des Geräts. Der Benutzer kann die Einstellungen auf dem Gerät ändern und die Softwareversionen aktualisieren. Diese Rolle gewährt keine Berechtigungen zum Überprüfen der Teams-Aktivität und der Anrufqualität des Geräts.
+ 
+---
+
+### <a name="advanced-query-capabilities-for-directory-objects"></a>Erweiterte Abfragefunktionen für Verzeichnisobjekte
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** MS Graph  
+**Produktfunktion:** Entwickleroberfläche
+ 
+Alle neuen Abfragefunktionen, die für Verzeichnisobjekte in Azure AD-APIs eingeführt wurden, sind jetzt im v1.0-Endpunkt und für die Produktionsumgebung verfügbar. Mit den OData-Standardoperatoren können Entwickler Verzeichnisobjekte und zugehörige Verknüpfungen zählen, durchsuchen, filtern und sortieren.
+
+Weitere Informationen finden Sie in [dieser Dokumentation](https://aka.ms/BlogPostMezzoGA). Sie können über diese [kurze Umfrage](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_yN8EPoGo5OpR1hgmCp1XxUMENJRkNQTk5RQkpWTE44NEk2U0RIV0VZRy4u) auch Feedback senden.
+ 
+---
+
+### <a name="public-preview-continuous-access-evaluation-for-tenants-who-configured-conditional-access-policies"></a>Öffentliche Vorschau: Fortlaufende Zugriffsevaluierung für Mandanten, die Richtlinien für bedingten Zugriff konfiguriert haben
+
+**Typ:** Neues Feature  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Produktfunktion:** Identitätssicherheit und -schutz
+ 
+Fortlaufende Zugriffsevaluierung (Continuous Access Evaluation, CAE) ist jetzt in der öffentlichen Vorschau für Azure AD-Mandanten mit Richtlinien für bedingten Zugriff verfügbar. Mit CAE werden kritische sicherheitsrelevante Ereignisse und Richtlinien in Echtzeit ausgewertet. Dies umfasst Kontodeaktivierungen, Kennwortzurücksetzungen und Standortänderungen. Weitere Informationen finden Sie unter [Fortlaufende Zugriffsevaluierung](../conditional-access/concept-continuous-access-evaluation.md).
+
+---
+
+### <a name="public-preview-ask-users-requesting-an-access-package-additional-questions-to-improve-approval-decisions"></a>Öffentliche Vorschau: Benutzern, die ein Zugriffspaket anfordern, zusätzliche Fragen stellen, um bessere Genehmigungsentscheidungen treffen zu können
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Benutzerzugriffsverwaltung  
+**Produktfunktion:** Berechtigungsverwaltung
+ 
+Administratoren können jetzt verlangen, dass Benutzer, die ein Zugriffspaket anfordern, im Portal „Mein Zugriff“ der Azure AD-Berechtigungsverwaltung zusätzliche Fragen beantworten müssen, die über das Angeben einer geschäftlichen Begründung hinausgehen. Die Antworten der Benutzer werden dann den genehmigenden Personen angezeigt, damit diese eine genauere Entscheidung über die Zugriffsgenehmigung treffen können. Weitere Informationen finden Sie unter [Sammeln zusätzlicher Anfordererinformationen für die Genehmigung (Vorschau)](../governance/entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview).
+ 
+---
+
+### <a name="public-preview-enhanced-user-management"></a>Öffentliche Vorschau: Erweiterte Benutzerverwaltung
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Benutzerverwaltung  
+**Produktfunktion:** Benutzerverwaltung
+ 
+
+Das Azure AD-Portal wurde aktualisiert, um die Benutzersuche auf den Seiten „Alle Benutzer“ und „Gelöschte Benutzer“ zu vereinfachen. Zu den Änderungen in dieser Vorschau gehören: 
+- Mehr sichtbare Benutzereigenschaften einschließlich Objekt-ID, Status der Verzeichnissynchronisierung, Erstellungstyp und Identitätsaussteller.
+- Die Suchfunktion lässt jetzt eine Kombination aus Namen, E-Mail-Adressen und Objekt-IDs zu.
+- Erweiterte Filterung nach Benutzertyp (Mitglied, Gast, kein), Status der Verzeichnissynchronisierung, Erstellungstyp, Firmenname und Domänenname.
+- Neue Sortierfunktionen für Eigenschaften wie Name, Benutzerprinzipalname und Löschdatum.
+- Eine neue Gesamtanzahl von Benutzern, die bei Suchvorgängen oder Filtern aktualisiert werden.
+
+Weitere Informationen finden Sie unter [Erweiterungen bei der Benutzerverwaltung (Vorschau) – Azure Active Directory](../enterprise-users/users-search-enhanced.md).
+
+---
+
+### <a name="new-notes-field-for-enterprise-applications"></a>Neues Notizenfeld für Unternehmensanwendungen
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Enterprise Apps-**Produktfunktion:** SSO
+
+Sie können Unternehmensanwendungen Textnotizen hinzufügen. Sie können alle relevanten Informationen hinzufügen, die Sie beim Verwalten von Anwendungen unter Unternehmensanwendungen unterstützen. Weitere Informationen finden Sie unter [Quickstart: Konfigurieren von Eigenschaften für eine Anwendung in Ihrem Azure AD-Mandanten (Azure Active Directory)](../manage-apps/add-application-portal-configure.md). 
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---september-2020"></a>Neue Verbund-Apps im Azure AD-Anwendungskatalog verfügbar – September 2020
+
+**Typ:** Neues Feature  
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion:** Integration von Drittanbieterprodukten
+
+Im September 2020 haben wir die folgenden 34 neuen Anwendungen mit Verbundunterstützung in unseren App-Katalog aufgenommen:
+
+[VMware Horizon - Unified Access Gateway](), [Pulse Secure PCS](../saas-apps/vmware-horizon-unified-access-gateway-tutorial.md), [Inventory360](../saas-apps/pulse-secure-pcs-tutorial.md), [Frontitude](https://services.enteksystems.de/sso/microsoft/signup), [BookWidgets](https://www.bookwidgets.com/sso/office365), [ZVD_Server](https://zaas.zenmutech.com/user/signin), [HashData for Business](https://hashdata.app/login.xhtml), [SecureLogin](https://securelogin.securelogin.nu/sso/azure/login), [CyberSolutions MAILBASEΣ/CMSS](../saas-apps/cybersolutions-mailbase-tutorial.md), [CyberSolutions CYBERMAILΣ](../saas-apps/cybersolutions-cybermail-tutorial.md), [LimbleCMMS](https://auth.limblecmms.com/), [Glint Inc](../saas-apps/glint-inc-tutorial.md), [zeroheight](../saas-apps/zeroheight-tutorial.md), [Gender Fitness](https://app.genderfitness.com/), [Coeo Portal](https://my.coeo.com/), [Grammarly](../saas-apps/grammarly-tutorial.md), [Fivetran](../saas-apps/fivetran-tutorial.md), [Kumolus](../saas-apps/kumolus-tutorial.md), [RSA Archer Suite](../saas-apps/rsa-archer-suite-tutorial.md), [TeamzSkill](../saas-apps/teamzskill-tutorial.md), [raumfürraum](../saas-apps/raumfurraum-tutorial.md), [Saviynt](../saas-apps/saviynt-tutorial.md), [BizMerlinHR](https://marketplace.bizmerlin.net/bmone/signup), [Mobile Locker](../saas-apps/mobile-locker-tutorial.md), [Zengine](../saas-apps/zengine-tutorial.md), [CloudCADI](https://app.cloudcadi.com/login), [Simfoni Analytics](https://simfonianalytics.com/accounts/microsoft/login/), [Priva Identity & Access Management](https://my.priva.com/), [Nitro Pro](https://www.gonitro.com/nps/product-details/downloads), [Eventfinity](../saas-apps/eventfinity-tutorial.md), [Fexa](../saas-apps/fexa-tutorial.md), [Secured Signing Enterprise Portal](https://www.securedsigning.com/aad/Auth/ExternalLogin/AdminPortal), [Secured Signing Enterprise Portal AAD Setup](https://www.securedsigning.com/aad/Auth/ExternalLogin/AdminPortal), [Wistec Online](https://wisteconline.com/auth/oidc), [Oracle PeopleSoft – Protected by F5 BIG-IP APM](../saas-apps/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial.md)
+
+Die Dokumentation zu allen Anwendungen finden Sie auch hier: https://aka.ms/AppsTutorial.
+
+Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie hier: https://aka.ms/AzureADAppRequest.
+
+---
+
+### <a name="new-delegation-role-in-azure-ad-entitlement-management-access-package-assignment-manager"></a>Neue Delegierungsrolle in der Azure AD-Berechtigungsverwaltung: Zugriffspaketzuweisungsmanager
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Benutzerzugriffsverwaltung  
+**Produktfunktion:** Berechtigungsverwaltung
+ 
+In der Azure AD-Berechtigungsverwaltung wurde eine neue Rolle „Zugriffspaket-Zuweisungsmanager“ hinzugefügt, um granulare Berechtigungen zum Verwalten von Zuweisungen bereitzustellen. Sie können jetzt Aufgaben an einen Benutzer in dieser Rolle delegieren, der die Zuweisungsverwaltung eines Zugriffspakets an einen Geschäftsinhaber delegieren kann. Ein Zugriffspaket-Zuweisungsmanager kann jedoch die Zugriffspaketrichtlinien oder andere Eigenschaften, die von den Administratoren festgelegt wurden, nicht ändern. 
+
+Durch diese neue Rolle profitieren Sie von den geringsten Berechtigungen, die zum Delegieren der Verwaltung von Zuweisungen und zum Aufrechterhalten der administrativen Kontrolle für alle anderen Zugriffspaketkonfigurationen erforderlich sind. Weitere Informationen finden Sie unter [Berechtigungsverwaltungsrollen](../governance/entitlement-management-delegate.md#entitlement-management-roles).
+ 
+---
+
+### <a name="changes-to-privileged-identity-managements-onboarding-flow"></a>Änderungen am Onboardingvorgang in Privileged Identity Management
+
+**Typ:** Geändertes Feature  
+**Dienstkategorie:** Privileged Identity Management  
+**Produktfunktion**: Privileged Identity Management
+ 
+Zuvor erforderte das Onboarding in Privileged Identity Management (PIM) die Benutzereinwilligung und einen Onboardingvorgang auf dem PIM-Blatt, das die Registrierung in Azure AD MFA enthielt. Mit der kürzlich erfolgten Integration der PIM-Funktion in das Azure AD-Blatt „Rollen und Administratoren“ wird diese Funktion entfernt. Jeder Mandant mit einer gültigen P2-Lizenz wird automatisch in PIM integriert.
+
+Das Onboarding in PIM hat keine direkten negativen Auswirkungen auf Ihren Mandanten. Sie können die folgenden Änderungen erwarten:
+- Zusätzliche Zuweisungsoptionen wie aktive oder berechtigte Rollen mit Start- und Endzeit, wenn Sie eine Zuweisung in PIM oder in Azure AD auf dem Blatt „Rollen und Administratoren“ vornehmen. 
+- Zusätzliche Bereichsmechanismen wie administrative Einheiten und benutzerdefinierte Rollen wurden direkt in die Zuweisungsoberfläche eingeführt. 
+- Wenn Sie ein globaler Administrator oder ein Administrator für privilegierte Rollen sind, erhalten Sie möglicherweise einige zusätzliche E-Mails wie die wöchentliche PIM-Zusammenfassung. 
+- Darüber hinaus wird Ihnen möglicherweise auch der MS-PIM-Dienstprinzipal im Überwachungsprotokoll für die Rollenzuweisung angezeigt. Diese erwartete Änderung sollte sich nicht auf Ihren regulären Workflow auswirken.
+
+ Weitere Informationen finden Sie unter [Einstieg in Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
+
+---
+
+### <a name="azure-ad-entitlement-management-the-select-pane-of-access-package-resources-now-shows-by-default-the-resources-currently-in-the-selected-catalog"></a>Azure AD-Berechtigungsverwaltung: Im Bereich „Auswählen“ der Zugriffspaketressourcen werden jetzt standardmäßig die Ressourcen angezeigt, die sich aktuell im ausgewählten Katalog befinden.
+
+**Typ:** Geändertes Feature  
+**Dienstkategorie:** Benutzerzugriffsverwaltung  
+**Produktfunktion:** Berechtigungsverwaltung
+ 
+
+Im Flow zum Erstellen von Zugriffspaketen unter der Registerkarte „Ressourcenrollen“ wird das Verhalten des Bereichs „Auswählen“ geändert. Derzeit werden im Standardverhalten alle im Besitz des Benutzers befindlichen Ressourcen sowie dem ausgewählten Katalog hinzugefügte Ressourcen angezeigt. 
+
+Dieses Verhalten wird geändert, sodass standardmäßig nur die derzeit im Katalog hinzugefügten Ressourcen angezeigt werden, damit Benutzer problemlos Ressourcen aus dem Katalog auswählen können. Durch das Update wird die Auffindbarkeit der Ressourcen verbessert, die den Zugriffspaketen hinzugefügt werden können, und das Risiko minimiert, dass versehentlich Ressourcen hinzugefügt werden, die sich im Besitz des Benutzers befinden und nicht Teil des Katalogs sind. Weitere Informationen finden Sie unter [Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung](../governance/entitlement-management-access-package-create.md#resource-roles).
+ 
+---
+
 ## <a name="august-2020"></a>August 2020 
  
 ### <a name="updates-to-azure-multi-factor-authentication-server-firewall-requirements"></a>Aktualisierungen bei den Anforderungen an die Firewall für Microsoft Azure Multi-Factor Authentication-Server
@@ -926,7 +1106,7 @@ Auf dem neuen Blatt [Richtliniendetails](../conditional-access/troubleshoot-cond
 
 Im April 2020 haben wir diese 31 neuen Apps mit Verbundunterstützung in den App-Katalog aufgenommen: 
 
-[SincroPool Apps](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [Float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [IWT Procurement Suite](../saas-apps/iwt-procurement-suite-tutorial.md), [Lunni](https://lunni.fi/), [EasySSO for Jira](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 Mover](https://app.mover.io/login), [Speaker Engage](https://speakerengage.com/login.php), [Honestly](../saas-apps/honestly-tutorial.md), [Ally](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [AlertMedia](../saas-apps/alertmedia-tutorial.md), [gr8 People](../saas-apps/gr8-people-tutorial.md), [Pendo](../saas-apps/pendo-tutorial.md), [HighGround](../saas-apps/highground-tutorial.md), [Harmony](../saas-apps/harmony-tutorial.md), [Timetabling Solutions](../saas-apps/timetabling-solutions-tutorial.md), [SynchroNet CLICK](../saas-apps/synchronet-click-tutorial.md), [empower](https://www.made-in-office.com/en/), [Fortes Change Cloud](../saas-apps/fortes-change-cloud-tutorial.md), [Litmus](../saas-apps/litmus-tutorial.md), [GroupTalk](https://recorder.grouptalk.com/), [Frontify](../saas-apps/frontify-tutorial.md), [MongoDB Cloud](../saas-apps/mongodb-cloud-tutorial.md), [TickitLMS Learn](../saas-apps/tickitlms-learn-tutorial.md), [COCO](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/), [Nitro Productivity Suite](../saas-apps/nitro-productivity-suite-tutorial.md), [Trend Micro Web Security (TMWS)](/azure/active-directory/saas-apps/trend-micro-tutorial)
+[SincroPool Apps](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [Float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [IWT Procurement Suite](../saas-apps/iwt-procurement-suite-tutorial.md), [Lunni](https://lunni.fi/), [EasySSO for Jira](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 Mover](https://app.mover.io/login), [Speaker Engage](https://speakerengage.com/login.php), [Honestly](../saas-apps/honestly-tutorial.md), [Ally](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [AlertMedia](../saas-apps/alertmedia-tutorial.md), [gr8 People](../saas-apps/gr8-people-tutorial.md), [Pendo](../saas-apps/pendo-tutorial.md), [HighGround](../saas-apps/highground-tutorial.md), [Harmony](../saas-apps/harmony-tutorial.md), [Timetabling Solutions](../saas-apps/timetabling-solutions-tutorial.md), [SynchroNet CLICK](../saas-apps/synchronet-click-tutorial.md), [empower](https://www.made-in-office.com/en/), [Fortes Change Cloud](../saas-apps/fortes-change-cloud-tutorial.md), [Litmus](../saas-apps/litmus-tutorial.md), [GroupTalk](https://recorder.grouptalk.com/), [Frontify](../saas-apps/frontify-tutorial.md), [MongoDB Cloud](../saas-apps/mongodb-cloud-tutorial.md), [TickitLMS Learn](../saas-apps/tickitlms-learn-tutorial.md), [COCO](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/), [Nitro Productivity Suite](../saas-apps/nitro-productivity-suite-tutorial.md), [Trend Micro Web Security (TMWS)](../saas-apps/trend-micro-tutorial.md)
 
 Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration mit Azure Active Directory](../saas-apps/tutorial-list.md). Weitere Informationen zum Listen Ihrer Anwendung im Azure AD-App-Katalog finden Sie unter [Listen Ihrer Anwendung im Azure Active Directory-Anwendungskatalog](../develop/v2-howto-app-gallery-listing.md).
 
@@ -1481,7 +1661,7 @@ Arbeitsbereiche (die Filter, die Administratoren zum Organisieren Ihrer Benutzer
 **Dienstkategorie**: B2C – Kundenidentitätsverwaltung  
 **Produktfunktion:** B2B/B2C
  
-Mit der Telefonregistrierung und -anmeldung können Entwickler und Unternehmen ihren Kunden die Registrierung und Anmeldung mit einem Einmalkennwort ermöglichen, das per SMS an die Telefonnummer des Benutzers gesendet wird. Mit dieser Funktion kann der Kunden auch seine Telefonnummer ändern, falls er keinen Zugriff auf das Telefon mehr hat. Dank der Leistungsfähigkeit benutzerdefinierter Richtlinien sowie der telefonischen Registrierung und Anmeldung können Entwickler ihre Marke über die Seitenanpassung kommunizieren. Weitere Informationen finden Sie unter [Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C](../../active-directory-b2c/phone-authentication.md).
+Mit der Telefonregistrierung und -anmeldung können Entwickler und Unternehmen ihren Kunden die Registrierung und Anmeldung mit einem Einmalkennwort ermöglichen, das per SMS an die Telefonnummer des Benutzers gesendet wird. Mit dieser Funktion kann der Kunden auch seine Telefonnummer ändern, falls er keinen Zugriff auf das Telefon mehr hat. Dank der Leistungsfähigkeit benutzerdefinierter Richtlinien sowie der telefonischen Registrierung und Anmeldung können Entwickler ihre Marke über die Seitenanpassung kommunizieren. Weitere Informationen finden Sie unter [Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C](../../active-directory-b2c/phone-authentication-user-flows.md).
  
 ---
  
@@ -2106,7 +2286,7 @@ Wenn Sie Unterstützung für zusätzliche Berechtigungen oder Ressourcen benöti
 Mit neuen Bereitstellungsprotokollen können Sie die Bereitstellung von Benutzern und Gruppen überwachen und eventuelle Probleme beheben. Diese neuen Protokolldateien enthalten Informationen zu Folgendem:
 
 - Welche Gruppen wurden erfolgreich in [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) erstellt?
-- Welche Rollen wurden aus [Amazon Web Services (AWS)](../saas-apps/amazon-web-service-tutorial.md#configure-and-test-azure-ad-sso-for-amazon-web-services-aws) importiert?
+- Welche Rollen wurden aus [AWS Single-Account Access](../saas-apps/amazon-web-service-tutorial.md#configure-and-test-azure-ad-sso-for-aws-single-account-access) importiert?
 - Welche Mitarbeiter wurden nicht aus [Workday](../saas-apps/workday-inbound-tutorial.md) importiert?
 
 Weitere Informationen finden Sie unter [Bereitstellungsberichte im Azure Active Directory-Portal (Vorschau)](../reports-monitoring/concept-provisioning-logs.md).
@@ -2372,7 +2552,7 @@ Weitere Informationen finden Sie unter [Aktivieren von Sicherheitsüberwachungen
 
 Die neuen Berichte „Authentifizierungsmethoden: Nutzung und Erkenntnisse“ ermöglichen ein besseres Verständnis der Registrierung und Verwendung von Features wie Azure AD Multi-Factor Authentication und Self-Service-Kennwortzurücksetzung innerhalb Ihrer Organisation. Beispielsweise erfahren Sie, wie viele Benutzer für jedes Feature registriert sind, wie häufig die Self-Service-Kennwortzurücksetzung zum Zurücksetzen von Kennwörtern verwendet wird und über welche Methode die Zurücksetzung erfolgt.
 
-Weitere Informationen finden Sie unter [Verwendung und Erkenntnisse von Authentifizierungsmethoden (Vorschau)](../authentication/howto-authentication-methods-usage-insights.md).
+Weitere Informationen finden Sie unter [Verwendung und Erkenntnisse von Authentifizierungsmethoden (Vorschau)](../authentication/howto-authentication-methods-activity.md).
 
 ---
 

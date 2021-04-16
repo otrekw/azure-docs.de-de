@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: d9febb4efba85d47abe1cc11a3cb52dc0393c036
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101672011"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554058"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Bereitstellen von Azure Monitor für SAP-Lösungen mit dem Azure-Portal
 
@@ -81,12 +81,23 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 1. Wählen Sie in der Dropdownliste die Option für das Betriebssystem (Linux) aus. 
 
-> [!IMPORTANT]
-> Stellen Sie zum Konfigurieren des Betriebssystemanbieters (Linux) sicher, dass „Node_Exporter“ in jeder BareMetal-Instanz installiert ist. Weitere Informationen finden Sie unter  [Node_Exporter](https://github.com/prometheus/node_exporter).
+>[!IMPORTANT]
+> Stellen Sie zum Konfigurieren des Betriebssystemanbieters (Linux) sicher, dass die aktuelle Version von „Node_Exporter“ auf jedem Host (BareMetal-Instanz oder VM) installiert ist, den Sie überwachen möchten. Die aktuelle Version finden Sie unter diesem [Link] (https://prometheus.io/download/#node_exporter). Weitere Informationen finden Sie unter  [Node_Exporter](https://github.com/prometheus/node_exporter).
 
 2. Geben Sie einen Namen ein, der der Bezeichner für die BareMetal-Instanz sein wird.
 3. Geben Sie den Endpunkt für Knotenexport in Form von http://IP:9100/metrics ein.
-4. Wählen Sie abschließend die Option  **Anbieter hinzufügen** aus. Fügen Sie nach Bedarf weitere Anbieter hinzu, oder wählen Sie  **Überprüfen und erstellen** aus, um die Bereitstellung abzuschließen. 
+
+>[!IMPORTANT]
+> Verwenden Sie die private IP-Adresse des Linux-Hosts. Stellen Sie sicher, dass sich der Host und die AMS-Ressource im gleichen VNet befinden. 
+
+>[!Note]
+> Auf dem Linux-Host muss der Firewallport 9100 geöffnet sein.
+>Bei Verwendung von „firewall-cmd“: firewall-cmd --permanent --add-port=9100/tcp firewall-cmd --reload. Bei Verwendung von „ufw“: ufw allow 9100/tcp ufw reload
+
+>[!Tip]
+> Ist der Linux-Host ein virtueller Azure-Computer, stellen Sie sicher, dass alle anwendbaren NSGs eingehenden Datenverkehr an Port 9100 von der Quelle „VirtualNetwork“ zulassen.
+ 
+5. Wählen Sie abschließend die Option  **Anbieter hinzufügen** aus. Fügen Sie nach Bedarf weitere Anbieter hinzu, oder wählen Sie  **Überprüfen und erstellen** aus, um die Bereitstellung abzuschließen. 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server-Anbieter

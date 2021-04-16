@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 330131ea7e9a364a31d25a6f3f0a75b1adbeb27a
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: d63587eec1f7e6d24ae1638e8365b85fd1ec2c94
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799886"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504990"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -82,7 +82,21 @@ Nein, Sie können derzeit keine Netzwerksicherheitsgruppen auf das delegierte Az
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Kann ich Azure RBAC mit Azure NetApp Files verwenden?
 
-Ja, Azure NetApp Files unterstützt Azure RBAC-Features.
+Ja, Azure NetApp Files unterstützt Azure RBAC-Features. Neben den integrierten Azure-Rollen können [benutzerdefinierte Rollen](../role-based-access-control/custom-roles.md) für Azure NetApp Files erstellt werden. 
+
+Eine vollständige Liste der Azure NetApp Files-Berechtigungen finden Sie in den Azure-Ressourcenanbietervorgängen für [`Microsoft.NetApp`](../role-based-access-control/resource-provider-operations.md#microsoftnetapp).
+
+### <a name="are-azure-activity-logs-supported-on-azure-netapp-files"></a>Werden Azure-Aktivitätsprotokolle für Azure NetApp Files unterstützt?
+
+Bei Azure NetApp Files handelt es sich um einen nativen Azure-Dienst. All PUT-, POST- und DELETE-APIs für Azure NetApp Files werden protokolliert. Die Protokolle geben beispielsweise Aufschluss darüber, wer die Momentaufnahme erstellt oder das Volume geändert hat.
+
+Eine vollständige Liste der API-Vorgänge finden Sie unter [Azure NetApp Files-REST-API](/rest/api/netapp/).
+
+### <a name="can-i-use-azure-policies-with-azure-netapp-files"></a>Kann ich Azure-Richtlinien mit Azure NetApp Files verwenden?
+
+Ja. Sie können [benutzerdefinierte Azure-Richtlinien](../governance/policy/tutorials/create-custom-policy-definition.md) erstellen. 
+
+Sie können allerdings keine Azure-Richtlinien (benutzerdefinierte Benennungsrichtlinien) für die Azure NetApp Files-Schnittstelle erstellen. Lesen Sie den Artikel mit den [Richtlinien für die Azure NetApp Files-Netzwerkplanung](azure-netapp-files-network-topologies.md#considerations).
 
 ## <a name="performance-faqs"></a>Häufig gestellte Fragen zur Leistung
 
@@ -192,6 +206,14 @@ Die vom SMB-Client gemeldete Volumegröße ist die maximale Größe, auf die das
 
 Legen Sie als bewährte Vorgehensweise die maximale Toleranz für die Synchronisierung der Computeruhr auf fünf Minuten fest. Weite Informationen finden Sie unter [Maximale Toleranz für die Synchronisierung der Computeruhr](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11)). 
 
+### <a name="can-i-manage-smb-shares-sessions-and-open-files-through-computer-management-console-mmc"></a>Kann ich `SMB Shares`, `Sessions` und `Open Files` über die Computerverwaltung (MMC) verwalten?
+
+Die Verwaltung von `SMB Shares`, `Sessions` und `Open Files` über die Computerverwaltung (MMC) wird derzeit nicht unterstützt.
+
+### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>Wie kann ich die IP-Adresse eines SMB-Volumes über das Portal abrufen?
+
+Verwenden Sie den Link **JSON-Ansicht** im Bereich mit der Volumeübersicht, und suchen Sie unter **properties** -> **mountTargets** nach dem Bezeichner **startIp**.
+
 ## <a name="capacity-management-faqs"></a>Häufig gestellte Fragen zur Kapazitätsverwaltung
 
 ### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Wie überwache ich die Nutzung für den Kapazitätspool und das Volume von Azure NetApp Files? 
@@ -204,9 +226,9 @@ Nein. Azure NetApp Files wird vom Azure Storage-Explorer nicht unterstützt.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Wie bestimme ich, ob ein Verzeichnis dabei ist, sein Größenlimit zu erreichen?
 
-Sie können den Befehl `stat` von einem Client aus verwenden, um festzustellen, ob sich ein Verzeichnis der maximal zulässigen Größe für Verzeichnismetadaten (320 MB) nähert.
+Sie können den Befehl `stat` von einem Client aus verwenden, um festzustellen, ob sich ein Verzeichnis der maximal zulässigen Größe für Verzeichnismetadaten (320 MB) nähert.   
 
-Bei einem Verzeichnis mit 320 MB beträgt die Anzahl der Blöcke 655360, wobei jeder Block die Größe von 512 Bytes hat.  (D. h., 320x1024x1024/512.)  
+Bei einem Verzeichnis mit 320 MB beträgt die Anzahl der Blöcke 655.360, wobei jeder Block eine Größe von 512 Bytes hat.  (Berechnung: 320 · 1.024 · 1.024 : 512.) Daraus ergibt sich für ein Verzeichnis mit 320 MB ein Maximum von etwa vier Millionen Dateien. Die tatsächliche maximale Anzahl von Dateien ist jedoch ggf. geringer. Dies hängt von Faktoren wie etwa der Anzahl von Dateien mit ASCII-fremden Zeichen im Verzeichnis ab. Verwenden Sie daher den Befehl `stat` wie folgt, um zu ermitteln, ob der Grenzwert Ihres Verzeichnisses bald erreicht ist.  
 
 Beispiele:
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f044596cf084e68b6c9ca10e3da4fbdf4c8c2062
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32715ad1a01366d7d56e6fa8129151b15c315e1d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95026521"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504174"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Aktivieren der Protokollierung im Speech SDK
 
-Die Protokollierung in eine Datei ist ein optionales Feature für das Speech SDK. Während der Entwicklung bietet die Protokollierung zusätzliche Informationen und Diagnosen aus den Hauptkomponenten des Speech SDK. Dies kann aktiviert werden, indem die Eigenschaft `Speech_LogFilename` für ein Sprachkonfigurationsobjekt auf den Speicherort und den Namen der Protokolldatei festgelegt wird. Die Protokollierung wird global aktiviert, sobald eine Erkennung aus dieser Konfiguration erstellt wird, und sie kann danach nicht mehr deaktiviert werden. Sie können den Namen einer Protokolldatei während einer aktiven Protokollierungssitzung nicht ändern.
+Die Protokollierung in eine Datei ist ein optionales Feature für das Speech SDK. Während der Entwicklung bietet die Protokollierung zusätzliche Informationen und Diagnosen aus den Hauptkomponenten des Speech SDK. Dies kann aktiviert werden, indem die Eigenschaft `Speech_LogFilename` für ein Sprachkonfigurationsobjekt auf den Speicherort und den Namen der Protokolldatei festgelegt wird. Die Protokollierung wird von einer statischen Klasse in der nativen Bibliothek des Speech SDK behandelt. Sie können die Protokollierung für jede Erkennungsmodul- oder Synthesizer-Instanz des Speech SDK aktivieren. Alle Instanzen im gleichen Prozess schreiben Protokolleinträge in dieselbe Protokolldatei.
 
 > [!NOTE]
 > Die Protokollierung ist seit Version 1.4.0 des Speech SDK in allen unterstützten Programmiersprachen verfügbar, mit Ausnahme von JavaScript.

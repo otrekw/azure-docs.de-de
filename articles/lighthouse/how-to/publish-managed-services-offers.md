@@ -1,14 +1,14 @@
 ---
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in Azure Lighthouse durchführt.
-ms.date: 02/17/2021
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: b906ba9961ae4f77ca16890fd0a9036123343111
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f790c37a36fa1c5092a50c02429260825158c72
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092144"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491354"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -33,6 +33,7 @@ Die folgende Tabelle kann bei der Ermittlung helfen, ob das Onboarding der Kunde
 |Erfordert Kundenakzeptanz im Azure-Portal     |Ja     |Nein   |
 |Kann die Automatisierung nutzen, um das Onboarding für mehrere Abonnements, Ressourcengruppen oder Kunden durchzuführen |Nein     |Ja    |
 |Sofortiger Zugriff auf neue integrierte Rollen und Azure Lighthouse-Features     |Nicht immer (im Allgemeinen nach einiger Verzögerung verfügbar)         |Ja         |
+|Kunden können aktualisierte Angebote im Azure-Portal überprüfen und akzeptieren. | Ja | Nein |
 
 > [!NOTE]
 > Verwaltete Dienste sind in der Azure Government-Cloud und anderen nationalen Clouds möglicherweise nicht verfügbar.
@@ -62,6 +63,8 @@ Sobald ein Kunde Ihr Angebot hinzufügt hat, kann er [ein oder mehrere spezifisc
 > Die Delegierung darf nicht über ein Gastkonto im Mandanten des Kunden durchgeführt werden. Das Konto muss über eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write`, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner), für das Abonnement verfügen, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um Benutzer aufzufinden, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Wenn der Kunde ein Abonnement (oder eine oder mehrere Ressourcengruppen innerhalb eines Abonnements) delegiert, wird der Ressourcenanbieter **Microsoft.ManagedServices** für dieses Abonnement registriert, und Benutzer in Ihrem Mandanten können gemäß den Autorisierungen in Ihrem Angebot auf die delegierten Ressourcen zugreifen.
+
+Wenn Sie eine aktualisierte Version Ihres Angebots veröffentlichen, kann der Kunde [die Änderungen im Azure-Portal überprüfen und die neue Version akzeptieren](view-manage-service-providers.md#update-service-provider-offers).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

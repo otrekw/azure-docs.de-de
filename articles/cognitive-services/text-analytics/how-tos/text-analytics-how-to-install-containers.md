@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/29/2021
 ms.author: aahi
 keywords: Lokal, Docker, Container, Stimmungsanalyse, Verarbeitung natürlicher Sprache
-ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 012e725e31097af5af634a1aba7693048c4c6b3e
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102432059"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277469"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
@@ -32,7 +32,7 @@ Container ermöglichen es Ihnen, die Textanalyse-APIs in ihrer eigenen Umgebung 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 > [!IMPORTANT]
-> Das kostenlose Konto ist auf 5.000 Transaktionen pro Monat beschränkt, und für Container sind nur die <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">Tarife</a> **Free** und **Standard** gültig. Weitere Informationen zu den Transaktionsanforderungsraten finden Sie unter [Datengrenzwerte](../overview.md#data-limits).
+> Das kostenlose Konto ist auf 5.000 Transaktionen pro Monat beschränkt, und für Container sind nur die <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">Tarife</a> **Free** und **Standard** gültig. Weitere Informationen zu den Transaktionsanforderungsraten finden Sie unter [Datengrenzwerte](../concepts/data-limits.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,6 +49,8 @@ Zur Verwendung des Containers für die Textanalyse müssen die folgenden Vorauss
 |Textanalyseressource |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine [Azure-Textanalyse-Ressource](../../cognitive-services-apis-create-account.md) mit dem [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) „Free“ (F0) oder „Standard“ (S). Sie müssen den zugehörigen API-Schlüssel und Endpunkt-URI abrufen, indem Sie im Azure-Portal zur Seite **Key and endpoint** (Schlüssel und Endpunkt) Ihrer Ressource navigieren. <br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel <br><br>**{ENDPOINT_URI}** : Endpunkt für Ihre Ressource |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+
+Wenn Sie den Container für die Textanalyse im Gesundheitsbereich ausführen, muss die Bestätigung der [verantwortungsbewussten KI](https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-health) ebenfalls mit dem Wert `accept` vorhanden sein.
 
 ## <a name="the-host-computer"></a>Der Hostcomputer
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
-ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 039332a8728e5d7e5b605f51f4bb53e6dcbb6381
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98217225"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109168"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Erkennbare Typen von Problemen mit Engpässen bei der Abfrageleistung in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -139,7 +139,7 @@ Eine Neukompilierung (oder eine erneute Kompilierung nach dem Entfernen aus dem 
 
 - **Geändertes physisches Design:** Neu erstellte Indizes können beispielsweise die Anforderungen einer Abfrage effektiver abdecken. Die neuen Indizes können in einer neuen Kompilierung verwendet werden, wenn der Abfrageoptimierer entscheidet, dass der neue Index besser geeignet ist als die Datenstruktur, die ursprünglich für die erste Version der Abfrageausführung gewählt wurde. Jegliche physische Änderung an den referenzierten Objekten führt zur Kompilierzeit möglicherweise zu einer neuen Planauswahl.
 
-- **Unterschiede zwischen Serverressourcen:** Wenn sich ein Plan in einem System vom Plan in einem anderen System unterscheidet, kann die Ressourcenverfügbarkeit (etwa die Anzahl verfügbarer Prozessoren) darüber entscheiden, welcher Plan generiert wird. Wenn ein System also beispielsweise über mehr Prozessoren verfügt, wird möglicherweise ein paralleler Plan ausgewählt.
+- **Unterschiede zwischen Serverressourcen:** Wenn sich ein Plan in einem System vom Plan in einem anderen System unterscheidet, kann die Ressourcenverfügbarkeit (etwa die Anzahl verfügbarer Prozessoren) darüber entscheiden, welcher Plan generiert wird. Wenn ein System also beispielsweise über mehr Prozessoren verfügt, wird möglicherweise ein paralleler Plan ausgewählt. Weitere Informationen zur Parallelität in Azure SQL-Datenbank finden Sie unter [Konfigurieren des maximalen Grads an Parallelität (max degree of parallelism, MAXDOP) in Azure SQL-Datenbank](database/configure-max-degree-of-parallelism.md).
 
 - **Unterschiedliche Statistiken:** Möglicherweise haben sich die den referenzierten Objekten zugeordneten Statistiken geändert, oder sie unterscheiden sich wesentlich von den Statistiken des ursprünglichen Systems. Wenn sich die Statistik ändert und eine Neukompilierung durchgeführt wird, verwendet der Abfrageoptimierer die Statistik ab der Änderung. Die überarbeiteten Datenverteilungen und Häufigkeiten der Statistik unterscheiden sich unter Umständen von denen der ursprünglichen Kompilierung. Diese Änderungen werden zur Erstellung von Kardinalitätsschätzungen verwendet. (Bei *Kardinalitätsschätzungen* handelt es sich um die Anzahl von Zeilen, die voraussichtlich die logische Abfragestruktur durchlaufen). Änderungen an Kardinalitätsschätzungen können Sie ggf. dazu veranlassen, andere physische Operatoren und eine andere Vorgangsreihenfolge auszuwählen. Selbst geringfügige Änderungen an Statistiken können zu einem anderen Abfrageausführungsplan führen.
 
@@ -181,6 +181,8 @@ Es ist nicht immer einfach, eine Änderung des Workloadaufkommens zu ermitteln, 
 
 Verwenden Sie Intelligent Insights, um [Zunahmen von Workloads](database/intelligent-insights-troubleshoot-performance.md#workload-increase) zu erkennen und [Regressionen zu planen](database/intelligent-insights-troubleshoot-performance.md#plan-regression).
 
+- **Parallelität**: Übermäßige Parallelität kann jedoch die Leistung anderer gleichzeitiger Workloads verschlechtern, indem andere Abfragen der CPU- und Arbeitsthreadressourcen „verhungern“. Weitere Informationen zur Parallelität in Azure SQL-Datenbank finden Sie unter [Konfigurieren des maximalen Grads an Parallelität (max degree of parallelism, MAXDOP) in Azure SQL-Datenbank](database/configure-max-degree-of-parallelism.md).
+
 ## <a name="waiting-related-problems"></a>Wartebezogene Probleme
 
 Sobald Sie einen suboptimalen Plan und *wartebezogene Probleme* im Zusammenhang mit Ausführungsproblemen beseitigt haben, besteht das Leistungsproblem meist darin, dass die Abfragen wahrscheinlich auf eine Ressource warten. Wartebezogene Probleme können folgende Ursachen haben:
@@ -220,6 +222,11 @@ DMVs, die den Abfragespeicher und die Wartestatistik nachverfolgen, zeigen nur E
 > - [TigerToolbox: Wartevorgänge und Latches](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox: usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
+## <a name="see-also"></a>Siehe auch
+
+* [Konfigurieren des maximalen Grads an Parallelität (max degree of parallelism, MAXDOP) in Azure SQL-Datenbank](database/configure-max-degree-of-parallelism.md)
+* [Verstehen und Beheben von Problemen durch Blockierungen in Azure SQL-Datenbank](database/understand-resolve-blocking.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Übersicht über die Überwachung und Optimierung von SQL-Datenbank](database/monitor-tune-overview.md)
+* [Übersicht über die Überwachung und Optimierung von SQL-Datenbank](database/monitor-tune-overview.md)

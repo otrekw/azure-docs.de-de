@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: ffea2d84f1a5149670976beef3b9af847ae31a35
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 1f5e4cb0d2db30c6b07370be137506f3fe26837f
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582135"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505296"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Häufig gestellte Fragen zu Windows Virtual Desktop
 
@@ -139,7 +139,7 @@ Wenn Sie den Ressourcenanbieter mit dem CSP-Besitzerkonto aktiviert haben, kann 
 
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Wie oft sollte ich meine VMs aktivieren, um Registrierungsprobleme zu vermeiden?
 
-Nachdem Sie einen virtuellen Computer in einem Hostpool Windows Virtual Desktop-Diensts registriert haben, aktualisiert der Agent das Token der VM regelmäßig, wenn der virtuelle Computer aktiv ist. Das Zertifikat für das Registrierungstoken ist 90 Tage lang gültig. Aufgrund dieses Limits von 90 Tagen empfiehlt es sich, die VMs alle 90 Tage zu starten. Wenn Sie Ihre VM innerhalb dieses Zeitraums aktivieren, wird verhindert, dass das Registrierungstoken abläuft oder ungültig wird. Wenn Sie Ihre VM nach mehr als 90 Tagen gestartet haben und Registrierungsprobleme auftreten, befolgen Sie die Anweisungen im [Leitfaden zur Problembehandlung für den Windows Virtual Desktop-Agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved), um die VM aus dem Hostpool zu entfernen, den Agent neu zu installieren und ihn erneut beim Pool zu registrieren.
+Nachdem Sie einen virtuellen Computer in einem Hostpool Windows Virtual Desktop-Diensts registriert haben, aktualisiert der Agent das Token der VM regelmäßig, wenn der virtuelle Computer aktiv ist. Das Zertifikat für das Registrierungstoken ist 90 Tage lang gültig. Aufgrund dieses Grenzwerts von 90 Tagen wird empfohlen, dass virtuelle Computer alle 90 Tage für 20 Minuten online geschaltet werden, damit der Computer seine Token aktualisieren und den Agent sowie parallele Stapelkomponenten aktualisieren kann. Wenn Sie Ihre VM innerhalb dieses Zeitraums aktivieren, wird verhindert, dass das Registrierungstoken abläuft oder ungültig wird. Wenn Sie Ihre VM nach mehr als 90 Tagen gestartet haben und Registrierungsprobleme auftreten, befolgen Sie die Anweisungen im [Leitfaden zur Problembehandlung für den Windows Virtual Desktop-Agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved), um die VM aus dem Hostpool zu entfernen, den Agent neu zu installieren und ihn erneut beim Pool zu registrieren.
 
 ## <a name="can-i-set-availability-options-when-creating-host-pools"></a>Kann ich beim Erstellen von Hostpools Verfügbarkeitsoptionen festlegen?
 
@@ -152,10 +152,10 @@ Welche Verfügbarkeitsoption Sie für Ihre VMs verwenden sollten, hängt vom Spe
 | Verfügbarkeitsoption | Imagespeicherort | Optionsfeld „Verwalteten Datenträger verwenden“ |
 |---|---|---|
 | Keine | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |
-| Keine | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |
+| Keine | Blob-Speicher | Aktiviert mit „Nein“ als Standardeinstellung |
 | Verfügbarkeitszone | Katalog (Blobspeicheroption deaktiviert) | Deaktiviert mit „Ja“ als Standardeinstellung |
 | Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |
-| Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |
+| Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Blob-Speicher | Aktiviert mit „Nein“ als Standardeinstellung |
 | Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Blobspeicher (Katalogoption deaktiviert) | Deaktiviert mit „Nein“ als Standardeinstellung |
 | Verfügbarkeitsgruppe (von Benutzer neu erstellt) | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |
-| Verfügbarkeitsgruppe (von Benutzer neu erstellt) | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |
+| Verfügbarkeitsgruppe (von Benutzer neu erstellt) | Blob-Speicher | Aktiviert mit „Nein“ als Standardeinstellung |

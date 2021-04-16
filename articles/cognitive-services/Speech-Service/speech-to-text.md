@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Spracherkennung, Spracherkennungssoftware
-ms.openlocfilehash: 5e593202a8cd68dfc4a92f991d573b4b06051b36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3450d39729096bfc3077f51e2069f8f102e571a5
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434310"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449391"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 
@@ -26,7 +26,12 @@ Die Spracherkennung (Sprache zu Text) ermöglicht die Echtzeittranskription von 
 
 Der Spracherkennungsdienst verwendet standardmäßig das sogenannte Universal Language Model. Dieses Modell wurde mit Microsoft-Daten trainiert, und es wird in der Cloud bereitgestellt. Es eignet sich besonders für Gesprächs- oder Diktatszenarios. Wenn Sie die Spracherkennung für die Erkennung und Transkription in einer individuellen Umgebung verwenden, können Sie benutzerdefinierte Akustik-, Sprach- und Aussprachemodelle erstellen und trainieren. Anpassungen sind hilfreich für das Kompensieren von Umgebungsgeräuschen oder bei branchenspezifischem Vokabular.
 
-Durch zusätzlichem Referenztext als Eingabe bietet der Spracherkennungsdienst zudem Funktionen für die [Aussprachebewertung](rest-speech-to-text.md#pronunciation-assessment-parameters), über die Redner Rückmeldung zur Genauigkeit und Flüssigkeit des gesprochenen Texts erhalten. Mit dieser Aussprachebewertung erhalten Menschen, die Fremdsprachen lernen, direktes Feedback und können ihre Aussprache verbessern, sodass sie selbstbewusst sprechen und sich präsentieren können. Lehrkräfte können diese Funktion verwenden, um die Aussprache mehrerer Redner in Echtzeit auszuwerten. Das Feature unterstützt derzeit die englische Sprache (USA) und korreliert mit Sprachbewertungen durch Experten.
+Diese Dokumentation enthält die folgenden Arten von Artikeln:
+
+* **Schnellstarts** sind Anleitungen zu den ersten Schritten, die Sie durch das Senden von Anforderungen an den Dienst führen.
+* **Anleitungen** enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
+* Die Artikel zu **Konzepten** enthalten ausführliche Erläuterungen der Dienstfunktionen und -features.
+* **Tutorials** sind ausführlichere Leitfäden, in denen die Verwendung des Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.
 
 > [!NOTE]
 > Die Bing-Spracheingabe wurde am 15. Oktober 2019 eingestellt. Wenn Ihre Anwendungen, Tools oder Produkte die Bing-Spracheingabe-APIs verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zum Speech-Dienst:

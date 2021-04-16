@@ -6,123 +6,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/05/2020
+ms.date: 03/31/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8150375eff98374e21d200d98c04158b07f1c243
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f2bc71100a92d1811d69af31a7a3085af36f60a8
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92789691"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121930"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Tabellen und Warteschlangen unterstützt
 
 Azure Storage verschlüsselt alle Daten in einem ruhenden Speicherkonto. Standardmäßig verwenden Queue Storage und Table Storage einen Schlüssel, der dem Dienst zugeordnet ist und von Microsoft verwaltet wird. Sie können auch kundenseitig verwaltete Schlüssel verwenden, um Warteschlangen- oder Tabellendaten zu verschlüsseln. Wenn Sie kundenseitig verwaltete Schlüssel bei Warteschlangen und Tabellen verwenden möchten, müssen Sie zuerst ein Speicherkonto erstellen, das einen dem Konto (und nicht dem Dienst) zugeordneten Verschlüsselungsschlüssel verwendet. Nachdem Sie ein Speicherkonto erstellt haben, das den Kontoverschlüsselungsschlüssel für Warteschlangen- und Tabellendaten verwendet, können Sie kundenseitig verwaltete Schlüssel für dieses Konto konfigurieren.
 
 In diesem Artikel wird beschrieben, wie Sie ein Speicherkonto erstellen, das einen dem Konto zugeordneten Schlüssel verwendet. Wenn das Konto zum ersten Mal erstellt wird, verwendet Microsoft den Kontoschlüssel zum Verschlüsseln der Daten im Konto und verwaltet diesen Schlüssel auch. Anschließend können Sie kundenseitig verwaltete Schlüssel für das Konto konfigurieren, um diese Vorteile zu nutzen – einschließlich der Möglichkeit, Ihre eigenen Schlüssel bereitzustellen, die Schlüsselversion zu aktualisieren, die Schlüssel zu rotieren und Zugriffssteuerungen zu widerrufen.
-
-## <a name="about-the-feature"></a>Informationen zum Feature
-
-Zum Erstellen eines Speicherkontos, das den Kontoverschlüsselungsschlüssel für Queue Storage und Table Storage verwendet, müssen Sie sich zuerst registrieren, um dieses Feature bei Azure nutzen zu können. Beachten Sie, dass es aufgrund von eingeschränkter Kapazität mehrere Monate dauern kann, bis Zugriffsanforderungen genehmigt werden.
-
-Sie können ein Speicherkonto erstellen, das den Kontoverschlüsselungsschlüssel für Queue Storage und Table Storage in den folgenden Regionen verwendet:
-
-- East US
-- USA Süd Mitte
-- USA, Westen 2  
-
-### <a name="register-to-use-the-account-encryption-key"></a>Registrieren zur Verwendung des Kontoverschlüsselungsschlüssels
-
-Verwenden Sie PowerShell oder die Azure-Befehlszeilenschnittstelle, um die Registrierung zur Verwendung des Kontoverschlüsselungsschlüssels mit Queue Storage oder Table Storage durchzuführen.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Rufen Sie für die Registrierung mit PowerShell den Befehl [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) auf.
-
-```powershell
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForQueues
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForTables
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Zum Registrieren bei Azure CLI rufen Sie den Befehl „[az feature register](/cli/azure/feature#az-feature-register)“ auf.
-
-```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForQueues
-az feature register --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForTables
-```
-
-# <a name="template"></a>[Vorlage](#tab/template)
-
-–
-
----
-
-### <a name="check-the-status-of-your-registration"></a>Überprüfen des Registrierungsstatus
-
-Verwenden Sie PowerShell oder die Azure-Befehlszeilenschnittstelle, um den Status Ihrer Registrierung für Queue Storage oder Table Storage zu überprüfen.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Um den Status Ihrer Registrierung mit PowerShell zu überprüfen, rufen Sie den Befehl [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) auf.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForQueues
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForTables
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Um den Status Ihrer Registrierung über die Azure-Befehlszeilenschnittstelle zu überprüfen, rufen Sie den Befehl [az feature](/cli/azure/feature#az-feature-show) auf.
-
-```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForQueues
-az feature show --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForTables
-```
-
-# <a name="template"></a>[Vorlage](#tab/template)
-
-–
-
----
-
-### <a name="re-register-the-azure-storage-resource-provider"></a>Erneutes Registrieren des Azure Storage-Ressourcenanbieters
-
-Nachdem Ihre Registrierung genehmigt wurde, müssen Sie den Azure Storage-Ressourcenanbieter erneut registrieren. Verwenden Sie PowerShell oder die Azure-Befehlszeilenschnittstelle, um den Ressourcenanbieter erneut zu registrieren.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Um den Ressourcenanbieter über PowerShell erneut zu registrieren, rufen Sie den Befehl [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) auf.
-
-```powershell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Um den Ressourcenanbieter über die Azure-Befehlszeilenschnittstelle erneut zu registrieren, rufen Sie den Befehl [az provider register](/cli/azure/provider#az-provider-register) auf.
-
-```azurecli
-az provider register --namespace 'Microsoft.Storage'
-```
-
-# <a name="template"></a>[Vorlage](#tab/template)
-
-–
-
----
 
 ## <a name="create-an-account-that-uses-the-account-encryption-key"></a>Erstellen eines Kontos, das den Kontoverschlüsselungsschlüssel verwendet
 
@@ -247,6 +147,10 @@ az storage account show /
 –
 
 ---
+
+## <a name="pricing-and-billing"></a>Preise und Abrechnung
+
+Für ein Speicherkonto, das erstellt wird, um einen Verschlüsselungsschlüssel zu verwenden, der dem Konto zugeordnet ist, werden die Tabellenspeicherkapazität und Transaktionen mit einer anderen Rate in Rechnung gestellt als bei einem Konto, das den dienstbezogenen Standardschlüssel verwendet. Weitere Informationen finden Sie unter [Preise für Azure Table Storage](https://azure.microsoft.com/pricing/details/storage/tables/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

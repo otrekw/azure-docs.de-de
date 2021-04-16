@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: Dokumentation zur Bildanalyse
+summary: Über die cloudbasierte Bildanalyse-API haben Entwickler Zugriff auf erweiterte Algorithmen zum Verarbeiten von Bildern und zum Zurückgeben von Informationen zu ihren visuellen Merkmalen. Der Dienst kann visuelle Inhalte basierend auf Eingaben und der Benutzerauswahl auf unterschiedliche Arten analysieren. In unseren Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie, wie Sie visuelle Inhalte analysieren.
+metadata:
+  title: 'Dokumentation zur Bildanalyse: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  description: Über die cloudbasierte Bildanalyse-API haben Entwickler Zugriff auf erweiterte Algorithmen zum Verarbeiten von Bildern und zum Zurückgeben von Informationen zu ihren visuellen Merkmalen. Der Dienst kann visuelle Inhalte basierend auf Eingaben und der Benutzerauswahl auf unterschiedliche Arten analysieren. In unseren Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie, wie Sie visuelle Inhalte analysieren.
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: computer-vision
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 30/31/2021
+  ms.openlocfilehash: b9c4d44879c0988359d08c52e0383a03631a46c0
+  ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 04/03/2021
+  ms.locfileid: "106287472"
+landingContent:
+- title: Informationen zur Bildanalyse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht über die Bildanalyse
+      url: overview-image-analysis.md
+  - linkListType: quickstart
+    links:
+    - text: Schnellstart für die Bildanalyse
+      url: quickstarts-sdk/image-analysis-client-library.md
+- title: Funktionen für die Bildanalyse
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Inhaltstags
+      url: concept-tagging-images.md
+    - text: Objekterkennung
+      url: concept-object-detection.md
+    - text: Markenerkennung
+      url: concept-brand-detection.md
+    - text: Bildkategorisierung
+      url: concept-categorizing-images.md
+    - text: Bildbeschreibungen
+      url: concept-describing-images.md
+    - text: Gesichtserkennung
+      url: concept-detecting-faces.md
+    - text: Domänenspezifischer Inhalt
+      url: concept-detecting-domain-content.md
+    - text: Intelligent zugeschnittene Miniaturbilder
+      url: concept-generating-thumbnails.md
+    - text: Erkennung von nicht jugendfreien Inhalten
+      url: concept-detecting-adult-content.md
+- title: Entwickeln mit der Bildanalyse
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aufrufen der Bildanalyse-API
+      url: Vision-API-How-to-Topics/HowToCallVisionAPI.md
+  - linkListType: tutorial
+    links:
+    - text: Generieren von Metadaten für Bilder
+      url: Tutorials/storage-lab-tutorial.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Bildanalyse-REST-API
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

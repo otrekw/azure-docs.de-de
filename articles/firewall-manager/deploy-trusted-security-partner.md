@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/31/2021
 ms.author: victorh
-ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b8e10eef89df12807cabd96d64d9c7d659f91d6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96485721"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109508"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Bereitstellen eines Sicherheitspartneranbieters
 
@@ -90,22 +90,19 @@ Um Tunnel zum VPN-Gateway Ihres virtuellen Hubs einzurichten, benötigen Drittan
    
 2. Im Azure Virtual WAN-Portal in Azure können Sie den Status der Tunnelerstellung anzeigen. Sobald die Tunnel sowohl im Azure-Portal als auch im Partnerportal **verbunden** anzeigen, fahren Sie mit den nächsten Schritten fort, um Routen einzurichten, mit denen ausgewählt wird, welche Zweigstellen und VNETs Internetdatenverkehr an den Partner senden sollen.
 
-## <a name="configure-route-settings"></a>Konfigurieren von Routeneinstellungen
+## <a name="configure-security-with-firewall-manager"></a>Konfigurieren der Sicherheit mit dem Firewall-Manager
 
 1. Navigieren Sie zu „Azure Firewall Manager“ > „Geschützte Hubs“. 
 2. Wählen Sie einen Hub aus. Der Hubstatus sollte jetzt als **Bereitgestellt** angezeigt werden, nicht mehr als **Sicherheitsverbindung ausstehend**.
 
    Stellen Sie sicher, dass der Drittanbieter eine Verbindung mit dem Hub herstellen kann. Die Tunnel im VPN-Gateway sollten den Status **Verbunden** aufweisen. Dieser Status spiegelt die Verbindungsintegrität zwischen Hub und Drittanbieter besser wider als der vorherige Status.
-3. Wählen Sie den Hub aus, und navigieren Sie zu **Routeneinstellungen**.
+3. Wählen Sie den Hub aus, und navigieren Sie zu **Sicherheitskonfigurationen**.
 
    Wenn Sie einen Drittanbieter im Hub bereitstellen, wird der Hub in einen *geschützten virtuellen Hub* konvertiert. So ist sichergestellt, dass der Drittanbieter eine (standardmäßige) Route von 0.0.0.0/0 an den Hub sendet. VNET-Verbindungen und mit dem Hub verbundene Standorte erhalten diese Route jedoch nicht, es sei denn, Sie wählen die Verbindungen aus, die diese Standardroute erhalten sollen.
-4. Wählen Sie unter **Internetdatenverkehr** die Option **VNET-to-Internet** oder **Branch-to-Internet** oder beide aus, sodass Routen zum Senden über den Drittanbieter konfiguriert sind.
+4. Konfigurieren Sie die Sicherheit virtueller WAN durch Einstellung von **Internet-Datenverkehr** über Azure Firewall und **Privaten Datenverkehr** über einen vertrauenswürdigen Sicherheitspartner. Dadurch werden die einzelnen Verbindungen im virtuellen WAN automatisch gesichert.
 
-   Hiermit wird nur angegeben, welche Art von Datenverkehr an den Hub geleitet werden soll, es gibt noch keine Auswirkungen auf die Routen in VNETs oder Zweigstellen. Diese Routen werden nicht standardmäßig an alle VNETs/Zweigstellen weitergegeben, die an den Hub angeschlossen sind.
-5. Sie müssen auf **sichere Verbindungen** klicken und diejenigen Verbindungen auswählen, für die diese Routen festgelegt werden sollen. Dies gibt an, welche VNETs oder Zweigstellen Internetdatenverkehr an den Drittanbieter senden dürfen.
-6. Wählen Sie bei den **Routeneinstellungen** unter „Internetdatenverkehr“ die Option **Sichere Verbindungen** aus, und wählen Sie dann das VNET oder die Zweigstellen (*Standorte* in Virtual WAN) aus, die gesichert werden sollen. Wählen Sie **Sicherer Internetdatenverkehr** aus.
-   ![Sicherer Internetdatenverkehr](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. Kehren Sie zur Seite „Hubs“ zurück. Der Status **Sicherheitspartneranbieter** des Hubs sollte jetzt **Gesichert** sein.
+   :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="Sicherheitskonfiguration":::
+5. Wenn Ihre Organisation außerdem öffentliche IP-Adressbereiche in virtuellen Netzwerken und Filialen verwendet, müssen Sie diese IP-Präfixe explizit mithilfe von **privaten Datenverkehrs Präfixen** angeben. Die öffentlichen IP-Adressen-Präfixe können einzeln oder als Aggregate angegeben werden.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Zweigstellen- oder VNET-Internetdatenverkehr über Drittanbieterdienst
 
