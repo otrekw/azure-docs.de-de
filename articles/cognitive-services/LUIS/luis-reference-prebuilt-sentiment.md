@@ -8,18 +8,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/01/2020
-ms.openlocfilehash: 2e8e5a127741625fde7910aaabd421836148fc35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 7524644b34a6fd479c08b9ce6418c547c836add5
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018666"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554024"
 ---
 # <a name="sentiment-analysis"></a>Stimmungsanalyse
 Wenn die Standpunktanalyse konfiguriert wurde, enthält die JSON-Antwort von LUIS eine Standpunktanalyse. Weitere Informationen zu Standpunktanalysen finden Sie in der Dokumentation zur [Textanalyse](../text-analytics/index.yml).
 
 LUIS verwendet Textanalyse v2. 
+
+Die Standpunktanalyse wird beim Veröffentlichen Ihrer Anwendung konfiguriert. Weitere Informationen finden im Artikel zum [Veröffentlichen einer App](./luis-how-to-publish-app.md).
 
 ## <a name="resolution-for-sentiment"></a>Lösung für Stimmung
 

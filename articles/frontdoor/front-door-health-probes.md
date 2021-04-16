@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd56740b7153cdbafdfa847a22d34b57f862cdf3
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449237"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550742"
 ---
 # <a name="health-probes"></a>Integritätstests
 
@@ -24,6 +24,9 @@ Um die Integrität und Entfernung der einzelnen Back-Ends für eine bestimmte Fr
 
 > [!WARNING]
 > Da Front Door weltweit viele Edge-Umgebungen hat, kann das Volumen der Integritätstests für Ihre Back-Ends recht hoch sein. Es variiert zwischen 25 Anforderungen pro Minute und bis zu 1200 Anforderungen pro Minute abhängig von der konfigurierten Häufigkeit von Integritätstests. Bei der standardmäßigen Testfrequenz von 30 Sekunden sollte das Testvolumen in Ihrem Back-End etwa 200 Anforderungen pro Minute betragen.
+
+> [!NOTE]
+> Die HTTP-/HTTPS-Tests von Front Door werden mit dem auf den folgenden Wert festgelegten `User-Agent`-Header gesendet: `Edge Health Probes`. 
 
 ## <a name="supported-protocols"></a>Unterstützte Protokolle
 

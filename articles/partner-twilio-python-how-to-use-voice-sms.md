@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: b4b9cd0db2a3a99aca80f42b6d69485a542bbadb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9d6ec6aa5f30af04bf64e238f4a25ec6aef4f5d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580948"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504752"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in Python
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
@@ -81,10 +81,10 @@ Wenn Sie sich für ein Twilio-Konto anmelden, erhalten Sie eine Konto-SID und ei
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Erstellen einer Python-Anwendung
 Eine Python-Anwendung, die den Twilio-Dienst verwendet und in Azure ausgeführt wird, unterscheidet sich nicht von anderen Python-Anwendungen, die den Twilio-Dienst verwenden. Twilio-Dienste sind REST-basiert und können in Python auf verschiedene Arten aufgerufen werden. Dieser Artikel konzentriert sich auf die Verwendung von Twilio-Diensten mit der [Twilio-Bibliothek für Python von GitHub][twilio_python]. Weitere Informationen zur Verwendung der Twilio-Bibliothek für Python finden Sie unter [https://www.twilio.com/docs/libraries/python][twilio_lib_docs].
 
-Richten Sie [zuerst eine neue Azure-Linux-VM][azure_vm_setup] ein, die als Host für Ihre neue Python-Webanwendung fungiert. Sobald der virtuelle Computer ausgeführt wird, müssen Sie Ihre Anwendung auf einem öffentlichen Port verfügbar machen, wie unten beschrieben.
+[Richten Sie zuerst eine neue Azure-Linux-VM ein][azure_vm_setup], die als Host für Ihre neue Python-Webanwendung fungiert. Sobald der virtuelle Computer ausgeführt wird, müssen Sie Ihre Anwendung auf einem öffentlichen Port verfügbar machen, wie unten beschrieben.
 
 ### <a name="add-an-incoming-rule"></a>Eine eingehende Regel hinzufügen
-  1. Navigieren Sie zur Seite „[Netzwerksicherheitsgruppe][Azure_nsg]“.
+  1. Rufen Sie die Seite [Netzwerksicherheitsgruppe][azure_nsg] auf.
   2. Wählen Sie die mit Ihrem virtuellen Computer entsprechende Netzwerksicherheitsgruppe.
   3. Hinzufügen einer **Ausgehenden Regel** für **Port 80**. Achten Sie darauf, dass Sie Eingehende von einer beliebigen Adresse zulassen.
 
@@ -272,3 +272,6 @@ Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
+[azure_ips]: https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address
+[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal
+[azure_nsg]: https://docs.microsoft.com/azure/virtual-network/manage-network-security-group

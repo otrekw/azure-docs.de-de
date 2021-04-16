@@ -1,19 +1,19 @@
 ---
-title: Azure Cache for Redis mit Azure Private Link (Vorschau)
+title: Azure Cache for Redis mit Azure Private Link
 description: Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit dem von Azure Private Link betriebenen Azure Cache for Redis verbindet. In diesem Artikel erfahren Sie, wie Sie einen Azure-Cache, eine Azure Virtual Network-Instanz und einen privaten Endpunkt im Azure-Portal erstellen.
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 3/31/2021
+ms.openlocfilehash: 952f708d8f368b63f772e3af35f6fd441d65622d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97007584"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121658"
 ---
-# <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Cache for Redis mit Azure Private Link (Public Preview)
+# <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure Cache for Redis mit Azure Private Link
 In diesem Artikel erfahren Sie, wie Sie im Azure-Portal ein virtuelles Netzwerk und eine Azure Cache for Redis-Instanz mit einem privaten Endpunkt erstellen. Außerdem erfahren Sie, wie Sie einer vorhandenen Azure Cache for Redis-Instanz einen privaten Endpunkt hinzufügen.
 
 Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit dem von Azure Private Link betriebenen Azure Cache for Redis verbindet. 
@@ -22,8 +22,7 @@ Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat un
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 
 > [!IMPORTANT]
-> Ihre Azure Cache for Redis-Instanz muss nach dem 28. Juli 2020 erstellt worden sein, damit Sie private Endpunkte verwenden können.
-> Aktuell werden Georeplikation, Firewallregeln, Unterstützung der Portalkonsole, mehrere Endpunkte pro gruppiertem Cache, Persistenz in der Firewall und in VNet eingefügte Caches nicht unterstützt. 
+> Derzeit werden Zonenredundanz, Portalkonsolenunterstützung und Persistenz auf Firewall-Speicherkonten nicht unterstützt. 
 >
 >
 
@@ -112,19 +111,8 @@ Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt a
 > [!IMPORTANT]
 > 
 > Es gibt ein `publicNetworkAccess`-Flag, das standardmäßig `Disabled` ist. 
-> Dieses Flag soll Ihnen gestatten, optional sowohl öffentlichen Zugriff als auch Zugriff über einen privaten Endpunkt auf den Cache zuzulassen, wenn es auf `Enabled` festgelegt ist. Wenn es auf `Disabled` festgelegt ist, ist nur Zugriff über private Endpunkte zulässig. Sie können den Wert mit der folgenden PATCH-Anforderung auf `Disabled` oder `Enabled` festlegen. Bearbeiten Sie den Wert so, dass er das für den Cache gewünschte Flag widerspiegelt.
-> ```http
-> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
-> {    "properties": {
->        "publicNetworkAccess":"Disabled"
->    }
-> }
-> ```
+> Dieses Flag soll Ihnen gestatten, optional sowohl öffentlichen Zugriff als auch Zugriff über einen privaten Endpunkt auf den Cache zuzulassen, wenn es auf `Enabled` festgelegt ist. Wenn es auf `Disabled` festgelegt ist, ist nur Zugriff über private Endpunkte zulässig. Sie können den Wert auch auf `Disabled` oder `Enabled` festlegen. Weitere Informationen zum Ändern des Werts finden Sie [in den häufig gestellten Fragen](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
 >
-
-> [!IMPORTANT]
-> 
-> Zum Herstellen einer Verbindung mit einem gruppierten Cache muss `publicNetworkAccess` auf `Disabled` festgelegt werden, und es kann nur eine private Endpunktverbindung geben. 
 >
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Erstellen eines privaten Endpunkts mit einer vorhandenen Azure Cache for Redis-Instanz 
@@ -173,7 +161,7 @@ Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt zu erstellen:
 
 2. Wählen Sie die Cache-Instanz aus, der Sie einen privaten Endpunkt hinzufügen möchten.
 
-3. Wählen Sie im linken Bildschirmbereich **(VORSCHAU) Privater Endpunkt** aus.
+3. Wählen Sie im linken Bildschirmbereich **Private Endpunkte** aus.
 
 4. Klicken Sie auf die Schaltfläche **Privater Endpunkt**, um Ihren privaten Endpunkt zu erstellen.
 
@@ -204,16 +192,36 @@ Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt zu erstellen:
 
 13. Wenn die grüne Meldung **Validierung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
 
+> [!IMPORTANT]
+> 
+> Es gibt ein `publicNetworkAccess`-Flag, das standardmäßig `Disabled` ist. 
+> Dieses Flag soll Ihnen gestatten, optional sowohl öffentlichen Zugriff als auch Zugriff über einen privaten Endpunkt auf den Cache zuzulassen, wenn es auf `Enabled` festgelegt ist. Wenn es auf `Disabled` festgelegt ist, ist nur Zugriff über private Endpunkte zulässig. Sie können den Wert auch auf `Disabled` oder `Enabled` festlegen. Weitere Informationen zum Ändern des Werts finden Sie [in den häufig gestellten Fragen](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
+>
+>
+
+
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 ### <a name="why-cant-i-connect-to-a-private-endpoint"></a>Warum kann ich keine Verbindung mit einem privaten Endpunkt herstellen?
-Wenn Ihr Cache bereits ein VNet-eingeschleuster Cache ist, können private Endpunkte nicht mit ihrer Cache-Instanz verwendet werden. Wenn Ihre Cache-Instanz ein nicht unterstütztes Feature verwendet (siehe unten), können Sie keine Verbindung mit Ihrer privaten Endpunktinstanz herstellen. Außerdem müssen Cache Instanzen nach dem 27. Juli erstellt worden sein, um private Endpunkte verwenden zu können.
+Wenn Ihr Cache bereits ein VNet-eingeschleuster Cache ist, können private Endpunkte nicht mit ihrer Cache-Instanz verwendet werden. Wenn Ihre Cache-Instanz ein nicht unterstütztes Feature verwendet (siehe unten), können Sie keine Verbindung mit Ihrer privaten Endpunktinstanz herstellen.
 
 ### <a name="what-features-are-not-supported-with-private-endpoints"></a>Welche Features werden nicht mit privaten Endpunkten unterstützt?
-Georeplikation, Firewallregeln, Unterstützung der Portalkonsole, mehrere Endpunkte pro gruppiertem Cache, Persistenzregeln in der Firewall und Zonenredundanz. 
+Derzeit werden Zonenredundanz, Portalkonsolenunterstützung und Persistenz auf Firewall-Speicherkonten nicht unterstützt. 
 
 ### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>Wie kann ich meinen privaten Endpunkt so ändern, dass der öffentliche Netzwerkzugriff auf ihn deaktiviert oder aktiviert ist?
-Es gibt ein `publicNetworkAccess`-Flag, das standardmäßig `Disabled` ist. Dieses Flag soll Ihnen gestatten, optional sowohl öffentlichen Zugriff als auch Zugriff über einen privaten Endpunkt auf den Cache zuzulassen, wenn es auf `Enabled` festgelegt ist. Wenn es auf `Disabled` festgelegt ist, ist nur Zugriff über private Endpunkte zulässig. Sie können den Wert mit der folgenden PATCH-Anforderung auf `Disabled` oder `Enabled` festlegen. Bearbeiten Sie den Wert so, dass er das für den Cache gewünschte Flag widerspiegelt.
+Es gibt ein `publicNetworkAccess`-Flag, das standardmäßig `Disabled` ist. Dieses Flag soll Ihnen gestatten, optional sowohl öffentlichen Zugriff als auch Zugriff über einen privaten Endpunkt auf den Cache zuzulassen, wenn es auf `Enabled` festgelegt ist. Wenn es auf `Disabled` festgelegt ist, ist nur Zugriff über private Endpunkte zulässig. Sie können den Wert auf `Disabled` oder `Enabled` im Azure-Portal oder mit einer Rest-API-Patchanforderung festlegen. 
+
+Gehen Sie folgendermaßen vor, um den Wert im Azure-Portal zu ändern.
+
+1. Suchen Sie im Azure-Portal nach **Azure Cache for Redis**, und drücken Sie die EINGABETASTE, oder wählen Sie es in den Suchvorschlägen aus.
+
+2. Wählen Sie die Cache-Instanz aus, für die Sie den Wert für den öffentlichen Netzwerkzugang ändern möchten.
+
+3. Wählen Sie im linken Bildschirmbereich **Private Endpunkte** aus.
+
+4. Klicken Sie auf die Schaltfläche **öffentlichen Netzwerkzugriff aktivieren** .
+
+Informationen zum Ändern des Werts durch eine Rest-API-Patchanforderung finden Sie unten, und bearbeiten Sie den Wert, um das für den Cache gewünschte Flag widerzuspiegeln.
 
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
@@ -223,24 +231,23 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 }
 ```
 
+### <a name="how-can-i-have-multiple-endpoints-in-different-virtual-networks"></a>Wie kann ich mehrere Endpunkte in unterschiedlichen virtuellen Netzwerken haben?
+Um mehrere private Endpunkte in unterschiedlichen virtuellen Netzwerken zu haben, muss die private DNS-Zone manuell für die verschiedenen virtuellen Netzwerke konfiguriert werden, _bevor_ der private Endpunkt erstellt wird. Weitere Informationen finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md). 
+
+### <a name="what-happens-if-i-delete-all-the-private-endpoints-on-my-cache"></a>Was passiert, wenn ich alle privaten Endpunkte in meinem Cache lösche?
+Sobald Sie die privaten Endpunkte auf Ihrem Cache löschen, kann Ihre Cache-Instanz unerreichbar werden, bis Sie entweder den öffentlichen Netzwerkzugriff explizit aktivieren oder einen anderen privaten Endpunkt hinzufügen. Sie können `publicNetworkAccess` Flag entweder für den Azure-Portal oder eine Rest-API-Patchanforderung ändern. Weitere Informationen zum Ändern des Werts finden Sie [in den häufig gestellten Fragen](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
+
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Sind Netzwerksicherheitsgruppen (NSGs) für private Endpunkte aktiviert?
 Nein, sie sind für private Endpunkte deaktiviert. Während Subnetzen, die den privaten Endpunkt enthalten, eine NSG zugeordnet sein kann, gelten die Regeln nicht für den vom privaten Endpunkt verarbeiteten Datenverkehr. Sie müssen die [Durchsetzung von Netzwerkrichtlinien deaktivieren](../private-link/disable-private-endpoint-network-policy.md), um private Endpunkte in einem Subnetz bereitzustellen zu können. Die NSG wird weiterhin für andere Workloads erzwungen, die im selben Subnetz gehostet werden. Für Routen in einem beliebigen Clientsubnetz wird ein /32-Präfix verwendet. Zum Ändern des Standardverhaltens für das Routing ist eine ähnliche benutzerdefinierte Route erforderlich. 
 
 Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehenden Datenverkehr verwenden. Stellen Sie einzelne Routen mit /32-Präfix zum Außerkraftsetzen von Routen privater Endpunkte bereit. NSG-Datenflussprotokolle und Überwachungsinformationen für ausgehende Verbindungen werden weiterhin unterstützt und können verwendet werden.
 
-### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>Kann ich Firewallregeln mit privaten Endpunkten verwenden?
-Nein, dies ist eine aktuelle Beschränkung privater Endpunkte. Der private Endpunkt funktioniert nicht ordnungsgemäß, wenn Firewallregeln für den Cache konfiguriert sind.
-
-### <a name="how-can-i-connect-to-a-clustered-cache"></a>Wie stelle ich eine Verbindung mit einem gruppierten Cache her?
-`publicNetworkAccess` muss auf `Disabled` festgelegt sein, und es kann nur eine private Endpunktverbindung geben.
-
 ### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>Da sich meine private Endpunktinstanz nicht in meinem VNet befindet: Wie ist sie meinem VNet zugeordnet?
 Sie ist mit Ihrem VNet nur verknüpft. Da sie sich nicht in Ihrem VNet befindet, müssen NSG-Regeln für abhängige Endpunkte nicht geändert werden.
 
 ### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>Wie kann ich meinen VNet-eingeschleusten Cache zu einem privaten Endpunktcache migrieren?
-Sie müssen Ihren VNet-eingeschleusten Cache löschen und eine neue Cache-Instanz mit einem privaten Endpunkt erstellen.
+Sie müssen Ihren VNet-eingeschleusten Cache löschen und eine neue Cache-Instanz mit einem privaten Endpunkt erstellen. Weitere Informationen finden Sie unter [Migrieren zu Azure Cache für Redis](cache-migration-guide.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 * Weitere Informationen zu Azure Private Link finden Sie in der [Dokumentation zu Azure Private Link](../private-link/private-link-overview.md).
 * Informationen zum Vergleichen verschiedener Optionen für die Netzwerkisolation Ihrer Cache-Instanz finden Sie unter [Dokumentation der Optionen für die Azure Cache for Redis-Netzwerkisolation](cache-network-isolation.md).

@@ -7,27 +7,28 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 02/19/2021
-ms.openlocfilehash: 0146e4fcaf70d37975dc587a266c47bf4b3f4601
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 80d1e4f39d69f761b801ccec834c0228057e4847
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461673"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448524"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Kunden-Lockbox für Microsoft Azure
 
 > [!NOTE]
 > Um dieses Feature verwenden zu können, benötigt Ihre Organisation einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) mit der Mindestebene **Developer**.
 
-Kunden-Lockbox für Microsoft Azure bietet eine Oberfläche, auf der Kunden Anforderungen nach Zugriff auf Kundendaten prüfen und dann genehmigen oder ablehnen können. Das Feature wird in Fällen verwendet, in denen ein Microsoft-Techniker während einer Supportanfrage auf Kundendaten zugreifen muss.
+Für die meisten Vorgänge sowie Support- und Fehlerbehebungsschritte, die von Microsoft-Mitarbeitern und Unterauftragsverarbeitern ausgeführt werden, ist kein Zugriff auf Kundendaten erforderlich. In den seltenen Fällen, in denen ein solcher Zugriff erforderlich ist, bietet Kunden-Lockbox für Microsoft Azure eine Schnittstelle, über die Kunden Zugriffsanforderungen für Kundendaten überprüfen und genehmigen oder ablehnen können. Das Feature wird verwendet, wenn ein Microsoft-Techniker beispielsweise im Rahmen eines vom Kunden initiierten Supporttickets oder aufgrund eines von Microsoft identifizierten Problems auf Kundendaten zugreifen muss.
 
 In diesem Artikel wird erläutert, wie Sie die Kunden-Lockbox aktivieren und Lockbox-Anforderungen für spätere Überprüfungen und Audits initiieren, nachverfolgen und speichern.
 
 <a name='supported-services-and-scenarios-in-general-availability'></a><a name='supported-services-and-scenarios-in-preview'></a>
-## <a name="supported-services-and-scenarios-general-availability"></a>Unterstützte Dienste und Szenarien (allgemein verfügbar)
+## <a name="supported-services-and-scenarios"></a>Unterstützte Dienste und Szenarien
 
-Die folgenden Dienste sind jetzt für die Kunden-Lockbox allgemein verfügbar:
+### <a name="general-availability"></a>Allgemeine Verfügbarkeit
+Die folgenden Dienste sind für Kunden-Lockbox allgemein verfügbar:
 
 - Azure API Management
 - Azure App Service
@@ -49,6 +50,12 @@ Die folgenden Dienste sind jetzt für die Kunden-Lockbox allgemein verfügbar:
 - Azure Synapse Analytics
 - Virtuelle Computer in Azure (inklusive Remotedesktopzugriff, Zugriff auf Speicherabbilder und verwalteter Datenträger)
 
+### <a name="public-preview"></a>Öffentliche Vorschau
+Die folgenden Dienste sind derzeit für Kunden-Lockbox als Vorschauversion verfügbar:
+
+- Azure Machine Learning
+- Azure Batch
+
 ## <a name="enable-customer-lockbox"></a>Aktivieren der Kunden-Lockbox
 
 Sie können die Kunden-Lockbox jetzt über das [Verwaltungsmodul](https://aka.ms/customerlockbox/administration) auf dem Blatt „Kunden-Lockbox“ aktivieren.  
@@ -66,7 +73,7 @@ Die folgenden Schritte beschreiben einen typischen Workflow für eine Kunden-Loc
 
 3. Ein Azure-Supporttechniker überprüft den Service Request und ermittelt die nächsten Schritte zur Behebung des Problems.
 
-4. Wenn der Supporttechniker das Problem nicht mithilfe von Standardtools und Telemetriedaten beheben kann, besteht der nächste Schritt darin, über einen JIT-Zugriffsdienst (Just-In-Time) erhöhte Berechtigungen anzufordern. Diese Anforderung kann vom ursprünglichen Supporttechniker oder einem anderen Supporttechniker gestellt werden, da das Problem an das Azure DevOps-Team eskaliert wird.
+4. Wenn der Supporttechniker das Problem nicht mithilfe von Standardtools und der vom Dienst generierten Daten beheben kann, besteht der nächste Schritt darin, über einen JIT-Zugriffsdienst (Just-In-Time) erhöhte Berechtigungen anzufordern. Diese Anforderung kann vom ursprünglichen Supporttechniker oder einem anderen Supporttechniker gestellt werden, da das Problem an das Azure DevOps-Team eskaliert wird.
 
 5. Nachdem die Zugriffsanforderung vom Azure-Techniker übermittelt wurde, wertet der JIT-Dienst die Anforderung unter Berücksichtigung von Faktoren wie den folgenden aus:
     - Bereich der Ressource
@@ -129,8 +136,10 @@ Wir haben dem Azure-Sicherheitsvergleichstest eine neue Baselinekontrolle ([3.13
 
 In den folgenden Supportszenarios werden keine Kunden-Lockbox-Anforderungen ausgelöst:
 
-- Ein Microsoft-Techniker muss eine Aktivität ausführen, die außerhalb der Standardbetriebsvorgänge liegt. Beispiel: Wiederherstellen von Diensten in unerwarteten oder unvorhersehbaren Szenarien.
-- Ein Microsoft-Techniker greift im Rahmen der Problembehandlung auf die Azure-Plattform zu und hat versehentlich Zugriff auf Kundendaten. Beispiel: Das Azure-Team führt eine Problembehandlung durch, die zur Erfassung eines Pakets auf einem Netzwerkgerät führt. In diesem Szenario kann der Techniker die Daten nicht lesen, wenn sie vom Kunden während der Übertragung verschlüsselt werden.
+- Notfallszenarien, die außerhalb der Standardbetriebsvorgänge liegen. Beispiel: Ein größerer Dienstausfall muss dringend behoben werden, um Dienste in einem unerwarteten oder unvorhersehbaren Szenario wiederherzustellen. Diese Notfälle sind selten und erfordern für die Behebung meist keinen Zugriff auf Kundendaten.
+- Ein Microsoft-Techniker greift im Rahmen der Problembehandlung auf die Azure-Plattform zu und hat versehentlich Zugriff auf Kundendaten. Beispiel: Das Azure-Team führt eine Problembehandlung durch, die zur Erfassung eines Pakets auf einem Netzwerkgerät führt. Es kann vorkommen, dass infolge solcher Szenarien der Zugriff auf erhebliche Mengen von Kundendaten möglich wird, dies ist jedoch äußerst selten. Kunden können ihre Daten durch Verschlüsselung während der Übertragung und im Ruhezustand weiter schützen.
+
+Kunden-Lockbox-Anforderungen werden auch nicht durch externe rechtliche Auskunftsersuchen ausgelöst. Ausführliche Informationen finden Sie im Microsoft Trust Center in der Erörterung von [behördlichen Auskunftsersuchen](https://www.microsoft.com/trust-center/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

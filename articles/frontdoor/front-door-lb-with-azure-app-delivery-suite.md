@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 04/06/2021
 ms.author: duau
-ms.openlocfilehash: 50e047325ad17710794b1640715ab1938373fe85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a7e81c57552fdc24262522343a08fdabba71bfd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019462"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552579"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Lastenausgleich mit der Azure-Suite für die Anwendungsbereitstellung
 
@@ -40,8 +40,8 @@ Wenn Sie diese globalen und regionalen Dienste kombinieren, profitiert Ihre Anwe
 
 ## <a name="global-load-balancing"></a>Globaler Lastenausgleich
 **Traffic Manager** enthält einen globalen DNS-Lastenausgleich. Der Dienst untersucht eingehende DNS-Anforderungen und antwortet mit einem fehlerfreien Back-End. Dies geschieht gemäß der vom Kunden ausgewählten Routingrichtlinie. Es gibt die folgenden Routingmethoden:
-- **Durch Leistungsrouting werden Anforderungen an das nächstgelegene Back-End mit der geringsten Latenz gesendet.
-- **Prioritätsorientiertes Routing**, um den gesamten Datenverkehr zu einem Back-End zu leiten, wobei andere Back-Ends als Sicherung fungieren.
+- Durch **Leistungsrouting** werden Anforderungen an das nächstgelegene Back-End mit der geringsten Wartezeit gesendet.
+- **Prioritätsorientiertes Routing** leitet den gesamten Datenverkehr zu einem Back-End, wobei andere Back-Ends als Sicherung fungieren.
 - **Gewichtetes Roundrobinrouting** verteilt Datenverkehr basierend auf der Gewichtung, die jedem Back-End zugewiesen ist.
 - **Geografisches Routing** stellt sicher, dass Anforderungen, die aus bestimmten geografischen Regionen stammen, von für diese Regionen zugeordneten Back-Ends verarbeitet werden. (Beispielsweise sollten alle Anforderungen aus Spanien an die Azure-Region „Frankreich, Mitte“ weitergeleitet werden.)
 - **Subnetzrouting** ermöglicht Ihnen das Zuordnen von IP-Adressbereichen zu Back-Ends, damit eingehende Anforderungen für diese IP-Adressen an das jeweilige Back-End gesendet werden. (Beispielsweise sollten alle Benutzer, die aus dem IP-Adressbereich Ihres Unternehmens eine Verbindung herstellen, andere Webinhalte erhalten als die allgemeinen Benutzer.)

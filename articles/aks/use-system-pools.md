@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3c65d3a7316d431c57d9fb75775e271bf9f34ca
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178829"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223267"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Verwalten von Systemknotenpools in Azure Kubernetes Service (AKS)
 
@@ -43,7 +43,8 @@ Für Systemknotenpools gelten folgende Einschränkungen:
 * Bei Systempools muss als „osType“ Linux angegeben werden.
 * Bei Benutzerknotenpools kann als „osType“ Linux oder Windows angegeben werden.
 * Systempools müssen mindestens einen Knoten enthalten, während Benutzerknotenpools keine oder mehrere Knoten enthalten können.
-* Für Systemknotenpools ist eine VM SKU mit mindestens zwei vCPUs und 4 GB Arbeitsspeicher erforderlich.
+* Für Systemknotenpools ist eine VM SKU mit mindestens zwei vCPUs und 4 GB Arbeitsspeicher erforderlich. Ein burstfähiger virtueller Computer (B-Serie) wird jedoch nicht empfohlen.
+* Es werden mindestens zwei Knoten und vier vCPUs empfohlen (z. B. Standard_DS4_v2), insbesondere für große Cluster (mehrere CoreDNS-Podreplikate, 3 bis 4 oder mehr Add-Ons usw.).
 * Systemknotenpools müssen gemäß der [Formel für die mindestens erforderliche und maximal zulässige Anzahl von Pods][maximum-pods] mindestens 30 Pods unterstützen.
 * Für Spot-Knotenpools sind Benutzerknotenpools erforderlich.
 * Wenn Sie einen zusätzlichen Systemknotenpool hinzufügen oder ändern, welcher Knotenpool ein Systemknotenpool ist, werden die Systempods *NICHT* automatisch verschoben. Systempods können auch dann weiterhin im selben Knotenpool ausgeführt werden, wenn Sie diesen in einen Benutzerknotenpool ändern. Wenn Sie einen Knotenpool, auf dem Systempods ausgeführt werden und der zuvor ein Systemknotenpool war, löschen oder herunterskalieren, werden diese Systempods nach einem Zeitplan mit höherer Priorität im neuen Systemknotenpool erneut bereitgestellt.

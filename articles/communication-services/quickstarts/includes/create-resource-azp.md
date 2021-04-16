@@ -2,14 +2,14 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 051f903c0b203045886b80f72d868adc1fa85f73
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b602cbfde22cc87b42a32b007c19b626814d1660
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886097"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554441"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -25,9 +25,9 @@ Geben Sie **Communication** in **Search the Marketplace** (Marketplace durchsuch
 
 :::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Screenshot, der eine Suche nach Communication Services in der Suchleiste zeigt":::
 
-Wählen Sie in den Ergebnissen **Communication Services** und anschließend **Hinzufügen** aus.
+Wählen Sie in den Ergebnissen **Communication Services** und anschließend **Erstellen** aus.
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Screenshot, der das Azure-Panel mit der hervorgehobenen Schaltfläche „Hinzufügen“ zeigt":::
+:::image type="content" source="../media/create-a-communication-resource/create-communication-portal.png" alt-text="Screenshot: Panel Communication Services mit hervorgehobener Schaltfläche „Erstellen“.":::
 
 Sie können Ihre Communication Services-Ressource jetzt konfigurieren. Auf der ersten Seite des Erstellungsprozesses werden Sie aufgefordert, Folgendes anzugeben:
 

@@ -8,18 +8,21 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed81ca2c8f409b7f6c4a6f30f9bf75e594c6c208
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397919"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221703"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurieren von TLS-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway
 
 Erfahren Sie, wie Sie TLS/SSL-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway konfigurieren. Ihnen steht eine Liste mit vordefinierten Richtlinien zur Verfügung, die verschiedene Konfigurationen von TLS-Richtlinienversionen und aktivierten Verschlüsselungssammlungen enthalten. Darüber hinaus können Sie eine [benutzerdefinierte TLS-Richtlinie](#configure-a-custom-tls-policy) definieren, die auf Ihre individuellen Anforderungen abgestimmt ist.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Wir empfehlen die Verwendung von TLS 1.2 als minimale TLS-Protokollversion, um die Sicherheit von Application Gateway zu erhöhen. 
 
 ## <a name="get-available-tls-options"></a>Abrufen der verfügbaren TLS-Optionen
 
@@ -217,4 +220,6 @@ $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In der [Übersicht über die Umleitung in Application Gateway](./redirect-overview.md) erfahren Sie, wie Sie HTTP-Datenverkehr an einen HTTPS-Endpunkt weiterleiten.
+In der [Übersicht über die Umleitung in Application Gateway](./redirect-overview.md) erfahren Sie, wie Sie HTTP-Datenverkehr an einen HTTPS-Endpunkt weiterleiten. 
+
+Informationen zum Einrichten von listenerspezifischen SSL-Richtlinien finden Sie unter [Konfigurieren von listenerspezifischen SSL-Richtlinien für Application Gateway über das Portal (Vorschau)](./application-gateway-configure-listener-specific-ssl-policy.md).

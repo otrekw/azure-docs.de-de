@@ -6,12 +6,12 @@ ms.author: yalavi
 services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 228193066c45421c4dddee1802aba1feed59e9c8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1834fb7478fbb9ed435dac4f1e4b43f83e5d2db1
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042673"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383568"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 
@@ -21,7 +21,7 @@ ms.locfileid: "102042673"
 > Der benutzerdefinierte JSON-Webhook wird derzeit in der API-Version `2020-05-01-preview` nicht unterstützt.
 
 > [!NOTE]
-> Sie sollten das [allgemeine Warnungsschema](../alerts/alerts-common-schema.md) für Ihre Webhookintegrationen verwenden. Das allgemeine Warnungsschema bietet den Vorteil einer einzelnen, erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor. Für Protokollwarnungsregeln, für die eine benutzerdefinierte JSON-Nutzlast definiert ist, wird das Nutzlastschema durch die Aktivierung des allgemeinen Schemas auf das [hier](../alerts/alerts-common-schema-definitions.md#log-alerts) beschriebene zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Größere Warnungen enthalten keine Suchergebnisse. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie unter Verwendung von `LinkToFilteredSearchResultsAPI` oder `LinkToSearchResultsAPI` mit der Log Analytics-API auf die Suchergebnisse zugreifen.
+> Sie sollten das [allgemeine Warnungsschema](../alerts/alerts-common-schema.md) für Ihre Webhookintegrationen verwenden. Das allgemeine Warnungsschema bietet den Vorteil einer einzelnen, erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor. Für Protokollwarnungsregeln, für die eine benutzerdefinierte JSON-Nutzlast definiert ist, wird das Nutzlastschema durch die Aktivierung des allgemeinen Warnungsschemas auf das [hier](../alerts/alerts-common-schema-definitions.md#log-alerts) beschriebene zurückgesetzt. Das bedeutet Folgendes: Wenn Sie eine benutzerdefinierte JSON-Nutzlast definieren möchten, kann der Webhook das allgemeine Warnungsschema nicht verwenden. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Größere Warnungen enthalten keine Suchergebnisse. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie unter Verwendung von `LinkToFilteredSearchResultsAPI` oder `LinkToSearchResultsAPI` mit der Log Analytics-API auf die Suchergebnisse zugreifen.
 
 ## <a name="webhook-payload-properties"></a>Webhook-Nutzlasteigenschaften
 
@@ -87,65 +87,68 @@ Die folgende Beispielnutzlast ist für eine Standardwebhookaktion gedacht, die f
 
 ```json
 {
-    "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName": "AcmeRule",
-    "SearchQuery": "Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "LinkToFilteredSearchResultsUI": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "LinkToSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
-    "LinkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
-    "Description": "log alert rule",
-    "Severity": "Warning",
-    "AffectedConfigurationItems": [
-        "INC-Gen2Alert"
-    ],
-    "Dimensions": [
-        {
-            "name": "Computer",
-            "value": "INC-Gen2Alert"
-        }
-    ],
-    "SearchResult": {
-        "tables": [
+   "schemaId":"Microsoft.Insights/LogAlert",
+   "data":{
+      "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
+      "AlertRuleName":"AcmeRule",
+      "SearchQuery":"Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
+      "SearchIntervalStartTimeUtc":"2018-03-26T08:10:40Z",
+      "SearchIntervalEndtimeUtc":"2018-03-26T09:10:40Z",
+      "AlertThresholdOperator":"Greater Than",
+      "AlertThresholdValue":0,
+      "ResultCount":2,
+      "SearchIntervalInSeconds":3600,
+      "LinkToSearchResults":"https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+      "LinkToFilteredSearchResultsUI":"https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+      "LinkToSearchResultsAPI":"https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+      "LinkToFilteredSearchResultsAPI":"https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+      "Description":"log alert rule",
+      "Severity":"Warning",
+      "AffectedConfigurationItems":[
+         "INC-Gen2Alert"
+      ],
+      "Dimensions":[
+         {
+            "name":"Computer",
+            "value":"INC-Gen2Alert"
+         }
+      ],
+      "SearchResult":{
+         "tables":[
             {
-                "name": "PrimaryResult",
-                "columns": [
-                    {
-                        "name": "$table",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Computer",
-                        "type": "string"
-                    },
-                    {
-                        "name": "TimeGenerated",
-                        "type": "datetime"
-                    }
-                ],
-                "rows": [
-                    [
-                        "Fabrikam",
-                        "33446677a",
-                        "2018-02-02T15:03:12.18Z"
-                    ],
-                    [
-                        "Contoso",
-                        "33445566b",
-                        "2018-02-02T15:16:53.932Z"
-                    ]
-                ]
+               "name":"PrimaryResult",
+               "columns":[
+                  {
+                     "name":"$table",
+                     "type":"string"
+                  },
+                  {
+                     "name":"Computer",
+                     "type":"string"
+                  },
+                  {
+                     "name":"TimeGenerated",
+                     "type":"datetime"
+                  }
+               ],
+               "rows":[
+                  [
+                     "Fabrikam",
+                     "33446677a",
+                     "2018-02-02T15:03:12.18Z"
+                  ],
+                  [
+                     "Contoso",
+                     "33445566b",
+                     "2018-02-02T15:16:53.932Z"
+                  ]
+               ]
             }
-        ]
-    },
-    "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
-    "AlertType": "Metric measurement"
+         ]
+      },
+      "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
+      "AlertType":"Metric measurement"
+   }
 }
 ```
 

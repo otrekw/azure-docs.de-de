@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a4688c196551f3ab6b5713d8939f53af161d1e3
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010162"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505007"
 ---
 # <a name="how-caching-works"></a>Funktionsweise der Zwischenspeicherung
 
@@ -75,6 +75,7 @@ Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die die C
 - Wenn das Headerfeld `Cache-Control` in einer HTTP-Anforderung vom Client an den CDN-PoP verwendet wird, wird es standardmäßig von allen Azure CDN-Profilen ignoriert.
 - Wenn es in einer HTTP-Antwort vom Client an den CDN-PoP verwendet wird, gilt Folgendes:
      - **Azure CDN Standard/Premium von Verizon** und **Azure CDN Standard von Microsoft** unterstützen alle `Cache-Control`-Anweisungen.
+     - **Azure CDN Standard/Premium von Verizon** und **Azure CDN Standard von Microsoft** berücksichtigen das Verhalten bei Zwischenspeicherung für Cachesteuerungsanweisungen in [RFC 7234 – Hypertext Transfer Protocol (HTTP/1.1): Caching (ietf.org)](https://tools.ietf.org/html/rfc7234#section-5.2.2.8).
      - **Azure CDN Standard von Akamai** unterstützt nur die folgenden `Cache-Control`-Anweisungen, während alle anderen ignoriert werden:
          - `max-age`: Ein Cache kann den Inhalt für den in Sekunden angegebenen Zeitraum speichern. Beispiel: `Cache-Control: max-age=5`. Diese Anweisung gibt den maximalen Zeitraum an, in dem ein Inhalt als aktuell gilt.
          - `no-cache`: Der Inhalt wird im Cache gespeichert, aber vor jeder Bereitstellung aus dem Cache überprüft. Entspricht `Cache-Control: max-age=0`.
