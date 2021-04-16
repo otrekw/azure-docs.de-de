@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: fb42a0428f0439053375027481d38977b068e356
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a51aa15e1338380d4b4179e7fb8899273750c374
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122577"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107179"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurieren von Azure Attestation für Ihren logischen Azure SQL-Server
 
@@ -73,7 +73,7 @@ Mit der oben genannten Richtlinie wird Folgendes überprüft:
 - Die Sicherheitsversionsnummer (SVN) der Bibliothek ist größer als 0 (null).
   > Die SVN ermöglicht Microsoft, auf potenzielle Sicherheitsfehler zu reagieren, die im Enclave-Code identifiziert werden. Falls ein Sicherheitsproblem entdeckt und behoben wird, stellt Microsoft eine neue Version der Enclave mit einer neuen (inkrementierten) SVN bereit. Die oben genannte empfohlene Richtlinie wird mit der neuen SVN aktualisiert. Mit der Aktualisierung auf die empfohlene Richtlinie können Sie sicherstellen, dass der Nachweis nicht erfolgreich ist, wenn ein böswilliger Administrator versucht, eine ältere und unsichere Enclave zu laden.
 - Die Bibliothek in der Enclave wurde mit dem Microsoft-Signaturschlüssel signiert (der Wert des x-ms-sgx-mrsigner-Anspruchs entspricht dem Hash des Signaturschlüssels).
-  > Eines der Hauptziele des Nachweises ist, Clients zu überzeugen, dass die in der Enclave ausgeführte Binärdatei die Binärdatei ist, die ausgeführt werden soll. Nachweisrichtlinien stellen zwei Mechanismen für diesen Zweck bereit. Einer ist der **mrenclave**-Anspruch, bei dem es sich um den Hash der Binärdatei handelt, die in einer Enclave ausgeführt werden soll. Bei **mrenclave** besteht das Problem, dass sich der binäre Hash selbst bei geringfügigen Änderungen des Codes ändert, wodurch es schwierig wird, den Code, der in der Enclave ausgeführt wird, zu überarbeiten. Daher sollte **mrsigner** verwendet werden, der Hash eines Schlüssels, der zum Signieren der Enclave-Binärdatei verwendet wird. Wenn Microsoft die Enclave überarbeitet, bleibt **mrsigner** unverändert, solange der Signaturschlüssel nicht geändert wird. Auf diese Weise ist es möglich, aktualisierte Binärdateien bereitzustellen, ohne Kundenanwendungen zu unterbrechen. 
+  > Eines der Hauptziele des Nachweises ist, Clients zu überzeugen, dass die in der Enclave ausgeführte Binärdatei die Binärdatei ist, die ausgeführt werden soll. Nachweisrichtlinien stellen zwei Mechanismen für diesen Zweck bereit. Einer ist der **mrenclave**-Anspruch, bei dem es sich um den Hash der Binärdatei handelt, die in einer Enclave ausgeführt werden soll. Bei **mrenclave** besteht das Problem, dass sich der binäre Hash selbst bei geringfügigen Änderungen des Codes ändert, wodurch es schwierig wird, den Code, der in der Enclave ausgeführt wird, zu überarbeiten. Daher sollte **mrsigner** verwendet werden, der Hash eines Schlüssels, der zum Signieren der Enclave-Binärdatei verwendet wird. Wenn Microsoft die Enclave überarbeitet, bleibt **mrsigner** unverändert, solange der Signaturschlüssel nicht geändert wird. Auf diese Weise wird es möglich, aktualisierte Binärdateien bereitzustellen, ohne die Anwendungen der Kunden zu zerstören. 
 
 > [!IMPORTANT]
 > Ein Nachweisanbieter wird mit der Standardrichtlinie für Intel SGX-Enclaves erstellt, wodurch der innerhalb der Enclave ausgeführte Code nicht überprüft wird. Microsoft empfiehlt dringend, für Always Encrypted mit Secure Enclaves die oben empfohlene Richtlinie festzulegen und nicht die Standardrichtlinie zu verwenden.
@@ -100,7 +100,7 @@ Verwenden Sie das folgende Skript, um die Nachweis-URL zu ermitteln:
 
 ```powershell
 $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName 
-$attestationUrl = $attestationProvider.AttestUri + “/attest/SgxEnclave”
+$attestationUrl = $attestationProvider.AttestUri + "/attest/SgxEnclave"
 Write-Host "Your attestation URL is: " $attestationUrl 
 ```
 
@@ -137,7 +137,7 @@ Ein Beispiel finden Sie im folgenden Screenshot.
 ```powershell
 $serverResourceGroupName = "<server resource group name>"
 $serverName = "<server name>" 
-$server = Get-AzSqlServer -ServerName $serverName -ResourceGroupName
+$server = Get-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName 
 ```
  
 2. Weisen Sie den Server für die Ressourcengruppe, die den Nachweisanbieter enthält, der Rolle „Nachweisleser“ zu.

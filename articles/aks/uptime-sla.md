@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: fae95e6f3a73d7539f81e1486c4ad021f181aa11
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 69a4955f28bbd42cd7bf5651bd057412e15303de
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176330"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952914"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS): Betriebszeit-SLA
 
@@ -37,9 +37,6 @@ Die Betriebszeit-SLA ist ein kostenpflichtiges Feature und wird pro Cluster akti
 * Installieren Sie mindestens die Version 2.8.0 der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>Erstellen eines neuen Clusters mit Betriebszeit-SLA
-
-> [!NOTE]
-> Wenn Sie die Betriebszeit-SLA aktivieren, gibt es derzeit keine Möglichkeit, sie aus einem Cluster zu entfernen.
 
 Um einen neuen Cluster mit Betriebszeit-SLA zu erstellen, verwenden Sie die Azure CLI.
 
@@ -106,6 +103,15 @@ Verwenden Sie den Befehl [`az aks update`][az-aks-update], um den vorhandenen Cl
     "tier": "Paid"
   },
   ```
+
+## <a name="opt-out-of-uptime-sla"></a>Abmelden von der Uptime-SLA
+
+Sie können Ihren Cluster aktualisieren, um zum kostenlosen Tarif zu wechseln und sich von der Uptime-SLA abzumelden.
+
+```azurecli-interactive
+# Update an existing cluster to opt out of Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --no-uptime-sla
+ ```
 
 ## <a name="clean-up"></a>Bereinigung
 
