@@ -3,18 +3,18 @@ title: Erweitern von Azure IoT Central mit benutzerdefinierten Analysen | Micros
 description: Als Lösungsentwickler konfigurieren Sie eine IoT Central-Anwendung zur Ausführung von benutzerdefinierten Analysen und Visualisierungen. Diese Lösung verwendet Azure Databricks.
 author: TheRealJasonAndrew
 ms.author: v-anjaso
-ms.date: 02/18/2020
+ms.date: 03/15/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0cee343e6769c815ecfb4b9c791783bd246caaac
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551316"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953880"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Analysen mithilfe von Azure Databricks
 
@@ -82,14 +82,14 @@ Verwenden Sie das [Azure-Portal zum Erstellen eines Azure Databricks-Diensts](ht
 
 Wenn Sie die erforderlichen Ressourcen erstellt haben, sieht Ihre Ressourcengruppe **IoTCentralAnalysis** wie im folgenden Screenshot aus:
 
-![Ressourcengruppe „IoTCentralAnalysis“](media/howto-create-custom-analytics/resource-group.png)
+:::image type="content" source="media/howto-create-custom-analytics/resource-group.png" alt-text="Abbildung: Ressourcengruppe „IoTCentralAnalysis“":::
 
 ## <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
 
 Sie können eine IoT Central-Anwendung konfigurieren, um Telemetriedaten kontinuierlich an einen Event Hub zu exportieren. In diesem Abschnitt erstellen Sie einen Event Hub, um Telemetriedaten aus Ihrer IoT Central-Anwendung zu empfangen. Der Event Hub übermittelt die Telemetriedaten zur Verarbeitung an Ihren Stream Analytics-Auftrag.
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Event Hubs-Namespace, und klicken Sie auf **+ Event Hub**.
-1. Nennen Sie den Event Hub **centralexport**, und klicken Sie auf **Erstellen**.
+1. Geben Sie dem Event Hub den Namen **centralexport**.
 1. Wählen Sie in der Liste der Event Hubs in Ihrem Namespace **centralexport** aus. Wählen Sie dann **SAS-Richtlinien** aus.
 1. Wählen Sie **+ Hinzufügen**. Erstellen Sie eine Richtlinie namens **Lauschen** mit dem Anspruch **Lauschen**.
 1. Wenn die Richtlinie fertig ist, wählen Sie sie in der Liste aus, und kopieren Sie den Wert von **Verbindungszeichenfolge – Primärschlüssel**.
@@ -97,26 +97,42 @@ Sie können eine IoT Central-Anwendung konfigurieren, um Telemetriedaten kontinu
 
 Ihr Event Hubs-Namespace sieht wie im folgenden Screenshot aus:
 
-![Event Hubs-Namespace](media/howto-create-custom-analytics/event-hubs-namespace.png)
+:::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="Abbildung: Azure Event Hubs-Namespace":::
 
-## <a name="configure-export-in-iot-central"></a>Konfigurieren des Exports nach IoT Central
+## <a name="configure-export-in-iot-central-and-create-a-new-destination"></a>Konfigurieren des Exports in IoT Central und Erstellen eines neuen Ziels
 
 Navigieren Sie auf der Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral) zu der IoT Central-Anwendung, die Sie aus der Contoso-Vorlage erstellt haben. In diesem Abschnitt konfigurieren Sie die Anwendung so, dass die Telemetriedaten aus den simulierten Geräten an Ihren Event Hub gestreamt werden. So konfigurieren Sie den Export:
 
-1. Navigieren Sie zur Seite **Datenexport**, wählen Sie **+ Neu** und dann **Azure Event Hubs** aus.
-1. Verwenden Sie die folgenden Einstellungen, um den Export zu konfigurieren, und klicken Sie dann auf **Speichern**:
+1. Navigieren Sie zur Seite **Datenexport**, und wählen Sie **+ Neuer Export** aus.
+1. Wählen Sie vor der Bearbeitung des ersten Fensters die Option **Neues Ziel erstellen** aus.
+
+Das Fenster sieht wie folgt aus.  
+
+:::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Abbildung: Konfiguration des Ziels für den Datenexport":::
+
+3. Geben Sie die folgenden Werte ein:
+
+| Einstellung | Wert |
+| ------- | ----- |
+| Zielname | Der Name des Ziels |
+| Zieltyp | Azure Event Hubs |
+| Verbindungszeichenfolge| Die Event Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben. | 
+| Event Hub| Der Name des Event Hubs|
+
+4. Klicken Sie auf **Erstellen**, um den Vorgang abzuschließen.
+
+5. Verwenden Sie die folgenden Einstellungen, um den Export zu konfigurieren:
 
     | Einstellung | Wert |
     | ------- | ----- |
-    | Anzeigename | Exportieren nach Event Hubs |
+    | Geben Sie einen Exportnamen ein. | eventhubexport |
     | Enabled | Andererseits |
-    | Event Hubs-Namespace | Der Name Ihres Event Hubs-Namespace |
-    | Event Hub | centralexport |
-    | Messungen | Andererseits |
-    | Geräte | Aus |
-    | Gerätevorlagen | Aus |
+    | Daten| Wählen Sie „Telemetrie“ aus. | 
+    | Destinations| Erstellen Sie ein Ziel für den Export wie weiter unten dargestellt, und wählen Sie es anschließend im Dropdownmenü „Ziel“ aus. |
 
-![Konfiguration des Datenexports](media/howto-create-custom-analytics/cde-configuration.png)
+:::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Screenshot: Konfiguration des Ziels für den Datenexport":::
+
+6. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
 Warten Sie, bis der Exportstatus **Wird ausgeführt** lautet, bevor Sie fortfahren.
 
@@ -164,7 +180,7 @@ Die folgenden Schritte zeigen, wie Sie die für Ihr Beispiel benötigte Biblioth
 
 1. Der Bibliotheksstatus lautet jetzt **Installiert**:
 
-    ![Bibliothek installiert](media/howto-create-custom-analytics/cluster-libraries.png)
+:::image type="content" source="media/howto-create-custom-analytics/cluster-libraries.png" alt-text="Screenshot: Installierte Bibliothek":::
 
 ### <a name="import-a-databricks-notebook"></a>Importieren eines Databricks-Notebooks
 
@@ -178,9 +194,9 @@ Mit den folgenden Schritten importieren Sie ein Databricks-Notebook, das den Pyt
 
 1. Wählen Sie den **Arbeitsbereich** zum Anzeigen des importierten Notebooks aus:
 
-    ![Importiertes Notebook](media/howto-create-custom-analytics/import-notebook.png)
+:::image type="content" source="media/howto-create-custom-analytics/import-notebook.png" alt-text="Screenshot: Importiertes Notebook":::
 
-1. Bearbeiten Sie den Code in der ersten Python-Zelle, um die zuvor gespeicherte Event Hubs-Verbindungszeichenfolge hinzuzufügen:
+5. Bearbeiten Sie den Code in der ersten Python-Zelle, um die zuvor gespeicherte Event Hubs-Verbindungszeichenfolge hinzuzufügen:
 
     ```python
     from pyspark.sql.functions import *
@@ -206,7 +222,7 @@ Möglicherweise wird in der letzten Zelle ein Fehler angezeigt. Wenn dies zutrif
 
 Scrollen Sie im Notebook nach unten bis Zelle 14, um einen Plot vom gleitenden Durchschnitt der Luftfeuchtigkeit nach Gerätetyp anzuzeigen. Dieser Plot wird beim Empfang der Streaming-Telemetrie fortlaufend aktualisiert:
 
-![Geglätteter Telemetrieplot](media/howto-create-custom-analytics/telemetry-plot.png)
+:::image type="content" source="media/howto-create-custom-analytics/telemetry-plot.png" alt-text="Screenshot: Geglätteter Telemetrieplot":::
 
 Sie können die Größe des Diagramms im Notebook ändern.
 
@@ -214,7 +230,7 @@ Sie können die Größe des Diagramms im Notebook ändern.
 
 Scrollen Sie im Notebook nach unten bis Zelle 20, um die [Boxplots](https://en.wikipedia.org/wiki/Box_plot) anzuzeigen. Weil die Boxplots auf statischen Daten basieren, müssen Sie für deren Aktualisierung die Zelle erneut ausführen:
 
-![Boxplots](media/howto-create-custom-analytics/box-plots.png)
+:::image type="content" source="media/howto-create-custom-analytics/box-plots.png" alt-text="Screenshot: Boxplots":::
 
 Sie können die Größe der Plots im Notebook ändern.
 
