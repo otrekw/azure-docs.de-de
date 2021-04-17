@@ -5,16 +5,15 @@ author: fitzgeraldsteele
 ms.author: fisteele
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8805b3c4947311a3054066b3378d881d673c2b14
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 3d9d9449e2a971a4247e507e0c022c8c5fb9956c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521746"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075405"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Vorschau: Orchestrierungsmodi für VM-Skalierungsgruppen in Azure 
 
@@ -85,7 +84,7 @@ Verwenden Sie die VM-Standardbefehle zum Starten, Beenden, Neustarten oder Lösc
 Beim Überwachen der Anwendungsintegrität kann Ihre Anwendung für Azure einen Heartbeat bereitstellen, damit ermittelt werden kann, ob Ihre Anwendung fehlerfrei oder fehlerhaft ist. Azure kann fehlerhafte VM-Instanzen automatisch austauschen. Bei flexiblen Skalierungsgruppeninstanzen müssen Sie die Erweiterung zur Anwendungsintegrität auf dem virtuellen Computer installieren und konfigurieren. Für einheitliche Skalierungsgruppeninstanzen können Sie entweder die Erweiterung für die Anwendungsintegrität verwenden oder die Integrität mit einem benutzerdefinierten Azure Load Balancer-Integritätstest messen. 
 
 ### <a name="list-scale-sets-vm-api-changes"></a>Auflisten der API-Änderungen für VMs einer Skalierungsgruppe 
-Mit VM-Skalierungsgruppen können Sie die Instanzen auflisten, die zur Skalierungsgruppe gehören. Bei der flexiblen Orchestrierung wird mit dem Befehl zum Auflisten der VMs einer VM-Skalierungsgruppe eine Liste angezeigt, die die IDs der VMs einer Skalierungsgruppe enthält. Anschließend können Sie die GET-Befehle für die VMs einer VM-Skalierungsgruppe verwenden, um weitere Details zur Zusammenarbeit zwischen Skalierungsgruppe und VM-Instanz abzurufen. Verwenden Sie zum Abrufen der vollständigen Details zur VM die GET-VM-Standardbefehle oder [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview). 
+Mit VM-Skalierungsgruppen können Sie die Instanzen auflisten, die zur Skalierungsgruppe gehören. Bei der flexiblen Orchestrierung wird mit dem Befehl zum Auflisten der VMs einer VM-Skalierungsgruppe eine Liste angezeigt, die die IDs der VMs einer Skalierungsgruppe enthält. Anschließend können Sie die GET-Befehle für die VMs einer VM-Skalierungsgruppe verwenden, um weitere Details zur Zusammenarbeit zwischen Skalierungsgruppe und VM-Instanz abzurufen. Verwenden Sie zum Abrufen der vollständigen Details zur VM die GET-VM-Standardbefehle oder [Azure Resource Graph](../governance/resource-graph/overview.md). 
 
 ### <a name="retrieve-boot-diagnostics-data"></a>Abrufen von Startdiagnosedaten 
 Verwenden Sie die Standard-VM-APIs und -Befehle, um Daten und Screenshots zur Startdiagnose abzurufen. Die Startdiagnose-APIs und -befehle für VMs einer VM-Skalierungsgruppe werden für Instanzen mit dem Orchestrierungsmodus „Flexibel“ nicht verwendet.
@@ -128,12 +127,22 @@ In der folgenden Tabelle werden die Orchestrierungsmodi „Flexibel“ und „Ei
 |         Azure-Warnungen  |            Nein  |            Ja  |            Ja  |
 |         VM Insights  |            Nein  |            Ja  |            Ja  |
 |         Azure Backup  |            Ja  |            Ja  |            Ja  |
-|         Azure Site Recovery  |            Nein  |            Nein  |            Ja  |
+|         Azure Site Recovery  |     Nein  |            Nein  |            Ja  |
 |         Hinzufügung/Entfernung einer vorhandenen VM für Gruppe  |            Nein  |            Nein  |            Nein  | 
 
 
 ## <a name="register-for-flexible-orchestration-mode"></a>Registrieren für den Orchestrierungsmodus „Flexibel“
 Bevor Sie VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ bereitstellen können, müssen Sie Ihr Abonnement zunächst für die Previewfunktion registrieren. Die Registrierung kann mehrere Minuten dauern. Für die Registrierung können Sie die folgenden Azure PowerShell- oder Azure CLI-Befehle verwenden.
+
+### <a name="azure-portal"></a>Azure-Portal
+Navigieren Sie zur Detailseite für das Abonnement, für das Sie eine Skalierungsgruppe im Modus „Flexible Orchestrierung“ erstellen möchten, und klicken Sie im Menü auf „Vorschaufunktionen“. Wählen Sie die beiden Orchestratorfeatures aus, die aktiviert werden sollen: _VMOrchestratorSingleFD_ und _VMOrchestratorMultiFD_. Klicken Sie dann auf die Schaltfläche „Registrieren“. Die Featureregistrierung kann bis zu 15 Minuten dauern.
+
+![Featureregistrierung.](https://user-images.githubusercontent.com/157768/110361543-04d95880-7ff5-11eb-91a7-2e98f4112ae0.png)
+
+Nachdem Sie die Features für Ihr Abonnement registriert haben, schließen Sie den Opt-in-Prozess ab, indem Sie die Änderung an den Computeressourcenanbieter weitergeben. Navigieren Sie zur Registerkarte „Ressourcenanbieter“ für Ihr Abonnement, wählen Sie „Microsoft.Compute“ aus, und klicken Sie auf „Erneut registrieren“.
+
+![Erneut registrieren](https://user-images.githubusercontent.com/157768/110362176-cd1ee080-7ff5-11eb-8cc8-36aa967e267a.png)
+
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 Verwenden Sie das Cmdlet [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature), um die Vorschauversion für Ihr Abonnement zu aktivieren. 
@@ -259,7 +268,7 @@ zones = ["1"]
 
 2. Fügen Sie der Skalierungsgruppe virtuelle Computer hinzu.
     1. Fügen Sie die Eigenschaft `virtualMachineScaleSet` der Skalierungsgruppe hinzu, die Sie zuvor erstellt haben. Sie müssen die Eigenschaft `virtualMachineScaleSet` bei der VM-Erstellung angeben. 
-    1. Sie können die Funktion **copy()** der Azure Resource Manager-Vorlage verwenden, um mehrere VMs gleichzeitig zu erstellen. Weitere Informationen finden Sie im Artikel zur [Ressourceniteration in Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/templates/copy-resources#iteration-for-a-child-resource). 
+    1. Sie können die Funktion **copy()** der Azure Resource Manager-Vorlage verwenden, um mehrere VMs gleichzeitig zu erstellen. Weitere Informationen finden Sie im Artikel zur [Ressourceniteration in Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource). 
 
     ```json
     {
@@ -297,7 +306,7 @@ Im Orchestrierungsmodus „Flexibel“ können Sie einer Skalierungsgruppe bis z
 
 **Was ist in Bezug auf die Verfügbarkeit der flexiblen Orchestrierung der Unterschied zu Verfügbarkeitsgruppen oder zur einheitlichen Orchestrierung?**
 
-|   | Flexible Orchestrierung  | Einheitliche Orchestrierung  | Verfügbarkeitsgruppen  |
+| Verfügbarkeitsattribut  | Flexible Orchestrierung  | Einheitliche Orchestrierung  | Verfügbarkeitsgruppen  |
 |-|-|-|-|
 | Übergreifende Bereitstellung in mehreren Verfügbarkeitszonen  | Nein  | Ja  | Nein  |
 | Garantien zur Verfügbarkeit von Fehlerdomänen in einer Region  | Ja. Maximal 1.000 Instanzen können auf bis zu drei Fehlerdomänen in der Region verteilt werden. Maximale Anzahl von Fehlerdomänen variiert je nach Region  | Ja, bis zu 100 Instanzen  | Ja, bis zu 200 Instanzen  |

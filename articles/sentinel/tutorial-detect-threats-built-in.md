@@ -1,6 +1,6 @@
 ---
-title: Untersuchen von Warnungen mit Azure Sentinel | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie standardmäßig verfügbare integrierte Azure-Bedrohungserkennungsvorlagen verwenden, mit denen Sie bei verdächtigen Vorkommnissen eine Benachrichtigung erhalten.
+title: Erkennen von Bedrohungen mit integrierten Analyseregeln in Azure Sentinel | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie vorgefertigte Erkennungsregeln verwenden, die auf integrierten Vorlagen basieren, mit denen Sie bei verdächtigen Vorkommnissen eine Benachrichtigung erhalten.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2020
+ms.date: 03/19/2021
 ms.author: yelevin
-ms.openlocfilehash: f1cfd941d8205a9bdc100ab69b115618af9f736d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 951c616961ff68b810ca135d09a6f6253cb2b7ba
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726970"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773554"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Tutorial: Standardmäßig verfügbare Erkennung von Bedrohungen
 
@@ -57,7 +57,9 @@ Folgende Vorlagentypen sind verfügbar:
     Da diese Vorlagen auf proprietären Machine Learning-Algorithmen von Microsoft basieren, ist die interne Logik in Bezug auf die Funktionsweise und den Zeitpunkt der Ausführung für Sie nicht sichtbar. Da die Logik ausgeblendet und daher nicht anpassbar ist, können Sie mit jeder Vorlage dieses Typs nur eine Regel erstellen.
 
     > [!IMPORTANT]
-    > Die Regelvorlagen für Verhaltensanalysen mit maschinellem Lernen befinden sich aktuell in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+    > - Die Regelvorlagen für Verhaltensanalysen mit maschinellem Lernen befinden sich aktuell in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+    >
+    > - Durch Erstellen und Aktivieren von Regeln, die auf den Vorlagen für die ML-Verhaltensanalyse basieren, **erteilen Sie Microsoft die Berechtigung, erfasste Daten nach Bedarf für die Verarbeitung durch die Machine Learning-Engines und -Modelle außerhalb der geografischen Region Ihres Azure Sentinel-Arbeitsbereichs zu kopieren**.
 
 - **Geplant**
 
@@ -78,4 +80,3 @@ Folgende Vorlagentypen sind verfügbar:
 In diesem Tutorial haben Sie eine Einführung erhalten, wie Bedrohungen mithilfe von Azure Sentinel erkannt werden. 
 
 Informationen zum Automatisieren der Reaktionen auf Bedrohungen finden Sie im Tutorial [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](tutorial-respond-threats-playbook.md).
-

@@ -3,12 +3,12 @@ title: Verschieben von Azure-Netzwerkressourcen in ein neues Abonnement oder ein
 description: Verwenden Sie Azure Resource Manager, um virtuelle Netzwerke und andere Netzwerkressourcen in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 0cd6887d3489f2ffede0f5e3d63533a33a6ccc04
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b7aaf01b696b13136a0f4077f315b137c8917906
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "75476600"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120128"
 ---
 # <a name="move-guidance-for-networking-resources"></a>Leitfaden zum Verschieben von Netzwerkressourcen
 
@@ -16,7 +16,10 @@ In diesem Artikel wird beschrieben, wie Sie virtuelle Netzwerke und andere Netzw
 
 ## <a name="dependent-resources"></a>Abhängige Ressourcen
 
-Wenn Sie ein virtuelles Netzwerk verschieben, müssen Sie auch dessen abhängige Ressourcen verschieben. Bei VPN-Gateways müssen Sie IP-Adressen, Gateways für virtuelle Netzwerke und alle zugehörigen Verbindungsressourcen verschieben. Gateways des lokalen Netzwerks können sich in einer anderen Ressourcengruppe befinden.
+> [!NOTE]
+> Bitte beachten Sie, dass VPN-Gateways, die mit öffentlichen IP-Adressen verbunden sind, derzeit nicht in der Lage sind, zwischen Ressourcengruppen oder Abonnements zu wechseln.
+
+Wenn Sie eine Ressource verschieben, müssen Sie auch ihre abhängigen Ressourcen (z. b. öffentliche IP-Adressen, virtuelle Netzwerk Gateways, alle zugeordneten Verbindungsressourcen) verschieben. Gateways des lokalen Netzwerks können sich in einer anderen Ressourcengruppe befinden.
 
 Um einen virtuellen Computer mit einer Netzwerkschnittstellenkarte zu einem neuen Abonnement zu verschieben, müssen Sie alle abhängigen Ressourcen verschieben. Sie verschieben das virtuelle Netzwerk für die Netzwerkschnittstellenkarte, alle anderen Netzwerkschnittstellenkarten für das virtuelle Netzwerk und die VPN-Gateways.
 

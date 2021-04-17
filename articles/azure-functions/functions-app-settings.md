@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425701"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773078"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -186,22 +186,24 @@ Gibt die maximale Anzahl von Sprachworkerprozessen mit einem Standardwert von `1
 |---|------------|
 |FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
 
-## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
-
-Gibt die maximale Anzahl von Threads an, die von einem Python-Sprachworker zum Ausführen von Funktionsaufrufen verwendet werden. Der Standardwert lautet `1` für die Python-Version `3.8` und niedriger. Für die Python-Version `3.9` und höher ist der Wert auf `None` festgelegt. Beachten Sie, dass diese Einstellung nicht die Anzahl von Threads garantiert, die bei Ausführungen festgelegt werden. Diese Einstellung ermöglicht es Python, die Anzahl von Threads auf den angegebenen Wert zu erhöhen. Die Einstellung gilt nur für Python-Funktions-Apps. Darüber hinaus gilt die Einstellung für synchrone Funktionsaufrufe und nicht für Coroutinen.
-
-|Schlüssel|Beispielwert|Maximalwert|
-|---|------------|---------|
-|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
-
-
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-Die Sprachworkerruntime, die in der Funktionen-App geladen werden soll.  Dies entspricht der Sprache, die in Ihrer Anwendung verwendet wird (z.B. „dotnet“). Bei Funktionen in mehreren Sprachen müssen Sie diese in verschiedenen Apps mit dem jeweils passenden Workerruntimewert veröffentlichen.  Gültige Werte sind `dotnet` (C#/F#), `node` (JavaScript/TypeScript), `java` (Java) und `powershell` (PowerShell) und `python` (Python).
+Die Sprachworkerruntime, die in der Funktionen-App geladen werden soll.  Dies entspricht der Sprache, die in der Anwendung verwendet wird (z. B. `dotnet`). Ab Version 2.x der Azure Functions-Runtime kann eine bestimmte Funktions-App nur eine einzige Sprache unterstützen.   
 
 |Schlüssel|Beispielwert|
 |---|------------|
-|FUNCTIONS\_WORKER\_RUNTIME|dotnet|
+|FUNCTIONS\_WORKER\_RUNTIME|Knoten|
+
+Gültige Werte:
+
+| Wert | Sprache |
+|---|---|
+| `dotnet` | [C# (Klassenbibliothek)](functions-dotnet-class-library.md)<br/>[C# (Skript)](functions-reference-csharp.md) |
+| `dotnet-isolated` | [C# (isolierter Prozess)](dotnet-isolated-process-guide.md) |
+| `java` | [Java](functions-reference-java.md) |
+| `node` | [JavaScript](functions-reference-node.md)<br/>[TypeScript](functions-reference-node.md#typescript) |
+| `powershell` | [PowerShell](functions-reference-powershell.md) |
+| `python` | [Python](functions-reference-python.md) |
 
 ## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
@@ -212,6 +214,14 @@ Durch den Wert für diese Einstellung wird eine benutzerdefinierte Paketindex-UR
 |PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
 
 Weitere Informationen finden Sie in der Python-Entwicklerreferenz unter [Benutzerdefinierte Abhängigkeiten](functions-reference-python.md#remote-build-with-extra-index-url).
+
+## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
+
+Gibt die maximale Anzahl von Threads an, die von einem Python-Sprachworker zum Ausführen von Funktionsaufrufen verwendet werden. Der Standardwert lautet `1` für die Python-Version `3.8` und niedriger. Für die Python-Version `3.9` und höher ist der Wert auf `None` festgelegt. Beachten Sie, dass diese Einstellung nicht die Anzahl von Threads garantiert, die bei Ausführungen festgelegt werden. Diese Einstellung ermöglicht es Python, die Anzahl von Threads auf den angegebenen Wert zu erhöhen. Die Einstellung gilt nur für Python-Funktions-Apps. Darüber hinaus gilt die Einstellung für synchrone Funktionsaufrufe und nicht für Coroutinen.
+
+|Schlüssel|Beispielwert|Maximalwert|
+|---|------------|---------|
+|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
 
 ## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
@@ -257,9 +267,17 @@ Wird nur bei der Bereitstellung für einen Premium-Plan oder Verbrauchsplan verw
 
 Wenn Sie während der Bereitstellung Azure Resource Manager zum Erstellen einer Funktions-App verwenden, schließen Sie WEBSITE_CONTENTSHARE nicht in die Vorlage ein. Diese Anwendungseinstellung wird während der Bereitstellung generiert. Weitere Informationen finden Sie unter [Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions](functions-infrastructure-as-code.md#windows).   
 
+## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
+
+Legt den von einer App verwendeten DNS-Server beim Auflösen von IP-Adressen fest. Diese Einstellung ist häufig erforderlich, wenn bestimmte Netzwerkfunktionen wie [private Zonen von Azure DNS](functions-networking-options.md#azure-dns-private-zones) und [private Endpunkte](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network) verwendet werden.   
+
+|Schlüssel|Beispielwert|
+|---|------------|
+|WEBSITE\_DNS\_SERVER|168.63.129.16|
+
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
-Die maximale Anzahl der Instanzen, auf denen die Funktionen-App aufskaliert werden kann. Dieser Wert ist standardmäßig unbegrenzt.
+Die maximale Anzahl der Instanzen, auf denen die App aufskaliert werden kann. Dieser Wert ist standardmäßig unbegrenzt.
 
 > [!IMPORTANT]
 > Diese Einstellung befindet sich in der Vorschauphase.  Eine [App-Eigenschaft für das maximale Aufskalieren einer Funktion](./event-driven-scaling.md#limit-scale-out) wurde hinzugefügt und ist die empfohlene Methode zum Begrenzen des Aufskalierens.
@@ -297,6 +315,14 @@ Ermöglicht das Festlegen der Zeitzone für Ihre Funktions-App.
 |WEBSITE\_TIME\_ZONE|Linux|America/New_York|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
+
+## <a name="website_vnet_route_all"></a>WEBSITE\_VNET\_ROUTE\_ALL
+
+Gibt an, ob der gesamte ausgehende Datenverkehr von der App über das virtuelle Netzwerk weitergeleitet wird. Der Einstellungswert `1` gibt an, dass der gesamte Datenverkehr über das virtuelle Netzwerk weitergeleitet wird. Sie müssen diese Einstellung verwenden, wenn Sie die Features der [regionalen Integration des virtuellen Netzwerks](functions-networking-options.md#regional-virtual-network-integration) verwenden. Sie wird auch verwendet, wenn ein [Virtual Network NAT Gateway verwendet wird, um eine statische ausgehende IP-Adresse zu definieren](functions-how-to-use-nat-gateway.md). 
+
+|Schlüssel|Beispielwert|
+|---|------------|
+|WEBSITE\_VNET\_ROUTE\_ALL|1|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

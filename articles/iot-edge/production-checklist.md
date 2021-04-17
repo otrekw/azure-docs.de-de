@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1fc229b04ac317578e9e90686496cd081b279afd
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: fda69d582f26b0c9189898bb5c8b0004a1e47360
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489754"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722768"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -178,7 +178,13 @@ Ein Tag ist ein Docker-Konzept, mit dem Sie Versionen von Docker-Containern unte
 
 Tags helfen Ihnen auch bei der Durchsetzung von Updates auf Ihren IoT Edge-Geräten. Wenn Sie eine aktualisierte Modulversion in Ihre Containerregistrierung pushen, erhöhen Sie das Tag. Pushen Sie dann eine neue Bereitstellung auf Ihre Geräte mit dem inkrementierten Tag. Die Container-Engine erkennt das inkrementierte Tag als neue Version und pullt die neueste Modulversion auf Ihr Gerät.
 
-Unter [Aktualisieren der IoT Edge-Runtime](how-to-update-iot-edge.md#understand-iot-edge-tags) finden Sie ein Beispiel für eine Tagkonvention und erfahren, wie IoT Edge fortlaufende und spezifische Tags verwendet, um Versionen zu verfolgen.
+#### <a name="tags-for-the-iot-edge-runtime"></a>Tags für die IoT Edge-Runtime
+
+Die IoT Edge-Agent- und IoT Edge-Hubimages sind im Tag mit der IoT Edge-Version gekennzeichnet, der sie zugeordnet sind. Es gibt zwei Möglichkeiten zum Verwenden von Tags mit den Runtime-Images:
+
+* **Fortlaufende Tags**: Verwenden Sie nur die ersten zwei Stellen der Versionsnummer, um zum neuesten Image zu gelangen, das mit diesen Stellen übereinstimmt. Beispielsweise wird, sobald eine neue Version veröffentlicht wird, 1.1 immer so aktualisiert, dass auf die neueste 1.1.x-Version verwiesen wird. Wenn die Containerruntime auf Ihrem IoT Edge-Gerät das Image erneut per Pull herunterlädt, werden die Laufzeitmodule auf die neueste Version aktualisiert. Bereitstellungen aus dem Azure-Portal weisen standardmäßig fortlaufende Tags auf. *Dieses Vorgehen wird für Entwicklungszwecke vorgeschlagen.*
+
+* **Spezifische Tags**: Verwenden Sie alle drei Stellen der Versionsnummer, um die Imageversion explizit festzulegen. Beispielsweise ändert sich 1.1.0 nach dem ersten Release nicht. Sie können im Bereitstellungsmanifest eine neue Versionsnummer deklarieren, wenn Sie zur Aktualisierung bereit sind. *Dieses Vorgehen wird für Produktionszwecke vorgeschlagen.*
 
 ### <a name="store-runtime-containers-in-your-private-registry"></a>Speichern von Runtimecontainern in Ihrer privaten Registrierung
 

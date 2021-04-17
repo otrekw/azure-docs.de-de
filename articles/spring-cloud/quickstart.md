@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 6ae56e4e1586a875d4d3d75d41580f375df0eebf
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877501"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962848"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung
 
@@ -345,10 +345,11 @@ So führen Sie diesen Schnellstart durch:
 
 ## <a name="generate-a-spring-cloud-project"></a>Generieren eines Spring Cloud-Projekts
 
-Beginnen Sie mit [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client), um ein Beispielprojekt mit empfohlenen Abhängigkeiten für Azure Spring Cloud zu generieren. Die folgende Abbildung zeigt die für dieses Beispielprojekt eingerichtete Initializr-Instanz:
+Beginnen Sie mit [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.9.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client), um ein Beispielprojekt mit empfohlenen Abhängigkeiten für Azure Spring Cloud zu generieren. Die folgende Abbildung zeigt die für dieses Beispielprojekt eingerichtete Initializr-Instanz:
 ```url
 https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
 ```
+Beachten Sie, dass in diesem Beispiel Java-Version 8 verwendet wird.  Wenn Sie Java-Version 11 verwenden möchten, ändern Sie die Option unter **Projektmetadaten**.
 
   ![Initializr-Seite](media/spring-cloud-quickstart-java/initializr-page.png)
 
@@ -413,7 +414,7 @@ Im folgenden Verfahren wird die Anwendung mithilfe der Azure CLI erstellt und be
     az extension add --name spring-cloud
     ```
     
-1. Erstellen Sie die App mit einem zugewiesenen öffentlichen Endpunkt:
+1. Erstellen Sie die App mit einem zugewiesenen öffentlichen Endpunkt. Fügen Sie bei Verwendung von Java 11 den Switch `--runtime-version=Java_11` ein.
 
     ```azurecli
     az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true
