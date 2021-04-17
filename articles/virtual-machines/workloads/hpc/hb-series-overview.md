@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b0e8e2e0ee7ce730f6bf00d7e5ef4bd4eae65ce7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2f5dddd3d59ebe778d577176e439528a86bb42a7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666932"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802590"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>Übersicht über virtuelle Computer der HB-Serie
 
@@ -31,7 +31,7 @@ Eine feste Prozesszuordnung (Process Pinning) funktioniert bei virtuellen Comput
 
 Das folgende Diagramm zeigt die Trennung zwischen den Kernen, die für den Azure-Hypervisor reserviert sind, und den Kernen für den virtuellen Computer der HB-Serie:
 
-![Trennung zwischen den Kernen, die für den Azure-Hypervisor reserviert sind, und den Kernen für den virtuellen Computer der HB-Serie](./media/hb-series-overview/segregation-cores.png)
+![Trennung zwischen den Kernen, die für den Azure-Hypervisor reserviert sind, und den Kernen für den virtuellen Computer der HB-Serie](./media/architecture/hb-segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>Hardwarespezifikationen
 
@@ -51,13 +51,13 @@ Das folgende Diagramm zeigt die Trennung zwischen den Kernen, die für den Azure
 |-----------------------------|-----------------------|
 | Maximale MPI-Auftragsgröße            | 18000 Kerne (300 VMs in einer einzelnen VM-Skalierungsgruppe mit singlePlacementGroup=true)  |
 | MPI-Unterstützung                 | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH, Platform MPI  |
-| Zusätzliche Frameworks       | Unified Communication X, libfabric, PGAS |
+| Zusätzliche Frameworks       | UCX, libfabric und PGAS |
 | Azure Storage-Unterstützung       | Standard- und Premium-Datenträger (maximal 4 Datenträger) |
-| Betriebssystemunterstützung für SR-IOV/RDMA   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+  |
-| Orchestratorunterstützung        | CycleCloud, Batch  |
+| Betriebssystemunterstützung für SR-IOV/RDMA   | CentOS/RHEL 7.6 und höher, Ubuntu 16.04 und höher, SLES 12 SP4 und höher, Windows Server 2016 und höher  |
+| Orchestratorunterstützung        | CycleCloud, Batch und AKS ([Clusterkonfigurationsoptionen](../../sizes-hpc.md#cluster-configuration-options)) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die [Architektur von AMD EPYC](https://bit.ly/2Epv3kC) und die [Architekturen mit mehreren Chips](https://bit.ly/2GpQIMb). Ausführlichere Informationen finden Sie im [HPC-Optimierungsleitfaden für AMD EPYC-Prozessoren](https://bit.ly/2T3AWZ9).
-- Informieren Sie sich in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute) über die neuesten Ankündigungen, und machen Sie sich mit einigen HPC-Beispielen und Ergebnissen vertraut.
-- Eine allgemeinere Architekturübersicht zur Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).
+- Informieren Sie sich über die neuesten Ankündigungen, HPC-Workloadbeispiele und Leistungsergebnisse in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

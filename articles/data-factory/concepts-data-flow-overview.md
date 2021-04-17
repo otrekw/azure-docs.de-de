@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 12/10/2020
-ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564319"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308981"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Zuordnungsdatenflüsse in Azure Data Factory
 
@@ -96,66 +96,6 @@ Im Debugmodus können Sie die Ergebnisse jedes Transformationsschritts interakti
 Der Zuordnungsdatenfluss ist in vorhandene Azure Data Factory-Überwachungsfunktionen integriert. Informationen zum Verständnis der Ausgabe der Datenflussüberwachung finden Sie unter [Überwachen von Zuordnungsdatenflüssen](concepts-data-flow-monitoring.md).
 
 Das Azure Data Factory-Team hat eine [Anleitung zur Leistungsoptimierung](concepts-data-flow-performance.md) erstellt, mit deren Hilfe Sie die Ausführungszeit Ihrer Datenflüsse nach dem Erstellen der Geschäftslogik optimieren können.
-
-## <a name="available-regions"></a>Verfügbare Regionen
-
-======= Zuordnungsdatenflüsse sind in ADF in den folgenden Regionen verfügbar:
-
-| Azure-Region | Datenflüsse in ADF |
-| ------------ | ----------------- |
-|  Australien, Mitte | |
-| Australien, Mitte 2 | |
-| Australien (Osten) | ✓ |
-| Australien, Südosten   | ✓ |
-| Brasilien Süd  | ✓ |
-| Kanada, Mitte | ✓ |
-| Indien, Mitte | ✓ |
-| USA (Mitte)    | ✓ |
-| China, Osten |      |
-| China, Osten 2  |   |
-| China, landesweit | |
-| China, Norden |     |
-| China, Norden 2 | |
-| Asien, Osten | ✓ |
-| East US   | ✓ |
-| USA (Ost) 2 | ✓ |
-| Frankreich, Mitte | ✓ |
-| Frankreich, Süden  | |
-| Deutschland, Mitte (Sovereign) | |
-| Deutschland, landesweit (Sovereign) | |
-| Deutschland, Norden (Öffentlich) | |
-| Deutschland, Nordosten (Sovereign) | |
-| Deutschland, Westen-Mitte (Öffentlich) |  |
-| Japan, Osten | ✓ |
-| Japan, Westen |  |
-| Korea, Mitte | ✓ |
-| Korea, Süden | |
-| USA Nord Mitte  | ✓ |
-| Nordeuropa  | ✓ |
-| Norwegen, Osten | |
-| Norwegen, Westen | |
-| Südafrika, Norden    | ✓ |
-| Südafrika, Westen |  |
-| USA Süd Mitte  | |
-| Indien (Süden) | |
-| Asien, Südosten    | ✓ |
-| Schweiz, Norden |   |
-| Schweiz, Westen | |
-| VAE, Mitte | |
-| Vereinigte Arabische Emirate, Norden |  |
-| UK, Süden  | ✓ |
-| UK, Westen |     |
-| US DoD, Mitte | |
-| US DoD, Osten | |
-| US Gov Arizona |      |
-| US Gov, landesweit | |
-| US Gov Texas | |
-| US Government, Virginia |     |
-| USA, Westen-Mitte |     |
-| Europa, Westen   | ✓ |
-| Indien, Westen | |
-| USA (Westen)   | ✓ |
-| USA, Westen 2 | ✓ |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

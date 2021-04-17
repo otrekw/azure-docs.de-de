@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 797de242b4b4464c0bfb5ae18af05710ab36bce6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100588593"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285478"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
 
@@ -115,7 +115,7 @@ Im Folgenden finden Sie die Feld- und Eigenschaftsbeschreibungen für API-Protok
 | Feldname | Datentyp | BESCHREIBUNG |
 |-----|------|-------------|
 | `Time` | Datetime | Datum und Uhrzeit des Auftretens dieses Ereignisses in UTC |
-| `ResourceID` | String | Azure Resource Manager-Ressourcen-ID für die Ressource, in der das Ereignis aufgetreten ist |
+| `ResourceId` | String | Azure Resource Manager-Ressourcen-ID für die Ressource, in der das Ereignis aufgetreten ist |
 | `OperationName` | String  | Typ der Aktion, die während des Ereignisses ausgeführt wurde |
 | `OperationVersion` | String | Während des Ereignisses verwendete API-Version |
 | `Category` | String | Typ der auszugebenden Ressource |

@@ -8,10 +8,10 @@ ms.custom: devx-track-dotnet
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: cfd676092bcaede58909a3ec1eefeabb4c80f86b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96930227"
 ---
 # <a name="feature-management-overview"></a>Übersicht über die Featureverwaltung
@@ -22,19 +22,19 @@ Die Featureverwaltung ist ein modernes Verfahren der Softwareentwicklung, das di
 
 Die Featureverwaltung hilft Entwicklern bei der Behandlung der folgenden Probleme:
 
-* **Verwaltung von Codebranches**: Verwenden Sie Featureflags, um neue Anwendungsfunktionen zu umschließen, die sich derzeit in der Entwicklung befinden. Solche Funktionalität ist standardmäßig ausgeblendet. Sie können das Feature sicher ausliefern, auch wenn es noch nicht vollendet ist, da es in Produktionsumgebungen inaktiv bleibt. Mit diesem Ansatz, der als *dunkle Bereitstellung* bezeichnet wird, können Sie Ihren gesamten Code am Ende jedes Entwicklungszyklus freigeben. Sie müssen Codebranches nicht mehr über mehrere Entwicklungszyklen hinweg beibehalten, da ein bestimmtes Feature zum Abschließen mehrere Zyklen benötigt.
-* **Testen in der Produktion**: Verwenden Sie Featureflags, um Vorabzugriff auf neue Features in der Produktion zu ermöglichen. Sie können den Zugriff beispielsweise auf Teammitglieder oder interne Betatester beschränken. Diese Benutzer erhalten die originalgetreue Produktionsoberfläche anstelle einer Simulations- oder Teiloberfläche in einer Testumgebung.
-* **Erstellen von Flights**: Verwenden Sie Featureflags, um neue Funktionen nach und nach für Endbenutzer einzuführen. Sie können zunächst einen kleinen Anteil Ihrer Benutzer als Zielgruppe verwenden und diesen Anteil im Lauf der Zeit nach und nach erhöhen.
-* **Schalter zum sofortigen Beenden**: Featureflags bieten ein inhärentes Sicherheitsnetz für die Freigabe neuer Features. Sie können Anwendungsfeatures aktivieren und deaktivieren, ohne Code erneut bereitzustellen. Bei Bedarf können Sie ein Feature schnell deaktivieren, ohne die gesamte Anwendung erneut erstellen und bereitstellen zu müssen.
-* **Selektive Aktivierung**: Mithilfe von Featureflags können Sie Benutzer gruppieren und jeder Benutzergruppe einen bestimmten Satz von Features zur Verfügung stellen. Möglicherweise verfügen Sie über ein Feature, das nur in einem bestimmten Webbrowser funktioniert. Sie können ein Featureflag so definieren, dass es nur von Benutzern des entsprechenden Browsers gesehen und genutzt werden kann. Mit diesem Ansatz können Sie die Liste der unterstützten Browser später problemlos erweitern, ohne den Code ändern zu müssen.
+* **Verwaltung von Codebranches:** Verwenden Sie Featureflags, um neue Anwendungsfunktionen zu umschließen, die sich derzeit in der Entwicklung befinden. Solche Funktionalität ist standardmäßig ausgeblendet. Sie können das Feature sicher ausliefern, auch wenn es noch nicht vollendet ist, da es in Produktionsumgebungen inaktiv bleibt. Mit diesem Ansatz, der als *dunkle Bereitstellung* bezeichnet wird, können Sie Ihren gesamten Code am Ende jedes Entwicklungszyklus freigeben. Sie müssen Codebranches nicht mehr über mehrere Entwicklungszyklen hinweg beibehalten, da ein bestimmtes Feature zum Abschließen mehrere Zyklen benötigt.
+* **Testen in der Produktion:** Sie können Featureflags verwenden, um Vorabzugriff auf neue Funktionen in der Produktion zu ermöglichen. Sie können den Zugriff beispielsweise auf Teammitglieder oder interne Betatester beschränken. Diese Benutzer erhalten die originalgetreue Produktionsoberfläche anstelle einer Simulations- oder Teiloberfläche in einer Testumgebung.
+* **Erstellen von Flights:** Verwenden Sie Featureflags, um neue Funktionen nach und nach für Endbenutzer einzuführen. Sie können zunächst einen kleinen Anteil Ihrer Benutzer als Zielgruppe verwenden und diesen Anteil im Lauf der Zeit nach und nach erhöhen.
+* **Option zum sofortigen Beenden:** Featureflags bieten ein inhärentes Sicherheitsnetz für das Release neuer Funktionen. Sie können Anwendungsfeatures aktivieren und deaktivieren, ohne Code erneut bereitzustellen. Bei Bedarf können Sie ein Feature schnell deaktivieren, ohne die gesamte Anwendung erneut erstellen und bereitstellen zu müssen.
+* **Selektive Aktivierung:** Mithilfe von Featureflags können Sie Benutzer gruppieren und jeder Benutzergruppe eine bestimmte Gruppe von Features zur Verfügung stellen. Möglicherweise verfügen Sie über ein Feature, das nur in einem bestimmten Webbrowser funktioniert. Sie können ein Featureflag so definieren, dass es nur von Benutzern des entsprechenden Browsers gesehen und genutzt werden kann. Mit diesem Ansatz können Sie die Liste der unterstützten Browser später problemlos erweitern, ohne den Code ändern zu müssen.
 
 ## <a name="basic-concepts"></a>Grundlegende Konzepte
 
 Im Folgenden werden einige neue Begriffe im Zusammenhang mit der Featureverwaltung erläutert:
 
-* **Featureflag**: Ein Featureflag ist eine Variable mit dem Binärzustand *ein* oder *aus*. Das Featureflag weist auch einen zugehörigen Codeblock auf. Der Zustand des Featureflags wird ausgelöst, wenn der Codeblock ausgeführt wird.
-* **Feature-Manager**: Ein Feature-Manager ist ein Anwendungspaket, das den Lebenszyklus aller Featureflags in einer Anwendung verwaltet. Der Feature-Manager bietet auch zusätzliche Funktionen wie Zwischenspeicherung von Featureflags und Aktualisierung ihrer Zustände.
-* **Filter**: Ein Filter ist eine Regel für das Auswerten des Featureflag-Zustands. Mögliche Filter sind etwa Benutzergruppen, Geräte- oder Browsertypen, geografische Standorte und Zeitfenster.
+* **Featureflag:** Ein Featureflag ist eine Variable mit dem Binärzustand *Ein* oder *Aus*. Das Featureflag weist auch einen zugehörigen Codeblock auf. Der Zustand des Featureflags wird ausgelöst, wenn der Codeblock ausgeführt wird.
+* **Feature-Manager:** Ein Feature-Manager ist ein Anwendungspaket, das den Lebenszyklus aller Featureflags in einer Anwendung verwaltet. Der Feature-Manager bietet auch zusätzliche Funktionen wie Zwischenspeicherung von Featureflags und Aktualisierung ihrer Zustände.
+* **Filter:** Ein Filter ist eine Regel für das Auswerten des Zustands eines Featureflags. Mögliche Filter sind etwa Benutzergruppen, Geräte- oder Browsertypen, geografische Standorte und Zeitfenster.
 
 Um eine effektive Implementierung der Featureverwaltung zu erreichen, müssen mindestens zwei Komponenten zusammenarbeiten:
 

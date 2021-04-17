@@ -11,10 +11,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97654029"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -42,7 +42,7 @@ Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der 
 
 Das **ClaimType**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für den Anspruchsnamen verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
 
@@ -68,9 +68,9 @@ Das Element **DataType** unterstützt die folgenden Werte:
 
 | type | BESCHREIBUNG |
 | ------- | ----------- |
-|boolean|Stellt einen booleschen Wert (`true` oder `false`) dar.|
+|boolean|Stellt einen booleschen Wert dar (`true` oder `false`).|
 |date| Stellt einen Zeitpunkt dar, der in der Regel als Tagesdatum ausgedrückt wird. Der Datumswert entspricht der Konvention ISO 8601.|
-|dateTime|Stellt einen Zeitpunkt dar, der üblicherweise als Datum und Uhrzeit ausgedrückt wird. Der Datumswert entspricht der Konvention ISO 8601.|
+|dateTime|Stellt einen Zeitpunkt dar, der normalerweise durch Datum und Uhrzeit dargestellt wird. Der Datumswert entspricht der Konvention ISO 8601.|
 |duration|Stellt ein Zeitintervall in Jahren, Monaten, Tagen, Stunden, Minuten und Sekunden dar. Das Format ist `PnYnMnDTnHnMnS`, wobei `P` einen positiven und `N` einen negativen Wert angibt. `nY` ist die Anzahl von Jahren, gefolgt von einem Literal `Y`. `nMo` ist die Anzahl von Monaten, gefolgt von einem Literal `Mo`. `nD` ist die Anzahl von Tagen, gefolgt von einem Literal `D`. Beispiele: `P21Y` steht für 21 Jahre. `P1Y2Mo` steht für 1 Jahr und 2 Monate. `P1Y2Mo5D` steht für 1 Jahr, 2 Monate und 5 Tage.  `P1Y2M5DT8H5M620S` steht für 1 Jahr, 2 Monate, 5 Tage, 8 Stunden, 5 Minuten und 20 Sekunden.  |
 |phoneNumber|Stellt eine Telefonnummer dar. |
 |INT| Stellt eine Zahl zwischen -2.147.483.648 und 2.147.483.647 dar|
@@ -92,7 +92,7 @@ Das **Protocol**-Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Name | Ja | Der Name eines von Azure AD B2C unterstützten gültigen Protokolls. Mögliche Werte:  OAuth1, OAuth2, SAML2, OpenIdConnect. |
+| Name | Ja | Der Name eines von Azure AD B2C unterstützten gültigen Protokolls. Mögliche Werte: OAuth1, OAuth2, SAML2, OpenIdConnect. |
 | PartnerClaimType | Ja | Der zu verwendende Anspruchstypname. |
 
 Im folgenden Beispiel wird der Anspruch **surname** bei der Interaktion des Identity Experience Frameworks mit einem SAML2-Identitätsanbieter oder einer Anwendung der vertrauenden Seite `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` zugeordnet. Unter Verwendung der Werte „OpenIdConnect“ und „OAuth2“ wird der Anspruch `family_name` zugeordnet.
@@ -125,7 +125,7 @@ Infolgedessen gibt das von Azure AD B2C ausgestellte JWT-Token `family_name` ans
 
 Das **Mask**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Anspruchsmaske. Mögliche Werte: `Simple` oder `Regex`. Der Wert `Simple` gibt an, dass auf den vorderen Teil eines Zeichenfolgenanspruchs eine einfache Textmaske angewandt wird. Der Wert `Regex` gibt an, dass ein regulärer Ausdruck auf den Zeichenfolgenausdruck als Ganzes angewandt wird.  Wenn der Wert `Regex` angegeben wird, muss mit dem zu verwendenden regulären Ausdruck auch ein optionales Attribut definiert werden. |
 | `Regex` | Nein | Wenn **`Type`** auf `Regex` festgelegt wird, geben Sie den zu verwendenden regulären Ausdruck an.
@@ -165,7 +165,7 @@ Das Identity Experience Framework rendert nur den ersten Buchstaben der E-Mail-A
 
 Das **Restriction**-Element enthält möglicherweise das folgende Attribut:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nein | Die Methode, die zum Zusammenführen von Enumerationswerten mit einem Anspruchstyp in einer übergeordneten Richtlinie mit dem gleichen Bezeichner verwendet wird. Verwenden Sie dieses Attribut, wenn Sie einen Anspruch überschreiben, der in der Basisrichtlinie angegeben ist. Mögliche Werte: `Append`, `Prepend` oder `ReplaceAll`. Beim Wert `Append` handelt es sich um eine Sammlung von Daten, die an das Ende der in der übergeordneten Richtlinie angegebenen Sammlung angefügt werden soll. Beim Wert `Prepend` handelt es sich um eine Sammlung von Daten, die vor der in der übergeordneten Richtlinie angegebenen Sammlung hinzugefügt werden soll. Beim Wert `ReplaceAll` handelt es sich um eine Sammlung von in der übergeordneten Richtlinie angegebenen Daten, die ignoriert werden sollen. |
 
@@ -182,7 +182,7 @@ Das **Enumeration**-Element definiert die auf der Benutzeroberfläche verfügbar
 
 Das **Enumeration**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Text | Ja | Die Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt wird. |
 |Wert | Ja | Der Wert des Anspruchs, der der Auswahl dieser Option zugeordnet ist. |
@@ -211,7 +211,7 @@ Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardw
 
 Das **Pattern**-Element kann die folgenden Attribute enthalten:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| Attribut | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | RegularExpression | Ja | Der reguläre Ausdruck, mit dem Ansprüche dieses Typs übereinstimmen müssen, damit sie gültig sind. |
 | HelpText | Nein | Eine Fehlermeldung für Benutzer, wenn die Überprüfung des regulären Ausdrucks einen Fehler ergibt. |
@@ -239,7 +239,7 @@ Das Identity Experience Framework rendert den E-Mail-Adressenanspruch mit Eingab
 
 ### <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C unterstützt eine Vielzahl von Benutzereingabetypen wie ein Textfeld, Kennwort und eine Dropdownliste, die bei der manuellen Eingabe von Anspruchsdaten für den Anspruchstyp verwendet werden können. Sie müssen **UserInputType** angeben, wenn Sie mit einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) und [Anzeigesteuerelementen](display-controls.md) Informationen vom Benutzer sammeln.
+Azure AD B2C unterstützt eine Vielzahl von Benutzereingabetypen wie ein Textfeld, Kennwort und eine Dropdownliste, die bei der manuellen Eingabe von Anspruchsdaten für den Anspruchstyp verwendet werden können. Sie müssen **UserInputType** angeben, wenn Sie mit einem [selbstbestätigten technischen Profil ](self-asserted-technical-profile.md) und [Anzeigesteuerelementen](display-controls.md) Informationen vom Benutzer sammeln.
 
 Das Element **UserInputType** verfügt über folgende Benutzereingabetypen:
 

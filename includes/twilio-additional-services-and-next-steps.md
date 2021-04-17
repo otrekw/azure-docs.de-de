@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 8acb75f1cac83595da88a4a5ffa33102136266f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96003758"
 ---
 ## <a name="how-to-use-additional-twilio-services"></a><a name="AdditionalServices"></a>Verwenden zusätzlicher Twilio-Dienste
@@ -17,7 +17,7 @@ Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit
 ## <a name="next-steps"></a><a name="NextSteps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
-* [Twilio-Sicherheitsrichtlinien][twilio_security_guidelines]
+* [Twilio Security Guidelines (Twilio-Sicherheitsrichtlinien)][twilio_security_guidelines]
 * [Twilio-Anleitungen und Beispielcode][twilio_howtos]
 * [Twilio-Schnellstart-Tutorials][twilio_quickstarts] 
 * [Twilio auf GitHub][twilio_on_github]

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899234"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Herstellen einer Verbindung aus der lokalen Umgebung mit CloudSimple mithilfe von ExpressRoute
@@ -65,10 +65,10 @@ Zum Einrichten der ExpressRoute-Verbindung müssen Sie eine Autorisierung für I
 
 6. Reichen Sie ein Ticket für die zu erstellende Verbindung beim <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">Support</a> ein.
     * Problemtyp: **Technisch**
-    * Abonnement: **Abonnement, in dem der CloudSimple-Dienst bereitgestellt wird**
+    * Abonnement: **Wählen Sie das Abonnement aus, in dem der CloudSimple-Dienst bereitgestellt wird.**
     * Dienst: **VMware Solution by CloudSimple**
-    * Problemtyp: **Dienstanforderung**
-    * Problemuntertyp: **Erstellen einer ExpressRoute-Verbindung mit der lokalen Umgebung**
+    * Problemtyp: **Service Request**
+    * Problemuntertyp: **Herstellen einer ExpressRoute-Verbindung mit der lokalen Umgebung**
     * Geben Sie die Ressourcen-ID und den Autorisierungsschlüssel an, den Sie im Detailbereich kopiert und gespeichert haben.
     * Geben Sie einen„/29“-Netzwerkadressraum für das Transitnetzwerk an.
     * Verwenden Sie die Standardroute über ExpressRoute?

@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
 ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87420225"
 ---
 # <a name="create-or-modify-an-offer"></a>Erstellen oder Ändern ein Angebots
@@ -287,14 +287,14 @@ Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: Azure-Apps, 
 
 | Category | SaaS-Schlüssel | Azure-App-Schlüssel | Schlüssel für VMs, Container, Container-Apps, IoT Edge-Module und Core-VMs |
 | --- | --- | --- | --- |
-| ***Analyse*** | ***analytics*** | ***analytics-azure-apps*** | ***analytics-amp*** |
+| ***Analysen** _ | _*_analytics_*_ | _*_analytics-azure-apps_*_ | _ *_analytics-amp_** |
 | Datenerkenntnisse | data-insights | data-insights | data-insights |
 | Datenanalyse | data-analytics | data-analytics | data-analytics |
 | Big Data | big-data | bigData | big-data |
 | Predictive Analytics | predictive-analytics | predictive-analytics | predictive-analytics |
 | Echtzeit-/Streaminganalyse | real-time-streaming-analytics | real-time-streaming-analytics | real-time-streaming-analytics |
 | Andere | Sonstige | other-analytics | Sonstige |
-| ***KI und Machine Learning*** | ***ArtificialIntelligence*** | ***ai-plus-machine-learning*** | ***ai-plus-machine-learning*** |
+| ***KI und Machine Learning** _ | _*_ArtificialIntelligence_*_ | _*_ai-plus-machine-learning_*_ | _ *_ai-plus-machine-learning_** |
 | Botdienste | bot-services | bot-services | bot-services |
 | Cognitive Services | cognitive-services | cognitive-services | cognitive-services |
 | ML-Dienst | ml-service | ml-service | ml-service |
@@ -305,83 +305,83 @@ Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: Azure-Apps, 
 | Knowledge Mining | knowledge-mining | knowledge-mining | knowledge-mining |
 | ML-Vorgänge | ml-operations | ml-operations | ml-operations |
 | Andere | other-AI-plus-machine-learning | Sonstige | Sonstige |
-| ***Blockchain*** | ***blockchain*** | ***blockchain*** | ***blockchain*** |
+| ***Blockchain** _ | _*_blockchain_*_ | _*_blockchain_*_ | _ *_blockchain_** |
 | App-Beschleuniger | app-accelerators | app-accelerators | app-accelerators |
 | Ledger mit einem Knoten | single-node-ledger | single-node-ledger | single-node-ledger |
 | Ledger mit mehreren Knoten | multi-node-ledger | multi-node-ledger | multi-node-ledger |
 | Tools | Tools | Tools | Tools |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Compute*** | ***compute-saas*** | ***compute-azure-apps*** | ***compute*** |
+| ***Compute** _ | _*_compute-saas_*_ | _*_compute-azure-apps_*_ | _ *_compute_** |
 | Anwendungsinfrastruktur | appInfra | appInfrastructure | application-infrastructure |
 | Betriebssysteme | clientOS | clientOS | operating-systems |
 | Cache | cache | cache | cache |
 | Andere | other-compute | other-compute | Sonstige |
-| ***Container*** | ***containers*** | ***containers*** | ***containers*** |
+| ***Container** _ | _*_containers_*_ | _*_containers_*_ | _ *_containers_** |
 | Container-Apps | container-apps | container-apps | container-apps |
 | Containerimages | container-images | container-images | container-images |
 | Erste Schritte mit Containern | get-started-with-containers | get-started-with-containers | get-started-with-containers |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Datenbanken*** | ***databases-saas*** | ***database*** | ***databases*** |
+| ***Datenbanken** _ | _*_databases-saas_*_ | _*_database_*_ | _ *_databases_** |
 | NoSQL-Datenbanken | nosql-databases | nosql-databases | nosql-databases |
 | Relationale Datenbanken | relational-databases | relational-databases | relational-databases |
 | Ledger-/Blockchain-Datenbanken | ledger-blockchain-databases | ledger-blockchain-databases | ledger-blockchain-databases |
 | Data Lakes | data-lakes | data-lakes | data-lakes |
 | Data Warehouse | data-warehouse | data-warehouse | data-warehouse |
 | Andere | other-databases | other-databases | Sonstige |
-| ***Entwicklertools*** | ***developer-tools-saas*** | ***developer-tools-azure-apps*** | ***developer-tools*** |
+| ***Entwicklertools** _ | _*_developer-tools-saas_*_ | _*_developer-tools-azure-apps_*_ | _ *_developer-tools_** |
 | Tools | tools-developer-tools | tools-developer-tools | tools-developer-tools |
 | Skripts | In Skripts | In Skripts | In Skripts |
 | Entwicklerdienst | devService | devService | developer-service |
 | Andere | other-developer-tools | other-developer-tools | Sonstige |
-| ***DevOps*** | ***devops*** | ***devops*** | ***devops*** |
+| ***DevOps** _ | _*_devops_*_ | _*_devops_*_ | _ *_devops_** |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Identität*** | ***Identität*** | ***Identität*** | ***Identität*** |
+| ***Identität** _ | _*_identity_*_ | _*_identity_*_ | _ *_identity_** |
 | Zugriffsverwaltung | access-management | access-management | access-management |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Integration*** | ***integration*** | ***integration*** | ***integration*** |
+| ***Integration** _ | _*_integration_*_ | _*_integration_*_ | _ *_integration_** |
 | Nachrichten | messaging | messaging | messaging |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Internet der Dinge (IoT)*** | ***IoT*** | ***internet-of-things-azure-apps*** | ***internet-of-things*** |
+| ***Internet der Dinge** _ | _*_IoT_*_ | _*_internet-of-things-azure-apps_*_ | _ *_internet-of-things_** |
 | IoT-Basisdienste | – | iot-core-services | iot-core-services |
 | IoT Edge-Module | – | iot-edge-modules | iot-edge-modules |
 | IoT-Lösungen | iot-solutions | iot-solutions | iot-solutions |
 | Datenanalyse und Visualisierung | data-analytics-and-visualization | data-analytics-and-visualization | data-analytics-and-visualization |
 | IoT-Konnektivität | iot-connectivity | iot-connectivity | iot-connectivity |
 | Andere | other-internet-of-things | other-internet-of-things | Sonstige |
-| ***IT- und Verwaltungstools*** | ***ITandAdministration*** | ***it-and-management-tools-azure-apps*** | ***it-and-management-tools*** |
+| ***IT- und Verwaltungstools** _ | _*_ITandAdministration_*_ | _*_it-and-management-tools-azure-apps_*_ | _ *_it-and-management-tools_** |
 | Verwaltungslösungen | management-solutions | management-solutions | management-solutions |
 | Geschäftsanwendungen | businessApplication | businessApplication | business-applications |
 | Andere | other-it-management-tools | other-it-management-tools | Sonstige |
-| ***Überwachung und Diagnose*** | ***monitoring-and-diagnostics*** | ***monitoring-and-diagnostics*** | ***monitoring-and-diagnostics*** |
+| ***Überwachung und Diagnose** _ | _*_monitoring-and-diagnostics_*_ | _*_monitoring-and-diagnostics_*_ | _ *_monitoring-and-diagnostics_** |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Medien*** | ***media*** | ***media*** | ***media*** |
+| ***Medien** _ | _*_media_*_ | _*_media_*_ | _ *_media_** |
 | Media Services | media-services | media-services | media-services |
 | Inhaltsschutz | content-protection | content-protection | content-protection |
 | Live- und On-Demand-Streaming | live-and-on-demand-streaming | live-and-on-demand-streaming | live-and-on-demand-streaming |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Migration*** | ***migration*** | ***migration*** | ***migration*** |
+| ***Migration** _ | _*_migration_*_ | _*_migration_*_ | _ *_migration_** |
 | Datenmigration | data-migration | data-migration | data-migration |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Mixed Reality*** | ***mixed-reality*** | ***mixed-reality*** | ***mixed-reality*** |
+| ***Mixed Reality** _ | _*_mixed-reality_*_ | _*_mixed-reality_*_ | _ *_mixed-reality_** |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Netzwerk*** | ***networking*** | ***networking*** | ***networking*** |
+| ***Netzwerk** _ | _*_networking_*_ | _*_networking_*_ | _ *_networking_** |
 | Appliance-Manager | appliance-managers | appliance-managers | appliance-managers |
 | Konnektivität | Konnektivität | Konnektivität | Konnektivität |
 | Firewalls | Firewalls | Firewalls | Firewalls |
 | Load Balancer | load-balancers | load-balancers | load-balancers |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Security*** | ***security*** | ***security*** | ***security*** |
+| ***Sicherheit** _ | _*_security_*_ | _*_security_*_ | _ *_security_** |
 | Identitäts- und Zugriffsverwaltung | identity-and-access-management | identity-and-access-management | identity-and-access-management |
 | Bedrohungsschutz | threat-protection | threat-protection | threat-protection |
 | Information Protection | information-protection | information-protection | information-protection |
 | Andere | Sonstige | Sonstige | Sonstige |
-| ***Storage*** | ***storage-saas*** | ***storage-azure-apps*** | ***storage*** |
+| ***Speicher** _ | _*_storage-saas_*_ | _*_storage-azure-apps_*_ | _ *_storage_** |
 | Sicherung und Wiederherstellung | Sicherung | Sicherung | backup-and-recovery |
 | Unternehmenshybridspeicher | enterprise-hybrid-storage | enterprise-hybrid-storage | enterprise-hybrid-storage |
 | Dateifreigabe | file-sharing | file-sharing | file-sharing |
 | Verwaltung des Datenlebenszyklus | data-lifecycle-management | data-lifecycle-management | data-lifecycle-management |
 | Andere | other-storage | other-storage | Sonstige |
-| ***Web*** | ***web*** | ***web*** | ***web*** |
+| ***Web** _ | _*_web_*_ | _*_web_*_ | _ *_web_** |
 | Blogs und CMSs | blogs-and-cmss | blogs-and-cmss | blogs-and-cmss |
 | Web-Apps für Einsteiger | starter-web-apps | starter-web-apps | starter-web-apps |
 | E-Commerce | ecommerce | ecommerce | ecommerce |
@@ -396,48 +396,48 @@ Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: SaaS, Power�
 
 | Category | SaaS-Schlüssel | Schlüssel für Dynamics 365 Business Central, Dynamics 365 for Customer Engagement und Dynamics 365 for Operations | Power BI-App-Schlüssel |
 | --- | --- | --- | --- |
-| ***Analyse*** | ***analytics*** | ***Analyse*** | ***Analyse*** |
+| ***Analysen** _ | _*_analytics_*_ | _*_Analyse_*_ | _ *_Analytics_** |
 | Erweiterte Analyse | advanced-analytics | advanced-analytics | advanced-analytics |
 | Visualisierung und Berichterstellung | visualization-reporting | visualization-reporting | visualization-reporting |
 | Andere | Sonstige | other-analytics | other-analytics |
-| ***KI und Machine Learning*** | ***ArtificialIntelligence*** | ***ai-plus-machine-learning-dynamics*** | ***ai-plus-machine-learning-appsource*** |
+| ***KI und Machine Learning** _ | _*_ArtificialIntelligence_*_ | _*_ai-plus-machine-learning-dynamics_*_ | _ *_ai-plus-machine-learning-appsource_** |
 | KI für Unternehmen | ai-for-business | ai-for-business | ai-for-business |
 | Bot-Apps | bot-apps | bot-apps | bot-apps |
 | Andere | other-ai-plus-machine-learning | other-ai-plus-machine-learning | other-ai-plus-machine-learning |
-| ***Kollaboration*** | ***Kollaboration*** | ***Kollaboration*** | ***collaboration*** |
+| ***Zusammenarbeit** | _*_Zusammenarbeit_*_ | _*_Zusammenarbeit_*_ | _ *_collaboration_** |
 | Kontakte und Personen | contact-people | contact-people | contact-and-people |
 | Besprechungsmanagement | meeting-management | meeting-management | meeting-management |
 | Websitedesign und -verwaltung | site-design-management | site-design-management | site-design-and-management |
 | Aufgaben- und Projektmanagement | task-project-management | task-project-management | task-and-project-management |
 | Sprach- und Videokonferenzen | voice-video-conferencing | voice-video-conferencing | voice-and-video-conferencing |
 | Andere | other-collaboration | other-collaboration | Sonstige |
-| ***Compliance und rechtliche Angelegenheiten*** | ***compliance*** | ***compliance*** | ***compliance-and-legal*** |
+| ***Compliance und rechtliche Angelegenheiten** _ | _*_compliance_*_ | _*_compliance_*_ | _ *_compliance-and-legal_** |
 | Steuern und Prüfungen | tax-audit | tax-audit | tax-and-audit |
 | Rechtliche Hinweise | Rechtliche Hinweise | Rechtliche Hinweise | legal |
 | Daten, Governance und Datenschutz | data-governance-privacy | data-governance-privacy | data-governance-and-privacy |
 | Integrität und Sicherheit | health-safety | health-safety | health-and-safety |
 | Andere | other-compliance-legal | other-compliance-legal | Sonstige |
-| ***Kundendienst*** | ***CustomerService*** | ***CustomerService*** | ***customer-service*** |
+| ***Kundenservice** _ | _*_CustomerService_*_ | _*_CustomerService_*_ | _ *_customer-service_** |
 | Kontaktcenter | contact-center | contact-center | contact-center |
 | Persönlicher Dienst | face-to-face-service | face-to-face-service | face-to-face-service |
 | Backoffice und Personaldienste | back-office-employee-service | back-office-employee-service | back-office-and-employee-service |
 | Wissens- und Fallmanagement | knowledge-case-management | knowledge-case-management | knowledge-and-case-management |
 | Soziale Medien und Omnichannel-Kundenbindung | social-media-omnichannel-engagement | social-media-omnichannel-engagement | social-media-and-omnichannel-engagement |
 | Andere | other-customer-service | other-customer-service | Sonstige |
-| ***Finanzen*** | ***Finanzen*** | ***Finanzen*** | ***finance*** |
+| ***Finanzen** _ | _*_Finance_*_ | _*_Finance_*_ | _ *_finance_** |
 | Buchhaltung | accounting (Buchhaltung) | accounting (Buchhaltung) | accounting (Buchhaltung) |
 | Ressourcenverwaltung | asset-management | asset-management | asset-management |
 | Analyse, Konsolidierung und Berichterstellung | analytics-consolidation-reporting | analytics-consolidation-reporting | analytics-consolidation-and-reporting |
 | Kredite und Inkasso | credit-collections | credit-collections | credit-and-collections |
 | Compliance- und Risikomanagement | compliance-risk-management | compliance-risk-management | compliance-and-risk-management |
 | Andere | other-finance | other-finance | Sonstige |
-| ***Personalverwaltung*** | ***HumanResources*** | ***HumanResources*** | ***human-resources*** |
+| ***Personalverwaltung** _ | _*_HumanResources_*_ | _*_HumanResources_*_ | _ *_human-resources_** |
 | Talentakquise | talent-acquisition | talent-acquisition | talent-acquisition |
 | Talentmanagement | talent-management | talent-management | talent-management |
 | Personalverwaltung | hr-operations | hr-operations | hr-operations |
 | Personalplanung und Analyse | workforce-planning-analytics | workforce-planning-analytics | workforce-planning-and-analytics |
 | Andere | other-human-resources | other-human-resources | Sonstige |
-| ***Internet der Dinge (IoT)*** | ***IoT*** | ***internet-of-things-dynamics*** | ***internet-of-things-appsource*** |
+| ***Internet der Dinge** _ | _*_IoT_*_ | _*_internet-of-things-dynamics_*_ | _ *_internet-of-things-appsource_** |
 | Asset-Management und Betriebsführung | asset-management-operations | asset-management-operations | asset-management-and-operations |
 | Verbundene Produkte | connected-products | connected-products | connected-products |
 | Intelligente Lieferkette | intelligent-supply-chain | intelligent-supply-chain | intelligent-supply-chain |
@@ -447,11 +447,11 @@ Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: SaaS, Power�
 | Intelligente Infrastruktur und Ressourcen | smart-infrastructure-resources | smart-infrastructure-resources | smart-infrastructure-and-resources |
 | Fahrzeuge und Mobilität | vehicles-mobility | vehicles-mobility | vehicles-and-mobility |
 | Andere | other-internet-of-things | other-internet-of-things | Sonstige |
-| ***IT- und Verwaltungstools*** | ***ITandAdministration*** | ***ITandAdministration*** | ***it-and-management-tools*** |
+| ***IT- und Verwaltungstools** _ | _*_ITandAdministration_*_ | _*_ITandAdministration_*_ | _ *_it-and-management-tools_** |
 | Verwaltungslösungen | management-solutions | management-solutions | management-solutions |
 | Geschäftsanwendungen | businessApplication | businessApplication | business-applications |
 | Andere | other-it-management-tools | other-it-management-tools | Sonstige |
-| ***Marketing*** | ***Marketing*** | ***Marketing*** | ***marketing*** |
+| ***Marketing** _ | _*_Marketing_*_ | _*_Marketing_*_ | _ *_marketing_** |
 | Werbung | advertisement | advertisement | advertisement |
 | Analytics | analytics-marketing | analytics-marketing | analytics-marketing |
 | Kampagnenmanagement und -automatisierung | campaign-management-automation | campaign-management-automation | campaign-management-and-automation |
@@ -460,7 +460,7 @@ Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: SaaS, Power�
 | Forschung und Analyse | research-analytics | research-analytics | research-and-analysis |
 | Soziale Medien | social-media | social-media | social-media |
 | Andere | other-marketing | other-marketing | Sonstige |
-| ***Betrieb und Lieferkette*** | ***OperationsSupplyChain*** | ***OperationsSupplyChain*** | ***operations-and-supply-chain*** |
+| ***Betrieb und Lieferkette** _ | _*_OperationsSupplyChain_*_ | _*_OperationsSupplyChain_*_ | _ *_operations-and-supply-chain_** |
 | Asset- und Produktionsmanagement | asset-production-management | asset-production-management | asset-and-production-management |
 | Bedarfsvorhersage | demand-forecasting | demand-forecasting | demand-forecasting |
 | Informationsverwaltung und Konnektivität | information-management-connectivity | information-management-connectivity | information-management-and-connectivity |
@@ -469,7 +469,7 @@ Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: SaaS, Power�
 | Vertriebs- und Auftragsmanagement | sales-order-management | sales-order-management | sales-and-order-management |
 | Transport- und Lagerverwaltung | transportation-warehouse-management | transportation-warehouse-management | transportation-and-warehouse-management |
 | Andere | other-operations-supply-chain | other-operations-supply-chain | Sonstige |
-| ***Produktivität*** | ***Produktivität*** | ***Produktivität*** | ***productivity*** |
+| ***Produktivität** _ | _*_Produktivität_*_ | _*_Produktivität_*_ | _ *_productivity_** |
 | Inhaltserstellung und -verwaltung | content-creation-management | content-creation-management | content-creation-and-management |
 | Sprachen und Übersetzungen | language-translation | language-translation | language-and-translation |
 | Dokumentverwaltung | document-management | document-management | document-management |
@@ -477,7 +477,7 @@ Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: SaaS, Power�
 | Suche und Referenzierung | search-reference | search-reference | search-and-reference |
 | Andere | other-productivity | other-productivity | Sonstige |
 | Gamification | Gamification | Gamification | gamification |
-| ***Vertrieb*** | ***Vertrieb*** | ***Vertrieb*** | ***Vertrieb*** |
+| ***Vertrieb** _ | _*_Sales_*_ | _*_Sales_*_ | _ *_Sales_** |
 | Teleshopping | telesales | telesales | telesales |
 | CPQ (Configure, Price, Quote) | configure-price-quote | configure-price-quote | configure-price-quote |
 | Vertragsverwaltung | contract-management | contract-management | contract-management |
@@ -486,7 +486,7 @@ Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: SaaS, Power�
 | Anreicherung von Geschäftsdaten | business-data-enrichment | business-data-enrichment | business-data-enrichment |
 | Vertriebsoptimierung | sales-enablement | sales-enablement | sales-enablement |
 | Andere | other-sales | other-sales | other-sales |
-| ***Geolocation*** | ***geolocation*** | ***geolocation*** | ***geolocation*** |
+| ***Geolocation** _ | _*_geolocation_*_ | _*_geolocation_*_ | _ *_geolocation_** |
 | Karten | maps | maps | maps |
 | Nachrichten und Wetter | news-and-weather | news-and-weather | news-and-weather |
 | Andere | other-geolocation | other-geolocation | other-geolocation |
@@ -498,50 +498,50 @@ Diese Branchen und Schlüssel gelten für folgende Angebotstypen: SaaS, Power B
 
 | Branche | Schlüssel für SaaS, Dynamics 365 Business Central, Dynamics 365 for Customer Engagement und Dynamics 365 for Operations | Power BI-App-Schlüssel |
 | --- | --- | --- |
-| ***Automobile*** | ***Automobile*** | ***automotive*** |
+| ***Automobilindustrie** _ | _*_Automobilindustrie_*_ | _ *_automotive_** |
 | Automobilbau | AutomotiveL2 | AutomotiveL2 |
-| ***Landwirtschaft*** | ***Landwirtschaft*** | ***agriculture*** |
+| ***Landwirtschaft** _ | _*_Landwirtschaft_*_ | _ *_agriculture_** |
 | Sonstige – nicht segmentiert | Agriculture\_OtherUnsegmented | other-unsegmented |
-| ***Distribution*** | ***Distribution*** | ***distribution*** |
+| ***Distribution** _ | _*_Distribution_*_ | _ *_distribution_** |
 | Großhandel | Großhandel | wholesale |
 | Päckchen- und Paketversand | ParcelAndPackageShipping | parcel-and-package-shipping |
-| ***Education*** | ***Education*** | ***education*** |
+| ***Bildung** _ | _*_Education_*_ | _ *_education_** |
 | Hochschulbildung | HigherEducation | higher-education |
 | Grund- und Sekundarschulbildung/K-12 | PrimaryAndSecondaryEducationK12 | primary-and-secondary-education |
 | Bibliotheken und Museen | LibrariesAndMuseums | libraries-and-museums |
-| ***Finanzdienstleistungen*** | ***FinancialServices*** | ***financial-services*** |
+| ***Finanzdienstleistungen** _ | _*_FinancialServices_*_ | _ *_financial-services_** |
 | Bankwesen und Kapitalmärkte | BankingAndCapitalMarkets | banking-and-capital-markets |
 | Versicherung | Versicherung | Versicherung |
-| ***Behörden*** | ***Behörden*** | ***government*** |
+| ***Behörden** _ | _*_Regierung_*_ | _ *_government_** |
 | Verteidigung und Nachrichtendienste | DefenseAndIntelligence | defense-and-intelligence |
 | Öffentliche Sicherheit und Justiz | PublicSafetyAndJustice | public-safety-and-justice |
 | Zivilbehörde | CivilianGovernment | civilian-government |
-| ***Gesundheitswesen*** | ***HealthCareandLifeSciences*** | ***healthcare*** |
+| ***Gesundheitswesen** _ | _*_HealthCareandLifeSciences_*_ | _ *_healthcare_** |
 | Kostenträger für Gesundheitssystem | HealthPayor | health-payor |
 | Gesundheitsdienstleister | HealthProvider | health-provider |
 | Arzneimittel | Arzneimittel | Pharmazeutika |
-| ***Fertigung und Ressourcen*** | ***Manufacturing*** | ***manufacturing-and-resources*** |
+| ***Fertigung und Ressourcen** _ | _*_Fertigung_*_ | _ *_manufacturing-and-resources_** |
 | Chemie und Agrochemie | ChemicalAndAgrochemical | chemical-and-agrochemical |
 | Diskrete Fertigung | DiscreteManufacturing | discrete-manufacturing |
 | Energieversorgung | Energieversorgung | energy |
-| ***Einzelhandel und Konsumgüter*** | ***RetailandConsumerGoods*** | ***retail-and-consumer-goods*** |
+| ***Einzelhandel und Konsumgüter** _ | _*_RetailandConsumerGoods_*_ | _ *_retail-and-consumer-goods_** |
 | Konsumgüter | ConsumerGoods | consumer-goods |
 | Einzelhändler | Einzelhändler | retailers |
-| ***Medien und Kommunikation*** | ***MediaAndCommunications*** | ***media-and-communications*** |
+| ***Medien und Kommunikation** _ | _*_MediaAndCommunications_*_ | _ *_media-and-communications_** |
 | Medien und Unterhaltung | MediaandEntertainment | media-and-entertainment |
 | Telekommunikation | Telekommunikation | telecommunications |
-| ***Dienstleistungsunternehmen*** | ***ProfessionalServices*** | ***professional-services*** |
+| ***Dienstleistungsunternehmen** _ | _*_ProfessionalServices_*_ | _ *_professional-services_** |
 | Rechtliche Hinweise | Rechtliche Hinweise | legal |
 | Professionelle Partnerdienstleistungen | PartnerProfessionalServices | partner-professional-services |
-| ***Architektur und Bauwesen*** | ***ArchitectureAndConstruction*** | ***architecture-and-construction*** |
+| ***Architektur und Bauwesen** _ | _*_ArchitectureAndConstruction_*_ | _ *_architecture-and-construction_** |
 | Sonstige – nicht segmentiert | ArchitectureAndConstruction\_OtherUnsegmented | other-unsegmented |
-| ***Hotel- und Gaststättengewerbe, Tourismus*** | ***HospitalityandTravel*** | ***hospitality-and-travel*** |
+| ***Hotel- und Gaststättengewerbe, Tourismus** _ | _*_HospitalityandTravel_*_ | _ *_hospitality-and-travel_** |
 |    Hotels und Freizeit | HotelsAndLeisure | hotels-and-leisure |
 | Transport und Verkehr | TravelAndTransportation | travel-and-transportation |
 | Restaurants und Gastronomie | RestaurantsAndFoodServices | restaurants-and-food-services |
-| ***Andere Branchen des öffentlichen Sektors*** | ***OtherPublicSectorIndustries*** | ***other-public-sector-industries*** |
+| ***Andere Branchen des öffentlichen Sektors** _ | _*_OtherPublicSectorIndustries_*_ | _ *_other-public-sector-industries_** |
 | Forstwirtschaft und Fischerei | ForestryAndFishing | forestry-and-fishing |
 | Gemeinnützige Organisationen | Nonprofits | nonprofits |
-| ***Immobilien*** | ***RealEstate*** | ***real-estate*** |
+| ***Immobilien** _ | _*_RealEstate_*_ | _ *_real-estate_** |
 | Sonstige – nicht segmentiert | RealEstate\_OtherUnsegmented | other-unsegmented |
 |||

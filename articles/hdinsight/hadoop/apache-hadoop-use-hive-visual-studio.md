@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4512c9d9fdb66713ba24fbf30278e5d5dbb2ae23
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943162"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863750"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Ausführen von Apache Hive-Abfragen mit Data Lake-Tools für Visual Studio
 
@@ -47,13 +47,13 @@ Ad-hoc-Abfragen können entweder im Modus **Batch** oder **Interaktiv** ausgefü
     SELECT * FROM hivesampletable;
     ```
 
-5. Wählen Sie **Execute**(Ausführen). Der Ausführungsmodus ist standardmäßig **Interaktiv**.
+5. Klicken Sie auf **Ausführen**. Der Ausführungsmodus ist standardmäßig **Interaktiv**.
 
-    ![Ausführen einer interaktiver Hive-Abfrage, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png" alt-text="Ausführen einer interaktiver Hive-Abfrage, Visual Studio" border="true":::
 
 6. Um dieselbe Abfrage im Modus **Batch** auszuführen, wechseln Sie in der Dropdownliste von **Interaktiv** zu **Batch**. Die Schaltfläche für die Ausführung wechselt von **Ausführen** zu **Übermitteln**.
 
-    ![Übermitteln einer Hive-Batchabfrage, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png" alt-text="Übermitteln einer Hive-Batchabfrage, Visual Studio" border="true":::
 
     Der Hive-Editor unterstützt IntelliSense. Data Lake Tools für Visual Studio unterstützt das Laden von Remotemetadaten, wenn Sie Ihr Hive-Skript bearbeiten. Wenn Sie beispielsweise `SELECT * FROM` eingeben, listet IntelliSense alle vorgeschlagenen Tabellennamen auf. Wird ein Tabellenname angegeben, listet IntelliSense die Spaltennamen auf. Die Tools unterstützen die meisten Hive-DML-Anweisungen, Unterabfragen und integrierte UDFs. IntelliSense schlägt nur die Metadaten des Clusters vor, der auf der HDInsight-Symbolleiste ausgewählt ist.
 
@@ -61,7 +61,7 @@ Ad-hoc-Abfragen können entweder im Modus **Batch** oder **Interaktiv** ausgefü
 
 8. Konfigurieren Sie den **Auftragsnamen**, **Argumente**, **zusätzliche Konfigurationen** und das **Statusverzeichnis** im Dialogfeld **Skript übermitteln**, wenn Sie die Option für erweitertes Senden auswählen. Klicken Sie dann auf **Senden**.
 
-    ![Dialogfeld „Skript übermitteln“, HDInsight Hadoop Hive-Abfrage](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png" alt-text="Dialogfeld „Skript übermitteln“, HDInsight Hadoop Hive-Abfrage" border="true":::
 
 ### <a name="create-a-hive-application"></a>Erstellen einer Hive-Anwendung
 
@@ -109,7 +109,7 @@ Führen Sie die folgenden Schritte aus, um eine Hive-Abfrage durch Erstellen ein
 
    Die **Hive-Auftragszusammenfassung** wird mit Informationen zum aktiven Auftrag angezeigt. Verwenden Sie den Link **Aktualisieren**, um die Auftragsinformationen zu aktualisieren, bis der **Auftragsstatus** zu **Abgeschlossen** wechselt.
 
-   ![Abgeschlossene Hive-Auftragszusammenfassung, Hive-Anwendung, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
+   :::image type="content" source="./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png" alt-text="Abgeschlossene Hive-Auftragszusammenfassung, Hive-Anwendung, Visual Studio" border="true":::
 
 7. Wählen Sie **Auftragsausgabe** aus, um die Ausgabe dieses Auftrags anzuzeigen. `[ERROR] 3` wird angezeigt – dies ist der Wert, der von dieser Abfrage zurückgegeben wird.
 
@@ -134,7 +134,7 @@ Das folgende Beispiel basiert auf der `log4jLogs`-Tabelle, die in der vorherigen
         > [!NOTE]  
         > Anders als bei `EXTERNAL` Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
 
-    * `STORED AS ORC`: Speichert die Daten im ORC-Format (*Optimized Row Columnar*). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
+    * `STORED AS ORC`: Speichert die Daten im *ORC-Format* (Optimized Row Columnar). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
 
     * `INSERT OVERWRITE ... SELECT`: Wählt die Zeilen aus der `log4jLogs` Tabelle, die `[ERROR]` enthalten, und fügt dann die Daten in die `errorLogs` Tabelle ein.
 

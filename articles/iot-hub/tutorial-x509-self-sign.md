@@ -12,13 +12,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-- devx-track-azurecli
-ms.openlocfilehash: 82ef2e39d5d04914e1086e0b25ccbc8e5c7c762e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 982e402946cbd71d946bc1e316cef99621c536a3
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629555"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378192"
 ---
 # <a name="tutorial-using-openssl-to-create-self-signed-certificates"></a>Tutorial: Verwenden von OpenSSL zum Erstellen selbstsignierter Zertifikate
 
@@ -104,4 +103,4 @@ Navigieren Sie im Azure-Portal zu Ihrer IoT Hub-Instanz, und erstellen Sie eine
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Navigieren Sie zu [Testen der Zertifikatauthentifizierung](tutorial-x509-test-certificate.md), um zu überprüfen, ob Ihr Gerät mithilfe des Zertifikats bei Ihrer IoT Hub-Instanz authentifiziert werden kann.
+Wechseln Sie zum [Testen der Zertifikat Authentifizierung](tutorial-x509-test-certificate.md), um festzustellen, ob Ihr Gerät Ihr Gerät für Ihre IOT Hub authentifizieren kann.

@@ -5,12 +5,12 @@ services: hdinsight
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: 914acfab3935bc81e7d8382163ca9283c7f71a53
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3e6a5742d2dc8079c36f2d9f39a827f8db99cd67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934040"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867167"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Erstellen und Konfigurieren von Clustern mit dem Enterprise-Sicherheitspaket in Azure HDInsight
 
@@ -28,7 +28,7 @@ Vor Verwendung dieses Prozesses in Ihrer eigenen Umgebung:
 * Aktivieren Sie Azure AD.
 * Synchronisieren Sie lokale Benutzerkonten mit Azure AD.
 
-![Diagramm zur Azure AD-Architektur](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0002.png)
+:::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0002.png" alt-text="Diagramm zur Azure AD-Architektur" border="false":::
 
 ## <a name="create-an-on-premises-environment"></a>Erstellen einer lokalen Umgebung
 
@@ -52,7 +52,7 @@ In diesem Abschnitt verwenden Sie eine Schnellstartvorlage für die Azure-Bereit
 
     Belassen Sie die übrigen Werte in ihrer Standardeinstellung.
 
-    ![Vorlage zum Erstellen einer Azure-VM mit einer neuen Azure AD-Gesamtstruktur](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-azure-vm-ad-forest.png)
+    :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-azure-vm-ad-forest.png" alt-text="Vorlage zum Erstellen einer Azure-VM mit einer neuen Azure AD-Gesamtstruktur" border="true":::
 
 1. Lesen Sie die **Geschäftsbedingungen**, und wählen Sie anschließend die Option **Ich stimme den oben genannten Geschäftsbedingungen zu** aus.
 1. Wählen Sie die Option **Kaufen** aus, verfolgen Sie die Bereitstellung, und warten Sie, bis sie abgeschlossen ist. Die Bereitstellung dauert bis zu 30 Minuten.
@@ -71,23 +71,23 @@ In diesem Abschnitt erstellen Sie die Benutzer, die nach Abschluss dieses Leitfa
 
 1. Navigieren Sie im Dashboard **Server-Manager** des Domänencontrollers zu **Extras** > **Active Directory-Benutzer und -Computer**.
 
-    ![Öffnen der Active Directory-Verwaltung im Server-Manager-Dashboard](./media/apache-domain-joined-create-configure-enterprise-security-cluster/server-manager-active-directory-screen.png)
+    :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/server-manager-active-directory-screen.png" alt-text="Öffnen der Active Directory-Verwaltung im Server-Manager-Dashboard" border="true":::
 
 1. Erstellen Sie zwei neue Benutzer: **HDIAdmin** und **HDIUser**. Diese beiden Benutzer melden sich bei den HDInsight-Clustern an.
 
     1. Klicken Sie auf der Seite **Active Directory-Benutzer und -Computer** mit der rechten Maustaste auf `HDIFabrikam.com`, und navigieren Sie dann zu **Neu** > **Benutzer**.
 
-        ![Erstellen eines neuen Active Directory-Benutzers](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png)
+        :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png" alt-text="Erstellen eines neuen Active Directory-Benutzers" border="true":::
 
     1. Geben Sie auf der Seite **Neues Objekt – Benutzer** für **Vorname** und **Nachname** die Zeichenfolge `HDIUser` ein. Die anderen Felder werden automatisch ausgefüllt. Wählen Sie **Weiter** aus.
 
-        ![Erstellen des ersten Administratorbenutzerobjekts](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
+        :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png" alt-text="Erstellen des ersten Administratorbenutzerobjekts" border="true":::
 
     1. Geben Sie im Popupfenster ein Kennwort für das neue Konto ein. Klicken Sie auf **Kennwort läuft nie ab**, und wählen Sie dann bei der Popupnachricht **OK** aus.
     1. Wählen Sie **Weiter** und dann **Fertig stellen** aus, um das neue Konto zu erstellen.
     1. Wiederholen Sie diese Schritte zum Erstellen des Benutzers `HDIAdmin`.
 
-        ![Erstellen des zweiten Administratorbenutzerobjekts](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0024.png)
+        :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0024.png" alt-text="Erstellen des zweiten Administratorbenutzerobjekts" border="true":::
 
 1. Erstellen Sie eine globale Sicherheitsgruppe.
 
@@ -97,9 +97,9 @@ In diesem Abschnitt erstellen Sie die Benutzer, die nach Abschluss dieses Leitfa
 
     1. Klicken Sie auf **OK**.
 
-    ![Erstellen einer neuen Active Directory-Gruppe](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
+    :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png" alt-text="Erstellen einer neuen Active Directory-Gruppe" border="true":::
 
-    ![Erstellen eines neuen Objekts](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png)
+    :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png" alt-text="Erstellen eines neuen Objekts" border="true":::
 
 1. Fügen Sie **HDIUserGroup** Mitglieder hinzu.
 
@@ -107,7 +107,7 @@ In diesem Abschnitt erstellen Sie die Benutzer, die nach Abschluss dieses Leitfa
     1. Geben Sie im Textfeld **Enter the object names to select** (Geben Sie die zu verwendenden Objektnamen ein) den Namen `HDIUserGroup` ein. Wählen Sie dann **OK** aus, und beim Popupelement noch mal **OK**.
     1. Wiederholen Sie die vorherigen Schritte für das Konto **HDIAdmin**.
 
-        ![Hinzufügen des Mitglieds „HDIUser“ zur Gruppe „HDIUserGroup“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/active-directory-add-users-to-group.png)
+        :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/active-directory-add-users-to-group.png" alt-text="Hinzufügen des Mitglieds „HDIUser“ zur Gruppe „HDIUserGroup“" border="true":::
 
 Sie haben nun Ihre Active Directory-Umgebung erstellt. Sie haben zwei Benutzer und eine Benutzergruppe hinzugefügt, die auf den HDInsight-Cluster zugreifen können.
 
@@ -121,7 +121,7 @@ Die Benutzer werden mit Azure AD synchronisiert.
 1. Geben Sie unter **Name der Anfangsdomäne** den Name `HDIFabrikamoutlook` ein.
 1. Klicken Sie auf **Erstellen**.
 
-    ![Erstellen eines Azure AD-Verzeichnisses](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png" alt-text="Erstellen eines Azure AD-Verzeichnisses" border="true":::
 
 ### <a name="create-a-custom-domain"></a>Erstellen einer benutzerdefinierten Domäne
 
@@ -130,7 +130,7 @@ Die Benutzer werden mit Azure AD synchronisiert.
 1. Geben Sie unter **Benutzerdefinierter Domänenname** den Name `HDIFabrikam.com` ein, und wählen Sie dann **Domäne hinzufügen** aus.
 1. Führen Sie dann die Schritte unter [Hinzufügen Ihrer DNS-Informationen in der Domänenregistrierungsstelle](../../active-directory/fundamentals/add-custom-domain.md#add-your-dns-information-to-the-domain-registrar) aus.
 
-![Erstellen einer benutzerdefinierten Domäne](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-custom-domain.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-custom-domain.png" alt-text="Erstellen einer benutzerdefinierten Domäne" border="true":::
 
 ### <a name="create-a-group"></a>Erstellen einer Gruppe
 
@@ -151,27 +151,27 @@ Erstellen Sie einen Active Directory-Mandantenadministrator.
 
 1. Geben Sie die folgenden Details für den neuen Benutzer ein:
 
-    **Identität**
+   **Identität**
 
-    |Eigenschaft |BESCHREIBUNG |
-    |---|---|
-    |Benutzername|Geben Sie `fabrikamazureadmin` in das Textfeld ein. Wählen Sie in der Dropdownliste für Domänennamen den Eintrag `hdifabrikam.com` aus.|
-    |Name| Geben Sie `fabrikamazureadmin` ein.|
+   |Eigenschaft |BESCHREIBUNG |
+   |---|---|
+   |Benutzername|Geben Sie `fabrikamazureadmin` in das Textfeld ein. Wählen Sie in der Dropdownliste für Domänennamen den Eintrag `hdifabrikam.com` aus.|
+   |Name| Geben Sie `fabrikamazureadmin` ein.|
 
-    **Kennwort**
-    1. Wählen Sie die Option **Kennwort selbst erstellen** aus.
-    1. Geben Sie ein beliebiges sicheres Kennwort ein.
+   **Kennwort**
+   1. Wählen Sie die Option **Kennwort selbst erstellen** aus.
+   1. Geben Sie ein beliebiges sicheres Kennwort ein.
 
-    **Gruppen und Rollen**
-    1. Wählen Sie **0 Gruppen ausgewählt** aus.
-    1. Wählen Sie **AAD DC Administrators** (AAD-DC-Administratoren) aus, und wählen Sie dann **Auswählen** aus.
+   **Gruppen und Rollen**
+   1. Wählen Sie **0 Gruppen ausgewählt** aus.
+   1. Wählen Sie **AAD DC Administrators** (AAD-DC-Administratoren) aus, und wählen Sie dann **Auswählen** aus.
 
-    ![Dialogfeld „Azure AD-Gruppen“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/azure-ad-add-group-member.png)
+      :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/azure-ad-add-group-member.png" alt-text="Dialogfeld „Azure AD-Gruppen“" border="true":::
 
-    1. Wählen Sie **Benutzer** aus.
-    1. Wählen Sie **Globaler Administrator** aus, und wählen Sie dann **Auswählen** aus.
+   1. Wählen Sie **Benutzer** aus.
+   1. Wählen Sie **Globaler Administrator** aus, und wählen Sie dann **Auswählen** aus.
 
-    ![Dialogfeld „Azure AD-Rolle“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/azure-ad-add-role-member.png)
+      :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/azure-ad-add-role-member.png" alt-text="Dialogfeld „Azure AD-Rolle“" border="true":::
 
 1. Klicken Sie auf **Erstellen**.
 
@@ -189,20 +189,22 @@ Erstellen Sie einen Active Directory-Mandantenadministrator.
 
 1. Geben Sie auf der Seite **Mit Azure AD verbinden** den Benutzernamen und das Kennwort des globalen Administrators für Azure AD ein. Verwenden Sie den Benutzernamen `fabrikamazureadmin@hdifabrikam.com`, den Sie beim Konfigurieren Ihres Active Directory-Mandanten erstellt haben. Wählen Sie **Weiter** aus.
 
-    ![Seite „Mit Azure AD verbinden“.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png" alt-text="Verbindungsherstellung mit Azure AD" border="true":::
 
 1. Geben Sie auf der Seite **Mit Active Directory Domain Services verbinden** den Benutzernamen und das Kennwort für ein Unternehmensadministratorkonto ein. Verwenden Sie den Benutzernamen `HDIFabrikam\HDIFabrikamAdmin` und das zugehörige Kennwort, die Sie zuvor erstellt haben. Wählen Sie **Weiter** aus.
 
-   ![Seite „Mit AD DS verbinden“.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png" alt-text="Seite „Mit Active Directory Domain Services verbinden“" border="true":::
+
 1. Wählen Sie auf der Seite **Azure AD-Anmeldungskonfiguration** die Option **Weiter** aus.
-   ![Seite „Azure AD-Anmeldungskonfiguration“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
+
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png" alt-text="Seite „Azure AD-Anmeldungskonfiguration“" border="true":::
 
 1. Wählen Sie auf der Seite **Bereit zur Konfiguration** die Option **Installieren** aus.
 
-   ![Seite „Bereit zur Konfiguration“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png" alt-text="Seite „Bereit zur Konfiguration“" border="true":::
 
 1. Wählen Sie auf der Seite **Konfiguration abgeschlossen** die Option **Beenden** aus.
-   ![Seite „Konfiguration abgeschlossen“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png" alt-text="Seite „Konfiguration abgeschlossen“" border="true":::
 
 1. Vergewissern Sie sich nach Abschluss der Synchronisierung, dass die im IaaS-Verzeichnis erstellten Benutzer mit Azure AD synchronisiert wurden.
    1. Melden Sie sich beim Azure-Portal an.
@@ -220,7 +222,7 @@ Erstellen Sie eine benutzerseitig zugewiesene verwaltete Identität, die Sie zum
 1. Wählen Sie unter **Standort** die Option **USA, Mitte** aus.
 1. Klicken Sie auf **Erstellen**.
 
-![Erstellen einer neuen benutzerseitig zugewiesenen verwalteten Identität](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0082.png)
+:::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0082.png" alt-text="Erstellen einer neuen benutzerseitig zugewiesenen verwalteten Identität" border="true":::
 
 ### <a name="enable-azure-ad-ds"></a>Aktivieren von Azure AD DS
 
@@ -247,28 +249,28 @@ Gehen Sie wie folgt vor, um Azure AD DS zu aktivieren. Weitere Informationen fin
 1. Melden Sie sich beim Azure-Portal an.
 1. Wählen Sie **Ressource erstellen** aus, geben Sie `Domain services` ein, und wählen Sie **Azure AD Domain Services** > **Erstellen** aus.
 1. Gehen Sie auf der Seite **Grundlagen** wie folgt vor:
-    1. Wählen Sie unter **Verzeichnisname** das erstellte Azure AD-Verzeichnis aus: **HDIFabrikam**
-    1. Geben Sie unter **DNS-Domänenname** den Namen *HDIFabrikam.com* ein.
-    1. Wählen Sie Ihr Abonnement aus.
-    1. Geben Sie die Ressourcengruppe **HDIFabrikam-CentralUS** an. Wählen Sie **USA, Mitte** als **Standort** aus.
+   1. Wählen Sie unter **Verzeichnisname** das erstellte Azure AD-Verzeichnis aus: **HDIFabrikam**
+   1. Geben Sie unter **DNS-Domänenname** den Namen *HDIFabrikam.com* ein.
+   1. Wählen Sie Ihr Abonnement aus.
+   1. Geben Sie die Ressourcengruppe **HDIFabrikam-CentralUS** an. Wählen Sie **USA, Mitte** als **Standort** aus.
 
-        ![Azure AD DS: Grundlegende Informationen](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
+      :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png" alt-text="Azure AD DS: Grundlegende Informationen" border="true":::
 
 1. Wählen Sie auf der Seite **Netzwerk** das Netzwerk (**HDIFabrikam-VNET**) und das Subnetz (**AADDS-subnet**) aus, die Sie mit dem PowerShell-Skript erstellt haben. Oder wählen Sie **Neu erstellen** aus, um jetzt ein virtuelles Netzwerk zu erstellen.
 
-    ![Schritt „Virtuelles Netzwerk erstellen“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png" alt-text="Schritt „Virtuelles Netzwerk erstellen“" border="true":::
 
 1. Auf der Seite **Administratorgruppe** sollte eine Benachrichtigung angezeigt werden, dass bereits eine Gruppe mit dem Namen **AAD DC-Administratoren** zur Verwaltung dieser Gruppe erstellt wurde. Sie können die Mitgliedschaft dieser Gruppe ändern, was in diesem Fall aber nicht nötig ist. Klicken Sie auf **OK**.
 
-    ![Anzeigen der Azure AD-Administratorgruppe](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png" alt-text="Anzeigen der Azure AD-Administratorgruppe" border="true":::
 
 1. Aktivieren Sie auf der Seite **Synchronisierung** die vollständige Synchronisierung, indem Sie **Alle** > **OK** auswählen.
 
-    ![Aktivieren der Azure AD DS-Synchronisierung](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0090.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0090.png" alt-text="Aktivieren der Azure AD DS-Synchronisierung" border="true":::
 
 1. Überprüfen Sie auf der Seite **Zusammenfassung** die Details für Azure AD DS, und wählen Sie **OK** aus.
 
-    ![Zusammenfassung von „Azure AD Domain Services aktivieren“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0092.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0092.png" alt-text="Aktivieren von Azure AD Domain Services" border="true":::
 
 Nachdem Sie Azure AD DS aktiviert haben, wird auf den Azure AD-VMs ein lokaler DNS-Server ausgeführt.
 
@@ -277,23 +279,23 @@ Nachdem Sie Azure AD DS aktiviert haben, wird auf den Azure AD-VMs ein lokaler D
 In den folgenden Schritten konfigurieren Sie Ihr virtuelles Azure AD DS-Netzwerk (**HDIFabrikam-AADDSVNET**) zur Verwendung Ihrer benutzerdefinierten DNS-Server.
 
 1. Suchen Sie nach den IP-Adressen Ihrer benutzerdefinierten DNS-Server.
-    1. Wählen Sie die Azure AD DS-Ressource `HDIFabrikam.com` aus.
-    1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.
-    1. Sie finden die IP-Adressen unter **IP-Adresse im virtuellen Netzwerk**.
+   1. Wählen Sie die Azure AD DS-Ressource `HDIFabrikam.com` aus.
+   1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.
+   1. Sie finden die IP-Adressen unter **IP-Adresse im virtuellen Netzwerk**.
 
-    ![Suchen der benutzerdefinierten DNS-IP-Adressen für Azure AD DS](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0096.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0096.png" alt-text="Suchen der benutzerdefinierten DNS-IP-Adressen für Azure AD DS" border="true":::
 
 1. Konfigurieren Sie **HDIFabrikam-AADDSVNET** für die Verwendung der benutzerdefinierten IP-Adressen 10.0.0.4 und 10.0.0.5.
 
-    1. Wählen Sie unter **Einstellungen** die Option **DNS-Server** aus.
-    1. Wählen Sie **Benutzerdefiniert** aus.
-    1. Geben Sie im Textfeld die erste IP-Adresse ein (*10.0.0.4*).
-    1. Wählen Sie **Speichern** aus.
-    1. Wiederholen Sie die Schritte, um die andere IP-Adresse (*10.0.0.5*) hinzuzufügen.
+   1. Wählen Sie unter **Einstellungen** die Option **DNS-Server** aus.
+   1. Wählen Sie **Benutzerdefiniert** aus.
+   1. Geben Sie im Textfeld die erste IP-Adresse ein (*10.0.0.4*).
+   1. Wählen Sie **Speichern** aus.
+   1. Wiederholen Sie die Schritte, um die andere IP-Adresse (*10.0.0.5*) hinzuzufügen.
 
 In unserem Szenario wurde Azure AD DS für die Verwendung der IP-Adressen 10.0.0.4 und 10.0.0.5 konfiguriert. Dabei wurde dieselbe IP-Adresse für das virtuelle Azure AD DS-Netzwerk festgelegt:
 
-![Seite für benutzerdefinierte DNS-Server](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0098.png)
+:::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0098.png" alt-text="Seite für benutzerdefinierte DNS-Server" border="true":::
 
 ## <a name="securing-ldap-traffic"></a>Sichern des LDAP-Datenverkehrs
 
@@ -321,47 +323,47 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 1. Fügen Sie das Snap-In **Zertifikate** hinzu, mit dem Zertifikate auf dem lokalen Computer verwaltet werden.
 1. Erweitern Sie **Zertifikate (lokaler Computer)**  > **Persönlich** > **Zertifikate**. Der **persönliche** Speicher sollte ein neues Zertifikat enthalten. Dieses Zertifikat ist auf den vollständig qualifizierten Hostnamen ausgestellt.
 
-    ![Überprüfen der lokalen Zertifikaterstellung](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
+    :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png" alt-text="Überprüfen der lokalen Zertifikaterstellung" border="true":::
 
 1. Klicken Sie im rechten Bereich mit der rechten Maustaste auf das erstellte Zertifikat. Zeigen Sie auf **Alle Aufgaben**, und wählen Sie dann **Exportieren** aus.
 
 1. Wählen Sie auf der Seite **Privaten Schlüssel exportieren** die Option **Ja, privaten Schlüssel exportieren** aus. Der Computer, auf den der Schlüssel importiert wird, benötigt den privaten Schlüssel, um die verschlüsselten Nachrichten zu lesen.
 
-    ![Seite „Privaten Schlüssel exportieren“ des Zertifikatexport-Assistenten](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png" alt-text="Seite „Privaten Schlüssel exportieren“ des Zertifikatexport-Assistenten" border="true":::
 
 1. Übernehmen Sie auf der Seite **Format der zu exportierenden Datei** die Standardwerte, und wählen Sie dann **Weiter** aus.
 1. Geben Sie auf der Seite **Kennwort** ein Kennwort für den privaten Schlüssel ein. Wählen Sie als **Verschlüsselung** den Typ **TripleDES-SHA1** aus. Wählen Sie **Weiter** aus.
 1. Geben Sie auf der Seite **Exportdatei** den Pfad und Namen der exportierten Zertifikatdatei ein, und wählen Sie dann **Weiter** aus. Der Dateiname muss die Erweiterung „.pfx“ aufweisen. Die Datei wird im Azure-Portal konfiguriert, um eine sichere Verbindung herzustellen.
 1. Aktivieren Sie LDAPS für eine verwaltete Azure AD DS-Domäne.
-    1. Wählen Sie im Azure-Portal die Domäne `HDIFabrikam.com` aus.
-    1. Wählen Sie unter **Verwalten** die Option **Secure LDAP** aus.
-    1. Wählen Sie auf der Seite **Secure LDAP** unter **Secure LDAP** die Einstellung **Aktivieren** aus.
-    1. Suchen Sie nach der PFX-Zertifikatsdatei, die Sie auf Ihren Computer exportiert haben.
-    1. Geben Sie das Kennwort für das Zertifikat ein.
+   1. Wählen Sie im Azure-Portal die Domäne `HDIFabrikam.com` aus.
+   1. Wählen Sie unter **Verwalten** die Option **Secure LDAP** aus.
+   1. Wählen Sie auf der Seite **Secure LDAP** unter **Secure LDAP** die Einstellung **Aktivieren** aus.
+   1. Suchen Sie nach der PFX-Zertifikatsdatei, die Sie auf Ihren Computer exportiert haben.
+   1. Geben Sie das Kennwort für das Zertifikat ein.
 
-    ![Aktivieren von sicherem LDAP](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0113.png)
+   :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0113.png" alt-text="Aktivieren von sicherem LDAP" border="true":::
 
 1. Nachdem Sie LDAPS aktiviert haben, aktivieren Sie Port 636, um die Erreichbarkeit sicherzustellen.
-    1. Wählen Sie in der Ressourcengruppe **HDIFabrikam-CentralUS** die Netzwerksicherheitsgruppe **AADDS-HDIFabrikam.com-NSG** aus.
-    1. Wählen Sie unter **Einstellungen** die Optionen **Eingangssicherheitsregeln** > **Hinzufügen** aus.
-    1. Geben Sie auf der Seite **Eingangssicherheitsregel hinzufügen** die folgenden Eigenschaften ein, und wählen Sie **Hinzufügen** aus:
+   1. Wählen Sie in der Ressourcengruppe **HDIFabrikam-CentralUS** die Netzwerksicherheitsgruppe **AADDS-HDIFabrikam.com-NSG** aus.
+   1. Wählen Sie unter **Einstellungen** die Optionen **Eingangssicherheitsregeln** > **Hinzufügen** aus.
+   1. Geben Sie auf der Seite **Eingangssicherheitsregel hinzufügen** die folgenden Eigenschaften ein, und wählen Sie **Hinzufügen** aus:
 
-        | Eigenschaft | Wert |
-        |---|---|
-        | `Source` | Any |
-        | Source port ranges | * |
-        | Destination | Any |
-        | Destination port range | 636 |
-        | Protocol | Any |
-        | Aktion | Allow |
-        | Priority | \<Desired number> |
-        | Name | Port_LDAP_636 |
+      | Eigenschaft | Wert |
+      |---|---|
+      | `Source` | Any |
+      | Source port ranges | * |
+      | Destination | Any |
+      | Destination port range | 636 |
+      | Protocol | Any |
+      | Aktion | Zulassen |
+      | Priority | \<Desired number> |
+      | Name | Port_LDAP_636 |
 
-    ![Dialogfeld „Eingangssicherheitsregel hinzufügen“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
+      :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png" alt-text="Dialogfeld „Eingangssicherheitsregel hinzufügen“" border="true":::
 
 **HDIFabrikamManagedIdentity** ist die benutzerseitig zugewiesene verwaltete Identität. Für die verwaltete Identität ist die Rolle „HDInsight-Domänendienste: Mitwirkender“ aktiviert, sodass damit Domänendienstvorgänge gelesen, erstellt, geändert und gelöscht werden können.
 
-![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0117.png)
+:::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0117.png" alt-text="Erstellen einer benutzerseitig zugewiesenen verwalteten Identität" border="true":::
 
 ## <a name="create-an-esp-enabled-hdinsight-cluster"></a>Erstellen eines HDInsight-Clusters mit aktiviertem Enterprise-Sicherheitspaket
 
@@ -391,7 +393,7 @@ Für diesen Schritt müssen vorab die folgenden Aufgaben ausgeführt werden:
     1. Wählen Sie **Benutzerdefiniert** aus, und geben Sie *10.0.0.4* und *10.0.0.5* ein.
     1. Wählen Sie **Speichern** aus.
 
-        ![Speichern benutzerdefinierter DNS-Einstellungen für ein virtuelles Netzwerk](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
+        :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png" alt-text="Speichern benutzerdefinierter DNS-Einstellungen für ein virtuelles Netzwerk" border="true":::
 
 1. Erstellen Sie einen neuen HDInsight Spark-Cluster mit aktiviertem Enterprise-Sicherheitspaket.
     1. Wählen Sie **Benutzerdefiniert (Größe, Einstellungen, Apps)** aus.
@@ -402,22 +404,22 @@ Für diesen Schritt müssen vorab die folgenden Aufgaben ausgeführt werden:
         * Wählen Sie **Clusteradministratorbenutzer** und das Konto **HDIAdmin** aus, das Sie als lokalen Administratorbenutzer erstellt haben. Klicken Sie auf **Auswählen**.
         * Wählen Sie **Clusterzugriffsgruppe** > **HDIUserGroup** aus. Jeder Benutzer, den Sie dieser Gruppe später hinzufügen, kann auf HDInsight-Cluster zugreifen.
 
-            ![Auswählen der Clusterzugriffsgruppe „HDIUserGroup“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
+            :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg" alt-text="Auswählen der Clusterzugriffsgruppe „HDIUserGroup“" border="true":::
 
     1. Führen Sie die weiteren Schritte der Clusterkonfiguration aus, und überprüfen Sie die Details in der **Clusterübersicht**. Klicken Sie auf **Erstellen**.
 
 1. Melden Sie sich bei der Ambari-Benutzeroberfläche für den neu erstellten Cluster unter `https://CLUSTERNAME.azurehdinsight.net` an. Verwenden Sie Ihren Administratorbenutzernamen `hdiadmin@hdifabrikam.com` und das zugehörige Kennwort.
 
-    ![Anmeldefenster der Apache Ambari-Benutzeroberfläche](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
+    :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg" alt-text="Anmeldefenster der Apache Ambari-Benutzeroberfläche" border="true":::
 
 1. Wählen Sie im Cluster-Dashboard **Roles** (Rollen) aus.
-1. Geben Sie auf der Seite **Roles** (Rollen) unter **Assign roles to these** (Rollen zuweisen zu) neben der Rolle **Cluster Administrator** (Clusteradministrator) die Gruppe *hdiusergroup* ein. 
+1. Geben Sie auf der Seite **Roles** (Rollen) unter **Assign roles to these** (Rollen zuweisen zu) neben der Rolle **Cluster Administrator** (Clusteradministrator) die Gruppe *hdiusergroup* ein.
 
-    ![Zuweisen der Clusteradministratorrolle zu „hdiusergroup“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0137.jpg)
+    :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0137.jpg" alt-text="Zuweisen der Clusteradministratorrolle zu „hdiusergroup“" border="true":::
 
 1. Öffnen Sie den Secure Shell (SSH)-Client, und melden Sie sich beim Cluster an. Verwenden Sie den **hdiuser**, den Sie in der lokalen Active Directory-Instanz erstellt haben.
 
-    ![Anmelden beim Cluster mithilfe des SSH-Clients](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
+    :::image type="content" source="./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg" alt-text="Anmelden beim Cluster mithilfe des SSH-Clients" border="true":::
 
 Wenn Sie sich mit diesem Konto anmelden können, ist der Cluster mit dem Enterprise-Sicherheitspaket ordnungsgemäß für die Synchronisierung mit Ihrer lokalen Active Directory-Instanz konfiguriert.
 

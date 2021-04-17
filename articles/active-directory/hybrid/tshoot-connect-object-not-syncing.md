@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a0c8a42edad08308095469039c048f8dd8552af
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94413461"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Beheben von Problemen mit einem Objekt, das nicht mit Azure Active Directory synchronisiert wird
@@ -44,15 +44,15 @@ Vor dem Untersuchen von Synchronisierungsproblemen ist es wichtig, den Synchroni
 ### <a name="synchronization-steps"></a>**Synchronisierungsschritte**
 Der Synchronisierungsprozess umfasst die folgenden Schritte:
 
-1. **Aus AD importieren:** Active Directory-Objekte werden in den Active Directory-Connectorbereich eingefügt.
+1. **Importieren aus AD:** Active Directory-Objekte werden in den Active Directory-Connectorbereich eingefügt.
 
-2. **Importieren aus Azure AD:** Azure AD-Objekte werden in den Azure AD-Connectorbereich eingefügt.
+2. **Importieren aus Azure AD:** Azure AD-Objekte werden in den Azure AD-Connectorbereich eingefügt.
 
-3. **Synchronisierung:** Es werden eingehende Synchronisierungsregeln und ausgehende Synchronisierungsregeln in der Reihenfolge der Priorität von niedrig zu hoch ausgeführt. Informationen zu den Synchronisierungsregeln finden Sie im Synchronisierungsregel-Editor in den Desktopanwendungen. Die Synchronisierungsregeln für eingehenden Datenverkehr importieren Daten aus dem Connectorbereich in die Metaverse. Die Synchronisierungsregeln für ausgehenden Datenverkehr verschieben Daten aus der Metaverse in den Connectorbereich.
+3. **Synchronisierung:** Es werden Synchronisierungsregeln für eingehenden und ausgehenden Datenverkehr in der Reihenfolge der Priorität von niedrig zu hoch ausgeführt. Informationen zu den Synchronisierungsregeln finden Sie im Synchronisierungsregel-Editor in den Desktopanwendungen. Die Synchronisierungsregeln für eingehenden Datenverkehr importieren Daten aus dem Connectorbereich in die Metaverse. Die Synchronisierungsregeln für ausgehenden Datenverkehr verschieben Daten aus der Metaverse in den Connectorbereich.
 
-4. **In AD exportieren:** Nach der Synchronisierung werden Objekte aus dem Active Directory-Connectorbereich nach Active Directory exportiert.
+4. **Exportieren nach AD:** Nach der Synchronisierung werden Objekte aus dem Active Directory-Connectorbereich nach Active Directory exportiert.
 
-5. **Exportieren nach Azure AD:** Nach der Synchronisierung werden die Objekte aus dem Azure AD-Connectorbereich nach Azure AD exportiert.
+5. **Exportieren nach Azure AD:** Nach der Synchronisierung werden die Objekte aus dem Azure AD-Connectorbereich nach Azure AD exportiert.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -64,7 +64,7 @@ Um Fehler zu finden, müssen Sie in folgender Reihenfolge an unterschiedlichen S
 
 Starten Sie [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) vor dem Beginn der folgenden Schritte.
 
-## <a name="operations"></a>Operationen (Operations)
+## <a name="operations"></a>Operations
 Sie sollten mit Ihrer Problembehandlung auf der Registerkarte **Vorgänge** in Synchronization Service Manager beginnen. Diese Registerkarte zeigt die Ergebnisse der letzten Vorgänge. 
 
 ![Screenshot von Synchronization Service Manager mit ausgewählter Registerkarte „Vorgänge“](./media/tshoot-connect-object-not-syncing/operations.png)  
@@ -89,7 +89,7 @@ Wenn Fehler auftreten, werden in Synchronization Service Manager sowohl das fehl
 ![Screenshot von Fehlern in Synchronization Service Manager](./media/tshoot-connect-object-not-syncing/errorsync.png)  
 Wählen Sie zunächst die Fehlerzeichenfolge aus. (In der Abbildung oben lautet die Fehlerzeichenfolge **sync-rule-error-function-triggered**.) Eine Übersicht über das Objekt wird angezeigt. Wählen Sie zum Anzeigen des tatsächlichen Fehlers **Stapelüberwachung** aus. Dadurch werden für den Fehler Informationen der Debugebene angezeigt.
 
-Klicken Sie im Feld **Call Stack Information** (Aufruflisteninformationen) mit der rechten Maustaste auf **Alle auswählen** , und wählen Sie anschließend **Kopieren** aus. Sie können dann den Stapel kopieren und den Fehler in Ihrem bevorzugten Editor, z. B. Windows-Editor, anzeigen.
+Klicken Sie im Feld **Call Stack Information** (Aufruflisteninformationen) mit der rechten Maustaste auf **Alle auswählen**, und wählen Sie anschließend **Kopieren** aus. Sie können dann den Stapel kopieren und den Fehler in Ihrem bevorzugten Editor, z. B. Windows-Editor, anzeigen.
 
 Wenn der Fehler aus **SyncRulesEngine** stammt, beginnen die Aufruflisteninformationen mit einer Liste aller Attribute für das Objekt. Scrollen Sie nach unten, bis Sie die Überschrift **InnerException = >** sehen.  
 
@@ -104,13 +104,13 @@ Wenn auf der Registerkarte [**Vorgänge**](#operations) keine Fehler angezeigt w
 
 ### <a name="searching-for-an-object-in-the-cs"></a>Suchen eines Objekts im Connectorbereich
 
-Wählen Sie in Synchronization Service Manager die Option **Connectors** , anschließend den Active Directory-Connector und dann **Connectorbereich durchsuchen** aus.
+Wählen Sie in Synchronization Service Manager die Option **Connectors**, anschließend den Active Directory-Connector und dann **Connectorbereich durchsuchen** aus.
 
 Wählen Sie im Feld **Bereich** entweder **RDN** (wenn Sie nach dem CN-Attribut suchen möchten) oder **DN oder Anker** (wenn Sie auf dem Attribut **distinguishedName** suchen möchten) aus. Geben Sie einen Wert ein, und wählen Sie **Suchen** aus. 
  
 ![Screenshot einer Suche im Connectorbereich](./media/tshoot-connect-object-not-syncing/cssearch.png)  
 
-Wenn Sie das gesuchte Objekt nicht finden, wurde es möglicherweise mit der [domänenbasierten Filterung](how-to-connect-sync-configure-filtering.md#domain-based-filtering) oder der [Filterung basierend auf der Organisationseinheit](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) gefiltert. Informationen dazu, wie Sie überprüfen, ob die Filterung wie erwartet konfiguriert wurde, finden Sie unter [Azure AD Connect-Synchronisierung: Konfigurieren der Filterung](how-to-connect-sync-configure-filtering.md).
+Wenn Sie das gesuchte Objekt nicht finden, wurde es möglicherweise mit der [domänenbasierten Filterung](how-to-connect-sync-configure-filtering.md#domain-based-filtering) oder der [Filterung basierend auf der Organisationseinheit](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) gefiltert. Informationen dazu, wie Sie überprüfen, ob die Filterung wie erwartet konfiguriert wurde, finden Sie unter [Azure AD Connect-Synchronisierung: Konfigurieren der Filterung](how-to-connect-sync-configure-filtering.md).
 
 Sie können eine weitere nützliche Suche ausführen, indem Sie den Azure AD-Connector auswählen. Wählen Sie im Feld **Bereich** die Option **Import steht aus** und dann das Kontrollkästchen **Hinzufügen** aus. Bei dieser Suche werden Ihnen alle synchronisierten Objekte in Azure AD angezeigt, die keinem lokalen Objekt zugeordnet werden können.  
 
@@ -158,7 +158,7 @@ Wählen Sie neben der Schaltfläche **Vorschau** die Schaltfläche **Protokoll**
 Es ist in der Regel besser, mit der Suche im Active Directory-Connectorbereich zu starten. Aber Sie können die Suche auch aus der Metaverse starten.
 
 ### <a name="searching-for-an-object-in-the-mv"></a>Suchen eines Objekts in der Metaverse
-Wählen Sie in Synchronization Service Manager **Metaverse Search** (Metaversesuche) aus, wie in der folgenden Abbildung gezeigt. Erstellen Sie eine Abfrage, bei der Sie wissen, dass sie den Benutzer findet. Suchen Sie nach allgemeinen Attributen, z. B. **accountName** ( **sAMAccountName** ) und **userPrincipalName**. Weitere Informationen finden Sie unter [Synchronization Service Manager – Metaverse Search](how-to-connect-sync-service-manager-ui-mvsearch.md).
+Wählen Sie in Synchronization Service Manager **Metaverse Search** (Metaversesuche) aus, wie in der folgenden Abbildung gezeigt. Erstellen Sie eine Abfrage, bei der Sie wissen, dass sie den Benutzer findet. Suchen Sie nach allgemeinen Attributen, z. B. **accountName** (**sAMAccountName**) und **userPrincipalName**. Weitere Informationen finden Sie unter [Synchronization Service Manager – Metaverse Search](how-to-connect-sync-service-manager-ui-mvsearch.md).
 
 ![Screenshot von Synchronization Service Manager mit ausgewählter Registerkarte „Metaverse Search“ (Metaversesuche)](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
 
@@ -192,7 +192,7 @@ Auf der Registerkarte **Attribute** werden die Werte und der Connectors, von den
 
 Wenn ein Objekt nicht synchronisiert wird, stellen Sie die folgenden Fragen zum Attributstatus in der Metaverse:
 - Ist das Attribut **cloudFiltered** vorhanden und auf **True** festgelegt? Wenn dies zutrifft, wurde es anhand der Schritte zur [attributbasierten Filterung](how-to-connect-sync-configure-filtering.md#attribute-based-filtering) gefiltert.
-- Ist das Attribut **sourceAnchor** vorhanden? Wenn dies nicht der Fall ist, haben Sie eine Topologie mit Kontoressourcengesamtstruktur? Wenn ein Objekt als ein verknüpftes Postfach identifiziert wird (das Attribut **msExchRecipientTypeDetails** hat den Wert **2** ), dann wird **sourceAnchor** von der Gesamtstruktur mit einem aktivierten Active Directory-Konto bereitgestellt. Stellen Sie sicher, dass das Hauptkonto ordnungsgemäß importiert und synchronisiert wurde. Das Hauptkonto muss bei den [Connectors](#mv-connectors) für das Objekt aufgelistet sein.
+- Ist das Attribut **sourceAnchor** vorhanden? Wenn dies nicht der Fall ist, haben Sie eine Topologie mit Kontoressourcengesamtstruktur? Wenn ein Objekt als ein verknüpftes Postfach identifiziert wird (das Attribut **msExchRecipientTypeDetails** hat den Wert **2**), dann wird **sourceAnchor** von der Gesamtstruktur mit einem aktivierten Active Directory-Konto bereitgestellt. Stellen Sie sicher, dass das Hauptkonto ordnungsgemäß importiert und synchronisiert wurde. Das Hauptkonto muss bei den [Connectors](#mv-connectors) für das Objekt aufgelistet sein.
 
 ### <a name="mv-connectors"></a>Metaverseconnectors
 Auf der Registerkarte **Connectors** werden alle Connectorbereiche angezeigt, die über eine Darstellung des Objekts verfügen. 

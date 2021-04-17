@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171617"
 ---
 # <a name="delivery-and-retry"></a>Übermittlung und Wiederholung
@@ -54,8 +54,8 @@ Es gibt zwei Eigenschaften, `brokers__defaultMaxDeliveryAttempts` und `broker__d
 
 | Eigenschaftenname | BESCHREIBUNG |
 | ---------------- | ------------ |
-| `broker__defaultMaxDeliveryAttempts` | Die maximale Anzahl der Versuche zur Übermittlung eines Ereignisses. Standardwert: 30.
-| `broker__defaultEventTimeToLiveInSeconds` | Ereignisgültigkeitsdauer (Time-to-Live, TTL) in Sekunden, nach der ein Ereignis gelöscht wird, wenn es nicht übermittelt wird. Standardwert: **7200** Sekunden
+| `broker__defaultMaxDeliveryAttempts` | Die maximale Anzahl der Versuche zur Übermittlung eines Ereignisses. Der Standardwert ist 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Ereignisgültigkeitsdauer (Time-to-Live, TTL) in Sekunden, nach der ein Ereignis gelöscht wird, wenn es nicht übermittelt wird. Der Standardwert ist **7200 Sekunden**.
 
 ## <a name="configuring-defaults-per-subscriber"></a>Konfigurieren von Standardwerten pro Abonnent
 

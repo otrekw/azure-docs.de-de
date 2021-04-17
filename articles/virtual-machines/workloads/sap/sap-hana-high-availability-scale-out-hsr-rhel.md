@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/01/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: dd000ca36bb0ad586b973b2bcdc638d8992b1a73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2610ed46d707af6acfb1b6004df4367add94391
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668638"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305156"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit der horizontalen SAP HANA-Skalierung unter Red Hat Enterprise Linux 
 
@@ -215,7 +215,6 @@ Stellen Sie für die in diesem Dokument vorgestellte Konfiguration sieben virtue
       1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **hana-lb**).
       1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **hana-frontend**, **hana-backend** und **hana-hp**).
       1. Wählen Sie **HA-Ports** aus.
-      1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
       1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
       1. Klicken Sie auf **OK**.
 

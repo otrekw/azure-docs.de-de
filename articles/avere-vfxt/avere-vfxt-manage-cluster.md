@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85505493"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Verwalten des Avere vFXT-Clusters
@@ -19,20 +19,20 @@ Im Lebenszyklus Ihres Avere vFXT for Azure-Clusters müssen Sie irgendwann mögl
 
 In diesem Artikel wird erläutert, wie Sie Clusterknoten hinzufügen oder entfernen und andere grundlegende Clustervorgänge ausführen. Wenn Sie die Einstellungen des Clusters ändern oder dessen Funktion überwachen müssen, verwenden Sie die [Avere-Systemsteuerung](avere-vfxt-cluster-gui.md).
 
-Abhängig von der Verwaltungsaufgabe müssen Sie möglicherweise eines von drei Tools verwenden: die Avere-Systemsteuerung, das Befehlszeilen-Verwaltungsskript „vfxt.py“ oder das Azure-Portal.
+Je nach Verwaltungsaufgabe müssen Sie eines von drei verschiedenen Tools verwenden: Avere-Systemsteuerung, das Befehlszeilenskript „vfxt.py“ für die Clusterverwaltung oder das Azure-Portal.
 
 Diese Tabelle bietet eine Übersicht darüber, welche Tools für die einzelnen Aufgaben verwendet werden können.
 
 | Aktion | Avere-Systemsteuerung | vfxt.py  | Azure-Portal |
 | --- | --- | --- | --- |
-| Hinzufügen von Clusterknoten | nein | ja | nein |
-| Entfernen von Clusterknoten | ja | nein | nein |
-| Beenden eines Clusterknotens | Ja (kann auch Dienste oder das System neu starten) | nein | Das Herunterfahren einer Knoten-VM über das Portal wird als Knotenfehler interpretiert |
-| Starten eines beendeten Knotens | nein | nein | ja |
-| Zerstören eines einzelnen Clusterknotens | nein | nein | ja |
+| Hinzufügen von Clusterknoten | Nein | ja | Nein |
+| Entfernen von Clusterknoten | ja | Nein | Nein |
+| Beenden eines Clusterknotens | Ja (kann auch Dienste oder das System neu starten) | Nein | Das Herunterfahren einer Knoten-VM über das Portal wird als Knotenfehler interpretiert |
+| Starten eines beendeten Knotens | Nein | Nein | ja |
+| Zerstören eines einzelnen Clusterknotens | Nein | Nein | ja |
 | Neustarten des Clusters |  |  |  |
-| Sicheres Herunterfahren oder Beenden des Clusters | ja | ja | nein |
-| Zerstören des Clusters  | nein | ja | Ja, aber die Datenintegrität wird nicht garantiert |
+| Sicheres Herunterfahren oder Beenden des Clusters | ja | ja | Nein |
+| Zerstören des Clusters  | Nein | ja | Ja, aber die Datenintegrität wird nicht garantiert |
 
 Detaillierte Anweisungen für die einzelnen Tools finden Sie unten.
 
@@ -87,7 +87,7 @@ Das Skript vfxt.py kann für folgende Aufgaben der Clusterverwaltung verwendet w
 
 Wie bei der Avere-Systemsteuerung versuchen die vfxt.py-Operationen sicherzustellen, dass geänderte Daten dauerhaft im Back-End-Speicher gespeichert werden, bevor der Cluster oder Knoten heruntergefahren oder zerstört wird. Dadurch ist sie eine sicherere Option als das Azure-Portal.
 
-Ein vollständiges Benutzerhandbuch zu „vfxt.py“ ist auf GitHub verfügbar: [Cloud cluster management with vfxt.py (Cloudclusterverwaltung mit „vfxt.py“)](https://github.com/azure/averesdk/blob/master/docs/README.md)
+Ein vollständiges Benutzerhandbuch zu vfxt.py finden Sie in GitHub: [Verwalten von Cloudclustern mit vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md).
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>Hinzufügen von Clusterknoten mit vfxt.py
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 4d8ffe8451b2b2a08ab30761eaf3a928b5e117b3
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: e60d8490632a29e96dccf9cc8ff0365baf671bb6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537627"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802623"
 ---
 # <a name="application-security-groups"></a>Anwendungssicherheitsgruppen
 
@@ -57,7 +57,7 @@ Regeln, in denen eine Anwendungssicherheitsgruppe als Quelle oder Ziel angegeben
 Für Anwendungssicherheitsgruppen gelten folgende Einschränkungen:
 
 -    Es gibt Beschränkungen für die Anzahl von Anwendungssicherheitsgruppen in einem Abonnement sowie in Bezug auf Anwendungssicherheitsgruppen. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
-- Sie können eine einzelne Anwendungssicherheitsgruppe als Quelle und Ziel in einer Sicherheitsregel angeben. Sie können in der Quelle und im Ziel nicht mehrere Anwendungssicherheitsgruppen angeben.
+- Im Azure-Portal können Sie nur eine einzelne Anwendungssicherheitsgruppe als Quelle und Ziel in einer Sicherheitsregel angeben. In der REST-API (einschließlich PowerShell/Azure CLI) können Sie mehrere Anwendungssicherheitsgruppen in der Quelle oder im Ziel angeben.
 - Alle Netzwerkschnittstellen, die einer Anwendungssicherheitsgruppe zugewiesen sind, müssen in selben virtuellen Netzwerk vorhanden sein, in dem sich die erste Netzwerkschnittstelle befindet, die der Anwendungssicherheitsgruppe zugewiesen wurde. Wenn sich die erste Netzwerkschnittstelle, die einer Anwendungssicherheitsgruppe mit dem Namen *AsgWeb* zugewiesen ist, im virtuellen Netzwerk *VNet1* befindet, müssen alle nachfolgenden Netzwerkschnittstellen, die *ASGWeb* zugewiesen werden, in *VNet1* enthalten sein. Einer Anwendungssicherheitsgruppe können keine Netzwerkschnittstellen aus verschiedenen virtuellen Netzwerken hinzugefügt werden.
 - Wenn Sie eine Anwendungssicherheitsgruppe als Quelle und Ziel in einer Sicherheitsregel angeben, müssen sich die Netzwerkschnittstellen in beiden Anwendungssicherheitsgruppen im gleichen virtuellen Netzwerk befinden. Wenn also beispielsweise *AsgLogic* Netzwerkschnittstellen aus *VNet1* und *AsgDb* Netzwerkschnittstellen aus *VNet2* enthält, kann *AsgLogic* nicht als Quelle und *AsgDb* nicht als Ziel in einer Regel zugewiesen werden. Alle Netzwerkschnittstellen für die Quell- und Ziel-Anwendungssicherheitsgruppen müssen im selben virtuellen Netzwerk vorhanden sein.
 

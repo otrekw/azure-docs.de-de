@@ -1,16 +1,14 @@
 ---
 title: Integritätsüberwachung in Service Fabric
 description: Eine Einführung in das Service Fabric-Integritätsüberwachungsmodell von Azure, das die Überwachung des Clusters sowie seiner Programme und Dienste ermöglicht.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: gwallace
-ms.openlocfilehash: 6c96651fa48acc2f88658148c7e60be2f3fa09da
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 1fa000d46a6199fa23f07e5310eaca96b60a183f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800158"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311276"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Einführung in die Service Fabric-Integritätsüberwachung
 Mit Azure Service Fabric wird ein Integritätsmodell eingeführt, das eine umfassende, flexible und erweiterbare Integritätsevaluierung und -berichterstellung bietet. Mithilfe dieses Modells lässt sich der Zustand des Clusters und der darin ausgeführten Dienste nahezu in Echtzeit überwachen. Sie können mühelos Integritätsdaten ermitteln und potenzielle Probleme beheben, bevor sie sich ausbreiten und umfangreiche Ausfälle verursachen. In einem typischen Modell senden die Dienste Berichte basierend auf ihren lokalen Informationen. Anhand dieser Informationen wird ein Gesamtüberblick auf Clusterebene erstellt.
@@ -101,7 +99,7 @@ Die Clusterintegritätsrichtlinie enthält Folgendes:
   </FabricSettings>
   ```
 
-* [NodeTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.nodetypehealthpolicymap). Die Zuordnung der Knotentyp-Integritätsrichtlinie kann während der Clusterintegritätsevaluierung verwendet werden, um spezielle Knotentypen zu beschreiben. Die Knotentypen werden auf der Grundlage der Prozentwerte bewertet, die dem Namen ihres Knotentyps in der Zuordnung zugeordnet sind. Das Festlegen dieses Werts hat keine Auswirkung auf den globalen Pool von Knoten, der für `MaxPercentUnhealthyNodes` verwendet wird. Ein Cluster hat z. B. Hunderte von Knoten verschiedener Typen und einige Knotentypen, die wichtige Aufgaben hosten. Es sollten keine Knoten mit diesem Typ ausfallen. Sie können die globalen `MaxPercentUnhealthyNodes` auf 20 % festlegen, um einige Ausfälle bei allen Knoten zuzulassen, für den Knotentyp `SpecialNodeType` legen Sie `MaxPercentUnhealthyNodes` jedoch auf 0 fest. Wenn einige der zahlreichen Knoten fehlerhaft sind, aber unter dem globalen Prozentsatz für fehlerhafte Knoten liegen, ergibt die Auswertung des Clusters, dass er sich im Integritätszustand „Warnung“ befindet. Der Integritätszustand „Warnung“ wirkt sich nicht auf ein Clusterupgrade oder auf andere Überwachungen aus, die durch den Integritätszustand „Fehler“ ausgelöst werden. Aber auch ein Knoten vom Typ `SpecialNodeType` mit dem Integritätszustand „Fehler“ führt dazu, dass der Cluster fehlerhaft ist, und löst je nach Upgradekonfiguration ein Rollback aus oder hält das Clusterupgrade an. Umgekehrt würde das Festlegen des globalen `MaxPercentUnhealthyNodes` auf 0 und das Festlegen des maximalen Prozentsatzes fehlerhafter `SpecialNodeType`-Knoten auf 100 mit einem Knoten vom Typ `SpecialNodeType` in einem Fehlerzustand weiterhin den Cluster in einen Fehlerzustand versetzen, da die globale Einschränkung in diesem Fall strenger ist. 
+* `NodeTypeHealthPolicyMap`. Die Zuordnung der Knotentyp-Integritätsrichtlinie kann während der Clusterintegritätsevaluierung verwendet werden, um spezielle Knotentypen zu beschreiben. Die Knotentypen werden auf der Grundlage der Prozentwerte bewertet, die dem Namen ihres Knotentyps in der Zuordnung zugeordnet sind. Das Festlegen dieses Werts hat keine Auswirkung auf den globalen Pool von Knoten, der für `MaxPercentUnhealthyNodes` verwendet wird. Ein Cluster hat z. B. Hunderte von Knoten verschiedener Typen und einige Knotentypen, die wichtige Aufgaben hosten. Es sollten keine Knoten mit diesem Typ ausfallen. Sie können die globalen `MaxPercentUnhealthyNodes` auf 20 % festlegen, um einige Ausfälle bei allen Knoten zuzulassen, für den Knotentyp `SpecialNodeType` legen Sie `MaxPercentUnhealthyNodes` jedoch auf 0 fest. Wenn einige der zahlreichen Knoten fehlerhaft sind, aber unter dem globalen Prozentsatz für fehlerhafte Knoten liegen, ergibt die Auswertung des Clusters, dass er sich im Integritätszustand „Warnung“ befindet. Der Integritätszustand „Warnung“ wirkt sich nicht auf ein Clusterupgrade oder auf andere Überwachungen aus, die durch den Integritätszustand „Fehler“ ausgelöst werden. Aber auch ein Knoten vom Typ `SpecialNodeType` mit dem Integritätszustand „Fehler“ führt dazu, dass der Cluster fehlerhaft ist, und löst je nach Upgradekonfiguration ein Rollback aus oder hält das Clusterupgrade an. Umgekehrt würde das Festlegen des globalen `MaxPercentUnhealthyNodes` auf 0 und das Festlegen des maximalen Prozentsatzes fehlerhafter `SpecialNodeType`-Knoten auf 100 mit einem Knoten vom Typ `SpecialNodeType` in einem Fehlerzustand weiterhin den Cluster in einen Fehlerzustand versetzen, da die globale Einschränkung in diesem Fall strenger ist. 
 
   Das folgende Beispiel zeigt einen Auszug aus einem Clustermanifest. Zum Definieren von Einträgen in der Knotentypzuordnung stellen Sie dem Parameternamen das Präfix „NodeTypeMaxPercentUnhealthyNodes-“ gefolgt vom Knotentypnamen voran.
 
