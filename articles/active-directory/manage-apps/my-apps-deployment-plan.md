@@ -3,20 +3,19 @@ title: Planen der Konfiguration von „Meine Apps“ in Azure Active Directory
 description: Planungsleitfaden für die effektive Verwendung von „Meine Apps“ in Ihrem Unternehmen.
 services: active-directory
 author: barbaraselden
-manager: daveba
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/29/2020
-ms.author: kenwith
-ms.reviewer: baselden
-ms.openlocfilehash: 5184639d8c34be705aeeb691f1cf38486f850673
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: baselden
+ms.openlocfilehash: 777daecc119a158f11d865489e4eb497c3bc7899
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543957"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376595"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Planen der Konfiguration von „Meine Apps“ in Azure Active Directory
 

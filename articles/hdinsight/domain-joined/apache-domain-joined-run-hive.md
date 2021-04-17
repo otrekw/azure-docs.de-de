@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive in einem 
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 15c406576b373577a2a3a50108acad7ccbf36699
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705703"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863257"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -30,7 +30,7 @@ Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Apache Hive konfigurie
 
 2. Melden Sie sich mit dem Domänenbenutzernamen und dem Kennwort des Clusteradministrators an:
 
-    ![Startseite von HDInsight ESP Ranger](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png" alt-text="Startseite von HDInsight ESP Ranger" border="true":::
 
     Ranger kann derzeit nur mit Yarn und Hive verwendet werden.
 
@@ -57,7 +57,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
     |Benutzer auswählen|hiveuser1|
     |Berechtigungen|select|
 
-    ![HDInsight ESP Ranger – Konfigurieren von Hive-Richtlinien](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png" alt-text="HDInsight ESP Ranger – Konfigurieren von Hive-Richtlinien" border="true":::
 
     > [!NOTE]  
     > Wenn unter „Benutzer auswählen“ kein Domänenbenutzer eingetragen wird, warten Sie kurz, bis Ranger mit AAD synchronisiert wurde.
@@ -101,7 +101,7 @@ Im letzten Abschnitt haben Sie zwei Richtlinien konfiguriert.  „hiveuser1“ v
 
 1. Navigieren Sie auf der Registerkarte **Daten** zu **Daten abrufen** > **Aus anderen Quellen** > **Aus ODBC**, um das Fenster **Aus ODBC** zu öffnen.
 
-    ![Öffnen Sie den Datenverbindungs-Assistenten.](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png" alt-text="Öffnen Sie den Datenverbindungs-Assistenten." border="true":::
 
 1. Wählen Sie in der Dropdownliste den im letzten Abschnitt erstellten Datenquellennamen aus, und wählen Sie anschließend **OK**.
 

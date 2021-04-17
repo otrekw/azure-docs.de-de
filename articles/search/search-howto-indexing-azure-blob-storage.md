@@ -7,18 +7,20 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/22/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 74813fabec4d5fe43cd158bb4aa359c2a3b0188a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 6f70ae726cf41395e46760dc5cf7da5b4d61478a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988718"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802895"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Konfigurieren der Blobindizierung in Cognitive Search
 
-In diesem Artikel erfahren Sie, wie Sie in Azure Cognitive Search einen Blobindexer für die Indizierung von Textdokumenten (PDF-Dateien, Microsoft Office-Dokumenten u. a.) konfigurieren. Wenn Sie mit Indexerkonzepten nicht vertraut sind, beginnen Sie mit [Indexer in Azure Cognitive Search](search-indexer-overview.md) und [Erstellen eines Suchindexers](search-howto-create-indexers.md), ehe Sie sich mit der Blobindizierung beschäftigen.
+Ein Blobindexer wird zum Erfassen von Inhalten aus Azure Blob Storage in einem Cognitive Search-Index verwendet. Blobindexer werden häufig in [Ki-Anreicherungen](cognitive-search-concept-intro.md) verwendet, die durch ein angefügtes [Skillset](cognitive-search-working-with-skillsets.md) die Fähigkeiten zur Verarbeitung von Bildern und natürlicher Sprache hinzufügen, um durchsuchbaren Inhalt zu erstellen. Sie können jedoch auch Blobindexer ohne KI-Anreicherung verwenden, um Inhalte aus textbasierten Dokumenten (z. B. PDF-Dateien, Microsoft Office-Dokumenten und Dateiformaten) zu erfassen.
+
+In diesem Artikel wird die Konfiguration eines Blobindexers in beiden Szenarien beschrieben. Wenn Sie mit Indexerkonzepten nicht vertraut sind, beginnen Sie mit [Indexer in Azure Cognitive Search](search-indexer-overview.md) und [Erstellen eines Suchindexers](search-howto-create-indexers.md), ehe Sie sich mit der Blobindizierung beschäftigen.
 
 <a name="SupportedFormats"></a>
 
@@ -30,7 +32,7 @@ Der Blobindexer von Azure Cognitive Search kann Text aus den folgenden Dokumentf
 
 ## <a name="data-source-definitions"></a>Datenquellendefinitionen
 
-Der Unterschied zwischen einem Blobindexer und allen anderen Indexern besteht in der dem Indexer zugewiesenen Datenquellendefinition. Die Datenquelle kapselt alle Eigenschaften, die Typ, Verbindung und Speicherort des zu indizierenden Inhalts angeben.
+Der wichtigste Unterschied zwischen einem Blobindexer und allen anderen Indexern besteht in der dem Indexer zugewiesenen Datenquellendefinition. Die Datenquellendefinition gibt den Datenquellentyp an ("type": "azureblob") sowie andere Eigenschaften für die Authentifizierung und die Verbindung mit dem zu indizierenden Inhalt.
 
 Die Definition einer Blobdatenquelle sieht ähnlich wie im folgenden Beispiel aus:
 
@@ -72,7 +74,7 @@ Die SAS muss über Listen- und Leseberechtigungen für den Container verfügen. 
 
 ## <a name="index-definitions"></a>Indexdefinitionen
 
-Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben. Im folgenden Beispiel wird ein einfacher Index mithilfe der [Rest-API zum Erstellen eines Index](/rest/api/searchservice/create-index) erstellt. 
+Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben. Bei allen Indexern müssen Sie eine Suchindexdefinition als Ziel angeben. Im folgenden Beispiel wird ein einfacher Index mithilfe der [Rest-API zum Erstellen eines Index](/rest/api/searchservice/create-index) erstellt. 
 
 ```http
 POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -90,7 +92,7 @@ api-key: [admin key]
 
 Indexdefinitionen erfordern ein Feld in der Sammlung `"fields"`, das als Dokumentschlüssel fungiert. Indexdefinitionen sollten auch Felder für Inhalte und Metadaten enthalten.
 
-Das Feld **`content`** dient zum Speichern des aus Blobs extrahierten Texts. Ihre Definition dieses Felds kann ähnlich wie die obige aussehen. Sie sind nicht verpflichtet, diesen Namen zu verwenden, aber Sie können dadurch die Vorteile impliziter Zuordnungen von Feldern nutzen. Der Blobindexer kann Blobinhalte an das Inhaltsfeld „Edm.String“ im Index übermitteln, wobei keine Zuordnung der Felder erforderlich ist.
+Bei Blobinhalten ist üblicherweise das Feld **`content`** vorhanden. Es enthält den aus Blobdaten extrahierten Text. Ihre Definition dieses Felds kann ähnlich wie die obige aussehen. Sie sind nicht verpflichtet, diesen Namen zu verwenden, aber Sie können dadurch die Vorteile impliziter Zuordnungen von Feldern nutzen. Der Blobindexer kann Blobinhalte an das Inhaltsfeld „Edm.String“ im Index übermitteln, wobei keine Zuordnung der Felder erforderlich ist.
 
 Sie könnten auch Felder für beliebige Blobmetadaten hinzufügen, die Sie im Index wünschen. Der Indexer kann Eigenschaften von benutzerdefinierten Metadaten, [Standardmetadaten](#indexing-blob-metadata) und [inhaltsspezifischen Metadaten](search-blob-metadata-properties.md) lesen. Weitere Informationen zu Indizes finden Sie unter [Erstellen eines Index](search-what-is-an-index.md).
 

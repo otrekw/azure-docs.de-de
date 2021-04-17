@@ -1,70 +1,148 @@
 ---
 title: Mehrsprachige Indizierung für nicht englische Suchabfragen
 titleSuffix: Azure Cognitive Search
-description: Die kognitive Azure-Suche unterstützt 56 Sprachen und nutzt Sprachanalysen mit Lucene- und Natural Language Processing-Technologie von Microsoft.
+description: Erstellen Sie einen Index, der mehrsprachige Inhalte unterstützt, und erstellen Sie dann Abfragen für diesen Inhalt.
 manager: nitinme
-author: yahnoosh
-ms.author: jlembicz
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 588de9c9cae114b5f5396db17f7ecb19bcde25c6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 03/22/2021
+ms.openlocfilehash: 627ec77af4e492b4f22404972729cecdb1c40f06
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423078"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801603"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Erstellen eines Index für mehrere Sprachen in der kognitiven Azure-Suche
 
-Indizes können Felder mit Inhalt aus mehreren Sprachen enthalten, z. B. beim Erstellen einzelner Felder für sprachspezifische Zeichenfolgen. Um optimale Ergebnisse bei Indizierung und Abfragen zu erzielen, weisen Sie eine Sprachanalyse zu, die die entsprechenden linguistischen Regeln bereitstellt. 
+In einer mehrsprachigen Suchanwendung ist es wichtig, nach Ergebnissen in der Sprache des Benutzers suchen und entsprechende Ergebnisse abrufen zu können. In Azure Cognitive Search besteht eine Möglichkeit zum Erfüllen der Sprachanforderungen einer mehrsprachigen App beispielsweise darin, dedizierte Felder für das Speichern von Zeichenfolgen in einer bestimmten Sprache zu erstellen und dann bei der Abfrage die Volltextsuche auf eben diese Felder zu beschränken.
 
-Die kognitive Azure-Suche bietet eine große Auswahl an Sprachanalysen von Lucene und Microsoft, die mithilfe der Analyzer-Eigenschaft einzelnen Feldern zugewiesen werden können. Sie können auch eine Sprachanalyse im Portal angeben, wie in diesem Artikel beschrieben.
++ Legen Sie für Felddefinitionen ein Sprachanalysetool fest, mit dem die linguistischen Regeln der Zielsprache abgerufen werden. Die vollständige Liste der unterstützten Analysetools finden Sie unter [Hinzufügen von Sprachanalysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index](index-add-language-analyzers.md).
 
-## <a name="add-analyzers-to-fields"></a>Hinzufügen von Analysen zu Feldern
++ Legen Sie für die Abfrageanforderung Parameter fest, um die Volltextsuche auf bestimmte Felder zu beschränken. Kürzen Sie dann die Ergebnisse aller Felder, die keinen Inhalt bereitstellen, der mit der Suchfunktion kompatibel ist, die Sie bereitstellen möchten.
 
-Beim Erstellen eines Felds wird eine Sprachanalyse angegeben. Zum Hinzufügen einer Analyse zu einer vorhandenen Felddefinition muss der Index überschrieben (und erneut geladen) werden, oder es muss ein neues Feld erstellt werden, das mit dem ursprünglichen identisch ist, jedoch mit einer Analysezuweisung. Sie können dann das nicht verwendete Feld ggf. löschen.
+Der Erfolg dieser Methode hängt von der Integrität der Feldinhalte ab. Azure Cognitive Search übersetzt keine Zeichenfolgen und führt keine Spracherkennung als Teil der Abfrageausführung durch. Sie müssen selbst dafür sorgen, dass die Felder die erwarteten Zeichenfolgen enthalten.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und suchen Sie den Suchdienst.
-1. Klicken Sie oben im Dienstdashboard auf der Befehlsleiste auf **Index hinzufügen** , um einen neuen Index zu beginnen, oder öffnen Sie einen vorhandenen Index, um eine Analyse für neue Felder festzulegen, die Sie einem vorhandenen Index hinzufügen.
-1. Starten Sie eine Felddefinition, indem Sie einen Namen angeben.
-1. Wählen Sie den Datentyp „Edm.String“ aus. Die Volltextsuche wird nur für Zeichenfolgenfelder unterstützt.
-1. Legen Sie das **Searchable**-Attribut fest, um die Analyzer-Eigenschaft zu aktivieren. Felder müssen textbasiert sein, damit eine Sprachanalyse verwendet werden kann.
-1. Wählen Sie eine der verfügbaren Analysen aus. 
+## <a name="define-fields-for-content-in-different-languages"></a>Definieren von Feldern für Inhalt in verschiedenen Sprachen
 
-![Zuweisen von Sprachanalysen während der Felddefinition](media/search-language-support/select-analyzer.png "Zuweisen von Sprachanalysen während der Felddefinition")
+In der kognitiven Azure-Suche sind Abfragen auf einen einzelnen Index ausgerichtet. Entwickler, die sprachspezifische Zeichenfolgen in einer einzelnen Suchumgebung bereitstellen möchten, definieren üblicherweise dedizierte Felder, um die Werte zu speichern – also ein Feld für englische Zeichenfolgen, ein Feld für Französisch und so weiter.
 
-Standardmäßig verwenden alle durchsuchbaren Felder die sprachunabhängige [Lucene-Standardanalyse](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html). Die vollständige Liste der unterstützten Analysen finden Sie unter [Hinzufügen von Sprachanalysetools zu einem Index der kognitiven Azure-Suche](index-add-language-analyzers.md).
+Die „analyzer“-Eigenschaft für eine Felddefinition wird verwendet, um das [Sprachanalysetool](index-add-language-analyzers.md) festzulegen. Sie wird sowohl für die Indizierung als auch für die Abfrageausführung verwendet.
 
-Die im Portal verfügbaren Analysen sind für die Verwendung in der vorliegenden Form vorgesehen. Wenn Sie Anpassungen oder eine bestimmte Konfiguration von Filtern und Tokenizern benötigen, sollten Sie [eine benutzerdefinierte Analyse](index-add-custom-analyzers.md) im Code erstellen. Das Portal bietet keine Unterstützung für die Auswahl oder Konfiguration benutzerdefinierter Analysen.
+```JSON
+{
+  "name": "hotels-sample-index",
+  "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft"
+    },
+    {
+      "name": "Description_fr",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "fr.microsoft"
+    },
+```
 
-## <a name="query-language-specific-fields"></a>Abfragen sprachspezifischer Felder
+## <a name="build-and-load-an-index"></a>Erstellen und Laden eines Index
 
-Sobald die Sprachanalyse für ein Feld ausgewählt wurde, wird sie für jede Indizierungs- und Suchanfrage für dieses Feld verwendet. Wenn eine Abfrage mithilfe verschiedener Analysen für mehrere Felder ausgegeben wird, wird sie von der zugewiesenen Analyse unabhängig für das jeweilige Feld verarbeitet.
+Ein (wahrscheinlich naheliegender) Zwischenschritt vor der Erstellung einer Abfrage ist das [Erstellen und Auffüllen des Index](search-get-started-dotnet.md). Er wird daher nur der Vollständigkeit halber erwähnt. Eine Möglichkeit zum Ermitteln der Indexverfügbarkeit besteht darin, die Liste der Indizes im [Portal](https://portal.azure.com) zu überprüfen.
 
-Wenn die Sprache des Agents, der eine Abfrage ausgibt, bekannt ist, kann eine Suchabfrage mit dem **SearchFields** -Abfrageparameter auf ein bestimmtes Feld beschränkt werden. Die folgende Abfrage wird nur für die Beschreibung in polnischer Sprache ausgegeben:
+> [!TIP]
+> Die Spracherkennung und Textübersetzung werden bei der Datenerfassung durch die [KI-Anreicherung](cognitive-search-concept-intro.md) und [Skillsets](cognitive-search-working-with-skillsets.md) unterstützt. Wenn Sie über eine Azure-Datenquelle mit gemischtem Sprachinhalt verfügen, können Sie mithilfe des [Datenimport-Assistenten](cognitive-search-quickstart-blob.md) die Spracherkennungs- und Übersetzungsfeatures testen.
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
+## <a name="constrain-the-query-and-trim-results"></a>Einschränken der Abfrage und Ausschließen von Ergebnissen
 
-Sie können im Portal im [**Suchexplorer**](search-explorer.md) den Index abfragen, um eine Abfrage einzufügen, die der oben gezeigten ähnlich ist.
+Abfrageparameter dienen dazu, die Suche auf bestimmte Felder einzugrenzen und anschließend die Ergebnisse von Feldern auszuschließen, die für Ihr Szenario nicht relevant sind. 
+
+| Parameter | Zweck |
+|-----------|--------------|
+| **searchFields** | Grenzt die Volltextsuche auf die Liste der angegebenen Felder ein. |
+| **$select** | Kürzt die Antwort, sodass nur die von Ihnen angegebenen Felder berücksichtigt werden. Standardmäßig werden alle abrufbaren Felder zurückgegeben. Mit dem Parameter **$select** können Sie auswählen, welche Felder berücksichtigt werden sollen. |
+
+Wenn Sie die Suche also beispielsweise auf Felder mit französischen Zeichenfolgen einschränken möchten, richten Sie die Abfrage mithilfe von **searchFields** auf Felder aus, die Zeichenfolgen in dieser Sprache enthalten.
+
+Die Angabe des Analysetools für eine Abfrageanforderung ist nicht erforderlich. Während der Abfrageverarbeitung wird immer ein Sprachanalysetool für die Felddefinition verwendet. Bei Abfragen, die mehrere Felder angeben, die verschiedene Sprachanalysetools aufrufen, werden die Begriffe oder Ausdrücke unabhängig von den zugewiesenen Analysetools für jedes Feld verarbeitet.
+
+Standardmäßig werden bei einer Suche alle als abrufbar markierten Felder zurückgegeben. Es empfiehlt sich daher, Felder auszuschließen, die für die angestrebte sprachspezifische Sucherfahrung nicht geeignet sind. Wenn Sie die Suche auf ein Feld mit französischen Zeichenfolgen eingeschränkt haben, möchten Sie wahrscheinlich Felder mit englischen Zeichenfolgen aus Ihren Ergebnissen ausschließen. Mithilfe des Abfrageparameters **$select** können Sie steuern, welche Felder an die aufrufende Anwendung zurückgegeben werden sollen.
+
+#### <a name="example-in-rest"></a>Beispiel in REST
+
+```http
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "animaux acceptés",
+    "searchFields": "Tags, Description_fr",
+    "select": "HotelName, Description_fr, Address/City, Address/StateProvince, Tags",
+    "count": "true"
+}
+```
+
+#### <a name="example-in-c"></a>Beispiel in C#
+
+```csharp
+private static void RunQueries(SearchClient srchclient)
+{
+    SearchOptions options;
+    SearchResults<Hotel> response;
+
+    options = new SearchOptions()
+    {
+        IncludeTotalCount = true,
+        Filter = "",
+        OrderBy = { "" }
+    };
+
+    options.Select.Add("HotelId");
+    options.Select.Add("HotelName");
+    options.Select.Add("Description_fr");
+    options.SearchFields.Add("Tags");
+    options.SearchFields.Add("Description_fr");
+
+    response = srchclient.Search<Hotel>("*", options);
+    WriteDocuments(response);
+}
+```
 
 ## <a name="boost-language-specific-fields"></a>Optimieren sprachspezifischer Felder
 
-Manchmal ist die Sprache des Agents, der eine Abfrage ausgibt, nicht bekannt. In diesem Fall kann die Abfrage für alle Felder gleichzeitig ausgegeben werden. Bei Bedarf kann die Ausgabe der Ergebnisse in einer bestimmten Sprache mithilfe von [Bewertungsprofilen](index-add-scoring-profiles.md) festgelegt werden. Im folgenden Beispiel erhalten in der Beschreibung in englischer Sprache gefundene Übereinstimmungen eine höhere Bewertung als Übereinstimmungen in polnischer und französischer Sprache:
+Manchmal ist die Sprache des Agents, der eine Abfrage ausgibt, nicht bekannt. In diesem Fall kann die Abfrage für alle Felder gleichzeitig ausgegeben werden. Die IA-Einstellung für Ergebnisse in einer bestimmten Sprache kann mithilfe von [Bewertungsprofilen](index-add-scoring-profiles.md) festgelegt werden. Im folgenden Beispiel erhalten die Übereinstimmungen, die in der Beschreibung in englischer Sprache gefunden werden, eine höhere Bewertung als Übereinstimmungen in anderen Sprachen:
 
-```http
-    "scoringProfiles": [
-      {
-        "name": "englishFirst",
-        "text": {
-          "weights": { "description_en": 2 }
-        }
+```JSON
+  "scoringProfiles": [
+    {
+      "name": "englishFirst",
+      "text": {
+        "weights": { "description": 2 }
       }
-    ]
+    }
+  ]
 ```
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
+Dann würden Sie das Bewertungsprofil in die Suchanforderung einschließen:
+
+```http
+POST /indexes/hotels/docs/search?api-version=2020-06-30
+{
+  "search": "pets allowed",
+  "searchFields": "Tags, Description",
+  "select": "HotelName, Tags, Description",
+  "scoringProfile": "englishFirst",
+  "count": "true"
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Als .NET-Entwickler können Sie Sprachanalysen mit dem [.NET SDK für Azure Cognitive Search](https://www.nuget.org/packages/Microsoft.Azure.Search) und der [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer)-Eigenschaft konfigurieren.
++ [Sprachanalysen](index-add-language-analyzers.md)
++ [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
++ [Einführung in die KI in Azure Cognitive Search](cognitive-search-concept-intro.md)
++ [Skillsetübersicht](cognitive-search-working-with-skillsets.md)
