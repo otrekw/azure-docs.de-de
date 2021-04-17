@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: 7940ac3a67a0562aa0b7a21690deec30220a48a3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cdb792198e6912fb0e68b2abec052c2b05166f17
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434711"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310120"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -60,7 +60,7 @@ Es gibt auch einen kostenlosen Tarif (Free-Tarif) für IoT Hub, der für Tests u
 
 Azure IoT Hubs enthalten viele Kernkomponenten von [Azure Event Hubs](../event-hubs/event-hubs-features.md), z.B. [Partitionen](../event-hubs/event-hubs-features.md#partitions). Ereignisdatenströme für IoT Hubs werden normalerweise mit eingehenden Telemetriedaten gefüllt, die von den unterschiedlichen IoT-Geräten gemeldet werden. Die Partitionierung des Ereignisdatenstroms wird genutzt, um die Anzahl von Konflikten zu verringern, die beim gleichzeitigen Lesen von und Schreiben in Ereignisdatenströme auftreten.
 
-Der Partitionsgrenzwert wird bei der Erstellung von IoT Hub ausgewählt und kann nicht geändert werden. Die Partitionsobergrenze für IoT Hub im Basic-Tarif und im Standardtarif ist 32. Die meisten IoT Hub-Instanzen benötigen nur vier Partitionen. Weitere Informationen zum Ermitteln der Partitionen finden Sie in den häufig gestellten Fragen zu Event Hubs: [Wie viele Partitionen benötige ich?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+Der Partitionsgrenzwert wird bei der Erstellung von IoT Hub ausgewählt und kann nicht geändert werden. Die Partitionsobergrenze für IoT Hub im Basic-Tarif und im Standardtarif ist 32. Die meisten IoT Hub-Instanzen benötigen nur vier Partitionen. Weitere Informationen zum Ermitteln der Partitionen finden Sie in den häufig gestellten Fragen zu Event Hubs: [Wie viele Partitionen benötige ich?](../event-hubs/event-hubs-faq.yml#how-many-partitions-do-i-need-)
 
 ## <a name="tier-upgrade"></a>Upgrade des Tarifs
 

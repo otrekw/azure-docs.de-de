@@ -1,5 +1,6 @@
 ---
-title: 'Web-App, die Web-APIs aufruft: Überführen in die Produktion – Microsoft Identity Platform | Azure'
+title: Verschieben einer Web-APIs aufrufenden Web-App in die Produktion | Azure
+titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie, wie Sie eine Web-App, die Web-APIs aufruft, in die Produktion überführen.
 services: active-directory
 author: jmprieur
@@ -11,16 +12,16 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f38755e669a62e9fe74aa6281daccdf39e1f117c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: cf32274a49cb1b790e9d872efe36f2e1cb188d1d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443567"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104675939"
 ---
-# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Web-App, die Web-APIs aufruft: Überführen in die Produktion
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Verschieben einer Web-APIs aufrufenden Web-App in die Produktion
 
-Nachdem Sie nun wissen, wie Sie ein Token abrufen, um Web-APIs aufzurufen, erfahren Sie in diesem Artikel, wie Ihnen der Übergang in die Produktion gelingt.
+Nachdem Sie nun wissen, wie Sie ein Token zum Aufrufen von Web-APIs abrufen, sollten Sie die folgenden Punkte beachten, wenn Sie Ihre Anwendung in die Produktion verschieben.
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 

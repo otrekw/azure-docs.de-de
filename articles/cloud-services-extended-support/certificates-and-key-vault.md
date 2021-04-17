@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d9ff86eeb0e64e7edbad0eeca51b04cabbd191e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4d771e77fcca05b090e5d47d70ae93ece8f79e3e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722652"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865700"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)
 
@@ -27,9 +27,8 @@ Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erw
 
     :::image type="content" source="media/certs-and-key-vault-1.png" alt-text="Die Abbildung zeigt die Auswahl von Zugriffsrichtlinien im Key Vault-Blatt.":::
 
-3. Stellen Sie sicher, dass die Zugriffsrichtlinien die folgenden Eigenschaften haben:
+3. Stellen Sie sicher, dass die Zugriffsrichtlinien die folgende Eigenschaft enthalten:
     - **Aktivieren des Zugriffs auf Azure Virtual Machines für Bereitstellung**
-    - **Aktivieren des Zugriffs auf Azure Resource Manager für Vorlagenbereitstellung** 
 
     :::image type="content" source="media/certs-and-key-vault-2.png" alt-text="Die Abbildung zeigt das Zugriffsrichtlinienfenster im Azure-Portal.":::
  
@@ -41,7 +40,7 @@ Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erw
 
     :::image type="content" source="media/certs-and-key-vault-4.png" alt-text="Die Abbildung zeigt die Auswahl der Option „Generieren/importieren“.":::
 
-4.  Geben Sie die erforderlichen Informationen an, um das Hochladen des Zertifikats abzuschließen. 
+4.  Geben Sie die erforderlichen Informationen an, um das Hochladen des Zertifikats abzuschließen. Das Zertifikat muss im **PFX**-Format vorliegen.
 
     :::image type="content" source="media/certs-and-key-vault-5.png" alt-text="Die Abbildung zeigt das Importfenster im Azure-Portal.":::
 
@@ -50,6 +49,9 @@ Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erw
     ```json
     <Certificate name="<your cert name>" thumbprint="<thumbprint in key vault" thumbprintAlgorithm="sha1" /> 
     ```
+6.  Für Bereitstellungen mithilfe von ARM-Vorlagen finden Sie die certificateUrl, indem Sie im Schlüsseltresor mit dem Bezeichner „Geheimnis-ID“ zu dem Zertifikat navigieren.
+
+    :::image type="content" source="media/certs-and-key-vault-6.png" alt-text="Darstellung des Feld „Geheimnis-ID“ im Schlüsseltresor":::
 
 ## <a name="next-steps"></a>Nächste Schritte 
 - Überprüfen Sie die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support).

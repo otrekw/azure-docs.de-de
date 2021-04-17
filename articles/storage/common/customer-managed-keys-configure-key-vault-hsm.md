@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea51c1f7fcfce5b795965eab2f9c03a820a6ab03
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218637"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059359"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind
 
@@ -65,7 +65,9 @@ az keyvault role assignment create \
 
 ## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>Konfigurieren der Verschlüsselung mit einem Schlüssel im verwalteten HSM
 
-Konfigurieren Sie abschließend die Azure Storage-Verschlüsselung mit kundenseitig verwalteten Schlüsseln für die Verwendung eines im verwalteten HSM gespeicherten Schlüssels. Folgende Schlüsseltypen werden unterstützt: RSA-HSM-Schlüssel der Größen 2048, 3072 und 4096. Installieren Sie die Azure CLI 2.12.0 oder höher, um die Verschlüsselung für die Verwendung eines kundenseitig verwalteten Schlüssels in einem verwalteten HSM zu konfigurieren. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
+Konfigurieren Sie abschließend die Azure Storage-Verschlüsselung mit kundenseitig verwalteten Schlüsseln für die Verwendung eines im verwalteten HSM gespeicherten Schlüssels. Folgende Schlüsseltypen werden unterstützt: RSA-HSM-Schlüssel der Größen 2048, 3072 und 4096. Informationen zum Erstellen eines Schlüssels in einem verwalteten HSM finden Sie unter [Erstellen eines HSM-Schlüssels](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key).
+
+Installieren Sie die Azure CLI 2.12.0 oder höher, um die Verschlüsselung für die Verwendung eines kundenseitig verwalteten Schlüssels in einem verwalteten HSM zu konfigurieren. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
 Um die Schlüsselversion für einen kundenseitig verwalteten Schlüssel automatisch zu aktualisieren, lassen Sie die Schlüsselversion aus, wenn Sie die Verschlüsselung mit kundenseitig verwalteten Schlüsseln für das Speicherkonto konfigurieren. Rufen Sie [az storage account update](/cli/azure/storage/account#az_storage_account_update) wie im folgenden Beispiel gezeigt auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren. Fügen Sie den Parameter `--encryption-key-source parameter` ein, und legen Sie ihn auf `Microsoft.Keyvault` fest, um kundenseitig verwaltete Schlüssel für das Speicherkonto zu aktivieren. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
 

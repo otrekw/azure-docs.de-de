@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f5553cc51927d878487b0875e72873451a3de3c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151661"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059580"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Klonen eines Azure IoT Hubs in eine andere Region
 
@@ -413,7 +413,7 @@ Das Ziel der Anwendung ist .NET Core, damit Sie sie unter Windows oder Linux aus
 
 ### <a name="downloading-the-sample"></a>Herunterladen des Beispiels
 
-1. Verwenden Sie die IoT C#-Beispiele von der folgenden Seite: [Azure IoT-Beispiele für C#](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/). Laden Sie die ZIP-Datei herunter, und entzippen Sie sie auf Ihrem Computer. 
+1. Verwenden Sie die IoT-C#-Beispiele auf dieser Seite: [Azure IoT-Beispiele für C#](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/). Laden Sie die ZIP-Datei herunter, und entzippen Sie sie auf Ihrem Computer. 
 
 1. Der relevante Code ist in „./iot-hub/Samples/service/ImportExportDevicesSample“ zu finden. Sie müssen den Code nicht anzeigen oder bearbeiten, um die Anwendung ausführen zu können.
 
@@ -421,7 +421,7 @@ Das Ziel der Anwendung ist .NET Core, damit Sie sie unter Windows oder Linux aus
 
    Der Grund dafür: Die Verbindungszeichenfolgen sind lang, bewirken nichts und werden sich wahrscheinlich nicht ändern, doch Sie möchten vielleicht die Optionen ändern und die Anwendung mehrmals ausführen. Wenn Sie den Wert einer Umgebungsvariablen ändern möchten, müssen Sie das Befehlsfenster und Visual Studio oder VS Code schließen – je nachdem, welche dieser Anwendungen Sie verwenden. 
 
-### <a name="options"></a>Tastatur
+### <a name="options"></a>Optionen
 
 Hier sind die fünf Optionen, die Sie beim Ausführen der Anwendung angeben. Sie werden sie gleich in der Befehlszeile einfügen.
 
@@ -543,7 +543,7 @@ Jetzt haben Sie die Umgebungsvariablen in einer Datei zusammen mit den SET-Befeh
 
 1. Drücken Sie F5, um die Anwendung auszuführen. Nach Abschluss der Ausführung können Sie die Ergebnisse anzeigen.
 
-### <a name="view-the-results"></a>Zeigen Sie die Ergebnisse an 
+### <a name="view-the-results"></a>Anzeigen der Ergebnisse 
 
 Sie können die Geräte im [Azure-Portal](https://portal.azure.com) anzeigen und überprüfen, ob sie sich am neuen Standort befinden.
 

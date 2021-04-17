@@ -3,16 +3,16 @@ title: Konfigurieren von Warnungen und arbeiten mit Metriken in Azure VMware Sol
 description: Erfahren Sie, wie Benachrichtigungen zum Empfangen von Benachrichtigungen verwendet werden. Außerdem erfahren Sie mehr über das Arbeiten mit Metriken, um tiefere Erkenntnisse in Ihre Azure VMware-Lösung Private Cloud zu erhalten.
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.openlocfilehash: f021662658399111187e9963fc5caec434fabf4a
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 486f25eba017b2d4e37c0796909a0d26adee6ba8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096667"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309627"
 ---
 # <a name="configure-azure-alerts-in-azure-vmware-solution"></a>Konfigurieren von Azure-Warnungen in Azure VMware Solution 
 
-In diesem Artikel erfahren Sie, wie Sie [Azure-Aktionsgruppen](/azure/azure-monitor/alerts/action-groups) in [Microsoft Azure Warnungen](/azure/azure-monitor/alerts/alerts-overvie) konfigurieren, um Benachrichtigungen über ausgelöste Ereignisse zu erhalten, die Sie definieren. Außerdem erfahren Sie mehr über die Verwendung von [Azure Monitor Metriken](/azure/azure-monitor/essentials/data-platform-metrics), um tiefere Erkenntnisse in Ihre Azure VMware-Lösung Private Cloud zu erhalten.
+In diesem Artikel erfahren Sie, wie Sie [Azure-Aktionsgruppen](/azure/azure-monitor/alerts/action-groups) in [Microsoft Azure Warnungen](/azure/azure-monitor/alerts/alerts-overview) konfigurieren, um Benachrichtigungen über ausgelöste Ereignisse zu erhalten, die Sie definieren. Außerdem erfahren Sie mehr über die Verwendung von [Azure Monitor Metriken](/azure/azure-monitor/essentials/data-platform-metrics), um tiefere Erkenntnisse in Ihre Azure VMware-Lösung Private Cloud zu erhalten.
 
 
 ## <a name="supported-metrics-and-activities"></a>Unterstützte Metriken und Aktivitäten
@@ -21,14 +21,14 @@ Die folgenden Metriken sind über Azure Monitor Metriken sichtbar.
 
 | **Signalname**                                                         | **Signaltyp** | **Überwachungsdienst** |
 |-------------------------------------------------------------------------|-----------------|---------------------|
-| Gesamtkapazität des Datenträgers mit dem Datenspeicher                                           | Metrik          | Plattform            |
-| Prozentsatz des verwendeten Datenträgers mit dem Datenspeicher                                          | Metrik          | Plattform            |
-| CPU-Prozentsatz                                                          | Metrik          | Plattform            |
-| Durchschnittlicher effektiver Arbeitsspeicher                                                | Metrik          | Plattform            |
-| Durchschnittlicher Overhead des Arbeitsspeichers                                                 | Metrik          | Plattform            |
-| Durchschnittlicher gesamter Arbeitsspeicher                                                    | Metrik          | Plattform            |
-| Durchschnittliche Arbeitsspeicherauslastung                                                    | Metrik          | Plattform            |
-| Verwendeter Datenträger mit dem Datenspeicher                                                     | Metrik          | Plattform            |
+| Gesamtkapazität des Datenträgers mit dem Datenspeicher                                           | Metric          | Plattform            |
+| Prozentsatz des verwendeten Datenträgers mit dem Datenspeicher                                          | Metric          | Plattform            |
+| CPU-Prozentsatz                                                          | Metric          | Plattform            |
+| Durchschnittlicher effektiver Arbeitsspeicher                                                | Metric          | Plattform            |
+| Durchschnittlicher Overhead des Arbeitsspeichers                                                 | Metric          | Plattform            |
+| Durchschnittlicher gesamter Arbeitsspeicher                                                    | Metric          | Plattform            |
+| Durchschnittliche Arbeitsspeicherauslastung                                                    | Metric          | Plattform            |
+| Verwendeter Datenträger mit dem Datenspeicher                                                     | Metric          | Plattform            |
 | Alle Verwaltungsvorgänge                                           | Aktivitätsprotokoll    | Administrative      |
 | Registrieren des Microsoft.AVS-Ressourcenanbieters. (Microsoft.AVS/privateClouds) | Aktivitätsprotokoll    | Administrative      |
 | Eine PrivateCloud erstellen oder aktualisieren. (Microsoft.AVS/privateClouds)          | Aktivitätsprotokoll    | Administrative      |

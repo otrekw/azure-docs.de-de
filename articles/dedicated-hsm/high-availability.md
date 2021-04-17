@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.author: mbaldwin
-ms.openlocfilehash: 85aa9d355b2440535ea13c8c15e95500bac22352
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: c46ccbda35936ed94079a21e3e9c72405875b961
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98567258"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608866"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure-Dienst für dedizierte HSMs – Hochverfügbarkeit
 
@@ -25,7 +25,7 @@ Der Azure-Dienst für dedizierte HSMs wird durch die hoch verfügbaren Rechenzen
 
 ## <a name="high-availability-example"></a>Beispiel für Hochverfügbarkeit
 
-Informationen zum Konfigurieren von HSM-Geräten für hohe Verfügbarkeit auf Softwareebene finden Sie im „Thales Luna 7-HSM-Administratorhandbuch“. Dieses Dokument ist auf der [Thales-HSM-Seite](https://thalesdocs.com/gphsm/Content/luna/network/luna_network_releases.htm) verfügbar.
+Informationen zum Konfigurieren von HSM-Geräten für hohe Verfügbarkeit auf Softwareebene finden Sie im „Thales Luna 7-HSM-Administratorhandbuch“. Dieses Dokument ist auf der [Thales-HSM-Seite](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) verfügbar.
 
 Im folgenden Diagramm ist eine hoch verfügbare Architektur dargestellt. Sie verwendet mehrere Geräte in der Region und mehrere verbundene Geräte in einer separaten Region. Diese Architektur verwendet mindestens vier HSM-Geräte und virtuelle Netzwerkkomponenten.
 
@@ -42,4 +42,4 @@ Weitere Themen auf Konzeptebene:
 * [Unterstützungsmöglichkeiten](supportability.md)
 * [Überwachung](monitoring.md)
 
-Spezifische Details zum Konfigurieren von HSM-Geräten für hohe Verfügbarkeit finden Sie im Thales-Kundensupportportal für die Administratorhandbücher; siehe auch Abschnitt 6.
+Spezifische Details zum Konfigurieren von HSM-Geräten für hohe Verfügbarkeit finden Sie im [Thales-Kundensupportportal](https://supportportal.thalesgroup.com/csm) für die Administratorhandbücher; siehe auch Abschnitt 6.

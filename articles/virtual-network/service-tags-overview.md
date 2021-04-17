@@ -13,19 +13,22 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 18b79b105bcc4b5b0b65fc6f7d6b602ffff55561
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 2d14ca2423d34926a9e297823a6515c2c5dde06a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455821"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607115"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
 
 Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Tag automatisch, wenn sich die Adressen ändern. Auf diese Weise wird die Komplexität häufiger Updates an Netzwerksicherheitsregeln minimiert.
 
-Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](./network-security-groups-overview.md#security-rules) oder in der [Azure Firewall](../firewall/service-tags.md) zu definieren. Verwenden Sie Diensttags anstelle von spezifischen IP-Adressen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen (z. B. **ApiManagement**) im entsprechenden Feld *Quelle* oder *Ziel* einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern.
+Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](./network-security-groups-overview.md#security-rules) oder in der [Azure Firewall](../firewall/service-tags.md) zu definieren. Verwenden Sie Diensttags anstelle von spezifischen IP-Adressen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen (z. B. **ApiManagement**) im entsprechenden Feld *Quelle* oder *Ziel* einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. 
+
+> [!NOTE] 
+> Ab Mai 2021 können Sie auch Diensttags anstelle von expliziten IP-Adressbereichen in [benutzerdefinierten Routen](./virtual-networks-udr-overview.md)verwenden. Dieses Feature befindet sich derzeit in der öffentlichen Vorschauphase. 
 
 Mithilfe von Diensttags können Sie Netzwerkisolation erreichen und Ihre Azure-Ressourcen vor dem allgemeinen Internet schützen, während Sie auf Azure-Dienste mit öffentlichen Endpunkten zugreifen. Erstellen Sie Regeln für eingehende/ausgehende Netzwerksicherheitsgruppen, um Datenverkehr in das **Internet** und aus diesem zu verweigern und Datenverkehr in die **Azure-Cloud** oder andere [verfügbare Diensttags](#available-service-tags) von bestimmten Azure-Diensten und aus diesen zuzulassen.
 
@@ -75,7 +78,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureKeyVault** | Azure Key Vault:<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **AzureActiveDirectory** auf. | Ausgehend | Ja | Ja |
 | **AzureLoadBalancer** | Das Lastenausgleichsmodul der Azure-Infrastruktur. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](./network-security-groups-overview.md#azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure dient. Dies umfasst nur den Testdatenverkehr, nicht den tatsächlichen Datenverkehr zu Ihrer Back-End-Ressource. Sie können diese Regel außer Kraft setzen, wenn Azure Load Balancer nicht verwendet wird. | Beide | Nein | Nein |
 | **AzureMachineLearning** | Azure Machine Learning. | Beide | Nein | Ja |
-| **AzureMonitor** | Log Analytics, Application Insights, AzMon und benutzerdefinierte Metriken (GiG-Endpunkte).<br/><br/>*Hinweis:* Für Log Analytics weist dieses Tag eine Abhängigkeit vom **Storage**-Tag auf. | Ausgehend | Nein | Ja |
+| **AzureMonitor** | Log Analytics, Application Insights, AzMon und benutzerdefinierte Metriken (GiG-Endpunkte).<br/><br/>*Hinweis:* Für Log Analytics ist auch das **Speichertag** erforderlich. Wenn Linux-Agents verwendet werden, ist auch das **GuestAndHybridManagement**-Tag erforderlich. | Ausgehend | Nein | Ja |
 | **AzureOpenDatasets** | Azure Open Datasets<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit von den Tags **AzureFrontDoor.Frontend** und **Storage** auf. | Ausgehend | Nein | Nein |
 | **AzurePlatformDNS** | Der grundlegende (standardmäßige) DNS-Dienst für die Infrastruktur.<br/><br>Sie können dieses Tag verwenden, um den standardmäßigen DNS-Dienst zu deaktivieren. Bei Verwendung dieses Tags ist Vorsicht geboten. Es wird empfohlen, die [Überlegungen zur Azure-Plattform](./network-security-groups-overview.md#azure-platform-considerations) durchzulesen. Außerdem wird empfohlen, vor der Verwendung dieses Tags entsprechende Tests auszuführen. | Ausgehend | Nein | Nein |
 | **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS), ein grundlegender Infrastrukturdienst.<br/><br/>Sie können dieses Tag verwenden, um den standardmäßigen IMDS-Dienst zu deaktivieren. Bei Verwendung dieses Tags ist Vorsicht geboten. Es wird empfohlen, die [Überlegungen zur Azure-Plattform](./network-security-groups-overview.md#azure-platform-considerations) durchzulesen. Außerdem wird empfohlen, vor der Verwendung dieses Tags entsprechende Tests auszuführen. | Ausgehend | Nein | Nein |

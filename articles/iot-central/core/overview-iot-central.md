@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: e6971fa129c01fc4cdf64e0dc681ac0fab4f707b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833812"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505126"
 ---
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
@@ -23,16 +23,16 @@ Mit der Webbenutzeroberfläche können Sie Gerätebedingungen überwachen, Regel
 
 In diesem Artikel werden folgende Punkte für IoT Central behandelt:
 
-- Typische Personas eines Projekts
+- Typische Benutzerrollen in Verbindung mit einem Projekt.
 - Erstellung einer Anwendung
 - Herstellung einer Verbindung zwischen Ihren Geräten und Ihrer Anwendung
 - Verwaltung Ihrer Anwendung
 - Azure IoT Edge-Funktionen in IoT Central
 - Vorgehensweise zum Verbinden Ihrer auf der Azure IoT Edge-Runtime basierenden Geräte mit Ihrer Anwendung
 
-## <a name="personas"></a>Personas
+## <a name="user-roles"></a>Benutzerrollen
 
-In der Dokumentation von IoT Central werden vier Personas verwendet, die mit einer IoT Central-Anwendung interagieren:
+In der Dokumentation von IoT Central werden vier Benutzerrollen verwendet, die mit einer IoT Central-Anwendung interagieren:
 
 - Ein _Lösungsentwickler_ ist zuständig für das [Erstellen einer Anwendung](quick-deploy-iot-central.md), das [Konfigurieren von Regeln und Aktionen](quick-configure-rules.md) und das [Definieren von Integrationen mit anderen Diensten](howto-export-data.md) sowie für die weitere Anpassung der Anwendung für Operatoren und Geräteentwickler.
 - Ein _Operator_ [verwaltet die Geräte](howto-manage-devices.md), die mit der Anwendung verbunden sind.

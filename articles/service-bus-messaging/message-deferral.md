@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie die Übermittlung von Azure 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e3a940f8aa9e72d9b09e9c0a3305521c6f17dfb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 997aab36652b08864892f1171e2b8588ec5f06b4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622044"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306108"
 ---
 # <a name="message-deferral"></a>Nachrichtenverzögerung
 
@@ -22,7 +22,7 @@ Ein einfaches und anschauliches Beispiel ist die Verarbeitungssequenz für eine 
 Die Verzögerung hilft letztendlich beim Neuordnen der Nachrichten von der Eingangsreihenfolge in eine Reihenfolge, in der sie verarbeitet werden können. Dabei werden die Nachrichten, deren Verarbeitung verschoben werden muss, sicher im Nachrichtenspeicher belassen.
 
 > [!NOTE]
-> Verzögerte Nachrichten werden [nach ihrem Ablauf](./service-bus-dead-letter-queues.md#exceeding-timetolive) nicht automatisch in die Warteschlange für unzustellbare Nachrichten verschoben. Dieses Verhalten ist beabsichtigt:
+> Verzögerte Nachrichten werden [nach ihrem Ablauf](./service-bus-dead-letter-queues.md#time-to-live) nicht automatisch in die Warteschlange für unzustellbare Nachrichten verschoben. Dieses Verhalten ist beabsichtigt:
 
 ## <a name="message-deferral-apis"></a>APIs für die Nachrichtenverzögerung
 

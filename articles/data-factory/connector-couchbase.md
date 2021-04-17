@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: e8de7982e99e258f0a72bd507ac0d8de16a7227a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100383652"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopieren von Daten aus Couchbase mithilfe von Azure Data Factory (Vorschauversion)
@@ -47,7 +47,7 @@ Folgende Eigenschaften werden für den mit Couchbase verknüpften Dienst unterst
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Couchbase** | Ja |
+| type | Die „type“-Eigenschaft muss auf **Couchbase** festgelegt sein. | Ja |
 | connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Couchbase. <br/>Sie können auch die Zeichenfolge mit Anmeldeinformationen in Azure Key Vault speichern und die `credString`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
@@ -103,7 +103,7 @@ Legen Sie zum Kopieren von Daten aus Couchbase die „type“-Eigenschaft des Da
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **CouchbaseTable** | Ja |
+| type | Die Type-Eigenschaft des Datasets muss auf gesetzt werden: **CouchbaseTable** | Ja |
 | tableName | Der Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 
@@ -134,7 +134,7 @@ Legen Sie zum Kopieren von Daten aus Couchbase den Quelltyp in der Kopieraktivit
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **CouchbaseSource** | Ja |
+| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **CouchbaseSource** festgelegt werden. | Ja |
 | Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**

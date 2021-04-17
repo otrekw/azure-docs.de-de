@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6b9c4bcf760387f6bbe380c9aa079df2f86a1847
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 67df1c822f34f45bb0931848f8015374a346673a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060651"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278438"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Tutorial: Erstellen einer ExpressRoute-Zuordnung mithilfe von Azure Virtual WAN
 
@@ -104,7 +104,7 @@ In diesem Abschnitt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und e
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Verbinden Ihrer Leitung mit dem Hubgateway
 
-Nachdem das Gateway erstellt wurde, können Sie es mit einer [ExpressRoute-Leitung](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbinden. Premium- oder Standard-ExpressRoute-Leitungen, die sich an Standorten mit ExpressRoute Global Reach-Unterstützung befinden, können eine Verbindung mit einem Virtual WAN ExpressRoute-Gateway herstellen und von allen Virtual WAN-Transitfunktionen (VPN-zu-VPN-, VPN- und ExpressRoute-Übertragung) profitieren. Premium- oder Standard-ExpressRoute-Leitungen an Standorten ohne Global Reach-Unterstützung können zwar eine Verbindung mit Azure-Ressourcen herstellen, aber keine Virtual WAN-Übertragungsfunktionen nutzen. ExpressRoute Local wird mit Azure Virtual WAN-Hubs unterstützt, solange sich die an einen Virtual WAN-Hub angeschlossenen Spoke-VNets in derselben Region wie der Virtual WAN-Hub befinden.
+Nachdem das Gateway erstellt wurde, können Sie es mit einer [ExpressRoute-Leitung](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbinden. Premium- oder Standard-ExpressRoute-Leitungen, die sich an Standorten mit ExpressRoute Global Reach-Unterstützung befinden, können eine Verbindung mit einem Virtual WAN ExpressRoute-Gateway herstellen und von allen Virtual WAN-Transitfunktionen (VPN-zu-VPN-, VPN- und ExpressRoute-Übertragung) profitieren. Premium- oder Standard-ExpressRoute-Leitungen an Standorten ohne Global Reach-Unterstützung können zwar eine Verbindung mit Azure-Ressourcen herstellen, aber keine Virtual WAN-Übertragungsfunktionen nutzen. ExpressRoute Local wird auch mit Azure Virtual WAN unterstützt.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Verbinden der Leitung mit dem Hubgateway
 
