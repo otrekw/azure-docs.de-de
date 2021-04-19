@@ -13,25 +13,25 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: cf8869002fb3e0170331709af3da5b971a098740
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562082"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612397"
 ---
 # <a name="overview-of-shared-device-mode"></a>Übersicht über den Modus für gemeinsam genutzte Geräte
 
 Der Modus für gemeinsam genutzte Geräte ist ein Feature von Azure Active Directory, mit dem Sie Anwendungen erstellen können, die Mitarbeiter in Service und Produktion unterstützen und ihnen die gemeinsame Nutzung der für sie bereitgestellten Geräte ermöglichen.
 
 >[!IMPORTANT]
-> Dieses Feature [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
+> Modus für gemeinsam genutzte Geräte für iOS [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-## <a name="what-are-firstline-workers"></a>Was sind Mitarbeiter in Service und Produktion?
+## <a name="what-are-frontline-workers"></a>Was sind Mitarbeiter in Service und Produktion?
 
 Mitarbeiter in Service und Produktion sind Mitarbeiter im Einzelhandel, Wartungs- und Außendienstmitarbeiter, medizinisches Personal und andere Benutzer, die über keinen Computerarbeitsplatz verfügen oder die für die Zusammenarbeit keine Unternehmens-E-Mail verwenden. In den folgenden Abschnitten werden die Aspekte und Herausforderungen der Unterstützung von Mitarbeitern in Service und Produktion beschrieben. Anschließend werden die von Microsoft bereitgestellten Features beschrieben, die die Verwendung Ihrer Anwendung durch die Mitarbeiter in Service und Produktion einer Organisation ermöglichen.
 
-### <a name="challenges-of-supporting-firstline-workers"></a>Herausforderungen bei der Unterstützung von Mitarbeitern in Service und Produktion
+### <a name="challenges-of-supporting-frontline-workers"></a>Herausforderungen bei der Unterstützung von Mitarbeitern in Service und Produktion
 
 Für die Unterstützung von Mitarbeitern in Service und Produktion sind andere Herausforderungen als für typische Information-Worker zu bewältigen. Zu diesen Herausforderungen zählen möglicherweise eine hohe Fluktuation und geringere Kenntnisse über die wichtigsten Produktivitätstools der Organisation. Organisationen nutzen unterschiedliche Strategien, um ihre Mitarbeiter in Service und Produktion zu unterstützen. Einige verfolgen eine BYOD-Strategie (Bring Your Own Device), sodass die Mitarbeiter Geschäftsanwendungen auf ihrem persönlichen Smartphone verwenden, während andere ihren Mitarbeitern gemeinsam genutzte Geräte, z. B. iPads oder Android-Tablets, zur Verfügung stellen.
 
@@ -52,7 +52,7 @@ Wie bereits erwähnt, ist der Modus für gemeinsame Geräte ein Feature von Azur
 * Erstellen von Anwendungen, die Mitarbeiter in Service und Produktion unterstützen
 * Bereitstellen von Geräten für Mitarbeiter in Service und Produktion und Aktivieren des Modus für gemeinsam genutzte Geräte
 
-### <a name="build-applications-that-support-firstline-workers"></a>Erstellen von Anwendungen, die Mitarbeiter in Service und Produktion unterstützen
+### <a name="build-applications-that-support-frontline-workers"></a>Erstellen von Anwendungen, die Mitarbeiter in Service und Produktion unterstützen
 
 Sie können in Ihren Anwendungen Mitarbeiter in Service und Produktion unterstützen, indem Sie mithilfe der Microsoft Authentication Library (MSAL) und der [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) den Gerätestatus *Modus für gemeinsam genutzte Geräte* aktivieren. Wenn sich ein Gerät im Modus für gemeinsam genutzte Geräte befindet, stellt Microsoft Informationen für Ihre Anwendung bereit, die es ermöglichen, das Verhalten der Anwendung auf Grundlage des Status des Benutzers auf dem Gerät zu ändern und die Benutzerdaten zu schützen.
 
@@ -69,7 +69,7 @@ Sie müssen sicherstellen, dass die Daten eines Benutzers nicht an andere Benutz
 
 Ausführliche Informationen zum Ändern der Anwendungen, damit sie den Modus für gemeinsam genutzte Geräte unterstützen, finden Sie im Abschnitt [Nächste Schritte](#next-steps) am Ende dieses Artikels.
 
-### <a name="deploy-devices-to-firstline-workers-and-turn-on-shared-device-mode"></a>Bereitstellen von Geräten für Mitarbeiter in Service und Produktion und Aktivieren des Modus für gemeinsam genutzte Geräte
+### <a name="deploy-devices-to-frontline-workers-and-turn-on-shared-device-mode"></a>Bereitstellen von Geräten für Mitarbeiter in Service und Produktion und Aktivieren des Modus für gemeinsam genutzte Geräte
 
 Sobald Ihre Anwendungen den Modus für gemeinsam genutzte Geräte unterstützen und die erforderlichen Daten- und Sicherheitsänderungen aufweisen, können Sie den Mitarbeitern in Service und Produktion ihre Verwendbarkeit mitteilen.
 

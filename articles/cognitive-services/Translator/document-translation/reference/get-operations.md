@@ -52,8 +52,8 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
 
 |Query parameter (Abfrageparameter)|Erforderlich|BESCHREIBUNG|
 |--- |--- |--- |
-|$skip|Falsch|Überspringt die $skip-Einträge in der Auflistung. Wenn sowohl $top als auch $skip bereitgestellt werden, wird $skip zuerst angewendet.|
-|$top|Falsch|Nimmt die $to- Einträge in die Auflistung auf. Wenn sowohl $top als auch $skip bereitgestellt werden, wird $skip zuerst angewendet.|
+|$skip|False|Überspringt die $skip-Einträge in der Auflistung. Wenn sowohl $top als auch $skip bereitgestellt werden, wird $skip zuerst angewendet.|
+|$top|False|Nimmt die $to- Einträge in die Auflistung auf. Wenn sowohl $top als auch $skip bereitgestellt werden, wird $skip zuerst angewendet.|
 
 ## <a name="request-headers"></a>Anforderungsheader
 
@@ -89,7 +89,7 @@ Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 |status|String|Liste möglicher Status für Auftrag oder Dokument: <ul><li>Canceled</li><li>Wird abgebrochen</li><li>Fehler</li><li>NotStarted</li><li>Wird ausgeführt</li><li>Erfolgreich</li><li>ValidationFailed</li></ul>|
 |Zusammenfassung|StatusSummary[]|Zusammenfassung, die die unten aufgeführten Details enthält.|
 |summary.total|integer|Gesamtanzahl der Dokumente.|
-|summary.failed|integer|Anzahl der Dokumente mit Fehlern|
+|summary.failed|integer|Anzahl der Dokumente mit Fehlern.|
 |summary.success|integer|Anzahl der Dokumente, die erfolgreich übersetzt wurden.|
 |summary.inProgress|integer|Zählung der Dokumente in Bearbeitung.|
 |summary.notYetStarted|integer|Anzahl von Dokumenten, die noch nicht in Bearbeitung sind.|

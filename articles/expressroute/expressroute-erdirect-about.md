@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: duau
-ms.openlocfilehash: 4b129a218f0fe90f632adef1325288b3f8d97d16
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 56d6a76991c4386be45b2c18f4edb3d363e58fa5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585960"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105027141"
 ---
 # <a name="about-expressroute-direct"></a>Informationen zu ExpressRoute Direct
 
-ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 oder 10 GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt.
+ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 oder 10 GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt. Sie können mit jedem beliebigen Dienstanbieter für ER-Direct arbeiten.
 
 ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 
@@ -28,7 +28,7 @@ ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 
 Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonnement registrieren. Führen Sie die folgenden Befehle mithilfe von Azure PowerShell aus, um sich zu registrieren:
 
-1.  Melden Sie sich bei Azure an, und wählen Sie die Abonnement-ID aus, mit der Sie den Cluster entfernen möchten.
+1.  Melden Sie sich bei Azure an, und wählen Sie das Abonnement aus, für das Sie sich registrieren möchten.
 
     ```azurepowershell-interactive
     Connect-AzAccount 
@@ -89,7 +89,7 @@ ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmeng
     * Ethernettyp = 0x8100
     * Muss das äußere VLAN-Tag (STAG), basierend auf der von Microsoft angegebenen VLAN-ID, hinzufügen – *gilt nur für QinQ*.
     * Muss mehrere BGP-Sitzungen (VLANs) pro Port und Gerät unterstützen.
-    * IPv4- und IPv6-Konnektivität. *Für IPv6 wird keine zusätzliche untergeordnete Schnittstelle erstellt. Der untergeordneten Schnittstelle wird eine IPv6-Adresse hinzugefügt*. 
+    * IPv4- und IPv6-Konnektivität. *Für IPv6 wird keine zusätzliche untergeordnete Schnittstelle erstellt. Eine IPv6-Adresse wird der vorhandenen untergeordneten Schnittstelle hinzugefügt*. 
     * Optional: Unterstützung der [bidirektionalen Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD)](./expressroute-bfd.md), die für alle privaten Peerings in ExpressRoute-Leitungen standardmäßig konfiguriert ist
 
 ## <a name="vlan-tagging"></a>VLAN-Kennzeichnung

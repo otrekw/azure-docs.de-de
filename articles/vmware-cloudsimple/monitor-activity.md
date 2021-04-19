@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899302"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Überwachen der VMware Solution by CloudSimple-Aktivität
@@ -50,7 +50,7 @@ Die folgenden Spalten mit Informationen sind für Warnungen verfügbar. Klicken 
 ------------ | ------------- |
 | Warnungstyp | Kategorie der Warnung.|
 | Zeit | Zeitpunkt, zu dem die Warnung auftrat. |
-| Schweregrad | Bedeutung der Warnung.|
+| severity | Bedeutung der Warnung.|
 | Ressourcenname | Name, der der Ressource zugewiesen ist, z. B. der Name der privaten Cloud. |
 | Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud Rack. |
 | Ressourcen-ID | Bezeichner der Ressource. |
@@ -67,14 +67,14 @@ Die folgenden Spalten mit Informationen sind für Warnungen verfügbar. Klicken 
 ------------ | ------------- |
 | Time | Angabe des Zeitpunkts, zu dem das Ereignis aufgetreten ist, mit Datum und Uhrzeit. |
 | Ereignistyp | Numerischer Code, der das Ereignis identifiziert. |
-| Schweregrad | Ereignisschweregrad.|
+| severity | Ereignisschweregrad.|
 | Ressourcenname | Name, der der Ressource zugewiesen ist, z. B. der Name der privaten Cloud. |
 | Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud Rack. |
 | BESCHREIBUNG | Beschreibung des Auslösers der Warnung. |
 
 ## <a name="tasks"></a>Aufgaben
 
-Bei Aufgaben handelt es sich um Aktivitäten in einer privaten Cloud, die voraussichtlich 30 Sekunden oder länger dauern. (Aktivitäten, die voraussichtlich weniger als 30 Sekunden dauern, werden nur als Ereignisse gemeldet.) Öffnen Sie die Seite „Aufgaben“, um den Fortschritt von Aufgaben für die private Cloud zu verfolgen.
+Bei Aufgaben handelt es sich um Aktivitäten in einer privaten Cloud, die voraussichtlich 30 Sekunden oder länger dauern. (Aktivitäten, die voraussichtlich weniger als 30 Sekunden dauern, werden nur als Ereignisse gemeldet.) Öffnen Sie die Aufgaben-Seiten, um den Fortschritt von Aufgaben für die Private Cloud zu verfolgen.
 
 Die folgenden Spalten mit Informationen sind für Warnungen verfügbar. Klicken Sie auf **Spalten bearbeiten**, und wählen Sie die Spalten aus, die Sie anzeigen möchten.
 
@@ -82,7 +82,7 @@ Die folgenden Spalten mit Informationen sind für Warnungen verfügbar. Klicken 
 ------------ | ------------- |
 | Aufgaben-ID | Eindeutiger Bezeichner für die Aufgabe. |
 | Vorgang | Aktion, die die Aufgabe ausführt. |
-| User | Der Benutzer, dem die Durchführung der Aufgabe zugewiesen ist. |
+| Benutzer | Der Benutzer, dem die Durchführung der Aufgabe zugewiesen ist. |
 | Ressourcenname | Name, der der Ressource zugewiesen ist. |
 | Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud Rack. |
 | Ressourcen-ID | Bezeichner der Ressource. |
@@ -102,7 +102,7 @@ Die folgenden Spalten mit Informationen sind für Warnungen verfügbar. Klicken 
 ------------ | ------------- |
 | Time | Zeitpunkt des Überwachungseintrags. |
 | Vorgang | Aktion, die die Aufgabe ausführt. |
-| User | Benutzer, der der Aufgabe zugewiesen ist. |
+| Benutzer | Benutzer, der der Aufgabe zugewiesen ist. |
 | Ressourcenname | Name, der der Ressource zugewiesen ist. |
 | Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud Rack. |
 | Ressourcen-ID | Bezeichner der Ressource. |

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
 ms.openlocfilehash: 9d31bcaad01b9b762e57bd619d45c1f53ffb201e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100376801"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
@@ -108,7 +108,7 @@ Wenn Sie bereits ein VNET mit einem VPN-Gateway besitzen, stellen Sie sicher, da
 7. Verwenden Sie für **Clientadressraum** die [Werte](#connectoverview) für die IP-Adressräume des virtuellen Netzwerks für das Resource Manager-VNET. Diese Einstellung wird verwendet, um die Adressräume für die Weiterleitung an das virtuelle Resource Manager-Netzwerk anzugeben. Im Beispiel verwenden wir 192.168.0.0/16, den Adressbereich für das RMVNet.
 8. Klicken Sie auf **OK**, um die Werte zu speichern und zur Seite **Neue VPN-Verbindung** zurückzukehren.
 
-### <a name="3-create-the-virtual-network-gateway"></a><a name="classicgw"></a>3. Erstellen des Gateways für das lokale Netzwerk
+### <a name="3-create-the-virtual-network-gateway"></a><a name="classicgw"></a>3. Erstellen des Gateways für virtuelle Netzwerke
 
 1. Aktivieren Sie auf der Seite **Neue VPN-Verbindung** das Kontrollkästchen **Gateway sofort erstellen**.
 2. Klicken Sie auf **Optionale Gatewaykonfiguration**, um die Seite **Gatewaykonfiguration** zu öffnen.
@@ -166,7 +166,7 @@ In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Hä
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="3-create-a-local-network-gateway"></a><a name="createlng"></a>3. Erstellen eines Gateways für das lokale Netzwerk
+### <a name="3-create-a-local-network-gateway"></a><a name="createlng"></a>3. Erstellen eines lokalen Netzwerkgateways
 
 **Beispielwerte:** Lokales Netzwerkgateway = ClassicVNetLocal
 
@@ -218,7 +218,7 @@ In den folgenden Schritten konfigurieren Sie mithilfe des Azure-Portals die Verb
 
 In den folgenden Schritten konfigurieren Sie die Verbindung zwischen dem klassischen VNET und dem Resource Manager-VNET. Für diese Schritte ist PowerShell erforderlich. Diese Verbindung kann nicht im Portal erstellt werden. Stellen Sie sicher, dass Sie sowohl die SM-PowerShell-Cmdlets (klassisch) als auch die RM-PowerShell-Cmdlets (Resource Manager) heruntergeladen und installiert haben.
 
-### <a name="1-connect-to-your-azure-account"></a>1. Herstellen einer Verbindung mit Ihrem Azure-Konto
+### <a name="1-connect-to-your-azure-account"></a>1. Verbindung mit Ihrem Azure-Konto herstellen
 
 Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und melden Sie sich bei Ihrem Azure-Konto an. Nachdem Sie sich angemeldet haben, werden Ihre Kontoeinstellungen heruntergeladen, sodass sie in Azure PowerShell verfügbar sind. Das folgende Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto für das Resource Manager-Bereitstellungsmodell auf:
 

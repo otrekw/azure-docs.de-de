@@ -65,7 +65,7 @@ Der Basistyp für die Listenrückgabe in der „Get Document Storage Source“-A
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|type|Beschreibung|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|

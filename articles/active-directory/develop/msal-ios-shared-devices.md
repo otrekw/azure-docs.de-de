@@ -1,7 +1,7 @@
 ---
 title: Modus für gemeinsam genutzte Geräte für iOS-Geräte
 titleSuffix: Microsoft identity platform | Azure
-description: Erfahren Sie, wie Sie den Modus für gemeinsam genutzte Geräte aktivieren, über den Mitarbeiter in Service und Produktion ein iOS-Gerät gemeinsam nutzen können
+description: Hier erfahren Sie, wie Sie den Modus für gemeinsam genutzte Geräte aktivieren, über den Mitarbeiter in Service und Produktion ein iOS-Gerät gemeinsam nutzen können.
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,19 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a97e14bcb68629f5f175a4913146187949af08be
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3353d87291492563acbd3a85bbae266c711377f2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561062"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611802"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Modus für gemeinsam genutzte Geräte für iOS-Geräte
 
 >[!IMPORTANT]
 > Dieses Feature [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-Mitarbeiter in Service und Produktion, z. B. Mitarbeiter im Einzelhandel, Mitglieder der Flugzeugbesatzung und Außendienstmitarbeiter, verwenden für ihre Arbeit häufig ein gemeinsam genutztes mobiles Gerät. Diese gemeinsam genutzten Geräte können Sicherheitsrisiken darstellen, wenn Benutzer Kennwörter oder Pins absichtlich oder versehentlich teilen, um auf Kunden- und Geschäftsdaten auf dem gemeinsam genutzten Gerät zuzugreifen.
+Mitarbeiter in Service und Produktion (z. B. Mitarbeiter im Einzelhandel, Mitglieder der Flugzeugbesatzung oder Außendienstmitarbeiter) verwenden für ihre Arbeit häufig ein gemeinsam genutztes mobiles Gerät. Diese gemeinsam genutzten Geräte können Sicherheitsrisiken darstellen, wenn Benutzer Kennwörter oder Pins absichtlich oder versehentlich teilen, um auf Kunden- und Geschäftsdaten auf dem gemeinsam genutzten Gerät zuzugreifen.
 
 Im Modus für gemeinsam genutzte Geräte können Sie ein Gerät mit iOS 13 oder höher konfigurieren, damit es einfacher und sicherer von Mitarbeitern gemeinsam genutzt werden kann. Mitarbeiter können sich anmelden und schnell auf Kundeninformationen zugreifen. Nach ihrer Schicht oder nach Abschluss der Aufgabe können sie sich auf dem Gerät abmelden, das dann sofort für den nächsten Mitarbeiter einsatzbereit ist.
 
@@ -95,7 +95,7 @@ Bei einem Wechsel des Benutzers müssen Sie sicherstellen, dass die Daten des vo
 
 ### <a name="detect-shared-device-mode"></a>Erkennen des Modus für gemeinsam genutzte Geräte
 
-Das Erkennen des Modus für gemeinsam genutzte Geräte ist wichtig für Ihre Anwendung. Viele Anwendungen erfordern eine Änderung der Benutzerumgebung, wenn die Anwendung auf einem gemeinsam genutzten Gerät verwendet wird. Beispielsweise kann Ihre Anwendung über eine „Registrierungsfunktion“ verfügen, die für Mitarbeiter in Service und Produktion nicht geeignet ist, da diese wahrscheinlich bereits über ein Konto verfügen. Vielleicht möchten Sie für die Verarbeitung der Daten in Ihrer Anwendung auch zusätzliche Sicherheit bereitstellen, wenn der Modus für gemeinsam genutzte Geräte verwendet wird.
+Das Erkennen des Modus für gemeinsam genutzte Geräte ist wichtig für Ihre Anwendung. Viele Anwendungen erfordern eine Änderung der Benutzerumgebung, wenn die Anwendung auf einem gemeinsam genutzten Gerät verwendet wird. Beispielsweise kann Ihre Anwendung über ein „Registrierungsfeature“ verfügen, die für Mitarbeiter in Service und Produktion nicht geeignet ist, da diese wahrscheinlich bereits über ein Konto verfügen. Vielleicht möchten Sie für die Verarbeitung der Daten in Ihrer Anwendung auch zusätzliche Sicherheit bereitstellen, wenn der Modus für gemeinsam genutzte Geräte verwendet wird.
 
 Ermitteln Sie mit der `getDeviceInformationWithParameters:completionBlock:`-API in `MSALPublicClientApplication`, ob eine App auf einem Gerät mit dem Modus für gemeinsam genutzte Geräte ausgeführt wird.
 
@@ -230,6 +230,6 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um den Modus für gemeinsam genutzte Geräte in Aktion zu sehen, enthält das folgende Codebeispiel auf GitHub ein Beispiel für das Ausführen einer App für Mitarbeiter in Service und Produktion auf einem iOS-Gerät im Modus für gemeinsam genutzte Geräte:
+Das folgende Codebeispiel auf GitHub umfasst ein Beispiel für das Ausführen einer App für Mitarbeiter in Service und Produktion auf einem iOS-Gerät im Modus für gemeinsam genutzte Geräte, um diesen Modus in Aktion zu zeigen:
 
 [MSAL: iOS-Beispiel in Swift und Microsoft Graph-API](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)

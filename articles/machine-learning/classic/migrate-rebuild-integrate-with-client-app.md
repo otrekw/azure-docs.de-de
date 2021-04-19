@@ -3,17 +3,17 @@ title: 'ML Studio (Classic): Migrieren zu Azure Machine Learning – Nutzen von
 description: Integrieren von Pipelineendpunkten in Clientanwendungen in Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio-classic
+ms.subservice: studio
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: fc7e222d400c2ded602e3d26d504896302fff014
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: bf0624e0667c9fc6998fb28898a3376ca409180d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311786"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103565652"
 ---
 # <a name="consume-pipeline-endpoints-from-client-applications"></a>Nutzen von Pipelineendpunkten aus Clientanwendungen
 
@@ -38,7 +38,7 @@ Wenn Sie Ihr Modell als **Echtzeitendpunkt** bereitgestellt haben, können Sie d
 1. Wählen Sie **Nutzen** aus.
 
 > [!NOTE]
-> Außerdem finden Sie auf der Registerkarte **Details** die Swagger-Spezifikation für den Endpunkt. Anhand der Swagger-Definition können Sie das Endpunktschema verstehen. Weitere Informationen zur Swagger-Definition finden Sie in der [offiziellen Swagger-Dokumentation](https://swagger.io/docs/specification/2-0/what-is-swagger/).
+> Sie können die Swagger-Spezifikation für ihren Endpunkt auch auf der Registerkarte **Details** finden. Verwenden Sie die Swagger-Definition, um das Endpunktschema zu verstehen. Weitere Informationen zur Swagger-Definition finden Sie in der [offiziellen Swagger-Dokumentation](https://swagger.io/docs/specification/2-0/what-is-swagger/).
 
 
 ## <a name="consume-a-pipeline-endpoint"></a>Nutzen eines Pipelineendpunkts

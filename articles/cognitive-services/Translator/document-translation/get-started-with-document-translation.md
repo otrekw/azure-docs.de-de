@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486657"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612380"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Erste Schritte bei der Dokumentübersetzung (Vorschauversion)
 
@@ -20,7 +20,10 @@ ms.locfileid: "102486657"
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!NOTE]
-> Beim Erstellen einer Cognitive Services-Ressource im Azure-Portal haben Sie normalerweise die Möglichkeit, einen Abonnementschlüssel für mehrere Dienste oder nur für einen Dienst zu erstellen. Dokumentübersetzung wird derzeit aber nur für die Textübersetzungsressource (einzelner Dienst) unterstützt und ist **nicht** in der Cognitive Services-Ressource (mehrere Dienste) enthalten.
+>
+> 1. Beim Erstellen einer Cognitive Services-Ressource im Azure-Portal haben Sie normalerweise die Möglichkeit, einen Abonnementschlüssel für mehrere Dienste oder nur für einen Dienst zu erstellen. Dokumentübersetzung wird derzeit aber nur für die Textübersetzungsressource (einzelner Dienst) unterstützt und ist **nicht** in der Cognitive Services-Ressource (mehrere Dienste) enthalten.
+> 2. Dokumentübersetzung ist zurzeit im **Diensttarif „S1 Standard“** verfügbar. _Weitere Informationen finden Sie unter_ [Cognitive Services-Preise – Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator/).
+>
 
 Zunächst benötigen Sie Folgendes:
 
@@ -30,14 +33,12 @@ Zunächst benötigen Sie Folgendes:
 
 * Ein [**Azure Blob Storage-Konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Sie erstellen Container zum Speichern und Organisieren Ihrer Blobdaten unter Ihrem Speicherkonto.
 
-* Ein ausgefülltes [**Formular für Dokumentübersetzung (Vorschauversion)** ](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u), damit Sie unter Ihrem Azure-Abonnement das neue Feature „Dokumentübersetzung“ nutzen können.
-
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>Beschaffen des Namens Ihrer benutzerdefinierten Domäne und des Abonnementschlüssels
 
 > [!IMPORTANT]
 >
-> * Zum Senden von HTTP-Anforderungen für die Dokumentübersetzung verwenden Sie nicht den Endpunkt, der im Azure-Portal auf der Ressourcenseite _Schlüssel und Endpunkt_ angegeben ist, und auch nicht den globalen Übersetzungsendpunkt `api.cognitive.microsofttranslator.com`.
 > * **Für alle API-Anforderungen an den Dienst für die Dokumentübersetzung muss ein Endpunkt einer benutzerdefinierten Domäne verwendet werden**.
+> * Zum Senden von HTTP-Anforderungen für die Dokumentübersetzung verwenden Sie nicht den Endpunkt, der im Azure-Portal auf der Ressourcenseite _Schlüssel und Endpunkt_ angegeben ist, und auch nicht den globalen Übersetzungsendpunkt `api.cognitive.microsofttranslator.com`.
 
 ### <a name="what-is-the-custom-domain-endpoint"></a>Was ist der Endpunkt einer benutzerdefinierten Domäne?
 
@@ -92,7 +93,7 @@ Die URLs `sourceUrl`, `targetUrl` und `glossaryUrl` (optional) müssen ein SAS-T
 
 * Erstellen Sie ein neues Projekt.
 * Ersetzen Sie den Code in „Program.cs“ durch den unten abgebildeten C#-Code.
-* Legen Sie die URL-Werte für Ihren Endpunkt, den Abonnementschlüssel und den Container in „Program.cs“ fest.
+* Legen Sie Ihre URL-Werte für den Endpunkt, Abonnementschlüssel und Container in Program.cs fest.
 * Fügen Sie für die Verarbeitung der JSON-Daten das [Newtonsoft.Json-Paket mit der .NET CLI](https://www.nuget.org/packages/Newtonsoft.Json/) hinzu.
 * Führen Sie das Programm aus dem Projektverzeichnis aus.
 
@@ -100,7 +101,7 @@ Die URLs `sourceUrl`, `targetUrl` und `glossaryUrl` (optional) müssen ein SAS-T
 
 * Erstellen Sie ein neues Node.js-Projekt.
 * Installieren Sie die Axios-Bibliothek mit `npm i axios`.
-* Kopieren Sie den unten angegebenen Code, und fügen Sie ihn in Ihr Projekt ein.
+* Kopieren Sie den unten angegebenen Code und fügen Sie ihn in Ihr Projekt ein.
 * Legen Sie Ihre URL-Werte für den Endpunkt, Abonnementschlüssel und Container fest.
 * Sie führen das Programm aus.
 
@@ -173,7 +174,7 @@ gradle run
 * Legen Sie Ihre URL-Werte für den Endpunkt, Abonnementschlüssel und Container fest.
 * Speichern Sie die Datei mit der Erweiterung „.go“.
 * Öffnen Sie auf einem Computer, auf dem Go installiert ist, eine Eingabeaufforderung.
-* Erstellen Sie die Datei, beispielsweise mit „go build example-code.go“.
+* Erstellen Sie die Datei. Beispielsweise mit „go build example-code.go“.
 * Führen Sie die Datei aus, beispielsweise mit „example-code“.
 
  ---
@@ -206,26 +207,49 @@ Jede Anforderung der API für die Dokumentübersetzung enthält die folgenden He
 ## <a name="post-a-translation-request"></a>Senden einer Übersetzungsanforderung (POST)
 
 <!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-without-optional-glossaryurl"></a>POST-Anforderungstext ohne optionale glossaryURL
+### <a name="post-request-body-to-translate-all-documents-in-a-container"></a>POST-Anforderungstext zum Übersetzen aller Dokumente in einem Container
 
 ```json
 {
     "inputs": [
         {
             "source": {
-                "sourceUrl": "<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-                "storageSource": "AzureBlob",
-                "filter": {
-                    "prefix": "News",
-                    "suffix": ".txt"
-                },
-                "language": "en"
+                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
             },
             "targets": [
                 {
-                    "targetUrl": "<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-                    "storageSource": "AzureBlob",
-                    "category": "general",
+                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "language": "fr"
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+### <a name="post-request-body-to-translate-a-specific-document-in-a-container"></a>POST-Anforderungs Text zum Übersetzen eines bestimmten Dokuments in einem Container
+
+* Stellen Sie sicher, dass Sie „storageType“: „File“ angegeben haben.
+* Stellen Sie sicher, dass Sie Glossar-URL- und SAS-Token für das spezifische Blob/Dokument (nicht für den Container) erstellt haben. 
+* Stellen Sie sicher, dass Sie den Zieldateinamen als Teil der Ziel-URL angegeben haben – obwohl das SAS-Token für den Container noch immer vorhanden ist.
+* Die Beispielanforderung unten zeigt, wie ein einzelnes Dokument in zwei Zielsprachen übersetzt wird.
+
+```json
+{
+    "inputs": [
+        {
+            "storageType": "File",
+            "source": {
+                "sourceUrl": https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D
+            },
+            "targets": [
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "language": "es"
+                },
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
                     "language": "de"
                 }
             ]
@@ -234,40 +258,6 @@ Jede Anforderung der API für die Dokumentübersetzung enthält die folgenden He
 }
 ```
 
-### <a name="post-request-body-with-optional-glossaryurl"></a>POST-Anforderungstext mit optionaler glossaryURL
-
-```json
-{
-  "inputs":[
-    {
-      "source":{
-        "sourceUrl":"<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-        "storageSource":"AzureBlob",
-        "filter":{
-          "prefix":"News",
-          "suffix":".txt"
-        },
-        "language":"en"
-      },
-      "targets":[
-        {
-          "targetUrl":"<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-          "storageSource":"AzureBlob",
-          "category":"general",
-          "language":"de",
-          "glossaries":[
-            {
-              "glossaryUrl":"<https://YOUR-GLOSSARY-URL-WITH-READ-LIST-ACCESS-SAS>",
-              "format":"xliff",
-              "version":"1.2"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
 
 > [!IMPORTANT]
 >
@@ -1246,7 +1236,7 @@ func main() {
 
 ## <a name="content-limits"></a>Grenzwerte für den Inhalt
 
-In der folgenden Tabelle sind die Grenzwerte für Daten aufgelistet, die Sie an die Dokumentübersetzung senden können.
+In der folgenden Tabelle sind die Grenzwerte für Daten aufgelistet, die Sie an die Dokumentübersetzung (Vorschau) senden können.
 
 |attribute | Begrenzung|
 |---|---|

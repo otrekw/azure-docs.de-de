@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 80805aaa172518c40c7ad123ca24361ee0f15e69
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97895698"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurieren einer Hochverfügbarkeitsverbindung zwischen einem lokalen Standort und einem CloudSimple VPN-Gateway
@@ -152,7 +152,7 @@ Melden Sie sich bei der Palo Alto-Firewall an, wählen Sie **Network (Netzwerk)*
 * Interface Name (Schnittstellenname). Das erste Feld wird automatisch mit dem Schlüsselwort „tunnel“ aufgefüllt. Geben Sie im angrenzenden Feld eine beliebige Zahl zwischen 1 und 9.999 ein. Diese Schnittstelle wird als primäre Tunnelschnittstelle verwendet, um Site-to-Site-Datenverkehr zwischen dem lokalen Rechenzentrum und der privaten Cloud zu übertragen.
 * Comment (Kommentar). Geben Sie Kommentare ein, um den Zweck des Tunnels leicht identifizieren zu können.
 * NetFlow Profile (NetFlow-Profil). Behalten Sie den Standardwert bei.
-* Config (Konfiguration). Schnittstelle zuweisen zu: Virtueller Router: Wählen Sie **Standard** aus. 
+* Config.Schnittstelle zuweisen zu: Virtueller Router: Wählen Sie **Standard** aus. 
         Sicherheitszone: Wählen Sie die Zone für vertrauenswürdigen LAN-Datenverkehr aus. In diesem Beispiel lautet der Name der Zone für den LAN-Datenverkehr „Trust“.
 * IPv4. Klicken Sie auf **Add** (Hinzufügen), und fügen Sie eine beliebige nicht überlappende /32-IP-Adresse in Ihrer Umgebung hinzu, die der primären Tunnelschnittstelle zugewiesen und zum Überwachen der Tunnel verwendet wird (dies wird später erläutert).
 
@@ -245,7 +245,7 @@ Wählen Sie **Network (Netzwerk)**  > **Expand Network Profiles (Netzwerkprofile
 * Interval (Intervall). Geben Sie den Wert **3** ein.
 * Threshold (Schwellenwert). Geben Sie den Wert **7** ein.
 
-### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. Einrichten der primären und sekundären IPSec-Tunnel
+### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. Einrichten der primären und sekundären IPSec-Tunnel.
 
 Wählen Sie **Network (Netzwerk)**  > **IPsec Tunnels (IPSEC-Tunnel)**  > **Add (Hinzufügen)** aus, konfigurieren Sie die folgenden Felder, und klicken Sie dann auf **OK**.
 

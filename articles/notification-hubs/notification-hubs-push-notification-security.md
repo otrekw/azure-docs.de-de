@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100548249"
 ---
 # <a name="notification-hubs-security"></a>Sicherheit von Notification Hubs
@@ -58,7 +58,7 @@ Notification Hubs akzeptiert SAS-Token mit freigegebenen Schlüsseln, die direkt
 
 Es ist nicht möglich, eine Benachrichtigung an mehr als einen Namespace zu senden. Namespaces sind logische Container für Notification Hubs und nicht am Senden von Benachrichtigungen beteiligt.
 
-Verwenden Sie die Zugriffsrichtlinien auf Namespaceebene (Anmeldeinformationen) für Vorgänge auf Namespaceebene. Beispiel: Auflistung von Hubs, Erstellen oder Löschen von Hubs usw. Nur die Zugriffsrichtlinien auf Hubebene gestatten es Ihnen, Benachrichtigungen zu senden.
+Verwenden Sie die Zugriffsrichtlinien auf Namespaceebene (Anmeldeinformationen) für Vorgänge auf Namespaceebene. Beispiel: Auflistung von Hubs, Erstellen oder Löschen von Hubs usw. Nur die Zugriffsrichtlinien auf Hubebene ermöglichen das Senden von Benachrichtigungen.
 
 ### <a name="sas-tokens-for-access-policies"></a>SAS-Token für Zugriffsrichtlinien
 
@@ -68,7 +68,7 @@ Gehen Sie wie folgt vor, um einen neuen Sicherheitsanspruch zu erstellen oder vo
 2. Wählen Sie **Alle Ressourcen**.
 3. Wählen Sie den Namen des Notification Hubs aus, für den Sie den Anspruch erstellen oder den SAS-Schlüssel anzeigen möchten.
 4. Wählen Sie im linken Menü **Zugriffsrichtlinien** aus.
-5. Wählen Sie **Neue Richtlinie** aus, um einen neuen Sicherheitsanspruch zu erstellen. Benennen Sie die Richtlinie, und wählen Sie die Berechtigungen aus, die Sie gewähren möchten. Klicken Sie dann auf **OK**.
+5. Wählen Sie **Neue Richtlinie** aus, um einen neuen Sicherheitsanspruch zu erstellen. Benennen Sie die Richtlinie, und wählen Sie die Berechtigungen aus, die Sie gewähren möchten. Klicken Sie anschließend auf **OK**.
 6. Die vollständige Verbindungszeichenfolge (einschließlich des neuen SAS-Schlüssels) wird im Fenster „Zugriffsrichtlinien“ angezeigt. Sie können diese Zeichenfolge zur späteren Verwendung in die Zwischenablage kopieren.
 
 Wenn Sie den SAS-Schlüssel aus einer bestimmten Richtlinie extrahieren möchten, wählen Sie die Schaltfläche **Kopieren** neben der Richtlinie aus, die den gewünschten SAS-Schlüssel enthält. Fügen Sie diesen Wert an einer temporären Position ein, und kopieren Sie dann den SAS-Schlüsselteil der Verbindungszeichenfolge. In diesem Beispiel wird ein Notification Hubs-Namespace namens **mytestnamespace1** und eine Richtlinie namens **policy2** verwendet. Der SAS-Schlüssel ist der Wert in der Nähe des Endes der Zeichenfolge, der durch **SharedAccessKey** angegeben wird:

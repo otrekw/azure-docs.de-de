@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 71fe30212b31e810bfe3e1ba10f80be6b09ad4fc
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 8f0e7ec2566928897d2b84357b599506520e8d95
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863682"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612023"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Einrichten einer Appliance für Server in Hyper-V
 
@@ -39,7 +39,7 @@ So richten Sie die Appliance mithilfe einer VHD-Vorlage ein
 
 1. Wählen Sie unter **Migrationsziele** > **Windows, Linux and SQL Servers (Windows-/Linux-Server und SQL Server-Instanzen)**  > **Azure Migrate: Ermittlung und Bewertung** die Option **Ermitteln** aus.
 2. Wählen Sie unter **Server ermitteln** > **Sind Ihre Server virtualisiert?** die Option **Ja, mit Hyper-V** aus.
-3. Geben Sie in **1: Projektschlüssel generieren** einen Namen für die Azure Migrate-Appliance an, die Sie für die Ermittlung von Hyper-V-Servern einrichten möchten. Der Name muss alphanumerisch sein und darf höchstens 14 Zeichen enthalten.
+3. Geben Sie unter **1: Projektschlüssel generieren** einen Namen für die Azure Migrate-Appliance ein, die Sie für die Ermittlung von Servern auf Hyper-V einrichten. Für den Namen können bis zu 14 alphanumerische Zeichen angegeben werden.
 1. Klicken Sie auf **Schlüssel generieren**, um mit der Erstellung der erforderlichen Azure-Ressourcen zu beginnen. Schließen Sie die Seite „Discover servers“ (Server ermitteln) nicht, während die Ressourcen erstellt werden.
 1. Nach der erfolgreichen Erstellung der Azure-Ressourcen wird ein **Projektschlüssel** generiert.
 1. Kopieren Sie den Schlüssel, da Sie ihn benötigen, um die Registrierung der Appliance während der Konfiguration abzuschließen.
@@ -53,7 +53,6 @@ Wählen Sie in **2: Azure Migrate-Appliance herunterladen** die VHD-Datei aus, u
 
    ![Auswahloptionen für „Schlüssel generieren“](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)
 
-
 ### <a name="verify-security"></a>Überprüfen der Sicherheit
 
 Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist.
@@ -63,9 +62,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
-
-
-
+Überprüfen Sie den aktuellen Hashwert, indem Sie das Ergebnis des obigen Befehls mit dem [hier](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v#verify-security) dokumentierten Wert vergleichen.
 
 ## <a name="create-the-appliance"></a>Erstellen der Appliance
 
@@ -85,7 +82,6 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie eine Appliance.
 5. Geben Sie unter **Netzwerk auswählen** den virtuellen Switch an, der vom Server verwendet wird. Der Switch benötigt Internetkonnektivität, um Daten an Azure senden zu können.
 6. Überprüfen Sie die Einstellungen unter **Zusammenfassung**. Klicken Sie auf **Fertig stellen**.
 7. Starten Sie die VM im Hyper-V-Manager unter **Virtuelle Computer**.
-
 
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
@@ -128,8 +124,6 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 1. Wechseln Sie nach der erfolgreichen Anmeldung wieder zur vorherigen Registerkarte mit dem Appliance-Konfigurations-Manager.
 4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
 1. Nachdem die Appliance erfolgreich registriert wurde, können Sie die Registrierungsdetails anzeigen, indem Sie auf **Details anzeigen** klicken.
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Delegieren von Anmeldeinformationen für SMB-VHDs
 

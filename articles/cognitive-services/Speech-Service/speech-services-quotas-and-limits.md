@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/27/2021
 ms.author: alexeyo
-ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564421"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937055"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kontingente und Grenzwerte für Speech-Dienste
 
@@ -39,7 +39,7 @@ Zur Verwendung mit dem [Speech SDK](speech-sdk.md) und/oder der [Spracherkennung
 #### <a name="batch-transcription"></a>Batch-Transkription
 | Kontingent | Free (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
-| REST-API-Grenzwert | Batchtranskription ist für F0 nicht verfügbar. | 300 Anforderungen pro Minute |
+| [Sprache-in-Text REST API V2.0 und v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) Limit | Batchtranskription ist für F0 nicht verfügbar. | 300 Anforderungen pro Minute |
 | Maximale Größe der Audioeingabedatei | Nicht zutreffend | 1 GB |
 | Maximale Größe des Eingabeblobs (kann mehrere Dateien enthalten, z. B. in einem ZIP-Archiv; beachten Sie den Grenzwert für die Dateigröße oben) | – | 2,5 GB |
 | Maximale Größe des Blob-Containers | – | 5 GB |
@@ -63,19 +63,19 @@ Zur Verwendung mit dem [Speech SDK](speech-sdk.md) und/oder der [Spracherkennung
 ### <a name="text-to-speech-quotas-and-limits-per-speech-resource"></a>Kontingente und Grenzwerte für die Sprachsynthese nach Speech-Ressource
 In der folgenden Tabelle sind Parameter ohne die Zeile „Anpassbar“ **nicht** für alle Tarife anpassbar.
 
-| Kontingent | Free (F0)<sup>3</sup> | Standard (S0) |
-|--|--|--|
-| **Maximale Anzahl von Transaktionen pro Sekunde (TPS) für Standardstimmen und neuronale Stimmen** | 200<sup>4</sup> | 200<sup>4</sup> |  |
-| **Grenzwert für gleichzeitige Anforderungen für Custom Voice** |  |  |
-| Standardwert | 10 | 10 |
-| Anpassbar | Nein<sup>5</sup> | Ja<sup>5</sup> |
-| **HTTP-spezifische Kontingente** |  |
-| Maximal generierte Audiolänge pro Anforderung | 10 Min. | 10 Min. |
-| Maximale Anzahl unterschiedlicher Tags vom Typ `<voice>` in SSML | 50 | 50 |
-| **WebSocket-spezifische Kontingente** |  |  |
-|Maximal generierte Audiolänge pro Turn | 10 Min. | 10 Min. |
-|Maximale SSML-Nachrichtengröße pro Turn |64 KB |64 KB |
-| **REST-API-Grenzwert** | 20 Anforderungen pro Minute | 300 Anforderungen pro Minute |
+| Kontingent                                                                          | Free (F0)<sup>3</sup>  | Standard (S0)   |
+|--------------------------------------------------------------------------------|------------------------|-----------------|
+| **Maximale Anzahl von Transaktionen pro Sekunde (TPS) für Standardstimmen und neuronale Stimmen** | 200<sup>4</sup>        | 200<sup>4</sup> |
+| **Grenzwert für gleichzeitige Anforderungen für Custom Voice**                                  |                        |                 |
+| Standardwert                                                                  | 10                     | 10              |
+| Anpassbar                                                                     | Nein<sup>5</sup>         | Ja<sup>5</sup> |
+| **HTTP-spezifische Kontingente**                                                       |                        |                 |
+| Maximal generierte Audiolänge pro Anforderung                                          | 10 Min.                 | 10 Min.          |
+| Maximale Anzahl unterschiedlicher Tags vom Typ `<voice>` in SSML                                  | 50                     | 50              |
+| **WebSocket-spezifische Kontingente**                                                  |                        |                 |
+| Maximal generierte Audiolänge pro Turn                                             | 10 Min.                 | 10 Min.          |
+| Maximale SSML-Nachrichtengröße pro Turn                                                 | 64 KB                  | 64 KB           |
+| **REST-API-Grenzwert**                                                             | 20 Anforderungen pro Minute | 300 Anforderungen pro Minute |
 
 
 <sup>3</sup> Sehen Sie sich im Zusammenhang mit dem Tarif **Free (F0)** auch die monatlichen Freibeträge auf der [Preisseite](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) an.<br/>

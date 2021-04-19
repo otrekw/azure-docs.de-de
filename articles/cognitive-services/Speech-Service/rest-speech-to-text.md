@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24cc7773d281d98b6a0943f5e0a61b6f547991ee
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0c041d64b3dbd0c38979f4d8d0fa563a72f6a4b1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032822"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168194"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -24,7 +24,7 @@ Für die Spracherkennung gibt es zwei unterschiedliche REST-APIs. Jede API dient
 
 Es gibt folgende REST-APIs für die Spracherkennung:
 - Die [Spracherkennungs-REST-API 3.0](#speech-to-text-rest-api-v30) wird für die [Batchtranskription](batch-transcription.md) und [Custom Speech](custom-speech-overview.md) eingesetzt. Version 3.0 ist die [Nachfolgeversion von Version 2.0](./migrate-v2-to-v3.md).
-- Die [Spracherkennungs-REST-API für kurze Audiodaten](#speech-to-text-rest-api-for-short-audio) wird für die Onlinetranskription als Alternative zum [Speech-SDK](speech-sdk.md) eingesetzt. Anforderungen, die diese API verwenden, können pro Anforderung nur bis zu 60 Sekunden Audiodaten übertragen. 
+- Die [Spracherkennungs-REST-API für kurze Audiodaten](#speech-to-text-rest-api-for-short-audio) wird für die Onlinetranskription als Alternative zum [Speech SDK](speech-sdk.md) eingesetzt. Anforderungen, die diese API verwenden, können pro Anforderung nur bis zu 60 Sekunden Audiodaten übertragen. 
 
 ## <a name="speech-to-text-rest-api-v30"></a>Spracherkennungs-REST-API 3.0
 
@@ -51,7 +51,8 @@ Die gesamte Referenz zur Spracherkennungs-REST-API 3.0 finden Sie [hier](https:
 
 ## <a name="speech-to-text-rest-api-for-short-audio"></a>Spracherkennungs-REST-API für kurze Audiodaten
 
-Als Alternative zum [Speech-SDK](speech-sdk.md) ermöglicht der Speech-Dienst das Konvertieren von Sprache in Text mithilfe einer REST-API. Jeder zugängliche Endpunkt ist einer Region zugeordnet. Ihre Anwendung benötigt einen Abonnementschlüssel für den Endpunkt, den Sie verwenden möchten. Die REST-API für kurze Audiodaten ist stark eingeschränkt. Daher sollte sie nur verwendet werden, wenn das [Speech-SDK](speech-sdk.md) nicht verwendet werden kann.
+Als Alternative zum [Speech-SDK](speech-sdk.md) ermöglicht der Speech-Dienst das Konvertieren von Sprache in Text mithilfe einer REST-API.
+Die REST-API für kurze Audiodaten ist stark eingeschränkt. Daher sollte sie nur verwendet werden, wenn das [Speech-SDK](speech-sdk.md) nicht verwendet werden kann.
 
 Beachten Sie Folgendes, bevor Sie die Spracherkennungs-REST-API für kurze Audiodaten verwenden:
 
@@ -152,7 +153,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 Für die Veröffentlichung von Audiodaten wird dringend das Hochladen per Streaming (segmentiert) empfohlen, da damit die Latenz deutlich reduziert werden kann. Weitere Informationen zum Aktivieren des Streamings finden Sie im [Beispielcode in verschiedenen Programmiersprachen](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment).
 
 >[!NOTE]
->Die Aussprachebewertung steht aktuell nur für die Sprache `en-US` zur Verfügung.
+> Die Funktion zur Beurteilung der Aussprache unterstützt `en-US` derzeit Sprache, die in allen [Sprache-in-Text-Regionen verfügbar ist](regions.md#speech-to-text). Die Unterstützung für die Sprachen `en-GB` und `zh-CN` befindet sich in der Vorschauphase, die in den Regionen `westus` `eastasia` und `centralindia` verfügbar ist.
 
 ### <a name="sample-request"></a>Beispiel für eine Anforderung
 
@@ -341,3 +342,4 @@ Eine typische Antwort für Erkennung mit Bewertung der Aussprache:
 - [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](./how-to-custom-speech-train-model.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](./how-to-custom-speech-train-model.md)
 - [Machen Sie sich mit der Batchtranskription vertraut.](batch-transcription.md)
+

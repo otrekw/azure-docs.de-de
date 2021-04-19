@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f2d3b6b40a7b258da682d36260f6292d10635095
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498718"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966944"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -44,7 +44,7 @@ Beachten Sie bei Verwendung von SSML, dass Sonderzeichen wie Anführungszeichen,
 
 ## <a name="supported-ssml-elements"></a>Unterstützte SSML-Elemente
 
-Jedes SSML-Dokument wird mit SSML-Elementen (oder Tags) erstellt. Diese Elemente werden zum Anpassen von Tonhöhe, Satzrhythmus, Lautstärke und mehr verwendet. In den folgenden Abschnitten wird erläutert, wie die einzelnen Elemente verwendet werden und wann ein Element erforderlich oder optional ist.  
+Jedes SSML-Dokument wird mit SSML-Elementen (oder Tags) erstellt. Diese Elemente werden zum Anpassen von Tonhöhe, Satzrhythmus, Lautstärke und mehr verwendet. In den folgenden Abschnitten wird erläutert, wie die einzelnen Elemente verwendet werden und wann ein Element erforderlich oder optional ist.
 
 > [!IMPORTANT]
 > Vergessen Sie nicht die Eingabe von doppelten Anführungszeichen um Attributwerte. Die Standards für wohlgeformtes, gültiges XML erfordern es, dass Attributwerte in doppelten Anführungszeichen stehen. So ist `<prosody volume="90">` ein wohlgeformtes, gültiges Element, `<prosody volume=90>` aber nicht. SSML erkennt möglicherweise nicht Attributwerte, die nicht in Anführungszeichen stehen.
@@ -88,11 +88,11 @@ Das `voice`-Element ist erforderlich. Hiermit wird die Stimme angeben, für die 
 **Beispiel**
 
 > [!NOTE]
-> In diesem Beispiel wird die Stimme `en-US-AriaRUS` verwendet. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
+> In diesem Beispiel wird die Stimme `en-US-JennyNeural` verwendet. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         This is the text that is spoken.
     </voice>
 </speak>
@@ -100,7 +100,7 @@ Das `voice`-Element ist erforderlich. Hiermit wird die Stimme angeben, für die 
 
 ## <a name="use-multiple-voices"></a>Verwenden mehrerer Stimmen
 
-Innerhalb des `speak`-Elements können Sie mehrere Stimmen für die Ausgabe der Sprachsynthese angeben. Diese Stimmen können in verschiedenen Sprachen sein. Der Text muss bei jeder Stimme von einem `voice`-Element umschlossen werden. 
+Innerhalb des `speak`-Elements können Sie mehrere Stimmen für die Ausgabe der Sprachsynthese angeben. Diese Stimmen können in verschiedenen Sprachen sein. Der Text muss bei jeder Stimme von einem `voice`-Element umschlossen werden.
 
 **Attribute**
 
@@ -117,7 +117,7 @@ Abhängig von der Sprache des Speech SDK legen Sie die `"SpeechServiceResponse_S
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a>.
+Weitere Informationen finden Sie unter <a href="/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a>.
 
 ```csharp
 speechConfig.SetProperty(
@@ -126,7 +126,7 @@ speechConfig.SetProperty(
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a>.
+Weitere Informationen finden Sie unter <a href="/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a>.
 
 ```cpp
 speechConfig->SetProperty(
@@ -135,7 +135,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a>.
+Weitere Informationen finden Sie unter <a href="/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a>.
 
 ```java
 speechConfig.setProperty(
@@ -144,7 +144,7 @@ speechConfig.setProperty(
 
 # <a name="python"></a>[Python](#tab/python)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a>.
+Weitere Informationen finden Sie unter <a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a>.
 
 ```python
 speech_config.set_property_by_name(
@@ -153,7 +153,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a>.
+Weitere Informationen finden Sie unter <a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a>.
 
 ```javascript
 speechConfig.setProperty(
@@ -162,7 +162,7 @@ speechConfig.setProperty(
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>.
+Weitere Informationen finden Sie unter <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>.
 
 ```objectivec
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
@@ -170,7 +170,7 @@ Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/objec
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>.
+Weitere Informationen finden Sie unter <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>.
 
 ```swift
 speechConfig!.setPropertyTo(
@@ -183,11 +183,11 @@ speechConfig!.setPropertyTo(
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         Good morning!
     </voice>
-    <voice name="en-US-Guy24kRUS">
-        Good morning to you too Aria!
+    <voice name="en-US-GuyNeural">
+        Good morning to you too Jenny!
     </voice>
 </speak>
 ```
@@ -213,14 +213,9 @@ Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterst
 * `zh-CN-XiaoxuanNeural` (Vorschau)
 * `zh-CN-XiaoruiNeural` (Vorschau)
 
-Die Intensität der Sprechweise kann weiter verändert werden, damit sie besser zu Ihrem Anwendungsfall passt. Sie können mit `styledegree` eine kräftigere oder sanftere Sprechweise angeben, um die Sprache ausdrucksstärker oder gedämpfter zu gestalten. 
+Die Intensität der Sprechweise kann weiter verändert werden, damit sie besser zu Ihrem Anwendungsfall passt. Sie können mit `styledegree` eine kräftigere oder sanftere Sprechweise angeben, um die Sprache ausdrucksstärker oder gedämpfter zu gestalten. Zurzeit werden Anpassungen in der Sprechweise der  neuronalen Stimmen für Chinesisch (Mandarin, vereinfacht) unterstützt.
 
-Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
-* `zh-CN-XiaoxiaoNeural`
-
-Abgesehen von der Anpassung der Sprechweisen und ihrer Abstufungen können Sie auch den `role`-Parameter anpassen, damit die Stimme ein anderes Alter und Geschlecht imitiert. Beispielsweise kann eine männliche Stimme die Tonhöhe erhöhen und die Intonation so ändern, dass eine weibliche Stimme imitiert wird.
-
-Aktuell werden Rollenanpassungen für diese neuronalen Stimmen unterstützt:
+Abgesehen von der Anpassung der Sprechweisen und ihrer Abstufungen können Sie auch den `role`-Parameter anpassen, damit die Stimme ein anderes Alter und Geschlecht imitiert. Beispielsweise kann eine männliche Stimme die Tonhöhe erhöhen und die Intonation so ändern, dass eine weibliche Stimme imitiert wird, aber der Stimmname wird nicht geändert. Aktuell werden Rollenanpassungen dieser neuronalen Stimmen für Chinesisch (Mandarin, vereinfacht) unterstützt:
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
@@ -238,15 +233,15 @@ Die voranstehenden Änderungen werden auf Satzebene angewendet, und die Sprechwe
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> Zurzeit unterstützt `styledegree` nur zh-CN-XiaoxiaoNeural. `role` unterstützt nur zh-CN-XiaomoNeural und zh-CN-XiaoxuanNeural.
+> Zurzeit unterstützt `styledegree` nur chinesische (Mandarin, vereinfacht) neuronale Stimmen. `role` unterstützt nur zh-CN-XiaomoNeural und zh-CN-XiaoxuanNeural.
 
 **Attribute**
 
 | attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `style` | Gibt die Sprechweise an. Sprechweisen sind derzeit stimmenspezifisch. | Erforderlich, wenn die Sprechweise für eine neuronale Stimme angepasst wird. Bei Verwendung von `mstts:express-as` muss die Sprechweise angegeben werden. Bei Angabe eines ungültigen Werts wird dieses Element ignoriert. |
-| `styledegree` | Gibt die Intensität der Sprechweise an. **Zulässige Werte**: 0,01 bis 2 (einschließlich). Der Standardwert ist 1, d. h. die vordefinierte Intensität für die Sprechweise. Die minimale Einheit ist 0,01, was zu einer leichten Tendenz zur Zielsprechweise führt. Ein Wert von 2 führt zu einer Verdoppelung der standardmäßigen Intensität der Sprechweise.  | Optional (zurzeit unterstützt `styledegree` nur zh-CN-XiaoxiaoNeural)|
-| `role` | Gibt die Sprechrolle an. Die Stimme agiert mit anderem Alter und Geschlecht.  | Optional (zurzeit unterstützt `role` nur zh-CN-XiaomoNeural und zh-CN-XiaoxuanNeural)|
+| `styledegree` | Gibt die Intensität der Sprechweise an. **Zulässige Werte**: 0,01 bis 2 (einschließlich). Der Standardwert ist 1, d. h. die vordefinierte Intensität für die Sprechweise. Die minimale Einheit ist 0,01, was zu einer leichten Tendenz zur Zielsprechweise führt. Ein Wert von 2 führt zu einer Verdoppelung der standardmäßigen Intensität der Sprechweise.  | Optional (Zurzeit unterstützt `styledegree` nur chinesische (Mandarin, vereinfacht) neuronale Stimmen.)|
+| `role` | Gibt die Sprechrolle an. Die Stimme imitiert ein anderes Alter und Geschlecht, aber der Sprachname wird nicht geändert.  | Optional (zurzeit unterstützt `role` nur zh-CN-XiaomoNeural und zh-CN-XiaoxuanNeural)|
 
 Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neuronalen Stimmen unterstützt werden.
 
@@ -254,6 +249,7 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Formaler, souveräner und verbindlicher Ton für die Mitteilung von Nachrichten |
 |                         | `style="newscast-casual"` | Gewandter und ungezwungener Ton für die Mitteilung allgemeiner Nachrichten        |
+|                         | `style="narration-professional"` | Professioneller und objektiver Ton für das Lesen von Inhalten        |
 |                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
 |                         | `style="chat"`            | Lockerer und zwangloser Ton                         |
 |                         | `style="cheerful"`        | Positiver und fröhlicher Ton                         |
@@ -275,11 +271,11 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 |                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
 |                         | `style="disgruntled"`     | Verächtlicher und klagender Ton Eine Rede mit dieser Emotion zeugt von Unmut und Verachtung.              |
 |                         | `style="serious"`         | Strenger und gebieterischer Ton Der Sprecher klingt oft steifer und viel weniger entspannt mit festem Rhythmus.          |
-|                         | `style="affectionate"`    | Warmer und herzlicher Ton mit höherer Tonhöhe und stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er die Aufmerksamkeit der Zuhörer auf sich zieht. Die „Persönlichkeit“ des Sprechers ist oft von liebenswerter Art.          |     
-|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |   
-|                         | `style="lyrical"`         | Melodischer und gefühlvoller Ton zum Ausdrücken von Emotionen         |   
-| `zh-CN-YunyangNeural`   | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  | 
-| `zh-CN-YunyeNeural`     | `style="calm"`            | Kühle, gesammelte und gelassene Haltung beim Sprechen Ton, Tonhöhe und Intonation sind im Vergleich zu anderen Sprachtypen viel einheitlicher    | 
+|                         | `style="affectionate"`    | Warmer und herzlicher Ton mit höherer Tonhöhe und stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er die Aufmerksamkeit der Zuhörer auf sich zieht. Die „Persönlichkeit“ des Sprechers ist oft von liebenswerter Art.          |
+|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |
+|                         | `style="lyrical"`         | Melodischer und gefühlvoller Ton zum Ausdrücken von Emotionen         |
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Kühle, gesammelte und gelassene Haltung beim Sprechen Ton, Tonhöhe und Intonation sind im Vergleich zu anderen Sprachtypen viel einheitlicher    |
 |                         | `style="cheerful"`        | Optimistischer und enthusiastischer Ton mit höherer Tonhöhe und stimmlicher Energie                         |
 |                         | `style="sad"`             | Trauriger Ton mit höherer Tonhöhe, geringerer Intensität und geringerer stimmlicher Energie Häufige Indikatoren für diese Emotion wären Wimmern oder Weinen während der Rede            |
 |                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
@@ -301,37 +297,39 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 |                         | `style="disgruntled"`     | Verächtlicher und klagender Ton Eine Rede mit dieser Emotion zeugt von Unmut und Verachtung.              |
 |                         | `style="serious"`         | Strenger und gebieterischer Ton Der Sprecher klingt oft steifer und viel weniger entspannt mit festem Rhythmus.    |
 |                         | `style="embarrassed"`     | Unsicherer und zögerlicher Ton, wenn sich der Sprecher unwohl fühlt   |
-|                         | `style="affectionate"`    | Warmer und herzlicher Ton mit höherer Tonhöhe und stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er die Aufmerksamkeit der Zuhörer auf sich zieht. Die „Persönlichkeit“ des Sprechers ist oft von liebenswerter Art.          |     
-|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |   
+|                         | `style="affectionate"`    | Warmer und herzlicher Ton mit höherer Tonhöhe und stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er die Aufmerksamkeit der Zuhörer auf sich zieht. Die „Persönlichkeit“ des Sprechers ist oft von liebenswerter Art.          |
+|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |
 | `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Optimistischer und enthusiastischer Ton mit höherer Tonhöhe und stimmlicher Energie                         |
 |                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
 |                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
 |                         | `style="disgruntled"`     | Verächtlicher und klagender Ton Eine Rede mit dieser Emotion zeugt von Unmut und Verachtung.              |
 |                         | `style="serious"`         | Strenger und gebieterischer Ton Der Sprecher klingt oft steifer und viel weniger entspannt mit festem Rhythmus.    |
 |                         | `style="depressed"`       | Melancholischer und niedergeschlagener Ton mit geringerer Tonhöhe und weniger Energie    |
-|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |  
+|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |
 | `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Optimistischer und enthusiastischer Ton mit höherer Tonhöhe und stimmlicher Energie                         |
 |                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
 |                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
 |                         | `style="disgruntled"`     | Verächtlicher und klagender Ton Eine Rede mit dieser Emotion zeugt von Unmut und Verachtung.              |
 |                         | `style="serious"`         | Strenger und gebieterischer Ton Der Sprecher klingt oft steifer und viel weniger entspannt mit festem Rhythmus.    |
 |                         | `style="depressed"`       | Melancholischer und niedergeschlagener Ton mit geringerer Tonhöhe und weniger Energie    |
-|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |   
+|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |
 | `zh-CN-XiaoruiNeural`    | `style="sad"`             | Trauriger Ton mit höherer Tonhöhe, geringerer Intensität und geringerer stimmlicher Energie Häufige Indikatoren für diese Emotion wären Wimmern oder Weinen während der Rede            |
 |                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
 |                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
 
-Ermitteln Sie anhand dieser Tabelle, welche Rollen für die einzelnen neuronalen Stimmen unterstützt werden.
+Verwenden Sie diese Tabelle, um die unterstützten Rollen und deren Definitionen zu überprüfen.
 
-| Sprache                   | Rolle                       | Beschreibung                                                 |
-|-------------------------|----------------------------|-------------------------------------------------------------|
-| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | Die Stimme imitiert eine junge erwachsene Frau.                 |
-|                         | `role="OlderAdultMale"`    | Die Stimme imitiert einen älteren erwachsenen Mann.                   |
-|                         | `role="Girl"`              | Die Stimme imitiert ein Mädchen.                               |
-|                         | `role="Boy"`               | Die Stimme imitiert einen Jungen.                                |
-| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | Die Stimme imitiert eine junge erwachsene Frau.                 |
-|                         | `role="OlderAdultFemale"`  | Die Stimme imitiert eine ältere erwachsene Frau.                 |
-|                         | `role="OlderAdultMale"`    | Die Stimme imitiert einen älteren erwachsenen Mann.                   |
+|Role                     | BESCHREIBUNG                |
+|-------------------------|----------------------------|
+|`role="Girl"`            | Die Stimme imitiert ein Mädchen. |
+|`role="Boy"`             | Die Stimme imitiert einen Jungen. |
+|`role="YoungAdultFemale"`| Die Stimme imitiert eine junge erwachsene Frau.|
+|`role="YoungAdultMale"`  | Die Stimme imitiert einen jungen erwachsenen Mann.|
+|`role="OlderAdultFemale"`| Die Stimme imitiert eine ältere erwachsene Frau.|
+|`role="OlderAdultMale"`  | Die Stimme imitiert einen älteren erwachsenen Mann.|
+|`role="SeniorFemale"`    | Die Stimme imitiert eine reife Frau.|
+|`role="SeniorMale"`      | Die Stimme imitiert einen reifen Mann.|
+
 
 **Beispiel**
 
@@ -418,10 +416,10 @@ Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen
 ```
 ## <a name="add-silence"></a>Hinzufügen von Stille
 
-Verwenden Sie das `mstts:silence`-Element, um Pausen vor oder nach Text oder zwischen den 2 benachbarten Sätzen einzufügen. 
+Verwenden Sie das `mstts:silence`-Element, um Pausen vor oder nach Text oder zwischen den 2 benachbarten Sätzen einzufügen.
 
 > [!NOTE]
->Der Unterschied zwischen `mstts:silence` und `break` besteht darin, dass `break` an einer beliebigen Stelle im Text hinzugefügt werden kann. Stille jedoch funktioniert nur am Anfang oder Ende von Eingabetext oder an der Grenze zwischen 2 benachbarten Sätzen.  
+>Der Unterschied zwischen `mstts:silence` und `break` besteht darin, dass `break` an einer beliebigen Stelle im Text hinzugefügt werden kann. Stille jedoch funktioniert nur am Anfang oder Ende von Eingabetext oder an der Grenze zwischen 2 benachbarten Sätzen.
 
 
 **Syntax**
@@ -434,18 +432,18 @@ Verwenden Sie das `mstts:silence`-Element, um Pausen vor oder nach Text oder zwi
 
 | attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
-| `type` | Gibt die Position zum Hinzufügen von Stille an: <ul><li>„Leading“ (führend): am Anfang von Text. </li><li>„Tailing“ (nachfolgend): am Ende von Text. </li><li>„Sentenceboundary“ (Satzgrenze): zwischen benachbarten Sätzen. </li></ul> | Erforderlich |
+| `type` | Gibt die Position zum Hinzufügen von Stille an: <ul><li>`Leading` – am Anfang von Text </li><li>`Tailing` – am Ende von Text </li><li>`Sentenceboundary` – zwischen benachbarten Sätzen </li></ul> | Erforderlich |
 | `Value` | Gibt die absolute Dauer einer Pause in Sekunden oder Millisekunden an. Dieser Werte sollte weniger als 5000 ms betragen. Beispiele für gültige Werte sind `2s` und `500ms` | Erforderlich |
 
 **Beispiel** In diesem Beispiel wird `mtts:silence` verwendet, um 200 ms Stille zwischen zwei Sätzen hinzuzufügen.
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
-<voice name="en-US-AriaNeural"> 
-<mstts:silence  type="Sentenceboundary" value="200ms"/> 
-If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
-A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
-</voice> 
-</speak> 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<voice name="en-US-AriaNeural">
+<mstts:silence  type="Sentenceboundary" value="200ms"/>
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way.
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time.
+</voice>
+</speak>
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>Angeben von Absätzen und Sätzen
@@ -467,7 +465,7 @@ Das `s`-Element kann Text und die folgenden Elemente enthalten: `audio`, `break`
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <p>
             <s>Introducing the sentence element.</s>
             <s>Used to mark individual sentences.</s>
@@ -506,7 +504,7 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
     </voice>
 </speak>
@@ -514,7 +512,7 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <phoneme alphabet="sapi" ph="iy eh n y uw eh s"> en-US </phoneme>
     </voice>
 </speak>
@@ -522,7 +520,7 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
     </voice>
 </speak>
@@ -533,7 +531,7 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 Manchmal kann ein Wort vom Sprachsynthesedienst nicht korrekt ausgesprochen werden. Beispielsweise der Name eines Unternehmens oder ein medizinischer Begriff. Mit den Tags `phoneme` und `sub` können Entwickler die Aussprache einzelner Entitäten in SSML definieren. Wenn Sie dagegen die Aussprache mehrerer Entitäten definieren möchten, können Sie mithilfe des Tags `lexicon` ein benutzerdefiniertes Lexikon erstellen.
 
 > [!NOTE]
-> Für das benutzerdefinierte Lexikon wird derzeit die UTF-8-Codierung unterstützt. 
+> Für das benutzerdefinierte Lexikon wird derzeit die UTF-8-Codierung unterstützt.
 
 > [!NOTE]
 > Das benutzerdefinierte Lexikon wird zurzeit für diese 5 Stimmen (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, lv-LV-EveritaNeural und mt-MT-GarceNeural) nicht unterstützt.
@@ -557,18 +555,18 @@ Wenn Sie die Aussprache mehrerer Entitäten definieren möchten, können Sie ein
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
       alphabet="ipa" xml:lang="en-US">
   <lexeme>
-    <grapheme>BTW</grapheme> 
-    <alias>By the way</alias> 
+    <grapheme>BTW</grapheme>
+    <alias>By the way</alias>
   </lexeme>
   <lexeme>
-    <grapheme> Benigni </grapheme> 
+    <grapheme> Benigni </grapheme>
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
 </lexicon>
@@ -580,11 +578,11 @@ Wichtig: Die Aussprache eines Ausdrucks kann mit dem benutzerdefinierten Lexikon
 
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>ScotlandMV</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>ScotlandMV</alias>
   </lexeme>
   <lexeme>
-    <grapheme>ScotlandMV</grapheme> 
+    <grapheme>ScotlandMV</grapheme>
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
@@ -592,8 +590,8 @@ Wichtig: Die Aussprache eines Ausdrucks kann mit dem benutzerdefinierten Lexikon
 Sie können auch direkt ihren erwarteten `alias` für das Akronym oder einen abgekürzten Begriff angeben. Beispiel:
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>Scotland Media Wave</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>Scotland Media Wave</alias>
   </lexeme>
 ```
 
@@ -610,10 +608,10 @@ Nachdem Sie Ihr benutzerdefiniertes Lexikon veröffentlicht haben, können Sie v
 > Das Element `lexicon` muss sich innerhalb des Elements `voice` befinden.
 
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
-          xmlns:mstts="http://www.w3.org/2001/mstts" 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+          xmlns:mstts="http://www.w3.org/2001/mstts"
           xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <lexicon uri="http://www.example.com/customlexicon.xml"/>
         BTW, we will be there probably at 8:00 tomorrow morning.
         Could you help leave a message to Robert Benigni for me?
@@ -621,7 +619,7 @@ Nachdem Sie Ihr benutzerdefiniertes Lexikon veröffentlicht haben, können Sie v
 </speak>
 ```
 
-Wenn Sie dieses benutzerdefinierte Lexikon verwenden, wird „BTW“ als „By the way“ gelesen. „Benigni“ wird gemäß der IPA-Angabe als „bɛˈniːnji“ gelesen.  
+Wenn Sie dieses benutzerdefinierte Lexikon verwenden, wird „BTW“ als „By the way“ gelesen. „Benigni“ wird gemäß der IPA-Angabe als „bɛˈniːnji“ gelesen.
 
 **Einschränkungen**
 - Dateigröße: Die maximale Größe benutzerdefinierter Lexikondateien beträgt 100 KB. Wenn diese Größe überschritten wird, treten bei Syntheseanforderungen Fehler auf.
@@ -637,7 +635,7 @@ Sie können `sapi` wie unten gezeigt als Wert des `alphabet`-Attributs mit benut
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
@@ -681,7 +679,7 @@ Weil Attributwerte für den Satzrhythmus über einen breiten Bereich variieren k
 
 ### <a name="change-speaking-rate"></a>Ändern der Sprechgeschwindigkeit
 
-Die Sprechgeschwindigkeit kann auf neuronale Stimmen und Standardstimmen auf Wort- oder Satzebene angewendet werden. 
+Die Sprechgeschwindigkeit kann auf neuronale Stimmen und Standardstimmen auf Wort- oder Satzebene angewendet werden.
 
 **Beispiel**
 
@@ -703,7 +701,7 @@ Die Sprechgeschwindigkeit kann auf neuronale Stimmen und Standardstimmen auf Wor
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <prosody volume="+20.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -736,7 +734,7 @@ Die Sprechgeschwindigkeit kann auf neuronale Stimmen und Standardstimmen auf Wor
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-AriaNeural">
         <prosody contour="(60%,-60%) (100%,+80%)" >
-            Were you the only person in the room? 
+            Were you the only person in the room?
         </prosody>
     </voice>
 </speak>
@@ -782,10 +780,10 @@ Das `say-as`-Element darf nur Text enthalten.
 **Beispiel**
 
 Die Sprachsynthese-Engine spricht den Beispielsatz wie folgt aus: „Ihre erste Anfrage war für ein Zimmer am neunzehnten Oktober zweitausendzehn mit frühzeitiger Ankunft um zwölf Uhr fünfunddreißig nachmittags“.
- 
+
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <p>
         Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
         on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
@@ -823,7 +821,7 @@ Alle Audiodaten, die im SSML-Dokument enthalten sind, müssen die folgenden Anfo
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-JennyNeural">
         <p>
             <audio src="https://contoso.com/opinionprompt.wav"/>
             Thanks for offering your opinion. Please begin speaking after the beep.
@@ -863,11 +861,168 @@ Pro SSML-Dokument ist nur eine Hintergrundaudiodatei zulässig. Sie können jedo
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
     <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)">
         The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>
 ```
+
+## <a name="bookmark-element"></a>Lesezeichen-Element
+
+Mit dem Lesezeichen-Element können Sie benutzerdefinierte Marker in SSML einfügen, um den Offset der einzelnen Marker im Audiostream zu erhalten.
+Die Lesezeichen-Elemente werden nicht gelesen.
+Das Lesezeichen-Element kann verwendet werden, um auf eine bestimmte Position in der Text-oder Tag-Sequenz zu verweisen.
+
+> [!NOTE]
+> `bookmark` Das Element funktioniert zurzeit nur für `en-US-AriaNeural` Voice.
+
+**Syntax**
+
+```xml
+<bookmark mark="string"/>
+```
+
+**Attribute**
+
+| attribute | BESCHREIBUNG                                   | Erforderlich/optional                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+|  `mark`   | Gibt den Verweistext des `bookmark` Elements an. | Erforderlich. |
+
+**Beispiel**
+
+Beispielsweise können Sie den Zeitversatz (Offset) jedes Blumenworts wie folgt ermitteln:
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaNeural">
+        We are selling <bookmark mark='flower_1'/>roses and <bookmark mark='flower_2'/>daisies.
+    </voice>
+</speak>
+```
+
+### <a name="get-bookmark-using-speech-sdk"></a>Lesezeichen mit Sprach-SDK aufrufen
+
+Sie können das `BookmarkReached` Ereignis in Sprach-SDK abonnieren, um die Lesezeichen-Offsets zu erhalten.
+
+> [!NOTE]
+> `BookmarkReached` Ereignis ist erst ab Sprach-SDK-Version 1.16.0 verfügbar.
+
+Ereignisse vom Typ `BookmarkReached` werden ausgelöst, wenn die ausgegebenen Audiodaten verfügbar werden, was schneller passiert als die Wiedergabe über ein Ausgabegerät.
+
+* `AudioOffset` meldet die verstrichene Zeit der Audioausgabe zwischen dem Beginn der Synthese und dem Lesezeichen-Element. Dieser Wert wird in HNS-Einheiten (hundert Nanosekunden) gemessen. 10.000 HNS entsprechen einer Millisekunde.
+* `Text` ist der Verweistext des Lesezeichen-Elements, bei dem es sich um die Zeichenfolge handelt, die im Attribut `mark` festgelegt wird.
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkreached" target="_blank"> `BookmarkReached` </a>.
+
+```csharp
+synthesizer.BookmarkReached += (s, e) =>
+{
+    // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+    Console.WriteLine($"Bookmark reached. Audio offset: " +
+        $"{e.AudioOffset / 10000}ms, bookmark text: {e.Text}.");
+};
+```
+
+Für das obige SSML-Beispiel wird das `BookmarkReached` Ereignis zweimal ausgelöst, und die Konsolenausgabe ist
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="c"></a>[C++](#tab/cpp)
+
+Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>.
+
+```cpp
+synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
+{
+    cout << "Bookmark reached. "
+        // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+        << "Audio offset: " << e.AudioOffset / 10000 << "ms, "
+        << "bookmark text: " << e.Text << "." << endl;
+};
+```
+
+Für das obige SSML-Beispiel wird das `BookmarkReached` Ereignis zweimal ausgelöst, und die Konsolenausgabe ist
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkReached#com_microsoft_cognitiveservices_speech_SpeechSynthesizer_BookmarkReached" target="_blank"> `BookmarkReached` </a>.
+
+```java
+synthesizer.BookmarkReached.addEventListener((o, e) -> {
+    // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+    System.out.print("Bookmark reached. Audio offset: " + e.getAudioOffset() / 10000 + "ms, ");
+    System.out.println("bookmark text: " + e.getText() + ".");
+});
+```
+
+Für das obige SSML-Beispiel wird das `BookmarkReached` Ereignis zweimal ausgelöst und die Konsolenausgabe ist
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>.
+
+```python
+# The unit of evt.audio_offset is tick (1 tick = 100 nanoseconds), divide it by 10,000 to convert to milliseconds.
+speech_synthesizer.bookmark_reached.connect(lambda evt: print(
+    "Bookmark reached: {}, audio offset: {}ms, bookmark text: {}.".format(evt, evt.audio_offset / 10000, evt.text)))
+```
+
+Für das obige SSML-Beispiel wird das `bookmark_reached` Ereignis zweimal ausgelöst und die Konsolenausgabe ist
+```text
+Bookmark reached, audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached`</a>.
+
+```javascript
+synthesizer.bookmarkReached = function (s, e) {
+    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms, bookmark text: " + e.text);
+}
+```
+
+Für das obige SSML-Beispiel wird das `bookmarkReached` Ereignis zweimal ausgelöst und die Konsolenausgabe ist
+```text
+(Bookmark reached), Audio offset: 825ms, bookmark text: flower_1.
+(Bookmark reached), Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
+
+Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>.
+
+```objectivec
+[synthesizer addBookmarkReachedEventHandler: ^ (SPXSpeechSynthesizer *synthesizer, SPXSpeechSynthesisBookmarkEventArgs *eventArgs) {
+    // The unit of AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to converted to milliseconds.
+    NSLog(@"Bookmark reached. Audio offset: %fms, bookmark text: %@.", eventArgs.audioOffset/10000., eventArgs.text);
+}];
+```
+
+Für das obige SSML-Beispiel wird das `BookmarkReached` Ereignis zweimal ausgelöst und die Konsolenausgabe ist
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="swift"></a>[Swift](#tab/swift)
+
+Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/swift/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
