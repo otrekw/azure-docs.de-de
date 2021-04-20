@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: acfaa780f21f5264b546f97e9a3792aa43e9c30b
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552953"
+ms.locfileid: "107029742"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -23,6 +23,13 @@ Eine Abfrage eines serverlosen SQL-Pools liest Dateien direkt aus Azure Storage.
 - **SQL-Dienstebene**: Benutzern müssen die Berechtigung zum Lesen von Daten mithilfe einer [externen Tabelle](develop-tables-external-tables.md) oder zum Ausführen der Funktion `OPENROWSET` erteilt haben. Informationen zu den erforderlichen Berechtigungen finden Sie in [diesem Abschnitt](develop-storage-files-overview.md#permissions).
 
 In diesem Artikel wird beschrieben, welche Arten von Anmeldeinformationen Sie verwenden können und wie die Suche nach Anmeldeinformationen für SQL- und Azure AD-Benutzer funktioniert.
+
+## <a name="storage-permissions"></a>Speicherberechtigungen
+
+Ein serverloser SQL-Pool im Synapse Analytics-Arbeitsbereich kann den Inhalt der in Azure Data Lake Storage gespeicherten Dateien lesen. Sie müssen Berechtigungen für den Speicher konfigurieren, damit ein Benutzer, der eine SQL-Abfrage ausführt, die Dateien lesen kann. Es gibt drei Methoden zum Aktivieren des Zugriffs auf die Dateien:
+- Mit der **[rollenbasierten Zugriffssteuerung (Role Based Access Control, RBAC)](../../role-based-access-control/overview.md)** können Sie einem Azure AD-Benutzer in dem Mandanten, in dem sich Ihr Speicher befindet, eine Rolle zuweisen. RBAC-Rollen können Azure AD-Benutzern zugewiesen werden. Ein Leser muss über die Rolle `Storage Blob Data Reader`, `Storage Blob Data Contributor` oder `Storage Blob Data Owner` verfügen. Ein Benutzer, der Daten in den Azure-Speicher schreibt, muss über die Rolle `Storage Blob Data Writer` oder `Storage Blob Data Owner` verfügen. Beachten Sie, dass die Rolle `Storage Owner` nicht impliziert, dass ein Benutzer auch über Berechtigungen vom Typ `Storage Data Owner` verfügt.
+- Mit **Zugriffssteuerungslisten (Access Control Lists, ACL)** können Sie ein differenziertes Berechtigungsmodell für die Dateien und Verzeichnisse im Azure-Speicher definieren. ACLs können Azure AD-Benutzern zugewiesen werden. Wenn Leser eine Datei in einem Pfad in Azure Storage lesen möchten, müssen sie über eine ACL vom Typ „Ausführen“ (X) für jeden Ordner im Dateipfad und über eine ACL vom Typ „Lesen“ (R) für die Datei verfügen. [Weitere Informationen zum Festlegen von ACL-Berechtigungen in der Speicherebene](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
+- Eine **Shared Access Signature (SAS)** ermöglicht einem Leser den Zugriff auf die Dateien in Azure Data Lake Storage mithilfe des zeitlich begrenzten Tokens. Der Leser muss nicht einmal als Azure AD-Benutzer authentifiziert sein. Das SAS-Token enthält die Berechtigungen, die dem Leser gewährt wurden, sowie den Zeitraum, in dem das Token gültig ist. Das SAS-Token ist eine gute Wahl für den zeitlich eingeschränkten Zugriff für alle Benutzer, die sich nicht einmal in demselben Azure AD-Mandanten befindet müssen. SAS-Token können für das Speicherkonto oder für bestimmte Verzeichnisse definiert werden. Informieren Sie sich ausführlicher über das [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../../storage/common/storage-sas-overview.md).
 
 ## <a name="supported-storage-authorization-types"></a>Unterstützte Autorisierungstypen für den Speicherzugriff
 
@@ -103,7 +110,7 @@ Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann die **Benut
 
 #### <a name="user-identity"></a>Benutzeridentität
 
-Für den Zugriff auf den mit der Firewall geschützten Speicher über die Benutzeridentität können Sie das PowerShell-Modul „Az.Storage“ verwenden.
+Für den Zugriff auf den mit der Firewall geschützten Speicher über die Benutzeridentität können Sie die Benutzeroberfläche des Azure-Portals oder das PowerShell-Modul „Az.Storage“ verwenden.
 #### <a name="configuration-via-azure-portal"></a>Konfiguration über das Azure-Portal
 
 1. Suchen Sie Ihr neues Speicherkonto im Azure-Portal.

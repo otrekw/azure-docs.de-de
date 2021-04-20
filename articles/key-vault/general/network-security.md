@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40094c00a4b896756c5c0e51116e0ae33ae2a096
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742635"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580732"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken
 
@@ -29,13 +29,14 @@ In diesem Abschnitt werden die verschiedenen Konfigurationsmöglichkeiten der Az
 
 ### <a name="key-vault-firewall-disabled-default"></a>Key Vault-Firewall deaktiviert (Standardeinstellung)
 
-Wenn Sie einen neuen Schlüsseltresor erstellen, ist die Azure Key Vault-Firewall standardmäßig deaktiviert. Alle Anwendungen und Azure-Dienste können auf den Schlüsseltresor zugreifen und Anforderungen an den Schlüsseltresor senden. Diese Konfiguration bedeutet allerdings nicht, dass jeder beliebige Benutzer Vorgänge für Ihren Schlüsseltresor ausführen kann. Für den Zugriff auf im Schlüsseltresor gespeicherte Geheimnisse, Schlüssel und Zertifikate sind trotzdem eine Azure Active Directory-Authentifizierung und Zugriffsrichtlinienberechtigungen erforderlich. Ausführlichere Informationen zur Schlüsseltresorauthentifizierung finden Sie unter [Grundlagen der Key Vault-Authentifizierung](./authentication-fundamentals.md).
+Wenn Sie einen neuen Schlüsseltresor erstellen, ist die Azure Key Vault-Firewall standardmäßig deaktiviert. Alle Anwendungen und Azure-Dienste können auf den Schlüsseltresor zugreifen und Anforderungen an den Schlüsseltresor senden. Diese Konfiguration bedeutet allerdings nicht, dass jeder beliebige Benutzer Vorgänge für Ihren Schlüsseltresor ausführen kann. Für den Zugriff auf im Schlüsseltresor gespeicherte Geheimnisse, Schlüssel und Zertifikate sind trotzdem eine Azure Active Directory-Authentifizierung und Zugriffsrichtlinienberechtigungen erforderlich. Ausführlichere Informationen zur Schlüsseltresorauthentifizierung finden Sie unter [Grundlagen der Key Vault-Authentifizierung](./authentication-fundamentals.md). Weitere Informationen finden Sie unter [Zugreifen auf Azure Key Vault hinter einer Firewall](./access-behind-firewall.md).
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault-Firewall aktiviert (nur vertrauenswürdige Dienste)
 
-Wenn Sie die Key Vault-Firewall aktivieren, können Sie festlegen, dass vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlaubt werden soll. Die Liste der vertrauenswürdigen Dienste deckt nicht alle Azure-Dienste ab. Azure DevOps ist beispielsweise nicht in der Liste der vertrauenswürdigen Dienste enthalten. **Das bedeutet nicht, dass Dienste, die nicht in der Liste der vertrauenswürdigen Dienste enthalten sind, nicht vertrauenswürdig oder unsicher sind.** Die Liste der vertrauenswürdigen Dienste umfasst Dienste, bei denen der gesamte im Dienst ausgeführte Code von Microsoft kontrolliert wird. Da Benutzer in Azure-Diensten wie Azure DevOps benutzerdefinierten Code schreiben können, bietet Microsoft keine Option zur Erstellung einer Pauschalgenehmigung für den Dienst. Außerdem gilt: Die Tatsache, dass ein Dienst in der Liste vertrauenswürdiger Dienste enthalten ist, bedeutet nicht, dass er für alle Szenarien zulässig ist.
+Wenn Sie die Key Vault-Firewall aktivieren, können Sie festlegen, dass vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlaubt werden soll. Die Liste der vertrauenswürdigen Dienste deckt nicht alle Azure-Dienste ab. Azure DevOps ist beispielsweise nicht in der Liste der vertrauenswürdigen Dienste enthalten. **Das bedeutet nicht, dass Dienste, die nicht in der Liste der vertrauenswürdigen Dienste enthalten sind, nicht vertrauenswürdig oder unsicher sind.** Die Liste der vertrauenswürdigen Dienste umfasst Dienste, bei denen der gesamte im Dienst ausgeführte Code von Microsoft kontrolliert wird. Da Benutzer in Azure-Diensten wie Azure DevOps benutzerdefinierten Code schreiben können, bietet Microsoft keine Option zur Erstellung einer Pauschalgenehmigung für den Dienst. Außerdem gilt: Die Tatsache, dass ein Dienst in der Liste vertrauenswürdiger Dienste enthalten ist, bedeutet nicht, dass er für alle Szenarien zulässig ist. 
 
 Wie Sie ermitteln, ob ein Dienst, den Sie verwenden möchten, in der Liste der vertrauenswürdigen Dienste enthalten ist, erfahren Sie [hier](./overview-vnet-service-endpoints.md#trusted-services).
+[Hier](https://docs.microsoft.com/azure/key-vault/general/network-security#use-the-azure-portal) finden Sie eine Schrittanleitung für das Portal, die Azure CLI und PowerShell.
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault-Firewall aktiviert (IPv4-Adressen und -Bereiche – statische IP-Adressen)
 

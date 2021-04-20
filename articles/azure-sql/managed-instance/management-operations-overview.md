@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
-ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd66c10bb1d6316bbe90e7ba4092d79c6a43a75d
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323191"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285277"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Übersicht über die Verwaltungsvorgänge für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,12 +70,14 @@ Die folgenden Tabellen enthalten eine Zusammenfassung von Vorgängen und der jew
 |Vorgang  |Segment mit langer Ausführungsdauer  |Geschätzte Dauer  |
 |---------|---------|---------|
 |Änderung der Instanzeigenschaft (Administratorkennwort, Azure AD-Anmeldung, Azure-Hybridvorteil-Flag)|–|Bis zu 1 Minute|
-|Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Dienstebene „Universell“)|Anfügung von Datenbankdateien|90 % der Vorgänge werden innerhalb von fünf Minuten abgeschlossen.|
+|Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Dienstebene „Universell“)|Kein Segment mit langer Ausführungsdauer<sup>1</sup>|99 Prozent der Vorgänge werden innerhalb von fünf Minuten abgeschlossen.|
 |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Tarif „Unternehmenskritisch“)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen.|
 |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Universell)|- Änderung der Größe eines virtuellen Clusters<br>- Anfügung von Datenbankdateien|90 % der Vorgänge werden innerhalb von 2,5 Stunden abgeschlossen.|
 |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Unternehmenskritisch)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen.|
 |Änderung der Instanzdienstebene („Universell“ in „Unternehmenskritisch“ und umgekehrt)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen.|
 | | | 
+
+<sup>1</sup> Die Skalierung des universellen Speichers der verwalteten Instanz verursacht am Ende des Vorgangs kein Failover. In diesem Fall besteht der Vorgang aus der Aktualisierung von Metadaten und der Weitergabe der Antwort für die übermittelte Anforderung.
 
 **Kategorie: Löschen**
 
@@ -90,6 +92,9 @@ Die folgenden Tabellen enthalten eine Zusammenfassung von Vorgängen und der jew
 ## <a name="instance-availability"></a>Instanzverfügbarkeit
 
 SQL Managed Instance **ist während Aktualisierungsvorgängen verfügbar**. Aufgrund des Failovers am Ende der Aktualisierung kommt es jedoch zu einer kurzen Downtime. Dank der [beschleunigten Datenbankwiederherstellung](../accelerated-database-recovery.md) dauert diese in der Regel bis zu zehn Sekunden. Das gilt auch bei unterbrochenen zeitintensiven Transaktionen.
+
+> [!NOTE]
+> Die Skalierung des universellen Speichers der verwalteten Instanz verursacht am Ende des Updates kein Failover.
 
 SQL Managed Instance ist während Bereitstellungs- und Löschvorgängen für Clientanwendungen nicht verfügbar.
 

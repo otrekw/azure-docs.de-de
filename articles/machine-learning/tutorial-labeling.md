@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 3a86f0eb88ba0a56f0887d71f649cf9b9d5ec7a3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882465"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227261"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
 
@@ -65,7 +65,7 @@ Azure Machine Learning-Datenspeicher werden zum Speichern von Verbindungsinforma
 
 1. Füllen Sie das Formular mit den folgenden Einstellungen aus:
 
-    Feld|BESCHREIBUNG 
+    Feld|Beschreibung 
     ---|---
     Datenspeichername | Benennen Sie den Datenspeicher.  Hier verwenden wir **labeling_tutorial**.
     Datenspeichertyp | Wählen Sie den Speichertyp aus.  Hier verwenden wir **Azure Blob Storage**, den bevorzugten Speicher für Bilder.
@@ -90,7 +90,7 @@ Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, ers
 
 1. Verwenden Sie die folgende Eingabe für das Formular **Projektdetails**:
 
-    Feld|BESCHREIBUNG 
+    Feld|Beschreibung 
     ---|---
     Projektname | Geben Sie dem Projekt einen Namen.  Hier verwenden wir **tutorial-cats-n-dogs**.
     Beschriftungsaufgabentyp | Wählen Sie **Bildklassifizierung mit mehreren Klassen** aus.  
@@ -209,7 +209,5 @@ Bildbeschriftungen können im [COCO-Format](http://cocodataset.org/#format-data)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Bilder beschriftet.  Verwenden Sie nun Ihre beschrifteten Daten zum:
-
 > [!div class="nextstepaction"]
-> [Trainieren eines Machine Learning-Modells zur Bilderkennung](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb)
+> [Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen](how-to-create-labeling-projects.md)

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 78cdc0b59fd178049e755cca5e1e909ac24483f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204047"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581818"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Tutorial: Konfigurieren der automatischen Zertifikatrotation in Key Vault
 
@@ -51,7 +51,7 @@ Erstellen Sie ein Zertifikat, oder importieren Sie ein Zertifikat in den Schlüs
 
 ## <a name="update-certificate-lifecycle-attributes"></a>Aktualisieren der Attribute des Zertifikatlebenszyklus
 
-In Azure Key Vault können Sie die Attribute des Zertifikatlebenszyklus sowohl vor als auch nach der Erstellung des Zertifikats aktualisieren.
+In Azure Key Vault können Sie die Attribute des Zertifikatlebenszyklus sowohl bei als auch nach der Erstellung des Zertifikats aktualisieren.
 
 Bei einem in Key Vault erstellten Zertifikat kann es sich um Folgendes handeln:
 
@@ -83,7 +83,7 @@ Zertifikate werden von Key Vault durch bewährte Partnerschaften mit Zertifizier
         |  Bei Erreichen des vorgegebenen Prozentsatzes der Lebensdauer automatisch erneuern| Bei Erreichen des vorgegebenen Prozentsatzes der Lebensdauer eine E-Mail an alle Kontakte senden |
         |-----------|------|
         |Wenn Sie diese Option auswählen, wird die automatische Rotation *aktiviert*. | Wenn Sie diese Option auswählen, werden nur die Kontakte benachrichtigt. Die automatische Rotation wird dadurch *nicht* aktiviert.|
-
+         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
 1. Klicken Sie auf **Erstellen**.
 
 ![Zertifikatlebenszyklus](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)

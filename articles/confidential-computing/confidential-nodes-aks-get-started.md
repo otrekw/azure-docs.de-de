@@ -1,54 +1,56 @@
 ---
-title: 'Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über die Azure-Befehlszeilenschnittstelle mit Confidential Computing-Knoten'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle einen AKS-Cluster mit vertraulichen Knoten erstellen und eine Hello World-App bereitstellen.
+title: 'Schnellstart: Bereitstellen eines AKS-Clusters mit Confidential Computing-Knoten über die Azure CLI'
+description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI einen AKS-Cluster (Azure Kubernetes Service) mit vertraulichen Knoten erstellen und eine Hallo Welt-App bereitstellen.
 author: agowdamsft
 ms.service: container-service
 ms.subservice: confidential-computing
 ms.topic: quickstart
-ms.date: 03/18/2020
+ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3
-ms.openlocfilehash: 73770acefc8a153e4a2f2fde146f9afd4c319cd3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b012a8a5856b344b366f1ddd89fc5059a6f3c8ae
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933133"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283523"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) mit Confidential Computing-Knoten (DCsv2) über die Azure CLI
+# <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>Schnellstart: Bereitstellen eines AKS-Clusters mit Confidential Computing-Knoten über die Azure CLI
 
-Diese Schnellstartanleitung richtet sich an Entwickler oder Clusteroperatoren, die schnell einen AKS-Cluster erstellen und eine Anwendung bereitstellen möchten, um Anwendungen mithilfe des verwalteten Kubernetes-Diensts in Azure zu überwachen. Sie können den Cluster auch bereitstellen und Confidential Computing-Knoten über das Azure-Portal hinzufügen.
+In dieser Schnellstartanleitung verwenden Sie die Azure CLI, um einen AKS-Cluster (Azure Kubernetes Service) mit Confidential Computing-Knoten (DCsv2) bereitzustellen. Anschließend führen Sie eine einfache Hallo Welt-Anwendung in einer Enclave aus. Sie können auch über das Azure-Portal einen Cluster bereitstellen und Confidential Computing-Knoten hinzufügen. Der Schwerpunkt dieser Schnellstartanleitung liegt jedoch auf der Azure CLI.
 
-## <a name="overview"></a>Übersicht
+AKS ist ein verwalteter Kubernetes-Dienst, mit dem Entwickler oder Clusteroperatoren Cluster schnell bereitstellen und verwalten können. Weitere Informationen finden Sie in der [Einführung in AKS](../aks/intro-kubernetes.md) und in der Übersicht über [Confidential Computing-Knoten in Azure Kubernetes Service](confidential-nodes-aks-overview.md).
 
-In diesem Schnellstart erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle einen AKS-Cluster (Azure Kubernetes Service) mit Confidential Computing-Knoten bereitstellen und eine einfache Hello World-Anwendung in einer Enklave ausführen. AKS ist ein Managed Kubernetes-Dienst, mit dem Sie Cluster schnell bereitstellen und verwalten können. Weitere Informationen finden Sie in der [Einführung in AKS](../aks/intro-kubernetes.md) und unter [Confidential Computing-Knoten in Azure Kubernetes Service](confidential-nodes-aks-overview.md).
+Features von Confidential Computing-Knoten:
+
+- Linux-Workerknoten, die Linux-Container unterstützen
+- Virtueller Computer der 2. Generation mit Ubuntu 18.04-VM-Knoten
+- Intel SGX-fähige CPU zum Ausführen Ihrer Container in einer geschützten Vertraulichkeits-Enclave mithilfe von Encrypted Page Cache Memory (EPC). Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Azure Confidential Computing](./faq.md).
+- Vorinstallierter Intel SGX DCAP-Treiber auf den Confidential Computing-Knoten. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Azure Confidential Computing](./faq.md).
 
 > [!NOTE]
-> Virtuelle Confidential Computing-Computer der DCsv2-Serie nutzen spezielle Hardware, für die höhere Preise gelten und die möglicherweise nicht in allen Regionen verfügbar ist. Weitere Informationen zu verfügbaren SKUs und unterstützten Regionen für virtuelle Computer finden Sie [hier](virtual-machine-solutions.md).
-
-### <a name="confidential-computing-node-features-dcsv2"></a>Features von Confidential Computing-Knoten (DCsv2)
-
-1. Linux-Workerknoten, die Linux-Container unterstützen
-1. VM der 2. Generation mit Ubuntu 18.04-VM-Knoten
-1. Intel SGX-basierte CPU mit Encrypted Page Cache Memory (EPC). Weitere Informationen finden Sie [hier](./faq.md).
-1. Unterstützung für Kubernetes-Version 1.16 und höhere Versionen
-1. Der Intel SGX DCAP-Treiber ist auf den AKS-Knoten vorinstalliert. Weitere Informationen finden Sie [hier](./faq.md).
+> Virtuelle DCsv2-Computer nutzen spezielle Hardware, für die höhere Preise gelten und die möglicherweise nicht in allen Regionen verfügbar ist. Weitere Informationen zu verfügbaren SKUs und unterstützten Regionen finden Sie [hier](virtual-machine-solutions.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-1. Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-1. Auf dem Bereitstellungscomputer muss mindestens die Azure CLI-Version 2.0.64 installiert und konfiguriert sein. (Führen Sie `az --version` aus, um die Version zu ermitteln). Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](../container-registry/container-registry-get-started-azure-cli.md).
-1. In Ihrem Abonnement müssen mindestens sechs **DCsv2**-Kerne für die Verwendung verfügbar sein. Das VM-Kernkontingent für Confidential Computing liegt standardmäßig bei acht Kernen pro Abonnement. Wenn Sie einen Cluster bereitstellen möchten, der mehr als acht Kerne erfordert, gehen Sie wie [hier](../azure-portal/supportability/per-vm-quota-requests.md) beschrieben vor, um ein Ticket für die Kontingenterhöhung zu erstellen.
+- Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Auf dem Bereitstellungscomputer muss mindestens die Azure CLI-Version 2.0.64 installiert und konfiguriert sein. 
 
-## <a name="create-a-new-aks-cluster-with-confidential-computing-nodes-and-add-on"></a>Erstellen eines neuen AKS-Clusters mit Confidential Computing-Knoten und Add-On
+  Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](../container-registry/container-registry-get-started-azure-cli.md).
+- In Ihrem Abonnement müssen mindestens sechs DCsv2-Kerne verfügbar sein. 
 
-Befolgen Sie die Anweisungen unten, um mit dem Add-On Confidential Computing-fähige Knoten hinzuzufügen.
+  Das Kontingent für Confidential Computing liegt standardmäßig bei acht VM-Kernen pro Abonnement. Wenn Sie einen Cluster bereitstellen möchten, der mehr als acht Kerne erfordert, gehen Sie wie [hier](../azure-portal/supportability/per-vm-quota-requests.md) beschrieben vor, um ein Ticket für die Kontingenterhöhung zu erstellen.
+
+## <a name="create-an-aks-cluster-with-confidential-computing-nodes-and-add-on"></a>Erstellen eines AKS-Clusters mit Confidential Computing-Knoten und -Add-On
+
+Verwenden Sie die folgenden Anweisungen, um einen AKS-Cluster mit aktiviertem Confidential Computing-Add-On zu erstellen, dem Cluster einen Knotenpool hinzuzufügen und zu überprüfen, was Sie erstellt haben.
 
 ### <a name="create-an-aks-cluster-with-a-system-node-pool"></a>Erstellen eines AKS-Clusters mit einem Systemknotenpool
 
-Wenn Sie bereits über einen AKS-Cluster verfügen, der die oben genannten Anforderungen erfüllt, können Sie [direkt mit dem Abschnitt für einen vorhandenen Cluster fortfahren](#existing-cluster), um einen neuen Pool mit Confidential Computing-Knoten hinzuzufügen.
+> [!NOTE]
+> Wenn Sie bereits über einen AKS-Cluster verfügen, der die zuvor genannten Anforderungskriterien erfüllt, können Sie [direkt mit dem nächsten Abschnitt fortfahren](#add-a-user-node-pool-with-confidential-computing-capabilities-to-the-aks-cluster), um einen Pool mit Confidential Computing-Knoten hinzuzufügen.
 
 Erstellen Sie zunächst mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe für den Cluster. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *westus2* erstellt:
 
@@ -56,23 +58,21 @@ Erstellen Sie zunächst mit dem Befehl [az group create][az-group-create] eine R
 az group create --name myResourceGroup --location westus2
 ```
 
-Erstellen Sie nun mit dem Befehl [az aks create][az-aks-create] einen AKS-Cluster:
+Erstellen Sie nun mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster mit aktiviertem Confidential Computing-Add-On:
 
 ```azurecli-interactive
 az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom
 ```
 
-Mit dem Code oben wird ein neuer AKS-Cluster mit dem Systemknotenpool mit aktiviertem Add-On erstellt. Fügen Sie als nächstes dem AKS-Cluster einen Benutzerknotenpool mit Confidential Computing-Funktionen hinzu.
+### <a name="add-a-user-node-pool-with-confidential-computing-capabilities-to-the-aks-cluster"></a>Hinzufügen eines Benutzerknotenpool mit Confidential Computing-Funktionen zum AKS-Cluster 
 
-### <a name="add-a-confidential-computing-node-pool-to-the-aks-cluster"></a>Hinzufügen eines Confidential Computing-Knotenpools zum AKS-Cluster 
-
-Führen Sie den folgenden Befehl aus, um einen Benutzerknoten der Größe `Standard_DC2s_v2` mit drei Knoten hinzuzufügen. Sie können eine andere SKU aus der unterstützten Liste mit [DCsv2-SKUs und -Regionen](../virtual-machines/dcv2-series.md) auswählen.
+Führen Sie den folgenden Befehl aus, um einen Benutzerknoten der Größe `Standard_DC2s_v2` mit drei Knoten zum AKS-Cluster hinzuzufügen. Sie können eine andere SKU aus der [Liste mit unterstützten DCsv2-SKUs und -Regionen](../virtual-machines/dcv2-series.md) auswählen.
 
 ```azurecli-interactive
 az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-vm-size Standard_DC2s_v2
 ```
 
-Nach der Ausführung sollte ein neuer Knotenpool mit **DCsv2** mit Confidential Computing-Add-On-DaemonSets ([SGX-Geräte-Plug-In](confidential-nodes-aks-overview.md#sgx-plugin)) sichtbar sein.
+Nach der Ausführung des Befehls sollte ein neuer Knotenpool mit DCsv2 mit Confidential Computing-Add-On-DaemonSets ([SGX-Geräte-Plug-In](confidential-nodes-aks-overview.md#confidential-computing-add-on-for-aks)) sichtbar sein.
 
 ### <a name="verify-the-node-pool-and-add-on"></a>Überprüfen des Knotenpools und Add-Ons
 
@@ -82,7 +82,7 @@ Rufen Sie die Anmeldeinformationen für Ihren AKS-Cluster mit dem Befehl [az aks
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Vergewissern Sie sich, dass die Knoten richtig erstellt wurden und dass die SGX-bezogenen DaemonSets in **DCsv2**-Knotenpools ausgeführt werden. Verwenden Sie hierfür die folgenden kubectl-Befehle zum Abrufen von Pods und Knoten:
+Stellen Sie mithilfe des Befehls `kubectl get pods` sicher, dass die Knoten ordnungsgemäß erstellt wurden und die SGX-bezogenen DaemonSets in DCsv2-Knotenpools ausgeführt werden:
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -90,13 +90,13 @@ $ kubectl get pods --all-namespaces
 kube-system     sgx-device-plugin-xxxx     1/1     Running
 ```
 
-Wenn die Ausgabe wie oben aussieht, ist Ihr AKS-Cluster bereit für die Ausführung vertraulicher Anwendungen.
+Wenn die Ausgabe wie der obige Code aussieht, ist Ihr AKS-Cluster bereit für die Ausführung vertraulicher Anwendungen.
 
-Navigieren Sie zum Bereitstellungsabschnitt [Hallo Welt aus isolierter Enklavenanwendung](#hello-world), um eine App in einer Enklave zu testen. Alternativ können Sie wie folgt vorgehen, um weitere Knotenpools in AKS hinzuzufügen (AKS unterstützt die parallele Verwendung von SGX-Knotenpools und SGX-fremden Knotenpools).
+Sie können in dieser Schnellstartanleitung zum Abschnitt [Bereitstellen von „Hallo Welt“ aus einer isolierten Enklavenanwendung](#hello-world) wechseln, um eine App in einer Enclave zu testen. Alternativ können Sie wie folgt vorgehen, um weitere Knotenpools in AKS hinzuzufügen. (AKS unterstützt die parallele Verwendung von SGX-Knotenpools und SGX-fremden Knotenpools).
 
 ## <a name="add-a-confidential-computing-node-pool-to-an-existing-aks-cluster"></a>Hinzufügen eines Confidential Computing-Knotenpools zu einem vorhandenen AKS-Cluster<a id="existing-cluster"></a>
 
-In diesem Abschnitt wird davon ausgegangen, dass Sie bereits über einen aktiven AKS-Cluster verfügen, der die im Abschnitt „Voraussetzungen“ aufgeführten Kriterien erfüllt (gilt für Add-On).
+In diesem Abschnitt wird davon ausgegangen, dass Sie bereits einen AKS-Cluster ausführen, der die zuvor in dieser Schnellstartanleitung aufgeführten Voraussetzungen erfüllt.
 
 ### <a name="enable-the-confidential-computing-aks-add-on-on-the-existing-cluster"></a>Aktivieren des Confidential Computing-AKS-Add-Ons für den vorhandenen Cluster
 
@@ -106,18 +106,18 @@ Führen Sie den folgenden Befehl aus, um das Confidential Computing-Add-On zu a
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
 
-### <a name="add-a-dcsv2-user-node-pool-to-the-cluster"></a>Hinzufügen eines **DCsv2**-Knotenpools zum Cluster
+### <a name="add-a-dcsv2-user-node-pool-to-the-cluster"></a>Hinzufügen eines DCsv2-Knotenpools zum Cluster
 
 > [!NOTE]
-> Damit Sie die Confidential Computing-Funktion nutzen können, muss der vorhandene AKS-Cluster über mindestens einen Knotenpool verfügen, der auf der SKU für virtuelle **DCsv2**-Computer basiert. Weitere Informationen zur SKU für virtuelle Confidential Computing-Computer der DCs-v2-Serie finden Sie [hier](virtual-machine-solutions.md).
+> Damit Sie die Confidential Computing-Funktion nutzen können, muss der vorhandene AKS-Cluster über mindestens einen Knotenpool verfügen, der auf der SKU für virtuelle DCsv2-Computer basiert. Weitere Informationen zu den SKUs für virtuelle Confidential Computing-Computer der DCs-v2-Serie finden Sie [hier](virtual-machine-solutions.md).
 
-Führen Sie den folgenden Befehl aus, um einen neuen Knotenpool zu erstellen:
+Führen Sie den folgenden Befehl aus, um einen Knotenpool zu erstellen:
 
 ```azurecli-interactive
 az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-count 1 --node-vm-size Standard_DC4s_v2
 ```
 
-Überprüfen Sie, ob der neue Knotenpool mit dem Namen „confcompool1“ erstellt wurde:
+Überprüfen Sie, ob der neue Knotenpool mit dem Namen *confcompool1* erstellt wurde:
 
 ```azurecli-interactive
 az aks nodepool list --cluster-name myAKSCluster --resource-group myResourceGroup
@@ -125,13 +125,13 @@ az aks nodepool list --cluster-name myAKSCluster --resource-group myResourceGrou
 
 ### <a name="verify-that-daemonsets-are-running-on-confidential-node-pools"></a>Bestätigen, dass DaemonSets in vertraulichen Knotenpools ausgeführt werden
 
-Melden Sie sich bei Ihrem vorhandenen AKS-Cluster an, um die unten beschriebene Überprüfung auszuführen.
+Melden Sie sich bei Ihrem vorhandenen AKS-Cluster an, um die folgende Überprüfung auszuführen:
 
 ```console
 kubectl get nodes
 ```
 
-Die Ausgabe sollte den neu hinzugefügten Pool „confcompool1“ im AKS-Cluster enthalten. Möglicherweise werden auch andere DaemonSets angezeigt.
+Die Ausgabe sollte den neu hinzugefügten Pool *confcompool1* im AKS-Cluster enthalten. Möglicherweise werden auch andere DaemonSets angezeigt.
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -139,10 +139,12 @@ $ kubectl get pods --all-namespaces
 kube-system     sgx-device-plugin-xxxx     1/1     Running
 ```
 
-Wenn die Ausgabe wie oben aussieht, ist Ihr AKS-Cluster bereit für die Ausführung vertraulicher Anwendungen. Befolgen Sie die nachstehenden Anweisungen zum Bereitstellen einer Testanwendung.
+Wenn die Ausgabe wie der obige Code aussieht, ist Ihr AKS-Cluster bereit für die Ausführung vertraulicher Anwendungen. 
 
-## <a name="hello-world-from-isolated-enclave-application"></a>Hello World aus isolierter Enklavenanwendung <a id="hello-world"></a>
-Erstellen Sie eine Datei mit dem Namen *hello-world-enclave.yaml*, und fügen Sie das folgende YAML-Manifest ein. Diesen Open Enclave-basierten Beispielanwendungscode finden Sie im [Open Enclave-Projekt](https://github.com/openenclave/openenclave/tree/master/samples/helloworld). Für die unten angegebene Bereitstellung wird angenommen, dass Sie das Add-On „confcom“ bereitgestellt haben.
+## <a name="deploy-hello-world-from-an-isolated-enclave-application"></a>Bereitstellen von „Hallo Welt“ aus einer isolierten Enklavenanwendung <a id="hello-world"></a>
+Sie können jetzt eine Testanwendung bereitstellen. 
+
+Erstellen Sie eine Datei mit dem Namen *hello-world-enclave.yaml*, und fügen Sie das folgende YAML-Manifest ein. Sie finden diesen Beispielanwendungscode im [Open Enclave-Projekt](https://github.com/openenclave/openenclave/tree/master/samples/helloworld). Bei dieser Bereitstellung wird davon ausgegangen, dass Sie das Add-On *confcom* bereitgestellt haben.
 
 ```yaml
 apiVersion: batch/v1
@@ -162,12 +164,12 @@ spec:
         image: oeciteam/sgx-test:1.0
         resources:
           limits:
-            kubernetes.azure.com/sgx_epc_mem_in_MiB: 5 # This limit will automatically place the job into confidential computing node. Alternatively you can target deployment to nodepools
+            sgx.intel.com/epc: 5Mi # This limit will automatically place the job into a confidential computing node and mount the required driver volumes. Alternatively, you can target deployment to node pools with node selector.
       restartPolicy: Never
   backoffLimit: 0
   ```
 
-Erstellen Sie nun mithilfe des Befehls „kubectl apply“ einen Beispielauftrag, der in einer sicheren Enklave gestartet wird, wie in der folgenden Beispielausgabe zu sehen:
+Erstellen Sie nun mithilfe des Befehls `kubectl apply` einen Beispielauftrag, der in einer sicheren Enklave geöffnet wird, wie in der folgenden Beispielausgabe zu sehen:
 
 ```console
 $ kubectl apply -f hello-world-enclave.yaml
@@ -200,15 +202,13 @@ Enclave called into host to print: Hello World!
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Verwenden Sie die folgenden Befehle, um die zugeordneten Knotenpools zu entfernen oder den AKS-Cluster zu löschen:
-
-### <a name="remove-the-confidential-computing-node-pool"></a>Entfernen des Confidential Computing-Knotenpools
+Verwenden Sie den folgenden Befehl, um den in dieser Schnellstartanleitung erstellten Confidential Computing-Knotenpool zu entfernen: 
 
 ```azurecli-interactive
-az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resource-group myResourceGroup
+az aks nodepool delete --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup
 ```
 
-### <a name="delete-the-aks-cluster"></a>Löschen des AKS-Clusters
+Verwenden Sie zum Löschen des AKS-Clusters den folgenden Befehl: 
 
 ```azurecli-interactive
 az aks delete --resource-group myResourceGroup --name myAKSCluster
@@ -216,9 +216,9 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Führen Sie Python-Anwendungen, Node-Anwendungen usw. vertraulich über vertrauliche Container aus, indem Sie sich [Beispiele für vertrauliche Container](https://github.com/Azure-Samples/confidential-container-samples) ansehen.
+* Führen Sie Python, Node oder andere Anwendungen über vertrauliche Container aus. Verwenden Sie dazu die [Beispiele für vertrauliche Container auf GitHub](https://github.com/Azure-Samples/confidential-container-samples).
 
-* Führen Sie Enclave-fähige Anwendungen aus, indem Sie sich [Beispiele für Enclave-fähige Azure-Container](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/) ansehen.
+* Führen Sie mithilfe der [Beispiele für Enclave-fähige Azure-Container auf GitHub](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/) Enclave-fähige Anwendungen aus.
 
 <!-- LINKS -->
 [az-group-create]: /cli/azure/group#az_group_create

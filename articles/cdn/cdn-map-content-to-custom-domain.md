@@ -3,19 +3,19 @@ title: 'Tutorial: Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Endpunk
 titleSuffix: Azure Content Delivery Network
 description: In diesem Tutorial erfahren Sie, wie Sie eine benutzerdefinierte Domäne zu einem Azure Content Delivery Network-Endpunkt hinzufügen, damit der Domänenname in Ihrer URL sichtbar ist.
 services: cdn
-author: asudbring
+author: jessie-jyy
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 02/04/2020
-ms.author: allensu
+ms.date: 04/12/2021
+ms.author: yuajia
 ms.custom: mvc
-ms.openlocfilehash: 9bca81e7d0eb68d43c21065f5104fc423115be25
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 63ca8cc981f7a192c35f7d1889187ae84773ba08
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065190"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307995"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Endpunkt
 
@@ -245,9 +245,14 @@ Vergewissern Sie sich nach Abschluss der Registrierung der benutzerdefinierten D
 
 Wenn Sie die Zuordnung Ihres Endpunkts zu einer benutzerdefinierten Domäne aufheben möchten, entfernen Sie die benutzerdefinierte Domäne:
  
-1. Wählen Sie in Ihrem CDN-Profil den Endpunkt mit der benutzerdefinierten Domäne aus, die Sie entfernen möchten.
+1. Wechseln Sie zu Ihrem DNS-Anbieter, löschen Sie den CNAME-Eintrag für die benutzerdefinierte Domäne, oder aktualisieren Sie den CNAME-Eintrag für die benutzerdefinierte Domäne auf einen nicht von Azure CDN bereitgestellten Endpunkt.
 
-2. Klicken Sie auf der Seite **Endpunkt** unter „Benutzerdefinierte Domänen“ mit der rechten Maustaste auf die benutzerdefinierte Domäne, die Sie entfernen möchten, und wählen Sie im Kontextmenü dann die Option **Löschen**. Wählen Sie **Ja** aus.
+    > [!Important]
+    > Um verwaiste DNS-Einträge und dadurch verursachte Sicherheitsrisiken zu vermeiden, müssen in Azure CDN ab dem 9. April 2021 die CNAME-Einträge für Azure CDN-Endpunkte entfernt werden, damit die Ressourcen gelöscht werden können. Zu den Ressourcen zählen benutzerdefinierte Azure CDN-Domänen, Azure CDN-Profile/-Endpunkte oder Azure-Ressourcengruppen, für die benutzerdefinierte Azure CDN-Domänen aktiviert sind.
+
+2. Wählen Sie in Ihrem CDN-Profil den Endpunkt mit der benutzerdefinierten Domäne aus, die Sie entfernen möchten.
+
+3. Klicken Sie auf der Seite **Endpunkt** unter „Benutzerdefinierte Domänen“ mit der rechten Maustaste auf die benutzerdefinierte Domäne, die Sie entfernen möchten, und wählen Sie im Kontextmenü dann die Option **Löschen**. Wählen Sie **Ja** aus.
 
    Die Zuordnung der benutzerdefinierten Domäne zum Endpunkt wird aufgehoben.
 
@@ -255,25 +260,29 @@ Wenn Sie die Zuordnung Ihres Endpunkts zu einer benutzerdefinierten Domäne aufh
 
 Wenn Sie die Zuordnung Ihres Endpunkts zu einer benutzerdefinierten Domäne aufheben möchten, entfernen Sie die benutzerdefinierte Domäne:
 
-1. Verwenden Sie [Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain), um die benutzerdefinierte Domäne aus dem Endpunkt zu entfernen:
+1. Wechseln Sie zu Ihrem DNS-Anbieter, löschen Sie den CNAME-Eintrag für die benutzerdefinierte Domäne, oder aktualisieren Sie den CNAME-Eintrag für die benutzerdefinierte Domäne auf einen nicht von Azure CDN bereitgestellten Endpunkt.
+
+    > [!Important]
+    > Um verwaiste DNS-Einträge und dadurch verursachte Sicherheitsrisiken zu vermeiden, müssen in Azure CDN ab dem 9. April 2021 die CNAME-Einträge für Azure CDN-Endpunkte entfernt werden, damit die Ressourcen gelöscht werden können. Zu den Ressourcen zählen benutzerdefinierte Azure CDN-Domänen, Azure CDN-Profile/-Endpunkte oder Azure-Ressourcengruppen, für die benutzerdefinierte Azure CDN-Domänen aktiviert sind.
+
+2. Verwenden Sie [Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain), um die benutzerdefinierte Domäne aus dem Endpunkt zu entfernen:
 
     * Ersetzen Sie **myendpoint8675** durch den Namen Ihres CDN-Endpunkts.
     * Ersetzen Sie **www.contoso.com** durch den Namen der benutzerdefinierten Domäne.
     * Ersetzen Sie **myCDN** durch den CDN-Profilnamen.
     * Ersetzen Sie **myResourceGroupCDN** durch den Namen Ihrer Ressourcengruppe.
 
-
-```azurepowershell-interactive
-    $parameters = @{
-        CustomDomainName = 'www.contoso.com'
-        EndPointName = 'myendpoint8675'
-        ProfileName = 'myCDN'
-        ResourceGroupName = 'myResourceGroupCDN'
-    }
-    Remove-AzCdnCustomDomain @parameters
-```
-
+    ```azurepowershell-interactive
+        $parameters = @{
+            CustomDomainName = 'www.contoso.com'
+            EndPointName = 'myendpoint8675'
+            ProfileName = 'myCDN'
+            ResourceGroupName = 'myResourceGroupCDN'
+        }
+        Remove-AzCdnCustomDomain @parameters
+    ```
 ---
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:

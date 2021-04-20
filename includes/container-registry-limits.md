@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 089b1b6f1af2f19c16866858324bde2e151e8bdb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: b4701260a7d8da030f9f3019060aaa83e7a3a483
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052784"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803507"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
@@ -30,6 +30,7 @@ ms.locfileid: "98052784"
 | Inhaltsvertrauensstellung | – | – | [Unterstützt][content-trust] |
 | Private Link mit privaten Endpunkten | – | – | [Unterstützt][plink] |
 | &bull; Private Endpunkte | – | – | 10 |
+| Netzwerkregeln für öffentliche IP-Adressen | – | – | 100 |
 | Dienstendpunkt-VNET-Zugriff | – | – | [Vorschau][vnet] |
 | Vom Kunden verwaltete Schlüssel | – | – | [Unterstützt][cmk] |
 | Repositorybezogene Berechtigungen | – | – | [Vorschau][token]|

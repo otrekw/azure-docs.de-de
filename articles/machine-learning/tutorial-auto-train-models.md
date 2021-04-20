@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial zur Regression: Automatisiertes maschinelles Lernen'
+title: 'Tutorial: Regression mit automatisiertem maschinellem Lernen'
 titleSuffix: Azure Machine Learning
-description: Erstellen Sie ein Experiment mit automatisiertem maschinellem Lernen, das basierend auf den von Ihnen bereitgestellten Trainingsdaten und Konfigurationseinstellungen ein Regressionsmodell für Sie generiert.
+description: Schreiben Sie Code mit dem Python SDK, um ein Experiment mit automatisiertem maschinellem Lernen zu erstellen, das ein Regressionsmodell für Sie generiert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,30 +11,34 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 7f3052905d7594d64be9455c16239ebabd219849
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 85129cf282e39b4f4932cc5e9f7cfd72d1e445b0
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565077"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210634"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen
 
-
-In diesem Tutorial verwenden Sie automatisiertes maschinelles Lernen in Azure Machine Learning, um ein Regressionsmodell für die Vorhersage der Preise für Taxifahrten in New York zu erstellen. Dieser Prozess akzeptiert Trainingsdaten und Konfigurationseinstellungen und durchläuft automatisch Kombinationen der verschiedenen Methoden, Modelle und Hyperparametereinstellungen zur Featurenormalisierung/-standardisierung, um zum besten Modell zu gelangen.
+In diesem Tutorial verwenden Sie automatisiertes maschinelles Lernen im Azure Machine Learning SDK, um ein [Regressionsmodell](concept-automated-ml.md#regression) für die Vorhersage der Preise für Taxifahrten in New York zu erstellen. Dieser Prozess akzeptiert Trainingsdaten und Konfigurationseinstellungen und durchläuft automatisch Kombinationen der verschiedenen Methoden, Modelle und Hyperparametereinstellungen zur Featurenormalisierung/-standardisierung, um zum besten Modell zu gelangen.
 
 ![Flussdiagramm](./media/tutorial-auto-train-models/flow2.png)
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial schreiben Sie Code mithilfe des Python SDK.  Sie lernen Folgendes:
 
 > [!div class="checklist"]
 > * Herunterladen, Transformieren und Bereinigen von Daten unter Verwendung von Azure Open Datasets
 > * Trainieren eines Regressionsmodells mit automatisiertem maschinellem Lernen
 > * Berechnen der Modellgenauigkeit
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+Probieren Sie auch automatisiertes maschinelles Lernen für diese anderen Modelltypen aus: 
+
+* [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning:](tutorial-first-experiment-automated-ml.md) Beispiel ohne Code
+* [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen:](tutorial-automated-ml-forecast.md) Beispiel ohne Code
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
 
 * Absolvieren Sie das [Einrichtungstutorial](tutorial-1st-experiment-sdk-setup.md), falls Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich oder über einen virtuellen Notebook-Computer verfügen.
 * Öffnen Sie nach Abschluss des Einrichtungstutorials das Notebook *tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* unter Verwendung des gleichen Notebook-Servers.

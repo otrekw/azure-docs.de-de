@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 02/19/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: ebaca1f39b16e4a06b5dcaa4e5f1de07122c6c89
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 0614e6fb1df13332cb05dcb7bb9b0f07a1764d23
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622073"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251328"
 ---
 | Resource | Begrenzung |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -29,7 +29,7 @@ ms.locfileid: "103622073"
 | Maximale Anzahl von Abonnements pro Dienstinstanz<sup>8</sup> | 500 |
 | Maximale Anzahl von Clientzertifikaten pro Dienstinstanz<sup>8</sup> | 50 |
 | Maximale Anzahl von APIs pro Dienstinstanz<sup>8</sup> | 50 |
-| Maximale Anzahl von API-Vorgängen pro Dienstinstanz<sup>8</sup> | 1\.000 |
+| Maximale Anzahl von API-Verwaltungsvorgängen pro Dienstinstanz<sup>8</sup> | 1\.000 |
 | Maximale Gesamtdauer der Anforderungen<sup>8</sup> | 30 Sekunden |
 | Maximale gepufferte Nutzlastgröße<sup>8</sup> | 2 MiB |
 | Maximale Größe der Anforderungs-URL<sup>9</sup> | 4096 Bytes |

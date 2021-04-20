@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 828f37030ae567cacbaad25849b7ba24c561c20c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b4b4e227a0bdfc449c73541dec5d13c1c6697bc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98132765"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313061"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Terminologie für Azure Synapse Analytics
 
@@ -34,7 +34,7 @@ Ein Arbeitsbereich kann eine beliebige Anzahl von **verknüpften Diensten** enth
 
 **Synapse SQL** ermöglicht T-SQL-basierte Analysen in Synapse-Arbeitsbereichen. Synapse SQL hat zwei Verbrauchsmodelle: dediziert und serverlos.  Verwenden Sie für das dedizierte Modell **dedizierte SQL-Pools**. Ein Arbeitsbereich kann eine beliebige Anzahl dieser Pools enthalten. Verwenden Sie zur Nutzung des serverlosen Modells **serverlose SQL-Pools**. Jeder Arbeitsbereich verfügt über einen dieser Pools.
 
-In Synapse Studio können Sie SQL-Pools verwenden, indem Sie **SQL-Skripts** erstellen und ausführen.
+In Synapse Studio können Sie SQL-Pools verwenden, indem Sie **SQL-Skripts** ausführen.
 
 ## <a name="apache-spark-for-synapse"></a>Apache Spark für Synapse
 

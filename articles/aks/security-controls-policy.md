@@ -5,17 +5,18 @@ ms.date: 03/31/2021
 ms.topic: sample
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 0fdc3822b62053195ac1daa3f6eed16ac226f7f1
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d4b36638caf1365f387f0c2644726706b3793c2f
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095021"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104931"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Kubernetes Service (AKS)
 
-Die [Einhaltung gesetzlicher Bestimmungen in Azure Policy](../governance/policy/concepts/regulatory-compliance.md) umfasst von Microsoft erstellte und verwaltete Initiativdefinitionen (als _Integrationen_ bezeichnet) für die **Compliancedomänen** und **Sicherheitskontrollen**, die sich auf unterschiedliche Compliancestandards beziehen. Auf dieser Seite sind die **Compliancedomänen** und **Sicherheitskontrollen** für Azure Kubernetes Service (AKS) aufgeführt.
-Sie können die integrierten Elemente für eine **Sicherheitskontrolle** einzeln zuweisen, um Ihre Azure-Ressourcen mit dem jeweiligen Standard konform zu machen.
+Die [Einhaltung gesetzlicher Bestimmungen in Azure Policy](../governance/policy/concepts/regulatory-compliance.md) umfasst von Microsoft erstellte und verwaltete Initiativendefinitionen (*Integrationen*) für die Compliancedomänen und Sicherheitskontrollen, die sich auf unterschiedliche Compliancestandards beziehen. Auf dieser Seite sind die Compliancedomänen und Sicherheitskontrollen für Azure Kubernetes Service (AKS) aufgeführt.
+
+Sie können die integrierten Elemente für eine **Sicherheitskontrolle** einzeln zuweisen, um Ihre Azure-Ressourcen mit dem jeweiligen Standard kompatibel zu machen.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

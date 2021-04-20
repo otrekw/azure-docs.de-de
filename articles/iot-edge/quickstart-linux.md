@@ -4,17 +4,17 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein IoT Edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/12/2021
+ms.date: 04/07/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 37f4a63d0a901fd70e0a60bb435efdaf08868616
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10a073914a79d29ae4b1c1d90ae5be624e7d7673
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463459"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303882"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät
 
@@ -263,32 +263,76 @@ Verwalten Sie Ihr Azure IoT Edge-Gerät über die Cloud, um ein Modul bereitzust
 
 ![Diagramm: Bereitstellen eines Moduls aus der Cloud für das Gerät](./media/quickstart-linux/deploy-module.png)
 
-[!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+<!-- [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
+Include content included below to support versioned steps in Linux quickstart. Can update include file once Windows quickstart supports v1.2 -->
+
+Eine wichtige Funktion von Azure IoT Edge ist die Möglichkeit, Code aus der Cloud auf IoT Edge-Geräten bereitzustellen. Bei *IoT Edge-Modulen* handelt es sich um ausführbare Pakete, die als Container implementiert werden. In diesem Abschnitt stellen Sie ein vorgefertigtes Modul aus dem [Abschnitt mit den IoT Edge-Modulen im Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) direkt über Ihre Azure IoT Hub-Instanz bereit.
+
+Mit dem in diesem Abschnitt bereitgestellten Modul wird ein Sensor simuliert, und es werden Daten generiert. Der Code dieses Moduls ist nützlich, wenn Sie die ersten Schritte mit IoT Edge ausführen, weil Sie die simulierten Daten für die Entwicklung und das Testen nutzen können. Wenn Sie genau sehen möchten, was mit diesem Modul durchgeführt wird, können Sie den [Quellcode für den simulierten Temperatursensor anzeigen](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs).
+
+Führen Sie die folgenden Schritte aus, um den Assistenten zum **Festlegen von Modulen** zu starten und Ihr erstes Modul über den Azure Marketplace bereitzustellen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub-Instanz.
+
+1. Wählen Sie im Menü im linken Bereich unter **Automatische Geräteverwaltung** die Option **IoT Edge** aus.
+
+1. Wählen Sie in der Liste der Geräte die Geräte-ID des Zielgeräts aus.
+
+1. Wählen Sie in der oberen Leiste **Module festlegen** aus.
+
+   ![Screenshot: Auswählen von „Module festlegen“](./media/quickstart/select-set-modules.png)
+
+### <a name="modules"></a>Module
+
+Im ersten Schritt des Assistenten wählen Sie aus, welche Module auf Ihrem Gerät ausgeführt werden sollen.
+
+Öffnen Sie unter **IoT Edge-Module** das Dropdownmenü **Hinzufügen**, und wählen Sie **Marketplace-Modul** aus.
+
+   ![Screenshot: Dropdownmenü „Hinzufügen“](./media/quickstart/add-marketplace-module.png)
+
+Suchen Sie im **Marketplace für IoT Edge-Module** nach dem Modul `Simulated Temperature Sensor`, und wählen Sie es aus. Das Modul wird dem Abschnitt mit den IoT Edge-Modulen mit dem gewünschten Status **Wird ausgeführt** hinzugefügt.
 
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-Da sich IoT Edge-Version 1.2 in der öffentlichen Vorschauphase befindet, müssen Sie einen zusätzlichen Schritt ausführen, um die Runtimemodule ebenfalls auf ihre öffentlichen Vorschauversionen zu aktualisieren.
+Wählen Sie **Laufzeiteinstellungen** aus, um die Einstellungen für die Module „edgeHub“ und „edgeAgent“ zu öffnen. In diesem Einstellungsabschnitt können Sie die Laufzeitmodule verwalten, indem Sie Umgebungsvariablen hinzufügen oder die Erstellungsoptionen ändern.
 
-1. Wählen Sie auf der Seite „Gerätedetails“ erneut **Module festlegen** aus.
+Aktualisieren Sie das Feld **Image** für das edgeHub- und das edgeAgent-Modul zur Verwendung des Versionstags 1.2. Beispiel:
 
-1. Wählen Sie **Runtimeeinstellungen** aus.
+* `mcr.microsoft.com/azureiotedge-hub:1.2`
+* `mcr.microsoft.com/azureiotedge-agent:1.2`
 
-1. Aktualisieren Sie das Feld **Image** für das IoT Edge-Hub- und das IoT Edge-Agent-Modul zur Verwendung des Versionstags 1.2.0-rc4. Beispiel:
-
-   * `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`
-   * `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4`
-
-1. Das Modul für den simulierten Temperatursensor sollte weiterhin im Modulabschnitt aufgelistet sein. Sie müssen keine Änderungen an diesem Modul für die öffentliche Vorschau vornehmen.
-
-1. Klicken Sie auf **Überprüfen + erstellen**.
-
-1. Klicken Sie auf **Erstellen**.
-
-1. Auf der Seite „Gerätedetails“ können Sie entweder **$edgeAgent** oder **$edgeHub** auswählen, um zu überprüfen, ob die Moduldetails die öffentliche Vorschauversion des Images widerspiegeln.
+Wählen Sie **Speichern** aus, um die Änderungen auf die Laufzeitmodule anzuwenden.
 
 :::moniker-end
-<!-- end 1.2 -->
+<!--end 1.2-->
+
+Klicken Sie auf **Weiter: Routen**, um mit dem nächsten Schritt des Assistenten fortzufahren.
+
+   ![Screenshot : Fortfahren mit dem nächsten Schritt nach dem Hinzufügen des Moduls](./media/quickstart/view-temperature-sensor-next-routes.png)
+
+### <a name="routes"></a>Routen
+
+Entfernen Sie auf der Registerkarte **Routen** die Standardroute **route**, und wählen Sie dann **Weiter: Überprüfen + erstellen** aus, um mit dem nächsten Schritt des Assistenten fortzufahren.
+
+   >[!Note]
+   >Routen werden mit Name-Wert-Paaren erstellt. Auf dieser Seite sollten zwei Routen angezeigt werden. Die Standardroute **route** sendet alle Nachrichten an IoT Hub (`$upstream`). Eine zweite Route mit dem Namen **SimulatedTemperatureSensorToIoTHub** wurde automatisch erstellt, als Sie das Modul aus dem Azure Marketplace hinzugefügt haben. Diese Route sendet alle vom Modul für simulierte Temperatur gesendeten Nachrichten an IoT Hub. Sie können die Standardroute löschen, weil sie in diesem Fall redundant ist.
+
+   ![Screenshot: Entfernen der Standardroute und Fortfahren mit dem nächsten Schritt](./media/quickstart/delete-route-next-review-create.png)
+
+### <a name="review-and-create"></a>Überprüfen und Erstellen
+
+Überprüfen Sie die JSON-Datei, und wählen Sie dann **Erstellen** aus. Die JSON-Datei definiert alle Module, die Sie auf Ihrem IoT Edge-Gerät bereitstellen. Sie sehen das Modul **SimulatedTemperatureSensor** sowie die beiden Laufzeitmodule **edgeAgent** und **edgeHub**.
+
+   >[!Note]
+   >Wenn Sie eine neue Bereitstellung an ein IoT Edge-Gerät übermitteln, wird nichts per Push auf Ihr Gerät übertragen. Stattdessen fragt das Gerät den IoT Hub regelmäßig nach neuen Anweisungen ab. Wenn das Gerät ein aktualisiertes Bereitstellungsmanifest findet, werden die Informationen zur neuen Bereitstellung verwendet, um die Modulimages per Pullvorgang aus der Cloud abzurufen. Anschließend wird die lokale Ausführung der Module gestartet. Dieser Vorgang kann einige Minuten dauern.
+
+Nachdem Sie die Bereitstellungsdetails des Moduls erstellt haben, führt Sie der Assistent zur Seite „Gerätedetails“ zurück. Zeigen Sie den Bereitstellungsstatus auf der Registerkarte **Module** an.
+
+Dort sollten drei Module angezeigt werden: **$edgeAgent**, **$edgeHub** und **SimulatedTemperatureSensor**. Wenn unter **IN BEREITSTELLUNG ANGEGEBEN**, aber nicht unter **VOM GERÄT GEMELDET** für mindestens ein Modul **JA** angegeben ist, ist Ihr IoT Edge-Gerät noch mit dem Startvorgang beschäftigt. Warten Sie einige Minuten, und aktualisieren Sie dann die Seite.
+
+   ![Screenshot: Simulierter Temperatursensor in der Liste der bereitgestellten Module](./media/quickstart/view-deployed-modules.png)
 
 ## <a name="view-generated-data"></a>Anzeigen generierter Daten
 

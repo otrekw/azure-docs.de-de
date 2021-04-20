@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 0becbbdb68f75072e10a51f5a2eae95291b9ed77
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: de48f906f4dc86bf6297cfb3b76f406df49feec3
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108331"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363851"
 ---
 # <a name="analyze-with-apache-spark"></a>Analysieren mit Apache Spark
 
@@ -34,18 +34,14 @@ In diesem Tutorial werden die grundlegenden Schritte zum Laden und Analysieren v
 
 Mit einem serverlosen Spark-Pool kann angegeben werden, wie ein Benutzer mit Spark arbeiten möchte. Wenn Sie mit der Verwendung eines Pools beginnen, wird bei Bedarf eine Spark-Sitzung erstellt. Der Pool steuert, wie viele Spark-Ressourcen von dieser Sitzung verwendet werden und wie lange die Sitzung dauert, bevor sie automatisch angehalten wird. Sie bezahlen für Spark-Ressourcen, die während der Sitzung verwendet werden, nicht für den Pool selbst. Auf diese Weise können Sie in einem Spark-Pool mit Spark arbeiten, ohne sich mit der Verwaltung von Clustern auseinandersetzen zu müssen. Dies ist vergleichbar mit einem serverlosen SQL-Pool.
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Analysieren von NYC Taxi-Daten im Blobspeicher mithilfe von Spark
+## <a name="analyze-nyc-taxi-data-with-a-spark-pool"></a>Analysieren von NYC Taxi-Daten mit einem Spark-Pool
 
 1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln**.
-2. Erstellen Sie ein neues Notebook, bei dem die Standardsprache auf **PySpark (Python)** festgelegt ist.
+2. Erstellen eines neuen Notebooks
 3. Erstellen Sie eine neue Codezelle, und fügen Sie den folgenden Code in diese Zelle ein:
     ```py
     %%pyspark
-    from azureml.opendatasets import NycTlcYellow
-
-    data = NycTlcYellow()
-    df = data.to_spark_dataframe()
-    # Display 10 rows
+    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet', format='parquet')
     display(df.limit(10))
     ```
 1. Wählen Sie im Notebook im Menü **Anfügen an** den zuvor erstellten serverlosen Spark-Pool **Spark1** aus.
@@ -53,22 +49,23 @@ Mit einem serverlosen Spark-Pool kann angegeben werden, wie ein Benutzer mit Spa
 1. Wenn Sie nur das Schema des Datenrahmens anzeigen möchten, führen Sie eine Zelle mit dem folgenden Code aus:
 
     ```py
+    %%pyspark
     df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>Laden der NYC Taxi-Daten in die Spark-Datenbank „nyctaxi“
 
-Daten sind über den Datenrahmen mit dem Namen **data** verfügbar. Laden Sie sie in eine Spark-Datenbank mit dem Namen **nyctaxi**.
+Daten sind über den Datenrahmen mit dem Namen **df** verfügbar. Laden Sie sie in eine Spark-Datenbank mit dem Namen **nyctaxi**.
 
-1. Fügen Sie dem Notebook eine neue hinzu, und geben Sie dann den folgenden Code ein:
+1. Fügen Sie dem Notebook eine neue Codezelle hinzu, und geben Sie dann den folgenden Code ein:
 
     ```py
+    %%pyspark
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analysieren der NYC Taxi-Daten mithilfe von Spark und Notebooks
 
-1. Wechseln Sie zurück zu Ihrem Notebook.
 1. Erstellen Sie eine neue Codezelle, und geben Sie den folgenden Code ein: 
 
    ```py
@@ -84,10 +81,10 @@ Daten sind über den Datenrahmen mit dem Namen **data** verfügbar. Laden Sie si
    %%pyspark
    df = spark.sql("""
       SELECT PassengerCount,
-          SUM(TripDistance) as SumTripDistance,
-          AVG(TripDistance) as AvgTripDistance
+          SUM(TripDistanceMiles) as SumTripDistance,
+          AVG(TripDistanceMiles) as AvgTripDistance
       FROM nyctaxi.trip
-      WHERE TripDistance > 0 AND PassengerCount > 0
+      WHERE TripDistanceMiles > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
    """) 

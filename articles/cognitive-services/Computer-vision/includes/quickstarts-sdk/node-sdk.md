@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 88f17ace7142fe1c5ff6d56226a935b229530147
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: cb4679152740b73d6bb9cf7288fcaa811b6d6141
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284777"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073733"
 ---
 <a name="HOLTop"></a>
 
@@ -172,9 +172,10 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
->[Referenz zur OCR-API (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/)
+In dieser Schnellstartanleitung haben Sie erfahren, wie Sie die OCR-Clientbibliothek installieren und die Lese-API verwenden. Informieren Sie sich als Nächstes ausführlicher über die Funktionen der Lese-API.
 
+> [!div class="nextstepaction"]
+>[Aufrufen der Lese-API](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [OCR-Übersicht](../../overview-ocr.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js).

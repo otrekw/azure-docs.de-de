@@ -9,19 +9,19 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/16/2020
-ms.openlocfilehash: 59364a0a2c1d1e411f41dc35dee812c8e920b72d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/04/2021
+ms.openlocfilehash: 92d1534b5dd0233ce88b81d605c6502b67a121df
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98209201"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307893"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Überblick über Synapse Knowledge Center
 
 In diesem Tutorial erfahren Sie, wie Sie Synapse Studio Knowledge Center verwenden.
 
-## <a name="getting-to-the-knowledge-center"></a>Aufrufen des Knowledge Center
+## <a name="introduction-to-the-knowledge-center"></a>Einführung in Knowledge Center
 
 Es gibt zwei Möglichkeiten, das Knowledge Center in Synapse Studio aufzurufen:
 
@@ -30,16 +30,19 @@ Es gibt zwei Möglichkeiten, das Knowledge Center in Synapse Studio aufzurufen:
 
 Wählen Sie eine der beiden Methoden aus, und öffnen Sie das **Knowledge Center**.
 
-## <a name="overview"></a>Übersicht
-
-In **Knowledge Center** haben Sie drei Möglichkeiten:
+Sie sehen nach dem Öffnen, dass das **Knowledge Center** drei Aktionen ermöglicht:
 * **Use samples immediately** (Beispiele sofort verwenden). Wenn Sie ein kurzes Beispiel für die Funktionsweise von Synapse sehen möchten, wählen Sie diese Option aus.
 * **Katalog durchsuchen** Mit dieser Option können Sie Beispieldatasets verknüpfen und Beispielcode in Form von SQL-Skripts, Notebooks und Pipelines hinzufügen.
 * **Einführung in Synapse Studio**: Mit dieser Option können Sie sich einen kurzen Überblick über die Hauptbereiche von Synapse Studio verschaffen. Dies ist hilfreich, wenn Sie Synapse Studio noch nie verwendet haben.
 
-## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Untersuchen von Blobspeicher mit einem serverlosen SQL-Pool
+## <a name="exploring-use-samples-immediately"></a>Untersuchen: Use samples immediately (Beispiele sofort verwenden)
 
-1. Navigieren Sie zu **Knowledge Center**, und klicken Sie auf **Use samples immediately** (Beispiele sofort verwenden).
+Dieser Abschnitt enthält drei Elemente:
+* Beispieldaten mit Spark erkunden
+* Daten mit SQL abfragen
+* Externe Tabelle mit SQL erstellen
+
+1. Klicken Sie im **Knowledge Center** auf **Use samples immediately** (Beispiele sofort verwenden).
 1. Wählen Sie **Daten mit SQL abfragen** aus.
 1. Klicken Sie auf **Beispiel verwenden**.
 1. Ein neues SQL-Beispielskript wird geöffnet.
@@ -47,6 +50,7 @@ In **Knowledge Center** haben Sie drei Möglichkeiten:
 1. Klicken Sie auf "Ausführen". Nur der von Ihnen ausgewählte Code wird ausgeführt.
 
 ## <a name="loading-more-nyc-taxi-data"></a>Laden von weiteren NYC Taxi-Daten
+
 1. Navigieren Sie zu **Knowledge Center**, und klicken Sie auf **Katalog durchsuchen**.
 1. Wählen Sie oben die Registerkarte **SQL scripts** (SQL-Skripts) aus.
 1. Wählen Sie das Datenerfassungsbeispiel **Load the New York Taxicab dataset** (New York Taxicab-Dataset laden) aus, und klicken Sie auf **Weiter**.
@@ -61,6 +65,6 @@ In **Knowledge Center** haben Sie drei Möglichkeiten:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erste Schritte mit Azure Synapse Analytics](get-started.md)
-* [Erstellen eines Arbeitsbereichs](quickstart-create-workspace.md)
-* [Verwenden eines serverlosen SQL-Pools](quickstart-sql-on-demand.md)
+> [!div class="nextstepaction"]
+> [Hinzufügen eines Administrators](get-started-add-admin.md)
+

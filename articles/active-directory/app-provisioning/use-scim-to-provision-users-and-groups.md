@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652095"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305598"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial: Entwickeln eines SCIM-Endpunkts und Planen seiner Bereitstellung
 
@@ -62,7 +62,7 @@ Mit dem SCIM-Standard wird ein Schema zum Verwalten von Benutzern und Gruppen de
 Für das **Kernbenutzerschema** sind nur drei Attribute erforderlich (alle anderen sind optional):
 
 - `id`: Vom Dienstanbieter definierter Bezeichner
-- `externalId`: Vom Client definierter Bezeichner
+- `userName`: Ein eindeutiger Bezeichner für den Benutzer (ist in der Regel dem Azure AD-Benutzerprinzipalnamen zugeordnet)
 - `meta`: *Schreibgeschützte*, vom Dienstanbieter verwaltete Metadaten
 
 Neben dem **Kernbenutzerschema** definiert der SCIM-Standard eine **Unternehmensbenutzererweiterung** mit einem Modell für die Erweiterung des Benutzerschemas, um die Anforderungen Ihrer Anwendung zu erfüllen. 
@@ -168,10 +168,10 @@ Im SCIM-RFC sind verschiedene Endpunkte definiert. Sie können mit dem Endpunkt 
 |--|--|
 |/User|Führt CRUD-Vorgänge für ein Benutzerobjekt aus.|
 |/Group|Führt CRUD-Vorgänge für ein Gruppenobjekt aus.|
-|/ServiceProviderConfig|Stellt Einzelheiten zu den unterstützten Features des SCIM-Standards bereit, z. B. die unterstützten Ressourcen und die Authentifizierungsmethode.|
-|/ResourceTypes|Definiert die Metadaten für jede Ressource|
 |/Schemas|Der Satz von unterstützten Attributen kann bei einzelnen Clients und Dienstanbietern unterschiedlich sein. Ein Dienstanbieter enthält möglicherweise `name`, `title` und `emails`, während ein anderer `name`, `title` und `phoneNumbers` verwendet. Der Endpunkt „/Schemas“ ermöglicht die Erkennung der unterstützten Attribute.|
 |/Bulk|Massenvorgänge (bulk operations) ermöglichen das Ausführen von Vorgängen für eine große Sammlung von Ressourcenobjekten in einem einzigen Schritt (z. B. Aktualisieren der Mitgliedschaften für eine große Gruppe).|
+|/ServiceProviderConfig|Stellt Einzelheiten zu den unterstützten Features des SCIM-Standards bereit, z. B. die unterstützten Ressourcen und die Authentifizierungsmethode.|
+|/ResourceTypes|Definiert die Metadaten für jede Ressource|
 
 **Beispielliste mit Endpunkten**
 
@@ -198,6 +198,7 @@ Im Rahmen der [SCIM 2.0-Protokollspezifikation](http://www.simplecloud.info/#Sp
 |Filter [excludedAttributes=members](#get-group) beim Abfragen der Gruppenressource|Abschnitt 3.4.2.5|
 |Akzeptieren eines einzelnen Bearertokens für die Authentifizierung und Autorisierung von AAD gegenüber Ihrer Anwendung||
 |Vorläufiges Löschen eines Benutzers (`active=false`) und Wiederherstellen des Benutzers (`active=true`)|Das Benutzerobjekt sollte unabhängig vom Aktivitätsstatus des Benutzers in einer Anforderung zurückgegeben werden. Der Benutzer sollte nur dann nicht zurückgegeben werden, wenn er endgültig aus der Anwendung gelöscht wurde.|
+|Unterstützen des/Schemas-Endpunkts|[Abschnitt 7](https://tools.ietf.org/html/rfc7643#page-30) Der Schema Ermittlungs Endpunkt wird verwendet, um zusätzliche Attribute zu ermitteln.|
 
 Verwenden Sie bei der Implementierung eines SCIM-Endpunkts die allgemeinen Richtlinien, um die Kompatibilität mit AAD zu gewährleisten:
 
@@ -210,7 +211,12 @@ Verwenden Sie bei der Implementierung eines SCIM-Endpunkts die allgemeinen Richt
 * Von Microsoft AAD werden Anforderungen zum Abrufen eines zufälligen Benutzers und einer zufälligen Gruppe gesendet, um sicherzustellen, dass der Endpunkt und die Anmeldeinformationen gültig sind. Dies wird auch im Rahmen des Flows **Verbindung testen** im [Azure-Portal](https://portal.azure.com) durchgeführt. 
 * Das Attribut, nach dem die Ressourcen abgefragt werden können, muss als entsprechendes Attribut für die Anwendung im [Azure-Portal](https://portal.azure.com) festgelegt werden. Weitere Informationen finden Sie unter [Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md).
 * HTTPS-Unterstützung auf Ihrem SCIM-Endpunkt
-
+* [Schema Ermittlung](#schema-discovery)
+  * Die Schema Ermittlung wird derzeit in der benutzerdefinierten Anwendung nicht unterstützt, wird jedoch in bestimmten Katalog Anwendungen verwendet. In Zukunft wird die Schema Ermittlung als primäre Methode verwendet, um einem Connector zusätzliche Attribute hinzuzufügen. 
+  * Wenn kein Wert vorhanden ist, senden Sie keine NULL-Werte.
+  * Eigenschaftswerte sollten Kamel Schreibweise sein (z. b. "Read Write").
+  * Muss eine Listen Antwort zurückgeben.
+  
 ### <a name="user-provisioning-and-deprovisioning"></a>Benutzerbereitstellung und Aufheben der Bereitstellung
 
 Die folgende Abbildung zeigt die Nachrichten, die von AAD an einen SCIM-Dienst gesendet werden, um den Lebenszyklus eines Benutzers im Identitätsspeicher Ihrer Anwendung zu verwalten:  
@@ -252,6 +258,9 @@ Dieser Abschnitt enthält vom AAD-SCIM-Client ausgegebene SCIM-Beispielanforderu
   - [Gruppe aktualisieren [Mitglieder hinzufügen]](#update-group-add-members) ([Anforderung](#request-11) / [Antwort](#response-11))
   - [Gruppe aktualisieren [Mitglieder entfernen]](#update-group-remove-members) ([Anforderung](#request-12) / [Antwort](#response-12))
   - [Gruppe löschen](#delete-group) ([Anforderung](#request-13) / [Antwort](#response-13))
+
+[Schema Ermittlung](#schema-discovery)
+  - [Schema ermitteln](#discover-schema) ([Anforderungs](#request-15)  /  [Antwort](#response-15))
 
 ### <a name="user-operations"></a>Vorgänge für Benutzer
 
@@ -750,6 +759,105 @@ Dieser Abschnitt enthält vom AAD-SCIM-Client ausgegebene SCIM-Beispielanforderu
 
 *HTTP/1.1 204 No Content*
 
+### <a name="schema-discovery"></a>Schema-Ermittlung
+#### <a name="discover-schema"></a>Schema ermitteln
+
+##### <a name="request"></a><a name="request-15"></a>Anforderung
+*GET /Schemas* 
+##### <a name="response"></a><a name="response-15"></a>Antwort
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+    ],
+    "itemsPerPage": 50,
+    "startIndex": 1,
+    "totalResults": 3,
+    "Resources": [
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:User",
+    "name" : "User",
+    "description" : "User Account",
+    "attributes" : [
+      {
+        "name" : "userName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Unique identifier for the User, typically
+used by the user to directly authenticate to the service provider.
+Each User MUST include a non-empty userName value.  This identifier
+MUST be unique across the service provider's entire set of Users.
+REQUIRED.",
+        "required" : true,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "server"
+      },                
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:Group",
+    "name" : "Group",
+    "description" : "Group",
+    "attributes" : [
+      {
+        "name" : "displayName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "A human-readable name for the Group.
+REQUIRED.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+    "name" : "EnterpriseUser",
+    "description" : "Enterprise User",
+    "attributes" : [
+      {
+        "name" : "employeeNumber",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Numeric or alphanumeric identifier assigned
+to a person, typically based on order of hire or association with an
+organization.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+"/v2/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+    }
+  }
+]
+}
+```
+
 ### <a name="security-requirements"></a>Sicherheitsanforderungen
 **TLS-Protokollversionen**
 
@@ -1221,9 +1329,9 @@ Verwenden Sie die Prüfliste, um ein schnelles Onboarding Ihrer Anwendung sowie 
 > * 3 nicht ablaufende Testanmeldeinformationen für Ihre Anwendung (erforderlich)
 > * Unterstützung der OAuth-Autorisierungscodegenehmigung oder eines langlebigen Tokens gemäß der Beschreibung weiter unten (erforderlich)
 > * Einrichtung einer Anlaufstelle für technische und supportbezogene Fragen, um Kunden nach dem Katalogonboarding zu unterstützen (erforderlich)
+> * [Unterstützung der Schemaerkennung (erforderlich)](https://tools.ietf.org/html/rfc7643#section-6)
 > * Unterstützung der Aktualisierung mehrerer Gruppenmitgliedschaften mit einem einzelnen PATCH-Vorgang
 > * Öffentliche Dokumentation Ihres SCIM-Endpunkts
-> * [Unterstützung der Schemaerkennung](https://tools.ietf.org/html/rfc7643#section-6)
 
 ### <a name="authorization-to-provisioning-connectors-in-the-application-gallery"></a>Autorisierung für Bereitstellungsconnectors im Anwendungskatalog
 Die SCIM-Spezifikation definiert kein SCIM-spezifisches Schema für die Authentifizierung und Autorisierung und basiert auf bestehenden Branchenstandards.

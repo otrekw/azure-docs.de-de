@@ -3,12 +3,12 @@ title: 'Tutorial: Bereitstellen und Konfigurieren von VMware HCX'
 description: Erfahren Sie, wie Sie eine VMware HCX-Lösung für Ihre private Azure VMware Solution-Cloud bereitstellen und konfigurieren.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ee451ce4be59c51299d66e4042ed344026100cf
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869088"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010999"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Bereitstellen und Konfigurieren von VMware HCX
 
@@ -20,7 +20,7 @@ VMware HCX Advanced Connector wird in Azure VMware Solution vorab bereitgestellt
 >Obwohl das Tool „VMware Configuration Maximum“ angibt, dass die maximale Anzahl von Standortpaaren zwischen dem lokalen Connector und Cloud Manager gleich 25 ist, schränkt die Lizenzierung dies auf 3 für HCX Advanced und 10 für HCX Enterprise Edition ein.
 
 >[!NOTE]
->VMware HCX Enterprise ist mit Azure VMware Solution als Vorschaudienst verfügbar. Der Dienst ist kostenlos und unterliegt den Nutzungsbedingungen für einen Vorschaudienst. Wenn der VMware HCX Enterprise-Dienst allgemein verfügbar ist, erhalten Sie eine Benachrichtigung, dass in 30 Tagen die Abrechnung umgestellt wird. Sie haben auch die Möglichkeit, den Dienst zu deaktivieren bzw. abzuwählen. Es gibt keinen einfachen Downgradepfad von VMware HCX Enterprise zu VMware HCX Advanced. Wenn Sie ein Downgrade durchführen möchten, ist eine erneute Bereitstellung erforderlich, was mit Downtime einhergeht.
+>VMware HCX Enterprise ist mit Azure VMware Solution als Vorschaudienst verfügbar. Der Dienst ist kostenlos und unterliegt den Nutzungsbedingungen für einen Vorschaudienst. Wenn der VMware HCX Enterprise-Dienst allgemein verfügbar ist, erhalten Sie eine Benachrichtigung, dass in 30 Tagen die Abrechnung umgestellt wird. Sie haben auch die Möglichkeit, den Dienst zu deaktivieren bzw. abzuwählen. Eine Herabstufung von HCx Enterprise auf HCX Advanced ist ohne erneute Bereitstellung möglich. Sie müssen jedoch ein Supportticket für diese Aktion erstellen. Wenn Sie eine Herabstufung planen, stellen Sie sicher, dass keine Migrationen anstehen und keine Features wie CSV/MON verwendet werden.
 
 Machen Sie sich zuerst mit den [Vorbereitungen](#before-you-begin), der [erforderlichen Softwareversionen](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html) und den [Voraussetzungen](#prerequisites) vertraut. 
 

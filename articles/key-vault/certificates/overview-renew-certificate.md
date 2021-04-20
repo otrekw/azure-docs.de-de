@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: ffa130c0598d2405469d272a3ac6852f281ed965
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0492575bef93a1b08d48475c3ab32ecbc7becd6e
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726361"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364293"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Verlängern Ihrer Azure Key Vault-Zertifikate
 
@@ -82,7 +82,7 @@ Von Azure Key Vault wird auch die automatische Verlängerung von selbstsignierte
 
 **Wie kann ich das Feature für die automatische Rotation des Zertifikats testen?**
 
-Erstellen Sie ein Zertifikat mit einer Gültigkeitsdauer von **1 Monat**, und legen Sie die Lebensdaueraktion für die Rotation dann auf **1 %** fest. Bei dieser Einstellung wird das Zertifikat alle 7,2 Stunden rotiert.
+Erstellen Sie ein selbstsigniertes Zertifikat mit einer Gültigkeitsdauer von **1 Monat**, und legen Sie die Lebensdaueraktion für die Rotation dann auf **1 %** fest. Sie sollten den Verlauf der Zertifikatversion anzeigen können, der in den nächsten Tagen erstellt wird.
   
 **Werden die Tags nach der automatischen Verlängerung des Zertifikats repliziert?**
 

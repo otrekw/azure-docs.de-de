@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 03/16/2021
-ms.openlocfilehash: 77899366ed256e147ddbc705d68096cb1b879d8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fccd508d5d6dbe380b21a85faa3889e99b9942f
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608358"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579530"
 ---
 # <a name="azure-data-factory-tutorials"></a>Azure Data Factory-Tutorials
 
@@ -60,6 +60,8 @@ Nachfolgend finden Sie eine Liste der Tutorials, in denen eine Reihe von Data F
 [Vorbereiten von Daten mit Datenwrangling](wrangling-tutorial.md)
 
 [Sicheres Transformieren von Daten mithilfe von Zuordnungsdatenflüssen](tutorial-data-flow-private.md)
+
+[Best Practices für das Schreiben in Dateien in Data Lake mit Datenflüssen](tutorial-data-flow-write-to-lake.md)
 
 ## <a name="external-data-services"></a>Externe Datendienste
 

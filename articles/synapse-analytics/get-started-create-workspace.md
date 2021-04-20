@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: a4fa902268d9a19cd0003a2fdaa4c5e58989a4ff
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: b22954edf4f3a5a935c470326aa43bd24ee2d708
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218939"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366061"
 ---
 # <a name="creating-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
@@ -47,8 +47,8 @@ Füllen Sie die folgenden Felder aus:
 
 Gehen Sie unter **Data Lake Storage Gen 2 auswählen** wie folgt vor:
 
-1. Klicken Sie unter **Kontoname** auf **Neu erstellen**, und geben Sie für das neue Speicherkonto den Namen **contosolake** oder einen ähnlichen Namen ein. Dieser Name muss eindeutig sein.
-1. Klicken Sie unter **Dateisystemname** auf **Neu erstellen**, und geben Sie den Namen **Benutzer** ein. Dadurch wird ein Speichercontainer namens **Benutzer** erstellt. Der Arbeitsbereich verwendet dieses Speicherkonto als primäres Speicherkonto für Spark-Tabellen und Spark-Anwendungsprotokolle.
+1. Wählen Sie unter **Kontoname** die Option **Neu erstellen** aus, und geben Sie für das neue Speicherkonto den Namen **contosolake** oder einen ähnlichen Namen ein. Dieser Name muss eindeutig sein.
+1. Wählen Sie unter **Dateisystemname** die Option **Neu erstellen** aus, und geben Sie den Namen **Benutzer** ein. Dadurch wird ein Speichercontainer namens **Benutzer** erstellt. Der Arbeitsbereich verwendet dieses Speicherkonto als primäres Speicherkonto für Spark-Tabellen und Spark-Anwendungsprotokolle.
 1. Aktivieren Sie das Kästchen „Mir die Rolle "Mitwirkender an Storage-Blobdaten" für das Data Lake Storage Gen2-Konto zuweisen“. 
 
 ## <a name="completing-the-process"></a>Abschließen des Vorgangs
@@ -64,6 +64,16 @@ Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglich
 
 * Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://portal.azure.com), und wählen Sie im Abschnitt **Übersicht** des Synapse-Arbeitsbereichs im Feld „Synapse Studio öffnen“ den Eintrag **Öffnen** aus.
 * Navigieren Sie zu `https://web.azuresynapse.net`, und melden Sie sich bei Ihrem Arbeitsbereich an.
+
+## <a name="place-sample-data-into-the-primary-storage-account"></a>Platzieren von Beispieldaten im primären Speicherkonto
+In diesem Leitfaden zu den ersten Schritten verwenden Sie für viele Beispiele ein kleines Beispieldataset mit 100.000 Zeilen mit NYX Taxi-Daten. Sie beginnen damit, das Dataset im primären Speicherkonto zu platzieren, das Sie für den Arbeitsbereich erstellt haben.
+
+* Laden Sie die folgende Datei auf Ihren Computer herunter: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
+* Navigieren Sie in Synapse Studio zum Hub „Daten“. 
+* Wählen Sie **Mit Link** aus.
+* In der Kategorie **Azure Data Lake Storae Gen2** wird ein Element mit einem Namen wie **myworkspace (Primär – contosolake)** angezeigt.
+* Wählen Sie den Container mit dem Namen **Benutzer (Primär)** aus.
+* Wählen Sie **Hochladen** und dann die von Ihnen heruntergeladene Datei `NYCTripSmall.parquet` aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

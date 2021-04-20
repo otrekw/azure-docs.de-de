@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6af8f4600544007a9ecb4fcff5ac9016fd7dfbf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640348"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307944"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -138,9 +138,9 @@ Wenn Sie den Pfad für unstrukturierte Daten (unstructured_data_path) als Ordner
 Durch Angabe von „/**“ am Ende des Pfads können Sie den serverlosen SQL-Pool anweisen, Ordner zu durchlaufen. Beispiel: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Im Gegensatz zu Hadoop und PolyBase werden vom serverlosen SQL-Pool nur dann Unterordner zurückgegeben, wenn Sie „/**“ am Ende des Pfads angeben. Außerdem werden vom serverlosen SQL-Pool anders als bei Hadoop und PolyBase keine Dateien zurückgegeben, deren Dateiname mit einem Unterstrich (_) oder einem Punkt (.) beginnt.
+> Im Gegensatz zu Hadoop und PolyBase werden vom serverlosen SQL-Pool nur dann Unterordner zurückgegeben, wenn Sie „/**“ am Ende des Pfads angeben.
 
-Das folgende Beispiel zeigt: Bei Verwendung von „unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`“ werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus „mydata.txt“ und „_hidden.txt“ zurückgegeben. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden.
+Das folgende Beispiel zeigt: Bei Verwendung von „unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`“ werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus „mydata.txt“ zurückgegeben. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden.
 
 ![Rekursive Daten für externe Tabellen](./media/develop-openrowset/folder-traversal.png)
 

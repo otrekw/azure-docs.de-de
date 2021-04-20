@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b7f79bebce5a086b268f4fc1080c33517555fb39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c1cf6e1d47f9bb78349e0846f624e1d6a484669
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102431538"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386641"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Ist Azure Virtual WAN allgemein verfügbar?
 
@@ -276,6 +276,10 @@ Das derzeitige Verhalten besteht darin, für VNET-zu-VNET-Konnektivität den Exp
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>Können Hubs in einer anderen Ressourcengruppe in Virtual WAN erstellt werden?
 
 Ja. Diese Option ist derzeit nur über PowerShell verfügbar. Das Virtual WAN-Portal erfordert, dass sich die Hubs in der gleichen Ressourcengruppe befinden wie die Virtual WAN-Ressource.
+
+### <a name="what-is-the-recommended-hub-address-space-during-hub-creation"></a>Welcher Hubadressraum wird während der Huberstellung empfohlen?
+
+Der empfohlene Virtual WAN-Hubadressraum ist /23. Der Virtual WAN-Hub weist Subnetze verschiedenen Gateways zu (ExpressRoute, Site-to-Site-VPN, Point-to-Site-VPN, Azure Firewall, virtueller Hubrouter). In Szenarien, in denen NVAs innerhalb eines virtuellen Hubs bereitgestellt werden, wird in der Regel /28 für die NVA-Instanzen verwendet. Wenn der Benutzer jedoch mehrere NVAs bereitstellt, wird möglicherweise ein Subnetz vom Typ „/27“ zugewiesen. Virtual WAN-Hubs werden zwar mit einer Mindestgröße von /24 bereitgestellt, in Anbetracht der Entwicklung zukünftiger Architekturen wird für den Benutzer zum Zeitpunkt der Erstellung aber die Eingabe eines Hubadressraums der Größe /23 empfohlen.
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Wird IPv6 in Virtual WAN unterstützt?
 

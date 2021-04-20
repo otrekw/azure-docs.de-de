@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 03/09/2021
 ms.author: ambapat
-ms.openlocfilehash: d934d40cad5f4eec929cfd273b6e30ea291e48d5
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103010954"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803399"
 ---
 Der Azure Key Vault-Dienst unterstützt zwei Arten von Ressourcen: Tresore und verwaltete HSMs. In den beiden folgenden Abschnitten werden jeweils die entsprechenden Diensteinschränkungen beschrieben.
 
@@ -50,6 +50,17 @@ In diesem Abschnitt werden die Diensteinschränkungen für den Ressourcentyp `va
 Informationen zur Handhabung der Drosselung bei Überschreiten dieser Grenzwerte finden Sie unter [Anleitung zur Drosselung von Azure Key Vault](../articles/key-vault/general/overview-throttling.md).
 
 <sup>1</sup> Für alle Transaktionsarten gilt als abonnementweiter Grenzwert das Fünffache des Schlüsseltresorlimits. „HSM – andere Transaktionen“ pro Abonnement ist beispielsweise auf 5.000 Transaktionen in 10 Sekunden pro Abonnent beschränkt.
+
+#### <a name="backup-keys-secrets-certificates"></a>Sichern von Schlüsseln, Geheimnissen, Zertifikaten
+
+Wenn Sie ein Schlüsseltresorobjekt (Geheimnis, Schlüssel oder Zertifikat) sichern, wird das Objekt beim Sicherungsvorgang als verschlüsseltes Blob heruntergeladen. Dieses Blob kann außerhalb von Azure nicht entschlüsselt werden. Um verwendbare Daten aus diesem Blob zu erhalten, müssen Sie das Blob in einem Schlüsseltresor innerhalb desselben Azure-Abonnements und derselben Azure-Geografie wiederherstellen.
+
+| Transaktionstyp | Maximal zulässige Schlüsseltresor-Objektversionen |
+| --- | --- |
+| Sichern einzelner Schlüssel, Geheimnisse, Zertifikate |500 |
+
+> [!NOTE]
+> Wenn Sie beim Sichern eines Schlüssels, eines Geheimnisses oder eines Zertifikatobjekts die maximal mögliche Anzahl von Versionen überschreiten, tritt ein Fehler auf. Es ist nicht möglich, frühere Versionen eines Schlüssels, Geheimnisses oder Zertifikats zu löschen. 
 
 #### <a name="azure-private-link-integration"></a>Azure Private Link-Integration
 

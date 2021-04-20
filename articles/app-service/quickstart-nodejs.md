@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-nodejs-uiex
-ms.openlocfilehash: 6c6f0543dcfbecd16ba4176272f928ffd0eb54de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b1ff02d6a9b3e8c7b7abaf1b185a9becd2be12b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735113"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105832"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Erstellen einer Node.js-Web-App in Azure
 
@@ -313,11 +313,11 @@ Sie können Änderungen an dieser App bereitstellen, indem Sie den gleichen Proz
 
 In diesem Abschnitt erfahren Sie, wie Sie die Protokolle der ausgeführten App Service-App anzeigen (bzw. verfolgen). Alle Aufrufe von `console.log` in der App werden in Visual Studio Code im Ausgabefenster angezeigt.
 
-Suchen Sie die App im **AZURE APP SERVICE-Explorer**, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Streamingprotokolle anzeigen** aus.
+Suchen Sie die App im **AZURE APP SERVICE**-Explorer, klicken Sie mit der rechten Maustaste auf die App, und wählen Sie **Start streaming logs** (Streamen der Protokolle starten) aus.
 
 Das VS Code-Ausgabefenster wird mit einer Verbindung mit dem Protokollstream geöffnet.
 
-![Anzeigen von Streamingprotokollen](./media/quickstart-nodejs/view-logs.png)
+![„Start Streaming Logs“ (Streamen der Protokolle starten)](./media/quickstart-nodejs/view-logs.png)
 
 :::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="Screenshot: Visual Studio Code-Aufforderung zum Aktivieren der Dateiprotokollierung und zum Neustarten der Web-App mit ausgewählter Schaltfläche „Ja“":::
 

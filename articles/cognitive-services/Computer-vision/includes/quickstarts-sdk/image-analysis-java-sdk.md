@@ -10,16 +10,16 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 85ea12071447535af964418db4b3e4f759ba3851
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 9349ac5c0b207d0dffb71295117f35849ab5caba
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287404"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073638"
 ---
 <a name="HOLTop"></a>
 
-Verwenden Sie die Image Analysis-Clientbibliothek, um ein Bild auf Tags, Textbeschreibungen, Gesichter, nicht jugendfreie Inhalte und vieles mehr zu analysieren.
+Verwenden Sie die Client Bibliothek für die Bildanalyse, um ein Bild für Tags, Textbeschreibungen, Gesichter, nicht jugendfreie Inhalte und vieles mehr zu analysieren.
 
 [Referenzdokumentation](/java/api/overview/azure/cognitiveservices/client/computervision) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision) |[Artefakt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision) | [Beispiele](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -121,7 +121,7 @@ Fügen Sie in der **main**-Methode der Anwendung Aufrufe für die Methoden hinzu
 
 Die folgenden Klassen und Schnittstellen verarbeiten einige der Hauptfunktionen des Image Analysis-SDK für Java.
 
-|name|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 | [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | Diese Klasse wird für alle Funktionen der Maschinelles Sehen-API benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Generieren von Instanzen anderer Klassen.|
 |[ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision)| Diese Klasse stammt aus dem Clientobjekt und verarbeitet direkt alle Bildvorgänge, etwa Bildanalyse, Texterkennung und Erstellung von Miniaturansichten.|
@@ -222,7 +222,7 @@ Mit dem folgenden Code werden die die erkannten Farbattribute im Bild ausgegeben
 
 ### <a name="get-domain-specific-content"></a>Abrufen des domänenspezifischen Inhalts
 
-Image Analysis kann spezialisierte Modelle zur weiteren Analyse von Bildern verwenden. Weitere Informationen finden Sie unter [Erkennen domänenspezifischer Inhalte](../../concept-detecting-domain-content.md). 
+Bild-Analyse kann spezialisierte Modelle zur weiteren Analyse von Bildern verwenden. Weitere Informationen finden Sie unter [Erkennen domänenspezifischer Inhalte](../../concept-detecting-domain-content.md). 
 
 Der folgende Code analysiert Daten zu erkannten Prominenten im Bild:
 
@@ -277,11 +277,10 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Image Analysis-Bibliothek für Java für allgemeine Aufgaben verwenden. In der Referenzdokumentation finden Sie weitere Informationen zur Bibliothek.
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Bildanalyse-Clientbibliothek installieren und grundlegende Bildanalyseaufrufe durchführen. Als Nächstes erfahren Sie mehr über die Funktionen der Analyse-API.
 
 > [!div class="nextstepaction"]
->[Image Analysis-Referenz (Java)](/java/api/overview/azure/cognitiveservices/client/computervision)
-
+>[Aufrufen der Bildanalyse-API](../../Vision-API-How-to-Topics/HowToCallVisionAPI.md)
 
 * [Übersicht über die Bildanalyse](../../overview-image-analysis.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java).

@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b67dcf038dbe13b8c040f317bb117f3b7a7afdde
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: fc92543f5954cda9db42e53cab18db1d8f3366c3
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384237"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284203"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Häufig gestellte Fragen zu Azure Spatial Anchors
 
@@ -52,6 +52,10 @@ Weitere Informationen finden Sie unter [Azure Spatial Anchors-Übersicht](overvi
 **F: Wie speichert Azure Spatial Anchors Daten?**
 
 **A:** Alle Daten werden verschlüsselt mit einem von Microsoft verwalteten Datenverschlüsselungsschlüssel gespeichert, und alle Daten werden für jede der Ressourcen regional gespeichert.
+
+**F: Wo speichert Azure Spatial Anchors Daten?**
+
+**A:** Mit Azure Spatial Anchors-Konten können Sie die Region angeben, in der Ihre Daten gespeichert werden. Microsoft kann Daten aus Resilienzgründen in anderen Regionen replizieren, die Daten verlassen aber niemals die geografische Region. Diese Daten werden in der Region gespeichert, in der das Azure Spatial Anchors-Konto konfiguriert wird. Wenn das Konto beispielsweise in der Region „USA, Osten“ registriert ist, werden diese Daten in der Region „USA, Osten“ gespeichert, können jedoch in einer anderen Region in der Geografie „Nordamerika“ repliziert werden, um Resilienz zu gewährleisten.
 
 **F: Welche Informationen zu einer Umgebung werden bei Verwendung von Azure Spatial Anchors für den Dienst übertragen und gespeichert? Werden Bilder der Umgebung übertragen und gespeichert?**
 

@@ -9,12 +9,12 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: 928e2ef8b373626a91a291b1798f3ebb7ef290e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5258d8f16e288e7df7e1286eb1902cc6ba6d10f7
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608832"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227720"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>Tutorial: Erstellen von Machine Learning-Anwendungen mithilfe von Microsoft Machine Learning für Apache Spark (Vorschau)
 
@@ -23,7 +23,7 @@ Synapse Spark bietet integrierte MMLSpark-Bibliotheken, u. a.:
 
 - [Vowpal Wabbit:](https://github.com/Azure/mmlspark/blob/master/docs/vw.md) Bibliotheksdienste für maschinelles Lernen, um die Textanalyse (etwa Stimmungsanalyse) in Tweets zu ermöglichen
 - [Cognitive Services in Spark:](https://github.com/Azure/mmlspark/blob/master/docs/cogsvc.md) Dient zum Kombinieren der Azure Cognitive Services-Features in SparkML-Pipelines, um einen Lösungsentwurf für kognitive Datenmodellierungsdienste wie Anomalieerkennung abzuleiten.
-- [LightBGM:](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) LightGBM ist ein Gradient Boosting-Framework, das baumstrukturbasierte Lernalgorithmen nutzt. Es ist für Verteilung und höhere Effizienz vorgesehen.
+- [LightBGM:](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) LightGBM ist ein Gradient Boosting-Framework, das baumstrukturbasierte Lernalgorithmen nutzt. Es ist für Verteilung und höhere Effizienz vorgesehen.
 - Bedingtes KNN-Modell: Skalierbare KNN-Modelle mit bedingten Abfragen
 - [HTTP in Spark:](https://github.com/Azure/mmlspark/blob/master/docs/http.md) Ermöglicht die Orchestrierung verteilter Microservices bei der Integration von Spark und HTTP-basiertem Zugriff.
 

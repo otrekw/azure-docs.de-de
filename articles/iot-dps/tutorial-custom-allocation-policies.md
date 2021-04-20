@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f19f43b89cd2527a67827d7434f2e054ee40001e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258540"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227380"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Tutorial: Verwenden von benutzerdefinierten Zuweisungsrichtlinien bei Device Provisioning Service (DPS)
 
@@ -378,7 +378,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
     prov_dev_set_symmetric_key_info("contoso-toaster-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
     ```
 
-    Speichern Sie die Datei.
+    Speichern Sie die Datei .
 
 2. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Wählen Sie in der Aufforderung zum erneuten Erstellen des Projekts **Ja** aus, um das Projekt vor der Ausführung neu zu erstellen.
 
@@ -423,7 +423,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
     prov_dev_set_symmetric_key_info("contoso-heatpump-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
 
-    Speichern Sie die Datei.
+    Speichern Sie die Datei .
 
 2. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Wählen Sie in der Eingabeaufforderung zum Neuerstellen des Projekts **Ja**, um das Projekt vor der Ausführung neu zu erstellen.
 
@@ -483,6 +483,17 @@ Löschen Sie die Ressourcengruppen wie folgt nach Namen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein detaillierteres Beispiel zur benutzerdefinierten Zuweisungsrichtlinie finden Sie unter [Verwenden benutzerdefinierter Zuweisungsrichtlinien](how-to-use-custom-allocation-policies.md).
-* Weitere Informationen zur erneuten Bereitstellung finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md).
-* Weitere Informationen zum Aufheben der Bereitstellung finden Sie unter [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md).
+Ein detaillierteres Beispiel zur benutzerdefinierten Zuweisungsrichtlinie finden Sie unter 
+
+> [!div class="nextstepaction"]
+> [Verwenden benutzerdefinierter Zuweisungsrichtlinien](how-to-use-custom-allocation-policies.md)
+
+* Weitere Informationen zur erneuten Bereitstellung finden Sie unter
+
+> [!div class="nextstepaction"]
+> [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md)
+
+* Weitere Informationen zur Aufhebung der Bereitstellung finden Sie unter
+
+> [!div class="nextstepaction"]
+> [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md)

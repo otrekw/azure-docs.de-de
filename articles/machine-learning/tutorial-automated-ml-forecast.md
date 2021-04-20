@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Bedarfsvorhersage und AutoML'
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie ein Nachfragevorhersagemodell mit automatisiertem maschinellen Lernen in Azure Machine Learning Studio trainieren und bereitstellen.
+description: Trainieren und Bereitstellen eines Nachfragevorhersagemodell ohne Schreiben von Code mithilfe der Oberfläche für automatisiertes maschinelles Lernen (automatisiertes ML) von Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,21 +11,18 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a5f7c0cf95d62df2d06c91abd99a1827524d5d6b
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879359"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210549"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen
 
+Hier erfahren Sie, wie Sie unter Verwendung von automatisiertem maschinellem Lernen in Azure Machine Learning Studio ein [Zeitreihen-Vorhersagemodell](concept-automated-ml.md#time-series-forecasting) erstellen, ohne eine einzige Codezeile zu schreiben. Mit diesem Modell wird die Mietnachfrage für einen Bike-Sharing-Dienst vorhergesagt.  
 
-In diesem Tutorial wird automatisiertes maschinelles Lernen (automatisiertes ML) in Azure Machine Learning Studio verwendet, um ein Zeitreihenvorhersagemodell zur Vorhersage der Mietnachfrage für einen Bike-Sharing-Dienst zu erstellen.
-
-Ein Beispiel für ein Klassifizierungsmodell finden Sie in [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
-
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial schreiben Sie keinen Code. Sie verwenden die Studio-Benutzeroberfläche für das Trainieren.  Dabei lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen und Laden eines Datasets
@@ -34,13 +31,18 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Untersuchen der Ergebnisse des Experiments
 > * Bereitstellen des besten Modells
 
+Probieren Sie auch automatisiertes maschinelles Lernen für diese anderen Modelltypen aus:
+
+* Ein Beispiel ohne Code für ein Klassifizierungsmodell finden Sie unter [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
+* Ein Code First-Beispiel für ein Regressionsmodell finden Sie unter [Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen](tutorial-auto-train-models.md).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md). 
 
 * Laden Sie die Datendatei [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) herunter.
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Erste Schritte in Azure Machine Learning Studio
+## <a name="sign-in-to-the-studio"></a>Anmelden bei Studio
 
 In diesem Tutorial wird ein Experiment mit automatisiertem maschinellem Lernen in Azure Machine Learning Studio erstellt. Bei Azure Machine Learning Studio handelt es sich um eine konsolidierte Webumgebung mit ML-Tools für Data Science-Szenarien, die von Data Scientists jeglicher Qualifikation verwendet werden kann. Das Azure Machine Learning-Studio wird in Internet Explorer-Browsern nicht unterstützt.
 

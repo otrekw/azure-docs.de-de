@@ -9,20 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ab3458003366416e10588d3f2edb29b51619ecf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678162"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257635"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python)
 
-> [!IMPORTANT]
-> Die Azure Maps-Wetterdienste befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Windenergie ist eine alternative Energiequelle zu fossilen Brennstoffen im Kampf gegen den Klimawandel. Da der Wind von Natur aus nicht immer gleich stark ist, müssen Betreiber von Windenergieanlagen Machine Learning-Modelle (ML) erstellen, um die Windenergiekapazität vorherzusagen. Diese Vorhersage ist erforderlich, um die Nachfrage nach Strom erfüllen und die Netzstabilität sicherstellen zu können. In diesem Tutorial wird Schritt für Schritt beschrieben, wie die Daten der Azure Maps-Wettervorhersage mit Demodaten für Wettermesswerte kombiniert werden. Wettervorhersagedaten werden durch Aufrufen der Azure Maps-Wetterdienste (Vorschau) angefordert.
+Windenergie ist eine alternative Energiequelle zu fossilen Brennstoffen im Kampf gegen den Klimawandel. Da der Wind von Natur aus nicht immer gleich stark ist, müssen Betreiber von Windenergieanlagen Machine Learning-Modelle (ML) erstellen, um die Windenergiekapazität vorherzusagen. Diese Vorhersage ist erforderlich, um die Nachfrage nach Strom erfüllen und die Netzstabilität sicherstellen zu können. In diesem Tutorial wird Schritt für Schritt beschrieben, wie die Daten der Azure Maps-Wettervorhersage mit Demodaten für Wettermesswerte kombiniert werden. Wettervorhersagedaten werden durch Aufrufen des Azure Maps-Wetterdiensts angefordert.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -31,7 +27,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > * Laden von Demodaten aus einer Datei
 > * Aufrufen von Azure Maps-REST-APIs in Python
 > * Rendern von Standortdaten auf der Karte
-> * Anreichern der Demodaten mit Azure Maps-Wetterdaten vom Typ [Tägliche Vorhersage](/rest/api/maps/weather/getdailyforecastpreview)
+> * Anreichern der Demodaten mit Azure Maps-Wetterdaten vom Typ [Tägliche Vorhersage](/rest/api/maps/weather/getdailyforecast)
 > * Zeichnen von Vorhersagedaten in Diagrammen
 
 
@@ -72,8 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Anfordern täglicher Vorhersagedaten
 
-In unserem Szenario möchten wir eine tägliche Vorhersage für jeden Sensorstandort anfordern. Mit dem folgenden Skript wird die [API für tägliche Vorhersagen](/rest/api/maps/weather/getdailyforecastpreview) der Azure Maps-Wetterdienste (Vorschau) aufgerufen. Diese API gibt für jede Windkraftanlage Wettervorhersagen für die nächsten 15 Tage ab dem aktuellen Datum zurück.
-
+In unserem Szenario möchten wir eine tägliche Vorhersage für jeden Sensorstandort anfordern. Mit dem folgenden Skript wird die [API für tägliche Vorhersagen](/rest/api/maps/weather/getdailyforecast) des Azure Maps-Wetterdiensts aufgerufen. Diese API gibt für jede Windkraftanlage Wettervorhersagen für die nächsten 15 Tage ab dem aktuellen Datum zurück.
 
 ```python
 subscription_key = "Your Azure Maps key"
@@ -86,7 +81,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
+# Call azure maps Weather services to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):
@@ -192,7 +187,7 @@ Weitere Informationen zum Aufrufen von Azure Maps-REST-APIs in Azure Notebooks 
 
 Informationen zu den in diesem Tutorial verwendeten Azure Maps-APIs finden Sie unter:
 
-* [Wetter: Abrufen einer täglichen Vorhersage (Vorschau)](/rest/api/maps/weather/getdailyforecastpreview)
+* [Wetter: Abrufen einer täglichen Vorhersage (Vorschau)](/rest/api/maps/weather/getdailyforecast)
 * [Rendern: Abrufen des Kartenbilds](/rest/api/maps/render/getmapimage)
 
 Eine vollständige Liste mit den Azure Maps-REST-APIs finden Sie unter [Azure Maps-Dokumentation](./consumption-model.md).

@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6a862a051d0040ac99746d81f10ae63d5af7545f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013722"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607087"
 ---
 Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md).
 
@@ -100,15 +100,15 @@ Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions
 Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn nicht angegeben, lautet der standardmäßige Aufgabenhubname für eine Funktionen-App **DurableFunctionsHub**. Weitere Informationen finden Sie unter [Aufgabenhubs in Durable Functions (Azure Functions)](../articles/azure-functions/durable/durable-functions-task-hubs.md).
 
 |Eigenschaft  |Standard | BESCHREIBUNG |
-|---------|---------|---------|
+|---------|---------|----------|
 |hubName|DurableFunctionsHub|Alternative Namen für [Aufgabenhubs](../articles/azure-functions/durable/durable-functions-task-hubs.md) können zum Isolieren von mehreren Durable Functions-Anwendungen verwendet werden, auch wenn sie dasselbe Speicher-Back-End verwenden.|
 |controlQueueBatchSize|32|Die Anzahl der aus der Steuerelement-Warteschlange jeweils abzurufenden Nachrichten.|
-|controlQueueBufferThreshold|256|Die Anzahl der Steuerelement-Warteschlangen Nachrichten, die gleichzeitig im Arbeitsspeicher gepuffert werden können. Zu diesem Zeitpunkt wartet der Verteiler, bevor zusätzliche Nachrichten aus der Warteschlange entfernt werden.|
+|controlQueueBufferThreshold| **Verbrauchsplan:** 32 <br> **Dedicated-/Premium-Plan:** 256 |Die Anzahl der Steuerelement-Warteschlangen Nachrichten, die gleichzeitig im Arbeitsspeicher gepuffert werden können. Zu diesem Zeitpunkt wartet der Verteiler, bevor zusätzliche Nachrichten aus der Warteschlange entfernt werden.|
 |partitionCount |4|Die Anzahl der Partitionen für die Steuerelement-Warteschlange. Kann ein positiver Integerwert zwischen 1 und 16 sein.|
 |controlQueueVisibilityTimeout |5 Minuten|Das Sichtbarkeitstimeout von aus der Steuerelement-Warteschlange entfernten Nachrichten.|
 |workItemQueueVisibilityTimeout |5 Minuten|Das Sichtbarkeitstimeout von aus der Warteschlange für Arbeitselemente (work item queue) entfernten Nachrichten.|
-|maxConcurrentActivityFunctions |Zehnfache Anzahl der Prozessoren auf dem aktuellen Computer|Die maximale Anzahl von Aktivitätsfunktionen, die gleichzeitig auf einer einzelnen Hostinstanz verarbeitet werden können.|
-|maxConcurrentOrchestratorFunctions |Zehnfache Anzahl der Prozessoren auf dem aktuellen Computer|Die maximale Anzahl von Orchestratorfunktionen, die gleichzeitig auf einer einzelnen Hostinstanz verarbeitet werden können.|
+|maxConcurrentActivityFunctions | **Verbrauchsplan:** 10 <br> **Dedicated-/Premium-Plan:** 10-fache Anzahl von Prozessoren auf dem aktuellen Computer|Die maximale Anzahl von Aktivitätsfunktionen, die gleichzeitig auf einer einzelnen Hostinstanz verarbeitet werden können.|
+|maxConcurrentOrchestratorFunctions | **Verbrauchsplan:** 5 <br> **Dedicated-/Premium-Plan:** 10-fache Anzahl von Prozessoren auf dem aktuellen Computer |Die maximale Anzahl von Orchestratorfunktionen, die gleichzeitig auf einer einzelnen Hostinstanz verarbeitet werden können.|
 |maxQueuePollingInterval|30 Sekunden|Das maximale Abrufintervall der Steuerelement- und Arbeitselement-Warteschlangen im Format *hh:mm:ss*. Höhere Werte können zu höherer Latenz bei der Nachrichtenverarbeitung führen. Niedrigere Werte können aufgrund verstärkter Speichertransaktionen zu höheren Speicherkosten führen.|
 |azureStorageConnectionStringName |AzureWebJobsStorage|Der Name der App-Einstellung mit der Azure Storage-Verbindungszeichenfolge, die zum Verwalten der zugrunde liegenden Azure Storage-Ressourcen verwendet wird.|
 |trackingStoreConnectionStringName||Der Name einer Verbindungszeichenfolge, die für die Verlaufs- und Instanzentabellen verwendet wird. Wird kein Wert angegeben, wird die Verbindung `connectionStringName` (Durable 2.x) oder `azureStorageConnectionStringName` (Durable 1.x) verwendet.|
@@ -121,7 +121,7 @@ Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buch
 |eventGridPublishRetryInterval|5 Minuten|Das Wiederholungsintervall der Event Grid-Veröffentlichung im Format *hh:mm:ss*.|
 |eventGridPublishEventTypes||Eine Liste von Ereignistypen, die in Event Grid veröffentlicht werden sollen. Wenn diese Eigenschaft nicht angegeben ist, werden alle Ereignistypen veröffentlicht. Zulässige Werte sind `Started`, `Completed`, `Failed` und `Terminated`.|
 |useAppLease|true|Wird diese Einstellung auf `true` festgelegt, müssen Apps vor der Verarbeitung von Aufgabenhubnachrichten eine Bloblease auf App-Ebene abrufen. Weitere Informationen finden Sie in der Dokumentation zur [Notfallwiederherstellung und geografischen Verteilung](../articles/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution.md). Verfügbar ab v2.3.0
-|useLegacyPartitionManagement|true|Wird diese Einstellung auf `false` festgelegt, wird ein Partitionsverwaltungsalgorithmus verwendet, der bei der horizontalen Skalierung die Wahrscheinlichkeit einer doppelten Funktionsausführung reduziert.  Verfügbar ab v2.3.0 Der Standardwert wird in einer zukünftigen Version in `false` geändert.|
+|useLegacyPartitionManagement|false|Wird diese Einstellung auf `false` festgelegt, wird ein Partitionsverwaltungsalgorithmus verwendet, der bei der horizontalen Skalierung die Wahrscheinlichkeit einer doppelten Funktionsausführung reduziert.  Verfügbar ab v2.3.0|
 |useGracefulShutdown|false|(Preview) Ordnungsgemäßes Herunterfahren aktivieren, um die Wahrscheinlichkeit zu verringern, dass beim Herunterfahren von Hosts Funktionsausführungen in Prozessen fehlschlagen.|
 
 Viele dieser Einstellungen werden zur Optimierung der Leistung verwendet. Weitere Informationen finden Sie unter [Leistung und Skalierbarkeit](../articles/azure-functions/durable/durable-functions-perf-and-scale.md).

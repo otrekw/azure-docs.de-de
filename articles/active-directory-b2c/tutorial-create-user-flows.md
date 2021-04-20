@@ -1,45 +1,61 @@
 ---
-title: 'Tutorial: Erstellen von Benutzerflows – Azure Active Directory B2C'
-description: In diesem Tutorial erfahren Sie, wie Sie Benutzerflows im Azure-Portal erstellen, um das Registrieren, Anmelden und Bearbeiten von Benutzerprofilen für Ihre Anwendungen in Azure Active Directory B2C zu ermöglichen.
+title: 'Tutorial: Erstellen von Benutzerflows und benutzerdefinierten Richtlinien – Azure Active Directory B2C'
+description: In diesem Tutorial erfahren Sie, wie Sie Benutzerflows und benutzerdefinierte Richtlinien im Azure-Portal erstellen, um das Registrieren, Anmelden und Bearbeiten von Benutzerprofilen für Ihre Anwendungen in Azure Active Directory B2C zu ermöglichen.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/22/2021
+ms.date: 04/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c42c6465af8e895d833332be847c134b97ee8ddc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: e41c1e74dbe428ee38d4480a1587050b7f96a55f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781295"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226225"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
 
-Ihre Anwendungen enthalten möglicherweise [Benutzerflows](user-flow-overview.md), mit denen Benutzer sich registrieren und anmelden oder ihr Profil verwalten können. Sie können mehrere Benutzerflows verschiedener Typen in Ihrem Azure Active Directory (Azure AD) B2C-Mandanten erstellen und bei Bedarf in Ihren Anwendungen verwenden. Benutzerflows können anwendungsübergreifend wiederverwendet werden.
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-In diesem Artikel werden folgende Vorgehensweisen behandelt:
+Ihre Anwendungen enthalten möglicherweise Benutzerflows, mit denen Benutzer sich registrieren und anmelden oder ihr Profil verwalten können. Sie können mehrere Benutzerflows verschiedener Typen in Ihrem Azure Active Directory (Azure AD) B2C-Mandanten erstellen und bei Bedarf in Ihren Anwendungen verwenden. Benutzerflows können anwendungsübergreifend wiederverwendet werden.
+
+::: zone pivot="b2c-user-flow"
+Mithilfe eines Benutzerflows können Sie feststellen, wie Benutzer mit Ihrer Anwendung interagieren, wenn sie Aktionen wie Anmelden, Registrieren, Bearbeiten eines Profils oder Zurücksetzen eines Kennworts ausführen. In diesem Artikel werden folgende Vorgehensweisen behandelt:
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+[Benutzerdefinierte Richtlinien](custom-policy-overview.md) sind Konfigurationsdateien, die das Verhalten Ihres Azure AD B2C-Mandanten (Azure Active Directory B2C) definieren. In diesem Artikel werden folgende Vorgehensweisen behandelt:
+::: zone-end
 
 > [!div class="checklist"]
 > * Erstellen eines Benutzerflows für Registrierung und Anmeldung
 > * Aktivieren der Self-Service-Kennwortzurücksetzung
 > * Erstellen eines Benutzerflows für die Profilbearbeitung
 
-
-In diesem Tutorial wird gezeigt, wie Sie einige empfohlene Benutzerflows über das Azure-Portal erstellen. Wenn Sie Informationen zum Einrichten eines Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern (ROPC) in Ihrer Anwendung benötigen, lesen Sie den Artikel [Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C](add-ropc-policy.md).
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
+::: zone pivot="b2c-user-flow"
 > [!IMPORTANT]
 > Benutzerflowversionen werden jetzt anders angegeben. Zuvor wurden V1-Versionen (bereit für die Produktion) sowie V1.1- und V2-Versionen (Vorschauversion) angeboten. Benutzerflows wurden nun in die Versionen **Empfohlen** (Vorschauversion der nächsten Generation) und **Standard** (allgemein verfügbar) konsolidiert. Alle Benutzerflows der V1.1- und V2-Legacyvorschauversionen werden zum **1. August 2021** eingestellt. Weitere Informationen finden Sie unter [Benutzerflowversionen in Azure Active Directory B2C](user-flow-versions.md).
+::: zone-end
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Registrieren Sie Ihre Anwendungen](tutorial-register-applications.md), die zu den Benutzerflows, die Sie erstellen möchten, gehören.
+::: zone pivot="b2c-user-flow"
+- Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
+- [Registrieren Sie Ihre Anwendung](tutorial-register-applications.md) in dem Mandanten, den Sie erstellt haben, damit er mit Azure AD B2C kommunizieren kann.
+::: zone-end
 
+::: zone pivot="b2c-custom-policy"
+- Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
+- [Registrieren Sie Ihre Anwendung](tutorial-register-applications.md) in dem Mandanten, den Sie erstellt haben, damit er mit Azure AD B2C kommunizieren kann.
+- Führen Sie die Schritte unter [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md) aus, um eine Facebook-Anwendung zu konfigurieren. Wenngleich für die Verwendung von benutzerdefinierten Richtlinien keine Facebook-Anwendung erforderlich ist, wird in dieser exemplarischen Vorgehensweise eine solche Anwendung verwendet, um die Aktivierung des Soziale Medien-Logins in einer benutzerdefinierten Richtlinie zu veranschaulichen.
+::: zone-end
+
+::: zone pivot="b2c-user-flow"
 ## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Erstellen eines Benutzerflows für Registrierung und Anmeldung
 
 Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberflächen für die Registrierung und Anmeldung in ein und derselben Konfiguration. Die Benutzer Ihrer Anwendung werden je nach Kontext auf den entsprechenden Pfad geleitet.
@@ -122,7 +138,194 @@ Wenn Sie Benutzern die Profilbearbeitung in Ihrer Anwendung ermöglichen möchte
 1. Wählen Sie für **Anwendung** die Webanwendung *webapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Klicken Sie auf **Benutzerflow ausführen**, und melden Sie sich mit dem zuvor erstellten Konto an.
 1. Sie haben jetzt die Möglichkeit, den Anzeigenamen und den Stellentitel für den Benutzer zu ändern. Klicken Sie auf **Weiter**. Das Token wird an `https://jwt.ms` zurückgegeben und sollte Ihnen angezeigt werden.
+::: zone-end
 
+::: zone pivot="b2c-custom-policy"
+> [!TIP]
+> In diesem Artikel wird erläutert, wie Sie Ihren Mandanten manuell einrichten. Sie können den gesamten Prozess in diesem Artikel automatisieren. Durch die Automatisierung wird das [SocialAndLocalAccountsWithMFA-Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) von Azure AD B2C bereitgestellt, das Journeys zum Registrieren und Anmelden, zur Kennwortzurücksetzung und zur Profilbearbeitung beinhaltet. Befolgen Sie die Anweisungen in der [IEF-Setup-App](https://aka.ms/iefsetup), um die nachfolgende exemplarische Vorgehensweise zu automatisieren.
+
+
+## <a name="add-signing-and-encryption-keys"></a>Hinzufügen von Signatur- und Verschlüsselungsschlüsseln
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Wählen Sie auf der Übersichtsseite unter **Richtlinien** die Option **Identity Experience Framework** aus.
+
+### <a name="create-the-signing-key"></a>Erstellen des Signaturschlüssels
+
+1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+1. Klicken Sie unter **Optionen** auf `Generate`.
+1. Geben Sie unter **Name**`TokenSigningKeyContainer` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
+1. Wählen Sie **RSA** als **Schlüsseltyp** aus.
+1. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
+1. Klicken Sie auf **Erstellen**.
+
+### <a name="create-the-encryption-key"></a>Erstellen des Verschlüsselungsschlüssels
+
+1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+1. Klicken Sie unter **Optionen** auf `Generate`.
+1. Geben Sie unter **Name**`TokenEncryptionKeyContainer` ein. Das Präfix `B2C_1A`_ wird möglicherweise automatisch hinzugefügt.
+1. Wählen Sie **RSA** als **Schlüsseltyp** aus.
+1. Wählen Sie für **Schlüsselverwendung** die Option **Verschlüsselung** aus.
+1. Klicken Sie auf **Erstellen**.
+
+### <a name="create-the-facebook-key"></a>Erstellen des Facebook-Schlüssels
+
+Fügen Sie das [App-Geheimnis](identity-provider-facebook.md) der Facebook-Anwendung als Richtlinienschlüssel hinzu. Sie können das App-Geheimnis der Anwendung verwenden, das Sie unter „Voraussetzungen“ in diesem Artikel erstellt haben.
+
+1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+1. Klicken Sie unter **Optionen** auf `Manual`.
+1. Geben Sie unter **Name**`FacebookSecret` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
+1. Geben Sie unter **Geheimnis** das *App-Geheimnis* der Facebook-Anwendung aus developers.facebook.com ein. Bei diesem Wert handelt sich um das Geheimnis und nicht um die Anwendungs-ID.
+1. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
+1. Klicken Sie auf **Erstellen**.
+
+## <a name="register-identity-experience-framework-applications"></a>Registrieren von Identity Experience Framework-Anwendungen
+
+Azure AD B2C erfordert, dass Sie zwei Anwendungen registrieren, die zur Registrierung und Anmeldung von Benutzern mit lokalen Konten verwendet werden: *IdentityExperienceFramework* (eine Web-API) und *ProxyIdentityExperienceFramework* (eine native App) mit delegierter Berechtigung für die IdentityExperienceFramework-App. Ihre Benutzer können sich mit einer E-Mail-Adresse oder einem Benutzernamen und einem Kennwort für den Zugriff auf Ihre mandantenregistrierten Anwendungen anmelden, wodurch ein „lokales Konto“ erstellt wird. Lokale Konten sind nur in Ihrem Azure AD B2C-Mandanten vorhanden.
+
+Sie müssen diese beiden Anwendungen nur ein Mal in Ihrem Azure AD B2C-Mandanten registrieren.
+
+### <a name="register-the-identityexperienceframework-application"></a>Registrieren der IdentityExperienceFramework-Anwendung
+
+Zum Registrieren einer Anwendung bei Ihrem Azure AD B2C-Mandanten können Sie die Benutzeroberfläche für **App-Registrierungen** verwenden.
+
+1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
+1. Geben Sie unter **Name**`IdentityExperienceFramework` ein.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
+1. Wählen Sie unter **Umleitungs-URI** die Option **Web** aus, und geben Sie dann `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` ein, wobei `your-tenant-name` für den Domänennamen des Azure AD B2C-Mandanten steht.
+1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen *Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen*.
+1. Wählen Sie **Registrieren**.
+1. Notieren Sie sich die **Anwendungs-ID (Client)** zur Verwendung in einem späteren Schritt.
+
+Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
+
+1. Wählen Sie im Menü auf der linken Seite unter **Verwalten** die Option **Eine API verfügbar machen** aus.
+1. Wählen Sie **Bereich hinzufügen** und dann **Speichern und fortfahren** aus, um den URI der Standardanwendungs-ID zu akzeptieren.
+1. Geben Sie die folgenden Werte ein, um einen Bereich zu erstellen, der die benutzerdefinierte Richtlinienausführung in Ihrem Azure AD B2C-Mandanten ermöglicht:
+    * **Bereichsname**: `user_impersonation`
+    * **Anzeigename der Administratoreinwilligung**: `Access IdentityExperienceFramework`
+    * **Beschreibung der Administratoreinwilligung**: `Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
+1. Wählen Sie **Bereich hinzufügen** aus.
+
+* * *
+
+### <a name="register-the-proxyidentityexperienceframework-application"></a>Registrieren der ProxyIdentityExperienceFramework-Anwendung
+
+1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
+1. Geben Sie unter **Name**`ProxyIdentityExperienceFramework` ein.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
+1. Verwenden Sie die Dropdownliste unter **Umleitungs-URI**, um **Öffentlicher Client/nativ (mobil und Desktop)** auszuwählen.
+1. Geben Sie `myapp://auth` als **Umleitungs-URI** ein.
+1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen *Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen*.
+1. Wählen Sie **Registrieren**.
+1. Notieren Sie sich die **Anwendungs-ID (Client)** zur Verwendung in einem späteren Schritt.
+
+Geben Sie nun an, dass die Anwendung als öffentlicher Client behandelt werden soll:
+
+1. Wählen Sie im linken Menü unter **Verwalten** die Option **Authentifizierung** aus.
+1. Legen Sie unter **Erweiterte Einstellungen** im Abschnitt **Öffentliche Clientflows zulassen** die Option **Folgende Flows für Mobilgerät und Desktop aktivieren** auf **Ja** fest. Stellen Sie sicher, dass **„allowPublicClient“: true** im Anwendungsmanifest festgelegt ist. 
+1. Wählen Sie **Speichern** aus.
+
+Erteilen Sie nun Berechtigungen für den API-Bereich, den Sie zuvor in der Registrierung *IdentityExperienceFramework* verfügbar gemacht haben:
+
+1. Wählen Sie im Menü auf der linken Seite unter **Verwalten** die Option **API-Berechtigungen** aus.
+1. Wählen Sie unter **Konfigurierte Berechtigungen** die Option **Berechtigung hinzufügen** aus.
+1. Wählen Sie die Registerkarte **Meine APIs** aus, und wählen Sie dann die Anwendung **IdentityExperienceFramework** aus.
+1. Wählen Sie unter **Berechtigung** den Bereich **user_impersonation** aus, den Sie zuvor definiert haben.
+1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie einige Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
+1. Wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.
+1. Wählen Sie das derzeit angemeldete Administratorkonto aus, oder melden Sie sich mit einem Konto bei Ihrem Azure AD B2C-Mandanten an, dem mindestens die Rolle *Cloudanwendungsadministrator* zugewiesen wurde.
+1. Wählen Sie **Akzeptieren** aus.
+1. Wählen Sie **Aktualisieren** aus, und vergewissern Sie sich, dass für die Bereiche „offline_access“, „openid“ und „user_impersonation“ unter **Status** der Status „Gewährt für...“ angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen weitergegeben wurden.
+
+* * *
+
+## <a name="custom-policy-starter-pack"></a>Starter Pack für benutzerdefinierte Richtlinien
+
+Benutzerdefinierte Richtlinien sind ein Satz von XML-Dateien, die Sie in den Azure AD B2C-Mandanten hochladen, um technische Profile und User Journeys zu definieren. Wir stellen Starter Packs mit mehreren vordefinierten Richtlinien bereit, damit Sie schnell loslegen können. Jedes dieser Starter Packs enthält die kleinste Anzahl von technischen Profilen sowie die zum Erreichen der beschriebenen Szenarien benötigten User Journeys:
+
+- **LocalAccounts** ermöglicht die ausschließliche Nutzung von lokalen Konten.
+- **SocialAccounts** ermöglicht die ausschließliche Nutzung von Konten sozialer Netzwerke (oder Verbundkonten).
+- **SocialAndLocalAccounts** ermöglicht sowohl die Verwendung von lokalen Konten als auch von Konten für soziale Netzwerke.
+- **SocialAndLocalAccountsWithMFA** ermöglicht lokale Optionen und Optionen für soziale Netzwerke sowie zur Multi-Factor Authentication.
+
+Die einzelnen Starter Packs enthalten Folgendes:
+
+- **Basisdatei**: Es sind einige Änderungen an der Basisdatei erforderlich. Beispiel: *TrustFrameworkBase.xml*
+- **Erweiterungsdatei**: In dieser Datei werden die meisten Konfigurationsänderungen vorgenommen. Beispiel: *TrustFrameworkExtensions.xml*
+- **Dateien der vertrauenden Seite**: aufgabenspezifische Dateien, die von Ihrer Anwendung aufgerufen werden. Beispiele: *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*
+
+In diesem Artikel bearbeiten Sie die benutzerdefinierten XML-Richtliniendateien im Starter Pack **SocialAndLocalAccounts**. Wenn Sie einen XML-Editor benötigen, können Sie [Visual Studio Code](https://code.visualstudio.com/download), einen einfachen plattformübergreifenden Editor, ausprobieren.
+
+### <a name="get-the-starter-pack"></a>Abrufen des Starter Packs
+
+Holen Sie sich die Starter Packs für benutzerdefinierte Richtlinien-von GitHub, und aktualisieren Sie dann die XML-Dateien im Starter Pack „SocialAndLocalAccounts“ mit dem Namen Ihres Azure AD B2C-Mandanten.
+
+1. [Laden Sie die ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip), oder klonen Sie das Repository:
+
+    ```console
+    git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
+    ```
+
+1. Ersetzen Sie in allen Dateien im Verzeichnis **SocialAndLocalAccounts** die Zeichenfolge `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten.
+
+    Wenn z. B. der Name des B2C-Mandanten *contosotenant* lautet, werden alle Instanzen von `yourtenant.onmicrosoft.com` in `contosotenant.onmicrosoft.com` geändert.
+
+### <a name="add-application-ids-to-the-custom-policy"></a>Hinzufügen der Anwendungs-IDs zur benutzerdefinierten Richtlinie
+
+Fügen Sie die Anwendung-ID zur Erweiterungsdatei *TrustFrameworkExtensions.xml* hinzu.
+
+1. Öffnen Sie `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** , und suchen Sie das Element `<TechnicalProfile Id="login-NonInteractive">`.
+1. Ersetzen Sie beide Instanzen von `IdentityExperienceFrameworkAppId` durch die Anwendungs-ID der IdentityExperienceFramework-Anwendung, die Sie zuvor erstellt haben.
+1. Ersetzen Sie beide Instanzen von `ProxyIdentityExperienceFrameworkAppId` durch die Anwendungs-ID der ProxyIdentityExperienceFramework-Anwendung, die Sie zuvor erstellt haben.
+1. Speichern Sie die Datei .
+
+## <a name="upload-the-policies"></a>Hochladen der Richtlinien
+
+1. Wählen Sie in Ihrem B2C-Mandanten im Azure-Portal das Menüelement **Identity Experience Framework** aus.
+1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus.
+1. Laden Sie die Richtliniendateien in dieser Reihenfolge hoch:
+    1. *TrustFrameworkBase.xml*
+    1. *TrustFrameworkExtensions.xml*
+    1. *SignUpOrSignin.xml*
+    1. *ProfileEdit.xml*
+    1. *PasswordReset.xml*
+
+Wenn Sie die Dateien hochladen, fügt Azure jeder Datei das Präfix `B2C_1A_` hinzu.
+
+> [!TIP]
+> Wenn Ihr XML-Editor Validierungen unterstützt, überprüfen Sie die Dateien anhand des XML-Schemas `TrustFrameworkPolicy_0.3.0.0.xsd` im Stammverzeichnis des Starter Packs. Durch die XML-Schemavalidierung werden vor dem Upload Fehler festgestellt.
+
+## <a name="test-the-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
+
+1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die Richtlinie **B2C_1A_signup_signin** aus.
+1. Wählen Sie auf der Übersichtsseite der benutzerdefinierten Richtlinie unter **Anwendung auswählen** die Webanwendung namens *webapp1* aus, die Sie zuvor registriert haben.
+1. Stellen Sie sicher, dass die **Antwort-URL**`https://jwt.ms` lautet.
+1. Wählen Sie **Jetzt ausführen** aus.
+1. Registrieren Sie sich mit einer E-Mail-Adresse.
+1. Wählen Sie erneut **Jetzt ausführen** aus.
+1. Melden Sie sich zur Bestätigung der richtigen Konfiguration mit demselben Konto an.
+
+## <a name="add-facebook-as-an-identity-provider"></a>Hinzufügen von Facebook als Identitätsanbieter
+
+Wie unter [Voraussetzungen](#prerequisites) erwähnt, ist Facebook *nicht* erforderlich, um benutzerdefinierte Richtlinien zu verwenden. Die Anwendung wird hier jedoch verwendet, um zu veranschaulichen, wie Sie die Soziale Medien-Verbundanmeldung in einer benutzerdefinierten Richtlinie aktivieren können.
+
+1. Ersetzen Sie in der Datei `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** den Wert `client_id` durch die ID der Facebook-Anwendung:
+
+   ```xml
+   <TechnicalProfile Id="Facebook-OAUTH">
+     <Metadata>
+     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
+       <Item Key="client_id">00000000000000</Item>
+   ```
+
+1. Laden Sie die Datei *TrustFrameworkExtensions.xml* in Ihren Mandanten hoch.
+1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die Richtlinie **B2C_1A_signup_signin** aus.
+1. Wählen Sie **Jetzt ausführen**, und wählen Sie „Facebook“ aus, um sich bei Facebook anzumelden und die benutzerdefinierte Richtlinie zu testen.
+
+::: zone-end
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie Folgendes gelernt:

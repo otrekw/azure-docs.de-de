@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9849648c8a0a76ff89a6f95e64eeade791e7135c
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 8804febe81afc79a4a7eadb56e8350e758ea38ba
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381773"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105509"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von ARM-Vorlagen
 
@@ -25,14 +25,12 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
 
 2. Erstellen Sie über das [Azure-Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) oder mithilfe von [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md) eine neue Ressourcengruppe. Bei Verwendung einer vorhandenen Ressourcengruppe ist dieser Schritt optional.
 
-3. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Von Cloud Services (erweiterter Support) werden nur öffentliche IP-Adressen mit [Basic]-SKU (https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) unterstützt. Öffentliche IP-Adressen der Standard-SKU funktionieren nicht mit Cloud Services.
+3. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Von Cloud Services (erweiterter Support) werden nur öffentliche IP-Adressen mit der SKU [Basic](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) unterstützt. Öffentliche IP-Adressen der Standard-SKU funktionieren nicht mit Cloud Services.
 Wenn Sie eine statische IP-Adresse verwenden, muss darauf in der Dienstkonfigurationsdatei (.cscfg) als reservierte IP verwiesen werden. Wenn Sie eine vorhandene IP-Adresse verwenden, überspringen Sie diesen Schritt, und fügen Sie die IP-Adressinformationen in Ihrer ARM-Vorlage direkt den Konfigurationseinstellungen für den Lastenausgleich hinzu.
-
-4. Erstellen Sie ein Netzwerkprofilobjekt, und ordnen Sie die öffentliche IP-Adresse dem Front-End des Lastenausgleichs zu. Die Azure-Plattform erstellt automatisch eine Lastenausgleichsressource der SKU „Klassisch“ in demselben Abonnement wie die Clouddienstressource. Die Lastenausgleichsressource ist eine schreibgeschützte Ressource in ARM. Alle Aktualisierungen der Ressource werden nur über die Clouddienst-Bereitstellungsdateien (.cscfg und .csdef) unterstützt.
  
-5. Erstellen Sie über das [Azure-Portal](../storage/common/storage-account-create.md?tabs=azure-portal) oder mithilfe von [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) ein neues Speicherkonto. Bei Verwendung eines vorhandenen Speicherkontos ist dieser Schritt optional.
+4. Erstellen Sie über das [Azure-Portal](../storage/common/storage-account-create.md?tabs=azure-portal) oder mithilfe von [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) ein neues Speicherkonto. Bei Verwendung eines vorhandenen Speicherkontos ist dieser Schritt optional.
 
-6. Laden Sie die Dienstdefinitionsdatei (.csdef) und die Dienstkonfigurationsdatei (.cscfg) per [Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) oder [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) in das Speicherkonto hoch. Rufen Sie die SAS-URIs der beiden Dateien ab. Sie werden später in diesem Tutorial der ARM-Vorlage hinzugefügt.
+5. Laden Sie die Dienstdefinitionsdatei (.csdef) und die Dienstkonfigurationsdatei (.cscfg) per [Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) oder [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) in das Speicherkonto hoch. Rufen Sie die SAS-URIs der beiden Dateien ab. Sie werden später in diesem Tutorial der ARM-Vorlage hinzugefügt.
 
 6. (Optional): Erstellen Sie einen Schlüsseltresor, und laden Sie die Zertifikate hoch.
 

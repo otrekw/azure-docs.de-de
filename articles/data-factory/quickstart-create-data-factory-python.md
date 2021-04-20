@@ -3,18 +3,18 @@ title: 'Schnellstart: Erstellen einer Azure Data Factory mithilfe von Python'
 description: Mithilfe einer Data Factory-Instanz können Sie Daten von einem Speicherort in einem Azure Blob-Speicher an einen anderen Speicherort kopieren.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/15/2021
+ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: f92a09e78d65f3723b9dfa83574f603dc113ebeb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 534b5b3aca86cc2f6d7ee2d703939420f80abb8e
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372364"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365092"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Schnellstart: Erstellen einer Data Factory und Pipeline mithilfe von Python
 
@@ -34,13 +34,13 @@ Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines
 
 * Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Python 3.4 oder höher](https://www.python.org/downloads/)
+* [Python 3.6 oder höher](https://www.python.org/downloads/)
 
 * [Azure Storage-Konto](../storage/common/storage-account-create.md)
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (optional)
 
-* [Eine Anwendung in Azure Active Directory.](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) Notieren Sie sich die folgenden Werte, die Sie in späteren Schritten benötigen: **Anwendungs-ID**, **Authentifizierungsschlüssel** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen.
+* [Eine Anwendung in Azure Active Directory.](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) Erstellen Sie die Anwendung, indem Sie die Schritte unter diesem Link ausführen, und weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen. Notieren Sie sich die folgenden Werte aus dem Artikel zur späteren Verwendung: **Anwendungs-ID (Dienstprinzipal-ID unten), Authentifizierungsschlüssel (geheimer Clientschlüssel unten) und Mandanten-ID**.
 
 ## <a name="create-and-upload-an-input-file"></a>Erstellen und Hochladen einer Eingabedatei
 
@@ -66,7 +66,7 @@ Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines
     pip install azure-mgmt-datafactory
     ```
 
-    Das [Python SDK für Data Factory](https://github.com/Azure/azure-sdk-for-python) unterstützt Python 2.7, 3.3, 3.4, 3.5, 3.6 und 3.7.
+    Das [Python SDK für Data Factory](https://github.com/Azure/azure-sdk-for-python) unterstützt Python 2.7 und 3.6 oder höher.
 
 4. Führen Sie zum Installieren des Python-Pakets für die Azure-Identitätsauthentifizierung den folgenden Befehl aus:
 
@@ -75,9 +75,12 @@ Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines
     ```
     > [!NOTE] 
     > Das Paket „azure-identity“ steht bei einigen gemeinsamen Abhängigkeiten unter Umständen in Konflikt mit „azure-cli“. Wenn ein Authentifizierungsproblem auftritt, entfernen Sie „azure-cli“ und die zugehörigen Abhängigkeiten, oder verwenden Sie einen neu installierten Computer ohne Installation des Pakets „azure-cli“, damit der Vorgang erfolgreich ist.
+    > Für Sovereign Clouds müssen Sie die entsprechenden cloudspezifischen Konstanten verwenden.  Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit allen Regionen unter Verwendung der Azure-Bibliotheken für Python (mehrere Clouds) | Microsoft-Dokumentation mit Anweisungen zum Herstellen einer Verbindung mit Python in Sovereign Clouds.](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
+    
     
 ## <a name="create-a-data-factory-client"></a>Erstellen eines Data Factory-Clients
 
+  
 1. Erstellen Sie eine Datei mit dem Namen **datafactory.py**. Fügen Sie die folgenden Anweisungen ein, um Verweise auf Namespaces hinzuzufügen.
 
     ```python
@@ -122,6 +125,7 @@ Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines
     ```
 3. Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine Instanz der DataFactoryManagementClient-Klasse erstellt. Sie verwenden dieses Objekt, um die Data Factory, einen verknüpften Dienst, Datasets und eine Pipeline zu erstellen. Sie verwenden dieses Objekt ebenfalls zum Überwachen der Ausführungsdetails der Pipeline. Legen Sie die Variable **subscription_id** auf die ID Ihres Azure-Abonnements fest. Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 
+        
     ```python
     def main():
 
@@ -136,6 +140,11 @@ Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines
 
         # Specify your Active Directory client ID, client secret, and tenant ID
         credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
+        
+        # Specify following for Soverign Clouds, import right cloud constant and then use it to connect.
+        # from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD as CLOUD
+        # credentials = DefaultAzureCredential(authority=CLOUD.endpoints.active_directory, tenant_id=tenant_id)
+        
         resource_client = ResourceManagementClient(credentials, subscription_id)
         adf_client = DataFactoryManagementClient(credentials, subscription_id)
 
@@ -217,6 +226,7 @@ Sie definieren ein Dataset, das die Quelldaten im Azure-Blob darstellt. Dieses B
     print_item(dsOut)
 ```
 
+
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 
 Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine **Pipeline mit einer Kopieraktivität** erstellt.
@@ -231,6 +241,13 @@ Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine **Pipeline mi
     copy_activity = CopyActivity(name=act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
 
     #Create a pipeline with the copy activity
+    
+    #Note1: To pass parameters to the pipeline, add them to the json string params_for_pipeline shown below in the format { “ParameterName1” : “ParameterValue1” } for each of the parameters needed in the pipeline.
+    #Note2: To pass parameters to a dataflow, create a pipeline parameter to hold the parameter name/value, and then consume the pipeline parameter in the dataflow parameter in the format @pipeline().parameters.parametername.
+    
+    p_name = 'copyPipeline'
+    params_for_pipeline = {}
+
     p_name = 'copyPipeline'
     params_for_pipeline = {}
     p_obj = PipelineResource(activities=[copy_activity], parameters=params_for_pipeline)

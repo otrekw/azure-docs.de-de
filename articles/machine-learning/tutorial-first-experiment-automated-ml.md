@@ -1,7 +1,7 @@
 ---
 title: Erstellen von Klassifizierungsmodellen mit automatisiertem maschinellem Lernen
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie Klassifizierungsmodelle über die Oberfläche für automatisiertes maschinelles Lernen (automatisiertes ML) von Azure Machine Learning trainieren und bereitstellen.
+description: Hier erfahren Sie, wie Sie Klassifizierungsmodelle über die Oberfläche für automatisiertes maschinelles Lernen (automatisiertes ML) von Azure Machine Learning trainieren und bereitstellen, ohne Code schreiben zu müssen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,29 +11,31 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d0e236891e48a20adf1901d2f95a90ae25969c49
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691942"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210845"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning
 
-
-In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von automatisiertem maschinellem Lernen in Azure Machine Learning Studio ein einfaches Klassifizierungsmodell erstellen, ohne eine einzige Codezeile zu schreiben. Dieses Klassifizierungsmodell sagt vorher, ob ein Kunde Festgeld bei einer Bank anlegt.
+Hier erfahren Sie, wie Sie unter Verwendung von automatisiertem maschinellem Lernen in Azure Machine Learning Studio ein [einfaches Klassifizierungsmodell](concept-automated-ml.md#classification) erstellen, ohne eine einzige Codezeile zu schreiben. Dieses Klassifizierungsmodell sagt vorher, ob ein Kunde Festgeld bei einer Bank anlegt.
 
 Mit automatisiertem maschinellen Lernen können Sie zeitintensive Aufgaben automatisieren. Beim automatisierten maschinellen Lernen werden viele Kombinationen von Algorithmen und Hyperparametern schnell durchlaufen, um basierend auf einer von Ihnen ausgewählten Erfolgsmetrik das beste Modell zu ermitteln.
 
-Ein Beispiel für eine Zeitreihenvorhersage finden Sie im [Tutorial: Bedarfsvorhersage und AutoML](tutorial-automated-ml-forecast.md).
-
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial schreiben Sie keinen Code. Sie verwenden die Studio-Benutzeroberfläche für das Trainieren.  Dabei lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen Sie einen Azure Machine Learning-Arbeitsbereich.
 > * Ausführen eines automatisierten Machine Learning-Experiments
 > * Anzeigen von Details zum Experiment
 > * Bereitstellen des Modells.
+
+Probieren Sie auch automatisiertes maschinelles Lernen für diese anderen Modelltypen aus:
+
+* Ein Beispiel ohne Code für die Vorhersage finden Sie unter [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen](tutorial-automated-ml-forecast.md).
+* Ein Code First-Beispiel für ein Regressionsmodell finden Sie unter [Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen](tutorial-auto-train-models.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,7 +54,7 @@ Es gibt viele [Möglichkeiten, einen Arbeitsbereich zu erstellen](how-to-manage-
 >[!IMPORTANT] 
 > Notieren Sie sich Ihren **Arbeitsbereich** und Ihr **Abonnement**. Sie benötigen diese Informationen, um sicherzustellen, dass Sie Ihr Experiment an der richtigen Stelle erstellen. 
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Erste Schritte in Azure Machine Learning Studio
+## <a name="sign-in-to-the-studio"></a>Anmelden bei Studio
 
 Sie schließen die folgende Experimenteinrichtung ab und führen Schritte über Azure Machine Learning Studio unter https://ml.azure.com aus. Hierbei handelt es sich um eine konsolidierte Weboberfläche mit Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Datenwissenschaftler jeglicher Qualifikation. Das Azure Machine Learning-Studio wird in Internet Explorer-Browsern nicht unterstützt.
 

@@ -3,12 +3,12 @@ title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 2ded5d706ab71b3880633cd324fb366d0a1bccbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60e0a4083c0253d322b2e10472d0df7496722c10
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584634"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107243"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -16,8 +16,12 @@ In diesem Artikel wird der Planungsprozess zum Identifizieren und Sammeln der Da
 
 Durch die in dieser Schnellstartanleitung beschriebenen Schritte erhalten Sie eine produktionsbereite Umgebung zum Erstellen von virtuellen Computern (virtual machines, VMs) sowie für die Migration. 
 
->[!IMPORTANT]
->Halten Sie sich vor dem Erstellen Ihrer Azure VMware Solution-Ressource an die Informationen im Artikel [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md), um ein Supportticket für die Zuordnung Ihrer Hosts zu übermitteln. Nachdem das Supportteam Ihre Anforderung erhalten hat, dauert es bis zu fünf Werktage, bis die Anforderung bestätigt wurde und Ihre Hosts zugewiesen wurden. Wenn Sie über eine vorhandene private Azure VMware Solution-Cloud verfügen und weitere Hosts zugeordnet werden sollen, müssen Sie den gleichen Prozess durchlaufen. 
+Laden Sie zum Nachverfolgen der von Ihnen gesammelten Daten die [HCX-Prüfliste für die Planung](https://www.virtualworkloads.com/2021/04/hcx-planning-checklist/) herunter.
+
+> [!IMPORTANT]
+> Es ist wichtig, frühzeitig ein Hostkontingent anzufordern, wenn Sie sich auf die Erstellung Ihrer Azure VMware Solution-Ressource vorbereiten. Sie können jetzt ein Hostkontingent anfordern. Wenn der Planungsprozess abgeschlossen ist, können Sie direkt die private Azure VMware Solution-Cloud bereitstellen: Nachdem das Supportteam Ihre Anforderung eines Hostkontingents erhalten hat, dauert es bis zu fünf Werktage, bis die Anforderung bestätigt wurde und Ihre Hosts zugewiesen wurden. Wenn Sie über eine vorhandene private Azure VMware Solution-Cloud verfügen und weitere Hosts zugeordnet werden sollen, müssen Sie auf die gleiche Weise vorgehen. Weitere Informationen finden Sie je nach Abonnementtyp unter den folgenden Links:
+> - [EA-Kunden](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-ea-customers)
+> - [CSP-Kunden](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-csp-customers)
 
 ## <a name="subscription"></a>Subscription
 
@@ -82,18 +86,6 @@ Dieses Netzwerksegment wird hauptsächlich zu Testzwecken während der ersten Be
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifizieren: IP-Adressensegment für VM-Workloads" border="false":::     
 
-## <a name="optional-extend-your-networks"></a>(Optional) Erweitern von Netzwerken
-
-Sie können Netzwerksegmente aus der lokalen Umgebung auf Azure VMware Solution erweitern. Wenn Sie dies tun, sollten Sie diese Netzwerke jetzt identifizieren.  
-
-Bedenken Sie Folgendes:
-
-- Wenn Sie die Erweiterung von Netzwerken aus der lokalen Umgebung planen, muss für diese Netzwerke eine Verbindung mit einem [vSphere Distributed Switch (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) in Ihrer lokalen VMware-Umgebung bestehen.  
-- Falls die zu erweiternden Netzwerke auf einem [vSphere Standard Switch](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) angeordnet sind, können sie nicht erweitert werden.
-
->[!NOTE]
->Diese Netzwerke werden im letzten Schritt der Konfiguration erweitert, nicht während der Bereitstellung.
-
 ## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Anfügen von Azure VMware Solution an eine Azure Virtual Network-Instanz
 
 Zum Bereitstellen von Konnektivität mit Azure VMware Solution wird eine ExpressRoute-Leitung zwischen der privaten Azure VMware Solution-Cloud und einem ExpressRoute-Gateway für virtuelle Netzwerke eingerichtet.
@@ -106,7 +98,7 @@ Sie können ein *vorhandenes* ODER ein *neues* ExpressRoute-Gateway für virtuel
 
 Wenn Sie ein *vorhandenes* ExpressRoute-Gateway für virtuelle Netzwerke verwenden möchten, wird die ExpressRoute-Leitung von Azure VMware Solution nach dem Bereitstellen der privaten Cloud eingerichtet. Lassen Sie in diesem Fall das Feld **Virtual Network** leer.
 
-Allgemeine Empfehlung: Es ist in Ordnung, ein bereits vorhandenes ExpressRoute-Gateway für virtuelle Netzwerke zu verwenden. Notieren Sie sich zu Planungszwecken, welches ExpressRoute-Gateway für virtuelle Netzwerke verwendet wird, und fahren Sie mit dem nächsten Schritt fort.
+Allgemeine Empfehlung: Es ist in Ordnung, ein bereits vorhandenes ExpressRoute-Gateway für virtuelle Netzwerke zu verwenden. Notieren Sie sich zu Planungszwecken, welches ExpressRoute-Gateway für virtuelle Netzwerke verwendet wird, und fahren Sie mit dem [nächsten Schritt](#vmware-hcx-network-segments) fort.
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Erstellen eines neuen ExpressRoute-Gateways für virtuelle Netzwerke
 
@@ -116,23 +108,36 @@ Wenn Sie ein *neues* ExpressRoute-Gateway für virtuelle Netzwerke erstellen, k�
    1. Ermitteln Sie eine Azure Virtual Network-Instanz, die keine bereits vorhandenen ExpressRoute-Gateways für virtuelle Netzwerke enthält.
    2. Erstellen Sie vor der Bereitstellung ein [GatewaySubnet](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet)-Element in der Azure Virtual Network-Instanz
 
-- Für eine neue Azure Virtual Network-Instanz können Sie diese im Voraus oder während der Bereitstellung erstellen. Wählen Sie unter der Liste **Virtual Network** den Link **Neu erstellen** aus.
+- Für eine neue Azure Virtual Network-Instanz und ein neues VNET-Gateway erstellen Sie es während der Bereitstellung, indem Sie in der Liste **Virtual Network** den Link **Neu erstellen** auswählen.  Es ist wichtig, den Adressraum und die Subnetze vor der Bereitstellung zu definieren, damit Sie diese Informationen beim Ausführen der Bereitstellungsschritte eingeben können.
 
 Die folgende Abbildung zeigt den Bereitstellungsbildschirm **Erstellen einer privaten Cloud**, auf dem das Feld **Virtual Network** hervorgehoben ist.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Screenshot: Azure VMware Solution-Bereitstellungsbildschirm mit hervorgehobenem Feld „Virtual Network“":::
 
->[!NOTE]
->Ein virtuelles Netzwerk, das verwendet oder erstellt wird, kann von Ihrer lokalen Umgebung und von Azure VMware Solution erkannt werden. Stellen Sie daher sicher, dass sich das in diesem virtuellen Netzwerk verwendete IP-Segment und die Subnetze nicht überlappen.
+> [!NOTE]
+> Ein virtuelles Netzwerk, das verwendet oder erstellt wird, kann von Ihrer lokalen Umgebung und von Azure VMware Solution erkannt werden. Stellen Sie daher sicher, dass sich das in diesem virtuellen Netzwerk verwendete IP-Segment und die Subnetze nicht überlappen.
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX-Netzwerksegmente
 
-VMware HCX ist eine Technologie, die Teil des Azure VMware Solution-Pakets ist. Die primären Anwendungsfälle für VMware HCX sind Workloadmigrationen und Notfallwiederherstellung. Wenn Sie beides durchführen möchten, ist es ratsam, das Netzwerk jetzt zu planen.   Andernfalls können Sie diesen Schritt überspringen und mit dem nächsten fortfahren.
+VMware HCX ist eine Technologie, die Teil des Azure VMware Solution-Pakets ist. Die primären Anwendungsfälle für VMware HCX sind Workloadmigrationen und Notfallwiederherstellung. Wenn Sie beides durchführen möchten, ist es ratsam, das Netzwerk jetzt zu planen. Andernfalls können Sie diesen Schritt überspringen und mit dem nächsten fortfahren.
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
+## <a name="optional-extend-your-networks"></a>(Optional) Erweitern von Netzwerken
+
+Sie können Netzwerksegmente aus der lokalen Umgebung auf Azure VMware Solution erweitern. Wenn Sie dies tun, sollten Sie diese Netzwerke jetzt identifizieren.  
+
+Hier sind einige Faktoren zu beachten:
+
+- Wenn Sie die Erweiterung von Netzwerken aus der lokalen Umgebung planen, muss für diese Netzwerke eine Verbindung mit einem [vSphere Distributed Switch (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) in Ihrer lokalen VMware-Umgebung bestehen.  
+- Netzwerke, die sich auf einem [vSphere Standard Switch](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) befinden, können nicht erweitert werden.
+
+>[!NOTE]
+>Diese Netzwerke werden im letzten Schritt der Konfiguration erweitert, nicht während der Bereitstellung.
+>
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die erforderlichen Informationen nun gesammelt und dokumentiert haben, können Sie mit dem nächsten Abschnitt fortfahren, um Ihre private Azure VMware Solution-Cloud zu erstellen.
 
 > [!div class="nextstepaction"]
 > [Bereitstellen von Azure VMware Solution](deploy-azure-vmware-solution.md)
+> 

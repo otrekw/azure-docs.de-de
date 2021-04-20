@@ -2,16 +2,16 @@
 title: 'Tutorial: Erstellen und Bereitstellen von Azure Resource Manager-Bicep-Dateien'
 description: Erstellen Sie Ihre erste Bicep-Datei zum Bereitstellen von Azure-Ressourcen. In diesem Tutorial lernen Sie die Syntax der Bicep-Datei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ffd8a97d797144d458e7ec5836042cc6d8d8193
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594273"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306676"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Bicep-Datei
 
@@ -57,7 +57,7 @@ Nun sind Sie bereit, mehr über Bicep zu erfahren.
 
     ```bicep
     resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-      name: '{provide-unique-name}'
+      name: '{provide-unique-name}'  // must be globally unique
       location: 'eastus'
       sku: {
         name: 'Standard_LRS'
@@ -86,6 +86,10 @@ Nun sind Sie bereit, mehr über Bicep zu erfahren.
 
         Falls Sie sich entscheiden, die API-Version für eine Ressource zu ändern, müssen Sie die Eigenschaften für diese Version prüfen und die Bicep-Datei entsprechend anpassen.
 
+    Weitere Informationen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./bicep-file.md).
+
+    Es gibt einen Kommentar für die name-Eigenschaft.  Verwenden Sie `//` für einzeilige Kommentare bzw. `/* ... */` für mehrzeilige Kommentare.
+
 1. Ersetzen Sie `{provide-unique-name}` einschließlich der geschweiften Klammern `{}` durch einen eindeutigen Speicherkontonamen.
 
     > [!IMPORTANT]
@@ -93,7 +97,7 @@ Nun sind Sie bereit, mehr über Bicep zu erfahren.
 
     Das Erraten des eindeutigen Namens für ein Speicherkonto ist nicht einfach und keine gute Lösung, wenn Sie umfangreiche Bereitstellungen automatisieren möchten. In einem späteren Teil dieser Tutorialreihe verwenden Sie Bicep-Funktionen, die das Erstellen eines eindeutigen Namens vereinfachen.
 
-1. Speichern Sie die Datei.
+1. Speichern Sie die Datei .
 
 Herzlichen Glückwunsch, Sie haben Ihre erste Bicep-Datei erstellt.
 

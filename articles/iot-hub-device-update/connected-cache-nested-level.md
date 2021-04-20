@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7facb74cd407c576b2a7b119f19427dcd185f04e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e9749dfd7b28551a4fc2e7c6ba70ba9cce4e5a69
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568816"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307298"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Beispiel für ein Szenario zur Bereitstellung von Microsoft Connected Cache: Geschachteltes Azure IoT Edge-Gateway mit zwei Ebenen ausgehendem nicht authentifiziertem Proxy
 
@@ -70,7 +70,7 @@ Das folgende Diagramm beschreibt das Szenario, in dem ein Azure IoT Edge-Gateway
 ## <a name="child-gateway-configuration"></a>Untergeordnete Gatewaykonfiguration
 
 >[!Note]
->Wenn Sie in Ihrer Konfiguration replizierte Container in Ihrer eigenen privaten Registrierung verwendet haben, ist eine Änderung der config.toml-Einstellungen und Runtimeeinstellungen in Ihrer Modulbereitstellung erforderlich. Weitere Informationen finden Sie unter [Tutorial: Erstellen einer Hierarchie für IoT Edge-Geräte – Azure IoT Edge](../iot-edge/tutorial-nested-iot-edge.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-the-lower-layer-device).
+>Wenn Sie in Ihrer Konfiguration replizierte Container in Ihrer eigenen privaten Registrierung verwendet haben, ist eine Änderung der config.toml-Einstellungen und Runtimeeinstellungen in Ihrer Modulbereitstellung erforderlich. Ausführlichere Informationen finden Sie unter [Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway (Vorschau)](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-lower-layer-devices).
 
 1. Ändern Sie den Imagepfad für den Edge-Agent wie im folgenden Beispiel gezeigt:
 

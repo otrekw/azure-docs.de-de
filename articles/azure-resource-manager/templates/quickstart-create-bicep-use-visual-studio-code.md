@@ -2,15 +2,15 @@
 title: 'Visual Studio Code: Erstellen von Bicep-Dateien'
 description: Hier erfahren Sie, wie Sie Visual Studio Code und die Bicep-Erweiterung für Bicep-Dateien zum Bereitstellen von Azure-Ressourcen verwenden.
 author: mumian
-ms.date: 03/26/2021
+ms.date: 04/12/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e82f047f553290c9121d91060c347c5b242c7ec2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612886"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306465"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Schnellstart: Erstellen von Bicep-Dateien mit Visual Studio Code
 
@@ -51,6 +51,10 @@ Die Ressourcendeklaration umfasst vier Komponenten:
 - **symbolic name** (stg): Der symbolische Name ist ein Bezeichner zum Referenzieren der Ressource in Ihrer Bicep-Datei. Dabei handelt es sich nicht um den Namen der Ressource, der nach der Bereitstellung verwendet wird. Der Name der Ressource wird von der Eigenschaft **name** definiert.  Weitere Informationen finden Sie in der vierten Komponente in dieser Liste.
 - **resource type** (Microsoft.Storage/storageAccounts@2019-06-01): Diese Komponente besteht aus dem Ressourcenanbieter (Microsoft.Storage), dem Ressourcentyp (storageAccounts) und der API-Version (apiVersion: 2019-06-01). Jeder Ressourcenanbieter veröffentlicht seine eigenen API-Versionen. Dieser Wert unterscheidet sich daher je nach Typ. Weitere Typen und API-Versionen für verschiedene Azure-Ressourcen finden Sie in der [ARM-Vorlagenreferenz](/azure/templates/).
 - **properties** (alles innerhalb von „= {...}“): Hier legen Sie die Eigenschaften für den Ressourcentyp fest. Jede Ressource umfasst eine `name`-Eigenschaft. Die meisten Ressourcen verfügen auch über eine `location`-Eigenschaft, mit der die Region festgelegt wird, in der die Ressource bereitgestellt wird. Die anderen Eigenschaften variieren je nach Ressourcentyp und API-Version.
+
+Weitere Informationen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./bicep-file.md).
+
+Es gibt einen Kommentar für die name-Eigenschaft.  Verwenden Sie `//` für einzeilige Kommentare bzw. `/* ... */` für mehrzeilige Kommentare.
 
 ## <a name="completion-and-validation"></a>Vervollständigung und Überprüfung
 

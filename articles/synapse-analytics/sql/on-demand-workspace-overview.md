@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0abef835e406b442239cecd81fed5751f1c9a92
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667505"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378158"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Serverloser SQL-Pool in Azure Synapse Analytics 
 
@@ -54,7 +54,7 @@ In jedem Azure Synapse-Arbeitsbereich steht ein Endpunkt für einen serverlosen
 
 ## <a name="client-tools"></a>Clienttools
 
-Ein serverloser SQL-Pool ermöglicht die Nutzung des Data Lake durch bereits vorhandene Tools für SQL-Ad-hoc-Abfragen und Business Intelligence. Dank der vertrauten T-SQL-Syntax kann jedes Tool, das für SQL-Angebote mit TDS-Verbindung geeignet ist, bei Bedarf [eine Verbindung mit Synapse SQL herstellen und entsprechende Abfragen ausführen](connect-overview.md). Sie können eine Verbindung mit Azure Data Studio herstellen und Ad-hoc-Abfragen ausführen oder eine Verbindung mit Power BI herstellen, um innerhalb weniger Minuten Erkenntnisse zu gewinnen.
+Ein serverloser SQL-Pool ermöglicht die Nutzung des Data Lake durch bereits vorhandene Tools für SQL-Ad-hoc-Abfragen und Business Intelligence. Dank der vertrauten T-SQL-Syntax kann jedes Tool, das für SQL-Angebote mit TDS-Verbindung geeignet ist, [eine Verbindung mit Synapse SQL herstellen und entsprechende Abfragen ausführen](connect-overview.md). Sie können eine Verbindung mit Azure Data Studio herstellen und Ad-hoc-Abfragen ausführen oder eine Verbindung mit Power BI herstellen, um innerhalb weniger Minuten Erkenntnisse zu gewinnen.
 
 ## <a name="t-sql-support"></a>T-SQL-Unterstützung
 

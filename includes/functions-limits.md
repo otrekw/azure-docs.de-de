@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 91f72117fdbcdbeda1d906a9760243e66404920c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934463"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105105672"
 ---
 | Resource |[Verbrauchstarif](../articles/azure-functions/consumption-plan.md)|[Premium-Plan](../articles/azure-functions/functions-premium-plan.md)|[Dedizierter Plan](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -21,6 +21,7 @@ ms.locfileid: "97934463"
 | Maximale Länge der Anforderungs-URL<sup>3</sup> | 8192 | 8192 | 8192 | 8192 | Abhängig von Cluster |
 |[ACU](../articles/virtual-machines/acu.md) pro Instanz | 100 | 210–840 | 100–840 | 210–250<sup>8</sup> | [AKS – Preise](https://azure.microsoft.com/pricing/details/container-service/) |
 | Maximaler Arbeitsspeicher (GB pro Instanz) | 1.5 | 3,5–14 | 1,75–14 | 3,5–14 | Jeder Knoten wird unterstützt. |
+| Maximale Instanzanzahl | 200 | 100<sup>9</sup> | variiert je nach SKU<sup>10</sup> | 100<sup>10</sup> | Abhängig von Cluster |   
 | Funktions-Apps pro Plan |100 |100 |unbounded<sup>4</sup> | unbounded | unbounded |
 | [App Service-Pläne](../articles/app-service/overview-hosting-plans.md) | 100 pro [Region](https://azure.microsoft.com/global-infrastructure/regions/) |100 pro Ressourcengruppe |100 pro Ressourcengruppe | - | - |
 | Speicher<sup>5</sup> |5 TB |250 GB |50–1.000 GB | 1 TB | – |
@@ -34,4 +35,6 @@ ms.locfileid: "97934463"
 <sup>5</sup> Der Speichergrenzwert entspricht der gesamten Inhaltsgröße aller Apps im gleichen App Service-Plan im temporären Speicher. Der Verbrauchsplan verwendet Azure Files zur temporären Speicherung.  
 <sup>6</sup> Wenn Ihre Funktions-App unter einem [Verbrauchsplan](../articles/azure-functions/consumption-plan.md) gehostet wird, wird nur die CNAME-Option unterstützt. Für Funktions-Apps unter einem [Premium-Plan](../articles/azure-functions/functions-premium-plan.md) oder einem [App Service-Plan](../articles/azure-functions/dedicated-plan.md) können Sie eine benutzerdefinierte Domäne entweder mit einem CNAME- oder einem A-Eintrag zuordnen.  
 <sup>7</sup> Garantiert für bis zu 60 Minuten  
-<sup>8</sup> Worker sind Rollen, die Kunden-Apps hosten. Worker sind in drei festen Größen verfügbar: Eine vCPU/3,5 GB RAM; zwei vCPUs/7 GB RAM; vier vCPUs/14 GB RAM.
+<sup>8</sup> Worker sind Rollen, die Kunden-Apps hosten. Worker sind in drei festen Größen verfügbar: Eine vCPU/3,5 GB RAM; zwei vCPUs/7 GB RAM; vier vCPUs/14 GB RAM.   
+<sup>9</sup> Bei der Ausführung unter Linux in einem Premium-Plan sind Sie derzeit auf 20 Instanzen beschränkt.  
+<sup>10</sup> Ausführliche Informationen finden Sie unter [App Service-Grenzwerte](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).

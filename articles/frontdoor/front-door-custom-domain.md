@@ -3,21 +3,21 @@ title: 'Tutorial: Hinzufügen einer benutzerdefinierten Domäne zu Ihrer Azure F
 description: In diesem Tutorial erfahren Sie, wie Sie eine benutzerdefinierte Domäne in Azure Front Door Service integrieren.
 services: frontdoor
 documentationcenter: ''
-author: duongau
+author: jessie-jyy
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2020
-ms.author: duau
-ms.openlocfilehash: 6abed66a5fbd9987e5a8a677dde7b4a77589e907
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 04/12/2021
+ms.author: yuajia
+ms.openlocfilehash: 7e2f05a7d911ce2b311a423994d2b459de0fa269
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065043"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308862"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“
 
@@ -40,9 +40,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 * Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst eine Azure Front Door Service-Konfiguration erstellen. Weitere Informationen finden Sie unter [Quickstart: Erstellen einer „Front Door“](quickstart-create-front-door.md).
 
-* Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Informationen hierzu finden Sie beispielsweise unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](../app-service/manage-custom-dns-buy-domain.md).
+* Wenn Sie noch nicht über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst eine bei einem Domänenanbieter erwerben. Informationen hierzu finden Sie beispielsweise unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](../app-service/manage-custom-dns-buy-domain.md).
 
-* Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](../dns/dns-overview.md) verwenden, müssen Sie das Domain Name System (DNS) des Domänenanbieters an eine Azure DNS-Instanz delegieren. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](../dns/dns-delegate-domain-azure-dns.md). Fahren Sie andernfalls mit [Erstellen eines CNAME-DNS-Eintrags](#create-a-cname-dns-record) fort, wenn Sie für Ihre DNS-Domäne einen Domänenanbieter verwenden.
+* Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](../dns/dns-overview.md) verwenden, müssen Sie das Domain Name System (DNS) des Domänenanbieters an eine Azure DNS-Instanz delegieren. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](../dns/dns-delegate-domain-azure-dns.md). Wenn Sie für Ihre DNS-Domäne jedoch einen Domänenanbieter verwenden, fahren Sie mit [Erstellen eines CNAME-DNS-Eintrags](#create-a-cname-dns-record) fort.
 
 
 ## <a name="create-a-cname-dns-record"></a>Erstellen eines CNAME-DNS-Eintrags
@@ -70,7 +70,7 @@ So erstellen Sie einen CNAME-Eintrag mit der Unterdomäne „afdverify“:
     |---------------------------|-------|---------------------------------|
     | afdverify. www.contoso.com | CNAME | afdverify.contoso-frontend.azurefd.net |
 
-    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne einschließlich der Unterdomäne „afdverify“ im folgenden Format ein: afdverify. _&lt;Name der benutzerdefinierten Domäne&gt;_ . Beispiel: afdverify. www.contoso.com.
+    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne einschließlich der Unterdomäne „afdverify“ im folgenden Format ein: afdverify. _&lt;Name der benutzerdefinierten Domäne&gt;_ . Beispiel: afdverify. www.contoso.com. Wenn Sie eine Platzhalterdomäne wie „\*.contoso.com“ zuordnen, ist der Quellwert identisch mit dem Wert ohne den Platzhalter: afdverify.contoso.com.
 
     - Typ: Geben Sie *CNAME* ein.
 
@@ -109,7 +109,7 @@ Nachdem Sie Ihre benutzerdefinierte Domäne registriert haben, können Sie sie I
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu der Azure Front Door Service-Konfiguration mit dem Front-End-Host, den Sie einer benutzerdefinierten Domäne zuordnen möchten.
     
-2. Klicken Sie auf der Seite **Frontdoor-Designer** auf das Plussymbol (+), um eine benutzerdefinierte Domäne hinzuzufügen.
+2. Wählen Sie auf der Seite **Frontdoor-Designer** das Plussymbol (+) aus, um eine benutzerdefinierte Domäne hinzuzufügen.
     
 3. Wählen Sie **Benutzerdefinierte Domäne** aus. 
 
@@ -157,7 +157,7 @@ Erstellen Sie wie folgt einen CNAME-Eintrag für Ihre benutzerdefinierten Domän
 
 5. Wenn Sie zuvor einen temporären CNAME-Eintrag für die Unterdomäne „afdverify“ erstellt haben, löschen Sie diesen Eintrag. 
 
-6. Falls Sie diese benutzerdefinierte Domäne erstmals in der Produktion verwenden, führen Sie die Schritte unter [Associate the custom domain with your Front Door](#associate-the-custom-domain-with-your-front-door) (Zuordnen der benutzerdefinierten Domäne zu Ihrer Azure Front Door Service-Konfiguration) und [Verify the custom domain](#verify-the-custom-domain) (Überprüfen der benutzerdefinierten Domäne) aus.
+6. Falls Sie diese benutzerdefinierte Domäne erstmals in der Produktion verwenden, führen Sie die Schritte unter [Zuordnen der benutzerdefinierten Domäne zu Ihrer Azure Front Door Service-Konfiguration](#associate-the-custom-domain-with-your-front-door) und [Überprüfen der benutzerdefinierten Domäne](#verify-the-custom-domain) aus.
 
 Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorgehensweise:
 
@@ -187,17 +187,18 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
 8. Wählen Sie **Löschen**, um den CNAME-Eintrag zu löschen.
 
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 In den obigen Schritten haben Sie Ihrer Azure Front Door Service-Konfiguration eine benutzerdefinierte Domäne hinzugefügt. Wenn Sie die Zuordnung Ihrer Azure Front Door Service-Konfiguration zu einer benutzerdefinierten Domäne aufheben möchten, können Sie die benutzerdefinierte Domäne wie folgt entfernen:
  
-1. Wählen Sie im Frontdoor-Designer die benutzerdefinierte Domäne aus, die Sie entfernen möchten.
+1. Wechseln Sie zu Ihrem DNS-Anbieter, löschen Sie den CNAME-Eintrag für die benutzerdefinierte Domäne, oder aktualisieren Sie den CNAME-Eintrag für die benutzerdefinierte Domäne auf einen nicht von Front Door bereitgestellten Endpunkt.
 
-2. Klicken Sie im Kontextmenü für die benutzerdefinierte Domäne auf „Löschen“.  
+    > [!Important]
+    > Um verwaiste DNS-Einträge und dadurch verursachte Sicherheitsrisiken zu vermeiden, müssen in Azure Front Door ab dem 9. April 2021 die CNAME-Einträge für Front Door-Endpunkte entfernt werden, damit die Ressourcen gelöscht werden können. Zu den Ressourcen zählen, benutzerdefinierte Front Door-Domänen, Front Door-Endpunkte oder Azure-Ressourcengruppen, für die benutzerdefinierte Front Door-Domänen aktiviert sind.
 
-   Die Zuordnung der benutzerdefinierten Domäne zum Endpunkt wird aufgehoben.
+2. Wählen Sie im Frontdoor-Designer die benutzerdefinierte Domäne aus, die Sie entfernen möchten.
 
+3. Wählen Sie im Kontextmenü für die benutzerdefinierte Domäne **Löschen** aus. Die Zuordnung der benutzerdefinierten Domäne zu Ihrem Endpunkt wird nun aufgehoben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

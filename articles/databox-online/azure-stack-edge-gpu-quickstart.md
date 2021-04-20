@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 01/27/2021
+ms.date: 04/07/2021
 ms.author: alkohli
-ms.openlocfilehash: b6389152116a47bedbc9c2dc44231f3e1732fdc6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055109"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210809"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Schnellstart: Erste Schritte mit Azure Stack Edge Pro mit GPU 
 
@@ -36,7 +36,7 @@ Sorgen Sie vor der Bereitstellung dafür, dass die folgenden Voraussetzungen erf
 
 ## <a name="deployment-steps"></a>Bereitstellungsschritte
 
-1. **Installieren:** Verbinden Sie PORT 1 über ein Crossover-Kabel oder einen USB-Ethernet-Adapter mit einem Clientcomputer. Verbinden Sie mindestens einen weiteren Geräteport für Daten – vorzugsweise 25 GbE – über mindestens einen GbE-Switch und SFP+-Kupferkabel (von PORT 3 bis PORT 6) mit dem Internet. Verbinden Sie die bereitgestellten Netzkabel mit den Netzteilen und separaten Stromverteilungssteckdosen. Drücken Sie den Netzschalter auf der Vorderseite zum Einschalten des Geräts.  
+1. **Installieren:** Verbinden Sie PORT 1 über ein Crossover-Kabel oder einen USB-Ethernet-Adapter mit einem Clientcomputer. Verbinden Sie mindestens einen weiteren Geräteport für Daten – vorzugsweise 25 GbE – über SFP+-Kupferkabel (von PORT 3 bis PORT 6) mit dem Internet, oder verwenden Sie PORT 2 mit einem RJ45-Patchkabel. Verbinden Sie die bereitgestellten Netzkabel mit den Netzteilen und separaten Stromverteilungssteckdosen. Drücken Sie den Netzschalter auf der Vorderseite zum Einschalten des Geräts.  
 
     Kompatible Netzwerkkabel und Switches finden Sie unter [Interoperabilitätsmatrix für die Cavium FastlinQ 41000-Reihe](https://www.marvell.com/documents/xalflardzafh32cfvi0z/) und [Mit Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter kompatible Produkte](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).
 

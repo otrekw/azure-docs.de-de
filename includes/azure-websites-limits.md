@@ -2,14 +2,14 @@
 author: rothja
 ms.service: app-service
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 03/17/2020
 ms.author: msangapu
-ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: dad7799cb5a7579b28847e3968b6b38f1f98298a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102532680"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327787"
 ---
 | Resource | Kostenlos | Shared | Basic | Standard | Premium (v1-v3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "102532680"
 | [App Service-Plan](../articles/app-service/overview-hosting-plans.md) |10 pro Region |10 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe|
 | Serverinstanztyp |Shared |Shared |Dediziert<sup>3</sup> |Dediziert<sup>3</sup> |Dediziert<sup>3</sup></p> |Dediziert<sup>3</sup>|
 | [Aufskalieren](../articles/app-service/manage-scale-up.md) (Instanzen maximal) |1 freigegebene |1 freigegebene |3 dedizierte<sup>3</sup> |10 dedizierte<sup>3</sup> | 20 dediziert für v1 und v2, 30 dediziert für v3.<sup>3</sup>|100 dedizierte<sup>4</sup>|
-| Speicher<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> Wenn Sie mehr als 250 GB benötigen, erstellen Sie eine Supportanfrage. |1 TB<sup>5</sup> <br/><br/> Das verfügbare Speicherkontingent beträgt 999 GB. |
+| Speicher<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> |1 TB<sup>5</sup> <br/><br/> Das verfügbare Speicherkontingent beträgt 999 GB. |
 | CPU-Zeit (5 Minuten)<sup>6</sup> |3 Minuten |3 Minuten |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | CPU-Zeit (Tag)<sup>6</sup> |60 Minuten |240 Minuten |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |
 | Arbeitsspeicher (1 Stunde) |1\.024 MB pro App Service-Plan |1\.024 MB pro App |– |– |– |– |
@@ -45,18 +45,28 @@ ms.locfileid: "102532680"
 | Kudu | X | X | X | X | X | X |
 | [Authentifizierung und Autorisierung](../articles/app-service/overview-authentication-authorization.md) | X | X | X | X | X | X |
 | [Von App Service verwaltete Zertifikate (Public Preview)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/)<sup>12</sup> | |  | X | X | X | X |
-| SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|  
+| SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|
 
-<sup>1</sup>Sofern nicht anderweitig vermerkt, gelten Apps- und Speicherkontingente gemäß dem App Service-Plan.  
-<sup>2</sup>Die tatsächliche Anzahl der Apps, die Sie auf diesen Computern hosten können, hängt von der Aktivität der Apps, der Größe der Computerinstanzen und der entsprechenden Ressourcenauslastung ab.  
-<sup>3</sup>Dedizierte Instanzen können unterschiedliche Größen aufweisen. Weitere Informationen finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).  
-<sup>4</sup> Weitere sind auf Anfrage möglich.  
-<sup>5</sup>Die Speicherbegrenzung ist die gesamte Inhaltsgröße aller Apps im selben App Service-Plan. Die gesamte Inhaltsgröße aller Apps für alle App Service-Pläne in einer einzelnen Ressourcengruppe und Region kann 500 GB nicht überschreiten.  
-<sup>6</sup>Diese Ressourcen werden durch physische Ressourcen auf den dedizierten Instanzen (die Instanzengröße und die Anzahl der Instanzen) beschränkt.  
-<sup>7</sup>Wenn Sie eine App im Basic-Tarif auf zwei Instanzen skalieren, stehen Ihnen 350 gleichzeitige Verbindungen für jede der beiden Instanzen zur Verfügung. Beim Tarif „Standard“ und höheren Tarifen gelten keine theoretischen Grenzwerte für Websockets, die Anzahl von Websockets kann jedoch durch andere Faktoren eingeschränkt sein. Die maximal zulässige Anzahl von gleichzeitigen Anforderungen (definiert durch `maxConcurrentRequestsPerCpu`) lautet wie folgt: 7.500 pro kleiner VM, 15.000 pro mittlerer VM (7.500 × 2 Kerne) und 75.000 pro großer VM (18.750 × 4 Kerne).  
-<sup>8</sup>Die maximalen IP-Verbindungen sind pro Instanz und abhängig von der Instanzgröße: 1.920 pro B1/S1/P1V3-Instanz, 3.968 pro B2/S2/P2V3-Instanz, 8.064 pro B3/S3/P3V3-Instanz.  
-<sup>9</sup>Die App Service Certificate-Kontingentgrenze pro Abonnement kann über eine Supportanfrage bis auf eine Obergrenze von 200 erhöht werden.  
-<sup>10</sup>Für SKUs vom Typ „App Service (isoliert)“ kann ein interner Lastausgleich (Internal Load Balancing, ILB) mit Azure Load Balancer vorgenommen werden, sodass keine öffentliche Verbindung mit dem Internet erforderlich ist. Aus diesem Grund müssen einige Features eines isolierten App Service mit internem Lastausgleich auf Computern ausgeführt werden, die über Direktzugriff auf den Endpunkt des ILB-Netzwerks verfügen.  
-<sup>11</sup>Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Es gibt keine vordefinierte Grenze für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Es gibt praktische Grenzwerte, die davon abhängen, was der Anwendungscode auszuführen versucht.
+<sup>1</sup> Sofern nicht anderweitig vermerkt, gelten Apps- und Speicherkontingente gemäß dem App Service-Plan.
 
-<sup>12</sup>Domänen ohne das Präfix „www“ werden nicht unterstützt. Es werden nur Standardzertifikate ausgegeben (Platzhalterzertifikate sind nicht verfügbar). Nur auf ein kostenloses Zertifikat pro benutzerdefinierter Domäne beschränkt.
+<sup>2</sup> Die tatsächliche Anzahl der Apps, die Sie auf diesen Computern hosten können, hängt von der Aktivität der Apps, der Größe der Computerinstanzen und der entsprechenden Ressourcenauslastung ab.
+
+<sup>3</sup> Dedizierte Instanzen können unterschiedliche Größen aufweisen. Weitere Informationen finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
+
+<sup>4</sup> Weitere sind auf Anfrage möglich.
+
+<sup>5</sup> Die Speicherbegrenzung ist die gesamte Inhaltsgröße aller Apps im gleichen App Service-Plan. Die gesamte Inhaltsgröße aller Apps für alle App Service-Pläne in einer einzelnen Ressourcengruppe und Region darf 500 GB nicht überschreiten. Das Dateisystemkontingent für App Service-gehostete Apps wird durch die Aggregation der App Service-Pläne in einer Region und Ressourcengruppe bestimmt.
+
+<sup>6</sup> Diese Ressourcen werden durch physische Ressourcen auf den dedizierten Instanzen (die Instanzengröße und die Anzahl der Instanzen) beschränkt.
+
+<sup>7</sup> Wenn Sie eine App im Basic-Tarif auf zwei Instanzen skalieren, stehen Ihnen 350 gleichzeitige Verbindungen für jede der beiden Instanzen zur Verfügung. Beim Tarif „Standard“ und höheren Tarifen gelten keine theoretischen Grenzwerte für Websockets, die Anzahl von Websockets kann jedoch durch andere Faktoren eingeschränkt sein. Die maximal zulässige Anzahl von gleichzeitigen Anforderungen (definiert durch `maxConcurrentRequestsPerCpu`) lautet wie folgt: 7.500 pro kleiner VM, 15.000 pro mittlerer VM (7.500 × 2 Kerne) und 75.000 pro großer VM (18.750 × 4 Kerne).
+
+<sup>8</sup> Die maximalen IP-Verbindungen gelten pro Instanz und sind abhängig von der Instanzgröße: 1.920 pro B1/S1/P1V3-Instanz, 3.968 pro SB2/S2/P2V3-Instanz, 8.064 pro B3/S3/P3V3-Instanz.
+
+<sup>9</sup> Die App Service Certificate-Kontingentgrenze pro Abonnement kann über eine Supportanfrage bis auf eine Obergrenze von 200 erhöht werden.
+
+<sup>10</sup> Für SKUs vom Typ „App Service (isoliert)“ kann ein interner Lastausgleich (Internal Load Balancing, ILB) mit Azure Load Balancer vorgenommen werden, sodass keine öffentliche Verbindung mit dem Internet erforderlich ist. Aus diesem Grund müssen einige Features eines isolierten App Service mit internem Lastausgleich auf Computern ausgeführt werden, die über Direktzugriff auf den Endpunkt des ILB-Netzwerks verfügen.
+
+<sup>11</sup> Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Es gibt keine vordefinierte Grenze für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Es gibt praktische Grenzwerte, die davon abhängen, was der Anwendungscode auszuführen versucht.
+
+<sup>12</sup> Domänen ohne „www“ werden nicht unterstützt. Es werden nur Standardzertifikate ausgegeben (Platzhalterzertifikate sind nicht verfügbar). Nur auf ein kostenloses Zertifikat pro benutzerdefinierter Domäne beschränkt.

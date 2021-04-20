@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1cef56d15838d80079decc6e1da7ad830bd1cd9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92206950"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029759"
 ---
 # <a name="what-is-azure-expressroute"></a>Was ist Azure ExpressRoute?
 Mit ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, auf die Cloud von Microsoft ausdehnen. Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z. B. Microsoft Azure und Microsoft 365.
@@ -20,6 +20,10 @@ Mit ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindun
 Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden. ExpressRoute-Verbindungen nutzen nicht das öffentliche Internet. Auf diese Weise können ExpressRoute-Verbindungen gleichmäßige Latenz sowie höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit als herkömmliche Verbindungen über das Internet bieten. Informationen zum Verbinden Ihres Netzwerks mit Microsoft mithilfe von ExpressRoute finden Sie unter [ExpressRoute-Konnektivitätsmodelle](expressroute-connectivity-models.md).
 
 ![Übersicht über ExpressRoute-Verbindungen](./media/expressroute-introduction/expressroute-connection-overview.png)
+
+> [!NOTE]
+> Im Kontext von ExpressRoute beschreibt Microsoft Edge die Edgerouter auf der Microsoft-Seite der ExpressRoute-Verbindung. Dies ist der Einstiegspunkt der ExpressRoute-Leitung in das Microsoft-Netzwerk.
+> 
 
 ## <a name="key-benefits"></a>Hauptvorteile
 

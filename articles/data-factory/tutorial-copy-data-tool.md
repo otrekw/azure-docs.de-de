@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 1540e088565f69ca6d923202ad9b32b8d4ccf0ee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 20db863f1e2ae66acada928687b0bcd572f729f9
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584436"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103537"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe des Tools zum Kopieren von Daten
 
@@ -47,11 +47,11 @@ Bereiten Sie Ihre Blob Storage-Instanz und Ihre SQL-Datenbank wie folgt für da
 
 1. Starten Sie **Editor**. Kopieren Sie den folgenden Text, und speichern Sie ihn in einer Datei namens **inputEmp.txt** auf einem Datenträger:
 
-    ```
-    FirstName|LastName
-    John|Doe
-    Jane|Doe
-    ```
+   ```text
+   FirstName|LastName
+   John|Doe
+   Jane|Doe
+   ```
 
 1. Erstellen Sie einen Container namens **adfv2tutorial**, und laden Sie die Datei „inputEmp.txt“ in den Container hoch. Sie können für diese Aufgaben das Azure-Portal oder verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).
 
@@ -59,96 +59,107 @@ Bereiten Sie Ihre Blob Storage-Instanz und Ihre SQL-Datenbank wie folgt für da
 
 1. Verwenden Sie das folgende SQL-Skript, um eine Tabelle namens **dbo.emp** in Ihrer SQL-Datenbank zu erstellen:
 
-    ```sql
-    CREATE TABLE dbo.emp
-    (
-        ID int IDENTITY(1,1) NOT NULL,
-        FirstName varchar(50),
-        LastName varchar(50)
-    )
-    GO
-
-    CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
-    ```
+   ```sql
+   CREATE TABLE dbo.emp
+   (
+       ID int IDENTITY(1,1) NOT NULL,
+       FirstName varchar(50),
+       LastName varchar(50)
+   )
+   GO
+   CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
+   ```
 
 2. Gewähren Sie Azure-Diensten den Zugriff auf SQL Server. Vergewissern Sie sich, dass für den Server, auf dem SQL-Datenbank ausgeführt wird, die Einstellung **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** aktiviert ist. Diese Einstellung ermöglicht der Data Factory das Schreiben von Daten in Ihre Datenbankinstanz. Navigieren Sie zum Überprüfen und Aktivieren dieser Einstellung zu „Logischer SQL Server“ > „Sicherheit“ > „Firewalls und virtuelle Netzwerke“, und legen Sie die Option **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** auf **EIN** fest.
+
+   > [!NOTE]
+   > Die Option **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** ermöglicht den Netzwerkzugriff auf Ihre SQL Server-Instanz über jede Azure-Ressource, nicht nur über die Ressourcen in Ihrem Abonnement. Weitere Informationen finden Sie unter [Azure SQL-Datenbank- und Azure Synapse-IP-Firewallregeln](../azure-sql/database/firewall-configure.md). Stattdessen können Sie [private Endpunkte](../private-link/private-endpoint-overview.md) verwenden, um eine Verbindung mit Azure-PaaS-Diensten herzustellen, ohne öffentliche IP-Adressen zu verwenden.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
 1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Integration** > **Data Factory** aus:
 
-    ![Erstellen einer neuen Data Factory](./media/doc-common-process/new-azure-data-factory-menu.png)
+   ![Erstellen einer neuen Data Factory](./media/doc-common-process/new-azure-data-factory-menu.png)
+
 1. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein.
 
-    Der Name der Data Factory muss _global eindeutig_ sein. Sie erhalten unter Umständen die folgende Fehlermeldung:
+   Der Name der Data Factory muss _global eindeutig_ sein. Sie erhalten unter Umständen die folgende Fehlermeldung:
 
    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Fehlermeldung zu neuer Data Factory für doppelten Namen":::
 
-    Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
+   Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
+
 1. Wählen Sie das **Azure-Abonnement** aus, in dem die neue Data Factory erstellt werden soll.
+
 1. Führen Sie unter **Ressourcengruppe** einen der folgenden Schritte aus:
 
-    a. Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe.
+   a. Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe.
 
-    b. Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.
-    
-    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).
+   b. Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.
+
+   Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).
 
 1. Wählen Sie unter **Version** die Option **V2**.
+
 1. Wählen Sie unter **Standort** den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die Datenspeicher (etwa Azure Storage und SQL-Datenbank) und Computeeinheiten (etwa Azure HDInsight), die von der Data Factory genutzt werden, können sich an anderen Standorten und in anderen Regionen befinden.
+
 1. Klicken Sie auf **Erstellen**.
 
 1. Nach Abschluss der Erstellung wird die Startseite von **Data Factory** angezeigt.
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
+
 1. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Erstellen einer Pipeline mithilfe des Tools zum Kopieren von Daten
 
 1. Klicken Sie auf der Seite **Erste Schritte** auf die Kachel **Daten kopieren**, um das Tool zum Kopieren von Daten zu starten.
 
-    ![Kachel für das Tool zum Kopieren von Daten](./media/doc-common-process/get-started-page.png)
+   ![Kachel für das Tool zum Kopieren von Daten](./media/doc-common-process/get-started-page.png)
+
 1. Geben Sie auf der Seite **Eigenschaften** unter **Taskname** den Namen **CopyFromBlobToSqlPipeline** ein. Wählen Sie **Weiter** aus. Über die Data Factory-Benutzeroberfläche wird eine Pipeline mit dem angegebenen Tasknamen erstellt.
-    ![Erstellen einer Pipeline](./media/tutorial-copy-data-tool/create-pipeline.png)
+
+   ![Erstellen einer Pipeline](./media/tutorial-copy-data-tool/create-pipeline.png)
 
 1. Führen Sie auf der Seite **Quelldatenspeicher** die folgenden Schritte aus:
 
-    a. Klicken Sie auf **+ Neue Verbindung erstellen**, um eine Verbindung hinzuzufügen.
+   a. Wählen Sie **+ Neue Verbindung erstellen** aus, um eine Verbindung hinzuzufügen.
 
-    b. Wählen Sie im Katalog **Azure Blob Storage** aus, und klicken Sie dann auf **Fortsetzen**.
+   b. Wählen Sie im Katalog **Azure Blob Storage** aus, und klicken Sie dann auf **Fortsetzen**.
 
-    c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) Ihr Azure-Abonnement und anschließend in der Liste **Speicherkontoname** Ihr Speicherkonto aus. Testen Sie die Verbindung, und wählen Sie **Fertig stellen** aus.
+   c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) Ihr Azure-Abonnement und anschließend in der Liste **Speicherkontoname** Ihr Speicherkonto aus. Testen Sie die Verbindung, und wählen Sie **Fertig stellen** aus.
 
-    d. Wählen Sie den neu erstellten verknüpften Dienst als Quelle aus, und klicken Sie auf **Weiter**.
+   d. Wählen Sie den neu erstellten verknüpften Dienst als Quelle und dann **Weiter** aus.
 
-    ![Auswählen des verknüpften Quelldiensts](./media/tutorial-copy-data-tool/select-source-linked-service.png)
+   ![Auswählen des verknüpften Quelldiensts](./media/tutorial-copy-data-tool/select-source-linked-service.png)
 
 1. Führen Sie auf der Seite **Choose the input file or folder** (Eingabedatei oder -ordner auswählen) die folgenden Schritte aus:
 
-    a. Klicken Sie auf **Durchsuchen**, um zum Ordner **adfv2tutorial/input** zu navigieren, wählen Sie die Datei **inputEmp.txt** aus, und klicken Sie dann auf **Auswählen**.
+   a. Wählen Sie **Durchsuchen** aus, um zum Ordner **adfv2tutorial/input** zu navigieren, und wählen Sie die Datei **inputEmp.txt** und dann **Auswählen** aus.
 
-    b. Klicken Sie auf **Weiter**, um mit dem nächsten Schritt fortzufahren.
+   b. Wählen Sie **Weiter** aus, um mit dem nächsten Schritt fortzufahren.
 
 1. Aktivieren Sie auf der Seite **File format settings** (Dateiformateinstellungen) das Kontrollkästchen *Erste Zeile als Header verwenden*. Wie Sie sehen, erkennt das Tool die Spalten- und Zeilentrennzeichen automatisch. Wählen Sie **Weiter** aus. Auf dieser Seite können Sie außerdem eine Vorschau der Daten und das Schema der Eingabedaten anzeigen.
 
-    ![Dateiformateinstellungen](./media/tutorial-copy-data-tool/file-format-settings-page.png)
+   ![Dateiformateinstellungen](./media/tutorial-copy-data-tool/file-format-settings-page.png)
+
 1. Führen Sie auf der Seite **Zieldatenspeicher** die folgenden Schritte aus:
 
-    a. Klicken Sie auf **+ Neue Verbindung erstellen**, um eine Verbindung hinzuzufügen.
+   a. Wählen Sie **+ Neue Verbindung erstellen** aus, um eine Verbindung hinzuzufügen.
 
-    b. Wählen Sie im Katalog **Azure SQL-Datenbank** und dann **Weiter** aus.
+   b. Wählen Sie im Katalog **Azure SQL-Datenbank** und dann **Weiter** aus.
 
-    c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Wählen Sie anschließend **Erstellen** aus.
+   c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Wählen Sie anschließend **Erstellen** aus.
 
-    ![Konfigurieren von Azure SQL-Datenbank](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
+      ![Konfigurieren von Azure SQL-Datenbank](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
-    d. Wählen Sie den neu erstellten verknüpften Dienst als Senke aus, und klicken Sie auf **Weiter**.
+   d. Wählen Sie den neu erstellten verknüpften Dienst als Senke und anschließend **Weiter** aus.
 
 1. Wählen Sie auf der Seite **Tabellenmapping** die Tabelle **[dbo].[emp]** aus, und klicken Sie dann auf **Weiter**.
 
 1. Auf der Seite **Spaltenzuordnung** sehen Sie, dass die zweite und dritte Spalte in der Eingabedatei den Spalten **FirstName** und **LastName** der Tabelle **emp** zugeordnet werden. Passen Sie die Zuordnung an, um sicherzustellen, dass sie keine Fehler enthält, und wählen Sie anschließend **Weiter** aus.
 
-    ![Seite „Spaltenzuordnung“](./media/tutorial-copy-data-tool/column-mapping.png)
+   ![Seite „Spaltenzuordnung“](./media/tutorial-copy-data-tool/column-mapping.png)
 
 1. Klicken Sie auf der Seite **Einstellungen** auf **Weiter**.
 
@@ -156,20 +167,21 @@ Bereiten Sie Ihre Blob Storage-Instanz und Ihre SQL-Datenbank wie folgt für da
 
 1. Klicken Sie auf der Seite **Bereitstellung** auf **Überwachen**, um die Pipeline (Task) zu überwachen.
 
-    ![Überwachen der Pipeline](./media/tutorial-copy-data-tool/monitor-pipeline.png)
-    
-1. Wählen Sie auf der Seite „Pipelineausführungen“ die Option **Aktualisieren** aus, um die Liste zu aktualisieren. Klicken Sie auf den Link unter **PIPELINENAME**, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen. 
-    ![Pipelineausführung](./media/tutorial-copy-data-tool/pipeline-run.png)
+   ![Überwachen der Pipeline](./media/tutorial-copy-data-tool/monitor-pipeline.png)
+
+1. Wählen Sie auf der Seite „Pipelineausführungen“ die Option **Aktualisieren** aus, um die Liste zu aktualisieren. Wählen Sie den Link unter **PIPELINENAME** aus, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen. 
+
+   ![Ausführen der Pipeline](./media/tutorial-copy-data-tool/pipeline-run.png)
 
 1. Wählen Sie auf der Seite „Aktivitätsausführungen“ unter der Spalte **AKTIVITÄTSNAME** den Link **Details** (Brillensymbol) aus, um weitere Details zum Kopiervorgang anzuzeigen. Wählen Sie im Breadcrumb-Menü den Link **Alle Pipelineausführungen** aus, um zur Ansicht „Pipelineausführungen“ zurückzukehren. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**.
 
-    ![Überwachung der Aktivitätsausführungen](./media/tutorial-copy-data-tool/activity-monitoring.png)
+   ![Überwachung der Aktivitätsausführungen](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
 1. Vergewissern Sie sich, dass die Daten in die Tabelle **dbo.emp** in Ihrer SQL-Datenbank eingefügt werden.
 
 1. Klicken Sie im linken Bereich auf die Registerkarte **Autor**, um in den Bearbeitungsmodus zu wechseln. Sie können die vom Tool erstellten verknüpften Dienste, Datasets und Pipelines mit dem Editor aktualisieren. Ausführliche Informationen zum Bearbeiten dieser Entitäten über die Data Factory-Benutzeroberfläche finden Sie in der [Azure-Portal-Version dieses Tutorials](tutorial-copy-data-portal.md).
 
-    ![Auswählen der Registerkarte „Autor“](./media/tutorial-copy-data-tool/author-tab.png)
+   ![Auswählen der Registerkarte „Autor“](./media/tutorial-copy-data-tool/author-tab.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Die Pipeline in diesem Beispiel kopiert Daten aus Blob Storage in eine SQL-Datenbank. Sie haben Folgendes gelernt:

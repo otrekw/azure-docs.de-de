@@ -10,16 +10,29 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e42096fc32a504ae329d3b179004b6a123de4469
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487099"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365636"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
+
+## <a name="april-2021"></a>April 2021
+
+### <a name="computer-vision-v32-ga"></a>Allgemeine Verfügbarkeit von Maschinelles Sehen v3.2
+
+Die Maschinelles Sehen-API v3.2 ist jetzt mit den folgenden Updates allgemein verfügbar:
+* Verbessertes Bildmarkierungsmodell: Analysiert visuelle Inhalte und generiert relevante Tags basierend auf im Bild angezeigten Objekten, Aktionen und Inhalten. Dieses Modell ist über die [Bildmarkierungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) verfügbar. Weitere Informationen finden Sie in der [Schrittanleitung](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) und in der [Übersicht](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) zur Bildanalyse.
+* Aktualisiertes Inhaltsmoderationsmodell: Erkennt nicht jugendfreie Inhalte und stellt Flags zum Filtern von Bildern bereit, die nicht jugendfreie und freizügige visuelle Inhalte enthalten. Dieses Modell ist über die [Analyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) verfügbar. Weitere Informationen finden Sie in der [Schrittanleitung](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) und in der [Übersicht](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) zur Bildanalyse.
+* [OCR (Lesen) für 73 Sprachen verfügbar](./language-support.md#optical-character-recognition-ocr), einschließlich vereinfachtes und traditionelles Chinesisch, Japanisch, Koreanisch und lateinische Sprachen
+* [OCR (Lesen)](./overview-ocr.md) auch als [Container ohne Distribution](./computer-vision-how-to-install-containers.md?tabs=version-3-2) für die lokale Bereitstellung verfügbar
+
+> [!div class="nextstepaction"]
+> [Allgemeine Verfügbarkeit von Maschinelles Sehen v3.2](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
 
 ## <a name="march-2021"></a>März 2021
 
@@ -40,7 +53,7 @@ Die Lese-API v3.2 (Public Preview) für maschinelles Sehen ist als Clouddienst 
 * Extrahieren von Text nur für ausgewählte Seiten bei mehrseitigen Dokumenten
 * Verfügbar als [Container ohne Distribution](./computer-vision-how-to-install-containers.md?tabs=version-3-2) für die lokale Bereitstellung
 
-[Hier](concept-recognizing-text.md) finden Sie weitere Informationen zur Lese-API.
+Weitere Informationen finden Sie in der [Lese-API Schrittanleitung](Vision-API-How-to-Topics/call-read-api.md).
 
 > [!div class="nextstepaction"]
 > [Verwenden der Lese-API v3.2 (Public Preview)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
@@ -59,7 +72,7 @@ Für den [Container für die räumliche Analyse](spatial-analysis-container.md) 
 * **Breaking Change:** Das Ereignis *personZoneEvent* wurde in *personZoneEnterExitEvent* umbenannt. Dieses Ereignis wird durch den Vorgang *personcrossingpolygon* ausgelöst, wenn eine Person die Zone betritt oder verlässt. Außerdem werden Richtungsinformationen in Form der nummerierten Seite der durchquerten Zone bereitgestellt.
 * Die Video-URL kann in allen Vorgängen als „Private Parameter/obfuscated“ (Privater Parameter/verschleiert) bereitgestellt werden. Die Verschleierung ist jetzt optional und funktioniert nur, wenn `KEY` und `IV` als Umgebungsvariablen bereitgestellt werden.
 * Die Kalibrierung ist für alle Vorgänge standardmäßig aktiviert. Legen Sie `do_calibration: false` fest, um sie zu deaktivieren.
-* Unterstützung der automatischen Neukalibrierung über den Parameter `enable_recalibration` wurde hinzugefügt (standardmäßig deaktiviert). Ausführliche Informationen finden Sie unter [Vorgänge der räumlichen Analyse](./spatial-analysis-operations.md).
+* Unterstützung der automatischen Neukalibrierung über den `enable_recalibration`Parameter wurde hinzugefügt (standardmäßig deaktiviert). Ausführliche Informationen finden Sie unter [Vorgänge der räumlichen Analyse](./spatial-analysis-operations.md)
 * Kamerakalibrierungsparameter für `DETECTOR_NODE_CONFIG`. Ausführliche Informationen finden Sie unter [Vorgänge der räumlichen Analyse](./spatial-analysis-operations.md).
 
 
@@ -71,7 +84,7 @@ Die Maschinelles Sehen-API im Status „Allgemeine Verfügbarkeit“ (GA) wurde 
 
 ## <a name="september-2020"></a>September 2020
 
-### <a name="spatial-analysis-container-preview"></a>Container für räumliche Analyse (Vorschauversion)
+### <a name="spatial-analysis-container-preview"></a>Container für räumliche Analyse Vorschau
 
 Der [Container für räumliche Analyse](spatial-analysis-container.md) befindet sich nun in der Vorschauphase. Mithilfe des Features der räumlichen Analyse für maschinelles Sehen können Sie in Echtzeit gestreamte Videodaten analysieren, um zu ermitteln, wie Personen räumlich zueinander in Beziehung stehen und wie sie sich durch physische Umgebungen bewegen. Bei der räumlichen Analyse handelt es sich um einen lokal verwendbaren Docker-Container. 
 
@@ -83,7 +96,7 @@ Der Lese-API v3.1 (Public Preview) für maschinelles Sehen wurden folgende Funk
 
 * Diese Vorschauversion der Lese-API unterstützt die Sprachen Englisch, Niederländisch, Französisch, Deutsch, Italienisch, Japanisch, Portugiesisch, Chinesisch (vereinfacht) und Spanisch.
 
-Weitere Informationen finden Sie in der [Übersicht zur Lese-API](concept-recognizing-text.md).
+Weitere Informationen finden Sie in der [Lese-API Schrittanleitung](Vision-API-How-to-Topics/call-read-api.md).
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zur Lese-API v3.1 (Public Preview 2)](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
@@ -95,18 +108,20 @@ In der Lese-API v3.1 (Public Preview) für maschinelles Sehen wurde Unterstütz
 
 * Diese Vorschauversion der Lese-API unterstützt die Sprachen Englisch, Niederländisch, Französisch, Deutsch, Italienisch, Portugiesisch, Chinesisch (vereinfacht) und Spanisch.
 
-Weitere Informationen finden Sie in der [Übersicht zur Lese-API](concept-recognizing-text.md).
+Weitere Informationen finden Sie in der [Lese-API Schrittanleitung](Vision-API-How-to-Topics/call-read-api.md).
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zur Lese-API v3.1 (Public Preview 1)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>Mai 2020
-Maschinelles Sehen-API v3.0 ist nun allgemein verfügbar und beinhaltet Aktualisierungen der [Lese-API](concept-recognizing-text.md):
+Maschinelles Sehen-API v3.0 ist nun allgemein verfügbar und beinhaltet Aktualisierungen der Lese-API:
 
 * Unterstützung für Englisch, Niederländisch, Französisch, Deutsch, Italienisch, Portugiesisch und Spanisch
 * Höhere Genauigkeit
 * Konfidenzbewertung für jedes extrahierte Wort
 * Neues Ausgabeformat
+
+Weitere Informationen finden Sie in der [OCR Übersicht](overview-ocr.md).
 
 ## <a name="march-2020"></a>März 2020
 

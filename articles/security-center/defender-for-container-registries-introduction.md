@@ -3,16 +3,16 @@ title: 'Azure Defender für Containerregistrierungen: Vorteile und Features'
 description: Enthält eine Beschreibung der Vorteile und Features von Azure Defender für Containerregistrierungen.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4840fc27133b1d92cb8aaad80921f9d21901569d
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176636"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010691"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
@@ -47,7 +47,7 @@ Für das Scannen von Images gibt es drei Trigger:
 
 - **On push** (Beim Pushen): Immer, wenn ein Image an Ihre Registrierung gepusht wird, überprüft Security Center es automatisch. Zum Auslösen der Überprüfung eines Images müssen Sie es also an Ihr Repository pushen.
 
-- **Recently pulled** (Vor Kurzem gepullt): Da jeden Tag neue Sicherheitsrisiken ermittelt werden, werden mit **Azure Defender für Containerregistrierungen** auch alle Images gescannt, die innerhalb der letzten 30 Tage gepullt wurden. Für das erneute Scannen fallen keine zusätzlichen Kosten an. Wie oben erwähnt, erfolgt die Berechnung nur einmal pro Image.
+- **Recently pulled** (Vor Kurzem gepullt): Da jeden Tag neue Sicherheitsrisiken ermittelt werden, werden mit **Azure Defender für Containerregistrierungen** wöchentlich auch alle Images gescannt, die innerhalb der letzten 30 Tage gepullt wurden. Für dieses erneute Scannen fallen keine zusätzlichen Kosten an. Wie oben erwähnt, erfolgt die Berechnung nur einmal pro Image.
 
 - **On import** (Beim Importieren): Azure Container Registry verfügt über Importtools, mit denen Images aus Docker Hub, Microsoft Container Registry oder einer anderen Azure-Containerregistrierung in Ihre Registrierung eingefügt werden können. Mit **Azure Defender für Containerregistrierungen** werden alle unterstützten Images gescannt, die Sie importieren. Weitere Informationen finden Sie unter [Importieren von Containerimages in eine Containerregistrierung](../container-registry/container-registry-import-images.md).
  

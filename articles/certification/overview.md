@@ -1,20 +1,20 @@
 ---
 title: Übersicht über das Azure Certified Device-Programm
-description: Eine Übersicht über das Azure Certified Device-Programm für unsere Partner und Kunden
-author: nikuntjo
+description: Eine Übersicht über das Azure Certified Device-Programm für unsere Partner und Kunden Verwenden Sie diese Ressourcen, um den Gerätezertifizierungsprozess zu starten. Hier erfahren Sie, wie Sie Ihr Gerät zertifizieren, und erhalten u. a. Informationen zu den IoT-Geräteanforderungen und zur Veröffentlichung Ihres Geräts.
+author: nkuntjoro
 ms.author: nikuntjo
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: 8f264c233a0e7cd14469a3931153decfe886061a
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: b9d599542a53e3d809748b72028512c66409b4ec
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969589"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307706"
 ---
-# <a name="what-is-azure-certified-device"></a>Was ist Azure Certified Device?
+# <a name="what-is-the-azure-certified-device-program"></a>Was ist das Azure Certified Device-Programm?
 
 Vielen Dank für Ihr Interesse am Azure Certified Device-Programm. Mit diesem Programm können Sie IoT-Geräte, die für die Verwendung mit Azure entwickelt wurden, mühelos differenzieren, bewerben und finden. Ob intelligente Kameras oder vernetzte Sensoren: Dieses verbesserte Zertifizierungsprogramm für IoT-Geräte ermöglicht es Geräteentwicklern, die Sichtbarkeit ihrer Produkte zu verbessern, und hilft Kunden dabei, die Lösungsentwicklung zu beschleunigen.
 
@@ -22,11 +22,11 @@ Vielen Dank für Ihr Interesse am Azure Certified Device-Programm. Mit diesem 
 
 Das Azure Certified Device-Programm gewährleistet, dass Kundenlösungen reibungslos in Azure funktionieren. Im Rahmen des Programms werden Tools, Dienste und ein Katalog verwendet, um Branchenwissen innerhalb des IoT-Ökosystems mit unserer Entwicklercommunity zu teilen, wovon sowohl Entwickler als auch Kunden profitieren.
 
-Das Programm basiert auf drei Säulen:
+Der gesamte Gerätezertifizierungsprozess basiert auf den folgenden drei Säulen:
 
 - **Kundenvertrauen:** Kunden können bedenkenlos Geräte mit Azure-Zertifizierung kaufen und sich auf das Versprechen von Microsoft verlassen.
 
-- **Die perfekten Geräte für den jeweiligen Kunden:** Geräteentwickler können sich durch eine Zertifizierung, die ihre individuellen Fähigkeiten herausstellt, von anderen Entwicklern abheben, und Kunden können mühelos die Produkte finden, die ihre Anforderungen erfüllen.
+- **Die perfekten Geräte für den jeweiligen Kunden:** Geräteentwickler können sich durch eine Zertifizierung, die ihre individuellen Fähigkeiten herausstellt, von anderen Entwicklern abheben, und Kunden können mühelos die qualifizierten IoT-Geräte finden, die ihre Anforderungen erfüllen.
 
 - **Werbung für zertifizierte Geräte:** Geräteentwickler profitieren von besserer Sichtbarkeit und mehr Kundenkontakten sowie von der Verwendung der Marke „Azure Certified Device“ von Microsoft.
 
@@ -34,12 +34,12 @@ Das Programm basiert auf drei Säulen:
 
 Das Azure Certified Device-Programm hat zwei verschiedene Zielgruppen:
 
-1. **Geräteentwickler:** Können mühelos ihre IoT-Gerätefunktionen hervorheben und erhalten Zugang zu einer weltweiten Zielgruppe, die auf der Suche nach einem verlässlichen Angebot von Geräten ist, die für die Verwendung mit Azure entwickelt wurden. Darüber hinaus können sie den Azure Certified Device-Katalog nutzen, um die Produktsichtbarkeit zu erhöhen und Kunden zu erreichen, indem sie ihr Gerät zertifizieren.
-1.  **Lösungsentwickler:** Können zuverlässig IoT-Geräte finden und erwerben, die für die Verwendung mit Azure entwickelt wurden, und sich darauf verlassen, dass sie über bestimmte Funktionen verfügen. Darüber hinaus können sie im [Azure Certified Device-Katalog](https://devicecatalog.azure.com/) mühelos nach dem passenden zertifizierten Gerät für ihre IoT-Lösung suchen und es auswählen.
+1. **Geräteentwickler:** Entwickeln Sie IoT-Geräte? Heben Sie mühelos Ihre IoT-Gerätefunktionen hervor, und erhalten Sie Zugang zu einer weltweiten Zielgruppe, die auf der Suche nach einem verlässlichen Angebot von Geräten ist, die für die Verwendung mit Azure entwickelt wurden. Darüber hinaus können Sie den Azure Certified Device-Katalog nutzen, um die Produktsichtbarkeit zu erhöhen und Kunden zu erreichen, indem Sie Ihr Gerät zertifizieren und damit demonstrieren, dass es bestimmte IoT-Geräteanforderungen erfüllt.
+1.  **Lösungsentwickler:** Fragen Sie sich, was IoT-qualifizierte Geräte sind? Sie können zuverlässig IoT-Geräte finden und erwerben, die für die Verwendung mit Azure entwickelt wurden, und sich darauf verlassen, dass sie bestimmte IoT-Anforderungen erfüllen. Darüber hinaus können sie im [Azure Certified Device-Katalog](https://devicecatalog.azure.com/) mühelos nach dem passenden zertifizierten Gerät für ihre IoT-Lösung suchen und es auswählen.
 
-## <a name="our-certification-programs"></a>Unsere Zertifizierungsprogramme
+## <a name="our-certification-programs-and-iot-device-requirements"></a>Unsere Zertifizierungsprogramme und IoT-Geräteanforderungen
 
-Mittlerweile stehen vier verschiedene Zertifizierungen zur Verfügung. Bei den einzelnen Zertifizierungen steht jeweils ein anderer Kundennutzen im Fokus. Je nach Gerätetyp und Zielgruppe können sie wählen, welche Zertifizierungen Ihre Anforderungen am besten erfüllen. Wählen Sie die Titel der einzelnen Programme aus, um mehr über die Programmanforderungen zu erfahren.
+Mittlerweile stehen vier verschiedene Zertifizierungen zur Verfügung. Bei den einzelnen Zertifizierungen steht jeweils ein anderer Kundennutzen im Fokus. Je nach Gerätetyp und Zielgruppe können sie wählen, welche Zertifizierungen Ihre Anforderungen am besten erfüllen. Wählen Sie die Titel der einzelnen Programme aus, um mehr über das Programm und die IoT-Anforderungen zu erfahren.
 
 | Zertifizierungsprogramm         |  Übersicht                      |
 ------------------------------|-------------------------------------------------|
@@ -50,21 +50,22 @@ Mittlerweile stehen vier verschiedene Zertifizierungen zur Verfügung. Bei den e
 
 ## <a name="how-to-certify-your-device"></a>Zertifizieren Ihres Geräts
 
-Die Zertifizierung eines Geräts umfasst im Wesentlichen vier Schritte im [Azure Certified Device-Portal](https://certify.azure.com):
+Die Zertifizierung eines Geräts umfasst verschiedene Hauptschritte im [Azure Certified Device-Portal](https://certify.azure.com):
 
-1. Erstellen Ihres Projekts
-1. Angeben von Informationen zu Hardwarefunktionen
-1. Überprüfen der Gerätefunktionalität
-1. Übermitteln und Abschließen des Überprüfungsprozesses
+1. Wählen Sie basierend auf den IoT-Geräteanforderungen die richtige Zertifizierung für Ihr Gerät aus.
+1. Erstellen Sie Ihr Projekt im [Azure Certified Device-Portal](https://certify.azure.com).
+1. Fügen Sie Gerätedetails einschließlich Hardwarefunktionsinformationen hinzu, um den Gerätezertifizierungsprozess zu starten.
+1. Überprüfen Sie die Gerätefunktionalität.
+1. Übermitteln Sie die Angaben, und schließen Sie die Überprüfung ab.
 
-Nachdem Sie Ihr Gerät zertifiziert haben, können Sie optional zwei der folgenden Aktivitäten durchführen: 
+Nachdem Sie Ihr Gerät zertifiziert haben, können Sie optional zwei der folgenden Aktivitäten durchführen:
 
 1. Veröffentlichen im Azure Certified Device-Katalog (optional)
 1. Aktualisieren Ihres Projekts nach der Genehmigung/Veröffentlichung (optional)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sind Sie bereit für den Einstieg in die Zertifizierung? Die folgenden Ressourcen enthalten weitere Informationen zur Zertifizierung Ihres Geräts.
+Sind Sie bereit für den Einstieg in die Zertifizierung? Sehen Sie sich die folgenden Ressourcen an, um den Gerätezertifizierungsprozess zu starten.
 
 - [Tutorial: Auswählen Ihres Zertifizierungsprogramms](tutorial-00-selecting-your-certification.md)
 - Sollten Sie weitere Fragen oder Feedback haben, wenden Sie sich an das [Azure Certified Device-Team](mailto:iotcert@microsoft.com).

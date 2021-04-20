@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: f00a5efb01ea59b04495747ffd93d9f15ad5f76e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed7a95ea83cacc0eaccfa23cd87403fb9be615ee
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935531"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210668"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Tutorial: Machen Sie sich mit den ersten Schritten mit Azure Machine Learning in Jupyter Notebooks vertraut.
 
@@ -27,7 +27,13 @@ In diesem Tutorial führen Sie Folgendes durch:
 > [!div class="checklist"]
 > * Erstellen eines [Azure Machine Learning-Arbeitsbereichs](concept-workspace.md) für weitere Jupyter Notebook-Tutorials
 > * Klonen Sie das Tutorial-Notebook in Ihrem Ordner im Arbeitsbereich.
-> * Erstellen einer cloudbasierten Compute-Instanz, in der das Azure Machine Learning Python SDK installiert und vorkonfiguriert ist
+> * Erstellen Sie eine cloudbasierte Compute-Instanz, die eine Umgebung bereitstellt, in der das Azure Machine Learning Python SDK bereits installiert und für Sie konfiguriert ist.
+
+Dieses Tutorial bereitet Sie auf die Ausführung von Jupyter-Notebooks in einer Computeressource in Ihrem Arbeitsbereich vor.  
+
+Eine weitere hervorragende Möglichkeit für den Einstieg in Azure Machine Learning ist das Übermitteln von Batchaufträgen.  Informationen hierzu finden Sie unter [Tutorial: Erste Schritte mit Azure Machine Learning in Ihrer Entwicklungsumgebung](tutorial-1st-experiment-sdk-setup-local.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a93ce1c4274f63a863880e932b247726639e5cd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3bc9378539e6a7f98e34d0a149848d0e892c224
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612116"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306091"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Tutorial: Integrieren einer einzelnen Gesamtstruktur in einen einzelnen Azure AD-Mandanten
 
@@ -88,7 +88,7 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent von Azu
 ![Azure portal](media/how-to-install/install-6.png)</br>
 
 3.  Klicken Sie auf dem Bildschirm **Azure AD Connect cloud sync** (Azure AD Connect-Cloudsynchronisierung) auf **Alle Agents überprüfen**.
-![Azure AD-Bereitstellung](media/how-to-install/install-7.png)</br>
+![Azure AD-Bereitstellung](media/how-to-install/install-7.png)</br>
  
 4. Auf dem Bildschirm **On-premises provisioning agents** (Lokale Bereitstellungs-Agents) werden die von Ihnen installierten Agents angezeigt.  Vergewissern Sie sich, dass der betreffende Agent aufgeführt wird und als **Aktiviert** markiert ist.
 ![Bereitstellungs-Agents](media/how-to-install/verify-1.png)</br>
@@ -117,21 +117,21 @@ Führen Sie die folgenden Schritte aus, um sicherzustellen, dass der Agent ausge
 ![Screenshot: Bildschirm „Azure AD Connect cloud sync“ (Azure AD Connect-Cloudsynchronisierung), der den Status „Fehlerfrei“ anzeigt](media/how-to-configure/manage-4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Überprüfen, ob Benutzer erstellt wurden und die Synchronisierung erfolgt
-Überprüfen Sie als Nächstes, ob die Benutzer, die in unserem lokalen Verzeichnis enthalten waren, synchronisiert wurden und jetzt in unserem Azure AD-Mandanten vorhanden sind.  Seien Sie sich im Klaren darüber, dass dies einige Stunden dauern kann.  Gehen Sie wie folgt vor, um zu überprüfen, ob Benutzer synchronisiert werden:
+Überprüfen Sie als Nächstes, ob die Benutzer, die in Ihrem lokalen Verzeichnis enthalten waren, synchronisiert wurden und jetzt in Ihrem Azure AD-Mandanten vorhanden sind.  Seien Sie sich im Klaren darüber, dass dies einige Stunden dauern kann.  Gehen Sie wie folgt vor, um zu überprüfen, ob Benutzer synchronisiert werden:
 
 
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit einem Konto an, das über ein Azure-Abonnement verfügt.
 2. Wählen Sie im linken Bereich **Azure Active Directory** aus.
 3. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
-4. Überprüfen Sie, ob die neuen Benutzer in unserem Mandanten angezeigt werden.</br>
+4. Überprüfen Sie, ob die neuen Benutzer in Ihrem Mandanten angezeigt werden.</br>
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Testanmeldung mit einem unserer Benutzer
+## <a name="test-signing-in-with-one-of-your-users"></a>Testanmeldung mit einem Ihrer Benutzer
 
 1. Rufen Sie [https://myapps.microsoft.com](https://myapps.microsoft.com) auf.
-2. Melden Sie sich mit einem Benutzerkonto an, das in unserem neuen Mandanten erstellt wurde.  Sie müssen sich mit folgendem Format anmelden: (user@domain.onmicrosoft.com). Verwenden Sie dasselbe Kennwort, mit dem sich der Benutzer lokal anmeldet.</br>
+2. Melden Sie sich mit einem Benutzerkonto an, das in Ihrem Mandanten erstellt wurde.  Sie müssen sich mit folgendem Format anmelden: (user@domain.onmicrosoft.com). Verwenden Sie dasselbe Kennwort, mit dem sich der Benutzer lokal anmeldet.</br>
    ![Überprüfen](media/tutorial-single-forest/verify-1.png)</br>
 
-Sie haben nun erfolgreich eine Hybrididentitätsumgebung eingerichtet, die Sie zum Testen verwenden können, und um sich mit den Möglichkeiten von Azure vertraut zu machen.
+Sie haben nun mithilfe der Azure AD Connect-Cloudsynchronisierung erfolgreich eine Hybrididentitätsumgebung konfiguriert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte 
