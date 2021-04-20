@@ -2,24 +2,24 @@
 title: 'Erneutes Generieren einer URL und Abfragezeichenfolge mit Azure Application Gateway: Azure-Portal'
 description: Erfahren Sie, wie Sie mit dem Azure-Portal eine Azure Application Gateway-Instanz für das erneute Generieren einer URL und Abfragezeichenfolge konfigurieren.
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 7/16/2020
-ms.author: surmb
-ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/05/2021
+ms.author: azhussai
+ms.openlocfilehash: b8ddc5e57b9ce56d6bce7e220bc840ba0fa43ae2
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92215772"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384756"
 ---
-# <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Erneutes Generieren einer URL mit Azure Application Gateway: Azure-Portal (Vorschau)
+# <a name="rewrite-url-with-azure-application-gateway---azure-portal"></a>Erneutes Generieren einer URL mit Azure Application Gateway - Azure-Portal
 
 In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal eine [Application Gateway v2-SKU](application-gateway-autoscaling-zone-redundant.md)-Instanz für das erneute Generieren einer URL konfigurieren.
 
 >[!NOTE]
-> Das Feature zum Umschreiben einer URL befindet sich in der Vorschauphase und ist nur für die Application Gateway-SKUs Standard_v2 und WAF_v2 verfügbar. Von der Verwendung dieser Option in Produktionsumgebungen wird abgeraten. Weitere Informationen zu Vorschauversionen finden Sie unter [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Das Feature zum Umschreiben einer URL ist nur für die Application Gateway-SKUs Standard_v2 und WAF_v2 verfügbar. Wenn die URL-Umschreibung auf einem WAF-fähigen Gateway konfiguriert wird, findet die WAF-Auswertung für die umgeschriebenen Anforderungsheader und die URL statt. [Weitere Informationen](rewrite-http-headers-url.md#using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4e709719d56aacacf61e247a5dbe215f766a891a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 257ba16cf015705b8f6da264d9c25f28cef2ebb1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607950"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443439"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Hinzufügen von Benutzerattributen und Anpassen der Benutzereingabe in Azure Active Directory B2C
 
@@ -60,7 +60,7 @@ Die Anwendungsansprüche sind Werte, die an die Anwendung zurückgegeben werden.
 1. Wählen Sie **Seitenlayouts** aus.
 1. Wählen Sie **Registrierungsseite für lokales Konto** aus.
 1. Wählen Sie unter **Benutzerattribute** die Option **City** aus.
-    1. Wählen Sie in der Dropdownliste **Benutzereingabetyp** die Option **DropdownSingleSelect** aus.
+    1. Wählen Sie in der Dropdownliste **Benutzereingabetyp** die Option **DropdownSingleSelect** aus. Optional: Verwenden Sie die Schaltflächen "nach oben/nach unten", um den Text auf der Anmeldeseite nach einer bestimmten Reihenfolge anzuordnen.
     1. Wählen Sie in der Dropdownliste **Optional** die Option **Nein** aus.
 1. Wählen Sie **Speichern** aus. 
 

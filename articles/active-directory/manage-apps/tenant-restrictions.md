@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/23/2021
+ms.date: 4/6/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb4e876b3fc679dd275f38168b99b9a3a718be58
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589326"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552670"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -97,6 +97,8 @@ In diesem Abschnitt wird die Erfahrung für Endbenutzer und Administratoren erl�
 
 Ein Beispielbenutzer im Netzwerk von Contoso versucht, online auf die Fabrikam-Instanz einer freigegebenen SaaS-Anwendung wie Outlook zuzugreifen. Wenn Fabrikam ein nicht zugelassener Mandant für die Contoso-Instanz ist, wird dem Benutzer eine Meldung zur Zugriffsverweigerung angezeigt. Diese besagt, dass Sie versuchen, auf eine Ressource zuzugreifen, die zu einer Organisation gehört, die von Ihrer IT-Abteilung nicht genehmigt wurde.
 
+![Fehlermeldung zur Einschränkung von Mandanten vom April 2021](./media/tenant-restrictions/error-message.png)
+
 ### <a name="admin-experience"></a>Administratorerfahrung
 
 Die Konfiguration der Mandanteneinschränkungen erfolgt zwar in der Proxyinfrastruktur des Unternehmens, Administratoren können jedoch über das Azure-Portal direkt auf die Mandanteneinschränkungsberichte zugreifen. So zeigen Sie die Berichte an
@@ -113,14 +115,14 @@ Der Bericht enthält möglicherweise eingeschränkte Informationen (z. B. die Z
 
 Genau wie bei anderen Berichten im Azure-Portal können Sie auch hier mithilfe von Filtern den gewünschten Umfang des Berichts angeben. Der Bericht kann nach einem bestimmten Zeitintervall, einem Benutzer, einer Anwendung, einem Client oder einem Status gefiltert werden. Wenn Sie die Schaltfläche **Spalten** auswählen, können Sie Daten mit einer beliebigen Kombination der folgenden Felder anzeigen:
 
-- **Benutzer**: In diesem Feld können personenbezogene Informationen entfernt werden, wobei es auf `00000000-0000-0000-0000-000000000000` festgelegt wird. 
+- **Benutzer**: In diesem Feld können personenbezogene Informationen entfernt werden, dieses wird auf `00000000-0000-0000-0000-000000000000` festgelegt. 
 - **Anwendung**
 - **Status**
 - **Date**
 - **Datum (UTC)** (UTC bedeutet Coordinated Universal Time)
 - **IP-Adresse**
 - **Client**
-- **Benutzername**: In diesem Feld können personenbezogene Informationen entfernt werden, wobei es auf `{PII Removed}@domain.com` festgelegt wird.
+- **Benutzername** - In diesem Feld können personenbezogene Informationen entfernt werden, dieses wird auf festgelegt`{PII Removed}@domain.com`
 - **Location**
 - **Zielmandanten-ID**
 
@@ -207,7 +209,7 @@ Einige Organisationen versuchen, das Problem zu beheben, indem sie `login.live.c
 
 ### <a name="configuration-for-consumer-apps"></a>Konfiguration für Consumer-Apps
 
-Während der `Restrict-Access-To-Tenants`-Header als Zulassungsliste fungiert, fungiert die Blockierung des Microsoft-Kontos (MSA) als Ablehnungssignal, das der Microsoft-Kontoplattform mitteilt, die Anmeldung von Benutzern bei Consumeranwendungen nicht zuzulassen. Um dieses Signal zu senden, wird der `sec-Restrict-Tenant-Access-Policy`-Header mithilfe desselben Unternehmensproxys oder derselben Firewall wie [oben](#proxy-configuration-and-requirements) in den Datenverkehr zu `login.live.com` eingefügt. Der Wert des Headers muss `restrict-msa` sein. Wenn der Header vorhanden ist und eine Consumer-App versucht, einen Benutzer direkt anzumelden, wird diese Anmeldung blockiert.
+Während der `Restrict-Access-To-Tenants`Header als Positivliste fungiert, weist die Blockierung des Microsoft-Kontos (MSA) die Microsoft-Kontoplattform an, die Anmeldung von Benutzern bei Consumeranwendungen zu verweigern. Um dieses Signal zu senden, wird der `sec-Restrict-Tenant-Access-Policy`-Header mithilfe desselben Unternehmensproxys oder derselben Firewall wie [oben](#proxy-configuration-and-requirements) in den Datenverkehr zu `login.live.com` eingefügt. Der Wert des Headers muss `restrict-msa` sein. Wenn der Header vorhanden ist und eine Consumer-App versucht, einen Benutzer direkt anzumelden, wird diese Anmeldung blockiert.
 
 Derzeit wird die Authentifizierung bei Consumeranwendungen nicht in den [Administratorprotokollen](#admin-experience) angezeigt, da „login.live.com“ separat von Azure AD gehostet wird.
 

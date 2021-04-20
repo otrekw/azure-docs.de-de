@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d106021d90304a06ea7c08494d626511bb903df0
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90019528"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553038"
 ---
 # <a name="upload-files-with-iot-hub"></a>Hochladen von Dateien mit IoT Hub
 
@@ -44,7 +44,13 @@ Damit Sie die Funktion zum Hochladen von Dateien verwenden können, müssen Sie 
 Die Anleitungen zum [Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub](iot-hub-csharp-csharp-file-upload.md) bieten eine vollständige exemplarische Vorgehensweise des Dateiuploads. Diese Anleitungen zeigen, wie Sie mit dem Azure-Portal ein Speicherkonto einem IoT-Hub zuordnen.
 
 > [!NOTE]
-> Die [Azure IoT-SDKs](iot-hub-devguide-sdks.md) verarbeiten automatisch das Abrufen des SAS-URIs, das Hochladen der Datei und das Benachrichtigen von IoT Hub über einen abgeschlossenen Upload.
+> Die [Azure IoT-SDKs](iot-hub-devguide-sdks.md) verarbeiten automatisch das Abrufen des SAS-URIs (Shared Access Signature), das Hochladen der Datei und das Benachrichtigen von IoT Hub über einen abgeschlossenen Upload. Wenn eine Firewall den Zugriff auf den BLOB Storage-Endpunkt blockiert, aber den Zugriff auf den IOT Hub-Endpunkt zulässt, schlägt der Dateiupload fehl und zeigt folgenden Fehler für das IOT c#-Geräte-SDK an:
+>
+> `---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond`
+>
+> Damit das Feature zum Hochladen von Dateien funktioniert, muss das Gerät Zugriff auf den IOT Hub-Endpunkt als auch auf den BLOB Storage -Endpunkt haben.
+> 
+
 
 ## <a name="initialize-a-file-upload"></a>Initialisieren eines Dateiuploads
 IoT Hub verfügt über einen Endpunkt speziell für Geräte zum Anfordern eines SAS-URI für die Speicherung zum Hochladen einer Datei. Zum Beginnen des Dateiuploads sendet das Gerät eine POST-Anforderung mit dem folgenden JSON-Code an `{iot hub}.azure-devices.net/devices/{deviceId}/files`:

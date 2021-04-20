@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d61314dc89d341e376de7d3904568825ad3cfb04
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169282"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293871"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Grundlegendes zu Azure Cloud Services (erweiterter Support)
 
-> [!IMPORTANT]
-> Cloud Services (erweiterter Support) befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Cloud Services (erweiterter Support) ist ein neues Bereitstellungsmodell für das  [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/)-Produkt. Es basiert auf  [Azure Resource Manager](../azure-resource-manager/management/overview.md) und befindet sich derzeit in der öffentlichen Vorschauphase. Die Hauptvorteile von Cloud Services (erweiterter Support) sind die regionale Resilienz sowie die Featureparität mit Azure Cloud Services bei der Bereitstellung mit Azure Service Manager. Darüber hinaus sind einige ARM-Funktionen vorhanden, z. B. rollenbasierte Zugriffssteuerung (RBAC), Tags, Richtlinien und Unterstützung von Bereitstellungsvorlagen.  
+Clouddienste (erweiterter Support) ist ein neues Bereitstellungsmodell für [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/). Es basiert auf  [Azure Resource Manager](../azure-resource-manager/management/overview.md)und ist jetzt allgemein verfügbar. Die Hauptvorteile von Cloud Services (erweiterter Support) sind die regionale Resilienz sowie die Featureparität mit Azure Cloud Services bei der Bereitstellung mit Azure Service Manager. Darüber hinaus bietet es einige ARM-Funktionen, wie rollenbasierte Zugriffssteuerung (RBAC), Tags, Richtlinien und Unterstützung von Bereitstellungsvorlagen.  
 
 Aufgrund dieser Änderung wird das auf Azure Service Manager basierende Bereitstellungsmodell für Cloud Services in [Cloud Services (klassisch)](../cloud-services/cloud-services-choose-me.md) umbenannt. Sie haben weiterhin die Möglichkeit, Ihre Web- und Cloudanwendungen und -dienste zu entwickeln und schnell bereitzustellen. Sie können Ihre Infrastruktur für Clouddienste bedarfsabhängig skalieren und sicherstellen, dass die Leistung Ihrer Anwendungen ausreicht, während gleichzeitig die Kosten reduziert werden.  
 

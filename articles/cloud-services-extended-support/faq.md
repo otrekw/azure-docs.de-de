@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3338f7b6bd418cea2bfdbbcd40692b9342f48cfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 33bafac9247f007978fef568469d643f1a1098df
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98744008"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383585"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support)
 In diesem Artikel werden häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support) behandelt.
@@ -58,6 +58,9 @@ Die Bereitstellung von Cloud Services (erweiterter Support) unterstützt nur den
 ### <a name="do-cloud-services-extended-support-deployments-support-scaling-across-clusters-availability-zones-and-regions"></a>Unterstützen Bereitstellungen von Cloud Services (erweiterter Support) die Skalierung über Cluster, Verfügbarkeitszonen und Regionen hinweg?
 Bereitstellungen von Cloud Services (erweiterter Support) können nicht über mehrere Cluster, Verfügbarkeitszonen und Regionen hinweg skaliert werden. 
 
+### <a name="how-can-i-get-the-deployment-id-for-my-cloud-service-extended-support"></a>Wie kann ich die Bereitstellungs-ID für meinen Clouddienst erhalten (erweiterter Support)?
+Auf die Bereitstellungs-ID, die als private ID bezeichnet wird, können Sie mit der [CloudServiceInstanceView](https://docs.microsoft.com/rest/api/compute/cloudservices/getinstanceview#cloudserviceinstanceview) -API zugreifen. Sie ist auch auf dem Azure-Portal auf dem Blatt „Rollen und Instanzen“ des Clouddienstes verfügbar (erweiterter Support).
+
 ### <a name="are-there-any-pricing-differences-between-cloud-services-classic-and-cloud-services-extended-support"></a>Gibt es Preisunterschiede zwischen Cloud Services (klassisch) und Cloud Services (erweiterter Support)?
 Cloud Services (erweiterter Support) verwendet Azure Key Vault und öffentliche Basic-IP-Adressen (ARM). Kunden, die Zertifikate benötigen, müssen Azure Key Vault für die Zertifikatverwaltung verwenden ([weitere Informationen](https://azure.microsoft.com/pricing/details/key-vault/) zu Azure Key Vault-Preisen).  Jede öffentliche IP-Adresse für Cloud Services (erweiterter Support) wird separat abgerechnet ([weitere Informationen](https://azure.microsoft.com/pricing/details/ip-addresses/) zu Preisen für öffentliche IP-Adressen). 
 ## <a name="resources"></a>Ressourcen 
@@ -82,6 +85,8 @@ Vorlagen- und Parameterdateien werden nur für die Bereitstellungsautomatisierun
 ### <a name="how-does-my-application-code-change-on-cloud-services-extended-support"></a>Wie ändert sich mein Anwendungscode für Cloud Services (erweiterter Support)?
 Für den in einer CSPKG-Datei enthaltenen Anwendungscode sind keine Änderungen erforderlich. Ihre vorhandenen Anwendungen funktionieren auch weiterhin wie zuvor. 
 
+### <a name="does-cloud-services-extended-support-allow-ctp-package-format"></a>Lassen die Clouddienste (erweiterter Support) das CTP (Community Technology Preview)-Paketformat zu?
+Das CTP-Paketformat wird in Clouddiensten (erweiterter Support) nicht unterstützt. Die Paketgrößenbeschränkung wurde aber auf 800 MB erweitert.
 
 ## <a name="migration"></a>Migration
 
@@ -91,7 +96,7 @@ Nein, Bereitstellungen von Cloud Services (erweiterter Support) sind wie Cloud S
 ### <a name="when-do-i-need-to-migrate"></a>Wann muss ich eine Migration durchführen? 
 Das Einschätzen der erforderlichen Zeit und der Komplexität der Migration hängt von mehreren Variablen ab. Planung ist der effektivste Schritt, um den Umfang der Arbeiten, mögliche Hindernisse und die Komplexität der Migration nachzuvollziehen.
 
-## <a name="networking"></a>Netzwerk
+## <a name="networking"></a>Netzwerk 
 
 ### <a name="why-cant-i-create-a-deployment-without-virtual-network"></a>Warum kann ich keine Bereitstellung ohne ein virtuelles Netzwerk erstellen?
 Virtuelle Netzwerke sind eine erforderliche Ressource für jede Bereitstellung unter Azure Resource Manager. Die Bereitstellung von Cloud Services (erweiterter Support) muss sich in einem virtuellen Netzwerk befinden. 
@@ -110,6 +115,9 @@ Die Nutzung von IP-Adressen für Cloud Services (erweiterter Support) wird Kunde
 
 ### <a name="can-i-use-a-dns-name-with-cloud-services-extended-support"></a>Kann ich einen DNS-Namen mit Cloud Services (erweiterter Support) verwenden? 
 Ja. Cloud Services (erweiterter Support) kann auch ein DNS-Name zugewiesen werden. Bei Azure Resource Manager ist die DNS-Bezeichnung eine optionale Eigenschaft der öffentlichen IP-Adresse, die dem Clouddienst zugewiesen wird. Das Format des DNS-Namens für auf Azure Resource Manager basierende Bereitstellungen ist `<userlabel>.<region>.cloudapp.azure.com`.
+
+### <a name="can-i-update-or-change-the-virtual-network-reference-for-an-existing-cloud-service-extended-support"></a>Kann ich den Verweis auf ein virtuelles Netzwerk für einen vorhandenen Clouddienst (erweiterter Support) aktualisieren oder ändern? 
+Nein. Der Verweis auf ein virtuelles Netzwerk ist bei der Erstellung eines Clouddienstes obligatorisch. Für einen vorhandenen Clouddienst kann der Verweis auf ein virtuelles Netzwerk nicht geändert werden. Der Adressbereich des virtuellen Netzwerks selbst kann mithilfe von VNet-APIs geändert werden. 
 
 ## <a name="certificates--key-vault"></a>Zertifikate und Key Vault
 

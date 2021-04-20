@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688466"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552749"
 ---
 # <a name="email-one-time-passcode-authentication"></a>Authentifizierung mit Einmalkennung per E-Mail
 
@@ -64,7 +64,7 @@ Sie können sehen, ob sich ein Gastbenutzer mit einer Einmalkennung authentifizi
 ![Screenshot mit einem Benutzer mit Einmalkennung mit dem Quellwert „OTP“](media/one-time-passcode/guest-user-properties.png)
 
 > [!NOTE]
-> Wenn ein Benutzer eine Einmalkennung einlöst und später ein MSA, ein Azure AD-Konto oder ein anderes Verbundkonto erhält, wird er weiterhin mit einer Einmalkennung authentifiziert. Wenn Sie seine Authentifizierungsmethode aktualisieren möchten, können Sie sein Gastbenutzerkonto löschen und ihn erneut einladen.
+> Wenn ein Benutzer eine Einmalkennung einlöst und später ein MSA, ein Azure AD-Konto oder ein anderes Verbundkonto erhält, wird er weiterhin mit einer Einmalkennung authentifiziert. Wenn Sie die Authentifizierungsmethode des Benutzers aktualisieren möchten, können Sie den [Einlösungsstatus zurücksetzen](reset-redemption-status.md).
 
 ### <a name="example"></a>Beispiel
 
@@ -76,7 +76,7 @@ Ab Oktober 2021 wird die Funktion „Einmalkennung per E-Mail“ für alle vorh
 
 > [!NOTE]
 >
-> Wenn Sie die in Ihrem Mandanten aktivierte Funktion „Einmalkennung per E-Mail“ deaktivieren, können sich alle Gastbenutzer, die eine Einmalkennung eingelöst haben, nicht anmelden. Sie können die Gastbenutzer löschen und neu einladen, damit sie sich mit einer anderen Authentifizierungsmethode anmelden können.
+> Wenn Sie die in Ihrem Mandanten aktivierte Funktion „Einmalkennung per E-Mail“ deaktivieren, können sich alle Gastbenutzer, die eine Einmalkennung eingelöst haben, nicht anmelden. Sie können [deren Einlösungsstatus zurücksetzen](reset-redemption-status.md), damit sie sich mit einer anderen Authentifizierungsmethode erneut anmelden können.
 
 ### <a name="to-disable-the-email-one-time-passcode-feature"></a>So deaktivieren Sie die Funktion „Einmalkennung per E-Mail“
 

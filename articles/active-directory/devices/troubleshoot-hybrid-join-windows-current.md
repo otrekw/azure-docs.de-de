@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 63415037b9f91936e04fa715405bfb86bf022cdd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578020"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551763"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung
 
@@ -371,6 +371,12 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
    - Ursache: Die Verbindung zum Server wurde abgebrochen.
    - Lösung: Versuchen Sie es nach einiger Zeit erneut, oder versuchen Sie, die Einbindung über eine alternative stabile Netzwerkadresse vorzunehmen.
 
+##### <a name="other-errors"></a>Andere Fehler
+
+- **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
+   - Ursache: EventID 220 ist in Ereignisprotokollen für die Registrierung von Benutzergeräten vorhanden. Windows kann in Active Directory nicht auf das Computerobjekt zugreifen. Möglicherweise ist ein Windows-Fehlercode im Ereignis enthalten. Bei Fehlercodes ERROR_NO_SUCH_LOGON_SESSION (1312) und ERROR_NO_SUCH_USER (1317) sind diese mit Replikationsprobleme im lokalen AD verknüpft.
+   - Lösung: Beheben Sie die Replikationsprobleme in AD. Bei Replikationsproblemen handelt es sich möglicherweise um vorübergehende Fehler, die nach einer Weile wieder weggehen.
+
 ##### <a name="federated-join-server-errors"></a>Serverfehler bei der Verbundeinbindung
 
 | Serverfehlercode | Serverfehlermeldung | Mögliche Ursachen | Lösung |
@@ -417,4 +423,4 @@ Wenn die Werte **NO** lauten, kann dies die folgenden Ursachen haben:
 
 Fahren Sie mit [Problembehandlung von Geräten mit dem Befehl „dsregcmd“](troubleshoot-device-dsregcmd.md) fort.
 
-Bei Fragen lesen Sie unter [Häufig gestellte Fragen zur Geräteverwaltung](faq.md) nach.
+Bei Fragen lesen Sie unter [Häufig gestellte Fragen zur Geräteverwaltung](faq.yml) nach.

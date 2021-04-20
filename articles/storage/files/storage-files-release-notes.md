@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/3/2021
+ms.date: 3/26/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5549fc3b63b76c6158ae7399e6d94a43d2d4f28f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 53c3ca542e78246410e84a56b8b4af0d50b721f0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435187"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385342"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -25,6 +25,7 @@ Die folgenden Versionen des Agents für die Azure-Dateisynchronisierung werden u
 
 | Meilenstein | Agent-Versionsnummer | Veröffentlichungsdatum | Status |
 |----|----------------------|--------------|------------------|
+| V12 Version - [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | 26. März 2021 | Unterstützt – Flighting |
 | V11.2-Release: [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2\. Februar 2021 | Unterstützt |
 | V11.1-Release: [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | 4\. November 2020 | Unterstützt |
 | V10.1-Release: [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 5\. Juni 2020 | Unterstützt – Agent-Version läuft am 7. Juni 2021 ab |
@@ -47,6 +48,90 @@ Die folgenden Versionen des Agents für die Azure-Dateisynchronisierung sind abg
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-12000"></a>Agent-Version 12.0.0.0
+Die folgenden Versionshinweise gelten für Version 12.0.0.0 des Azure-Dateisynchronisierungs-Agent, die am 26. März 2021 veröffentlicht wurde.
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Verbesserungen und behobene Probleme
+- Neues Portal zum Konfigurieren von Netzwerk- Zugriffsrichtlinien und privaten Endpunktverbindungen
+    - Sie können jetzt über das Portal den Zugriff auf den öffentlichen Endpunkt des Speichersynchronisierungsdienstes deaktivieren und private Endpunktverbindungen genehmigen, ablehnen und entfernen. Öffnen Sie zum Konfigurieren der Richtlinie für den Netzwerkzugriff und der Verbindungen mit privaten Endpunkten das Portal für den Speichersynchronisierungsdienst, wechseln Sie zum Abschnitt „Einstellungen“, und klicken Sie dann auf „Netzwerk“.
+ 
+- Cloudtiering-Unterstützung für Clustergrößen über 64 KiB
+    - Cloudtiering unterstützt jetzt Clustergrößen bis zu 2 MiB auf Server 2019. Weitere Informationen erhalten Sie unter [Welche Mindestdateigröße gilt für Dateien, für die ein Tiering durchgeführt werden soll?](https://docs.microsoft.com/azure/storage/files/storage-sync-choose-cloud-tiering-policies#minimum-file-size-for-a-file-to-tier).
+ 
+- Messen der Bandbreite und Latenz für den Azure-Dateisynchronisierungsdienst und das Speicherkonto
+    - Das cmdlet „Test-StorageSyncNetworkConnectivity" kann jetzt verwendet werden, um die Latenz und Bandbreite für den Azure-Dateisynchronisierungsdienst und das Speicherkonto zu messen. Die Latenz für den Azure-Dateisynchronisierungsdienst und das Speicherkonto wird standardmäßig beim Ausführen von cmdlet gemessen.  Die Upload und Download-Bandbreite für das Speicherkonto wird bei Verwendung des Parameters "MeasureBandwidth" gemessen.
+ 
+        Führen Sie die folgenden PowerShell-Befehle aus, um die Bandbreite und Latenz für den Azure-Dateisynchronisierungsdienst und das Speicherkonto zu messen:
+ 
+        ```powershell
+        Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+        Test-StorageSyncNetworkConnectivity -MeasureBandwidth 
+        ``` 
+ 
+- Verbesserte Fehlermeldungen im Portal, wenn beim Erstellen des Serverendpunkts ein Fehler auftritt
+    - Wir haben Ihr Feedback umgesetzt und die Fehlermeldungen und Anleitungen für den Fall verbessert, dass die Erstellung des Serverendpunkt fehlschlägt.
+ 
+- Sonstige Verbesserungen bei Leistung und Zuverlässigkeit
+    - Die Leistung bei der Änderungserkennung zum Erkennen von in der Azure-Dateifreigabe geänderten Dateien wurde verbessert.
+    - Leistungsverbesserungen zur Abstimmung von Synchronisierungssitzungen. 
+    - Synchronisierungsverbesserungen, um Fehler mit ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED und ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED zu verringern.
+    - Es wurde der Fehler behoben, der zu Datenbeschädigung führte, wenn Cloudtiering aktiviert war und mehrstufige Dateien mithilfe von Robocopy mit dem /B-Parameter kopiert werden.
+    - Es wurde der Fehler behoben, mit dem möglicherweise das Tiering für Dateien auf Server 2019 nicht ausgeführt werden kann, wenn die Datenduplizierung auf dem Datenträger aktiviert wurde.
+    - Es wurde der Fehler behoben, der bewirkt, dass afsdiag Dateien nicht komprimiert, wenn eine Datei größer als 2 gib ist.
+
+### <a name="evaluation-tool"></a>Auswertungstool
+Vor der Bereitstellung der Azure-Dateisynchronisierung müssen Sie mit dem Auswertungstool für die Azure-Dateisynchronisierung auswerten, ob Kompatibilität mit Ihrem System gegeben ist. Dieses Tool ist ein Azure PowerShell-Cmdlet, das auf potenzielle Probleme mit Ihrem Dateisystem und Dataset prüft, z.B. nicht unterstützte Zeichen oder eine nicht unterstützte Betriebssystemversion. Anweisungen zur Installation und Verwendung finden Sie im Planungshandbuch im Abschnitt [Auswertungstools](./storage-sync-files-planning.md#evaluation-cmdlet). 
+
+### <a name="agent-installation-and-server-configuration"></a>Agent-Installation und Serverkonfiguration
+Weitere Informationen zum Installieren und Konfigurieren des Azure File Sync-Agents mit Windows Server finden Sie unter [Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-planning.md) sowie unter [Bereitstellen von Azure File Sync (Vorschau)](storage-sync-files-deployment-guide.md).
+
+- Für Server mit einer vorhandenen Installation des Azure File Sync-Agenten ist ein Neustart erforderlich.
+- Das Agent-Installationspaket muss mit erhöhten Berechtigungen (Administratorberechtigungen) installiert werden.
+- Der Agent wird für die Bereitstellungsoption „Nano Server“ nicht unterstützt.
+- Der Agent wird nur unter Windows Server 2019, Windows Server 2016 und Windows Server 2012 R2 unterstützt.
+- Der Agent benötigt mindestens 2 GiB Arbeitsspeicher. Wenn der Server auf einem virtuellen Computer ausgeführt wird, für den dynamischer Arbeitsspeicher aktiviert ist, muss der virtuelle Computer mit mindestens 2.048 MiB Arbeitsspeicher konfiguriert werden. Weitere Informationen finden Sie unter [Empfohlenen Systemressourcen](./storage-sync-files-planning.md#recommended-system-resources).
+- Der Dienst „Storage-Synchronisierungs-Agent“ (FileSyncSvc) unterstützt keine Serverendpunkte, die sich auf einem Volume befinden, für das das Verzeichnis „System Volume Information“ (SVI) komprimiert ist. Diese Konfiguration führt zu unerwarteten Ergebnissen.
+
+### <a name="interoperability"></a>Interoperabilität
+- Virenschutz, Sicherung und andere Anwendungen, die auf Tieringdateien zugreifen, können zu unerwünschten Rückrufen führen, wenn sie das Offlineattribut nicht berücksichtigen und das Lesen des Inhalts dieser Dateien nicht überspringen. Weitere Informationen finden Sie unter [Problembehandlung bei der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-troubleshoot.md).
+- FSRM-Dateiprüfungen (File Server Resource Manager, Ressourcen-Manager für Dateiserver) können zu Fehlern aufgrund einer endlosen Synchronisierung führen, wenn Dateien aufgrund der damit verbundenen Vorgänge blockiert werden.
+- Die Ausführung von Sysprep auf einem Server, auf dem der Azure-Dateisynchronisierungs-Agent installiert ist, wird nicht unterstützt und kann zu unerwarteten Ergebnissen führen. Der Azure-Dateisynchronisierungs-Agent sollte installiert werden, nachdem das Serverimage bereitgestellt und das Sysprep-Mini-Setup abgeschlossen wurde.
+
+### <a name="sync-limitations"></a>Einschränkungen bei der Synchronisierung
+Folgende Elemente werden nicht synchronisiert, aber der restliche Systembetrieb ist nicht beeinträchtigt:
+- Dateien mit nicht unterstützten Zeichen. Eine Liste mit den Zeichen, die nicht unterstützt werden, finden Sie im [Leitfaden zur Problembehandlung](storage-sync-files-troubleshoot.md#handling-unsupported-characters).
+- Dateien oder Verzeichnisse, die mit einem Punkt enden.
+- Pfade, die länger als 2.048 Zeichen sind.
+- Der SACL-Teil (System-Zugriffssteuerungsliste) einer Sicherheitsbeschreibung, die für die Überwachung verwendet wird.
+- Erweiterte Attribute
+- Alternative Datenströme
+- Analysepunkte
+- Feste Links
+- Die Komprimierung (sofern für eine Serverdatei festgelegt) wird nicht beibehalten, wenn Änderungen mit der Datei von anderen Endpunkten synchronisiert werden.
+- Mit EFS (oder einer anderen Benutzermodusverschlüsselung) verschlüsselte Dateien, die den Dienst am Lesen der Daten hindern.
+
+    > [!Note]  
+    > Bei der Azure-Dateisynchronisierung werden Daten während der Übertragung immer verschlüsselt. Ruhende Daten werden in Azure immer verschlüsselt.
+ 
+### <a name="server-endpoint"></a>Serverendpunkt
+- Ein Serverendpunkt kann nur auf einem NTFS-Volume erstellt werden. ReFS, FAT, FAT32 und andere Dateisysteme werden von der Azure-Dateisynchronisierung derzeit nicht unterstützt.
+- Das Cloudtiering wird auf dem Systemvolume nicht unterstützt. Um einen Serverendpunkt auf dem Systemvolume zu erstellen, deaktivieren Sie Cloudtiering, wenn Sie den Serverendpunkt erstellen.
+- Failoverclustering wird nur mit Clusterdatenträgern, aber nicht mit freigegebenen Clustervolumes (Cluster Shared Volumes, CSVs) unterstützt.
+- Ein Serverendpunkt kann nicht geschachtelt werden. Er kann auf demselben Volume parallel zu einem anderen Endpunkt vorhanden sein (Koexistenz).
+- Speichern Sie keine Betriebssystem- oder Anwendungsauslagerungsdatei an einem Serverendpunkt-Standort.
+- Der Servername im Portal wird bei Umbenennung des Servers nicht aktualisiert.
+
+### <a name="cloud-endpoint"></a>Cloudendpunkt
+- Die Azure-Dateisynchronisierung unterstützt direkte Änderungen an der Azure-Dateifreigabe. Allerdings müssen alle Änderungen, die Sie an der Azure-Dateifreigabe vornehmen, zuerst von einem Azure-Dateisynchronisierungsauftrag zum Erkennen von Änderungen erkannt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird einmal alle 24 Stunden gestartet. Um Dateien, die in der Azure-Dateifreigabe geändert wurden, sofort zu synchronisieren, kann das PowerShell-Cmdlet [Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) verwendet werden, um die Erkennung von Änderungen in der Azure-Dateifreigabe manuell auszulösen. Darüber hinaus bewirken Änderungen, die über das REST-Protokoll an einer Azure-Dateifreigabe vorgenommen wurden, keine Aktualisierung der letzten SMB-Änderungszeit, und die Änderungen sind für eine Synchronisierung nicht zu sehen.
+- Der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe, ein anderes Abonnement oder einen anderen Azure AD-Mandanten verschoben werden. Wenn der Speichersynchronisierungsdienst oder das Speicherkonto verschoben wurde, müssen Sie der Anwendung „Microsoft.StorageSync“ Zugriff auf das Speicherkonto gewähren (siehe [Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
+
+    > [!Note]  
+    > Beim Erstellen des Cloudendpunkts müssen sich der Speichersynchronisierungsdienst und das Speicherkonto im selben Azure AD-Mandanten befinden. Nach der Erstellung des Cloudendpunkts können der Speichersynchronisierungsdienst und das Speicherkonto in verschiedene Azure AD Mandanten verschoben werden.
+
+### <a name="cloud-tiering"></a>Cloudtiering
+- Wenn eine Tieringdatei mit Robocopy an einen anderen Speicherort kopiert wird, ist die sich ergebende Datei keine Tieringdatei. Das Offlineattribut kann festgelegt werden, da dieses Attribut fälschlicherweise von Robocopy in Kopiervorgänge eingefügt wird.
+- Verwenden Sie beim Kopieren der Dateien mit Robocopy die Option „/MIR“, um Dateizeitstempel beizubehalten. So wird sichergestellt, dass das Tiering für ältere Dateien früher als für die Dateien durchgeführt wird, auf die zuletzt zugegriffen wurde.
 
 ## <a name="agent-version-11200"></a>Agent-Version 11.2.0.0
 Die folgenden Versionshinweise gelten für Version 11.2.0.0 des Azure-Dateisynchronisierungs-Agents, die am 2. Februar 2021 veröffentlicht wurde. Diese Hinweise gelten zusätzlich zu den Versionshinweisen, die für die Version 11.1.0.0 angegeben sind.
