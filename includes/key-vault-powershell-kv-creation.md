@@ -22,7 +22,7 @@ Verwenden Sie das Azure PowerShell-Cmdlet [New-AzKeyVault](/powershell/module/az
 - Standort: **EastUS**
 
 ```azurepowershell-interactive
-New-AzKeyVault -Name "<your-unique-keyvault-name>" -ResourceGroupName "ContosoResourceGroup" -Location "East US"
+New-AzKeyVault -Name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location "East US"
 ```
 
 Die Ausgabe dieses Cmdlets zeigt Eigenschaften des neu erstellten Schlüsseltresors. Beachten Sie die beiden folgenden Eigenschaften:
