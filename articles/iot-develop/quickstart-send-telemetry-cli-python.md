@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 03/24/2021
-ms.openlocfilehash: f28ad8f93769bc95c87095a545f608827c319dd3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea0b161a9038666e1e7ddd5a6c6af2078afff8aa
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106818"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766520"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-azure-iot-hub-python"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an eine Azure IoT Hub-Instanz (Python)
 
@@ -122,12 +122,12 @@ Falls Sie die in dieser Schnellstartanleitung erstellten Azure-Ressourcen nicht 
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen.
 
 So löschen Sie eine Ressourcengruppe anhand des Namens:
-1. Führen Sie den Befehl [az group delete](/cli/azure/group#az-group-delete) aus. Die von Ihnen erstellte Ressourcengruppe, der IoT-Hub und die Geräteregistrierung werden mithilfe dieses Befehls entfernt.
+1. Führen Sie den Befehl [az group delete](/cli/azure/group#az_group_delete) aus. Die von Ihnen erstellte Ressourcengruppe, der IoT-Hub und die Geräteregistrierung werden mithilfe dieses Befehls entfernt.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Führen Sie den Befehl [az group list](/cli/azure/group#az-group-list) aus, um sich zu vergewissern, dass die Ressourcengruppe gelöscht wurde.  
+1. Führen Sie den Befehl [az group list](/cli/azure/group#az_group_list) aus, um sich zu vergewissern, dass die Ressourcengruppe gelöscht wurde.  
 
     ```azurecli
     az group list

@@ -3,13 +3,15 @@ title: 'Schnellstart: Erstellen einer Verwaltungsgruppe mit Python'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe von Python eine Verwaltungsgruppe, um Ihre Ressourcen in einer Ressourcenhierarchie zu organisieren.
 ms.date: 01/29/2021
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: e3c55cc14a8ac980318fd0de9485a3e0ca31b582
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 9aec47e067ca62f4902df2dafb6a5d6d50a26d0e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100101654"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533177"
 ---
 # <a name="quickstart-create-a-management-group-with-python"></a>Schnellstart: Erstellen einer Verwaltungsgruppe mit Python
 

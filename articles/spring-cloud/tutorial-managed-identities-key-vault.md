@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: bbfafeaf9ce24911bb4893748d456d22e02fc411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 870a04af244d18826e1041316895f746e27870eb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877110"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786583"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Tutorial: Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure Spring Cloud-App herzustellen
 
@@ -29,14 +29,14 @@ Azure Key Vault ermöglicht die sichere Speicherung und präzise Steuerung des Z
 * [Installation von Maven 3.0 oder höher](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie eine Ressourcengruppe, die sowohl Key Vault als auch Spring Cloud enthält, mit dem Befehl [az group create](/cli/azure/group#az-group-create):
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie eine Ressourcengruppe, die sowohl Key Vault als auch Spring Cloud enthält, mit dem Befehl [az group create](/cli/azure/group#az_group_create):
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
 ## <a name="set-up-your-key-vault"></a>Einrichten Ihres Key Vault
-Verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault#az-keyvault-create), um einen Key Vault zu erstellen:
+Verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault#az_keyvault_create), um einen Key Vault zu erstellen:
 
 > [!Important]
 > Jeder Schlüsseltresor muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen „<your-keyvault-name>“ durch den Namen Ihres Key Vaults.
@@ -47,7 +47,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 Notieren Sie sich den zurückgegebenen `vaultUri`. Dieser hat das Format „https://<your-keyvault-name>.vault.azure.net“. Dieser Wert wird im folgenden Schritt verwendet.
 
-Nun können Sie mithilfe des Befehls [az keyvault secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) ein Geheimnis in Ihrem Key Vault platzieren:
+Nun können Sie mithilfe des Befehls [az keyvault secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) ein Geheimnis in Ihrem Key Vault platzieren:
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \

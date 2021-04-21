@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 492246b5dfb19664ea54ce8b5462c7d77f8d951b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19809d7150c8a461f97282d1583d0d870d6af8bb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94562711"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770649"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-gremlin-api-database-and-graph-using-azure-cli"></a>Erstellen einer Ressourcensperre für eine Gremlin-Datenbank und einen Gremlin-Graphen für Azure Cosmos DB mit der Azure CLI
 [!INCLUDE[appliesto-gremlin-api](../../../includes/appliesto-gremlin-api.md)]
@@ -34,10 +34,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [az lock create](/cli/azure/lock#az-lock-create) | Erstellt eine Sperre. |
-| [az lock list](/cli/azure/lock#az-lock-list) | Listet Sperrinformationen auf. |
-| [az lock show](/cli/azure/lock#az-lock-show) | Zeigt Eigenschaften einer Sperre an. |
-| [az lock delete](/cli/azure/lock#az-lock-delete) | Löscht eine Sperre. |
+| [az lock create](/cli/azure/lock#az_lock_create) | Erstellt eine Sperre. |
+| [az lock list](/cli/azure/lock#az_lock_list) | Listet Sperrinformationen auf. |
+| [az lock show](/cli/azure/lock#az_lock_show) | Zeigt Eigenschaften einer Sperre an. |
+| [az lock delete](/cli/azure/lock#az_lock_delete) | Löscht eine Sperre. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

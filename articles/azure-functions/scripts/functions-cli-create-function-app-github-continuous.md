@@ -4,12 +4,12 @@ description: Erstellen einer Funktions-App und Bereitstellen von Funktionscode a
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 219e993ad7132c90de6db680facc9b8f815947cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8abbe30067a488055e59de86372482d99cadaae3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934387"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786259"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Erstellen einer Funktions-App in Azure, die über GitHub bereitgestellt wird
 
@@ -40,9 +40,9 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Erstellt das für die Funktions-App erforderliche Speicherkonto. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im serverlosen [Verbrauchsplan](../consumption-plan.md) und ordnet sie einem Git- oder Mercurial-Repository zu. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Erstellt das für die Funktions-App erforderliche Speicherkonto. |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Erstellt eine Funktions-App im serverlosen [Verbrauchsplan](../consumption-plan.md) und ordnet sie einem Git- oder Mercurial-Repository zu. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: fc33b24aac8964d0a8390b4b38c5e1862ed639a8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: be1b0da23841b5a63ec044e04a5465e29345f9d1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198913"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772197"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Tutorial: Zugreifen auf Azure Blob Storage über Azure Databricks und Azure Key Vault
 
@@ -33,7 +33,7 @@ Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli-windows), bevor Si
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Erstellen eines Speicherkontos und eines Blobcontainers mithilfe der Azure-Befehlszeilenschnittstelle
 
-Erstellen Sie für die Verwendung von Blobs zunächst ein universelles Speicherkonto. Sollten Sie über keine [Ressourcengruppe](/cli/azure/group#az-group-create) verfügen, erstellen Sie eine, bevor Sie den Befehl ausführen. Mit dem folgenden Befehl werden die Metadaten des Speichercontainers erstellt und angezeigt. Notieren Sie sich die **ID**.
+Erstellen Sie für die Verwendung von Blobs zunächst ein universelles Speicherkonto. Sollten Sie über keine [Ressourcengruppe](/cli/azure/group#az_group_create) verfügen, erstellen Sie eine, bevor Sie den Befehl ausführen. Mit dem folgenden Befehl werden die Metadaten des Speichercontainers erstellt und angezeigt. Notieren Sie sich die **ID**.
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob

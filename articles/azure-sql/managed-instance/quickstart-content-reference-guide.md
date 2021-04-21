@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: c84c81fa81cf4ba9be454eea5782927a09c3252a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec767e5f3a88c52f9686eec8f7e458ab517ee35f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690957"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784333"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Erste Schritte mit der verwalteten Azure SQL-Instanz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,7 +44,7 @@ Zunächst müssen Sie Ihre verwaltete SQL-Instanz mit der Netzwerkumgebung erste
   > - Sie können auch ExpressRoute oder eine Site-to-Site-Verbindung über Ihr lokales Netzwerk verwenden. Diese Methoden werden in den Schnellstarts jedoch nicht behandelt.
   > - Wenn Sie die Beibehaltungsdauer von „0“ (unbegrenzte Aufbewahrung) in einen anderen Wert ändern, beachten Sie, dass die Beibehaltung nur auf Protokolle angewendet wird, die nach dem Ändern des Beibehaltungswerts geschrieben wurden (Protokolle, die in dem Zeitraum geschrieben wurden, in dem die Beibehaltung auf unbegrenzt festgelegt war, bleiben auch nach Aktivieren der Beibehaltung erhalten).
 
-Als Alternative zur manuellen Erstellung der verwalteten SQL-Instanz können Sie mithilfe von [PowerShell](scripts/create-configure-managed-instance-powershell.md), [PowerShell mit einer Resource Manager-Vorlage](./create-template-quickstart.md) oder der [Azure-Befehlszeilenschnittstelle](/cli/azure/sql/mi#az-sql-mi-create) (Azure CLI) ein Skript erstellen und diesen Prozess automatisieren.
+Als Alternative zur manuellen Erstellung der verwalteten SQL-Instanz können Sie mithilfe von [PowerShell](scripts/create-configure-managed-instance-powershell.md), [PowerShell mit einer Resource Manager-Vorlage](./create-template-quickstart.md) oder der [Azure-Befehlszeilenschnittstelle](/cli/azure/sql/mi#az_sql_mi_create) (Azure CLI) ein Skript erstellen und diesen Prozess automatisieren.
 
 ### <a name="migrate-your-databases"></a>Migrieren Ihrer Datenbanken
 

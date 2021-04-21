@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: b12715e299f523d7ace56a72b0098b5d7ffac0ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a4abe550da4f0438f875127b3b689045c06e6f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98683054"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762995"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit der Azure CLI
 Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bereitstellen der VM-Instanzen verwendet wird. Sie können ein benutzerdefiniertes VM-Image verwenden, um die Anzahl von Aufgaben zu reduzieren, nachdem VM-Instanzen bereitgestellt wurden. Dieses benutzerdefinierte VM-Image enthält alle erforderlichen Anwendungsinstallationen oder -konfigurationen. Für alle VM-Instanzen, die in der Skalierungsgruppe erstellt werden, wird das benutzerdefinierte VM-Image verwendet, und die VM-Instanzen sind für die Bereitstellung Ihres Anwendungsdatenverkehrs bereit. In diesem Tutorial lernen Sie Folgendes:
@@ -77,7 +77,7 @@ Ein Imagekatalog ist die primäre Ressource, die zur Ermöglichung des Teilens v
 
 Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname darf keine Bindestriche enthalten.   Katalognamen müssen innerhalb Ihres Abonnements eindeutig sein. 
 
-Erstellen Sie einen Imagekatalog mit [az sig create](/cli/azure/sig#az-sig-create). Im folgenden Beispiel werden eine Ressourcengruppe namens *myGalleryRG* in der Region *USA, Osten* und ein Katalog namens *myGallery* erstellt.
+Erstellen Sie einen Imagekatalog mit [az sig create](/cli/azure/sig#az_sig_create). Im folgenden Beispiel werden eine Ressourcengruppe namens *myGalleryRG* in der Region *USA, Osten* und ein Katalog namens *myGallery* erstellt.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -94,7 +94,7 @@ Stellen Sie sicher, dass die Imagedefinition den richtigen Typ aufweist. Wenn Si
 
 Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](../virtual-machines/shared-image-galleries.md#image-definitions).
 
-Erstellen Sie mithilfe von [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) eine Imagedefinition im Katalog.
+Erstellen Sie mithilfe von [az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) eine Imagedefinition im Katalog.
 
 In diesem Beispiel heißt die Imagedefinition *myImageDefinition* und ist für ein [spezialisiertes](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) Linux-Betriebssystemimage vorgesehen. Verwenden Sie `--os-type Windows`, um eine Definition für Images zu erstellen, die ein Windows-Betriebssystem verwenden. 
 
@@ -116,7 +116,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>Erstellen der Imageversion
 
-Erstellen Sie mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) eine Imageversion der VM.  
+Erstellen Sie mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) eine Imageversion der VM.  
 
 Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
 
@@ -144,9 +144,9 @@ az sig image-version create \
 
 
 ## <a name="create-a-scale-set-from-the-image"></a>Erstellen einer Skalierungsgruppe auf der Grundlage des Images
-Erstellen Sie mithilfe von [`az vmss create`](/cli/azure/vmss#az-vmss-create) eine Skalierungsgruppe auf der Grundlage des spezialisierten Images. 
+Erstellen Sie mithilfe von [`az vmss create`](/cli/azure/vmss#az_vmss_create) eine Skalierungsgruppe auf der Grundlage des spezialisierten Images. 
 
-Erstellen Sie die Skalierungsgruppe mithilfe von [`az vmss create`](/cli/azure/vmss#az-vmss-create) und unter Verwendung des Parameters „--specialized“, um anzugeben, dass es sich um ein spezialisiertes Image handelt. 
+Erstellen Sie die Skalierungsgruppe mithilfe von [`az vmss create`](/cli/azure/vmss#az_vmss_create) und unter Verwendung des Parameters „--specialized“, um anzugeben, dass es sich um ein spezialisiertes Image handelt. 
 
 Verwenden Sie die Imagedefinitions-ID für `--image`, um die Skalierungsgruppeninstanzen auf der Grundlage der neuesten verfügbaren Imageversion zu erstellen. Sie können die Skalierungsgruppeninstanzen auch auf der Grundlage einer bestimmten Version erstellen, indem Sie die Imageversions-ID für `--image` verwenden. 
 
@@ -199,7 +199,7 @@ Geben Sie die öffentliche IP-Adresse in Ihren Webbrowser ein. Die NGINX-Standar
 
 Sie können Images zwischen Abonnements mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) teilen. Sie können Images über den Katalog, die Imagedefinition oder die Imageversion freigeben. Jeder Benutzer, der Leseberechtigungen für eine Imageversion besitzt (auch über Abonnements hinweg), kann mithilfe der Imageversion einen virtuellen Computer bereitstellen.
 
-Wir empfehlen, dass Sie mit anderen Benutzern auf Ebene des Katalogs teilen. Um die Objekt-ID Ihres Katalogs abzurufen, verwenden Sie [az sig show](/cli/azure/sig#az-sig-show).
+Wir empfehlen, dass Sie mit anderen Benutzern auf Ebene des Katalogs teilen. Um die Objekt-ID Ihres Katalogs abzurufen, verwenden Sie [az sig show](/cli/azure/sig#az_sig_show).
 
 ```azurecli-interactive
 az sig show \
@@ -208,7 +208,7 @@ az sig show \
    --query id
 ```
 
-Verwenden Sie die Objekt-ID als Bereich, zusammen mit einer E-Mail-Adresse und [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), um einem Benutzer Zugriff auf den geteilten Imagekatalog zu gewähren. Ersetzen Sie `<email-address>` und `<gallery iD>` durch Ihre eigenen Angaben.
+Verwenden Sie die Objekt-ID als Bereich, zusammen mit einer E-Mail-Adresse und [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um einem Benutzer Zugriff auf den geteilten Imagekatalog zu gewähren. Ersetzen Sie `<email-address>` und `<gallery iD>` durch Ihre eigenen Angaben.
 
 ```azurecli-interactive
 az role assignment create \
