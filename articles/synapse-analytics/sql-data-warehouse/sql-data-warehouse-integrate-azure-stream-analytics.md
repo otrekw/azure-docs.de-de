@@ -2,21 +2,21 @@
 title: Verwenden von Azure Stream Analytics im dedizierten SQL-Pool
 description: Tipps für die Verwendung von Azure Stream Analytics beim dedizierten SQL-Pool in Azure Synapse zum Entwickeln von Echtzeitlösungen.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 9/25/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 023cf55a01f34277dd5c5707d0d123f54c1674df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c7f139b50cd43e3e8862fda3f5401a853ced8d0
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600087"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566578"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Verwenden von Azure Stream Analytics beim dediziertem SQL-Pool in Azure Synapse Analytics
 

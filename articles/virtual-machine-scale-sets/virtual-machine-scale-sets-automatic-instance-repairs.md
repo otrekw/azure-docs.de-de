@@ -9,12 +9,12 @@ ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: b43502e771415c0ca62d821c697516fae16e35ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 733f4602e43511924783f6bc8cb1bad29edb5ea0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934528"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762909"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische Instanzreparaturen für Azure-VM-Skalierungsgruppen
 
@@ -141,7 +141,7 @@ New-AzVmssConfig `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Im folgenden Beispiel wird die Richtlinie für automatische Reparaturen aktiviert, während mithilfe von *[az vmss create](/cli/azure/vmss#az-vmss-create)* eine neue Skalierungsgruppe erstellt wird. Erstellen Sie zunächst eine Ressourcengruppe, und erstellen Sie dann eine neue Skalierungsgruppe mit einer auf 30 Minuten festgelegten Karenzzeit für die Richtlinie für automatische Reparaturen.
+Im folgenden Beispiel wird die Richtlinie für automatische Reparaturen aktiviert, während mithilfe von *[az vmss create](/cli/azure/vmss#az_vmss_create)* eine neue Skalierungsgruppe erstellt wird. Erstellen Sie zunächst eine Ressourcengruppe, und erstellen Sie dann eine neue Skalierungsgruppe mit einer auf 30 Minuten festgelegten Karenzzeit für die Richtlinie für automatische Reparaturen.
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -209,7 +209,7 @@ Update-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Nachfolgend finden Sie ein Beispiel zum Aktualisieren der Richtlinie für automatische Instanzreparaturen einer vorhandenen Skalierungsgruppe mithilfe von *[az vmss update](/cli/azure/vmss#az-vmss-update)* .
+Nachfolgend finden Sie ein Beispiel zum Aktualisieren der Richtlinie für automatische Instanzreparaturen einer vorhandenen Skalierungsgruppe mithilfe von *[az vmss update](/cli/azure/vmss#az_vmss_update)* .
 
 ```azurecli-interactive
 az vmss update \  
@@ -259,7 +259,7 @@ Verwenden Sie die *setOrchestrationServiceState*-API mit API-Version 2019-12-01 
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-Verwenden Sie das Cmdlet [get-instance-view](/cli/azure/vmss#az-vmss-get-instance-view), um den *serviceState* für automatische Instanzreparaturen anzuzeigen. 
+Verwenden Sie das Cmdlet [get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view), um den *serviceState* für automatische Instanzreparaturen anzuzeigen. 
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -267,7 +267,7 @@ az vmss get-instance-view \
     --resource-group MyResourceGroup
 ```
 
-Verwenden Sie das [set-orchestration-service-state](/cli/azure/vmss#az-vmss-set-orchestration-service-state)-Cmdlet, um den *serviceState* für automatische Instanzreparaturen zu aktualisieren. Nachdem die Funktion für automatische Reparaturen für die Skalierungsgruppe festgelegt wurde, können Sie dieses Cmdlet verwenden, um automatische Reparaturen für Ihre Skalierungsgruppe aufzuschieben oder fortzusetzen. 
+Verwenden Sie das [set-orchestration-service-state](/cli/azure/vmss#az_vmss_set_orchestration_service_state)-Cmdlet, um den *serviceState* für automatische Instanzreparaturen zu aktualisieren. Nachdem die Funktion für automatische Reparaturen für die Skalierungsgruppe festgelegt wurde, können Sie dieses Cmdlet verwenden, um automatische Reparaturen für Ihre Skalierungsgruppe aufzuschieben oder fortzusetzen. 
 
 ```azurecli-interactive
 az vmss set-orchestration-service-state \

@@ -7,7 +7,7 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 04/15/2021
 ms.custom:
 - amqp
 - mqtt
@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 3ddc8c78bac47ed85266037341328585e3c7cb1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e72af412f61f2084fb78907c15a92a22b9e3bc99
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97825122"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567178"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -385,7 +385,7 @@ Unterstützte Zertifikate:
 
 Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides. Stellen Sie bei der X.509-Zertifikatsauthentifizierung sicher, dass Sie über eine Strategie zur Handhabung des Rollovers von Zertifikaten verfügen, wenn ein vorhandenes Zertifikat abläuft.
 
-Die folgenden Funktionen werden bei Geräten, die die Authentifizierung per X.509-Zertifizierungsstelle verwenden, nicht unterstützt:
+Die folgenden Funktionen für Geräte, die die Authentifizierung der X.509-Zertifizierungsstelle (Certificate Authority, CA) verwenden, sind noch nicht allgemein verfügbar, und der [Vorschaumodus muss aktiviert werden](iot-hub-preview-mode.md):
 
 * HTTPS, MQTT über WebSockets und AMQP über WebSockets-Protokolle.
 * Dateiuploads (alle Protokolle).

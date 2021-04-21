@@ -2,20 +2,19 @@
 title: 'Azure Key Vault: Verschieben eines Tresors in eine andere Ressourcengruppe | Microsoft-Dokumentation'
 description: Anleitung zum Verschieben eines Schlüsseltresors in eine andere Ressourcengruppe.
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/29/2020
-ms.author: sudbalas
-ms.openlocfilehash: b26ebbbf256d7bde8f7f790cc0779c2eda729d1c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: 14ecbcaa35153438601a3dabb70f5b38006ded1b
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066631"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749562"
 ---
 # <a name="moving-an-azure-key-vault-across-resource-groups"></a>Verschieben einer Azure Key Vault-Instanz zwischen Ressourcengruppen
 

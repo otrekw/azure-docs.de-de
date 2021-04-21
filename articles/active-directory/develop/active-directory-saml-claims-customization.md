@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0cccf45037320b476b1a44cafa8074bacadacbc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25e737afb524cb8c6f45ac8e99f46a8064ae7855
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103600948"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598838"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -77,7 +77,7 @@ Wählen Sie die gewünschte Quelle für den Anspruch `NameIdentifier` (oder Name
 | Verzeichniserweiterungen | Verzeichniserweiterungen, die [über die Azure AD Connect-Synchronisierung aus dem lokalen Active Directory synchronisiert wurden](../hybrid/how-to-connect-sync-feature-directory-extensions.md). |
 | Erweiterungsattribute 1–15 | Die lokalen Erweiterungsattribute, die zur Erweiterung des Azure AD-Schemas verwendet werden. |
 
-Weitere Informationen finden Sie in [Table 3: Valid ID values per source (Tabelle 3: Gültige ID-Werte pro Quelle)](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
+Weitere Informationen finden Sie in [Table 3: Valid ID values per source (Tabelle 3: Gültige ID-Werte pro Quelle)](reference-claims-mapping-policy-type.md#table-3-valid-id-values-per-source).
 
 Sie können in Azure AD definierten Ansprüchen einen beliebigen konstanten (statischen) Wert zuweisen. Führen Sie folgende Schritte aus, um einen konstanten Wert zuzuweisen:
 

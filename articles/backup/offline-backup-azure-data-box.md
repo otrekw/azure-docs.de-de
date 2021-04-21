@@ -3,12 +3,12 @@ title: Offlinesicherung unter Verwendung von Azure Data Box
 description: In diesem Artikel erfahren Sie, wie Sie Azure Data Box verwenden können, um ein Offlineseeding für eine große Menge Erstsicherungsdaten vom MARS-Agent in einen Recovery Services-Tresor auszuführen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78adc479ce5733e208d2334d30d7b88e4edf8d6b
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96752582"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576090"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box
 
@@ -292,7 +292,7 @@ Wenn auf keinem anderen Server Offlineseeding konfiguriert und kein anderer Serv
 
 Führen Sie auf dem Server, den Sie für die Offlinesicherung konfigurieren möchten, die folgenden Aktionen aus.
 
-1. Navigieren Sie zur Registerkarte **Computerzertifikatanwendung verwalten** > **Persönlich**, und suchen Sie nach dem Zertifikat mit dem Namen `CB_AzureADCertforOfflineSeeding_<ResourceId>`.
+1. Navigieren Sie zur Registerkarte **Computerzertifikatanwendung verwalten** > **Persönlich**, und suchen Sie nach dem Zertifikat mit dem Namen `CB_AzureADCertforOfflineSeeding_<Timestamp>`.
 
 2. Wählen Sie das Zertifikat aus, klicken Sie mit der rechten Maustaste auf **Alle Aufgaben**, und wählen Sie **Exportieren** ohne privaten Schlüssel im CER-Format aus.
 

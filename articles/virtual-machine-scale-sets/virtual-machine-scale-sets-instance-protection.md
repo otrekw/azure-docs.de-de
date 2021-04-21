@@ -9,12 +9,12 @@ ms.subservice: instance-protection
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 8b331eaf52a0a97232d481dccfff932221cd5faa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 292abce3361c000eeeef2c399d5ffa2d2c4852e1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933456"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762855"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Instanzschutz für Instanzen von Azure-VM-Skalierungsgruppen
 
@@ -94,7 +94,7 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Verwenden Sie [az vmss update](/cli/azure/vmss#az-vmss-update), um den Schutz vor dem horizontalen Herunterskalieren auf Ihre Skalierungsgruppeninstanz anzuwenden.
+Verwenden Sie [az vmss update](/cli/azure/vmss#az_vmss_update), um den Schutz vor dem horizontalen Herunterskalieren auf Ihre Skalierungsgruppeninstanz anzuwenden.
 
 Im folgenden Beispiel wird der Schutz vor dem horizontalen Herunterskalieren auf eine Instanz der Skalierungsgruppe angewendet (Instanz-ID 0).
 
@@ -165,7 +165,7 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Verwenden Sie [az vmss update](/cli/azure/vmss#az-vmss-update), um den Schutz vor Skalierungsgruppenaktionen auf Ihre Skalierungsgruppeninstanz anzuwenden.
+Verwenden Sie [az vmss update](/cli/azure/vmss#az_vmss_update), um den Schutz vor Skalierungsgruppenaktionen auf Ihre Skalierungsgruppeninstanz anzuwenden.
 
 Im folgenden Beispiel wird der Schutz vor Skalierungsgruppenaktionen auf eine Instanz der Skalierungsgruppe angewendet (Instanz-ID 0).
 

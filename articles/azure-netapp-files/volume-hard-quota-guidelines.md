@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 52e855cb4ab42ed78a055ecdc31cffa886dc9bf2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5e7f71f91e5778b4f096bb760bfe5a0a89b5cbcb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731988"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764277"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Auswirkungen der Änderungen am festen Volumekontingent auf Ihren Azure NetApp Files-Dienst
 
@@ -196,13 +196,13 @@ Durch diese Aktion wird Azure Cloud Shell geöffnet:
 
 [ ![Screenshot: Cloud Shell-Fenster](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png) ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
 
-In den folgenden Beispielen werden die Befehle zum [Anzeigen](/cli/azure/netappfiles/volume#az-netappfiles-volume-show) und [Ändern](/cli/azure/netappfiles/volume#az-netappfiles-volume-update) der Volumegröße verwendet:
+In den folgenden Beispielen werden die Befehle zum [Anzeigen](/cli/azure/netappfiles/volume#az_netappfiles_volume_show) und [Ändern](/cli/azure/netappfiles/volume#az_netappfiles_volume_update) der Volumegröße verwendet:
  
 [ ![Screenshot: Anzeigen der Volumegröße über PowerShell](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png) ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
 
 [ ![Screenshot: Ändern der Volumegröße über PowerShell](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png) ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
 
-In den folgenden Beispielen werden die Befehle zum [Anzeigen](/cli/azure/netappfiles/pool#az-netappfiles-pool-show) und [Ändern](/cli/azure/netappfiles/pool#az-netappfiles-pool-update) der Kapazitätspoolgröße verwendet:
+In den folgenden Beispielen werden die Befehle zum [Anzeigen](/cli/azure/netappfiles/pool#az_netappfiles_pool_show) und [Ändern](/cli/azure/netappfiles/pool#az_netappfiles_pool_update) der Kapazitätspoolgröße verwendet:
 
 [ ![Screenshot: Anzeigen der Kapazitätspoolgröße über PowerShell](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png) ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7e74a58a14bdcc2a6fe1e9f86305aae415c6abf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d13db238674cae62f528c3d730bf892a72b8f6c2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97674513"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764691"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Erstellen und Verwalten von Lesereplikaten über die Azure CLI und die REST-API
 
@@ -62,7 +62,7 @@ Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
 
-Der Befehl [az postgres server replica create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) erfordert die folgenden Parameter:
+Der Befehl [az postgres server replica create](/cli/azure/postgres/server/replica#az_postgres_server_replica_create) erfordert die folgenden Parameter:
 
 | Einstellung | Beispielwert | BESCHREIBUNG  |
 | --- | --- | --- |
@@ -93,14 +93,14 @@ Wenn Sie den Parameter `azure.replication_support` auf einem universellen oder a
 > Bevor eine Primärservereinstellung auf einen neuen Wert aktualisiert wird, aktualisieren Sie die Replikateinstellung auf den gleichen oder einen größeren Wert. Diese Aktion sorgt dafür, dass das Replikat mit allen Änderungen auf dem Masterserver Schritt halten kann.
 
 ### <a name="list-replicas"></a>Auflisten von Replikaten
-Sie können die Liste der Replikate eines primären Servers mit dem Befehl [az postgres server replica list](/cli/azure/postgres/server/replica#az-postgres-server-replica-list) anzeigen.
+Sie können die Liste der Replikate eines primären Servers mit dem Befehl [az postgres server replica list](/cli/azure/postgres/server/replica#az_postgres_server_replica_list) anzeigen.
 
 ```azurecli-interactive
 az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>Beenden der Replikation auf einem Replikatserver
-Sie können die Replikation zwischen einem primären Server und einem Lesereplikat mit dem Befehl [az postgres server replica stop](/cli/azure/postgres/server/replica#az-postgres-server-replica-stop) beenden.
+Sie können die Replikation zwischen einem primären Server und einem Lesereplikat mit dem Befehl [az postgres server replica stop](/cli/azure/postgres/server/replica#az_postgres_server_replica_stop) beenden.
 
 Das Beenden der Replikation zwischen einem primären Server und einem Lesereplikat kann nicht mehr rückgängig gemacht werden. Das Lesereplikat wird zu einem eigenständigen Server, der sowohl Lese- als auch Schreibvorgänge unterstützt. Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
 
@@ -109,7 +109,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ### <a name="delete-a-primary-or-replica-server"></a>Löschen eines primären oder Replikatservers
-Wenn Sie einen primären oder Replikatserver löschen möchten, verwenden Sie den Befehl [az postgres server delete](/cli/azure/postgres/server#az-postgres-server-delete).
+Wenn Sie einen primären oder Replikatserver löschen möchten, verwenden Sie den Befehl [az postgres server delete](/cli/azure/postgres/server#az_postgres_server_delete).
 
 Wenn Sie einen primären Server löschen, wird die Replikation auf allen Lesereplikaten beendet. Die Lesereplikate werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
 

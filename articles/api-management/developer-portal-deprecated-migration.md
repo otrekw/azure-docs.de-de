@@ -5,20 +5,16 @@ description: Hier erfahren Sie, wie Sie aus dem Legacyentwicklerportal zum neuen
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/15/2020
+ms.date: 04/15/2021
 ms.author: apimpm
-ms.openlocfilehash: f5105c685de4b3ccdffe69eec8ee8eeb32976c1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4f9f3822b58886f7d453d52402b078d8401133f
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92325923"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738880"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>Migrieren zum neuen Entwicklerportal
 
@@ -33,19 +29,19 @@ In diesem Artikel werden die Schritte beschrieben, die Sie ausführen müssen, u
 
 ## <a name="improvements-in-new-developer-portal"></a>Verbesserungen im neuen Entwicklerportal
 
-Das neue Entwicklerportal überwindet zahlreiche der Einschränkungen des veralteten Portals. Es verfügt über einen [visuellen Drag & Drop-Editor zum Bearbeiten von Inhalten](api-management-howto-developer-portal-customize.md) sowie einen dedizierten Bereich für Designer, um die Website zu formatieren. Seiten, Anpassungen und Konfigurationen werden als Azure Resource Manager-Ressourcen in Ihrem API Management-Dienst gespeichert, wodurch Sie [Portalbereitstellungen automatisieren](api-management-howto-developer-portal.md#automate) können. Schließlich ist die Codebasis des Portals Open-Source, sodass [Sie diese mit benutzerdefinierten Funktionen](api-management-howto-developer-portal.md#managed-vs-self-hosted) erweitern können.
+Das neue Entwicklerportal überwindet zahlreiche der Einschränkungen des veralteten Portals. Es verfügt über einen [visuellen Drag & Drop-Editor zum Bearbeiten von Inhalten](api-management-howto-developer-portal-customize.md) sowie einen dedizierten Bereich für Designer, um die Website zu formatieren. Seiten, Anpassungen und Konfigurationen werden als Azure Resource Manager-Ressourcen in Ihrem API Management-Dienst gespeichert, wodurch Sie [Portalbereitstellungen automatisieren](automate-portal-deployments.md) können. Schließlich ist die Codebasis des Portals Open-Source, sodass [Sie diese mit benutzerdefinierten Funktionen](api-management-howto-developer-portal.md#managed-vs-self-hosted) erweitern können.
 
 ## <a name="how-to-migrate-to-new-developer-portal"></a>Migrieren zum neuen Entwicklerportal
 
 Das neue Entwicklerportal ist nicht mit dem veralteten Portal kompatibel, und eine automatisierte Migration ist nicht möglich. Sie müssen den Inhalt (Seiten, Text, Mediendateien) manuell neu erstellen und das Aussehen des neuen Portals anpassen. Die genauen Schritte unterscheiden sich in Abhängigkeit von den Anpassungen und der Komplexität Ihres Portals. Eine entsprechende Anleitung finden Sie im [Tutorial zum Entwicklerportal](api-management-howto-developer-portal-customize.md). Die restliche Konfiguration, wie die Liste der APIs, Produkte, Benutzer und Identitätsanbieter, wird automatisch von beiden Portalen gemeinsam genutzt.
 
 > [!IMPORTANT]
-> Wenn Sie das neue Entwicklerportal zuvor gestartet, aber keine Änderungen vorgenommen haben, [setzen Sie den Standardinhalt zurück](api-management-howto-developer-portal.md#preview-to-ga), um ihn auf die neueste Version zu aktualisieren.
+> Wenn Sie das neue Entwicklerportal zuvor gestartet, aber keine Änderungen vorgenommen haben, setzen Sie den Standardinhalt zurück, um ihn auf die neueste Version zu aktualisieren.
 
 Beachten Sie beim Migrieren aus dem veralteten Portal die folgenden Änderungen:
 
 - Wenn Sie Ihr Entwicklerportal über eine benutzerdefinierte Domäne verfügbar machen, weisen Sie dem neuen Entwicklerportal [eine Domäne zu](configure-custom-domain.md). Verwenden Sie die Option **Entwicklerportal** aus dem Dropdown im Azure-Portal.
-- [Wenden Sie eine CORS-Richtlinie](api-management-howto-developer-portal.md#cors) auf Ihre APIs an, um die interaktive Testkonsole zu aktivieren.
+- [Wenden Sie eine CORS-Richtlinie](developer-portal-faq.md#cors) auf Ihre APIs an, um die interaktive Testkonsole zu aktivieren.
 - Wenn Sie benutzerdefinierte CSS zum Formatieren des Portals einfügen, müssen Sie [das Format mithilfe des integrierten Entwurfsbereichs](api-management-howto-developer-portal-customize.md) replizieren. CSS-Einfügung ist im neuen Portal nicht zulässig.
 - Sie können [in der selbstgehosteten Version des neuen Portals](api-management-howto-developer-portal.md#managed-vs-self-hosted) nur benutzerdefiniertes JavaScript einfügen.
 - Wenn sich Ihr API Management in einem virtuellen Netzwerk befindet und per Application Gateway über das Internet verfügbar gemacht wird, [lesen Sie diesen Dokumentationsartikel](api-management-howto-integrate-internal-vnet-appgateway.md), um genaue Konfigurationsschritte zu erhalten. Sie müssen folgende Schritte durchführen:

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 9427ae1b9bd68f63df40d24122cc13b5460fbc27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 88adef7ea50744f913780d99594ce3baadade84b
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572244"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600895"
 ---
 # <a name="vm-size-performance-best-practices-for-sql-server-on-azure-vms"></a>VM-Größe: Bewährte Methoden zur Leistung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,9 +33,9 @@ In der Regel kommt es zu einem Kompromiss zwischen einer Kostenoptimierung und e
 
 In der folgenden Prüfliste finden Sie eine kurze Übersicht über die bewährten Methoden zur VM-Größe, die im weiteren Verlauf des Artikels ausführlicher behandelt werden: 
 
-- Verwenden Sie VM-Größen mit vier oder mehr vCPUs, z. B. [Standard_M8-4ms](/../../virtual-machines/m-series), [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series) und [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) oder höher. 
+- Verwenden Sie VM-Größen mit vier oder mehr vCPUs, z. B. [Standard_M8-4ms](/azure/virtual-machines/m-series), [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series) und [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) oder höher. 
 - Verwenden Sie VM-Größen mit [Arbeitsspeicheroptimierung](../../../virtual-machines/sizes-memory.md), um die bestmögliche Leistung für SQL Server-Workloads zu erzielen. 
-- Die Serien [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md), [Edsv4](../../../virtual-machines/edv4-edsv4-series.md), [M](../../../virtual-machines/m-series.md) und [Mv2](../../../virtual-machines/mv2-series.md) führen zu dem optimalen Verhältnis von Arbeitsspeicher zu virtuellen Kernen, das für OLTP-Workloads benötigt wird. Beide VMs der M-Serie bieten das beste Verhältnis von Arbeitsspeicher zu virtuellen Kernen für unternehmenskritische Workloads und sind zudem ideal für Data Warehouse-Workloads geeignet. 
+- Die Serien [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md), [Edsv4](../../../virtual-machines/edv4-edsv4-series.md), [M](/azure/virtual-machines/m-series) und [Mv2](../../../virtual-machines/mv2-series.md) führen zu dem optimalen Verhältnis von Arbeitsspeicher zu virtuellen Kernen, das für OLTP-Workloads benötigt wird. Beide VMs der M-Serie bieten das beste Verhältnis von Arbeitsspeicher zu virtuellen Kernen für unternehmenskritische Workloads und sind zudem ideal für Data Warehouse-Workloads geeignet. 
 - Für unternehmenskritische und Data Warehouse-Workloads ist unter Umständen ein höheres Verhältnis von Arbeitsspeicher zu virtuellen Kernen erforderlich. 
 - Nutzen Sie die Azure Virtual Machines-Marketplace-Images, da die SQL Server-Einstellungen und Speicheroptionen für eine optimale SQL Server-Leistung konfiguriert sind. 
 - Erfassen Sie die Leistungsmerkmale der Zielworkload, und nutzen Sie sie zum Ermitteln der passenden VM-Größe für Ihr Unternehmen.
@@ -65,11 +65,11 @@ Die [VM-Größen mit Arbeitsspeicheroptimierung](../../../virtual-machines/sizes
 
 ### <a name="m-mv2-and-mdsv2-series"></a>Serie „M“, „Mv2“ und „Mdsv2“
 
-Die [M-Serie](../../../virtual-machines/m-series.md) verfügt über eine Anzahl virtueller Kerne und Arbeitsspeichermenge für einige der umfangreichsten SQL Server-Workloads.  
+Die [M-Serie](/azure/virtual-machines/m-series) verfügt über eine Anzahl virtueller Kerne und Arbeitsspeichermenge für einige der umfangreichsten SQL Server-Workloads.  
 
 Die [Mv2-Serie](../../../virtual-machines/mv2-series.md) verfügt über die höchste Anzahl virtueller Kerne und Arbeitsspeichermenge und ist für unternehmenskritische und Data Warehouse-Workloads zu empfehlen. Bei Instanzen der Mv2-Serie handelt es sich um arbeitsspeicheroptimierte VM-Größen zur Bereitstellung einer unvergleichlichen Computeleistung, um große In-Memory-Datenbanken und Workloads zu unterstützen. Sie verfügen über ein hohes Arbeitsspeicher/CPU-Verhältnis, das perfekt für relationale Datenbankserver, große Caches und In-Memory-Analysen geeignet ist.
 
-Bei [Standard_M64ms](../../../virtual-machines/m-series.md) beträgt der Wert für das Arbeitsspeicher/Kern-Verhältnis beispielsweise „28“.
+Bei [Standard_M64ms](/azure/virtual-machines/m-series) beträgt der Wert für das Arbeitsspeicher/Kern-Verhältnis beispielsweise „28“.
 
 Die [Mdsv2-Serie mit mittlerem Arbeitsspeicher](../../..//virtual-machines/msv2-mdsv2-series.md) ist eine neue M-Serie, die sich derzeit in der [Vorschauversion](https://aka.ms/Mv2MedMemoryPreview) befindet und eine Reihe von virtuellen Azure-Computern auf Niveau der M-Serie mit einem mittleren Arbeitsspeicherangebot bietet. Diese Computer eignen sich gut für SQL Server-Workloads mit einer Unterstützung eines Verhältnisses von Arbeitsspeicher zu virtuellen Kernen von mindestens „10“ bis hin zu einem Wert von „30“.
 
@@ -177,7 +177,7 @@ Die Anzahl von vCPUs kann auf die Hälfte oder ein Viertel der ursprünglichen V
 
 Diese neuen VM-Größen verfügen über ein Suffix, das die Anzahl von aktiven vCPUs angibt, um die Identifizierung zu erleichtern. 
 
-Beispielsweise müssen für [M64-32ms](../../../virtual-machines/constrained-vcpu.md) nur 32 virtuelle SQL Server-Kerne mit den Arbeitsspeicher-, E/A- und Durchsatzwerten von [M64ms](../../../virtual-machines/m-series.md) lizenziert werden, und für [M64-16ms](../../../virtual-machines/constrained-vcpu.md) ist nur die Lizenzierung von 16 virtuellen Kernen erforderlich.  Für [M64-16ms](../../../virtual-machines/constrained-vcpu.md) fällt dann zwar ein Viertel der SQL Server-Lizenzierungskosten von M64ms an, aber die Computekosten des virtuellen Computers sind identisch.
+Beispielsweise müssen für [M64-32ms](../../../virtual-machines/constrained-vcpu.md) nur 32 virtuelle SQL Server-Kerne mit den Arbeitsspeicher-, E/A- und Durchsatzwerten von [M64ms](/azure/virtual-machines/m-series) lizenziert werden, und für [M64-16ms](../../../virtual-machines/constrained-vcpu.md) ist nur die Lizenzierung von 16 virtuellen Kernen erforderlich.  Für [M64-16ms](../../../virtual-machines/constrained-vcpu.md) fällt dann zwar ein Viertel der SQL Server-Lizenzierungskosten von M64ms an, aber die Computekosten des virtuellen Computers sind identisch.
 
 > [!NOTE] 
 > - Mittlere bis große Data Warehouse-Workloads können trotzdem von [VMs mit eingeschränkten virtuellen Kernen](../../../virtual-machines/constrained-vcpu.md) profitieren. Data Warehouse-Workloads zeichnen sich häufig aber durch weniger Benutzer und Prozesse aus, bei denen größere Datenmengen mit parallel ausgeführten Abfrageplänen verarbeitet werden. 
@@ -194,4 +194,4 @@ Sehen Sie sich auch die anderen Artikel in dieser Reihe an, um mehr zu erfahren:
 
 Bewährte Methoden für die Sicherheit finden Sie unter [Sicherheitsüberlegungen für SQL Server auf Azure Virtual Machines](security-considerations-best-practices.md).
 
-Weitere Artikel zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.md) weitere Informationen.
+Weitere Artikel zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.md) weitere Informationen. 

@@ -3,12 +3,12 @@ title: Programmgesteuertes Erstellen von Azure-Dashboards
 description: Verwenden eines Dashboards im Azure-Portal als Vorlage, um Azure-Dashboards programmgesteuert zu erstellen. Der Artikel enthält eine JSON-Referenz.
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: bd56dc1c729c5aa7a77e79aa3af3366166fdcfea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 416eeb772e347b28fcb4a4dcc93c746562ea3571
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095165"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767057"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmgesteuertes Erstellen von Azure-Dashboards
 
@@ -117,7 +117,7 @@ Nachdem Sie die Vorlage konfiguriert haben, stellen Sie sie mit einer der folgen
 
 * [REST-APIs](/rest/api/resources/deployments)
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
-* [Azure-Befehlszeilenschnittstelle](/cli/azure/group/deployment#az-group-deployment-create)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/group/deployment#az_group_deployment_create)
 * [Vorlagenbereitstellungsseite im Azure-Portal](https://portal.azure.com/#create/Microsoft.Template)
 
 Es folgen zwei Versionen der JSON-Darstellung für das Beispieldashboard. Die erste ist die Version, die wir im Portal erstellt haben und die bereits an eine Ressource gebunden war. Die zweite ist die Vorlagenversion, die programmgesteuert an jeden virtuellen Computer gebunden und mithilfe von Azure Resource Manager bereitgestellt werden kann.
