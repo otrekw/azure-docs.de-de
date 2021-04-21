@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: cdcf6215973755444da9e513761de7ac71e479d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53e3f37d14153f3a2d7b5886a49b08ca9052b128
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98738641"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800062"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -24,4 +24,4 @@ ms.locfileid: "98738641"
 
 <sup>1</sup>Bei den 6 Ebenen ist die Abonnementebene nicht enthalten.
 
-<sup>2</sup>Wenn der Grenzwert von 800 Bereitstellungen erreicht ist, löschen Sie nicht mehr benötigte Bereitstellungen aus dem Verlauf. Zum Löschen von Bereitstellungen auf Verwaltungsgruppenebene verwenden Sie [Remove-AzManagementGroupDeployment](/powershell/module/az.resources/Remove-AzManagementGroupDeployment) oder [az deployment mg delete](/cli/azure/deployment/mg#az-deployment-mg-delete).
+<sup>2</sup>Wenn der Grenzwert von 800 Bereitstellungen erreicht ist, löschen Sie nicht mehr benötigte Bereitstellungen aus dem Verlauf. Zum Löschen von Bereitstellungen auf Verwaltungsgruppenebene verwenden Sie [Remove-AzManagementGroupDeployment](/powershell/module/az.resources/Remove-AzManagementGroupDeployment) oder [az deployment mg delete](/cli/azure/deployment/mg#az_deployment_mg_delete).

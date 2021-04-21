@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 26485c84749b7d4c91159476b3f683c2b0f3831b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 866eb9feb152c0094cd5281fe4820ccc4589386f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103555174"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778317"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link-Verfügbarkeit
 
@@ -96,7 +96,7 @@ In den folgenden Tabellen sind die Private Link-Dienste und die Regionen, in den
 |:-------------------|:-----------------|:----------------|:--------|
 | Azure Blob Storage (einschließlich Data Lake Storage Gen2)       |  Alle öffentlichen Regionen<br/> Alle Government-Regionen       |  Wird für die Kontoart „Universell V2“ unterstützt | Allgemein verfügbar <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Blobspeicher erstellen.](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Files | Alle öffentlichen Regionen<br/> Alle Government-Regionen      | |   Allgemein verfügbar <br/> [Erfahren Sie, wie Azure Files-Netzwerkendpunkte erstellt werden.](../storage/files/storage-files-networking-endpoints.md)   |
-| Azure-Dateisynchronisierung | Alle öffentlichen Regionen      | |   Allgemein verfügbar <br/> [Erfahren Sie, wie Azure Files-Netzwerkendpunkte erstellt werden.](../storage/files/storage-sync-files-networking-endpoints.md)   |
+| Azure-Dateisynchronisierung | Alle öffentlichen Regionen      | |   Allgemein verfügbar <br/> [Erfahren Sie, wie Azure Files-Netzwerkendpunkte erstellt werden.](../storage/file-sync/file-sync-networking-endpoints.md)   |
 | Azure Queue Storage       |  Alle öffentlichen Regionen<br/> Alle Government-Regionen       |  Wird für die Kontoart „Universell V2“ unterstützt | Allgemein verfügbar <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Warteschlangenspeicher erstellen.](tutorial-private-endpoint-storage-portal.md) |
 | Azure-Tabellenspeicher       |  Alle öffentlichen Regionen<br/> Alle Government-Regionen       |  Wird für die Kontoart „Universell V2“ unterstützt | Allgemein verfügbar <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Tabellenspeicher erstellen.](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Batch | Alle öffentlichen Regionen, außer: Deutschland, MITTE, Deutschland, NORDOSTEN <br/> Alle Government-Regionen  | | Allgemein verfügbar <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Batch erstellen.](../batch/private-connectivity.md) |

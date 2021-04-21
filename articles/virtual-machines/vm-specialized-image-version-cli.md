@@ -10,12 +10,12 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe081b0e74acf771e10406c15a3dea4e09956c37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3498037f3d2088459784ab066b8e94ba344a275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560961"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792181"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Erstellen einer VM mit einer spezialisierten Imageversion mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -23,7 +23,7 @@ Erstellen Sie eine VM aus einer [spezialisierten Imageversion](./shared-image-ga
 
 Ersetzen Sie bei Bedarf die Ressourcennamen in diesem Beispiel. 
 
-Listen Sie die Imagedefinitionen in einem Katalog mithilfe von [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) auf, um den Namen und die ID der Definitionen anzuzeigen.
+Listen Sie die Imagedefinitionen in einem Katalog mithilfe von [az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) auf, um den Namen und die ID der Definitionen anzuzeigen.
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -35,7 +35,7 @@ az sig image-definition list \
    --output tsv
 ```
 
-Erstellen Sie den virtuellen Computer mithilfe von [az vm create](/cli/azure/vm#az-vm-create) und unter Verwendung des Parameters „--specialized“, um anzugeben, dass es sich um ein spezialisiertes Image handelt. 
+Erstellen Sie den virtuellen Computer mithilfe von [az vm create](/cli/azure/vm#az_vm_create) und unter Verwendung des Parameters „--specialized“, um anzugeben, dass es sich um ein spezialisiertes Image handelt. 
 
 Verwenden Sie die Imagedefinitions-ID für `--image`, um die VM auf der Grundlage der neuesten verfügbaren Imageversion zu erstellen. Sie können die VM auch auf der Grundlage einer bestimmten Version erstellen, indem Sie die Imageversions-ID für `--image` angeben. 
 

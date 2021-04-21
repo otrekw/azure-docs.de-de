@@ -4,18 +4,18 @@ description: Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
-ms.topic: article
-ms.date: 01/20/2021
-ms.openlocfilehash: 356e63bb0a749ad0f41d886e75971e9b05c7f9dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: conceptual
+ms.date: 03/24/2021
+ms.openlocfilehash: 49da5d7f045ed06ba16696ebd16ad212b9d140d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99218993"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763307"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
-Nachdem Sie [das *lokale Datengateway* auf einem lokalen Computer installiert haben](../logic-apps/logic-apps-gateway-install.md), müssen Sie für Ihre Gatewayinstallation eine Gatewayressource in Azure erstellen, um aus Ihren Logik-Apps lokal auf Datenquellen zugreifen zu können. Anschließend können Sie diese Gatewayressource in den Triggern und Aktionen auswählen, die Sie für die [lokalen Connectors](../connectors/apis-list.md#on-premises-connectors) verwenden möchten, die in Azure Logic Apps verfügbar sind. Azure Logic Apps unterstützt Lese- und Schreibvorgänge über das Datengateway. Allerdings besitzen diese Vorgänge [Limits hinsichtlich Ihrer Nutzlastgröße](/data-integration/gateway/service-gateway-onprem#considerations).
+Nachdem Sie [das *lokale Datengateway* auf einem lokalen Computer installiert haben](../logic-apps/logic-apps-gateway-install.md), müssen Sie für Ihre Gatewayinstallation eine Gatewayressource in Azure erstellen, um aus Ihren Logik-Apps lokal auf Datenquellen zugreifen zu können. Anschließend können Sie diese Gatewayressource in den Triggern und Aktionen auswählen, die Sie für die [lokalen Connectors](../connectors/managed.md#on-premises-connectors) verwenden möchten, die in Azure Logic Apps verfügbar sind. Azure Logic Apps unterstützt Lese- und Schreibvorgänge über das Datengateway. Allerdings besitzen diese Vorgänge [Limits hinsichtlich Ihrer Nutzlastgröße](/data-integration/gateway/service-gateway-onprem#considerations).
 
 In diesem Artikel wird gezeigt, wie Sie Ihre Azure-Gatewayressource für ein zuvor [installiertes Gateway auf Ihren lokalen Computer](../logic-apps/logic-apps-gateway-install.md) erstellen. Weitere Informationen zum Gateway finden Sie unter [So funktioniert das Gateway](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
 
@@ -33,7 +33,7 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
 
 ## <a name="supported-data-sources"></a>Unterstützte Datenquellen
 
-In Azure Logic Apps unterstützt das lokale Datengateway [lokale Connectors](../connectors/apis-list.md#on-premises-connectors) für die folgenden Datenquellen:
+In Azure Logic Apps unterstützt das lokale Datengateway [lokale Connectors](../connectors/managed.md#on-premises-connectors) für die folgenden Datenquellen:
 
 * BizTalk Server 2016
 * Dateisystem

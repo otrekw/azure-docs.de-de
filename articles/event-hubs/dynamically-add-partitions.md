@@ -3,12 +3,12 @@ title: Dynamisches Hinzufügen von Partitionen zu einem Event Hub in Azure Event
 description: In diesem Artikel erfahren Sie, wie Sie einem Event Hub in Azure Event Hubs dynamisch Partitionen hinzufügen.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: e6efdc7bab309f825032555c97f1e1128f5addd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aeeee1bcefe58b006dac0b6913aaa609cbeefb8c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625264"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775118"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamisches Hinzufügen von Partitionen zu einem Event Hub (Apache Kafka-Thema) in Azure Event Hubs
 Event Hubs bietet Nachrichtenstreaming über ein partitioniertes Consumermuster, in dem jeder Consumer nur eine bestimmte Teilmenge oder Partition des Nachrichtenstreams liest. Dieses Muster ermöglicht eine horizontale Skalierung für die Ereignisverarbeitung und bietet andere datenstrombezogene Features, die in Warteschlangen und Themen nicht verfügbar sind. Eine Partition ist eine geordnete Sequenz von Ereignissen, die in einem Event Hub besteht. Neu eingehende Ereignisse werden am Ende dieser Sequenz hinzugefügt. Weitere Informationen zu Partitionen im Allgemeinen finden Sie unter [Partitionen](event-hubs-scalability.md#partitions).
@@ -33,7 +33,7 @@ Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespac
 ```
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
-Verwenden Sie den CLI-Befehl [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az-eventhubs-eventhub-update), um Partitionen in einem Event Hub zu aktualisieren. 
+Verwenden Sie den CLI-Befehl [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az_eventhubs_eventhub_update), um Partitionen in einem Event Hub zu aktualisieren. 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12
@@ -105,4 +105,3 @@ Wenn ein Mitglied einer Consumergruppe eine Aktualisierung der Metadaten durchf�
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Partitionen finden Sie unter [Partitionen](event-hubs-scalability.md#partitions).
-

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 801983959558dfe702b6f1828e5fce3c9d2fd157
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 1c9aa818e527b457daca7b669144c360706308eb
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095558"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504283"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Die Azure-Dateisynchronisierung sollte eine private Verbindung verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d320205-c6a1-4ac6-873d-46224024e8e2) |Durch das Erstellen eines privaten Endpunkts für die angegebene Speichersynchronisierungsdienst-Ressource können Sie aus dem privaten IP-Adressraum Ihres Organisationsnetzwerk auf Ihre Speichersynchronisierungsdienst-Ressource zugreifen, anstatt für den Zugriff den über das Internet zugänglichen öffentlichen Endpunkt zu verwenden. Das Erstellen eines privaten Endpunkts führt nicht dazu, dass der öffentliche Endpunkt deaktiviert wird. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_AuditIfNotExists.json) |
 |[Konfigurieren der Azure-Dateisynchronisierung mit privaten Endpunkten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb35dddd9-daf7-423b-8375-5a5b86806d5a) |Hiermit wird ein privater Endpunkt für die angegebene Speichersynchronisierungsdienst-Ressource erstellt. So können Sie aus dem privaten IP-Adressraum Ihres Organisationsnetzwerk auf Ihre Speichersynchronisierungsdienst-Ressource zugreifen, anstatt für den Zugriff den über das Internet zugänglichen öffentlichen Endpunkt zu verwenden. Das Vorhandensein von einem oder mehreren privaten Endpunkten an sich führt nicht dazu, dass der öffentliche Endpunkt deaktiviert wird. |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_DeployIfNotExists.json) |

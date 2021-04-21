@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4d65c97bfccd223453583b25ee0586c5bc0b1ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29240f371d39ef2d3234e3207cc91768478bf3ff
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091453"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748501"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service
 
@@ -32,9 +32,7 @@ Azure Database Migration Service ist ein vollständig verwalteter Dienst, der di
 * Kontinuierliche Investition in reibungslose Migrationen
 
 **F: Welche Quelle-Ziel-Paare werden derzeit von Azure Database Migration Service unterstützt?**
-Der Dienst unterstützt derzeit eine Vielzahl von Quelle-Ziel-Paaren oder Migrationsszenarien. Eine vollständige Liste der Status der einzelnen verfügbaren Migrationsszenarios finden Sie im Artikel [Status von Migrationsszenarios, die von Azure Database Migration Service unterstützt werden](./resource-scenario-status.md).
-
-Andere Migrationsszenarios befinden sich in der Vorschau und erfordern eine Nominierung über die DMS-Vorschauseite. Eine vollständige Liste der Szenarien in der Vorschau finden Sie auf der [DMS-Vorschauseite](https://aka.ms/dms-preview/). Hier können Sie sich auch registrieren, um eines dieser Angebote zu nutzen.
+Der Dienst unterstützt derzeit eine Vielzahl von Quelle-Ziel-Paaren oder Migrationsszenarien. Eine vollständige Liste der Status der einzelnen verfügbaren Migrationsszenarios finden Sie im Artikel [Status von Migrationsszenarios, die von Azure Database Migration Service unterstützt werden](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/dms/resource-scenario-status.md).
 
 **F: Welche Versionen von SQL Server werden von Azure Database Migration Service als Datenquelle unterstützt?**
 Für die Migration von SQL Server werden SQL Server 2005 bis SQL Server 2019 für Azure Database Migration Service unterstützt.

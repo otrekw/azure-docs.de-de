@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d041f864c6c8cd3ae9c522d79447d71c86f9ac04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab19bb1c6cc43334a3d0d427b6aff6ced2d6cc69
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98875603"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789661"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Erstellen einer Momentaufnahme mit dem Portal oder der Azure CLI
 
@@ -26,7 +26,7 @@ Im folgenden Beispiel muss [Cloud Shell](https://shell.azure.com/bash) verwendet
 
 Die folgenden Schritte zeigen, wie Sie mithilfe des Befehls **az snapshot create** mit dem **--source-disk**-Parameter eine Momentaufnahme erstellen. Beim folgenden Beispiel wird davon ausgegangen, dass eine VM namens *myVM* in der Ressourcengruppe *myResourceGroup* vorhanden ist.
 
-Rufen Sie mit [az vm show](/cli/azure/vm#az-vm-show) die Datenträger-ID ab.
+Rufen Sie mit [az vm show](/cli/azure/vm#az_vm_show) die Datenträger-ID ab.
 
 ```azurecli-interactive
 osDiskId=$(az vm show \
@@ -36,7 +36,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-Erstellen Sie mit [az snapshot create](/cli/azure/snapshot#az-snapshot-create) eine Momentaufnahme namens *osDisk-backup*.
+Erstellen Sie mit [az snapshot create](/cli/azure/snapshot#az_snapshot_create) eine Momentaufnahme namens *osDisk-backup*.
 
 ```azurecli-interactive
 az snapshot create \
@@ -48,7 +48,7 @@ az snapshot create \
 > [!NOTE]
 > Wenn Sie die Momentaufnahme in Speichern mit Zonenresilienz speichern möchten, müssen Sie sie in einer Region erstellen, die [Verfügbarkeitszonen](../../availability-zones/az-overview.md) unterstützt, und den **--sku Standard_ZRS**-Parameter einbeziehen.
 
-Mit [az snapshot list](/cli/azure/snapshot#az-snapshot-list) können Sie eine Liste von Momentaufnahmen anzeigen.
+Mit [az snapshot list](/cli/azure/snapshot#az_snapshot_list) können Sie eine Liste von Momentaufnahmen anzeigen.
 
 ```azurecli-interactive
 az snapshot list \

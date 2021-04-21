@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 9faaf79958443c252a8d913fbd7448389c610e09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 16f937286b967aaea8ec6a16e97835b2de5a0331
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628576"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765495"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Dies ist eine aktuelle Einschränkung der zugrunde liegenden Komponente, bei der
 
 **Wie kann ich meine verwaltete Instanz skalieren?**
 
-Sie können Ihre verwaltete Instanz per [Azure-Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](/cli/azure/sql/mi#az-sql-mi-update) oder mit [ARM-Vorlagen](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates) skalieren.
+Sie können Ihre verwaltete Instanz per [Azure-Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](/cli/azure/sql/mi#az_sql_mi_update) oder mit [ARM-Vorlagen](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates) skalieren.
 
 **Kann ich meine verwaltete Instanz aus einer Region in eine andere verschieben?**
 
@@ -102,7 +102,7 @@ Ja, das ist möglich. Eine Anleitung finden Sie unter [Verschieben von Ressource
 
 **Wie kann ich meine verwaltete Instanz löschen?**
 
-Sie können verwaltete Instanzen per Azure-Portal, [PowerShell](/powershell/module/az.sql/remove-azsqlinstance), [Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) oder mit [Resource Manager-REST-APIs](/rest/api/sql/managedinstances/delete) löschen.
+Sie können verwaltete Instanzen per Azure-Portal, [PowerShell](/powershell/module/az.sql/remove-azsqlinstance), [Azure CLI](/cli/azure/sql/mi#az_sql_mi_delete) oder mit [Resource Manager-REST-APIs](/rest/api/sql/managedinstances/delete) löschen.
 
 **Wie lange dauert es, eine Instanz zu erstellen oder zu aktualisieren oder eine Datenbank wiederherzustellen?**
 

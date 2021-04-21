@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84bb4766b3a896823dd0bef023f8042965a85846
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100530738"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532858"
 ---
 # <a name="examine-the-video-indexer-output"></a>Überprüfen der Video Indexer-Ausgabe
 
@@ -46,8 +46,8 @@ Weitere Informationen finden Sie unter [View and edit video insights](video-inde
 
 ## <a name="insightsoutput-produced-by-api"></a>Von der API produzierte Erkenntnisse/Ausgaben
 
-1. Rufen Sie zum Abrufen der JSON-Datei die [Get-Video-Index-API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) auf.
-1. Falls Sie sich auch für spezifische Artefakte interessieren, rufen Sie die [Get-Video-Artifact-Download-URL-API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) auf.
+1. Rufen Sie zum Abrufen der JSON-Datei die [Get-Video-Index-API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Index) auf.
+1. Falls Sie sich auch für spezifische Artefakte interessieren, rufen Sie die [Get-Video-Artifact-Download-URL-API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Artifact-Download-Url) auf.
 
     Geben Sie in dem API-Aufruf den angeforderten Artefakttyp (OCR, Gesichter, Keyframes usw.) an.
 
@@ -93,14 +93,14 @@ Weitere Informationen finden Sie unter [View and edit video insights](video-inde
 
 In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 
-|attribute | BESCHREIBUNG|
+|attribute | Beschreibung|
 |---|---|
 |name|Der Name des Videos. Beispiel: Azure Monitor.|
 |id|Die ID des Videos. Beispiel: 63c6d532ff.|
 |privacyMode|Für Ihre Aufschlüsselung kann einer der folgenden Modi verwendet werden: **Private** oder **Public**. **Public**: Das Video ist für alle Benutzer Ihres Kontos und alle Personen sichtbar, die über einen Link zum Video verfügen. **Private**: Das Video ist für alle Benutzer Ihres Kontos sichtbar.|
 |duration|Enthält eine Dauer, mit der der Zeitbereich beschrieben wird, in dem eine Erkenntnis gewonnen wurde. Die Dauer wird in Sekunden angegeben.|
 |thumbnailVideoId|Die ID des Videos, aus dem die Miniaturansicht entnommen wurde.
-|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) auf, und übergeben Sie „thumbnailVideoId“ und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
+|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie [Get-Thumbnail](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Thumbnail) auf, und übergeben Sie „thumbnailVideoId“ und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
 |faces/animatedCharacters|Kann null oder mehr Gesichter enthalten. Ausführlichere Informationen finden Sie unter [faces/animatedCharacters](#facesanimatedcharacters).|
 |keywords|Kann null oder mehr Schlüsselwörter enthalten. Ausführlichere Informationen finden Sie unter [keywords](#keywords).|
 |sentiments|Kann null oder mehr Stimmungen enthalten. Ausführlichere Informationen finden Sie unter [sentiments](#sentiments).|
@@ -127,7 +127,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |metadata|Die externen Metadaten des Videos (falls vom Benutzer angegeben).|
 |isAdult|Gibt an, ob das Video manuell geprüft und als nur für Erwachsene geeignetes Video eingestuft wurde.|
 |insights|Das insights-Objekt. Weitere Informationen finden Sie unter [insights](#insights).|
-|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) auf, und übergeben Sie die Video-ID und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
+|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie [Get-Thumbnail](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Thumbnail) auf, und übergeben Sie die Video-ID und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
 |publishedUrl|Eine URL zum Streamen des Videos.|
 |publishedUrlProxy|Eine URL, über die das Video gestreamt werden kann (für Apple-Geräte).|
 |viewToken|Ein kurzlebiges Anzeigetoken für das Streamen des Videos.|

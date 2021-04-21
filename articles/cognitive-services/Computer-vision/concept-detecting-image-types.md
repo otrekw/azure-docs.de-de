@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6d2ed00f3fc6f5b52a9a13a96f1e1659e30f02d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc24788ddd21ca2b7df1f9f92238c776dee33016
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96532600"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778875"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Erkennen von Bildtypen mit maschinellem Sehen
 
-Mit der [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)-API kann das maschinelle Sehen den Inhaltstyp von Bildern analysieren und gibt an, ob es sich bei einem Bild um eine ClipArt oder eine Linienzeichnung handelt.
+Mit der [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b)-API kann das maschinelle Sehen den Inhaltstyp von Bildern analysieren und gibt an, ob es sich bei einem Bild um eine ClipArt oder eine Linienzeichnung handelt.
 
 ## <a name="detecting-clip-art"></a>Erkennen von ClipArts
 
@@ -115,6 +115,6 @@ Die folgende JSON-Antwort veranschaulicht, was das maschinelle Sehen zurückgibt
 
 ## <a name="use-the-api"></a>Verwenden der API
 
-Die Funktion zur Erkennung von Bildtypen ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `ImageType` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"imageType"`.
+Die Funktion zur Erkennung von Bildtypen ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `ImageType` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"imageType"`.
 
 * [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 4392e7f146f13e581f722b94f13038ad8abff0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b966f68e19794aadebff76e3e9b29ed79a32eebe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102245067"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800271"
 ---
 ## <a name="update-resources"></a>Aktualisieren von Ressourcen
 
@@ -36,7 +36,7 @@ Imageversion:
 
 Wenn Sie Replikatregionen hinzufügen möchten, dürfen Sie das verwaltete Quellimage nicht löschen. Das verwaltete Quellimage ist erforderlich, um die Imageversion in weiteren Regionen zu replizieren. 
 
-Aktualisieren Sie die Beschreibung eines Katalogs mit ([az sig update](/cli/azure/sig#az-sig-update). 
+Aktualisieren Sie die Beschreibung eines Katalogs mit ([az sig update](/cli/azure/sig#az_sig_update). 
 
 ```azurecli-interactive
 az sig update \
@@ -46,7 +46,7 @@ az sig update \
 ```
 
 
-Aktualisieren Sie die Beschreibung einer Imagedefinition mit [az sig image-definition update](/cli/azure/sig/image-definition#az-sig-image-definition-update).
+Aktualisieren Sie die Beschreibung einer Imagedefinition mit [az sig image-definition update](/cli/azure/sig/image-definition#az_sig_image_definition_update).
 
 ```azurecli-interactive
 az sig image-definition update \
@@ -56,7 +56,7 @@ az sig image-definition update \
    --set description="My updated description."
 ```
 
-Aktualisieren Sie eine Imageversion zum Hinzufügen einer Region als Replikationsziel mit [az sig image-version update](/cli/azure/sig/image-definition#az-sig-image-definition-update). Diese Änderung wird einige Zeit in Anspruch nehmen, da das Image in eine neue Region repliziert wird.
+Aktualisieren Sie eine Imageversion zum Hinzufügen einer Region als Replikationsziel mit [az sig image-version update](/cli/azure/sig/image-definition#az_sig_image_definition_update). Diese Änderung wird einige Zeit in Anspruch nehmen, da das Image in eine neue Region repliziert wird.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -67,7 +67,7 @@ az sig image-version update \
    --add publishingProfile.targetRegions  name=eastus
 ```
 
-In diesem Beispiel wird gezeigt, wie Sie mit [az sig image-version update](/cli/azure/sig/image-definition#az-sig-image-definition-update) dafür sorgen können, dass diese Imageversion nicht als das *neueste* Image verwendet wird.
+In diesem Beispiel wird gezeigt, wie Sie mit [az sig image-version update](/cli/azure/sig/image-definition#az_sig_image_definition_update) dafür sorgen können, dass diese Imageversion nicht als das *neueste* Image verwendet wird.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -78,7 +78,7 @@ az sig image-version update \
    --set publishingProfile.excludeFromLatest=true
 ```
 
-Dieses Beispiel zeigt, wie [az sig image-version update](/cli/azure/sig/image-definition#az-sig-image-definition-update) verwendet wird, um diese Imageversion in die Berücksichtigung als *neuestes* Image einzubeziehen.
+Dieses Beispiel zeigt, wie [az sig image-version update](/cli/azure/sig/image-definition#az_sig_image_definition_update) verwendet wird, um diese Imageversion in die Berücksichtigung als *neuestes* Image einzubeziehen.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -93,7 +93,7 @@ az sig image-version update \
 
 Ressourcen müssen in umgekehrter Reihenfolge gelöscht werden, beginnend mit der Imageversion. Nachdem alle Imageversionen gelöscht sind, können Sie die Imagedefinition löschen. Nachdem alle Imagedefinitionen gelöscht sind, können Sie den Katalog löschen. 
 
-Löschen Sie eine Imageversion mit [az sig image-version delete](/cli/azure/sig/image-version#az-sig-image-version-delete).
+Löschen Sie eine Imageversion mit [az sig image-version delete](/cli/azure/sig/image-version#az_sig_image_version_delete).
 
 ```azurecli-interactive
 az sig image-version delete \
@@ -103,7 +103,7 @@ az sig image-version delete \
    --gallery-image-version 1.0.0 
 ```
 
-Löschen Sie eine Imagedefinition mit [az sig image-definition delete](/cli/azure/sig/image-definition#az-sig-image-definition-delete).
+Löschen Sie eine Imagedefinition mit [az sig image-definition delete](/cli/azure/sig/image-definition#az_sig_image_definition_delete).
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -113,7 +113,7 @@ az sig image-definition delete \
 ```
 
 
-Löschen Sie einen Imagekatalog mit [az sig delete](/cli/azure/sig#az-sig-delete).
+Löschen Sie einen Imagekatalog mit [az sig delete](/cli/azure/sig#az_sig_delete).
 
 ```azurecli-interactive
 az sig delete \

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 670176d7478ddab3d17e15526df512dfa7e99fd4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98795329"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762063"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Azure SQL-Datenbank und SQL Managed Instance: Wiederherstellen automatisierter Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -247,11 +247,11 @@ So stellen Sie eine Datenbank mithilfe der REST-API wieder her:
 
 #### <a name="sql-database"></a>SQL-Datenbank
 
-Eine Erläuterung zum Wiederherstellen einer Datenbank mithilfe der Azure CLI finden Sie unter [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
+Eine Erläuterung zum Wiederherstellen einer Datenbank mithilfe der Azure CLI finden Sie unter [az sql db restore](/cli/azure/sql/db#az_sql_db_restore).
 
 #### <a name="sql-managed-instance"></a>Verwaltete SQL-Instanz
 
-Eine Erläuterung zum Wiederherstellen einer Datenbank der verwalteten Instanz mithilfe der Azure CLI finden Sie unter [az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore).
+Eine Erläuterung zum Wiederherstellen einer Datenbank der verwalteten Instanz mithilfe der Azure CLI finden Sie unter [az sql midb restore](/cli/azure/sql/midb#az_sql_midb_restore).
 
 ## <a name="summary"></a>Zusammenfassung
 

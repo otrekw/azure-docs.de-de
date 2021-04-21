@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b8e72cab6d6220b71e93550eec7649752201180a
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 42e244249ecb0539637918ae2439bdb4f5da4b38
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256581"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588478"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Tutorial zum Konfigurieren von Nevis mit Azure Active Directory B2C für die kennwortlose Authentifizierung
 
-In diesem Beispieltutorial erfahren Sie, wie Sie Azure AD B2C mit [Nevis](https://www.nevis.net/solution/authentication-cloud) erweitern, um die kennwortlose Authentifizierung zu aktivieren. Nevis bietet mit der Nevis Access-App eine vollständig markentreue Endbenutzerumgebung an, die auf Mobilgeräte abzielt. So wird eine starke Kundenauthentifizierung bereitgestellt, die den Transaktionsanforderungen der Zahlungsdiensterichtlinie 2 (Payment Services Directive 2, PSD2) entspricht.
+In diesem Beispieltutorial erfahren Sie, wie Sie Azure AD B2C mit [Nevis](https://www.nevis.net/en/solution/authentication-cloud) erweitern, um die kennwortlose Authentifizierung zu aktivieren. Nevis bietet mit der Nevis Access-App eine vollständig markentreue Endbenutzerumgebung an, die auf Mobilgeräte abzielt. So wird eine starke Kundenauthentifizierung bereitgestellt, die den Transaktionsanforderungen der Zahlungsdiensterichtlinie 2 (Payment Services Directive 2, PSD2) entspricht.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +46,7 @@ Diagramm der Implementierung
 
 ![Allgemeiner Ablauf bei der Anmeldung per Kennwort mit Azure AD B2C und Nevis](./media/partner-nevis/nevis-architecture-diagram.png)
 
-|Schritt | BESCHREIBUNG |
+|Schritt | Beschreibung |
 |:-----| :-----------|
 | 1. | Ein Benutzer versucht, sich über eine Azure AD B2C-Richtlinie für die Anmeldung und Registrierung bei einer Anwendung anzumelden oder zu registrieren.
 | 2. | Während der Registrierung wird die Nevis Access-App mithilfe eines QR-Codes auf dem Benutzergerät registriert. Ein privater Schlüssel wird auf dem Benutzergerät generiert und zum Signieren der Benutzeranforderungen verwendet.
