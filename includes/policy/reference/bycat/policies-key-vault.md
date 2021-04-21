@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 19d20caf71ddd09b7a537b4214d339dbff125e98
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 8d4f02aa2f358d63a96855a31bc53c63307a933a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090800"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498731"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Für ein verwaltetes Azure Key Vault-HSM muss der Löschschutz aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc39ba22d-4428-4149-b981-70acb31fc383) |Das böswillige Löschen eines verwalteten Azure Key Vault-HSM kann zu dauerhaftem Datenverlust führen. Ein böswilliger Insider in Ihrer Organisation kann ein verwaltetes Azure Key Vault-HSM löschen oder bereinigen. Der Löschschutz schützt Sie vor Insiderangriffen, indem ein verbindlicher Aufbewahrungszeitraum für ein vorläufig gelöschtes verwaltetes Azure Key Vault-HSM durchgesetzt wird. Niemand innerhalb Ihrer Organisation oder von Microsoft kann Ihr verwaltetes Azure Key Vault-HSM während des Aufbewahrungszeitraums für vorläufiges Löschen löschen. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_Recoverable_Audit.json) |
 |[\[Vorschau:\] Zertifikate müssen von der angegebenen integrierten Zertifizierungsstelle ausgestellt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |Hiermit werden die Konformitätsanforderungen Ihrer Organisation verwaltet, indem die in Azure integrierten Zertifizierungsstellen angegeben werden, die Zertifikate in Ihrem Schlüsseltresor ausstellen können. Beispiel: Digicert oder GlobalSign. |Audit, Deny, Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |

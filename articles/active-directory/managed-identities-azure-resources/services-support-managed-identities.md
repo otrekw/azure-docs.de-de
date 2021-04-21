@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 4d6fcf0e2f2f5a6fb89ef5c2c45dcd4541fa6d1c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c4cd9140d03bba1f9d95ed64c3628da4fe32ecd9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308403"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771477"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -288,7 +288,7 @@ Konfigurieren Sie die verwaltete Identität für Azure Policy anhand der folgend
 
 - [Azure portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure-Befehlszeilenschnittstelle](/cli/azure/policy/assignment#az-policy-assignment-create)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/policy/assignment#az_policy_assignment_create)
 - [Azure-Ressourcen-Manager-Vorlagen](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/policy/policyassignments/create)
 

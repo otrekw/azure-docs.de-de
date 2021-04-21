@@ -3,12 +3,12 @@ title: Verwalten der Sicherungen von Azure-Dateifreigaben mit der Azure-Befehlsz
 description: Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle Azure-Dateifreigaben, die durch Azure Backup gesichert wurden, verwalten und überwachen.
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 5a8a785016845b836a102663a959e4b2f28696b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e389f5cde12734ef4bf0be4ecfba69ba33f5e030
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566451"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773601"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Verwalten der Sicherungen von Azure-Dateifreigaben mit der Azure-Befehlszeilenschnittstelle
 
@@ -27,7 +27,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie bereits über eine durch [Azure B
 
 ## <a name="monitor-jobs"></a>Überwachen von Aufträgen
 
-Wenn Sie einen Sicherungs- oder Wiederherstellungsvorgang auslösen, erstellt der Sicherungsdienst einen Auftrag zum Nachverfolgen. Verwenden Sie das Cmdlet [az backup job list](/cli/azure/backup/job#az-backup-job-list), um abgeschlossene oder derzeit ausgeführte Aufträge zu überwachen. Mit der Befehlszeilenschnittstelle haben Sie auch die Möglichkeit, [einen ausgeführten Auftrag anzuhalten](/cli/azure/backup/job#az-backup-job-stop) oder [den Abschluss eines Auftrags abzuwarten](/cli/azure/backup/job#az-backup-job-wait).
+Wenn Sie einen Sicherungs- oder Wiederherstellungsvorgang auslösen, erstellt der Sicherungsdienst einen Auftrag zum Nachverfolgen. Verwenden Sie das Cmdlet [az backup job list](/cli/azure/backup/job#az_backup_job_list), um abgeschlossene oder derzeit ausgeführte Aufträge zu überwachen. Mit der Befehlszeilenschnittstelle haben Sie auch die Möglichkeit, [einen ausgeführten Auftrag anzuhalten](/cli/azure/backup/job#az_backup_job_stop) oder [den Abschluss eines Auftrags abzuwarten](/cli/azure/backup/job#az_backup_job_wait).
 
 Im folgenden Beispiel wird der Status von Sicherungsaufträgen für den Recovery Services-Tresor *azurefilesvault* angezeigt:
 
@@ -92,13 +92,13 @@ az backup job list --resource-group azurefiles --vault-name azurefilesvault
 
 ## <a name="modify-policy"></a>Ändern der Richtlinie
 
-Sie können eine Sicherungsrichtlinie mit [az backup item set-policy](/cli/azure/backup/item#az-backup-item-set-policy) bearbeiten, um die Sicherungshäufigkeit oder die Aufbewahrungsdauer zu ändern.
+Sie können eine Sicherungsrichtlinie mit [az backup item set-policy](/cli/azure/backup/item#az_backup_item_set_policy) bearbeiten, um die Sicherungshäufigkeit oder die Aufbewahrungsdauer zu ändern.
 
 Um die Richtlinie zu ändern, definieren Sie die folgenden Parameter:
 
-* **--container-name**: Der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](/cli/azure/backup/container#az-backup-container-list).
-* **--name**: Der Name der Dateifreigabe, für die Sie die Richtlinie ändern möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](/cli/azure/backup/item#az-backup-item-list).
-* **--policy-name**: Der Name der Sicherungsrichtlinie, die Sie für die Dateifreigabe festlegen möchten. Sie können [az backup policy list](/cli/azure/backup/policy#az-backup-policy-list) verwenden, um alle Richtlinien für Ihren Tresor anzuzeigen.
+* **--container-name**: Der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](/cli/azure/backup/container#az_backup_container_list).
+* **--name**: Der Name der Dateifreigabe, für die Sie die Richtlinie ändern möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](/cli/azure/backup/item#az_backup_item_list).
+* **--policy-name**: Der Name der Sicherungsrichtlinie, die Sie für die Dateifreigabe festlegen möchten. Sie können [az backup policy list](/cli/azure/backup/policy#az_backup_policy_list) verwenden, um alle Richtlinien für Ihren Tresor anzuzeigen.
 
 Im folgenden Beispiel wird die Sicherungsrichtlinie *schedule2* für die Dateifreigabe *azurefiles* im Speicherkonto *afsaccount* festgelegt.
 
@@ -121,7 +121,7 @@ Name                                  ResourceGroup
 fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 ```
 
-Das Attribut **Name** in der Ausgabe entspricht dem Namen des Auftrags, der vom Sicherungsdienst für Ihren Vorgang zum Ändern der Richtlinie erstellt wird. Verwenden Sie zum Nachverfolgen des Auftragsstatus das Cmdlet [az backup job show](/cli/azure/backup/job#az-backup-job-show).
+Das Attribut **Name** in der Ausgabe entspricht dem Namen des Auftrags, der vom Sicherungsdienst für Ihren Vorgang zum Ändern der Richtlinie erstellt wird. Verwenden Sie zum Nachverfolgen des Auftragsstatus das Cmdlet [az backup job show](/cli/azure/backup/job#az_backup_job_show).
 
 ## <a name="stop-protection-on-a-file-share"></a>Beenden des Schutzes für eine Dateifreigabe
 
@@ -134,12 +134,12 @@ Unter Umständen fallen für die Aufbewahrung der Wiederherstellungspunkte im Sp
 
 Um den Schutz der Dateifreigabe zu beenden, definieren Sie die folgenden Parameter:
 
-* **--container-name**: Der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](/cli/azure/backup/container#az-backup-container-list).
-* **--item-name**: Der Name der Dateifreigabe, deren Schutz Sie beenden möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](/cli/azure/backup/item#az-backup-item-list).
+* **--container-name**: Der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](/cli/azure/backup/container#az_backup_container_list).
+* **--item-name**: Der Name der Dateifreigabe, deren Schutz Sie beenden möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](/cli/azure/backup/item#az_backup_item_list).
 
 ### <a name="stop-protection-and-retain-recovery-points"></a>Beenden des Schutzes und Beibehalten der Wiederherstellungspunkte
 
-Um den Schutz zu beenden, die Daten jedoch beizubehalten, verwenden Sie das Cmdlet [az backup protection disable](/cli/azure/backup/protection#az-backup-protection-disable).
+Um den Schutz zu beenden, die Daten jedoch beizubehalten, verwenden Sie das Cmdlet [az backup protection disable](/cli/azure/backup/protection#az_backup_protection_disable).
 
 Im folgenden Beispiel wird der Schutz für die Dateifreigabe *azurefiles* beendet, aber alle Wiederherstellungspunkte werden beibehalten.
 
@@ -162,11 +162,11 @@ Name                                  ResourceGroup
 fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 ```
 
-Das Attribut **Name** in der Ausgabe entspricht dem Namen des Auftrags, der vom Sicherungsdienst für Ihren Vorgang zum Beenden des Schutzes erstellt wird. Verwenden Sie zum Nachverfolgen des Auftragsstatus das Cmdlet [az backup job show](/cli/azure/backup/job#az-backup-job-show).
+Das Attribut **Name** in der Ausgabe entspricht dem Namen des Auftrags, der vom Sicherungsdienst für Ihren Vorgang zum Beenden des Schutzes erstellt wird. Verwenden Sie zum Nachverfolgen des Auftragsstatus das Cmdlet [az backup job show](/cli/azure/backup/job#az_backup_job_show).
 
 ### <a name="stop-protection-without-retaining-recovery-points"></a>Beenden des Schutzes ohne Beibehaltung von Wiederherstellungspunkten
 
-Um den Schutz ohne Beibehaltung der Wiederherstellungspunkte zu beenden, verwenden Sie das Cmdlet [az backup protection disable](/cli/azure/backup/protection#az-backup-protection-disable), und legen Sie dabei die Option **delete-backup-data** auf **true** fest.
+Um den Schutz ohne Beibehaltung der Wiederherstellungspunkte zu beenden, verwenden Sie das Cmdlet [az backup protection disable](/cli/azure/backup/protection#az_backup_protection_disable), und legen Sie dabei die Option **delete-backup-data** auf **true** fest.
 
 Im nachstehenden Beispiel wird der Schutz für die Dateifreigabe *azurefiles* beendet, ohne Wiederherstellungspunkte beizubehalten.
 
@@ -189,11 +189,11 @@ Wenn Sie den Schutz für eine Azure-Dateifreigabe beendet, die Wiederherstellung
 
 Um den Schutz der Dateifreigabe wieder aufzunehmen, definieren Sie die folgenden Parameter:
 
-* **--container-name**: Der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](/cli/azure/backup/container#az-backup-container-list).
-* **--item-name**: Der Name der Dateifreigabe, deren Schutz Sie wieder aufnehmen möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](/cli/azure/backup/item#az-backup-item-list).
+* **--container-name**: Der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](/cli/azure/backup/container#az_backup_container_list).
+* **--item-name**: Der Name der Dateifreigabe, deren Schutz Sie wieder aufnehmen möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](/cli/azure/backup/item#az_backup_item_list).
 * **--policy-name**: Der Name der Sicherungsrichtlinie, für die Sie den Schutz der Dateifreigabe wieder aufnehmen möchten.
 
-Im folgenden Beispiel wird das Cmdlet [az backup protection resume](/cli/azure/backup/protection#az-backup-protection-resume) verwendet, um den Schutz für die Dateifreigabe *azurefiles* mithilfe der Sicherungsrichtlinie *schedule1* wieder aufzunehmen.
+Im folgenden Beispiel wird das Cmdlet [az backup protection resume](/cli/azure/backup/protection#az_backup_protection_resume) verwendet, um den Schutz für die Dateifreigabe *azurefiles* mithilfe der Sicherungsrichtlinie *schedule1* wieder aufzunehmen.
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --policy-name schedule2 --out table
@@ -214,15 +214,15 @@ Name                                  ResourceGroup
 75115ab0-43b0-4065-8698-55022a234b7f  azurefiles
 ```
 
-Das Attribut **Name** in der Ausgabe entspricht dem Namen des Auftrags, der vom Sicherungsdienst für Ihren Vorgang zum Wiederaufnehmen des Schutzes erstellt wird. Verwenden Sie zum Nachverfolgen des Auftragsstatus das Cmdlet [az backup job show](/cli/azure/backup/job#az-backup-job-show).
+Das Attribut **Name** in der Ausgabe entspricht dem Namen des Auftrags, der vom Sicherungsdienst für Ihren Vorgang zum Wiederaufnehmen des Schutzes erstellt wird. Verwenden Sie zum Nachverfolgen des Auftragsstatus das Cmdlet [az backup job show](/cli/azure/backup/job#az_backup_job_show).
 
 ## <a name="unregister-a-storage-account"></a>Aufheben der Registrierung eines Speicherkontos
 
 Wenn Sie Ihre Dateifreigaben in einem bestimmten Speicherkonto unter Verwendung eines anderen Recovery Services-Tresors schützen möchten, [beenden Sie zunächst den Schutz für alle Dateifreigaben](#stop-protection-on-a-file-share) in diesem Speicherkonto. Heben Sie dann die Registrierung des Kontos im derzeit für den Schutz verwendeten Recovery Services-Tresor auf.
 
-Zum Aufheben der Registrierung des Speicherkontos müssen Sie einen Containernamen angeben. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](/cli/azure/backup/container#az-backup-container-list).
+Zum Aufheben der Registrierung des Speicherkontos müssen Sie einen Containernamen angeben. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](/cli/azure/backup/container#az_backup_container_list).
 
-Im folgenden Beispiel wird die Registrierung des Speicherkontos *afsaccount* von *azurefilesvault-* mithilfe des Cmdlets [az backup container unregister](/cli/azure/backup/container#az-backup-container-unregister) aufgehoben.
+Im folgenden Beispiel wird die Registrierung des Speicherkontos *afsaccount* von *azurefilesvault-* mithilfe des Cmdlets [az backup container unregister](/cli/azure/backup/container#az_backup_container_unregister) aufgehoben.
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --out table

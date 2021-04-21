@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ed2b13077ff5809899097254dde0fa8406e1db3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37571a82ca73342b8edfc4702686ccd9091887c4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85601382"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771501"
 ---
 Sie können die Verschlüsselung mit Azure PowerShell, der Azure CLI oder einer Resource Manager-Vorlage deaktivieren. 
 
@@ -25,7 +25,7 @@ Sie können die Verschlüsselung mit Azure PowerShell, der Azure CLI oder einer 
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [-VolumeType DATA]
      ```
 
-- **Deaktivieren der Verschlüsselung mit der Azure CLI:** Verwenden Sie den Befehl [az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable), um die Verschlüsselung zu deaktivieren. 
+- **Deaktivieren der Verschlüsselung mit der Azure CLI:** Verwenden Sie den Befehl [az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable), um die Verschlüsselung zu deaktivieren. 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
      ```

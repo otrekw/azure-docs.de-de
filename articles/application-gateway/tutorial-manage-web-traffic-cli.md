@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 89ba84be61469ff07eff55bb9cd114fe124b3ec2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01df6a12437808aa903046d2923c735ded5067ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566604"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772756"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Verwalten von Webdatenverkehr mit einem Anwendungsgateway per Azure CLI
 
@@ -35,7 +35,7 @@ Sie können für dieses Verfahren auch [Azure PowerShell](tutorial-manage-web-tr
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe.
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe.
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupAG* am Standort *eastus* erstellt.
 
@@ -99,7 +99,7 @@ az network application-gateway create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Erstellen einer VM-Skalierungsgruppe
 
-In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe, die Server für den Back-End-Pool im Anwendungsgateway bereitstellt. Die virtuellen Computer in der Skalierungsgruppe sind *myBackendSubnet* und *appGatewayBackendPool* zugeordnet. Verwenden Sie zum Erstellen der Skalierungsgruppe [az vmss create](/cli/azure/vmss#az-vmss-create).
+In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe, die Server für den Back-End-Pool im Anwendungsgateway bereitstellt. Die virtuellen Computer in der Skalierungsgruppe sind *myBackendSubnet* und *appGatewayBackendPool* zugeordnet. Verwenden Sie zum Erstellen der Skalierungsgruppe [az vmss create](/cli/azure/vmss#az_vmss_create).
 
 ```azurecli-interactive
 az vmss create \

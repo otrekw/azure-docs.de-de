@@ -3,12 +3,12 @@ title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 1526e9aeef1574f261dcb1a58ee12a12fbf08866
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb6be070ac0fb408ac37c8ae7b003b54da5d6dea
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864957"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773655"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -320,7 +320,7 @@ Führen Sie die folgenden Schritte aus, um den vorhandenen Recovery Services-Tre
                              [--yes]
     ```
 
-    Weitere Informationen finden Sie in  [diesem Artikel](/cli/azure/backup/protection#az-backup-protection-disable).
+    Weitere Informationen finden Sie in  [diesem Artikel](/cli/azure/backup/protection#az_backup_protection_disable).
 
 - Löschen eines vorhandenen Recovery Services-Tresors:
 

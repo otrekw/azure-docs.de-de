@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fa8f0afe4467f53f37daadf6cf881114d03ebaf4
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 3cd086d4ee19161dc503f24678f2f8392506c7a4
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090743"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498664"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Cognitive Services-Konten müssen den Zugriff über öffentliche Netzwerke deaktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0725b4dd-7e76-479c-a735-68e7ee23d5ca) |Die Deaktivierung des Zugriff über öffentliche Netzwerke erhöht die Sicherheit, indem sichergestellt wird, dass das Cognitive Services-Konto nicht über das öffentliche Internet zugänglich ist. Sie können die Offenlegung des Cognitive Services-Kontos einschränken, indem Sie private Endpunkte erstellen. Weitere Informationen finden Sie unter [https://go.microsoft.com/fwlink/?linkid=2129800](https://go.microsoft.com/fwlink/?linkid=2129800).  |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_DisablePublicNetworkAccess_Audit.json) |
 |[Cognitive Services-Konten müssen die Datenverschlüsselung aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2bdd0062-9d75-436e-89df-487dd8e4b3c7) |Diese Richtlinie überwacht alle Cognitive Services-Konten, die keine Datenverschlüsselung verwenden. Für jedes Cognitive Services-Konto mit Speicher sollte die Datenverschlüsselung entweder mit einem kundenseitig verwalteten oder mit einem von Microsoft verwalteten Schlüssel aktiviert werden. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_Encryption_Audit.json) |

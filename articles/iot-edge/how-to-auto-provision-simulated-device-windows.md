@@ -8,12 +8,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 11279c552cb599c24b72473d6574175450ca7ab0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82bd027773a5759caee19228f56ba4b3dfe8c2cf
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200850"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482006"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Erstellen und Bereitstellen eines simulierten IoT Edge-Geräts mit einem virtuellen TPM unter Windows
 
@@ -63,7 +63,7 @@ Wählen Sie die SDK-Sprache für die Erstellung des simulierten Geräts, und fü
 Wenn Sie die individuelle Registrierung erstellen, wählen Sie **TRUE** aus, um anzugeben, dass das simulierte TPM-Gerät auf Ihrem Windows-Entwicklungscomputer ein **IoT Edge-Gerät** ist.
 
 > [!TIP]
-> In der Azure CLI können Sie eine [Registrierung](/cli/azure/ext/azure-iot/iot/dps/enrollment) oder eine [Registrierungsgruppe](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) erstellen und mithilfe des Flags **edge-enabled** angeben, dass ein Gerät oder eine Gruppe von Geräten ein IoT Edge-Gerät ist.
+> In der Azure CLI können Sie eine [Registrierung](/cli/azure/iot/dps/enrollment) oder eine [Registrierungsgruppe](/cli/azure/iot/dps/enrollment-group) erstellen und mithilfe des Flags **edge-enabled** angeben, dass ein Gerät oder eine Gruppe von Geräten ein IoT Edge-Gerät ist.
 
 Simuliertes Gerät und Anleitungen für die individuelle Registrierung:
 

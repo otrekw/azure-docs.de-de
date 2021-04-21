@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: a929563df3e7e98575056d07519abfda0d6ac13b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7592935afadc88c4b9e0e5f3c5f9c83d42c63209
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032958"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768739"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub oder externen Partner
 
@@ -49,7 +49,7 @@ Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor 
 
 | Tool | In Azure gehostet | BESCHREIBUNG |
 |:---|:---| :---|
-|  IBM QRadar | Nein | Das DSM und Event Hub-Protokoll von Microsoft Azure sind zum Download auf der [Website des IBM-Supports](https://www.ibm.com/support) erhältlich. Weitere Informationen zur Integration in Azure finden Sie unter [QRadar DSM configuration (QRadar DSM-Konfiguration)](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+|  IBM QRadar | Nein | Das DSM und Event Hub-Protokoll von Microsoft Azure sind zum Download auf der [Website des IBM-Supports](https://www.ibm.com/support) erhältlich. Weitere Informationen zur Integration in Azure finden Sie unter [QRadar DSM configuration (QRadar DSM-Konfiguration)](https://www.ibm.com/docs/en/dsm?topic=options-configuring-microsoft-azure-event-hubs-communicate-qradar). |
 | Splunk | Nein | Das [Microsoft Azure-Add-On für Splunk](https://splunkbase.splunk.com/app/3757/) steht als Open-Source-Projekt in der Splunkbase zur Verfügung. <br><br> Falls Sie kein Add-On in Ihrer Splunk-Instanz installieren können, z. B. bei Verwendung eines Proxys oder bei Ausführung in Splunk Cloud, können Sie diese Ereignisse an die HTTP-Ereignissammlung von Splunk weiterleiten. Verwenden Sie dazu die [Azure-Funktion für Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), die durch neue Nachrichten im Event Hub ausgelöst wird. |
 | sumologic | Nein | Anweisungen zum Einrichten von SumoLogic für die Nutzung von Daten aus einem Event Hub finden Sie unter [Collect Logs for the Azure Audit App from Event Hub (Sammeln von Protokollen für die Azure Audit App aus einem Event Hub)](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
 | ArcSight | Nein | Der intelligente Azure Event Hub-Connector von ArcSight wird im Rahmen dieser [ArcSight-Sammlung von intelligenten Connectors](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852) zur Verfügung gestellt. |

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: c0eea74890665297a0d450c8afd0a5d60dd1ae00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b08e8ebbba3ba91c1c1aa0f135c4cba37ba038b1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551809"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769911"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten
 
@@ -183,7 +183,7 @@ Fügen Sie dem Gastbetriebssystem Routingtabellen hinzu, indem Sie die Schritte 
 
 Im vorherigen Schritt wurden ein virtuelles Netzwerk und Subnetz erstellt, dann wurden Netzwerkadapter angefügt, und anschließend wurde ein virtueller Computer erstellt. Eine öffentliche IP-Adresse und Netzwerksicherheitsgruppen-Regeln, die SSH-Datenverkehr zulassen, wurden nicht erstellt. Um das Gastbetriebssystem für mehrere Netzwerkadapter zu konfigurieren, müssen Sie Remoteverbindungen zulassen und Befehle lokal auf dem virtuellen Computer ausführen.
 
-Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) wie folgt eine Netzwerksicherheitsgruppen-Regel, um SSH-Datenverkehr zuzulassen:
+Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) wie folgt eine Netzwerksicherheitsgruppen-Regel, um SSH-Datenverkehr zuzulassen:
 
 ```azurecli
 az network nsg rule create \
@@ -194,7 +194,7 @@ az network nsg rule create \
     --destination-port-ranges 22
 ```
 
-Erstellen Sie eine öffentliche IP-Adresse mit [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create), und weisen Sie sie dem ersten Netzwerkadapter mit [az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) zu:
+Erstellen Sie eine öffentliche IP-Adresse mit [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create), und weisen Sie sie dem ersten Netzwerkadapter mit [az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update) zu:
 
 ```azurecli
 az network public-ip create --resource-group myResourceGroup --name myPublicIP
@@ -206,7 +206,7 @@ az network nic ip-config update \
     --public-ip myPublicIP
 ```
 
-Zeigen Sie die öffentliche IP-Adresse des virtuellen Computers mithilfe von [az vm show](/cli/azure/vm#az-vm-show) wie folgt an:
+Zeigen Sie die öffentliche IP-Adresse des virtuellen Computers mithilfe von [az vm show](/cli/azure/vm#az_vm_show) wie folgt an:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv

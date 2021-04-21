@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cea1571a48afe00350dde247c3c10e222a446247
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42382076b6c14989eb153725e991c8ef047ad15b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662388"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774789"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>Konfigurieren von Protokollen für langsame Abfragen in Azure Database for Maria DB und Zugreifen auf diese Protokolle über die Azure-Befehlszeilenschnittstelle (Azure CLI)
 
@@ -27,7 +27,7 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 ## <a name="configure-logging"></a>Konfigurieren der Protokollierung
 Sie können den Server mit folgenden Schritten für den Zugriff auf das Protokoll für langsame MySQL-Abfragen konfigurieren:
 1. Aktivieren Sie die Protokollierung für langsame Abfragen, indem Sie den Parameter **slow\_query\_log** auf „ON“ festlegen.
-2. Wählen Sie mit **log\_output** aus, wohin die Protokolle ausgegeben werden sollen. Wenn Protokolle sowohl in den lokalen Speicher als auch in die Azure Monitor-Diagnoseprotokolle übertragen werden sollen, wählen Sie **Datei** aus. Wenn Protokolle nur in Azure Monitor-Protokolle übertragen werden sollen, wählen Sie **Keine** aus.
+2. Wählen Sie mit **log\_output** aus, wohin die Protokolle ausgegeben werden sollen. Wenn Protokolle sowohl in den lokalen Speicher als auch in die Azure Monitor-Diagnoseprotokolle gesendet werden sollen, wählen Sie **Datei** aus. Wenn Protokolle nur in Azure Monitor-Protokolle übertragen werden sollen, wählen Sie **Keine** aus.
 3. Passen Sie andere Parameter an, z.B. **long\_query\_time** und **log\_slow\_admin\_statements**.
 
 Unter [Konfigurieren von Serverparametern](howto-configure-server-parameters-cli.md) erfahren Sie, wie Sie den Wert dieser Parameter über die Azure-Befehlszeilenschnittstelle festlegen.
@@ -42,14 +42,14 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ```
 
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Auflisten von Protokollen für Azure Database for MariaDB-Server
-Wenn für **log_output** „Datei“ festgelegt wurde, können Sie direkt aus dem lokalen Speicher des Servers auf Protokolle zugreifen. Um die verfügbaren Protokolldateien für langsame Abfragen für Ihren Server aufzulisten, führen Sie den Befehl [az mariadb server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) aus.
+Wenn für **log_output** „Datei“ festgelegt wurde, können Sie direkt aus dem lokalen Speicher des Servers auf Protokolle zugreifen. Um die verfügbaren Protokolldateien für langsame Abfragen für Ihren Server aufzulisten, führen Sie den Befehl [az mariadb server-logs list](/cli/azure/mariadb/server-logs#az_mariadb_server_logs_list) aus.
 
 Sie können die Protokolldateien für den Server **mydemoserver.mariadb.database.azure.com** in der Ressourcengruppe **myresourcegroup** auflisten. Leiten Sie dann die Liste der Protokolldateien in eine Textdatei namens **log\_files\_list.txt** um.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>Herunterladen von Protokollen vom Server
-Wenn für **log_output** „Datei“ festgelegt wurde, können Sie einzelne Protokolldateien mit dem Befehl [az mariadb server-logs download](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-download) von Ihrem Server herunterladen.
+Wenn für **log_output** „Datei“ festgelegt wurde, können Sie einzelne Protokolldateien mit dem Befehl [az mariadb server-logs download](/cli/azure/mariadb/server-logs#az_mariadb_server_logs_download) von Ihrem Server herunterladen.
 
 Laden Sie dem folgenden Beispiel entsprechend die spezifische Protokolldatei für den Server **mydemoserver.mariadb.database.azure.com** in der Ressourcengruppe **myresourcegroup** in Ihre lokale Umgebung herunter.
 ```azurecli-interactive

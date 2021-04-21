@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Feature zur Authentifizierung und Autoris
 ms.topic: article
 ms.date: 03/29/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: b7faf47363a5efee6a60951e67d9ad2bed8bf76f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 9335bb62e494fab50f7beadf3d7bbc423d80cf14
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076869"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775725"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
@@ -652,7 +652,7 @@ Sie können die aktuelle Version der Plattformauthentifizierungs-Middleware entw
 
 ##### <a name="from-the-azure-cli"></a>Über die Azure CLI
 
-Zeigen Sie mithilfe der Azure CLI die aktuelle Middlewareversion mit dem Befehl [az webapp auth show](/cli/azure/webapp/auth#az-webapp-auth-show) an.
+Zeigen Sie mithilfe der Azure CLI die aktuelle Middlewareversion mit dem Befehl [az webapp auth show](/cli/azure/webapp/auth#az_webapp_auth_show) an.
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -683,7 +683,7 @@ Sie können auch über den /.auth/version-Endpunkt einer App die aktuelle Middle
 
 #### <a name="update-the-current-runtime-version"></a>Aktualisieren der aktuellen Runtimeversion
 
-Mithilfe der Azure CLI können Sie die `runtimeVersion`-Einstellung in der App mit dem Befehl [az webapp auth update](/cli/azure/webapp/auth#az-webapp-auth-update) aktualisieren.
+Mithilfe der Azure CLI können Sie die `runtimeVersion`-Einstellung in der App mit dem Befehl [az webapp auth update](/cli/azure/webapp/auth#az_webapp_auth_update) aktualisieren.
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -693,7 +693,7 @@ az webapp auth update --name <my_app_name> \
 
 Ersetzen Sie `<my_app_name>` durch den Namen Ihrer App. Ersetzen Sie außerdem `<my_resource_group>` durch den Namen der Ressourcengruppe für Ihre App. Ersetzen Sie außerdem `<version>` durch eine gültige Version der Runtime 1.x oder durch `~1` für die aktuelle Version. Die Anmerkungen zu den verschiedenen Runtimeversionen finden Sie [hier] (https://github.com/Azure/app-service-announcements), um die Version zu ermitteln, der die App angeheftet werden soll.
 
-Sie können diesen Befehl an der [Azure Cloud Shell](../cloud-shell/overview.md) ausführen, indem Sie im vorangehenden Codebeispiel **Ausprobieren** auswählen. Sie können auch die [Azure-Befehlszeilenschnittstelle lokal](/cli/azure/install-azure-cli) zum Ausführen dieses Befehls verwenden, nachdem Sie sich mit [az login](/cli/azure/reference-index#az-login) angemeldet haben.
+Sie können diesen Befehl an der [Azure Cloud Shell](../cloud-shell/overview.md) ausführen, indem Sie im vorangehenden Codebeispiel **Ausprobieren** auswählen. Sie können auch die [Azure-Befehlszeilenschnittstelle lokal](/cli/azure/install-azure-cli) zum Ausführen dieses Befehls verwenden, nachdem Sie sich mit [az login](/cli/azure/reference-index#az_login) angemeldet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

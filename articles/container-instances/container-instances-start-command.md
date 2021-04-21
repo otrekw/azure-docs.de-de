@@ -3,12 +3,12 @@ title: Außerkraftsetzen des Einstiegspunkts in einer Containerinstanz
 description: Legen Sie eine Befehlszeile zum außer Kraft setzen des Einstiegspunkts in einem Containerimage fest, in dem Sie eine Azure-Containerinstanz bereitstellen.
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5898decbf4108d48bb9e84019d659075b18fd043
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86169628"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771081"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Legen Sie die Befehlszeile in einer Containerinstanz so fest, dass sie die standardmäßige Befehlszeilenoperation außer Kraft setzt.
 
@@ -118,8 +118,8 @@ Aufgabenbasierte Szenarien, z. B. Stapelverarbeitung eines großen Datasets mit 
 [aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
 [new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [portal]: https://portal.azure.com

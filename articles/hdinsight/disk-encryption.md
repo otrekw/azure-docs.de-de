@@ -5,12 +5,12 @@ description: In diesem Artikel werden die beiden Verschlüsselungsebenen beschri
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 3d4f9e3be02a64efa058ea1f84a3e261cb6166fc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 226516b1178f14789570b45b68cfdbf56f63bbd7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867116"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775149"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Doppelte Verschlüsselung für ruhende Daten in Azure HDInsight
 
@@ -133,7 +133,7 @@ Darüber hinaus müssen Sie die verwaltete Identität dem Cluster zuweisen.
 
 #### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
-Im folgenden Beispiel wird mithilfe der Azure-Befehlszeilenschnittstelle ein neuer Apache Spark-Cluster mit aktivierter Datenträgerverschlüsselung erstellt. Weitere Informationen finden Sie in der Dokumentation der Azure-Befehlszeilenschnittstelle unter [az hdinsight create](/cli/azure/hdinsight#az-hdinsight-create). Der Parameter `encryption-key-version` ist optional.
+Im folgenden Beispiel wird mithilfe der Azure-Befehlszeilenschnittstelle ein neuer Apache Spark-Cluster mit aktivierter Datenträgerverschlüsselung erstellt. Weitere Informationen finden Sie in der Dokumentation der Azure-Befehlszeilenschnittstelle unter [az hdinsight create](/cli/azure/hdinsight#az_hdinsight_create). Der Parameter `encryption-key-version` ist optional.
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -371,7 +371,7 @@ Zum Rotieren des Schlüssels benötigen Sie die Basis-URI des Schlüsseltresors.
 
 #### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
-Im folgenden Beispiel wird der Datenträgerverschlüsselungsschlüssel für einen vorhandenen HDInsight-Cluster rotiert. Weitere Informationen finden Sie in der Dokumentation der Azure-Befehlszeilenschnittstelle unter [az hdinsight rotate-disk-encryption-key](/cli/azure/hdinsight#az-hdinsight-rotate-disk-encryption-key).
+Im folgenden Beispiel wird der Datenträgerverschlüsselungsschlüssel für einen vorhandenen HDInsight-Cluster rotiert. Weitere Informationen finden Sie in der Dokumentation der Azure-Befehlszeilenschnittstelle unter [az hdinsight rotate-disk-encryption-key](/cli/azure/hdinsight#az_hdinsight_rotate_disk_encryption_key).
 
 ```azurecli
 az hdinsight rotate-disk-encryption-key \
@@ -404,7 +404,7 @@ Wenn der Cluster den Zugriff auf den Schlüssel verliert, werden im Apache Ambar
 
 **Wie kann ich den Cluster wiederherstellen, wenn die Schlüssel gelöscht werden?**
 
-Da nur Schlüssel unterstützt werden, für die „vorläufiges Löschen“ aktiviert ist, sollte der Cluster wieder Zugriff auf die Schlüssel erlangen, wenn die Schlüssel im Schlüsseltresor wiederhergestellt werden. Informationen zum Wiederherstellen eines Azure Key Vault-Schlüssels finden Sie unter [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) oder [az-keyvault-key-recover](/cli/azure/keyvault/key#az-keyvault-key-recover).
+Da nur Schlüssel unterstützt werden, für die „vorläufiges Löschen“ aktiviert ist, sollte der Cluster wieder Zugriff auf die Schlüssel erlangen, wenn die Schlüssel im Schlüsseltresor wiederhergestellt werden. Informationen zum Wiederherstellen eines Azure Key Vault-Schlüssels finden Sie unter [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) oder [az-keyvault-key-recover](/cli/azure/keyvault/key#az_keyvault_key_recover).
 
 
 **Werden kundenseitig verwaltete Schlüssel nahtlos von neuen Knoten unterstützt, wenn ein Cluster zentral hochskaliert wird?**

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 7b12b6c1cdc85eaba531f34b23aa74bee6b38f7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c502a9c02160c5a92d78ccdbb0532e6f173122da
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201122"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479507"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe der Azure CLI
 
@@ -191,7 +191,7 @@ Weitere Informationen zu Gerätezwillingen und Tags finden Sie unter [Verstehen 
 
 Zum Bereitstellen von Modulen auf Ihren Zielgeräten erstellen Sie eine Bereitstellung, die sich aus dem Bereitstellungsmanifest sowie weiteren Parametern zusammensetzt.
 
-Führen Sie zum Erstellen einer Bereitstellung den Befehl [az group deployment create](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) aus:
+Führen Sie zum Erstellen einer Bereitstellung den Befehl [az group deployment create](/cli/azure/iot/edge/deployment) aus:
 
 ```azurecli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
@@ -224,7 +224,7 @@ Wenn Sie die Zielbedingung ändern, erfolgen die nachfolgend aufgeführten Anpas
 
 Sie können den Inhalt einer Bereitstellung nicht aktualisieren. Dies gilt auch für die im Bereitstellungsmanifest definierten Module und Routen. Wenn Sie den Inhalt einer Bereitstellung aktualisieren möchten, erstellen Sie eine neue Bereitstellung, die dieselben Geräte mit höherer Priorität als Ziel hat. Sie können bestimmte Eigenschaften eines vorhandenen Moduls ändern, einschließlich der Zielbedingung, Bezeichnungen, Metriken und Priorität.
 
-Führen Sie zum Aktualisieren einer Bereitstellung den Befehl [az group deployment update](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) aus:
+Führen Sie zum Aktualisieren einer Bereitstellung den Befehl [az group deployment update](/cli/azure/iot/edge/deployment) aus:
 
 ```azurecli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
@@ -245,7 +245,7 @@ Für diesen Befehl werden die folgenden Parameter verwendet:
 
 Wenn Sie eine Bereitstellung löschen, übernehmen alle Geräte die Bereitstellung mit der jeweils nächsthöheren Priorität. Wenn Ihre Geräte die Zielbedingung keiner anderen Bereitstellung erfüllen, werden die Module beim Löschen der Bereitstellung nicht entfernt.
 
-Führen Sie zum Löschen einer Bereitstellung den Befehl [az group deployment delete](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) aus:
+Führen Sie zum Löschen einer Bereitstellung den Befehl [az group deployment delete](/cli/azure/iot/edge/deployment) aus:
 
 ```azurecli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]

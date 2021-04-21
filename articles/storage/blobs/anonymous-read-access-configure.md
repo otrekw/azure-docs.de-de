@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: feac7b890c973b1541c5362f860432687082953f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31812a7b2dddad474ab5cd422a15f6e5368dba5c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96533875"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774627"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurieren des anonymen, öffentlichen Lesezugriffs auf Container und Blobs
 
@@ -239,7 +239,7 @@ Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, kann die �
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Sie müssen Sie den Befehl [az storage container set permission](/cli/azure/storage/container#az-storage-container-set-permission) aufrufen, um die öffentliche Zugriffsebene für einen oder mehrere Container mit der Azure CLI zu aktualisieren. Autorisieren Sie diesen Vorgang, indem Sie Ihren Kontoschlüssel, eine Verbindungszeichenfolge oder eine Shared Access Signature (SAS) übergeben. Der Vorgang [Container-ACL festlegen](/rest/api/storageservices/set-container-acl), der die öffentliche Zugriffsebene des Containers festlegt, bietet keine Unterstützung für die Autorisierung mit Azure AD. Weitere Informationen finden Sie unter [Berechtigungen zum Aufrufen von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Sie müssen Sie den Befehl [az storage container set permission](/cli/azure/storage/container#az_storage_container_set_permission) aufrufen, um die öffentliche Zugriffsebene für einen oder mehrere Container mit der Azure CLI zu aktualisieren. Autorisieren Sie diesen Vorgang, indem Sie Ihren Kontoschlüssel, eine Verbindungszeichenfolge oder eine Shared Access Signature (SAS) übergeben. Der Vorgang [Container-ACL festlegen](/rest/api/storageservices/set-container-acl), der die öffentliche Zugriffsebene des Containers festlegt, bietet keine Unterstützung für die Autorisierung mit Azure AD. Weitere Informationen finden Sie unter [Berechtigungen zum Aufrufen von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
 
 Das folgende Beispiel erstellt einen Container mit deaktiviertem öffentlichem Zugriff und aktualisiert dann die Einstellung für den öffentlichen Zugriff des Containers, um anonymen Zugriff auf den Container und seine Blobs zu ermöglichen. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 

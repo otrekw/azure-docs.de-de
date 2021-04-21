@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 44ea6546eb2099165071fd493ec8f890820c0688
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3c783c57b49b45943882703aec6d735d12bf830
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199832"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481955"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe von X.509-Zertifikaten
 
@@ -90,7 +90,7 @@ Wenn Sie eine Registrierung im DPS erstellen, haben Sie die Möglichkeit zum Ang
 Weitere Informationen zu Registrierungen im Device Provisioning-Dienst finden Sie unter [Verwalten von Geräteregistrierungen](../iot-dps/how-to-manage-enrollments.md).
 
    > [!TIP]
-   > In der Azure CLI können Sie eine [Registrierung](/cli/azure/ext/azure-iot/iot/dps/enrollment) oder eine [Registrierungsgruppe](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) erstellen und mithilfe des Flags **edge-enabled** angeben, dass ein Gerät oder eine Gruppe von Geräten ein IoT Edge-Gerät ist.
+   > In der Azure CLI können Sie eine [Registrierung](/cli/azure/iot/dps/enrollment) oder eine [Registrierungsgruppe](/cli/azure/iot/dps/enrollment-group) erstellen und mithilfe des Flags **edge-enabled** angeben, dass ein Gerät oder eine Gruppe von Geräten ein IoT Edge-Gerät ist.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Instanz des IoT Hub Device Provisioning Service.
 

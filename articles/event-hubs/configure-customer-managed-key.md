@@ -3,12 +3,12 @@ title: Konfigurieren Ihres eigenen Schlüssels zum Verschlüsseln ruhender Azure
 description: Dieser Artikel enthält Informationen dazu, wie Sie einen eigenen Schlüssel für die Verschlüsselung ruhender Azure Event Hubs-Daten konfigurieren.
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: c9d1ac1c3a3387600fed80939598baafe658054b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3dd7cb1158294102d9bfe67629c80ae01ccdd17
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595998"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775185"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Event Hubs-Daten mithilfe des Azure-Portals
 Azure Event Hubs ermöglicht die Verschlüsselung ruhender Daten mit Azure Storage Service Encryption (Azure SSE). Der Event Hubs-Dienst verwendet zum Speichern der Daten Azure Storage. Alle in Azure Storage gespeicherten Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt. Wenn Sie einen eigenen Schlüssel verwenden – Bring Your Own Key (BYOK) oder kundenseitig verwalteter Schlüssel –, werden die Daten trotzdem mit dem von Microsoft verwalteten Schlüssel verschlüsselt. Zusätzlich wird der von Microsoft verwaltete Schlüssel jedoch mit dem kundenseitig verwalteten Schlüssel verschlüsselt. Mit dieser Funktion können Sie kundenseitig verwaltete Schlüssel, die zum Verschlüsseln der von Microsoft verwalteten Schlüssel verwendet werden, erstellen, rotieren, deaktivieren und den Zugriff darauf widerrufen. Die Aktivierung der BYOK-Funktion ist ein einmaliger Setupvorgang für Ihren Namespace.
@@ -38,12 +38,12 @@ Um vom Kunden verwaltete Schlüssel im Azure-Portal zu aktivieren, gehen Sie fol
 Nachdem Sie kundenseitig verwaltete Schlüssel aktiviert haben, müssen Sie den kundenseitig verwalteten Schlüssel Ihrem Azure Event Hubs-Namespace zuordnen. Event Hubs unterstützt nur Azure Key Vault. Wenn Sie die Option **Verschlüsselung mit kundenseitig verwaltetem Schlüssel** im vorherigen Abschnitt aktivieren, muss der Schlüssel in Azure Key Vault importiert werden. Außerdem müssen die Eigenschaften **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen) für den Schlüssel konfiguriert sein. Diese Einstellungen können mithilfe von [PowerShell](../key-vault/general/key-vault-recovery.md) oder der [CLI](../key-vault/general/key-vault-recovery.md) konfiguriert werden.
 
 1. Befolgen Sie zum Erstellen eines neuen Schlüsseltresors die [Schnellstartanleitung](../key-vault/general/overview.md) für Azure Key Vault. Weitere Informationen zum Importieren vorhandener Schlüssel finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../key-vault/general/about-keys-secrets-certificates.md).
-1. Verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault#az-keyvault-create), um beim Erstellen eines Tresors sowohl das vorläufige Löschen als auch den Bereinigungsschutz zu aktivieren.
+1. Verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault#az_keyvault_create), um beim Erstellen eines Tresors sowohl das vorläufige Löschen als auch den Bereinigungsschutz zu aktivieren.
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. Verwenden Sie den Befehl [az keyvault update](/cli/azure/keyvault#az-keyvault-update), um einem vorhandenen Tresor (für den bereits das vorläufige Löschen aktiviert ist) den Bereinigungsschutz hinzuzufügen.
+1. Verwenden Sie den Befehl [az keyvault update](/cli/azure/keyvault#az_keyvault_update), um einem vorhandenen Tresor (für den bereits das vorläufige Löschen aktiviert ist) den Bereinigungsschutz hinzuzufügen.
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -65,7 +65,7 @@ Nachdem Sie kundenseitig verwaltete Schlüssel aktiviert haben, müssen Sie den 
 Sie können Ihren Schlüssel im Schlüsseltresor mit dem Rotationsmechanismus von Azure Key Vault rotieren. Aktivierungs- und Ablaufdaten können auch festgelegt werden, um die Schlüsselrotation zu automatisieren. Der Event Hubs-Dienst erkennt neue Schlüsselversionen und beginnt automatisch mit ihrer Verwendung.
 
 ## <a name="revoke-access-to-keys"></a>Widerrufen des Zugriffs auf Schlüssel
-Wenn Sie den Zugriff auf die Verschlüsselungsschlüssel widerrufen, werden die Daten dadurch nicht aus Event Hubs gelöscht. Der Zugriff auf die Daten ist jedoch nicht über den Event Hubs-Namespace möglich. Sie können den Verschlüsselungsschlüssel mithilfe von Zugriffsrichtlinien oder durch das Löschen des Schlüssels widerrufen. Unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/general/secure-your-key-vault.md) erfahren Sie mehr über Zugriffsrichtlinien und das Sichern Ihres Schlüsseltresors.
+Wenn Sie den Zugriff auf die Verschlüsselungsschlüssel widerrufen, werden die Daten dadurch nicht aus Event Hubs gelöscht. Der Zugriff auf die Daten ist jedoch nicht über den Event Hubs-Namespace möglich. Sie können den Verschlüsselungsschlüssel mithilfe von Zugriffsrichtlinien oder durch das Löschen des Schlüssels widerrufen. Unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/general/security-overview.md) erfahren Sie mehr über Zugriffsrichtlinien und das Sichern Ihres Schlüsseltresors.
 
 Nachdem der Verschlüsselungsschlüssel widerrufen wurde, funktioniert der Event Hubs-Dienst im verschlüsselten Namespace nicht mehr. Wenn der Zugriff auf den Schlüssel aktiviert ist oder der gelöschte Schlüssel wiederhergestellt wurde, wählt der Event Hubs-Dienst den Schlüssel aus, sodass Sie aus dem verschlüsselten Event Hubs-Namespace auf die Daten zugreifen können.
 

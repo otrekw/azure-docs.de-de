@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 6de387605a8c127485b68773b6cd1b19c7136d17
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 12600cadaa84ae116818eec06459d5db0c05304a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107498"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773418"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Erstellen eines IoT Edge-Modulangebots
 
@@ -419,7 +419,7 @@ Auf der Registerkarte **Image repository details** (Details des Imagerepositorys
 
 1. Administratorbenutzer
 
-<br>**Kennwort für die Azure Container Registry**: Geben Sie das Kennwort für den Administratorbenutzernamen ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Sie können das Kennwort im Azure-Portal abrufen, indem Sie zu **Containerregistrierung** > **Zugriffsschlüssel** wechseln oder die Azure-Befehlszeilenschnittstelle und den Befehl [show](/cli/azure/acr/credential#az-acr-credential-show) verwenden.
+<br>**Kennwort für die Azure Container Registry**: Geben Sie das Kennwort für den Administratorbenutzernamen ein, der der Azure Container Registry zugeordnet ist, die Ihr Containerimage enthält. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Sie können das Kennwort im Azure-Portal abrufen, indem Sie zu **Containerregistrierung** > **Zugriffsschlüssel** wechseln oder die Azure-Befehlszeilenschnittstelle und den Befehl [show](/cli/azure/acr/credential#az_acr_credential_show) verwenden.
 
 :::image type="content" source="media/example-iot-access-keys.png" alt-text="Darstellung des Zugriffsschlüssel-Bildschirms im Azure-Portal.":::
 

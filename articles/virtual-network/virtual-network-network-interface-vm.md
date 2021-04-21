@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 43d3da49688a7daeb3ea4e0c1c3dba505dcd3b59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 847f8dbd2d8f4064f12333348a4f03e5c5fcc611
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508332"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774249"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hinzufügen von Netzwerkschnittstellen zu virtuellen Computern oder Entfernen von Netzwerkschnittstellen aus diesen
 
@@ -52,7 +52,7 @@ Vor dem Erstellen des virtuellen Computers müssen Sie [eine Netzwerkschnittstel
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-network-nic-create)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_create)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="add-a-network-interface-to-an-existing-vm"></a>Hinzufügen einer Netzwerkschnittstelle zu einem vorhandenen virtuellen Computer
@@ -80,7 +80,7 @@ Jetzt können Sie das VM-Betriebssystem für die ordnungsgemäße Verwendung meh
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-add) (Verweis); [detaillierte Schritte](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
+|Befehlszeilenschnittstelle (CLI)|[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_vm_nic_add) (Verweis); [detaillierte Schritte](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
 |PowerShell|[Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (Verweis); [detaillierte Schritte](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
 
 ## <a name="view-network-interfaces-for-a-vm"></a>Anzeigen der Netzwerkschnittstellen für einen virtuellen Computer
@@ -102,7 +102,7 @@ Weitere Informationen zu Netzwerkschnittstellen-Einstellungen finden Sie im Arti
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az vm nic list](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-list)|
+|Befehlszeilenschnittstelle (CLI)|[az vm nic list](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_vm_nic_list)|
 |PowerShell|[Get-AzVM](/powershell/module/az.compute/get-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="remove-a-network-interface-from-a-vm"></a>Entfernen einer Netzwerkschnittstelle von einem virtuellen Computer
@@ -126,7 +126,7 @@ Weitere Informationen zu Netzwerkschnittstellen-Einstellungen finden Sie im Arti
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-remove) (Verweis); [detaillierte Schritte](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
+|Befehlszeilenschnittstelle (CLI)|[az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_vm_nic_remove) (Verweis); [detaillierte Schritte](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
 |PowerShell|[Remove-AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (Verweis); [detaillierte Schritte](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
 
 ## <a name="constraints"></a>Einschränkungen
@@ -152,6 +152,8 @@ Weitere Informationen zu Netzwerkschnittstellen-Einstellungen finden Sie im Arti
 - Beim Löschen eines virtuellen Computers werden die an ihn angefügten Netzwerkschnittstellen nicht gelöscht. Wenn Sie einen virtuellen Computer löschen, werden die Netzwerkschnittstellen von dem virtuellen Computer getrennt. Sie können diese Netzwerkschnittstellen zu anderen VMs hinzufügen oder löschen.
 
 - Soll die optimale dokumentierte Leistung erzielt werden, ist beschleunigter Netzwerkbetrieb erforderlich. In einigen Fällen müssen Sie beschleunigten Netzwerkbetrieb für virtuelle [Windows](create-vm-accelerated-networking-powershell.md)- oder [Linux](create-vm-accelerated-networking-cli.md)-Computer explizit aktivieren.
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3ac012da97194134f58d061dd9d84e945db554
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363167"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774465"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Auswählen der Autorisierung des Zugriffs auf Warteschlangendaten mit der Azure CLI
 
@@ -63,7 +63,7 @@ Im folgenden Beispiel sehen Sie, wie mithilfe Ihrer Azure AD-Anmeldeinformatione
     > [!IMPORTANT]
     > Die Azure-Rollenzuweisungen können einige Minuten dauern.
 
-1. Rufen Sie mithilfe des `--auth-mode`-Parameters, für den `login` festgelegt wurde, den Befehl [`az storage queue create`](/cli/azure/storage/queue#az-storage-queue-create) auf, um die Warteschlange mithilfe Ihrer Azure AD-Anmeldeinformationen zu erstellen. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
+1. Rufen Sie mithilfe des `--auth-mode`-Parameters, für den `login` festgelegt wurde, den Befehl [`az storage queue create`](/cli/azure/storage/queue#az_storage_queue_create) auf, um die Warteschlange mithilfe Ihrer Azure AD-Anmeldeinformationen zu erstellen. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 
     ```azurecli
     az storage queue create \

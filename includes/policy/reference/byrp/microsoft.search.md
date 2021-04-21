@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0d082db206c6dc77e0fe98f49dad1d816feacc06
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 33506873e4bf1cd79077168daab7df443239c974
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092304"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497579"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure Cognitive Search-Dienst muss eine SKU mit Unterstützung von Private Link verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa049bf77-880b-470f-ba6d-9f21c530cf83) |Für die unterstützten SKUs von Azure Cognitive Search können Sie mithilfe von Azure Private Link Ihr virtuelles Netzwerk mit Azure-Diensten verbinden, ohne dass eine öffentliche IP-Adresse an der Quelle oder am Ziel vorhanden ist. Die Private Link-Plattform verarbeitet die Konnektivität zwischen dem Consumer und den Diensten über das Azure-Backbone-Netzwerk. Durch das Zuordnen privater Endpunkte zu Ihrem Suchdienst wird das Risiko von Datenlecks verringert. Weitere Informationen finden Sie unter [https://aka.ms/azure-cognitive-search/inbound-private-endpoints](https://aka.ms/azure-cognitive-search/inbound-private-endpoints). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_RequirePrivateLinkSupportedResource_Deny.json) |
 |[Azure Cognitive Search-Dienste müssen den Zugriff über öffentliche Netzwerke deaktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fee980b6d-0eca-4501-8d54-f6290fd512c3) |Die Deaktivierung des Zugriffs über öffentliche Netzwerke erhöht die Sicherheit, da Ihr Azure Cognitive Search-Dienst nicht über das öffentliche Internet zugänglich ist. Durch das Erstellen privater Endpunkte können Sie die Offenlegung Ihres Suchdiensts einschränken. Weitere Informationen finden Sie unter [https://aka.ms/azure-cognitive-search/inbound-private-endpoints](https://aka.ms/azure-cognitive-search/inbound-private-endpoints). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_RequirePublicNetworkAccessDisabled_Deny.json) |

@@ -7,12 +7,12 @@ ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: 9d4117cafd665556fb60278aa4dc60dc14a27ada
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adc09bf2572be563ff52cf9fa3d0dea51263d032
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670527"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774411"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Bereitstellung auf dedizierten Hosts mithilfe der Azure CLI
  
@@ -54,7 +54,7 @@ In beiden Fällen müssen Sie die Anzahl der Fehlerdomänen für Ihre Hostgruppe
 Sie können auch sowohl Verfügbarkeitszonen als auch Fehlerdomänen verwenden. 
 
 
-In diesem Beispiel verwenden wir [az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create), um eine Hostgruppe mit Verfügbarkeitszonen und Fehlerdomänen zu erstellen. 
+In diesem Beispiel verwenden wir [az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create), um eine Hostgruppe mit Verfügbarkeitszonen und Fehlerdomänen zu erstellen. 
 
 ```azurecli-interactive
 az vm host group create \
@@ -69,7 +69,7 @@ Fügen Sie den Parameter `--automatic-placement true` hinzu, damit Ihre VMs und 
 
 ### <a name="other-examples"></a>Weitere Beispiele
 
-Sie können auch [az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) verwenden, um eine Hostgruppe in Verfügbarkeitszone 1 (und ohne Fehlerdomänen) zu erstellen.
+Sie können auch [az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create) verwenden, um eine Hostgruppe in Verfügbarkeitszone 1 (und ohne Fehlerdomänen) zu erstellen.
 
 ```azurecli-interactive
 az vm host group create \
@@ -79,7 +79,7 @@ az vm host group create \
    --platform-fault-domain-count 1 
 ```
  
-Im Folgenden wird mit [az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) eine Hostgruppe nur mit Fehlerdomänen erstellt. (Diese kann in Regionen verwendet werden, in denen keine Verfügbarkeitszonen unterstützt werden.) 
+Im Folgenden wird mit [az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create) eine Hostgruppe nur mit Fehlerdomänen erstellt. (Diese kann in Regionen verwendet werden, in denen keine Verfügbarkeitszonen unterstützt werden.) 
 
 ```azurecli-interactive
 az vm host group create \
@@ -94,7 +94,7 @@ Nun erstellen Sie einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem
 
 Weitere Informationen zu den Host-SKUs und Preisen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
-Erstellen Sie mit [az vm host create](/cli/azure/vm/host#az-vm-host-create) einen Host. Beim Festlegen der Anzahl der Fehlerdomänen für die Hostgruppe werden Sie aufgefordert, die Fehlerdomäne für den Host anzugeben.  
+Erstellen Sie mit [az vm host create](/cli/azure/vm/host#az_vm_host_create) einen Host. Beim Festlegen der Anzahl der Fehlerdomänen für die Hostgruppe werden Sie aufgefordert, die Fehlerdomäne für den Host anzugeben.  
 
 ```azurecli-interactive
 az vm host create \
@@ -108,7 +108,7 @@ az vm host create \
 
  
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers 
-Erstellen Sie mithilfe von [az vm create](/cli/azure/vm#az-vm-create) einen virtuellen Computer in einem dedizierten Host. Wenn Sie beim Erstellen der Hostgruppe eine Verfügbarkeitszone angegeben haben, müssen Sie beim Erstellen des virtuellen Computers dieselbe Zone verwenden.
+Erstellen Sie mithilfe von [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer in einem dedizierten Host. Wenn Sie beim Erstellen der Hostgruppe eine Verfügbarkeitszone angegeben haben, müssen Sie beim Erstellen des virtuellen Computers dieselbe Zone verwenden.
 
 ```azurecli-interactive
 az vm create \
@@ -149,7 +149,7 @@ Wenn Sie den Host, auf dem die Skalierungsgruppe bereitgestellt werden soll, man
 
 ## <a name="check-the-status-of-the-host"></a>Überprüfen des Status des Hosts
 
-Sie können mit [az vm host get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view) den Integritätsstatus des Hosts sowie die Anzahl von virtuellen Computern überprüfen, die Sie noch auf dem Host bereitstellen können.
+Sie können mit [az vm host get-instance-view](/cli/azure/vm/host#az_vm_host_get_instance_view) den Integritätsstatus des Hosts sowie die Anzahl von virtuellen Computern überprüfen, die Sie noch auf dem Host bereitstellen können.
 
 ```azurecli-interactive
 az vm host get-instance-view \
@@ -256,7 +256,7 @@ az vm host get-instance-view \
 ```
  
 ## <a name="export-as-a-template"></a>Exportieren als Vorlage 
-Sie können eine Vorlage exportieren, wenn Sie eine weitere Entwicklungsumgebung mit den gleichen Parametern oder eine entsprechende Produktionsumgebung erstellen möchten. Der Resource Manager verwendet die JSON-Vorlagen, die alle Parameter für Ihre Umgebung definieren. Sie erstellen ganze Umgebungen durch Verweisen auf diese JSON-Vorlage. Sie können JSON-Vorlagen manuell erstellen oder eine vorhandene Umgebung exportieren, um die JSON-Vorlage zu erstellen. Verwenden Sie [az group export](/cli/azure/group#az-group-export), um Ihre Ressourcengruppe zu exportieren.
+Sie können eine Vorlage exportieren, wenn Sie eine weitere Entwicklungsumgebung mit den gleichen Parametern oder eine entsprechende Produktionsumgebung erstellen möchten. Der Resource Manager verwendet die JSON-Vorlagen, die alle Parameter für Ihre Umgebung definieren. Sie erstellen ganze Umgebungen durch Verweisen auf diese JSON-Vorlage. Sie können JSON-Vorlagen manuell erstellen oder eine vorhandene Umgebung exportieren, um die JSON-Vorlage zu erstellen. Verwenden Sie [az group export](/cli/azure/group#az_group_export), um Ihre Ressourcengruppe zu exportieren.
 
 ```azurecli-interactive
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
@@ -277,19 +277,19 @@ az deployment group create \
 
 Ihre dedizierten Hosts werden Ihnen auch dann in Rechnung gestellt, wenn keine virtuellen Computer bereitgestellt sind. Sie sollten, um Kosten zu sparen, alle Hosts löschen, die Sie zurzeit nicht verwenden.  
 
-Ein Host kann nur gelöscht werden, wenn er nicht mehr von virtuellen Computern verwendet wird. Löschen Sie die VMs mit [az vm delete](/cli/azure/vm#az-vm-delete).
+Ein Host kann nur gelöscht werden, wenn er nicht mehr von virtuellen Computern verwendet wird. Löschen Sie die VMs mit [az vm delete](/cli/azure/vm#az_vm_delete).
 
 ```azurecli-interactive
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-Nachdem Sie die VMs gelöscht haben, können Sie den Host mithilfe von [az vm host delete](/cli/azure/vm/host#az-vm-host-delete) löschen.
+Nachdem Sie die VMs gelöscht haben, können Sie den Host mithilfe von [az vm host delete](/cli/azure/vm/host#az_vm_host_delete) löschen.
 
 ```azurecli-interactive
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
-Wenn Sie alle Hosts gelöscht haben, können Sie die Hostgruppe mit [az vm host group delete](/cli/azure/vm/host/group#az-vm-host-group-delete) löschen.  
+Wenn Sie alle Hosts gelöscht haben, können Sie die Hostgruppe mit [az vm host group delete](/cli/azure/vm/host/group#az_vm_host_group_delete) löschen.  
  
 ```azurecli-interactive
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  

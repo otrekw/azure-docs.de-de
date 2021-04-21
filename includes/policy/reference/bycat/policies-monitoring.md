@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 82f913eea730d10bef5034fca52c037ef49eadf0
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 29c6ca6a394c2fe4343159f985a90f8bc13cadfb
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090827"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498757"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[\[Vorschau:\] \[Private ASC-Vorschau\] Bereitstellen: Systemseitig zugewiesene verwaltete Identität zum Aktivieren von Azure Monitor-Zuweisungen für VMs konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[Private ASC-Vorschau] Konfigurieren Sie eine systemseitig zugewiesene verwaltete Identität für in Azure gehostete VMs, die von Azure Monitor unterstützt werden und über keine systemseitig zugewiesene verwaltete Identität verfügen. Eine systemseitig zugewiesene verwaltete Identität ist Voraussetzung für sämtliche Azure Monitor-Zuweisungen und muss den Computern zugewiesen werden, bevor eine Azure Monitor-Erweiterung verwendet wird. Ziel-VMs müssen sich an einem unterstützten Standort befinden. |modify |[1.2.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
 |[Das Aktivitätsprotokoll muss mindestens ein Jahr lang aufbewahrt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |Diese Richtlinie überwacht das Aktivitätsprotokoll, wenn die Aufbewahrung nicht auf 365 Tage oder unbegrenzt (Festlegung der Aufbewahrungstage auf 0) festgelegt ist. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |

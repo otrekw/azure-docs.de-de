@@ -3,12 +3,12 @@ title: Onboarding eines Kunden in Azure Lighthouse durchführen
 description: Erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Ihr eigener Mandant über die delegierte Azure-Ressourcenverwaltung auf dessen Ressourcen zugreifen und sie verwalten kann.
 ms.date: 03/29/2021
 ms.topic: how-to
-ms.openlocfilehash: c02bbb789ffac262521c2f76c62081a21cd6602c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d8ad448ac022b07ecdea6b68c4544b8c955814b1
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934307"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497964"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
@@ -302,6 +302,11 @@ Get-AzManagedServicesAssignment
 # Log in first with az login if you're not using Cloud Shell
 
 az account list
+
+# Confirm successful onboarding for Azure Lighthouse
+
+az managedservices definition list
+az managedservices assignment list
 ```
 
 Wenn Sie nach dem Onboarding des Kunden Änderungen vornehmen müssen, können Sie [die Delegierung aktualisieren](update-delegation.md). Sie können auch vollständig den [Zugriff auf die Delegierung entfernen](remove-delegation.md).

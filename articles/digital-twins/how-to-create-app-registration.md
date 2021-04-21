@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: acb5457f10c54a741a738dd8a1008e703b0f23b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd45bb264f8e29a2aad870a7daff45fdd44e0d3c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102051020"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478810"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins"></a>Erstellen einer App-Registrierung für die Verwendung mit Azure Digital Twins
 
-Bei der Verwendung einer Azure Digital Twins-Instanz ist es üblich, über Clientanwendungen mit dieser Instanz zu interagieren – etwa mit einer benutzerdefinierten Client-App oder mit einem Beispiel wie [Azure Digital Twins-Explorer](quickstart-adt-explorer.md). Diese Anwendungen müssen sich bei Azure Digital Twins authentifizieren, um damit zu interagieren, und einige der [Authentifizierungsmechanismen](how-to-authenticate-client.md), die Apps verwenden können, umfassen eine [Azure AD](../active-directory/fundamentals/active-directory-whatis.md)-**App-Registrierung** (Azure Active Directory).
+Bei der Verwendung einer Azure Digital Twins-Instanz ist es üblich, über Clientanwendungen mit dieser Instanz zu interagieren – etwa mit einer benutzerdefinierten Client-App oder mit einem Beispiel wie [Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md). Diese Anwendungen müssen sich bei Azure Digital Twins authentifizieren, um damit zu interagieren, und einige der [Authentifizierungsmechanismen](how-to-authenticate-client.md), die Apps verwenden können, umfassen eine [Azure AD](../active-directory/fundamentals/active-directory-whatis.md)-**App-Registrierung** (Azure Active Directory).
 
 Dies ist nicht für alle Authentifizierungsszenarien erforderlich. Wenn Sie jedoch eine Authentifizierungsstrategie oder ein Codebeispiel verwenden, die bzw. das eine App-Registrierung erfordert, einschließlich einer **Client-ID** und **Manten-ID**, zeigt Ihnen dieser Artikel, wie Sie eine solche einrichten.
 

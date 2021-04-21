@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 47569309f35848e82488abd549751f6f1e5a1baa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afb30f4648f1649bf6cc6cc6a3bf02f433f49d45
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954869"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774929"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrieren zu präzisem rollenbasiertem Zugriff für Clusterkonfigurationen
 
@@ -192,7 +192,7 @@ Clusterkonfigurationen befinden sind jetzt hinter einer differenzierten rollenba
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Warum wird die Meldung „Nicht genügend Berechtigungen zum Abschließen des Vorgangs.“ angezeigt, wenn ich versuche, einem anderen Benutzer oder Dienstprinzipal mithilfe des entsprechenden Azure CLI-Befehls die Rolle „HDInsight-Clusteroperator“ zuzuweisen?
 
-Der Benutzer oder Dienstprinzipal, der den Befehl ausführt, muss neben der Rolle „Besitzer“ auch über ausreichende Azure AD-Berechtigungen verfügen, um nach den Objekt-IDs der zugewiesenen Person zu suchen. Diese Meldung deutet auf unzureichende Azure AD-Berechtigungen hin. Ersetzen Sie das Argument `-–assignee` durch `–assignee-object-id`, und geben Sie als Parameter anstelle des Namens die Objekt-ID der zugewiesenen Person (oder im Falle einer verwalteten Identität: die Prinzipal-ID) an. Weitere Informationen finden Sie in der [Dokumentation zu „az role assignment create“](/cli/azure/role/assignment#az-role-assignment-create) im Abschnitt zu optionalen Parametern.
+Der Benutzer oder Dienstprinzipal, der den Befehl ausführt, muss neben der Rolle „Besitzer“ auch über ausreichende Azure AD-Berechtigungen verfügen, um nach den Objekt-IDs der zugewiesenen Person zu suchen. Diese Meldung deutet auf unzureichende Azure AD-Berechtigungen hin. Ersetzen Sie das Argument `-–assignee` durch `–assignee-object-id`, und geben Sie als Parameter anstelle des Namens die Objekt-ID der zugewiesenen Person (oder im Falle einer verwalteten Identität: die Prinzipal-ID) an. Weitere Informationen finden Sie in der [Dokumentation zu „az role assignment create“](/cli/azure/role/assignment#az_role_assignment_create) im Abschnitt zu optionalen Parametern.
 
 Sollte das Problem weiterhin bestehen, wenden Sie sich an Ihren Azure AD-Administrator, um die korrekten Berechtigungen zu erhalten.
 

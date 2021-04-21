@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2907b732b0d3bf548386e5d5299966c113c20c2f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d421cc34af7663e5399ecf7747fcbfabe3766017
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090267"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500482"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[CPU- und Arbeitsspeicherressourcen für Container in einem Kubernetes-Cluster dürfen die angegebenen Limits nicht überschreiten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345eecc-fa47-480f-9e88-67dcc122b164) |Hiermit werden Ressourcenlimits für Container-CPU und Arbeitsspeicher erzwungen, um Ressourcenauslastungsangriffe in einem Kubernetes-Cluster zu verhindern. Diese Richtlinie ist für Kubernetes Service (AKS) allgemein verfügbar und steht für AKS Engine und Kubernetes mit Azure Arc-Unterstützung als Vorschauversion zur Verfügung. Weitere Informationen finden Sie unter [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |Audit, Deny, Disabled |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerResourceLimits.json) |
 |[Container im Kubernetes-Cluster dürfen den Namespace für Hostprozess-ID oder Host-IPC nicht freigeben](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |Hiermit wird verhindert, dass Podcontainer die Namespaces für Hostprozess-ID und Host-IPC in einem Kubernetes-Cluster freigeben. Diese Empfehlung ist Bestandteil von CIS 5.2.2 und CIS 5.2.3, mit denen die Sicherheit Ihrer Kubernetes-Umgebungen verbessert werden soll. Diese Richtlinie ist für Kubernetes Service (AKS) allgemein verfügbar und steht für AKS Engine und Kubernetes mit Azure Arc-Unterstützung als Vorschauversion zur Verfügung. Weitere Informationen finden Sie unter [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc). |Audit, Deny, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockHostNamespace.json) |

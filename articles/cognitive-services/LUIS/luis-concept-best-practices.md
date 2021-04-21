@@ -4,13 +4,13 @@ description: Erfahren Sie, wie Sie mit bewährten Methoden die besten Ergebnisse
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: d5fa2a1e865a4f54de268e7ad756d1d4363f3b78
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98788484"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500208"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Bewährte Methoden zum Erstellen von LUIS-Apps (Language Understanding)
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App:
@@ -81,7 +81,7 @@ Durch maschinelles Lernen erworbene Entitäten sind auf Ihre App zugeschnitten u
 
 Durch maschinelles Lernen erworbene Entitäten können andere Entitäten als Features verwenden. Diese anderen Entitäten können benutzerdefinierte Entitäten sein (beispielsweise RegEx-Entitäten oder Listenentitäten). Sie können aber auch vorgefertigte Entitäten als Features verwenden.
 
-Informationen zu effektiven, durch maschinelles Lernen erworbenen Entitäten finden Sie [hier](luis-concept-entity-types.md#effective-machine-learned-entities).
+Informationen zu effektiven, durch maschinelles Lernen erworbenen Entitäten finden Sie [hier](luis-concept-entity-types.md#machine-learned-ml-entity).
 
 <a name="#do-build-the-app-iteratively"></a>
 

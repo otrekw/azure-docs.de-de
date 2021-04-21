@@ -3,12 +3,12 @@ title: Webhooks zum Reagieren auf Registrierungsaktionen
 description: Erfahren Sie, wie Sie Webhooks verwenden, um Ereignisse auszulösen, wenn in einem Ihrer Registrierungsrepositorys Push- oder Pull-Aktionen stattfinden.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f6fb719f8d9d51429a19616aa5548b32a2687e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101722244"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773398"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Verwenden von Azure Container Registry-Webhooks
 
@@ -47,7 +47,7 @@ Beispielformular für Webhook:
 
 ## <a name="create-webhook---azure-cli"></a>Erstellen von Webhooks – Azure-Befehlszeilenschnittstelle (CLI)
 
-Um einen Webhook über die Azure-Befehlszeilenschnittstelle zu erstellen, verwenden Sie den Befehl [az acr webhook create](/cli/azure/acr/webhook#az-acr-webhook-create). Mit dem folgenden Befehl wird ein Webhook für alle Löschereignisse von Images in der Registrierung *mycontainerregistry* erstellt:
+Um einen Webhook über die Azure-Befehlszeilenschnittstelle zu erstellen, verwenden Sie den Befehl [az acr webhook create](/cli/azure/acr/webhook#az_acr_webhook_create). Mit dem folgenden Befehl wird ein Webhook für alle Löschereignisse von Images in der Registrierung *mycontainerregistry* erstellt:
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -67,7 +67,7 @@ Vor der Verwendung des Webhooks können Sie ihn mithilfe der Schaltfläche **Pin
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Um einen ACR-Webhook über die Azure-Befehlszeilenschnittstelle zu testen, verwenden Sie den Befehl [az acr webhook ping](/cli/azure/acr/webhook#az-acr-webhook-ping).
+Um einen ACR-Webhook über die Azure-Befehlszeilenschnittstelle zu testen, verwenden Sie den Befehl [az acr webhook ping](/cli/azure/acr/webhook#az_acr_webhook_ping).
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01

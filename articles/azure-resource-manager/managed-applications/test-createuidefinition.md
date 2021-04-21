@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 36d6af7fb42bc1b705b44bdae6f24b454bfd242f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: eeef454e4c5706b39d07261ade1c2f0ffbc942ad
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312432"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478895"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Testen Ihrer Portalschnittstelle für Azure Managed Applications
 
@@ -100,7 +100,7 @@ Wenn das Portal bei der Zusammenfassungsseite hängen bleibt, kann ein Fehler im
 
 ## <a name="test-your-solution-files"></a>Testen Ihrer Lösungsdateien
 
-Sie haben überprüft, ob die Portalbenutzeroberfläche wie erwartet funktioniert. Vergewissern Sie sich nun, dass die Datei „createUiDefinition“ ordnungsgemäß in die Datei „mainTemplate.json“ integriert wurde. Sie können einen Überprüfungsskripttest ausführen, um den Inhalt der Lösungsdateien, einschließlich der Datei „createUiDefinition“, zu testen. Das Skript überprüft die JSON-Syntax, sucht in den Textfeldern nach regulären Ausdrücken und stellt sicher, dass die Ausgabewerte der Portalbenutzeroberfläche mit den Parametern der Vorlage übereinstimmen. Informationen zum Ausführen dieses Skripts finden Sie unter [Run static validation checks for templates](https://github.com/Azure/azure-quickstart-templates/tree/master/test) (Ausführen von statischen Überprüfungen für Vorlagen).
+Sie haben überprüft, ob die Portalbenutzeroberfläche wie erwartet funktioniert. Vergewissern Sie sich nun, dass die Datei „createUiDefinition“ ordnungsgemäß in die Datei „mainTemplate.json“ integriert wurde. Sie können einen Überprüfungsskripttest ausführen, um den Inhalt der Lösungsdateien, einschließlich der Datei „createUiDefinition“, zu testen. Das Skript überprüft die JSON-Syntax, sucht in den Textfeldern nach regulären Ausdrücken und stellt sicher, dass die Ausgabewerte der Portalbenutzeroberfläche mit den Parametern der Vorlage übereinstimmen. Informationen zum Ausführen dieses Skripts finden Sie unter [Run static validation checks for templates](https://aka.ms/arm-ttk) (Ausführen von statischen Überprüfungen für Vorlagen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

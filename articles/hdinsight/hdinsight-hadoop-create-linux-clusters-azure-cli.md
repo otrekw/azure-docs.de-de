@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: 9028d85346611341afec0d0598f27a77e4f37fdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c19eb58e32fec66e5fe698c82133c8583f67b8b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715495"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775131"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Erstellen von HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle
 
@@ -35,7 +35,7 @@ Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDI
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Legen Sie Umgebungsvariablen fest. Die Verwendung von Variablen in diesem Artikel basiert auf Bash. Für andere Umgebungen sind geringfügige Variationen erforderlich. Eine vollständige Liste der möglichen Parameter für die Erstellung von Clustern finden Sie unter [az-hdinsight-create](/cli/azure/hdinsight#az-hdinsight-create).
+2. Legen Sie Umgebungsvariablen fest. Die Verwendung von Variablen in diesem Artikel basiert auf Bash. Für andere Umgebungen sind geringfügige Variationen erforderlich. Eine vollständige Liste der möglichen Parameter für die Erstellung von Clustern finden Sie unter [az-hdinsight-create](/cli/azure/hdinsight#az_hdinsight_create).
 
     |Parameter | BESCHREIBUNG |
     |---|---|
@@ -61,7 +61,7 @@ Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDI
     export componentVersion=Hadoop=2.7
     ```
 
-3. [Erstellen Sie die Ressourcengruppe](/cli/azure/group#az-group-create) mithilfe des folgenden Befehls:
+3. [Erstellen Sie die Ressourcengruppe](/cli/azure/group#az_group_create) mithilfe des folgenden Befehls:
 
     ```azurecli-interactive
     az group create \
@@ -71,7 +71,7 @@ Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDI
 
     Eine Liste der gültigen Orte können Sie mithilfe des Befehls `az account list-locations` erzeugen. Verwenden Sie anschließend einen der Orte aus dem Wert `name`.
 
-4. [Erstellen Sie ein Azure Storage-Konto](/cli/azure/storage/account#az-storage-account-create) mithilfe des folgenden Befehls:
+4. [Erstellen Sie ein Azure Storage-Konto](/cli/azure/storage/account#az_storage_account_create) mithilfe des folgenden Befehls:
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -84,7 +84,7 @@ Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDI
         --sku Standard_LRS
     ```
 
-5. [Extrahieren Sie den Primärschlüssel aus dem Azure Storage-Konto](/cli/azure/storage/account/keys#az-storage-account-keys-list), und speichern Sie ihn in einer Variablen, indem Sie den folgenden Befehl eingeben:
+5. [Extrahieren Sie den Primärschlüssel aus dem Azure Storage-Konto](/cli/azure/storage/account/keys#az_storage_account_keys_list), und speichern Sie ihn in einer Variablen, indem Sie den folgenden Befehl eingeben:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -93,7 +93,7 @@ Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDI
         --query [0].value -o tsv)
     ```
 
-6. [Erstellen Sie einen Azure Storage-Container](/cli/azure/storage/container#az-storage-container-create) mithilfe des folgenden Befehls:
+6. [Erstellen Sie einen Azure Storage-Container](/cli/azure/storage/container#az_storage_container_create) mithilfe des folgenden Befehls:
 
     ```azurecli-interactive
     az storage container create \
@@ -102,7 +102,7 @@ Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDI
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. [Erstellen Sie den HDInsight-Cluster](/cli/azure/hdinsight#az-hdinsight-create) mithilfe des folgenden Befehls:
+7. [Erstellen Sie den HDInsight-Cluster](/cli/azure/hdinsight#az_hdinsight_create) mithilfe des folgenden Befehls:
 
     ```azurecli-interactive
     az hdinsight create \

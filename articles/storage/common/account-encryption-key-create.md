@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f2bc71100a92d1811d69af31a7a3085af36f60a8
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 4c86811ee72d2713fced6320a17d1ccde1866d99
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121930"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769947"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Tabellen und Warteschlangen unterstützt
 
@@ -58,7 +58,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 
 Wenn Sie mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) ein Speicherkonto erstellen möchten, das den Kontoverschlüsselungsschlüssel verwendet, müssen Sie Azure CLI, Version 2.0.80 oder höher, installiert haben. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
-Erstellen Sie als Nächstes ein Speicherkonto vom Typ „Allgemein v2 (GPv2)“, indem Sie den Befehl „[az storage account create](/cli/azure/storage/account#az-storage-account-create)“ mit den entsprechenden Parametern aufrufen:
+Erstellen Sie als Nächstes ein Speicherkonto vom Typ „Allgemein v2 (GPv2)“, indem Sie den Befehl „[az storage account create](/cli/azure/storage/account#az_storage_account_create)“ mit den entsprechenden Parametern aufrufen:
 
 - Fügen Sie die Option `--encryption-key-type-for-queue` ein, und legen Sie deren Wert auf `Account` fest, um den Kontoverschlüsselungsschlüssel zum Verschlüsseln von Daten in Queue Storage verwenden zu können.
 - Fügen Sie die Option `--encryption-key-type-for-table` ein, und legen Sie deren Wert auf `Account` fest, um den Kontoverschlüsselungsschlüssel zum Verschlüsseln von Daten in Table Storage verwenden zu können.
@@ -119,7 +119,7 @@ Nachdem Sie ein Konto erstellt haben, dass den Kontoverschlüsselungsschlüssel 
 
 ## <a name="verify-the-account-encryption-key"></a>Überprüfen des Kontoverschlüsselungsschlüssels
 
-Wenn Sie überprüfen möchten, ob ein Dienst in einem Speicherkonto den Kontoverschlüsselungsschlüssel verwendet, rufen Sie den Azure CLI-Befehl „[az storage account](/cli/azure/storage/account#az-storage-account-show)“ auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Suchen Sie in der Eigenschaft „Encryption“ bei jedem Dienst nach dem Feld `keyType`, und überprüfen Sie, ob dessen Wert auf `Account` festgelegt ist.
+Wenn Sie überprüfen möchten, ob ein Dienst in einem Speicherkonto den Kontoverschlüsselungsschlüssel verwendet, rufen Sie den Azure CLI-Befehl „[az storage account](/cli/azure/storage/account#az_storage_account_show)“ auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Suchen Sie in der Eigenschaft „Encryption“ bei jedem Dienst nach dem Feld `keyType`, und überprüfen Sie, ob dessen Wert auf `Account` festgelegt ist.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -134,7 +134,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Wenn Sie überprüfen möchten, ob ein Dienst in einem Speicherkonto den Kontoverschlüsselungsschlüssel verwendet, rufen Sie den Befehl [az storage account show](/cli/azure/storage/account#az-storage-account-show) auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Suchen Sie in der Eigenschaft „Encryption“ bei jedem Dienst nach dem Feld `keyType`, und überprüfen Sie, ob dessen Wert auf `Account` festgelegt ist.
+Wenn Sie überprüfen möchten, ob ein Dienst in einem Speicherkonto den Kontoverschlüsselungsschlüssel verwendet, rufen Sie den Befehl [az storage account show](/cli/azure/storage/account#az_storage_account_show) auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Suchen Sie in der Eigenschaft „Encryption“ bei jedem Dienst nach dem Feld `keyType`, und überprüfen Sie, ob dessen Wert auf `Account` festgelegt ist.
 
 ```azurecli
 az storage account show /

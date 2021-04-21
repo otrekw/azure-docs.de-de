@@ -4,13 +4,13 @@ description: Extrahieren Sie Daten aus dem Äußerungstext mit Absichten und Ent
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: e6f01354bb5aa2b78d3c9962bac49be39dd2c81f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: dd7d113b1c23a0afec82a346e0f7baa1254ebbed
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95025992"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500140"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahieren von Daten aus dem Äußerungstext mit Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
@@ -242,7 +242,7 @@ Namen von Orten sind feststehend und bekannt. Sie umfassen z. B. Städte, Landk
 
 ### <a name="new-and-emerging-names"></a>Neue und sich entwickelnde Namen
 
-Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. von Produkten oder Unternehmen, finden zu können. Solche Namen sind am schwersten zu extrahieren. Beginnen Sie mit einer **[einfachen Entität](luis-concept-entity-types.md#simple-entity)** , und fügen Sie eine [Ausdrucksliste](luis-concept-feature.md) hinzu. [Überprüfen](./luis-how-to-review-endpoint-utterances.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
+Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. von Produkten oder Unternehmen, finden zu können. Solche Namen sind am schwersten zu extrahieren. Beginnen Sie mit einer **[einfachen Entität](luis-concept-entity-types.md)** , und fügen Sie eine [Ausdrucksliste](luis-concept-feature.md) hinzu. [Überprüfen](./luis-how-to-review-endpoint-utterances.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
 
 ## <a name="patternany-entity-data"></a>Daten in Entitäten vom Typ „Pattern.any“
 

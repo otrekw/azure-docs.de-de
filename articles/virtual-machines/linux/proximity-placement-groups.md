@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: a347c9284608340811f9c2388df26129baeb8837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4f91afa86a0d99b4ce42e96295bf2ae1f9fcd9f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505646"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771441"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Bereitstellen von VMs für Näherungsplatzierungsgruppen mit Azure CLI
 
@@ -23,7 +23,7 @@ Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, mit der ein mö
 
 
 ## <a name="create-the-proximity-placement-group"></a>Erstellen der Näherungsplatzierungsgruppe
-Erstellen Sie eine Näherungsplatzierungsgruppe mit [`az ppg create`](/cli/azure/ppg#az-ppg-create). 
+Erstellen Sie eine Näherungsplatzierungsgruppe mit [`az ppg create`](/cli/azure/ppg#az_ppg_create). 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus
@@ -36,7 +36,7 @@ az ppg create \
 
 ## <a name="list-proximity-placement-groups"></a>Auflisten von Näherungsplatzierungsgruppen
 
-Mit [az ppg list](/cli/azure/ppg#az-ppg-list) können Sie alle Ihre Näherungsplatzierungsgruppen auflisten.
+Mit [az ppg list](/cli/azure/ppg#az_ppg_list) können Sie alle Ihre Näherungsplatzierungsgruppen auflisten.
 
 ```azurecli-interactive
 az ppg list -o table
@@ -44,7 +44,7 @@ az ppg list -o table
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
-Erstellen Sie einen virtuellen Computer innerhalb der Näherungsplatzierungsgruppe mit [new az vm](/cli/azure/vm#az-vm-create).
+Erstellen Sie einen virtuellen Computer innerhalb der Näherungsplatzierungsgruppe mit [new az vm](/cli/azure/vm#az_vm_create).
 
 ```azurecli-interactive
 az vm create \
@@ -57,14 +57,14 @@ az vm create \
    -l westus
 ```
 
-Sie können die VM in der Näherungsplatzierungsgruppe mit [az ppg show](/cli/azure/ppg#az-ppg-show) anzeigen.
+Sie können die VM in der Näherungsplatzierungsgruppe mit [az ppg show](/cli/azure/ppg#az_ppg_show) anzeigen.
 
 ```azurecli-interactive
 az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen
-Sie können auch eine Verfügbarkeitsgruppe in ihrer Näherungsplatzierungsgruppe erstellen. Verwenden Sie den gleichen `--ppg`-Parameter mit [az vm availability-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create), um eine Verfügbarkeitsgruppe zu erstellen, und alle in der Verfügbarkeitsgruppe erstellten virtuellen Computer werden ebenfalls in derselben Näherungsplatzierungsgruppe erstellt.
+Sie können auch eine Verfügbarkeitsgruppe in ihrer Näherungsplatzierungsgruppe erstellen. Verwenden Sie den gleichen `--ppg`-Parameter mit [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create), um eine Verfügbarkeitsgruppe zu erstellen, und alle in der Verfügbarkeitsgruppe erstellten virtuellen Computer werden ebenfalls in derselben Näherungsplatzierungsgruppe erstellt.
 
 ## <a name="scale-sets"></a>Skalierungsgruppen
 

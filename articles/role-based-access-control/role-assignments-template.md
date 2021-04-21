@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba1df23b40de82a8ef901541884ef29ea0b504a1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556029"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771873"
 ---
 # <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Zuweisen von Azure-Rollen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -31,7 +31,7 @@ Um eine Rolle zuzuweisen, müssen Sie die ID des Benutzers, der Gruppe oder der 
 
 ### <a name="user"></a>Benutzer
 
-Zum Abrufen eines Benutzers können Sie die Befehle [Get-AzADUser](/powershell/module/az.resources/get-azaduser) oder [az ad user show](/cli/azure/ad/user#az-ad-user-show) verwenden.
+Zum Abrufen eines Benutzers können Sie die Befehle [Get-AzADUser](/powershell/module/az.resources/get-azaduser) oder [az ad user show](/cli/azure/ad/user#az_ad_user_show) verwenden.
 
 ```azurepowershell
 $objectid = (Get-AzADUser -DisplayName "{name}").id
@@ -43,7 +43,7 @@ objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 
 ### <a name="group"></a>Group
 
-Zum Abrufen einer Gruppe können Sie die Befehle [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) oder [az ad group show](/cli/azure/ad/group#az-ad-group-show) verwenden.
+Zum Abrufen einer Gruppe können Sie die Befehle [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) oder [az ad group show](/cli/azure/ad/group#az_ad_group_show) verwenden.
 
 ```azurepowershell
 $objectid = (Get-AzADGroup -DisplayName "{name}").id
@@ -67,7 +67,7 @@ objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectI
 
 ### <a name="application"></a>Application
 
-Zum Abrufen eines Dienstprinzipals (eine von einer Anwendung verwendete Identität) können Sie die Befehle [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) oder [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) verwenden. Verwenden Sie für einen Dienstprinzipal die Objekt-ID und **nicht** die Anwendungs-ID.
+Zum Abrufen eines Dienstprinzipals (eine von einer Anwendung verwendete Identität) können Sie die Befehle [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) oder [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) verwenden. Verwenden Sie für einen Dienstprinzipal die Objekt-ID und **nicht** die Anwendungs-ID.
 
 ```azurepowershell
 $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b7013979199eefa873a651d99e87dc8b2c47856
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5a31e15c88cef588c93f44c8fe5303d930b5b2c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201601"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479371"
 ---
 # <a name="monitor-module-twins"></a>Überwachen von Modulzwillingen
 
@@ -215,7 +215,7 @@ Wenn Sie Änderungen vornehmen, wählen Sie **Modulzwilling aktualisieren** ober
 
 Um festzustellen, ob IoT Edge ausgeführt wird, pingen Sie mit [az iot hub invoke-module-method](how-to-edgeagent-direct-method.md#ping) den IoT Edge-Agent.
 
-Die [az iot hub module-twin](/cli/azure/ext/azure-iot/iot/hub/module-twin)-Struktur bietet folgende Befehle:
+Die [az iot hub module-twin](/cli/azure/iot/hub/module-twin)-Struktur bietet folgende Befehle:
 
 * **az iot hub module-twin show**: Zeigt eine Modulzwillingsdefinition an.
 * **az iot hub module-twin update**: Aktualisiert eine Modulzwillingsdefinition.

@@ -3,12 +3,12 @@ title: Abschätzen der Kosten des Verbrauchstarifs in Azure Functions
 description: Erfahren Sie, wie Sie die Kosten besser abschätzen, die Sie eventuell verursachen, wenn Sie Ihre Funkions-App in einem Verbrauchstarif in Azure ausführen.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 648be6325cce5bad36795b113c8bbccb3e21d37b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578553"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774001"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Abschätzen der Kosten des Verbrauchstarifs
 
@@ -80,7 +80,7 @@ Verwenden Sie den [Azure Monitor-Metrik-Explorer](../azure-monitor/essentials/me
     ![Auswählen Ihrer Funktions-App](media/functions-consumption-costing/select-a-resource.png)
 
       
-    |Einstellung  |Vorgeschlagener Wert  |BESCHREIBUNG  |
+    |Einstellung  |Vorgeschlagener Wert  |Beschreibung  |
     |---------|---------|---------|
     | Subscription    |  Ihr Abonnement  | Das Abonnement Ihrer Funktions-App.  |
     | Resource group     | Ihre Ressourcengruppe  | Die Ressourcengruppe, die Ihre Funktions-App enthält.   |
@@ -105,7 +105,7 @@ Dieses Diagramm zeigt eine Gesamtzahl von 1,11 Mrd. `Function Execution Units`, 
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Die [Azure CLI](/cli/azure/) enthält Befehle zum Abrufen von Metriken. Sie können die CLI aus einer lokalen Befehlsumgebung heraus oder direkt über das Portal mithilfe von [Azure Cloud Shell](../cloud-shell/overview.md) verwenden. Beispielsweise gibt der folgende [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list)-Befehl stündlich Daten aus demselben zuvor verwendeten Zeitraum zurück.
+Die [Azure CLI](/cli/azure/) enthält Befehle zum Abrufen von Metriken. Sie können die CLI aus einer lokalen Befehlsumgebung heraus oder direkt über das Portal mithilfe von [Azure Cloud Shell](../cloud-shell/overview.md) verwenden. Beispielsweise gibt der folgende [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list)-Befehl stündlich Daten aus demselben zuvor verwendeten Zeitraum zurück.
 
 Stellen Sie sicher, dass Sie `<AZURE_SUBSCRIPTON_ID>` durch Ihre Azure-Abonnement-ID ersetzen, wenn Sie den Befehl ausführen.
 

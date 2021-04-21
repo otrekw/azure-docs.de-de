@@ -3,12 +3,12 @@ title: Neustartrichtlinie für Aufgaben mit einmaliger Ausführung
 description: Hier erfahren Sie, wie Sie mit Azure Container Instances Aufgaben ausführen, die bis zum Abschluss ausgeführt werden, z.B. bei Build-, Test- oder Image-Rendering-Aufträgen.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 49280549fa834b82574f81494f1cf44817d8be5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3bce208e3663ecfcebe520be92de3ac4443c0c8f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203826"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771153"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Ausführen von Aufgaben in Containern mit Neustartrichtlinien
 
@@ -104,7 +104,7 @@ Details zum dauerhaften Speichern der Ausgabe von Containern, die bis zum Abschl
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
 [azure-cli-install]: /cli/azure/install-azure-cli

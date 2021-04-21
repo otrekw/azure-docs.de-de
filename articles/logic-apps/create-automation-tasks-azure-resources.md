@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 0a98f9e4b108d2498fa19bc0b041f9d52272c7d2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719048"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774915"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Verwalten von Azure-Ressourcen und Überwachen von Kosten durch Erstellen von Automatisierungsaufgaben (Vorschau)
 
@@ -150,7 +150,7 @@ Um den Ausführungsverlauf einer Aufgabe zusammen mit deren Statuswerten, Eingab
 
    Der Bereich **Logik-App-Ausführung** wird geöffnet und zeigt den zugrunde liegenden Workflow an, der ausgeführt wurde.
 
-   * Ein Workflow beginnt immer mit einem [*Trigger*](../connectors/apis-list.md#triggers-actions). Für diese Aufgabe beginnt der Workflow mit dem [**Wiederholungs** trigger](../connectors/connectors-native-recurrence.md).
+   * Ein Workflow beginnt immer mit einem [*Trigger*](../connectors/apis-list.md#triggers). Für diese Aufgabe beginnt der Workflow mit dem [**Wiederholungs** trigger](../connectors/connectors-native-recurrence.md).
 
    * Jeder Schritt zeigt seinen Status und die Ausführungsdauer an. Die Ausführung von Schritten mit einer Ausführungsdauer von 0 Sekunden war kürzer als 1 Sekunde.
 

@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 218c0f345e4ea453a2300b3de85ac8856a09c6ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7c28ecbaa58731c528a9ecb5f869eba2bc0c99f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199277"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484420"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge-Geräte (klassischer Editor)
 
@@ -162,7 +162,7 @@ Diese Pipeline ist jetzt für die automatische Ausführung konfiguriert, wenn Si
 >[!NOTE]
 >Wenn Sie in ihrer Pipeline **mehrstufige Bereitstellungen** verwenden möchten, ist dies leider nicht möglich. Mehrstufige Bereitstellungen werden in Azure IoT Edge-Aufgaben in Azure DevOps nämlich noch nicht unterstützt.
 >
->Sie können jedoch mithilfe einer [Azure CLI-Aufgabe in Azure DevOps](/azure/devops/pipelines/tasks/deploy/azure-cli) Ihre Bereitstellung als eine mehrstufige Bereitstellung erstellen. Für den Wert **Inlineskript** können Sie den [Befehl „az iot edge deployment create“](/cli/azure/ext/azure-iot/iot/edge/deployment) verwenden:
+>Sie können jedoch mithilfe einer [Azure CLI-Aufgabe in Azure DevOps](/azure/devops/pipelines/tasks/deploy/azure-cli) Ihre Bereitstellung als eine mehrstufige Bereitstellung erstellen. Für den Wert **Inlineskript** können Sie den [Befehl „az iot edge deployment create“](/cli/azure/iot/edge/deployment) verwenden:
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

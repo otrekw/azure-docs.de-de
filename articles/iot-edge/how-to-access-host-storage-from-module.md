@@ -8,12 +8,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d88d35eece698c7d0079221ae3c76058d1877948
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 78752d4da42fe07461ae0e82b10343dc7219ad91
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200476"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482057"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Gewähren des Zugriff auf den lokalen Speicher eines Geräts für Module
 
@@ -87,7 +87,7 @@ Weitere Details zu Erstellungsoptionen finden Sie in der [Docker-Dokumentation](
 
 ## <a name="encrypted-data-in-module-storage"></a>Verschlüsselte Daten im Modulspeicher
 
-Wenn Module die Workload-API des IoT Edge-Dämons aufrufen, um Daten zu verschlüsseln, wird der Verschlüsselungsschlüssel unter Verwendung der Modul-ID und der Generations-ID des Moduls abgeleitet. Eine Generations-ID wird verwendet, um Geheimnisse zu schützen, wenn ein Modul aus der Bereitstellung entfernt wird und dann später ein anderes Modul mit derselben Modul-ID auf demselben Gerät bereitgestellt wird. Sie können die Generations-ID eines Moduls mit dem Azure CLI-Befehl [az iot hub module-identity show](/cli/azure/ext/azure-iot/iot/hub/module-identity) anzeigen.
+Wenn Module die Workload-API des IoT Edge-Dämons aufrufen, um Daten zu verschlüsseln, wird der Verschlüsselungsschlüssel unter Verwendung der Modul-ID und der Generations-ID des Moduls abgeleitet. Eine Generations-ID wird verwendet, um Geheimnisse zu schützen, wenn ein Modul aus der Bereitstellung entfernt wird und dann später ein anderes Modul mit derselben Modul-ID auf demselben Gerät bereitgestellt wird. Sie können die Generations-ID eines Moduls mit dem Azure CLI-Befehl [az iot hub module-identity show](/cli/azure/iot/hub/module-identity) anzeigen.
 
 Wenn Sie Dateien zwischen Modulen über Generationen hinweg austauschen möchten, dürfen sie keine Geheimnisse enthalten, da sie sonst nicht entschlüsselt werden können.
 

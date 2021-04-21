@@ -3,12 +3,12 @@ title: Verwalten von Labs in Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein Classroom-Lab erstellen, alle Labs anzeigen, den Registrierungslink für einen Lab-Benutzer freigeben oder ein Lab löschen.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6acb9609abac15b9ff92250e3d5d44c585881cc
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434208"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481802"
 ---
 # <a name="manage-labs-in-azure-lab-services"></a>Verwalten von Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Labs in einem Labkonto anzeigen. 
@@ -18,7 +18,7 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 
 ## <a name="create-a-classroom-lab"></a>Erstellen eines Classroom-Labs
 
-1. Navigieren Sie zur Website [Azure Lab Services](https://labs.azure.com). Internet Explorer 11 wird noch nicht unterstützt. 
+1. Navigieren Sie zur Website [Azure Lab Services](https://labs.azure.com).
 1. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Wählen Sie eine **Benutzer-ID** aus (oder geben Sie eine Benutzer-ID ein), die der Rolle **Lab-Ersteller** im Labkonto angehört, und geben Sie das Kennwort ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
 1. Wählen Sie **Neues Lab** aus. 
     

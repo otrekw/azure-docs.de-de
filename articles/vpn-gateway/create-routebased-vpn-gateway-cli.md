@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2bbd7e39ee65ba304ec62697b6fcc77bea133b41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87e3490711990944e017d2d463090f3c8697956c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94737216"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484217"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Erstellen eines routenbasierten VPN-Gateways mithilfe von CLI
 
@@ -74,7 +74,7 @@ az network public-ip create \
 
 ## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>Erstellen des VPN-Gateways
 
-Erstellen Sie das VPN-Gateway mit dem Befehl [az network vnet-gateway create](/cli/azure/group).
+Erstellen Sie das VPN-Gateway mit dem Befehl [az network vnet-gateway create](/cli/azure/network/vnet-gateway).
 
 Wenn Sie diesen Befehl mit dem Parameter `--no-wait` ausführen, werden kein Feedback und keine Ausgabe angezeigt. Der Parameter `--no-wait` ermöglicht die Erstellung des Gateways im Hintergrund. Das bedeutet nicht, dass die Erstellung des VPN-Gateways sofort abgeschlossen ist.
 

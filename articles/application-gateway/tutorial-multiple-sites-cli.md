@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 350962aed89d04c5508e7b2c50e8a838cd5a7174
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb924ab1f8947fefc83ed35a409628a576fad4b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566145"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772671"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways als Host für mehrere Websites mit der Azure-Befehlszeilenschnittstelle
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 
-Sie können [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) verwenden, um das Anwendungsgateway zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myAGPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben. 
+Sie können [az network application-gateway create](/cli/azure/network/application-gateway#az_network_application_gateway_create) verwenden, um das Anwendungsgateway zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myAGPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -105,7 +105,7 @@ Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem 
 
 ### <a name="add-the-backend-pools"></a>Hinzufügen der Back-End-Pools
 
-Fügen Sie mit [az network application-gateway address-pool create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create) die Back-End-Pools hinzu, die für die Back-End-Server benötigt werden.
+Fügen Sie mit [az network application-gateway address-pool create](/cli/azure/network/application-gateway/address-pool#az_network_application_gateway_address-pool_create) die Back-End-Pools hinzu, die für die Back-End-Server benötigt werden.
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
@@ -120,7 +120,7 @@ az network application-gateway address-pool create \
 
 ### <a name="add-listeners"></a>Hinzufügen der Listener
 
-Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) die Listener hinzu, die zum Weiterleiten von Datenverkehr erforderlich sind.
+Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create) die Listener hinzu, die zum Weiterleiten von Datenverkehr erforderlich sind.
 
 >[!NOTE]
 > Mit der SKU für Application Gateway oder WAF v2 können Sie auch bis zu fünf Hostnamen pro Listener konfigurieren und Platzhalterzeichen im Hostnamen verwenden. Weitere Informationen finden Sie unter [Hostnamen mit Platzhalterzeichen im Listener](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
@@ -148,7 +148,7 @@ az network application-gateway http-listener create \
 
 Regeln werden in der Reihenfolge ihrer Auflistung verarbeitet. Der Datenverkehr wird unter Verwendung der ersten übereinstimmenden Regel weitergeleitet, unabhängig von spezifischen Eigenschaften. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert. 
 
-In diesem Beispiel erstellen Sie zwei neue Regeln und löschen die Standardregel, die beim Bereitstellen des Anwendungsgateways erstellt wurde. Sie können die Regel mit [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) hinzufügen.
+In diesem Beispiel erstellen Sie zwei neue Regeln und löschen die Standardregel, die beim Bereitstellen des Anwendungsgateways erstellt wurde. Sie können die Regel mit [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create) hinzufügen.
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -225,7 +225,7 @@ done
 
 ## <a name="create-a-cname-record-in-your-domain"></a>Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Sie können [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) verwenden, um die DNS-Adresse des Anwendungsgateways abzurufen. Kopieren Sie den *fqdn*-Wert der DNSSettings, und verwenden Sie ihn als Wert für den erstellten CNAME-Eintrag. 
+Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Sie können [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) verwenden, um die DNS-Adresse des Anwendungsgateways abzurufen. Kopieren Sie den *fqdn*-Wert der DNSSettings, und verwenden Sie ihn als Wert für den erstellten CNAME-Eintrag. 
 
 ```azurecli-interactive
 az network public-ip show \

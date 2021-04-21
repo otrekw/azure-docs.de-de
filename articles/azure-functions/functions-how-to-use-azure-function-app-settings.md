@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed87a5a744defb15d4a898aeabdce5267b7431fe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98875448"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775653"
 ---
 # <a name="manage-your-function-app"></a>Verwalten Ihrer Funktions-App 
 
@@ -46,14 +46,14 @@ Die Registerkarte **Anwendungseinstellungen** verwaltet Einstellungen, die von I
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
 
-Der Befehl [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) gibt die vorhandenen Anwendungseinstellungen zurück, wie im folgenden Beispiel zu sehen:
+Der Befehl [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_list) gibt die vorhandenen Anwendungseinstellungen zurück, wie im folgenden Beispiel zu sehen:
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-Der Befehl [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) dient zum Hinzufügen oder Aktualisieren einer Anwendungseinstellung. Im folgenden Beispiel wird eine Einstellung mit einem Schlüssel namens `CUSTOM_FUNCTION_APP_SETTING` und dem Wert `12345` erstellt:
+Der Befehl [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) dient zum Hinzufügen oder Aktualisieren einer Anwendungseinstellung. Im folgenden Beispiel wird eine Einstellung mit einem Schlüssel namens `CUSTOM_FUNCTION_APP_SETTING` und dem Wert `12345` erstellt:
 
 
 ```azurecli-interactive
@@ -260,7 +260,7 @@ Wenn Sie die Liste **Zulässige Ursprünge** für Ihre Funktions-App konfigurier
 
 Bei Verwendung des Platzhalterzeichens (`*`) werden alle anderen Domänen ignoriert. 
 
-Verwenden Sie den Befehl [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add),um der Liste mit den zulässigen Ursprüngen eine Domäne hinzuzufügen. Im folgenden Beispiel wird die Domäne „contoso.com“ hinzugefügt:
+Verwenden Sie den Befehl [`az functionapp cors add`](/cli/azure/functionapp/cors#az_functionapp_cors_add),um der Liste mit den zulässigen Ursprüngen eine Domäne hinzuzufügen. Im folgenden Beispiel wird die Domäne „contoso.com“ hinzugefügt:
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -268,7 +268,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-Verwenden Sie den Befehl [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show), um die derzeit zulässigen Ursprünge aufzulisten.
+Verwenden Sie den Befehl [`az functionapp cors show`](/cli/azure/functionapp/cors#az_functionapp_cors_show), um die derzeit zulässigen Ursprünge aufzulisten.
 
 ### <a name="authentication"></a><a name="auth"></a>Authentifizierung
 

@@ -5,7 +5,7 @@ description: In diesem Anleitungsartikel beginnen Sie mit Azure Load Balancer St
 services: load-balancer
 documentationcenter: na
 author: irenehua
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 52f2a2ed301bf734ad605a2ee68a0ab672a97014
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2079eeb97ac935ba24c6ff0616a58fbb28a962f4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218722"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480085"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Aktualisieren oder Löschen einer von einer VM-Skalierungsgruppe verwendeten Load Balancer-Instanz
 
@@ -62,7 +62,7 @@ Der neue NAT-Pool für eingehenden Datenverkehr darf keinen überlappenden Front
           --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
             
   az vmss update-instances
-          -–instance-ids *
+          -â€“instance-ids *
           --resource-group MyResourceGroup
           --name MyVMSS
 ```
@@ -98,7 +98,7 @@ Um den NAT-Pool zu löschen, entfernen Sie ihn zunächst aus der Skalierungsgrup
        --name MyVMSS
     az network lb inbound-nat-pool delete
        --resource-group MyResourceGroup
-       -–lb-name MyLoadBalancer
+       -â€“lb-name MyLoadBalancer
        --name MyNatPool
 ```
 
@@ -134,7 +134,7 @@ Stellen Sie sicher, dass Sie separate NAT-Pools für eingehenden Datenverkehr mi
           --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
             
   az vmss update-instances
-          -–instance-ids *
+          -â€“instance-ids *
           --resource-group MyResourceGroup
           --name MyVMSS
           
@@ -153,7 +153,7 @@ Stellen Sie sicher, dass Sie separate NAT-Pools für eingehenden Datenverkehr mi
           --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool2'}"
             
   az vmss update-instances
-          -–instance-ids *
+          -â€“instance-ids *
           --resource-group MyResourceGroup
           --name MyVMSS2
 ```

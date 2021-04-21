@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: d591194f09e85c3e34ed4b904249df994a14bff5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e655b20d2f6295f0d6cfe8008fee7b360525611
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100558585"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774285"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke
 
@@ -48,7 +48,7 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
 
 4. Geben Sie im Dialogfeld **Subnetz hinzufügen** Werte für die folgenden Einstellungen ein:
 
-    | Einstellung | BESCHREIBUNG |
+    | Einstellung | Beschreibung |
     | --- | --- |
     | **Name** | Der Name muss innerhalb des virtuellen Netzwerks eindeutig sein. Für die maximale Kompatibilität mit anderen Azure-Diensten wird empfohlen, einen Buchstaben als erstes Zeichen des Namens zu verwenden. Beispielsweise wird Azure Application Gateway nicht in einem Subnetz bereitgestellt, dessen Name mit einer Zahl beginnt. |
     | **Adressbereich** | <p>Der Bereich muss innerhalb des Adressraums für das virtuelle Netzwerk eindeutig sein. Der Bereich darf keine Überschneidungen mit anderen Subnetzadressbereichen innerhalb des virtuellen Netzwerks aufweisen. Der Adressraum muss mithilfe der CIDR-Notation (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing) angegeben werden.</p><p>In einem virtuellen Netzwerk mit dem Adressraum *10.0.0.0/16* können Sie beispielsweise für ein Subnetz den Adressraum *10.0.0.0/22* definieren. Der kleinste Bereich, den Sie angeben können, ist */29*, der acht IP-Adressen für das Subnetz bereitstellt. Azure reserviert die erste und letzte Adresse in jedem Subnetz aus Gründen der Protokollkonformität. Drei weitere Adressen sind für die Nutzung durch Azure-Dienste reserviert. Demzufolge führt das Einrichten eines Subnetzes mit dem Adressbereich */29* zu drei nutzbaren IP-Adressen im Subnetz.</p><p>Wenn Sie ein virtuelles Netzwerk mit einem VPN-Gateway verbinden möchten, müssen Sie ein Gatewaysubnetz erstellen. Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) im Abschnitt „Gatewaysubnetz“. Unter bestimmten Bedingungen können Sie den Adressbereich ändern, nachdem das Subnetz hinzugefügt wurde. Informationen zum Ändern des Adressbereichs eines Subnetzes finden Sie im Abschnitt [Ändern der Subnetzeinstellungen](#change-subnet-settings).</p> |
@@ -63,7 +63,7 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) |
+| Azure CLI | [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) |
 | PowerShell | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) |
 
 ## <a name="change-subnet-settings"></a>Ändern von Subnetzeinstellungen
@@ -92,7 +92,7 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
+| Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
 
 ## <a name="delete-a-subnet"></a>Löschen eines Subnetzes
@@ -113,7 +113,7 @@ Sie können ein Subnetz erst löschen, wenn es keine Ressourcen mehr enthält. F
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network vnet subnet delete](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete) |
+| Azure CLI | [az network vnet subnet delete](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_delete) |
 | PowerShell | [Remove-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/remove-azvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json) |
 
 ## <a name="permissions"></a>Berechtigungen

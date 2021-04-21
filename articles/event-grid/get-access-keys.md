@@ -3,12 +3,12 @@ title: Abrufen des Zugriffsschlüssels für eine Event Grid-Ressource
 description: In diesem Artikel wird beschrieben, wie Sie den Zugriffsschlüssel für ein Event Grid-Thema oder eine Event Grid-Domäne abrufen.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: a642affbac79766684dc75a37dae0373450d20e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd60777b2e28b82d72f8f2bf93fe0be301e9e280
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98632528"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775221"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>Abrufen von Zugriffsschlüsseln für Event Grid-Ressourcen (Themen oder Domänen)
 Zugriffsschlüssel werden verwendet, um ein Anwendungsveröffentlichungsereignis für Azure Event Grid-Ressourcen (Themen und Domänen) zu authentifizieren. Wir empfehlen Ihnen, Ihre Schlüssel regelmäßig neu zu generieren und sie sicher zu speichern. Sie erhalten zwei Zugriffsschlüssel, sodass Sie Verbindungen aufrechterhalten können, während der andere Schlüssel neu generiert wird.
@@ -34,13 +34,13 @@ Get-AzEventGridDomainKey -ResourceGroup <RESOURCE GROUP NAME> -Name <DOMAIN NAME
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-Verwenden Sie [az eventgrid topic key list](/cli/azure/eventgrid/topic/key#az-eventgrid-topic-key-list), um Zugriffsschlüssel für Themen abzurufen. 
+Verwenden Sie [az eventgrid topic key list](/cli/azure/eventgrid/topic/key#az_eventgrid_topic_key_list), um Zugriffsschlüssel für Themen abzurufen. 
 
 ```azurecli-interactive
 az eventgrid topic key list --resource-group <RESOURCE GROUP NAME> --name <TOPIC NAME>
 ```
 
-Verwenden Sie [az eventgrid domain key list](/cli/azure/eventgrid/domain/key#az-eventgrid-domain-key-list), um Zugriffsschlüssel für Domänen abzurufen. 
+Verwenden Sie [az eventgrid domain key list](/cli/azure/eventgrid/domain/key#az_eventgrid_domain_key_list), um Zugriffsschlüssel für Domänen abzurufen. 
 
 ```azurecli-interactive
 az eventgrid domain key list --resource-group <RESOURCE GROUP NAME> --name <DOMAIN NAME>

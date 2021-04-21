@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: c614f2f60adfa2a29a01000cd3adf4791591b8b5
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: d5500c04b4299c215eba843530dc84932fa10894
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378753"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775041"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 
@@ -320,12 +320,12 @@ Das folgende Beispielskript veranschaulicht, wie die Cmdlets zum Höherstufen un
 
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
-| [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-delete) |Löscht eine angegebene permanente Skriptaktion des Clusters. Mit diesem Befehl werden die mit einem Skript durchgeführten Aktionen nicht rückgängig gemacht, sondern nur das Persistenzflag entfernt.|
-|[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)|Ausführen von Skriptaktionen für den angegebenen HDInsight-Cluster|
-| [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list) |Listet alle permanenten Skriptaktionen für den angegebenen Cluster auf. |
-|[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list-execution-history)|Listet den Ausführungsverlauf aller Skripts für den angegebenen Cluster auf.|
-|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-promote)|Stuft die angegebene Ad-hoc-Skriptausführung auf ein permanentes Skript hoch.|
-|[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-show-execution-details)|Ruft die Details zur Skriptausführung für die angegebene Skriptausführungs-ID ab.|
+| [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_delete) |Löscht eine angegebene permanente Skriptaktion des Clusters. Mit diesem Befehl werden die mit einem Skript durchgeführten Aktionen nicht rückgängig gemacht, sondern nur das Persistenzflag entfernt.|
+|[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_execute)|Ausführen von Skriptaktionen für den angegebenen HDInsight-Cluster|
+| [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_list) |Listet alle permanenten Skriptaktionen für den angegebenen Cluster auf. |
+|[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_list_execution_history)|Listet den Ausführungsverlauf aller Skripts für den angegebenen Cluster auf.|
+|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_promote)|Stuft die angegebene Ad-hoc-Skriptausführung auf ein permanentes Skript hoch.|
+|[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_show_execution_details)|Ruft die Details zur Skriptausführung für die angegebene Skriptausführungs-ID ab.|
 
 ### <a name="hdinsight-net-sdk"></a>HDInsight .NET-SDK
 
