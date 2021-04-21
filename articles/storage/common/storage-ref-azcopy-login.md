@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e4740870dd2d9748aad55150ce1946e3eb666619
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4861749d66e466bc3302553af8b3ed4919a72e0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878357"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503234"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -37,9 +37,9 @@ azcopy login [flags]
 ## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
 
 - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
+- [Tutorial: Migrieren von lokalen Daten zu Cloudspeicher mit AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 - [Übertragen von Daten mit AzCopy und Blobspeicher](./storage-use-azcopy-v10.md#transfer-data)
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
-- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Beispiele
 
