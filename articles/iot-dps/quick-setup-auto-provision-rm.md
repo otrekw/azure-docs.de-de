@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 505859075ce58c5db6873544123710a11135651a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bcb37c624f53d961020de022569a621ca1dfaba1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198607"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788979"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>Schnellstart: Einrichten von IoT Hub Device Provisioning Service (DPS) mithilfe einer ARM-Vorlage
 
@@ -61,7 +61,7 @@ In der obigen Vorlage sind zwei Azure-Ressourcen definiert:
 
     Sofern nichts anderes angegeben ist, verwenden Sie jeweils den Standardwert, um den IoT-Hub und die DPS-Ressource zu erstellen.
 
-    | Feld | BESCHREIBUNG |
+    | Feld | Beschreibung |
     | :---- | :---------- |
     | **Abonnement** | Wählen Sie Ihr Azure-Abonnement. |
     | **Ressourcengruppe** | Klicken Sie auf **Neu erstellen**, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie anschließend auf **OK**. |
@@ -136,7 +136,7 @@ Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
 
 ## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
-1. Führen Sie zum Überprüfen der Bereitstellung den folgenden [Befehl zum Auflisten von Ressourcen](/cli/azure/resource#az-resource-list) aus, und suchen Sie in der Ausgabe nach dem neuen Bereitstellungsdienst und dem IoT-Hub:
+1. Führen Sie zum Überprüfen der Bereitstellung den folgenden [Befehl zum Auflisten von Ressourcen](/cli/azure/resource#az_resource_list) aus, und suchen Sie in der Ausgabe nach dem neuen Bereitstellungsdienst und dem IoT-Hub:
 
     ```azurecli
      az resource list -g "${projectName}rg"
@@ -171,4 +171,3 @@ In diesem Schnellstart haben Sie einen IoT-Hub und einen Gerätebereitstellungsd
 
 > [!div class="nextstepaction"]
 > [Schnellstart: Bereitstellen eines Geräts mit symmetrischen Schlüsseln](./quick-create-simulated-device-symm-key.md)
-

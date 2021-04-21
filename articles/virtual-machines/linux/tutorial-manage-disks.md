@@ -9,12 +9,12 @@ ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: bbecaa32f85c42954cea6c8e533f0f658eb2dfee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56e804bc0d479f09ef2900c42361fbd24eed1d98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802283"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765951"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Tutorial: Verwalten von Azure-Datenträgern mit der Azure-CLI
 
@@ -70,13 +70,13 @@ Datenträger für Daten können zum Zeitpunkt der VM-Erstellung erstellt und ang
 
 ### <a name="attach-disk-at-vm-creation"></a>Anfügen eines Datenträgers bei der VM-Erstellung
 
-Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe.
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe.
 
 ```azurecli-interactive
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm#az-vm-create) einen virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer namens *myVM*, fügt ein Benutzerkonto mit dem Namen *azureuser* hinzu und generiert SSH-Schlüssel, sofern noch nicht vorhanden. Das `--datadisk-sizes-gb`-Argument gibt an, dass ein weiterer Datenträger erstellt und dem virtuellen Computer angefügt werden sollte. Verwenden Sie zum Erstellen und Anfügen mehrerer Datenträger eine durch Leerzeichen getrennte Liste der Datenträger-Größenwerte. Im folgenden Beispiel wird ein virtueller Computer mit zwei Datenträgern von jeweils 128GB erstellt. Da die Größe der Datenträger jeweils 128GB beträgt, werden beide Datenträger als P10 konfiguriert, was maximal 500IOPS pro Datenträger bereitstellt.
+Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer namens *myVM*, fügt ein Benutzerkonto mit dem Namen *azureuser* hinzu und generiert SSH-Schlüssel, sofern noch nicht vorhanden. Das `--datadisk-sizes-gb`-Argument gibt an, dass ein weiterer Datenträger erstellt und dem virtuellen Computer angefügt werden sollte. Verwenden Sie zum Erstellen und Anfügen mehrerer Datenträger eine durch Leerzeichen getrennte Liste der Datenträger-Größenwerte. Im folgenden Beispiel wird ein virtueller Computer mit zwei Datenträgern von jeweils 128GB erstellt. Da die Größe der Datenträger jeweils 128GB beträgt, werden beide Datenträger als P10 konfiguriert, was maximal 500IOPS pro Datenträger bereitstellt.
 
 ```azurecli-interactive
 az vm create \
@@ -91,7 +91,7 @@ az vm create \
 
 ### <a name="attach-disk-to-existing-vm"></a>Anfügen eines Datenträgers an einen vorhandenen virtuellen Computer
 
-Verwenden Sie zum Erstellen eines neuen Datenträgers und dessen Anfügen an einen vorhandenen virtuellen Computer den [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach)-Befehl. Im folgenden Beispiel wird ein Premium-Datenträger von 128GB erstellt und dem im letzten Schritt erstellten virtuellen Computer angefügt.
+Verwenden Sie zum Erstellen eines neuen Datenträgers und dessen Anfügen an einen vorhandenen virtuellen Computer den [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach)-Befehl. Im folgenden Beispiel wird ein Premium-Datenträger von 128GB erstellt und dem im letzten Schritt erstellten virtuellen Computer angefügt.
 
 ```azurecli-interactive
 az vm disk attach \
@@ -190,7 +190,7 @@ Bei einer Momentaufnahme des Datenträger erstellt Azure eine schreibgeschützte
 
 ### <a name="create-snapshot"></a>Erstellen einer Momentaufnahme
 
-Damit Sie eine Momentaufnahme erstellen können, benötigen Sie die ID oder den Namen des Datenträgers. Zeigen Sie die Datenträger-ID mithilfe von [az vm show](/cli/azure/vm#az-vm-show) an. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert und kann in einem späteren Schritt verwendet werden.
+Damit Sie eine Momentaufnahme erstellen können, benötigen Sie die ID oder den Namen des Datenträgers. Zeigen Sie die Datenträger-ID mithilfe von [az vm show](/cli/azure/vm#az_vm_show) an. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert und kann in einem späteren Schritt verwendet werden.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -200,7 +200,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-Sie haben nun die ID und können mithilfe von [az snapshot create](/cli/azure/snapshot#az-snapshot-create) eine Momentaufnahme des Datenträgers erstellen.
+Sie haben nun die ID und können mithilfe von [az snapshot create](/cli/azure/snapshot#az_snapshot_create) eine Momentaufnahme des Datenträgers erstellen.
 
 ```azurecli-interactive
 az snapshot create \
@@ -211,7 +211,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>Erstellen eines Datenträgers aus der Momentaufnahme
 
-Diese Momentaufnahme kann dann mithilfe von [az disk create](/cli/azure/disk#az-disk-create) in einen Datenträger konvertiert werden, mit dem wiederum der virtuelle Computer neu erstellt werden kann.
+Diese Momentaufnahme kann dann mithilfe von [az disk create](/cli/azure/disk#az_disk_create) in einen Datenträger konvertiert werden, mit dem wiederum der virtuelle Computer neu erstellt werden kann.
 
 ```azurecli-interactive
 az disk create \
@@ -222,7 +222,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Wiederherstellen des virtuellen Computers aus der Momentaufnahme
 
-Löschen Sie mithilfe von [az vm delete](/cli/azure/vm#az-vm-delete) den vorhandenen virtuellen Computer, um die Wiederherstellung des virtuellen Computers durchzuführen.
+Löschen Sie mithilfe von [az vm delete](/cli/azure/vm#az_vm_delete) den vorhandenen virtuellen Computer, um die Wiederherstellung des virtuellen Computers durchzuführen.
 
 ```azurecli-interactive
 az vm delete \
@@ -244,7 +244,7 @@ az vm create \
 
 Alle Datenträger müssen dem virtuellen Computer erneut angefügt werden.
 
-Ermitteln Sie mithilfe des Befehls [az disk list](/cli/azure/disk#az-disk-list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens `datadisk` eingefügt, die im nächsten Schritt verwendet wird.
+Ermitteln Sie mithilfe des Befehls [az disk list](/cli/azure/disk#az_disk_list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens `datadisk` eingefügt, die im nächsten Schritt verwendet wird.
 
 ```azurecli-interactive
 datadisk=$(az disk list \
@@ -253,7 +253,7 @@ datadisk=$(az disk list \
    -o tsv)
 ```
 
-Verwenden Sie den Befehl [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach), um den Datenträger anzufügen.
+Verwenden Sie den Befehl [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach), um den Datenträger anzufügen.
 
 ```azurecli-interactive
 az vm disk attach \

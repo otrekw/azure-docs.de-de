@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 03/23/2021
-ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa65989953f761ff915383fcb59da7f36ea98dab
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889449"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600481"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center Free und Azure Defender-Aktivierung
 Azure Defender ist in den ersten 30 Tagen kostenlos. Nach Ablauf der 30 Tage wird Ihnen die Nutzung automatisch in Rechnung gestellt, sofern Sie sich dafür entscheiden, den Dienst weiterhin zu nutzen.
@@ -70,7 +70,7 @@ Für Security Center gibt es zwei Angebote:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Wie kann ich Azure Defender für mein Abonnement aktivieren? 
 Sie können die folgenden Methoden verwenden, um Azure Defender für Ihr Abonnement zu aktivieren: 
 
-| Methode                                          | Anweisungen                                                                                                                                       |
+| Methode                                          | Instructions                                                                                                                                       |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Security Center-Seiten im Azure-Portal | [Aktivieren von Azure Defender](enable-azure-defender.md)                                                                                                  |
 | REST-API                                        | [Pricings-API](/rest/api/securitycenter/pricings)                                                                                                  |
@@ -119,7 +119,7 @@ Bei diesen Daten handelt es sich um eine tägliche Durchschnittsrate für alle K
 
 ### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>Welche Datentypen sind im täglichen Datenkontingent von 500 MB enthalten?
 
-Die Security Center-Abrechnung ist eng mit der Log Analytics-Abrechnung verbunden. Security Center bietet ein Kontingent von 500 MB pro Knoten und Tag für die folgende Teilmenge von [Sicherheitsdatentypen](/azure/azure-monitor/reference/tables/tables-category.md#security):
+Die Security Center-Abrechnung ist eng mit der Log Analytics-Abrechnung verbunden. Security Center bietet ein Kontingent von 500 MB pro Knoten und Tag für die folgende Teilmenge von [Sicherheitsdatentypen](/azure/azure-monitor/reference/tables/tables-category#security):
 - WindowsEvent
 - SecurityAlert
 - SecurityBaseline

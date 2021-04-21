@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7437a5208f94b435576b8a38dc65a6e798303a72
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bce6bfb61eb59d1fa66c550a133ac8b6f8d7f2c5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179084"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769001"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Schnellstart: Erstellen einer App Service-App mit einer ARM-Vorlage
 
@@ -133,7 +133,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <ul>
 <li>Erstellen einer standardmäßigen <abbr title="Ein logischer Container für verwandte Azure-Ressourcen, die Sie als Einheit verwalten können.">Ressourcengruppe</abbr>.</li>
 <li>Erstellen eines standardmäßigen <abbr title="Dieser Plan gibt den Standort, die Größe und die Features der Webserverfarm an, die Ihre App hostet.">App Service-Plan</abbr>.</li>
-<li><a href="/cli/azure/webapp#az-webapp-create">Erstellen einer <abbr title="Die Darstellung Ihrer Web-App, die den Code Ihrer App, die DNS-Hostnamen, die Zertifikate und verwandte Ressourcen enthält.">App Service-App</abbr></a> mit dem angegebenen Namen.</li>
+<li><a href="/cli/azure/webapp#az_webapp_create">Erstellen einer <abbr title="Die Darstellung Ihrer Web-App, die den Code Ihrer App, die DNS-Hostnamen, die Zertifikate und verwandte Ressourcen enthält.">App Service-App</abbr></a> mit dem angegebenen Namen.</li>
 </ul>
 </details>
 
@@ -142,7 +142,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <summary>Wie stelle ich einen anderen Sprachstapel bereit?</summary>
 Aktualisieren Sie zum Bereitstellen eines anderen Sprachstapels <abbr title="Diese Vorlage ist mit .NET Core, .NET Framework, PHP, Node.js und statischen HTML-Apps kompatibel.">den Sprachparameter</abbr> mit entsprechenden Werten. Informationen zu Java finden Sie unter <a href="/azure/app-service/quickstart-java-uiex">Erstellen einer Java-App</a>.
 
-| Parameter | type    | Standardwert                | Beschreibung |
+| Parameter | type    | Standardwert                | BESCHREIBUNG |
 |------------|---------|------------------------------|-------------|
 | language   | Zeichenfolge  | ".net"                       | Sprachstapel (.NET, PHP, Node, HTML) |
 
@@ -191,4 +191,3 @@ Rufen Sie `http://<app_name>.azurewebsites.net/` auf, und überprüfen Sie, ob d
 - [PHP mit MySQL](tutorial-php-mysql-app.md)
 - [Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Java](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 - [Zuordnen einer benutzerdefinierten Domäne](app-service-web-tutorial-custom-domain-uiex.md)
-

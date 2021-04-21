@@ -2,16 +2,19 @@
 title: Erstellen eines Azure Blockchain Service-Mitglieds mit einer Azure Resource Manager-Vorlage
 description: Hier erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage ein Azure Blockchain Service-Mitglied erstellen.
 services: azure-resource-manager
-ms.service: azure-resource-manager
-ms.topic: quickstart
-ms.custom: subject-armqs, references_regions
 ms.date: 09/16/2020
-ms.openlocfilehash: e9893336f2e6633519853aceecc945ee6bf0bf4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: azure-resource-manager
+ms.custom:
+- subject-armqs
+- references_regions
+- mode-arm
+ms.openlocfilehash: c49e45ae84d58d62460d493887e2a4e78e40ba32
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91292760"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536297"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure Blockchain Service-Mitglieds mithilfe einer ARM-Vorlage
 
@@ -45,7 +48,7 @@ In der Vorlage sind die folgenden Azure-Ressourcen definiert:
 
 1. Geben Sie die Einstellungen für das Azure Blockchain-Mitglied an:
 
-    Einstellung | BESCHREIBUNG
+    Einstellung | Beschreibung
     --------|------------
     Subscription | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Dienst verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
     Resource group | Erstellen Sie einen neuen Ressourcengruppennamen, oder wählen Sie einen bereits vorhandenen Namen aus Ihrem Abonnement aus.
