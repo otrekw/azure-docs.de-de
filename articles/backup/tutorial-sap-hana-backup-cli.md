@@ -4,12 +4,12 @@ description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken,
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ba06ef876f30dc51e04fe7491d491621f5d8e21b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bebfe852aaac965fc7d07371be889fe515e3da3a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710599"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768485"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer über die Azure CLI
 
@@ -34,7 +34,7 @@ Informieren Sie sich über die [Szenarien, die von uns für SAP HANA derzeit unt
 
 Ein Recovery Services-Tresor ist ein logischer Container, in dem die Sicherungsdaten für jede geschützte Ressource gespeichert werden, z. B. virtuelle Azure-Computer oder Workloads, die auf Azure-VMs ausgeführt werden (wie SQL- oder HANA-Datenbanken). Wenn der Sicherungsauftrag für eine geschützte Ressource ausgeführt wird, wird im Recovery Services-Tresor ein Wiederherstellungspunkt erstellt. Sie können einen dieser Wiederherstellungspunkte dann verwenden, um Daten für einen bestimmten Zeitpunkt wiederherzustellen.
 
-Erstellen Sie einen Recovery Services-Tresor mit [az backup vault create](/cli/azure/backup/vault#az-backup-vault-create). Geben Sie dieselbe Ressourcengruppe und denselben Standort wie für die zu schützende VM an. Informieren Sie sich in dieser [VM-Schnellstartanleitung](../virtual-machines/linux/quick-create-cli.md), wie Sie über die Azure CLI eine VM erstellen.
+Erstellen Sie einen Recovery Services-Tresor mit [az backup vault create](/cli/azure/backup/vault#az_backup_vault_create). Geben Sie dieselbe Ressourcengruppe und denselben Standort wie für die zu schützende VM an. Informieren Sie sich in dieser [VM-Schnellstartanleitung](../virtual-machines/linux/quick-create-cli.md), wie Sie über die Azure CLI eine VM erstellen.
 
 In diesem Tutorial wird Folgendes verwendet:
 
@@ -50,7 +50,7 @@ az backup vault create --resource-group saphanaResourceGroup \
     --location westus2
 ```
 
-Für den Recovery Services-Tresor ist standardmäßig die georedundante Speicherung festgelegt. Georedundanter Speicher sorgt dafür, dass Ihre Sicherungsdaten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist. Verwenden Sie das Cmdlet [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set), um bei Bedarf die Einstellungen für die Speicherredundanz zu ändern.
+Für den Recovery Services-Tresor ist standardmäßig die georedundante Speicherung festgelegt. Georedundanter Speicher sorgt dafür, dass Ihre Sicherungsdaten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist. Verwenden Sie das Cmdlet [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az_backup_vault_backup_properties_set), um bei Bedarf die Einstellungen für die Speicherredundanz zu ändern.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -59,7 +59,7 @@ az backup vault backup-properties set \
     --backup-storage-redundancy "LocallyRedundant/GeoRedundant"
 ```
 
-Verwenden Sie das Cmdlet [az backup vault list](/cli/azure/backup/vault#az-backup-vault-list), um zu ermitteln, ob die Erstellung Ihres Tresors erfolgreich war. Sie erhalten die folgende Antwort:
+Verwenden Sie das Cmdlet [az backup vault list](/cli/azure/backup/vault#az_backup_vault_list), um zu ermitteln, ob die Erstellung Ihres Tresors erfolgreich war. Sie erhalten die folgende Antwort:
 
 ```output
 Location   Name             ResourceGroup
@@ -71,7 +71,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 Damit die SAP HANA-Instanz (die VM mit der SAP HANA-Installation) von den Azure-Diensten ermittelt werden kann, muss auf dem SAP HANA-Computer ein [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) ausgeführt werden. Stellen Sie sicher, dass alle [Voraussetzungen](./tutorial-backup-sap-hana-db.md#prerequisites) erfüllt sind, bevor Sie das Skript ausführen. Weitere Informationen zu den Funktionen des Skripts finden Sie im Abschnitt [Einrichten von Berechtigungen](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
 
-Nachdem das Skript ausgeführt wurde, kann die SAP HANA-Instanz für den Recovery Services-Tresor registriert werden, den Sie zuvor erstellt haben. Verwenden Sie das Cmdlet [az backup container register](/cli/azure/backup/container#az-backup-container-register), um die Instanz zu registrieren. *VMResourceId* ist die Ressourcen-ID der VM, die Sie für die Installation von SAP HANA erstellt haben.
+Nachdem das Skript ausgeführt wurde, kann die SAP HANA-Instanz für den Recovery Services-Tresor registriert werden, den Sie zuvor erstellt haben. Verwenden Sie das Cmdlet [az backup container register](/cli/azure/backup/container#az_backup_container_register), um die Instanz zu registrieren. *VMResourceId* ist die Ressourcen-ID der VM, die Sie für die Installation von SAP HANA erstellt haben.
 
 ```azurecli-interactive
 az backup container register --resource-group saphanaResourceGroup \
@@ -87,7 +87,7 @@ az backup container register --resource-group saphanaResourceGroup \
 
 Beim Registrieren der SAP HANA-Instanz werden automatisch alle Datenbanken ermittelt, die dafür derzeit vorhanden sind. Informationen zur Ermittlung von neuen Datenbanken, die in Zukunft ggf. hinzugefügt werden, finden Sie im Abschnitt [Schützen von neuen Datenbanken, die einer SAP HANA-Instanz hinzugefügt wurden](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance).
 
-Verwenden Sie das Cmdlet [az backup container list](/cli/azure/backup/container#az-backup-container-list), um zu überprüfen, ob die Registrierung der SAP HANA-Instanz für Ihren Tresor erfolgreich war. Sie erhalten die folgende Antwort:
+Verwenden Sie das Cmdlet [az backup container list](/cli/azure/backup/container#az_backup_container_list), um zu überprüfen, ob die Registrierung der SAP HANA-Instanz für Ihren Tresor erfolgreich war. Sie erhalten die folgende Antwort:
 
 ```output
 Name                                                    Friendly Name    Resource Group        Type           Registration Status
@@ -100,7 +100,7 @@ VMAppContainer;Compute;saphanaResourceGroup;saphanaVM   saphanaVM        saphana
 
 ## <a name="enable-backup-on-sap-hana-database"></a>Aktivieren der Sicherung für eine SAP HANA-Datenbank
 
-Mit dem Cmdlet [az backup protectable-item list](/cli/azure/backup/protectable-item#az-backup-protectable-item-list) werden alle Datenbanken der SAP HANA-Instanz aufgelistet, die Sie im vorherigen Schritt registriert haben.
+Mit dem Cmdlet [az backup protectable-item list](/cli/azure/backup/protectable-item#az_backup_protectable_item_list) werden alle Datenbanken der SAP HANA-Instanz aufgelistet, die Sie im vorherigen Schritt registriert haben.
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -121,7 +121,7 @@ saphanadatabase;hxe;hxe        SAPHanaDatabase          HXE           hxehost   
 
 Wie Sie in der obigen Ausgabe erkennen können, lautet die SID des SAP HANA-Systems „HXE“. In diesem Tutorial konfigurieren wir die Sicherung für die Datenbank *saphanadatabase;hxe;hxe*, die sich auf dem Server *hxehost* befindet.
 
-Wir verwenden das Cmdlet [az backup protection enable-for-azurewl](/cli/azure/backup/protection#az-backup-protection-enable-for-azurewl), um die Sicherungen für eine Datenbank einzeln zu schützen und zu konfigurieren. Geben Sie den Namen der Richtlinie an, die Sie verwenden möchten. Verwenden Sie das Cmdlet [az backup policy create](/cli/azure/backup/policy#az-backup-policy-create), um per CLI eine Richtlinie zu erstellen. In diesem Tutorial verwenden wir die Richtlinie *sapahanaPolicy*.
+Wir verwenden das Cmdlet [az backup protection enable-for-azurewl](/cli/azure/backup/protection#az_backup_protection_enable_for_azurewl), um die Sicherungen für eine Datenbank einzeln zu schützen und zu konfigurieren. Geben Sie den Namen der Richtlinie an, die Sie verwenden möchten. Verwenden Sie das Cmdlet [az backup policy create](/cli/azure/backup/policy#az_backup_policy_create), um per CLI eine Richtlinie zu erstellen. In diesem Tutorial verwenden wir die Richtlinie *sapahanaPolicy*.
 
 ```azurecli-interactive
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
@@ -133,7 +133,7 @@ az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Mit dem Cmdlet [az backup job list](/cli/azure/backup/job#az-backup-job-list) können Sie überprüfen, ob die obige Sicherungskonfiguration vollständig ist. Die Ausgabe wird wie folgt angezeigt:
+Mit dem Cmdlet [az backup job list](/cli/azure/backup/job#az_backup_job_list) können Sie überprüfen, ob die obige Sicherungskonfiguration vollständig ist. Die Ausgabe wird wie folgt angezeigt:
 
 ```output
 Name                                  Operation         Status     Item Name   Start Time UTC
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-Mit dem Cmdlet [az backup job list](/cli/azure/backup/job#az-backup-job-list) werden alle Sicherungsaufträge aufgelistet (geplant oder bedarfsgesteuert), die auf der geschützten Datenbank bereits ausgeführt wurden bzw. derzeit ausgeführt werden. Darüber hinaus sind auch andere Vorgänge aufgeführt, z. B. Durchführen der Registrierung, Konfigurieren einer Sicherung, Löschen von Sicherungsdaten.
+Mit dem Cmdlet [az backup job list](/cli/azure/backup/job#az_backup_job_list) werden alle Sicherungsaufträge aufgelistet (geplant oder bedarfsgesteuert), die auf der geschützten Datenbank bereits ausgeführt wurden bzw. derzeit ausgeführt werden. Darüber hinaus sind auch andere Vorgänge aufgeführt, z. B. Durchführen der Registrierung, Konfigurieren einer Sicherung, Löschen von Sicherungsdaten.
 
 >[!NOTE]
 >Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer auf einem virtuellen Azure-Computer ausgeführten SAP HANA-Datenbank nicht automatisch an.
@@ -150,7 +150,7 @@ Mit dem Cmdlet [az backup job list](/cli/azure/backup/job#az-backup-job-list) we
 
 ## <a name="trigger-an-on-demand-backup"></a>Auslösen einer bedarfsgesteuerten Sicherung
 
-Nachdem im obigen Abschnitt beschrieben wurde, wie Sie eine geplante Sicherung konfigurieren, geht es in diesem Abschnitt nun um das Auslösen einer bedarfsgesteuerten Sicherung. Hierfür verwenden wir das Cmdlet [az backup protection backup-now](/cli/azure/backup/protection#az-backup-protection-backup-now).
+Nachdem im obigen Abschnitt beschrieben wurde, wie Sie eine geplante Sicherung konfigurieren, geht es in diesem Abschnitt nun um das Auslösen einer bedarfsgesteuerten Sicherung. Hierfür verwenden wir das Cmdlet [az backup protection backup-now](/cli/azure/backup/protection#az_backup_protection_backup_now).
 
 >[!NOTE]
 > Die Aufbewahrungsrichtlinie einer bedarfsgesteuerten Sicherung wird durch die zugrunde liegende Aufbewahrungsrichtlinie für die Datenbank bestimmt.
@@ -173,7 +173,7 @@ Name                                  ResourceGroup
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-In der Antwort ist der Auftragsname enthalten. Dieser Auftragsname kann zum Nachverfolgen des Auftragsstatus mit dem Cmdlet [az backup job show](/cli/azure/backup/job#az-backup-job-show) verwendet werden.
+In der Antwort ist der Auftragsname enthalten. Dieser Auftragsname kann zum Nachverfolgen des Auftragsstatus mit dem Cmdlet [az backup job show](/cli/azure/backup/job#az_backup_job_show) verwendet werden.
 
 >[!NOTE]
 >Protokollsicherungen werden automatisch ausgelöst und von SAP HANA intern verwaltet.

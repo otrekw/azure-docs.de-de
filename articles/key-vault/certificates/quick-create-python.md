@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b8f36d7490e24247f1f8482c9dece86b68015d73
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 62249f579909c3f8bfa9bcdf4e77e45453fcb68b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376102"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792019"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Schnellstart: Azure Key Vault-Zertifikatclientbibliothek für Python
 
@@ -183,7 +183,7 @@ Um ein Zertifikat aus Key Vault zu lesen, verwenden Sie die [get_certificate](/p
 retrieved_certificate = client.get_certificate(certificateName)
  ```
 
-Mithilfe des Azure CLI-Befehls [az keyvault certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show) können Sie sich vergewissern, dass das Zertifikat festgelegt wurde.
+Mithilfe des Azure CLI-Befehls [az keyvault certificate show](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show) können Sie sich vergewissern, dass das Zertifikat festgelegt wurde.
 
 ### <a name="delete-a-certificate"></a>Löschen eines Zertifikats
 
@@ -196,7 +196,7 @@ deleted_certificate = poller.result()
 
 Die `begin_delete_certificate`-Methode ist asynchron und gibt ein Pollerobjekt zurück. Wenn die `result`-Methode des Pollers aufgerufen wird, wird auf ihren Abschluss gewartet.
 
-Mithilfe des Azure CLI-Befehls [az keyvault certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show) können Sie sich vergewissern, dass das Zertifikat gelöscht wurde.
+Mithilfe des Azure CLI-Befehls [az keyvault certificate show](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show) können Sie sich vergewissern, dass das Zertifikat gelöscht wurde.
 
 Nach dem Löschen verbleibt ein Zertifikat für einen bestimmten Zeitraum in einem gelöschten, aber wiederherstellbaren Zustand. Wenn Sie den Code erneut ausführen, verwenden Sie einen anderen Zertifikatnamen.
 
@@ -213,7 +213,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Übersicht über den Azure-Schlüsseltresor](../general/overview.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-overview.md)
 - [Entwicklerhandbuch zu Azure Key Vault](../general/developers-guide.md)
 - [Key Vault-Sicherheitsübersicht](../general/security-overview.md)
 - [Authentifizieren mit Key Vault](../general/authentication.md)

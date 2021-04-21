@@ -8,16 +8,16 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: caff6a2496e907da1bdc140860c47476d1842df4
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880910"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600674"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Tutorial: Verwenden von Video Indexer mit Logic Apps und Power Automate
 
-Die [REST-API für Video Indexer v2](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Delete-Video?) von Azure Media Services unterstützt sowohl die Kommunikation von Server zu Server als auch von Client zu Server. Benutzer von Video Indexer können Erkenntnisse, die anhand von Video- und Audiodaten gewonnen werden, leicht in ihre Anwendungslogik integrieren und so neue Umgebungen und Monetarisierungschancen schaffen.
+Die [REST-API für Video Indexer v2](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Video) von Azure Media Services unterstützt sowohl die Kommunikation von Server zu Server als auch von Client zu Server. Benutzer von Video Indexer können Erkenntnisse, die anhand von Video- und Audiodaten gewonnen werden, leicht in ihre Anwendungslogik integrieren und so neue Umgebungen und Monetarisierungschancen schaffen.
 
 Zur weiteren Vereinfachung der Integration werden Connectors für [Logic Apps](https://azure.microsoft.com/services/logic-apps/) und [Power Automate](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/) unterstützt, die mit unserer API kompatibel sind. Mit den Connectors können Sie benutzerdefinierte Workflows einrichten, um auf effektive Weise für eine große Zahl von Video- und Audiodateien Erkenntnisse zu indizieren und zu extrahieren, ohne auch nur eine Codezeile zu schreiben. Wenn Sie die Connectors für Ihre Integration verwenden, haben Sie außerdem einen besseren Überblick über die Integrität Ihres Workflows und können ihn leicht debuggen.  
 

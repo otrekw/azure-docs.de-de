@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102244521"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766519"
 ---
 In den folgenden Abschnitten richten Sie ein Terminal ein und verwenden die Azure CLI zum Erstellen eines IoT-Hubs. Zum Konfigurieren eines Terminals, auf dem Azure CLI-Befehle ausgeführt werden, können Sie entweder den browserbasierten Azure Cloud Shell-Dienst oder ein lokales Terminal verwenden.
 * Wenn Sie Cloud Shell verwenden möchten, fahren Sie mit dem nächsten Abschnitt fort: [Starten der Cloud Shell](#launch-the-cloud-shell). 
@@ -65,7 +65,7 @@ In diesem Abschnitt installieren Sie die Microsoft Azure IoT-Erweiterung für di
 > [!IMPORTANT]
 > Die Funktionsweise der Terminalbefehle im weiteren Verlauf dieser Schnellstartanleitung ist in Cloud Shell oder einem lokalen Terminal identisch. Wählen Sie zum Ausführen eines Befehls die Option **Kopieren** aus, um einen Codeblock aus dieser Schnellstartanleitung zu kopieren. Fügen Sie ihn dann in Ihre CLI-Shell ein, und führen Sie ihn aus.
 
-Führen Sie den Befehl [az extension add](/cli/azure/extension#az-extension-add) aus. 
+Führen Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add) aus. 
 
    ```azurecli
    az extension add --name azure-iot
@@ -77,7 +77,7 @@ In diesem Abschnitt verwenden Sie die Azure CLI zum Erstellen eines IoT-Hubs und
 
 So erstellen Sie einen IoT-Hub und eine Ressourcengruppe:
 
-1. Führen Sie den Befehl [az group create](/cli/azure/group#az-group-create) aus, um eine Ressourcengruppe zu erstellen. Mit dem folgenden Befehl wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* am Standort *eastus* erstellt. 
+1. Führen Sie den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen. Mit dem folgenden Befehl wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* am Standort *eastus* erstellt. 
     >[!NOTE]
     > Optional können Sie auch einen alternativen Standort festlegen. Führen Sie zum Anzeigen der verfügbaren Standorte `az account list-locations` aus. In diesem Tutorial wird *eastus* verwendet, wie im Beispielbefehl gezeigt. 
 
@@ -85,7 +85,7 @@ So erstellen Sie einen IoT-Hub und eine Ressourcengruppe:
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Führen Sie den Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) aus, um einen IoT-Hub zu erstellen. Es kann einige Minuten dauern, bis ein IoT-Hub erstellt wurde. 
+1. Führen Sie den Befehl [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) aus, um einen IoT-Hub zu erstellen. Es kann einige Minuten dauern, bis ein IoT-Hub erstellt wurde. 
 
     *YourIotHubName*: Ersetzen Sie diesen Platzhalter und die umgebenden geschweiften Klammern im folgenden Befehl durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben. Der Name eines IoT-Hubs muss in Azure global eindeutig sein. Verwenden Sie im weiteren Verlauf dieser Schnellstartanleitung den Namen des IoT-Hubs für alle Vorkommen dieses Platzhalters.
 

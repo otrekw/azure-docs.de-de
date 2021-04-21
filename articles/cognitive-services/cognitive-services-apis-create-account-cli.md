@@ -10,12 +10,12 @@ keywords: Cognitive Services, kognitive Intelligenz, kognitive Lösungen, KI-Die
 ms.topic: quickstart
 ms.date: 3/22/2021
 ms.author: aahi
-ms.openlocfilehash: 08ff2f416a00002cde5767111ba5a6824a721324
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26e3b264b7268f7a9ffdb592beef7d76844646f5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868170"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789139"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -36,7 +36,7 @@ In diesem Schnellstart erfahren Sie, wie Sie sich mit der [Azure-Befehlszeilensc
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Installieren der Azure CLI und Anmelden
 
-Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli). Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index#az-login) aus:
+Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli). Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index#az_login) aus:
 
 ```azurecli-interactive
 az login
@@ -50,7 +50,7 @@ Vor dem Erstellen einer Cognitive Services-Ressource müssen Sie über eine Azur
 
 ### <a name="choose-your-resource-group-location"></a>Auswählen des Speicherorts Ihrer Ressourcengruppe
 
-Um eine Ressource zu erstellen, benötigen Sie einen der für Ihr Abonnement verfügbaren Azure-Speicherorte. Sie können eine Liste der verfügbaren Speicherorte mit dem Befehl [az account list-locations](/cli/azure/account#az-account-list-locations) abrufen. Auf die meisten Cognitive Services kann von mehreren Speicherorten aus zugegriffen werden. Wählen Sie den Ihnen am nächsten gelegenen aus, oder stellen Sie fest, welche Speicherorte für den Dienst verfügbar sind.
+Um eine Ressource zu erstellen, benötigen Sie einen der für Ihr Abonnement verfügbaren Azure-Speicherorte. Sie können eine Liste der verfügbaren Speicherorte mit dem Befehl [az account list-locations](/cli/azure/account#az_account_list_locations) abrufen. Auf die meisten Cognitive Services kann von mehreren Speicherorten aus zugegriffen werden. Wählen Sie den Ihnen am nächsten gelegenen aus, oder stellen Sie fest, welche Speicherorte für den Dienst verfügbar sind.
 
 > [!IMPORTANT]
 > * Merken Sie sich Ihren Azure-Speicherort, da Sie ihn beim Aufrufen der Azure Cognitive Services benötigen.
@@ -62,7 +62,7 @@ az account list-locations \
     --out table
 ```
 
-Sobald Ihr Azure-Speicherort feststeht, erstellen Sie eine neue Ressourcengruppe in der Azure-Befehlszeilenschnittstelle mit dem Befehl [az group create](/cli/azure/group#az-group-create).
+Sobald Ihr Azure-Speicherort feststeht, erstellen Sie eine neue Ressourcengruppe in der Azure-Befehlszeilenschnittstelle mit dem Befehl [az group create](/cli/azure/group#az_group_create).
 
 Ersetzen Sie im folgenden Beispiel den Azure-Speicherort `westus2` durch einen der für Ihr Abonnement verfügbaren Azure-Speicherorte.
 
@@ -124,7 +124,7 @@ Wenn Sie eine neue Ressource erstellen, müssen Sie die „Art“ des Diensts ke
 | Content Moderator | `ContentModerator` |
 | Personalisierung      | `Personalizer`     |
 
-Sie können eine Liste der verfügbaren „Arten“ von Cognitive Services mit dem Befehl [az cognitiveservices account list-kinds](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-list-kinds) finden:
+Sie können eine Liste der verfügbaren „Arten“ von Cognitive Services mit dem Befehl [az cognitiveservices account list-kinds](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_list_kinds) finden:
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
@@ -132,7 +132,7 @@ az cognitiveservices account list-kinds
 
 ### <a name="add-a-new-resource-to-your-resource-group"></a>Hinzufügen einer neuen Ressource zu Ihrer Ressourcengruppe
 
-Um eine neue Cognitive Services-Ressource zu erstellen und zu abonnieren, verwenden Sie den Befehl [az cognitiveservices account create](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-create). Dieser Befehl fügt der zuvor erstellten Ressourcengruppe eine neue abrechenbare Ressource hinzu. Wenn Sie Ihre neue Ressource erstellen, müssen Sie die „Art“ des Diensts kennen, den Sie verwenden möchten, sowie dessen Tarif (oder die SKU) und einen Azure-Speicherort.
+Um eine neue Cognitive Services-Ressource zu erstellen und zu abonnieren, verwenden Sie den Befehl [az cognitiveservices account create](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_create). Dieser Befehl fügt der zuvor erstellten Ressourcengruppe eine neue abrechenbare Ressource hinzu. Wenn Sie Ihre neue Ressource erstellen, müssen Sie die „Art“ des Diensts kennen, den Sie verwenden möchten, sowie dessen Tarif (oder die SKU) und einen Azure-Speicherort.
 
 Sie können eine (kostenlose) F0-Ressource zur Anomalieerkennung erstellen, die mit dem folgenden Befehl den Namen `anomaly-detector-resource` erhält.
 
@@ -150,13 +150,13 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>Abrufen der Schlüssel für die Ressource
 
-Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle (CLI) anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index#az-login) aus.
+Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle (CLI) anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index#az_login) aus.
 
 ```azurecli-interactive
 az login
 ```
 
-Rufen Sie mit dem Befehl [az cognitiveservices account keys list](/cli/azure/cognitiveservices/account/keys#az-cognitiveservices-account-keys-list) die Schlüssel für Ihre Cognitive Service-Ressource ab.
+Rufen Sie mit dem Befehl [az cognitiveservices account keys list](/cli/azure/cognitiveservices/account/keys#az_cognitiveservices_account_keys_list) die Schlüssel für Ihre Cognitive Service-Ressource ab.
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -175,7 +175,7 @@ Die Tarife (und der Betrag, der Ihnen in Rechnung gestellt wird) basieren auf de
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Abrufen des aktuellen Kontingentverbrauchs für Ihre Ressource
 
-Rufen Sie mit dem Befehl [az cognitiveservices account list-usage](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-list-usage) den Verbrauch für Ihre Cognitive Service-Ressource ab.
+Rufen Sie mit dem Befehl [az cognitiveservices account list-usage](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_list_usage) den Verbrauch für Ihre Cognitive Service-Ressource ab.
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \

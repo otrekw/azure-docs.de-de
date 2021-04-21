@@ -4,12 +4,12 @@ description: Informationen zum Ausführen von Wiederherstellungen auf Dateiebene
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d977919b806be32b84001a9b91dc9e396fbd63ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc3ce601a92020c0fe405935b8dc57242d852a1f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96557908"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765321"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Wiederherstellen von Dateien auf einem virtuellen Computer in Azure
 
@@ -43,7 +43,7 @@ Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt u
 
 Wenn Sie versehentlich eine Datei löschen oder Änderungen an ihr vornehmen, können Sie einzelne Dateien von einem Wiederherstellungspunkt aus wiederherstellen. Dieser Prozess ermöglicht Ihnen, die in einem Wiederherstellungspunkt gesicherten Dateien zu durchsuchen, um nur die benötigten Dateien wiederherzustellen. In diesem Beispiel wird eine Datei von einem Webserver gelöscht, um den Prozess der Wiederherstellung auf Dateiebene zu veranschaulichen.
 
-1. Um die Verbindung mit Ihrer VM herzustellen, rufen Sie die IP-Adresse Ihres virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm#az-vm-show) ab:
+1. Um die Verbindung mit Ihrer VM herzustellen, rufen Sie die IP-Adresse Ihres virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm#az_vm_show) ab:
 
      ```azurecli-interactive
      az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
@@ -79,7 +79,7 @@ Wenn Sie versehentlich eine Datei löschen oder Änderungen an ihr vornehmen, k�
 
 Um Ihre Dateien wiederherzustellen, bietet Azure Backup ein Skript zur Ausführung auf Ihrem virtuellen Computer, das die Verbindung zu Ihrem Wiederherstellungspunkt als lokales Laufwerk herstellt. Sie können dieses lokale Laufwerk durchsuchen, Dateien auf der VM selbst wiederherstellen und dann die Verbindung zum Wiederherstellungspunkt trennen. Azure Backup setzt die Sicherung Ihrer Daten auf Basis der zugewiesenen Zeitplan- und Aufbewahrungsrichtlinie fort.
 
-1. Verwenden Sie zum Auflisten der Wiederherstellungspunkte für Ihren virtuellen Computer [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list). In diesem Beispiel wird der letzte Wiederherstellungspunkt für den virtuellen Computer mit dem Namen *myVM* ausgewählt, der in *myRecoveryServicesVault* geschützt wird:
+1. Verwenden Sie zum Auflisten der Wiederherstellungspunkte für Ihren virtuellen Computer [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az_backup_recoverypoint_list). In diesem Beispiel wird der letzte Wiederherstellungspunkt für den virtuellen Computer mit dem Namen *myVM* ausgewählt, der in *myRecoveryServicesVault* geschützt wird:
 
     ```azurecli-interactive
     az backup recoverypoint list \
@@ -91,7 +91,7 @@ Um Ihre Dateien wiederherzustellen, bietet Azure Backup ein Skript zur Ausführu
         --output tsv
     ```
 
-2. Um das Skript abzurufen, das eine Verbindung des Wiederherstellungspunkts mit Ihrer VM herstellt bzw. ihn dort einbindet, verwenden Sie [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp). Im folgenden Beispiel wird das Skript für den virtuellen Computer mit dem Namen *myVM* abgerufen, der in *myRecoveryServicesVault* geschützt wird.
+2. Um das Skript abzurufen, das eine Verbindung des Wiederherstellungspunkts mit Ihrer VM herstellt bzw. ihn dort einbindet, verwenden Sie [az backup restore files mount-rp](/cli/azure/backup/restore/files#az_backup_restore_files_mount_rp). Im folgenden Beispiel wird das Skript für den virtuellen Computer mit dem Namen *myVM* abgerufen, der in *myRecoveryServicesVault* geschützt wird.
 
     Ersetzen Sie *myRecoveryPointName* mit dem Namen des Wiederherstellungspunkts, den Sie im vorherigen Befehl abgerufen haben:
 
@@ -141,7 +141,7 @@ Wenn das Wiederherstellungsskript auf Ihren virtuellen Computer kopiert worden i
     ./myVM_we_1571974050985163527.sh
     ```
 
-    Während das Skript ausgeführt wird, werden Sie aufgefordert, ein Kennwort für den Zugriff auf den Wiederherstellungspunkt einzugeben. Geben Sie das Kennwort ein, das in der Ausgabe des vorherigen [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp)-Befehls angezeigt wurde, der das Wiederherstellungsskript generiert hat.
+    Während das Skript ausgeführt wird, werden Sie aufgefordert, ein Kennwort für den Zugriff auf den Wiederherstellungspunkt einzugeben. Geben Sie das Kennwort ein, das in der Ausgabe des vorherigen [az backup restore files mount-rp](/cli/azure/backup/restore/files#az_backup_restore_files_mount_rp)-Befehls angezeigt wurde, der das Wiederherstellungsskript generiert hat.
 
     Die Ausgabe des Skripts enthält den Pfad zum Wiederherstellungspunkt. Die folgende Beispielausgabe zeigt, dass der Wiederherstellungspunkt unter */home/azureuser/myVM-20170919213536/Volume1* eingebunden wird:
 
@@ -181,7 +181,7 @@ Wenn das Wiederherstellungsskript auf Ihren virtuellen Computer kopiert worden i
     exit
     ```
 
-7. Heben Sie die Einbindung des Wiederherstellungspunkts auf Ihrem virtuellen Computer mit [az backup restore files unmount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-unmount-rp) auf. Im folgenden Beispiel wird die Einbindung des Wiederherstellungspunkt auf dem virtuellen Computer mit dem Namen *myVM* in *myRecoveryServicesVault* aufgehoben.
+7. Heben Sie die Einbindung des Wiederherstellungspunkts auf Ihrem virtuellen Computer mit [az backup restore files unmount-rp](/cli/azure/backup/restore/files#az_backup_restore_files_unmount_rp) auf. Im folgenden Beispiel wird die Einbindung des Wiederherstellungspunkt auf dem virtuellen Computer mit dem Namen *myVM* in *myRecoveryServicesVault* aufgehoben.
 
     Ersetzen Sie *myRecoveryPointName* mit dem Namen Ihres Wiederherstellungspunkts, den Sie in den vorherigen Befehlen abgerufen haben:
 
