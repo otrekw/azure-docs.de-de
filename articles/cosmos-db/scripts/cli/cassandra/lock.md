@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 94ff29d2c3272b61ff09fa0e564fcf2fcd281130
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2c1e663c659935e7e820f30a281099058a4cf34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566043"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771008"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-cassandra-api-keyspace-and-table-using-azure-cli"></a>Erstellen einer Ressourcensperre für einen Keyspace und eine Tabelle für die Cassandra-API für Azure Cosmos mithilfe der Azure CLI
 [!INCLUDE[appliesto-cassandra-api](../../../includes/appliesto-cassandra-api.md)]
@@ -34,10 +34,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [az lock create](/cli/azure/lock#az-lock-create) | Erstellt eine Sperre. |
-| [az lock list](/cli/azure/lock#az-lock-list) | Listet Sperrinformationen auf. |
-| [az lock show](/cli/azure/lock#az-lock-show) | Zeigt Eigenschaften einer Sperre an. |
-| [az lock delete](/cli/azure/lock#az-lock-delete) | Löscht eine Sperre. |
+| [az lock create](/cli/azure/lock#az_lock_create) | Erstellt eine Sperre. |
+| [az lock list](/cli/azure/lock#az_lock_list) | Listet Sperrinformationen auf. |
+| [az lock show](/cli/azure/lock#az_lock_show) | Zeigt Eigenschaften einer Sperre an. |
+| [az lock delete](/cli/azure/lock#az_lock_delete) | Löscht eine Sperre. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

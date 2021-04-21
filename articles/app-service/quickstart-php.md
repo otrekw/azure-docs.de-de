@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f6876d0aef0d3d87e038b623c395f8368a14e90c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c04e1b33233abebde746fd7fb1ef8d761dba7e4e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97561850"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788203"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>Erstellen einer PHP-Web-App in Azure App Service
 
@@ -78,9 +78,9 @@ Drücken Sie in Ihrem Terminalfenster **STRG+C**, um den Webserver zu beenden.
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
-Erstellen Sie in Cloud Shell mit dem Befehl [`az webapp create`](/cli/azure/webapp#az-webapp-create) eine Web-App im App Service-Plan `myAppServicePlan`. 
+Erstellen Sie in Cloud Shell mit dem Befehl [`az webapp create`](/cli/azure/webapp#az_webapp_create) eine Web-App im App Service-Plan `myAppServicePlan`. 
 
-Ersetzen Sie im folgenden Beispiel `<app-name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Die Runtime ist auf `PHP|7.4` festgelegt. Führen Sie [`az webapp list-runtimes`](/cli/azure/webapp#az-webapp-list-runtimes) aus, um alle unterstützten Laufzeiten anzuzeigen. 
+Ersetzen Sie im folgenden Beispiel `<app-name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Die Runtime ist auf `PHP|7.4` festgelegt. Führen Sie [`az webapp list-runtimes`](/cli/azure/webapp#az_webapp_list_runtimes) aus, um alle unterstützten Laufzeiten anzuzeigen. 
 
 ```azurecli-interactive
 # Bash

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: bcf6b2f6b964a056b9d90f08c0586fcbdec5b260
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: a7e4e76aa0619d78a91d766a9a43c0b1a02a48d3
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167276"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717385"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von Azure PowerShell
 
@@ -69,7 +69,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVNet” -Location “East US” -ResourceGroupName “ContosOrg” -AddressPrefix "10.0.0.0/24" -Subnet $subnet 
     ```
  
-7. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Von Cloud Services (erweiterter Support) werden nur öffentliche IP-Adressen mit [Basic]-SKU (https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) unterstützt. Öffentliche IP-Adressen der Standard-SKU funktionieren nicht mit Cloud Services.
+7. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Von Cloud Services (erweiterter Support) werden nur öffentliche IP-Adressen mit der SKU [Basic](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) unterstützt. Öffentliche IP-Adressen der Standard-SKU funktionieren nicht mit Cloud Services.
 Wenn Sie eine statische IP-Adresse verwenden, muss darauf in der Dienstkonfigurationsdatei (.cscfg) als reservierte IP verwiesen werden. 
 
     ```powershell

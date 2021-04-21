@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3743697d58d0f5b167b123df59bc5638aa60489
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87485642"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771675"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe der Azure CLI
 
@@ -86,7 +86,7 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer J
     "Microsoft.Support/*"
     ```
 
-1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [az account list](/cli/azure/account#az-account-list) ab.
+1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [az account list](/cli/azure/account#az_account_list) ab.
 
     ```azurecli
     az account list --output table
@@ -118,7 +118,7 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer J
     }
     ```
     
-1. Zum Erstellen der neuen benutzerdefinierten Rolle verwenden Sie den Befehl [az role definition create](/cli/azure/role/definition#az-role-definition-create) und geben die JSON-Rollendefinitionsdatei an.
+1. Zum Erstellen der neuen benutzerdefinierten Rolle verwenden Sie den Befehl [az role definition create](/cli/azure/role/definition#az_role_definition_create) und geben die JSON-Rollendefinitionsdatei an.
 
     ```azurecli
     az role definition create --role-definition "~/CustomRoles/ReaderSupportRole.json"
@@ -155,7 +155,7 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer J
 
 ## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen
 
-- Verwenden Sie zum Auflisten aller benutzerdefinierten Rollen den Befehl [az role definition list](/cli/azure/role/definition#az-role-definition-list) mit dem Parameter `--custom-role-only`.
+- Verwenden Sie zum Auflisten aller benutzerdefinierten Rollen den Befehl [az role definition list](/cli/azure/role/definition#az_role_definition_list) mit dem Parameter `--custom-role-only`.
 
     ```azurecli
     az role definition list --custom-role-only true
@@ -225,7 +225,7 @@ Wenn Sie die benutzerdefiniert Rolle aktualisieren möchten, aktualisieren Sie d
     }
     ```
         
-1. Führen Sie zum Aktualisieren der benutzerdefinierten Rolle den Befehl [az role definition update](/cli/azure/role/definition#az-role-definition-update) aus, und geben Sie die aktualisierte JSON-Datei an.
+1. Führen Sie zum Aktualisieren der benutzerdefinierten Rolle den Befehl [az role definition update](/cli/azure/role/definition#az_role_definition_update) aus, und geben Sie die aktualisierte JSON-Datei an.
 
     ```azurecli
     az role definition update --role-definition "~/CustomRoles/ReaderSupportRole.json"
@@ -261,7 +261,7 @@ Wenn Sie die benutzerdefiniert Rolle aktualisieren möchten, aktualisieren Sie d
     
 ## <a name="delete-a-custom-role"></a>Löschen einer benutzerdefinierten Rolle
 
-- Verwenden Sie den Befehl [az role definition delete](/cli/azure/role/definition#az-role-definition-delete), und geben Sie den Rollennamen oder die Rollen-ID an, um die benutzerdefinierte Rolle zu löschen.
+- Verwenden Sie den Befehl [az role definition delete](/cli/azure/role/definition#az_role_definition_delete), und geben Sie den Rollennamen oder die Rollen-ID an, um die benutzerdefinierte Rolle zu löschen.
 
     ```azurecli
     az role definition delete --name "Reader Support Tickets"
