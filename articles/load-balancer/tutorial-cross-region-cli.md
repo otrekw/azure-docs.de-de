@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca4134ff25dc9915f256b5a7bdd9404021b60a8e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225182"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791911"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mit der Azure CLI
 
@@ -54,7 +54,7 @@ In diesem Abschnitt erstellen Sie einen regionsübergreifenden Lastenausgleich, 
 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe:
+Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe:
 
 * Name: **myResourceGroupLB-CR**
 * Standort: **westus** (USA, Westen).
@@ -157,7 +157,7 @@ Verwenden Sie [az network cross-region-lb address-pool address add](/cli/azure/n
 
 In diesem Abschnitt testen Sie den regionsübergreifenden Lastenausgleich. Sie stellen in einem Webbrowser eine Verbindung mit der öffentlichen IP-Adresse her.  Sie halten die virtuellen Computer in den Back-End-Pools eines der regionalen Lastenausgleiche an und beobachten das Failover.
 
-1. Rufen Sie mithilfe von [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) die öffentliche IP-Adresse des Lastenausgleichs ab:
+1. Rufen Sie mithilfe von [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) die öffentliche IP-Adresse des Lastenausgleichs ab:
 
     ```azurecli-interactive
       az network public-ip show \
@@ -174,7 +174,7 @@ In diesem Abschnitt testen Sie den regionsübergreifenden Lastenausgleich. Sie s
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Verwenden Sie den Befehl [az group delete](/cli/azure/group#az-group-delete), um die Ressourcengruppe, den Lastenausgleich und alle zugehörigen Ressourcen zu entfernen, wenn Sie sie nicht mehr benötigen.
+Verwenden Sie den Befehl [az group delete](/cli/azure/group#az_group_delete), um die Ressourcengruppe, den Lastenausgleich und alle zugehörigen Ressourcen zu entfernen, wenn Sie sie nicht mehr benötigen.
 
 ```azurecli-interactive
   az group delete \

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: ddb6276d63d90f4221475b163cba174116ec8bec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a2409c94e28135ca5c1fb8fa7210cd9b8b42858
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94539344"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791667"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>Wiederherstellen eines Azure Database for MySQL-Servers mithilfe der Azure-Befehlszeilenschnittstelle
 Dieses CLI-Beispielskript stellt einen einzelnen Azure Database for MySQL-Server auf den Zustand auf einen früheren Zeitpunkt wieder her.
@@ -35,10 +35,10 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 
 | **Befehl** | **Hinweise** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | Erstellt einen MySQL-Server, der die Datenbanken hostet. |
-| [az mysql server restore](/cli/azure/mysql/server#az-mysql-server-restore) | Stellt einen Server aus einer Sicherung wieder her |
-| [az group delete](/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) | Erstellt einen MySQL-Server, der die Datenbanken hostet. |
+| [az mysql server restore](/cli/azure/mysql/server#az_mysql_server_restore) | Stellt einen Server aus einer Sicherung wieder her |
+| [az group delete](/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure).

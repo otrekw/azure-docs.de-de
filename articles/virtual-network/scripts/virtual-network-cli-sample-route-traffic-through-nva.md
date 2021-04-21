@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 964fda8168867c115502c7262dc1d41e55075866
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7dca5e36144fe17b39f76bb61543f59a1c6d7772
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91317649"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790183"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance---azure-cli-script-sample"></a>Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät – Azure CLI-Beispielskript
 
@@ -58,8 +58,8 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [az network nsg create](/cli/azure/network/nsg) | Erstellt eine Netzwerksicherheitsgruppe (NSG). |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) | Erstellt NSG-Regeln, die eingehende HTTP- und HTTPS-Ports für den virtuellen Computer ermöglichen. |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet)| Ordnet die NSGs und Routentabellen Subnetzen zu. |
-| [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| Erstellt eine Routingtabelle für alle Routen. |
-| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Erstellt die Routen zum Weiterleiten von Datenverkehr zwischen Subnetzen und dem Internet über den virtuellen Computer. |
+| [az network route-table create](/cli/azure/network/route-table#az_network_route_table_create)| Erstellt eine Routingtabelle für alle Routen. |
+| [az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create)| Erstellt die Routen zum Weiterleiten von Datenverkehr zwischen Subnetzen und dem Internet über den virtuellen Computer. |
 | [az vm create](/cli/azure/vm) | Erstellt einen virtuellen Computer und fügt ihm eine NIC an. Dieser Befehl legt außerdem das zu verwendende VM-Image und die Administratoranmeldeinformationen fest. |
 | [az group delete](/cli/azure/group) | Löscht eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 

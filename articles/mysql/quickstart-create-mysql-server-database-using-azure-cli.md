@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4f774351fc0eaaf32069687a1943c72b74b6308a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3dd971ff36bde02072d14c465dbafec2823b256d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96494323"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780315"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Schnellstart: Erstellen einer Azure-Datenbank für MySQL-Server mithilfe der Azure CLI
 
@@ -28,7 +28,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mit den Befehlen der [Azur
 
  - Für diesen Schnellstart ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
- - Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
+ - Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az_account_list), um alle Abonnements abzurufen.
 
    ```azurecli
    az account set --subscription <subscription id>
@@ -41,7 +41,7 @@ Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine [Azu
 az group create --name myresourcegroup --location westus
 ```
 
-Erstellen Sie mit dem Befehl [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) einen Azure-Datenbank für MySQL-Server. Ein Server kann mehrere Datenbanken enthalten.
+Erstellen Sie mit dem Befehl [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) einen Azure-Datenbank für MySQL-Server. Ein Server kann mehrere Datenbanken enthalten.
 
 ```azurecli
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 
@@ -60,7 +60,7 @@ sku-name|GP_Gen5_2|Geben Sie den Namen des Tarifs und der Computekonfiguration e
 
 >[!IMPORTANT] 
 >- Die Standardversion von MySQL auf dem Server lautet 5.7. Derzeit sind außerdem die Versionen 5.6 und 8.0 verfügbar.
->- Alle Argumente für den Befehl **az mysql server create** finden Sie in [diesem Referenzdokument](/cli/azure/mysql/server#az-mysql-server-create).
+>- Alle Argumente für den Befehl **az mysql server create** finden Sie in [diesem Referenzdokument](/cli/azure/mysql/server#az_mysql_server_create).
 >- SSL ist standardmäßig auf dem Server aktiviert. Weitere Informationen zu SSL finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit der Azure-Datenbank für MySQL](howto-configure-ssl.md).
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurieren einer Firewallregel auf Serverebene 
@@ -126,7 +126,7 @@ Wenn Sie diese Ressourcen nicht für einen anderen Schnellstart bzw. ein anderes
 az group delete --name myresourcegroup
 ```
 
-Wenn Sie nur den neu erstellten Server löschen möchten, können Sie den Befehl [az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) ausführen.
+Wenn Sie nur den neu erstellten Server löschen möchten, können Sie den Befehl [az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete) ausführen.
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver

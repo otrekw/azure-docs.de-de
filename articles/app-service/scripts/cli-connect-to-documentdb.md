@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: fa971bbb8526f1b0bc081e61ed5e7a7f2cf76d1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: f76f036e2101fb1dbb4483ba417f5cf10f3e37f4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006360"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782384"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>Herstellen einer Verbindung zwischen einer App Service-App und Cosmos DB per CLI
 
@@ -38,12 +38,12 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Get-Help | Notizen |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Erstellt einen App Service-Plan. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Erstellt eine App Service-App. |
-| [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) | Erstellt ein Cosmos DB-Konto. |
-| [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb#az-cosmosdb-list-connection-strings) | Listet die Verbindungszeichenfolgen für das angegebene Cosmos DB-Konto auf. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Erstellt oder aktualisiert eine App-Einstellung für eine App Service-App. App-Einstellungen werden als Umgebungsvariablen für Ihre App verfügbar gemacht. |
+| [`az group create`](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Erstellt eine App Service-App. |
+| [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) | Erstellt ein Cosmos DB-Konto. |
+| [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb#az_cosmosdb_list_connection_strings) | Listet die Verbindungszeichenfolgen für das angegebene Cosmos DB-Konto auf. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Erstellt oder aktualisiert eine App-Einstellung für eine App Service-App. App-Einstellungen werden als Umgebungsvariablen für Ihre App verfügbar gemacht. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
