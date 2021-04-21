@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie eine Azure-Containerregistrierung erst
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6abf1b7a524bc7dd28f1704a362749ac84de2389
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5f5627462f016c857d956be46c276dda78e9b2b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97826083"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780657"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Tutorial: Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -98,7 +98,7 @@ Navigieren Sie im Azure-Portal zu Ihrer neuen Containerregistrierung, und wähle
 
 Nachdem Sie nun die Georeplikation konfiguriert haben, erstellen Sie ein Containerimage und übertragen es per Pushvorgang in Ihre Registrierung. Sie müssen sich zuerst bei Ihrer Registrierung anmelden, bevor Sie dafür Images per Pushvorgang übertragen können.
 
-Verwenden Sie den Befehl [az acr login](/cli/azure/acr#az-acr-login), um sich zu authentifizieren und die Anmeldeinformationen für Ihre Registrierung zwischenzuspeichern. Ersetzen Sie `<acrName>` durch den Namen der Registrierung, die Sie zuvor erstellt haben.
+Verwenden Sie den Befehl [az acr login](/cli/azure/acr#az_acr_login), um sich zu authentifizieren und die Anmeldeinformationen für Ihre Registrierung zwischenzuspeichern. Ersetzen Sie `<acrName>` durch den Namen der Registrierung, die Sie zuvor erstellt haben.
 
 ```azurecli
 az acr login --name <acrName>

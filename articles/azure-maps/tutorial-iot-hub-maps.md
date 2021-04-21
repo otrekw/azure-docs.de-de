@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 91556087cd3e7ccd85550c721f70b8608fdc4ffd
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 9ebc6e266c93e55bc250e8450356f8b695dd9080
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168449"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714990"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Tutorial: Implementieren der räumlichen IoT-Analyse mit Azure Maps
 
@@ -95,7 +95,7 @@ In der folgenden Abbildung ist der Geofencebereich blau eingefärbt. Die Route d
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-Zum Speichern von Nachverfolgungsdaten zu Verstößen des Fahrzeugs erstellen Sie ein [universelles v2-Speicherkonto](../storage/common/storage-account-overview.md#general-purpose-v2-accounts) in Ihrer Ressourcengruppe. Wenn Sie noch keine Ressourcengruppe erstellt haben, befolgen Sie die Anweisungen in [Erstellen von Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). In diesem Tutorial nennen Sie Ihre Ressourcengruppe *ContosoRental*.
+Zum Speichern von Nachverfolgungsdaten zu Verstößen des Fahrzeugs erstellen Sie ein [universelles v2-Speicherkonto](../storage/common/storage-account-overview.md) in Ihrer Ressourcengruppe. Wenn Sie noch keine Ressourcengruppe erstellt haben, befolgen Sie die Anweisungen in [Erstellen von Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). In diesem Tutorial nennen Sie Ihre Ressourcengruppe *ContosoRental*.
 
 Befolgen Sie zum Erstellen eines Speicherkontos die Anweisungen unter [Speicherkonto erstellen](../storage/common/storage-account-create.md?tabs=azure-portal). In diesem Tutorial nennen Sie das Speicherkonto *contosorentalstorage*, aber sonst können Sie einen beliebigen Namen verwenden.
 

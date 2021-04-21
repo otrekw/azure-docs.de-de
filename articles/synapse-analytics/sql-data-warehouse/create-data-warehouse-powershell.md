@@ -3,20 +3,24 @@ title: 'Schnellstart: Erstellen eines dedizierten SQL-Pools (vormals SQL DW) mi
 description: Erstellen Sie mithilfe von Azure PowerShell schnell einen dedizierten SQL-Pool (vormals SQL DW) mit einer Firewallregel auf Serverebene.
 services: synapse-analytics
 author: XiaoyuMSFT
-manager: craigg
-ms.service: synapse-analytics
-ms.topic: quickstart
-ms.subservice: sql-dw
-ms.date: 4/11/2019
 ms.author: xiaoyul
+manager: craigg
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 18fba46e4e8de14d9b3ec43455ba2abcc4218dc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/11/2019
+ms.topic: quickstart
+ms.service: synapse-analytics
+ms.subservice: sql-dw
+ms.custom:
+- seo-lt-2019
+- azure-synapse
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: 65bf509c8eb654a9f7712fdf7b94ff7fa26a3d32
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98120188"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537459"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Schnellstart: Erstellen eines dedizierten SQL-Pools (vormals SQL DW) mit Azure PowerShell
 

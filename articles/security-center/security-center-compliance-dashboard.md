@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fb8dc22c923b7b53a6263baa43046862af4d2f04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370262"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739006"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Tutorial: Verbessern der Einhaltung gesetzlicher Vorschriften
 
@@ -26,7 +26,7 @@ Mit Azure Security Center kann der Prozess zur Einhaltung von Anforderungen gese
 
 Von Security Center wird Ihre Hybrid Cloud-Umgebung kontinuierlich bewertet, um die Risikofaktoren gemäß den Kontrollen und bewährten Methoden in den Standards, die auf Ihre Abonnements angewendet wurden, zu analysieren. Das Dashboard gibt den Status Ihrer Einhaltung dieser Standards wieder. 
 
-Wenn Sie Security Center für ein Azure-Abonnement aktivieren, wird diesem Abonnement automatisch der [Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md) zugewiesen. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
+Wenn Sie Security Center für ein Azure-Abonnement aktivieren, wird diesem Abonnement automatisch der [Azure-Sicherheitsvergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction) zugewiesen. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
 
 Im Dashboard zur Einhaltung gesetzlicher Bestimmungen wird der Status aller Bewertungen angezeigt, die in Ihrer Umgebung für Ihre ausgewählten Standards und Bestimmungen durchgeführt werden. Wenn Sie aufgrund der Empfehlungen Maßnahmen ergreifen und die Risikofaktoren Ihrer Umgebung reduzieren, verbessert sich Ihr Konformitätsstatus.
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 611068fa020321be88be6e1d6da663266029c658
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d52a83c8c0920c4d85aa5b4b6b89fd8d36e5fea
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660184"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774951"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -30,7 +30,7 @@ Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die B
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 Im folgenden Beispiel wird am Standort *westus* eine Ressourcengruppe mit dem Namen *my-sample-resource-group* erstellt.
 
@@ -45,7 +45,7 @@ az group create --name my-sample-resource-group --location westus
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
-Erstellen Sie mithilfe des Befehls [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) eine IoT Hub-Instanz.
+Erstellen Sie mithilfe des Befehls [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) eine IoT Hub-Instanz.
 
 Im folgenden Beispiel wird am Standort *westus* eine IoT Hub-Instanz mit dem Namen *my-sample-hub* erstellt. Ein IoT-Hub-Name muss in Azure global eindeutig sein, daher können Sie dem Beispielnamen ein eindeutiges Präfix oder Suffix hinzufügen oder einen ganz neuen Namen auswählen. Achten Sie darauf, dass der Name den Benennungskonventionen für IoT-Hubs entspricht: Er muss 3 bis 50 Zeichen lang sein und darf nur alphanumerische Zeichen (Klein- und Großbuchstaben) oder Bindestriche („-“) enthalten. 
 
@@ -55,7 +55,7 @@ az iot hub create --name my-sample-hub --resource-group my-sample-resource-group
 
 ## <a name="create-a-device-provisioning-service"></a>Erstellen einer Device Provisioning Service-Instanz
 
-Erstellen Sie mithilfe des Befehls [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) eine Device Provisioning Service-Instanz. 
+Erstellen Sie mithilfe des Befehls [az iot dps create](/cli/azure/iot/dps#az_iot_dps_create) eine Device Provisioning Service-Instanz. 
 
 Im folgenden Beispiel wird am Standort *westus* ein Bereitstellungsdienst mit dem Namen *my-sample-dps* erstellt. Sie müssen außerdem einen global eindeutigen Namen für Ihren eigenen Bereitstellungsdienst auswählen. Achten Sie darauf, dass er den Namenskonventionen für IoT Hub Device Provisioning Service entspricht: Er muss 3 bis 64 Zeichen lang sein und darf nur alphanumerische Zeichen (Klein- und Großbuchstaben) oder Bindestriche („-“) enthalten.
 
@@ -69,7 +69,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>Abrufen der Verbindungszeichenfolge für die IoT Hub-Instanz
 
-Die Verbindungszeichenfolge Ihrer IoT Hub-Instanz wird benötigt, um sie mit der Device Provisioning Service-Instanz zu verknüpfen. Rufen Sie mithilfe des Befehls [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) die Verbindungszeichenfolge ab, und verwenden Sie die Ausgabe des Befehls, um eine Variable festzulegen, die später beim Verknüpfen der beiden Ressourcen verwendet wird. 
+Die Verbindungszeichenfolge Ihrer IoT Hub-Instanz wird benötigt, um sie mit der Device Provisioning Service-Instanz zu verknüpfen. Rufen Sie mithilfe des Befehls [az iot hub show-connection-string](/cli/azure/iot/hub#az_iot_hub_show_connection_string) die Verbindungszeichenfolge ab, und verwenden Sie die Ausgabe des Befehls, um eine Variable festzulegen, die später beim Verknüpfen der beiden Ressourcen verwendet wird. 
 
 Im folgenden Beispiel wird die Variable *hubConnectionString* auf den Wert der Verbindungszeichenfolge für den primären Schlüssel für die Richtlinie *iothubowner* des Hubs festgelegt. (Der Parameter `--policy-name` kann zum Angeben einer anderen Richtlinie verwendet werden.) Ersetzen Sie *my-sample-hub* durch den eindeutigen Namen des IoT-Hubs, den Sie zuvor ausgewählt haben. Der Befehl verwendet die Optionen [query](/cli/azure/query-azure-cli) und [output](/cli/azure/format-output-azure-cli#tsv-output-format) der Azure-Befehlszeilenschnittstelle, um die Verbindungszeichenfolge aus der Befehlsausgabe zu extrahieren.
 
@@ -93,7 +93,7 @@ echo $hubConnectionString
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>Verknüpfen der IoT Hub-Instanz und des Bereitstellungsdiensts
 
-Verknüpfen Sie die IoT Hub-Instanz und Ihren Bereitstellungsdienst mithilfe des Befehls [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create). 
+Verknüpfen Sie die IoT Hub-Instanz und Ihren Bereitstellungsdienst mithilfe des Befehls [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az_iot_dps_linked_hub_create). 
 
 Im folgenden Beispiel wird eine IoT Hub-Instanz namens *my-sample-hub* am Standort *westus* mit dem Gerätebereitstellungsdienst *my-sample-dps* verknüpft. Ersetzen Sie diese Namen durch die eindeutigen Namen des IoT-Hubs und des Gerätebereitstellungsdiensts, die Sie zuvor ausgewählt haben. Im Befehl wird die Verbindungszeichenfolge für Ihren IoT-Hub verwendet, die im vorherigen Schritt in der Variable *hubConnectionString* gespeichert wurde.
 
@@ -105,7 +105,7 @@ Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen.
 
 ## <a name="verify-the-provisioning-service"></a>Überprüfen des Bereitstellungsdiensts
 
-Rufen Sie mithilfe des Befehls [az iot dps show](/cli/azure/iot/dps#az-iot-dps-show) die Details Ihres Bereitstellungsdiensts ab.
+Rufen Sie mithilfe des Befehls [az iot dps show](/cli/azure/iot/dps#az_iot_dps_show) die Details Ihres Bereitstellungsdiensts ab.
 
 Im folgenden Beispiel werden die Details eines Bereitstellungsdiensts namens *my-sample-dps* abgerufen. Ersetzen Sie diesen Namen durch Ihren eigenen Namen für den Gerätebereitstellungdienst.
 
@@ -120,18 +120,18 @@ Die verknüpfte IoT Hub-Instanz wird in der Sammlung *properties.iotHubs* angeze
 
 Andere Schnellstarts in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Wenn Sie nicht fortfahren möchten, können Sie die folgenden Befehle verwenden, um den Bereitstellungsdienst, die IoT Hub-Instanz oder die Ressourcengruppe und alle dazugehörigen Ressourcen zu löschen. Ersetzen Sie die Namen der unten aufgeführten Ressourcen durch die Namen Ihrer eigenen Ressourcen.
 
-Führen Sie zum Löschen des Bereitstellungsdiensts den Befehl [az iot dps delete](/cli/azure/iot/dps#az-iot-dps-delete) aus:
+Führen Sie zum Löschen des Bereitstellungsdiensts den Befehl [az iot dps delete](/cli/azure/iot/dps#az_iot_dps_delete) aus:
 
 ```azurecli-interactive
 az iot dps delete --name my-sample-dps --resource-group my-sample-resource-group
 ```
-Führen Sie zum Löschen der IoT Hub-Instanz den Befehl [az iot hub delete](/cli/azure/iot/hub#az-iot-hub-delete) aus:
+Führen Sie zum Löschen der IoT Hub-Instanz den Befehl [az iot hub delete](/cli/azure/iot/hub#az_iot_hub_delete) aus:
 
 ```azurecli-interactive
 az iot hub delete --name my-sample-hub --resource-group my-sample-resource-group
 ```
 
-Führen Sie zum Löschen einer Ressourcengruppe und all ihrer Ressourcen den Befehl [az group delete](/cli/azure/group#az-group-delete) aus:
+Führen Sie zum Löschen einer Ressourcengruppe und all ihrer Ressourcen den Befehl [az group delete](/cli/azure/group#az_group_delete) aus:
 
 ```azurecli-interactive
 az group delete --name my-sample-resource-group

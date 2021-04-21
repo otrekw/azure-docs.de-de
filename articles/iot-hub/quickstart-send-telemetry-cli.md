@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 4671880490a9ce9e29f49ede0e7687bdcf639a7e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a34fd5480ae47678f250dbf888005c396ba32f38
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199797"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792145"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Durchführen der Überwachung per Azure CLI
 
@@ -55,7 +55,7 @@ In diesem Abschnitt bereiten Sie zwei Azure CLI-Sitzungen vor. Bei Verwendung de
 
 Für die Nutzung der Azure CLI müssen Sie bei Ihrem Azure-Konto angemeldet sein. Die gesamte Kommunikation zwischen Ihrer Azure CLI-Shell-Sitzung und Ihrem IoT-Hub wird authentifiziert und verschlüsselt. Für diese Schnellstartanleitung ist daher keine weitere Authentifizierung, z. B. per Verbindungszeichenfolge, wie bei einem echten Gerät erforderlich.
 
-*  Führen Sie den Befehl [az extension add](/cli/azure/extension#az-extension-add) aus, um Ihrer CLI-Shell die Microsoft Azure IoT-Erweiterung für die Azure CLI hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
+*  Führen Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add) aus, um Ihrer CLI-Shell die Microsoft Azure IoT-Erweiterung für die Azure CLI hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
 
    ```azurecli
    az extension add --name azure-iot
@@ -76,13 +76,13 @@ In diesem Abschnitt verwenden Sie die Azure CLI zum Erstellen einer Ressourcengr
 > [!TIP]
 > Optional können Sie eine Azure-Ressourcengruppe, einen IoT-Hub und andere Ressourcen erstellen, indem Sie das [Azure-Portal](iot-hub-create-through-portal.md), [Visual Studio Code](iot-hub-create-use-iot-toolkit.md) oder andere programmgesteuerte Verfahren verwenden.  
 
-1. Führen Sie den Befehl [az group create](/cli/azure/group#az-group-create) aus, um eine Ressourcengruppe zu erstellen. Mit dem folgenden Befehl wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* am Standort *eastus* erstellt. 
+1. Führen Sie den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen. Mit dem folgenden Befehl wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* am Standort *eastus* erstellt. 
 
     ```azurecli
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Führen Sie den Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) aus, um einen IoT-Hub zu erstellen. Es kann einige Minuten dauern, bis ein IoT-Hub erstellt wurde. 
+1. Führen Sie den Befehl [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) aus, um einen IoT-Hub zu erstellen. Es kann einige Minuten dauern, bis ein IoT-Hub erstellt wurde. 
 
     *YourIotHubName*: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben. Der Name eines IoT-Hubs muss in Azure global eindeutig sein. Dieser Platzhalter wird im restlichen Teil dieser Schnellstartanleitung als Name für Ihren IoT-Hub verwendet.
 
@@ -184,12 +184,12 @@ Falls Sie mit dem nächsten empfohlenen Artikel fortfahren, können Sie die bere
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. 
 
 So löschen Sie eine Ressourcengruppe anhand des Namens:
-1. Führen Sie den Befehl [az group delete](/cli/azure/group#az-group-delete) aus. Die von Ihnen erstellte Ressourcengruppe, der IoT-Hub und die Geräteregistrierung werden entfernt.
+1. Führen Sie den Befehl [az group delete](/cli/azure/group#az_group_delete) aus. Die von Ihnen erstellte Ressourcengruppe, der IoT-Hub und die Geräteregistrierung werden entfernt.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Führen Sie den Befehl [az group list](/cli/azure/group#az-group-list) aus, um sich zu vergewissern, dass die Ressourcengruppe gelöscht wurde.  
+1. Führen Sie den Befehl [az group list](/cli/azure/group#az_group_list) aus, um sich zu vergewissern, dass die Ressourcengruppe gelöscht wurde.  
 
     ```azurecli
     az group list
