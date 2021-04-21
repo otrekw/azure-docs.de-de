@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: 3862197acd3b3181180d264c4d2a2c8dbf6a1401
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 4291a7d46c723f799cf9d09ca0e7a3f6d614971f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378855"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389739"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
 
@@ -70,10 +70,8 @@ Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die fol
 5. Fahren Sie mit [Überprüfen der Domäne](#validate-the-domain) fort.
 
 > [!NOTE]
-> Bei von AFD verwalteten Zertifikaten wird der Grenzwert von 64 Zeichen von DigiCert erzwungen. Bei der Überprüfung tritt ein Fehler auf, wenn dieser Grenzwert überschritten wird.
-
-> [!NOTE]
-> Die Aktivierung von HTTPS über ein durch Front Door verwaltetes Zertifikat wird für Apex-/Stammdomänen (Beispiel: contoso.com) nicht unterstützt. Sie können Ihr eigenes Zertifikat für dieses Szenario verwenden.  Fahren Sie mit Option 2 fort, um weitere Informationen zu erhalten.
+> * Bei von AFD verwalteten Zertifikaten wird der Grenzwert von 64 Zeichen von DigiCert erzwungen. Bei der Überprüfung tritt ein Fehler auf, wenn dieser Grenzwert überschritten wird.
+> * Die Aktivierung von HTTPS über ein durch Front Door verwaltetes Zertifikat wird für Apex-/Stammdomänen (Beispiel: contoso.com) nicht unterstützt. Sie können Ihr eigenes Zertifikat für dieses Szenario verwenden.  Fahren Sie mit Option 2 fort, um weitere Informationen zu erhalten.
 
 ### <a name="option-2-use-your-own-certificate"></a>Option 2: Verwenden Ihres eigenen Zertifikats
 

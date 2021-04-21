@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 7c228bfe5897b45e6345234f2ed8e0f5cfbec73a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/15/2021
+ms.openlocfilehash: c6f2dfe0d4846227400ac9b3c7ac3e6ead8f0b57
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312789"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567552"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>Analysieren von Daten mit einem serverlosen SQL-Pool
 
@@ -29,7 +29,6 @@ Jeder Arbeitsbereich wird mit einem vorkonfigurierten serverlosen SQL-Pool namen
 
 ## <a name="analyze-nyc-taxi-data-with-a-serverless-sql-pool"></a>Analysieren von NYC Taxi-Daten mit einem serverlosen SQL-Pool
 
-
 1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln**.
 1. Erstellen Sie ein neues SQL-Skript.
 1. Fügen Sie den folgenden Code in das Skript ein:
@@ -39,11 +38,11 @@ Jeder Arbeitsbereich wird mit einem vorkonfigurierten serverlosen SQL-Pool namen
         TOP 100 *
     FROM
         OPENROWSET(
-                BULK 'https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet',
+            BULK 'https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet',
             FORMAT='PARQUET'
         ) AS [result]
     ```
-1. Klicken Sie auf **Run**.
+1. Klicken Sie auf **Ausführen**. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

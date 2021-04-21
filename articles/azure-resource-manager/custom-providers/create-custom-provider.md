@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888860"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779235"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Schnellstart: Erstellen eines benutzerdefinierten Anbieters und Bereitstellen von benutzerdefinierten Ressourcen
 
@@ -27,7 +27,7 @@ Bereiten Sie die Umgebung für die Azure CLI vor.
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-In Azure CLI-Beispielen wird `az rest` für Anforderungen vom Typ `REST` verwendet. Weitere Informationen finden Sie unter [az rest](/cli/azure/reference-index#az-rest).
+In Azure CLI-Beispielen wird `az rest` für Anforderungen vom Typ `REST` verwendet. Weitere Informationen finden Sie unter [az rest](/cli/azure/reference-index#az_rest).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -52,7 +52,7 @@ Verwenden Sie die Azure CLI, PowerShell oder das Azure-Portal, um den benutzerde
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-In diesem Beispiel werden Sie aufgefordert, eine Ressourcengruppe, einen Standort und den Funktions-App-Namen des Anbieters einzugeben. Die Namen werden in Variablen gespeichert, die in anderen Befehlen verwendet werden. Mit den Befehlen [az group create](/cli/azure/group#az-group-create) und [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) werden die Ressourcen bereitgestellt.
+In diesem Beispiel werden Sie aufgefordert, eine Ressourcengruppe, einen Standort und den Funktions-App-Namen des Anbieters einzugeben. Die Namen werden in Variablen gespeichert, die in anderen Befehlen verwendet werden. Mit den Befehlen [az group create](/cli/azure/group#az_group_create) und [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) werden die Ressourcen bereitgestellt.
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&

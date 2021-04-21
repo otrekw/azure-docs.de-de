@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 36d6d8b4d4435b1db99f2721c817c9c06ca60945
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 77d54ef0c9bef40af47c2fc48b9d4b5d6315b119
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019184"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780393"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Tutorial: Empfangen von Gerätedaten über Azure IoT Hub
 
@@ -44,7 +44,7 @@ Azure IoT Hub unterstützt das so genannte [Nachrichtenrouting](../../iot-hub/
 Die Einrichtung eines Nachrichtenroutings umfasst zwei Schritte:
 
 ### <a name="add-an-endpoint"></a>Hinzufügen eines Endpunkts
-In diesem Schritt wird ein Endpunkt definiert, an den die Daten durch die IoT Hub-Instanz weitergeleitet werden. Dieser Endpunkt kann nach Belieben mithilfe des PowerShell-Befehls [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) oder mithilfe des CLI-Befehls [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) erstellt werden.
+In diesem Schritt wird ein Endpunkt definiert, an den die Daten durch die IoT Hub-Instanz weitergeleitet werden. Dieser Endpunkt kann nach Belieben mithilfe des PowerShell-Befehls [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) oder mithilfe des CLI-Befehls [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az_iot_hub_routing_endpoint_create) erstellt werden.
 
 Im Anschluss sind die Parameter für den Endpunkterstellungsbefehl aufgeführt:
 
@@ -59,7 +59,7 @@ Im Anschluss sind die Parameter für den Endpunkterstellungsbefehl aufgeführt:
 |ConnectionString|connection-string|Verbindungszeichenfolge für Ihre Instanz von Azure IoT-Konnektor für FHIR. Verwenden Sie den Wert aus dem vorherigen Schritt.|
 
 ### <a name="add-a-message-route"></a>Hinzufügen einer Nachrichtenroute
-In diesem Schritt wird eine Nachrichtenroute mit dem oben erstellten Endpunkt definiert. Für die Routenerstellung können Sie entweder den PowerShell-Befehl [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) oder den CLI-Befehl [az iot hub route create](/cli/azure/iot/hub/route#az-iot-hub-route-create) verwenden.
+In diesem Schritt wird eine Nachrichtenroute mit dem oben erstellten Endpunkt definiert. Für die Routenerstellung können Sie entweder den PowerShell-Befehl [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) oder den CLI-Befehl [az iot hub route create](/cli/azure/iot/hub/route#az_iot_hub_route_create) verwenden.
 
 Im Anschluss sind die Parameter für den Befehl zum Hinzufügen einer Nachrichtenroute aufgeführt:
 

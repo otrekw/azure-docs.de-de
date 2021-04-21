@@ -4,18 +4,20 @@ titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen zu den ersten Schritten mit dem Metrics Advisor-Webportal.
 services: cognitive-services
 author: mrbullwinkle
+ms.author: mbullwin
 manager: nitinme
+ms.date: 09/30/2020
+ms.topic: quickstart
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
-ms.topic: quickstart
-ms.date: 09/30/2020
-ms.author: mbullwin
-ms.openlocfilehash: f853dca12b6a5855dc0603259ab534fa9933cd5b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.custom:
+- mode-portal
+ms.openlocfilehash: aaeaf92df140019db32c326199c9614fd8f5ae37
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432297"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531813"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Schnellstart: Überwachen Ihrer ersten Metrik mithilfe des Webportals
 

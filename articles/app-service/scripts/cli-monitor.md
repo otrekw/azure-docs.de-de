@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 9881a5f37c32849fc4f10acda8346510977e6b7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d8442179ecec72d47e770d823bbfd5795f5c4dc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97005783"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787681"
 ---
 # <a name="monitor-an-app-service-app-with-web-server-logs-using-azure-cli"></a>Überwachen einer App Service-App mit Webserverprotokollen per Azure CLI
 
@@ -38,11 +38,11 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Get-Help | Notizen |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Erstellt einen App Service-Plan. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Erstellt eine App Service-App. |
-| [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) | Konfiguriert, welche Protokolle von einer App Service-App dauerhaft gespeichert werden. |
-| [`az webapp log download`](/cli/azure/webapp/log#az-webapp-log-download) | Lädt die Protokolle einer App Service-App auf Ihren lokalen Computer herunter. |
+| [`az group create`](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Erstellt eine App Service-App. |
+| [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) | Konfiguriert, welche Protokolle von einer App Service-App dauerhaft gespeichert werden. |
+| [`az webapp log download`](/cli/azure/webapp/log#az_webapp_log_download) | Lädt die Protokolle einer App Service-App auf Ihren lokalen Computer herunter. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c5b07c1059e146aaf3c3c2a26038514eb614a3cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37e67ad869af23b51497e1497865f620bae612aa
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505918"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749184"
 ---
 # <a name="client-libraries-for-azure-key-vault"></a>Clientbibliotheken für Azure Key Vault
 
@@ -35,4 +35,4 @@ Jedes SDK verfügt über separate Clientbibliotheken für Schlüsseltresore, Geh
 
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](developers-guide.md)
 - Weitere Informationen zum [Authentifizieren bei einer Key Vault-Instanz](authentication.md)
-- Weitere Informationen zum [Sichern des Zugriffs auf eine Key Vault-Instanz](secure-your-key-vault.md)
+- Weitere Informationen zum [Sichern des Zugriffs auf eine Key Vault-Instanz](security-overview.md)
