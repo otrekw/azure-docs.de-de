@@ -3,19 +3,18 @@ title: Übersicht über Schlüssel, Geheimnisse und Zertifikate in Azure Key Vau
 description: Hier finden Sie eine Übersicht über die Azure Key Vault-REST-Schnittstelle sowie Informationen für Entwickler zu Schlüsseln, Geheimnissen und Zertifikaten.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f2a33b4011b0bb89ca17010fc787aebe8c17fc92
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e3eb77d15c288c93298da6dd79a76565e5d67f96
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183929"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749940"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Übersicht über Schlüssel, Geheimnisse und Zertifikate in Azure Key Vault
 
@@ -91,7 +90,7 @@ Ein Objektbezeichner hat das folgende allgemeine Format (abhängig vom Container
 
 Hierbei gilt:  
 
-| Element | BESCHREIBUNG |  
+| Element | Beschreibung |  
 |-|-|  
 |`vault-name` oder `hsm-name`|Der Name eines Schlüsseltresors oder Pools verwalteter HSMs im Microsoft Azure Key Vault-Dienst.<br /><br />Schlüsseltresornamen und Namen von Pools verwalteter HSMs werden vom Benutzer ausgewählt und sind global eindeutig.<br /><br />Der Name des Schlüsseltresors und des Pools verwalteter HSMs muss zwischen 3 und 24 Zeichen lang sein und darf nur die Ziffern 0-9, die Buchstaben a-z und A-Z sowie das Minuszeichen („-“) enthalten.|  
 |`object-type`|Die Art des Objekts (Schlüssel, Geheimnisse oder Zertifikate)|  

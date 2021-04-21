@@ -3,7 +3,6 @@ title: 'Tutorial: Importieren eines Zertifikats in Key Vault mithilfe des Azure-
 description: Tutorial zum Importieren eines Zertifikats in Azure Key Vault
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: e909b9ac3b26eabc37f2547439890c7ee30d07a5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 67531c1c5d37b02f9107dfc487c10b2fcac734d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728520"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791965"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Tutorial: Importieren eines Zertifikats in Azure Key Vault
 
@@ -104,9 +103,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-Erfahren Sie mehr über die [Parameter](/cli/azure/keyvault/certificate#az-keyvault-certificate-import).
+Erfahren Sie mehr über die [Parameter](/cli/azure/keyvault/certificate#az_keyvault_certificate_import).
 
-Nachdem Sie das Zertifikat importiert haben, können Sie es mit dem Befehl [certificate show](/cli/azure/keyvault/certificate#az-keyvault-certificate-show) anzeigen.
+Nachdem Sie das Zertifikat importiert haben, können Sie es mit dem Befehl [certificate show](/cli/azure/keyvault/certificate#az_keyvault_certificate_show) anzeigen.
 
 
 ```azurecli

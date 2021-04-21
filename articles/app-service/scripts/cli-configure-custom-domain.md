@@ -6,13 +6,13 @@ ms.assetid: 5ac4a680-cc73-4578-bcd6-8668c08802c2
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
-ms.custom: mvc, seodec18
-ms.openlocfilehash: b7fa6955de306906de3be75bf465a955e4463ca2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 3bf9e3ec9dbb042b85e4aa5ff2c65bc38125ce23
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006513"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782511"
 ---
 # <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>Zuordnen einer benutzerdefinierten Domäne zu einer App Service-App mithilfe der Azure CLI
 
@@ -36,10 +36,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Erstellt einen App Service-Plan. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Erstellt eine App Service-App. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname#az-webapp-config-hostname-add) | Ordnet eine benutzerdefinierte Domäne einer App Service-App zu. |
+| [`az group create`](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Erstellt eine App Service-App. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname#az_webapp_config_hostnam_eadd) | Ordnet eine benutzerdefinierte Domäne einer App Service-App zu. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

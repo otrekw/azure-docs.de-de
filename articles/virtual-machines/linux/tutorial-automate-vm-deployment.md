@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 6dd10039ba5c71d3a787761914b111e7828c47d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a8d5d5d76dc762734921dc2cb7ae575d15b626c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552608"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789633"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Tutorial: Verwenden von cloud-init zum Anpassen eines virtuellen Linux-Computers in Azure beim ersten Start
 
@@ -89,13 +89,13 @@ runcmd:
 Weitere Informationen zu den cloud-init-Konfigurationsoptionen finden Sie in den [cloud-init-Konfigurationsbeispielen](https://cloudinit.readthedocs.io/en/latest/topics/examples.html).
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
-Vor der Erstellung eines virtuellen Computers müssen Sie zunächst mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myResourceGroupAutomate*:
+Vor der Erstellung eines virtuellen Computers müssen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myResourceGroupAutomate*:
 
 ```azurecli-interactive
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-Jetzt können Sie mit [az vm create](/cli/azure/vm#az-vm-create) einen virtuellen Computer erstellen. Verwenden Sie den `--custom-data`-Parameter, um Ihre cloud-init-Konfigurationsdatei zu übergeben. Geben Sie den vollständigen Pfad zu der Konfigurationsdatei *cloud-init.txt* an, wenn Sie die Datei außerhalb Ihres vorhandenen Arbeitsverzeichnisses gespeichert haben. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt:
+Jetzt können Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer erstellen. Verwenden Sie den `--custom-data`-Parameter, um Ihre cloud-init-Konfigurationsdatei zu übergeben. Geben Sie den vollständigen Pfad zu der Konfigurationsdatei *cloud-init.txt* an, wenn Sie die Datei außerhalb Ihres vorhandenen Arbeitsverzeichnisses gespeichert haben. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt:
 
 ```azurecli-interactive
 az vm create \
@@ -109,7 +109,7 @@ az vm create \
 
 Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Es gibt Hintergrundaufgaben, die weiterhin ausgeführt werden, wenn Ihnen von der Azure CLI wieder eine Eingabeaufforderung angezeigt wird. Unter Umständen dauert es noch einige Minuten, bis Sie auf die App zugreifen können. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die Node.js-App zuzugreifen.
 
-Damit Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 80 über das Internet mit [az vm open-port](/cli/azure/vm#az-vm-open-port):
+Damit Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 80 über das Internet mit [az vm open-port](/cli/azure/vm#az_vm_open_port):
 
 ```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAutomatedVM
@@ -134,7 +134,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie Folgendes durchführen können:
 - Erstellen eines virtuellen Computers und Einfügen des Zertifikats
 
 ### <a name="create-an-azure-key-vault"></a>Erstellen einer Azure Key Vault-Instanz
-Erstellen Sie zunächst eine Key Vault-Instanz mit [az keyvault create](/cli/azure/keyvault#az-keyvault-create), und aktivieren Sie sie für die Verwendung, wenn Sie einen virtuellen Computer bereitstellen. Jede Key Vault-Instanz benötigt einen eindeutigen Namen, der nur aus Kleinbuchstaben besteht. Ersetzen Sie `mykeyvault` im folgenden Beispiel durch Ihren eigenen eindeutigen Key Vault-Namen:
+Erstellen Sie zunächst eine Key Vault-Instanz mit [az keyvault create](/cli/azure/keyvault#az_keyvault_create), und aktivieren Sie sie für die Verwendung, wenn Sie einen virtuellen Computer bereitstellen. Jede Key Vault-Instanz benötigt einen eindeutigen Namen, der nur aus Kleinbuchstaben besteht. Ersetzen Sie `mykeyvault` im folgenden Beispiel durch Ihren eigenen eindeutigen Key Vault-Namen:
 
 ```azurecli-interactive
 keyvault_name=mykeyvault
@@ -145,7 +145,7 @@ az keyvault create \
 ```
 
 ### <a name="generate-certificate-and-store-in-key-vault"></a>Generieren eines Zertifikats und Speichern in Key Vault
-Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat mit [az keyvault certificate import](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) importieren. Für dieses Tutorial zeigt das folgende Beispiel, wie Sie ein selbstsigniertes Zertifikat mit [az keyvault certificate create](/cli/azure/keyvault/certificate#az-keyvault-certificate-create) generieren können, das die Standardzertifikatrichtlinie verwendet:
+Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat mit [az keyvault certificate import](/cli/azure/keyvault/certificate#az_keyvault_certificate_import) importieren. Für dieses Tutorial zeigt das folgende Beispiel, wie Sie ein selbstsigniertes Zertifikat mit [az keyvault certificate create](/cli/azure/keyvault/certificate#az_keyvault_certificate_create) generieren können, das die Standardzertifikatrichtlinie verwendet:
 
 ```azurecli-interactive
 az keyvault certificate create \
@@ -156,7 +156,7 @@ az keyvault certificate create \
 
 
 ### <a name="prepare-certificate-for-use-with-vm"></a>Vorbereiten des Zertifikats für die Verwendung mit der VM
-Um das Zertifikat während der Erstellung des virtuellen Computers zu verwenden, rufen Sie die ID des Zertifikats mit [az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions) ab. Das Zertifikat muss in einem bestimmten Format vorliegen, um es beim Systemstart verwenden zu können. Wandeln Sie es daher mit [az vm secret format](/cli/azure/vm) um. Im folgenden Beispiel wird die Ausgabe dieser Befehle Variablen zugewiesen, um die Verwendung in den nächsten Schritten zu vereinfachen:
+Um das Zertifikat während der Erstellung des virtuellen Computers zu verwenden, rufen Sie die ID des Zertifikats mit [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) ab. Das Zertifikat muss in einem bestimmten Format vorliegen, um es beim Systemstart verwenden zu können. Wandeln Sie es daher mit [az vm secret format](/cli/azure/vm) um. Im folgenden Beispiel wird die Ausgabe dieser Befehle Variablen zugewiesen, um die Verwendung in den nächsten Schritten zu vereinfachen:
 
 ```azurecli-interactive
 secret=$(az keyvault secret list-versions \
@@ -222,7 +222,7 @@ runcmd:
 ```
 
 ### <a name="create-secure-vm"></a>Erstellen einer sicheren VM
-Jetzt können Sie mit [az vm create](/cli/azure/vm#az-vm-create) einen virtuellen Computer erstellen. Die Zertifikatsdaten werden mit dem `--secrets`-Parameter aus Key Vault eingefügt. Wie im vorherigen Beispiel übergeben Sie auch hier die cloud-init-Konfigurationsdatei mit dem `--custom-data`-Parameter:
+Jetzt können Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer erstellen. Die Zertifikatsdaten werden mit dem `--secrets`-Parameter aus Key Vault eingefügt. Wie im vorherigen Beispiel übergeben Sie auch hier die cloud-init-Konfigurationsdatei mit dem `--custom-data`-Parameter:
 
 ```azurecli-interactive
 az vm create \
@@ -237,7 +237,7 @@ az vm create \
 
 Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Es gibt Hintergrundaufgaben, die weiterhin ausgeführt werden, wenn Ihnen von der Azure CLI wieder eine Eingabeaufforderung angezeigt wird. Unter Umständen dauert es noch einige Minuten, bis Sie auf die App zugreifen können. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die Node.js-App zuzugreifen.
 
-Damit sicherer Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 443 über das Internet mit [az vm open-port](/cli/azure/vm#az-vm-open-port):
+Damit sicherer Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 443 über das Internet mit [az vm open-port](/cli/azure/vm#az_vm_open_port):
 
 ```azurecli-interactive
 az vm open-port \

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: c4861192c7f2bbfb2a51e19b88daee45b501949b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 741cd68145b262c1f200ced9a7f28b25673b6925
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634769"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738916"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 
@@ -72,7 +72,7 @@ Mit Security Center können Sie **Schatten-IT-Abonnements identifizieren**. Inde
 
 ### <a name="continuous-assessments"></a>Fortlaufende Bewertungen
 
-Mit Security Center werden ständig neue Ressourcen erkannt, die für Ihre Workloads bereitgestellt werden, und es wird bewertet, ob diese gemäß den bewährten Sicherheitsmethoden konfiguriert sind. Wenn nicht, werden sie gekennzeichnet, und Sie erhalten eine nach Priorität sortierte Liste mit Empfehlungen zu den Schritten, die zum Schützen Ihrer Computer ausgeführt werden müssen. Diese Liste mit Empfehlungen wird vom [Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md) aktiviert und unterstützt. Dabei handelt es sich um von Microsoft erstellte Azure-spezifische Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
+Mit Security Center werden ständig neue Ressourcen erkannt, die für Ihre Workloads bereitgestellt werden, und es wird bewertet, ob diese gemäß den bewährten Sicherheitsmethoden konfiguriert sind. Wenn nicht, werden sie gekennzeichnet, und Sie erhalten eine nach Priorität sortierte Liste mit Empfehlungen zu den Schritten, die zum Schützen Ihrer Computer ausgeführt werden müssen. Diese Liste mit Empfehlungen wird vom [Azure-Sicherheitsvergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction) aktiviert und unterstützt. Dabei handelt es sich um von Microsoft erstellte Azure-spezifische Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
 
 Damit Sie besser nachvollziehen können, wie wichtig die einzelnen Empfehlungen für den gesamten Sicherheitsstatus sind, werden die Empfehlungen von Security Center in Sicherheitskontrollelemente gruppiert, und jedem Sicherheitskontrollelement wird eine **Sicherheitsbewertung** hinzugefügt. Dies ist ein entscheidender Faktor beim **Priorisieren Ihrer Sicherheitsmaßnahmen**.
 

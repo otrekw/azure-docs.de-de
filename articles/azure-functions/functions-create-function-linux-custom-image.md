@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: 1c7a9fd83131ea6282d2ef4860b744fa348153ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7950bfb4a57db812da87f4e5f76f3075d50a8293
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98070914"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782269"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
@@ -360,13 +360,13 @@ Zum Bereitstellen Ihres Funktionscodes in Azure müssen Sie drei Ressourcen erst
 
 Sie verwenden Azure CLI-Befehle, um diese Elemente zu erstellen. Für jeden Befehl wird nach Abschluss der Ausführung eine JSON-Ausgabe bereitgestellt.
 
-1. Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az-login) bei Azure an:
+1. Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az_login) bei Azure an:
 
     ```azurecli
     az login
     ```
     
-1. Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `AzureFunctionsContainers-rg` in der Region `westeurope` erstellt. (Im Allgemeinen erstellen Sie Ihre Ressourcengruppe und die Ressourcen in einer Region in Ihrer Nähe, indem Sie über den Befehl `az account list-locations` eine verfügbare Region nutzen.)
+1. Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `AzureFunctionsContainers-rg` in der Region `westeurope` erstellt. (Im Allgemeinen erstellen Sie Ihre Ressourcengruppe und die Ressourcen in einer Region in Ihrer Nähe, indem Sie über den Befehl `az account list-locations` eine verfügbare Region nutzen.)
 
     ```azurecli
     az group create --name AzureFunctionsContainers-rg --location westeurope
@@ -375,7 +375,7 @@ Sie verwenden Azure CLI-Befehle, um diese Elemente zu erstellen. Für jeden Befe
     > [!NOTE]
     > In derselben Ressourcengruppe können nicht gleichzeitig Linux- und Windows-Apps gehostet werden. Wenn Sie über eine bestehende Ressourcengruppe mit dem Namen `AzureFunctionsContainers-rg` und einer Windows-Funktions-App oder -Web-App verfügen, müssen Sie eine andere Ressourcengruppe verwenden.
     
-1. Erstellen Sie mit dem Befehl [az storage account create](/cli/azure/storage/account#az-storage-account-create) in Ihrer Ressourcengruppe und Region ein universelles Speicherkonto. Ersetzen Sie im folgenden Beispiel `<storage_name>` durch einen global eindeutigen Namen, der für Sie geeignet ist. Namen dürfen nur 3 bis 24 Zeichen und ausschließlich Kleinbuchstaben enthalten. Mit `Standard_LRS` wird ein typisches universelles Konto angegeben.
+1. Erstellen Sie mit dem Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create) in Ihrer Ressourcengruppe und Region ein universelles Speicherkonto. Ersetzen Sie im folgenden Beispiel `<storage_name>` durch einen global eindeutigen Namen, der für Sie geeignet ist. Namen dürfen nur 3 bis 24 Zeichen und ausschließlich Kleinbuchstaben enthalten. Mit `Standard_LRS` wird ein typisches universelles Konto angegeben.
 
     ```azurecli
     az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
@@ -397,7 +397,7 @@ Sie verwenden Azure CLI-Befehle, um diese Elemente zu erstellen. Für jeden Befe
 
 Mit einer Funktions-App in Azure wird die Ausführung der Funktionen Ihres Hostingplans verwaltet. In diesem Abschnitt verwenden Sie die Azure-Ressourcen aus dem vorherigen Abschnitt, um eine Funktions-App aus einem Image unter Docker Hub zu erstellen und mit einer Verbindungszeichenfolge für Azure Storage zu konfigurieren.
 
-1. Erstellen Sie die Funktions-App mit dem Befehl [az functionapp create](/cli/azure/functionapp#az-functionapp-create). Ersetzen Sie im folgenden Beispiel `<storage_name>` durch den Namen, den Sie im vorherigen Abschnitt für das Speicherkonto verwendet haben. Ersetzen Sie außerdem `<app_name>` durch einen für Sie geeigneten global eindeutigen Namen und `<docker_id>` durch Ihre Docker-ID.
+1. Erstellen Sie die Funktions-App mit dem Befehl [az functionapp create](/cli/azure/functionapp#az_functionapp_create). Ersetzen Sie im folgenden Beispiel `<storage_name>` durch den Namen, den Sie im vorherigen Abschnitt für das Speicherkonto verwendet haben. Ersetzen Sie außerdem `<app_name>` durch einen für Sie geeigneten global eindeutigen Namen und `<docker_id>` durch Ihre Docker-ID.
 
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
     ```azurecli
@@ -410,7 +410,7 @@ Mit einer Funktions-App in Azure wird die Ausführung der Funktionen Ihres Hosti
     ```
     ::: zone-end
     
-    Mit dem Parameter *deployment-container-image-name* wird das Image angegeben, das für die Funktions-App verwendet wird. Sie können den Befehl [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) verwenden, um Informationen zum für die Bereitstellung verwendeten Image anzuzeigen. Darüber hinaus können Sie den Befehl [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) nutzen, um ein anderes Image für die Bereitstellung zu verwenden.
+    Mit dem Parameter *deployment-container-image-name* wird das Image angegeben, das für die Funktions-App verwendet wird. Sie können den Befehl [az functionapp config container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) verwenden, um Informationen zum für die Bereitstellung verwendeten Image anzuzeigen. Darüber hinaus können Sie den Befehl [az functionapp config container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) nutzen, um ein anderes Image für die Bereitstellung zu verwenden.
 
 1. Verwenden Sie den Befehl [az storage account show-connection-string](/cli/azure/storage/account), um die Verbindungszeichenfolge für das von Ihnen erstellte Speicherkonto anzuzeigen. Ersetzen Sie `<storage-name>` durch den Namen des weiter oben erstellten Speicherkontos:
 
@@ -418,7 +418,7 @@ Mit einer Funktions-App in Azure wird die Ausführung der Funktionen Ihres Hosti
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
     ```
     
-1. Verwenden Sie den Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set), um diese Einstellung der Funktions-App hinzuzufügen. Ersetzen Sie im folgenden Befehl `<app_name>` durch den Namen Ihrer Funktions-App und `<connection_string>` durch die Verbindungszeichenfolge aus dem vorherigen Schritt (eine lange codierte Zeichenfolge, die mit „DefaultEndpointProtocol=“ beginnt):
+1. Verwenden Sie den Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_ppsettings_set), um diese Einstellung der Funktions-App hinzuzufügen. Ersetzen Sie im folgenden Befehl `<app_name>` durch den Namen Ihrer Funktions-App und `<connection_string>` durch die Verbindungszeichenfolge aus dem vorherigen Schritt (eine lange codierte Zeichenfolge, die mit „DefaultEndpointProtocol=“ beginnt):
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
@@ -513,13 +513,13 @@ Da das Image nun für die Funktions-App in Azure bereitgestellt wurde, können S
 
 Sie können Azure Functions aktivieren, um Ihre Bereitstellung eines Images jeweils automatisch zu aktualisieren, wenn Sie das Bild in der Registrierung aktualisieren.
 
-1. Aktivieren Sie Continuous Deployment, indem Sie den Befehl [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) verwenden und `<app_name>` durch den Namen Ihrer Funktions-App ersetzen:
+1. Aktivieren Sie Continuous Deployment, indem Sie den Befehl [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_config) verwenden und `<app_name>` durch den Namen Ihrer Funktions-App ersetzen:
 
     ```azurecli
     az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <app_name> --resource-group AzureFunctionsContainers-rg
     ```
     
-    Mit diesem Befehl wird Continuous Deployment aktiviert und die Webhook-URL der Bereitstellung zurückgegeben. (Sie können diese URL später jederzeit abrufen, indem Sie den Befehl [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) verwenden.)
+    Mit diesem Befehl wird Continuous Deployment aktiviert und die Webhook-URL der Bereitstellung zurückgegeben. (Sie können diese URL später jederzeit abrufen, indem Sie den Befehl [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_show_cd_url) verwenden.)
 
 1. Kopieren Sie die Webhook-URL der Bereitstellung in die Zwischenablage.
 

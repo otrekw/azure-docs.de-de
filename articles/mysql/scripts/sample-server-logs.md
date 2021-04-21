@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 28dbf51fa58dfdfc375bf8f44964a6b66db008e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 15d22ea3e0d16d377847ba85acfa41f5ae1043a6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94539157"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791681"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Aktivieren und Herunterladen der Serverprotokolle zu langsamen Abfragen von einem Azure Database for MySQL-Server mithilfe der Azure-Befehlszeilenschnittstelle
 Dieses CLI-Beispielskript aktiviert die Serverprotokolle zu langsamen Abfragen auf einem Azure Database for MySQL-Server und lädt sie herunter.
@@ -35,13 +35,13 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 
 | **Befehl** | **Hinweise** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | Erstellt einen MySQL-Server, der die Datenbanken hostet. |
-| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) | Listet die Konfigurationswerte für einen Server auf |
-| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) | Aktualisiert die Konfiguration eines Servers |
-| [az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) | Listet die Protokolldateien für einen Server auf. |
-| [az mysql server-logs download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) | Lädt Protokolldateien herunter |
-| [az group delete](/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) | Erstellt einen MySQL-Server, der die Datenbanken hostet. |
+| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_list) | Listet die Konfigurationswerte für einen Server auf |
+| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) | Aktualisiert die Konfiguration eines Servers |
+| [az mysql server-logs list](/cli/azure/mysql/server-logs#az_mysql_server_logs_list) | Listet die Protokolldateien für einen Server auf. |
+| [az mysql server-logs download](/cli/azure/mysql/server-logs#az_mysql_server_logs_download) | Lädt Protokolldateien herunter |
+| [az group delete](/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure).

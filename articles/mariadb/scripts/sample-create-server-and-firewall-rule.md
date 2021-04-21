@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 11/28/2018
-ms.openlocfilehash: a9a0ce595da1aecc3cd2ebdc071c99e42944ef9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fc02555364beb2288772ae1fbfd0b66a7d96c50
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664614"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785683"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Erstellen eines MariaDB-Servers und Konfigurieren einer Firewallregel mit der Azure CLI
 Dieses CLI-Beispielskript erstellt einen Azure Database for MariaDB-Server und konfiguriert eine Firewallregel auf Serverebene. Nach der erfolgreichen Ausführung des Skripts ist der MariaDB-Server für alle Azure-Dienste und die konfigurierte IP-Adresse erreichbar.
@@ -37,10 +37,10 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 
 | **Befehl** | **Hinweise** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | Erstellt einen MariaDB-Server, der die Datenbanken hostet. |
-| [az mariadb server firewall create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) | Erstellt eine Firewallregel, die vom eingegebenen IP-Adressbereich aus den Zugriff auf alle Server und darauf befindlichen Datenbanken ermöglicht. |
-| [az group delete](/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az mariadb server create](/cli/azure/mariadb/server#az_mariadb_server_create) | Erstellt einen MariaDB-Server, der die Datenbanken hostet. |
+| [az mariadb server firewall create](/cli/azure/mariadb/server/firewall-rule#az_mariadb_server_firewall_rule_create) | Erstellt eine Firewallregel, die vom eingegebenen IP-Adressbereich aus den Zugriff auf alle Server und darauf befindlichen Datenbanken ermöglicht. |
+| [az group delete](/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure).

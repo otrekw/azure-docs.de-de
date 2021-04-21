@@ -8,18 +8,18 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 987f5de78edc4c0fe2814259a1461e58018ec270
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20d1ee643f9864fb95ebdc9215cd0dab13a0fb5c
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879019"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503098"
 ---
 # <a name="azcopy-logout"></a>azcopy logout
 
 Meldet den Benutzer ab und beendet den Zugriff auf Azure Storage-Ressourcen.
 
-## <a name="synopsis"></a>Übersicht
+## <a name="synopsis"></a>Zusammenfassung
 
 Mit diesem Befehl werden alle zwischengespeicherten Anmeldeinformationen für den aktuellen Benutzer entfernt.
 
@@ -32,9 +32,8 @@ azcopy logout [flags]
 - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
 - [Übertragen von Daten mit AzCopy und Blobspeicher](./storage-use-azcopy-v10.md#transfer-data)
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
-- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
-## <a name="options"></a>Tastatur
+## <a name="options"></a>Optionen
 
 |Option|BESCHREIBUNG|
 |--|--|

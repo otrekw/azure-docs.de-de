@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a5793855ea07e8f3d424d04ec365b40aa1bd80c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 074d60080887ea822a6e189fe82554ad3b998b58
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878391"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503302"
 ---
 # <a name="azcopy-jobs"></a>azcopy jobs
 
@@ -24,7 +24,6 @@ Unterbefehle im Zusammenhang mit der Verwaltung von Aufträgen.
 - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
 - [Übertragen von Daten mit AzCopy und Blobspeicher](./storage-use-azcopy-v10.md#transfer-data)
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
-- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Beispiele
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: db6bb5c204bfe79b9d7470f651081aa4f4dcf2ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0066409732f4492186ea0bf604261e1ab59ca9f
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97932706"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750300"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für JavaScript (Version 4)
 
@@ -272,6 +272,6 @@ In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt, einen
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - [Informationen zu Schlüsseln](about-keys.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-overview.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)
 - [Azure Key Vault-Sicherheitsübersicht](../general/security-overview.md)
