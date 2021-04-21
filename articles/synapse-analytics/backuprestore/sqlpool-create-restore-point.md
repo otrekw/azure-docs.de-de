@@ -1,7 +1,6 @@
 ---
 title: Erstellen eines benutzerdefinierten Wiederherstellungspunkts für einen dedizierten SQL-Pool
 description: Erfahren Sie, wie Sie über das Azure-Portal einen benutzerdefinierten Wiederherstellungspunkt für einen dedizierten SQL-Pool in Azure Synapse Analytics erstellen.
-services: synapse-analytics
 author: joannapea
 manager: igorstan
 ms.service: synapse-analytics
@@ -11,12 +10,12 @@ ms.date: 10/29/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 21fd20100095040fda9f72b00e17147ff560fbca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b695f6c7aabc21541fcc48efed54bbecd022f65a
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94579537"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567926"
 ---
 # <a name="user-defined-restore-points"></a>Benutzerdefinierte Wiederherstellungspunkte
 

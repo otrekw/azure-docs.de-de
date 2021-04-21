@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
-ms.openlocfilehash: c42f3081a831c267c7bc605267b99e2a916ea3d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fd7cee564aa3a00e21d1e707d08a18115d519925
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105613775"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484675"
 ---
 # <a name="document-translation-get-operations"></a>Dokumentübersetzung: Get-Vorgänge
 
@@ -52,8 +52,8 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
 
 |Query parameter (Abfrageparameter)|Erforderlich|BESCHREIBUNG|
 |--- |--- |--- |
-|$skip|False|Überspringt die $skip-Einträge in der Auflistung. Wenn sowohl $top als auch $skip bereitgestellt werden, wird $skip zuerst angewendet.|
-|$top|False|Nimmt die $to- Einträge in die Auflistung auf. Wenn sowohl $top als auch $skip bereitgestellt werden, wird $skip zuerst angewendet.|
+|$skip|Falsch|Überspringt die $skip-Einträge in der Auflistung. Wenn sowohl $top als auch $skip bereitgestellt werden, wird $skip zuerst angewendet.|
+|$top|Falsch|Nimmt die $to- Einträge in die Auflistung auf. Wenn sowohl $top als auch $skip bereitgestellt werden, wird $skip zuerst angewendet.|
 
 ## <a name="request-headers"></a>Anforderungsheader
 
@@ -96,9 +96,9 @@ Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 |summary.cancelled|integer|Zählung der Dokumente abgebrochen.|
 |summary.totalCharacterCharged|integer|Gesamtanzahl der geladenen Zeichen.|
 
-###<a name="error-response"></a>Fehlerantwort
+### <a name="error-response"></a>Fehlerantwort
 
-|Name|type|BESCHREIBUNG|
+|Name|type|Beschreibung|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|

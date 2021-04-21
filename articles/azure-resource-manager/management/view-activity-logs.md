@@ -3,12 +3,12 @@ title: Anzeigen von Azure-Aktivitätsprotokollen zur Überwachung von Ressourcen
 description: Verwenden Sie die Aktivitätsprotokolle zur Überprüfung von Benutzeraktionen und Fehlern. Zeigt das Azure-Portal, PowerShell, die Azure CLI und REST
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7612146a0f9407663631f87c57f30ea4c590c7a4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91371591"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773925"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen
 
@@ -140,7 +140,7 @@ Sie können Resource Graph verwenden, um den Änderungsverlauf einer Ressource a
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Um Protokolleinträge abzurufen, führen Sie den Befehl [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) mit einem Offset zum Angeben des Zeitraums aus.
+Um Protokolleinträge abzurufen, führen Sie den Befehl [az monitor activity-log list](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) mit einem Offset zum Angeben des Zeitraums aus.
 
 ```azurecli-interactive
 az monitor activity-log list --resource-group ExampleGroup --offset 7d

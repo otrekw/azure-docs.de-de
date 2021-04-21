@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen Exchange-Server unter Azure Backup mit 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: ee89af311619922fa6ca585381d70ca66955f36a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a89c37b8447b318c44faf0d4e0b1921d305e7f59
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91271646"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519390"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
 
@@ -122,4 +122,4 @@ Für Online-Wiederherstellungspunkte gibt es fünf Wiederherstellungstypen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
+* [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.yml)

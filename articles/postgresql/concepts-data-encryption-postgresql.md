@@ -6,18 +6,18 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 66faa2b3e6d24c264e2fe26ab42eeaffd48384f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fa52327225667bd84047e74a89e3b1394964b22c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732835"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769983"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
 
 Azure PostgreSQL verschlüsselt ruhende Daten mit der [Azure Storage-Verschlüsselung](../storage/common/storage-service-encryption.md). Dabei werden standardmäßig von Microsoft verwaltete Schlüssel verwendet. Für Azure PostgreSQL-Benutzer ähnelt sie stark der Transparent Data Encryption (TDE) in anderen Datenbanken wie SQL Server. Viele Organisationen benötigen die vollständige Kontrolle über den Zugriff auf die Daten mit einem kundenseitig verwalteten Schlüssel. Datenverschlüsselung mit kundenseitig verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten. Bei der vom Kunden verwalteten Verschlüsselung ist der Kunde vollständig für die Verwaltung des Lebenszyklus von Schlüsseln und der Schlüsselnutzungsberechtigungen sowie für die Überwachung von Vorgängen für Schlüssel verantwortlich, hat damit aber auch vollständige Kontrolle.
 
-Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver wird auf Serverebene festgelegt. Bei einem bestimmten Server wird ein vom Kunden verwalteter Schlüssel verwendet, der als Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) bezeichnet wird, um den vom Dienst verwendeten Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) zu verschlüsseln. Der KEK ist ein asymmetrischer Schlüssel, der in einer vom Kunden verwalteten [Azure Key Vault](../key-vault/general/secure-your-key-vault.md)-Instanz im Besitz des Kunden gespeichert wird. Der Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) und der Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) werden weiter unten in diesem Artikel ausführlicher beschrieben.
+Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver wird auf Serverebene festgelegt. Bei einem bestimmten Server wird ein vom Kunden verwalteter Schlüssel verwendet, der als Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) bezeichnet wird, um den vom Dienst verwendeten Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) zu verschlüsseln. Der KEK ist ein asymmetrischer Schlüssel, der in einer vom Kunden verwalteten [Azure Key Vault](../key-vault/general/security-overview.md)-Instanz im Besitz des Kunden gespeichert wird. Der Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) und der Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) werden weiter unten in diesem Artikel ausführlicher beschrieben.
 
 Key Vault ist ein cloudbasiertes, externes Schlüsselverwaltungssystem. Es bietet hochverfügbaren und skalierbaren sicheren Speicher für RSA-Kryptografieschlüssel, der optional von FIPS 140-2 Level 2-geprüften Hardwaresicherheitsmodulen (HSM) geschützt wird. Dabei wird kein direkter Zugriff auf einen gespeicherten Schlüssel zugelassen, sondern Verschlüsselung und Entschlüsselung werden für die autorisierten Entitäten bereitgestellt. Key Vault kann den Schlüssel generieren, importieren oder [von einem lokalen HSM-Gerät](../key-vault/keys/hsm-protected-keys.md) übertragen lassen.
 
@@ -97,7 +97,7 @@ Wenn Sie Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel in Az
 * Wenn Sie ein Lesereplikat für Ihren Azure Database for PostgreSQL-Einzelserver erstellen, für das die Datenverschlüsselung aktiviert ist, hat der neu erstellte Replikatserver den Status *Kein Zugriff*. Sie können den Serverstatus über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Befehlszeilenschnittstelle](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
 * Wenn Sie den Schlüsseltresor löschen, kann der Azure Database for PostgreSQL-Einzelserver nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff*. Stellen Sie den [Schlüsseltresor](../key-vault/general/key-vault-recovery.md) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, um den Server *verfügbar* zu machen.
 * Wenn Sie den Schlüssel im Schlüsseltresor löschen, kann der Azure Database for PostgreSQL-Einzelserver nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff*. Stellen Sie den [Schlüssel](../key-vault/general/key-vault-recovery.md) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, um den Server *verfügbar* zu machen.
-* Wenn der in Azure Key Vault gespeicherte Schlüssel abläuft, wird er damit ungültig. Der Azure Database for PostgreSQL-Einzelserver wechselt dann in den Zustand *Kein Zugriff*. Verlängern Sie das Ablaufdatum des Schlüssels mithilfe der [Befehlszeilenschnittstelle](/cli/azure/keyvault/key#az-keyvault-key-set-attributes), und überprüfen Sie dann die Datenverschlüsselung erneut, um den Server *verfügbar* zu machen.
+* Wenn der in Azure Key Vault gespeicherte Schlüssel abläuft, wird er damit ungültig. Der Azure Database for PostgreSQL-Einzelserver wechselt dann in den Zustand *Kein Zugriff*. Verlängern Sie das Ablaufdatum des Schlüssels mithilfe der [Befehlszeilenschnittstelle](/cli/azure/keyvault/key#az_keyvault_key_set_attributes), und überprüfen Sie dann die Datenverschlüsselung erneut, um den Server *verfügbar* zu machen.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Versehentliche Sperrung des Zugriffs auf den Schlüssel durch Key Vault
 

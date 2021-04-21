@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-azurecli
 ms.date: 02/26/2020
-ms.openlocfilehash: b17c5a2abc036c16ff3ce36b81428f9149e36b4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14b88700f3968e3bfdc788abb2fc9ce90634068e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942857"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770343"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Verwalten von Azure HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle
 
@@ -39,7 +39,7 @@ az login
 
 ## <a name="list-clusters"></a>Auflisten der Cluster
 
-Verwenden Sie [az hdinsight list](/cli/azure/hdinsight#az-hdinsight-list), um Cluster aufzulisten. Bearbeiten Sie die folgenden Befehle, indem Sie `RESOURCE_GROUP_NAME` durch den Namen Ihrer Ressourcengruppe ersetzen und dann die folgenden Befehle eingeben:
+Verwenden Sie [az hdinsight list](/cli/azure/hdinsight#az_hdinsight_list), um Cluster aufzulisten. Bearbeiten Sie die folgenden Befehle, indem Sie `RESOURCE_GROUP_NAME` durch den Namen Ihrer Ressourcengruppe ersetzen und dann die folgenden Befehle eingeben:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -57,7 +57,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>Anzeigen von Clustern
 
-Verwenden Sie [az hdinsight show](/cli/azure/hdinsight#az-hdinsight-show), um Informationen für einen bestimmten Cluster anzuzeigen. Bearbeiten Sie den folgenden Befehl, indem Sie `RESOURCE_GROUP_NAME` und `CLUSTER_NAME` durch die entsprechenden Informationen ersetzen und dann den folgenden Befehl eingeben:
+Verwenden Sie [az hdinsight show](/cli/azure/hdinsight#az_hdinsight_show), um Informationen für einen bestimmten Cluster anzuzeigen. Bearbeiten Sie den folgenden Befehl, indem Sie `RESOURCE_GROUP_NAME` und `CLUSTER_NAME` durch die entsprechenden Informationen ersetzen und dann den folgenden Befehl eingeben:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -65,7 +65,7 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Löschen von Clustern
 
-Verwenden Sie [az hdinsight delete](/cli/azure/hdinsight#az-hdinsight-delete), um einen bestimmten Cluster zu löschen. Bearbeiten Sie den folgenden Befehl, indem Sie `RESOURCE_GROUP_NAME` und `CLUSTER_NAME` durch die entsprechenden Informationen ersetzen und dann den folgenden Befehl eingeben:
+Verwenden Sie [az hdinsight delete](/cli/azure/hdinsight#az_hdinsight_delete), um einen bestimmten Cluster zu löschen. Bearbeiten Sie den folgenden Befehl, indem Sie `RESOURCE_GROUP_NAME` und `CLUSTER_NAME` durch die entsprechenden Informationen ersetzen und dann den folgenden Befehl eingeben:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -79,7 +79,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Skalieren von Clustern
 
-Verwenden Sie [az hdinsight resize](/cli/azure/hdinsight#az-hdinsight-resize), um die Größe des angegebenen HDInsight-Clusters auf die angegebene Größe anzupassen. Bearbeiten Sie den folgenden Befehl, indem Sie `RESOURCE_GROUP_NAME` und `CLUSTER_NAME` durch die entsprechenden Informationen ersetzen. Ersetzen Sie `WORKERNODE_COUNT` durch die gewünschte Anzahl von Workerknoten für Ihren Cluster. Weitere Informationen zum Skalieren von Clustern finden Sie unter [Skalieren von HDInsight-Clustern](./hdinsight-scaling-best-practices.md). Geben Sie den folgenden Befehl ein:
+Verwenden Sie [az hdinsight resize](/cli/azure/hdinsight#az_hdinsight_resize), um die Größe des angegebenen HDInsight-Clusters auf die angegebene Größe anzupassen. Bearbeiten Sie den folgenden Befehl, indem Sie `RESOURCE_GROUP_NAME` und `CLUSTER_NAME` durch die entsprechenden Informationen ersetzen. Ersetzen Sie `WORKERNODE_COUNT` durch die gewünschte Anzahl von Workerknoten für Ihren Cluster. Weitere Informationen zum Skalieren von Clustern finden Sie unter [Skalieren von HDInsight-Clustern](./hdinsight-scaling-best-practices.md). Geben Sie den folgenden Befehl ein:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6bb608492327baae958c32be05d8f2a1bb4dbfbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11d22fd83106bb1802514d0c7d5f67724664464d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226640"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788383"
 ---
 # <a name="understand-azure-files-billing"></a>Grundlegendes zur Abrechnung für Azure Files
 Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nutzungsbasierte Zahlung“. Das Modell „Bereitgestellt“ ist nur für Premium-Dateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **FileStorage** bereitgestellt werden. Das Modell „Nutzungsbasierte Zahlung“ ist nur für Standarddateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **Universell, Version 2** bereitgestellt werden. In diesem Artikel wird die Funktionsweise beider Modelle erklärt, um Ihnen zu helfen, Ihre monatliche Azure Files-Rechnung zu verstehen.
@@ -116,5 +116,5 @@ Es gibt fünf grundlegende Transaktionskategorien: „Schreiben“, „Auflisten
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Azure Files – Preise](https://azure.microsoft.com/pricing/details/storage/files/)
-- [Planung einer Azure Files-Bereitstellung](./storage-files-planning.md) und [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](./storage-sync-files-planning.md)
-- [Erstellen einer Dateifreigabe](./storage-how-to-create-file-share.md) und [Bereitstellen der Azure-Dateisynchronisierung](./storage-sync-files-deployment-guide.md)
+- [Planung einer Azure Files-Bereitstellung](storage-files-planning.md) und [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md)
+- [Erstellen einer Dateifreigabe](storage-how-to-create-file-share.md) und [Bereitstellen der Azure-Dateisynchronisierung](../file-sync/file-sync-deployment-guide.md)

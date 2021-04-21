@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a6e46efd7f998437c3998df9a989ef9e1500e888
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af197f2dd144e7541f669fdd67b58c38d91b4400
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664833"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777129"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MariaDB mit der Azure CLI
 
@@ -57,7 +57,7 @@ Mit „Aufbewahrungszeit für Sicherung“ wird auch gesteuert, für welchen zur
 
 Sie können den Zustand des Servers zu einem früheren Zeitpunkt wiederherstellen. Die wiederhergestellten Daten werden auf einen neuen Server kopiert, und der vorhandene Server bleibt unverändert. Wenn zum Beispiel zur Mittagszeit am heutigen Tag eine Tabelle versehentlich gelöscht wird, können Sie den Zustand kurz vor Mittag wiederherstellen. Dann können Sie die fehlende Tabelle und die fehlenden Daten aus der wiederhergestellten Kopie des Servers abrufen.
 
-Verwenden Sie zur Wiederherstellung des Servers den Azure CLI-Befehl [az mariadb server restore](/cli/azure/mariadb/server#az-mariadb-server-restore).
+Verwenden Sie zur Wiederherstellung des Servers den Azure CLI-Befehl [az mariadb server restore](/cli/azure/mariadb/server#az_mariadb_server_restore).
 
 ### <a name="run-the-restore-command"></a>Ausführen des Befehls „restore“
 

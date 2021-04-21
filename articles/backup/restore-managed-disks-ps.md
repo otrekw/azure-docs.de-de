@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure-Managed Disks über Azure PowerShell
 description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal wiederherstellen können.
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 0ddf552947c39692ea01d0dea7e67f147d754fcc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c6625b43c313d45d4b295dd406e29a2b1d85b387
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629713"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520036"
 ---
 # <a name="restore-azure-managed-disks-using-azure-powershell"></a>Wiederherstellen von Azure-Managed Disks über Azure PowerShell
 
@@ -92,4 +92,4 @@ $job = Search-AzDataProtectionJobInAzGraph -Subscription $sub -ResourceGroupName
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Häufig gestellte Fragen zu Azure Disk Backup](disk-backup-faq.md)
+- [Häufig gestellte Fragen zu Azure Disk Backup](disk-backup-faq.yml)

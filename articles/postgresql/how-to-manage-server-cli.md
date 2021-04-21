@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: 2ea07e2bc12e6fc0d62abd462b8537c6a93689f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36151a9afda0bb23ee244ee778a30f30a41243ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935800"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791461"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>Verwalten eines Azure Database for PostgreSQL-Einzelservers über die Azure CLI
 
@@ -21,13 +21,13 @@ In diesem Artikel erfahren Sie, wie Sie Ihre in Azure bereitgestellten Einzelser
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. Für den Artikel müssen Sie mindestens Version 2.0 der Azure-Befehlszeilenschnittstelle lokal ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Sie müssen sich mithilfe des Befehls [az login](/cli/azure/reference-index#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
+Sie müssen sich mithilfe des Befehls [az login](/cli/azure/reference-index#az_login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
 ```azurecli-interactive
 az login
 ```
 
-Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
+Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az_account_list), um alle Abonnements abzurufen.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -64,10 +64,10 @@ Sie können die Eigenschaften einer Datenbank auf Ihrem Server mit einem der fol
 
 | Cmdlet | Verwendung| BESCHREIBUNG |
 | --- | ---| --- |
-|[az postgres db create](/cli/azure/sql/db#az-mysql-db-create)|```az postgres db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Erstellt eine Datenbank|
-|[az postgres db delete](/cli/azure/sql/db#az-mysql-db-delete)|```az postgres db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Löscht eine Datenbank von Ihrem Server. Mit diesem Befehl wird der Server nicht gelöscht. |
-|[az postgres db list](/cli/azure/sql/db#az-mysql-db-list)|```az postgres db list -g myresourcegroup -s mydemoserver```|Listet alle Datenbanken auf dem Server auf.|
-|[az postgres db show](/cli/azure/sql/db#az-mysql-db-show)|```az postgres db show -g myresourcegroup -s mydemoserver -n mydatabasename```|Zeigt weitere Details der Datenbank an.|
+|[az postgres db create](/cli/azure/sql/db#az_mysql_db_create)|```az postgres db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Erstellt eine Datenbank|
+|[az postgres db delete](/cli/azure/sql/db#az_mysql_db_delete)|```az postgres db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Löscht eine Datenbank von Ihrem Server. Mit diesem Befehl wird der Server nicht gelöscht. |
+|[az postgres db list](/cli/azure/sql/db#az_mysql_db_list)|```az postgres db list -g myresourcegroup -s mydemoserver```|Listet alle Datenbanken auf dem Server auf.|
+|[az postgres db show](/cli/azure/sql/db#az_mysql_db_show)|```az postgres db show -g myresourcegroup -s mydemoserver -n mydatabasename```|Zeigt weitere Details der Datenbank an.|
 
 ## <a name="update-admin-password"></a>Aktualisieren des Administratorkennworts
 Mit diesem Befehl können Sie das Kennwort für die Administratorrolle ändern.
@@ -80,7 +80,7 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 > Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen.
 
 ## <a name="delete-a-server"></a>Löschen eines Servers
-Wenn Sie nur den PostgreSQL-Einzelserver löschen möchten, können Sie den Befehl [az postgres server delete](/cli/azure/mysql/server#az-mysql-server-delete) ausführen.
+Wenn Sie nur den PostgreSQL-Einzelserver löschen möchten, können Sie den Befehl [az postgres server delete](/cli/azure/mysql/server#az_mysql_server_delete) ausführen.
 
 ```azurecli-interactive
 az postgres server delete --resource-group myresourcegroup --name mydemoserver

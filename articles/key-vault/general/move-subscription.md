@@ -3,19 +3,18 @@ title: 'Azure Key Vault: Verschieben eines Tresors in ein anderes Abonnement | M
 description: Anleitung zum Verschieben eines Schlüsseltresors in ein anderes Abonnement.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c23f961b8aeaae3e338f9c513a9f2b9d07b64abb
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 65dc9da03a6b763d419c51e53bf756550e8b56a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056401"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751848"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement
 
@@ -124,5 +123,5 @@ Wenn Sie verwaltete Identitäten verwenden, müssen Sie auch die Identität aktu
 - Erfahren Sie mehr über [Schlüssel, Geheimnisse und Zertifikate](about-keys-secrets-certificates.md).
 - Konzeptionelle Informationen einschließlich dazu, wie Protokolle in Key Vault interpretiert werden, finden Sie unter [Key Vault-Protokollierung](logging.md).
 - [Entwicklerhandbuch für Key Vault](../general/developers-guide.md)
-- [Schützen Ihrer Key Vault-Instanz](secure-your-key-vault.md)
+- [Schützen Ihrer Key Vault-Instanz](security-overview.md)
 - [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](network-security.md)

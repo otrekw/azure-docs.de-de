@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
 ms.author: ajburnle
-ms.openlocfilehash: fe68ec498d17ec20778c8f34fc6ffa1f0964c44e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c976562224d4a0caca8921e46d8f8566800027ee
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176959"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532242"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Verwenden von Azure AD (Azure Active Directory) Identity Governance, um externe Benutzer zu überprüfen und zu entfernen, wenn sie keinen Ressourcenzugriff mehr haben
 
@@ -77,5 +77,5 @@ Diese Einstellung ermöglicht Ihnen das Identifizieren, Blockieren und Löschen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Zugriffsüberprüfung: Graph-API](/graph/api/resources/accessreviews-root?view=graph-rest-beta)
-- [Berechtigungsverwaltung: Graph-API](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)
+- [Zugriffsüberprüfung: Graph-API](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)
+- [Berechtigungsverwaltung: Graph-API](/graph/api/resources/entitlementmanagement-root)

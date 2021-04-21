@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 536cd01fbcf2c5d18a8c12030b709427d9bb91b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ec434b9b6da3b3b80a3afddbb432ddeece2b389
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703605"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788545"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI
 
@@ -65,7 +65,7 @@ Beim Erstellen einer SAS für die Benutzerdelegierung sind `--auth-mode login` u
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container
 
-Um eine SAS für die Benutzerdelegierung für einen Container mit der Azure CLI zu erstellen, verwenden Sie den Befehl [az storage container generate-sas](/cli/azure/storage/container#az-storage-container-generate-sas).
+Um eine SAS für die Benutzerdelegierung für einen Container mit der Azure CLI zu erstellen, verwenden Sie den Befehl [az storage container generate-sas](/cli/azure/storage/container#az_storage_container_generate_sas).
 
 Zu den unterstützten Berechtigungen für eine SAS für die Benutzerdelegierung für einen Container zählen „Add“ (Hinzufügen), „Create“ (Erstellen), „Delete“ (Löschen), „List (Auflisten), „Read“ (Lesen) und „Write“ (Schreiben). Berechtigungen können einzeln oder kombiniert angegeben werden. Weitere Informationen zu diesen Berechtigungen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -89,7 +89,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 ### <a name="create-a-user-delegation-sas-for-a-blob"></a>Erstellen einer SAS für die Benutzerdelegierung für ein Blob
 
-Um eine SAS für die Benutzerdelegierung für ein Blob mit der Azure CLI zu erstellen, verwenden Sie den Befehl [az storage blob generate-sas](/cli/azure/storage/blob#az-storage-blob-generate-sas).
+Um eine SAS für die Benutzerdelegierung für ein Blob mit der Azure CLI zu erstellen, verwenden Sie den Befehl [az storage blob generate-sas](/cli/azure/storage/blob#az_storage_blob_generate_sas).
 
 Zu den unterstützten Berechtigungen für eine SAS für die Benutzerdelegierung für ein Blob zählen „Add“ (Hinzufügen), „Create“ (Erstellen), „Delete“ (Löschen), „Read“ (Lesen) und „Write“ (Schreiben). Berechtigungen können einzeln oder kombiniert angegeben werden. Weitere Informationen zu diesen Berechtigungen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -119,7 +119,7 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 ## <a name="revoke-a-user-delegation-sas"></a>Widerrufen einer SAS für die Benutzerdelegierung
 
-Um eine SAS für die Benutzerdelegierung über die Azure CLI zu widerrufen, verwenden Sie den Befehl [az storage account revoke-delegation-keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys). Mit diesem Befehl werden alle Benutzerdelegierungsschlüssel widerrufen, die dem angegebenen Speicherkonto zugeordnet sind. Alle mit diesen Schlüsseln verknüpften Shared Access Signatures werden für ungültig erklärt.
+Um eine SAS für die Benutzerdelegierung über die Azure CLI zu widerrufen, verwenden Sie den Befehl [az storage account revoke-delegation-keys](/cli/azure/storage/account#az_storage_account_revoke_delegation_keys). Mit diesem Befehl werden alle Benutzerdelegierungsschlüssel widerrufen, die dem angegebenen Speicherkonto zugeordnet sind. Alle mit diesen Schlüsseln verknüpften Shared Access Signatures werden für ungültig erklärt.
 
 Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 

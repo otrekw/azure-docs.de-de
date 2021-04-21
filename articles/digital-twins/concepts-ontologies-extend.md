@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e5973f58887b212919ad739232faafddcf9e735c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b38b4910773c433ed63fd2082c5cbefce81e0e9e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100563350"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480229"
 ---
 # <a name="extending-ontologies"></a>Erweitern von Ontologien 
 
@@ -28,7 +28,7 @@ In der DTDL-basierten RealEstateCore-Ontologie wird die Bereichshierarchie zum D
 
 Ein Teil dieser Hierarchie entspricht der Darstellung im folgenden Diagramm. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-original.png" alt-text="Flussdiagramm: Teil der RealEstateCore-Bereichshierarchie. In der obersten Ebene gibt es ein Element namens „Space“ (Bereich), das mit einem Pfeil „extends“ (erweitert) eine Ebene darunter mit dem Element „Room“ (Raum) verbunden ist, das wiederum eine weitere Ebene darunter über zwei Pfeile mit den Elementen „ConferenceRoom“ (Konferenzraum) und „Office“ (Büro) verbunden ist."::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="Flussdiagramm: Teil der RealEstateCore-Bereichshierarchie. In der obersten Ebene gibt es ein Element namens „Space“ (Bereich), das mit einem Pfeil „extends“ (erweitert) eine Ebene darunter mit dem Element „Room“ (Raum) verbunden ist, das wiederum eine weitere Ebene darunter über zwei Pfeile mit den Elementen „ConferenceRoom“ (Konferenzraum) und „Office“ (Büro) verbunden ist."::: 
 
 Weitere Informationen über die RealEstateCore-Ontologie finden Sie unter [*Konzepte: Übernehmen von Branchenstandardontologien*](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology).
 
@@ -51,7 +51,7 @@ Erstellen Sie eine neue Schnittstelle, die die Schnittstellen in der Branchenont
 
 Nachdem Sie die Schnittstelle für Fokusräume hinzugefügt haben, zeigt die erweiterte Hierarchie den neuen Raumtyp an. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-1.png" alt-text="Flussdiagramm: RealEstateCore-Bereichshierarchie von oben mit der neuen Addition. Auf der untersten Ebene mit den Elementen „ConferenceRoom“ und „Office“ befindet sich nun ein neues Element namens „FocusRoom“, das ebenfalls über einen Pfeil mit dem Element „Room“ verbunden ist"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="Flussdiagramm: RealEstateCore-Bereichshierarchie von oben mit der neuen Addition. Auf der untersten Ebene mit den Elementen „ConferenceRoom“ und „Office“ befindet sich nun ein neues Element namens „FocusRoom“, das ebenfalls über einen Pfeil mit dem Element „Room“ verbunden ist"::: 
 
 ### <a name="add-additional-capabilities-to-existing-interfaces"></a>Hinzufügen zusätzlicher Funktionen zu vorhandenen Schnittstellen 
 
@@ -69,7 +69,7 @@ Zum Erweitern der Branchenontologie erstellen Sie Ihre eigenen Schnittstellen, d
 
 Nach der Erweiterung des oben gezeigten Teils der Hierarchie sieht die erweiterte Hierarchie wie in der folgenden Abbildung aus. Die erweiterte Schnittstelle „Space“ fügt die Eigenschaft `drawingId` hinzu, die eine ID enthalten soll, die den digitalen Zwilling der 3D-Zeichnung zuordnet. Darüber hinaus fügt die ConferenceRoom-Schnittstelle eine Online-Eigenschaft hinzu, die den Onlinestatus des Konferenzraums enthält. Durch die Vererbung enthält die ConferenceRoom-Schnittstelle alle Funktionen der RealEstateCore-Schnittstelle „ConferenceRoom“ sowie alle Funktionen der erweiterten Schnittstelle „Space“. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-2.png" alt-text="Flussdiagramm: Erweiterte RealEstateCore-Bereichshierarchie von oben mit weiteren Additionen. Die Elemente „Room“ und „Space“ befinden sich nun auf derselben Ebene und sind über einen Pfeil mit einem neuen Room-Element neben „ConferenceRoom“ und „Office“ in der darunter liegenden Ebene verbunden.  Die neuen Elemente sind über weitere extends-Beziehungen mit der vorhandenen Ontologie verbunden."::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-2.png" alt-text="Flussdiagramm: Erweiterte RealEstateCore-Bereichshierarchie von oben mit weiteren Additionen. Die Elemente „Room“ und „Space“ befinden sich nun auf derselben Ebene und sind über einen Pfeil mit einem neuen Room-Element neben „ConferenceRoom“ und „Office“ in der darunter liegenden Ebene verbunden.  Die neuen Elemente sind über weitere extends-Beziehungen mit der vorhandenen Ontologie verbunden."::: 
 
 ## <a name="using-the-extended-space-hierarchy"></a>Verwenden der erweiterten Bereichshierarchie 
 
@@ -77,7 +77,7 @@ Wenn Sie digitale Zwillinge mithilfe der erweiterten Bereichshierarchie erstelle
 
 Jedes Modell der digitalen Zwillinge ist dann eine Schnittstelle der erweiterten Hierarchie (siehe folgendes Diagramm). 
  
-:::image type="content" source="media/concepts-extending-ontologies/ontology-with-models.png" alt-text="Auszug aus der erweiterten RealEstateCore-Bereichshierarchie, einschließlich Space (oberste Ebene), Room (mittlere Ebene) sowie ConferenceRoom, Office und FocusRoom (untere Ebene). Die Namen der Modelle sind mit jedem Element verbunden (beispielsweise ist Room mit einem Modell namens „Room101“ verbunden)."::: 
+:::image type="content" source="media/concepts-ontologies-extend/ontology-with-models.png" alt-text="Auszug aus der erweiterten RealEstateCore-Bereichshierarchie, einschließlich Space (oberste Ebene), Room (mittlere Ebene) sowie ConferenceRoom, Office und FocusRoom (untere Ebene). Die Namen der Modelle sind mit jedem Element verbunden (beispielsweise ist Room mit einem Modell namens „Room101“ verbunden)."::: 
 
 Beim Abfragen digitaler Zwillinge mithilfe der Modell-ID (der `IS_OF_MODEL`-Operator) sollten die Modell-IDs aus der erweiterten Hierarchie verwendet werden. Beispiel: `SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')`. 
 

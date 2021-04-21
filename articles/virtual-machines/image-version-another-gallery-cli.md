@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 0bea4fbac062b498dabe04e6e58d530d09b16d6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2cd885d886a0f13783e61a04c7243efdf12967e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553101"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784981"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Kopieren eines Images aus einem anderen Katalog mithilfe der Azure CLI
 
@@ -36,13 +36,13 @@ Ersetzen Sie beim Durcharbeiten dieses Artikels die Ressourcennamen, wo dies erf
 
 Sie benötigen Informationen aus der Quellimagedefinition, damit Sie eine Kopie davon in Ihrem neuen Katalog erstellen können.
 
-Rufen Sie mit [az sig list](/cli/azure/sig#az-sig-list) Informationen zu den verfügbaren Imagekatalogen ab, um Informationen zum Quellkatalog zu erhalten.
+Rufen Sie mit [az sig list](/cli/azure/sig#az_sig_list) Informationen zu den verfügbaren Imagekatalogen ab, um Informationen zum Quellkatalog zu erhalten.
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-Mit [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) listen Sie die Imagedefinitionen in einem Katalog auf. In diesem Beispiel suchen wir nach Imagedefinitionen im Katalog *myGallery* in der Ressourcengruppe *myGalleryRG*.
+Mit [az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) listen Sie die Imagedefinitionen in einem Katalog auf. In diesem Beispiel suchen wir nach Imagedefinitionen im Katalog *myGallery* in der Ressourcengruppe *myGalleryRG*.
 
 ```azurecli-interactive 
 az sig image-definition list \
@@ -51,7 +51,7 @@ az sig image-definition list \
    -o table
 ```
 
-Listen Sie die Versionen eines Images in einem Katalog mit [az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list) auf, um die Imageversion zu finden, die Sie in Ihren neuen Katalog kopieren möchten. In diesem Beispiel suchen wir nach allen Imageversionen, die Teil der Imagedefinition *myImageDefinition* sind.
+Listen Sie die Versionen eines Images in einem Katalog mit [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) auf, um die Imageversion zu finden, die Sie in Ihren neuen Katalog kopieren möchten. In diesem Beispiel suchen wir nach allen Imageversionen, die Teil der Imagedefinition *myImageDefinition* sind.
 
 ```azurecli-interactive
 az sig image-version list \
@@ -61,7 +61,7 @@ az sig image-version list \
    -o table
 ```
 
-Sobald Sie über alle erforderlichen Informationen verfügen, können Sie mit [az sig image-version show](/cli/azure/sig/image-version#az-sig-image-version-show) die ID der Quellimageversion ermitteln.
+Sobald Sie über alle erforderlichen Informationen verfügen, können Sie mit [az sig image-version show](/cli/azure/sig/image-version#az_sig_image_version_show) die ID der Quellimageversion ermitteln.
 
 ```azurecli-interactive
 az sig image-version show \
@@ -75,7 +75,7 @@ az sig image-version show \
 
 ## <a name="create-the-image-definition"></a>Erstellen der Imagedefinition 
 
-Sie müssen eine Imagedefinition erstellen, die mit der Imagedefinition Ihrer Quellimageversion übereinstimmt. Sie können alle zum erneuten Erstellen der Imagedefinition in Ihrem neuen Katalog erforderlichen Informationen mit [az sig image-definition show](/cli/azure/sig/image-definition#az-sig-image-definition-show) anzeigen.
+Sie müssen eine Imagedefinition erstellen, die mit der Imagedefinition Ihrer Quellimageversion übereinstimmt. Sie können alle zum erneuten Erstellen der Imagedefinition in Ihrem neuen Katalog erforderlichen Informationen mit [az sig image-definition show](/cli/azure/sig/image-definition#az_sig_image_definition_show) anzeigen.
 
 ```azurecli-interactive
 az sig image-definition show \
@@ -133,7 +133,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>Erstellen der Imageversion
 
-Erstellen Sie Versionen mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create). Sie müssen die ID des verwalteten Images, das als Grundlage zum Erstellen der Imageversion verwendet werden soll, als Eingabe übergeben. Sie können [az image list](/cli/azure/image?view#az-image-list) verwenden, um Informationen zu Images abzurufen, die sich in einer Ressourcengruppe befinden. 
+Erstellen Sie Versionen mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create). Sie müssen die ID des verwalteten Images, das als Grundlage zum Erstellen der Imageversion verwendet werden soll, als Eingabe übergeben. Sie können [az image list](/cli/azure/image?view#az_image_list) verwenden, um Informationen zu Images abzurufen, die sich in einer Ressourcengruppe befinden. 
 
 Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
 

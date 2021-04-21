@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 90ea52b0ed5ee2d8e36caab18491eecd6e1295fd
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: ad5bb6e45479b4cccfa0b002427066439135e468
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222814"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588444"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did"></a>Verknüpfen Ihrer Domäne mit Ihrem dezentralisierten Bezeichner (Decentralized Identifier, DID)
 
@@ -122,7 +122,7 @@ Trifft einer der obigen Punkte nicht zu, wird von Microsoft Authenticator eine g
 
 4. Kopieren Sie Ihre DID, und öffnen Sie den [ION-Netzwerk-Explorer](https://identity.foundation/ion/explorer), um sich zu vergewissern, dass die gleiche Domäne im DID-Dokument enthalten ist. 
 
-5. Hosten Sie die Ressource mit der bekannten Konfiguration am angegebenen Ort. Ein Beispiel: https://www.example.com/.well-known/did-configuration.json
+5. Hosten Sie die Ressource mit der bekannten Konfiguration am angegebenen Ort. Ein Beispiel: `https://www.example.com/.well-known/did-configuration.json`
 
 6. Testen Sie zur Validierung das Ausstellen oder Präsentieren mit Microsoft Authenticator. Achten Sie darauf, dass in Authenticator die Einstellung „Warnung zu unsicheren Apps“ aktiviert ist.
 

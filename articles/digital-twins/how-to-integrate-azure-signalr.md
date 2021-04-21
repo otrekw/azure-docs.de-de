@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8bdb843ab6304f2f38228f37d8709e4084ee52e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102203894"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775329"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrieren von Azure Digital Twins in Azure SignalR Service
 
@@ -189,7 +189,7 @@ Dadurch wird ein Browserfenster geöffnet, in dem die Beispiel-App ausgeführt w
 
 Wenn Sie die in diesem Artikel erstellten Ressourcen nicht mehr benötigen, folgen Sie den Schritten unten, um sie zu löschen. 
 
-Bei Verwendung von Azure Cloud Shell oder der lokalen Azure CLI können Sie alle Azure-Ressourcen in einer Ressourcengruppe mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) löschen. Wenn Sie die Ressourcengruppe entfernen, wird auch Folgendes entfernt...
+Bei Verwendung von Azure Cloud Shell oder der lokalen Azure CLI können Sie alle Azure-Ressourcen in einer Ressourcengruppe mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) löschen. Wenn Sie die Ressourcengruppe entfernen, wird auch Folgendes entfernt...
 * Die Azure Digital Twins-Instanz (aus dem End-to-End-Tutorial)
 * Der IoT-Hub-und die Hub-Geräteregistrierung (aus dem End-to-End-Tutorial)
 * Das Event Grid-Thema und zugehörige Abonnements

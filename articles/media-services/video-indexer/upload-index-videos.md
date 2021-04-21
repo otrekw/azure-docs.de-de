@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3cc9051190bd314ac93e3de2689a6aa0ec2b6235
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 90fca4342b1fe04adef97a1a4c1c2166ca7ec51e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108080"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532484"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -62,11 +62,11 @@ Im Artikel [Eingabecontainer/Dateiformate](../latest/encode-media-encoder-standa
 
 ## <a name="upload-and-index-with-api"></a>Hochladen und Indizieren mithilfe der API
 
-Verwenden Sie die API zum [Hochladen eines Videos](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), um Ihre Videos über eine URL hochzuladen und zu indizieren. Das nachstehende Codebeispiel enthält auch auskommentierten Code, der das Hochladen des Bytearrays zeigt. 
+Verwenden Sie die API zum [Hochladen eines Videos](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video), um Ihre Videos über eine URL hochzuladen und zu indizieren. Das nachstehende Codebeispiel enthält auch auskommentierten Code, der das Hochladen des Bytearrays zeigt. 
 
 ### <a name="configurations-and-params"></a>Konfigurationen und Parameter
 
-In diesem Abschnitt werden einige optionale Parameter und ihre Anwendung beschrieben. Die aktuellsten Parameterinformationen finden Sie unter der API zum [Hochladen von Videos](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?).
+In diesem Abschnitt werden einige optionale Parameter und ihre Anwendung beschrieben. Die aktuellsten Parameterinformationen finden Sie unter der API zum [Hochladen von Videos](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video).
 
 #### <a name="externalid"></a>externalID 
 
@@ -110,7 +110,7 @@ Der Parameter **priority** wird nur in kostenpflichtigen Konten unterstützt.
 
 Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional codiert werden. Anschließend wird der Vorgang mit dem Indizieren und Analysieren des Videos fortgesetzt. Nachdem Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine Benachrichtigung mit der Video-ID.  
 
-Bei Verwendung der [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)- oder [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)-API lautet einer der optionalen Parameter `streamingPreset`. Wenn Sie `streamingPreset` auf `Default`, `SingleBitrate` oder `AdaptiveBitrate` festlegen, wird der Codierungsprozess ausgelöst. Wenn die Indizierung und Codierung von Aufträgen abgeschlossen ist, wird das Video veröffentlicht, damit Sie Ihr Video auch streamen können. Der Streamingendpunkt, von dem aus Sie das Video streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
+Bei Verwendung der [Upload video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)- oder [Re-Index Video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video)-API lautet einer der optionalen Parameter `streamingPreset`. Wenn Sie `streamingPreset` auf `Default`, `SingleBitrate` oder `AdaptiveBitrate` festlegen, wird der Codierungsprozess ausgelöst. Wenn die Indizierung und Codierung von Aufträgen abgeschlossen ist, wird das Video veröffentlicht, damit Sie Ihr Video auch streamen können. Der Streamingendpunkt, von dem aus Sie das Video streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
 
 Für SingleBitrate werden die Kosten für den Standardencoder pro Ausgabe berechnet. Wenn das Videoformat größer oder gleich 720 ist, codiert Video Indexer dieses als 1280 ×­ 720. Andernfalls wird die Einstellung 640 × 468 verwendet.
 Die Standardeinstellung ist die [inhaltsbezogene Codierung](../latest/encode-content-aware-concept.md).

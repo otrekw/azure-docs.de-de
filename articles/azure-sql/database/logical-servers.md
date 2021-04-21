@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 09e8ef85b6df48b6b442351135d4ae4ed55e9b45
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c76d3ae78bf2b9b4a71d9520f7f1c6c2c322483b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641065"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784513"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Was ist ein logischer SQL-Server in Azure SQL-Datenbank und Azure Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -114,25 +114,25 @@ Verwenden Sie zum Erstellen und Verwalten von Servern, Datenbanken und Firewalls
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Erstellt eine Datenbank|
-|[az sql db list](/cli/azure/sql/db#az-sql-db-list)|Mit diesem Cmdlet werden alle Datenbanken, die von einem Server verwaltet werden, oder alle Datenbanken eines Pools für elastische Datenbanken aufgeführt.|
-|[az sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|Listet verfügbare Dienstziele und Speicherlimits auf|
-|[az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Gibt Informationen zur Datenbankverwendung zurück|
-|[az sql db show](/cli/azure/sql/db#az-sql-db-show)|Dieses Cmdlet ruft eine Datenbank ab.
-|[az sql db update](/cli/azure/sql/db#az-sql-db-update)|Aktualisiert eine Datenbank|
-|[az sql db delete](/cli/azure/sql/db#az-sql-db-delete)|Entfernt eine Datenbank|
-|[az group create](/cli/azure/group#az-group-create)|Erstellt eine Ressourcengruppe|
-|[az sql server create](/cli/azure/sql/server#az-sql-server-create)|Erstellt einen Server|
-|[az sql server list](/cli/azure/sql/server#az-sql-server-list)|Listet Server auf|
-|[az sql server list-usages](/cli/azure/sql/server#az-sql-server-list-usages)|Gibt Informationen zur Server-Verwendung zurück|
-|[az sql server show](/cli/azure/sql/server#az-sql-server-show)|Ruft einen Server ab|
-|[az sql server update](/cli/azure/sql/server#az-sql-server-update)|Aktualisiert einen Server|
-|[az sql server delete](/cli/azure/sql/server#az-sql-server-delete)|Löscht einen Server|
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Erstellt eine Serverfirewallregel|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Listet die Firewallregeln auf einem Server auf|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Zeigt die Details einer Firewallregel an|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Aktualisiert eine Firewallregel|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Löscht eine Firewallregel|
+|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |Erstellt eine Datenbank|
+|[az sql db list](/cli/azure/sql/db#az_sql_db_list)|Mit diesem Cmdlet werden alle Datenbanken, die von einem Server verwaltet werden, oder alle Datenbanken eines Pools für elastische Datenbanken aufgeführt.|
+|[az sql db list-editions](/cli/azure/sql/db#az_sql_db_list_editions)|Listet verfügbare Dienstziele und Speicherlimits auf|
+|[az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|Gibt Informationen zur Datenbankverwendung zurück|
+|[az sql db show](/cli/azure/sql/db#az_sql_db_show)|Dieses Cmdlet ruft eine Datenbank ab.
+|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|Aktualisiert eine Datenbank|
+|[az sql db delete](/cli/azure/sql/db#az_sql_db_delete)|Entfernt eine Datenbank|
+|[az group create](/cli/azure/group#az_group_create)|Erstellt eine Ressourcengruppe|
+|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|Erstellt einen Server|
+|[az sql server list](/cli/azure/sql/server#az_sql_server_list)|Listet Server auf|
+|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list-usages)|Gibt Informationen zur Server-Verwendung zurück|
+|[az sql server show](/cli/azure/sql/server#az_sql_server_show)|Ruft einen Server ab|
+|[az sql server update](/cli/azure/sql/server#az_sql_server_update)|Aktualisiert einen Server|
+|[az sql server delete](/cli/azure/sql/server#az_sql_server_delete)|Löscht einen Server|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Erstellt eine Serverfirewallregel|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Listet die Firewallregeln auf einem Server auf|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Zeigt die Details einer Firewallregel an|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Aktualisiert eine Firewallregel|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Löscht eine Firewallregel|
 
 > [!TIP]
 > Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Azure CLI-Beispiele für Azure SQL-Datenbank und verwaltete SQL-Instanzen](az-cli-script-samples-content-guide.md). Azure CLI-Beispielskripts finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle zum Erstellen einer einzelnen Datenbank und Konfigurieren einer Firewallregel](scripts/create-and-configure-database-cli.md) und [Verwenden der Azure CLI zum Überwachen und Skalieren einer einzelnen Datenbank in Azure SQL-Datenbank](scripts/monitor-and-scale-database-cli.md).

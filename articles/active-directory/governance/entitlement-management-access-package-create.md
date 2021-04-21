@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3df08272b352ee789c9879b1118105c435cffbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb0312d905284f8c5a9817e9550d340bf6135032
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011084"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532206"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -138,11 +138,11 @@ Auf der Registerkarte **Bewerten + erstellen** können Sie Ihre Einstellungen ü
 
 Sie können auch mithilfe von Microsoft Graph ein Zugriffspaket erstellen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um
 
-1. [die accessPackageResources im Katalog aufzulisten](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta) und [eine accessPackageResourceRequest zu erstellen](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta), die sich auf alle Ressourcen bezieht, die noch nicht im Katalog enthalten sind.
-1. [Auflisten der accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) für jede accessPackageResource in einem accessPackageCatalog. Diese Rollenliste wird dann zum Auswählen einer Rolle verwendet, wenn anschließend ein accessPackageResourceRoleScope erstellt wird.
-1. [Erstellen eines accessPackage](/graph/tutorial-access-package-api?view=graph-rest-beta).
-1. [Erstellen einer accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta).
-1. [Erstellen eines accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) für jede Ressourcenrolle, die im Zugriffspaket benötigt wird.
+1. [die accessPackageResources im Katalog aufzulisten](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta&preserve-view=true) und [eine accessPackageResourceRequest zu erstellen](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta&preserve-view=true), die sich auf alle Ressourcen bezieht, die noch nicht im Katalog enthalten sind.
+1. [Auflisten der accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) für jede accessPackageResource in einem accessPackageCatalog. Diese Rollenliste wird dann zum Auswählen einer Rolle verwendet, wenn anschließend ein accessPackageResourceRoleScope erstellt wird.
+1. [Erstellen eines accessPackage](/graph/tutorial-access-package-api&view=graph-rest-beta&preserve-view=true).
+1. [Erstellen einer accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta&preserve-view=true).
+1. [Erstellen eines accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) für jede Ressourcenrolle, die im Zugriffspaket benötigt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

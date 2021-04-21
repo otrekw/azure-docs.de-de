@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Erste Schritte mit Machine Learning: Python'
 titleSuffix: Azure Machine Learning
-description: In diesem Tutorial erhalten Sie Informationen zu den ersten Schritten mit dem Azure Machine Learning SDK für Python, das in Ihrer persönlichen Entwicklungsumgebung ausgeführt wird.
+description: Informationen zu den ersten Schritten mit dem Azure Machine Learning SDK für Python, das in Ihrer persönlichen Entwicklungsumgebung ausgeführt wird
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: 81b9b5d53e1b61322d25d5dead85429474c1272c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 69340245cdebda570b526afd4f11ac8314384b43
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935548"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210617"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Tutorial: Erste Schritte mit Azure Machine Learning in Ihrer Entwicklungsumgebung (Teil 1 von 4)
 
@@ -30,16 +30,18 @@ In Teil 1 dieser Tutorialreihe führen Sie die folgenden Aktionen aus:
 > * Einrichten der Verzeichnisstruktur für Code
 > * Erstellen eines Azure Machine Learning-Arbeitsbereichs
 > * Konfigurieren Ihrer lokalen Entwicklungsumgebung
-> * Einrichten eines Computeclusters
+> * Einrichten eines Computeclusters, einer cloudbasierten Ressource für das Trainieren Ihrer Modelle
 
-> [!NOTE]
-> Bei dieser Tutorialreihe liegt der Schwerpunkt auf den Azure Machine Learning-Konzepten, die zum Übermitteln von **Batchaufträgen** erforderlich sind. Dabei wird der Code zur Ausführung im Hintergrund ohne jegliche Benutzerinteraktion in die Cloud übermittelt. Dies ist nützlich für fertige Skripts oder fertigen Code, die bzw. den Sie wiederholt ausführen möchten, oder für rechenintensive Machine Learning-Aufgaben. Wenn Sie mehr an einem explorativen Workflow interessiert sind, könnten Sie stattdessen [Jupyter oder RStudio auf einer Azure Machine Learning-Compute-Instanz](tutorial-1st-experiment-sdk-setup.md) verwenden.
+Bei dieser Tutorialreihe liegt der Schwerpunkt auf den Azure Machine Learning-Konzepten, die zum Übermitteln von **Batchaufträgen** erforderlich sind. Dabei wird der Code zur Ausführung im Hintergrund ohne jegliche Benutzerinteraktion in die Cloud übermittelt. Dies ist nützlich für fertige Skripts oder fertigen Code, die bzw. den Sie wiederholt ausführen möchten, oder für rechenintensive Machine Learning-Aufgaben.
+
+Eine weitere hervorragende Möglichkeit für den Einstieg in Azure Machine Learning ist die Verwendung von Jupyter-Notebooks.  Informationen hierzu finden Sie unter [Tutorial: Machen Sie sich mit den ersten Schritten mit Azure Machine Learning in Jupyter Notebooks vertraut](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie [Azure Machine Learning](https://aka.ms/AMLFree) aus.
 - [Anaconda](https://www.anaconda.com/download/) oder [Miniconda](https://www.anaconda.com/download/) zum Verwalten virtueller Python-Umgebungen und zum Installieren von Paketen  
 - Wenn Sie mit der Verwendung von Conda nicht vertraut sind, finden Sie weitere Informationen unter [Erste Schritte mit Conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html).
+- Eine beliebige IDE oder ein beliebiger Text-Editor zum Erstellen Ihrer Python-Skripts
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Installieren des Azure Machine Learning SDK
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24b1be2ca55b057c887c8782ce7eea1150f143da
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485757"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762621"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer
 
@@ -71,7 +71,7 @@ Set-AzVmssStorageProfile -DiffDiskSetting Local -OsDiskCaching ReadOnly
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-Wenn Sie einen kurzlebigen Datenträger für eine CLI-VM-Bereitstellung verwenden möchten, legen Sie den Parameter `--ephemeral-os-disk` in [az vm create](/cli/azure/vm#az-vm-create) auf `true` und den Parameter `--os-disk-caching` auf `ReadOnly` fest.
+Wenn Sie einen kurzlebigen Datenträger für eine CLI-VM-Bereitstellung verwenden möchten, legen Sie den Parameter `--ephemeral-os-disk` in [az vm create](/cli/azure/vm#az_vm_create) auf `true` und den Parameter `--os-disk-caching` auf `ReadOnly` fest.
 
 ```azurecli-interactive
 az vm create \
@@ -84,7 +84,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Für Skalierungsgruppen verwenden Sie denselben Parameter `--ephemeral-os-disk true` für [az-vmss-create](/cli/azure/vmss#az-vmss-create) und legen den Parameter `--os-disk-caching` auf `ReadOnly` fest.
+Für Skalierungsgruppen verwenden Sie denselben Parameter `--ephemeral-os-disk true` für [az-vmss-create](/cli/azure/vmss#az_vmss_create) und legen den Parameter `--os-disk-caching` auf `ReadOnly` fest.
 
 ## <a name="portal"></a>Portal
 
@@ -251,4 +251,4 @@ A: Kurzlebige Datenträger unterstützen nicht:
 > 
  
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können einen virtuellen Computer mit einem kurzlebigen Betriebssystemdatenträger über die [Azure-Befehlszeilenschnittstelle](/cli/azure/vm#az-vm-create) erstellen.
+Sie können einen virtuellen Computer mit einem kurzlebigen Betriebssystemdatenträger über die [Azure-Befehlszeilenschnittstelle](/cli/azure/vm#az_vm_create) erstellen.

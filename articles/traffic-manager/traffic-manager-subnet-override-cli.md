@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 2e289728c7fde9b98256d079d45067aba1d4d805
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fab167884d9060edc4f626d3ee05fa0b23389d92
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211327"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767797"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Außerkraftsetzung für Traffic Manager-Subnetz mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -39,7 +39,7 @@ Sie können die Azure-Befehlszeilenschnittstelle verwenden, um die Subnetze für
 - Für diesen Artikel ist mindestens Version 2.0.28 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Aktualisieren Sie den Traffic Manager-Endpunkt mit der Außerkraftsetzung des Subnetzes.
-Verwenden Sie die Azure-Befehlszeilenschnittstelle, um Ihren Endpunkt mit [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) zu aktualisieren.
+Verwenden Sie die Azure-Befehlszeilenschnittstelle, um Ihren Endpunkt mit [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_update) zu aktualisieren.
 
 ```azurecli-interactive
 ### Add a range of IPs ###
@@ -59,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-Sie können die IP-Adressbereiche entfernen, indem Sie [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) mit der Option **--remove** ausführen.
+Sie können die IP-Adressbereiche entfernen, indem Sie [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_update) mit der Option **--remove** ausführen.
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \

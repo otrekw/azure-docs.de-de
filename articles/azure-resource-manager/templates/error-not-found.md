@@ -3,12 +3,12 @@ title: Fehler des Typs „Ressource nicht gefunden“
 description: Beschreibt, wie Sie Fehler beheben, wenn eine Ressource nicht gefunden wird. Der Fehler kann auftreten, wenn Sie eine Azure Resource Manager-Vorlage bereitstellen oder Verwaltungsaktionen durchführen.
 ms.topic: troubleshooting
 ms.date: 03/23/2021
-ms.openlocfilehash: b80c32683190167d5c0d6e0a7f75acce8bbdb833
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e3a72eaad99721cec9500956179a3ae9d9cf8d2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950874"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762135"
 ---
 # <a name="resolve-resource-not-found-errors"></a>Beheben von Fehlern des Typs „Ressource nicht gefunden“
 
@@ -43,7 +43,7 @@ Wenn dieser Fehler beim Ausführen einer Verwaltungsaufgabe auftritt, überprüf
 * Ressourcengruppenname
 * Subscription
 
-Wenn Sie PowerShell oder Azure CLI verwenden, überprüfen Sie, ob Sie den Befehl in dem Abonnement ausführen, das die Ressource enthält. Sie können das Abonnement mit [Set-AzContext-](/powershell/module/Az.Accounts/Set-AzContext) oder [az account set](/cli/azure/account#az-account-set) ändern. Viele Befehle bieten auch einen Abonnementparameter, mit dem Sie ein anderes Abonnement als den aktuellen Kontext angeben können.
+Wenn Sie PowerShell oder Azure CLI verwenden, überprüfen Sie, ob Sie den Befehl in dem Abonnement ausführen, das die Ressource enthält. Sie können das Abonnement mit [Set-AzContext-](/powershell/module/Az.Accounts/Set-AzContext) oder [az account set](/cli/azure/account#az_account_set) ändern. Viele Befehle bieten auch einen Abonnementparameter, mit dem Sie ein anderes Abonnement als den aktuellen Kontext angeben können.
 
 Wenn Sie Probleme beim Überprüfen der Eigenschaften haben, melden Sie sich beim [Portal](https://portal.azure.com) an. Suchen Sie die Ressource, die Sie verwenden möchten, und untersuchen Sie den Ressourcennamen, die Ressourcengruppe und das Abonnement.
 

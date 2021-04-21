@@ -3,19 +3,18 @@ title: Gewähren der Berechtigung zum Zugreifen auf einen Azure-Schlüsseltresor
 description: Erfahren Sie, wie Sie den Zugriff auf Schlüssel, Geheimnisse und Zertifikate mithilfe der rollenbasierten Zugriffssteuerung in Azure bereitstellen.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 8/30/2020
+ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 216df0d128e0557345db8f82f6010e1ef681593c
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 966f704bd47b4b238ed72579a6103bd2e4348849
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968780"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772215"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure
 
@@ -237,7 +236,7 @@ Erstellen Sie ein neues Geheimnis („Geheimnisse“ \> „+ Generieren/Importi
 
 ### <a name="creating-custom-roles"></a>Erstellen von benutzerdefinierten Rollen 
 
-[Befehl „az role definition create“](/cli/azure/role/definition#az-role-definition-create)
+[Befehl „az role definition create“](/cli/azure/role/definition#az_role_definition_create)
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 ```azurecli

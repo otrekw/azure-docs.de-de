@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 5550c53289228f154fab485b4b7bbff17555aad7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a8c007d7f4419ddbe1555b50ceb6fb92ea0a6f98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045738"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783897"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -484,7 +484,7 @@ Wenden Sie sich an Ihren Netzwerkadministrator, oder überprüfen Sie Ihre Netzw
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Warum schlägt meine Pull- oder Pushanforderung mit einem unzulässigen Vorgang fehl?
 
 Hier finden Sie einige Szenarios, bei denen Vorgänge möglicherweise nicht zulässig sind:
-* Klassische Registrierungen werden nicht mehr unterstützt. Führen Sie mithilfe von [az acr update](/cli/azure/acr#az-acr-update) oder im Azure-Portal ein Upgrade auf einen unterstützten [Tarif](./container-registry-skus.md) durch.
+* Klassische Registrierungen werden nicht mehr unterstützt. Führen Sie mithilfe von [az acr update](/cli/azure/acr#az_acr_update) oder im Azure-Portal ein Upgrade auf einen unterstützten [Tarif](./container-registry-skus.md) durch.
 * Das Image oder Repository ist möglicherweise gesperrt, sodass es nicht gelöscht oder aktualisiert werden kann. Sie können den Befehl [az acr show repository](./container-registry-image-lock.md) verwenden, um aktuelle Attribute anzuzeigen.
 * Einige Vorgänge sind nicht zulässig, wenn das Image in Quarantäne gestellt wird. Weitere Informationen zur Quarantäne finden Sie [hier](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Möglicherweise hat Ihre Registrierung das [Speicherlimit](container-registry-skus.md#service-tier-features-and-limits) erreicht.

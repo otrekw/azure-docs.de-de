@@ -3,19 +3,18 @@ title: Allgemeine Parameter und Header
 description: Die Parameter und Header, die für alle Vorgänge gelten, die Sie ggf. im Zusammenhang mit Key Vault-Ressourcen ausführen
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d1d93bcd84fd9460e658b221089a4b24d46b0429
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 616b6061b08258d465b09902556de6903b873199
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83005817"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749868"
 ---
 # <a name="common-parameters-and-headers"></a>Allgemeine Parameter und Header
 
@@ -41,7 +40,7 @@ Der Dienst gibt anhand von HTTP-Statuscodes an, ob der Vorgang erfolgreich oder 
    }  
 ```
 
-|Elementname | type | BESCHREIBUNG |
+|Elementname | type | Beschreibung |
 |---|---|---|
 | code | Zeichenfolge | Der Typ des aufgetretenen Fehlers.|
 | message | Zeichenfolge | Eine Beschreibung der Ursache des Fehlers. |

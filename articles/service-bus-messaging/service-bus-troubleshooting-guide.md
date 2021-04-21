@@ -3,12 +3,12 @@ title: Leitfaden zur Problembehandlung für Azure Service Bus | Microsoft-Dokume
 description: Lernen Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme kennen, die bei der Verwendung von Azure Service Bus auftreten können.
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: b44587747a59acb3c0124c0a76b63de68d6d8ae7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 27249d7e016ea8aee0552bbbf1687647760d4b6f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031289"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786565"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Leitfaden zur Problembehandlung für Azure Service Bus
 In diesem Artikel finden Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme, die bei der Verwendung von Azure Service Bus auftreten können. 
@@ -52,7 +52,7 @@ Die folgenden Schritte unterstützen Sie bei der Problembehandlung von Konnektiv
     ```
     Sie können äquivalente Befehle verwenden, wenn Sie andere Tools wie `tnc`, `ping` usw. nutzen. 
 - Rufen Sie eine Netzwerkablaufverfolgung ab, wenn die vorherigen Schritte nicht hilfreich sind, und analysieren Sie diese mit Tools wie [Wireshark](https://www.wireshark.org/). Wenden Sie sich bei Bedarf an den [Microsoft-Support](https://support.microsoft.com/). 
-- Informationen zum Ermitteln der IP-Adressen, die der Positivliste für Ihre Verbindungen hinzugefügt werden müssen, finden Sie unter [Welche IP-Adressen muss ich in die Zulassungsliste aufnehmen?](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
+- Informationen zum Ermitteln der IP-Adressen, die der Positivliste für Ihre Verbindungen hinzugefügt werden müssen, finden Sie unter [Welche IP-Adressen muss ich in die Zulassungsliste aufnehmen?](service-bus-faq.yml#what-ip-addresses-do-i-need-to-add-to-allow-list-). 
 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Mögliche Probleme im Zusammenhang mit Dienstupgrades/-neustarts

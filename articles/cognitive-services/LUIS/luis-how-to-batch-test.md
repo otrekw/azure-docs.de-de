@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/29/2020
-ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 9fe4f21a5c9e9e26a2f94b8a60cba47916842fe3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98787011"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501789"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batchtests mit einem Satz von Beispieläußerungen
 
@@ -208,7 +208,7 @@ App-Versions-ID
 
 Senden Sie eine Batchdatei mit Äußerungen, die als *Dataset* bezeichnet wird, zum Ausführen eines Batchtests. Das Dataset ist eine Datei im JSON-Format, die maximal 1.000 bezeichnete Äußerungen enthält. Sie können bis zu 10 Datasets in einer App testen. Wenn Sie mehr Datasets testen müssen, löschen Sie ein Dataset, und fügen Sie dann ein neues hinzu. Alle benutzerdefinierten Entitäten im Modell werden auch dann im Batchtest-Entitätenfilter angezeigt, wenn keine entsprechenden Entitäten in den Batchdateidaten vorhanden sind.
 
-Die Batchdatei besteht aus Äußerungen. Jeder Äußerung muss eine erwartete Absichtsvorhersage in Verbindung mit allen [Machine-Learning-Entitäten](luis-concept-entity-types.md#types-of-entities) zugeordnet sein, deren Erkennung Sie erwarten.
+Die Batchdatei besteht aus Äußerungen. Jeder Äußerung muss eine erwartete Absichtsvorhersage in Verbindung mit allen [Machine-Learning-Entitäten](luis-concept-entity-types.md#machine-learned-ml-entity) zugeordnet sein, deren Erkennung Sie erwarten.
 
 ### <a name="batch-syntax-template-for-intents-with-entities"></a>Batchsyntaxvorlage für Absichten mit Entitäten
 

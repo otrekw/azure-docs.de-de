@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4abef9c848a32d9fa6a34eabe407c4d10f913797
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23008d785c27b901f3487d3eddff7cb8e7529f6e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643795"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600079"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -193,14 +193,14 @@ Beispiel zum Einschließen der E-Mail-Adresse in das „access_token“, das Pin
 
 ### <a name="use-of-claims-mapping-policy-optional"></a>Verwenden der Anspruchszuordnungsrichtlinie (optional)
 
-[Anspruchszuordnungsrichtlinie (Vorschau)](../develop/active-directory-claims-mapping.md#claims-mapping-policy-properties) für Attribute, die nicht in Azure AD vorhanden sind. Durch Zuordnung von Ansprüchen können Sie alte lokale Apps zur Cloud migrieren, indem Sie zusätzliche benutzerdefinierte Ansprüche hinzufügen, die von Ihrem ADFS oder Benutzerobjekten gesichert werden.
+[Anspruchszuordnungsrichtlinie (Vorschau)](../develop/reference-claims-mapping-policy-type.md#claims-mapping-policy-properties) für Attribute, die nicht in Azure AD vorhanden sind. Durch Zuordnung von Ansprüchen können Sie alte lokale Apps zur Cloud migrieren, indem Sie zusätzliche benutzerdefinierte Ansprüche hinzufügen, die von Ihrem ADFS oder Benutzerobjekten gesichert werden.
 
-Damit Ihre Anwendung einen benutzerdefinierten Anspruch verwenden und zusätzliche Felder enthalten kann, achten Sie darauf, dass Sie auch [eine Richtlinie für die Zuordnung benutzerdefinierter Ansprüche erstellt und der Anwendung zugeordnet haben](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+Damit Ihre Anwendung einen benutzerdefinierten Anspruch verwenden und zusätzliche Felder enthalten kann, achten Sie darauf, dass Sie auch [eine Richtlinie für die Zuordnung benutzerdefinierter Ansprüche erstellt und der Anwendung zugeordnet haben](../develop/active-directory-claims-mapping.md).
 
 > [!NOTE]
 > Um einen benutzerdefinierten Anspruch zu verwenden, benötigen Sie auch eine für diese Anwendung definierte und ihr zugewiesene benutzerdefinierte Richtlinie. Diese Richtlinie sollte alle erforderlichen benutzerdefinierten Attribute enthalten.
 >
-> Richtliniendefinition und Zuweisung können über PowerShell oder Microsoft Graph erfolgen. Wenn diese Aufgaben über PowerShell erfolgen, müssen Sie möglicherweise zuerst `New-AzureADPolicy` verwenden und die Richtlinie dann der Anwendung mit `Add-AzureADServicePrincipalPolicy` zuweisen. Weitere Informationen finden Sie unter [Zuweisung von Anspruchszuordnungsrichtlinien](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+> Richtliniendefinition und Zuweisung können über PowerShell oder Microsoft Graph erfolgen. Wenn diese Aufgaben über PowerShell erfolgen, müssen Sie möglicherweise zuerst `New-AzureADPolicy` verwenden und die Richtlinie dann der Anwendung mit `Add-AzureADServicePrincipalPolicy` zuweisen. Weitere Informationen finden Sie unter [Zuweisung von Anspruchszuordnungsrichtlinien](../develop/active-directory-claims-mapping.md).
 
 Beispiel:
 ```powershell

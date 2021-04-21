@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f790e20c257c81418c6fcd5b14be957a6ef43b4a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c9c5c938650d1932349f17bde6b30c65718ef72a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612601"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774681"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Herstellen einer Verbindung zu Azure Database for MySQL mithilfe von verwalteten Identitäten
 
@@ -38,13 +38,13 @@ Folgendes wird vermittelt:
 
 ## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität für Ihre VM
 
-Erstellen Sie mit dem Befehl [az identity create](/cli/azure/identity#az-identity-create) eine Identität in Ihrem Abonnement. Sie können dazu dieselbe Ressourcengruppe verwenden, in der Ihre VM ausgeführt wird, oder auch eine andere.
+Erstellen Sie mit dem Befehl [az identity create](/cli/azure/identity#az_identity_create) eine Identität in Ihrem Abonnement. Sie können dazu dieselbe Ressourcengruppe verwenden, in der Ihre VM ausgeführt wird, oder auch eine andere.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-In den folgenden Schritten werden Sie die Identität konfigurieren. Verwenden Sie den Befehl [az identity show](/cli/azure/identity#az-identity-show), um die Ressourcen- und die Client-ID der Identität in Variablen zu speichern.
+In den folgenden Schritten werden Sie die Identität konfigurieren. Verwenden Sie den Befehl [az identity show](/cli/azure/identity#az_identity_show), um die Ressourcen- und die Client-ID der Identität in Variablen zu speichern.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -54,7 +54,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myManagedI
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
-Mit dem Befehl [az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) können Sie nun die benutzerseitig zugewiesene Identität der VM zuweisen:
+Mit dem Befehl [az vm identity assign](/cli/azure/vm/identity#az_vm_identity_assign) können Sie nun die benutzerseitig zugewiesene Identität der VM zuweisen:
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID

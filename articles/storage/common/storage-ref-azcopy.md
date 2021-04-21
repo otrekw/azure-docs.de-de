@@ -8,16 +8,16 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 19d5a5214ae4d2d6c0a18b68863211aa1f6573c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3b4f7737320cc0359192f947271a0f4beb3c478
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878985"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502996"
 ---
 # <a name="azcopy"></a>azcopy
 
-AzCopy ist ein Befehlszeilentool, mit dem Daten in und aus Azure Storage verschoben werden.
+AzCopy ist ein Befehlszeilentool, mit dem Daten in und aus Azure Storage verschoben werden. Lesen Sie den Artikel [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md), um AzCopy herunterzuladen und zu erfahren, wie Sie dem Speicherdienst Autorisierungsanmeldeinformationen bereitstellen können.
 
 ## <a name="synopsis"></a>Zusammenfassung
 
@@ -28,9 +28,9 @@ Informationen zum Melden von Problemen oder weitere Informationen zum Tool finde
 ## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
 
 - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
+- [Tutorial: Migrieren von lokalen Daten zu Cloudspeicher mit AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 - [Übertragen von Daten mit AzCopy und Blobspeicher](./storage-use-azcopy-v10.md#transfer-data)
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
-- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Tastatur
 

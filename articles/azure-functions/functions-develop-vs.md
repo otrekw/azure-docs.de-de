@@ -4,12 +4,12 @@ description: In diesem Artikel erhalten Sie Informationen über das Entwickeln u
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cba0a9ad63e319af0a5eaa1c1c018c3b285c28a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97655814"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765573"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -237,7 +237,7 @@ Sie können die Anwendungseinstellungen auch folgendermaßen verwalten:
 
 * [Verwenden des Azure-Portals](functions-how-to-use-azure-function-app-settings.md#settings)
 * [Verwenden der Veröffentlichungsoption `--publish-local-settings` in Azure Functions Core Tools](functions-run-local.md#publish)
-* [Verwenden der Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)
+* [Verwenden der Azure CLI](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set)
 
 ## <a name="monitoring-functions"></a>Überwachen von Funktionen
 

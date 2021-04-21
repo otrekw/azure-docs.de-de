@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure Managed Disks
 description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal wiederherstellen können.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 94adc8512987b50a8df07d295215ffcff873162f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c57d60047a5bcef58c721ee25bd8a0b3ed523aa4
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108586"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517197"
 ---
 # <a name="restore-azure-managed-disks"></a>Wiederherstellen von Azure Managed Disks
 
@@ -128,4 +128,4 @@ Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicheru
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Häufig gestellte Fragen zu Azure Disk Backup](disk-backup-faq.md)
+- [Häufig gestellte Fragen zu Azure Disk Backup](disk-backup-faq.yml)

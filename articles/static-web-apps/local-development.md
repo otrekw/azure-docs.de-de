@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 8a45d490d060febc18d77c8487c9f562fd2a914a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e19d39a32d48ec55473bb957595d47ec5148e74b
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275510"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588784"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Einrichten der lokalen Entwicklung für Azure Static Web Apps (Vorschau)
 
@@ -43,7 +43,7 @@ Das folgende Diagramm veranschaulicht die lokale Behandlung von Anforderungen:
 :::image type="content" source="media/local-development/cli-conceptual.png" alt-text="Azure Static Web Apps-Befehlszeilenschnittstelle: Anforderungs- und Antwortflow":::
 
 > [!IMPORTANT]
-> Navigieren Sie zu [http://localhost:4280](http://localhost:4280), um auf die von der Befehlszeilenschnittstelle bereitgestellte Anwendung zuzugreifen.
+> Navigieren Sie zu `http://localhost:4280`, um auf die von der Befehlszeilenschnittstelle bereitgestellte Anwendung zuzugreifen.
 
 - An den Port `4280` gesendete **Anforderungen** werden je nach Art der Anforderung an den entsprechenden Server weitergeleitet.
 
@@ -79,7 +79,7 @@ Das folgende Diagramm veranschaulicht die lokale Behandlung von Anforderungen:
 
     `swa start`
 
-1. Navigieren Sie zu [http://localhost:4280](http://localhost:4280), um die App im Browser anzuzeigen.
+1. Navigieren Sie zu http://localhost:4280, um die App im Browser anzuzeigen.
 
 ### <a name="other-ways-to-start-the-cli"></a>Weitere Möglichkeiten zum Starten der Befehlszeilenschnittstelle
 

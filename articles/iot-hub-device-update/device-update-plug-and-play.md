@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fbc3502952e11830ef9abb06cb709fcc60288343
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561813"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739528"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Device Update for IoT Hub und IoT Plug & Play
 
@@ -64,7 +64,7 @@ Dienstmetadaten enthalten Felder, die von den Device Update-Diensten zum Kommuni
 |Name|Schema|Direction|BESCHREIBUNG|
 |----|------|---------|-----------|
 |action|integer|Cloud zu Gerät|Dabei handelt es sich um einen Integerwert, der einer Aktion entspricht, die der Agent ausführen soll. Die unten aufgeführten Werte.|
-|updateManifest|Zeichenfolge|Cloud zu Gerät|Wird verwendet, um den Inhalt eines Updates zu beschreiben. Wird aus dem [Importmanifest](import-update.md#create-device-update-import-manifest) generiert.|
+|updateManifest|Zeichenfolge|Cloud zu Gerät|Wird verwendet, um den Inhalt eines Updates zu beschreiben. Wird aus dem [Importmanifest](import-update.md#create-a-device-update-import-manifest) generiert.|
 |updateManifestSignature|JSON-Objekt|Cloud zu Gerät|Eine JSON Web Signature (JWS) mit JSON Web Keys, die für die Quellüberprüfung verwendet werden.|
 |fileUrls|Karte|Cloud zu Gerät|Ordnet `FileHash` `DownloadUri` zu. Informiert den Agent, welche Dateien heruntergeladen werden sollen und welcher Hash verwendet werden soll, um zu bestätigen, dass die Dateien ordnungsgemäß heruntergeladen wurden.|
 

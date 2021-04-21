@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: 74e09b4798a648b6a881fb05f1128831ad5f4aff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8003bf14bcade08f36a7877fdb3a53998aff9e63
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586439"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773065"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -66,6 +66,8 @@ Im Portal steht beim Erstellen von Netzwerkschnittstellen keine Option zum Zuwei
 
 >[!Note]
 > Azure weist der Netzwerkschnittstelle erst dann eine MAC-Adresse zu, wenn die Netzwerkschnittstelle an einen virtuellen Computer angefügt und der virtuelle Computer erstmalig gestartet wurde. Die MAC-Adresse, die Azure der Netzwerkschnittstelle zuweist, kann nicht angegeben werden. Die MAC-Adresse bleibt der Netzwerkschnittstelle zugewiesen, bis die Netzwerkschnittstelle gelöscht oder die private IP-Adresse, die der primären IP-Konfiguration der primären Netzwerkschnittstelle zugewiesen ist, geändert wird. Weitere Informationen zu IP-Adressen und IP-Konfigurationen finden Sie unter [Verwalten von IP-Adressen](virtual-network-network-interface-addresses.md).
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 **Befehle**
 
@@ -188,7 +190,7 @@ Sie können eine Netzwerkschnittstelle im Portal nur dann einer Anwendungssicher
 
 **Befehle**
 
-- Azure CLI: [az network nic update](/cli/azure/network/nic#az-network-nic-update)
+- Azure CLI: [az network nic update](/cli/azure/network/nic#az_network_nic_update)
 - Mit PowerShell: [Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)
 
 ## <a name="delete-a-network-interface"></a>Löschen einer Netzwerkschnittstelle
@@ -227,7 +229,7 @@ Die IP-Flussüberprüfungsfunktion von Azure Network Watcher kann Ihnen ebenfall
 
 **Befehle**
 
-- Azure CLI: [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
+- Azure CLI: [az network nic list-effective-nsg](/cli/azure/network/nic#az_network_nic_list_effective_nsg)
 - Mit PowerShell: [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
 
 ### <a name="view-effective-routes"></a>Anzeigen effektiver Routen
@@ -244,7 +246,7 @@ Die „Nächster Hop“-Funktion von Azure Network Watcher kann Ihnen ebenfalls 
 
 **Befehle**
 
-- Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
+- Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic#az_network_nic_show_effective_route_table)
 - Mit PowerShell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
 
 ## <a name="permissions"></a>Berechtigungen

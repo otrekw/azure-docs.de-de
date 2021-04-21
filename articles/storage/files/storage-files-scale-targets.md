@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ecfbb9053fde4ff332cbbcb6e14a84a5bbeb99a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 276dd7aa1925fefaaa94dfdd5d7a5baba5164f56
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593151"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790255"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über die SMB- und NFS-Dateisystemprotokolle zugegriffen werden kann. Dieser Artikel behandelt die Skalierbarkeits- und Leistungsziele für Azure Files und Azure-Dateisynchronisierung.
@@ -103,7 +103,7 @@ Da der Azure-Dateisynchronisierungs-Agent auf einem Windows Server-Computer ausg
 
 Bei der Azure-Dateisynchronisierung ist die Leistung in zwei Phasen entscheidend:
 
-1. **Erste einmalige Bereitstellung**: Informationen zum Optimieren der Leistung bei der ersten Bereitstellung finden Sie unter [Onboarding bei der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync).
+1. **Erste einmalige Bereitstellung**: Informationen zum Optimieren der Leistung bei der ersten Bereitstellung finden Sie unter [Onboarding bei der Azure-Dateisynchronisierung](../file-sync/file-sync-deployment-guide.md#onboarding-with-azure-file-sync).
 2. **Laufende Synchronisierung**: Nachdem zunächst ein Seeding für die Daten in den Azure-Dateifreigaben ausgeführt wird, synchronisiert die Azure-Dateisynchronisierung fortlaufend mehrere Endpunkte.
 
 Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folgenden die Ergebnisse an, die bei den internen Tests auf einem System mit einer Konfiguration zustande kamen.
@@ -134,7 +134,7 @@ Der Durchsatz liegt bei 20 Objekten pro Sekunde. Kunden können die Dauer der a
 
 **Erstsynchronisierung von Daten von Windows Server mit der Azure-Dateifreigabe**: Viele Bereitstellungen einer Azure-Dateisynchronisierung beginnen mit einer leeren Azure-Dateifreigabe, weil alle Daten auf dem Windows-Server gespeichert sind. In diesen Fällen ist die anfängliche Enumeration von Cloudänderungen schnell, und der Großteil der Zeit wird für die Synchronisierung von Änderungen vom Windows-Server in die Azure-Dateifreigabe(n) benötigt. 
 
-Obwohl die Synchronisierung Daten in die Azure-Dateifreigabe hochlädt, gibt es auf dem lokalen Dateiserver keine Ausfallzeiten, und Administratoren können [Netzwerklimits einrichten](./storage-sync-files-server-registration.md#set-azure-file-sync-network-limits), um die für das Hochladen von Hintergrunddaten beanspruchte Bandbreite einzuschränken.
+Obwohl die Synchronisierung Daten in die Azure-Dateifreigabe hochlädt, gibt es auf dem lokalen Dateiserver keine Ausfallzeiten, und Administratoren können [Netzwerklimits einrichten](../file-sync/file-sync-server-registration.md#set-azure-file-sync-network-limits), um die für das Hochladen von Hintergrunddaten beanspruchte Bandbreite einzuschränken.
 
 Die Erstsynchronisierung wird normalerweise durch die anfängliche Uploadrate von 20 Dateien pro Sekunde pro Synchronisierungsgruppe begrenzt. Mithilfe der folgenden Formel zur Berechnung des Zeitraums in Tagen können Kunden schätzen, wie lange es dauert, bis alle ihre Daten in Azure hochgeladen sind:  
 
@@ -164,4 +164,4 @@ Als allgemeine Richtlinie für Ihre Bereitstellung sollten Sie einige Dinge ber�
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
-- [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)
+- [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md)

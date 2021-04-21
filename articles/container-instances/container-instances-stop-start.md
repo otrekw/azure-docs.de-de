@@ -3,12 +3,12 @@ title: Manuelles Beenden oder Starten von Containergruppen
 description: Hier erfahren Sie, wie Sie eine Containergruppe in Azure Container Instances manuell beenden oder starten.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 1801dad463d478c754e621dad0ae9406899ae7e3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 43498a7d31f0cb78751d2f318aede8523b7b9345
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198114"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786997"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Manuelles Beenden oder Starten von Containern in Azure Container Instances
 
@@ -55,6 +55,6 @@ Zusätzlich zum manuellen Beenden und Starten einer Containergruppe mit der vorh
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-restart]: /cli/azure/container#az-container-restart
-[az-container-start]: /cli/azure/container#az-container-start
-[az-container-stop]: /cli/azure/container#az-container-stop
+[az-container-restart]: /cli/azure/container#az_container_restart
+[az-container-start]: /cli/azure/container#az_container_start
+[az-container-stop]: /cli/azure/container#az_container_stop

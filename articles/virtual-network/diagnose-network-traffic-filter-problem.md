@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6835d06015923a70301c95370c76efbd0c2163e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98223668"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776733"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
 
@@ -115,7 +115,7 @@ In der vorherigen Ausgabe lautete der Netzwerkschnittstellenname *myVMVMNic*.
 
 Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für diesen Artikel ist die Azure CLI-Version 2.0.32 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
 
-Rufen Sie mit [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) die effektiven Sicherheitsregeln für eine Netzwerkschnittstelle ab. Im folgenden Beispiel werden die effektiven Sicherheitsregeln für eine Netzwerkschnittstelle mit dem Namen *myVMVMNic* abgerufen, die sich in einer Ressourcengruppe mit dem Namen *myResourceGroup* befindet:
+Rufen Sie mit [az network nic list-effective-nsg](/cli/azure/network/nic#az_network_nic_list_effective_nsg) die effektiven Sicherheitsregeln für eine Netzwerkschnittstelle ab. Im folgenden Beispiel werden die effektiven Sicherheitsregeln für eine Netzwerkschnittstelle mit dem Namen *myVMVMNic* abgerufen, die sich in einer Ressourcengruppe mit dem Namen *myResourceGroup* befindet:
 
 ```azurecli-interactive
 az network nic list-effective-nsg \
@@ -174,9 +174,9 @@ Unabhängig davon, ob Sie das im [Szenario](#scenario) dieses Artikels dargestel
 | Source port ranges      | Any                                                                                |
 | Destination             | Die IP-Adresse der VM, ein Bereich von IP-Adressen oder alle Adressen im Subnetz. |
 | Zielportbereiche | 80                                                                                 |
-| Protokoll                | TCP                                                                                |
-| Aktion                  | Zulassen                                                                              |
-| Priorität                | 100                                                                                |
+| Protocol                | TCP                                                                                |
+| Aktion                  | Allow                                                                              |
+| Priority                | 100                                                                                |
 | Name                    | Allow-HTTP-All                                                                     |
 
 Nachdem Sie die Regel erstellt haben, wird Port 80 eingehender Datenverkehr aus dem Internet erlaubt, da die Priorität der Regel höher ist als die Standardsicherheitsregel mit dem Namen *DenyAllInBound*, die den Datenverkehr ablehnt. Weitere Informationen finden Sie unter [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule). Wenn verschiedene NSGs sowohl der Netzwerkschnittstelle als auch dem Subnetz zugeordnet sind, müssen Sie die gleiche Regel in beiden NSGs erstellen.

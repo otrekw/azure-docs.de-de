@@ -14,12 +14,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 865ee3a5aeb8a2dd06d8759ba04d02259d2b4bee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffd4ec6eff94589abbc8af70ecf9c0f7dc168962
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359964"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766931"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Verwenden von PowerShell oder Azure CLI, um eine Verfügbarkeitsgruppe für SQL Server auf Azure-VMs zu konfigurieren 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -85,7 +85,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>Definieren von Clustermetadaten
 
-Die Azure CLI-Befehlsgruppe [az sql vm group](/cli/azure/sql/vm/group) verwaltet die Metadaten des Windows Server-Failoverclusterdiensts (WSFC), der die Verfügbarkeitsgruppe hostet. Zu den Clustermetadaten gehören die Active Directory-Domäne, Clusterkonten, als Cloudzeugen zu verwendende Speicherkonten und die SQL Server-Version. Verwenden Sie [az sql vm group create](/cli/azure/sql/vm/group#az-sql-vm-group-create), um die Metadaten für den WSFC zu definieren, sodass der Cluster beim Hinzufügen der ersten SQL Server-VM wie definiert erstellt wird. 
+Die Azure CLI-Befehlsgruppe [az sql vm group](/cli/azure/sql/vm/group) verwaltet die Metadaten des Windows Server-Failoverclusterdiensts (WSFC), der die Verfügbarkeitsgruppe hostet. Zu den Clustermetadaten gehören die Active Directory-Domäne, Clusterkonten, als Cloudzeugen zu verwendende Speicherkonten und die SQL Server-Version. Verwenden Sie [az sql vm group create](/cli/azure/sql/vm/group#az_sql_vm_group_create), um die Metadaten für den WSFC zu definieren, sodass der Cluster beim Hinzufügen der ersten SQL Server-VM wie definiert erstellt wird. 
 
 Im folgenden Codeausschnitt werden die Metadaten für den Cluster definiert:
 
@@ -130,7 +130,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>Hinzufügen von VMs zum Cluster
 
-Beim Hinzufügen der ersten SQL Server-VM zum Cluster wird der Cluster erstellt. Der Befehl [az sql vm add-to-group](/cli/azure/sql/vm#az-sql-vm-add-to-group) erstellt den Cluster mit dem zuvor gegebenen Namen, installiert die Clusterrolle in den SQL Server-VMs und fügt sie dem Cluster hinzu. Nachfolgende Verwendungen des Befehls `az sql vm add-to-group` fügen dem neu erstellten Cluster weitere SQL Server-VMs hinzu. 
+Beim Hinzufügen der ersten SQL Server-VM zum Cluster wird der Cluster erstellt. Der Befehl [az sql vm add-to-group](/cli/azure/sql/vm#az_sql-vm_add_to_group) erstellt den Cluster mit dem zuvor gegebenen Namen, installiert die Clusterrolle in den SQL Server-VMs und fügt sie dem Cluster hinzu. Nachfolgende Verwendungen des Befehls `az sql vm add-to-group` fügen dem neu erstellten Cluster weitere SQL Server-VMs hinzu. 
 
 Der folgende Codeausschnitt erstellt den Cluster und fügt ihm die erste SQL Server-VM hinzu: 
 
@@ -245,7 +245,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 
 ## <a name="create-listener"></a>Erstellen des Listeners
 
-Nachdem die Verfügbarkeitsgruppe manuell erstellt wurde, können Sie den Listener mithilfe von [az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-create) erstellen. 
+Nachdem die Verfügbarkeitsgruppe manuell erstellt wurde, können Sie den Listener mithilfe von [az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener#az_sql_vm_group_ag_listener_create) erstellen. 
 
 Die *Subnetzressourcen-ID* ist der Wert von `/subnets/<subnetname>`, der an die Ressourcen-ID der VNET-Ressource angehängt wurde. So bestimmen Sie die Subnetzressourcen-ID:
    1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Ressourcengruppe. 
@@ -299,7 +299,7 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 ---
 
 ## <a name="modify-number-of-replicas"></a>Ändern der Anzahl von Replikaten 
-Beim Bereitstellen einer Verfügbarkeitsgruppe auf SQL Server-VMs, die in Azure gehostet sind, muss zusätzliche Komplexität berücksichtigt werden. Der Ressourcenanbieter und die Gruppe der virtuellen Computer verwalten nun die Ressourcen. Beim Hinzufügen oder Entfernen von Replikaten zur bzw. aus der Verfügbarkeitsgruppe ist daher das Aktualisieren der Metadaten des Listeners mit Informationen zu den SQL Server-VMs als zusätzlicher Schritt auszuführen. Beim Ändern der Anzahl von Replikaten in der Verfügbarkeitsgruppe muss außerdem der Befehl [az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-update) verwendet werden, um den Listener mit den Metadaten der SQL Server-VMs zu aktualisieren. 
+Beim Bereitstellen einer Verfügbarkeitsgruppe auf SQL Server-VMs, die in Azure gehostet sind, muss zusätzliche Komplexität berücksichtigt werden. Der Ressourcenanbieter und die Gruppe der virtuellen Computer verwalten nun die Ressourcen. Beim Hinzufügen oder Entfernen von Replikaten zur bzw. aus der Verfügbarkeitsgruppe ist daher das Aktualisieren der Metadaten des Listeners mit Informationen zu den SQL Server-VMs als zusätzlicher Schritt auszuführen. Beim Ändern der Anzahl von Replikaten in der Verfügbarkeitsgruppe muss außerdem der Befehl [az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener#az_sql_vm_group_ag_listener_update) verwendet werden, um den Listener mit den Metadaten der SQL Server-VMs zu aktualisieren. 
 
 
 ### <a name="add-a-replica"></a>Hinzufügen eines Replikats

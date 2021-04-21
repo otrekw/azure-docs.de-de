@@ -3,12 +3,12 @@ title: Löschung des Bereitstellungsverlaufs
 description: Hier erfahren Sie, wie Azure Resource Manager Bereitstellungen automatisch aus dem Bereitstellungsverlauf löscht. Bereitstellungen werden gelöscht, wenn der Verlauf den Grenzwert von 800 Einträgen überschreitet.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 83383411ec317e228dabb14273e2b566792c774c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b55c022c35c43be6818bb3c551d5db85b1927ebb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732464"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781845"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische Löschungen aus dem Bereitstellungsverlauf
 
@@ -84,7 +84,7 @@ Um automatisches Löschen wieder zu aktivieren, verwenden Sie die Azure-REST-API
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie für die Azure CLI den Befehl [az feature register](/cli/azure/feature#az-feature-register).
+Verwenden Sie für die Azure CLI den Befehl [az feature register](/cli/azure/feature#az_feature_register).
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Resources --name DisableDeploymentGrooming
@@ -96,7 +96,7 @@ Verwenden Sie den folgenden Befehl, um den aktuellen Status Ihres Abonnements an
 az feature show --namespace Microsoft.Resources --name DisableDeploymentGrooming
 ```
 
-Um automatisches Löschen wieder zu aktivieren, verwenden Sie [az feature unregister](/cli/azure/feature#az-feature-unregister).
+Um automatisches Löschen wieder zu aktivieren, verwenden Sie [az feature unregister](/cli/azure/feature#az_feature_unregister).
 
 ```azurecli-interactive
 az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGrooming
@@ -104,7 +104,7 @@ az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGr
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-Verwenden Sie für die REST-API den Befehl [Features – Register](/rest/api/resources/features/features/register).
+Verwenden Sie für die REST-API den Befehl [Features – Register](/rest/api/resources/features/register).
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
@@ -116,7 +116,7 @@ Verwenden Sie den folgenden Befehl, um den aktuellen Status Ihres Abonnements an
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
 ```
 
-Um automatisches Löschen wieder zu aktivieren, verwenden Sie [Features: Registrierung aufheben](/rest/api/resources/features/features/unregister).
+Um automatisches Löschen wieder zu aktivieren, verwenden Sie [Features: Registrierung aufheben](/rest/api/resources/features/unregister).
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/unregister?api-version=2015-12-01

@@ -3,12 +3,12 @@ title: Leitfaden und bewährte Methoden
 description: Bewährte Methoden und Anleitungen zum Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14476533cf896434182e1d63f89c6a1279b36362
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593332"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519062"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 
@@ -261,4 +261,4 @@ Als Sicherungsbenutzer oder -administrator sollten Sie alle Sicherungslösungen 
 Wir empfehlen Ihnen, die folgenden Artikel als Ausgangspunkt für die Verwendung von Azure Backup zu lesen:
 
 * [Azure Backup: Übersicht](backup-overview.md)
-* [Häufig gestellte Fragen](backup-azure-backup-faq.md)
+* [Häufig gestellte Fragen](backup-azure-backup-faq.yml)

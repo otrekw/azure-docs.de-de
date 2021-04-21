@@ -4,12 +4,12 @@ description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Age
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4306f01d608542f7453b32b32a1a6894c2379159
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368595"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515021"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
@@ -196,7 +196,7 @@ Wir empfehlen die folgende Konfiguration für Ihre Antivirussoftware, um Konflik
 
 1. **Hinzufügen von Pfadausschlüssen**: Um eine Beeinträchtigung der Leistung und mögliche Konflikte zu vermeiden, schließen Sie die folgenden Pfade von der Echtzeitüberwachung durch die Antivirensoftware aus:
     1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` und Unterordner
-    1. **Ablageordner**: Wenn sich der Ablageordner nicht am Standardspeicherort befindet, fügen Sie ihn ebenfalls den Ausschlüssen hinzu.  [Hier finden Sie die Schritte](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible), mit denen Sie den Speicherort des Ablageordners bestimmen.
+    1. **Ablageordner**: Wenn sich der Ablageordner nicht am Standardspeicherort befindet, fügen Sie ihn ebenfalls den Ausschlüssen hinzu.  [Hier finden Sie die Schritte](backup-azure-file-folder-backup-faq.yml#how-to-check-if-scratch-folder-is-valid-and-accessible-), mit denen Sie den Speicherort des Ablageordners bestimmen.
 1. **Hinzufügen von Binärausschlüssen**: Um die Beeinträchtigung von Sicherungs- und Konsolenaktivitäten zu vermeiden, schließen Sie Prozesse für die folgenden Binärdateien von der Echtzeitüberwachung durch die Antivirussoftware aus:
     1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
 
@@ -207,4 +207,4 @@ Wir empfehlen die folgende Konfiguration für Ihre Antivirussoftware, um Konflik
 
 - Informationen zu unterstützten Szenarien und Einschränkungen finden Sie in der [Supportmatrix für den MARS-Agent](./backup-support-matrix-mars-agent.md).
 - Erfahren Sie mehr über die [Aufbewahrung bei Richtlinien für bedarfsgesteuerte Sicherungen](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior).
-- Weitere häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen – Microsoft Azure Recovery Services-Agent (MARS)](backup-azure-file-folder-backup-faq.md).
+- Weitere häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen – Microsoft Azure Recovery Services-Agent (MARS)](backup-azure-file-folder-backup-faq.yml).

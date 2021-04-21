@@ -3,12 +3,12 @@ title: Einbinden eines gitRepo-Volumes in eine Containergruppe
 description: Hier erfahren Sie, wie Sie ein gitRepo-Volume einbinden, um ein Git-Repository in Ihren Containerinstanzen zu klonen.
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c1249e3120dd680c52bf74fb045bedf5202b9f2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86260706"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763719"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Einbinden eines gitRepo-Volumes in Azure Container Instances
 
@@ -23,7 +23,7 @@ Das *gitRepo*-Volume bindet ein Verzeichnis ein und klont darin beim Containerst
 
 Wenn Sie ein *gitRepo*-Volume einbinden, können Sie zum Konfigurieren des Volumes drei Eigenschaften festlegen:
 
-| Eigenschaft | Erforderlich | BESCHREIBUNG |
+| Eigenschaft | Erforderlich | Beschreibung |
 | -------- | -------- | ----------- |
 | `repository` | Ja | Die vollständige URL (einschließlich `http://` bzw. `https://`) des zu klonenden Git-Repositorys|
 | `directory` | Nein | Das Verzeichnis, in dem das Repository geklont werden soll. Der Pfad darf `..` weder enthalten noch darf er damit beginnen.  Bei Angabe von `.` wird das Repository im Verzeichnis des Volumes geklont. Andernfalls wird das Git-Repository in einem Unterverzeichnis mit dem angegebenen Namen im Volumeverzeichnis geklont. |
@@ -115,5 +115,5 @@ Erfahren Sie, wie andere Volumetypen in Azure Container Instances bereitgestellt
 [pat-repos]: /azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-exec]: /cli/azure/container#az-container-exec
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-exec]: /cli/azure/container#az_container_exec

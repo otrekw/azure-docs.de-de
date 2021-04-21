@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c40bc01553b9e848d668c0a699e9dcc9929f079e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90055298"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779325"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Konfigurieren einer PHP-App für Azure App Service
 
@@ -243,7 +243,7 @@ getenv("DB_HOST")
 
 Das Webframework Ihrer Wahl verwendet möglicherweise ein Unterverzeichnis als Stammverzeichnis der Site. Beispielsweise verwendet [Laravel](https://laravel.com/) das Unterverzeichnis *public/* als Stammverzeichnis der Website.
 
-Um das Stammverzeichnis der Website anzupassen, legen Sie den virtuellen Anwendungspfad für die App mit dem Befehl [`az resource update`](/cli/azure/resource#az-resource-update) fest. Im folgenden Beispiel wird das Stammverzeichnis der Website auf das Unterverzeichnis *public/* in Ihrem Repository festgelegt. 
+Um das Stammverzeichnis der Website anzupassen, legen Sie den virtuellen Anwendungspfad für die App mit dem Befehl [`az resource update`](/cli/azure/resource#az_resource_update) fest. Im folgenden Beispiel wird das Stammverzeichnis der Website auf das Unterverzeichnis *public/* in Ihrem Repository festgelegt. 
 
 ```azurecli-interactive
 az resource update --name web --resource-group <group-name> --namespace Microsoft.Web --resource-type config --parent sites/<app-name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
@@ -492,4 +492,3 @@ Wenn sich eine funktionierende PHP-App in App Service anders verhält oder Fehle
 > [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.md)
 
 ::: zone-end
-

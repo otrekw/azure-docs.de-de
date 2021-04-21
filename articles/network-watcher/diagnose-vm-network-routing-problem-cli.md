@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 415fcc72116cc36644b58b619404d96ff63b024d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2ca7a3b25b1355e21782c1d9f736d20a14cbd4ac
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065904"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785449"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostizieren eines Netzwerkroutingproblems eines virtuellen Computers – Azure CLI
 
@@ -37,13 +37,13 @@ In diesem Artikel stellen Sie einen virtuellen Computer (Virtual Machine, VM) be
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
-Bevor Sie einen virtuellen Computer erstellen können, müssen Sie eine Ressourcengruppe erstellen, die den virtuellen Computer enthalten soll. Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Bevor Sie einen virtuellen Computer erstellen können, müssen Sie eine Ressourcengruppe erstellen, die den virtuellen Computer enthalten soll. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#az-vm-create) einen virtuellen Computer. Wenn SSH-Schlüssel nicht bereits an einem Standardschlüsselspeicherort vorhanden sind, werden sie durch den Befehl erstellt. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`. Im folgenden Beispiel wird ein virtueller Computer namens *myVm* erstellt:
+Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Wenn SSH-Schlüssel nicht bereits an einem Standardschlüsselspeicherort vorhanden sind, werden sie durch den Befehl erstellt. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`. Im folgenden Beispiel wird ein virtueller Computer namens *myVm* erstellt:
 
 ```azurecli-interactive
 az vm create \
@@ -61,7 +61,7 @@ Wenn Sie die Netzwerkkommunikation mit Network Watcher testen möchten, müssen 
 
 ### <a name="enable-network-watcher"></a>Aktivieren von Network Watcher
 
-Wenn Sie bereits über eine aktivierte Network Watcher-Instanz in der Region „USA, Osten“ verfügen, fahren Sie mit [Verwenden der Funktion „Nächster Hop“](#use-next-hop) fort. Erstellen Sie mithilfe des Befehls [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) eine Network Watcher-Instanz in der Region „USA, Osten“:
+Wenn Sie bereits über eine aktivierte Network Watcher-Instanz in der Region „USA, Osten“ verfügen, fahren Sie mit [Verwenden der Funktion „Nächster Hop“](#use-next-hop) fort. Erstellen Sie mithilfe des Befehls [az network watcher configure](/cli/azure/network/watcher#az_network_watcher_configure) eine Network Watcher-Instanz in der Region „USA, Osten“:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -72,7 +72,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>Verwenden der Funktion „Nächster Hop“
 
-Azure erstellt automatisch Routen zu Standardzielen. Sie können benutzerdefinierte Routen erstellen, mit denen die Standardrouten außer Kraft gesetzt werden. In manchen Fällen können benutzerdefinierte Routen zu Fehlern bei der Kommunikation führen. Verwenden Sie zum Testen des Routings von einem virtuellen Computer den Befehl [az network watcher show-next-hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop), um den nächsten Routinghop zu ermitteln, wenn der Datenverkehr für eine bestimmte Adresse bestimmt ist.
+Azure erstellt automatisch Routen zu Standardzielen. Sie können benutzerdefinierte Routen erstellen, mit denen die Standardrouten außer Kraft gesetzt werden. In manchen Fällen können benutzerdefinierte Routen zu Fehlern bei der Kommunikation führen. Verwenden Sie zum Testen des Routings von einem virtuellen Computer den Befehl [az network watcher show-next-hop](/cli/azure/network/watcher#az_network_watcher_show_next_hop), um den nächsten Routinghop zu ermitteln, wenn der Datenverkehr für eine bestimmte Adresse bestimmt ist.
 
 Testen Sie die ausgehende Kommunikation des virtuellen Computers mit einer der IP-Adressen für www.bing.com:
 
@@ -104,7 +104,7 @@ In der zurückgegebenen Ausgabe werden Sie darüber informiert, dass **Keiner** 
 
 ## <a name="view-details-of-a-route"></a>Anzeigen von Details einer Route
 
-Zur weiteren Analyse des Routings überprüfen Sie die effektiven Routen für die Netzwerkschnittstelle mit dem Befehl [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table):
+Zur weiteren Analyse des Routings überprüfen Sie die effektiven Routen für die Netzwerkschnittstelle mit dem Befehl [az network nic show-effective-route-table](/cli/azure/network/nic#az_network_nic_show_effective_route_table):
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -154,7 +154,7 @@ Wie Sie in der Ausgabe des Befehls `az network watcher nic show-effective-route-
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit [az group delete](/cli/azure/group#az-group-delete) entfernen:
+Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit [az group delete](/cli/azure/group#az_group_delete) entfernen:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes

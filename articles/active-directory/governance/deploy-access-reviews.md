@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af783d7ff8be36c63af871ab4f2d214ca9f9405
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97932434"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532589"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -474,7 +474,7 @@ Folgen Sie den Anweisungen unter den nachstehenden Links:
 
 ## <a name="use-the-access-reviews-api"></a>Verwenden der Zugriffsüberprüfungs-API
 
-Weitere Informationen zur Verwendung und Verwaltung von überprüfbaren Ressourcen finden Sie unter [Graph-API-Methoden](/graph/api/resources/accessreviews-root?view=graph-rest-beta) und [Autorisierungsüberprüfungen für Rollen- und Anwendungsberechtigungen](/graph/api/resources/accessreviews-root?view=graph-rest-beta). Die Zugriffsüberprüfungsmethoden in der Microsoft Graph-API stehen im Anwendungs- und Benutzerkontext zur Verfügung. Beim Ausführen von Skripts im Anwendungskontext muss dem Konto, das zum Ausführen der API verwendet wird (d. h. dem Dienstprinzipal), die Berechtigung „AccessReview.Read.All“ erteilt werden, um Informationen über Zugriffsüberprüfungen abfragen zu können.
+Weitere Informationen zur Verwendung und Verwaltung von überprüfbaren Ressourcen finden Sie unter [Graph-API-Methoden](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true) und [Autorisierungsüberprüfungen für Rollen- und Anwendungsberechtigungen](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true). Die Zugriffsüberprüfungsmethoden in der Microsoft Graph-API stehen im Anwendungs- und Benutzerkontext zur Verfügung. Beim Ausführen von Skripts im Anwendungskontext muss dem Konto, das zum Ausführen der API verwendet wird (d. h. dem Dienstprinzipal), die Berechtigung „AccessReview.Read.All“ erteilt werden, um Informationen über Zugriffsüberprüfungen abfragen zu können.
 
 Gängige Aufgaben bei Zugriffsüberprüfungen, die mit der Graph-API für Zugriffsüberprüfungen automatisiert werden können:
 

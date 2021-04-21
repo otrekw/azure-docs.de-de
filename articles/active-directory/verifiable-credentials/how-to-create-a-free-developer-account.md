@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 1e8bb59c09622a39dad680940ff34e643ee0cc3b
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a50c8b083c1cd453dbe3c51c63ec9cf53859c3bd
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222740"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587264"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>Erstellen eines kostenlosen Azure Active Directory-Entwicklermandanten
 
@@ -45,7 +45,7 @@ Die Registrierung für das kostenlose Microsoft 365-Entwicklerprogramm ist ganz
 
 Sie haben nun einen Mandanten mit 25 E5-Benutzerlizenzen erstellt. Die E5-Lizenzen enthalten Azure AD P2-Lizenzen. Sie können optional Beispieldatenpakete mit Benutzern, Gruppen, E-Mails und SharePoint hinzufügen, um das Testen in der Entwicklungsumgebung zu erleichtern. Für den Dienst zum Ausstellen von Nachweisen sind sie allerdings nicht erforderlich.
 
-Der Einfachheit halber können Sie Ihr eigenes Geschäftskonto in dem neu erstellten Mandanten als [Gast](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) hinzufügen und dieses Konto zum Verwalten des Mandanten verwenden. Um die Verwaltung des Nachweisdiensts über das Gastkonto zu ermöglichen, muss dem entsprechenden Benutzer die Rolle „Globaler Administrator“ zugewiesen werden.
+Der Einfachheit halber können Sie Ihr eigenes Geschäftskonto in dem neu erstellten Mandanten als [Gast](/azure/active-directory/external-identities/b2b-quickstart-add-guest-users-portal) hinzufügen und dieses Konto zum Verwalten des Mandanten verwenden. Um die Verwaltung des Nachweisdiensts über das Gastkonto zu ermöglichen, muss dem entsprechenden Benutzer die Rolle „Globaler Administrator“ zugewiesen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

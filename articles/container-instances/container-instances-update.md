@@ -3,12 +3,12 @@ title: Aktualisieren einer Containergruppe
 description: Hier erfahren Sie, wie Sie ausgeführte Container in Ihren Azure Container Instances-Containergruppen aktualisieren.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: fb31eeda83532c408a303e879439006bcd7d4e45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cbb2e830490d2591645b8156ee830856da0f9049
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200647"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786961"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualisieren von Containern in Azure Container Instances
 
@@ -89,6 +89,6 @@ Die **Containergruppe** wurde in diesem Artikel bereits mehrmals erwähnt. Jeder
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
+[az-container-create]: /cli/azure/container#az_container_create
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-container-export]: /cli/azure/container#az-container-export
+[az-container-export]: /cli/azure/container#az_container_export

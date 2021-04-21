@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c779e95b790d91b801d5d35b4702191f5e7986d5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b93fb61cc58360ddfcf15d2af2c936203d869500
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802963"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771531"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -248,7 +248,7 @@ Nach dem Speichern der Einstellung wird der angegebene Prozentsatz von Clients n
 Sobald ein Client automatisch an einen bestimmten Slot weitergeleitet wird, ist er für die Dauer der Clientsitzung auf diesen Slot festgelegt. Im Clientbrowser sehen Sie anhand des Cookies `x-ms-routing-name` in Ihren HTTP-Headern, mit welchem Slot Ihre Sitzung verknüpft ist. Anforderungen, die an den Stagingslot weitergeleitet werden, haben das Cookie `x-ms-routing-name=staging`. Anforderungen, die an den Produktionsslot weitergeleitet werden, haben das Cookie `x-ms-routing-name=self`.
 
    > [!NOTE]
-   > Neben dem Azure-Portal können Sie auch den Befehl [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) in der Azure-Befehlszeilenschnittstelle verwenden, um die Prozentwerte für das Routing von CI/CD-Tools wie DevOps-Pipelines oder anderen Automatisierungssystemen festzulegen.
+   > Neben dem Azure-Portal können Sie auch den Befehl [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az_webapp_traffic_routing_set) in der Azure-Befehlszeilenschnittstelle verwenden, um die Prozentwerte für das Routing von CI/CD-Tools wie DevOps-Pipelines oder anderen Automatisierungssystemen festzulegen.
    > 
 
 ### <a name="route-production-traffic-manually"></a>Manuelles Weiterleiten von Produktionsdatenverkehr
