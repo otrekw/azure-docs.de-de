@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 8e9656aa1f850dc9e59ab71b5df605df8dd49269
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 882a9fb0f8d528ca21cdc8149c60b9d5bdaf1723
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732804"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767093"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service
 
@@ -160,7 +160,7 @@ Nach Abschluss der Befehlsausführung wird ein JSON-Objekt mit verschiedenen Ver
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> `-l <location-name>`: Kann auf eine beliebige [Azure-Region](https://azure.microsoft.com/global-infrastructure/regions/) festgelegt werden. Sie können die Regionen, die für Ihr Abonnement verfügbar sind, mit dem [`az account list-locations`](/cli/azure/account#az-account-list-locations)-Befehl abrufen. Legen Sie bei Produktions-Apps für Ihre Datenbank und Ihre App den gleichen Standort fest.
+> `-l <location-name>`: Kann auf eine beliebige [Azure-Region](https://azure.microsoft.com/global-infrastructure/regions/) festgelegt werden. Sie können die Regionen, die für Ihr Abonnement verfügbar sind, mit dem [`az account list-locations`](/cli/azure/account#az_account_list_locations)-Befehl abrufen. Legen Sie bei Produktions-Apps für Ihre Datenbank und Ihre App den gleichen Standort fest.
 
 Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -172,7 +172,7 @@ In diesem Abschnitt erstellen Sie einen App-Host in der App Service-App, verbin
 
 Vergewissern Sie sich im Terminal, dass Sie sich im Repositoryordner *djangoapp* befinden, der den App-Code enthält.
 
-Erstellen Sie mithilfe des Befehls [`az webapp up`](/cli/azure/webapp#az-webapp-up) eine App Service-App (den Hostprozess):
+Erstellen Sie mithilfe des Befehls [`az webapp up`](/cli/azure/webapp#az_webapp_up) eine App Service-App (den Hostprozess):
 
 ```azurecli
 az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --plan DjangoPostgres-tutorial-plan --sku B1 --name <app-name>
@@ -205,7 +205,7 @@ Nachdem der Code nun in App Service bereitgestellt ist, muss als Nächstes eine 
 
 Vom App-Code werden Datenbankinformationen in vier Umgebungsvariablen namens `DBHOST`, `DBNAME`, `DBUSER` und `DBPASS` erwartet.
 
-Mithilfe des folgenden Befehls [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) werden App-Einstellungen erstellt, um Umgebungsvariablen in App Service festzulegen:
+Mithilfe des folgenden Befehls [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) werden App-Einstellungen erstellt, um Umgebungsvariablen in App Service festzulegen:
 
 ```azurecli
 az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"

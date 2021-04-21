@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 6f56b9fb1f6a1f5a1fe0811617fb20412c52fd72
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3476e5fa2c274f0fc2c180711480375b0ebefaf2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450839"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388039"
 ---
 # <a name="quickstart-create-an-azure-route-server-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure Route Servers mit einer ARM-Vorlage
 
@@ -41,9 +41,9 @@ In der Vorlage wurden mehrere Azure-Ressourcen definiert:
 
 * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
 * [**Microsoft.Network/virtualNetworks/subnets**](/azure/templates/microsoft.network/virtualNetworks/subnets): (zwei Subnetze, eines mit dem Name `routeserversubnet`)
-* [**Microsoft. Network/virtualhubs**](/azure.templates/microsoft.network/virtualhubs) (Bereitstellung von Route Server)
-* [**Microsoft.Network/virtualHubs/ipConfigurations**](/azure.templates/microsoft.network/virtualhubs/ipConfigurations)
-* [**Microsoft. Network/virtualhubs/bgpConnections**](/azure.templates/microsoft.network/virtualhubs/bgpConnections) (Peer-ASN und Peer-IP-Konfiguration)
+* [**Microsoft. Network/virtualhubs**](/azure/templates/microsoft.network/virtualhubs) (Bereitstellung von Route Server)
+* [**Microsoft.Network/virtualHubs/ipConfigurations**](/azure/templates/microsoft.network/virtualhubs/ipConfigurations)
+* [**Microsoft. Network/virtualhubs/bgpConnections**](/azure/templates/microsoft.network/virtualhubs/bgpconnections) (Peer-ASN und Peer-IP-Konfiguration)
 
 
 Weitere Vorlagen zu ExpressRoute finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).

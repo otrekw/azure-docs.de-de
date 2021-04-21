@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 315519472baa672e802855b5ab21b8bae8f51935
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d03a4865c8db52f74f4130c458fec3028f5b95a4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109848"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481666"
 ---
 # <a name="what-is-azure-digital-twins"></a>Was ist Azure Digital Twins?
 
@@ -102,6 +102,6 @@ Eine Liste allgemeiner **IOT-Begriffe** und ihrer Verwendungsmöglichkeiten für
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit der Verwendung von Azure Digital Twins vertraut: [*Schnellstart: Erkunden eines Beispielszenarios*](quickstart-adt-explorer.md).
+* Machen Sie sich mit der Verwendung von Azure Digital Twins vertraut: [*Schnellstart: Erkunden eines Beispielszenarios*](quickstart-azure-digital-twins-explorer.md).
 
 * Informieren Sie sich über Konzepte für Azure Digital Twins:[ *Grundlegendes zu Zwillingsmodellen in Azure Digital Twins*](concepts-models.md).

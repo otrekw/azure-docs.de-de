@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 16320021ede4a4e285c4e1973c166d2cdf643c4a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221125"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529526"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mithilfe des Azure-Portals
 
@@ -133,7 +133,6 @@ In diesem Abschnitt wird eine Lastenausgleichsregel mit folgenden Merkmalen erst
     | Port | Geben Sie **80** ein.|
     | Back-End-Port | Geben Sie **80** ein. |
     | Back-End-Pool | Wählen Sie **myBackendPool** aus.|
-    | Integritätstest | Wählen Sie **myHealthProbe** aus. |
     | Leerlaufzeitüberschreitung (Minuten) | Bewegen Sie den Schieberegler auf **15**. |
     | TCP-Zurücksetzung | Wählen Sie **Aktiviert**. |
 

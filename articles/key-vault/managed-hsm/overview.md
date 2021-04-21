@@ -10,14 +10,14 @@ ms.custom: mvc
 ms.date: 04/01/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 605e3f0451cc2029ecc98e42741f30a2d3ef190b
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: b56031d131743a3dc8c97bcd3e85d4653cdd2833
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167956"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484182"
 ---
-# <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Was ist verwaltetes HSM von Azure Key Vault (Vorschauversion)?
+# <a name="what-is-azure-key-vault-managed-hsm"></a>Was ist verwaltetes HSM von Azure Key Vault?
 
 Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfügbarer und standardkonformer Einzelmandanten-Clouddienst, der es Ihnen ermöglicht, kryptografische Schlüssel für Ihre Cloudanwendungen über HSMs zu schützen, die mit **FIPS 140-2 Level 3** validiert sind.  
 

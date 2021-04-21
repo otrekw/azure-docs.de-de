@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 668988ae34c2f97f3baca3f360c13e3ec3e30731
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 771c79f56a31c83f2152886ad6cf68367776f83f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586344"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767226"
 ---
 # <a name="app-service-overview"></a>App Service: Übersicht
 
@@ -44,7 +44,7 @@ Von App Service können Web-Apps für unterstützte Anwendungsstapel auch nativ 
 
 ### <a name="built-in-languages-and-frameworks"></a>Integrierte Sprachen und Frameworks
 
-Von App Service für Linux wird eine Reihe von sprachspezifischen integrierten Images unterstützt. Stellen Sie einfach Ihren Code bereit. Unterstützte Sprachen: Node.js, Java (JRE 8 und JRE 11), PHP, Python, .NET Core und Ruby. Führen Sie [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) aus, um die neuesten Sprachen und unterstützten Versionen anzuzeigen. Sollte die für Ihre Anwendung erforderliche Runtime in den integrierten Images nicht unterstützt werden, können Sie sie mit einem benutzerdefinierten Container bereitstellen.
+Von App Service für Linux wird eine Reihe von sprachspezifischen integrierten Images unterstützt. Stellen Sie einfach Ihren Code bereit. Unterstützte Sprachen: Node.js, Java (JRE 8 und JRE 11), PHP, Python, .NET Core und Ruby. Führen Sie [`az webapp list-runtimes --linux`](/cli/azure/webapp#az_webapp_list_runtimes) aus, um die neuesten Sprachen und unterstützten Versionen anzuzeigen. Sollte die für Ihre Anwendung erforderliche Runtime in den integrierten Images nicht unterstützt werden, können Sie sie mit einem benutzerdefinierten Container bereitstellen.
 
 Veraltete Runtimes werden in regelmäßigen Abständen von den Blättern zum Erstellen und Konfigurieren von Web-Apps im Portal entfernt. Diese Runtimes werden im Portal ausgeblendet, wenn sie von der für die Wartung zuständigen Organisation als veraltet eingestuft werden oder wenn bedeutende Sicherheitsrisiken dafür ermittelt wurden. Diese Optionen werden ausgeblendet, damit Kunden zu den neuesten Runtimes gelangen, mit denen sie am besten arbeiten können. 
 

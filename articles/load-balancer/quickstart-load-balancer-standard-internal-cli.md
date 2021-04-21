@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 66b3db9a7aec45a2a0881379db6f7ef51950b5c5
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 2db30024b26352bcc038d606bcdc760b6350d413
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364310"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788833"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-by-using-the-azure-cli"></a>Schnellstart: Erstellen eines internen Load Balancers mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -60,7 +60,7 @@ Erstellen Sie zunächst die unterstützenden virtuellen Netzwerkressourcen, bevo
 
 #### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) ein virtuelles Netzwerk. Geben Sie Folgendes an:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk. Geben Sie Folgendes an:
 
 * Name: **myVNet**
 * Adresspräfix: **10.1.0.0/16**
@@ -81,7 +81,7 @@ Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-network-vn
 
 #### <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
 
-Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create), um eine öffentliche IP-Adresse für den Azure Bastion-Host zu erstellen. Geben Sie Folgendes an:
+Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create), um eine öffentliche IP-Adresse für den Azure Bastion-Host zu erstellen. Geben Sie Folgendes an:
 
 * Erstellen einer standardmäßigen zonenredundanten öffentlichen IP-Adresse namens **myBastionIP**
 * In **CreateIntLBQS-rg**
@@ -94,7 +94,7 @@ az network public-ip create \
 ```
 #### <a name="create-an-azure-bastion-subnet"></a>Erstellen eines Azure Bastion-Subnetzes
 
-Erstellen Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) ein Subnetz. Geben Sie Folgendes an:
+Erstellen Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) ein Subnetz. Geben Sie Folgendes an:
 
 * Name: **AzureBastionSubnet**
 * Adresspräfix: **10.1.1.0/24**
@@ -111,7 +111,7 @@ az network vnet subnet create \
 
 #### <a name="create-an-azure-bastion-host"></a>Erstellen eines Azure Bastion-Hosts
 
-Erstellen Sie mit [az network bastion create](/cli/azure/network/bastion#az-network-bastion-create) einen Host. Geben Sie Folgendes an:
+Erstellen Sie mit [az network bastion create](/cli/azure/network/bastion#az_network_bastion_create) einen Host. Geben Sie Folgendes an:
 
 * Name: **myBastionHost**
 * In **CreateIntLBQS-rg**
@@ -132,7 +132,7 @@ Die Bereitstellung des Azure Bastion-Hosts kann einige Minuten dauern.
 
 #### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
-Für einen Standard-Lastenausgleich stellen Sie sicher, dass Ihre virtuellen Computer über Netzwerkschnittstellen verfügen, die einer Netzwerksicherheitsgruppe angehören. Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) eine Netzwerksicherheitsgruppe. Geben Sie Folgendes an:
+Für einen Standard-Lastenausgleich stellen Sie sicher, dass Ihre virtuellen Computer über Netzwerkschnittstellen verfügen, die einer Netzwerksicherheitsgruppe angehören. Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) eine Netzwerksicherheitsgruppe. Geben Sie Folgendes an:
 
 * Name: **myNSG**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -145,7 +145,7 @@ Für einen Standard-Lastenausgleich stellen Sie sicher, dass Ihre virtuellen Com
 
 #### <a name="create-a-network-security-group-rule"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel
 
-Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) eine Netzwerksicherheitsgruppen-Regel. Geben Sie Folgendes an:
+Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) eine Netzwerksicherheitsgruppen-Regel. Geben Sie Folgendes an:
 
 * Name: **myNSGRuleHTTP**
 * Netzwerksicherheitsgruppe: **myNSG** (aus dem vorherigen Schritt)
@@ -182,7 +182,7 @@ In diesem Abschnitt wird Folgendes erstellt:
 
 #### <a name="create-network-interfaces-for-the-virtual-machines"></a>Erstellen von Netzwerkschnittstellen für die virtuellen Computer
 
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-create) drei Netzwerkschnittstellen. Geben Sie Folgendes an:
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) drei Netzwerkschnittstellen. Geben Sie Folgendes an:
 
 * Namen: **myNicVM1**, **myNicVM2** und **myNicVM3**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -205,7 +205,7 @@ Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-
 
 #### <a name="create-the-virtual-machines"></a>Erstellen der virtuellen Computer
 
-Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-create). Geben Sie Folgendes an:
+Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create). Geben Sie Folgendes an:
 
 * Namen: **myVM1**, **myVM2** und **myVM3**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -230,6 +230,9 @@ Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-cre
 
 Die Bereitstellung der virtuellen Computer kann eine Weile dauern.
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
+
 ### <a name="create-the-load-balancer"></a>Erstellen des Lastenausgleichs
 
 In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
@@ -241,7 +244,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenau
 
 #### <a name="create-the-load-balancer-resource"></a>Erstellen der Lastenausgleichsressource
 
-Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az-network-lb-create) einen öffentlichen Lastenausgleich. Geben Sie Folgendes an:
+Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az_network_lb_create) einen öffentlichen Lastenausgleich. Geben Sie Folgendes an:
 
 * Name: **myLoadBalancer**
 * Ein Pool mit Namen **myFrontEnd**
@@ -264,7 +267,7 @@ Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az-network-lb-cre
 
 Von einem Integritätstest werden alle VM-Instanzen überprüft, um sicherzustellen, dass sie Netzwerkdatenverkehr senden können. Ist der Test bei einem virtuellen Computer nicht erfolgreich, wird er aus dem Lastenausgleich entfernt. Nach Behebung des Fehlers wird der virtuelle Computer dem Lastenausgleich wieder hinzugefügt.
 
-Erstellen Sie mit [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) den Integritätstest. Geben Sie Folgendes an:
+Erstellen Sie mit [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) den Integritätstest. Geben Sie Folgendes an:
 
 * Überwacht die Integrität der virtuellen Computer
 * Name: **myHealthProbe**
@@ -288,7 +291,7 @@ Durch eine Lastenausgleichsregel wird Folgendes definiert:
 * Der IP-Pool zum Empfangen des Datenverkehrs.
 * Erforderliche Quell- und Zielports. 
 
-Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) eine Load Balancer-Regel. Geben Sie Folgendes an:
+Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) eine Load Balancer-Regel. Geben Sie Folgendes an:
 
 * Name: **myHTTPRule**
 * Lauscht am **Port 80** im Pool **myFrontEnd**
@@ -315,7 +318,7 @@ Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az-netw
 
 #### <a name="add-vms-to-the-load-balancer-pool"></a>Anfügen von virtuellen Computern an den Lastenausgleichspool
 
-Fügen Sie mit [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add) die virtuellen Computer dem Back-End-Pool hinzu. Geben Sie Folgendes an:
+Fügen Sie mit [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add) die virtuellen Computer dem Back-End-Pool hinzu. Geben Sie Folgendes an:
 
 * Adresspool: **myBackEndPool**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -351,7 +354,7 @@ Erstellen Sie zunächst die unterstützenden virtuellen Netzwerkressourcen, bevo
 
 #### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-network-vnet-createt) ein virtuelles Netzwerk. Geben Sie Folgendes an:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_createt) ein virtuelles Netzwerk. Geben Sie Folgendes an:
 
 * Name: **myVNet**
 * Adresspräfix: **10.1.0.0/16**
@@ -372,7 +375,7 @@ Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-network-vn
 
 #### <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
 
-Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create), um eine öffentliche IP-Adresse für den Azure Bastion-Host zu erstellen. Geben Sie Folgendes an:
+Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create), um eine öffentliche IP-Adresse für den Azure Bastion-Host zu erstellen. Geben Sie Folgendes an:
 
 * Erstellen einer standardmäßigen zonenredundanten öffentlichen IP-Adresse namens **myBastionIP**
 * In **CreateIntLBQS-rg**
@@ -385,7 +388,7 @@ az network public-ip create \
 ```
 #### <a name="create-an-azure-bastion-subnet"></a>Erstellen eines Azure Bastion-Subnetzes
 
-Erstellen Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) ein Subnetz. Geben Sie Folgendes an:
+Erstellen Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) ein Subnetz. Geben Sie Folgendes an:
 
 * Name: **AzureBastionSubnet**
 * Adresspräfix: **10.1.1.0/24**
@@ -402,7 +405,7 @@ az network vnet subnet create \
 
 #### <a name="create-an-azure-bastion-host"></a>Erstellen eines Azure Bastion-Hosts
 
-Erstellen Sie mit [az network bastion create](/cli/azure/network/bastion#az-network-bastion-create) einen Host. Geben Sie Folgendes an:
+Erstellen Sie mit [az network bastion create](/cli/azure/network/bastion#az_network_bastion_create) einen Host. Geben Sie Folgendes an:
 
 * Name: **myBastionHost**
 * In **CreateIntLBQS-rg**
@@ -423,7 +426,7 @@ Die Bereitstellung des Azure Bastion-Hosts kann einige Minuten dauern.
 
 #### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
-Für einen Standard-Lastenausgleich stellen Sie sicher, dass Ihre virtuellen Computer über Netzwerkschnittstellen verfügen, die einer Netzwerksicherheitsgruppe angehören. Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) eine Netzwerksicherheitsgruppe. Geben Sie Folgendes an:
+Für einen Standard-Lastenausgleich stellen Sie sicher, dass Ihre virtuellen Computer über Netzwerkschnittstellen verfügen, die einer Netzwerksicherheitsgruppe angehören. Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) eine Netzwerksicherheitsgruppe. Geben Sie Folgendes an:
 
 * Name: **myNSG**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -436,7 +439,7 @@ Für einen Standard-Lastenausgleich stellen Sie sicher, dass Ihre virtuellen Com
 
 #### <a name="create-a-network-security-group-rule"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel
 
-Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) eine Netzwerksicherheitsgruppen-Regel. Geben Sie Folgendes an:
+Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) eine Netzwerksicherheitsgruppen-Regel. Geben Sie Folgendes an:
 
 * Name: **myNSGRuleHTTP**
 * Netzwerksicherheitsgruppe: **myNSG** (aus dem vorherigen Schritt)
@@ -474,7 +477,7 @@ In diesem Abschnitt wird Folgendes erstellt:
 
 #### <a name="create-network-interfaces-for-the-virtual-machines"></a>Erstellen von Netzwerkschnittstellen für die virtuellen Computer
 
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-create) drei Netzwerkschnittstellen. Geben Sie Folgendes an:
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) drei Netzwerkschnittstellen. Geben Sie Folgendes an:
 
 * Namen: **myNicVM1**, **myNicVM2** und **myNicVM3**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -497,7 +500,7 @@ Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-
 
 #### <a name="create-the-availability-set-for-the-virtual-machines"></a>Erstellen der Verfügbarkeitsgruppe für die virtuellen Computer
 
-Erstellen Sie mithilfe von [az vm availability-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create) die Verfügbarkeitsgruppe. Geben Sie Folgendes an:
+Erstellen Sie mithilfe von [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) die Verfügbarkeitsgruppe. Geben Sie Folgendes an:
 
 * Name: **myAvailabilitySet**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -513,7 +516,7 @@ Erstellen Sie mithilfe von [az vm availability-set create](/cli/azure/vm/availab
 
 #### <a name="create-the-virtual-machines"></a>Erstellen der virtuellen Computer
 
-Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-create). Geben Sie Folgendes an:
+Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create). Geben Sie Folgendes an:
 
 * Namen: **myVM1**, **myVM2** und **myVM3**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -538,6 +541,9 @@ Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-cre
 ```
 Die Bereitstellung der virtuellen Computer kann eine Weile dauern.
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
+
 ### <a name="create-the-load-balancer"></a>Erstellen des Lastenausgleichs
 
 In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
@@ -549,7 +555,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenau
 
 #### <a name="create-the-load-balancer-resource"></a>Erstellen der Lastenausgleichsressource
 
-Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az-network-lb-create) einen öffentlichen Lastenausgleich. Geben Sie Folgendes an:
+Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az_network_lb_create) einen öffentlichen Lastenausgleich. Geben Sie Folgendes an:
 
 * Name: **myLoadBalancer**
 * Ein Pool mit Namen **myFrontEnd**
@@ -572,7 +578,7 @@ Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az-network-lb-cre
 
 Von einem Integritätstest werden alle VM-Instanzen überprüft, um sicherzustellen, dass sie Netzwerkdatenverkehr senden können. Ist der Test bei einem virtuellen Computer nicht erfolgreich, wird er aus dem Lastenausgleich entfernt. Nach Behebung des Fehlers wird der virtuelle Computer dem Lastenausgleich wieder hinzugefügt.
 
-Erstellen Sie mit [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) den Integritätstest. Geben Sie Folgendes an:
+Erstellen Sie mit [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) den Integritätstest. Geben Sie Folgendes an:
 
 * Überwacht die Integrität der virtuellen Computer
 * Name: **myHealthProbe**
@@ -596,7 +602,7 @@ Durch eine Lastenausgleichsregel wird Folgendes definiert:
 * Der IP-Pool zum Empfangen des Datenverkehrs.
 * Erforderliche Quell- und Zielports. 
 
-Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) eine Load Balancer-Regel. Geben Sie Folgendes an:
+Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) eine Load Balancer-Regel. Geben Sie Folgendes an:
 
 * Name: **myHTTPRule**
 * Lauscht am **Port 80** im Pool **myFrontEnd**
@@ -620,7 +626,7 @@ Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az-netw
 ```
 #### <a name="add-vms-to-the-load-balancer-pool"></a>Anfügen von virtuellen Computern an den Lastenausgleichspool
 
-Fügen Sie mit [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add) die virtuellen Computer dem Back-End-Pool hinzu. Geben Sie Folgendes an:
+Fügen Sie mit [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add) die virtuellen Computer dem Back-End-Pool hinzu. Geben Sie Folgendes an:
 
 * Adresspool: **myBackEndPool**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -643,7 +649,7 @@ Fügen Sie mit [az network nic ip-config address-pool add](/cli/azure/network/ni
 ---
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
 
-Erstellen Sie die Netzwerkschnittstelle mit [az network nic create](/cli/azure/network/nic#az-network-nic-create). Geben Sie Folgendes an:
+Erstellen Sie die Netzwerkschnittstelle mit [az network nic create](/cli/azure/network/nic#az_network_nic_create). Geben Sie Folgendes an:
 
 * Name: **myNicTestVM**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -659,7 +665,7 @@ Erstellen Sie die Netzwerkschnittstelle mit [az network nic create](/cli/azure/n
     --subnet myBackEndSubnet \
     --network-security-group myNSG
 ```
-Erstellen Sie den virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-create). Geben Sie Folgendes an:
+Erstellen Sie den virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create). Geben Sie Folgendes an:
 
 * Name: **myTestVM**
 * Ressourcengruppe: **CreateIntLBQS-rg**
@@ -720,7 +726,7 @@ Um zu sehen, wie Datenverkehr durch den Lastenausgleich auf alle drei virtuellen
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Verwenden Sie den Befehl [az group delete](/cli/azure/group#az-group-delete), um die Ressourcengruppe, den Lastenausgleich und alle zugehörigen Ressourcen zu entfernen, wenn Sie Ihre Ressourcen nicht mehr benötigen.
+Verwenden Sie den Befehl [az group delete](/cli/azure/group#az_group_delete), um die Ressourcengruppe, den Lastenausgleich und alle zugehörigen Ressourcen zu entfernen, wenn Sie Ihre Ressourcen nicht mehr benötigen.
 
 ```azurecli-interactive
   az group delete \

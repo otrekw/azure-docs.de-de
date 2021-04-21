@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 99e3611711e9a25119a4428d7736a36073163894
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b737ea751d3b3d2132691e04a1a2cd853748db65
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877116"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792505"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Tutorial: Verwenden einer verwalteten Identität zum Aufrufen von Azure Functions über eine Azure Spring Cloud-App
 
@@ -29,7 +29,7 @@ Die Unterstützung der Azure AD-Authentifizierung (Azure Active Directory) ist 
 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine einzelne Ressourcengruppe für die Funktions-App und für Spring Cloud:
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az_group_create) eine einzelne Ressourcengruppe für die Funktions-App und für Spring Cloud:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktions-App
-Um eine Funktions-App erstellen zu können, müssen Sie zunächst ein unterstützendes Speicherkonto erstellen. Verwenden Sie dazu den Befehl [az storage account create](/cli/azure/storage/account#az-storage-account-create):
+Um eine Funktions-App erstellen zu können, müssen Sie zunächst ein unterstützendes Speicherkonto erstellen. Verwenden Sie dazu den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create):
 
 > [!Important]
 > Jede Funktions-App und jedes Speicherkonto muss über einen eindeutigen Namen verfügen. Ersetzen Sie in den folgenden Beispielen „<your-functionapp-name>“ durch den Namen Ihrer Funktions-App und „<your-storageaccount-name>“ durch den Namen Ihres Speicherkontos.

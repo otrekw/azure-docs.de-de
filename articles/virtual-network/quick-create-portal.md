@@ -3,20 +3,23 @@ title: 'Schnellstart: Erstellen eines virtuellen Netzwerks – Azure-Portal'
 titleSuffix: Azure Virtual Network
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal ein virtuelles Netzwerk erstellen.
 author: KumudD
-tags: azure-resource-manager
-ms.service: virtual-network
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: virtual-network
-ms.workload: infrastructure
-ms.date: 03/17/2021
 ms.author: kumud
-ms.openlocfilehash: 8af5b302e3ec790b6ee9356aca0699d0edcd284e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/17/2021
+ms.topic: quickstart
+ms.service: virtual-network
+ms.workload: infrastructure
+ms.tgt_pltfrm: virtual-network
+ms.devlang: na
+tags:
+- azure-resource-manager
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 43c45b43084656a45d2509ee2c7a4376cdc7c052
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606066"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531179"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Netzwerks im Azure-Portal
 
@@ -44,7 +47,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     | ------- | ----- |
     | **Projektdetails** |   |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
-    | Ressourcengruppe | Wählen Sie **Neu erstellen**.  </br> Geben Sie **myResourceGroup** ein. </br> Klicken Sie auf **OK**. |
+    | Resource group | Wählen Sie **Neu erstellen**.  </br> Geben Sie **myResourceGroup** ein. </br> Klicken Sie auf **OK**. |
     | **Instanzendetails** |   |
     | Name | Geben Sie **myVNet** ein. |
     | Region | Wählen Sie **(USA) USA, Osten** aus. |
@@ -163,6 +166,8 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
   
 6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="connect-to-myvm1"></a>Herstellen einer Verbindung mit myVM1
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um Ihre private VM zu verwalten. Suchen Sie nach **Virtuelle Computer**, und wählen Sie diese Option aus.
@@ -177,7 +182,7 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
 
 5. Geben Sie auf der Seite **Bastion** den Benutzernamen und das Kennwort ein, die Sie zuvor für den virtuellen Computer erstellt haben.
 
-6. Wählen Sie **Verbinden** aus.
+6. Wählen Sie **Verbinden**.
 
 ## <a name="communicate-between-vms"></a>Kommunikation zwischen VMs
 

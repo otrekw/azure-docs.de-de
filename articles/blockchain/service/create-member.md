@@ -1,16 +1,18 @@
 ---
 title: 'Erstellen eines Azure Blockchain Service-Mitglieds: Azure-Portal'
 description: Erstellen Sie mithilfe des Azure-Portals ein Azure Blockchain Service-Mitglied für ein Blockchainkonsortium.
+ms.reviewer: ravastra
 ms.date: 07/16/2020
 ms.topic: quickstart
-ms.reviewer: ravastra
-ms.custom: references_regions
-ms.openlocfilehash: 8a7f5aaea56f34e8107664ab786a14b59cd1cb7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- references_regions
+- mode-portal
+ms.openlocfilehash: 9fe8b7856a99930c16b4173e432fa0b30642582c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91292727"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536188"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Schnellstart: Erstellen eines Blockchainmitglieds für Azure Blockchain Service mithilfe des Azure-Portals
 
@@ -32,7 +34,7 @@ Ein Azure Blockchain Service-Mitglied ist ein Blockchainknoten in einem privat
 
     ![Erstellen des Dienstes](./media/create-member/create-member.png)
 
-    Einstellung | BESCHREIBUNG
+    Einstellung | Beschreibung
     --------|------------
     Subscription | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Dienst verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
     Resource group | Erstellen Sie einen neuen Ressourcengruppennamen, oder wählen Sie einen bereits vorhandenen Namen aus Ihrem Abonnement aus.

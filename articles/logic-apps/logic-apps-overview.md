@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/11/2020
-ms.openlocfilehash: 4c4e8c8f809452286fee493e20dbef2cc538c8bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: 285cff6df757fd765f177692f67b8d0824103a18
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96921539"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764745"
 ---
 # <a name="what-is-azure-logic-apps"></a>Was ist Azure Logic Apps?
 
@@ -92,7 +92,7 @@ Beginnen Sie klein mit Ihren aktuellen Systemen und Diensten, und wachsen Sie Sc
   * [Zuordnungen für die XML-Datentransformation](../logic-apps/logic-apps-enterprise-integration-maps.md)
   * [Schemas für die XML-Überprüfung](../logic-apps/logic-apps-enterprise-integration-schemas.md)
 
-Wenn Sie beispielsweise Microsoft BizTalk Server nutzen, können Logik-Apps über den [BizTalk Server-Connector](../connectors/apis-list.md#on-premises-connectors) mit Ihrer BizTalk Server-Instanz kommunizieren. Sie können dann BizTalk-ähnliche Vorgänge in Ihren Logik-Apps erweitern bzw. durchführen, indem Sie [Connectors für Integrationskonten](../connectors/apis-list.md#integration-account-connectors) einfügen, die über das Enterprise Integration Pack verfügbar sind.
+Wenn Sie beispielsweise Microsoft BizTalk Server nutzen, können Logik-Apps über den [BizTalk Server-Connector](../connectors/managed.md#on-premises-connectors) mit Ihrer BizTalk Server-Instanz kommunizieren. Sie können dann BizTalk-ähnliche Vorgänge in Ihren Logik-Apps erweitern bzw. durchführen, indem Sie [Connectors für Integrationskonten](../connectors/managed.md#integration-account-connectors) einfügen, die über das Enterprise Integration Pack verfügbar sind.
 
 In der anderen Richtung kann BizTalk Server eine Verbindung mit Logik-Apps herstellen und damit kommunizieren, indem der [Microsoft BizTalk Server Adapter für Logic Apps](https://www.microsoft.com/download/details.aspx?id=54287) verwendet wird. Informieren Sie sich darüber, wie Sie für Ihre BizTalk Server-Instanz den [BizTalk Server Adapter einrichten und nutzen](/biztalk/core/logic-app-adapter).
 

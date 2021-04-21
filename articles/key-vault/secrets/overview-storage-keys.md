@@ -7,15 +7,14 @@ ms.service: key-vault
 ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
-manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e89716d0560cbf7960cb7bde67156c8df0045a31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 573e4c9d8db3f07f223826ab648f2ef57e1d9c58
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499219"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766315"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und der Azure-Befehlszeilenschnittstelle
 > [!IMPORTANT]
@@ -68,14 +67,14 @@ Verwenden Sie den Befehl [az role assignment create](/cli/azure/role/assignment)
 
 - `--role`: Übergeben Sie die Azure-Rolle „Dienstrolle 'Speicherkonto-Schlüsseloperator'“. Diese Rolle beschränkt den Zugriffsbereich auf Ihr Speicherkonto. Für ein klassisches Speicherkonto übergeben Sie stattdessen die Rolle „Klassische Dienstrolle 'Speicherkonto-Schlüsseloperator'“.
 - `--assignee`: Übergeben Sie den Wert „https://vault.azure.net“, bei dem es sich um die URL für die Key Vault-Instanz in der öffentlichen Azure-Cloud handelt. (Für die Azure Government-Cloud verwenden Sie stattdessen „--asingee-object-id“. Weitere Informationen finden Sie unter [Dienstprinzipal-Anwendungs-ID](#service-principal-application-id).)
-- `--scope`: Übergeben Sie Ihre Ressourcen-ID des Speicherkonto, die in der Form `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` vorliegt. Um Ihre Abonnement-ID zu finden, verwenden Sie den Befehl [az account list](/cli/azure/account?#az-account-list) der Azure-Befehlszeilenschnittstelle. Verwenden Sie den Befehl [az storage account list](/cli/azure/storage/account?#az-storage-account-list) der Azure-Befehlszeilenschnittstelle, um Ihren Namen und die Ressourcengruppe für das Speicherkonto zu finden.
+- `--scope`: Übergeben Sie Ihre Ressourcen-ID des Speicherkonto, die in der Form `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` vorliegt. Um Ihre Abonnement-ID zu finden, verwenden Sie den Befehl [az account list](/cli/azure/account?#az_account_list) der Azure-Befehlszeilenschnittstelle. Verwenden Sie den Befehl [az storage account list](/cli/azure/storage/account?#az_storage_account_list) der Azure-Befehlszeilenschnittstelle, um Ihren Namen und die Ressourcengruppe für das Speicherkonto zu finden.
 
 ```azurecli-interactive
 az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Gewähren von Benutzerkontoberechtigungen für verwaltete Speicherkonten
 
-Verwenden Sie das Azure CLI-Cmdlet [az keyvault-set-policy](/cli/azure/keyvault?#az-keyvault-set-policy), um die Key Vault-Zugriffsrichtlinie zu aktualisieren und Ihrem Benutzerkonto Speicherkontoberechtigungen zu gewähren.
+Verwenden Sie das Azure CLI-Cmdlet [az keyvault-set-policy](/cli/azure/keyvault?#az_keyvault_set_policy), um die Key Vault-Zugriffsrichtlinie zu aktualisieren und Ihrem Benutzerkonto Speicherkontoberechtigungen zu gewähren.
 
 ```azurecli-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -86,11 +85,11 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 Beachten Sie, dass im Azure-Portal auf der Seite „Zugriffsrichtlinien“ für das Speicherkonto keine Berechtigungen für Speicherkonten verfügbar sind.
 ### <a name="create-a-key-vault-managed-storage-account"></a>Erstellen eines per Key Vault verwalteten Speicherkontos
 
- Erstellen Sie ein von Key Vault verwaltetes Speicherkonto mit dem Befehl [az keyvault storage](/cli/azure/keyvault/storage?#az-keyvault-storage-add) der Azure-Befehlszeilenschnittstelle. Legen Sie einen Regenerationszeitraum von 90 Tagen fest. Wenn es Zeit für die Rotation ist, generiert Key Vault den inaktiven Schlüssel erneut und aktiviert den neu erstellten Schlüssel. Nur einer der Schlüssel wird verwendet, um SAS-Token zu einem beliebigen Zeitpunkt auszustellen; dies ist der aktive Schlüssel. Stellen Sie dem Befehl die folgenden Parameterwerte zur Verfügung:
+ Erstellen Sie ein von Key Vault verwaltetes Speicherkonto mit dem Befehl [az keyvault storage](/cli/azure/keyvault/storage?#az_keyvault_storage_add) der Azure-Befehlszeilenschnittstelle. Legen Sie einen Regenerationszeitraum von 90 Tagen fest. Wenn es Zeit für die Rotation ist, generiert Key Vault den inaktiven Schlüssel erneut und aktiviert den neu erstellten Schlüssel. Nur einer der Schlüssel wird verwendet, um SAS-Token zu einem beliebigen Zeitpunkt auszustellen; dies ist der aktive Schlüssel. Stellen Sie dem Befehl die folgenden Parameterwerte zur Verfügung:
 
-- `--vault-name`: Übergeben Sie den Namen Ihres Schlüsseltresors. Um den Namen Ihres Schlüsselspeichers zu finden, verwenden Sie den Befehl [az keyvault list](/cli/azure/keyvault?#az-keyvault-list) der Azure-Befehlszeilenschnittstelle.
-- `-n`: Übergeben Sie den Namen Ihres Speicherkontos. Verwenden Sie den Befehl [az storage account list](/cli/azure/storage/account?#az-storage-account-list) der Azure-Befehlszeilenschnittstelle, um den Namen Ihres Speicherkonto zu finden.
-- `--resource-id`: Übergeben Sie Ihre Ressourcen-ID des Speicherkonto, die in der Form `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` vorliegt. Um Ihre Abonnement-ID zu finden, verwenden Sie den Befehl [az account list](/cli/azure/account?#az-account-list) der Azure-Befehlszeilenschnittstelle. Verwenden Sie den Befehl [az storage account list](/cli/azure/storage/account?#az-storage-account-list) der Azure-Befehlszeilenschnittstelle, um Ihren Namen und die Ressourcengruppe für das Speicherkonto zu finden.
+- `--vault-name`: Übergeben Sie den Namen Ihres Schlüsseltresors. Um den Namen Ihres Schlüsselspeichers zu finden, verwenden Sie den Befehl [az keyvault list](/cli/azure/keyvault?#az_keyvault_list) der Azure-Befehlszeilenschnittstelle.
+- `-n`: Übergeben Sie den Namen Ihres Speicherkontos. Verwenden Sie den Befehl [az storage account list](/cli/azure/storage/account?#az_storage_account_list) der Azure-Befehlszeilenschnittstelle, um den Namen Ihres Speicherkonto zu finden.
+- `--resource-id`: Übergeben Sie Ihre Ressourcen-ID des Speicherkonto, die in der Form `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` vorliegt. Um Ihre Abonnement-ID zu finden, verwenden Sie den Befehl [az account list](/cli/azure/account?#az_account_list) der Azure-Befehlszeilenschnittstelle. Verwenden Sie den Befehl [az storage account list](/cli/azure/storage/account?#az_storage_account_list) der Azure-Befehlszeilenschnittstelle, um Ihren Namen und die Ressourcengruppe für das Speicherkonto zu finden.
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -109,7 +108,7 @@ Die Befehle in diesem Abschnitt führen Sie die folgenden Aktionen:
 
 ### <a name="create-a-shared-access-signature-token"></a>Erstellen eines SAS-Tokens
 
-Erstellen Sie eine SAS-Definition mit dem Befehl [az storage account generatee-sas](/cli/azure/storage/account?#az-storage-account-generate-sas) der Azure-Befehlszeilenschnittstelle. Dieser Vorgang erfordert die Berechtigungen `storage` und `setsas`.
+Erstellen Sie eine SAS-Definition mit dem Befehl [az storage account generatee-sas](/cli/azure/storage/account?#az_storage_account_generate_sas) der Azure-Befehlszeilenschnittstelle. Dieser Vorgang erfordert die Berechtigungen `storage` und `setsas`.
 
 
 ```azurecli-interactive
@@ -125,7 +124,7 @@ Diese Ausgabe wird im nächsten Schritt an den Parameter `--template-uri` überg
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Generieren einer SAS-Definition
 
-Verwenden Sie den Befehl [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?#az-keyvault-storage-sas-definition-create) der Azure-Befehlszeilenschnittstelle, indem Sie die Ausgabe des vorherigen Schritts an den Parameter `--template-uri` übergeben, um eine SAS-Definition zu erstellen.  Sie können einen Namen Ihrer Wahl für den Parameter `-n` angeben.
+Verwenden Sie den Befehl [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_create) der Azure-Befehlszeilenschnittstelle, indem Sie die Ausgabe des vorherigen Schritts an den Parameter `--template-uri` übergeben, um eine SAS-Definition zu erstellen.  Sie können einen Namen Ihrer Wahl für den Parameter `-n` angeben.
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 18e380345ef0caab52e9b1c537bada73e36d8b48
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 701df4353e8d2e36baf0496bd6944c4a95395414
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063303"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763257"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Azure CLI
 
@@ -62,7 +62,7 @@ Wenn Sie die Netzwerkkommunikation mit Network Watcher testen möchten, müssen 
 
 ### <a name="enable-network-watcher"></a>Aktivieren von Network Watcher
 
-Wenn Sie bereits über eine aktivierte Network Watcher-Instanz in der Region „USA, Osten“ verfügen, fahren Sie mit [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) fort. Erstellen Sie mithilfe des Befehls [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) eine Network Watcher-Instanz in der Region „eastus“:
+Wenn Sie bereits über eine aktivierte Network Watcher-Instanz in der Region „USA, Osten“ verfügen, fahren Sie mit [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) fort. Erstellen Sie mithilfe des Befehls [az network watcher configure](/cli/azure/network/watcher#az_network_watcher_configure) eine Network Watcher-Instanz in der Region „eastus“:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -73,7 +73,7 @@ az network watcher configure \
 
 ### <a name="use-ip-flow-verify"></a>Verwenden der IP-Flussüberprüfung
 
-Wenn Sie einen virtuellen Computer erstellen, wird der ein- und ausgehende Netzwerkdatenverkehr des virtuellen Computers von Azure standardmäßig zugelassen bzw. abgelehnt. Die Azure-Standardeinstellungen können später außer Kraft gesetzt werden, um zusätzliche Arten von Datenverkehr zuzulassen oder abzulehnen. Verwenden Sie den Befehl [az network watcher test-ip-flow](/cli/azure/network/watcher#az-network-watcher-test-ip-flow), um zu testen, ob der Datenverkehr an verschiedene Ziele und von einer Quell-IP-Adresse zugelassen oder abgelehnt wird.
+Wenn Sie einen virtuellen Computer erstellen, wird der ein- und ausgehende Netzwerkdatenverkehr des virtuellen Computers von Azure standardmäßig zugelassen bzw. abgelehnt. Die Azure-Standardeinstellungen können später außer Kraft gesetzt werden, um zusätzliche Arten von Datenverkehr zuzulassen oder abzulehnen. Verwenden Sie den Befehl [az network watcher test-ip-flow](/cli/azure/network/watcher#az_network_watcher_test_ip_flow), um zu testen, ob der Datenverkehr an verschiedene Ziele und von einer Quell-IP-Adresse zugelassen oder abgelehnt wird.
 
 Testen Sie die ausgehende Kommunikation des virtuellen Computers mit einer der IP-Adressen für www.bing.com:
 
@@ -125,7 +125,7 @@ Im zurückgegebenen Ergebnis werden Sie darüber informiert, dass der Zugriff au
 
 ## <a name="view-details-of-a-security-rule"></a>Anzeigen von Details einer Sicherheitsregel
 
-Überprüfen Sie mithilfe des Befehls [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) die geltenden Sicherheitsregeln für die Netzwerkschnittstelle, um zu ermitteln, warum die Regeln unter [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) die Kommunikation zulassen oder verhindern:
+Überprüfen Sie mithilfe des Befehls [az network nic list-effective-nsg](/cli/azure/network/nic#az_network_nic_list_effective_nsg) die geltenden Sicherheitsregeln für die Netzwerkschnittstelle, um zu ermitteln, warum die Regeln unter [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) die Kommunikation zulassen oder verhindern:
 
 ```azurecli-interactive
 az network nic list-effective-nsg \

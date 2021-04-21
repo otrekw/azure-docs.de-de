@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 72d1faac02a21f23d46eb992af1d501bca89e71f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19fc2e1629e7f67063e3cc3eec8cb3707b6dd2e4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688075"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775851"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli"></a>Schnellstart: Erstellen einer neuen Azure API Management-Dienstinstanz mithilfe der Azure CLI
 
@@ -30,7 +30,7 @@ In dieser Schnellstartanleitung werden die Schritte zum Erstellen einer neuen AP
 
 Azure API Management-Instanzen müssen wie alle Azure-Ressourcen in einer Ressourcengruppe bereitgestellt werden. Mit Ressourcengruppen können verwandte Azure-Ressourcen organisiert und verwaltet werden.
 
-Erstellen Sie zunächst mit dem folgenden [az group create](/cli/azure/group#az-group-create)-Befehl eine Ressourcengruppe namens *myResourceGroup* am Standort „USA, Mitte“:
+Erstellen Sie zunächst mit dem folgenden [az group create](/cli/azure/group#az_group_create)-Befehl eine Ressourcengruppe namens *myResourceGroup* am Standort „USA, Mitte“:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location centralus
@@ -38,7 +38,7 @@ az group create --name myResourceGroup --location centralus
 
 ## <a name="create-a-new-service"></a>Erstellen eines neuen Diensts
 
-Da Sie nun über eine Ressourcengruppe verfügen, können Sie eine API Management-Dienstinstanz erstellen. Erstellen Sie eine solche Instanz mithilfe des [az apim create](/cli/azure/apim#az-apim-create)-Befehls, und geben Sie einen Dienstname sowie Details zum Herausgeber an. Der Dienstname muss in Azure eindeutig sein. 
+Da Sie nun über eine Ressourcengruppe verfügen, können Sie eine API Management-Dienstinstanz erstellen. Erstellen Sie eine solche Instanz mithilfe des [az apim create](/cli/azure/apim#az_apim_create)-Befehls, und geben Sie einen Dienstname sowie Details zum Herausgeber an. Der Dienstname muss in Azure eindeutig sein. 
 
 Im folgenden Beispiel wird *myapim* als Dienstname verwendet. Ersetzen Sie diesen Namen durch einen eindeutigen Wert. Aktualisieren Sie außerdem den Namen der Organisation des Herausgebers der API sowie die E-Mail-Adresse, um Benachrichtigungen zu erhalten. 
 
@@ -53,7 +53,7 @@ Standardmäßig erstellt der Befehl die Instanz im Developer-Tarif, wobei es sic
 > [!TIP]
 > Es dauert in der Regel zwischen 30 und 40 Minuten, einen API Management-Dienst mit diesem Tarif zu erstellen und zu aktivieren. Der vorherige Befehl nutzt die `--no-wait`-Option, sodass der Befehl sofort etwas zurückgibt, während der Dienst erstellt wird.
 
-Überprüfen Sie den Bereitstellungsstatus, indem Sie den [az apim show](/cli/azure/apim#az-apim-show)-Befehl ausführen:
+Überprüfen Sie den Bereitstellungsstatus, indem Sie den [az apim show](/cli/azure/apim#az_apim_show)-Befehl ausführen:
 
 ```azurecli-interactive
 az apim show --name myapim --resource-group myResourceGroup --output table
@@ -79,7 +79,7 @@ Sobald Ihre API Management-Dienstinstanz online ist, können Sie sie verwenden. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Ressourcengruppe und die API Management-Dienstinstanz nicht mehr benötigen, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) entfernen.
+Wenn Sie die Ressourcengruppe und die API Management-Dienstinstanz nicht mehr benötigen, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

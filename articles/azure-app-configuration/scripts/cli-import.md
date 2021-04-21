@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f7d68024dd86a1eb2a0311cecf607d41a7067deb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5a80acd1261211fe3efaefa6a4b6025a321e2d65
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173567"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774177"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importieren in einen Azure-App-Konfigurationsspeicher
 
@@ -44,7 +44,7 @@ Dieses Skript verwendet die folgenden Befehle, um in einen App Configuration-Spe
 
 | Get-Help | Notizen |
 |---|---|
-| [az appconfig kv import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | Importiert in eine App Configuration-Speicherressource. |
+| [az appconfig kv import](/cli/azure/appconfig/kv#az_appconfig_kv_import) | Importiert in eine App Configuration-Speicherressource. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
