@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 90ad35757834c14abdffb017ff31b3296074ca24
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8e8bdaa7a812d8c7accfea59b58b75a58d50e21e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802436"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789607"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-the-azure-cli"></a>Bereitstellen von Azure-Spot-VMs mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -31,7 +31,7 @@ Der Vorgang zum Erstellen einer Azure-Spot-VM mithilfe der Azure-Befehlszeilensc
 
 Zum Erstellen von Azure-Spot-VMs muss mindestens Version 2.0.74 der Azure-Befehlszeilenschnittstelle ausgeführt werden. Führen Sie **az --version** aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
-Melden Sie sich mit [az login](/cli/azure/reference-index#az-login) in Azure an.
+Melden Sie sich mit [az login](/cli/azure/reference-index#az_login) in Azure an.
 
 ```azurecli-interactive
 az login
