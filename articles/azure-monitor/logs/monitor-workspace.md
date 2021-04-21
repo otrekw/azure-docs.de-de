@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 9eda0acc15badfe7bb2e754d887786aa990d6e24
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f1a23170d84e39e5d531ae4e3a64b59d29bd677
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034964"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538850"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Überwachen der Integrität des Log Analytics-Arbeitsbereichs in Azure Monitor
 Um die Leistung und Verfügbarkeit Ihres Log Analytics-Arbeitsbereichs in Azure Monitor zu gewährleisten, müssen Sie in der Lage sein, jedes auftretende Probleme proaktiv zu erkennen. In diesem Artikel wird beschrieben, wie Sie die Integrität Ihres Log Analytics-Arbeitsbereichs mithilfe von Daten in der Tabelle [Operation](/azure/azure-monitor/reference/tables/operation) überwachen. Diese Tabelle ist in jedem Log Analytics-Arbeitsbereich enthalten und enthält Fehler und Warnungen, die im Arbeitsbereich auftreten. Sie sollten diese Daten regelmäßig überprüfen und Warnungen erstellen, damit Sie proaktiv benachrichtigt werden, wenn im Arbeitsbereich wichtige Vorfälle auftreten.
@@ -110,7 +110,7 @@ Im folgenden Beispiel wird eine Warnung erstellt, wenn die Datensammlung das Tag
 - Ziel: Auswählen Ihres Log Analytics-Arbeitsbereichs
 - Kriterien:
   - Signalname: Benutzerdefinierte Protokollsuche
-  - Suchabfrage: `_LogOperation | where Category == "Ingestion" | where Operation == "Data Collection" | where Level == "Warning"`
+  - Suchabfrage: `_LogOperation | where Category == "Ingestion" | where Operation == "Data collection Status" | where Level == "Warning"`
   - Basierend auf: Anzahl der Ergebnisse
   - Bedingung: Größer als
   - Schwellenwert: 0

@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d8c4876faf9ebc2619309aa0095a8ffe1e9e93d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 468e885bab6aab4becb5aaaec7b4d52ce5ef5e07
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500545"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535993"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Übersicht über Bereitstellungsprotokolle im Azure-Portal (Vorschau)
 
@@ -61,7 +61,7 @@ Kunden können auf vier Arten mit Bereitstellungsprotokollen interagieren:
 
 - Zugreifen auf die Protokolle über das Azure-Portal (wie im nächsten Abschnitt beschrieben)
 - Streamen der Bereitstellungsprotokolle an [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md). Diese Methode ermöglicht eine längere Datenaufbewahrung sowie die Erstellung benutzerdefinierter Dashboards, Warnungen und Abfragen.
-- Abfragen der [Microsoft Graph-API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) für die Bereitstellungsprotokolle
+- Abfragen der [Microsoft Graph-API](/graph/api/resources/provisioningobjectsummary) für die Bereitstellungsprotokolle
 - Herunterladen der Bereitstellungsprotokolle als CSV- oder JSON-Datei
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>Zugreifen auf die Protokolle über das Azure-Portal
@@ -251,7 +251,7 @@ Die folgende Tabelle ist bei der Behebung von Fehlern hilfreich, die in den Bere
 |InsufficientRights, MethodNotAllowed, NotPermitted, Unauthorized| Azure AD wurde zwar bei der Zielanwendung authentifiziert, war aber nicht zum Ausführen der Aktualisierung autorisiert. Lesen Sie alle ggf. von der Zielanwendung bereitgestellten Anweisungen sowie das entsprechende [Tutorial](../saas-apps/tutorial-list.md) für die Anwendung.|
 |UnprocessableEntity|Die Zielanwendung hat eine unerwartete Antwort zurückgegeben. Die Konfiguration der Zielanwendung ist möglicherweise nicht korrekt, oder es liegt ein Dienstproblem mit der Zielanwendung vor.|
 |WebExceptionProtocolError |Bei der Verbindungsherstellung mit der Zielanwendung ist ein HTTP-Protokollfehler aufgetreten. Sie brauchen nichts zu tun. Dieser Versuch wird automatisch in 40 Minuten wiederholt.|
-|InvalidAnchor|Ein Benutzer, der zuvor vom Bereitstellungsdienst erstellt oder abgeglichen wurde, ist nicht mehr vorhanden. Stellen Sie sicher, dass der Benutzer vorhanden ist. Um einen erneuten Abgleich aller Benutzer zu erzwingen, können Sie mithilfe der Microsoft Graph-API den [Auftrag neu starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). <br><br>Durch den Neustart der Bereitstellung wird ein Startzyklus auslöst, der einige Zeit dauern kann. Außerdem wird der vom Bereitstellungsdienst verwendete Cache gelöscht. Das bedeutet, dass alle Benutzer und Gruppen im Mandanten erneut ausgewertet werden müssen, und bestimmte Bereitstellungsereignisse werden möglicherweise verworfen.|
+|InvalidAnchor|Ein Benutzer, der zuvor vom Bereitstellungsdienst erstellt oder abgeglichen wurde, ist nicht mehr vorhanden. Stellen Sie sicher, dass der Benutzer vorhanden ist. Um einen erneuten Abgleich aller Benutzer zu erzwingen, können Sie mithilfe der Microsoft Graph-API den [Auftrag neu starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true). <br><br>Durch den Neustart der Bereitstellung wird ein Startzyklus auslöst, der einige Zeit dauern kann. Außerdem wird der vom Bereitstellungsdienst verwendete Cache gelöscht. Das bedeutet, dass alle Benutzer und Gruppen im Mandanten erneut ausgewertet werden müssen, und bestimmte Bereitstellungsereignisse werden möglicherweise verworfen.|
 |NotImplemented | Die Ziel-App hat eine unerwartete Antwort zurückgegeben. Die Konfiguration der App ist möglicherweise nicht korrekt, oder es liegt ein Dienstproblem mit der Ziel-App vor. Lesen Sie alle ggf. von der Zielanwendung bereitgestellten Anweisungen sowie das entsprechende [Tutorial](../saas-apps/tutorial-list.md) für die Anwendung. |
 |MandatoryFieldsMissing, MissingValues |Der Benutzer konnte nicht erstellt werden, da erforderliche Werte fehlten. Korrigieren Sie die fehlenden Attributwerte im Quelldatensatz, oder überprüfen Sie die Konfiguration der übereinstimmenden Attribute, um sicherzustellen, dass die erforderlichen Felder nicht ausgelassen wurden. [Erfahren Sie mehr](../app-provisioning/customize-application-attributes.md) über das Konfigurieren von übereinstimmenden Attributen.|
 |SchemaAttributeNotFound |Der Vorgang konnte nicht ausgeführt werden, da ein Attribut angegeben wurde, das in der Zielanwendung nicht vorhanden ist. Informationen zum Anpassen von Attributen finden Sie in der [Dokumentation](../app-provisioning/customize-application-attributes.md). Stellen Sie außerdem sicher, dass Ihre Konfiguration korrekt ist.|
@@ -269,4 +269,4 @@ Die folgende Tabelle ist bei der Behebung von Fehlern hilfreich, die in den Bere
 
 * [Überprüfen des Status der Benutzerbereitstellung](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](../app-provisioning/application-provisioning-config-problem.md)
-* [Ressourcentyp „provisioningObjectSummary“](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [Ressourcentyp „provisioningObjectSummary“](/graph/api/resources/provisioningobjectsummary)

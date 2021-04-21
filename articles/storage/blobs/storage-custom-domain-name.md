@@ -9,12 +9,12 @@ ms.date: 02/12/2021
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 52fc7b9c1229421fd46b8110857a0a7a8a4f916a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45ae3d80202bfb29074461f899798d278eb0895b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100520424"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538358"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt
 
@@ -414,7 +414,7 @@ Wenn die Benutzer nicht über HTTPS auf Ihren Blob- oder Webinhalt zugreifen mü
 
    * [HTTP-zu-HTTPS-Umleitung – Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)
 
-   * [Preise und Abrechnung bei Verwendung von Blob Storage – Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)
+   * [Preise und Abrechnung bei Verwendung von Blob Storage – Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#pricing-and-billing)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

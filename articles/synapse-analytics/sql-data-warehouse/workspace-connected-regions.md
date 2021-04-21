@@ -11,12 +11,12 @@ ms.date: 11/11/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: references_regions
-ms.openlocfilehash: 4ecf8a578343a10e7c1ddb0ac5e9345a652bc9af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f788675d84f7714d4da5f30cf50875e5d006c6c7
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511704"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534758"
 ---
 # <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>Aktivieren von Synapse-Arbeitsbereichsfunktionen für einen dedizierten SQL-Pool (früher SQL DW)
 
@@ -29,13 +29,13 @@ In der folgenden Tabelle sind die Regionen zusammengefasst, in denen die Möglic
 |:--- |:--- |:--- |
 | Australien, Mitte 1 |\* |
 | Australien, Mitte 2 |\* |
-| China, Osten 2 |31. März 2021 |
-| China, Norden 2 |31. März 2021 |
-| Indien, Süden |31. März 2021 |
-| Indien, Westen |31. März 2021 |
-| Korea, Süden |31. März 2021 |
-| Schweiz, Westen |31. März 2021 |
-| Vereinigte Arabische Emirate, Norden |31. März 2021 |
+| China, Osten 2 |\* |
+| China, Norden 2 |\* |
+| Indien, Süden |\*|
+| Indien, Westen |\*|
+| Korea, Süden |\* |
+| Schweiz, Westen |\* |
+| Vereinigte Arabische Emirate, Norden |\*|
  
  
 > [!NOTE]

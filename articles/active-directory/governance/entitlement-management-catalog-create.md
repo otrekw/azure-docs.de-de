@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad10cfc661b80eaac146087d85dc87002f6a455
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: b8cea26bcb0926cd3af360a6489377767d681079
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960145"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532550"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erstellen und Verwalten eines Ressourcenkatalogs in der Azure AD-Berechtigungsverwaltung
 
@@ -53,7 +53,7 @@ Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen 
 
 ### <a name="creating-a-catalog-programmatically"></a>Programmgesteuertes Erstellen eines Katalogs
 
-Sie können auch mithilfe von Microsoft Graph einen Katalog erstellen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [einen accessPackageCatalog zu erstellen](/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+Sie können auch mithilfe von Microsoft Graph einen Katalog erstellen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [einen accessPackageCatalog zu erstellen](/graph/api/accesspackagecatalog-post?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="add-resources-to-a-catalog"></a>Hinzufügen von Ressourcen zu einem Katalog
 
@@ -91,7 +91,7 @@ Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressour
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Programmgesteuertes Hinzufügen einer Ressource zu einem Katalog
 
-Sie können eine Ressource auch mithilfe von Microsoft Graph einem Katalog hinzufügen.  Ein Benutzer in einer passenden Rolle oder ein Katalog- und Ressourcenbesitzer mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [eine accessPackageResourceRequest zu erstellen](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
+Sie können eine Ressource auch mithilfe von Microsoft Graph einem Katalog hinzufügen.  Ein Benutzer in einer passenden Rolle oder ein Katalog- und Ressourcenbesitzer mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [eine accessPackageResourceRequest zu erstellen](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="remove-resources-from-a-catalog"></a>Entfernen von Ressourcen aus einem Katalog
 
@@ -164,7 +164,7 @@ Sie können einen Katalog nur löschen, wenn er keine Zugriffspakete enthält.
 
 ### <a name="deleting-a-catalog-programmatically"></a>Programmgesteuertes Löschen eines Katalogs
 
-Sie können auch mithilfe von Microsoft Graph einen Katalog löschen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [einen accessPackageCatalog zu löschen](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
+Sie können auch mithilfe von Microsoft Graph einen Katalog löschen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [einen accessPackageCatalog zu löschen](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

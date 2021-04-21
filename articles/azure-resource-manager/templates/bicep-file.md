@@ -3,12 +3,12 @@ title: BICEP-Dateistruktur und-Syntax
 description: Beschreibt die Struktur und die Eigenschaften einer BICEP-Datei mithilfe von deklarativer Syntax.
 ms.topic: conceptual
 ms.date: 03/31/2021
-ms.openlocfilehash: 09993ae9c08f53144de8e94e6555ad93bec681f6
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1b8eddd388878be8f653f963ef967cf2c0af685f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168687"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537866"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -113,7 +113,7 @@ Zulässige Werte sind:
 * **ResourceGroup** : Standardwert, der für [Ressourcengruppen-Bereitstellungen](deploy-to-resource-group.md)verwendet wird.
 * **Abonnement** : wird für [Abonnement-Bereitstellungen](deploy-to-subscription.md)verwendet.
 * **managementGroup** - wird für [Bereitstellungen der Verwaltungsgruppe](deploy-to-management-group.md) verwendet.
-* **Tenant** - Verwendet für[Tenant-Bereitstellungen](deploy-to-tenant.md).
+* **Tenant** - Verwendet für [Tenant-Bereitstellungen](deploy-to-tenant.md).
 
 ## <a name="parameters"></a>Parameter
 
@@ -297,7 +297,7 @@ param existingKeyVaultName string
 
 ## <a name="multi-line-strings"></a>Mehrzeilige Zeichenfolgen
 
-Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Verwenden Sie drei einfache Anführungszeichen `'''`, um die mehrzeilige Zeichenfolge zu starten und zu beenden. 
+Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Verwenden Sie drei einfache Anführungszeichen `'''`, um die mehrzeilige Zeichenfolge zu starten und zu beenden.
 
 Zeichen innerhalb der mehrzeiligen Zeichenfolge werden unverändert behandelt. Escapezeichen sind nicht erforderlich. Sie können nicht `'''` in die mehrzeilige Zeichenfolge einschließen. Zeichen folgen Interpolationen werden zurzeit nicht unterstützt.
 

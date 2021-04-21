@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e00fe3761824462252ce4984beb754385f3eca9
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90980063"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532142"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Anzeigen, Hinzufügen und Entfernen von Zuweisungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -58,7 +58,7 @@ Um die Azure AD-Berechtigungsverwaltung zu verwenden und Benutzer zu Zugriffspa
 
 ### <a name="viewing-assignments-programmatically"></a>Programmgesteuertes Anzeigen von Zuweisungen
 
-Sie können auch mithilfe von Microsoft Graph Zuweisungen in einem Zugriffspaket abrufen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [accessPackageAssignments aufzulisten](/graph/api/accesspackageassignment-list?view=graph-rest-beta).
+Sie können auch mithilfe von Microsoft Graph Zuweisungen in einem Zugriffspaket abrufen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [accessPackageAssignments aufzulisten](/graph/api/accesspackageassignment-list?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="directly-assign-a-user"></a>Direktes Zuweisen eines Benutzers
 
@@ -90,7 +90,7 @@ In einigen Fällen möchten Sie bestimmte Benutzer möglicherweise einem Zugriff
 
 ### <a name="directly-assigning-users-programmatically"></a>Programmgesteuertes direktes Zuweisen von Benutzern
 
-Sie können einen Benutzer auch direkt mithilfe von Microsoft Graph einem Zugriffspaket zuweisen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [eine accessPackageAssignmentRequest zu erstellen](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
+Sie können einen Benutzer auch direkt mithilfe von Microsoft Graph einem Zugriffspaket zuweisen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [eine accessPackageAssignmentRequest zu erstellen](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="remove-an-assignment"></a>Entfernen einer Zuweisung
 

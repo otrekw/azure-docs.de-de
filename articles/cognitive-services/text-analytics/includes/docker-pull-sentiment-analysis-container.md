@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 549ecf940c53267db6b3caa576c4c24db414337a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32a550e120331a8255281d51725d2d5fc8ca1e05
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90906089"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564529"
 ---
 #### <a name="docker-pull-for-the-sentiment-analysis-v3-container"></a>Docker-Pullvorgang für den Container der Standpunktanalyse v3
 
@@ -28,15 +28,20 @@ Wenn Sie den Container für eine andere Sprache herunterladen möchten, ersetzen
 
 | Textanalysecontainer | Sprachcode |
 |--|--|
-| Englisch | `en` |
-| Spanisch | `es` |
-| Französisch | `fr` |
-| Italienisch | `it` |
-| Deutsch | `de` |
-| Chinesisch (vereinfacht) | `zh` |
-| Chinesisch (traditionell) | `zht` |
-| Japanisch | `ja` |
-| Portugiesisch | `pt` |
-| Niederländisch | `nl` |
+| Chinesisch (vereinfacht)    |   `zh-hans`   |
+| Chinesisch (traditionell)   |   `zh-hant`   |
+| Niederländisch                 |     `nl`      |
+| Englisch               |     `en`      |
+| Französisch                |     `fr`      |
+| Deutsch                |     `de`      |
+| Hindi                 |    `hi`       |
+| Italienisch               |     `it`      |
+| Japanisch              |     `ja`      |
+| Koreanisch                |     `ko`      |
+| Norwegisch (Bokmål)   |     `no`      |
+| Portugiesisch (Brasilien)   |    `pt-BR`    |
+| Portugiesisch (Portugal) |    `pt-PT`    |
+| Spanisch               |     `es`      |
+| Türkisch               |     `tr`      |
 
 Eine vollständige Beschreibung der verfügbaren Tags für die Textanalysecontainer finden Sie bei [Docker Hub](https://go.microsoft.com/fwlink/?linkid=2018654).

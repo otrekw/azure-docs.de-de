@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 03/30/2021
 ms.author: juliako
-ms.openlocfilehash: c2465d845da9dd9c2c1690c39a8f1d1c7e86899f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b3602d421718cbd1de3509751491ec6db65b1b01
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075711"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532899"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -164,7 +164,7 @@ In diesem Panel können Sie auch Benutzereinstellungen verwalten und Hilfe erhal
 
 Sie können jetzt die Such-API verwenden, um nach Videos mit bestimmten Themen zu suchen (nur API).
 
-Themen werden als Teil von `textScope` hinzugefügt (optionaler Parameter). Ausführliche Informationen finden Sie unter [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos).  
+Themen werden als Teil von `textScope` hinzugefügt (optionaler Parameter). Ausführliche Informationen finden Sie unter [API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Search-Videos).  
 
 ### <a name="labels-enhancement"></a>Bezeichnungserweiterung
 
@@ -202,10 +202,10 @@ Eine neue Playerskin mit aktualisiertem Design wurde herausgegeben.
 
 * Heute geben die folgenden APIs ein Kontoobjekt zurück:
 
-    * [Create-Paid-Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)
-    * [Get-Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account)
-    * [Get-Accounts-Authorization](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-Authorization)
-    * [Get-Accounts-With-Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
+    * [Create-Paid-Account](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Paid-Account)
+    * [Get-Account](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account)
+    * [Get-Accounts-Authorization](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Accounts-Authorization)
+    * [Get-Accounts-With-Token](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Accounts-With-Token)
  
     Das Account-Objekt weist ein Feld `Url` auf, das auf den Speicherort der [Video Indexer-Website](https://www.videoindexer.ai/) verweist.
 Für kostenpflichtige Konten verweist das Feld `Url` zurzeit auf eine interne URL anstelle der öffentlichen Website.
@@ -216,7 +216,7 @@ In den nächsten Wochen werden wir dies ändern und die URL der [Video Indexer-W
 
    Dies kann auf einer der folgenden Weisen erfolgen:
 
-    * Ersetzen der URL durch eine URL, die auf die Video Indexer-Widget-APIs verweist (beispielsweise das [Widget „Kognitive Erkenntnisse“](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
+    * Ersetzen der URL durch eine URL, die auf die Video Indexer-Widget-APIs verweist (beispielsweise das [Widget „Kognitive Erkenntnisse“](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Insights-Widget))
     * Verwenden der Video Indexer-Website zum Generieren einer neuen eingebetteten URL:
          
          Drücken Sie **Wiedergabe**, um zur Seite Ihres Videos zu gelangen > klicken Sie auf die Schaltfläche **&lt;/&gt; Einbinden** > kopieren Sie die URL in Ihre Anwendung:
@@ -239,13 +239,13 @@ Ein neues Video Indexer-GitHub mit verschiedenen Projekten, Leitfäden mit erste
  
 ### <a name="swagger-update"></a>Swagger-Update
 
-Video Indexer hat **Authentifizierungen** und **Vorgänge** in einer einzigen [Video Indexer-OpenAPI-Spezifikation (Swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson) vereinheitlicht. Entwickler finden die APIs im [Entwicklerportal für Video Indexer](https://api-portal.videoindexer.ai/).
+Video Indexer hat **Authentifizierungen** und **Vorgänge** in einer einzigen [Video Indexer-OpenAPI-Spezifikation (Swagger)](https://api-portal.videoindexer.ai/api-details#api=Operations&operation) vereinheitlicht. Entwickler finden die APIs im [Entwicklerportal für Video Indexer](https://api-portal.videoindexer.ai/).
 
 ## <a name="december-2019"></a>Dezember 2019
 
 ### <a name="update-transcript-with-the-new-api"></a>Aktualisieren des Transkripts mit der neuen API
 
-Aktualisieren Sie einen bestimmten Abschnitt im Transkript mit der [Update-Video-Index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update)-API.
+Aktualisieren Sie einen bestimmten Abschnitt im Transkript mit der [Update-Video-Index](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Index)-API.
 
 ### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>Korrigieren der Kontokonfiguration über das Video Indexer-Portal
 
@@ -275,7 +275,7 @@ Wenn der Streamingendpunkt deaktiviert ist, zeigt Video Indexer einen beschreibe
 
 ### <a name="error-handling-improvement"></a>Verbesserung der Fehlerbehandlung
 
-Der Statuscode 409 wird jetzt von den APIs [Video erneut indizieren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) und [Videoindex aktualisieren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) zurückgegeben, falls ein Video aktiv indiziert wird, um zu verhindern, dass die aktuellen Änderungen der Neuindizierung versehentlich überschrieben werden.
+Der Statuscode 409 wird jetzt von den APIs [Video erneut indizieren](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) und [Videoindex aktualisieren](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Index) zurückgegeben, falls ein Video aktiv indiziert wird, um zu verhindern, dass die aktuellen Änderungen der Neuindizierung versehentlich überschrieben werden.
 
 ## <a name="november-2019"></a>November 2019
  
@@ -369,7 +369,7 @@ Sie können jetzt ein kostenpflichtiges Video Indexer-Konto in der Region „Jap
 
 ### <a name="create-and-repair-account-api-preview"></a>Erstellen und Reparieren der Konto-API (Vorschau)
 
-Eine neue API wurde hinzugefügt, die es Ihnen ermöglicht, [den Azure Media Services-Verbindungsendpunkt oder -Schlüssel zu aktualisieren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag).
+Eine neue API wurde hinzugefügt, die es Ihnen ermöglicht, [den Azure Media Services-Verbindungsendpunkt oder -Schlüssel zu aktualisieren](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Paid-Account-Azure-Media-Services).
 
 ### <a name="improve-error-handling-on-upload"></a>Verbesserung der Fehlerbehandlung beim Hochladen 
 
@@ -387,9 +387,9 @@ Sie können jetzt eine Vorschau aller Erkenntnisse anzeigen, die als Ergebnis de
 
 ### <a name="update-custom-language-model-from-closed-caption-file"></a>Aktualisieren des benutzerdefinierte Sprachmodells aus der Untertiteldatei
 
-Die APIs [Benutzerdefiniertes Sprachmodell erstellen](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?&groupBy=tag) und [Benutzerdefiniertes Sprachmodell aktualisieren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Language-Model?&groupBy=tag) unterstützen jetzt VTT-, SRT-, und TTML-Dateiformate als Eingabe für Sprachmodelle.
+Die APIs [Benutzerdefiniertes Sprachmodell erstellen](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Language-Model) und [Benutzerdefiniertes Sprachmodell aktualisieren](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model) unterstützen jetzt VTT-, SRT-, und TTML-Dateiformate als Eingabe für Sprachmodelle.
 
-Beim Aufrufen der [API „Video-Transkript aktualisieren“](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Transcript?&pattern=transcript) wird die Transkription automatisch hinzugefügt. Das dem Video zugeordnete Trainingsmodell wird ebenfalls automatisch aktualisiert. Informationen zum Anpassen und Trainieren Ihres Sprachmodells finden Sie unter [Anpassen eines Sprachmodells mit Video Indexer](customize-language-model-overview.md).
+Beim Aufrufen der [API „Video-Transkript aktualisieren“](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Transcript) wird die Transkription automatisch hinzugefügt. Das dem Video zugeordnete Trainingsmodell wird ebenfalls automatisch aktualisiert. Informationen zum Anpassen und Trainieren Ihres Sprachmodells finden Sie unter [Anpassen eines Sprachmodells mit Video Indexer](customize-language-model-overview.md).
 
 ### <a name="new-download-transcript-formats--txt-and-csv"></a>Neue Transkriptformate zum Herunterladen – TXT und CSV
 

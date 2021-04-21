@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb4ebbd0b1715d9de3905060952a35ad42060119
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2ea62a8d602cc472269b52c230529aa3f9b86ed4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167548"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535095"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Anleitung: Verwalten inaktiver Benutzerkonten in Azure AD
 
@@ -57,7 +57,7 @@ In diesem Abschnitt wird beschrieben, was Sie über die „lastSignInDateTime“
 
 ### <a name="how-can-i-access-this-property"></a>Wie kann ich auf diese Eigenschaft zugreifen?
 
-Die **lastSignInDateTime**-Eigenschaft wird vom [Ressourcentyp „signInActivity“](/graph/api/resources/signinactivity?view=graph-rest-beta) der [Microsoft Graph-REST-API](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) verfügbar gemacht.   
+Die **lastSignInDateTime**-Eigenschaft wird vom [Ressourcentyp „signInActivity“](/graph/api/resources/signinactivity?view=graph-rest-beta&preserve-view=true) der [Microsoft Graph-REST-API](/graph/overview#whats-in-microsoft-graph) verfügbar gemacht.   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Ist die lastSignInDateTime-Eigenschaft über das Cmdlet „Get-AzureAdUser“ verfügbar?
 
@@ -90,5 +90,5 @@ Zum Generieren eines „lastSignInDateTime“-Zeitstempels ist eine erfolgreiche
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten](tutorial-access-api-with-certificates.md)
-* [Referenz zur Überwachungs-API](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [Referenz zur Anmeldeaktivitätsbericht-API](/graph/api/resources/signin?view=graph-rest-beta)
+* [Referenz zur Überwachungs-API](/graph/api/resources/directoryaudit) 
+* [Referenz zur Anmeldeaktivitätsbericht-API](/graph/api/resources/signin)

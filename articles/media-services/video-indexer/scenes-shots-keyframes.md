@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a738152296aacbb5914e859a65976bd0f6dbf0a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93041909"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532428"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Szenen, Aufnahmen und Keyframes
 
@@ -54,7 +54,7 @@ Entzippen und öffnen Sie den Ordner. Im Ordner *_KeyframeThumbnail* finden Sie 
 
 #### <a name="with-the-video-indexer-api"></a>Über die Video Indexer-API
 
-Wenn Sie Keyframes über die Video Indexer-API abrufen möchten, können Sie das Video mithilfe des Aufrufs zum Hochladen des Videos ([Upload Video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?)) hochladen und indizieren. Rufen Sie [Get Video Index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) (Videoindex abrufen) auf, nachdem der Indizierungsauftrag abgeschlossen wurde. Dadurch erhalten Sie alle Erkenntnisse, die mit Video Indexer aus den Inhalten in eine JSON-Datei extrahiert wurden.  
+Wenn Sie Keyframes über die Video Indexer-API abrufen möchten, können Sie das Video mithilfe des Aufrufs zum Hochladen des Videos ([Upload Video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)) hochladen und indizieren. Rufen Sie [Get Video Index](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Index) (Videoindex abrufen) auf, nachdem der Indizierungsauftrag abgeschlossen wurde. Dadurch erhalten Sie alle Erkenntnisse, die mit Video Indexer aus den Inhalten in eine JSON-Datei extrahiert wurden.  
 
 Sie erhalten eine Liste der Keyframe-IDs als Teil der Metadaten der einzelnen Aufnahmen. 
 
@@ -98,7 +98,7 @@ Sie erhalten eine Liste der Keyframe-IDs als Teil der Metadaten der einzelnen Au
 ]
 ```
 
-Sie müssen nun jede dieser Keyframe-IDs für den Aufruf zum Abrufen von Miniaturansichten ([Get Thumbnails](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?)) ausführen. Dadurch werden alle Keyframe-Bilder auf Ihren Computer heruntergeladen. 
+Sie müssen nun jede dieser Keyframe-IDs für den Aufruf zum Abrufen von Miniaturansichten ([Get Thumbnails](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Thumbnail)) ausführen. Dadurch werden alle Keyframe-Bilder auf Ihren Computer heruntergeladen. 
 
 ## <a name="editorial-shot-type-detection"></a>Erkennung von redaktionellen Aufnahmetypen
 

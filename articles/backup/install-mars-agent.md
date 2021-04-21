@@ -3,12 +3,12 @@ title: Installieren des Microsoft Azure Recovery Services-Agents (MARS)
 description: Hier erfahren Sie, wie Sie den MARS-Agent (Microsoft Azure Recovery Services) zum Sichern von Windows-Computern installieren.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: acf38fdf338fcdd0cd7902d4295f0f03310543a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ea48aaa6aad4a51463c4c028ead22f31163f810
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98986869"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519220"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installieren des Azure Backup-MARS-Agents
 
@@ -158,7 +158,7 @@ Wenn Sie den Agent bereits auf einem Computer installiert haben, stellen Sie sic
 
     ![Hinzufügen von Tresoranmeldeinformationen mithilfe des Assistenten zum Registrieren von Servern](./media/backup-configure-vault/register1.png)
 
-1. Geben Sie auf der Seite **Verschlüsselungseinstellung** eine Passphrase an, die zum Ver- und Entschlüsseln von Sicherungen für den Computer verwendet werden soll. Weitere Informationen zu zulässigen Zeichen in Passphrasen finden Sie [hier](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase).
+1. Geben Sie auf der Seite **Verschlüsselungseinstellung** eine Passphrase an, die zum Ver- und Entschlüsseln von Sicherungen für den Computer verwendet werden soll. Weitere Informationen zu zulässigen Zeichen in Passphrasen finden Sie [hier](backup-azure-file-folder-backup-faq.yml#what-characters-are-allowed-for-the-passphrase-).
 
     * Speichern Sie die Passphrase an einem sicheren Ort. Sie benötigen sie zum Wiederherstellen einer Sicherung.
     * Wenn Sie die Passphrase verlieren oder vergessen, kann Microsoft Ihnen bei der Wiederherstellung der Sicherungsdaten nicht behilflich sein.
