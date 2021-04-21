@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5e462397196d2fd0fd716801d9106929a8cb6a6b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: df89d53e6b5043c1ef3caa1c92f2abaae542d6ec
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061450"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599008"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Überwachen der Gesamtintegrität einer IoT Central-Anwendung
 
@@ -54,7 +54,7 @@ Metriken können von den Zahlen abweichen, die in Ihrer Azure IoT Central-Rechnu
 
 - Die [Standard-Tarife](https://azure.microsoft.com/pricing/details/iot-central/) von IoT Central enthalten zwei Geräte und kostenlose variierende Nachrichtenkontingente. Die kostenlosen Elemente sind in der Abrechnung nicht enthalten, werden in den Metriken aber dennoch gezählt.
 
-- IoT Central generiert automatisch eine einzige Testgeräte-ID für jede Gerätevorlage in der Anwendung. Diese Geräte-ID wird auf der Seite **Testgerät verwalten** für eine Gerätevorlage angezeigt. Lösungsentwickler können wahlweise [ihre Gerätevorlagen überprüfen](./overview-iot-central.md#create-device-templates), bevor sie sie veröffentlichen. Dazu generieren sie Code, in dem diese Testgeräte-IDs verwendet werden. Diese Geräte sind in der Abrechnung nicht enthalten, werden in den Metriken aber dennoch gezählt.
+- IoT Central generiert automatisch eine einzige Testgeräte-ID für jede Gerätevorlage in der Anwendung. Diese Geräte-ID wird auf der Seite **Testgerät verwalten** für eine Gerätevorlage angezeigt. Lösungsentwickler können wahlweise ihre Gerätevorlagen überprüfen, bevor sie sie veröffentlichen. Dazu generieren sie Code, in dem diese Testgeräte-IDs verwendet werden. Diese Geräte sind in der Abrechnung nicht enthalten, werden in den Metriken aber dennoch gezählt.
 
 - Während Metriken möglicherweise eine Teilmenge der Gerät-zu-Cloud-Kommunikation zeigen, wird die gesamte Kommunikation zwischen dem Gerät und der Cloud [als Nachricht zur Abrechnung gezählt](https://azure.microsoft.com/pricing/details/iot-central/).
 

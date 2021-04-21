@@ -2,21 +2,21 @@
 title: Verbessern der Columnstore-Indexleistung für dedizierte SQL-Pools
 description: Reduzieren Sie Arbeitsspeicheranforderungen, oder erhöhen Sie den verfügbaren Arbeitsspeicher, um die Anzahl der Zeilen in jeder Zeilengruppe in einem dedizierten SQL-Pool zu maximieren.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b15f71698af8c340b58f3399390857790313b8ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1336359bdd0768ba1d1554554d266cacfb483a43
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585484"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566510"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>Maximieren der Zeilengruppenqualität für Columnstore-Indizes in einem dedizierten SQL-Pool 
 

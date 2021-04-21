@@ -12,19 +12,19 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 10/12/2020
-ms.openlocfilehash: 4c2c27fb196b222b8094c33eee60a32ccf5a028f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 160066f9599388256c7c821732a1e06fec49bdf5
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307502"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749040"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>TDE (Transparent Data Encryption) für SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Transparente Datenverschlüsselung (Transparent Data Encryption, TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) trägt durch die Verschlüsselung von ruhenden Daten zum Schutz von Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics vor der Bedrohung durch schädliche Offlineaktivitäten bei. TDE ver- und entschlüsselt die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit, ohne dass Änderungen an der Anwendung erforderlich sind. TDE ist standardmäßig für alle neu bereitgestellten SQL-Datenbank-Instanzen aktiviert und muss für ältere Datenbanken in Azure SQL-Datenbank oder Azure SQL Managed Instance manuell aktiviert werden. Für Azure Synapse Analytics muss TDE manuell aktiviert werden.
 
-Die TDE führt die E/A-Verschlüsselung und -Entschlüsselung der Daten und auf Seitenebene durch. Jede Seite wird entschlüsselt, wenn sie in den Speicher gelesen wird, und dann verschlüsselt, bevor sie auf den Datenträger geschrieben wird. TDE verschlüsselt den Speicher einer gesamten Datenbank mithilfe eines symmetrischen Schlüssels, der als Datenbank-Verschlüsselungsschlüssel (Database Encryption Key, DEK) bezeichnet wird. Beim Datenbankstart wird der verschlüsselte DEK entschlüsselt und dann für die Entschlüsselung und erneute Verschlüsselung der Datenbankdateien im Prozess der SQL Server-Datenbank-Engine verwendet. Der DEK ist durch die TDE-Schutzvorrichtung geschützt. Beim TDE-Schutzvorrichtung handelt es sich entweder um ein von einem Dienst verwaltetes Zertifikat (dienstseitig verwaltete transparente Datenverschlüsselung) oder um einen asymmetrischen Schlüssel, der in [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) gespeichert ist (kundenseitig verwaltete transparente Datenverschlüsselung).
+Die TDE führt die E/A-Verschlüsselung und -Entschlüsselung der Daten und auf Seitenebene durch. Jede Seite wird entschlüsselt, wenn sie in den Speicher gelesen wird, und dann verschlüsselt, bevor sie auf den Datenträger geschrieben wird. TDE verschlüsselt den Speicher einer gesamten Datenbank mithilfe eines symmetrischen Schlüssels, der als Datenbank-Verschlüsselungsschlüssel (Database Encryption Key, DEK) bezeichnet wird. Beim Datenbankstart wird der verschlüsselte DEK entschlüsselt und dann für die Entschlüsselung und erneute Verschlüsselung der Datenbankdateien im Prozess der SQL Server-Datenbank-Engine verwendet. Der DEK ist durch die TDE-Schutzvorrichtung geschützt. Beim TDE-Schutzvorrichtung handelt es sich entweder um ein von einem Dienst verwaltetes Zertifikat (dienstseitig verwaltete transparente Datenverschlüsselung) oder um einen asymmetrischen Schlüssel, der in [Azure Key Vault](../../key-vault/general/security-overview.md) gespeichert ist (kundenseitig verwaltete transparente Datenverschlüsselung).
 
 Bei Azure SQL-Datenbank und Azure Synapse ist der TDE-Schutz auf der [Serverebene](logical-servers.md) festgelegt und wird von allen Datenbanken übernommen, die diesem Server zugeordnet sind. Bei der verwalteten Azure SQL-Instanz ist die TDE-Schutzvorrichtung auf Instanzebene festgelegt und wird von allen verschlüsselten Datenbanken für diese Instanz geerbt. In diesem Dokument bezieht sich der Begriff *Server* sowohl auf den Server als auch die Instanz (sofern nicht anders angegeben).
 
@@ -156,4 +156,4 @@ Verwenden Sie die folgenden Befehle für Azure SQL-Datenbank und Azure Synapse:
 - Eine allgemeine Beschreibung von TDE finden Sie unter [Transparente Datenverschlüsselung](/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Weitere Informationen TDE mit BYOK-Unterstützung für Azure SQL-Datenbank, verwaltete Azure SQL-Instanzen und Azure Synapse finden Sie unter [Transparente Datenverschlüsselung mit Bring Your Own Key-Unterstützung](transparent-data-encryption-byok-overview.md).
 - Wenn Sie mit der Verwendung von TDE mit BYOK-Unterstützung beginnen möchten, sehen Sie sich die Schrittanleitung [Aktivieren von Transparent Data Encryption mithilfe eines vom Kunden verwalteten Azure Key Vault-Schlüssels](transparent-data-encryption-byok-configure.md) an.
-- Weitere Informationen zu Key Vault finden Sie unter [Sicherer Zugriff auf einen Schlüsseltresor](../../key-vault/general/secure-your-key-vault.md).
+- Weitere Informationen zu Key Vault finden Sie unter [Sicherer Zugriff auf einen Schlüsseltresor](../../key-vault/general/security-overview.md).

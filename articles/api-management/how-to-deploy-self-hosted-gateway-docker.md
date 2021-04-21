@@ -8,14 +8,14 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 04/19/2021
 ms.author: apimpm
-ms.openlocfilehash: b9e990988770e8aca015ae8b1159bb4f5e50df57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 531421726bc1e081d85eca9d535267520d3fea5f
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82204827"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725603"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Bereitstellen eines selbstgehosteten Azure API Management-Gateways für Docker
 
@@ -39,23 +39,23 @@ In diesem Artikel werden die Schritte für die Bereitstellung einer selbstgehost
 2. Wählen Sie die Gatewayressource aus, die Sie bereitstellen möchten.
 3. Wählen Sie **Bereitstellung** aus.
 4. Beachten Sie, dass im Textfeld **Token** automatisch für Sie ein Zugriffstoken mit den Standardwerten **Ablauf** und **Geheimer Schlüssel** generiert wurde. Wählen Sie bei Bedarf die gewünschten Werte in einem oder beiden Steuerelementen aus, um ein neues Token zu generieren.
-4. Stellen Sie sicher, dass **Docker** unter **Bereitstellungsskripts** ausgewählt ist.
-5. Wählen Sie den Link zur Datei **env.conf** neben **Umgebung** aus, um die Datei herunterzuladen.
-6. Wählen Sie das Symbol **Kopieren** rechts neben dem Textfeld **Ausführen** aus, um den Docker-Befehl in die Zwischenablage zu kopieren.
-7. Fügen Sie den Befehl in das Terminalfenster (oder Befehlsfenster) ein. Passen Sie die Portzuordnungen und den Containernamen nach Bedarf an. Beachten Sie, dass der Befehl annimmt, dass die heruntergeladene Umgebungsdatei im aktuellen Verzeichnis vorhanden ist.
-```
-    docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
-```
-8. Führen Sie den Befehl aus. Der Befehl weist Ihre Docker-Umgebung an, den Container auszuführen. Dabei wird das aus Microsoft Container Registry heruntergeladene [Containerimage](https://aka.ms/apim/sputnik/dhub) verwendet, und die HTTP-Ports (8080) und HTTPS-Ports (8081) des Containers werden den Ports 80 und 443 auf dem Host zugeordnet.
-9. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob der Gatewaycontainer ausgeführt wird:
-```console
-docker ps
-CONTAINER ID        IMAGE                                                 COMMAND                  CREATED             STATUS              PORTS                                         NAMES
-895ef0ecf13b        mcr.microsoft.com/azure-api-management/gateway:latest   "/bin/sh -c 'dotnet …"   5 seconds ago       Up 3 seconds        0.0.0.0:80->8080/tcp, 0.0.0.0:443->8081/tcp   my-gateway
-```
+5. Stellen Sie sicher, dass **Docker** unter **Bereitstellungsskripts** ausgewählt ist.
+6. Wählen Sie den Link zur Datei **env.conf** neben **Umgebung** aus, um die Datei herunterzuladen.
+7. Wählen Sie das Symbol **Kopieren** rechts neben dem Textfeld **Ausführen** aus, um den Docker-Befehl in die Zwischenablage zu kopieren.
+8. Fügen Sie den Befehl in das Terminalfenster (oder Befehlsfenster) ein. Passen Sie die Portzuordnungen und den Containernamen nach Bedarf an. Beachten Sie, dass der Befehl annimmt, dass die heruntergeladene Umgebungsdatei im aktuellen Verzeichnis vorhanden ist.
+   ```
+       docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
+   ```
+9. Führen Sie den Befehl aus. Der Befehl weist Ihre Docker-Umgebung an, den Container auszuführen. Dabei wird das aus Microsoft Container Registry heruntergeladene [Containerimage](https://aka.ms/apim/sputnik/dhub) verwendet, und die HTTP-Ports (8080) und HTTPS-Ports (8081) des Containers werden den Ports 80 und 443 auf dem Host zugeordnet.
+10. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob der Gatewaycontainer ausgeführt wird:
+    ```console
+    docker ps
+    CONTAINER ID        IMAGE                                                 COMMAND                  CREATED             STATUS              PORTS                                         NAMES
+    895ef0ecf13b        mcr.microsoft.com/azure-api-management/gateway:latest   "/bin/sh -c 'dotnet …"   5 seconds ago       Up 3 seconds        0.0.0.0:80->8080/tcp, 0.0.0.0:443->8081/tcp   my-gateway
+    ```
 10. Kehren Sie zum Azure-Portal zurück, klicken Sie auf **Übersicht** und bestätigen Sie, dass der selbstgehostete Gatewaycontainer, den Sie gerade bereitgestellt haben, einen fehlerfreien Status meldet.
 
-![Gatewaystatus](media/how-to-deploy-self-hosted-gateway-docker/status.png)
+    ![Gatewaystatus](media/how-to-deploy-self-hosted-gateway-docker/status.png)
 
 > [!TIP]
 > Verwenden Sie den Befehl <code>console docker container logs <gateway-name></code>, um eine Momentaufnahme des Protokolls des selbstgehosteten Gateways anzuzeigen.

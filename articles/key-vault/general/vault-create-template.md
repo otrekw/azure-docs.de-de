@@ -3,19 +3,18 @@ title: Erstellen eines Azure-Schlüsseltresors und einer Tresorzugriffsrichtlini
 description: Dieser Artikel veranschaulicht, wie Sie Azure-Schlüsseltresore und Tresorzugriffsrichtlinien erstellen, indem Sie eine Azure Resource Manager-Vorlage verwenden.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 3/14/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e489efd335d2a46a0e55d4ceb9bdee809ae6c39d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e70906cbf26c899744bfbe137da4ce9cfa651b20
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595242"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753144"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Erstellen eines Azure-Schlüsseltresors und von Tresorzugriffsrichtlinien mithilfe einer Resource Manager-Vorlage
 
@@ -218,6 +217,6 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Sicherer Zugriff auf einen Schlüsseltresor](secure-your-key-vault.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](security-overview.md)
 - [Authentifizieren bei einem Schlüsseltresor](authentication.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](developers-guide.md)

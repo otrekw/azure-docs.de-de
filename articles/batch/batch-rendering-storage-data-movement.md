@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a18ee6961cb601b0fa9db7213eb6115afa20096
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86147310"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765195"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Optionen für die Speicherung und Datenverschiebung zum Rendern von Medienobjekt- und Ausgabedateien
 
@@ -126,7 +126,7 @@ Mit Auftragsaufgaben werden Pfade für Eingabe- und Ausgabedateien angegeben, in
 
 Azure Files wird von allen wichtigen APIs und Tools unterstützt, die über Azure Storage-Unterstützung verfügen, z.B. azcopy, Azure CLI, Storage-Explorer, Azure PowerShell, Batch Explorer usw.
 
-Die [Azure-Dateisynchronisierung](../storage/files/storage-sync-files-planning.md) ist verfügbar, um Dateien zwischen einem lokalen Dateisystem und einer Azure Files-Freigabe automatisch zu synchronisieren.
+Die [Azure-Dateisynchronisierung](../storage/file-sync/file-sync-planning.md) ist verfügbar, um Dateien zwischen einem lokalen Dateisystem und einer Azure Files-Freigabe automatisch zu synchronisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

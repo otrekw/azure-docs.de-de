@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 473e87904742395eca6b7eeba0875cd93789104d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 285f0acd5097ce68cddee6f732b17944dffb0eba
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91978984"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762567"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region – Azure-Befehlszeilenschnittstelle
 
@@ -44,7 +44,7 @@ Diese Art des verwalteten Datenträgers verfügt über zwei eindeutige Zustände
 
 Bevor Sie eine leere HDD Standard zum Hochladen erstellen können, benötigen Sie die Dateigröße der VHD in Byte, die Sie hochladen möchten. Um diese abzurufen, können Sie `wc -c <yourFileName>.vhd` oder `ls -al <yourFileName>.vhd` verwenden. Dieser Wert wird verwendet, wenn der Parameter **--upload-size-bytes** angegeben wird.
 
-Erstellen Sie für das Hochladen eine leere HDD Standard, indem Sie in einem [Datenträgererstellungs](/cli/azure/disk#az-disk-create)-Cmdlet sowohl den **--for-upload**- als auch den **--upload-size-bytes**-Parameter angeben:
+Erstellen Sie für das Hochladen eine leere HDD Standard, indem Sie in einem [Datenträgererstellungs](/cli/azure/disk#az_disk_create)-Cmdlet sowohl den **--for-upload**- als auch den **--upload-size-bytes**-Parameter angeben:
 
 Ersetzen Sie `<yourdiskname>`, `<yourresourcegroupname>`, `<yourregion>` durch Werte Ihrer Wahl. Der Parameter `--upload-size-bytes` enthält einen Beispielwert von `34359738880`, ersetzen Sie ihn durch einen für Sie geeigneten Wert.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 979643c76b8bded51e30232228b7fe7485a1f53b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 27a23ff924c2fa9e9e35fec010ca2a177868eacc
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057676"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713910"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Übersicht über den Solution Accelerator für die Gerätesimulation
 
@@ -32,11 +32,11 @@ Mit der Gerätesimulation können Sie Gerätemodelle definieren, um Ihre echten 
 
 Sie können Simulationen für einzelne oder mehrere Tausend Geräte ausführen, bei denen eine Verbindung mit beliebigen IoT-Hubs hergestellt wird. Zur Unterstützung des Testens können Sie optional einen IoT-Hub zusammen mit der Gerätesimulation für eine eigenständige Umgebung bereitstellen.
 
-Die Gerätesimulation ist kostenlos. Allerdings werden bei der Gerätesimulation Daten unter Ihrem Azure-Abonnement in der Cloud bereitgestellt, und es werden Azure-Ressourcen verbraucht. Falls die Gerätesimulation Ihre Anforderungen nicht erfüllt, haben Sie die Möglichkeit, den [Quellcode auf GitHub](https://github.com/Azure/device-simulation-dotnet) zu kopieren und zu ändern.
+Die Gerätesimulation ist kostenlos. Allerdings werden bei der Gerätesimulation Daten unter Ihrem Azure-Abonnement in der Cloud bereitgestellt, und es werden Azure-Ressourcen verbraucht. Falls die Gerätesimulation Ihre Anforderungen nicht erfüllt, haben Sie die Möglichkeit, den [Quellcode auf GitHub](https://github.com/Azure/azure-iot-pcs-device-simulation) zu kopieren und zu ändern.
 
 ## <a name="sample-simulations"></a>Beispielsimulationen
 
-Wenn Sie die Gerätesimulation bereitstellen, erhalten Sie einige Beispielsimulationen und Beispielgeräte. Sie können diese Beispiele verwenden, um die Nutzung der Gerätesimulation zu erlernen. Führen Sie als Einstieg eine [Beispielsimulation](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) aus. Sie können auch [Ihre eigene Simulation erstellen, indem Sie eines der vielen bereitgestellten Beispielgeräte verwenden](iot-accelerators-device-simulation-create-simulation.md).
+Wenn Sie die Gerätesimulation bereitstellen, erhalten Sie einige Beispielsimulationen und Beispielgeräte. Sie können diese Beispiele verwenden, um die Nutzung der Gerätesimulation zu erlernen. Führen Sie als Einstieg eine [Beispielsimulation](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md) aus. Sie können auch [Ihre eigene Simulation erstellen, indem Sie eines der vielen bereitgestellten Beispielgeräte verwenden](iot-accelerators-device-simulation-create-simulation.md).
 
 ![Simulationskonfiguration](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
@@ -63,4 +63,4 @@ Mit erweiterten Gerätemodellen haben Sie folgende Möglichkeiten:
 In diesem Artikel wurden der Solution Accelerator für die Gerätesimulation und die zugehörigen Funktionen beschrieben. Informationen zum Bereitstellen des Solution Accelerators finden Sie im GitHub-Repository unter:
 
 > [!div class="nextstepaction"]
-> [Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)
+> [Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)

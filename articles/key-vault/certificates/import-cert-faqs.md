@@ -3,19 +3,18 @@ title: 'Häufig gestellte Fragen: Azure Key Vault-Zertifikatimport'
 description: Enthält Antworten auf häufig gestellte Fragen zum Import von Azure Key Vault-Zertifikaten.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: d8a06471129f8d79e1ced150f7410392b91d498b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 97dfc2db837f728b8cb4ece9a064f99006c9996b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728027"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767815"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Importieren von Azure Key Vault-Zertifikaten: Häufig gestellte Fragen
 
@@ -43,7 +42,7 @@ Nein. Es ist nicht möglich, Zertifikatvorgänge mit einer ARM-Vorlage (Azure Re
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Wenn ich ein Zertifikat über das Azure-Portal importiere, tritt ein Fehler der Art „Es ist ein Problem aufgetreten“ auf. Wie kann ich weitere Untersuchungen durchführen?
      
-Importieren Sie die Zertifikatsdatei mit der [Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) oder mit [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate), wenn Sie einen Fehler mit aussagekräftigeren Informationen anzeigen möchten.
+Importieren Sie die Zertifikatsdatei mit der [Azure CLI](/cli/azure/keyvault/certificate#az_keyvault_certificate_import) oder mit [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate), wenn Sie einen Fehler mit aussagekräftigeren Informationen anzeigen möchten.
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Wie kann ich den folgenden Fehlertyp beheben: „Access denied or user is unauthorized to import certificate“ (Zugriff verweigert, oder der Benutzer ist nicht autorisiert, das Zertifikat zu importieren)?
     

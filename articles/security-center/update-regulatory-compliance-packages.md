@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 768f686889663d9b1af4b88d84b361ac9460a5a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381731"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738952"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
@@ -38,7 +38,7 @@ Microsoft überwacht die gesetzlichen Standards selbst und passt die Pakete im L
 
 ## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Welche Standards für die Einhaltung gesetzlicher Bestimmungen sind im Azure Security Center verfügbar?
 
-Standardmäßig ist jedem Abonnement der **Azure Security-Vergleichstest** zugewiesen. Hierbei handelt es sich um von Microsoft erstellte, Azure-spezifische Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md)
+Standardmäßig ist jedem Abonnement der **Azure Security-Vergleichstest** zugewiesen. Hierbei handelt es sich um von Microsoft erstellte, Azure-spezifische Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction)
 
 Sie können auch beispielsweise folgende Standards hinzufügen:
 
@@ -122,6 +122,6 @@ In diesem Artikel haben Sie Informationen zum **Hinzufügen von Compliancestanda
 
 Verwandte Informationen finden Sie auf den folgenden Seiten:
 
-- [Einführung zum Azure Security-Vergleichstest](../security/benchmarks/introduction.md)
+- [Einführung zum Azure Security-Vergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md) – Erfahren Sie, wie Sie Ihre Daten über die Einhaltung gesetzlicher Vorschriften mit Security Center und externen Tools verfolgen und exportieren.
 - [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md)

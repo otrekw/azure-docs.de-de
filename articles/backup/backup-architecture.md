@@ -3,12 +3,12 @@ title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 1e5a61bd4e3287c1100ff1f54fda797c1add438b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fca05f8718fc5e44da33b19447895f5daafc905
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466410"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107716744"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -137,28 +137,12 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
 - Azure-Dateifreigabe: Informationen zum [Erstellen](./backup-afs.md) und [Ändern](./manage-afs-backup.md#modify-policy) von Richtlinien
 - SAP HANA: Informationen zum [Erstellen](./backup-azure-sap-hana-database.md#create-a-backup-policy) und [Ändern](./sap-hana-db-manage.md#change-policy) von Richtlinien
 - MARS: Informationen zum [Erstellen](./backup-windows-with-mars-agent.md#create-a-backup-policy) und [Ändern](./backup-azure-manage-mars.md#modify-a-backup-policy) von Richtlinien
-- [Gibt es Beschränkungen bei der Planung der Sicherung?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
-- [Was passiert, wenn ich meine Sicherungsrichtlinie ändere?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
+- [Gibt es Beschränkungen bei der Planung der Sicherung?](./backup-azure-backup-faq.yml#are-there-limits-on-backup-scheduling-)
+- [Was passiert, wenn ich meine Sicherungsrichtlinie ändere?](./backup-azure-backup-faq.yml#what-happens-when-i-change-my-backup-policy-)
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektur: Integrierte Azure-VM-Sicherung
 
-1. Wenn Sie die Sicherung für einen virtuellen Azure-Computer aktivieren, wird eine Sicherung gemäß dem von Ihnen angegebenen Zeitplan ausgeführt.
-1. Während der ersten Sicherung wird auf dem virtuellen Computer eine Sicherungserweiterung installiert, wenn die VM ausgeführt wird.
-    - Für virtuelle Windows-Computer wird die Erweiterung „VMSnapshot“ installiert.
-    - Für virtuelle Linux-Computer wird die Erweiterung „VMSnapshot Linux“ installiert.
-1. Die Erweiterung erstellt eine Momentaufnahme auf Speicherebene.
-    - Bei ausgeführten Windows-VMs erstellt Azure Backup in Koordination mit dem Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) von Windows eine App-konsistente Momentaufnahme des virtuellen Computers. Backup erstellt standardmäßig vollständige VSS-Sicherungen. Sollte von Backup keine App-konsistente Momentaufnahme erstellt werden können, wird eine dateikonsistente Momentaufnahme erstellt.
-    - Bei Linux-VMs erstellt Backup eine dateikonsistente Momentaufnahme. Zur Erstellung App-konsistenter Momentaufnahmen müssen Sie Pre- und Postskripts manuell anpassen.
-    - Zur Optimierung von Backup werden die einzelnen VM-Datenträger parallel gesichert. Für jeden zu sichernden Datenträger liest Azure Backup die Blöcke auf dem Datenträger und speichert nur die geänderten Daten.
-1. Nachdem die Momentaufnahme erstellt wurde, werden die Daten in den Tresor übertragen.
-    - Es werden nur Datenblöcke kopiert, die seit der letzten Sicherung geändert wurden.
-    - Die Daten werden nicht verschlüsselt. Azure Backup kann virtuelle Azure-Computer sichern, die mit Azure Disk Encryption verschlüsselt wurden.
-    - Momentaufnahmedaten werden möglicherweise nicht sofort in den Tresor kopiert. Zu Spitzenzeiten kann die Sicherung mehrere Stunden dauern. Bei täglichen Sicherungsrichtlinien beträgt die Gesamtdauer der Sicherung eines virtuellen Computers weniger als 24 Stunden.
-1. Nachdem die Daten an den Tresor gesendet wurden, wird ein Wiederherstellungspunkt erstellt. Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt, bevor sie gelöscht werden. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Lesen Sie die Informationen unter [Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung](./backup-instant-restore-capability.md).
-
-Sie müssen die Internetverbindung nicht explizit zulassen, um Ihre Azure-VMs zu sichern.
-
-![Sicherung virtueller Azure-Computer](./media/backup-architecture/architecture-azure-vm.png)
+[!INCLUDE [azure-vm-backup-process.md](../../includes/azure-vm-backup-process.md)]
 
 ## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architektur: Direkte Sicherung von lokalen Windows Server-Computern oder Azure-VM-Dateien oder -Ordnern
 

@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 57e9d0c584600a8fac90499d72cfac1620052603
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 006abf62c605c2ca34fd1adeadee8e29ae0fb8fb
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694919"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588308"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>Beheben von Fehlern bei der Bibliotheksinstallation 
 Wenn Sie Code eines Drittanbieters oder lokal erstellten Code für Ihre Anwendungen verfügbar machen möchten, können Sie in einem Ihrer serverlosen Apache Spark-Pools eine Bibliothek installieren. Die in der Datei „requirements.txt“ aufgeführten Pakete werden zum Zeitpunkt des Poolstarts von PyPi heruntergeladen. Diese Anforderungsdatei wird jedes Mal verwendet, wenn eine Spark-Instanz aus diesem Spark-Pool erstellt wird. Nachdem eine Bibliothek für einen Spark-Pool installiert wurde, ist sie in allen Sitzungen verfügbar, die denselben Pool verwenden. 
@@ -92,7 +92,7 @@ Die serverlosen Synapse-Apache Spark-Pools basieren auf einer Linux-Distribution
 So stellen Sie die Umgebung nach und überprüfen Ihre Updates
  1. [Laden Sie die Vorlage herunter](https://github.com/Azure-Samples/Synapse/blob/main/Spark/Python/base_environment.yml), um die Synapse-Runtime lokal neu zu erstellen. Möglicherweise gibt es geringfügige Unterschiede zwischen der Vorlage und der tatsächlichen Synapse-Umgebung.
    
- 2. Erstellen Sie mithilfe der [folgenden Anweisungen](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html) eine virtuelle Umgebung. In dieser Umgebung können Sie eine isolierte Python-Installation mit der angegebenen Liste von Bibliotheken erstellen. 
+ 2. Erstellen Sie mithilfe der [folgenden Anweisungen](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment) eine virtuelle Umgebung. In dieser Umgebung können Sie eine isolierte Python-Installation mit der angegebenen Liste von Bibliotheken erstellen. 
     
     ```
     conda myenv create -f environment.yml
@@ -102,7 +102,7 @@ So stellen Sie die Umgebung nach und überprüfen Ihre Updates
  3. Mit ``pip install -r <provide your req.txt file>`` aktualisieren Sie die virtuelle Umgebung mit den angegebenen Paketen. Wenn bei der Installation ein Fehler auftritt, liegt möglicherweise ein Konflikt zwischen den in der Synapse-Basisruntime vorinstallierten Komponenten und den Angaben in der Anforderungsdatei vor. Diese Abhängigkeitskonflikte müssen aufgelöst werden, damit Sie die aktualisierten Bibliotheken in Ihrem serverlosen Apache Spark-Pool anwenden können.
 
 >[!IMPORTANT]
->Probleme können auftreten, wenn Sie pip und conda zusammen verwenden. Beim Kombinieren von pip und conda sollten Sie diese [empfohlenen bewährten Methoden](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment) befolgen.
+>Probleme können auftreten, wenn Sie pip und conda zusammen verwenden. Beim Kombinieren von pip und conda sollten Sie diese [empfohlenen bewährten Methoden](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment) befolgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Anzeigen der Standardbibliotheken: [Versionsunterstützung für Apache Spark](apache-spark-version-support.md)

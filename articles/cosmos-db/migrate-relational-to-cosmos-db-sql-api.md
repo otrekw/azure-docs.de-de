@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7dbb162749e0a2f84140b8e9394934198d096eac
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93096749"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589617"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Migrieren von relationalen Daten mit 1:n-Beziehungen in ein Azure Cosmos DB-SQL-API-Konto
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -126,7 +126,7 @@ Wir können auch Spark in [Azure Databricks](https://azure.microsoft.com/service
 > Der Klarheit und Einfachheit halber enthalten die nachstehenden Codeausschnitte (explizit inline dargestellte) Dummy-Datenbankkennwörter. Sie sollten jedoch immer Azure Databricks-Geheimnisse verwenden.
 >
 
-Zuerst erstellen wir die erforderlichen [SQL](https://docs.databricks.com/data/data-sources/sql-databases-azure.html)-Connector- und [Azure Cosmos DB](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html)-Connectorbibliotheken und fügen sie an unseren Azure Databricks-Cluster an. Starten Sie den Cluster neu, um sicherzustellen, dass die Bibliotheken geladen werden.
+Zuerst erstellen wir die erforderlichen [SQL](/connectors/sql/)-Connector- und [Azure Cosmos DB](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html)-Connectorbibliotheken und fügen sie an unseren Azure Databricks-Cluster an. Starten Sie den Cluster neu, um sicherzustellen, dass die Bibliotheken geladen werden.
 
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Screenshot, der zeigt, wo der erforderliche SQL-Connector und die Azure Cosmos DB Connector-Bibliotheken für den Azure Databricks-Cluster erstellt und angefügt werden.":::
 
@@ -136,7 +136,7 @@ Als Nächstes stellen wir zwei Beispiele für Scala und Python vor.
 Hier rufen wir die Ergebnisse der SQL-Abfrage mit der „FOR JSON“-Ausgabe in einem Datenrahmen ab:
 
 ```scala
-// Connect to Azure SQL https://docs.databricks.com/data/data-sources/sql-databases-azure.html
+// Connect to Azure SQL /connectors/sql/
 import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.connect._
 val configSql = Config(Map(

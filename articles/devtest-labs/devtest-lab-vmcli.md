@@ -3,12 +3,12 @@ title: Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure
 description: Erfahren Sie, wie Sie mit Azure DevTest Labs virtuelle Computer mit der Azure CLI erstellen und verwalten.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 95e0add8ce14e47c609b1ae951673c261316293f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201463"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763539"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure-Befehlszeilenschnittstelle
 Dieser Schnellstart führt Sie durch das Erstellen, Starten, Verbinden, Aktualisieren und Bereinigen von Entwicklungscomputern im Lab. 
@@ -48,7 +48,7 @@ Mit dem folgenden Befehl erstellen Sie einen virtuellen Computer aus einem Marke
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-Sie können auch virtuelle Computer basierend auf Formeln erstellen, indem Sie den Parameter **image-type** auf **formula** festlegen. Wenn Sie ein bestimmtes virtuelles Netzwerk für Ihren virtuellen Computer auswählen müssen, verwenden Sie die Parameter **vnet-name** und **subnet**. Weitere Informationen finden Sie unter [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create).
+Sie können auch virtuelle Computer basierend auf Formeln erstellen, indem Sie den Parameter **image-type** auf **formula** festlegen. Wenn Sie ein bestimmtes virtuelles Netzwerk für Ihren virtuellen Computer auswählen müssen, verwenden Sie die Parameter **vnet-name** und **subnet**. Weitere Informationen finden Sie unter [az lab vm create](/cli/azure/lab/vm#az_lab_vm_create).
 
 ## <a name="verify-that-the-vm-is-available"></a>Überprüfen Sie, ob der virtuelle Computer verfügbar ist.
 Verwenden Sie den Befehl `az lab vm show`, um sicherzustellen, dass die VM verfügbar ist, bevor Sie sie starten und sich mit ihr verbinden. 

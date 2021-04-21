@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0e076f3b248942870ba58a51c85c3df1f1277a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545818"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750606"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 
@@ -42,7 +42,7 @@ Geheimniswerte können entweder als verschlüsselte Zeichenfolgen in API Managem
 Die Verwendung von Schlüsseltresorgeheimnissen wird empfohlen, da dadurch die Sicherheit von API Management verbessert wird:
 
 * In Schlüsseltresoren gespeicherte Geheimnisse können für mehrere Dienste verwendet werden.
-* Auf die Geheimnisse können präzise [Zugriffsrichtlinien](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) angewandt werden.
+* Auf die Geheimnisse können präzise [Zugriffsrichtlinien](../key-vault/general/security-overview.md#privileged-access) angewandt werden.
 * Wenn Geheimnisse im Schlüsseltresor aktualisiert werden, erfolgt in API Management automatisch eine Schlüsselrotation. Nach der Aktualisierung im Schlüsseltresor wird ein benannter Wert innerhalb von 4 Stunden in API Management aktualisiert. Sie können das Geheimnis auch manuell im Azure-Portal oder über die Verwaltungs-REST-API aktualisieren.
 
 ### <a name="prerequisites-for-key-vault-integration"></a>Voraussetzungen für die Key Vault-Integration

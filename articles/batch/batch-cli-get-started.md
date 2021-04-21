@@ -4,12 +4,12 @@ description: Hier erhalten Sie eine kurze Einführung in die Batch-Befehle der A
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: befe2f6fe67ce7c2c4bb61153344103ee2aa70cb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92144749"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768431"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
 
@@ -54,7 +54,7 @@ Es gibt verschiedenen Möglichkeiten, sich bei Azure anzumelden. Diese werden un
 1. [Interaktiv anmelden](/cli/azure/authenticate-azure-cli). Melden Sie sich interaktiv an, wenn Sie Azure CLI-Befehle selbst an der Befehlszeile ausführen.
 2. [Anmelden mit einem Dienstprinzipal](/cli/azure/authenticate-azure-cli). Melden Sie sich mit einem Dienstprinzipal an, wenn Sie Azure CLI-Befehle über ein Skript oder aus einer Anwendung heraus ausführen.
 
-Im Rahmen dieses Artikels veranschaulichen wir die interaktive Anmeldung bei Azure. Geben Sie [az login](/cli/azure/reference-index#az-login) an der Befehlszeile ein:
+Im Rahmen dieses Artikels veranschaulichen wir die interaktive Anmeldung bei Azure. Geben Sie [az login](/cli/azure/reference-index#az_login) an der Befehlszeile ein:
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -69,7 +69,7 @@ Die im Abschnitt „Beispielskripts für die Shell“ aufgeführten Beispiele ze
 
 ### <a name="log-in-to-your-batch-account"></a>Anmelden bei Ihrem Batch-Konto
 
-Um die Azure CLI zum Verwalten von Batch-Ressourcen wie Pools, Aufträgen und Tasks zu verwenden, müssen Sie sich bei Ihrem Batch-Konto anmelden und authentifizieren. Verwenden Sie den Befehl [az batch account login](/cli/azure/batch/account#az-batch-account-login), um sich beim Batch-Dienst anzumelden. 
+Um die Azure CLI zum Verwalten von Batch-Ressourcen wie Pools, Aufträgen und Tasks zu verwenden, müssen Sie sich bei Ihrem Batch-Konto anmelden und authentifizieren. Verwenden Sie den Befehl [az batch account login](/cli/azure/batch/account#az_batch_account_login), um sich beim Batch-Dienst anzumelden. 
 
 Für die Authentifizierung bei Ihrem Batch-Konto stehen Ihnen zwei Optionen zur Verfügung:
 
@@ -81,7 +81,7 @@ Für die Authentifizierung bei Ihrem Batch-Konto stehen Ihnen zwei Optionen zur 
 
     Ein Vorteil von Azure AD ist die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC). Bei der rollenbasierten Zugriffssteuerung von Azure richtet sich der Zugriff eines Benutzers nach der ihm zugewiesenen Rolle und nicht danach, ob der Benutzer über die Kontoschlüssel verfügt. Sie verwalten also keine Kontoschlüssel, sondern Azure-Rollen, und Azure AD verarbeitet Zugriff und Authentifizierung.  
 
-     Um sich über Azure AD bei Ihrem Batch-Konto anzumelden, rufen Sie den Befehl [az batch account login](/cli/azure/batch/account#az-batch-account-login) auf: 
+     Um sich über Azure AD bei Ihrem Batch-Konto anzumelden, rufen Sie den Befehl [az batch account login](/cli/azure/batch/account#az_batch_account_login) auf: 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount

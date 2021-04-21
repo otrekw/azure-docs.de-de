@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 348f1b4e6182739b3afbc96597853a5b887877c1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724270"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748770"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?
 In Azure Active Directory (Azure AD) wird allen Benutzern ein Satz mit Standardberechtigungen gewährt. Der Zugriffsumfang eines Benutzers basiert auf dem Benutzertyp, den [Rollenzuweisungen](active-directory-users-assign-role-azure-portal.md) und dem Besitz einzelner Objekte. In diesem Artikel werden diese Standardberechtigungen beschrieben, und es werden die Standardberechtigungen für Mitglieder und Gastbenutzer miteinander verglichen. Die Standardberechtigungen für Benutzer können nur in den Benutzereinstellungen in Azure AD geändert werden.
@@ -32,7 +32,7 @@ Der gewährte Satz an Standardberechtigungen richtet sich danach, ob der Benutze
 
 **Bereich** | **Berechtigungen für Mitgliedsbenutzer** | **Standardberechtigungen für Gastbenutzer** | **Eingeschränkte Berechtigungen für Gastbenutzer (Vorschau)**
 ------------ | --------- | ---------- | ----------
-Benutzer und Kontakte | <ul><li>Alle Benutzer und Kontakte auflisten<li>Alle öffentlichen Eigenschaften von Benutzern und Kontakten lesen</li><li>Gäste einladen<li>Eigenes Kennwort ändern<li>Eigene Mobiltelefonnummer verwalten<li>Eigenes Foto verwalten<li>Eigene Aktualisierungstoken für ungültig erklären</li></ul> | <ul><li>Eigene Eigenschaften lesen<li>Eigenschaften für Anzeigename, E-Mail-Adresse, Anmeldename, Foto, Benutzerprinzipalname und Benutzertyp anderer Benutzer und Kontakte lesen<li>Eigenes Kennwort ändern<li>Suchen nach einem anderen Benutzer nach ObjectId (falls zulässig)<li>Manager- und direkte Berichtsinformationen anderer Benutzer lesen</li></ul> | <ul><li>Eigene Eigenschaften lesen<li>Eigenes Kennwort ändern</li></ul>
+Benutzer und Kontakte | <ul><li>Alle Benutzer und Kontakte auflisten<li>Alle öffentlichen Eigenschaften von Benutzern und Kontakten lesen</li><li>Gäste einladen<li>Eigenes Kennwort ändern<li>Eigene Mobiltelefonnummer verwalten<li>Eigenes Foto verwalten<li>Eigene Aktualisierungstoken für ungültig erklären</li></ul> | <ul><li>Eigene Eigenschaften lesen<li>Eigenschaften für Anzeigename, E-Mail-Adresse, Anmeldename, Foto, Benutzerprinzipalname und Benutzertyp anderer Benutzer und Kontakte lesen<li>Eigenes Kennwort ändern<li>Suchen nach einem anderen Benutzer nach ObjectId (falls zulässig)<li>Manager- und direkte Berichtsinformationen anderer Benutzer lesen</li></ul> | <ul><li>Eigene Eigenschaften lesen<li>Eigenes Kennwort ändern</li><li>Eigene Mobiltelefonnummer verwalten</li></ul>
 Gruppen | <ul><li>Sicherheitsgruppen erstellen<li>Erstellen von Microsoft 365-Gruppen<li>Alle Gruppen auflisten<li>Alle Eigenschaften von Gruppen lesen<li>Nicht ausgeblendete Gruppenmitgliedschaften lesen<li>Ausgeblendete Microsoft 365-Gruppenmitgliedschaften für eingebundene Gruppe lesen<li>Eigenschaften, Besitz und Mitgliedschaft von Gruppen im Besitz des Benutzers verwalten<li>Gäste zu Gruppen im Besitz des Benutzers hinzufügen<li>Einstellungen für dynamische Mitgliedschaften verwalten<li>Gruppen im Besitz des Benutzers löschen<li>Wiederherstellen von sich im Besitz befindenden Microsoft 365-Gruppen</li></ul> | <ul><li>Eigenschaften nicht ausgeblendeter Gruppen lesen, einschließlich Mitgliedschaft und Besitz (auch nicht eingebundene Gruppen)<li>Ausgeblendete Microsoft 365-Gruppenmitgliedschaften für eingebundene Gruppen lesen<li>Gruppen nach Anzeigename oder objectId (falls zulässig) suchen</li></ul> | <ul><li>Objekt-ID für eingebundene Gruppen lesen<li>Mitgliedschaft und Besitz eingebundener Gruppen in einigen Microsoft 365-Apps (sofern zulässig) lesen</li></ul>
 Anwendungen | <ul><li>Neue Anwendung registrieren (erstellen)<li>Alle Anwendungen auflisten<li>Eigenschaften für registrierte Anwendungen und Unternehmensanwendungen lesen<li>Anwendungseigenschaften, Zuweisungen und Anmeldeinformationen für Anwendungen im Besitz des Benutzers verwalten<li>Anwendungskennwort für Benutzer erstellen oder löschen<li>Anwendungen im Besitz des Benutzers löschen<li>Anwendungen im Besitz des Benutzers wiederherstellen</li></ul> | <ul><li>Eigenschaften für registrierte Anwendungen und Unternehmensanwendungen lesen</li></ul> | <ul><li>Eigenschaften für registrierte Anwendungen und Unternehmensanwendungen lesen
 Geräte</li></ul> | <ul><li>Alle Geräte auflisten<li>Alle Eigenschaften von Geräten lesen<li>Alle Eigenschaften von Geräten im Besitz des Benutzers verwalten</li></ul> | Keine Berechtigungen | Keine Berechtigungen
@@ -134,7 +134,6 @@ Benutzer können die folgenden Aktionen für Gruppen ausführen, deren Besitzer 
 | microsoft.directory/groups/appRoleAssignments/update | Aktualisieren der groups.appRoleAssignments-Eigenschaft in Azure Active Directory |
 | microsoft.directory/groups/basic/update | Aktualisieren der Basiseigenschaften für Gruppen in Azure Active Directory |
 | microsoft.directory/groups/delete | Löschen von Gruppen in Azure Active Directory |
-| microsoft.directory/groups/dynamicMembershipRule/update | Aktualisieren der groups.dynamicMembershipRule-Eigenschaft in Azure Active Directory |
 | microsoft.directory/groups/members/update | Aktualisieren der groups.members-Eigenschaft in Azure Active Directory |
 | microsoft.directory/groups/owners/update | Aktualisieren der groups.owners-Eigenschaft in Azure Active Directory |
 | microsoft.directory/groups/restore | Wiederherstellen von Gruppen in Azure Active Directory |

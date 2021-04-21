@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 079d7aa9b654a318c7269a41605c3e146b08f127
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42e83facec7817b6588bf69977fea5ab74b6b10d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96621330"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759877"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurieren von Azure Files-Netzwerkendpunkten
 
@@ -23,7 +23,7 @@ Azure Files verfügt über zwei Arten von Endpunkten für den Zugriff auf Azure-
 
 Öffentliche und private Endpunkte befinden sich unter dem Azure-Speicherkonto. Ein Speicherkonto ist ein Verwaltungskonstrukt, das einen gemeinsam genutzten Pool mit Speicherplatz darstellt, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können.
 
-In diesem Artikel geht es um die Konfiguration der Endpunkte eines Speicherkontos für den direkten Zugriff auf die Azure-Dateifreigabe. Die meisten Details in diesem Dokument gelten auch in Bezug darauf, wie die Azure-Dateisynchronisierung mit öffentlichen und privaten Endpunkten für das Speicherkonto interagiert. Weitere Informationen zu den Netzwerkaspekten für eine Bereitstellung der Azure-Dateisynchronisierung finden Sie aber unter [Konfigurieren der Proxy- und Firewalleinstellungen der Dateisynchronisierung](storage-sync-files-firewall-and-proxy.md).
+In diesem Artikel geht es um die Konfiguration der Endpunkte eines Speicherkontos für den direkten Zugriff auf die Azure-Dateifreigabe. Die meisten Details in diesem Dokument gelten auch in Bezug darauf, wie die Azure-Dateisynchronisierung mit öffentlichen und privaten Endpunkten für das Speicherkonto interagiert. Weitere Informationen zu den Netzwerkaspekten für eine Bereitstellung der Azure-Dateisynchronisierung finden Sie aber unter [Konfigurieren der Proxy- und Firewalleinstellungen der Dateisynchronisierung](../file-sync/file-sync-firewall-and-proxy.md).
 
 Wir empfehlen Ihnen, vor dem Lesen dieses Leitfadens den Artikel [Azure Files – Überlegungen zum Netzwerkbetrieb](storage-files-networking-overview.md) zu lesen.
 

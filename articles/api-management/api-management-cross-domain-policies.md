@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2021
 ms.author: apimpm
-ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f074ff389971fa56da7838a9a46ec5c4d42dc5a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688415"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739096"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -69,7 +69,7 @@ Die `cors`-Richtlinie fügt Unterstützung für CORS (Cross-Origin Resource Shar
 
 Mit CORS können Browser und Server miteinander interagieren und ermitteln, ob bestimmte ursprungsübergreifende Anfragen (z. B. XMLHttpRequests-Aufrufe aus JavaScript in einer Webseite an andere Domänen) zulässig sind. Dies bietet mehr Flexibilität als wenn nur Anfragen gleichen Ursprungs erlaubt sind, und ist gleichzeitig sicherer als wenn alle ursprungsübergreifenden Anfragen erlaubt sind.
 
-Sie müssen die CORS-Richtlinie anwenden, um die interaktive Konsole im Entwicklerportal zu aktivieren. Ausführliche Informationen finden Sie in der Dokumentation zum [Entwicklerportal](./api-management-howto-developer-portal.md#cors).
+Sie müssen die CORS-Richtlinie anwenden, um die interaktive Konsole im Entwicklerportal zu aktivieren. Ausführliche Informationen finden Sie in der Dokumentation zum [Entwicklerportal](./developer-portal-faq.md#cors).
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 

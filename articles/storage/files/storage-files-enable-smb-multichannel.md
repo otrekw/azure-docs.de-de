@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie SMB Multichannel für Azure Premium-Dateifre
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2f867fa6d4b7e1d864a85106b5d957a53d38eb76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: da4e1a58aef28e5c47100a0311ff81a5af04a918
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732536"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718975"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>Aktivieren von SMB Multichannel für ein FileStorage-Konto (Vorschau) 
 
@@ -66,7 +66,7 @@ Nachdem Sie ein FileStorage-Konto erstellt haben, können Sie die Anweisungen zu
 1. Wählen Sie **Dateifreigaben** unter **Dateidienst** aus, und wählen Sie dann **Dateifreigabeeinstellungen** aus.
 1. Schalten Sie **SMB Multichannel** **ein** (oder für die Deaktivierung **aus**), und wählen Sie **Speichern** aus.
 
-:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="Screenshot des Speicherkontos, SMB Multichannel ist eingeschaltet.":::
+:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="Screenshot des Speicherkontos, SMB Multichannel ist eingeschaltet."  lightbox="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png":::
 
 Wenn die Option SMB Multichannel unter **Dateifreigabeeinstellungen** nicht sichtbar ist oder bei der Aktualisierung der Konfiguration ein Fehler auftritt, der auf eine fehlgeschlagene Aktualisierung der Einstellungen hinweist, vergewissern Sie sich, dass Ihr Abonnement registriert ist und sich Ihr Konto in einer der [unterstützten Regionen](#regional-availability) mit unterstütztem Kontotyp und Replikation befindet.
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: e9757b94330f889869080a0e961ab2728cee86f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eff0085a4a739e0831b25b1bd28cd234fdbcde3d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94659912"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766441"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Erstellen eines IoT Hubs mit der Azure-Befehlszeilenschnittstelle
 
@@ -42,7 +42,7 @@ Verwenden Sie die Azure CLI zum Erstellen einer Ressourcengruppe, und fügen Sie
    > ```
    >
 
-2. Führen Sie den folgenden [Befehl zum Erstellen einer IoT Hub-Instanz](/cli/azure/iot/hub#az-iot-hub-create) in Ihrer Ressourcengruppe aus, und verwenden Sie dabei einen global eindeutigen Namen für Ihre IoT Hub-Instanz:
+2. Führen Sie den folgenden [Befehl zum Erstellen einer IoT Hub-Instanz](/cli/azure/iot/hub#az_iot_hub_create) in Ihrer Ressourcengruppe aus, und verwenden Sie dabei einen global eindeutigen Namen für Ihre IoT Hub-Instanz:
     
    ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
@@ -58,14 +58,14 @@ Mit dem vorherigen Befehl wird ein kostenpflichtiger IoT Hub im S1-Tarif erstell
 
 Über die Azure-Befehlszeilenschnittstelle können Sie [eine einzelne Ressource](/cli/azure/resource) (beispielsweise eine IoT Hub-Instanz) oder eine Ressourcengruppe mit allen dazugehörigen Ressourcen (einschließlich IoT Hub-Instanzen) löschen.
 
-Führen Sie zum [Löschen einer IoT Hub-Instanz](/cli/azure/iot/hub#az-iot-hub-delete) den folgenden Befehl aus:
+Führen Sie zum [Löschen einer IoT Hub-Instanz](/cli/azure/iot/hub#az_iot_hub_delete) den folgenden Befehl aus:
 
 ```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-Führen Sie zum [Löschen einer Ressourcengruppe und aller dazugehörigen Ressourcen](/cli/azure/group#az-group-delete) den folgenden Befehl aus:
+Führen Sie zum [Löschen einer Ressourcengruppe und aller dazugehörigen Ressourcen](/cli/azure/group#az_group_delete) den folgenden Befehl aus:
 
 ```azurecli-interactive
 az group delete --name {your resource group name}

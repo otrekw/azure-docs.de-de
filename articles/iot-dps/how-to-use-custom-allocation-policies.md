@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 14a405dbab0460f841a5e9104dbfeff101568f44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1432aee341509d8a5bdc9fffe89dd9bad33fc7de
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919202"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766477"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Verwenden benutzerdefinierter Zuweisungsrichtlinien
 
@@ -58,7 +58,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell zum Erstellen eines Bereitst
 > Die in diesem Artikel verwendeten Befehle erstellen den Bereitstellungsdienst und andere Ressourcen am Standort „USA, Westen“. Es wird empfohlen, die Ressourcen in der nächstgelegenen Region zu erstellen, die den Device Provisioning-Dienst unterstützt. Sie können eine Liste mit den verfügbaren Standorten anzeigen. Führen Sie hierzu entweder den Befehl `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` aus, oder navigieren Sie zur Seite [Azure-Status](https://azure.microsoft.com/status/), und suchen Sie nach „Device Provisioning-Dienst“. In Befehlen können Standorte entweder als einzelnes Wort oder mit mehreren Wörtern (beispielsweise „westus“, „West US“, „WEST US“ usw.) angegeben werden. Die Groß-/Kleinschreibung spielt hierbei keine Rolle. Wenn Sie den Standort in einem Format mit mehreren Wörtern angeben, müssen Sie den Wert in Anführungszeichen einschließen, wie im folgenden Beispiel zu sehen: `-- location "West US"`.
 >
 
-1. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+1. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
     Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *contoso-us-resource-group* in der Region *westus* erstellt. Es wird empfohlen, diese Gruppe für alle in diesem Artikel erstellten Ressourcen zu verwenden. Dies erleichtert das Bereinigen, nachdem Sie die Schritte in diesem Artikel ausgeführt haben.
 
@@ -66,7 +66,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell zum Erstellen eines Bereitst
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. Verwenden Sie Azure Cloud Shell zum Erstellen eines Gerätebereitstellungsdiensts mit dem Befehl [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create). Der Bereitstellungsdienst wird zu *contoso-us-resource-group* hinzugefügt.
+2. Verwenden Sie Azure Cloud Shell zum Erstellen eines Gerätebereitstellungsdiensts mit dem Befehl [az iot dps create](/cli/azure/iot/dps#az_iot_dps_create). Der Bereitstellungsdienst wird zu *contoso-us-resource-group* hinzugefügt.
 
     Im folgenden Beispiel wird am Standort *westus* ein Bereitstellungsdienst mit dem Namen *contoso-provisioning-service-1098* erstellt. Sie müssen einen eindeutigen Dienstnamen verwenden. Verwenden Sie im Dienstnamen ein eigenes Suffix anstelle von **1098**.
 
@@ -76,7 +76,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell zum Erstellen eines Bereitst
 
     Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen.
 
-3. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) den IoT-Hub für die **Contoso-Abteilung „Toaster“** . Der IoT-Hub wird zu *contoso-us-resource-group* hinzugefügt.
+3. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) den IoT-Hub für die **Contoso-Abteilung „Toaster“** . Der IoT-Hub wird zu *contoso-us-resource-group* hinzugefügt.
 
     Im folgenden Beispiel wird in der Region *westus* ein IoT-Hub mit dem Namen *contoso-toasters-hub-1098* erstellt. Sie müssen einen eindeutigen Hubnamen verwenden. Verwenden Sie im Hubnamen ein eigenes Suffix anstelle von **1098**. 
 
@@ -89,7 +89,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell zum Erstellen eines Bereitst
 
     Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen.
 
-4. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) den IoT-Hub für die **Contoso-Abteilung „Wärmepumpen“** . Dieser IoT-Hub wird ebenfalls zu *contoso-us-resource-group* hinzugefügt.
+4. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) den IoT-Hub für die **Contoso-Abteilung „Wärmepumpen“** . Dieser IoT-Hub wird ebenfalls zu *contoso-us-resource-group* hinzugefügt.
 
     Im folgenden Beispiel wird in der Region *westus* ein IoT-Hub mit dem Namen *contoso-heatpumps-hub-1098* erstellt. Sie müssen einen eindeutigen Hubnamen verwenden. Verwenden Sie im Hubnamen ein eigenes Suffix anstelle von **1098**. 
 
@@ -512,7 +512,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
     prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
     ```
 
-    Speichern Sie die Datei.
+    Speichern Sie die Datei .
 
 2. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Wählen Sie in der Aufforderung zum erneuten Erstellen des Projekts **Ja** aus, um das Projekt vor der Ausführung neu zu erstellen.
 
@@ -541,7 +541,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
     prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
 
-    Speichern Sie die Datei.
+    Speichern Sie die Datei .
 
 2. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Wählen Sie in der Eingabeaufforderung zum Neuerstellen des Projekts **Ja**, um das Projekt vor der Ausführung neu zu erstellen.
 

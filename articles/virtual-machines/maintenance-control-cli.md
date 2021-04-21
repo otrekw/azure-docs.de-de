@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 9425759de1e08bc83cac80cd1b56c602edb59fb1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c57f66eca5d15024c6b10e8fad12ddb575b9f894
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562961"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765897"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Steuern von Updates mit der Wartungssteuerung und der Azure CLI
 
@@ -93,7 +93,7 @@ az maintenance assignment create \
 
 Wenn Sie eine Konfiguration auf einen dedizierten Host anwenden möchten, müssen Sie `--resource-type hosts`, `--resource-parent-name` mit dem Namen der Hostgruppe und `--resource-parent-type hostGroups` einschließen. 
 
-Der `--resource-id`-Parameter ist die ID des Hosts. Sie können [az vm host get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view) verwenden, um die ID Ihres dedizierten Hosts zu erhalten.
+Der `--resource-id`-Parameter ist die ID des Hosts. Sie können [az vm host get-instance-view](/cli/azure/vm/host#az_vm_host_get_instance_view) verwenden, um die ID Ihres dedizierten Hosts zu erhalten.
 
 ```azurecli-interactive
 az maintenance assignment create \

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/10/2021
-ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: 27889e8309c0efaf1e2869fc39d099f38f64f7c4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102636334"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764817"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Übersicht: Vorschauversion von Azure Logic Apps
 
@@ -80,7 +80,7 @@ Mit dem einzelinstanzenfähigen Logik-App-Typ können Sie diese Workflowtypen in
   Um das Debuggen zu vereinfachen, können Sie den Ausführungsverlauf für einen zustandslosen Workflow aktivieren und den Ausführungsverlauf wieder deaktivieren, wenn Sie fertig sind, da die Aktivierung die Leistung beeinträchtigt. Weitere Informationen finden Sie unter [Erstellen zustandsbehafteter oder zustandsloser Workflows in Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless) oder [Erstellen zustandsbehafteter oder zustandsloser Workflows im Azure-Portal](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless).
 
   > [!NOTE]
-  > Zustandslose Workflows unterstützen derzeit nur *Aktionen* für in Azure bereitgestellte [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors), keine Aktionen für Trigger. Um Ihren Workflow zu starten, wählen Sie einen der [Trigger für integrierte Anforderungen, Event Hubs oder Service Bus](../connectors/apis-list.md#built-ins) aus. Diese Trigger werden nativ in der Azure Logic Apps-Runtime (Vorschau) ausgeführt. Weitere Informationen zu eingeschränkten, nicht verfügbaren oder nicht unterstützten Triggern, Aktionen und Connectors finden Sie unter [Geänderte, eingeschränkte, nicht verfügbare oder nicht unterstützte Funktionen](#limited-unavailable-unsupported).
+  > Zustandslose Workflows unterstützen derzeit nur *Aktionen* für in Azure bereitgestellte [verwaltete Connectors](../connectors/managed.md), keine Aktionen für Trigger. Um Ihren Workflow zu starten, wählen Sie einen der [Trigger für integrierte Anforderungen, Event Hubs oder Service Bus](../connectors/built-in.md) aus. Diese Trigger werden nativ in der Azure Logic Apps-Runtime (Vorschau) ausgeführt. Weitere Informationen zu eingeschränkten, nicht verfügbaren oder nicht unterstützten Triggern, Aktionen und Connectors finden Sie unter [Geänderte, eingeschränkte, nicht verfügbare oder nicht unterstützte Funktionen](#limited-unavailable-unsupported).
 
 <a name="nested-behavior"></a>
 
@@ -194,13 +194,13 @@ Die folgenden Funktionen wurden in der Vorschauversion von Azure Logic Apps geä
   > [!NOTE]
   > Damit webhookbasierte Trigger und Aktionen lokal in Visual Studio Code ausgeführt werden können, sind zusätzliche Einrichtungsschritte erforderlich. Weitere Informationen finden Sie unter [Erstellen zustandsbehafteter und zustandsloser Workflows in Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup).
 
-  * Bei *zustandslosen Workflows* wird die Registerkarte **Azure** nicht angezeigt, wenn Sie einen Trigger auswählen, da Sie nur [*Aktionen* verwalteter Connectors, aber keine Trigger](../connectors/apis-list.md#managed-api-connectors) auswählen können. Obwohl Sie verwaltete Connectors, die in Azure bereitgestellt wurden, für zustandslose Workflows aktivieren können, zeigt der Designer keine Trigger für verwaltete Connectors an, die Sie auswählen können.
+  * Bei *zustandslosen Workflows* wird die Registerkarte **Azure** nicht angezeigt, wenn Sie einen Trigger auswählen, da Sie nur [*Aktionen* verwalteter Connectors, aber keine Trigger](../connectors/managed.md) auswählen können. Obwohl Sie verwaltete Connectors, die in Azure bereitgestellt wurden, für zustandslose Workflows aktivieren können, zeigt der Designer keine Trigger für verwaltete Connectors an, die Sie auswählen können.
 
-  * Bei *zustandsbehafteten Workflows* können Sie sowohl [Trigger als auch Aktionen verwalteter Connectors](../connectors/apis-list.md#managed-api-connectors) verwenden. Ausnahmen bilden die Trigger und Aktionen, die unten als nicht verfügbar aufgeführt sind.
+  * Bei *zustandsbehafteten Workflows* können Sie sowohl [Trigger als auch Aktionen verwalteter Connectors](../connectors/managed.md) verwenden. Ausnahmen bilden die Trigger und Aktionen, die unten als nicht verfügbar aufgeführt sind.
 
   * Diese Trigger und Aktionen wurden entweder geändert, sind zurzeit eingeschränkt oder nicht verfügbar oder werden nicht unterstützt:
 
-    * [Lokale Datengateway *trigger*](../connectors/apis-list.md#on-premises-connectors) sind nicht verfügbar, aber Gatewayaktionen *sind* verfügbar.
+    * [Lokale Datengateway *trigger*](../connectors/managed.md#on-premises-connectors) sind nicht verfügbar, aber Gatewayaktionen *sind* verfügbar.
 
     * Die integrierte Aktion [Azure Functions: Azure-Funktion auswählen](logic-apps-azure-functions.md) heißt nun **Azure Functions-Vorgänge: Azure-Funktion aufrufen**. Diese Aktion funktioniert derzeit nur für Funktionen, die über die Vorlage für **HTTP-Trigger** erstellt werden.
 
@@ -221,7 +221,7 @@ Die folgenden Funktionen wurden in der Vorschauversion von Azure Logic Apps geä
 
       * Die Grenzwerte für Aktionen in **Inlinecodevorgängen** wurden [aktualisiert](logic-apps-overview-preview.md#inline-code-limits).
 
-    * Einige [integrierte B2B-Trigger und -Aktionen für Integrationskonten](../connectors/apis-list.md#integration-account-connectors) sind nicht verfügbar. Dies betrifft z. B. die Aktionen für die Codierung und Decodierung von **Flatfiles**.
+    * Einige [integrierte B2B-Trigger und -Aktionen für Integrationskonten](../connectors/managed.md#integration-account-connectors) sind nicht verfügbar. Dies betrifft z. B. die Aktionen für die Codierung und Decodierung von **Flatfiles**.
 
     * Die integrierte Aktion [Azure Logic Apps: Logik-App-Workflow auswählen](logic-apps-http-endpoint.md) heißt nun **Workflowvorgänge: Workflow in dieser Workflow-App aufrufen**.
 

@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 528ba4a1be3650a81772d78a438f03611b9bd761
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26b6adefd2d334c9fe570bfa7e63bb06b55b9d20
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102107119"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588767"
 ---
 # <a name="create-a-custom-conda-channel-for-package-management"></a>Erstellen eines benutzerdefinierten Conda-Kanals für die Paketverwaltung 
 Beim Installieren von Python-Paketen verwendet der Conda-Paket-Manager Kanäle, um nach Paketen zu suchen. Das Erstellen eines benutzerdefinierten Conda-Kanals kann aus verschiedenen Gründen erforderlich sein. Beispielsweise stellen Sie Folgendes fest:
@@ -92,7 +92,7 @@ conda index channel1/linux-64
 conda index channel1 
 ```
 
-Weitere Informationen finden Sie auch im Abschnitt des [Conda-Benutzerhandbuchs](https://docs.conda.io/projects/conda/latest/user-guide/tasks/create-custom-channels.html) zum Erstellen benutzerdefinierter Kanäle. 
+Weitere Informationen finden Sie auch im Abschnitt des [Conda-Benutzerhandbuchs](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/create-custom-channels.html) zum Erstellen benutzerdefinierter Kanäle. 
 
 ## <a name="storage-account-permissions"></a>Speicherkontoberechtigungen
 Jetzt müssen die Berechtigungen für das Speicherkonto überprüft werden. Um diese Berechtigungen festzulegen, navigieren Sie zu dem Pfad, in dem der benutzerdefinierte Kanal erstellt wird. Erstellen Sie dann ein SAS-Token für ```privatechannel```, das über Lese-, Schreib- und Ausführungsberechtigungen verfügt. 

@@ -16,12 +16,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 9d549d77b4a60f7543f69a9fd89e8b538c95d010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecad48592ecfb6723548a27997cfe1b81545b24a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564610"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759597"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Erstellen eines virtuellen Linux-Computers auf der Grundlage eines benutzerdefinierten Datenträgers mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -50,7 +50,7 @@ Für die folgenden Schritte benötigen Sie Folgendes:
 > 
 
 
-- Vergewissern Sie sich, dass Sie die neueste Version der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-az-cli2) installiert und sich mithilfe von [az login](/cli/azure/reference-index#az-login) bei einem Azure-Konto angemeldet haben.
+- Vergewissern Sie sich, dass Sie die neueste Version der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-az-cli2) installiert und sich mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet haben.
 
 Ersetzen Sie in den folgenden Beispielen die exemplarischen Parameternamen durch Ihre eigenen Werte (beispielsweise `myResourceGroup`, `mystorageaccount` und `mydisks`).
 
@@ -121,7 +121,7 @@ az disk create \
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
-Erstellen Sie Ihren virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-create), und fügen Sie den verwalteten Datenträger als Betriebssystemdatenträger an (--attach-os-disk). Das folgende Beispiel erstellt den virtuellen Computer *myNewVM* unter Verwendung des verwalteten Datenträgers, der auf der Grundlage der hochgeladenen VHD erstellt wurde:
+Erstellen Sie Ihren virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create), und fügen Sie den verwalteten Datenträger als Betriebssystemdatenträger an (--attach-os-disk). Das folgende Beispiel erstellt den virtuellen Computer *myNewVM* unter Verwendung des verwalteten Datenträgers, der auf der Grundlage der hochgeladenen VHD erstellt wurde:
 
 ```azurecli
 az vm create \

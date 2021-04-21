@@ -5,13 +5,13 @@ ms.service: logic-apps
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
-ms.date: 01/29/2021
-ms.openlocfilehash: 44351497ed58c8d49404c094f6800b52186edabb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: ec2e1098df4c21704ee7c17852b893630cd3fd27
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709630"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761815"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Planen und Verwalten von Kosten für Azure Logic Apps
 
@@ -210,7 +210,7 @@ Otherwise, if no other cost-saving recommendations or best practices exist to re
 
 Probieren Sie diese Optionen aus, um die Kosten für Ihre Logik-Apps und zugehörige Ressourcen zu senken:
 
-* Verwenden Sie nach Möglichkeit [integrierte Trigger und Aktionen](../connectors/apis-list.md#built-in), die weniger Kosten pro Ausführung verursachen als [Trigger und Aktionen des verwalteten Connectors](../connectors/apis-list.md#managed-connectors).
+* Verwenden Sie nach Möglichkeit [integrierte Trigger und Aktionen](../connectors/built-in.md), die weniger Kosten pro Ausführung verursachen als [Trigger und Aktionen des verwalteten Connectors](../connectors/managed.md).
 
   Beispielsweise lassen sich Kosten beim Zugriff auf andere Ressourcen senken, indem Sie die [HTTP-Aktion](../connectors/connectors-native-http.md) verwenden oder eine Funktion aufrufen, die Sie mithilfe des [Diensts Azure Functions](../azure-functions/functions-overview.md) und der integrierten [Azure Functions-Aktion](../logic-apps/logic-apps-azure-functions.md) erstellt haben. Die Nutzung von Azure Functions ist jedoch auch mit Kosten verbunden, weshalb Sie Ihre Optionen unbedingt vergleichen sollten.
 

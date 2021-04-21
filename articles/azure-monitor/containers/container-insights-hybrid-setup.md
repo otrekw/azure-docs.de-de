@@ -3,12 +3,12 @@ title: Konfigurieren von Kubernetes-Hybridclustern mit Container Insights | Micr
 description: In diesem Artikel wird beschrieben, wie Sie Container Insights zum Überwachen von Kubernetes-Clustern konfigurieren können, die in Azure Stack oder einer anderen Umgebung gehostet werden.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2692b4a634d60ef62339f68277591d711260712
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90a4c14397df8e70fc8f3d88bc339f826bb1ccc9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711245"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767021"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>Konfigurieren von Kubernetes-Hybridclustern mit Container Insights
 
@@ -202,7 +202,7 @@ Führen Sie die folgenden Schritte aus, um zunächst die für den Wert des `work
     }
     ```
 
-7. Ändern Sie nach dem Ausführen des Azure CLI-Befehls [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true) die Werte für **workspaceResourceId** in den Wert, den Sie in Schritt 3 kopiert haben, und kopieren Sie für **workspaceRegion** den Wert **Region**.
+7. Ändern Sie nach dem Ausführen des Azure CLI-Befehls [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace#az_monitor-log-analytics-workspace-list&preserve-view=true) die Werte für **workspaceResourceId** in den Wert, den Sie in Schritt 3 kopiert haben, und kopieren Sie für **workspaceRegion** den Wert **Region**.
 
 8. Speichern Sie diese Datei als „containerSolutionParams.json“ in einem lokalen Ordner.
 

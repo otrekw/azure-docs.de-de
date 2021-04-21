@@ -3,26 +3,21 @@ title: Erstellen eines Pools mit aktivierter Datenträgerverschlüsselung
 description: Erfahren Sie, wie Sie die Disk Encryption-Konfiguration verwenden, um Knoten mit einem plattformseitig verwalteten Schlüssel zu verschlüsseln.
 author: pkshultz
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 04/16/2021
 ms.author: peshultz
-ms.custom: references_regions
-ms.openlocfilehash: 41fc827459b454e2bcb120a925cdab8fcd46e310
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 01d2ea03768a09c1ad4e019b9e8ed43a26443637
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99055313"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728516"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Erstellen eines Pools mit aktivierter Datenträgerverschlüsselung
 
 Wenn Sie einen Azure Batch-Pool mithilfe einer [VM-Konfiguration](nodes-and-pools.md#virtual-machine-configuration) erstellen, können Sie Computeknoten im Pool mit einem plattformseitig verwalteten Schlüssel verschlüsseln, indem Sie die Datenträgerverschlüsselungskonfiguration angeben.
 
 In diesem Artikel wird erläutert, wie ein Batch-Pool mit aktivierter Datenträgerverschlüsselung erstellt wird.
-
-> [!IMPORTANT]
-> Die Verschlüsselung auf dem Host mithilfe eines plattformseitig verwalteten Schlüssels in Azure Batch ist aktuell in der öffentlichen Vorschau für die Regionen „USA, Osten“, „USA, Westen 2“, „USA, Süden-Mitte“, „US Gov Virginia“ und „US Gov Arizona“ verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Gründe für die Verwendung eines Pools mit Disk Encryption-Konfiguration
 

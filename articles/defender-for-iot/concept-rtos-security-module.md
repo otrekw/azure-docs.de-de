@@ -3,12 +3,12 @@ title: Konzeptionelle Erläuterung der Grundlagen des Defender-IoT-Micro-Agent f
 description: Machen Sie sich mit den grundlegenden Begriffen und dem Workflow für den Defender-IoT-Micro-Agent für Azure RTOS vertraut.
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 83557930aeeccbb557382583e4d6666a000ce52c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 04b86d401bcb9fc919c36b28cf4f80ea3bfd7030
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779272"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750480"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-preview"></a>Defender-IoT-Micro-Agent für Azure RTOS (Vorschau)
 
@@ -16,7 +16,7 @@ Verwenden Sie diesen Artikel, um ein besseres Verständnis des Defender-IoT-Micr
 
 ## <a name="azure-rtos-iot-defender-iot-micro-agent"></a>Defender-IoT-Micro-Agent für Azure RTOS
 
-Der Defender-IoT-Micro-Agent für Azure RTOS bietet eine umfassende Sicherheitslösung für Azure RTOS-Geräte als Teil des NetX Duo-Angebots. Innerhalb des NetX Duo-Angebots wird Azure RTOS als Bestandteil des Azure IoT-Defender-IoT-Micro-Agent ausgeliefert, und dieser bietet nach seiner Aktivierung Abdeckung für häufige Bedrohungen auf Geräten mit Echtzeitbetriebssystem. 
+Der Defender-IoT-Micro-Agent für Azure RTOS bietet eine umfassende Sicherheitslösung für Azure RTOS-Geräte als Teil des NetX Duo-Angebots. Innerhalb des NetX Duo-Angebots wird Azure RTOS als Bestandteil des Azure IoT-Defender-IoT-Micro-Agent ausgeliefert, und dieser bietet nach seiner Aktivierung Abdeckung für häufige Bedrohungen auf Geräten mit Echtzeitbetriebssystem.
 
 Der Defender-IoT-Micro-Agent für Azure RTOS wird im Hintergrund ausgeführt und bietet eine nahtlose Benutzererfahrung, während Sicherheitsmeldungen mit den eindeutigen Verbindungen der einzelnen Kunden an deren IoT Hub gesendet werden. Der Defender-IoT-Micro-Agent für Azure RTOS ist standardmäßig aktiviert.  
 

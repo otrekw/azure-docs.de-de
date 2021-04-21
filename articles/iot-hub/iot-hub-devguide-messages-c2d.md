@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 154b496a6c14d307c09ddcd1b42bf4ba568cb315
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7bb3ca2b31eaef5c0639f30e0f2a329a37dfe7e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607890"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761779"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Senden von C2D-Nachrichten von einem IoT-Hub
 
@@ -76,7 +76,7 @@ Beim Senden einer C2D-Nachricht kann der Dienst das Übermitteln von Feedback au
 
 | Ack-Eigenschaftswert | Verhalten |
 | ------------ | -------- |
-| Keine     | Der IoT-Hub generiert keine Feedbacknachricht (Standardverhalten). |
+| none     | Der IoT-Hub generiert keine Feedbacknachricht (Standardverhalten). |
 | Positiv | Wenn die C2D-Nachricht den Status *Abgeschlossen* erreicht, generiert der IoT-Hub eine Feedbacknachricht. |
 | Negativ | Wenn die C2D-Nachricht den Status *Unzustellbar* erreicht, generiert der IoT-Hub eine Feedbacknachricht. |
 | Voll     | Der IoT-Hub generiert in beiden Fällen eine Feedbacknachricht. |
@@ -149,7 +149,7 @@ Sie können die Konfigurationsoptionen auf eine der folgenden Weisen festlegen:
 
     ![Festlegen von Konfigurationsoptionen für Cloud-zu-Gerät-Nachrichten im Portal](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI:** Verwenden Sie den Befehl [az iot hub update](/cli/azure/iot/hub#az-iot-hub-update):
+* **Azure CLI:** Verwenden Sie den Befehl [az iot hub update](/cli/azure/iot/hub#az_iot_hub_update):
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: manayar
-ms.openlocfilehash: 276762bc2b8624f687cbb77e1af771478791a57b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a6a67fe43d4e0a6086154d71e61fe51680dbcd0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101678726"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762585"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>Vorschau: Automatische VM-Gastpatches für Azure-VMs
 
@@ -182,7 +182,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Verwenden Sie [az feature register](/cli/azure/feature#az-feature-register), um die Vorschauversion für Ihr Abonnement zu aktivieren.
+Verwenden Sie [az feature register](/cli/azure/feature#az_feature_register), um die Vorschauversion für Ihr Abonnement zu aktivieren.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview `
@@ -258,13 +258,13 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-for-windows-vms"></a>Azure CLI für virtuelle Windows-Computer
-Verwenden Sie [az vm create](/cli/azure/vm#az-vm-create), um beim Erstellen einer neuen VM automatische VM-Gastpatches zu aktivieren. Im folgenden Beispiel werden automatische VM-Gastpatches für eine VM mit dem Namen *myVM* in der Ressourcengruppe mit dem Namen *myResourceGroup* konfiguriert:
+Verwenden Sie [az vm create](/cli/azure/vm#az_vm_create), um beim Erstellen einer neuen VM automatische VM-Gastpatches zu aktivieren. Im folgenden Beispiel werden automatische VM-Gastpatches für eine VM mit dem Namen *myVM* in der Ressourcengruppe mit dem Namen *myResourceGroup* konfiguriert:
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform
 ```
 
-Verwenden Sie [az vm update](/cli/azure/vm#az-vm-update), um eine vorhandene VM zu ändern.
+Verwenden Sie [az vm update](/cli/azure/vm#az_vm_update), um eine vorhandene VM zu ändern.
 
 ```azurecli-interactive
 az vm update --resource-group myResourceGroup --name myVM --set osProfile.windowsConfiguration.enableAutomaticUpdates=true osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform
@@ -309,7 +309,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM" -Status
 PowerShell stellt zurzeit nur Informationen zur Patcherweiterung zur Verfügung. Informationen zu `patchStatus` werden demnächst ebenfalls über PowerShell verfügbar sein.
 
 ### <a name="azure-cli"></a>Azure CLI
-Verwenden Sie [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view), um auf die Instanzansicht für Ihre VM zuzugreifen.
+Verwenden Sie [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view), um auf die Instanzansicht für Ihre VM zuzugreifen.
 
 ```azurecli-interactive
 az vm get-instance-view --resource-group myResourceGroup --name myVM
@@ -344,7 +344,7 @@ Invoke-AzVmPatchAssessment -ResourceGroupName "myResourceGroup" -VMName "myVM"
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-Verwenden Sie [az vm assess-patches](/cli/azure/vm#az-vm-assess-patches), um verfügbare Patches für Ihren virtuellen Computer zu bewerten.
+Verwenden Sie [az vm assess-patches](/cli/azure/vm#az_vm_assess_patches), um verfügbare Patches für Ihren virtuellen Computer zu bewerten.
 
 ```azurecli-interactive
 az vm assess-patches --resource-group myResourceGroup --name myVM
