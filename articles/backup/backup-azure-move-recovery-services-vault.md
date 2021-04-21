@@ -4,12 +4,12 @@ description: Hier finden Sie Anweisungen zum Verschieben eines Recovery Services
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4f75bec533181b29625fb0a10cc26d03f2875036
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49d6782af5a9c946eaf92147dab22e4605195d89
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466370"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514766"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen
 
@@ -23,7 +23,7 @@ Alle öffentlichen und souveränen Regionen werden unterstützt, mit Ausnahme vo
 
 - Während des Verschiebens des Tresors zwischen den Ressourcengruppen sind sowohl die Quell- als auch die Zielgruppen gesperrt und verhindern das Schreiben und Löschen. Weitere Informationen finden Sie in [diesem Artikel](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Nur das Administratorabonnement verfügt über die Berechtigungen, einen Tresor zu verschieben.
-- Beim Verschieben von Tresoren zwischen Abonnements muss sich das Zielabonnement in einem aktivierten Status im selben Mandanten wie das Quellabonnement befinden. Informationen zum Verschieben eines Tresors in ein anderes Azure AD-Verzeichnis finden Sie unter [Übertragen von Abonnements in ein anderes Verzeichnis](../role-based-access-control/transfer-subscription.md) und in den [häufig gestellten Fragen zum Recovery Services-Tresor](backup-azure-backup-faq.md#recovery-services-vault).
+- Beim Verschieben von Tresoren zwischen Abonnements muss sich das Zielabonnement in einem aktivierten Status im selben Mandanten wie das Quellabonnement befinden. Informationen zum Verschieben eines Tresors in ein anderes Azure AD-Verzeichnis finden Sie unter [Übertragen von Abonnements in ein anderes Verzeichnis](../role-based-access-control/transfer-subscription.md) und in den [häufig gestellten Fragen zum Recovery Services-Tresor](/backup-azure-backup-faq.yml#recovery-services-vault).
 - Sie benötigen die Berechtigung zum Ausführen der Schreibvorgänge in der Zielressourcengruppe.
 - Das Verschieben des Tresors ändert nur die Ressourcengruppe. Der Recovery Services-Tresor befindet sich an demselben Speicherort und kann nicht geändert werden.
 - Sie können nur einen Recovery Services-Tresor pro Region verschieben.

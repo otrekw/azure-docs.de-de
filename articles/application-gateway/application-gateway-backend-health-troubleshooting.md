@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8664f9327af37345c7104c65b2521212669ae806
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078501"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786324"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 ==================================================
@@ -24,7 +24,7 @@ Standardmäßig testet Application Gateway Back-End-Server, um deren Integrität
 
 ### <a name="how-to-check-backend-health"></a>Überprüfen der Back-End-Integrität
 
-Zum Überprüfen der Integrität des Back-End-Pools können Sie die Seite **Back-End-Integrität** im Azure-Portal verwenden. Sie können auch [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth), die [CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health) oder die [REST-API](/rest/api/application-gateway/applicationgateways/backendhealth) verwenden.
+Zum Überprüfen der Integrität des Back-End-Pools können Sie die Seite **Back-End-Integrität** im Azure-Portal verwenden. Sie können auch [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth), die [CLI](/cli/azure/network/application-gateway#az_network_application_gateway_show_backend_health) oder die [REST-API](/rest/api/application-gateway/applicationgateways/backendhealth) verwenden.
 
 Der Status, der von einer dieser Methoden abgerufen wird, kann einer der folgenden sein:
 

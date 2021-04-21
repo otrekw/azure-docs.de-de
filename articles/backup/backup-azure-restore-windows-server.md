@@ -3,12 +3,12 @@ title: Wiederherstellen von Dateien auf Windows Server mit dem MARS-Agent
 description: In diesem Artikel erfahren Sie, wie Sie in Azure gespeicherte Daten mit dem Microsoft Azure Recovery Services-Agent (MARS) auf einem Windows-Server oder Windows-Computer wiederherstellen.
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ca0787ec38e1bc22b62e756c7ee56c5c9e93493
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91813252"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517333"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Wiederherstellen von Dateien auf Windows Server mit dem MARS-Agent
 
@@ -107,7 +107,7 @@ Bei diesen Schritte wird die folgende Terminologie verwendet:
 
 5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem Beispieltresor entspricht, und wählen Sie **Weiter** aus.
 
-    Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, [laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem Beispieltresor im Azure-Portal herunter](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file). Nachdem Sie gültige Tresoranmeldeinformationen angegeben haben, wird der Name des entsprechenden Sicherungstresors angezeigt.
+    Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, [laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem Beispieltresor im Azure-Portal herunter](backup-azure-file-folder-backup-faq.yml#where-can-i-download-the-vault-credentials-file-). Nachdem Sie gültige Tresoranmeldeinformationen angegeben haben, wird der Name des entsprechenden Sicherungstresors angezeigt.
 
 6. Wählen Sie auf der Seite **Sicherungsserver auswählen** in der Liste mit den angezeigten Computern den Quellcomputer aus, und geben Sie die Passphrase an. Wählen Sie **Weiter** aus.
 
@@ -145,4 +145,4 @@ Bei diesen Schritte wird die folgende Terminologie verwendet:
 
 * Nachdem Sie nun Ihre Dateien und Ordner wiederhergestellt haben, können Sie [Ihre Sicherungen verwalten](backup-azure-manage-windows-server.md).
 
-* Lesen Sie die Informationen unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](backup-azure-file-folder-backup-faq.md).
+* Lesen Sie die Informationen unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](backup-azure-file-folder-backup-faq.yml).

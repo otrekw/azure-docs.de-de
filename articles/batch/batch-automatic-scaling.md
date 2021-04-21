@@ -2,14 +2,14 @@
 title: Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool
 description: Aktivieren Sie das automatische Skalieren in einem Cloudpool, um die Anzahl von Computeknoten im Pool dynamisch anzupassen.
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 04/13/2021
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f70c29f0e8a313233991c7363dc4b8a41a1b1cd5
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381425"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389365"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -419,7 +419,13 @@ Mit dem folgenden Beispiel wird ein Pool mit aktivierter automatischer Skalierun
 CloudPool pool = myBatchClient.PoolOperations.CreatePool(
                     poolId: "mypool",
                     virtualMachineSize: "standard_d1_v2",
-                    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+                    VirtualMachineConfiguration: new VirtualMachineConfiguration(
+                        imageReference: new ImageReference(
+                                            publisher: "MicrosoftWindowsServer",
+                                            offer: "WindowsServer",
+                                            sku: "2019-datacenter-core",
+                                            version: "latest"),
+                        nodeAgentSkuId: "batch.node.windows amd64");
 pool.AutoScaleEnabled = true;
 pool.AutoScaleFormula = "$TargetDedicatedNodes = (time().weekday == 1 ? 5:1);";
 pool.AutoScaleEvaluationInterval = TimeSpan.FromMinutes(30);

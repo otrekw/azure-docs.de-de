@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c77375782ba23114be1953d9f8ad7de31ab06f1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5e683e1f5af42a69fac45c20f52169834967649
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582186"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788131"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Kurzanleitung: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure
 
@@ -38,7 +38,7 @@ Der folgende Befehl erstellt ein SSH-Schlüsselpaar mittels RSA-Verschlüsselung
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Bei Verwendung der [Azure CLI](/cli/azure) zum Erstellen Ihres virtuellen Computers mit dem Befehl [az vm create](/cli/azure/vm#az-vm-create) können Sie optional Dateien für öffentliche und private SSH-Schlüssel mit der Option `--generate-ssh-keys` generieren. Die Schlüsseldateien im Verzeichnis „~/.ssh“ gespeichert, sofern nicht mit der Option `--ssh-dest-key-path` anders angegeben. Wenn ein SSH-Schlüsselpaar bereits vorhanden ist und die Option `--generate-ssh-keys` verwendet wird, wird kein neues Schlüsselpaar generiert, sondern stattdessen wird das vorhandene Schlüsselpaar verwendet. Ersetzen Sie im folgenden Befehl *VMname* und *RGname* durch Ihre eigenen Werte:
+Bei Verwendung der [Azure CLI](/cli/azure) zum Erstellen Ihres virtuellen Computers mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) können Sie optional Dateien für öffentliche und private SSH-Schlüssel mit der Option `--generate-ssh-keys` generieren. Die Schlüsseldateien im Verzeichnis „~/.ssh“ gespeichert, sofern nicht mit der Option `--ssh-dest-key-path` anders angegeben. Wenn ein SSH-Schlüsselpaar bereits vorhanden ist und die Option `--generate-ssh-keys` verwendet wird, wird kein neues Schlüsselpaar generiert, sondern stattdessen wird das vorhandene Schlüsselpaar verwendet. Ersetzen Sie im folgenden Befehl *VMname* und *RGname* durch Ihre eigenen Werte:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 
@@ -66,7 +66,7 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 Stellen Sie sicher, dass Sie keine nachstehenden Leerzeichen kopieren, wenn Sie den Inhalt der Datei mit dem öffentlichen Schlüssel für die Verwendung im Azure-Portal oder in einer Resource Manager-Vorlage kopieren und einfügen. Um einen öffentlichen Schlüssel in macOS zu kopieren, können Sie die Datei des öffentlichen Schlüssels per Pipe an `pbcopy` übergeben. Unter Linux können Sie auf ähnliche Weise die Datei des öffentlichen Schlüssels per Pipe an Programme wie `xclip` übergeben.
 
-Der öffentliche Schlüssel, den Sie in Ihrer Linux-VM in Azure ablegen, wird standardmäßig in „~/.ssh/id_rsa.pub“ gespeichert, sofern Sie den Speicherort nicht bei der Erstellung der Schlüsselpaars geändert haben. Um die [Azure CLI 2.0](/cli/azure) zum Erstellen Ihres virtuellen Computers mit einem vorhandenen öffentlichen Schlüssel zu verwenden, geben Sie den Wert und optional den Speicherort dieses öffentlichen Schlüssels mithilfe des Befehls [az vm create](/cli/azure/vm#az-vm-create) mit der Option `--ssh-key-values` an. Ersetzen Sie im folgenden Befehl *myVM*, *myResourceGroup*, *UbuntuLTS*, *azureuser* und *mysshkey.pub* mit ihren eigenen Werten:
+Der öffentliche Schlüssel, den Sie in Ihrer Linux-VM in Azure ablegen, wird standardmäßig in „~/.ssh/id_rsa.pub“ gespeichert, sofern Sie den Speicherort nicht bei der Erstellung der Schlüsselpaars geändert haben. Um die [Azure CLI 2.0](/cli/azure) zum Erstellen Ihres virtuellen Computers mit einem vorhandenen öffentlichen Schlüssel zu verwenden, geben Sie den Wert und optional den Speicherort dieses öffentlichen Schlüssels mithilfe des Befehls [az vm create](/cli/azure/vm#az_vm_create) mit der Option `--ssh-key-values` an. Ersetzen Sie im folgenden Befehl *myVM*, *myResourceGroup*, *UbuntuLTS*, *azureuser* und *mysshkey.pub* mit ihren eigenen Werten:
 
 
 ```azurecli

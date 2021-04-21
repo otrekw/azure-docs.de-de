@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: jixin
-ms.openlocfilehash: 018033d3a6123948191a7261f5a1ee2ae526e25a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8776102602f5bdcf29139d808a6f603cc5c7473
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89295017"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784571"
 ---
 # <a name="audit-compliance-of-azure-signalr-service-resources-using-azure-policy"></a>Überwachen der Konformität von Azure SignalR Service-Ressourcen mithilfe von Azure Policy
 
@@ -53,7 +53,7 @@ Wenn eine Ressource nicht konform ist, kann das viele mögliche Ursachen haben. 
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Richtlinienkonformität in der Azure CLI
 
-Konformitätsdaten können auch über die Azure CLI abgerufen werden. Verwenden Sie beispielsweise den Befehl [az policy assignment list](/cli/azure/policy/assignment#az-policy-assignment-list) in der CLI, um die Richtlinien-IDs der Azure SignalR Service-Richtlinien abzurufen, die angewendet werden:
+Konformitätsdaten können auch über die Azure CLI abgerufen werden. Verwenden Sie beispielsweise den Befehl [az policy assignment list](/cli/azure/policy/assignment#az_policy_assignment_list) in der CLI, um die Richtlinien-IDs der Azure SignalR Service-Richtlinien abzurufen, die angewendet werden:
 
 ```azurecli
 az policy assignment list --query "[?contains(displayName,'SignalR')].{name:displayName, ID:id}" --output table
@@ -67,13 +67,13 @@ Name                                                                            
 [Preview]: Azure SignalR Service should use private links  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Authorization/policyAssignments/<assignmentId>
 ```
 
-Führen Sie dann [az policy state list](/cli/azure/policy/state#az-policy-state-list) aus, um den Konformitätszustand aller Ressourcen einer bestimmten Ressourcengruppe im JSON-Format zurückzugeben:
+Führen Sie dann [az policy state list](/cli/azure/policy/state#az_policy_state_list) aus, um den Konformitätszustand aller Ressourcen einer bestimmten Ressourcengruppe im JSON-Format zurückzugeben:
 
 ```azurecli
 az policy state list --g <resourceGroup>
 ```
 
-Mit [az policy state list](/cli/azure/policy/state#az-policy-state-list) können Sie auch den Konformitätszustand einer bestimmten SignalR-Ressource im JSON-Format zurückgeben:
+Mit [az policy state list](/cli/azure/policy/state#az_policy_state_list) können Sie auch den Konformitätszustand einer bestimmten SignalR-Ressource im JSON-Format zurückgeben:
 
 ```azurecli
 az policy state list \

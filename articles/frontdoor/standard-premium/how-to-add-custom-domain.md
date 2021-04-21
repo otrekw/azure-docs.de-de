@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 36cb5720e409c86fcb4bc1a97863e5d3523cd3bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69e216c8893f9361a18354e5d165ecc0499601aa
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588748"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387920"
 ---
 # <a name="create-a-custom-domain-on-azure-front-door-standardpremium-sku-preview-using-the-azure-portal"></a>Erstellen einer benutzerdefinierten Domäne in der Azure Front Door Standard/Premium-SKU (Vorschau) mit dem Azure-Portal
 
@@ -23,7 +23,7 @@ ms.locfileid: "104588748"
 
 Wenn Sie Azure Front Door Standard/Premium zur Anwendungsbereitstellung verwenden, ist eine benutzerdefinierte Domäne erforderlich, sofern Ihr eigener Domänenname in den Endbenutzeranforderungen sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein.
 
-Nachdem Sie ein Azure Front Door Standard/Premium-Profil erstellt haben, verfügt der Front-End-Standardhost über die Unterdomäne „azurefd.net“. Diese Unterdomäne wird standardmäßig in die URL eingeschlossen, wenn Azure Front Door Standard/Premium Inhalte vom Back-End bereitstellt. Beispielsweise `https://contoso-frontend.azurefd.net/activeusers.htm`. Zur Vereinfachung bietet Azure Front Door Service Ihnen die Möglichkeit, dem Standardhost eine benutzerdefinierte Domäne zuzuordnen. Mit dieser Option enthält die URL bei der Übermittlung der Inhalte eine benutzerdefinierte Domäne anstelle eines Azure Front Door Standard/Premium-Domänennamens. Beispielsweise https://www.contoso.com/photo.png.
+Nachdem Sie ein Azure Front Door Standard/Premium-Profil erstellt haben, verfügt der Front-End-Standardhost über die Unterdomäne „azurefd.net“. Diese Unterdomäne wird standardmäßig in die URL eingeschlossen, wenn Azure Front Door Standard/Premium Inhalte vom Back-End bereitstellt. Beispiel: `https://contoso-frontend.azurefd.net/activeusers.htm`. Zur Vereinfachung bietet Azure Front Door Service Ihnen die Möglichkeit, dem Standardhost eine benutzerdefinierte Domäne zuzuordnen. Mit dieser Option enthält die URL bei der Übermittlung der Inhalte eine benutzerdefinierte Domäne anstelle eines Azure Front Door Standard/Premium-Domänennamens. Beispiel: „https://www.contoso.com/photo.png“.
 
 > [!IMPORTANT]
 > Azure Front Door Standard/Premium (Vorschau) befindet sich derzeit in der öffentlichen Vorschauversion.

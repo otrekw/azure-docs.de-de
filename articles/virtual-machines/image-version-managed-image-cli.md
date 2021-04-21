@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cae82072785838d410453b2eb83685905b0ba04e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d0644b9ec9009fe5d1db7701834cb9788f86ab0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553781"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790165"
 ---
 # <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Klonen eines verwalteten Images in eine Imageversion mit der Azure-Befehlszeilenschnittstelle
 Wenn Sie über ein vorhandenes verwaltetes Image verfügen, das Sie in eine Shared Image Gallery klonen möchten, können Sie direkt aus dem verwalteten Image ein Image in der Shared Image Gallery erstellen. Nachdem Sie das neue Image getestet haben, können Sie das verwaltete Quellimage löschen. Sie können auch mithilfe von [PowerShell](image-version-managed-image-powershell.md) von einem verwalteten Image zu einem Katalog mit freigegebenen Images migrieren.
@@ -43,7 +43,7 @@ Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkt
 
 Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](./shared-image-galleries.md#image-definitions).
 
-Erstellen Sie mithilfe von [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) eine Imagedefinition im Katalog.
+Erstellen Sie mithilfe von [az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) eine Imagedefinition im Katalog.
 
 In diesem Beispiel heißt die Imagedefinition *myImageDefinition* und ist für ein [generalisiertes](./shared-image-galleries.md#generalized-and-specialized-images) Linux-Betriebssystemimage vorgesehen. Verwenden Sie `--os-type Windows`, um eine Definition für Images zu erstellen, die ein Windows-Betriebssystem verwenden. 
 
@@ -65,7 +65,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>Erstellen der Imageversion
 
-Erstellen Sie Versionen mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create). Sie müssen die ID des verwalteten Images, das als Grundlage zum Erstellen der Imageversion verwendet werden soll, als Eingabe übergeben. Sie können mit [az image list](/cli/azure/image?view#az-image-list) die IDs für Ihre Images abrufen. 
+Erstellen Sie Versionen mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create). Sie müssen die ID des verwalteten Images, das als Grundlage zum Erstellen der Imageversion verwendet werden soll, als Eingabe übergeben. Sie können mit [az image list](/cli/azure/image?view#az_image_list) die IDs für Ihre Images abrufen. 
 
 ```azurecli-interactive
 az image list --query "[].[name, id]" -o tsv

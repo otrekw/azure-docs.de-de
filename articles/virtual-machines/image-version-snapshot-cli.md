@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c809edd3699d0b9827fe15da53d5d18b12cbe6e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dc6d99b8b1c913479fc584b52f6ff919dfac675
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556960"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792289"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Erstellen eines Images aus einem verwalteten Datenträger oder einer Momentaufnahme in einer Shared Image Gallery-Instanz mithilfe der Azure CLI
 
@@ -35,13 +35,13 @@ Ersetzen Sie beim Durcharbeiten dieses Artikels die Ressourcennamen, wo dies erf
 
 ## <a name="find-the-snapshot-or-managed-disk"></a>Suchen nach der Momentaufnahme oder dem verwalteten Datenträger 
 
-Mit [az snapshot list](/cli/azure/snapshot#az-snapshot-list) können Sie eine Liste der Momentaufnahmen anzeigen, die in einer Ressourcengruppe verfügbar sind. 
+Mit [az snapshot list](/cli/azure/snapshot#az_snapshot_list) können Sie eine Liste der Momentaufnahmen anzeigen, die in einer Ressourcengruppe verfügbar sind. 
 
 ```azurecli-interactive
 az snapshot list --query "[].[name, id]" -o tsv
 ```
 
-Sie können auch einen verwalteten Datenträger anstelle einer Momentaufnahme verwenden. Um einen verwalteten Datenträger abzurufen, verwenden Sie [az disk list](/cli/azure/disk#az-disk-list). 
+Sie können auch einen verwalteten Datenträger anstelle einer Momentaufnahme verwenden. Um einen verwalteten Datenträger abzurufen, verwenden Sie [az disk list](/cli/azure/disk#az_disk_list). 
 
 ```azurecli-interactive
 az disk list --query "[].[name, id]" -o tsv
@@ -56,7 +56,7 @@ Sie können dasselbe Verfahren verwenden, um alle Datenträger abzurufen, die Si
 
 Sie benötigen Informationen zum Imagekatalog, um die Imagedefinition erstellen zu können.
 
-Listen Sie Informationen zu den verfügbaren Imagekatalogen mit [az sig list](/cli/azure/sig#az-sig-list) auf. Notieren Sie sich den Namen des Katalogs, in dem sich die Ressourcengruppe befindet, zur späteren Verwendung.
+Listen Sie Informationen zu den verfügbaren Imagekatalogen mit [az sig list](/cli/azure/sig#az_sig_list) auf. Notieren Sie sich den Namen des Katalogs, in dem sich die Ressourcengruppe befindet, zur späteren Verwendung.
 
 ```azurecli-interactive 
 az sig list -o table
@@ -71,7 +71,7 @@ Stellen Sie beim Erstellen der Imagedefinition sicher, dass diese alle richtigen
 
 Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](./shared-image-galleries.md#image-definitions).
 
-Erstellen Sie mithilfe von [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) eine Imagedefinition im Katalog.
+Erstellen Sie mithilfe von [az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) eine Imagedefinition im Katalog.
 
 In diesem Beispiel heißt die Imagedefinition *myImageDefinition* und ist für ein [spezialisiertes](./shared-image-galleries.md#generalized-and-specialized-images) Linux-Betriebssystemimage vorgesehen. Verwenden Sie `--os-type Windows`, um eine Definition für Images zu erstellen, die ein Windows-Betriebssystem verwenden. 
 
@@ -95,7 +95,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>Erstellen der Imageversion
 
-Erstellen Sie mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) eine Imageversion. 
+Erstellen Sie mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) eine Imageversion. 
 
 Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
 

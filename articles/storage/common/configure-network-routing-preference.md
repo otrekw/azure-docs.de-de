@@ -10,12 +10,12 @@ ms.date: 03/17/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0738f7e427c2ff094c9b6df7539ba67dff80d095
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ed248480803370a75b40c18ee7d0e2641254d84a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589853"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790453"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage"></a>Konfigurieren der Netzwerkroutingpräferenz für Azure Storage
 
@@ -82,7 +82,7 @@ So ändern Sie die Routingpräferenz in das Internetrouting:
 
    - Melden Sie sich zum Starten von Azure Cloud Shell beim [Azure-Portal](https://portal.azure.com) an.
 
-   - Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index#az-login) aus:
+   - Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index#az_login) aus:
 
      ```azurecli
      az login
@@ -130,7 +130,7 @@ Diese Einstellung wirkt sich nur auf den routenspezifischen Endpunkt aus. Diese 
 
    - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet, den `-PublishMicrosoftEndpoint`-Parameter auf `true` fest. 
 
-   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Internetroutingeinstellungen verwendet, den `-PublishInternetEndpointTo`-Parameter auf `true` fest.  
+   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Internetroutingeinstellungen verwendet, den `-PublishInternetEndpointTo`- Parameter auf `true` fest.  
 
    Im folgenden Beispiel wird ein routenspezifischer Endpunkt erstellt, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet.
 
@@ -146,7 +146,7 @@ Diese Einstellung wirkt sich nur auf den routenspezifischen Endpunkt aus. Diese 
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-1. Verwenden Sie den Befehl [az storage account update](/azure/storage/account#az-storage-account-update), um einen routenspezifischen Endpunkt zu konfigurieren. 
+1. Verwenden Sie den Befehl [az storage account update](/azure/storage/account#az_storage_account_update), um einen routenspezifischen Endpunkt zu konfigurieren. 
 
    - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet, den `--publish-microsoft-endpoints`-Parameter auf `true` fest. 
 

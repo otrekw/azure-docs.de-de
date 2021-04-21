@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: d3b13dffcf251f79a04182d32f23fd40e6ed6044
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f80f07cad0e82ee35fe71223e1282ea24f791bb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562893"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530927"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry in Azure
 
@@ -39,7 +39,7 @@ Microsoft bietet über die folgenden Community-Kanäle Support für OSS CF nach 
 
 Pivotal Cloud Foundry enthält neben der gleichen Kernplattform wie die OSS-Distribution auch einen Satz von proprietären Verwaltungstools und Supportleistungen auf Unternehmensniveau. Für die Ausführung von PCF in Azure müssen Sie eine Lizenz von Pivotal erwerben. Das PCF-Angebot im Azure Marketplace umfasst eine Lizenz für eine 90-Tage-Testversion.
 
-Die Tools umfassen [Pivot Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/), eine Webanwendung, die die Bereitstellung und Verwaltung von Cloud Foundry Foundation, vereinfacht und [Pivotal Apps Manager](https://docs.pivotal.io/pivotalcf/console/), eine Webanwendung für die Verwaltung von Benutzern und Anwendungen.
+Die Tools umfassen [Pivot Operations Manager](https://docs.pivotal.io/ops-manager/2-10/install/), eine Webanwendung, die die Bereitstellung und Verwaltung von Cloud Foundry Foundation, vereinfacht und [Pivotal Apps Manager](https://docs.pivotal.io/pivotalcf/console/), eine Webanwendung für die Verwaltung von Benutzern und Anwendungen.
 
 Zusätzlich zu den aufgeführten Supportkanälen für OSS CF sind Sie mit einer PCF-Lizenz berechtigt, sich an Pivotal zu wenden, um Support zu erhalten. Microsoft und Pivotal haben auch Supportworkflows aktiviert, mit denen Sie beide Parteien kontaktieren können, um Unterstützung zu erhalten, und Ihre Anfrage wird je nachdem, wo das Problem liegt, ordnungsgemäß weitergeleitet.
 

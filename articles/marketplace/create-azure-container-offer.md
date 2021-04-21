@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 01370a8d7710292858fe28d263fe5456b012c40f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: dc7a81f1646fc9f51a4e0bcaf37ef61ca669414e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107379"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780513"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Erstellen eines Azure-Containerangebots in Azure Marketplace
 
@@ -365,7 +365,7 @@ Geben Sie auf der Registerkarte **Image repository details** (Details des Imager
 
  :::image type="content" source="./partner-center-portal/media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Darstellung des Dialogfelds „Containerregistrierung aktualisieren“.":::
 
-**Kennwort für die Azure Container Registry**: Geben Sie das Kennwort für den Administratorbenutzernamen ein, der der Azure Container Registry-Instanz mit Ihrem Containerimage zugeordnet ist. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Sie können das Kennwort im Azure-Portal unter **Containerregistrierung** > **Zugriffsschlüssel** oder in der Azure-Befehlszeilenschnittstelle mit dem [Befehl „show“](/cli/azure/acr/credential#az-acr-credential-show) abrufen.
+**Kennwort für die Azure Container Registry**: Geben Sie das Kennwort für den Administratorbenutzernamen ein, der der Azure Container Registry-Instanz mit Ihrem Containerimage zugeordnet ist. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Sie können das Kennwort im Azure-Portal unter **Containerregistrierung** > **Zugriffsschlüssel** oder in der Azure-Befehlszeilenschnittstelle mit dem [Befehl „show“](/cli/azure/acr/credential#az_acr_credential_show) abrufen.
 
 :::image type="content" source="./partner-center-portal/media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Menü „Zugriffsschlüssel“.":::
 

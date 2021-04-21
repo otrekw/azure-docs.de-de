@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95fe70c774b933113c94125d227976e32a9e353f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4c8e18979ff1575e1a050244a96e7858cdce46b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919628"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530241"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
@@ -50,7 +50,7 @@ Richtlinien für Azure AD-Nutzungsbedingungen bieten folgende Funktionen:
 - Auflisten, wer den Richtlinien für Nutzungsbedingungen bereits bzw. noch nicht zugestimmt hat.
 - Leisten eines Beitrags zur Erfüllung von Datenschutzbestimmungen
 - Anzeigen eines Protokolls zur Aktivität der Richtlinie für Nutzungsbedingungen in Bezug auf Compliance und Überwachung.
-- Erstellen und Verwalten von Richtlinien für Nutzungsbedingungen für die Verwendung von [Microsoft Graph-APIs](/graph/api/resources/agreement?view=graph-rest-beta) (derzeit in der Vorschau).
+- Erstellen und Verwalten von Richtlinien für Nutzungsbedingungen für die Verwendung von [Microsoft Graph-APIs](/graph/api/resources/agreement) (derzeit in der Vorschau).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

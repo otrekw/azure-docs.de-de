@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 73282145abd8bfe804b47fda3bf5f12dc691ff3a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 5f003b68283217f7877dc650ae4f07ddc5a31012
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551355"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789337"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions-Bereitstellungsslots
 
@@ -124,7 +124,7 @@ Alle Slots werden auf dieselbe Anzahl von Workern wie der Produktionsslot skalie
 
 ## <a name="add-a-slot"></a>Hinzufügen eines Slots
 
-Sie können einen Slot über die [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create) oder über das Portal hinzufügen. In den folgenden Schritten wird veranschaulicht, wie Sie einen neuen Slot im Portal erstellen:
+Sie können einen Slot über die [CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_create) oder über das Portal hinzufügen. In den folgenden Schritten wird veranschaulicht, wie Sie einen neuen Slot im Portal erstellen:
 
 1. Navigieren Sie zu Ihrer Funktions-App.
 
@@ -138,7 +138,7 @@ Sie können einen Slot über die [CLI](/cli/azure/functionapp/deployment/slot#az
 
 ## <a name="swap-slots"></a>Austauschen von Slots
 
-Sie können Slot über die [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap) oder über das Portal austauschen. In den folgenden Schritten wird veranschaulicht, wie Sie Slots im Portal austauschen:
+Sie können Slot über die [CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_swap) oder über das Portal austauschen. In den folgenden Schritten wird veranschaulicht, wie Sie Slots im Portal austauschen:
 
 1. Navigieren Sie zur Funktionen-App.
 1. Wählen Sie **Bereitstellungssloteinstellung** aus, und wählen Sie dann **Austauschen** aus.
@@ -157,7 +157,7 @@ Wenn ein Austausch zu einem Fehler führt oder Sie einen Austausch einfach „r�
 
 ## <a name="remove-a-slot"></a>Entfernen eines Slots
 
-Sie können einen Slot über die [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete) oder über das Portal entfernen. In den folgenden Schritten wird veranschaulicht, wie Sie einen Slot im Portal entfernen:
+Sie können einen Slot über die [CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_delete) oder über das Portal entfernen. In den folgenden Schritten wird veranschaulicht, wie Sie einen Slot im Portal entfernen:
 
 1. Navigieren Sie in der Funktions-App zu **Bereitstellungsslots**, und wählen Sie dann den Slotnamen aus.
 
@@ -179,11 +179,11 @@ Sie können einen Slot über die [CLI](/cli/azure/functionapp/deployment/slot#az
 
 Mithilfe der [Azure CLI](/cli/azure/functionapp/deployment/slot) können Sie die folgenden Aktionen für einen Slot automatisieren:
 
-- [erstellen](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create)
-- [delete](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete)
-- [list](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-list)
-- [swap](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap)
-- [auto-swap](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-auto-swap)
+- [erstellen](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_create)
+- [delete](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_delete)
+- [list](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_list)
+- [swap](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_swap)
+- [auto-swap](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_auto_swap)
 
 ## <a name="change-app-service-plan"></a>Ändern des App Service-Plans
 

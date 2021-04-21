@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 7e300f896bb11ed7c77738836f894cff41cc8bf3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074621"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781827"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang
 
@@ -95,17 +95,17 @@ Die vorangehenden Befehle geben eine Textzusammenfassung zurück, die Sie manuel
 
 Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, verwenden Sie:
 
-* [az deployment group what-if](/cli/azure/deployment/group#az-deployment-group-what-if) für Bereitstellungen von Ressourcengruppen
-* [az deployment sub what-if](/cli/azure/deployment/sub#az-deployment-sub-what-if) für Bereitstellungen auf Abonnementebene
-* [az deployment mg what-if](/cli/azure/deployment/mg#az-deployment-mg-what-if) für Bereitstellungen von Verwaltungsgruppen
-* [az deployment tenant what-if](/cli/azure/deployment/tenant#az-deployment-tenant-what-if) für Bereitstellungen von Mandanten
+* [az deployment group what-if](/cli/azure/deployment/group#az_deployment_group_what_if) für Bereitstellungen von Ressourcengruppen
+* [az deployment sub what-if](/cli/azure/deployment/sub#az_deployment_sub_what_if) für Bereitstellungen auf Abonnementebene
+* [az deployment mg what-if](/cli/azure/deployment/mg#az_deployment_mg_what_if) für Bereitstellungen von Verwaltungsgruppen
+* [az deployment tenant what-if](/cli/azure/deployment/tenant#az_deployment_tenant_what_if) für Bereitstellungen von Mandanten
 
 Sie können den Parameterschalter `--confirm-with-what-if` (oder seine Kurzform `-c`) verwenden, um eine Vorschau der Änderungen anzuzeigen und dann zum Fortsetzen der Bereitstellung aufgefordert zu werden. Fügen Sie diesen Schalter zu folgenden Befehlen hinzu:
 
-* [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)
-* [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create).
-* [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)
-* [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
+* [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)
+* [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create).
+* [az deployment mg create](/cli/azure/deployment/mg#az_deployment_mg_create)
+* [az deployment tenant create](/cli/azure/deployment/tenant#az_deployment_tenant_create)
 
 Verwenden Sie beispielsweise `az deployment group create --confirm-with-what-if` oder `-c` für Bereitstellungen von Ressourcengruppen.
 

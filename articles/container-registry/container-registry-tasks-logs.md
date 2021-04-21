@@ -3,12 +3,12 @@ title: 'Anzeigen von Ausführungsprotokollen für Aufgaben: Tasks'
 description: Es wird beschrieben, wie Sie von ACR Tasks generierte Ausführungsprotokolle anzeigen und verwalten.
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce5f33853be2aa48bcfd1916c7f8b94b9702f38c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93027175"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781053"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Anzeigen und Verwalten von Ausführungsprotokollen für Aufgaben
 
@@ -18,9 +18,9 @@ In diesem Artikel wird beschrieben, wie Sie Ausführungsprotokolle für Aufgaben
 
 ## <a name="view-streamed-logs"></a>Anzeigen von gestreamten Protokollen
 
-Wenn Sie eine Aufgabe manuell auslösen, wird die Protokollausgabe direkt an die Konsole gestreamt. Wenn Sie eine Aufgabe beispielsweise manuell mit dem Befehl [az acr build](/cli/azure/acr#az-acr-build), [az acr run](/cli/azure/acr#az-acr-run) oder [az acr task run](/cli/azure/acr/task#az-acr-task-run) auslösen, sehen Sie, dass die Protokollausgabe an die Konsole gestreamt wird. 
+Wenn Sie eine Aufgabe manuell auslösen, wird die Protokollausgabe direkt an die Konsole gestreamt. Wenn Sie eine Aufgabe beispielsweise manuell mit dem Befehl [az acr build](/cli/azure/acr#az_acr_build), [az acr run](/cli/azure/acr#az_acr_run) oder [az acr task run](/cli/azure/acr/task#az_acr_task_run) auslösen, sehen Sie, dass die Protokollausgabe an die Konsole gestreamt wird. 
 
-Im folgenden Beispiel wird mit dem Befehl [az acr run](/cli/azure/acr#az-acr-run) eine Aufgabe manuell ausgelöst, für die ein aus derselben Registrierung gepullter Container ausgeführt wird:
+Im folgenden Beispiel wird mit dem Befehl [az acr run](/cli/azure/acr#az_acr_run) eine Aufgabe manuell ausgelöst, für die ein aus derselben Registrierung gepullter Container ausgeführt wird:
 
 ```azurecli
 az acr run --registry mycontainerregistry1220 \
@@ -58,7 +58,7 @@ Run ID: cf4 was successful after 5s
 
 ## <a name="view-stored-logs"></a>Anzeigen von gespeicherten Protokollen 
 
-In Azure Container Registry werden Ausführungsprotokolle für alle Aufgaben gespeichert. Sie können gespeicherte Ausführungsprotokolle im Azure-Portal anzeigen. Alternativ können Sie den Befehl [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) verwenden, um ein ausgewähltes Protokoll anzuzeigen. Aktivitätsprotokolle werden standardmäßig 30 Tage lang aufbewahrt.
+In Azure Container Registry werden Ausführungsprotokolle für alle Aufgaben gespeichert. Sie können gespeicherte Ausführungsprotokolle im Azure-Portal anzeigen. Alternativ können Sie den Befehl [az acr task logs](/cli/azure/acr/task#az_acr_task_logs) verwenden, um ein ausgewähltes Protokoll anzuzeigen. Aktivitätsprotokolle werden standardmäßig 30 Tage lang aufbewahrt.
 
 Bei der automatischen Auslösung einer Aufgabe, z. B. durch die Aktualisierung eines Quellcodes, ist der Zugriff auf die gespeicherten Protokolle die *einzige* Möglichkeit, um die Ausführungsprotokolle anzuzeigen. Zu den automatischen Auslösern von Aufgaben gehören Quellcode-Commits oder Pull Requests, Basisimageaktualisierungen und Zeitgebertrigger.
 
@@ -70,7 +70,7 @@ Zeigen Sie Ausführungsprotokolle im Portal wie folgt an:
 
 ![Anzeigen von Aufgabenausführungen: Portalanmeldung](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
-Führen Sie zum Anzeigen eines Protokolls mit der Azure CLI den Befehl [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) aus, und geben Sie eine Ausführungs-ID, einen Aufgabennamen oder ein bestimmtes Image an, das von einer Buildaufgabe erstellt wurde. Wenn Sie einen Aufgabennamen angeben, wird mit dem Befehl das Protokoll für die letzte erstellte Ausführung angezeigt.
+Führen Sie zum Anzeigen eines Protokolls mit der Azure CLI den Befehl [az acr task logs](/cli/azure/acr/task#az_acr_task_logs) aus, und geben Sie eine Ausführungs-ID, einen Aufgabennamen oder ein bestimmtes Image an, das von einer Buildaufgabe erstellt wurde. Wenn Sie einen Aufgabennamen angeben, wird mit dem Befehl das Protokoll für die letzte erstellte Ausführung angezeigt.
 
 Im folgenden Beispiel wird das Protokoll für die Ausführung mit der ID *cf4* ausgegeben:
 
@@ -83,7 +83,7 @@ az acr task logs --registry mycontainerregistry1220 \
 
 Sie können Ausführungsprotokolle für Aufgaben auf einem lokalen Dateisystem speichern oder eine andere Archivierungslösung verwenden, z. B. Azure Storage.
 
-Erstellen Sie beispielsweise das lokale Verzeichnis *tasklogs*, und leiten Sie die Ausgabe von [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) in eine lokale Datei um:
+Erstellen Sie beispielsweise das lokale Verzeichnis *tasklogs*, und leiten Sie die Ausgabe von [az acr task logs](/cli/azure/acr/task#az_acr_task_logs) in eine lokale Datei um:
 
 ```azurecli
 mkdir ~/tasklogs
@@ -101,13 +101,13 @@ Sie können auch lokale Protokolldateien in Azure Storage speichern. Verwenden S
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-pack-build]: /cli/azure/acr/pack#az-acr-pack-build
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-pack-build]: /cli/azure/acr/pack#az_acr_pack_build
 [az-acr-task]: /cli/azure/acr/task
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-update]: /cli/azure/acr/task#az-acr-task-update
-[az-login]: /cli/azure/reference-index#az-login
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-update]: /cli/azure/acr/task#az_acr_task_update
+[az-login]: /cli/azure/reference-index#az_login
 [az-login-service-principal]: /cli/azure/authenticate-azure-cli
 
 <!-- IMAGES -->

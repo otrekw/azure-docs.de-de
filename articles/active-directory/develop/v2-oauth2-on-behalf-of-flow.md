@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c8ea1580047910cb2d6634aad885d61e99113f3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98756088"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529967"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
 
@@ -60,7 +60,7 @@ Es sind zwei Fälle denkbar – je nachdem, ob die Clientanwendung durch ein gem
 
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
-| Parameter | type | BESCHREIBUNG |
+| Parameter | type | Beschreibung |
 | --- | --- | --- |
 | `grant_type` | Erforderlich | Typ der Tokenanforderung. Bei einer Anforderung mit JWT muss der Wert `urn:ietf:params:oauth:grant-type:jwt-bearer` sein. |
 | `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -92,7 +92,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
-| Parameter | type | BESCHREIBUNG |
+| Parameter | type | Beschreibung |
 | --- | --- | --- |
 | `grant_type` | Erforderlich | Typ der Tokenanforderung Bei einer Anforderung mit JWT muss der Wert `urn:ietf:params:oauth:grant-type:jwt-bearer` sein. |
 | `client_id` | Erforderlich |  Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -128,7 +128,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern.
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | `token_type` | Gibt den Wert des Tokentyps an. Microsoft Identity Platform unterstützt nur den Typ `Bearer`. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | `scope` | Der durch das Token gewährte Zugriffsbereich. |
@@ -191,6 +191,49 @@ Dies ist eine nicht standardmäßige Erweiterung für den OAuth 2.0-Im-Namen-von
 
 > [!TIP]
 > Wenn Sie einen geschützten SAML-Webdienst über eine Front-End-Anwendung aufrufen, können Sie einfach die API aufrufen und einen normalen interaktiven Authentifizierungsfluss initiieren, der die vorhandene Sitzung eines Benutzers verwendet. Sie müssen lediglich einen OBO-Fluss verwenden, wenn ein Dienst-zu-Dienst-Aufruf ein SAML-Token für die Bereitstellung des Benutzerkontexts erfordert.
+ 
+ ### <a name="obtain-a-saml-token-by-using-an-obo-request-with-a-shared-secret"></a>Abrufen eines SAML-Tokens mithilfe einer OBO-Anforderung mit einem gemeinsamen Geheimnis
+
+Eine Dienst-zu-Dienst-Anforderung für eine SAML-Assertion weist die folgenden Parameter auf:
+
+| Parameter | type | Beschreibung |
+| --- | --- | --- |
+| grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit einem JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
+| assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken.|
+| client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Wählen Sie zum Ermitteln der App-ID im Azure-Portal zuerst **Active Directory**, dann das Verzeichnis und schließlich den Anwendungsnamen aus. |
+| client_secret |required | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein. |
+| resource |Erforderlich | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Dies ist die Ressource, die die Zielgruppe des SAML-Token darstellt. Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
+| requested_token_use |Erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
+| requested_token_type | required | Gibt den Typ des angeforderten Token an. Abhängig von den Anforderungen der Ressource, auf die zugegriffen wird, kann der Wert **urn:Ietf:params:oauth:token-type:saml2** oder **urn:Ietf:params:oauth:token-type:saml1** lauten. |
+
+Die Antwort enthält ein UTF8- und Base64url-codiertes SAML-Token.
+
+- **SubjectConfirmationData für eine SAML-Assertion von einem OBO-Aufruf:** Wenn die Zielanwendung einen Empfängerwert in **SubjectConfirmationData** erfordert, muss als Wert in der Konfiguration der Ressourcenanwendung die Antwort-URL ohne Platzhalter festgelegt werden.
+- **Der SubjectConfirmationData-Knoten:** Der Knoten darf kein **InResponseTo**-Attribut enthalten, da er nicht Teil einer SAML-Antwort ist. Die Anwendung, die das SAML-Token empfängt, muss die SAML-Assertion ohne **InResponseTo**-Attribut akzeptieren können.
+
+- **Zustimmung:** Um ein SAML-Token zu empfangen, das Benutzerdaten zu einem OAuth-Flow enthält, muss Zustimmung erteilt worden sein. Informationen zu Berechtigungen und zum Erhalt der Zustimmung des Administrators finden Sie unter [Berechtigungen und Zustimmung im Azure Active Directory v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent).
+
+### <a name="response-with-saml-assertion"></a>Antwort mit SAML-Assertion
+
+| Parameter | Beschreibung |
+| --- | --- |
+| token_type |Gibt den Wert des Tokentyps an. **Bearertoken** ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| scope |Der durch das Token gewährte Zugriffsbereich. |
+| expires_in |Gibt an, wie lange das Zugriffstoken gültig ist (in Sekunden). |
+| expires_on |Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
+| resource |Der App-ID-URI des empfangenden Diensts (geschützte Ressource). |
+| access_token |Der Parameter, der die SAML-Assertion zurückgibt. |
+| refresh_token |Das Aktualisierungstoken. Der aufrufende Dienst kann dieses Token verwenden, um nach Ablauf der aktuellen SAML-Assertion ein neues Zugriffstoken anzufordern. |
+
+- token_type: Bearer
+- expires_in: 3296
+- ext_expires_in: 0
+- expires_on: 1529627844
+- resource: `https://api.contoso.com`
+- access_token: \<SAML assertion\>
+- issued_token_type: urn:ietf:params:oauth:token-type:saml2
+- refresh_token: \<Refresh token\>
+
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Erhalten der Zustimmung für die Anwendung der mittleren Ebene
 

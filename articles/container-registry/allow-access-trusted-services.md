@@ -3,12 +3,12 @@ title: Zugreifen auf eine Registrierung mit Netzwerkeinschränkungen mit einem v
 description: Aktivieren des sicheren Zugriffs einer vertrauenswürdigen Azure-Dienstinstanz auf eine Containerregistrierung mit Netzwerkeinschränkungen zum Pullen oder Pushen von Images
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 2e6b6ee3736f98f53ebb0aa43d707d42ba4cc058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b0d7feb223bcfcec4e8b2c786b211f4e3c3c3eb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101716481"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785868"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>Zulassen des sicheren Zugriffs vertrauenswürdiger Dienste auf eine Containerregistrierung mit Netzwerkeinschränkungen (Vorschau)
 
@@ -49,7 +49,7 @@ Instanzen der folgenden Dienste können auf eine Containerregistrierung mit Netz
 
 ## <a name="allow-trusted-services---cli"></a>Vertrauenswürdige Dienste zulassen: CLI
 
-Standardmäßig ist die Einstellung „Vertrauenswürdige Dienste zulassen“ in einer neuen Azure Container Registry-Instanz aktiviert. Deaktivieren oder aktivieren Sie die Einstellung, indem Sie den Befehl [az acr update](/cli/azure/acr#az-acr-update) ausführen.
+Standardmäßig ist die Einstellung „Vertrauenswürdige Dienste zulassen“ in einer neuen Azure Container Registry-Instanz aktiviert. Deaktivieren oder aktivieren Sie die Einstellung, indem Sie den Befehl [az acr update](/cli/azure/acr#az_acr_update) ausführen.
 
 So deaktivieren Sie
 

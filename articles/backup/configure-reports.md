@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0f3638e7649fc02f050c575ee621ce9dc237c24f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562323"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517265"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -212,4 +212,4 @@ Die Widgets im Backup-Bericht werden von Kusto-Abfragen unterstützt, die in den
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Weitere Informationen zu Überwachung und Berichterstellung mit Azure Backup](./backup-azure-monitor-alert-faq.md)
+[Weitere Informationen zu Überwachung und Berichterstellung mit Azure Backup](./backup-azure-monitor-alert-faq.yml)

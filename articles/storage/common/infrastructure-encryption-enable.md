@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23b3ca919be030490cca06f31dac623d7f80be44
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92746582"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790381"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>Erstellen eines Speicherkontos mit aktivierter Infrastrukturverschlüsselung für die doppelte Datenverschlüsselung
 
@@ -58,21 +58,21 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Zum Registrieren bei Azure CLI rufen Sie den Befehl „[az feature register](/cli/azure/feature#az-feature-register)“ auf.
+Zum Registrieren bei Azure CLI rufen Sie den Befehl „[az feature register](/cli/azure/feature#az_feature_register)“ auf.
 
 ```azurecli
 az feature register --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-Um den Status Ihrer Registrierung über die Azure-Befehlszeilenschnittstelle zu überprüfen, rufen Sie den Befehl [az feature](/cli/azure/feature#az-feature-show) auf.
+Um den Status Ihrer Registrierung über die Azure-Befehlszeilenschnittstelle zu überprüfen, rufen Sie den Befehl [az feature](/cli/azure/feature#az_feature_show) auf.
 
 ```azurecli
 az feature show --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-Nachdem Ihre Registrierung genehmigt wurde, müssen Sie den Azure Storage-Ressourcenanbieter erneut registrieren. Um den Ressourcenanbieter über die Azure-Befehlszeilenschnittstelle erneut zu registrieren, rufen Sie den Befehl [az provider register](/cli/azure/provider#az-provider-register) auf.
+Nachdem Ihre Registrierung genehmigt wurde, müssen Sie den Azure Storage-Ressourcenanbieter erneut registrieren. Um den Ressourcenanbieter über die Azure-Befehlszeilenschnittstelle erneut zu registrieren, rufen Sie den Befehl [az provider register](/cli/azure/provider#az_provider_register) auf.
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -122,7 +122,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 
 Wenn Sie mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) ein Speicherkonto erstellen möchten, für das die Infrastrukturverschlüsselung aktiviert ist, müssen Sie Azure CLI, Version 2.8.0 oder höher, installiert haben. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
-Erstellen Sie als Nächstes ein Speicherkonto vom Typ „Allgemein v2 (GPv2)“, indem Sie den Befehl [az storage account create](/cli/azure/storage/account#az-storage-account-create) mit der `--require-infrastructure-encryption option` aufrufen, um die Infrastrukturverschlüsselung zu aktivieren.
+Erstellen Sie als Nächstes ein Speicherkonto vom Typ „Allgemein v2 (GPv2)“, indem Sie den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create) mit der `--require-infrastructure-encryption option` aufrufen, um die Infrastrukturverschlüsselung zu aktivieren.
 
 Das folgende Beispiel zeigt, wie Sie ein Speicherkonto vom Typ „Universell v2“ erstellen, das für georedundanten Speicher mit Lesezugriff (Read-Access Geo-Redundant Storage, RA-GRS) konfiguriert ist und für das die Infrastrukturverschlüsselung zum doppelten Verschlüsseln von Daten aktiviert ist. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -197,7 +197,7 @@ $account.Encryption.RequireInfrastructureEncryption
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Um mit der Azure-Befehlszeilenschnittstelle zu überprüfen, ob die Infrastrukturverschlüsselung für ein Speicherkonto aktiviert ist, rufen Sie den Befehl [az storage account show](/cli/azure/storage/account#az-storage-account-show) auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Überprüfen Sie, ob das Feld `requireInfrastructureEncryption` innerhalb der Eigenschaft `encryption` auf `true` festgelegt ist.
+Um mit der Azure-Befehlszeilenschnittstelle zu überprüfen, ob die Infrastrukturverschlüsselung für ein Speicherkonto aktiviert ist, rufen Sie den Befehl [az storage account show](/cli/azure/storage/account#az_storage_account_show) auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Überprüfen Sie, ob das Feld `requireInfrastructureEncryption` innerhalb der Eigenschaft `encryption` auf `true` festgelegt ist.
 
 Im folgenden Beispiel wird der Wert der `requireInfrastructureEncryption`-Eigenschaft abgerufen. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 

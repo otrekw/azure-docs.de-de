@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: d68cfb91445e2055cb3c3feb88bf925987ea9852
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf50db4c463f5161adcc88d69eb2ae8970526103
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687395"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515616"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 
@@ -135,7 +135,7 @@ Alle Microsoft-Clouddienste, die von Access Control ausgestellte Token akzeptier
 | Azure DataMarket | [DataMarket ist jetzt veraltet](https://azure.microsoft.com/services/cognitive-services/) |
 | BizTalk Services | [Migrieren zum Feature Logic Apps von Azure App Service](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure Media Services | [Azure Media Services announces support for AAD and deprecation of ACS authentication](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) (Azure Media Services verkündet Unterstützung für AAD sowie Einstellung der ACS-Authentifizierung) |
-| Azure Backup | [Upgrade des Azure Backup-Agents](../../backup/backup-azure-file-folder-backup-faq.md) |
+| Azure Backup | [Upgrade des Azure Backup-Agents](../../backup/backup-azure-file-folder-backup-faq.yml) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->

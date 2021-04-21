@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 0a56cfc147d4fb5cbdccf13363ad28bc602d8216
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c116b378c72d87641157fc453d65e46be9f43ec
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182756"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787163"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Wiederherstellen einer Datenbank in einer verwalteten Azure SQL-Instanz auf den Zustand zu einem früheren Zeitpunkt
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-Eine ausführliche Erläuterung der verfügbaren Parameter finden Sie in der [CLI-Dokumentation zum Wiederherstellen einer Datenbank in einer verwalteten SQL-Instanz](/cli/azure/sql/midb#az-sql-midb-restore).
+Eine ausführliche Erläuterung der verfügbaren Parameter finden Sie in der [CLI-Dokumentation zum Wiederherstellen einer Datenbank in einer verwalteten SQL-Instanz](/cli/azure/sql/midb#az_sql_midb_restore).
 
 ---
 

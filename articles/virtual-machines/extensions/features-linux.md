@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: 8ff7b2940ca9ce3e5dc5913c0e676a32857771e7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bdbbc4c421b83fd041c7d900fb0edd01c4d636e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046877"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785089"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -65,7 +65,7 @@ Für Anfragen zum Umleiten von Datenverkehr verfügt der Linux-Agent über Proxy
 
 ## <a name="discover-vm-extensions"></a>Ermitteln von VM-Erweiterungen
 
-Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. Um eine vollständige Liste anzuzeigen, verwenden Sie [az vm extension image list](/cli/azure/vm/extension/image#az-vm-extension-image-list). Im folgenden Beispiel werden alle verfügbaren Erweiterungen am Standort *westus* (USA, Westen) aufgelistet:
+Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. Um eine vollständige Liste anzuzeigen, verwenden Sie [az vm extension image list](/cli/azure/vm/extension/image#az_vm_extension_image_list). Im folgenden Beispiel werden alle verfügbaren Erweiterungen am Standort *westus* (USA, Westen) aufgelistet:
 
 ```azurecli
 az vm extension image list --location westus --output table
@@ -79,7 +79,7 @@ Die folgenden Methoden können verwendet werden, um eine Erweiterung für eine v
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure VM-Erweiterungen können mit dem Befehl [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) für einen vorhandenen virtuellen Computer ausgeführt werden. Im folgenden Beispiel wird die Erweiterung für benutzerdefinierte Skripts für einen virtuellen Computer mit dem Namen *myVM* in der Ressourcengruppe *myResourceGroup* ausgeführt. Ersetzen Sie den Ressourcengruppennamen, den VM-Namen und das auszuführende Skript (https:\//raw.githubusercontent.com/me/project/hello.sh) im Beispiel durch Ihre eigenen Informationen. 
+Azure VM-Erweiterungen können mit dem Befehl [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) für einen vorhandenen virtuellen Computer ausgeführt werden. Im folgenden Beispiel wird die Erweiterung für benutzerdefinierte Skripts für einen virtuellen Computer mit dem Namen *myVM* in der Ressourcengruppe *myResourceGroup* ausgeführt. Ersetzen Sie den Ressourcengruppennamen, den VM-Namen und das auszuführende Skript (https:\//raw.githubusercontent.com/me/project/hello.sh) im Beispiel durch Ihre eigenen Informationen. 
 
 ```azurecli
 az vm extension set `
@@ -277,7 +277,7 @@ Sie sollten in Ihren Bereitstellungen von Erweiterungen immer automatische Updat
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Erkennen, ob die Erweiterung auf „autoUpgradeMinorVersion“ auf einer VM festgelegt ist
 
-Sie können am VM-Modell erkennen, ob die Erweiterung mit „autoUpgradeMinorVersion“ bereitgestellt wurde. Um dies zu überprüfen, verwenden Sie [az vm show](/cli/azure/vm#az-vm-show), und geben Sie die Ressourcengruppe und den VM-Namen wie folgt an:
+Sie können am VM-Modell erkennen, ob die Erweiterung mit „autoUpgradeMinorVersion“ bereitgestellt wurde. Um dies zu überprüfen, verwenden Sie [az vm show](/cli/azure/vm#az_vm_show), und geben Sie die Ressourcengruppe und den VM-Namen wie folgt an:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM
@@ -346,7 +346,7 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 ### <a name="view-extension-status"></a>Anzeigen des Erweiterungsstatus
 
-Wenn eine VM-Erweiterung für eine VM ausgeführt wurde, können Sie mit [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) wie folgt zum Erweiterungsstatus zurückkehren:
+Wenn eine VM-Erweiterung für eine VM ausgeführt wurde, können Sie mit [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) wie folgt zum Erweiterungsstatus zurückkehren:
 
 ```azurecli
 az vm get-instance-view \
@@ -379,7 +379,7 @@ Der Ausführungsstatus von Erweiterungen findet sich ebenfalls im Azure-Portal. 
 
 ### <a name="rerun-a-vm-extension"></a>Erneutes Ausführen einer VM-Erweiterung
 
-In manchen Fällen kann die erneute Ausführung einer VM-Erweiterung erforderlich sein. Sie können eine Erweiterung erneut ausführen, indem Sie sie entfernen und die Erweiterung dann mit einer Ausführungsmethode Ihrer Wahl erneut ausführen. Verwenden Sie zum Entfernen einer Erweiterung [az vm extension delete](/cli/azure/vm/extension#az-vm-extension-delete) wie folgt:
+In manchen Fällen kann die erneute Ausführung einer VM-Erweiterung erforderlich sein. Sie können eine Erweiterung erneut ausführen, indem Sie sie entfernen und die Erweiterung dann mit einer Ausführungsmethode Ihrer Wahl erneut ausführen. Verwenden Sie zum Entfernen einer Erweiterung [az vm extension delete](/cli/azure/vm/extension#az_vm_extension_delete) wie folgt:
 
 ```azurecli
 az vm extension delete \

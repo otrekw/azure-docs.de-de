@@ -3,12 +3,12 @@ title: Tutorial – Planen eines ACR Tasks
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Registry Task nach einem definierten Zeitplan auszuführen, indem Sie einen oder mehrere Zeitgebertrigger festlegen.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 13a4ccac4ea97538583c1c063a6dc61e4d25686a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa80bcbd318266a86c5bec08c9ee60fc0d22a10d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96030610"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780855"
 ---
 # <a name="tutorial-run-an-acr-task-on-a-defined-schedule"></a>Tutorial: Ausführen eines ACR Tasks nach einem definierten Zeitplan
 
@@ -234,14 +234,14 @@ Beispiele für Tasks, die durch Quellcode-Commits oder Basisimage-Updates ausgel
 
 
 <!-- LINKS - Internal -->
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-show]: /cli/azure/acr/task#az-acr-task-show
-[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-show]: /cli/azure/acr/task#az_acr_task_show
+[az-acr-task-list-runs]: /cli/azure/acr/task#az_acr_task_list_runs
 [az-acr-task-timer]: /cli/azure/acr/task/timer
-[az-acr-task-timer-add]: /cli/azure/acr/task/timer#az-acr-task-timer-add
-[az-acr-task-timer-remove]: /cli/azure/acr/task/timer#az-acr-task-timer-remove
-[az-acr-task-timer-list]: /cli/azure/acr/task/timer#az-acr-task-timer-list
-[az-acr-task-timer-update]: /cli/azure/acr/task/timer#az-acr-task-timer-update
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-acr-task-timer-add]: /cli/azure/acr/task/timer#az_acr_task_timer_add
+[az-acr-task-timer-remove]: /cli/azure/acr/task/timer#az_acr_task_timer_remove
+[az-acr-task-timer-list]: /cli/azure/acr/task/timer#az_acr_task_timer_list
+[az-acr-task-timer-update]: /cli/azure/acr/task/timer#az_acr_task_timer_update
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
 [az-acr-task]: /cli/azure/acr/task
 [azure-cli-install]: /cli/azure/install-azure-cli

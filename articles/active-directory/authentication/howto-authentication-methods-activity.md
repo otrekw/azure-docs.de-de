@@ -11,12 +11,12 @@ author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a1cb71917fdb30ffccda21bedffe1c7f2a428c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 699ff88e4181dada5eacaa3f13469722cdf7ceaa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557954"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530443"
 ---
 # <a name="authentication-methods-activity"></a>Aktivität für Authentifizierungsmethoden 
 
@@ -139,6 +139,6 @@ In den **Registrierungs- und Zurücksetzungsereignissen** werden Registrierungs-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Arbeiten mit der Nutzungsbericht-API für Authentifizierungsmethoden](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Arbeiten mit der Nutzungsbericht-API für Authentifizierungsmethoden](/graph/api/resources/authenticationmethods-usage-insights-overview)
 - [Auswählen von Authentifizierungsmethoden für Ihr Unternehmen](concept-authentication-methods.md)
 - [Kombinierte Registrierung](concept-registration-mfa-sspr-combined.md)

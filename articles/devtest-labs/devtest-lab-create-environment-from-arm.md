@@ -3,12 +3,12 @@ title: Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Resso
 description: Hier erfahren Sie, wie Sie in Azure DevTest Labs auf der Grundlage einer Azure Resource Manager-Vorlage Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen erstellen.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f285acffe642a85fa27792ee51ea67a57f6d35a5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88182407"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790111"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -264,7 +264,7 @@ Das folgende Beispielskript erstellt eine Umgebung in Ihrem Lab. Die Kommentare 
 Sie können auch die Azure-Befehlszeilenschnittstelle verwenden, um Ressourcen mit Resource Manager-Vorlagen bereitzustellen. Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
 
 > [!NOTE]
-> Nur Benutzer mit einer Berechtigung der Art „Labbesitzer“ können VMs aus einer Resource Manager-Vorlage erstellen, indem sie Azure PowerShell nutzen. Wenn Sie die VM-Erstellung per Resource Manager-Vorlage automatisieren möchten und nur über Benutzerberechtigungen verfügen, können Sie den CLI-Befehl [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create) verwenden.
+> Nur Benutzer mit einer Berechtigung der Art „Labbesitzer“ können VMs aus einer Resource Manager-Vorlage erstellen, indem sie Azure PowerShell nutzen. Wenn Sie die VM-Erstellung per Resource Manager-Vorlage automatisieren möchten und nur über Benutzerberechtigungen verfügen, können Sie den CLI-Befehl [az lab vm create](/cli/azure/lab/vm#az_lab_vm_create) verwenden.
 
 ## <a name="resource-manager-template-limitations-in-devtest-labs"></a>Einschränkungen der Resource Manager-Vorlage in DevTest Labs
 

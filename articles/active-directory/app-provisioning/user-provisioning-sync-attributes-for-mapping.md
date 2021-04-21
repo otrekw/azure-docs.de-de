@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 03/31/2021
 ms.author: kenwith
-ms.openlocfilehash: 102c0f7363b8d4f635762a33b82825e9ae71dfc6
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: f7a2429161cebe867d844b4ca7aa08ec3613edcd
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120791"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388209"
 ---
 # <a name="syncing-extension-attributes-for-app-provisioning"></a>Synchronisieren von Erweiterungsattributen zur Bereitstellung der App
 
@@ -28,10 +28,10 @@ Für Benutzer im Active Directory vor Ort: Sie müssen die Benutzer mit Azure AD
 ## <a name="create-an-extension-attribute-on-a-cloud-only-user"></a>Erstellen eines Erweiterungsattributs von einem reinen Cloud-Benutzer
 Sie können Microsoft Graph und PowerShell verwenden, um das Benutzerschema für Benutzer in Azure AD zu erweitern. Diese Erweiterungsattribute werden in den meisten Fällen automatisch erkannt.
 
-Wenn Sie über mehr als 1000 Dienstprinzipale verfügen, stellen Sie möglicherweise fest, dass in der Liste Quellattribut Erweiterungen fehlen. Wenn ein von Ihnen erstelltes Attribut nicht automatisch angezeigt wird, vergewissern Sie sich, dass das Attribut erstellt wurde, und fügen Sie es dem Schema manuell hinzu. Bestätigen Sie mit Microsoft Graph und [Graph-Explorer](/graph/graph-explorer/graph-explorer-overview.md), dass es erstellt wurde. Informationen zum manuellen Hinzufügen des Attributs zu Ihrem Schema finden Sie unter [Bearbeiten der Liste unterstützter Attribute](customize-application-attributes.md#editing-the-list-of-supported-attributes).
+Wenn Sie über mehr als 1000 Dienstprinzipale verfügen, stellen Sie möglicherweise fest, dass in der Liste Quellattribut Erweiterungen fehlen. Wenn ein von Ihnen erstelltes Attribut nicht automatisch angezeigt wird, vergewissern Sie sich, dass das Attribut erstellt wurde, und fügen Sie es dem Schema manuell hinzu. Bestätigen Sie mit Microsoft Graph und [Graph-Explorer](/graph/graph-explorer/graph-explorer-overview), dass es erstellt wurde. Informationen zum manuellen Hinzufügen des Attributs zu Ihrem Schema finden Sie unter [Bearbeiten der Liste unterstützter Attribute](customize-application-attributes.md#editing-the-list-of-supported-attributes).
 
 ### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-microsoft-graph"></a>Erstellen eines Erweiterungsattributs von einem reinen Cloud-Benutzer mithilfe von Microsoft Graph
-Sie können das Schema der Azure AD-Benutzer mithilfe von [Microsoft Graph](/graph/overview.md)erweitern. 
+Sie können das Schema der Azure AD-Benutzer mithilfe von [Microsoft Graph](/graph/overview)erweitern. 
 
 Listen Sie zuerst die Apps in Ihrem Mandanten auf, um die ID der APP zu erhalten, an der Sie arbeiten. Weitere Informationen finden Sie unter [Auflisten von extensionProperties](/graph/api/application-list-extensionproperty?view=graph-rest-1.0&tabs=http&preserve-view=true).
 
@@ -54,7 +54,7 @@ Content-type: application/json
 }
 ```
 
-Die vorherige Anforderung hat ein Erweiterungsattribut mit dem Format erstellt `extension_appID_extensionName` . Sie können jetzt einen Benutzer mit diesem Erweiterungsattribut aktualisieren. Weitere Informationen finden Sie unter [Aktualisieren des Benutzers](/graph/api/user-update.md?view=graph-rest-1.0&tabs=http&preserve-view=true).
+Die vorherige Anforderung hat ein Erweiterungsattribut mit dem Format erstellt `extension_appID_extensionName` . Sie können jetzt einen Benutzer mit diesem Erweiterungsattribut aktualisieren. Weitere Informationen finden Sie unter [Aktualisieren des Benutzers](/graph/api/user-update?view=graph-rest-1.0&tabs=http&preserve-view=true).
 ```json
 PATCH https://graph.microsoft.com/v1.0/users/{id}
 Content-type: application/json
@@ -63,7 +63,7 @@ Content-type: application/json
   "extension_inputAppId_extensionName": "extensionValue"
 }
 ```
-Überprüfen Sie abschließend das Attribut für den Benutzer. Weitere Informationen finden Sie unter [Benutzer erhalten](/graph/api/user-get.md?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true).
+Überprüfen Sie abschließend das Attribut für den Benutzer. Weitere Informationen finden Sie unter [Benutzer erhalten](/graph/api/user-get?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true).
 
 ```json
 GET https://graph.microsoft.com/v1.0/users/{id}?$select=displayName,extension_inputAppId_extensionName

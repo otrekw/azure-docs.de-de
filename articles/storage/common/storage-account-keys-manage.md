@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82d272f22295a5b68d1e8de3fb5a70c45d4c14a3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89069658"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791209"
 ---
 # <a name="manage-storage-account-access-keys"></a>Verwalten von Speicherkonto-Zugriffsschlüsseln
 
@@ -54,7 +54,7 @@ $storageAccountKey = `
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Rufen Sie, wie im folgenden Beispiel zu sehen, den Befehl [az storage account keys list](/cli/azure/storage/account/keys#az-storage-account-keys-list) auf, um Ihre Kontozugriffsschlüssel mit der Azure CLI aufzulisten. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen. 
+Rufen Sie, wie im folgenden Beispiel zu sehen, den Befehl [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) auf, um Ihre Kontozugriffsschlüssel mit der Azure CLI aufzulisten. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen. 
 
 ```azurecli-interactive
 az storage account keys list \
@@ -116,7 +116,7 @@ Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel mit PowerShell
 Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel mit der Azure CLI zu rotieren:
 
 1. Aktualisieren Sie die Verbindungszeichenfolgen im Anwendungscode, sodass sie auf den sekundären Zugriffsschlüssel des Speicherkontos verweisen.
-1. Rufen Sie den Befehl [az storage account keys renew](/cli/azure/storage/account/keys#az-storage-account-keys-renew) auf, um den primären Zugriffsschlüssel neu zu generieren, wie im folgenden Beispiel zu sehen:
+1. Rufen Sie den Befehl [az storage account keys renew](/cli/azure/storage/account/keys#az_storage_account_keys_renew) auf, um den primären Zugriffsschlüssel neu zu generieren, wie im folgenden Beispiel zu sehen:
 
     ```azurecli-interactive
     az storage account keys renew \

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 174f372f9dbe8dc0449c7f9b9f5b34c6206f92de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ff752b673c49047551c48c4c8693b00d7b5edeb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708559"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787403"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)
 Die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Azure-Computern und anderen Computeressourcen sammelt. Dieser Artikel enthält ausführliche Informationen zum Installieren und Konfigurieren der Windows-Diagnoseerweiterung sowie eine Beschreibung der Speicherung von Daten in einem Azure Storage-Konto.
@@ -77,7 +77,7 @@ Sie können die Diagnoseerweiterung auf einem einzelnen virtuellen Computer im A
 Informationen zum Bereitstellen der Diagnoseerweiterung mit Azure Resource Manager-Vorlagen finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](../../virtual-machines/extensions/diagnostics-template.md). 
 
 ## <a name="azure-cli-deployment"></a>Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle
-Sie können die Azure-Diagnoseerweiterung mithilfe der Azure-Befehlszeilenschnittstelle über [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) auf einem vorhandenen virtuellen Computer bereitstellen, wie im folgenden Beispiel erläutert. 
+Sie können die Azure-Diagnoseerweiterung mithilfe der Azure-Befehlszeilenschnittstelle über [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) auf einem vorhandenen virtuellen Computer bereitstellen, wie im folgenden Beispiel erläutert. 
 
 ```azurecli
 az vm extension set \

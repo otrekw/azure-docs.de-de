@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0568860c387aa1239ec56005e404606272ae8275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102178070"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107799989"
 ---
 In diesem Schritt werden ein [logischer SQL-Server](../database/logical-servers.md) und eine [Einzeldatenbank](../database/single-database-overview.md) mit AdventureWorksLT-Beispieldaten erstellt. Sie können die Datenbank über Menüs und Bildschirme des Azure-Portals erstellen oder die Azure-Befehlszeilenschnittstelle oder ein PowerShell-Skript in Azure Cloud Shell verwenden.
 
@@ -151,11 +151,11 @@ Im obigen Code werden folgende Azure CLI-Befehle verwendet:
 
 | Get-Help | BESCHREIBUNG |
 |---|---|
-| [az account set](/cli/azure/account#az-account-set) | Legt ein Abonnement als aktuelles aktives Abonnement fest. |
-| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Erstellt einen Server, der Datenbanken und Pools für elastische Datenbanken hostet. |
-| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Erstellt eine Firewallregel auf Serverebene. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Erstellt eine Datenbank. |
+| [az account set](/cli/azure/account#az_account_set) | Legt ein Abonnement als aktuelles aktives Abonnement fest. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | Erstellt einen Server, der Datenbanken und Pools für elastische Datenbanken hostet. |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_create) | Erstellt eine Firewallregel auf Serverebene. |
+| [az sql db create](/cli/azure/sql/db#az_sql_db_create) | Erstellt eine Datenbank. |
 
 Weitere Azure CLI-Beispiele für Azure SQL-Datenbank finden Sie [hier](../database/az-cli-script-samples-content-guide.md).
 

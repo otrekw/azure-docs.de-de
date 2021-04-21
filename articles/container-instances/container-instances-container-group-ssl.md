@@ -3,12 +3,12 @@ title: Aktivieren von TLS mit Sidecar-Container
 description: Erstellen eines SSL- oder TLS-Endpunkts für eine in Azure Container Instances ausgeführte Containergruppe durch Ausführen von Nginx in einem Sidecar-Container
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 906a1f239d7050ea17fd7d1425138049ebf045c1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96558078"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790975"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Aktivieren eines TLS-Endpunkts in einem Sidecar-Container
 
@@ -193,13 +193,13 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="deploy-the-container-group"></a>Bereitstellen der Containergruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe:
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
 ```
 
-Stellen Sie die Containergruppe mit dem Befehl [az container create](/cli/azure/container#az-container-create) bereit, und geben Sie die YAML-Datei als Argument weiter.
+Stellen Sie die Containergruppe mit dem Befehl [az container create](/cli/azure/container#az_container_create) bereit, und geben Sie die YAML-Datei als Argument weiter.
 
 ```azurecli
 az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
@@ -207,7 +207,7 @@ az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
 
 ### <a name="view-deployment-state"></a>Zusammenfassung der Bereitstellungen anzeigen
 
-Um den Bereitstellungsstatus anzuzeigen, verwenden Sie den folgenden Befehl [az container show](/cli/azure/container#az-container-show):
+Um den Bereitstellungsstatus anzuzeigen, verwenden Sie den folgenden Befehl [az container show](/cli/azure/container#az_container_show):
 
 ```azurecli
 az container show --resource-group <myResourceGroup> --name app-with-ssl --output table

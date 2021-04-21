@@ -3,12 +3,12 @@ title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdf4c26aa32d65ec63ec84d85e454adaaf2ece8d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713336"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517231"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
@@ -197,4 +197,4 @@ In den vorhergehenden Szenarien sollten Sie einen Neuregistrierungsvorgang auf d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [häufig gestellten Fragen](./sap-hana-faq-backup-azure-vm.md) zum Sichern von SAP HANA-Datenbanken auf Azure-VMs an.
+- Sehen Sie sich die [häufig gestellten Fragen](./sap-hana-faq-backup-azure-vm.yml) zum Sichern von SAP HANA-Datenbanken auf Azure-VMs an.

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: e14e214a220d9dade4fac028620d23c563d86a8f
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 654d47102685c04d6440d7c155e4d6eb931abcae
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554075"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788113"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
@@ -79,7 +79,7 @@ Zum Aktivieren der Azure AD-Authentifizierung für Ihre virtuellen Linux-Comput
 
 ## <a name="create-a-linux-virtual-machine"></a>Erstellen einer virtuellen Linux-Maschine
 
-Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe und dann mit [az vm create](/cli/azure/vm#az-vm-create) einen virtuellen Computer mit einer unterstützten Distribution und in einer unterstützten Region. Im folgenden Beispiel wird der virtuelle Computer *myVM*, der *Ubuntu 16.04 LTS* verwendet, in der Ressourcengruppe *myResourceGroup* in der Region *southcentralus*  bereitgestellt. In den folgenden Beispielen können Sie den Namen Ihrer Ressourcengruppe und Ihres virtuellen Computers nach Bedarf angeben.
+Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe und dann mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer mit einer unterstützten Distribution und in einer unterstützten Region. Im folgenden Beispiel wird der virtuelle Computer *myVM*, der *Ubuntu 16.04 LTS* verwendet, in der Ressourcengruppe *myResourceGroup* in der Region *southcentralus*  bereitgestellt. In den folgenden Beispielen können Sie den Namen Ihrer Ressourcengruppe und Ihres virtuellen Computers nach Bedarf angeben.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location southcentralus
@@ -99,7 +99,7 @@ Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauer
 > [!NOTE]
 > Wenn Sie diese Erweiterung für eine zuvor erstellte VM bereitstellen, stellen Sie sicher, dass auf dem Computer mindestens 1 GB Arbeitsspeicher zugeordnet ist, da die Erweiterung andernfalls nicht installiert werden kann.
 
-Für die Anmeldung bei einem virtuellen Linux-Computer mit Azure Active Directory-Anmeldeinformationen müssen Sie die VM-Erweiterung für die Azure Active Directory-Anmeldung installieren. VM-Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set), um die Erweiterung *AADLoginForLinux* auf dem virtuellen Computer *myVM* in der Ressourcengruppe *myResourceGroup* zu installieren:
+Für die Anmeldung bei einem virtuellen Linux-Computer mit Azure Active Directory-Anmeldeinformationen müssen Sie die VM-Erweiterung für die Azure Active Directory-Anmeldung installieren. VM-Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set), um die Erweiterung *AADLoginForLinux* auf dem virtuellen Computer *myVM* in der Ressourcengruppe *myResourceGroup* zu installieren:
 
 ```azurecli-interactive
 az vm extension set \
@@ -121,7 +121,7 @@ Mit der Richtlinie für die rollenbasierte Zugriffssteuerung in Azure (Azure RBA
 > [!NOTE]
 > Damit sich ein Benutzer bei dem virtuellen Computer über SSH anmelden kann, müssen Sie ihm einer der Rollen *VM-Administratoranmeldung* oder *VM-Benutzeranmeldung* zuweisen. Die Rollen „Anmeldeinformationen des VM-Administrators“ und „Anmeldeinformationen für VM-Benutzer“ verwenden dataActions und können daher nicht im Bereich der Verwaltungsgruppe zugewiesen werden. Diese Rollen können derzeit nur im Abonnement-, Ressourcengruppen- oder Ressourcenbereich zugewiesen werden. Ein Azure-Benutzer, dem eine der Rollen *Besitzer* oder *Mitwirkender* für einen virtuellen Computer zugewiesen ist, verfügt nicht automatisch über die Berechtigungen für die Anmeldung bei dem virtuellen Computer über SSH. 
 
-Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle *VM-Administratoranmeldung* für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az-account-show) abgerufen, und der *Bereich* wird mit [az vm show](/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale Azure RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Azure RBAC](../../role-based-access-control/overview.md).
+Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) verwendet, um dem aktuellen Azure-Benutzer die Rolle *VM-Administratoranmeldung* für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az_account_show) abgerufen, und der *Bereich* wird mit [az vm show](/cli/azure/vm#az_vm_show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale Azure RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Azure RBAC](../../role-based-access-control/overview.md).
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -134,7 +134,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Wenn die AAD-Domäne und die Domäne des Benutzeranmeldenamens nicht übereinstimmen, müssen Sie die Objekt-ID Ihres Benutzerkontos mit *----assignee-object-id* angeben. Die Angabe des Benutzernamens für *--assignee* reicht nicht aus. Sie können die Objekt-ID für Ihr Benutzerkonto mithilfe der [Azure Active Directory-Benutzerliste (az as user list)](/cli/azure/ad/user#az-ad-user-list) erhalten.
+> Wenn die AAD-Domäne und die Domäne des Benutzeranmeldenamens nicht übereinstimmen, müssen Sie die Objekt-ID Ihres Benutzerkontos mit *----assignee-object-id* angeben. Die Angabe des Benutzernamens für *--assignee* reicht nicht aus. Sie können die Objekt-ID für Ihr Benutzerkonto mithilfe der [Azure Active Directory-Benutzerliste (az as user list)](/cli/azure/ad/user#az_ad_user_list) erhalten.
 
 Weitere Informationen zur Verwendung von Azure RBAC zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen finden Sie in den Artikeln zur Verwaltung der rollenbasierten Zugriffssteuerung mit der [Azure CLI](../../role-based-access-control/role-assignments-cli.md), über das [Azure-Portal](../../role-based-access-control/role-assignments-portal.md) oder mit [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
@@ -147,7 +147,7 @@ Sie können Richtlinien für bedingten Zugriff erzwingen, z. B. die mehrstufige
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Anmelden bei dem virtuellen Linux-Computer
 
-Zeigen Sie zunächst die öffentliche IP-Adresse des virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm#az-vm-show) an:
+Zeigen Sie zunächst die öffentliche IP-Adresse des virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm#az_vm_show) an:
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv

@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b5aea1f0f0101231408dc9ad7b57a30f2c86256
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83121030"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788155"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Bereitstellen des Sequenzierens von Erweiterungen in VM-Skalierungsgruppen
 Azure-VM-Erweiterungen bieten Funktionen wie die Konfiguration nach der Bereitstellung sowie Verwaltung, Überwachung, Sicherheit und vieles mehr. Bei Produktionsbereitstellungen wird in der Regel eine Kombination von mehreren Erweiterungen verwendet, die so konfiguriert sind, dass die VM-Instanzen die gewünschten Ergebnisse erzielen.
@@ -223,7 +223,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Verwenden Sie [az vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set), um die Application Health-Erweiterung der Skalierungsgruppen-Modelldefinition hinzuzufügen. Erweiterungssequenzierung setzt die Verwendung von Azure CLI 2.0.55 oder höher voraus.
+Verwenden Sie [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set), um die Application Health-Erweiterung der Skalierungsgruppen-Modelldefinition hinzuzufügen. Erweiterungssequenzierung setzt die Verwendung von Azure CLI 2.0.55 oder höher voraus.
 
 Im folgenden Beispiel wird die [Application Health-Erweiterung](virtual-machine-scale-sets-health-extension.md) dem Skalierungsgruppenmodell einer Windows-basierten Skalierungsgruppe hinzugefügt. Die Application Health-Erweiterung wird nach der Bereitstellung der [CustomScript-Erweiterung für Windows](../virtual-machines/extensions/custom-script-windows.md) bereitgestellt, die bereits in der Skalierungsgruppe definiert ist.
 

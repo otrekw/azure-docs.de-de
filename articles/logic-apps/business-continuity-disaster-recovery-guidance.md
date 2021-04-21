@@ -3,15 +3,15 @@ title: Business Continuity & Disaster Recovery
 description: Entwerfen Sie Ihre Strategie zum Schutz von Daten, zur schnellen Wiederherstellung nach Störfällen, zur Wiederherstellung von Ressourcen, die von wichtigen Geschäftsfunktionen benötigt werden, und zur Aufrechterhaltung der Geschäftskontinuität für Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: f974a99c59b19b5df7bf6ffcc66c2dc133743f0a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89658212"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790537"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Business Continuity & Disaster Recovery für Azure Logic Apps
 
@@ -46,7 +46,7 @@ Für die Failoverstrategie müssen Ihre Logik-Apps und Standorte die folgenden A
 
 * Beide Logik-App-Instanzen besitzen den gleichen Hosttyp. Also werden entweder beide Instanzen in Regionen in der globalen mehrinstanzenfähigen Azure-Umgebung bereitgestellt, oder beide Instanzen werden in ISEs bereitgestellt, in denen Ihre Logik-Apps direkt auf Ressourcen in einem virtuellen Azure-Netzwerk zugreifen können. Bewährte Methoden sowie weitere Informationen zu Regionspaaren für BCDR finden Sie unter [Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare](../best-practices-availability-paired-regions.md).
 
-  So müssen z. B. die primären und sekundären Standorte ISEs sein, wenn die primäre Logik-App in einer ISE ausgeführt wird und [Connectors mit ISE-Versionskontrolle](../connectors/apis-list.md#ise-connectors), HTTP-Aktionen zum Anrufen von Ressourcen im virtuellen Azure-Netzwerk oder beides verwendet. In diesem Szenario muss Ihre sekundäre Logik-App auch über eine ähnliche Einrichtung wie die primäre Logik-App am sekundären Standort verfügen.
+  So müssen z. B. die primären und sekundären Standorte ISEs sein, wenn die primäre Logik-App in einer ISE ausgeführt wird und [Connectors mit ISE-Versionskontrolle](../connectors/managed.md#ise-connectors), HTTP-Aktionen zum Anrufen von Ressourcen im virtuellen Azure-Netzwerk oder beides verwendet. In diesem Szenario muss Ihre sekundäre Logik-App auch über eine ähnliche Einrichtung wie die primäre Logik-App am sekundären Standort verfügen.
 
   > [!NOTE]
   > Für erweiterte Szenarien können Sie die mehrinstanzenfähige Azure-Umgebung mit einer ISE als Standort kombinieren. Stellen Sie jedoch sicher, dass Sie die [Unterschiede zwischen der Funktionsweise von Logic-Apps in einer ISE im Vergleich zu einer mehrinstanzenfähigen Azure-Umgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference) berücksichtigen und verstehen.

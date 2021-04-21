@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 4bf792dd02e7cddcc40ef868e4a602fdb03ab3c6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 513f262f5d09cf56c4506a4f20c9aa41507c2abd
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052278"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515276"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -57,117 +57,117 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 | Dienst | Metriken | Protokolle | Erkenntnis | Notizen |
 |:---|:---|:---|:---|:---|
 |Active Directory | Nein | Ja | [Ja](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
-|Active Directory B2C | Nein | Nein | Nein |  |
+|Active Directory B2C | Nein | Nein  | Nein |  |
 |Active Directory Domain Services | Nein | Ja | Nein |  |
 |Aktivitätsprotokoll | Nein | Ja | Nein | |
-|Erweiterter Schutz vor Bedrohungen | Nein | Nein | Nein |  |
-|Advisor | Nein | Nein | Nein |  |
-|AI Builder | Nein | Nein | Nein |  |
+|Erweiterter Schutz vor Bedrohungen | Nein | Nein  | Nein |  |
+|Advisor | Nein | Nein  | Nein |  |
+|AI Builder | Nein | Nein  | Nein |  |
 |Analysis Services | Ja | Ja | Nein |  |
-|API for FHIR | Nein | Nein | Nein |  |
+|API for FHIR | Nein | Nein  | Nein |  |
 |API Management | Ja | Ja | Nein |  |
 |App Service | Ja | Ja | Nein |  |
-|AppConfig | Nein | Nein | Nein |  |
+|AppConfig | Nein | Nein  | Nein |  |
 |Application Gateway | Ja | Ja | Nein |  |
-|Nachweisdienst | Nein | Nein | Nein |  |
+|Nachweisdienst | Nein | Nein  | Nein |  |
 |Automation | Ja | Ja | Nein |  |
-|Azure Service Manager (RDFE) | Nein | Nein | Nein |  |
+|Azure Service Manager (RDFE) | Nein | Nein  | Nein |  |
 |Backup | Nein | Ja | Nein |  |
-|Bastion | Nein | Nein | Nein |  |
+|Bastion | Nein | Nein  | Nein |  |
 |Batch | Ja | Ja | Nein |  |
-|Batch KI | Nein | Nein | Nein |  |
+|Batch KI | Nein | Nein  | Nein |  |
 |Blockchain-Dienst | Nein | Ja | Nein |  |
-|Blaupausen | Nein | Nein | Nein |  |
-|Botdienst | Nein | Nein | Nein |  |
+|Blaupausen | Nein | Nein  | Nein |  |
+|Botdienst | Nein | Nein  | Nein |  |
 |Cloud Services | Ja | Ja | Nein | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.  |
-|Cloud Shell | Nein | Nein | Nein |  |
+|Cloud Shell | Nein | Nein  | Nein |  |
 |Cognitive Services | Ja | Ja | Nein |  |
-|Container Instances | Ja | Nein | Nein |  |
+|Container Instances | Ja | Nein  | Nein |  |
 |Containerregistrierung | Ja | Ja | Nein |  |
 |Content Delivery Network (CDN) | Nein | Ja | Nein |  |
 |Cosmos DB | Ja | Ja | [Ja](insights/cosmosdb-insights-overview.md) |  |
-|Cost Management | Nein | Nein | Nein |  |
-|Data Box | Nein | Nein | Nein |  |
-|Data Catalog Gen2 | Nein | Nein | Nein |  |
+|Cost Management | Nein | Nein  | Nein |  |
+|Data Box | Nein | Nein  | Nein |  |
+|Data Catalog Gen2 | Nein | Nein  | Nein |  |
 |Data Explorer | Ja | Ja | Nein |  |
 |Data Factory | Ja | Ja | Nein |  |
 |Data Factory v2 | Nein | Ja | Nein |  |
-|Datenfreigabe | Nein | Nein | Nein |  |
+|Datenfreigabe | Nein | Nein  | Nein |  |
 |Database for MariaDB | Ja | Ja | Nein |  |
 |Database for MySQL | Ja | Ja | Nein |  |
 |Database for PostgreSQL | Ja | Ja | Nein |  |
-|Database Migration Service | Nein | Nein | Nein |  |
+|Database Migration Service | Nein | Nein  | Nein |  |
 |Databricks | Nein | Ja | Nein |  |
 |DDoS Protection | Ja | Ja | Nein |  |
-|DevOps | Nein | Nein | Nein |  |
-|DNS | Ja | Nein | Nein |  |
-|Domänennamen | Nein | Nein | Nein |  |
-|DPS | Nein | Nein | Nein |  |
-|Dynamics 365 Customer Engagement | Nein | Nein | Nein |  |
-|Dynamics 365 Finance and Operations | Nein | Nein | Nein |  |
-|Event Grid | Ja | Nein | Nein |  |
+|DevOps | Nein | Nein  | Nein |  |
+|DNS | Ja | Nein  | Nein |  |
+|Domänennamen | Nein | Nein  | Nein |  |
+|DPS | Nein | Nein  | Nein |  |
+|Dynamics 365 Customer Engagement | Nein | Nein  | Nein |  |
+|Dynamics 365 Finance and Operations | Nein | Nein  | Nein |  |
+|Event Grid | Ja | Nein  | Nein |  |
 |Event Hubs | Ja | Ja | Nein |  |
 |ExpressRoute | Ja | Ja | Nein |  |
 |Firewall | Ja | Ja | Nein |  |
 |Front Door | Ja | Ja | Nein |  |
 |Functions | Ja | Ja | Nein |  |
 |HDInsight | Nein | Ja | Nein |  |
-|HPC Cache | Nein | Nein | Nein |  |
+|HPC Cache | Nein | Nein  | Nein |  |
 |Information Protection | Nein | Ja | Nein |  |
 |Intune | Nein | Ja | Nein |  |
-|IoT Central | Nein | Nein | Nein |  |
+|IoT Central | Nein | Nein  | Nein |  |
 |IoT Hub | Ja | Ja | Nein |  |
 |Key Vault | Ja | Ja | [Ja](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes Service (AKS) | Nein | Nein | [Ja](containers/container-insights-overview.md)  |  |
-|Load Balancer | Ja | Nein | Nein |  |
+|Load Balancer | Ja | Nein  | Nein |  |
 |Logic Apps | Ja | Ja | Nein |  |
-|Machine Learning Service | Nein | Nein | Nein |  |
-|Verwaltete Anwendungen  | Nein | Nein | Nein |  |
-|Karten  | Nein | Nein | Nein |  |
+|Machine Learning Service | Nein | Nein  | Nein |  |
+|Verwaltete Anwendungen  | Nein | Nein  | Nein |  |
+|Karten  | Nein | Nein  | Nein |  |
 |Media Services | Ja | Ja | Nein |  |
-|Microsoft Managed Desktop | Nein | Nein | Nein |  |
-|Microsoft PowerApps | Nein | Nein | Nein |  |
-|Microsoft Social Engagement | Nein | Nein | Nein |  |
+|Microsoft Managed Desktop | Nein | Nein  | Nein |  |
+|Microsoft PowerApps | Nein | Nein  | Nein |  |
+|Microsoft Social Engagement | Nein | Nein  | Nein |  |
 |Microsoft Stream | Ja | Ja | Nein |  |
-|Migrieren | Nein | Nein | Nein |  |
+|Migrieren | Nein | Nein  | Nein |  |
 |Multi-Factor Authentication | Nein | Ja | Nein |  |
 |Network Watcher | Ja | Ja | Nein |  |
-|Notification Hubs | Ja | Nein | Nein |  |
-|Open Datasets | Nein | Nein | Nein |  |
-|Richtlinie | Nein | Nein | Nein |  |
-|Power Automate | Nein | Nein | Nein |  |
+|Notification Hubs | Ja | Nein  | Nein |  |
+|Open Datasets | Nein | Nein  | Nein |  |
+|Richtlinie | Nein | Nein  | Nein |  |
+|Power Automate | Nein | Nein  | Nein |  |
 |Power BI Embedded | Ja | Ja | Nein |  |
-|Private Link | Nein | Nein | Nein |  |
-|Project Spool Communication Platform | Nein | Nein | Nein |  |
-|Red Hat OpenShift | Nein | Nein | Nein |  |
+|Private Link | Nein | Nein  | Nein |  |
+|Project Spool Communication Platform | Nein | Nein  | Nein |  |
+|Red Hat OpenShift | Nein | Nein  | Nein |  |
 |Redis Cache | Ja | Ja | [Ja](insights/redis-cache-insights-overview.md) | |
-|Ressourcendiagramm | Nein | Nein | Nein |  |
-|Ressourcen-Manager | Nein | Nein | Nein |  |
-|Retail Search – by Bing | Nein | Nein | Nein |  |
+|Ressourcendiagramm | Nein | Nein  | Nein |  |
+|Ressourcen-Manager | Nein | Nein  | Nein |  |
+|Retail Search – by Bing | Nein | Nein  | Nein |  |
 |Suchen, | Ja | Ja | Nein |  |
 |Service Bus | Ja | Ja | Nein |  |
 |Service Fabric | Nein | Ja | Nein | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.  |
-|Signup Portal | Nein | Nein | Nein |  |
+|Signup Portal | Nein | Nein  | Nein |  |
 |Site Recovery | Nein | Ja | Nein |  |
-|Spring Cloud Service | Nein | Nein | Nein |  |
+|Spring Cloud Service | Nein | Nein  | Nein |  |
 |Azure Synapse Analytics | Ja | Ja | Nein |  |
 |SQL-Datenbank | Ja | Ja | Nein |  |
 |SQL Server Stretch Database | Ja | Ja | Nein |  |
-|Stapel | Nein | Nein | Nein |  |
+|Stapel | Nein | Nein  | Nein |  |
 |Storage | Ja | Nein | [Ja](insights/storage-insights-overview.md) |  |
-|Storage Cache | Nein | Nein | Nein |  |
-|Speichersynchronisierungsdienste | Nein | Nein | Nein |  |
+|Storage Cache | Nein | Nein  | Nein |  |
+|Speichersynchronisierungsdienste | Nein | Nein  | Nein |  |
 |Stream Analytics | Ja | Ja | Nein |  |
 |Time Series Insights | Ja | Ja | Nein |  |
-|TINA | Nein | Nein | Nein |  |
+|TINA | Nein | Nein  | Nein |  |
 |Traffic Manager | Ja | Ja | Nein |  |
-|Universal Print | Nein | Nein | Nein |  |
+|Universal Print | Nein | Nein  | Nein |  |
 |Virtual Machine Scale Sets | Nein | Ja | [Ja](vm/vminsights-overview.md) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich. |
 |Virtual Machines | Ja | Ja | [Ja](vm/vminsights-overview.md) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich. |
 |Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |
 |Virtual Network – NSG-Datenflussprotokolle | Nein | Ja | Nein |  |
 |VPN Gateway | Ja | Ja | Nein |  |
-|Windows Virtual Desktop | Nein | Nein | Nein |  |
+|Windows Virtual Desktop | Nein | Ja | Nein |  |
 
 ## <a name="virtual-machine-agents"></a>Agents für virtuelle Computer
 In der folgenden Tabelle sind die Agents aufgeführt, die Daten vom Gastbetriebssystem virtueller Computer sammeln und an Azure Monitor senden können. Jeder Agent kann verschiedene Daten sammeln und an „Metriken“ oder „Protokolle“ in Azure Monitor senden. 

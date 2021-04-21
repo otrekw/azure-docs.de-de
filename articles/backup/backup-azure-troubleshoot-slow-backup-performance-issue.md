@@ -3,12 +3,12 @@ title: Problembehandlung bei langsamer Sicherung von Dateien und Ordnern
 description: Enthält Informationen zu Problembehandlungsschritten, mit denen Sie die Ursache von Azure Backup-Leistungsproblemen diagnostizieren können.
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: b3f2ac343ef4a703f347ec8a57f242a636bb32d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 791f0edf5f50d27147e402f09e7a3e4c2ea7ca43
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88824014"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518523"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 
@@ -21,7 +21,7 @@ Dieser Artikel enthält Informationen zu Problembehandlungsschritten, mit denen 
 
 Bevor Sie mit der Problembehandlung beginnen, empfehlen wir Ihnen, den [aktuellen Azure Backup-Agent](https://aka.ms/azurebackup_agent)herunterzuladen und zu installieren. Wir stellen häufig Updates für den Backup-Agent zur Verfügung, um verschiedene Probleme zu beheben, Funktionen hinzuzufügen und die Leistung zu verbessern.
 
-Wir empfehlen Ihnen auch dringend den Artikel [Azure Backup-Dienst – FAQ](backup-azure-backup-faq.md) , damit Sie häufig auftretende Konfigurationsprobleme vermeiden können.
+Wir empfehlen Ihnen auch dringend den Artikel [Azure Backup-Dienst – FAQ](backup-azure-backup-faq.yml) , damit Sie häufig auftretende Konfigurationsprobleme vermeiden können.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -99,4 +99,4 @@ Wenn Sie versuchen, große Datenträger zu sichern, empfiehlt es sich, [Azure Da
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](backup-azure-file-folder-backup-faq.md)
+* [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](backup-azure-file-folder-backup-faq.yml)

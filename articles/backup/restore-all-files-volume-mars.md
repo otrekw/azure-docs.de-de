@@ -3,12 +3,12 @@ title: Wiederherstellen aller Dateien auf einem Volume mit MARS
 description: Erfahren Sie, wie Sie alle Dateien eines Volumes mit dem MARS-Agent wiederherstellen können.
 ms.topic: conceptual
 ms.date: 01/17/2021
-ms.openlocfilehash: 44c12809fc94f78721ab1788cb352076dfebabe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d04e9f77b9f92594def9381f973c999e96b2cb2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612712"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516500"
 ---
 # <a name="restore-all-the-files-in-a-volume-using-the-mars-agent"></a>Wiederherstellen aller Dateien auf einem Volume unter Verwendung des MARS-Agents
 
@@ -92,7 +92,7 @@ Bei diesen Schritte wird die folgende Terminologie verwendet:
 
 1. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem Beispieltresor entspricht, und wählen Sie **Weiter** aus.
 
-    Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, [laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem Beispieltresor im Azure-Portal herunter](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file). Nachdem Sie gültige Tresoranmeldeinformationen angegeben haben, wird der Name des entsprechenden Sicherungstresors angezeigt.
+    Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, [laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem Beispieltresor im Azure-Portal herunter](backup-azure-file-folder-backup-faq.yml#where-can-i-download-the-vault-credentials-file-). Nachdem Sie gültige Tresoranmeldeinformationen angegeben haben, wird der Name des entsprechenden Sicherungstresors angezeigt.
 
 1. Wählen Sie auf der Seite **Sicherungsserver auswählen** in der Liste mit den angezeigten Computern den Quellcomputer aus, und geben Sie die Passphrase an. Wählen Sie **Weiter** aus.
 
@@ -130,4 +130,4 @@ Bei diesen Schritte wird die folgende Terminologie verwendet:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Nachdem Sie nun Ihre Dateien und Ordner wiederhergestellt haben, können Sie [Ihre Sicherungen verwalten](backup-azure-manage-windows-server.md).
-- Lesen Sie die Informationen unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](backup-azure-file-folder-backup-faq.md).
+- Lesen Sie die Informationen unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](backup-azure-file-folder-backup-faq.yml).

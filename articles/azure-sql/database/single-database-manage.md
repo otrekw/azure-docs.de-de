@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aaabdb3d21c41b973b21e6e52442be132796196
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93319289"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781593"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Erstellen und Verwalten von Servern und Einzeldatenbanken in Azure SQL-Datenbank
 
@@ -92,25 +92,25 @@ Verwenden Sie zum Erstellen und Verwalten der Server, Datenbanken und Firewalls 
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Erstellt eine Datenbank|
-|[az sql db list](/cli/azure/sql/db#az-sql-db-list)|Listet alle Datenbanken und Data Warehouses eines Servers oder alle Datenbanken eines Pools für elastische Datenbanken auf|
-|[az sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|Listet verfügbare Dienstziele und Speicherlimits auf|
-|[az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Gibt Informationen zur Datenbankverwendung zurück|
-|[az sql db show](/cli/azure/sql/db#az-sql-db-show)|Ruft eine Datenbank oder ein Data Warehouse ab|
-|[az sql db update](/cli/azure/sql/db#az-sql-db-update)|Aktualisiert eine Datenbank|
-|[az sql db delete](/cli/azure/sql/db#az-sql-db-delete)|Entfernt eine Datenbank|
-|[az group create](/cli/azure/group#az-group-create)|Erstellt eine Ressourcengruppe|
-|[az sql server create](/cli/azure/sql/server#az-sql-server-create)|Erstellt einen Server|
-|[az sql server list](/cli/azure/sql/server#az-sql-server-list)|Listet Server auf|
-|[az sql server list-usages](/cli/azure/sql/server#az-sql-server-list-usages)|Gibt Informationen zur Server-Verwendung zurück|
-|[az sql server show](/cli/azure/sql/server#az-sql-server-show)|Ruft einen Server ab|
-|[az sql server update](/cli/azure/sql/server#az-sql-server-update)|Aktualisiert einen Server|
-|[az sql server delete](/cli/azure/sql/server#az-sql-server-delete)|Löscht einen Server|
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Erstellt eine Serverfirewallregel|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Listet die Firewallregeln auf einem Server auf|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Zeigt die Details einer Firewallregel an|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Aktualisiert eine Firewallregel|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Löscht eine Firewallregel|
+|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |Erstellt eine Datenbank|
+|[az sql db list](/cli/azure/sql/db#az_sql_db_list)|Listet alle Datenbanken und Data Warehouses eines Servers oder alle Datenbanken eines Pools für elastische Datenbanken auf|
+|[az sql db list-editions](/cli/azure/sql/db#az_sql_db_list_editions)|Listet verfügbare Dienstziele und Speicherlimits auf|
+|[az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|Gibt Informationen zur Datenbankverwendung zurück|
+|[az sql db show](/cli/azure/sql/db#az_sql_db_show)|Ruft eine Datenbank oder ein Data Warehouse ab|
+|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|Aktualisiert eine Datenbank|
+|[az sql db delete](/cli/azure/sql/db#az_sql_db_delete)|Entfernt eine Datenbank|
+|[az group create](/cli/azure/group#az_group_create)|Erstellt eine Ressourcengruppe|
+|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|Erstellt einen Server|
+|[az sql server list](/cli/azure/sql/server#az_sql_server_list)|Listet Server auf|
+|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list-usages)|Gibt Informationen zur Server-Verwendung zurück|
+|[az sql server show](/cli/azure/sql/server#az_sql_server_show)|Ruft einen Server ab|
+|[az sql server update](/cli/azure/sql/server#az_sql_server_update)|Aktualisiert einen Server|
+|[az sql server delete](/cli/azure/sql/server#az_sql_server_delete)|Löscht einen Server|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Erstellt eine Serverfirewallregel|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Listet die Firewallregeln auf einem Server auf|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Zeigt die Details einer Firewallregel an|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Aktualisiert eine Firewallregel|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Löscht eine Firewallregel|
 
 ## <a name="transact-sql-t-sql"></a>Transact-SQL (T-SQL)
 
@@ -165,4 +165,3 @@ Verwenden Sie zum Erstellen und Verwalten der Server, Datenbanken und Firewalls 
 
 - Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](migrate-to-database-from-sql-server.md).
 - Informationen zu unterstützten Funktionen finden Sie unter [Features (Funktionen)](features-comparison.md).
- 

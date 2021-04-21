@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 4e82be0e81e5e8c0182e061a0fba0f880bd45cc6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3e5b064ec37b855186f633677e2b1a3f615a6736
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632389"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783861"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -105,7 +105,7 @@ ACR beginnt, Images in den konfigurierten Replikaten zu synchronisieren. Sobald 
 
 ## <a name="delete-a-replica"></a>Löschen eines Replikats
 
-Nachdem Sie ein Replikat für Ihre Registrierung konfiguriert haben, können Sie es jederzeit löschen, wenn es nicht mehr benötigt wird. Löschen Sie ein Replikat mit dem Azure-Portal oder mit einem anderen Tool, etwa dem [az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete)-Befehl in der Azure-Befehlszeilenschnittstelle.
+Nachdem Sie ein Replikat für Ihre Registrierung konfiguriert haben, können Sie es jederzeit löschen, wenn es nicht mehr benötigt wird. Löschen Sie ein Replikat mit dem Azure-Portal oder mit einem anderen Tool, etwa dem [az acr replication delete](/cli/azure/acr/replication#az_acr_replication_delete)-Befehl in der Azure-Befehlszeilenschnittstelle.
 
 So löschen Sie ein Replikat im Azure-Portal
 
@@ -163,5 +163,5 @@ Sehen Sie sich die dreiteilige Tutorialreihe [Georeplikation in Azure Container 
 > [!div class="nextstepaction"]
 > [Georeplikation in Azure Container Registry](container-registry-tutorial-prepare-registry.md)
 
-[az-acr-replication-list]: /cli/azure/acr/replication#az-acr-replication-list
-[az-acr-replication-update]: /cli/azure/acr/replication#az-acr-replication-update
+[az-acr-replication-list]: /cli/azure/acr/replication#az_acr_replication_list
+[az-acr-replication-update]: /cli/azure/acr/replication#az_acr_replication_update

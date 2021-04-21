@@ -8,12 +8,12 @@ author: v-amallick
 ms.author: v-amallick
 ms.collection: windows
 ms.date: 07/05/2019
-ms.openlocfilehash: 171a438b8ac2a74437c15a749d6974945877a1ee
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: c10be941206dd60887c9d82025506d1ea15c51a2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293752"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517248"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup für auf einer Azure-VM ausgeführten SQL Server
 
@@ -114,4 +114,4 @@ Der Befehl gibt einen **Sicherungscontainer** dieser Ressource zurück, und der 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erfahren Sie mehr](../../backup/backup-sql-server-azure-troubleshoot.md) zu den Richtlinien für die Problembehandlung für die Azure SQL Server-VM-Sicherung.
-- [Häufige Fragen](../../backup/faq-backup-sql-server.md) zum Sichern von SQL Server-Datenbanken, die auf virtuellen Azure-Computern (VMs) ausgeführt werden, und für die der Dienst Azure Backup genutzt wird.
+- [Häufige Fragen](../../backup/faq-backup-sql-server.yml) zum Sichern von SQL Server-Datenbanken, die auf virtuellen Azure-Computern (VMs) ausgeführt werden, und für die der Dienst Azure Backup genutzt wird.

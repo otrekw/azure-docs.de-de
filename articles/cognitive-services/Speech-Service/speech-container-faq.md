@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a044f42d0774d940521964b68b38a0f35bcdbb
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573743"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387954"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Containern für den Speech-Dienst
 
@@ -536,76 +536,6 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 ```
 
  Die Funktion `SetSpeechSynthesisVoiceName` wird aufgerufen, da die Container mit einer aktualisierten Sprachsyntheseengine den Sprachnamen benötigen.
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Wie kann ich Version 1.7 des Speech SDK mit einem Speech-Container verwenden?</b>
-</summary>
-
-**Antwort:** Es gibt drei Endpunkte im Speech-Container für verschiedene Anwendungsbereiche. Sie sind als Speech-Modi definiert – siehe unten:
-
-## <a name="speech-modes"></a>Sprachmodi
-
-[!INCLUDE [speech-modes](includes/speech-modes.md)]
-
-Sie dienen unterschiedlichen Zwecken und werden unterschiedlich genutzt.
-
-Python-[Beispiele](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py):
-- Zur Einzelerkennung (interaktiver Modus) mit einem benutzerdefinierten Endpunkt (d. h. `SpeechConfig` mit einem Endpunktparameter) – siehe `speech_recognize_once_from_file_with_custom_endpoint_parameters()`.
-- Für die kontinuierliche Erkennung (Modus „Unterhaltung“) und zum einfachen Wechsel zur Verwendung eines benutzerdefinierten Endpunkts wie oben – siehe `speech_recognize_continuous_from_file()`.
-- Um das Diktieren in Beispielen wie oben zu aktivieren (nur wenn Sie es wirklich benötigen), fügen Sie direkt nach dem Erstellen von `speech_config` den Code `speech_config.enable_dictation()` hinzu.
-
-Rufen Sie in C# die Funktion `SpeechConfig.EnableDictation()` auf, um das Diktieren zu aktivieren.
-
-### <a name="fromendpoint-apis"></a>`FromEndpoint`-APIs
-| Sprache | API-Informationen |
-|----------|:------------|
-| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | Wird derzeit nicht unterstützt und ist auch nicht geplant. |
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Wie kann ich Version 1.8 des Speech SDK mit einem Speech-Container verwenden?</b>
-</summary>
-
-**Antwort:** Es gibt eine neue `FromHost`-API. Dadurch werden keine vorhandenen APIs ersetzt oder geändert. Es wird lediglich eine alternative Möglichkeit zum Erstellen einer Speech-Konfiguration mithilfe eines benutzerdefinierten Hosts hinzugefügt.
-
-### <a name="fromhost-apis"></a>`FromHost`-APIs
-
-| Sprache | API-Informationen |
-|--|:-|
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | Derzeit nicht unterstützt |
-
-> Parameter: Host (obligatorisch), Abonnementschlüssel (optional, wenn Sie den Dienst auch ohne ihn nutzen können).
-
-Das Format für den Host ist `protocol://hostname:port`, wobei `:port` optional ist (siehe unten):
-- Wenn der Container lokal ausgeführt wird, ist der Hostname `localhost`.
-- Wenn der Container auf einem Remoteserver ausgeführt wird, verwenden Sie den Hostnamen oder die IPv4-Adresse dieses Servers.
-
-Beispiele für Hostparameter für die Spracherkennung:
-- `ws://localhost:5000`: Nicht sichere Verbindung mit einem lokalen Container über Port 5000
-- `ws://some.host.com:5000`: Nicht sichere Verbindung mit einem Container, der auf einem Remoteserver ausgeführt wird
-
-Python-Beispiele von oben, aber verwenden Sie den Parameter `host` anstelle von `endpoint`:
-
-```python
-speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
-```
 
 <br>
 </details>

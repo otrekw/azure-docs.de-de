@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: mvc
-ms.openlocfilehash: 9cef163c1b53360222ca32a827552fa361e9dd40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5209e715fab422a50e31810b5eb0d370d5fc61cd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98874246"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792523"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Schützen eines Dateiservers mit Azure Site Recovery 
 
@@ -99,7 +99,7 @@ In den folgenden Schritten wird die Verwendung der Dateisynchronisierung kurz be
 
 1. Führen Sie das [Erstellen eines Speicherkontos in Azure](../storage/common/storage-account-create.md?toc=/azure/storage/files/toc.json) durch. Wenn Sie georedundanten Speicher mit Lesezugriff für Ihre Speicherkonten gewählt haben, verfügen Sie im Notfall über Lesezugriff auf Ihre Daten in der sekundären Region. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Failover des Speicherkontos](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
 2. [Erstellen Sie eine Dateifreigabe.](../storage/files/storage-how-to-create-file-share.md)
-3. [Starten Sie die Dateisynchronisierung](../storage/files/storage-sync-files-deployment-guide.md) auf Ihrem Azure-Dateiserver.
+3. [Starten Sie die Dateisynchronisierung](../storage/file-sync/file-sync-deployment-guide.md) auf Ihrem Azure-Dateiserver.
 4. Erstellen Sie eine Synchronisierungsgruppe. Endpunkte innerhalb einer Synchronisierungsgruppe bleiben miteinander synchron. Eine Synchronisierungsgruppe muss mindestens einen Cloudendpunkt enthalten, der eine Azure-Dateifreigabe darstellt. Eine Synchronisierungsgruppe muss auch einen Serverendpunkt enthalten, der einen Pfad auf einem Windows-Server darstellt.
 5. Ihre Dateien werden jetzt zwischen der Azure-Dateifreigabe und dem lokalen Server synchronisiert.
 6. Führen Sie bei einem Notfall in Ihrer lokalen Umgebung ein Failover mit einem [Wiederherstellungsplan](site-recovery-create-recovery-plans.md) durch. Fügen Sie das Skript zum [Einbinden der Azure-Dateifreigabe](../storage/files/storage-how-to-use-files-windows.md) und Zugreifen auf die Freigabe in der VM hinzu.
@@ -148,7 +148,7 @@ Gehen Sie zur Verwendung der Dateisynchronisierung wie folgt vor:
 
 1. Führen Sie das [Erstellen eines Speicherkontos in Azure](../storage/common/storage-account-create.md?toc=/azure/storage/files/toc.json) durch. Wenn Sie georedundanten Speicher mit Lesezugriff (empfohlen) für Ihre Speicherkonten gewählt haben, verfügen Sie im Notfall über Lesezugriff auf Ihre Daten in der sekundären Region. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Failover des Speicherkontos](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
 2. [Erstellen Sie eine Dateifreigabe.](../storage/files/storage-how-to-create-file-share.md)
-3. [Stellen Sie die Dateisynchronisierung auf Ihrem lokalen Dateiserver bereit.](../storage/files/storage-sync-files-deployment-guide.md)
+3. [Stellen Sie die Dateisynchronisierung auf Ihrem lokalen Dateiserver bereit.](../storage/file-sync/file-sync-deployment-guide.md)
 4. Erstellen Sie eine Synchronisierungsgruppe. Endpunkte innerhalb einer Synchronisierungsgruppe bleiben miteinander synchron. Eine Synchronisierungsgruppe muss mindestens einen Cloudendpunkt enthalten, der eine Azure-Dateifreigabe darstellt. Die Synchronisierungsgruppe muss auch einen Serverendpunkt enthalten, der einen Pfad auf dem lokalen Windows-Server darstellt.
 5. Ihre Dateien werden jetzt zwischen der Azure-Dateifreigabe und dem lokalen Server synchronisiert.
 6. Führen Sie bei einem Notfall in Ihrer lokalen Umgebung ein Failover mit einem [Wiederherstellungsplan](site-recovery-create-recovery-plans.md) durch. Fügen Sie das Skript zum Einbinden der Azure-Dateifreigabe und Zugreifen auf die Freigabe in der VM hinzu.

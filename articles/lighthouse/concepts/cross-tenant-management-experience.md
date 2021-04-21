@@ -3,12 +3,12 @@ title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12c4aaa4dda159862344675c802603fcbda2f254
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 027d1d5e81d5a652a7e2d5441c40440c661f730f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934324"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778623"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -35,7 +35,7 @@ Sie können Verwaltungsaufgaben für delegierte Ressourcen direkt im Portal oder
 
 Das Azure PowerShell-[Cmdlet „Get-AzSubscription“](/powershell/module/Az.Accounts/Get-AzSubscription) zeigt standardmäßig die `TenantId` für den verwaltenden Mandanten an. Sie können die Attribute `HomeTenantId` und `ManagedByTenantIds` für jedes Abonnement verwenden. Dadurch können Sie ermitteln, ob ein zurückgegebenes Abonnement zu einem verwalteten Mandanten oder Ihrem verwaltenden Mandanten gehört.
 
-Ebenso zeigen Azure CLI-Befehle wie [az account list](/cli/azure/account#az-account-list) die Attribute `homeTenantId` und `managedByTenants` an. Wenn diese Werte bei Verwendung der Azure-Befehlszeilenschnittstelle nicht angezeigt werden, löschen Sie den Cache, indem Sie `az account clear` gefolgt von `az login --identity` ausführen.
+Ebenso zeigen Azure CLI-Befehle wie [az account list](/cli/azure/account#az_account_list) die Attribute `homeTenantId` und `managedByTenants` an. Wenn diese Werte bei Verwendung der Azure-Befehlszeilenschnittstelle nicht angezeigt werden, löschen Sie den Cache, indem Sie `az account clear` gefolgt von `az login --identity` ausführen.
 
 In der Azure-REST-API enthalten die Befehle [Subscriptions – Get](/rest/api/resources/subscriptions/get) und [Subscriptions – List](/rest/api/resources/subscriptions/list) das Element `ManagedByTenant`.
 

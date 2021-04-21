@@ -3,12 +3,12 @@ title: Informationen zum Sichern von Azure-Dateifreigaben
 description: Erfahren Sie, wie Sie Azure-Dateifreigaben im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4f9dd816ace2c9aec8f48207fbce88acf34e24a
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89378082"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516814"
 ---
 # <a name="about-azure-file-share-backup"></a>Informationen zum Sichern von Azure-Dateifreigaben
 
@@ -61,4 +61,4 @@ Um detaillierte Schätzungen für die Sicherung von Azure-Dateianteilen zu erhal
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über das [Sichern von Azure-Dateifreigaben](backup-afs.md).
-* Lesen Sie Antworten auf [Fragen zum Sichern von Azure Files](backup-azure-files-faq.md).
+* Lesen Sie Antworten auf [Fragen zum Sichern von Azure Files](backup-azure-files-faq.yml).

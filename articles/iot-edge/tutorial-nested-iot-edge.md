@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 44fe6bb3787e1fe0df7ccf83200497b46c473568
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: bfecc88dc0c504cee615f1a3d35f9208aeb724f8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728498"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309190"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>Tutorial: Erstellen einer Hierarchie für IoT Edge-Geräte
 
@@ -309,7 +309,7 @@ Wenn Sie `iotedge check` auf der unteren Ebene ausführen, versucht das Programm
 Da wir in diesem Tutorial Port 8000 nutzen, müssen wir ihn angeben:
 
 ```bash
-sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2
+sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2.0-rc4
 ```
 
 Der Wert `azureiotedge-diagnostics` wird aus der Containerregistrierung gepullt, die mit dem Registrierungsmodul verknüpft ist. In diesem Tutorial ist er standardmäßig auf https://mcr.microsoft.com: festgelegt.

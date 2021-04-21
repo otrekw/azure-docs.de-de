@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 6f8cfc314c75221a88b58095cc71ea685280ac49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98922829e83f84078c3d8cadae15844dba194c93
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501011"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800069"
 ---
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -21,9 +21,9 @@ ms.locfileid: "102501011"
 
 Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
-Erstellen Sie eine Ressourcengruppe mit dem Azure CLI-Befehl [az group create](/cli/azure/group#az-group-create), dem Azure PowerShell-Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) oder dem [Azure-Portal](https://portal.azure.com).
+Erstellen Sie eine Ressourcengruppe mit dem Azure CLI-Befehl [az group create](/cli/azure/group#az_group_create), dem Azure PowerShell-Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) oder dem [Azure-Portal](https://portal.azure.com).
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location eastus
@@ -37,14 +37,14 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 *Wenn Sie bereits über einen Schlüsseltresor verfügen, können Sie mit dem [Festlegen von erweiterten Zugriffsrichtlinien für Schlüsseltresore](#set-key-vault-advanced-access-policies) fortfahren.*
 
-Erstellen Sie einen Schlüsseltresor mit dem Azure CLI-Befehl [az keyvault create](/cli/azure/keyvault#az-keyvault-create), dem Azure PowerShell-Befehl [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault), dem [Azure-Portal](https://portal.azure.com) oder einer [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
+Erstellen Sie einen Schlüsseltresor mit dem Azure CLI-Befehl [az keyvault create](/cli/azure/keyvault#az_keyvault_create), dem Azure PowerShell-Befehl [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault), dem [Azure-Portal](https://portal.azure.com) oder einer [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
 >[!WARNING]
 > Der Schlüsseltresor und die VMs müssen sich im selben Abonnement befinden. Um sicherzustellen, dass die Verschlüsselungsgeheimnisse die Regionsgrenzen nicht verlassen, müssen sich der Schlüsseltresor und die VMs außerdem für Azure Disk Encryption in derselben Region befinden. Erstellen und verwenden Sie einen Schlüsseltresor, der sich im selben Abonnement und derselben Region wie die zu verschlüsselnden VMs befindet. 
 
 Jeder Schlüsseltresor muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen „<your-unique-keyvault-name>“ durch den Namen Ihres Schlüsseltresors.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Fügen Sie beim Erstellen eines Schlüsseltresors mithilfe der Azure-Befehlszeilenschnittstelle das Flag „--enabled-for-disk-encryption“ hinzu.
 
@@ -73,9 +73,9 @@ Die Azure-Plattform benötigt Zugriff auf die Verschlüsselungsschlüssel oder g
 
 Wenn Sie Ihren Schlüsseltresor nicht zum Zeitpunkt der Erstellung für Datenträgerverschlüsselung, Bereitstellung oder Vorlagenbereitstellung aktiviert haben (wie im vorherigen Schritt gezeigt), müssen Sie die erweiterten Zugriffsrichtlinien aktualisieren.  
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie [az keyvault update](/cli/azure/keyvault#az-keyvault-update), um die Datenträgerverschlüsselung für den Schlüsseltresor zu aktivieren. 
+Verwenden Sie [az keyvault update](/cli/azure/keyvault#az_keyvault_update), um die Datenträgerverschlüsselung für den Schlüsseltresor zu aktivieren. 
 
  - **Aktivieren von Key Vault für die Datenträgerverschlüsselung:** „Enabled-for-disk-encryption“ ist erforderlich. 
 
@@ -129,7 +129,7 @@ Verwenden Sie [az keyvault update](/cli/azure/keyvault#az-keyvault-update), um d
 
 Wenn Sie Verschlüsselungsschlüssel mit einem Schlüssel für die Schlüsselverschlüsselung zusätzlich schützen möchten, fügen Sie Ihrem Schlüsseltresor einen Schlüsselverschlüsselungsschlüssel hinzu. Wenn ein Schlüsselverschlüsselungsschlüssel angegeben wird, verwendet Azure Disk Encryption diesen, um Verschlüsselungsgeheimnisse vor dem Schreiben in Key Vault zu umschließen.
 
-Sie können einen neuen KEK mit dem Azure CLI-Befehl [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create), dem Azure PowerShell-Cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) oder dem [Azure-Portal](https://portal.azure.com/) generieren. Sie müssen einen Schlüssel vom Typ RSA generieren, da Azure Disk Encryption noch nicht die Verwendung von Elliptic Curve-Schlüsseln unterstützt.
+Sie können einen neuen KEK mit dem Azure CLI-Befehl [az keyvault key create](/cli/azure/keyvault/key#az_keyvault_key_create), dem Azure PowerShell-Cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) oder dem [Azure-Portal](https://portal.azure.com/) generieren. Sie müssen einen Schlüssel vom Typ RSA generieren, da Azure Disk Encryption noch nicht die Verwendung von Elliptic Curve-Schlüsseln unterstützt.
 
 Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Key Vault](../articles/key-vault/keys/hsm-protected-keys.md)-Dokumentation.
 
@@ -143,17 +143,17 @@ Die Angabe von Portnummern als Teil von URLs für Schlüsseltresorgeheimnisse un
   * Zulässige Schlüsseltresor-URL: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Unzulässige Schlüsseltresor-URL: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Generieren Sie mit dem Azure CLI-Befehl [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) einen neuen KEK, und speichern Sie ihn in Ihrem Schlüsseltresor.
+Generieren Sie mit dem Azure CLI-Befehl [az keyvault key create](/cli/azure/keyvault/key#az_keyvault_key_create) einen neuen KEK, und speichern Sie ihn in Ihrem Schlüsseltresor.
 
 ```azurecli-interactive
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
-Sie können stattdessen auch einen privaten Schlüssel mithilfe des Befehls [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import) in der Azure-Befehlszeilenschnittstelle importieren:
+Sie können stattdessen auch einen privaten Schlüssel mithilfe des Befehls [az keyvault key import](/cli/azure/keyvault/key#az_keyvault_key_import) in der Azure-Befehlszeilenschnittstelle importieren:
 
-In beiden Fällen geben Sie den Namen des KEK im Parameter „--key-encryption-key“ für den Azure CLI-Befehl [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) an. 
+In beiden Fällen geben Sie den Namen des KEK im Parameter „--key-encryption-key“ für den Azure CLI-Befehl [az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_enable) an. 
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>" --key-encryption-key "myKEK"
@@ -167,7 +167,7 @@ Generieren Sie mit dem Azure PowerShell-Cmdlet [Add-AzKeyVaultKey](/powershell/m
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
 ```
 
-Sie können stattdessen auch einen privaten Schlüssel mithilfe des Azure PowerShell-Befehls [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import) importieren.
+Sie können stattdessen auch einen privaten Schlüssel mithilfe des Azure PowerShell-Befehls [az keyvault key import](/cli/azure/keyvault/key#az_keyvault_key_import) importieren.
 
 In beiden Fällen geben Sie die ID Ihres KEK-Schlüsseltresors und die URL Ihres KEK in den Parametern „-KeyEncryptionKeyVaultId“ und „-KeyEncryptionKeyUrl“ des Azure PowerShell-Befehls [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) an. Beachten Sie, dass in diesem Beispiel davon ausgegangen wird, dass Sie für den Datenträger-Verschlüsselungsschlüssel und den KEK denselben Schlüsseltresor verwenden.
 

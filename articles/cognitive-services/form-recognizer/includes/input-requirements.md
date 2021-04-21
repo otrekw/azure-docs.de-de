@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: lajanuar
-ms.openlocfilehash: 324fde5198fe3469e3979cf5cd102715118a49aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfd2b32094aae06675ea8ee9157370f9d2833e91
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467289"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518223"
 ---
 Die Formularerkennung arbeitet mit Eingabedokumenten, die diese Anforderungen erfüllen:
 
@@ -22,6 +22,5 @@ Die Formularerkennung arbeitet mit Eingabedokumenten, die diese Anforderungen er
 * Die Gesamtgröße des Trainingsdatasets darf maximal 500 Seiten betragen.
 * Wenn Ihre PDF-Dateien mit einem Kennwort geschützt sind, müssen Sie die Sperre entfernen, bevor Sie sie senden.
 * Werden Papierdokumente eingescannt, sollten dies Scans mit hoher Qualität sein.
-* Für Text muss das lateinische Alphabet (englische Zeichen) verwendet werden.
 * Für nicht überwachtes Lernen (ohne beschriftete Daten) müssen Daten Schlüssel und Werte enthalten.
 * Für nicht überwachtes Lernen (ohne beschriftete Daten) müssen die Schlüssel oberhalb der Werte oder links davon angezeigt werden. Sie können nicht darunter oder rechts davon angezeigt werden.

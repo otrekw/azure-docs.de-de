@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 5/11/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: b6f0f77da639bceaea680f015dad5c0d3d6dbda6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: e6cc45c3aedc013b63f9d7876b923e7db36ccd37
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84465077"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107510863"
 ---
 Für die Erstellung eines privaten Endpunkts für Ihr Speicherkonto müssen Sie zuerst einen Verweis auf Ihr Speicherkonto und das Subnetz des virtuellen Netzwerks einrichten, dem Sie den privaten Endpunkt hinzufügen möchten. Ersetzen Sie unten `<storage-account-resource-group-name>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>` und `<vnet-subnet-name>` entsprechend:
 

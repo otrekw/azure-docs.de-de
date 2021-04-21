@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: dd5b38a858ceba12f5d48f1782da5b85228c4b06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cc9037db3289d7fb3287a8994a8ff6a68fc0583a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212109"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790577"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Importieren von durch HSM geschützten Schlüsseln in verwaltetes HSM (BYOK)
 
@@ -105,7 +105,7 @@ Für den KEK gilt Folgendes:
 > [!NOTE]
 > Der KEK muss als einzigen zulässigen Schlüsselvorgang „import“ aufweisen. „import“ schließt sich mit allen anderen wichtigen Vorgängen gegenseitig aus.
 
-Verwenden Sie den Befehl [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create), um den KEK mit auf `import` festgelegten Schlüsselvorgängen zu erstellen. Notieren Sie die Schlüssel-ID (`kid`), die vom folgenden Befehl zurückgegeben wird. (Sie verwenden den `kid`-Wert in [Schritt 3](#step-3-generate-and-prepare-your-key-for-transfer).)
+Verwenden Sie den Befehl [az keyvault key create](/cli/azure/keyvault/key#az_keyvault_key_create), um den KEK mit auf `import` festgelegten Schlüsselvorgängen zu erstellen. Notieren Sie die Schlüssel-ID (`kid`), die vom folgenden Befehl zurückgegeben wird. (Sie verwenden den `kid`-Wert in [Schritt 3](#step-3-generate-and-prepare-your-key-for-transfer).)
 
 ```azurecli-interactive
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --hsm-name ContosoKeyVaultHSM
@@ -115,7 +115,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>Schritt 2: Herunterladen des öffentlichen Schlüssels des KEK
 
-Verwenden Sie den Befehl [az keyvault key download](/cli/azure/keyvault/key#az-keyvault-key-download), um den öffentlichen Schlüssel des KEK in eine PEM-Datei herunterzuladen. Der importierte Zielschlüssel ist mit dem öffentlichen Schlüssel des KEK verschlüsselt.
+Verwenden Sie den Befehl [az keyvault key download](/cli/azure/keyvault/key#az_keyvault_key_download), um den öffentlichen Schlüssel des KEK in eine PEM-Datei herunterzuladen. Der importierte Zielschlüssel ist mit dem öffentlichen Schlüssel des KEK verschlüsselt.
 
 ```azurecli-interactive
 az keyvault key download --name KEKforBYOK --hsm-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -137,7 +137,7 @@ Informieren Sie sich in der Dokumentation Ihres HSM-Anbieters darüber, wie Sie 
 
 ### <a name="step-4-transfer-your-key-to-managed-hsm"></a>Schritt 4: Übertragen Ihres Schlüssels an das verwaltete HSM
 
-Um den Schlüsselimport abzuschließen, übertragen Sie das Schlüsselübertragungspaket (BYOK-Datei) von Ihrem nicht verbundenen Computer an den mit dem Internet verbundenen Computer. Verwenden Sie den Befehl [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import), um die BYOK-Datei in das verwaltete HSM hochzuladen.
+Um den Schlüsselimport abzuschließen, übertragen Sie das Schlüsselübertragungspaket (BYOK-Datei) von Ihrem nicht verbundenen Computer an den mit dem Internet verbundenen Computer. Verwenden Sie den Befehl [az keyvault key import](/cli/azure/keyvault/key#az_keyvault_key_import), um die BYOK-Datei in das verwaltete HSM hochzuladen.
 
 ```azurecli-interactive
 az keyvault key import --hsm-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok
@@ -148,6 +148,3 @@ Wenn der Upload erfolgreich ist, werden die Eigenschaften des importierten Schl�
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie können diesen HSM-geschützten Schlüssel jetzt in Ihrem verwalteten HSM verwenden. Weitere Informationen finden Sie in dieser [Gegenüberstellung von Preisen und Funktionen](https://azure.microsoft.com/pricing/details/key-vault/).
-
-
-

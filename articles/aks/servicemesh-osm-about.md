@@ -4,15 +4,15 @@ description: Öffnen des Dienst-Mesh (OSM) in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 0052c8d2f9b85c34d50a3e9d01253ecaf2d02bab
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: bbc07a7ee3f996c778cfc1b9d1764f10a613c50b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106712"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782943"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Open Service Mesh AKS-Zusatzmodul (Vorschau)
 
@@ -107,7 +107,7 @@ Für ein neues AKS-Cluster-Bereitstellungsszenario beginnen Sie mit einer brandn
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen _myOsmAksGroup_ am Standort _eastus2_ erstellt.
+In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen _myOsmAksGroup_ am Standort _eastus2_ erstellt.
 
 ```azurecli-interactive
 az group create --name <myosmaksgroup> --location <eastus2>
@@ -2150,7 +2150,7 @@ Geben Sie auf der Seite **Konfigurieren Sie Ihre Prometheus-Datenquelle unten** 
 
 OSM-Dashboards sind über Folgendes verfügbar:
 
-- [Unser Repository](/charts/osm/grafana)kann als JSON-BLOB über das Webverwaltungs-Portal importiert werden.
+- [Unser Repository](https://github.com/grafana/grafana)kann als JSON-BLOB über das Webverwaltungs-Portal importiert werden.
 - oder [Online unter Grafana.com](https://grafana.com/grafana/dashboards/14145)
 
 Um ein Dashboard zu importieren, suchen `+` Sie im Menü auf der linken Seite nach dem Zeichen, und wählen Sie aus `import` .

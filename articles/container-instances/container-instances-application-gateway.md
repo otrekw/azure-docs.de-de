@@ -3,12 +3,12 @@ title: Statische IP-Adresse für eine Containergruppe
 description: Erstellen einer Containergruppe in einem virtuellen Netzwerk und Verwenden eines Azure-Anwendungsgateways, um eine statische Front-End-IP-Adresse für eine Container-Web-App verfügbar zu machen
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de9e06b457a9ea5485fe268bd2b7cf206f0a6c0e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98035052"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790939"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Verfügbarmachen einer statischen IP-Adresse für eine Containergruppe
 
@@ -151,10 +151,10 @@ Wenn die Konfiguration erfolgreich war, können Sie die ausgeführte Web-App anz
 * Sie können auch ein Anwendungsgateway mit einem Zertifikat für die SSL-Terminierung konfigurieren. Weitere Informationen finden Sie in der [Übersicht](../application-gateway/ssl-overview.md) und im [Tutorial](../application-gateway/create-ssl-portal.md).
 * Je nach Szenario können Sie ggf. andere Azure-Lastenausgleichslösungen mit Azure Container Instances verwenden. Beispielsweise können Sie mit [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) Datenverkehr auf mehrere Containerinstanzen und Regionen verteilen. Weitere Informationen finden Sie in diesem [Blogbeitrag](https://aaronmsft.com/posts/azure-container-instances/).
 
-[az-network-vnet-create]:  /cli/azure/network/vnet#az-network-vnet-create
-[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
-[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
-[az-network-public-ip-show]: /cli/azure/network/public-ip#az-network-public-ip-show
-[az-network-application-gateway-create]: /cli/azure/network/application-gateway#az-network-application-gateway-create
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-show]: /cli/azure/container#az-container-show
+[az-network-vnet-create]:  /cli/azure/network/vnet#az_network_vnet_create
+[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_create
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az_network_public_ip_create
+[az-network-public-ip-show]: /cli/azure/network/public-ip#az_network_public_ip_show
+[az-network-application-gateway-create]: /cli/azure/network/application-gateway#az_network-application-gateway-create
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-show]: /cli/azure/container#az_container_show

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 52f0db739cff9614dc4e9f5ef71d582e926fc65a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 633d62fc69c516b482d5749a07052337dc71f567
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470267"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789481"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 
@@ -119,7 +119,7 @@ Sie können den GitHub Actions-Buildanbieter auf folgende Weise anpassen:
 
 Diese optionale Konfiguration ersetzt die Standardauthentifizierung mit Veröffentlichungsprofilen in der generierten Workflowdatei.
 
-1. Generieren Sie mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) in der [Azure CLI](/cli/azure/) einen Dienstprinzipal. Ersetzen Sie im folgenden Beispielen *\<subscription-id>* , *\<group-name>* und *\<app-name>* durch Ihre eigenen Werte:
+1. Generieren Sie mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) in der [Azure CLI](/cli/azure/) einen Dienstprinzipal. Ersetzen Sie im folgenden Beispielen *\<subscription-id>* , *\<group-name>* und *\<app-name>* durch Ihre eigenen Werte:
 
     ```azurecli-interactive
     az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \

@@ -3,12 +3,12 @@ title: Verwaltete Identitäten für Azure-Ressourcen mit Service Bus
 description: In diesem Artikel wird beschrieben, wie Sie mit verwalteten Identitäten auf Azure Service Bus-Entitäten (Warteschlangen, Themen und Abonnements) zugreifen.
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0558e00ac7e8ce67d2e5194b02d2de06f2d38ff1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954309"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785431"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure Service Bus-Ressourcen
 [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.
@@ -45,7 +45,7 @@ Bevor Sie einem Sicherheitsprinzipal eine Azure-Rolle zuweisen, legen Sie den Zu
 
 In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff auf Service Bus-Ressourcen einschränken können, beginnend mit dem kleinstmöglichen Bereich:
 
-- **Warteschlange**, **Thema** oder **Abonnement**: Die Rollenzuweisung gilt für die jeweilige Service Bus-Entität. Derzeit wird das Zuweisen von Benutzern/Gruppen/verwalteten Identitäten zu Service Bus Azure-Rollen auf Abonnementebene vom Azure-Portal nicht unterstützt. Im Folgenden finden Sie ein Beispiel für die Verwendung des Azure CLI-Befehls [az-role-assignment-create](/cli/azure/role/assignment?#az-role-assignment-create) für das Zuweisen einer Identität zu einer Service Bus-Azure-Rolle: 
+- **Warteschlange**, **Thema** oder **Abonnement**: Die Rollenzuweisung gilt für die jeweilige Service Bus-Entität. Derzeit wird das Zuweisen von Benutzern/Gruppen/verwalteten Identitäten zu Service Bus Azure-Rollen auf Abonnementebene vom Azure-Portal nicht unterstützt. Im Folgenden finden Sie ein Beispiel für die Verwendung des Azure CLI-Befehls [az-role-assignment-create](/cli/azure/role/assignment?#az_role_assignment_create) für das Zuweisen einer Identität zu einer Service Bus-Azure-Rolle: 
 
     ```azurecli
     az role assignment create \
@@ -92,7 +92,7 @@ Führen Sie nach der Erstellung der Anwendung die folgenden Schritte aus:
 Nachdem Sie diese Einstellung aktiviert haben, wird in Ihrer Azure AD-Instanz (Azure Active Directory) eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
 
 > [!NOTE]
-> Bei Verwendung einer verwalteten Identität muss die Verbindungszeichenfolge im folgenden Format angegeben werden: `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=Managed Identity`.
+> Bei Verwendung einer verwalteten Identität muss die Verbindungszeichenfolge im folgenden Format angegeben werden: `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=ManagedIdentity`.
 
 Weisen Sie dieser Dienstidentität jetzt eine Rolle im erforderlichen Bereich in Ihren Service Bus-Ressourcen zu.
 

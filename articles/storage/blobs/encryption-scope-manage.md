@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c29282637f6854248c98dff59f8fae46ad1a9d39
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 656443b0bc9d0e45f43634b1b4c21145de7a5bb5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640548"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792541"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>Erstellen und Verwalten von Verschlüsselungsbereichen
 
@@ -111,7 +111,7 @@ Installieren Sie zum Erstellen eines Verschlüsselungsbereichs mit der Azure CLI
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Erstellen eines Verschlüsselungsbereichs, der durch von Microsoft verwaltete Schlüssel geschützt wird
 
-Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der durch von Microsoft verwaltete Schlüssel geschützt wird, rufen Sie den Befehl [az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-create) auf, und geben Sie dabei `Microsoft.Storage` für den Parameter `--key-source` an. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
+Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der durch von Microsoft verwaltete Schlüssel geschützt wird, rufen Sie den Befehl [az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) auf, und geben Sie dabei `Microsoft.Storage` für den Parameter `--key-source` an. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli-interactive
 az storage account encryption-scope create \
@@ -123,7 +123,7 @@ az storage account encryption-scope create \
 
 ### <a name="create-an-encryption-scope-protected-by-customer-managed-keys"></a>Erstellen eines Verschlüsselungsbereichs, der mit kundenseitig verwalteten Schlüsseln geschützt wird
 
-Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der durch von Microsoft verwaltete Schlüssel geschützt wird, rufen Sie den Befehl [az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-create) auf, und geben Sie dabei `Microsoft.Storage` für den Parameter `--key-source` an. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
+Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der durch von Microsoft verwaltete Schlüssel geschützt wird, rufen Sie den Befehl [az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) auf, und geben Sie dabei `Microsoft.Storage` für den Parameter `--key-source` an. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
 
 Wenn Sie einen neuen Verschlüsselungsbereich erstellen möchten, der mit kundenseitig verwalteten Schlüsseln in einem Schlüsseltresor oder einem verwalteten HSM geschützt wird, konfigurieren Sie zunächst kundenseitig verwaltete Schlüssel für das Speicherkonto. Sie müssen dem Speicherkonto eine verwaltete Identität zuweisen und dann die verwaltete Identität verwenden, um die Zugriffsrichtlinie für den Schlüsseltresor so zu konfigurieren, dass das Speicherkonto über Zugriffsberechtigungen verfügt. Weitere Informationen finden Sie unter [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](../common/customer-managed-keys-overview.md).
 
@@ -202,7 +202,7 @@ Get-AzStorageAccount -ResourceGroupName $rgName | Get-AzStorageEncryptionScope
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
 
-Rufen Sie den Befehl [az storage account encryption-scope list](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-list) auf, um die für ein Speicherkonto verfügbaren Verschlüsselungsbereiche mit der Azure CLI aufzulisten. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
+Rufen Sie den Befehl [az storage account encryption-scope list](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_list) auf, um die für ein Speicherkonto verfügbaren Verschlüsselungsbereiche mit der Azure CLI aufzulisten. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli-interactive
 az storage account encryption-scope list \
@@ -246,7 +246,7 @@ New-AzStorageContainer -Name $containerName1 `
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
 
-Wenn Sie einen Container mit einem Standardverschlüsselungsbereich mit der Azure CLI erstellen möchten, rufen Sie den Befehl [az storage container create](/cli/azure/storage/container#az-storage-container-create) auf, und geben Sie dabei den Bereich für den Parameter `--default-encryption-scope` an. Legen Sie den Parameter `--prevent-encryption-scope-override` auf `true` fest, um zu erzwingen, dass alle Blobs in einem Container den Standardbereich des Containers verwenden.
+Wenn Sie einen Container mit einem Standardverschlüsselungsbereich mit der Azure CLI erstellen möchten, rufen Sie den Befehl [az storage container create](/cli/azure/storage/container#az_storage_container_create) auf, und geben Sie dabei den Bereich für den Parameter `--default-encryption-scope` an. Legen Sie den Parameter `--prevent-encryption-scope-override` auf `true` fest, um zu erzwingen, dass alle Blobs in einem Container den Standardbereich des Containers verwenden.
 
 Im folgenden Beispiel wird Ihr Azure AD-Konto genutzt, um den Vorgang zur Erstellung des Containers zu autorisieren. Sie können auch den Kontozugriffsschlüssel verwenden. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure-Befehlszeilenschnittstelle](./authorize-data-operations-cli.md).
 
@@ -303,7 +303,7 @@ Set-AzStorageBlobContent -Context $ctx `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Wenn Sie ein Blob mit einem Verschlüsselungsbereich über die Azure CLI hochladen möchten, rufen Sie den Befehl [az storage blob upload](/cli/azure/storage/blob#az-storage-blob-upload) auf, und geben Sie den Verschlüsselungsbereich für das Blob an.
+Wenn Sie ein Blob mit einem Verschlüsselungsbereich über die Azure CLI hochladen möchten, rufen Sie den Befehl [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) auf, und geben Sie den Verschlüsselungsbereich für das Blob an.
 
 Wenn Sie Azure Cloud Shell verwenden, führen Sie die unter [Hochladen eines Blobs](storage-quickstart-blobs-cli.md#upload-a-blob) beschriebenen Schritte aus, um eine Datei im Stammverzeichnis zu erstellen. Anschließend können Sie diese Datei mithilfe des folgenden Beispiels in ein Blob hochladen:
 
@@ -354,7 +354,7 @@ Update-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
 
-Wenn Sie mit der Azure CLI den Schlüssel, der einen Verschlüsselungsbereich schützt, von einem kundenseitig verwalteten Schlüssel in einen von Microsoft verwalteten Schlüssel ändern möchten, rufen Sie den Befehl [az storage account encryption-scope update](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-update) auf, und übergeben Sie den Parameter `--key-source` mit dem Wert `Microsoft.Storage`:
+Wenn Sie mit der Azure CLI den Schlüssel, der einen Verschlüsselungsbereich schützt, von einem kundenseitig verwalteten Schlüssel in einen von Microsoft verwalteten Schlüssel ändern möchten, rufen Sie den Befehl [az storage account encryption-scope update](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_update) auf, und übergeben Sie den Parameter `--key-source` mit dem Wert `Microsoft.Storage`:
 
 ```azurecli-interactive
 az storage account encryption-scope update \
@@ -398,7 +398,7 @@ Update-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
 
-Rufen Sie zum Deaktivieren eines Verschlüsselungsbereichs mit der Azure CLI den Befehl [az storage account encryption-scope update](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-update) auf, und fügen Sie den Parameter `--state` mit dem Wert `Disabled` ein, wie im folgenden Beispiel gezeigt. Wenn Sie einen Verschlüsselungsbereich wieder aktivieren möchten, rufen Sie den gleichen Befehl auf. Legen Sie dabei den Parameter `--state` auf `Enabled` fest. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
+Rufen Sie zum Deaktivieren eines Verschlüsselungsbereichs mit der Azure CLI den Befehl [az storage account encryption-scope update](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_update) auf, und fügen Sie den Parameter `--state` mit dem Wert `Disabled` ein, wie im folgenden Beispiel gezeigt. Wenn Sie einen Verschlüsselungsbereich wieder aktivieren möchten, rufen Sie den gleichen Befehl auf. Legen Sie dabei den Parameter `--state` auf `Enabled` fest. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli-interactive
 az storage account encryption-scope update \

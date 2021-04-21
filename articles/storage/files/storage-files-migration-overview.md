@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0c2de0c1b024d093bd0276a852d9b97ba3320f4b
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: a6335d90625f860984ccbfd224955a97a32b731f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286333"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785215"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrieren zu Azure-Dateifreigaben
 
@@ -24,7 +24,7 @@ Dieser Artikel enthält Grundlagen zur Migration und eine Tabelle mit Migrations
 
 In Azure sind mehrere Cloudspeichertypen verfügbar. Ein grundlegender Aspekt der Dateimigration zu Azure ist das Ermitteln der richtigen Azure-Speicheroption für Ihre Daten.
 
-[Azure-Dateifreigaben](storage-files-introduction.md) sind für allgemeine Dateidaten geeignet. Dazu gehören alle Daten, für die Sie eine lokale SMB- oder NFS-Freigabe verwenden. Mit der [Azure-Dateisynchronisierung](storage-sync-files-planning.md) können Sie den Inhalt mehrerer Azure-Dateifreigaben auf Windows-Servern lokal zwischenspeichern.
+[Azure-Dateifreigaben](storage-files-introduction.md) sind für allgemeine Dateidaten geeignet. Dazu gehören alle Daten, für die Sie eine lokale SMB- oder NFS-Freigabe verwenden. Mit der [Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md) können Sie den Inhalt mehrerer Azure-Dateifreigaben auf Windows-Servern lokal zwischenspeichern.
 
 Für eine App, die derzeit auf einem lokalen Server ausgeführt wird, ist das Speichern von Dateien in einer Azure-Dateifreigabe möglicherweise eine gute Wahl. Sie können die App zu Azure verschieben und Azure-Dateifreigaben als freigegebenen Speicher verwenden. Sie können für dieses Szenario auch [Azure-Datenträger](../../virtual-machines/managed-disks-overview.md) in Erwägung ziehen.
 
@@ -81,7 +81,7 @@ Für ein Szenario ohne Link wurde derzeit noch kein Migrationsleitfaden veröffe
 | `Source` | Ziel: </br>Hybridbereitstellung | Ziel: </br>Reine Cloudbereitstellung |
 |:---|:--|:--|
 | | Toolkombination:| Toolkombination: |
-| Windows Server 2012 R2 und höher | <ul><li>[Azure-Dateisynchronisierung ](storage-sync-files-deployment-guide.md)</li><li>[Azure-Dateisynchronisierung und Azure DataBox](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li><li>Über Azure-Dateisynchronisierung</li></ul> |
+| Windows Server 2012 R2 und höher | <ul><li>[Azure-Dateisynchronisierung ](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure-Dateisynchronisierung und Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li><li>Über Azure-Dateisynchronisierung</li></ul> |
 | Windows Server 2012 und früher | <ul><li>Über DataBox und Azure-Dateisynchronisierung zum aktuellen Serverbetriebssystem</li><li>Über den Speichermigrationsdienst auf den zuletzt verwendeten Server mit Azure-Dateisynchronisierung, dann Upload</li></ul> | <ul><li>Über den Speichermigrationsdienst auf den zuletzt verwendeten Server mit Azure-Dateisynchronisierung</li><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li></ul> |
 | Network Attached Storage (NAS) | <ul><li>[Über Upload von Azure-Dateisynchronisierung](storage-files-migration-nas-hybrid.md)</li><li>[Über DataBox + Azure-Dateisynchronisierung](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[Via DataBox](storage-files-migration-nas-cloud-databox.md)</li><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li></ul> |
 | Linux/Samba | <ul><li>[Azure-Dateisynchronisierung und RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li></ul> |
@@ -139,7 +139,7 @@ RoboCopy ist eines der für Dateimigrationsvorgänge am besten geeigneten Tools.
 
 Die Azure-Dateisynchronisierung wird in erster Linie entsprechend der Anzahl von Elementen (Dateien und Ordner) skaliert und nicht entsprechend der Speichergesamtmenge. Mit dem Tool TreeSize können Sie die Anzahl von Elementen auf Ihren Windows Server-Volumes ermitteln.
 
-Sie können mit dem Tool vor einer [Bereitstellung der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md) einen Ausblick erstellen. Sie können es auch verwenden, wenn das Cloudtiering nach der Bereitstellung aktiviert wird. In diesem Szenario sehen Sie die Anzahl der Elemente und die Verzeichnisse, die Ihren Servercache am meisten auslasten.
+Sie können mit dem Tool vor einer [Bereitstellung der Azure-Dateisynchronisierung](../file-sync/file-sync-deployment-guide.md) einen Ausblick erstellen. Sie können es auch verwenden, wenn das Cloudtiering nach der Bereitstellung aktiviert wird. In diesem Szenario sehen Sie die Anzahl der Elemente und die Verzeichnisse, die Ihren Servercache am meisten auslasten.
 
 Die getestete Version des Tools ist Version 4.4.1. Es ist kompatibel mit Dateien mit Cloudtierung. Während des normalen Betriebs löst das Tool keinen Rückruf von Dateien mit Tiering aus.
 
@@ -151,5 +151,5 @@ Die getestete Version des Tools ist Version 4.4.1. Es ist kompatibel mit Dateie
 Weitere Informationen zu den in diesem Artikel erwähnten Azure Files-Technologien:
 
 * [Übersicht über Azure-Dateifreigaben](storage-files-introduction.md)
-* [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)
-* [Azure-Dateisynchronisierung: Cloudtiering](storage-sync-cloud-tiering-overview.md)
+* [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md)
+* [Azure-Dateisynchronisierung: Cloudtiering](../file-sync/file-sync-cloud-tiering-overview.md)

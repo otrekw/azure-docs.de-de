@@ -3,12 +3,12 @@ title: Beheben von Problemen bei der Anmeldung bei der Registrierung
 description: Symptome, Ursachen und Lösungen allgemeiner Probleme bei der Anmeldung bei einer Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47186cc8256836e5367ecee520787b67662eb42f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99052077"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780729"
 ---
 # <a name="troubleshoot-registry-login"></a>Beheben von Problemen mit der Registrierungsanmeldung
 
@@ -36,7 +36,7 @@ Mindestens eines der folgenden Probleme kann ein Symptom sein:
 
 ## <a name="further-diagnosis"></a>Weitere Diagnose 
 
-Führen Sie den Befehl [az acr check-health](/cli/azure/acr#az-acr-check-health) aus, um weitere Informationen zur Integrität der Registrierungsumgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Beispielsweise können Sie Docker-Konfigurationsfehler oder Azure Active Directory-Anmeldeprobleme diagnostizieren. 
+Führen Sie den Befehl [az acr check-health](/cli/azure/acr#az_acr_check_health) aus, um weitere Informationen zur Integrität der Registrierungsumgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Beispielsweise können Sie Docker-Konfigurationsfehler oder Azure Active Directory-Anmeldeprobleme diagnostizieren. 
 
 Befehlsbeispiele finden Sie unter [Überprüfen der Integrität einer Azure Container Registry](container-registry-check-health.md). Wenn Fehler gemeldet werden, überprüfen Sie die [Fehlerreferenz](container-registry-health-error-reference.md) und die folgenden Abschnitte für empfohlene Lösungen.
 
@@ -64,7 +64,7 @@ Wenn Sie `docker login` verwenden, geben Sie den vollständigen Anmeldeservernam
 docker login myregistry.azurecr.io
 ```
 
-Wenn Sie [az acr login](/cli/azure/acr#az-acr-login) mit einer Azure Active Directory-Identität verwenden, [melden Sie sich zuerst bei der Azure CLI an](/cli/azure/authenticate-azure-cli), und geben dann den Azure-Ressourcennamen der Registrierung an. Der Ressourcenname ist der Name, der beim Erstellen der Registrierung bereitgestellt wird, z. B. *myregistry* (ohne Domänensuffix). Beispiel:
+Wenn Sie [az acr login](/cli/azure/acr#az_acr_login) mit einer Azure Active Directory-Identität verwenden, [melden Sie sich zuerst bei der Azure CLI an](/cli/azure/authenticate-azure-cli), und geben dann den Azure-Ressourcennamen der Registrierung an. Der Ressourcenname ist der Name, der beim Erstellen der Registrierung bereitgestellt wird, z. B. *myregistry* (ohne Domänensuffix). Beispiel:
 
 ```azurecli
 az acr login --name myregistry
@@ -72,7 +72,7 @@ az acr login --name myregistry
 
 Verwandte Links:
 
-* [az acr login erfolgreich, aber für Docker tritt ein Fehler auf: "Nicht autorisiert: Authentifizierung erforderlich"](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required )
+* [az acr login erfolgreich, aber für Docker tritt ein Fehler auf: "Nicht autorisiert: Authentifizierung erforderlich"](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 
 ### <a name="confirm-credentials-to-access-registry"></a>Bestätigen der Anmeldeinformationen für den Zugriff auf die Registrierung
 
@@ -94,7 +94,7 @@ Verwandte Links:
 * [Anmelden mit einem Token mit Repositorygültigkeitsbereich](container-registry-repository-scoped-permissions.md)
 * [Anmelden mit dem Administratorkonto](container-registry-authentication.md#admin-account)
 * [Azure AD-Authentifizierungs- und -Autorisierungsfehlercodes](../active-directory/develop/reference-aadsts-error-codes.md)
-* [az acr Login](/cli/azure/acr#az-acr-login)-Referenz
+* [az acr Login](/cli/azure/acr#az_acr_login)-Referenz
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>Bestätigen, dass die Anmeldeinformationen für den Zugriff auf die Registrierung autorisiert sind
 
@@ -125,7 +125,7 @@ Token und Active Directory-Anmeldeinformationen können nach festgelegten Zeitr�
 
 Verwandte Links:
 
-* [Zurücksetzen von Anmeldeinformationen für Dienstprinzipal](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset)
+* [Zurücksetzen von Anmeldeinformationen für Dienstprinzipal](/cli/azure/ad/sp/credential#az_ad_sp_credential_reset)
 * [Erneutes Generieren von Tokenkennwörtern](container-registry-repository-scoped-permissions.md#regenerate-token-passwords)
 * [Individuelle Anmeldung bei Azure AD](container-registry-authentication.md#individual-login-with-azure-ad)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: b94e1f82409da3329eb6d978fa2ae0222928cd97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b16a2d9f779232e59eb883f6a254be22990f5c78
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505935"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520019"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Linux in Azure
 
@@ -560,7 +560,7 @@ Im Rahmen des Sicherungsvorgangs wird eine Momentaufnahme erstellt, und die Date
 
 Für **Azure NetApp Files** können Sie eine On-Demand-Momentaufnahme erstellen und mithilfe von Momentaufnahmerichtlinien eine automatische Momentaufnahme planen. Momentaufnahmekopien stellen eine Zeitpunktkopie Ihres ANF-Volumes dar. Weitere Informationen finden Sie unter [Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
 
-Die **Azure Files**-Sicherung ist in den nativen [Azure Backup](../../../backup/backup-overview.md)-Dienst integriert, der die Sicherungs- und Wiederherstellungsfunktion zusammen mit der Sicherung von VMs zentralisiert und die Abläufe vereinfacht. Weitere Informationen finden Sie unter [Sichern von Azure-Dateifreigaben](../../../backup/azure-file-share-backup-overview.md) und [Häufig gestellte Fragen zu Azure Files](../../../backup/backup-azure-files-faq.md).
+Die **Azure Files**-Sicherung ist in den nativen [Azure Backup](../../../backup/backup-overview.md)-Dienst integriert, der die Sicherungs- und Wiederherstellungsfunktion zusammen mit der Sicherung von VMs zentralisiert und die Abläufe vereinfacht. Weitere Informationen finden Sie unter [Sichern von Azure-Dateifreigaben](../../../backup/azure-file-share-backup-overview.md) und [Häufig gestellte Fragen zu Azure Files](../../../backup/backup-azure-files-faq.yml).
 
 #### <a name="backup--restore-for-cms-database"></a>Sicherung und Wiederherstellung für CMS-Datenbank
 

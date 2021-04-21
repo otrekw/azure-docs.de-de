@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: 642a9a9f798492d85ee2a9784a1fe5ad4f854d58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdf702abb10b7330a4ca0f5478751df4bce3d7f3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100574132"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783375"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Erstellen, Ändern oder Löschen einer Routingtabelle
 
@@ -61,7 +61,7 @@ Die Anzahl von Routingtabellen, die Sie pro Azure-Standort und -Abonnement erste
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) |
+| Azure CLI | [az network route-table create](/cli/azure/network/route-table#az_network_route_table_create) |
 | PowerShell | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) |
 
 ## <a name="view-route-tables"></a>Anzeigen von Routingtabellen
@@ -72,7 +72,7 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um Ihr virtuelles N
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network route-table list](/cli/azure/network/route-table#az-network-route-table-list) |
+| Azure CLI | [az network route-table list](/cli/azure/network/route-table#az_network_route_table_list) |
 | PowerShell | [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) |
 
 ## <a name="view-details-of-a-route-table"></a>Anzeigen von Details einer Routingtabelle
@@ -95,7 +95,7 @@ Weitere Informationen zu allgemeinen Azure-Einstellungen finden Sie in den folge
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network route-table show](/cli/azure/network/route-table#az-network-route-table-show) |
+| Azure CLI | [az network route-table show](/cli/azure/network/route-table#az_network_route_table_show) |
 | PowerShell | [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) |
 
 ## <a name="change-a-route-table"></a>Ändern einer Routingtabelle
@@ -110,7 +110,7 @@ Die gängigsten Änderungen umfassen das [Hinzufügen](#create-a-route) von Rout
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network route-table update](/cli/azure/network/route-table#az-network-route-table-update) |
+| Azure CLI | [az network route-table update](/cli/azure/network/route-table#az_network_route_table_update) |
 | PowerShell | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) |
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Zuordnen einer Routingtabelle zu einem Subnetz
@@ -135,7 +135,7 @@ Wenn Ihr virtuelles Netzwerk mit einem Azure-VPN-Gateway verbunden ist, ordnen S
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
+| Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
 
 ## <a name="dissociate-a-route-table-from-a-subnet"></a>Aufheben der Zuordnung einer Routingtabelle zu einem Subnetz
@@ -158,7 +158,7 @@ Wenn Sie die Zuordnung einer Routingtabelle zu einem Subnetz aufheben, wird Date
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
+| Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
 
 ## <a name="delete-a-route-table"></a>Löschen einer Routingtabelle
@@ -175,7 +175,7 @@ Sie können eine Routingtabelle nicht löschen, die einem Subnetz zugeordnet ist
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network route-table delete](/cli/azure/network/route-table#az-network-route-table-delete) |
+| Azure CLI | [az network route-table delete](/cli/azure/network/route-table#az_network_route_table_delete) |
 | PowerShell | [Remove-AzRouteTable](/powershell/module/az.network/remove-azroutetable) |
 
 ## <a name="create-a-route"></a>Erstellen einer Route
@@ -202,7 +202,7 @@ Die Anzahl von Routen pro Routingtabelle, die Sie pro Azure-Standort und -Abonne
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create) |
+| Azure CLI | [az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create) |
 | PowerShell | [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig) |
 
 ## <a name="view-routes"></a>Anzeigen von Routen
@@ -219,7 +219,7 @@ Eine Routingtabelle enthält null oder mehr Routen. Weitere Informationen zu den
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network route-table route list](/cli/azure/network/route-table/route#az-network-route-table-route-list) |
+| Azure CLI | [az network route-table route list](/cli/azure/network/route-table/route#az_network_route_table_route_list) |
 | PowerShell | [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig) |
 
 ## <a name="view-details-of-a-route"></a>Anzeigen von Details einer Route
@@ -236,7 +236,7 @@ Eine Routingtabelle enthält null oder mehr Routen. Weitere Informationen zu den
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network route-table route show](/cli/azure/network/route-table/route#az-network-route-table-route-show) |
+| Azure CLI | [az network route-table route show](/cli/azure/network/route-table/route#az_network_route_table_route_show) |
 | PowerShell | [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig) |
 
 ## <a name="change-a-route"></a>Ändern einer Route
@@ -255,7 +255,7 @@ Eine Routingtabelle enthält null oder mehr Routen. Weitere Informationen zu den
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network route-table route update](/cli/azure/network/route-table/route#az-network-route-table-route-update) |
+| Azure CLI | [az network route-table route update](/cli/azure/network/route-table/route#az_network_route_table_route_update) |
 | PowerShell | [Set-AzRouteConfig](/powershell/module/az.network/set-azrouteconfig) |
 
 ## <a name="delete-a-route"></a>Löschen einer Route
@@ -274,7 +274,7 @@ Eine Routingtabelle enthält null oder mehr Routen. Weitere Informationen zu den
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network route-table route delete](/cli/azure/network/route-table/route#az-network-route-table-route-delete) |
+| Azure CLI | [az network route-table route delete](/cli/azure/network/route-table/route#az_network_route_table_route_delete) |
 | PowerShell | [Remove-AzRouteConfig](/powershell/module/az.network/remove-azrouteconfig) |
 
 ## <a name="view-effective-routes"></a>Anzeigen effektiver Routen
@@ -297,7 +297,7 @@ Die effektiven Routen für jede an eine VM angefügte Netzwerkschnittstelle sind
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) |
+| Azure CLI | [az network nic show-effective-route-table](/cli/azure/network/nic#az_network_nic_show_effective_route_table) |
 | PowerShell | [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) |
 
 ## <a name="validate-routing-between-two-endpoints"></a>Überprüfen des Routings zwischen zwei Endpunkten
@@ -326,7 +326,7 @@ Nach einer kurzen Wartezeit gibt Azure den Typ des nächsten Hops und die ID der
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network watcher show-next-hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) |
+| Azure CLI | [az network watcher show-next-hop](/cli/azure/network/watcher#az_network_watcher_show_next_hop) |
 | PowerShell | [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop) |
 
 ## <a name="permissions"></a>Berechtigungen

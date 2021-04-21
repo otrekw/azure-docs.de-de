@@ -4,13 +4,13 @@ description: Erfahren Sie, welche Arten von Anmeldeinformationen für die Bereit
 ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
-ms.custom: seodec18
-ms.openlocfilehash: c7d3c7c8b5da40a4e9ccd9085af5a850b9ebc3dd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: b77a26f61e1168846156de990806bbed2f7c41e3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052346"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789535"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
 Um die App-Bereitstellung von einem lokalen Computer aus zu schützen, unterstützt [Azure App Service](./overview.md) zwei Arten von Anmeldeinformationen für die [lokale Git-Bereitstellung](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.
@@ -24,7 +24,7 @@ Um die App-Bereitstellung von einem lokalen Computer aus zu schützen, unterstü
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
 
-Führen Sie den Befehl [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) aus. Ersetzen Sie \<username> und \<password> durch Ihren Benutzernamen bzw. Ihr Kennwort für die Bereitstellung. 
+Führen Sie den Befehl [az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) aus. Ersetzen Sie \<username> und \<password> durch Ihren Benutzernamen bzw. Ihr Kennwort für die Bereitstellung. 
 
 - Der Benutzername muss in Azure eindeutig sein und darf bei lokalen Git-Pushes nicht das Symbol „@“ enthalten. 
 - Das Kennwort muss mindestens acht Zeichen lang sein und zwei der folgenden drei Elemente enthalten: Buchstaben, Zahlen und Symbole. 

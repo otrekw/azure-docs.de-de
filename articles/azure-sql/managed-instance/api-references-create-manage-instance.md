@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: cf100861705bf1654b7206445c884b5fe315b06d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 148b24aea42072f1901c76c7a09a126340ef9951
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792632"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784369"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Referenz zur Verwaltungs-API für verwaltete Azure SQL-Instanzen
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -60,18 +60,18 @@ Verwenden Sie zum Erstellen und Konfigurieren verwalteter Instanzen mithilfe der
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
-|[az sql mi create](/cli/azure/sql/mi#az-sql-mi-create) |Erstellt eine verwaltete Instanz.|
-|[az sql mi list](/cli/azure/sql/mi#az-sql-mi-list)|Listet verfügbare verwaltete Instanzen auf.|
-|[az sql mi show](/cli/azure/sql/mi#az-sql-mi-show)|Ruft die Details für eine verwaltete Instanz ab.|
-|[az sql mi update](/cli/azure/sql/mi#az-sql-mi-update)|Aktualisiert eine verwaltete Instanz.|
-|[az sql mi delete](/cli/azure/sql/mi#az-sql-mi-delete)|Entfernt eine verwaltete Instanz.|
+|[az sql mi create](/cli/azure/sql/mi#az_sql_mi_create) |Erstellt eine verwaltete Instanz.|
+|[az sql mi list](/cli/azure/sql/mi#az_sql_mi_list)|Listet verfügbare verwaltete Instanzen auf.|
+|[az sql mi show](/cli/azure/sql/mi#az_sql_mi_show)|Ruft die Details für eine verwaltete Instanz ab.|
+|[az sql mi update](/cli/azure/sql/mi#az_sql_mi_update)|Aktualisiert eine verwaltete Instanz.|
+|[az sql mi delete](/cli/azure/sql/mi#az_sql_mi_delete)|Entfernt eine verwaltete Instanz.|
 |[az sql mi op list](/cli/azure/sql/mi/op#az_sql_mi_op_list)|Ruft eine Liste der Verwaltungsvorgänge ab, die für die verwaltete Instanz ausgeführt wurden.|
 |[az sql mi op show](/cli/azure/sql/mi/op#az_sql_mi_op_show)|Ruft den Verwaltungsvorgang ab, der für die verwaltete Instanz ausgeführt wurde.|
 |[az sql mi op cancel](/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|Bricht den Verwaltungsvorgang ab, der für die verwaltete Instanz ausgeführt wird.|
-|[az sql midb create](/cli/azure/sql/midb#az-sql-midb-create) |Erstellt eine verwaltete Datenbank.|
-|[az sql midb list](/cli/azure/sql/midb#az-sql-midb-list)|Listet verfügbare verwaltete Datenbanken auf.|
-|[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)|Stellt eine verwaltete Datenbank wieder her.|
-|[az sql midb delete](/cli/azure/sql/midb#az-sql-midb-delete)|Entfernt eine verwaltete Datenbank.|
+|[az sql midb create](/cli/azure/sql/midb#az_sql_midb_create) |Erstellt eine verwaltete Datenbank.|
+|[az sql midb list](/cli/azure/sql/midb#az_sql_midb_list)|Listet verfügbare verwaltete Datenbanken auf.|
+|[az sql midb restore](/cli/azure/sql/midb#az_sql_midb_restore)|Stellt eine verwaltete Datenbank wieder her.|
+|[az sql midb delete](/cli/azure/sql/midb#az_sql_midb_delete)|Entfernt eine verwaltete Datenbank.|
 
 ## <a name="transact-sql-create-and-configure-instance-databases"></a>Transact-SQL: Erstellen und Konfigurieren von Instanzdatenbanken
 

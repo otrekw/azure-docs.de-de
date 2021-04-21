@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Red Hat OpenShift, Version 3.x mit Container Ins
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung eines in Azure Red Hat OpenShift, Version 3 und höher gehosteten Kubernetes-Clusters mit Azure Monitor konfigurieren können.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2910655601548f39983547e12460d949901954d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708372"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784675"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>Konfigurieren von Azure Red Hat OpenShift, Version 3 mit Container Insights
 
@@ -30,7 +30,7 @@ Container Insights bietet umfassende Überwachungsfunktionen für Azure Kubernet
 Container Insights kann für neue oder mindestens eine vorhandene Bereitstellung von Azure Red Hat OpenShift mit den folgenden unterstützten Methoden aktiviert werden:
 
 - für einen vorhandenen Cluster im Azure-Portal oder mit einer Azure Resource Manager-Vorlage.
-- für einen neuen Cluster mit einer Azure Resource Manager-Vorlage oder beim Erstellen eines neuen Clusters mithilfe der [Azure CLI](/cli/azure/openshift#az-openshift-create).
+- für einen neuen Cluster mit einer Azure Resource Manager-Vorlage oder beim Erstellen eines neuen Clusters mithilfe der [Azure CLI](/cli/azure/openshift#az_openshift_create).
 
 ## <a name="supported-and-unsupported-features"></a>Unterstützte und nicht unterstützte Funktionen
 
