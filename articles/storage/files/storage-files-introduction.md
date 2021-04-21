@@ -7,20 +7,15 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0dcd763240205bd396fc8cd0301c2046098473b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7279c5578d969db9178ce85734e3a43f9eccdf8d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98070132"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780045"
 ---
 # <a name="what-is-azure-files"></a>Was ist Azure Files?
 Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) zugegriffen werden kann. Azure-Dateifreigaben können gleichzeitig über die Cloud oder durch lokale Bereitstellungen eingebunden werden. Der Zugriff auf SMB-Dateifreigaben in Azure Files kann von Windows-, Linux- und macOS-Clients aus erfolgen. Der Zugriff auf NFS-Dateifreigaben in Azure Files kann von Linux- oder macOS-Clients aus erfolgen. Außerdem können SMB-Dateifreigaben in Azure Files auf Windows-Servern mit der Azure-Dateisynchronisierung zwischengespeichert werden, um einen schnellen Zugriff in der Nähe des Datennutzungsorts zu gewährleisten.
-
-## <a name="videos"></a>Videos
-| Einführung in die Azure-Dateisynchronisierung | Azure Files mit Sync (Ignite 2019)  |
-|-|-|
-| [![Standbild aus dem Einführungsvideo für die Azure-Dateisynchronisierung. Klicken Sie darauf, um die Wiedergabe zu starten.](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Standbild der Präsentation zu Azure Files mit Sync. Klicken Sie darauf, um die Wiedergabe zu starten.](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/embed/6E2p28XwovU) |
 
 Im Folgenden sind Videos zu häufigen Anwendungsfällen von Azure Files aufgeführt:
 * [Replace your file server with a serverless Azure File Share](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4) (Ersetzen Ihres Dateiservers durch eine serverlose Azure-Dateifreigabe)

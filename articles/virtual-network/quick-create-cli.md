@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/06/2021
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0795404c2dc5377d60896863f6a088c4b2ffd1ad
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 407207c0dcb6270f08fb511a01e6e4e835b9fab9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060804"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776751"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Schnellstart: Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle
 
@@ -83,6 +83,8 @@ az vm create \
   --generate-ssh-keys
 ```
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ### <a name="azure-cli-output-message"></a>Azure CLI-Ausgabenachricht
 
 Die Erstellung der VMs kann einige Minuten dauern. Nachdem Azure die virtuellen Computer erstellt hat, gibt Azure CLI etwa folgende Ausgabe zurück:
@@ -103,7 +105,7 @@ Die Erstellung der VMs kann einige Minuten dauern. Nachdem Azure die virtuellen 
 
 ## <a name="vm-public-ip"></a>Öffentliche IP-Adresse für die VM
 
-Verwenden Sie [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show), um die öffentliche IP-Adresse **myVM2** abzurufen.
+Verwenden Sie [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show), um die öffentliche IP-Adresse **myVM2** abzurufen.
 
 ```azurecli-interactive
 az network public-ip show \

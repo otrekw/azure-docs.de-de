@@ -6,12 +6,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8ff85dc5571f549027e208409db3f4e80c68b205
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 363799cee5d66b718bb8ba06f4afd442add15148
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108180"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564454"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie mit der Azure Communication Services Calling SDK für iOS einer Teams-Besprechung beitreten.
 
@@ -177,8 +177,8 @@ struct ContentView_Previews: PreviewProvider {
 
 ## <a name="get-the-teams-meeting-link"></a>Abrufen des Teams-Besprechungslinks
 
-Der Teams-Besprechungslink kann mithilfe der Graph-APIs abgerufen werden. Dies wird in der [Graph-Dokumentation](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta) erläutert.
-Das Communication Services-SDK für Telefonie akzeptiert einen vollständigen Teams-Besprechungslink. Dieser Link wird als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die unter der [`joinWebUrl`-Eigenschaft](/graph/api/resources/onlinemeeting?view=graph-rest-beta) zugegriffen werden kann. Die erforderlichen Besprechungsinformationen können auch der URL für den **Besprechungsbeitritt** aus der Teams-Besprechungseinladung entnommen werden.
+Der Teams-Besprechungslink kann mithilfe der Graph-APIs abgerufen werden. Dies wird in der [Graph-Dokumentation](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) erläutert.
+Das Communication Services-SDK für Telefonie akzeptiert einen vollständigen Teams-Besprechungslink. Dieser Link wird als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die unter der [`joinWebUrl`-Eigenschaft](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) zugegriffen werden kann. Die erforderlichen Besprechungsinformationen können auch der URL für den **Besprechungsbeitritt** aus der Teams-Besprechungseinladung entnommen werden.
 
 ## <a name="launch-the-app-and-join-teams-meeting"></a>Starten der App und Beitreten zur Teams-Besprechung
 

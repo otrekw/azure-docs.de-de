@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 894a89126d1ee3ed909134f3e0dd914166568654
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 921127ffdd35007cc3fa2eaaa95cdb3fac8bbe15
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90606508"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782270"
 ---
 Sie können die Warteschlange im [Azure-Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) oder im [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) anzeigen. Sie haben auch die Möglichkeit, die Warteschlange per Azure CLI anzuzeigen. Dies ist in den folgenden Schritten beschrieben:
 
@@ -35,13 +35,13 @@ Sie können die Warteschlange im [Azure-Portal](../articles/storage/queues/stora
     
     ---
     
-1. (Optional) Verwenden Sie den Befehl [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list), um die Storage-Warteschlangen in Ihrem Konto anzuzeigen. Die Ausgabe dieses Befehls sollte eine Warteschlange mit dem Namen `outqueue` enthalten. Sie wurde erstellt, als die Funktion ihre erste Nachricht in diese Warteschlange geschrieben hat.
+1. (Optional) Verwenden Sie den Befehl [`az storage queue list`](/cli/azure/storage/queue#az_storage_queue_list), um die Storage-Warteschlangen in Ihrem Konto anzuzeigen. Die Ausgabe dieses Befehls sollte eine Warteschlange mit dem Namen `outqueue` enthalten. Sie wurde erstellt, als die Funktion ihre erste Nachricht in diese Warteschlange geschrieben hat.
     
     ```azurecli
     az storage queue list --output tsv
     ```
 
-1. Verwenden Sie den Befehl [`az storage message get`](/cli/azure/storage/message#az-storage-message-get), um die Nachricht aus dieser Warteschlange zu lesen. Dies sollte der erste Name sein, den Sie beim zuvor durchgeführten Testen der Funktion genutzt haben. Mit dem Befehl wird die erste Nachricht der Warteschlange gelesen und daraus entfernt. 
+1. Verwenden Sie den Befehl [`az storage message get`](/cli/azure/storage/message#az_storage_message_get), um die Nachricht aus dieser Warteschlange zu lesen. Dies sollte der erste Name sein, den Sie beim zuvor durchgeführten Testen der Funktion genutzt haben. Mit dem Befehl wird die erste Nachricht der Warteschlange gelesen und daraus entfernt. 
 
     # <a name="bash"></a>[Bash](#tab/bash)
     

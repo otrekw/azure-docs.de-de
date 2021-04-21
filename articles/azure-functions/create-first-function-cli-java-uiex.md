@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: b5bc453e2e0371ee0412824f01d99863b12d91e2
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: a270f482438129b7b07506744bf3f9489b242900
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375371"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787483"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Java-Funktion über die Befehlszeile in Azure
 
@@ -195,7 +195,7 @@ Wenn Sie eine Funktions-App für Linux anstatt für Windows erstellen möchten, 
     az login
     ```
 
-    Mit dem Befehl [az login](/cli/azure/reference-index#az-login) werden Sie bei Ihrem Azure-Konto angemeldet.
+    Mit dem Befehl [az login](/cli/azure/reference-index#az_login) werden Sie bei Ihrem Azure-Konto angemeldet.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell

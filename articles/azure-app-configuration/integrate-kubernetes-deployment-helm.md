@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 4e38366ddcee07f38ca390acf9d580b8764c1c00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6276fc2027e92d5b7baaf9237a928e7828a3b021
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979826"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775762"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrieren in eine Kubernetes-Bereitstellung mit Helm
 
@@ -185,7 +185,7 @@ settings:
 Laden Sie zunächst die Konfiguration aus App Configuration in eine Datei namens *myConfig.yaml* herunter. Verwenden Sie einen Schlüsselfilter, um nur die Schlüssel herunterzuladen, die mit **settings.** beginnen. Sollte der Schlüsselfilter in Ihrem Fall nicht ausreichen, um Schlüssel von Key Vault-Verweisen auszuschließen, können Sie das Argument **--skip-keyvault** verwenden, um sie auszuschließen. 
 
 > [!TIP]
-> Weitere Informationen zum Exportbefehl finden Sie [hier](/cli/azure/appconfig/kv#az-appconfig-kv-export). 
+> Weitere Informationen zum Exportbefehl finden Sie [hier](/cli/azure/appconfig/kv#az_appconfig_kv_export). 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml

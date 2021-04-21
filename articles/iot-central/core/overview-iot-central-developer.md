@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebd2759d4dfb8ee79130f9b4876eba8d45226d04
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585858"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718789"
 ---
 # <a name="iot-central-device-development-guide"></a>Entwicklungshandbuch für IoT Central-Geräte
 
@@ -125,7 +125,7 @@ Weitere Informationen zu den IoT Plug & Play-Konventionen finden Sie unter [IoT 
 
 ### <a name="device-sdks"></a>Geräte-SDKs
 
-Mithilfe eines der [Azure IoT-Geräte-SDKs](#languages-and-sdks) können Sie das Verhalten Ihres Geräts implementieren. Der Code sollte folgende Aufgaben erfüllen:
+Mithilfe eines der [Azure IoT-Geräte-SDKs](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) können Sie das Verhalten Ihres Geräts implementieren. Der Code sollte folgende Aufgaben erfüllen:
 
 - Das Gerät mit DPS registrieren und mithilfe der Informationen von DPS eine Verbindung mit dem internen IoT-Hub in Ihrer IoT Central-Anwendung herstellen.
 - Ankündigen des Gerätezwilling-Modellbezeichners des vom Gerät implementierten Modells.

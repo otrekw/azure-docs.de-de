@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-js
+ms.custom: seodec18, devx-track-js, devx-track-azurecli
 ms.reviewer: sngun
-ms.openlocfilehash: 4ca7286676c441b2fa96883e0c187497f59d6222
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99edeff93bdf75596eea80a238e159548f00679c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93082623"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790219"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Erstellen eines Cosmos-Kontos
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -49,7 +49,7 @@ In diesem Tutorial können Sie entweder Azure Cloud Shell (in Ihrem Internetbrow
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Erstellen eines Azure Cosmos DB-Kontos
 
-Erstellen Sie mithilfe des Befehls [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) ein Azure Cosmos DB-Konto.
+Erstellen Sie mithilfe des Befehls [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) ein Azure Cosmos DB-Konto.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB

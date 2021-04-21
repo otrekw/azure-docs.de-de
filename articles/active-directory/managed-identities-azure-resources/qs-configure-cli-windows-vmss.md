@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f88eccc524ffac424f8f5048990f693aa67613d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e6e7e1724247c0e6d2b9db2fdf6980e8ef553c7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97590935"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788185"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle
 
@@ -59,13 +59,13 @@ In diesem Abschnitt erfahren Sie, wie Sie die systemseitig zugewiesene verwaltet
 
 So erstellen Sie eine VM-Skalierungsgruppe samt aktivierter vom System zugewiesener verwalteter Identität
 
-1. Erstellen Sie eine [Ressourcengruppe](../../azure-resource-manager/management/overview.md#terminology) für das Einschließen und Bereitstellen der VM-Skalierungsgruppe und der zugehörigen Ressourcen. Verwenden Sie hierfür [az group create](/cli/azure/group/#az-group-create). Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie stattdessen verwenden möchten:
+1. Erstellen Sie eine [Ressourcengruppe](../../azure-resource-manager/management/overview.md#terminology) für das Einschließen und Bereitstellen der VM-Skalierungsgruppe und der zugehörigen Ressourcen. Verwenden Sie hierfür [az group create](/cli/azure/group/#az_group_create). Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie stattdessen verwenden möchten:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-1. [Erstellen](/cli/azure/vmss/#az-vmss-create) einer VM-Skalierungsgruppe Im folgenden Beispiel wird die VM-Skalierungsgruppe *myVMSS* mit einer vom System zugewiesenen verwalteten Identität erstellt. Dies wird durch den Parameter `--assign-identity` gefordert. Der `--admin-username`-Parameter und der `--admin-password`-Parameter geben den Namen und das Kennwort des Administratorbenutzers für die Anmeldung am virtuellen Computer an. Aktualisieren Sie diese Werte ggf. mit den entsprechenden Werten für Ihre Umgebung: 
+1. [Erstellen](/cli/azure/vmss/#az_vmss_create) einer VM-Skalierungsgruppe Im folgenden Beispiel wird die VM-Skalierungsgruppe *myVMSS* mit einer vom System zugewiesenen verwalteten Identität erstellt. Dies wird durch den Parameter `--assign-identity` gefordert. Der `--admin-username`-Parameter und der `--admin-password`-Parameter geben den Namen und das Kennwort des Administratorbenutzers für die Anmeldung am virtuellen Computer an. Aktualisieren Sie diese Werte ggf. mit den entsprechenden Werten für Ihre Umgebung: 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -73,7 +73,7 @@ So erstellen Sie eine VM-Skalierungsgruppe samt aktivierter vom System zugewiese
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>Aktivieren einer vom System zugewiesenen verwalteten Identität in einer vorhandenen Azure-VM-Skalierungsgruppe
 
-Wenn Sie die systemseitig zugewiesene verwaltete Identität in einer vorhandenen Azure-VM-Skalierungsgruppe [aktivieren](/cli/azure/vmss/identity/#az-vmss-identity-assign) müssen, gehen Sie wie folgt vor:
+Wenn Sie die systemseitig zugewiesene verwaltete Identität in einer vorhandenen Azure-VM-Skalierungsgruppe [aktivieren](/cli/azure/vmss/identity/#az_vmss_identity_assign) müssen, gehen Sie wie folgt vor:
 
 ```azurecli-interactive
 az vmss identity assign -g myResourceGroup -n myVMSS
@@ -104,13 +104,13 @@ In diesem Abschnitt erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnit
 
 Dieser Abschnitt führt Sie durch das Erstellen einer VM-Skalierungsgruppe und das Zuweisen einer benutzerseitig zugewiesenen verwalteten Identität zu der VM-Skalierungsgruppe. Wenn Sie eine bereits vorhandene VM-Skalierungsgruppe verwenden möchten, überspringen Sie diesen Abschnitt, und fahren Sie mit dem nächsten Abschnitt fort.
 
-1. Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie verwenden möchten. Erstellen Sie mit [az group create](/cli/azure/group/#az-group-create) eine [Ressourcengruppe](~/articles/azure-resource-manager/management/overview.md#terminology) zum Einschließen und Bereitstellen Ihrer vom Benutzer zugewiesenen verwalteten Identität. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<LOCATION>` durch Ihre eigenen Werte. :
+1. Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie verwenden möchten. Erstellen Sie mit [az group create](/cli/azure/group/#az_group_create) eine [Ressourcengruppe](~/articles/azure-resource-manager/management/overview.md#terminology) zum Einschließen und Bereitstellen Ihrer vom Benutzer zugewiesenen verwalteten Identität. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<LOCATION>` durch Ihre eigenen Werte. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
    ```
 
-2. Erstellen Sie mit [az identity create](/cli/azure/identity#az-identity-create) eine benutzerseitig zugewiesene verwaltete Identität.  Der Parameter `-g` gibt die Ressourcengruppe an, in der die vom Benutzer zugewiesene verwaltete Identität erstellt wird, und der Parameter `-n` gibt den Namen an. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte:
+2. Erstellen Sie mit [az identity create](/cli/azure/identity#az_identity_create) eine benutzerseitig zugewiesene verwaltete Identität.  Der Parameter `-g` gibt die Ressourcengruppe an, in der die vom Benutzer zugewiesene verwaltete Identität erstellt wird, und der Parameter `-n` gibt den Namen an. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte:
 
    [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -134,7 +134,7 @@ Dieser Abschnitt führt Sie durch das Erstellen einer VM-Skalierungsgruppe und d
    }
    ```
 
-3. [Erstellen](/cli/azure/vmss/#az-vmss-create) einer VM-Skalierungsgruppe Im folgenden Beispiel wird eine VM-Skalierungsgruppe erstellt, der die neue benutzerseitig zugewiesene verwaltete Identität zugewiesen ist. Dies wird durch den Parameter `--assign-identity` angegeben. Ersetzen Sie die Parameter`<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` und `<USER ASSIGNED IDENTITY>` durch Ihre eigenen Werte. 
+3. [Erstellen](/cli/azure/vmss/#az_vmss_create) einer VM-Skalierungsgruppe Im folgenden Beispiel wird eine VM-Skalierungsgruppe erstellt, der die neue benutzerseitig zugewiesene verwaltete Identität zugewiesen ist. Dies wird durch den Parameter `--assign-identity` angegeben. Ersetzen Sie die Parameter`<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` und `<USER ASSIGNED IDENTITY>` durch Ihre eigenen Werte. 
 
    ```azurecli-interactive 
    az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY>
@@ -142,7 +142,7 @@ Dieser Abschnitt führt Sie durch das Erstellen einer VM-Skalierungsgruppe und d
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zu einer vorhandenen VM-Skalierungsgruppe
 
-1. Erstellen Sie mit [az identity create](/cli/azure/identity#az-identity-create) eine benutzerseitig zugewiesene verwaltete Identität.  Der Parameter `-g` gibt die Ressourcengruppe an, in der die vom Benutzer zugewiesene verwaltete Identität erstellt wird, und der Parameter `-n` gibt den Namen an. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte:
+1. Erstellen Sie mit [az identity create](/cli/azure/identity#az_identity_create) eine benutzerseitig zugewiesene verwaltete Identität.  Der Parameter `-g` gibt die Ressourcengruppe an, in der die vom Benutzer zugewiesene verwaltete Identität erstellt wird, und der Parameter `-n` gibt den Namen an. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte:
 
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
@@ -172,7 +172,7 @@ Dieser Abschnitt führt Sie durch das Erstellen einer VM-Skalierungsgruppe und d
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Entfernen einer vom Benutzer zugewiesenen verwalteten Identität aus einer Azure-VM-Skalierungsgruppe
 
-Zum [Entfernen](/cli/azure/vmss/identity#az-vmss-identity-remove) einer vom Benutzer zugewiesenen verwalteten Identität aus einer VM-Skalierungsgruppe wird `az vmss identity remove` verwendet. Wenn dies die einzige vom Benutzer zugewiesene verwaltete Identität der VM-Skalierungsgruppe ist, wird `UserAssigned` aus dem Wert des Identitätstyps entfernt.  Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VIRTUAL MACHINE SCALE SET NAME>` durch Ihre eigenen Werte. `<USER ASSIGNED IDENTITY>` ist die `name`-Eigenschaft der vom Benutzer zugewiesenen verwalteten Identität. Diese Eigenschaft kann mit `az vmss identity show` aus dem Identitätsabschnitt der VM-Skalierungsgruppe abgerufen werden:
+Zum [Entfernen](/cli/azure/vmss/identity#az_vmss_identity_remove) einer vom Benutzer zugewiesenen verwalteten Identität aus einer VM-Skalierungsgruppe wird `az vmss identity remove` verwendet. Wenn dies die einzige vom Benutzer zugewiesene verwaltete Identität der VM-Skalierungsgruppe ist, wird `UserAssigned` aus dem Wert des Identitätstyps entfernt.  Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VIRTUAL MACHINE SCALE SET NAME>` durch Ihre eigenen Werte. `<USER ASSIGNED IDENTITY>` ist die `name`-Eigenschaft der vom Benutzer zugewiesenen verwalteten Identität. Diese Eigenschaft kann mit `az vmss identity show` aus dem Identitätsabschnitt der VM-Skalierungsgruppe abgerufen werden:
 
 ```azurecli-interactive
 az vmss identity remove -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 76fd959c28203132be4695031d96315f258cf53f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8e32a56148326104c3514b8a2fdb5d6bbd3f00a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563063"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778463"
 ---
 # <a name="quickstart-create-a-private-link-service-using-azure-cli"></a>Schnellstart: Erstellen eines Private Link-Diensts mithilfe der Azure CLI
 
@@ -48,7 +48,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und eine interne Azure
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Hosten des Lastenausgleichs, der auf Ihren Private Link-Dienst zugreift.
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) ein virtuelles Netzwerk:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk:
 
 * Name: **myVNet**
 * Adresspräfix: **10.1.0.0/16**
@@ -69,7 +69,7 @@ Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-network-vn
 
 ```
 
-Aktualisieren Sie das Subnetz mit [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update), um Netzwerkrichtlinien für den Privat Link-Dienst zu deaktivieren.
+Aktualisieren Sie das Subnetz mit [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update), um Netzwerkrichtlinien für den Privat Link-Dienst zu deaktivieren.
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -90,7 +90,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenau
 
 ### <a name="create-the-load-balancer-resource"></a>Erstellen der Lastenausgleichsressource
 
-Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az-network-lb-create) einen öffentlichen Lastenausgleich:
+Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az_network_lb_create) einen öffentlichen Lastenausgleich:
 
 * Name: **myLoadBalancer**
 * Front-End-Pool namens **myFrontEnd**
@@ -115,7 +115,7 @@ Von einem Integritätstest werden alle VM-Instanzen überprüft, um sicherzustel
 
 Ist der Test bei einem virtuellen Computer nicht erfolgreich, wird er aus dem Lastenausgleich entfernt. Nach Behebung des Fehlers wird der virtuelle Computer dem Lastenausgleich wieder hinzugefügt.
 
-Erstellen Sie mit [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) einen Integritätstest:
+Erstellen Sie mit [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) einen Integritätstest:
 
 * Überwacht die Integrität der virtuellen Computer
 * Name: **myHealthProbe**
@@ -139,7 +139,7 @@ Durch eine Lastenausgleichsregel wird Folgendes definiert:
 * Back-End-IP-Pool zum Empfangen des Datenverkehrs.
 * Erforderliche Quell- und Zielports. 
 
-Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) eine Lastenausgleichsregel:
+Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) eine Lastenausgleichsregel:
 
 * Name: **myHTTPRule**
 * Lauscht am **Port 80** im Front-End-Pool **myFrontEnd**
@@ -168,7 +168,7 @@ Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az-netw
 
 In diesem Abschnitt erstellen Sie eine Instanz des Private Link-Diensts, für die der im vorherigen Schritt erstellte Azure Load Balancer verwendet wird.
 
-Erstellen Sie mit [az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) einen Private Link-Dienst unter Verwendung der Front-End-IP-Konfiguration von Load Balancer Standard:
+Erstellen Sie mit [az network private-link-service create](/cli/azure/network/private-link-service#az_network_private_link_service_create) einen Private Link-Dienst unter Verwendung der Front-End-IP-Konfiguration von Load Balancer Standard:
 
 * Name: **myPrivateLinkService**
 * Virtuelles Netzwerk: **myVNet**
@@ -195,7 +195,7 @@ In diesem Abschnitt ordnen Sie den Private Link-Dienst einem privaten Endpunkt 
 
 ### <a name="create-private-endpoint-virtual-network"></a>Erstellen eines virtuellen Netzwerks des privaten Endpunkts
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) ein virtuelles Netzwerk:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk:
 
 * Name: **myVNetPE**
 * Adresspräfix: **11.1.0.0/16**
@@ -214,7 +214,7 @@ Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-network-vn
     --subnet-prefixes 11.1.0.0/24
 ```
 
-Aktualisieren Sie das Subnetz mit [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update), um Netzwerkrichtlinien für private Endpunkte zu deaktivieren:
+Aktualisieren Sie das Subnetz mit [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update), um Netzwerkrichtlinien für private Endpunkte zu deaktivieren:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -256,7 +256,7 @@ az network vnet subnet update \
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Verwenden Sie den Befehl [az group delete](/cli/azure/group#az-group-delete), um die Ressourcengruppe, den Private Link-Dienst, den Load Balancer und alle zugehörigen Ressourcen zu entfernen, wenn Sie sie nicht mehr benötigen.
+Verwenden Sie den Befehl [az group delete](/cli/azure/group#az_group_delete), um die Ressourcengruppe, den Private Link-Dienst, den Load Balancer und alle zugehörigen Ressourcen zu entfernen, wenn Sie sie nicht mehr benötigen.
 
 ```azurecli-interactive
   az group delete \

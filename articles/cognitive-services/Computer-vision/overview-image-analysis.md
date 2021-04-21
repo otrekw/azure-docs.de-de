@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/30/2021
 ms.author: pafarley
 keywords: maschinelles Sehen, Anwendungen für maschinelles Sehen, Dienst für maschinelles Sehen
-ms.openlocfilehash: f262fdb49cac4ab9abe7f3f6873160d3059968c6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 0258eb7c57bc0734b5c0a67644cbaa4f62a34537
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287411"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766913"
 ---
 # <a name="what-is-image-analysis"></a>Was ist eine Bildanalyse?
 
@@ -24,7 +24,7 @@ ms.locfileid: "106287411"
 
 Der Maschinelles Sehen Image Analysis Service kann eine Vielzahl von visuellen Features aus Ihren Bildern extrahieren. Beispielsweise kann es ermitteln, ob ein Bild nicht jugendfreie Inhalte aufweist, oder es können bestimmte Marken oder Objekte oder menschliche Gesichter gesucht werden.
 
-Sie können die Bild-Analyse in Ihrer Anwendung über ein Clientbibliothek-SDK oder durch direktes Aufrufen der [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) nutzen. Im [Schnellstart](quickstarts-sdk/image-analysis-client-library.md) erfahren Sie mehr zu den ersten Schritten.
+Sie können die Bild-Analyse in Ihrer Anwendung über ein Clientbibliothek-SDK oder durch direktes Aufrufen der [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v2-ga/operations/5d986960601faab4bf452005) nutzen. Im [Schnellstart](quickstarts-sdk/image-analysis-client-library.md) erfahren Sie mehr zu den ersten Schritten.
 
 Diese Dokumentation enthält die folgenden Arten von Artikeln:
 * In den [Schnellstarts](./quickstarts-sdk/image-analysis-client-library.md) finden Sie Schritt-für-Schritt-Anleitungen, mit denen Sie Aufrufe an den Dienst senden können und in kurzer Zeit Ergebnisse erhalten. 
@@ -34,7 +34,7 @@ Diese Dokumentation enthält die folgenden Arten von Artikeln:
 
 ## <a name="image-analysis-features"></a>Funktionen für die Bildanalyse
 
-Sie können Bilder analysieren, um Erkenntnisse zu visuellen Merkmalen und Eigenschaften zu gewinnen. Alle Features in der folgenden Liste werden von der [API für die Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) bereitgestellt. Nutzen Sie einen [Schnellstart](./quickstarts-sdk/image-analysis-client-library.md), um erste Schritte auszuführen.
+Sie können Bilder analysieren, um Erkenntnisse zu visuellen Merkmalen und Eigenschaften zu gewinnen. Alle Features in der folgenden Liste werden von der [API für die Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) bereitgestellt. Nutzen Sie einen [Schnellstart](./quickstarts-sdk/image-analysis-client-library.md), um erste Schritte auszuführen.
 
 
 ### <a name="tag-visual-features"></a>Markieren visueller Merkmale

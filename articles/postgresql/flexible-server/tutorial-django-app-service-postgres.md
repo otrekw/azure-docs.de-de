@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bcc9ca0175e0e03c62c2ce2b91d8ec337756a3cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84fd0c368bcf39af1bae90dc83336ffdb8489768
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92490100"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791515"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Tutorial: Bereitstellen einer Django-App mit App Service und Azure Database for PostgreSQL Flexible Server (Vorschau)
 
@@ -105,7 +105,7 @@ In diesem Abschnitt erstellen Sie einen App-Host in der App Service-App, verbin
 
 Vergewissern Sie sich im Terminal, dass Sie sich am Repositorystamm (`djangoapp`) mit dem App-Code befinden.
 
-Erstellen Sie mithilfe des Befehls [`az webapp up`](/cli/azure/webapp#az-webapp-up) eine App Service-App (den Hostprozess):
+Erstellen Sie mithilfe des Befehls [`az webapp up`](/cli/azure/webapp#az_webapp_up) eine App Service-App (den Hostprozess):
 
 ```azurecli
 
@@ -129,7 +129,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 - Aktivieren der Standardprotokollierung für die App (sofern noch nicht aktiviert)
 - Hochladen des Repositorys per ZIP-Bereitstellung mit aktivierter Buildautomatisierung
 - Mit dem Befehl **az webapp vnet-integration** wird die Web-App im gleichen virtuellen Netzwerk wie der Postgres-Server hinzugefügt.
-- Vom App-Code werden Datenbankinformationen in einer Reihe von Umgebungsvariablen erwartet. Mithilfe des Befehls [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) werden App-Einstellungen erstellt, um Umgebungsvariablen in App Service festzulegen.
+- Vom App-Code werden Datenbankinformationen in einer Reihe von Umgebungsvariablen erwartet. Mithilfe des Befehls [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) werden App-Einstellungen erstellt, um Umgebungsvariablen in App Service festzulegen.
 
 > [!TIP]
 > Von vielen Azure CLI-Befehlen werden allgemeine Parameter wie etwa der Name der Ressourcengruppe und der App Service-Plan in der Datei *.azure/config* zwischengespeichert. Daher müssen bei späteren Befehlen nicht noch mal die gleichen Parameter angegeben werden. Wenn Sie die App also beispielsweise erneut bereitstellen möchten, nachdem Sie Änderungen vorgenommen haben, können Sie `az webapp up` einfach ohne Parameter erneut ausführen.
