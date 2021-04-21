@@ -2,14 +2,14 @@
 title: Erstellen eines Dashboards im Azure-Portal mithilfe der Azure CLI
 description: 'Schnellstart: Hier erfahren Sie, wie Sie mithilfe der Azure CLI ein Dashboard im Azure-Portal erstellen. Ein Dashboard bietet eine fokussierte und strukturierte Ansicht Ihrer Cloudressourcen.'
 ms.topic: quickstart
-ms.custom: devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d951c692c7d3c282ae68c5f9b53e9cda5407df10
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104613210"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481020"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Schnellstart: Erstellen eines Dashboards im Azure-Portal mithilfe der Azure CLI
 

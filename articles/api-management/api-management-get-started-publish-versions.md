@@ -3,16 +3,16 @@ title: 'Tutorial: Veröffentlichen von Versionen Ihrer API mithilfe von Azure AP
 description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie in API Management mehrere API-Versionen veröffentlichen.
 author: vladvino
 ms.service: api-management
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: dc3d3b4658bd9a26363b6d41377d448059e30c0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5930979258372e4269c4d453ffbc5e0d46258088
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889670"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483608"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Tutorial: Veröffentlichen mehrerer Versionen Ihrer API 
 

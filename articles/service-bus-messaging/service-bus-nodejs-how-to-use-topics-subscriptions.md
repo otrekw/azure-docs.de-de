@@ -2,17 +2,19 @@
 title: Verwenden der Vorschauversion des JavaScript-Pakets „azure/service-bus“ mit Themen und Abonnements
 description: Enthält eine Beschreibung des JavaScript-Programms, in dem die aktuelle Vorschauversion des Pakets @azure/service-bus verwendet wird, um Nachrichten an ein Service Bus-Thema zu senden und Nachrichten eines Abonnements für das Thema zu empfangen.
 author: spelluru
-ms.devlang: nodejs
-ms.topic: quickstart
-ms.date: 11/09/2020
 ms.author: spelluru
-ms.custom: devx-track-js
-ms.openlocfilehash: a1afe4207ce3833f3bcb55bc7bc2e8e27f393f63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/09/2020
+ms.topic: quickstart
+ms.devlang: nodejs
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: 59f1bb29099f2b921e687ca9de46365bc34f1b91
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98179995"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537247"
 ---
 # <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>Schnellstart: Service Bus-Themen und -Abonnements mit Node.js und dem Paket „azure/service-bus“ (Vorschauversion)
 In diesem Tutorial wird beschrieben, wie Sie das Paket [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) in einem JavaScript-Programm verwenden, um Nachrichten an ein Service Bus-Thema zu senden und Nachrichten von einem Service Bus-Abonnement für das Thema zu empfangen.

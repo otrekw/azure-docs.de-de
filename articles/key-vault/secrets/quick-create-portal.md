@@ -3,7 +3,6 @@ title: 'Azure-Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimn
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals ein Geheimnis in Azure Key Vault festlegen und das Geheimnis daraus abrufen.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 904c00c26171854a32234d7b6ba5cac81ac43e5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba5b375f75d2655045e62583679839c8dd2a5720
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936667"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752442"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
@@ -82,7 +81,7 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und ein Geheimnis darin gespeichert. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
-- Lesen Sie [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md).
+- Lesen Sie [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-overview.md).
 - Weitere Informationen finden Sie unter [Verwenden von Key Vault mit App Service-Web-App](../general/tutorial-net-create-vault-azure-web-app.md).
 - Weitere Informationen finden Sie unter [Verwenden von Key Vault mit einer auf einer VM bereitgestellten Anwendung](../general/tutorial-net-virtual-machine.md).
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)

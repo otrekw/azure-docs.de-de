@@ -4,12 +4,12 @@ description: Erstellen Sie eine serverlose Python-Funktions-App, und binden Sie 
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 00bf0ecc9db3cf369fd75b427dcfba686aed0ed5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0037cea24b1989c4f7a4d2ddd6bf3f8f7e812b3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98035120"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762279"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Einbinden einer Dateifreigabe in eine Python-Funktions-App mithilfe der Azure CLI
 
@@ -38,13 +38,13 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Erstellt ein Azure Storage-Konto. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktionen-App. |
-| [az storage share create](/cli/azure/storage/share#az-storage-share-create) | Erstellt eine Azure Files-Freigabe im Speicherkonto. | 
-| [az storage directory create](/cli/azure/storage/directory#az-storage-directory-create) | Erstellt ein Verzeichnis in der Freigabe. |
-| [az webapp config storage-account add](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) | Bindet die Freigabe in die Funktions-App ein. |
-| [az webapp config storage-account list](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-list) | Zeigt die in die Funktions-App eingebundenen Dateifreigaben an. | 
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Erstellt ein Azure Storage-Konto. |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Erstellt eine Funktionen-App. |
+| [az storage share create](/cli/azure/storage/share#az_storage_share_create) | Erstellt eine Azure Files-Freigabe im Speicherkonto. | 
+| [az storage directory create](/cli/azure/storage/directory#az_storage_directory_create) | Erstellt ein Verzeichnis in der Freigabe. |
+| [az webapp config storage-account add](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) | Bindet die Freigabe in die Funktions-App ein. |
+| [az webapp config storage-account list](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_list) | Zeigt die in die Funktions-App eingebundenen Dateifreigaben an. | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

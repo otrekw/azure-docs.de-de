@@ -3,17 +3,19 @@ title: Verwenden von Azure Service Bus-Themen und -Abonnements mit dem Python-Pa
 description: In diesem Artikel wird veranschaulicht, wie Sie Python zum Senden von Nachrichten an ein Thema und Empfangen von Nachrichten vom Abonnement verwenden.
 documentationcenter: python
 author: spelluru
-ms.devlang: python
-ms.topic: quickstart
-ms.date: 11/18/2020
 ms.author: spelluru
-ms.custom: devx-track-python
-ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/18/2020
+ms.topic: quickstart
+ms.devlang: python
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 49e80e277c6df5372341293861d5bda0580f3e8c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98630046"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537156"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Senden von Nachrichten an ein Azure Service Bus-Thema und Empfangen von Nachrichten von Abonnements für das Thema (Python)
 In diesem Artikel wird veranschaulicht, wie Sie Python zum Senden von Nachrichten an ein Service Bus-Thema und Empfangen von Nachrichten von einem Abonnement für das Thema verwenden. 
