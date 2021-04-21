@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 363278e0b9969dad652dd00debe4ffc0138e9a97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4054d19ccf4d136e30896bc066e51c92a4a4ad9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87503785"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783465"
 ---
 # <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>Wiederherstellen eines früheren Zustands einer Einzeldatenbank in Azure SQL-Datenbank mit der CLI
 
@@ -52,9 +52,9 @@ az group delete --name $resource
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Get-Help | BESCHREIBUNG |
+| Get-Help | Beschreibung |
 |---|---|
-| [az sql db restore](/cli/azure/sql/db#az-sql-db-restore) | Befehl zum Wiederherstellen einer Datenbank |
+| [az sql db restore](/cli/azure/sql/db#az_sql_db_restore) | Befehl zum Wiederherstellen einer Datenbank |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

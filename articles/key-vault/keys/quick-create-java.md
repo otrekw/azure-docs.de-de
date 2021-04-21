@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 124e56fad35be0f3ac5b08ee9dd66454b9d077c5
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 75cb7b6c9225e8579561f980df10da8994257133
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374691"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777183"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für Java
 Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-Schlüsselclientbibliothek für Java. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
@@ -176,7 +176,7 @@ Nachdem Ihre Anwendung authentifiziert wurde, können Sie in Ihrem Schlüsseltre
 keyClient.createKey(keyName, KeyType.RSA);
 ```
 
-Mithilfe des Befehls [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) können Sie sich vergewissern, dass der Schlüssel festgelegt wurde:
+Mithilfe des Befehls [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) können Sie sich vergewissern, dass der Schlüssel festgelegt wurde:
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
@@ -201,7 +201,7 @@ SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
 deletionPoller.waitForCompletion();
 ```
 
-Mithilfe des Befehls [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) können Sie sich vergewissern, dass der Schlüssel gelöscht wurde:
+Mithilfe des Befehls [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) können Sie sich vergewissern, dass der Schlüssel gelöscht wurde:
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
@@ -271,4 +271,4 @@ In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt sowie 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - [Azure Key Vault-Sicherheitsübersicht](../general/security-overview.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-overview.md)

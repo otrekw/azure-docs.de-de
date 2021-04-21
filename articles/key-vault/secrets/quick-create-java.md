@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: f1a502722156bc010dab917afdbd1d49ae93681a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b45bb353ae32f1037fde7dc5d518472089edf12f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375983"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766333"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Schnellstart: Azure Key Vault-Geheimnisclientbibliothek für Java
 Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-Geheimnisclientbibliothek für Java. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
@@ -175,7 +175,7 @@ Nachdem Ihre Anwendung authentifiziert wurde, können Sie Ihrem Schlüsseltresor
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-Mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) können Sie sich vergewissern, dass das Geheimnis festgelegt wurde:
+Mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show) können Sie sich vergewissern, dass das Geheimnis festgelegt wurde:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
@@ -200,7 +200,7 @@ SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(
 deletionPoller.waitForCompletion();
 ```
 
-Mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) können Sie sich vergewissern, dass das Geheimnis gelöscht wurde:
+Mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show) können Sie sich vergewissern, dass das Geheimnis gelöscht wurde:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
@@ -281,4 +281,4 @@ In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt sowie 
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-overview.md)

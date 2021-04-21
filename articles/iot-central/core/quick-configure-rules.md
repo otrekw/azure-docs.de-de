@@ -8,16 +8,14 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 90fc1385afb2ef921828465ba030674281e96ebf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f65614de97e8ff6eed732e624ae30c3f2b70bd60
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833846"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589005"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Schnellstart: Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central
-
-*Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
 
 In dieser Schnellstartanleitung erstellen Sie eine Regel, durch die eine E-Mail gesendet wird, wenn die von einem Gerätesensor gemeldete Luftfeuchtigkeit 55 Prozent übersteigt.
 
@@ -70,10 +68,6 @@ Die Regel wird kurz nach dem Speichern aktiv. Wenn die in der Regel definierten 
 
 > [!NOTE]
 > Deaktivieren Sie die Regel nach Abschluss der Tests, um keine weiteren Warnungen in Ihrem Posteingang zu erhalten.
-
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

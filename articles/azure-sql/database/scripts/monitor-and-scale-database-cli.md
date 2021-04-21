@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 0a72bea08052e5cd17502a21a98b41cb5582a3b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd982ab6dc66674e705f080511282bcfeb909872
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493626"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787173"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Verwenden von Azure CLI zum Überwachen und Skalieren einer einzelnen Datenbank in Azure SQL-Datenbank
 
@@ -43,7 +43,7 @@ az account set -s $subscription # ...or use 'az login'
 [!code-azurecli-interactive[main](../../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale a database in Azure SQL Database")]
 
 > [!TIP]
-> Verwenden Sie [az sql db op list](/cli/azure/sql/db/op?#az-sql-db-op-list), um eine Liste von in der Datenbank ausgeführten Vorgängen zu erhalten, und verwenden Sie [az sql db op cancel](/cli/azure/sql/db/op#az-sql-db-op-cancel), um einen Aktualisierungsvorgang in der Datenbank abzubrechen.
+> Verwenden Sie [az sql db op list](/cli/azure/sql/db/op?#az_sql_db_op_list), um eine Liste von in der Datenbank ausgeführten Vorgängen zu erhalten, und verwenden Sie [az sql db op cancel](/cli/azure/sql/db/op#az_sql_db_op_cancel), um einen Aktualisierungsvorgang in der Datenbank abzubrechen.
 
 ### <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -60,7 +60,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Skript | BESCHREIBUNG |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Serverbefehle |
-| [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | Zeigt die Größennutzungsinformationen für eine Datenbank an. |
+| [az sql db show-usage](/cli/azure/sql#az_sql_show_usage) | Zeigt die Größennutzungsinformationen für eine Datenbank an. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
