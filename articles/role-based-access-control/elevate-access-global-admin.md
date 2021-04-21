@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: efc3bfef7c182ea005ac17a59793ac8f6484a424
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 37d50c030a2b426cb3e9af57afb899b7fab68388
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042010"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778469"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -163,7 +163,7 @@ Führen Sie die folgenden grundlegenden Schritte aus, um die Zugriffsrechte für
 
 ### <a name="list-role-assignment-at-root-scope-"></a>Auflisten der Rollenzuweisung im Stammbereich (/)
 
-Verwenden Sie den Befehl [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) aufzulisten.
+Verwenden Sie den Befehl [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) aufzulisten.
 
 ```azurecli
 az role assignment list --role "User Access Administrator" --scope "/"
@@ -193,7 +193,7 @@ Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzu
 
 1. Melden Sie sich als Benutzer an, der erhöhte Zugriffsrechte entfernen kann. Hierbei kann es sich um den Benutzer, der den Zugriff erhöht hat, oder einen anderen globalen Administrator handeln, der über erhöhte Zugriffsrechte im Stammbereich verfügt.
 
-1. Verwenden Sie den Befehl [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ zu entfernen.
+1. Verwenden Sie den Befehl [az role assignment delete](/cli/azure/role/assignment#az_role_assignment_delete), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ zu entfernen.
 
     ```azurecli
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"

@@ -7,19 +7,19 @@ ms.service: app-service
 ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: 0008fecf86fdeb1b74a508559ee1f857b3aaa32b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 4f843c5d35bee5311168073e42b620686b1d9adf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102244945"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779445"
 ---
 <!-- Please keep this file set to PHP 7.2, as that's the highest PHP version Laravel supports (as shown in the PHP+MySQL tutorial) -->
 
 Erstellen Sie eine [Web-App](../articles/app-service/overview.md#app-service-on-linux) im App Service-Plan `myAppServicePlan`. 
 
-In Cloud Shell können Sie den Befehl [`az webapp create`](/cli/azure/webapp#az-webapp-create) verwenden. Ersetzen Sie im folgenden Beispiel `<app-name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Die Runtime ist auf `PHP|7.2` festgelegt. Führen Sie [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) aus, um alle unterstützten Laufzeiten anzuzeigen. 
+In Cloud Shell können Sie den Befehl [`az webapp create`](/cli/azure/webapp#az_webapp_create) verwenden. Ersetzen Sie im folgenden Beispiel `<app-name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Die Runtime ist auf `PHP|7.2` festgelegt. Führen Sie [`az webapp list-runtimes --linux`](/cli/azure/webapp#az_webapp_list_runtimes) aus, um alle unterstützten Laufzeiten anzuzeigen. 
 
 ```azurecli-interactive
 # Bash

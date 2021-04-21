@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihren Cluster mithilfe der 
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 9caf56545efc6aefae525e28614d39705c00c21e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f02b91f73320786716e356639d8134280325dc19
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742567"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775995"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -121,7 +121,7 @@ Im oben stehenden Beispiel wird die automatische Clusterskalierung für den einz
 
 Sie können auch differenziertere Details der Clusterautoskalierung konfigurieren, indem Sie die Standardwerte im clusterweiten Autoskalierungsprofil ändern. Ein Ereignis zum zentralen Herunterskalieren tritt z. B. ein, wenn die Knoten nach 10 Minuten nicht ausgelastet sind. Wenn Sie Workloads hatten, die alle 15 Minuten ausgeführt wurden, möchten Sie vielleicht das Autoskalierungsprofil so ändern, dass es nach 15 oder 20 Minuten nicht ausgelastete Knoten herunterskaliert. Wenn Sie die Clusterautoskalierung aktivieren, wird ein Standardprofil verwendet, sofern Sie keine anderen Einstellungen angeben. Das Profil für die Clusterautoskalierung verfügt über die folgenden Einstellungen, die Sie aktualisieren können:
 
-| Einstellung                          | BESCHREIBUNG                                                                              | Standardwert |
+| Einstellung                          | Beschreibung                                                                              | Standardwert |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | scan-interval                    | Häufigkeit der Neubewertung von Clustern für das Hoch- oder Herunterskalieren                                    | 10 Sekunden    |
 | scale-down-delay-after-add       | Wie lange nach dem Hochskalieren die Auswertung für das Herunterskalieren fortgesetzt wird                               | 10 Minuten    |
@@ -291,15 +291,15 @@ In diesem Artikel wurde gezeigt, wie Sie die Anzahl von AKS-Knoten automatisch s
 [aks-view-master-logs]: ./view-control-plane-logs.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-update]: /cli/azure/aks#az-aks-update
-[az-aks-scale]: /cli/azure/aks#az-aks-scale
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-update]: /cli/azure/aks#az_aks_update
+[az-aks-scale]: /cli/azure/aks#az_aks_scale
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 
 <!-- LINKS - external -->
 [az-aks-update-preview]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

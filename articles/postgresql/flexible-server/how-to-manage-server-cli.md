@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 278f8f816909a7e365d7e45d04c5169950e79a65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a7e16bf85293a412baf5015af825377438ebb7b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493677"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778497"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-by-using-the-azure-cli"></a>Verwalten von Azure Database for PostgreSQL – flexibler Server mithilfe der Azure CLI
 
@@ -26,13 +26,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie müssen Version 2.0 oder höher der Azure CLI ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
-Melden Sie sich mithilfe des Befehls [az login](/cli/azure/reference-index#az-login) bei Ihrem Konto an. 
+Melden Sie sich mithilfe des Befehls [az login](/cli/azure/reference-index#az_login) bei Ihrem Konto an. 
 
 ```azurecli-interactive
 az login
 ```
 
-Wählen Sie mit dem Befehl [az account set](/cli/azure/account) Ihr Abonnement aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Diesen verwenden Sie im folgenden Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, in dem die Ressource fakturiert werden soll. Führen Sie den Befehl [az account list](/cli/azure/account#az-account-list) aus, um eine Liste Ihrer sämtlichen Abonnements zu erhalten.
+Wählen Sie mit dem Befehl [az account set](/cli/azure/account) Ihr Abonnement aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Diesen verwenden Sie im folgenden Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, in dem die Ressource fakturiert werden soll. Führen Sie den Befehl [az account list](/cli/azure/account#az_account_list) aus, um eine Liste Ihrer sämtlichen Abonnements zu erhalten.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -131,7 +131,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>Löschen eines Servers
 
-Um Azure Database for PostgreSQL – flexibler Server zu löschen, führen Sie den Befehl [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) aus.
+Um Azure Database for PostgreSQL – flexibler Server zu löschen, führen Sie den Befehl [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az_postgresql_flexible_server_delete) aus.
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

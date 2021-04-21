@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: c3e5ca30b7f0f00b6d647f5fdaeb772900996adc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f844b5b413cda2cb16f9701970857be65fe6d91d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720238"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777615"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Zugreifen auf Azure Storage (Vorschau) als Netzwerkfreigabe von einem Container in App Service
 
@@ -80,7 +80,7 @@ Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an einen Linux-Container 
 
 Nachdem Sie Ihr [Azure Storage-Konto sowie die zugehörige Dateifreigabe und das Verzeichnis](#prerequisites) erstellt haben, können Sie Ihre App jetzt mit Azure Storage konfigurieren.
 
-Um eine Azure Files-Dateifreigabe in einem Verzeichnis in Ihrer App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add). Der Speichertyp muss „AzureFiles“ sein.
+Um eine Azure Files-Dateifreigabe in einem Verzeichnis in Ihrer App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add). Der Speichertyp muss „AzureFiles“ sein.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
@@ -94,7 +94,7 @@ Gehen Sie ebenso für alle anderen Verzeichnisse vor, die mit einer Azure Files-
 
 Nachdem Sie Ihr [Azure Storage-Konto sowie die zugehörige Dateifreigabe und das Verzeichnis](#prerequisites) erstellt haben, können Sie Ihre App jetzt mit Azure Storage konfigurieren.
 
-Um ein Speicherkonto in einem Verzeichnis in Ihre App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add). Als Speichertyp kann „AzureBlob“ oder „AzureFiles“ verwendet werden. In diesem Beispiel wird AzureFiles verwendet. Die Einstellung für den Einbindungspfad entspricht dem Ordner innerhalb des Containers, den Sie in Azure Storage einbinden möchten. Wenn Sie diese Einstellung auf „/“ festlegen, wird der gesamte Container in Azure Storage eingebunden.
+Um ein Speicherkonto in einem Verzeichnis in Ihre App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add). Als Speichertyp kann „AzureBlob“ oder „AzureFiles“ verwendet werden. In diesem Beispiel wird AzureFiles verwendet. Die Einstellung für den Einbindungspfad entspricht dem Ordner innerhalb des Containers, den Sie in Azure Storage einbinden möchten. Wenn Sie diese Einstellung auf „/“ festlegen, wird der gesamte Container in Azure Storage eingebunden.
 
 
 > [!CAUTION]

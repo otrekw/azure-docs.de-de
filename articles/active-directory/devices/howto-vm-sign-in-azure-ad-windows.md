@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee392666a6c6807497eeac2a2291dac915c4e136
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 418741c10dfe5f0678d7771d046781697512bafe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644305"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776499"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -104,8 +104,8 @@ Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritt
 
 Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.31 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie „az --version“ aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie im Artikel [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
-1. Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
-1. Erstellen Sie mit [az vm create](/cli/azure/vm#az-vm-create) einen virtuellen Computer unter Verwendung einer unterstützten Distribution in einer unterstützten Region. 
+1. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. 
+1. Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer unter Verwendung einer unterstützten Distribution in einer unterstützten Region. 
 1. Installieren Sie die VM-Erweiterung für die Azure AD-Anmeldung. 
 
 Im folgenden Beispiel wird der virtuelle Computer „myVM“, auf dem Win2019Datacenter ausgeführt wird, in der Ressourcengruppe „myResourceGroup“ in der Region „southcentralus“ bereitgestellt. In den folgenden Beispielen können Sie den Namen Ihrer Ressourcengruppe und Ihres virtuellen Computers nach Bedarf angeben.
@@ -127,7 +127,7 @@ az vm create \
 
 Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauert einige Minuten.
 
-Installieren Sie schließlich die VM-Erweiterung für die Azure AD-Anmeldung, um die Azure AD-Anmeldung für den virtuellen Windows-Computer zu aktivieren. VM-Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set), um die Erweiterung AADLoginForWindows auf dem virtuellen Computer `myVM` in der Ressourcengruppe `myResourceGroup` zu installieren:
+Installieren Sie schließlich die VM-Erweiterung für die Azure AD-Anmeldung, um die Azure AD-Anmeldung für den virtuellen Windows-Computer zu aktivieren. VM-Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set), um die Erweiterung AADLoginForWindows auf dem virtuellen Computer `myVM` in der Ressourcengruppe `myResourceGroup` zu installieren:
 
 > [!NOTE]
 > Sie können die Erweiterung AADLoginForWindows auf einem vorhandenen virtuellen Computer unter Windows Server 2019 oder Windows 10 1809 und höher installieren, um ihn für die Azure AD-Authentifizierung zu aktivieren. Ein Beispiel für die Azure-Befehlszeilenschnittstelle ist nachstehend dargestellt.
@@ -177,7 +177,7 @@ Nach einigen Augenblicken wird dem Sicherheitsprinzipal die Rolle für den Berei
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Verwenden von Azure Cloud Shell
 
-Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle „VM-Administratoranmeldung“ für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az-account-show) abgerufen. Der Bereich wird mit [az vm show](/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale Azure RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung](../../virtual-machines/linux/login-using-aad.md).
+Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) verwendet, um dem aktuellen Azure-Benutzer die Rolle „VM-Administratoranmeldung“ für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az_account_show) abgerufen. Der Bereich wird mit [az vm show](/cli/azure/vm#az_vm_show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale Azure RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung](../../virtual-machines/linux/login-using-aad.md).
 
 ```   AzureCLI
 $username=$(az account show --query user.name --output tsv)
@@ -190,7 +190,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Wenn die AAD-Domäne und die Domäne des Benutzeranmeldenamens nicht übereinstimmen, müssen Sie die Objekt-ID des Benutzerkontos mit `--assignee-object-id` angeben. Die Angabe des Benutzernamens für `--assignee` genügt nicht. Sie können die Objekt-ID für Ihr Benutzerkonto mithilfe der [Azure Active Directory-Benutzerliste (az as user list)](/cli/azure/ad/user#az-ad-user-list) erhalten.
+> Wenn die AAD-Domäne und die Domäne des Benutzeranmeldenamens nicht übereinstimmen, müssen Sie die Objekt-ID des Benutzerkontos mit `--assignee-object-id` angeben. Die Angabe des Benutzernamens für `--assignee` genügt nicht. Sie können die Objekt-ID für Ihr Benutzerkonto mithilfe der [Azure Active Directory-Benutzerliste (az as user list)](/cli/azure/ad/user#az_ad_user_list) erhalten.
 
 Weitere Informationen zur Verwendung der rollenbasierten Zugriffssteuerung (Azure RBAC) zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen finden Sie in folgenden Artikeln:
 

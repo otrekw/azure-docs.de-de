@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: e60f9010b8fbfb3766aea6b5cffa1e7c001c6eca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7da8062f18d737af9d19df54863bc56c7268910c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106733"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776913"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for MySQL – Flexible Server über die Azure CLI
 
@@ -37,13 +37,13 @@ Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen S
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen sich mit dem Befehl [az login](/cli/azure/reference-index#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **ID**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
+Sie müssen sich mit dem Befehl [az login](/cli/azure/reference-index#az_login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **ID**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
 ```azurecli-interactive
 az login
 ```
 
-Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account#az-account-set) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **ID**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
+Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account#az_account_set) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **ID**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az_account_list), um alle Abonnements abzurufen.
 
 ```azurecli
 az account set --subscription <subscription id>

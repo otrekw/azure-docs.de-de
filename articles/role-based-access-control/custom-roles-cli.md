@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3d05ba65e0d3918f1651c36cd17700ebf74de76
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97369139"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778335"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -41,7 +41,7 @@ Zum Erstellen von benutzerdefinierten Rollen benötigen Sie Folgendes:
 
 ## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen
 
-Zum Auflisten der benutzerdefinierten Rollen, die zur Zuweisung verfügbar sind, verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list). Im folgenden Beispiel werden alle benutzerdefinierten Rollen im aktuellen Abonnement aufgelistet.
+Zum Auflisten der benutzerdefinierten Rollen, die zur Zuweisung verfügbar sind, verwenden Sie [az role definition list](/cli/azure/role/definition#az_role_definition_list). Im folgenden Beispiel werden alle benutzerdefinierten Rollen im aktuellen Abonnement aufgelistet.
 
 ```azurecli
 az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -66,7 +66,7 @@ az role definition list --custom-role-only true --output json --query '[].{roleN
 
 ## <a name="list-a-custom-role-definition"></a>Auflisten einer Definition einer benutzerdefinierten Rolle
 
-Zum Auflisten der Definition einer benutzerdefinierten Rolle verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list). Dies ist derselbe Befehl, den Sie für eine integrierte Rolle verwenden würden.
+Zum Auflisten der Definition einer benutzerdefinierten Rolle verwenden Sie [az role definition list](/cli/azure/role/definition#az_role_definition_list). Dies ist derselbe Befehl, den Sie für eine integrierte Rolle verwenden würden.
 
 ```azurecli
 az role definition list --name {roleName}
@@ -140,7 +140,7 @@ az role definition list --name "Virtual Machine Operator" --output json --query 
 
 ## <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
 
-Zum Erstellen einer benutzerdefinierten Rolle verwenden Sie [az role definition create](/cli/azure/role/definition#az-role-definition-create). Bei der Rollendefinition kann es sich um eine JSON-Beschreibung oder einen Pfad zu einer Datei mit einer JSON-Beschreibung handeln.
+Zum Erstellen einer benutzerdefinierten Rolle verwenden Sie [az role definition create](/cli/azure/role/definition#az_role_definition_create). Bei der Rollendefinition kann es sich um eine JSON-Beschreibung oder einen Pfad zu einer Datei mit einer JSON-Beschreibung handeln.
 
 ```azurecli
 az role definition create --role-definition {roleDefinition}
@@ -183,7 +183,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 
 ## <a name="update-a-custom-role"></a>Aktualisieren einer benutzerdefinierten Rolle
 
-Zum Aktualisieren einer benutzerdefinierten Rolle verwenden Sie zuerst [az role definition list](/cli/azure/role/definition#az-role-definition-list), um die Rollendefinition abzurufen. Nehmen Sie zweitens die gewünschten Änderungen an der Rollendefinitionsdatei vor. Verwenden Sie zum Schluss [az role definition update](/cli/azure/role/definition#az-role-definition-update), um die aktualisierte Rollendefinition zu speichern.
+Zum Aktualisieren einer benutzerdefinierten Rolle verwenden Sie zuerst [az role definition list](/cli/azure/role/definition#az_role_definition_list), um die Rollendefinition abzurufen. Nehmen Sie zweitens die gewünschten Änderungen an der Rollendefinitionsdatei vor. Verwenden Sie zum Schluss [az role definition update](/cli/azure/role/definition#az_role_definition_update), um die aktualisierte Rollendefinition zu speichern.
 
 ```azurecli
 az role definition update --role-definition {roleDefinition}
@@ -228,7 +228,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 
 ## <a name="delete-a-custom-role"></a>Löschen einer benutzerdefinierten Rolle
 
-Zum Löschen einer benutzerdefinierten Rolle verwenden Sie [az role definition delete](/cli/azure/role/definition#az-role-definition-delete). Zum Angeben der zu löschenden Rolle verwenden Sie den Rollennamen oder die Rollen-ID. Zum Ermitteln der Rollen-ID verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list).
+Zum Löschen einer benutzerdefinierten Rolle verwenden Sie [az role definition delete](/cli/azure/role/definition#az_role_definition_delete). Zum Angeben der zu löschenden Rolle verwenden Sie den Rollennamen oder die Rollen-ID. Zum Ermitteln der Rollen-ID verwenden Sie [az role definition list](/cli/azure/role/definition#az_role_definition_list).
 
 ```azurecli
 az role definition delete --name {roleNameOrId}

@@ -7,13 +7,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/30/2020
-ms.openlocfilehash: f16f3ec445af777c3bde1cb2ab0735df4b6614f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 12724175ebb9e23efa431169c01a804cd193cdd5
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91542239"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502588"
 ---
 # <a name="machine-learning-entity"></a>Machine Learning-Entität
 
@@ -346,6 +346,6 @@ Diese Entität ist in der V2-Vorhersageruntime nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich mithilfe von [Tutorials](tutorial-machine-learned-entity.md), [Konzepterläuterungen](luis-concept-entity-types.md#design-entities-for-decomposition) und [ausführlichen Anleitungen](luis-how-to-add-entities.md#create-a-machine-learned-entity) über Machine Learning-Entitäten.
+Informieren Sie sich mithilfe von [Tutorials](tutorial-machine-learned-entity.md), [Konzepterläuterungen](luis-concept-entity-types.md#machine-learned-ml-entity) und [ausführlichen Anleitungen](luis-how-to-add-entities.md#create-a-machine-learned-entity) über Machine Learning-Entitäten.
 
 Erfahren Sie mehr über die Entität vom Typ [List](reference-entity-list.md) und die Entität vom Typ [Regular Expression](reference-entity-regular-expression.md).

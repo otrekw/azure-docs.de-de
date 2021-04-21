@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: a01d5f48ca3b10f4c49ee621398ae87392dc34a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d8173e8b79e8696c2a3e4a7ea722b2947b1aee6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493457"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776788"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
@@ -90,7 +90,7 @@ Verwenden Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az
      ```
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-the-azure-cli"></a>Aktivieren der Verschlüsselung auf vorhandenen oder ausgeführten VMs mit der Azure-Befehlszeilenschnittstelle
-Verwenden Sie den Befehl [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable), um die Verschlüsselung auf einem ausgeführten virtuellen IaaS-Computer in Azure zu aktivieren.
+Verwenden Sie den Befehl [az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_enable), um die Verschlüsselung auf einem ausgeführten virtuellen IaaS-Computer in Azure zu aktivieren.
 
 - **Verschlüsseln eines ausgeführten virtuellen Computers:**
 
@@ -107,13 +107,13 @@ Verwenden Sie den Befehl [az vm encryption enable](/cli/azure/vm/encryption#az-v
      >[!NOTE]
      > Die Syntax für den Wert des Parameters „disk-encryption-keyvault“ ist die vollständige Bezeichnerzeichenfolge: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] </br> Die Syntax für den Wert des Parameters „key-encryption-key“ ist der vollständige URI für den KEK, z.B.: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
 
-- **Überprüfen der Datenträgerverschlüsselung:** Verwenden Sie den Befehl [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show), um den Verschlüsselungsstatus eines virtuellen IaaS-Computers zu überprüfen. 
+- **Überprüfen der Datenträgerverschlüsselung:** Verwenden Sie den Befehl [az vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show), um den Verschlüsselungsstatus eines virtuellen IaaS-Computers zu überprüfen. 
 
      ```azurecli-interactive
      az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
 
-- **Deaktivieren der Verschlüsselung:** Verwenden Sie den Befehl [az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable), um die Verschlüsselung zu deaktivieren. Das Deaktivieren der Datenträgerverschlüsselung auf einem virtuellen Windows-Computer funktioniert nicht wie erwartet, wenn sowohl das Betriebssystem als auch Datenträger verschlüsselt wurden. Deaktivieren Sie stattdessen die Verschlüsselung auf allen Datenträgern.
+- **Deaktivieren der Verschlüsselung:** Verwenden Sie den Befehl [az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable), um die Verschlüsselung zu deaktivieren. Das Deaktivieren der Datenträgerverschlüsselung auf einem virtuellen Windows-Computer funktioniert nicht wie erwartet, wenn sowohl das Betriebssystem als auch Datenträger verschlüsselt wurden. Deaktivieren Sie stattdessen die Verschlüsselung auf allen Datenträgern.
 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
@@ -267,6 +267,7 @@ Die folgenden Szenarios, Features und Technologien werden von Azure Disk Encrypt
 - Anwenden von ADE auf eine VM, die mit [serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md) (SSE + CMK) verschlüsselte Datenträger aufweist. Das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM ist ebenfalls ein nicht unterstütztes Szenario.
 - Migrieren einer VM, die mit ADE verschlüsselt ist oder **jemals** mit ADE verschlüsselt war, zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md).
 - Verschlüsseln von VMs in Failoverclustern.
+- Verschlüsselung von [Azure Ultra-Datenträgern](../disks-enable-ultra-ssd.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

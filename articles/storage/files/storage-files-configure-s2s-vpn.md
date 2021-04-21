@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0fa3fb8040fd79d68f9260ab520d3b6823ab363d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a08ca4142876a5a92adbe8b1c3fce9ec7953019
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629290"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778011"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Konfigurieren eines Site-to-Site-VPN zur Verwendung mit Azure Files
 Sie können ein S2S-VPN (Site-to-Site) verwenden, um Ihre Azure-Dateifreigaben aus Ihrem lokalen Netzwerk über SMB einzubinden, ohne Port 445 zu öffnen. Sie können ein Site-to-Site-VPN mithilfe des [Azure VPN Gateways](../../vpn-gateway/vpn-gateway-about-vpngateways.md) einrichten, einer Azure-Ressource, die VPN-Dienste anbietet, und die in einer Ressourcengruppe zusammen mit Speicherkonten oder anderen Azure-Ressourcen bereitgestellt wird.
@@ -21,7 +21,7 @@ Sie können ein S2S-VPN (Site-to-Site) verwenden, um Ihre Azure-Dateifreigaben a
 
 Es wird dringend empfohlen, vor der Lektüre des vorliegenden Artikels den Artikel [Azure Files – Überlegungen zum Netzwerkbetrieb](storage-files-networking-overview.md) zu lesen, der eine umfassende Erläuterung der für Azure Files verfügbaren Netzwerkoptionen enthält.
 
-Der Artikel beschreibt die Schritte zur Konfiguration eines Site-to-Site-VPN, um Azure-Dateifreigaben direkt lokal einzubinden. Wenn Sie den Synchronisierungsdatenverkehr für die Azure-Dateisynchronisierung über ein Site-to-Site-VPN leiten möchten, lesen Sie den Artikel [Konfigurieren der Proxy- und Firewalleinstellungen der Dateisynchronisierung](storage-sync-files-firewall-and-proxy.md).
+Der Artikel beschreibt die Schritte zur Konfiguration eines Site-to-Site-VPN, um Azure-Dateifreigaben direkt lokal einzubinden. Wenn Sie den Synchronisierungsdatenverkehr für die Azure-Dateisynchronisierung über ein Site-to-Site-VPN leiten möchten, lesen Sie den Artikel [Konfigurieren der Proxy- und Firewalleinstellungen der Dateisynchronisierung](../file-sync/file-sync-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Eine Azure-Dateifreigabe, die Sie lokal einbinden möchten. Azure-Dateifreigaben werden in Speicherkonten bereitgestellt. Hierbei handelt es sich um Verwaltungskonstrukte, die einen gemeinsam genutzten Pool mit Speicherplatz darstellen, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Weitere Informationen zum Bereitstellen von Azure-Dateifreigaben und Speicherkonten finden Sie unter [Erstellen einer Azure-Dateifreigabe](storage-how-to-create-file-share.md).

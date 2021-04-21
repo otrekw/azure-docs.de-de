@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 878828a40f7a14fe8bb5728ac06585e6aca2eec8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2f301556bd24adb5e4a18f15717374ef26c400b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555481"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777885"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption mit Azure AD (vorheriges Release)
 
 **Beim neuen Release von Azure Disk Encryption muss kein Azure AD-Anwendungsparameter mehr angegeben werden, um die VM-Datenträgerverschlüsselung zu aktivieren. Sie müssen beim neuen Release während des Schritts zum Aktivieren der Verschlüsselung keine Azure AD-Anmeldeinformationen mehr angeben. Alle neuen virtuellen Computer müssen mit dem neuen Release und ohne die Azure AD-Anwendungsparameter verschlüsselt werden. Eine Anleitung zum Aktivieren der VM-Datenträgerverschlüsselung mit dem neuen Release finden Sie unter [Azure Disk Encryption](disk-encryption-overview.md). Virtuelle Computer, die bereits mit Azure AD-Anwendungsparametern verschlüsselt wurden, werden weiterhin unterstützt und sollten weiterhin mit der AAD-Syntax gepflegt werden.**
 
-Azure Disk Encryption verwendet Azure Key Vault zum Steuern und Verwalten von Verschlüsselungsschlüsseln und Geheimnissen für die Datenträgerverschlüsselung.  Weitere Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit Azure Key Vault](../../key-vault/general/overview.md) und [Schützen eines Schlüsseltresors](../../key-vault/general/secure-your-key-vault.md). 
+Azure Disk Encryption verwendet Azure Key Vault zum Steuern und Verwalten von Verschlüsselungsschlüsseln und Geheimnissen für die Datenträgerverschlüsselung.  Weitere Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit Azure Key Vault](../../key-vault/general/overview.md) und [Schützen eines Schlüsseltresors](../../key-vault/general/security-overview.md). 
 
 Das Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption mit Azure AD (vorheriges Release) umfasst drei Schritte:
 
@@ -37,7 +37,7 @@ Weitere Informationen zum [Installieren von Tools und Herstellen einer Verbindun
 
 
 ## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors 
-Azure Disk Encryption ist in [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement steuern und verwalten können. Sie können für Azure Disk Encryption einen neuen Schlüsseltresor erstellen oder einen bereits vorhandenen verwenden. Weitere Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit Azure Key Vault](../../key-vault/general/overview.md) und [Schützen eines Schlüsseltresors](../../key-vault/general/secure-your-key-vault.md). Sie können eine Resource Manager-Vorlage, Azure PowerShell oder die Azure CLI verwenden, um einen Schlüsseltresor zu erstellen. 
+Azure Disk Encryption ist in [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement steuern und verwalten können. Sie können für Azure Disk Encryption einen neuen Schlüsseltresor erstellen oder einen bereits vorhandenen verwenden. Weitere Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit Azure Key Vault](../../key-vault/general/overview.md) und [Schützen eines Schlüsseltresors](../../key-vault/general/security-overview.md). Sie können eine Resource Manager-Vorlage, Azure PowerShell oder die Azure CLI verwenden, um einen Schlüsseltresor zu erstellen. 
 
 
 >[!WARNING]
@@ -65,16 +65,16 @@ Sie können mit Azure PowerShell mit dem Cmdlet [New-AzKeyVault](/powershell/mod
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a>Erstellen eines Schlüsseltresors mit der Azure-Befehlszeilenschnittstelle
-Sie können Ihren Schlüsseltresor mit der Azure CLI mit den [az keyvault](/cli/azure/keyvault#commands)-Befehlen verwalten. Verwenden Sie [az keyvault create](/cli/azure/keyvault#az-keyvault-create), um einen Schlüsseltresor zu erstellen.
+Sie können Ihren Schlüsseltresor mit der Azure CLI mit den [az keyvault](/cli/azure/keyvault#commands)-Befehlen verwalten. Verwenden Sie [az keyvault create](/cli/azure/keyvault#az_keyvault_create), um einen Schlüsseltresor zu erstellen.
 
-1. Erstellen Sie ggf. mit [az group create](/cli/azure/group#az-group-create) eine neue Ressourcengruppe. Verwenden Sie [az account list-locations](/cli/azure/account#az-account-list), um Orte aufzulisten. 
+1. Erstellen Sie ggf. mit [az group create](/cli/azure/group#az_group_create) eine neue Ressourcengruppe. Verwenden Sie [az account list-locations](/cli/azure/account#az_account_list), um Orte aufzulisten. 
      
      ```azurecli-interactive
      # To list locations: az account list-locations --output table
      az group create -n "MyKeyVaultResourceGroup" -l "East US"
      ```
 
-3. Erstellen Sie mit [az keyvault create](/cli/azure/keyvault#az-keyvault-create) einen neuen Schlüsseltresor.
+3. Erstellen Sie mit [az keyvault create](/cli/azure/keyvault#az_keyvault_create) einen neuen Schlüsseltresor.
     
      ```azurecli-interactive
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
@@ -150,7 +150,7 @@ Ihre Azure AD-Anwendung benötigt Rechte zum Zugreifen auf die Schlüssel oder g
      ```
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-cli"></a>Festlegen der Zugriffsrichtlinie für den Schlüsseltresor für die Azure AD-App mit der Azure-Befehlszeilenschnittstelle
-Verwenden Sie [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy), um die Zugriffsrichtlinie festzulegen. Weitere Informationen finden Sie unter [Verwalten von Key Vault mit der CLI 2.0](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
+Verwenden Sie [az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy), um die Zugriffsrichtlinie festzulegen. Weitere Informationen finden Sie unter [Verwalten von Key Vault mit der CLI 2.0](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
 
 Erteilen Sie dem über die Azure CLI erstellten Dienstprinzipal Zugriff, damit er Geheimnisse abrufen und Schlüssel mit dem folgenden Befehl packen kann:
 
@@ -196,7 +196,7 @@ Die Azure-Plattform benötigt Zugriff auf die Verschlüsselungsschlüssel oder g
      ```
 
 ### <a name="set-key-vault-advanced-access-policies-using-the-azure-cli"></a>Festlegen der erweiterten Zugriffsrichtlinien für Schlüsseltresore mit der Azure-Befehlszeilenschnittstelle
-Verwenden Sie [az keyvault update](/cli/azure/keyvault#az-keyvault-update), um die Datenträgerverschlüsselung für den Schlüsseltresor zu aktivieren. 
+Verwenden Sie [az keyvault update](/cli/azure/keyvault#az_keyvault_update), um die Datenträgerverschlüsselung für den Schlüsseltresor zu aktivieren. 
 
  - **Aktivieren von Key Vault für die Datenträgerverschlüsselung:** „Enabled-for-disk-encryption“ ist erforderlich. 
 

@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 74422318718e318a00d7bd7ebaf8e4093ef75aa6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9608e3bdaab033d58796a3841e8cd92d7a8a81ef
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629273"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777975"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files
 Sie können eine P2S-VPN-Verbindung (Point-to-Site) verwenden, um Ihre Azure-Dateifreigaben außerhalb von Azure über SMB einzubinden, ohne Port 445 zu öffnen. Eine P2S-VPN-Verbindung ist eine VPN-Verbindung zwischen Azure und einem einzelnen Client. Um eine P2S-VPN-Verbindung mit Azure Files zu verwenden, muss für jeden Client, der eine Verbindung herstellen möchte, eine P2S-VPN-Verbindung konfiguriert werden. Wenn Sie über viele Clients verfügen, die sich über Ihr lokales Netzwerk mit Ihren Azure-Dateifreigaben verbinden müssen, können Sie anstelle einer P2S-Verbindung für jeden Client eine S2S-VPN-Verbindung (Site-to-Site) verwenden. Weitere Informationen finden Sie unter [Konfigurieren eines S2S-VPN (Site-to-Site) zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md).
 
 Es wird dringend empfohlen, vor der Lektüre des vorliegenden Artikels den Artikel [Azure Files – Überlegungen zum Netzwerkbetrieb](storage-files-networking-overview.md) zu lesen, der eine umfassende Erläuterung der für Azure Files verfügbaren Netzwerkoptionen enthält.
 
-Der Artikel beschreibt die Schritte zur Konfiguration eines P2S-VPN unter Linux, um Azure-Dateifreigaben direkt lokal einzubinden. Wenn Sie den Datenverkehr zur Azure-Dateisynchronisierung über ein VPN leiten möchten, lesen Sie den Artikel [Konfigurieren der Proxy- und Firewalleinstellungen der Dateisynchronisierung](storage-sync-files-firewall-and-proxy.md).
+Der Artikel beschreibt die Schritte zur Konfiguration eines P2S-VPN unter Linux, um Azure-Dateifreigaben direkt lokal einzubinden. Wenn Sie den Datenverkehr zur Azure-Dateisynchronisierung über ein VPN leiten möchten, lesen Sie den Artikel [Konfigurieren der Proxy- und Firewalleinstellungen der Dateisynchronisierung](../file-sync/file-sync-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Die neueste Version der Azure CLI. Informationen zum Installieren der Azure CLI finden Sie unter [Installieren der Azure PowerShell CLI](/cli/azure/install-azure-cli) im Abschnitt zu Ihrem Betriebssystem. Wenn Sie lieber mit dem Azure PowerShell-Modul unter Linux arbeiten möchten, können Sie dies tun, die folgenden Anweisungen beziehen sich jedoch auf die Azure CLI.

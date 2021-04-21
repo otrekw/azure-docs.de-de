@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cc64e314a8acb035736df0521987cb78a7297326
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d30571b68ba7e38e9960d1e434cf7844f6be852
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556929"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780099"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Auflisten von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -34,7 +34,7 @@ ms.locfileid: "100556929"
 
 ## <a name="list-role-assignments-for-a-user"></a>Liste von Rollenzuweisungen für einen Benutzer
 
-Zum Auflisten der Rollenzuweisungen für einen bestimmten Benutzer verwenden Sie [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list):
+Zum Auflisten der Rollenzuweisungen für einen bestimmten Benutzer verwenden Sie [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list):
 
 ```azurecli
 az role assignment list --assignee {assignee}
@@ -65,7 +65,7 @@ az role assignment list --all --assignee patlong@contoso.com --output json --que
 
 ## <a name="list-role-assignments-for-a-resource-group"></a>Auflisten von Rollenzuweisungen für eine Ressourcengruppe
 
-Zum Auflisten der Rollenzuweisungen, die für einen Ressourcengruppenbereich vorhanden sind, verwenden Sie [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list):
+Zum Auflisten der Rollenzuweisungen, die für einen Ressourcengruppenbereich vorhanden sind, verwenden Sie [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list):
 
 ```azurecli
 az role assignment list --resource-group {resourceGroup}
@@ -97,7 +97,7 @@ az role assignment list --resource-group pharma-sales --output json --query '[].
 
 ## <a name="list-role-assignments-for-a-subscription"></a>Auflisten der Rollenzuweisungen für ein Abonnement
 
-Um alle Rollenzuweisungen in einem Abonnementbereich aufzulisten, verwenden Sie [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list). Die Abonnement-ID können Sie über das Blatt **Abonnements** im Azure-Portal oder durch Verwenden von [az account list](/cli/azure/account#az-account-list) abrufen.
+Um alle Rollenzuweisungen in einem Abonnementbereich aufzulisten, verwenden Sie [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list). Die Abonnement-ID können Sie über das Blatt **Abonnements** im Azure-Portal oder durch Verwenden von [az account list](/cli/azure/account#az_account_list) abrufen.
 
 ```azurecli
 az role assignment list --subscription {subscriptionNameOrId}
@@ -134,7 +134,7 @@ az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --ou
 
 ## <a name="list-role-assignments-for-a-management-group"></a>Auflisten von Rollenzuweisungen für eine Verwaltungsgruppe
 
-Um alle Rollenzuweisungen in einem Verwaltungsgruppenbereich aufzulisten, verwenden Sie [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list). Die Verwaltungsgruppen-ID befindet sich auf dem Blatt **Verwaltungsgruppen** im Azure-Portal, oder Sie können zum Abrufen auch [az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) verwenden.
+Um alle Rollenzuweisungen in einem Verwaltungsgruppenbereich aufzulisten, verwenden Sie [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list). Die Verwaltungsgruppen-ID befindet sich auf dem Blatt **Verwaltungsgruppen** im Azure-Portal, oder Sie können zum Abrufen auch [az account management-group list](/cli/azure/account/management-group#az_account_management_group_list) verwenden.
 
 ```azurecli
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/{groupId}
@@ -165,19 +165,19 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 1. Rufen Sie die Prinzipal-ID der systemseitig oder benutzerseitig zugewiesenen verwalteten Identität ab.
 
-    Um die Prinzipal-ID einer benutzerseitig zugewiesenen verwalteten Identität abzurufen, können Sie [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) oder [az identity list](/cli/azure/identity#az-identity-list) verwenden.
+    Um die Prinzipal-ID einer benutzerseitig zugewiesenen verwalteten Identität abzurufen, können Sie [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) oder [az identity list](/cli/azure/identity#az_identity_list) verwenden.
 
     ```azurecli
     az ad sp list --display-name "{name}" --query [].objectId --output tsv
     ```
 
-    Um die Prinzipal-ID einer systemseitig zugewiesenen verwalteten Identität abzurufen, können Sie [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) verwenden.
+    Um die Prinzipal-ID einer systemseitig zugewiesenen verwalteten Identität abzurufen, können Sie [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) verwenden.
 
     ```azurecli
     az ad sp list --display-name "{vmname}" --query [].objectId --output tsv
     ```
 
-1. Zum Auflisten der Rollenzuweisungen verwenden Sie [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list).
+1. Zum Auflisten der Rollenzuweisungen verwenden Sie [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list).
 
     Standardmäßig werden nur Rollenzuweisungen für das aktuelle Abonnement angezeigt. Um Rollenzuweisungen für das aktuelle Abonnement und darin befindliche Abonnements anzuzeigen, fügen Sie den Parameter `--all` hinzu. Um geerbte Rollenzuweisungen anzuzeigen, fügen Sie den Parameter `--include-inherited` hinzu.
 

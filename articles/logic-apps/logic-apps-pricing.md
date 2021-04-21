@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: a3c20dd85c94c359259cf69e25bb9083d56857fc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699027"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777147"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Preis- und Abrechnungsmodelle für Azure Logic Apps
 
@@ -27,9 +27,9 @@ So wird z. B. eine Anforderung, die ein Abfragetrigger stellt, auch dann als Au
 
 | Elemente | Beschreibung |
 |-------|-------------|
-| [Integrierte](../connectors/apis-list.md#built-in) Trigger und Aktionen | Werden im Dienst Azure Logic Apps nativ ausgeführt und mit dem Preis von [**Aktionen** gemessen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>Beispielsweise sind die Trigger „HTTP“ und „Anforderung“ integrierte Trigger, während die Aktionen „HTTP“ und „Antwort“ integrierte Aktionen sind. Daten-, Batch- und Variablenvorgänge sowie [Aktionen zum Steuern von Workflows](../connectors/apis-list.md#control-workflow) wie Schleifen, Bedingungen, Schalter, parallele Verzweigungen usw. sind ebenfalls integrierte Aktionen. |
-| Trigger und Aktionen des Typs [Standardconnector](../connectors/apis-list.md#managed-connectors) <p><p>Trigger und Aktionen des Typs [Benutzerdefinierter Connector](../connectors/apis-list.md#custom) | Gemessen mit dem Preis für [Standardconnector](https://azure.microsoft.com/pricing/details/logic-apps/). |
-| Trigger und Aktionen des Typs [Unternehmensconnector](../connectors/apis-list.md#managed-connectors) | Gemessen mit dem Preis für [Unternehmensconnector](https://azure.microsoft.com/pricing/details/logic-apps/). In der öffentlichen Vorschauphase werden Unternehmensconnectors jedoch mit dem Preis für [*Standardconnectors*](https://azure.microsoft.com/pricing/details/logic-apps/)abgerechnet. |
+| [Integrierte](../connectors/built-in.md) Trigger und Aktionen | Werden im Dienst Azure Logic Apps nativ ausgeführt und mit dem Preis von [**Aktionen** gemessen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>Beispielsweise sind die Trigger „HTTP“ und „Anforderung“ integrierte Trigger, während die Aktionen „HTTP“ und „Antwort“ integrierte Aktionen sind. Daten-, Batch- und Variablenvorgänge sowie [Aktionen zum Steuern von Workflows](../connectors/built-in.md) wie Schleifen, Bedingungen, Schalter, parallele Verzweigungen usw. sind ebenfalls integrierte Aktionen. |
+| Trigger und Aktionen des Typs [Standardconnector](../connectors/managed.md) <p><p>Trigger und Aktionen des Typs [Benutzerdefinierter Connector](../connectors/apis-list.md#custom-apis-and-connectors) | Gemessen mit dem Preis für [Standardconnector](https://azure.microsoft.com/pricing/details/logic-apps/). |
+| Trigger und Aktionen des Typs [Unternehmensconnector](../connectors/managed.md) | Gemessen mit dem Preis für [Unternehmensconnector](https://azure.microsoft.com/pricing/details/logic-apps/). In der öffentlichen Vorschauphase werden Unternehmensconnectors jedoch mit dem Preis für [*Standardconnectors*](https://azure.microsoft.com/pricing/details/logic-apps/)abgerechnet. |
 | Aktionen innerhalb von [Schleifen](logic-apps-control-flow-loops.md) | Jede Aktion, die in einer Schleife erfolgt, wird für jeden ausgeführten Schleifenzyklus gemessen. <p><p>Angenommen, Sie haben eine FOR EACH-Schleife mit Aktionen zum Verarbeiten einer Liste. Der Dienst Azure Logic Apps erfasst jede Aktion in dieser Schleife, indem die Anzahl der Listenelemente mit der Anzahl der Aktionen in der Schleife multipliziert wird. Anschließend wird die Aktion zum Starten der Schleife hinzugefügt. Daher lautet die Berechnung für eine Liste mit zehn Elementen (10 * 1) + 1, sodass sich 11 Aktionsausführungen ergeben. |
 | Wiederholungsversuche | Um die grundlegendsten Ausnahmen und Fehler zu behandeln, können Sie, sofern unterstützt, eine [Wiederholungsrichtlinie](logic-apps-exception-handling.md#retry-policies) für Trigger und Aktionen einrichten. Diese Wiederholungen werden zusammen mit der ursprünglichen Anforderung zu Tarifen in Rechnung gestellt, die darauf basieren, ob der Trigger oder die Aktion den Typ „Integriert“, „Standard“ oder „Unternehmen“ hat. Beispielsweise werden für eine Aktion, die mit zwei Wiederholungen ausgeführt wird, drei Aktionsausführungen berechnet. |
 | [Datenaufbewahrung und Speichernutzung](#data-retention) | Wird mit dem Preis für Datenaufbewahrung gemessen, den Sie auf der [Preisseite für Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) unter der Tabelle **Preisdetails** finden. |
@@ -80,8 +80,8 @@ Für Logik-Apps, die in einer [*Integrationsdienstumgebung* (ISE)](../logic-apps
 
 | Elemente | Beschreibung |
 |-------|-------------|
-| [Integrierte](../connectors/apis-list.md#built-in) Trigger und Aktionen | Werden mit der Beschriftung **Core** angezeigt und in derselben ISE ausgeführt wie Ihre Logik-Apps. |
-| [Standardconnectors](../connectors/apis-list.md#managed-connectors) <p><p>[Unternehmensconnector](../connectors/apis-list.md#enterprise-connectors) | Verwaltete Connectors, die mit der Beschriftung **ISE** versehen sind, wurden speziell für den Betrieb ohne das lokale Datengateways entwickelt und werden in derselben ISE wie Ihre Logik-Apps ausgeführt. Die ISE-Preise decken so viele Unternehmensverbindungen wie gewünscht ab. <p><p>Connectors ohne die Beschriftung „ISE“ werden im mehrinstanzenfähigen Dienst Azure Logic Apps ausgeführt. Die ISE-Preise decken diese Ausführungen jedoch für in einer ISE ausgeführte Logik-Apps ab. |
+| [Integrierte](../connectors/built-in.md) Trigger und Aktionen | Werden mit der Beschriftung **Core** angezeigt und in derselben ISE ausgeführt wie Ihre Logik-Apps. |
+| [Standardconnectors](../connectors/managed.md) <p><p>[Unternehmensconnector](../connectors/managed.md#enterprise-connectors) | Verwaltete Connectors, die mit der Beschriftung **ISE** versehen sind, wurden speziell für den Betrieb ohne das lokale Datengateways entwickelt und werden in derselben ISE wie Ihre Logik-Apps ausgeführt. Die ISE-Preise decken so viele Unternehmensverbindungen wie gewünscht ab. <p><p>Connectors ohne die Beschriftung „ISE“ werden im mehrinstanzenfähigen Dienst Azure Logic Apps ausgeführt. Die ISE-Preise decken diese Ausführungen jedoch für in einer ISE ausgeführte Logik-Apps ab. |
 | Aktionen innerhalb von [Schleifen](logic-apps-control-flow-loops.md) | Die ISE-Preise decken jede in einer Schleife ausgeführte Aktion für jeden ausgeführten Schleifenzyklus ab. <p><p>Angenommen, Sie haben eine FOR EACH-Schleife mit Aktionen zum Verarbeiten einer Liste. Zur Ermittlung der Gesamtanzahl der Ausführungen von Aktionen multiplizieren Sie die Anzahl der Listenelemente mit der Anzahl der Aktionen in der Schleife und addieren die Aktion zum Starten der Schleife. Daher lautet die Berechnung für eine Liste mit zehn Elementen (10 * 1) + 1, sodass sich 11 Aktionsausführungen ergeben. |
 | Wiederholungsversuche | Um die grundlegendsten Ausnahmen und Fehler zu behandeln, können Sie, sofern unterstützt, eine [Wiederholungsrichtlinie](logic-apps-exception-handling.md#retry-policies) für Trigger und Aktionen einrichten. Die ISE-Preise berücksichtigen Wiederholungen ebenso wie die ursprüngliche Anforderung. |
 | [Datenaufbewahrung und Speichernutzung](#data-retention) | Für Logik-Apps in einer ISE fallen keine Aufbewahrungs- und Speicherkosten an. |

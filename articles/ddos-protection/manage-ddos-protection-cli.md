@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 98c71f3cf1c521c08d177acb89aad85301e61579
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8a8da50dc703d59dc16b5cb6253d39aeb33fd76d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103010"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777633"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Schnellstart: Erstellen und Konfigurieren eines Azure DDoS Protection Standard-Plans über die Azure CLI
 
@@ -39,7 +39,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen.
 
-Verwenden Sie zum Erstellen einer Ressourcengruppe [az group create](/cli/azure/group#az-group-create). In diesem Beispiel legen wir für die Ressourcengruppe den Namen _MyResourceGroup_ fest, und wir verwenden den Standort _USA, Osten_:
+Verwenden Sie zum Erstellen einer Ressourcengruppe [az group create](/cli/azure/group#az_group_create). In diesem Beispiel legen wir für die Ressourcengruppe den Namen _MyResourceGroup_ fest, und wir verwenden den Standort _USA, Osten_:
 
 ```azurecli-interactive
 az group create \

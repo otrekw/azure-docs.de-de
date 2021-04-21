@@ -3,12 +3,12 @@ title: ZIP-Push-Bereitstellung für Azure Functions
 description: Verwenden Sie die Funktionen zur Bereitstellung von ZIP-Dateien des Kudu-Bereitstellungdiensts zum Veröffentlichen Ihrer Azure Functions.
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb6867d7719f9650acb00f80ac3a933713ce0e23
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96018429"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777649"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>ZIP-Bereitstellung für Azure Functions
 
@@ -66,7 +66,7 @@ Sie können aber auch eine ZIP-Datei aus einem GitHub-Repository herunterladen. 
 
 ## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
-Sie können eine Push-Bereitstellung auch mithilfe der Azure-Befehlszeilenschnittstelle auslösen. Führen Sie eine Push-Bereitstellung einer ZIP-Datei in Ihrer Funktions-App mithilfe des Befehls [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) aus. Zum Ausführen dieses Befehls müssen Sie Azure CLI, Version 2.0.21 oder höher, verwenden. Sie können mithilfe des `az --version`-Befehls anzeigen, welche Azure CLI-Version Sie verwenden.
+Sie können eine Push-Bereitstellung auch mithilfe der Azure-Befehlszeilenschnittstelle auslösen. Führen Sie eine Push-Bereitstellung einer ZIP-Datei in Ihrer Funktions-App mithilfe des Befehls [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az_functionapp_deployment_source_config_zip) aus. Zum Ausführen dieses Befehls müssen Sie Azure CLI, Version 2.0.21 oder höher, verwenden. Sie können mithilfe des `az --version`-Befehls anzeigen, welche Azure CLI-Version Sie verwenden.
 
 Ersetzen Sie im folgenden Befehl den `<zip_file_path>`-Platzhalter durch den Pfad zum Speicherort der ZIP-Datei. Ersetzen Sie außerdem `<app_name>` durch den eindeutigen Namen Ihrer Funktions-App, und ersetzen Sie `<resource_group>` durch den Namen Ihrer Ressourcengruppe.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 2291767c162953f8339fb8cc27e55b96290ef795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58b91c105ed48617b64356904942f5ab6b461cda
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101665960"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776553"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>Konfigurieren der Routingpräferenz für eine öffentliche IP-Adresse mithilfe der Azure CLI
 
@@ -40,14 +40,14 @@ Die Routingpräferenz für die öffentliche IP-Adresse ist für alle Azure-Diens
 - Für diesen Artikel ist mindestens Version 2.0.49 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe in der Azure-Region **USA, Osten** erstellt:
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe in der Azure-Region **USA, Osten** erstellt:
 
 ```azurecli
   az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
 
-Erstellen Sie eine öffentliche IP-Adresse mit Routingpräferenz vom Typ **Internet** mithilfe des Befehls [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) im unten dargestellten Format.
+Erstellen Sie eine öffentliche IP-Adresse mit Routingpräferenz vom Typ **Internet** mithilfe des Befehls [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) im unten dargestellten Format.
 
 Mit dem folgenden Befehl wird eine neue öffentliche IP-Adresse mit dem Routingpräferenztyp **Internet** in der Azure-Region **USA, Osten** erstellt.
 
@@ -71,4 +71,3 @@ Sie können die oben erstellte öffentliche IP-Adresse einem virtuellen [Windows
 
 - Erfahren Sie mehr über die [Routingpräferenz in öffentlichen IP-Adressen](routing-preference-overview.md). 
 - [Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe der Azure CLI](configure-routing-preference-virtual-machine-cli.md)
-

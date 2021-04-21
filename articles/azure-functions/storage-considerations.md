@@ -3,12 +3,12 @@ title: Speicheraspekte für Azure Functions
 description: Erfahren Sie über die Speicheranforderungen von Azure Functions und über das Verschlüsseln gespeicherter Daten.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: c4ffb622482585e35337caf8e43b69e0f3b0385c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5faa85a4fac9fc0b8639f33c475283f4f043c627
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517262"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779253"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Speicheraspekte für Azure Functions
 
@@ -71,7 +71,7 @@ Andere plattformseitig verwaltete Kundendaten werden nur dann in der Region gesp
 
 _Diese Funktion ist derzeit nur unter Linux verfügbar._ 
 
-Sie können vorhandene Azure Files-Freigaben in Ihre Linux-Funktions-Apps einbinden. Durch das Einbinden einer Freigabe in Ihre Linux-Funktions-App können Sie vorhandene Machine Learning-Modelle oder andere Daten in Ihren Funktionen nutzen. Sie können den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) verwenden, um eine vorhandene Freigabe in Ihre Linux-Funktions-App einzubinden. 
+Sie können vorhandene Azure Files-Freigaben in Ihre Linux-Funktions-Apps einbinden. Durch das Einbinden einer Freigabe in Ihre Linux-Funktions-App können Sie vorhandene Machine Learning-Modelle oder andere Daten in Ihren Funktionen nutzen. Sie können den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) verwenden, um eine vorhandene Freigabe in Ihre Linux-Funktions-App einzubinden. 
 
 Bei diesem Befehl ist `share-name` der Name der vorhandenen Azure Files-Freigabe, und `custom-id` kann ein beliebige Zeichenfolge sein, mit der die Freigabe bei der Einbindung in die Funktions-App eindeutig definiert wird. `mount-path` ist der Pfad, über den in Ihrer Funktions-App auf die Freigabe zugegriffen wird. `mount-path` muss das Format `/dir-name` haben und darf nicht mit `/home` beginnen.
 
