@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 6da003612d98d107390c9f20a5172786c30665a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0a3653d2cc840d745b1bb5788406b8d374c76d0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709751"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533781"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -292,7 +292,7 @@ Azure AD liefert Ihrer Organisation in [Überwachungsprotokollen und Berichten](
 
 #### <a name="application-audit-logs"></a>Überwachungsprotokolle für Anwendungen
 
-Diese Protokolle enthalten ausführliche Informationen zu Anmeldungen bei Anwendungen, die mit einem Anwendungsproxy konfiguriert sind, sowie zum Gerät und Benutzer, das bzw. der auf die Anwendung zugreift. [Überwachungsprotokolle](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) stehen im Azure-Portal und in der [Überwachungs-API](/graph/api/resources/directoryaudit?view=graph-rest-beta) zum Export bereit. Außerdem sind [Nutzungs- und Insights-Berichte](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) für Ihre Anwendung verfügbar.
+Diese Protokolle enthalten ausführliche Informationen zu Anmeldungen bei Anwendungen, die mit einem Anwendungsproxy konfiguriert sind, sowie zum Gerät und Benutzer, das bzw. der auf die Anwendung zugreift. [Überwachungsprotokolle](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) stehen im Azure-Portal und in der [Überwachungs-API](/graph/api/resources/directoryaudit) zum Export bereit. Außerdem sind [Nutzungs- und Insights-Berichte](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) für Ihre Anwendung verfügbar.
 
 #### <a name="application-proxy-connector-monitoring"></a>Überwachung des Anwendungsproxyconnectors
 

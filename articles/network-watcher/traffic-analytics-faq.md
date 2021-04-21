@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98c0a6f88da717256e78a748902317a90a369a9c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579243"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533633"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
@@ -59,62 +59,6 @@ So überprüfen Sie die einem Benutzer für ein Abonnement zugewiesenen Rollen
 3. Listen Sie mit **Get-AzRoleAssignment -SignInName [E-Mail-Adresse des Benutzers] -IncludeClassicAdministrators** alle Rollen auf, die einem bestimmten Benutzer zugewiesen sind. 
 
 Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
-
-
-## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>In welchen Azure-Regionen ist Traffic Analytics verfügbar?
-
-Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Regionen unterstützt:
-- Kanada, Mitte
-- USA, Westen-Mitte
-- East US
-- USA (Ost) 2
-- USA Nord Mitte
-- USA Süd Mitte
-- USA (Mitte)
-- USA (Westen)
-- USA, Westen 2
-- Frankreich, Mitte
-- Europa, Westen
-- Nordeuropa
-- Brasilien Süd
-- UK, Westen
-- UK, Süden
-- Australien (Osten)
-- Australien, Südosten 
-- Asien, Osten
-- Asien, Südosten
-- Korea, Mitte
-- Indien, Mitte
-- Indien (Süden)
-- Japan, Osten
-- Japan, Westen
-- US Government, Virginia
-- China, Osten 2
-
-Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
-- Kanada, Mitte
-- USA, Westen-Mitte
-- East US
-- USA (Ost) 2
-- USA Nord Mitte
-- USA Süd Mitte
-- USA (Mitte)
-- USA (Westen)
-- USA, Westen 2
-- Frankreich, Mitte
-- Europa, Westen
-- Nordeuropa
-- UK, Westen
-- UK, Süden
-- Australien (Osten)
-- Australien, Südosten
-- Asien, Osten
-- Asien, Südosten 
-- Korea, Mitte
-- Indien, Mitte
-- Japan, Osten
-- US Government, Virginia
-- China, Osten 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Können sich die Netzwerksicherheitsgruppen, für die ich Datenflussprotokolle aktiviere, in anderen Regionen befinden als mein Arbeitsbereich?
 

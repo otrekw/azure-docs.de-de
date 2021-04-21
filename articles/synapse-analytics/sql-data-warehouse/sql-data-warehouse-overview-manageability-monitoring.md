@@ -2,21 +2,21 @@
 title: Verwaltung und Überwachung – Übersicht
 description: Übersicht über die Überwachungs- und Verwaltungsfunktionen für Ressourcennutzung, Protokoll- und Abfrageaktivitäten, Empfehlungen sowie den Schutz von Daten (Sichern und Wiederherstellen) mit einem dedizierten SQL-Pool in Azure Synapse Analytics.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 08/27/2018
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 56ec38140d53788de7cc94f3cb6046177ad2bed4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd9dc5b08de1a81b8da13aee875060fbe242baf5
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585467"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568215"
 ---
 # <a name="manageability-and-monitoring-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Verwaltbarkeit und Überwachung mit einem dedizierten SQL-Pool in Azure Synapse Analytics
 
