@@ -3,19 +3,18 @@ title: Verwalten von Azure Key Vault mit der CLI – Azure Key Vault | Microsoft
 description: Dieser Artikel enthält Informationen zum Automatisieren von häufigen Aufgaben in Key Vault mithilfe der Azure CLI
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c084df60fa2293a614726be44669a1465b399d2c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d4037e66e653bc6e958020a5ef8722f2febb53d0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557206"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772178"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Verwalten von Key Vault mit der Azure CLI 
 
@@ -147,7 +146,7 @@ Wenn bereits ein Schlüssel in einer PEM-Datei vorhanden ist, können Sie diesen
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Jetzt können Sie mittels seiner URI auf den Schlüssel verweisen, den Sie erstellt oder in  Azure-Schlüsseltresor hochgeladen haben. Mit `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey` können Sie immer die aktuelle Version abrufen. Verwenden Sie zum Abrufen dieser Version „https://[Name-des-Schlüsseltresors].vault.azure.net/keys/[Schlüsselname]/[Eindeutige-Schlüssel-ID]“. Beispielsweise `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87`. 
+Jetzt können Sie mittels seiner URI auf den Schlüssel verweisen, den Sie erstellt oder in  Azure-Schlüsseltresor hochgeladen haben. Mit `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey` können Sie immer die aktuelle Version abrufen. Verwenden Sie zum Abrufen dieser Version „https://[Name-des-Schlüsseltresors].vault.azure.net/keys/[Schlüsselname]/[Eindeutige-Schlüssel-ID]“. Beispiel: `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87`. 
 
 Fügen Sie dem Schlüsseltresor ein Geheimnis hinzu – in diesem Fall das Kennwort „SQLPassword“ mit dem Wert „hVFkk965BuUv“ für Azure Key Vault-Instanzen. 
 
@@ -221,7 +220,7 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 ## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> Festlegen von erweiterten Zugriffsrichtlinien für Schlüsseltresore
 
-Verwenden Sie [az keyvault update](/cli/azure/keyvault#az-keyvault-update), um erweiterte Richtlinien für den Schlüsseltresor zu aktivieren.
+Verwenden Sie [az keyvault update](/cli/azure/keyvault#az_keyvault_update), um erweiterte Richtlinien für den Schlüsseltresor zu aktivieren.
 
  Aktivieren von Key Vault für die Bereitstellung: Virtuelle Computer können Zertifikate aus dem Tresor abrufen, die als Geheimnisse gespeichert sind.
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b1355acee5c115accb2515f797b402e66cd2ec0a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 2c15090551ad9d84282f65925ff9c2cfbab7e14f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374725"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773349"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für Python
 
@@ -179,7 +179,7 @@ Um einen Schlüssel aus Key Vault zu lesen, verwenden Sie die [get_Key](/python/
 retrieved_key = client.get_key(keyName)
  ```
 
-Mithilfe des Azure CLI-Befehls [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) können Sie auch sich vergewissern, dass der Schlüssel festgelegt wurde.
+Mithilfe des Azure CLI-Befehls [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) können Sie auch sich vergewissern, dass der Schlüssel festgelegt wurde.
 
 ### <a name="delete-a-key"></a>Löschen eines Schlüssels
 
@@ -192,7 +192,7 @@ deleted_key = poller.result()
 
 Die `begin_delete_key`-Methode ist asynchron und gibt ein Pollerobjekt zurück. Wenn die `result`-Methode des Pollers aufgerufen wird, wird auf ihren Abschluss gewartet.
 
-Mithilfe des Azure CLI-Befehls [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) können Sie sich vergewissern, dass der Schlüssel gelöscht wurde.
+Mithilfe des Azure CLI-Befehls [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) können Sie sich vergewissern, dass der Schlüssel gelöscht wurde.
 
 Nach dem Löschen verbleibt ein Schlüssel für einen bestimmten Zeitraum in einem gelöschten, aber wiederherstellbaren Zustand. Wenn Sie den Code erneut ausführen, verwenden Sie einen anderen Schlüsselnamen.
 
@@ -209,7 +209,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Übersicht über den Azure-Schlüsseltresor](../general/overview.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](../general/secure-your-key-vault.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-overview.md)
 - [Entwicklerhandbuch zu Azure Key Vault](../general/developers-guide.md)
 - [Key Vault-Sicherheitsübersicht](../general/security-overview.md)
 - [Authentifizieren mit Key Vault](../general/authentication.md)

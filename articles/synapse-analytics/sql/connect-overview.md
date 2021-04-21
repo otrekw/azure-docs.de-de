@@ -1,21 +1,20 @@
 ---
 title: Herstellen einer Verbindung mit Synapse SQL
 description: Stellen Sie eine Verbindung mit Synapse SQL her.
-services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3165b72ae5612aaeaa66a95299db97182fef2232
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5682302ea0fa83c04a8560ba3f0f98ea075e072
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677574"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565541"
 ---
 # <a name="connect-to-synapse-sql"></a>Herstellen einer Verbindung mit Synapse SQL
 Stellen Sie eine Verbindung mit der Synapse SQL-Funktion in Azure Synapse Analytics her.

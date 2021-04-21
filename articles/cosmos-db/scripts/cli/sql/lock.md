@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: b14bc8f77c6f26fba36880762d12723888d845e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a7c59cf579e87f9f772ea1ba27e5991b951adba
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94565992"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772323"
 ---
 # <a name="create-resource-lock-for-a-azure-cosmos-db-core-sql-api-database-and-container-using-azure-cli"></a>Erstellen einer Ressourcensperre für eine Datenbank und einen Container für die Core-API (SQL) von Azure Cosmos DB mithilfe der Azure CLI
 [!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]
@@ -34,10 +34,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [az lock create](/cli/azure/lock#az-lock-create) | Erstellt eine Sperre. |
-| [az lock list](/cli/azure/lock#az-lock-list) | Listet Sperrinformationen auf. |
-| [az lock show](/cli/azure/lock#az-lock-show) | Zeigt Eigenschaften einer Sperre an. |
-| [az lock delete](/cli/azure/lock#az-lock-delete) | Löscht eine Sperre. |
+| [az lock create](/cli/azure/lock#az_lock_create) | Erstellt eine Sperre. |
+| [az lock list](/cli/azure/lock#az_lock_list) | Listet Sperrinformationen auf. |
+| [az lock show](/cli/azure/lock#az_lock_show) | Zeigt Eigenschaften einer Sperre an. |
+| [az lock delete](/cli/azure/lock#az_lock_delete) | Löscht eine Sperre. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

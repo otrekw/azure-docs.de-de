@@ -10,12 +10,12 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 6a54e0d808ef734a26a0fa309bd7367e73316856
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c45f08a339ca8878bb9e2840faa8a412f3e60e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507064"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765969"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>Erstellen und Bereitstellen virtueller Computer in einer Verfügbarkeitsgruppe mithilfe der Azure CLI
 
@@ -36,7 +36,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 Eine Verfügbarkeitsgruppe können Sie mithilfe von [az vm availability-set create](/cli/azure/vm/availability-set) erstellen. In diesem Beispiel wird die Anzahl von Update- und Fehlerdomänen für die Verfügbarkeitsgruppe *myAvailabilitySet* in der Ressourcengruppe *myResourceGroupAvailability* auf *2* festgelegt.
 
-Erstellen Sie zunächst mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe und anschließend die Verfügbarkeitsgruppe:
+Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe und anschließend die Verfügbarkeitsgruppe:
 
 ```azurecli-interactive
 az group create --name myResourceGroupAvailability --location eastus
@@ -80,7 +80,7 @@ Die Verteilung der Verfügbarkeitsgruppen kann im Portal unter „Ressourcengrup
 
 ## <a name="check-for-available-vm-sizes"></a>Prüfen der verfügbaren VM-Größen
 
-Weitere virtuelle Computer können der Verfügbarkeitsgruppe später hinzugefügt werden, wenn auf der Hardware VM-Größen verfügbar sind. Verwenden Sie [az vm availability-set list-sizes](/cli/azure/vm/availability-set#az-vm-availability-set-list-sizes), um alle verfügbaren Größen im Hardwarecluster für die Verfügbarkeitsgruppe aufzulisten:
+Weitere virtuelle Computer können der Verfügbarkeitsgruppe später hinzugefügt werden, wenn auf der Hardware VM-Größen verfügbar sind. Verwenden Sie [az vm availability-set list-sizes](/cli/azure/vm/availability-set#az_vm_availability_set_list_sizes), um alle verfügbaren Größen im Hardwarecluster für die Verfügbarkeitsgruppe aufzulisten:
 
 ```azurecli-interactive
 az vm availability-set list-sizes \

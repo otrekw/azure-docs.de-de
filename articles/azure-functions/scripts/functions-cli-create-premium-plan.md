@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: sample
 ms.date: 11/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 714dd8d886f567bcdf07c93803662ef4b2c635f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d9f72fa433364f8d71ba44207d570bb827cd243
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94565161"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786201"
 ---
 # <a name="create-a-function-app-in-a-premium-plan---azure-cli"></a>Erstellen einer Funktions-App in einem Premium-Tarif – Azure-Befehlszeilenschnittstelle
 
@@ -36,10 +36,10 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Erstellt ein Azure Storage-Konto. |
-| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Erstellt einen Premium-Tarif in einer [bestimmten SKU](../functions-premium-plan.md#available-instance-skus). |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im App Service-Plan. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Erstellt ein Azure Storage-Konto. |
+| [az functionapp plan create](/cli/azure/functionapp/plan#az_functionapp_plan_create) | Erstellt einen Premium-Tarif in einer [bestimmten SKU](../functions-premium-plan.md#available-instance-skus). |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Erstellt eine Funktions-App im App Service-Plan. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
