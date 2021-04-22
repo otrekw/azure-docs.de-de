@@ -28,7 +28,7 @@ Mit der Altersbeschränkung in Azure Active Directory B2C (Azure AD B2C) könn
 >Dieses Feature befindet sich in der Phase der öffentlichen Vorschau. Verwenden Sie dieses Feature nicht für Produktionsanwendungen.
 >
 
-Wenn für einen Benutzerflow die Altersbeschränkung aktiviert ist, werden Benutzer nach Geburtsdatum und Wohnsitz (Land) gefragt. Wenn sich ein Benutzer anmeldet, der diese Informationen noch nicht eingegeben hat, muss dies bei der nächsten Anmeldung erfolgen. Die Regeln werden jedes Mal angewendet, wenn sich ein Benutzer anmeldet.
+Wenn für einen Benutzerflow die Altersbeschränkung aktiviert ist, werden Benutzer nach Geburtsdatum und Wohnsitz (Land/Region) gefragt. Wenn sich ein Benutzer anmeldet, der diese Informationen noch nicht eingegeben hat, muss dies bei der nächsten Anmeldung erfolgen. Die Regeln werden jedes Mal angewendet, wenn sich ein Benutzer anmeldet.
 
 ![Screenshot: Flow zum Sammeln von Informationen zur Altersbeschränkung](./media/age-gating/age-gating-information-gathering.png)
 
@@ -71,7 +71,7 @@ Nachdem Ihr Mandant für die Nutzung der Altersbeschränkung eingerichtet wurde,
 1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
 1. Wählen Sie für **Anwendung** die Webanwendung *testapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Wählen Sie die Schaltfläche **Benutzerflow ausführen** aus.
-1. Melden Sie sich mit einem lokalen Konto oder einem Social Media-Konto an. Wählen Sie dann Ihren Wohnsitz (Land) und ein Geburtsdatum aus, das einen Minderjährigen simuliert. 
+1. Melden Sie sich mit einem lokalen Konto oder einem Social Media-Konto an. Wählen Sie dann Ihren Wohnsitz (Land/Region) und ein Geburtsdatum aus, das einen Minderjährigen simuliert. 
 1. Wiederholen Sie den Test, und wählen Sie ein Geburtsdatum aus, das einen Erwachsenen simuliert.  
 
 Wenn Sie sich als Minderjähriger anmelden, sollte die folgende Fehlermeldung angezeigt werden: *Ihre Anmeldung wurde blockiert. Gesetze zu Datenschutz und Onlinesicherheit in Ihrem Land/Ihrer Region untersagen Konten von Kindern den Zugriff*.

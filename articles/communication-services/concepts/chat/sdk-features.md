@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 520dc611e49675f35b8ba0330448438192770773
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 561855704d157f9ad826b5db83600a79d9437fc6
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168874"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500684"
 ---
 # <a name="chat-sdk-overview"></a>Übersicht über das Chat SDK 
 
@@ -43,7 +43,7 @@ Die folgende Liste enthält die Features, die aktuell in den Chat SDKs von Comm
 |                   | Erhalten einer Benachrichtigung, wenn Teilnehmer aktiv eine Nachricht in einem Chatthread eingeben                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
 |                   | Abrufen aller Nachrichten in einem Chatthread                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | Senden von Unicode-Emojis im Nachrichteninhalt                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|Echtzeitbenachrichtigungen (durch proprietäres Signalisierungspaket**)|  Chatclients können Echtzeitaktualisierungen für eingehende Nachrichten und andere Vorgänge abonnieren, die in einem Chatthread stattfinden. Eine Liste der unterstützten Aktualisierungen für Echtzeitbenachrichtigungen finden Sie unter [Chatkonzepte](concepts.md#real-time-notifications).                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  | 
+|Echtzeitbenachrichtigungen (durch proprietäres Signalisierungspaket**)|  Chatclients können Echtzeitaktualisierungen für eingehende Nachrichten und andere Vorgänge abonnieren, die in einem Chatthread stattfinden. Eine Liste der unterstützten Aktualisierungen für Echtzeitbenachrichtigungen finden Sie unter [Chatkonzepte](concepts.md#real-time-notifications).                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 | Integration in Azure Event Grid             | Verwenden Sie die in Azure Event Grid verfügbaren Chatereignisse, um benutzerdefinierte Benachrichtigungsdienste einzubinden oder dieses Ereignis in einem Webhook zu posten und um Geschäftslogik (etwa Aktualisieren von CRM-Datensätzen nach Abschluss eines Chats) auszuführen.   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
 | Berichterstellung </br>(Diese Informationen finden Sie auf der Registerkarte „Überwachung“ für Ihre Communication Services-Ressource im Azure-Portal.)      | Vollziehen Sie den API-Datenverkehr aus Ihrer Chat-App nach, indem Sie die veröffentlichten Metriken im Azure-Metrik-Explorer überwachen und Warnungen zum Erkennen von Anomalien festlegen.     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
 |                   | Überwachen und Debuggen der Communication Services-Lösung durch Aktivieren der Diagnoseprotokollierung für Ihre Ressource    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   

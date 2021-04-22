@@ -117,7 +117,7 @@ Die folgende Tabelle enthält Informationen dazu, welche Abdeckung die Mobilitä
 | Montenegro | Podgorica |
 | Niederlande | Niederlande* |
 | Norwegen | Norwegen* |
-| Polen | <p>Białystok, Breslau (Wroclaw), Bydgoszcz, Elbląg, Elk, Gorzow, Kętrzyna, Krakau, Leszno, Lodz, Lublin, Mrągowo, Olsztyn, Posen, Rzeszów, Sanok, Starachowice, Świnoujście, Stettin, Dreistadt, Warschau, Wodzisław Śląski, Zakopane</p> |
+| Polen | <p>Białystok, Wroclaw (Breslau), Bydgoszcz, Elbląg, Elk, Gorzow, Kętrzyna, Krakau, Leszno, Lodz, Lublin, Mrągowo, Olsztyn, Posen, Rzeszów, Sanok, Starachowice, Świnoujście, Stettin, Dreistadt, Warschau, Wodzisław Śląski, Zakopane</p> |
 | Portugal | Bragança, Coimbra, Funchal, Leiria, Lissabon, Portimao, Porto|
 | Malta | Malta* |
 | Rumänien | <p>Alba Iulia, Arad, Bistrița, Brăila, Braşov, Bukarest, Buzau, Cluj Napoca, Constanța, Craiova, Deva, Focșani, Galati, Iaşi, Miercurea Ciuc, Oradea, Piatra Neamt, Pitești, Ploieşti, Reșița, Satu Mare, Sibiu, Suceava, Targu Mures, Timisoara, Tulcea, Zalau</p> | 
