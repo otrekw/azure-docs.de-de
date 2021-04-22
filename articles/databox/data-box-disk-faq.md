@@ -10,10 +10,10 @@ ms.date: 03/02/2021
 ms.author: alkohli
 ms.custom: references_regions
 ms.openlocfilehash: 88aedb7daa375ae6b4a9107dceed1d25ed72ed92
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102039103"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Häufig gestellte Fragen
@@ -55,7 +55,7 @@ A. Bei fünf Datenträgern mit jeweils 8 TB Kapazität (7 TB nutzbare Kapazit�
 A.  Unter [Regionale Verfügbarkeit](data-box-disk-overview.md#region-availability) können Sie sehen, in welchen Regionen Data Box-Datenträger derzeit verfügbar sind.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. In welchen Regionen kann ich Daten über Data Box-Datenträger speichern?
-A. Data Box Disk wird für alle Regionen in den Regionen USA, Kanada, Europa, Vereinigtes Königreich, Australien, Singapur, Indien, China, Hongkong, Japan, Korea und Südafrika unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
+A. Data Box Disk wird für alle Regionen in den Regionen USA, Kanada, Europa, Vereinigtes Königreich, Australien, Singapur, Indien, China, Hongkong (SAR), Japan, Korea und Südafrika unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
 
 ### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>Q. Wie kann ich Quelldaten, die sich an einem Standort in einem Land bzw. einer Region befinden, in eine Azure-Region in einem anderen Land importieren?
 A. Data Box Disk unterstützt die Datenerfassung nur innerhalb desselben Landes/derselben Region, in dem bzw. der sich auch das Ziel befindet. Internationale Grenzen werden nicht überquert. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union. Dort können Data Box Disks in und aus beliebige(n) EU-Länder(n) bzw. EU-Regionen gesendet werden.

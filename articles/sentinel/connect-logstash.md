@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 10812cf97f4f0dfc6f7957608eddf7acf929c3fc
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035426"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579768"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Verwenden von Logstash zum Verbinden von Datenquellen mit Azure Sentinel
 
@@ -44,7 +44,9 @@ Die Logstash-Engine besteht aus drei Komponenten:
 - Ausgabe-Plug-Ins: Angepasstes Senden gesammelter und verarbeiteter Daten an verschiedene Ziele.
 
 > [!NOTE]
-> Azure Sentinel unterstützt nur das eigene bereitgestellte Ausgabe-Plug-In. Ausgabe-Plug-Ins von Drittanbietern für Azure Sentinel oder Logstash-Plug-Ins eines anderen Typs werden nicht unterstützt.
+> - Azure Sentinel unterstützt nur das eigene bereitgestellte Ausgabe-Plug-In. Die aktuelle Version dieses Plug-Ins ist v1.0.0, veröffentlicht am 25.08.2020. Ausgabe-Plug-Ins von Drittanbietern für Azure Sentinel oder Logstash-Plug-Ins eines anderen Typs werden nicht unterstützt.
+>
+> - Das Logstash-Ausgabe-Plug-In von Azure Sentinel unterstützt nur **Logstash-Versionen von 7.0 bis 7.9**.
 
 Das Azure Sentinel-Ausgabe-Plug-In für Logstash sendet JSON-formatierte Daten mithilfe der HTTP-Datensammler-REST-API von Log Analytics an Ihren Log Analytics-Arbeitsbereich. Die Daten werden in benutzerdefinierten Protokollen erfasst.
 
@@ -67,19 +69,21 @@ Fügen Sie anhand der Informationen im Logstash-Dokument zur [Struktur einer Kon
 
 | Feldname | Datentyp | BESCHREIBUNG |
 |----------------|---------------|-----------------|
-| `workspace_id` | Zeichenfolge | Geben Sie die ID-GUID Ihres Arbeitsbereichs ein. * |
-| `workspace_key` | Zeichenfolge | Geben Sie die GUID für den Primärschlüssel des Arbeitsbereichs ein. * |
+| `workspace_id` | Zeichenfolge | Geben Sie die ID-GUID Ihres Arbeitsbereichs ein (siehe Tipp). |
+| `workspace_key` | Zeichenfolge | Geben Sie die GUID für den Primärschlüssel des Arbeitsbereichs ein (siehe Tipp). |
 | `custom_log_table_name` | Zeichenfolge | Legen Sie den Namen der Tabelle fest, in der die Protokolle erfasst werden. Es kann nur ein Tabellenname pro Ausgabe-Plug-In konfiguriert werden. Die Protokolltabelle wird in Azure Sentinel im Bereich **Protokolle** unter **Tabellen** in der Kategorie **Benutzerdefinierte Protokolle** mit dem Suffix `_CL` angezeigt. |
 | `endpoint` | Zeichenfolge | Optionales Feld. Dies ist standardmäßig der Log Analytics-Endpunkt. Verwenden Sie dieses Feld, um einen alternativen Endpunkt festzulegen. |
 | `time_generated_field` | Zeichenfolge | Optionales Feld. Diese Eigenschaft überschreibt das standardmäßige Feld **TimeGenerated** in Log Analytics. Geben Sie den Namen des Zeitstempelfelds in der Datenquelle ein. Die Daten im Feld müssen dem ISO 8601-Format (`YYYY-MM-DDThh:mm:ssZ`) entsprechen. |
 | `key_names` | array | Geben Sie eine Liste der Ausgabeschemafelder in Log Analytics ein. Jedes Listenelement muss in einfache Anführungszeichen eingeschlossen, die Elemente müssen durch Kommas getrennt und die gesamte Liste muss in eckige Klammern eingeschlossen werden. Ein Beispiel sehen Sie unten. |
 | `plugin_flush_interval` | number | Optionales Feld. Geben Sie einen Wert an, um das maximale Intervall (in Sekunden) zwischen den Nachrichtenübertragungen an Log Analytics zu definieren. Der Standardwert ist 5. |
-    | `amount_resizing` | boolean | „true“ oder „false“. Aktivieren oder deaktivieren Sie den automatischen Skalierungsmechanismus, der die Größe des Nachrichtenpuffers entsprechend der Menge der empfangenen Protokolldaten anpasst. |
+| `amount_resizing` | boolean | „true“ oder „false“. Aktivieren oder deaktivieren Sie den automatischen Skalierungsmechanismus, der die Größe des Nachrichtenpuffers entsprechend der Menge der empfangenen Protokolldaten anpasst. |
 | `max_items` | number | Optionales Feld. Gilt nur, wenn `amount_resizing` auf „false“ festgelegt ist. Hiermit können Sie eine Obergrenze für die Nachrichtenpuffergröße (in Datensätzen) festlegen. Der Standardwert ist „2000“.  |
 | `azure_resource_id` | Zeichenfolge | Optionales Feld. Definiert die ID der Azure-Ressource, in der sich die Daten befinden. <br>Der Wert der Ressourcen-ID ist besonders hilfreich, wenn Sie die [rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext](resource-context-rbac.md) verwenden, um nur Zugriff auf bestimmte Daten bereitzustellen. |
 | | | |
 
-*  Sie finden die Arbeitsbereichs-ID und den Primärschlüssel in der Arbeitsbereichsressource unter **Agent-Verwaltung**.
+> [!TIP]
+> -  Sie finden die Arbeitsbereichs-ID und den Primärschlüssel in der Arbeitsbereichsressource unter **Agent-Verwaltung**.
+> - Da die Speicherung von Anmeldeinformationen und anderen vertraulichen Informationen in Klartext in Konfigurationsdateien jedoch **nicht** den bewährten Sicherheitspraktiken entspricht, wird Ihnen dringend empfohlen, den **Logstash-Schlüsselspeicher** zu verwenden, um Ihre **Arbeitsbereichs-ID** und den **Primärschlüssel des Arbeitsbereichs** sicher in die Konfiguration aufzunehmen. Eine Anleitung hierzu finden Sie in der [Dokumentation zu Elastic](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-started-logstash-user.html).
 
 #### <a name="sample-configurations"></a>Beispielkonfigurationen
 

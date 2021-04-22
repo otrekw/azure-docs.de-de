@@ -146,22 +146,24 @@
           href: document-translation/create-sas-tokens.md
     - name: Referenz
       items:
-        - name: Abrufen von Dokumentformaten
-          href: document-translation/reference/get-document-formats.md
-        - name: Abrufen von Glossarformaten
-          href: document-translation/reference/get-glossary-formats.md
-        - name: Abrufen der Dokumentspeicherquelle
-          href: document-translation/reference/get-document-storage-source.md
-        - name: Übermitteln einer Batchanforderung
-          href: document-translation/reference/submit-batch-request.md
-        - name: Abrufen des Vorgangsdokumentstatus
-          href: document-translation/reference/get-operation-documents-status.md
+        - name: Abrufen unterstützter Dokumentformate
+          href: document-translation/reference/get-supported-document-formats.md
+        - name: Abrufen unterstützter Glossarformate
+          href: document-translation/reference/get-supported-glossary-formats.md
+        - name: Abrufen unterstützter Speicherquellen
+          href: document-translation/reference/get-supported-storage-sources.md
+        - name: Starten der Übersetzung
+          href: document-translation/reference/start-translation.md
+        - name: Abrufen des Dokumentstatus
+          href: document-translation/reference/get-documents-status.md
         - name: Abrufen des Dokumentstatus
           href: document-translation/reference/get-document-status.md
-        - name: Abrufen von Vorgängen
-          href: document-translation/reference/get-operations.md
-        - name: Abbrechen eines Vorgangs
-          href: document-translation/reference/cancel-operation.md
+        - name: Abrufen des Übersetzungsstatus
+          href: document-translation/reference/get-translations-status.md
+        - name: Abrufen des Übersetzungsstatus
+          href: document-translation/reference/get-translation-status.md
+        - name: Abbrechen der Übersetzung
+          href: document-translation/reference/cancel-translation.md
 - name: Exemplarische Vorgehensweisen
   items:
     - name: Unternehmensfähigkeit

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2ab7a007a92bd2306a7a97781af5653f932d0b7
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98539557"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580604"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Schätzen und Verwalten der Kosten eines Azure Cognitive Search-Diensts
 
@@ -64,7 +64,7 @@ Die Mindestgebühr fällt zum abrechenbaren Preis für die erste Sucheinheit (ei
 
 Über dieses Minimum hinaus können Sie Replikate und Partitionen unabhängig voneinander hinzufügen. Inkrementelle Kapazitätserweiterungen durch Replikate und Partitionen erhöhen die Abrechnung basierend auf der folgenden Formel: **(Replikate × Partitionen × Abrechnungsrate)** . Der abgerechnete Preis hängt dabei von Ihrem ausgewählten Tarif ab.
 
-Wenn Sie Ihre Kosten für eine Suchlösung abschätzen möchten, bedenken Sie, dass sich Preis und Kapazität nicht linear verhalten (bei Verdoppelung der Kapazität werden die Kosten mehr als verdoppelt). Ein Beispiel zur Funktionsweise der Formel finden Sie unter [Zuordnen von Replikaten und Partitionen](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
+Wenn Sie Ihre Kosten für eine Suchlösung abschätzen möchten, bedenken Sie, dass sich Preis und Kapazität nicht linear verhalten (bei Verdoppelung der Kapazität werden die Kosten im gleichen Tarif mehr als verdoppelt). Außerdem kann der Wechsel zu einem höheren Tarif zu einer besseren und schnelleren Leistung bei etwa gleichem Preis führen. Weitere Informationen und ein Beispiel finden Sie unter [Upgrade auf einen Standard-S2-Tarif](search-performance-tips.md#tip-upgrade-to-a-standard-s2-tier).
 
 ### <a name="bandwidth-charges"></a>Bandbreitengebühren
 

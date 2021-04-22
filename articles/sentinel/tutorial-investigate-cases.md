@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 04/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8980a8920b4f41f5a8e6afe106415032eef2055b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98790985"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375836"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Tutorial: Untersuchen von Vorfällen mit Azure Sentinel
 
@@ -51,9 +51,15 @@ Ein Vorfall kann mehrere Warnungen enthalten. Es ist eine Aggregation aller rele
 
 1. Wählen Sie einen bestimmten Vorfall aus, um mit der Untersuchung zu beginnen. Rechts sehen Sie ausführliche Informationen zum Vorfall, einschließlich des Schweregrads, einer Zusammenfassung zur Anzahl der betroffenen Entitäten, der ursprünglichen Ereignisse, die diesen Vorfall ausgelöst haben, sowie der eindeutigen ID des Vorfalls.
 
-1. Wenn Sie sich mehr Details zu den Warnungen und Entitäten des Vorfalls ansehen möchten, wählen Sie auf der Vorfallsseite auf **Alle Informationen anzeigen** aus, und prüfen Sie die relevanten Registerkarten, in denen die Vorfallsinformationen zusammengefasst sind. Überprüfen Sie auf der Registerkarte **Warnungen** die Warnung selbst. Sie können sich alle relevanten Informationen zur Warnung ansehen: die Abfrage, die die Warnung ausgelöst hat, die Anzahl der Ergebnisse, die pro Abfrage zurückgegeben wurde, und die Möglichkeit, Playbooks für die Warnungen auszuführen. Wenn Sie noch detaillierte Informationen zum Vorfall erhalten möchten, wählen Sie die Anzahl der **Ereignisse** aus. Dadurch werden die Abfrage, die die Ergebnisse generiert hat, sowie die Ereignisse geöffnet, die die Warnung in Log Analytics ausgelöst haben. In der Registerkarte **Entitäten** können Sie sich alle Entitäten ansehen, die Sie als Teil der Warnungsregeldefinition zugeordnet haben.
+1. Wenn Sie sich mehr Details zu den Warnungen und Entitäten des Vorfalls ansehen möchten, wählen Sie auf der Vorfallsseite auf **Alle Informationen anzeigen** aus, und prüfen Sie die relevanten Registerkarten, in denen die Vorfallsinformationen zusammengefasst sind. 
 
-    ![Anzeigen von Warnungsdetails](media/tutorial-investigate-cases/alert-details.png)
+    ![Anzeigen von Warnungsdetails](media/tutorial-investigate-cases/incident-timeline.png)
+
+    Beispiel:
+
+    - Überprüfen Sie die Zeitachse der Warnungen und Lesezeichen im Vorfall auf der Registerkarte **Zeitachse**. Dies hilft Ihnen, die Zeitachse der Angreiferaktivitäten zu rekonstruieren.
+    - Überprüfen Sie auf der Registerkarte **Warnungen** die Warnung selbst. Sie können sich alle relevanten Informationen zur Warnung ansehen: die Abfrage, die die Warnung ausgelöst hat, die Anzahl der Ergebnisse, die pro Abfrage zurückgegeben wurde, und die Möglichkeit, Playbooks für die Warnungen auszuführen. Wenn Sie noch detaillierte Informationen zum Vorfall erhalten möchten, wählen Sie die Anzahl der **Ereignisse** aus. Dadurch werden die Abfrage, die die Ergebnisse generiert hat, sowie die Ereignisse geöffnet, die die Warnung in Log Analytics ausgelöst haben. 
+    - In der Registerkarte **Entitäten** können Sie sich alle Entitäten ansehen, die Sie als Teil der Warnungsregeldefinition zugeordnet haben.
 
 1. Wenn Sie einen Vorfall aktiv untersuchen, empfiehlt es sich, den Vorfallsstatus auf **In Bearbeitung** festzulegen, bis Sie ihn schließen.
 

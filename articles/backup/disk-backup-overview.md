@@ -2,13 +2,13 @@
 title: Übersicht über Azure Disk Backup
 description: Erfahren Sie mehr über die Azure Disk Backup-Lösung.
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: 9449fdc57909cb143d381ae074913c79d24c8893
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: 42f37c1f500be719e0bd79bad41226ab3ab2d911
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107294"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285138"
 ---
 # <a name="overview-of-azure-disk-backup"></a>Übersicht über Azure Disk Backup
 
@@ -31,20 +31,20 @@ Azure Disk Backup ist eine absturzsichere Lösung ohne Agent, die [inkrementelle
 
 Die Azure Disk Backup-Lösung ist in den folgenden Szenarien nützlich:
 
-- Bedarf an häufigen Sicherungen pro Tag, ohne dass die Anwendung stillsteht
-- Apps, die in einem Clusterszenario ausgeführt werden: sowohl Windows Server-Failovercluster als auch Linux-Cluster schreiben auf freigegebene Datenträger
-- Spezifischer Bedarf an einer Sicherung ohne Agent aufgrund von Sicherheits- oder Leistungsbedenken bei der Anwendung
+- Bedarf an häufigen Sicherungen pro Tag, ohne dass die Anwendung stillsteht.
+- Apps, die in einem Clusterszenario ausgeführt werden: sowohl Windows Server-Failovercluster als auch Linux-Cluster schreiben auf freigegebene Datenträger.
+- Spezifischer Bedarf an einer Sicherung ohne Agent aufgrund von Sicherheits- oder Leistungsbedenken bei der Anwendung.
 - Eine anwendungskonsistente Sicherung des virtuellen Computers ist nicht möglich, da Branchen-Apps keinen Volumeschattenkopie-Dienst (VSS) unterstützen.
 
 Erwägen Sie Azure Disk Backup in Szenarien, in denen:
 
-- eine geschäftskritische Anwendung auf einem virtuellen Azure-Computer ausgeführt wird, für den mehrere Sicherungen pro Tag erforderlich sind, um das RPO (Recovery Point Objective) zu erreichen, ohne jedoch die Produktionsumgebung oder die Anwendungsleistung zu beeinträchtigen
-- Ihre Organisations- oder Branchenregelungen die Installation von Agents aufgrund von Sicherheitsbedenken einschränken
-- das Ausführen von benutzerdefinierten Pre- und Post-Skripts und das Aufrufen von Skripts zum Einfrieren und Reaktivieren auf virtuellen Linux-Computern beim Erstellen anwendungskonsistenter Sicherungen die Verfügbarkeit der Produktionsworkloads durch übermäßigen Mehraufwand beeinträchtigt
-- containerisierte Anwendungen, die auf Azure Kubernetes Service (AKS-Cluster) ausgeführt werden, verwaltete Datenträger als persistenten Speicher verwenden. Heutzutage müssen Sie den verwalteten Datenträger über Automatisierungsskripts sichern, die schwer zu verwalten sind.
-- ein verwalteter Datenträger kritische Geschäftsdaten enthält, als Dateifreigabe verwendet wird oder Datenbanksicherungsdateien enthält, und Sie die Sicherungskosten optimieren möchten, indem Sie nicht in Azure VM-Backup investieren
-- Sie verfügen über viele virtuelle Linux- und Windows-Computer mit einem einzelnen Datenträger (d. h. ein virtueller Computer mit nur einem Betriebssystem-Datenträger und ohne weitere angeschlossene Datenträger), auf dem Webserver- oder zustandslose Computer gehostet werden oder der als Stagingumgebung mit Anwendungskonfigurationseinstellungen dient, und Sie benötigen eine kostengünstige Sicherungslösung zum Schutz des Betriebssystem-Datenträgers. Um beispielsweise eine schnelle bedarfsgesteuerte Sicherung auszulösen, bevor ein Upgrade oder Patching der virtuellen Maschine durchgeführt wird,
-- wird auf einem virtuellen Computer eine Betriebssystemkonfiguration ausgeführt, die von der Azure-VM-Sicherungslösung (z. B. Windows 2008 32-Bit-Server) nicht unterstützt wird.
+- Eine geschäftskritische Anwendung auf einem virtuellen Azure-Computer ausgeführt wird, für den mehrere Sicherungen pro Tag erforderlich sind, um das RPO (Recovery Point Objective) zu erreichen, ohne jedoch die Produktionsumgebung oder die Anwendungsleistung zu beeinträchtigen.
+- Ihre Organisations- oder Branchenregelungen die Installation von Agents aufgrund von Sicherheitsbedenken einschränken.
+- Das Ausführen von benutzerdefinierten Pre- und Post-Skripts und das Aufrufen von Skripts zum Einfrieren und Reaktivieren auf virtuellen Linux-Computern zum Erstellen anwendungskonsistenter Sicherungen die Verfügbarkeit der Produktionsworkload durch übermäßigen Mehraufwand beeinträchtigt.
+- Containerisierte Anwendungen, die auf Azure Kubernetes Service (AKS-Cluster) ausgeführt werden, verwaltete Datenträger als persistenten Speicher verwenden. Heutzutage müssen Sie den verwalteten Datenträger über Automatisierungsskripts sichern, die schwer zu verwalten sind.
+- Ein verwalteter Datenträger kritische Geschäftsdaten enthält, als Dateifreigabe verwendet wird oder Datenbanksicherungsdateien enthält, und Sie die Sicherungskosten optimieren möchten, indem Sie nicht in Azure VM-Backup investieren.
+- Sie über viele virtuelle Linux- und Windows-Computer mit einem einzelnen Datenträger (d. h. ein virtueller Computer mit nur einem Betriebssystem-Datenträger und ohne weitere angeschlossene Datenträger) verfügen, auf dem Webserver oder zustandslose Computer gehostet werden oder der als Stagingumgebung mit Anwendungskonfigurationseinstellungen dient, und Sie eine kostengünstige Sicherungslösung zum Schutz des Betriebssystem-Datenträgers benötigen, beispielsweise, um eine schnelle bedarfsgesteuerte Sicherung auszulösen, bevor ein Upgrade oder Patching der virtuellen Maschine durchgeführt wird.
+- Auf einem virtuellen Computer eine Betriebssystemkonfiguration ausgeführt wird, die von der Azure-VM-Sicherungslösung (z. B. Windows 2008 32-Bit-Server) nicht unterstützt wird.
 
 ## <a name="how-the-backup-and-restore-process-works"></a>Funktionsweise des Sicherungs- und Wiederherstellungsprozesses
 
@@ -54,7 +54,7 @@ Erwägen Sie Azure Disk Backup in Szenarien, in denen:
 
 - Um die Sicherung zu konfigurieren, wechseln Sie zum Sicherungstresor, weisen Sie eine Sicherungsrichtlinie zu, wählen Sie den verwalteten Datenträger aus, der gesichert werden muss, und geben Sie eine Ressourcengruppe an, in der die Momentaufnahmen gespeichert und verwaltet werden sollen. Azure Backup löst automatisch geplante Sicherungsaufträge aus, die entsprechend der Sicherungshäufigkeit inkrementelle Momentaufnahmen des Datenträgers erstellen. Ältere Momentaufnahmen werden entsprechend der in der Sicherungsrichtlinie festgelegten Aufbewahrungsdauer gelöscht.
 
-- Azure Backup verwendet [inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) des verwalteten Datenträgers. Inkrementelle Momentaufnahmen sind eine kostengünstige, zeitpunktbezogene Sicherung von verwalteten Datenträgern, bei der die Delta-Änderungen am Datenträger seit der letzten Momentaufnahme berechnet werden. Sie werden immer auf dem kostengünstigsten Speicher, dem Standard-HDD-Speicher, gespeichert, unabhängig vom Speichertyp der übergeordneten Datenträger. Die erste Momentaufnahme des Datenträgers nimmt die genutzte Größe des Datenträgers ein, und die darauf folgenden inkrementellen Momentaufnahmen speichern Delta-Änderungen des Datenträgers seit der letzten Momentaufnahme.
+- Azure Backup verwendet [inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) des verwalteten Datenträgers. Inkrementelle Momentaufnahmen sind eine kostengünstige, zeitpunktbezogene Sicherung von verwalteten Datenträgern, bei der die Delta-Änderungen am Datenträger seit der letzten Momentaufnahme berechnet werden. Diese werden immer auf dem kostengünstigsten Speicher, dem Standard-HDD-Speicher, gespeichert, unabhängig vom Speichertyp der übergeordneten Datenträger. Die erste Momentaufnahme des Datenträgers nimmt die genutzte Größe des Datenträgers ein, und die darauf folgenden inkrementellen Momentaufnahmen speichern Delta-Änderungen des Datenträgers seit der letzten Momentaufnahme.
 
 - Sobald Sie die Sicherung eines verwalteten Datenträgers konfigurieren, wird eine Sicherungsinstanz im Sicherungstresor erstellt. Mit der Sicherungsinstanz können Sie den Zustand von Sicherungsvorgängen feststellen, bedarfsgesteuerte Sicherungen auslösen und Wiederherstellungsvorgänge durchführen. Sie können auch die Sicherungsintegrität über mehrere Tresore und Sicherungsinstanzen hinweg mithilfe von Backup Center anzeigen, das eine Ansicht in einer zentralisierten Benutzeroberfläche bietet.
 
@@ -66,8 +66,8 @@ Erwägen Sie Azure Disk Backup in Szenarien, in denen:
 
 ## <a name="pricing"></a>Preise
 
-Azure Backup bietet eine Lösung zur Verwaltung des Lebenszyklus von Momentaufnahmen zum Schutz von Azure-Datenträgern. Die von Azure Backup erstellten Datenträger-Momentaufnahmen werden in der Ressourcengruppe innerhalb Ihres Azure-Abonnements gespeichert und verursachen Gebühren für **Momentaufnahmenspeicherung**. Weitere Details zu den Preisen für Momentaufnahmen finden Sie unter [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/). Da die Momentaufnahmen nicht in den Sicherungstresor kopiert werden, erhebt Azure Backup keine Gebühr für **geschützte Instanzen**, und es fallen keine Kosten für den **Sicherungsspeicher** an. Zusätzlich belegen inkrementelle Momentaufnahmen Delta-Änderungen seit der letzten Momentaufnahme und werden immer auf Standardspeicher gespeichert, unabhängig vom Speichertyp der übergeordneten verwalteten Datenträger, und werden entsprechend der Preise für Standardspeicher berechnet. Dadurch ist Azure Disk Backup eine kostengünstige Lösung.
+Azure Backup bietet eine Lösung zur Verwaltung des Lebenszyklus von Momentaufnahmen zum Schutz von Azure-Datenträgern. Die von Azure Backup erstellten Datenträger-Momentaufnahmen werden in der Ressourcengruppe innerhalb Ihres Azure-Abonnements gespeichert und verursachen Gebühren für **Momentaufnahmenspeicherung**. Weitere Details zu den Preisen für Momentaufnahmen finden Sie unter [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).<br></br>Da die Momentaufnahmen nicht in den Sicherungstresor kopiert werden, erhebt Azure Backup keine Gebühr für **geschützte Instanzen**, und es fallen keine Kosten für den **Sicherungsspeicher** an. Zusätzlich belegen inkrementelle Momentaufnahmen Delta-Änderungen als letzte Momentaufnahme und werden immer auf Standardspeicher gespeichert, unabhängig vom Speichertyp der übergeordneten verwalteten Datenträger, und werden entsprechend der Preise für Standardspeicher berechnet. Dadurch ist Azure Disk Backup eine kostengünstige Lösung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Supportmatrix für die Azure Disk-Sicherung](disk-backup-support-matrix.md)
+[Supportmatrix für die Azure Disk-Sicherung](disk-backup-support-matrix.md)

@@ -32,7 +32,7 @@ Wenn Ihr Internetbrowser hängt, können Sie nacheinander die folgenden Schritte
 - Verwenden Sie einen anderen Internetbrowser.
 - Verwenden Sie den privaten Modus in Ihrem Browser:
 
-   - **Edge:** Öffnen Sie **Einstellungen** (drei Punkte neben Ihrem Profilbild), und wählen Sie die Option **Neues InPrivate-Fenster** aus. Navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich an. 
+   - **Microsoft Edge:** Öffnen Sie **Einstellungen** (drei Punkte neben Ihrem Profilbild), und wählen Sie die Option **Neues InPrivate-Fenster** aus. Navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich an. 
    - **Chrome:** Wählen Sie den Modus **Inkognito** aus.
    - **Safari:** Wählen Sie **Datei** und dann **Neues privates Fenster** aus.
 
@@ -53,7 +53,7 @@ Um dieses Problem zu lösen, probieren Sie eine der folgenden Methoden aus:
    - **Chrome:** Wählen Sie **Einstellungen** und unter **Datenschutz und Sicherheit** dann **Browserdaten löschen** aus.
 - Setzen Sie Ihre Browsereinstellungen auf die Standardwerte zurück.
 - Verwenden Sie den privaten Modus in Ihrem Browser. 
-   - **Edge:** Öffnen Sie **Einstellungen** (drei Punkte neben Ihrem Profilbild), und wählen Sie die Option **Neues InPrivate-Fenster** aus. Navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich an. 
+   - **Microsoft Edge:** Öffnen Sie **Einstellungen** (drei Punkte neben Ihrem Profilbild), und wählen Sie die Option **Neues InPrivate-Fenster** aus. Navigieren Sie dann zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich an. 
    - **Chrome:** Wählen Sie den Modus **Inkognito** aus.
    - **Safari:** Wählen Sie **Datei** und dann **Neues privates Fenster** aus.
 

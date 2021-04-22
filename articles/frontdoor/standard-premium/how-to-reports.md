@@ -26,9 +26,9 @@ Analyseberichte in Azure Front Door Standard/Premium bieten eine integrierte Üb
 | Berichte | Details |
 |---------|---------|
 | Overview of key metrics (Übersicht über Schlüsselmetriken) | Zeigt allgemeine Daten an, die von Azure Front Door-Edges an Clients gesendet wurden<br/>– Spitzenbandbreite<br/>– Anforderungen <br/>– Cachetrefferquote<br/> – Gesamtlatenz<br/>– 5xx-Fehlerrate |
-| Traffic by Domain (Datenverkehr nach Domäne) | – Bietet eine Übersicht über alle Domänen im Profil<br/>– Aufschlüsselung der Daten, die vom AFD-Edge an den Client übertragen wurden<br/>– Anforderungen insgesamt<br/>– 3xx-/4xx-/5xx-Antwortcode nach Domäne |
-| Traffic by location (Datenverkehr nach Standort) | – Zeigt eine Kartenansicht der Anforderungen und Verwendung nach den Top-Ländern an<br/>– Trendansicht der Top-Länder |
-| Verwendung | – Zeigt die Datenübertragung vom Azure Front Door-Edge an Clients an<br/>– Datenübertragung vom Ursprung zum AFD-Edge<br/>– Bandbreite von AFD-Edge zu Clients<br/>– Bandbreite vom Ursprung zum AFD-Edge<br/>– Anforderungen<br/>– Gesamtlatenz<br/>– Trend der Anforderungsanzahl nach HTTP-Statuscode |
+| Traffic by Domain (Datenverkehr nach Domäne) | – Bietet eine Übersicht über alle Domänen im Profil<br/>– Aufschlüsselung der Daten, die vom AFDS-Edge an den Client übertragen wurden<br/>– Anforderungen insgesamt<br/>– 3xx-/4xx-/5xx-Antwortcode nach Domäne |
+| Traffic by location (Datenverkehr nach Standort) | – Zeigt eine Kartenansicht der Anforderungen und Verwendung nach den Top-Ländern an<br/>– Trendansicht der Top-Länder/-Regionen |
+| Verwendung | – Zeigt die Datenübertragung vom Azure Front Door-Edge an Clients an<br/>– Datenübertragung vom Ursprung zum AFDS-Edge<br/>– Bandbreite von AFDS-Edge zu Clients<br/>– Bandbreite vom Ursprung zum AFDS-Edge<br/>– Anforderungen<br/>– Gesamtlatenz<br/>– Trend der Anforderungsanzahl nach HTTP-Statuscode |
 | Caching | – Zeigt die Cachetrefferquote nach Anforderungsanzahl an<br/>– Trendansicht der Anforderungen mit Cachetreffern und -fehlern |
 | Top URL (Top-URL) | – Zeigt die Anforderungsanzahl an <br/>– Übertragene Daten <br/>– Cachetrefferquote <br/>– Verteilung der Antwortstatuscodes für die 50 am häufigsten angeforderten Ressourcen |
 | Top-Referrer | – Zeigt die Anforderungsanzahl an <br/>– Übertragene Daten <br/>– Cachetrefferquote <br/>– Verteilung der Antwortstatuscodes für die Top 50-Referrer, die Datenverkehr generieren |
@@ -37,7 +37,7 @@ Analyseberichte in Azure Front Door Standard/Premium bieten eine integrierte Üb
 | Sicherheitsberichte | Details |
 |---------|---------|
 | Overview of key metrics (Übersicht über Schlüsselmetriken) | – Zeigt übereinstimmende WAF-Regeln an<br/>– Übereinstimmende OWASP-Regeln<br/>– Übereinstimmende Botregeln<br/>– Übereinstimmende benutzerdefinierte Regeln |
-| Metrics by dimensions (Metriken nach Dimension) | – Aufschlüsselung der übereinstimmenden WAF-Regeltrends nach Aktion<br/>– Ringdiagramme der Ereignisse nach Regelsatztyp und der Ereignisse nach Regelgruppe<br/>– Listenförmige Aufschlüsselung der wichtigsten Ereignisse nach Regel-ID, Land, IP-Adresse, URL und Benutzer-Agent  |
+| Metrics by dimensions (Metriken nach Dimension) | – Aufschlüsselung der übereinstimmenden WAF-Regeltrends nach Aktion<br/>– Ringdiagramme der Ereignisse nach Regelsatztyp und der Ereignisse nach Regelgruppe<br/>– Listenförmige Aufschlüsselung der wichtigsten Ereignisse nach Regel-ID, Land/Region, IP-Adresse, URL und Benutzer-Agent  |
 
 > [!NOTE]
 > Sicherheitsberichte sind nur mit der Azure Front Door Premium-SKU verfügbar.
@@ -84,7 +84,7 @@ Berichte unterstützen jeden ausgewählten Datumsbereich aus den letzten 90 Tage
 
         Sie können immer mithilfe von Aggregation die Standardgranularität der Aggregation ändern. Hinweis: „5 Minuten“ kann nicht für Datumsbereiche verwendet werden, die länger als 14 Tage sind. 
 
-    1. **Standorte**: Wählen Sie einen oder mehrere Clientstandorte nach Land aus. Die Länder sind nach sechs Regionen gruppiert: Nordamerika, Asien, Europa, Afrika, Ozeanien und Südamerika. Weitere Informationen finden Sie in der [Karte der Länder/Regionen](https://en.wikipedia.org/wiki/Subregion) (in englischer Sprache). Standardmäßig sind alle Länder ausgewählt.
+    1. **Standorte**: Wählen Sie einen oder mehrere Clientstandorte nach Land/Region aus. Die Länder sind nach sechs Regionen gruppiert: Nordamerika, Asien, Europa, Afrika, Ozeanien und Südamerika. Weitere Informationen finden Sie in der [Karte der Länder/Regionen](https://en.wikipedia.org/wiki/Subregion) (in englischer Sprache). Standardmäßig sind alle Länder ausgewählt.
     
         :::image type="content" source="../media/how-to-reports/front-door-reports-dimension-locations.png" alt-text="Screenshot der Berichte für die Dimension „Standorte“":::
    
@@ -107,10 +107,10 @@ Berichte unterstützen jeden ausgewählten Datumsbereich aus den letzten 90 Tage
 
 | Metrik | BESCHREIBUNG |
 |---------|---------|
-| Übertragene Daten | Zeigt Daten an, die für den ausgewählten Zeitraum sowie für die ausgewählten Clientstandorte, Domänen und Protokolle von AFD-Edge-POPs an den Client übertragen werden. |
+| Übertragene Daten | Zeigt Daten an, die für den ausgewählten Zeitraum sowie für die ausgewählten Clientstandorte, Domänen und Protokolle von AFDS-Edge-POPs an den Client übertragen werden. |
 | Spitzenbandbreite | Die Spitzenbreite in Bits pro Sekunde bei der Übertragung von Azure Front Door-Edge-POPs an Clients für den ausgewählten Zeitraum sowie für die ausgewählten Clientstandorte, Domänen und Protokolle | 
-| Anzahl von Anforderungen | Die Anzahl der Anforderungen, die von AFD-Edge-POPs als Antwort an den Client gesendet wurden, für den ausgewählten Zeitraum sowie die ausgewählten Clientstandorte, Domänen und Protokolle |
-| Cachetrefferquote | Der Prozentsatz aller zwischenspeicherbaren Anforderungen, für die AFD den Inhalt von seinen Edge-Caches gesendet hat, für den ausgewählten Zeitraum sowie die ausgewählten Clientstandorte, Domänen und Protokolle |
+| Anzahl von Anforderungen | Die Anzahl der Anforderungen, die von AFDS-Edge-POPs als Antwort an den Client gesendet wurden, für den ausgewählten Zeitraum sowie die ausgewählten Clientstandorte, Domänen und Protokolle |
+| Cachetrefferquote | Der Prozentsatz aller zwischenspeicherbaren Anforderungen, für die AFDS den Inhalt von seinen Edge-Caches gesendet hat, für den ausgewählten Zeitraum sowie die ausgewählten Clientstandorte, Domänen und Protokolle |
 | 5xx-Fehlerrate | Der Prozentsatz der Anforderungen, für die der HTTP-Statuscode „5xx“ gelautet hat, für den ausgewählten Zeitraum sowie die ausgewählten Clientstandorte, Domänen und Protokolle |
 | Gesamtlatenz | Die durchschnittliche Latenz aller Anforderungen für den ausgewählten Zeitraum sowie die ausgewählten Clientstandorte, Domänen und Protokolle. Die Latenz für die einzelnen Anforderungen wird als Gesamtzeit gemessen, die vom Empfang der Clientanforderung durch Azure Front Door bis zum letzten von Azure Front Door an den Client gesendeten Antwortbyte vergeht. |
 
@@ -152,7 +152,7 @@ Dieser Bericht zeigt die Trends des Datenverkehrs und der Antwortstatuscodes nac
 
 ## <a name="traffic-by-location"></a>Traffic by location (Datenverkehr nach Standort)
 
-In diesem Bericht werden die Top 50-Standorte nach dem Land der Besucher angezeigt, die am häufigsten auf Ihre Ressource zugreifen. Der Bericht enthält auch eine Aufschlüsselung der Metriken nach Land und bietet Ihnen einen Überblick über die Länder, in denen der größte Datenverkehr generiert wird. Zudem können Sie erkennen, welches Land eine höhere Cachetrefferquote oder eine höhere Anzahl von 4xx-/5xx-Fehlercodes aufweist.
+In diesem Bericht werden die Top 50-Standorte nach Land/Region der Besucher angezeigt, die am häufigsten auf Ihre Ressource zugreifen. Der Bericht enthält auch eine Aufschlüsselung der Metriken nach Land/Region und bietet Ihnen einen Überblick über die Länder/Regionen, in denen der größte Datenverkehr generiert wird. Zudem können Sie erkennen, welches Land/welche Region eine höhere Cachetrefferquote oder eine höhere Anzahl von 4xx-/5xx-Fehlercodes aufweist.
 
 :::image type="content" source="../media/how-to-reports/front-door-reports-by-location.png" alt-text="Screenshot der Berichte nach Standorten" lightbox="../media/how-to-reports/front-door-reports-by-location-expanded.png":::
 
@@ -160,7 +160,7 @@ Folgendes ist in den Berichten enthalten:
 
 * Eine Weltkarte der Top 50-Länder nach gesendeten Daten oder Anforderungen Ihrer Wahl
 * Zwei Liniendiagramme mit Trendansichten der Top 5-Länder nach gesendeten Daten und Anforderungen Ihrer Wahl 
-* Ein Raster der Top-Länder, in dem die von AFD an Clients gesendeten Daten, Prozentsätze der gesendeten Daten für alle Länder, Anforderungen, Anforderungen in Prozent für alle Länder, die Cachetrefferquote, der 4xx-Antwortcode und der 5xx-Antwortcode angezeigt werden
+* Ein Raster der Top-Länder/-Regionen, in dem die von AFDS an Clients gesendeten Daten, Prozentsätze der gesendeten Daten für alle Länder/Regionen, Anforderungen, Anforderungen in Prozent für alle Länder/Regionen, die Cachetrefferquote, der 4xx-Antwortcode und der 5xx-Antwortcode angezeigt werden
 
 ## <a name="caching"></a>Caching
 
