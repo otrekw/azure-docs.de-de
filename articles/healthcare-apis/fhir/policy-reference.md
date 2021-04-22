@@ -1,19 +1,19 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure API for FHIR
 description: Hier finden Sie eine Liste mit den integrierten Azure Policy-Richtliniendefinitionen für Azure API for FHIR. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 author: matjazl
 ms.author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 292f4115c6e38dcad8cdc389010c53aba2d9292d
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 345e2c0475745ef762479afb29ac74f3bb378a6a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501541"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874266"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-api-for-fhir"></a>Integrierte Azure Policy-Definitionen für Azure API for FHIR
 
