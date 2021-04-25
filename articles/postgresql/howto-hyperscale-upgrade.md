@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 4/5/2021
-ms.openlocfilehash: 3758e2d458e1a6bd052ac746ac361de033d508e9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 161204bf02ac36c1f5a3969cf57c61e98560c9b5
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023885"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518897"
 ---
 # <a name="upgrade-hyperscale-citus-server-group"></a>Aktualisieren einer Hyperscale (Citus)-Servergruppe
 
@@ -23,7 +23,7 @@ In diesen Anleitungen wird beschrieben, wie Sie alle Servergruppenknoten auf ein
 Das Aktualisieren von PostgreSQL führt zu mehr Änderungen, als Sie sich vorstellen können, weil Hyperscale (Citus) die [Datenbankerweiterungen](concepts-hyperscale-extensions.md), einschließlich der Citus-Erweiterung, aktualisiert.
 Wir empfehlen dringend, dass Sie Ihre Anwendung mit der neuen PostgreSQL- und Citus-Version testen, bevor Sie Ihre Produktionsumgebung aktualisieren.
 
-Eine praktische Möglichkeit zum Testen ist das Erstellen einer Kopie Ihrer Servergruppe mithilfe der [Zeitpunktwiederherstellung](concepts-hyperscale-backup.md#point-in-time-restore-pitr). Aktualisieren Sie die Kopie, und testen Sie damit Ihre Anwendung. Nachdem Sie überprüft haben, ob alles einwandfrei funktioniert, aktualisieren Sie die ursprüngliche Servergruppe.
+Eine praktische Möglichkeit zum Testen ist das Erstellen einer Kopie Ihrer Servergruppe mithilfe der [Zeitpunktwiederherstellung](concepts-hyperscale-backup.md#restore). Aktualisieren Sie die Kopie, und testen Sie damit Ihre Anwendung. Nachdem Sie überprüft haben, ob alles einwandfrei funktioniert, aktualisieren Sie die ursprüngliche Servergruppe.
 
 ## <a name="upgrade-a-server-group-in-the-azure-portal"></a>Aktualisieren einer Servergruppe im Azure-Portal
 

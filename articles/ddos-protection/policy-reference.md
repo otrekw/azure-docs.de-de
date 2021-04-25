@@ -8,16 +8,16 @@ ms.service: ddos-protection
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/07/2021
+ms.date: 04/14/2021
 ms.author: yitoh
 ms.custom: subject-policy-reference
 ms.topic: include
-ms.openlocfilehash: 6a0496740fbd82090ba7199ca3e064f5bd2bf7c5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 86fa383fe2456eabe0cce142bd4a9c665fb95a2a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107907"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505699"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-ddos-protection-standard"></a>Integrierte Azure Policy-Definitionen für Azure DDoS Protection Standard
 
@@ -27,7 +27,7 @@ Die Namen der einzelnen integrierten Richtliniendefinitionen sind Links zur ents
 
 ## <a name="azure-ddos-protection-standard"></a>Azure DDoS Protection Standard
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Virtuelle Netzwerke müssen durch Azure DDoS Protection Standard geschützt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d)|Schützen Sie Ihre virtuellen Netzwerke mit Azure DDoS Protection Standard vor volumetrischen Angriffen und Protokollangriffen. Weitere Informationen finden Sie unter [https://aka.ms/ddosprotectiondocs](https://aka.ms/ddosprotectiondocs).|Modify, Audit, Disabled|[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkDdosStandard_Audit.json)|
 |[Für öffentliche IP-Adressen in Azure DDoS Protection Standard müssen Ressourcenprotokolle aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648)|Aktivieren Sie Ressourcenprotokolle für öffentliche IP-Adressen in Diagnoseeinstellungen, um Daten an einen Log Analytics-Arbeitsbereich zu streamen. Sie erhalten per Benachrichtigung, anhand von Berichten und Datenflussprotokollen detaillierten Einblick in Angriffsdatenverkehr und Maßnahmen zum Entschärfen von DDoS-Angriffen.|AuditIfNotExists, DeployIfNotExists, Disabled|[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/PublicIpDdosLogging_Audit.json)|
