@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: ef9c03b687bbc9b8fe736c872bbde14b8daba899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68fc4a10f5a54af7bab82843b7a921fd84e7af40
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519383"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259267"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -139,7 +139,7 @@ Zum Zeitpunkt der Modellimplementierung sollte der AKS-Knoten zu Folgendem in de
 
 Nach der Bereitstellung des Modells und dem Start des Diensts wird azureml-fe automatisch mithilfe der AKS-API erkannt und ist bereit, Anforderungen an das Modell weiterzuleiten. Es muss in der Lage sein, mit den Modell-PODs zu kommunizieren.
 >[!Note]
->Wenn das bereitgestellte Modell eine Konnektivität erfordert (z. B. Abfragen einer externen Datenbank oder eines anderen REST-Diensts, Herunterladen eines BLOGs usw.), dann sollten sowohl die DNS-Auflösung als auch die ausgehende Kommunikation für diese Dienste aktiviert sein.
+>Wenn das bereitgestellte Modell eine Konnektivität erfordert (z. B. Abfragen einer externen Datenbank oder eines anderen REST-Diensts, Herunterladen eines BLOBs usw.), dann sollten sowohl die DNS-Auflösung als auch die ausgehende Kommunikation für diese Dienste aktiviert sein.
 
 ## <a name="deploy-to-aks"></a>Bereitstellen für AKS
 
@@ -179,7 +179,7 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 Verwenden Sie für die Bereitstellung mit der CLI den folgenden Befehl. Ersetzen Sie `myaks` durch den Namen des AKS-Computeziels. Ersetzen Sie `mymodel:1` durch den Namen und die Version des registrierten Modells. Ersetzen Sie `myservice` durch den Namen, den dieser Dienst erhalten soll:
 
 ```azurecli-interactive
-az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy --ct myaks -m mymodel:1 -n myservice --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]

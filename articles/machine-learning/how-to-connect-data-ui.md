@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a0265984c4ae83b8869071017e2fb571a7ff548c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508230"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027651"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Herstellen einer Verbindung mit Daten in Azure Machine Learning Studio
 
@@ -69,7 +69,7 @@ Das folgende Beispiel zeigt, wie das Formular aussieht, wenn Sie einen **Azure-B
 Nachdem Sie einen Datenspeicher erstellt haben, erstellen Sie ein Dataset, um mit Ihren Daten zu interagieren. Datasets packen Ihre Daten in ein selten ausgewertetes Objekt für Aufgaben des maschinellen Lernens wie das Training. [Erfahren Sie mehr über Datasets](how-to-create-register-datasets.md).
 
 Es gibt zwei Arten von Datasets: FileDataset und TabularDataset. 
-[FileDatasets](how-to-create-register-datasets.md#filedataset) erstellen Verweise auf mindestens eine Datei oder auf öffentliche URLs. [TabularDatasets](how-to-create-register-datasets.md#tabulardataset) stellen Ihre Daten in einem Tabellenformat dar. 
+[FileDatasets](how-to-create-register-datasets.md#filedataset) erstellen Verweise auf mindestens eine Datei oder auf öffentliche URLs. [TabularDatasets](how-to-create-register-datasets.md#tabulardataset) stellen Ihre Daten in einem Tabellenformat dar. Sie können „TabularDatasets“ auf der Grundlage von CSV-, TSV-, Parquet- und JSONL-Dateien sowie auf der Grundlage von SQL-Abfrageergebnissen erstellen.
 
 In den folgenden Schritten und in der Animation wird gezeigt, wie ein Dataset im [Azure Machine Learning Studio](https://ml.azure.com) erstellt wird.
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: ccd56afc8c4ea7e236946fc6afa54e471203fe31
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 04/08/2021
+ms.openlocfilehash: 14f0d15d48193267c224f3497c24651ca3249b0b
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065979"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028587"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Herstellen einer Verbindung mit einer Azure Machine Learning-Compute-Instanz in Visual Studio Code (Vorschau)
 
@@ -25,8 +25,75 @@ Eine [Azure Machine Learning Compute-Instanz](concept-compute-instance.md) ist e
 
 Es gibt zwei Möglichkeiten, wie Sie von Visual Studio Code aus eine Verbindung mit einer Compute-Instanz herstellen können:
 
+* Remotecompute-Instanz. Diese Option bietet Ihnen eine komplett ausgestattete Entwicklungsumgebung zum Erstellen Ihrer Projekte für maschinelles Lernen.
 * Über einen Jupyter Notebook-Remoteserver. Mit dieser Option können Sie eine Compute-Instanz als Jupyter Notebook-Remoteserver konfigurieren.
-* Über die [Visual Studio Code-Remoteentwicklung](https://code.visualstudio.com/docs/remote/remote-overview). Mit der Visual Studio Code-Remoteentwicklung können Sie einen Container, einen Remotecomputer oder das Windows-Subsystem für Linux (WSL) als voll ausgestattete Entwicklungsumgebung verwenden.
+
+## <a name="configure-a-remote-compute-instance"></a>Konfigurieren einer Remotecompute-Instanz
+
+Um eine Remotecompute-Instanz für die Entwicklung zu konfigurieren, sind ein paar Voraussetzungen erforderlich.
+
+* Die Azure Machine Learning-Erweiterung für Visual Studio Code. Weitere Informationen finden Sie in der Anleitung zur Einrichtung der [Azure Machine Learning-Erweiterung für Visual Studio Code](tutorial-setup-vscode-extension.md).
+* Einen Azure Machine Learning-Arbeitsbereich. [Verwenden Sie die Azure Machine Learning-Erweiterung für Visual Studio Code, um einen neuen Arbeitsbereich zu erstellen](how-to-manage-resources-vscode.md#create-a-workspace), wenn Sie noch nicht über einen verfügen.
+* Azure Machine Learning-Compute-Instanz. [Verwenden Sie die Azure Machine Learning-Erweiterung für Visual Studio Code, um eine neue Compute-Instanz zu erstellen](how-to-manage-resources-vscode.md#create-compute-instance), wenn Sie keine besitzen.
+
+So stellen Sie eine Verbindung mit Ihrer Remotecompute-Instanz her
+
+# <a name="vs-code"></a>[VS-Code](#tab/extension)
+
+### <a name="azure-machine-learning-extension"></a>Azure Machine Learning-Erweiterung
+
+1. Starten Sie in VS Code die Azure Machine Learning-Erweiterung.
+1. Erweitern Sie den Knoten **Compute-Instanzen** in Ihrer Erweiterung.
+1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, mit der Sie eine Verbindung herstellen möchten, und wählen Sie **Connect to Compute Instance** (Mit Compute-Instanz verbinden) aus.
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png" alt-text="Herstellen einer Verbindung mit einer Compute-Instanz: Azure ML-Erweiterung von Visual Studio Code" lightbox="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png":::
+
+### <a name="command-palette"></a>Befehlspalette
+
+1. Öffnen Sie in VS Code die Befehlspalette, indem Sie **Ansicht > Befehlspalette** auswählen.
+1. Geben Sie in das Textfeld **Azure ML: Connect to Compute Instance** (Mit Compute-Instanz verbinden) ein.
+1. Wählen Sie Ihr Abonnement aus.
+1. Wählen Sie Ihren Arbeitsbereich aus.
+1. Wählen Sie Ihre Compute-Instanz aus oder erstellen Sie eine neue.
+
+# <a name="studio"></a>[Studio](#tab/studio)
+
+Navigieren Sie zu [ml.azure.com](https://ml.azure.com).
+
+> [!IMPORTANT]
+> Um von Visual Studio Code aus eine Verbindung mit Ihrer Remotecompute-Instanz herzustellen, stellen Sie sicher, dass das Konto, mit dem Sie in Azure Machine Learning Studio angemeldet sind, dasselbe ist, das Sie in Visual Studio Code verwenden.
+
+### <a name="compute"></a>Compute
+
+1. Wählen Sie die Registerkarte **Compute** aus.
+1. Wählen Sie in der Spalte *Application URI* (Anwendungs-URI) die Option **VS Code** für die Compute-Instanz aus, mit der Sie eine Verbindung herstellen möchten.
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/studio-compute-instance-vs-code-launch.png" alt-text="Herstellen einer Verbindung mit einer Compute-Instanz: VS Code Azure ML Studio" lightbox="media/how-to-set-up-vs-code-remote/studio-compute-instance-vs-code-launch.png":::
+
+### <a name="notebook"></a>Notebook
+
+1. Wählen Sie die Registerkarte **Notebook** aus.
+1. Wählen Sie auf der Registerkarte *Notebook* die zu bearbeitende Datei aus.
+1. Wählen Sie **Editors > Edit in VS Code (Vorschau)** (Editoren > In VS Code bearbeiten) aus.
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png" alt-text="Herstellen einer Verbindung mit einer Compute-Instanz: VS Code Azure ML Notebook" lightbox="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png":::
+
+---
+
+Es wird ein neues Fenster für Ihre Remotecompute-Instanz geöffnet. Wenn Sie versuchen, eine Verbindung mit einer Remotecompute-Instanz herzustellen, werden die folgenden Aufgaben ausgeführt:
+
+1. Autorisierung Es werden einige Prüfungen durchgeführt, um sicherzustellen, dass der Benutzer, der versucht, eine Verbindung herzustellen, zur Verwendung der Compute-Instanz berechtigt ist.
+1. VS Code Remote Server ist auf der Compute-Instanz installiert.
+1. Für die Interaktion in Echtzeit wird eine WebSocket-Verbindung hergestellt.
+
+Sobald die Verbindung hergestellt ist, wird sie aufrechterhalten. Zu Beginn der Sitzung wird ein Token ausgegeben, das automatisch aktualisiert wird, um die Verbindung mit Ihrer Compute-Instanz aufrechtzuerhalten.
+
+Nachdem Sie eine Verbindung mit Ihrer Remotecompute-Instanz hergestellt haben, verwenden Sie den Editor, um Folgendes auszuführen:
+
+* [Erstellen und verwalten Sie Dateien auf Ihrer Remotecompute-Instanz oder Dateifreigabe](https://code.visualstudio.com/docs/editor/codebasics).
+* Verwenden Sie das [integrierte VS Code-Terminal](https://code.visualstudio.com/docs/editor/integrated-terminal), um [Befehle und Anwendungen auf Ihrer Remotecompute-Instanz auszuführen](how-to-access-terminal.md).
+* [Debuggen von Skripts und Anwendungen](https://code.visualstudio.com/Docs/editor/debugging)
+* [Verwenden von VS Code zum Verwalten Ihrer Git-Repositorys](concept-train-model-git-integration.md)
 
 ## <a name="configure-compute-instance-as-remote-notebook-server"></a>Konfigurieren der Compute-Instanz als Jupyter Notebook-Remoteserver
 
@@ -62,93 +129,6 @@ Nun können Sie weitere Zellen in Ihrem Jupyter Notebook ausführen.
 
 > [!TIP]
 > Sie können auch mit Python-Skriptdateien (.py) arbeiten, die Jupyter-ähnliche Codezellen enthalten. Weitere Informationen finden Sie in der [Visual Studio Code-Dokumentation zu Python Interactive](https://code.visualstudio.com/docs/python/jupyter-support-py).
-
-## <a name="configure-compute-instance-remote-development"></a>Konfigurieren der Remoteentwicklung von Compute-Instanzen
-
-Für die vollständige Remoteentwicklung benötigen Sie einige Voraussetzungen:
-
-* [die Remote-SSH-Erweiterung für VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
-* SSH-fähige Compute-Instanz. Weitere Informationen finden Sie in der Anleitung zum [Erstellen einer Compute-Instanz](how-to-create-manage-compute-instance.md).
-
-> [!NOTE]
-> Auf Windows-Plattformen müssen Sie ggf. [einem mit OpenSSH kompatiblen SSH-Client installieren](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client). PuTTY wird unter Windows nicht unterstützt, da sich der SSH-Befehl im Pfad befinden muss.
-
-### <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>Abrufen der IP-Adresse und des SSH-Ports für die Compute-Instanz
-
-1. Wechseln Sie zum Azure Machine Learning-Studio unter https://ml.azure.com/.
-2. Wählen Sie Ihren [Arbeitsbereich](concept-workspace.md) aus.
-1. Aktualisieren der Registerkarte **Compute-Instanzen**.
-1. Klicken Sie in der Spalte **Anwendungs-URI** auf den **SSH**-Link der Compute-Instanz, die Sie als Remotecompute-Instanz verwenden möchten. 
-1. Notieren Sie die IP-Adresse und den SSH-Port aus dem angezeigten Dialogfeld. 
-1. Speichern Sie den privaten Schlüssel im Verzeichnis „~/.ssh/“ auf dem lokalen Computer. Öffnen Sie beispielsweise einen Editor für eine neue Datei, und fügen Sie den Schlüssel in ein: 
-
-   **Linux:**
-
-   ```sh
-   vi ~/.ssh/id_azmlcitest_rsa  
-   ```
-
-   **Windows**:
-
-   ```cmd
-   notepad C:\Users\<username>\.ssh\id_azmlcitest_rsa
-   ```
-
-   Der private Schlüssel sieht in etwa wie folgt aus:
-
-   ```text
-   -----BEGIN RSA PRIVATE KEY-----
-
-   MIIEpAIBAAKCAQEAr99EPm0P4CaTPT2KtBt+kpN3rmsNNE5dS0vmGWxIXq4vAWXD
-   ..... 
-   ewMtLnDgXWYJo0IyQ91ynOdxbFoVOuuGNdDoBykUZPQfeHDONy2Raw==
-
-   -----END RSA PRIVATE KEY-----
-   ```
-
-1. Ändern Sie die Berechtigungen für die Datei, um sicherzustellen, dass nur Sie die Datei lesen können.  
-
-   ```sh
-   chmod 600 ~/.ssh/id_azmlcitest_rsa
-   ```
-
-### <a name="add-instance-as-a-host"></a>Hinzufügen von Instanz als Host
-
-Öffnen Sie die Datei `~/.ssh/config` (unter Linux) oder `C:\Users<username>.ssh\config` (unter Windows) in einem Editor, und fügen Sie einen neuen Eintrag ähnlich dem folgenden Inhalt hinzu:
-
-```
-Host azmlci1 
-
-    HostName 13.69.56.51 
-
-    Port 50000 
-
-    User azureuser 
-
-    IdentityFile ~/.ssh/id_azmlcitest_rsa
-```
-
-Hier einige Details zu den Feldern:
-
-|Feld|BESCHREIBUNG|
-|----|---------|
-|Host|Verwenden Sie einen beliebigen Kurznamen für die Compute-Instanz. |
-|HostName|Dies ist die IP-Adresse der Compute-Instanz. |
-|Port|Dies ist der im obigen SSH-Dialogfeld angezeigte Port. |
-|Benutzer|Dies muss  `azureuser` sein. |
-|IdentityFile|Muss auf die Datei verweisen, in der Sie den privaten Schlüssel gespeichert haben. |
-
-Jetzt sollten Sie mithilfe des oben verwendeten Kurznamens `ssh azmlci1` eine SSH-Verbindung mit Ihrer Compute-Instanz herstellen können.
-
-### <a name="connect-vs-code-to-the-instance"></a>Verbinden von VS Code mit der Instanz
-
-1. Klicken Sie in der Visual Studio Code-Aktivitätsleiste auf das Remote-SSH-Symbol, um Ihre SSH-Konfigurationen anzuzeigen.
-
-1. Klicken Sie mit der rechten Maustaste auf die soeben erstellte SSH-Hostkonfiguration.
-
-1. Wählen Sie **Im aktuellem Fenster eine Verbindung mit dem Host herstellen** aus. 
-
-Ab diesem Punkt arbeiten Sie komplett auf der Compute-Instanz und können nun Bearbeitungen durchführen, Debuggen, Git benutzen, Erweiterungen verwenden, etc. – genauso, wie das mit Ihrem lokalen Visual Studio Code möglich ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

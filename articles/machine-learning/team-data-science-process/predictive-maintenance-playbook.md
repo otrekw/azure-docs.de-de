@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b6cf2abfa797965d75bacd0b9c5e2eaf02b57a4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98880657"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308573"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure KI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -439,15 +439,16 @@ Microsoft Azure bietet Lernpfade für die grundlegenden Konzepte, die hinter PdM
 
 | Schulungsressource  | Verfügbarkeit |
 |:-------------------|--------------|
-| [Lernpfad für PdM mithilfe von Trees und Random Forest](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Öffentlich | 
-| [Lernpfad für PdM mithilfe von Deep Learning](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Öffentlich |
-| [AI Developer in Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Öffentlich |
-| [Microsoft AI School](https://aischool.microsoft.com/learning-paths) | Öffentlich |
-| [Azure KI-Lernmaterial auf GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Öffentlich |
+| [Microsoft-Dokumentation: Rolle „Wissenschaftliche Fachkraft für Daten“](https://docs.microsoft.com/learn/roles/data-scientist) | Öffentlich |
+| [Microsoft-Dokumentation: Rolle „Technische Fachkraft für KI“](https://docs.microsoft.com/learn/roles/ai-engineer) | Öffentlich |
+| [Microsoft-Dokumentation: Rolle „Technische Fachkraft für Daten“](https://docs.microsoft.com/learn/roles/data-engineer) | Öffentlich |
+| [Microsoft AI School](https://www.microsoft.com/ai/ai-school) | Öffentlich |
 | [LinkedIn Learning](https://www.linkedin.com/learning) | Öffentlich |
-| [Microsoft KI – YouTube-Webinare](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Öffentlich |
+| [Microsoft: Wiedergabelisten auf YouTube für künstliche Intelligenz und Analysen](https://www.youtube.com/c/MicrosoftAzure/playlists?view=50&sort=dd&shelf_id=7) | Öffentlich |
 | [Microsoft AI Show](https://channel9.msdn.com/Shows/AI-Show) | Öffentlich |
-| [LearnAI@MS](https://learnanalytics.microsoft.com) | Partner |
+| [Übersicht: KI-Plattform](https://azure.microsoft.com/overview/ai-platform/) | Öffentlich |
+| [KI-Lab](https://www.microsoft.com/ai/ai-lab) | Öffentlich |
+| [Microsoft-KI](https://www.microsoft.com/AI) | Öffentlich |
 | [Microsoft Partner Network](https://partner.microsoft.com/training/training-center) | Partner |
 
 Zusätzlich werden kostenlose MOOCs (Massive Open Online Courses) zu KI von akademischen Institutionen wie Stanford und MIT sowie anderen Bildungseinrichtungen angeboten.
