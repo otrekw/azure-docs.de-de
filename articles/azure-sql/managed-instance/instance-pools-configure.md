@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96c24c05f5e0dbb671a294b10ee51be411ca25ff
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92793108"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285284"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Bereitstellen von Azure SQL Managed Instance in einem Instanzpool
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -166,7 +166,7 @@ $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGrou
 
 
 > [!NOTE]
-> Pro Pool (nicht pro Instanz) können maximal 100 Datenbanken erstellt werden.
+> Informationen zum Überprüfen der Grenzwerte für die Anzahl von Datenbanken pro Instanzenpool und der verwalteten Instanz, die innerhalb des Pools bereitgestellt werden, finden Sie im Abschnitt [Ressourcenlimits für Instanzenpools](instance-pools-overview.md#resource-limitations).
 
 
 ## <a name="scale"></a>Skalieren 

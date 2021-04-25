@@ -5,17 +5,17 @@ description: Die für Ihre Daten verfügbaren Datenschutzoptionen für Blob Stor
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/22/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: prishet
 ms.subservice: common
-ms.openlocfilehash: afd98e629500bc90cc9ddd1ed4ab2472f733e845
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 90c83397089b77d30694041a37debc0731ea2a38
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803062"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304255"
 ---
 # <a name="data-protection-overview"></a>Übersicht zum Datenschutz
 
@@ -30,7 +30,7 @@ Wenn Sie einen grundlegenden Schutz von Daten für Ihr Speicherkonto und die dar
 - Konfigurieren Sie eine Azure Resource Manager-Sperre für das Speicherkonto, um das Konto vor Löschung oder Konfigurationsänderungen zu schützen. [Weitere Informationen](../common/lock-account-resource.md)
 - Aktivieren Sie das vorläufige Löschen von Containern für das Speicherkonto, um einen gelöschten Container und dessen Inhalt wiederherzustellen. [Weitere Informationen](soft-delete-container-enable.md)
 - Speichern Sie den Zustand eines Blobs in regelmäßigen Abständen:
-  - Aktivieren Sie für Blob Storage-Workloads die Blobversionsverwaltung, um den Zustand Ihrer Daten jedes Mal automatisch zu speichern, wenn ein Blob gelöscht oder überschrieben wird. [Weitere Informationen](versioning-enable.md)
+  - Aktivieren Sie für Blob Storage-Workloads die Blobversionsverwaltung, um den Zustand Ihrer Daten jedes Mal automatisch zu speichern, wenn ein Blob überschrieben wird. [Weitere Informationen](versioning-enable.md)
   - Für Azure Data Lake Storage-Workloads können Sie manuelle Momentaufnahmen erstellen, um den Zustand Ihrer Daten zu einem bestimmten Zeitpunkt zu speichern. [Weitere Informationen](snapshots-overview.md)
 
 Diese Optionen sowie weitere Möglichkeiten der Datensicherung für andere Szenarien werden im folgenden Abschnitt näher beschrieben.
@@ -46,7 +46,7 @@ In der folgenden Tabelle werden die Optionen zusammengefasst, die in Azure Stora
 | Verhindern Sie, dass ein Speicherkonto gelöscht oder geändert wird. | Azure Resource Manager-Sperre<br />[Weitere Informationen](../common/lock-account-resource.md) | Sperren Sie alle Ihre Speicherkonten mit einer Azure Resource Manager-Sperre, um eine Löschung des Speicherkontos zu verhindern. | Schützt das Speicherkonto vor Löschung oder Konfigurationsänderungen.<br /><br />Schützt Container oder Blobs im Konto nicht vor dem Löschen oder Überschreiben. | Ja |
 | Verhindern Sie, dass ein Container und seine Blobs für ein von Ihnen festgelegtes Intervall gelöscht oder geändert werden. | Unveränderlichkeitsrichtlinie für einen Container<br />[Weitere Informationen](storage-blob-immutable-storage.md) | Legen Sie eine Unveränderlichkeitsrichtlinie für einen Container fest, um unternehmenskritische Dokumente zu schützen, z. B. um rechtliche oder gesetzliche Complianceanforderungen zu erfüllen. | Schützt einen Container und seine Blobs vor allen Lösch- und Überschreibvorgängen.<br /><br />Wenn eine gesetzliche Aufbewahrungspflicht oder eine gesperrte zeitbasierte Aufbewahrungsrichtlinie in Kraft ist, ist das Speicherkonto ebenfalls vor dem Löschen geschützt. Container, für die keine Unveränderlichkeitsrichtlinie festgelegt wurde, sind nicht vor dem Löschen geschützt. | Ja, in der Vorschauversion |
 | Stellen Sie einen gelöschten Container innerhalb eines angegebenen Intervalls wieder her. | Vorläufiges Löschen von Containern (Vorschau)<br />[Weitere Informationen](soft-delete-container-overview.md) | Aktivieren Sie das vorläufige Löschen von Containern für alle Speicherkonten, mit einem Mindestaufbewahrungszeitraum von sieben Tagen.<br /><br />Aktivieren Sie die Blobversionsverwaltung und das vorläufige Löschen von Blobs zusammen mit dem vorläufigen Löschen von Containern, um einzelne Blobs in einem Container zu schützen.<br /><br />Speichern Sie Container, die unterschiedliche Aufbewahrungszeiträume benötigen, in separaten Speicherkonten. | Ein gelöschter Container und sein Inhalt können innerhalb des Aufbewahrungszeitraums wiederhergestellt werden.<br /><br />Nur Vorgänge auf Containerebene (z. B. [Container löschen](/rest/api/storageservices/delete-container)) können wiederhergestellt werden. Das vorläufige Löschen von Containern ermöglicht es Ihnen nicht, ein einzelnes Blob im Container wiederherzustellen, wenn dieses gelöscht wurde. | Ja, in der Vorschauversion |
-| Speichern Sie den Zustand eines Blobs automatisch in einer früheren Version, wenn er überschrieben oder gelöscht wird. | Blobversionsverwaltung<br />[Weitere Informationen](versioning-overview.md) | Aktivieren Sie die Blobversionsverwaltung zusammen mit dem vorläufigen Löschen für Container und dem vorläufigen Löschen von Blobs für Speicherkonten, bei denen Sie einen optimalen Schutz für Blobdaten benötigen.<br /><br />Speichern Sie Blobdaten, die keine Versionsverwaltung benötigen, in einem separaten Konto, um die Kosten zu begrenzen. | Jeder Überschreib- oder Löschvorgang für Blobs erstellt eine neue Version. Ein Blob kann aus einer früheren Version wiederhergestellt werden, wenn das Blob gelöscht oder überschrieben wird. | Nein |
+| Speichern Sie den Zustand eines Blobs automatisch in einer früheren Version, wenn er überschrieben wird. | Blobversionsverwaltung<br />[Weitere Informationen](versioning-overview.md) | Aktivieren Sie die Blobversionsverwaltung zusammen mit dem vorläufigen Löschen für Container und dem vorläufigen Löschen von Blobs für Speicherkonten, bei denen Sie einen optimalen Schutz für Blobdaten benötigen.<br /><br />Speichern Sie Blobdaten, die keine Versionsverwaltung benötigen, in einem separaten Konto, um die Kosten zu begrenzen. | Bei jedem Blobschreibvorgang wird eine neue Version erstellt. Die aktuelle Version eines Blobs kann aus einer früheren Version wiederhergestellt werden, wenn die aktuelle Version gelöscht oder überschrieben wurde. | Nein |
 | Stellen Sie ein gelöschtes Blob oder eine Blobversion innerhalb eines bestimmten Intervalls wieder her. | Vorläufiges Löschen von Blobs<br />[Weitere Informationen](soft-delete-blob-overview.md) | Aktivieren Sie das vorläufige Löschen von Blobs für alle Speicherkonten, mit einem Mindestaufbewahrungszeitraum von sieben Tagen.<br /><br />Aktivieren Sie die Blobversionsverwaltung und das vorläufige Löschen von Containern zusammen mit dem vorläufigen Löschen von Blobdaten für einen optimalen Schutz der Blobdaten.<br /><br />Speichern Sie Blobs, die unterschiedliche Aufbewahrungszeiträume benötigen, in separaten Speicherkonten. | Ein gelöschtes Blob oder eine gelöschte Blobversion kann innerhalb des Aufbewahrungszeitraums wiederhergestellt werden. | Nein |
 | Stellen Sie einen Satz von Blockblobs zu einem früheren Zeitpunkt wieder her. | Wiederherstellung bis zu einem bestimmten Zeitpunkt<br />[Weitere Informationen](point-in-time-restore-overview.md) | Wenn Sie die Zeitpunktwiederherstellung verwenden möchten, um zu einem früheren Zustand zurückzukehren, entwerfen Sie Ihre Anwendung so, dass sie anstelle von Containern einzelne Blockblobs löscht. | Ein Satz von Blockblobs kann in den Zustand zu einem bestimmten Zeitpunkt in der Vergangenheit zurückversetzt werden.<br /><br />Nur an Blockblobs vorgenommene Vorgänge werden rückgängig gemacht. Alle an Containern, Seitenblobs oder Anfügeblobs durchgeführten Vorgänge werden nicht rückgängig gemacht. | Nein |
 | Speichern Sie den Zustand eines Blobs zu einem bestimmten Zeitpunkt manuell. | Momentaufnahme eines Blobs<br />[Weitere Informationen](snapshots-overview.md) | Empfohlen als Alternative zur Blobversionsverwaltung, wenn die Versionsverwaltung aus Kosten- oder anderen Gründen für Ihr Szenario nicht geeignet ist, oder wenn das Speicherkonto einen hierarchischen Namespace aktiviert hat. | Ein Blob kann aus einem Momentaufnahme wiederhergestellt werden, wenn das Blob überschrieben wird. Wenn das Blob gelöscht wird, werden auch die Momentaufnahmen gelöscht. | Ja, in der Vorschauversion |
@@ -93,7 +93,7 @@ Sollten Sie Daten wiederherstellen müssen, die überschrieben oder gelöscht wu
 
 In der folgenden Tabelle werden die Kostenüberlegungen für die verschiedenen in diesem Leitfaden beschriebenen Optionen zum Schutz von Daten zusammengefasst.
 
-| Datenschutzoption | Kostenbetrachtung |
+| Datenschutzoption | Überlegungen zu Kosten |
 |-|-|
 | Azure Resource Manager-Sperre für ein Speicherkonto | Keine Gebühren für die Konfiguration einer Sperre für ein Speicherkonto |
 | Unveränderlichkeitsrichtlinie für einen Container | Keine Kosten für die Konfiguration einer Unveränderlichkeitsrichtlinie für einen Container |
