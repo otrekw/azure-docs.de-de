@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 03/02/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6b4d5c1372a8351f1fe5a6608aff38bf232aabd8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1fe5974bafddcb4e474ef59a062836e071ab9461
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121948"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304918"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Versionshinweise – Azure Arc-fähige Datendienste (Vorschauversion)
 
@@ -22,11 +22,50 @@ In diesem Artikel werden die Funktionen, Features und Verbesserungen hervorgehob
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>März 2021
+
+Das Release vom März 2021 wurde ursprünglich am 5. April 2021 eingeführt, und die letzten Releasephasen wurden am 9. April 2021 abgeschlossen.
+
+Informationen zu den Einschränkungen dieses Releases finden Sie unter [Bekannte Probleme – Azure Arc-fähige Datendienste (Vorschauversion)](known-issues.md).
+
+Versionsnummer der Azure Data CLI (`azdata`): 20.3.2. Sie können `azdata` über [Installieren der Azure Data CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) installieren.
+
+### <a name="data-controller"></a>Datencontroller
+
+- Stellen Sie den Datencontroller der Azure Arc-fähige Datendienste im direkten Konnektivitätsmodus über das Portal bereit. Beginnen Sie mit [Bereitstellen des Datencontrollers: Direkter Konnektivitätsmodus – Voraussetzungen](deploy-data-controller-direct-mode-prerequisites.md).
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>PostgreSQL Hyperscale mit Azure Arc-Aktivierung
+
+Beide benutzerdefinierten Ressourcendefinitionen (Custom Resource Definitions, CRD) für PostgreSQL wurden in einer einzigen CRD konsolidiert. Siehe hierzu die folgende Tabelle.
+
+|Release |CRD |
+|-----|-----|
+|Februar 2021 und früher| postgresql-11s.arcdata.microsoft.com<br/>postgresql-12s.arcdata.microsoft.com |
+|Ab März 2021 | postgresqls.arcdata.microsoft.com
+
+Beim Bereinigen früherer Installationen löschen Sie die vorherigen CRDs. Siehe [Bereinigen früherer Installationen](create-data-controller-using-kubernetes-native-tools.md#cleanup-from-past-installations).
+
+### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc-fähige SQL Managed Instance-Instanz
+
+- Sie können jetzt eine SQL Managed Instance-Instanz über das Azure-Portal im direkten Konnektivitätsmodus erstellen.
+
+- Sie können jetzt eine Datenbank auf SQL Managed Instance mit drei Replikaten wiederherstellen, und sie wird automatisch der Verfügbarkeitsgruppe hinzugefügt. 
+
+- Sie können jetzt eine Verbindung mit einem sekundären schreibgeschützten Endpunkt auf SQL Managed Instance-Instanzen herstellen, die mit drei Replikaten bereitgestellt wurden. Verwenden Sie `azdata arc sql endpoint list`, um den sekundären schreibgeschützten Verbindungsendpunkt anzuzeigen.
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+- Im direkten Konnektivitätsmodus ist das Hochladen von Verbrauch, Metriken und Protokollen mit `azdata arc dc upload` derzeit blockiert. Der Verbrauch wird automatisch hochgeladen. Der Upload für einen Datencontroller, der im indirekten Konnektivitätsmodus erstellt wurde, sollte weiterhin funktionieren.
+- Die Bereitstellung eines Datencontrollers im direkten Modus kann nur über das Azure-Portal erfolgen und ist nicht über Clienttools wie azdata, Azure Data Studio oder kubectl verfügbar.
+- Die Bereitstellung einer SQL Managed Instance-Instanz mit Azure Arc-Unterstützung im direkten Modus kann nur über das Azure-Portal erfolgen und ist nicht über Tools wie azdata, Azure Data Studio oder kubectl verfügbar.
+- Die Bereitstellung von Azure Arc-fähigem PostgeSQL Hyperscale im direkten Modus ist derzeit nicht verfügbar.
+- Der automatische Upload von Verbrauchsdaten im direkten Konnektivitätsmodus schlägt fehl, wenn ein Proxy über `–proxy-cert <path-t-cert-file>` verwendet wird.
+
 ## <a name="february-2021"></a>Februar 2021
 
 ### <a name="new-capabilities-and-features"></a>Neue Funktionen und Features
 
-Versionsnummer der Azure Data CLI (`azdata`): 20.3.1. Download: [https://aka.ms/azdata](https://aka.ms/azdata). Sie können `azdata` über [Installieren der Azure Data CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) installieren.
+Versionsnummer der Azure Data CLI (`azdata`): 20.3.1. Sie können `azdata` über [Installieren der Azure Data CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) installieren.
 
 Zusätzliche Updates umfassen:
 
@@ -44,7 +83,7 @@ Informationen zu Problemen im Zusammenhang mit diesem Release finden Sie unter [
 
 ### <a name="new-capabilities-and-features"></a>Neue Funktionen und Features
 
-Versionsnummer der Azure Data CLI (`azdata`): 20.3.0. Download: [https://aka.ms/azdata](https://aka.ms/azdata). Sie können `azdata` über [Installieren der Azure Data CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) installieren.
+Versionsnummer der Azure Data CLI (`azdata`): 20.3.0. Sie können `azdata` über [Installieren der Azure Data CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) installieren.
 
 Zusätzliche Updates umfassen:
 - Lokalisiertes Portal für 17 neue Sprachen verfügbar.
@@ -70,7 +109,7 @@ Zusätzliche Updates umfassen:
 
 ### <a name="new-capabilities--features"></a>Neue Funktionen und Features
 
-Versionsnummer der Azure Data CLI (`azdata`): 20.2.5. Download: [https://aka.ms/azdata](https://aka.ms/azdata).
+Versionsnummer der Azure Data CLI (`azdata`): 20.2.5. Sie können `azdata` über [Installieren der Azure Data CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) installieren.
 
 Anzeigen von Endpunkten für SQL Managed Instance und PostgreSQL Hyperscale mithilfe der Azure Data-CLI (`azdata`) mit den Befehlen `azdata arc sql endpoint list` -und `azdata arc postgres endpoint list`.
 
@@ -127,16 +166,9 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Deaktivieren der Kontrollkästchen für die einzelnen Zonen, um keine Zone anzugeben":::
 
-#### <a name="postgresql"></a>PostgreSQL
-
-- PostgreSQL Hyperscale mit Azure Arc-Unterstützung gibt eine ungenaue Fehlermeldung zurück, wenn es nicht auf den von Ihnen angegebenen relativen Zeitpunkt wiederherstellen kann. Wenn Sie z. B. einen Zeitpunkt für die Wiederherstellung angegeben haben, der älter ist als das, was Ihre Sicherungen enthalten, schlägt die Wiederherstellung mit ungefähr einer Fehlermeldung wie folgt fehl: FEHLER: (404). Ursache: Nicht gefunden: HTTP-Antworttext: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Fehler beim Wiederherstellen der Sicherung für Server...}
-Wenn dies eintritt, starten Sie den Befehl neu, nachdem Sie einen Zeitpunkt angegeben haben, der innerhalb des Datumsbereichs liegt, für den Sie Sicherungen besitzen. Sie bestimmen diesen Bereich, indem Sie Ihre Sicherungen auflisten und die Datumsangaben prüfen, an denen sie erstellt wurden.
-- Point-in-Time-Wiederherstellung wird nur zwischen Servergruppen unterstützt. Der Zielserver eines Point-in-Time-Wiederherstellungsvorgangs kann nicht der Server sein, von dem Sie die Sicherung erstellt haben. Er muss in einer anderen Servergruppe sein. Eine vollständige Wiederherstellung wird jedoch in derselben Servergruppe unterstützt.
-- Bei Durchführung einer vollständigen Wiederherstellung ist eine Backup-ID erforderlich. Wenn Sie keine Sicherungs-ID angeben, wird standardmäßig die letzte Sicherung verwendet. Dies funktioniert in dieser Version nicht.
-
 ## <a name="october-2020"></a>Oktober 2020 
 
-Versionsnummer der Azure Data CLI (`azdata`): 20.2.3. Download: [https://aka.ms/azdata](https://aka.ms/azdata).
+Versionsnummer der Azure Data CLI (`azdata`): 20.2.3. Sie können `azdata` über [Installieren der Azure Data CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) installieren.
 
 ### <a name="breaking-changes"></a>Aktuelle Änderungen
 

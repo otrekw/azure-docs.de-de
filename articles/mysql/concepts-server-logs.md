@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: efabb3de69e96ec1a8955b2691af20a36fbabfe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3342b38f782b718cefd63295ef4d4d26b525058
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595932"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259046"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Protokolle für langsame Abfragen in Azure Database for MySQL
 In Azure Database for MySQL ist das Protokoll für langsame Abfragen für Benutzer verfügbar. Der Zugriff auf das Transaktionsprotokoll wird jedoch nicht unterstützt. Das Protokoll für langsame Abfragen kann verwendet werden, um Leistungsengpässe für die Problembehandlung zu erkennen.
@@ -45,7 +45,7 @@ Beim lokalen Serverspeicher können Sie langsame Abfrageprotokolle über das Azu
 Azure Monitor-Diagnoseprotokolle ermöglichen es Ihnen, langsame Abfrageprotokolle an Azure Monitor-Protokolle (Protokollanalyse), Azure Storage oder Event Hubs zu senden. Weitere Informationen finden Sie [unten](concepts-server-logs.md#diagnostic-logs).
 
 ## <a name="local-server-storage-log-retention"></a>Protokollaufbewahrung im lokalen Serverspeicher
-Wenn Sie sich beim lokalen Speicher des Servers anmelden, stehen Protokolle bis zu sieben Tage ab dem Zeitpunkt ihrer Erstellung zur Verfügung. Wenn die Gesamtgröße der verfügbaren Protokolle 7 GB überschreitet, werden die ältesten Dateien gelöscht, bis Speicherplatz verfügbar ist.
+Wenn Sie sich beim lokalen Speicher des Servers anmelden, stehen Protokolle bis zu sieben Tage ab dem Zeitpunkt ihrer Erstellung zur Verfügung. Wenn die Gesamtgröße der verfügbaren Protokolle 7 GB überschreitet, werden die ältesten Dateien gelöscht, bis Speicherplatz verfügbar ist. Das Speicherlimit von 7 GB für die Serverprotokolle ist kostenlos verfügbar und kann nicht erweitert werden. 
 
 Die Protokolle werden alle 24 Stunden oder bei Erreichen einer Größe von 7 GB rotiert, je nachdem, welches Ereignis früher eintritt.
 

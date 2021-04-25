@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 468f1b91d6c6157cd2af6de9599bad7f43c1ad8f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed73c114c015ce38fefa02d2b71e27e8f85dca39
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492556"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028671"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge-Sicherheits-Manager
 
@@ -119,12 +119,17 @@ Sichere Hardware ist erforderlich, um innerhalb der IoT Edge-Geräthardware eine
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge-Sicherheits-Manager – Integration und Wartung
 
-Der IoT Edge-Sicherheits-Manager versucht, die Komponenten, die bei benutzerdefinierten Sicherheitsmaßnahmen zum Schutz der Sicherheit und Integrität der Azure IoT Edge-Plattform beitragen, zu identifizieren und zu isolieren. Drittanbieter wie Gerätehersteller sollten die ihnen zur Verfügung stehenden benutzerdefinierten Sicherheitsfeatures für ihre Gerätehardware nutzen.  Im nächsten Abschnitt finden Sie Links zu Beispielen für das Absichern des Azure IoT-Sicherheits-Managers mit dem Trusted Platform Module (TPM) für Windows und Linux. In diesen Beispielen werden Software oder virtuelle TPMs verwendet. Sie gelten jedoch direkt für die Verwendung diskreter TPM-Geräte.  
+Der IoT Edge-Sicherheits-Manager versucht, die Komponenten, die bei benutzerdefinierten Sicherheitsmaßnahmen zum Schutz der Sicherheit und Integrität der Azure IoT Edge-Plattform beitragen, zu identifizieren und zu isolieren. Drittanbieter wie Gerätehersteller sollten die ihnen zur Verfügung stehenden benutzerdefinierten Sicherheitsfeatures für ihre Gerätehardware nutzen.  
+
+Informieren Sie sich, wie Sie den Azure IoT-Sicherheits-Manager mit dem Trusted Platform Module (TPM) mithilfe von Software oder virtuellen TPMs härten können:  
+
+Erstellen und Bereitstellen eines [IoT Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer](how-to-auto-provision-simulated-device-linux.md)
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Erstellen und Bereitstellen eines [IoT Edge-Geräts mit simuliertem TPM unter Windows](how-to-auto-provision-simulated-device-windows.md)
+:::moniker-end
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie den Blog unter [Securing the intelligent edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/) (Sichern von Intelligent Edge).
-
-Erstellen und Bereitstellen eines [IoT Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer](how-to-auto-provision-simulated-device-linux.md)
-
-Erstellen und Bereitstellen eines [IoT Edge-Geräts mit simuliertem TPM unter Windows](how-to-auto-provision-simulated-device-windows.md)

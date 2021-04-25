@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: c7be10e14daf3ee769e86d51f648cc6b656a416a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5450e4846c3c49c89830ae65c50a95ee0c8d6eb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300900"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803386"
 ---
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Überprüfen von CI/CD in IoT Edge mit den Build- und Releasepipelines
 
@@ -36,3 +36,5 @@ Um einen Buildauftrag auszulösen, können Sie einen Commit in das Quellcoderepo
 6. Klicken Sie auf die Stage **dev**, um die Releaseprotokolle anzuzeigen.
 
     ![Releaseprotokolle](./media/iot-edge-verify-iot-edge-continuous-integration-continuous-deployment/release-logs.png)
+
+7. Wenn bei Ihrer Pipeline ein Fehler aufgetreten ist, sehen Sie sich zuerst die Protokolle an. Sie können Protokolle anzeigen, indem Sie zur Zusammenfassung der Pipelineausführung navigieren und dann den Auftrag und die Aufgabe auswählen. Wenn eine bestimmte Aufgabe fehlschlägt, überprüfen Sie die Protokolle dafür. Ausführliche Anleitungen zum Konfigurieren und Verwenden von Protokollen finden Sie unter [Überprüfen von Protokollen zum Diagnostizieren von Pipelineproblemen](/azure/devops/pipelines/troubleshooting/review-logs).

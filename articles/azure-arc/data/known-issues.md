@@ -9,20 +9,51 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee652047a33d73ece2d7648905fa590d90b1fb2f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121999"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029504"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>Bekannte Probleme: Azure Arc-fähige Datendienste (Vorschauversion)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>März 2021
+
+### <a name="data-controller"></a>Datencontroller
+
+- Sie können einen Datencontroller im direkten Konnektivitätsmodus über das Azure-Portal erstellen. Die Bereitstellung mit anderen Azure Arc-fähigen Datendiensttools wird nicht unterstützt. Insbesondere können Sie während dieses Releases keinen Datencontroller im direkten Konnektivitätsmodus mit einem der folgenden Tools bereitstellen.
+   - Azure Data Studio
+   - Azure Data CLI (`azdata`)
+   - Native Kubernetes-Tools
+
+   In [Bereitstellen eines Azure Arc-Datencontrollers | Direkter Konnektivitätsmodus](deploy-data-controller-direct-mode.md) wird erläutert, wie Sie den Datencontroller im Portal erstellen. 
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>PostgreSQL Hyperscale mit Azure Arc-Aktivierung
+
+- Die Bereitstellung einer Azure Arc-fähigen Postgres Hyperscale-Servergruppe in einem Arc-Datencontroller, der für den direkten Konnektivitätsmodus aktiviert ist, wird nicht unterstützt.
+- Durch das Übergeben eines ungültigen Werts an den Parameter `--extensions` beim Bearbeiten der Konfiguration einer Servergruppe, um zusätzliche Erweiterungen zu aktivieren, wird die Liste der aktivierten Erweiterungen fälschlicherweise auf die Liste zurückgesetzt, die zum Zeitpunkt der Erstellung der Servergruppe bestanden hat, und verhindert, dass Benutzer zusätzliche Erweiterungen erstellen können. Die einzige verfügbare Problemumgehung besteht in diesem Fall im Löschen und erneuten Bereitstellen der Servergruppe.
+
 ## <a name="february-2021"></a>Februar 2021
 
-- Modus für verbundene Cluster ist deaktiviert
+### <a name="data-controller"></a>Datencontroller
+
+- Der direkte Konnektivitätsmodus für Cluster ist deaktiviert.
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>PostgreSQL Hyperscale mit Azure Arc-Aktivierung
+
+- Die Point-in-Time-Wiederherstellung wird für NFS-Speicher vorerst nicht unterstützt.
+- Es ist nicht möglich, die „pg_cron“-Erweiterung gleichzeitig zu aktivieren und zu konfigurieren. Hierfür müssen Sie zwei Befehle verwenden. Einen Befehl zum Aktivieren und einen Befehl zum Konfigurieren. 
+
+   Beispiel:
+   ```console
+   § azdata arc postgres server edit -n myservergroup --extensions pg_cron 
+   § azdata arc postgres server edit -n myservergroup --engine-settings cron.database_name='postgres'
+   ```
+
+   Der erste Befehl erfordert einen Neustart der Servergruppe. Stellen Sie also vor dem Ausführen des zweiten Befehls sicher, dass der Zustand der Servergruppe von „Aktualisierung“ in „Bereit“ gewechselt ist. Wenn Sie den zweiten Befehl ausführen, bevor der Neustart abgeschlossen wurde, tritt ein Fehler auf. In diesem Fall warten Sie einfach einige weitere Augenblicke, und führen Sie den zweiten Befehl erneut aus.
 
 ## <a name="introduced-prior-to-february-2021"></a>Vor Februar 2021
 
@@ -43,12 +74,6 @@ ms.locfileid: "102121999"
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Deaktivieren der Kontrollkästchen für die einzelnen Zonen, um keine Zone anzugeben":::
 
-### <a name="postgresql"></a>PostgreSQL
-
-- PostgreSQL Hyperscale mit Azure Arc-Unterstützung gibt eine ungenaue Fehlermeldung zurück, wenn es nicht auf den von Ihnen angegebenen relativen Zeitpunkt wiederherstellen kann. Wenn Sie beispielsweise einen Zeitpunkt für die Wiederherstellung angegeben haben, der weiter zurückliegt als das, was Ihre Sicherungen enthalten, ist die Wiederherstellung nicht erfolgreich, und es wird eine Fehlermeldung wie die folgende angezeigt: `ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}`.
-Wenn dies eintritt, starten Sie den Befehl neu, nachdem Sie einen Zeitpunkt angegeben haben, der innerhalb des Datumsbereichs liegt, für den Sie Sicherungen besitzen. Sie bestimmen diesen Bereich, indem Sie Ihre Sicherungen auflisten und die Datumsangaben prüfen, an denen sie erstellt wurden.
-- Point-in-Time-Wiederherstellung wird nur zwischen Servergruppen unterstützt. Der Zielserver eines Point-in-Time-Wiederherstellungsvorgangs kann nicht der Server sein, von dem Sie die Sicherung erstellt haben. Er muss in einer anderen Servergruppe sein. Eine vollständige Wiederherstellung wird jedoch in derselben Servergruppe unterstützt.
-- Bei Durchführung einer vollständigen Wiederherstellung ist eine Backup-ID erforderlich. Wenn Sie keine Sicherungs-ID angeben, wird standardmäßig die letzte Sicherung verwendet. Dies funktioniert in dieser Version nicht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

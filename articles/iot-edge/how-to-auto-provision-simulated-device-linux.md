@@ -4,27 +4,22 @@ description: Verwenden eines simulierten TPM auf einem virtuellen Linux-Computer
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 6/30/2020
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: ca16099cffc22a19c2ee35b00ae6f1bcbe2977a7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166597"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312398"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mit einem TPM unter Linux
 
-[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 In diesem Artikel erfahren Sie, wie Sie die automatische Bereitstellung für ein Linux-basiertes IoT Edge-Gerät mit einem Trusted Platform Module (TPM) testen. Azure IoT Edge-Geräte können per [Gerätebereitstellungsdienst](../iot-dps/index.yml) automatisch bereitgestellt werden. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](../iot-dps/about-iot-dps.md#provisioning-process), bevor Sie fortfahren.
-
-:::moniker range=">=iotedge-2020-11"
-> [!NOTE]
-> Derzeit wird die automatische Bereitstellung mithilfe der TPM-Authentifizierung in IoT Edge Version 1.2 nicht unterstützt.
-:::moniker-end
 
 Aufgaben:
 
@@ -34,7 +29,7 @@ Aufgaben:
 1. Installieren Sie IoT Edge-Runtime, und verbinden Sie das Gerät mit einem IoT Hub.
 
 > [!TIP]
-> In diesem Artikel wird beschrieben, wie Sie die DPS-Bereitstellung mithilfe eines TPM-Simulators testen. Viele Informationen darin gelten aber auch für physische TPM-Hardware, wie z.B. das [Infineon OPTIGA&trade; TPM](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e), ein Azure Certified for IoT-Gerät.
+> In diesem Artikel wird beschrieben, wie Sie die DPS-Bereitstellung mithilfe eines TPM-Simulators testen. Viele Informationen darin gelten aber auch für physische TPM-Hardware, wie z.B. das [Infineon OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), ein Azure Certified for IoT-Gerät.
 >
 > Wenn Sie ein physisches Gerät verwenden, können Sie mit dem Abschnitt [Abrufen von Bereitstellungsinformationen von einem physischen Gerät](#retrieve-provisioning-information-from-a-physical-device) in diesem Artikel fortfahren.
 
@@ -191,6 +186,9 @@ Führen Sie die Schritte unter [Installieren der Azure IoT Edge-Runtime](how-to-
 
 Sobald die Runtime auf Ihrem Gerät installiert wurde, konfigurieren Sie es mit den Informationen, die es zum Herstellen einer Verbindung zwischen Device Provisioning Service und IoT Hub verwendet.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Ermitteln Sie Ihren DPS-**ID-Bereich** und die **Registrierungs-ID** des Geräts, die in den vorhergehenden Abschnitten erfasst wurden.
 
 1. Öffnen Sie die Konfigurationsdatei auf dem IoT Edge-Gerät.
@@ -216,11 +214,52 @@ Sobald die Runtime auf Ihrem Gerät installiert wurde, konfigurieren Sie es mit 
    # dynamic_reprovisioning: false
    ```
 
-   Verwenden Sie optional die Zeilen `always_reprovision_on_startup` oder `dynamic_reprovisioning`, um das Verhalten bei der erneuten Bereitstellung Ihres Geräts zu konfigurieren. Wenn für ein Gerät die erneute Bereitstellung beim Start festgelegt wurde, wird es immer zuerst versuchen, mit DPS bereitzustellen, und bei einem Fehler auf die Bereitstellungssicherung zurückgreifen. Wurde für ein Gerät festgelegt, dass es sich selbst dynamisch erneut bereitstellt, wird IoT Edge neu gestartet und erneut bereitgestellt, wenn ein erneutes Bereitstellungsereignis erkannt wird. Weitere Informationen finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](../iot-dps/concepts-device-reprovision.md).
-
 1. Aktualisieren Sie die Werte `scope_id` und `registration_id` mit Ihren DPS- und Geräteinformationen.
 
+1. Verwenden Sie optional die Zeilen `always_reprovision_on_startup` oder `dynamic_reprovisioning`, um das Verhalten bei der erneuten Bereitstellung Ihres Geräts zu konfigurieren. Wenn für ein Gerät die erneute Bereitstellung beim Start festgelegt wurde, wird es immer zuerst versuchen, mit DPS bereitzustellen, und bei einem Fehler auf die Bereitstellungssicherung zurückgreifen. Wurde für ein Gerät festgelegt, dass es sich selbst dynamisch erneut bereitstellt, wird IoT Edge neu gestartet und erneut bereitgestellt, wenn ein erneutes Bereitstellungsereignis erkannt wird. Weitere Informationen finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](../iot-dps/concepts-device-reprovision.md).
+
+1. Speichern und schließen Sie die Datei.
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Ermitteln Sie Ihren DPS-**ID-Bereich** und die **Registrierungs-ID** des Geräts, die in den vorhergehenden Abschnitten erfasst wurden.
+
+1. Öffnen Sie die Konfigurationsdatei auf dem IoT Edge-Gerät.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. Suchen Sie den Abschnitt zu Bereitstellungskonfigurationen der Datei. Heben Sie die Auskommentierung der Zeilen für die TPM-Bereitstellung auf, und vergewissern Sie sich, dass alle anderen Bereitstellungszeilen auskommentiert sind.
+
+   ```toml
+   # DPS provisioning with TPM
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "tpm"
+   registration_id = "<REGISTRATION_ID>"
+   ```
+
+1. Aktualisieren Sie die Werte `id_scope` und `registration_id` mit Ihren DPS- und Geräteinformationen.
+
+1. Suchen Sie optional in der Datei nach dem Abschnitt zum „Modus für die automatische erneute Bereitstellung“. Verwenden Sie den Parameter `auto_reprovisioning_mode`, um das Verhalten bei der erneuten Bereitstellung Ihres Geräts für `Dynamic`, `AlwaysOnStartup` oder `OnErrorOnly` zu konfigurieren. Weitere Informationen finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](../iot-dps/concepts-device-reprovision.md).
+
+1. Speichern und schließen Sie die Datei.
+:::moniker-end
+<!-- end 1.2 -->
+
 ## <a name="give-iot-edge-access-to-the-tpm"></a>Gewähren von IoT Edge-Zugriff für das TPM
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Für die automatische Gerätebereitstellung benötigt die IoT Edge-Runtime Zugriff auf das TPM.
 
@@ -272,9 +311,68 @@ Sie können TPM-Zugriff auf die IoT Edge-Runtime gewähren, indem Sie die System
    ```
 
    Wenn Sie nicht sehen, dass die richtigen Berechtigungen angewendet wurden, versuchen Sie, Ihren Computer neu zu starten, um Udev zu aktualisieren.
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="restart-the-iot-edge-runtime"></a>Neustart der IoT Edge-Runtime
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Die IoT Edge-Runtime basiert auf einem TPM-Dienst, der den Zugriff eines Brokers auf das TPM eines Geräts vermittelt. Dieser Dienst muss für die automatische Bereitstellung Ihres Geräts auf das TPM zugreifen.
 
+Sie können Zugriff auf das TPM gewähren, indem Sie die Systemeinstellungen überschreiben, sodass der Dienst `aziottpm` Stammrechte hat. Wenn Sie die Dienstberechtigungen nicht erhöhen möchten, können Sie auch die folgenden Schritte ausführen, um den TPM-Zugriff manuell bereitzustellen.
+
+1. Suchen Sie den Pfad zum TPM-Hardwaremodul auf Ihrem Gerät, und speichern Sie ihn als lokale Variable.
+
+   ```bash
+   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
+   ```
+
+2. Erstellen Sie eine neue Regel, damit die IoT Edge-Runtime Zugriff auf tpm0 erhält.
+
+   ```bash
+   sudo touch /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+3. Öffnen Sie die Regeldatei.
+
+   ```bash
+   sudo nano /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+4. Kopieren Sie die folgenden Informationen, in die Regeldatei.
+
+   ```input
+   # allow aziottpm access to tpm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
+   ```
+
+5. Speichern und beenden Sie die Datei.
+
+6. Lösen Sie das Udev-System aus, um die neue Regel ausgewertet.
+
+   ```bash
+   /bin/udevadm trigger $tpm
+   ```
+
+7. Vergewissern Sie sich, dass die Regel erfolgreich angewendet wurde.
+
+   ```bash
+   ls -l /dev/tpm0
+   ```
+
+   Die erfolgreiche Ausgabe sieht wie folgt aus:
+
+   ```output
+   crw-rw---- 1 root aziottpm 10, 224 Jul 20 16:27 /dev/tpm0
+   ```
+
+   Wenn Sie nicht sehen, dass die richtigen Berechtigungen angewendet wurden, versuchen Sie, Ihren Computer neu zu starten, um Udev zu aktualisieren.
+:::moniker-end
+<!-- end 1.2 -->
+
+## <a name="restart-iot-edge-and-verify-successful-installation"></a>Neustarten von IoT Edge und Überprüfen der erfolgreichen Installation
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Starten Sie die IoT Edge-Runtime neu, damit alle am Gerät vorgenommenen Konfigurationsänderungen erfasst werden.
 
    ```bash
@@ -287,6 +385,12 @@ Starten Sie die IoT Edge-Runtime neu, damit alle am Gerät vorgenommenen Konfigu
    sudo systemctl status iotedge
    ```
 
+Untersuchen Sie die Daemonprotokolle.
+
+```cmd/sh
+journalctl -u iotedge --no-pager --no-full
+```
+
 Wenn Bereitstellungsfehler angezeigt werden, sind die Konfigurationsänderungen möglicherweise noch nicht wirksam. Starten Sie den IoT Edge-Daemon erneut.
 
    ```bash
@@ -294,22 +398,40 @@ Wenn Bereitstellungsfehler angezeigt werden, sind die Konfigurationsänderungen 
    ```
 
 Oder starten Sie Ihren virtuellen Computer erneut, um festzustellen, ob die Änderungen bei einem sauberen Start wirksam werden.
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Wenden Sie die am Gerät vorgenommenen Konfigurationsänderungen an.
 
-Wenn die Runtime erfolgreich gestartet wurde, können Sie zum IoT Hub wechseln und sehen, dass Ihr neues Gerät automatisch bereitgestellt wurde. Es ist jetzt bereit für die Ausführung von IoT Edge-Modulen.
+   ```bash
+   sudo iotedge config apply
+   ```
 
-Überprüfen Sie den Status des IoT Daemons.
+Überprüfen Sie, ob die IoT Edge-Runtime ausgeführt wird.
 
-```cmd/sh
-systemctl status iotedge
-```
+   ```bash
+   sudo iotedge system status
+   ```
 
 Untersuchen Sie die Daemonprotokolle.
 
-```cmd/sh
-journalctl -u iotedge --no-pager --no-full
-```
+   ```cmd/sh
+   sudo iotedge system logs
+   ```
+
+Wenn Bereitstellungsfehler angezeigt werden, sind die Konfigurationsänderungen möglicherweise noch nicht wirksam. Versuchen Sie, den IoT Edge-Daemon neu zu starten.
+
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+Oder starten Sie Ihren virtuellen Computer erneut, um festzustellen, ob die Änderungen bei einem sauberen Start wirksam werden.
+:::moniker-end
+<!-- end 1.2 -->
+
+Wenn die Runtime erfolgreich gestartet wurde, können Sie zum IoT Hub wechseln und sehen, dass Ihr neues Gerät automatisch bereitgestellt wurde. Es ist jetzt bereit für die Ausführung von IoT Edge-Modulen.
 
 Führen Sie ausgeführte Module auf.
 

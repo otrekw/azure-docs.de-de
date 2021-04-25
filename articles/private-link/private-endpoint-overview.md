@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1302d44a4cb5b09f6dc3b1bf0cb08a12a932c87
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508808"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029402"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -22,7 +22,7 @@ Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat un
  Für einen privaten Endpunkt werden die folgenden Eigenschaften angegeben: 
 
 
-|Eigenschaft  |Beschreibung |
+|Eigenschaft  |BESCHREIBUNG |
 |---------|---------|
 |Name    |    Ein eindeutiger Name innerhalb der Ressourcengruppe.      |
 |Subnet    |  Das Subnetz, dem private IP-Adressen aus einem virtuellen Netzwerk bereitgestellt und zugeordnet werden. Anforderungen an das Subnetz finden Sie im Abschnitt „Einschränkungen“ in diesem Artikel.         |
@@ -39,7 +39,7 @@ Im Folgenden finden Sie einige wichtige Details zu privaten Endpunkten:
 
 - Beim Erstellen eines privaten Endpunkts wird für die Lebensdauer der Ressource auch eine schreibgeschützte Netzwerkschnittstelle eingerichtet. Der Schnittstelle werden dynamisch private IP-Adressen aus dem Subnetz zugewiesen, das der Private Link-Ressource zugeordnet ist. Der Wert der privaten IP-Adresse bleibt über den gesamten Lebenszyklus des privaten Endpunkts unverändert.
  
-- Der private Endpunkt muss in derselben Region wie das virtuelle Netzwerk bereitgestellt werden. 
+- Der private Endpunkt muss in derselben Region und im selben Abonnement wie das virtuelle Netzwerk bereitgestellt werden. 
  
 - Die Private Link-Ressource kann in einer anderen Region als das virtuelle Netzwerk und der private Endpunkt bereitgestellt werden.
  

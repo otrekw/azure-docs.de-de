@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: d7ae1e72dee28509c1338a1b56cf42a5293af9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a45b8db1f17ead8e55bac2b2bf82aa44cb7f080e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104670255"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304697"
 ---
 # <a name="glossary-of-iot-terms"></a>Glossar mit IoT-Begriffen
 
@@ -394,7 +394,7 @@ Beim [Azure Digital Twins-Dienst](../digital-twins/index.yml) können Modelle zu
 
 ### <a name="model-id"></a>Modell-ID
 
-Wenn ein IoT Plug & Play-Gerät eine Verbindung mit einem IoT-Hub herstellt, sendet es die **Modell-ID** des von ihm implementierten[DTDL](#digital-twins-definition-language-dtdl)-Modells. Anhand dieser ID ist die Lösung in der Lage, das Gerätemodell zu finden.
+Wenn ein IoT Plug & Play-Gerät eine Verbindung mit einem IoT-Hub herstellt, sendet es die **Modell-ID** des von ihm implementierten [DTDL](#digital-twins-definition-language-dtdl)-Modells. Anhand dieser ID ist die Lösung in der Lage, das Gerätemodell zu finden.
 
 ### <a name="model-repository"></a>Modellrepository
 
@@ -435,6 +435,12 @@ Bei [IoT Edge](#iot-edge) ist ein Modul ein Docker-Container, der auf IoT Edge-G
 [MQTT](https://mqtt.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
 
 ## <a name="o"></a>O
+
+### <a name="ontology"></a>Ontologie
+
+Eine Reihe von Modellen für eine bestimmte Domäne, z. B. Immobilien, Smart Citys, IoT-Systeme, Energienetze und mehr. Ontologien werden oft als Schemas für Wissensgraphen wie die in [Azure Digital Twins](#azure-digital-twins) verwendet, weil sie einen Ausgangspunkt bereitstellen, der auf Branchenstandards und bewährten Methoden basiert.
+
+Weitere Informationen zu Ontologien finden Sie unter [Was ist eine Ontologie?](../digital-twins/concepts-ontologies.md).
 
 ### <a name="operations-monitoring"></a>Vorgangsüberwachung
 

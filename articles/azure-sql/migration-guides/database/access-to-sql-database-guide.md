@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: f9fa2426e371ab9fd99e88979cbcbbb34adb00d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 73ee4d4be16284880b10df4a52b422a08c04c6a0
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643594"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284186"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Migrationsleitfaden: Zugreifen auf Azure SQL-Datenbank
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihre Microsoft Access-Datenbank mit SQL Server Migration Assistant für Access (SSMA für Access) zur Azure SQL-Datenbank migrieren.
+In diesem Leitfaden erfahren Sie, wie Sie Ihre Microsoft Access-Datenbank mithilfe von [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant für Access (SSMA für Access) zu einer Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey).
 
 Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
 
@@ -32,7 +32,7 @@ Bevor Sie mit der Migration der Access-Datenbank zu einer SQL-Datenbank beginnen
 
 ## <a name="pre-migration"></a>Vor der Migration
 
-Wenn diese Voraussetzungen erfüllt sind, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit der Migration bewerten.
+Nachdem Sie diese Voraussetzungen erfüllt haben, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit Ihrer [Azure-Cloudmigration](https://azure.microsoft.com/migration) bewerten.
 
 
 ### <a name="assess"></a>Bewerten 
@@ -185,6 +185,8 @@ Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendun
 - Weitere Informationen zum Framework und zum Einführungszyklus von Cloudmigrationen finden Sie unter:
    -  [Cloud Adoption Framework für Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Bewährte Methoden für die Kostenermittlung und Größenanpassung von zu Azure migrierten Workloads](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Ressourcen zur Cloudmigration](https://azure.microsoft.com/migration/resources)
+
 
 - Informationen zum Bewerten der Anwendungszugriffsebene finden Sie unter [Data Access Migration Toolkit (Vorschauversion)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Informationen zum Ausführen von A/B-Tests auf Datenzugriffsebene finden Sie unter [Überblick über den Assistenten für Datenbankexperimente](/sql/dea/database-experimentation-assistant-overview).

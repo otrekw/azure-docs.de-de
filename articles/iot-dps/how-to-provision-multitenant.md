@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04ab4ae4d3de6f33f800011b9b0802665d5fb16e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727429"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228315"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Bereitstellen für Mehrinstanzenfähigkeit 
 
@@ -26,11 +26,12 @@ Diese beiden Szenarien werden häufig kombiniert. Eine mehrinstanzenfähige IoT-
 
 In diesem Artikel wird ein Beispiel für ein simuliertes Gerät aus dem [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) verwendet, um zu veranschaulichen, wie Geräte in einem Szenario mit Mehrinstanzenfähigkeit regionsübergreifend bereitgestellt werden. In diesem Artikel führen Sie die folgenden Schritte aus:
 
-* Verwenden der Azure CLI, um zwei regionale IoT Hubs (**West US** (USA, Westen) und **East US** (USA, Osten)) zu erstellen
-* Erstellen einer mehrinstanzenfähigen Registrierung
-* Verwenden der Azure CLI, um zwei regionale Linux-VMs zu erstellen, die als Geräte in denselben Regionen (**West US** (USA, Westen) und **East US** (USA, Osten)) fungieren
-* Einrichten der Entwicklungsumgebung für das Azure IoT C SDK auf beiden Linux-VMs
-* Simulieren der Geräte, um darzustellen, dass sie für denselben Mandanten in der am nächsten gelegenen Region bereitgestellt wurden
+> [!div class="checklist"]
+> * Verwenden der Azure CLI, um zwei regionale IoT Hubs (**West US** (USA, Westen) und **East US** (USA, Osten)) zu erstellen
+> * Erstellen einer mehrinstanzenfähigen Registrierung
+> * Verwenden der Azure CLI, um zwei regionale Linux-VMs zu erstellen, die als Geräte in denselben Regionen (**West US** (USA, Westen) und **East US** (USA, Osten)) fungieren
+> * Einrichten der Entwicklungsumgebung für das Azure IoT C SDK auf beiden Linux-VMs
+> * Simulieren der Geräte, um darzustellen, dass sie für denselben Mandanten in der am nächsten gelegenen Region bereitgestellt wurden
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -417,8 +418,11 @@ Löschen Sie die Ressourcengruppen wie folgt nach Namen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> Informationen zur erneuten Bereitstellung finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md).
+* Weitere Informationen zur erneuten Bereitstellung finden Sie unter
 
 > [!div class="nextstepaction"]
-> Informationen zum Aufheben der Bereitstellung finden Sie unter [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md).
+> [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md)
+
+* Weitere Informationen zum Aufheben der Bereitstellung finden Sie unter
+> [!div class="nextstepaction"]
+> [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md)

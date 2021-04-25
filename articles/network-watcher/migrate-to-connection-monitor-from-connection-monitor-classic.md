@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fc5bcc7f0cd11160b33bb6501526fce9f29d710b
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730030"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366384"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrieren von Verbindungsmonitor (klassisch) zu Verbindungsmonitor
 
@@ -39,7 +39,10 @@ Die Migration hilft beim Liefern der folgenden Ergebnisse:
     
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie einen benutzerdefinierten Arbeitsbereich verwenden, stellen Sie sicher, dass Network Watcher im Abonnement und in der Region des Log Analytics-Arbeitsbereichs aktiviert ist. 
+1. Wenn Sie einen benutzerdefinierten Arbeitsbereich verwenden, stellen Sie sicher, dass Network Watcher im Abonnement und in der Region des Log Analytics-Arbeitsbereichs aktiviert ist. Andernfalls wird die folgende Fehlermeldung angezeigt: „Bevor Sie die Migration starten, aktivieren Sie die Network Watcher-Erweiterung im Auswahlabonnement und am Standort des ausgewählten LA-Arbeitsbereichs.“
+1. Falls für virtuelle Computer, die als Quellen im Verbindungsmonitor (klassisch) verwendet werden, die Network Watcher-Erweiterung nicht mehr aktiviert ist, wird eine Fehlermeldung mit folgendem Hinweis angezeigt: „Die Verbindungsmonitore mit den folgenden Tests können nicht importiert werden, weil die Network Watcher-Erweiterung auf mindestens einer Azure-VM nicht installiert ist. Installieren Sie die Network Watcher-Erweiterung, und klicken Sie auf ‚Aktualisieren‘, um sie zu importieren.“
+
+
 
 ## <a name="migrate-the-connection-monitors"></a>Migrieren der Verbindungsmonitore
 

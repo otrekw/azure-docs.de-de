@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72bf8e76217e8a3bcecd381d8d61815c539dd196
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97694682"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209586"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von Parquet-Dateien mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
@@ -119,7 +119,7 @@ ORDER BY
 
 Sie brauchen die OPENROWSET WITH-Klausel nicht zu verwenden, wenn Sie Parquet-Dateien lesen. Spaltennamen und Datentypen werden automatisch aus Parquet-Dateien gelesen.
 
-Das folgende Beispiel zeigt die automatischen Schemarückschlussfunktionen für Parquet-Dateien. Hierzu wird die Anzahl von Zeilen im September 2017 ohne Angabe eines Schemas zurückgegeben.
+Das folgende Beispiel zeigt die automatischen Schemarückschlussfunktionen für Parquet-Dateien. Hierzu wird die Anzahl von Zeilen im September 2018 ohne Angabe eines Schemas zurückgegeben.
 
 > [!NOTE]
 > Beim Lesen von Parquet-Dateien müssen Sie in der OPENROWSET WITH-Klausel keine Spalten angeben. In diesem Fall verwendet der Abfragedienst des serverlosen SQL-Pools Metadaten in der Parquet-Datei und bindet Spalten nach Namen.
@@ -128,7 +128,7 @@ Das folgende Beispiel zeigt die automatischen Schemarückschlussfunktionen für 
 SELECT TOP 10 *
 FROM  
     OPENROWSET(
-        BULK 'puYear=2018/puMonth=*/*.snappy.parquet',
+        BULK 'puYear=2018/puMonth=9/*.snappy.parquet',
         DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
     ) AS nyc

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e08fe67dece02b936aa3a22e9cac58d809f19f46
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99225342"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285682"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transaktionsreplikation mit Azure SQL Managed Instance (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -154,7 +154,7 @@ Bei dieser Konfiguration ist eine Datenbank in Azure SQL-Datenbank oder Azure SQ
 
 [Aktive Georeplikation](../database/active-geo-replication-overview.md) wird bei einer SQL Managed Instance, die Transaktionsreplikation nutzt, nicht unterstützt. Verwenden Sie anstelle der aktiven Georeplikation [Autofailover-Gruppen](../database/auto-failover-group-overview.md). Beachten Sie jedoch, dass die Veröffentlichung aus der primären verwalteten Instanz [manuell gelöscht](transact-sql-tsql-differences-sql-server.md#replication) und nach dem Failover in der sekundären SQL Managed Instance neu erstellt werden muss.
 
-Wenn Georeplikation für eine als **Verleger** oder **Verteiler** fungierende SQL Managed Instance in einer [Failovergruppe](../database/auto-failover-group-overview.md) aktiviert ist, muss der SQL Managed Instance-Administrator alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover für die neue primäre Instanz erneut konfigurieren. Die folgenden Aktivitäten sind in diesem Szenario erforderlich:
+Wenn eine als **Herausgeber** oder **Verteiler** fungierende SQL Managed Instance in einer [Failovergruppe](../database/auto-failover-group-overview.md) enthalten ist, muss der SQL Managed Instance-Administrator alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover für die neue primäre Instanz erneut konfigurieren. Die folgenden Aktivitäten sind in diesem Szenario erforderlich:
 
 1. Beenden aller Replikationsaufträge, die für die Datenbank ausgeführt werden, sofern vorhanden.
 1. Löschen der Abonnementmetadaten vom Verleger, indem das folgende Skript für die Verlegerdatenbank ausgeführt wird:

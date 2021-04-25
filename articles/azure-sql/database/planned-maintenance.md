@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
 ms.date: 3/23/2021
-ms.openlocfilehash: eedbc46ee5feb0aa6f6a26c3f5b3c67ac8ca0a5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 259a8581d16f4fd6958a0d9ec2631f667d362b19
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044259"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579464"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ Das Wartungsereignis kann je nach der Konstellation der primären und sekundäre
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>Simulieren eines geplanten Wartungsereignisses
 
-Wenn Sie sicherstellen, dass Ihre Clientanwendung vor der Bereitstellung für die Produktionsumgebung hinsichtlich der Wartungsereignisse resilient ist, tragen Sie dazu bei, das Risiko von Anwendungsfehlern zu reduzieren und die Verfügbarkeit der Anwendung für Ihre Endbenutzer zu erhöhen. Sie können das Verhalten Ihrer Clientanwendung während geplanter Wartungsereignisse testen, indem Sie [einen manuellen Failover](https://aka.ms/mifailover-techblog) über PowerShell, CLI oder REST-API initiieren. Es wird ein identisches Verhalten wie ein Wartungsereignis erzeugen, bei dem die primäre Replik offline geschaltet wird.
+Wenn Sie sicherstellen, dass Ihre Clientanwendung vor der Bereitstellung in der Produktion resilient gegenüber Wartungsereignissen ist, können Sie das Risiko von Anwendungsfehlern verringern und zur Anwendungsverfügbarkeit für Ihre Endbenutzer beitragen. Sie können das Verhalten Ihrer Clientanwendung während geplanter Wartungsereignisse testen, indem Sie die [Resilienz von Anwendungsfehlern](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla#testing-application-fault-resiliency) über PowerShell, die CLI oder die REST-API testen. Weitere Informationen finden Sie auch unter [Initiieren eines manuellen Failovers](https://aka.ms/mifailover-techblog) für Verwaltete Instanz. Es wird ein identisches Verhalten wie ein Wartungsereignis erzeugen, bei dem die primäre Replik offline geschaltet wird.
 
 ## <a name="retry-logic"></a>Wiederholungslogik
 

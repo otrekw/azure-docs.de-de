@@ -5,26 +5,26 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 5cbcbcf8914a663a6d039abecd6a4488eaf677b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0ddecff0162f8bd405c9f5fe6d3fdc20c6bc24aa
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739643"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313639"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Routen in Azure Static Web Apps (Vorschau)
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
-Mit dem Routing in Azure Static Web Apps werden Back-End-Routingregeln und das Autorisierungsverhalten für statischen Inhalt und für APIs definiert<sup>1</sup>. Die Regeln werden in der Datei _routes.json_ als Array mit Regeln definiert.
+Mit dem Routing in Azure Static Web Apps werden Back-End-Routingregeln und das Autorisierungsverhalten für statischen Inhalt und für APIs definiert<sup>1</sup>. Die Regeln werden in der Datei _staticwebapp.config.json_ als Array von Regeln definiert.
 
-- Die Datei _routes.json_ muss im Stammverzeichnis des Ordners mit den Buildartefakten der App enthalten sein.
+- Die Datei _staticwebapp.config.json_ muss im Stammverzeichnis des Ordners mit den Buildartefakten der App enthalten sein.
 - Regeln werden in der Reihenfolge ausgeführt, in der sie im Array `routes` angezeigt werden.
 - Die Regelauswertung wird bei der ersten Übereinstimmung angehalten. Routingregeln werden nicht miteinander verkettet.
-- Rollen werden in der Datei _routes.json_ definiert, und Benutzer werden Rollen mithilfe von [Einladungen](authentication-authorization.md) zugeordnet.
+- Rollen werden in der Datei _staticwebapp.config.json_ definiert, und Benutzer werden Rollen mithilfe von [Einladungen](authentication-authorization.md) zugeordnet.
 - Sie haben die vollständige Kontrolle über Rollennamen.
 
 Das Thema „Routing“ weist starke Überschneidungen mit den Authentifizierungs- und Autorisierungskonzepten auf. Lesen Sie zusätzlich zu diesem Artikel den Leitfaden zur [Authentifizierung und Autorisierung](authentication-authorization.md).
@@ -34,40 +34,40 @@ Details finden Sie unter [Beispiel für eine Routendatei](#example-route-file).
 ## <a name="location"></a>Standort
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
-Die Datei _routes.json_ muss im Stammverzeichnis des Ordners mit den Buildartefakten der App enthalten sein. Wenn Ihre Web-App einen Buildschritt umfasst, bei dem erstellte Dateien aus einem bestimmten Ordner in Ihren Ordner mit den Buildartefakten kopiert werden, muss die Datei _routes.json_ in diesem Ordner enthalten sein.
+Die Datei _staticwebapp.config.json_ muss im Stammverzeichnis des Ordners mit den Buildartefakten der App enthalten sein. Wenn Ihre Web-App einen Buildschritt umfasst, bei dem erstellte Dateien aus einem bestimmten Ordner in Ihren Ordner mit den Buildartefakten kopiert werden, muss die Datei _staticwebapp.config.json_ in diesem Ordner enthalten sein.
 
-In der folgenden Tabelle sind jeweils die richtigen Speicherorte für die Datei _routes.json_ angegeben, die für die entsprechenden Front-End-Frameworks und -Bibliotheken gelten.
+In der folgenden Tabelle sind jeweils die richtigen Speicherorte für die Datei _staticwebapp.config.json_ angegeben, die für die entsprechenden Front-End-Frameworks und -Bibliotheken gelten.
 
-|Framework/Bibliothek | Standort  |
-|---------|----------|
-| Angular | _assets_   |
-| React   | _öffentlich_  |
-| Svelte  | _öffentlich_   |
-| Vue     | _öffentlich_ |
-| Blazor  | _wwwroot_ |
+| Framework/Bibliothek | Standort  |
+| ------------------- | --------- |
+| Angular             | _assets_  |
+| React               | _öffentlich_  |
+| Svelte              | _öffentlich_  |
+| Vue                 | _öffentlich_  |
+| Blazor              | _wwwroot_ |
 
 Die obige Tabelle ist nur repräsentativ für einige wenige Frameworks und Bibliotheken, die mit Azure Static Web Apps kompatibel sind. Weitere Informationen finden Sie unter [Konfigurieren von Front-End-Frameworks und -Bibliotheken](./front-end-frameworks.md).
 
 ## <a name="defining-routes"></a>Definieren von Routen
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
-Routen werden in der Datei _routes.json_ als Array mit Routenregeln in der Eigenschaft `routes` definiert. Jede Regel besteht aus einem Routenmuster und einer oder mehreren optionalen Regeleigenschaften. Beispiele zur Nutzung finden Sie unter [Beispiel für Routendatei](#example-route-file).
+Routen werden in der Datei _staticwebapp.config.json_ als Array mit Routenregeln in der Eigenschaft `routes` definiert. Jede Regel besteht aus einem Routenmuster und einer oder mehreren optionalen Regeleigenschaften. Beispiele zur Nutzung finden Sie unter [Beispiel für Routendatei](#example-route-file).
 
-| Regeleigenschaft  | Erforderlich | Standardwert | Comment                                                      |
-| -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Ja      | –          | Das vom Aufrufer angeforderte Routenmuster.<ul><li>[Platzhalter](#wildcards) am Ende der Routenpfade werden unterstützt. Für die Route _admin/\*_ ergeben sich beispielsweise Übereinstimmungen mit allen Routen unter dem Pfad _admin_.<li>Die Standarddatei einer Route ist _index.html_.</ul>|
-| `serve`        | Nein       | –          | Definiert die Datei oder den Pfad, die bzw. der von der Anforderung zurückgegeben wird. Der Pfad und Name der Datei können sich gegenüber dem angeforderten Pfad unterscheiden. Wenn kein `serve`-Wert definiert wird, wird der angeforderte Pfad verwendet. QueryString-Parameter werden nicht unterstützt, und `serve`-Werte müssen auf tatsächliche Dateien verweisen.  |
+| Regeleigenschaft  | Erforderlich | Standardwert | Comment                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| -------------- | -------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `route`        | Ja      | –           | Das vom Aufrufer angeforderte Routenmuster.<ul><li>[Platzhalter](#wildcards) am Ende der Routenpfade werden unterstützt. Für die Route _admin/\*_ ergeben sich beispielsweise Übereinstimmungen mit allen Routen unter dem Pfad _admin_.<li>Die Standarddatei einer Route ist _index.html_.</ul>                                                                                                                                                                                                                                               |
+| `serve`        | Nein       | –           | Definiert die Datei oder den Pfad, die bzw. der von der Anforderung zurückgegeben wird. Der Pfad und Name der Datei können sich gegenüber dem angeforderten Pfad unterscheiden. Wenn kein `serve`-Wert definiert wird, wird der angeforderte Pfad verwendet. QueryString-Parameter werden nicht unterstützt, und `serve`-Werte müssen auf tatsächliche Dateien verweisen.                                                                                                                                                                                                                 |
 | `allowedRoles` | Nein       | anonymous     | Ein Array mit Rollennamen. <ul><li>Gültige Zeichen sind `a-z`, `A-Z`, `0-9` und `_`.<li>Die integrierte Rolle `anonymous` gilt für alle nicht authentifizierten Benutzer.<li>Die integrierte Rolle `authenticated` gilt für alle angemeldeten Benutzer.<li>Benutzern muss mindestens eine Rolle zugewiesen sein.<li>Rollen werden nach dem Muster _OR_ (ODER) abgeglichen. Wenn einem Benutzer eine beliebige aufgelistete Rolle zugewiesen ist, wird der Zugriff gewährt.<li>Einzelne Benutzer werden Rollen mithilfe von [Einladungen](authentication-authorization.md) zugeordnet.</ul> |
-| `statusCode`   | Nein       | 200           | Hierbei handelt es sich um die [HTTP-Statuscode](https://wikipedia.org/wiki/List_of_HTTP_status_codes)-Antwort für die Anforderung. |
+| `statusCode`   | Nein       | 200           | Hierbei handelt es sich um die [HTTP-Statuscode](https://wikipedia.org/wiki/List_of_HTTP_status_codes)-Antwort für die Anforderung.                                                                                                                                                                                                                                                                                                                                                                                        |
 
 ## <a name="securing-routes-with-roles"></a>Schützen von Routen mit Rollen
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Routen werden geschützt, indem dem Array `allowedRoles` einer Regel mindestens ein Rollenname hinzugefügt wird. Beispiele zur Nutzung finden Sie unter [Beispiel für Routendatei](#example-route-file).
 
@@ -95,7 +95,7 @@ Sie können je nach Bedarf im Array `allowedRoles` neue Rollen erstellen. Zum Be
 ## <a name="wildcards"></a>Platzhalter
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Mit Platzhalterregeln werden alle Anforderungen nach einem bestimmten Routenmuster abgeglichen. Wenn Sie in Ihrer Regel den Wert `serve` definieren, wird die benannte Datei bzw. der Pfad als Antwort bereitgestellt.
 
@@ -125,7 +125,7 @@ Außerdem können Sie Routen mit Platzhaltern schützen. Im folgenden Beispiel i
 ## <a name="fallback-routes"></a>Fallbackrouten
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Single-Page-Anwendungen, ob sie nun Front-End-JavaScript-Frameworks oder -Bibliotheken oder WebAssembly-Plattformen wie Blazor verwenden, sind für die Navigation von Webanwendungen häufig auf clientseitiges Routing angewiesen. Diese clientseitigen Routingregeln aktualisieren den Fensterspeicherort des Browsers, ohne Anforderungen zurück an den Servern zu senden. Wenn Sie die Seite aktualisieren oder direkt zu Speicherorten navigieren, die mit clientseitigen Routingregeln generiert wurden, ist eine serverseitige Fallbackroute erforderlich, um die richtige HTML-Seite bereitzustellen.
 
@@ -148,7 +148,7 @@ Die Fallbackroute muss in Ihren Routingregeln an letzter Stelle aufgeführt sein
 ## <a name="redirects"></a>Umleitungen
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Sie können die HTTP-Statuscodes [301](https://en.wikipedia.org/wiki/HTTP_301) und [302](https://en.wikipedia.org/wiki/HTTP_302) verwenden, um Anforderungen von einer Route zu einer anderen umzuleiten.
 
@@ -175,38 +175,38 @@ Umleitungen funktionieren auch mit Pfaden, bei denen keine einzelnen Dateien def
 ## <a name="custom-error-pages"></a>Benutzerdefinierte Fehlerseiten
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
-Für Benutzer kann es zu unterschiedlichen Situationen kommen, die ggf. zu einem Fehler führen. Mit dem Array `platformErrorOverrides` können Sie als Reaktion auf diese Fehler eine benutzerdefinierte Oberfläche bereitstellen. Informationen zur Platzierung des Arrays in der Datei _routes.json_ finden Sie unter [Beispiel für eine Routendatei](#example-route-file).
+Für Benutzer kann es zu unterschiedlichen Situationen kommen, die ggf. zu einem Fehler führen. Mit dem Array `platformErrorOverrides` können Sie als Reaktion auf diese Fehler eine benutzerdefinierte Oberfläche bereitstellen. Informationen zur Platzierung des Arrays in der Datei _staticwebapp.config.json_ finden Sie unter [Beispiel für eine Routendatei](#example-route-file).
 
 > [!NOTE]
 > Wenn eine Anforderung bis zur Plattform-Außerkraftsetzungsebene gelangt, werden die Routenregeln nicht erneut ausgeführt.
 
 In der folgenden Tabelle sind die verfügbaren Außerkraftsetzungen für Plattformfehler aufgeführt:
 
-| Fehlertyp  | HTTP-Statuscode | BESCHREIBUNG |
-|---------|---------|---------|
-| `NotFound` | 404  | Auf dem Server wurde keine Seite gefunden. |
-| `Unauthenticated` | 401 | Der Benutzer ist nicht mit einem [Authentifizierungsanbieter](authentication-authorization.md) angemeldet. |
-| `Unauthorized_InsufficientUserInformation` | 401 | Das Konto des Benutzers beim Authentifizierungsanbieter ist nicht für die Offenlegung der erforderlichen Daten konfiguriert. Dieser Fehler kann in Situationen auftreten, in denen die App beim Authentifizierungsanbieter die E-Mail-Adresse des Benutzers abfragt, der Benutzer den Zugriff auf die E-Mail-Adresse aber eingeschränkt hat. |
-| `Unauthorized_InvalidInvitationLink` | 401 | Eine Einladung ist abgelaufen, oder der Benutzer hat einen Einladungslink verwendet, der für einen anderen Empfänger generiert wurde.  |
-| `Unauthorized_MissingRoles` | 401 | Der Benutzer ist kein Mitglied einer erforderlichen Rolle. |
-| `Unauthorized_TooManyUsers` | 401 | Für die Website wurde die maximale Anzahl von Benutzern erreicht, und der Server verfügt über eine Begrenzung in Bezug auf weitere Hinzufügungen. Dieser Fehler tritt für den Client auf, weil es kein Limit für die Anzahl von [Einladungen](authentication-authorization.md) gibt, die Sie generieren können, und weil einige Benutzer die Einladung ggf. niemals annehmen.|
-| `Unauthorized_Unknown` | 401 | Beim Versuch, den Benutzer zu authentifizieren, ist ein unbekannter Fehler aufgetreten. Ein Grund für diesen Fehler ist ggf., dass der Benutzer nicht erkannt wird, weil er seine Einwilligung für die Anwendung nicht erteilt hat.|
+| Fehlertyp                                 | HTTP-Statuscode | BESCHREIBUNG                                                                                                                                                                                                                                                                                      |
+| ------------------------------------------ | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `NotFound`                                 | 404              | Auf dem Server wurde keine Seite gefunden.                                                                                                                                                                                                                                                               |
+| `Unauthenticated`                          | 401              | Der Benutzer ist nicht mit einem [Authentifizierungsanbieter](authentication-authorization.md) angemeldet.                                                                                                                                                                                                    |
+| `Unauthorized_InsufficientUserInformation` | 401              | Das Konto des Benutzers beim Authentifizierungsanbieter ist nicht für die Offenlegung der erforderlichen Daten konfiguriert. Dieser Fehler kann in Situationen auftreten, in denen die App beim Authentifizierungsanbieter die E-Mail-Adresse des Benutzers abfragt, der Benutzer den Zugriff auf die E-Mail-Adresse aber eingeschränkt hat.                    |
+| `Unauthorized_InvalidInvitationLink`       | 401              | Eine Einladung ist abgelaufen, oder der Benutzer hat einen Einladungslink verwendet, der für einen anderen Empfänger generiert wurde.                                                                                                                                                                                       |
+| `Unauthorized_MissingRoles`                | 401              | Der Benutzer ist kein Mitglied einer erforderlichen Rolle.                                                                                                                                                                                                                                                     |
+| `Unauthorized_TooManyUsers`                | 401              | Für die Website wurde die maximale Anzahl von Benutzern erreicht, und der Server verfügt über eine Begrenzung in Bezug auf weitere Hinzufügungen. Dieser Fehler tritt für den Client auf, weil es kein Limit für die Anzahl von [Einladungen](authentication-authorization.md) gibt, die Sie generieren können, und weil einige Benutzer die Einladung ggf. niemals annehmen. |
+| `Unauthorized_Unknown`                     | 401              | Beim Versuch, den Benutzer zu authentifizieren, ist ein unbekannter Fehler aufgetreten. Ein Grund für diesen Fehler ist ggf., dass der Benutzer nicht erkannt wird, weil er seine Einwilligung für die Anwendung nicht erteilt hat.                                                                                                          |
 
 ## <a name="custom-mime-types"></a>Benutzerdefinierte MIME-Typen
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Das `mimeTypes`-Objekt, das auf derselben Ebene wie das `routes`-Array aufgelistet ist, ermöglicht es Ihnen, [MIME-Typen](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) zu Dateierweiterungen zuzuordnen.
 
 ```json
 {
-    "routes": [],
-    "mimeTypes": {
-        "custom": "text/html"
-    }
+  "routes": [],
+  "mimeTypes": {
+    "custom": "text/html"
+  }
 }
 ```
 
@@ -223,7 +223,7 @@ Die folgenden Überlegungen sind wichtig, wenn Sie mit MIME-Typen arbeiten:
 ## <a name="default-headers"></a>Standardheader
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Das `defaultHeaders`-Objekt, das auf derselben Ebene wie das `routes`-Array aufgelistet ist, ermöglicht es Ihnen, [Antwortheader](https://developer.mozilla.org/docs/Web/HTTP/Headers) hinzuzufügen, zu ändern oder zu entfernen.
 
@@ -231,12 +231,12 @@ Wenn Sie einen Wert für einen Header angeben, wird der Header entweder hinzugef
 
 ```json
 {
-    "routes": [],
-    "defaultHeaders": {
-      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'",
-      "cache-control": "must-revalidate, max-age=6000",
-      "x-dns-prefetch-control": ""
-    }
+  "routes": [],
+  "defaultHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'",
+    "cache-control": "must-revalidate, max-age=6000",
+    "x-dns-prefetch-control": ""
+  }
 }
 ```
 
@@ -248,14 +248,14 @@ Die folgenden Überlegungen sind wichtig, wenn Sie mit Headern arbeiten:
 - Null-Werte oder leere Werte entfernen einen Header aus der Verarbeitung.
 - Schlüssel oder Werte können nicht länger als 8.000 Zeichen sein.
 - Definierte Header werden mit allen Anforderungen bedient.
-- In _routes.json_ definierte Header gelten nur für statischen Inhalt. Sie können Antwortheader eines API-Endpunkts im Code der Funktion anpassen.
+- In _staticwebapp.config.json_ definierte Header gelten nur für statischen Inhalt. Sie können Antwortheader eines API-Endpunkts im Code der Funktion anpassen.
 
 ## <a name="example-route-file"></a>Beispiel für eine Routendatei
 
 > [!IMPORTANT]
-> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
-Im folgenden Beispiel wird veranschaulicht, wie Sie Routenregeln für statischen Inhalt und APIs in der Datei _routes.json_ erstellen. Für einige Routen wird der [Systemordner _/.auth_](authentication-authorization.md) verwendet, um auf Endpunkte für die Authentifizierung zuzugreifen.
+Im folgenden Beispiel wird veranschaulicht, wie Sie Routenregeln für statischen Inhalt und APIs in der Datei _staticwebapp.config.json_ erstellen. Für einige Routen wird der [Systemordner _/.auth_](authentication-authorization.md) verwendet, um auf Endpunkte für die Authentifizierung zuzugreifen.
 
 ```json
 {
@@ -313,26 +313,26 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie Routenregeln für statischen
     "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
   },
   "mimeTypes": {
-      "custom": "text/html"
+    "custom": "text/html"
   }
 }
 ```
 
 In den folgenden Beispielen ist beschrieben, was passiert, wenn eine Anforderung zu einer Übereinstimmung mit einer Regel führt.
 
-| Anforderungen: | Ergebnis: |
-|--|--|--|
-| _/profile_ | Für authentifizierte Benutzer wird die Datei _/profile/index.html_ bereitgestellt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet. |
-| _/admin/reports_ | Für authentifizierte Benutzer mit der Rolle _administrators_ wird die Datei _/admin/reports/index.html_ bereitgestellt. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ verfügen, wird ein 401-Fehler <sup>2</sup> angezeigt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet. |
-| _/api/admin_ | Anforderungen von authentifizierten Benutzern mit der Rolle _administrators_ werden an die API gesendet. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ verfügen, und nicht authentifizierte Benutzer wird ein 401-Fehler angezeigt. |
-| _/customers/contoso_ | Für authentifizierte Benutzer, die entweder über die Rolle _administrators_ oder _customers\_contoso_ verfügen, wird die Datei _/customers/contoso/index.html_ bereitgestellt <sup>2</sup>. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ oder _customers\_contoso_ verfügen, wird ein 401-Fehler angezeigt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet. |
-| _/login_ | Nicht authentifizierte Benutzer werden aufgefordert, sich bei GitHub zu authentifizieren. |
-| _/.auth/login/twitter_ | Die Autorisierung mit Twitter ist deaktiviert. Der Server antwortet mit einem 404-Fehler. |
-| _/logout_ | Benutzer werden von allen Authentifizierungsanbietern abgemeldet. |
-| _/calendar/2020/01_ | Für den Browser wird die Datei _/calendar.html_ bereitgestellt. |
-| _/specials_ | Der Browser wird an _/deals_ umgeleitet. |
-| _/unknown-folder_ | Die Datei _/custom-404.html_ wird bereitgestellt. |
-| Dateien mit der Erweiterung `.custom` | werden von dem MIME-Typ `text/html` bedient. |
+| Anforderungen:                     | Ergebnis:                                                                                                                                                                                                                                                                                                   |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _/profile_                         | Für authentifizierte Benutzer wird die Datei _/profile/index.html_ bereitgestellt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet.                                                                                                                                                                                                   |
+| _/admin/reports_                   | Für authentifizierte Benutzer mit der Rolle _administrators_ wird die Datei _/admin/reports/index.html_ bereitgestellt. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ verfügen, wird ein 401-Fehler <sup>2</sup> angezeigt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet.                                                                       |
+| _/api/admin_                       | Anforderungen von authentifizierten Benutzern mit der Rolle _administrators_ werden an die API gesendet. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ verfügen, und nicht authentifizierte Benutzer wird ein 401-Fehler angezeigt.                                                                                                                     |
+| _/customers/contoso_               | Für authentifizierte Benutzer, die entweder über die Rolle _administrators_ oder _customers_contoso_ verfügen, wird die Datei _/customers/contoso/index.html_ bereitgestellt<sup>2</sup>. Für authentifizierte Benutzer, die nicht über die Rolle _administrators_ oder _customers_contoso_ verfügen, wird ein 401-Fehler angezeigt. Nicht authentifizierte Benutzer werden an _/login_ umgeleitet. |
+| _/login_                           | Nicht authentifizierte Benutzer werden aufgefordert, sich bei GitHub zu authentifizieren.                                                                                                                                                                                                                                              |
+| _/.auth/login/twitter_             | Die Autorisierung mit Twitter ist deaktiviert. Der Server antwortet mit einem 404-Fehler.                                                                                                                                                                                                                                  |
+| _/logout_                          | Benutzer werden von allen Authentifizierungsanbietern abgemeldet.                                                                                                                                                                                                                                                           |
+| _/calendar/2020/01_                | Für den Browser wird die Datei _/calendar.html_ bereitgestellt.                                                                                                                                                                                                                                                               |
+| _/specials_                        | Der Browser wird an _/deals_ umgeleitet.                                                                                                                                                                                                                                                                         |
+| _/unknown-folder_                  | Die Datei _/custom-404.html_ wird bereitgestellt.                                                                                                                                                                                                                                                                         |
+| Dateien mit der Erweiterung `.custom` | werden von dem MIME-Typ `text/html` bedient.                                                                                                                                                                                                                                                                      |
 
 Alle Antworten umfassen die `content-security-policy`-Header mit einem Wert von `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'`.
 
@@ -342,8 +342,8 @@ Alle Antworten umfassen die `content-security-policy`-Header mit einem Wert von 
 
 ## <a name="restrictions"></a>Beschränkungen
 
-- Die Datei _routes.json_ kann nicht größer als 100 KB sein.
-- Die Datei _routes.json_ unterstützt maximal 50 einzelne Rollen.
+- Die Datei _staticwebapp.config.json_ kann nicht größer als 100 KB sein.
+- Die Datei _staticwebapp.config.json_ unterstützt maximal 50 einzelne Rollen.
 
 Allgemeine Einschränkungen und Grenzwerte finden Sie im [Artikel zu Kontingenten](quotas.md).
 

@@ -4,13 +4,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
-ms.date: 07/09/2020
-ms.openlocfilehash: f25c335c568c112c05f81df51d69e83aeff423e2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 04/01/2021
+ms.openlocfilehash: 6529aa49d06e64947deb5ae54db0c39ad2575569
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028121"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106288624"
 ---
 ## <a name="business-disaster-recovery"></a>Business Disaster Recovery
 
@@ -24,7 +24,7 @@ Zu den zusätzlichen Hochverfügbarkeitsfeatures von Azure (auch für alle Azure
 
 - **Failover**: Azure bietet [Georeplikation und Lastenausgleich](/azure/architecture/resiliency/recovery-loss-azure-region).
 - **Daten-** und **Speicherwiederherstellung**: Azure bietet [mehrere Optionen zum Beibehalten und Wiederherstellen von Daten](/azure/architecture/resiliency/recovery-data-corruption).
-- **Azure Site Recovery**: Azure bietet Features für die Sitewiederherstellung über [Azure Site Recovery](../articles/site-recovery/index.yml).
+- **Azure Site Recovery**: Azure bietet Wiederherstellungsfeatures über [Azure Site Recovery](../articles/site-recovery/index.yml).
 - **Azure Backup**: [Azure Backup](../articles/backup/backup-architecture.md) unterstützt sowohl lokale als auch cloudbasierte Sicherungen von Azure-VMs.
 
 Stellen Sie sicher, dass Sie die relevanten Azure-Features aktivieren, um eine globale, regionsübergreifende Hochverfügbarkeit für Ihre Geräte und Benutzer zu gewährleisten.
@@ -44,7 +44,7 @@ Die Integration von Azure Time Series Insights in die anderen Dienste bietet zus
 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-Es gibt mehrere Möglichkeiten, den Betrieb Ihrer Daten, Apps und Dienste von Azure Time Series Insights aufrechtzuerhalten, auch wenn sie gestört sind. 
+Es gibt mehrere Möglichkeiten, den Betrieb Ihrer Daten, Apps und Dienste von Azure Time Series Insights aufrechtzuerhalten, auch wenn sie gestört sind.
 
 Möglicherweise ist auch eine vollständige Sicherungskopie Ihrer Azure Time Series-Umgebung für folgende Zwecke erforderlich:
 
@@ -63,12 +63,13 @@ So erstellen Sie eine Duplikatumgebung:
 Bei Auftreten eines Ereignisses:
 
 1. Wenn Ihre primäre Region während eines Notfalls betroffen ist, leiten Sie den Betrieb in die Azure Time Series Insights-Sicherungsumgebung um.
+1. Da Hubsequenznummern nach dem Failover von 0 an neu beginnen, erstellen Sie die Ereignisquelle in beiden Regionen/Umgebungen mit unterschiedlichen Consumergruppen neu, um zu vermeiden, dass etwas wie doppelte Ereignisse erstellt wird.
 1. Verwenden Sie Ihre zweite Region zum Sichern und Wiederherstellen aller Azure Time Series Insights-Telemetrie- und -Abfragedaten.
 
 > [!IMPORTANT]
 > Bei Auftreten eines Failovers:
-> 
-> * Es kann auch eine Verzögerung auftreten.
-> * Es kann eine momentane Spitze bei der Nachrichtenverarbeitung auftreten, wenn der Betrieb und Vorgänge umgeleitet werden.
-> 
+>
+> - Es kann auch eine Verzögerung auftreten.
+> - Es kann eine momentane Spitze bei der Nachrichtenverarbeitung auftreten, wenn der Betrieb und Vorgänge umgeleitet werden.
+>
 > Weitere Informationen finden Sie unter [Minimieren von Latenzen in Azure Time Series Insights](../articles/time-series-insights/time-series-insights-environment-mitigate-latency.md).

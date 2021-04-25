@@ -2,25 +2,20 @@
 title: Auswählen von VM-Größen und Images für Pools
 description: 'Vorgehensweise: Auswahl aus den verfügbaren VM-Größen und Betriebssystemversionen für Computeknoten in Azure Batch-Pools'
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 2c3b90d6188dc6660233ae659fb4280dc1d4f2a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455194"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105027379"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe und eines Images für Computeknoten in einem Azure Batch-Pool
 
 Wenn Sie eine Knotengröße für einen Azure Batch-Pool wählen, können Sie aus fast allen in Azure verfügbaren VM-Größen wählen. Azure bietet eine Reihe von Größen für virtuelle Linux- und Windows-Computer für verschiedene Workloads.
 
 ## <a name="supported-vm-series-and-sizes"></a>Unterstützte VM-Serien und -Größen
-
-Bei der Auswahl einer VM-Größe gelten einige Ausnahmen und Einschränkungen für Ihren Batch-Pool:
-
-- Einige VM-Serien oder VM-Größen werden in Batch nicht unterstützt.
-- Einige VM-Größen sind eingeschränkt und müssen explizit aktiviert werden, damit sie zugeordnet werden können.
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Pools in der Konfiguration des virtuellen Computers
 
@@ -32,7 +27,7 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | Ein | Alle Größen *außer* Standard_A0, Standard_A8, Standard_A9, Standard_A10, Standard_A11 |
 | Av2 | Alle Größen |
 | B | Nicht unterstützt |
-| SL | Nicht unterstützt |
+| DCsv2 | Alle Größen |
 | Dv2, DSv2 | Alle Größen |
 | Dv3, Dsv3 | Alle Größen |
 | Dav4, Dasv4 | Alle Größen |
@@ -48,6 +43,7 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | H | Alle Größen |
 | HB | Alle Größen |
 | HBv2 | Alle Größen |
+| HBv3 | Standard_HB120rs_v3 (andere Größen sind noch nicht verfügbar) |
 | HC | Alle Größen |
 | Ls | Alle Größen |
 | Lsv2 | Alle Größen |
@@ -100,6 +96,8 @@ Verwenden Sie eine der folgenden APIs, um eine Liste mit Windows- und Linux-VM-I
 - Batch-Dienste-REST-API: [Liste unterstützter Images](/rest/api/batchservice/account/listsupportedimages)
 - Mit PowerShell: [Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI: [az batch pool supported-images](/cli/azure/batch/pool/supported-images)
+
+Es wird dringend empfohlen, keine Bilder zu verwenden, die bald nicht mehr von Batch unterstützt werden. Die Datumsangaben für die Unterstützungseinstellung können Sie über die [`ListSupportedImages`-API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages), [PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage) oder über die [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images) ermitteln. Weitere Informationen zur Auswahl eines VM-Image für den Batch-Pool finden Sie im Leitfaden zu den [bewährten Methoden für Batch](best-practices.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

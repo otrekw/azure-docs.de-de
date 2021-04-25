@@ -8,16 +8,16 @@ ms.subservice: security
 ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
-author: jaszymas
-ms.author: jaszymas
+author: shohamMSFT
+ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 098d874d7de85aa7c66f92703eea9b4d12cee8df
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101691245"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305292"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -86,13 +86,13 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 ### <a name="requirements-for-configuring-tde-protector"></a>Anforderungen an die Konfiguration der TDE-Schutzvorrichtung
 
-- Die TDE-Schutzvorrichtung darf nur ein asymmetrischer RSA- oder RSA HSM-Schlüssel sein. Unterstützte Schlüssellängen sind 2.048 und 3.072 Byte.
+- Die TDE-Schutzvorrichtung darf nur ein asymmetrischer RSA- oder RSA HSM-Schlüssel sein. Unterstützte Schlüssellängen sind 2.048 Byte und 3.072 Byte.
 
 - Das Schlüsselaktivierungsdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Vergangenheit sein. Das Ablaufdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Zukunft sein.
 
 - Der Schlüssel muss sich im Zustand *Aktiviert* befinden.
 
-- Wenn Sie einen vorhandenen Schlüssel in den Schlüsseltresor importieren, müssen Sie ihn in einem unterstützten Dateiformat (.pfx, .byok oder .backup) bereitstellen.
+- Wenn Sie einen vorhandenen Schlüssel in den Schlüsseltresor importieren, müssen Sie ihn in einem unterstützten Dateiformat (`.pfx`, `.byok` oder `.backup`) bereitstellen.
 
 > [!NOTE]
 > Azure SQL unterstützt nun die Verwendung eines RSA-Schlüssels, der in einem verwalteten HSM als TDE-Schutzvorrichtung gespeichert ist. Dieses Feature befindet sich in der **Public Preview**. Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfügbarer, Einzelmandanten- und standardkonformer Clouddienst, der es Ihnen ermöglicht, kryptografische Schlüssel für Ihre Cloudanwendungen über HSMs zu schützen, die mit FIPS 140-2 Level 3 validiert sind. Erfahren Sie mehr über [verwaltete HSMs](../../key-vault/managed-hsm/index.yml).
@@ -116,7 +116,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 - Wenn der Schlüssel im Schlüsseltresor generiert wird, erstellen Sie eine Schlüsselsicherung, bevor Sie den Schlüssel zum ersten Mal in AKV verwenden. Die Sicherung kann nur in einer Azure Key Vault-Instanz wiederhergestellt werden. Unter [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/backup-azkeyvaultkey) erfahren Sie mehr zu diesem Befehl.
 
-- Erstellen Sie immer eine neue Sicherung, wenn Änderungen am Schlüssel vorgenommen werden (z. B. Schlüsselattribute, Tags, ACLs).
+- Erstellen Sie immer dann eine neue Sicherung, wenn Änderungen am Schlüssel (z. B. Schlüsselattribute, Tags, ACLs) vorgenommen werden.
 
 - **Lassen Sie frühere Versionen** des Schlüssels beim Rotieren von Schlüsseln im Schlüsseltresor, damit ältere Datenbanksicherungen wiederhergestellt werden können. Wenn die TDE-Schutzvorrichtung für eine Datenbank geändert wird, werden alte Sicherungen der Datenbank **nicht aktualisiert**, um die aktuelle TDE-Schutzvorrichtung zu verwenden. Bei der Wiederherstellung ist für jede Sicherung die TDE-Schutzvorrichtung erforderlich, mit der sie zum Erstellungszeitpunkt verschlüsselt wurde. Schlüsselrotationen können anhand der Anweisungen unter [Rotieren der Transparent Data Encryption-Schutzvorrichtung mithilfe von PowerShell](transparent-data-encryption-byok-key-rotation.md) durchgeführt werden.
 
@@ -131,13 +131,13 @@ Wenn Transparent Data Encryption für die Verwendung eines kundenseitig verwalte
 > [!NOTE]
 > Wenn aufgrund eines vorübergehenden Netzwerkausfalls nicht auf die Datenbank zugegriffen werden kann, ist keine Aktion erforderlich, und die Datenbanken werden automatisch wieder online geschaltet.
 
-Nachdem der Zugriff auf den Schlüssel wiederhergestellt wurde, erfordert die Wiederherstellung der Datenbank zusätzliche Zeit und Schritte, die je nach verstrichener Zeit ohne Zugriff auf den Schlüssel und die Größe der Daten in der Datenbank variieren kann:
+Nachdem der Zugriff auf den Schlüssel wiederhergestellt wurde, erfordert die Wiederherstellung der Datenbank zusätzliche Zeit und Schritte, die je nach verstrichener Zeit ohne Zugriff auf den Schlüssel und die Größe der Daten in der Datenbank variieren kann bzw. können:
 
 - Wenn der Schlüsselzugriff innerhalb von 8 Stunden wiederhergestellt wird, erfolgt die automatische Reparatur der Datenbank innerhalb der nächsten Stunde.
 
-- Wenn der Schlüsselzugriff nach mehr als 8 Stunden wiederhergestellt wird, ist keine automatische Reparatur möglich. Die erneute Aktivierung der Datenbank erfordert zusätzliche Schritte im Portal und kann abhängig von der Größe der Datenbank sehr lange dauern. Wenn die Datenbank wieder online ist, gehen zuvor konfigurierte Einstellungen auf Serverebene wie die Konfiguration der [Failovergruppe](auto-failover-group-overview.md), der Verlauf der Point-in-Time-Wiederherstellung und Tags **verloren**. Daher empfiehlt es sich, ein Benachrichtigungssystem zu implementieren, das es Ihnen ermöglicht, Probleme beim Zugriff auf zugrunde liegende Schlüssel innerhalb von 8 Stunden zu erkennen und zu beheben.
+- Wenn der Schlüsselzugriff nach mehr als 8 Stunden wiederhergestellt wird, ist keine automatische Reparatur möglich. Die erneute Aktivierung der Datenbank erfordert zusätzliche Schritte im Portal und kann je nach Größe der Datenbank sehr lange dauern. Wenn die Datenbank wieder online ist, gehen zuvor konfigurierte Einstellungen auf Serverebene wie die Konfiguration der [Failovergruppe](auto-failover-group-overview.md), der Verlauf der Point-in-Time-Wiederherstellung und Tags **verloren**. Daher empfiehlt es sich, ein Benachrichtigungssystem zu implementieren, das es Ihnen ermöglicht, Probleme beim Zugriff auf zugrunde liegende Schlüssel innerhalb von 8 Stunden zu erkennen und zu beheben.
 
-Nachfolgend sehen Sie die zusätzlichen Schritte, die im Portal ausgeführt werden müssen, um eine Datenbank, auf die nicht zugegriffen werden kann, wieder online zu schalten:
+Nachfolgend sehen Sie die zusätzlichen Schritte, die im Portal ausgeführt werden müssen, um eine Datenbank, auf die nicht zugegriffen werden kann, wieder online zu schalten.
 
 ![TDE-BYOK-Datenbank, auf die nicht zugegriffen werden kann](./media/transparent-data-encryption-byok-overview/customer-managed-tde-inaccessible-database.jpg)
 
@@ -164,7 +164,7 @@ Konfigurieren Sie die folgenden Azure-Features, um den Datenbankzustand zu über
 
 - [Azure Resource Health](../../service-health/resource-health-overview.md): Eine Datenbank, auf die nicht zugegriffen werden kann und die den Zugriff auf die TDE-Schutzvorrichtung verloren hat, wird als „Nicht verfügbar“ angezeigt, nachdem die erste Verbindung mit der Datenbank verweigert wurde.
 - [Aktivitätsprotokoll](../../service-health/alerts-activity-log-service-notifications-portal.md): Ist der Zugriff auf die TDE-Schutzvorrichtung im vom Kunden verwalteten Schlüsseltresor nicht möglich, werden dem Aktivitätsprotokoll entsprechende Einträge hinzugefügt.  Durch die Erstellung von Warnungen für diese Ereignisse können Sie den Zugriff schnellstmöglich wiederherstellen.
-- [Aktionsgruppen](../../azure-monitor/alerts/action-groups.md) können definiert werden, um Benachrichtigungen und Warnungen gemäß Ihren Präferenzen zu senden – also etwa per E-Mail/SMS/Pushbenachrichtigung/Sprachnachricht, per Logik-App, per Webhook, per ITSM oder per Automation-Runbook.
+- [Aktionsgruppen](../../azure-monitor/alerts/action-groups.md) können definiert werden, um Ihnen Benachrichtigungen und Warnungen aufgrund Ihrer Präferenzen zu senden – beispielsweise per E-Mail/SMS/Pushbenachrichtigung/Sprachnachricht, per Logik-App, Webhook, ITSM oder Automation-Runbook.
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>Datenbanksicherung und -wiederherstellung mit der kundenseitig verwalteten TDE
 
@@ -175,7 +175,7 @@ Zum Wiederherstellen einer Sicherung, die mit einer TDE-Schutzvorrichtung aus Ke
 > [!IMPORTANT]
 > Zu jedem Zeitpunkt kann nur eine TDE-Schutzvorrichtung für einen Server festgelegt werden. Dabei handelt es sich um den Schlüssel, der auf dem Blatt im Azure-Portal mit „Legen Sie den ausgewählten Schlüssel als TDE-Standardschutzvorrichtung fest“ gekennzeichnet ist. Es können jedoch mehrere zusätzliche Schlüssel mit einem Server verknüpft werden, ohne diese als TDE-Schutzvorrichtung zu kennzeichnen. Diese Schlüssel werden nicht zum Schutz des DEK verwendet. Sie können aber während der Wiederherstellung aus einer Sicherung verwendet werden, wenn die Sicherungsdatei mit dem Schlüssel mit dem entsprechenden Fingerabdruck verschlüsselt ist.
 
-Wenn der für die Wiederherstellung einer Sicherung erforderliche Schlüssel nicht mehr für den Zielserver verfügbar ist, wird beim Wiederherstellungsversuch die folgende Fehlermeldung zurückgegeben: „Target server `<Servername>` does not have access to all AKV URIs created between \<Timestamp #1> and \<Timestamp #2>. Please retry operation after restoring all AKV URIs.“ (Zielserver „&lt;Servername&gt;“ kann nicht auf alle zwischen <Timestamp #1> und <Timestamp #2> erstellten AKV-URIs zugreifen. Wiederholen Sie den Vorgang, nachdem alle AKV-URIs wiederhergestellt wurden.)
+Wenn der für die Wiederherstellung einer Sicherung erforderliche Schlüssel nicht mehr für den Zielserver verfügbar ist, wird beim Wiederherstellungsversuch die folgende Fehlermeldung zurückgegeben: „Target server `<Servername>` does not have access to all AKV URIs created between \<Timestamp #1> and \<Timestamp #2>. Retry operation after restoring all AKV URIs.“ (Zielserver „&lt;Servername&gt;“ kann nicht auf alle zwischen <Timestamp #1> und <Timestamp #2> erstellten AKV-URIs zugreifen. Wiederholen Sie den Vorgang, nachdem alle AKV-URIs wiederhergestellt wurden.)
 
 Gehen Sie bei der Problembehandlung wie folgt vor: Führen Sie das Cmdlet [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) für den Zielserver oder das Cmdlet [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) für die verwaltete Zielinstanz aus, um die Liste der verfügbaren Schlüssel zurückzugeben und die fehlenden Schlüssel zu ermitteln. Um sicherzustellen, dass alle Sicherungen wiederhergestellt werden können, vergewissern Sie sich, dass der Zielserver für die Wiederherstellung auf alle erforderlichen Schlüssel zugreifen kann. Diese Schlüssel müssen nicht als TDE-Schutzvorrichtung gekennzeichnet sein.
 
@@ -185,15 +185,15 @@ Ein weiterer zu berücksichtigender Aspekt für Protokolldateien: Gesicherte Pro
 
 ## <a name="high-availability-with-customer-managed-tde"></a>Hochverfügbarkeit bei der kundenseitig verwalteten TDE
 
-Selbst ohne konfigurierte Georedundanz wird dringend empfohlen, den Server für die Verwendung von zwei verschiedenen Schlüsseltresoren in zwei unterschiedlichen Regionen mit demselben Schlüsselmaterial zu konfigurieren. Der Schlüssel im sekundären Schlüsseltresor in der anderen Region sollte nicht als TDE-Schutzvorrichtung gekennzeichnet werden. Daher ist dies auch nicht zulässig. Nur bei einem Ausfall, der den primären Schlüsseltresor betrifft, wechselt das System automatisch zum anderen verknüpften Schlüssel mit demselben Fingerabdruck im sekundären Schlüsseltresor (sofern vorhanden). Beachten Sie jedoch, dass der Wechsel nicht erfolgt, wenn auf die TDE-Schutzvorrichtung nicht zugegriffen werden kann, weil die Zugriffsrechte entzogen wurden oder weil der Schlüssel oder der Schlüsseltresor gelöscht wurde. Dies kann darauf hindeuten, dass der Kunde absichtlich den Zugriff des Servers auf den Schlüssel einschränken möchte.Die Bereitstellung desselben Schlüsselmaterials für zwei Schlüsseltresore in verschiedenen Regionen kann erfolgen, indem der Schlüssel außerhalb des Schlüsseltresors erstellt und in beide Schlüsseltresore importiert wird. 
+Selbst ohne konfigurierte Georedundanz wird dringend empfohlen, den Server für die Verwendung von zwei verschiedenen Schlüsseltresoren in zwei unterschiedlichen Regionen mit demselben Schlüsselmaterial zu konfigurieren. Der Schlüssel im sekundären Schlüsseltresor in der anderen Region sollte nicht als TDE-Schutzvorrichtung gekennzeichnet werden. Daher ist dies auch nicht zulässig. Nur bei einem Ausfall, der den primären Schlüsseltresor betrifft, wechselt das System automatisch zum anderen verknüpften Schlüssel mit demselben Fingerabdruck im sekundären Schlüsseltresor (sofern vorhanden). Beachten Sie, dass dieser Wechsel nicht erfolgt, wenn die TDE-Schutzvorrichtung aufgrund von gesperrten Zugriffsrechten nicht zugänglich ist oder wenn der Schlüssel oder der Schlüsseltresor gelöscht wurden, da dies auf eine Kundenabsicht hinweist, um den Zugriff des Servers auf den Schlüssel einzuschränken. Die Bereitstellung desselben Schlüsselmaterials für zwei Schlüsseltresore in verschiedenen Regionen kann erfolgen, indem der Schlüssel außerhalb des Schlüsseltresors erstellt und in beide Schlüsseltresore importiert wird. 
 
-Alternativ kann der Schlüssel mithilfe des primären Schlüsseltresors generiert werden, der sich in der gleichen Region wie der Server befindet, und in einen Schlüsseltresor in einer anderen Azure-Region geklont werden. Rufen Sie mit dem Cmdlet [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) den Schlüssel in einem verschlüsselten Format aus dem primären Schlüsseltresor ab. Geben Sie dann mit dem Cmdlet [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) einen Schlüsseltresor in der zweiten Region für das Klonen des Schlüssels an. Alternativ können Sie das Azure-Portal verwenden, um den Schlüssel zu sichern und wiederherzustellen. Der Sicherungs-/Wiederherstellungsvorgang für Schlüssel ist nur zwischen Schlüsseltresoren innerhalb desselben Azure-Abonnements und derselben [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) zulässig.  
+Alternativ kann der Schlüssel mithilfe des primären Schlüsseltresors, der sich in derselben Region wie der Server befindet, generiert und in einen Schlüsseltresor in einer anderen Azure-Region geklont werden. Rufen Sie mit dem Cmdlet [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) den Schlüssel in einem verschlüsselten Format aus dem primären Schlüsseltresor ab. Geben Sie dann mit dem Cmdlet [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) einen Schlüsseltresor in der zweiten Region für das Klonen des Schlüssels an. Alternativ können Sie das Azure-Portal verwenden, um den Schlüssel zu sichern und wiederherzustellen. Der Sicherungs-/Wiederherstellungsvorgang für Schlüssel ist nur zwischen Schlüsseltresoren innerhalb desselben Azure-Abonnements und derselben [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) zulässig.  
 
 ![Hochverfügbarkeit bei Einzelservern](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
 ## <a name="geo-dr-and-customer-managed-tde"></a>Georedundante Notfallwiederherstellung und kundenseitig verwaltete TDE
 
-Sowohl in Szenarien mit [aktiver Georeplikation](active-geo-replication-overview.md) als auch in solchen mit [Failovergruppen](auto-failover-group-overview.md) benötigt jeder beteiligte Server einen separaten Schlüsseltresor, der sich zusammen mit dem Server in derselben Azure-Region befinden muss. Der Kunde ist dafür verantwortlich, das Schlüsselmaterial in den Schlüsseltresoren konsistent zu halten, sodass die georedundante sekundäre Datenbank synchron ist und bei der Übernahme der Aufgaben denselben Schlüssel aus dem lokalen Schlüsseltresor verwenden kann, wenn die primäre Datenbank aufgrund eines Ausfalls der Region nicht mehr verfügbar ist und ein Failover ausgelöst wird. Es können bis zu vier sekundäre Datenbanken konfiguriert werden, und Verkettung (sekundäre Datenbanken von sekundären Datenbanken) wird nicht unterstützt.
+Sowohl in Szenarien mit [aktiver Georeplikation](active-geo-replication-overview.md) als auch in Szenarien mit [Failovergruppen](auto-failover-group-overview.md) benötigt jeder beteiligte Server einen separaten Schlüsseltresor, der sich zusammen mit dem Server in derselben Azure-Region befinden muss. Der Kunde ist dafür verantwortlich, das Schlüsselmaterial in den Schlüsseltresoren konsistent zu halten, sodass die georedundante sekundäre Datenbank synchron ist und bei der Übernahme der Aufgaben denselben Schlüssel aus dem lokalen Schlüsseltresor verwenden kann, wenn die primäre Datenbank aufgrund eines Ausfalls der Region nicht mehr verfügbar ist und ein Failover ausgelöst wird. Es können bis zu vier sekundäre Datenbanken konfiguriert werden, und Verkettung (sekundäre Datenbanken von sekundären Datenbanken) wird nicht unterstützt.
 
 Um Probleme bei der Einrichtung oder während der Georeplikation aufgrund von unvollständigem Schlüsselmaterial zu vermeiden, sollten Sie die folgenden Regeln befolgen, wenn Sie die kundenseitig verwaltete TDE konfigurieren:
 
@@ -205,7 +205,7 @@ Um Probleme bei der Einrichtung oder während der Georeplikation aufgrund von un
 
 ![Failovergruppen und georedundante Notfallwiederherstellung](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png)
 
-Um ein Failover zu testen, führen Sie die Schritte in [Übersicht über die aktive Georeplikation](active-geo-replication-overview.md) aus. Das Failover sollte regelmäßig getestet werden, um sicherzustellen, dass SQL-Datenbank die Zugriffsberechtigung für beide Schlüsseltresore aufrechterhalten hat.
+Um ein Failover zu testen, führen Sie die Schritte in [Übersicht über die aktive Georeplikation](active-geo-replication-overview.md) aus. Das Failover sollte regelmäßig getestet werden, um sicherzustellen, dass SQL-Datenbank die Zugriffsberechtigung für beide Schlüsseltresore beibehalten hat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

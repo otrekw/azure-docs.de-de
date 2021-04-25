@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
-ms.date: 08/10/2020
-ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: b0aa9d5dec25d8d600ecbcde59a57e67917c6411
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95026232"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011149"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Funktionen in der SQL-API für Hyperscale (Citus)
 
-Dieser Abschnitt enthält Referenzinformationen zu den benutzerdefinierten Funktionen, die von Hyperscale (Citus) bereitgestellt werden. Diese Funktionen helfen dabei, für Hyperscale (Citus) neben den Standard-SQL-Befehlen zusätzliche verteilte Funktionalität bereitzustellen.
+Dieser Abschnitt enthält Referenzinformationen zu den benutzerdefinierten Funktionen, die von Hyperscale (Citus) bereitgestellt werden. Diese Funktionen helfen bei der Bereitstellung von verteilter Funktionalität für Hyperscale (Citus).
 
 > [!NOTE]
 >
@@ -178,6 +178,48 @@ SELECT create_distributed_function(
 );
 ```
 
+### <a name="alter_columnar_table_set"></a>alter_columnar_table_set
+
+Die Funktion „alter_columnar_table_set()“ ändert die Einstellungen bei einer [Spaltentabelle](concepts-hyperscale-columnar.md). Das Aufrufen dieser Funktion bei einer Nicht-Spaltentabelle führt zu einem Fehler. Alle Argumente außer dem Tabellennamen sind optional.
+
+Informationen zum Anzeigen der aktuellen Optionen für alle Spaltentabellen finden Sie in dieser Tabelle:
+
+```postgresql
+SELECT * FROM columnar.options;
+```
+
+Die Standardwerte für Spalteneinstellungen bei neu erstellten Tabellen können mit diesen GUCs überschrieben werden:
+
+* columnar.compression
+* columnar.compression_level
+* columnar.stripe_row_count
+* columnar.chunk_row_count
+
+#### <a name="arguments"></a>Argumente
+
+**table_name:** Der Name der Spaltentabelle.
+
+**chunk_row_count:** (Optional) Die maximale Anzahl von Zeilen pro Block für neu eingefügte Daten. Vorhandene Datenblöcke werden nicht geändert und enthalten möglicherweise mehr Zeilen als diesen Höchstwert. Der Standardwert ist 10.000.
+
+**stripe_row_count:** (Optional) Die maximale Anzahl von Zeilen pro Bereichsstreifen für neu eingefügte Daten. Vorhandene Bereichsstreifen von Daten werden nicht geändert und enthalten möglicherweise mehr Zeilen als diesen Höchstwert. Der Standardwert ist 150.000.
+
+**compression:** (Optional) `[none|pglz|zstd|lz4|lz4hc]` Der Komprimierungstyp für neu eingefügte Daten. Vorhandene Daten werden nicht erneut komprimiert oder dekomprimiert. Der Standardwert und der vorgeschlagene Wert ist „zstd“ (wenn die Unterstützung kompiliert wurde).
+
+**compression_level:** (Optional) Gültige Einstellungen liegen zwischen 1 und 19. Wenn die Komprimierungsmethode die ausgewählte Ebene nicht unterstützt, wird stattdessen die nächstgelegene Ebene ausgewählt.
+
+#### <a name="return-value"></a>Rückgabewert
+
+Nicht zutreffend
+
+#### <a name="example"></a>Beispiel
+
+```postgresql
+SELECT alter_columnar_table_set(
+  'my_columnar_table',
+  compression => 'none',
+  stripe_row_count => 10000);
+```
+
 ## <a name="metadata--configuration-information"></a>Metadaten/Konfigurationsinformationen
 
 ### <a name="master_get_table_metadata"></a>master\_get\_table\_metadata
@@ -220,7 +262,7 @@ SELECT * from master_get_table_metadata('github_events');
 
 ### <a name="get_shard_id_for_distribution_column"></a>get\_shard\_id\_for\_distribution\_column
 
-Hyperscale (Citus) weist jede Zeile einer verteilten Tabelle einem Shard basierend auf dem Wert der Verteilungsspalte der Zeile und der Verteilungsmethode der Tabelle zu. In den meisten Fällen handelt es sich bei der exakten Zuordnung um Details auf niedriger Ebene, die vom Datenbankadministrator ignoriert werden können. Allerdings kann es hilfreich sein, den Shard einer Zeile zu bestimmen, entweder für manuelle Datenbankverwaltungsaufgaben oder nur aus Neugier. Die `get_shard_id_for_distribution_column`-Funktion stellt diese Informationen für Tabellen mit Hash- und Bereichsverteilung sowie für Verweistabellen bereit. Dies funktioniert nicht für die Anfügeverteilung.
+Hyperscale (Citus) weist jede Zeile einer verteilten Tabelle einem Shard basierend auf dem Wert der Verteilungsspalte der Zeile und der Verteilungsmethode der Tabelle zu. In den meisten Fällen handelt es sich bei der exakten Zuordnung um Details auf niedriger Ebene, die vom Datenbankadministrator ignoriert werden können. Allerdings kann es hilfreich sein, den Shard einer Zeile zu bestimmen, entweder für manuelle Datenbankverwaltungsaufgaben oder nur aus Neugier. Die Funktion `get_shard_id_for_distribution_column` stellt diese Informationen für Tabellen mit Hash- und Bereichsverteilung sowie für Verweistabellen bereit. Dies funktioniert nicht für die Anfügeverteilung.
 
 #### <a name="arguments"></a>Argumente
 
