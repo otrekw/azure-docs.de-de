@@ -8,12 +8,12 @@ ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ca16099cffc22a19c2ee35b00ae6f1bcbe2977a7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 79fe8acd06084c58b0cf9b47bf93e933c648510c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312398"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481989"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mit einem TPM unter Linux
 
@@ -149,7 +149,7 @@ Rufen Sie die Bereitstellungsinformationen von Ihrem virtuellen Computer ab, und
 Wenn Sie eine Registrierung im DPS erstellen, haben Sie die Möglichkeit zum Angeben von **Anfänglicher Status von Gerätezwilling**. Im Gerätezwilling können Sie Tags zum Gruppieren von Geräten nach jeder beliebigen Metrik, z.B. Region, Umgebung, Speicherort oder Geräte, festlegen, die Sie in Ihrer Projektmappe benötigen. Diese Tags werden zum Erstellen von [automatischen Bereitstellungen](how-to-deploy-at-scale.md) verwendet.
 
 > [!TIP]
-> Über die Azure-Befehlszeilenschnittstelle können Sie eine [Registrierung](/cli/azure/ext/azure-iot/iot/dps/enrollment) erstellen und mithilfe des Flags **edge-enabled** angeben, dass es sich bei einem Gerät um ein IoT Edge-Gerät handelt.
+> Über die Azure-Befehlszeilenschnittstelle können Sie eine [Registrierung](/cli/azure/iot/dps/enrollment) erstellen und mithilfe des Flags **edge-enabled** angeben, dass es sich bei einem Gerät um ein IoT Edge-Gerät handelt.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Instanz des IoT Hub Device Provisioning Service.
 

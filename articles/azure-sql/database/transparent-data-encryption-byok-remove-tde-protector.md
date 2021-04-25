@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: f98dcdd9c1a479703c82c01b4fd240507ea355de
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c1613c61143044c4fa355c6225cf0fa1d4e2e09d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784459"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308386"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Entfernen einer Transparent Data Encryption (TDE)-Schutzvorrichtung mithilfe von PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -136,7 +136,7 @@ Der PowerShell-Befehl **az sql server key show**  stellt den Fingerabdruck der
 
 Eine Befehlsreferenz finden Sie unter [Azure CLI: keyvault](/cli/azure/keyvault/key).
 
-1. Erstellen Sie einen [neuen Schlüssel in Key Vault](/cli/azure/keyvault/key#az_keyvault_key_create). Stellen Sie sicher, dass der neue Schlüssel in einem anderen Schlüsseltresor als der möglicherweise kompromittierten TDE-Schutzvorrichtung erstellt wird, da die Zugriffskontrolle auf Tresorebene bereitgestellt wird.
+1. Erstellen Sie einen [neuen Schlüssel in Key Vault](/cli/azure/keyvault/key#az-keyvault-key-create). Stellen Sie sicher, dass der neue Schlüssel in einem anderen Schlüsseltresor als der möglicherweise kompromittierten TDE-Schutzvorrichtung erstellt wird, da die Zugriffskontrolle auf Tresorebene bereitgestellt wird.
 
 2. Fügen Sie den neuen Schlüssel zum Server hinzu, und aktualisieren Sie diesen als neue TDE-Schutzvorrichtung des Servers.
 
