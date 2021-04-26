@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aea468c64f70bd7f35dd25206faa9ea33459999
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11182b8331f218b970d867764f575ba5b7854d62
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688908"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550692"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
@@ -33,6 +33,7 @@ Auf der Seite **Alle Geräte** können Sie folgende Aktivitäten ausführen:
 - Konfigurieren Sie Ihre Geräteidentitätseinstellungen.
 - Aktivieren oder deaktivieren Sie Enterprise State Roaming.
 - Überprüfen gerätebezogener Überwachungsprotokolle
+- Geräte herunterladen (Vorschau)
 
 [![Ansicht „Alle Geräte“ im Azure-Portal](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
@@ -65,7 +66,7 @@ Beide Optionen ermöglichen Administratoren Folgendes:
 > [!TIP]
 > - In Hybrid-Azure AD eingebundene Windows 10-Geräte haben keinen Besitzer. Wenn Sie ein Gerät nach Besitzer suchen und es nicht finden, suchen Sie nach der Geräte-ID.
 >
-> - Wenn in der Spalte „REGISTRIERT“ ein Gerät mit dem Zusatz „In Hybrid-Azure AD eingebunden“ und dem Zustand „Ausstehend“ angezeigt wird, deutet das darauf hin, dass das Gerät von Azure AD Connect synchronisiert wurde und auf die vollständige Registrierung vom Client wartet. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md). Weitere Informationen finden Sie im Artikel mit [häufig gestellten Fragen zu Geräten](faq.md).
+> - Wenn in der Spalte „REGISTRIERT“ ein Gerät mit dem Zusatz „In Hybrid-Azure AD eingebunden“ und dem Zustand „Ausstehend“ angezeigt wird, deutet das darauf hin, dass das Gerät von Azure AD Connect synchronisiert wurde und auf die vollständige Registrierung vom Client wartet. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md). Weitere Informationen finden Sie im Artikel mit [häufig gestellten Fragen zu Geräten](faq.yml).
 >
 > - Für einige iOS-Geräte werden in Gerätenamen, die Apostrophe enthalten, möglicherweise andere Zeichen verwendet, die wie Apostrophe aussehen. Die Suche nach solchen Geräte ist daher ein wenig kompliziert. Wenn Ihnen Suchergebnisse nicht ordnungsgemäß angezeigt werden, stellen Sie sicher, dass die Suchzeichenfolge ein Zeichen enthält, das einem Apostroph entspricht.
 
@@ -145,6 +146,14 @@ So aktivieren Sie die Filterfunktionen (Vorschau) in der Ansicht **Alle Geräte*
 
 Sie haben jetzt die Möglichkeit, mit **Filter hinzufügen** der Ansicht **Alle Geräte** Filter hinzuzufügen.
 
+### <a name="download-devices-preview"></a>Geräte herunterladen (Vorschau)
+
+Cloud-Geräte-Administratoren, InTune-Administratoren und globale Administratoren können die Option **Geräte herunterladen (Vorschauversion)** verwenden, um eine CSV-Datei mit Geräten auf der Grundlage angewendeter Filter zu exportieren. Wenn die Liste nicht gefiltert ist, werden alle Geräte exportiert. Ein Export kann während eines Zeitraums von bis zu einer Stunde ausgeführt werden, abhängig von 
+
+Die exportierte Liste enthält die folgenden Geräteidentitäts-Attribute:
+
+`accountEnabled, approximateLastLogonTimeStamp, deviceOSType, deviceOSVersion, deviceTrustType, dirSyncEnabled, displayName, isCompliant, isManaged, lastDirSyncTime, objectId, profileType, registeredOwners, systemLabels, registrationTime, mdmDisplayName`
+
 ## <a name="configure-device-settings"></a>Konfigurieren der Geräteeinstellungen
 
 Damit Geräteidentitäten im Azure AD-Portal verwaltet werden können, müssen diese in Azure AD [registriert oder eingebunden](overview.md) werden. Als Administrator können Sie den Prozess der Registrierung und Einbindung von Geräten steuern, indem Sie die Geräteeinstellungen konfigurieren.
@@ -170,7 +179,11 @@ Sie müssen einer der folgenden Rollen zugewiesen sein, um die Geräteeinstellun
 > [!NOTE]
 > Die Einstellung **Für Geräte, die in Azure AD eingebunden oder bei Azure AD registriert werden sollen, ist mehrstufige Authentifizierung erforderlich** gilt für Geräte, die entweder in Azure AD eingebunden (mit einigen Ausnahmen) oder bei Azure AD registriert sind. Diese Einstellung gilt nicht für hybrid in Azure AD eingebundene Geräte, [in Azure AD eingebundene Azure-VMs](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) und in Azure AD eingebundene Geräte, die den [Selbstbereitstellungsmodus von Windows Autopilot](/mem/autopilot/self-deploying) verwenden.
 
-- **Maximale Anzahl von Geräten pro Benutzer**: Mit dieser Einstellung können Sie die maximale Anzahl von in Azure AD eingebundenen oder bei Azure AD registrierten Geräten festlegen, die ein Benutzer in Azure AD verwenden kann. Wenn ein Benutzer diese Anzahl erreicht, kann er keine weiteren Geräte hinzufügen, bis mindestens eines der vorhandenen Geräte entfernt wird. Der Standardwert lautet **50**.
+> [!IMPORTANT]
+> - Wir empfehlen in „Bedingter Zugriff“ die [Benutzeraktion „Geräte registrieren oder einbinden“](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) zum Erzwingen der mehrstufigen Authentifizierung beim Einbinden oder Registrieren eines Geräts. 
+> - Sie müssen diese Einstellung auf **Nein** festlegen, wenn Sie zum Anfordern einer mehrstufigen Authentifizierung die Richtlinie für bedingten Zugriff nutzen. 
+
+- **Maximale Anzahl von Geräten pro Benutzer**: Mit dieser Einstellung können Sie die maximale Anzahl von in Azure AD eingebundenen oder bei Azure AD registrierten Geräten festlegen, die ein Benutzer in Azure AD verwenden kann. Wenn ein Benutzer diese Anzahl erreicht, kann er keine weiteren Geräte hinzufügen, bis mindestens eines der vorhandenen Geräte entfernt wird. Der Standardwert lautet **50**. Sie können den Wert auf bis zu 100 erhöhen. Wenn Sie einen Wert über 100 eingeben, wird die Azure AD auf 100 festgelegt. Sie können auch einen unbegrenzten Wert verwenden, um außer den vorhandenen Kontingentlimits keine Beschränkung zu erzwingen.
 
 > [!NOTE]
 > Die Einstellung **Maximale Anzahl von Geräten pro Benutzer** gilt für Geräte, die entweder in Azure AD eingebunden oder bei Azure AD registriert sind. Diese Einstellung gilt nicht für in Azure AD Hybrid eingebundene Geräte.

@@ -2,7 +2,7 @@
 title: 'Azure Synapse Analytics: Migrationsleitfaden'
 description: Befolgen Sie diesen Leitfaden, um Ihre Datenbanken zu dedizierten SQL-Pools in Azure Synapse Analytics zu migrieren.
 ms.service: synapse-analytics
-ms.subservice: sql
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -10,12 +10,12 @@ author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 704c30516e9daf047bf5837aa6e2ed08306193db
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 8304064e62ea3996e2ee6be6e12885cb853c9375
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565643"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278778"
 ---
 # <a name="migrate-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Migrieren Sie ein Data Warehouse zu einem dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -30,7 +30,7 @@ Ziehen Sie Azure Synapse Analytics in Betracht, wenn Folgendes gegeben ist:
 - Sie verfügen über mindestens ein Terabyte an Daten.
 - Sie planen Analysen großer Mengen von Daten.
 - Sie müssen Compute- und Speicherressourcen skalieren können.
-- Sie möchten Kosten sparen, indem Sie Computeressourcen anhalten, wenn Sie sie nicht benötigen.
+- Kosten sparen möchten, indem Sie Computeressourcen anhalten, wenn Sie diese nicht benötigen
 
 Ziehen Sie für Betriebsworkloads (OLTP) mit folgenden Eigenschaften andere Optionen als Azure Synapse Analytics in Betracht:
 
@@ -70,7 +70,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, um Ihr Sno
 - Laden Sie die neueste Version von [Azure Synapse Pathway](https://www.microsoft.com/en-us/download/details.aspx?id=102787) herunter, um Snowflake-Objekte zu Azure Synapse-Objekten zu migrieren.
 - Sie verfügen über einen [dedizierten SQL-Pool](../get-started-create-workspace.md) im Azure Synapse-Arbeitsbereich.
 
-# <a name="migrate-from-oracle"></a>[Migration von Oracle](#tab/migratefromOracle)
+# <a name="migrate-from-oracle"></a>[Migrieren von Oracle](#tab/migratefromOracle)
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, um Ihr Oracle-Data-Warehouse zu Azure Synapse Analytics zu migrieren:
 
@@ -113,7 +113,7 @@ Weitere Unterstützung bei der Durchführung dieses Migrationsszenarios finden S
 | [Abrufen von Tabellengrößen in einem dedizierten SQL-Pool in Azure Synapse Analytics](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Getting%20table%20sizes%20in%20SQL%20DW.pdf) | Eine der wichtigsten Aufgaben, die ein Architekt ausführen muss, besteht darin, Metriken zu einer neuen Umgebung nach der Migration zu erhalten. Beispiele hierfür sind das Erfassen von Ladezeiten von der lokalen zur cloudbasierten Lösung und das Erfassen von PolyBase-Ladezeiten. Eine der wichtigsten dieser Aufgaben besteht darin, die Speichergröße in SQL Data Warehouse im Vergleich zur aktuellen Plattform des Kunden zu ermitteln. |
 | [Hilfsprogramm zum Verschieben lokaler SQL Server-Anmeldungen zu Azure Synapse Analytics](https://github.com/Microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins) | Ein PowerShell-Skript erstellt ein T-SQL-Befehlsskript, um Anmeldungen und ausgewählte Datenbankbenutzer aus einer lokalen SQL Server-Instanz in einem Azure SQL-Plattform as a Service (PaaS)-Dienst neu zu erstellen. Das Tool ermöglicht die automatische Zuordnung von Windows Server Active Directory-Konten zu Azure Active Directory-Konten. Alternativ können UPN-Lookups für jede Anmeldung in der lokalen Windows Server Active Directory-Instanz durchgeführt werden. Das Tool kann optional auch native SQL Server-Anmeldeinformationen verschieben. Benutzerdefinierte Server- und Datenbankrollen sowie Rollenmitgliedschaften, Datenbankrollen und Benutzerberechtigungen werden erstellt. Eigenständige Datenbanken werden noch nicht unterstützt, und nur eine Teilmenge der möglichen SQL Server-Berechtigungen werden erstellt. Weitere Informationen finden Sie im Hilfsdokument. Das Skript enthält außerdem Kommentare mit Erläuterungen. |
 
-Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
+Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptaufgabe dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 
 ## <a name="videos"></a>Videos
 

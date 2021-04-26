@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dc4450fb1e21211b43bc178d94cf4bdfe6da58e1
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256785"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639914"
 ---
 # <a name="embedded-sign-in-experience"></a>Eingebettete Anmeldung
 
@@ -49,7 +49,7 @@ Bei der Verwendung des iframe-Elements ist Folgendes zu beachten:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy) beschriebenen Schritte aus.
+* Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) beschriebenen Schritte aus.
 * [Aktivieren Sie benutzerdefinierte Domänen](custom-domain.md) für Ihre Richtlinien.
 
 ## <a name="configure-your-policy"></a>Konfigurieren der Richtlinie

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1f03f99e6394c3939855c73548e8fb917f8696bc
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 901e857a346b0955726c5755e23595efefbc2ca1
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286027"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589498"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie und Problembehandlung
 
@@ -161,7 +161,7 @@ Es wird empfohlen, geringe Dateigrößen zu verwenden, um die auf einen Remoteen
 Über die Konfiguration der Protokollierungsebene können Sie die Ausführlichkeit der generierten Protokolle steuern. Die unterstützten Protokollierungsebenen sind: `none`, `verbose`, `info`, `warning` und `error`. Die Standardprotokollierungsebene für Knoten und die Plattform ist `info`. 
 
 Die Protokollierungsebene kann global durch Festlegen der Umgebungsvariable `ARCHON_LOG_LEVEL` auf einen der zulässigen Werte geändert werden.
-Sie kann auch über das Dokument für IoT Edge-Modulzwillinge global für alle bereitgestellten Skills oder für jeden einzelnen Skill konfiguriert werden, indem die Werte für `platformLogLevel` und `nodeLogLevel` wie unten gezeigt festgelegt werden.
+Sie kann auch über das Dokument für IoT Edge-Modulzwillinge global für alle bereitgestellten Skills oder für jeden einzelnen Skill konfiguriert werden, indem die Werte für `platformLogLevel` und `nodesLogLevel` wie unten gezeigt festgelegt werden.
 
 ```json
 {
@@ -173,7 +173,7 @@ Sie kann auch über das Dokument für IoT Edge-Modulzwillinge global für alle b
             },
             "graphs": {
                 "samplegraph": {
-                    "nodeLogLevel": "verbose",
+                    "nodesLogLevel": "verbose",
                     "platformLogLevel": "verbose"
                 }
             }
