@@ -1,7 +1,7 @@
 ---
 title: Modus für gemeinsam genutzte Geräte für Android-Geräte
 titleSuffix: Microsoft identity platform | Azure
-description: Erfahren Sie, wie Sie den Modus für gemeinsam genutzte Geräte aktivieren, über den Mitarbeiter in Service und Produktion ein Android-Gerät gemeinsam nutzen können.
+description: Erfahren Sie, wie Sie den Modus für gemeinsam genutzte Geräte aktivieren, damit Vorderfront-Mitarbeiter ein Android-Gerät gemeinsam nutzen können
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: bafd6dade626376f216a271c7b3cadc9b429989a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 005f69473fa238d56cf7d582a8af4000166d6939
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578820"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612431"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Modus für gemeinsam genutzte Geräte für Android-Geräte
 
-Mitarbeiter in Service und Produktion, z. B. Mitarbeiter im Einzelhandel, Mitglieder der Flugzeugbesatzung und Außendienstmitarbeiter, verwenden für ihre Arbeit häufig ein gemeinsam genutztes mobiles Gerät. Dies wird problematisch, wenn sie Kennwörter oder PIN-Nummern gemeinsam verwenden, um auf dem gemeinsam genutzten Gerät auf Kunden- und Geschäftsdaten zuzugreifen.
+Mitarbeiter an vorderster Front, wie z. B. Einzelhandelsmitarbeiter, Flugbesatzungsmitglieder und Außendienstmitarbeiter, verwenden häufig ein gemeinsames mobiles Gerät, um ihre Arbeit zu erledigen. Dies wird problematisch, wenn sie Kennwörter oder PIN-Nummern gemeinsam verwenden, um auf dem gemeinsam genutzten Gerät auf Kunden- und Geschäftsdaten zuzugreifen.
 
 Im Modus für gemeinsam genutzte Geräte können Sie ein Android-Gerät so konfigurieren, dass es problemlos von mehreren Mitarbeitern gemeinsam genutzt werden kann. Mitarbeiter können sich anmelden und schnell auf Kundeninformationen zugreifen. Nach ihrer Schicht oder nach Abschluss der Aufgabe können sie sich auf dem Gerät abmelden, und dieses ist dann sofort für den nächsten Mitarbeiter einsatzbereit.
 

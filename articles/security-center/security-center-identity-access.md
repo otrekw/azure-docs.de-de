@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: memildin
 ms.openlocfilehash: 9af4f225b1b9ca5e8023a8d5b4bb7607762e4447
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102631896"
 ---
 # <a name="manage-multi-factor-authentication-mfa-enforcement-on-your-subscriptions"></a>Verwalten der MFA-Erzwingung (mehrstufige Authentifizierung) für Ihre Abonnements
@@ -86,10 +86,10 @@ Verwenden Sie die folgende Azure Resource Graph-Abfrage, um anzuzeigen, für wel
 
 ## <a name="faq---mfa-in-security-center"></a>Häufig gestellte Fragen: MFA in Security Center
 
-- [Wir verwenden bereits die Richtlinie für bedingten Zugriff zum Erzwingen der mehrstufigen Authentifizierung. Wieso werden uns immer noch Security Center-Empfehlungen angezeigt?](#were-already-using-ca-policy-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
-- [Wir verwenden ein MFA-Tool eines Drittanbieters zum Erzwingen der mehrstufigen Authentifizierung. Wieso werden uns immer noch Security Center-Empfehlungen angezeigt?](#were-using-a-third-party-mfa-tool-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
+- [Wir verwenden bereits eine ZS-Richtlinie, um MFA zu erzwingen. Warum erhalten wir weiterhin die Security Center-Empfehlungen?](#were-already-using-ca-policy-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
+- [Wir verwenden das MFA-Tool eines Drittanbieters, um MFA zu erzwingen. Warum erhalten wir weiterhin die Security Center-Empfehlungen?](#were-using-a-third-party-mfa-tool-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
 - [Wieso zeigt Security Center für Benutzerkonten ohne Berechtigungen für das Abonnement an, dass sie MFA erfordern?](#why-does-security-center-show-user-accounts-without-permissions-on-the-subscription-as-requiring-mfa)
-- [Wir erzwingen die mehrstufige Authentifizierung mit PIM. Wieso werden PIM-Konten als nicht konform angezeigt?](#were-enforcing-mfa-with-pim-why-are-pim-accounts-shown-as-noncompliant)
+- [Wir erzwingen MFA mit PIM. Warum werden PIM-Konten als nicht konform angezeigt?](#were-enforcing-mfa-with-pim-why-are-pim-accounts-shown-as-noncompliant)
 - [Kann ich einige Konten ausschließen bzw. schließen?](#can-i-exempt-or-dismiss-some-of-the-accounts)
 - [Gibt es Einschränkungen beim Identitäts- und Zugriffsschutz von Security Center?](#are-there-any-limitations-to-security-centers-identity-and-access-protections)
 

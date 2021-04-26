@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: alkohli
 ms.openlocfilehash: b52d1e834772a2a6e0e000b3df15d8aa0fa866a9
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103564659"
 ---
 # <a name="deploy-an-iot-edge-workload-using-gpu-sharing-on-your-azure-stack-edge-pro"></a>Bereitstellen einer IoT Edge-Workload mit gemeinsamer GPU-Nutzung auf Azure Stack Edge Pro
@@ -116,7 +116,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 ## <a name="verify-gpu-driver-cuda-version"></a>Überprüfen von GPU-Treiber und CUDA-Version
 
-Im ersten Schritt müssen Sie überprüfen, ob Ihr Gerät den erforderlichen GPU-Treiber- und CUDA-Versionen ausführt.
+Der erste Schritt ist die Prüfung, ob auf Ihrem Gerät der erforderliche GPU-Treiber und die erforderlichen CUDA-Versionen ausgeführt werden.
 
 1. [Stellen Sie auf Ihrem Gerät eine Verbindung mit der PowerShell-Schnittstelle her](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
@@ -242,7 +242,7 @@ Stellen Sie IoT Edge-Module über das Azure-Portal bereit. Sie stellen öffentli
 
 1. Wählen Sie **+ Hinzufügen > IoT Edge-Modul** aus.
 
-    ![IoT Edge-Modul hinzufügen ein.](media/azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing/gpu-sharing-deploy-5.png)
+    ![Zum IoT Edge-Modul hinzufügen.](media/azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing/gpu-sharing-deploy-5.png)
 
 1. Geben Sie auf der Registerkarte **Moduleinstellungen** den **Namen des IoT Edge-Moduls** und die **Image-URI** an. Legen Sie die **Richtlinie zur Imageübertragung per Pull** auf **Beim Erstellen** fest.
 
@@ -272,7 +272,7 @@ Stellen Sie IoT Edge-Module über das Azure-Portal bereit. Sie stellen öffentli
 
     ![Optionen für die Containererstellung.](media/azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing/gpu-sharing-deploy-8.png)
 
-    Wählen Sie **Hinzufügen** aus.
+    Wählen Sie **Hinzufügen**.
 
 1. Das von Ihnen hinzugefügte Modul sollte als **Wird ausgeführt** angezeigt werden. 
 
@@ -436,7 +436,7 @@ Stellen Sie IoT Edge-Module über das Azure-Portal bereit. Sie stellen öffentli
     
         ![Auswählen eines Moduls.](media/azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing/stop-module-deployment-2.png)
 
-    1.  Legen Sie auf der Registerkarte **Moduleinstellungen** die Option **Gewünschter Status** auf „beendet“ fest. Wählen Sie **Aktualisieren** aus.
+    1.  Legen Sie auf der Registerkarte **Moduleinstellungen** die Option **Gewünschter Status** auf „beendet“ fest. Wählen Sie **Update** aus.
 
         ![Ändern der Moduleinstellungen.](media/azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing/stop-module-deployment-3.png)
 

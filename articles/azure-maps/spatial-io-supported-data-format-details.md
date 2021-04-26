@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91310168"
 ---
 # <a name="supported-data-format-details"></a>Details zu unterstützten Datenformaten
@@ -23,7 +23,7 @@ Dieser Artikel enthält Einzelheiten zur Lese- und Schreibunterstützung für al
 
 Das räumliche E/A-Modul unterstützt XML-Tags aus den folgenden Namespaces:
 
-| Namespacepräfix | Namespace-URI   | Notizen                                                                    |
+| Namespacepräfix | Namespace-URI   | Hinweise                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
 | `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | Schreibgeschützte Unterstützung in GeoRSS-Dateien.           |
@@ -45,14 +45,14 @@ Das räumliche E/A-Modul unterstützt die folgenden XML-Elemente. Alle nicht unt
 
 Das räumliche E/A-Modul unterstützt die folgenden KML-Elemente:
 
-| Elementname         | Lesen    | Schreiben   | Notizen                                                                                                                      |
+| Elementname         | Lesen    | Schreiben   | Hinweise                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
-| `address`            | Teilweise | ja     | Das Objekt wird analysiert, aber nicht zum Positionieren der Form verwendet.                                                                    |
-| `AddressDetails`     | Teilweise | nein      | Das Objekt wird analysiert, aber nicht zum Positionieren der Form verwendet.                                                                    |
+| `address`            | partial | ja     | Das Objekt wird analysiert, aber nicht zum Positionieren der Form verwendet.                                                                    |
+| `AddressDetails`     | partial | nein      | Das Objekt wird analysiert, aber nicht zum Positionieren der Form verwendet.                                                                    |
 | `atom:author`        | ja     | ja     |                                                                                                                            |
 | `atom:link`          | ja     | ja     |                                                                                                                            |
 | `atom:name`          | ja     | ja     |                                                                                                                            |
-| `BalloonStyle`       | Teilweise | Teilweise | `displayMode` wird nicht unterstützt. Wird in `PopupTemplate` konvertiert. Fügen Sie zum Schreiben eine Eigenschaft vom Typ `popupTemplate` als Eigenschaft des Features hinzu, für das der Schreibvorgang ausgeführt werden soll. |
+| `BalloonStyle`       | partial | partial | `displayMode` wird nicht unterstützt. Wird in `PopupTemplate` konvertiert. Fügen Sie zum Schreiben eine Eigenschaft vom Typ `popupTemplate` als Eigenschaft des Features hinzu, für das der Schreibvorgang ausgeführt werden soll. |
 | `begin`              | ja     | ja     |                                                                                                                            |
 | `color`              | ja     | ja     | Beinhaltet `#AABBGGRR` und `#BBGGRR`. Wird analysiert, um eine CSS-Farbzeichenfolge zu erhalten.                                                           |
 | `colorMode`          | ja     | nein      |                                                                                                                            |
@@ -61,19 +61,19 @@ Das räumliche E/A-Modul unterstützt die folgenden KML-Elemente:
 | `description`        | ja     | ja     |                                                                                                                            |
 | `displayName`        | ja     | ja     |                                                                                                                            |
 | `Document`           | ja     | ja     |                                                                                                                            |
-| `drawOrder`          | Teilweise | nein      | Wird für Bodenüberlagerungen gelesen und zum Sortieren dieser Überlagerungen verwendet. 
+| `drawOrder`          | partial | nein      | Wird für Bodenüberlagerungen gelesen und zum Sortieren dieser Überlagerungen verwendet. 
 | `east`               | ja     | ja     |                                                                                                                            |
 | `end`                | ja     | ja     |                                                                                                                            |
 | `ExtendedData`       | ja     | ja     | Unterstützt nicht typisierte Elemente vom Typ `Data`, `SimpleData` und `Schema` sowie Entitätsersetzungen im Format `$[dataName]`.                      |
-| `extrude`            | Teilweise | Teilweise | Wird nur für Polygone unterstützt. MultiGeometry-Objekte mit Polygonen verschiedener Höhe werden in einzelne Features unterteilt. Linienformate werden nicht unterstützt. Polygone mit der Höhe „0“ werden als flaches Polygon gerendert. Beim Lesen wird die Höhe der ersten Koordinate im äußeren Ring als Höheneigenschaft des Polygons hinzugefügt. Anschließend wird die Höhe der ersten Koordinate verwendet, um das Polygon auf der Karte zu rendern. |
+| `extrude`            | partial | partial | Wird nur für Polygone unterstützt. MultiGeometry-Objekte mit Polygonen verschiedener Höhe werden in einzelne Features unterteilt. Linienformate werden nicht unterstützt. Polygone mit der Höhe „0“ werden als flaches Polygon gerendert. Beim Lesen wird die Höhe der ersten Koordinate im äußeren Ring als Höheneigenschaft des Polygons hinzugefügt. Anschließend wird die Höhe der ersten Koordinate verwendet, um das Polygon auf der Karte zu rendern. |
 | `fill`               | ja     | ja     |                                                                                                                            |
 | `Folder`             | ja     | ja     |                                                                                                                            |
 | `GroundOverlay`      | ja     | ja     | `color` wird nicht unterstützt.                                                                                                   |
-| `heading`            | Teilweise | nein      | Wird analysiert, aber nicht von `SimpleDataLayer` gerendert. Ein Schreibvorgang wird nur ausgeführt, wenn Daten in der Eigenschaft der Form gespeichert werden.                 |
-| `hotSpot`            | ja     | Teilweise | Ein Schreibvorgang wird nur ausgeführt, wenn Daten in der Eigenschaft der Form gespeichert werden. Einheiten werden nur als Pixel ausgegeben.                         |
+| `heading`            | partial | nein      | Wird analysiert, aber nicht von `SimpleDataLayer` gerendert. Ein Schreibvorgang wird nur ausgeführt, wenn Daten in der Eigenschaft der Form gespeichert werden.                 |
+| `hotSpot`            | ja     | partial | Ein Schreibvorgang wird nur ausgeführt, wenn Daten in der Eigenschaft der Form gespeichert werden. Einheiten werden nur als Pixel ausgegeben.                         |
 | `href`               | ja     | ja     |                                                                                                                            |
-| `Icon`               | Teilweise | Teilweise | Wird analysiert, aber nicht von `SimpleDataLayer` gerendert. Die Symboleigenschaft der Form wird nur geschrieben, wenn sie URI-Daten enthält. Nur `href` wird unterstützt. |
-| `IconStyle`          | Teilweise | Teilweise | Werte vom Typ `icon`, `heading`, `colorMode` und `hotspots` werden analysiert, aber nicht von `SimpleDataLayer` gerendert.         |
+| `Icon`               | partial | partial | Wird analysiert, aber nicht von `SimpleDataLayer` gerendert. Die Symboleigenschaft der Form wird nur geschrieben, wenn sie URI-Daten enthält. Nur `href` wird unterstützt. |
+| `IconStyle`          | partial | partial | Werte vom Typ `icon`, `heading`, `colorMode` und `hotspots` werden analysiert, aber nicht von `SimpleDataLayer` gerendert.         |
 | `innerBoundaryIs`    | ja     | ja     |                                                                                                                            |
 | `kml`                | ja     | ja     |                                                                                                                            |
 | `LabelStyle`         | nein      | nein      |                                                                                                                            |
@@ -83,7 +83,7 @@ Das räumliche E/A-Modul unterstützt die folgenden KML-Elemente:
 | `LineString`         | ja     | ja     |                                                                                                                            |
 | `LineStyle`          | ja     | ja     | `colorMode` wird nicht unterstützt.                                                                                         |
 | `Link`               | ja     | nein      | Für Netzwerkverbindungen wird nur die Eigenschaft `href` unterstützt.                                                                   |
-| `MultiGeometry`      | Teilweise | Teilweise | Wird beim Lesen ggf. in einzelne Features unterteilt.                                                                     |
+| `MultiGeometry`      | partial | partial | Wird beim Lesen ggf. in einzelne Features unterteilt.                                                                     |
 | `name`               | ja     | ja     |                                                                                                                            |
 | `NetworkLink`        | ja     | nein      | Links müssen sich in der gleichen Domäne befinden wie das Dokument.                                                                  |
 | `NetworkLinkControl` | nein      | nein      |                                                                                                                            |
@@ -92,36 +92,36 @@ Das räumliche E/A-Modul unterstützt die folgenden KML-Elemente:
 | `outerBoundaryIs`    | ja     | ja     |                                                                                                                            |
 | `outline`            | ja     | ja     |                                                                                                                            |
 | `overlayXY`          | nein      | nein      |                                                                                                                            |
-| `Pair`               | Teilweise | nein      | Es wird nur der Stil `normal` in einem Element vom Typ `StyleMap` unterstützt. `highlight` wird nicht unterstützt.                                   |
+| `Pair`               | partial | nein      | Es wird nur der Stil `normal` in einem Element vom Typ `StyleMap` unterstützt. `highlight` wird nicht unterstützt.                                   |
 | `phoneNumber`        | ja     | ja     |                                                                                                                            |
 | `PhotoOverlay`       | nein      | nein      |                                                                                                                            |
 | `Placemark`          | ja     | ja     |                                                                                                                            |
 | `Point`              | ja     | ja     |                                                                                                                            |
 | `Polygon`            | ja     | ja     |                                                                                                                            |
 | `PolyStyle`          | ja     | ja     |                                                                                                                            |
-| `Region`             | Teilweise | Teilweise | `LatLongBox` wird auf der Dokumentebene unterstützt.                                                                      |
+| `Region`             | partial | partial | `LatLongBox` wird auf der Dokumentebene unterstützt.                                                                      |
 | `rotation`           | nein      | nein      |                                                                                                                            |
 | `rotationXY`         | nein      | nein      |                                                                                                                            |
 | `scale`              | nein      | nein      |                                                                                                                            |
 | `Schema`             | ja     | ja     |                                                                                                                            |
 | `SchemaData`         | ja     | ja     |                                                                                                                            |
-| `schemaUrl`          | Teilweise | ja     | Das Laden von Stilen aus externen Dokumenten, die in keiner KMZ-Datei enthalten sind, wird nicht unterstützt.                             |
+| `schemaUrl`          | partial | ja     | Das Laden von Stilen aus externen Dokumenten, die in keiner KMZ-Datei enthalten sind, wird nicht unterstützt.                             |
 | `ScreenOverlay`      | nein      | nein      |                                                                                                                            |
 | `screenXY`           | nein      | nein      |                                                                                                                            |
 | `SimpleData`         | ja     | ja     |                                                                                                                            |
 | `SimpleField`        | ja     | ja     |                                                                                                                            |
 | `size`               | nein      | nein      |                                                                                                                            |
-| `Snippet`            | Teilweise | Teilweise | Das Attribut `maxLines` wird ignoriert.                                                                                  |
+| `Snippet`            | partial | partial | Das Attribut `maxLines` wird ignoriert.                                                                                  |
 | `south`              | ja     | ja     |                                                                                                                            |
 | `Style`              | ja     | ja     |                                                                                                                            |
-| `StyleMap`           | Teilweise | nein      | Nur der normale Stil in einem Element vom Typ `StyleMap` wird unterstützt.                                                                        |
-| `styleUrl`           | Teilweise | ja     | URLs für externe Stile werden nicht unterstützt.                                                                         |
+| `StyleMap`           | partial | nein      | Nur der normale Stil in einem Element vom Typ `StyleMap` wird unterstützt.                                                                        |
+| `styleUrl`           | partial | ja     | URLs für externe Stile werden nicht unterstützt.                                                                         |
 | `text`               | ja     | ja     | Das Ersetzen von `$[geDirections]` wird nicht unterstützt.                                                                          |
 | `textColor`          | ja     | ja     |                                                                                                                            |
 | `TimeSpan`           | ja     | ja     |                                                                                                                            |
 | `TimeStamp`          | ja     | ja     |                                                                                                                            |
 | `value`              | ja     | ja     |                                                                                                                            |
-| `viewRefreshMode`    | Teilweise | nein      |  Wenn auf einen WMS-Dienst verwiesen wird, wird für Bodenüberlagerungen nur `onStop` unterstützt. `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` wird an die URL angefügt und aktualisiert, wenn die Karte verschoben wird.  |
+| `viewRefreshMode`    | partial | nein      |  Wenn auf einen WMS-Dienst verwiesen wird, wird für Bodenüberlagerungen nur `onStop` unterstützt. `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` wird an die URL angefügt und aktualisiert, wenn die Karte verschoben wird.  |
 | `visibility`         | ja     | ja     |                                                                                                                            |
 | `west`               | ja     | ja     |                                                                                                                            |
 | `when`               | ja     | ja     |                                                                                                                            |
@@ -131,7 +131,7 @@ Das räumliche E/A-Modul unterstützt die folgenden KML-Elemente:
 
 Das räumliche E/A-Modul unterstützt die folgenden GeoRSS-Elemente:
 
-| Elementname             | Lesen    | Schreiben | Notizen                                                                                          |
+| Elementname             | Lesen    | Schreiben | Hinweise                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | ja     | ja   |                                                                                                |
 | `atom:category`          | ja     | ja   |                                                                                                |
@@ -172,30 +172,30 @@ Das räumliche E/A-Modul unterstützt die folgenden GeoRSS-Elemente:
 | `geourl:longitude`       | ja     | nein    | Wird als `georss:point` geschrieben.                                                                   |
 | `position`               | ja     | nein    | Bei manchen XML-Feeds wird GML mit einem Positionstag (anstelle eines `georss:where`-Tags) umschlossen. Dieses Tag wird zwar gelesen, beim Schreiben wird jedoch ein `georss:where`-Tag verwendet. |
 | `rss`                    | ja     | nein    | GeoRSS (im ATOM-Format geschrieben).                                                                 |
-| `rss:author`             | ja     | Teilweise | Wird als `atom:author` geschrieben.                                                                 |
-| `rss:category`           | ja     | Teilweise | Wird als `atom:category` geschrieben.                                                               |
+| `rss:author`             | ja     | partial | Wird als `atom:author` geschrieben.                                                                 |
+| `rss:category`           | ja     | partial | Wird als `atom:category` geschrieben.                                                               |
 | `rss:channel`            | ja     | nein    |                                                                                                |
 | `rss:cloud`              | ja     | nein    |                                                                                                |
 | `rss:comments`           | ja     | nein    |                                                                                                |
-| `rss:copyright`          | ja     | Teilweise | Wird als `atom:rights` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `rights` `properties` verfügt.       |
-| `rss:description`        | ja     | Teilweise | Wird als `atom:content` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `content` `properties` verfügt.      |
+| `rss:copyright`          | ja     | partial | Wird als `atom:rights` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `rights` `properties` verfügt.       |
+| `rss:description`        | ja     | partial | Wird als `atom:content` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `content` `properties` verfügt.      |
 | `rss:docs`               | ja     | nein    |                                                                                                |
 | `rss:enclosure`          | ja     | nein    |                                                                                                |
 | `rss:generator`          | ja     | nein    |                                                                                                |
-| `rss:guid`               | ja     | Teilweise | Wird als `atom:id` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `id` `properties` verfügt.         |
-| `rss:image`              | ja     | Teilweise | Wird als `atom:logo` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `logo` `properties` verfügt.      |
-| `rss:item`               | ja     | Teilweise | Wird als `atom:entry` geschrieben.                                                                  |
+| `rss:guid`               | ja     | partial | Wird als `atom:id` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `id` `properties` verfügt.         |
+| `rss:image`              | ja     | partial | Wird als `atom:logo` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `logo` `properties` verfügt.      |
+| `rss:item`               | ja     | partial | Wird als `atom:entry` geschrieben.                                                                  |
 | `rss:language`           | ja     | nein    |                                                                                                |
-| `rss:lastBuildDate`      | ja     | Teilweise | Wird als `atom:updated` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `updated` `properties` verfügt.     |
-| `rss:link`               | ja     | Teilweise | Wird als `atom:link` geschrieben.                                                                   |
-| `rss:managingEditor`     | ja     | Teilweise | Wird als `atom:contributor` geschrieben.                                                            |
-| `rss:pubDate`            | ja     | Teilweise | Wird als `atom:published` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `published` `properties` verfügt.  |
+| `rss:lastBuildDate`      | ja     | partial | Wird als `atom:updated` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `updated` `properties` verfügt.     |
+| `rss:link`               | ja     | partial | Wird als `atom:link` geschrieben.                                                                   |
+| `rss:managingEditor`     | ja     | partial | Wird als `atom:contributor` geschrieben.                                                            |
+| `rss:pubDate`            | ja     | partial | Wird als `atom:published` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `published` `properties` verfügt.  |
 | `rss:rating`             | ja     | nein    |                                                                                                |
 | `rss:skipDays`           | ja     | nein    |                                                                                                |
 | `rss:skipHours`          | ja     | nein    |                                                                                                |
-| `rss:source`             | ja     | Teilweise | Wird als `atom:source` geschrieben mit `atom:link` geschrieben.                                       |
+| `rss:source`             | ja     | partial | Wird als `atom:source` geschrieben mit `atom:link` geschrieben.                                       |
 | `rss:textInput`          | ja     | nein    |                                                                                                |
-| `rss:title`              | ja     | Teilweise | Wird als `atom:title` geschrieben.                                                                  |
+| `rss:title`              | ja     | partial | Wird als `atom:title` geschrieben.                                                                  |
 | `rss:ttl`                | ja     | nein    |                                                                                                |
 | `rss:webMaster`          | ja     | nein    |                                                                                                |
 
@@ -203,7 +203,7 @@ Das räumliche E/A-Modul unterstützt die folgenden GeoRSS-Elemente:
 
 Das räumliche E/A-Modul unterstützt die folgenden GML-Elemente: 
 
-| Elementname            | Lesen | Schreiben | Notizen                                                                                  |
+| Elementname            | Lesen | Schreiben | Hinweise                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
 | `gml:coordinates`       | ja  | nein    | Wird als `gml:posList` geschrieben.                                                              |
 | `gml:curveMember`       | ja  | nein    |                                                                                        |
@@ -226,7 +226,7 @@ Das räumliche E/A-Modul unterstützt die folgenden GML-Elemente:
 | `gml:lineStringMember`  | ja  | ja   |                                                                                        |
 | `gml:lineStringMembers` | ja  | nein    |                                                                                        |
 | `gml:MultiCurve`        | ja  | nein    | Liest nur Member vom Typ `gml:LineString`. Wird als `gml.MultiLineString` geschrieben.                  |
-| `gml:MultiGeometry`     | Teilweise  | Teilweise   | Wird nur als FeatureCollection-Element gelesen.                                              |
+| `gml:MultiGeometry`     | partial  | partial   | Wird nur als FeatureCollection-Element gelesen.                                              |
 | `gml:MultiLineString`   | ja  | ja   |                                                                                        |
 | `gml:MultiPoint`        | ja  | ja   |                                                                                        |
 | `gml:MultiPolygon`      | ja  | ja   |                                                                                        |
@@ -254,7 +254,7 @@ Das räumliche E/A-Modul unterstützt die folgenden GML-Elemente:
 
 Das räumliche E/A-Modul unterstützt die folgenden GPX-Elemente:
 
-| Elementname             | Lesen    | Schreiben   | Notizen                                                                                       |
+| Elementname             | Lesen    | Schreiben   | Hinweise                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | ja     | ja     |                                                                                             |
 | `gpx:author`             | ja     | ja     |                                                                                             |
@@ -264,7 +264,7 @@ Das räumliche E/A-Modul unterstützt die folgenden GPX-Elemente:
 | `gpx:desc`               | ja     | ja     | Wird zur Abstimmung auf andere XML-Formate beim Lesen in eine Beschreibungseigenschaft kopiert.               |
 | `gpx:dgpsid`             | ja     | ja     |                                                                                             |
 | `gpx:ele`                | ja     | ja     |                                                                                             |
-| `gpx:extensions`         | Teilweise | Teilweise | Beim Lesen werden Stilinformationen extrahiert. Alle anderen Erweiterungen werden in einem einfachen JSON-Objekt zusammengefasst. Nur Informationen zum Formstil werden geschrieben. |
+| `gpx:extensions`         | partial | partial | Beim Lesen werden Stilinformationen extrahiert. Alle anderen Erweiterungen werden in einem einfachen JSON-Objekt zusammengefasst. Nur Informationen zum Formstil werden geschrieben. |
 | `gpx:geoidheight`        | ja     | ja     |                                                                                             |
 | `gpx:gpx`                | ja     | ja     |                                                                                             |
 | `gpx:hdop`               | ja     | ja     |                                                                                             |
@@ -287,13 +287,13 @@ Das räumliche E/A-Modul unterstützt die folgenden GPX-Elemente:
 | `gpx:vdop`               | ja     | ja     |                                                                                             |
 | `gpx:wpt`                | ja     | ja     |                                                                                             |
 | `gpx_style:color`        | ja     | ja     |                                                                                             |
-| `gpx_style:line`         | Teilweise | Teilweise | `color`, `opacity`, `width` und `lineCap` werden unterstützt.                                           |
+| `gpx_style:line`         | partial | partial | `color`, `opacity`, `width` und `lineCap` werden unterstützt.                                           |
 | `gpx_style:opacity`      | ja     | ja     |                                                                                             |
 | `gpx_style:width`        | ja     | ja     |                                                                                             |
 | `gpxx:DisplayColor`      | ja     | nein      | Dient zum Angeben der Farbe einer Form. Beim Schreiben wird stattdessen die Farbe `gpx_style:line` verwendet.  |
-| `gpxx:RouteExtension`    | Teilweise | nein      | Alle Eigenschaften werden in `properties` eingelesen. Nur `DisplayColor` wird verwendet.                     |
-| `gpxx:TrackExtension`    | Teilweise | nein      | Alle Eigenschaften werden in `properties` eingelesen. Nur `DisplayColor` wird verwendet.                     |
-| `gpxx:WaypointExtension` | Teilweise | nein      | Alle Eigenschaften werden in `properties` eingelesen. Nur `DisplayColor` wird verwendet.                     |
+| `gpxx:RouteExtension`    | partial | nein      | Alle Eigenschaften werden in `properties` eingelesen. Es wird nur `DisplayColor` verwendet.                     |
+| `gpxx:TrackExtension`    | partial | nein      | Alle Eigenschaften werden in `properties` eingelesen. Es wird nur `DisplayColor` verwendet.                     |
+| `gpxx:WaypointExtension` | partial | nein      | Alle Eigenschaften werden in `properties` eingelesen. Es wird nur `DisplayColor` verwendet.                     |
 | `gpx:keywords`           | ja     | ja     |                                                                                             |
 | `gpx:fix`                | ja     | ja     |                                                                                             |
 
@@ -389,7 +389,7 @@ Die erste Datenzeile wird nach Zeichenfolgen im Well-Known-Text-Format durchsuch
 
 ### <a name="delimited-data-column-types"></a>Spaltentypen für durch Trennzeichen getrennte Daten
 
-Bei der Überprüfung der Kopfzeile werden im Spaltennamen enthaltene Typinformationen extrahiert und zur Umwandlung der Zellen in dieser Spalte verwendet. Das folgende Beispiel zeigt einen Spaltennamen mit einem Typwert: „ColumnName (typeName)“. Die folgenden Namen werden unterstützt (ohne Berücksichtigung der Groß-/Kleinschreibung):
+Bei der Überprüfung der Kopfzeile werden im Spaltennamen enthaltene Typinformationen extrahiert und zur Umwandlung der Zellen in dieser Spalte verwendet. Das folgende Beispiel zeigt einen Spaltennamen mit einem Typwert: "ColumnName (typeName)". Die folgenden Namen werden unterstützt (ohne Berücksichtigung der Groß-/Kleinschreibung):
 
 #### <a name="numbers"></a>Zahlen
 
@@ -431,4 +431,4 @@ Falls keine Typinformationen aus der Kopfzeile extrahiert werden können und bei
 
 In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten hinzufügen können:
 
-[Lesen und Schreiben von räumlichen Daten](spatial-io-read-write-spatial-data.md)
+[Lesen und Schreiben räumlicher Daten](spatial-io-read-write-spatial-data.md)

@@ -8,7 +8,7 @@
   expanded: true
   items:
     - name: Erkunden eines Beispielszenarios
-      href: quickstart-adt-explorer.md
+      href: quickstart-azure-digital-twins-explorer.md
 - name: Tutorials
   items:
     - name: Codieren einer Client-App
@@ -43,6 +43,8 @@
       href: concepts-query-units.md
     - name: Integration in andere Dienste
       href: concepts-integration.md
+    - name: Ereignisbenachrichtigungen
+      href: concepts-event-notifications.md
     - name: Ereignisrouten
       href: concepts-route-events.md
     - name: Sicherheit für Azure Digital Twins-Lösungen
@@ -91,8 +93,6 @@
           href: how-to-manage-twin.md
         - name: Verwalten des Zwillingsgraphen mit Beziehungen
           href: how-to-manage-graph.md
-        - name: Interpretieren von Ereignisdaten
-          href: how-to-interpret-event-data.md
         - name: Einrichten einer Azure-Funktion zum Verarbeiten von Daten
           href: how-to-create-azure-function.md
         - name: Abfragen des Zwillingsgraphen
@@ -101,8 +101,6 @@
       items:
         - name: Verwenden der APIs und SDKs
           href: how-to-use-apis-sdks.md
-        - name: Erstellen von SDKs mit benutzerdefinierter Sprache mithilfe von AutoRest
-          href: how-to-create-custom-sdks.md
         - name: Senden von Anforderungen mit Postman
           href: how-to-use-postman.md
         - name: Integrieren mit Azure SignalR Service
@@ -149,6 +147,10 @@
           items:
             - name: 403 (Unzulässig)
               href: troubleshoot-error-403.md
+            - name: 404 Unterdomäne nicht gefunden
+              href: troubleshoot-error-404.md
+            - name: Authentifizierung per Azure Digital Twins-Explorer
+              href: troubleshoot-error-azure-digital-twins-explorer-authentication.md
 - name: Verweis
   items:
     - name: REST-API-Referenz
@@ -172,7 +174,7 @@
             - name: Python SDK
               href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
     - name: 'Digital Twins: CLI'
-      href: /cli/azure/ext/azure-iot/dt
+      href: /cli/azure/dt
     - name: DTDL v2-Spezifikation
       href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
 - name: Ressourcen

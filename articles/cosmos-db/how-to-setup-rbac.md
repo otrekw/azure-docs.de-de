@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung mit
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 03/30/2021
 ms.author: thweiss
-ms.openlocfilehash: efde86eac3e0830b36eabfc9e80df09daeed9f6f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1a6bdf55e52a7060423d2a016f07eee3608f50d4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586062"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063473"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurieren der rollenbasierten Zugriffssteuerung mit Azure Active Directory für Ihr Azure Cosmos DB-Konto (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -314,7 +314,7 @@ resourceGroupName='<myResourceGroup>'
 accountName='<myCosmosAccount>'
 readOnlyRoleDefinitionId = '<roleDefinitionId>' // as fetched above
 principalId = '<aadPrincipalId>'
-az cosmosdb sql role assignment create --account-name $accountName --resource-group --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
+az cosmosdb sql role assignment create --account-name $accountName --resource-group $resourceGroupName --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
 ```
 
 ## <a name="initialize-the-sdk-with-azure-ad"></a>Initialisieren des SDK mit Azure AD
@@ -323,9 +323,9 @@ Wenn Sie Azure Cosmos DB-RBAC in Ihrer Anwendung verwenden möchten, müssen Si
 
 Die Methode zur Erstellung einer `TokenCredential`-Instanz wird in diesem Artikel nicht behandelt. Es gibt viele Möglichkeiten, eine solche Instanz zu erstellen, die vom Typ der zu verwendenden AAD-Identität abhängen (Benutzerprinzipal, Dienstprinzipal, Gruppe usw.). Am wichtigsten ist, dass Ihre `TokenCredential`-Instanz in die Identität (Prinzipal-ID) aufgelöst werden muss, der Sie die Rollen zugewiesen haben. Beispiele für das Erstellen einer `TokenCredential`-Klasse finden Sie hier:
 
-- [in .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [in Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
-- [in JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
+- [in .NET](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [in Java](/java/api/overview/azure/identity-readme#credential-classes)
+- [in JavaScript](/javascript/api/overview/azure/identity-readme#credential-classes)
 
 In den folgenden Beispielen wird ein Dienstprinzipal mit einer `ClientSecretCredential`-Instanz verwendet.
 
@@ -385,6 +385,7 @@ Diese zusätzlichen Informationen fließen in die Protokollkategorie **DataPlane
 ## <a name="limits"></a>Einschränkungen
 
 - Sie können bis zu 100 Rollendefinitionen und 2.000 Rollenzuweisungen pro Azure Cosmos DB-Konto erstellen.
+- Sie können Rollendefinitionen nur Azure AD-Identitäten zuweisen, die demselben Azure AD-Anker wie Ihr Azure Cosmos DB-Konto angehören.
 - Die Azure AD-Gruppenauflösung wird derzeit für Identitäten, die zu mehr als 200 Gruppen gehören, nicht unterstützt.
 - Das Azure AD-Token wird zurzeit mit jeder einzelnen an den Azure Cosmos DB-Dienst gesendeten Anforderung als Header übergeben und erhöht so die Gesamtnutzlastgröße.
 - Der Zugriff auf Ihre Daten mit Azure AD über den [Azure Cosmos DB-Explorer](data-explorer.md) wird noch nicht unterstützt. Wenn Sie den Azure Cosmos DB-Explorer verwenden, muss der Benutzer vorerst noch Zugriff auf den Primärschlüssel des Kontos haben.

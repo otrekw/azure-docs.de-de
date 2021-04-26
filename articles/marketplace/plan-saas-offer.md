@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/30/2020
-ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 6f08fa0b2126112fa17fd61be6f44bb5cc6d5396
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581302"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552154"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -37,9 +37,9 @@ In der folgenden Tabelle sind die Auflistungsoptionen für SaaS-Angebote im komm
 
 Weitere Informationen zu diesen Auflistungsoptionen finden Sie unter [Transaktionsfunktionen im kommerziellen Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-Nachdem das Angebot veröffentlicht wurde, wird die von Ihnen gewählte Auflistungsoption als Schaltfläche in der oberen linken Ecke der Auflistungsseite Ihres Angebots angezeigt. Der folgende Screenshot zeigt z. B. die Auflistungsseite eines Angebots im Azure Marketplace mit den Schaltflächen **Kontakt mit mir aufnehmen** und **Testversion**.
+Nachdem das Angebot veröffentlicht wurde, wird die von Ihnen gewählte Auflistungsoption als Schaltfläche in der oberen linken Ecke der Auflistungsseite Ihres Angebots angezeigt. Der folgende Screenshot zeigt z. B. die Auflistungsseite eines Angebots im Azure Marketplace mit der Schaltfläche **Jetzt kaufen**.
 
-![Veranschaulicht ein im Onlineshop aufgelistetes Angebot.](./media/listing-options.png)
+![Veranschaulicht ein im Onlineshop aufgelistetes Angebot.](./media/saas/listing-options-saas.png)
 
 ## <a name="technical-requirements"></a>Technische Anforderungen
 
@@ -68,9 +68,9 @@ Wenn Sie ein transaktionsfähiges Angebot erstellen, müssen Sie die folgenden I
 
 - **URL der Angebotsseite**: Die URL der SaaS-Website (z. B. `https://contoso.com/signup`), zu der Benutzer umgeleitet werden, nachdem sie Ihr Angebot im kommerziellen Marketplace erworben und den Konfigurationsvorgang vom neu erstellten SaaS-Abonnement aus gestartet haben. An diese URL wird ein Token gesendet, das zum Aufrufen der Fulfillment-APIs verwendet werden kann. So lassen sich Bereitstellungsdetails für die interaktive Registrierungsseite abrufen.
 
-  Die URL wird mit dem Identifizierungstokenparameter für den Marketplace-Kauf aufgerufen, der den SaaS-Kauf eines bestimmten Kunden eindeutig identifiziert. Sie müssen dieses Token mithilfe der [Auflösungs-API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) durch die entsprechenden SaaS-Abonnementdetails ersetzen. Diese und alle anderen Daten, die Sie sammeln möchten, sollten als Teil einer interaktiven, in Ihre Benutzeroberfläche integrierten Webseite für Kunden verwendet werden, wo sie die Kundenregistrierung abschließen und den Kauf aktivieren können. Auf dieser Seite sollte sich der Benutzer per 1-Klick-Authentifizierung über Azure Active Directory (Azure AD) registrieren.
+  Die URL wird mit dem Identifizierungstokenparameter für den Marketplace-Kauf aufgerufen, der den SaaS-Kauf eines bestimmten Kunden eindeutig identifiziert. Sie müssen dieses Token mithilfe der [Auflösungs-API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) durch die entsprechenden SaaS-Abonnementdetails ersetzen. Diese und alle weiteren Details, die Sie als Teil einer Kunden-interaktiven Webseite sammeln möchten, können verwendet werden, um das Onboarding der Kunden zu starten, das letztendlich mit einem Aktivierungsvorgang für die API zum Starten des Abonnementzeitraums abgeschlossen werden muss. Auf dieser Seite sollte sich der Benutzer per 1-Klick-Authentifizierung über Azure Active Directory (Azure AD) registrieren.
 
-  Die URL mit dem Identifizierungstokenparameter für den Marketplace-Kauf wird auch aufgerufen, wenn der Kunde die Oberfläche für verwaltete SaaS-Lösungen über das Azure-Portal oder das M365 Admin Center startet. Die beiden folgenden Abläufe sollten unterstützt werden: Wenn das Token nach dem Kauf erstmalig für neue Kunden bereitgestellt wird und wenn es für vorhandene Kunden erneut zum Verwalten der SaaS bereitgestellt wird.
+  Die URL mit dem Identifizierungstokenparameter für den Marketplace-Kauf wird auch aufgerufen, wenn der Kunde die Oberfläche für verwaltete SaaS-Lösungen über das Azure-Portal oder das Microsoft 365 Admin Center startet. Die beiden folgenden Abläufe sollten unterstützt werden: Wenn das Token nach dem Kauf erstmalig für neue Kunden bereitgestellt wird und wenn es für vorhandene Kunden erneut zum Verwalten der SaaS bereitgestellt wird.
 
     Die konfigurierte Landing Page sollte rund um die Uhr aktiv sein. Dies ist die einzige Möglichkeit, Sie über neue Käufe Ihrer SaaS-Angebote im kommerziellen Marketplace oder über Konfigurationsanforderungen eines aktiven Abonnements für ein Angebot zu benachrichtigen.
 
@@ -79,7 +79,7 @@ Wenn Sie ein transaktionsfähiges Angebot erstellen, müssen Sie die folgenden I
   Der von Ihnen bereitgestellte Webhook sollte rund um die Uhr aktiv sein. Dies ist die einzige Möglichkeit, Sie über Aktualisierungen der SaaS-Abonnements Ihrer Kunden, die über den kommerziellen Marketplace erworben wurden, zu benachrichtigen.
 
   > [!NOTE]
-  > Innerhalb des Azure-Portals muss eine [Azure Active Directory-App](../active-directory/develop/howto-create-service-principal-portal.md) mit nur einem Mandanten erstellt werden, damit die Verbindung zwischen unseren beiden Diensten durch eine Azure-App-ID authentifiziert werden kann. Um die [Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) zu ermitteln, wechseln Sie zu Azure Active Directory, wählen Sie **Eigenschaften** aus, und suchen Sie nach der aufgeführten Verzeichnis-ID-Nummer. Beispiel: `50c464d3-4930-494c-963c-1e951d15360e`.
+  > Innerhalb des Azure-Portals müssen Sie eine [Azure Active Directory (Azure AD)-App-Registrierung](../active-directory/develop/howto-create-service-principal-portal.md) für einen einzelnen Mandanten erstellen. Verwenden Sie die Details zur App-Registrierung, um Ihre Lösung beim Aufrufen der Marketplace-APIs zu authentifizieren. Um die [Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) zu ermitteln, wechseln Sie zu Azure Active Directory, wählen Sie **Eigenschaften** aus, und suchen Sie nach der aufgeführten Verzeichnis-ID-Nummer. Beispiel: `50c464d3-4930-494c-963c-1e951d15360e`.
 
 - **ID Ihres Azure Active Directory-Mandanten**: (auch bekannt als Verzeichnis-ID). Innerhalb des Azure-Portals muss eine [Azure Active Directory (AD)-App registriert werden](../active-directory/develop/howto-create-service-principal-portal.md), damit wir sie der Zugriffssteuerungsliste (Access Control List, ACL) der API hinzufügen und so sicherstellen können, dass Sie für den Aufruf autorisiert sind. Um die Mandanten-ID für Ihre Azure Active Directory-App (AD) zu ermitteln, rufen Sie in Azure Active Directory das Blatt [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) auf. Wählen Sie in der Spalte **Anzeigename** die App aus. Suchen Sie dann nach der aufgeführten Nummer für **Verzeichnis-ID (Mandant)** (z. B. `50c464d3-4930-494c-963c-1e951d15360e`).
 
@@ -88,7 +88,7 @@ Wenn Sie ein transaktionsfähiges Angebot erstellen, müssen Sie die folgenden I
   Die ID der Azure AD-Anwendung ist der Herausgeber-ID in Ihrem Partner Center-Konto zugeordnet. Für alle Angebote unter diesem Konto muss die gleiche Anwendungs-ID verwendet werden.
 
   > [!NOTE]
-  > Wenn der Herausgeber über zwei oder mehr unterschiedliche Konten im Partner Center verfügt, sollten auch zwei oder mehr unterschiedliche Azure AD-App-IDs verwendet werden – jeweils eine für eines der Konten. Jedes Partnerkonto im Partner Center sollte eine eindeutige Azure AD-App-ID für alle SaaS-Angebote verwenden, die über dieses Konto veröffentlicht werden.
+  > Wenn der Herausgeber über zwei oder mehr unterschiedliche Konten im Partner Center verfügt, können die Azure AD-App-Registrierungsdetails nur in einem Konto verwendet werden. Das Verwenden desselben Mandanten-ID/App-ID-Paars für ein Angebot unter einem anderen Herausgeberkonto wird nicht unterstützt.
 
 ## <a name="test-drives"></a>Testversionen
 Sie können eine Testversion für Ihre SaaS-App aktivieren. Über Testversionen können Kunden für eine feste Anzahl von Stunden auf eine vorkonfigurierte Umgebung zugreifen. Sie können Testversionen für beliebige Veröffentlichungsoptionen aktivieren, allerdings gelten für dieses Feature zusätzliche Anforderungen. Weitere Informationen zu Testversionen finden Sie unter [Was ist eine Testversion?](what-is-test-drive.md) Weitere Informationen zum Konfigurieren verschiedener Arten von Testversionen finden Sie unter [Technische Konfiguration der Testversion](test-drive-technical-configuration.md).
@@ -134,11 +134,33 @@ Wenn Sie sich für die Verwendung des Standardvertrags entscheiden, können Sie 
 > [!NOTE]
 > Nachdem Sie ein Angebot mit dem Standardvertrag für den kommerziellen Marketplace veröffentlicht haben, können Sie keine eigenen benutzerdefinierten Geschäftsbedingungen mehr verwenden. Es handelt sich um ein „oder“-Szenario. Entweder bieten Sie Ihre Lösung im Rahmen des Standardvertrags oder Ihrer eigenen Geschäftsbedingungen an. Wenn Sie die Bedingungen des Standardvertrags ändern möchten, können Sie dies über Zusatzvereinbarungen für den Standardvertrag erreichen.
 
+
+## <a name="microsoft-365-integration"></a>Microsoft 365-Integration
+
+Durch die Integration von Microsoft 365 kann auf Ihrem SaaS-Angebot eine verbundene Oberfläche über mehrere Microsoft 365 App-Oberflächen hinweg über verwandte kostenlose Add-Ins wie Teams-Apps, Office-Add-Ins und SharePoint Framework-Lösungen bereitgestellt werden. Mithilfe der folgenden Informationen können Sie Ihren Kunden dabei helfen, alle Facetten ihrer E2E-Lösung (Webdienst und zugehörige Add-Ins) problemlos zu ermitteln und innerhalb eines Prozesses bereitzustellen. 
+  - Wenn Ihr SaaS-Angebot in Microsoft Graph integriert ist, geben Sie die APP-ID Azure Active Directory (AAD) an, die von Ihrem SaaS-Angebot für die Integration verwendet wird. Administratoren können die Zugriffsberechtigungen, die für die ordnungsgemäße Funktionsweise Ihres Saas-Angebots erforderlich sind, gemäß der Aad-APP-ID überprüfen und Zugriff gewähren, wenn die erweiterte Administratorberechtigung zum Zeitpunkt der Bereitstellung erforderlich ist. 
+    
+     Wenn Sie Ihr Angebot über Microsoft verkaufen möchten, ist dies die gleiche Aad-APP-ID, die Sie für die Verwendung auf Ihrer Angebotsseite registriert haben, um grundlegende Benutzerinformationen zu erhalten, die zum Abschließen der Aktivierung von Kundenabonnements benötigt werden. [Erstellen der Angebotsseite für Ihr transaktionsfähiges SaaS-Angebot im kommerziellen Marketplace](azure-ad-transactable-saas-landing-page.md). 
+    
+   -    Stellen Sie eine Liste verwandter Add-Ins bereit, die mit Ihrem SaaS-Angebot zusammenarbeiten, das Sie verknüpfen möchten. Kunden können Ihre E2E-Lösung auf AppSource ermitteln, und Administratoren können sowohl die SaaS-Anwendung als auch alle zugehörigen Add-Ins, die Sie mit dem gleichen Prozess verknüpft haben, über Microsoft 365 Admin Center bereitstellen.
+    
+        Um verwandte Add-Ins zu verknüpfen, müssen Sie den AppSource-Link des Add-ins angeben, das heißt, dass das Add-in zuerst in AppSource veröffentlicht werden muss. Unterstützte Add-in-Typen, die Sie verknüpfen können, sind: Teams-Apps, Office-Add-Ins und Lösungen für SharePoint Framework (SPFX). Jedes verknüpfte Add-in muss für ein SaaS-Angebot eindeutig sein. 
+
+Für verknüpfte Produkte wird die Suche in AppSource mit einem Ergebnis zurückgegeben, das sowohl SaaS als auch alle verknüpften Add-Ins enthält. Der Kunde kann zwischen den Produktdetailseiten des Saas-Angebots und verknüpften Add-ins navigieren. IT-Administratoren können sowohl SaaS-als auch verknüpfte Add-Ins innerhalb desselben Prozesses über eine integrierte und verbundene Darstellung innerhalb des Microsoft 365 Admin Centers überprüfen und bereitstellen. Weitere Informationen finden Sie unter [Testen und Bereitstellen von Microsoft 365-Apps Microsoft 365 Administrator](/microsoft-365/admin/manage/test-and-deploy-microsoft-365-apps).
+
+### <a name="microsoft-365-integration-support-limitations"></a>Einschränkungen des Supports der Microsoft 365 Integration
+Die Ermittlung als einzelne E2E-Lösung wird in AppSource für alle Fälle unterstützt. Allerdings wird die vereinfachte Bereitstellung der E2E-Lösung, wie Microsoft 365 oben beschrieben, für die folgenden Szenarien nicht unterstützt:
+
+   - Dasselbe Add-in ist mit mehr als einem SaaS-Angebot verknüpft.
+   - Das SaaS-Angebot ist mit Add-Ins verknüpft, aber es ist nicht in Microsoft Graph integriert, und es wird keine Aad-APP-ID bereitgestellt.
+  - Das SaaS-Angebot ist mit Add-Ins verknüpft, aber die für die Microsoft Graph Integration angegebene Aad-APP-ID ist für mehrere SaaS-Angebote freigegeben.
+
+ 
 ## <a name="offer-listing-details"></a>Details zur Angebotsauflistung
 
 Wenn Sie ein [neues SaaS-Angebot](create-new-saas-offer.md) im Partner Center erstellen, geben Sie Text, Bilder, optionale Videos und andere Details auf der Seite **Angebotsliste** ein. Diese Informationen sind für Ihre Kunden sichtbar, wenn sie die Angebotsauflistung im kommerziellen Marketplace entdecken, wie im folgenden Beispiel gezeigt.
 
-:::image type="content" source="./media/example-saas-1.png" alt-text="Veranschaulicht, wie dieses Angebot in Microsoft AppSource angezeigt wird.":::
+:::image type="content" source="./media/saas/example-saas-1.png" alt-text="Veranschaulicht, wie dieses Angebot in Microsoft AppSource angezeigt wird.":::
 
 **Beschreibungen zu den Nummern**
 
@@ -209,9 +231,6 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
 > [!Note]
 > Ihr Angebot muss die allgemeinen [Zertifizierungsrichtlinien für den kommerziellen Marketplace](/legal/marketplace/certification-policies#100-general) und die [Software-as-a-Service-Richtlinien](/legal/marketplace/certification-policies#1000-software-as-a-service-saas) für die Veröffentlichung auf dem kommerziellen Marketplace erfüllen.
 
-## <a name="preview-audience"></a>Vorschauzielgruppe
-Eine Vorschauzielgruppe erhält vor der Liveveröffentlichung in den Onlineshops Zugriff auf Ihr Angebot, um die End-to-End-Funktionalität vorab zu testen. Auf der Seite **Vorschauzielgruppe** können Sie eine eingeschränkte Vorschauzielgruppe definieren. Diese Einstellung ist nicht verfügbar, wenn Sie Transaktionen unabhängig abwickeln möchten, anstatt ihr Angebot über Microsoft zu verkaufen. Wenn dies der Fall ist, können Sie diesen Abschnitt überspringen und zu [Zusätzliche Verkaufschancen](#additional-sales-opportunities) wechseln.
-
 > [!NOTE]
 > Eine Vorschauzielgruppe unterscheidet sich von einem privaten Plan. Ein privater Plan ist ein Angebot, das nur einem bestimmten Publikum zur Verfügung steht. Darüber hinaus können Sie einen benutzerdefinierten Plan mit bestimmten Kunden aushandeln. Weitere Informationen finden Sie im nächsten Abschnitt: zu Plänen.
 
@@ -251,6 +270,50 @@ Das folgende Beispiel zeigt eine exemplarische Aufschlüsselung der Kosten und A
 |||
 
 **`*` Reduzierte Marketplace-Dienstgebühr:** Für bestimmte SaaS-Angebote, die Sie im kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 Prozent (wie im Microsoft-Herausgebervertrag angegeben) auf 10 Prozent. Damit Ihre Angebote qualifiziert sind, müssen sie von Microsoft als gefördert für Azure IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr in Anspruch genommen werden kann. Sobald die Anforderungen für die Berechtigung erfüllt sind, wird die reduzierte Dienstgebühr für alle Transaktionen ab dem ersten Tag des folgenden Monats gewährt und weiterhin angewendet, bis der Azure IP-Co-Sell Incentivized-Status nicht mehr gegeben ist. Einzelheiten zur Berechtigung für das IP-Co-Selling finden Sie unter [Requirements for Co-sell Status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status). Die reduzierte Marketplace-Dienstgebühr gilt auch für VMs, verwaltete Apps und andere berechtigte transaktionsfähige IaaS-Angebote im Rahmen der Azure IP-Co-Selling-Incentives, die über den kommerziellen Marketplace bereitgestellt werden.
+
+## <a name="preview-audience"></a>Vorschauzielgruppe
+
+Eine Vorschauzielgruppe kann auf das Angebot zugreifen, bevor es in den Onlinestores veröffentlicht wird. Sie können sehen, wie Ihr Angebot im kommerziellen Marketplace aussehen wird, und die End-to-End-Funktionalität testen, bevor Sie Sie live veröffentlichen. 
+
+Auf der Seite **Vorschauzielgruppe** können Sie eine eingeschränkte Vorschauzielgruppe definieren. Diese Einstellung ist nicht verfügbar, wenn Sie Transaktionen unabhängig abwickeln möchten, anstatt ihr Angebot über Microsoft zu verkaufen. Wenn dies der Fall ist, können Sie diesen Abschnitt überspringen und zu [Zusätzliche Verkaufschancen](#additional-sales-opportunities) wechseln.
+
+## <a name="test-offer"></a>Testangebot
+
+Bevor Sie Ihr Angebot live veröffentlichen, sollten Sie die Vorschaufunktion verwenden, um ihre technische Implementierung zu entwickeln, zu testen und mit verschiedenen Preismodellen zu experimentieren.
+
+Zum risikoärmsten Entwickeln und Testen Ihres Saas-Angebots empfiehlt es sich, ein Test-und Entwicklungsangebot für Experimente und Tests zu erstellen. Das DEV-Angebot wird vom Angebot ihrer Produktion (Prod) getrennt.
+
+Wenn Sie das DEV-Angebot nicht versehentlich kaufen möchten, können Sie die Schaltfläche **Go Live** nicht per Push übernehmen, um das DEV-Angebot live zu veröffentlichen.
+
+![Veranschaulicht die Seite „Angebotsübersicht“ für ein Angebot im Partner Center. Die Schaltfläche „Live schalten“ und Vorschaulinks sind dargestellt. Der Link „Prüfbericht anzeigen“ wird auch unter „Automatisierte Validierung“ angezeigt.](./media/review-publish-offer/publish-status-saas.png)
+
+Hier sind einige Gründe für die Erstellung eines separaten DEV-Angebots für das Entwicklungsteam, das für die Entwicklung und das Testen des PROD-Angebots verwendet wird:
+
+- Vermeiden von unbeabsichtigten Kundengebühren
+- Bewerten von Preismodellen
+- Nicht Hinzufügen von Plänen, die keine tatsächlichen Kunden als Ziel haben
+
+### <a name="avoid-accidental-customer-charges"></a>Vermeiden von unbeabsichtigten Kundengebühren
+
+Durch die Verwendung eines DEV-Angebots anstelle des PROD-Angebots und deren Behandlung als Entwicklungs- und Produktionsumgebungen können Sie für Kunden unbeabsichtigte Kosten vermeiden.
+
+Es wird empfohlen, zwei verschiedene Azure AD-Apps zum Aufrufen der Marketplace-APIs zu registrieren. Entwickler verwenden eine Azure AD-App mit den Einstellungen des DEV-Angebots, und das Betriebsteam verwendet die PROD-App-Registrierung. Auf diese Weise können Sie das Entwicklungsteam darauf beschränken, unbeabsichtigte Fehler zu vermeiden, z. B. das Aufrufen der API, um das Abonnement eines Kunden abzubrechen, der 100 KB pro Monat zahlt. Sie können auch vermeiden, dass einem Kunden eine gemessene Nutzung berechnet wird, die er nicht verbraucht hat.
+
+### <a name="evaluate-pricing-models"></a>Bewerten von Preismodellen
+
+Das Testen von Preismodellen im Entwicklungsangebot verringert das Risiko, wenn Entwickler mit unterschiedlichen Preismodellen experimentieren.
+
+Herausgeber können die Pläne erstellen, die Sie im DEV-Angebot benötigen, um zu bestimmen, welches Preismodell für das Angebot am besten geeignet ist. Entwickler möchten möglicherweise mehrere Pläne im Entwicklungsangebot erstellen, um verschiedene Preiskombinationen zu testen. Beispielsweise können Sie Pläne mit unterschiedlichen Sätzen von benutzerdefinierten gemessenen Dimensionen erstellen. Sie können einen anderen Plan mit einer Mischung aus pauschalen und benutzerdefinierten Abmessungen erstellen.
+
+Zum Testen mehrerer Preisoptionen müssen Sie einen Plan für jedes eindeutige Preismodell erstellen. Weitere Informationen finden Sie unter [Pläne](#plans).
+
+### <a name="not-adding-plans-that-do-not-target-actual-customers"></a>Nicht Hinzufügen von Plänen, die keine tatsächlichen Kunden als Ziel haben
+
+Wenn Sie ein DEV-Angebot für Entwicklungs- und Testzwecke verwenden, können Sie eine unnötige Unübersichtlichkeit im PROD-Angebot verringern. Beispielsweise können Sie keine Pläne löschen, die Sie erstellen, um verschiedene Preismodelle oder technische Konfigurationen zu testen (ohne ein Supportticket zu erstellen). Durch das Erstellen von Plänen zum Testen im DEV-Angebot verringern Sie also die Unübersichtlichkeit im PROD-Angebot.
+
+Die Unübersichtlichkeit des PROD-Angebots führt zu Frustrationen bei Produkt- und Marketingteams, da sie davon ausgehen, dass alle Pläne auf tatsächliche Kunden abzielen. Besonders bei großen Teams, die getrennt arbeiten und die unterschiedliche Sandboxen benötigen, bietet das Erstellen von zwei Angeboten zwei verschiedene Umgebungen für DEV und PROD. In einigen Fällen möchten Sie möglicherweise mehrere DEV-Angebote erstellen, um ein größeres Team zu unterstützen, das unterschiedliche Testszenarien ausführen muss. Wenn verschiedene Teammitglieder im Entwicklungsangebot getrennt vom PROD-Angebot arbeiten, hilft es, Produktionspläne so nah wie möglich in der Produktionsumgebung zu halten.
+
+Wenn Sie ein DEV-Angebot testen, können Sie die 30 benutzerdefinierten Größenbeschränkungen pro Angebot vermeiden. Entwickler können unterschiedliche Verbrauchseinheiten im Entwicklungsangebot testweise kombinieren, ohne dass sich dies auf die benutzerdefinierte Begrenzung der gemessenen Dimension im PROD-Angebot auswirkt.
 
 ## <a name="additional-sales-opportunities"></a>Zusätzliche Verkaufschancen
 

@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
 ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97802523"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)
@@ -232,7 +232,7 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
 
    Wenn Sie **keinen Sensor haben**, legen Sie den Wert von `simulatedData` auf `true` fest, damit die Beispielanwendung simulierte Sensordaten erstellt und nutzt.
 
-   *Hinweis: Die in diesem Tutorial verwendete i2c-Adresse ist standardmäßig „0x77“. Je nach Ihrer Konfiguration könnte sie auch „0x76“ lauten. Wenn ein i2c-Fehler auftritt, versuchen Sie, den Wert in „118“ zu ändern, und prüfen Sie, ob dies besser funktioniert. Wenn Sie sehen möchten, welche Adresse von Ihrem Sensor verwendet wird, führen Sie `sudo i2cdetect -y 1` in einer Shell auf Raspberry Pi aus*.
+   *Hinweis: die in diesem Tutorial verwendete I2C-Adresse ist standardmäßig 0x77. Abhängig von Ihrer Konfiguration kann es sich auch um 0x76 handeln: Wenn ein I2C-Fehler auftritt, versuchen Sie, den Wert in 118 zu ändern, und prüfen Sie, ob dies besser funktioniert. Führen Sie `sudo i2cdetect -y 1` in einer Shell auf dem Raspberry Pi aus, um zu sehen, welche Adresse von Ihrem Sensor verwendet wird*
 
 2. Speichern und beenden Sie durch Drücken von STRG+O > EINGABETASTE > STRG+X.
 

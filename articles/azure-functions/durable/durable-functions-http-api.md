@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0ab9f33616547c073e8e3a2128a441238bf3a17d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84697842"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220452"
 ---
 # <a name="http-api-reference"></a>HTTP-API-Referenz
 
@@ -128,6 +128,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 In Version 2.x der Azure Functions-Runtime hat das URL-Format die gleichen Parameter, jedoch mit einem etwas anderen Präfix:
@@ -140,6 +141,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
@@ -153,16 +155,17 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`createdTimeFrom`**   | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen, die am oder nach dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
 | **`createdTimeTo`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen-Instanzen, die am oder vor dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
 | **`runtimeStatus`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Artikel [Abfragen von Instanzen](durable-functions-instance-management.md). |
+| **`returnInternalServerErrorOnFailure`**  | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn dieser Wert auf `true` festgelegt ist, gibt diese API eine HTTP 500-Antwort anstelle von 200 zurück, wenn sich die Instanz in einem Fehlerzustand befindet. Dieser Parameter ist für automatisierte Status-Abrufszenarios vorgesehen. |
 
 ### <a name="response"></a>Antwort
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
-* **HTTP 200 (OK)**: Die angegebene Instanz befindet sich im Status „Completed“ (Abgeschlossen).
+* **HTTP 200 (OK)** : Die angegebene Instanz befindet sich im Status „Completed“ (Abgeschlossen) oder „Failed“ (Fehlgeschlagen).
 * **HTTP 202 (Accepted)**: Die angegebene Instanz befindet sich in der Bearbeitung.
 * **HTTP 400 (Bad Request)**: Für die angegebene Instanz ist ein Fehler aufgetreten, oder sie wurde beendet.
 * **HTTP 404 (Not Found)**: Die angegebene Instanz ist nicht vorhanden, oder die Ausführung wurde noch nicht gestartet.
-* **HTTP 500 (Internal Server Error)**: Für die angegebene Instanz ist ein Fehler mit einer unbehandelten Ausnahme aufgetreten.
+* **HTTP 500 (Internal Server Error)** : Wird nur zurückgegeben, wenn `returnInternalServerErrorOnFailure` auf `true` festgelegt ist und bei der angegebenen Instanz ein Ausnahmefehler aufgetreten ist.
 
 Die Antwortnutzlast für die Fälle **HTTP 200** und **HTTP 202** ist ein JSON-Objekt mit den folgenden Feldern:
 

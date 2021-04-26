@@ -10,22 +10,29 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 3/16/2021
+ms.date: 4/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310122177d4bd1603f5f498aa2a51620eeda4a20
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2aba8d9de5e068cd98675f67cb26b0eac8d1ad6d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592795"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552823"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in Privileged Identity Management
 
 Daher sollten Sie den Zugriff in regelmäßigen Abständen überprüfen, um das mit veralteten Rollenzuweisungen verbundene Risiko zu verringern. Mit Azure AD Privileged Identity Management (PIM) können Sie Zugriffsüberprüfungen für privilegierte Azure AD-Rollen erstellen. Sie können auch wiederholte Zugriffsüberprüfungen konfigurieren, die automatisch ausgeführt werden.
 
 In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüfungen für privilegierte Azure AD-Rollen erstellen.
+
+## <a name="prerequisite-license"></a>Erforderliche Lizenz
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]. Weitere Informationen zu Lizenzen für Benutzer finden Sie unter [Lizenzanforderungen für die Verwendung von Privileged Identity Management](subscription-requirements.md).
+
+> [!Note]
+>  Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschauversion) mit einer aktiven Azure Active Directory Premium P2-Edition in Ihrem Mandanten beschränken. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,9 +42,11 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Benutzer an, der Mitglied der Rolle „Administrator für privilegierte Rollen“ ist.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
-
-1. Wählen Sie **Azure AD-Rollen** aus.
+1. Wählen Sie **Identity Governance** aus
+ 
+1. Wählen Sie **Azure AD-Rollen** unter  **Azure AD Privileged Identity Management** aus.
+ 
+1. Wählen Sie **Azure AD-Rollen** aus, ebenfalls unter **Verwalten**.
 
 1. Wählen Sie unter „Verwalten“ die Option **Zugriffsüberprüfungen** und anschließend **Neu** aus.
 
@@ -57,9 +66,11 @@ Klicken Sie auf **Neu**, um eine neue Zugriffsüberprüfung zu erstellen.
 
 1. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Reihe kann auf drei Arten enden: Die Serie wird unendlich ausgeführt, um Überprüfungen ohne zeitliche Beschränkung zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie (oder ein anderer Benutzeradministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie unter **Einstellungen** das Datum ändern, sodass die Serie an diesem Datum endet.
 
-1. Wählen Sie im Abschnitt **Benutzer** eine oder mehrere Rollen aus, deren Mitgliedschaft überprüft werden soll.
+1. Wählen Sie im **Benutzerbereich** den Bereich der Bewertung aus. Wenn Sie Benutzer und Gruppen mit Zugriff auf die Azure AD-Rolle überprüfen möchten, wählen Sie **Benutzer und Gruppen** aus, oder wählen Sie **(Vorschau) Dienstprinzipal** aus, um die Computerkonten mit Zugriff auf die Azure AD-Rolle zu überprüfen.
 
     ![Benutzerbereich zum Überprüfen der Rollenmitgliedschaft](./media/pim-how-to-start-security-review/users.png)
+
+1. Wählen Sie unter **Überprüfen der Rollenmitgliedschaft** die privilegierten Azure AD-Rollen aus, die zu überprüfen sind. 
 
     > [!NOTE]
     > - Die hier ausgewählten Rollen enthalten [permanente und berechtigte Rollen](../privileged-identity-management/pim-how-to-add-role-to-user.md).
@@ -77,9 +88,9 @@ Klicken Sie auf **Neu**, um eine neue Zugriffsüberprüfung zu erstellen.
 
     ![Liste der Prüfer mit ausgewählten Benutzer oder Mitgliedern (selbst)](./media/pim-how-to-start-security-review/reviewers.png)
 
-    - **Ausgewählte Benutzer**: Verwenden Sie diese Option, wenn Sie nicht wissen, wer Zugriff benötigt. Mit dieser Option können Sie die Überprüfungsdurchführung einem Ressourcenbesitzer oder Gruppen-Manager zuweisen.
-    - **Mitglieder (selbst)** : Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen. Gruppen, die der Rolle zugewiesen sind, unterliegen nicht der Überprüfung, wenn diese Option ausgewählt ist.
-    - **Manager**: Verwenden Sie diese Option, wenn der Vorgesetzte des Benutzers seine Rollenzuweisung überprüfen soll. Wenn Sie „Manager“ auswählen, haben Sie auch die Möglichkeit, einen Fallbackprüfer anzugeben. Fallbackprüfer werden aufgefordert, eine Überprüfung für einen Benutzer durchzuführen, wenn für diesen kein Vorgesetzter (Manager) im Verzeichnis angegeben ist. Gruppen, die der Rolle zugewiesen sind, werden vom Fallbackprüfer überprüft, sofern ein solcher ausgewählt ist. 
+    - **Ausgewählte Benutzer**: Verwenden Sie diese Option, um einen bestimmten Benutzer zum Abschluss der Überprüfung festzulegen. Diese Option ist unabhängig vom Gültigkeitsbereich der Überprüfung verfügbar, und die ausgewählten Prüfer können Benutzer, Gruppen und das Dienstprinzipal überprüfen. 
+    - **Mitglieder (selbst)** : Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen. Gruppen, die der Rolle zugewiesen sind, sind nicht Teil der Überprüfung, wenn diese Option ausgewählt ist. Diese Option ist nur verfügbar, wenn die Überprüfung auf **Benutzer und Gruppen** beschränkt ist.
+    - **Manager**: Verwenden Sie diese Option, wenn der Vorgesetzte des Benutzers seine Rollenzuweisung überprüfen soll. Diese Option ist nur verfügbar, wenn die Überprüfung auf **Benutzer und Gruppen** beschränkt ist. Wenn Sie „Manager“ auswählen, haben Sie auch die Möglichkeit, einen Fallbackprüfer anzugeben. Fallbackprüfer werden aufgefordert, eine Überprüfung für einen Benutzer durchzuführen, wenn für diesen kein Vorgesetzter (Manager) im Verzeichnis angegeben ist. Gruppen, die der Rolle zugewiesen sind, werden vom Fallbackprüfer überprüft, sofern ein solcher ausgewählt ist. 
 
 ### <a name="upon-completion-settings"></a>Einstellungen nach Abschluss
 

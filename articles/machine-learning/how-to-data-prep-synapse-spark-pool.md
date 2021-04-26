@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: acd8df620e23ee4ebc103d8910c6443f47ffa141
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 3d8c8f8df162d31c4f646866d7c82e9af237eaa8
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503826"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553803"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Anfügen von Apache Spark-Pools (unterstützt von Azure Synapse Analytics) für Data Wrangling (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie einen von [Azure Synapse Analytics](/synapse-analytics/overview-what-is.md) unterstützten Apache Spark-Pool für Data Wrangling im großen Stil anfügen und starten. 
+In diesem Artikel erfahren Sie, wie Sie einen von [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) unterstützten Apache Spark-Pool für Data Wrangling im großen Stil anfügen und starten. 
 
 Dieser Artikel enthält Anleitungen zum interaktiven Ausführen von Data Wrangling-Aufgaben innerhalb einer dedizierten Synapse-Sitzung in einer Jupyter Notebook-Instanz. Wenn Sie die Verwendung von Azure Machine Learning-Pipelines bevorzugen, finden Sie weitere Informationen unter [Verwenden von Apache Spark (unterstützt von Azure Synapse Analytics) in Ihrer Machine Learning-Pipeline (Vorschau)](how-to-use-synapsesparkstep.md).
 
@@ -127,6 +127,21 @@ ws.compute_targets['Synapse Spark pool alias']
 
 ## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>Starten des Synapse Spark-Pools für Datenaufbereitungsaufgaben
 
+Geben Sie für die Datenaufbereitung mit dem Apache Spark-Pool zunächst den Namen des Apache Spark-Pools an:
+
+> [!IMPORTANT]
+> Wenn Sie den Apache Spark-Pool weiterhin verwenden möchten, müssen Sie angeben, welche Computeressource in den Data Wrangling-Aufgaben verwendet werden soll. Verwenden Sie `%synapse` für einzelne Codezeilen und `%%synapse` für mehrere Zeilen. 
+
+```python
+%synapse start -c SynapseSparkPoolAlias
+```
+
+Nach dem Start der Sitzung können Sie die Metadaten der Sitzung überprüfen.
+
+```python
+%synapse meta
+```
+
 Sie können eine [Azure Machine Learning-Umgebung](concept-environments.md) angeben, die während der Apache Spark-Sitzung verwendet werden soll. Nur in der Umgebung angegebene Conda-Abhängigkeiten werden wirksam. Ein Docker-Image wird nicht unterstützt.
 
 >[!WARNING]
@@ -146,21 +161,11 @@ env.python.conda_dependencies.add_conda_package("numpy==1.17.0")
 env.register(workspace=ws)
 ```
 
-Geben Sie zum Starten der Datenaufbereitung mit dem Apache Spark-Pool den Namen des Apache Spark-Pools sowie Ihre Abonnement-ID, die Ressourcengruppe des Machine Learning-Arbeitsbereichs, den Namen des Machine Learning-Arbeitsbereichs und die während der Apache Spark-Sitzung zu verwendende Umgebung an. 
-
-> [!IMPORTANT]
-> Wenn Sie den Apache Spark-Pool weiterhin verwenden möchten, müssen Sie angeben, welche Computeressource in den Data Wrangling-Aufgaben verwendet werden soll. Verwenden Sie `%synapse` für einzelne Codezeilen und `%%synapse` für mehrere Zeilen. 
+Geben Sie für die Datenaufbereitung mit dem Apache Spark-Pool und der benutzerdefinierten Umgebung zunächst den Namen des Apache Spark-Pools und die Umgebung an, die während der Apache Spark-Sitzung verwendet werden soll. Darüber hinaus können Sie Ihre Abonnement-ID, die Ressourcengruppe für den Machine Learning-Arbeitsbereich und den Namen des Machine Learning-Arbeitsbereichs angeben.
 
 ```python
-%synapse start -c SynapseSparkPoolAlias -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName -e myenv
+%synapse start -c SynapseSparkPoolAlias -e myenv -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName
 ```
-
-Nach dem Start der Sitzung können Sie die Metadaten der Sitzung überprüfen.
-
-```python
-%synapse meta
-```
-
 ## <a name="load-data-from-storage"></a>Laden von Daten aus dem Speicher
 
 Lesen Sie nach dem Starten der Apache Spark-Sitzung die Daten ein, die Sie aufbereiten möchten. Das Laden von Daten wird für Azure Blob Storage and Azure Data Lake Storage Gen1 und Gen2 unterstützt.
@@ -193,6 +198,7 @@ df = spark.read.option("header", "true").csv("wasbs://demo@dprepdata.blob.core.w
 Der folgende Code veranschaulicht das Einlesen von Daten aus **Azure Data Lake Storage Generation 1 (ADLS Gen 1)** mit den Anmeldeinformationen Ihres Dienstprinzipals: 
 
 ```python
+%%synapse
 
 # setup service principal which has access of the data
 sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.access.token.provider.type","ClientCredential")
@@ -202,7 +208,7 @@ sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.
 sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.credential", "<client secret>")
 
 sc._jsc.hadoopConfiguration().set("fs.adl.account.<storage account name>.oauth2.refresh.url",
-https://login.microsoftonline.com/<tenant id>/oauth2/token)
+"https://login.microsoftonline.com/<tenant id>/oauth2/token")
 
 df = spark.read.csv("adl://<storage account name>.azuredatalakestore.net/<path>")
 
@@ -211,14 +217,15 @@ df = spark.read.csv("adl://<storage account name>.azuredatalakestore.net/<path>"
 Der folgende Code veranschaulicht das Einlesen von Daten aus **Azure Data Lake Storage Generation 2 (ADLS Gen 2)** mit den Anmeldeinformationen Ihres Dienstprinzipals: 
 
 ```python
+%%synapse
+
 # setup service principal which has access of the data
 sc._jsc.hadoopConfiguration().set("fs.azure.account.auth.type.<storage account name>.dfs.core.windows.net","OAuth")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth.provider.type.<storage account name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth2.client.id.<storage account name>.dfs.core.windows.net", "<client id>")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth2.client.secret.<storage account name>.dfs.core.windows.net", "<client secret>")
 sc._jsc.hadoopConfiguration().set("fs.azure.account.oauth2.client.endpoint.<storage account name>.dfs.core.windows.net",
-https://login.microsoftonline.com/<tenant id>/oauth2/token)
-
+"https://login.microsoftonline.com/<tenant id>/oauth2/token")
 
 df = spark.read.csv("abfss://<container name>@<storage account>.dfs.core.windows.net/<path>")
 
@@ -226,14 +233,22 @@ df = spark.read.csv("abfss://<container name>@<storage account>.dfs.core.windows
 
 ### <a name="read-in-data-from-registered-datasets"></a>Einlesen von Daten aus registrierten Datasets
 
-Sie können auch ein vorhandenes registriertes Dataset in Ihrem Arbeitsbereich abrufen und die Datenaufbereitung durchführen, indem Sie es in einen Spark-Datenrahmen konvertieren.  
+Sie können auch ein vorhandenes registriertes Dataset in Ihrem Arbeitsbereich abrufen und die Datenaufbereitung durchführen, indem Sie es in einen Spark-Datenrahmen konvertieren.
 
-Im folgenden Beispiel wird das registrierte Tabellendataset (TabularDataset) `blob_dset` abgerufen, das auf Dateien im Blobspeicher verweist, und in einen Spark-Datenrahmen konvertiert. Beim Konvertieren Ihrer Datasets in einen Spark-Datenrahmen können Sie die `pyspark`-Datenuntersuchung und -Vorbereitungsbibliotheken nutzen.  
+Im folgenden Beispiel wird der Arbeitsbereich authentifiziert sowie das registrierte Tabellendataset (TabularDataset) `blob_dset` abgerufen, das auf Dateien im Blobspeicher verweist, und in einen Spark-Datenrahmen konvertiert. Beim Konvertieren Ihrer Datasets in einen Spark-Datenrahmen können Sie die `pyspark`-Datenuntersuchung und -Vorbereitungsbibliotheken nutzen.  
 
 ``` python
 
 %%synapse
 from azureml.core import Workspace, Dataset
+
+subscription_id = "<enter your subscription ID>"
+resource_group = "<enter your resource group>"
+workspace_name = "<enter your workspace name>"
+
+ws = Workspace(workspace_name = workspace_name,
+               subscription_id = subscription_id,
+               resource_group = resource_group)
 
 dset = Dataset.get_by_name(ws, "blob_dset")
 spark_df = dset.to_spark_dataframe()
@@ -294,6 +309,12 @@ train_ds = Dataset.File.from_files(path=datastore_paths, validate=True)
 input1 = train_ds.as_mount()
 
 ```
+
+## <a name="example-notebooks"></a>Beispielnotebooks
+
+Nachdem Sie Ihre Daten vorbereitet haben, erfahren Sie, wie Sie [ein Synapse-Spark-Cluster als Computeziel für das Modelltraining nutzen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb).
+
+In diesem [Beispielnotebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) finden Sie weitere Konzepte und Demonstrationen der Azure Synapse Analytics- und Azure Machine Learning-Integrationsfunktionen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

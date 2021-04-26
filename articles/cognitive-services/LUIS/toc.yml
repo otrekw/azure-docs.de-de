@@ -16,16 +16,8 @@
       displayName: 'Troubleshooting, import'
 - name: LUIS-Schnellstarts
   items:
-    - name: Hinzufügen einer App für eine vordefinierte Domäne
-      href: luis-get-started-create-app.md
     - name: Verwenden des LUIS-Portals
-      items:
-        - name: Erstellen einer App
-          href: get-started-portal-build-app.md
-          displayName: 'intent, entity, create app, test, example utterance'
-        - name: Bereitstellen einer App
-          href: get-started-portal-deploy-app.md
-          displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
+      href: luis-get-started-create-app.md
     - name: Verwenden eines Browsers
       href: luis-get-started-get-intent-from-browser.md
     - name: Verwenden der Clientbibliotheken und der REST-API

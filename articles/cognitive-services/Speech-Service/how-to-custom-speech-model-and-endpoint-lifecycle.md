@@ -8,20 +8,20 @@ manager: dongli
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/2/2021
 ms.author: heikora
-ms.openlocfilehash: b8e02071eca139cde02a8bad1b0e0e443db6ab86
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: b82a732533c3d069b519b07c3209d4b96c472900
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103547954"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385024"
 ---
-# <a name="model-and-endpoint-lifecycle"></a>Modell- und Endpunktlebenszyklus
+# <a name="model-and-endpoint-lifecycle"></a>Lebenszyklus von Modell und Endpunkt
 
-Custom Speech verwendet sowohl *Basismodelle* als auch *benutzerdefinierte Modelle*. Jede Sprache verfügt über ein oder mehrere Basismodelle. Wenn ein neues Sprachmodell für den regulären Speech-Dienst freigegeben wird, wird es im Allgemeinen auch als neues Basismodell in den Custom Speech-Dienst importiert. Sie werden alle sechs bis zwölf Monate aktualisiert. Ältere Modelle werden in der Regel mit der Zeit weniger nützlich, da das neueste Modell in der Regel eine höhere Genauigkeit aufweist.
-
-Benutzerdefinierte Modelle werden hingegen erstellt, indem ein ausgewähltes Basismodell anhand der Daten Ihres spezifischen Kundenszenarios angepasst wird. Sie können ein bestimmtes benutzerdefiniertes Modell für einen längeren Zeitraum weiterhin verwenden, sobald Sie eines für Ihre Anforderungen gefunden haben. Es wird jedoch empfohlen, regelmäßig ein Update auf das neueste Basismodell durchzuführen und es mit zusätzlichen Daten erneut zu trainieren. 
+Unsere Standardsprache (nicht angepasste Sprache) basiert auf KI-Modellen, die als Basismodelle bezeichnet werden. In den meisten Fällen wird für jede gesprochene Sprache, die wir unterstützen, ein anderes Basismodell trainiert.  Wir aktualisieren den Sprachdienst alle paar Monate mit neuen Basismodellen, um die Genauigkeit und Qualität zu verbessern.  
+Bei Custom Speech werden benutzerdefinierte Modelle erstellt, indem ein ausgewähltes Basismodell anhand der Daten Ihres spezifischen Kundenszenarios angepasst wird. Nachdem Sie ein benutzerdefiniertes Modell erstellt haben, wird dieses Modell nicht aktualisiert oder geändert, auch wenn das zugehörige Basismodell, von dem es angepasst wurde, im Standard-Sprachdienst aktualisiert wird.  
+Diese Richtlinie ermöglicht es Ihnen, ein bestimmtes benutzerdefiniertes Modell für einen längeren Zeitraum zu verwenden, nachdem Sie ein benutzerdefiniertes Modell verwendet haben, das Ihren Anforderungen entspricht.  Es wird jedoch empfohlen, dass Sie Ihr benutzerdefiniertes Modell regelmäßig neu erstellen, damit Sie sich vom neuesten Basismodell aus anpassen können, um die verbesserte Genauigkeit und Qualität zu nutzen.
 
 Weitere Schlüsselbegriffe im Zusammenhang mit dem Modelllebenszyklus sind:
 
@@ -59,7 +59,7 @@ Hier sehen Sie ein Beispiel aus der Zusammenfassung des Modelltrainings:
 
 Sie können die Ablaufdaten auch über die Custom Speech-APIs [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) und [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) unter der Eigenschaft `deprecationDates` in der JSON-Antwort überprüfen.
 
-Im Folgenden finden Sie ein Beispiel für Ablaufdaten aus dem GetModel-API-Aufruf. Der Wert von DEPRECATIONDATES gibt das Ablaufdatum an: 
+Im Folgenden finden Sie ein Beispiel für Ablaufdaten aus dem GetModel-API-Aufruf. Die **DEPRECATIONDATES** zeigen, wann das Modell abläuft: 
 ```json
 {
     "SELF": "HTTPS://WESTUS2.API.COGNITIVE.MICROSOFT.COM/SPEECHTOTEXT/V3.0/MODELS/{id}",
@@ -80,7 +80,7 @@ Im Folgenden finden Sie ein Beispiel für Ablaufdaten aus dem GetModel-API-Aufru
     },
     "PROPERTIES": {
     "DEPRECATIONDATES": {
-        "ADAPTATIONDATETIME": "2022-01-15T00:00:00Z",     // last date this model can be used for adaptation
+        "ADAPTATIONDATETIME": "2022-01-15T00:00:00Z",     // last date the base model can be used for adaptation
         "TRANSCRIPTIONDATETIME": "2023-03-01T21:27:29Z"   // last date this model can be used for decoding
     }
     },
@@ -96,6 +96,13 @@ Im Folgenden finden Sie ein Beispiel für Ablaufdaten aus dem GetModel-API-Aufru
 }
 ```
 Beachten Sie, dass Sie das Modell über einen Custom Speech-Endpunkt ohne Downtime aktualisieren können, indem Sie das vom Endpunkt verwendete Modell im Abschnitt „Bereitstellung“ in Speech Studio oder über die Custom Speech-API ändern.
+
+## <a name="what-happens-when-models-expire-and-how-to-update-them"></a>Was geschieht, wenn Modelle ablaufen und wie man sie aktualisiert
+Was geschieht, wenn ein Modell abläuft und wie es aktualisiert wird, hängt davon ab, wie es verwendet wird.
+### <a name="batch-transcription"></a>Batch-Transkription
+Wenn ein Modell abläuft, das mit [Batch-Transkriptions](batch-transcription.md) Transkriptionsanforderungen verwendet wird, tritt ein 4xx-Fehler auf. Um dies zu verhindern, aktualisieren Sie den `model`-Parameter im JSON-Code, der im Anforderungstext **Transkription erstellen** gesendet wurde, um entweder auf ein aktuelleres Basismodell oder auf ein neueres benutzerdefiniertes Modell zu zeigen. Sie können auch den `model`-Eintrag aus dem JSON-Code entfernen, um immer das neueste Basismodell zu verwenden.
+### <a name="custom-speech-endpoint"></a>Custom Speech-Endpunkt
+Wenn ein Modell abläuft, das von einem [benutzerdefinierten Speech-Endpunkt](how-to-custom-speech-train-model.md)verwendet wird, wird der Dienst automatisch auf das neueste Basismodell für die verwendete Sprache zurückgreifen. Verwenden Sie die Option **Bereitstellung** im Menü **Custom Speech** oben auf der Seite, und klicken Sie dann auf den Namen des Endpunkts, um seine Details anzuzeigen. Am oberen Rand der Detailseite wird die Schaltfläche **Modell aktualisieren** angezeigt, mit der Sie das von diesem Endpunkt verwendete Modell ohne Ausfallzeiten nahtlos aktualisieren können. Sie können diese Änderung auch vom Programm gesteuert vornehmen, mithilfe der Rest-API [**Modell aktualisieren**](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UpdateModel).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

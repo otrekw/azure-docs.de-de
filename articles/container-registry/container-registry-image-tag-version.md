@@ -5,23 +5,23 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dfd29f2265e599f3cc7c412b81c3b7b93af40db
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75445737"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109712"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Empfehlungen für das Taggen und die Versionsverwaltung von Containerimages
 
-Wenn Sie die Bereitstellung von Containerimages in eine Containerregistrierung pushen und die Images dann bereitstellen, benötigen Sie eine Strategie für das Taggen und die Versionsverwaltung der Images. In diesem Artikel werden zwei verschiedene Verfahren erläutert und beschrieben, welches Verfahren sich an verschiedenen Punkten des Lebenszyklus des Containers am besten eignet:
+Beim Verschieben von Container-Abbildungen in eine Container-Registry und anschließendem Einsatz benötigen Sie eine Strategie für das Etikettieren und Versionieren von Abbildungen. In diesem Artikel werden zwei verschiedene Verfahren erläutert und beschrieben, welches Verfahren sich an verschiedenen Punkten des Lebenszyklus des Containers am besten eignet:
 
 * **Stabile Tags**: Diese Tags können Sie wiederverwenden, um z.B. eine Haupt- und eine Nebenversion wie *mycontainerimage:1.0* zu bezeichnen.
 * **Eindeutige Tags**: Sie verwenden für jedes Image, das Sie in eine Registrierung pushen, ein anderes Tag, z.B. *mycontainerimage:abc123*.
 
 ## <a name="stable-tags"></a>Stabile Tags
 
-**Empfehlung**: Verwenden Sie stabile Tags, um **Basisimages** für Ihre Containerbuilds zu verwalten. Vermeiden Sie Bereitstellungen mit stabilen Tags, da diese Tags weiterhin Updates erhalten und dadurch Inkonsistenzen in Produktionsumgebungen verursachen können.
+**Empfehlung:** Verwenden Sie robuste Tags, um **Basisimages** für Ihre Containerbuilds zu verwalten. Vermeiden Sie Bereitstellungen mit stabilen Tags, da diese Tags weiterhin Updates erhalten und dadurch Inkonsistenzen in Produktionsumgebungen verursachen können.
 
 *Stabile Tags* bedeuten, dass ein Entwickler oder ein Buildsystem immer wieder ein Pull für ein bestimmtes Tag ausführen kann, das weiter Updates erhält. „Stabil“ bedeutet nicht, dass die Inhalte unveränderlich sind. Es bedeutet, dass das Image hinsichtlich der Absicht dieser Version stabil sein muss. Damit das Image weiter stabil bleibt, werden möglicherweise Sicherheitspatches oder Frameworkupdates für das Image ausgeführt.
 
@@ -44,7 +44,7 @@ Wenn ein Image mit einem stabilen Tag aktualisiert wird, wird die Markierung des
 
 ## <a name="unique-tags"></a>Eindeutige Tags
 
-**Empfehlung**: Verwenden Sie eindeutige Tags für **Bereitstellungen**, insbesondere in einer Umgebung, die sich über mehrere Knoten erstrecken kann. Ihr Ziel ist wahrscheinlich eine gut geplante Bereitstellung konsistenter Komponentenversionen. Wenn Ihr Container neu gestartet wird oder ein Orchestrator horizontal auf weitere Instanzen skaliert, rufen Ihre Hosts nicht versehentlich eine neuere Version ab, die inkonsistent mit den anderen Knoten wäre.
+**Empfehlung:** Verwenden Sie eindeutige Tags für **Bereitstellungen**, insbesondere in einer Umgebung, die sich über mehrere Knoten erstrecken kann. Ihr Ziel ist wahrscheinlich eine gut geplante Bereitstellung konsistenter Komponentenversionen. Wenn Ihr Container neu gestartet wird oder ein Orchestrator horizontal auf weitere Instanzen skaliert, rufen Ihre Hosts nicht versehentlich eine neuere Version ab, die inkonsistent mit den anderen Knoten wäre.
 
 Eindeutige Tags bedeuten ganz einfach, dass jedes Image, das in eine Registrierung gepusht wird, über ein eindeutiges Tag verfügt. Tags werden nicht wiederverwendet. Es gibt verschiedene Muster, die Sie beim Generieren von eindeutigen Tags verwenden können, z.B. die folgenden:
 
@@ -63,7 +63,7 @@ Wenn Sie ein bereitgestelltes Image sperren, können Sie weiterhin andere, nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine ausführlichere Erläuterung der Konzepte in diesem Artikel finden Sie im Blogbeitrag [Docker Tagging: Best practices for tagging and versioning docker images](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/) (Bewährte Methoden für das Taggen und die Versionsverwaltung von Docker-Images).
+Eine ausführlichere Erläuterung der Konzepte in diesem Artikel finden Sie im Blogbeitrag [Docker Tagging: Best practices for tagging and versioning docker images](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/) (Docker-Markierung: Bewährte Methoden für das Taggen und die Versionsverwaltung von Docker-Images).
 
 Informationen dazu, wie Sie die Leistung und den kosteneffektiven Einsatz Ihrer Azure Container Registry maximieren, finden Sie unter [Bewährte Methoden für Azure Container Registry](container-registry-best-practices.md).
 

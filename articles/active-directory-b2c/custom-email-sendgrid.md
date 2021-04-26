@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 86f40944af9fb49b0402a33e5009b99d60be61f0
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: c5381a93308b5b3c8988cb8e25df541af1043418
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489184"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105031306"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Benutzerdefinierte E-Mail-Überprüfung mit SendGrid
 
@@ -43,7 +43,7 @@ Speichern Sie als Nächstes den SendGrid-API-Schlüssel in einem Azure AD B2C-R
 1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
 1. Wählen Sie unter **Optionen** die Option **Manuell** aus.
 1. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `SendGridSecret`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
-1. Geben Sie im Feld **Geheimnis** den geheimen Clientschlüssel ein, den Sie zuvor notiert haben.
+1. Geben Sie im Feld **Secret** den SendGrid-API-Schlüssel ein, den Sie zuvor notiert haben.
 1. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
 1. Klicken Sie auf **Erstellen**.
 

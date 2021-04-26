@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 1f03f99e6394c3939855c73548e8fb917f8696bc
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186021"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286027"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie und Problembehandlung
 
@@ -60,7 +60,7 @@ Nachdem Sie Azure Monitor eingerichtet haben, müssen Sie Anmeldeinformationen e
 
 ```bash
 # Find your Azure IoT Hub resource ID by running this command. The resource ID  should start with something like 
-# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/...”
+# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/..."
 az iot hub list
 
 # Create a Service Principal with `Monitoring Metrics Publisher` role in the IoTHub resource:
@@ -103,21 +103,21 @@ Nachdem das Telegraf-Modul bereitgestellt wurde, können Sie entweder über den 
 
 ### <a name="system-health-events"></a>Ereignisse zur Systemintegrität
 
-| Veranstaltungsname | BESCHREIBUNG|
-|------|---------|
-|archon_exit    |Wird gesendet, wenn ein Benutzer den Status des Moduls zur räumlichen Analyse von *Wird ausgeführt* in *Beendet* ändert.  |
-|archon_error   |Wird gesendet, wenn ein Prozess im Container abstürzt. Hierbei handelt es sich um einen kritischen Fehler.  |
-|InputRate  |Die Rate, mit der der Graph Videoeingaben verarbeitet. Die Meldung erfolgt alle 5 Minuten. | 
-|OutputRate     |Die Rate, mit der der Graph KI-Erkenntnisse ausgibt. Die Meldung erfolgt alle 5 Minuten. |
-|archon_allGraphsStarted | Wird gesendet, wenn alle Graphen gestartet wurden. |
-|archon_configchange    | Wird gesendet, wenn eine Graphkonfiguration geändert wurde. |
-|archon_graphCreationFailed     |Wird gesendet, wenn der Graph mit der Fehlermeldung `graphId` nicht gestartet werden kann. |
-|archon_graphCreationSuccess    |Wird gesendet, wenn der Graph mit der Meldung `graphId` erfolgreich gestartet wird. |
-|archon_graphCleanup    | Wird gesendet, wenn der Graph mit der Meldung `graphId` bereinigt und beendet wird. |
-|archon_graphHeartbeat  |Heartbeat, der jede Minute für jeden Graph eines Skills gesendet wird. |
-|archon_apiKeyAuthFail |Wird gesendet, wenn der Container länger als 24 Stunden aufgrund der folgenden Gründe nicht mit dem Ressourcenschlüssel für maschinelles Sehen authentifiziert werden kann: Kontingent aufgebraucht, ungültig, offline. |
-|VideoIngesterHeartbeat     |Wird jede Stunde gesendet, um anzugeben, dass Videodaten von der Videoquelle gestreamt werden; enthält auch die Anzahl der Fehler in dieser Stunde. Wird für jeden Graph gemeldet. |
-|VideoIngesterState | Meldet *Beendet* oder *Gestartet* für das Videostreaming.  Wird für jeden Graph gemeldet. |
+| Veranstaltungsname                  | BESCHREIBUNG    |
+|-----------------------------|-------------------------------------------------------------------------------------------|
+| archon_exit                 | Wird gesendet, wenn ein Benutzer den Status des Moduls zur räumlichen Analyse von *Wird ausgeführt* in *Beendet* ändert.  |
+| archon_error                | Wird gesendet, wenn ein Prozess im Container abstürzt. Hierbei handelt es sich um einen kritischen Fehler.      |
+| InputRate                   | Die Rate, mit der der Graph Videoeingaben verarbeitet. Die Meldung erfolgt alle 5 Minuten.              |
+| OutputRate                  | Die Rate, mit der der Graph KI-Erkenntnisse ausgibt. Die Meldung erfolgt alle 5 Minuten.                |
+| archon_allGraphsStarted     | Wird gesendet, wenn alle Graphen gestartet wurden.                                           |
+| archon_configchange         | Wird gesendet, wenn eine Graphkonfiguration geändert wurde.                                              |
+| archon_graphCreationFailed  | Wird gesendet, wenn der Graph mit der Fehlermeldung `graphId` nicht gestartet werden kann.                           |
+| archon_graphCreationSuccess | Wird gesendet, wenn der Graph mit der Meldung `graphId` erfolgreich gestartet wird.                      |
+| archon_graphCleanup         | Wird gesendet, wenn der Graph mit der Meldung `graphId` bereinigt und beendet wird.                      |
+| archon_graphHeartbeat       | Heartbeat, der jede Minute für jeden Graph eines Skills gesendet wird.                                   |
+| archon_apiKeyAuthFail       | Wird gesendet, wenn der Container länger als 24 Stunden aufgrund der folgenden Gründe nicht mit dem Ressourcenschlüssel für maschinelles Sehen authentifiziert werden kann: Kontingent aufgebraucht, ungültig, offline. |
+| VideoIngesterHeartbeat      | Wird jede Stunde gesendet, um anzugeben, dass Videodaten von der Videoquelle gestreamt werden; enthält auch die Anzahl der Fehler in dieser Stunde. Wird für jeden Graph gemeldet. |
+| VideoIngesterState          | Meldet *Beendet* oder *Gestartet* für das Videostreaming.  Wird für jeden Graph gemeldet.              |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>Problembehandlung bei einem IoT Edge-Gerät
 
@@ -216,9 +216,9 @@ Die Protokolle werden bedarfsgesteuert mit der IoT Edge-Methode `getRTCVLogs` im
 
 
 1. Navigieren Sie zur Portalseite Ihres IoT-Hubs, und wählen Sie **Edgegeräte** und dann Ihr Gerät und Ihr diagnostics-Modul aus. 
-2. Wechseln Sie zur Detailseite des Moduls, und klicken Sie auf die Registerkarte **_Direkte Methode_* _.
+2. Wechseln Sie zur Detailseite des Moduls, und klicken Sie auf die Registerkarte ***Direkte Methode***.
 3. Geben Sie für den Methodennamen `getRTCVLogs` und als Nutzlast eine Zeichenfolge im JSON-Format ein. Sie können auch `{}` eingeben. Dabei handelt es sich um eine leere Nutzlast. 
-4. Legen Sie die Timeouts für Verbindungen und Methoden fest, und klicken Sie auf _*Methode aufrufen**.
+4. Legen Sie die Timeouts für Verbindungen und Methoden fest, und klicken Sie auf **Methode aufrufen**.
 5. Wählen Sie den Zielcontainer aus, und erstellen Sie eine Zeichenfolge für die JSON-Nutzlast mit den im Abschnitt **Protokollierungssyntax** beschriebenen Parametern. Klicken Sie auf **Methode aufrufen**, um die Anforderung auszuführen.
 
 >[!NOTE]
@@ -245,7 +245,7 @@ Die Attribute in der Antwort auf die Abfrage sind in der folgenden Tabelle aufge
 
 | Stichwort | Beschreibung|
 |--|--|
-|DoPost| Entweder *true* oder *false*. Gibt an, ob Protokolle hochgeladen wurden. Wenn Sie keine Protokolle hochladen, gibt die API Informationen ***synchron** _ zurück. Wenn Sie Protokolle hochladen, gibt die API „200“ zurück, sofern die Anforderung gültig ist, und beginnt damit, die Protokolle _*_asynchron_*_ hochzuladen.|
+|DoPost| Entweder *true* oder *false*. Gibt an, ob Protokolle hochgeladen wurden. Wenn Sie keine Protokolle hochladen, gibt die API Informationen ***synchron** _ zurück. Wenn Sie Protokolle hochladen, gibt die API „200“ zurück, sofern die Anforderung gültig ist, und beginnt damit, die Protokolle _*_asynchron_** hochzuladen.|
 |TimeFilter| Der auf die Protokolle angewandte Zeitfilter.|
 |ValueFilters| Die auf die Protokolle angewandten Schlüsselwortfilter. |
 |TimeStamp| Startzeit der Methodenausführung. |
@@ -298,7 +298,7 @@ Die Attribute in der Antwort auf die Abfrage sind in der folgenden Tabelle aufge
 }
 ```
 
-Überprüfen Sie die Zeilen, Zeiten und Größen des Abrufprotokolls. Wenn diese Einstellungen ordnungsgemäß aussehen, ersetzen Sie _*_DoPost_*_ durch `true`, um die Protokolle mit denselben Filtern an die Ziele zu pushen. 
+Überprüfen Sie die Zeilen, Zeiten und Größen des Abrufprotokolls. Wenn diese Einstellungen ordnungsgemäß aussehen, ersetzen Sie ***DoPost*** durch `true`, um die Protokolle mit denselben Filtern an die Ziele zu pushen. 
 
 Sie können Protokolle bei der Problembehandlung aus Azure Blob Storage exportieren. 
 
@@ -316,7 +316,7 @@ Der folgende Abschnitt bietet Hilfe beim Debuggen und Überprüfen des Status Ih
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>Greifen Sie auf den Kubernetes-API-Endpunkt zu. 
 
-1. Navigieren Sie auf der lokalen Benutzeroberfläche Ihres Geräts zur Seite _ *Geräte**. 
+1. Navigieren Sie auf der lokalen Benutzeroberfläche Ihres Geräts zur Seite **Geräte**. 
 2. Kopieren Sie unter **Geräteendpunkte** den Dienstendpunkt der Kubernetes-API. Dieser Endpunkt ist eine Zeichenfolge im folgenden Format: `https://compute..[device-IP-address]`.
 3. Speichern Sie die Endpunktzeichenfolge. Sie nutzen sie später, wenn Sie `kubectl` für den Zugriff auf den Kubernetes-Cluster konfigurieren.
 
@@ -363,7 +363,7 @@ Nachdem der Kubernetes-Cluster erstellt wurde, können Sie mit dem Befehlszeilen
     New-HcsKubernetesUser -UserName
     ```
 
-3. Fügen Sie die Datei *config* im Ordner *.kube* Ihres Benutzerprofils auf dem lokalen Computer hinzu.   
+3. Fügen Sie die Datei *config* im Ordner *.kube* Ihres Benutzerprofils auf dem lokalen Computer hinzu.    
 
 4. Ordnen Sie den Namespace dem Benutzer zu, den Sie erstellt haben.
 
@@ -401,9 +401,37 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 | `Get-HcsApplianceInfo` | Gibt Informationen zu Ihrem Gerät zurück. |
 | `Enable-HcsSupportAccess` | Generiert Anmeldeinformationen für den Zugriff, um eine Supportsitzung zu starten. |
 
+
+## <a name="how-to-file-a-support-ticket-for-spatial-analysis"></a>Erstellen eines Supporttickets für die räumliche Analyse 
+
+Wenn Sie weitere Unterstützung bei der Suche nach einer Lösung für ein Problem benötigen, das beim Container für die räumliche Analyse auftritt, führen Sie die folgenden Schritte aus, um ein Supportticket zu erstellen und zu senden. Unser Team wird sich mit Ihnen in Verbindung setzen und Ihnen weitere Anleitungen geben. 
+
+### <a name="fill-out-the-basics"></a>Angeben der grundlegenden Informationen 
+Erstellen Sie auf der Seite [Neue Supportanfrage](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) ein neues Supportticket. Befolgen Sie die Anweisungen, um die folgenden Parameter anzugeben:
+
+![Grundlegende Informationen für den Support](./media/support-ticket-page-1-final.png)
+
+1. Legen Sie den **Problemtyp** auf `Technical` fest.
+2. Wählen Sie das Abonnement aus, das Sie zum Bereitstellen des Containers für die räumliche Analyse verwenden.
+3. Wählen Sie `My services` aus, und wählen Sie als Dienst `Cognitive Services`.
+4. Wählen Sie die Ressource aus, die Sie zum Bereitstellen des Containers für die räumliche Analyse verwenden.
+5. Geben Sie eine kurze Beschreibung des Problems ein. 
+6. Wählen Sie als Problemtyp `Spatial Analysis` aus.
+7. Wählen Sie in der Dropdownliste den entsprechenden Untertyp aus.
+8. Wählen Sie **Weiter: Lösungen** aus, um zur nächsten Seite zu gelangen.
+
+### <a name="recommended-solutions"></a>Empfohlene Lösungen
+Im nächsten Schritt werden empfohlene Lösungen für den von Ihnen ausgewählten Problemtyp geboten. Dabei handelt es sich um Lösungen für die häufigsten Probleme. Wenn hier jedoch keine hilfreiche Lösung für Ihr Problem geboten wird, wählen Sie **Weiter: Details** aus, um mit dem nächsten Schritt fortzufahren.
+
+### <a name="details"></a>Details
+Fügen Sie auf dieser Seite einige zusätzliche Informationen über das Problem hinzu, das Sie beheben möchten. Beschreiben Sie das Problem so detailliert wie möglich, damit es von unseren Experten besser eingegrenzt werden kann. Geben Sie Ihre bevorzugte Kontaktmethode und den Schweregrad des Problems an, damit wir Sie entsprechend kontaktieren können. Wählen Sie dann **Weiter: Überprüfen + erstellen** aus, um mit dem nächsten Schritt fortzufahren. 
+
+### <a name="review-and-create"></a>Überprüfen und Erstellen 
+Überprüfen Sie die Details Ihrer Supportanfrage, um sicherzustellen, dass alle Angaben korrekt sind und das Problem auf verständliche Weise beschreiben. Wählen Sie anschließend **Erstellen** aus, um das Ticket an unser Team zu senden. Nachdem Ihr Ticket empfangen wurde, erhalten Sie eine Bestätigungs-E-Mail, und unser Team wird sich so bald wie möglich mit Ihnen in Verbindung setzen. Den Status Ihres Tickets können Sie im Azure-Portal einsehen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Bereitstellen einer Webanwendung für die Erfassung der Personenanzahl](spatial-analysis-web-app.md)
-* [Konfigurieren von Vorgängen zur räumlichen Analysen](./spatial-analysis-operations.md)
+* [Konfigurieren von Vorgängen zur räumlichen Analyse](./spatial-analysis-operations.md)
 * [Leitfaden zur Kameraplatzierung](spatial-analysis-camera-placement.md)
 * [Leitfaden zur Platzierung von Zonen und Linien](spatial-analysis-zone-line-placement.md)

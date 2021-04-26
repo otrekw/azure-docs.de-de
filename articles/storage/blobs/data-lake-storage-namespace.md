@@ -4,16 +4,16 @@ description: Beschreibt das Konzept des hierarchischen Namespace für Azure Data
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/01/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 26062d73ae4c61af77b15dd2cac0541f2a988d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de7f62dd4d4205e819278e6dc90d905e825580f2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95912993"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220503"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Hierarchischer Namespace für Azure Data Lake Storage Gen2
 
@@ -44,6 +44,10 @@ Es empfiehlt sich im Allgemeinen, einen hierarchischen Namespace für Speicherwo
 Die Gründe für das Aktivieren eines hierarchischen Namespace werden durch eine Gesamtkostenanalyse ermittelt. Im Allgemeinen werden durch Verbesserungen der Workloadlatenz aufgrund beschleunigter Speicherung Computeressourcen über einen kürzeren Zeitraum benötigt. Die Latenz für viele Workloads kann aufgrund der atomischen Verzeichnisbearbeitung verbessert werden, die ein hierarchischer Namespace ermöglicht. Bei vielen Workloads stellt die Computeressource mehr als 85 % der Gesamtkosten dar, sodass auch nur eine geringfügige Verringerung der Workloadlatenz zu wesentlichen Einsparungen bei den Gesamtkosten führen kann. Selbst in Fällen, in denen durch das Aktivieren eines hierarchischen Namespace die Speicherkosten steigen, werden dennoch die Gesamtkosten aufgrund der niedrigeren Computekosten reduziert.
 
 Informationen zum Analysieren der Unterschiede bei Datenspeicherpreisen, Transaktionspreisen und Reservierungspreisen für Speicherkapazitäten zwischen Konten mit einem flachen und einem hierarchischen Namespace finden Sie unter [Azure Data Lake Storage Gen2 – Preise](https://azure.microsoft.com/pricing/details/storage/data-lake/).
+
+## <a name="enabling-a-hierarchical-namespace"></a>Aktivieren eines hierarchischen Namespace
+
+Ein hierarchischer Namespace kann für ein vorhandenes Speicherkonto nicht aktiviert werden. Sie können beim Erstellen eines Speicherkontos einen hierarchischen Namespace aktivieren. Einen Leitfaden finden Sie unter [Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

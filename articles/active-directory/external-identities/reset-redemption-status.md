@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2998c3ea0d65bd3c96bd1ac5bdfa8ff148c6c4cc
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: d0396698fe63cb62fc1cfaf5d930b8a97a7b1bbc
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780428"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552256"
 ---
-# <a name="reset-redemption-status-for-a-guest-user"></a>Zurücksetzen des Einlösestatus für einen Gastbenutzer
+# <a name="reset-redemption-status-for-a-guest-user-preview"></a>Zurücksetzen des Einlösestatus für einen Gastbenutzer (Vorschau)
 
 Wenn ein Gastbenutzer Ihre Einladung zu B2B-Zusammenarbeit eingelöst hat, kann es vorkommen, dass Sie seine Anmeldeinformationen aktualisieren müssen, z. B. in den folgenden Fällen:
 

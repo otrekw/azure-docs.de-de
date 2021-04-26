@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 666e77a06bd2934622400cc2f11830d6ebc34ddb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433266"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954648"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
@@ -127,13 +127,13 @@ Das Ergebnis des Aufrufs von `object result = await client.GetDigitalTwinAsync("
 }
 ```
 
-Die definierten Eigenschaften des digitalen Zwillings werden als Eigenschaften der obersten Ebene für den digitalen Zwilling zurückgegeben. Metadaten oder Systeminformationen, die nicht Teil der DTDL-Definition sind, werden mit einem `$`-Präfix zurückgegeben. Metadateneigenschaften umfassen Folgendes:
-* Die ID des digitalen Zwillings in dieser Instanz von Azure Digital Twins, wie etwa `$dtId`
-* `$etag`, ein vom Webserver zugewiesenes Standard-HTTP-Feld.
-* Andere Eigenschaften in einem `$metadata`-Abschnitt. Dazu gehören:
-    - Der DTMI des Modells für den digitalen Zwilling
-    - Der Synchronisierungsstatus für jede schreibbare Eigenschaft. Dies ist besonders hilfreich für Geräte, bei denen es möglich ist, dass der Dienst und das Gerät abweichende Status aufweisen (z. B. wenn ein Gerät offline ist). Derzeit gilt diese Eigenschaft nur für physische Geräte, die mit IoT Hub verbunden sind. Mit den Daten im Metadatenabschnitt erfahren Sie den vollständigen Status einer Eigenschaft sowie die Zeitstempel der letzten Änderung. Weitere Informationen zum Synchronisierungsstatus erhalten Sie in [diesem IoT Hub-Tutorial](../iot-hub/tutorial-device-twins.md) zum Synchronisieren des Gerätestatus.
-    - Dienstspezifische Metadaten, wie z. B. aus IoT Hub oder Azure Digital Twins 
+Die definierten Eigenschaften des digitalen Zwillings werden als Eigenschaften der obersten Ebene für den digitalen Zwilling zurückgegeben. Metadaten oder Systeminformationen, die nicht Teil der DTDL-Definition sind, werden mit einem `$`-Präfix zurückgegeben. Metadateneigenschaften umfassen die folgenden Werte:
+* `$dtId`: ID des digitalen Zwillings in dieser Azure Digital Twins-Instanz
+* `$etag`: ein vom Webserver zugewiesenes Standard-HTTP-Feld. Dieser Wert wird bei jeder Aktualisierung des Zwillings geändert. Er kann damit hilfreich sein, um zu ermitteln, ob die Daten des Zwillings seit einer früheren Überprüfung auf dem Server aktualisiert wurden. Sie können `If-Match` verwenden, um Aktualisierungen und Löschungen durchführen, die nur dann abgeschlossen werden, wenn der Etag mit dem bereitgestellten Etag übereinstimmt. Weitere Informationen zu diesen Vorgängen finden Sie in der Dokumentation zu [DigitalTwins Update](/rest/api/digital-twins/dataplane/twins/digitaltwins_update) und [DigitalTwins Delete](/rest/api/digital-twins/dataplane/twins/digitaltwins_delete).
+* `$metadata`: verschiedene andere Eigenschaften, einschließlich:
+  - Der DTMI des Modells für den digitalen Zwilling
+  - Der Synchronisierungsstatus für jede schreibbare Eigenschaft. Dies ist besonders hilfreich für Geräte, bei denen es möglich ist, dass der Dienst und das Gerät abweichende Status aufweisen (z. B. wenn ein Gerät offline ist). Derzeit gilt diese Eigenschaft nur für physische Geräte, die mit IoT Hub verbunden sind. Mit den Daten im Metadatenabschnitt erfahren Sie den vollständigen Status einer Eigenschaft sowie die Zeitstempel der letzten Änderung. Weitere Informationen zum Synchronisierungsstatus erhalten Sie in [diesem IoT Hub-Tutorial](../iot-hub/tutorial-device-twins.md) zum Synchronisieren des Gerätestatus.
+  - Dienstspezifische Metadaten, wie z. B. aus IoT Hub oder Azure Digital Twins 
 
 Weitere Informationen zu den Serialisierungshilfsklassen wie `BasicDigitalTwin` finden Sie unter [ *Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md).
 

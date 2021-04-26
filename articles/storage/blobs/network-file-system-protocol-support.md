@@ -9,19 +9,19 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b00956a6fb5a79b09602ca1752cc547595f32db6
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 57dec4187ea42476ff1c0a993b751a7389da5639
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103224593"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490351"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)
 
 Blob Storage unterstützt jetzt das NFS 3.0-Protokoll (Network File System). Diese Unterstützung bietet Linux-Dateisystemkompatibilität bei Objektspeicherskalierung und -preisen und ermöglicht es Linux-Clients, einen Container aus einem virtuellen Azure-Computer (VM) oder einem lokalen Computer in Blob Storage einzubinden. 
 
 > [!NOTE]
-> Die Unterstützung für das NFS 3.0-Protokoll in Azure Blob Storage befindet in der öffentlichen Vorschau. Das Protokoll unterstützt GPV2-Speicherkonten mit der Leistungsstufe „Standard“ in den folgenden Regionen: „Australien, Osten“, „Südkorea, Mitte“ und „USA, Süden-Mitte“. Die Vorschau unterstützt auch Blockblobs mit der Leistungsstufe „Premium“ in allen öffentlichen Regionen.
+> Die Unterstützung für das NFS 3.0-Protokoll in Azure Blob Storage befindet in der öffentlichen Vorschau. Das Protokoll unterstützt GPV2-Speicherkonten mit der Leistungsstufe „Standard“ in den folgenden Regionen: „Australien, Osten“, „Südkorea, Mitte“, „USA, Osten“ und „USA, Süden-Mitte“. Die Vorschau unterstützt auch Blockblobs mit der Leistungsstufe „Premium“ in allen öffentlichen Regionen.
 
 Es war immer eine Herausforderung, umfangreiche Legacy-Workloads wie High Performance Computing (HPC) in der Cloud auszuführen. Ein Grund hierfür ist, dass Anwendungen oft herkömmliche Dateiprotokolle wie NFS oder SMB (Server Message Block) für den Zugriff auf Daten verwenden. Außerdem haben sich native Cloudspeicherdienste auf Objektspeicher mit einem flachen Namespace und umfangreichen Metadaten statt auf Dateisysteme konzentriert, die einen hierarchischen Namespace und effiziente Metadatenvorgänge bereitstellen. 
 

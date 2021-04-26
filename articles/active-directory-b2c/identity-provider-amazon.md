@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 03/08/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5880b6f44caec053aef292960cecbf64f25c6743
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e152d9c242a44fe869eb7bfe7a16fbd7dfc8049d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448573"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580114"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Amazon-Konto mithilfe von Azure Active Directory B2C
 
@@ -38,12 +38,17 @@ ms.locfileid: "102448573"
 
 Um die Benutzeranmeldung mit einem Amazon-Konto in Azure Active Directory B2C (Azure AD B2C) zu ermöglichen, müssen Sie unter [Amazon Developer Services and Technologies](https://developer.amazon.com) eine Anwendung erstellen. Weitere Informationen finden Sie unter [Register for Login with Amazon](https://developer.amazon.com/docs/login-with-amazon/register-web.html) (Registrieren für die Anmeldung mit Amazon). Wenn Sie noch kein Amazon-Konto haben, können Sie sich auf [https://www.amazon.com/](https://www.amazon.com/) registrieren.
 
-> [!NOTE]  
-> Verwenden Sie die folgenden URLs im nachfolgenden **Schritt 8**, und ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. Verwenden Sie bei der Eingabe Ihres Mandantennamens nur Kleinbuchstaben, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält.
-> - Geben Sie für **Zulässige Ursprünge** den Wert `https://your-tenant-name.b2clogin.com` ein. 
-> - Geben Sie für **Zulässige Rückgabe-URLs** den Wert `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein.
-
-[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
+1. Melden Sie sich mit den Anmeldeinformationen für Ihr Amazon-Konto bei der [Amazon Developer Konsole](https://developer.amazon.com/dashboard) an.
+1. Falls nicht bereits erfolgt, klicken Sie auf **Sign Up** (Registrieren). Führen Sie die Schritte zur Registrierung von Entwicklern aus, und akzeptieren Sie die Richtlinie.
+1. Klicken Sie im Dashboard auf **Login with Amazon** (Anmeldung mit Amazon).
+1. Wählen Sie **Create a New Security Profile**.
+1. Geben Sie Werte für **Security Profile Name** (Sicherheitsprofilname), **Security Profile Description** (Sicherheitsprofilbeschreibung) und **Consent Privacy Notice URL** (URL zur Zustimmung zum Datenschutzhinweis) an, z. B. `https://www.contoso.com/privacy`. Bei der URL für den Datenschutzhinweis handelt es sich um eine von Ihnen verwaltete Seite, auf der Datenschutzinformationen für Benutzer bereitgestellt werden. Klicken Sie anschließend auf **Speichern**.
+1. Wählen Sie im Abschnitt **Login with Amazon Configurations** (Anmeldung mit Amazon-Konfigurationen) den von Ihnen erstellten **Sicherheitsprofilnamen** und das Symbol **Manage** (Verwalten) und dann **Web Settings** (Webeinstellungen) aus.
+1. Kopieren Sie im Abschnitt **Web Settings** (Webeinstellungen) den Wert für **Client ID** (Client-ID). Wählen Sie **Show Secret** (Geheimnis anzeigen) aus, um den geheimen Clientschlüssel abzurufen, und kopieren Sie ihn dann. Sie benötigen beide Werte, um in Ihrem Mandanten ein Amazon-Konto als Identitätsanbieter zu konfigurieren. **geheime Clientschlüssel** ist eine wichtige Sicherheitsanmeldeinformation.
+1. Klicken Sie im Abschnitt **Web Settings** (Webeinstellungen) auf **Bearbeiten**. 
+    1. Geben Sie für **Allowed Origins** (Zulässige Ursprünge) den Wert `https://your-tenant-name.b2clogin.com` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name` ein.
+    1.  Geben Sie für **Allowed Return URLs** (Zulässige Rückgabe-URLs) den Wert `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein.  Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein.  Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten und `your-domain-name` durch Ihre benutzerdefinierte Domäne.
+1. Wählen Sie **Speichern** aus.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -59,6 +64,8 @@ Um die Benutzeranmeldung mit einem Amazon-Konto in Azure Active Directory B2C (
 1. Wählen Sie **Speichern** aus.
 
 ## <a name="add-amazon-identity-provider-to-a-user-flow"></a>Hinzufügen von Amazon als Identitätsanbieter zu einem Benutzerflow 
+
+Der Amazon-Identitätsanbieter wurde nun eingerichtet, er ist jedoch noch auf keiner der Anmeldeseiten verfügbar. So fügen Sie Amazon als Identitätsanbieter einem Benutzerflow hinzu:
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 1. Klicken Sie auf den Benutzerflow, dem Sie Amazon als Identitätsanbieter hinzufügen möchten.

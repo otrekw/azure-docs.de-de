@@ -1,54 +1,180 @@
 ---
-title: Suchen und Verwenden von Azure Marketplace-Images und -Plänen
-description: Verwenden Sie Azure PowerShell, um den Herausgeber, das Angebot, die SKU, die Version und den Plan von Marketplace-VM-Images zu ermitteln.
+title: Suchen und Verwenden von Marketplace-Erwerbsplaninformationen mithilfe von PowerShell
+description: Verwenden Sie die Azure PowerShell, um Image-URNs und Erwerbsplanparameter, wie Herausgeber, Angebot, SKU und Version, für Marketplace-VM-Images zu finden.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 12/07/2020
+ms.date: 03/17/2021
 ms.author: cynthn
-ms.openlocfilehash: 45e6b157dba5ef7410d8a5c0223fd3ecb52f39d0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 282eaa6e966ff458dfb1dfdd32ef6ec1f2cdc151
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96906266"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443745"
 ---
-# <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Suchen und Verwenden von VM-Images im Azure Marketplace mit Azure PowerShell     
+# <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Suchen und Verwenden von VM-Images im Azure Marketplace mit Azure PowerShell
 
 Dieser Artikel beschreibt, wie Sie mit Azure PowerShell nach VM-Images im Azure Marketplace suchen. Sie können dann ein Marketplace-Image und Informationen zum Plan angeben, wenn Sie eine VM erstellen.
 
-Sie können auch über die [Azure Marketplace](https://azuremarketplace.microsoft.com/)-Storefront, das [Azure-Portal](https://portal.azure.com) oder die [Azure-Befehlszeilenschnittstelle](../linux/cli-ps-findimage.md) die verfügbaren Images und Angebote durchsuchen. 
+Sie können verfügbare Images und Angebote auch über den [Azure Marketplace](https://azuremarketplace.microsoft.com/) oder [Azure CLI](../linux/cli-ps-findimage.md) durchsuchen. 
+
+## <a name="terminology"></a>Begriff
+
+Ein Marketplace-Image in Azure hat die folgenden Attribute:
+
+* **Publisher** (Herausgeber): Die Organisation, die das Image erstellt hat. Beispiele: Canonical, MicrosoftWindowsServer
+* **Offer** (Angebot): Der Name einer Gruppe verwandter Images, die von einem Herausgeber erstellt wurden. Beispiele: UbuntuServer, WindowsServer
+* **SKU**: Eine Instanz eines Angebots, etwa eine Hauptversion einer Distribution. Beispiele: 18.04-LTS, 2019-Datacenter
+* **Version**: Die Versionsnummer einer Image-SKU. 
+
+Diese Werte können einzeln oder als Image-*URN* übergeben werden, wobei die Werte durch den Doppelpunkt (:) getrennt kombiniert werden. Beispiel: *Herausgeber*:*Angebot*:*SKU*:*Version*. Sie können die Versionsnummer im URN durch `latest` ersetzen, um die neueste Version des Images zu verwenden. 
+
+Wenn der Imageherausgeber zusätzliche Lizenz- und Kaufbedingungen angibt, müssen Sie diese akzeptieren, bevor Sie das Image verwenden können.  Weitere Informationen finden Sie unter [Annehmen der Geschäftsbedingungen des Erwerbsplans](#accept-purchase-plan-terms).
+
+## <a name="list-images"></a>Auflisten von Images
+
+Sie können PowerShell verwenden, um eine Liste von Images einzugrenzen. Ersetzen Sie die Werte der Variablen entsprechend Ihren Anforderungen.
+
+1. Auflisten der Image-Herausgeber mithilfe von [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher).
+    
+    ```powershell
+    $locName="<location>"
+    Get-AzVMImagePublisher -Location $locName | Select PublisherName
+    ```
+1. Auflistung der Angebote eines bestimmten Anbieters mithilfe von [Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer).
+    
+    ```powershell
+    $pubName="<publisher>"
+    Get-AzVMImageOffer -Location $locName -PublisherName $pubName | Select Offer
+    ```
+1. Auflisten der verfügbaren SKUs für einen bestimmten Herausgeber und ein Angebot mithilfe von [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku).
+    
+    ```powershell
+    $offerName="<offer>"
+    Get-AzVMImageSku -Location $locName -PublisherName $pubName -Offer $offerName | Select Skus
+    ```
+1. Auflistung für eine SKU der Versionen des Images mithilfe von [Get-AzVMImage](/powershell/module/az.compute/get-azvmimage).
+
+    ```powershell
+    $skuName="<SKU>"
+    Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
+    ```
+    Sie können auch `latest` verwenden, wenn Sie das neueste Image und nicht eine bestimmte ältere Version verwenden möchten.
 
 
-[!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
+Nun können Sie Herausgeber, Angebot, SKU und Version Ihrer Wahl in einem URN kombinieren (Trennung der Werte durch „:“). Übergeben Sie diesen URN mit dem Parameter `-Image`, wenn Sie einen virtuellen Computer mit dem Cmdlet [New-AzVM](/powershell/module/az.compute/new-azvm) erstellen. Sie können auch die Versionsnummer im URN durch `latest` ersetzen, um die neueste Version des Images zu erhalten.
+
+Wenn Sie einen virtuellen Computer mithilfe einer Resource Manager-Vorlage bereitstellen, legen Sie die Imageparameter einzeln in den `imageReference`-Eigenschaften fest. Informationen finden Sie in der [Vorlagenreferenz](/azure/templates/microsoft.compute/virtualmachines).
 
 
-## <a name="create-a-vm-from-vhd-with-plan-information"></a>Erstellen einer VM aus einer VHD mit Planinformationen
+## <a name="view-purchase-plan-properties"></a>Eigenschaften des Erwerbsplans anzeigen
 
-Wenn eine Ihrer vorhandenen virtuellen Festplatten mit einem Azure Marketplace-Image erstellt wurde, müssen Sie beim Erstellen einer neuen VM von dieser VHD möglicherweise die Informationen zu Ihrem Erwerbsplan angeben.
+Für einige VM-Images im Azure Marketplace gelten zusätzliche Lizenz- und Kaufbedingungen, die Sie akzeptieren müssen, bevor Sie sie programmgesteuert bereitstellen können. Sie müssen die Imagebedingungen einmal pro Abonnement akzeptieren.
 
-Wenn Sie noch über die ursprüngliche VM oder eine andere VM verfügen, die mit demselben Image erstellt wurde, können Sie den Plannamen, den Herausgeber und die Produktinformationen mithilfe von Get-AzVM abrufen. Dieses Beispiel ruft eine VM namens *myVM* in der Ressourcengruppe *myResourceGroup* ab und zeigt dann die Erwerbsplaninformationen an.
+Um die Kaufplaninformationen eines Images anzuzeigen, führen Sie das `Get-AzVMImage`-Cmdlet aus. Wenn die `PurchasePlan`-Eigenschaft in der Ausgabe nicht `null` ist, müssen Sie vor der programmgesteuerten Bereitstellung Bedingungen des Images akzeptieren.  
 
-```azurepowershell-interactive
-$vm = Get-azvm `
-   -ResourceGroupName myResourceGroup `
-   -Name myVM
-$vm.Plan
+Für das Image *Windows Server 2016 Datacenter* gelten z.B. keine weiteren Bedingungen, daher lautet die `PurchasePlan`-Angabe `null`:
+
+```powershell
+$version = "2016.127.20170406"
+Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Skus $skuName -Version $version
 ```
 
-Wenn Sie die Planinformationen nicht vor dem Löschen der ursprünglichen VM abgerufen haben, können Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) erstellen. Sie benötigen dazu den VM-Namen, die Abonnement-ID und den Zeitstempel des Löschvorgangs.
+Die Ausgabe ist mit folgender Zeichenfolge vergleichbar:
 
-Informationen zum Erstellen einer VM mit einer VHD finden Sie im Artikel [Erstellen eines virtuellen Computers aus einer speziellen VHD](create-vm-specialized.md). Fügen Sie beim Erstellen der VM-Konfiguration eine Zeile mit den Planinformationen mithilfe von [Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) hinzu, wie im Folgenden gezeigt:
+```output
+Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/2019.0.20190115
+Location         : westus
+PublisherName    : MicrosoftWindowsServer
+Offer            : WindowsServer
+Skus             : 2019-Datacenter
+Version          : 2019.0.20190115
+FilterExpression :
+Name             : 2019.0.20190115
+OSDiskImage      : {
+                     "operatingSystem": "Windows"
+                   }
+PurchasePlan     : null
+DataDiskImages   : []
 
-```azurepowershell-interactive
-$vmConfig = Set-AzVMPlan `
-   -VM $vmConfig `
-   -Publisher "publisherName" `
-   -Product "productName" `
-   -Name "planName"
 ```
+
+Im Beispiel unten wird ein ähnlicher Befehl für das Image *Data Science Virtual Machine – Windows 2016* angezeigt. Dieses weist folgenden `PurchasePlan`-Eigenschaften auf: `name`, `product` und `publisher`. Einige Images weisen auch eine `promotion code`-Eigenschaft auf. Sehen Sie sich zum Bereitstellen dieses Images die folgenden Abschnitte an, um die Bedingungen zu akzeptieren und die programmgesteuerte Bereitstellung zu ermöglichen.
+
+```powershell
+Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
+```
+
+Die Ausgabe ist mit folgender Zeichenfolge vergleichbar:
+
+```
+Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/microsoft-ads/ArtifactTypes/VMImage/Offers/windows-data-science-vm/Skus/windows2016/Versions/19.01.14
+Location         : westus
+PublisherName    : microsoft-ads
+Offer            : windows-data-science-vm
+Skus             : windows2016
+Version          : 19.01.14
+FilterExpression :
+Name             : 19.01.14
+OSDiskImage      : {
+                     "operatingSystem": "Windows"
+                   }
+PurchasePlan     : {
+                     "publisher": "microsoft-ads",
+                     "name": "windows2016",
+                     "product": "windows-data-science-vm"
+                   }
+DataDiskImages   : []
+
+```
+
+Verwenden Sie zum Anzeigen der Lizenzbedingungen das Cmdlet [Get-AzMarketplaceterms](/powershell/module/az.marketplaceordering/get-azmarketplaceterms), und übergeben Sie die Kaufplanparameter. Die Ausgabe enthält einen Link zu den Bedingungen für das Marketplace-Image und zeigt an, ob Sie zuvor die Geschäftsbedingungen akzeptiert haben. Verwenden Sie in den Parameterwerten ausschließlich Kleinbuchstaben.
+
+```powershell
+Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
+```
+
+Die Ausgabe ist mit folgender Zeichenfolge vergleichbar:
+
+```output
+Publisher         : microsoft-ads
+Product           : windows-data-science-vm
+Plan              : windows2016
+LicenseTextLink   : https://storelegalterms.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24OC5SKMQOXSED66BBSNTF4XRCS4XLOHP7QMPV54DQU7JCBZWYFP35IDPOWTUKXUC7ZAG7W6ZMDD6NHWNKUIVSYBZUTZ245F44SU5AD7Q.txt
+PrivacyPolicyLink : https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx
+Signature         : 2UMWH6PHSAIM4U22HXPXW25AL2NHUJ7Y7GRV27EBL6SUIDURGMYG6IIDO3P47FFIBBDFHZHSQTR7PNK6VIIRYJRQ3WXSE6BTNUNENXA
+Accepted          : False
+Signdate          : 1/25/2019 7:43:00 PM
+```
+
+## <a name="accept-purchase-plan-terms"></a>Geschäftsbedingungen des Erwerbsplans akzeptieren
+
+Verwenden Sie das Cmdlet [Set-AzMarketplaceterms](/powershell/module/az.marketplaceordering/set-azmarketplaceterms) zum Annehmen oder Ablehnen der Bedingungen. Sie müssen für das Image die Bedingungen nur einmal pro Abonnement akzeptieren. Verwenden Sie in den Parameterwerten ausschließlich Kleinbuchstaben. 
+
+```powershell
+$agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
+
+Set-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
+```
+
+
+
+```output
+Publisher         : microsoft-ads
+Product           : windows-data-science-vm
+Plan              : windows2016
+LicenseTextLink   : https://storelegalterms.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DV
+                    M%253a24WINDOWS2016%253a24OC5SKMQOXSED66BBSNTF4XRCS4XLOHP7QMPV54DQU7JCBZWYFP35IDPOWTUKXUC7ZAG7W6ZMDD6NHWNKUIVSYBZUTZ245F44SU5AD7Q.txt
+PrivacyPolicyLink : https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx
+Signature         : XXXXXXK3MNJ5SROEG2BYDA2YGECU33GXTD3UFPLPC4BAVKAUL3PDYL3KBKBLG4ZCDJZVNSA7KJWTGMDSYDD6KRLV3LV274DLBXXXXXX
+Accepted          : True
+Signdate          : 2/23/2018 7:49:31 PM
+```
+
 
 ## <a name="create-a-new-vm-from-a-marketplace-image"></a>Erstellen einer neuen VM aus einem Marketplace-Image
 
@@ -78,242 +204,32 @@ $vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $produ
 
 Anschließend übergeben Sie die VM-Konfiguration zusammen mit anderen Konfigurationsobjekten an das Cmdlet `New-AzVM`. Ein ausführliches Beispiel für die Verwendung einer VM-Konfiguration mit PowerShell finden Sie in diesem [Skript](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine/create-vm-detailed/create-windows-vm-detailed.ps1).
 
-Wenn Sie in einer Meldung aufgefordert werden, die Nutzungsbedingungen für das Image zu akzeptieren, finden Sie weiter unten in diesem Artikel im Abschnitt zum [Akzeptieren der Nutzungsbedingungen](#accept-the-terms) weitere Informationen.
+Wenn Sie in einer Meldung aufgefordert werden, die Nutzungsbedingungen für das Image zu akzeptieren, finden Sie im vorherigen Abschnitt zum Thema [Geschäftsbedingungen des Erwerbsplans](#accept-purchase-plan-terms) weitere Informationen.
 
-## <a name="list-images"></a>Auflisten von Images
+## <a name="create-a-new-vm-from-a-vhd-with-purchase-plan-information"></a>Erstellen einer neuen VM von einer vorhandenen VHD mit Erwerbsplaninformationen
 
-Eine Möglichkeit, ein Image an einem Speicherort zu suchen, stellt das aufeinanderfolgende Ausführen der Cmdlets [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher), [Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) und [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) dar:
+Wenn eine Ihrer vorhandenen virtuellen Festplatten mit einem Azure Marketplace-Image erstellt wurde, müssen Sie beim Erstellen einer neuen VM von dieser VHD möglicherweise die Informationen zu Ihrem Erwerbsplan angeben.
 
-1. Auflistung der Herausgeber von Images
-2. Auflistung der Angebote eines bestimmten Anbieters
-3. Auflistung der SKUs eines bestimmten Angebots
+Wenn Sie noch über die ursprüngliche VM oder eine andere VM verfügen, die mit demselben Image erstellt wurde, können Sie den Plannamen, den Herausgeber und die Produktinformationen mithilfe von Get-AzVM abrufen. Dieses Beispiel ruft eine VM namens *myVM* in der Ressourcengruppe *myResourceGroup* ab und zeigt dann die Erwerbsplaninformationen an.
 
-Führen Sie dann für eine ausgewählte SKU [Get-AzVMImage](/powershell/module/az.compute/get-azvmimage) zum Auflisten der bereitzustellenden Versionen aus.
-
-1. Listen Sie die Herausgeber auf:
-
-    ```powershell
-    $locName="<Azure location, such as West US>"
-    Get-AzVMImagePublisher -Location $locName | Select PublisherName
-    ```
-
-2. Tragen Sie den Namen des ausgewählten Herausgebers ein, und listen Sie die Angebote auf:
-
-    ```powershell
-    $pubName="<publisher>"
-    Get-AzVMImageOffer -Location $locName -PublisherName $pubName | Select Offer
-    ```
-
-3. Tragen Sie den Namen des ausgewählten Angebots ein, und listen Sie die SKUs auf:
-
-    ```powershell
-    $offerName="<offer>"
-    Get-AzVMImageSku -Location $locName -PublisherName $pubName -Offer $offerName | Select Skus
-    ```
-
-4. Tragen Sie den Namen der ausgewählten SKU ein, und rufen Sie die Imageversion ab:
-
-    ```powershell
-    $skuName="<SKU>"
-    Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
-    ```
-    
-Aus der Ausgabe des `Get-AzVMImage`-Befehls können Sie ein Versionsimage zum Bereitstellen eines neuen virtuellen Computers auswählen.
-
-Das folgende Beispiel zeigt die vollständige Folge von Befehlen und deren Ausgaben:
-
-```powershell
-$locName="West US"
-Get-AzVMImagePublisher -Location $locName | Select PublisherName
+```azurepowershell-interactive
+$vm = Get-azvm `
+   -ResourceGroupName myResourceGroup `
+   -Name myVM
+$vm.Plan
 ```
 
-Hier sehen Sie einen Teil der Ausgabe:
+Wenn Sie die Planinformationen nicht vor dem Löschen der ursprünglichen VM abgerufen haben, können Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) erstellen. Sie benötigen dazu den VM-Namen, die Abonnement-ID und den Zeitstempel des Löschvorgangs.
 
+Informationen zum Erstellen einer VM mit einer VHD finden Sie im Artikel [Erstellen eines virtuellen Computers aus einer speziellen VHD](create-vm-specialized.md). Fügen Sie beim Erstellen der VM-Konfiguration eine Zeile mit den Planinformationen mithilfe von [Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) hinzu, wie im Folgenden gezeigt:
+
+```azurepowershell-interactive
+$vmConfig = Set-AzVMPlan `
+   -VM $vmConfig `
+   -Publisher "publisherName" `
+   -Product "productName" `
+   -Name "planName"
 ```
-PublisherName
--------------
-...
-abiquo
-accedian
-accellion
-accessdata-group
-accops
-Acronis
-Acronis.Backup
-actian-corp
-actian_matrix
-actifio
-activeeon
-adgs
-advantech
-advantech-webaccess
-advantys
-...
-```
-
-Für den Herausgeber von *MicrosoftWindowsServer*:
-
-```powershell
-$pubName="MicrosoftWindowsServer"
-Get-AzVMImageOffer -Location $locName -PublisherName $pubName | Select Offer
-```
-
-Ausgabe:
-
-```
-Offer
------
-Windows-HUB
-WindowsServer
-WindowsServerSemiAnnual
-```
-
-Für das Angebot *WindowsServer*:
-
-```powershell
-$offerName="WindowsServer"
-Get-AzVMImageSku -Location $locName -PublisherName $pubName -Offer $offerName | Select Skus
-```
-
-Hier sehen Sie einen Teil der Ausgabe:
-
-```
-Skus
-----
-2008-R2-SP1
-2008-R2-SP1-smalldisk
-2012-Datacenter
-2012-Datacenter-smalldisk
-2012-R2-Datacenter
-2012-R2-Datacenter-smalldisk
-2016-Datacenter
-2016-Datacenter-Server-Core
-2016-Datacenter-Server-Core-smalldisk
-2016-Datacenter-smalldisk
-2016-Datacenter-with-Containers
-2016-Datacenter-with-RDSH
-2019-Datacenter
-2019-Datacenter-Core
-2019-Datacenter-Core-smalldisk
-2019-Datacenter-Core-with-Containers
-...
-```
-
-Dann für die SKU *2019-Datacenter*:
-
-```powershell
-$skuName="2019-Datacenter"
-Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
-```
-
-Nun können Sie Herausgeber, Angebot, SKU und Version Ihrer Wahl in einem URN kombinieren (Trennung der Werte durch „:“). Übergeben Sie diesen URN mit dem Parameter `--image`, wenn Sie einen virtuellen Computer mit dem Cmdlet [New-AzVM](/powershell/module/az.compute/new-azvm) erstellen. Sie können optional die Versionsnummer im URN durch „latest“ ersetzen, um die aktuelle Version des Images abzurufen.
-
-Wenn Sie einen virtuellen Computer mithilfe einer Resource Manager-Vorlage bereitstellen, legen Sie die Imageparameter einzeln in den `imageReference`-Eigenschaften fest. Informationen finden Sie in der [Vorlagenreferenz](/azure/templates/microsoft.compute/virtualmachines).
-
-[!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
-
-### <a name="view-plan-properties"></a>Anzeigen von Planeigenschaften
-
-Um die Kaufplaninformationen eines Images anzuzeigen, führen Sie das `Get-AzVMImage`-Cmdlet aus. Wenn die `PurchasePlan`-Eigenschaft in der Ausgabe nicht `null` ist, müssen Sie vor der programmgesteuerten Bereitstellung Bedingungen des Images akzeptieren.  
-
-Für das Image *Windows Server 2016 Datacenter* gelten z.B. keine weiteren Bedingungen, daher lautet die `PurchasePlan`-Angabe `null`:
-
-```powershell
-$version = "2016.127.20170406"
-Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Skus $skuName -Version $version
-```
-
-Ausgabe:
-
-```
-Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/2019.0.20190115
-Location         : westus
-PublisherName    : MicrosoftWindowsServer
-Offer            : WindowsServer
-Skus             : 2019-Datacenter
-Version          : 2019.0.20190115
-FilterExpression :
-Name             : 2019.0.20190115
-OSDiskImage      : {
-                     "operatingSystem": "Windows"
-                   }
-PurchasePlan     : null
-DataDiskImages   : []
-
-```
-
-Im Beispiel unten wird ein ähnlicher Befehl für das Image *Data Science Virtual Machine – Windows 2016* angezeigt. Dieses weist folgenden `PurchasePlan`-Eigenschaften auf: `name`, `product` und `publisher`. Einige Images weisen auch eine `promotion code`-Eigenschaft auf. Sehen Sie sich zum Bereitstellen dieses Images die folgenden Abschnitte an, um die Bedingungen zu akzeptieren und die programmgesteuerte Bereitstellung zu ermöglichen.
-
-```powershell
-Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
-```
-
-Ausgabe:
-
-```
-Id               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/microsoft-ads/ArtifactTypes/VMImage/Offers/windows-data-science-vm/Skus/windows2016/Versions/19.01.14
-Location         : westus
-PublisherName    : microsoft-ads
-Offer            : windows-data-science-vm
-Skus             : windows2016
-Version          : 19.01.14
-FilterExpression :
-Name             : 19.01.14
-OSDiskImage      : {
-                     "operatingSystem": "Windows"
-                   }
-PurchasePlan     : {
-                     "publisher": "microsoft-ads",
-                     "name": "windows2016",
-                     "product": "windows-data-science-vm"
-                   }
-DataDiskImages   : []
-
-```
-
-### <a name="accept-the-terms"></a>Akzeptieren der Bedingungen
-
-Verwenden Sie zum Anzeigen der Lizenzbedingungen das Cmdlet [Get-AzMarketplaceterms](/powershell/module/az.marketplaceordering/get-azmarketplaceterms), und übergeben Sie die Kaufplanparameter. Die Ausgabe enthält einen Link zu den Bedingungen für das Marketplace-Image und zeigt an, ob Sie zuvor die Geschäftsbedingungen akzeptiert haben. Verwenden Sie in den Parameterwerten ausschließlich Kleinbuchstaben.
-
-```powershell
-Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
-```
-
-Ausgabe:
-
-```
-Publisher         : microsoft-ads
-Product           : windows-data-science-vm
-Plan              : windows2016
-LicenseTextLink   : https://storelegalterms.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24OC5SKMQOXSED66BBSNTF4XRCS4XLOHP7QMPV54DQU7JCBZWYFP35IDPOWTUKXUC7ZAG7W6ZMDD6NHWNKUIVSYBZUTZ245F44SU5AD7Q.txt
-PrivacyPolicyLink : https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx
-Signature         : 2UMWH6PHSAIM4U22HXPXW25AL2NHUJ7Y7GRV27EBL6SUIDURGMYG6IIDO3P47FFIBBDFHZHSQTR7PNK6VIIRYJRQ3WXSE6BTNUNENXA
-Accepted          : False
-Signdate          : 1/25/2019 7:43:00 PM
-```
-
-Verwenden Sie das Cmdlet [Set-AzMarketplaceterms](/powershell/module/az.marketplaceordering/set-azmarketplaceterms) zum Annehmen oder Ablehnen der Bedingungen. Sie müssen für das Image die Bedingungen nur einmal pro Abonnement akzeptieren. Verwenden Sie in den Parameterwerten ausschließlich Kleinbuchstaben. 
-
-```powershell
-$agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
-
-Set-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
-```
-
-Ausgabe:
-
-```
-Publisher         : microsoft-ads
-Product           : windows-data-science-vm
-Plan              : windows2016
-LicenseTextLink   : https://storelegalterms.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DV
-                    M%253a24WINDOWS2016%253a24OC5SKMQOXSED66BBSNTF4XRCS4XLOHP7QMPV54DQU7JCBZWYFP35IDPOWTUKXUC7ZAG7W6ZMDD6NHWNKUIVSYBZUTZ245F44SU5AD7Q.txt
-PrivacyPolicyLink : https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx
-Signature         : XXXXXXK3MNJ5SROEG2BYDA2YGECU33GXTD3UFPLPC4BAVKAUL3PDYL3KBKBLG4ZCDJZVNSA7KJWTGMDSYDD6KRLV3LV274DLBXXXXXX
-Accepted          : True
-Signdate          : 2/23/2018 7:49:31 PM
-```
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

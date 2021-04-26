@@ -6,13 +6,13 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 12/02/2020
-ms.openlocfilehash: 7466e143f345ea305c7e9ef118d09fb6f685ac16
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 04/02/2021
+ms.openlocfilehash: 6796a53ac05e8db606b29447a8792fa509c03d7e
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694484"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284084"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Erstellen, Importieren und Exportieren von Glossarbegriffen
 
@@ -34,7 +34,7 @@ Führen Sie die folgenden Schritte aus, um einen neuen Glossarbegriff zu erstell
 
 5. Legen Sie den **Status** für den Begriff fest. Ein neuer Begriff hat standardmäßig den Status **Entwurf**.
 
-   :::image type="content" source="media/how-to-create-import-export-glossary/new-term-options.png" alt-text="Screenshot der Statusoptionen" border="true":::
+   :::image type="content" source="media/how-to-create-import-export-glossary/overview-tab.png" alt-text="Screenshot der Statusoptionen":::
 
    Diese Statuskennzeichnungen sind Metadaten, die mit dem Begriff verknüpft sind. Derzeit können Sie für jeden Begriff die folgenden Status festlegen:
 
@@ -80,6 +80,9 @@ Beachten Sie, dass für die Begriffsnamen die Groß-/Kleinschreibung beachtet wi
 4. Nachdem Sie die CSV-Datei ausgefüllt haben, wählen Sie die zu importierende Datei aus, und wählen Sie dann **OK** aus.
 
 5. Das System lädt die Datei hoch und fügt ihrem Katalog alle Begriffe hinzu.
+ 
+   > [!Important]
+   > Die E-Mail-Adresse für Verwalter und Experten sollte die primäre Adresse des Benutzers aus der AAD-Gruppe sein. Alternative E-Mail-Adressen, Benutzerprinzipalnamen und Nicht-AAD-E-Mail-Adressen werden noch nicht unterstützt. 
 
 ## <a name="export-terms-from-glossary-with-custom-attributes"></a>Exportieren von Begriffen aus einem Glossar mit benutzerdefinierten Attributen
 
@@ -89,9 +92,10 @@ Sie können Begriffe aus dem Glossar exportieren, solange die ausgewählten Begr
 
 2. Wählen Sie **Exportieren** aus, um die ausgewählten Begriffe herunterzuladen.
 
- > [!Important]
-   > Wenn die Begriffe in einer Hierarchie zu unterschiedlichen Begriffsvorlagen gehören, müssen Sie diese für den Import in unterschiedliche CSV-Dateien aufteilen. Außerdem wird die Aktualisierung eines übergeordneten Elements eines Begriffs während des Importvorgangs derzeit nicht unterstützt.
+   :::image type="content" source="media/how-to-create-import-export-glossary/select-term-template-for-export.png" lightbox="media/how-to-create-import-export-glossary/select-term-template-for-export.png" alt-text="Screenshot der Seite „Glossarbegriffe“, zu exportierende Datei auswählen.":::
 
+   > [!Important]
+   > Wenn die Begriffe in einer Hierarchie zu unterschiedlichen Begriffsvorlagen gehören, müssen Sie diese für den Import in unterschiedliche CSV-Dateien aufteilen. Außerdem wird die Aktualisierung eines übergeordneten Elements eines Begriffs während des Importvorgangs derzeit nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

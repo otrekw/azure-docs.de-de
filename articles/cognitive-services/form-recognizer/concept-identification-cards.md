@@ -10,20 +10,20 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 01a73e7940f88a3eb6e040f26d255448294cab18
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467948"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285355"
 ---
 # <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Vordefiniertes ID-Modell der Formularerkennung für Ausweise
 
-Mit der Azure-Formularerkennung können Informationen aus amtlichen Ausweisen unter Verwendung des vordefinierten ID-Modells analysiert und extrahiert werden. Dabei werden unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/concept-recognizing-text.md) mit ID-Erkennungsfunktionen kombiniert, um wesentliche Informationen aus internationalen Reisepässen und US-Führerscheinen (alle 50 Bundesstaaten und D.C.) zu extrahieren. Mit der ID-API werden wesentliche Informationen aus diesen Ausweisdokumenten extrahiert, z. B. Vorname, Nachname, Geburtsdatum und Dokumentnummer. Diese API ist in der Vorschauversion 2.1 der Formularerkennung als Clouddienst und als lokaler Container verfügbar.
+Mit der Azure-Formularerkennung können Informationen aus amtlichen Ausweisen unter Verwendung des vordefinierten ID-Modells analysiert und extrahiert werden. Dabei werden unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/overview-ocr.md) mit ID-Erkennungsfunktionen kombiniert, um wesentliche Informationen aus internationalen Reisepässen und US-amerikanischen Führerscheinen (alle 50 Bundesstaaten). Mit der ID-API werden wesentliche Informationen aus diesen Ausweisdokumenten extrahiert, z. B. Vorname, Nachname, Geburtsdatum und Dokumentnummer. Diese API ist in der Vorschauversion 2.1 der Formularerkennung als Clouddienst und als lokaler Container verfügbar.
 
 ## <a name="what-does-the-id-service-do"></a>Funktionsweise des ID-Diensts 
 
-Mit dem vordefinierten ID-Dienst werden die Schlüsselwerte aus internationalen Reisepässen und US-Führerscheinen extrahiert und in einer organisierten strukturierten JSON-Antwort zurückgegeben. 
+Der vorgefertigte ID-Dienst extrahiert die Schlüsselwerte aus den internationalen Reisepässen und den US-Führerscheinen und gibt Sie in einer organisierten strukturierten JSON-Antwort zurück. 
 
 ![Beispiel eines Führerscheins](./media/id-example-drivers-license.JPG)
 
@@ -44,7 +44,7 @@ Mit dem vordefinierten ID-Dienst werden die Schlüsselwerte aus internationalen 
 |  MachineReadableZone | Objekt | Maschinenlesbarer zweizeiliger Bereich (Machine Readable Zone, MRZ) mit jeweils 44 Zeichen | „P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816“ |
 |  DocumentType | Zeichenfolge | Dokumenttyp, z. B. Pass oder Führerschein | „passport“ |  
 |  Adresse | Zeichenfolge | Extrahierte Adresse (nur beim Führerschein) | „123 STREET ADDRESS YOUR CITY WA 99999-1234“|
-|  Region | Zeichenfolge | Extrahierter Wert für Region, Bundesstaat, Provinz usw. (nur beim Führerschein) | „Washington“ | 
+|  Region | Zeichenfolge | Extrahierte Region, Bundesstaat, Provinz usw. (nur Führerschein) | „Washington“ | 
 
 ### <a name="additional-features"></a>Zusätzliche Features
 
@@ -52,7 +52,7 @@ Mit der ID-API werden außerdem die folgenden Informationen zurückgegeben:
 
 * Feldvertrauensgrad (jedes Feld gibt einen zugehörigen Vertrauenswert zurück)
 * OCR-Rohtext (OCR-extrahierte Textausgabe für den gesamten Beleg)
-* Begrenzungsrahmen für jedes extrahierte Feld in US-Führerscheinen
+* Begrenzungsrahmen für jedes extrahierte Feld bei US-Führerscheinen
 * Begrenzungsrahmen für jeden maschinenlesbaren Bereich in Reisepässen
 
   > [!NOTE]

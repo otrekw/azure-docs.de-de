@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 46cf34bd40832488985008a645f1da25eb87b9d9
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: a47c4c5bdc90e148916900b1e72bc2a392d2e473
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467390"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285330"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Vordefiniertes Rechnungsmodell für die Formularerkennung
 
-Die Azure-Formularerkennung kann Informationen aus Verkaufsrechnungen mithilfe seiner vordefinierten Rechnungsmodelle analysieren und extrahieren. Mit der Rechnungs-API können Kunden Rechnungen in verschiedenen Formaten verwenden und strukturierte Daten zurückgeben, um die Rechnungsverarbeitung zu automatisieren. Sie kombiniert unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/concept-recognizing-text.md) mit Deep Learning-Modellen zum Rechnungsverständnis, um wichtige Informationen aus Rechnungen in englischer Sprache zu extrahieren. Sie extrahiert den Text, Tabellen und Informationen wie Kunde, Anbieter, Rechnungs-ID, Fälligkeitsdatum für die Rechnung, Summe, fälliger Betrag, Steuerbetrag, Lieferadresse, Rechnungsadresse, Rechnungspositionen und mehr. Die vordefinierte Rechnungs-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar.
+Die Azure-Formularerkennung kann Informationen aus Verkaufsrechnungen mithilfe seiner vordefinierten Rechnungsmodelle analysieren und extrahieren. Mit der Rechnungs-API können Kunden Rechnungen in verschiedenen Formaten verwenden und strukturierte Daten zurückgeben, um die Rechnungsverarbeitung zu automatisieren. Sie kombiniert unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/overview-ocr.md) mit Deep Learning-Modellen zum Rechnungsverständnis, um wichtige Informationen aus Rechnungen in englischer Sprache zu extrahieren. Sie extrahiert den Text, Tabellen und Informationen wie Kunde, Anbieter, Rechnungs-ID, Fälligkeitsdatum für die Rechnung, Summe, fälliger Betrag, Steuerbetrag, Lieferadresse, Rechnungsadresse, Rechnungspositionen und mehr. Die vordefinierte Rechnungs-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar.
 
 ## <a name="what-does-the-invoice-service-do"></a>Welche Aufgaben führt der Rechnungsdienst aus?
 
@@ -58,7 +58,7 @@ Im zweiten Schritt wird der Vorgang zum [Abrufen des Ergebnisses der Rechnungsan
 |:-----|:----:|:----|
 |status | Zeichenfolge | notStarted: Der Analysevorgang wurde noch nicht gestartet.<br /><br />running: Der Analysevorgang wird ausgeführt.<br /><br />failed: Beim Analysevorgang ist ein Fehler aufgetreten.<br /><br />succeeded: Der Analysevorgang war erfolgreich.|
 
-Wenn im Feld **status** der Wert **succeeded** (erfolgreich) angezeigt wird, enthält die JSON-Antwort die Ergebnisse des Rechnungsverständnisses und optional die der Texterkennung, wenn sie angefordert wurden. Das Ergebnis des Rechnungsverständnisses ist als Wörterbuch benannter Feldwerte organisiert, wobei jeder Wert den extrahierten Text, den normalisierten Wert, den Begrenzungsrahmen, den Vertrauensgrad und die entsprechenden Wortelemente enthält. Es umfasst außerdem die extrahierten Rechnungspositionen, wobei jede Rechnungsposition den Betrag, die Beschreibung, den unitPrice-Wert, die Anzahl und mehr enthält. Das Ergebnis der Texterkennung ist als eine Hierarchie von Zeilen und Wörtern mit Text, Begrenzungsrahmen und Informationen zum Vertrauensgrad organisiert.
+Wenn im Feld **status** der Wert **succeeded** (erfolgreich) angezeigt wird, enthält die JSON-Antwort die Ergebnisse des Rechnungsverständnisses und optional die der Texterkennung, wenn sie angefordert wurden. Das Ergebnis des Rechnungsverständnisses ist als Wörterbuch benannter Feldwerte organisiert, wobei jeder Wert den extrahierten Text, den normalisierten Wert, den Begrenzungsrahmen, den Vertrauensgrad und die entsprechenden Wortelemente enthält. Außerdem sind die Zeilenelemente enthalten, die extrahiert werden, wobei jedes Zeilenelement den Betrag, die Beschreibung, den unitPrice, die Menge usw. enthält. Das Ergebnis der Texterkennung ist als eine Hierarchie von Linien und Wörtern mit Text, Begrenzungsfeldern und Konfidenzinformationen organisiert.
 
 ### <a name="sample-json-output"></a>JSON-Beispielausgabe
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: c7d06172abd696e386337e563fa29fdbd2d3cdae
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: aebbe7ab736b8a7b73900f1d552d723b8a609de6
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103493661"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222757"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -185,6 +185,14 @@ Beim Upgrade eines unterstützten AKS-Clusters können Nebenversionen von Kubern
 Zum Durchführen eines Upgrades von *1.12.x* -> *1.14.x* müssen Sie zuerst ein Upgrade von *1.12.x* -> *1.13.x* und dann ein Upgrade von *1.13.x* -> *1.14.x* durchführen.
 
 Das Überspringen mehrerer Versionen ist nur möglich, wenn ein Upgrade von einer nicht unterstützten Version auf eine unterstützte Version erfolgt. Beispielsweise kann ein Upgrade von einer nicht unterstützten Version *1.10.x* --> auf eine unterstützte Version *1.15.x* durchgeführt werden.
+
+**Kann ich während des 30-tägigen Supportzeitraums einen neuen 1.xx.x-Cluster erstellen?**
+
+Nein. Nachdem eine Version als veraltet markiert/entfernt wurde, können Sie keinen Cluster mit dieser Version erstellen. Mit Inkrafttreten der Änderung sehen Sie, dass die alte Version aus ihrer Versionsliste entfernt wurde. Dieser Vorgang kann bis zu zwei Wochen nach der Ankündigung dauern, schrittweise nach Region.
+
+**Ich bin auf einer neu veralteten Version, kann ich dennoch neue Knoten-Pools hinzufügen? Oder muss ich ein Upgrade durchführen?**
+
+Nein. Sie sind nicht berechtigt, dem Cluster Knoten-Pools der veralteten Version hinzuzufügen. Sie können Knoten-Pools einer neuen Version hinzufügen. Dies erfordert jedoch möglicherweise zuerst die Aktualisierung der Steuerungsebene. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

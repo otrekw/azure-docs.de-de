@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f5739604537ccc67e2cf57310269369909038d67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c64a4e06ed452c895c1bc2cf20adc2d9c0060c3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508741"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219262"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Tutorial: Voraussetzungen für die Erstellung von Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -69,11 +69,11 @@ Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Kont
 
 Azure erstellt die Ressourcengruppe und heftet eine Verknüpfung mit der Ressourcengruppe im Portal an.
 
-## <a name="create-the-network-and-subnets"></a>Erstellen des Netzwerks und der Subnetze
+## <a name="create-the-network-and-subnet"></a>Erstellen des Netzwerks und des Subnetzes
 
-Im nächsten Schritt werden die Netzwerke und Subnetze in der Azure-Ressourcengruppe erstellt.
+Im nächsten Schritt werden die Netzwerke und das Subnetz in der Azure-Ressourcengruppe erstellt.
 
-Die Lösung verwendet ein virtuelles Netzwerk mit zwei Subnetzen. Weitere Informationen zu Netzwerken in Azure finden Sie im [Überblick über virtuelle Netzwerke](../../../virtual-network/virtual-networks-overview.md).
+Die Lösung verwendet ein virtuelles Netzwerk und ein Subnetz. Weitere Informationen zu Netzwerken in Azure finden Sie im [Überblick über virtuelle Netzwerke](../../../virtual-network/virtual-networks-overview.md).
 
 So erstellen Sie das virtuelle Netzwerk im Azure-Portal
 
@@ -100,48 +100,13 @@ So erstellen Sie das virtuelle Netzwerk im Azure-Portal
 
    Ihr Adressraum und Ihr Subnetzadressbereich können sich von den Angaben in der Tabelle unterscheiden. Abhängig von Ihrem Abonnement schlägt das Portal einen verfügbaren Adressraum und den entsprechenden Subnetzadressbereich vor. Ist kein geeigneter Adressraum verfügbar, verwenden Sie ein anderes Abonnement.
 
-   Im Beispiel wird der Subnetzname **Admin** verwendet. Dieses Subnetz ist für die Domänencontroller bestimmt.
+   Im Beispiel wird der Subnetzname **Admin** verwendet. Dieses Subnetz ist für die Domänencontroller und SQL Server-VMs bestimmt.
 
 5. Klicken Sie auf **Erstellen**.
 
    ![Konfigurieren des virtuellen Netzwerks](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
 Azure zeigt wieder das Portaldashboard an und benachrichtigt Sie, wenn das neue Netzwerk erstellt wurde.
-
-### <a name="create-a-second-subnet"></a>Erstellen eines zweiten Subnetzes
-
-Das neue virtuelle Netzwerk verfügt über ein Subnetz mit dem Namen **Admin**. Dieses Subnetz wird von den Domänencontrollern verwendet. Die SQL Server-VMs verwenden ein zweites Subnetz namens **SQL**. So konfigurieren Sie dieses Subnetz:
-
-1. Wählen Sie in Ihrem Dashboard die zuvor erstellte Ressourcengruppe **SQL-HA-RG** aus. Suchen Sie das Netzwerk in der Ressourcengruppe unter **Ressourcen**.
-
-    Wenn **SQL-HA-RG** nicht angezeigt wird, wählen Sie **Ressourcengruppen** aus, und filtern Sie nach dem Namen der Ressourcengruppe.
-
-2. Wählen Sie in der Liste mit den Ressourcen **autoHAVNET** aus. 
-3. Klicken Sie im virtuellen Netzwerk **autoHAVNET** unter **Einstellungen** auf **Subnetze**.
-
-    Hier sehen Sie das bereits erstellte Subnetz.
-
-   ![Das bereits erstellte Subnetz](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
-
-5. Um ein zweites Subnetz zu erstellen, wählen Sie **+ Subnetz** aus.
-6. Konfigurieren Sie unter **Subnetz hinzufügen** das Subnetz, indem Sie unter **Name** die Zeichenfolge **sqlsubnet** eingeben. Azure gibt automatisch einen gültigen **Adressbereich** an. Vergewissern Sie sich, dass dieser Adressbereich mindestens zehn Adressen umfasst. In einer Produktionsumgebung werden unter Umständen weitere Adressen benötigt.
-7. Klicken Sie auf **OK**.
-
-    ![Konfigurieren des Subnetzes](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
-
-In der folgenden Tabelle sind die Netzwerkkonfigurationseinstellungen zusammengefasst:
-
-| **Feld** | Wert |
-| --- | --- |
-| **Name** |**autoHAVNET** |
-| **Adressraum** |Dieser Wert richtet sich nach den verfügbaren Adressräumen in Ihrem Abonnement. Ein typischer Wert wäre etwa 10.0.0.0/16. |
-| **Subnetzname** |**admin** |
-| **Subnetzadressbereich** |Dieser Wert richtet sich nach den verfügbaren Adressbereichen in Ihrem Abonnement. Ein typischer Wert wäre etwa 10.0.0.0/24. |
-| **Subnetzname** |**sqlsubnet** |
-| **Subnetzadressbereich** |Dieser Wert richtet sich nach den verfügbaren Adressbereichen in Ihrem Abonnement. Ein typischer Wert wäre etwa 10.0.1.0/24. |
-| **Abonnement** |Geben Sie das Abonnement an, das Sie verwenden möchten. |
-| **Ressourcengruppe** |**SQL-HA-RG** |
-| **Location** |Geben Sie den Speicherort an, den Sie auch für die Ressourcengruppe ausgewählt haben. |
 
 ## <a name="create-availability-sets"></a>Erstellen von Verfügbarkeitsgruppen
 
@@ -164,7 +129,7 @@ Kehren Sie nach Erstellung der Verfügbarkeitsgruppen zur Ressourcengruppe im Az
 
 ## <a name="create-domain-controllers"></a>Erstellen von Domänencontrollern
 
-Nach dem Erstellen des Netzwerks, der Subnetze und der Verfügbarkeitsgruppen können Sie die virtuellen Computer für die Domänencontroller erstellen.
+Nach dem Erstellen des Netzwerks, ders Subnetzes und der Verfügbarkeitsgruppen können Sie die virtuellen Computer für die Domänencontroller erstellen.
 
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>Erstellen der virtuellen Computer für die Domänencontroller
 

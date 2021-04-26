@@ -1,28 +1,28 @@
 ---
 title: Häufig gestellte Fragen zu Azure ExpressRoute | Microsoft-Dokumentation
-description: Die FAQs zu ExpressRoute enthalten Informationen zu unterstützten Azure-Diensten, Kosten, Daten und Verbindungen, SLAs, Anbietern und Standorten, Bandbreite sowie zusätzliche technische Details.
+description: Die FAQs zu ExpressRoute enthalten Informationen zu unterstützten Azure-Diensten, Kosten, Daten und Verbindungen, SLAs, Anbietern und Standorten, Bandbreite sowie weitere technische Details.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/07/2021
+ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 7819aaa1af588b0a74bb960cf47ea1feeeff8b3b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: efa5c3192ca6f51c219cc308a776e6db7212103c
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522290"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552239"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
 ## <a name="what-is-expressroute"></a>Was ist ExpressRoute?
 
-ExpressRoute ist ein Azure-Dienst, der es Ihnen ermöglicht, private Verbindungen zwischen Microsoft-Datencentern und der Infrastruktur bei Ihnen vor Ort oder in einer Kollokationsumgebung zu erstellen. ExpressRoute-Verbindungen erfolgen nicht über das öffentliche Internet und bieten eine höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit bei weniger Latenz als herkömmliche Verbindungen über das Internet.
+ExpressRoute ist ein Azure-Dienst, der es Ihnen ermöglicht, private Verbindungen zwischen Microsoft-Datencentern und der Infrastruktur bei Ihnen vor Ort oder in einer Kollokationsumgebung zu erstellen. ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet und bieten eine höhere Sicherheit, Zuverlässigkeit und Geschwindigkeit bei geringerer Latenz als herkömmliche Verbindungen über das Internet.
 
 ### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>Was sind die Vorteile von ExpressRoute und privaten Netzwerkverbindungen?
 
-ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet. Sie bieten eine höhere Sicherheit, größere Zuverlässigkeit und höhere Geschwindigkeiten bei konstanter Latenz als herkömmliche Verbindungen über das Internet. In einigen Fällen können durch die Verwendung von ExpressRoute-Verbindungen zum Übertragen von Daten zwischen lokalen Geräten und Azure auch drastische Kosteneinsparungen erzielt werden.
+ExpressRoute-Verbindungen nutzen nicht das öffentliche Internet. Sie bieten eine höhere Sicherheit, größere Zuverlässigkeit und höhere Geschwindigkeiten bei konstanter Latenz als herkömmliche Verbindungen über das Internet. In einigen Fällen können durch die Verwendung von ExpressRoute-Verbindungen zum Übertragen von Daten zwischen lokalen Geräten und Azure auch drastische Kosteneinsparungen erzielt werden.
 
 ### <a name="where-is-the-service-available"></a>Wo ist der Dienst verfügbar?
 
@@ -60,7 +60,7 @@ Das ExpressRoute-Gateway kündigt die *Adressräume* des virtuellen Azure-Netzwe
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Wie viele Präfixe können beim privaten Peering in ExpressRoute von einem virtuellen Netzwerk zu den lokalen Standorten angekündigt werden?
 
-Es werden maximal 1.000 Präfixe für eine einzelne ExpressRoute-Verbindung oder über VNet-Peering mit Gatewaytransit angekündigt. Wenn Sie z. B. über 199 Adressräume in einem einzelnen virtuellen Netzwerk verfügen, die mit einer ExpressRoute-Verbindung verbunden sind, werden alle 199 Präfixe lokal angekündigt. Wenn Sie ein virtuelles Netzwerk aktiviert haben, das den Gatewaytransit mit einem Adressraum zulässt, und 150 virtuelle Spoke-Netzwerke über die Option „Remotegateway zulassen“ aktiviert haben, wird das mit dem Gateway bereitgestellte virtuelle Netzwerk 151 Präfixe für lokale Standorte ankündigen.
+Es werden maximal 1.000 Präfixe für eine einzelne ExpressRoute-Verbindung oder über VNet-Peering mit Gatewaytransit angekündigt. Wenn Sie z. B. über 999 Adressräume in einem einzelnen virtuellen Netzwerk verfügen, die mit einer ExpressRoute-Leitung verbunden sind, werden alle 999 Präfixe lokal angekündigt. Wenn Sie ein virtuelles Netzwerk aktiviert haben, das den Gatewaytransit mit einem Adressraum zulässt, und 500 virtuelle Spoke-Netzwerke über die Option „Remotegateway zulassen“ aktiviert haben, wird das mit dem Gateway bereitgestellte virtuelle Netzwerk 501 Präfixe für lokale Standorte ankündigen.
 
 ### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Was passiert, wenn ich das Präfixlimit für eine ExpressRoute-Verbindung überschreite?
 
@@ -104,6 +104,7 @@ Wenn Ihre ExpressRoute-Verbindung für öffentliches Azure Microsoft-Peering akt
 * [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-Factor Authentication-Server (Vorversion)
 * Traffic Manager
+* Logic Apps
 
 ### <a name="public-peering"></a>Öffentliches Peering
 
@@ -170,7 +171,7 @@ Weitere Informationen zum Entwerfen für Hochverfügbarkeit finden Sie [hier](./
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Wie stelle ich Hochverfügbarkeit in einem mit ExpressRoute verbundenen virtuellen Netzwerk sicher?
 
-Hochverfügbarkeit erreichen Sie, indem Sie bis zu vier ExpressRoute-Verbindungen vom gleichen Peeringstandort mit Ihrem virtuellen Netzwerk verbinden oder ExpressRoute-Verbindungen an verschiedenen Peeringstandorten (z. B. Singapur, Singapur2) mit Ihrem virtuellen Netzwerk verbinden. Sollte eine ExpressRoute-Verbindung ausfallen, erfolgt ein Failover auf eine andere ExpressRoute-Verbindung. Standardmäßig wird Datenverkehr, der Ihr virtuelles Netzwerk verlässt, auf der Grundlage von ECMP (Equal Cost Multi-path Routing) weitergeleitet. Mit der Verbindungsgewichtung können Sie einer Verbindung den Vorzug geben. Weitere Informationen finden Sie unter [Optimieren von ExpressRoute-Routing](expressroute-optimize-routing.md).
+Hochverfügbarkeit erreichen Sie, indem Sie bis zu 16 ExpressRoute-Verbindungen vom gleichen Peeringstandort mit Ihrem virtuellen Netzwerk verbinden oder ExpressRoute-Verbindungen an verschiedenen Peeringstandorten (z. B. Singapur, Singapur2) mit Ihrem virtuellen Netzwerk verbinden. Sollte eine ExpressRoute-Verbindung ausfallen, erfolgt ein Failover auf eine andere ExpressRoute-Verbindung. Standardmäßig wird Datenverkehr, der Ihr virtuelles Netzwerk verlässt, auf der Grundlage von ECMP (Equal Cost Multi-path Routing) weitergeleitet. Mit der Verbindungsgewichtung können Sie einer Verbindung den Vorzug geben. Weitere Informationen finden Sie unter [Optimieren von ExpressRoute-Routing](expressroute-optimize-routing.md).
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Wie stelle ich sicher, dass mein Datenverkehr mit öffentlichen Azure-Diensten wie Azure Storage und Azure SQL über Microsoft-Peering oder öffentliches Peering auf dem ExpressRoute-Pfad bevorzugt wird?
 
@@ -298,6 +299,15 @@ Wenden Sie sich auch an Ihren Konnektivitätsanbieter, um sicherzustellen, dass 
 
 Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der REST-API oder des PowerShell-Cmdlets aktualisieren.
 
+### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>Ich habe eine Benachrichtigung über die Wartung meiner ExpressRoute-Verbindung erhalten. Welche technischen Auswirkungen hat diese Wartung?
+
+Wenn Sie Ihre Verbindung im [Aktiv/aktiv-Modus](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute#active-active-connections)betreiben, sollten nur minimale oder keine Auswirkungen auf die Wartung entstehen. Wir führen die Wartung der primären und sekundären Verbindungen der Verbindung separat durch. Die geplante Wartung wird in der Regel außerhalb der Geschäftszeiten in der Zeitzone des Peeringstandorts durchgeführt, Sie können keine Wartungszeit auswählen.
+
+### <a name="i-received-a-notification-about-a-software-upgrade-or-maintenance-on-my-expressroute-gateway-what-is-the-technical-impact-of-this-maintenance"></a>Ich habe eine Benachrichtigung über ein Software-Upgrade oder eine Wartung auf meinem ExpressRoute-Gateway erhalten. Welche technischen Auswirkungen hat diese Wartung?
+
+Während eines Software-Upgrades oder einer Wartung Ihres Gateways sollte es nur minimale oder keine Auswirkungen geben. Das ExpressRoute-Gateway besteht aus mehreren Instanzen, und während des Upgrades werden Instanzen nacheinander offline geschaltet. Dies kann zwar dazu führen, dass von Ihrem Gateway vorübergehend ein geringerer Netzwerkdurchsatz für das virtuelle Netzwerk unterstützt wird, aber für das Gateway selbst kommt es nicht zu Downtime.
+
+
 ## <a name="expressroute-premium"></a>ExpressRoute Premium
 
 ### <a name="what-is-expressroute-premium"></a>Was ist ExpressRoute Premium?
@@ -341,13 +351,17 @@ Angaben zu den Preisen finden Sie in der [Preisübersicht](https://azure.microso
 Ja. Für ExpressRoute Premium werden neben den ExpressRoute-Verbindungsgebühren und den Gebühren, die vom Konnektivitätsanbieter erhoben werden, zusätzliche Gebühren berechnet.
 
 ## <a name="expressroute-local"></a>ExpressRoute Local
+
 ### <a name="what-is-expressroute-local"></a>Was ist ExpressRoute Local?
-Expressroute Local ist neben der Standard-SKU und der Premium-SKU eine SKU der ExpressRoute-Verbindung. Ein wichtiges Feature von ExpressRoute Local ist, dass Sie über eine Local-Verbindung an einem ExpressRoute-Peeringstandort nur Zugriff auf eine oder zwei Azure-Regionen an demselben Standort bzw. in dessen Nähe haben. Mit einer Standard-Verbindung haben Sie dagegen Zugriff auf alle Azure-Regionen eines geopolitischen Gebiets, und mit einer Premium-Verbindung auf alle Azure-Regionen weltweit. 
+
+Expressroute Local ist neben der Standard-SKU und der Premium-SKU eine SKU der ExpressRoute-Verbindung. Ein wichtiges Feature von ExpressRoute Local ist, dass Sie über eine Local-Verbindung an einem ExpressRoute-Peeringstandort nur Zugriff auf eine oder zwei Azure-Regionen an demselben Standort bzw. in dessen Nähe haben. Mit einer Standard-Verbindung haben Sie dagegen Zugriff auf alle Azure-Regionen eines geopolitischen Gebiets, und mit einer Premium-Verbindung auf alle Azure-Regionen weltweit. Insbesondere bei einer lokalen SKU können Sie nur Routen (über Microsoft und privates Peering) aus der entsprechenden lokalen Region der ExpressRoute-Verbindung ankündigen. Sie sind nicht in der Lage, Routen für andere Regionen zu empfangen, die sich von der definierten lokalen Region unterscheiden.
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Welche Vorteile hat ExpressRoute Local?
+
 Sie müssen für Ihre ExpressRoute-Standard- bzw. -Premium-Verbindung zwar für ausgehende Datenübertragungen zahlen, aber für Ihre ExpressRoute Local-Verbindung fallen hierfür keine separaten Kosten an. Anders ausgedrückt: Die Gebühren für die Datenübertragung sind im Preis von ExpressRoute Local enthalten. ExpressRoute Local ist eine wirtschaftlichere Lösung, falls Sie über eine große Menge von zu übertragenden Daten verfügen und Ihre Daten über eine private Verbindung an einen ExpressRoute-Peeringstandort in der Nähe der gewünschten Azure-Regionen verlagern können. 
 
 ### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Welche Features sind für ExpressRoute Local verfügbar?
+
 Eine Local-Verbindung verfügt über die gleichen Features wie eine ExpressRoute-Standard-Verbindung, aber es gelten folgende Ausnahmen:
 * Zugriffsbereich für Azure-Regionen (wie oben beschrieben)
 * ExpressRoute Global Reach ist für Local nicht verfügbar
@@ -355,6 +369,7 @@ Eine Local-Verbindung verfügt über die gleichen Features wie eine ExpressRoute
 Für ExpressRoute Local gelten auch die gleichen Einschränkungen in Bezug auf Ressourcen (z. B. die Anzahl von VNETs pro Verbindung) wie für Standard. 
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Wo ist ExpressRoute Local verfügbar, und welchen Azure-Regionen sind die einzelnen Peeringstandorte zugeordnet?
+
 ExpressRoute Local ist an den Peeringstandorten verfügbar, in deren Nähe sich ein oder zwei Azure-Regionen befinden. Dies gilt nicht für einen Peeringstandort, für den sich im Bundesland/Kanton bzw. im Land/in der Region keine Azure-Region befindet. Die genauen Zuordnungen finden Sie auf der [Seite mit den Standorten](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-microsoft-365"></a>ExpressRoute für Microsoft 365

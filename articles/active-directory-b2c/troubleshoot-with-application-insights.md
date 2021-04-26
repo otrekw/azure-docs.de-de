@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: c9de6b8d99f09d43a045787ee6185233b9d7ef25
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611826"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443237"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Sammeln von Azure Active Directory B2C-Protokollen mit Application Insights
 
@@ -31,6 +31,18 @@ Die hier detailliert beschriebenen Aktivitätsprotokolle sollten **NUR** bei der
 ## <a name="set-up-application-insights"></a>Einrichten von Application Insights
 
 Erstellen Sie eine Instanz von Application Insights in Ihrem Abonnement, falls Sie noch keine haben.
+
+> [!TIP]
+> Eine einzelne Instanz von Application Insights kann für mehrere Azure AD B2C-Mandanten verwendet werden. Anschließend können Sie in der Abfrage nach dem Mandanten oder dem Richtliniennamen filtern. Weitere Informationen finden Sie in den Beispielen für [SLA für Application Insights](#see-the-logs-in-application-insights).
+
+Führen Sie die folgenden Schritte aus, um eine beendende Instanz von Application Insights in Ihrem Abonnement zu verwenden:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie auf der oberen Menüleiste den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihr Azure-Abonnement (nicht Ihr Azure AD B2C-Verzeichnis) enthält.
+1. Öffnen Sie die zuvor erstellte Application Insights-Ressource.
+1. auf der Seite **Übersicht** und zeichnen Sie den **Instrumentierungsschlüssel** auf
+
+Führen Sie die folgenden Schritte aus, um eine Instanz von Application Insights in Ihrem Abonnement zu verwenden:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie auf der oberen Menüleiste den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihr Azure-Abonnement (nicht Ihr Azure AD B2C-Verzeichnis) enthält.
@@ -96,8 +108,11 @@ Es folgt eine Liste der Abfragen, die Sie zum Anzeigen der Protokolle verwenden 
 
 | Abfrage | BESCHREIBUNG |
 |---------------------|--------------------|
-`traces` | Anzeigen aller von Azure AD B2C generierten Protokolle |
-`traces | where timestamp > ago(1d)` | Anzeigen aller am letzten Tag von Azure AD B2C generierten Protokolle
+| `traces` | Erhalten aller von Azure AD B2C generierten Protokolle |
+| `traces | where timestamp > ago(1d)` | Erhalten aller am letzten Tag von Azure AD B2C generierten Protokolle.|
+| `traces | where message contains "exception" | where timestamp > ago(2h)`|  Alle Protokolle mit Fehlern aus den letzten zwei Stunden erhalten.|
+| `traces | where customDimensions.Tenant == "contoso.onmicrosoft.com" and customDimensions.UserJourney  == "b2c_1a_signinandup"` | Alle Protokolle, die von Azure AD B2C *contoso.onmicrosoft.com*-Mandanten generiert werden, und User Journey *b2c_1a_signinandup*. |
+| `traces | where customDimensions.CorrelationId == "00000000-0000-0000-0000-000000000000"`| Erhalten aller von Azure AD B2C generierten Protokolle für eine Korrelations-ID. Ersetzen Sie die Korrelations-ID durch Ihre eigene Korrelations-ID. | 
 
 Diese Einträge können ggf. lang sein. Führen Sie einen Export in eine CSV-Datei durch, um sich dies genauer anzusehen.
 

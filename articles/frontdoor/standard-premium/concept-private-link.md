@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: 88c000c96e632f970db075fafb13ea5eb4bbddfc
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: c927682231bab1fc92f198c56a2f6aeff2f4c516
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799932"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553531"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Sichern ihres Ursprungs mit Private Link in Azure Front Door Standard/Premium (Vorschau)
 
@@ -43,7 +43,7 @@ Wenn Sie Private Link für Ihren Ursprung in der Azure Front Door Premium-Konfig
 
 ## <a name="limitations"></a>Einschränkungen
 
-Private Azure Front Door-Endpunkte sind in den folgenden Regionen während der öffentlichen Vorschau verfügbar: „USA, Osten“, „USA, Westen 2“ und „USA, Süden-Mitte“.
+Private Azure Front Door-Endpunkte sind in den folgenden Regionen während der öffentlichen Vorschau verfügbar: „USA, Osten“, „USA, Westen 2“ und „Vereinigtes Königreich, Süden“.
 
 Für die kürzeste Wartezeit sollten Sie immer eine Azure-Region auswählen, die Ihrem Ursprung am nächsten ist, wenn Sie den Private Link-Endpunkt von Front Door aktivieren.
 
