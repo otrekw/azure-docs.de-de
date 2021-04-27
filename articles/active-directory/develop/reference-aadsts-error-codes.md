@@ -12,12 +12,12 @@ ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 75d838e8ce785a4f59b056bf0dec736b982ea716
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578497"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283812"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -123,7 +123,7 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS50055 | InvalidPasswordExpiredPassword: Das Kennwort ist abgelaufen. |
 | AADSTS50056 | Ungültiges oder NULL-Kennwort: Das Kennwort ist für diesen Benutzer nicht im Speicher vorhanden. |
 | AADSTS50057 | UserDisabled: Das Benutzerkonto ist deaktiviert. Das Konto wurde von einem Administrator deaktiviert. |
-| AADSTS50058 | UserInformationNotProvided: Dies bedeutet, dass ein Benutzer nicht angemeldet ist. Dieser Fehler kommt häufig vor und wird erwartet, wenn ein Benutzer nicht authentifiziert wurde und sich noch nicht angemeldet hat.</br>Wenn dieser Fehler in einem SSO-Kontext gemeldet wird, in dem sich der Benutzer zuvor angemeldet hat, bedeutet dies, dass die SSO-Sitzung nicht gefunden wurde oder ungültig war.</br>Dieser Fehler kann an die Anwendung zurückgegeben werden, wenn prompt=none angegeben wird. |
+| AADSTS50058 | UserInformationNotProvided: Dies bedeutet, dass ein Benutzer nicht angemeldet ist. Dieser Fehler kommt häufig vor und wird erwartet, wenn ein Benutzer nicht authentifiziert wurde und sich noch nicht angemeldet hat.</br>Wenn dieser Fehler in einem SSO-Kontext auftritt, in dem sich der Benutzer zuvor angemeldet hat, bedeutet das, dass die SSO-Sitzung nicht gefunden wurde oder ungültig war.</br>Dieser Fehler kann an die Anwendung zurückgegeben werden, wenn prompt=none angegeben wird. |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided: Es wurden keine Informationen zur Identifizierung des Mandanten in der Anforderung gefunden bzw. nicht über angegebene Anmeldeinformationen impliziert. Der Benutzer kann sich an den Mandantenadministrator wenden, um das Problem zu lösen. |
 | AADSTS50061 | SignoutInvalidRequest: Die Anforderung zur Abmeldung ist ungültig. |
 | AADSTS50064 | CredentialAuthenticationError: Fehler beim Überprüfen der Anmeldeinformationen bezüglich Benutzername und Kennwort. |

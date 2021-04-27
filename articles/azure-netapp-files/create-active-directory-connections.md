@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: d238b566c1286b9b765fb574cd72ee68ccf4b4a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 27c2ab96106bbfcc05b8fa12daf9b6f7b816c5c7
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048373"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579989"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Erstellen und Verwalten von Active Directory-Verbindungen für Azure NetApp Files
 
@@ -215,7 +215,9 @@ Diese Einstellung wird in **Active Directory-Verbindungen** unter **NetApp-Konto
         So müssen z. B. Benutzerkonten, die für die Installation von SQL Server in bestimmten Szenarios verwendet werden, mit erhöhten Sicherheitsrechten ausgestattet werden. Wenn Sie ein Nicht-Administratorkonto bzw. Nicht-Administratordomänenkonto für die Installation von SQL Server verwenden und dem Konto keine Sicherheitsberechtigung zugewiesen ist, sollten Sie dem Konto die Sicherheitsberechtigung hinzufügen.  
 
         > [!IMPORTANT]
-        > Das Domänenkonto, das für die Installation von SQL Server verwendet wird, muss bereits vorhanden sein, bevor Sie es zum Feld **Benutzer mit Sicherheitsberechtigungen** hinzufügen. Wenn Sie das Konto des SQL Server-Installers zu **Benutzer mit Sicherheitsberechtigungen** hinzufügen, überprüft der Azure NetApp Files-Dienst möglicherweise das Konto, indem er eine Verbindung zum Domänencontroller herstellt. Wenn eine Verbindung mit dem Domänencontroller nicht möglich ist, kann der Befehl fehlschlagen.  
+        > Wenn Sie das Feature **Benutzer mit Sicherheitsberechtigungen** verwenden möchten, müssen Sie über die Seite **[Azure NetApp Files SMB Continuous Availability Shares Public Preview](https://aka.ms/anfsmbcasharespreviewsignup)** eine Wartelistenanforderung für den Zugriff auf das Feature übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie dieses Feature verwenden.        
+        > 
+        > Die Verwendung dieses Features ist optional und wird nur für SQL Server unterstützt. Das Domänenkonto, das für die Installation von SQL Server verwendet wird, muss bereits vorhanden sein, bevor Sie es zum Feld **Benutzer mit Sicherheitsberechtigungen** hinzufügen. Wenn Sie das Konto des SQL Server-Installers zu **Benutzer mit Sicherheitsberechtigungen** hinzufügen, überprüft der Azure NetApp Files-Dienst möglicherweise das Konto, indem er eine Verbindung zum Domänencontroller herstellt. Wenn eine Verbindung mit dem Domänencontroller nicht möglich ist, kann der Befehl fehlschlagen.  
 
         Weitere Informationen zu `SeSecurityPrivilege` und SQL Server finden Sie unter [SQL Server-Installation schlägt fehl, wenn das Einrichtungskonto nicht über bestimmte Benutzerrechte verfügt](/troubleshoot/sql/install/installation-fails-if-remove-user-right).
 

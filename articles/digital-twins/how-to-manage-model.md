@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Informationen zum Erstellen, Bearbeiten und Löschen von Modellen in Azure Digital Twins
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 4/07/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 75911e91bb61b84d2e9315421f794739f2b5088b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c896e2aad7dae8d03b26e2a16ecb96224ab547b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953696"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303759"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
-Sie können [Modelle](concepts-models.md), die Ihrer Azure Digital Twins-Instanz bekannt sind, mithilfe der [**DigitalTwinModels-APIs**](/rest/api/digital-twins/dataplane/models), dem [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder der [Azure Digital Twins-CLI](how-to-use-cli.md) verwalten. 
+Sie können die [Modelle](concepts-models.md), Ihrer Azure Digital Twins-Instanz mithilfe der [**DigitalTwinModels-APIs**](/rest/api/digital-twins/dataplane/models), mit dem [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder über die [Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md) verwalten. 
 
 Zu den Verwaltungsvorgängen gehören das Hochladen, Überprüfen, Abrufen und Löschen von Modellen. 
 

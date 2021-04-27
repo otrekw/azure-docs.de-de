@@ -1,18 +1,21 @@
 ---
-title: Windows Server Failover Cluster in Azure VMware Solution vSAN mit nativen freigegebenen Datenträgern
-description: Einrichten von Windows Server Failover Cluster (WSFC) in Azure VMware Solution und Nutzen von Lösungen, die WSFC-Funktionen erfordern.
+title: Konfigurieren von Windows Server Failover Cluster in Azure VMware Solution vSAN
+description: Hier erfahren Sie, wie Sie Windows Server Failover Cluster (WSFC) in Azure VMware Solution vSAN mit nativen freigegebenen Datenträgern einrichten.
 ms.topic: how-to
-ms.date: 03/09/2021
-ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: f1bc8199eb0d3317e4b6e07a6a297b4ebfe95cc8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562238"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308681"
 ---
-# <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Windows Server Failover Cluster in Azure VMware Solution vSAN mit nativen freigegebenen Datenträgern
+# <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>Konfigurieren von Windows Server Failover Cluster in Azure VMware Solution vSAN
 
-In diesem Artikel werden die Schritte zum Einrichten von Windows Server Failover Cluster in Azure VMware Solution beschrieben. Die Implementierung in diesem Artikel dient dem Proof of Concept und Pilotzwecken. Es wird empfohlen, eine CIB-Konfiguration (Cluster-in-a-Box) zu verwenden, bis Platzierungsrichtlinien verfügbar sind.
+In diesem Artikel erfahren Sie, wie Sie Windows Server Failover Cluster in Azure VMware Solution vSAN mit nativen freigegebenen Datenträgern einrichten. 
+
+>[!IMPORTANT]
+>Die Implementierung in diesem Artikel dient dem Proof of Concept und Pilotzwecken. Es empfiehlt sich, eine CIB-Konfiguration (Cluster-in-a-Box) zu verwenden, bis Platzierungsrichtlinien verfügbar werden.
 
 Windows Server Failover Cluster (WSFC), früher als Microsoft Service Cluster Service (MSCS) bezeichnet, ist eine Funktion des Windows Server-Betriebssystems. WSFC ist eine unternehmenskritische Funktion, die für viele Anwendungen benötigt wird. WSFC ist beispielsweise für die folgenden Konfigurationen erforderlich:
 
@@ -43,7 +46,7 @@ Azure VMware Solution bietet native Unterstützung für das virtualisierte WSFC.
 
 Die folgende Abbildung veranschaulicht die Architektur von virtuellen WSFC-Knoten in einer privaten Azure VMware Solution-Cloud. Sie zeigt, wo sich Azure VMware Solution, einschließlich der virtuellen WSFC-Server (roter Kasten), relativ zur umfassenderen Azure-Plattform befindet. In der Abbildung ist eine typische Hub-Spoke-Architektur dargestellt. Eine vergleichbare Konfiguration ist jedoch auch bei Verwendung von Azure Virtual WAN möglich. Beide bieten alle Vorteile, die auch andere Azure-Dienste bieten.
 
-[![Abbildung der Architektur von virtuellen WSFC-Knoten in einer privaten Azure VMware Solution-Cloud](media/windows-server-failover-cluster/windows-server-failover-architecture.png)](media/windows-server-failover-cluster/windows-server-failover-architecture.png#lightbox)
+:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Diagramm: Architektur der virtuellen WSFC-Knoten in einer privaten Azure VMware Solution-Cloud" border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
 
 ## <a name="supported-configurations"></a>Unterstützte Konfigurationen
 
@@ -54,7 +57,7 @@ Derzeit werden folgende Konfigurationen unterstützt:
 - Bis zu vier PVSCSI-Adapter pro VM
 - Bis zu 64 Datenträger pro PVSCSI-Adapter
 
-## <a name="virtual-machine-configuration-requirements"></a>Konfigurationsanforderungen für VMs
+## <a name="virtual-machine-configuration-requirements"></a>VM-Konfigurationsanforderungen
 
 ### <a name="wsfc-node-configuration-parameters"></a>Konfigurationsparameter für WSFC-Knoten
 

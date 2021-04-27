@@ -4,13 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 8d4e573cefd595669d9cb2cf9a7b83595eea7971
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 45a772b4a1d65b67f918107fd33135a56f6302f2
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622109"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "106073054"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
+
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
@@ -23,9 +26,8 @@ ms.locfileid: "103622109"
 ### <a name="install-the-package"></a>Installieren des Pakets
 
 > [!NOTE]
-> Dieses Dokument verwendet Version 1.0.0-beta.8 der aufrufenden Clientbibliothek.
+> In diesem Dokument wird die Version 1.0.0-beta.8 des Calling SDK verwendet.
 
-<!-- TODO: update with instructions on how to download, install and add package to project -->
 Wählen Sie Ihre Datei „build.gradle“ auf Projektebene aus, und stellen Sie sicher, dass Sie `mavenCentral()` zur Liste der Repositorys unter `buildscript` und `allprojects` hinzufügen.
 ```groovy
 buildscript {
@@ -59,11 +61,11 @@ dependencies {
 
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features der Azure Communication Services-Clientbibliothek „Calling“:
+Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features des Azure Communication Services Calling SDK:
 
 | Name                                  | Beschreibung                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient ist der Haupteinstiegspunkt in die Clientbibliothek „Calling“.|
+| CallClient| „CallClient“ ist der Haupteinstiegspunkt des Calling SDK.|
 | CallAgent | CallAgent dient zum Starten und Verwalten von Anrufen. |
 | CommunicationTokenCredential | „CommunicationTokenCredential“ dient als tokengestützte Anmeldeinformation zum Instanziieren von „CallAgent“.|
 | CommunicationIdentifier | „CommunicationIdentifier“ wird als anderer Typ von Teilnehmer verwendet, der Teil eines Anrufs sein könnte.|
@@ -224,10 +226,10 @@ Für die Android-Anwendung sind eine Reihe von Berechtigungen erforderlich, um B
 
 Um sich für Pushbenachrichtigungen zu registrieren, muss die Anwendung `registerPushNotification()` für eine *CallAgent*-Instanz mit einem Geräteregistrierungstoken aufrufen.
 
-Um das Geräteregistrierungstoken zu erhalten, fügen Sie die Firebase-Clientbibliothek zur Datei *build.gradle* Ihres Anwendungsmoduls hinzu, indem Sie die folgenden Zeilen im Abschnitt `dependencies` hinzufügen, sofern noch nicht vorhanden:
+Um das Geräteregistrierungstoken zu erhalten, fügen Sie das Firebase SDK zur Datei *build.gradle* Ihres Anwendungsmoduls hinzu, indem Sie die folgenden Zeilen im Abschnitt `dependencies` hinzufügen (sofern noch nicht vorhanden):
 
 ```
-    // Add the client library for Firebase Cloud Messaging
+    // Add the SDK for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
@@ -244,7 +246,7 @@ Fügen Sie das folgende Plug-In am Anfang der Datei hinzu, sofern noch nicht vor
 apply plugin: 'com.google.gms.google-services'
 ```
 
-Wählen Sie auf der Symbolleiste *Jetzt synchronisieren* aus. Fügen Sie den folgenden Codeausschnitt hinzu, um das Geräteregistrierungstoken abzurufen, das von der Firebase Cloud Messaging-Clientbibliothek für die Clientanwendungsinstanz generiert wird. Stellen Sie sicher, dass Sie die unten aufgeführten Importe zum Header der Hauptaktivität für die Instanz hinzufügen. Sie sind erforderlich, damit der Ausschnitt das Token abruft.
+Wählen Sie auf der Symbolleiste *Jetzt synchronisieren* aus. Fügen Sie den folgenden Codeausschnitt hinzu, um das Geräteregistrierungstoken abzurufen, das vom Firebase Cloud Messaging SDK für die Clientanwendungsinstanz generiert wird. Achten Sie darauf, dass Sie die unten aufgeführten Importe zum Header der Hauptaktivität für die Instanz hinzufügen. Sie sind erforderlich, damit der Ausschnitt das Token abruft.
 
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -272,7 +274,7 @@ Fügen Sie diesen Ausschnitt hinzu, um das Token abzurufen:
                     }
                 });
 ```
-Registrieren Sie das Geräteregistrierungstoken bei der Communication Services-Clientbibliothek „Calling“ für Pushbenachrichtigungen zu eingehenden Anrufen.
+Registrieren Sie das Geräteregistrierungstoken beim Calling Services SDK für Pushbenachrichtigungen zu eingehenden Anrufen:
 
 ```java
 String deviceRegistrationToken = "<Device Token from previous section>";
@@ -288,7 +290,7 @@ catch(Exception e) {
 
 Um Pushbenachrichtigungen für eingehende Anrufe zu empfangen, rufen Sie *handlePushNotification()* für eine *CallAgent*-Instanz mit Nutzdaten auf.
 
-Um die Nutzlast von Firebase Cloud Messaging abzurufen, beginnen Sie mit der Erstellung eines neuen Diensts (Datei > Neu > Dienst > Dienst), der die Firebase-Clientbibliotheksklasse *FirebaseMessagingService* erweitert, und setzen Sie dann die `onMessageReceived`-Methode außer Kraft. Diese Methode ist der Ereignishandler, der aufgerufen wird, wenn Firebase Cloud Messaging die Pushbenachrichtigung an die Anwendung übermittelt.
+Um die Nutzdaten von Firebase Cloud Messaging abzurufen, erstellen Sie zunächst einen neuen Dienst („Datei“ > „Neu“ > „Dienst“ > „Dienst“), der das Firebase SDK *FirebaseMessagingService* erweitert, und überschreiben Sie dann die Methode `onMessageReceived`. Diese Methode ist der Ereignishandler, der aufgerufen wird, wenn Firebase Cloud Messaging die Pushbenachrichtigung an die Anwendung übermittelt.
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -318,7 +320,7 @@ Fügen Sie der Datei `AndroidManifest.xml` im Tag <application> die unten angege
         </service>
 ```
 
-- Sobald die Nutzdaten abgerufen wurden, können sie an die *Communication Services*-Clientbibliothek übergeben werden, um sie in ein internes *IncomingCallInformation*-Objekt zu analysieren, das durch Aufrufen der *handlePushNotification*-Methode für eine *CallAgent*-Instanz verarbeitet wird. Eine `CallAgent`-Instanz wird durch den Aufruf der Methode `createCallAgent(...)` für die Klasse `CallClient` erstellt.
+- Sobald die Nutzdaten abgerufen wurden, können sie an das *Communication Services* SDK übergeben werden, um sie in ein internes Objekt vom Typ *IncomingCallInformation* zu analysieren, das durch Aufrufen der Methode *handlePushNotification* für eine Instanz von *CallAgent* behandelt wird. Eine `CallAgent`-Instanz wird durch den Aufruf der Methode `createCallAgent(...)` für die Klasse `CallClient` erstellt.
 
 ```java
 try {

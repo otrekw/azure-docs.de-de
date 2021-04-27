@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e778c7ee14d2115bf6d8cf7f12ceaa61e364a4a2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 812de4850c6c3577346915a0072ea11c60f7ba73
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120175"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365449"
 ---
 # <a name="device-update-agent-provisioning"></a>Bereitstellen des Geräte-Update-Agents
 
@@ -81,8 +81,25 @@ Befolgen Sie diese Anweisungen, um den Geräte-Update-Agent auf [IOT Edge aktivi
 
 1. Befolgen Sie die Anleitung unter [Installieren oder Deinstallieren von Azure IoT Edge für Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11&preserve-view=true).
 
-1. Installieren Sie dann den Geräte-Update-Agent über [Artefakte](https://github.com/Azure/iot-hub-device-update/releases), und Sie können nun den Geräte-Update-Agent auf dem IOT Edge-Gerät starten.
+1. Installieren Sie den Device Update-Agent für Imageupdates.
+    - Wir stellen Beispielimages in [Artefakten](https://github.com/Azure/iot-hub-device-update/releases) zur Verfügung, um Rollouts von Imageupdates auf verschiedene Versionen mithilfe eines Basisimages (adu-base-image) und eines Updateimages (adu-update-image) zu versuchen. Sehen Sie sich ein [Beispiel für das Einspielen des Images auf Ihrem IoT Hub-Gerät](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image) an.  
 
+1. Installieren Sie den Device Update-Agent für Paketupdates.  
+    - Für die aktuellen Agent-Versionen von packages.miscrosoft.com: Aktualisieren Sie Paketlisten auf Ihrem Gerät, und installieren Sie das Device Update-Agent-Paket und seine Abhängigkeiten mit:   
+    ```shell
+    sudo apt-get update
+    ```
+    
+    ```shell
+    sudo apt-get install deviceupdate-agent deliveryoptimization-plugin-apt
+    ```
+    
+    - Für zukünftige Release Candidate-Versionen von [Artifacts](https://github.com/Azure/iot-hub-device-update/releases): Laden Sie die DEP-Datei auf den Computer herunter, auf dem Sie den Device Update-Agent installieren möchten, und dann:
+     ```shell
+    Sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
+     ```
+    
+1. Nun können Sie den Device Update-Agent auf dem IoT Edge-Gerät starten. 
 
 ### <a name="on-non-edge-iot-linux-devices"></a>Auf nicht-Edge-IOT-Linux-Geräten
 
@@ -130,14 +147,15 @@ Befolgen Sie diese Anweisungen, um den Geräte-Update-Agent auf IOT Edge aktivie
     sudo aziotctl config apply
     ```
     
-1.  Installieren Sie dann den Geräte-Update-Agent über [Artefakte](https://github.com/Azure/iot-hub-device-update/releases), und Sie können nun den Geräte-Update-Agent auf dem IOT Edge-Gerät starten.
+1.  Installieren Sie schließlich den Device Update-Agent. Wir stellen Beispielimages in [Artefakten](https://github.com/Azure/iot-hub-device-update/releases) zur Verfügung, um Rollouts von Imageupdates auf verschiedene Versionen mithilfe eines Basisimages (adu-base-image) und eines Updateimages (adu-update-image) zu versuchen. Sehen Sie sich ein [Beispiel für das Einspielen des Images auf Ihrem IoT Hub-Gerät](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image) an.
 
+1.  Nun können Sie den Device Update-Agent auf dem IoT-Gerät starten. 
 
 ### <a name="other-iot-devices"></a>Andere IOT-Geräte
 
 Der Agent für die Geräteaktualisierung kann auch ohne den IOT-Identitätsdienst zum Testen oder für eingeschränkte Geräte konfiguriert werden. Führen Sie die folgenden Schritte aus, um den Geräte-Update-Agent mithilfe einer Verbindungszeichenfolge (vom Modul oder Gerät) bereitzustellen.
 
-1.  Installieren Sie den Geräte-Update-Agent über [Artefakte](https://github.com/Azure/iot-hub-device-update/releases).
+1.  Wir stellen Beispielimages in [Artefakten](https://github.com/Azure/iot-hub-device-update/releases) zur Verfügung, um Rollouts von Imageupdates auf verschiedene Versionen mithilfe eines Basisimages (adu-base-image) und eines Updateimages (adu-update-image) zu versuchen. Sehen Sie sich ein [Beispiel für das Einspielen des Images auf Ihrem IoT Hub-Gerät](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image) an.
 
 1.  Melden Sie sich auf dem Computer oder IOT Edge Gerät/IOT-Gerät an.
     
@@ -150,16 +168,17 @@ Der Agent für die Geräteaktualisierung kann auch ohne den IOT-Identitätsdiens
        
     1. Es sollte sich ein Fenster öffnen, in dem sich ein Text befindet. Löschen Sie die gesamte Zeichenfolge nach „connection_String =“, wenn Sie den Geräte Update-Agent zum ersten Mal auf dem IOT-Gerät bereitstellen. Es ist nur ein Platzhaltertext.
     
-    1. Ersetzen Sie im Terminal <Ihre-Verbindungszeichenfolge> durch die Verbindungszeichenfolge des Geräts für Ihre Instanz des Geräte-Update-Agents.
+    1. Ersetzen Sie im Terminal „<Ihre-Verbindungszeichenfolge>“ durch die Verbindungszeichenfolge des Geräts für Ihre Instanz des Device Update-Agents.
     
         > [!Important]
         > Fügen Sie keine Anführungszeichen um die Verbindungszeichenfolge hinzu.
-        
-        - connection_string=<your-connection-string>
+        ```shell
+        connection_string=<ADD CONNECTION STRING HERE>
+        ```
        
     1. Eingeben und speichern.
     
-1.  Nun können Sie den Geräte-Update-Agent auf dem IOT Edge Gerät starten. 
+1.  Nun können Sie den Device Update-Agent auf dem IoT-Gerät starten. 
 
 
 ## <a name="how-to-start-the-device-update-agent"></a>Starten des Geräte-Update-Agents
@@ -191,7 +210,7 @@ Sie können auch ihren eigenen Geräte-Update-Agent für Kunden erstellen und ä
 
 Befolgen Sie die Anweisungen, um den Device Update-Agent aus der Quelle zu [erstellen](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md).
 
-Nachdem der Agent erfolgreich erstellt wurde, ist es an der Zeit, den Agent [auszuführen](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-run-agent.md).
+Nachdem der Agent erfolgreich erstellt wurde, ist es an der Zeit, ihn [auszuführen](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-run-agent.md).
 
 Nehmen Sie nun die Änderungen vor, die für die Einbindung des Agents in Ihr Image erforderlich sind.  Anleitungen finden Sie unter der Vorgehensweise zum [Ändern](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-modify-the-agent-code.md) des Device Update-Agents.
 

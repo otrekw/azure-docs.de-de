@@ -3,19 +3,24 @@ title: Best Practices für Azure Kubernetes Service (AKS)
 description: Sammlung der bewährten Methoden für Clusterbetreiber und Entwickler zum Erstellen und Verwalten von Anwendungen in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 12/07/2018
-ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/09/2021
+ms.openlocfilehash: f4bd109ce6827de26b1649380b6f6a2ba7c10e17
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94686258"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105900"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Best Practices für Clusterbetreiber und -entwickler zum Erstellen und Verwalten von Anwendungen in Azure Kubernetes Service (AKS)
 
-Um Anwendungen im Azure Kubernetes Service (AKS) erfolgreich zu entwickeln und auszuführen, müssen Sie einige wichtige Aspekte verstehen und implementieren. Hierzu gehören Mehrinstanzenfähigkeit und Scheduler-Features, Cluster- und Podsicherheit oder Business Continuity & Disaster Recovery. Die folgenden bewährten Methoden wurden in Gruppen zusammengefasst, um Clusterbetreibern und Entwicklern zu helfen, die Überlegungen die verschiedenen Bereiche zu verstehen und die entsprechenden Features zu implementieren.
+Für die erfolgreiche Erstellung und Ausführung von Anwendungen in Azure Kubernetes Service (AKS) müssen einige wichtige Aspekte verstanden und umgesetzt werden. Hierzu zählen beispielsweise folgende:
+* Mehrinstanzenfähigkeit und Scheduler-Features
+* Cluster- und Podsicherheit
+* Business Continuity & Disaster Recovery 
 
-Diese Artikel zu bewährten Methoden und Konzepten wurden in Zusammenarbeit mit der AKS-Produktgruppe, den technischen Teams und den Außendienstteams, einschließlich der Global Black Belts (GBBs), verfasst.
+
+Die folgenden Artikel zu bewährten Methoden und Konzepten enthalten Beiträge der AKS-Produktgruppe, der technischen Teams und der Außendienstteams (einschließlich Global Black Belts (GBBs)) und wurden von ihnen verfasst und gruppiert. Die Artikel unterstützen Clusteroperatoren und Entwickler dabei, die oben genannten Aspekte zu verstehen und die entsprechenden Features zu implementieren.
+
 
 ## <a name="cluster-operator-best-practices"></a>Best Practices für Clusterbetreiber
 

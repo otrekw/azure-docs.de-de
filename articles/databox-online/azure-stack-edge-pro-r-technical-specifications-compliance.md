@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/24/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa1b861555cff65c9e432ea711af3f7c6e410625
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3b323bf920bd884e821d03bf2def37471775e720
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109164"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312704"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R: Technische Spezifikationen
 
@@ -22,43 +22,46 @@ Die Hardwarekomponenten Ihres Azure Stack Edge Pro R-Geräts entsprechen den in
 
 ## <a name="compute-memory-specifications"></a>Spezifikationen zu Compute- und Arbeitsspeicherressourcen
 
-Das Azure Stack Edge Pro R-Gerät verfügt über die folgenden Spezifikationen für Compute- und Arbeitsspeicherressourcen:
+Das Azure Stack Edge Pro R-Gerät verfügt über die folgenden Spezifikationen für Compute und Arbeitsspeicher:
 
-| Spezifikation       | Wert                  |
-|---------------------|------------------------|
-| CPU    | 2 Intel Xeon Silver 4114-CPUs<br>20 physische Kerne (10 pro CPU)<br>40 logische Kerne (vCPUs) (20 pro CPU)  |
-| Arbeitsspeicher              | 256 GB RAM (2666 MT/s)     |
-
+| Spezifikation  | Wert                                             |
+|----------------|---------------------------------------------------|
+| CPU-Typ       | Dual Intel Xeon Silver 4114 CPU                   |
+| CPU: Raw       | 20 Kerne insgesamt, 40 vCPUs insgesamt                    |
+| CPU: nutzbar    | 32 vCPUs                                          |
+| Arbeitsspeichertyp    | Dell-kompatibles 16 GB RDIMM, 2.666 MT/s, Dual Rank |
+| Arbeitsspeicher: unformatiert    | 256 GB RAM (16 x 16 GB)                           |
+| Arbeitsspeicher: nutzbar | 230 GB RAM                                        |
 
 ## <a name="compute-acceleration-specifications"></a>Spezifikationen zur Computebeschleunigung
 
 Jedes Gerät verfügt über einen Grafikprozessor (GPU), der die Implementierung von Kubernetes-, Deep Learning- und Machine Learning-Szenarien ermöglicht.
 
-| Spezifikation           | Wert                  |
+| Spezifikation           | Wert                      |
 |-------------------------|----------------------------|
-| GPU   | 1 nVidia T4-GPU <br> Weitere Informationen finden Sie unter [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).| 
+| GPU   | 1 nVidia T4-GPU <br> Weitere Informationen finden Sie unter [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/). | 
 
 ## <a name="power-supply-unit-specifications"></a>Spezifikationen für Netzteile
 
 Das Azure Stack Edge Pro R-Gerät verfügt über zwei Netzteile mit 100–240 V und leistungsstarken Lüftern. Dadurch wird eine redundante Stromversorgungskonfiguration gewährleistet. Beim Ausfall eines Netzteils wird das Gerät mit dem anderen Netzteil normal weiterbetrieben, bis die fehlerhafte Einheit ausgetauscht wird. In der folgenden Tabelle sind die technischen Spezifikationen der Netzteile aufgeführt:
 
-| Spezifikation           | 550 Watt-Netzteil                  |
-|-------------------------|----------------------------|
-| Maximale Ausgangsleistung    | 550 W                      |
-| Wärmeabgabe (maximal)                   | 2891 BTU/h                |
-| Häufigkeit               | 50/60 Hz                   |
-| Spannungsbereichsauswahl | Automatischer Spannungsbereich: 115–230 V AC |
-| Hot-Plug-fähig           | Ja                        |
+| Spezifikation              | 550 Watt-Netzteil                  |
+|----------------------------|----------------------------|
+| Maximale Ausgangsleistung       | 550 W                      |
+| Wärmeabgabe (maximal) | 2891 BTU/h                |
+| Häufigkeit                  | 50/60 Hz                   |
+| Spannungsbereichsauswahl    | Automatischer Spannungsbereich: 115–230 V AC |
+| Hot-Plug-fähig              | Ja                        |
 
 ## <a name="network-specifications"></a>Netzwerkspezifikationen
 
-Das Azure Stack Edge Pro R-Gerät verfügt über vier Netzwerkschnittstellen: PORT1–PORT4. 
+Das Azure Stack Edge Pro R-Gerät verfügt über vier Netzwerkschnittstellen: PORT1–PORT4.
 
 
-|Spezifikation  |BESCHREIBUNG                              |
+|Spezifikation         |BESCHREIBUNG                       |
 |----------------------|----------------------------------|
-|Netzwerkschnittstellen    |**2 x 1 Gbe RJ45** <br> PORT 1 wird als Verwaltungsschnittstelle für die anfängliche Einrichtung verwendet. Dies ist standardmäßig ein statischer Port. Nach Abschluss der anfänglichen Einrichtung kann die Schnittstelle für Daten mit einer beliebigen IP-Adresse verwendet werden. Beim Zurücksetzen wird jedoch erneut eine statische IP-Adresse verwendet. <br>Die zweite Schnittstelle (PORT 2) kann vom Benutzer konfiguriert und für die Datenübertragung verwendet werden. Dieser Port ist standardmäßig als DHCP-Schnittstelle konfiguriert.     |
-|Netzwerkschnittstellen    |**2 x 25 Gbe SFP28** <br> Diese Datenschnittstellen (PORT 3 und PORT 4) können als DHCP (Standard) oder statisch konfiguriert werden.            |
+|Netzwerkschnittstellen    |**2 x 1 GbE RJ45** <br> PORT 1 wird als Verwaltungsschnittstelle für die anfängliche Einrichtung verwendet. Dies ist standardmäßig ein statischer Port. Nach Abschluss der anfänglichen Einrichtung kann die Schnittstelle für Daten mit einer beliebigen IP-Adresse verwendet werden. Beim Zurücksetzen wird jedoch erneut eine statische IP-Adresse verwendet. <br>Die zweite Schnittstelle (PORT 2) kann vom Benutzer konfiguriert und für die Datenübertragung verwendet werden. Dieser Port ist standardmäßig als DHCP-Schnittstelle konfiguriert. |
+|Netzwerkschnittstellen    |**2 x 25 GbE SFP28** <br> Diese Datenschnittstellen (PORT 3 und PORT 4) können mit DHCP (Standard) oder als statischer Port konfiguriert werden. |
 
 Ihr Azure Stack Edge Pro R-Gerät enthält folgende Netzwerkhardware:
 
@@ -69,27 +72,27 @@ Ihr Azure Stack Edge Pro R-Gerät enthält folgende Netzwerkhardware:
 | Parameter           | Description                 |
 |-------------------------|----------------------------|
 | Model    | ConnectX®-4 Lx EN network interface card                      |
-| Model Description               | 25GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
+| Model Description               | 25 GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
 | Device Part Number (XR2) | MCX4421A-ACAN  |
 | PSID (R640)           | MT_2420110034                         |-->
 <!-- confirm w/ Ravi what is this-->
 
-Eine vollständige Liste der unterstützten Kabel, Switches und Transceiver für diese Netzwerkkarten finden Sie unter: [Mit Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter kompatible Produkte](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).
+Eine vollständige Liste der unterstützten Kabel, Switches und Transceiver für diese Netzwerkkarten finden Sie unter [Mit Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter kompatible Produkte](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).
 
 ## <a name="storage-specifications"></a>Speicherspezifikation
 
-Die Azure Stack Edge Pro R-Geräte verfügen über 8 Datenträger und 2 M.2-SATA-Datenträger, die als Betriebssystem-Datenträger dienen. Weitere Informationen finden Sie in den Erläuterungen zu [M.2-SATA-Datenträgern](https://en.wikipedia.org/wiki/M.2).
+Die Azure Stack Edge Pro R-Geräte verfügen über acht Datenträger und zwei M.2-SATA-Datenträger, die als Betriebssystemdatenträger dienen. Weitere Informationen finden Sie in den Erläuterungen zu [M.2-SATA-Datenträgern](https://en.wikipedia.org/wiki/M.2).
 
 #### <a name="storage-for-1-node-device"></a>Speicher für ein Gerät mit einem Knoten
 
-In der folgenden Tabelle sind die Details zur Speicherkapazität des Geräts mit einem Knoten aufgeführt.
+In der folgenden Tabelle sind Details zur Speicherkapazität des Geräts mit einem Knoten aufgeführt.
 
 |     Spezifikation                          |     Wert             |
 |--------------------------------------------|-----------------------|
 |    Anzahl von Solid-State-Laufwerken (SSDs)     |    8                  |
 |    Kapazität eines SSD-Laufwerks                     |    8 TB               |
 |    Gesamtkapazität                          |    64 TB              |
-|    Insgesamt nutzbare Kapazität*                  |    ~ 42 TB          |
+|    Insgesamt nutzbare Kapazität*                  |    ~ 42 TB            |
 
 **Etwas Speicherplatz ist für die interne Verwendung reserviert.*
 

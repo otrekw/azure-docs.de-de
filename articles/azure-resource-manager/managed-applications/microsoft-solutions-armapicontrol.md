@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: bbe36e072d10b81c421331b2212d8b161afd2693
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdc299ef1945e3ee0810f1c314fc07edfb4f4873
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87094437"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313299"
 ---
-# <a name="microsoftcommonarmapicontrol-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.ArmApiControl“
+# <a name="microsoftsolutionsarmapicontrol-ui-element"></a>Benutzeroberflächenelement „Microsoft.Solutions.ArmApiControl“
 
 Mit „ArmApiControl“ können Sie Ergebnisse aus einem Azure Resource Manager-API-Vorgang abrufen. Mit den Ergebnissen können Sie dynamische Inhalte in anderen Steuerelementen auffüllen.
 
@@ -46,7 +46,14 @@ Die Ausgabe des Steuerelements wird dem Benutzer nicht angezeigt. Stattdessen wi
 ## <a name="remarks"></a>Bemerkungen
 
 - Die `request.method`-Eigenschaft gibt die HTTP-Methode an. Nur `GET` und `POST` sind zulässig.
-- Die `request.path`-Eigenschaft gibt den relativen Pfad der URL an. Dies kann ein statischer Pfad sein, oder er kann dynamisch erstellt werden, indem auf Ausgabewerte der anderen Steuerelemente verwiesen wird.
+- Durch die Eigenschaft `request.path` wird eine URL angegeben, bei der es sich um einen relativen Pfad zu einem ARM-Endpunkt handeln muss. Dies kann ein statischer Pfad sein, oder er kann dynamisch erstellt werden, indem auf Ausgabewerte der anderen Steuerelemente verwiesen wird.
+
+  Beispielsweise ein ARM-Aufruf für den Ressourcenanbieter `Microsoft.Network/expressRouteCircuits`:
+
+  ```json
+  "path": "<subid>/resourceGroup/<resourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<routecircuitName>/?api-version=2020-05-01"
+  ```
+
 - Die `request.body`-Eigenschaft ist optional. Verwenden Sie ihn, um einen JSON-Text anzugeben, der mit der Anforderung gesendet wird. Der Text kann statischer Inhalt sein, oder er kann dynamisch erstellt werden, indem auf Ausgabewerte anderer Steuerelemente verwiesen wird.
 
 ## <a name="example"></a>Beispiel
@@ -81,5 +88,5 @@ Ein Beispiel für die Verwendung von „ArmApiControl“ zum Überprüfen der Ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Einführung zum Erstellen von Benutzeroberflächendefinitionen finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).
-* Eine Beschreibung der allgemeinen Eigenschaften in Benutzeroberflächenelementen finden Sie unter [CreateUiDefinition-Elemente](create-uidefinition-elements.md).
+- Eine Einführung zum Erstellen von Benutzeroberflächendefinitionen finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).
+- Eine Beschreibung der allgemeinen Eigenschaften in Benutzeroberflächenelementen finden Sie unter [CreateUiDefinition-Elemente](create-uidefinition-elements.md).

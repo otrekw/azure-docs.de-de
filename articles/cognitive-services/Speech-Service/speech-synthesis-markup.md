@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 1d21691af4d52892f507695a56331816b14bf517
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966944"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588376"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -27,11 +27,9 @@ Die Speech-Dienstimplementierung von SSML basiert auf der [Markupsprache für Sp
 > [!IMPORTANT]
 > Chinesische, japanische und koreanische Zeichen zählen bei der Abrechnung jeweils als zwei Zeichen. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-## <a name="standard-neural-and-custom-voices"></a>Standard-, neuronale und benutzerdefinierte Stimmen
+## <a name="neural-and-custom-voices"></a>Neuronale und benutzerdefinierte Stimmen
 
-Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie Ihre eigene, benutzerdefinierte Stimme, die einzigartig für Ihr Produkt oder Ihre Marke ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in vier Sprachen und Gebietsschemas verfügbar. Eine vollständige Liste der unterstützten Sprachen, Gebietsschemas und Stimmen (neuronal und Standard) finden Sie unter [Sprachunterstützung](language-support.md).
-
-Weitere Informationen zu Standard-, neuronalen und benutzerdefinierten Stimmen finden Sie unter [Text-to-speech overview](text-to-speech.md) (Übersicht über die Sprachsynthese).
+Verwenden Sie eine menschenähnliche neuronale Stimme, oder erstellen Sie Ihre eigene benutzerdefinierte Stimme speziell für Ihr Produkt oder Ihre Marke. Eine vollständige Liste der unterstützten Sprachen, Gebietsschemas und Stimmen finden Sie unter [Sprach- und Stimmunterstützung für den Speech-Dienst](language-support.md). Weitere Informationen zu neuronalen und benutzerdefinierten Stimmen finden Sie unter [Was ist Text-zu-Sprache?](text-to-speech.md).
 
 
 > [!NOTE]
@@ -194,12 +192,9 @@ speechConfig!.setPropertyTo(
 
 ## <a name="adjust-speaking-styles"></a>Anpassen von Sprechweisen
 
-> [!IMPORTANT]
-> Die Anpassung der Sprechstile funktioniert nur bei neuronalen Stimmen.
+Standardmäßig synthetisiert der Sprachsynthesedienst Text mit einer neutralen Sprechweise für neuronale Stimmen. Mithilfe des Elements `mstts:express-as` können Sie die Sprechweise anpassen, um verschiedene Emotionen wie Fröhlichkeit, Mitgefühl oder Gelassenheit auszudrücken, oder die Stimme für verschiedene Szenarien wie Kundenservice, Nachrichtenpräsentation oder Sprach-Assistent optimieren. Dies ist ein optionales Element und für den Speech-Dienst eindeutig.
 
-Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutralen Sprechweise sowohl bei Standard- als auch neuronalen Stimmen. Bei neuronalen Stimmen können Sie mithilfe des Elements `mstts:express-as` die Sprechweise anpassen, um verschiedene Emotionen wie Fröhlichkeit, Mitgefühl oder Gelassenheit auszudrücken, oder die Stimme für verschiedene Szenarien wie Kundenservice, Nachrichtenpräsentation oder Sprach-Assistent optimieren. Dies ist ein optionales Element und für den Speech-Dienst eindeutig.
-
-Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
+Anpassungen der Sprechweise werden derzeit für folgende neuronale Stimmen unterstützt:
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
@@ -215,11 +210,11 @@ Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterst
 
 Die Intensität der Sprechweise kann weiter verändert werden, damit sie besser zu Ihrem Anwendungsfall passt. Sie können mit `styledegree` eine kräftigere oder sanftere Sprechweise angeben, um die Sprache ausdrucksstärker oder gedämpfter zu gestalten. Zurzeit werden Anpassungen in der Sprechweise der  neuronalen Stimmen für Chinesisch (Mandarin, vereinfacht) unterstützt.
 
-Abgesehen von der Anpassung der Sprechweisen und ihrer Abstufungen können Sie auch den `role`-Parameter anpassen, damit die Stimme ein anderes Alter und Geschlecht imitiert. Beispielsweise kann eine männliche Stimme die Tonhöhe erhöhen und die Intonation so ändern, dass eine weibliche Stimme imitiert wird, aber der Stimmname wird nicht geändert. Aktuell werden Rollenanpassungen dieser neuronalen Stimmen für Chinesisch (Mandarin, vereinfacht) unterstützt:
+Abgesehen von der Anpassung der Sprechweisen und ihrer Abstufungen können Sie auch den `role`-Parameter anpassen, damit die Stimme ein anderes Alter und Geschlecht imitiert. Beispielsweise kann eine männliche Stimme die Tonhöhe erhöhen und die Intonation so ändern, dass eine weibliche Stimme imitiert wird, aber der Stimmname wird nicht geändert. Aktuell werden Rollenanpassungen bei folgenden neuronalen Stimmen für Chinesisch (Mandarin, vereinfacht) unterstützt:
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
-Die voranstehenden Änderungen werden auf Satzebene angewendet, und die Sprechweisen und Rollen variieren je nach Stimme. Wenn eine Sprechweise oder Rolle nicht unterstützt wird, gibt der Dienst Sprache in der neutralen Standardsprechweise zurück. Sie können sehen, welche Sprechweisen und Rollen für jede Stimme unterstützt werden, indem Sie die [Stimmlisten-API](rest-text-to-speech.md#get-a-list-of-voices) oder die Plattform zur codelosen [Audioinhaltserstellung](https://aka.ms/audiocontentcreation) (Audio Content Creation) verwenden.
+Die voranstehenden Änderungen werden auf Satzebene angewendet, und die Sprechweisen und Rollen variieren je nach Stimme. Wenn eine Sprechweise oder Rolle nicht unterstützt wird, gibt der Dienst Sprache in der neutralen Standardsprechweise zurück. Die unterstützten Sprechweisen und Rollen für die jeweilige Stimme können mithilfe der [Stimmlisten-API](rest-text-to-speech.md#get-a-list-of-voices) oder über die codefreie Plattform [Audioinhaltserstellung](https://aka.ms/audiocontentcreation) angezeigt werden.
 
 **Syntax**
 
@@ -631,7 +626,7 @@ Im obigen Beispiel wird das als IPA-Phonemsatz bezeichnete internationale phonet
 
 Da das IPA nicht leicht zu merken ist, definiert der Speech-Dienst einen phonetischen Satz für sieben Sprachen (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN` und `zh-TW`).
 
-Sie können `sapi` wie unten gezeigt als Wert des `alphabet`-Attributs mit benutzerdefinierten Lexika verwenden.
+`sapi` kann wie unten gezeigt als Wert des Attributs `alphabet` mit benutzerdefinierten Lexika verwendet werden:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -717,7 +712,7 @@ Die Sprechgeschwindigkeit kann auf neuronale Stimmen und Standardstimmen auf Wor
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice name="en-US-AriaNeural">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
 </speak>
@@ -1020,7 +1015,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/swift/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>.
+Weitere Informationen finden Sie unter <a href="/objectivec/cognitive-services/speech/spxspeechsynthesizer" target="_blank"> `addBookmarkReachedEventHandler` </a>.
 
 ---
 

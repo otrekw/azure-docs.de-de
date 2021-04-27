@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 76c6d7caf3c63779e12443304688192f7311720a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 43707a99792ae3c4d817f47d770629287b8a774b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594562"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374334"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Monitor
 
@@ -229,7 +229,7 @@ Das Beschränken des Zugriffs wie oben erläutert gilt nicht für Azure Resource
 
 ### <a name="log-analytics-solution-packs-download"></a>Herunterladen von Log Analytics-Lösungspaketen
 
-Damit der Log Analytics-Agent Lösungspakete herunterladen kann, fügen Sie die entsprechenden vollqualifizierten Domänennamen zu Ihrer Zulassungsliste für die Firewall hinzu. 
+Damit der Log Analytics-Agent Lösungspakete herunterladen kann, müssen Sie die entsprechenden vollqualifizierten Domänennamen Ihrer Zulassungsliste für die Firewall hinzufügen. 
 
 
 | Cloudumgebung | Agent-Ressource | Ports | Direction |
@@ -237,6 +237,10 @@ Damit der Log Analytics-Agent Lösungspakete herunterladen kann, fügen Sie die 
 |Azure – Öffentlich     | scadvisorcontent.blob.core.windows.net         | 443 | Ausgehend
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Ausgehend
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Ausgehend
+
+
+>[!NOTE]
+> Ab dem 19. April 2021 ist die obige Einstellung nicht mehr erforderlich, und das Speicherkonto für Lösungspakete ist über die private Verbindung erreichbar. Für die neue Funktion müssen der AMPLS (ab 19. April 2021) und der damit verbundene private Endpunkt neu erstellt werden. Sie gilt nicht für vorhandene AMPLSs und private Endpunkte.
 
 ## <a name="configure-application-insights"></a>Application Insights konfigurieren
 
@@ -246,7 +250,7 @@ Damit der Log Analytics-Agent Lösungspakete herunterladen kann, fügen Sie die 
 
 Erstens können Sie diese Application Insights-Ressource mit den Azure Monitor Private Link-Bereichen verbinden, auf die Sie zugreifen können. Wählen Sie **Hinzufügen** und dann den **Azure Monitor Private Link-Bereich** aus. Wählen Sie „Übernehmen“ aus, um die Verbindung damit herzustellen. Alle verbundenen Bereiche werden in diesem Bildschirm angezeigt. Wenn Sie diese Verbindung herstellen, kann der Netzwerkdatenverkehr in den verbundenen virtuellen Netzwerken diese Komponente erreichen und hat dieselbe Auswirkung wie das Herstellen einer Verbindung vom Bereich aus, wie in [Verbinden von Azure Monitor-Ressourcen](#connect-azure-monitor-resources) beschrieben. 
 
-Zweitens können Sie steuern, wie von außerhalb der oben aufgeführten Private Link-Bereiche (AMPLS) auf diese Ressource zugegriffen werden kann. Wenn Sie **Zugriff auf öffentliche Netzwerke für Erfassung zulassen** auf **Nein** festlegen, können Computer oder SDKs außerhalb der verbundenen Bereiche keine Daten in diese Komponente hochladen. Wenn Sie **Zugriff aus öffentlichen Netzwerken für Abfragen zulassen** auf **Nein** festlegen, können Computer außerhalb der Bereiche nicht auf Daten in dieser Application Insights-Ressource zugreifen. Dies schließt auch den Zugriff auf APM-Protokolle, Metriken, den Livemetrikstream sowie darauf aufsetzende Funktionalität ein, wie z. B. Arbeitsmappen, Dashboards, auf Abfrage-APIs basierende Clientfunktionen, Erkenntnisse im Azure-Portal und vieles mehr. 
+Anschließend können Sie steuern, wie von außerhalb der oben aufgeführten Private Link-Bereiche (AMPLS) auf diese Ressource zugegriffen werden kann. Wenn Sie **Zugriff auf öffentliche Netzwerke für Erfassung zulassen** auf **Nein** festlegen, können Computer oder SDKs außerhalb der verbundenen Bereiche keine Daten in diese Komponente hochladen. Wenn Sie **Zugriff aus öffentlichen Netzwerken für Abfragen zulassen** auf **Nein** festlegen, können Computer außerhalb der Bereiche nicht auf Daten in dieser Application Insights-Ressource zugreifen. Dies schließt auch den Zugriff auf APM-Protokolle, Metriken, den Livemetrikstream sowie darauf aufsetzende Funktionalität ein, wie z. B. Arbeitsmappen, Dashboards, auf Abfrage-APIs basierende Clientfunktionen, Erkenntnisse im Azure-Portal und vieles mehr. 
 
 > [!NOTE]
 > Nicht-Portal-Verbrauchsfunktionen müssen ebenfalls in dem privat verknüpften virtuellen Netzwerk ausgeführt werden, in dem sich die überwachten Workloads befinden.

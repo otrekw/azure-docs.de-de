@@ -1,33 +1,36 @@
 ---
 title: Graph-Suchabfragesyntax
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie mithilfe der Suchabfragesyntax im Azure Machine Learning-Designer nach Knoten im Pipelinegraph suchen.
+description: Hier erfahren Sie, wie Sie mithilfe der Suchabfragesyntax im Azure Machine Learning-Designer nach Knoten im Pipelinegraph suchen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 8/24/2020
-ms.openlocfilehash: 762581ea5b3183d62913e9ea6935bf7e4c4ae67f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: likebupt
+ms.author: keli19
+ms.date: 03/24/2021
+ms.openlocfilehash: 74cf0b897529e8bb198b6f82a57e187662a4a285
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93420766"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259222"
 ---
 # <a name="graph-search-query-syntax"></a>Graph-Suchabfragesyntax
 
-In diesem Artikel erfahren Sie mehr über die Graph-Suchabfragesyntax in Azure Machine Learning. Mit der Graph-Suchfunktion können Sie anhand des Namens und seinen Eigenschaften nach einem Knoten suchen. 
+In diesem Artikel erfahren Sie mehr über die Graph-Suchfunktion in Azure Machine Learning. 
 
- ![Animierter Screenshot mit einem Beispiel für die Graph-Suche](media/search/graph-search.gif)
+Mit der Graph-Suche können Sie schnell durch einen Knoten navigieren, wenn Sie eine Pipeline debuggen oder erstellen. Sie können das Schlüsselwort oder die Abfrage entweder in das Eingabefeld auf der Symbolleiste oder im linken Bereich unter der Registerkarte für die Suche eingeben, um die Suche auszulösen. Alle übereinstimmenden Ergebnisse werden auf der Canvas gelb hervorgehoben. Wenn Sie im linken Bereich ein Ergebnis auswählen, wird der Knoten auf der Canvas rot hervorgehoben.
 
-Die Graph-Suche unterstützt Volltext-Schlüsselwortsuche nach Knotennamen und Kommentaren. Sie können auch nach Knoteneigenschaften filtern, z. B. nach runStatus, duration, computeTarget. Die Schlüsselwortsuche basiert auf Lucene-Abfragen. Eine vollständige Suchabfrage sieht wie folgt aus:  
+![Screenshot: Beispiel für die Graph-Suche](media/search/graph-search-0322.png)
 
-**[Lucene-Abfrage | [Filterabfrage]** 
+Die Graph-Suche unterstützt Volltext-Schlüsselwortsuche nach Knotennamen und Kommentaren. Sie können auch nach Knoteneigenschaften wie „runStatus“, „duration“ oder „computeTarget“ filtern. Die Schlüsselwortsuche basiert auf Lucene-Abfragen. Eine vollständige Suchabfrage sieht wie folgt aus:  
+
+**[[Lucene-Abfrage] | [Filterabfrage]]** 
 
 Sie können die Lucene-Abfrage oder die Filterabfrage verwenden. Um beide Abfragen zu verwenden, verwenden Sie das Trennzeichen **|** . Die Syntax der Filterabfrage ist strenger als für Lucene-Abfragen. Wenn die Kundeneingabe mit beiden Abfragen analysiert werden kann, wird daher die Filterabfrage angewendet.
 
+`data OR model | compute in {cpucluster}` dient beispielsweise dazu, nach Knoten zu suchen, deren Name oder Kommentar `data` oder `model` enthält und bei denen „compute“ auf „cpucluster“ festgelegt ist.
  
 
 ## <a name="lucene-query"></a>Lucene-Abfrage
@@ -68,6 +71,8 @@ Die folgenden Knoteneigenschaften können als Schlüssel verwendet werden:
 - compute
 - duration
 - reuse
+- Veröffentlichen
+- tags
 
 Folgende Operatoren können verwendet werden:
 

@@ -7,18 +7,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-ms.openlocfilehash: d5af0cc4eb72a2db850e19e47ed11cd9f6f4536e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e70b899ea0133704e4ecab42dd4c2a09bca41804
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061858"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226310"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Virtuelles Netzwerkgerät in einem Azure Virtual WAN-Hub (Vorschauversion)
 
 Für Azure Virtual WAN wurde in Zusammenarbeit mit Netzwerkpartnern eine Automatisierung erstellt, mit der Geräte in der Kundenumgebung (Customer Premises Equipment, CPE) ganz einfach mit einem Azure-VPN-Gateway im virtuellen Hub verbunden werden können. Azure arbeitet mit ausgewählten Netzwerkpartnern zusammen, um Kunden die direkte Bereitstellung eines virtuellen Netzwerkgeräts (Network Virtual Appliance, NVA) von einem Drittanbieter im virtuellen Hub zu ermöglichen. Dadurch können Kunden ihr Zweigniederlassungs-CPE mit dem gleichen Marken-NVA im virtuellen Hub verbinden und so proprietäre End-to-End-SD-WAN-Funktionen nutzen.
 
-Barracuda Networks und Cisco Systems sind die ersten Partner, die NVAs bereitstellen, die direkt auf dem Virtual WAN-Hub bereitgestellt werden können.  Unter [Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan) und [Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) finden Sie die jeweilige Produktdokumentation. Azure arbeitet mit mehreren Partnern zusammen, sodass weitere Angebote folgen werden.
+Barracuda Networks und Cisco Systems sind die ersten Partner, die NVAs bereitstellen, die direkt auf dem Virtual WAN-Hub bereitgestellt werden können.  Die jeweilige Produktdokumentation finden Sie unter [Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan), [Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) und [VMware SD-WAN](https://kb.vmware.com/s/article/82746). Azure arbeitet mit mehreren Partnern zusammen, sodass weitere Angebote folgen werden.
 
 > [!NOTE]
 > Nur NVA-Angebote, die zur Bereitstellung im Virtual WAN-Hub verfügbar sind, können im Virtual WAN-Hub bereitgestellt werden. Sie können nicht in einem beliebigen virtuellen Netzwerk in Azure bereitgestellt werden.

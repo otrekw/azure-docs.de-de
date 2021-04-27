@@ -4,19 +4,19 @@ description: Lesen Sie die Beschreibungen der Warnungen zu Defender für IoT.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 03/22/2021
+ms.date: 4/8/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3c4cc5f7bb9f0c529e603b91ee96c6c1c476f20d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 9ef7aa388d0f25adcafec1cb4a5b38dcfb8597a1
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787465"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210464"
 ---
-# <a name="defender-for-iot-engine-alerts"></a>Warnungen der Defender für IoT-Engine
+# <a name="alert-types-and-descriptions"></a>Warnungstypen und -beschreibungen
 
-In diesem Artikel werden Warnungen beschrieben, die von den Defender für IoT-Engines generiert werden können. Warnungen werden im Fenster „Warnungen“ angezeigt, in dem Sie das Warnungsereignis verwalten können. 
+In diesem Artikel werden sämtliche Warnungstypen beschrieben, die von den Defender für IoT-Engines generiert werden können. Warnungen werden im Fenster „Warnungen“ angezeigt. Dort können Sie das Warnungsereignis verwalten. 
 
 ## <a name="policy-engine-alerts"></a>Warnungen der Richtlinien-Engine
 

@@ -7,22 +7,22 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: ba5340fdc12bf3141c5e3f24b6b9d178a5db600d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4e559ea1e531e2d472faeef60ebc6d528da0cfd0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602518"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307927"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
-Die auf [Azure-Rollen basierte Zugriffssteuerung (Azure RBAC)](overview.md) verfügt über mehrere integrierte Azure-Rollen, die Sie Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten zuweisen können. Durch Rollenzuweisungen wird die Art und Weise gesteuert, wie Sie auf Azure-Ressourcen zugreifen. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Azure-Rollen](custom-roles.md) erstellen.
+Die auf [Azure-Rollen basierte Zugriffssteuerung (Azure RBAC)](overview.md) verfügt über mehrere integrierte Azure-Rollen, die Sie Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten zuweisen können. Durch Rollenzuweisungen wird die Art und Weise gesteuert, wie Sie auf Azure-Ressourcen zugreifen. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Azure-Rollen](custom-roles.md) erstellen. Informationen zum Zuweisen von Rollen finden Sie unter [Schritte zum Zuweisen einer Azure-Rolle](role-assignments-steps.md).
 
-Dieser Artikel enthält eine Liste der integrierten Azure-Rollen, die ständig weiterentwickelt werden. Verwenden Sie zum Abrufen der aktuellen Rollen [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) oder [az role definition list](/cli/azure/role/definition#az-role-definition-list). Eine Liste mit Administratorrollen für Azure Active Directory (Azure AD) finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/roles/permissions-reference.md).
+In diesem Artikel werden die integrierten Azure-Rollen aufgeführt. Administratorrollen für Azure Active Directory (Azure AD) finden Sie unter [Integrierte Rollen in Azure AD](../active-directory/roles/permissions-reference.md).
 
-Die folgende Tabelle enthält eine kurze Beschreibung und die eindeutige ID aller integrierten Rollen. Klicken Sie auf den Rollennamen, um die Liste der `Actions`, `NotActions`, `DataActions` und `NotDataActions` für jede Rolle anzuzeigen. Informationen zur Bedeutung dieser Aktionen und deren Anwendung auf die Verwaltung und Datenebenen finden Sie unter [Grundlegendes zu Azure-Rollendefinitionen](role-definitions.md).
+Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen. Klicken Sie auf den Rollennamen, um die Liste der `Actions`, `NotActions`, `DataActions` und `NotDataActions` für jede Rolle anzuzeigen. Informationen zur Bedeutung dieser Aktionen und deren Anwendung auf die Verwaltung und Datenebenen finden Sie unter [Grundlegendes zu Azure-Rollendefinitionen](role-definitions.md).
 
 ## <a name="all"></a>All
 
@@ -77,6 +77,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung und die eindeutige ID alle
 > | **Web** |  |  |
 > | [Azure Maps-Datenmitwirkender](#azure-maps-data-contributor) | Gewährt Lese-, Schreib- und Löschzugriff auf kartenbezogene Daten von einem Azure Maps-Konto. | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
 > | [Azure Maps-Datenleser](#azure-maps-data-reader) | Gewährt Lesezugriff auf kartenbezogene Daten von einem Azure Maps-Konto. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Azure Spring Cloud-Datenleser](#azure-spring-cloud-data-reader) | Gewährt Lesezugriff auf Azure Spring Cloud-Daten. | b5537268-8956-4941-a8f0-646150406f0c |
 > | [Mitwirkender von Suchdienst](#search-service-contributor) | Ermöglicht Ihnen das Verwalten von Search-Diensten, nicht aber den Zugriff darauf. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [SignalR-AccessKey-Leser](#signalr-accesskey-reader) | Ermöglicht das Lesen von SignalR Service-Zugriffsschlüsseln. | 04165923-9d83-45d5-8227-78b77b0a687e |
 > | [SignalR-App-Server (Vorschau)](#signalr-app-server-preview) | Ermöglicht Ihrem App-Server den Zugriff auf SignalR Service mit AAD-Authentifizierungsoptionen. | 420fcaa2-552c-430f-98ca-3264be4806c7 |
@@ -181,6 +182,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung und die eindeutige ID alle
 > | **Security** |  |  |
 > | [Attestation-Mitwirkender](#attestation-contributor) | Lesen, Schreiben oder Löschen der Nachweisanbieterinstanz | bbf86eb8-f7b4-4cce-96e4-18cddf81d86e |
 > | [Attestation-Leser](#attestation-reader) | Lesen der Eigenschaften des Nachweisanbieters | fd1bd22b-8476-40bc-a0bc-69b95687b9f3 |
+> | [Mitwirkender für Azure Sentinel-Automatisierung](#azure-sentinel-automation-contributor) | Mitwirkender für Azure Sentinel-Automatisierung | f4c81013-99ee-4d62-a7ee-b3f1f648599a |
 > | [Azure Sentinel-Mitwirkender](#azure-sentinel-contributor) | Azure Sentinel-Mitwirkender | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel-Leser](#azure-sentinel-reader) | Azure Sentinel-Leser | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel-Antwortender](#azure-sentinel-responder) | Azure Sentinel-Antwortender | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
@@ -213,6 +215,11 @@ Die folgende Tabelle enthält eine kurze Beschreibung und die eindeutige ID alle
 > | [Automation-Auftragsoperator](#automation-job-operator) | Hiermit werden Aufträge mithilfe von Automation-Runbooks erstellt und verwaltet. | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | [Operator für Automation](#automation-operator) | Automatisierungsoperatoren können Aufträge starten, beenden, anhalten und fortsetzen. | d3881f73-407a-4167-8283-e981cbba0404 |
 > | [Automation-Runbookoperator](#automation-runbook-operator) | Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
+> | [Benutzerrolle für Azure Arc-aktivierte Kubernetes-Cluster](#azure-arc-enabled-kubernetes-cluster-user-role) | Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers. | 00493d72-78f6-4148-b6c5-d3ce8e4799dd |
+> | [Azure Arc Kubernetes-Administrator](#azure-arc-kubernetes-admin) | Ermöglicht Ihnen das Verwalten aller Ressourcen unter einem Cluster/Namespace, außer das Aktualisieren oder Löschen von Ressourcenkontingenten und Namespaces. | dffb1e0c-446f-4dde-a09f-99eb5cc68b96 |
+> | [Azure Arc Kubernetes-Clusteradministrator](#azure-arc-kubernetes-cluster-admin) | Ermöglicht Ihnen das Verwalten aller Ressourcen im Cluster. | 8393591c-06b9-48a2-a542-1bd6b377f6a2 |
+> | [Anzeigeberechtigter für Azure Arc Kubernetes](#azure-arc-kubernetes-viewer) | Ermöglicht Ihnen das Anzeigen aller Ressourcen im Cluster/Namespace mit Ausnahme von Geheimnissen. | 63f0a09d-1495-4db4-a681-037d84835eb4 |
+> | [Schreibberechtigter für Azure Arc Kubernetes](#azure-arc-kubernetes-writer) | Mit dieser Rolle können Sie alle Elemente im Cluster oder Namespace aktualisieren, mit Ausnahme von Rollen (Clusterrollen) und Rollenbindungen (Clusterrollenbindungen). | 5b999177-9696-4545-85c7-50de3797e5a1 |
 > | [Onboarding von Azure Connected Machine](#azure-connected-machine-onboarding) | Kann Azure Connected Machine integrieren. | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
 > | [Ressourcenadministrator für Azure Connected Machine](#azure-connected-machine-resource-administrator) | Kann Azure Connected Machines lesen, schreiben, löschen und erneut integrieren. | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | [Abrechnungsleser](#billing-reader) | Hiermit wird Lesezugriff auf Abrechnungsdaten ermöglicht. | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
@@ -230,7 +237,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung und die eindeutige ID alle
 > | [Verwaltungsgruppenleser](#management-group-reader) | Rolle „Verwaltungsgruppenleser“ | ac63b705-F282-497d-ac71-919bf39d939d |
 > | [Mitwirkender von New Relic APM-Konto](#new-relic-apm-account-contributor) | Ermöglicht Ihnen das Verwalten von New Relic Application Performance Management-Konten und -Anwendungen, nicht aber den Zugriff auf diese. | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | [Policy Insights-Datenschreiber (Vorschau)](#policy-insights-data-writer-preview) | Ermöglicht Lesezugriff auf Ressourcenrichtlinien und Schreibzugriff auf Richtlinienereignisse für Ressourcenkomponenten. | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
-> | [Rolle „Kontingentanforderungsoperator“](#quota-request-operator-role) | Liest und erstellt Kontingentanforderungen, ruft den Status von Kontingentanforderungen ab und erstellt Supporttickets. | 0e5f05e5-9ab9-446b-b98d-1e2157c94125 |
+> | [Kontingentanforderungsoperator](#quota-request-operator) | Liest und erstellt Kontingentanforderungen, ruft den Status von Kontingentanforderungen ab und erstellt Supporttickets. | 0e5f05e5-9ab9-446b-b98d-1e2157c94125 |
 > | [Reservierungseinkäufer](#reservation-purchaser) | Ermöglicht den Kauf von Reservierungen | f7b75c60-3036-4b75-91c3-6b41c27c1689 |
 > | [Mitwirkender bei Ressourcenrichtlinien](#resource-policy-contributor) | Benutzer mit Rechten zum Erstellen/Ändern der Ressourcenrichtlinie, zum Erstellen eines Supporttickets und zum Lesen von Ressourcen/der Hierarchie. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Site Recovery-Mitwirkender](#site-recovery-contributor) | Ermöglicht Ihnen die Verwaltung des Site Recovery-Diensts mit Ausnahme der Tresorerstellung und der Rollenzuweisung. | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
@@ -2732,6 +2739,45 @@ Gewährt Lesezugriff auf kartenbezogene Daten von einem Azure Maps-Konto. [Weite
 }
 ```
 
+### <a name="azure-spring-cloud-data-reader"></a>Azure Spring Cloud-Datenleser
+
+Gewährt Lesezugriff auf Azure Spring Cloud-Daten. [Weitere Informationen](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/*/read |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allow read access to Azure Spring Cloud Data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b5537268-8956-4941-a8f0-646150406f0c",
+  "name": "b5537268-8956-4941-a8f0-646150406f0c",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.AppPlatform/Spring/*/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Spring Cloud Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="search-service-contributor"></a>Mitwirkender von Suchdienst
 
 Ermöglicht Ihnen das Verwalten von Search-Diensten, nicht aber den Zugriff darauf. [Weitere Informationen](../search/search-security-rbac.md)
@@ -2970,6 +3016,8 @@ Bietet Vollzugriff auf Azure SignalR Service-REST-APIs.
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | Generiert einen temporären AccessKey zum Signieren von Clienttoken. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | Generiert ein ClientToken zum Starten einer Clientverbindung. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/hub/send/action | Überträgt Nachrichten an alle Clientverbindungen im Hub. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/send/action | Überträgt eine Nachricht an eine Gruppe. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | Überprüft die Existenz einer Gruppe oder die Existenz eines Benutzers in einer Gruppe. |
@@ -2979,7 +3027,7 @@ Bietet Vollzugriff auf Azure SignalR Service-REST-APIs.
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/write | Schließt die Clientverbindung. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/send/action | Sendet Nachrichten an einen Benutzer (umfasst möglicherweise mehrere Clientverbindungen). |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | Überprüft, ob Benutzer vorhanden sind. |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/write |  |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/write | Dient zum Ändern eines Benutzers. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -2996,6 +3044,8 @@ Bietet Vollzugriff auf Azure SignalR Service-REST-APIs.
       "actions": [],
       "notActions": [],
       "dataActions": [
+        "Microsoft.SignalRService/SignalR/auth/accessKey/action",
+        "Microsoft.SignalRService/SignalR/auth/clientToken/action",
         "Microsoft.SignalRService/SignalR/hub/send/action",
         "Microsoft.SignalRService/SignalR/group/send/action",
         "Microsoft.SignalRService/SignalR/group/read",
@@ -7758,6 +7808,51 @@ Lesen der Eigenschaften des Nachweisanbieters. [Weitere Informationen](../attest
 }
 ```
 
+### <a name="azure-sentinel-automation-contributor"></a>Mitwirkender für Azure Sentinel-Automatisierung
+
+Mitwirkender für Azure Sentinel-Automatisierung. [Weitere Informationen](../sentinel/roles.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/triggers/read | Liest den Trigger. |
+> | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/triggers/listCallbackUrl/action | Ruft die Rückruf-URL für Trigger ab. |
+> | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/runs/read | Liest die Workflowausführung. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Azure Sentinel Automation Contributor",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+  "name": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Logic/workflows/triggers/read",
+        "Microsoft.Logic/workflows/triggers/listCallbackUrl/action",
+        "Microsoft.Logic/workflows/runs/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Sentinel Automation Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="azure-sentinel-contributor"></a>Azure Sentinel-Mitwirkender
 
 Azure Sentinel-Mitwirkender [Weitere Informationen](../sentinel/roles.md)
@@ -9484,6 +9579,449 @@ Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. [We
 }
 ```
 
+### <a name="azure-arc-enabled-kubernetes-cluster-user-role"></a>Benutzerrolle für Azure Arc-aktivierte Kubernetes-Cluster
+
+Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | Erstellt oder aktualisiert eine Bereitstellung. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | Dient zum Abrufen der Ergebnisse des Abonnementvorgangs. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | Ruft die Abonnementliste ab. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/listClusterUserCredentials/action | Listet clusterUser-Anmeldeinformationen auf. |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "List cluster user credentials action.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/00493d72-78f6-4148-b6c5-d3ce8e4799dd",
+  "name": "00493d72-78f6-4148-b6c5-d3ce8e4799dd",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Kubernetes/connectedClusters/listClusterUserCredentials/action",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Arc Enabled Kubernetes Cluster User Role",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-arc-kubernetes-admin"></a>Azure Arc Kubernetes-Administrator
+
+Ermöglicht Ihnen das Verwalten aller Ressourcen unter einem Cluster/Namespace, außer das Aktualisieren oder Löschen von Ressourcenkontingenten und Namespaces. [Weitere Informationen](../azure-arc/kubernetes/azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | Erstellt oder aktualisiert eine Bereitstellung. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | Dient zum Abrufen der Ergebnisse des Abonnementvorgangs. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | Ruft die Abonnementliste ab. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/controllerrevisions/read | Liest controllerrevisions. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/daemonsets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/deployments/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/replicasets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/statefulsets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/authorization.k8s.io/localsubjectaccessreviews/write | Schreibt localsubjectaccessreviews. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/autoscaling/horizontalpodautoscalers/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/batch/cronjobs/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/batch/jobs/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/configmaps/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/endpoints/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events.k8s.io/events/read | Liest events. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events/read | Liest events. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/daemonsets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/deployments/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/ingresses/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/networkpolicies/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/replicasets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/limitranges/read | Liest limitranges. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/namespaces/read | Liest namespaces. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/networking.k8s.io/ingresses/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/networking.k8s.io/networkpolicies/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/persistentvolumeclaims/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/pods/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/policy/poddisruptionbudgets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/rbac.authorization.k8s.io/rolebindings/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/rbac.authorization.k8s.io/roles/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/replicationcontrollers/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/replicationcontrollers/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/resourcequotas/read | Liest resourcequotas. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/secrets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/serviceaccounts/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/services/* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage all resources under cluster/namespace, except update or delete resource quotas and namespaces.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/dffb1e0c-446f-4dde-a09f-99eb5cc68b96",
+  "name": "dffb1e0c-446f-4dde-a09f-99eb5cc68b96",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Kubernetes/connectedClusters/apps/controllerrevisions/read",
+        "Microsoft.Kubernetes/connectedClusters/apps/daemonsets/*",
+        "Microsoft.Kubernetes/connectedClusters/apps/deployments/*",
+        "Microsoft.Kubernetes/connectedClusters/apps/replicasets/*",
+        "Microsoft.Kubernetes/connectedClusters/apps/statefulsets/*",
+        "Microsoft.Kubernetes/connectedClusters/authorization.k8s.io/localsubjectaccessreviews/write",
+        "Microsoft.Kubernetes/connectedClusters/autoscaling/horizontalpodautoscalers/*",
+        "Microsoft.Kubernetes/connectedClusters/batch/cronjobs/*",
+        "Microsoft.Kubernetes/connectedClusters/batch/jobs/*",
+        "Microsoft.Kubernetes/connectedClusters/configmaps/*",
+        "Microsoft.Kubernetes/connectedClusters/endpoints/*",
+        "Microsoft.Kubernetes/connectedClusters/events.k8s.io/events/read",
+        "Microsoft.Kubernetes/connectedClusters/events/read",
+        "Microsoft.Kubernetes/connectedClusters/extensions/daemonsets/*",
+        "Microsoft.Kubernetes/connectedClusters/extensions/deployments/*",
+        "Microsoft.Kubernetes/connectedClusters/extensions/ingresses/*",
+        "Microsoft.Kubernetes/connectedClusters/extensions/networkpolicies/*",
+        "Microsoft.Kubernetes/connectedClusters/extensions/replicasets/*",
+        "Microsoft.Kubernetes/connectedClusters/limitranges/read",
+        "Microsoft.Kubernetes/connectedClusters/namespaces/read",
+        "Microsoft.Kubernetes/connectedClusters/networking.k8s.io/ingresses/*",
+        "Microsoft.Kubernetes/connectedClusters/networking.k8s.io/networkpolicies/*",
+        "Microsoft.Kubernetes/connectedClusters/persistentvolumeclaims/*",
+        "Microsoft.Kubernetes/connectedClusters/pods/*",
+        "Microsoft.Kubernetes/connectedClusters/policy/poddisruptionbudgets/*",
+        "Microsoft.Kubernetes/connectedClusters/rbac.authorization.k8s.io/rolebindings/*",
+        "Microsoft.Kubernetes/connectedClusters/rbac.authorization.k8s.io/roles/*",
+        "Microsoft.Kubernetes/connectedClusters/replicationcontrollers/*",
+        "Microsoft.Kubernetes/connectedClusters/replicationcontrollers/*",
+        "Microsoft.Kubernetes/connectedClusters/resourcequotas/read",
+        "Microsoft.Kubernetes/connectedClusters/secrets/*",
+        "Microsoft.Kubernetes/connectedClusters/serviceaccounts/*",
+        "Microsoft.Kubernetes/connectedClusters/services/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Arc Kubernetes Admin",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-arc-kubernetes-cluster-admin"></a>Azure Arc Kubernetes-Clusteradministrator
+
+Ermöglicht Ihnen das Verwalten aller Ressourcen im Cluster. [Weitere Informationen](../azure-arc/kubernetes/azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | Erstellt oder aktualisiert eine Bereitstellung. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | Dient zum Abrufen der Ergebnisse des Abonnementvorgangs. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | Ruft die Abonnementliste ab. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage all resources in the cluster.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8393591c-06b9-48a2-a542-1bd6b377f6a2",
+  "name": "8393591c-06b9-48a2-a542-1bd6b377f6a2",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Kubernetes/connectedClusters/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Arc Kubernetes Cluster Admin",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-arc-kubernetes-viewer"></a>Anzeigeberechtigter für Azure Arc Kubernetes
+
+Ermöglicht Ihnen das Anzeigen aller Ressourcen im Cluster/Namespace mit Ausnahme von Geheimnissen. [Weitere Informationen](../azure-arc/kubernetes/azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | Erstellt oder aktualisiert eine Bereitstellung. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | Dient zum Abrufen der Ergebnisse des Abonnementvorgangs. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | Ruft die Abonnementliste ab. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/controllerrevisions/read | Liest controllerrevisions. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/daemonsets/read | Liest daemonsets. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/deployments/read | Liest deployments. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/replicasets/read | Liest replicasets. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/statefulsets/read | Liest statefulsets. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/autoscaling/horizontalpodautoscalers/read | Liest horizontalpodautoscalers. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/batch/cronjobs/read | Liest cronjobs. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/batch/jobs/read | Liest jobs. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/configmaps/read | Liest configmaps. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/endpoints/read | Liest endpoints. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events.k8s.io/events/read | Liest events. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events/read | Liest events. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/daemonsets/read | Liest daemonsets. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/deployments/read | Liest deployments. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/ingresses/read | Liest ingresses. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/networkpolicies/read | Liest networkpolicies. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/replicasets/read | Liest replicasets. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/limitranges/read | Liest limitranges. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/namespaces/read | Liest namespaces. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/networking.k8s.io/ingresses/read | Liest ingresses. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/networking.k8s.io/networkpolicies/read | Liest networkpolicies. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/persistentvolumeclaims/read | Liest persistentvolumeclaims. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/pods/read | Liest pods. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/policy/poddisruptionbudgets/read | Liest poddisruptionbudgets. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/replicationcontrollers/read | Liest replicationcontrollers. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/replicationcontrollers/read | Liest replicationcontrollers. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/resourcequotas/read | Liest resourcequotas. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/serviceaccounts/read | Liest serviceaccounts. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/services/read | Liest services. |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you view all resources in cluster/namespace, except secrets.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/63f0a09d-1495-4db4-a681-037d84835eb4",
+  "name": "63f0a09d-1495-4db4-a681-037d84835eb4",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Kubernetes/connectedClusters/apps/controllerrevisions/read",
+        "Microsoft.Kubernetes/connectedClusters/apps/daemonsets/read",
+        "Microsoft.Kubernetes/connectedClusters/apps/deployments/read",
+        "Microsoft.Kubernetes/connectedClusters/apps/replicasets/read",
+        "Microsoft.Kubernetes/connectedClusters/apps/statefulsets/read",
+        "Microsoft.Kubernetes/connectedClusters/autoscaling/horizontalpodautoscalers/read",
+        "Microsoft.Kubernetes/connectedClusters/batch/cronjobs/read",
+        "Microsoft.Kubernetes/connectedClusters/batch/jobs/read",
+        "Microsoft.Kubernetes/connectedClusters/configmaps/read",
+        "Microsoft.Kubernetes/connectedClusters/endpoints/read",
+        "Microsoft.Kubernetes/connectedClusters/events.k8s.io/events/read",
+        "Microsoft.Kubernetes/connectedClusters/events/read",
+        "Microsoft.Kubernetes/connectedClusters/extensions/daemonsets/read",
+        "Microsoft.Kubernetes/connectedClusters/extensions/deployments/read",
+        "Microsoft.Kubernetes/connectedClusters/extensions/ingresses/read",
+        "Microsoft.Kubernetes/connectedClusters/extensions/networkpolicies/read",
+        "Microsoft.Kubernetes/connectedClusters/extensions/replicasets/read",
+        "Microsoft.Kubernetes/connectedClusters/limitranges/read",
+        "Microsoft.Kubernetes/connectedClusters/namespaces/read",
+        "Microsoft.Kubernetes/connectedClusters/networking.k8s.io/ingresses/read",
+        "Microsoft.Kubernetes/connectedClusters/networking.k8s.io/networkpolicies/read",
+        "Microsoft.Kubernetes/connectedClusters/persistentvolumeclaims/read",
+        "Microsoft.Kubernetes/connectedClusters/pods/read",
+        "Microsoft.Kubernetes/connectedClusters/policy/poddisruptionbudgets/read",
+        "Microsoft.Kubernetes/connectedClusters/replicationcontrollers/read",
+        "Microsoft.Kubernetes/connectedClusters/replicationcontrollers/read",
+        "Microsoft.Kubernetes/connectedClusters/resourcequotas/read",
+        "Microsoft.Kubernetes/connectedClusters/serviceaccounts/read",
+        "Microsoft.Kubernetes/connectedClusters/services/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Arc Kubernetes Viewer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-arc-kubernetes-writer"></a>Schreibberechtigter für Azure Arc Kubernetes
+
+Mit dieser Rolle können Sie alle Elemente im Cluster oder Namespace aktualisieren, mit Ausnahme von Rollen (Clusterrollen) und Rollenbindungen (Clusterrollenbindungen). [Weitere Informationen](../azure-arc/kubernetes/azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | Erstellt oder aktualisiert eine Bereitstellung. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | Dient zum Abrufen der Ergebnisse des Abonnementvorgangs. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | Ruft die Abonnementliste ab. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/controllerrevisions/read | Liest controllerrevisions. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/daemonsets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/deployments/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/replicasets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/statefulsets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/autoscaling/horizontalpodautoscalers/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/batch/cronjobs/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/batch/jobs/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/configmaps/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/endpoints/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events.k8s.io/events/read | Liest events. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events/read | Liest events. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/daemonsets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/deployments/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/ingresses/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/networkpolicies/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/replicasets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/limitranges/read | Liest limitranges. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/namespaces/read | Liest namespaces. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/networking.k8s.io/ingresses/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/networking.k8s.io/networkpolicies/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/persistentvolumeclaims/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/pods/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/policy/poddisruptionbudgets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/replicationcontrollers/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/replicationcontrollers/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/resourcequotas/read | Liest resourcequotas. |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/secrets/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/serviceaccounts/* |  |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/services/* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you update everything in cluster/namespace, except (cluster)roles and (cluster)role bindings.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/5b999177-9696-4545-85c7-50de3797e5a1",
+  "name": "5b999177-9696-4545-85c7-50de3797e5a1",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Kubernetes/connectedClusters/apps/controllerrevisions/read",
+        "Microsoft.Kubernetes/connectedClusters/apps/daemonsets/*",
+        "Microsoft.Kubernetes/connectedClusters/apps/deployments/*",
+        "Microsoft.Kubernetes/connectedClusters/apps/replicasets/*",
+        "Microsoft.Kubernetes/connectedClusters/apps/statefulsets/*",
+        "Microsoft.Kubernetes/connectedClusters/autoscaling/horizontalpodautoscalers/*",
+        "Microsoft.Kubernetes/connectedClusters/batch/cronjobs/*",
+        "Microsoft.Kubernetes/connectedClusters/batch/jobs/*",
+        "Microsoft.Kubernetes/connectedClusters/configmaps/*",
+        "Microsoft.Kubernetes/connectedClusters/endpoints/*",
+        "Microsoft.Kubernetes/connectedClusters/events.k8s.io/events/read",
+        "Microsoft.Kubernetes/connectedClusters/events/read",
+        "Microsoft.Kubernetes/connectedClusters/extensions/daemonsets/*",
+        "Microsoft.Kubernetes/connectedClusters/extensions/deployments/*",
+        "Microsoft.Kubernetes/connectedClusters/extensions/ingresses/*",
+        "Microsoft.Kubernetes/connectedClusters/extensions/networkpolicies/*",
+        "Microsoft.Kubernetes/connectedClusters/extensions/replicasets/*",
+        "Microsoft.Kubernetes/connectedClusters/limitranges/read",
+        "Microsoft.Kubernetes/connectedClusters/namespaces/read",
+        "Microsoft.Kubernetes/connectedClusters/networking.k8s.io/ingresses/*",
+        "Microsoft.Kubernetes/connectedClusters/networking.k8s.io/networkpolicies/*",
+        "Microsoft.Kubernetes/connectedClusters/persistentvolumeclaims/*",
+        "Microsoft.Kubernetes/connectedClusters/pods/*",
+        "Microsoft.Kubernetes/connectedClusters/policy/poddisruptionbudgets/*",
+        "Microsoft.Kubernetes/connectedClusters/replicationcontrollers/*",
+        "Microsoft.Kubernetes/connectedClusters/replicationcontrollers/*",
+        "Microsoft.Kubernetes/connectedClusters/resourcequotas/read",
+        "Microsoft.Kubernetes/connectedClusters/secrets/*",
+        "Microsoft.Kubernetes/connectedClusters/serviceaccounts/*",
+        "Microsoft.Kubernetes/connectedClusters/services/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Arc Kubernetes Writer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="azure-connected-machine-onboarding"></a>Onboarding von Azure Connected Machine
 
 Kann Azure Connected Machine integrieren. [Weitere Informationen](../azure-arc/servers/onboard-service-principal.md)
@@ -9493,6 +10031,7 @@ Kann Azure Connected Machine integrieren. [Weitere Informationen](../azure-arc/s
 > | --- | --- |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | Liest einen beliebigen Azure Arc-Computer. |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Schreibt auf einem Azure Arc-Computer |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/privateLinkScopes/read | Ermöglicht das Lesen beliebiger Private Link-Bereiche von Azure Arc. |
 > | [Microsoft.GuestConfiguration](resource-provider-operations.md#microsoftguestconfiguration)/guestConfigurationAssignments/read | Abrufen der Zuweisung der Gastkonfiguration |
 > | **NotActions** |  |
 > | *keine* |  |
@@ -9514,6 +10053,7 @@ Kann Azure Connected Machine integrieren. [Weitere Informationen](../azure-arc/s
       "actions": [
         "Microsoft.HybridCompute/machines/read",
         "Microsoft.HybridCompute/machines/write",
+        "Microsoft.HybridCompute/privateLinkScopes/read",
         "Microsoft.GuestConfiguration/guestConfigurationAssignments/read"
       ],
       "notActions": [],
@@ -9537,8 +10077,8 @@ Kann Azure Connected Machines lesen, schreiben, löschen und erneut integrieren.
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | Liest einen beliebigen Azure Arc-Computer. |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Schreibt auf einem Azure Arc-Computer |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | Löscht einen Azure Arc-Computer |
-> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/reconnect/action |  |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | Installiert oder aktualisiert eine Azure Arc-Erweiterung |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/privateLinkScopes/* |  |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/read |  |
 > | **NotActions** |  |
 > | *keine* |  |
@@ -9561,8 +10101,8 @@ Kann Azure Connected Machines lesen, schreiben, löschen und erneut integrieren.
         "Microsoft.HybridCompute/machines/read",
         "Microsoft.HybridCompute/machines/write",
         "Microsoft.HybridCompute/machines/delete",
-        "Microsoft.HybridCompute/machines/reconnect/action",
         "Microsoft.HybridCompute/machines/extensions/write",
+        "Microsoft.HybridCompute/privateLinkScopes/*",
         "Microsoft.HybridCompute/*/read"
       ],
       "notActions": [],
@@ -10297,7 +10837,7 @@ Ermöglicht Lesezugriff auf Ressourcenrichtlinien und Schreibzugriff auf Richtli
 }
 ```
 
-### <a name="quota-request-operator-role"></a>Rolle „Kontingentanforderungsoperator“
+### <a name="quota-request-operator"></a>Kontingentanforderungsoperator
 
 Liest und erstellt Kontingentanforderungen, ruft den Status von Kontingentanforderungen ab und erstellt Supporttickets. [Weitere Informationen](/rest/api/reserved-vm-instances/quotaapi)
 
@@ -10325,7 +10865,7 @@ Liest und erstellt Kontingentanforderungen, ruft den Status von Kontingentanford
   "assignableScopes": [
     "/"
   ],
-  "description": "Role to read and create Quota Requests and get Quota Request Status.",
+  "description": "Read and create quota requests, get quota request status, and create support tickets.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0e5f05e5-9ab9-446b-b98d-1e2157c94125",
   "name": "0e5f05e5-9ab9-446b-b98d-1e2157c94125",
   "permissions": [
@@ -10346,7 +10886,7 @@ Liest und erstellt Kontingentanforderungen, ruft den Status von Kontingentanford
       "notDataActions": []
     }
   ],
-  "roleName": "Quota Request Operator Role",
+  "roleName": "Quota Request Operator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -11859,6 +12399,6 @@ Berechtigungen für sämtliche Lese-, Schreib- und Löschvorgänge im Zusammenha
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Zuordnung von Ressourcenanbieter zu Dienst](../azure-resource-manager/management/azure-services-resource-providers.md)
+- [Zuweisen von Azure-Rollen über das Azure-Portal](role-assignments-portal.md)
 - [Benutzerdefinierte Azure-Rollen](custom-roles.md)
 - [Berechtigungen in Azure Security Center](../security-center/security-center-permissions.md)

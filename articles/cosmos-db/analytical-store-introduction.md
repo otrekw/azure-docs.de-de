@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über den Azure Cosmos DB-Transaktionsspeicher (
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eaabc663ba243423bddf7ef6abfe41182e06b4f9
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046211"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364604"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -117,7 +117,7 @@ Die folgenden Einschränkungen gelten für die operativen Daten in Azure Cosmos 
 
 * Erwarten Sie ein anderes Verhalten hinsichtlich expliziter  Werte:
   * Spark-Pools in Azure Synapse stellen diese Spalten als `undefined` dar.
-  * SQL Serverlos-Pools in Azure Synapse stellen diese Spalten als `NULL` dar.
+  * SQL Serverless-Pools in Azure Synapse stellen diese Spalten als `NULL` dar.
 
 #### <a name="schema-representation"></a>Schemadarstellung
 
@@ -134,6 +134,7 @@ Im Analysespeicher gibt es zwei Modi der Schemadarstellung. Bei diesen Modi best
 Die genau definierte Schemadarstellung erstellt eine einfache tabellarische Darstellung der schemaunabhängigen Daten im Transaktionsspeicher. Bei der genau definierten Schemadarstellung gibt es die folgenden Überlegungen:
 
 * Eine Eigenschaft verfügt immer über denselben Typ für mehrere Elemente.
+* Wir lassen nur eine einzige Typänderung zu: von NULL in einen anderen Datentyp. Das erste Vorkommen ungleich NULL definiert den Spaltendatentyp.
 
   * Beispielsweise verfügt `{"a":123} {"a": "str"}` nicht über ein genau definiertes Schema, da `"a"` manchmal eine Zeichenfolge und manchmal eine Zahl ist. In diesem Fall registriert der Analysespeicher den Datentyp von `"a"` als den Datentyp von `“a”` im zuerst vorkommenden Element in der Lebensdauer des Containers. Das Dokument wird weiterhin in den Analysespeicher aufgenommen, aber Elemente, bei denen der Datentyp von `"a"` abweicht, werden nicht berücksichtigt.
   

@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 93821979e0c14a879b805049a4f662e9ef6d5b15
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075677"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580113"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis
 
@@ -74,15 +74,15 @@ Mehrere Azure-Ressourcen weisen eine Abhängigkeit von einem Abonnement oder ein
 | Vom System zugewiesene verwaltete Identitäten | Ja | Ja | [Auflisten verwalteter Identitäten](#list-role-assignments-for-managed-identities) | Sie müssen die verwalteten Identitäten deaktivieren und erneut aktivieren. Sie müssen die Rollenzuweisungen erneut erstellen. |
 | Vom Benutzer zugewiesene verwaltete Identitäten | Ja | Ja | [Auflisten verwalteter Identitäten](#list-role-assignments-for-managed-identities) | Sie müssen die verwalteten Identitäten löschen, erneut erstellen und an die entsprechende Ressource anfügen. Sie müssen die Rollenzuweisungen erneut erstellen. |
 | Azure-Schlüsseltresor | Ja | Ja | [Auflisten von Key Vault-Zugriffsrichtlinien](#list-key-vaults) | Sie müssen die Mandanten-ID aktualisieren, die den Schlüsseltresoren zugeordnet ist. Sie müssen Zugriffsrichtlinien entfernen und neue Zugriffsrichtlinien hinzufügen. |
-| Azure SQL-Datenbanken mit aktivierter Azure AD-Authentifizierungsintegration | Ja | Nein | [Überprüfen von Azure SQL-Datenbanken mit Azure AD Authentifizierung](#list-azure-sql-databases-with-azure-ad-authentication) |  | 
+| Azure SQL-Datenbanken mit aktivierter Azure AD-Authentifizierungsintegration | Ja | Nein | [Überprüfen von Azure SQL-Datenbanken mit Azure AD Authentifizierung](#list-azure-sql-databases-with-azure-ad-authentication) | Eine Azure SQL-Datenbank mit aktivierter Azure AD-Authentifizierung kann nicht in ein anderes Verzeichnis übertragen werden. Weitere Informationen finden Sie unter [Verwenden der Azure Active Directory-Authentifizierung](../azure-sql/database/authentication-aad-overview.md). | 
 | Azure Storage und Azure Data Lake Storage Gen2 | Ja | Ja |  | ACLs müssen erneut erstellt werden. |
 | Azure Data Lake Storage Gen1 | Ja | Ja |  | ACLs müssen erneut erstellt werden. |
 | Azure Files | Ja | Ja |  | ACLs müssen erneut erstellt werden. |
-| Azure-Dateisynchronisierung | Ja | Ja |  |  |
+| Azure-Dateisynchronisierung | Ja | Ja |  | Der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in ein anderes Verzeichnis verschoben werden. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Azure Files](../storage/files/storage-files-faq.md#azure-file-sync). |
 | Azure Managed Disks | Ja | Ja |  |  Wenn Sie Datenträgerverschlüsselungssätze verwenden, um Managed Disks mit vom Kunden verwalteten Schlüsseln zu verschlüsseln, müssen Sie die vom System zugewiesenen Identitäten, die den Datenträgerverschlüsselungssätzen zugeordnet sind, deaktivieren und erneut aktivieren. Außerdem müssen Sie die Rollenzuweisungen neu erstellen: Sie müssen den Datenträgerverschlüsselungssätzen in den Key Vaults die erforderlichen Berechtigungen erneut erteilen. |
-| Azure Kubernetes Service | Ja | Ja |  |  |
+| Azure Kubernetes Service | Ja | Nein |  | Ihr AKS-Cluster und die zugehörigen Ressourcen können nicht in ein anderes Verzeichnis übertragen werden. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Azure Kubernetes Service (AKS)](../aks/faq.md). |
 | Azure Policy | Ja | Nein | Alle Azure Policy-Objekte, einschließlich benutzerdefinierter Definitionen, Zuweisungen, Ausnahmen und Compliancedaten. | Sie müssen Definitionen [exportieren](../governance/policy/how-to/export-resources.md), importieren und neu zuweisen. Erstellen Sie dann neue Richtlinienzuweisungen sowie alle erforderlichen [Richtlinienausnahmen](../governance/policy/concepts/exemption-structure.md). |
-| Azure Active Directory Domain Services | Ja | Nein |  |  |
+| Azure Active Directory Domain Services | Ja | Nein |  | Es ist nicht möglich, eine verwaltete Azure AD Domain Services-Domäne in ein anderes Verzeichnis übertragen. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Azure Active Directory Domain Services](../active-directory-domain-services/faqs.md). |
 | App-Registrierungen | Ja | Ja |  |  |
 
 > [!WARNING]

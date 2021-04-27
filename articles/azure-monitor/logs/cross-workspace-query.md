@@ -4,13 +4,13 @@ description: In diesem Artikel wird beschrieben, wie Sie Abfragen für Ressource
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/22/2020
-ms.openlocfilehash: 57ed43b25c9031138a91f0870d316e1ae7a07a5b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/11/2021
+ms.openlocfilehash: 19cc85751fc5e4a165b646ac89d9d6b6e90c4408
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030966"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379552"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Ausführen arbeitsbereichs- und anwendungsübergreifender Protokollabfragen in Azure Monitor
 
@@ -27,7 +27,7 @@ Es gibt zwei Methoden zum Abfragen von Daten, die in mehreren Arbeitsbereichen u
 ## <a name="cross-resource-query-limits"></a>Ressourcenübergreifende Abfragelimits 
 
 * Die Anzahl von Application Insights-Ressourcen und Log Analytics-Arbeitsbereichen, die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt.
-* Ressourcenübergreifende Abfrage wird im View Designer nicht unterstützt. Sie können eine Abfrage in Log Analytics erstellen und dem Azure-Dashboard anheften, um [eine Protokollabfrage zu visualisieren](../visualize/tutorial-logs-dashboards.md). 
+* Ressourcenübergreifende Abfrage wird im View Designer nicht unterstützt. Sie können eine Abfrage in Log Analytics erstellen und an das Azure-Dashboard anheften, um [eine Protokollabfrage zu visualisieren](../visualize/tutorial-logs-dashboards.md), oder sie in [Arbeitsmappen](../visualize/workbooks-overview.md) integrieren.
 * Ressourcenübergreifende Abfragen in Protokollwarnungen werden nur in der aktuellen [scheduledQueryRules](/rest/api/monitor/scheduledqueryrules)-API unterstützt. Wenn Sie die Legacy-API für Log Analytics-Warnungen verwenden, müssen Sie [zur aktuellen API wechseln](../alerts/alerts-log-api-switch.md).
 
 
@@ -41,6 +41,9 @@ Ein Arbeitsbereich kann auf mehrere Arten identifiziert werden:
 
 * Ressourcenname: Ein für Benutzer lesbarer Name des Arbeitsbereichs (manchmal auch *Komponentenname* genannt). 
 
+    >[!IMPORTANT]
+    >Da die Namen von Apps und Arbeitsbereichen nicht eindeutig sind, ist dieser Bezeichner unter Umständen mehrdeutig. Für Verweise sollte daher der qualifizierte Name, die Arbeitsbereichs-ID oder die Azure-Ressourcen-ID verwendet werden.
+
     `workspace("contosoretail-it").Update | count`
 
 * Qualifizierter Name: Der vollständige Name des Arbeitsbereichs, bestehend aus Abonnementname, Ressourcengruppe und Komponentenname im folgenden Format: *Abonnementname/Ressourcengruppe/Komponentenname*. 
@@ -48,8 +51,7 @@ Ein Arbeitsbereich kann auf mehrere Arten identifiziert werden:
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
     >[!NOTE]
-    >Da die Namen von Azure-Abonnements nicht eindeutig sind, ist dieser Bezeichner unter Umständen mehrdeutig. 
-    >
+    >Da die Namen von Azure-Abonnements nicht eindeutig sind, ist dieser Bezeichner unter Umständen mehrdeutig.
 
 * Arbeitsbereichs-ID: Bei einer Arbeitsbereichs-ID handelt es sich um den eindeutigen, unveränderlichen Bezeichner, der jedem Arbeitsbereich zugewiesen ist und als GUID (Globally Unique Identifier) dargestellt wird.
 

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 550084ccbb1df24fe0cbc0a4630efe19e6685e5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2c0b82f14fd16ecb9eef163e7a263f4327cfc46
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709902"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364548"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -83,7 +83,7 @@ Tutorials zum Authentifizieren bei Key Vault in Anwendungen finden Sie unter:
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Verwalten von Schlüsseln, Zertifikaten und Geheimnissen
 
-Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Datenebene gesteuert. Die Zugriffssteuerung auf Datenebene kann mithilfe von Zugriffsrichtlinien für lokale Tresore oder der Azure-RBAC (Vorschauversion) erfolgen.
+Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Datenebene gesteuert. Die Zugriffssteuerung auf Datenebene kann mithilfe von Zugriffsrichtlinien für lokale Tresore oder per Azure RBAC erfolgen.
 
 **Schlüssel-APIs und -SDKs**
 
@@ -105,7 +105,7 @@ Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Dateneben
 
 Weitere Informationen zu Installationspaketen und Quellcode finden Sie unter [Clientbibliotheken](client-libraries.md).
 
-Weitere Informationen zur Sicherheit der Key Vault-Datenebene finden Sie unter [Key Vault-Datenebene und Zugriffsrichtlinien](./secure-your-key-vault.md#data-plane-and-access-policies) und [Key Vault-Datenebene und die Azure-RBAC (Vorschauversion)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview).
+Weitere Informationen zur Sicherheit der Key Vault-Datenebene finden Sie unter [Key Vault-Datenebene und Zugriffsrichtlinien](./secure-your-key-vault.md#data-plane-and-access-policies) sowie unter [Key Vault-Datenebene und Azure RBAC](./secure-your-key-vault.md#data-plane-and-azure-rbac).
 
 ### <a name="code-examples"></a>Codebeispiele
 

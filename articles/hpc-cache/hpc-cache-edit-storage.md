@@ -4,14 +4,14 @@ description: Bearbeiten von Azure HPC Cache-Speicherzielen
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: 0c505937d4adbe2596e91ed7269676e60ada8253
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772580"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258910"
 ---
 # <a name="edit-storage-targets"></a>Bearbeiten von Speicherzielen
 
@@ -151,7 +151,10 @@ az hpc-cache nfs-storage-target update --cache-name mycache \
 
 ### <a name="change-the-usage-model"></a>Ändern des Nutzungsmodells
 
-Das Nutzungsmodell beeinflusst, wie Daten im Cache gespeichert werden. Weitere Informationen finden Sie unter [Auswählen eines Nutzungsmodells](hpc-cache-add-storage.md#choose-a-usage-model).
+Das Nutzungsmodell beeinflusst, wie Daten im Cache gespeichert werden. Weitere Informationen finden Sie unter [Grundlegendes zu Cache-Verwendungsmodellen](cache-usage-models.md).
+
+> [!NOTE]
+> Wenn Sie Verwendungsmodelle ändern, müssen Clients möglicherweise neu eingebunden werden, um NLM-Fehler zu vermeiden. Weitere Informationen finden Sie unter [Wissen, wann Clients für NLM erneut bereitgestellt werden müssen](cache-usage-models.md#know-when-to-remount-clients-for-nlm).
 
 Wenn Sie das Nutzungsmodell für ein NFS-Speicherziel ändern möchten, verwenden Sie eine der folgenden Methoden.
 

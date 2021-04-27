@@ -6,19 +6,22 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 1/12/2021
-ms.openlocfilehash: 48537483501165d4a978afdbd05560613170d187
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions
+ms.date: 04/07/2021
+ms.openlocfilehash: 1dd0666c2946896ed324fb3986bb7946890b73de
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98165610"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388702"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – Konfigurationsoptionen für Hyperscale (Citus)
 
 ## <a name="compute-and-storage"></a>Compute und Speicher
  
 Sie können die Compute- und Speichereinstellungen für Workerknoten und den Koordinatorknoten in einer Hyperscale (Citus)-Servergruppe unabhängig voneinander auswählen.  Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und repräsentieren die logische CPU der zugrunde liegenden Hardware. Die Speichergröße für die Bereitstellung bezieht sich auf die für die Koordinator- und Workerknoten in Ihrer Hyperscale (Citus)-Servergruppe verfügbare Kapazität. Der Speicher umfasst Datenbankdateien, temporäre Dateien, Transaktionsprotokolle und die Postgres-Serverprotokolle.
+
+### <a name="standard-tier"></a>Standard-Tarif
  
 | Resource              | Workerknoten           | Koordinatorknoten      |
 |-----------------------|-----------------------|-----------------------|
@@ -70,13 +73,47 @@ Für den gesamten Hyperscale (Citus)-Cluster belaufen sich die aggregierten IOPS
 | 19           | 29.184              | 58.368            | 116.812           |
 | 20           | 30.720              | 61.440            | 122.960           |
 
+### <a name="basic-tier-preview"></a>Basic-Tarif (Vorschau)
+
+> [!IMPORTANT]
+> Der Basic-Tarif von Hyperscale (Citus) befindet sich derzeit in der öffentlichen Vorschau.  Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+>
+> Eine vollständige Liste der anderen neuen Features finden Sie unter [Vorschaufeatures für PostgreSQL – Hyperscale (Citus)](hyperscale-preview-features.md).
+
+Beim [Basic-Tarif](concepts-hyperscale-tiers.md) von Hyperscale (Citus) handelt es sich um eine Servergruppe mit nur einem Knoten.  Da nicht zwischen Koordinator- und Workerknoten unterschieden wird, ist die Wahl von Compute- und Speicherressourcen weniger kompliziert.
+
+| Resource              | Verfügbare Optionen     |
+|-----------------------|-----------------------|
+| Compute, virtuelle Kerne       | 2, 4, 8               |
+| Arbeitsspeicher pro V-Kern, GiB | 4                     |
+| Speichergröße, GiB     | 128, 256, 512         |
+| Speichertyp          | Allgemein (SSD) |
+| IOPS                  | Bis zu 3 IOPS/GiB      |
+
+Die RAM-Gesamtmenge in einem einzelnen Hyperscale (Citus)-Knoten basiert auf der ausgewählten Anzahl von virtuellen Kernen.
+
+| V-Kerne | GiB RAM |
+|--------|---------|
+| 2      | 8       |
+| 4      | 16      |
+| 8      | 32      |
+
+Durch die Gesamtmenge an bereitgestelltem Speicher wird auch die verfügbare E/A-Kapazität für den Knoten mit Basic-Tarif definiert.
+
+| Speichergröße, GiB | Maximale IOPS-Anzahl |
+|-------------------|--------------|
+| 128               | 384          |
+| 256               | 768          |
+| 512               | 1\.536        |
+
 ## <a name="regions"></a>Regions
 Hyperscale (Citus)-Servergruppen sind in den folgenden Azure-Regionen verfügbar:
 
 * Amerika:
+    * Brasilien Süd
     * Kanada, Mitte
     * USA (Mitte)
-    * East US
+    * USA, Osten*
     * USA (Ost) 2
     * USA Nord Mitte
     * USA, Westen 2
@@ -86,42 +123,14 @@ Hyperscale (Citus)-Servergruppen sind in den folgenden Azure-Regionen verfügbar
     * Korea, Mitte
     * Asien, Südosten
 * Europa:
+    * Frankreich, Mitte
     * Nordeuropa
     * UK, Süden
     * Europa, Westen
 
+(\*: Unterstützt [Previewfunktionen](hyperscale-preview-features.md))
+
 Einige dieser Regionen sind anfangs möglicherweise nicht für alle Azure-Abonnements aktiviert. Öffnen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), wenn Sie eine Region aus der oben genannten Liste verwenden möchten, sie aber nicht in Ihrem Abonnement angezeigt wird, oder wenn Sie eine nicht in dieser Liste enthaltene Region verwenden möchten.
-
-## <a name="limits-and-limitations"></a>Grenzwerte und Einschränkungen
-
-In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen in Hyperscale (Citus) beschrieben.
-
-### <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
-
-Jede PostgreSQL-Verbindung (auch inaktive Verbindungen) verwendet mindestens 10 MB Arbeitsspeicher, daher ist es wichtig, gleichzeitige Verbindungen einzuschränken. Dies sind die Grenzwerte, die wir ausgewählt haben, um Knoten fehlerfrei zu halten:
-
-* Koordinatorknoten
-   * Maximale Anzahl von Verbindungen: 300
-   * Maximale Anzahl Benutzerverbindungen: 297
-* Workerknoten
-   * Maximale Anzahl von Verbindungen: 600
-   * Maximale Anzahl Benutzerverbindungen: 597
-
-Verbindungsversuche über diese Grenzwerte hinaus führen zu einem Fehler. Das System reserviert drei Verbindungen für die Überwachung von Knoten. Aus diesem Grund sind für Benutzerabfragen drei Verbindungen weniger verfügbar als Verbindungen insgesamt.
-
-Das Einrichten neuer Verbindungen nimmt Zeit in Anspruch. Dies spricht gegen die meisten Anwendungen, die viele kurzlebige Verbindungen anfordern. Wir empfehlen die Verwendung eines Verbindungspoolers, um Transaktionen im Leerlauf zu verringern und vorhandene Verbindungen wiederzuverwenden. Weitere Informationen finden Sie in unserem [Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
-
-### <a name="storage-scaling"></a>Speicherskalierung
-
-Der Speicher auf Koordinator- und Workerknoten kann hochskaliert (vergrößert) werden, er kann aber nicht herunterskaliert werden.
-
-### <a name="storage-size"></a>Speichergröße
-
-Für Koordinator- und Workerknoten wird eine Speicherkapazität von bis zu 2 TiB unterstützt. Weitere Informationen finden Sie in den verfügbaren Speicheroptionen und der IOPS-Berechnung [oben](#compute-and-storage) für Knoten- und Clustergrößen.
-
-### <a name="database-creation"></a>Datenbankerstellung
-
-Im Azure-Portal werden Anmeldeinformationen bereitgestellt, um eine Verbindung mit genau einer Datenbank pro Hyperscale (Citus)-Servergruppe herzustellen, der `citus`-Datenbank. Das Erstellen einer anderen Datenbank ist zurzeit nicht zulässig, und der CREATE DATABASE-Befehl verursacht einen Fehler.
 
 ## <a name="pricing"></a>Preise
 Aktuelle Preisinformationen finden Sie auf der Seite [Azure-Datenbank für MySQL – Preise](https://azure.microsoft.com/pricing/details/postgresql/).

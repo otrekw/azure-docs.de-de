@@ -4,14 +4,14 @@ description: In diesem Artikel wird erläutert, wie Sie zusätzliche Einstellung
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b3996df3c75ff31d0825be1d332dbd055305963
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773231"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259760"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurieren zusätzlicher Azure HPC Cache-Einstellungen
 
@@ -24,7 +24,7 @@ In diesem Artikel wird außerdem beschrieben, wie Sie die Momentaufnahmefunktion
 ![Screenshot: Seite „Netzwerk“ im Azure-Portal](media/networking-page.png)
 
 > [!NOTE]
-> Eine frühere Version dieser Seite umfasste eine Root-Squash-Einstellung auf Cacheebene, jedoch wurde diese Einstellung zu den [Clientzugriffsrichtlinien](access-policies.md) verschoben.
+> Eine frühere Version dieser Seite umfasste eine Root-Squash-Einstellung auf Cacheebene. Diese Einstellung befindet sich nun jedoch unter [Clientzugriffsrichtlinien](access-policies.md).
 
 <!-- >> [!TIP]
 > The [Managing Azure HPC Cache video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) shows the networking page and its settings. -->
@@ -47,24 +47,26 @@ Weitere Informationen zu den MTU-Einstellungen in virtuellen Azure-Netzwerken fi
 
 ## <a name="customize-ntp"></a>Anpassen von NTP
 
-Ihr Cache verwendet standardmäßig den auf Azure basierenden Zeitserver time.microsoft.com. Wenn Sie Ihr Cache einen anderen NTP-Server verwenden soll, legen Sie diesen im Abschnitt **NTP-Konfiguration** fest. Verwenden Sie einen vollqualifizierten Domänennamen (FQDN) oder eine IP-Adresse.
+Ihr Cache verwendet standardmäßig den Azure-basierten Zeitserver „time.windows.com“. Wenn Sie Ihr Cache einen anderen NTP-Server verwenden soll, legen Sie diesen im Abschnitt **NTP-Konfiguration** fest. Verwenden Sie einen vollqualifizierten Domänennamen (FQDN) oder eine IP-Adresse.
 
 ## <a name="set-a-custom-dns-configuration"></a>Festlegen einer benutzerdefinierten DNS-Konfiguration
 
 > [!CAUTION]
 > Ändern Sie die DNS-Konfiguration Ihres Caches nicht, wenn dies nicht erforderlich ist. Konfigurationsfehler können maßgebliche Konsequenzen haben. Wenn Ihre Konfiguration keine Namen von Azure-Diensten auflösen kann, ist die HPC-Cache-Instanz dauerhaft nicht erreichbar.
+>
+> Wenden Sie sich an den für Sie zuständigen Azure-Vertriebsmitarbeiter, bevor Sie versuchen, eine benutzerdefinierte DNS-Konfiguration einzurichten.
 
 Azure HPC Cache wird automatisch zur Verwendung des sicheren und praktischen Azure DNS-Systems konfiguriert. Allerdings erfordern einige ungewöhnliche Konfigurationen, dass der Cache anstelle des Azure-Systems ein separates lokales DNS-System verwendet. Der Abschnitt **DNS-Konfiguration** der Seite **Netzwerk** wird zum Festlegen dieser Art von System verwendet.
 
 Wenden Sie sich an Azure-Vertriebsmitarbeiter oder den Microsoft-Dienstsupport, um in Erfahrung zu bringen, ob Sie eine benutzerdefinierte Cache-DNS-Konfiguration verwenden müssen.
 
-Wenn Sie Ihr eigenes lokales DNS-System für Azure HPC Cache konfigurieren, müssen Sie sicherstellen, dass die Konfiguration Azure-Endpunktnamen für Azure-Dienste auflösen kann. Sie müssen Ihre benutzerdefinierte DNS-Umgebung bei Bedarf zur Weiterleitung bestimmter Namensauflösungsanforderungen an Azure DNS oder einen anderen Server konfigurieren.
+Wenn Sie Ihr eigenes lokales DNS-System für Azure HPC Cache konfigurieren, muss Ihr lokaler DNS-Server in der Lage sein, Azure-Endpunktnamen direkt aufzulösen. HPC Cache funktioniert nicht, wenn die Auflösung öffentlicher Namen für Ihren DNS-Server nicht zur Verfügung steht.
 
 Stellen Sie sicher, dass Ihre DNS-Konfiguration diese Elemente erfolgreich auflösen kann, bevor Sie sie für Azure HPC Cache verwenden:
 
 * ``*.core.windows.net``
 * Zertifikatssperrlisten-Download und OCSP-Überprüfungsdienste (Online Certificate Status-Protokoll) Im Abschnitt zu [Firewallregeln](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me) des [Azure-TLS-Artikels](../security/fundamentals/tls-certificate-changes.md) wird eine unvollständige Liste bereitgestellt, Sie sollten sich jedoch an einen technischen Vertreter von Microsoft wenden, um Informationen zu allen Anforderungen zu erhalten.
-* Den vollqualifizierten Domänennamen Ihres NTP-Servers (time.microsoft.com oder ein benutzerdefinierter Server)
+* Den vollqualifizierten Domänennamen Ihres NTP-Servers („time.windows.com“ oder ein benutzerdefinierter Server)
 
 Wenn Sie einen benutzerdefinierten DNS-Server für Ihren Cache festlegen müssen, verwenden Sie die bereitgestellten Felder:
 

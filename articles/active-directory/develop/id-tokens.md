@@ -9,17 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 04/02/2021
 ms.author: hirsin
 ms.reviewer: hirsin
-ms.custom: aaddev, identityplatformtop40
-ms:custom: fasttrack-edit
-ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.custom:
+- aaddev
+- identityplatformtop40
+- fasttrack-edit
+ms.openlocfilehash: 885379a02c8866f2829fb681683a93b1d8d314fa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175387"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530027"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -124,6 +126,12 @@ Um sicherzustellen, dass die Tokengröße die Grenzwerte für HTTP-Header nicht 
   ...
 }
 ```
+
+## <a name="id-token-lifetime"></a>ID-Tokengültigkeitsdauer
+
+Standardmäßig ist ein ID-Token eine Stunde lang gültig. Nach einer Stunde muss der Client ein neues ID-Token beziehen.
+
+Sie können die Gültigkeitsdauer eines ID-Tokens anpassen, um zu steuern, wie oft die Clientanwendung den Ablauf der Anwendungssitzung veranlasst und wie oft eine erneute Authentifizierung des Benutzers erforderlich ist (entweder im Hintergrund oder interaktiv). Weitere Informationen hierzu finden Sie unter [Konfigurierbare Tokengültigkeitsdauer](active-directory-configurable-token-lifetimes.md).
 
 ## <a name="validating-an-id_token"></a>Überprüfen eines ID-Tokens
 

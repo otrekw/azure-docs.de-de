@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56db88bff5b0e92a3819670e200177f10609aaa8
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98797787"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029725"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Einbetten von Video Indexer-Widgets in Ihre Apps
 
@@ -66,16 +66,15 @@ Mit dem Editor-Widget können Sie neue Projekte erstellen und Erkenntnisse aus V
 
 <sup>*</sup>Der Besitzer sollte beim Bereitstellen von `accessToken` Vorsicht walten lassen.
 
-## <a name="embedding-videos"></a>Einbetten von Videos
+## <a name="embed-videos"></a>Einbetten von Videos
 
-In diesem Abschnitt wird erläutert, wie Sie öffentliche und private Inhalte in Apps einbetten.
+In diesem Abschnitt wird das Einbetten von Videos in Apps erläutert. Hierfür gibt es zwei Möglichkeiten: [über das Portal](#the-portal-experience) oder durch [manuelles Erstellen der URL](#assemble-the-url-manually). 
 
 Der Parameter `location` muss in den eingebetteten Links enthalten sein. Siehe hierzu [Abrufen des Namens Ihrer Region](regions.md). Wenn sich Ihr Konto in der Vorschauphase befindet, sollte `trial` als Standortwert verwendet werden. `trial` ist der Standardwert für den Parameter `location`. Beispiel: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
-> [!IMPORTANT]
-> Die Freigabe eines Links für das **Player**- oder **Insights**-Widget umfasst das Zugriffstoken und gewährt Ihrem Konto schreibgeschützte Berechtigungen.
+### <a name="the-portal-experience"></a>Portal
 
-### <a name="public-content"></a>Öffentlicher Inhalt
+Gehen Sie im Portal wie hier beschrieben vor, um ein Video einzubetten:
 
 1. Melden Sie sich bei der [Video Indexer](https://www.videoindexer.ai/)-Website an.
 1. Wählen Sie das Video aus, mit dem Sie arbeiten möchten, und drücken Sie **Wiedergabe**.
@@ -84,18 +83,27 @@ Der Parameter `location` muss in den eingebetteten Links enthalten sein. Siehe h
 5. Kopieren Sie den Einbindungscode (wird in **Einbindungscode kopieren** im Dialogfeld **Teilen und einbetten** angezeigt).
 6. Fügen Sie Ihrer App den Code hinzu.
 
-### <a name="private-content"></a>Privater Inhalt
+> [!NOTE]
+> Die Freigabe eines Links für das **Player**- oder **Insights**-Widget umfasst das Zugriffstoken und gewährt Ihrem Konto schreibgeschützte Berechtigungen.
 
-Sie müssen ein Zugriffstoken im `src`-Attribut des „iframe“ übergeben, um ein privates Video einzubetten:
+### <a name="assemble-the-url-manually"></a>Manuelles Erstellen der URL
+
+#### <a name="public-videos"></a>Öffentliche Videos
+
+Wenn Sie öffentliche Videos einbetten möchten, können Sie die URL wie folgt erstellen:
+
+`https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>`
+  
+  
+#### <a name="private-videos"></a>Private Videos
+
+Wenn Sie ein privates Video einbetten möchten, müssen Sie ein Zugriffstoken übergeben. Verwenden Sie hierzu [Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?) im Attribut `src` des iframe-Elements:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
-    
-Verwenden Sie eine der folgenden Methoden, um die Inhalte des Widgets vom Typ „Kognitive Erkenntnisse“ abzurufen:
+  
+### <a name="provide-editing-insights-capabilities"></a>Bereitstellen von Funktionen zur Bearbeitung von Erkenntnissen
 
-- Die API des Widgets vom Typ [Erkenntnisse abrufen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget).<br/>
-- Das [Token zum Abrufen des Videozugriffs](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Fügen Sie es als Abfrageparameter zur URL hinzu. Geben Sie diese URL als `src`-Wert für den iframe an, wie zuvor gezeigt.
-
-Um Funktionen zur Bearbeitung von Erkenntnissen in Ihrem eingebetteten Widget bereitzustellen, müssen Sie ein Zugriffstoken übergeben, das Berechtigungen zur Bearbeitung enthält. Verwenden Sie das Widget vom Typ [Erkenntnisse abrufen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) oder das [Token zum Abrufen des Videozugriffs](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) mit `&allowEdit=true`.
+Um Funktionen zur Bearbeitung von Erkenntnissen in Ihrem eingebetteten Widget bereitzustellen, müssen Sie ein Zugriffstoken übergeben, das Berechtigungen zur Bearbeitung enthält. Verwenden Sie [Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) mit `&allowEdit=true`.
 
 ## <a name="widgets-interaction"></a>Interaktion von Widgets
 

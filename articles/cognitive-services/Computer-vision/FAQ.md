@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7aac3a38b82b86edc47f48e50d26b5b269486701
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "68564604"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375235"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Häufig gestellte Fragen zur Maschinelles Sehen-API
 
@@ -31,44 +31,16 @@ ms.locfileid: "68564604"
 
 ---
 
-**Frage**: *Kann maschinelles Sehen lokal ohne eine Internetverbindung genutzt werden?*
 
-**Antwort**: Wir bieten derzeit keine lokale Lösung an.
+**Frage**: *Kann ich die Funktion „OCR (Lesen)“ lokal bereitstellen?*
+
+**Antwort**: Ja. Die Cloud-API „OCR (Lesen)“ ist auch als Docker-Container für die lokale Bereitstellung verfügbar. Informationen zum Bereitstellen der OCR-Container finden Sie [hier](/computer-vision-how-to-install-containers).
 
 ---
 
 **Frage**: *Kann maschinelles Sehen zum Lesen von Kfz-Kennzeichen verwendet werden?*
 
-**Antwort**: Die maschinelles Sehen-API bietet eine gute Texterkennung mit OCR, aber sie ist derzeit nicht für Kfz-Kennzeichen optimiert. Wir sind ständig bemüht, unseren Dienst zu verbessern und haben OCR zur automatischen Nummernschilderkennung in unsere Liste der Funktionswünsche aufgenommen.
+**Antwort**: Die Maschinelles Sehen-API enthält die Deep Learning-gestützten OCR-Funktionen mit dem neuesten Lesefeature. Wir arbeiten kontinuierlich daran, unsere Dienste zu verbessern, damit sie in allen Szenarien verwendet werden können.
 
 ---
 
-**Frage**: *Welche Arten von Schreiboberflächen werden für die Handschrifterkennung unterstützt?*
-
-**Antwort**: Die Technologie funktioniert mit verschiedenen Oberflächen, einschließlich Whiteboards, weißem Papier und gelben Haftnotizen.
-
----
-
-**Frage**: *Wie lange dauert der Vorgang der Handschrifterkennung?*
-
-**Antwort**: Die Dauer ist abhängig von der Länge des Texts. Bei längeren Texten kann der Vorgang einige Sekunden dauern. Daher müssen Sie nach Abschluss der Operation „Handschriftlichen Text erkennen“ möglicherweise warten, bevor Sie die Ergebnisse mit der Operation „Ergebnisse für die Operation für handschriftlichen Text holen“ abrufen können.
-
----
-
-**Frage**: *Wie geht die Handschrifterkennungstechnologie mit Text um, der mit einem Auslassungszeichen in der Mitte einer Zeile eingefügt wurde?*
-
-**Antwort**: Dieser Text wird von der Handschrifterkennung als separate Zeile zurückgegeben.
-
----
-
-**Frage**: *Wie geht die Handschrifterkennungstechnologie mit per Hand durchgestrichenen Wörtern oder Zeilen um?*
-
-**Antwort**: Wenn die Wörter mit mehreren Zeilen durchgestrichen werden, um sie unkenntlich zu machen, werden sie von der Handschrifterkennung nicht erkannt. Wenn die Wörter jedoch mit einer einzigen Zeile durchgestrichen werden, wird diese Durchstreichung als Rauschen behandelt, und die Wörter werden trotzdem von der Handschrifterkennung erfasst.
-
----
-
-**Frage**: *Welche Textausrichtungen werden für die Handschrifterkennung unterstützt?*
-
-**Antwort**: Text, der in einem Winkel von bis zu 30 Grad bis 40 Grad ausgerichtet ist, kann von der Handschrifterkennung erfasst werden.
-
----

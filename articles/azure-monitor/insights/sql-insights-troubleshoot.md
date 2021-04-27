@@ -5,15 +5,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2021
-ms.openlocfilehash: 85a3505dd347b96036c28c85c089afa04e3e3bd5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4d4a801d0cf0a2355334272053ff86dd846b6bbf
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608851"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030303"
 ---
 # <a name="troubleshooting-sql-insights-preview"></a>Problembehandlung für SQL Insights (Vorschauversion)
-Überprüfen Sie den Status des Überwachungscomputers auf der Registerkarte **Profil verwalten**, um Probleme mit der Datensammlung in SQL Insights zu beheben. Die folgenden Status sind möglich:
+Überprüfen Sie auf der Registerkarte **Profil verwalten** den Status des Überwachungscomputers, um Probleme mit der Datensammlung in SQL Insights zu behandeln. Mögliche Zustände:
 
 - Sammlung wird durchgeführt 
 - Sammlung wird nicht durchgeführt 
@@ -171,10 +171,13 @@ InsightsMetrics
 ```
 
 ```
-Operation 
- | where OperationCategory == "WorkloadInsights" 
- | summarize Errors = countif(OperationStatus == 'Error') 
+WorkloadDiagnosticLogs
+| summarize Errors = countif(Status == 'Error')
 ```
+
+> [!NOTE]
+> Enthält der Datentyp „WorkloadDiagnosticLogs“ keine Daten, müssen Sie möglicherweise Ihr Überwachungsprofil aktualisieren, um diese Daten zu speichern.  Wählen Sie in der SQL Insights-Umgebung „Profil verwalten“ > „Profil bearbeiten“ > „Überwachungsprofil aktualisieren“ aus.
+
 
 Für gängige Fälle werden Informationen zur Problembehandlung in der Protokollansicht zur Verfügung gestellt: 
 

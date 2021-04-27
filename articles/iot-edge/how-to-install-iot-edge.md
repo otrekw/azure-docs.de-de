@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: kgremban
-ms.openlocfilehash: a98eed61904b580988fe34302999f3ec6a24ac9e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 39e165d862d6e174f763cd58529727fd26b8bd46
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640922"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311072"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Installieren oder Deinstallieren von Azure IoT Edge für Linux
 
@@ -125,10 +125,10 @@ Wenn Sie die neueste Version des Sicherheitsdaemons installieren möchten, verwe
    sudo apt-get install iotedge
    ```
 
-Wenn Sie aber eine bestimmte Version des Sicherheitsdaemons installieren möchten, geben Sie die Version in der Ausgabe von „apt list“ an. Geben Sie zudem die gleiche Version für das **libiothsm-std**-Paket an, das andernfalls seine neueste Version installieren würde. Mit dem folgenden Befehl beispielsweise wird die neueste Version des Release 1.0.10 installiert:
+Wenn Sie aber eine bestimmte Version des Sicherheitsdaemons installieren möchten, geben Sie die Version in der Ausgabe von „apt list“ an. Geben Sie zudem die gleiche Version für das **libiothsm-std**-Paket an, das andernfalls seine neueste Version installieren würde. Mit dem folgenden Befehl wird beispielsweise die neueste Version des Release 1.1 installiert:
 
    ```bash
-   sudo apt-get install iotedge=1.0.10* libiothsm-std=1.0.10*
+   sudo apt-get install iotedge=1.1* libiothsm-std=1.1*
    ```
 
 Wenn die Version, die Sie installieren möchten, in der Liste nicht aufgeführt ist, führen Sie die Schritte [Offlineinstallation oder Installation einer bestimmten Version](#offline-or-specific-version-installation-optional) weiter unten in diesem Artikel aus. In diesem Abschnitt wird gezeigt, wie Sie eine frühere Version des IoT Edge-Sicherheitsdaemons oder Release Candidate-Versionen als Ziel verwenden.
@@ -146,7 +146,7 @@ Der IoT-Identitätsdienst wurde zusammen mit Version 1.2 von IoT Edge eingefüh
 Die in diesem Abschnitt beschriebenen Schritte stellen den typischen Prozess zum Installieren der neuesten Version auf einem Gerät dar, das über eine Internetverbindung verfügt. Wenn Sie eine bestimmte Version, z. B eine Vorabversion, installieren oder eine Offlineinstallation durchführen müssen, führen Sie die Schritte unter [Offlineinstallation oder Installation einer bestimmten Version](#offline-or-specific-version-installation-optional) weiter unten in diesem Artikel aus.
 
 >[!NOTE]
->Die Schritte in diesem Abschnitt zeigen Ihnen, wie Sie IoT Edge, Version 1.2, installieren, die zurzeit als öffentliche Vorschauversion verfügbar ist. Wenn Sie die Schritte zum Installieren der neuesten allgemein verfügbaren Version von IoT Edge suchen, sehen Sie sich die LTS-Version [(1.1)](?view=iotedge-2018-06&preserve-view=true) in diesem Artikel an.
+>In diesem Abschnitt werden die Schritte zum Installieren der IoT Edge-Version 1.2 gezeigt.
 >
 >Wenn Sie bereits ein IoT Edge-Gerät haben, auf dem eine ältere Version ausgeführt wird, und ein Upgrade auf 1.2 durchführen möchten, führen Sie die Schritte unter [Aktualisieren des IoT Edge-Sicherheitsdaemons und der Runtime](how-to-update-iot-edge.md) aus. Version 1.2 unterscheidet sich ausreichend von früheren IoT Edge-Versionen, sodass bestimmte Schritte für das Upgrade erforderlich sind.
 
@@ -168,15 +168,11 @@ Wenn Sie die neueste Version von IoT Edge installieren möchten, verwenden Sie d
    sudo apt-get install aziot-edge
    ```
 
-<!-- commenting out for public preview. reintroduce at GA
-
-Or, if you want to install a specific version of IoT Edge and the identity service, specify the versions from the apt list output. Specify the same versions for both services.. For example, the following command installs the most recent version of the 1.2 release:
+Wenn Sie stattdessen eine bestimmte Version von IoT Edge und eine bestimmte Version des Identitätsdiensts installieren möchten, geben Sie die Versionen aus der Ausgabe von „apt list“ an. Geben Sie für beide Dienste die gleichen Versionen an. Mit dem folgenden Befehl wird beispielsweise die neueste Version des Release 1.2 installiert:
 
    ```bash
    sudo apt-get install aziot-edge=1.2* aziot-identity-service=1.2*
    ```
-
--->
 
 <!-- end 1.2 -->
 ::: moniker-end
@@ -462,7 +458,7 @@ Mithilfe von curl-Befehlen können Sie die Komponentendateien direkt aus dem IoT
    2. Verwenden Sie den kopierten Link im folgenden Befehl, um diese Version von hsmlib zu installieren:
 
       ```bash
-      curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
+      curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo apt-get install ./libiothsm-std.deb
       ```
 
    3. Suchen Sie die **iotedge**-Datei, die der Architektur Ihres IoT Edge-Geräts entspricht. Klicken Sie mit der rechten Maustaste auf den Dateilink, und kopieren Sie die Linkadresse.
@@ -470,7 +466,7 @@ Mithilfe von curl-Befehlen können Sie die Komponentendateien direkt aus dem IoT
    4. Verwenden Sie den kopierten Link im folgenden Befehl, um diese Version des IoT Edge-Sicherheits-Daemons zu installieren.
 
       ```bash
-      curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
+      curl -L <iotedge link> -o iotedge.deb && sudo apt-get install ./iotedge.deb
       ```
 
 <!-- end 1.1 -->

@@ -2,7 +2,6 @@
 title: Behandeln von Problemen bei Azure RBAC
 description: Beheben von Problemen bei der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC).
 services: azure-portal
-documentationcenter: na
 author: rolyon
 manager: mtillman
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
@@ -11,16 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d816854c8d8a78931060c6e56fffbaee1fde5150
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555877"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771711"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
@@ -68,11 +66,16 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+
+- Wenn Sie einen neuen Dienstprinzipal erstellen und sofort versuchen, diesem eine Rolle zuzuweisen, kann die Rollenzuweisung in einigen Fällen fehlschlagen.
+
+    Um dieses Szenario zu beheben, sollten Sie beim Erstellen der Rollenzuweisung die `principalType`-Eigenschaft auf `ServicePrincipal` festlegen. Sie müssen auch die `apiVersion` der Rollenzuweisung auf Version `2018-09-01-preview` oder höher festlegen. Weitere Informationen finden Sie unter [Zuweisen von Azure-Rollen mithilfe der REST-API](role-assignments-rest.md#new-service-principal) oder unter [Zuweisen von Azure-Rollen mithilfe von Azure Resource Manager-Vorlagen](role-assignments-template.md#new-service-principal).
+
 - Wenn Sie versuchen, die letzte Rollenzuweisung „Besitzer“ für ein Abonnement zu entfernen, wird möglicherweise der Fehler „Letzte RBAC-Administratorzuweisung kann nicht gelöscht werden“ angezeigt. Das Entfernen der letzten Rollenzuweisung „Besitzer“ für ein Abonnement wird nicht unterstützt, um das Verwaisen des Abonnements zu vermeiden. Informationen zum Kündigen Ihres Abonnements finden Sie unter [Kündigen Ihres Azure-Abonnements](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ## <a name="problems-with-custom-roles"></a>Probleme mit benutzerdefinierten Rollen
 
-- Wenn Sie wissen möchten, wie Sie eine benutzerdefinierte Rolle erstellen können, sehen Sie sich die entsprechenden Tutorials für die Verwendung des [Azure-Portals](custom-roles-portal.md) (derzeit als Vorschau verfügbar), von [Azure PowerShell](tutorial-custom-role-powershell.md) oder der [Azure CLI](tutorial-custom-role-cli.md) an.
+- Eine Anleitung zum Erstellen einer benutzerdefinierten Rolle finden Sie im entsprechenden Tutorial für das [Azure-Portal](custom-roles-portal.md), für [Azure PowerShell](tutorial-custom-role-powershell.md) oder für die [Azure CLI](tutorial-custom-role-cli.md).
 - Wenn Sie eine vorhandene benutzerdefinierte Rolle nicht aktualisieren können, stellen Sie sicher, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle mit der Berechtigung `Microsoft.Authorization/roleDefinition/write`, wie z. B. [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator), zugewiesen ist.
 - Wenn Sie eine benutzerdefinierte Rolle nicht löschen können und die Fehlermeldung „There are existing role assignments referencing role (code: RoleDefinitionHasAssignments)“ (Es sind Rollenzuweisungen vorhanden, die auf die Rolle verweisen (Code: RoleDefinitionHasAssignments)) angezeigt wird, wird die benutzerdefinierte Rolle noch von Rollenzuweisungen verwendet. Entfernen Sie die entsprechenden Rollenzuweisungen, und wiederholen Sie anschließend den Löschvorgang für die benutzerdefinierte Rolle.
 - Wird beim Erstellen einer neuen benutzerdefinierten Rolle die Fehlermeldung „Role definition limit exceeded. No more role definitions can be created (code: RoleDefinitionLimitExceeded)“ (Limit für Rollendefinition überschritten. Es können keine weiteren Rollendefinitionen erstellt werden (Code: RoleDefinitionLimitExceeded)) angezeigt, löschen Sie alle nicht verwendeten benutzerdefinierten Rollen. Azure unterstützt bis zu **5.000** benutzerdefinierte Rollen in einem Verzeichnis. (Für Azure Deutschland und Azure China 21ViaNet beträgt das Limit 2.000 benutzerdefinierte Rollen.)
@@ -135,7 +138,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Wenn Sie diese Rollenzuweisung mit der Azure CLI anzeigen, ist `principalName` möglicherweise leer. Beispiel: [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) gibt eine Rollenzuweisung zurück, die der folgenden Ausgabe ähnelt:
+Wenn Sie diese Rollenzuweisung mit der Azure CLI anzeigen, ist `principalName` möglicherweise leer. Beispiel: [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list) gibt eine Rollenzuweisung zurück, die der folgenden Ausgabe ähnelt:
 
 ```
 {

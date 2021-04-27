@@ -1,5 +1,5 @@
 ---
-title: Kontingente und Grenzwerte für Speech-Dienste
+title: Speech-Dienst – Kontingente und Limits
 titleSuffix: Azure Cognitive Services
 description: Kurzübersicht, ausführliche Beschreibung und bewährte Methoden im Zusammenhang mit Kontingenten und Grenzwerten für Azure Cognitive Speech-Dienste
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f851d7999b063a2b1334564902d81343e3789439
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937055"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011172"
 ---
-# <a name="speech-services-quotas-and-limits"></a>Kontingente und Grenzwerte für Speech-Dienste
+# <a name="speech-service-quotas-and-limits"></a>Speech-Dienst – Kontingente und Limits
 
 Dieser Artikel enthält eine Kurzübersicht und eine **ausführliche Beschreibung** der Kontingente und Grenzwerte für Azure Cognitive Speech-Dienste für alle [Tarife](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Außerdem finden Sie hier einige bewährte Methoden zur Vermeidung der Anforderungsdrosselung. 
 
@@ -98,7 +98,11 @@ In den nächsten Abschnitten werden bestimmte Kontingentanpassungsfälle beschri
 Zu [Sprachsynthese: Erhöhen des Grenzwerts für gleichzeitige Transkriptionsanforderungen für Custom Voice](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)
 
 ### <a name="speech-to-text-increasing-online-transcription-concurrent-request-limit"></a>Spracherkennung: Erhöhen des Grenzwerts für gleichzeitige Anforderungen bei der Onlinetranskription
-Standardmäßig ist die Anzahl gleichzeitiger Anforderungen auf 20 pro Speech-Ressource (Basismodell) oder pro benutzerdefiniertem Endpunkt (benutzerdefiniertes Modell) beschränkt. Im Tarif „Standard“ kann diese Menge erhöht werden. Machen Sie sich vor dem Übermitteln der Anforderung mit dem Material in [diesem Abschnitt](#detailed-description-quota-adjustment-and-best-practices) und mit [diesen bewährten Methoden](#general-best-practices-to-mitigate-throttling-during-autoscaling) vertraut.
+Standardmäßig ist die Anzahl gleichzeitiger Anforderungen auf 100 pro Speech-Ressource (Basismodell) und auf 20 pro benutzerdefiniertem Endpunkt (benutzerdefiniertes Modell) beschränkt. Im Tarif „Standard“ kann diese Menge erhöht werden. Machen Sie sich vor dem Übermitteln der Anforderung mit dem Material in [diesem Abschnitt](#detailed-description-quota-adjustment-and-best-practices) und mit [diesen bewährten Methoden](#general-best-practices-to-mitigate-throttling-during-autoscaling) vertraut.
+
+>[!NOTE]
+> Beachten Sie bei der Verwendung von benutzerdefinierten Modelle, dass eine Speech-Ressource vielen benutzerdefinierten Endpunkten zugeordnet sein kann, die viele benutzerdefinierte Modellimplementierungen hosten. Für jeden benutzerdefinierten Endpunkt wird bei der Erstellung die Standardanzahl der Beschränkung für gleichzeitige Anforderungen (20) festgelegt. Wenn Sie diese anpassen möchten, müssen Sie die Anpassung für jeden benutzerdefinierten Endpunkt **separat** vornehmen. Beachten Sie auch, dass der Wert der Anzahl der Beschränkung für gleichzeitige Anforderungen für das Basismodell einer Speech-Ressource **keine** Auswirkungen auf die benutzerdefinierten Endpunkte hat, die dieser Ressource zugeordnet sind.
+
 
 Eine Erhöhung des Grenzwerts für gleichzeitige Anforderungen wirkt sich **nicht** direkt auf Ihre Kosten aus. Bei den Speech-Diensten zahlen Sie nur für Ihre tatsächliche Nutzung. Der Grenzwert gibt an, wie hoch der Dienst skaliert werden kann, bevor Ihre Anforderungen gedrosselt werden.
 

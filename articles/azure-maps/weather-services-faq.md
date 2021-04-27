@@ -1,6 +1,6 @@
 ---
-title: Häufig gestellte Fragen (FAQ) zu Microsoft Azure Maps-Wetterinfodiensten (Vorschau)
-description: Im Folgenden finden Sie Antworten auf häufig gestellte Fragen zu den Daten und Funktionen der Azure Maps-Wetterinfodienste (Vorschau).
+title: Häufig gestellte Fragen (FAQ) zu Microsoft Azure Maps-Wetterinfodiensten
+description: Hier finden Sie Antworten auf häufig gestellte Fragen zu den Daten und Funktionen der Azure Maps-Wetterinfodienste.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -8,18 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 440ff94f4d5f3514d97d3e76299b60e462cebff3
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678128"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257550"
 ---
-# <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Microsoft Azure Maps-Wetterinfodiensten (Vorschau)
-
-> [!IMPORTANT]
-> Die Azure Maps-Wetterinfodienste befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="azure-maps-weather-services-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Maps-Wetterinfodiensten
 
 In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu den Daten und Funktionen der Azure Maps-[Wetterinfodienste](/rest/api/maps/weather). Die folgenden Themen werden erörtert:
 
@@ -55,7 +51,7 @@ Diese Datasets werden in Echtzeit auf ihre Genauigkeit für das digitale Vorhers
 
 Für das Erstellen globaler Vorhersagen werden zahlreiche Leitsysteme für Wettervorhersagen genutzt. Über 150 numerische Vorhersagemodelle mit externen und internen Datasets werden täglich verwendet. Dazu gehören staatliche Modelle, z. B. vom Europäischen Zentrum für mittelfristige Wettervorhersage (EZMW) und das U.S. Global Forecast System (GFS). Zusätzlich bezieht AccuWeather auch proprietäre hochauflösende Modelle ein, die Vorhersagen auf bestimmte Orte und strategische regionale Bereiche herunterskalieren, um das Wetter noch genauer vorherzusagen. Die spezifischen Kombinations- und Gewichtungsalgorithmen von AccuWeather wurden in den letzten Jahrzehnten entwickelt. Diese Algorithmen nutzen die zahlreichen Vorhersageeingaben optimal und liefern äußert genaue Vorhersagen.
 
-## <a name="weather-services-preview-coverage-and-availability"></a>Umfang und Verfügbarkeit der Wetterinfodienste (Vorschau)
+## <a name="weather-services-coverage-and-availability"></a>Umfang und Verfügbarkeit der Wetterinfodienste
 
 **Welchen Umfang kann ich für verschiedene Länder und Regionen erwarten?**
 
@@ -77,11 +73,11 @@ Die Vorhersage-APIs in Azure Maps werden bis zu 30 Minuten zwischengespeichert.
 
 ## <a name="developing-with-azure-maps-sdks"></a>Entwickeln mit Azure Maps SDKs
 
-**Bietet das Azure Maps Web SDK native Unterstützung für die Integration von Wetterinfodiensten (Vorschau)?**
+**Bietet das Azure Maps Web SDK native Unterstützung für die Integration von Wetterinfodiensten?**
 
 Das Web SDK für Azure Maps stellt das Modul „Dienste“ bereit. Das Modul „Dienste“ ist eine Hilfsbibliothek, die die Verwendung der REST-Dienste von Azure Maps in Web- oder Node.js-Anwendungen vereinfacht, indem JavaScript oder TypeScript verwendet wird. Informationen zu den ersten Schritten finden Sie in unserer [Dokumentation](./how-to-use-services-module.md).
 
-**Bietet das Azure Maps Android SDK native Unterstützung für die Integration von Wetterinfodiensten (Vorschau)?**
+**Bietet das Azure Maps Android SDK native Unterstützung für die Integration von Wetterinfodiensten?**
 
 Die Azure Maps Android SDKs unterstützen Mercator-Kachelebenen, die die x/y/Zoom-Notation, die Quad-Key-Notation oder die EPSG 3857-Notation mit Begrenzungsrahmen verwenden können.
 
@@ -103,7 +99,7 @@ Ja. Zusätzlich zu den Radar- und Satellitenkacheln in Echtzeit können Azure Ma
 
 **Werden Symbole für unterschiedliche Wetterbedingungen angeboten?**
 
-Ja. Die Symbole und die entsprechenden Codes finden Sie [hier](./weather-services-concepts.md#weather-icons). Beachten Sie, dass nur einige der APIs des Wetterinfodiensts (Vorschau), z. B. die [API zum Abrufen der aktuellen Bedingungen](/rest/api/maps/weather/getcurrentconditionspreview), den *iconCode* in der Antwort zurückgeben. Weitere Informationen finden Sie im Open-Source-[Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location) zum Abrufen der aktuellen Wetterbedingungen.
+Ja. Die Symbole und die entsprechenden Codes finden Sie [hier](./weather-services-concepts.md#weather-icons). Beachten Sie, dass nur einige der APIs des Wetterinfodiensts (Vorschau), z. B. die [API zum Abrufen der aktuellen Bedingungen](/rest/api/maps/weather/getcurrentconditions), den *iconCode* in der Antwort zurückgeben. Weitere Informationen finden Sie im Open-Source-[Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location) zum Abrufen der aktuellen Wetterbedingungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -114,15 +110,15 @@ Wenn Sie in diesen FAQs keine Antwort auf Ihre Frage finden, können Sie sich ü
 * Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte [Hilfe](https://portal.azure.com/) die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage** aus.
 * [Azure Maps UserVoice](https://feedback.azure.com/forums/909172-azure-maps) zum Übermitteln von Funktionsanfragen.
 
-Informationen zum Anfordern von Echtzeit- und prognostizierten Wetterdaten mit Azure Maps-Wetterinfodiensten (Vorschau):
+Informationen zum Anfordern von Echtzeitwetterdaten und prognostizierten Wetterdaten mit Azure Maps-Wetterinfodiensten:
 > [!div class="nextstepaction"]
 > [Anfordern von Echtzeitwetterdaten](how-to-request-weather-data.md)
 
-Konzepte für Azure Maps-Wetterinfodienste (Vorschau):
+Artikel zu Konzepten von Azure Maps-Wetterinfodiensten:
 > [!div class="nextstepaction"]
 > [Konzepte von Wetterdiensten](weather-coverage.md)
 
-Machen Sie sich mit der API-Dokumentation für Azure Maps-Wetterinfodienste (Vorschau) vertraut:
+Machen Sie sich mit der API-Dokumentation für Azure Maps-Wetterinfodienste vertraut:
 
 > [!div class="nextstepaction"]
 > [Azure Maps-Wetterinfodienste](/rest/api/maps/weather)

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/17/2021
+ms.date: 03/11/2021
 ms.author: aahi
-ms.openlocfilehash: a376b050d79709885e3542d330bb6b1eea48d046
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a74c0cad971389168d643c9504f5bb809438a1ea
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750282"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106098038"
 ---
 ### <a name="financial-account-identification"></a>Identifikation bei Finanzkonten
 
@@ -34,10 +34,19 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        ABA-Nummern (American Bankers Association) für den Zahlungsverkehr mit US-amerikanischen Banken.
+        ABA-Nummern (American Bankers Association) für den Zahlungsverkehr mit US-amerikanischen Banken. Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ABARoutingNumber` hinzu. Auch in der API-Antwort wird `ABARoutingNumber` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+    :::column span="2":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
+
 
 #### <a name="category-swift-code"></a>Kategorie: SWIFT-Code
 
@@ -53,9 +62,17 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        SWIFT-Codes in Zahlungsanweisungen.
+        SWIFT-Codes in Zahlungsanweisungen. Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `SWIFTCode` hinzu. In der API-Antwort wird `SWIFTCode` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+    :::column span="2":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt`, `pt-br`, `ja`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="category-credit-card"></a>Kategorie: Kreditkarte
@@ -72,9 +89,17 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        Kreditkartennummern 
-      
+        Kreditkartennummern Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CreditCardNumber` hinzu. In der API-Antwort wird `CreditCardNumber` zurückgegeben, falls es erkannt wird.
+
     :::column-end:::
+    :::column span="2":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt`, `pt-br`, `ja`, `zh-hans`, `ja`, `ko`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="category-international-banking-account-number-iban"></a>Kategorie: IBAN (International Banking Account Number) 
@@ -91,9 +116,17 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        IBAN-Codes in Zahlungsanweisungen.
+        IBAN-Codes in Zahlungsanweisungen. Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `InternationlBankingAccountNumber` hinzu. In der API-Antwort wird `InternationlBankingAccountNumber` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+    :::column span="2":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="government-and-countryregion-specific-identification"></a>Behördliche und landes-/regionsspezifische Informationen zur Identifikation
@@ -111,9 +144,21 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
     :::column span="":::
         **Entität**
 
-        Nationale argentinische ID-Nummer (DNI)
+        Nationale argentinische ID-Nummer (DNI) 
 
     :::column-end:::
+    :::column span="2":::
+        **Details** (Auch mit `domain=phi` zurückgegeben.)
+        
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ARNationalIdentityNumber` hinzu. In der API-Antwort wird `ARNationalIdentityNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -126,6 +171,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Österreichischer Personalausweis
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ATIdentityCard` hinzu. In der API-Antwort wird `ATIdentityCard` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -133,7 +190,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Österreichische Abgabenkontonummer
 
     :::column-end:::
+    :::column span="2":::
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ATTaxIdentificationNumber` hinzu. In der API-Antwort wird `ATTaxIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -141,6 +207,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Österreichische Umsatzsteuer-Identifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ATValueAddedTaxNumber` hinzu. In der API-Antwort wird `ATValueAddedTaxNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -154,7 +230,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Australische Bankkontonummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AUDriversLicenseNumber` hinzu. In der API-Antwort wird `AUDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -162,7 +249,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Australische Geschäftsnummer
 
     :::column-end:::
+    :::column span="2":::
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AUBusinessNumber` hinzu. In der API-Antwort wird `AUBusinessNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -170,7 +266,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Australische Unternehmensnummer
 
     :::column-end:::
+    :::column span="2":::
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AUCompanyNumber` hinzu. In der API-Antwort wird `AUCompanyNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -178,6 +283,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Australischer Führerschein  
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AUDriversLicense` hinzu. In der API-Antwort wird `AUDriversLicense` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -185,6 +300,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Australische Krankenversicherungsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AUMedicalAccountNumber` hinzu. In der API-Antwort wird `AUMedicalAccountNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -192,15 +317,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Australische Reisepassnummer
 
     :::column-end:::
+    :::column span="2":::
 
-:::row-end:::
-:::row:::
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ATPassportNumber` hinzu. In der API-Antwort wird `ATPassportNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
     :::column span="":::
 
-        Australische Reisepassnummer
-
-    :::column-end:::
-
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -208,7 +334,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Australische Steuernummer
 
     :::column-end:::
+    :::column span="2":::
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ATTaxIdentificationNumber` hinzu. In der API-Antwort wird `ATTaxIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -221,6 +356,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Belgische Nationalregisternummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `BENationalNumber` hinzu. In der API-Antwort wird `BENationalNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -228,7 +375,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Belgische Umsatzsteuer-Identifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `BEValueAddedTaxNumber` hinzu. In der API-Antwort wird `BEValueAddedTaxNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -240,7 +396,21 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
 
         Brasilianische Nummer juristischer Personen (CNPJ)
 
+        
+
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `BRLegalEntityNumber` hinzu. In der API-Antwort wird `BRLegalEntityNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -248,7 +418,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Brasilianische CPF-Nummer
 
     :::column-end:::
+    :::column span="2":::
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `BRCPFNumber` hinzu. In der API-Antwort wird `BRCPFNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -256,6 +435,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Nationale brasilianische ID-Karte (RG)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `BRNationalIDRG` hinzu. In der API-Antwort wird `BRNationalIDRG` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="canada"></a>Canada
@@ -267,7 +456,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Kanadische Bankkontonummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CABankAccountNumber` hinzu. In der API-Antwort wird `CABankAccountNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -275,13 +475,38 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Kanadische Führerscheinnummer
 
     :::column-end:::
+
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CADriversLicenseNumber` hinzu. In der API-Antwort wird `CADriversLicenseNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
         Nummer des kanadischen Gesundheitsdiensts
 
+        
     :::column-end:::
+
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CAHealthServiceNumber` hinzu. In der API-Antwort wird `CAHealthServiceNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -289,6 +514,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Kanadische Reisepassnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CAPassportNumber` hinzu. In der API-Antwort wird `CAPassportNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -296,7 +531,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Persönliche kanadische Krankenversicherungsnummer (PHIN, Personal Health Identification Number)
 
     :::column-end:::
+    :::column span="2":::
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CAPersonalHealthIdentification` hinzu. In der API-Antwort wird `CAPersonalHealthIdentification` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -304,6 +548,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Kanadische Sozialversicherungsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CASocialInsuranceNumber` hinzu. In der API-Antwort wird `CASocialInsuranceNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="chile"></a>Chile 
@@ -315,6 +569,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Chilenische Personalausweisnummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CLIdentityCardNumber` hinzu. In der API-Antwort wird `CLIdentityCardNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="china"></a>China
@@ -326,6 +592,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Personalausweisnummer für Personen mit Wohnsitz in China (VRC)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CNResidentIdentityCardNumber` hinzu. In der API-Antwort wird `CNResidentIdentityCardNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `zh-hans`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -338,6 +616,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         EU-Debitkartennummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUDebitCardNumber` hinzu. In der API-Antwort wird `EUDebitCardNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -345,6 +635,33 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         EU-Führerscheinnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUDriversLicenseNumber` hinzu. In der API-Antwort wird `EUDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        EU-GPU-Koordinaten
+
+    :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUGPSCoordinates` hinzu. In der API-Antwort wird `EUGPSCoordinates` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -352,6 +669,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         EU-Personalausweisnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUNationalIdentificationNumber` hinzu. In der API-Antwort wird `EUNationalIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -359,6 +686,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         EU-Reisepassnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUPassportNumber` hinzu. In der API-Antwort wird `EUPassportNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -366,6 +703,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         EU-Sozialversicherungsnummer (SSN) oder entsprechende ID
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUSocialSecurityNumber` hinzu. In der API-Antwort wird `EUSocialSecurityNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -373,13 +720,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         EU-Steueridentifikationsnummer (TIN)
 
     :::column-end:::
-:::row-end:::
-:::row:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `EUTaxIdentificationNumber` hinzu. In der API-Antwort wird `EUTaxIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
     :::column span="":::
 
-        EU-GPS-Koordinaten
-
-    :::column-end:::
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="france"></a>Frankreich
@@ -391,6 +741,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Französische Führerscheinnummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `FRDriversLicenseNumber` hinzu. In der API-Antwort wird `FRDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -398,6 +760,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Französische Krankenversicherungsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `FRHealthInsuranceNumber` hinzu. In der API-Antwort wird `FRHealthInsuranceNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -405,6 +777,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Französischer Personalausweis (Carte Nationale d'Identité, CNI)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `FRNationalID` hinzu. In der API-Antwort wird `FRNationalID` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -412,6 +794,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Französische Reisepassnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `FRPassportNumber` hinzu. In der API-Antwort wird `FRPassportNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -419,6 +811,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Französische Sozialversicherungsnummer (NIRPP)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `FRSocialSecurityNumber` hinzu. In der API-Antwort wird `FRSocialSecurityNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -426,6 +828,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Französische Steueridentifikationsnummer (SPI)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `FRTaxIdentificationNumber` hinzu. In der API-Antwort wird `FRTaxIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -433,6 +845,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Französische Umsatzsteuer-Identifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `FRValueAddedTaxNumber` hinzu. In der API-Antwort wird `FRValueAddedTaxNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="germany"></a>Deutschland
@@ -444,6 +866,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Deutsche Führerscheinnummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `DEDriversLicenseNumber` hinzu. In der API-Antwort wird `DEDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `de` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -451,6 +885,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Deutsche Personalausweisnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `DEIdentityCardNumber` hinzu. In der API-Antwort wird `DEIdentityCardNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -458,6 +902,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Deutsche Reisepassnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `DEPassportNumber` hinzu. In der API-Antwort wird `DEPassportNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -465,6 +919,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Deutsche Steueridentifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `DETaxIdentificationNumber` hinzu. In der API-Antwort wird `DETaxIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -472,6 +936,17 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Deutsche Umsatzsteuer-Identifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `DEValueAddedNumber` hinzu. In der API-Antwort wird `DEValueAddedNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="hong-kong"></a>Hongkong
@@ -483,6 +958,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         ID-Kartennummer aus Hongkong (HKID)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `HKIdentityCardNumber` hinzu. In der API-Antwort wird `HKIdentityCardNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="hungary"></a>Ungarn
@@ -494,6 +981,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Ungarische persönliche ID-Nummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `HUPersonalIdentificationNumber` hinzu. In der API-Antwort wird `HUPersonalIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -501,6 +1000,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Ungarische Steueridentifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `HUTaxIdentificationNumber` hinzu. In der API-Antwort wird `HUTaxIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -508,6 +1017,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Ungarische Umsatzsteuer-Identifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `HUValueAddedNumber` hinzu. In der API-Antwort wird `HUValueAddedNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="india"></a>Indien
@@ -519,6 +1038,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Indische PAN (Permanent Account Number)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `INPermanentAccount` hinzu. In der API-Antwort wird `INPermanentAccount` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -526,6 +1057,17 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Indische eindeutige ID-Nummer (Aadhaar)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `INUniqueIdentificationNumber` hinzu. In der API-Antwort wird `INUniqueIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -538,6 +1080,19 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Indonesische ID-Kartennummer (KTP)
 
     :::column-end:::
+    :::column span="2":::
+
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `IDIdentityCardNumber` hinzu. In der API-Antwort wird `IDIdentityCardNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="ireland"></a>Irland
@@ -549,6 +1104,36 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Irische Sozialversicherungsnummer (PPS, Personal Public Service)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `IEPersonalPublicServiceNumber` hinzu. In der API-Antwort wird `IEPersonalPublicServiceNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+ 
+        Irische Sozialversicherungsnummer (Personal Public Service, PPS), Version 2
+
+    :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `IEPersonalPublicServiceNumberV2` hinzu. In der API-Antwort wird `IEPersonalPublicServiceNumberV2` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="israel"></a>Israel
@@ -560,6 +1145,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Nationale israelische ID-Nummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ILNationalID` hinzu. In der API-Antwort wird `ILNationalID` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -567,6 +1164,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Israelische Bankkontonummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ILBankAccountNumber` hinzu. In der API-Antwort wird `ILBankAccountNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="italy"></a>Italien
@@ -578,6 +1185,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Italienische Führerscheinnummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ITDriversLicenseNumber` hinzu. In der API-Antwort wird `ITDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `it`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -585,6 +1204,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Italienische Steuernummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ITFiscalCode` hinzu. In der API-Antwort wird `ITFiscalCode` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `it`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -592,6 +1221,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Italienische Umsatzsteuer-Identifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ITValueAddedTaxNumber` hinzu. In der API-Antwort wird `ITValueAddedTaxNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `it`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -604,7 +1243,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Japanische Bankkontonummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPBankAccountNumber` hinzu. In der API-Antwort wird `JPBankAccountNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -612,6 +1262,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Japanische Führerscheinnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPDriversLicenseNumber` hinzu. In der API-Antwort wird `JPDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -619,6 +1279,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Japanische „Meine Nummer“ (persönlich)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPMyNumberPersonal` hinzu. In der API-Antwort wird `JPMyNumberPersonal` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -626,6 +1296,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Japanische „Meine Nummer“ (geschäftlich)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPMyNumberCorporate` hinzu. In der API-Antwort wird `JPMyNumberCorporate` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -633,6 +1313,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Japanische Melderegisternummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ITValueAddedTaxNumber` hinzu. In der API-Antwort wird `ITValueAddedTaxNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+     `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -640,6 +1330,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Japanische Personalausweisnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPResidenceCardNumber` hinzu. In der API-Antwort wird `JPResidenceCardNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -647,6 +1347,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Japanische Sozialversicherungsnummer (SIN)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPSocialInsuranceNumber` hinzu. In der API-Antwort wird `JPSocialInsuranceNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -654,6 +1364,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Japanische Reisepassnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `JPPassportNumber` hinzu. In der API-Antwort wird `JPPassportNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="luxembourg"></a>Luxemburg
@@ -665,6 +1385,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Luxemburgische nationale Identifikationsnummer (natürliche Personen)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `LUNationalIdentificationNumberNatural` hinzu. In der API-Antwort wird `LUNationalIdentificationNumberNatural` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -672,6 +1404,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Luxemburgische nationale Identifikationsnummer (juristische Personen)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `LUNationalIdentificationNumberNonNatural` hinzu. In der API-Antwort wird `LUNationalIdentificationNumberNonNatural` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="malta"></a>Malta
@@ -683,6 +1425,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Maltesische ID-Kartennummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `MTIdentityCardNumber` hinzu. In der API-Antwort wird `MTIdentityCardNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -690,6 +1444,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Maltesische Steueridentifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `MTTaxIDNumber` hinzu. In der API-Antwort wird `MTTaxIDNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -702,6 +1466,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Neuseeländische Bankkontonummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `NZBankAccountNumber` hinzu. In der API-Antwort wird `NZBankAccountNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -709,6 +1485,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Neuseeländische Führerscheinnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `NZDriversLicenseNumber` hinzu. In der API-Antwort wird `NZDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -716,6 +1502,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Neuseeländische Steuernummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `NZInlandRevenueNumber` hinzu. In der API-Antwort wird `NZInlandRevenueNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -723,6 +1519,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Neuseeländische Nummer des Gesundheitsministeriums
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `NZMinistryOfHealthNumber` hinzu. In der API-Antwort wird `NZMinistryOfHealthNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -730,6 +1536,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        Neuseeländische Sozialversicherungsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `NZSocialWelfareNumber` hinzu. In der API-Antwort wird `NZSocialWelfareNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -742,6 +1558,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Philippinische einheitliche Mehrzweck-ID-Nummer (Unified Multi-Purpose ID)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `PHUnifiedMultiPurposeIDNumber` hinzu. In der API-Antwort wird `PHUnifiedMultiPurposeIDNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="portugal"></a>Portugal 
@@ -753,6 +1581,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Portugiesische ID-Kartennummer (Citizen Card)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `PTCitizenCardNumber` hinzu. In der API-Antwort wird `PTCitizenCardNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `pt-pt`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -760,6 +1600,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        Portugiesische Steueridentifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `PTTaxIdentificationNumber` hinzu. In der API-Antwort wird `PTTaxIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `pt-pt`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="singapore"></a>Singapur
@@ -771,6 +1621,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Singapur: Nationale Registrierungs-ID-Kartennummer (NRIC)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `PTTaxIdentificationNumber` hinzu. In der API-Antwort wird `PTTaxIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `zh-hans`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -783,6 +1645,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Südafrikanische ID-Nummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ZAIdentificationNumber` hinzu. In der API-Antwort wird `ZAIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -795,6 +1669,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Südkoreanische Einwohnerregistrierungsnummer (Resident Registration Number)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `KRResidentRegistrationNumber` hinzu. In der API-Antwort wird `KRResidentRegistrationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `ko`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="spain"></a>Spanien
@@ -806,6 +1692,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Spanischer Personalausweis (DNI)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ESDNI` hinzu. In der API-Antwort wird `ESDNI` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -813,6 +1711,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Spanische Sozialversicherungsnummer (SSN)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ESSocialSecurityNumber` hinzu. In der API-Antwort wird `ESSocialSecurityNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -820,6 +1728,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Spanische Steueridentifikationsnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `ESTaxIdentificationNumber` hinzu. In der API-Antwort wird `ESTaxIdentificationNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
  
 #### <a name="switzerland"></a>Schweiz
@@ -831,6 +1749,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Schweizerische Sozialversicherungsnummer (AHV)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `CHSocialSecurityNumber` hinzu. In der API-Antwort wird `CHSocialSecurityNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `fr`, `de`, `it`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -843,6 +1773,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Nationale taiwanesische ID-Nummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `TWNationalID` hinzu. In der API-Antwort wird `TWNationalID` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -850,6 +1792,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        Taiwanesisches Einwohnerzertifikat (ARC/TARC, Resident Certificate)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `TWResidentCertificate` hinzu. In der API-Antwort wird `TWResidentCertificate` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -857,6 +1809,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         Taiwanesische Reisepassnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `TWPassportNumber` hinzu. In der API-Antwort wird `TWPassportNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="united-kingdom"></a>United Kingdom
@@ -868,6 +1830,19 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         UK- Führerscheinnummer
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `UKDriversLicenseNumber` hinzu. In der API-Antwort wird `UKDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+    :::column-end:::
+    
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -875,6 +1850,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        UK- Wählerverzeichnisnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `UKNationalInsuranceNumber` hinzu. In der API-Antwort wird `UKNationalInsuranceNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -882,6 +1867,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        UK- National Health Service-Nummer (NHS)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `UKNationalHealthNumber` hinzu. In der API-Antwort wird `UKNationalHealthNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -889,6 +1884,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        UK- Sozialversicherungsnummer (NINO)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `UKNationalInsuranceNumber` hinzu. In der API-Antwort wird `UKNationalInsuranceNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -896,7 +1901,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        UK- oder US- Reisepassnummer
 
     :::column-end:::
+    :::column span="2":::
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `USUKPassportNumber` hinzu. In der API-Antwort wird `USUKPassportNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -904,7 +1918,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        Vereinigtes Königreich: Eindeutige Steuerzahlerreferenznummer
 
     :::column-end:::
+    :::column span="2":::
 
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `UKUniqueTaxpayerNumber` hinzu. In der API-Antwort wird `UKUniqueTaxpayerNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -917,6 +1940,18 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
         USA US-Sozialversicherungsnummer (Social Security Number, SSN)
 
     :::column-end:::
+    :::column span="2":::
+        **Details**
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `USSocialSecurityNumber` hinzu. In der API-Antwort wird `USSocialSecurityNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -924,6 +1959,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        USA Führerscheinnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `USDriversLicenseNumber` hinzu. In der API-Antwort wird `USDriversLicenseNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -931,6 +1976,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        US- oder UK- Reisepassnummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `USUKPassportNumber` hinzu. In der API-Antwort wird `USUKPassportNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -938,6 +1993,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        USA Steuernummer (Individual Taxpayer Identification Number, ITIN)
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `USIndividualTaxpayerIdentification` hinzu. In der API-Antwort wird `USIndividualTaxpayerIdentification` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -945,6 +2010,16 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        USA DEA-Nummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `DrugEnforcementAgencyNumber` hinzu. In der API-Antwort wird `DrugEnforcementAgencyNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -952,4 +2027,14 @@ Die folgenden Entitäten sind nach Land/Region gruppiert und aufgelistet:
        USA Bankkontonummer
 
     :::column-end:::
+    :::column span="2":::
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `USBankAccountNumber` hinzu. In der API-Antwort wird `USBankAccountNumber` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::

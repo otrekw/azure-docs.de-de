@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dad46e21b35225855d787c367d112362fc95a463
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90527206"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010540"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Sicherheitsmaßnahmen für Hersteller von Azure IoT-Geräten
 Weil immer mehr Hersteller IoT-Geräte freigeben, ist es hilfreich, eine Anleitung rund um gängige Praktiken zu haben. In diesem Artikel werden empfohlene Sicherheitsmaßnahmen zusammengefasst, die Sie bei der Fertigung von Geräten für den Einsatz beim Azure IoT Device Provisioning-Dienst (DPS) beachten müssen.  
@@ -177,7 +177,7 @@ Installieren Sie an diesem Punkt im Prozess den DPS-Client zusammen mit dem ID-B
     > Wenn Sie ein Software-TPM verwenden, können Sie es jetzt installieren.  Extrahieren Sie gleichzeitig den EK_pub.
 
 #### <a name="step-4-device-is-packaged-and-sent-to-the-warehouse"></a>Schritt 4: Das Gerät wird verpackt und ins Lagerhaus gesendet.
-Ein Gerät kann zwischen 6 und 12 Monate in einem Lagerhaus liegen, bevor es bereitgestellt wird. 
+Ein Gerät kann manchmal bis zu ein Jahr eingelagert sein, bevor es mit DPS bereitgestellt wird.  Wenn sich ein Gerät vor der Bereitstellung lange in einem Lager befunden hat, müssen Kunden, die das Gerät bereitstellen, möglicherweise die Firmware, Software oder abgelaufene Anmeldeinformationen aktualisieren.
 
 #### <a name="step-5-device-is-installed-into-the-location"></a>Schritt 5: Das Gerät wird am Standort installiert.
 Nachdem das Gerät an seinem endgültigen Standort angekommen ist, durchläuft es die automatisierte Bereitstellung mit DPS.

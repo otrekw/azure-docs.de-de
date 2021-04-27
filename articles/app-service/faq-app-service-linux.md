@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82fc5707800e06e3221754bfa29d8e981ccdbd2d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100093997"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782583"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -122,7 +122,7 @@ Geben Sie die vollständige Registrierungs-URL samt `http://` oder `https://` ei
 
 **Welches Format hat der Imagename in der Option zur privaten Registrierung?**
 
-Fügen Sie den vollständigen Namen hinzu, einschließlich der URL der privaten Registrierung (Beispiel: myacr.azurecr.io/dotnet:latest). Namen von Images, die einen benutzerdefinierten Port verwenden, [können nicht über das Portal eingegeben werden](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Verwenden Sie das [Befehlszeilentool](/cli/azure/webapp/config/container#az-webapp-config-container-set)`az`, um `docker-custom-image-name` festzulegen.
+Fügen Sie den vollständigen Namen hinzu, einschließlich der URL der privaten Registrierung (Beispiel: myacr.azurecr.io/dotnet:latest). Namen von Images, die einen benutzerdefinierten Port verwenden, [können nicht über das Portal eingegeben werden](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Verwenden Sie das [Befehlszeilentool](/cli/azure/webapp/config/container#az_webapp_config_container_set)`az`, um `docker-custom-image-name` festzulegen.
 
 **Kann ich mehr als einen Port in meinem benutzerdefinierten Containerimage verfügbar machen?**
 
@@ -143,6 +143,20 @@ Die Porterkennung erfolgt automatisch. Sie können auch eine Anwendungseinstellu
 **Muss ich HTTPS in meinem benutzerdefinierten Container implementieren?**
 
 Nein. Die Plattform handhabt die HTTPS-Beendigung an den freigegebenen Front-Ends.
+
+**Muss ich die PORT-Variable im Code für integrierte Container verwenden?**
+
+Nein. Die PORT-Variable ist aufgrund der automatischen Porterkennung nicht erforderlich. Sollte kein Port erkannt werden, wird standardmäßig Port 80 verwendet.
+Wenn Sie manuell einen benutzerdefinierten Port konfigurieren möchten, können Sie die EXPOSE-Anweisung im Dockerfile sowie die App-Einstellung „WEBSITES_PORT“ mit einem Portwert verwenden, der für den Container gebunden werden soll.
+
+**Muss ich „WEBSITES_PORT“ für benutzerdefinierte Container verwenden?**
+
+Ja. Diese Einstellung ist für benutzerdefinierte Container erforderlich. Wenn Sie manuell einen benutzerdefinierten Port konfigurieren möchten, können Sie die EXPOSE-Anweisung im Dockerfile sowie die App-Einstellung „WEBSITES_PORT“ mit einem Portwert verwenden, der für den Container gebunden werden soll.
+
+**Kann ich „ASPNETCORE_URLS“ im Docker-Image verwenden?**
+
+Ja. Überschreiben Sie die Umgebungsvariable vor dem Start der .NET Core-App.
+Beispiel: Im Skript „init.sh“: export ASPNETCORE_URLS={Ihr Wert}
 
 ## <a name="multi-container-with-docker-compose"></a>Mehrere Container mit Docker Compose
 
@@ -206,3 +220,4 @@ Sie können Ihre Idee im [Web-Apps-Feedbackforum](https://aka.ms/webapps-uservoi
 - [Was ist Azure App Service unter Linux?](overview.md#app-service-on-linux)
 - [Einrichten von Stagingumgebungen in Azure App Service](deploy-staging-slots.md)
 - [Continuous Deployment mit Web-App für Container](./deploy-ci-cd-custom-container.md)
+- [Wissenswertes: Web-Apps und Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)

@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 64015f1f2d6fc3438e55cbdc146ba83492b332e2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 59b766cd5721a9a77b3506cc438ec267e5131979
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066091"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309451"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -44,7 +44,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
 
 + Ihr Benutzerkonto muss über die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu den folgenden Aktionen berechtigt werden, um Ressourcen in einem virtuellen Netzwerk oder Subnetz bereitstellen zu können:
 
-    - „Microsoft.Network/virtualNetworks/join/action“ auf der virtuellen Netzwerkressource
+    - „Microsoft.Network/virtualNetworks/*/read“ für die VNET-Ressource
     - „Microsoft.Network/virtualNetworks/subnet/join/action“ auf der Subnetzressource
 
     Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](../role-based-access-control/built-in-roles.md#networking).
@@ -59,7 +59,7 @@ Wenn Sie ein [verwaltetes Azure Machine Learning-__Computeziel__](concept-comput
 > * Das für die Computeinstanz oder den Computecluster angegebene Subnetz muss für die vorgesehene Anzahl virtueller Computer über genügend nicht zugewiesene IP-Adressen verfügen. Falls das Subnetz nicht genügend zugewiesene IP-Adressen hat, wird ein Computecluster teilweise zugeordnet.
 > * Überprüfen Sie, ob Berechtigungen für die Verwaltung des virtuellen Netzwerks durch Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres virtuellen Netzwerks eingeschränkt werden. Wenn Sie zum Schutz des virtuellen Netzwerks den Datenverkehr einschränken möchten, lassen Sie einige Ports für den Compute-Dienst geöffnet. Weitere Informationen finden Sie im Abschnitt [Erforderliche Ports](#mlcports).
 > * Wenn Sie mehrere Compute-Instanzen oder -cluster in einem einzelnen virtuellen Netzwerk platzieren möchten, müssen Sie möglicherweise eine Kontingenterhöhung für eine oder mehrere Ihrer Ressourcen anfordern.
-> * Wenn das/die Azure Storage-Konto/en für den Arbeitsbereich ebenfalls in einem virtuellen Netzwerk geschützt ist/sind, müssen sie sich im selben virtuellen Netzwerk befinden wie die Azure Machine Learning Compute-Instanz oder der Cluster. 
+> * Wenn das/die Azure Storage-Konto/en für den Arbeitsbereich ebenfalls in einem virtuellen Netzwerk geschützt ist/sind, müssen sie sich im selben virtuellen Netzwerk befinden wie die Azure Machine Learning Compute-Instanz oder der Cluster. Konfigurieren Sie Ihre Speicherfirewalleinstellungen so, dass die Kommunikation mit dem virtuellen Netzwerk und dem Subnetz möglich ist, in dem sich die Compute-Instanz befindet. Hinweis: Das Aktivieren des Kontrollkästchens „Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Konto.“ reicht nicht aus, um die ausgehende Kommunikation der Compute-Instanz zuzulassen.
 > * Damit die Jupyter-Funktionen für Computeinstanzen eingesetzt werden können, stellen Sie sicher, dass die Websocketkommunikation nicht deaktiviert ist. Stellen Sie sicher, dass Ihr Netzwerk WebSocket-Verbindungen mit *.instances.azureml.net und *.instances.azureml.ms zulässt. 
 > * Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur im virtuellen Netzwerk darauf zugegriffen werden. Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für `<instance-name>.<region>.instances.azureml.ms` mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md).
 > * Das zum Bereitstellen des Computeclusters/der Compute-Instanz verwendete Subnetz darf nicht an einen anderen Dienst (beispielsweise ACI) delegiert werden.

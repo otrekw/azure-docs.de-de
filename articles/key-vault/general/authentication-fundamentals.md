@@ -1,18 +1,18 @@
 ---
 title: Grundlagen der Azure Key Vault-Authentifizierung
 description: Erfahren Sie, wie das Authentifizierungsmodell von Key Vault funktioniert.
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 09/25/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 04/15/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0cd2fb341dd790a7628cc3cf6a5bdd87d7c3687
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103572807"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753414"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Grundlagen der Key Vault-Authentifizierung
 
@@ -104,7 +104,7 @@ Allerdings lassen klassische Zugriffsrichtlinien keine Berechtigungen auf Objekt
 > [!IMPORTANT]
 > Klassische Key Vault-Zugriffsrichtlinien und Azure Active Directory-Rollenzuweisungen sind voneinander unabhängig. Wenn Sie einem Sicherheitsprinzipal die Rolle „Mitwirkender“ auf Abonnementebene zuweisen, hat er nicht automatisch die Berechtigung, Vorgänge auf Datenebene für jeden Schlüsseltresor innerhalb des Bereichs des Abonnements auszuführen. Dem Sicherheitsprinzipal müssen weiterhin (eventuell auch durch sich selbst) Berechtigungen über Zugriffsrichtlinien gewährt werden, damit er Vorgänge auf Datenebene ausführen kann.
 
-### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>Zugriff auf Datenebene – Option 2:  Azure RBAC für Key Vault (Vorschauversion)
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault"></a>Zugriff auf Datenebene – Option 2: Azure RBAC für Key Vault
 
 Eine neue Möglichkeit zum Gewähren des Zugriffs auf Datenebene für einen Schlüsseltresor stellt die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC) für Key Vault dar.
 
@@ -119,7 +119,7 @@ Key Vault-Rollenzuweisungen sind verschiedene in Azure integrierte Rollen mit al
 
 Weitere Informationen zu Azure RBAC für Key Vault finden Sie in den folgenden Dokumenten:
 
-* Azure RBAC für Key Vault [Link](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* Azure RBAC für Key Vault [Link](rbac-guide.md)
 * Azure RBAC-Rollen für Key Vault [Link](../../role-based-access-control/built-in-roles.md#key-vault-administrator)
 
 ## <a name="configure-key-vault-firewall"></a>Konfigurieren der Key Vault-Firewall

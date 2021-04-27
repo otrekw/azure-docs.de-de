@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: dfabb3ef521b496a073d502efd4fd672cfcf3b8c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ef8b4ddcbf09fa3ec0e3b07ae797693aed095c88
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597739"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104965"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurieren von „VMs außerhalb der Geschäftszeiten starten/beenden“
 
@@ -57,7 +57,7 @@ Sie können die Aktion entweder für ein Abonnement und eine Ressourcengruppe od
     > [!NOTE]
     > Der Wert für **ResourceGroup-Zielnamen** wird als der Wert für sowohl `External_Start_ResourceGroupNames` als auch `External_Stop_ResourceGroupNames` gespeichert. Für weitere Granularität können Sie jede dieser Variablen so ändern, dass sie für unterschiedliche Ressourcengruppen gelten. Verwenden Sie für Startaktion `External_Start_ResourceGroupNames` und für die Beendigungsaktion `External_Stop_ResourceGroupNames`. VMs werden automatisch den Zeitplänen zum Starten und Beenden hinzugefügt.
 
-## <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a><a name="tags"></a>Szenario 2: Starten/Beenden von VMs der Reihe nach mithilfe von Tags
+## <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a><a name="tags"></a>Szenario 2: Starten/Beenden virtueller Computer der Reihe nach mithilfe von Tags
 
 In einer Umgebung mit mehreren Komponenten auf mehreren VMs, die eine verteilte Workload unterstützen, spielt die Reihenfolge, in der Komponenten nacheinander gestartet und beendet werden, eine wichtige Rolle. 
 
@@ -137,7 +137,7 @@ Um E-Mail-Benachrichtigungen nach dem Bereitstellen von „VMs außerhalb der Ge
 > [!NOTE]
 > Abonnements in der Azure Government-Cloud unterstützen die E-Mail-Funktionalität dieses Features nicht.
 
-1. Klicken Sie im Azure-Portal unter **Überwachung** auf **Warnungen** und anschließend auf **Aktionen verwalten**. Vergewissern Sie sich, dass Sie sich auf der Seite **Aktionen verwalten** auf der Registerkarte **Aktionsgruppen** befinden. Wählen Sie die Aktionsgruppe mit dem Namen **StartStop_VM_Notification** aus.
+1. Klicken Sie im Azure-Portal unter **Überwachung** auf **Warnungen** und anschließend auf **Aktionen verwalten**. Vergewissern Sie sich auf der Seite **Aktionen verwalten**, dass Sie sich auf der Registerkarte **Aktionsgruppen** befinden. Wählen Sie die Aktionsgruppe **StartStop_VM_Notification** aus.
 
     :::image type="content" source="media/automation-solution-vm-management/azure-monitor-sm.png" alt-text="Screenshot der Seite „Azure Monitor-Aktionsgruppen“" lightbox="media/automation-solution-vm-management/azure-monitor-lg.png":::
 

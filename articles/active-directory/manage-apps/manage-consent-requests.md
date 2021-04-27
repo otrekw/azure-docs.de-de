@@ -2,21 +2,21 @@
 title: Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen in Azure Active Directory
 description: Erfahren Sie, wie Sie Einwilligungsanforderungen verwalten, wenn die Benutzereinwilligung deaktiviert oder eingeschränkt ist, und wie Sie eine Anforderung für eine mandantenweite Administratoreinwilligung für eine Anwendung in Azure Active Directory auswerten.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: phsignor
-ms.openlocfilehash: 189a89276d922665dd1ad0fbacc77ba499137048
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3405181f9bace023950e583dfe1a334216bf0aa0
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99253101"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107373943"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen
 
@@ -26,7 +26,7 @@ Nachdem die Endbenutzereinwilligung deaktiviert oder eingeschränkt wurde, müss
 
 ## <a name="process-changes-and-education"></a>Prozessänderungen und Fortbildung
 
- 1. Aktivieren Sie ggf. den [Workflow zur Administratoreinwilligung (Vorschauversion)](configure-admin-consent-workflow.md), um Benutzern zu gestatten, Administratorgenehmigungen direkt über den Einwilligungsbildschirm anzufordern.
+ 1. Aktivieren Sie ggf. den [Workflow zur Administratoreinwilligung](configure-admin-consent-workflow.md), um Benutzern zu gestatten, Administratorgenehmigungen direkt über den Einwilligungsbildschirm anzufordern.
 
  2. Stellen Sie sicher, dass alle Administratoren die [Berechtigungen und das Einwilligungsframework](../develop/consent-framework.md) verstehen und wissen, wie die [Einwilligungsaufforderung](../develop/application-consent-experience.md) funktioniert und wie [eine Anforderung zur mandantenweiten Administratoreinwilligung](#evaluating-a-request-for-tenant-wide-admin-consent) ausgewertet wird.
  3. Überprüfen Sie die vorhandenen Prozesse Ihrer Organisation darauf, wie Benutzer eine Administratorgenehmigung für eine Anwendung anfordern, und nehmen Sie ggf. Aktualisierungen vor. Wenn Prozesse geändert werden:

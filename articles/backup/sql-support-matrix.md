@@ -2,14 +2,14 @@
 title: Azure Backup-Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für die Sicherung von SQL Server auf Azure-VMs mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 354f64eb86cd545860c47562fba7ff43babe72ca
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97734792"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714144"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 
@@ -30,11 +30,10 @@ Mit Azure Backup können Sie SQL Server-Datenbanken auf Azure-VMs sichern, die
 |Einstellung  |Maximales Limit |
 |---------|---------|
 |Anzahl von Datenbanken, die auf einem Server (und in einem Tresor) geschützt werden können    |   2000      |
-|Unterstützte Datenbankgröße (bei größeren Datenbanken können Leistungsprobleme auftreten)   |   2 TB      |
+|Unterstützte Datenbankgröße (bei größeren Datenbanken können Leistungsprobleme auftreten)   |   6 TB*      |
 |Anzahl von in einer Datenbank unterstützten Dateien    |   1000      |
 
->[!NOTE]
-> [Laden Sie den detaillierten Ressourcenplaner herunter](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx). Mit diesem können Sie die ungefähre Anzahl von geschützten Datenbanken berechnen, die basierend auf den VM-Ressourcen, der Bandbreite und der Sicherungsrichtlinie pro Server empfohlen werden.
+_*Der Grenzwert für die Datenbankgröße hängt von der unterstützten Datenübertragungsrate und der Konfiguration des Sicherungszeitlimits ab. Dies ist nicht die harte Grenze. [Erfahren Sie mehr](#backup-throughput-performance) über die Leistung des Sicherungsdurchsatzes._
 
 * SQL Server-Sicherung kann im Azure-Portal oder mit **PowerShell** konfiguriert werden. Die Befehlszeilenschnittstelle wird nicht unterstützt.
 * Die Lösung wird für beide Arten von [Bereitstellungen](../azure-resource-manager/management/deployment-models.md) unterstützt: Azure Resource Manager-VMs und klassische VMs.
@@ -93,6 +92,17 @@ Vollständig | Primär
 Differenziell | Primär
 Log |  Secondary
 Nur vollständig kopieren |  Secondary
+
+## <a name="backup-throughput-performance"></a>Durchsatzleistung bei der Sicherung
+
+Azure Backup unterstützt eine konsistente Datenübertragungsrate von 200 MBit/s für vollständige und differenzielle Sicherungen großer SQL-Datenbanken (von 500 GB). Um die optimale Leistung zu nutzen, stellen Sie Folgendes sicher:
+
+- Die zugrunde liegende VM (mit der SQL Server-Instanz, die die Datenbank hostet) ist mit dem erforderlichen Netzwerkdurchsatz konfiguriert. Wenn der maximale Durchsatz der VM weniger als 200 MBit/s beträgt, kann Azure Backup Daten nicht mit der optimalen Geschwindigkeit übertragen.<br>Außerdem muss für den Datenträger, der die Datenbankdateien enthält, ausreichend Durchsatz bereitgestellt werden. [Erfahren Sie mehr](../virtual-machines/disks-performance.md) über Datenträgerdurchsatz und -leistung auf Azure-VMs. 
+- Prozesse, die auf der VM ausgeführt werden, verbrauchen keine VM-Bandbreite. 
+- Die Sicherungszeitpläne sind auf eine Teilmenge von Datenbanken verteilt. Mehrere Sicherungen, die gleichzeitig auf einer VM ausgeführt werden, teilen sich die Netzwerknutzungsrate zwischen den Sicherungen. [Erfahren Sie mehr](faq-backup-sql-server.yml#can-i-control-how-many-concurrent-backups-run-on-the-sql-server-) über das Steuern der Anzahl gleichzeitiger Sicherungen.
+
+>[!NOTE]
+> [Laden Sie den detaillierten Ressourcenplaner herunter](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx). Mit diesem können Sie die ungefähre Anzahl von geschützten Datenbanken berechnen, die basierend auf den VM-Ressourcen, der Bandbreite und der Sicherungsrichtlinie pro Server empfohlen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

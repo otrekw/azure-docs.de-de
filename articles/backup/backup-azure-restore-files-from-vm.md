@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: c2af279ec7e846316a94e58977e7079305ab9b03
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864889"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579370"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -133,12 +133,12 @@ Stellen Sie außerdem sicher, dass Sie über den [richtigen Computer zum Ausfüh
 
 Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
 
-- `download.microsoft.com`
+- `download.microsoft.com` oder Diensttag `AzureFrontDoor.FirstParty` in NSG
 - Recovery Services-URLs („geo-name“ bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Für öffentliche Azure-Regionen)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Für Azure China 21Vianet)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (für Azure US Government)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (für Azure Deutschland)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (für öffentliche Azure-Regionen) oder Diensttag `AzureBackup` in NSG
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (für Azure China 21Vianet) oder Diensttag `AzureBackup` in NSG
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (für Azure US Government) oder Diensttag `AzureBackup` in NSG
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (für Azure Deutschland) oder Diensttag `AzureBackup` in NSG
 - Ausgehende Ports 53 (DNS), 443, 3260
 
 > [!NOTE]

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9fdaf42f18c320bf841e710b7066451fca24eaae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4033421095ead47e2bd1e97c4f2f42672644d7df
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030986"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364854"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -59,7 +59,7 @@ Es gelten die folgenden Regeln:
 - Die Speicherkonten im Log Analytics-Cluster generieren einen eindeutigen Verschlüsselungsschlüssel für jedes Speicherkonto, der als AEK bezeichnet wird.
 - Der AEK dient zum Ableiten von DEKs, bei denen es sich um die Schlüssel handelt, die zum Verschlüsseln der einzelnen, auf den Datenträger geschriebenen Datenblöcke verwendet werden.
 - Wenn Sie den Schlüssel in Key Vault konfigurieren und im Cluster darauf verweisen, sendet Azure Storage Anforderungen an Azure Key Vault, um den AEK zu packen und zu entpacken und so Verschlüsselungs- und Entschlüsselungsvorgänge für Daten auszuführen.
-- Der KEK verlässt niemals den Key Vault, und im Fall eines HSM-Schlüssels verlässt dieser niemals die Hardware.
+- Ihr KEK verlässt niemals Ihre Key Vault-Instanz.
 - Azure Storage verwendet die der *Clusterressource* zugeordnete verwaltete Identität für die Authentifizierung und den Zugriff auf Azure Key Vault über Azure Active Directory.
 
 ### <a name="customer-managed-key-provisioning-steps"></a>Bereitstellungsschritte für kundenseitig verwaltete Schlüssel
@@ -136,7 +136,7 @@ Cluster unterstützen zwei [Typen verwalteter Identitäten](../../active-directo
   "identity": {
   "type": "UserAssigned",
     "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
       }
   }
   ```
@@ -168,6 +168,9 @@ Wählen Sie in Azure Key Vault die aktuelle Version Ihres Schlüssels aus, um di
 ![Erteilen von Key Vault-Berechtigungen](media/customer-managed-keys/key-identifier-8bit.png)
 
 Aktualisieren Sie KeyVaultProperties im Cluster mit den Schlüsselbezeichnerdetails.
+
+>[!NOTE]
+>Für die Schlüsselrotation stehen zwei Modi zur Verfügung: automatische Rotation oder explizite Aktualisierung der Schlüsselversion. Nutzen Sie die Informationen unter [Schlüsselrotation](#key-rotation) als Entscheidungshilfe.
 
 Der Vorgang ist asynchron und kann einige Zeit in Anspruch nehmen.
 
@@ -266,7 +269,9 @@ Der Clusterspeicher überprüft Ihre Key Vault-Instanz in regelmäßigen Abstän
 
 ## <a name="key-rotation"></a>Schlüsselrotation
 
-Die Rotation des kundenseitig verwalteten Schlüssels erfordert eine explizite Aktualisierung des Clusters mit der neuen Schlüsselversion in Azure Key Vault. [Aktualisieren Sie den Cluster mit Schlüsselbezeichnerdetails.](#update-cluster-with-key-identifier-details) Wenn Sie die neue Schlüsselversion im Cluster nicht aktualisieren, verwendet der Log Analytics-Clusterspeicher weiterhin den vorherigen Schlüssel für die Verschlüsselung. Wenn Sie den alten Schlüssel deaktivieren oder löschen, bevor Sie den neuen Schlüssel im Cluster aktualisieren, wird der Status der [Schlüsselsperrung](#key-revocation) aktiv.
+Für die Schlüsselrotation stehen zwei Modi zur Verfügung: 
+- Automatische Rotation: Wenn Sie Ihren Cluster mit ```"keyVaultProperties"``` aktualisieren, dabei aber die Eigenschaft ```"keyVersion"``` weglassen oder auf ```""``` festlegen, werden vom Speicher automatisch die neuesten Versionen verwendet.
+- Explizite Aktualisierung der Schlüsselversion: Wenn Sie Ihren Cluster aktualisieren und dabei in der Eigenschaft ```"keyVersion"``` eine Schlüsselversion angeben, ist bei allen neuen Schlüsselversionen eine explizite Aktualisierung von ```"keyVaultProperties"``` im Cluster erforderlich. Weitere Informationen finden Sie unter [Aktualisieren des Clusters mit Schlüsselbezeichnerdetails](#update-cluster-with-key-identifier-details). Wenn Sie in Key Vault eine neue Schlüsselversion generieren, sie aber im Cluster nicht aktualisieren, wird vom Log Analytics-Clusterspeicher weiterhin Ihr vorheriger Schlüssel verwendet. Wenn Sie den alten Schlüssel deaktivieren oder löschen, bevor Sie den neuen Schlüssel im Cluster aktualisieren, wird der Status der [Schlüsselsperrung](#key-revocation) aktiv.
 
 Nach der Schlüsselrotation kann auf alle Ihre Daten weiter zugegriffen werden, da Daten immer mit dem Kontoverschlüsselungsschlüssel (Account Encryption Key, AEK) verschlüsselt werden, während AEK nun mit der neuen Version des Schlüsselverschlüsselungsschlüssels (Key Encryption Key, KEK) in Key Vault verschlüsselt wird.
 

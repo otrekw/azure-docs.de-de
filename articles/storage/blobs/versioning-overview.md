@@ -1,62 +1,66 @@
 ---
 title: Blobversionsverwaltung
 titleSuffix: Azure Storage
-description: Die Blob Storage-Versionsverwaltung verwaltet automatisch vorherige Versionen eines Objekts und identifiziert diese durch Zeitstempel. Sie können frühere Versionen eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
+description: Die Blob Storage-Versionsverwaltung verwaltet automatisch vorherige Versionen eines Objekts und identifiziert diese durch Zeitstempel. Sie können eine vorherige Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/09/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 268de3e8ea168ac721362d42149389b9f37c86fe
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380813"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305054"
 ---
 # <a name="blob-versioning"></a>Blobversionsverwaltung
 
-Sie können die Blob Storage-Versionsverwaltung aktivieren, um frühere Versionen eines Objekts automatisch zu verwalten.  Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
-
-Blobversionsverwaltung ist für das Speicherkonto aktiviert und gilt für alle Blobs im Speicherkonto. Nachdem Sie Blobversionsverwaltung für ein Speicherkonto aktiviert haben, werden durch Azure Storage automatisch Versionen für jedes Blob im Speicherkonto verwaltet.
-
-Microsoft empfiehlt die Verwendung von Blobversionsverwaltung, um frühere Versionen eines Blobs für erstklassigen Datenschutz zu verwalten. Verwenden Sie Blobversionsverwaltung nach Möglichkeit anstelle von Blobmomentaufnahmen, um vorherige Versionen zu verwalten. Blobmomentaufnahmen bieten eine ähnliche Funktionalität, da Sie frühere Versionen eines Blobs beibehalten, aber Momentaufnahmen müssen manuell von Ihrer Anwendung verwaltet werden.
-
-Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md).
-
-> [!IMPORTANT]
-> Blobversionsverwaltung kann Ihnen nicht bei der Wiederherstellung nach dem versehentlichen Löschen eines Speicherkontos oder Containers helfen. Um das versehentliche Löschen des Speicherkontos zu verhindern, konfigurieren Sie eine Sperre für die Speicherkontoressource. Weitere Informationen zum Sperren von Azure-Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md). Um Container vor versehentlichem Löschen zu schützen, konfigurieren Sie das vorläufige Löschen von Containern für das Speicherkonto. Weitere Informationen finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md).
+Sie können die Blob Storage-Versionsverwaltung aktivieren, um frühere Versionen eines Objekts automatisch zu verwalten. Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
+## <a name="recommended-data-protection-configuration"></a>Empfohlene Datenschutzkonfiguration
+
+Die Blobversionsverwaltung ist Teil einer umfassenden Datenschutzstrategie für Blobdaten. Microsoft empfiehlt die Aktivierung folgender Datenschutzfeatures, um einen optimalen Schutz Ihrer Blobdaten zu gewährleisten:
+
+- Blobversionsverwaltung zum automatischen Verwalten früherer Versionen eines Blobs. Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden. Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Aktivieren und Verwalten der Blobversionsverwaltung (Vorschau)](versioning-enable.md).
+- Vorläufiges Löschen für Container, um einen gelöschten Container wiederherzustellen. Informationen zum Aktivieren des vorläufigen Löschens für Container finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens für Container (Vorschau)](soft-delete-container-enable.md).
+- Vorläufiges Löschen von Blobs, um ein gelöschtes Blob, eine gelöschte Momentaufnahme oder eine gelöschte Version wiederherzustellen. Informationen zum Aktivieren des vorläufigen Löschens von Blobs finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens von Blobs](soft-delete-blob-enable.md).
+
+Weitere Informationen zu den Datenschutzempfehlungen von Microsoft finden Sie in der [Datenschutzübersicht](data-protection-overview.md).
+
 ## <a name="how-blob-versioning-works"></a>Funktionsweise der Blobversionsverwaltung
 
-Eine Version erfasst den Zustand eines Blobs zu einem bestimmten Zeitpunkt. Wenn Blobversionsverwaltung für ein Speicherkonto aktiviert ist, erstellt Azure Storage automatisch jedes Mal eine neue Version eines Blobs, wenn dieses Blob geändert oder gelöscht wird.
+Eine Version erfasst den Zustand eines Blobs zu einem bestimmten Zeitpunkt. Jede Version wird durch eine Versions-ID identifiziert. Wenn die Blobversionsverwaltung für ein Speicherkonto aktiviert ist, wird von Azure Storage bei der ursprünglichen Erstellung sowie bei jeder Änderung des Blobs automatisch eine neue Version mit einer eindeutigen ID erstellt.
 
-Wenn Sie ein Blob mit aktivierter Versionsverwaltung erstellen, entspricht das neue Blob der aktuellen Version des Blobs (oder des Basisblobs). Wenn Sie dieses Blob anschließend ändern, erstellt Azure Storage eine Version, die den Zustand des Blobs vor der Änderung erfasst. Das geänderte Blob wird zur neuen aktuellen Version. Wenn Sie das Blob ändern, wird jedes Mal eine neue Version erstellt.
+Eine Versions-ID kann die aktuelle Version oder eine vorherige Version identifizieren. Ein Blob kann immer nur eine aktuelle Version haben.
 
-Die folgende Abbildung zeigt, wie Versionen bei Schreib- und Löschvorgängen erstellt werden und wie eine Vorgängerversion auf die aktuelle Version heraufgestuft werden kann:
+Wenn Sie ein neues Blob erstellen, ist nur eine einzelne Version (die aktuelle Version) vorhanden. Wenn Sie ein vorhandenes Blob ändern, wird die aktuelle Version zu einer vorherigen Version. Es wird eine neue Version erstellt, um den aktualisierten Zustand zu erfassen, und diese neue Version ist die aktuelle Version. Wenn Sie ein Blob löschen, wird die aktuelle Version des Blobs zu einer vorherigen Version, und es gibt keine aktuelle Version mehr. Alle vorherigen Versionen des Blobs bleiben erhalten.
+
+Die folgende Abbildung zeigt, wie Versionen bei Schreibvorgängen erstellt werden und wie eine vorherige Version zur aktuellen Version heraufgestuft werden kann:
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Abbildung zur Veranschaulichung der Funktionsweise der Blobversionsverwaltung":::
 
-Wenn eine große Anzahl von Versionen pro Blob vorhanden ist, kann sich die Latenz bei Auflistungsvorgängen für Blobs erhöhen. Microsoft empfiehlt die Beibehaltung von weniger als 1000 Versionen pro Blob. Sie können die Lebenszyklusverwaltung verwenden, um alte Versionen automatisch zu löschen. Weitere Informationen zur Lebenszyklusverwaltung finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](storage-lifecycle-management-concepts.md).
-
-Wenn Sie ein Blob mit aktivierter Versionsverwaltung löschen, erstellt Azure Storage eine Version, die den Zustand des Blobs vor dem Löschen erfasst. Die aktuelle Version des Blobs wird dann gelöscht, aber die Versionen des Blobs bleiben erhalten, sodass sie bei Bedarf wiederhergestellt werden können. 
-
 Blobversionen sind unveränderlich. Inhalte oder Metadaten einer vorhandenen Blobversion können nicht geändert werden.
 
-Die Blobversionsverwaltung ist für Speicherkonten vom Typ „Universell V2“, Blockblobs und Blobs verfügbar. Speicherkonten mit einem hierarchischen Namespace, die für die Verwendung mit Azure Data Lake Storage Gen2 aktiviert sind, werden derzeit nicht unterstützt.
+Wenn eine große Anzahl von Versionen pro Blob vorhanden ist, kann sich die Latenz bei Auflistungsvorgängen für Blobs erhöhen. Microsoft empfiehlt die Beibehaltung von weniger als 1000 Versionen pro Blob. Sie können die Lebenszyklusverwaltung verwenden, um alte Versionen automatisch zu löschen. Weitere Informationen zur Lebenszyklusverwaltung finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](storage-lifecycle-management-concepts.md).
+
+Die Blobversionsverwaltung ist für Standardkonten vom Typ „Allgemein v2“, für Premium-Blockblobkonten und für Legacy-Blobspeicherkonten verfügbar. Speicherkonten mit einem hierarchischen Namespace, die für die Verwendung mit Azure Data Lake Storage Gen2 aktiviert sind, werden derzeit nicht unterstützt.
 
 Version 2019-10-10 und höher der Azure Storage-REST-API unterstützt die Blobversionsverwaltung.
 
+> [!IMPORTANT]
+> Blobversionsverwaltung kann Ihnen nicht bei der Wiederherstellung nach dem versehentlichen Löschen eines Speicherkontos oder Containers helfen. Um das versehentliche Löschen des Speicherkontos zu verhindern, konfigurieren Sie eine Sperre für die Speicherkontoressource. Weitere Informationen zum Sperren eines Speicherkontos finden Sie unter [Anwenden einer Azure Resource Manager-Sperre auf ein Speicherkonto](../common/lock-account-resource.md).
+
 ### <a name="version-id"></a>Versions-ID
 
-Jede Blobversion wird durch eine Versions-ID identifiziert. Der Wert der Versions-ID ist der Zeitstempel, an dem das Blob geschrieben oder aktualisiert wurde. Die Versions-ID wird zum Zeitpunkt der Erstellung der Version zugewiesen.
+Jede Blobversion wird durch eine eindeutige Versions-ID identifiziert. Der Wert der Versions-ID ist der Zeitstempel der Blobaktualisierung. Die Versions-ID wird zum Zeitpunkt der Erstellung der Version zugewiesen.
 
-Sie können Lese- oder Löschvorgänge für eine bestimmte Version eines Blobs durchführen, indem Sie die zugehörige Versions-ID angeben. Wenn Sie die Versions-ID nicht angeben, wird der Vorgang für die aktuelle Version (das Basisblob) ausgeführt.
+Sie können Lese- oder Löschvorgänge für eine bestimmte Version eines Blobs durchführen, indem Sie die zugehörige Versions-ID angeben. Ohne Angabe der Versions-ID wird der Vorgang für die aktuelle Version ausgeführt.
 
 Wenn Sie einen Schreibvorgang zum Erstellen oder Ändern eines Blobs aufrufen, gibt Azure Storage den Header *x-ms-version-id* Header in der Antwort zurück. Dieser Header enthält die Versions-ID für die aktuelle Version des Blobs, das durch den Schreibvorgang erstellt wurde.
 
@@ -66,40 +70,21 @@ Die Versions-ID bleibt für die Lebensdauer der Version gleich.
 
 Wenn Blobversionsverwaltung aktiviert ist, erstellt jeder Schreibvorgang in einem Blob eine neue Version. Zu den Schreibvorgängen zählen [Put Blob](/rest/api/storageservices/put-blob), [Put Block List](/rest/api/storageservices/put-block-list), [Copy Blob](/rest/api/storageservices/copy-blob) und [Set Blob Metadata](/rest/api/storageservices/set-blob-metadata).
 
-Wenn der Schreibvorgang ein neues Blob erstellt, entspricht das sich ergebende Blob der aktuellen Version des Blobs. Wenn der Schreibvorgang ein vorhandenes Blob ändert, werden die neuen Daten im aktualisierten Blob aufgezeichnet. Dies ist die aktuelle Version, und Azure Storage erstellt eine Version, die den vorherigen Zustand des Blobs speichert.
+Wenn der Schreibvorgang ein neues Blob erstellt, entspricht das sich ergebende Blob der aktuellen Version des Blobs. Wenn durch den Schreibvorgang ein vorhandenes Blob geändert wird, wird die aktuelle Version zu einer vorherigen Version, und es wird eine neue aktuelle Version erstellt, um das aktualisierte Blob zu erfassen.
 
-Der Einfachheit halber wird in den in diesem Artikel gezeigten Abbildungen die Versions-ID als einfacher Integerwert angezeigt. In Wirklichkeit ist die Versions-ID ein Zeitstempel. Die aktuelle Version ist blau dargestellt, und vorherige Versionen werden grau dargestellt.
-
-Die folgende Abbildung zeigt, wie sich Schreibvorgänge auf Blobversionen auswirken. Wenn ein Blob erstellt wird, ist dieses Blob die aktuelle Version. Wenn das gleiche Blob geändert wird, wird eine neue Version erstellt, um den vorherigen Zustand des Blobs zu speichern, und das aktualisierte Blob wird zur aktuellen Version.
+Die folgende Abbildung zeigt, wie sich Schreibvorgänge auf Blobversionen auswirken. Der Einfachheit halber wird in den in diesem Artikel gezeigten Abbildungen die Versions-ID als einfacher Integerwert angezeigt. In Wirklichkeit ist die Versions-ID ein Zeitstempel. Die aktuelle Version ist blau dargestellt, und vorherige Versionen werden grau dargestellt.
 
 :::image type="content" source="media/versioning-overview/write-operations-blob-versions.png" alt-text="Abbildung, die zeigt, wie sich Schreibvorgänge auf Blobs mit Versionsangabe auswirken":::
 
 > [!NOTE]
 > Ein Blob, das vor Aktivierung von Versionsverwaltung für das Speicherkonto erstellt wurde, weist keine Versions-ID auf. Wenn dieses Blob geändert wird, wird das geänderte Blob zur aktuellen Version, und es wird eine Version erstellt, um den Zustand des Blobs vor der Aktualisierung zu speichern. Der Version wird eine Versions-ID zugewiesen, die ihre Erstellungszeit angibt.
 
-### <a name="versioning-on-delete-operations"></a>Versionsverwaltung für Löschvorgänge
+Wenn die Blobversionsverwaltung für ein Speicherkonto aktiviert ist, wird durch alle Schreibvorgänge für Blockblobs die Erstellung einer neuen Version ausgelöst. Einzige Ausnahme ist der Vorgang [Put Block](/rest/api/storageservices/put-block) (Block festlegen).
 
-Wenn Sie ein Blob löschen, wird die aktuelle Version des Blobs zu einer früheren Version, und das Basisblob wird gelöscht. Alle vorhandenen früheren Versionen des Blobs bleiben erhalten, wenn das Blob gelöscht wird.
-
-Durch Aufrufen des Vorgangs [Delete Blob](/rest/api/storageservices/delete-blob) Vorgang ohne Versions-ID wird das Basisblob gelöscht. Um eine bestimmte Version zu löschen, geben Sie die ID für diese Version für den Löschvorgang an.
-
-Die folgende Abbildung zeigt die Auswirkung eines Löschvorgangs auf ein Blob mit Versionsangabe:
-
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Abbildung, die das Löschen eines Blobs mit Versionsangabe zeigt":::
-
-Wenn Sie neue Daten in das Blob schreiben, wird eine neue Version des Blobs erstellt. Alle vorhandenen Versionen sind nicht betroffen, wie in der folgenden Abbildung gezeigt.
-
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Abbildung, die die erneute Erstellung eines Blobs mit Versionsangabe nach dem Löschen zeigt":::
-
-### <a name="blob-types"></a>Blobtypen
-
-Wenn Blobversionsverwaltung für ein Speicherkonto aktiviert ist, lösen alle Schreib- und Löschvorgänge für Blockblobs die Erstellung einer neuen Version aus, mit Ausnahme des Vorgangs [Put Block](/rest/api/storageservices/put-block).
-
-Bei Seitenblobs und Anfügeblobs löst nur eine Teilmenge von Schreib- und Löschvorgängen die Erstellung einer Version aus. Dazu zählen die Operationen:
+Bei Seiten- und Anfügeblobs wird die Versionserstellung nur durch einen Teil der Schreibvorgänge ausgelöst. Dazu zählen die Operationen:
 
 - [Put Blob](/rest/api/storageservices/put-blob)
 - [Put Block List](/rest/api/storageservices/put-block-list)
-- [Delete Blob](/rest/api/storageservices/delete-blob)
 - [Set Blob Metadata](/rest/api/storageservices/set-blob-metadata)
 - [Copy Blob](/rest/api/storageservices/copy-blob)
 
@@ -108,7 +93,21 @@ Die folgenden Vorgänge führen nicht zum Erstellen einer neuen Version. Um Änd
 - [Put Page](/rest/api/storageservices/put-page) (Seitenblob)
 - [Append Block](/rest/api/storageservices/append-block) (Anfügeblob)
 
-Alle Versionen eines Blobs müssen denselben Blobtyp aufweisen. Wenn ein Blob über vorherige Versionen verfügt, können Sie ein Blob eines Typs nicht mit einem anderen Typ überschreiben, es sei denn, Sie löschen zuerst das Blob und alle zugehörigen Versionen.
+Alle Versionen eines Blobs müssen denselben Blobtyp aufweisen. Wenn ein Blob über vorherige Versionen verfügt, kann ein Blob eines Typs nicht mit einem anderen Typ überschrieben werden, es sei denn, Sie löschen zuerst das Blob und alle zugehörigen Versionen.
+
+### <a name="versioning-on-delete-operations"></a>Versionsverwaltung für Löschvorgänge
+
+Wenn Sie den Vorgang [Delete Blob](/rest/api/storageservices/delete-blob) (Blob löschen) ohne Angabe einer Versions-ID aufrufen, wird die aktuelle Version zu einer vorherigen Version, und es gibt keine aktuelle Version mehr. Alle vorhandenen vorherigen Versionen des Blobs bleiben erhalten.
+
+Die folgende Abbildung zeigt die Auswirkung eines Löschvorgangs auf ein Blob mit Versionsangabe:
+
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Abbildung, die das Löschen eines Blobs mit Versionsangabe zeigt":::
+
+Wenn Sie eine bestimmte Version eines Blobs löschen möchten, müssen Sie für den Löschvorgang die ID der gewünschten Version angeben. Ist für das Speicherkonto vorläufiges Löschen von Blobs aktiviert, bleibt die Version bis zum Ende des Aufbewahrungszeitraums für vorläufig gelöschte Ressourcen im System erhalten.
+
+Wenn neue Daten in das Blob geschrieben werden, wird eine neue aktuelle Version des Blobs erstellt. Alle vorhandenen Versionen sind nicht betroffen, wie in der folgenden Abbildung gezeigt.
+
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Abbildung, die die erneute Erstellung eines Blobs mit Versionsangabe nach dem Löschen zeigt":::
 
 ### <a name="access-tiers"></a>Zugriffsebenen
 
@@ -132,27 +131,29 @@ Die folgende Abbildung zeigt, wie durch das Ändern eines Blobs nach dem Deaktiv
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blobversionsverwaltung und vorläufiges Löschen
 
-Blobversionsverwaltung und vorläufiges Löschen von Blobs arbeiten zusammen, um Ihnen optimalen Datenschutz zu bieten. Wenn Sie vorläufiges Löschen aktivieren, geben Sie an, wie lange Azure Storage ein vorläufig gelöschtes Blob beibehalten soll. Alle vorläufig gelöschten Blobversionen verbleiben im System und können innerhalb der Beibehaltungsdauer für vorläufiges Löschen wiederhergestellt werden. Weitere Informationen zum vorläufigen Löschen von Blobs finden Sie unter [Vorläufiges Löschen für Azure Storage-Blobs](./soft-delete-blob-overview.md).
+Microsoft empfiehlt, sowohl die Versionsverwaltung als auch vorläufiges Löschen von Blobs für Ihre Speicherkonten zu aktivieren, damit Ihre Daten optimal geschützt sind. Weitere Informationen zum vorläufigen Löschen von Blobs finden Sie unter [Vorläufiges Löschen für Azure Storage-Blobs](./soft-delete-blob-overview.md).
+
+### <a name="overwriting-a-blob"></a>Überschreiben eines Blobs
+
+Wenn die Blobversionsverwaltung und vorläufiges Löschen von Blobs für ein Speicherkonto aktiviert sind, wird durch das Überschreiben eines Blobs automatisch eine neue Version erstellt. Die neue Version wird nicht vorläufig gelöscht und nicht entfernt, wenn die Beibehaltungsdauer für vorläufiges Löschen abläuft. Es werden keine vorläufig gelöschten Momentaufnahmen erstellt.
 
 ### <a name="deleting-a-blob-or-version"></a>Löschen eines Blobs oder einer Version
 
-Vorläufiges Löschen bietet zusätzlichen Schutz beim Löschen von Blobversionen. Wenn sowohl die Versionsverwaltung als auch das vorläufige Löschen für das Speicherkonto aktiviert sind, erstellt Azure Storage beim Löschen eines Blobs eine neue Version, um den Status des Blobs unmittelbar vor dem Löschen zu speichern und die aktuelle Version zu löschen. Die neue Version wird nicht vorläufig gelöscht und nicht entfernt, wenn die Beibehaltungsdauer für vorläufiges Löschen abläuft.
+Wenn die Versionsverwaltung und vorläufiges Löschen für ein Speicherkonto aktiviert sind und Sie ein Blob löschen, wird die aktuelle Version des Blobs zu einer vorherigen Version. Es werden keine neue Version und auch keine vorläufig gelöschten Momentaufnahmen erstellt. Der Aufbewahrungszeitraum für vorläufig gelöschte Ressourcen ist für das gelöschte Blob nicht wirksam.
 
-Wenn Sie eine frühere Version des Blobs löschen, wird die Version vorläufig gelöscht. Die vorläufig gelöschte Version wird während der Beibehaltungsdauer aufbewahrt, die in den Einstellungen für vorläufiges Löschen für das Speicherkonto angegeben wird, und wird dauerhaft gelöscht, wenn die Beibehaltungsdauer für vorläufiges Löschen abläuft.
+Vorläufiges Löschen bietet zusätzlichen Schutz beim Löschen von Blobversionen. Wenn Sie eine vorherige Version des Blobs löschen, wird diese Version vorläufig gelöscht. Die vorläufig gelöschte Version wird beibehalten, bis der Aufbewahrungszeitraum für vorläufig gelöschte Ressourcen verstrichen ist, und dann endgültig gelöscht.
 
-Um eine frühere Version eines Blobs zu entfernen, löschen Sie diese explizit, indem Sie die Versions-ID angeben.
+Wenn Sie eine vorherige Version eines Blobs löschen möchten, rufen Sie den Vorgang **Delete Blob** (Blob löschen) auf, und geben Sie die Versions-ID an.
 
 Die folgende Abbildung zeigt, was geschieht, wenn Sie ein Blob oder eine Blobversion löschen.
 
 :::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Abbildung, die das Löschen einer Version mit aktiviertem vorläufigem Löschen zeigt":::
 
-Wenn Versionsverwaltung und vorläufiges Löschen für ein Speicherkonto aktiviert sind, wird keine vorläufig gelöschte Momentaufnahme erstellt, wenn ein Blob oder eine Blobversion geändert oder gelöscht wird.
-
 ### <a name="restoring-a-soft-deleted-version"></a>Wiederherstellen einer vorläufig gelöschten Version
 
-Sie können eine vorläufig gelöschte Blobversion wiederherstellen, indem Sie den Vorgang [Undelete Blob](/rest/api/storageservices/undelete-blob) für die Version aufrufen, während die Beibehaltungsdauer für vorläufiges Löschen wirksam ist. Der Vorgang **Undelete Blob** stellt alle vorläufig gelöschten Versionen des Blobs wieder her.
+Sie können den Vorgang [Undelete Blob](/rest/api/storageservices/undelete-blob) (Blob wiederherstellen) verwenden, um vorläufig gelöschte Versionen innerhalb des Aufbewahrungszeitraums für vorläufig gelöschte Ressourcen wiederherzustellen. Durch den Vorgang **Undelete Blob** (Blob wiederherstellen) werden immer alle vorläufig gelöschten Versionen des Blobs wiederhergestellt. Es ist nicht möglich, nur eine einzelne vorläufig gelöschte Version wiederherzustellen.
 
-Durch das Wiederherstellen vorläufig gelöschter Versionen mit dem Vorgang **Undelete Blob** wird keine Version in die aktuelle Version höher gestuft. Stellen Sie zum Wiederherstellen der aktuellen Version zunächst alle vorläufig gelöschten Versionen wieder her, und verwenden Sie dann den Vorgang [Copy Blob](/rest/api/storageservices/copy-blob), um eine vorherige Version zu kopieren, um das Blob wiederherzustellen.
+Durch das Wiederherstellen vorläufig gelöschter Versionen mit dem Vorgang **Undelete Blob** wird keine Version in die aktuelle Version höher gestuft. Stellen Sie zum Wiederherstellen der aktuellen Version zunächst alle vorläufig gelöschten Versionen wieder her, und verwenden Sie dann den Vorgang [Copy Blob](/rest/api/storageservices/copy-blob) (Blob kopieren), um eine vorherige Version in eine neue aktuelle Version zu kopieren.
 
 In der folgenden Abbildung wird gezeigt, wie Sie vorläufig gelöschte Blobversionen mit dem Vorgang **Undelete Blob** wiederherstellen, und wie Sie die aktuelle Version des Blobs mit dem Vorgang **Copy Blob** wiederherstellen.
 
@@ -193,8 +194,8 @@ In der folgenden Tabelle wird gezeigt, welche Azure RBAC-Aktionen das Löschen 
 
 | BESCHREIBUNG | Vorgang des Blob-Diensts | Erforderliche Azure RBAC-Datenaktion | Unterstützung für integrierte Azure-Rollen |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| Löschen der aktuellen Version des Blobs | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | Mitwirkender an Storage-Blobdaten |
-| Löschen einer Version | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | Besitzer von Speicherblobdaten |
+| Löschen der aktuellen Version | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | Mitwirkender an Storage-Blobdaten |
+| Löschen einer vorherigen Version | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | Besitzer von Speicherblobdaten |
 
 ### <a name="shared-access-signature-sas-parameters"></a>SAS-Parameter (Shared Access Signature)
 
