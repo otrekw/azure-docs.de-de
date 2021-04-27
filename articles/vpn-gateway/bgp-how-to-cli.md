@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: a69ce0592b79be0868dd7c15ac054910eee75fc7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89393597"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Konfigurieren von BGP auf Azure-VPN-Gateways mithilfe der Befehlszeilenschnittstelle
@@ -45,7 +45,7 @@ Dieser Abschnitt ist erforderlich, bevor Sie Schritte in den anderen beiden Konf
 
 ![BGP-Gateway](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
-### <a name="before-you-begin"></a>Vorbereitung
+### <a name="before-you-begin"></a>Voraussetzungen
 
 Installieren Sie die aktuelle Version der CLI-Befehle (2.0 oder höher). Informationen zum Installieren der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) und [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
 
@@ -81,7 +81,7 @@ az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPR
 
 ### <a name="step-2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>Schritt 2: Erstellen des VPN-Gateways für TestVNet1 mit BGP-Parametern
 
-#### <a name="1-create-the-public-ip-address"></a>1. Erstellen der öffentlichen IP-Adresse
+#### <a name="1-create-the-public-ip-address"></a>1. Erstellen Sie die öffentliche IP-Adresse
 
 Fordern Sie eine öffentliche IP-Adresse an. Die öffentliche IP-Adresse wird dem VPN-Gateway zugeordnet, das Sie für Ihr virtuelles Netzwerk erstellen.
 
@@ -99,7 +99,7 @@ Wenn Sie diesen Befehl mit dem Parameter `--no-wait` ausführen, werden kein Fee
 az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP -g TestBGPRG1 --vnet TestVNet1 --gateway-type Vpn --sku HighPerformance --vpn-type RouteBased --asn 65010 --no-wait
 ```
 
-#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. Abrufen der Azure-BGP-Peer-IP-Adresse
+#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. Beziehen Sie die Azure-BGP-Peer IP-Adresse
 
 Nachdem das Gateway erstellt wurde, müssen Sie die BGP-Peer-IP-Adresse auf dem Azure-VPN-Gateway abrufen. Diese Adresse ist erforderlich, um das VPN-Gateway als BGP-Peer für Ihre lokalen VPN-Geräte zu konfigurieren.
 
@@ -147,7 +147,7 @@ In diesem Schritt erstellen Sie die Verbindung zwischen „TestVNet1“ und „S
 
 In diesem Beispiel sind das Gateway des virtuellen Netzwerks und das Gateway des lokalen Netzwerks in unterschiedlichen Ressourcengruppen angeordnet. Wenn sich die Gateways in unterschiedlichen Ressourcengruppen befinden, müssen Sie die gesamte Ressourcen-ID der beiden Gateways angeben, um eine Verbindung zwischen den virtuellen Netzwerken einzurichten.
 
-#### <a name="1-get-the-resource-id-of-vnet1gw"></a>1. Ermitteln der Ressourcen-ID von VNet1GW
+#### <a name="1-get-the-resource-id-of-vnet1gw"></a>1. Beziehen Sie die Ressourcen-ID des VNet1GW
 
 Verwenden Sie die Ausgabe des folgenden Befehls, um die Ressourcen-ID für VNet1GW zu erhalten:
 
@@ -180,7 +180,7 @@ Kopieren Sie die Werte hinter `"id":` in einen Text-Editor wie Editor, damit Sie
 "id": "/subscriptions/<subscription ID>/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
 ```
 
-#### <a name="2-get-the-resource-id-of-site5"></a>2. Ermitteln der Ressourcen-ID von Site5
+#### <a name="2-get-the-resource-id-of-site5"></a>2. Beziehen Sie die Ressourcen-ID von Site5
 
 Verwenden Sie den folgenden Befehl, um die Ressourcen-ID von Site5 über die Ausgabe zu erhalten:
 
@@ -188,7 +188,7 @@ Verwenden Sie den folgenden Befehl, um die Ressourcen-ID von Site5 über die Aus
 az network local-gateway show -n Site5 -g TestBGPRG5
 ```
 
-#### <a name="3-create-the-testvnet1-to-site5-connection"></a>3. Erstellen der Verbindung zwischen TestVNet1 und Site5
+#### <a name="3-create-the-testvnet1-to-site5-connection"></a>3. Erstellen Sie die Verbindung TestVNet1-zu-Site5
 
 In diesem Schritt erstellen Sie die Verbindung zwischen „TestVNet1“ und „Site5“. Wie bereits erwähnt, sind für dasselbe Azure VPN Gateway BGP- und Nicht-BGP-Verbindungen möglich. Sofern BGP in der Verbindungseigenschaft nicht aktiviert ist, wird BGP für diese Verbindung von Azure nicht aktiviert. Dies gilt auch dann, wenn BGP-Parameter bereits für beide Gateways konfiguriert wurden. Ersetzen Sie die Abonnement-IDs durch Ihre eigenen.
 
@@ -224,7 +224,7 @@ Es ist wichtig sicherzustellen, dass sich der IP-Adressbereich des neuen virtuel
 
 In diesem Beispiel gehören die virtuellen Netzwerke zum gleichen Abonnement. Sie können VNet-zu-VNet-Verbindungen zwischen verschiedenen Abonnements einrichten. Weitere Informationen finden Sie unter [Konfigurieren einer VNET-zu-VNET-Verbindung](vpn-gateway-howto-vnet-vnet-cli.md). Fügen Sie beim Erstellen der Verbindungen zum Aktivieren von BGP `-EnableBgp $True` hinzu.
 
-#### <a name="1-create-a-new-resource-group"></a>1. Erstellen einer neuen Ressourcengruppe
+#### <a name="1-create-a-new-resource-group"></a>1. Erstellen Sie eine neue Ressourcengruppe
 
 ```azurecli
 az group create -n TestBGPRG2 -l westus
@@ -244,7 +244,7 @@ az network vnet subnet create --vnet-name TestVNet2 -n BackEnd -g TestBGPRG2 --a
 az network vnet subnet create --vnet-name TestVNet2 -n GatewaySubnet -g TestBGPRG2 --address-prefix 10.22.255.0/27
 ```
 
-#### <a name="3-create-the-public-ip-address"></a>3. Erstellen der öffentlichen IP-Adresse
+#### <a name="3-create-the-public-ip-address"></a>3. Erstellen Sie die öffentliche IP-Adresse
 
 Fordern Sie eine öffentliche IP-Adresse an. Die öffentliche IP-Adresse wird dem VPN-Gateway zugeordnet, das Sie für Ihr virtuelles Netzwerk erstellen.
 
@@ -252,7 +252,7 @@ Fordern Sie eine öffentliche IP-Adresse an. Die öffentliche IP-Adresse wird de
 az network public-ip create -n GWPubIP2 -g TestBGPRG2 --allocation-method Dynamic
 ```
 
-#### <a name="4-create-the-vpn-gateway-with-the-as-number"></a>4. Erstellen des VPN Gateway mit der AS-Nummer
+#### <a name="4-create-the-vpn-gateway-with-the-as-number"></a>4. Erstellen Sie das VPN-Gateway mit der AS-Nummer
 
 Erstellen Sie das Gateway für virtuelle Netzwerke für TestVNet2. Die Standard-ASN Ihrer Azure-VPN-Gateways muss überschrieben werden. Die ASNs für die verbundenen virtuellen Netzwerke müssen für die Aktivierung von BGP und Transitrouting unterschiedlich sein.
  
@@ -266,7 +266,7 @@ In diesem Schritt erstellen Sie die Verbindung zwischen „TestVNet1“ und „S
 
 Im folgenden Beispiel sind das Gateway des virtuellen Netzwerks und das Gateway des lokalen Netzwerks in unterschiedlichen Ressourcengruppen angeordnet. Wenn sich die Gateways in unterschiedlichen Ressourcengruppen befinden, müssen Sie die gesamte Ressourcen-ID der beiden Gateways angeben, um eine Verbindung zwischen den virtuellen Netzwerken einzurichten. 
 
-#### <a name="1-get-the-resource-id-of-vnet1gw"></a>1. Ermitteln der Ressourcen-ID von VNet1GW 
+#### <a name="1-get-the-resource-id-of-vnet1gw"></a>1. Beziehen Sie die Ressourcen-ID des VNet1GW 
 
 Ermitteln Sie die Ressourcen-ID von „VNet1GW“ in der Ausgabe des folgenden Befehls:
 
@@ -274,7 +274,7 @@ Ermitteln Sie die Ressourcen-ID von „VNet1GW“ in der Ausgabe des folgenden B
 az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 ```
 
-#### <a name="2-get-the-resource-id-of-vnet2gw"></a>2. Ermitteln der Ressourcen-ID von VNet2GW
+#### <a name="2-get-the-resource-id-of-vnet2gw"></a>2. Beziehen Sie die Ressourcen-ID des VNet2GW
 
 Ermitteln Sie die Ressourcen-ID von „VNet2GW“ in der Ausgabe des folgenden Befehls:
 
@@ -282,7 +282,7 @@ Ermitteln Sie die Ressourcen-ID von „VNet2GW“ in der Ausgabe des folgenden B
 az network vnet-gateway show -n VNet2GW -g TestBGPRG2
 ```
 
-#### <a name="3-create-the-connections"></a>3. Erstellen der Verbindungen
+#### <a name="3-create-the-connections"></a>3. Erstellen Sie die Verbindungen
 
 Erstellen Sie die Verbindung von „TestVNet1“ mit „TestVNet2“ sowie die Verbindung von „TestVNet2“ mit „TestVNet1“. Ersetzen Sie die Abonnement-IDs durch Ihre eigenen.
 

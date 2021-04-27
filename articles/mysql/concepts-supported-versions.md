@@ -6,24 +6,34 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 8b85307f01a11366a2147c947f26658f548932e8
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 1be15c16a1897797326ea869c34c3590ffb07691
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467713"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363868"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
 
 Azure Database for MySQL wurde basierend auf [MySQL Community Edition](https://www.mysql.com/products/community/) mit der InnoDB-Speicher-Engine entwickelt. Dieser Dienst unterstützt alle aktuellen Hauptversionen, die von der Community unterstützt werden, und zwar MySQL 5.6, 5.7 und 8.0. Für MySQL wird das Benennungsschema „X.Y.Z“ verwendet. „X“ steht dabei für die Hauptversion, „Y“ für die Nebenversion und „Z“ für das Programmfehlerbehebungs-Release. Weitere Informationen zum Schema finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
 
-> [!NOTE]
-> Bei der Bereitstellungsoption „Einzelserver“ werden die Verbindungen mit einem Gateway zu Serverinstanzen umgeleitet. Sobald die Verbindung hergestellt ist, zeigt der MySQL-Client die im Gateway festgelegte Version von MySQL an, nicht die tatsächliche Version, die auf Ihrer MySQL-Serverinstanz ausgeführt wird. Um die Version Ihrer MySQL-Serverinstanz zu ermitteln, geben Sie den `SELECT VERSION();`-Befehl an der MySQL-Eingabeaufforderung ein.
-
-Azure Database for MySQL unterstützt derzeit die folgenden Haupt- und Nebenversionen von MySQL:
 
 
-| Version | Einzelner Server <br/> Aktuelle Nebenversion |Flexible Server (Vorschau) <br/> Aktuelle Nebenversion  |
+## <a name="connect-to-a-gateway-node-that-is-running-a-specific-mysql-version"></a>Stellen Sie eine Verbindung zu einem Gateway-Knoten her, auf dem eine bestimmte MySQL-Version läuft
+
+Bei der Bereitstellungsoption „Einzelserver“ werden die Verbindungen mit einem Gateway zu Serverinstanzen umgeleitet. Sobald die Verbindung hergestellt ist, zeigt der MySQL-Client die im Gateway festgelegte Version von MySQL an, nicht die tatsächliche Version, die auf Ihrer MySQL-Serverinstanz ausgeführt wird. Um die Version Ihrer MySQL-Serverinstanz zu ermitteln, geben Sie den `SELECT VERSION();`-Befehl an der MySQL-Eingabeaufforderung ein. Überprüfen Sie die [Konnektivitätsarchitektur](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture#connectivity-architecture), um mehr über Gateways in der Dienstarchitektur von Azure Database for MySQL zu erfahren.
+
+Da Azure Database for MySQL die Hauptversionen v5.6, v5.7 und v8.0 unterstützt, wird auf dem Standardport 3306 zur Verbindung mit Azure Database for MySQL die MySQL-Clientversion 5.6 (kleinster gemeinsamer Nenner) ausgeführt, um Verbindungen zu Servern aller 3 unterstützten Hauptversionen zu unterstützen. Wenn Ihre Anwendung jedoch eine Verbindung zu einer bestimmten Hauptversion, z. B. v5.7 oder v8.0, herstellen muss, können Sie dies tun, indem Sie den Port in der Verbindungszeichenfolge Ihres Servers ändern.
+
+Im Azure Database für den MySQL-Dienst lauschen die Gateway-Knoten auf Port 3308 für v5.7-Clients und Port 3309 für v8.0-Clients. Mit anderen Worten: Wenn Sie eine Verbindung zum v5.7-Gateway-Client herstellen möchten, sollten Sie Ihren voll qualifizierten Servernamen und Port 3308 verwenden, um von der Client-Anwendung aus eine Verbindung zu Ihrem Server herzustellen. Ähnlich verhält es sich, wenn Sie eine Verbindung zum v8.0-Gateway-Client herstellen möchten. Sie können Ihren voll qualifizierten Servernamen und Port 3309 verwenden, um sich mit Ihrem Server zu verbinden. Prüfen Sie das folgende Beispiel, um mehr Klarheit zu erhalten.
+
+:::image type="content" source="./media/concepts-supported-versions/concepts-supported-versions-gateway.png" alt-text="Beispiel für das Herstellen einer Verbindung über verschiedene Gateway MySQL-Versionen":::
+
+
+## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>Azure Database for MySQL unterstützt derzeit die folgenden Haupt- und Nebenversionen von MySQL:
+
+
+| Version | [Single Server](overview.md) <br/> Aktuelle Nebenversion |[Flexible Server (Vorschau)](/azure/mysql/flexible-server/overview) <br/> Aktuelle Nebenversion  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL-Version 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (eingestellt) | Nicht unterstützt|
 |MySQL-Version 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|

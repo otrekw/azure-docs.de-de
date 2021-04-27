@@ -10,19 +10,19 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: ff241f468db2e56b73ba10b5621e8a8ab40a19b6
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 43eff2bea6f6d95291e9ba9650ff42187e39fc70
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554143"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600164"
 ---
 # <a name="migration-guide-ibm-db2-to-sql-server-on-azure-vm"></a>Anleitung zur Migration: IBM Db2 zu SQL Server auf Azure VM
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
 
 In diesem Handbuch erfahren Sie, wie Sie Ihre IBM Db2-Datenbanken mithilfe des SQL Server-Migrationsassistenten für Db2 auf SQL Server auf Azure VM migrieren. 
 
-Weitere Migrationsanleitungen finden Sie unter[Azure Database Migration Guides](https://docs.microsoft.com/data-migration). 
+Weitere Migrationsleitfäden finden Sie in den [Leitfäden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +45,7 @@ Führen Sie die folgenden Schritte aus, um eine Bewertung zu erstellen:
 
 1. Öffnen Sie [SSMA für Db2](https://www.microsoft.com/download/details.aspx?id=54254). 
 1. Wählen Sie **Datei** > **Neues Projekt**. 
-1. Geben Sie einen Projektnamen und einen Speicherort für Ihr Projekt an. Wählen Sie dann ein SQL Server-Migrationsziel aus der Dropdown-Liste und wählen Sie **OK**.
+1. Geben Sie einen Projektnamen und einen Speicherort für Ihr Projekt an. Wählen Sie dann in der Dropdownliste ein SQL Server-Migrationsziel aus, und klicken Sie dann auf **OK**.
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/new-project.png" alt-text="Screenshot, das die zu spezifizierenden Projektdetails anzeigt.":::
 
@@ -57,9 +57,9 @@ Führen Sie die folgenden Schritte aus, um eine Bewertung zu erstellen:
 
 1. Klicken Sie mit der rechten Maustaste auf das Db2-Schema, das Sie migrieren möchten, und wählen Sie dann **Bericht erstellent**. Dadurch wird ein HTML-Bericht generiert. Alternativ können Sie nach dem Auswählen des Schemas in der Navigationsleiste auf **Create report** (Bericht erstellen) klicken.
 
-   :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/create-report.png" alt-text="Screenshot, der zeigt, wie ein Bericht erstellt wird.":::
+   :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/create-report.png" alt-text="Screenshot: Erstellung eines Berichts":::
 
-1. Sehen Sie sich den HTML-Bericht an, um die Konvertierungsstatistiken und etwaige Fehler oder Warnungen zu verstehen. Sie können den Bericht auch in Excel öffnen, um eine Bestandsaufnahme der Db2-Objekte und des Aufwands für die Schemakonvertierung zu erhalten. Der Standardstandort für den Bericht ist im Berichtsordner innerhalb von *SSMAProjects*.
+1. Sehen Sie sich den HTML-Bericht an, um die Konvertierungsstatistiken und etwaige Fehler oder Warnungen zu verstehen. Sie können den Bericht auch in Excel öffnen, um den Bestand an Db2-Objekten sowie Informationen zum Aufwand für Schemakonvertierungen zu erhalten. Der Standardstandort für den Bericht ist im Berichtsordner innerhalb von *SSMAProjects*.
 
    Beispiel: `drive:\<username>\Documents\SSMAProjects\MyDb2Migration\report\report_<date>`. 
 
@@ -108,15 +108,15 @@ Wenn Sie die Bewertung Ihrer Datenbanken und die Behandlung etwaiger Abweichunge
 
 Führen Sie die folgenden Schritte aus, um das Schema zu veröffentlichen und Ihre Daten zu migrieren:
 
-1. Veröffentlichen Sie das Schema. Klicken Sie im **SQL Server Metadata Explorer** im Knoten **Databases** mit der rechten Maustaste auf die Datenbank. Wählen Sie dann **Mit Datenbank synchronisieren**.
+1. Veröffentlichen des Schemas: Klicken Sie im **SQL Server Metadata Explorer** im Knoten **Databases** mit der rechten Maustaste auf die Datenbank. Wählen Sie dann **Mit Datenbank synchronisieren**.
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/synchronize-with-database.png" alt-text="Screenshot, der die Option zur Synchronisierung mit der Datenbank zeigt.":::
 
-1. Migrieren Sie die Daten. Klicken Sie im **Db2 Metadata Explorer** mit der rechten Maustaste auf die Datenbank oder das Objekt, das Sie migrieren möchten, und wählen Sie **Daten migrieren**. Alternativ können Sie in der Navigationsleiste **Daten migrieren** auswählen. Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Um Daten aus einzelnen Tabellen zu migrieren, erweitern Sie die Datenbank, erweitern Sie **Tabellen** und aktivieren Sie dann das Kontrollkästchen neben der Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
+1. Migrieren der Daten: Klicken Sie im **Db2 Metadata Explorer** mit der rechten Maustaste auf die Datenbank oder das Objekt, das Sie migrieren möchten, und wählen Sie **Daten migrieren**. Alternativ können Sie in der Navigationsleiste **Daten migrieren** auswählen. Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der gewünschten Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/migrate-data.png" alt-text="Screenshot, der die Auswahl des Schemas und die Auswahl der Datenmigration zeigt.":::
 
-1. Geben Sie die Verbindungsdetails sowohl für die Db2- als auch für die SQL-Server-Instanzen an. 
+1. Geben Sie die Verbindungsdetails für die Db2- und die SQL Server-Instanz an. 
 1. Nach Abschluss der Migration können Sie den **Datenmigrationsbericht** anzeigen:  
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/data-migration-report.png" alt-text="Screenshot, der zeigt, wo der Datenmigrationsbericht eingesehen werden kann.":::
@@ -140,7 +140,7 @@ Das Testen umfasst die folgenden Aktivitäten:
 1. **Entwickeln von Validierungstests**: Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die für die Quell- und die Zieldatenbank ausgeführt werden sollen. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
 1. **Einrichten der Testumgebung**: Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 1. **Ausführen der Validierungstests**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
-1. **Leistungstests ausführen**: Führen Sie Leistungstests mit der Quelle und dem Ziel durch und analysieren und vergleichen Sie dann die Ergebnisse.
+1. **Ausführen von Leistungstests:** Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
 
 ## <a name="migration-assets"></a>Migrationsressourcen 
 
@@ -150,10 +150,10 @@ Weitere Unterstützung erhalten Sie in Form der folgenden Ressourcen, die im Rah
 |---------|---------|
 |[Data Workload Assessment Model and Tool (Datenarbeitsauslastungs-Bewertungsmodell und -tool)](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Dieses Tool stellt für eine angegebene Arbeitsauslastung Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch Bereitstellung eines automatisierten und einheitlichen Zielplattform-Entscheidungsprozesses dabei helfen, umfangreiche Bewertungen zu beschleunigen.|
 |[Db2 zOS-Paket zur Erkennung und Bewertung von Datenbeständen](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|Nach dem Ausführen des SQL-Skripts für eine-Datenbank können Sie die Ergebnisse in eine Datei im Dateisystem exportieren. Es werden verschiedene Dateiformate unterstützt, z. B. *.csv, damit Sie die Ergebnisse in externen Tools wie Tabellen erfassen können. Diese Methode kann nützlich sein, wenn Sie Ergebnisse einfach für Teams freigeben möchten, die die Workbench nicht installiert haben.|
-|[IBM Db2 LUW-Bestandsskripte und -Artefakte](https://github.com/Microsoft/DataMigrationTeam/tree/master/IBM%20Db2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|Dieses Asset enthält eine SQL-Abfrage, die auf IBM Db2 LUW Version 11.1-Systemtabellen zugreift und eine Zählung der Objekte nach Schema und Objekttyp, eine grobe Schätzung der "Rohdaten" in jedem Schema und die Größenordnung der Tabellen in jedem Schema liefert, wobei die Ergebnisse in einem CSV-Format gespeichert werden.|
-|[Db2 LUW pure scale auf Azure - Einrichtungsanleitunge](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/db2%20PureScale%20on%20Azure.pdf)|Dieser Leitfaden dient als Startpunkt für einen Db2-Implementierungsplan. Obwohl sich die geschäftlichen Anforderungen unterscheiden werden, gilt das gleiche Grundmuster. Dieses Architekturmuster kann auch für OLAP-Anwendungen auf Azure verwendet werden.|
+|[IBM Db2 LUW Inventory Scripts and Artifacts](https://github.com/microsoft/DataMigrationTeam/tree/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts) (IBM Db2 LUW-Inventarskripts und -artefakte)|Dieses Asset enthält eine SQL-Abfrage, die auf IBM Db2 LUW Version 11.1-Systemtabellen zugreift und eine Zählung der Objekte nach Schema und Objekttyp, eine grobe Schätzung der "Rohdaten" in jedem Schema und die Größenordnung der Tabellen in jedem Schema liefert, wobei die Ergebnisse in einem CSV-Format gespeichert werden.|
+|[Db2 LUW pure scale auf Azure - Einrichtungsanleitunge](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)|Dieser Leitfaden dient als Startpunkt für einen Db2-Implementierungsplan. Auch wenn Geschäftsanforderungen unterschiedlich sind, gilt dennoch dasselbe grundlegende Muster. Dieses Architekturmuster kann auch für OLAP-Anwendungen auf Azure verwendet werden.|
 
-Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Kernaufgabe dieses Teams ist die Freigabe und Beschleunigung komplexer Modernisierungsprojekte für die Migration von Datenplattformen auf die Azure-Datenplattform von Microsoft.
+Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

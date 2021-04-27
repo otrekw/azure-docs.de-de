@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: fc3ba062f4995e975015d7c4db145ccde0c3f701
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4fb2ea534954ae6c64d0da2d992ce8b1c8a62c0c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705210"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557563"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -27,14 +27,9 @@ Es gibt mehrere Möglichkeiten, virtuelle VMware-Computer zu migrieren:
 
 In [diesem Artikel](server-migrate-overview.md) finden Sie Informationen zur Verwendung dieser beiden Methoden.
 
-## <a name="migration-limitations"></a>Einschränkungen bei der Migration
-
-- Sie können für die Replikation über das Azure-Portal bis zu zehn VMs gleichzeitig auswählen. Wenn Sie weitere Computer migrieren möchten, replizieren Sie sie in Gruppen von 10. Die Anzahl von VMs, die über PowerShell-Cmdlets repliziert werden können, ist nicht beschränkt. Es wird empfohlen, nicht mehr als 500 VMs gleichzeitig für eine einzelne vCenter-Instanz über PowerShell zu replizieren, um eine optimale Leistung gewährleisten zu können.
-- Bei der VMware-Migration ohne Agent können Sie bis zu 500 Replikationsvorgänge gleichzeitig pro vCenter-Instanz ausführen.
-
 ## <a name="agentless-migration"></a>Migration ohne Agent 
 
-In diesem Abschnitt werden die Anforderungen für die Migration ohne Agent zusammengefasst.
+In diesem Abschnitt werden die Anforderungen für die agentenlose Migration von VMware-VMs nach Azure zusammengefasst.
 
 ### <a name="vmware-requirements-agentless"></a>VMware-Anforderungen (ohne Agent)
 
@@ -72,8 +67,11 @@ In der Tabelle werden die Migrationsanforderungen ohne Agent für VMware-VMs zus
 **Kombinierte Netzwerkadapter** | Wird nicht unterstützt.
 **IPv6** | Wird nicht unterstützt.
 **Zieldatenträger** | Virtuelle Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Standard, SSD Premium) in Azure migriert werden.
-**Gleichzeitige Replikation** | 500 VMs pro vCenter Server-Instanz. Bei mehr VMs sind diese in Batches von 500 zu migrieren.
-**Automatische Installation des Azure-VM-Agents (Windows-Agent)** | Unterstützt ab Windows Server 2008 R2.
+**Gleichzeitige Replikation** | Bis zu 300 gleichzeitig replizierende VMs pro vCenter Server mit 1 Anwendung. Bis zu 500 gleichzeitig replizierende VMs pro vCenter Server, wenn eine zusätzliche [horizontale Anwendung](./how-to-scale-out-for-migration.md) eingesetzt wird. 
+**Automatische Installation des Azure-VM-Agents (Windows- und Linux-Agent)** | Unterstützt ab Windows Server 2008 R2. <br/> Unterstützt für RHEL6, RHEL7, CentOS7, Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04. Sehen Sie sich die Liste der [erforderlichen Pakete](../virtual-machines/extensions/agent-linux.md#requirements) für diese Linux-Betriebssysteme an.
+
+> [!TIP]
+>  Über das Azure-Portal können Sie bis zu 10 VMs auf einmal auswählen, um die Replikation zu konfigurieren. Um mehr VMs zu replizieren, können Sie das Portal verwenden und die zu replizierenden VMs in mehreren Stapeln von 10 VMs hinzufügen oder die Azure Migrate PowerShell-Schnittstelle zur Konfiguration der Replikation verwenden. Stellen Sie sicher, dass Sie die gleichzeitige Replikation nicht auf mehr als die maximal unterstützte Anzahl von VMs für gleichzeitige Replikationen konfigurieren.
 
 ### <a name="appliance-requirements-agentless"></a>Applianceanforderungen (ohne Agent)
 

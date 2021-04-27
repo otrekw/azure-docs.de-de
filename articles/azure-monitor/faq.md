@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa91644eab9d28ffb20de8ec8c0fe00488922b67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606955"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563377"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
@@ -80,7 +80,7 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 
 ### <a name="how-do-i-retrieve-log-data"></a>Wie rufe ich Protokolldaten ab?
 Alle Daten werden mithilfe einer in der Kusto-Abfragesprache (KQL) geschriebenen Protokollabfrage aus einem Log Analytics-Arbeitsbereich abgerufen. Sie können eigene Abfragen schreiben oder Lösungen und Erkenntnisse verwenden, die Protokollabfragen für eine bestimmte Anwendung oder einen bestimmten Dienst enthalten. Weitere Informationen finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](logs/log-query-overview.md).
-p
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Kann ich Daten aus einem Log Analytics-Arbeitsbereich löschen?
 Daten werden gemäß ihrer [Beibehaltungsdauer](logs/manage-cost-storage.md#change-the-data-retention-period) aus einem Arbeitsbereich entfernt. Sie können bestimmte Daten aus Datenschutz- oder Compliancegründen löschen. Weitere Informationen finden Sie unter [Exportieren und Löschen personenbezogener Daten](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data).
 
@@ -828,26 +828,27 @@ Unter dieser Bedingung werden Sie zur Aktion **Jetzt testen** aufgefordert, wenn
 ## <a name="sql-insights-preview"></a>SQL Insights (Vorschau)
 
 ### <a name="what-versions-of-sql-server-are-supported"></a>Welche Versionen von SQL Server werden unterstützt?
-Die unterstützten Versionen sind unter [Unterstützte Versionen](insights/sql-insights-overview.md#supported-versions) aufgeführt.
+Wir unterstützen SQL Server 2012 und alle neueren Versionen. Siehe [Unterstützte Versionen](insights/sql-insights-overview.md#supported-versions) für weitere Details.
 
 ### <a name="what-sql-resource-types-are-supported"></a>Welche SQL-Ressourcentypen werden unterstützt?
+- Azure SQL-Datenbank
+- Verwaltete Azure SQL-Instanz
+- Azure VMs (SQL Server werden auf virtuellen Maschinen ausgeführt, die nicht beim Anbieter von [virtuellen SQL-Maschinen](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) registriert sind)
+- Azure-VMS (SQL Server, die auf virtuellen Computern ausgeführt werden, und die nicht beim [SQL-VM](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)-Anbieter registriert sind)
 
-- Azure SQL-Datenbank. Nur Singletons, keine Datenbanken in einem Pool für elastische Datenbanken.
-- Verwaltete Azure SQL-Instanz 
-- Azure SQL-VMs ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms), [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) und Azure-VMs, auf denen SQL Server installiert ist.
+Weitere Informationen finden Sie unter [Unterstützte Versionen](insights/sql-insights-overview.md#supported-versions) und ausführliche Informationen zu Szenarien ohne Unterstützung oder eingeschränkte Unterstützung.
 
-### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>Welche Betriebssysteme werden auf dem Computer unterstützt, auf dem SQL Server ausgeführt wird?
-Alle Betriebssysteme, unter denen die Ausführung unterstützter SQL-Versionen unterstützt wird.
+### <a name="what-operating-systems-for-the-virtual-machine-running-sql-server-are-supported"></a>Welche Betriebssysteme werden auf dem virtuellen Computer unterstützt, auf dem SQL Server ausgeführt wird?
+Wir unterstützen alle Betriebssysteme, die in der [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) -und [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)-Dokumentation für SQL Server in Azure Virtual Machines angegeben sind.
 
-### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>Welche Betriebssysteme werden auf dem Remoteüberwachungsserver unterstützt?
+### <a name="what-operating-system-for-the-monitoring-virtual-machine-are-supported"></a>Welche Betriebssysteme für die überwachende virtuelle Maschine werden unterstützt?
+Ubuntu 18,04 ist derzeit das einzige Betriebssystem, das für den virtuellen Computer für die Überwachung unterstützt wird.
 
-Derzeit wird Ubuntu 18.04 als einziges Betriebssystem unterstützt.
-
-### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Wo werden die Überwachungsdaten in Log Analytics gespeichert? 
-Alle Überwachungsdaten werden in der Tabelle **InsightsMetrics** gespeichert. Die Spalte **Origin** enthält den Wert *solutions.azm.ms/telegraf/SqlInsights*. Die Spalte **Namespace** enthält Werte, die mit *sqlserver_* beginnen.
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Wo werden die Überwachungsdaten in Log Analytics gespeichert?
+Alle Überwachungsdaten werden in der Tabelle **InsightsMetrics** gespeichert. Die Spalte **Quelle** hat den Wert `solutions.azm.ms/telegraf/SqlInsights`. Die Spalte **Namespace** hat Werte, die mit `sqlserver_` beginnen.
 
 ### <a name="how-often-is-data-collected"></a>Wie häufig werden Daten erfasst? 
-Ausführliche Informationen zur Häufigkeit, mit der verschiedene Daten erfasst werden, finden Sie unter [In SQL Insights erfasste Daten](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights).
+Die Häufigkeit der Datenerfassung ist anpassbar. Details zu den Standardhäufigkeiten finden Sie unter [Von SQL Insights erfasste Daten](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) und Anweisungen zum Anpassen der Häufigkeiten finden Sie unter [SQL-Überwachungsprofi](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile)l erstellen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Ihre Frage hier nicht beantwortet wurde, finden Sie in den folgenden Foren weitere Fragen und Antworten.

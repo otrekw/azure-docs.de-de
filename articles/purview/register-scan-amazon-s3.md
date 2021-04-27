@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/21/2021
+ms.date: 04/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 751d475fcb2e8c96d05daa5b5e2144909d21a409
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773452"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382299"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure Purview-Connector für Amazon S3
 
@@ -38,6 +38,7 @@ Weitere Informationen finden Sie in den dokumentierten Purview-Grenzwerten unter
 
 - [Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Purview](how-to-manage-quotas.md)
 - [Unterstützte Datenquellen und Dateitypen in Azure Purview](sources-and-scans.md)
+- [Verwenden privater Endpunkte für Ihr Purview-Konto](catalog-private-link.md)
 ### <a name="storage-and-scanning-regions"></a>Speicher- und Überprüfungsregionen
 
 In der folgenden Tabelle werden die Regionen, in denen Ihre Daten gespeichert sind, der jeweiligen Region zugeordnet, in der sie von Azure Purview überprüft würden.
@@ -77,9 +78,13 @@ In der folgenden Tabelle werden die Regionen, in denen Ihre Daten gespeichert si
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie Ihre Amazon S3-Buckets als Purview-Datenquellen hinzufügen und Ihre S3-Daten überprüfen.
 
-- Sie müssen ein Azure Purview-Datenquellenadministrator sein.
-
-- Wenn Sie Ihre Buckets als Purview-Ressourcen hinzufügen, benötigen Sie die Werte Ihres [AWS-ARN](#retrieve-your-new-role-arn), den [Bucketnamen](#retrieve-your-amazon-s3-bucket-name) und manchmal Ihre [AWS-Konto-ID](#locate-your-aws-account-id).
+> [!div class="checklist"]
+> * Sie müssen ein Azure Purview-Datenquellenadministrator sein.
+> * [Erstellen Sie ein Purview-Konto](#create-a-purview-account), falls Sie noch keins haben
+> * [Erstellen von Purview-Anmeldeinformationen für Ihre AWS-Bucketüberprüfung](#create-a-purview-credential-for-your-aws-bucket-scan)
+> * [Erstellen Sie eine neue AWS-Rolle für die Verwendung mit Purview](#create-a-new-aws-role-for-purview)
+> * [Konfigurieren Sie die Überprüfung für verschlüsselte Amazon S3-Buckets](#configure-scanning-for-encrypted-amazon-s3-buckets), falls zutreffend
+> * Wenn Sie Ihre Buckets als Purview-Ressourcen hinzufügen, benötigen Sie die Werte Ihres [AWS-ARN](#retrieve-your-new-role-arn), den [Bucketnamen](#retrieve-your-amazon-s3-bucket-name) und manchmal Ihre [AWS-Konto-ID](#locate-your-aws-account-id).
 
 ### <a name="create-a-purview-account"></a>Erstellen eines Purview-Kontos
 
@@ -99,7 +104,7 @@ In diesem Verfahren wird beschrieben, wie Sie neue Purview-Anmeldeinformationen 
 
 1. Wählen Sie **Neu** aus, und verwenden Sie im rechts angezeigten Bereich **Neue Anmeldeinformationen** die folgenden Felder, um Ihre Purview-Anmeldeinformationen zu erstellen:
 
-    |Feld |Beschreibung  |
+    |Feld |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen für diese Anmeldeinformationen ein, oder verwenden Sie den Standardwert.        |
     |**Beschreibung**     |Geben Sie eine optionale Beschreibung für diese Anmeldeinformationen ein, z. B. `Used to scan the tutorial S3 buckets` (Zum Überprüfen der Tutorial-S3-Buckets).         |
@@ -138,6 +143,13 @@ Weitere Informationen zu Purview-Anmeldeinformationen finden Sie in der [Dokumen
 1. Filtern Sie im Bereich **Rollen > Berechtigungsrichtlinien anfügen** die angezeigten Berechtigungen nach **S3**. Wählen Sie **AmazonS3ReadOnlyAccess** und dann **Weiter: Tags** aus.
 
     ![Wählen Sie die „ReadOnlyAccess“-Richtlinie für die neue Amazon S3-Überprüfungsrolle aus.](./media/register-scan-amazon-s3/aws-permission-role-amazon-s3.png)
+
+    > [!IMPORTANT]
+    > Die Richtlinie **AmazonS3ReadOnlyAccess** bietet die minimalen Berechtigungen, die für das Scannen der S3-Buckets erforderlich sind, und kann auch andere Berechtigungen enthalten.
+    >
+    >Um nur die Mindestberechtigungen anzuwenden, die für das Scannen Ihrer Buckets erforderlich sind, erstellen Sie eine neue Richtlinie mit den unter [Mindestberechtigungen für Ihre AWS-Richtlinien](#minimum-permissions-for-your-aws-policy) aufgeführten Berechtigungen, je nachdem, ob Sie einen einzelnen Bucket oder alle Buckets in Ihrem Konto scannen möchten. 
+    >
+    >Wenden Sie die neue Richtlinie auf die Rolle anstelle von **AmazonS3ReadOnlyAccess an.**
 
 1. Im Bereich **Tags hinzufügen (optional)** können Sie optional auswählen, dass ein aussagekräftiges Tag für diese neue Rolle erstellt werden soll. Nützliche Tags ermöglichen es Ihnen, den Zugriff für jede von Ihnen erstellte Rolle zu organisieren, nachzuverfolgen und zu steuern.
 
@@ -284,7 +296,7 @@ Verwenden Sie dieses Verfahren, wenn Sie nur über einen einzigen S3-Bucket verf
 
 1. Geben Sie im Bereich **Quellen registrieren (Amazon S3)** , der geöffnet wird, die folgenden Details ein:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen ein, oder verwenden Sie den bereitgestellten Standardwert.         |
     |**Bucket-URL**     | Geben Sie Ihre AWS-Bucket-URL mit der folgenden Syntax ein: `s3://<bucketName>`     <br><br>**Hinweis**: Stellen Sie sicher, dass Sie nur die Stammebene Ihres Buckets ohne Unterordner verwenden. Weitere Informationen finden Sie unter [Abrufen Ihres Amazon S3-Bucketnamens](#retrieve-your-amazon-s3-bucket-name). |
@@ -313,7 +325,7 @@ Verwenden Sie dieses Verfahren, wenn Sie über mehrere S3-Buckets in Ihrem Amazo
 
 1. Geben Sie im Bereich **Quellen registrieren (Amazon S3)** , der geöffnet wird, die folgenden Details ein:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen ein, oder verwenden Sie den bereitgestellten Standardwert.         |
     |**AWS-Konto-ID**     | Geben Sie Ihre AWS-Konto-ID ein. Weitere Informationen finden Sie unter [Auffinden Ihrer AWS-Konto-ID](#locate-your-aws-account-id).|
@@ -335,7 +347,7 @@ Nachdem Sie Ihre Buckets als Purview-Datenquellen hinzugefügt haben, können Si
 
 1. Definieren Sie im rechts angezeigten Bereich **Überprüfen** die folgenden Felder, und wählen Sie dann **Weiter** aus:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |  Geben Sie einen aussagekräftigen Namen für Ihre Überprüfung ein, oder verwenden Sie den Standardwert.       |
     |**Type** |Wird nur angezeigt, wenn Sie Ihr AWS-Konto hinzugefügt haben, einschließlich aller Buckets. <br><br>Die aktuellen Optionen umfassen nur **Alle** > **Amazon S3**. Bleiben Sie dran, um über weitere auswählbare Optionen auf dem Laufenden zu bleiben, die mit der sich erweiternden Unterstützungsmatrix von Purview entwickelt werden. |
@@ -396,6 +408,90 @@ Verwenden Sie die anderen Bereiche von Purview, um Details zu den Inhalten in Ih
     Alle Erkenntnisberichte von Purview enthalten die Amazon S3-Überprüfungsergebnisse, zusammen mit dem Rest der Ergebnisse aus Ihren Azure-Datenquellen. Wenn dies relevant ist, wurde ein zusätzlicher **Amazon S3**-Ressourcentyp zu den Berichtfilteroptionen hinzugefügt.
 
     Weitere Informationen finden Sie unter [Grundlegendes zu Erkenntnissen in Azure Purview](concept-insights.md).
+
+## <a name="minimum-permissions-for-your-aws-policy"></a>Mindestberechtigungen für Ihre AWS-Richtlinie
+
+Das Standardverfahren zum [Erstellen einer AWS-Rolle für Purview](#create-a-new-aws-role-for-purview) zur Verwendung beim Scannen der S3-Buckets, ist die **AmazonS3ReadOnlyAccess** -Richtlinie.
+
+Die Richtlinie **AmazonS3ReadOnlyAccess** bietet die minimalen Berechtigungen, die für das Scannen der S3-Buckets erforderlich sind, und kann auch andere Berechtigungen enthalten.
+
+Um nur die Mindestberechtigungen anzuwenden, die für das Scannen Ihrer Buckets erforderlich sind, erstellen Sie eine neue Richtlinie mit den in den folgenden Abschnitten aufgeführten Berechtigungen, je nachdem, ob Sie einen einzelnen Bucket oder alle Buckets in Ihrem Konto scannen möchten.
+
+Wenden Sie die neue Richtlinie auf die Rolle anstelle von **AmazonS3ReadOnlyAccess an.**
+
+### <a name="individual-buckets"></a>Einzelne Buckets
+
+Bei der Überprüfung einzelner S3-Buckets umfassen die AWS-Mindestberechtigungen:
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListBucket`
+
+Stellen Sie sicher, dass Sie die Ressource mit dem jeweiligen Bucket-Namen definieren. Beispiel:
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": "arn:aws:s3:::<bucketname>"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3::: <bucketname>/*"
+        }
+    ]
+}
+```
+
+### <a name="all-buckets-in-your-account"></a>Alle Buckets in Ihrem Konto
+
+Wenn Sie alle Bucket in Ihrem AWS-Konto scannen, umfassen die minimalen AWS-Berechtigungen:
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListAllMyBuckets`
+- `ListBucket`.
+
+Stellen Sie sicher, dass Sie die Ressource mit einem Platzhalter definieren. Beispiel:
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

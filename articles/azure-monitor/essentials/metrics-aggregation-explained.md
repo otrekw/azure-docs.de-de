@@ -5,13 +5,13 @@ author: rboucher
 ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 01/12/2020
-ms.openlocfilehash: b7e9318ee34836f8fbd2ae7a330134d8174e6a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/10/2021
+ms.openlocfilehash: c89b352954f114ec9da22cad6751bb57ef59899b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031394"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106381796"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Erläuterungen zur Azure Monitor-Metrikaggregation und -anzeige
 
@@ -26,6 +26,7 @@ Wenn Sie einem Diagramm eine Metrik hinzufügen, wählt der Metrik-Explorer auto
 Beginnen wir zunächst mit der Definition einiger Begriffe:
 
 - **Metrikwert**: Ein einzelner Messwert, der für eine spezifische Ressource abgerufen wird.
+- **Zeitreihendatenbank** - Eine Datenbank, die für das Speichern und Abrufen von Datenpunkten optimiert ist, die alle einen Wert und einen entsprechenden Zeitstempel enthalten. 
 - **Zeitraum**: Eine generische Zeitspanne.
 - **Zeitintervall**: Der Zeitraum zwischen dem Abruf von zwei Metrikwerten. 
 - **Zeitbereich**: Der in einem Diagramm angezeigte Zeitraum. Die Standardeinstellung beträgt 24 Stunden. Es stehen nur bestimmte Bereiche zur Verfügung. 
@@ -33,7 +34,9 @@ Beginnen wir zunächst mit der Definition einiger Begriffe:
 - **Aggregationstyp**: Ein Statistiktyp, der aus mehreren Metrikwerten berechnet wird.  
 - **Aggregieren**: Der Vorgang, bei dem mehrere Eingangswerte erfasst und dann anhand der durch den Aggregationstyp definierten Regeln zu einem einzigen Ausgabewert verarbeitet werden. Beispielsweise kann so ein Durchschnitt aus mehreren Werten ermittelt werden.  
 
-Metriken sind eine Reihe von Messwerten, die in regelmäßigen Zeitintervallen erfasst werden. Wenn Sie ein Diagramm zeichnen, werden die Werte der ausgewählten Metrik separat über die Zeitgranularität (auch als Aggregationsintervall bezeichnet) aggregiert. Sie wählen Sie Zeitgranularität über den [Bereich zur Zeitauswahl im Metrik-Explorer](../essentials/metrics-getting-started.md#select-a-time-range) aus. Wenn Sie keine explizite Auswahl treffen, wird die Zeitgranularität basierend auf dem aktuell ausgewählten Zeitraum automatisch ausgewählt. Sobald eine Auswahl getroffen wurde, werden die Metrikwerte, die in jedem Granularitätsintervall erfasst wurden, aggregiert und in das Diagramm eingefügt (jeweils ein Datenpunkt pro Intervall).
+## <a name="summary-of-process"></a>Zusammenfassung des Ablaufs
+
+Metriken sind eine Serie von Werten, die mit einem Zeitstempel gespeichert werden. In Azure werden die meisten Metriken in der Zeitreihendatenbank Azure Metrics gespeichert. Wenn Sie ein Diagramm zeichnen, werden die Werte der ausgewählten Metriken aus der Datenbank abgerufen und dann basierend auf der Granularität der ausgewählten Zeit (auch als Zeit Korn bezeichnet) separat aggregiert. Sie wählen Sie Zeitgranularität über den [Bereich zur Zeitauswahl im Metrik-Explorer](../essentials/metrics-getting-started.md#select-a-time-range) aus. Wenn Sie keine explizite Auswahl treffen, wird die Zeitgranularität basierend auf dem aktuell ausgewählten Zeitraum automatisch ausgewählt. Sobald eine Auswahl getroffen wurde, werden die Metrikwerte, die in jedem Granularitätsintervall erfasst wurden, aggregiert und in das Diagramm eingefügt (jeweils ein Datenpunkt pro Intervall).
 
 ## <a name="aggregation-types"></a>Aggregationstypen 
 
@@ -82,9 +85,11 @@ Es ist wichtig, den Normalzustand für Ihre Workload zu definieren, damit das op
 
 ## <a name="how-the-system-collects-metrics"></a>Sammlung von Metriken durch das System
 
-Die Datensammlung variiert je nach Metrik. Es gibt zwei Arten von Sammlungszeiträumen.
+Die Datensammlung variiert je nach Metrik. 
 
 ### <a name="measurement-collection-frequency"></a>Sammlungshäufigkeit für Metriken 
+
+Es gibt zwei Arten von Sammlungszeiträumen.
 
 - **Regulär**: Die Metrik wird in einem festen Zeitintervall abgerufen, das nicht variiert.
 

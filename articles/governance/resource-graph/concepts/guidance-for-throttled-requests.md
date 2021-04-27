@@ -1,15 +1,15 @@
 ---
 title: Leitfaden für gedrosselte Anforderungen
 description: Lernen Sie, parallel zu gruppieren, zu staffeln, zu paginieren und abzufragen, um zu vermeiden, dass Anforderungen durch Azure Resource Graph gedrosselt werden.
-ms.date: 01/27/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 891d5951670dd6022b66ae2936ee855f73f8b33a
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98917706"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283540"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Leitfaden für gedrosselte Anforderungen in Azure Resource Graph
 
@@ -231,7 +231,7 @@ Da Azure Resource Graph in einer einzelnen Abfrageantwort höchstens 1000 Eintr
 
 ## <a name="still-get-throttled"></a>Werden die Anforderungen weiterhin gedrosselt?
 
-Kontaktieren Sie das Microsoft-Team über [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com), wenn die Anforderungen nach dem Ausführen der oben genannten Empfehlungen auch weiterhin gedrosselt werden.
+Wenden Sie sich an das [Azure Resource Graph-Team](mailto:resourcegraphsupport@microsoft.com), wenn die Anforderungen auch nach dem Ausführen der oben genannten Empfehlungen weiterhin gedrosselt werden.
 
 Geben Sie die folgenden Informationen an:
 

@@ -1,5 +1,5 @@
 ---
-title: Einrichten von Message Passing Interface für HPC – Azure Virtual Machines | Microsoft-Dokumentation
+title: Message Passing Interface (MPI) für HPC einrichten - Azure Virtual Machines | Microsoft Docs
 description: Hier erfahren Sie, wie Sie MPI für HPC in Azure einrichten.
 author: vermagit
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 8f071dfe817d15b745575fbfb70ff662a643db70
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 66de34c43ab1b3a6b4245f77196793bf9ad8530c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721354"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606639"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Einrichten von Message Passing Interface für HPC
 
@@ -64,6 +64,11 @@ Ausführen von HPC-X
 ```bash
 ${HPCX_PATH}mpirun -np 2 --map-by ppr:2:node -x UCX_TLS=rc ${HPCX_PATH}/ompi/tests/osu-micro-benchmarks-5.3.2/osu_latency
 ```
+
+### <a name="optimizing-mpi-collectives"></a>Optimieren von MPI-Kollektiven
+
+Die MPI-Primitive für kollektive Kommunikation bieten eine flexible, portable Möglichkeit zur Implementierung von Gruppenkommunikationsvorgängen. Deren Verwendung ist in verschiedenen wissenschaftlichen parallelen Anwendungen weit verbreitet und hat einen erheblichen Einfluss auf die Gesamtleistung der Anwendung. Einzelheiten zu den Konfigurationsparametern zur Optimierung der Leistung der kollektiven Kommunikation mit HPC-X und der HCOLL-Bibliothek für kollektive Kommunikation finden Sie im [TechCommunity-Artikel](https://techcommunity.microsoft.com/t5/azure-compute/optimizing-mpi-collective-communication-using-hpc-x-on-azurehpc/ba-p/1356740).
+
 > [!NOTE] 
 > Bei HPC-X 2.7.4 und höher kann es erforderlich sein, „LD_LIBRARY_PATH“ explizit zu übergeben, wenn sich die UCX-Version unter MOFED von der in HPC-X unterscheidet.
 

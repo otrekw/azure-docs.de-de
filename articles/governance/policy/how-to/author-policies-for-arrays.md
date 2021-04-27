@@ -1,14 +1,14 @@
 ---
 title: Erstellen von Richtlinien für Arrayeigenschaften für Ressourcen
 description: Erfahren Sie, wie Sie mit Arrayparametern und Arrayausdrücken arbeiten, den [*]-Alias auswerten und Elemente mit Azure Policy-Definitionsregeln anfügen.
-ms.date: 10/22/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 18afbee0ca8b1c488e3bd3ce50dacc726bd2ef25
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220744"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305190"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Erstellen von Richtlinien für Arrayeigenschaften für Azure-Ressourcen
 
@@ -95,11 +95,11 @@ Die Befehle zur Verwendung dieser Zeichenfolge mit den einzelnen SDKs lauten wie
 
 - Azure CLI: Befehl [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) mit dem Parameter **params**
 - Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) mit dem Parameter **PolicyParameter**
-- REST-API: Im _PUT_-Vorgang [create](/rest/api/resources/policyassignments/create) als Teil des Anforderungstextes als Wert der **properties.parameters**-Eigenschaft
+- REST-API: Im _PUT_-Vorgang [create](/rest/api/policy/policyassignments/create) als Teil des Anforderungstextes als Wert der **properties.parameters**-Eigenschaft
 
 ## <a name="using-arrays-in-conditions"></a>Verwenden von Arrays in Bedingungen
 
-### <a name="in-and-notin"></a>`In` und `notIn`
+### <a name="in-and-notin"></a>„in“ und „notIn“
 
 Die `in`- und `notIn`-Bedingungen funktionieren nur mit Arraywerten. Sie überprüfen, ob ein Wert in einem Array vorhanden ist. Das Array kann ein literales JSON-Array oder ein Verweis auf einen Arrayparameter sein. Beispiel:
 
@@ -135,7 +135,7 @@ Der [Wertzählungsausdruck](../concepts/definition-structure.md#value-count) zä
 }
 ```
 
-Um den Ausdruck auszuwerten, wird die `where`-Bedingung in Azure Policy drei Mal ausgewertet: ein Mal für jeden Member von `[ "test*", "dev*", "prod*" ]`. Dabei wird gezählt, wie viele Male sie als `true` ausgewertet wurde. Bei jeder Iterationen wird der Wert des aktuellen Arraymembers mit dem `pattern`-Indexnamen gekoppelt, der durch `count.name` definiert ist. Auf diesen Wert kann innerhalb der `where`-Bedingung verwiesen werden, indem eine besondere Vorlagenfunktion aufgerufen wird: `current('pattern')`.
+Um den Ausdruck auszuwerten, wird die `where`-Bedingung in Azure Policy dreimal ausgewertet, einmal für jeden Member von `[ "test*", "dev*", "prod*" ]`. Dabei wird gezählt, wie viele Male sie als `true` ausgewertet wurde. Bei jeder Iterationen wird der Wert des aktuellen Arraymembers mit dem `pattern`-Indexnamen gekoppelt, der durch `count.name` definiert ist. Auf diesen Wert kann innerhalb der `where`-Bedingung verwiesen werden, indem eine besondere Vorlagenfunktion aufgerufen wird: `current('pattern')`.
 
 | Iteration | `current('pattern')`-Rückgabewert |
 |:---|:---|
@@ -243,7 +243,7 @@ Arrayeigenschaften in Ressourcen werden normalerweise durch zwei unterschiedlich
 
 #### <a name="referencing-the-array"></a>Verweisen auf das Array
 
-Der erste Alias stellt einen einzelnen Wert dar: den Wert der `stringArray`-Eigenschaft aus dem Anforderungsinhalt. Da der Wert dieser Eigenschaft ein Array ist, ist er in Richtlinienbedingungen nicht sehr nützlich. Beispiel:
+Der erste Alias stellt einen einzelnen Wert dar: den Wert der `stringArray`-Eigenschaft aus dem Anforderungsinhalt. Da es sich bei dem Wert dieser Eigenschaft um ein Array handelt, ist er in Richtlinienbedingungen nicht nützlich. Beispiel:
 
 ```json
 {
@@ -290,9 +290,9 @@ Wenn das Array Objekte enthält, kann ein `[*]`-Alias verwendet werden, um den W
 }
 ```
 
-Diese Bedingung ist TRUE, wenn die Werte aller `property`-Eigenschaften in `objectArray` gleich `"value"` sind. Weitere Beispiele finden Sie unter [Zusätzliche \[\*\]-Aliasbeispiele](#appendix--additional--alias-examples).
+Diese Bedingung ist TRUE, wenn die Werte aller `property`-Eigenschaften in `objectArray` gleich `"value"` sind. Weitere Beispiele finden Sie unter [Zusätzliche \[\*\]-Aliasbeispiele](#additional--alias-examples).
 
-Wenn Sie die `field()`-Funktion verwenden, um auf einen Arrayalias zu verweisen, ist der zurückgegebene Wert ein Array aller ausgewählten Werte. Durch dieses Verhalten wird der gängige Anwendungsfall der `field()`-Funktion, d. h. die Fähigkeit zum Anwenden von Vorlagenfunktionen auf Ressourceneigenschaftswerte, stark eingeschränkt. In diesem Fall können nur Vorlagenfunktionen verwendet werden, die Arrayargumente unterstützen. Beispielsweise ist es möglich, mit `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` die Länge des Arrays abzurufen. Komplexere Szenarien wie das Anwenden einer Vorlagenfunktion auf die einzelnen Arraymember und das Vergleichen mit einem gewünschten Wert sind jedoch nur bei Verwendung des Ausdrucks `count` möglich. Weitere Informationen finden Sie unter [Feldzählungsausdrücke](#field-count-expressions).
+Wenn Sie die `field()`-Funktion verwenden, um auf einen Arrayalias zu verweisen, ist der zurückgegebene Wert ein Array aller ausgewählten Werte. Durch dieses Verhalten wird der gängige Anwendungsfall der `field()`-Funktion, d. h. die Fähigkeit zum Anwenden von Vorlagenfunktionen auf Ressourceneigenschaftswerte, eingeschränkt. In diesem Fall können nur Vorlagenfunktionen verwendet werden, die Arrayargumente unterstützen. Beispielsweise ist es möglich, mit `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` die Länge des Arrays abzurufen. Komplexere Szenarien wie das Anwenden einer Vorlagenfunktion auf die einzelnen Arraymember und das Vergleichen mit einem gewünschten Wert sind jedoch nur bei Verwendung des `count`-Ausdrucks möglich. Weitere Informationen finden Sie unter [Feldzählungsausdrücke](#field-count-expressions).
 
 Zur Zusammenfassung folgt ein Beispiel für einen Ressourceninhalt und die von verschiedenen Aliasen zurückgegebenen ausgewählten Werte:
 
@@ -371,7 +371,7 @@ Bei Verwendung ohne eine `where`-Bedingung gibt `count` lediglich die Länge ein
 }
 ```
 
-Dieses Verhalten gilt auch bei geschachtelten Arrays. Beispielsweise wird der folgende `count`-Ausdruck als `true` ausgewertet, da in den `nestedArray`-Arrays vier Arraymember enthalten sind:
+Dieses Verhalten gilt auch bei geschachtelten Arrays. Beispielsweise wird der folgende `count`-Ausdruck als `true` ausgewertet, weil in den `nestedArray`-Arrays vier Arraymember enthalten sind:
 
 ```json
 {
@@ -382,7 +382,7 @@ Dieses Verhalten gilt auch bei geschachtelten Arrays. Beispielsweise wird der fo
 }
 ```
 
-Die eigentliche Stärke von `count` zeigt sich in der `where`-Bedingung. Wenn diese angegeben ist, werden in Azure Policy die Arraymember gezählt und jeweils für die Bedingung ausgewertet. Dabei wird gezählt, wie viele Arraymember als `true` ausgewertet werden. Konkret wird in Azure Policy in jeder Iteration der Auswertung der `where`-Bedingung der einzelne Arraymember ***i** _ ausgewählt und der Ressourceninhalt für die `where`-Bedingung ausgewertet, _*als ob **_i_*_ der einzige Member des Arrays_* wäre. Die Tatsache, dass in jeder Iteration nur ein Arraymember zur Verfügung steht, bietet die Möglichkeit, komplexe Bedingungen auf jeden einzelnen Arraymember anzuwenden.
+Die eigentliche Stärke von `count` zeigt sich in der `where`-Bedingung. Wenn diese angegeben ist, werden in Azure Policy die Arraymember gezählt und jeweils für die Bedingung ausgewertet. Dabei wird gezählt, wie viele Arraymember als `true` ausgewertet werden. Konkret wird in Azure Policy in jeder Iteration der Auswertung der `where`-Bedingung der einzelne Arraymember „**i**“ ausgewählt und der Ressourceninhalt für die `where`-Bedingung ausgewertet, _*als ob ***i**_ der einzige Member des Arrays wäre_*. Die Tatsache, dass in jeder Iteration nur ein Arraymember zur Verfügung steht, bietet die Möglichkeit, komplexe Bedingungen auf jeden einzelnen Arraymember anzuwenden.
 
 Beispiel:
 
@@ -398,7 +398,9 @@ Beispiel:
   "equals": 1
 }
 ```
-Um den `count`-Ausdruck auszuwerten, wird die `where`-Bedingung in Azure Policy dreimal ausgewertet, einmal für jeden Member von `stringArray`. Dabei wird gezählt, wie viele Male sie als `true` ausgewertet wird. Wenn die `where`-Bedingung auf die `Microsoft.Test/resourceType/stringArray[*]`-Arraymember verweist, anstatt dass alle Member von `stringArray` ausgewählt werden, wird jeweils nur ein einzelner Arraymember ausgewählt:
+
+Um den `count`-Ausdruck auszuwerten, wird die `where`-Bedingung in Azure Policy dreimal ausgewertet, einmal für jeden Member von `stringArray`. Dabei wird gezählt, wie viele Male sie als `true` ausgewertet wurde.
+Wenn die `where`-Bedingung auf die `Microsoft.Test/resourceType/stringArray[*]`-Arraymember verweist, anstatt dass alle Member von `stringArray` ausgewählt werden, wird jeweils nur ein einzelner Arraymember ausgewählt:
 
 | Iteration | Ausgewählte Werte von `Microsoft.Test/resourceType/stringArray[*]` | Ergebnis der Auswertung von `where` |
 |:---|:---|:---|
@@ -406,7 +408,7 @@ Um den `count`-Ausdruck auszuwerten, wird die `where`-Bedingung in Azure Policy 
 | 2 | `"b"` | `false` |
 | 3 | `"c"` | `false` |
 
-Daher gibt `count` den Wert `1` zurück.
+Der `count`-Ausdruck gibt `1` zurück.
 
 Hier ein komplexerer Ausdruck:
 
@@ -436,7 +438,7 @@ Hier ein komplexerer Ausdruck:
 | 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1"` </br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `false` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2"` </br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4`| `true` |
 
-Daher gibt `count` den Wert `1` zurück.
+Der `count`-Ausdruck gibt `1` zurück.
 
 Aufgrund der Tatsache, dass der `where`-Ausdruck für den **gesamten** Anforderungsinhalt ausgewertet wird (mit Änderungen nur am aktuell ausgewerteten Arraymember), kann die `where`-Bedingung auch auf Felder außerhalb des Arrays verweisen:
 
@@ -448,7 +450,8 @@ Aufgrund der Tatsache, dass der `where`-Ausdruck für den **gesamten** Anforderu
       "field": "tags.env",
       "equals": "prod"
     }
-  }
+  },
+  "equals": 0
 }
 ```
 
@@ -457,40 +460,60 @@ Aufgrund der Tatsache, dass der `where`-Ausdruck für den **gesamten** Anforderu
 | 1 | `tags.env` => `"prod"` | `true` |
 | 2 | `tags.env` => `"prod"` | `true` |
 
-Auch geschachtelte count-Ausdrücke sind zulässig:
+Mit geschachtelten Zählungsausdrücken können Bedingungen auf geschachtelte Arrayfelder angewendet werden. Mit der folgenden Bedingung wird beispielsweise überprüft, ob das `objectArray[*]`-Array über genau zwei Member mit dem `nestedArray[*]`-Array verfügt, das mindestens einen Member enthält:
 
 ```json
 {
   "count": {
     "field": "Microsoft.Test/resourceType/objectArray[*]",
     "where": {
-      "allOf": [
-        {
-          "field": "Microsoft.Test/resourceType/objectArray[*].property",
-          "equals": "value2"
-        },
-        {
-          "count": {
-            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-            "where": {
-              "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-              "equals": 3
-            },
-            "greater": 0
-          }
-        }
-      ]
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]"
+      },
+      "greaterOrEquals": 1
     }
-  }
+  },
+  "equals": 2
 }
 ```
- 
-| Äußere Schleifeniteration | Ausgewählte Werte | Innere Schleifeniteration | Ausgewählte Werte |
-|:---|:---|:---|:---|
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1` |
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `2` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
+
+| Iteration | Ausgewählte Werte | Ergebnis der Auswertung der geschachtelten Zählung |
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` hat 2 Member => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` hat 2 Member => `true` |
+
+Da beide Member von `objectArray[*]` ein untergeordnetes Array `nestedArray[*]` mit zwei Membern enthalten, gibt der äußere Zählungsausdruck `2` zurück.
+
+Komplexeres Beispiel: Überprüfen Sie, ob das `objectArray[*]`-Array genau zwei Member mit `nestedArray[*]` mit beliebigen Membern enthält, die gleich `2` oder `3` sind:
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+        "where": {
+            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+            "in": [ 2, 3 ]
+        }
+      },
+      "greaterOrEquals": 1
+    }
+  },
+  "equals": 2
+}
+```
+
+| Iteration | Ausgewählte Werte | Ergebnis der Auswertung der geschachtelten Zählung
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` enthält `2` => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` enthält `3` => `true` |
+
+Da beide Member von `objectArray[*]` ein untergeordnetes Array `nestedArray[*]` aufweisen, das entweder `2` oder enthält `3`, gibt der äußere Zählungsausdruck `2` zurück.
+
+> [!NOTE]
+> Geschachtelte Feldzählungsausdrücke können nur auf geschachtelte Arrays verweisen. Beispielsweise kann der auf `Microsoft.Test/resourceType/objectArray[*]` verweisende Zählungsausdruck eine geschachtelte Zählung aufweisen, die auf das geschachtelte Array `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` gerichtet ist, aber keinen geschachtelten Zählungsausdruck, der auf `Microsoft.Test/resourceType/stringArray[*]` gerichtet ist.
 
 #### <a name="accessing-current-array-member-with-template-functions"></a>Zugreifen auf den aktuellen Arraymember mit Vorlagenfunktionen
 
@@ -517,13 +540,13 @@ Wenn Sie Vorlagenfunktionen verwenden, verwenden Sie die `current()`-Funktion, u
 
 #### <a name="the-field-function-inside-where-conditions"></a>Die Feldfunktion in where-Bedingungen
 
-Die `field()`-Funktion kann auch verwendet werden, um auf den Wert des aktuellen Arraymembers zuzugreifen, sofern sich der **count**-Ausdruck nicht innerhalb einer **Existenzbedingung**  befindet (die `field()`-Funktion verweist immer auf die Ressource, die in der **if**-Bedingung ausgewertet wird).
-Das Verhalten von `field()` beim Verweisen auf das ausgewertete Array basiert auf den folgenden Konzepten:
+Die `field()`-Funktion kann auch verwendet werden, um auf den Wert des aktuellen Arraymembers zuzugreifen, sofern sich der **count**-Ausdruck nicht innerhalb einer **Existenzbedingung** befindet (die `field()`-Funktion verweist immer auf die Ressource, die in der **if**-Bedingung ausgewertet wird). Das Verhalten von `field()` beim Verweisen auf das ausgewertete Array basiert auf den folgenden Konzepten:
+
 1. Arrayaliase werden in einer Sammlung von Werten aufgelöst, die aus allen Arraymembern ausgewählt werden.
 1. `field()`-Funktionen, die auf Arrayaliase verweisen, geben ein Array mit den ausgewählten Werten zurück.
 1. Durch Verweisen auf den gezählten Arrayalias innerhalb der `where`-Bedingung wird eine Sammlung mit einem einzelnen Wert zurückgegeben, der aus dem Arraymember ausgewählt wird, der in der aktuellen Iteration ausgewertet wird.
 
-Durch dieses Verhalten wird beim Verweisen auf den gezählten Arraymember mit einer `field()`-Funktion innerhalb der `where`-Bedingung **ein Array mit einem einzelnen Member** zurückgegeben. Auch wenn dies vielleicht nicht intuitiv ist, entspricht es dem Grundgedanken, dass Arrayaliase immer eine Sammlung von ausgewählten Eigenschaften zurückgeben. Hier sehen Sie ein Beispiel:
+Durch dieses Verhalten wird beim Verweisen auf den gezählten Arraymember mit einer `field()`-Funktion innerhalb der `where`-Bedingung **ein Array mit einem einzelnen Member** zurückgegeben. Auch wenn dieses Verhalten vielleicht nicht intuitiv ist, entspricht es dem Grundgedanken, dass Arrayaliase immer eine Sammlung von ausgewählten Eigenschaften zurückgeben. Hier sehen Sie ein Beispiel:
 
 ```json
 {
@@ -544,7 +567,7 @@ Durch dieses Verhalten wird beim Verweisen auf den gezählten Arraymember mit ei
 | 2 | `Microsoft.Test/resourceType/stringArray[*]` => `"b"` </br>  `[field('Microsoft.Test/resourceType/stringArray[*]')]` => `[ "b" ]` | `false` |
 | 3 | `Microsoft.Test/resourceType/stringArray[*]` => `"c"` </br>  `[field('Microsoft.Test/resourceType/stringArray[*]')]` => `[ "c" ]` | `false` |
 
-Wenn also mit einer `field()`-Funktion auf den Wert des gezählten Arrayalias zugegriffen werden soll, ist der Wert mit einer `first()`-Vorlagenfunktion zu umschließen:
+Wenn also mit einer `field()`-Funktion auf den Wert des gezählten Arrayalias zugegriffen werden muss, ist der Wert mit einer `first()`-Vorlagenfunktion zu umschließen:
 
 ```json
 {
@@ -568,7 +591,7 @@ Nützliche Beispiele finden Sie unter [Beispiele für Feldzählungen](../concept
 
 ## <a name="modifying-arrays"></a>Ändern von Arrays
 
-[append](../concepts/effects.md#append) und [modify](../concepts/effects.md#modify) ändern Eigenschaften von Ressourcen bei deren Erstellung oder einem Update. Beim Arbeiten mit Arrayeigenschaften hängt das Verhalten bei diesen Auswirkungen davon ab, ob der Vorgang versucht, den **\[\*\]** -Alias zu ändern:
+[append](../concepts/effects.md#append) und [modify](../concepts/effects.md#modify) ändern Eigenschaften von Ressourcen bei deren Erstellung oder einem Update. Beim Arbeiten mit Arrayeigenschaften hängt das Verhalten bei diesen Auswirkungen davon ab, ob der Vorgang versucht, den **\[\*\]** -Alias zu ändern oder nicht:
 
 > [!NOTE]
 > Die Verwendung des `modify`-Effekts mit Aliasen befindet sich derzeit in der **Vorschau**.
@@ -587,9 +610,9 @@ Nützliche Beispiele finden Sie unter [Beispiele für Feldzählungen](../concept
 
 Weitere Informationen finden Sie unter [Beispiele für „append“](../concepts/effects.md#append-examples).
 
-## <a name="appendix--additional--alias-examples"></a>Anhang: Zusätzliche [*]-Aliasbeispiele
+## <a name="additional--alias-examples"></a>Zusätzliche [*]-Aliasbeispiele
 
-Es wird empfohlen, die [Feldzählungsausdrücke](#field-count-expressions) zu verwenden, um zu überprüfen, ob „all of“ (alle) oder „any of“ (mindestens ein) der Member eines Arrays im Anforderungsinhalt eine Bedingung erfüllen. Allerdings ist es für einige einfache Bedingungen möglich, das gleiche Ergebnis zu erzielen, indem ein Feldaccessor mit einem Arrayalias verwendet wird (wie unter [Verweisen auf die Arraymembersammlung](#referencing-the-array-members-collection) beschrieben wird). Dies kann in Richtlinienregeln nützlich sein, die den Grenzwert der zulässigen Anzahl von **count**-Ausdrücken überschreiten. Im Folgenden finden Sie Beispiele für häufige Anwendungsfälle:
+Es wird empfohlen, die [Feldzählungsausdrücke](#field-count-expressions) zu verwenden, um zu überprüfen, ob alle („all of“) oder mindestens eines („any of“) der Member eines Arrays im Anforderungsinhalt eine Bedingung erfüllen. Bei einigen einfachen Bedingungen ist es jedoch möglich, das gleiche Ergebnis zu erzielen, indem ein Feldaccessor mit einem Arrayalias verwendet wird, wie unter [Verweisen auf die Sammlung der Arraymember](#referencing-the-array-members-collection) beschrieben. Dieses Muster kann in Richtlinienregeln nützlich sein, die den Grenzwert der zulässigen Anzahl von **count**-Ausdrücken überschreiten. Im Folgenden finden Sie Beispiele für häufige Anwendungsfälle:
 
 Die Beispielrichtlinienregel für die unten stehende Szenariotabelle sieht wie folgt aus:
 

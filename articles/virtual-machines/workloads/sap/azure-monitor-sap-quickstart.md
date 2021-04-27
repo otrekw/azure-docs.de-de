@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 096f0425a6893d68341b97c821481fa0adf2f95c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554058"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375269"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Bereitstellen von Azure Monitor für SAP-Lösungen mit dem Azure-Portal
 
@@ -136,6 +136,32 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 4. Wählen Sie abschließend die Option **Anbieter hinzufügen** aus. Fügen Sie nach Bedarf weitere Anbieter hinzu, oder wählen Sie **Überprüfen und erstellen** aus, um die Bereitstellung abzuschließen.
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Abbildung der Informationen im Zusammenhang mit dem Hinzufügen des Microsoft SQL Server-Anbieters" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+
+### <a name="sap-netweaver-provider"></a>Hinzufügen von SAP NetWeaver als Anbieter
+
+#### <a name="pre-requisites-for-adding-netweaver-provider"></a>Voraussetzungen für das Hinzufügen von NetWeaver als Anbieter
+
+Der SAP-Startdienst („sapstartsrv“) stellt eine Vielzahl von Diensten einschließlich der Überwachung des SAP-Systems bereit. Wir nutzen „SAPControl“, eine SOAP-Webdienstschnittstelle, die diese Funktionen verfügbar macht. Diese SAPControl-Webdienstschnittstelle unterscheidet zwischen [geschützten und ungeschützten](https://wiki.scn.sap.com/wiki/display/SI/Protected+web+methods+of+sapstartsrv) Webdienstmethoden. Um bestimmte Metriken abrufen zu können, müssen Sie den Schutz einiger Methoden aufheben. Führen Sie die folgenden Schritte für jedes SAP-System aus, um den Schutz der erforderlichen Methoden für das aktuelle Release aufzuheben:
+
+1. Öffnen Sie eine SAP GUI-Verbindung mit dem SAP-Server.
+2. Melden Sie sich mit einem Administratorkonto an.
+3. Führen Sie die Transaktion RZ10 aus.
+4. Wählen Sie das entsprechende Profil (DEFAULT.PFL) aus.
+5. Wählen Sie „Erweiterte Wartung“ aus, und klicken Sie auf „Ändern“. 
+6. Ändern Sie den Wert des betroffenen Parameters „service/protectedwebmethods“ für „SDEFAULT -GetQueueStatistic –ABAPGetWPTable –EnqGetStatistic –GetProcessList“ in die empfohlene Einstellung, und klicken Sie dann auf „Kopieren“.
+7. Navigieren Sie zurück, und wählen Sie „Profil > Speichern“ aus.
+8. Starten Sie das System neu, damit die Parametereinstellung wirksam wird.
+
+#### <a name="installing-netweaver-provider-on-the-azure-portal"></a>Installieren des NetWeaver-Anbieters über das Azure-Portal
+1.  Stellen Sie sicher, dass Sie alle erforderlichen Schritte ausgeführt haben und der Server neu gestartet wurde.
+2.  Wählen Sie im Azure-Portal unter „AMS“ die Option „Anbieter hinzufügen“ aus, und wählen Sie dann im Dropdownfeld den Eintrag „SAP NetWeaver“ aus.
+3.  Geben Sie den Hostnamen des SAP-Systems und die Unterdomäne (falls zutreffend) ein.
+4.  Geben Sie die Instanznummer ein, die dem eingegebenen Hostnamen entspricht. 
+5.  Geben Sie die System-ID (SID) ein.
+6.  Wählen Sie abschließend „Anbieter hinzufügen“ aus.
+7.  Fügen Sie nach Bedarf weitere Anbieter hinzu, oder wählen Sie „Überprüfen und erstellen“ aus, um die Bereitstellung abzuschließen.
+
+![image](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

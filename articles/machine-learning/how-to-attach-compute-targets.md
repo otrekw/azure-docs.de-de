@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 318afced85f3cca0a450d77f8be7b2a1d6c388ed
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a3a70ac5d5603cad98c199cbd8e3b98bb095d131
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504932"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167667"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Einrichten von Computezielen für das Training und die Bereitstellung von Modellen
 
@@ -53,7 +53,7 @@ Informationen zur Verwendung von Computezielen, die von Azure Machine Learning v
 
 ## <a name="whats-a-compute-target"></a>Was ist ein Computeziel?
 
-Mit Azure Machine Learning können Sie Ihr Modell für eine Vielzahl von Ressourcen oder Umgebungen trainieren, die zusammen als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-targets) bezeichnet werden. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.  Ebenso können Sie Computeziele für die Modellimplementierung erstellen. Dies wird unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md) beschrieben.
+Mit Azure Machine Learning können Sie Ihr Modell auf verschiedenen Ressourcen oder Umgebungen trainieren, die zusammenfassend als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-targets) bezeichnet werden. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.  Ebenso können Sie Computeziele für die Modellimplementierung erstellen. Dies wird unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md) beschrieben.
 
 
 ## <a name="local-computer"></a><a id="local"></a>Lokaler Computer
@@ -64,13 +64,12 @@ Wenn Sie Ihren lokalen Computer für **Rückschlüsse** verwenden, muss Docker i
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Virtuelle Remotecomputer
 
-Azure Machine Learning bietet Ihnen auch die Möglichkeit, eine eigene Computeressource zu verwenden und diese an Ihren Arbeitsbereich anzufügen. Eine Remote-VM, auf die über Azure Machine Learning zugegriffen werden kann, ist ein solcher Ressourcentyp. Die Ressource kann entweder eine Azure-VM, ein Remoteserver in Ihrer Organisation oder lokal sein. Durch Angabe der IP-Adresse und Anmeldeinformationen (Benutzername und Kennwort oder SSH-Schlüssel) können Sie jede VM, auf die zugegriffen werden kann, für Remoteausführungen verwenden.
+Azure Machine Learning unterstützt auch das Anfügen einer Azure-VM. Die VM muss eine Azure-DSVM (Data Science Virtual Machine) sein. Die VM bietet eine zusammengestellte Auswahl an Tools und Frameworks für die Entwicklung des maschinellen Lernens über den gesamten Lebenszyklus. Weitere Informationen zum Verwenden der DSVM mit Azure Machine Learning finden Sie unter [Konfigurieren einer Entwicklungsumgebung](./how-to-configure-environment.md#dsvm).
 
-Sie können eine [systemseitig erstellte Conda-Umgebung](how-to-use-environments.md), eine bereits vorhandene [Python-Umgebung](how-to-configure-environment.md#local) oder einen [Docker-Container](https://docs.docker.com/engine/install/ubuntu/) verwenden. Zur Ausführung auf einem Docker-Container muss die Docker-Engine auf der VM ausgeführt werden. Diese Funktion ist besonders nützlich, wenn Sie eine cloudbasierte Entwicklungs-/Experimentierumgebung nutzen möchten, die Ihnen mehr Flexibilität bietet als Ihr lokaler Computer.
+> [!TIP]
+> Anstelle eines Remote VMs, empfiehlt es sich, die [Azure Machine Learning Compute-Instanz](concept-compute-instance.md)zu verwenden. Dabei handelt es sich um eine vollständig verwaltete, cloudbasierte Compute-Lösung, die für Azure Machine Learning spezifisch ist. Weitere Informationen hierzu finden Sie unter [Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz](how-to-create-manage-compute-instance.md).
 
-Verwenden Sie in diesem Szenario Azure Data Science Virtual Machine (DSVM) als virtuellen Azure-Computer. Diese VM ist eine vorkonfigurierte Data Science- und KI-Entwicklungsumgebung in Azure. Die VM bietet eine zusammengestellte Auswahl an Tools und Frameworks für die Entwicklung des maschinellen Lernens über den gesamten Lebenszyklus. Weitere Informationen zum Verwenden der DSVM mit Azure Machine Learning finden Sie unter [Konfigurieren einer Entwicklungsumgebung](./how-to-configure-environment.md#dsvm).
-
-1. **Erstellen**: Erstellen Sie eine DSVM, bevor Sie si zum Trainieren Ihres Modells verwenden. Informationen zum Erstellen dieser Ressource finden Sie in [Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
+1. **Erstellen**: Azure Machine Learning kann keine Remote-VM für Sie erstellen. Stattdessen müssen Sie die VM erstellen und sie dann Ihrem Arbeitsbereich hinzufügen. Informationen zum Erstellen einer DSVM finden Sie in [Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
 
     > [!WARNING]
     > Von Azure Machine Learning werden nur virtuelle Computer unterstützt, auf denen **Ubuntu** ausgeführt wird. Wenn Sie eine VM erstellen oder eine vorhandene VM auswählen, müssen Sie eine VM auswählen, die Ubuntu verwendet.
@@ -124,11 +123,16 @@ Verwenden Sie in diesem Szenario Azure Data Science Virtual Machine (DSVM) als v
    src = ScriptRunConfig(source_directory=".", script="train.py", compute_target=compute, environment=myenv) 
    ```
 
+> [!TIP]
+> Wenn Sie eine VM aus Ihrem Arbeitsbereich __entfernen__ (trennen) wollen, verwenden Sie die Methode [RemoteCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remotecompute#detach--).
+>
+> Azure Machine Learning löscht die VM nicht für Sie. Sie müssen die VM manuell löschen, indem Sie das Azure-Portal, die CLI oder das SDK für die Azure-VM verwenden.
+
 ## <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattform stellt Apache Spark bereit, das zum Training Ihres Modells verwendet werden kann.
 
-1. **Erstellen**:  Erstellen Sie den HDInsight-Cluster, bevor Sie ihn zum Training Ihres Modells verwenden. Informationen zum Erstellen von Spark in einem HDInsight-Cluster finden Sie unter [Erstellen eines Spark-Clusters in HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+1. **Erstellen**: Azure Machine Learning kann keinen HDInsight-Cluster für Sie erstellen. Stattdessen müssen Sie den Cluster erstellen und ihn dann Ihrem Azure Machine Learning Arbeitsbereich hinzufügen. Weitere Informationen finden Sie unter [Erstellen eines Spark-Clusters in HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
     > [!WARNING]
     > Von Azure Machine Learning wird vorausgesetzt, dass der HDInsight-Cluster über eine __öffentliche IP-Adresse__ verfügt.
@@ -169,8 +173,10 @@ Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattfor
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
-
-Nachdem Sie nun die Computeressource angefügt und Ihre Ausführung konfiguriert haben, besteht der nächste Schritt im [Übermitteln der Trainingsausführung](how-to-set-up-training-targets.md).
+> [!TIP]
+> Wenn Sie einen HDInsight-Cluster aus dem Arbeitsbereich __entfernen__ (trennen) möchten, verwenden Sie die [HDInsightcompute.detach ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--)-Methode.
+>
+> Der HDInsight-Cluster wird von Azure Machine Learning nicht für Sie gelöscht. Sie müssen es manuell über das Azure-Portal, die CLI oder das SDK für Azure HDInsight löschen.
 
 ## <a name="azure-batch"></a><a id="azbatch"></a>Azure Batch 
 
@@ -219,7 +225,7 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 
 Azure Databricks ist eine Apache Spark-basierte Umgebung in der Azure-Cloud. Sie kann mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
 
-Erstellen Sie vor der Verwendung einen Azure Databricks-Arbeitsbereich. Informationen zum Erstellen einer Arbeitsbereichsressource finden Sie im Dokument [Ausführen eines Spark-Auftrags in Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
+> [!WICHTIG} Azure Machine Learning kann kein Azure Databricks Computeziel erstellen. Stattdessen müssen Sie einen Azure Databricks Arbeitsbereich erstellen und ihn dann Ihren Azure Machine Learning Arbeitsbereich hinzufügen. Informationen zum Erstellen einer Arbeitsbereichsressource finden Sie im Dokument [Ausführen eines Spark-Auftrags in Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 
 Geben Sie zum Anfügen von Azure Databricks als Computeziel die folgenden Informationen an:
 
@@ -333,8 +339,7 @@ Azure Container Instances (ACI) werden dynamisch erstellt, wenn Sie ein Modell b
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Azure Kubernetes Service (AKS) unterstützt bei Verwendung mit Azure Machine Learning eine Vielzahl von Konfigurationsoptionen. Weitere Informationen finden Sie unter [How to create and attach Azure Kubernetes Service](how-to-create-attach-kubernetes.md) (Erstellen und Anfügen des Azure Kubernetes Service).
-
+Azure Kubernetes Service (AKS) unterstützt eine Vielzahl von Konfigurationsoptionen bei der Verwendung mit Azure Machine Learning. Weitere Informationen finden Sie unter [How to create and attach Azure Kubernetes Service](how-to-create-attach-kubernetes.md) (Erstellen und Anfügen des Azure Kubernetes Service).
 
 ## <a name="notebook-examples"></a>Notebook-Beispiele
 

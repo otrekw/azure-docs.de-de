@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b55fe0bf404ecb8a81e3fe1975dfa9f5ba5dfb06
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91274232"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103350"
 ---
 # <a name="point-to-site-vpn-session-management"></a>Point-to-Site-VPN-Sitzungsverwaltung
 
@@ -32,6 +32,8 @@ So zeigen Sie eine Sitzung im Portal an und trennen die Verbindung
    :::image type="content" source="./media/p2s-session-management/portal.png" alt-text="Portal-Beispiel":::
 1. Sie können alle aktuellen Sitzungen im Fensterbereich anzeigen.
 1. Wählen Sie **„...“** für die zu trennende Sitzung und dann **Trennen** aus.
+
+Für VpnGw4- und VpnGw5-SKUs kann dieses Feature im Portal derzeit nicht verwendet werden. Wenn Sie über eines dieser Gateways verfügen, verwenden Sie die im nächsten Abschnitt beschriebene PowerShell-Methode.
 
 ## <a name="powershell"></a>PowerShell
 

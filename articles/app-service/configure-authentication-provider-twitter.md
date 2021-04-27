@@ -3,16 +3,16 @@ title: Konfigurieren der Twitter-Authentifizierung
 description: Erfahren Sie, wie Sie die Twitter-Authentifizierung als Identitätsanbieter für Ihre App Services- oder Azure Functions-App konfigurieren.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
-ms.date: 02/28/2020
+ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 11c913b12b4dcb7d2a5ffa532064b347b82904ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6ecce954991d9f3901c54a6f87fc803b32469862
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "80519912"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077974"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Twitter-Anmeldung
 
@@ -34,38 +34,28 @@ Sie benötigen ein Twitter-Konto mit verifizierter E-Mail-Adresse und Telefonnum
    - API-Schlüssel
    - Geheimer API-Schlüssel
 
-   > [!NOTE]
+   > [!IMPORTANT]
    > Der geheime API-Schlüssel ist ein wichtiges Sicherheitsmerkmal. Teilen Sie diesen Schlüssel mit niemandem, und geben Sie ihn nicht über Ihre App frei.
 
 ## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>Hinzufügen von Twitter-Informationen zu Ihrer Anwendung
 
-1. Wechseln Sie im [Azure portal] zu Ihrer Anwendung.
-1. Wählen Sie **Einstellungen** > **Authentifizierung/Autorisierung,** aus, und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
-1. Wählen Sie **Twitter** aus.
-1. Fügen Sie die Werte von `API key` und `API secret key` ein, die Sie zuvor abgerufen haben.
-1. Klicken Sie auf **OK**.
+1. Melden Sie sich am [Azure Pportal] an und navigieren Sie zu Ihrer App.
+1. Wählen Sie **Authentifizierung** im Menü auf der linken Seite. Klicken Sie auf **Identitätsanbieter hinzufügen**.
+1. Wählen Sie **Twitter** in der Dropdown-Liste der Identitätsanbieter aus. Fügen Sie die Werte von `API key` und `API secret key` ein, die Sie zuvor abgerufen haben.
 
-   ![Screenshot der Einstellungen für die mobile Twitter-App][1]
+    Der geheime Schlüssel wird als Slot-persistente [Anwendungs-Einstellung](./configure-common.md#configure-app-settings) mit dem Namen `TWITTER_PROVIDER_AUTHENTICATION_SECRET` gespeichert. Sie können diese Einstellung später aktualisieren, um [Schlüsseltresor-Verweise](./app-service-key-vault-references.md) zu verwenden, wenn Sie den geheimen Schlüssel im Azure Schlüsseltresor verwalten möchten.
 
-   Standardmäßig erfolgt die Authentifizierung über App Service, wobei jedoch der Zugriff auf die Inhalte Ihrer Website und APIs nicht autorisiert wird. Sie müssen die Benutzer in Ihrem App-Code autorisieren.
+1. Wenn dies der erste Identitätsanbieter ist, der für die Anwendung konfiguriert wurde, wird auch ein Abschnitt mit den **Einstellungen für die App-Dienst-Authentifizierung** angezeigt. Andernfalls können Sie mit dem nächsten Schritt fortfahren.
+    
+    Diese Optionen bestimmen, wie Ihre Anwendung auf nicht authentifizierte Anfragen reagiert, und die Standardeinstellungen leiten alle Anfragen zur Anmeldung mit diesem neuen Anbieter um. Sie können dieses Verhalten jetzt anpassen oder diese Einstellungen später über den Hauptbildschirm der **Authentifizierung** anpassen, indem Sie neben den **Authentifizierungs-Einstellungen** die Option **Bearbeiten** auswählen. Weitere Informationen zu diesen Optionen finden Sie unter [Authentifizierungs-Verlauf](overview-authentication-authorization.md#authentication-flow).
 
-1. (Optional) Um den Zugriff auf Ihre Website ausschließlich auf Benutzer zu beschränken, die von Twitter authentifiziert wurden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Twitter** fest. Wenn Sie diese Funktion festlegen, erfordert Ihre App, dass alle Anforderungen authentifiziert werden. Sie leitet außerdem alle nicht authentifizierten Anforderungen zur Authentifizierung an Twitter um.
+1. Klicken Sie auf **Hinzufügen**.
 
-   > [!CAUTION]
-   > Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite haben, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, sodass die App die Authentifizierung selbst manuell startet. Weitere Informationen finden Sie unter [Authentifizierungsflow](overview-authentication-authorization.md#authentication-flow).
-
-1. Wählen Sie **Speichern** aus.
-
-Sie können nun Twitter für die Authentifizierung in Ihrer App verwenden.
+Sie können nun Twitter für die Authentifizierung in Ihrer App verwenden. Der Anbieter wird auf der **Authentifizierungs-** Anzeige aufgeführt. Von dort aus können Sie diese Anbieter-Konfiguration bearbeiten oder löschen.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Nächste Schritte
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
-<!-- Images. -->
-
-[0]: ./media/app-service-mobile-how-to-configure-twitter-authentication/app-service-twitter-redirect.png
-[1]: ./media/app-service-mobile-how-to-configure-twitter-authentication/mobile-app-twitter-settings.png
 
 <!-- URLs. -->
 

@@ -3,14 +3,14 @@ title: Suchen nach Pool- und Knotenfehlern
 description: In diesem Artikel werden die Hintergrundvorgänge behandelt, die auftreten können, sowie Fehler, auf die geprüft werden sollte, und wie diese beim Erstellen von Pools und Knoten vermieden werden können.
 author: mscurrell
 ms.author: markscu
-ms.date: 02/03/2020
+ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 2b67eada5dfa89f95e2c9ae045c6bbe3fa0bb1ce
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 86ea4ce4d596875e455d7b86250882713a14337f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576311"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104720150"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Suchen nach Pool- und Knotenfehlern
 
@@ -62,6 +62,13 @@ Wenn Sie einen Pool löschen, der Knoten enthält, löscht Azure Batch zuerst di
 
 Der [Poolstatus](/rest/api/batchservice/pool/get#poolstate) wird von Azure Batch während des Löschvorgangs auf **Wird gelöscht** festgelegt. Die aufrufende Anwendung kann mithilfe der Eigenschaften **state** und **stateTransitionTime** erkennen, ob der Löschvorgang im Pool zu lange dauert.
 
+Wenn der Pool länger als erwartet dauert, wiederholt Batch den Vorgang in regelmäßigen Abständen, bis der Pool erfolgreich gelöscht werden kann. In einigen Fällen ist die Verzögerung auf einen Azure-Dienstausfall oder andere temporäre Probleme zurückzuführen. Bei anderen Ursachen, die eine erfolgreiche Löschung eines Pools verhindern, müssen Sie möglicherweise Maßnahmen ergreifen, um das Problem zu beheben. Hierzu gehören die folgenden Ursachen:
+
+- Ressourcensperren wurden auf von Batch erstellte Ressourcen oder auf von Batch verwendete Netzwerkressourcen angewandt.
+- Die erstellten Ressourcen weisen eine Abhängigkeit von einer Ressource auf, die von Batch erstellt wurde. Wenn Sie beispielsweise [einen Pool in einem virtuellen Netzwerk erstellen](batch-virtual-network.md), erstellt Batch eine Netzwerksicherheitsgruppe (NSG), eine öffentliche IP-Adresse und einen Lastenausgleich. Wenn Sie diese Ressourcen außerhalb des Pools verwenden, kann der Pool erst gelöscht werden, nachdem diese Abhängigkeit aufgehoben wurde.
+- Die Registrierung des Ressourcenanbieters „Microsoft.Batch“ wurde für das Abonnement mit Ihrem Pool aufgehoben.
+- Microsoft Azure Batch hat nicht mehr die [Rollen „Mitwirkender“ oder „Besitzer“](batch-account-create-portal.md#allow-azure-batch-to-access-the-subscription-one-time-operation) für das Abonnement, das Ihren Pool enthält (für Batch-Konten im Benutzerabonnementmodus).
+
 ## <a name="node-errors"></a>Knotenfehler
 
 Selbst wenn Azure Batch Knoten in einem Pool erfolgreich zuweist, können verschiedene Probleme dazu führen, dass einige Knoten fehlerhaft sind und keine Tasks ausführen können. Da für diese Knoten weiterhin Gebühren anfallen, ist es wichtig, Probleme zu erkennen. So wird verhindert, dass für Knoten bezahlt werden muss, die nicht genutzt werden können. Neben häufigen Knotenfehlern ist es hilfreich, den aktuellen [Auftragsstatus](/rest/api/batchservice/job/get#jobstate) zu kennen.
@@ -105,15 +112,10 @@ Wenn Azure Batch die Ursache bestimmen kann, wird sie von der Knoteneigenschaft 
 Einige weitere Beispiele für Ursachen für **nicht verwendbare** Knoten sind u. a.:
 
 - Ein benutzerdefiniertes VM-Image ist ungültig. Beispielsweise, wenn ein Image nicht ordnungsgemäß vorbereitet wurde.
-
 - Eine VM wird aufgrund eines Infrastrukturausfalls oder eines niedrigstufigen Upgrades verschoben. Azure Batch stellt den Knoten wieder her.
-
 - Ein VM-Image wurde auf Hardware bereitgestellt, von der es nicht unterstützt wird. Beispiel: Der Versuch, ein CentOS-HPC-Image auf einem virtuellen [Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md)-Computer auszuführen.
-
 - Die VMs befinden sich in einem [virtuellen Azure-Netzwerk](batch-virtual-network.md), und der Datenverkehr zu den Schlüsselports wurde blockiert.
-
 - Die VMs befinden sich in einem virtuellen Netzwerk, aber der ausgehende Datenverkehr an Azure Storage ist blockiert.
-
 - Die VMs befinden sich in einem virtuellen Netzwerk mit einer DNS-Kundenkonfiguration, und der DNS-Server kann Azure Storage nicht auflösen.
 
 ### <a name="node-agent-log-files"></a>Protokolldateien des Knoten-Agents
@@ -134,7 +136,9 @@ Einige dieser Dateien werden nur einmal geschrieben, wenn die Poolknoten erstell
 
 Andere Dateien werden für jeden Task geschrieben, der auf einem Knoten ausgeführt wird, z. B. stdout and stderr. Wenn eine große Zahl von Tasks auf demselben Knoten ausgeführt wird bzw. die Taskdateien zu groß sind, ist das temporäre Laufwerk damit unter Umständen bereits gefüllt.
 
-Die Größe des temporären Laufwerks hängt von der Größe des virtuellen Computers ab. Ein wichtiger Aspekt bei der Wahl der VM-Größe besteht darin, sich zu vergewissern, dass auf dem temporären Laufwerk genügend Platz ist.
+Zusätzlich wird nach dem Starten des Knotens eine kleine Menge an Speicherplatz auf der Festplatte des Betriebssystems benötigt, um Benutzer anzulegen.
+
+Die Größe des temporären Laufwerks hängt von der Größe des virtuellen Computers ab. Eine Überlegung bei der Auswahl der VM-Größe ist es, sicherzustellen, dass das temporäre Laufwerk genügend Platz für die geplante Arbeitslast bietet.
 
 - Im Azure-Portal kann beim Hinzufügen eines Pools die vollständige Liste mit VM-Größen angezeigt werden, und die Spalte „Ressourcen-Datenträgergröße“ ist vorhanden.
 - Die Artikel, in denen die gesamten VM-Größen beschrieben werden, verfügen über Tabellen mit der Spalte „Temporärer Speicher“, z. B. [Compute-optimierte VM-Größen](../virtual-machines/sizes-compute.md).

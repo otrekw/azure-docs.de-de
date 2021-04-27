@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 36b21196207f65975dae950f43ec0c7094991dad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f91ed2238a7a23b967cd3e3556c8ade88af0044
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100362028"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449731"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Erweiterte Anforderungsbegrenzung mit Azure API Management
 Die Fähigkeit, eingehende Anforderungen zu begrenzen oder zu drosseln, ist für Azure API Management von großer Bedeutung. Mit API Management lässt sich entweder die Rate der Anforderungen oder die Gesamtzahl der Anforderungen bzw. die Gesamtmenge der übertragenen Daten steuern. Dies ermöglicht es den API-Anbietern, ihre APIs vor Missbrauch zu schützen und mit verschiedenen API-Produkttarifen Mehrwert zu schaffen.
@@ -91,7 +91,7 @@ Wenn der Drosselungsschlüssel mithilfe eines [Richtlinienausdrucks](./api-manag
 Auf diese Weise kann die Clientanwendung des Entwicklers festlegen, wie der Schlüssel zur Ratenbegrenzung erstellt werden soll. Die Cliententwickler können eigene Ratenstufen erstellen, indem sie den Benutzern Gruppen von Schlüsseln zuweisen und eine Rotation der Schlüsselnutzung einrichten.
 
 ## <a name="summary"></a>Zusammenfassung
-Azure API Management ermöglicht Drosselungen bzw. Begrenzungen nach Rate und Kontingent, um einen API-Dienst zu schützen und Mehrwert daraus zu generieren. Die neuen Drosselungsrichtlinien ermöglichen durch ihre benutzerdefinierten Umfangsregeln eine feinere Steuerung der Drosselung, sodass Ihre Kunden noch bessere Anwendungen erstellen können. Die Beispiele in diesem Artikel veranschaulichen die Verwendung dieser neuen Richtlinien. Sie zeigen, wie Client-IP-Adressen, Benutzeridentitäten und vom Client generierte Werte zum Erstellen von Schlüsseln zur Ratenbegrenzung genutzt werden können. Es gibt jedoch noch viele andere Teile einer Nachricht, die für diesen Zweck verwendet werden können, z. B. Benutzer-Agent, URL-Pfad-Fragmente und Nachrichtengröße.
+Das Azure API Management bietet Raten- und Quoten-Drosselung, um Ihren API-Dienst zu schützen und aufzuwerten. Die neuen Drosselungsrichtlinien ermöglichen durch ihre benutzerdefinierten Umfangsregeln eine feinere Steuerung der Drosselung, sodass Ihre Kunden noch bessere Anwendungen erstellen können. Die Beispiele in diesem Artikel veranschaulichen die Verwendung dieser neuen Richtlinien. Sie zeigen, wie Client-IP-Adressen, Benutzeridentitäten und vom Client generierte Werte zum Erstellen von Schlüsseln zur Ratenbegrenzung genutzt werden können. Es gibt jedoch noch viele andere Teile einer Nachricht, die für diesen Zweck verwendet werden können, z. B. Benutzer-Agent, URL-Pfad-Fragmente und Nachrichtengröße.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Bitte geben Sie uns Feedback in Form eines GitHub-Issues zu diesem Thema. Wir würden gern von Ihnen hören, welche anderen möglichen Schlüsselwerte sich in Ihren Szenarien anbieten oder bewährt haben.

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92cfa5b2e399811754b57bda64569753ccfa6be8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1e37b2de2a3d4be0250d3e900fe48a36e45240e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668757"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309559"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA-Netzwerkarchitektur (große Instanzen)
 
@@ -186,7 +186,7 @@ Zwischen HANA (große Instanz) und VMs übertragene Daten werden nicht verschlü
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>Verwenden von Einheiten von HANA (große Instanz) in mehreren Regionen
 
-Zur Einrichtung der Notfallwiederherstellung müssen Sie über HANA-Einheiten (große Instanz) in mehreren Azure-Regionen verfügen. Auch bei Verwendung des [globalen VNET-Peerings] von Azure funktioniert das transitive Routing zwischen HANA-Mandanten (große Instanz) in zwei unterschiedlichen Regionen nicht. Mit Global Reach werden aber die Kommunikationspfade zwischen den HANA-Einheiten (große Instanz) geöffnet, die Sie in zwei unterschiedlichen Regionen bereitgestellt haben. Dieses Nutzungsszenario für ExpressRoute Global Reach ermöglicht Folgendes:
+Um eine Notfallwiederherstellung einrichten zu können, müssen Sie über Einheiten großer HANA-Instanzen in mehreren Azure-Regionen verfügen. Auch bei Verwendung des [globalen VNET-Peerings] von Azure funktioniert das transitive Routing zwischen HANA-Mandanten (große Instanz) in zwei unterschiedlichen Regionen nicht. Mit Global Reach werden aber die Kommunikationspfade zwischen den HANA-Einheiten (große Instanz) geöffnet, die Sie in zwei unterschiedlichen Regionen bereitgestellt haben. Dieses Nutzungsszenario für ExpressRoute Global Reach ermöglicht Folgendes:
 
  - HANA-Systemreplikation ohne zusätzliche Proxys oder Firewalls
  - Kopieren von Sicherungen zwischen HANA-Einheiten (große Instanzen) in zwei unterschiedlichen Regionen zur Durchführung von Systemkopien oder -aktualisierungen

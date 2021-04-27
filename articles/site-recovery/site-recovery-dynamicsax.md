@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86133819"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Einrichten der Notfallwiederherstellung für eine Dynamics AX-Anwendung mit mehreren Ebenen   
@@ -51,7 +51,7 @@ Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Dynamic
 ### <a name="protect-your-dynamics-ax-application"></a>Schützen Sie Ihre Dynamics AX-Anwendung
 Um die vollständige Replikation und Wiederherstellung der Anwendung aktivieren zu können, muss jede Komponente von Dynamics AX geschützt werden.
 
-### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Einrichten der Replikation von Active Directory und DNS
+### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Richten Sie die Active Directory- und DNS-Replikation ein
 
 Damit die Dynamics AX-Anwendung funktioniert, muss Active Directory am Standort der Notfallwiederherstellung vorhanden sein. Basierend auf der Komplexität der lokalen Umgebung des Kunden werden die folgenden beiden Optionen empfohlen.
 
@@ -65,10 +65,10 @@ Der Kunde verfügt über eine große Anzahl von Anwendungen und führt eine Acti
 
  Weitere Informationen finden Sie unter [Verfügbarmachen eines Domänencontrollers am Standort einer Notfallwiederherstellung](site-recovery-active-directory.md). Für den Rest dieses Dokuments wird davon ausgegangen, dass ein Domänencontroller am Standort der Notfallwiederherstellung verfügbar ist.
 
-### <a name="2-set-up-sql-server-replication"></a>2. Einrichten der SQL Server-Replikation
+### <a name="2-set-up-sql-server-replication"></a>2. Richten Sie die SQL-Server-Replikation ein
 Eine technische Anleitung zur empfohlenen Option zum Schutz der SQL-Schicht finden Sie unter [Replizieren von Anwendungen mit SQL Server und Azure Site Recovery](site-recovery-sql.md).
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Aktivieren des Schutzes für den Dynamics AX-Client und die virtuellen Application Object Server-Computer
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Aktivieren Sie den Schutz für die Dynamics AX-Client- und die Application Object Server-VMs
 Führen Sie relevante Konfigurationen für Site Recovery durch, je nachdem wo die virtuellen Computer bereitgestellt werden – auf [Hyper-V](./hyper-v-azure-tutorial.md) oder auf [VMware](./vmware-azure-tutorial.md).
 
 > [!TIP]
@@ -79,7 +79,7 @@ Die folgende Abbildung zeigt den Schutzstatus der virtuellen Computer der Dynami
 
 ![Geschützte Elemente](./media/site-recovery-dynamics-ax/protecteditems.png)
 
-### <a name="4-configure-networking"></a>4. Konfigurieren der Netzwerkeinstellungen
+### <a name="4-configure-networking"></a>4. Netzwerk konfigurieren
 **Konfigurieren der Compute- und Netzwerkeinstellungen für virtuelle Computer**
 
 Konfigurieren Sie die Netzwerkeinstellungen für den Dynamics AX-Client und die virtuellen Application Object Server-Computer in Site Recovery so, dass die VM-Netzwerke nach dem Failover mit dem richtigen Notfallwiederherstellungsnetzwerk verbunden werden. Stellen Sie sicher, dass das Netzwerk der Notfallwiederherstellung auf der SQL-Schicht geroutet werden kann.
@@ -93,7 +93,7 @@ Sie können den virtuellen Computer in den replizierten Elementen auswählen, um
     ![Netzwerkeinstellungen](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
-### <a name="5-create-a-recovery-plan"></a>5. Erstellen eines Wiederherstellungsplans
+### <a name="5-create-a-recovery-plan"></a>5. Erstellen Sie einen Wiederherstellungsplan
 
 Sie können einen Wiederherstellungsplan in Site Recovery erstellen, um den Failoverprozess zu automatisieren. Fügen Sie dem Wiederherstellungsplan eine Anwendungs- und eine Webschicht hinzu. Sortieren Sie diese nach verschiedenen Gruppen, damit das Front-End vor der Anwendungsschicht beendet wird.
 

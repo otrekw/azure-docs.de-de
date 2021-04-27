@@ -6,18 +6,18 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2021
 ms.author: v-erkel
-ms.openlocfilehash: 10d68ce679fe42f5deeaae364bc46adb23436a27
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 45a7169330b11e98a8618b08205217212414ca5d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587150"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258927"
 ---
 # <a name="work-around-blob-storage-account-firewall-settings"></a>Umgehen der Firewalleinstellungen für Blobspeicherkonten
 
 Eine bestimmte Einstellung, die in Firewalls für Speicherkonten verwendet wird, kann dazu führen, dass bei der Erstellung Ihres Blobspeicherziels ein Fehler auftritt. Das Azure HPC Cache-Team arbeitet an einer Softwarekorrektur für dieses Problem, aber Sie können es umgehen, indem Sie den Anweisungen in diesem Artikel folgen.
 
-Die Firewalleinstellung, die den Zugriff nur aus „ausgewählten Netzwerken“ gestattet, kann verhindern, dass der Cache ein Blobspeicherziel erstellt oder ändert. Diese Konfiguration befindet sich auf der Einstellungsseite **Firewalls und virtuelle Netzwerke** des Speicherkontos.
+Die Firewalleinstellung, die den Zugriff nur aus „ausgewählten Netzwerken“ gestattet, kann verhindern, dass der Cache ein Blobspeicherziel erstellt oder ändert. Diese Konfiguration befindet sich auf der Einstellungsseite **Firewalls und virtuelle Netzwerke** des Speicherkontos. (ADLS-NFS-Speicherziele sind von diesem Problem nicht betroffen.)
 
 Das Problem ist, dass der Cachedienst ein virtuelles Netzwerk mit versteckten Diensten verwendet, das von Kundenumgebungen getrennt ist. Es ist nicht möglich, dieses Netzwerk explizit für den Zugriff auf Ihr Speicherkonto zu autorisieren.
 

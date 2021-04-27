@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 5171cefdb82b958ae8148ff63f1daef5f67916c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199161"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044956"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Installieren des Log Analytics-Agents auf Linux-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Linux-Computern mithilfe der folgenden Methoden:
@@ -50,7 +50,7 @@ Beginnend mit den nach August 2018 veröffentlichten Versionen gelten folgende �
 
 Ab Agent-Version 1.13.27 unterstützt der Linux-Agent sowohl Python 2 als auch Python 3. Es wird immer empfohlen, den neuesten Agent zu verwenden. 
 
-Wenn Sie eine ältere Version des Agents nutzen, muss der virtuelle Computer standardmäßig Python 2 verwenden. Wenn Ihr virtueller Computer eine Distribution verwendet, in der Python 2 nicht standardmäßig enthalten ist, müssen Sie die Sprache installieren. Mithilfe der folgenden Beispielbefehle wird Python 2 auf verschiedenen Distributionen installiert.
+Wenn Sie eine ältere Version des Agenten verwenden, müssen Sie die virtuelle Maschine standardmäßig Python 2 verwenden lassen. Wenn Ihr virtueller Computer eine Distribution verwendet, in der Python 2 nicht standardmäßig enthalten ist, müssen Sie die Sprache installieren. Mithilfe der folgenden Beispielbefehle wird Python 2 auf verschiedenen Distributionen installiert.
 
  - Red Hat, CentOS, Oracle: `yum install -y python2`
  - Ubuntu, Debian: `apt-get install -y python2`
@@ -91,7 +91,7 @@ In der folgenden Tabelle sind die erforderlichen Pakete für [unterstützte Linu
 |Glibc |    GNU C-Bibliothek | 2.5-12 
 |Openssl    | OpenSSL-Bibliotheken | 1.0.x oder 1.1.x |
 |Curl | cURL-Webclient | 7.15.5 |
-|Python | | 2.6+ oder 3.3+
+|Python | | 2.7 oder 3.6+
 |Python-ctypes | | 
 |PAM | Module für austauschbare Authentifizierung | | 
 

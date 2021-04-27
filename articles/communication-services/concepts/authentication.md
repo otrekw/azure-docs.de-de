@@ -2,31 +2,57 @@
 title: Authentifizieren bei Azure Communication Services
 titleSuffix: An Azure Communication Services concept document
 description: Erfahren Sie mehr über die Möglichkeiten, wie sich eine App oder ein Dienst bei Communication Services authentifizieren kann.
-author: GrantMeStrength
+author: mikben
 manager: jken
 services: azure-communication-services
-ms.author: jken
-ms.date: 07/24/2020
+ms.author: mikben
+ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 1267fc53bd6dcbae504b01610267059545353dc5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9edfb63f5ce43ed325b4c4a1fa67e0e9ca52dc89
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655903"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110864"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Authentifizieren bei Azure Communication Services
 
-Jede Clientinteraktion mit Azure Communication Services muss authentifiziert werden. In einer typischen Architektur (siehe [Client-und Serverarchitektur](./client-and-server-architecture.md)) werden im vertrauenswürdigen Benutzerzugriffsdienst *Zugriffsschlüssel* oder *verwaltete Identitäten* zum Erstellen von Benutzern und Ausstellen von Token verwendet. Ein vom vertrauenswürdigen Benutzerzugriffsdienst ausgestelltes *Benutzerzugriffstoken* wird für Clientanwendungen für den Zugriff auf andere Kommunikationsdienste (etwa Chat- oder Telefoniedienste) verwendet.
+Jede Clientinteraktion mit Azure Communication Services muss authentifiziert werden. Bei einer typischen Architektur werden (siehe [Client- und Serverarchitektur](./client-and-server-architecture.md)) werden *Zugriffsschlüssel* oder *verwaltete Identitäten* für die Authentifizierung verwendet.
 
-Der SMS-Dienst von Azure Communication Services akzeptiert auch *Zugriffsschlüssel* oder eine *verwaltete Identität* für die Authentifizierung. Dies geschieht in der Regel in einer Dienstanwendung, die in einer vertrauenswürdigen Dienstumgebung ausgeführt wird.
+Ein anderer Authentifizierungstyp verwendet *Benutzerzugriffstoken* für die Authentifizierung bei Diensten, die Benutzereingriffe erfordern. Beispielsweise verwendet der Chat- oder Anrufdienst *Benutzerzugriffstoken*, um das Hinzufügen von Benutzern zu einem Thread und Unterhaltungen untereinander zu ermöglichen.
+
+## <a name="authentication-options"></a>Authentifizierungsoptionen
+
+Die folgende Tabelle zeigt die Azure Communication Services SDKs und ihre Authentifizierungsoptionen an:
+
+| SDK    | Authentifizierungsoption                               |
+| ----------------- | ----------------------------------------------------|
+| Identity          | Zugriffsschlüssel oder verwaltete Identität                      |
+| SMS               | Zugriffsschlüssel oder verwaltete Identität                      |
+| Telefonnummern     | Zugriffsschlüssel oder verwaltete Identität                      |
+| Aufrufen           | Benutzerzugriffstoken                                   |
+| Chat              | Benutzerzugriffstoken                                   |
 
 Im Anschluss werden die einzelnen Autorisierungsoptionen kurz erläutert:
 
-- Die Authentifizierung per **Zugriffsschlüssel** für Vorgänge in „SMS“ oder „Identität“. Die Authentifizierung per Zugriffsschlüssel eignet sich für Dienstanwendungen, die in einer vertrauenswürdigen Dienstumgebung ausgeführt werden. Den Zugriffsschlüssel finden Sie im Azure Communication Services-Portal. Zum Authentifizieren mit einem Zugriffsschlüssel verwendet eine Dienstanwendung den Zugriffsschlüssel als Anmeldeinformationen, um entsprechende SMS- oder Identitätsclientbibliotheken zu initialisieren. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Zugriffstoken](../quickstarts/access-tokens.md). Da der Zugriffsschlüssel Teil der Verbindungszeichenfolge Ihrer Ressource ist (siehe [Erstellen und Verwalten einer Communication Services-Ressource](../quickstarts/create-communication-resource.md)), entspricht die Authentifizierung mit Verbindungszeichenfolge der Authentifizierung mit Zugriffsschlüssel.
-- Die Authentifizierung per **verwaltete Identität** für Vorgänge in „SMS“ oder „Identität“. Die verwaltete Identität (siehe [Verwaltete Identität](../quickstarts/managed-identity.md)) eignet sich für Dienstanwendungen, die in einer vertrauenswürdigen Dienstumgebung ausgeführt werden. Zum Authentifizieren mit einer verwalteten Identität erstellt eine Dienstanwendung Anmeldeinformationen mit der ID und einem Geheimnis der verwalteten Identität und initialisiert dann entsprechende SMS- oder Identitätsclientbibliotheken. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Zugriffstoken](../quickstarts/access-tokens.md).
-- Die Authentifizierung per **Benutzerzugriffstoken** ist für „Chat“ und „Calling“ vorgesehen. Benutzerzugriffstoken ermöglichen die direkte Authentifizierung Ihrer Clientanwendungen bei Chat- und Telefoniediensten von Azure Communication Services. Diese Token werden in einem von Ihnen erstellten „vertrauenswürdigen Benutzerzugriffsdienst“ generiert. Anschließend werden sie Clientgeräten zur Verfügung gestellt, die das Token zur Initialisierung der Clientbibliotheken „Chat“ und „Calling“ verwenden. Weitere Informationen finden Sie beispielsweise unter [Hinzufügen von Chatfunktionen zu Ihrer App](../quickstarts/chat/get-started.md).
+### <a name="access-key"></a>Zugriffsschlüssel
+
+Die Zugriffsschlüssel-Authentifizierung eignet sich für Dienstanwendungen, die in einer vertrauenswürdigen Dienstumgebung ausgeführt werden. Den Zugriffsschlüssel finden Sie im Azure Communication Services-Portal. Die Dienstanwendung verwendet es als Anmeldeberechtigung, um die entsprechenden SDKs zu initialisieren. Sehen Sie sich ein Beispiel dafür an, wie es im [Identity SDK](../quickstarts/access-tokens.md)verwendet wird. 
+
+Da der Zugriffsschlüssel Teil der Verbindungszeichenfolge Ihrer Ressource ist, entspricht die Authentifizierung mit einer Verbindungszeichenfolge der Authentifizierung mit einem Zugriffsschlüssel.
+
+Wenn Sie ACS-APIs manuell mithilfe einer Zugriffstaste aufrufen möchten, müssen Sie die Anforderung signieren. Das Signieren der Anforderung wird ausführlich im [Tutorial](../tutorials/hmac-header-tutorial.md)erläutert.
+
+### <a name="managed-identity"></a>Verwaltete Identität
+
+Managed Identities bietet überlegene Sicherheit und Benutzerfreundlichkeit gegenüber anderen Autorisierungsoptionen. Durch die Verwendung von Azure AD vermeiden Sie beispielweise, dass Sie Ihren Kontozugangsschlüssel innerhalb Ihres Codes speichern müssen, wie es bei der Zugriffsschlüsselautorisierung der Fall ist. Während Sie weiterhin die Zugriffsschlüsselautorisierung mit Kommunikationsdienstanwendungen verwenden können, empfiehlt Microsoft, nach Möglichkeit zu Azure AD zu wechseln. 
+
+Um eine verwaltete Identität einzurichten, [erstellen Sie eine registrierte Anwendung über die Azure-Befehlszeilenschnittstelle](../quickstarts/managed-identity-from-cli.md). Anschließend können der Endpunkt und die Anmeldeinformationen zur Authentifizierung der SDKs verwendet werden. Sehen Sie sich Beispiele für die Verwendung der [verwalteten Identität](../quickstarts/managed-identity.md) an.
+
+### <a name="user-access-tokens"></a>Benutzer-Zugriffstoken
+
+Benutzerzugriffstoken werden mit dem Identity SDK erstellt und sind mit den im Identity-SDK erstellten Benutzern verknüpft. Sehen Sie sich ein Beispiel für das [Erstellen von Benutzern und das Generieren von Token](../quickstarts/access-tokens.md) an. Anschließend werden Benutzerzugriffstoken verwendet, um Teilnehmer zu authentifizieren, die Unterhaltungen im Chat- oder Anruf-SDK hinzugefügt werden. Weitere Informationen finden Sie unter [Hinzufügen von Chatfunktionen zu Ihrer App](../quickstarts/chat/get-started.md). Die Authentifizierung per Benutzerzugriffstoken unterscheidet sich von der Authentifizierung mit Zugriffsschlüssel und verwalteten Identitäten darin, dass sie zum Authentifizieren eines Benutzers und nicht einer geschützten Azure-Ressource verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

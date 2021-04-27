@@ -2,13 +2,13 @@
 title: Authentifizierungsoptionen für die Registrierung
 description: Hier erfahren Sie mehr über Authentifizierungsoptionen für eine private Azure-Containerregistrierung wie z. B. das Anmelden mit einer Azure Active Directory-Identität, mithilfe von Dienstprinzipalen sowie mittels optionalen Administratoranmeldeinformationen.
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 5315c11e0f1e2c859384e3783ae4be5d709adb42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/15/2021
+ms.openlocfilehash: 7ff55d569e2659262ce9f323e4db2ea7ed671d20
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148570"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784279"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Authentifizieren mit einer Azure-Containerregistrierung
 
@@ -31,7 +31,7 @@ In der folgenden Tabelle werden die verfügbaren Authentifizierungsmethoden und 
 
 ## <a name="individual-login-with-azure-ad"></a>Individuelle Anmeldung bei Azure AD
 
-Wenn Sie direkt mit Ihrer Registrierung arbeiten, z. B. beim Pullen von Images auf eine bzw. beim Pushen von Images von einer Entwicklungsarbeitsstation in eine von Ihnen erstellte Registrierung, authentifizieren Sie sich mithilfe Ihrer individuellen Azure-Identität. Melden Sie sich mit [az login](/cli/azure/reference-index#az-login) bei der [Azure CLI](/cli/azure/install-azure-cli) an, und führen Sie dann den Befehl [az acr login](/cli/azure/acr#az-acr-login) aus:
+Wenn Sie direkt mit Ihrer Registrierung arbeiten, z. B. beim Pullen von Images auf eine bzw. beim Pushen von Images von einer Entwicklungsarbeitsstation in eine von Ihnen erstellte Registrierung, authentifizieren Sie sich mithilfe Ihrer individuellen Azure-Identität. Melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei der [Azure CLI](/cli/azure/install-azure-cli) an, und führen Sie dann den Befehl [az acr login](/cli/azure/acr#az_acr_login) aus:
 
 ```azurecli
 az login
@@ -65,11 +65,16 @@ Die Ausgabe zeigt das hier abgekürzte Zugriffstoken an:
   "loginServer": "myregistry.azurecr.io"
 }
 ``` 
+Für die Registry-Authentifizierung wird empfohlen, die Token-Anmeldeinformationen an einem sicheren Ort zu speichern und die empfohlenen Verfahren zur Verwaltung der [Docker-Anmeldeinformationen](https://docs.docker.com/engine/reference/commandline/login/) zu befolgen. Speichern Sie z. b. den Tokenwert in einer Umgebungsvariablen:
+
+```bash
+TOKEN=$(az acr login --name <acrName> --expose-token --output tsv --query accessToken)
+```
 
 Führen Sie dann `docker login` aus, wobei Sie `00000000-0000-0000-0000-000000000000` als Benutzernamen über und das Zugriffstoken als Kennwort verwenden:
 
 ```console
-docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password eyJhbGciOiJSUzI1NiIs[...]24V7wA
+docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
 ```
 
 ## <a name="service-principal"></a>Dienstprinzipal
@@ -92,7 +97,7 @@ Informationen über CLI-Skripts zum Erstellen eines Dienstprinzipals für die Au
 
 Jede Containerregistrierung enthält ein Administratorbenutzerkonto, das standardmäßig deaktiviert ist. Sie können den Administratorbenutzer aktivieren und seine Anmeldeinformationen im Azure-Portal oder mithilfe der Azure CLI oder anderer Azure-Tools verwalten. Das Administratorkonto besitzt vollständige Berechtigungen für die Registrierung.
 
-Das Administratorkonto ist zurzeit für einige Szenarien erforderlich, um ein Image aus einer Containerregistrierung in bestimmten Azure-Diensten bereitzustellen. Beispielsweise ist das Administratorkonto erforderlich, wenn Sie ein Containerimage im Portal aus einer Registrierung direkt in [Azure Container Instances](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) oder in [Azure-Web-Apps für Container](container-registry-tutorial-deploy-app.md) bereitstellen.
+Das Administratorkonto ist zurzeit für einige Szenarien erforderlich, um ein Image aus einer Containerregistrierung in bestimmten Azure-Diensten bereitzustellen. Beispielsweise ist das Administratorkonto erforderlich, wenn Sie ein Containerimage im Portal aus einer Registrierung direkt in [Azure Container Instances](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) oder in [Azure-Web-Apps for Containers](container-registry-tutorial-deploy-app.md) bereitstellen.
 
 > [!IMPORTANT]
 > Das Administratorkonto ist dafür ausgelegt, dass ein einzelner Benutzer auf die Registrierung zugreift (hauptsächlich für Testzwecke). Sie sollten die Administratorkonto-Anmeldeinformationen nicht für mehrere Benutzer freigeben. Alle Benutzer, die sich mit dem Administratorkonto authentifizieren, werden als ein einzelner Benutzer mit Push- und Pullzugriff auf die Registrierung angezeigt. Wenn dieses Konto geändert oder deaktiviert wird, wird der Zugriff auf die Registrierung für alle Benutzer deaktiviert, die dessen Anmeldeinformationen verwenden. Für Benutzer und Dienstprinzipale wird für monitorlose Szenarien einzelne Identität empfohlen.
@@ -104,9 +109,9 @@ Das Administratorkonto erhält zwei Kennwörter, die beide erneut generiert werd
 docker login myregistry.azurecr.io 
 ```
 
-Best Practices zur Verwaltung von Anmeldeinformationen finden Sie in der Befehlsreferenz [Docker-Anmeldung](https://docs.docker.com/engine/reference/commandline/login/).
+Bewährte Methoden zur Verwaltung von Docker-Anmeldeinformationen finden Sie in der Befehlsreferenz zu [Docker-Login](https://docs.docker.com/engine/reference/commandline/login/).
 
-Um den Administratorbenutzer für eine vorhandene Registrierung zu aktivieren, können Sie den `--admin-enabled`-Parameter des [az acr update](/cli/azure/acr#az-acr-update)-Befehls in der Azure CLI verwenden:
+Um den Administratorbenutzer für eine vorhandene Registrierung zu aktivieren, können Sie den `--admin-enabled`-Parameter des [az acr update](/cli/azure/acr#az_acr_update)-Befehls in der Azure CLI verwenden:
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

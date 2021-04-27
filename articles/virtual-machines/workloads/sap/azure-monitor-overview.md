@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: a88ad3930e114bdf9f3c3c340f92f164215d59c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45085c910974402a968075a66087a04fb30e8bd9
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101671994"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576202"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Azure Monitor für SAP-Lösungen (Vorschauversion)
 
@@ -22,7 +22,7 @@ Mit Azure Monitor für SAP-Lösungen können Kunden Telemetriedaten aus der Azur
 
 Azure Monitor für SAP-Lösungen wird über den Azure Marketplace angeboten. Er bietet eine einfache, intuitive Benutzeroberfläche für das Setup und benötigt nur einige wenige Klicks, um die Ressource für Azure Monitor für SAP-Lösungen (als **SAP-Monitorressource** bekannt) bereitzustellen.
 
-Kunden können verschiedene Komponenten einer SAP-Landschaft wie Azure Virtual Machines, Hochverfügbarkeitscluster, SAP HANA-Datenbank usw. überwachen, indem sie den entsprechenden **Anbieter** für diese Komponente hinzufügen.
+Kunden können verschiedene Komponenten einer SAP-Landschaft wie Azure Virtual Machines, Hochverfügbarkeitscluster, SAP HANA-Datenbank, SAP NetWeaver usw. überwachen, indem sie den entsprechenden **Anbieter** für diese Komponente hinzufügen.
 
 Unterstützte Infrastruktur:
 
@@ -70,6 +70,13 @@ Telemetrie des Betriebssystems (Linux)
 - Anzahl laufender E/A-Vorgänge, gelesene/geschriebene Bytes für persistenten Speicher 
 - Netzwerkpakete eingehend/ausgehend, Netzwerkbytes eingehend/ausgehend 
 
+SAP NetWeaver-Telemetrie:
+
+- Verfügbarkeit von SAP-Systemen und -Anwendungsservern, einschließlich Instanzprozessverfügbarkeit von Dispatcher, ICM, Gateway, Nachrichtenserver, Warteschlangenserver, IGS Watchdog
+- Statistiken und Trends zur Arbeitsprozessauslastung
+- Statistiken und Trends zu Warteschlangensperren
+- Statistiken und Trends zur Warteschlangenauslastung
+
 ## <a name="data-sharing-with-microsoft"></a>Datenfreigabe mit Microsoft
 
 Azure Monitor für SAP-Lösungen sammelt Systemmetadaten, um unseren Kunden einen verbesserten Support für SAP in Azure zu bieten. PII/EUII wird nicht gesammelt.
@@ -80,7 +87,7 @@ Es wird dringend empfohlen, dass Kunden die Datenfreigabe aktivieren, da sie den
 
 Auf einer hohen Ebene erläutert das folgende Diagramm, wie Azure Monitor für SAP-Lösungen Telemetrie aus der SAP HANA Datenbank sammelt. Die Architektur ist unabhängig davon, ob SAP HANA auf Azure Virtual Machines oder Azure (große Instanzen) bereitgestellt wird.
 
-![Azure Monitor für SAP-Lösungen: Architektur](./media/azure-monitor-sap/azure-monitor-architecture.png)
+![Azure Monitor für SAP-Lösungen: Architektur](https://user-images.githubusercontent.com/75772258/115046700-62ff3280-9ef5-11eb-8d0d-cfcda526aeeb.png)
 
 Die Hauptkomponenten der Architektur sind:
 - Azure-Portal – Der Ausgangspunkt für Kunden. Kunden können innerhalb des Azure-Portals zum Marketplace navigieren und Azure Monitor für SAP-Lösungen entdecken.
@@ -102,8 +109,8 @@ Die Hauptkomponenten der Architektur sind:
 ### <a name="architecture-highlights"></a>Highlights der Architektur
 
 Im Folgenden sind die wichtigsten Highlights der Architektur aufgeführt:
- - **Mehrere Instanzen** – Kunden können einen Monitor für mehrere Instanzen eines bestimmten Komponententyps (z. B. HANA DB, HA-Cluster, Microsoft SQL Server) über mehrere SAP-SIDs innerhalb eines VNETs mit einer einzelnen Ressource von Azure Monitor für SAP-Lösungen erstellen.
- - **Mehrere Anbieter** – Das obige Architekturdiagramm zeigt als Beispiel den Anbieter „SAP HANA“. Ebenso können Kunden weitere Anbieter für entsprechende Komponenten konfigurieren (z. B. HANA DB, HA-Cluster, Microsoft SQL Server), um Daten von diesen Komponenten zu sammeln.
+ - **Mehrere Instanzen**: Kunden können einen Monitor für mehrere Instanzen eines bestimmten Komponententyps (z. B. SAP HANA-Datenbank, Hochverfügbarkeitscluster, Microsoft SQL Server, SAP NetWeaver) über mehrere SAP-SIDs innerhalb eines VNETs mit einer einzelnen Ressource von Azure Monitor für SAP-Lösungen erstellen.
+ - **Mehrere Anbieter** – Das obige Architekturdiagramm zeigt als Beispiel den Anbieter „SAP HANA“. Ebenso können Kunden weitere Anbieter für entsprechende Komponenten (z. B. für SAP HANA-Datenbank, Hochverfügbarkeitscluster, Microsoft SQL Server, SAP NetWeaver) konfigurieren, um Daten von diesen Komponenten zu sammeln.
  - **Open Source** – Der Quellcode von Azure Monitor für SAP-Lösungen ist in [GitHub](https://github.com/Azure/AzureMonitorForSAPSolutions) verfügbar. Kunden können auf den Anbietercode verweisen und mehr über das Produkt erfahren, Beiträge leisten oder Feedback senden.
  - **Erweiterbares Abfrageframework** – SQL-Abfragen zur Erfassung von Telemetriedaten werden in [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json) geschrieben. Es können leicht weitere SQL-Abfragen zur Erfassung weiterer Telemetriedaten hinzugefügt werden. Kunden können spezifische Telemetriedaten anfordern, die zu Azure Monitor für SAP-Lösungen hinzugefügt werden sollen, indem sie Feedback über den Link am Ende dieses Dokuments senden oder ihr Kontoteam kontaktieren.
 

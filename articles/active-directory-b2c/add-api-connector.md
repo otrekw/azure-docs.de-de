@@ -5,17 +5,17 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 03/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 59246c3739ad4de27e65641cc9d2154b33a6ee5e
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 86e9b13ce56e1924b0e24a7f4971da18620617de
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008432"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043630"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung (Vorschauversion)
 
@@ -51,19 +51,29 @@ Die HTTP-Standardauthentifizierung ist in [RFC 2617](https://tools.ietf.org/htm
 > [!IMPORTANT]
 > Diese Funktion befindet sich in der Vorschauhase und wird ohne Vereinbarung zum Servicelevel bereitgestellt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bei der Clientzertifikatauthentifizierung handelt es sich um eine gegenseitige zertifikatbasierte Authentifizierung, bei der der Client sein Clientzertifikat für den Server bereitstellt, um seine Identität nachzuweisen. In diesem Fall verwendet Azure AD B2C das Zertifikat, das Sie als Teil der API-Connectorkonfiguration hochladen. Dies erfolgt im Rahmen des SSL-Handshakes. Nur Dienste mit den richtigen Zertifikaten erhalten Zugriff auf Ihren REST-API-Dienst. Bei dem Clientzertifikat handelt es sich um ein digitales X.509-Zertifikat. In Produktionsumgebungen muss es von einer Zertifizierungsstelle signiert werden. 
+Bei der Client-Zertifikat-Authentifizierung handelt es sich um eine auf gegenseitigen Zertifikaten basierende Authentifizierungsmethode, bei welcher der Client dem Server ein Client-Zertifikat zur Verfügung stellt, um seine Identität zu beweisen. In diesem Fall verwendet Azure AD B2C das Zertifikat, das Sie als Teil der API-Connectorkonfiguration hochladen. Dies erfolgt im Rahmen des SSL-Handshakes. Ihr API-Dienst kann dann den Zugriff nur auf Dienste beschränken, die über ordnungsgemäße Zertifikate verfügen. Beim Client-Zertifikat handelt es sich um ein digitales PKCS12 (PFX) X.509-Zertifikat. In Produktionsumgebungen muss es von einer Zertifizierungsstelle signiert werden. 
 
+Zum Erstellen eines Zertifikats können Sie den [Azure Key Vault](../key-vault/certificates/create-certificate.md) verwenden, der über Optionen für selbstsignierte Zertifikate und Integrationen mit Zertifikatausstelleranbietern für signierte Zertifikate verfügt. Empfohlene Einstellungen umfassen:
+- **Betreff**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **Inhaltstyp**: `PKCS #12`
+- **Gültigkeitsdauer Aktionstyp**: `Email all contacts at a given percentage lifetime` oder `Email all contacts a given number of days before expiry`
+- **Schlüsseltyp**: `RSA`
+- **Schlüsselgröße**: `2048`
+- **Exportierbarer privater Schlüssel**: `Yes` (um die pfx-Datei exportieren zu können)
 
-Zum Erstellen eines Zertifikats können Sie den [Azure Key Vault](../key-vault/certificates/create-certificate.md) verwenden, der über Optionen für selbstsignierte Zertifikate und Integrationen mit Zertifikatausstelleranbietern für signierte Zertifikate verfügt. Anschließend können Sie [das Zertifikat exportieren](../key-vault/certificates/how-to-export-certificate.md) und für die Verwendung in der API-Connectorkonfiguration hochladen. Hinweis: Das Kennwort ist nur für kennwortgeschützte Zertifikatdateien erforderlich. Sie können auch das PowerShell-Cmdlet [New-SelfSignedCertificate](./secure-rest-api.md#prepare-a-self-signed-certificate-optional) verwenden, um ein selbstsigniertes Zertifikat zu generieren.
+Sie können dann [das Zertifikat exportieren](../key-vault/certificates/how-to-export-certificate.md). Sie können alternativ das Cmdlet [New-SelfSignedCertificate](../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) von PowerShell verwenden, um ein selbstsigniertes Zertifikat zu generieren.
 
-Informationen zum Aktivieren und Überprüfen des Zertifikats über Ihren API-Endpunkt in Azure App Service und Azure Functions finden Sie unter [Konfigurieren der gegenseitigen TLS-Authentifizierung](../app-service/app-service-web-configure-tls-mutual-auth.md).
+Nachdem Sie ein Zertifikat haben, können Sie es als Teil der Konfiguration des API-Connectors hochladen. Hinweis: Das Kennwort ist nur für kennwortgeschützte Zertifikatdateien erforderlich.
 
-Es wird empfohlen, Erinnerungswarnungen für den Zeitpunkt festzulegen, an dem das Zertifikat abläuft. Wenn Sie ein neues Zertifikat in einen vorhandenen API-Connector hochladen möchten, wählen Sie unter **API-Connectors (Vorschau)** den API-Connector aus, und klicken Sie auf **Neues Zertifikat hochladen**. Das zuletzt hochgeladene Zertifikat, das nicht abgelaufen ist und über dem Startdatum liegt, wird automatisch von Azure AD B2C verwendet.
+Ihre API muss die Autorisierung basierend auf gesendeten Client-Zertifikaten implementieren, um die API-Endpunkte zu schützen. Für den Azure App Service und die Azure Funktionen finden Sie unter [Konfigurieren der gegenseitigen TLS-Authentifizierung](../app-service/app-service-web-configure-tls-mutual-auth.md) Informationen zum Aktivieren und *Validieren des Zertifikats über Ihren API-Code*.  Sie können auch das Azure API Management verwenden, um die [Eigenschaften](
+../api-management/api-management-howto-mutual-certificates-for-clients.md) von Client-Zertifikaten mithilfe von Richtlinienbegriffen auf die gewünschten Werte zu prüfen.
+
+Es wird empfohlen, Erinnerungswarnungen für den Zeitpunkt festzulegen, an dem das Zertifikat abläuft. Sie müssen ein neues Zertifikat generieren und die obigen Schritte wiederholen. Ihr API-Dienst kann vorübergehend weiterhin alte und neue Zertifikate akzeptieren, während das neue Zertifikat bereitgestellt wird. Um ein neues Zertifikat in einen bestehenden API-Anschluss hochzuladen, wählen Sie den API-Anschluss unter **API-Anschlüsse** aus und klicken Sie auf **Neues Zertifikat hochladen**. Das zuletzt hochgeladene Zertifikat, das noch nicht abgelaufen ist und das Startdatum überschritten hat, wird automatisch vom Azure Active Directory verwendet.
 
 ### <a name="api-key"></a>API-Schlüssel
-Einige Dienste verwenden einen API-Schlüssel-Mechanismus, um den Zugriff auf die HTTP-Endpunkte während der Entwicklung zu verschleiern. Sie können diesen für [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) einrichten, indem Sie `code` als Abfrageparameter in die **Endpunkt-URL** einschließen. Zum Beispiel `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>). 
+Einige Dienste verwenden einen API-Schlüssel-Mechanismus, um den Zugriff auf die HTTP-Endpunkte während der Entwicklung zu verschleiern. Sie können diesen für [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) einrichten, indem Sie `code` als Abfrageparameter in die **Endpunkt-URL** einschließen. Beispiel: `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>. 
 
-Dabei handelt es sich nicht um einen Mechanismus, der allein in der Produktion verwendet werden sollte. Daher ist die Konfiguration für die Standard- oder Zertifikatauthentifizierung immer erforderlich. Wenn Sie für Entwicklungszwecke keine Authentifizierungsmethode implementieren möchten (nicht empfohlen), können Sie die Standardauthentifizierung auswählen und temporäre Werte für `username` und `password` verwenden, die von der API ignoriert werden können, während Sie die Autorisierung in Ihrer API implementieren.
+Hierbei handelt es sich nicht um einen Mechanismus, der allein in der Produktion verwendet werden sollte. Daher ist die Konfiguration für die Standard- oder Zertifikatauthentifizierung immer erforderlich. Wenn Sie für Entwicklungszwecke keine Authentifizierungsmethode implementieren möchten (nicht empfohlen), können Sie die Standardauthentifizierung auswählen und temporäre Werte für `username` und `password` verwenden, die von der API ignoriert werden können, während Sie die Autorisierung in Ihrer API implementieren.
 
 ## <a name="the-request-sent-to-your-api"></a>An die API gesendete Anforderung
 Ein API-Connector wird als **HTTP POST**-Anforderung dargestellt und sendet Benutzerattribute („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text. Attribute werden ähnlich wie [Microsoft Graph](/graph/api/resources/user#properties)-Benutzereigenschaften serialisiert. 
@@ -302,7 +312,7 @@ Content-type: application/json
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | version     | String  | Ja      | Die Version Ihrer API                                                    |
 | action      | String  | Ja      | Der Wert muss `ValidationError` sein.                                           |
-| status      | Integer | Ja      | Für eine Validierungsfehlerantwort muss der Wert `400` sein.                        |
+| status      | Integer / Zeichenkette | Ja      | Für eine Validierungsfehlerantwort muss der Wert `400` oder `"400"` sein.  |
 | userMessage | String  | Ja      | Meldung, die für den Benutzer angezeigt wird.                                            |
 
 > [!NOTE]

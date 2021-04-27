@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471741"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166682"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -22,6 +22,21 @@ In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen
 
 __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wird, indem Sie die folgende URL kopieren und in Ihren Feedreader einfügen: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
+## <a name="2021-03-31"></a>31.03.2021
+### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure Machine Learning Studio Notebooks Erfahrung (Aktualisierung vom März)
++ **Neue Features**
+  + CSV/TSV rendern. Benutzer können CSV-/TSV-Dateien in einem Rasterformat rendern, um die Datenanalyse zu vereinfachen. 
+  + SSO-Authentifizierung für die Compute-Instanz. Benutzer können jetzt jede neue Compute-Instanz direkt in der Notebook-UI authentifizieren, was die Authentifizierung und Verwendung von Azure-SDKs direkt in AzureML vereinfacht. 
+  + Compute-Instanzmetriken. Benutzer werden Rechenmetriken, wie CPU-Auslastung und Speicher über das Terminal betrachten können.
+  + Dateien-Details. Benutzer können jetzt Dateidetails einschließlich der letzten Änderungszeit und der Dateigröße sehen, indem sie auf die 3 Punkte neben einer Datei klicken.
+
++ **Fehlerbehebungen und Verbesserungen**
+  + Verbesserte Seiten-Ladezeiten.
+  + Verbesserte Leistung.
+  + Verbesserte Geschwindigkeit und Kernel-Zuverlässigkeit.
+  + Gewinnen Sie vertikalen Platz, indem Sie das Notebook-Dateifenster dauerhaft nach oben verschieben
+  + Links sind jetzt im Terminal anklickbar
+  + Verbesserte IntelliSense-Leistung
 
 ## <a name="2021-03-08"></a>08.03.2021
 
@@ -56,9 +71,9 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
 ## <a name="2021-02-28"></a>28.02.2021
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Oberfläche von Azure Machine Learning Studio Notebooks (Aktualisierung vom Februar)
 + **Neue Features**
-  + [Natives Terminal (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Benutzer haben jetzt über das integrierte Terminal Zugriff auf ein integriertes Terminal und auf Git-Vorgänge.
+  + [Natives Terminal (GA)](./how-to-access-terminal.md). Benutzer haben jetzt über das integrierte Terminal Zugriff auf ein integriertes Terminal und auf Git-Vorgänge.
   + [Notebook-Codeausschnitte (Vorschauversion)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Häufig verwendete Azure ML-Codeauszüge sind jetzt direkt verfügbar. Navigieren Sie über die Symbolleiste zum Bereich mit den Codeausschnitten, oder aktivieren Sie mit STRG+LEERTASTE das Menü mit den Codeausschnitten.  
-  + [Tastenkombinationen](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Vollständige Parität mit den in Jupyter verfügbaren Tastenkombinationen. 
+  + [Tastenkombinationen](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts). Vollständige Parität mit den in Jupyter verfügbaren Tastenkombinationen. 
   + Angeben von Zellenparametern. Zeigt Benutzern, welche Zellen in einem Notebook Parameterzellen sind und über [Papermill](https://github.com/nteract/papermill) auf der Compute-Instanz parametrisierte Notebooks ausführen können.
   + Terminal- und Kernel-Sitzungs-Manager: Benutzer können alle Kernel und Terminalsitzungen verwalten, die auf ihrer Compute-Instanz ausgeführt werden.
   + Schaltfläche zum Teilen. Benutzer können nun alle Dateien im Notebook-Datei-Explorer teilen, indem sie mit der rechten Maustaste auf die Datei klicken und die Schaltfläche „Teilen“ verwenden.
@@ -68,7 +83,7 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
   + Verbesserte Seitenladezeiten
   + Verbesserte Leistung 
   + Verbesserte Geschwindigkeit und Kernelzuverlässigkeit
-  + Drehscheibe hinzugefügt, um den Status für alle laufenden [Vorgänge der Compute-Instanzen](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators) anzuzeigen.
+  + Drehscheibe hinzugefügt, um den Status für alle laufenden [Vorgänge der Compute-Instanzen](./how-to-run-jupyter-notebooks.md#status-indicators) anzuzeigen.
   + Klicken Sie im Datei-Explorer mit der rechten Maustaste. Durch einen Rechtsklick auf eine beliebige Datei werden nun die Dateivorgänge geöffnet. 
 
 
@@ -79,7 +94,7 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
   + **azureml-core**
     + [Experimentelles Feature] Unterstützung für das Verknüpfen eines Synapse-Arbeitsbereichs in AML als verknüpften Dienst hinzugefügt
     + [Experimentelle Funktion] Unterstützung zum Anfügen des Synapse Spark-Pools in AML als Compute-Instanz hinzugefügt
-    + [Experimentelle Funktion] Unterstützung für identitätsbasierten Datenzugriff hinzugefügt. Benutzer können Datenspeicher oder Datasets registrieren, ohne Anmeldeinformationen anzugeben. In diesem Fall wird für Benutzer das AAD-Token oder die verwaltete Identität des Computeziels für die Authentifizierung verwendet. [Hier](https://aka.ms/data-access)erhalten Sie weitere Informationen.
+    + [Experimentelle Funktion] Unterstützung für identitätsbasierten Datenzugriff hinzugefügt. Benutzer können Datenspeicher oder Datasets registrieren, ohne Anmeldeinformationen anzugeben. In diesem Fall wird für Benutzer das AAD-Token oder die verwaltete Identität des Computeziels für die Authentifizierung verwendet. [Hier](./how-to-identity-based-data-access.md)erhalten Sie weitere Informationen.
   + **azureml-pipeline-steps**
     + [Experimentelle Funktion] Unterstützung für [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep) hinzugefügt.
   + **azureml-synapse**

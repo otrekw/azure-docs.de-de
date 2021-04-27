@@ -17,10 +17,10 @@ ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89279906"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualisieren des TLS/SSL-Zertifikats für eine AD FS-Farm (Active Directory Federation Services)
@@ -93,7 +93,7 @@ Nachdem die Konfiguration abgeschlossen ist, zeigt Azure AD Connect die Meldung 
 
     Wenn die Anmeldeinformationen für die Verbindung mit AD FS-Servern nicht auch über die Berechtigung zum Verwalten der WAP-Server verfügen, fragt Azure AD Connect nach Anmeldeinformationen, die die Verwaltungsberechtigung für WAP-Server haben.
 
-* **Der Server wird als offline angezeigt. Wie soll ich vorgehen?**
+* **Der Server wird als offline angezeigt. Was soll ich tun?**
 
     Azure AD Connect kann keinen Vorgang durchführen, solange der Server offline ist. Wenn der Server Teil einer AD FS-Farm ist, überprüfen Sie die Verbindung mit dem Server. Nachdem Sie das Problem behoben haben, klicken Sie im Assistenten zum Aktualisieren des Status auf das Aktualisierungssymbol. Wenn der Server zuvor Teil der Farm war, jedoch nicht mehr vorhanden ist, klicken Sie auf **Entfernen**, um ihn aus der Liste mit Servern zu löschen, die Azure AD Connect verwaltet. Durch das Entfernen des Servers aus der Liste in Azure AD Connect wird die AD FS-Konfiguration selbst nicht geändert. Wenn Sie AD FS unter Windows Server 2016 oder höher nutzen, verbleibt der Server in den Konfigurationseinstellungen und wird bei der nächsten Ausführung des Vorgangs erneut angezeigt.
 
@@ -101,7 +101,7 @@ Nachdem die Konfiguration abgeschlossen ist, zeigt Azure AD Connect die Meldung 
 
     Ja. Sie können den Vorgang **SSL-Zertifikat aktualisieren** jederzeit erneut ausführen, um die verbleibenden Server zu aktualisieren. Auf der Seite **Server für SSL-Zertifikataktualisierung auswählen** können Sie die Liste der Server nach **SSL-Ablaufdatum** sortieren, um einfach auf die Server zuzugreifen, die noch nicht aktualisiert wurden.
 
-* **Ich habe den Server beim vorherigen Ausführen entfernt. Er wird jedoch immer noch als offline angezeigt und auf der AD FS-Server-Seite aufgelistet. Warum wird der Offlineserver selbst nach seinem Entfernen noch angezeigt?**
+* **Ich habe den Server in der vorherigen Ausführung entfernt, er wird aber immer noch als offline angezeigt und auf der AD FS Server-Seite aufgeführt. Warum ist der Offline-Server immer noch da, obwohl ich ihn entfernt habe?**
 
     Durch das Entfernen des Servers aus der Liste in Azure AD Connect wird dieser nicht aus der AD FS-Konfiguration entfernt. Azure AD Connect bezieht sich auf AD FS (Windows Server 2016 oder höher), um beliebige Informationen zur Farm abzurufen. Wenn der Server noch in der AD FS-Konfiguration vorhanden ist, wird er wieder in der Liste angezeigt werden.  
 

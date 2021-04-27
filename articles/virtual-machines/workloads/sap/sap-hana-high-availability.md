@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 42a4c4a41f6c8bdf9d4a8e78f634893722c8f389
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ea1296fd4e31c2deaed79e980ab764c523a2bfd7
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104576395"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364361"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -172,7 +172,6 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
       1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **hana-lb**).
       1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **hana-frontend**, **hana-backend** und **hana-hp**).
       1. Wählen Sie **HA-Ports** aus.
-      1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
       1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
       1. Klicken Sie auf **OK**.
 
@@ -499,6 +498,71 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
    </code></pre>
 
+## <a name="implement-the-python-system-replication-hook-saphanasr"></a>Implementieren des Python-Systemreplikationshooks „SAPHanaSR“
+
+Dies ist ein wichtiger Schritt, um die Integration in den Cluster zu optimieren und besser zu erkennen, wann ein Clusterfailover erforderlich ist. Es wird dringend empfohlen, den Python-Hook „SAPHanaSR“ zu konfigurieren.    
+
+1. **[A]** Installieren Sie den Systemreplikationshook für HANA. Der Hook muss auf beiden HANA-Datenbankknoten installiert werden.           
+
+   > [!TIP]
+   > Stellen Sie sicher, dass mindestens die Paketversion 0.153 von SAPHanaSR installiert ist, damit die Funktionalität des Python-Hooks „SAPHanaSR“ verwendet werden kann.       
+   > Der Python-Hook kann nur für HANA 2.0 implementiert werden.        
+
+   1. Bereiten Sie den Hook als `root` vor.  
+
+    ```bash
+     mkdir -p /hana/shared/myHooks
+     cp /usr/share/SAPHanaSR/SAPHanaSR.py /hana/shared/myHooks
+     chown -R hn1adm:sapsys /hana/shared/myHooks
+    ```
+
+   2. Beenden Sie HANA auf beiden Knoten. Führen Sie den Vorgang als „<sid\>adm“ aus:  
+   
+    ```bash
+    sapcontrol -nr 03 -function StopSystem
+    ```
+
+   3. Passen Sie die Datei `global.ini` auf jedem Clusterknoten an.  
+ 
+    ```bash
+    # add to global.ini
+    [ha_dr_provider_SAPHanaSR]
+    provider = SAPHanaSR
+    path = /hana/shared/myHooks
+    execution_order = 1
+    
+    [trace]
+    ha_dr_saphanasr = info
+    ```
+
+2. **[A]** Der Cluster erfordert die Konfiguration von „sudoers“ auf jedem Clusterknoten für „<sid\>adm“. In diesem Beispiel wird dies durch das Erstellen einer neuen Datei erreicht. Führen Sie die Befehle als `root` aus.    
+    ```bash
+    cat << EOF > /etc/sudoers.d/20-saphana
+    # Needed for SAPHanaSR python hook
+    hn1adm ALL=(ALL) NOPASSWD: /usr/sbin/crm_attribute -n hana_hn1_site_srHook_*
+    EOF
+    ```
+Weitere Informationen zur Implementierung des SAP HANA-Systemreplikationshooks finden Sie unter [Einrichten von Hochverfügbarkeits-/Notfallwiederherstellungsanbietern für SAP HANA](https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-12/index.html#_set_up_sap_hana_hadr_providers).  
+
+3. **[A]** Starten Sie SAP HANA auf beiden Knoten. Führen Sie als <sid\>adm aus.  
+
+    ```bash
+    sapcontrol -nr 03 -function StartSystem 
+    ```
+
+4. **[1]** Überprüfen Sie die Installation des Hooks. Nehmen Sie die Ausführung als <sid\>adm auf dem aktiven Replikationsstandort des HANA-Systems vor.   
+
+    ```bash
+     cdtrace
+     awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
+     { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
+     # Example output
+     # 2021-04-08 22:18:15.877583 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-08 22:18:46.531564 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-08 22:21:26.816573 ha_dr_SAPHanaSR SOK
+
+    ```
+
 ## <a name="create-sap-hana-cluster-resources"></a>Erstellen von SAP HANA-Clusterressourcen
 
 Erstellen Sie zuerst die HANA-Topologie. Führen Sie die folgenden Befehle auf einem der Pacemaker-Clusterknoten aus:
@@ -613,7 +677,7 @@ Um mit zusätzlichen Schritten für die Bereitstellung der zweiten virtuellen IP
    - Öffnen Sie den Lastenausgleich, und wählen Sie den **Front-End-IP-Pool** und dann **Hinzufügen** aus.
    - Geben Sie den Namen des zweiten Front-End-IP-Pools ein (z. B. **hana-secondaryIP**).
    - Legen Sie die **Zuweisung** auf **Statisch** fest, und geben Sie die IP-Adresse ein (z. B. **10.0.0.14**).
-   - Klicken Sie auf **OK**.
+   - Wählen Sie **OK** aus.
    - Notieren Sie nach Erstellen des neuen Front-End-IP-Pools die Front-End-IP-Adresse.
 
    b. Erstellen Sie als Nächstes einen Integritätstest:
@@ -692,7 +756,7 @@ sudo crm_mon -r
 
 Im nächsten Abschnitt finden Sie den typischen Satz auszuführender Failovertests.
 
-Beachten Sie beim Testen eines mit sekundärer Instanz mit Lesezugriff konfigurierten HANA-Clusters das Verhalten der zweiten virtuellen IP-Adresse:
+Beachten Sie beim Testen eines mit lesbarem sekundärem Replikat konfigurierten HANA-Clusters das Verhalten der zweiten virtuellen IP-Adresse:
 
 1. Wenn Sie die Clusterressource **SAPHana_HN1_HDB03** zu **hn1-db-1** migrieren, wird die zweite virtuelle IP-Adresse auf den anderen Server **hn1-db-0** verschoben. Wenn Sie AUTOMATED_REGISTER="false" konfiguriert haben und die HANA-Systemreplikation nicht automatisch registriert wird, wird die zweite virtuelle IP-Adresse auf **hn1-db-0** ausgeführt, da der Server verfügbar ist und die Clusterdienste online sind.  
 
@@ -711,6 +775,9 @@ In diesem Abschnitt wird beschrieben, wie Sie Ihre Einrichtung testen können. J
 Bevor Sie den Test starten, stellen Sie sicher, dass Pacemaker keine fehlerhaften Aktionen enthält (mit crm_mon -r), dass keine unerwarteten Speicherorteinschränkungen bestehen (z.B. durch zurückgebliebene Elemente vom Migrationstest) und dass HANA synchron ist (z.B. mit SAPHanaSR-showAttr):
 
 <pre><code>hn1-db-0:~ # SAPHanaSR-showAttr
+Sites    srHook
+----------------
+SITE2    SOK
 
 Global cib-time
 --------------------------------
@@ -724,7 +791,7 @@ hn1-db-1 DEMOTED     30          online     logreplay nws-hana-vm-0 4:S:master1:
 
 Sie können den SAP HANA-Masterknoten migrieren, indem Sie den folgenden Befehl ausführen:
 
-<pre><code>crm resource migrate msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-1</b>
+<pre><code>crm resource move msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-1</b> force
 </code></pre>
 
 Wenn Sie `AUTOMATED_REGISTER="false"` festlegen, sollte diese Befehlsfolge den SAP HANA-Masterknoten und die Gruppe, die die virtuelle IP-Adresse enthält, zu „hn1-db-1“ migrieren.
@@ -763,7 +830,7 @@ Die Migration erstellt Speicherorteinschränkungen, die erneut gelöscht werden 
 
 <pre><code># Switch back to root and clean up the failed state
 exit
-hn1-db-0:~ # crm resource unmigrate msl_SAPHana_<b>HN1</b>_HDB<b>03</b>
+hn1-db-0:~ # crm resource clear msl_SAPHana_<b>HN1</b>_HDB<b>03</b>
 </code></pre>
 
 Darüber hinaus müssen Sie auch den Status der sekundären Knotenressource bereinigen:

@@ -1,27 +1,23 @@
 ---
-title: 'Einrichten einer Dateifreigabe für das MSIX-Feature zum Anfügen von Apps (Vorschau) für Windows Virtual Desktop: Azure'
+title: Einrichten einer Dateifreigabe für das MSIX-Feature zum Anfügen von Apps für Windows Virtual Desktop – Azure
 description: Vorgehensweise beim Einrichten einer Dateifreigabe für das MSIX-Feature zum Anfügen von Apps für Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1e7a956b358d486250fbfc26da141c47c0238b56
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d8aaa8d5013c426ac1ab6b367309c51be4929cee
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448388"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366401"
 ---
-# <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>Einrichten einer Dateifreigabe für das MSIX-Feature zum Anfügen von Apps (Vorschau)
-
-> [!IMPORTANT]
-> Das MSIX-Features zum Anfügen von Apps befindet sich zurzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="set-up-a-file-share-for-msix-app-attach"></a>Einrichten einer Dateifreigabe für das MSIX-Feature zum Anfügen von Apps
 
 Alle MSIX-Images müssen auf einer Netzwerkfreigabe gespeichert werden, auf die Benutzer in einem Hostpool mit Leseberechtigung zugreifen können.
 
-Das MSIX-Feature zum Anfügen von Apps (Vorschau) ist nicht vom Typ des Speicherfabrics abhängig, das von der Dateifreigabe verwendet wird. Für die Freigabe des MSIX-Features zum Anfügen von Apps gelten dieselben Überlegungen wie für eine FSLogix-Freigabe. Weitere Informationen zu Speicheranforderungen finden Sie unter [Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop](store-fslogix-profile.md).
+Das MSIX-Feature zum Anfügen von Apps ist nicht vom Typ des von der Dateifreigabe verwendeten Speicherfabrics abhängig. Für die Freigabe des MSIX-Features zum Anfügen von Apps gelten dieselben Überlegungen wie für eine FSLogix-Freigabe. Weitere Informationen zu Speicheranforderungen finden Sie unter [Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop](store-fslogix-profile.md).
 
 ## <a name="performance-requirements"></a>Leistungsanforderungen
 

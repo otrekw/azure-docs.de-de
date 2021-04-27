@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/23/2017
+ms.date: 04/02/2021
 ms.author: mazha
 ms.custom: devx-track-js
-ms.openlocfilehash: f5d5c7a6e1f6993b19f38db2ae846b213a1d553e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 386a424e45d1b718b68cbbf53322fd704317a06b
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95993389"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285218"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Erste Schritte mit der Azure CDN-Entwicklung
 > [!div class="op_single_selector"]
@@ -29,14 +29,10 @@ ms.locfileid: "95993389"
 > 
 > 
 
-Sie können das [Azure CDN SDK für Node.js](https://www.npmjs.com/package/azure-arm-cdn) verwenden, um die Erstellung und Verwaltung von CDN-Profilen und -Endpunkten zu automatisieren.  In diesem Tutorial wird die Erstellung einer einfachen Node.js-Konsolenanwendung beschrieben, mit der einige verfügbare Vorgänge demonstriert werden.  Dieses Tutorial dient nicht dazu, alle Aspekte des Azure CDN SDK für „Node.js“ ausführlich zu beschreiben.
+Sie können das [Azure CDN SDK für JavaScript](https://www.npmjs.com/package/@azure/arm-cdn) verwenden, um die Erstellung und Verwaltung von CDN-Profilen und -Endpunkten zu automatisieren.  In diesem Tutorial wird die Erstellung einer einfachen Node.js-Konsolenanwendung beschrieben, mit der einige verfügbare Vorgänge demonstriert werden.  In diesem Tutorial werden jedoch nicht alle Aspekte des Azure CDN SDK für JavaScript ausführlich beschrieben.
 
-Zum Durcharbeiten dieses Tutorials sollten Sie bereits [Node.js](https://www.nodejs.org) **4.x.x** oder höher installiert und konfiguriert haben.  Sie können einen beliebigen Text-Editor verwenden, um die Node.js-Anwendung zu erstellen.  Zum Schreiben dieses Tutorials habe ich [Visual Studio Code](https://code.visualstudio.com)verwendet.  
+Zum Durcharbeiten dieses Tutorials sollten Sie bereits [Node.js](https://www.nodejs.org) **6.x.x** (oder höher) installiert und konfiguriert haben.  Sie können einen beliebigen Text-Editor verwenden, um die Node.js-Anwendung zu erstellen.  Zum Schreiben dieses Tutorials habe ich [Visual Studio Code](https://code.visualstudio.com)verwendet.  
 
-> [!TIP]
-> Das [vervollständigte Projekt aus diesem Tutorial](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) steht auf MSDN zum Download bereit.
-> 
-> 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
@@ -53,11 +49,11 @@ Ihnen werden dann verschiedene Fragen zur Initialisierung des Projekts gestellt.
 
 ![NPM-Initialisierungsausgabe](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-Unser Projekt wird jetzt mit der Datei *packages.json* initialisiert.  Im Projekt werden einige Azure-Bibliotheken verwendet, die in NPM-Paketen enthalten sind.  Wir verwenden die Azure-Clientlaufzeit für Node.js (ms-rest-azure) und die Azure CDN-Clientbibliothek für Node.js (azure-arm-cd).  Diese Komponenten fügen wir dem Projekt nun als Abhängigkeiten hinzu.
+Unser Projekt wird jetzt mit der Datei *packages.json* initialisiert.  Im Projekt werden einige Azure-Bibliotheken verwendet, die in NPM-Paketen enthalten sind.  Wir verwenden die Bibliothek für die Azure Active Directory-Authentifizierung in Node.js (@azure/ms-rest-nodeauth) und die Azure CDN-Clientbibliothek für JavaScript (@azure/arm-cdn).  Diese Komponenten fügen wir dem Projekt nun als Abhängigkeiten hinzu.
 
 ```console
-npm install --save ms-rest-azure
-npm install --save azure-arm-cdn
+npm install --save @azure/ms-rest-nodeauth
+npm install --save @azure/arm-cdn
 ```
 
 Nachdem die Installation der Pakete abgeschlossen ist, sollte die Datei *package.json* in etwa wie folgendes Beispiel aussehen (Versionsnummern können abweichen):
@@ -74,8 +70,8 @@ Nachdem die Installation der Pakete abgeschlossen ist, sollte die Datei *package
   "author": "Cam Soper",
   "license": "MIT",
   "dependencies": {
-    "azure-arm-cdn": "^0.2.1",
-    "ms-rest-azure": "^1.14.4"
+    "@azure/arm-cdn": "^5.2.0",
+    "@azure/ms-rest-nodeauth": "^3.0.0"
   }
 }
 ```
@@ -88,8 +84,8 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
 1. Fügen Sie die „Requires“-Elemente für unsere NPM-Pakete oben wie folgt hinzu:
    
     ``` javascript
-    var msRestAzure = require('ms-rest-azure');
-    var cdnManagementClient = require('azure-arm-cdn');
+    var msRestAzure = require('@azure/ms-rest-nodeauth');
+    const { CdnManagementClient } = require('@azure/arm-cdn');
     ```
 2. Sie müssen einige Konstanten definieren, die von den Methoden verwendet werden.  Fügen Sie Folgendes hinzu.  Ersetzen Sie die Platzhalter einschließlich der **&lt;spitzen Klammern&gt;** nach Bedarf durch Ihre eigenen Werte.
    
@@ -108,23 +104,9 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
    
     ``` javascript
     var credentials = new msRestAzure.ApplicationTokenCredentials(clientId, tenantId, clientSecret);
-    var cdnClient = new cdnManagementClient(credentials, subscriptionId);
+    var cdnClient = new CdnManagementClient(credentials, subscriptionId);
     ```
-   
-    Wenn Sie die individuelle Benutzerauthentifizierung verwenden, sehen diese beiden Zeilen etwas anders aus.
-   
-   > [!IMPORTANT]
-   > Verwenden Sie dieses Codebeispiel nur, wenn Sie die individuelle Benutzerauthentifizierung anstelle eines Dienstprinzipals verwenden möchten.  Schützen Sie Ihre individuellen Anmeldeinformationen, und halten Sie sie geheim.
-   > 
-   > 
-   
-    ``` javascript
-    var credentials = new msRestAzure.UserTokenCredentials(clientId, 
-        tenantId, '<username>', '<password>', '<redirect URI>');
-    var cdnClient = new cdnManagementClient(credentials, subscriptionId);
-    ```
-   
-    Stellen Sie sicher, dass Sie die Elemente in **&lt;spitzen Klammern&gt;** durch die richtigen Informationen ersetzen.  Verwenden Sie für `<redirect URI>`den Umleitungs-URI, den Sie bei der Registrierung der Anwendung in Azure AD eingegeben haben.
+
 4. Für unsere Node.js-Konsolenanwendung benötigen wir einige Befehlszeilenparameter.  Wir vergewissern uns, dass mindestens ein Parameter übergeben wurde.
    
    ```javascript
@@ -237,7 +219,7 @@ function cdnList(){
         case "endpoints":
             requireParms(3);
             console.log("Listing endpoints...");
-            cdnClient.endpoints.listByProfile(parms[2], resourceGroupName, callback);
+            cdnClient.endpoints.listByProfile(resourceGroupName, parms[2], callback);
             break;
 
         default:
@@ -280,7 +262,7 @@ function cdnCreateProfile() {
         }
     };
 
-    cdnClient.profiles.create(parms[2], standardCreateParameters, resourceGroupName, callback);
+    cdnClient.profiles.create( resourceGroupName, parms[2], standardCreateParameters, callback);
 }
 
 // create endpoint <profile name> <endpoint name> <origin hostname>        
@@ -295,7 +277,7 @@ function cdnCreateEndpoint() {
         }]
     };
 
-    cdnClient.endpoints.create(parms[3], endpointProperties, parms[2], resourceGroupName, callback);
+    cdnClient.endpoints.create(resourceGroupName, parms[2], parms[3], endpointProperties, callback);
 }
 ```
 
@@ -308,7 +290,7 @@ function cdnPurge() {
     requireParms(4);
     console.log("Purging endpoint...");
     var purgeContentPaths = [ parms[3] ];
-    cdnClient.endpoints.purgeContent(parms[2], parms[1], resourceGroupName, purgeContentPaths, callback);
+    cdnClient.endpoints.purgeContent(resourceGroupName, parms[2], parms[3], purgeContentPaths, callback);
 }
 ```
 
@@ -324,14 +306,14 @@ function cdnDelete() {
         case "profile":
             requireParms(3);
             console.log("Deleting profile...");
-            cdnClient.profiles.deleteIfExists(parms[2], resourceGroupName, callback);
+            cdnClient.profiles.deleteMethod(resourceGroupName, parms[2], callback);
             break;
 
         // delete endpoint <profile name> <endpoint name>
         case "endpoint":
             requireParms(4);
             console.log("Deleting endpoint...");
-            cdnClient.endpoints.deleteIfExists(parms[3], parms[2], resourceGroupName, callback);
+            cdnClient.endpoints.deleteMethod(resourceGroupName, parms[2], parms[3], callback);
             break;
 
         default:
@@ -366,11 +348,9 @@ Abschließend löschen wir das Profil.
 ![Profil löschen](./media/cdn-app-dev-node/cdn-delete-profile.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Laden Sie das Beispiel herunter](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74), um sich das abgeschlossene Projekt dieser exemplarischen Vorgehensweise anzusehen.
 
-Lesen Sie die [Referenz](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/)zum Azure CDN SDK für Node.js durch.
+Lesen Sie die [Referenz](https://docs.microsoft.com/javascript/api/@azure/arm-cdn) zum Azure CDN SDK für JavaScript.
 
-Weitere Teile der Dokumentation zum Azure SDK für Node.js finden Sie in der [vollständigen Referenz](https://azure.github.io/azure-sdk-for-node/).
+Weitere Teile der Dokumentation zum Azure SDK für JavaScript finden Sie in der [vollständigen Referenz](https://docs.microsoft.com/javascript/api/?view=azure-node-latest).
 
 Verwalten Sie Ihre CDN-Ressourcen mit [PowerShell](cdn-manage-powershell.md).
-

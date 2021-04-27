@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175650"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308964"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Verwenden von Bereitstellungsskripts in ARM-Vorlagen
 
@@ -131,13 +131,16 @@ Nachfolgend finden Sie ein JSON-Beispiel. Weitere Informationen finden Sie im ne
 > [!NOTE]
 > Dieses Beispiel dient zu Demonstrationszwecken. Die Eigenschaften `scriptContent` und `primaryScriptUri` können nicht zusammen in einer Vorlage enthalten sein.
 
+> [!NOTE]
+> _scriptContent_ zeigt ein Skript mit mehreren Zeilen an.  Das Azure-Portal und die Azure DevOps-Pipeline können keine Bereitstellungsskripts mit mehreren Zeilen analysieren. Sie können entweder die PowerShell-Befehle (mit Semikolons oder _\\r\\n_ bzw. _\\n_) zu einer Zeile verketten oder die `primaryScriptUri`-Eigenschaft mit einer externen Skriptdatei verwenden. Es stehen viele kostenlose Escape-/Unescapetools für JSON-Zeichenfolgen zur Verfügung. Beispiel: [https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html)
+
 Details zu Eigenschaftswerten:
 
 - `identity`: Für die API-Version 2020-10-01 oder höher des Bereitstellungsskripts ist eine vom Benutzer zugewiesene verwaltete Identität optional, es sei denn, Sie müssen Azure-spezifische Aktionen im Skript ausführen.  Für die API-Version 2019-10-01-preview ist eine verwaltete Identität erforderlich, da der Bereitstellungsskriptdienst diese verwendet, um die Skripts auszuführen. Zurzeit wird nur eine benutzerseitig zugewiesene verwaltete Identität unterstützt.
 - `kind`: Geben Sie den Typ des Skripts an. Zurzeit werden Azure PowerShell- und Azure CLI-Skripts unterstützt. Die Werte sind **AzurePowerShell** und **AzureCLI**.
 - `forceUpdateTag`: Wenn Sie diesen Wert zwischen Vorlagenbereitstellungen ändern, wird das Bereitstellungsskript erneut ausgeführt. Die beiden Funktionen `newGuid()` und `utcNow()` können nur mit dem Standardwert eines Parameters verwendet werden. Weitere Informationen finden Sie unter [Mehrmaliges Ausführen des Skripts](#run-script-more-than-once).
-- `containerSettings`: Geben Sie die Einstellungen zum Anpassen der Azure-Containerinstanz an.  `containerGroupName` dient zum Angeben des Namens der Containergruppe. Falls nicht angegeben, wird der Gruppenname automatisch generiert.
-- `storageAccountSettings`: Geben Sie die Einstellungen zur Verwendung eines vorhandenen Speicherkontos an. Falls nicht angegeben, wird ein Speicherkonto automatisch erstellt. Weitere Informationen finden Sie unter [Verwenden eines vorhandenen Speicherkontos](#use-existing-storage-account).
+- `containerSettings`: Geben Sie die Einstellungen zum Anpassen der Azure-Containerinstanz an. Im Bereitstellungsskript muss eine neue Azure-Containerinstanz angegeben werden. Sie können keine vorhandene Azure-Containerinstanz angeben. Sie können jedoch den Namen der Containergruppe mithilfe von `containerGroupName` anpassen. Falls nicht angegeben, wird der Gruppenname automatisch generiert.
+- `storageAccountSettings`: Geben Sie die Einstellungen zur Verwendung eines vorhandenen Speicherkontos an. Wenn `storageAccountName` nicht angegeben ist, wird ein Speicherkonto automatisch erstellt. Weitere Informationen finden Sie unter [Verwenden eines vorhandenen Speicherkontos](#use-existing-storage-account).
 - `azPowerShellVersion`/`azCliVersion`: Geben Sie die zu verwendende Modulversion an. Eine Liste mit den unterstützten Azure PowerShell-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Eine Liste mit den unterstützten Azure CLI-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]
@@ -159,14 +162,11 @@ Details zu Eigenschaftswerten:
 
 - `environmentVariables`: Geben Sie die Umgebungsvariablen an, die an das Skript übergeben werden sollen. Weitere Informationen finden Sie unter [Entwickeln von Bereitstellungsskripts](#develop-deployment-scripts).
 - `scriptContent`: Geben Sie den Skriptinhalt an. Wenn Sie ein externes Skript ausführen möchten, verwenden Sie stattdessen `primaryScriptUri`. Beispiele finden Sie unter [Verwenden von Inlineskripts](#use-inline-scripts) und [Verwenden externer Skripts](#use-external-scripts).
-  > [!NOTE]
-  > Das Azure-Portal kann keine Bereitstellungsskripts mit mehreren Zeilen analysieren. Um eine Vorlage mit dem Bereitstellungsskript über das Azure-Portal bereitzustellen, können Sie die PowerShell-Befehle mithilfe von Semikolons in eine Zeile verketten oder die `primaryScriptUri`-Eigenschaft mit einer externen Skriptdatei verwenden.
-
-- `primaryScriptUri`: Geben Sie eine öffentlich zugängliche URL zum primären Bereitstellungsskript mit unterstützten Dateierweiterungen an.
-- `supportingScriptUris`: Geben Sie ein Array öffentlich zugänglicher URLs zu unterstützenden Dateien an, die in `scriptContent` oder `primaryScriptUri` aufgerufen werden.
+- `primaryScriptUri`: Geben Sie eine öffentlich zugängliche URL zum primären Bereitstellungsskript mit unterstützten Dateierweiterungen an. Weitere Informationen finden Sie unter [Verwenden externer Skripts](#use-external-scripts).
+- `supportingScriptUris`: Geben Sie ein Array öffentlich zugänglicher URLs zu unterstützenden Dateien an, die in `scriptContent` oder `primaryScriptUri` aufgerufen werden. Weitere Informationen finden Sie unter [Verwenden externer Skripts](#use-external-scripts).
 - `timeout`: Geben Sie die maximal zulässige Ausführungsdauer für das Skript im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) an. Der Standardwert ist **P1D**.
 - `cleanupPreference`. Geben Sie die Einstellung für das Bereinigen der Bereitstellungsressourcen an, nachdem die Skriptausführung beendet wurde. Die Standardeinstellung ist **Always**. Damit werden die Ressourcen unabhängig vom Endzustand (Erfolg, Fehler, Abbruch) gelöscht. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](#clean-up-deployment-script-resources).
-- `retentionInterval`: Geben Sie das Intervall an, das vom Dienst für die Aufbewahrung der Bereitstellungsskriptressourcen verwendet wird, nachdem das Bereitstellungsskript einen Beendigungszustand erreicht. Die Bereitstellungsskriptressourcen werden gelöscht, wenn dieser Zeitraum abgelaufen ist. Die Dauer basiert auf dem [ISO 8601-Muster](https://en.wikipedia.org/wiki/ISO_8601). Der Aufbewahrungszeitraum liegt zwischen 1 und 26 Stunden (PT26H). Diese Eigenschaft wird verwendet, wenn `cleanupPreference` auf **OnExpiration** festgelegt ist. Die **OnExpiration**-Eigenschaft ist derzeit nicht aktiviert. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](#clean-up-deployment-script-resources).
+- `retentionInterval`: Geben Sie das Intervall an, das vom Dienst für die Aufbewahrung der Bereitstellungsskriptressourcen verwendet wird, nachdem das Bereitstellungsskript einen Beendigungszustand erreicht. Die Bereitstellungsskriptressourcen werden gelöscht, wenn dieser Zeitraum abgelaufen ist. Die Dauer basiert auf dem [ISO 8601-Muster](https://en.wikipedia.org/wiki/ISO_8601). Der Aufbewahrungszeitraum liegt zwischen 1 und 26 Stunden (PT26H). Diese Eigenschaft wird verwendet, wenn `cleanupPreference` auf **OnExpiration** festgelegt ist. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](#clean-up-deployment-script-resources).
 
 ### <a name="additional-samples"></a>Weitere Beispiele
 
@@ -212,7 +212,7 @@ Neben Inlineskripts können Sie auch externe Skriptdateien verwenden. Es werden 
 
 Weitere Informationen finden Sie in der [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
-Die externen Skriptdateien müssen zugänglich sein. Informationen zum Schützen Ihrer Skriptdateien, die in Azure Storage-Konten gespeichert sind, finden Sie unter [Bereitstellen einer privaten ARM-Vorlage mit SAS-Token](./secure-template-with-sas-token.md).
+Die externen Skriptdateien müssen zugänglich sein. Generieren Sie zum Sichern Ihrer in Azure Storage-Konten gespeicherten Skriptdateien ein SAS-Token, und fügen Sie es in den URI für die Vorlage ein. Legen Sie die Ablaufzeit so fest, dass ausreichend Zeit für die Bereitstellung bleibt. Weitere Informationen finden Sie unter [Bereitstellen einer privaten ARM-Vorlage mit SAS-Token](./secure-template-with-sas-token.md).
 
 Es ist Ihre Aufgabe, die Integrität der Skripts zu gewährleisten, auf die vom Bereitstellungsskript verwiesen wird, entweder `primaryScriptUri` oder `supportingScriptUris`. Verweisen Sie nur auf Skripts, denen Sie vertrauen.
 
@@ -245,7 +245,7 @@ Die folgende Vorlage zeigt, wie Werte zwischen zwei `deploymentScripts`-Ressourc
 In der ersten Ressource definieren Sie eine Variable mit dem Namen `$DeploymentScriptOutputs`, die Sie zum Speichern der Ausgabewerte verwenden. Um aus einer anderen Ressource in der Vorlage auf den Ausgabewert zuzugreifen, verwenden Sie Folgendes:
 
 ```json
-reference('<ResourceName>').output.text
+reference('<ResourceName>').outputs.text
 ```
 
 ## <a name="work-with-outputs-from-cli-script"></a>Arbeiten mit Ausgaben von CLI-Skripts
@@ -313,7 +313,7 @@ Tritt bei dem Skript ein Fehler auf, wird der Bereitstellungsstatus der Ressourc
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Übergeben von sicheren Zeichenfolgen an Bereitstellungsskripts
 
-Das Festlegen von Umgebungsvariablen (EnvironmentVariable) in Ihren Containerinstanzen ermöglicht es Ihnen, eine dynamische Konfiguration der Anwendung oder des Skripts bereitzustellen, die bzw. das vom Container ausgeführt wird. Das Bereitstellungsskript verarbeitet nicht gesicherte und gesicherte Umgebungsvariablen auf dieselbe Weise wie Azure Container Instance. Weitere Informationen finden Sie unter [Festlegen von Umgebungsvariablen in Container Instances](../../container-instances/container-instances-environment-variables.md#secure-values).
+Das Festlegen von Umgebungsvariablen (EnvironmentVariable) in Ihren Containerinstanzen ermöglicht es Ihnen, eine dynamische Konfiguration der Anwendung oder des Skripts bereitzustellen, die bzw. das vom Container ausgeführt wird. Das Bereitstellungsskript verarbeitet nicht gesicherte und gesicherte Umgebungsvariablen auf dieselbe Weise wie Azure Container Instance. Weitere Informationen finden Sie unter [Festlegen von Umgebungsvariablen in Container Instances](../../container-instances/container-instances-environment-variables.md#secure-values). Ein Beispiel finden Sie unter [Beispielvorlagen](#sample-templates).
 
 Die maximal zulässige Größe für Umgebungsvariablen beträgt 64 KB.
 

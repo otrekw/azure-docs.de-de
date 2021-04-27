@@ -4,27 +4,30 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mithilfe von Azure Policy integrierte Richtlinien für Azure Machine Learning erstellen können, um sicherzustellen, dass Ihre Arbeitsbereiche Ihren Anforderungen entsprechen.
 author: aashishb
 ms.author: aashishb
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 21b07130e99ad4fac9a0a9b2d11aca852a1f205f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f708e2181511da97ecffcd6f1636a2b232b4fbc6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584311"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105544365"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Überwachen und Verwalten von Azure Machine Learning mit Azure Policy
 
 [Azure Policy](../governance/policy/index.yml) ist ein Governancetool, mit dem Sie sicherstellen können, dass Azure-Ressourcen mit Ihren Richtlinien konform sind. Mit Azure Machine Learning können Sie die folgenden Richtlinien zuweisen:
 
-* **Kundenseitig verwalteter Schlüssel**: Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
-* **Private Link**: Überwachen oder erzwingen Sie, dass Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
-* **Privater Endpunkt**: Konfigurieren Sie das Azure Virtual Network-Subnetz, in dem der private Endpunkt erstellt werden soll.
-* **Private DNS-Zone**: Konfigurieren Sie die private DNS-Zone, die für Private Link verwendet werden soll.
+| Richtlinie | BESCHREIBUNG |
+| ----- | ----- |
+| **Kundenverwalteter Schlüssel** | Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen. |
+| **Privater Link** | Überprüfen oder erzwingen Sie, ob Arbeitsbereiche einen privaten Endpunkt zur Kommunikation mit einem virtuellen Netzwerk verwenden. |
+| **Privater Endpunkt** | Konfigurieren Sie das Azure Virtual Network-Subnetz, in dem der private Endpunkt erstellt werden soll. |
+| **Private DNS-Zone** | Konfigurieren Sie die private DNS-Zone, die für die private Verbindung verwendet werden soll. |
+| **Benutzerseitig zugewiesene verwaltete Identität** | Überwachen oder erzwingen Sie, ob Arbeitsbereiche eine vom Benutzer zugewiesene verwaltete Identität verwenden. |
 
 Richtlinien können in unterschiedlichen Bereichen festgelegt werden, z. B. auf Abonnement- oder Ressourcengruppenebene. Weitere Informationen finden Sie in der [Dokumentation zu Azure Policy](../governance/policy/overview.md).
 
@@ -62,12 +65,20 @@ Bei Festlegung der Richtlinie auf __deny__ können Sie nur dann einen Arbeitsber
 
 Hiermit wird ein Arbeitsbereich so konfiguriert, dass innerhalb des angegebenen Azure Virtual Network-Subnetzes ein privater Endpunkt erstellt wird.
 
-Legen Sie zur Konfiguration dieser Richtlinie den Parameter „effect“ auf __DeployIfNotExists__ fest. Geben Sie für __privateEndpointSubnetID__ die Azure Resource Manager-ID des Subnetzes an.
+Legen Sie zur Konfiguration dieser Richtlinie den Parameter „effect“ auf __DeployIfNotExists__ fest. Stellen Sie die __privateEndpointSubnetID__ auf die Azure Ressourcen-Manager-ID des Subnetzes ein.
 ## <a name="workspace-should-use-private-dns-zones"></a>Arbeitsbereiche sollen private DNS-Zonen verwenden
 
 Hiermit wird ein Arbeitsbereich so konfiguriert, dass eine private DNS-Zone verwendet und dabei die DNS-Standardauflösung für einen privaten Endpunkt überschrieben wird.
 
 Legen Sie zur Konfiguration dieser Richtlinie den Parameter „effect“ auf __DeployIfNotExists__ fest. Geben Sie für __privateDnsZoneId__ die Azure Resource Manager-ID der privaten DNS-Zone an, die verwendet werden soll. 
+
+## <a name="workspace-should-use-user-assigned-managed-identity"></a>Der Arbeitsbereich sollte eine vom Benutzer zugewiesene verwaltete Identität verwenden
+
+Steuert, ob ein Arbeitsbereich mit einer vom System zugewiesenen verwalteten Identität (Standard) oder einer vom Benutzer zugewiesenen verwalteten Identität erstellt wird. Die verwaltete Identität für den Arbeitsbereich wird für den Zugriff auf zugehörige Ressourcen wie Azure Storage, Azure Container Registry, Azure Key Vault und Azure Anwendung Insights verwendet. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten mit Azure Machine Learning](how-to-use-managed-identities.md).
+
+Um diese Richtlinie zu konfigurieren, setzen Sie den Effekt-Parameter auf __prüfen__, __ablehnen__, oder __deaktiviert__ ein. Wenn diese Option auf __Audit__ gesetzt ist, können Sie einen Arbeitsbereich erstellen, ohne eine dem Benutzer zugewiesene verwaltete Identität anzugeben. Es wird eine vom System zugewiesene Identität verwendet und ein Warnereignis im Aktivitätsprotokoll erstellt.
+
+Wenn die Richtlinie auf __Verweigern__ eingestellt ist, können Sie keinen Arbeitsbereich erstellen, es sei denn, Sie geben während des Erstellungsprozesses eine dem Benutzer zugewiesene Identität an. Der Versuch, einen Arbeitsbereich zu erstellen, ohne eine dem Benutzer zugewiesene Identität anzugeben, führt zu einem Fehler. Der Fehler wird auch in das Aktivitätsprotokoll aufgenommen. Der Richtlinienbezeichner wird als Teil dieses Fehlers zurückgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

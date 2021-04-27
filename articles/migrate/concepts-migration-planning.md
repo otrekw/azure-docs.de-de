@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.openlocfilehash: 1c2be47060004d464003c00cbbddb3b58a136e3c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104871145"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Erstellen eines Migrationsplans mit Azure Migrate
@@ -53,7 +53,7 @@ Nachdem Sie die Daten gesammelt haben, können Sie die Anwendungsbestandsliste e
 
  ![Export des Anwendungsbestands](./media/concepts-migration-planning/application-inventory-export.png)
 
-Zusammen mit den durch das Ermittlungs- und Bewertungstool entdeckten Daten können Sie die Daten aus Ihrer Konfigurationsverwaltungsdatenbank (CMDB) zum Erstellen einer Ansicht Ihrer Server- und Datenbankbestände verwenden. Außerdem können Sie nachvollziehen, wie Ihre Server über Geschäftseinheiten, Anwendungsbesitzer, geografische Regionen usw. verteilt sind. Dies hilft bei der Entscheidung, welche Workloads für die Migration priorisiert werden sollen. 
+Neben den Daten, die mit dem Discovery- und Assessment-Tool ermittelt wurden, können Sie die Daten Ihrer Configuration Management Database (CMDB) verwenden, um eine Übersicht über Ihren Server- und Datenbankbestand zu erstellen und zu verstehen, wie Ihre Server über Geschäftseinheiten, Anwendungseigentümer, Geografien usw., verteilt sind. Dies hilft bei der Entscheidung, welche Workloads für die Migration priorisiert werden sollen. 
 
 ### <a name="dependencies-between-workloads"></a>Abhängigkeiten zwischen Workloads
 

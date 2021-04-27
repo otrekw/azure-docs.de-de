@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ec8104a5fd8d1c524f75c7a5173015115d85a253
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202636"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064306"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -183,6 +183,10 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Wenn Sie Azure Backup für Ihre von der Datensynchronisierung verwalteten Dateifreigaben aktiviert haben, können Datei-ACLs weiterhin als Teil des Sicherungs- und Wiederherstellungsworkflows wiederhergestellt werden. Dies funktioniert für die gesamte Freigabe oder für einzelne Dateien/Verzeichnisse.
 
     Wenn Sie Momentaufnahmen als Teil der selbstverwalteten Sicherungslösung für Dateifreigaben verwenden, die von der Dateisynchronisierung verwaltet werden, werden die ACLs möglicherweise nicht ordnungsgemäß als NTFS-ACLs wiederhergestellt, wenn die Momentaufnahmen vor dem 24. Februar 2020 erstellt wurden. In diesem Fall sollten Sie sich an den Azure-Support wenden.
+
+* <a id="afs-lastwritetime"></a>
+  **Wird mit Azure File Sync die LastWriteTime für Verzeichnisse synchronisiert?**  
+    Nein, Azure File Sync synchronisiert nicht die LastWriteTime für Verzeichnisse. Dies ist beabsichtigt.
     
 ## <a name="security-authentication-and-access-control"></a>Sicherheit, Authentifizierung und Zugriffssteuerung
 * <a id="ad-support"></a>
@@ -308,6 +312,18 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 **Sind REST-APIs zur Unterstützung von Get/Set/Copy-Vorgängen für Windows-ACLs auf Verzeichnis-/Dateiebene vorhanden?**
 
     Ja, wir unterstützen REST-APIs, die NTFS-ACLs für Verzeichnisse oder Dateien bei Verwendung der REST-API [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (oder höher) erfassen, festlegen oder kopieren. Außerdem wird das Beibehalten von Windows-ACLs in REST-basierten Tools unterstützt: [AzCopy v10.4+](https://github.com/Azure/azure-storage-azcopy/releases).
+
+* <a id="ad-support-rest-apis"></a>
+**Wie werden zwischengespeicherte Anmeldeinformationen mit dem Speicherkontoschlüssel entfernt und vorhandene SMB-Verbindungen gelöscht, bevor eine neue Verbindung mit Azure AD- oder AD-Anmeldeinformationen initialisiert wird?**
+
+    Sie können den folgenden Prozess mit zwei Schritten ausführen, um die gespeicherten Anmeldeinformationen, die dem Speicherkontoschlüssel zugeordnet sind, und die SMB-Verbindung zu entfernen: 
+    1. Führen Sie das unten gezeigte Cmdlet in „Cmd.exe“ von Windows aus, um die Anmeldeinformationen zu entfernen. Wenn keine Anmeldeinformationen gefunden werden, bedeutet dies, dass Sie die Anmeldeinformationen nicht gespeichert haben. Sie können diesen Schritt also überspringen.
+    
+       cmdkey /delete:Domain:target=storage-account-name.file.core.windows.net
+    
+    2. Löschen Sie die vorhandene Verbindung mit der Dateifreigabe. Sie können den Einbindungspfad entweder als eingebundenen Laufwerkbuchstaben oder mit dem Pfad „storage-account-name.file.core.windows.net“ angeben.
+    
+       net use <drive-letter/share-path> /delete
 
 ## <a name="network-file-system"></a>Network File System
 

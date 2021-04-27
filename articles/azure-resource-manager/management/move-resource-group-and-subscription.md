@@ -2,22 +2,28 @@
 title: Verschieben von Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe
 description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben.
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093618"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078382"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
 In diesem Artikel wird erklärt, wie Sie Azure-Ressourcen entweder in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe im gleichen Abonnement verschieben. Sie können das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden, um Ressourcen zu verschieben.
 
-Beim Verschieben wird sowohl die Quell- als auch die Zielgruppe gesperrt. Schreib- und Löschvorgänge in den Ressourcengruppen werden bis zum Abschluss der Verschiebung blockiert. Diese Sperre bedeutet, dass Sie in Ressourcengruppen keinen Ressourcen hinzufügen, aktualisieren oder löschen können. Es heißt aber nicht, dass die Ressourcen eingefroren sind. Wenn Sie beispielsweise eine SQL Server-Instanz und ihre Datenbank in eine neue Ressourcengruppe verschieben, weist eine Anwendung, die die Datenbank nutzt, keine Ausfallzeiten auf. Sie hat weiterhin Lese- und Schreibzugriff auf die Datenbank. Die Sperre kann maximal vier Stunden dauern, aber die meisten Verschiebungen werden in viel kürzerer Zeit beendet.
+Beim Verschieben wird sowohl die Quell- als auch die Zielgruppe gesperrt. Schreib- und Löschvorgänge in den Ressourcengruppen werden bis zum Abschluss der Verschiebung blockiert. Diese Sperre bedeutet, dass Sie in Ressourcengruppen keinen Ressourcen hinzufügen, aktualisieren oder löschen können. Es heißt aber nicht, dass die Ressourcen eingefroren sind. Wenn Sie beispielsweise eine logische Azure SQL Server-Instanz und ihre Datenbanken in eine neue Ressourcengruppe oder ein neues Abonnement verschieben, treten für die Anwendungen, die diese Datenbanken verwenden, keine Ausfallzeiten auf. Sie besitzen weiterhin Lese- und Schreibzugriff auf diese Datenbanken. Die Sperre kann maximal vier Stunden dauern, aber die meisten Verschiebungen werden in viel kürzerer Zeit beendet.
 
 Wenn Sie ein Ressource verschieben, wird sie nur in eine neue Ressourcengruppe oder ein neues Abonnement verschoben. Der Speicherort der Ressource ändert sich nicht.
+
+## <a name="changed-resource-id"></a>Geänderte Ressourcen-ID
+
+Wenn Sie eine Ressource verschieben, ändern Sie ihre Ressourcen-ID. Das Standardformat für eine Ressourcen-ID ist `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`. Wenn Sie eine Ressource in eine neue Ressourcengruppe oder ein Abonnement verschieben, ändern Sie einen oder mehrere Werte in dem Pfad.
+
+Wenn Sie die Ressourcen-ID irgendwo verwenden, müssen Sie diesen Wert ändern. Wenn Sie z. B. ein [benutzerdefiniertes Bedienfeld](../../azure-portal/quickstart-portal-dashboard-azure-cli.md) im Portal haben, das auf eine Ressourcen-ID verweist, müssen Sie diesen Wert aktualisieren. Suchen Sie nach allen Skripten oder Vorlagen, die für die neue Ressourcen-ID aktualisiert werden müssen.
 
 ## <a name="checklist-before-moving-resources"></a>Checkliste vor dem Verschieben von Ressourcen
 
@@ -34,8 +40,9 @@ Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt
    * [Move guidance for networking resources](./move-limitations/networking-move-limitations.md) (Anleitung zum Verschieben von Netzwerkressourcen)
    * [Anleitung zum Verschieben von Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Anleitung zum Verschieben von Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
+   * Informationen zum Verschieben eines Azure-Abonnements in eine neue Verwaltungsgruppe finden Sie unter [Verschieben von Abonnements](../../governance/management-groups/manage.md#move-subscriptions).
 
-1. Wenn Sie eine Ressource verschieben, der (oder einer dieser untergeordneten Ressource) eine Azure-Rolle direkt zugewiesen wurde, wird die Rollenzuweisung nicht verschoben und verwaist. Nach der Verschiebung müssen Sie die Rollenzuweisung erneut erstellen. Schließlich wird die verwaiste Rollenzuweisung automatisch entfernt, doch es ist eine bewährte Methode, die Rollenzuweisung vor dem Verschieben der Ressource zu entfernen.
+1. Wenn Sie eine Ressource verschieben, der eine Azure-Rolle direkt zugewiesen ist (oder eine untergeordnete Ressource), wird die Rollenzuweisung nicht verschoben und verwaist. Nach der Verschiebung müssen Sie die Rollenzuweisung erneut erstellen. Letztendlich wird die verwaiste Rollenzuweisung automatisch entfernt, wir empfehlen jedoch, die Rollenzuweisung vor dem Verschieben zu entfernen.
 
     Informationen zum Verwalten von Rollenzuweisungen finden Sie unter [Auflisten von Azure-Rollenzuweisungen](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) und [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
@@ -117,7 +124,7 @@ Der Einfachheit halber verwenden wir hier nur eine abhängige Ressource.
 
 ## <a name="validate-move"></a>Überprüfen der Verschiebung
 
-Der [Vorgang zum Überprüfen der Verschiebung](/rest/api/resources/resources/validatemoveresources) ermöglicht Ihnen, Ihr Verschiebungsszenario zu testen, ohne tatsächlich Ressourcen zu verschieben. Verwenden Sie diesen Vorgang, um zu überprüfen, ob die Verschiebung erfolgreich sein wird. Die Überprüfung wird automatisch aufgerufen, wenn Sie eine Verschiebeanforderung senden. Verwenden Sie diesen Vorgang nur, wenn Sie die Ergebnisse vorab bestimmen müssen. Um diesen Vorgang ausführen zu können, benötigen Sie Folgendes:
+Der [Vorgang zum Überprüfen der Verschiebung](/rest/api/resources/resources/moveresources) ermöglicht Ihnen, Ihr Verschiebungsszenario zu testen, ohne tatsächlich Ressourcen zu verschieben. Verwenden Sie diesen Vorgang, um zu überprüfen, ob die Verschiebung erfolgreich sein wird. Die Überprüfung wird automatisch aufgerufen, wenn Sie eine Verschiebeanforderung senden. Verwenden Sie diesen Vorgang nur, wenn Sie die Ergebnisse vorab bestimmen müssen. Um diesen Vorgang ausführen zu können, benötigen Sie Folgendes:
 
 * Name der Quellressourcengruppe
 * Ressourcen-ID der Zielressourcengruppe
@@ -234,7 +241,7 @@ Wenn ein Fehler auftritt, lesen Sie [Problembehandlung beim Verschieben von Azur
 
 ## <a name="use-rest-api"></a>REST-API
 
-Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Vorgang zum [Verschieben von Ressourcen](/rest/api/resources/Resources/MoveResources).
+Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Vorgang zum [Verschieben von Ressourcen](/rest/api/resources/resources/moveresources).
 
 ```HTTP
 POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version}
@@ -259,7 +266,7 @@ Das Verschieben einer Ressource ist ein komplexer Vorgang, der in verschiedenen 
 
 **Frage: Warum ist meine Ressourcengruppe während der Ressourcenverschiebung vier Stunden lang gesperrt?**
 
-Eine Verschiebeanforderung darf maximal vier Stunden dauern. Um Änderungen an den Ressourcen zu verhindern, die gerade verschoben werden, werden sowohl die Quell- als auch die Zielressourcengruppe für die Dauer der Ressourcenverschiebung gesperrt.
+Eine Verschiebeanforderung darf maximal vier Stunden dauern. Um Änderungen an den zu verschiebenden Ressourcen zu verhindern, werden sowohl die Quell- als auch die Zielressourcengruppe während der Ressourcenverschiebung gesperrt.
 
 Es gibt zwei Phasen bei einer Verschiebeanforderung. In der ersten Phase wird die Ressource verschoben. In der zweiten Phase werden Benachrichtigungen an andere Ressourcenanbieter gesendet, die von der Ressource abhängen, die verschoben wird. Eine Ressourcengruppe kann für das gesamte Zeitfenster von vier Stunden gesperrt werden, wenn ein Ressourcenanbieter in einer der beiden Phasen fehlschlägt. Während des gewährten Zeitraums versucht Resource Manager, den fehlgeschlagenen Schritt zu wiederholen.
 

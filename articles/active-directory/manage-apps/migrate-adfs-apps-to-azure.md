@@ -12,10 +12,10 @@ ms.date: 03/01/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.openlocfilehash: ee1d863ccb974b30213179a1aba9e27d5a3a2bda
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103418350"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory
@@ -29,7 +29,7 @@ ms.locfileid: "103418350"
 
 Wenn Sie über ein lokales Verzeichnis verfügen, das Benutzerkonten enthält, haben Sie wahrscheinlich viele Anwendungen, bei denen sich Benutzer authentifizieren. Jede dieser Apps ist so konfiguriert, dass Benutzer mit ihren Identitäten darauf zugreifen können.
 
-Benutzer können sich auch direkt bei Ihrem lokalen Active Directory authentifizieren. Active Directory-Verbunddienste (AD FS) sind ein auf Standards basierender lokaler Identitätsdienst. Durch diesen Dienst wird die Möglichkeit erweitert, die Funktion für das einmalige Anmelden (Single Sign-on, SSO) für vertrauenswürdige Geschäftspartnern zu verwenden, ohne dass sich Benutzer separat bei jeder Anwendung anmelden müssen. Dies wird als Verbundidentität bezeichnet.
+Benutzer können sich auch direkt bei Ihrem lokalen Active Directory authentifizieren. Active Directory-Verbunddienste (AD FS) ist ein auf Standards basierender lokaler Identitätsdienst. Durch diesen Dienst wird die Möglichkeit erweitert, die Funktion für das einmalige Anmelden (Single Sign-on, SSO) für vertrauenswürdige Geschäftspartnern zu verwenden, ohne dass sich Benutzer separat bei jeder Anwendung anmelden müssen. Dies wird als Verbundidentität bezeichnet.
 
 Viele Organisationen nutzen SaaS- oder LOB-Apps (Software-as-a-Service bzw. Line-of-Business) direkt im Verbund von AD FS zusammen mit auf Microsoft 365 und Azure AD basierenden Apps.
 
@@ -46,7 +46,7 @@ Das Migrieren Ihrer gesamten Anwendungsauthentifizierung zu Azure AD ist optimal
 
 Ihre Anwendungen können moderne oder ältere Protokolle für die Authentifizierung verwenden. Wenn Sie die Migration zu Azure AD planen, empfiehlt es sich, zunächst die Apps zu migrieren, die moderne Authentifizierungsprotokolle (SAML und Open ID Connect) verwenden. Diese Apps können für die Authentifizierung mit Azure AD entweder über einen integrierten Connector aus dem App-Katalog oder durch Registrieren der Anwendung in Azure AD neu konfiguriert werden. Apps, die ältere Protokolle verwenden, können mit Anwendungsproxys integriert werden.
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 * [Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy](what-is-application-proxy.md)
 * [Worum handelt es sich bei der Anwendungsverwaltung?](what-is-application-management.md)

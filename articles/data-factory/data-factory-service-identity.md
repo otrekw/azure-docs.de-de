@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über die verwaltete Identität für Azure Data F
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 03/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 89da1a22bb3fd0eff22a7bed7ed70b72f220fbf9
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 65512f8e46b5545929a798392ac5f19ddeab39ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888990"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562459"
 ---
 # <a name="managed-identity-for-data-factory"></a>Verwaltete Identität für Data Factory
 
@@ -28,8 +28,7 @@ Wenn Sie eine Data Factory erstellen, kann beim Erstellen der Factory auch eine 
 Die verwaltete Identität für Data Factory profitiert von den folgenden Features:
 
 - [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md): In diesem Fall wird die verwaltete Identität für Data Factory für die Azure Key Vault-Authentifizierung verwendet.
-- Connectors wie z. B. [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL-Datenbank](connector-azure-sql-database.md) und [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md).
-- [Webaktivität](control-flow-web-activity.md).
+- Greifen Sie mit verwalteter Identitätsauthentifizierung auf Datenspeicher oder Berechnungen zu, einschließlich Azure Blob Storage, Azure Data Explorer, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database, Azure SQL Managed Instance, Azure Synapse Analytics, REST, Databricks-Aktivität, Web-Aktivität und mehr. Überprüfen Sie die Anschluss- und Aktivitätsartikel für Details.
 
 ## <a name="generate-managed-identity"></a>Generieren einer verwalteten Identität
 
@@ -157,11 +156,10 @@ Sie finden die Informationen zur verwalteten Identität im Azure-Portal unter �
 
 - Objekt-ID der verwalteten Identität
 - Mandant der verwalteten Identität
-- Anwendungs-ID der verwalteten Identität
 
 Die Informationen zur verwalteten Identität werden auch angezeigt, wenn Sie einen verknüpften Dienst erstellen, der die Authentifizierung der verwalteten Identität unterstützt, z. B. Azure-Blob, Azure Data Lake Storage, Azure Key Vault usw.
 
-Wenn Sie eine Berechtigung erteilen, verwenden Sie die Objekt-ID oder den Data Factory-Namen (als Name der verwalteten Identität) zur Ermittlung dieser Identität.
+Wenn Sie eine Berechtigung erteilen, wählen Sie in der Azure-Ressource auf der Registerkarte Zugriffskontrolle (IAM) -> Rollenzuweisung hinzufügen -> Zugriff zuweisen zu -> wählen Sie Data Factory unter System zugewiesene verwaltete Identität -> wählen Sie nach Fabrikname; oder im Allgemeinen können Sie die Objekt-ID oder den Datenfabriknamen (als verwalteten Identitätsnamen) verwenden, um diese Identität zu finden. Wenn Sie die Anwendungs-ID der verwalteten Identität abrufen müssen, können Sie PowerShell verwenden.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Abrufen der verwalteten Identität mit PowerShell
 

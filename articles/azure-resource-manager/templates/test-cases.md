@@ -2,15 +2,15 @@
 title: Testfälle für das Testtoolkit
 description: Beschreibt die Tests, die vom Resource Manager-Vorlagen-Testtoolkit ausgeführt werden.
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 04/12/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7805d6dbdb8b93968a2792ed6dfaf2ac8fea9ae5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064143"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363392"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Standardtestfälle für das Resource Manager-Vorlagen-Testtoolkit
 
@@ -637,7 +637,7 @@ Im folgenden Beispiel ist der Test **erfolgreich**.
 
 Testname: **ManagedIdentityExtension must not be used**
 
-Wenden Sie die ManagedIdentity-Erweiterung nicht auf eine VM an. Weitere Informationen finden Sie unter [Umsteigen von der VM-Erweiterung für verwaltete Identitäten auf Azure Instance Metadata Service](../../active-directory/managed-identities-azure-resources/howto-migrate-vm-extension.md).
+Wenden Sie die ManagedIdentity-Erweiterung nicht auf eine VM an. Die Erweiterung wurde 2019 eingestellt und sollte nicht mehr verwendet werden.
 
 ## <a name="outputs-cant-include-secrets"></a>Keine Geheimnisse in Ausgaben
 

@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
 ms.openlocfilehash: c30077d0d8f359e93745b53755f9dae998073d4d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936905"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Fehler beim Starten von Apache HBase Master (HMaster) in Azure HDInsight
@@ -27,9 +27,9 @@ Im Rahmen des Startvorgangs führt HMaster verschiedene Initialisierungsschritte
 
 HMaster führt einen einfachen list-Befehl für die WAL-Ordner aus. Findet HMaster zu einem beliebigen Zeitpunkt eine unerwartete Datei in einem dieser Ordner, wird eine Ausnahme ausgelöst und kein Start ausgeführt.
 
-### <a name="resolution"></a>Auflösung
+### <a name="resolution"></a>Lösung
 
-Überprüfen Sie die Aufrufliste und versuchen Sie festzustellen, welcher Ordner das Problem verursachen könnte (dies können beispielsweise der WAL-Ordner oder der TMP-Ordner sein). Versuchen Sie anschließend im Cloud-Explorer oder mithilfe von HDFS-Befehlen die problematische Datei zu lokalisieren. Im Allgemeinen handelt es sich dabei um eine `*-renamePending.json`-Datei. (Die `*-renamePending.json`-Datei ist eine Journaldatei, mit welcher der Vorgang der atomischen Umbenennung im WASB-Treiber implementiert wird. Aufgrund von Fehlern in dieser Implementierung können derartige Dateien nach Prozessabstürzen usw. weiterhin vorhanden sein.) Erzwingen Sie die Löschung dieser Datei im Cloud-Explorer oder durch Ausführen von HDFS-Befehlen.
+Überprüfen Sie die Aufrufliste und versuchen Sie festzustellen, welcher Ordner das Problem verursachen könnte (dies können beispielsweise der WAL-Ordner oder der TMP-Ordner sein). Versuchen Sie anschließend im Cloud-Explorer oder mithilfe von HDFS-Befehlen die problematische Datei zu lokalisieren. Im Allgemeinen handelt es sich dabei um eine `*-renamePending.json`-Datei. (Die `*-renamePending.json`-Datei ist eine Journaldatei, mit welcher der Vorgang der atomischen Umbenennung im WASB-Treiber implementiert wird. Aufgrund von Fehlern in dieser Implementierung können diese Dateien nach Prozessabstürzen, usw., übrig bleiben). Erzwingen Sie das Löschen dieser Datei entweder im Cloud Explorer oder mittels HDFS-Befehlen.
 
 Gelegentlich kann an diesem Speicherort auch eine temporäre Datei mit einem Namen wie `$$$.$$$` vorhanden sein. Sie müssen den HDFS-Befehl `ls` verwenden, um diese Datei anzuzeigen; im Cloud-Explorer wird die Datei nicht angezeigt. Führen Sie zum Löschen dieser Datei den HDFS-Befehl `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$` aus.
 
@@ -47,7 +47,7 @@ Möglicherweise wird eine Meldung angezeigt, die besagt, dass die `hbase: meta`-
 
 HMaster konnte nach einem HBase-Neustart nicht initialisiert werden.
 
-### <a name="resolution"></a>Auflösung
+### <a name="resolution"></a>Lösung
 
 1. Geben Sie in der HBase-Shell die folgenden Befehle ein (ändern Sie ggf. die Istwerte):
 
@@ -78,7 +78,7 @@ Für HMaster tritt ein Timeout mit einer schwerwiegenden Ausnahme wie `java.io.I
 
 Dieses Problem kann auftreten, wenn viele Tabellen und Regionen vorhanden sind, die beim Neustart der HMaster-Dienste nicht geleert wurden. Das Timeout ist ein bekannter HMaster-Fehler. Allgemeine Cluster-Startaufgaben können sehr lange dauern. HMaster wird heruntergefahren, wenn die Namespacetabelle noch nicht zugewiesen ist. Die langwierigen Starttasks treten auf, wenn eine große Menge an nicht geleerten Daten vorhanden und ein Zeitlimit von fünf Minuten nicht ausreichend ist.
 
-### <a name="resolution"></a>Auflösung
+### <a name="resolution"></a>Lösung
 
 1. Wechseln Sie auf der Apache Ambari-Benutzeroberfläche zu **HBase** > **Configs**. Fügen Sie in der benutzerdefinierten Datei `hbase-site.xml` die folgende Einstellung hinzu:
 
@@ -106,7 +106,7 @@ Knoten werden regelmäßig neu gestartet. Die Regionsserverprotokolle enthalten 
 
 Lange Unterbrechung der JVM-GC von `regionserver`. Die Pause führt dazu, dass `regionserver` nicht mehr reagiert und innerhalb des ZooKeeper-Sitzungstimeouts von 40 Sekunden keinen Heartbeat an HMaster senden kann. HMaster stuft `regionserver` als inaktiv ein, bricht `regionserver` ab, und führt einen Neustart aus.
 
-### <a name="resolution"></a>Auflösung
+### <a name="resolution"></a>Lösung
 
 Ändern Sie das ZooKeeper-Sitzungstimeout. Hierzu muss nicht nur die `hbase-site`-Einstellung `zookeeper.session.timeout`, sondern auch die `zoo.cfg`-Einstellung `maxSessionTimeout` von ZooKeeper geändert werden.
 
@@ -132,7 +132,7 @@ Fehler beim Starten von HMaster in einem HBase-Cluster.
 
 Falsch konfigurierte HDFS- und HBase-Einstellungen für ein sekundäres Speicherkonto.
 
-### <a name="resolution"></a>Auflösung
+### <a name="resolution"></a>Lösung
 
 Legen Sie „hbase.rootdir: wasb://@.blob.core.windows.net/hbase“ fest, und starten Sie die Dienste über Ambari neu.
 

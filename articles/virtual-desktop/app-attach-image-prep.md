@@ -1,25 +1,21 @@
 ---
-title: 'Vorbereiten eines MSIX App Attach-Images für Windows Virtual Desktop (Vorschau): Azure'
+title: Vorbereiten eines MSIX App Attach-Images für Windows Virtual Desktop – Azure
 description: Erfahren Sie, wie Sie ein MSIX App Attach-Image für einen Windows Virtual Desktop-Hostpool erstellen.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a2d909d04c38a7d6bad42020175cbbbfcfd7bf9f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 443f117907381862639564dfbf9752562f4a3564
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448354"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363664"
 ---
 # <a name="prepare-an-msix-image-for-windows-virtual-desktop"></a>Vorbereiten eines MSIX-Images für Windows Virtual Desktop
 
-> [!IMPORTANT]
-> Das MSIX-Features zum Anfügen von Apps befindet sich zurzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-MSIX App Attach (Vorschau) ist eine Lösung für Anwendungsschichten, mit der Sie Apps dynamisch aus einem MSIX-Paket an eine Benutzersitzung anfügen können. Das MSIX-Paketsystem trennt Apps vom Betriebssystem und vereinfacht so das Erstellen von Images für VMs. Mit MSIX-Paketen haben Sie auch mehr Kontrolle darüber, auf welche Apps Benutzer auf ihren VMs zugreifen können. Sie können sogar Apps vom Masterimage abtrennen und erst später an die Benutzer übergeben.
+MSIX App Attach ist eine Lösung für Anwendungsschichten, mit der Sie Apps aus einem MSIX-Paket dynamisch an eine Benutzersitzung anfügen können. Das MSIX-Paketsystem trennt Apps vom Betriebssystem und vereinfacht so das Erstellen von Images für VMs. Mit MSIX-Paketen haben Sie auch mehr Kontrolle darüber, auf welche Apps Benutzer auf ihren VMs zugreifen können. Sie können sogar Apps vom Masterimage abtrennen und erst später an die Benutzer übergeben.
 
 ## <a name="create-a-vhd-or-vhdx-package-for-msix"></a>Erstellen von VHD- oder VHDX-Paketen für MSIX
 

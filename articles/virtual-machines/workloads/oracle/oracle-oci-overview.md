@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: kegorman
-ms.openlocfilehash: b27db94775e2ba8275dbdab4bf5bd61cc0fdf5c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04a3fb9e4e7dd1d498714cd3b2ebd4c5f6b55bec
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666869"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210345"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle-Anwendungslösungen mit Integration von Microsoft Azure und Oracle Cloud Infrastructure
 
@@ -50,6 +50,8 @@ Die cloudübergreifende Konnektivität ist auf folgende Regionen beschränkt:
 * Azure „Europa, Westen“ (WestEurope) und OCI „Amsterdam“ (Niederlande, Nordwesten)
 * Azure „Japan, Osten“ (JapanEast) und OCI „Tokyo“ (Japan, Osten)
 * Azure „USA, Wesen“ (WestUS) und OCI „San Jose“ (USA, Westen)
+* „Deutschland, Westen-Mitte“ (Frankfurt) und OCI „Deutschland, Mitte“ (Frankfurt)
+
 
 ## <a name="networking"></a>Netzwerk
 

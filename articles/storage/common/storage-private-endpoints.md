@@ -3,19 +3,19 @@ title: Verwenden privater Endpunkte
 titleSuffix: Azure Storage
 description: Übersicht über private Endpunkte für den sicheren Zugriff auf Speicherkonten über virtuelle Netzwerke.
 services: storage
-author: santoshc
+author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.author: santoshc
+ms.date: 03/16/2021
+ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4ee0b71b63735d8417c11cba8d2a551c8da8b47f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 3fcc58f626622bcc728265e782906226859e1bf9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564287"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104600461"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Verwenden privater Endpunkte für Azure Storage
 
@@ -53,22 +53,27 @@ Sie können Ihr Speicherkonto schützen, indem nur Verbindungen über das VNET a
 
 ## <a name="creating-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
 
+Informationen zum Erstellen eines privaten Endpunkts über das Azure-Portal finden Sie [unter Privat mit einem Speicherkonto verbinden über die Speicherkonto-Erfahrung im Azure-Portal](../../private-link/tutorial-private-endpoint-storage-portal.md).
+
+Wie Sie einen privaten Endpunkt mithilfe von PowerShell oder der Azure-CLI erstellen, erfahren Sie in einem dieser Artikel. Bei beiden ist eine Azure-Web-App der Zieldienst, die Schritte zum Erstellen einer privaten Verknüpfung sind jedoch die gleichen für ein Azure-Storage-Konto.
+
+- [Erstellen eines privaten Endpunkts mit Azure CLI](../../private-link/create-private-endpoint-cli.md)
+
+- [Erstellen eines privaten Endpunkts mit Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
+
+
+
 Wenn Sie einen privaten Endpunkt erstellen, müssen Sie das Speicherkonto und den Speicherdienst angeben, mit dem eine Verbindung hergestellt wird. 
 
-Sie benötigen einen separaten privaten Endpunkt für jede Speicherressource, auf die Sie zugreifen müssen. Dies sind [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Dateien](../files/storage-files-introduction.md), [Warteschlangen](../queues/storage-queues-introduction.md), [Tabellen](../tables/table-storage-overview.md) oder [statische Websites](../blobs/storage-blob-static-website.md). Wenn Sie einen privaten Endpunkt für die Speicherressource „Data Lake Storage Gen2“ erstellen, sollten Sie auch einen für die Ressource „Blob Storage“ erstellen. Der Grund: Vorgänge, deren Ziel der Endpunkt „Data Lake Storage Gen2“ ist, werden möglicherweise an den Endpunkt „Blob“ umgeleitet. Durch das Erstellen eines privaten Endpunkts für beide Ressourcen sorgen Sie dafür, dass Vorgänge erfolgreich abgeschlossen werden können.
+Sie benötigen einen separaten privaten Endpunkt für jede Speicherressource, auf die Sie zugreifen müssen. Dies sind [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Dateien](../files/storage-files-introduction.md), [Warteschlangen](../queues/storage-queues-introduction.md), [Tabellen](../tables/table-storage-overview.md) oder [statische Websites](../blobs/storage-blob-static-website.md). Für den privaten Endpunkt sind diese Speicherdienste als **untergeordnete Zielressourcen** des zugeordneten Speicherkontos definiert. 
+
+Wenn Sie einen privaten Endpunkt für die Speicherressource „Data Lake Storage Gen2“ erstellen, sollten Sie auch einen für die Ressource „Blob Storage“ erstellen. Der Grund: Vorgänge, deren Ziel der Endpunkt „Data Lake Storage Gen2“ ist, werden möglicherweise an den Endpunkt „Blob“ umgeleitet. Durch das Erstellen eines privaten Endpunkts für beide Ressourcen sorgen Sie dafür, dass Vorgänge erfolgreich abgeschlossen werden können.
 
 > [!TIP]
 > Erstellen Sie einen separaten privaten Endpunkt für die sekundäre Instanz des Speicherdiensts, um die Leseleistung für RA-GRS-Konten zu verbessern.
 > Erstellen Sie unbedingt ein Speicherkonto (Standard oder Premium) vom Typ „Universell v2 (GPv2)“.
 
 Für Lesezugriff auf die sekundäre Region mit einem Speicherkonto, das für georedundanten Speicher konfiguriert ist, benötigen Sie separate private Endpunkte sowohl für die primäre als auch die sekundäre Instanz des Diensts. Sie müssen für ein **Failover** keinen privaten Endpunkt für die sekundäre Instanz erstellen. Der private Endpunkt stellt nach einem Failover automatisch eine Verbindung mit der neuen primären Instanz her. Weitere Informationen zu den Speicherredundanzoptionen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
-
-Ausführlichere Informationen zum Erstellen eines privaten Endpunkts für das Speicherkonto finden Sie in den folgenden Artikeln:
-
-- [Herstellen einer privaten Verbindung mit einem Speicherkonto über die Benutzeroberfläche für Speicherkonten im Azure-Portal](../../private-link/tutorial-private-endpoint-storage-portal.md)
-- [Erstellen eines privaten Endpunkts über das Private Link Center im Azure-Portal](../../private-link/create-private-endpoint-portal.md)
-- [Erstellen eines privaten Endpunkts mit Azure CLI](../../private-link/create-private-endpoint-cli.md)
-- [Erstellen eines privaten Endpunkts mit Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
 
 <a id="connecting-to-private-endpoints"></a>
 
@@ -111,16 +116,16 @@ Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müss
 > [!TIP]
 > Wenn Sie einen benutzerdefinierten oder lokalen DNS-Server verwenden, sollten Sie ihn so konfigurieren, dass der Speicherkontoname in der Unterdomäne `privatelink` in die IP-Adresse des privaten Endpunkts aufgelöst wird. Hierzu können Sie die Unterdomäne `privatelink` an die private DNS-Zone des VNET delegieren oder die DNS-Zone auf dem DNS-Server konfigurieren und die DNS-A-Einträge hinzufügen.
 
-Die empfohlenen DNS-Zonennamen für private Endpunkte für die Speicherdienste lauten wie folgt:
+Die empfohlenen DNS-Zonennamen der privaten Endpunkte für die Speicherdienste und die verknüpften untergeordneten Zielressourcen der Endpunkte lauten wie folgt:
 
-| Speicherdienst        | Zonenname                            |
-| :--------------------- | :----------------------------------- |
-| Blob-Dienst           | `privatelink.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
-| Dateidienst           | `privatelink.file.core.windows.net`  |
-| Warteschlangendienst          | `privatelink.queue.core.windows.net` |
-| Tabellenspeicherdienst          | `privatelink.table.core.windows.net` |
-| Statische Websites        | `privatelink.web.core.windows.net`   |
+| Speicherdienst        | Zielunterressource | Zonenname                            |
+| :--------------------- | :------------------ | :----------------------------------- |
+| Blob-Dienst           | Blob                | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage Gen2 | DFS                 | `privatelink.dfs.core.windows.net`   |
+| Dateidienst           | file                | `privatelink.file.core.windows.net`  |
+| Warteschlangendienst          | queue               | `privatelink.queue.core.windows.net` |
+| Tabellenspeicherdienst          | table               | `privatelink.table.core.windows.net` |
+| Statische Websites        | Web-                 | `privatelink.web.core.windows.net`   |
 
 Weitere Informationen zum Konfigurieren des eigenen DNS-Servers für die Unterstützung privater Endpunkte finden Sie in den folgenden Artikeln:
 
@@ -137,13 +142,19 @@ Beachten Sie die folgenden bekannten Probleme im Zusammenhang mit privaten Endpu
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Einschränkungen beim Speicherzugriff für Clients in VNETs mit privaten Endpunkten
 
-Für Clients in VNETs mit vorhandenen privaten Endpunkten bestehen Einschränkungen beim Zugriff auf andere Speicherkonten mit privaten Endpunkten. Angenommen, das VNET N1 verfügt über einen privaten Endpunkt für das Speicherkonto A1 für Blobspeicher. Wenn nun das Speicherkonto A2 über einen privaten Endpunkt im VNET N2 für Blobspeicher verfügt, müssen Clients im VNET N1 auch auf Blobspeicher im Konto A2 über einen privaten Endpunkt zugreifen. Hat das Speicherkonto A2 keine privaten Endpunkte für Blobspeicher, können Clients im VNET N1 ohne privaten Endpunkt auf Blobspeicher in diesem Konto zugreifen.
+Für Clients in VNETs mit vorhandenen privaten Endpunkten bestehen Einschränkungen beim Zugriff auf andere Speicherkonten mit privaten Endpunkten. Nehmen wir zum Beispiel an, ein VNet N1 verfügt über einen privaten Endpunkt für ein Speicherkonto A1 für die Blob-Speicherung. Wenn nun das Speicherkonto A2 über einen privaten Endpunkt im VNET N2 für Blobspeicher verfügt, müssen Clients im VNET N1 auch auf Blobspeicher im Konto A2 über einen privaten Endpunkt zugreifen. Hat das Speicherkonto A2 keine privaten Endpunkte für Blobspeicher, können Clients im VNET N1 ohne privaten Endpunkt auf Blobspeicher in diesem Konto zugreifen.
 
 Diese Einschränkung ist die Folge der DNS-Änderungen, die vorgenommen werden, wenn Konto A2 einen privaten Endpunkt erstellt.
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Netzwerksicherheitsgruppen-Regeln für Subnetze mit privaten Endpunkten
 
 Derzeit können keine [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md)-Regeln und benutzerdefinierten Routen für private Endpunkte konfiguriert werden. Netzwerksicherheitsgruppen-Regeln, die auf das Subnetz angewendet werden, das den privaten Endpunkt hostet, werden nicht auf den privaten Endpunkt angewendet. Sie werden nur auf andere Endpunkte angewendet (z. B. Netzwerkschnittstellencontroller). Eine eingeschränkte Umgehung dieses Problems ist das Implementieren Ihrer Zugriffsregeln für private Endpunkte in den Quellsubnetzen, obwohl dieser Ansatz möglicherweise einen höheren Verwaltungsaufwand erfordert.
+
+### <a name="copying-blobs-between-storage-accounts"></a>Kopieren von Blobs zwischen Speicherkonten
+
+Sie können Blobs zwischen Speicherkonten über private Endpunkte nur kopieren, wenn Sie die Azure-REST-API oder Tools verwenden, bei denen die REST-API verwendet wird. Zu diesen Tools gehören AzCopy, Storage-Explorer, Azure PowerShell, die Azure-Befehlszeilenschnittstelle und die Azure Blob Storage-SDKs. 
+
+Nur private Endpunkte mit der Blob Storage-Ressource als Ziel werden unterstützt. Private Endpunkte mit Data Lake Storage Gen2 oder der Dateiressource als Ziel werden noch nicht unterstützt. Außerdem wird das Kopieren zwischen Speicherkonten über das NFS-Protokoll (Network File System) noch nicht unterstützt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

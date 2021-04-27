@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: dd33972810ab3b0d51bbd82282d0e6cf6cd9d96c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104868663"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError-Ausnahmen für Apache Spark in Azure HDInsight
@@ -53,11 +53,11 @@ java.lang.OutOfMemoryError
 
 Die wahrscheinlichste Ursache dieser Ausnahme besteht darin, dass den Java Virtual Machines (JVMs) kein ausreichender Heapspeicher zugeordnet ist. Diese JVMs werden als Executors oder Treiber im Rahmen der Apache Spark-Anwendung gestartet.
 
-### <a name="resolution"></a>Auflösung
+### <a name="resolution"></a>Lösung
 
 1. Ermitteln Sie die maximale Größe der Daten, die von die Spark-Anwendung verarbeitet werden. Schätzen Sie die Größe basierend auf der maximalen Größe der Eingabedaten, den bei der Transformation der Eingabedaten erzeugten Zwischendaten und den erzeugten Ausgabedaten, mit denen die Zwischendaten weiter transformiert werden. Wenn die anfängliche Schätzung nicht ausreichend ist, sollten Sie die Größe um einen geringen Wert erhöhen und diesen Vorgang wiederholen, bis die Arbeitsspeicherfehler nicht mehr angezeigt werden.
 
-1. Stellen Sie sicher, dass der zu verwendende HDInsight-Cluster über genügend Ressourcen im Hinblick auf Arbeitsspeicher und Kerne verfügt, um die Spark-Anwendung auszuführen. Dazu zeigen Sie den Abschnitt mit Clustermetriken der YARN-Benutzeroberfläche des Clusters an und vergleichen die Werte von **Verwendeter Arbeitsspeicher** mit **Gesamtspeicher** und die von **VCores Used** (Verwendete virtuelle Kerne) mit **VCores Total** (VCores insgesamt) betrachten.
+1. Stellen Sie sicher, dass der zu verwendende HDInsight-Cluster über genügend Ressourcen im Hinblick auf Arbeitsspeicher und Kerne verfügt, um die Spark-Anwendung auszuführen. Dies lässt sich feststellen, indem man im Abschnitt Cluster-Metriken der YARN UI des Clusters die Werte von **Memory Used** vs. **Memory Total** und **VCores Used** vs. **VCores Total** betrachtet.
 
     :::image type="content" source="./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png" alt-text="Ansicht des YARN Core-Arbeitsspeichers" border="true":::
 
@@ -111,7 +111,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Auflösung
+### <a name="resolution"></a>Lösung
 
 Sie können den Arbeitsspeicher des Spark-Verlaufsservers erhöhen, indem Sie in der Spark-Konfiguration die `SPARK_DAEMON_MEMORY`-Eigenschaft bearbeiten und alle Dienste neu starten.
 
@@ -197,7 +197,7 @@ Wenn der Livy-Server unerwartet beendet wird, werden auch alle Verbindungen mit 
 
 Wenn über Livy eine große Anzahl von Aufträgen übermittelt wird, werden die Sitzungszustände im Rahmen der Hochverfügbarkeit für den Livy-Server in ZooKeeper (in HDInsight-Clustern) gespeichert und wiederhergestellt, wenn der Livy-Dienst neu gestartet wird. Im Falle eines Neustarts nach unerwarteter Beendigung erstellt Livy jeweils einen Thread pro Sitzung. Hierdurch ergibt sich eine bestimmte Anzahl wiederherzustellender Sitzungen, was wiederum zur Erstellung einer zu großen Zahl von Threads führt.
 
-### <a name="resolution"></a>Auflösung
+### <a name="resolution"></a>Lösung
 
 Führen Sie die im Anschluss beschriebenen Schritte aus, um alle Einträge zu löschen.
 

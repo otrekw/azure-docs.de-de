@@ -11,10 +11,10 @@ ms.date: 1/31/2021
 ms.author: amberz
 ms.co-author: Donnana
 ms.openlocfilehash: 45cd44cc0678b7f3a006a88bf66be2bca091af76
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104595378"
 ---
 # <a name="process-data-from-automated-machine-learning-models-by-using-data-flows"></a>Verarbeiten von Daten aus Modellen für das automatisierte maschinelle Lernen mithilfe von Datenflüssen
@@ -72,7 +72,7 @@ Angenommen, Sie möchten Daten mit einer Zeilenanzahl kleiner als zwei entfernen
 
     ![Screenshot der Konfiguration der Aggregataktivität zum Abrufen der Zeilenanzahl](./media/scenario-dataflow-process-data-aml-models/aggregate-activity-addrowcount.png)
 
-1. Wählen Sie mithilfe der Senkenaktivität auf der Registerkarte **Senke** für **Senkentyp** die Option **Cache** aus. Wählen Sie anschließend auf der Registerkarte **Einstellungen** in der Dropdownliste **Schlüsselspalten** die gewünschte Spalte aus.
+1. Indem Sie die Senk-Aktivität verwenden, wählen Sie den **Senk-Typ** als **Cache** auf der Registerkarte **Senken** aus. Wählen Sie dann die gewünschte Spalte aus der **Schlüsselspalten**-Dropdown-Liste auf der **Einstellungen**-Registerkarte aus.
 
     ![Screenshot der Konfiguration der CacheSink-Aktivität zum Abrufen der Zeilenanzahl in einer Cachesenke](./media/scenario-dataflow-process-data-aml-models/cachesink-activity-addrowcount.png)
 

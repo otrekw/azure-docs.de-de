@@ -1,14 +1,14 @@
 ---
 title: Schützen der Ressourcenhierarchie – Azure Governance
 description: Erfahren Sie, wie Sie Ihre Ressourcenhierarchie mit Hierarchieeinstellungen schützen, unter anderem durch Festlegen der Standardverwaltungsgruppe.
-ms.date: 02/05/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0f0afb5401fc646d26598a211604790af191f156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11c20ccf5aff74d810533cd56e0a7b116f2dc64b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594585"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303643"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Schützen der Ressourcenhierarchie
 
@@ -50,7 +50,7 @@ Führen Sie die folgenden Schritte aus, um diese Einstellung im Azure-Portal zu 
 
 ### <a name="set-default-management-group-with-rest-api"></a>Festlegen der Standardverwaltungsgruppe mit der REST-API
 
-Zum Konfigurieren dieser Einstellung mit der REST-API wird der Endpunkt mit den [Hierarchieeinstellungen](/rest/api/resources/hierarchysettings) aufgerufen. Verwenden Sie hierzu den folgenden REST-API-URI und das folgende Textformat. Ersetzen Sie `{rootMgID}` durch die ID der Stammverwaltungsgruppe und `{defaultGroupID}` durch die ID der Verwaltungsgruppe, die zur Standardverwaltungsgruppe werden soll:
+Zum Konfigurieren dieser Einstellung mit der REST-API wird der Endpunkt mit den [Hierarchieeinstellungen](/rest/api/managementgroups/hierarchysettings) aufgerufen. Verwenden Sie hierzu den folgenden REST-API-URI und das folgende Textformat. Ersetzen Sie `{rootMgID}` durch die ID der Stammverwaltungsgruppe und `{defaultGroupID}` durch die ID der Verwaltungsgruppe, die zur Standardverwaltungsgruppe werden soll:
 
 - REST-API-URI
 
@@ -91,7 +91,7 @@ Führen Sie die folgenden Schritte aus, um diese Einstellung im Azure-Portal zu 
 
 ### <a name="set-require-authorization-with-rest-api"></a>Festlegen einer erforderlichen Autorisierung mit der Rest-API
 
-Zum Konfigurieren dieser Einstellung mit der REST-API wird der Endpunkt mit den [Hierarchieeinstellungen](/rest/api/resources/hierarchysettings) aufgerufen. Verwenden Sie hierzu den folgenden REST-API-URI und das folgende Textformat. Bei diesem Wert handelt es sich um einen _booleschen_ Wert. Geben Sie daher entweder **true** oder **false** für den Wert an. Mit dem Wert **true** wird folgende Methode zum Schutz der Verwaltungsgruppenhierarchie aktiviert:
+Zum Konfigurieren dieser Einstellung mit der REST-API wird der Endpunkt mit den [Hierarchieeinstellungen](/rest/api/managementgroups/hierarchysettings) aufgerufen. Verwenden Sie hierzu den folgenden REST-API-URI und das folgende Textformat. Bei diesem Wert handelt es sich um einen _booleschen_ Wert. Geben Sie daher entweder **true** oder **false** für den Wert an. Mit dem Wert **true** wird folgende Methode zum Schutz der Verwaltungsgruppenhierarchie aktiviert:
 
 - REST-API-URI
 
@@ -110,6 +110,28 @@ Zum Konfigurieren dieser Einstellung mit der REST-API wird der Endpunkt mit den 
   ```
 
 Wenn Sie die Einstellung wieder deaktivieren möchten, verwenden Sie denselben Endpunkt, und legen Sie **requireAuthorizationForGroupCreation** auf den Wert **false** fest.
+
+## <a name="powershell-sample"></a>PowerShell-Beispiel
+
+In PowerShell gibt es keinen „Az“-Befehl zum Festlegen der Standardverwaltungsgruppe oder zum Festlegen einer erforderlichen Autorisierung, aber als Problemumgehung können Sie die REST-API mit dem folgenden PowerShell-Beispiel nutzen:
+
+```powershell
+$root_management_group_id = "Enter the ID of root management group"
+$default_management_group_id = "Enter the ID of default management group (or use the same ID of the root management group)"
+
+$body = '{
+     "properties": {
+          "defaultManagementGroup": "/providers/Microsoft.Management/managementGroups/' + $default_management_group_id + '",
+          "requireAuthorizationForGroupCreation": true
+     }
+}'
+
+$token = (Get-AzAccessToken).Token
+$headers = @{"Authorization"= "Bearer $token"; "Content-Type"= "application/json"}
+$uri = "https://management.azure.com/providers/Microsoft.Management/managementGroups/$root_management_group_id/settings/default?api-version=2020-02-01"
+
+Invoke-RestMethod -Method PUT -Uri $uri -Headers $headers -Body $body
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

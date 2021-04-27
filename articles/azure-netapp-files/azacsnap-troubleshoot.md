@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 12/14/2020
 ms.author: phjensen
 ms.openlocfilehash: 7ba5a05515284612e17d5aba4cc673c7e78f7ba1
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104869921"
 ---
 # <a name="troubleshoot-azure-application-consistent-snapshot-tool-preview"></a>Problembehandlung für das Tool für anwendungskonsistente Momentaufnahmen in Azure (Vorschau)
@@ -57,7 +57,7 @@ Dec 17 09:01:13 azacsnap-rhel azacsnap: Database # 1 (PR1) : completed ok
 
 ## <a name="failed-communication-with-azure-netapp-files"></a>Fehler bei der Kommunikation mit Azure NetApp Files
 
-Wenn die Kommunikation mit Azure NetApp Files überprüft, schlägt die Kommunikation möglicherweise fehl, oder es tritt ein Timeout auf.  Stellen Sie sicher, dass Firewallregeln den ausgehenden Datenverkehr von dem System nicht blockiert, das AzAcSnap für die folgenden Adressen und TCP/IP-Ports ausführt:
+Bei der Validierung der Kommunikation mit Azure NetApp Files kann die Kommunikation fehlschlagen oder eine Zeitüberschreitung auftreten.  Stellen Sie sicher, dass die Firewall-Regeln den ausgehenden Datenverkehr vom System, auf dem AzAcSnap läuft, zu den folgenden Adressen und TCP/IP-Ports nicht blockieren:-
 
 - (https://)management.azure.com:443
 - (https://)login.microsoftonline.com:443 

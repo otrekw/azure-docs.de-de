@@ -8,12 +8,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: 3a5beba3938b5a845a378ede155f2f64e6baac7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4e03318fae8d8d3a8b4d29538cad49f9ef39593
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417942"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259114"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>Konfigurieren der Überwachung und der Metriken für Azure Bastion mithilfe von Azure Monitor
 
@@ -58,7 +58,7 @@ Sie können die insgesamt für Azure Bastion bereitgestellte und auf die einzeln
 
 #### <a name="used-cpu"></a><a name="used-cpu"></a>Verwendete CPU
 
-Sie können die CPU-Auslastung von Azure Bastion für die einzelnen Bastionhostinstanzen anzeigen. Anhand dieser Metrik können Sie die Verfügbarkeit und Kapazität der Azure Bastion-Instanzen beurteilen.
+Sie können die CPU-Auslastung von Azure Bastion für die einzelnen Bastionhostinstanzen anzeigen. Anhand dieser Metrik können Sie die Verfügbarkeit und Kapazität der Azure Bastion-Instanzen beurteilen.
 
 :::image type="content" source="./media/metrics-monitor-alert/used-cpu.png" alt-text="Screenshot der CPU-Auslastung":::
 
@@ -73,6 +73,12 @@ Sie können die Arbeitsspeicherauslastung für die einzelnen Bastionhostinstanze
 #### <a name="session-count"></a>Sitzungsanzahl
 
 Sie können die Anzahl aktiver Sitzungen pro Bastionhostinstanz und für die verschiedenen Sitzungstypen zusammengefasst (RDP und SSH) anzeigen. Jede Azure Bastion-Instanz kann verschiedene aktive RDP- und SSH-Sitzungen unterstützen. Diese Metrik hilft Ihnen zu beurteilen, ob Sie die Anzahl der Instanzen anpassen müssen, auf denen der Bastionhostdienst ausgeführt wird. Weitere Informationen zur Sitzungsanzahl, die Azure Bastion unterstützt, finden Sie in den [FAQ zu Azure Bastion](bastion-faq.md).
+
+Die empfohlenen Werte für die Konfiguration dieser Metrik lauten wie folgt:
+
+* **Aggregation:** Avg (Durchschnitt)
+* **Granularität:** 5 oder 15 Minuten
+* Das Aufteilen nach Instanzen wird empfohlen, um eine genauere Anzahl zu erhalten.
 
 :::image type="content" source="./media/metrics-monitor-alert/session-count.png" alt-text="Screenshot der Sitzungsanzahl":::
 

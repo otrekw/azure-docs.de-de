@@ -1,6 +1,6 @@
 ---
 title: 'Migrationsleitfaden: SAP ASE zu Azure SQL-Datenbank'
-description: In diesem Leitfaden erfahren Sie, wie Sie Ihre SAP ASE-Datenbanken mit SQL Server Migration Assistant für SAP Adapter Server Enterprise zu Azure SQL-Datenbank migrieren.
+description: In dieser Anleitung lernen Sie, wie Sie Ihre SAP ASE-Datenbanken mit dem SQL Server-Migrationsassistenten für den SAP Adapter Server Enterprise auf eine Azure SQL-Datenbank migrieren.
 ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
@@ -9,26 +9,28 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 81956a16142f314f54afd9d5a1b9055a559e906c
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 138a23b610ab96194424bb0f88cf94f516c2d223
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564648"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626451"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Migrationsleitfaden: SAP ASE zu Azure SQL-Datenbank
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihre SAP ASE-Datenbanken mit SQL Server Migration Assistant für SAP Adapter Server Enterprise zu Azure SQL-Datenbank migrieren.
+In dieser Anleitung lernen Sie, wie Sie Ihre SAP Adapter Server Enterprise-Datenbanken (ASE) zu einer Azure SQL-Datenbank migrieren, indem Sie SQL Server Migration Assistant für SAP Adapter Server Enterprise verwenden.
 
-Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/). 
+Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-Für die Migration Ihrer SAP ASE-Datenbanken zu Azure SQL-Datenbank müssen Sie folgende Schritte ausführen:
+Bevor Sie mit der Migration der Access-Datenbank zu einer SQL-Datenbank beginnen, gehen Sie folgendermaßen vor:
 
 - Überprüfen Sie, ob Ihre Quellumgebung unterstützt wird. 
-- Installieren Sie [SQL Server Migration Assistant für SAP Adaptive Server Enterprise (früher SAP Sybase ASE)](https://www.microsoft.com/en-us/download/details.aspx?id=54256). 
+- Laden Sie den [SQL Server Migration Assistant für SAP Adaptive Server Enterprise (früher SAP Sybase ASE)](https://www.microsoft.com/en-us/download/details.aspx?id=54256) herunter.
+- Stellen Sie sicher, dass Sie über Konnektivität und ausreichende Berechtigungen für den Zugriff auf Quelle und Ziel verfügen.
 
 ## <a name="pre-migration"></a>Vor der Migration
 
@@ -36,54 +38,55 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie die Topologie Ihrer Umgebu
 
 ### <a name="assess"></a>Bewerten
 
-Verwenden Sie [SQL Server Migration Assistant (SSMA) für SAP Adaptive Server Enterprise (früher SAP Sybase ASE)](https://www.microsoft.com/en-us/download/details.aspx?id=54256), um Datenbankobjekte und Daten zu überprüfen, die Datenbanken für die Migration zu bewerten und um Sybase-Datenbankobjekte und anschließend Daten zu Azure SQL-Datenbank zu migrieren. Weitere Informationen finden Sie unter [SQL Server Migration Assistant für Sybase (SybaseToSQL)](/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql).
+Verwenden Sie den [SQL Server Migration Assistant (SSMA) für SAP Adaptive Server Enterprise (früher SAP Sybase ASE)](https://www.microsoft.com/en-us/download/details.aspx?id=54256), um Datenbankobjekte und Daten zu überprüfen, die Datenbanken für die Migration zu bewerten und um Sybase-Datenbankobjekte und anschließend Daten zu Azure SQL-Datenbank zu migrieren. Weitere Informationen finden Sie unter [SQL Server Migration Assistant für Sybase (SybaseToSQL)](/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql).
 
 Führen Sie die folgenden Schritte aus, um eine Bewertung zu erstellen: 
 
-1. Öffnen Sie **SSMA für Sybase**. 
-1. Klicken Sie auf **File** (Datei) und dann auf **New Project** (Neues Projekt). 
-1. Geben Sie einen Projektnamen und einen Speicherort für das Projekt an, und wählen Sie dann Azure SQL-Datenbank in der Dropdownliste als Migrationsziel aus. Klicken Sie auf **OK**.
-1. Geben Sie in das Dialogfeld **Connect to Sybase** (Verbindung mit Sybase herstellen) die Werte der SAP-Verbindungsdetails ein. 
-1. Klicken Sie mit der rechten Maustaste auf die SAP-Datenbank, die Sie migrieren möchten, und wählen Sie **Bericht erstellen** aus. Dadurch wird ein HTML-Bericht generiert.
-1. Sehen Sie sich den HTML-Bericht an, um die Konvertierungsstatistiken und etwaige Fehler oder Warnungen zu verstehen. Sie können den Bericht auch in Excel öffnen, um ein Inventar der DB2-Objekte sowie Informationen zum für die Durchführung von Schemakonvertierungen erforderlichen Aufwand zu erhalten. Der Standardspeicherort für den Bericht ist der Berichtsordner in SSMAProjects.
+1. Öffnen Sie SSMA für Sybase. 
+1. Wählen Sie **Datei** und dann **Neues Projekt** aus. 
+1. Geben Sie im Bereich **Neues Projekt** einen Namen und einen Speicherort für das Projekt ein, und wählen Sie dann in der Dropdown Liste **Migrieren zu** die Option **Azure SQL-Datenbank** aus. 
+1. Wählen Sie **OK** aus.
+1. Geben Sie in der Anzeige **mit Sybase verbinden** die Details der SAP-Verbindung ein. 
+1. Klicken Sie mit der rechten Maustaste auf die SAP-Datenbank, die Sie migrieren möchten, und wählen Sie **Bericht erstellen** aus. Dadurch wird ein HTML-Bericht generiert. Alternativ können Sie rechts oben die Registerkarte **Bericht erstellen** auswählen.
+1. Sehen Sie sich den HTML-Bericht an, um die Konvertierungsstatistiken und etwaige Fehler oder Warnungen zu verstehen. Sie können den Bericht auch in Excel öffnen, um einen Bestand der Oracle-Objekte sowie Informationen zum Aufwand für Schemakonvertierungen zu erhalten. Der Standardspeicherort für den Bericht ist der Berichtsordner in SSMAProjects. Beispiel:
 
-   Beispiel: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   `drive:\<username>\Documents\SSMAProjects\MySAPMigration\report\report_<date>` 
 
+### <a name="validate-the-type-mappings"></a>Überprüfen der Typzuordnungen
 
-### <a name="validate-type-mappings"></a>Überprüfen der Typzuordnungen
+Bevor Sie die Schema-Konvertierung durchführen, validieren Sie die Standard-Datentyp-Zuordnungen oder ändern Sie gemäß den Richtlinien. Sie können dies tun, indem Sie **Tools** > **Project Settings** wählen, oder Sie können das Type Mapping für jede Tabelle ändern, indem Sie die Tabelle im **SAP ASE Metadata Explorer** auswählen.
 
-Überprüfen Sie vor der Schemakonvertierung die Standardzuordnungen der Datentypen, oder ändern Sie sie nach Bedarf. Hierzu können Sie zum Menü **Extras** wechseln und **Project Settings** (Projekteinstellungen) auswählen oder die Typzuordnung für die einzelnen Tabellen ändern, indem Sie die Tabelle im **Metadaten-Explorer von SAP ASE** auswählen.
+### <a name="convert-the-schema"></a>Konvertieren des Schemas
 
+Gehen Sie folgendermaßen vor, um das Schema zu konvertieren:
 
-### <a name="convert-schema"></a>Schema konvertieren
+1. (Fakultativ) Zum Konvertieren von dynamischen oder spezialisierten Abfragen klicken Sie mit der rechten Maustaste auf den Knoten, und wählen Sie dann **Anweisung hinzufügen** aus. 
+1. Wählen Sie die Registerkarte **mit Azure SQL-Datenbank verbinden** aus, und geben Sie dann die Details für Ihre SQL-Datenbank ein. Sie können eine Verbindung mit einer vorhandenen Datenbank herstellen oder einen neuen Namen angeben. In diesem Fall wird auf dem Zielserver eine Datenbank erstellt.
+1. Klicken Sie im **Sybase Metadata Explorer** mit der rechten Maustaste auf das Schema, mit dem Sie arbeiten, und wählen Sie dann **Schema konvertieren** aus. 
+1. Nachdem das Schema konvertiert wurde, vergleichen und überprüfen Sie die konvertierte Struktur mit der ursprünglichen Struktur, um potenzielle Probleme zu identifizieren. 
 
-Führen Sie die folgenden Schritte aus, um das Schema zu konvertieren:
+   Nach der Schemakonvertierung können Sie dieses Projekt lokal speichern, um das Schema offline zu warten. Wählen Sie hierzu **Datei**  >  **Projekt speichern** aus. So können Sie das Quell- und Zielschema offline auswerten und warten, bevor Sie das Schema auf Ihrer SQL-Datenbank veröffentlichen.
 
-1. Optional: Zum Konvertieren von dynamischen Abfragen oder Ad-hoc-Abfragen klicken Sie mit der rechten Maustaste auf den Knoten, und wählen Sie **Anweisung hinzufügen** aus. 
-1. Wählen Sie in der oberen Navigationsleiste **Connect to Azure SQL Database** (Verbindung mit Azure SQL-Datenbank herstellen) aus, und geben Sie Details zu Azure SQL-Datenbank an. Sie können eine Verbindung mit einer vorhandenen Datenbank herstellen oder einen neuen Namen angeben. In diesem Fall wird auf dem Zielserver eine Datenbank erstellt.
-1. Klicken Sie im **Metadaten-Explorer von Sybase** mit der rechten Maustaste auf das SAP ASE-Schema, und wählen Sie **Convert schema** (Schema konvertieren) aus. Sie können stattdessen auch auf der obersten Navigationsleiste die Option **Schema konvertieren** auswählen. 
-1. Vergleichen und überprüfen Sie die Struktur des Schemas, um potenzielle Probleme zu ermitteln. 
+1. Wählen Sie in der **Ausgabe** Anzeige **Ergebnisse überprüfen** aus, und überprüfen Sie die Fehler der **Fehlerliste** Anzeige. 
+1. Speichern Sie das Projekt für eine Übung zur Offlineschemakorrektur lokal. Wählen Sie hierzu **Datei**  >  **Projekt speichern** aus. So können Sie das Quell- und Zielschema offline auswerten und warten, bevor Sie das Schema auf Ihrer SQL-Datenbank veröffentlichen.
 
-   Nach der Schemakonvertierung können Sie dieses Projekt lokal speichern, um das Schema offline zu warten. Klicken Sie im Menü **File** (Datei) auf **Save Project** (Projekt speichern). So können Sie das Quell- und Zielschema offline auswerten und warten, bevor Sie das Schema auf Azure SQL-Datenbank veröffentlichen.
+## <a name="migrate-the-databases"></a>Migrieren Sie die Datenbanken 
 
-Weitere Informationen finden Sie unter [Konvertieren von Schemas](/sql/ssma/sybase/converting-sybase-ase-database-objects-sybasetosql).
-
-
-## <a name="migrate"></a>Migrate 
-
-Wenn die Voraussetzungen erfüllt sind und Sie die Aufgaben **vor der Migration** ausgeführt haben, können Sie die Schema- und Datenmigration durchführen.
+Nachdem Sie die notwendigen Voraussetzungen geschaffen und die Aufgaben im Zusammenhang mit der *Vormigrationsphase* abgeschlossen haben, können Sie die Schema- und Datenmigration durchführen.Sie die Schema- und Datenmigration starten.
 
 Führen Sie die folgenden Schritte aus, um das Schema zu veröffentlichen und die Daten zu migrieren: 
 
-1. Klicken Sie im **Metadaten-Explorer von Azure SQL-Datenbank** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Synchronize with Database** (Mit Datenbank synchronisieren) aus.  Mit dieser Aktion wird das SAP ASE-Schema in der Instanz von Azure SQL-Datenbank veröffentlicht.
-1. Klicken Sie im **Metadaten-Explorer von SAP ASE** mit der rechten Maustaste auf das SAP ASE-Schema, und wählen Sie **Daten migrieren** aus.  Sie können stattdessen auch in der oberen Navigationsleiste auf **Daten migrieren** klicken.  
-1. Zeigen Sie nach Abschluss der Migration den **Bericht zur Datenmigration** an: 
-1. Überprüfen Sie die Migration, indem Sie die Daten und das Schema in der Azure SQL-Datenbank-Instanz mit Azure SQL-Datenbank Management Studio (SSMS) überprüfen.
+1. Veröffentlichen Sie das Schema. Klicken Sie in der Anzeige des **Azure SQL Database Metadata Explorers** mit der rechten Maustaste auf die Datenbank, mit der Sie arbeiten, und wählen Sie dann **mit Datenbank synchronisieren** aus. Mit dieser Aktion wird das SAP ASE-Schema in Ihrer SQL-Datenbank veröffentlicht.
 
+1. Migrieren der Daten. Klicken Sie in der Anzeige des **SAP ASE Metadata Explorers** mit der rechten Maustaste auf das zu migrierende Schema oder Objekt, und wählen Sie dann **Daten migrieren** aus. Alternativ können Sie rechts oben die Registerkarte **Daten migrieren** auswählen. 
+
+   Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie die **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen. 
+1. Überprüfen Sie nach Abschluss der Migration den **Bericht zur Datenmigration**. 
+1. Validieren Sie die Migration, indem Sie die Daten und das Schema überprüfen. Stellen Sie eine Verbindung mit Ihrer Datenbank in Azure SQL-Datenbank her, indem Sie das [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) verwenden.
 
 ## <a name="post-migration"></a>Nach der Migration 
 
-Nach erfolgreichem Abschluss der **Migrationsphase** müssen Sie eine Reihe von Aufgaben ausführen, um sicherzustellen, dass alles so reibungslos und effizient wie möglich funktioniert.
+Nach erfolgreichem Abschluss der *Migrationsphase* müssen Sie eine Reihe von Aufgaben ausführen, um sicherzustellen, dass alles so reibungslos und effizient wie möglich funktioniert.
 
 ### <a name="remediate-applications"></a>Korrigieren von Anwendungen
 
@@ -93,32 +96,31 @@ Wenn die Daten in die Zielumgebung migriert wurden, müssen alle Anwendungen, di
 
 Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
-1. **Entwickeln der Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die für die Quell- und die Zieldatenbank ausgeführt werden sollen. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
+1. **Entwickeln Sie Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die sowohl gegen die Quell- als auch gegen die Zieldatenbank ausgeführt werden. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
 
-2. **Einrichten der Testumgebung:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
+1. **Richten Sie eine Testumgebung ein:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 
-3. **Ausführen der Validierungstests:** Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
+1. **Führen Sie die Validierungstests aus**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 
-4. **Ausführen der Leistungstests:** Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
+1. **Führen Sie Leistungstests aus**: Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
+
 
 ### <a name="optimize"></a>Optimieren
 
-Die Postmigrationsphase ist unerlässlich, um Datengenauigkeitsprobleme abzustimmen, die Vollständigkeit zu bestätigen und Leistungsprobleme der Workload zu beheben.
+Die Phase nach der Migration ist entscheidend für den Abgleich von Problemen mit der Datengenauigkeit, die Überprüfung der Vollständigkeit und das Beheben von Leistungsproblemen der Workload.
 
-> [!NOTE]
-> Weitere Einzelheiten zu diesen Problemen sowie die erforderlichen Schritte zur Problembehandlung finden Sie im [Leitfaden zur Validierung und Optimierung nach der Migration](/sql/relational-databases/post-migration-validation-and-optimization-guide).
+Weitere Informationen zu diesen Problemen und den Schritten zu ihrer Behebung finden Sie in der [Anleitung zur Validierung und Optimierung nach der Migration](/sql/relational-databases/post-migration-validation-and-optimization-guide).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht über die Dienste und Tools von Microsoft und Drittanbietern, mit denen Sie verschiedene Datenbank- und Datenmigrationsszenarios und Spezialaufgaben ausführen können, finden Sie unter [Dienste und Tools für die Datenmigration](../../../dms/dms-tools-matrix.md).
+- Eine Übersicht über die Dienste und Tools von Microsoft und Drittanbietern, mit denen Sie verschiedene Datenbank- und Datenmigrationsszenarios sowie Spezialaufgaben ausführen können, finden Sie unter [Dienste und Tools für die Datenmigration](../../../dms/dms-tools-matrix.md).
 
 - Weitere Informationen zu Azure SQL-Datenbank:
    - [Übersicht über SQL-Datenbank](../../database/sql-database-paas-overview.md)
-   - [Azure-Gesamtkostenrechner](https://azure.microsoft.com/pricing/tco/calculator/) 
+   - [Azure-Gesamtkostenrechner](https://azure.microsoft.com/pricing/tco/calculator/)  
 
-
-- Weitere Informationen zum Framework und zum Einführungszyklus von Cloudmigrationen finden Sie unter:
+- Um mehr über die Rahmenbedingungen und den Adoptionszyklus für Cloud-Migrationen zu erfahren, siehe:
    -  [Cloud Adoption Framework für Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Bewährte Methoden für die Kostenermittlung und Größenanpassung von zu Azure migrierten Workloads](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 

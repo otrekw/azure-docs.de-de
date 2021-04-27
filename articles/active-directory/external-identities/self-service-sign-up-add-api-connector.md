@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 703e3b4c951bc4c3a22f82b9faa31789d1abf868
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 0c9bbdb831df9c51c6d80e6c441ac7bdd2778428
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008721"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044548"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow
 
@@ -53,13 +53,24 @@ Die HTTP-Standardauthentifizierung ist in [RFC 2617](https://tools.ietf.org/htm
 > [!IMPORTANT]
 > Diese Funktion befindet sich in der Vorschauhase und wird ohne Vereinbarung zum Servicelevel bereitgestellt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bei der Clientzertifikatauthentifizierung handelt es sich um eine gegenseitige zertifikatbasierte Authentifizierung, bei der der Client sein Clientzertifikat für den Server bereitstellt, um seine Identität nachzuweisen. In diesem Fall verwendet Azure Active Directory das Zertifikat, das Sie als Teil der API-Connectorkonfiguration hochladen. Dies erfolgt im Rahmen des SSL-Handshakes. Nur Dienste mit den richtigen Zertifikaten erhalten Zugriff auf Ihren API-Dienst. Bei dem Clientzertifikat handelt es sich um ein digitales X.509-Zertifikat. In Produktionsumgebungen muss es von einer Zertifizierungsstelle signiert werden. 
+Bei der Client-Zertifikat-Authentifizierung handelt es sich um eine auf gegenseitigen Zertifikaten basierende Authentifizierungsmethode, bei welcher der Client dem Server ein Client-Zertifikat zur Verfügung stellt, um seine Identität nachzuweisen. In diesem Fall verwendet Azure Active Directory das Zertifikat, das Sie als Teil der API-Connectorkonfiguration hochladen. Dies erfolgt im Rahmen des SSL-Handshakes. Ihr API-Dienst kann dann den Zugriff nur auf Dienste beschränken, die über ordnungsgemäße Zertifikate verfügen. Beim Client-Zertifikat handelt es sich um ein digitales PKCS12 (PFX) X.509-Zertifikat. In Produktionsumgebungen muss es von einer Zertifizierungsstelle signiert werden. 
 
-Zum Erstellen eines Zertifikats können Sie den [Azure Key Vault](../../key-vault/certificates/create-certificate.md) verwenden, der über Optionen für selbstsignierte Zertifikate und Integrationen mit Zertifikatausstelleranbietern für signierte Zertifikate verfügt. Anschließend können Sie [das Zertifikat exportieren](../../key-vault/certificates/how-to-export-certificate.md) und für die Verwendung in der API-Connectorkonfiguration hochladen. Hinweis: Das Kennwort ist nur für kennwortgeschützte Zertifikatdateien erforderlich. Sie können auch das PowerShell-Cmdlet [New-SelfSignedCertificate](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) verwenden, um ein selbstsigniertes Zertifikat zu generieren.
+Zum Erstellen eines Zertifikats können Sie den [Azure Key Vault](../../key-vault/certificates/create-certificate.md) verwenden, der über Optionen für selbstsignierte Zertifikate und Integrationen mit Zertifikatausstelleranbietern für signierte Zertifikate verfügt. Empfohlene Einstellungen umfassen:
+- **Betreff**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **Inhaltstyp**: `PKCS #12`
+- **Gültigkeitsdauer Aktionstyp**: `Email all contacts at a given percentage lifetime` oder `Email all contacts a given number of days before expiry`
+- **Schlüsseltyp**: `RSA`
+- **Schlüsselgröße**: `2048`
+- **Exportierbarer privater Schlüssel**: `Yes` (um die pfx-Datei exportieren zu können)
 
-Informationen zum Aktivieren und Überprüfen des Zertifikats über Ihren API-Endpunkt in Azure App Service und Azure Functions finden Sie unter [Konfigurieren der gegenseitigen TLS-Authentifizierung](../../app-service/app-service-web-configure-tls-mutual-auth.md).
+Sie können dann [das Zertifikat exportieren](../../key-vault/certificates/how-to-export-certificate.md). Sie können alternativ das Cmdlet [New-SelfSignedCertificate](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) von PowerShell verwenden, um ein selbstsigniertes Zertifikat zu generieren.
 
-Es wird empfohlen, Erinnerungswarnungen für den Zeitpunkt festzulegen, an dem das Zertifikat abläuft. Wenn Sie ein neues Zertifikat in einen vorhandenen API-Connector hochladen möchten, wählen Sie diesen API-Connector unter **All API connectors** (Alle API-Connectors) aus, und klicken Sie auf **Upload new certificate** (Neues Zertifikat hochladen). Azure Active Directory verwendet automatisch das zuletzt hochgeladene Zertifikat, das nicht abgelaufen ist und nach dem Startdatum erstellt wurde.
+Nachdem Sie ein Zertifikat haben, können Sie es als Teil der Konfiguration des API-Connectors hochladen. Hinweis: Das Kennwort ist nur für kennwortgeschützte Zertifikatdateien erforderlich.
+
+Ihre API muss die Autorisierung basierend auf gesendeten Client-Zertifikaten implementieren, um die API-Endpunkte zu schützen. Für den Azure App Service und die Azure Funktionen finden Sie unter [Konfigurieren der gegenseitigen TLS-Authentifizierung](../../app-service/app-service-web-configure-tls-mutual-auth.md) Informationen zum Aktivieren und *Validieren des Zertifikats über Ihren API-Code*.  Sie können auch das Azure API Management verwenden, um die [Eigenschaften](
+../../api-management/api-management-howto-mutual-certificates-for-clients.md) von Client-Zertifikaten mithilfe von Richtlinienbegriffen auf die gewünschten Werte zu prüfen.
+ 
+Es wird empfohlen, Erinnerungswarnungen für den Zeitpunkt festzulegen, an dem das Zertifikat abläuft. Sie müssen ein neues Zertifikat erstellen und die obigen Schritte wiederholen. Ihr API-Dienst kann vorübergehend weiterhin alte und neue Zertifikate akzeptieren, während das neue Zertifikat bereitgestellt wird. Wenn Sie ein neues Zertifikat in einen vorhandenen API-Connector hochladen möchten, wählen Sie diesen API-Connector unter **All API connectors** (Alle API-Connectors) aus, und klicken Sie auf **Upload new certificate** (Neues Zertifikat hochladen). Das zuletzt hochgeladene Zertifikat, das noch nicht abgelaufen ist und das Startdatum überschritten hat, wird automatisch vom Azure Active Directory verwendet.
 
 ### <a name="api-key"></a>API-Schlüssel
 Einige Dienste verwenden einen API-Schlüssel-Mechanismus, um den Zugriff auf die HTTP-Endpunkte während der Entwicklung zu verschleiern. Sie können diesen für [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) einrichten, indem Sie `code` als Abfrageparameter in die **Endpunkt-URL** einschließen. Beispiel: `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>. 

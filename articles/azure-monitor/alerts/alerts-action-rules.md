@@ -3,16 +3,16 @@ title: Aktionsregeln für Azure Monitor-Warnungen
 description: In diesem Artikel wird erläutert, was Aktionsregeln in Azure Monitor sind und wie sie konfiguriert und verwaltet werden können.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471682"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105036780"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
-Mit Aktionsregeln können Sie Aktionen in jedem Resource Manager-Bereich (Abonnement, Ressourcengruppe und Ressource) definieren oder unterdrücken. Sie verfügen über verschiedene Filter zum Eingrenzen auf eine bestimmte Teilmenge von Warnungsinstanzen, auf die Sie reagieren möchten.
+Mit Aktionsregeln können Sie die Aktionsgruppen für Ihre abgefeuerten Alarme hinzufügen oder unterdrücken. Eine einzelne Regel kann verschiedene Bereiche der Ziel Ressourcen abdecken, z. b. eine beliebige Warnung für eine bestimmte Ressource (z. b. eine bestimmte virtuelle Maschine) oder eine Warnung, die für eine Ressource in einem Abonnement ausgelöst wird. Optional können Sie verschiedene Filter hinzufügen, um zu steuern, welche Warnungen von einer Regel abgedeckt werden, und einen Zeitplan dafür definieren, z. b., damit Sie nur außerhalb der Geschäftszeiten oder während eines geplanten Wartungsfensters wirksam werden.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
@@ -308,7 +308,7 @@ Auf der [Seite mit der Liste der Warnungen](./alerts-managing-alert-instances.md
 
 Unterdrückung hat in einem Bereich immer Vorrang.
 
-### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Was geschieht, wenn ich eine Ressource verwende, die von zwei separaten Aktionsregeln überwacht wird? Erhalte ich dann eine oder zwei Benachrichtigungen? Beispielsweise **VM2** im folgenden Szenario:
+### <a name="what-happens-if-i-have-a-resource-that-is-covered-by-two-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Was geschieht, wenn eine Ressource vorhanden ist, die von zwei Aktions Regeln abgedeckt wird? Erhalte ich dann eine oder zwei Benachrichtigungen? Beispielsweise **VM2** im folgenden Szenario:
 
    `action rule AR1 defined for VM1 and VM2 with action group AG1`
 

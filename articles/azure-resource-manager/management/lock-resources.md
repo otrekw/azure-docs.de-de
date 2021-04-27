@@ -2,14 +2,14 @@
 title: Sperren von Ressourcen, um Änderungen zu verhindern
 description: Verhindern Sie, dass Benutzer Azure-Ressourcen aktualisieren oder löschen, indem Sie eine Sperre für alle Benutzer und Rollen anwenden.
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d989f2077618ce80382b38acc651553cb331d5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 71637318a60e66bf5000de2f564d740cc101cc60
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932759"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768721"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
@@ -32,13 +32,15 @@ Resource Manager-Sperren gelten nur für Vorgänge auf der Verwaltungsebene (als
 
 Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vorgänge, die die Ressource nicht zu ändern scheinen, tatsächlich Aktionen erfordern, die von der Sperre blockiert werden. Sperren verhindern alle Vorgänge, für die eine POST-Anforderung an die Azure Resource Manager-API erforderlich ist. Einige gängige Beispiele für die Vorgänge, die durch Sperren blockiert werden, sind:
 
-* Eine Schreibschutzsperre für ein **Speicherkonto** hindert Benutzer am Auflisten der Kontoschlüssel. Der Vorgang Azure Storage [List Keys](/rest/api/storagerp/storageaccounts/listkeys) wird durch eine Post-Anforderung verarbeitet, um den Zugriff auf die Kontoschlüssel zu schützen, die den gesamten Zugriff auf die Daten im Speicherkonto ermöglichen. Wenn eine Schreibschutzsperre für ein Speicherkonto konfiguriert ist, müssen Benutzer, die die Kontoschlüssel nicht besitzen, Azure AD-Anmeldeinformationen verwenden, um auf Blob- oder Warteschlangendaten zuzugreifen. Eine Schreibschutzsperre verhindert auch die Zuweisung von Azure RBAC-Rollen, die auf das Speicherkonto oder einen Datencontainer (Blobcontainer oder Warteschlange) beschränkt sind.
+* Eine Schreibschutzsperre für ein **Speicherkonto** hindert Benutzer am Auflisten der Kontoschlüssel. Der Vorgang Azure Storage [List Keys](/rest/api/storagerp/storageaccounts/listkeys) wird durch eine Post-Anforderung verarbeitet, um den Zugriff auf die Kontoschlüssel zu schützen, die den gesamten Zugriff auf die Daten im Speicherkonto ermöglichen. Wenn eine Schreibschutzsperre für ein Speicherkonto konfiguriert ist, müssen Benutzer, die nicht über die Kontoschlüssel verfügen, Azure AD-Anmeldeinformationen verwenden, um auf Blob- oder Warteschlangendaten zuzugreifen. Eine Schreibschutzsperre verhindert auch die Zuweisung von Azure RBAC-Rollen, die auf das Speicherkonto oder einen Datencontainer (Blobcontainer oder Warteschlange) beschränkt sind.
 
-* Eine Löschschutzsperre für **Speicherkonten** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Durch diese Art von Schutz wird nur das Speicherkonto selbst vor dem Löschen geschützt. Blob-, Warteschlangen-, Tabellen- oder Dateidaten in diesem Speicherkonto werden nicht geschützt. 
+* Eine Löschschutzsperre für ein **Speicherkonto** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Durch diese Art von Schutz wird nur das Speicherkonto selbst vor dem Löschen geschützt. Blob-, Warteschlangen-, Tabellen- oder Dateidaten in diesem Speicherkonto werden nicht geschützt. 
 
-* Eine Schreibschutzsperre für **Speicherkonten** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Durch diese Art von Schutz wird nur das Speicherkonto selbst vor dem Löschen oder Bearbeiten geschützt. Blob-, Warteschlangen-, Tabellen- oder Dateidaten in diesem Speicherkonto werden nicht geschützt. 
+* Eine Schreibschutzsperre für ein **Speicherkonto** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Durch diese Art von Schutz wird nur das Speicherkonto selbst vor dem Löschen oder Ändern geschützt. Blob-, Warteschlangen-, Tabellen- oder Dateidaten in diesem Speicherkonto werden nicht geschützt. 
 
 * Das Festlegen einer Schreibschutzsperre für eine **App Service**-Ressource verhindert, dass der Server-Explorer von Visual Studio Dateien für die Ressource anzeigen kann, da für diese Interaktion Schreibzugriff erforderlich ist.
+
+* Durch eine Schreibschutzsperre für eine **Ressourcengruppe**, die einen **App Service-Plan** enthält, werden Sie am [Hochskalieren Ihres Tarifs](../../app-service/manage-scale-up.md) gehindert.
 
 * Eine Schreibschutzsperre für eine **Ressourcengruppe**, die einen **virtuellen Computer** enthält, hindert alle Benutzer am Starten bzw. Neustarten des virtuellen Computers. Diese Vorgänge erfordern eine POST-Anforderung.
 
@@ -276,7 +278,7 @@ Remove-AzResourceLock -LockId $lockId
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Sperren Sie bereitgestellte Ressourcen mit der Azure CLI, indem Sie den Befehl [az lock create](/cli/azure/lock#az-lock-create) verwenden.
+Sperren Sie bereitgestellte Ressourcen mit der Azure CLI, indem Sie den Befehl [az lock create](/cli/azure/lock#az_lock_create) verwenden.
 
 Geben Sie zum Sperren einer Ressource den Namen der Ressource, ihren Ressourcentyp und ihren Ressourcengruppennamen an.
 
@@ -290,7 +292,7 @@ Geben Sie zum Sperren einer Ressourcengruppe ihren Namen an.
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-Verwenden Sie zum Abrufen von Informationen zu einer Sperre [az lock list](/cli/azure/lock#az-lock-list). Rufen Sie alle Sperren im Abonnement mit dem folgenden Befehl ab:
+Verwenden Sie zum Abrufen von Informationen zu einer Sperre [az lock list](/cli/azure/lock#az_lock_list). Rufen Sie alle Sperren im Abonnement mit dem folgenden Befehl ab:
 
 ```azurecli
 az lock list
@@ -324,7 +326,7 @@ az lock delete --ids $lockid
 
 ### <a name="rest-api"></a>REST-API
 
-Sie können bereitgestellte Ressourcen mit der [REST-API für Verwaltungssperren](/rest/api/resources/managementlocks/managementlocks) sperren. Die REST-API ermöglicht es Ihnen, Sperren zu erstellen und zu löschen sowie Informationen zu vorhandenen Sperren abzurufen.
+Sie können bereitgestellte Ressourcen mit der [REST-API für Verwaltungssperren](/rest/api/resources/managementlocks) sperren. Die REST-API ermöglicht es Ihnen, Sperren zu erstellen und zu löschen sowie Informationen zu vorhandenen Sperren abzurufen.
 
 Führen Sie zum Erstellen einer Sperre Folgendes durch:
 

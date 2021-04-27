@@ -2,13 +2,13 @@
 title: Erstellen einer Parameterdatei
 description: Erstellen einer Parameterdatei zum Übergeben von Werten während der Bereitstellung einer Azure Resource Manager-Vorlage
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: d557bcdfe246dc2c9bfccde17b7f9590c2686358
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89276642"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312041"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Erstellen einer Resource Manager-Parameterdatei
 
@@ -210,6 +210,8 @@ Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vor
 
 > [!NOTE]
 > Es ist nicht möglich, eine Parameterdatei mit dem benutzerdefinierten Vorlagenblatt im Portal zu verwenden.
+
+Stellen Sie bei Verwendung des [Projekts „Azure-Ressourcengruppe“ in Visual Studio](create-visual-studio-deployment-project.md) sicher, dass die Eigenschaft **Buildvorgang** der Parameterdatei auf **Inhalt** festgelegt ist.
 
 ## <a name="file-name"></a>Dateiname
 
