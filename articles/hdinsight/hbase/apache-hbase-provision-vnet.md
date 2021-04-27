@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: a9a1788473cb31f8e78aac0bbd5979b3d681ad32
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104867592"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Erstellen von Apache HBase-Clustern in HDInsight in Azure Virtual Network
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 In diesem Abschnitt erstellen Sie mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/deploy-powershell.md) einen Linux-basierten Apache HBase-Cluster mit dem abhängigen Azure Storage-Konto in einem virtuellen Azure-Netzwerk. Andere Methoden zur Erstellung von Clustern und Informationen zu den Einstellungen finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Weitere Informationen zur Verwendung einer Vorlage zum Erstellen von Apache Hadoop-Clustern in HDInsight finden Sie unter [Erstellen Linux-basierter Apache Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen](../hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 > [!NOTE]  
-> Einige Eigenschaften sind in der Vorlage hartcodiert. Zum Beispiel:
+> Einige Eigenschaften sind in der Vorlage hartcodiert. Beispiel:
 >
 > * **Standort:** USA, Osten 2
 > * **Clusterversion**: 3.6
@@ -54,11 +54,11 @@ In diesem Abschnitt erstellen Sie mit einer [Azure Resource Manager-Vorlage](../
 
     |Eigenschaft |Wert |
     |---|---|
-    |Subscription|Wählen Sie ein Azure-Abonnement aus, um den HDInsight-Cluster, das abhängige Speicherkonto und das virtuelle Azure-Netzwerk zu erstellen.|
-    Resource group|Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen ein.|
+    |Abonnement|Wählen Sie ein Azure-Abonnement aus, um den HDInsight-Cluster, das abhängige Speicherkonto und das virtuelle Azure-Netzwerk zu erstellen.|
+    Ressourcengruppe|Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen ein.|
     |Standort|Wählen Sie einen Speicherort für die Ressourcengruppe aus.|
     |Clustername|Geben Sie einen Namen für den zu erstellenden Hadoop-Cluster ein.|
-    |Benutzername und Kennwort für Clusteranmeldung|Der Standardbenutzername lautet **admin**. Geben Sie ein Kennwort an.|
+    |Benutzername und Kennwort für Clusteranmeldung|Der Standard-Benutzername ist **admin**. Geben Sie ein Passwort an.|
     |SSH-Benutzername und -Kennwort|Der Standardbenutzername lautet **sshuser**.  Geben Sie ein Kennwort an.|
 
     Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** aus.
@@ -102,19 +102,19 @@ Für Remote-Verbindungen zwischen Java-Anwendungen und HBase müssen Sie den vol
     curl -u <username>:<password> -k https://CLUSTERNAME.azurehdinsight.net/ambari/api/v1/clusters/CLUSTERNAME.azurehdinsight.net/services/hbase/components/hbrest
     ```
 
-Suchen Sie in den zurückgegebenen JSON-Daten (JavaScript Object Notation) den Eintrag "host_name". Er enthält den vollqualifizierten Domänennamen (FQDN) für die Knoten im Cluster. Zum Beispiel:
+Suchen Sie in den zurückgegebenen JSON-Daten (JavaScript Object Notation) den Eintrag "host_name". Er enthält den vollqualifizierten Domänennamen (FQDN) für die Knoten im Cluster. Beispiel:
 
 ```json
 "host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
 ```
 
-Der Teil des Domänennamens, der mit dem Clusternamen beginnt, ist das DNS-Suffix. Beispiel: `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Der Teil des Domänennamens, der mit dem Clusternamen beginnt, ist das DNS-Suffix. Beispielsweise `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
 ### <a name="verify-communication-inside-virtual-network"></a>Überprüfen der Kommunikation innerhalb des virtuellen Netzwerks
 
-Führen Sie den Befehl `ping headnode0.<dns suffix>` auf dem virtuellen Computer aus, um zu überprüfen, ob der virtuelle Computer mit dem HBase-Cluster kommunizieren kann. Beispiel: `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Führen Sie den Befehl `ping headnode0.<dns suffix>` auf dem virtuellen Computer aus, um zu überprüfen, ob der virtuelle Computer mit dem HBase-Cluster kommunizieren kann. Beispielsweise `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
-Führen Sie die unter [Erstellen von Java-Anwendungen für die Apache-HBase](./apache-hbase-build-java-maven-linux.md) beschriebenen Schritte aus, um diese Informationen in einer Java-Anwendung zu verwenden. Wenn die Anwendung eine Verbindung mit einem HBase-Remoteserver herstellen soll, müssen Sie den FQDN für Zookeeper in der Datei **hbase-site.xml** eintragen. Zum Beispiel:
+Führen Sie die unter [Erstellen von Java-Anwendungen für die Apache-HBase](./apache-hbase-build-java-maven-linux.md) beschriebenen Schritte aus, um diese Informationen in einer Java-Anwendung zu verwenden. Wenn die Anwendung eine Verbindung mit einem HBase-Remoteserver herstellen soll, müssen Sie den FQDN für Zookeeper in der Datei **hbase-site.xml** eintragen. Beispiel:
 
 ```xml
 <property>

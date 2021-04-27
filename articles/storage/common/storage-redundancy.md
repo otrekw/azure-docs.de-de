@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/05/2021
+ms.date: 04/16/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 37e508a0f4af940773a92271075239c204e52834
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 3665421ddbdd9cf079ff4aab9377fc9164a1599c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010712"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575359"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -73,7 +73,7 @@ In der folgenden Tabelle wird gezeigt, welche Typen von Speicherkonten ZRS in we
 
 | Speicherkontotyp | Unterstützte Regionen | Unterstützte Dienste |
 |--|--|--|
-| Universell v2<sup>1</sup> | (Afrika) Südafrika, Norden<br /> (Asien-Pazifik) Asien, Osten<br /> (Asien-Pazifik) Asien, Südosten<br /> (Asien-Pazifik) Australien, Osten<br /> (Asien-Pazifik) Indien, Mitte<br /> (Asien-Pazifik) Japan, Osten<br /> (Asien-Pazifik) Südkorea, Mitte<br /> (Kanada) Kanada, Mitte<br /> (Europa) Europa, Norden<br /> (Europa) Europa, Westen<br /> (Europa) Frankreich, Mitte<br /> (Europa) Deutschland, Westen-Mitte<br /> (Europa) Norwegen, Osten<br /> (Europa) Schweiz, Norden<br /> (Europa) Vereinigtes Königreich, Süden<br /> (Naher Osten) VAE, Norden<br /> (Südamerika) Brasilien, Süden<br /> (USA) USA, Mitte<br /> (USA) USA, Osten<br /> (USA) USA, Osten 2<br /> (USA) USA, Norden-Mitte<br />(USA) USA, Süden-Mitte<br /> (USA) USA, Westen<br /> (USA) USA, Westen 2 | Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
+| Universell v2<sup>1</sup> | (Afrika) Südafrika, Norden<br /> (Asien-Pazifik) Asien, Südosten<br /> (Asien-Pazifik) Australien, Osten<br /> (Asien-Pazifik) Japan, Osten<br /> (Kanada) Kanada, Mitte<br /> (Europa) Europa, Norden<br /> (Europa) Europa, Westen<br /> (Europa) Frankreich, Mitte<br /> (Europa) Deutschland, Westen-Mitte<br /> (Europa) Vereinigtes Königreich, Süden<br /> (Südamerika) Brasilien, Süden<br /> (USA) USA, Mitte<br /> (USA) USA, Osten<br /> (USA) USA, Osten 2<br /> (USA) USA, Süden-Mitte<br /> (USA) USA, Westen<br /> (USA) USA, Westen 2 | Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
 | BlockBlobStorage<sup>1</sup> | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br /> Europa, Westen<br /> Frankreich, Mitte <br /> Japan, Osten<br /> UK, Süden <br /> USA, Osten <br /> USA (Ost 2) <br /> USA, Westen 2| Nur Premium-Blockblobs |
 | FileStorage | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br /> Europa, Westen<br /> Frankreich, Mitte <br /> Japan, Osten<br /> UK, Süden <br /> USA, Osten <br /> USA (Ost 2) <br /> USA, Westen 2 | Nur Premium-Dateifreigaben |
 

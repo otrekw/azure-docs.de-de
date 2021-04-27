@@ -4,12 +4,12 @@ description: Informationen zum Pushen und Pullen von Docker-Images an eine priva
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 48f5f1707881ac8461e12212be631d3b80c16ca7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 982a49af271648caeb62e5759530aa6049be4382
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783825"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308301"
 ---
 # <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Pushen des ersten Image in eine Azure-Containerregistrierung mit der Docker CLI
 
@@ -24,7 +24,7 @@ In den folgenden Schritten laden Sie ein öffentliches [Nginx-Image](https://sto
 
 ## <a name="log-in-to-a-registry"></a>Anmelden an einer Registrierung
 
-Es gibt [verschiedene Möglichkeiten für die Authentifizierung](container-registry-authentication.md) bei Ihrer privaten Containerregistrierung. Die empfohlene Methode bei Verwendung einer Befehlszeile ist der Azure CLI-Befehl [az acr login](/cli/azure/acr#az_acr_login). Um sich z. B. bei einer Registrierung mit dem Namen *myregistry* anzumelden, melden Sie sich bei der Azure CLI an und authentifizieren sich dann bei Ihrer Registrierung:
+Es gibt [verschiedene Möglichkeiten für die Authentifizierung](container-registry-authentication.md) bei Ihrer privaten Containerregistrierung. Die empfohlene Methode bei Verwendung einer Befehlszeile ist der Azure CLI-Befehl [az acr login](/cli/azure/acr#az-acr-login). Um sich z. B. bei einer Registrierung mit dem Namen *myregistry* anzumelden, melden Sie sich bei der Azure CLI an und authentifizieren sich dann bei Ihrer Registrierung:
 
 ```azurecli
 az login
@@ -114,7 +114,7 @@ Wenn Sie das Nginx-Image nicht mehr benötigen, können Sie es mit dem Befehl [d
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Um Images aus Ihrer Azure-Containerregistrierung zu entfernen, können Sie den Azure CLI-Befehl [az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete) ausführen. Mit dem folgenden Befehl werden beispielsweise das durch das `samples/nginx:latest`-Tag referenzierte Manifest, alle eindeutigen Ebenendaten und alle anderen Tags gelöscht, die auf das Manifest verweisen.
+Um Images aus Ihrer Azure-Containerregistrierung zu entfernen, können Sie den Azure CLI-Befehl [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete) ausführen. Mit dem folgenden Befehl werden beispielsweise das durch das `samples/nginx:latest`-Tag referenzierte Manifest, alle eindeutigen Ebenendaten und alle anderen Tags gelöscht, die auf das Manifest verweisen.
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest

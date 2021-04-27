@@ -2,26 +2,27 @@
 title: Beheben von Netzwerkproblemen mit der Registrierung
 description: Enthält eine Beschreibung der Symptome, Ursachen und Lösungen häufiger Probleme, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten.
 ms.topic: article
-ms.date: 10/01/2020
-ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/30/2021
+ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699605"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220112"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Beheben von Netzwerkproblemen mit der Registrierung
 
-Dieser Artikel enthält hilfreiche Informationen zum Beheben von Problemen, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten können. 
+Dieser Artikel hilft Ihnen bei der Fehlerbehebung von Problemen, die beim Zugriff auf eine Azure-Container-Registrierung in einem virtuellen Netzwerk oder hinter einer Firewall oder einem Proxy-Server auftreten können. 
 
 ## <a name="symptoms"></a>Symptome
 
 Beispiele für Symptome sind:
 
 * Images können nicht gepusht oder gepullt werden, und Sie erhalten den Fehler `dial tcp: lookup myregistry.azurecr.io`.
+* Images können nicht gepusht oder gepullt werden, und Sie erhalten den Fehler `Client.Timeout exceeded while awaiting headers`.
 * Images können nicht gepusht oder gepullt werden, und Sie erhalten den Azure CLI-Fehler `Could not connect to the registry login server`.
 * Images können nicht aus der Registrierung in Azure Kubernetes Service oder einen anderen Azure-Dienst gepullt werden.
-* Auf eine Registrierung hinter einem HTTPS-Proxy kann nicht zugegriffen werden, und Sie erhalten den Fehler `Error response from daemon: login attempt failed with status: 403 Forbidden`.
+* Auf eine Registrierung hinter einem HTTPS-Proxy kann nicht zugegriffen werden, und Sie erhalten den Fehler `Error response from daemon: login attempt failed with status: 403 Forbidden` oder `Error response from daemon: Get <registry>: proxyconnect tcp: EOF Login failed`
 * Die Einstellungen für das virtuelle Netzwerk können nicht konfiguriert werden, und die Fehlermeldung `Failed to save firewall and virtual network settings for container registry` wird angezeigt.
 * Das Zugreifen auf oder das Anzeigen von Registrierungseinstellungen im Azure-Portal oder das Verwalten der Registrierung mithilfe der Azure CLI ist nicht möglich.
 * Einstellungen für das virtuelle Netzwerk oder Regeln für den öffentlichen Zugriff können nicht hinzugefügt oder geändert werden.
@@ -41,7 +42,7 @@ Führen Sie den Befehl [az acr check-health](/cli/azure/acr#az-acr-check-health)
 
 Befehlsbeispiele finden Sie unter [Überprüfen der Integrität einer Azure-Containerregistrierung](container-registry-check-health.md). Wenn Fehler gemeldet werden, überprüfen Sie die [Fehlerreferenz](container-registry-health-error-reference.md) und die folgenden Abschnitte für empfohlene Lösungen.
 
-Wenn Sie Probleme bei Verwendung der Registrierung mit Azure Kubernetes Service haben, führen Sie den Befehl [az aks check-acr](/cli/azure/aks#az_aks_check_acr) aus, um zu überprüfen, ob der Zugriff auf die Registrierung vom AKS-Cluster aus möglich ist.
+Wenn Sie Probleme bei der Verwendung eines Azure-Kubernetes-Dienstes mit integrierter Registry haben, führen Sie den Befehl [az aks check-acrr](/cli/azure/aks#az_aks_check_acr) aus, um zu überprüfen, ob der AKS-Cluster die Registry erreichen kann.
 
 > [!NOTE]
 > Einige Symptome in Bezug auf die Netzwerkkonnektivität können auch auftreten, wenn es Probleme mit der Authentifizierung oder Autorisierung der Registrierung gibt. Weitere Informationen finden Sie unter [Beheben von Problemen mit der Registrierungsanmeldung](container-registry-troubleshoot-login.md).
@@ -57,7 +58,7 @@ Sie müssen die Firewallregeln für den Zugriff auf die öffentlichen REST- und 
 
 Konfigurieren Sie für eine Registrierung mit Georeplikation den Zugriff auf den Datenendpunkt für jedes regionale Replikat.
 
-Stellen Sie hinter einem HTTPS-Proxy sicher, dass sowohl Ihr Docker-Client als auch Ihr Docker-Daemon für das Proxyverhalten konfiguriert sind.
+Stellen Sie hinter einem HTTPS-Proxy sicher, dass sowohl Ihr Docker-Client als auch Ihr Docker-Daemon für das Proxyverhalten konfiguriert sind. Wenn Sie die Proxy Einstellungen für den Locker-Daemon ändern, stellen Sie sicher, dass Sie den Daemon neu starten. 
 
 Registrierungsressourcenprotokolle in der Tabelle „ContainerRegistryLoginEvents“ können als Hilfe beim Diagnostizieren einer blockierten Verbindungsherstellung dienen.
 

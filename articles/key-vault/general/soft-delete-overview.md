@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 7aeca89ed09182b7947b10f24c65b0cb58ed67ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d691c4c510f5ff00c34d03b7b8d7a7bcaa53c3f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452134"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554092"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
@@ -20,7 +20,7 @@ ms.locfileid: "102452134"
 > Sie müssen vorläufiges Löschen für Ihre Schlüsseltresore sofort aktivieren. Die Möglichkeit, vorläufiges Löschen abzuwählen, wird bald eingestellt. Ausführliche Informationen finden Sie [hier](soft-delete-change.md).
 
 > [!IMPORTANT]
-> Durch das vorläufige Löschen eines Tresors werden die Löscheinstellungen für Dienste ausgelöst, die mit Key Vault integriert sind, z. B. Azure RBAC-Rollenzuweisungen, Event Grid-Abonnements, Azure Monitor-Diagnoseeinstellungen. Nach der Wiederherstellung einer vorläufig gelöschten Key Vault-Instanz müssen die Einstellungen für die integrierten Dienste manuell neu erstellt werden. 
+> Weich-gelöschtes Tresor löst Löscheinstellungen für die Integration in Schlüssel-Tresor-Dienste aus, z. B. Azure RBAC-Rollenzuweisungen, Ereignisnetz-Abonnements. Nach der Wiederherstellung einer vorläufig gelöschten Key Vault-Instanz müssen die Einstellungen für die integrierten Dienste manuell neu erstellt werden. 
 
 Das Key Vault-Feature für vorläufiges Löschen ermöglicht die Wiederherstellung der gelöschten Tresore und Tresorobjekte, z. B. Schlüssel, Geheimnisse und Zertifikate. Insbesondere werden die folgenden Szenarien behandelt:  Dieser Schutz bietet die folgenden Schutzmaßnahmen:
 

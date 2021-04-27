@@ -77,25 +77,25 @@
     - name: Häufig gestellte Fragen (FAQ)
       items:
         - name: 'Häufig gestellte Fragen: Recovery Services-Tresore'
-          href: backup-azure-backup-faq.md
+          href: backup-azure-backup-faq.yml
         - name: 'Häufig gestellte Fragen: Backup Center'
           href: backup-center-faq.yml
         - name: 'Häufig gestellte Fragen: Azure-VM-Sicherung'
           href: backup-azure-vm-backup-faq.yml
         - name: 'Häufig gestellte Fragen: MARS-Agent'
-          href: backup-azure-file-folder-backup-faq.md
+          href: backup-azure-file-folder-backup-faq.yml
         - name: 'Häufig gestellte Fragen: Sichern von Azure Files'
-          href: backup-azure-files-faq.md
+          href: backup-azure-files-faq.yml
         - name: 'Häufig gestellte Fragen: Azure Disk Backup'
-          href: disk-backup-faq.md
+          href: disk-backup-faq.yml
         - name: 'Häufig gestellte Fragen: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern'
-          href: faq-backup-sql-server.md
+          href: faq-backup-sql-server.yml
         - name: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
-          href: sap-hana-faq-backup-azure-vm.md
+          href: sap-hana-faq-backup-azure-vm.yml
         - name: 'Häufig gestellte Fragen: Azure Backup Server und DPM'
-          href: backup-azure-dpm-azure-server-faq.md
+          href: backup-azure-dpm-azure-server-faq.yml
         - name: Häufig gestellte Fragen zur Azure Backup-Monitorwarnung
-          href: backup-azure-monitor-alert-faq.md
+          href: backup-azure-monitor-alert-faq.yml
     - name: Sichern der Architektur
       href: backup-architecture.md
     - name: Leitfaden und bewährte Methoden
@@ -224,10 +224,18 @@
       items:
         - name: Übersicht
           href: disk-backup-overview.md
-        - name: Backup
-          href: backup-managed-disks.md
-        - name: Restore
-          href: restore-managed-disks.md
+        - name: Über das Azure-Portal
+          items:
+            - name: Backup
+              href: backup-managed-disks.md
+            - name: Restore
+              href: restore-managed-disks.md
+        - name: Mit PowerShell
+          items:
+            - name: Backup
+              href: backup-managed-disks-ps.md
+            - name: Restore
+              href: restore-managed-disks-ps.md
     - name: Azure-Blobsicherung
       items:
         - name: Übersicht
@@ -452,7 +460,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/backup-security-baseline
     - name: Zugriffsebene
       items:
         - name: Archivzugriffsebene
@@ -492,7 +500,7 @@
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
     - name: 'PowerShell: Azure Backup-Agent'
-      href: /powershell/module/msonlinebackup/msonlinebackup
+      href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
     - name: REST – Sicherung
       href: /rest/api/backup/
     - name: REST – Recovery Services-Tresors
@@ -504,7 +512,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Compliance
+    - name: Kompatibilität
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021519"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Verwenden einen internen Lastenausgleichs mit einer App Service-Umgebung
@@ -58,7 +58,7 @@ Das Erstellen einer ILB-ASE unterscheidet sich nicht wesentlich vom Erstellen ei
 
 Im Bereich „Virtuelles Netzwerk“ gibt es eine Option für die VNET-Konfiguration, mit der Sie zwischen einer externen VIP oder einer internen VIP auswählen können. Die externe Adresse ist die Standardeinstellung. Wenn Sie „Extern“ festlegen müssen, verwendet Ihre ASE eine über das Internet zugängliche VIP. Bei Auswahl von „Intern“ wird Ihre ASE mit einem ILB unter einer IP-Adresse in Ihrem VNET konfiguriert. 
 
-Nach Auswahl der internen Adresse können Sie Ihrer ASE keine weiteren IP-Adressen hinzufügen, Sie müssen stattdessen die Unterdomäne der ASE bereitstellen. In einer ASE mit einer externen VIP-Adresse wird der Name der ASE in der Unterdomäne für Apps verwendet, die in dieser ASE erstellt werden. Wenn Ihre ASE als ***contosotest** _ und Ihre App in dieser ASE als _*_mytest_*_ benannt wurde, weist die Unterdomäne das Format _*_contosotest.p.azurewebsites.net_*_ auf, und die URL für die App lautet _*_mytest.contosotest.p.azurewebsites.net_**. Wenn Sie „Intern“ für den VIP-Typ festgelegt haben, wird Ihr ASE-Name in der Unterdomäne für die ASE nicht verwendet. Sie geben die Unterdomäne explizit an. Wenn Ihre Unterdomäne ***contoso.corp.net**_ heißt und Sie in dieser ASE eine App mit dem Namen _*_timereporting_*_ erstellt haben, lautet die URL für diese App _*_timereporting.contoso.corp.net_**.
+Nach Auswahl der internen Adresse können Sie Ihrer ASE keine weiteren IP-Adressen hinzufügen, Sie müssen stattdessen die Unterdomäne der ASE bereitstellen. In einer ASE mit einer externen VIP-Adresse wird der Name der ASE in der Unterdomäne für Apps verwendet, die in dieser ASE erstellt werden. Wenn Ihr ASE als * **contosotest** _ bezeichnet wird und Ihre App in diesem ASE _*_mytest_*_ heißt, hat die Subdomäne das Format _*_contosotest.p.azurewebsites.net_*_ und die URL für diese App lautet _*_mytest.contosotest.p.azurewebsites.net_**. Wenn Sie den VIP-Typ auf Intern einstellen, wird Ihr ASE-Name nicht in der Subdomäne für den ASE verwendet. Sie geben die Subdomain explizit an. Wenn Ihre Subdomäne ***contoso.corp.net**_ ist und Sie in diesem ASE eine App namens _*_timereporting_*_ erstellt haben, lautet die URL für diese App _*_timereporting.contoso.corp.net_**.
 
 ## <a name="apps-in-an-ilb-ase"></a>Apps in einer ILB-ASE
 Das Erstellen einer App in einer ILB-ASE entspricht dem normalen Erstellen einer App in einer ASE. 

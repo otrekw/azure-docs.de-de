@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 774c78cbb09d2e5e60dfc0cafc0082b25e9b1b45
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 5a73f4eba9581965470b95111e6dda1d8014e4cb
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103602858"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167497"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Konfigurieren der selektiven Kennworthashsynchronisierung für Azure AD Connect
 
@@ -26,7 +26,7 @@ Die [Kennworthashsynchronisierung](whatis-phs.md) ist eine der Anmeldemethoden, 
 Wenn Sie einen Teil der Benutzer von der Kennworthashsynchronisierung mit Azure AD ausschließen möchten, können Sie die selektive Kennworthashsynchronisierung mithilfe der in diesem Artikel beschriebenen Schritte konfigurieren.
 
 >[!Important]
-> Microsoft unterstützt die Änderung oder den Einsatz der Azure AD Connect-Synchronisierung außerhalb dieser formal dokumentierten Konfigurationen oder Aktionen nicht. Diese Konfigurationen oder Aktionen können zu einem inkonsistenten oder nicht unterstützten Status der Azure AD Connect-Synchronisierung führen. Folglich kann Microsoft auch keinen technischen Support für solche Bereitstellungen garantieren. 
+> Microsoft unterstützt die Änderung oder den Einsatz der Azure AD Connect-Synchronisierung außerhalb dieser formal dokumentierten Konfigurationen oder Aktionen nicht. Jede dieser Konfigurationen oder Aktionen kann zu einem inkonsistenten oder nicht unterstützten Zustand von Azure AD Connect sync führen. Infolgedessen kann Microsoft nicht garantieren, dass wir in der Lage sind, effizienten technischen Support für solche Bereitstellungen zu leisten. 
 
 
 ## <a name="consider-your-implementation"></a>Planen Ihrer Implementierung  
@@ -37,8 +37,11 @@ Um den Verwaltungsaufwand für die Konfiguration zu reduzieren, sollten Sie zun�
 > [!Important]
 > Nachdem Sie eine der beiden Konfigurationsoptionen ausgewählt haben, ist eine anfängliche Synchronisierung (vollständige Synchronisierung) erforderlich, um die Änderungen anzuwenden. Diese wird im nächsten Synchronisierungszyklus ausgeführt.
 
+> [!Important]
+> Das Konfigurieren der selektiven Kennwort-Hash-Synchronisierung übt einen direkten Einfluss auf das Kennwortrückschreiben aus. Kennwortänderungen oder Kennwortrücksetzungen, die in Azure Active Directory initiiert werden, werden nur dann in das lokale Active Directory zurückgeschrieben, wenn sich der Benutzer im Geltungsbereich der Kennwort-Hash-Synchronisierung befindet. 
+
 ### <a name="the-admindescription-attribute"></a>Das adminDescription-Attribut
-Bei beiden Szenarien wird das adminDescription-Attribut von Benutzern auf einen bestimmten Wert festgelegt.  Dadurch können die Regeln angewandt werden, durch die eine selektive Kennworthashsynchronisierung erst möglich wird.
+Bei beiden Szenarien wird das adminDescription-Attribut von Benutzern auf einen bestimmten Wert festgelegt.  Dies ermöglicht die Anwendung der Regeln und ist das, was das Funktionieren der selektive PHS ermöglicht.
 
 |Szenario|Wert von adminDescription|
 |-----|-----|
@@ -80,7 +83,7 @@ Im folgenden Abschnitt wird beschrieben, wie Sie die selektive Kennworthashsynch
 - Legen Sie in Active Directory für Benutzer, für die Sie die Kennworthashsynchronisierung zulassen möchten, den Attributwert fest, der als Bereichsattribut definiert wurde. 
 
 >[!Important]
->Die Schritte zum Konfigurieren der selektiven Kennworthashsynchronisierung wirken sich nur auf Benutzerobjekte aus, bei denen das **adminDescription**-Attribut in Active Directory auf den Wert **PHSFiltered** festgelegt wurde.
+>Die angegebenen Schritte zur Konfiguration der selektiven Kennwort-Hash-Synchronisierung wirken sich nur auf Benutzerobjekte aus, bei denen das Attribut **adminDescription** in Active Directory mit dem Wert **PHSFiltered** gefüllt ist.
 Wenn dieses Attribut nicht angegeben oder der Wert nicht auf **PHSFiltered** festgelegt wurde, werden diese Regeln nicht auf die Benutzerobjekte angewandt.
 
 
@@ -90,7 +93,7 @@ Wenn dieses Attribut nicht angegeben oder der Wert nicht auf **PHSFiltered** fes
      ![Starten des Synchronisierungsregel-Editors](media/how-to-connect-selective-password-hash-synchronization/exclude-1.png)
  2. Wählen Sie die Regel **Eingehend aus AD – Benutzerkonto aktiviert** für den Active Directory-Gesamtstrukturconnector aus, für den Sie die selektive Kennworthashsynchronisierung konfigurieren möchten, und klicken Sie auf **Bearbeiten**. Wählen Sie im nächsten Dialogfeld **Ja** aus, um eine bearbeitbare Kopie der ursprünglichen Regel zu erstellen.
      ![Auswählen der Regel](media/how-to-connect-selective-password-hash-synchronization/exclude-2.png)
- 3. Mit der ersten Regel wird die Kennworthashsynchronisierung deaktiviert. Geben Sie für die neue benutzerdefinierte Regel den folgenden Namen an: **Eingehend aus AD – Benutzerkonto aktiviert – Benutzer für Kennworthashsynchronisierung filtern**.
+ 3. Die erste Regel wird die Kennwort-Hash-Synchronisierung deaktivieren. Geben Sie der neuen benutzerdefinierten Regel den folgenden Namen: **In vom AD - User AccountEnabled - Filter Users from PHS**.
  Ändern Sie den Rangfolgenwert in eine Zahl unter 100 (z. B. **90** oder den niedrigsten Wert in Ihrer Umgebung).
  Stellen Sie sicher, dass die Kontrollkästchen **Kennwortsynchronisierung aktivieren** und **Deaktiviert** deaktiviert sind.
  Klicken Sie auf **Weiter**.
@@ -134,6 +137,9 @@ Wenn die gesamte Konfiguration abgeschlossen ist, müssen Sie das **adminDescrip
    
   ![Attribut bearbeiten](media/how-to-connect-selective-password-hash-synchronization/exclude-11.png)
 
+Sie können auch den folgenden PowerShell-Befehl verwenden, um das **adminDescription** -Attribut eines Benutzers zu bearbeiten:
+
+```Set-ADUser myuser -Replace @{adminDescription="PHSFiltered"}```
 
 ## <a name="excluded-users-is-larger-than-included-users"></a>Mehr ausgeschlossene als eingeschlossene Benutzer
 Im folgenden Abschnitt wird beschrieben, wie Sie die selektive Kennworthashsynchronisierung aktivieren, wenn die Anzahl der **auszuschließenden** Benutzer **größer** als die Anzahl der **einzuschließenden** Benutzer ist.
@@ -149,7 +155,7 @@ Im Folgenden finden Sie eine Zusammenfassung der Aktionen, die in den folgenden 
 - Legen Sie in Active Directory für Benutzer, für die Sie die Kennworthashsynchronisierung zulassen möchten, den Attributwert fest, der als Bereichsattribut definiert wurde. 
 
 >[!Important]
->Die Schritte zum Konfigurieren der selektiven Kennworthashsynchronisierung wirken sich nur auf Benutzerobjekte aus, bei denen das **adminDescription**-Attribut in Active Directory auf den Wert **PHSIncluded** festgelegt wurde.
+>Die angegebenen Schritte zur Konfiguration der selektiven Kennwort-Hash-Synchronisierung wirken sich nur auf Benutzerobjekte aus, bei denen das Attribut **adminDescription** im Active Directory mit dem Wert **PHSIncluded** ausgefüllt ist.
 Wenn dieses Attribut nicht angegeben oder der Wert nicht auf **PHSIncluded** festgelegt wurde, werden diese Regeln nicht auf die Benutzerobjekte angewandt.
 
 
@@ -159,7 +165,7 @@ Wenn dieses Attribut nicht angegeben oder der Wert nicht auf **PHSIncluded** fes
      ![Regeltyp](media/how-to-connect-selective-password-hash-synchronization/include-1.png)
  2. Wählen Sie die Regel **Eingehend aus AD – Benutzerkonto aktiviert** für die Active Directory-Gesamtstruktur aus, für die Sie die selektive Kennworthashsynchronisierung konfigurieren möchten, und klicken Sie auf **Bearbeiten**. Wählen Sie im nächsten Dialogfeld **Ja** aus, um eine bearbeitbare Kopie der ursprünglichen Regel zu erstellen.
      ![Eingehend aus AD](media/how-to-connect-selective-password-hash-synchronization/include-2.png)
- 3. Mit der ersten Regel wird die Kennworthashsynchronisierung deaktiviert. Geben Sie für die neue benutzerdefinierte Regel den folgenden Namen an: **Eingehend aus AD – Benutzerkonto aktiviert – Benutzer für Kennworthashsynchronisierung filtern**.
+ 3. Die erste Regel wird die Kennwort-Hash-Synchronisierung deaktivieren. Geben Sie der neuen benutzerdefinierten Regel den folgenden Namen: **In vom AD - User AccountEnabled - Filter Users from PHS**.
  Ändern Sie den Rangfolgenwert in eine Zahl unter 100 (z. B. **90** oder den niedrigsten Wert in Ihrer Umgebung).
  Stellen Sie sicher, dass die Kontrollkästchen **Kennwortsynchronisierung aktivieren** und **Deaktiviert** deaktiviert sind.
  Klicken Sie auf **Weiter**.
@@ -202,7 +208,9 @@ Wenn die gesamte Konfiguration abgeschlossen ist, müssen Sie das **adminDescrip
 
   ![Bearbeiten von Attributen](media/how-to-connect-selective-password-hash-synchronization/include-11.png)
  
- 
+ Sie können auch den folgenden PowerShell-Befehl verwenden, um das **adminDescription** -Attribut eines Benutzers zu bearbeiten:
+
+ ```Set-ADUser myuser -Replace @{adminDescription="PHSIncluded"}``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Was ist Kennworthashsynchronisierung?](whatis-phs.md)

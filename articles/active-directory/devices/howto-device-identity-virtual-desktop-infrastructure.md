@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: e5a4cc2b964bcf4fa49d90c8b6d5aa546b7148a1
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029346"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107944"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Geräteidentität und Desktopvirtualisierung
 
@@ -79,6 +79,8 @@ Administratoren sollten auf Grundlage ihrer Identitätsinfrastruktur die folgend
 - [Konfigurieren der Azure Active Directory-Hybrideinbindung für eine Verbundumgebung](hybrid-azuread-join-federated-domains.md)
 - [Konfigurieren der Azure Active Directory-Hybrideinbindung für eine verwaltete Umgebung](hybrid-azuread-join-managed-domains.md)
 
+### <a name="non-persistent-vdi"></a>Nicht persistente VDI-Plattform
+
 Microsoft empfiehlt IT-Administratoren, den folgenden Leitfaden zu implementieren, wenn eine nicht beständige VDI-Plattform bereitgestellt wird. Wenn dies nicht beachtet wird, enthält Ihr Verzeichnis eine Vielzahl veralteter, in Azure AD Hybrid eingebundener Geräte, die über Ihre nicht beständige VDI-Plattform registriert wurden. Dies erhöht den Druck auf die Mandantenkontingente und kann zu Dienstunterbrechungen führen, wenn die Anzahl der Mandantenkontingente nicht ausreicht.
 
 - Wenn Sie das Systemvorbereitungstool (sysprep.exe) und ein Image einer niedrigeren Version als Windows 10 1809 für die Installation verwenden, stellen Sie sicher, dass dieses Image nicht von einem Gerät stammt, das bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
@@ -92,6 +94,32 @@ Microsoft empfiehlt IT-Administratoren, den folgenden Leitfaden zu implementiere
 - Definieren und implementieren Sie einen Prozess zum [Verwalten veralteter Geräte](manage-stale-devices.md).
    - Sobald Sie über eine Strategie zum Identifizieren Ihrer nicht beständigen, in Azure AD Hybrid eingebundenen Geräte verfügen (z. B. die Verwendung eines Präfixes für den Computeranzeigenamen), können Sie die Bereinigung dieser Geräte aggressiver betreiben, um sicherzustellen, dass Ihr Verzeichnis nicht von vielen veralteten Geräten genutzt wird.
    - Für nicht beständige VDI-Bereitstellungen von aktuellen und kompatiblen Windows-Geräten sollten Sie Geräte löschen, deren **ApproximateLastLogonTimestamp** älter als 15 Tage ist.
+
+> [!NOTE]
+> Wenn Sie eine nicht-persistente VDI verwenden und einen Geräteverbindungsstatus verhindern möchten, stellen Sie sicher, dass der folgende Registrierungsschlüssel gesetzt ist:  
+> `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin"=dword:00000001`    
+>
+> Stellen Sie sicher, dass Sie Windows 10, Version 1803 oder höher, verwenden.  
+>
+> Das Roaming jeglicher Daten unter dem Pfad `%localappdata%` wird nicht unterstützt. Wenn Sie sich für das Verschieben von Inhalten unter `%localappdata%` entscheiden, stellen Sie sicher, dass der Inhalt der folgenden Ordner und Registrierungsschlüssel das Gerät **niemals** verlässt. Zum Beispiel: Profil-Migrations-Tools müssen die folgenden Ordner und Schlüssel auslassen:
+>
+> * `%localappdata%\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy`
+> * `%localappdata%\Packages\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy`
+> * `%localappdata%\Packages\<any app package>\AC\TokenBroker`
+> * `%localappdata%\Microsoft\TokenBroker`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AAD`
+>
+
+
+### <a name="persistent-vdi"></a>Dauerhafte VDI
+
+Microsoft empfiehlt IT-Administratoren, den folgenden Leitfaden zu implementieren, wenn eine persistente VDI-Plattform bereitgestellt wird. Andernfalls kann es zu Problemen bei der Bereitstellung und Authentifizierung kommen. 
+
+- Wenn Sie das Systemvorbereitungstool (sysprep.exe) und ein Image einer niedrigeren Version als Windows 10 1809 für die Installation verwenden, stellen Sie sicher, dass dieses Image nicht von einem Gerät stammt, das bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
+- Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass diese Momentaufnahme nicht von einem Computer stammt, der bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
+
+Zudem wird empfohlen, dass Sie einen Prozess zur [Verwaltung veralteter Geräte](manage-stale-devices.md) implementieren. Dadurch wird sichergestellt, dass Ihr Verzeichnis nicht von einer Vielzahl veralteter Geräte ausgelastet wird, wenn Sie Ihre VMs regelmäßig zurücksetzen.
  
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93305695"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
@@ -55,7 +55,7 @@ Standardmäßig enthält der kostenlose Dev/Test-Abrechnungsplan Ihrer Bereitste
 Sie können Ihren Abrechnungsplan [hier](https://services.azureml.net/plans/) verwalten.  Der Name des Plans basiert auf dem Namen der Ressourcengruppe, die Sie bei Bereitstellung der API ausgewählt haben, plus einer Zeichenfolge, die für Ihr Abonnement eindeutig ist.  Anweisungen zum Aktualisieren Ihres Plans stehen [hier](../classic/manage-new-webservice.md) im Abschnitt „Managing billing plans“ (Verwalten von Abrechnungsplänen) zur Verfügung.
 
 ## <a name="api-definition"></a>API-Definition
-Der Webdienst stellt eine REST-basierte API über HTTPS bereit, die auf unterschiedliche Weise genutzt werden kann, beispielsweise durch eine Web- oder mobile Anwendung, R, Python, Excel usw.  Sie senden Zeitreihendaten über einen REST-API-Aufruf an diesen Dienst, und dann wird eine Kombination der unten beschriebenen drei Anomaliearten ausgeführt.
+Der Webdienst bietet eine REST-basierte API über HTTPS, die auf verschiedene Weise genutzt werden kann, z. B. durch eine Web- oder mobile Anwendung, R, Python, Excel usw.  Sie senden Ihre Zeitreihendaten über einen REST-API-Aufruf an diesen Dienst, und er führt eine Kombination der drei unten beschriebenen Anomalietypen aus.
 
 ## <a name="calling-the-api"></a>Aufrufen der API
 Um die API aufrufen zu können, müssen Sie die Endpunktposition und den API-Schlüssel kennen.  Diese beiden Anforderungen sind zusammen mit dem Beispielcode für das Aufrufen der API auf der Seite der [Azure Machine Learning Studio-Webdienste (Classic)](https://services.azureml.net/webservices/) verfügbar.  Navigieren Sie zu der gewünschten API, und klicken Sie dann auf die Registerkarte „Nutzen“, um sie zu finden.  Sie können die API als Swagger-API (d. h. mit dem URL-Parameter `format=swagger`) oder als Nicht-Swagger-API (d. h. ohne `format`-URL-Parameter) aufrufen.  Im Beispielcode wird das Swagger-Format verwendet.  Im Folgenden finden Sie ein Beispiel für eine Anforderung und Antwort im Nicht-Swagger-Format.  Diese Beispiele gelten für den Saisonabhängigkeits-Endpunkt.  Der Nicht-Saisonabhängigkeits-Endpunkt ist ähnlich.
@@ -128,12 +128,12 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | Eingabeparameter | BESCHREIBUNG | Standardeinstellung | type | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historywindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
-| detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Beide |enumerated |Both, Spikes, Dips |Beide |
+| detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Both |enumerated |Both, Spikes, Dips |Both |
 | bileveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für bidirektionale Pegeländerungen. |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | trenddetector.sensitivity |Empfindlichkeit für Erkennungsmodul für positive Trends |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | tspikedetector.sensitivity |Empfindlichkeit für TSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
-| postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |– |
+| postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |Nicht zutreffend |
 
 ### <a name="output"></a>Ausgabe
 Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt.
@@ -164,10 +164,10 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | Eingabeparameter | BESCHREIBUNG | Standardeinstellung | type | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |Aggregationsintervall in Sekunden zum Aggregieren von Eingabezeitreihen |0 (keine Aggregation) |integer |0: Aggregation überspringen, andernfalls > 0 |5 Minuten bis 1 Tag, von Zeitreihe abhängig |
-| preprocess.aggregationFunc |Funktion zum Aggregieren von Daten im angegebenen AggregationInterval |mean |enumerated |mean, sum, length |– |
-| preprocess.replaceMissing |Werte zum Zuordnen fehlender Daten |lkv (last known value) |enumerated |zero, lkv, mean |– |
+| preprocess.aggregationFunc |Funktion zum Aggregieren von Daten im angegebenen AggregationInterval |mean |enumerated |mean, sum, length |Nicht zutreffend |
+| preprocess.replaceMissing |Werte zum Zuordnen fehlender Daten |lkv (last known value) |enumerated |zero, lkv, mean |Nicht zutreffend |
 | detectors.historywindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
-| detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Beide |enumerated |Both, Spikes, Dips |Beide |
+| detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Both |enumerated |Both, Spikes, Dips |Both |
 | bileveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für bidirektionale Pegeländerungen. |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | postrenddetector.sensitivity |Empfindlichkeit für Erkennungsmodul für positive Trends |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | negtrenddetector.sensitivity |Empfindlichkeit für Erkennungsmodul für negative Trends |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
@@ -175,8 +175,8 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | seasonality.enable |Gibt an, ob eine saisonabhängige Analyse durchgeführt wird. |true |boolean |true, false |Von Zeitreihe abhängig |
 | seasonality.numSeasonality |Maximale Anzahl von zu erkennenden periodischen Zyklen |1 |integer |1, 2 |1 - 2 |
-| seasonality.transform |Gibt an, ob saisonale (und) Trendkomponenten entfernt werden sollen, bevor die Anomalieerkennung angewendet wird. |deseason |enumerated |none, deseason, deseasontrend |– |
-| postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |– |
+| seasonality.transform |Gibt an, ob saisonale (und) Trendkomponenten entfernt werden sollen, bevor die Anomalieerkennung angewendet wird. |deseason |enumerated |none, deseason, deseasontrend |Nicht zutreffend |
+| postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |Nicht zutreffend |
 
 ### <a name="output"></a>Ausgabe
 Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt.

@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/06/2021
+ms.openlocfilehash: e1a6f1628f5dcd8570551f9cc13ef508b44732f8
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934171"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505143"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -16,7 +16,7 @@ Dieser Artikel bietet einen Überblick über die Benennungsregeln und -einschrä
 
 In diesem Artikel werden Ressourcen nach dem Ressourcenanbieter-Namespace aufgelistet. Eine Übersicht über die Zuordnung von Ressourcenanbietern und Azure-Diensten finden Sie unter [Ressourcenanbieter für Azure-Dienste](azure-services-resource-providers.md).
 
-Bei Ressourcennamen wird nicht zwischen Groß- und Kleinschreibung unterschieden, es sei denn, dies ist in der Spalte für gültige Zeichen ausdrücklich angegeben.
+Bei Ressourcennamen wird die Groß- und Kleinschreibung nicht beachtet, es sei denn, dies ist in der gültige Zeichen-Spalte vermerkt.
 
 In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 
@@ -599,7 +599,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | deployments | Ressourcengruppe | 1-64 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche und Punkte. |
-> | resourcegroups | Abonnement | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche, Punkte und Unicode-Zeichen entsprechend der [Dokumentation zu regulären Ausdrücken](/rest/api/resources/resources/resourcegroups/createorupdate).<br><br>Darf nicht mit einem Punkt enden. |
+> | resourcegroups | Abonnement | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche, Punkte und Unicode-Zeichen entsprechend der [Dokumentation zu regulären Ausdrücken](/rest/api/resources/resourcegroups/createorupdate).<br><br>Darf nicht mit einem Punkt enden. |
 > | tagNames | resource | 1–512 | Verwendung nicht möglich:<br>`<>%&\?/` |
 > | tagNames/tagValues | Tagname | 1–256 | Alle Zeichen. |
 > | templateSpecs | Ressourcengruppe | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche und Punkte. |
@@ -706,10 +706,12 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | --- | --- | --- | --- |
 > | certificates | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  | 
 > | serverfarms | Ressourcengruppe | 1–40 | Alphanumerische Zeichen und Bindestriche. |
-> | sites | Global | 2-60 | Alphanumerische Zeichen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
+> | sites | Global oder pro Domäne. Siehe Hinweis weiter unten. | 2-60 | Alphanumerische Zeichen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
 > | sites/slots | site | 2–59 | Alphanumerische Zeichen und Bindestriche. |
 
 > [!NOTE]
+> Eine Website muss eine weltweit eindeutige URL haben. Wenn Sie eine Website erstellen, die einen Hosting-Plan verwendet, ist die URL `http://<app-name>.azurewebsites.net`. Der App-Name muss global eindeutig sein. Wenn Sie eine Website erstellen, die eine APP Service-Umgebung verwendet, muss der Name der APP innerhalb der [Domäne für die APP Service-Umgebung](../../app-service/environment/using-an-ase.md#app-access)eindeutig sein. Die URL der Website ist in beiden Fällen global eindeutig.
+>
 > Azure Functions weist dieselben Benennungsregeln und -einschränkungen auf wie Microsoft.Web/sites.
 
 ## <a name="next-steps"></a>Nächste Schritte

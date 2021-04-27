@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7eca7d8f3cd40f4a3961f0ac478fba290be3041
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561890"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279662"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -175,10 +175,6 @@ In der folgenden Tabelle wird gezeigt, welche Leistungsstufen für Blobs bei den
 > [!IMPORTANT]
 > Das Ändern der Zugriffsebene für ein vorhandenes Speicherkonto oder Blob zieht möglicherweise zusätzliche Gebühren nach sich. Weitere Informationen finden Sie unter [Speicherkontoabrechnung](#storage-account-billing).
 
-## <a name="encryption"></a>Verschlüsselung
-
-Alle Daten in Ihrem Speicherkonto werden auf Dienstseite verschlüsselt. Weitere Informationen zur Verschlüsselung finden Sie unter [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md).
-
 ## <a name="storage-account-endpoints"></a>Speicherkontoendpunkte
 
 Ein Speicherkonto bietet einen eindeutigen Namespace für Ihre Daten in Azure. Jedes Objekt, das Sie in Azure speichern, besitzt eine Adresse, die den eindeutigen Namen Ihres Speicherkontos enthält. Die Kombination aus Kontoname und Azure Storage-Dienstendpunkt bildet die Endpunkte für Ihr Speicherkonto.
@@ -200,22 +196,17 @@ Erstellen Sie die URL für den Zugriff auf ein Objekt in einem Speicherkonto, in
 
 Sie können Ihr Speicherkonto auch für die Verwendung einer benutzerdefinierten Domäne konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure Storage-Konto](../blobs/storage-custom-domain-name.md).  
 
-## <a name="control-access-to-account-data"></a>Steuern des Zugriffs auf Kontodaten
+## <a name="migrating-a-storage-account"></a>Migrieren eines Speicherkontos
 
-Standardmäßig sind die Daten in Ihrem Konto nur für Sie als Kontobesitzer verfügbar. Sie können steuern, welche Personen auf Ihre Daten zugreifen dürfen und welche Berechtigungen diese Personen besitzen.
+Die folgende Tabelle fasst zusammen und verweist auf Anleitungen zum Ändern, Aktualisieren oder Migrieren eines Speicherkontos:
 
-Jede Anforderung, die für Ihr Speicherkonto gesendet wird, muss autorisiert werden. Auf Ebene des Diensts muss die Anforderung einen gültigen *Autorisierungsheader* aufweisen. Dieser Header enthält insbesondere alle Informationen, die der Dienst benötigt, um die Anforderung vor der Ausführung zu überprüfen.
-
-Sie können eine der folgenden Methoden verwenden, um Zugriff auf die Daten in Ihrem Speicherkonto zu gewähren:
-
-- **Azure Active Directory:** Verwenden Sie Anmeldeinformationen von Azure Active Directory (Azure AD), um einen Benutzer, eine Gruppe oder eine andere Identität für den Zugriff auf Blob- und Warteschlangendaten zu authentifizieren. Wenn die Authentifizierung einer Identität erfolgreich war, gibt Azure AD ein Token zurück, das zum Autorisieren der Anforderung bei Azure Blob Storage oder Azure Queue Storage verwendet wird. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).
-- **Autorisierung mit freigegebenen Schlüsseln**: Verwenden Sie den Zugriffsschlüssel für Ihr Speicherkonto, um eine Verbindungszeichenfolge zu erstellen, die Ihre Anwendung zur Laufzeit für den Zugriff auf Azure Storage verwendet. Die Werte in der Verbindungszeichenfolge werden verwendet, um den *Autorisierungsheader* zu generieren, der an Azure Storage übergeben wird. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
-- **Shared Access Signature (SAS):** Eine Shared Access Signature (SAS) ist ein Token, das delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto ermöglicht. Das SAS-Token kapselt alle Informationen, die zum Autorisieren einer Zugriffsanforderung für Azure Storage in der URL erforderlich sind. Beim Erstellen eines SAS können Sie die Berechtigungen angeben, die das Token einer Ressource erteilt, sowie den Zeitraum, in dem die Berechtigungen gültig sind. Ein SAS-Token kann mit Azure AD-Anmeldeinformationen oder einem gemeinsam genutzten Schlüssel signiert werden. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](storage-sas-overview.md).
-
-> [!NOTE]
-> Die Authentifizierung von Benutzern oder Anwendungen mithilfe von Azure AD-Anmeldeinformationen bietet mehr Sicherheit und Benutzerfreundlichkeit als andere Autorisierungsmethoden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen.
->
-> Microsoft empfiehlt, nach Möglichkeit die Azure AD-Autorisierung für Ihre Blob- und Warteschlangenanwendungen in Azure Storage zu verwenden.
+| Migrationsszenario | Details |
+|--|--|
+| Verschieben eines Speicherkontos in ein anderes Abonnement | Der Azure Resource Manager bietet Optionen zum Verschieben einer Ressource in ein anderes Abonnement. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
+| Verschieben Sie ein Speicherkonto in eine andere Ressourcengruppe | Der Azure Ressourcenmanager bietet Optionen zum Verschieben einer Ressource in eine andere Ressourcengruppe. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
+| Verschieben eines Speicherkontos in eine andere Region | Erstellen Sie eine Kopie Ihres Speicherkontos in einer anderen Region, um ein Speicherkonto zu verschieben. Verschieben Sie dann Ihre Daten in dieses Konto, indem Sie AzCopy oder ein anderes Tool Ihrer Wahl verwenden. Weitere Informationen finden Sie unter [Verschieben eines Azure Speicherkontos in eine andere Region](storage-account-move.md). |
+| Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“ | Sie können ein Allzweck v1-Speicherkonto oder ein Blob-Speicherkonto auf ein Allzweck v2-Konto aktualisieren. Diese Aktion kann nicht mehr rückgängig gemacht werden. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](storage-account-upgrade.md). |
+| Migrieren eines klassischen Speicherkontos zu Azure Ressourcenmanager | Das Azure Ressourcenmanager-Bereitstellungsmodell ist dem klassischen Bereitstellungsmodell im Hinblick auf Funktionalität, Skalierbarkeit und Sicherheit überlegen. Weitere Informationen zum Migrieren eines klassischen Speicher Kontos zu Azure Ressourcenmanager finden Sie unter [Migration von Speicher Konten](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts) in **der Platt Form gestützten Migration von IaaS-Ressourcen vom klassischen Modell zu Azure Ressourcenmanager**. |
 
 ## <a name="copying-data-into-a-storage-account"></a>Kopieren von Daten in ein Speicherkonto
 
@@ -239,6 +230,10 @@ Weitere Informationen zur Azure Storage REST-API finden Sie unter [Azure Storage
 
 > [!IMPORTANT]
 > Mit clientseitiger Verschlüsselung verschlüsselte Blobs speichern Metadaten im Zusammenhang mit der Verschlüsselung mit dem Blob. Wenn Sie einen mit clientseitiger Verschlüsselung verschlüsselten Blob kopieren, müssen Sie sicherstellen, dass die Blobmetadaten und insbesondere die verschlüsselungsbezogenen Metadaten beim Kopiervorgang erhalten bleiben. Wenn Sie einen Blob ohne die Verschlüsselungsmetadaten kopieren, ist der Blobinhalt nicht mehr abrufbar. Weitere Informationen zu den auf die Verschlüsselung bezogenen Metadaten finden Sie unter [Clientseitige Azure Storage-Verschlüsselung](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+## <a name="encryption"></a>Verschlüsselung
+
+Alle Daten in Ihrem Speicherkonto werden auf Dienstseite verschlüsselt. Weitere Informationen zur Verschlüsselung finden Sie unter [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md).
 
 ## <a name="storage-account-billing"></a>Speicherkontoabrechnung
 

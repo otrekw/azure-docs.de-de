@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e26def56fbd03626c3efc660db57012ee1b767ea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048203"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Problembehandlungsleitfaden für häufig bei Azure SignalR Service auftretende Probleme
 
@@ -348,7 +348,7 @@ In SDK 1.6.0 wurde für ASP.NET SignalR ein bekanntes Problem behoben. Führen 
 
 ## <a name="thread-pool-starvation"></a>Blockierung des Threadpools
 
-Wenn der Server blockiert ist, bedeutet das, dass von Threads keine Nachrichten verarbeitet werden. Sämtliche Threads hängen bei einer bestimmten Methode fest.
+Wenn der Server blockiert ist, bedeutet das, dass von Threads keine Nachrichten verarbeitet werden. Alle Threads reagieren nicht mit einer bestimmten Methode.
 
 Dieses Szenario wird normalerweise durch Async-over-Sync oder durch `Task.Result`/`Task.Wait()` in asynchronen Methoden verursacht.
 

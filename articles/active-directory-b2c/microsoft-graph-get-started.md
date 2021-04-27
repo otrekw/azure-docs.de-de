@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67870a458138101f3b8a009f7c96c74991396284
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0dcb959184e12ffa22ae25443087684123598e47
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98675185"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382459"
 ---
 # <a name="register-a-microsoft-graph-application"></a>Registrieren einer Microsoft Graph-Anwendung
 
@@ -56,31 +56,38 @@ Bevor Ihre Skripts und Anwendungen mit der [Microsoft Graph-API][ms-graph-api] i
 1. Wählen Sie **Registrieren**.
 1. Notieren Sie die **Anwendungs-ID (Client)** , die auf der Übersichtsseite der Anwendung angezeigt wird. Sie verwenden diesen Wert in einem späteren Schritt.
 
-### <a name="grant-api-access"></a>Gewähren des API-Zugriffs
+## <a name="grant-api-access"></a>Gewähren des API-Zugriffs
 
-Gewähren Sie als Nächstes der registrierten Anwendung die Berechtigungen zum Ändern der Mandantenressourcen über Aufrufe der Microsoft Graph-API.
+Damit Ihre Anwendung auf Daten in Microsoft Graph zugreifen kann, erteilen Sie der registrierten Anwendung die entsprechenden [Anwendungsberechtigungen](https://docs.microsoft.com/graph/permissions-reference). Die effektiven Berechtigungen Ihrer Anwendung entsprechen der vollen Stufe der Berechtigungen, die anhand der Berechtigung impliziert werden. Um zum Beispiel jeden Benutzer in Ihrem Azure AD B2C-Anker zu *erstellen*, zu *lesen*, zu *aktualisieren* und zu *löschen*, fügen Sie die Berechtigung **User.ReadWrite.All** hinzu. 
+
+> [!NOTE]
+> Die Berechtigung **User.ReadWrite.All** enthält nicht die Möglichkeit, Kennwörter von Benutzerkonten zu aktualisieren. Wenn Ihre Anwendung Benutzerkonten-Kennwörter aktualisieren muss, [erteilen Sie die Benutzer-Administrator-Rolle](#optional-grant-user-administrator-role). Beim Erteilen der [Benutzer-Administrator](../active-directory/roles/permissions-reference.md#user-administrator)-Rolle ist **User.ReadWrite.All** nicht erforderlich. Die Benutzer-Administrator-Rolle enthält alles, was zum Verwalten von Benutzern erforderlich ist.
+
+Sie können Ihrer Anwendung mehrere Anwendungsberechtigungen erteilen. Wenn Ihre Anwendung z. b. auch Gruppen in Ihrem Azure AD B2C Anker verwalten muss, fügen Sie die Berechtigung **Group.ReadWrite.All** ebenfalls hinzu. 
 
 [!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-### <a name="create-client-secret"></a>Erstellen eines geheimen Clientschlüssels
 
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+## <a name="optional-grant-user-administrator-role"></a>[Fakultativ] Benutzer-Administrator-Rolle erteilen
 
-Sie verfügen jetzt über eine Anwendung mit der Berechtigung zum *Erstellen*, *Lesen*, *Aktualisieren* und *Löschen* von Benutzern in Ihrem Azure AD B2C-Mandanten. Fahren Sie mit dem nächsten Abschnitt fort, um die Berechtigung *Kennwort aktualisieren* hinzuzufügen.
+Wenn Ihre Anwendung oder Ihr Skript Benutzer löschen oder deren Kennwörter aktualisieren muss, weisen Sie der Anwendung die Rolle *Benutzer-Administrator* zu. Die [Benutzer-Administrator](../active-directory/roles/permissions-reference.md#user-administrator) Rolle verfügt über einen festgelegten Satz Berechtigungen, den Sie Ihrer Anwendung gewähren. 
 
-## <a name="enable-user-delete-and-password-update"></a>Aktivieren der Berechtigungen zum Löschen von Benutzern und zum Aktualisieren von Kennwörtern
-
-Die Berechtigung *Lese- und Schreibzugriff auf Verzeichnisdaten* schließt **NICHT** die Möglichkeit ein, Benutzer zu löschen oder Kennwörter von Benutzerkonten zu ändern.
-
-Wenn Ihre Anwendung oder Ihr Skript Benutzer löschen oder deren Kennwörter aktualisieren soll, weisen Sie der Anwendung die Rolle *Benutzeradministrator* zu:
+Führen Sie die folgenden Schritte aus, um die *Benutzer-Administrator*-Rolle hinzuzufügen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wechseln Sie mit **Verzeichnis + Abonnement** zu Ihrem Azure AD B2C-Mandanten.
 1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** den Eintrag **Rollen und Administratoren** aus.
-1. Wählen Sie die Rolle **Benutzeradministrator** aus.
+1. Wählen Sie die Rolle **Benutzeradministrator** aus. 
 1. Wählen Sie **Zuweisungen hinzufügen** aus.
-1. Geben Sie im Textfeld **Auswählen** den Namen der zuvor registrierten Anwendung ein, z. B. *managementapp1*. Wählen Sie Ihre Anwendung aus, wenn sie in den Suchergebnissen angezeigt wird.
+1. Geben Sie im **Auswählen**-Textfeld den Namen oder die ID der Anwendung ein, die Sie zuvor registriert haben, z. B., *managementapp1*. Wählen Sie Ihre Anwendung aus, wenn sie in den Suchergebnissen angezeigt wird.
 1. Wählen Sie **Hinzufügen**. Es kann einige Minuten dauern, bis die Berechtigungen vollständig verteilt sind.
+
+## <a name="create-client-secret"></a>Erstellen eines geheimen Clientschlüssels
+
+Die Anwendung benötigt zum Beweis ihrer Identität einen geheimen Client-Schlüssel, wenn sie ein Token anfordert. Führen Sie folgende Schritte aus, um den geheimen Clientschlüssel hinzuzufügen:
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

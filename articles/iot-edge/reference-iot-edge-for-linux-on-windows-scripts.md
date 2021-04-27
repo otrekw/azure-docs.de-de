@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 0b49cf4fe28e2a9b4d15f889d227b443777b1efa
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: a24b39107d8f78c049afa230fe678ec92852eeb0
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889245"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959686"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>PowerShell-Skripts für IoT Edge für Linux unter Windows
 
@@ -41,17 +41,20 @@ Der Befehl **Deploy-Eflow** ist die Hauptbereitstellungsmethode. Der Bereitstell
 | registrationId | Die Registrierungs-ID eines vorhandenen IoT Edge-Geräts | Registrierungs-ID für die Bereitstellung eines IoT Edge-Geräts (**X509** oder **symmetrisch**). |
 | identityCertLocVm | Verzeichnispfad; muss sich in einem Ordner befinden, dessen Besitzer der `iotedge`-Dienst sein kann | Absoluter Zielpfad des Identitätszertifikats auf Ihrem virtuellen Computer für die Bereitstellung eines IoT Edge-Geräts (**X509** oder **symmetrisch**). |
 | identityCertLocWin | Verzeichnispfad | Absoluter Quellpfad des Identitätszertifikats in Windows für die Bereitstellung eines IoT Edge-Geräts (**X509** oder **symmetrisch**). |
-| identityPkLocVm |  | Verzeichnispfad; muss sich in einem Ordner befinden, dessen Besitzer der `iotedge`-Dienst sein kann | Absoluter Zielpfad des privaten Identitätsschlüssels auf Ihrem virtuellen Computer für die Bereitstellung eines IoT Edge-Geräts (**X509** oder **symmetrisch**). |
+| identityPkLocVm | Verzeichnispfad; muss sich in einem Ordner befinden, dessen Besitzer der `iotedge`-Dienst sein kann | Absoluter Zielpfad des privaten Identitätsschlüssels auf Ihrem virtuellen Computer für die Bereitstellung eines IoT Edge-Geräts (**X509** oder **symmetrisch**). |
 | identityPkLocWin | Verzeichnispfad | Absoluter Quellpfad des privaten Identitätsschlüssels in Windows für die Bereitstellung eines IoT Edge-Geräts (**X509** oder **symmetrisch**). |
 | vmSizeDefintion | Nicht länger als 30 Zeichen | Definition der Anzahl von Kernen und des verfügbaren RAM für den virtuellen Computer. **Standardwert**: Standard_K8S_v1. |
 | vmDiskSize | Zwischen 8 GB und 256 GB | Maximale Datenträgergröße der dynamisch erweiterbaren virtuellen Festplatte. **Standardwert**: 16 GB. |
 | vmUser | Nicht länger als 30 Zeichen | Benutzername für die Anmeldung am virtuellen Computer. |
-| vnetType | **Transparent** oder **ICS** | Der Typ des virtuellen Netzwerks. **Standardwert**: Transparent. |
+| vnetType | **Transparent** oder **ICS** | Der Typ des virtuellen Netzwerks. **Standardwert**: Transparent. Transparent bezieht sich auf einen externen Switch, während ICS sich auf einen internen Switch bezieht. |
 | vnetName | Nicht länger als 64 Zeichen | Der Name des virtuellen Netzwerks. **Standardwert**: Extern. |
 | enableVtpm | Keine | **Switch-Parameter:** Erstellen Sie den virtuellen Computer mit aktiviertem oder deaktiviertem TPM. |
 | mobyPackageVersion | Nicht länger als 30 Zeichen |  Version des Moby-Pakets, das auf dem virtuellen Computer überprüft oder installiert werden soll.  **Standardwert:** 19.03.11. |
 | iotedgePackageVersion | Nicht länger als 30 Zeichen | Version des IoT Edge-Pakets, das auf dem virtuellen Computer überprüft oder installiert werden soll. **Standardwert:** 1.1.0. |
 | installPackages | Keine | **Switch-Parameter:** Beim Umschalten versucht das Skript, die Pakete „Moby“ und „IoT Edge“ zu installieren, statt zu überprüfen, ob sie vorhanden sind. |
+
+>[!NOTE]
+>Wenn der Prozess keinen externen Switch mit dem Namen`External` findet, sucht er standardmäßig nach einem vorhandenen externen Switch, über den er eine IP-Adresse beziehen kann. Wenn kein externer Schalter vorhanden ist, sucht es nach einem internen Schalter. Wenn kein interner Switch verfügbar ist, wird es versuchen, den Standard-Switch zu erstellen, über den eine IP-Adresse bezogen werden kann.
 
 ## <a name="verify-eflowvm"></a>Verify-EflowVm
 
@@ -71,7 +74,7 @@ Der Befehl **Provision-EflowVm** fügt die Bereitstellungsinformationen für Ihr
 | registrationId | Die Registrierungs-ID eines vorhandenen IoT Edge-Geräts | Registrierungs-ID für die Bereitstellung eines IoT Edge-Geräts (**DPS**). |
 | identityCertLocVm | Verzeichnispfad; muss sich in einem Ordner befinden, dessen Besitzer der `iotedge`-Dienst sein kann | Absoluter Zielpfad des Identitätszertifikats auf Ihrem virtuellen Computer für die Bereitstellung eines IoT Edge-Geräts (**DPS**, **X509**). |
 | identityCertLocWin | Verzeichnispfad | Absoluter Quellpfad des Identitätszertifikats in Windows für die Bereitstellung eines IoT Edge-Geräts (**DPS**, **X509**). |
-| identityPkLocVm |  | Verzeichnispfad; muss sich in einem Ordner befinden, dessen Besitzer der `iotedge`-Dienst sein kann | Absoluter Zielpfad des privaten Identitätsschlüssels auf Ihrem virtuellen Computer für die Bereitstellung eines IoT Edge-Geräts (**DPS**, **X509**). |
+| identityPkLocVm  | Verzeichnispfad; muss sich in einem Ordner befinden, dessen Besitzer der `iotedge`-Dienst sein kann | Absoluter Zielpfad des privaten Identitätsschlüssels auf Ihrem virtuellen Computer für die Bereitstellung eines IoT Edge-Geräts (**DPS**, **X509**). |
 | identityPkLocWin | Verzeichnispfad | Absoluter Quellpfad des privaten Identitätsschlüssels in Windows für die Bereitstellung eines IoT Edge-Geräts (**DPS**, **X509**). |
 
 ## <a name="get-eflowvmname"></a>Get-EflowVmName
@@ -150,6 +153,6 @@ Mit dem Befehl **Ssh-EflowVm** wird eine SSH-Anmeldung am virtuellen Computer du
 
 Informationen zur Verwendung dieser Befehle finden Sie im folgenden Artikel:
 
-* [Installieren von Azure IoT Edge für Linux unter Windows](how-to-install-iot-edge-windows.md)
+* [Installieren von Azure IoT Edge für Linux unter Windows](./how-to-install-iot-edge-windows-on-windows.md)
 
 * Alle Befehle, die über PowerShell zur Verfügung stehen, finden Sie in der [Skriptreferenz zu IoT Edge für Linux in Windows PowerShell](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow).

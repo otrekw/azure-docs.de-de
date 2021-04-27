@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 24a538686e101d40daba008f30a72ffc5078047a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 05bfcc86c72d9eb393da919035ce198948b943f2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104674518"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559127"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)
 
@@ -52,14 +52,14 @@ Für das Microsoft Enterprise SSO-Plug-In für Apple-Geräte gelten folgende Anf
 - Das Gerät muss *in MDM registriert* sein, z. B. über Microsoft Intune.
 - Die Konfiguration muss *per Push auf das Gerät übertragen* werden, um das Enterprise SSO-Plug-In zu aktivieren. Diese Sicherheitseinschränkung wird von Apple verlangt.
 
-iOS-Anforderungen:
-- iOS ab Version 13.0 muss auf dem Gerät installiert sein.
-- Eine Microsoft-Anwendung, über die das Microsoft Enterprise SSO-Plug-In für Apple-Geräte bereitgestellt wird, muss auf dem Gerät installiert sein. In der öffentlichen Vorschauphase ist diese Anwendung die [Microsoft Authenticator-App](/intune/user-help/user-help-auth-app-overview.md).
+### <a name="ios-requirements"></a>iOS-Anforderungen:
+- iOS 13.0 oder höher muss auf dem Gerät installiert sein.
+- Eine Microsoft-Anwendung, über die das Microsoft Enterprise SSO-Plug-In für Apple-Geräte bereitgestellt wird, muss auf dem Gerät installiert sein. Während der öffentlichen Vorschauphase ist dies die [Microsoft Authenticator-App](/azure/active-directory/user-help/user-help-auth-app-overview).
 
 
-macOS-Anforderungen:
-- macOS ab Version 10.15 muss auf dem Gerät installiert sein. 
-- Eine Microsoft-Anwendung, über die das Microsoft Enterprise SSO-Plug-In für Apple-Geräte bereitgestellt wird, muss auf dem Gerät installiert sein. In der öffentlichen Vorschauphase ist diese Anwendung die [Intune-Unternehmensportal-App](/intune/user-help/enroll-your-device-in-intune-macos-cp.md).
+### <a name="macos-requirements"></a>macOS-Anforderungen:
+- macOS 10.15 oder höher muss auf dem Gerät installiert sein. 
+- Eine Microsoft-Anwendung, über die das Microsoft Enterprise SSO-Plug-In für Apple-Geräte bereitgestellt wird, muss auf dem Gerät installiert sein. Während der öffentlichen Vorschauphase ist dies die [Intune-Unternehmensportal-App](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp).
 
 ## <a name="enable-the-sso-plug-in"></a>Aktivieren des SSO-Plug-Ins
 
@@ -248,7 +248,7 @@ In diesem Fall wird SSO bereitgestellt, wenn die Anwendung eine Netzwerkanforder
 
 Zur Unterstützung des einmaligen Anmeldens für Apps ohne MSAL implementiert das SSO-Plug-In ein dem Windows-Browser-Plug-In vergleichbares Protokoll, das unter [Was ist ein primäres Aktualisierungstoken?](../devices/concept-primary-refresh-token.md#browser-sso-using-prt) beschrieben ist. 
 
-Im Vergleich zu MSAL-basierten Apps ist die Funktionsweise des SSO-Plug-Ins für Apps ohne MSAL transparenter, da die von den Apps bereitgestellte vorhandene Browseranmeldungsumgebung integriert wird. It integrates with the existing browser sign-in experience that apps provide. 
+Im Vergleich zu MSAL-basierten Apps verhält sich das SSO-Plug-in für nicht-MSAL-basierte Apps transparenter. Es integriert sich in die bestehende Browser-Anmeldeerfahrung, die Apps bieten. 
 
 Der Benutzer sieht die gewohnte Oberfläche und muss sich nicht in jeder Anwendung neu anmelden. Anstatt die native Kontoauswahl anzuzeigen, fügt das SSO-Plug-In beispielsweise der webbasierten Kontoauswahlumgebung SSO-Sitzungen hinzu. 
 

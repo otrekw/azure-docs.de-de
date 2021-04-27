@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 56db88bff5b0e92a3819670e200177f10609aaa8
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 822d50bca6bc1139e9b5f0554bcf9a56a8fcbd74
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029725"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532877"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Einbetten von Video Indexer-Widgets in Ihre Apps
 
@@ -97,13 +97,13 @@ Wenn Sie öffentliche Videos einbetten möchten, können Sie die URL wie folgt e
   
 #### <a name="private-videos"></a>Private Videos
 
-Wenn Sie ein privates Video einbetten möchten, müssen Sie ein Zugriffstoken übergeben. Verwenden Sie hierzu [Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?) im Attribut `src` des iframe-Elements:
+Wenn Sie ein privates Video einbetten möchten, müssen Sie ein Zugriffstoken übergeben. Verwenden Sie hierzu [Get Video Access Token](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Access-Token) im Attribut `src` des iframe-Elements:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
   
 ### <a name="provide-editing-insights-capabilities"></a>Bereitstellen von Funktionen zur Bearbeitung von Erkenntnissen
 
-Um Funktionen zur Bearbeitung von Erkenntnissen in Ihrem eingebetteten Widget bereitzustellen, müssen Sie ein Zugriffstoken übergeben, das Berechtigungen zur Bearbeitung enthält. Verwenden Sie [Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) mit `&allowEdit=true`.
+Um Funktionen zur Bearbeitung von Erkenntnissen in Ihrem eingebetteten Widget bereitzustellen, müssen Sie ein Zugriffstoken übergeben, das Berechtigungen zur Bearbeitung enthält. Verwenden Sie [Get Video Access Token](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Access-Token) mit `&allowEdit=true`.
 
 ## <a name="widgets-interaction"></a>Interaktion von Widgets
 

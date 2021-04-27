@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85505493"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Verwalten des Avere vFXT-Clusters
@@ -25,14 +25,14 @@ Diese Tabelle bietet eine Übersicht darüber, welche Tools für die einzelnen A
 
 | Aktion | Avere-Systemsteuerung | vfxt.py  | Azure-Portal |
 | --- | --- | --- | --- |
-| Hinzufügen von Clusterknoten | Nein | ja | Nein |
-| Entfernen von Clusterknoten | ja | Nein | Nein |
-| Beenden eines Clusterknotens | Ja (kann auch Dienste oder das System neu starten) | Nein | Das Herunterfahren einer Knoten-VM über das Portal wird als Knotenfehler interpretiert |
-| Starten eines beendeten Knotens | Nein | Nein | ja |
-| Zerstören eines einzelnen Clusterknotens | Nein | Nein | ja |
+| Hinzufügen von Clusterknoten | nein | ja | nein |
+| Entfernen von Clusterknoten | ja | nein | nein |
+| Beenden eines Clusterknotens | Ja (kann auch Dienste oder das System neu starten) | nein | Das Herunterfahren einer Knoten-VM über das Portal wird als Knotenfehler interpretiert |
+| Starten eines beendeten Knotens | nein | nein | ja |
+| Zerstören eines einzelnen Clusterknotens | nein | nein | ja |
 | Neustarten des Clusters |  |  |  |
-| Sicheres Herunterfahren oder Beenden des Clusters | ja | ja | Nein |
-| Zerstören des Clusters  | Nein | ja | Ja, aber die Datenintegrität wird nicht garantiert |
+| Sicheres Herunterfahren oder Beenden des Clusters | ja | ja | nein |
+| Zerstören des Clusters  | nein | ja | Ja, aber die Datenintegrität wird nicht garantiert |
 
 Detaillierte Anweisungen für die einzelnen Tools finden Sie unten.
 
@@ -71,7 +71,7 @@ Weitere Informationen finden Sie unter [Cluster > FXT-Knoten](<https://azure.git
 
 Auf der Einstellungsseite **Systemwartung** finden Sie Befehle zum Neustarten von Clusterdiensten, zum Neustarten des Clusters oder zum sicheren Herunterfahren des Clusters. Weitere Informationen finden Sie unter [Verwaltung > Systemwartung](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (in der Anleitung zu den Clustereinstellungen von Avere).
 
-Wenn ein Cluster mit dem Herunterfahren beginnt, veröffentlicht er Statusmeldungen auf der Registerkarte **Dashboard**. Nach einigen Augenblicken enden die Meldungen, und schließlich reagiert die Avere-Systemsteuerungssitzung nicht mehr. Dies bedeutet, dass der Cluster heruntergefahren wurde.
+Wenn ein Cluster mit dem Herunterfahren beginnt, werden Statusmeldungen auf der **Dashboard**-Registerkarte angezeigt. Nach einigen Augenblicken hören die Meldungen auf und schließlich reagiert die Avere Control Panel-Sitzung nicht mehr, was bedeutet, dass der Cluster heruntergefahren wurde.
 
 ## <a name="manage-the-cluster-with-vfxtpy"></a>Verwalten des Clusters mit vfxt.py
 

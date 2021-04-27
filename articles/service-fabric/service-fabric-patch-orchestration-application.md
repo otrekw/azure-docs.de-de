@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: e94b809513bda8edc7a51baf79ec05a2c9c77489
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614410"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448553"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -222,7 +222,7 @@ Sie können das POA-Verhalten entsprechend Ihren Anforderungen konfigurieren. Ü
 | WUOperationTimeOutInMinutes | Int <br>(Standard: *90*)                   | Gibt den Timeoutwert für jeden Windows Update-Vorgang an (Suchen/Herunterladen/Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
 | WURescheduleCount     | Int <br> (Standard: *5*)                  | Gibt an, wie oft der Dienst das Windows-Update maximal erneut plant, falls bei dem Vorgang wiederholt ein Fehler auftritt.          |
 | WURescheduleTimeInMinutes | Int <br>(Standard: *30*) | Das Intervall, nach dem der Dienst die Windows-Updates erneut plant, falls der Fehler weiterhin besteht. |
-| WUFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: *Wöchentlich, Mittwoch, 7:00:00*)     | Die Häufigkeit, mit der Windows-Updates installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT, HH:MM:SS (Beispiel: *Monatlich, 5, 12:22:32*). Zulässige Werte für das Feld _TT_ (Tag) sind Zahlen von 1 bis 28 und _last_. <br>– Wöchentlich, Tag, HH:MM:SS (Beispiel: *Wöchentlich, Dienstag, 12:22:32*)  <br>– Täglich, HH:MM:SS – Beispiel: *Täglich, 12:22:32*)  <br>– Woche, Tag, HH:MM:SS (Beispiel: *2, Freitag, 21:00:00* gibt 21:00 Uhr UTC am Freitag der 2. Woche jedes Monats an) <br>- *Keine* gibt an, dass keine Windows-Updates durchgeführt werden sollen.  <br><br> Die Zeitangaben erfolgen in UTC.|
+| WUFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: *Wöchentlich, Mittwoch, 7:00:00*)     | Die Häufigkeit, mit der Windows-Updates installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT, HH:MM:SS (Beispiel: *Monatlich, 5, 12:22:32*). Zulässige Werte für das Feld _TT_ (Tag) sind Zahlen von 1 bis 28 und _last_. <br>– Wöchentlich, Tag, HH:MM:SS (Beispiel: *Wöchentlich, Dienstag, 12:22:32*)  <br>– Täglich, HH:MM:SS – Beispiel: *Täglich, 12:22:32*)  <br>- MonthlyByWeekAndDay, Woche, Tag, HH:MM:SS (Beispiel: *MonthlyByWeekAndDay, 2, Freitag, 21:00:00* bedeutet 21:00 Uhr UTC am Freitag der 2. Woche jedes Monats) <br>- *Keine* gibt an, dass keine Windows-Updates durchgeführt werden sollen.  <br><br> Die Zeitangaben erfolgen in UTC.|
 | AcceptWindowsUpdateEula | Boolean <br>(Standardwert: *true*) | Wenn Sie dieses Flag festlegen, akzeptiert die Anwendung den Endbenutzer-Lizenzvertrag für Windows Update für den Besitzer des Computers.              |
 
 > [!TIP]

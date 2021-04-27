@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 354f64eb86cd545860c47562fba7ff43babe72ca
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: d7038b47bd4aba8f7747eef455f1e8dd3c77a695
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714144"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257342"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 
@@ -97,9 +97,9 @@ Nur vollständig kopieren |  Secondary
 
 Azure Backup unterstützt eine konsistente Datenübertragungsrate von 200 MBit/s für vollständige und differenzielle Sicherungen großer SQL-Datenbanken (von 500 GB). Um die optimale Leistung zu nutzen, stellen Sie Folgendes sicher:
 
-- Die zugrunde liegende VM (mit der SQL Server-Instanz, die die Datenbank hostet) ist mit dem erforderlichen Netzwerkdurchsatz konfiguriert. Wenn der maximale Durchsatz der VM weniger als 200 MBit/s beträgt, kann Azure Backup Daten nicht mit der optimalen Geschwindigkeit übertragen.<br>Außerdem muss für den Datenträger, der die Datenbankdateien enthält, ausreichend Durchsatz bereitgestellt werden. [Erfahren Sie mehr](../virtual-machines/disks-performance.md) über Datenträgerdurchsatz und -leistung auf Azure-VMs. 
+- Die zugrunde liegende VM (mit der SQL Server-Instanz, die die Datenbank hostet) ist mit dem erforderlichen Netzwerkdurchsatz konfiguriert. Wenn der maximale Durchsatz der VM weniger als 200 MBit/s beträgt, kann Azure Backup Daten nicht mit der optimalen Geschwindigkeit übertragen.<br></br>Außerdem muss für den Datenträger, der die Datenbankdateien enthält, ausreichend Durchsatz bereitgestellt werden. [Erfahren Sie mehr](../virtual-machines/disks-performance.md) über Datenträgerdurchsatz und -leistung auf Azure-VMs. 
 - Prozesse, die auf der VM ausgeführt werden, verbrauchen keine VM-Bandbreite. 
-- Die Sicherungszeitpläne sind auf eine Teilmenge von Datenbanken verteilt. Mehrere Sicherungen, die gleichzeitig auf einer VM ausgeführt werden, teilen sich die Netzwerknutzungsrate zwischen den Sicherungen. [Erfahren Sie mehr](faq-backup-sql-server.yml#can-i-control-how-many-concurrent-backups-run-on-the-sql-server-) über das Steuern der Anzahl gleichzeitiger Sicherungen.
+- Die Sicherungszeitpläne sind auf eine Teilmenge von Datenbanken verteilt. Mehrere Sicherungen, die gleichzeitig auf einer VM ausgeführt werden, teilen sich die Netzwerknutzungsrate zwischen den Sicherungen. [Erfahren Sie mehr](faq-backup-sql-server.md#can-i-control-how-many-concurrent-backups-run-on-the-sql-server) über das Steuern der Anzahl gleichzeitiger Sicherungen.
 
 >[!NOTE]
 > [Laden Sie den detaillierten Ressourcenplaner herunter](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx). Mit diesem können Sie die ungefähre Anzahl von geschützten Datenbanken berechnen, die basierend auf den VM-Ressourcen, der Bandbreite und der Sicherungsrichtlinie pro Server empfohlen werden.

@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c320c8497506a0269e65cd79e18aea1972354729
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 349aef1bb9382eec19d9ad9c7f6d4579c82b62de
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589521"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043936"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -43,7 +43,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
     >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](./reference-connect-version-history.md).
     
     >[!NOTE]
-    >Wenn Sie über einen ausgehenden HTTP-Proxy verfügen, stellen Sie sicher, dass die entsprechende URL „autologon.microsoftazuread-sso.com“ zur Whitelist hinzugefügt wurde. Sie sollten diese URL explizit angeben, da der Platzhalter möglicherweise nicht akzeptiert wird. 
+    >Wenn Sie einen ausgehenden HTTP-Proxy verwenden, vergewissern Sie sich, dass diese URL, autologon.microsoftazuread-sso.com, in der Liste der zulässigen URLs enthalten ist. Sie sollten diese URL explizit angeben, da der Platzhalter möglicherweise nicht akzeptiert wird. 
 
 * **Verwenden Sie eine unterstützte Azure AD Connect-Topologie:** Stellen Sie sicher, dass Sie eine der [hier](plan-connect-topologies.md) beschriebenen, von Azure AD Connect unterstützten Topologien verwenden.
 

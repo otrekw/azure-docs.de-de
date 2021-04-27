@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 04/09/2021
-ms.openlocfilehash: ae1b3cc41d709c28ba517d672eb98cb60a837a8d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 47686f457e2579ca8a643de6671c886effefa6f1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779073"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313520"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
@@ -27,7 +27,7 @@ Nach dem Auswählen der Anzahl von virtuellen Kernen und DTUs können Sie eine e
 * [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
 * [Azure portal](single-database-manage.md#the-azure-portal)
 * [PowerShell](/powershell/module/az.sql/set-azsqldatabase)
-* [Azure-Befehlszeilenschnittstelle](/cli/azure/sql/db#az_sql_db_update)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/sql/db#az-sql-db-update)
 * [REST-API](/rest/api/sql/databases/update)
 
 
@@ -133,7 +133,7 @@ Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank die höchste in d
 ### <a name="vcore-based-purchasing-model"></a>vCore-basiertes Kaufmodell
 
 - Speicher kann in Inkrementen von 1 GB bis zur maximalen Datenspeichergröße bereitgestellt werden. Die konfigurierbare Mindestdatenspeichergröße ist 1 GB. Informationen zur maximalen Größe der Datenspeicherung in den einzelnen Dienstzielen finden Sie auf den Dokumentationsseiten zu Ressourcenlimits unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](resource-limits-vcore-single-databases.md) sowie unter [Ressourcengrenzwerte für Einzeldatenbanken, die das DTU-Kaufmodell verwenden: Azure SQL-Datenbank](resource-limits-dtu-single-databases.md).
-- Datenspeicher für eine Einzeldatenbank kann durch Erhöhen oder Verringern der maximalen Größe über das [Azure-Portal](https://portal.azure.com), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az_sql_db_update) oder die [REST-API](/rest/api/sql/databases/update) bereitgestellt werden. Wenn der Wert für die maximale Größe in Bytes angegeben wird, muss er ein Vielfaches von 1 GB (1073741824 Bytes) sein.
+- Datenspeicher für eine Einzeldatenbank kann durch Erhöhen oder Verringern der maximalen Größe über das [Azure-Portal](https://portal.azure.com), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](/rest/api/sql/databases/update) bereitgestellt werden. Wenn der Wert für die maximale Größe in Bytes angegeben wird, muss er ein Vielfaches von 1 GB (1073741824 Bytes) sein.
 - Die Menge der Daten, die in den Datendateien einer Datenbank gespeichert werden kann, ist durch die konfigurierte maximale Größe des Datenspeichers begrenzt. Zusätzlich zu diesem Speicher teilt Azure SQL-Datenbank automatisch 30 Prozent mehr Speicher für das Transaktionsprotokoll zu.
 - Azure SQL-Datenbank ordnet für die `tempdb`-Datenbank automatisch 32 GB pro virtuellem Kern zu. `tempdb` befindet sich in allen Dienstebenen auf einem lokalen SSD-Datenträger.
 - Der Preis für Speicher für eine Einzeldatenbank oder einen Pool für elastische Datenbanken errechnet sich aus der Summe des Datenspeichers und des Transaktionsprotokollspeichers multipliziert mit dem Speichereinheitenpreis für die Dienstebene. Die Kosten für die `tempdb`-Datenbank sind im Preis enthalten. Ausführliche Informationen zu den Speicherpreisen finden Sie unter [Preise für Azure SQL-Datenbank ](https://azure.microsoft.com/pricing/details/sql-database/).
@@ -144,7 +144,7 @@ Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank die höchste in d
 ### <a name="dtu-based-purchasing-model"></a>DTU-basiertes Kaufmodell
 
 - Der DTU-Preis für eine einzelne Datenbank enthält eine bestimmte Menge Speicher ohne zusätzliche Kosten. Zusätzlicher Speicher über die inbegriffene Speichermenge hinaus kann gegen zusätzliche Gebühren bis zur Obergrenze in Inkrementen von 250 GB bis zu 1 TB und dann in Inkrementen von 256 GB über 1 TB hinaus bereitgestellt werden. Informationen zu enthaltenen Speichermengen und Maximalgrößen finden Sie unter [Einzeldatenbank: Speicher- und Computegrößen](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Zusätzlicher Speicher für eine Einzeldatenbank kann durch Erhöhen der maximalen Größe über das Azure-Portal, [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az_sql_db_update) oder die [REST-API](/rest/api/sql/databases/update) bereitgestellt werden.
+- Zusätzlicher Speicher für eine Einzeldatenbank kann durch Erhöhen der maximalen Größe über das Azure-Portal, [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](/rest/api/sql/databases/update) bereitgestellt werden.
 - Der Preis für zusätzlichen Speicher für eine Einzeldatenbank errechnet sich aus der Menge an zusätzlich bereitgestelltem Speicher multipliziert mit dem Einheitenpreis für zusätzlichen Speicher für die Dienstebene. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz finden Sie unter [Preise für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]

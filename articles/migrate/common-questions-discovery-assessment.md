@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: f9fe4109d2b21f7c44ba340db53dc24311652441
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c10963d28e0d2ecee73150e8b5af89cee96d28b2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782349"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077005"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -60,9 +60,9 @@ Für eine Bewertung vom Typ „Leistungsbasiert“ enthält der Bewertungsberich
 
 Überprüfen Sie Folgendes, um sicherzustellen, dass Leistungsdaten erfasst werden:
 
-- Ob die Computer mit SQL Server im Zeitraum, in dem Sie die Bewertung erstellen, eingeschaltet sind
-- Ob der SQL-Agent in Azure Migrate den Verbindungsstatus „Verbunden“ aufweist. (Überprüfen Sie auch den letzten Heartbeat.) 
-- Ob der Azure Migrate-Verbindungsstatus für alle SQL-Instanzen auf dem Blatt der ermittelten SQL-Instanz „Verbunden“ lautet
+- Sind die SQL Server-Instanzen für den Zeitraum, in dem Sie die Bewertung erstellen, eingeschaltet?
+- Weist der SQL-Agent in Azure Migrate den Verbindungsstatus „Verbunden“ auf? (Überprüfen Sie auch den letzten Heartbeat.) 
+- Lautet der Azure Migrate-Verbindungsstatus für alle SQL-Instanzen auf dem Blatt der ermittelten SQL-Instanz „Verbunden“?
 - Sollten alle Leistungsindikatoren fehlen, vergewissern Sie sich, dass ausgehende Verbindungen am Port 443 (HTTPS) zugelassen werden.
 
 Wenn einer der Leistungsindikatoren fehlt, empfiehlt die Azure SQL-Bewertung die kleinste Azure SQL-Konfiguration für die Instanz bzw. Datenbank.
@@ -76,15 +76,22 @@ Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ 
 - Die Bewertung kann die Leistungsdaten für einige oder alle Server im Bewertungszeitraum nicht erfassen. Für eine Bewertung mit hoher Konfidenz stellen Sie Folgendes sicher: 
     - Server sind für die Dauer der Bewertung eingeschaltet.
     - Ausgehende Verbindungen am Port 443 sind zugelassen.
-    - Für Hyper-V-Server ist dynamischer Arbeitsspeicher aktiviert. 
+    - Für Hyper-V-Server ist der dynamische Arbeitsspeicher aktiviert. 
     - Agents in Azure Migrate weisen den Verbindungsstatus „Verbunden“ auf. Überprüfen Sie auch den letzten Heartbeat.
     - In Azure SQL-Bewertungen lautet der Azure Migrate-Verbindungsstatus für alle SQL-Instanzen auf dem Blatt der ermittelten SQL-Instanz „Verbunden“.
 
     Führen Sie eine **Neuberechnung** der Bewertung durch, um die neuesten Änderungen bei der Zuverlässigkeitsstufe zu berücksichtigen.
 
-- Für Azure-VM- und Azure VMware Solution-Bewertungen: Nach dem Start der Ermittlung wurden einige Server erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige Server erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen Server zur Verfügung, und die Zuverlässigkeitsstufe wäre gering. [Weitere Informationen](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
+- Für Azure-VM- und Azure VMware Solution-Bewertungen: Nach dem Start der Ermittlung wurden einige Server erstellt. Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, einige Server in der Umgebung wurden jedoch erst letzte Woche erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen Server zur Verfügung, und die Zuverlässigkeitsstufe wäre gering. [Weitere Informationen](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
-- Bei Azure SQL-Bewertungen wurden einige SQL-Instanzen oder -Datenbanken nach dem Start der Ermittlung erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige SQL-Instanzen oder -Datenbanken erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen Server zur Verfügung, und die Zuverlässigkeitsstufe wäre gering. [Weitere Informationen](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+- Bei Azure SQL-Bewertungen wurden einige SQL-Instanzen oder -Datenbanken nach dem Start der Ermittlung erstellt. Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, einige SQL-Instanzen oder Datenbanken in der Umgebung wurden jedoch erst letzte Woche erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen Server zur Verfügung, und die Zuverlässigkeitsstufe wäre gering. [Weitere Informationen](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="-the-number-of-azure-vm-or-avs-assessments-on-the-discovery-and-assessment-tool-are-incorrect"></a>> Die Anzahl der Azure VM- oder AVS-Bewertungen auf dem Discovery- und Bewertungstool ist inkorrekt
+ Um dies zu beheben, klicken Sie auf die Gesamtzahl der Bewertungen, um zu allen Bewertungen zu navigieren und die Azure VM- oder AVS-Bewertung neu zu berechnen. Das Erkennungs- und Bewertungstool zeigt dann die korrekte Anzahl für diesen Bewertungstyp an.
+
+
+## <a name="i-want-to-try-out-the-new-azure-sql-assessment"></a>Ich möchte die neue Azure SQL-Bewertung testen
+Das Feature zur Ermittlung und Bewertung von SQL Server-Instanzen und -Datenbanken, die in Ihrer VMware-Umgebung ausgeführt werden, befindet sich nun in der Vorschauphase. Erste Schritte mit [diesem Tutorial](tutorial-discover-vmware.md). Falls Sie dieses Feature in einem vorhandenen Projekt ausprobieren möchten, sollten Sie sicherstellen, dass Sie die in diesem Artikel beschriebenen [Voraussetzungen](how-to-discover-sql-existing-project.md) erfüllt haben.
 
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Beim Erstellen einer Azure SQL-Bewertung werden einige Server nicht angezeigt.
 
@@ -140,7 +147,7 @@ Falls Ihre Instanz sowohl für Azure SQL-Datenbank als auch für Azure SQL Man
 Dieser Fall kann eintreten, wenn der in den Bewertungseigenschaften ausgewählte Zielbereitstellungstyp **Empfohlen** lautet und die SQL-Instanz nicht für Azure SQL-Datenbank und Azure SQL Managed Instance bereit ist. Dem Benutzer wird empfohlen, in Azure Migration eine Bewertung mit dem Bewertungstyp **Azure-VM** zu erstellen, um zu ermitteln, ob der Server, auf dem die Instanz ausgeführt wird, zu einem virtuellen Azure-Computer migriert werden kann.
 Dem Benutzer wird empfohlen, in Azure Migrate eine Bewertung mit dem Bewertungstyp **Azure-VM** zu erstellen, um zu ermitteln, ob der Server, auf dem die Instanz ausgeführt wird, stattdessen zu einem virtuellen Azure-Computer migriert werden kann.
 - Bei Bewertungen vom Typ „Azure-VM“ in Azure Migrate liegt das Hauptaugenmerk aktuell auf Lift & Shift-Migrationen, und die spezifischen Leistungsmetriken für die Ausführung von SQL-Instanzen und -Datenbanken auf dem virtuellen Azure-Computer werden nicht berücksichtigt. 
-- Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) für SQL Server auf virtuellen Azure-Computern.
+- Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) für SQL Server auf virtuellen Azure-Computern.
 
 ## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>In meiner Bewertung werden einige Datenbanken nicht angezeigt, obwohl die Instanz Teil der Bewertung ist.
 
@@ -148,7 +155,7 @@ Die Azure SQL-Bewertung enthält nur Datenbanken, die online sind. Bei Datenban
 
 ## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Ich möchte die Kosten für das Ausführen meiner SQL-Instanzen auf einem virtuellen Azure-Computer mit den Kosten für Azure SQL-Datenbank-Instanzen/Azure SQL Managed Instance vergleichen.
 
-Sie können eine Bewertung mit dem Typ **Azure-VM** in der gleichen Gruppe erstellen, die in Ihrer Bewertung vom Typ **Azure SQL** verwendet wurde. Anschließend können Sie die beiden Berichte miteinander vergleichen. Bei Bewertungen vom Typ „Azure-VM“ in Azure Migrate liegt das Hauptaugenmerk allerdings aktuell auf Lift & Shift-Migrationen, und die spezifischen Leistungsmetriken für die Ausführung von SQL-Instanzen und -Datenbanken auf dem virtuellen Azure-Computer werden nicht berücksichtigt. Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) für SQL Server auf virtuellen Azure-Computern.
+Sie können eine Bewertung mit dem Typ **Azure-VM** in der gleichen Gruppe erstellen, die in Ihrer Bewertung vom Typ **Azure SQL** verwendet wurde. Anschließend können Sie die beiden Berichte miteinander vergleichen. Bei Bewertungen vom Typ „Azure-VM“ in Azure Migrate liegt das Hauptaugenmerk allerdings aktuell auf Lift & Shift-Migrationen, und die spezifischen Leistungsmetriken für die Ausführung von SQL-Instanzen und -Datenbanken auf dem virtuellen Azure-Computer werden nicht berücksichtigt. Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) für SQL Server auf virtuellen Azure-Computern.
 
 ## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Die Speicherkosten in meiner Azure SQL-Bewertung liegen bei null.
 Für Azure SQL Managed Instance werden für die ersten 32 GB Speicher pro Instanz und Monat keine Speicherkosten hinzugefügt, und zusätzliche Speicherkosten werden in 32-GB-Schritten hinzugefügt. [Weitere Informationen](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)

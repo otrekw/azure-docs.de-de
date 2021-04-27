@@ -11,20 +11,27 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 03/16/2021
+ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 110a94c78427087f4ca5555f59055ab8e3bebcee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87c0ce72348f67c22759915a3a15c69193ad2f60
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592672"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552789"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in Privileged Identity Management
 
 Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann sich für Mitarbeiter im Laufe der Zeit ändern. Daher sollten Sie den Zugriff in regelmäßigen Abständen überprüfen, um das mit veralteten Rollenzuweisungen verbundene Risiko zu verringern. Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie Zugriffsüberprüfungen für den privilegierten Zugriff auf Azure-Ressourcenrollen erstellen. Sie können auch wiederholte Zugriffsüberprüfungen konfigurieren, die automatisch ausgeführt werden. In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüfungen erstellen.
+
+## <a name="prerequisite-license"></a>Voraussetzung Lizenz
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]. Weitere Informationen zu Lizenzen für PIM finden Sie unter [Lizenzanforderungen für die Verwendung von Privileged Identity Management](subscription-requirements.md).
+
+> [!Note]
+>  Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschau) mit einer in Ihrem Anker aktiven Azure Active Directory Premium P2-Edition durchführen. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich.
 
 ## <a name="prerequisite-role"></a>Erforderliche Rolle
 
@@ -34,9 +41,9 @@ Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) als Benutzer an, der einer der erforderlichen Rollen zugewiesen ist.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
-
-1. Wählen Sie im linken Menü die Option **Azure-Ressourcen** aus.
+1. Wählen Sie **Identitätsmanagement** aus
+ 
+1. Wählen Sie im linken Menü **Azure-Ressourcen** unter **Azure AD Privileged Identity Management** aus.
 
 1. Wählen Sie die Ressource aus, die Sie verwalten möchten, z. B. ein Abonnement.
 
@@ -58,9 +65,12 @@ Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann
 
 1. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Reihe kann auf drei Arten enden: Die Serie wird unendlich ausgeführt, um Überprüfungen ohne zeitliche Beschränkung zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie (oder ein anderer Benutzeradministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie unter **Einstellungen** das Datum ändern, sodass die Serie an diesem Datum endet.
 
-1. Wählen Sie im Abschnitt **Benutzer** eine oder mehrere Rollen aus, deren Mitgliedschaft überprüft werden soll.
+1. Wählen Sie im **Benutzerbereich** den Bereich der Bewertung aus. Um Benutzer zu überprüfen, wählen Sie **Benutzer oder wählen Sie (Vorschau) Dienstprinzipale**, um die Maschinenkonten mit Zugriff auf die Azure-Rolle zu überprüfen.   
 
     ![Benutzerbereich zum Überprüfen der Rollenmitgliedschaft](./media/pim-resource-roles-start-access-review/users.png)
+
+
+1. Wählen Sie unter **Überprüfen der Rollenmitgliedschaft** die privilegierten Azure-Rollen aus, die zu überprüfen sind. 
 
     > [!NOTE]
     > - Die hier ausgewählten Rollen enthalten [permanente und berechtigte Rollen](../privileged-identity-management/pim-how-to-add-role-to-user.md).
@@ -77,9 +87,9 @@ Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann
 
     ![Liste der Prüfer mit ausgewählten Benutzer oder Mitgliedern (selbst)](./media/pim-resource-roles-start-access-review/reviewers.png)
 
-    - **Ausgewählte Benutzer**: Verwenden Sie diese Option, wenn Sie nicht wissen, wer Zugriff benötigt. Mit dieser Option können Sie die Überprüfungsdurchführung einem Ressourcenbesitzer oder Gruppen-Manager zuweisen.
-    - **Mitglieder (selbst)** : Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen. 
-    - **Manager**: Verwenden Sie diese Option, wenn der Vorgesetzte des Benutzers seine Rollenzuweisung überprüfen soll. Wenn Sie „Manager“ auswählen, haben Sie auch die Möglichkeit, einen Fallbackprüfer anzugeben. Fallbackprüfer werden aufgefordert, eine Überprüfung für einen Benutzer durchzuführen, wenn für diesen kein Vorgesetzter (Manager) im Verzeichnis angegeben ist. 
+    - **Ausgewählte Benutzer** - Verwenden Sie diese Option, um einen bestimmten Benutzer zu bestimmen, der die Überprüfung durchführen soll. Diese Option ist unabhängig vom Gültigkeitsbereich der Überprüfung verfügbar, und die ausgewählten Prüfer können Benutzer, Gruppen und das Dienstprinzipal überprüfen. 
+    - **Mitglieder (selbst)** : Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen. Diese Option ist nur verfügbar, wenn die Überprüfung auf **Benutzer und Gruppen** beschränkt ist.
+    - **Manager**: Verwenden Sie diese Option, wenn der Vorgesetzte des Benutzers seine Rollenzuweisung überprüfen soll. Diese Option ist nur verfügbar, wenn die Überprüfung auf **Benutzer** beschränkt ist. Wenn Sie „Manager“ auswählen, haben Sie auch die Möglichkeit, einen Fallbackprüfer anzugeben. Fallbackprüfer werden aufgefordert, eine Überprüfung für einen Benutzer durchzuführen, wenn für diesen kein Vorgesetzter (Manager) im Verzeichnis angegeben ist. 
 
 ### <a name="upon-completion-settings"></a>Einstellungen nach Abschluss
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 01/20/2020
+ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 4d037bdf266e70a2621b2627bc88abce30af652c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624539"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612618"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
@@ -464,12 +464,13 @@ Im Folgenden finden Sie einige Aspekte, die Sie bei der Verwendung der rollenbas
 - Wenn einem Azure Active Directory-Benutzer zwei Rollen mit widersprüchlichen Abschnitten für Actions/NotActions zugewiesen wurden, sind die in NotActions aufgeführten Vorgänge für die eine Rolle möglicherweise nicht wirksam, wenn sie auch als Actions in einer anderen Rolle aufgeführt sind. Weitere Informationen dazu, wie Azure Rollenzuweisungen analysiert, finden Sie unter [Ermitteln des Benutzerzugriffs auf eine Ressource durch Azure-RBAC](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource).
 
 - Um Computeressourcen in einem VNET bereitstellen zu können, benötigen Sie explizite Berechtigungen für die folgenden Aktionen:
-    - `Microsoft.Network/virtualNetworks/join/action` für die VNet-Ressource.
+    - `Microsoft.Network/virtualNetworks/*/read` für die VNet-Ressourcen.
     - `Microsoft.Network/virtualNetworks/subnet/join/action` für die Subnetzressource.
     
     Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](../role-based-access-control/built-in-roles.md#networking).
 
 - Es kann bis zu einer Stunde dauern, bis neue Rollenzuweisungen über zwischengespeicherte Berechtigungen im gesamten Stapel wirksam werden.
+- Der [bedingte Zugriff](../role-based-access-control/conditional-access-azure-management.md) wird derzeit nicht mit Azure Machine Learning unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

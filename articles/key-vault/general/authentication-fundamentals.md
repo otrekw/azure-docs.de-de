@@ -1,18 +1,18 @@
 ---
 title: Grundlagen der Azure Key Vault-Authentifizierung
 description: Erfahren Sie, wie das Authentifizierungsmodell von Key Vault funktioniert.
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 04/15/2021
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: f0cd2fb341dd790a7628cc3cf6a5bdd87d7c3687
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753414"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363426"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Grundlagen der Key Vault-Authentifizierung
 
@@ -119,7 +119,7 @@ Key Vault-Rollenzuweisungen sind verschiedene in Azure integrierte Rollen mit al
 
 Weitere Informationen zu Azure RBAC für Key Vault finden Sie in den folgenden Dokumenten:
 
-* Azure RBAC für Key Vault [Link](rbac-guide.md)
+* Azure RBAC für Key Vault [Link](./secure-your-key-vault.md#management-plane-and-azure-rbac)
 * Azure RBAC-Rollen für Key Vault [Link](../../role-based-access-control/built-in-roles.md#key-vault-administrator)
 
 ## <a name="configure-key-vault-firewall"></a>Konfigurieren der Key Vault-Firewall
