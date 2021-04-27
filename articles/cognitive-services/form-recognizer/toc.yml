@@ -46,8 +46,9 @@
         - name: Verwenden von Containerinstanzen
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
-        - name: "Dokumentation zu Cognitive\_Services-Containern"
+        - name: "Gesamte Dokumentation zu Cognitive\_Services-Containern"
           href: ../containers/index.yml
+          maintainContext: true
     - name: Sichern und Wiederherstellen von Modellen
       href: disaster-recovery.md
     - name: Unternehmensfähigkeit
