@@ -12,10 +12,10 @@ ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 5dceeb11ed9a4d6af88650a6146f58db412748d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104579415"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
@@ -76,7 +76,7 @@ Unterstützte Anpassungen umfassen:
 
 ### <a name="settings"></a>Einstellungen
 
-Erweitern Sie die **Einstellungen**, um eine E-Mail-Adresse für den Empfang von Benachrichtigungen festzulegen und anzugeben, ob Sie Warnungen zu Fehlern erhalten möchten. Sie können auch den Bereich für die Benutzersynchronisierung festlegen. Außerdem können Sie auswählen, ob alle Benutzer und Gruppen oder nur die mit einer Zuweisung synchronisiert werden sollen.
+Erweitern Sie die **Einstellungen**, um eine E-Mail-Adresse für den Empfang von Benachrichtigungen festzulegen und anzugeben, ob Sie Warnungen zu Fehlern erhalten möchten. Sie können auch den Umfang der zu synchronisierenden Benutzer auswählen. Sie können wählen, ob alle Benutzer und Gruppen synchronisiert werden sollen oder nur die, die zugewiesen sind.
 
 ### <a name="provisioning-status"></a>Bereitstellungsstatus 
 

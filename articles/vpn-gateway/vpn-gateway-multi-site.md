@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
 ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94660694"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Hinzufügen einer Standort-zu-Standort-Verbindung mit einem VNet über eine vorhandene VPN-Gatewayverbindung (klassisch)
@@ -63,7 +63,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-## <a name="1-create-a-site-to-site-vpn"></a>1. Erstellen eines Standort-zu-Standort-VPN
+## <a name="1-create-a-site-to-site-vpn"></a>1. Erstellen Sie ein Site-to-Site-VPN
 Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit dynamischem Routing. In diesem Fall können Sie direkt mit dem [Exportieren der Konfigurationseinstellungen für das virtuelle Netzwerk](#export)fortfahren. Andernfalls führen Sie die folgenden Schritte aus:
 
 ### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>Wenn Sie bereits über ein virtuelles Standort-zu-Standort-Netzwerk verfügen, für dieses aber ein Gateway mit statischem (richtlinienbasiertem) Routing konfiguriert ist, gehen Sie wie folgt vor:
@@ -74,7 +74,7 @@ Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit d
 1. Erstellen Sie mithilfe der Anweisungen unter [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung](./vpn-gateway-howto-site-to-site-classic-portal.md) das Site-to-Site-VPN-Netzwerk.  
 2. Konfigurieren Sie anhand der folgenden Anweisungen ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN Gateways](./vpn-gateway-howto-site-to-site-classic-portal.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
 
-## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
+## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. Exportieren Sie die Netzwerkkonfigurationsdatei
 
 Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten. Verwenden Sie den folgenden Befehl, um zur Dienstverwaltung zu wechseln:
 
@@ -94,7 +94,7 @@ Exportieren Sie Ihre Azure-Netzwerkkonfigurationsdatei, indem Sie den folgenden 
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-## <a name="3-open-the-network-configuration-file"></a>3. Öffnen der Netzwerkkonfigurationsdatei
+## <a name="3-open-the-network-configuration-file"></a>3. Öffnen Sie die Netzwerkkonfigurationsdatei
 Öffnen Sie die Netzwerkkonfigurationsdatei, die Sie im letzten Schritt heruntergeladen haben. Verwenden Sie dazu einen beliebigen XML-Editor. Die Datei sollte in etwa wie folgt aussehen:
 
 ```xml
@@ -146,7 +146,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 </NetworkConfiguration>
 ```
 
-## <a name="4-add-multiple-site-references"></a>4. Hinzufügen von mehreren Standortverweisen
+## <a name="4-add-multiple-site-references"></a>4. Fügen Sie mehrere Standortverweise hinzu
 Beim Hinzufügen oder Entfernen der Informationen für Standortverweise nehmen Sie Konfigurationsänderungen an „ConnectionsToLocalNetwork/LocalNetworkSiteRef“ vor. Wenn Sie einen neuen Verweis für einen lokalen Standort hinzufügen, erstellt Azure einen neuen Tunnel. Das folgende Beispiel zeigt die Netzwerkkonfiguration für eine Einzelstandortverbindung. Speichern Sie die Datei, wenn Sie alle Änderungen vorgenommen haben.
 
 ```xml
@@ -168,10 +168,10 @@ Zum Hinzufügen zusätzlicher Standortverweise (Erstellen einer Konfiguration mi
   </Gateway>
 ```
 
-## <a name="5-import-the-network-configuration-file"></a>5. Importieren der Netzwerkkonfigurationsdatei
+## <a name="5-import-the-network-configuration-file"></a>5. Importieren Sie die Netzwerkkonfigurationsdatei
 Importieren Sie die Netzwerkkonfigurationsdatei. Wenn Sie diese Datei mit den Änderungen importieren, werden die neuen Tunnel hinzugefügt. Die Tunnel verwenden das dynamische Gateway, das Sie zuvor erstellt haben. Sie können PowerShell verwenden, um die Datei zu importieren.
 
-## <a name="6-download-keys"></a>6. Herunterladen der Schlüssel
+## <a name="6-download-keys"></a>6. Laden Sie die Schlüssel herunterl
 Nachdem die neuen Tunnel hinzugefügt wurden, rufen Sie mit dem PowerShell-Cmdlet „Get-AzureVNetGatewayKey“ die vorinstallierten IPsec-/IKE-Schlüssel für jeden Tunnel ab.
 
 Beispiel:
@@ -183,7 +183,7 @@ Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
 
 Sie können auch die REST-API *Get Virtual Network Gateway Shared Key* zum Abrufen der vorinstallierten Schlüssel verwenden.
 
-## <a name="7-verify-your-connections"></a>7. Überprüfen der Verbindungen
+## <a name="7-verify-your-connections"></a>7. Überprüfen Sie Ihre Verbindungen
 Überprüfen Sie den Multisite-Tunnelstatus. Nachdem Sie die Schlüssel für jeden Tunnel heruntergeladen haben, sollten Sie die Verbindungen überprüfen. Verwenden Sie wie im folgenden Beispiel gezeigt „Get-AzureVnetConnection“, um eine Liste der virtuellen Netzwerktunnel abzurufen. „VNet1“ ist der Name des VNets.
 
 ```powershell

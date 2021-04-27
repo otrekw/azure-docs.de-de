@@ -7,10 +7,10 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.openlocfilehash: 020278bf6e5a823f6b3caa22d03f4b5dd003c0d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104608583"
 ---
 # <a name="configuring-jmx-metrics"></a>Konfigurieren von JMX-Metriken
@@ -29,7 +29,7 @@ Zum Anzeigen und Durchsuchen der verfügbaren Metriken wird die Verwendung von [
 
 ### <a name="how-to-navigate-the-java-mission-control-to-get-to-the-right-metrics"></a>Wie navigiere in JMC zum Abrufen der richtigen Metriken?
 
-Wenn Sie das JMC-Tool ausführen, wird Ihnen auf der linken Seite eine Auswahl der verfügbaren JVM-Instanzen (Java Virtual Machine) angezeigt. Klicken Sie auf der Registerkarte „JVM Browser“ auf den entsprechenden Prozess. Warten Sie darauf, dass JMC das Dashboard für den Prozess geladen hat, und wählen Sie unten die Registerkarte „MBean Browser“ aus (siehe unten). JMC muss sich im gleichen Ordner wie JVM befinden, und Ihr Prozess bzw. Ihre App muss ausgeführt werden.
+Wenn Sie das Java Mission Control-Tool ausführen, haben Sie auf der linken Seite eine Auswahl von JVMs zur Verfügung, klicken Sie auf den entsprechenden Prozess unter der Registerkarte 'JVM Browser'. Warten Sie, bis JMC das Dashboard für den Prozess lädt, und wählen Sie unten den Reiter 'MBean Browser' (siehe unten). JMC muss sich im gleichen Ordner wie JVM befinden, und Ihr Prozess bzw. Ihre App muss ausgeführt werden.
 
 ![Screenshot: JMC MBean-Browser](media/java-ipa/jmx/jmc-mbean-browser.png)
 

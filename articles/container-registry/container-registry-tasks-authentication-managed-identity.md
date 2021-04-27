@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: 19d63861a98884ff2f5103946c19e2226c4b14b7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781161"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "98915946"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Verwenden einer verwalteten Azure-Identität in ACR Tasks 
 
@@ -42,13 +42,13 @@ Sie können in einem ACR-Task entweder einen Identitätstyp oder beide Typen akt
 
 Führen Sie die folgenden allgemeinen Schritte aus, um eine verwaltete Identität bei einem ACR-Task zu verwenden.
 
-### <a name="1-optional-create-a-user-assigned-identity"></a>1. (Optional) Erstellen einer benutzerseitig zugewiesenen Identität
+### <a name="1-optional-create-a-user-assigned-identity"></a>1. (Fakultativ) Erstellen Sie eine dem Benutzer zugewiesene Identität
 
 Wenn Sie beabsichtigen, eine vom Benutzer zugewiesene Identität zu verwenden, verwenden Sie eine vorhandene Identität, oder erstellen Sie die Identität mithilfe der Azure CLI oder anderer Azure-Tools. Verwenden Sie beispielsweise den Befehl [az identity create][az-identity-create]. 
 
 Wenn Sie nur eine vom System zugewiesene Identität verwenden möchten, überspringen Sie diesen Schritt. Sie erstellen eine vom System zugewiesene Identität, wenn Sie den ACR-Task erstellen.
 
-### <a name="2-enable-identity-on-an-acr-task"></a>2. Aktivieren der Identität für einen ACR-Task
+### <a name="2-enable-identity-on-an-acr-task"></a>2. Aktivieren Sie die Identität bei einer ACR-Aufgabe
 
 Wenn Sie einen ACR-Task erstellen, aktivieren Sie optional eine benutzerseitig zugewiesene Identität, eine vom System zugewiesene Identität oder beide Identitäten. Übergeben Sie beispielsweise den Parameter `--assign-identity`, wenn Sie den Befehl [az acr task create][az-acr-task-create] in der Azure CLI ausführen.
 
@@ -82,7 +82,7 @@ Sie können die Ressourcen-ID der Identität durch Ausführen des Befehls [az id
 "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. Erteilen der Identitätsberechtigungen für den Zugriff auf andere Azure-Ressourcen
+### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. Erteilen Sie der Identitätsberechtigungen für den Zugriff auf andere Azure-Ressourcen
 
 Gewähren Sie den Identitätsberechtigungen – je nach den Anforderungen ihres Tasks – Zugriff auf andere Azure-Ressourcen. Beispiele:
 
@@ -101,7 +101,7 @@ az role assignment create \
   --role acrpull
 ```
 
-### <a name="4-optional-add-credentials-to-the-task"></a>4. (Optional) Hinzufügen von Anmeldeinformationen zum Task
+### <a name="4-optional-add-credentials-to-the-task"></a>4. (Fakultativ) Fügen Sie der Aufgabe Anmeldeinformationen hinzu
 
 Wenn Ihr Task Anmeldeinformationen benötigt, um Images per Pull oder Push in eine andere benutzerdefinierte Registrierung zu übertragen oder um auf andere Ressourcen zuzugreifen, fügen Sie dem Task Anmeldeinformationen hinzu. Führen Sie den Befehl [az acr task credential add][az-acr-task-credential-add] aus, um Anmeldeinformationen hinzuzufügen, und übergeben Sie den Parameter `--use-identity`, um anzugeben, dass die Identität auf die Anmeldeinformationen zugreifen kann. 
 
@@ -115,7 +115,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Wenn Sie Anmeldeinformationen für eine benutzerseitig zugewiesene Identität hinzufügen möchten, um eine Authentifizierung mit der Registrierung *targetregistry* durchzuführen, übergeben Sie `use-identity` mit dem Wert *client ID* der Identität. Zum Beispiel:
+Wenn Sie Anmeldeinformationen für eine benutzerseitig zugewiesene Identität hinzufügen möchten, um eine Authentifizierung mit der Registrierung *targetregistry* durchzuführen, übergeben Sie `use-identity` mit dem Wert *client ID* der Identität. Beispiel:
 
 ```azurecli
 az acr task credential add \
@@ -127,7 +127,7 @@ az acr task credential add \
 
 Sie können die Client-ID der Identität abrufen, indem Sie den Befehl [az identity show][az-identity-show] ausführen. Die Client-ID ist eine GUID mit den Format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
-### <a name="5-run-the-task"></a>5. Ausführen des Tasks
+### <a name="5-run-the-task"></a>5. Führen Sie die Aufgabe aus
 
 Nachdem Sie einen Task mit einer verwalteten Identität konfiguriert haben, führen Sie den Task aus. Wenn Sie z. B. einen der in diesem Artikel erstellten Tasks testen möchten, lösen Sie ihn mit dem Befehl [az acr task run][az-acr-task-run] manuell aus. Wenn Sie zusätzliche automatisierte Tasktrigger konfiguriert haben, wird der Task bei automatischer Auslösung ausgeführt.
 
@@ -140,10 +140,10 @@ In diesem Artikel haben Sie erfahren, wie Sie eine benutzerseitig oder vom Syste
 
 
 <!-- LINKS - Internal -->
-[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
-[az-identity-create]: /cli/azure/identity#az_identity_create
-[az-identity-show]: /cli/azure/identity#az_identity_show
-[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
-[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
-[az-acr-task-credential-add]: /cli/azure/acr/task/credential#az_acr_task_credential_add
+[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[az-identity-create]: /cli/azure/identity#az-identity-create
+[az-identity-show]: /cli/azure/identity#az-identity-show
+[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
+[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-acr-task-credential-add]: /cli/azure/acr/task/credential#az-acr-task-credential-add
 [azure-cli-install]: /cli/azure/install-azure-cli

@@ -2,21 +2,19 @@
 title: Überwachung und Warnungen für Azure Key Vault | Microsoft-Dokumentation
 description: Erstellen Sie ein Dashboard zum Überwachen der Integrität Ihres Schlüsseltresors, und konfigurieren Sie Warnungen.
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/06/2020
-ms.author: sudbalas
-Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 523f24a7d8131dda67244e4d48510d9e1cb7cdb4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: f8f9dd6d51b974ebd31804daf0402ca5535ffc92
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582628"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751578"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Überwachung und Warnungen für Azure Key Vault
 
@@ -28,7 +26,7 @@ Sobald Sie damit begonnen haben, Ihre Produktionsgeheimnisse im Schlüsseltresor
 + Konfigurieren von Metriken und Erstellen eines Dashboards
 + Erstellen von Warnungen bei angegebenen Schwellenwerten
 
-Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. [Hier erfahren Sie mehr über Azure Monitor für Key Vault.](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview#introduction-to-azure-monitor-for-key-vault)
+Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. [Erfahren Sie hier mehr über Azure Monitor für den Schlüsseltresor](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview#introduction-to-azure-monitor-for-key-vault)
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>Grundlegende Key Vault-Metriken für die Überwachung
 

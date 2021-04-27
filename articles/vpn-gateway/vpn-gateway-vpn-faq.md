@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 03/29/2021
 ms.author: yushwang
-ms.openlocfilehash: 8ca50ae77d9d9e200db3318b8e087b72697c343a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 3d29e99f3b539fdbea2a19df7ffc25d4e41a5376
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953455"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731257"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -195,6 +195,10 @@ Dieser Abschnitt gilt für das Ressourcen-Manager-Bereitstellungsmodell.
 ## <a name="vnet-to-vnet-and-multi-site-connections"></a><a name="V2VMulti"></a>VNet-zu-VNet- und Multi-Site-Verbindungen
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
+
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>Wie aktiviere ich das Routing zwischen meiner Standort-zu-Standort-VPN-Verbindung und meinem ExpressRoute?
+
+Wenn Sie das Routing zwischen Ihrer Filiale, die mit ExpressRoute verbunden ist, und Ihrer Filiale, die mit einer Standort-zu-Standort-VPN-Verbindung verbunden ist, aktivieren möchten, müssen Sie den [Azure Route Server](../route-server/expressroute-vpn-support.md) einrichten.
 
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>Kann ich mit dem Azure-VPN Gateway Datenverkehr zwischen meinen lokalen Standorten oder an ein anderes virtuelles Netzwerk übertragen?
 

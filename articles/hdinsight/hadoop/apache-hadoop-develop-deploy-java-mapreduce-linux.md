@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
 ms.openlocfilehash: 7c1a6623883cbee46ba98982808f3c392dc50ffa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946652"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Entwickeln von Java MapReduce-Programmen für Apache Hadoop in HDInsight
@@ -41,7 +41,7 @@ cd C:\HDI
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    Mit diesem Befehl wird ein Verzeichnis erstellt, das den Namen trägt, der mit dem Parameter `artifactID` (in diesem Beispiel **wordcountjava**) festgelegt wurde. Dieses Verzeichnis enthält die folgenden Elemente:
+    Mit diesem Befehl wird ein Verzeichnis mit dem durch den `artifactID`Parameter angegebenen Namen erstellt (in diesem Beispiel **wordcountjava**.) Dieses Verzeichnis enthält die folgenden Elemente:
 
     * `pom.xml` – das [Projektobjektmodell (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html), das die Informationen und Konfigurationsdetails für das Erstellen des Projekts enthält.
     * src\main\java\org\apache\hadoop\examples: Enthält den Code Ihrer Anwendung.
