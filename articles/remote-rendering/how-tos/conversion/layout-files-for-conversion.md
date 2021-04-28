@@ -5,12 +5,12 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 9a094755dfb9381b1e4d6abdf1c0e6342d7427c1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ab01143fcab5ceb5468ef8fde233905b8d3e05d1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308438"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124543"
 ---
 # <a name="laying-out-files-for-conversion"></a>Festlegen des Layouts von Dateien für die Konvertierung
 
@@ -21,7 +21,7 @@ Sie sind vollständig auf der Seite [Verwenden der REST-API für die Modellkonve
 Für das Dateienlayout ist wichtig zu beachten, dass der `BlobPrefix` einen kompletten Satz von Dateien festlegt, die bei der Verarbeitung der Ressource für den Konvertierungsdienst verfügbar sind.
 
 > [!Note]
-> Der Dienst lädt alle Dateien unter dem input.BlobPrefix herunter. Vergewissern Sie sich, dass Dateinamen und Pfade die [Windows-Grenzwerte für die Pfadlänge](https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation) nicht überschreiten, um Probleme mit dem Dienst zu vermeiden. 
+> Der Dienst lädt alle Dateien unter dem input.BlobPrefix herunter. Vergewissern Sie sich, dass Dateinamen und Pfade die [Windows-Grenzwerte für die Pfadlänge](/windows/win32/fileio/maximum-file-path-limitation) nicht überschreiten, um Probleme mit dem Dienst zu vermeiden. 
 
 ## <a name="placing-files-so-they-can-be-found"></a>Platzieren von Dateien, sodass diese gefunden werden können
 

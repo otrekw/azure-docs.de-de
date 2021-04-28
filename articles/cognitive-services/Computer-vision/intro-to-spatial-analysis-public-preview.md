@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 03/29/2021
-ms.openlocfilehash: 5aa34ce15d96112450a7c15debcd92312c1d9e19
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: fc0d0b0a589ff5b8354a56a2f8c95062f4d2d9a9
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284541"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076147"
 ---
 # <a name="what-is-spatial-analysis"></a>Was ist räumliche Analyse?
 
@@ -45,7 +45,7 @@ Heute basieren die grundlegenden Vorgänge der räumlichen Analyse auf einer Pip
 
 ### <a name="public-preview-gating"></a>Öffentliches Vorschau-Gating
 
-Damit die räumliche Analyse nur in Szenarios verwendet wird, für die sie entwickelt wurde, stellen wir unseren Kunden diese Technologie nur auf Antrag zur Verfügung. Wenn Sie Zugriff auf die räumliche Analyse erhalten möchten, füllen Sie zunächst unser Onlineeingabeformular aus. [Über diesen Link gelangen Sie zum Antrag.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyQZ7B8Cg2FEjpibPziwPcZUNlQ4SEVORFVLTjlBSzNLRlo0UzRRVVNPVy4u)
+Damit die räumliche Analyse nur in Szenarios verwendet wird, für die sie entwickelt wurde, stellen wir unseren Kunden diese Technologie nur auf Antrag zur Verfügung. Wenn Sie Zugriff auf die räumliche Analyse erhalten möchten, füllen Sie zunächst unser Onlineeingabeformular aus. [Über diesen Link gelangen Sie zum Antrag.](https://aka.ms/csgate)
 
 Der Zugriff auf die öffentliche Vorschauversion der räumlichen Analyse unterliegt dem alleinigen Ermessen von Microsoft basierend auf den Kriterien für die Qualifikation, dem Überprüfungsprozess und der Verfügbarkeit, um eine begrenzte Anzahl von Kunden während dieser eingeschränkten Vorschau zu unterstützen. Für die öffentliche Vorschauversion suchen wir Kunden, die bereits mit Microsoft zusammenarbeiten, Interesse an einer Zusammenarbeit im Rahmen der empfohlenen Anwendungsfälle und weiterer Szenarios haben, die im Einklang mit unserer Verpflichtung zur verantwortungsvollen Verwendung von KI stehen.
 

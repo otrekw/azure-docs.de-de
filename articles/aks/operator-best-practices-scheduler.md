@@ -3,17 +3,17 @@ title: Best Practices für Operator – Grundlegende Schedulerfunktionen in Azur
 description: Lernen Sie die Best Practices des Clusteroperators für die Verwendung grundlegender Schedulerfunktionen wie Ressourcenkontingente und Budgets für die Unterbrechung von Pods im Azure Kubernetes Service (AKS) kennen.
 services: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
-ms.openlocfilehash: 087c1d2efc93b8460a3683a4e66916d73fd4e885
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/09/2021
+ms.openlocfilehash: 8c0f1d0cda61638abe03b92c627a5ea0455c31cb
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87015679"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104897"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
-Beim Verwalten von Clustern in Azure Kubernetes Service (AKS) müssen Sie oft Teams oder Workloads isolieren. Der Kubernetes-Scheduler bietet Funktionen, mit denen Sie die Verteilung von Rechenressourcen steuern oder die Auswirkungen von Wartungsereignissen begrenzen können.
+Beim Verwalten von Clustern in Azure Kubernetes Service (AKS) müssen Sie oft Teams oder Workloads isolieren. Mit dem Kubernetes-Scheduler können Sie die Verteilung von Computeressourcen steuern oder die Auswirkungen von Wartungsereignissen begrenzen.
 
 Dieser Artikel zu Best Practices konzentriert sich auf grundlegende Kubernetes-Planungsfunktionen für Clusteroperatoren. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -24,17 +24,19 @@ Dieser Artikel zu Best Practices konzentriert sich auf grundlegende Kubernetes-P
 
 ## <a name="enforce-resource-quotas"></a>Durchsetzen von Ressourcenkontingenten
 
-**Best Practice-Anleitung** – Planen Sie Ressourcenkontingenten auf Namespaceebene und wenden Sie diese an. Wenn Pods keine Ressourcenanforderungen und -grenzwerte definieren, lehnen Sie die Bereitstellung ab. Überwachen Sie die Ressourcennutzung, und passen Sie Kontingente nach Bedarf an.
+> **Best Practices-Leitfaden** 
+> 
+> Planen Sie Ressourcenkontingente auf Namespaceebene, und wenden Sie sie an. Wenn Pods keine Ressourcenanforderungen und -grenzwerte definieren, lehnen Sie die Bereitstellung ab. Überwachen Sie die Ressourcennutzung, und passen Sie Kontingente nach Bedarf an.
 
-Ressourcenanforderungen und -grenzwerte werden in der Podspezifikation hinterlegt. Diese Grenzwerte werden vom Kubernetes-Scheduler zum Zeitpunkt der Bereitstellung verwendet, um einen verfügbaren Knoten im Cluster zu finden. Diese Grenzwerte und Anforderungen gelten jeweils für den einzelnen Pod. Weitere Informationen zum Definieren dieser Werte finden Sie unter [Definieren von Ressourcenanforderungen und -grenzwerten][resource-limits].
+Ressourcenanforderungen und -grenzwerte werden in der Podspezifikation hinterlegt. Grenzwerte werden vom Kubernetes-Scheduler zum Zeitpunkt der Bereitstellung verwendet, um einen verfügbaren Knoten im Cluster zu finden. Grenzwerte und Anforderungen gelten jeweils für den einzelnen Pod. Weitere Informationen zum Definieren dieser Werte finden Sie unter [Definieren von Ressourcenanforderungen und -grenzwerten][resource-limits].
 
 Um eine Möglichkeit zu bieten, Ressourcen innerhalb eines Entwicklungsteams oder Projekts zu reservieren und zu begrenzen, sollten Sie *Ressourcenkontingente* verwenden. Diese Kontingente werden in einem Namespace definiert und können verwendet werden, um Kontingente auf der folgenden Grundlage festzulegen:
 
 * **Computeressourcen**, z.B. CPU und Arbeitsspeicher oder GPUs.
-* **Speicherressourcen** umfasst die Gesamtanzahl der Volumes oder Speicherplatz für eine angegebene Speicherklasse.
+* **Speicherressourcen**, einschließlich der Gesamtanzahl der Volumes oder des Speicherplatzes für eine angegebene Speicherklasse.
 * **Objektanzahl**, z.B die maximale Anzahl von Geheimnissen, Diensten oder der Aufträge, die erstellt werden können.
 
-Kubernetes weist nicht zu viele Ressourcen zu. Sobald die kumulierte Summe der Ressourcenanforderungen oder -grenzwerte das zugewiesene Kontingent überschreitet, sind keine weiteren Bereitstellungen möglich.
+Kubernetes weist nicht zu viele Ressourcen zu. Sobald die kumulierte Summe der Ressourcenanforderungen das zugewiesene Kontingent überschreitet, können weitere Bereitstellungen nicht erfolgreich ausgeführt werden.
 
 Wenn Sie Ressourcenkontingente definieren, müssen alle im Namespace erstellten Pods in ihren Podspezifikationen Grenzwerte oder Anforderungen enthalten. Wenn diese Werte nicht angeben werden, können Sie die Bereitstellung ablehnen. Stattdessen können Sie [Standardanforderungen und Grenzwerte für einen Namespace definieren][configure-default-quotas].
 
@@ -64,18 +66,33 @@ Weitere Informationen zu verfügbaren Ressourcenobjekten, Bereichen und Priorit�
 
 ## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Planen der Verfügbarkeit mit Budgets für die Unterbrechung von Pods
 
-**Best Practice-Anleitung** – Um die Verfügbarkeit von Anwendungen aufrechtzuerhalten, definieren Sie Budgets für die Unterbrechung von Pods (Pod Disruption Budgets, PDBs), um sicherzustellen, dass eine Mindestanzahl von Pods im Cluster verfügbar ist.
+> **Best Practices-Leitfaden** 
+>
+> Um die Verfügbarkeit von Anwendungen aufrechtzuerhalten, definieren Sie Budgets für die Unterbrechung von Pods (Pod Disruption Budgets, PDBs), um sicherzustellen, dass eine Mindestanzahl von Pods im Cluster verfügbar ist.
 
 Es gibt zwei unterbrechende Ereignisse, durch die Pods entfernt werden:
 
-* *Unfreiwillige Unterbrechungen* sind Ereignisse, die außerhalb der typischen Kontrolle des Clusteroperators oder Anwendungsbesitzers liegen.
-  * Zu diesen unfreiwilligen Unterbrechungen gehören ein Hardwareausfall auf dem physischen Computer, eine Kernelstörung oder das Löschen einer Knoten-VM.
-* *Freiwillige Unterbrechungen* sind Ereignisse, die vom Clusteroperator oder Anwendungsbesitzer angefordert werden.
-  * Zu diesen freiwilligen Unterbrechungen gehören Clusterupgrades, eine aktualisierte Bereitstellungsvorlage oder das versehentliche Löschen eines Pods.
+### <a name="involuntary-disruptions"></a>Unfreiwillige Unterbrechungen
 
-Die Auswirkungen der unfreiwilligen Unterbrechungen können durch die Verwendung mehrerer Replikate Ihrer Pods in einer Bereitstellung verringert werden. Das Ausführen mehrerer Knoten im AKS-Cluster verringert ebenfalls die Auswirkungen dieser unfreiwilligen Unterbrechungen. Für freiwillige Unterbrechungen stellt Kubernetes *Budgets für die Unterbrechung von Pods* zur Verfügung, mit denen der Clusteroperator eine minimale verfügbare oder maximal nicht verfügbare Ressourcenanzahl definieren kann. Anhand dieser Budgets können Sie planen, wie Bereitstellungen oder Replikatgruppen bei einem freiwilligen Unterbrechungsereignis reagieren.
+*Unfreiwillige Unterbrechungen* sind Ereignisse, die außerhalb der typischen Kontrolle des Clusteroperators oder Anwendungsbesitzers liegen. Einschließen:
+* Hardwarefehler auf dem physischen Computer
+* Kernelstörung
+* Löschen einer Knoten-VM
 
-Wenn ein Cluster aktualisiert oder eine Bereitstellungsvorlage aktualisiert werden soll, stellt der Kubernetes-Scheduler sicher, dass zusätzliche Pods auf anderen Knoten geplant werden, bevor die freiwilligen Unterbrechungsereignisse fortgesetzt werden können. Der Scheduler wartet, bis die definierte Anzahl von Pods auf anderen Knoten im Cluster erfolgreich geplant ist, bevor ein Knoten neu gestartet wird.
+Die Auswirkungen unfreiwilliger Unterbrechungen können auf folgende Weise verringert werden:
+* Verwenden mehrerer Replikate Ihrer Pods in einer Bereitstellung 
+* Ausführen mehrerer Knoten im AKS-Cluster 
+
+### <a name="voluntary-disruptions"></a>Freiwillige Unterbrechungen
+
+*Freiwillige Unterbrechungen* sind Ereignisse, die vom Clusteroperator oder Anwendungsbesitzer angefordert werden. Einschließen:
+* Clusterupgrades
+* Aktualisierte Bereitstellungsvorlage
+* Versehentliches Löschen eines Pods
+
+Kubernetes bietet *Budgets für die Unterbrechung von Pods* für freiwillige Unterbrechungen, mit denen Sie planen können, wie Bereitstellungen oder Replikatgruppen bei einem freiwilligen Unterbrechungsereignis reagieren. Mithilfe von Budgets für die Unterbrechung von Pods können Clusteroperatoren eine minimal verfügbare oder maximal nicht verfügbare Ressourcenanzahl festlegen. 
+
+Wenn Sie ein Upgrade für einen Cluster durchführen oder eine Bereitstellungsvorlage aktualisieren, werden vom Kubernetes-Scheduler zusätzliche Pods auf anderen Knoten geplant, bevor freiwillige Unterbrechungsereignisse fortgesetzt werden können. Der Scheduler wartet mit dem Neustart eines Knotens, bis die definierte Anzahl von Pods auf anderen Knoten im Cluster erfolgreich geplant ist.
 
 Schauen wir uns ein Beispiel für eine Replikatgruppe mit fünf Pods an, auf denen NGINX ausgeführt wird. Den Pods in der Replikatgruppe ist die Bezeichnung `app: nginx-frontend` zugewiesen. Während eines freiwilligen Unterbrechungsereignisses, wie z.B. eines Clusterupgrades, möchten Sie sicherstellen, dass mindestens drei Pods weiterhin laufen. Das folgende YAML-Manifest für ein *PodDisruptionBudget*-Objekt definiert diese Anforderungen:
 
@@ -119,13 +136,15 @@ Weitere Informationen zur Verwendung von Budgets für die Unterbrechung von Pods
 
 ## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Regelmäßiges Überprüfen auf Clusterprobleme mit dem Kube-Advisor
 
-**Best Practices-Anleitung:** Führen Sie regelmäßig die neueste Version des Open-Source-Tools `kube-advisor` aus, um Probleme in Ihrem Cluster zu erkennen. Wenn Sie Ressourcenkontingente auf einen bestehenden AKS-Cluster anwenden, führen Sie zuerst `kube-advisor` aus, um Pods zu finden, die keine Ressourcenanforderungen und -grenzwerte definiert haben.
+> **Best Practices-Leitfaden** 
+>
+> Führen Sie regelmäßig die neueste Version des Open-Source-Tools `kube-advisor` aus, um Probleme in Ihrem Cluster zu erkennen. Wenn Sie Ressourcenkontingente auf einen bestehenden AKS-Cluster anwenden, führen Sie zuerst `kube-advisor` aus, um Pods zu finden, die keine Ressourcenanforderungen und -grenzwerte definiert haben.
 
-Das Tool [kube-advisor][kube-advisor] ist ein verwandtes Open-Source-Projekt für AKS, das einen Kubernetes-Cluster scannt und gefundene Probleme meldet. Eine nützliche Überprüfung ist die Identifizierung von Pods, bei denen keine Ressourcenanforderungen und -grenzwerte angegeben sind.
+Das [kube-advisor][kube-advisor]-Tool ist ein verwandtes Open-Source-Projekt für AKS, das einen Kubernetes-Cluster scannt und erkannte Probleme meldet. `kube-advisor` ist nützlich, um Pods ohne Ressourcenanforderungen und Grenzwerte zu identifizieren.
 
-Das kube-advisor-Tool kann Berichte zur Ressourcenanforderung und zu Grenzwerten erstellen, die in PodSpecs für Windows- und Linux-Anwendungen fehlen, das kube-advisor-Tool selbst muss jedoch auf einem Linux-Pod geplant werden. Sie können einen Pod mit einem [Knoten-Selektor][k8s-node-selector] in der Konfiguration des Pods so planen, dass er in einem Knotenpool mit einem bestimmten Betriebssystem ausgeführt wird.
+Während das `kube-advisor`-Tool Berichte zur Ressourcenanforderung und Grenzwerten erstellen kann, die in PodSpecs für Windows- und Linux-Anwendungen fehlen, muss das Tool selbst auf einem Linux-Pod geplant werden. Um einen Pod für die Ausführung in einem Knotenpool mit einem bestimmten Betriebssystem zu planen, verwenden Sie einen [Knotenselektor][k8s-node-selector] in der Konfiguration des Pods.
 
-In einem AKS-Cluster, der mehrere Entwicklungsteams und Anwendungen hostet, kann es schwierig sein, Pods zu verfolgen, bei denen diese Ressourcenanforderungen und -grenzwerte nicht festgelegt wurden. Als Best Practice sollten Sie `kube-advisor` regelmäßig auf Ihren AKS-Clustern ausführen, insbesondere wenn Sie Namespaces keine Ressourcenkontingente zuweisen.
+Das Nachverfolgen von Pods ohne festgelegte Ressourcenanforderungen und Grenzwerte in einem AKS-Cluster, der mehrere Entwicklungsteams und Anwendungen hostet, kann schwierig sein. Als Best Practice sollten Sie `kube-advisor` regelmäßig auf Ihren AKS-Clustern ausführen, insbesondere wenn Sie Namespaces keine Ressourcenkontingente zuweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

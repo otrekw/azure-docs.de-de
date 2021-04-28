@@ -9,19 +9,19 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 28fb5ffc0ce9c554294eaca9e460694856cb95a0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 16c2927aef83dfa1a3a69298e865c5684f40b7b9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589870"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144581"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Überlegungen zur NFS 3.0-Leistung (Network File System) in Azure Blob Storage (Vorschau)
 
 Blob Storage unterstützt jetzt das NFS 3.0-Protokoll (Network File System). Dieser Artikel enthält Empfehlungen, mit deren Hilfe Sie die Leistung Ihrer Speicheranforderungen optimieren können. Weitere Informationen zur Unterstützung von NFS 3.0 in Azure Blob Storage finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md).
 
 > [!NOTE]
-> Die Unterstützung für das NFS 3.0-Protokoll in Azure Blob Storage befindet in der öffentlichen Vorschau. Das Protokoll unterstützt GPV2-Speicherkonten mit der Leistungsstufe „Standard“ in den folgenden Regionen: „Australien, Osten“, „Südkorea, Mitte“ und „USA, Süden-Mitte“. Die Vorschau unterstützt auch Blockblobs mit der Leistungsstufe „Premium“ in allen öffentlichen Regionen.
+> Die Unterstützung für das NFS 3.0-Protokoll in Azure Blob Storage befindet in der öffentlichen Vorschau. Das Protokoll unterstützt GPV2-Speicherkonten mit der Leistungsstufe „Standard“ in den folgenden Regionen: „Australien, Osten“, „Südkorea, Mitte“, „USA, Osten“ und „USA, Süden-Mitte“. Die Vorschau unterstützt auch Blockblobs mit der Leistungsstufe „Premium“ in allen öffentlichen Regionen.
 
 ## <a name="add-clients-to-increase-throughput"></a>Hinzufügen von Clients zum Erhöhen des Durchsatzes 
 
@@ -39,7 +39,7 @@ Das folgende Diagramm zeigt den Effekt, wenn dieser Vorgang auf ein Konto in der
 
 ## <a name="use-premium-performance-tier-for-small-scale-applications"></a>Verwenden der Leistungsstufe „Premium“ für kleinere Anwendungen
 
-Nicht alle Anwendungen lassen sich durch Hinzufügen von mehr Clients hochskalieren. Für solche Anwendungen bietet das [Azure-Premium-Blockblob-Speicherkonto](storage-blob-create-account-block-blob.md) konsistente hohe Transaktionsraten mit niedriger Latenz. Das Premium-Blockblob-Speicherkonto kann die maximale Bandbreite mit weniger Threads und Clients erreichen. Ein Beispiel: Mit einem einzelnen Client kann ein Premium-Blockblob-Speicherkonto **2,3-mal** so viel Bandbreite erreichen wie dasselbe Setup mit einem Speicherkonto vom Typ „Universell v2“ mit Standardleistung. 
+Nicht alle Anwendungen lassen sich durch Hinzufügen von mehr Clients hochskalieren. Für solche Anwendungen bietet das [Azure-Premium-Blockblob-Speicherkonto](../common/storage-account-create.md) konsistente hohe Transaktionsraten mit niedriger Latenz. Das Premium-Blockblob-Speicherkonto kann die maximale Bandbreite mit weniger Threads und Clients erreichen. Ein Beispiel: Mit einem einzelnen Client kann ein Premium-Blockblob-Speicherkonto **2,3-mal** so viel Bandbreite erreichen wie dasselbe Setup mit einem Speicherkonto vom Typ „Universell v2“ mit Standardleistung. 
 
 Jeder Balken im folgenden Diagramm zeigt den Unterschied in der erreichten Bandbreite zwischen Speicherkonten mit der Leistungsstufe „Premium“ und „Standard“. In dem Maß, in dem die Anzahl von Clients steigt, verringert sich der Unterschied.  
 

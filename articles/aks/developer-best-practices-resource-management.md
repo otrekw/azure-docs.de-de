@@ -5,49 +5,64 @@ description: Lernen Sie bewährte Anwendungsentwicklermethoden für die Ressourc
 services: container-service
 author: zr-msft
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 693cabac616dca8e108a2029c173a5e1b71c2695
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cd2bab05346f66b933512e677f1d38f4514796c
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516736"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105271"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Bewährte Anwendungsentwicklermethoden zum Verwalten von Ressourcen in Azure Kubernetes Service (AKS)
 
-Beim Entwickeln und Ausführen von Anwendungen in Azure Kubernetes Service (AKS) sind jedoch einige wichtige Aspekte zu berücksichtigen. Die Art, in der Sie Ihre Anwendungsbereitstellungen verwalten, kann die Benutzerfreundlichkeit der Dienste beeinträchtigen, die Sie bereitstellen. Um erfolgreich zu sein, beachten Sie einige bewährte Methoden, wenn Sie Anwendungen entwickeln und in AKS ausführen.
+Beim Entwickeln und Ausführen von Anwendungen in Azure Kubernetes Service (AKS) sind jedoch einige wichtige Aspekte zu berücksichtigen. Die Art, in der Sie Ihre Anwendungsbereitstellungen verwalten, kann die Benutzerfreundlichkeit der Dienste beeinträchtigen, die Sie bereitstellen. Um erfolgreich zu sein, beachten Sie beim Entwickeln und Ausführen von Anwendungen in AKS einige bewährte Methoden.
 
-Dieser Artikel zu bewährten Methoden konzentriert sich darauf, wie Sie Ihre Cluster und Workloads aus der Perspektive des Anwendungsentwicklers ausführen. Weitere Informationen zu bewährten Verwaltungsmethoden finden Sie unter [Bewährte Methoden der Clusterisolierung in Azure Kubernetes Service (AKS)][operator-best-practices-isolation]. In diesem Artikel wird Folgendes behandelt:
+Dieser Artikel konzentriert sich auf das Ausführen Ihrer Cluster und Workloads aus der Perspektive des Anwendungsentwicklers. Weitere Informationen zu bewährten Verwaltungsmethoden finden Sie unter [Bewährte Methoden der Clusterisolierung in Azure Kubernetes Service (AKS)][operator-best-practices-isolation]. In diesem Artikel wird Folgendes behandelt:
 
 > [!div class="checklist"]
 > * Podressourcenanforderungen und -grenzwerte
 > * Methoden zum Entwickeln und Bereitstellen von Anwendungen mit Bridge to Kubernetes und Visual Studio Code
-> * Verwenden des `kube-advisor`-Tools, um nach Problemen mit Bereitstellungen zu suchen
+> * Verwenden des `kube-advisor`-Tools für die Suche nach Problemen mit Bereitstellungen
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Definieren von Podressourcenanforderungen und -grenzwerten
 
-**Best Practice-Anleitung**: Legen Sie Podanforderungen und -grenzwerte für alle Pods in Ihren YAML-Manifesten fest. Wenn der AKS-Cluster *Ressourcenkontingente* verwendet, wird Ihre Bereitstellung möglicherweise abgelehnt, wenn Sie diese Werte nicht definieren.
+> **Best Practices-Leitfaden**
+> 
+> Legen Sie Podanforderungen und -grenzwerte für alle Pods in Ihren YAML-Manifesten fest. Wenn der AKS-Cluster *Ressourcenkontingente* verwendet und Sie diese Werte nicht definieren, wird Ihre Bereitstellung möglicherweise abgelehnt.
 
-Eine primäre Methode zum Verwalten der Computeressourcen in einem AKS-Cluster ist die Verwendung von Podanforderungen und -grenzwerten. Diese Anforderungen und Grenzwerte teilen dem Kubernetes-Planer mit, welche Computeressourcen einem Pod zugewiesen werden sollten.
+Verwenden Sie Podanforderungen und -grenzwerte, um die Computeressourcen in einem AKS-Cluster zu verwalten. Podanforderungen und -grenzwerte informieren den Kubernetes-Scheduler darüber, welche Computeressourcen einem Pod zugewiesen werden sollen.
 
-* **Podanforderungen für CPU/Arbeitsspeicher** definieren eine vom Pod regelmäßig benötigte festgelegte CPU-Leistung und Arbeitsspeichermenge.
-    * Wenn der Kubernetes-Planer versucht, einen Pod auf einem Knoten zu platzieren, wird anhand der Podanforderungen bestimmt, auf welchem Knoten genügend Ressourcen für die Planung verfügbar wird.
-    * Wenn Sie keine Podanforderung festlegen, wird diese standardmäßig auf den definierten Grenzwert festgelegt.
-    * Es ist sehr wichtig, die Leistung Ihrer Anwendung zu überwachen, um diese Anforderungen anzupassen. Wenn nicht genügend Podressourcen angefordert werden, kann die Leistung der Anwendung aufgrund der Überplanung eines Knotens beeinträchtigt werden. Wenn Anforderungen überschätzt werden, kann es zu erhöhten Schwierigkeiten bei der Planung Ihrer Anwendung kommen.
-* **Podgrenzwerte für CPU/Arbeitsspeicher** sind das Maximum an CPU-Leistung und Arbeitsspeichermenge, das ein Pod verwenden kann. Mithilfe von Speichergrenzwerten können Sie definieren, welche Pods bei Knoteninstabilität aufgrund unzureichender Ressourcen beendet werden sollen. Ohne geeignete Grenzwerte werden Pods beendet, bis der Ressourcendruck sich erhöht. Unabhängig davon, ob ein Pod den CPU-Grenzwert für einen bestimmten Zeitraum überschreiten kann, wird er nicht wegen Überschreitung des CPU-Limits beendet. 
-    * Mithilfe von Podgrenzwerten definieren Sie, wann ein Pod die Kontrolle über den Ressourcenverbrauch verloren hat. Wird ein Grenzwert überschritten, wird der Pod zum Beenden priorisiert, um die Knotenintegrität beizubehalten und die Auswirkungen auf Pods zu minimieren, die den Knoten gemeinsam nutzen.
-    * Wenn Sie keinen Podgrenzwert festlegen, wird standardmäßig der höchste verfügbare Wert auf einem bestimmten Knoten festgelegt.
-    * Legen Sie keinen Podgrenzwert fest, der höher ist, als Ihre Knoten unterstützen können. Jeder AKS-Knoten reserviert eine bestimmte Menge von CPU-Leistung und Arbeitsspeichermenge für die Kubernetes-Kernkomponenten. Ihre Anwendung versucht möglicherweise, zu viele Ressourcen auf dem Knoten für die erfolgreiche Ausführung anderer Pods zu beanspruchen.
-    * Auch hier ist es sehr wichtig, die Leistung Ihrer Anwendung zu verschiedenen Zeitpunkten während des Tags oder der Woche zu überwachen. Bestimmen Sie die Spitzennachfrage, und passen Sie die Podgrenzwerte den Ressourcen an, die erforderlich sind, um die maximalen Anforderungen der Anwendung zu erfüllen.
+### <a name="pod-cpumemory-requests"></a>Podanforderungen für CPU/Arbeitsspeicher
+*Podanforderungen* definieren eine vom Pod regelmäßig benötigte festgelegte CPU-Leistung und Arbeitsspeichermenge.
 
 Es ist eine **bewährte Methode und sehr wichtig**, diese Anforderungen und Grenzwerte in Ihren Podspezifikationen basierend auf den oben genannten Informationen zu definieren. Wenn Sie diese Werte nicht angeben, kann der Kubernetes-Planer nicht die Ressourcen berücksichtigen, die Ihre Anwendungen für die Planung von Entscheidungen benötigen.
 
-Wenn der Planer einen Pod auf einem Knoten mit unzureichenden Ressourcen platziert, wird die Anwendungsleistung beeinträchtigt. Es wird Clusteradministratoren dringend empfohlen, *Ressourcenkontingente* auf einem Namespace festzulegen, der von Ihnen das Festlegen von Ressourcenanforderungen und -grenzwerten anfordert. Weitere Informationen finden Sie unter [Ressourcenkontingente auf AKS-Clustern][resource-quotas].
+Überwachen Sie die Leistung Ihrer Anwendung, um Podanforderungen anzupassen. 
+* Wenn Sie Podanforderungen unterschätzen, kann die Leistung der Anwendung aufgrund der Überplanung eines Knotens beeinträchtigt werden. 
+* Wenn Anforderungen überschätzt werden, kann es zu erhöhten Schwierigkeiten bei der Planung Ihrer Anwendung kommen.
+
+### <a name="pod-cpumemory-limits"></a>Podgrenzwerte für CPU/Arbeitsspeicher** 
+*Podgrenzwerte* legen das Maximum an CPU-Leistung und Arbeitsspeichermenge fest, das ein Pod verwenden kann. 
+
+* *Speichergrenzwerte* definieren, welche Pods bei instabilen Knoten aufgrund unzureichender Ressourcen beendet werden sollen. Ohne geeignete Grenzwerte werden Pods beendet, bis der Ressourcendruck sich erhöht. 
+* Obwohl ein Pod den *CPU-Grenzwert* für einen bestimmten Zeitraum überschreiten kann, wird er nicht wegen Überschreitung des CPU-Grenzwerts beendet. 
+
+Podgrenzwerte definieren, wann ein Pod die Kontrolle über den Ressourcenverbrauch verloren hat. Bei Überschreiten des Grenzwerts wird der Pod zum Beenden markiert. Durch dieses Verhalten werden die Knotenintegrität bewahrt und die Auswirkungen auf Pods minimiert, die den Knoten gemeinsam nutzen. Wenn Sie keinen Podgrenzwert festlegen, wird standardmäßig der höchste verfügbare Wert auf einem bestimmten Knoten festgelegt.
+
+Vermeiden Sie es, einen höheren Podgrenzwert festzulegen, als Ihre Knoten unterstützen können. Jeder AKS-Knoten reserviert eine bestimmte Menge von CPU-Leistung und Arbeitsspeichermenge für die Kubernetes-Kernkomponenten. Ihre Anwendung versucht möglicherweise, zu viele Ressourcen auf dem Knoten für die erfolgreiche Ausführung anderer Pods zu beanspruchen.
+
+Überwachen Sie die Leistung Ihrer Anwendung zu verschiedenen Zeitpunkten während des Tags oder der Woche. Bestimmen Sie die Spitzenzeiten der Nachfrage, und passen Sie die Podgrenzwerte den Ressourcen an, die zur Deckung des maximalen Bedarfs erforderlich sind.
+
+> [!IMPORTANT]
+>
+> Definieren Sie diese Anforderungen und Grenzwerte in Ihren Podspezifikationen basierend auf den oben genannten Informationen. Wenn Sie diese Werte nicht angeben, kann der Kubernetes-Scheduler nicht die Ressourcen berücksichtigen, die Ihre Anwendungen für die Planung von Entscheidungen benötigen.
+
+Wenn der Planer einen Pod auf einem Knoten mit unzureichenden Ressourcen platziert, wird die Anwendungsleistung beeinträchtigt. Clusteradministratoren **müssen** *Ressourcenkontingente* für einen Namespace festlegen, der von Ihnen das Festlegen von Ressourcenanforderungen und -grenzwerten erfordert. Weitere Informationen finden Sie unter [Ressourcenkontingente auf AKS-Clustern][resource-quotas].
 
 Beim Definieren einer CPU-Anforderung oder eines Grenzwerts wird der Wert in CPU-Einheiten gemessen. 
 * *1.0* Die CPU entspricht einem zugrunde liegenden virtuellen CPU-Kern auf dem Knoten. 
-* Dieselbe Maßeinheit wird für GPUs verwendet.
+    * Dieselbe Maßeinheit wird für GPUs verwendet.
 * Sie können Anteile, gemessen in Millicore, definieren. Beispiel: *100m* ist *0,1* eines zugrunde liegenden vCPU-Kerns.
 
 Im folgenden grundlegenden Beispiel für einen einzelnen NGINX-Pod fordert der Pod *100m* der CPU-Zeit und *128Mi* des Arbeitsspeichers an. Die Ressourcengrenzwerte für den Pod sind auf *250m* CPU und *256Mi* Arbeitsspeicher festgelegt:
@@ -74,35 +89,45 @@ Weitere Informationen zu Ressourcenverwaltung und Zuweisungen finden Sie unter [
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Entwickeln und Debuggen von Anwendungen für einen AKS-Cluster
 
-**Best Practice-Anleitung**: Entwicklungsteams sollten einen AKS-Cluster mithilfe von Bridge to Kubernetes bereitstellen und debuggen.
+> **Best Practices-Leitfaden** 
+>
+> Entwicklungsteams sollten einen AKS-Cluster mithilfe von Bridge to Kubernetes bereitstellen und debuggen.
 
-Mit Bridge to Kubernetes können Sie Anwendungen direkt für einen AKS-Cluster entwickeln, debuggen und testen. Entwickler in einem Team arbeiten zusammen, um während des gesamten Lebenszyklus der Anwendung zu erstellen und zu testen. Sie können weiterhin vorhandene Tools wie Visual Studio oder Visual Studio Code verwenden. Es wird eine Erweiterung für Bridge to Kubernetes installiert, mit der Sie direkt in einem AKS-Cluster entwickeln können.
+Mit Bridge to Kubernetes können Sie Anwendungen direkt für einen AKS-Cluster entwickeln, debuggen und testen. Entwickler in einem Team arbeiten zusammen, um während des gesamten Anwendungslebenszyklus diese zu erstellen und zu testen. Vorhandene Tools wie Visual Studio oder Visual Studio Code können mit der Bridge to Kubernetes-Erweiterung weiterhin verwendet werden. 
 
-Dieser integrierte Entwicklungs- und Testprozess mit Bridge to Kubernetes verringert den Bedarf an lokalen Testumgebungen wie [minikube][minikube]. Stattdessen entwickeln und testen Sie anhand eines AKS-Clusters. Dieser Cluster kann gesichert und isoliert werden, wie im vorherigen Abschnitt zur Verwendung von Namespaces zum logischen Isolieren eines Clusters angemerkt.
+Durch Verwendung des integrierten Entwicklungs- und Testprozesses mit Bridge to Kubernetes wird der Bedarf an lokalen Testumgebungen wie [minikube][minikube] reduziert. Stattdessen entwickeln und testen Sie anhand eines AKS-Clusters, auch anhand gesicherter und isolierter Cluster. 
 
-Bridge to Kubernetes ist für die Verwendung mit auf Linux-Pods und -Knoten ausgeführten Anwendungen vorgesehen.
+> [!NOTE]
+> Bridge to Kubernetes ist für die Verwendung mit auf Linux-Pods und -Knoten ausgeführten Anwendungen vorgesehen.
 
-## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Verwenden der Visual Studio Code-Erweiterung für Kubernetes
+## <a name="use-the-visual-studio-code-vs-code-extension-for-kubernetes"></a>Verwenden der Visual Studio Code-Erweiterung (VS Code) für Kubernetes
 
-**Best Practice-Anleitung**: Installieren und verwenden Sie die VS Code-Erweiterung für Kubernetes beim Schreiben von YAML-Manifesten. Sie können die Erweiterung auch für integrierte Bereitstellungslösungen verwenden, was Besitzern von Anwendungen helfen kann, die nur selten mit dem AKS-Cluster interagieren.
+> **Best Practices-Leitfaden** 
+>
+> Installieren und verwenden Sie die VS Code-Erweiterung für Kubernetes beim Schreiben von YAML-Manifesten. Sie können die Erweiterung auch für integrierte Bereitstellungslösungen verwenden, was Besitzern von Anwendungen helfen kann, die nur selten mit dem AKS-Cluster interagieren.
 
-Die [Visual Studio Code-Erweiterung für Kubernetes][vscode-kubernetes] hilft Ihnen, Anwendungen in AKS zu entwickeln und bereitzustellen. Die Erweiterung bietet Intellisense für Kubernetes-Ressourcen sowie Helm-Diagramme und Vorlagen. Sie können Kubernetes-Ressourcen auch in Visual Studio Code durchsuchen, bereitstellen und bearbeiten. Die Erweiterung bietet auch eine Intellisense-Überprüfung für Ressourcenanforderungen oder Grenzwerte, die in den Podspezifikationen festgelegt werden:
+Die [Visual Studio Code-Erweiterung für Kubernetes][vscode-kubernetes] hilft Ihnen, Anwendungen in AKS zu entwickeln und bereitzustellen. Die Erweiterung bietet Folgendes:
+* Intellisense für Kubernetes-Ressourcen, Helm-Diagramme und Vorlagen 
+* Funktionen zum Durchsuchen, Bereitstellen und Bearbeiten von Kubernetes-Ressourcen in VS Code 
+* Intellisense-Überprüfung für Ressourcenanforderungen oder -grenzwerte, die in den Podspezifikationen festgelegt werden:
 
-![VS Code-Erweiterung für Kubernetes-Warnung zu fehlenden Arbeitsspeicherlimits](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
+    ![VS Code-Erweiterung für Kubernetes-Warnung zu fehlenden Arbeitsspeicherlimits](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
 
 ## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Regelmäßiges Überprüfen auf Anwendungsprobleme mit dem Kube-Advisor
 
-**Best Practices-Anleitung:** Führen Sie regelmäßig die neueste Version des Open-Source-Tools `kube-advisor` aus, um Probleme in Ihrem Cluster zu erkennen. Wenn Sie Ressourcenkontingente auf einen bestehenden AKS-Cluster anwenden, führen Sie zuerst `kube-advisor` aus, um Pods zu finden, die keine Ressourcenanforderungen und -grenzwerte definiert haben.
+> **Best Practices-Leitfaden** 
+> 
+> Führen Sie regelmäßig die neueste Version des Open-Source-Tools `kube-advisor` aus, um Probleme in Ihrem Cluster zu erkennen. Führen Sie `kube-advisor` aus, bevor Sie Ressourcenkontingente auf einen bestehenden AKS-Cluster anwenden, um Pods zu finden, für die keine Ressourcenanforderungen und -grenzwerte definiert sind.
 
-Das Tool [kube-advisor][kube-advisor] ist ein verwandtes Open-Source-Projekt für AKS, das einen Kubernetes-Cluster scannt und gefundene Probleme meldet. Eine nützliche Überprüfung ist die Identifizierung von Pods, bei denen keine Ressourcenanforderungen und -grenzwerte angegeben sind.
+Das [kube-advisor][kube-advisor]-Tool ist ein verwandtes Open-Source-Projekt für AKS, das einen Kubernetes-Cluster scannt und erkannte Probleme meldet. Eine nützliche Überprüfung ist die Identifizierung von Pods, für die keine Ressourcenanforderungen und -grenzwerte angegeben sind.
 
-Das kube-advisor-Tool kann Berichte zur Ressourcenanforderung und zu Grenzwerten erstellen, die in PodSpecs für Windows- und Linux-Anwendungen fehlen, das kube-advisor-Tool selbst muss jedoch auf einem Linux-Pod geplant werden. Sie können einen Pod mit einem [Knoten-Selektor][k8s-node-selector] in der Konfiguration des Pods so planen, dass er in einem Knotenpool mit einem bestimmten Betriebssystem ausgeführt wird.
+Während das `kube-advisor`-Tool Berichte zu Ressourcenanforderungen und -grenzwerten erstellen kann, die in PodSpecs für Windows- und Linux-Anwendungen fehlen, muss `kube-advisor` selbst auf einem Linux-Pod geplant werden. Verwenden Sie einen [Knotenselektor][k8s-node-selector] in der Konfiguration eines Pods, um ihn für die Ausführung in einem Knotenpool mit einem bestimmten Betriebssystem zu planen.
 
-In einem AKS-Cluster, der mehrere Entwicklungsteams und Anwendungen hostet, kann es schwierig sein, Pods zu verfolgen, bei denen diese Ressourcenanforderungen und -grenzwerte nicht festgelegt wurden. Führen Sie als Best Practice regelmäßig `kube-advisor` in Ihren AKS-Clustern aus.
+In einem AKS-Cluster, der viele Entwicklungsteams und Anwendungen hostet, kann es einfacher sein, Pods anhand von Ressourcenanforderungen und -grenzwerten zu verfolgen. Führen Sie als Best Practice regelmäßig `kube-advisor` in Ihren AKS-Clustern aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel zu bewährten Methoden konzentriert sich darauf, wie Sie Ihre Cluster und Workloads aus der Perspektive des Clusteroperators ausführen. Weitere Informationen zu bewährten Verwaltungsmethoden finden Sie unter [Bewährte Methoden der Clusterisolierung in Azure Kubernetes Service (AKS)][operator-best-practices-isolation].
+Dieser Artikel konzentriert sich darauf, wie Sie Ihre Cluster und Workloads aus der Perspektive des Clusteroperators ausführen. Weitere Informationen zu bewährten Verwaltungsmethoden finden Sie unter [Bewährte Methoden der Clusterisolierung in Azure Kubernetes Service (AKS)][operator-best-practices-isolation].
 
 Um einige dieser Best Practices zu implementieren, lesen Sie folgende Artikel:
 

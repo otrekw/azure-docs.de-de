@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5134c0eeaf3ebd1467b35cf825aa64bd1b445bd5
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653812"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010578"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -88,7 +88,7 @@ Es gelten die folgenden zentralen Anforderungen:
 * Den Schlüsselverteilungsdienst muss auf allen Domänencontrollern in der Domäne aktiviert sein, auf denen Windows Server 2012 oder eine höhere Version ausgeführt wird. Standardmäßig wird dieser Dienst über das Starten eines manuellen Triggers aktiviert.
 
 * Netzwerkkonnektivität muss zwischen mindestens einem Domänencontroller in jeder Domäne und mindestens einem Server bestehen, der den Proxydienst für den Azure AD-Kennwortschutz hostet. Diese Konnektivität muss es dem Domänencontroller gestatten, auf den RPC-Endpunktzuordnungsport 135 und den RPC-Serverport für den Proxydienst zuzugreifen.
-    * Der RPC-Serverport ist standardmäßig ein dynamischer RPC-Port. Er kann jedoch so konfiguriert werden, dass er einen [statischen Port verwendet](#static).
+    * Der RPC-Serverport ist standardmäßig ein dynamischer RPC-Port (Bereich 49152-65535). Er kann jedoch so konfiguriert werden, dass er als [statischer Port verwendet](#static) wird.
 * Alle Computer, auf denen der Proxydienst für den AD-Kennwortschutz installiert werden soll, müssen Netzwerkzugriff auf die folgenden Endpunkte besitzen:
 
     |**Endpunkt**|**Zweck**|

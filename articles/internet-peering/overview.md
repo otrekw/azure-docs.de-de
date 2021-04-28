@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: 8f960e58d47963cbb239d498af52e7adfc77caa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99cfad67742c5f1261811469b3c41f5bb3bad1ba
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97586865"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145067"
 ---
 # <a name="internet-peering-overview"></a>Übersicht über Internetpeering
 
@@ -53,4 +53,4 @@ Häufig gestellte Fragen zu Peering finden Sie unter [Internetpeering: Häufig g
 
 * Informationen zum Einrichten des direkten Peerings mit Microsoft finden Sie in der [exemplarischen Vorgehensweise für direktes Peering](walkthrough-direct-all.md).
 * Informationen zum Einrichten des Austauschpeerings mit Microsoft finden Sie in der [exemplarischen Vorgehensweise für Austauschpeering](walkthrough-exchange-all.md).
-* Informationen zu einigen anderen zentralen Azure-Netzwerkfunktionen finden Sie [hier](../networking/networking-overview.md).
+* Informationen zu einigen anderen zentralen Azure-Netzwerkfunktionen finden Sie [hier](../networking/fundamentals/networking-overview.md).

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: da8007a651b62430055f263f082fabf2aa4bf610
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 13becdf8c49d9affe8c2946d6147707fbe954437
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574287"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889320"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -94,7 +94,7 @@ Jeder Azure Machine Learning-Arbeitsbereich verfügt über zwei Standardspeicher
 
 In der folgenden Tabelle wird beschrieben, warum Sie die Authentifizierung mit verwalteten Identitäten für die Standardspeicherkonten Ihres Arbeitsbereichs aktivieren müssen.
 
-|Speicherkonto  | Hinweise  |
+|Speicherkonto  | Notizen  |
 |---------|---------|
 |Standardblobspeicher für den Arbeitsbereich| Speichert Modellressourcen vom Designer. Sie müssen die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto aktivieren, um Modelle im Designer bereitzustellen. <br> <br> Sie können eine Designer-Pipeline visualisieren und ausführen, wenn sie nicht den Standarddatenspeicher verwendet, sondern einen, der für die Verwendung der verwalteten Identität konfiguriert wurde. Wenn Sie jedoch versuchen, ein trainiertes Modell ohne aktivierte verwaltete Identität im Standarddatenspeicher bereitzustellen, tritt dabei ein Fehler auf, unabhängig davon, welche anderen Datenspeicher verwendet werden.|
 |Standarddateispeicher für den Arbeitsbereich| Speichert Experimentressourcen für automatisiertes maschinelles Lernen. Sie müssen die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto aktivieren, um Experimente für automatisiertes maschinelles Lernen zu übermitteln. |

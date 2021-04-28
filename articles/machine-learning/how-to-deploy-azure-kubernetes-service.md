@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Sie Ihre Azure Machine Learning-Modelle mithilfe 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy
+ms.topic: how-to
+ms.custom: contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 68fc4a10f5a54af7bab82843b7a921fd84e7af40
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ae16fbd97a6994edb796da7eb8210d414bbe6de5
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259267"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889734"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -184,7 +184,7 @@ az ml model deploy --ct myaks -m mymodel:1 -n myservice --ic inferenceconfig.jso
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-Weitere Informationen finden Sie in der [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy)-Referenz.
+Weitere Informationen finden Sie in der [az ml model deploy](/cli/azure/ml/model#az_ml_model_deploy)-Referenz.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -372,7 +372,7 @@ print(token)
 >
 > Microsoft empfiehlt dringend, den Azure Machine Learning-Arbeitsbereich in der gleichen Region zu erstellen wie den Azure Kubernetes Service-Cluster. Im Zuge der Tokenauthentifizierung richtet der Webdienst einen Aufruf an die Region, in der Ihr Azure Machine Learning-Arbeitsbereich erstellt wird. Ist die Region Ihres Arbeitsbereichs nicht verfügbar, können Sie kein Token für Ihren Webdienst abrufen (auch dann nicht, wenn sich Ihr Cluster in einer anderen Region befindet als Ihr Arbeitsbereich). Die tokenbasierte Authentifizierung ist dann erst wieder verfügbar, wenn die Region Ihres Arbeitsbereichs wieder verfügbar wird. Außerdem wirkt sich die Entfernung zwischen der Region Ihres Clusters und der Region Ihres Arbeitsbereichs direkt auf die Tokenabrufdauer aus.
 >
-> Zum Abrufen eines Tokens müssen Sie das Azure Machine Learning SDK oder den Befehl [az ml service get-access-token](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-get-access-token) verwenden.
+> Zum Abrufen eines Tokens müssen Sie das Azure Machine Learning SDK oder den Befehl [az ml service get-access-token](/cli/azure/ml/service#az_ml_service_get_access_token) verwenden.
 
 
 ### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken

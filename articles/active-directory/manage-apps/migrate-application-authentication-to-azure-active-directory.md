@@ -12,12 +12,12 @@ ms.date: 02/05/2021
 ms.author: iangithinji
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3458f358c12ef33a337e50066e83b6e59273ccf1
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b7e4a92f84cdbc0061509fa710de148e9e9f2b52
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376748"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125155"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Migrieren der Anwendungsauthentifizierung zu Azure Active Directory
 
@@ -487,7 +487,7 @@ Nach der Migration können Sie die Benutzer über die erfolgreiche Bereitstellun
 
 Während des Migrationsprozesses verfügt Ihre App möglicherweise bereits über eine Testumgebung, die bei regulären Bereitstellungen verwendet wird. Sie können diese Umgebung weiterhin für Migrationstests verwenden. Wenn zurzeit keine Testumgebung zur Verfügung steht, können Sie diese je nach Architektur der Anwendung möglicherweise mithilfe von Azure App Service oder Azure Virtual Machines einrichten. Sie können einen separaten Azure AD-Testmandanten einrichten, der bei der Entwicklung Ihrer App-Konfigurationen verwendet werden soll. Dieser Mandant wird in einem fehlerfreien Zustand gestartet und ist nicht für die Synchronisierung mit einem System konfiguriert.
 
-Sie können die einzelnen Apps testen, indem Sie sich mit einem Testbenutzer anmelden und sicherstellen, dass alle Funktionen mit denen vor der Migration übereinstimmen. Wenn Sie während der Tests feststellen, dass Benutzer ihre [MFA](/azure/active-directory/authentication/howto-mfa-userstates)- oder [SSPR](../authentication/tutorial-enable-sspr.md)-Einstellungen aktualisieren müssen, oder wenn Sie diese Funktionalität während der Migration hinzufügen, sollten Sie daran denken, dies zu Ihrem Kommunikationsplan für Endbenutzer hinzuzufügen. Weitere Informationen finden Sie in den [MFA](https://aka.ms/mfatemplates)- und [SSPR](https://aka.ms/ssprtemplates)-Vorlagen für die Endbenutzerkommunikation.
+Sie können die einzelnen Apps testen, indem Sie sich mit einem Testbenutzer anmelden und sicherstellen, dass alle Funktionen mit denen vor der Migration übereinstimmen. Wenn Sie während der Tests feststellen, dass Benutzer ihre [MFA](../authentication/howto-mfa-userstates.md)- oder [SSPR](../authentication/tutorial-enable-sspr.md)-Einstellungen aktualisieren müssen, oder wenn Sie diese Funktionalität während der Migration hinzufügen, sollten Sie daran denken, dies zu Ihrem Kommunikationsplan für Endbenutzer hinzuzufügen. Weitere Informationen finden Sie in den [MFA](https://aka.ms/mfatemplates)- und [SSPR](https://aka.ms/ssprtemplates)-Vorlagen für die Endbenutzerkommunikation.
 
 Nachdem Sie die Apps migriert haben, wechseln Sie zum [Azure-Portal](https://aad.portal.azure.com/), um zu testen, ob die Migration erfolgreich war. Befolgen Sie die nachstehenden Anweisungen:
 

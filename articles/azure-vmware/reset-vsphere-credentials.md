@@ -3,12 +3,12 @@ title: Zurücksetzen von vSphere-Anmeldeinformationen für Azure VMware Solution
 description: Hier erfahren Sie, wie Sie vSphere-Anmeldeinformationen für Ihre private Cloud in Azure VMware Solution zurücksetzen und sicherstellen, dass der HCX-Connector über die neuesten vSphere-Anmeldeinformationen verfügt.
 ms.topic: how-to
 ms.date: 03/31/2021
-ms.openlocfilehash: 793b79e42a0adbca54804d1b66102736aff22d7a
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 3533de03cbea0014a8a50cd0103f96273f0680a7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109100"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145301"
 ---
 # <a name="reset-vsphere-credentials-for-azure-vmware-solution"></a>Zurücksetzen von vSphere-Anmeldeinformationen für Azure VMware Solution
 
@@ -21,7 +21,7 @@ Zusätzlich zu dieser Vorgehensweise können Sie auch das Video zum [Zurücksetz
  Setzen Sie zunächst die Anmeldeinformationen für die Komponenten von Azure VMware Solution zurück. Ihre CloudAdmin-Anmeldeinformationen für vCenter und Ihre Administratoranmeldeinformationen für NSX-T laufen nicht ab. Mithilfe der folgenden Schritte können Sie jedoch neue Kennwörter für diese Konten generieren.
 
 > [!NOTE]
-> Wenn Sie Ihre CloudAdmin-Anmeldeinformationen für verbundene Dienste wie HCX, vCenter Orchestrator, vRealize, Operations Manager oder VMware Horizon verwenden, werden Ihre Verbindungen unterbrochen, sobald Sie Ihr Kennwort aktualisieren.  Daher sollten diese Dienste beendet werden, bevor die Kennwortrotation initiiert wird.  Andernfalls kann dies zu vorübergehenden Sperren Ihres vCenter-CloudAdmin-Kontos und Ihres NSX-T-Administratorkontos führen, da diese Dienste kontinuierlich Aufrufe mit Ihren alten Anmeldeinformationen senden.  Weitere Informationen zur Einrichtung separater Konten für verbundene Dienste finden Sie unter [Zugriffs- und Identitätskonzepte](https://docs.microsoft.com/azure/azure-vmware/concepts-identity).
+> Wenn Sie Ihre CloudAdmin-Anmeldeinformationen für verbundene Dienste wie HCX, vCenter Orchestrator, vRealize, Operations Manager oder VMware Horizon verwenden, werden Ihre Verbindungen unterbrochen, sobald Sie Ihr Kennwort aktualisieren.  Daher sollten diese Dienste beendet werden, bevor die Kennwortrotation initiiert wird.  Andernfalls kann dies zu vorübergehenden Sperren Ihres vCenter-CloudAdmin-Kontos und Ihres NSX-T-Administratorkontos führen, da diese Dienste kontinuierlich Aufrufe mit Ihren alten Anmeldeinformationen senden.  Weitere Informationen zur Einrichtung separater Konten für verbundene Dienste finden Sie unter [Zugriffs- und Identitätskonzepte](./concepts-identity.md).
 
 1. Öffnen Sie im Azure-Portal eine Azure Cloud Shell-Sitzung.
 

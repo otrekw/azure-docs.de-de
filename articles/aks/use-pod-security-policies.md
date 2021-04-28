@@ -4,17 +4,17 @@ description: Hier erfahren Sie, wie Sie den Podzugang mittels Podsicherheitsrich
 services: container-service
 ms.topic: article
 ms.date: 03/25/2021
-ms.openlocfilehash: d95cdb51136511bdd8529c829c3f680d19e14ba9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4e72bd28910f471656feb27d10c123930305494e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611768"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031221"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Vorschauversion: Schützen Ihres Clusters mithilfe von Podsicherheitsrichtlinien in Azure Kubernetes Service (AKS)
 
 > [!WARNING]
-> **Die Einstellung des in diesem Dokument beschriebenen Features „Podsicherheitsrichtlinie (Vorschau)“ beginnt mit der Kubernetes Version 1.21, und es wird in Version 1.25 entfernt.** Da sich Kubernetes Upstream diesen Meilenstein nähert, arbeitet die Kubernetes-Community an der Dokumentation funktionsfähiger Alternativen. Die vorherige Einstellungsankündigung wurde zu dem Zeitpunkt vorgenommen, als es noch keine funktionsfähige Option für Kunden gab. Nun, da die Kubernetes-Community an einer Alternative arbeitet, ist es nicht mehr zwingend erforderlich, vor Kubernetes einzustellen.
+> **Die [Einstellung](https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/) des in diesem Dokument beschriebenen Features „Podsicherheitsrichtlinie (Vorschau)“ beginnt mit Kubernetes-Version 1.21, und es wird in Version 1.25 entfernt.** Da sich Kubernetes Upstream diesen Meilenstein nähert, arbeitet die Kubernetes-Community an der Dokumentation funktionsfähiger Alternativen. Die vorherige Einstellungsankündigung wurde zu dem Zeitpunkt vorgenommen, als es noch keine funktionsfähige Option für Kunden gab. Nun, da die Kubernetes-Community an einer Alternative arbeitet, ist es nicht mehr zwingend erforderlich, vor Kubernetes einzustellen. 
 >
 > Wenn die Podsicherheitsrichtlinie (Vorschauversion) veraltet ist, müssen Sie das Feature für alle vorhandenen Cluster deaktivieren, die das veraltete Feature verwenden, um zukünftige Clusterupgrades ausführen und weiterhin Azure-Support erhalten zu können.
 

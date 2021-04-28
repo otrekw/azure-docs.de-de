@@ -3,12 +3,12 @@ title: Bereitstellen von Traffic Manager zum Ausgleichen der Workloads von Azure
 description: Erfahren Sie, wie Sie Traffic Manager in Azure VMware Solution integrieren, um Anwendungsworkloads auf mehreren Endpunkten in unterschiedlichen Regionen auszugleichen.
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: 46570c5a61fc0a641d83126fd0f8ef35b3dc42cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 029bb9512bd19effd1c7aeb5104c7bb6d7ccdca5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988589"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876920"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Bereitstellen von Traffic Manager zum Ausgleichen der Workloads von Azure VMware Solution
 

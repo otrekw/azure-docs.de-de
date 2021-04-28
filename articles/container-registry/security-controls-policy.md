@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Container Registry
 description: Hier sind Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy aufgelistet, die für Azure Container Registry verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 52ddf15151fc40674a7d1a7e2c06ae627fa50165
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: f23721454b78f717ef461794b4e29fefdc180501
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502407"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878636"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-container-registry"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Container Registry
 

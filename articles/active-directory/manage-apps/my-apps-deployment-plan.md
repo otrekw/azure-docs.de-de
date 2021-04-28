@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/29/2020
 ms.author: baselden
-ms.openlocfilehash: 777daecc119a158f11d865489e4eb497c3bc7899
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 9f05e14de9d6ebe76f722d1e4b21bc2085a74888
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376595"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125134"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Planen der Konfiguration von „Meine Apps“ in Azure Active Directory
 
@@ -81,7 +81,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der Zustimmung von Endbenu
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>Gruppenbesitzereinwilligung für Apps, die auf Daten zugreifen
 
-Gruppen- und Teambesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Weitere Informationen finden Sie unter [Resource-specific consent in Microsoft Teams](https://docs.microsoft.com/microsoftteams/resource-specific-consent) (Ressourcenspezifische Einwilligung in Microsoft Teams). 
+Gruppen- und Teambesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Weitere Informationen finden Sie unter [Resource-specific consent in Microsoft Teams](/microsoftteams/resource-specific-consent) (Ressourcenspezifische Einwilligung in Microsoft Teams). 
 
 Sie können konfigurieren, ob Sie diese Funktion aktivieren oder deaktivieren möchten.
 
@@ -257,4 +257,3 @@ Sie können Ihre Rollen mithilfe von [Privileged Identity Management](../privile
 [Planen einer Bereitstellung von Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
 
 [Planen der Bereitstellung eines Anwendungsproxys](application-proxy-deployment-plan.md)
-

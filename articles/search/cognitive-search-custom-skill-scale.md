@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f80e78da5c7d226c704c8b13fc496e416f5d0f0d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641146"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125587"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Effizientes Aufskalieren eines benutzerdefinierten Skills
 
@@ -26,7 +26,7 @@ Benutzerdefinierte Skills sind Web-APIs, die eine bestimmte Schnittstelle implem
 
 + Unter [Schnittstelle für benutzerdefinierte Qualifikationen](cognitive-search-custom-skill-interface.md) finden Sie eine Einführung in die Eingabe/Ausgabe-Schnittstelle, die eine benutzerdefinierte Qualifikation implementieren sollte.
 
-+ Einrichten Ihrer Umgebung. Zunächst können Sie [dieses Tutorial von Anfang bis Ende](/azure/azure-functions/create-first-function-vs-code-python) durcharbeiten, um die serverlose Azure Function unter Verwendung von Visual Studio Code und Python-Erweiterungen einzurichten.
++ Einrichten Ihrer Umgebung. Zunächst können Sie [dieses Tutorial von Anfang bis Ende](../azure-functions/create-first-function-vs-code-python.md) durcharbeiten, um die serverlose Azure Function unter Verwendung von Visual Studio Code und Python-Erweiterungen einzurichten.
 
 ## <a name="skillset-configuration"></a>Skillsetkonfiguration
 

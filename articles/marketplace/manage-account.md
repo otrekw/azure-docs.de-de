@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: c76d9d06425405cf7f43e089cb9c2995e30410ee
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8edac35fd83ef5dbf122e7f0959564fa072fbadd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107983"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144923"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
@@ -66,7 +66,7 @@ In den folgenden Abschnitten werden die Informationen auf der Registerkarte „E
 
 Im Abschnitt _Kontodetails_ der Registerkarte _Entwickler_ werden grundlegende Informationen angezeigt, z. B. Ihr **Kontotyp** (Unternehmen oder Person) und der **Überprüfungsstatus** Ihres Kontos. Während der Überprüfung Ihres Kontos wird in diesen Einstellungen jeder erforderliche Schritt angezeigt, darunter die E-Mail-Überprüfung, die Beschäftigungsüberprüfung und die Unternehmensüberprüfung.
 
-#### <a name="publisher-ids"></a>Herausgeber-IDs
+#### <a name="publisher-ids"></a>Herausgeber-IDs:
 
 Im Abschnitt „Herausgeber-IDs“ werden Ihre **Symantec-ID** (falls zutreffend), **Verkäufer-ID**, **Benutzer-ID**, **MPN-ID** und **Azure AD-Mandanten** angezeigt. Diese Werte werden von Microsoft zur eindeutigen Identifizierung Ihres Entwicklerkontos zugewiesen und können nicht bearbeitet werden.
 
@@ -106,7 +106,7 @@ Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Nachverfolg
 
 ### <a name="agreements"></a>Vereinbarungen
 
-Auf der Seite **Vereinbarungen** können Sie eine Liste der von Ihnen autorisierten Veröffentlichungsvereinbarungen anzeigen. Diese Vereinbarungen sind nach Name und Versionsnummer aufgeführt. Ebenfalls angezeigt werden das Datum, an dem sie akzeptiert wurden, und der Name des Benutzers, der die Vereinbarung akzeptiert hat.
+Auf der Seite **Vereinbarungen** können Sie eine Liste der von Ihnen autorisierten Veröffentlichungsvereinbarungen anzeigen. Diese Verträge sind nach Name und Versionsnummer aufgeführt. Ebenfalls angezeigt werden das Datum, an dem sie akzeptiert wurden, und der Name des Benutzers, der den Vertrag akzeptiert hat.
 
 Um auf die Seite „Vereinbarungen“ zuzugreifen, gehen Sie folgendermaßen vor:
 
@@ -114,7 +114,7 @@ Um auf die Seite „Vereinbarungen“ zuzugreifen, gehen Sie folgendermaßen vor
 1. Wählen Sie oben rechts **Einstellungen** > **Kontoeinstellungen** aus.
 1. Wählen Sie unter **Kontoeinstellungen** die Option **Vereinbarungen** aus.
 
-Möglicherweise wird am oberen Rand dieser Seite **Aktionen erforderlich** angezeigt, wenn Aktualisierungen für Vereinbarungen vorliegen, die Ihre Aufmerksamkeit erfordern. Um eine aktualisierte Vereinbarung zu akzeptieren, müssen Sie zunächst die verknüpfte Version der Vereinbarung lesen. Wählen Sie dann **Vereinbarung akzeptieren** aus.
+Möglicherweise wird am oberen Rand dieser Seite **Aktionen erforderlich** angezeigt, wenn Vertragsaktualisierungen vorliegen, die Ihre Aufmerksamkeit erfordern. Um einen aktualisierten Vertrag zu akzeptieren, müssen Sie zunächst die verknüpfte Vertragsversion lesen. Wählen Sie dann **Verträge akzeptieren** aus.
 
 ## <a name="set-up-a-payout-profile"></a>Einrichten eines Auszahlungsprofils
 
@@ -156,9 +156,9 @@ Wenn Sie sich außerhalb der USA befinden, können Sie möglicherweise von Begü
 
 [Erfahren Sie mehr über Steuerdetails für Entwickler von Windows-Apps/-Spielen und Azure Marketplace-Herausgeber](/windows/uwp/publish/tax-details-for-paid-apps).
 
-### <a name="payout-hold-status"></a>Auszahlungssperre
+### <a name="payout-hold-status"></a>Aufbewahrungsstatus für Auszahlungen
 
-Standardmäßig sendet Microsoft Zahlungen auf monatlicher Basis. Sie können Ihre Auszahlungen jedoch zurückhalten, sodass keine Zahlungen an Ihr Konto gesendet werden. Wenn Sie Ihre Auszahlungen zurückhalten möchten, werden wir weiterhin alle Ihre Umsätze erfassen und die Details in Ihrer **Auszahlungszusammenfassung** aufführen. Allerdings werden wir keine Zahlungen auf Ihr Konto überweisen, bis Sie die Sperre aufheben.
+Standardmäßig sendet Microsoft Zahlungen auf monatlicher Basis. Sie können Ihre Auszahlungen jedoch zurückhalten, sodass keine Zahlungen an Ihr Konto gesendet werden. Wenn Sie Ihre Auszahlungen zurückhalten möchten, werden wir weiterhin alle Ihre Umsätze erfassen und die Details in Ihrer **Auszahlungszusammenfassung** aufführen. Allerdings werden wir keine Zahlungen auf Ihr Konto überweisen, bis Sie die Haltesperre aufheben.
 
 **Zum Zurückhalten von Zahlungen gehen Sie folgendermaßen vor**:
 
@@ -166,12 +166,12 @@ Standardmäßig sendet Microsoft Zahlungen auf monatlicher Basis. Sie können Ih
 1. Erweitern Sie im linken Navigationsbereich **Auszahlung und Steuern**, und wählen Sie **Auszahlungs- und Steuerprofile** aus.
 1. Wählen Sie das Programm aus, für das Sie Zahlungen zurückhalten möchten, und aktivieren Sie dann das Kontrollkästchen **Meine Zahlung zurückhalten**.
 
-Sie können die Auszahlungssperre jederzeit ändern, aber beachten Sie, dass sich Ihre Entscheidung auf die nächste monatliche Auszahlung auswirkt. Wenn Sie zum Beispiel die Auszahlung für April zurückhalten möchten, legen Sie die Auszahlungssperre vor Ende März auf **Ein** fest.
+Sie können den Aufbewahrungsstatus für Auszahlungen jederzeit ändern, aber beachten Sie, dass sich Ihre Entscheidung auf die nächste monatliche Auszahlung auswirkt. Wenn Sie zum Beispiel die Auszahlung für April zurückhalten möchten, legen Sie den Aufbewahrungsstatus für Auszahlungen vor Ende März auf **Ein** fest.
 
-Nachdem Sie die Auszahlungssperre auf **Ein** festgelegt haben, werden alle Auszahlungen zurückgehalten, bis Sie den Schieberegler wieder auf **Aus** setzen. In diesem Fall werden Sie in den nächsten monatlichen Auszahlungszyklus eingeschlossen (vorausgesetzt, alle geltenden Zahlungsschwellenwerte sind erfüllt). Wenn Sie Ihre Auszahlungen zum Beispiel zurückgehalten haben, aber eine Auszahlung im Juni veranlassen möchten, legen Sie die Auszahlungssperre vor Ende Mai auf **Aus** fest.
+Nachdem Sie die Auszahlungssperre auf **Ein** festgelegt haben, werden alle Auszahlungen zurückgehalten, bis Sie den Schieberegler wieder auf **Aus** setzen. In diesem Fall werden Sie in den nächsten monatlichen Auszahlungszyklus eingeschlossen (vorausgesetzt, alle geltenden Zahlungsschwellenwerte sind erfüllt). Wenn Sie Ihre Auszahlungen zum Beispiel zurückgehalten haben, aber eine Auszahlung im Juni veranlassen möchten, legen Sie den Aufbewahrungsstatus für Auszahlungen vor Ende Mai auf **Aus** fest.
 
 > [!NOTE]
-> Ihre Auswahl für **Auszahlungssperre** gilt für **alle** Umsatzquellen, die über das Microsoft Partner Center bezahlt werden, einschließlich Azure Marketplace, Microsoft AppSource, Microsoft Store, Werbung usw.). Es ist nicht möglich, für jede Umsatzquelle eine andere Auszahlungssperre festzulegen.
+> Ihre Auswahl für **Auszahlungssperre** gilt für **alle** Umsatzquellen, die über das Microsoft Partner Center bezahlt werden, einschließlich Azure Marketplace, Microsoft AppSource, Microsoft Store, Werbung usw.). Es ist nicht möglich, für jede Umsatzquelle einen anderen Aufbewahrungsstatus für Auszahlungen festzulegen.
 
 ## <a name="devices"></a>Geräte
 
@@ -179,7 +179,7 @@ Die Einstellungen für die Geräteverwaltung gelten nur für die Veröffentlichu
 
 ## <a name="create-a-billing-profile"></a>Erstellen eines Abrechnungsprofils
 
-Wenn Sie ein Angebot für [Dynamics 365 for Customer Engagement und Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md) oder [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) veröffentlichen, müssen Sie ein *Abrechnungsprofil* ausfüllen.
+Wenn Sie ein Angebot für [Dynamics 365 for Customer Engagement und Power Apps](dynamics-365-customer-engage-offer-setup.md) oder [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) veröffentlichen, müssen Sie ein *Abrechnungsprofil* ausfüllen.
 
 Die Abrechnungsadresse ist von Ihrer juristischen Entität bereits ausgefüllt. Sie können diese Adresse später aktualisieren. Die Felder „Steuer“ und „USt-IdNr.“ sind für einige Länder erforderlich und für andere optional. Der Name des Landes/der Region und der Firmenname können nicht bearbeitet werden.
 
@@ -189,7 +189,7 @@ Die Abrechnungsadresse ist von Ihrer juristischen Entität bereits ausgefüllt. 
 
 ## <a name="multi-user-account-management"></a>Kontoverwaltung für mehrere Benutzer
 
-Partner Center nutzt [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) für den Zugriff auf Mehrbenutzerkonten und deren Verwaltung. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft.
+Partner Center nutzt [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) für den Zugriff auf Mehrbenutzerkonten und deren Verwaltung. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

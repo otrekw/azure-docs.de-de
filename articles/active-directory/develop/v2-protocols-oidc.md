@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: de1fcdc259de3f72e35feb411bcc836354352eb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d64a6e6a4dcd1d7b1917720152e2738bf6476e9
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98752593"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108063980"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform und das OpenID Connect-Protokoll
 
@@ -116,7 +116,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=678910
 ```
 
-| Parameter | Bedingung | BESCHREIBUNG |
+| Parameter | Bedingung | Beschreibung |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Mit dem `{tenant}`-Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Protokollgrundlagen](active-directory-v2-protocols.md#endpoints). |
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -275,7 +275,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Eine Beschreibung der möglichen Fehlercodes und der jeweils empfohlenen Clientantwort finden Sie unter [Fehlercodes beim Autorisierungsendpunktfehler](#error-codes-for-authorization-endpoint-errors).
 
-Nachdem Sie einen Autorisierungscode und ein ID-Token erhalten haben, können Sie den Benutzer anmelden und Zugriffstoken in seinem Namen abrufen. Zum Anmelden des Benutzers müssen Sie das ID-Token [genau wie beschrieben](id-tokens.md#validating-an-id_token) überprüfen. Führen Sie zum Abrufen von Zugriffstoken die in der [Dokumentation zum OAuth-Codefluss](v2-oauth2-auth-code-flow.md#request-an-access-token) beschriebenen Schritte aus.
+Nachdem Sie einen Autorisierungscode und ein ID-Token erhalten haben, können Sie den Benutzer anmelden und Zugriffstoken in seinem Namen abrufen. Zum Anmelden des Benutzers müssen Sie das ID-Token [genau wie beschrieben](id-tokens.md#validating-an-id_token) überprüfen. Führen Sie zum Abrufen von Zugriffstoken die in der [Dokumentation zum OAuth-Codefluss](v2-oauth2-auth-code-flow.md#redeem-a-code-for-an-access-token) beschriebenen Schritte aus.
 
 ### <a name="calling-the-userinfo-endpoint"></a>Aufrufen des UserInfo-Endpunkts
 

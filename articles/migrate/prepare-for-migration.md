@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: d8f9d4e0b002348f286f45c6b45c96531c5d6530
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8c9610ca7043ed6b8baa86e35ea76c74ed75bba
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558226"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883992"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
@@ -84,7 +84,7 @@ Die erforderlichen Änderungen sind in der Tabelle zusammengefasst.
 
 **Aktion** | **VMware (Migration ohne Agent)** | **VMware (Agent-basiert)/physische Computer** | **Windows mit Hyper-V** 
 --- | --- | --- | ---
-**Konfigurieren der SAN-Richtlinie als „Online – Alle“**<br/><br/> Dadurch wird sichergestellt, dass für Windows-Volumes auf dem virtuellen Azure-Computer die gleichen Laufwerkbuchstaben verwendet werden wie auf dem lokalen virtuellen Computer. | Wird für Computer unter Windows Server 2008 R2 oder höher automatisch festgelegt.<br/><br/> Bei älteren Betriebssystemen muss dieser Konfigurationsschritt manuell ausgeführt werden. | Wird in den meisten Fällen automatisch festgelegt. | Muss manuell konfiguriert werden.
+**Konfigurieren der SAN-Richtlinie als „Online – Alle“**<br/><br/> | Wird für Computer unter Windows Server 2008 R2 oder höher automatisch festgelegt.<br/><br/> Bei älteren Betriebssystemen muss dieser Konfigurationsschritt manuell ausgeführt werden. | Wird in den meisten Fällen automatisch festgelegt. | Muss manuell konfiguriert werden.
 **Installieren der Hyper-V-Gastintegration** | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-vmware-vms) werden. | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-vmware-vms) werden. | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms) werden.
 **Aktivieren der seriellen Azure-Konsole**<br/><br/>[Aktivieren Sie die Konsole](/troubleshoot/azure/virtual-machines/serial-console-windows) auf virtuellen Azure-Computern, um die Problembehandlung zu erleichtern. Sie müssen den virtuellen Computer nicht neu starten. Der virtuelle Azure-Computer wird unter Verwendung des Datenträgerimages gestartet. Der Start mit dem Datenträgerimage entspricht einem Neustart für den neuen virtuellen Computer. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden.
 **Herstellen der Verbindung nach der Migration**<br/><br/> Für die Verbindungsherstellung nach der Migration müssen vor der Migration mehrere Schritte ausgeführt werden. | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich

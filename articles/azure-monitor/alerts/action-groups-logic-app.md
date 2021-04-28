@@ -5,12 +5,12 @@ author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: a1371e00a6d4c5db609466e25c9d94aad5e73398
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f1e81dca6926ae9f57e428eb1cef761c588a78b6
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045716"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029844"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 
@@ -36,64 +36,64 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
 1. [Erstellen einer Logik-App](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-2.  Wählen Sie den folgenden Trigger aus: **Beim Empfang einer HTTP-Anforderung**.
+1.  Wählen Sie den folgenden Trigger aus: **Beim Empfang einer HTTP-Anforderung**.
 
 1. Wählen Sie im Dialogfeld unter **Beim Empfang einer HTTP-Anforderung** die Option **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
 
-    ![Screenshot mit dem Dialogfeld „Beim Empfang einer H T T P-Anforderung“ und der ausgewählten Option „Beispielnutzlast zum Generieren eines Schemas verwenden“. ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
+    ![Screenshot mit Dialogfeld „Beim Empfang einer HTTP-Anforderung“ und ausgewählter Option „Beispielnutzlast zum Generieren eines Schemas verwenden“ ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-3.  Kopieren Sie die folgende Beispielnutzlast, und fügen Sie sie in das Dialogfeld ein:
+1.  Kopieren Sie die folgende Beispielnutzlast, und fügen Sie sie in das Dialogfeld ein:
 
     ```json
         {
-            "schemaId": "Microsoft.Insights/activityLogs",
-            "data": {
-                "status": "Activated",
-                "context": {
-                "activityLog": {
-                    "authorization": {
-                    "action": "microsoft.insights/activityLogAlerts/write",
-                    "scope": "/subscriptions/…"
+            "schemaId&quot;: &quot;Microsoft.Insights/activityLogs&quot;,
+            &quot;data&quot;: {
+                &quot;status&quot;: &quot;Activated&quot;,
+                &quot;context&quot;: {
+                &quot;activityLog&quot;: {
+                    &quot;authorization&quot;: {
+                    &quot;action&quot;: &quot;microsoft.insights/activityLogAlerts/write&quot;,
+                    &quot;scope&quot;: &quot;/subscriptions/…&quot;
                     },
-                    "channels": "Operation",
-                    "claims": "…",
-                    "caller": "logicappdemo@contoso.com",
-                    "correlationId": "91ad2bac-1afa-4932-a2ce-2f8efd6765a3",
-                    "description": "",
-                    "eventSource": "Administrative",
-                    "eventTimestamp": "2018-04-03T22:33:11.762469+00:00",
-                    "eventDataId": "ec74c4a2-d7ae-48c3-a4d0-2684a1611ca0",
-                    "level": "Informational",
-                    "operationName": "microsoft.insights/activityLogAlerts/write",
-                    "operationId": "61f59fc8-1442-4c74-9f5f-937392a9723c",
-                    "resourceId": "/subscriptions/…",
-                    "resourceGroupName": "LOGICAPP-DEMO",
-                    "resourceProviderName": "microsoft.insights",
-                    "status": "Succeeded",
-                    "subStatus": "",
-                    "subscriptionId": "…",
-                    "submissionTimestamp": "2018-04-03T22:33:36.1068742+00:00",
-                    "resourceType": "microsoft.insights/activityLogAlerts"
+                    &quot;channels&quot;: &quot;Operation&quot;,
+                    &quot;claims&quot;: &quot;…&quot;,
+                    &quot;caller&quot;: &quot;logicappdemo@contoso.com&quot;,
+                    &quot;correlationId&quot;: &quot;91ad2bac-1afa-4932-a2ce-2f8efd6765a3&quot;,
+                    &quot;description&quot;: &quot;&quot;,
+                    &quot;eventSource&quot;: &quot;Administrative&quot;,
+                    &quot;eventTimestamp&quot;: &quot;2018-04-03T22:33:11.762469+00:00&quot;,
+                    &quot;eventDataId&quot;: &quot;ec74c4a2-d7ae-48c3-a4d0-2684a1611ca0&quot;,
+                    &quot;level&quot;: &quot;Informational&quot;,
+                    &quot;operationName&quot;: &quot;microsoft.insights/activityLogAlerts/write&quot;,
+                    &quot;operationId&quot;: &quot;61f59fc8-1442-4c74-9f5f-937392a9723c&quot;,
+                    &quot;resourceId&quot;: &quot;/subscriptions/…&quot;,
+                    &quot;resourceGroupName&quot;: &quot;LOGICAPP-DEMO&quot;,
+                    &quot;resourceProviderName&quot;: &quot;microsoft.insights&quot;,
+                    &quot;status&quot;: &quot;Succeeded&quot;,
+                    &quot;subStatus&quot;: &quot;&quot;,
+                    &quot;subscriptionId&quot;: &quot;…&quot;,
+                    &quot;submissionTimestamp&quot;: &quot;2018-04-03T22:33:36.1068742+00:00&quot;,
+                    &quot;resourceType&quot;: &quot;microsoft.insights/activityLogAlerts&quot;
                 }
                 },
-                "properties": {}
+                &quot;properties&quot;: {}
             }
         }
     ```
 
-9. Der **Logik-App-Designer** zeigt ein Popupfenster an, das Sie daran erinnert, dass in der an die Logik-App gesendeten Anforderung der **Content-Type**-Header auf **application/json** festgelegt werden muss. Schließen Sie das Popupfenster. Die Azure Monitor-Warnung legt den Header fest.
+1. Im **Designer für Logik-Apps** wird ein Popupfenster angezeigt, das Sie daran erinnert, dass in der an die Logik-App gesendeten Anforderung der **Content-Type**-Header auf **application/json** festgelegt werden muss. Schließen Sie das Popupfenster. Die Azure Monitor-Warnung legt den Header fest.
 
-    ![Festlegen des Content-Type-Headers](media/action-groups-logic-app/content-type-header.png "Festlegen des Content-Type-Headers")
+    ![Festlegen des Content-Type-Headers](media/action-groups-logic-app/content-type-header.png &quot;Festlegen des Content-Type-Headers")
 
-10. Wählen Sie **+** **Neuer Schritt** und anschließend **Aktion hinzufügen** aus.
+1. Wählen Sie **+** **Neuer Schritt** und anschließend **Aktion hinzufügen** aus.
 
     ![Hinzufügen einer Aktion](media/action-groups-logic-app/add-action.png "Hinzufügen einer Aktion")
 
-11. Suchen Sie nach dem Microsoft Teams-Connector, und wählen ihn aus. Wählen Sie die Aktion **Microsoft Teams: Nachricht veröffentlichen** aus.
+1. Suchen Sie nach dem Microsoft Teams-Connector, und wählen ihn aus. Wählen Sie die Aktion **Microsoft Teams: Nachricht veröffentlichen** aus.
 
     ![Microsoft Teams-Aktionen](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams-Aktionen")
 
-12. Konfigurieren Sie die Microsoft Teams-Aktion. Der **Logic Apps Designer** fordert Sie zur Authentifizierung mit Ihrem Geschäfts-, Schul- oder Unikonto auf. Wählen Sie die **Team-ID** und die **Kanal-ID** zum Senden der Nachricht aus.
+1. Konfigurieren Sie die Microsoft Teams-Aktion. Der **Logic Apps Designer** fordert Sie zur Authentifizierung mit Ihrem Geschäfts-, Schul- oder Unikonto auf. Wählen Sie die **Team-ID** und die **Kanal-ID** zum Senden der Nachricht aus.
 
 13. Konfigurieren Sie die Nachricht mithilfe einer Kombination aus statischem Text und Verweisen auf die \<fields\> im dynamischen Inhalt. Kopieren Sie den folgenden Text, und fügen Sie ihn in das Feld **Nachricht** ein:
 
@@ -111,9 +111,9 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
     ![Microsoft Teams-Aktion: Nachricht versenden](media/action-groups-logic-app/teams-action-post-message.png "Microsoft Teams-Aktion: Nachricht versenden")
 
-14. Wählen Sie oben im **Logik-Apps-Designer** die Option **Speichern** aus, um Ihre Logik-App zu speichern.
+1. Wählen Sie oben im **Logik-Apps-Designer** die Option **Speichern** aus, um Ihre Logik-App zu speichern.
 
-15. Öffnen Sie Ihre vorhandene Aktionsgruppe, und fügen Sie eine Aktion hinzu, um auf die Logik-App zu verweisen. Wenn Sie nicht über eine Aktionsgruppe verfügen, erfahren Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](./action-groups.md), wie Sie eine erstellen. Vergessen Sie nicht, Ihre Änderungen zu speichern.
+1. Öffnen Sie Ihre vorhandene Aktionsgruppe, und fügen Sie eine Aktion hinzu, um auf die Logik-App zu verweisen. Wenn Sie nicht über eine Aktionsgruppe verfügen, erfahren Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](./action-groups.md), wie Sie eine erstellen. Vergessen Sie nicht, Ihre Änderungen zu speichern.
 
     ![Aktualisieren der Aktionsgruppe](media/action-groups-logic-app/update-action-group.png "Aktualisieren der Aktionsgruppe")
 
@@ -178,7 +178,7 @@ Azure Service Health-Einträge sind ein Teil des Aktivitätsprotokolls. Der Proz
 
       ![„Bedingung Service Health-Nutzlast“](media/action-groups-logic-app/service-health-payload-condition.png "Bedingung Service Health-Nutzlast")
 
-   1. Befolgen Sie in der **If true**-Bedingung die Anweisungen in den Schritten 11 bis 13 in [Erstellen einer Aktivitätsprotokollwarnung](#create-an-activity-log-alert-administrative), um die Microsoft Teams-Aktion hinzuzufügen.
+   1. Befolgen Sie in der **If true**-Bedingung die Anweisungen in den Schritten 11 bis 13 unter [Erstellen einer Aktivitätsprotokollwarnung](#create-an-activity-log-alert-administrative), um die Microsoft Teams-Aktion hinzuzufügen.
 
    1. Definieren Sie die Nachricht unter Verwendung einer Kombination von HTML und dynamischem Inhalt. Kopieren Sie den folgenden Inhalt, und fügen Sie ihn in das Feld **Nachricht** ein. Ersetzen Sie die Felder `[incidentType]`, `[trackingID]`, `[title]` und `[communication]` mit dynamischen Inhaltstags gleichen Namens:
 

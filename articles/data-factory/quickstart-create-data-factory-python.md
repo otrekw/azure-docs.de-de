@@ -1,20 +1,20 @@
 ---
 title: 'Schnellstart: Erstellen einer Azure Data Factory mithilfe von Python'
 description: Mithilfe einer Data Factory-Instanz können Sie Daten von einem Speicherort in einem Azure Blob-Speicher an einen anderen Speicherort kopieren.
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 534b5b3aca86cc2f6d7ee2d703939420f80abb8e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 665944688533b4efa6e0e14077ae7df22d352d50
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365092"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123625"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Schnellstart: Erstellen einer Data Factory und Pipeline mithilfe von Python
 
@@ -75,7 +75,7 @@ Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines
     ```
     > [!NOTE] 
     > Das Paket „azure-identity“ steht bei einigen gemeinsamen Abhängigkeiten unter Umständen in Konflikt mit „azure-cli“. Wenn ein Authentifizierungsproblem auftritt, entfernen Sie „azure-cli“ und die zugehörigen Abhängigkeiten, oder verwenden Sie einen neu installierten Computer ohne Installation des Pakets „azure-cli“, damit der Vorgang erfolgreich ist.
-    > Für Sovereign Clouds müssen Sie die entsprechenden cloudspezifischen Konstanten verwenden.  Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit allen Regionen unter Verwendung der Azure-Bibliotheken für Python (mehrere Clouds) | Microsoft-Dokumentation mit Anweisungen zum Herstellen einer Verbindung mit Python in Sovereign Clouds.](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
+    > Für Sovereign Clouds müssen Sie die entsprechenden cloudspezifischen Konstanten verwenden.  Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit allen Regionen unter Verwendung der Azure-Bibliotheken für Python (mehrere Clouds) | Microsoft-Dokumentation mit Anweisungen zum Herstellen einer Verbindung mit Python in Sovereign Clouds.](/azure/developer/python/azure-sdk-sovereign-domain)
     
     
 ## <a name="create-a-data-factory-client"></a>Erstellen eines Data Factory-Clients

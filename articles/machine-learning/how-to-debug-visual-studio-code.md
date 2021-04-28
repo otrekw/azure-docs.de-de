@@ -5,16 +5,16 @@ description: Interaktives Debuggen von Azure Machine Learning-Code, -Pipelines u
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 783b5afdaef369582614cde3525f7968fdb5e567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3c4438cdfa8ddd41cb306e84623ccd569ac1680
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508638"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885576"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktives Debuggen mit Visual Studio Code
 
@@ -278,7 +278,7 @@ ip_address: 10.3.0.5
 Speichern Sie den Wert von `ip_address`. Sie werden im nächsten Abschnitt verwendet.
 
 > [!TIP]
-> Die IP-Adresse finden Sie auch in den Ausführungsprotokollen für die untergeordnete Ausführung dieses Pipelineschritts. Weitere Informationen zum Anzeigen dieser Informationen finden Sie unter [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-track-experiments.md).
+> Die IP-Adresse finden Sie auch in den Ausführungsprotokollen für die untergeordnete Ausführung dieses Pipelineschritts. Weitere Informationen zum Anzeigen dieser Informationen finden Sie unter [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-log-view-metrics.md).
 
 ### <a name="configure-development-environment"></a>Konfigurieren der Entwicklungsumgebung
 
