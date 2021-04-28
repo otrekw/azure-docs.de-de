@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0dcb959184e12ffa22ae25443087684123598e47
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 28e7a6be84a260c26b27b9e6042a6c323d4167ec
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382459"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128755"
 ---
 # <a name="register-a-microsoft-graph-application"></a>Registrieren einer Microsoft Graph-Anwendung
 
@@ -58,7 +58,7 @@ Bevor Ihre Skripts und Anwendungen mit der [Microsoft Graph-API][ms-graph-api] i
 
 ## <a name="grant-api-access"></a>Gewähren des API-Zugriffs
 
-Damit Ihre Anwendung auf Daten in Microsoft Graph zugreifen kann, erteilen Sie der registrierten Anwendung die entsprechenden [Anwendungsberechtigungen](https://docs.microsoft.com/graph/permissions-reference). Die effektiven Berechtigungen Ihrer Anwendung entsprechen der vollen Stufe der Berechtigungen, die anhand der Berechtigung impliziert werden. Um zum Beispiel jeden Benutzer in Ihrem Azure AD B2C-Anker zu *erstellen*, zu *lesen*, zu *aktualisieren* und zu *löschen*, fügen Sie die Berechtigung **User.ReadWrite.All** hinzu. 
+Damit Ihre Anwendung auf Daten in Microsoft Graph zugreifen kann, erteilen Sie der registrierten Anwendung die entsprechenden [Anwendungsberechtigungen](/graph/permissions-reference). Die effektiven Berechtigungen Ihrer Anwendung entsprechen der vollen Stufe der Berechtigungen, die anhand der Berechtigung impliziert werden. Um zum Beispiel jeden Benutzer in Ihrem Azure AD B2C-Anker zu *erstellen*, zu *lesen*, zu *aktualisieren* und zu *löschen*, fügen Sie die Berechtigung **User.ReadWrite.All** hinzu. 
 
 > [!NOTE]
 > Die Berechtigung **User.ReadWrite.All** enthält nicht die Möglichkeit, Kennwörter von Benutzerkonten zu aktualisieren. Wenn Ihre Anwendung Benutzerkonten-Kennwörter aktualisieren muss, [erteilen Sie die Benutzer-Administrator-Rolle](#optional-grant-user-administrator-role). Beim Erteilen der [Benutzer-Administrator](../active-directory/roles/permissions-reference.md#user-administrator)-Rolle ist **User.ReadWrite.All** nicht erforderlich. Die Benutzer-Administrator-Rolle enthält alles, was zum Verwalten von Benutzern erforderlich ist.

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 9cc7faf400abe12342d9cec5f47256de5df7753a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9f413578af7e22039aae6975ef67cb3543557193
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497018"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869747"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Containerregistrierungen zum Deaktivieren des Zugriffs über öffentliche Netzwerke konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa3701552-92ea-433e-9d17-33b7f1208fc9) |Deaktivieren Sie den Zugriff über öffentliche Netzwerke für Ihre Container Registry-Ressource, sodass sie nicht über das öffentliche Internet zugänglich ist. Dies kann das Risiko von Datenlecks verringern. Weitere Informationen finden Sie unter [https://aka.ms/acr/portal/public-network](https://aka.ms/acr/portal/public-network) und [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link). |Modify, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PublicNetworkAccess_Modify.json) |
 |[Containerregistrierungen mit privaten Endpunkten konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd85c6833-7d33-4cf5-a915-aaa2de84405f) |Private Endpunkte verbinden Ihr virtuelles Netzwerk ohne eine öffentliche IP-Adresse an Quelle oder Ziel mit Azure-Diensten. Durch das Zuordnen privater Endpunkte zu Ihren Container Registry Premium-Ressourcen können Sie das Risiko von Datenlecks verringern Weitere Informationen finden Sie unter [https://aka.ms/privateendpoints](https://aka.ms/privateendpoints) und [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link). |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateEndpoint_DeployIfNotExists.json) |

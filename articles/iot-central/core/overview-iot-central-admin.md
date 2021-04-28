@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central – Administratorhandbuch
 description: Azure IoT Central ist eine IoT-Anwendungsplattform, die die Erstellung von IoT-Lösungen vereinfacht. Dieser Artikel bietet einen Überblick über die Administratorrolle in IoT Central.
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: philmea
+ms.author: philmea
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 16a8aecae70d73399acb3878d7088e5086c053a1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 658ebe027565a3acaf427a7b3dbf3963701069d8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110490"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868643"
 ---
 # <a name="iot-central-administrator-guide"></a>IoT Central – Administratorhandbuch
 

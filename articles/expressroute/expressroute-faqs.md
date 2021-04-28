@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: efa5c3192ca6f51c219cc308a776e6db7212103c
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6cf70a6cfa4b1bf0f8d065872698d16977b4cb59
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552239"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127747"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -301,7 +301,7 @@ Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der REST-API ode
 
 ### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>Ich habe eine Benachrichtigung über die Wartung meiner ExpressRoute-Verbindung erhalten. Welche technischen Auswirkungen hat diese Wartung?
 
-Wenn Sie Ihre Verbindung im [Aktiv/aktiv-Modus](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute#active-active-connections)betreiben, sollten nur minimale oder keine Auswirkungen auf die Wartung entstehen. Wir führen die Wartung der primären und sekundären Verbindungen der Verbindung separat durch. Die geplante Wartung wird in der Regel außerhalb der Geschäftszeiten in der Zeitzone des Peeringstandorts durchgeführt, Sie können keine Wartungszeit auswählen.
+Wenn Sie Ihre Verbindung im [Aktiv/aktiv-Modus](./designing-for-high-availability-with-expressroute.md#active-active-connections)betreiben, sollten nur minimale oder keine Auswirkungen auf die Wartung entstehen. Wir führen die Wartung der primären und sekundären Verbindungen der Verbindung separat durch. Die geplante Wartung wird in der Regel außerhalb der Geschäftszeiten in der Zeitzone des Peeringstandorts durchgeführt, Sie können keine Wartungszeit auswählen.
 
 ### <a name="i-received-a-notification-about-a-software-upgrade-or-maintenance-on-my-expressroute-gateway-what-is-the-technical-impact-of-this-maintenance"></a>Ich habe eine Benachrichtigung über ein Software-Upgrade oder eine Wartung auf meinem ExpressRoute-Gateway erhalten. Welche technischen Auswirkungen hat diese Wartung?
 

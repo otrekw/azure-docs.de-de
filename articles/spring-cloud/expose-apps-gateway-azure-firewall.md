@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6c22d1bae4f1d116aa52846880498c7c2a425174
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7def685cb9e17ff253ade10714ece2259b432db1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877623"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129007"
 ---
 # <a name="expose-applications-to-the-internet-using-application-gateway-and-azure-firewall"></a>Verfügbarmachen von Anwendungen im Internet mithilfe von Application Gateway und Azure Firewall
 
@@ -24,7 +24,7 @@ In diesem Artikel wird die Vorgehensweise beim Verfügbarmachen von Anwendungen 
 
 ## <a name="define-variables"></a>Definieren von Variablen
 
-Definieren Sie die Variablen für die Ressourcengruppe und das virtuelle Netzwerk, die bzw.das Sie wie unter [Bereitstellen von Azure Spring Cloud in einem virtuellen Azure-Netzwerk (VNET-Injektion)](spring-cloud-tutorial-deploy-in-azure-virtual-network.md) beschrieben erstellt haben. Passen Sie die Werte basierend auf Ihrer realen Umgebung an.
+Definieren Sie die Variablen für die Ressourcengruppe und das virtuelle Netzwerk, die bzw.das Sie wie unter [Bereitstellen von Azure Spring Cloud in einem virtuellen Azure-Netzwerk (VNET-Injektion)](./how-to-deploy-in-azure-virtual-network.md) beschrieben erstellt haben. Passen Sie die Werte basierend auf Ihrer realen Umgebung an.
 
 ```
 SUBSCRIPTION='subscription-id'
@@ -139,5 +139,5 @@ Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Problembehandlung für Azure Spring Cloud im VNET](spring-cloud-troubleshooting-vnet.md)
-- [Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNET](spring-cloud-vnet-customer-responsibilities.md)
+- [Problembehandlung für Azure Spring Cloud im VNET](./troubleshooting-vnet.md)
+- [Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNET](./vnet-customer-responsibilities.md)

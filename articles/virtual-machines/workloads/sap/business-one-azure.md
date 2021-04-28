@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
-ms.openlocfilehash: e17739c65c0b80beb1f6fdd09f31897b317d7858
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7647fdd9d7dd9d535477fdc4e69ea382a9c25443
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506887"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146255"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in Azure Virtual Machines
 Dieses Dokument enthält Anleitungen zum Bereitstellen von SAP Business One in Azure Virtual Machines. Diese Dokumentation ist kein Ersatz für die Installationsdokumentation für Business One für SAP. Die Dokumentation enthält grundlegende Planungs- und Bereitstellungsrichtlinien für die Azure-Infrastruktur zur Ausführung von Business One-Anwendungen.
@@ -134,7 +134,7 @@ Wenn Sie SAP HANA als DBMS verwenden, sollten Sie die Informationen im Dokument 
 
 Für Hochverfügbarkeits- und Notfallwiederherstellungs-Konfigurationen rund um SAP HANA als Datenbank für Business One in Azure sollten Sie die Dokumentation [Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer](./sap-hana-availability-overview.md) und die darin aufgeführten Dokumente lesen.
 
-Für SAP HANA Sicherungs- und Wiederherstellungsstrategien sollten Sie das Dokument [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](./sap-hana-backup-guide.md) und die darin aufgeführten Dokumente lesen.
+Für SAP HANA Sicherungs- und Wiederherstellungsstrategien sollten Sie das Dokument [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](../../../backup/sap-hana-db-about.md) und die darin aufgeführten Dokumente lesen.
 
  
 ### <a name="business-one-client-server"></a>Business One-Clientserver

@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 11/23/2020
-ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afc39673a30f5c99455696c7a075cb1a6a33ecd1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97033373"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875501"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Logik-Apps mithilfe der Azure-Befehlszeilenschnittstelle
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie Logik-Apps mithilfe der [Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle](/cli/azure/ext/logic/logic) (`az logic`) erstellen und verwalten. Über die Befehlszeile können Sie eine Logik-App erstellen und dabei die JSON-Datei für eine Logik-App-Workflowdefinition verwenden. Anschließend können Sie Ihre Logik-App durch Ausführen von Vorgängen wie `list`, `show` (`get`), `update` und `delete` über die Befehlszeile verwalten.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Logik-Apps mithilfe der [Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle](/cli/azure/logic) (`az logic`) erstellen und verwalten. Über die Befehlszeile können Sie eine Logik-App erstellen und dabei die JSON-Datei für eine Logik-App-Workflowdefinition verwenden. Anschließend können Sie Ihre Logik-App durch Ausführen von Vorgängen wie `list`, `show` (`get`), `update` und `delete` über die Befehlszeile verwalten.
 
 > [!WARNING]
 > Die Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle ist derzeit eine *experimentelle Erweiterung*, für die *kein Kundensupport* bereitgestellt wird. Verwenden Sie diese CLI-Erweiterung mit Bedacht – insbesondere in Produktionsumgebungen.
@@ -69,7 +69,7 @@ Beim Ausführen der Befehle zum Erstellen oder Aktualisieren Ihrer Logik-App wir
 
 ## <a name="create-logic-apps-from-cli"></a>Erstellen von Logik-Apps über die Befehlszeilenschnittstelle
 
-Für die Erstellung eines Logik-App-Workflows über die Azure-Befehlszeilenschnittstelle können Sie den Befehl [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) mit einer JSON-Datei für die Definition verwenden.
+Für die Erstellung eines Logik-App-Workflows über die Azure-Befehlszeilenschnittstelle können Sie den Befehl [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) mit einer JSON-Datei für die Definition verwenden.
 
 ```azurecli
 
@@ -86,7 +86,7 @@ az logic workflow create --definition
 
 ```
 
-Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters) enthalten:
+Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/logic/workflow#az_logic_workflow_create-required-parameters) enthalten:
 
 | Parameter | Wert | BESCHREIBUNG |
 | --------- | ----- | ----------- |
@@ -95,7 +95,7 @@ Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/ext/logic/lo
 | Name | `--name -n` | Der Name Ihrer Logik-App. Der Name darf nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`()`) und Punkte (`.`) enthalten. Außerdem muss der Name regionsübergreifend eindeutig sein. |
 | Ressourcengruppenname | `--resource-group -g` | Die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), in der Sie Ihre Logik-App erstellen möchten. Sollte noch keine Ressourcengruppe für Ihre Logik-App vorhanden sein, [erstellen Sie eine Ressourcengruppe](#example---create-resource-group), bevor Sie beginnen. |
 
-Sie können auch zusätzliche [optionale Parameter](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters) hinzufügen, um die Zugriffssteuerung, die Endpunkte, das Integrationskonto, die Integrationsdienstumgebung, den Zustand und die Ressourcentags Ihrer Logik-App zu konfigurieren.
+Sie können auch zusätzliche [optionale Parameter](/cli/azure/logic/workflow#az_logic_workflow_create-optional-parameters) hinzufügen, um die Zugriffssteuerung, die Endpunkte, das Integrationskonto, die Integrationsdienstumgebung, den Zustand und die Ressourcentags Ihrer Logik-App zu konfigurieren.
 
 ### <a name="example---create-logic-app"></a>Beispiel: Erstellen einer Logik-App
 
@@ -111,9 +111,9 @@ Wenn Ihr Workflow erfolgreich erstellt wurde, wird von der Befehlszeilenschnitts
 
 ## <a name="update-logic-apps-from-cli"></a>Aktualisieren von Logik-Apps über die Befehlszeilenschnittstelle
 
-Der Workflow einer Logik-App kann über die Azure-Befehlszeilenschnittstelle auch aktualisiert werden. Verwenden Sie hierzu den Befehl [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create).
+Der Workflow einer Logik-App kann über die Azure-Befehlszeilenschnittstelle auch aktualisiert werden. Verwenden Sie hierzu den Befehl [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create).
 
-Der Befehl muss die gleichen [erforderlichen Parameter](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters) enthalten wie beim [Erstellen von Logik-Apps über die Befehlszeilenschnittstelle](#create-logic-apps-from-cli). Darüber hinaus können Sie die gleichen [optionalen Parameter](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters) hinzufügen wie beim Erstellen einer Logik-App.
+Der Befehl muss die gleichen [erforderlichen Parameter](/cli/azure/logic/workflow#az_logic_workflow_create-required-parameters) enthalten wie beim [Erstellen von Logik-Apps über die Befehlszeilenschnittstelle](#create-logic-apps-from-cli). Darüber hinaus können Sie die gleichen [optionalen Parameter](/cli/azure/logic/workflow#az_logic_workflow_create-optional-parameters) hinzufügen wie beim Erstellen einer Logik-App.
 
 ```azurecli
 
@@ -144,16 +144,16 @@ Wenn Ihr Workflow erfolgreich aktualisiert wurde, wird von der Befehlszeilenschn
 
 ## <a name="delete-logic-apps-from-cli"></a>Löschen von Logik-Apps über die Befehlszeilenschnittstelle
 
-Der Workflow einer Logik-App kann über die Azure-Befehlszeilenschnittstelle mithilfe des Befehls [`az logic workflow delete`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete) gelöscht werden.
+Der Workflow einer Logik-App kann über die Azure-Befehlszeilenschnittstelle mithilfe des Befehls [`az logic workflow delete`](/cli/azure/logic/workflow#az_logic_workflow_delete) gelöscht werden.
 
-Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-required-parameters) enthalten:
+Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/logic/workflow#az_logic_workflow_delete-required-parameters) enthalten:
 
 | Parameter | Wert | BESCHREIBUNG |
 | --------- | ----- | ----------- |
 | Name | `--name -n` | Der Name Ihrer Logik-App. |
 | Ressourcengruppenname | `-resource-group -g` | Die Ressourcengruppe, in der sich Ihre Logik-App befindet. |
 
-Sie können auch den [optionalen Parameter](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-optional-parameters) `--yes -y` einschließen, um Bestätigungsaufforderungen zu überspringen.
+Sie können auch den [optionalen Parameter](/cli/azure/logic/workflow#az_logic_workflow_delete-optional-parameters) `--yes -y` einschließen, um Bestätigungsaufforderungen zu überspringen.
 
 ```azurecli
 
@@ -187,7 +187,7 @@ Nachdem Sie auf die Bestätigungsaufforderung mit `y` reagiert haben, wird die L
 
 ## <a name="show-logic-apps-in-cli"></a>Anzeigen von Logik-Apps über die Befehlszeilenschnittstelle
 
-Ein bestimmter Logik-App-Workflow kann mithilfe des Befehls [`az logic workflow show`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show) abgerufen werden.
+Ein bestimmter Logik-App-Workflow kann mithilfe des Befehls [`az logic workflow show`](/cli/azure/logic/workflow#az_logic_workflow_show) abgerufen werden.
 
 ```azurecli
 
@@ -196,7 +196,7 @@ az logic workflow show --name
 
 ```
 
-Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show-required-parameters) enthalten:
+Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/logic/workflow#az_logic_workflow_show-required-parameters) enthalten:
 
 | Parameter | Wert | BESCHREIBUNG |
 | --------- | ----- | ----------- |
@@ -215,9 +215,9 @@ az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp
 
 ## <a name="list-logic-apps-in-cli"></a>Auflisten von Logik-Apps über die Befehlszeilenschnittstelle
 
-Mithilfe des Befehls [`az logic workflow list`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list) können Sie Ihre Logik-Apps nach Abonnement auflisten. Durch diesen Befehl wird der JSON-Code für die Workflows Ihrer Logik-Apps zurückgegeben.
+Mithilfe des Befehls [`az logic workflow list`](/cli/azure/logic/workflow#az_logic_workflow_list) können Sie Ihre Logik-Apps nach Abonnement auflisten. Durch diesen Befehl wird der JSON-Code für die Workflows Ihrer Logik-Apps zurückgegeben.
 
-Die Ergebnisse können nach folgenden [optionalen Parametern](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list-optional-parameters) gefiltert werden:
+Die Ergebnisse können nach folgenden [optionalen Parametern](/cli/azure/logic/workflow#az_logic_workflow_list-optional-parameters) gefiltert werden:
 
 | Parameter | Wert | BESCHREIBUNG |
 | --------- | ----- | ----------- |

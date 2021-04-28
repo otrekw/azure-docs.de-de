@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 7e2042294ebaefa2640873bb1ce941d9a60c7834
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259420"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128989"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
 
@@ -27,7 +27,7 @@ Mithilfe der Diagnosefunktionen von Azure Spring Cloud können Sie Protokolle un
 Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwachen möchten.
 
 > [!TIP]
-> Möchten Sie einfach nur Ihre Protokolle streamen? Sehen Sie sich diesen [Azure CLI-Befehl](/cli/azure/ext/spring-cloud/spring-cloud/app#ext-spring-cloud-az-spring-cloud-app-logs) an.
+> Möchten Sie einfach nur Ihre Protokolle streamen? Sehen Sie sich diesen [Azure CLI-Befehl](/cli/azure/spring-cloud/app#az_spring_cloud_app_logs) an.
 
 ## <a name="logs"></a>Protokolle
 
@@ -38,7 +38,7 @@ Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwac
 
 ## <a name="metrics"></a>Metriken
 
-Eine vollständige Liste der Metriken finden Sie unter [Spring Cloud-Metriken](./spring-cloud-concept-metrics.md#user-metrics-options).
+Eine vollständige Liste der Metriken finden Sie unter [Spring Cloud-Metriken](./concept-metrics.md#user-metrics-options).
 
 Zum Einstieg aktivieren Sie einen dieser Dienste, um die Daten empfangen zu können. Weitere Informationen zum Konfigurieren von Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).
 
@@ -110,7 +110,7 @@ Es gibt verschiedene Methoden zum Anzeigen von Protokollen und Metriken, wie in 
 > [!NOTE]
 > Für `==` wird Groß-/Kleinschreibung beachtet, für `=~` jedoch nicht.
 
-Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalten Sie unter [Azure Monitor-Protokollabfragen](/azure/data-explorer/kusto/query/). Wenn Sie alle Log Analytics-Protokolle über einen zentralisierten Client abfragen möchten, lesen Sie die Informationen unter [Abfragen von Daten in Azure Monitor mit Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
+Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalten Sie unter [Azure Monitor-Protokollabfragen](/azure/data-explorer/kusto/query/). Wenn Sie alle Log Analytics-Protokolle über einen zentralisierten Client abfragen möchten, lesen Sie die Informationen unter [Abfragen von Daten in Azure Monitor mit Azure Data Explorer](/azure/data-explorer/query-monitor-data).
 
 ### <a name="use-your-storage-account"></a>Verwenden Ihres Speicherkontos
 
@@ -208,4 +208,4 @@ Die gleiche Strategie kann ggf. auch für andere Java-Protokollbibliotheken verw
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](spring-cloud-quickstart.md)
+* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md)

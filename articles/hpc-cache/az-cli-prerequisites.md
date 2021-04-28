@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 30621eceefd69cd3e08de137bb34f1079a17a406
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0b8e1158bc60c4cceea508db988000fe952a90a4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780477"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864287"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Einrichten der Azure-CLI für Azure HPC Cache
 
@@ -30,4 +30,4 @@ Die meisten hpc-cache-Befehle erfordern, dass Sie die Ressourcengruppe des Cache
 Nachdem Sie die Azure CLI-Erweiterung installiert und sich angemeldet haben, können Sie die Azure CLI verwenden, um Azure HPC Cache-Systeme zu erstellen und zu verwalten.
 
 * [Erstellen einer Azure HPC Cache-Instanz](hpc-cache-create.md)
-* [Dokumentation zu den hpc-cache-Befehlen der Azure CLI](/cli/azure/ext/hpc-cache/hpc-cache)
+* [Dokumentation zu den hpc-cache-Befehlen der Azure CLI](/cli/azure/hpc-cache)

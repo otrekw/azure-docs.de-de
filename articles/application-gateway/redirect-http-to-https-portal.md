@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 67153fa750fee765dcaa1072eec87a2f6169b918
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7fb40d95c4659bf353366770da7c903ffa1bd09
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397279"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867221"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
@@ -34,7 +34,7 @@ Für dieses Tutorial ist die Version 1.0.0 oder höher des Azure PowerShell-Modu
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
-Für den Einsatz in einer Produktionsumgebung sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für dieses Tutorial erstellen Sie mit [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ein selbstsigniertes Zertifikat. Sie können [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) mit dem zurückgegebenen Fingerabdruck verwenden, um eine PFX-Datei aus dem Zertifikat zu exportieren.
+Für den Einsatz in einer Produktionsumgebung sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für dieses Tutorial erstellen Sie mit [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) ein selbstsigniertes Zertifikat. Sie können [Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate) mit dem zurückgegebenen Fingerabdruck verwenden, um eine PFX-Datei aus dem Zertifikat zu exportieren.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -103,9 +103,9 @@ Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virt
 3. Geben Sie *myBackendSubnet* als Namen des Subnetzes ein.
 4. Geben Sie *10.0.2.0/24* als Adressbereich ein, und wählen Sie dann **OK** aus.
 
-## <a name="add-a-listener-and-redirection-rule"></a>Hinzufügen eines Listeners und einer Umleitungsregel
+## <a name="add-a-listener-and-redirection-rule&quot;></a>Hinzufügen eines Listeners und einer Umleitungsregel
 
-### <a name="add-the-listener"></a>Hinzufügen des Listeners
+### <a name=&quot;add-the-listener&quot;></a>Hinzufügen des Listeners
 
 Fügen Sie zunächst den Listener namens *myListener* für Port 80 hinzu.
 
@@ -115,7 +115,7 @@ Fügen Sie zunächst den Listener namens *myListener* für Port 80 hinzu.
 4. Geben Sie *httpPort* als neuen Fron-End-Port-Namen und *80* als Port ein.
 5. Stellen Sie sicher, dass das Protokoll auf **HTTP** festgelegt ist, und wählen Sie dann **OK** aus.
 
-### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Hinzufügen einer Routingregel mit einer Umleitungskonfiguration
+### <a name=&quot;add-a-routing-rule-with-a-redirection-configuration&quot;></a>Hinzufügen einer Routingregel mit einer Umleitungskonfiguration
 
 1. Wählen Sie für **myAppGateway** die Option **Regeln** und dann **+Routingregel anfordern** aus.
 2. Geben Sie als **Regelnamen** den Text *Rule2* ein.
@@ -127,7 +127,7 @@ Fügen Sie zunächst den Listener namens *myListener* für Port 80 hinzu.
 8. Wählen Sie für **Abfragezeichenfolge einbeziehen** und **Pfad einbeziehen** die Option *Ja* aus.
 9. Wählen Sie **Hinzufügen**.
 
-## <a name="create-a-virtual-machine-scale-set"></a>Erstellen einer Skalierungsgruppe für virtuelle Computer
+## <a name=&quot;create-a-virtual-machine-scale-set&quot;></a>Erstellen einer Skalierungsgruppe für virtuelle Computer
 
 In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe, um Server für den Back-End-Pool im Anwendungsgateway bereitzustellen.
 
@@ -147,7 +147,7 @@ In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe, um Server für den B
 14. Stellen Sie sicher, dass **Subnetz** auf **myBackendSubnet** festgelegt ist.
 15. Klicken Sie auf **Erstellen**.
 
-### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>Zuordnen der Skalierungsgruppe zum entsprechenden Back-End-Pool
+### <a name=&quot;associate-the-scale-set-with-the-proper-backend-pool&quot;></a>Zuordnen der Skalierungsgruppe zum entsprechenden Back-End-Pool
 
 Die Benutzeroberfläche des Portals für VM-Skalierungsgruppen erstellt einen neuen Back-End-Pool für die Skalierungsgruppe, aber Sie müssen diese Ihrem vorhandenen appGatewayBackendPool zuordnen.
 
@@ -164,7 +164,7 @@ Die Benutzeroberfläche des Portals für VM-Skalierungsgruppen erstellt einen ne
 11. Wählen Sie unter **Netzwerkschnittstellenkonfigurationen** die Option **myvmssNic** aus.
 12. Wählen Sie **Speichern** aus.
 
-### <a name="upgrade-the-scale-set"></a>Upgrade der Skalierungsgruppe
+### <a name=&quot;upgrade-the-scale-set&quot;></a>Upgrade der Skalierungsgruppe
 
 Abschließend müssen Sie ein Upgrade der Skalierungsgruppe mit diesen Änderungen vornehmen.
 
@@ -176,14 +176,14 @@ Abschließend müssen Sie ein Upgrade der Skalierungsgruppe mit diesen Änderung
 6. Wählen Sie **myAppGatewaymyvmss** und dann **Löschen** aus.
 7. Wählen Sie zum Fortzufahren **OK** aus.
 
-### <a name="install-iis"></a>Installieren von IIS
+### <a name=&quot;install-iis&quot;></a>Installieren von IIS
 
 Eine einfache Möglichkeit zum Installieren von IIS in der Skalierungsgruppe besteht in der Verwendung der PowerShell. Klicken Sie im Portal auf das Cloud Shell-Symbol, und stellen Sie sicher, dass **PowerShell** ausgewählt ist.
 
 Fügen Sie den folgenden Code in das PowerShell-Fenster ein, und drücken Sie die EINGABETASTE.
 
 ```azurepowershell
-$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1"); 
+$publicSettings = @{ &quot;fileUris&quot; = (,&quot;https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1"); 
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 $vmss = Get-AzVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss
 Add-AzVmssExtension -VirtualMachineScaleSet $vmss `

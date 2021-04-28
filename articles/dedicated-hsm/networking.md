@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 3370389027805cfb5a68b5b0551d14dc31154804
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 14f7a88e756123b807852d78b6511939b81fd9db
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611836"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126055"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure-Dienst für dedizierte HSMs – Netzwerke
 
@@ -133,7 +133,7 @@ Command Result : 0 (Success)
 
 ### <a name="alternative-to-using-global-vnet-peering"></a>Alternative zur Verwendung von globalem VNET-Peering
 Es gibt eine Reihe von Architekturen, die Sie als Alternative zum globalen VNET-Peering verwenden können.
-1.  Verwenden einer [VNET-zu-VNET-VPN Gateway-Verbindung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) 
+1.  Verwenden einer [VNET-zu-VNET-VPN Gateway-Verbindung](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) 
 2.  Verbinden Sie das HSM-VNET mit einem anderen VNET über eine ER-Verbindung. Dies funktioniert am besten, wenn ein direkter lokaler Pfad oder ein VPN-VNET erforderlich ist. 
 
 #### <a name="hsm-with-direct-express-route-connectivity"></a>HSM mit direkter ExpressRoute-Konnektivität

@@ -4,12 +4,12 @@ description: Dieser Artikel enthält einen Leitfaden für eine Azure DevTest Lab
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 29f739c2fb9dd1cc58bf6c400eeee1bebb6243c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d977ae8341981c90096c10bbc2c051372b4d8dab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92328843"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125875"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs: Referenzarchitektur für Unternehmen
 Dieser Artikel enthält eine Referenzarchitektur als Unterstützung für die Bereitstellung einer Azure DevTest Labs-basierten Lösung in einem Unternehmen. Dies umfasst Folgendes:
@@ -34,7 +34,7 @@ Dies sind die Schlüsselelemente der Referenzarchitektur:
 - **Remotedesktopgateway:** Unternehmen blockieren ausgehende Remotedesktopverbindungen in der Regel an der Unternehmensfirewall. Es gibt verschiedene Optionen, um die Konnektivität mit der cloudbasierten Umgebung in den DevTest Labs zu ermöglichen, einschließlich:
   - Verwenden Sie ein [Remotedesktopgateway](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture), und lassen Sie die statische IP-Adresse des Gatewaylastenausgleichs zu.
   - [Leiten Sie den gesamten eingehenden RDP-Verkehr](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) über die ExpressRoute-/Site-to-Site-VPN-Verbindung. Diese Funktionalität ist eine häufige Überlegung, wenn Unternehmen eine DevTest Labs-Bereitstellung planen.
-- **Netzwerkdienste (virtuelle Netzwerke, Subnetze)** : Die Topologie des [Azure-Netzwerks](../networking/networking-overview.md) ist ein weiteres wichtiges Element der DevTest Labs-Architektur. Sie steuert, ob Ressourcen aus dem Lab mit lokalen Standorten und dem Internet kommunizieren können und darauf Zugriff haben. Unser Architekturdiagramm enthält die gängigsten Methoden, wie Kunden DevTest Labs nutzen: Alle Labs werden über [virtuelles Netzwerkpeering](../virtual-network/virtual-network-peering-overview.md) mithilfe eines [Hub-Spoke-Modells](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) mit der ExpressRoute-/Site-toto-Site-VPN-Verbindung mit lokalen Standorten verbunden. DevTest Labs verwendet Azure Virtual Network jedoch direkt, sodass es keine Einschränkungen bei der Einrichtung der Netzwerkinfrastruktur gibt.
+- **Netzwerkdienste (virtuelle Netzwerke, Subnetze)** : Die Topologie des [Azure-Netzwerks](../networking/fundamentals/networking-overview.md) ist ein weiteres wichtiges Element der DevTest Labs-Architektur. Sie steuert, ob Ressourcen aus dem Lab mit lokalen Standorten und dem Internet kommunizieren können und darauf Zugriff haben. Unser Architekturdiagramm enthält die gängigsten Methoden, wie Kunden DevTest Labs nutzen: Alle Labs werden über [virtuelles Netzwerkpeering](../virtual-network/virtual-network-peering-overview.md) mithilfe eines [Hub-Spoke-Modells](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) mit der ExpressRoute-/Site-toto-Site-VPN-Verbindung mit lokalen Standorten verbunden. DevTest Labs verwendet Azure Virtual Network jedoch direkt, sodass es keine Einschränkungen bei der Einrichtung der Netzwerkinfrastruktur gibt.
 - **DevTest Labs:**  DevTest Labs ist ein wichtiger Bestandteil der allgemeinen Architektur. Weitere Informationen zu diesem Dienst finden Sie unter [Informationen zu Azure DevTest Labs](devtest-lab-overview.md).
 - **Virtuelle Computer und andere Ressourcen (SaaS, PaaS und IaaS):**  Virtuelle Computer sind eine wichtige Workload, die von DevTest Labs zusammen mit anderen Azure-Ressourcen unterstützt wird. Mit DevTest Labs können Unternehmen schnell und einfach Zugriff auf Azure-Ressourcen gewähren (einschließlich virtueller Computer und anderer Azure-Ressourcen). Weitere Informationen zum Zugriff auf Azure finden Sie [hier](devtest-lab-developer-lab.md) (für Entwickler) bzw. [hier](devtest-lab-test-env.md) (für Tester).
 

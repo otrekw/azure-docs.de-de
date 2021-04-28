@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 49b267d36fb6c365cf2125912c0d27fe7d669474
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f491681c8054c800e15c3c77516ff22e3c70dbac
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585277"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001500"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
 
@@ -34,7 +34,7 @@ Sie können die Vorteile von Azure Sentinel in vollem Umfang nutzen, wenn Sie ei
 | Souveränität und Einhaltung gesetzlicher Bestimmungen | Ein Arbeitsbereich ist an eine bestimmte Region gebunden. Wenn Daten in unterschiedlichen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/geographies/) aufbewahrt werden müssen, um gesetzliche Anforderungen zu erfüllen, ist eine Unterteilung in separate Arbeitsbereiche erforderlich. |  |
 | Datenbesitz | Die Grenzen des Datenbesitzes, z. B. nach Tochtergesellschaften oder Partnerunternehmen, lassen sich durch separate Arbeitsbereiche besser nachvollziehen. |  |
 | Mehrere Azure-Mandanten | Azure Sentinel unterstützt die Datenerfassung von Microsoft- und Azure-SaaS-Ressourcen nur innerhalb einer eigenen Azure Active Directory-Mandantenbegrenzung (Azure AD). Daher wird für jeden Azure AD-Mandanten ein separater Arbeitsbereich benötigt. |  |
-| Differenzierte Steuerung des Datenzugriffs | Es kann vorkommen, dass eine Organisation verschiedenen internen oder externen Gruppen Zugriff auf einen Teil der von Azure Sentinel gesammelten Daten gewähren muss. Beispiel:<br><ul><li>Zugriff von Ressourcenbesitzern auf Daten, die sich auf ihre Ressourcen beziehen</li><li>Zugriff regionaler oder untergeordneter SOCs auf Daten, die für den jeweiligen Zuständigkeitsbereich relevant sind</li></ul> | Verwenden Sie [Azure RBAC für Ressourcen](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) oder [Azure RBAC auf Tabellenebene](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
+| Differenzierte Steuerung des Datenzugriffs | Es kann vorkommen, dass eine Organisation verschiedenen internen oder externen Gruppen Zugriff auf einen Teil der von Azure Sentinel gesammelten Daten gewähren muss. Beispiel:<br><ul><li>Zugriff von Ressourcenbesitzern auf Daten, die sich auf ihre Ressourcen beziehen</li><li>Zugriff regionaler oder untergeordneter SOCs auf Daten, die für den jeweiligen Zuständigkeitsbereich relevant sind</li></ul> | Verwenden Sie [Azure RBAC für Ressourcen](resource-context-rbac.md) oder [Azure RBAC auf Tabellenebene](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
 | Differenzierte Einstellungen für die Datenaufbewahrung | Die einzige Möglichkeit, unterschiedliche Aufbewahrungsfristen für verschiedene Datentypen festzulegen, bestand in der Vergangenheit in der Einrichtung mehrerer Arbeitsbereiche. Durch die Einführung von Aufbewahrungseinstellungen auf Tabellenebene ist dies in vielen Fällen nicht mehr erforderlich. | [Aufbewahrungseinstellungen auf Tabellenebene](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) verwenden oder [Datenlöschung](../azure-monitor/logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) automatisieren |
 | Getrennte Abrechnung | Durch die Zuordnung von Arbeitsbereichen zu separaten Abonnements können diese verschiedenen Parteien in Rechnung gestellt werden. | Nutzungsberichte und interne Verrechnung |
 | Legacy-Architektur | Die Verwendung mehrerer Arbeitsbereiche kann auf einen historischen Designansatz zurückzuführen sein, durch den Einschränkungen oder bewährte Methoden berücksichtigt wurden, die heute nicht mehr gültig sind. Es kann sich aber auch um eine zufällige Designentscheidung handeln, die korrigiert werden kann, um Azure Sentinel besser zu unterstützen.<br><br>Beispiele:<br><ul><li>Verwenden eines abonnementbasierten Standardarbeitsbereichs bei der Azure Security Center-Bereitstellung</li><li>Manchmal unverzichtbar: differenzierte Zugriffsteuerung und differenzierte Einstellungen für die Datenaufbewahrung (relativ neu)</li></ul> | Arbeitsbereiche umgestalten |

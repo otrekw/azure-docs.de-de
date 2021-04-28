@@ -3,22 +3,23 @@ title: 'Azure Monitor-Ressourcenprotokolle: unterstützte Dienste und Kategorien
 description: 'Referenz zu Azure Monitor: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.'
 ms.topic: reference
 ms.date: 03/30/2021
-ms.openlocfilehash: a4ab4a2e425b752198223da5efd1b07466ab83d1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: b9bac212a8be040349a8d78c64d7beab291e1f9e
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166937"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016019"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Unterstützte Kategorien für Azure-Ressourcenprotokolle
 
 > [!NOTE]
-> Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet. Der Name wurde im Oktober 2019 geändert, da die Typen der von Azure Monitor gesammelten Protokolle nicht mehr nur die Azure-Ressource umfassen.
+> Diese Liste wird größtenteils automatisch generiert. Jegliche Änderungen, die über GitHub an dieser Liste vorgenommen werden, können ohne Warnung überschrieben werden. Informationen dazu, wie die Liste dauerhaft aktualisiert werden kann, erhalten Sie beim Autor dieses Artikels.
 
 [Azure Monitor-Ressourcenprotokolle](../essentials/platform-logs-overview.md) sind von Azure-Diensten ausgegebene Protokolle, die die Vorgänge der jeweiligen Dienste oder Ressourcen beschreiben. Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben.
 
-Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. Es gibt ein allgemeines Schema für alle Ressourcenprotokolle mit dienstspezifischen Feldern, die dann für verschiedene Protokollkategorien hinzugefügt werden. Weitere Informationen finden Sie unter [Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle]().
+Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet. Der Name wurde im Oktober 2019 geändert, da die Typen der von Azure Monitor gesammelten Protokolle nicht mehr nur die Azure-Ressource umfassen.
 
+Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. Es gibt ein allgemeines Schema für alle Ressourcenprotokolle mit dienstspezifischen Feldern, die dann für verschiedene Protokollkategorien hinzugefügt werden. Weitere Informationen finden Sie unter [Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle]().
 
 ## <a name="costs"></a>Kosten
 
@@ -653,14 +654,6 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |---|---|---|
 |FrontdoorAccessLog|Frontdoor-Zugriffsprotokoll|Nein|
 |FrontdoorWebApplicationFirewallLog|Frontdoor-Web Application Firewall-Protokoll|Nein|
-
-
-## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
-
-|Category|Anzeigename der Kategorie|Exportkosten|
-|---|---|---|
-|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|Nein|
-|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|Nein|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups

@@ -9,12 +9,12 @@ ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d4885f23e775f84a412d176568d992ebe01166b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177554"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875699"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 
@@ -190,19 +190,19 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
 
 ### <a name="create-a-job"></a>Erstellen eines Auftrags
 
-1. Verwenden Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add), um die Erweiterung [az import-export](/cli/azure/ext/import-export/import-export) hinzuzufügen:
+1. Verwenden Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add), um die Erweiterung [az import-export](/cli/azure/import-export) hinzuzufügen:
 
     ```azurecli
     az extension add --name import-export
     ```
 
-1. Um eine Liste der Standorte abzurufen, von denen Sie Datenträger erhalten können, verwenden Sie den Befehl [az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list):
+1. Um eine Liste der Standorte abzurufen, von denen Sie Datenträger erhalten können, verwenden Sie den Befehl [az import-export location list](/cli/azure/import-export/location#az_import_export_location_list):
 
     ```azurecli
     az import-export location list
     ```
 
-1. Führen Sie wie folgt den Befehl [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) aus, um einen Exportauftrag zu erstellen, der Ihr vorhandenes Speicherkonto verwendet:
+1. Führen Sie wie folgt den Befehl [az import-export create](/cli/azure/import-export#az_import_export_create) aus, um einen Exportauftrag zu erstellen, der Ihr vorhandenes Speicherkonto verwendet:
 
     ```azurecli
     az import-export create \
@@ -245,13 +245,13 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
    > [!NOTE]
    > Wenn das zu exportierende Blob während des Kopierens der Daten verwendet wird, erstellt der Azure Import/Export-Dienst eine Momentaufnahme des Blobs und kopiert die Momentaufnahme.
 
-1. Verwenden Sie den Befehl [az import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list), um alle Aufträge für die Ressourcengruppe „myierg“ anzuzeigen:
+1. Verwenden Sie den Befehl [az import-export list](/cli/azure/import-export#az_import_export_list), um alle Aufträge für die Ressourcengruppe „myierg“ anzuzeigen:
 
     ```azurecli
     az import-export list --resource-group myierg
     ```
 
-1. Um Ihren Auftrag zu aktualisieren oder abzubrechen, führen Sie den Befehl [az import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) aus:
+1. Um Ihren Auftrag zu aktualisieren oder abzubrechen, führen Sie den Befehl [az import-export update](/cli/azure/import-export#az_import_export_update) aus:
 
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true

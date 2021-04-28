@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 87fed1d2ac4f5fa85c01d7af10bec10c1412744f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08a19c55bd208036fe6731e4436a8f0a74a76723
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92202343"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127711"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute-Verbindungen und Peering
 
@@ -20,8 +20,9 @@ ms.locfileid: "92202343"
 
 ![Diagramm, das zeigt, wie über ExpressRoute-Verbindungen Ihre lokale Infrastruktur über einen Konnektivitätsanbieter mit Microsoft verbunden wird](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
-> [!IMPORTANT]
-> Öffentliches Azure-Peering wurde als veraltet markiert und ist für neue ExpressRoute-Leitungen nicht verfügbar. Neue Leitungen unterstützen Microsoft-Peering und privates Peering.  
+> [!NOTE]
+> * Im Kontext von ExpressRoute beschreibt Microsoft Edge die Edgerouter auf der Microsoft-Seite der ExpressRoute-Verbindung. Dies ist der Einstiegspunkt der ExpressRoute-Leitung in das Microsoft-Netzwerk.
+> * Öffentliches Azure-Peering wurde als veraltet markiert und ist für neue ExpressRoute-Leitungen nicht verfügbar. Neue Leitungen unterstützen Microsoft-Peering und privates Peering.  
 >
 
 ## <a name="expressroute-circuits"></a><a name="circuits"></a>ExpressRoute-Verbindungen

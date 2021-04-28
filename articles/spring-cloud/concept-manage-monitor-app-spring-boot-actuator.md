@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 93fd286aa76a0409a515abbf8c9dabd88a9a65c4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bfe5dc7c4f6fc40154a6fc9bc3a087873ba9eaef
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877312"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129241"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Verwalten und Überwachen einer App mit dem Azure Spring Boot-Aktor
 
@@ -21,7 +21,7 @@ ms.locfileid: "104877312"
 Nach der Bereitstellung einer neuen Binärdatei für Ihre App sollten Sie die Funktionalität prüfen und Informationen zu Ihrer ausgeführten Anwendung abrufen. In diesem Artikel wird erläutert, wie Sie über einen von Azure Spring Cloud bereitgestellten Testendpunkt auf die API zugreifen und die produktionsreifen Features für Ihre App zur Verfügung stellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird vorausgesetzt, dass Sie über eine Spring Boot 2.x-Anwendung verfügen, die erfolgreich bereitgestellt und im Azure Spring Cloud-Dienst gestartet werden kann.  Weitere Informationen finden Sie unter [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart.md).
+In diesem Artikel wird vorausgesetzt, dass Sie über eine Spring Boot 2.x-Anwendung verfügen, die erfolgreich bereitgestellt und im Azure Spring Cloud-Dienst gestartet werden kann.  Weitere Informationen finden Sie unter [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](./quickstart.md).
 
 ## <a name="verify-app-through-test-endpoint"></a>Überprüfen der App über einen Testendpunkt
 1. Öffnen Sie das **Anwendungsdashboard**, und klicken Sie auf Ihre App, um zur App-Übersichtsseite zu gelangen.
@@ -76,6 +76,5 @@ Informationen zum Anzeigen aller integrierten Endpunkte finden Sie unter [Freige
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Grundlegendes zu Metriken für Azure Spring Cloud](spring-cloud-concept-metrics.md)
-* [Grundlegendes zum App-Status in Azure Spring Cloud](spring-cloud-concept-app-status.md)
-
+* [Grundlegendes zu Metriken für Azure Spring Cloud](./concept-metrics.md)
+* [Grundlegendes zum App-Status in Azure Spring Cloud](./concept-app-status.md)

@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: a714434c39a0c40c2e908f2d0c424f02851921a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb5f00cf2e7078ab8d85f0ac1c2a2d54be907f89
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933677"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127171"
 ---
 # <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set-public-preview"></a>Azure-Hybridvorteil für Skalierungssätze für VM-Skalierungsgruppe (Public Preview)
 
-**Azure-Hybridvorteil für Linux VM-Skalierungsgruppe ist im Public Review jetzt**. Der Azure-Hybridvorteil kann Ihnen helfen, die Kosten für die Ausführung ihrer RHEL-und SLES-VM- [Skalierungs Gruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)zu reduzieren.
+**Azure-Hybridvorteil für Linux VM-Skalierungsgruppe ist im Public Review jetzt**. Der Azure-Hybridvorteil kann Ihnen helfen, die Kosten für die Ausführung ihrer RHEL-und SLES-VM- [Skalierungs Gruppen](./overview.md)zu reduzieren.
 
 Mit diesem Vorteil zahlen Sie nur die Infrastrukturkosten für Ihr Skalierungsgruppe. Der Vorteil ist für alle RHEL- und SLES-Images im Marketplace mit nutzungsbasierter Bezahlung verfügbar.
 
 
 >[!NOTE]
-> Dieser Artikel beschreibt den Azure-Hybridvorteil für Linux VMSS. Es gibt einen separaten [Artikel, der [hier für den Azure-Hybridvorteil](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)-Computer verfügbar ist, der für Azure-Kunden bereits seit November 2020 verfügbar ist.
+> Dieser Artikel beschreibt den Azure-Hybridvorteil für Linux VMSS. Es gibt einen separaten [Artikel, der [hier für den Azure-Hybridvorteil](../virtual-machines/linux/azure-hybrid-benefit-linux.md)-Computer verfügbar ist, der für Azure-Kunden bereits seit November 2020 verfügbar ist.
 
 ## <a name="benefit-description"></a>Beschreibung des Vorteils
 Mit Azure Hybrid können Sie die vorhandenen Cloud-Zugangslizenzen von Red Hat oder SUSE nutzen und VM-Skalierungsgruppen flexibel auf Bring-your-own-Subscription (BYOS)-Abrechnung umstellen. 
@@ -94,7 +94,7 @@ az vmss update -g myResourceGroup -n myVmName --license-type None
 ```
 
 >[!NOTE]
-> Für Skalierungsgruppen gilt eine [„Upgraderichtlinie“](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model), die festlegt, wie virtuelle Computer auf das aktuelle Skalierungsgruppenmodell aktualisiert werden. Wenn Ihre VMSS die Upgrade-Richtlinie „Automatisch“ haben, wird der AHB-Vorteil automatisch angewendet, wenn VM-Instanzen aktualisiert werden. Wenn VMSS eine Richtlinie zum „parallelen Upgrade“ haben, wird AHB basierend auf den geplanten Updates angewendet.
+> Für Skalierungsgruppen gilt eine [„Upgraderichtlinie“](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model), die festlegt, wie virtuelle Computer auf das aktuelle Skalierungsgruppenmodell aktualisiert werden. Wenn Ihre VMSS die Upgrade-Richtlinie „Automatisch“ haben, wird der AHB-Vorteil automatisch angewendet, wenn VM-Instanzen aktualisiert werden. Wenn VMSS eine Richtlinie zum „parallelen Upgrade“ haben, wird AHB basierend auf den geplanten Updates angewendet.
 Bei der Upgrade-Richtlinie „Manuel“ müssen Sie für jede vorhandene VM ein „manuelles Upgrade“ durchführen.  
 
 ### <a name="cli-example-to-upgrade-virtual-machine-scale-set-instances-in-case-of-manual-upgrade-policy"></a>CLI-Beispiel für das Upgrade der VM-Skalierungsgruppe bei der Richtlinie „Manuelles Upgrade“ 

@@ -11,12 +11,12 @@ ms.date: 03/19/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 373cebee4e7f95062791d8bc68bfee7d845e1465
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee850765006af15d8e323831d70dfcd7849d1287
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104725462"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145959"
 ---
 # <a name="azure-ad-connect-single-object-sync"></a>Azure AD Connect: Single Object Sync 
 
@@ -64,7 +64,7 @@ Führen Sie zum Ausführen des Tools Single Object Sync folgende Schritte aus:
 
  1. Öffnen Sie mit der Option „Als Administrator ausführen“ eine neue Windows PowerShell-Sitzung auf Ihrem Azure AD Connect-Server. 
 
- 2. Setzen Sie die [Ausführungsrichtlinie](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy) auf „RemoteSigned“ oder „Unrestricted“. 
+ 2. Setzen Sie die [Ausführungsrichtlinie](/powershell/module/microsoft.powershell.security/set-executionpolicy) auf „RemoteSigned“ oder „Unrestricted“. 
 
  3. Deaktivieren Sie den Synchronisierungsplaner, nachdem Sie bestätigt haben, dass keine Synchronisierungsvorgänge ausgeführt werden. 
 
@@ -95,4 +95,4 @@ Das Tool Single Object Sync **ist** für die Untersuchung von Problemen bei der 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Beheben von Problemen bei der Objektsynchronisierung mit der Azure AD Connect-Synchronisierung](tshoot-connect-objectsync.md)
 - [Beheben von Problemen mit einem Objekt, das nicht mit Azure Active Directory synchronisiert wird](tshoot-connect-object-not-syncing.md)
-- [End-to-End-Problembehandlung bei Azure AD Connect-Objekten und -Attributen](https://docs.microsoft.com/troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes)
+- [End-to-End-Problembehandlung bei Azure AD Connect-Objekten und -Attributen](/troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes)

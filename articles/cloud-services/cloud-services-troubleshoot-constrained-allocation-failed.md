@@ -2,17 +2,17 @@
 title: Problembehandlung von ConstrainedAllocationFailed beim Bereitstellen eines Clouddiensts (klassisch) in Azure | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie eine ConstrainedAllocationFailed-Ausnahme bei der Bereitstellung eines Clouddiensts (klassisch) in Azure auflösen.
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: mamccrea
+ms.author: mamccrea
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 346e7eb77039ab80e6f9dffb8ea8360198040504
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4a92246f81ddd10840bb0dcf7edf2b01853fd148
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738281"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876596"
 ---
 # <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>Problembehandlung von ConstrainedAllocationFailed beim Bereitstellen eines Clouddiensts (klassisch) in Azure
 
