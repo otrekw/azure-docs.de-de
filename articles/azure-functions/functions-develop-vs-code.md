@@ -4,12 +4,12 @@ description: In diesem Artikel erhalten Sie Informationen über das Entwickeln u
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: d4353e6be313d61716933879efa930e22472781b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2869b2b30722495523a9f0dfb2d70a17a205854
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493944"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871271"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -85,7 +85,7 @@ Diese Voraussetzungen sind nur erforderlich, wenn Sie Ihre [Funktionen lokal aus
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows) empfohlen. Versionsinformationen finden Sie unter [PowerShell-Versionen](functions-reference-powershell.md#powershell-versions).
 
-+ [.NET Core 3.1 Runtime](https://www.microsoft.com/net/download) und [.NET Core 2.1 Runtime](https://dotnet.microsoft.com/download/dotnet-core/2.1)  
++ [.NET Core 3.1 Runtime](https://dotnet.microsoft.com/download) und [.NET Core 2.1 Runtime](https://dotnet.microsoft.com/download/dotnet/2.1)  
 
 + [PowerShell-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)  
 

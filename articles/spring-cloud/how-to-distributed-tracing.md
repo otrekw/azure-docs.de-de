@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 6bcb020b14952541c673592c1040fca211ed4edf
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 48f80d82c003677f2cacfdef2a57ae1aaa68d59d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011850"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135111"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud
 
@@ -105,7 +105,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um diese Prozeduren zu befolgen, benötigen Sie einen Azure Spring Cloud-Dienst, der bereits bereitgestellt ist und ausgeführt wird. Arbeiten Sie den Schnellstart [Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](spring-cloud-quickstart.md) durch, um einen Azure Spring Cloud-Dienst bereitzustellen und auszuführen.
+Um diese Prozeduren zu befolgen, benötigen Sie einen Azure Spring Cloud-Dienst, der bereits bereitgestellt ist und ausgeführt wird. Arbeiten Sie den Schnellstart [Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md) durch, um einen Azure Spring Cloud-Dienst bereitzustellen und auszuführen.
 
 ## <a name="add-dependencies"></a>Hinzufügen von Abhängigkeiten
 
@@ -214,4 +214,4 @@ Application Insights bietet neben Anwendungsübersicht und Suchfunktion auch Üb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie weitere Informationen zur verteilten Ablaufverfolgung erhalten und erfahren, wie Sie die Funktion in Azure Spring Cloud aktivieren. Informationen zum Binden von Diensten an eine Anwendung finden Sie unter [Binden einer Azure Cosmos DB-Datenbank an Ihre Azure Spring Cloud-Anwendung](spring-cloud-howto-bind-cosmos.md).
+In diesem Artikel haben Sie weitere Informationen zur verteilten Ablaufverfolgung erhalten und erfahren, wie Sie die Funktion in Azure Spring Cloud aktivieren. Informationen zum Binden von Diensten an eine Anwendung finden Sie unter [Binden einer Azure Cosmos DB-Datenbank an Ihre Azure Spring Cloud-Anwendung](./how-to-bind-cosmos.md).

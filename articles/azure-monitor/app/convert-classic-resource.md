@@ -3,12 +3,12 @@ title: Migrieren einer klassischen Application Insights-Ressource in Azure Monit
 description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktualisieren einer klassischen Application Insights-Ressource in Azure Monitor auf das neue arbeitsbereichsbasierte Modell.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49ef293a7c0dd65eed0ba517d8dab80020969286
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584261"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018365"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrieren zu arbeitsbereichsbasierten Application Insights-Ressourcen
 
@@ -114,7 +114,7 @@ az monitor app-insights component update --app
 az monitor app-insights component update --app your-app-insights-resource-name -g your_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-Vollständige Informationen zu diesem Befehl finden Sie in der [Azure CLI-Dokumentation](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-update).
+Vollständige Informationen zu diesem Befehl finden Sie in der [Azure CLI-Dokumentation](/cli/azure/monitor/app-insights/component#az_monitor_app_insights_component_update).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

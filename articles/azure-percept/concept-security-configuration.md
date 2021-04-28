@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: cfc20a30104e24a3950c71bdd8377544803d2f25
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9564160698b1f1bf17fc89ec13b1e292aa3b6098
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604412"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137543"
 ---
 # <a name="azure-percept-firewall-configuration-and-security-recommendations"></a>Konfigurieren von Firewalls für Azure Percept und Sicherheitsempfehlungen
 
@@ -28,7 +28,7 @@ Diese Prüfliste ist ein Ausgangspunkt für Firewallregeln:
 |*.auth.azureperceptdk.azure.net|443|Authentifizierung und Autorisierung für Azure DK-SOM|
 |*.auth.projectsantacruz.azure.net|443|Authentifizierung und Autorisierung für Azure DK-SOM|
 
-Machen Sie sich außerdem mit der Liste der [von Azure IoT Edge verwendeten Verbindungen](https://docs.microsoft.com/azure/iot-edge/production-checklist#allow-connections-from-iot-edge-devices) vertraut.
+Machen Sie sich außerdem mit der Liste der [von Azure IoT Edge verwendeten Verbindungen](../iot-edge/production-checklist.md#allow-connections-from-iot-edge-devices) vertraut.
 
 ## <a name="additional-recommendations-for-deployment-to-production"></a>Weitere Empfehlungen für die Bereitstellung in der Produktion
 

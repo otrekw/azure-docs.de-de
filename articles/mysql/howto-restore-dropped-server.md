@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 5fc1ab1b3dfbc324668873749c143846c2015cd4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 98036b1a12aafde21a318ad8f84f3eba08d3e0a6
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306278"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001518"
 ---
 # <a name="restore-a-deleted-azure-database-for-mysql-server"></a>Wiederherstellen eines gelöschten Azure Database for MySQL-Servers
 
@@ -36,7 +36,7 @@ Zum Wiederherstellen eines gelöschten Azure Database for MySQL-Servers benötig
    
  3. Doppelklicken Sie auf das „MySQL-Server löschen“-Ereignis, klicken Sie auf die Registerkarte „JSON“, und notieren Sie sich die Attribute „resourceId“ und „submissionTimestamp“ in der JSON-Ausgabe. Die „resourceId“ weist das folgende Format auf: „/Abonnements/ffffffff-ffff-ffff-ffff-ffffffffffff/Ressourcengruppe/Zielressourcengruppe/Anbieter/Microsoft.DBforMySQL/Server/gelöschterServer“.
  
- 4. Wechseln Sie zur Seite [Server – Erstellen](/rest/api/mysql/servers/create), klicken Sie auf die grün hervorgehobene Registerkarte „Ausprobieren“, und melden Sie sich mit Ihrem Azure-Konto an.
+ 4. Wechseln Sie zur Seite [Server – Erstellen](/rest/api/mysql/flexibleserver(preview)/servers/create), klicken Sie auf die grün hervorgehobene Registerkarte „Ausprobieren“, und melden Sie sich mit Ihrem Azure-Konto an.
  
  5. Geben Sie „resourceGroupName“, „serverName“ (gelöschter Servername) und „subscriptionId“ an, abgeleitet aus dem in Schritt 3 aufgezeichneten resourceId-Attribut, während „api-version“, wie im Bild gezeigt, bereits eingetragen ist.
  

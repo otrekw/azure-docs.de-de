@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 03/29/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578e8f5f3126542c579cd573c82b732049d407b6
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 75547b50289f9fa73b6fc2a28fe7ec53b5c5367a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959821"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137975"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Widerrufen des Benutzerzugriffs in Azure Active Directory
 
@@ -38,7 +38,7 @@ Zugriffs- und Aktualisierungstoken werden häufig bei umfangreichen Clientanwend
 
 Azure AD wertet dann die Autorisierungsrichtlinien erneut aus. Wenn der Benutzer weiterhin autorisiert ist, stellt Azure AD ein neues Zugriffstoken aus und aktualisiert dieses.
 
-Zugriffstoken können ein Sicherheitsproblem darstellen, wenn der Zugriff innerhalb einer Zeitspanne widerrufen werden muss, die kürzer als die Gültigkeitsdauer des Token ist, die normalerweise etwa eine Stunde beträgt. Aus diesem Grund arbeitet Microsoft aktiv daran, [die kontinuierliche Auswertung](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation) des Zugriffs in Office 365-Anwendungen vorzunehmen, was dazu beiträgt, die Invalidierung von Zugriffstoken nahezu in Echtzeit zu gewährleisten.  
+Zugriffstoken können ein Sicherheitsproblem darstellen, wenn der Zugriff innerhalb einer Zeitspanne widerrufen werden muss, die kürzer als die Gültigkeitsdauer des Token ist, die normalerweise etwa eine Stunde beträgt. Aus diesem Grund arbeitet Microsoft aktiv daran, [die kontinuierliche Auswertung](../conditional-access/concept-continuous-access-evaluation.md) des Zugriffs in Office 365-Anwendungen vorzunehmen, was dazu beiträgt, die Invalidierung von Zugriffstoken nahezu in Echtzeit zu gewährleisten.  
 
 ## <a name="session-tokens-cookies"></a>Sitzungstoken (Cookies)
 
@@ -60,13 +60,13 @@ Für eine Hybridumgebung mit lokalem Active Directory, das mit Azure Active Dire
 
 Stellen Sie als Active Directory-Administrator eine Verbindung mit Ihrem lokalen Netzwerk her, öffnen Sie PowerShell, und führen Sie die folgenden Aktionen durch:
 
-1. Deaktivieren Sie den Benutzer in Active Directory. Weitere Informationen finden Sie unter [Disable-ADAccount](https://docs.microsoft.com/powershell/module/addsadministration/disable-adaccount?view=win10-ps).
+1. Deaktivieren Sie den Benutzer in Active Directory. Weitere Informationen finden Sie unter [Disable-ADAccount](/powershell/module/activedirectory/disable-adaccount?view=win10-ps).
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-2. Setzen Sie das Kennwort des Benutzers in Active Directory zweimal zurück. Weitere Informationen finden Sie unter [Set-ADAccountPassword](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps).
+2. Setzen Sie das Kennwort des Benutzers in Active Directory zweimal zurück. Weitere Informationen finden Sie unter [Set-ADAccountPassword](/powershell/module/activedirectory/set-adaccountpassword?view=win10-ps).
 
     > [!NOTE]
     > Der Grund für das zweimalige Ändern des Kennworts eines Benutzers besteht darin, das Pass-the-Hash-Risiko zu verringern, insbesondere wenn es zu Verzögerungen bei der Replikation des lokalen Kennworts kommt. Wenn Sie sicher davon ausgehen können, dass dieses Konto nicht kompromittiert ist, genügt es, das Kennwort nur einmal zurückzusetzen.
@@ -83,19 +83,19 @@ Stellen Sie als Active Directory-Administrator eine Verbindung mit Ihrem lokalen
 
 Öffnen Sie als Azure Active Directory-Administrator PowerShell. Führen Sie dann ``Connect-AzureAD`` und die folgenden Aktionen aus:
 
-1. Deaktivieren Sie den Benutzer in Azure AD. Weitere Informationen finden Sie unter [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
+1. Deaktivieren Sie den Benutzer in Azure AD. Weitere Informationen finden Sie unter [Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
 
-2. Widerrufen Sie die Azure AD-Aktualisierungstoken des Benutzers. Weitere Informationen finden Sie unter [Revoke-AzureADUserAllRefreshToken](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
+2. Widerrufen Sie die Azure AD-Aktualisierungstoken des Benutzers. Weitere Informationen finden Sie unter [Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-3. Deaktivieren Sie die Geräte des Benutzers. Weitere Informationen finden Sie unter [Get-AzureADUserRegisteredDevice](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
+3. Deaktivieren Sie die Geräte des Benutzers. Weitere Informationen finden Sie unter [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
@@ -112,21 +112,21 @@ Sobald Administratoren die oben genannten Schritte ausgeführt haben, kann der B
 
 - Stellen Sie eine automatisierte Lösung für Bereitstellung und Aufhebung bereit. Das Aufheben der Bereitstellung von Benutzern für Anwendungen ist eine effektive Möglichkeit, den Zugriff zu widerrufen, insbesondere für Anwendungen, die Sitzungstoken verwenden. Entwickeln Sie einen Prozess zum Aufheben der Bereitstellung von Benutzern für Apps, die keine automatische Bereitstellung und Aufhebung unterstützen. Stellen Sie sicher, dass Anwendungen ihre eigenen Sitzungstoken widerrufen und keine Azure AD-Zugriffstoken akzeptieren, auch wenn diese noch gültig sind.
 
-  - Verwenden Sie [SaaS-App-Bereitstellung von Azure AD](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning). Die SaaS-App-Bereitstellung von Azure AD wird in der Regel automatisch alle 20 bis 40 Minuten ausgeführt. [Konfigurieren Sie die Azure AD-Bereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list), um die Bereitstellung von deaktivierten Benutzern in Anwendungen aufzuheben oder diese endgültig zu deaktivieren.
+  - Verwenden Sie [SaaS-App-Bereitstellung von Azure AD](../app-provisioning/user-provisioning.md). Die SaaS-App-Bereitstellung von Azure AD wird in der Regel automatisch alle 20 bis 40 Minuten ausgeführt. [Konfigurieren Sie die Azure AD-Bereitstellung](../saas-apps/tutorial-list.md), um die Bereitstellung von deaktivierten Benutzern in Anwendungen aufzuheben oder diese endgültig zu deaktivieren.
   
-  - Verwenden Sie für Anwendungen, die nicht die SaaS-App-Bereitstellung von Azure AD verwenden, [Identity Manager (MIM)](https://docs.microsoft.com/microsoft-identity-manager/mim-how-provision-users-adds) oder eine Drittanbieterlösung, um die Aufhebung der Benutzerbereitstellung zu automatisieren.  
+  - Verwenden Sie für Anwendungen, die nicht die SaaS-App-Bereitstellung von Azure AD verwenden, [Identity Manager (MIM)](/microsoft-identity-manager/mim-how-provision-users-adds) oder eine Drittanbieterlösung, um die Aufhebung der Benutzerbereitstellung zu automatisieren.  
   - Ermitteln und entwickeln Sie einen Prozess für Anwendungen, für die eine manuelle Aufhebung der Bereitstellung erforderlich ist. Stellen Sie sicher, dass Administratoren die erforderlichen manuellen Aufgaben zum Aufheben der Benutzerbereitstellung für diese Apps schnell ausführen können.
   
-- [Verwalten Sie Geräte und Anwendungen mit Microsoft Intune](https://docs.microsoft.com/mem/intune/remote-actions/device-management). Mit Intune verwaltete [Geräte können auf die Werkseinstellungen zurückgesetzt werden](https://docs.microsoft.com/mem/intune/remote-actions/devices-wipe). Wenn das Gerät nicht verwaltet wird, können Sie [Unternehmensdaten aus verwalteten Apps löschen](https://docs.microsoft.com/mem/intune/apps/apps-selective-wipe). Diese Prozesse sind effektiv, um potenziell sensible Daten von Endbenutzergeräten zu entfernen. Allerdings muss das Gerät mit dem Internet verbunden sein, damit diese Prozesse ausgelöst werden können. Wenn das Gerät offline ist, kann das Gerät weiterhin auf lokal gespeicherte Daten zugreifen.
+- [Verwalten Sie Geräte und Anwendungen mit Microsoft Intune](/mem/intune/remote-actions/device-management). Mit Intune verwaltete [Geräte können auf die Werkseinstellungen zurückgesetzt werden](/mem/intune/remote-actions/devices-wipe). Wenn das Gerät nicht verwaltet wird, können Sie [Unternehmensdaten aus verwalteten Apps löschen](/mem/intune/apps/apps-selective-wipe). Diese Prozesse sind effektiv, um potenziell sensible Daten von Endbenutzergeräten zu entfernen. Allerdings muss das Gerät mit dem Internet verbunden sein, damit diese Prozesse ausgelöst werden können. Wenn das Gerät offline ist, kann das Gerät weiterhin auf lokal gespeicherte Daten zugreifen.
 
 > [!NOTE]
 > Daten auf dem Gerät können nach dem Zurücksetzen nicht wiederhergestellt werden.
 
-- Verwenden Sie [Microsoft Cloud App Security (MCAS), um den Datendownload ggf. zu blockieren](https://docs.microsoft.com/cloud-app-security/use-case-proxy-block-session-aad). Wenn nur ein Online-Zugriff auf die Daten möglich ist, können Organisationen Sitzungen überwachen und die Durchsetzung von Richtlinien in Echtzeit erreichen.
+- Verwenden Sie [Microsoft Cloud App Security (MCAS), um den Datendownload ggf. zu blockieren](/cloud-app-security/use-case-proxy-block-session-aad). Wenn nur ein Online-Zugriff auf die Daten möglich ist, können Organisationen Sitzungen überwachen und die Durchsetzung von Richtlinien in Echtzeit erreichen.
 
-- Aktivieren Sie die [fortlaufende Zugriffsevaluierung (CAE) in Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation). Mithilfe von CAE können Administratoren die Sitzungstoken und Zugriffstoken für Anwendungen widerrufen, die CAE unterstützen.  
+- Aktivieren Sie die [fortlaufende Zugriffsevaluierung (CAE) in Azure AD](../conditional-access/concept-continuous-access-evaluation.md). Mithilfe von CAE können Administratoren die Sitzungstoken und Zugriffstoken für Anwendungen widerrufen, die CAE unterstützen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Sichere Zugriffsmethoden für Azure AD-Administratoren](https://docs.microsoft.com/azure/active-directory/roles/security-planning)
+- [Sichere Zugriffsmethoden für Azure AD-Administratoren](../roles/security-planning.md)
 - [Hinzufügen oder Aktualisieren von Benutzerprofilinformationen](../fundamentals/active-directory-users-profile-azure-portal.md)

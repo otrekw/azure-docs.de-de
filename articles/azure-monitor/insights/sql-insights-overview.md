@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: d0bb5c55d3f7ba0573dfe9b511f4d31dcc64ed85
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ca403a5fdbdaaa8b2922647d832a23e120840c6b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567830"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142475"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>Überwachen Ihrer SQL-Bereitstellungen mit SQL Insights (Vorschau)
 Bei SQL Insights handelt es sich um eine umfassende Lösung zur Überwachung jeglichem Produkt der [Azure SQ- Familie](../../azure-sql/index.yml). SQL Insights verwendet [dynamische Managementansichten](../../azure-sql/database/monitoring-with-dmvs.md), um die Daten offenzulegen, die Sie zur Überwachung des Zustands, zur Diagnose von Problemen und zur Leistungsoptimierung benötigen.  
@@ -64,7 +64,7 @@ Anweisungen zur Fehlerbehebung von SQL Insights finden Sie unter [Fehlerbehebung
 ## <a name="data-collected-by-sql-insights"></a>In SQL Insights erfasste Daten
 SQL Insights führt die gesamte Überwachung aus der Ferne durch. Wir installieren keine Agenten auf den virtuellen Maschinen, auf denen SQL Server ausgeführt wird. 
 
-SQL Insights verwendet dedizierte virtuelle Maschinen zur Überwachung, um Daten von Ihren SQL-Ressourcen aus der Ferne zu sammeln. Auf jeder überwachenden virtuellen Maschine werden der [Azure Monitor-Agent](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) und die Erweiterung Workload Insights (WLI) installiert. Die WLI-Erweiterung beinhaltet den Open-Source [Telegraf-Agenten](https://www.influxdata.com/time-series-platform/telegraf/). SQL insights verwendet [Datensammlungsregeln](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview), um die Datensammlungseinstellungen für das [SQL Server-Plugin](https://www.influxdata.com/integration/microsoft-sql-server/) von Telegraf festzulegen.
+SQL Insights verwendet dedizierte virtuelle Maschinen zur Überwachung, um Daten von Ihren SQL-Ressourcen aus der Ferne zu sammeln. Auf jeder überwachenden virtuellen Maschine werden der [Azure Monitor-Agent](../agents/azure-monitor-agent-overview.md) und die Erweiterung Workload Insights (WLI) installiert. Die WLI-Erweiterung beinhaltet den Open-Source [Telegraf-Agenten](https://www.influxdata.com/time-series-platform/telegraf/). SQL insights verwendet [Datensammlungsregeln](../agents/data-collection-rule-overview.md), um die Datensammlungseinstellungen für das [SQL Server-Plugin](https://www.influxdata.com/integration/microsoft-sql-server/) von Telegraf festzulegen.
 
 Für Azure SQL Database, Azure SQL Managed Instance und den SQL Server sind unterschiedliche Datensätze verfügbar. Die folgenden Tabellen beschreiben die verfügbaren Daten. Bei der [Erstellung eines Überwachungsprofils](sql-insights-enable.md#create-sql-monitoring-profile) können Sie festlegen, welche Datensätze gesammelt werden sollen und wie häufig dies geschehen soll.
 

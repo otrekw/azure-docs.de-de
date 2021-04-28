@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: stegag
-ms.openlocfilehash: 232e084e44696c6aa88a9dd33092c48a96e35f85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96a43e9a71d5fe6cdec772ec5e32d5dd639ab068
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771997"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134389"
 ---
 # <a name="troubleshoot-azure-vpn-gateway-using-diagnostic-logs"></a>Problembehandlung bei Azure VPN Gateway mithilfe von Diagnoseprotokollen
 
@@ -34,7 +34,7 @@ Beachten Sie, dass in diesen Tabellen mehrere Spalten verfügbar sind. In diesem
 
 ## <a name="set-up-logging"></a><a name="setup"></a>Einrichten der Protokollierung
 
-Informationen zum Einrichten von Diagnoseprotokollereignissen über Azure VPN Gateway mithilfe von Azure Log Analytics finden Sie unter [Einrichten von Warnungen für Diagnoseprotokollereignisse vom VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log).
+Informationen zum Einrichten von Diagnoseprotokollereignissen über Azure VPN Gateway mithilfe von Azure Log Analytics finden Sie unter [Einrichten von Warnungen für Diagnoseprotokollereignisse vom VPN Gateway](./vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md).
 
 ## <a name="gatewaydiagnosticlog"></a><a name="GatewayDiagnosticLog"></a>GatewayDiagnosticLog
 
@@ -100,8 +100,8 @@ Erst nachdem Sie den Zeitstempel einer Trennung identifiziert haben, können Sie
 
 
 Einige Tipps zur Problembehandlung:
-- Wenn bei einer Gatewayinstanz ein Trennungsereignis und nach einigen Sekunden bei der **anderen** Gatewayinstanz ein Verbindungsereignis auftritt, liegt ein Gatewayfailover vor. Dieses Verhalten ist normalerweise bei der Wartung einer Gatewayinstanz zu erwarten. Weitere Informationen zu diesem Verhalten finden Sie unter [Informationen zur Redundanz von Azure-VPN-Gateways](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable#about-azure-vpn-gateway-redundancy).
-- Das gleiche Verhalten lässt sich beobachten, wenn Sie absichtlich eine Gatewayzurücksetzung auf Azure-Seite ausführen, wodurch die aktive Gatewayinstanz neu gestartet wird. Weitere Informationen zu diesem Verhalten finden Sie unter [Zurücksetzen eines VPN-Gateways](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-resetgw-classic).
+- Wenn bei einer Gatewayinstanz ein Trennungsereignis und nach einigen Sekunden bei der **anderen** Gatewayinstanz ein Verbindungsereignis auftritt, liegt ein Gatewayfailover vor. Dieses Verhalten ist normalerweise bei der Wartung einer Gatewayinstanz zu erwarten. Weitere Informationen zu diesem Verhalten finden Sie unter [Informationen zur Redundanz von Azure-VPN-Gateways](./vpn-gateway-highlyavailable.md#about-azure-vpn-gateway-redundancy).
+- Das gleiche Verhalten lässt sich beobachten, wenn Sie absichtlich eine Gatewayzurücksetzung auf Azure-Seite ausführen, wodurch die aktive Gatewayinstanz neu gestartet wird. Weitere Informationen zu diesem Verhalten finden Sie unter [Zurücksetzen eines VPN-Gateways](./reset-gateway.md).
 - Wenn bei einer Gatewayinstanz ein Trennungsereignis und nach einigen Sekunden bei **derselben** Gatewayinstanz ein Verbindungsereignis auftritt, liegt möglicherweise eine Netzwerkstörung vor, die ein DPD-Timeout verursacht, oder eine vom lokalen Gerät fälschlicherweise gesendete Trennung.
 
 ## <a name="routediagnosticlog"></a><a name="RouteDiagnosticLog"></a>RouteDiagnosticLog
@@ -168,7 +168,7 @@ Tipps zur Problembehandlung:
 - Wenn beim Einrichten des IPsec-Tunnels ein Fehler auftritt, wird der Vorgang von Azure einige Sekunden wiederholt. Daher ist die Problembehandlung bei einem ausgefallenen VPN in der Tabelle „IKEdiagnosticLog“ sehr bequem, da Sie nicht warten müssen, bis Sie das Problem reproduzieren können. Außerdem ist der Fehler theoretisch bei jeder Wiederholung derselbe, sodass Sie sich jederzeit eine Aushandlung, bei der ein Fehler aufgetreten ist, beispielhaft genauer ansehen können.
 
 - Die SA\_INIT-Meldung enthält die IPSec-Parameter, die der Peer für diese IPsec-Aushandlung verwenden möchte. Im offiziellen Dokument   
-[IPsec-/IKE-Standardparameter](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#ipsec) sind die vom Azure-Gateway unterstützten IPsec-Parameter mit den Standardeinstellungen aufgeführt.
+[IPsec-/IKE-Standardparameter](./vpn-gateway-about-vpn-devices.md#ipsec) sind die vom Azure-Gateway unterstützten IPsec-Parameter mit den Standardeinstellungen aufgeführt.
 
 
 ## <a name="p2sdiagnosticlog"></a><a name="P2SDiagnosticLog"></a>P2SDiagnosticLog
@@ -202,4 +202,3 @@ Wenn von einem Client eine Punkt-zu-Standort-Verbindung über IKEv2 oder OpenVPN
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Konfigurieren von Warnungen für Tunnelressourcenprotokolle finden Sie unter [Einrichten von Warnungen für Ressourcenprotokolle von VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md).
-

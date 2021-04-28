@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 5b8a94409f082177192847f2c65d44a513ecdbe4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d683507e8c35db5af3ef7e91674f6a55254e22e2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305037"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132421"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Tutorial: Erstellen einer statischen Web-App mit Blazor in Azure Static Web Apps
 
@@ -43,17 +43,13 @@ Diese Projekte werden zum Erstellen einer Blazor-Webassemblyanwendung kombiniert
 
 ## <a name="fallback-route"></a>Fallbackroute
 
-Die Anwendung macht URLs wie _/counter_ und _/fetchdata_ verfügbar, die bestimmten Routen der Anwendung zugeordnet sind. Da diese App als Single-Page-Webanwendung implementiert ist, führt jede Route zur Datei _index.html_. Um sicherzustellen, dass bei Anforderungen für einen beliebigen Pfad die Datei _index.html_ zurückgegeben wird, ist in der Datei _staticwebapp.config.json_ eine [Fallbackroute](./routes.md#fallback-routes) implementiert. Diese Datei befindet sich im Ordner _wwwroot_ des Clientprojekts.
+Die Anwendung macht URLs wie _/counter_ und _/fetchdata_ verfügbar, die bestimmten Routen der Anwendung zugeordnet sind. Da diese App als Single-Page-Webanwendung implementiert ist, führt jede Route zur Datei _index.html_. Um sicherzustellen, dass bei Anforderungen für einen beliebigen Pfad die Datei _index.html_ zurückgegeben wird, ist in der Datei _staticwebapp.config.json_ eine [Fallbackroute](./configuration.md#fallback-routes) implementiert. Diese Datei befindet sich im Ordner _wwwroot_ des Clientprojekts.
 
 ```json
 {
-  "routes": [
-    {
-      "route": "/*",
-      "serve": "/index.html",
-      "statusCode": 200
-    }
-  ]
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
 }
 ```
 

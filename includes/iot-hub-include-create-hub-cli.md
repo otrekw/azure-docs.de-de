@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4999bd93f338ca7b34b141b88e06e4a769a4aaa1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766519"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876425"
 ---
 In den folgenden Abschnitten richten Sie ein Terminal ein und verwenden die Azure CLI zum Erstellen eines IoT-Hubs. Zum Konfigurieren eines Terminals, auf dem Azure CLI-Befehle ausgeführt werden, können Sie entweder den browserbasierten Azure Cloud Shell-Dienst oder ein lokales Terminal verwenden.
 * Wenn Sie Cloud Shell verwenden möchten, fahren Sie mit dem nächsten Abschnitt fort: [Starten der Cloud Shell](#launch-the-cloud-shell). 
@@ -97,7 +97,7 @@ So erstellen Sie einen IoT-Hub und eine Ressourcengruppe:
 In diesem Abschnitt erstellen Sie ein simuliertes IoT-Gerät, das mit Ihrem IoT-Hub verbunden ist. 
 
 So erstellen Sie ein simuliertes Gerät:
-1. Führen Sie in der CLI-Shell den Befehl [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) aus. Die Identität des simulierten Geräts wird erstellt. 
+1. Führen Sie in der CLI-Shell den Befehl [az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) aus. Die Identität des simulierten Geräts wird erstellt. 
 
     *YourIotHubName*: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben. 
 
@@ -107,7 +107,7 @@ So erstellen Sie ein simuliertes Gerät:
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
-1.  Führen Sie den Befehl [az iot hub device-identity connection-string show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) aus. 
+1.  Führen Sie den Befehl [az iot hub device-identity connection-string show](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) aus. 
 
     ```azurecli
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}

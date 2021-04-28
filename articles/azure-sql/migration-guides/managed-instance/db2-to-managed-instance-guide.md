@@ -10,19 +10,19 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: bb031e4f0233b9f26571c3ae9fc2a26fe5fe957f
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 4c3fd064eae2eaa918993b9de9789a25a27d05d7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553956"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136497"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-managed-instance"></a>Migrationsleitfaden: IBM Db2 zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 In diesem Leitfaden erfahren Sie, wie Sie Ihre IBM Db2-Datenbanken mithilfe des SQL Server Migration Assistant für Db2 zu Azure SQL Managed Instance migrieren. 
 
-Weitere Migrationsleitfäden finden Sie in den [Leitfäden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
+Weitere Migrationsleitfäden finden Sie in den [Leitfäden zur Azure-Datenbankmigration](/data-migration). 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
@@ -44,22 +44,22 @@ Erstellen Sie mithilfe des SQL Server Migration Assistant eine Bewertung.
 Führen Sie die folgenden Schritte aus, um eine Bewertung zu erstellen:
 
 1. Öffnen Sie [SSMA für Db2](https://www.microsoft.com/download/details.aspx?id=54254). 
-1. Klicken Sie auf **Datei** > **Neues Projekt**. 
+1. Wählen Sie **Datei** > **Neues Projekt**. 
 1. Geben Sie den Projektnamen und einen Speicherort für Ihr Projekt ein. Wählen Sie dann in der Dropdown Liste die Option Azure SQL-verwaltete Instanz als Migrationsziel aus, und klicken Sie auf **OK**.
 
    :::image type="content" source="media/db2-to-managed-instance-guide/new-project.png" alt-text="Screenshot, der die zu spezifizierenden Projektdetails anzeigt.":::
 
 
-1. Geben Sie unter **mit Db2 verbinden** Werte für die Db2-Verbindungsdetails ein. 
+1. Geben Sie unter **Verbinden mit Db2**, Werte für die Db2-Verbindungsdetails ein. 
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/connect-to-db2.png" alt-text="Screenshot, der Optionen zum Herstellen einer Verbindung mit Ihrer Db2-Instanz anzeigt.":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/connect-to-db2.png" alt-text="Screenshot, der die Optionen zur Verbindung mit Ihrer Db2-Instanz anzeigt.":::
 
 
-1. Klicken Sie mit der rechten Maustaste auf das Db2-Schema, das Sie migrieren möchten, und klicken Sie dann auf **Create report** (Bericht erstellen). Dadurch wird ein HTML-Bericht generiert. Alternativ können Sie nach dem Auswählen des Schemas in der Navigationsleiste auf **Create report** (Bericht erstellen) klicken.
+1. Klicken Sie mit der rechten Maustaste auf das Db2-Schema, das Sie migrieren möchten, und wählen Sie dann **Bericht erstellent**. Dadurch wird ein HTML-Bericht generiert. Alternativ können Sie nach dem Auswählen des Schemas in der Navigationsleiste auf **Create report** (Bericht erstellen) klicken.
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/create-report.png" alt-text="Screenshot: Erstellung eines Berichts.":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/create-report.png" alt-text="Screenshot: Erstellung eines Berichts":::
 
-1. Sehen Sie sich den HTML-Bericht an, um die Konvertierungsstatistiken und etwaige Fehler oder Warnungen zu verstehen. Sie können den Bericht auch in Excel öffnen, um den Bestand an Db2-Objekten sowie Informationen zum Aufwand für Schemakonvertierungen zu erhalten. Der Standardspeicherort für den Bericht ist der Berichtsordner in *SSMAProjects*.
+1. Sehen Sie sich den HTML-Bericht an, um die Konvertierungsstatistiken und etwaige Fehler oder Warnungen zu verstehen. Sie können den Bericht auch in Excel öffnen, um den Bestand an Db2-Objekten sowie Informationen zum Aufwand für Schemakonvertierungen zu erhalten. Der Standardstandort für den Bericht ist im Berichtsordner innerhalb von *SSMAProjects*.
 
    Beispiel: `drive:\<username>\Documents\SSMAProjects\MyDb2Migration\report\report_<date>`. 
 
@@ -68,15 +68,15 @@ Führen Sie die folgenden Schritte aus, um eine Bewertung zu erstellen:
 
 ### <a name="validate-data-types"></a>Überprüfen von Datentypen
 
-Überprüfen Sie die standardmäßig festgelegten Datentypzuordnungen, und passen Sie sie bei Bedarf an die Anforderungen an. Gehen Sie dazu folgendermaßen vor: 
+Validieren Sie die Standard-Datentyp-Zuordnungen und ändern Sie bei Bedarf entsprechend den Anforderungen. Gehen Sie dazu folgendermaßen vor: 
 
 1. Klicken Sie im Menü auf **Tools**. 
 1. Klicken auf **Project Settings** (Projekteinstellungen). 
 1. Klicken Sie auf die Registerkarte **Type Mappings** (Typzuordnungen).
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/type-mapping.png" alt-text="Screenshot, der das Auswählen des Schemas und der Typzuordnung anzeigt.":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/type-mapping.png" alt-text="Screenshot, der die Auswahl des Schemas und der Typ-Mapping anzeigt.":::
 
-1. Sie können die Typzuordnung für die einzelnen Tabellen ändern, indem Sie die gewünschte Tabelle im **Db2 Metadata Explorer** (DB2-Metadaten-Explorer) auswählen. 
+1. Sie können die Typzuordnung für jede Tabelle ändern, indem Sie die Tabelle im **Db2 Metadata Explorer** auswählen. 
 
 ### <a name="convert-schema"></a>Schema konvertieren 
 
@@ -98,9 +98,9 @@ Führen Sie die folgenden Schritte aus, um das Schema zu konvertieren:
 
 1. Nachdem die Konvertierung fertiggestellt wurde, vergleichen und überprüfen Sie die Struktur des Schemas, um potenzielle Probleme zu ermitteln. Beheben Sie die Probleme auf Grundlage der Empfehlungen.
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/compare-review-schema-structure.png" alt-text="Screenshot, der den Vergleich und die Überprüfung der Struktur des Schemas anzeigt, um potenzielle Probleme zu identifizieren.":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/compare-review-schema-structure.png" alt-text="Screenshot, der den Vergleich und die Überprüfung der Struktur des Schemas zeigt, um mögliche Probleme zu identifizieren.":::
 
-1. Wählen Sie im **Ausgabe**-Bereich die Option **Ergebnisse überprüfen** aus. Überprüfen Sie im Bereich **Fehlerliste** den Fehler. 
+1. Wählen Sie im **Fensterbereich** Ausgabe die Option **Ergebnisse überprüfen**. Überprüfen Sie die Fehler im Fenster **Fehlerliste**. 
 1. Speichern Sie das Projekt für eine Übung zur Offlineschemakorrektur lokal. Wählen Sie im Menü **Datei** die Option **Projekt speichern** aus. So können Sie das Quell- und Zielschema offline auswerten und Probleme behandeln, bevor Sie das Schema auf SQL Managed Instance veröffentlichen.
 
 ## <a name="migrate"></a>Migrate
@@ -111,9 +111,9 @@ Führen Sie die folgenden Schritte aus, um das Schema zu veröffentlichen und Ih
 
 1. Veröffentlichen des Schemas. Klicken Sie im **Azure SQL Managed Instance Metadata Explorer** im **Datenbank**-Knoten mit der rechten Maustaste auf die Datenbank. Wählen Sie dann **mit Datenbank synchronisieren** aus.
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/synchronize-with-database.png" alt-text="Screenshot mit der Option „Mit Datenbank synchronisieren“.":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/synchronize-with-database.png" alt-text="Screenshot, der die Option zur Synchronisierung mit der Datenbank zeigt.":::
 
-1. Migrieren der Daten. Klicken Sie im **Metadaten-Explorer für Db2** mit der rechten Maustaste auf die zu migrierende Datenbank oder das Objekt, und wählen Sie **Daten migrieren** aus. Sie können stattdessen auch in der Navigationsleiste auf **Daten migrieren** klicken. Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der gewünschten Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
+1. Migrieren der Daten. Klicken Sie im **Db2 Metadata Explorer** mit der rechten Maustaste auf die Datenbank oder das Objekt, das Sie migrieren möchten, und wählen Sie **Daten migrieren**. Alternativ können Sie in der Navigationsleiste **Daten migrieren** auswählen. Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie die **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
 
    :::image type="content" source="media/db2-to-managed-instance-guide/migrate-data.png" alt-text="Screenshot, der das Auswählen des Schemas und das Auswählen der Datenmigration anzeigt.":::
 
@@ -128,7 +128,7 @@ Führen Sie die folgenden Schritte aus, um das Schema zu veröffentlichen und Ih
 
 ## <a name="post-migration"></a>Nach der Migration 
 
-Nach der abgeschlossenen Migration müssen Sie eine Reihe von Aufgaben ausführen, um sicherzustellen, dass alles so reibungslos und effizient wie möglich funktioniert.
+Nachdem die Migration abgeschlossen ist, müssen Sie eine Reihe von Aufgaben nach der Migration durchführen, um sicherzustellen, dass alles so reibungslos und effizient wie möglich funktioniert.
 
 ### <a name="remediate-applications"></a>Korrigieren von Anwendungen 
 
@@ -140,7 +140,7 @@ Wenn die Daten in die Zielumgebung migriert wurden, müssen alle Anwendungen, di
 Das Testen umfasst die folgenden Aktivitäten:
 
 1. **Entwickeln von Validierungstests**: Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die für die Quell- und die Zieldatenbank ausgeführt werden sollen. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
-1. **Einrichten der Testumgebung:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
+1. **Einrichten der Testumgebung**: Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 1. **Ausführen der Validierungstests**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 1. **Ausführen von Leistungstests:** Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
 
@@ -157,11 +157,11 @@ Weitere Unterstützung erhalten Sie in Form der folgenden Ressourcen, die im Rah
 |Asset  |BESCHREIBUNG  |
 |---------|---------|
 |[Data Workload Assessment Model and Tool (Datenarbeitsauslastungs-Bewertungsmodell und -tool)](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Dieses Tool stellt für eine angegebene Arbeitsauslastung Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch Bereitstellung eines automatisierten und einheitlichen Zielplattform-Entscheidungsprozesses dabei helfen, umfangreiche Bewertungen zu beschleunigen.|
-|[Db2 z/OS Data Assets Discovery and Assessment Package (Paket zur Ermittlung und Bewertung von Db2 z/OS-Datenressourcen)](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|Nach dem Ausführen des SQL-Skripts für eine-Datenbank können Sie die Ergebnisse in eine Datei im Dateisystem exportieren. Es werden verschiedene Dateiformate unterstützt, z. B. *.csv, damit Sie die Ergebnisse in externen Tools wie Tabellen erfassen können. Diese Methode kann nützlich sein, wenn Sie Ergebnisse einfach für Teams freigeben möchten, die die Workbench nicht installiert haben.|
-|[IBM Db2 LUW Inventory Scripts and Artifacts](https://github.com/Microsoft/DataMigrationTeam/tree/master/IBM%20Db2%20LUW%20Inventory%20Scripts%20and%20Artifacts) (IBM Db2 LUW-Inventarskripts und -artefakte)|Diese Ressource umfasst eine SQL-Abfrage für die Systemtabellen von Version 11.1 von IBM Db2 LUW und bietet eine Zählung von Objekten nach Schema und Objekttyp, eine grobe Schätzung für „Rohdaten“ in jedem Schema und die Dimensionierung von Tabellen in jedem Schema, wobei die Ergebnisse im CSV-Format gespeichert werden.|
-|[Leitfaden für die Einrichtung von Db2 LUW pureScale in Azure](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Db2%20PureScale%20on%20Azure.pdf)|Dieser Leitfaden dient als Ausgangspunkt für einen Db2-Implementierungsplan. Auch wenn Geschäftsanforderungen unterschiedlich sind, gilt dennoch dasselbe grundlegende Muster. Dieses Architekturmuster kann auch für OLAP-Anwendungen in Azure verwendet werden.|
+|[Db2 zOS-Paket zur Erkennung und Bewertung von Datenbeständen](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|Nach dem Ausführen des SQL-Skripts für eine-Datenbank können Sie die Ergebnisse in eine Datei im Dateisystem exportieren. Es werden verschiedene Dateiformate unterstützt, z. B. *.csv, damit Sie die Ergebnisse in externen Tools wie Tabellen erfassen können. Diese Methode kann nützlich sein, wenn Sie Ergebnisse einfach für Teams freigeben möchten, die die Workbench nicht installiert haben.|
+|[IBM Db2 LUW Inventory Scripts and Artifacts](https://github.com/microsoft/DataMigrationTeam/blob/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts) (IBM Db2 LUW-Inventarskripts und -artefakte)|Dieses Asset enthält eine SQL-Abfrage, die auf IBM Db2 LUW Version 11.1-Systemtabellen zugreift und eine Zählung der Objekte nach Schema und Objekttyp, eine grobe Schätzung der "Rohdaten" in jedem Schema und die Größenordnung der Tabellen in jedem Schema liefert, wobei die Ergebnisse in einem CSV-Format gespeichert werden.|
+|[Db2 LUW pure scale auf Azure - Einrichtungsanleitunge](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)|Dieser Leitfaden dient als Startpunkt für einen Db2-Implementierungsplan. Auch wenn Geschäftsanforderungen unterschiedlich sind, gilt dennoch dasselbe grundlegende Muster. Dieses Architekturmuster kann auch für OLAP-Anwendungen auf Azure verwendet werden.|
 
-Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptaufgabe dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
+Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

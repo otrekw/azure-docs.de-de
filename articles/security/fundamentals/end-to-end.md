@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/07/2021
 ms.author: terrylan
-ms.openlocfilehash: 3ea3c2bcb878dbd8a712e6076dda09853f55e297
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7612732f01075759d76c2bce5e8c710afc676642
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310341"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132861"
 ---
 # <a name="end-to-end-security-in-azure"></a>End-to-End-Sicherheit in Azure
 Eines der schlagkräftigsten Argumente dafür, Azure für Anwendungen und Dienste zu verwenden, ist die Vielzahl an Sicherheitstools und -funktionen. Diese Tools und Funktionen ermöglichen die Erstellung sicherer Lösungen auf der Grundlage der sicheren Azure-Plattform. Microsoft Azure bietet sowohl Vertraulichkeit, Integrität und Verfügbarkeit von Kundendaten als auch eine transparente Verantwortlichkeit.
@@ -72,10 +72,10 @@ Das Programm [Azure-Sicherheitsvergleichstest](../benchmarks/introduction.md) en
 | **Daten und Anwendung** |  |
 | [Azure Backup](../../backup/backup-overview.md) | Bietet einfache, sichere und kostengünstige Lösungen, um Ihre Daten zu sichern und aus der Microsoft Azure-Cloud wiederherzustellen. |
 | [Azure Storage Service Encryption](../../storage/common/storage-service-encryption.md) | Verschlüsselt Daten automatisch, bevor sie gespeichert werden, und entschlüsselt die Daten automatisch, wenn Sie sie abrufen. |
-| [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) | Eine cloudbasierte Lösung, mit der Organisationen Dokumente und E-Mails durch das Anwenden von Bezeichnungen auf den Inhalt ermitteln, klassifizieren und schützen können. |
+| [Azure Information Protection](/azure/information-protection/what-is-information-protection) | Eine cloudbasierte Lösung, mit der Organisationen Dokumente und E-Mails durch das Anwenden von Bezeichnungen auf den Inhalt ermitteln, klassifizieren und schützen können. |
 | [API Management](../../api-management/api-management-key-concepts.md) | Eine Möglichkeit zum Erstellen von konsistenten und modernen API-Gateways für vorhandene Back-End-Dienste. |
 | [Confidential Computing in Azure](../../confidential-computing/overview.md) | Ermöglicht es Ihnen, Ihre vertraulichen Daten zu isolieren, während sie in der Cloud verarbeitet werden. |
-| [Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops) | Ihre Entwicklungsprojekte profitieren von mehreren Sicherheitsstufen und Governancetechnologien, betrieblichen Verfahren und Konformitätsrichtlinien, wenn sie in Azure DevOps gespeichert werden. |
+| [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) | Ihre Entwicklungsprojekte profitieren von mehreren Sicherheitsstufen und Governancetechnologien, betrieblichen Verfahren und Konformitätsrichtlinien, wenn sie in Azure DevOps gespeichert werden. |
 | **Kundenzugriff** |  |
 | [Azure Active Directory External Identities](../../active-directory/external-identities/compare-with-b2c.md) | Mit „Externe Identitäten“ in Azure AD können Sie Personen außerhalb Ihrer Organisation den Zugriff auf Ihre Apps und Ressourcen erlauben. Gleichzeitig können sie sich mit der von ihnen bevorzugten Identität anmelden. |
 |  | Sie können Ihre Apps und Ressourcen für externe Benutzer über [Azure AD B2B](../../active-directory/external-identities/what-is-b2b.md)-Zusammenarbeit freigeben. |
@@ -90,9 +90,9 @@ Das Programm [Azure-Sicherheitsvergleichstest](../benchmarks/introduction.md) en
 | [Azure Defender](../../security-center/azure-defender.md) | Bietet erweiterten, intelligenten Schutz für Ihre Azure-Ressourcen und -Workloads sowie die Hybridressourcen und -workloads. Das Azure Defender-Dashboard in Security Center bietet Transparenz und Kontrolle der Cloudworkloadschutz-Features für Ihre Umgebung. |
 | [Azure Sentinel](../../sentinel/overview.md) | Eine skalierbare, cloudnative Lösung für die Verwaltung von Sicherheitsinformationen und -ereignissen (Security Information & Event Management, SIEM) sowie die Sicherheitsorchestrierung mit automatisierter Reaktion (Security Orchestration Automated Response, SOAR). Sentinel bietet intelligente Sicherheitsanalysen und Bedrohungsinformationen für das gesamte Unternehmen und stellt eine zentrale Lösung für die Warnungs- und Bedrohungserkennung, die proaktive Suche sowie die Reaktion auf Bedrohungen bereit. |
 | **Identity&nbsp;&&nbsp;Access&nbsp;Management** (Identitätszugriffsverwaltung) |  |
-| [Microsoft 365 Defender](https://docs.microsoft.com/microsoft-365/security/defender/microsoft-365-defender) | Eine einheitliche Unternehmenssuite zur Verteidigung vor und nach Sicherheitsverletzungen, die nativ die Erkennung, Verhinderung, Untersuchung und Reaktion über Endpunkte, Identitäten, E-Mails und Anwendungen hinweg koordiniert, um einen integrierten Schutz vor komplexen Angriffen zu bieten. |
-|  | [Microsoft Defender für Endpunkt](https://docs.microsoft.com/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint.md) (Microsoft Defender Advanced Threat Protection, MDATP) ist eine Endpunktsicherheitsplattform für Unternehmen, die helfen soll, komplexe Bedrohungen zu vermeiden, zu erkennen, zu untersuchen und darauf zu reagieren. |
-|  | [Microsoft Defender for Identity](https://docs.microsoft.com/defender-for-identity/what-is) ist eine cloudbasierte Sicherheitslösung, die Signale Ihrer lokalen Active Directory-Instanz nutzt, um komplexe Bedrohungen, gefährdete Identitäten sowie schädliche Insideraktionen gegen Ihre Organisation zu identifizieren, zu erkennen und zu untersuchen. |
+| [Microsoft 365 Defender](/microsoft-365/security/defender/microsoft-365-defender) | Eine einheitliche Unternehmenssuite zur Verteidigung vor und nach Sicherheitsverletzungen, die nativ die Erkennung, Verhinderung, Untersuchung und Reaktion über Endpunkte, Identitäten, E-Mails und Anwendungen hinweg koordiniert, um einen integrierten Schutz vor komplexen Angriffen zu bieten. |
+|  | [Microsoft Defender für Endpunkt](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint) (Microsoft Defender Advanced Threat Protection, MDATP) ist eine Endpunktsicherheitsplattform für Unternehmen, die helfen soll, komplexe Bedrohungen zu vermeiden, zu erkennen, zu untersuchen und darauf zu reagieren. |
+|  | [Microsoft Defender for Identity](/defender-for-identity/what-is) ist eine cloudbasierte Sicherheitslösung, die Signale Ihrer lokalen Active Directory-Instanz nutzt, um komplexe Bedrohungen, gefährdete Identitäten sowie schädliche Insideraktionen gegen Ihre Organisation zu identifizieren, zu erkennen und zu untersuchen. |
 | [Azure AD Identity Protection](../../active-directory/identity-protection/howto-identity-protection-configure-notifications.md) | Sendet zwei Arten von automatisierten Benachrichtigungs-E-Mails, um Sie bei der Verwaltung von Benutzerrisiken und Risikoerkennungen zu unterstützen: „E-Mail für erkannte gefährdete Benutzer“ und „Wöchentliche E-Mail mit Übersicht“. |
 | **Infrastruktur und Netzwerk** |  |
 | [Azure Defender für IoT](../../defender-for-iot/overview.md) | Eine einheitliche Sicherheitslösung zum Identifizieren von IoT/OT-Geräten, Sicherheitsrisiken und Bedrohungen. Diese Lösung bietet Schutz für Ihre gesamte IoT/OT-Umgebung. Dabei spielt es keine Rolle, ob Sie vorhandene IoT/OT-Geräte schützen oder Sicherheit in IoT-Innovationen integrieren müssen. |
@@ -101,7 +101,7 @@ Das Programm [Azure-Sicherheitsvergleichstest](../benchmarks/introduction.md) en
 | **Daten und Anwendung** |  |
 | [Azure Defender für Containerregistrierungen](../../security-center/defender-for-container-registries-introduction.md) | Enthält eine Option für die Überprüfung auf Sicherheitsrisiken, mit der die Images in Ihren Azure Resource Manager-basierten Azure Container Registry-Registrierungen überprüft und die Sicherheitsrisiken Ihrer Images eingehender untersucht werden können. |
 | [Azure Defender für Kubernetes](../../security-center/defender-for-kubernetes-introduction.md) | Bietet Bedrohungsschutz auf Clusterebene, indem Ihre von AKS verwalteten Dienste über die von Azure Kubernetes Service (AKS) abgerufenen Protokolle überwacht werden. |
-| [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) | Ein Cloud Access Security Broker (CASB), der in mehreren Clouds betrieben wird. Er bietet umfassende Transparenz, Kontrolle über den Datenverkehr sowie anspruchsvolle Analysefunktionen zum Erkennen und Bekämpfen von Cyberbedrohungen für sämtliche Clouddienste. |
+| [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) | Ein Cloud Access Security Broker (CASB), der in mehreren Clouds betrieben wird. Er bietet umfassende Transparenz, Kontrolle über den Datenverkehr sowie anspruchsvolle Analysefunktionen zum Erkennen und Bekämpfen von Cyberbedrohungen für sämtliche Clouddienste. |
 
 ## <a name="investigate-and-respond"></a>Untersuchen und Reagieren
 
@@ -112,11 +112,11 @@ Das Programm [Azure-Sicherheitsvergleichstest](../benchmarks/introduction.md) en
 | [Azure Sentinel](../../sentinel/hunting.md) | Leistungsstarke Such- und Abfragetools zum Aufspüren von Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation. |
 | [Azure&nbsp;Monitor&nbsp;-Protokolle&nbsp; und &nbsp;-Metriken](../../azure-monitor/overview.md) | Bietet eine umfassende Lösung für das Sammeln, Analysieren und Behandeln von Telemetriedaten aus Ihren Cloud- und lokalen Umgebungen. Azure Monitor [sammelt und aggregiert Daten](../../azure-monitor/data-platform.md#observability-data-in-azure-monitor) aus einer Vielzahl von Quellen auf einer gemeinsamen Datenplattform, wo diese Daten zur Analyse, Visualisierung und Ausgabe von Warnungen verwendet werden können. |
 | **Identity&nbsp;&&nbsp;Access&nbsp;Management** (Identitätszugriffsverwaltung) |  |
-| [Azure&nbsp; &nbsp;AD-Berichte&nbsp; und &nbsp;-Überwachung](https://docs.microsoft.com/azure/active-directory/reports-monitoring/) | [Azure AD-Berichte](../../active-directory/reports-monitoring/overview-reports.md) bieten einen umfassenden Überblick über Aktivitäten in Ihrer Umgebung. |
+| [Azure&nbsp; &nbsp;AD-Berichte&nbsp; und &nbsp;-Überwachung](../../active-directory/reports-monitoring/index.yml) | [Azure AD-Berichte](../../active-directory/reports-monitoring/overview-reports.md) bieten einen umfassenden Überblick über Aktivitäten in Ihrer Umgebung. |
 |  | Mithilfe von [Azure AD-Überwachung](../../active-directory/reports-monitoring/overview-monitoring.md) können Sie Ihre Azure AD-Aktivitätsprotokolle an verschiedene Endpunkte weiterleiten.|
 | [Azure AD PIM-Überwachungsverlauf](../../active-directory/privileged-identity-management/pim-how-to-use-audit-log.md) (Privileged Identity Management) | Zeigt alle Rollenzuweisungen und -aktivierungen innerhalb der letzten 30 Tage für alle privilegierten Rollen. |
 | **Daten und Anwendung** |  |
-| [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/investigate) | Stellt Tools bereit, damit Sie besser verstehen, was gerade in Ihrer Cloudumgebung geschieht. |
+| [Microsoft Cloud App Security](/cloud-app-security/investigate) | Stellt Tools bereit, damit Sie besser verstehen, was gerade in Ihrer Cloudumgebung geschieht. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

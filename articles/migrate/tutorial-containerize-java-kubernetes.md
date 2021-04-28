@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 2c1a0ee78e866a12105eca77653b1063943d06db
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4e9eda21f637c285b218b7fdc627631225efdf12
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561065"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131294"
 ---
 # <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>Containerisieren und Migrieren von Java-Web-Apps zu Azure Kubernetes Service
 
@@ -20,7 +20,7 @@ In diesem Artikel erfahren Sie, wie Sie unter Apache Tomcat ausgeführte Java-We
 
 Das App-Containerisierungstool von Azure Migrate unterstützt derzeit die folgenden Vorgänge:
 
-- Containerisieren von ASP.NET-Apps und Bereitstellen dieser Apps in Windows-Containern in AKS [Weitere Informationen](./tutorial-containerize-aspnet-kubernetes.md)
+- Containerisieren von ASP.NET-Apps und Bereitstellen dieser Apps in Windows-Containern in AKS [Weitere Informationen](./tutorial-app-containerization-aspnet-kubernetes.md)
 - Containerisieren von Java-Web-Apps unter Apache Tomcat (auf Linux-Servern) und Bereitstellen dieser Apps in Linux-Containern in AKS
 
 
@@ -261,4 +261,4 @@ Wenn Sie Probleme mit dem Tool behandeln müssen, sollten Sie sich die Protokoll
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Containerisieren von ASP.NET-Apps und Bereitstellen dieser Apps in Windows-Containern in AKS [Weitere Informationen](./tutorial-containerize-aspnet-kubernetes.md)
+- Containerisieren von ASP.NET-Apps und Bereitstellen dieser Apps in Windows-Containern in AKS [Weitere Informationen](./tutorial-app-containerization-aspnet-kubernetes.md)

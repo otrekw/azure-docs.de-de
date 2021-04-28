@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1447e7eec9909c8af33005aab00c267e1a251720
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: faa278b60f3b120fc6f1aad14cd6f8b6dbfb1e21
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966825"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129187"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Sicherheitskontrollen für den Azure Spring Cloud-Dienst
 
@@ -38,4 +38,4 @@ Eine Sicherheitskontrolle stellt eine Qualitätseigenschaft oder ein Feature ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](spring-cloud-quickstart.md)
+* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md)

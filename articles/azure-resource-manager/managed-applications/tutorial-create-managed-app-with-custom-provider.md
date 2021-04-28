@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 228d1a8bcd97daebae873de4c69cbec238e0c995
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7f35f1e82723829f6c0b1190730c5e5fab56fbc8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312534"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143861"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Tutorial: Erstellen einer verwalteten Anwendung mit benutzerdefinierten Aktionen und Ressourcen
 
@@ -349,7 +349,7 @@ Sie können zu der Instanz der verwalteten Anwendung navigieren und auf der Übe
 
 ## <a name="looking-for-help"></a>Wenn Hilfe benötigt wird
 
-Wenn Sie Fragen zu Azure Managed Applications haben, können Sie diese auf [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) mit dem Tag „azure-managed-app“ oder auf [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-managed-applications.html) mit dem Tag „azure-managed-application“ stellen. Eine ähnliche Frage wurde möglicherweise bereits gestellt und beantwortet, weshalb Sie dies zunächst prüfen sollten, bevor Sie etwas posten. Verwenden Sie die entsprechenden Tags, um schneller eine Antwort zu erhalten. 
+Wenn Sie Fragen zu Azure Managed Applications haben, können Sie diese auf [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) mit dem Tag „azure-managed-app“ oder auf [Microsoft Q&A](/answers/topics/azure-managed-applications.html) mit dem Tag „azure-managed-application“ stellen. Eine ähnliche Frage wurde möglicherweise bereits gestellt und beantwortet, weshalb Sie dies zunächst prüfen sollten, bevor Sie etwas posten. Verwenden Sie die entsprechenden Tags, um schneller eine Antwort zu erhalten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
