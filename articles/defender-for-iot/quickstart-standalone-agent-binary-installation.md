@@ -3,12 +3,12 @@ title: 'Schnellstart: Installieren eines Micro-Agents für Defender für IoT (Vo
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie den Defender Micro Agent installieren und authentifizieren.
 ms.date: 3/9/2021
 ms.topic: quickstart
-ms.openlocfilehash: a153b640a1d1e86f9b761817d05fda7d3e47da98
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a78b633dffda42122114d2fce55ef6d8ccb323dc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384407"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137435"
 ---
 # <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>Schnellstart: Installieren eines Micro-Agents für Defender für IoT (Vorschau)
 
@@ -94,7 +94,7 @@ So konfigurieren Sie den Agent für die Authentifizierung mithilfe einer Verbind
 
 So verwenden Sie die Authentifizierung per Zertifikat:
 
-1. Gehen Sie wie [hier](../iot-hub/iot-hub-security-x509-get-started.md) beschrieben vor, um ein Zertifikat zu erhalten.
+1. Gehen Sie wie [hier](../iot-hub/tutorial-x509-scripts.md) beschrieben vor, um ein Zertifikat zu erhalten.
 
 1. Platzieren Sie den PEM-codierten öffentlichen Teil des Zertifikats und den privaten Schlüssel im Defender-Agent-Verzeichnis in der Datei `certificate_public.pem`bzw. `certificate_private.pem`. 
 
