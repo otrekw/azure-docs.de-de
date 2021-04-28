@@ -1,17 +1,17 @@
 ---
 title: Inkrementelles Kopieren von Daten mithilfe von Change Data Capture
 description: In diesem Tutorial wird eine Azure Data Factory-Pipeline erstellt, um Deltadaten aus einer Tabelle einer Azure SQL Managed Instance-Datenbank inkrementell in Azure Storage zu kopieren.
-ms.author: nihurt
-author: hurtn
+ms.author: yexu
+author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/18/2021
-ms.openlocfilehash: a00ec8698b188b8fa87935e498e8cfab3aeab5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c7bfaf6bd6ca11593a986ca8d929faf063be720
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724981"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905772"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Inkrementelles Laden von Daten aus Azure SQL Managed Instance in Azure Storage mithilfe von Change Data Capture (CDC)
 

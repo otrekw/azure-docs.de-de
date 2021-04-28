@@ -3,18 +3,18 @@ title: Erstellen einer Azure Data Factory-Instanz mithilfe einer Azure Resource 
 description: Erstellen Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Azure Data Factory-Instanz.
 ms.service: data-factory
 tags: azure-resource-manager
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: c579b6d723533e751e08a80a578195c03e945607
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 14d96e3c8892106f67125bbd3b7bce565de13812
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783335"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904872"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Schnellstart: Erstellen einer Azure Data Factory-Instanz mithilfe einer ARM-Vorlage
 

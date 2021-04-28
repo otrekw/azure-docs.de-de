@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 46b056c22a6d1c70a729f5b9558f53c685a878f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2f92c0646ef8c14134e8fc2f9b7558519f71fe8d
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732852"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930999"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-Server Flexible Server (Vorschau)
 
@@ -136,7 +136,7 @@ Ein Vorteil der Ausführung Ihrer Workload in Azure ist die globale Reichweite. 
 | --- | --- | --- |
 | Europa, Westen | :heavy_check_mark: | :heavy_check_mark: |
 | Nordeuropa | :heavy_check_mark: | :heavy_check_mark: |
-| UK, Süden | :heavy_check_mark: | :x: | 
+| UK, Süden | :heavy_check_mark: | :heavy_check_mark: | 
 | USA (Ost) 2 | :heavy_check_mark: | :heavy_check_mark: |
 | USA, Westen 2 | :heavy_check_mark: | :heavy_check_mark: |
 | USA (Mitte) | :heavy_check_mark: | :x: | 
@@ -144,8 +144,10 @@ Ein Vorteil der Ausführung Ihrer Workload in Azure ist die globale Reichweite. 
 | Kanada, Mitte | :heavy_check_mark: | :x: | 
 | Asien, Südosten | :heavy_check_mark: | :heavy_check_mark: |
 | Korea, Mitte | :heavy_check_mark: | :x: | 
-| Japan, Osten | :heavy_check_mark: | :x: | 
+| Japan, Osten | :heavy_check_mark: | :heavy_check_mark: | 
 | Australien (Osten) | :heavy_check_mark: | :heavy_check_mark: |
+| Frankreich, Mitte | :heavy_check_mark: | :x:|
+| Brasilien, Süden | :heavy_check_mark: | :x: |
 
 Wir arbeiten daran, dass in Kürze neue Regionen hinzugefügt werden können.
 

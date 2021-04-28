@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6ddafb0e76799e3d8011232534c505f97c79b22e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 71249534c6a088088213659b5a45e042229721c7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751128"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813180"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Verschlüsselung für Azure Synapse Analytics-Arbeitsbereiche
 
@@ -53,7 +53,7 @@ Bei der Erstellung können Arbeitsbereiche so konfiguriert werden, dass die dopp
 
 ### <a name="key-access-and-workspace-activation"></a>Schlüsselzugriff und Arbeitsbereichsaktivierung
 
-Beim Azure Synapse-Verschlüsselungsmodell mit vom Kunden verwalteten Schlüsseln greift der Arbeitsbereich auf die Schlüssel in Azure Key Vault zu, um nach Bedarf Ver- und Entschlüsselungsvorgänge auszuführen. Die Schlüssel werden dem Arbeitsbereich entweder über eine Zugriffsrichtlinie oder den [Azure Key Vault-RBAC-Zugriff](../../key-vault/general/rbac-guide.md) zugänglich gemacht. Wenn Sie Berechtigungen über eine Azure Key Vault-Zugriffsrichtlinie erteilen, wählen Sie während der Richtlinienerstellung die Option [„Nur Anwendung“](../../key-vault/general/security-overview.md#key-vault-authentication-options) aus (wählen Sie die verwaltete Identität des Arbeitsbereichs aus, und fügen Sie diese nicht als autorisierte Anwendung hinzu).
+Beim Azure Synapse-Verschlüsselungsmodell mit vom Kunden verwalteten Schlüsseln greift der Arbeitsbereich auf die Schlüssel in Azure Key Vault zu, um nach Bedarf Ver- und Entschlüsselungsvorgänge auszuführen. Die Schlüssel werden dem Arbeitsbereich entweder über eine Zugriffsrichtlinie oder den [Azure Key Vault-RBAC-Zugriff](../../key-vault/general/rbac-guide.md) zugänglich gemacht. Wenn Sie Berechtigungen über eine Azure Key Vault-Zugriffsrichtlinie erteilen, wählen Sie während der Richtlinienerstellung die Option [„Nur Anwendung“](../../key-vault/general/security-features.md#key-vault-authentication-options) aus (wählen Sie die verwaltete Identität des Arbeitsbereichs aus, und fügen Sie diese nicht als autorisierte Anwendung hinzu).
 
  Der verwalteten Identität des Arbeitsbereichs müssen die erforderlichen Berechtigungen für den Schlüsseltresor erteilt werden, bevor der Arbeitsbereich aktiviert werden kann. Durch diesen phasenbasierten Ansatz für die Arbeitsbereichsaktivierung wird sichergestellt, dass die Daten im Arbeitsbereich mit dem vom Kunden verwalteten Schlüssel verschlüsselt werden. Beachten Sie, dass die Verschlüsselung für dedizierte SQL-Pools aktiviert oder deaktiviert werden kann. Nicht jeder Pool ist standardmäßig für die Verschlüsselung aktiviert.
 

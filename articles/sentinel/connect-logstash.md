@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 10812cf97f4f0dfc6f7957608eddf7acf929c3fc
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 25deccdd190e13d3f0ade319c7a8243e20847ee6
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579768"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071048"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Verwenden von Logstash zum Verbinden von Datenquellen mit Azure Sentinel
 
@@ -83,7 +83,7 @@ Fügen Sie anhand der Informationen im Logstash-Dokument zur [Struktur einer Kon
 
 > [!TIP]
 > -  Sie finden die Arbeitsbereichs-ID und den Primärschlüssel in der Arbeitsbereichsressource unter **Agent-Verwaltung**.
-> - Da die Speicherung von Anmeldeinformationen und anderen vertraulichen Informationen in Klartext in Konfigurationsdateien jedoch **nicht** den bewährten Sicherheitspraktiken entspricht, wird Ihnen dringend empfohlen, den **Logstash-Schlüsselspeicher** zu verwenden, um Ihre **Arbeitsbereichs-ID** und den **Primärschlüssel des Arbeitsbereichs** sicher in die Konfiguration aufzunehmen. Eine Anleitung hierzu finden Sie in der [Dokumentation zu Elastic](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-started-logstash-user.html).
+> - Da die Speicherung von Anmeldeinformationen und anderen vertraulichen Informationen in Klartext in Konfigurationsdateien jedoch **nicht** den bewährten Sicherheitspraktiken entspricht, wird Ihnen dringend empfohlen, den **Logstash-Schlüsselspeicher** zu verwenden, um Ihre **Arbeitsbereichs-ID** und den **Primärschlüssel des Arbeitsbereichs** sicher in die Konfiguration aufzunehmen. Eine Anleitung hierzu finden Sie in der [Dokumentation zu Elastic](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html).
 
 #### <a name="sample-configurations"></a>Beispielkonfigurationen
 

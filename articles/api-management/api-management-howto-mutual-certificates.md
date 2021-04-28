@@ -9,12 +9,13 @@ ms.service: api-management
 ms.topic: article
 ms.date: 01/26/2021
 ms.author: apimpm
-ms.openlocfilehash: d5d261368260a1c9658ae0bef8bdf63a7ca6bafe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9d198f34abe826af2dce0c1ed9950600d4c7bbd3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750624"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812293"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
 
@@ -32,7 +33,7 @@ API Management bietet zwei Optionen zum Verwalten von Zertifikaten, mit denen de
 Die Verwendung von Schlüsseltresorgeheimnissen wird empfohlen, weil dadurch die Sicherheit von API Management verbessert wird:
 
 * In Schlüsseltresoren gespeicherte Geheimnisse können für mehrere Dienste wiederverwendet werden.
-* Auf in Schlüsseltresoren gespeicherte Zertifikate können präzise [Zugriffsrichtlinien](../key-vault/general/security-overview.md#privileged-access) angewendet werden.
+* Auf in Schlüsseltresoren gespeicherte Zertifikate können präzise [Zugriffsrichtlinien](../key-vault/general/security-features.md#privileged-access) angewendet werden.
 * Im Schlüsseltresor aktualisierte Zertifikate werden in API Management automatisch rotiert. Nach der Aktualisierung im Schlüsseltresor wird ein Zertifikat innerhalb von 4 Stunden in API Management aktualisiert. Sie können das Zertifikat auch manuell im Azure-Portal oder über die Verwaltungs-REST-API aktualisieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen

@@ -10,18 +10,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10d9cd87e15303515c02903c9127c1fd0e1c791a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94949495"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070873"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Exemplarische Vorgehensweise: Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Mit Azure Active Directory B2C (Azure AD B2C) können Identitätsentwickler eine Interaktion mit einer RESTful-API in eine User Journey integrieren. Am Ende dieser exemplarischen Vorgehensweise sind Sie in der Lage, eine Azure AD B2C User Journey zu erstellen, die mit [RESTful-Diensten](custom-policy-rest-api-intro.md) interagiert.
+Mit Azure Active Directory B2C (Azure AD B2C) können Identitätsentwickler eine Interaktion mit einer RESTful-API in eine User Journey integrieren. Am Ende dieser exemplarischen Vorgehensweise sind Sie in der Lage, eine Azure AD B2C User Journey zu erstellen, die mit [RESTful-Diensten](api-connectors-overview.md) interagiert.
 
 In diesem Szenario reichern wir die Tokendaten des Benutzers an, indem wir sie in einen unternehmensinternen branchenspezifischen Workflow integrieren. Während der Registrierung oder Anmeldung mit einem lokalen oder Verbundkonto ruft Azure AD B2C eine REST-API auf, um die erweiterten Profildaten des Benutzers aus einer Remotedatenquelle abzurufen. In diesem Beispiel sendet Azure AD B2C den eindeutigen Bezeichner des Benutzers (objectId). Die REST-API gibt dann den Kontostand des Benutzers zurück (eine zufällige Zahl). Nutzen Sie dieses Beispiel als Ausgangspunkt für die Integration in Ihr eigenes CRM-System, Ihre Marketingdatenbank oder einen beliebigen branchenspezifischen Workflow.
 
@@ -29,8 +29,8 @@ Sie können die Interaktion auch als technisches Überprüfungsprofil gestalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) aus. Sie sollten eine funktionierende benutzerdefinierte Richtlinie für die Registrierung und Anmeldung bei lokalen Konten besitzen.
-- Weitere Informationen finden Sie unter [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie](custom-policy-rest-api-intro.md).
+- Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy) aus. Sie sollten eine funktionierende benutzerdefinierte Richtlinie für die Registrierung und Anmeldung bei lokalen Konten besitzen.
+- Weitere Informationen finden Sie unter [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie](api-connectors-overview.md).
 
 ## <a name="prepare-a-rest-api-endpoint"></a>Vorbereiten eines REST-API-Endpunkts
 

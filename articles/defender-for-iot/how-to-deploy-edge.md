@@ -1,26 +1,26 @@
 ---
-title: Bereitstellen des Defender für IoT-Micro-Agent für IoT Edge
+title: Bereitstellen eines IoT Edge-Sicherheitsmoduls
 description: Erfahren Sie, wie Sie einen Defender für IoT-Sicherheits-Agent auf einem IoT Edge-Gerät bereitstellen.
 ms.topic: conceptual
-ms.date: 1/30/2020
-ms.openlocfilehash: 38e2aa38ab07a4768e95d91ed0ebc866d7edf39f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/21/2021
+ms.openlocfilehash: 71efb0bb12d1e20f918481a086fd411d3a237e33
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784219"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813594"
 ---
-# <a name="deploy-a-defender-iot-micro-agent-on-your-iot-edge-device"></a>Bereitstellen eines Defender für IoT-Micro-Agents auf Ihrem IoT Edge-Gerät
+# <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 
 Das Modul **für IoT** stellt eine umfassende Sicherheitslösung für Ihr IoT Edge-Gerät bereit.
-Der Defender für IoT-Micro-Agent sammelt, aggregiert und analysiert Sicherheitsrohdaten von Ihrem Betriebs- und Containersystem und gibt verwertbare Sicherheitsempfehlungen und -warnungen aus.
-Weitere Informationen finden Sie unter [Defender für IoT-Micro-Agent für IoT Edge](security-edge-architecture.md).
+Das Sicherheitsmodul sammelt, aggregiert und analysiert Sicherheitsrohdaten von Ihrem Betriebs- und Containersystem und gibt verwertbare Sicherheitsempfehlungen und -warnungen aus.
+Weitere Informationen finden Sie unter [Azure IoT Edge-Sicherheitsmodul](security-edge-architecture.md).
 
-In diesem Artikel erfahren Sie, wie Sie einen Defender für IoT-Micro-Agent auf Ihrem IoT Edge-Gerät bereitstellen.
+In diesem Artikel erfahren Sie, wie Sie ein Sicherheitsmodul auf Ihrem IoT Edge-Gerät bereitstellen.
 
-## <a name="deploy-defender-iot-micro-agent"></a>Bereitstellen des Defender für IoT-Micro-Agents
+## <a name="deploy-security-module"></a>Bereitstellen eines Sicherheitsmoduls
 
-Gehen Sie wie folgt vor, um einen Defender für IoT-Micro-Agent für IoT Edge bereitzustellen.
+Gehen Sie wie folgt vor, um ein Defender für IoT-Sicherheitsmodul für IoT Edge bereitzustellen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -159,7 +159,7 @@ Führen Sie jeden Schritt zum Erstellen einer IoT Edge-Bereitstellung für Defe
 
 ## <a name="diagnostic-steps"></a>Schritte zum Diagnostizieren von Problemen
 
-Falls ein Problem auftritt, sind Containerprotokolle die beste Möglichkeit, um sich über den Zustand eines IoT Edge-Geräts mit einem Defender für IoT-Micro-Agent zu informieren. Verwenden Sie die Befehle und Tools in diesem Abschnitt zum Sammeln von Informationen.
+Falls ein Problem auftritt, sind Containerprotokolle die beste Möglichkeit, um sich über den Zustand eines Geräts mit einem IoT Edge-Sicherheitsmodul zu informieren. Verwenden Sie die Befehle und Tools in diesem Abschnitt zum Sammeln von Informationen.
 
 ### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>Sicherstellen, dass die erforderlichen Container installiert sind und wie erwartet funktionieren
 
