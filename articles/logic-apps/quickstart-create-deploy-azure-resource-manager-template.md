@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs, devx-track-azurecli
+ms.custom: mvc, subject-armqs
 ms.date: 04/01/2021
-ms.openlocfilehash: bdeb80dc487d8418e21a40a29e5d2baab49d7b05
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d4b4017d6cf489068bf8c39cbcbb233f5a6e40e6
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771891"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072061"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Schnellstart: Erstellen und Bereitstellen eines Logik-App-Workflows mithilfe einer ARM-Vorlage
 
@@ -64,7 +64,7 @@ Befolgen Sie die Option, die Sie zum Bereitstellen der Schnellstartvorlage verwe
 
 1. Geben Sie im Portal auf der Seite **Logik-App mithilfe einer Vorlage erstellen** diese Werte ein, oder wählen Sie sie aus:
 
-   | Eigenschaft | Wert | Beschreibung |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name des zu verwendenden Azure-Abonnements |
    | **Ressourcengruppe** | <*Name der Azure-Ressourcengruppe*> | Der Name für eine neue oder vorhandene Azure-Ressourcengruppe. In diesem Beispiel wird `Check-Azure-Status-RG` verwendet. |
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Weitere Informationen finden Sie unter [Azure CLI: az logic workflow show](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show).
+Weitere Informationen finden Sie unter [Azure CLI: az logic workflow show](/cli/azure/logic/workflow#az_logic_workflow_show).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

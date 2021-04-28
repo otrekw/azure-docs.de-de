@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 92324d68eabfb1885a482a7f539140f93be77596
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 21910718d837750db7ae87afa36a2e7576a729cf
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605194"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016561"
 ---
 # <a name="sdks-and-rest-apis"></a>SDKs und REST-APIs
 
@@ -31,7 +31,7 @@ Communication Services-APIs sind unter [docs.microsoft.com](/rest/api/azure/) ne
 | Azure Resource Manager | Azure.ResourceManager.Communication | [REST](https://docs.microsoft.com/rest/api/communication/communicationservice)| Dient zum Bereitstellen und Verwalten von Communication Services-Ressourcen|
 | Allgemein | Azure.Communication.Common| REST | Stellt Basistypen für andere SDKs zur Verfügung |
 | Identity | Azure.Communication.Identity| [REST](https://docs.microsoft.com/rest/api/communication/communicationidentity)| Verwalten von Benutzern, Zugriffstoken|
-| Telefonnummern _(beta)_| Azure.Communication.PhoneNumbers| [REST](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)| Erfassen und Verwalten von Telefonnummern |
+| Telefonnummern _(beta)_| Azure.Communication.PhoneNumbers| [REST](/rest/api/communication/phonenumbers)| Erfassen und Verwalten von Telefonnummern |
 | Chat | Azure.Communication.Chat| [REST](https://docs.microsoft.com/rest/api/communication/) mit proprietärer Signalisierung | Dient zum Hinzufügen von textbasiertem Chat in Echtzeit zu Ihren Anwendungen |
 | SMS| Azure.Communication.SMS | [REST](https://docs.microsoft.com/rest/api/communication/sms)| Dient zum Senden und Empfangen von SMS-Nachrichten|
 | Aufrufen| Azure.Communication.Calling | Proprietärer Transport | Nutzung von Sprach-, Video-, Bildschirmfreigabe- und anderen Echtzeit-Datenkommunikationsfunktionen |
@@ -52,7 +52,7 @@ Die Veröffentlichungsstandorte für die einzelnen SDK-Pakete sind unten aufgef�
 | Chat           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
 | SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
 | Aufrufen        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
-| Referenzdokumentation     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | [docs](/objectivec/communication-services/calling/)      | [docs](/java/api/com.azure.communication.calling)            | -                              |
+| Referenzdokumentation     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | [docs](/objectivec/communication-services/calling/)      | [docs](/java/api/com.azure.android.communication.calling)            | -                              |
 
 
 ## <a name="rest-api-throttles"></a>REST-API-Drosselungen
@@ -60,8 +60,8 @@ Bestimmte Rest-APIs und entsprechende SDK-Methoden haben Drosselungs-Limits, die
 
 | API                                                                                                                          | Drosselung            |
 |------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| [Alle Such-Telefonnummernplan-APIs](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)         | 4 Anfragen/Tag      |
-| [Telefonnummer-Plan erwerben](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 Kauf pro Monat  |
+| [Alle Such-Telefonnummernplan-APIs](/rest/api/communication/phonenumbers)         | 4 Anfragen/Tag      |
+| [Telefonnummer-Plan erwerben](/rest/api/communication/phonenumbers/purchasephonenumbers) | 1 Kauf pro Monat  |
 | [Senden einer SMS](https://docs.microsoft.com/rest/api/communication/sms/send)                                                       | 200 Anfragen/Minute |
 
 

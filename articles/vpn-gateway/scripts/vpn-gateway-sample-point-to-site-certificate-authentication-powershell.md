@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 02/11/2021
 ms.author: alzam
-ms.openlocfilehash: 04d0fe2b322f6b70cb1cda8d61fbd49638ec214a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9310920ead3b36516a9beb16e7cb9be732e7628f
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385828"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107948255"
 ---
 # <a name="configure-a-point-to-site-vpn---certificate-authentication---powershell-script-sample"></a>Konfigurieren einer P2S-VPN-Verbindung: Zertifikatauthentifizierung – PowerShell-Skriptbeispiel
 
@@ -111,7 +111,7 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse. |
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine neue Gateway-IP-Konfiguration. |
 | [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein VPN-Gateway. |
-| [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) | Erstellt ein neues selbstsigniertes Stammzertifikat. |
+| [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) | Erstellt ein neues selbstsigniertes Stammzertifikat. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Legt die Subnetzkonfiguration für das virtuelle Netzwerk fest. |
 

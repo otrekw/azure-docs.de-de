@@ -1,17 +1,17 @@
 ---
 title: 'Azure Data Factory: Häufig gestellte Fragen '
 description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Azure Data Factory.
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e40f5bfb47ff4686828457308882fb9f50ab5b4a
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739333"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906132"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 
@@ -226,86 +226,11 @@ Verwenden Sie die Kopieraktivität, um Daten aus einem der anderen Connectors be
 
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Ist die selbstgehostete Integration Runtime für Datenflüsse verfügbar?
 
-Die selbstgehostete IR ist ein ADF-Pipelinekonstrukt, das Sie mit der Kopieraktivität zum Abrufen oder Verschieben von Daten in und aus lokalen oder VM-basierten Datenquellen und -senken verwenden können. Stellen Sie die Daten zuerst mit einem Kopiervorgang, dann einem Datenfluss für die Transformation und dann einem nachfolgenden Kopiervorgang bereit, wenn Sie die transformierten Daten zurück in den lokalen Speicher verschieben müssen.
+Die selbstgehostete IR ist ein ADF-Pipelinekonstrukt, das Sie mit der Kopieraktivität zum Abrufen oder Verschieben von Daten in und aus lokalen oder VM-basierten Datenquellen und -senken verwenden können. Die virtuellen Computer, die Sie für eine selbstgehostete IR verwenden, können auch innerhalb desselben VNET wie Ihre geschützten Datenspeicher platziert werden, um über ADF auf diese Datenspeicher zugreifen zu können. Mit Datenflüssen erzielen Sie dieselben Endergebnisse, wenn Sie stattdessen die Azure IR mit verwaltetem VNET verwenden.
 
 ### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Bedient die Datenfluss-Computerengine mehrere Mandanten?
 
 Cluster werden nie gemeinsam genutzt. Wir garantieren die Isolation für jede Auftragsausführung in Produktionsläufen. Bei einem Debugszenario erhält eine einzige Person einen Cluster, und alle Debuggingfehler werden in diesen Cluster verschoben, der von dem betreffenden Benutzer gestartet wird.
-
-## <a name="wrangling-data-flows"></a>Wranglingdatenflüsse
-
-### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Welche Regionen werden für den Wranglingdatenfluss unterstützt?
-
-Der Wranglingdatenfluss wird derzeit in Data Factorys unterstützt, die in folgenden Regionen erstellt wurden:
-
-* Australien (Osten)
-* Kanada, Mitte
-* Indien, Mitte
-* East US
-* USA (Ost) 2
-* Japan, Osten
-* Nordeuropa
-* Asien, Südosten
-* USA Süd Mitte
-* UK, Süden
-* USA, Westen-Mitte
-* Europa, Westen
-* USA (Westen)
-* USA, Westen 2
-
-### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Welche Einschränkungen bestehen beim Wranglingdatenfluss?
-
-Datasetnamen dürfen nur alphanumerische Zeichen enthalten. Die folgenden Datenspeicher werden unterstützt:
-
-* DelimitedText-Dataset in Azure Blob Storage mithilfe der Kontoschlüsselauthentifizierung
-* DelimitedText-Dataset in Azure Data Lake Storage gen2 mithilfe der Kontoschlüssel- oder Dienstprinzipalauthentifizierung
-* DelimitedText-Dataset in Azure Data Lake Storage gen1 mithilfe der Dienstprinzipalauthentifizierung
-* Azure SQL-Datenbank und Data Warehouse mithilfe der SQL-Authentifizierung. Siehe unterstützte SQL-Typen weiter unten. Es gibt keine PolyBase- oder Stagingunterstützung für Data Warehouse.
-
-Derzeit wird die Key Vault-Integration verknüpfter Dienste in Wranglingdatenflüssen nicht unterstützt.
-
-### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>Was ist der Unterschied zwischen Zuordnungsdatenflüssen und Wranglingdatenflüssen?
-
-Mit Zuordnungsdatenflüssen können Sie Daten nach Maß transformieren, ohne Code schreiben zu müssen. Sie können einen Datentransformationsauftrag auf der Datenflusscanvas entwerfen, indem Sie eine Reihe von Transformationen erstellen. Beginnen Sie mit einer beliebigen Anzahl von Quelltransformationen, gefolgt von Datentransformationsschritten. Vervollständigen Sie Ihren Datenfluss mit einer Senke, damit Ihre Ergebnisse an ein Ziel gelangen. Der Zuordnungsdatenfluss eignet sich besonders für das Zuordnen und Transformieren von Daten mit bekannten und unbekannten Schemas in den Senken und Quellen.
-
-Wranglingdatenflüsse ermöglichen Ihnen das Vorbereiten und Durchsuchen agiler Daten mithilfe des Power Query Online-Mashup-Editors in jeder Größenordnung per Spark-Ausführung. Mit dem Anstieg von Data Lakes ist es manchmal erforderlich, ein Dataset zu durchsuchen oder ein Dataset im Lake zu erstellen. Sie nehmen keine Zuordnung zu einem bekannten Ziel vor. Wranglingdatenflüsse werden für weniger formale und modellbasierte Analyseszenarien verwendet.
-
-### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Was ist der Unterschied zwischen Power Platform-Dataflows und Wranglingdatenflüssen?
-
-Mithilfe von Power Platform-Dataflows können Benutzer Daten aus einer Vielzahl von Datenquellen in Common Data Service und Azure Data Lake importieren und transformieren, um PowerApps-Anwendungen, Power BI-Berichten oder Flow-Automatisierungen zu erstellen. Power Platform-Dataflows verwenden die bestehenden Power Query-Oberflächen für die Datenvorbereitung, ähnlich wie Power BI und Excel. Power Platform-Dataflows ermöglichen außerdem die einfache Wiederverwendung innerhalb einer Organisation und die automatische Orchestrierung (z.B. automatisches Aktualisieren von Datenflüssen, die von einem anderen Datenfluss abhängig sind, wenn Erstere aktualisiert werden).
-
-Azure Data Factory (ADF) ist ein verwalteter Datenintegrationsdienst, mit dem Datentechniker und Datenintegratoren ohne Programmiererfahrung komplexe Hybridworkflows mit ETL (Extract-Transform-Load) und ELT (Extract-Load-Transform) erstellen können. Wranglingdatenflüsse in ADF stellen Benutzern eine codefreie, serverlose Umgebung bereit, die die Datenvorbereitung in der Cloud vereinfacht und ohne jegliche Infrastrukturverwaltung auf jede Datengröße skaliert werden kann. Hierbei wird die Datenvorbereitungstechnologie von Power Query (auch in Power Platform-Dataflows, Excel, Power BI verwendet) zum Vorbereiten und Formen der Daten verwendet. Wranglingdatenflüsse sind darauf ausgelegt, mit sämtlichen Komplexitäten und Skalierungsherausforderungen von Big Data-Integrationen umzugehen und ermöglichen Benutzern, Daten schnell in jeder Größenordnung per Spark-Ausführung vorzubereiten. Mit unserer browserbasierten Schnittstelle können Benutzer resiliente Datenpipelines in einer zugänglichen visuellen Umgebung erstellen und ADF die komplexe Spark-Ausführung überlassen. Erstellen Sie Zeitpläne für Ihre Pipelines, und überwachen Sie Ihre Datenflussausführungen über das ADF-Überwachungsportal. Verwalten Sie Datenverfügbarkeits-SLAs ganz einfach mit der umfangreichen Verfügbarkeitsüberwachung und den Warnungen von ADF. Nutzen Sie integrierte Funktionen für Continuous Integration und Continuous Deployment zum Speichern und Verwalten Ihrer Flüsse in einer verwalteten Umgebung. Richten Sie Warnungen ein, und zeigen Sie Ausführungspläne an, um beim Feinabstimmen Ihrer Datenflüsse sicherzustellen, dass Ihre Logik wie geplant abläuft.
-
-### <a name="supported-sql-types"></a>Unterstützte SQL-Typen
-
-Der Wranglingdatenfluss unterstützt die folgenden Datentypen in SQL. Bei Verwendung eines nicht unterstützten Datentyps wird ein Validierungsfehler angezeigt.
-
-* short
-* double
-* real
-* float
-* char
-* NCHAR
-* varchar
-* NVARCHAR
-* integer
-* INT
-* bit
-* boolean
-* SMALLINT
-* TINYINT
-* BIGINT
-* long
-* text
-* date
-* datetime
-* datetime2
-* smalldatetime
-* timestamp
-* UNIQUEIDENTIFIER
-* Xml
-
-In Zukunft werden weitere Datentypen unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

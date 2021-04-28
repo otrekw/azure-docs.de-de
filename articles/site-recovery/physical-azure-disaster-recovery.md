@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie die Notfallwiederherstellung in Azure für lo
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
-ms.openlocfilehash: 5775f8ed9b657502f4865f3c4f311ea0dcd269ea
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 056c8118f2b1ab483e31771c4b8ead3fe6da4598
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581554"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949595"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 
@@ -48,7 +48,7 @@ Bevor Sie beginnen, beachten Sie Folgendes:
 Erstellen Sie ein [Microsoft Azure-Konto](https://azure.microsoft.com/).
 
 - Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung.
-- Erfahren Sie mehr über [Site Recovery-Preise](site-recovery-faq.md#pricing), und erhalten Sie [Preisdetails](https://azure.microsoft.com/pricing/details/site-recovery/).
+- Erfahren Sie mehr über [Site Recovery-Preise](/azure/site-recovery/site-recovery-faq#pricing), und erhalten Sie [Preisdetails](https://azure.microsoft.com/pricing/details/site-recovery/).
 - Erfahren Sie, welche [Regionen](https://azure.microsoft.com/pricing/details/site-recovery/) für Site Recovery unterstützt werden.
 
 ### <a name="verify-azure-account-permissions"></a>Überprüfen der Azure-Kontoberechtigungen

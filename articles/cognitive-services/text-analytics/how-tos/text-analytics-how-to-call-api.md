@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599209"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029776"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -34,6 +34,14 @@ Bevor Sie die Textanalyse-API verwenden, müssen Sie eine Azure-Ressource mit ei
 2.  Wählen Sie die Region aus, die Sie für Ihren Endpunkt verwenden möchten.  Beachten Sie, dass die Endpunkte `/analyze` und `/health` nur in den folgenden Regionen verfügbar sind: USA, Westen 2; USA, Osten 2; USA, Mitte; Europa, Norden; Europa, Westen.
 
 3.  Erstellen Sie die Ressource der Textanalyse, und wechseln Sie links auf der Seite zum Blatt mit den Schlüsseln und Endpunkten. Kopieren Sie den Schlüssel, mit dem Sie später die APIs aufrufen werden. Sie werden ihn später als Wert für den Header `Ocp-Apim-Subscription-Key` hinzufügen.
+
+4. So überprüfen Sie die Anzahl der Textdatensätze, die mit ihrer Textanalyseressource gesendet wurden:
+
+    1. Navigieren Sie im Azure-Portal zur Textanalyseressource. 
+    2. Klicken Sie im linken Navigationsmenü unter **Überwachung** auf **Metriken**. 
+    3. Wählen Sie im Dropdownfeld für **Metrik** die Option *Verarbeitete Textdatensätze* aus.
+    
+Ein Textdatensatz umfasst 1000 Zeichen.
 
 ## <a name="change-your-pricing-tier"></a>Ändern des Tarifs 
 

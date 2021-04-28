@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 59dd953b2116bc1ec7bd0a581cc181df64fbf49e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 965e7c92e17d5ba689fccc0ee6eb321fe2a36695
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721157"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138078"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>Übersicht über virtuelle Computer der HBv2-Serie 
 
@@ -59,7 +59,7 @@ Eine feste Prozesszuordnung (Process Pinning) funktioniert bei virtuellen Comput
 | Orchestratorunterstützung        | CycleCloud, Batch und AKS ([Clusterkonfigurationsoptionen](../../sizes-hpc.md#cluster-configuration-options))  |
 
 > [!NOTE] 
-> Windows Server 2012 R2 wird auf HBv2 und anderen VMs mit mehr als 64 (virtuellen oder physischen) Kernen nicht unterstützt. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
+> Windows Server 2012 R2 wird auf HBv2 und anderen VMs mit mehr als 64 (virtuellen oder physischen) Kernen nicht unterstützt. Ausführlichere Informationen finden Sie [hier](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,14 +9,13 @@ ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/03/2021
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 710a860b1ed87f176b6f42b4963dad17acb323b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.openlocfilehash: 863b10f0ff41c1e28a59357f07be983715adbb55
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954053"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131420"
 ---
 # <a name="upgrade-compute-instance-and-compute-cluster-host-os"></a>Durchführen eines Upgrades des Hostbetriebssystems für Computeinstanzen und Computecluster
 
@@ -41,7 +40,7 @@ Wenn Sie über Computecluster oder Computeinstanzen verfügen, die vor dem __15.
     * Wenn der Cluster mit __min nodes = 0__ konfiguriert ist, wird das Upgrade des Clusters automatisch durchgeführt, sobald alle Aufträge abgeschlossen sind und die Anzahl der Knoten null beträgt.
     * Wenn __min nodes > 0__ konfiguriert ist, legen Sie vorübergehend „min nodes = 0“ fest, und warten Sie, bis die Clustergröße auf null Knoten reduziert wurde.
 
-    Weitere Informationen zum Ändern der minimalen Knotenanzahl finden Sie in der Dokumentation zum Azure CLI Befehl [az ml computetarget update amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/update#ext_azure_cli_ml_az_ml_computetarget_update_amlcompute) und in der SDK-Referenz zu [AmlCompute.update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#update-min-nodes-none--max-nodes-none--idle-seconds-before-scaledown-none-).
+    Weitere Informationen zum Ändern der minimalen Knotenanzahl finden Sie in der Dokumentation zum Azure CLI Befehl [az ml computetarget update amlcompute](/cli/azure/ml/computetarget/update#az_ml_computetarget_update_amlcompute) und in der SDK-Referenz zu [AmlCompute.update()](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#update-min-nodes-none--max-nodes-none--idle-seconds-before-scaledown-none-).
 
 * __Azure Machine Learning-Computeinstanz__: Erstellen Sie eine neue Computeinstanz (die Ubuntu 18.04 verwendet), und löschen Sie die alte Instanz.
 
