@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 48686fb78dc4295da3bd390d92ae3837cd09a4d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 66d41ed1bb900f55db0d3670c1ce312950ff165d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639420"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147047"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Schnellstart: Erstellen eines Azure-Schlüsseltresors und eines Schlüssels mithilfe einer ARM-Vorlage 
 
@@ -168,7 +168,7 @@ In der Vorlage sind zwei Ressourcen definiert:
 Weitere Vorlagenbeispiele für Azure Key Vault finden Sie in [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular).
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
-Sie können auch das [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal), Azure PowerShell, die Azure CLI oder die REST-API verwenden. Informationen zu Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell).
+Sie können auch das [Azure-Portal](../../azure-resource-manager/templates/deploy-portal.md), Azure PowerShell, die Azure CLI oder die REST-API verwenden. Informationen zu Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
@@ -223,4 +223,4 @@ In dieser Schnellstartanleitung haben Sie mithilfe einer ARM-Vorlage einen Schl�
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - Lesen Sie weitere Informationen zu [Azure Resource Manager](../../azure-resource-manager/management/overview.md).
-- [Azure Key Vault-Sicherheitsübersicht](../general/security-overview.md)
+- [Azure Key Vault-Sicherheitsübersicht](../general/security-features.md)

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: e61d85b5f02cb73d078888badc2fa24c4506fe64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa207ca38c46f09e3660ea03e70d20e45c620845
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96620883"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127441"
 ---
 # <a name="how-to-sell-your-saas-offer"></a>Verkaufen Ihres SaaS-Angebots
 
@@ -23,7 +23,7 @@ In diesem Artikel werden zusätzliche Verkaufsoptionen beschrieben, die Sie ausw
 
 Die Bereitstellung von Informationen auf der Registerkarte **Co-Selling mit Microsoft** ist vollkommen optional. Sie ist jedoch erforderlich, um den Status _Co-sell Ready_ (Bereit für Co-Selling) oder _IP Co-sell Ready_ (Bereit für IP-Co-Selling) zu erreichen. Die Microsoft-Vertriebsteams verwenden diese Informationen, um mehr über Ihre Lösung zu erfahren, wenn sie deren Eignung für die Anforderungen der Kunden auswerten. Die auf dieser Registerkarte angegebenen Informationen sind nicht direkt für Kunden verfügbar.
 
-Ausführliche Informationen und Anweisungen zum Konfigurieren der Registerkarte **Co-Selling mit Microsoft** finden Sie unter [Co-Selling-Option im kommerziellen Marketplace](commercial-marketplace-co-sell.md).
+Ausführliche Informationen und Anweisungen zum Konfigurieren der Registerkarte **Co-Selling mit Microsoft** finden Sie unter [Co-Selling-Option im kommerziellen Marketplace](./co-sell-configure.md).
 
 ## <a name="resell-through-csps"></a>Verkaufen über CSPs
 

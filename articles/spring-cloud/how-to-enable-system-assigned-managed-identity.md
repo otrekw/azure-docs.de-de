@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 2fbdd46b872c4c70999355d457045f4aac8aa34c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9897ad062de308563dccc7d17191d1757b887fc2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877293"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135165"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie systemseitig zugewiesene verwaltete Iden
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, sehen Sie sich die [Übersicht](../active-directory/managed-identities-azure-resources/overview.md) an.
-Sie benötigen eine bereitgestellte Azure Spring Cloud-Instanz. Befolgen Sie dazu die Schritte im Artikel [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](spring-cloud-quickstart.md).
+Sie benötigen eine bereitgestellte Azure Spring Cloud-Instanz. Befolgen Sie dazu die Schritte im Artikel [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](./quickstart.md).
 
 ## <a name="add-a-system-assigned-identity"></a>Hinzufügen einer systemseitig zugewiesenen Identität
 Für die Erstellung einer App mit einer systemseitig zugewiesenen Identität muss eine zusätzliche Eigenschaft für die Anwendung festgelegt werden.

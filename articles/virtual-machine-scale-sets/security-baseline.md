@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/08/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9ea9720e719fbf7c1e0952f1d31b2eb952be0e4d
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 60b1de12f031a55388960a6e3c4e7df00c43e3c8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285546"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867822"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Azure-Sicherheitsbaseline für VM-Skalierungsgruppen
 
@@ -43,7 +43,7 @@ Wenn Sie einen bestimmten Anwendungsfall für eine zentralisierte Firewall haben
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 1.1](../../includes/policy/standards/asb/rp-controls/microsoft.compute-1-1.md)]
 
@@ -93,7 +93,7 @@ Sie können mit dem Just-in-Time-Netzwerkzugriff in Azure Security Center die Ve
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 1.4](../../includes/policy/standards/asb/rp-controls/microsoft.compute-1-4.md)]
 
@@ -197,7 +197,7 @@ Verwenden Sie Azure Policy, um die Konfiguration für Netzwerkressourcen im Zusa
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 1.11](../../includes/policy/standards/asb/rp-controls/microsoft.compute-1-11.md)]
 
@@ -241,7 +241,7 @@ Wenn Ihre Organisation die Daten im Sicherheitsereignisprotokoll des virtuellen 
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 2.2](../../includes/policy/standards/asb/rp-controls/microsoft.compute-2-2.md)]
 
@@ -265,7 +265,7 @@ Für erweiterte Einblicke in die von der Azure VM-Skalierungsgruppe unterstützt
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 2.3](../../includes/policy/standards/asb/rp-controls/microsoft.compute-2-3.md)]
 
@@ -283,7 +283,7 @@ Wenn Ihre Organisation die Daten im Sicherheitsereignisprotokoll des virtuellen 
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 2.4](../../includes/policy/standards/asb/rp-controls/microsoft.compute-2-4.md)]
 
@@ -307,7 +307,7 @@ Alternativ dazu können Sie zum Überwachen und Überprüfen Ihrer Protokolle au
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Grundlegendes zum Log Analytics-Arbeitsbereich](/azure/azure-monitor/logs/get-started-portal)
+- [Grundlegendes zum Log Analytics-Arbeitsbereich](/azure/azure-monitor/logs/get-started-queries)
 
 - [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md)
 
@@ -347,7 +347,7 @@ Alternativ dazu können Sie zum Einrichten von Warnungen für anomale Aktivität
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 2.8](../../includes/policy/standards/asb/rp-controls/microsoft.compute-2-8.md)]
 
@@ -381,7 +381,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Verwalten eines Bestands von Administratorkonten
 
-**Leitfaden**: Auch wenn Azure Active Directory (Azure AD) die empfohlene Methode zum Verwalten des Benutzerzugriffs ist, verfügt Azure Virtual Machines möglicherweise über lokale Konten. Lokale Konten und Domänenkonten sollten mit so wenig Aufwand wie möglich überprüft und verwaltet werden. Nutzen Sie außerdem Azure-Privileged Identity Management für Administratorkonten, die für den Zugriff auf die Ressourcen der virtuellen Computer verwendet werden.
+**Leitfaden**: Auch wenn Azure Active Directory (Azure AD) die empfohlene Methode zum Verwalten des Benutzerzugriffs ist, verfügt Azure Virtual Machines möglicherweise über lokale Konten. Lokale Konten und Domänenkonten sollten mit so wenig Aufwand wie möglich überprüft und verwaltet werden. Nutzen Sie außerdem Azure-Privileged Identity Management für Administratorkonten, die für den Zugriff auf die Ressourcen der virtuellen Computer verwendet werden.
 
 - [Informationen zu lokalen Konten](https://docs.microsoft.com/azure/active-directory/devices/assign-local-admin#manage-the-device-administrator-role)
 
@@ -401,7 +401,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Verwenden dedizierter Administratorkonten
 
-**Leitfaden**: Erstellen Sie Standardbetriebsverfahren für die Verwendung dedizierter Administratorkonten, die Zugriff auf Ihre virtuellen Computer haben. Verwenden Sie die Identitäts- und Zugriffsverwaltung in Azure Security Center, um die Anzahl der Administratorkonten zu überwachen. Administratorkonten für den Zugriff auf Ressourcen virtueller Azure-Computer können auch von Azure Privileged Identity Management (PIM) verwaltet werden. Azure Privileged Identity Management bietet verschiedene Optionen wie Just-in-Time-Rechteerweiterung, das Erfordern mehrstufiger Authentifizierung für das Übernehmen einer Rolle und Delegierungsoptionen, durch die Berechtigungen nur für bestimmte Zeitrahmen verfügbar sind und genehmigt werden müssen.
+**Leitfaden**: Erstellen Sie Standardbetriebsverfahren für die Verwendung dedizierter Administratorkonten, die Zugriff auf Ihre virtuellen Computer haben. Verwenden Sie die Identitäts- und Zugriffsverwaltung in Azure Security Center, um die Anzahl der Administratorkonten zu überwachen. Administratorkonten für den Zugriff auf Ressourcen virtueller Azure-Computer können auch von Azure Privileged Identity Management (PIM) verwaltet werden. Azure Privileged Identity Management bietet verschiedene Optionen wie Just-In-Time-Rechteerweiterungen, das Erfordern mehrstufiger Authentifizierung für das Übernehmen einer Rolle und Delegierungsoptionen, durch die Berechtigungen nur für bestimmte Zeitrahmen verfügbar sind und genehmigt werden müssen.
 
 - [Grundlegendes zu Identität und Zugriff im Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -411,7 +411,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 3.3](../../includes/policy/standards/asb/rp-controls/microsoft.compute-3-3.md)]
 
@@ -469,7 +469,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Verwalten von Azure-Ressourcen nur über genehmigte Standorte
 
-**Leitfaden**: Verwenden Sie die Richtlinien und benannten Standorte der Azure Active Directory-Funktion „Bedingter Zugriff“, um den Zugriff nur bestimmten logischen Gruppierungen von IP-Adressbereichen oder Ländern/Regionen zu gestatten.
+**Leitfaden**: Verwenden Sie die Richtlinien für bedingten Zugriff und benannte Standorte von Azure Active Directory (Azure AD), um nur bestimmten logischen Gruppierungen von IP-Adressbereichen oder Ländern/Regionen Zugriff zu gestatten.
 
 - [Konfigurieren benannter Standorte in Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
@@ -491,7 +491,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Regelmäßiges Überprüfen und Abstimmen des Benutzerzugriffs
 
-**Leitfaden**: Azure Active Directory (Azure AD) enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Azure AD-Identitäts- und -Zugriffsüberprüfungen, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff besitzen. Wenn Sie virtuelle Azure-Computer verwenden, müssen Sie die lokalen Sicherheitsgruppen und Benutzer überprüfen, um sicherzustellen, dass keine unerwarteten Konten vorhanden sind, die das System gefährden könnten.
+**Leitfaden**: Azure Active Directory (Azure AD) enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Azure AD-Identitätszugriffsüberprüfungen, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff besitzen. Wenn Sie virtuelle Azure-Computer verwenden, müssen Sie die lokalen Sicherheitsgruppen und Benutzer überprüfen, um sicherzustellen, dass keine unerwarteten Konten vorhanden sind, die das System gefährden könnten.
 
 - [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../active-directory/governance/access-reviews-overview.md)
 
@@ -501,7 +501,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: Überwachen von Zugriffsversuchen auf deaktivierte Anmeldeinformationen
 
-**Leitfaden**: Konfigurieren Sie Diagnoseeinstellungen für Azure Active Directory, um die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Verwenden Sie außerdem Azure Monitor, um Protokolle zu überprüfen und Abfragen für Daten von Azure-VMs auszuführen.
+**Leitfaden**: Konfigurieren Sie Diagnoseeinstellungen für Azure Active Directory (Azure AD), um die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Verwenden Sie außerdem Azure Monitor, um Protokolle zu überprüfen und Abfragen für Daten von Azure-VMs auszuführen.
 
 - [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-tutorial.md)
 
@@ -509,7 +509,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 - [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
-- [Informationen zum Überwachen von virtuellen Computern in Azure](/azure/azure-monitor/vm/monitor-vm-azur)
+- [Informationen zum Überwachen von virtuellen Computern in Azure](/azure/azure-monitor/vm/monitor-vm-azure)
 
 **Verantwortlichkeit**: Kunde
 
@@ -517,7 +517,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: Warnung bei abweichendem Verhalten bei der Kontoanmeldung
 
-**Leitfaden**: Mit Azure AD-Features (Azure Active Directory) zum Risiko- und Identitätsschutz können Sie automatische Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit Storage-Kontoressourcen konfigurieren. Sie sollten automatisierte Antworten über Azure Sentinel aktivieren, um die Sicherheitsmaßnahmen Ihrer Organisation zu implementieren.
+**Leitfaden**: Verwenden Sie die Risiko- und Identitätsschutzfunktionen von Azure Active Directory (Azure AD), um automatische Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit Ihren Speicherkontoressourcen zu konfigurieren. Sie sollten automatisierte Antworten über Azure Sentinel aktivieren, um die Sicherheitsmaßnahmen Ihrer Organisation zu implementieren.
 
 - [Anzeigen riskanter Azure AD-Anmeldungen](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -589,7 +589,7 @@ Bei der zugrunde liegenden Plattform, die von Microsoft verwaltet wird, behandel
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Verschlüsseln aller vertraulichen Informationen während der Übertragung
 
-**Leitfaden**: Daten während der Übertragung zu, von und zwischen VMs mit Windows werden auf verschiedene Weise verschlüsselt, je nach der Art der Verbindung, z. B. Verbindung mit einer VM in einer RDP- oder SSH-Sitzung.
+**Leitfaden**: Daten während der Übertragung an, von und zwischen virtuellen Computern (Virtual Machines, VMs) unter Windows werden je nach der Art der Verbindung (z. B. beim Herstellen einer Verbindung mit einem virtuellen Computer in einer RDP- oder SSH-Sitzung) unterschiedlich verschlüsselt.
 
 Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von Daten bei der Übertragung zwischen den Clouddiensten und Kunden.
 
@@ -637,7 +637,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 4.8](../../includes/policy/standards/asb/rp-controls/microsoft.compute-4-8.md)]
 
@@ -667,7 +667,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 5.1](../../includes/policy/standards/asb/rp-controls/microsoft.compute-5-1.md)]
 
@@ -681,7 +681,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 5.2](../../includes/policy/standards/asb/rp-controls/microsoft.compute-5-2.md)]
 
@@ -713,7 +713,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 5.5](../../includes/policy/standards/asb/rp-controls/microsoft.compute-5-5.md)]
 
@@ -821,7 +821,7 @@ Derzeit ist die adaptive Anwendungssteuerung für VM-Skalierungsgruppen nicht ve
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 6.8](../../includes/policy/standards/asb/rp-controls/microsoft.compute-6-8.md)]
 
@@ -839,7 +839,7 @@ Derzeit ist die adaptive Anwendungssteuerung für VM-Skalierungsgruppen nicht ve
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 6.9](../../includes/policy/standards/asb/rp-controls/microsoft.compute-6-9.md)]
 
@@ -853,7 +853,7 @@ Derzeit ist die adaptive Anwendungssteuerung für VM-Skalierungsgruppen nicht ve
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 6.10](../../includes/policy/standards/asb/rp-controls/microsoft.compute-6-10.md)]
 
@@ -917,7 +917,7 @@ Derzeit ist die adaptive Anwendungssteuerung für VM-Skalierungsgruppen nicht ve
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Einrichten sicherer Betriebssystemkonfigurationen
 
-**Leitfaden**: Wenden Sie die Azure Security Center-Empfehlung [Remediate Vulnerabilities in Security Configurations on your Virtual Machines (Sicherheitsrisiken in Sicherheitskonfigurationen auf virtuellen Computern korrigieren)] an, um Sicherheitskonfigurationen für alle Computeressourcen zu verwalten.
+**Leitfaden**: Wenden Sie die Azure Security Center-Empfehlung „Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre virtuellen Computer beseitigen“ an, um Sicherheitskonfigurationen für alle Computeressourcen zu verwalten.
 
 - [Überwachen von Empfehlungen in Azure Security Center](../security-center/security-center-recommendations.md)
 
@@ -963,7 +963,7 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 7.4](../../includes/policy/standards/asb/rp-controls/microsoft.compute-7-4.md)]
 
@@ -1033,7 +1033,7 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 7.10](../../includes/policy/standards/asb/rp-controls/microsoft.compute-7-10.md)]
 
@@ -1087,7 +1087,7 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 8.1](../../includes/policy/standards/asb/rp-controls/microsoft.compute-8-1.md)]
 
@@ -1107,7 +1107,7 @@ Sie benötigen ein Drittanbietertool für den Schutz vor Schadsoftware auf dem v
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 8.3](../../includes/policy/standards/asb/rp-controls/microsoft.compute-8-3.md)]
 
@@ -1127,7 +1127,7 @@ Sie benötigen ein Drittanbietertool für den Schutz vor Schadsoftware auf dem v
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 9.1](../../includes/policy/standards/asb/rp-controls/microsoft.compute-9-1.md)]
 
@@ -1149,7 +1149,7 @@ Aktivieren Sie Azure Backup für die virtuellen Azure-Zielcomputer (VMs) sowie d
 
 **Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
-**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
+**Integrierte Azure Policy-Definitionen – Microsoft.Compute**:
 
 [!INCLUDE [Resource Policy for Microsoft.Compute 9.2](../../includes/policy/standards/asb/rp-controls/microsoft.compute-9-2.md)]
 

@@ -2,20 +2,19 @@
 title: Überwachung und Warnungen für Azure Key Vault | Microsoft-Dokumentation
 description: Erstellen Sie ein Dashboard zum Überwachen der Integrität Ihres Schlüsseltresors, und konfigurieren Sie Warnungen.
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/06/2020
-ms.author: sudbalas
-ms.openlocfilehash: 684c2f3bc7a15d7652ef271fd01872dc2149827d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: 51a354bfc6df43938d8e2117a7d93f9bd6749225
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059597"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140783"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Überwachung und Warnungen für Azure Key Vault
 
@@ -27,7 +26,7 @@ Sobald Sie damit begonnen haben, Ihre Produktionsgeheimnisse im Schlüsseltresor
 + Konfigurieren von Metriken und Erstellen eines Dashboards
 + Erstellen von Warnungen bei angegebenen Schwellenwerten
 
-Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. [Erfahren Sie hier mehr über Azure Monitor für den Schlüsseltresor](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview#introduction-to-azure-monitor-for-key-vault)
+Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. [Erfahren Sie hier mehr über Azure Monitor für den Schlüsseltresor](../../azure-monitor/insights/key-vault-insights-overview.md#introduction-to-azure-monitor-for-key-vault)
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>Grundlegende Key Vault-Metriken für die Überwachung
 
@@ -211,6 +210,4 @@ Beachten Sie die folgenden Konfigurationsparameter.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Glückwunsch! Sie haben erfolgreich ein Überwachungsdashboard erstellt und Warnungen für Ihren Schlüsseltresor konfiguriert! Nachdem Sie alle oben aufgeführten Schritte ausgeführt haben, sollten Sie jetzt E-Mail-Benachrichtigungen erhalten, wenn Ihr Schlüsseltresor die konfigurierten Warnungskriterien erfüllt. Ein entsprechendes Beispiel ist nachfolgend dargestellt. Verwenden Sie die in diesem Artikel eingerichteten Tools, um die Integrität Ihres Schlüsseltresors zu überwachen. 
-
-
+Glückwunsch! Sie haben erfolgreich ein Überwachungsdashboard erstellt und Warnungen für Ihren Schlüsseltresor konfiguriert! Nachdem Sie alle oben aufgeführten Schritte ausgeführt haben, sollten Sie jetzt E-Mail-Benachrichtigungen erhalten, wenn Ihr Schlüsseltresor die konfigurierten Warnungskriterien erfüllt. Ein entsprechendes Beispiel ist nachfolgend dargestellt. Verwenden Sie die in diesem Artikel eingerichteten Tools, um die Integrität Ihres Schlüsseltresors zu überwachen.

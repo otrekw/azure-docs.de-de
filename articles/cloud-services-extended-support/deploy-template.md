@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8804febe81afc79a4a7eadb56e8350e758ea38ba
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5ca70e0f0ce1dca01248f942fb81a8e8f5469991
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105509"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001356"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von ARM-Vorlagen
 
@@ -24,15 +24,12 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
 1. Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support), und erstellen Sie die entsprechenden Ressourcen.
 
 2. Erstellen Sie über das [Azure-Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) oder mithilfe von [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md) eine neue Ressourcengruppe. Bei Verwendung einer vorhandenen Ressourcengruppe ist dieser Schritt optional.
-
-3. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Von Cloud Services (erweiterter Support) werden nur öffentliche IP-Adressen mit der SKU [Basic](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) unterstützt. Öffentliche IP-Adressen der Standard-SKU funktionieren nicht mit Cloud Services.
-Wenn Sie eine statische IP-Adresse verwenden, muss darauf in der Dienstkonfigurationsdatei (.cscfg) als reservierte IP verwiesen werden. Wenn Sie eine vorhandene IP-Adresse verwenden, überspringen Sie diesen Schritt, und fügen Sie die IP-Adressinformationen in Ihrer ARM-Vorlage direkt den Konfigurationseinstellungen für den Lastenausgleich hinzu.
  
-4. Erstellen Sie über das [Azure-Portal](../storage/common/storage-account-create.md?tabs=azure-portal) oder mithilfe von [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) ein neues Speicherkonto. Bei Verwendung eines vorhandenen Speicherkontos ist dieser Schritt optional.
+3. Erstellen Sie über das [Azure-Portal](../storage/common/storage-account-create.md?tabs=azure-portal) oder mithilfe von [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) ein neues Speicherkonto. Bei Verwendung eines vorhandenen Speicherkontos ist dieser Schritt optional.
 
-5. Laden Sie die Dienstdefinitionsdatei (.csdef) und die Dienstkonfigurationsdatei (.cscfg) per [Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) oder [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) in das Speicherkonto hoch. Rufen Sie die SAS-URIs der beiden Dateien ab. Sie werden später in diesem Tutorial der ARM-Vorlage hinzugefügt.
+4. Laden Sie die Dienstdefinitionsdatei (.csdef) und die Dienstkonfigurationsdatei (.cscfg) per [Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) oder [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) in das Speicherkonto hoch. Rufen Sie die SAS-URIs der beiden Dateien ab. Sie werden später in diesem Tutorial der ARM-Vorlage hinzugefügt.
 
-6. (Optional): Erstellen Sie einen Schlüsseltresor, und laden Sie die Zertifikate hoch.
+5. (Optional): Erstellen Sie einen Schlüsseltresor, und laden Sie die Zertifikate hoch.
 
     -  Zertifikate können an Clouddienste angefügt werden, um eine sichere Kommunikation mit dem Dienst zu ermöglichen. Um Zertifikate verwenden zu können, muss deren Fingerabdruck in Ihrer Dienstkonfigurationsdatei (CSCFG-Datei) angegeben und in einen Schlüsseltresor hochgeladen werden. Ein Schlüsseltresor kann über das [Azure-Portal](../key-vault/general/quick-create-portal.md) oder mithilfe von [PowerShell](../key-vault/general/quick-create-powershell.md) erstellt werden.
     - Der zugeordnete Schlüsseltresor muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst.

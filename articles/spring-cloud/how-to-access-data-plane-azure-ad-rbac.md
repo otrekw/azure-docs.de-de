@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 90ee39039b0734bf434e7339a973358989c08175
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d94232a78257d21f5400b2cddbf8269635962542
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311361"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144599"
 ---
 # <a name="access-config-server-and-service-registry"></a>Zugreifen auf Config Server und Service Registry
 
@@ -39,7 +39,7 @@ Wenn Sie Azure AD und RBAC verwenden möchten, müssen Sie mithilfe des folgend
 
 Nach dem Zuweisen der Rolle „Azure Spring Cloud-Datenleser“ können Kunden auf den Spring Cloud Config Server- und den Spring Cloud Service Registry-Endpunkt zugreifen. Verwenden Sie die folgenden Verfahren:
 
-1. Rufen Sie ein Zugriffstoken ab. Nachdem einem Azure AD-Benutzer die Rolle „Azure Spring Cloud-Datenleser“ zugewiesen wurde, können sich Kunden mithilfe der folgenden Befehle bei der Azure CLI mit Benutzeranmeldeinformationen, einem Dienstprinzipal oder einer verwalteten Identität anmelden, um ein Zugriffstoken zu erhalten. Ausführliche Informationen finden Sie unter [Anmelden mit der Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). 
+1. Rufen Sie ein Zugriffstoken ab. Nachdem einem Azure AD-Benutzer die Rolle „Azure Spring Cloud-Datenleser“ zugewiesen wurde, können sich Kunden mithilfe der folgenden Befehle bei der Azure CLI mit Benutzeranmeldeinformationen, einem Dienstprinzipal oder einer verwalteten Identität anmelden, um ein Zugriffstoken zu erhalten. Ausführliche Informationen finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli). 
 
     ```azurecli
     az login
@@ -51,7 +51,7 @@ Nach dem Zuweisen der Rolle „Azure Spring Cloud-Datenleser“ können Kunden a
     * *'https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/'* 
 
 >[!NOTE]
-> Ersetzen Sie bei Verwendung von „Azure China“ `*.azuremicroservices.io` durch `*.microservices.azure.cn`. [Weitere Informationen](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
+> Ersetzen Sie bei Verwendung von „Azure China“ `*.azuremicroservices.io` durch `*.microservices.azure.cn`. [Weitere Informationen](/azure/china/resources-developer-guide#check-endpoints-in-azure)
 
 3. Greifen Sie mit dem Zugriffstoken auf den erstellten Endpunkt zu. Platzieren Sie das Zugriffstoken in einem Header, um Autorisierung bereitzustellen.  Nur die GET-Methode wird unterstützt.
 
@@ -60,7 +60,7 @@ Nach dem Zuweisen der Rolle „Azure Spring Cloud-Datenleser“ können Kunden a
     Wenn die Antwort *401 Unauthorized* (401 Nicht autorisiert) ist, überprüfen Sie, ob die Rolle erfolgreich zugewiesen wurde.  Es dauert einige Minuten, bis die Rolle wirksam wird. Sie können auch überprüfen, ob das Zugriffstoken abgelaufen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Authentifizieren der Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)
+* [Authentifizieren der Azure CLI](/cli/azure/authenticate-azure-cli)
 * [Produktionsbereite Endpunkte](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints)
 
 ## <a name="see-also"></a>Siehe auch

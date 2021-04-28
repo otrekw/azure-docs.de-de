@@ -4,12 +4,12 @@ description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: b1783204ae416412579e63654ff236fbc6cf1a18
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2bf5735c1e50ae31f70b68d7b926e82badeb3933
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046010"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015985"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -45,9 +45,9 @@ Die folgenden Regionen und maximalen Ressourcen sind für Containergruppen mit L
 | Korea, Mitte | 4 | 16 | – | – | 50 | – |
 | USA Nord Mitte | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
 | Europa, Norden | 4 | 16 | 4 | 16 | 50 | K80 |
-| USA Süd Mitte | 4 | 16 | 4 | 16 | 50 | – |
+| USA Süd Mitte | 4 | 16 | 4 | 16 | 50 | V100 |
 | Asien, Südosten | 4 | 16 | 4 | 16 | 50 | P100, V100 |
-| Indien (Süden) | 4 | 16 | – | – | 50 | – |
+| Indien (Süden) | 4 | 16 | – | – | 50 | K80 |
 | Schweiz, Norden | 3 | 16 | – | – | 50 | – |
 | UK, Süden | 4 | 16 | 4 | 16 | 50 | – |
 | Vereinigte Arabische Emirate, Norden | 3 | 16 | – | – | 50 | – |

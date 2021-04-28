@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: bf761bded38ffa975610c7a7f217e911704ae3bf
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 73ab7e9bab4106af52f615982666922115af4187
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227941"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135381"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Binden einer Azure Cosmos DB-Datenbank an Ihre Azure Spring Cloud-Anwendung
 
@@ -22,7 +22,7 @@ Mit Azure Spring Cloud können Sie ausgewählte Azure-Dienste automatisch an Ihr
 
 Voraussetzungen:
 
-* Eine bereitgestellte Azure Spring Cloud-Instanz. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](spring-cloud-quickstart.md).
+* Eine bereitgestellte Azure Spring Cloud-Instanz. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](./quickstart.md).
 * Ein Azure Cosmos DB-Konto mit mindestens der Berechtigungsebene „Mitwirkender“
 
 ## <a name="bind-azure-cosmos-db"></a>Binden von Azure Cosmos DB
@@ -108,4 +108,4 @@ Azure Cosmos DB verfügt über fünf verschiedene API-Typen, die Bindung unterst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Ihre Azure Spring Cloud-Anwendung an eine Azure Cosmos DB-Datenbank binden. Weitere Informationen zum Binden von Diensten an Ihre Anwendung finden Sie unter [Binden von Azure-Diensten an Ihre Azure Spring Cloud-Anwendung: Azure Cache for Redis](spring-cloud-howto-bind-redis.md).
+In diesem Artikel haben Sie erfahren, wie Sie Ihre Azure Spring Cloud-Anwendung an eine Azure Cosmos DB-Datenbank binden. Weitere Informationen zum Binden von Diensten an Ihre Anwendung finden Sie unter [Binden von Azure-Diensten an Ihre Azure Spring Cloud-Anwendung: Azure Cache for Redis](./how-to-bind-redis.md).

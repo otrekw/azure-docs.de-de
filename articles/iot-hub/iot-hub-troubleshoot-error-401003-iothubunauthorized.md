@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c6ad0e2dd5ce5f223f4e6033ace09c31e58c85a3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0e59fa2bcbc2d357857ddef39d990ddee9bc9c90
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061348"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129457"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -69,7 +69,7 @@ Wenn die Fehlermenge für Geräteentwickler ein Problem darstellt, wechseln Sie 
 Im Allgemeinen sollte in der angezeigten Fehlermeldung erläutert werden, wie der Fehler behoben werden kann. Wenn Sie aus irgendeinem Grund auf die Details der Fehlermeldung nicht zugreifen können, stellen Sie Folgendes sicher:
 
 - Die SAS (Shared Access Signature) oder ein anderes verwendetes Sicherheitstoken ist nicht abgelaufen.
-- Bei der X.509-Zertifikatsauthentifizierung ist das mit dem Gerät verbundene Geräte- oder Zertifizierungsstellenzertifikat nicht abgelaufen. Wie Sie X.509-Zertifizierungsstellenzertifikate bei IoT Hub registrieren können, erfahren Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](iot-hub-security-x509-get-started.md).
+- Bei der X.509-Zertifikatsauthentifizierung ist das mit dem Gerät verbundene Geräte- oder Zertifizierungsstellenzertifikat nicht abgelaufen. Wie Sie X.509-Zertifizierungsstellenzertifikate bei IoT Hub registrieren können, erfahren Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](./tutorial-x509-scripts.md).
 - Bei der X.509-Authentifizierung per Fingerabdruck wird der Fingerabdruck des Gerätezertifikats bei IoT Hub registriert.
 - Die Autorisierungsanmeldeinformationen sind für das verwendete Protokoll richtig formatiert. Weitere Informationen finden Sie unter [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md).
 - Die verwendete Autorisierungsregel verfügt über die Berechtigung für den angeforderten Vorgang.
