@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 643d1cd6df3791b2e5ea2118425eecb29dbcdea2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c456599ac6c2ca87f7beb88398d1ef9117f3106
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877576"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134607"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Schnellstart: Einrichten des Azure Spring Cloud-Konfigurationsservers
 
@@ -23,7 +23,7 @@ Der Azure Spring Cloud-Konfigurationsserver ist ein zentralisierter Konfiguratio
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Absolvieren Sie den vorherigen Schnellstart in dieser Serie: [Bereitstellen des Azure Spring Cloud-Diensts](spring-cloud-quickstart-provision-service-instance.md)
+* Absolvieren Sie den vorherigen Schnellstart in dieser Serie: [Bereitstellen des Azure Spring Cloud-Diensts](./quickstart-provision-service-instance.md)
 
 ## <a name="azure-spring-cloud-config-server-procedures"></a>Verfahren für den Azure Spring Cloud-Konfigurationsserver
 
@@ -51,7 +51,7 @@ Der Azure Spring Cloud-Konfigurationsserver ist ein zentralisierter Konfiguratio
 
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 
-Im folgenden Verfahren wird der Konfigurationsserver mithilfe des Azure-Portals zum Bereitstellen des [Piggy Metrics-Beispiels](spring-cloud-quickstart-sample-app-introduction.md) eingerichtet.
+Im folgenden Verfahren wird der Konfigurationsserver mithilfe des Azure-Portals zum Bereitstellen des [Piggy Metrics-Beispiels](./quickstart-sample-app-introduction.md) eingerichtet.
 
 1. Navigieren Sie zur Seite **Übersicht**, und wählen Sie **Konfigurationsserver** aus.
 
@@ -73,7 +73,7 @@ Im folgenden Verfahren wird der Konfigurationsserver mithilfe des Azure-Portals 
 
 #### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/Azure-CLI)
 
-Im folgenden Verfahren wird die Azure CLI zum Einrichten des Konfigurationsservers und zum Bereitstellen des [Piggy Metrics-Beispiels](spring-cloud-quickstart-sample-app-introduction.md) eingerichtet.
+Im folgenden Verfahren wird die Azure CLI zum Einrichten des Konfigurationsservers und zum Bereitstellen des [Piggy Metrics-Beispiels](./quickstart-sample-app-introduction.md) eingerichtet.
 
 Richten Sie den Konfigurationsserver mit dem Speicherort des Git-Repositorys für das Projekt ein:
 
@@ -84,7 +84,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ::: zone-end
 
 > [!TIP]
-> Bei Verwendung eines privaten Repositorys für den Konfigurationsserver finden Sie weitere Informationen im [Tutorial zum Einrichten der Authentifizierung](./spring-cloud-howto-config-server.md).
+> Bei Verwendung eines privaten Repositorys für den Konfigurationsserver finden Sie weitere Informationen im [Tutorial zum Einrichten der Authentifizierung](./how-to-config-server.md).
 
 ## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Problembehandlung beim Azure Spring Cloud-Konfigurationsserver
 
@@ -113,7 +113,7 @@ Im folgenden Verfahren wird erläutert, wie die Konfigurationsservereinstellunge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie Azure-Ressourcen erstellt, für die weiterhin Gebühren anfallen, falls sie in Ihrem Abonnement verbleiben. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten, lesen Sie die Informationen unter [Bereinigen von Ressourcen](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources). Fahren Sie andernfalls mit der nächsten Schnellstartanleitung fort:
+In dieser Schnellstartanleitung haben Sie Azure-Ressourcen erstellt, für die weiterhin Gebühren anfallen, falls sie in Ihrem Abonnement verbleiben. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten, lesen Sie die Informationen unter [Bereinigen von Ressourcen](./quickstart-logs-metrics-tracing.md#clean-up-resources). Fahren Sie andernfalls mit der nächsten Schnellstartanleitung fort:
 
 > [!div class="nextstepaction"]
-> [Erstellen und Bereitstellen von Apps](spring-cloud-quickstart-deploy-apps.md)
+> [Erstellen und Bereitstellen von Apps](./quickstart-deploy-apps.md)

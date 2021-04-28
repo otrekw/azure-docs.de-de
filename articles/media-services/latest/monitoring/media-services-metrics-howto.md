@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7f8aa7e8cd38de37f5d3757804f7836612ad64cb
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: b408020ecf6e4618f97c8bc51749278dc0361579
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227754"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138911"
 ---
 # <a name="monitor-media-services-metrics"></a>Überwachen von Media Services-Metriken
 
 [!INCLUDE [media services api v3 logo](../includes/v3-hr.md)]
 
-[Azure Monitor](/azure/azure-monitor/overview) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie sich Ihre Anwendungen verhalten. Eine ausführliche Beschreibung dieser Funktion und Argumente für die Verwendung der Azure Media Services-Metriken und -Diagnoseprotokolle finden Sie unter [Überwachen von Media Services-Metriken und -Diagnoseprotokollen](monitor-media-services-data-reference.md).
+[Azure Monitor](../../../azure-monitor/overview.md) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie sich Ihre Anwendungen verhalten. Eine ausführliche Beschreibung dieser Funktion und Argumente für die Verwendung der Azure Media Services-Metriken und -Diagnoseprotokolle finden Sie unter [Überwachen von Media Services-Metriken und -Diagnoseprotokollen](monitor-media-services-data-reference.md).
 
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z. B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über die Azure CLI. In diesem Artikel wird das Überwachen von Metriken mit den Azure-Portal-Diagrammen und der Azure-Befehlszeilenschnittstelle beschrieben.
 
@@ -69,8 +69,8 @@ Um andere Metriken abzurufen, ersetzen Sie „Egress“ durch den Namen der gew�
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Azure Monitor-Metriken](/azure/azure-monitor/data-platform)
-- [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](/azure/azure-monitor/alerts/alerts-metric)
+- [Azure Monitor-Metriken](../../../azure-monitor/data-platform.md)
+- [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../../azure-monitor/alerts/alerts-metric.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

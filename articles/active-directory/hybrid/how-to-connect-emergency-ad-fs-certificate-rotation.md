@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9035c0a91bbbd7493437c692540fcbb3136a094e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9741c2e85a7cd3523ffe7fe8262e5f5d821b62c3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612951"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126595"
 ---
 # <a name="emergency-rotation-of-the-ad-fs-certificates"></a>Notfallrotation von AD FS-Zertifikaten
 Wenn Sie die AD FS Zertifikate unverzüglich rotieren müssen, können Sie die folgenden in diesem Abschnitt beschriebenen Schritte ausführen.
@@ -26,7 +26,7 @@ Wenn Sie die AD FS Zertifikate unverzüglich rotieren müssen, können Sie die f
 
 > [!NOTE]
 > Microsoft empfiehlt dringend, ein Hardwaresicherheitsmodul (HSM) zu verwenden, um Zertifikate zu schützen und zu sichern.
-> Weitere Informationen finden Sie in den bewährten Methoden zum Sichern von AD FS im Artikel zu [Hardwaresicherheitsmodulen](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm).
+> Weitere Informationen finden Sie in den bewährten Methoden zum Sichern von AD FS im Artikel zu [Hardwaresicherheitsmodulen](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm).
 
 ## <a name="determine-your-token-signing-certificate-thumbprint"></a>Ermitteln des Fingerabdrucks eines Tokensignaturzertifikats
 Um das alte Tokensignaturzertifikat zu sperren, das zurzeit von AD FS verwendet wird, müssen Sie den Fingerabdruck des Tokensignaturzertifikats ermitteln.  Gehen Sie dazu folgendermaßen vor:
@@ -69,7 +69,7 @@ Mit den folgenden Schritten können Sie die neuen Tokensignaturzertifikate gener
 ## <a name="generating-new-certificates-manually-if-autocertificaterollover-is-set-to-false"></a>Manuelles Generieren neuer Zertifikate, wenn AutoCertificateRollover auf FALSE festgelegt ist
 Wenn Sie nicht die automatisch generierten, selbstsignierten standardmäßigen Tokensignatur- und Tokenentschlüsselungszertifikate verwenden, müssen Sie diese Zertifikate manuell erneuern und konfigurieren.  Dazu müssen Sie zwei neue Tokensignaturzertifikate erstellen und importieren.  Anschließend stufen Sie ein Zertifikat zum primären Zertifikat herauf, sperren das alte Zertifikat und konfigurieren das zweite Zertifikat als sekundäres Zertifikat.
 
-Zunächst müssen Sie zwei neue Zertifikate von Ihrer Zertifizierungsstelle abrufen und auf jedem Verbundserver in den persönlichen Zertifikatspeicher des lokalen Computers importieren. Entsprechende Anweisungen finden Sie im Artikel [Importieren eines Zertifikats](https://technet.microsoft.com/library/cc754489.aspx).
+Zunächst müssen Sie zwei neue Zertifikate von Ihrer Zertifizierungsstelle abrufen und auf jedem Verbundserver in den persönlichen Zertifikatspeicher des lokalen Computers importieren. Entsprechende Anweisungen finden Sie im Artikel [Importieren eines Zertifikats](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754489(v=ws.11)).
 
 >[!IMPORTANT]
 >Der Grund für die Erstellung von zwei Zertifikaten liegt darin, dass Azure Informationen zum vorherigen Zertifikat speichert.  Durch Erstellung eines zweiten Zertifikats wird Azure gezwungen, die Informationen zum alten Zertifikat freizugeben und durch Informationen zum zweiten Zertifikat zu ersetzen.
@@ -79,7 +79,7 @@ Zunächst müssen Sie zwei neue Zertifikate von Ihrer Zertifizierungsstelle abru
 ### <a name="to-configure-a-new-certificate-as-a-secondary-certificate"></a>So konfigurieren Sie ein neues Zertifikat als sekundäres Zertifikat
 Anschließend müssen Sie ein Zertifikat als sekundäres AD FS-Tokensignatur- oder Tokenentschlüsselungszertifikat konfigurieren und dann zum primären Zertifikat heraufstufen.
 
-1. Nachdem Sie das Zertifikat importiert haben, öffnen Sie die **AD FS-Verwaltungskonsole**.
+1. Nachdem Sie das Zertifikat importiert haben, Öffnen Sie die **AD FS-Verwaltungskonsole**.
 2. Erweitern Sie **Dienst**, und wählen Sie **Zertifikate** aus.
 3. Klicken Sie im Aktionsbereich auf **Tokensignaturzertifikat hinzufügen**.
 4. Wählen Sie ein neues Zertifikat aus der Liste der angezeigten Zertifikate aus, und klicken Sie auf OK.
@@ -118,9 +118,9 @@ Führen Sie den folgenden Befehl aus, um die Zertifikatinformationen in Azure A
 ## <a name="replace-ssl-certificates"></a>Ersetzen von SSL-Zertifikaten
 Falls Sie Ihr Tokensignaturzertifikat ersetzen müssen, weil es kompromittiert wurde, müssen Sie auch die SSL-Zertifikate für AD FS und Ihre WAP-Server sperren und ersetzen.  
 
-Das Sperren der SSL-Zertifikate muss bei der Zertifizierungsstelle erfolgen, von der das Zertifikat ausgestellt wurde.  Diese Zertifikate werden oft von Drittanbietern wie GoDaddy ausgestellt.  Ein Beispiel finden Sie im Abschnitt zum Widerrufen eines Zertifikats in der GoDaddy-Hilfe zu SSL-Zertifikaten.  Weitere Informationen finden Sie im Artikel zur [Funktionsweise der Zertifikatsperrung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee619754(v=ws.10)?redirectedfrom=MSDN).
+Das Sperren der SSL-Zertifikate muss bei der Zertifizierungsstelle erfolgen, von der das Zertifikat ausgestellt wurde.  Diese Zertifikate werden oft von Drittanbietern wie GoDaddy ausgestellt.  Ein Beispiel finden Sie im Abschnitt zum Widerrufen eines Zertifikats in der GoDaddy-Hilfe zu SSL-Zertifikaten.  Weitere Informationen finden Sie im Artikel zur [Funktionsweise der Zertifikatsperrung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee619754(v=ws.10)).
 
-Nachdem das alte SSL-Zertifikat gesperrt und ein neues Zertifikat ausgestellt wurde, können Sie die SSL-Zertifikate ersetzen. Weitere Informationen finden Sie im Artikel zum [Ersetzen des SSL-Zertifikats für AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs).
+Nachdem das alte SSL-Zertifikat gesperrt und ein neues Zertifikat ausgestellt wurde, können Sie die SSL-Zertifikate ersetzen. Weitere Informationen finden Sie im Artikel zum [Ersetzen des SSL-Zertifikats für AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs).
 
 
 ## <a name="remove-your-old-certificates"></a>Entfernen der alten Zertifikate
@@ -139,29 +139,10 @@ Wenn Ihre Verbundpartner keine Verbundmetadaten nutzen können, müssen Sie ihne
 
 
 ## <a name="revoke-refresh-tokens-via-powershell"></a>Sperren von Aktualisierungstoken über PowerShell
-Jetzt möchten wir Aktualisierungstoken für Benutzer sperren, die u. U. über solche Token verfügen, und die Benutzer zwingen, sich erneut anzumelden, damit sie neue Token erhalten.  Dadurch werden Benutzer von ihrem Telefon, aktuellen Webmail-Sitzungen und anderen Elementen abgemeldet, die Token und Aktualisierungstoken verwenden.  Entsprechende Informationen finden Sie [hier](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true). Hilfreiche Informationen finden Sie auch unter [Widerrufen des Benutzerzugriffs in Azure Active Directory](../../active-directory/enterprise-users/users-revoke-access.md).
+Jetzt möchten wir Aktualisierungstoken für Benutzer sperren, die u. U. über solche Token verfügen, und die Benutzer zwingen, sich erneut anzumelden, damit sie neue Token erhalten.  Dadurch werden Benutzer von ihrem Telefon, aktuellen Webmail-Sitzungen und anderen Elementen abgemeldet, die Token und Aktualisierungstoken verwenden.  Entsprechende Informationen finden Sie [hier](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?preserve-view=true&view=azureadps-2.0). Hilfreiche Informationen finden Sie auch unter [Widerrufen des Benutzerzugriffs in Azure Active Directory](../../active-directory/enterprise-users/users-revoke-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwalten von SSL-Zertifikaten in AD FS und WAP in Windows Server 2016](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)
-- [Anfordern und Konfigurieren von Tokensignatur- und Tokenentschlüsselungszertifikaten für AD FS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn781426(v=ws.11)#updating-federation-partners)
+- [Verwalten von SSL-Zertifikaten in AD FS und WAP in Windows Server 2016](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)
+- [Anfordern und Konfigurieren von Tokensignatur- und Tokenentschlüsselungszertifikaten für AD FS](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn781426(v=ws.11)#updating-federation-partners)
 - [Erneuern von Verbundzertifikaten für Microsoft 365 und Azure Active Directory](how-to-connect-fed-o365-certs.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

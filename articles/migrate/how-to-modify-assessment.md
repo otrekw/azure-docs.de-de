@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/15/2019
-ms.openlocfilehash: 9bda4750f6b4340399bbbe070954dd23930b1ae1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e2fc240e04ec375f95bef74e3fd44381ff8cceb6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785205"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135741"
 ---
 # <a name="customize-an-assessment"></a>Anpassen einer Bewertung
 
@@ -95,7 +95,7 @@ Die folgenden Eigenschaften sind in den Azure SQL-Bewertungseigenschaften enthal
 **Perzentilwert der Nutzung** | Der Perzentilwert der Nutzung gibt den für die Größenanpassung zu verwendenden Perzentilwert der Leistungsstichprobe an.
 **Komfortfaktor** | Der bei der Bewertung verwendete Puffer. Er berücksichtigt Aspekte wie saisonale Nutzung, einen kurzen Leistungsverlauf und eine voraussichtliche Zunahme der zukünftigen Nutzung.<br/><br/> Beispiel: Für eine Instanz mit zehn Kernen und einer Auslastung von 20 % ergibt sich normalerweise eine Instanz mit zwei Kernen. Bei einem Komfortfaktor von 2,0 ist das Ergebnis dagegen eine Instanz mit vier Kernen.
 **Angebot/Lizenzierungsprogramm** | Das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/), für das Sie registriert sind. Derzeit können Sie nur zwischen „Nutzungsbasierte Bezahlung“ und „Dev/Test Pay-As-You-Go“ wählen. Beachten Sie, dass Sie einen zusätzlichen Rabatt erzielen können, indem Sie zusätzlich zum Angebot „Nutzungsbasierte Bezahlung“ die reservierte Kapazität und den Azure-Hybridvorteil anwenden.
-**Dienstebene** | Die am besten geeignete Dienstebenenoption, um Ihre geschäftlichen Anforderungen für die Migration zu Azure SQL-Datenbank und/oder Azure SQL Managed Instance zu erfüllen:<br/><br/>**Empfohlen**, wenn von Azure Migrate die am besten geeignete Dienstebene für Ihre Server empfohlen werden soll. Dies kann beispielsweise „Universell“ oder „Unternehmenskritisch“ sein. <br/><br/> **Universell**, wenn Sie eine Azure SQL-Konfiguration erzielen möchten, die für budgetorientierte Workloads ausgelegt ist. [Weitere Informationen](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) <br/><br/> **Unternehmenskritisch**, wenn Sie eine Azure SQL-Konfiguration erhalten möchten, die auf latenzarme Workloads mit hoher Resilienz gegenüber Fehlern und schnellen Failovern ausgelegt ist. [Weitere Informationen](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
+**Dienstebene** | Die am besten geeignete Dienstebenenoption, um Ihre geschäftlichen Anforderungen für die Migration zu Azure SQL-Datenbank und/oder Azure SQL Managed Instance zu erfüllen:<br/><br/>**Empfohlen**, wenn von Azure Migrate die am besten geeignete Dienstebene für Ihre Server empfohlen werden soll. Dies kann beispielsweise „Universell“ oder „Unternehmenskritisch“ sein. <br/><br/> **Universell**, wenn Sie eine Azure SQL-Konfiguration erzielen möchten, die für budgetorientierte Workloads ausgelegt ist. [Weitere Informationen](../azure-sql/database/service-tier-general-purpose.md) <br/><br/> **Unternehmenskritisch**, wenn Sie eine Azure SQL-Konfiguration erhalten möchten, die auf latenzarme Workloads mit hoher Resilienz gegenüber Fehlern und schnellen Failovern ausgelegt ist. [Weitere Informationen](../azure-sql/database/service-tier-business-critical.md)
 **Währung** | Die Rechnungswährung für Ihr Konto.
 **Rabatt (%)** | Abonnementspezifische Rabatte, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
 **Azure-Hybridvorteil** | Gibt an, ob Sie bereits über eine SQL Server-Lizenz verfügen. <br/><br/> Wenn dies der Fall ist und eine aktive Software Assurance-Abdeckung für SQL Server-Abonnements besteht, können Sie sich für den Azure-Hybridvorteil bewerben, sofern Sie eigene Lizenzen für Azure mitbringen.
@@ -119,4 +119,3 @@ Sie können Bewertungseigenschaften auch bearbeiten, wenn Sie eine Bewertung ers
 - [Weitere Informationen](concepts-assessment-calculation.md) zur Berechnung von Azure VM-Bewertungen.
 - Informieren Sie sich über die [Berechnung von Azure SQL-Bewertungen](concepts-azure-sql-assessment-calculation.md).
 - [Weitere Informationen](concepts-azure-vmware-solution-assessment-calculation.md) zur Berechnung von AVS-Bewertungen.
-

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 04/12/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 7805d6dbdb8b93968a2792ed6dfaf2ac8fea9ae5
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 5dc4891bbc8bf6397a0f041fa845f4fb0ad6c600
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363392"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142511"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Standardtestfälle für das Resource Manager-Vorlagen-Testtoolkit
 
@@ -698,7 +698,7 @@ Testname: **„CommandToExecute“ muss „ProtectedSettings“ für Geheimnisse
 Verwenden Sie in einer benutzerdefinierten Skripterweiterung die verschlüsselte Eigenschaft `protectedSettings`, wenn `commandToExecute` Geheimnisdaten wie z. B. ein Kennwort enthält. Beispiele für Geheimnisdatentypen sind `secureString`, `secureObject`, `list()`-Funktionen oder Skripts.
 
 Weitere Informationen zur benutzerdefinierten Skripterweiterung für virtuelle Computer finden Sie unter [Windows](
-/azure/virtual-machines/extensions/custom-script-windows), [Linux](/azure/virtual-machines/extensions/custom-script-linux) und dem Schema [Microsoft.Compute virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions).
+/azure/virtual-machines/extensions/custom-script-windows), [Linux](../../virtual-machines/extensions/custom-script-linux.md) und dem Schema [Microsoft.Compute virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions).
 
 In diesem Beispiel **übergibt** eine Vorlage mit einem Parameter namens `adminPassword` vom Typ `secureString` den Test, da die verschlüsselte Eigenschaft `protectedSettings` den Wert `commandToExecute` enthält.
 

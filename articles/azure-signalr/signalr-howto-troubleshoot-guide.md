@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: e26def56fbd03626c3efc660db57012ee1b767ea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba75af247888a2404619ec0a3db3b0a5d3310502
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048203"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142421"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Problembehandlungsleitfaden für häufig bei Azure SignalR Service auftretende Probleme
 
@@ -354,7 +354,7 @@ Dieses Szenario wird normalerweise durch Async-over-Sync oder durch `Task.Result
 
 Weitere Informationen finden Sie unter [Best Practices zur Leistung in ASP.NET Core](/aspnet/core/performance/performance-best-practices#avoid-blocking-calls).
 
-Weitere Informationen finden Sie unter [Blockierung des Threadpools](https://docs.microsoft.com/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall).
+Weitere Informationen finden Sie unter [Blockierung des Threadpools](/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall).
 
 ### <a name="how-to-detect-thread-pool-starvation"></a>Erkennen einer Threadpoolblockierung
 
@@ -363,8 +363,8 @@ Weitere Informationen finden Sie unter [Blockierung des Threadpools](https://doc
     
   :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Screenshot: Bereich „Max. Threadanzahl“ in Azure App Service":::
 
-* Wenn Sie .NET Framework verwenden, finden Sie [Metriken](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters) im Systemmonitor auf der Server-VM.
-* Wenn Sie .NET Core in einem Container verwenden, finden Sie unter [Sammeln von Diagnosen in Containern](https://docs.microsoft.com/dotnet/core/diagnostics/diagnostics-in-containers) entsprechende Informationen.
+* Wenn Sie .NET Framework verwenden, finden Sie [Metriken](/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters) im Systemmonitor auf der Server-VM.
+* Wenn Sie .NET Core in einem Container verwenden, finden Sie unter [Sammeln von Diagnosen in Containern](/dotnet/core/diagnostics/diagnostics-in-containers) entsprechende Informationen.
 
 Sie können Threadpoolblockierungen auch mithilfe von Code erkennen:
 

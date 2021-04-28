@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Verschlüsselung ruhender Daten Ihrer A
 ms.topic: article
 ms.date: 03/03/2021
 ms.custom: ''
-ms.openlocfilehash: 09eea79eb6fb9ad9e4526b1a0390664e5dd9d61e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9ec32e32d187a3db07f023c78efbd301ef578cbc
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784041"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817033"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Verschlüsseln der Registrierung mithilfe eines kundenseitig verwalteten Schlüssels
 
@@ -601,7 +601,7 @@ Wenn dieses Problem mit einer systemseitig zugewiesenen Identität auftritt, [er
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zur [Verschlüsselung ruhender Daten in Azure](../security/fundamentals/encryption-atrest.md).
-* Unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/general/security-overview.md) erfahren Sie mehr über Zugriffsrichtlinien und das Sichern Ihres Schlüsseltresors.
+* Unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/general/security-features.md) erfahren Sie mehr über Zugriffsrichtlinien und das Sichern Ihres Schlüsseltresors.
 
 
 <!-- LINKS - external -->

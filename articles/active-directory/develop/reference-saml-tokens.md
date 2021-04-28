@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: f636b8ec04d151c855112102421dd2df0ccb6ff8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c23028e4cbbeb7e92fd8b0a7fb6b6b81a54a0806
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932878"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132231"
 ---
 # <a name="saml-token-claims-reference"></a>Referenz zu Ansprüchen in SAML-Token
 
@@ -34,7 +34,7 @@ Microsoft Identity Platform stellt bei der Verarbeitung der einzelnen Authentifi
 > |Authentifizierungsmethode | `amr` |Gibt an, wie der Antragsteller des Tokens authentifiziert wurde. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |First Name (Vorname) | `given_name` |Gibt den Vornamen des Benutzers entsprechend der Festlegung im Azure AD-Benutzerobjekt an. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
 > |Gruppen | `groups` |Enthält die Objekt-IDs, die die Gruppenmitgliedschaften des Antragstellers darstellen. Diese Werte sind eindeutig (siehe „Object ID“) und eignen sich zum sicheren Verwalten des Zugriffs, z.B. für das Erzwingen der Autorisierung für den Zugriff auf eine Ressource. Die im Anspruch "Groups" enthaltenen Gruppen werden über die "GroupMembershipClaims"-Eigenschaft des Anwendungsmanifests anwendungsbezogen konfiguriert. Mit dem Wert „Null“ werden alle Gruppen ausgeschlossen. Beim Wert „SecurityGroup“ sind nur Mitglieder von Active Directory-Sicherheitsgruppen enthalten. Beim Wert „All“ sind sowohl Sicherheitsgruppen als auch Microsoft 365-Verteilerlisten enthalten. <br><br> **Hinweise**: <br> Wenn die Anzahl von Gruppen, denen der Benutzer angehört, ein Limit übersteigt (150 für SAML, 200 für JWT), wird den Anspruchsquellen, die auf den Graph-Endpunkt mit der Liste der Gruppen für den Benutzer verweisen, ein Überschreitungsanspruch hinzugefügt. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
-> | Groups Overage Indicator | `groups:src1` | Bei Tokenanforderungen ohne Längenbeschränkung, die aber dennoch zu groß für das Token sind, ist für den Benutzer ein Link zur vollständigen Liste der Gruppen enthalten. Bei SAML wird er als neuer Anspruch anstelle des `groups`-Anspruchs hinzugefügt. <br><br> **Hinweise**: <br> Die Azure AD Graph-API wird durch die Microsoft Graph-API ersetzt. Weitere Informationen zum entsprechenden Endpunkt finden Sie unter [user: getMemberObjects](https://docs.microsoft.com/graph/api/user-getmemberobjects). | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
+> | Groups Overage Indicator | `groups:src1` | Bei Tokenanforderungen ohne Längenbeschränkung, die aber dennoch zu groß für das Token sind, ist für den Benutzer ein Link zur vollständigen Liste der Gruppen enthalten. Bei SAML wird er als neuer Anspruch anstelle des `groups`-Anspruchs hinzugefügt. <br><br> **Hinweise**: <br> Die Azure AD Graph-API wird durch die Microsoft Graph-API ersetzt. Weitere Informationen zum entsprechenden Endpunkt finden Sie unter [user: getMemberObjects](/graph/api/user-getmemberobjects). | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |Identitätsanbieter | `idp` |Der Identitätsanbieter, der den Antragsteller des Tokens authentifiziert hat. Dieser Wert ist identisch mit dem Wert des "Issuer "-Anspruchs, es sei denn, das Benutzerkonto gehört zu einem anderen Mandanten als der Aussteller. | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |IssuedAt (Ausgestellt um) | `iat` |Speichert die Uhrzeit, zu der das Token ausgestellt wurde. Er wird häufig verwendet, um die Aktualität von Token zu messen. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Issuer (Aussteller) | `iss` |Identifiziert den Sicherheitstokendienst (Security Token Service, STS), der das Token erstellt und zurückgibt. Bei den Token, die Azure AD zurückgibt, ist der Aussteller "sts.windows.net". Die GUID im "Issuer"-Anspruch ist die Mandanten-ID des Azure AD-Verzeichnisses. Die Mandanten-ID ist ein unveränderlicher und zuverlässiger Bezeichner des Verzeichnisses. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |

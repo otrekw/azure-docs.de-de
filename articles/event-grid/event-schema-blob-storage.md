@@ -3,12 +3,12 @@ title: Azure Blob Storage als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Blob Storage-Ereignisse bereitgestellt werden.
 ms.topic: conceptual
 ms.date: 02/11/2021
-ms.openlocfilehash: 893e86ecf220ceb327eed9c6f95be4c7ed1afb1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 909b70c65704d798bf0446732959f50b179c4bca
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363643"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073267"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob Storage als Event Grid-Quelle
 
@@ -512,7 +512,7 @@ Wenn das Blob Storage-Konto über einen hierarchischen Namespace verfügt, sehe
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -527,7 +527,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -541,7 +541,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `api` | Zeichenfolge | Der Vorgang, durch den das Ereignis ausgelöst wurde. |
 | `clientRequestId` | Zeichenfolge | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Informationen finden Sie unter [Storage Analytics Log Format](/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
@@ -566,7 +566,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | [Schnellstart: Erstellen und Weiterleiten von Blob Storage-Ereignissen mit dem Azure-Portal](blob-event-quickstart-portal.md) | Zeigt die Verwendung des Portals zum Senden von Blob Storage-Ereignissen an einen WebHook. |
 | [Azure CLI: Abonnieren von Ereignissen für ein Blobspeicherkonto](./scripts/event-grid-cli-blob.md) | Beispielskript, mit dem Ereignisse für ein Blobspeicherkonto abonniert werden. Sendet das Ereignis an einen WebHook. |
 | [PowerShell: Abonnieren von Ereignissen für ein Blobspeicherkonto](./scripts/event-grid-powershell-blob.md) | Beispielskript, mit dem Ereignisse für ein Blobspeicherkonto abonniert werden. Sendet das Ereignis an einen WebHook. |
-| [Resource Manager-Vorlage: Erstellen eines Blobspeichers und Abonnements](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Stellt ein Azure Blob Storage-Konto bereit und abonniert Ereignisse für dieses Speicherkonto. Sendet Ereignisse an einen WebHook. |
+| [Resource Manager-Vorlage: Erstellen eines Blobspeichers und Abonnements](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-subscription-and-storage) | Stellt ein Azure Blob Storage-Konto bereit und abonniert Ereignisse für dieses Speicherkonto. Sendet Ereignisse an einen WebHook. |
 | [Übersicht: Reaktion auf Blob Storage-Ereignisse](../storage/blobs/storage-blob-event-overview.md) | Übersicht über die Integration von Blob Storage in Event Grid. |
 
 ## <a name="next-steps"></a>Nächste Schritte

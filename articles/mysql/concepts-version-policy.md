@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 35ed677c3176fb990f752f3204a1ae11bf39896c
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 0dd856970e2139f816947f1b26589289a823ea9a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121692"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129349"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL: Richtlinie für die Versionsunterstützung
 
@@ -24,7 +24,7 @@ Azure Database for MySQL wurde basierend auf [MySQL Community Edition](https://w
 
 Azure Database for MySQL unterstützt derzeit die folgenden Haupt- und Nebenversionen von MySQL:
 
-| Version | [Single Server](overview.md) <br/> Aktuelle Nebenversion |[Flexible Server (Vorschau)](/../flexible-server/overview.md) <br/> Aktuelle Nebenversion  |
+| Version | [Single Server](overview.md) <br/> Aktuelle Nebenversion |[Flexible Server (Vorschau)](./flexible-server/overview.md) <br/> Aktuelle Nebenversion  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL-Version 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (eingestellt) | Nicht unterstützt|
 |MySQL-Version 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|

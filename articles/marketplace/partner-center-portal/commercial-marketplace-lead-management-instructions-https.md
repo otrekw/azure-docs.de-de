@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 03/30/2020
-ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 0da1fd7b98b86ebd75926cc8a2d2bb5294d048ca
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247181"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308141"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Verwenden eines HTTPS-Endpunkts zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -31,13 +31,13 @@ In diesem Artikel wird erläutert, wie ein neuer Flow in Power Automate erstellt
 
     ![Anmelden bei „Meine Flows“](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-1. Wählen Sie unter **+ Neu** die Option **+ Sofort – ohne Vorlage** aus.
+1. Wählen Sie unter **+ Neu** die Option **+ Sofortiger Cloud-Flow**  aus.
 
-    ![„+Automatisiert – ohne Vorlage“ unter „Meine Flows“](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    ![„+Automatisiert – ohne Vorlage“ unter „Meine Flows“](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png)
 
 1. Geben Sie dem Flow einen Namen, und wählen Sie dann unter **Auslöser für diesen Flow auswählen** die Option **Beim Empfang einer HTTP-Anforderung** aus.
 
-    ![Schaltfläche „Überspringen“ im Fenster „Automatisierten Flow erstellen“](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
+    ![Schaltfläche „Überspringen“ im Fenster „Automatisierten Flow erstellen“](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png)
 
 1. Klicken Sie auf den Flowschritt, um ihn zu erweitern.
 
@@ -137,9 +137,13 @@ In diesem Artikel wird erläutert, wie ein neuer Flow in Power Automate erstellt
 ### <a name="connect-to-a-crm-system"></a>Verbinden mit einem CRM-System
 
 1. Wählen Sie **+ Neuer Schritt** aus.
-1. Wählen Sie das gewünschte CRM-System aus, indem Sie unter **Connectors und Aktionen durchsuchen** nach ihm suchen. Wählen Sie es auf der Registerkarte **Aktionen** mit der Aktion zum Erstellen eines neuen Datensatzes aus. Auf dem folgenden Bildschirm wird beispielsweise **Neuen Datensatz erstellen (Dynamics 365)** dargestellt.
+1. Wählen Sie das gewünschte CRM-System aus, indem Sie unter **Connectors und Aktionen durchsuchen** nach ihm suchen. Auf dem folgenden Bildschirm wird beispielsweise das Erstellen eines neuen Datensatzes (Common Data Service) dargestellt.
 
     ![Create a new record (Neuen Datensatz erstellen)](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+
+1. Wählen Sie die Registerkarte **Aktionen** mit der Aktion **Neuen Datensatz erstellen** aus.
+
+    ![Auswählen der Erstellung eines neuen Datensatzes](./media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png)
 
 1. Geben Sie den **Organisationsnamen** für das CRM-System an. Wählen Sie in der Dropdownliste **Entitätsname** die Option **Leads** aus.
 

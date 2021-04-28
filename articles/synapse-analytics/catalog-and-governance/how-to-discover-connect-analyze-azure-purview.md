@@ -3,17 +3,17 @@ title: Entdecken, Verbinden und Untersuchen von Daten in Synapse mithilfe von Az
 description: Leitfaden zum Ermitteln von Daten, Verbinden der Daten und Untersuchen der Daten in Synapse
 author: Rodrigossz
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: purview
 ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
-ms.openlocfilehash: f98507fa72f4503700bf39393063dd1ecc650e91
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 1f326c1caaa019222854741dcc5d8a8e087885f7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567892"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138227"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>Entdecken, Verbinden und Untersuchen von Daten in Synapse mithilfe von Azure Purview 
 

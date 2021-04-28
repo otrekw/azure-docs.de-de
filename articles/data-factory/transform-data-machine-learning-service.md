@@ -3,15 +3,15 @@ title: Ausführen von Azure Machine Learning-Pipelines
 description: Hier erfahren Sie, wie Sie Ihre Azure Machine Learning-Pipelines in Ihren Azure Data Factory-Pipelines ausführen.
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: weetok
-author: dcstwh
+ms.author: abnarain
+author: nabhishek
 ms.date: 07/16/2020
-ms.openlocfilehash: 5c1a55518c0fac04eafad79a2ed3f7b3677de5e9
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: d5013bf12647ababb7aa0765a13751e749dae9d8
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223233"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904728"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Ausführen von Azure Machine Learning-Pipelines in Azure Data Factory-Pipelines
 
@@ -55,6 +55,7 @@ mlPipelineId | ID der veröffentlichten Azure Machine Learning-Pipeline | Zeiche
 experimentName | Name des Ausführungsverlaufexperiments der Machine Learning-Pipelineausführung | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein
 mlPipelineParameters | Schlüssel-Wert-Paare, die an den veröffentlichten Azure Machine Learning-Pipeline-Endpunkt übergeben werden sollen. Die Schlüssel müssen den Namen von Pipelineparametern entsprechen, die in der veröffentlichten Machine Learning-Pipeline definiert sind. | Objekt mit Schlüssel-Wert-Paaren (oder Ausdruck mit resultType-Objekt) | Nein
 mlParentRunId | ID der übergeordneten Azure Machine Learning-Pipelineausführung | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein
+dataPathAssignments | Wörterbuch, das zum Ändern von Datenpfaden in Azure Machine Learning verwendet wird. Ermöglicht das Wechseln von Datenpfaden. | Objekt mit Schlüssel-Wert-Paaren | Nein
 continueOnStepFailure | Gibt an, ob die Ausführung weiterer Schritte in der Machine Learning-Pipelineausführung fortgesetzt werden soll, wenn ein Schritt nicht erfolgreich war. | boolean | Nein
 
 > [!NOTE]

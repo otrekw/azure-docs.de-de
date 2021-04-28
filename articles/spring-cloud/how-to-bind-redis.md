@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 414f7dc64027b286d8a963452d2b86126b3c5818
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dda826b50a74c109609fc7eec734b1d0de927ab3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877612"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135345"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Binden von Azure Cache for Redis an Ihre Azure Spring Cloud-Anwendung 
 
@@ -26,7 +26,7 @@ Mit Azure Spring Cloud können Sie ausgewählte Azure-Dienste automatisch an Ihr
 * Eine Azure Cache for Redis-Dienstinstanz
 * Die Azure Spring Cloud-Erweiterung für die Azure-Befehlszeilenschnittstelle
 
-Wenn Sie nicht über eine bereitgestellte Azure Spring Cloud-Instanz verfügen, folgen Sie den Schritten in diesem [Schnellstart zum Bereitstellen einer Azure Spring Cloud-App](spring-cloud-quickstart.md).
+Wenn Sie nicht über eine bereitgestellte Azure Spring Cloud-Instanz verfügen, folgen Sie den Schritten in diesem [Schnellstart zum Bereitstellen einer Azure Spring Cloud-App](./quickstart.md).
 
 ## <a name="bind-azure-cache-for-redis"></a>Binden von Azure Cache for Redis
 
@@ -58,4 +58,4 @@ Wenn Sie nicht über eine bereitgestellte Azure Spring Cloud-Instanz verfügen, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Ihre Azure Spring Cloud-Anwendung an Azure Cache for Redis binden. Weitere Informationen zum Binden von Diensten an Ihre Anwendung finden Sie unter [Binden einer Azure Database for MySQL-Instanz an Ihre Azure Spring Cloud-Anwendung](spring-cloud-howto-bind-mysql.md).
+In diesem Artikel haben Sie erfahren, wie Sie Ihre Azure Spring Cloud-Anwendung an Azure Cache for Redis binden. Weitere Informationen zum Binden von Diensten an Ihre Anwendung finden Sie unter [Binden einer Azure Database for MySQL-Instanz an Ihre Azure Spring Cloud-Anwendung](./how-to-bind-mysql.md).

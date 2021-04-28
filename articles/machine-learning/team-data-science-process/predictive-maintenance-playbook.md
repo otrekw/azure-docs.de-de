@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 9b6cf2abfa797965d75bacd0b9c5e2eaf02b57a4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5a8b722b7bef393422eec395f16de0f38e806152
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308573"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141755"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure KI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -439,9 +439,9 @@ Microsoft Azure bietet Lernpfade für die grundlegenden Konzepte, die hinter PdM
 
 | Schulungsressource  | Verfügbarkeit |
 |:-------------------|--------------|
-| [Microsoft-Dokumentation: Rolle „Wissenschaftliche Fachkraft für Daten“](https://docs.microsoft.com/learn/roles/data-scientist) | Öffentlich |
-| [Microsoft-Dokumentation: Rolle „Technische Fachkraft für KI“](https://docs.microsoft.com/learn/roles/ai-engineer) | Öffentlich |
-| [Microsoft-Dokumentation: Rolle „Technische Fachkraft für Daten“](https://docs.microsoft.com/learn/roles/data-engineer) | Öffentlich |
+| [Microsoft-Dokumentation: Rolle „Wissenschaftliche Fachkraft für Daten“](/learn/roles/data-scientist) | Öffentlich |
+| [Microsoft-Dokumentation: Rolle „Technische Fachkraft für KI“](/learn/roles/ai-engineer) | Öffentlich |
+| [Microsoft-Dokumentation: Rolle „Technische Fachkraft für Daten“](/learn/roles/data-engineer) | Öffentlich |
 | [Microsoft AI School](https://www.microsoft.com/ai/ai-school) | Öffentlich |
 | [LinkedIn Learning](https://www.linkedin.com/learning) | Öffentlich |
 | [Microsoft: Wiedergabelisten auf YouTube für künstliche Intelligenz und Analysen](https://www.youtube.com/c/MicrosoftAzure/playlists?view=50&sort=dd&shelf_id=7) | Öffentlich |

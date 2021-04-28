@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 8144c588d4b6794cadc0577bf63dabc2cc3e0efd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b661931d13fb179401fff2559579a155bd31dfb
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98677285"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139937"
 ---
 # <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>Verwenden von Transaktionen in einem SQL-Pool in Azure Synapse 
 
@@ -214,4 +214,4 @@ Dies sind:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewährte Methoden für Transaktionen](sql-data-warehouse-develop-best-practices-transactions.md). Weitere Informationen zu anderen Best Practices für SQL-Pools finden Sie unter [Bewährte Methoden für den Synapse SQL-Pool in Azure Synapse Analytics (ehemals SQL DW)](sql-data-warehouse-best-practices.md).
+Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewährte Methoden für Transaktionen](sql-data-warehouse-develop-best-practices-transactions.md). Weitere Informationen zu anderen Best Practices für SQL-Pools finden Sie unter [Bewährte Methoden für den Synapse SQL-Pool in Azure Synapse Analytics (ehemals SQL DW)](../sql/best-practices-dedicated-sql-pool.md).
