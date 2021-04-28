@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 882a9fb0f8d528ca21cdc8149c60b9d5bdaf1723
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: be55a3fb07b35fccb0f71f9ca7bfd2c88a9d097c
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767093"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017047"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service
 
@@ -133,7 +133,7 @@ az extension add --name db-up
 
 Wird der Befehl `az` nicht erkannt, vergewissern Sie sich, dass die Azure CLI wie unter [Einrichten der anfänglichen Umgebung](#1-set-up-your-initial-environment) beschrieben installiert wurde.
 
-Erstellen Sie anschließend mithilfe des Befehls [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) die Postgres-Datenbank in Azure:
+Erstellen Sie anschließend mithilfe des Befehls [`az postgres up`](/cli/azure/postgres#az_postgres_up) die Postgres-Datenbank in Azure:
 
 ```azurecli
 az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
@@ -242,7 +242,7 @@ Durch Django-Datenbankmigrationen wird sichergestellt, dass das Schema in der Po
     cd $APP_PATH
     
     # Activate the venv
-    source /antenv/bin/activate
+    source antenv/bin/activate
 
     # Install requirements
     pip install -r requirements.txt
@@ -402,7 +402,7 @@ Da Sie Änderungen am Datenmodell vorgenommen haben, müssen Sie die Datenbankmi
 
 ```
 cd $APP_PATH
-source /antenv/bin/activate
+source antenv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
 ```

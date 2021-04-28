@@ -4,12 +4,12 @@ description: Verwalten von Azure Blockchain Service mit der Azure CLI
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 63401f5ce5cd35f63915e03b7f0362811d2660ec
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 55df56274aa5baa946b60c27cf49723d59c928a1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768051"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865925"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Verwalten des Azure Blockchain-Diensts mit der Azure CLI
 
@@ -39,7 +39,7 @@ Wenn Sie die CLI lieber lokal installieren und verwenden, finden Sie hierzu Info
 
     Bei der Verwendung von Erweiterungsverweisen für die Azure CLI müssen Sie die Erweiterung zunächst installieren.  Mit Azure CLI-Erweiterungen erhalten Sie Zugriff auf experimentelle Befehle und Vorabversionen von Befehlen, die noch nicht als Bestandteil der Kern-CLI bereitgestellt wurden.  Weitere Informationen zu Erweiterungen, u. a. zum Aktualisieren und Deinstallieren, finden Sie unter [Verwenden von Erweiterungen mit der Azure CLI](/cli/azure/azure-cli-extensions-overview).
 
-    Installieren Sie die [Erweiterung für Azure Blockchain Service](/cli/azure/ext/blockchain/blockchain), indem Sie den folgenden Befehl ausführen:
+    Installieren Sie die [Erweiterung für Azure Blockchain Service](/cli/azure/blockchain), indem Sie den folgenden Befehl ausführen:
 
     ```azurecli-interactive
     az extension add --name blockchain
@@ -47,7 +47,7 @@ Wenn Sie die CLI lieber lokal installieren und verwenden, finden Sie hierzu Info
 
 ## <a name="create-blockchain-member"></a>Erstellen eines Blockchainmitglieds
 
-In folgenden Beispiel wird ein [Blockchainmitglied im Azure Blockchain-Dienst erstellt](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-create), das das Quorum-Ledgerprotokoll in einem neuen Konsortium ausführt.
+In folgenden Beispiel wird ein [Blockchainmitglied im Azure Blockchain-Dienst erstellt](/cli/azure/blockchain/member#az_blockchain_member_create), das das Quorum-Ledgerprotokoll in einem neuen Konsortium ausführt.
 
 ```azurecli
 az blockchain member create \
@@ -74,7 +74,7 @@ az blockchain member create \
 
 ## <a name="change-blockchain-member-passwords-or-firewall-rules"></a>Ändern des Kennworts des Blockchainmitglieds oder der Firewallregeln
 
-Im folgenden Beispiel werden das Kennwort [eines Blockchainmitglieds](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-update), das Verwaltungskennwort des Konsortiums und die Firewallregel aktualisiert.
+Im folgenden Beispiel werden das Kennwort [eines Blockchainmitglieds](/cli/azure/blockchain/member#az_blockchain_member_update), das Verwaltungskennwort des Konsortiums und die Firewallregel aktualisiert.
 
 ```azurecli
 az blockchain member update \
@@ -95,7 +95,7 @@ az blockchain member update \
 
 ## <a name="create-transaction-node"></a>Erstellen eines Transaktionsknotens
 
-[Erstellen Sie einen Transaktionsknoten](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-create) in einem vorhandenen Blockchainmitglied. Durch Hinzufügen von Transaktionsknoten können Sie die Sicherheitsisolation erhöhen oder die Last verteilen. Sie können beispielsweise über einen Transaktionsknotenendpunkt für verschiedene Clientanwendungen verfügen.
+[Erstellen Sie einen Transaktionsknoten](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_create) in einem vorhandenen Blockchainmitglied. Durch Hinzufügen von Transaktionsknoten können Sie die Sicherheitsisolation erhöhen oder die Last verteilen. Sie können beispielsweise über einen Transaktionsknotenendpunkt für verschiedene Clientanwendungen verfügen.
 
 ```azurecli
 az blockchain transaction-node create \
@@ -115,7 +115,7 @@ az blockchain transaction-node create \
 
 ## <a name="change-transaction-node-password"></a>Ändern des Kennworts des Transaktionsknotens
 
-Im folgenden Beispiel wird das Kennwort des [Transaktionsknotens aktualisiert](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-update).
+Im folgenden Beispiel wird das Kennwort des [Transaktionsknotens aktualisiert](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_update).
 
 ```azurecli
 az blockchain transaction-node update \
@@ -134,7 +134,7 @@ az blockchain transaction-node update \
 
 ## <a name="list-api-keys"></a>Auflisten von API-Schlüsseln
 
-Mit API-Schlüsseln erhalten Sie Zugriff auf Knoten, ähnlich wie mit einem Benutzernamen und einem Kennwort. Es gibt zwei API-Schlüssel, die die Schlüsselrotation unterstützen. Verwenden Sie den folgenden Befehl, um [Ihre API-Schlüssel aufzulisten](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-list-api-key):
+Mit API-Schlüsseln erhalten Sie Zugriff auf Knoten, ähnlich wie mit einem Benutzernamen und einem Kennwort. Es gibt zwei API-Schlüssel, die die Schlüsselrotation unterstützen. Verwenden Sie den folgenden Befehl, um [Ihre API-Schlüssel aufzulisten](/cli/azure/blockchain/member#az_blockchain_transaction_node_list-api-key):
 
 ```azurecli
 az blockchain member list-api-key \
@@ -149,7 +149,7 @@ az blockchain member list-api-key \
 
 ## <a name="regenerate-api-keys"></a>Erneutes Generieren von API-Schlüsseln
 
-Verwenden Sie den folgenden Befehl, um [Ihre API-Schlüssel erneut zu generieren](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-regenerate-api-key):
+Verwenden Sie den folgenden Befehl, um [Ihre API-Schlüssel erneut zu generieren](/cli/azure/blockchain/member#az_blockchain_transaction_node_regenerate-api-key):
 
 ```azurecli
 az blockchain member regenerate-api-key \
@@ -166,7 +166,7 @@ az blockchain member regenerate-api-key \
 
 ## <a name="delete-a-transaction-node"></a>Löschen eines Transaktionsknotens
 
-Im folgenden Beispiel wird der [Transaktionsknoten eines Blockchainmitglieds gelöscht](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-delete).
+Im folgenden Beispiel wird der [Transaktionsknoten eines Blockchainmitglieds gelöscht](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_delete).
 
 ```azurecli
 az blockchain transaction-node delete \
@@ -183,7 +183,7 @@ az blockchain transaction-node delete \
 
 ## <a name="delete-a-blockchain-member"></a>Löschen eines Blockchainmitglieds
 
-Im folgenden Beispiel wird ein [Blockchainmitglied gelöscht](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-delete).
+Im folgenden Beispiel wird ein [Blockchainmitglied gelöscht](/cli/azure/blockchain/member#az_blockchain_member_delete).
 
 ```azurecli
 az blockchain member delete \

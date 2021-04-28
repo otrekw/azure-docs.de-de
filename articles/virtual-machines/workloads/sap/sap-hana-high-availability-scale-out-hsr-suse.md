@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 637616c3698cc9ec0cd13a4584bad24b6ed02c34
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 49c4c579d75b964a4b4c37c8a44bddf1ad08c62b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315198"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142817"
 ---
 # <a name="high-availability-for-sap-hana-scale-out-system-with-hsr-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für horizontal skalierte SAP HANA-Systeme mit HSR unter SUSE Linux Enterprise Server 
 
@@ -105,7 +105,7 @@ Im vorangehenden Diagramm werden drei Subnetze in einem virtuellen Azure-Netzwer
 
 Da `/hana/data` und `/hana/log` auf lokalen Datenträgern bereitgestellt werden, ist es nicht erforderlich, separate Subnetze und separate virtuelle Netzwerkkarten für die Kommunikation mit dem Speicher bereitzustellen.  
 
-Die Azure NetApp-Volumes werden in einem separaten Subnetz bereitgestellt, das an [Azure NetApp Files delegiert wurde](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet): `anf` 10.23.1.0/26.   
+Die Azure NetApp-Volumes werden in einem separaten Subnetz bereitgestellt, das an [Azure NetApp Files delegiert wurde](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md): `anf` 10.23.1.0/26.   
 
 > [!IMPORTANT]
 > Die Systemreplikation an einem dritten Standort wird nicht unterstützt. Weitere Informationen finden Sie im Abschnitt „Wichtige Voraussetzungen“ unter [SLES SAP HANA-Systemreplikation (horizontale Skalierung) – leistungsoptimiertes Szenario](https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-12/index.html#_important_prerequisites).     

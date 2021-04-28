@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/08/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, automl, references_regions
-ms.openlocfilehash: 2e6e4e468adec76d50242b31922e4db1c7e910ab
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.topic: troubleshooting
+ms.custom: devx-track-python, automl, references_regions
+ms.openlocfilehash: 6f64d3511da8fbf953a50eab44702c7356ad3c5b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210481"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140477"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>Behandeln von Problemen bei Experimenten mit automatisiertem ML in Python
 
@@ -189,6 +189,6 @@ Wenn dieses Muster in Ihrer Zeitreihe erwartet wird, können Sie die primäre Me
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ Erfahren Sie mehr über das [Trainieren eines Regressionsmodells mit automatisiertem maschinellem Lernen](tutorial-auto-train-models.md) und das [Trainieren mit automatisiertem maschinellem Lernen auf einer Remoteressource](how-to-auto-train-remote.md).
++ Erfahren Sie mehr über das [Trainieren eines Regressionsmodells mit automatisiertem maschinellem Lernen](tutorial-auto-train-models.md) und das [Trainieren mit automatisiertem maschinellem Lernen auf einer Remoteressource](concept-automated-ml.md#local-remote).
 
 + Lernen Sie, [wie und wo Sie Modelle bereitstellen](how-to-deploy-and-where.md) können.
