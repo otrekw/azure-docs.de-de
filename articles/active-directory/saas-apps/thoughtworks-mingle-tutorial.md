@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c3eeb1577e628965e3e5a35fa20c072224383149
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2450a45140b3ba47c172f05d2eb7200252ca23b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92514621"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>Tutorial: Azure Active Directory-Integration mit Thoughtworks Mingle
 
@@ -104,7 +104,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Thoughtw
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.mingle.thoughtworks.com`
 
     > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von Thoughtworks Mingle](https://support.thoughtworks.com/hc/categories/201743486-Mingle-Community-Support), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das Supportteam von Thoughtworks Mingle, um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -120,13 +120,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Thoughtw
 
     c. Abmelde-URL
 
-### <a name="configure-thoughtworks-mingle-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Thoughtworks Mingle
+### <a name="configure-thoughtworks-mingle-single-sign-on&quot;></a>Konfigurieren des einmaligen Anmeldens für Thoughtworks Mingle
 
 1. Melden Sie sich bei der **Thoughtworks Mingle**-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie auf die Registerkarte **Admin** und dann auf **SSO Config**.
    
-    ![Registerkarte „Admin“](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO-Config")
+    ![Registerkarte „Admin“](./media/thoughtworks-mingle-tutorial/ic785157.png &quot;SSO-Config")
 
 3. Führen Sie im Abschnitt **SSO Config** die folgenden Schritte aus:
    
@@ -186,7 +186,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-thoughtworks-mingle-test-user"></a>Erstellen eines Thoughtworks Mingle-Testbenutzers
+### <a name="create-thoughtworks-mingle-test-user&quot;></a>Erstellen eines Thoughtworks Mingle-Testbenutzers
 
 Damit sich Azure AD-Benutzer anmelden können, müssen sie in der Thoughtworks Mingle-Anwendung unter Verwendung ihrer Azure Active Directory-Benutzernamen bereitgestellt werden. Im Fall von Thoughtworks Mingle ist die Bereitstellung eine manuelle Aufgabe.
 
@@ -196,7 +196,7 @@ Damit sich Azure AD-Benutzer anmelden können, müssen sie in der Thoughtworks M
 
 2. Klicken Sie auf **Profile**.
    
-    ![Ihr erstes Projekt](./media/thoughtworks-mingle-tutorial/ic785160.png "Ihr erstes Projekt")
+    ![Ihr erstes Projekt](./media/thoughtworks-mingle-tutorial/ic785160.png &quot;Ihr erstes Projekt")
 
 3. Klicken Sie auf die Registerkarte **Admin** und dann auf **Users**.
    

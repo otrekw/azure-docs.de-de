@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: tutorial
 ms.date: 03/01/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 11d72847209a2e706d4aa32d38af1b2c8af3dfa0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 44c053eac2215354fbd43e4c0068f02419010a85
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313996"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131853"
 ---
 # <a name="tutorial-create-your-project"></a>Tutorial: Erstellen Ihres Projekts
 
@@ -27,7 +27,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie benötigen ein gültiges [Azure Active Directory-Konto](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Geschäfts-, Schul- oder Unikonto).
+- Sie benötigen ein gültiges [Azure Active Directory-Konto](../active-directory/fundamentals/active-directory-whatis.md) (Geschäfts-, Schul- oder Unikonto).
 - Sie benötigen ein verifiziertes MPN-Konto (Microsoft Partner Network). Falls Sie kein MPN-Konto haben, müssen Sie zunächst dem [Partnernetzwerk beitreten](https://partner.microsoft.com/).
 
 ## <a name="signing-into-the-azure-certified-device-portal"></a>Anmelden beim Azure Certified Device-Portal

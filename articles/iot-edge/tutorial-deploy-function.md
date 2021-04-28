@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 693c181f8a4a6db3b8b163f4b4d3350a3730b618
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 30abc4a5a1431800cef2bcbda6f5eeedf9a216a3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221646"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874637"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module
 
@@ -43,7 +43,7 @@ Die Azure-Funktion, die Sie in diesem Tutorial erstellen, filtert die von Ihrem 
 Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial durchgearbeitet haben, um Ihre Entwicklungsumgebung für die Entwicklung von Linux-Containern einzurichten: [Tutorial: Entwickeln von IoT Edge-Modulen für Linux-Geräte](tutorial-develop-for-linux.md). Nach Abschluss dieses Tutorials sollten Sie die folgenden Voraussetzungen eingerichtet haben:
 
 * Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“.
-* Ein Gerät, auf dem Azure IoT Edge mit Linux Containern ausgeführt wird. Mithilfe der Schnellstarts können Sie ein [Linux-Gerät](quickstart-linux.md) oder ein [Windows-Gerät](quickstart.md) einrichten.
+* Ein Gerät, auf dem Azure IoT Edge mit Linux-Containern läuft. Mithilfe der Schnellstarts können Sie ein [Linux-Gerät](quickstart-linux.md) oder ein [Windows-Gerät](quickstart.md) einrichten.
 * Eine Containerregistrierung wie [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/), der mit den [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) konfiguriert wurde.
 * [Docker CE](https://docs.docker.com/install/), das zur Ausführung von Linux-Containern konfiguriert wurde.
@@ -51,7 +51,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial d
 Um ein IoT Edge-Modul mit Azure Functions zu entwickeln, installieren Sie die folgenden zusätzlichen Voraussetzungen auf Ihrem Entwicklungscomputer:
 
 * [Erweiterung C# for Visual Studio Code mit Unterstützung von OmniSharp](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)
 
 ## <a name="create-a-function-project"></a>Erstellen eines Funktionsprojekts
 

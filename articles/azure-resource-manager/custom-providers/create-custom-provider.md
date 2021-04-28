@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 915856e3f9875c0a3318bc19138eaae8742bf72f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779235"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871739"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Schnellstart: Erstellen eines benutzerdefinierten Anbieters und Bereitstellen von benutzerdefinierten Ressourcen
 
@@ -265,7 +265,7 @@ Sie erhalten die folgende Antwort:
 
 ## <a name="custom-resource-provider-commands"></a>Befehle für benutzerdefinierte Ressourcenanbieter
 
-Verwenden Sie die [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider)-Befehle, um mit Ihrem benutzerdefinierten Ressourcenanbieter zu arbeiten.
+Verwenden Sie die [custom-providers](/cli/azure/custom-providers/resource-provider)-Befehle, um mit Ihrem benutzerdefinierten Ressourcenanbieter zu arbeiten.
 
 ### <a name="list-custom-resource-providers"></a>Auflisten benutzerdefinierter Ressourcenanbieter
 

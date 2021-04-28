@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 4274596f7d53488a2ca5d0e0d3ab3021531907df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9255e10743182c55308fa9a07e9dc8fa08b6bbb4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97674090"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Tutorial: Azure Active Directory-Integration mit Beeline
 
@@ -110,9 +110,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Beeline
     ```
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den Beeline-Client](https://www.beeline.com/support-beeline/). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den Beeline-Client](https://www.beeline.com/contact-support/). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die Beeline-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Wenden Sie sich zunächst an das [Beeline-Supportteam](https://www.beeline.com/support-beeline/), um die korrekte Benutzer-ID zu ermitteln, die in der Anwendung zugeordnet wird. Halten Sie sich zudem in Bezug auf das Attribut, das für diese Zuordnung verwendet werden soll, an die Anweisungen des [Beeline-Supportteams](https://www.beeline.com/support-beeline/). Sie können den Wert dieses Attributs auf der Registerkarte **Benutzerattribute** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Hier haben wir dem Anspruch **Benutzer-ID** das Attribut **userprincipalname** zugeordnet, das eine eindeutige Benutzer-ID bereitstellt. Diese wird in jeder erfolgreichen SAML-Antwort an die Beeline-Anwendung gesendet.
+5. Die Beeline-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Wenden Sie sich zunächst an das [Beeline-Supportteam](https://www.beeline.com/contact-support/), um die korrekte Benutzer-ID zu ermitteln, die in der Anwendung zugeordnet wird. Halten Sie sich zudem in Bezug auf das Attribut, das für diese Zuordnung verwendet werden soll, an die Anweisungen des [Beeline-Supportteams](https://www.beeline.com/contact-support/). Sie können den Wert dieses Attributs auf der Registerkarte **Benutzerattribute** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Hier haben wir dem Anspruch **Benutzer-ID** das Attribut **userprincipalname** zugeordnet, das eine eindeutige Benutzer-ID bereitstellt. Diese wird in jeder erfolgreichen SAML-Antwort an die Beeline-Anwendung gesendet.
 
     ![image](common/edit-attribute.png)
 
@@ -127,7 +127,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Beeline
 
 ### <a name="configure-beeline-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Beeline
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Beeline** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierte URL für den Benutzerzugriff aus dem Azure-Portal an das [Supportteam von Beeline](https://www.beeline.com/support-beeline/) senden. Das Supportteam benötigt die Metadaten und die URL für den Benutzerzugriff, damit die SAML-SSO-Verbindung auf beiden Seiten ordnungsgemäß konfiguriert werden kann.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Beeline** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierte URL für den Benutzerzugriff aus dem Azure-Portal an das [Supportteam von Beeline](https://www.beeline.com/contact-support/) senden. Das Supportteam benötigt die Metadaten und die URL für den Benutzerzugriff, damit die SAML-SSO-Verbindung auf beiden Seiten ordnungsgemäß konfiguriert werden kann.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -182,7 +182,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-beeline-test-user"></a>Erstellen eines Beeline-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Beeline einen Benutzer mit dem Namen Britta Simon. In der Beeline-Anwendung müssen alle Benutzer bereitgestellt werden, bevor einmaliges Anmelden verwendet werden kann. Wenden Sie sich daher an das [Supportteam von Beeline](https://www.beeline.com/support-beeline/), um sämtliche Benutzer in der Anwendung bereitzustellen.
+In diesem Abschnitt erstellen Sie in Beeline einen Benutzer mit dem Namen Britta Simon. In der Beeline-Anwendung müssen alle Benutzer bereitgestellt werden, bevor einmaliges Anmelden verwendet werden kann. Wenden Sie sich daher an das [Supportteam von Beeline](https://www.beeline.com/contact-support/), um sämtliche Benutzer in der Anwendung bereitzustellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

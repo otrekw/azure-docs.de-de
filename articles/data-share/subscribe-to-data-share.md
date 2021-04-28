@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: ccfda4975b6453ed67edc2640520bc0a76df5709
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d063a0870616b5b977df18c56d9d66515b03d0a5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644881"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870857"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Tutorial: Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share  
 
@@ -106,7 +106,7 @@ Bereiten Sie zunächst Ihre Umgebung für die Azure-Befehlszeilenschnittstelle v
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Führen Sie den Befehl [az datashare consumer invitation list](/cli/azure/ext/datashare/datashare/consumer/invitation#ext_datashare_az_datashare_consumer_invitation_list) aus, um Ihre aktuellen Einladungen anzuzeigen:
+Führen Sie den Befehl [az datashare consumer invitation list](/cli/azure/datashare/consumer/invitation#az_datashare_consumer_invitation_list) aus, um Ihre aktuellen Einladungen anzuzeigen:
 
 ```azurecli
 az datashare consumer invitation list --subscription 11111111-1111-1111-1111-111111111111
@@ -140,7 +140,7 @@ Kopieren Sie Ihre Einladungs-ID. Sie wird im nächsten Abschnitt benötigt.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie den Befehl [az datashare consumer share-subscription create](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_create), um die Data Share-Ressource zu erstellen.
+Verwenden Sie den Befehl [az datashare consumer share-subscription create](/cli/azure/datashare/consumer/share-subscription#az_datashare_consumer_share_subscription_create), um die Data Share-Ressource zu erstellen.
 
 ```azurecli
 az datashare consumer share-subscription create --resource-group share-rg \
@@ -175,7 +175,7 @@ Führen Sie die folgenden Schritte aus, um zu konfigurieren, wo Sie Daten empfan
 
 Verwenden Sie die folgenden Befehle, um zu konfigurieren, wo Sie Daten empfangen möchten.
 
-1. Führen Sie den Befehl [az datashare consumer share-subscription list-source-dataset](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_list_source_dataset) aus, um die Dataset-ID abzurufen:
+1. Führen Sie den Befehl [az datashare consumer share-subscription list-source-dataset](/cli/azure/datashare/consumer/share-subscription#az_datashare_consumer_share_subscription_list_source_dataset) aus, um die Dataset-ID abzurufen:
 
    ```azurecli
    az datashare consumer share-subscription list-source-dataset \
@@ -221,7 +221,7 @@ Verwenden Sie die folgenden Befehle, um zu konfigurieren, wo Sie Daten empfangen
      \"storage_account_name\":\"datashareconsumersa\",\"kind\":\"BlobFolder\",\"prefix\":\"consumer\"}'
    ```
 
-1. Verwenden Sie den Befehl [az datashare consumer dataset-mapping create](/cli/azure/ext/datashare/datashare/consumer/dataset-mapping#ext_datashare_az_datashare_consumer_dataset_mapping_create), um die Datasetzuordnung zu erstellen:
+1. Verwenden Sie den Befehl [az datashare consumer dataset-mapping create](/cli/azure/datashare/consumer/dataset-mapping#az_datashare_consumer_dataset_mapping_create), um die Datasetzuordnung zu erstellen:
 
    ```azurecli
    az datashare consumer dataset-mapping create --resource-group "share-rg" \
@@ -230,7 +230,7 @@ Verwenden Sie die folgenden Befehle, um zu konfigurieren, wo Sie Daten empfangen
      --subscription 11111111-1111-1111-1111-111111111111
    ```
 
-1. Führen Sie den Befehl [az datashare consumer share-subscription synchronization start](/cli/azure/ext/datashare/datashare/consumer/share-subscription/synchronization#ext_datashare_az_datashare_consumer_share_subscription_synchronization_start) aus, um die Datasetsynchronisierung zu starten.
+1. Führen Sie den Befehl [az datashare consumer share-subscription synchronization start](/cli/azure/datashare/consumer/share-subscription/synchronization#az_datashare_consumer_share_subscription_synchronization_start) aus, um die Datasetsynchronisierung zu starten.
 
    ```azurecli
    az datashare consumer share-subscription synchronization start \
@@ -239,7 +239,7 @@ Verwenden Sie die folgenden Befehle, um zu konfigurieren, wo Sie Daten empfangen
      --subscription 11111111-1111-1111-1111-111111111111
    ```
 
-   Führen Sie den Befehl [az datashare consumer share-subscription synchronization list](/cli/azure/ext/datashare/datashare/consumer/share-subscription/synchronization#ext_datashare_az_datashare_consumer_share_subscription_synchronization_list) aus, um eine Liste Ihrer Synchronisierungen anzuzeigen:
+   Führen Sie den Befehl [az datashare consumer share-subscription synchronization list](/cli/azure/datashare/consumer/share-subscription/synchronization#az_datashare_consumer_share_subscription_synchronization_list) aus, um eine Liste Ihrer Synchronisierungen anzuzeigen:
 
    ```azurecli
    az datashare consumer share-subscription synchronization list \
@@ -248,7 +248,7 @@ Verwenden Sie die folgenden Befehle, um zu konfigurieren, wo Sie Daten empfangen
      --subscription 11111111-1111-1111-1111-111111111111
    ```
 
-   Verwenden Sie den Befehl [az datashare consumer share-subscription list-source-share-synchronization-setting](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_list_source_share_synchronization_setting), um die für Ihre Freigabe festgelegten Synchronisierungseinstellungen anzuzeigen.
+   Verwenden Sie den Befehl [az datashare consumer share-subscription list-source-share-synchronization-setting](/cli/azure/datashare/consumer/share-subscription#az_datashare_consumer_share_subscription_list_source_share_synchronization_setting), um die für Ihre Freigabe festgelegten Synchronisierungseinstellungen anzuzeigen.
 
    ```azurecli
    az datashare consumer share-subscription list-source-share-synchronization-setting \
@@ -274,7 +274,7 @@ Diese Schritte sind nur für die momentaufnahmebasierte Freigabe relevant.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Führen Sie den Befehl [az datashare consumer trigger create](/cli/azure/ext/datashare/datashare/consumer/trigger#ext_datashare_az_datashare_consumer_trigger_create) aus, um eine Momentaufnahme auszulösen:
+Führen Sie den Befehl [az datashare consumer trigger create](/cli/azure/datashare/consumer/trigger#az_datashare_consumer_trigger_create) aus, um eine Momentaufnahme auszulösen:
 
 ```azurecli
 az datashare consumer trigger create --resource-group "share-rg" \
