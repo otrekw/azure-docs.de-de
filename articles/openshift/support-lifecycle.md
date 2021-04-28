@@ -5,13 +5,13 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
-ms.date: 08/11/2020
-ms.openlocfilehash: fca01c77a1ff47cbeee167eb408ed9f29a1307bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/06/2021
+ms.openlocfilehash: 35cbaf2b6d2618d116d2dd322ae5ac28f578cecc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634327"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303541"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Supportlebenszyklus für Azure Red Hat OpenShift 4
 
@@ -33,7 +33,7 @@ Für jede Zahl in der Version gilt, dass allgemeine Kompatibilität mit der vorh
 * **Nebenversion**: Wird etwa alle drei Monate veröffentlicht. Nebenversionsupgrades können Zusatzfunktionen, Erweiterungen, Veraltungen, Entfernungen, Fehlerbehebungen, Sicherheitserweiterungen und andere Verbesserungen enthalten.
 * **Patches**: Werden normalerweise wöchentlich oder nach Bedarf veröffentlicht. Patchversionsupgrades können Fehlerbehebungen, Sicherheitserweiterungen und andere Verbesserungen enthalten.
 
-Kunden sollten nach Möglichkeit immer das neueste Nebenrelease der aktuell verwendeten Hauptversion nutzen. Wenn Ihr Produktionscluster beispielsweise die Version 4.4 verwendet und 4.5 die neueste allgemein verfügbare Nebenversion für die 4er Reihe ist, sollten Sie so bald wie möglich ein Upgrade auf Version 4.5 durchführen.
+Kunden sollten nach Möglichkeit immer das neueste Nebenrelease der aktuell verwendeten Hauptversion nutzen. Wenn Ihr Produktionscluster beispielsweise die Version 4.4 verwendet und 4.5 die neueste allgemein verfügbare Nebenversion für die 4er Reihe ist, sollten Sie so bald wie möglich ein Upgrade auf Version 4.5 durchführen. 
 
 ### <a name="upgrade-channels"></a>Upgradekanäle
 
@@ -106,12 +106,16 @@ Im folgenden Leitfaden finden Sie den [bisherigen Releaseverlauf für Red Hat Op
 
 **Was geschieht, wenn ein Benutzer ein Upgrade eines OpenShift-Clusters mit einer Nebenversion durchführt, die nicht unterstützt wird?**
 
-Wenn Sie die Version N-2 oder älter verwenden, wird diese Version nicht mehr unterstützt, und Sie werden zu einem Upgrade aufgefordert. Wenn das Upgrade von Version N-2 auf N-1 erfolgreich ist, greifen die Supportrichtlinien wieder, und die Version wird wieder unterstützt. Beispiel:
+Wenn Sie die Version N-2 oder älter verwenden, wird diese Version nicht mehr unterstützt, und Sie werden zu einem Upgrade aufgefordert, damit der Support weiterhin besteht. Wenn das Upgrade von Version N-2 auf N-1 erfolgreich ist, greift der Support wieder. Das Upgrade von Version N-3 oder früher auf eine unterstützte Version kann schwierig und in einigen Fällen gar nicht möglich sein. Es wird empfohlen, ihren Cluster mit neuesten OpenShift-Version zu betreiben, um potenzielle Upgradeprobleme zu vermeiden. Beispiel:
 * Wenn die älteste unterstützte Azure Red Hat OpenShift-Version 4.4.z ist und Sie 4.3.z oder eine ältere Version verwenden, steht Ihnen kein Support zur Verfügung.
-* Wenn das Upgrade von 4.3.z auf 4.4.z oder höher erfolgreich ist, befinden Sie sich wieder im Rahmen unserer Supportrichtlinien.
+* Wenn das Upgrade von 4.3.z auf 4.4.z oder höher erfolgreich ist, befinden Sie sich wieder im Rahmen unserer Supportrichtlinien. 
 
 Das Zurücksetzen des Clusters auf eine frühere Version oder ein Rollback wird nicht unterstützt. Nur das Upgrade auf eine neuere Version wird unterstützt.
 
 **Was bedeutet „nicht unterstützt“?**
 
-„Nicht unterstützt“ bedeutet, dass die verwendete Version nicht in der Liste der unterstützten Versionen enthalten ist. Wenn Sie Support anfordern, werden Sie möglicherweise aufgefordert, für den Cluster ein Upgrade auf eine unterstützte Version vorzunehmen, sofern Sie sich nicht mehr innerhalb des 30-Tage-Zeitraums befinden, der beginnt, nachdem eine Version als veraltet gekennzeichnet wurde. Darüber hinaus übernimmt Azure Red Hat OpenShift nach Ablauf des 30-Tage-Zeitraums keine Laufzeit- oder SLA-Garantien für Cluster, die nicht in der Liste der unterstützten Versionen enthalten sind.
+Wenn ihr ARO-Cluster eine OpenShift-Version ausführt, die nicht in der Liste der unterstützten Versionen enthalten ist oder eine [nicht unterstützte Clusterkonfiguration](https://docs.microsoft.com/azure/openshift/support-policies-v4) verwendet, befindet sich Ihr Cluster „außerhalb des Supports“. Infolgedessen:
+- Wenn Sie ein Supportticket für Ihren Cluster öffnen, werden Sie aufgefordert, den Cluster auf eine unterstützte Version zu aktualisieren. bevor Sie Support erhalten, es sei denn, Sie befinden sich innerhalb der 30-tägigen Toleranzperiode nach Ende des Versionssupports. 
+- Alle Laufzeit- oder SLA-Garantien für Cluster außerhalb des Supports werden aufgehoben.
+- Cluster außerhalb des Supports werden nur nach bestem Bemühen gepatcht.
+- Cluster außerhalb des Supports werden nicht überwacht.

@@ -6,23 +6,27 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 21dbab6c8d4fb12fe79434a6994dd7f5b8a49190
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502707"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366554"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Einrichten des MSIX-Features zum Anfügen von Apps mit dem Azure-Portal
 
 In diesem Artikel wird erläutert, wie Sie das MSIX-Feature zum Anfügen von Apps in einer Windows Virtual Desktop-Umgebung einrichten.
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
+
+>[!IMPORTANT]
+>Bevor Sie beginnen, sollten Sie [dieses Formular](https://aka.ms/enablemsixappattach) ausfüllen und übermitteln, um das MSIX-Feature zum Anfügen von Apps in Ihrem Abonnement zu aktivieren. Wenn Ihre Anforderung noch nicht genehmigt wurde, funktioniert das MSIX-Feature zum Anfügen von Apps nicht. Die Genehmigung von Anforderungen kann an Werktagen bis zu 24 Stunden dauern. Sie erhalten eine E-Mail, wenn Ihre Anforderung akzeptiert und abgeschlossen wurde.
 
 Folgendes benötigen Sie, um das MSIX-Feature zum Anfügen von Apps zu konfigurieren:
 
 - Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Windows Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Windows Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
 - Ein Windows Virtual Desktop-Hostpool mit mindestens einem aktiven Sitzungshost.
+- Dieser Hostpool muss sich in der Überprüfungsumgebung befinden. 
 - Das MSIX-Pakettool.
 - Eine MSIX-gepackte Anwendung, die in ein MSIX-Image erweitert wurde, das in eine Dateifreigabe hochgeladen wird.
 - Eine Dateifreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.

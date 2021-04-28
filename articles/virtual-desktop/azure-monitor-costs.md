@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 26262f83e14602d6ea93f96ec47630ef870c357d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5bd89a734a20c913bacca1f5531aa76d76418c80
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309304"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448218"
 ---
 # <a name="estimate-azure-monitor-costs"></a>Azure-Monitor-Kosten abschätzen
 
@@ -35,7 +35,7 @@ Die vordefinierten Datensätze für Azure Monitor für Windows Virtual Desktop u
 - Windows-Ereignisprotokolle von den Sitzungshosts
 - Windows Virtual Desktop Diagnose aus der Service-Infrastruktur
 
-Die Kosten für die Aufnahme und Speicherung von Daten hängen von der Größe, dem Zustand und der Nutzung Ihrer Umgebung ab. Die Beispielschätzungen, die wir in diesem Artikel verwenden, um die zu erwartenden Kostenspannen zu berechnen, basieren auf gesunden virtuellen Maschinen mit geringem Stromverbrauch, basierend auf unseren [Richtlinien für die Dimensionierung virtueller Maschinen](/windows-server/remote/remote-desktop-services/virtual-machine-recs), um eine Spanne der zu erwartenden Kosten für Datenaufnahme und Speicherung zu berechnen.
+Die Kosten für die Aufnahme und Speicherung von Daten hängen von der Größe, dem Zustand und der Nutzung Ihrer Umgebung ab. Die Beispielschätzungen, die wir in diesem Artikel verwenden, um die zu erwartenden Kostenspannen zu berechnen, basieren auf gesunden virtuellen Maschinen mit geringem Stromverbrauch, basierend auf unseren [Richtlinien für die Dimensionierung virtueller Maschinen](/remote/remote-desktop-services/virtual-machine-recs), um eine Spanne der zu erwartenden Kosten für Datenaufnahme und Speicherung zu berechnen.
 
 Die VM für die leichte Nutzung, die wir in unserem Beispiel verwenden, umfasst die folgenden Komponenten:
 
@@ -159,7 +159,7 @@ Abschließend werden die Gesamtkosten geschätzt. In diesem Beispiel nehmen wir 
 | Datenquelle        | Größenschätzung pro Tag (in Megabyte)   |
 |-------------------------------------|------------------------------------------|
 | Leistungsindikatoren   | 90-130 |
-| Ereignisse    | 2 - 15 |
+| Events    | 2 - 15 |
 | Windows Virtual Desktop Diagnostik | \< 1 |
 
 In diesem Beispiel liegt die gesamte Datenaufnahme für Azure Monitor for Windows Virtual Desktop zwischen 92 und 145 Megabyte pro VM pro Tag. Mit anderen Worten: Alle 31 Tage nimmt jede VM etwa 3 bis 5 Gigabyte an Daten auf.

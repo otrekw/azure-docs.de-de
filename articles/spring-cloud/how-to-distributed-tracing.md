@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f55a82eeddc8d4515b0f1333b615244976975097
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6bcb020b14952541c673592c1040fca211ed4edf
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877295"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011850"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud
 
@@ -82,7 +82,7 @@ Fügen Sie der Konfigurationsquelle die folgenden Einstellungen hinzu, die bei d
 2. Wenn Sie Ablaufverfolgungsspannen anzeigen möchten, die zwischen dem Eureka-Server, dem Konfigurationsserver und den Benutzer-Apps gesendet werden, legen Sie `management.tracing.egressIgnorePattern` auf „/api/v2/spans|/v2/apps/. */permissions|/eureka/.* |/oauth/.*“ fest.
 
 Beispielsweise enthält *appsettings.json* die folgenden Eigenschaften:
- 
+
 ```json
 "management": {
     "tracing": {
@@ -119,25 +119,58 @@ Um diese Prozeduren zu befolgen, benötigen Sie einen Azure Spring Cloud-Dienst,
 
 1. Überspringen Sie diesen Schritt, wenn Sie die [Anleitung zum Vorbereiten einer Azure Spring Cloud-Anwendung](how-to-prepare-app-deployment.md) befolgt haben. Wechseln Sie andernfalls zu Ihrer lokalen Entwicklungsumgebung, und bearbeiten Sie die Datei „pom.xml“, um die folgende Spring Cloud Sleuth-Abhängigkeit einzufügen:
 
-    ```xml
-    <dependencyManagement>
-        <dependencies>
+    * Spring Boot-Version < 2.4.x.
+
+      ```xml
+      <dependencyManagement>
+          <dependencies>
+              <dependency>
+                  <groupId>org.springframework.cloud</groupId>
+                  <artifactId>spring-cloud-sleuth</artifactId>
+                  <version>${spring-cloud-sleuth.version}</version>
+                  <type>pom</type>
+                  <scope>import</scope>
+              </dependency>
+          </dependencies>
+      </dependencyManagement>
+      <dependencies>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-sleuth</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-zipkin</artifactId>
+          </dependency>
+      </dependencies>
+      ```
+
+    * Spring Boot-Version >= 2.4.x.
+
+      ```xml
+      <dependencyManagement>
+          <dependencies>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-sleuth</artifactId>
-                <version>${spring-cloud-sleuth.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-    </dependencies>
-    ```
+                  <groupId>org.springframework.cloud</groupId>
+                  <artifactId>spring-cloud-sleuth</artifactId>
+                  <version>${spring-cloud-sleuth.version}</version>
+                  <type>pom</type>
+                  <scope>import</scope>
+              </dependency>
+          </dependencies>
+      </dependencyManagement>
+      <dependencies>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-sleuth</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+           </dependency>
+      </dependencies>
+      ```
+
 
 1. Erstellen Sie den Azure Spring Cloud-Dienst, und stellen Sie ihn erneut bereit, damit diese Änderungen übernommen werden.
 

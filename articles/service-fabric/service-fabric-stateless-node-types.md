@@ -3,16 +3,16 @@ title: Ausschließliches Bereitstellen von zustandslosen Knotentypen in einem Se
 description: Erfahren Sie, wie Sie zustandslose Knotentypen in Azure Service Fabric-Clustern erstellen und bereitstellen.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 68c617b6e9345910bfd913e61e227a8e6c401bbc
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563775"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576039"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Bereitstellen eines Azure Service Fabric-Clusters mit ausschließlich zustandslosen Knotentypen (Vorschau)
+# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>Bereitstellen eines Azure Service Fabric-Clusters mit ausschließlich zustandslosen Knotentypen
 Für Service Fabric-Knotentypen gilt die Annahme, dass zu einem bestimmten Zeitpunkt ggf. zustandsbehaftete Dienste auf den Knoten platziert werden. Zustandslose Knotentypen lockern diese Annahme für einen Knotentyp und ermöglichen so die Nutzung anderer Funktionen wie schnellere Aufskalierungsvorgänge, Unterstützung für automatische Betriebssystemupgrades bei Bronze-Dauerhaftigkeit und horizontales Skalieren auf mehr als 100 Knoten in einer einzigen VM-Skalierungsgruppe.
 
 * Primäre Knotentypen können nicht als zustandslos konfiguriert werden.
@@ -23,7 +23,7 @@ Für Service Fabric-Knotentypen gilt die Annahme, dass zu einem bestimmten Zeitp
 Es sind Beispielvorlagen verfügbar: [Vorlage für zustandslose Service Fabric-Knotentypen](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Aktivieren von zustandslosen Knotentypen in einem Service Fabric-Cluster
-Legen Sie die **isStateless**-Eigenschaft auf TRUE fest, um mindestens einen Knotentyp in einer Clusterressource als zustandslos festzulegen. Wenn Sie einen Service Fabric-Cluster mit zustandslosen Knotentypen bereitstellen, denken Sie daran, mindestens einen primären Knotentyp in der Clusterressource zu verwenden.
+Legen Sie die **isStateless**-Eigenschaft auf **TRUE** fest, um mindestens einen Knotentyp in einer Clusterressource als zustandslos festzulegen. Wenn Sie einen Service Fabric-Cluster mit zustandslosen Knotentypen bereitstellen, denken Sie daran, mindestens einen primären Knotentyp in der Clusterressource zu verwenden.
 
 * Die apiVersion der Service Fabric-Clusterressource sollte „2020-12-01-preview“ oder höher lauten.
 
@@ -44,7 +44,7 @@ Legen Sie die **isStateless**-Eigenschaft auf TRUE fest, um mindestens einen Kno
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateless": false,
+        "isStateless": false, // Primary Node Types cannot be stateless
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -72,16 +72,15 @@ Legen Sie die **isStateless**-Eigenschaft auf TRUE fest, um mindestens einen Kno
 Zum Aktivieren von zustandslosen Knotentypen sollten Sie Folgendes für die zugrunde liegende VM-Skalierungsgruppenressource konfigurieren:
 
 * Den Wert der **singlePlacementGroup**-Eigenschaft, der auf **false** festgelegt werden muss, wenn eine Skalierung auf mehr als 100 VMs erforderlich ist.
-* Der **Modus** **upgradePolicy** der Skalierungsgruppe sollte auf **Parallel** festgelegt werden.
+* Den **upgradeMode** der Skalierungsgruppe, der auf **Rolling** (Parallel) festgelegt werden sollte.
 * Der parallele Upgrademodus erfordert die konfigurierte Anwendungsintegritätserweiterung oder Integritätstests. Konfigurieren Sie den Integritätstest mit der Standardkonfiguration für zustandslose Knotentypen, wie unten vorgeschlagen. Nach der Bereitstellung von Anwendungen für den Knotentyp können Integritätstest-/Integritätserweiterungsports geändert werden, um die Anwendungsintegrität zu überwachen.
 
 >[!NOTE]
-> Die Standardanzahl der Fehlerdomänen für die Plattform wir auf 5 aktualisiert, wenn ein zustandsloser Knotentyp von einer VM-Skalierungsgruppe gesichert wird, die sich über mehrere Zonen erstreckt. Weitere Informationen finden Sie in dieser [Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) .
-> 
-> **platformFaultDomainCount:5**
+> Bei Verwendung von automatischer Skalierung mit zustandslosen Knotentypen wird der Knotenzustand nach dem Herunterskalieren nicht automatisch bereinigt. Um den Knotenzustand ausgefallener Knoten während der automatischen Skalierung zu bereinigen, empfiehlt sich die Verwendung der [Service Fabric-Hilfsanwendung für die Autoskalierung](https://github.com/Azure/service-fabric-autoscale-helper).
+
 ```json
 {
-    "apiVersion": "2018-10-01",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.Compute/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType1Name')]",
     "location": "[parameters('computeLocation')]",
@@ -92,8 +91,9 @@ Zum Aktivieren von zustandslosen Knotentypen sollten Sie Folgendes für die zugr
           "automaticOSUpgradePolicy": {
             "enableAutomaticOSUpgrade": true
           }
-        }
-    }
+        },
+        "platformFaultDomainCount": 5
+    },
     "virtualMachineProfile": {
     "extensionProfile": {
     "extensions": [
@@ -136,6 +136,18 @@ Zum Aktivieren von zustandslosen Knotentypen sollten Sie Folgendes für die zugr
     ]
 }
 ```
+
+## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>Konfigurieren zustandsloser Knotentypen mit mehreren Verfügbarkeitszonen
+Zur Konfiguration von zustandslosen Knotentypen, die sich über mehrere Verfügbarkeitszonen erstrecken, befolgen Sie die [hier](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set) verfügbare Dokumentation zusammen mit wenigen Änderungen wie folgt:
+
+* Festlegen von **singlePlacementGroup**: **FALSE**, wenn mehrere Platzierungsgruppen aktiviert werden müssen.
+* Festlegen von **upgradeMode**: **Rolling**, und fügen Sie Anwendungszustandserweiterungen/Integritätstests wie oben erwähnt hinzu.
+* Festlegen von **platformFaultDomainCount**: **5** für VM-Skalierungsgruppe.
+
+>[!NOTE]
+> Unabhängig vom VMSSZonalUpgradeMode, der im Cluster konfiguriert ist, erfolgen Aktualisierungen von VM-Skalierungsgruppen immer sequenziell nacheinander für den zustandslosen Knotentyp, der sich über mehrere Zonen erstreckt, da der parallele Upgrademodus verwendet wird.
+
+Weitere Informationen finden Sie in der [Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) zum Konfigurieren zustandsloser Knotentypen mit mehreren Verfügbarkeitszonen.
 
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 ### <a name="public-ip-and-load-balancer-resource"></a>Öffentliche IP- und Load Balancer-Ressource
@@ -184,7 +196,7 @@ Um die Skalierung auf mehr als 100 VMs für eine VM-Skalierungsgruppenressource
 ```
 
 >[!NOTE]
-> Es ist nicht möglich, eine direkte Änderung der SKU an den öffentlichen IP- und Load Balancer-Ressourcen vorzunehmen. Informationen zum Migrieren von vorhandenen Ressourcen mit Basic-SKU finden Sie im Abschnitt zur Migration in diesem Artikel.
+> Es ist nicht möglich, eine direkte Änderung der SKU an den öffentlichen IP- und Load Balancer-Ressourcen vorzunehmen. 
 
 ### <a name="virtual-machine-scale-set-nat-rules"></a>NAT-Regeln für VM-Skalierungsgruppen
 Die NAT-Regeln für eingehenden Datenverkehr des Lastenausgleichs müssen mit den NAT-Pools aus der VM-Skalierungsgruppe übereinstimmen. Jede VM-Skalierungsgruppe muss über einen eindeutigen NAT-Pool für eingehenden Datenverkehr verfügen.
@@ -243,7 +255,7 @@ Load Balancer Standard und Standard Public IP führen im Vergleich zur Verwendun
 
 
 
-### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migration zur Verwendung von zustandslosen Knotentypen aus einem Cluster mit einem Basic-SKU-Load Balancer und einer Basic-SKU-IP
+## <a name="migrate-to-using-stateless-node-types-in-a-cluster"></a>Migrieren zur Verwendung zustandsloser Knotentypen in einem Cluster
 Für alle Migrationsszenarien muss ein neuer, zustandsloser Knotentyp hinzugefügt werden. Der vorhandene Knotentyp kann nicht als ausschließlich zustandslos migriert werden.
 
 Sie müssen zunächst eine völlig neue Load Balancer- und IP-Ressource mit der Standard-SKU erstellen, um einen Cluster zu migrieren, der einen Load Balancer und eine IP mit einer Basic-SKU verwendet hat. Es ist nicht möglich, diese Ressourcen direkt zu aktualisieren.
@@ -256,9 +268,6 @@ Damit Sie beginnen können, müssen Sie die neuen Ressourcen zu Ihrer bestehende
 * Eine Netzwerksicherheitsgruppe (NSG), auf die das Subnetz verweist, in dem Sie Ihren virtuellen Computer bereitstellen.
 
 Nachdem die Bereitstellung der Ressourcen abgeschlossen wurde, können Sie beginnen, die Knoten im Knotentyp zu deaktivieren, den Sie aus dem ursprünglichen Cluster entfernen möchten.
-
->[!NOTE]
-> Bei Verwendung der automatischen Skalierung mit zustandslosen Knotentypen mit Bronze-Dauerhaftigkeit wird der Knotenzustand nach dem Herunterskalieren nicht automatisch bereinigt. Um den Knotenzustand ausgefallener Knoten während der automatischen Skalierung zu bereinigen, empfiehlt sich die Verwendung der [Service Fabric-Hilfsanwendung für die Autoskalierung](https://github.com/Azure/service-fabric-autoscale-helper).
 
 ## <a name="next-steps"></a>Nächste Schritte 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

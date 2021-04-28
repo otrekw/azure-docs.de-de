@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a571d92dd9663c7d2d0a576b59e5cd2b3352cb76
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: ad1351b7c9a649a553ce54422b99a13c286437d6
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951013"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107294"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatisches Verwalten von Geräten in Azure Digital Twins mithilfe des Device Provisioning Service (DPS)
 
@@ -37,7 +37,7 @@ Auf Ihrem Computer muss [**Node.js**](https://nodejs.org/download) installiert s
 
 Die folgende Abbildung veranschaulicht die Architektur dieser Lösung mit Azure Digital Twins und dem Device Provisioning Service. Sie zeigt den Ablauf für die Bereitstellung und Außerbetriebnahme von Geräten.
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Diagramm eines Geräts und mehrerer Azure-Dienste in einem End-to-End-Szenario Daten werden zwischen einem Thermostat und DPS übermittelt. Außerdem werden Daten über eine Azure-Funktion mit der Bezeichnung „Zuweisung“ aus DPS zu IoT Hub und zu Azure Digital Twins übertragen. Daten aus einer manuellen Aktion zum Löschen des Geräts durchlaufen IoT Hub > Event Hubs > Azure Functions > Azure-Digital Twins." lightbox="media/how-to-provision-using-dps/flows.png":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Abbildung eines Geräts und mehrerer Azure-Dienste in einem End-to-End-Szenario. Daten werden zwischen einem Thermostat und DPS übermittelt. Außerdem werden Daten über eine Azure-Funktion mit der Bezeichnung „Zuweisung“ aus DPS zu IoT Hub und zu Azure Digital Twins übertragen. Daten aus einer manuellen Aktion zum Löschen des Geräts durchlaufen IoT Hub > Event Hubs > Azure Functions > Azure-Digital Twins." lightbox="media/how-to-provision-using-dps/flows.png":::
 
 Dieser Artikel ist in zwei Abschnitte unterteilt:
 * [*Bereitstellen eines Geräts mithilfe des Device Provisioning Service*](#auto-provision-device-using-device-provisioning-service)
@@ -49,7 +49,7 @@ Ausführliche Erläuterungen zu den einzelnen Schritten in der Architektur finde
 
 In diesem Abschnitt fügen Sie den Device Provisioning Service an Azure Digital Twins an, um Geräte automatisch über den unten beschriebenen Pfad bereitzustellen. Dies ist ein Auszug aus der [oben dargestellten](#solution-architecture) vollständigen Architektur.
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Diagramm des Bereitstellungsflusses: Auszug aus dem Diagramm der Lösungsarchitektur mit nummerierten Abschnitten Daten werden zwischen einem Thermostat und DPS übermittelt (1 für Gerät > DPS und 5 für DPS > Gerät). Außerdem werden Daten über eine Azure-Funktion mit der Bezeichnung „Zuweisung“ (2) aus DPS zu IoT Hub (4) und zu Azure Digital Twins (3) übertragen." lightbox="media/how-to-provision-using-dps/provision.png":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Abbildung eines Bereitstellungsflusses: Auszug aus dem Lösungsarchitekturdiagramm mit nummerierten Abschnitten. Daten werden zwischen einem Thermostat und DPS übermittelt (1 für Gerät > DPS und 5 für DPS > Gerät). Außerdem werden Daten über eine Azure-Funktion mit der Bezeichnung „Zuweisung“ (2) aus DPS zu IoT Hub (4) und zu Azure Digital Twins (3) übertragen." lightbox="media/how-to-provision-using-dps/provision.png":::
 
 Beschreibung des Prozesses:
 1. Das Gerät kontaktiert den DPS-Endpunkt und übergibt Informationen, um seine Identität zu bestätigen.
@@ -116,7 +116,7 @@ Klicken Sie als Nächstes auf die Schaltfläche *Neue Funktion auswählen*, um d
 
 Speichern Sie die Informationen.                  
 
-:::image type="content" source="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png" alt-text="Screenshot: Fenster mit Informationen für die benutzerdefinierte Zuweisung von Registrierungsgruppen mit der Auswahl „Benutzerdefiniert (Azure-Funktion verwenden)“ und dem IoT-Hub-Namen in den Abschnitten „Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen“ und „Wählen Sie die IoT-Hubs aus, denen diese Gruppe zugewiesen werden kann“. Wählen Sie außerdem in den Dropdownlisten Ihr Abonnement und Ihre Funktions-App aus, und wählen Sie „DpsAdtAllocationFunc“ aus." lightbox="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png":::
+:::image type="content" source="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png" alt-text="Screenshot des Fensters „Details der Registrierungsgruppe“ für eine benutzerdefinierte Registrierungsgruppe mit Auswahl von „Benutzerdefiniert“ (Azure-Funktion verwenden) und dem Namen Ihres IoT-Hubs in den Abschnitten „Auswählen, wie Geräte Hubs zugewiesen werden sollen“ und „Auswählen der IoT-Hubs, denen diese Gruppe zugewiesen werden kann“. Wählen Sie außerdem Ihr Abonnement und die Funktions-App aus der Dropdownliste aus, und stellen Sie sicher, dass Sie DpsAdtAllocationFunc auswählen." lightbox="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png":::
 
 Nachdem Sie die Registrierung erstellt haben, wird später in diesem Artikel der **Primärschlüssel** für die Registrierung zum Konfigurieren des Gerätesimulators verwendet.
 
@@ -190,7 +190,7 @@ Sie sollten den Zwilling des Geräts in der Azure Digital Twins-Instanz sehen.
 
 In diesem Abschnitt fügen Sie IoT Hub-Lebenszyklusereignisse an Azure Digital Twins an, um Geräte automatisch über den folgenden Ablauf außer Betrieb zu nehmen. Dies ist ein Auszug aus der [oben dargestellten](#solution-architecture) vollständigen Architektur.
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Diagramm des Ablaufs für die Außerbetriebnahme: Auszug aus dem Diagramm der Lösungsarchitektur mit nummerierten Abschnitten Das Thermostat wird ohne Verbindungen mit Azure-Diensten im Diagramm angezeigt. Daten aus einer manuellen Aktion zum Löschen des Geräts durchlaufen IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure-Digital Twins (3)." lightbox="media/how-to-provision-using-dps/retire.png":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Abbildung des Ablaufs für die Außerbetriebnahme eines Geräts: Auszug aus dem Lösungsarchitekturdiagramm mit nummerierten Abschnitten. Der Thermostat wird ohne Verbindungen mit Azure-Diensten im Diagramm gezeigt. Daten aus einer manuellen Aktion zum Löschen des Geräts durchlaufen IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure-Digital Twins (3)." lightbox="media/how-to-provision-using-dps/retire.png":::
 
 Beschreibung des Prozesses:
 1. Ein externer oder manueller Prozess löst das Löschen eines Geräts in IoT Hub aus.
@@ -214,7 +214,7 @@ Als Nächstes müssen Sie eine [SAS-Richtlinie (Shared Access Signature)](../eve
 Gehen Sie dazu folgendermaßen vor:
 1. Navigieren Sie zu dem Event Hub, die Sie soeben im Azure-Portal erstellt haben, und wählen Sie in den Menüoptionen auf der linken Seite die Option **Freigegebene Zugriffsrichtlinien** aus.
 2. Wählen Sie **Hinzufügen** aus. Geben Sie im daraufhin geöffneten Fenster *SAS-Richtlinie hinzufügen* einen Richtliniennamen Ihrer Wahl ein, und aktivieren Sie das Kontrollkästchen *Lauschen*.
-3. Wählen Sie **Erstellen** aus.
+3. Klicken Sie auf **Erstellen**.
     
 :::image type="content" source="media/how-to-provision-using-dps/add-event-hub-sas-policy.png" alt-text="Screenshot des Azure-Portals zum Hinzufügen einer Event Hub-SAS-Richtlinie" lightbox="media/how-to-provision-using-dps/add-event-hub-sas-policy.png":::
 
@@ -275,7 +275,7 @@ Führen Sie die folgenden Schritte aus, um einen Event Hub-Endpunkt zu erstellen
     * **Endpunktname**: Wählen Sie einen Endpunktnamen aus.
     * **Event Hub-Namespace**: Wählen Sie in der Dropdownliste den Event Hub-Namespace aus.
     * **Event Hub-Instanz**: Wählen Sie den Event Hub-Namen aus, den Sie im vorherigen Schritt erstellt haben.
-5. Wählen Sie **Erstellen** aus. Lassen Sie dieses Fenster geöffnet, um im nächsten Schritt eine Route hinzuzufügen.
+5. Klicken Sie auf **Erstellen**. Lassen Sie dieses Fenster geöffnet, um im nächsten Schritt eine Route hinzuzufügen.
 
     :::image type="content" source="media/how-to-provision-using-dps/add-event-hub-endpoint.png" alt-text="Screenshot des Visual Studio-Fensters zum Hinzufügen eines Event Hub-Endpunkts" lightbox="media/how-to-provision-using-dps/add-event-hub-endpoint.png":::
 
@@ -292,7 +292,7 @@ Als Nächstes fügen Sie eine Route hinzu, die eine Verbindung mit dem im obigen
    * **Datenquelle**: Wählen Sie *Ereignisse im Gerätelebenszyklus* aus.
    * **Routingabfrage**: Geben Sie `opType='deleteDeviceIdentity'` ein. Diese Abfrage schränkt das Senden der Gerätelebenszklusereignisse auf Löschereignisse ein.
 
-3. Wählen Sie **Speichern** aus.
+3. Wählen Sie **Speichern**.
 
     :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="Screenshot des Azure-Portal-Fensters zum Hinzufügen einer Route, um Lebenszyklusereignissen zu senden" lightbox="media/how-to-provision-using-dps/lifecycle-route.png":::
 
@@ -302,7 +302,7 @@ Wenn Sie diese Schritte durchlaufen haben, ist alles für die End-to-End-Außerb
 
 Um die Außerbetriebnahme auszulösen, müssen Sie das Gerät manuell aus IoT Hub löschen.
 
-Dies können Sie mit einem [Azure CLI Befehl](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete) oder mit dem Azure-Portal durchführen. Führen Sie die folgenden Schritte aus, um das Gerät im Azure Portal zu löschen:
+Dies können Sie mit einem [Azure CLI Befehl](/cli/azure/iot/hub/module-identity#az_iot_hub_module_identity_delete) oder mit dem Azure-Portal durchführen. Führen Sie die folgenden Schritte aus, um das Gerät im Azure Portal zu löschen:
 
 1. Navigieren Sie zum IoT-Hub, und wählen Sie in den Menüoptionen auf der linken Seite **IoT-Geräte** aus. 
 2. Es wird ein Gerät mit der Geräteregistrierungs-ID angezeigt, die Sie in der [ersten Hälfte dieses Artikels](#auto-provision-device-using-device-provisioning-service) ausgewählt haben. Alternativ können Sie auch ein beliebiges anderes Gerät zum Löschen auswählen, solange es über einen Zwilling in Azure Digital Twins verfügt, damit Sie überprüfen können, ob der Zwilling nach dem Löschen des Geräts automatisch gelöscht wird.

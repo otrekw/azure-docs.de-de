@@ -6,15 +6,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: iangithinji
-author: iantheninja
-manager: CelesteDG
-ms.openlocfilehash: 17dca502d3c65563cb9e4d2c382afb79f4d612e9
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: kenwith
+author: kenwith
+manager: daveba
+ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376051"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450037"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory-Anwendungsverwaltung: Neues
 
@@ -40,10 +40,10 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 - [Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 - [Schnellstart: Einrichten des SAML-basierten einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)](add-application-portal-setup-sso.md)
 - [Azure Active Directory-Anwendungsverwaltung: Neues](whats-new-docs.md)
-- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.yml)
+- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.md)
 - [Beheben von Anmeldeproblemen bei einer Anwendung aus „Meine Apps“ in Azure AD](application-sign-in-other-problem-access-panel.md)
 - [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
-- [Optimieren des Datenverkehrsflusses mit Azure Active Directory-Anwendungsproxy](application-proxy-network-topology.md)
+- [Optimieren des Datenverkehrsflusses mit dem Azure Active Directory-Anwendungsproxy](application-proxy-network-topology.md)
 - [Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen](application-proxy-release-version-history.md)
 - [Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)](configure-authentication-for-federated-users-portal.md)
 - [Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory](migrate-adfs-apps-to-azure.md)
@@ -75,7 +75,7 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 - [Bewährte Methoden für die Anwendungsverwaltung](application-management-fundamentals.md)
 - [Erste Schritte zur Integration von Anwendungen in Azure Active Directory](plan-an-application-integration.md)
 - [Worum handelt es sich bei der Anwendungsverwaltung?](what-is-application-management.md)
-- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.yml)
+- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.md)
 - [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md)
 - [Entwickeln von Branchen-Apps für Azure Active Directory](../develop/v2-overview.md)

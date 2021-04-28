@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 729444b1d1ccf55f34e54a4b59508131458c472b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 693045d094ddbf5ad6df81eca8cd16d9cac62fe4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054803"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308607"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -42,7 +42,7 @@ Azure unterstützt für die Ressourcenverwaltung drei Bereiche. Jeder Bereich un
 
 - [**Verwaltungsgruppen**](../../governance/management-groups/overview.md): Hierarchische Container mit bis zu acht Ebenen zum Organisieren von Azure-Abonnements.
 
-    Ressourcentyp: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
+    Ressourcentyp: [Microsoft.Management/managementGroups](/rest/api/managementgroups/)
 
 - **Abonnements**: Primäre Container für Azure-Ressourcen.
 

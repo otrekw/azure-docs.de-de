@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 16433d5b148d7bc441e375591c64af497cd7b8de
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 90ee39039b0734bf434e7339a973358989c08175
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505331"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311361"
 ---
 # <a name="access-config-server-and-service-registry"></a>Zugreifen auf Config Server und Service Registry
 
@@ -47,15 +47,15 @@ Nach dem Zuweisen der Rolle „Azure Spring Cloud-Datenleser“ können Kunden a
     ```
 2. Erstellen Sie den Endpunkt. Wir unterstützen Standardendpunkte von Spring Cloud Config Server und Spring Cloud Service Registry, die von Azure Spring Cloud verwaltet werden. Weitere Informationen finden Sie unter [Produktionsbereite Endpunkte](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints). Kunden können auch eine vollständige Liste der unterstützten Endpunkte von Spring Cloud Config Server und Spring Cloud Service Registry abrufen, die von Azure Spring Cloud verwaltet werden, indem sie auf Endpunkte zugreifen:
 
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/*
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/* 
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/'*
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/'* 
 
 >[!NOTE]
 > Ersetzen Sie bei Verwendung von „Azure China“ `*.azuremicroservices.io` durch `*.microservices.azure.cn`. [Weitere Informationen](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
 
 3. Greifen Sie mit dem Zugriffstoken auf den erstellten Endpunkt zu. Platzieren Sie das Zugriffstoken in einem Header, um Autorisierung bereitzustellen.  Nur die GET-Methode wird unterstützt.
 
-    Greifen Sie z. B. auf einen Endpunkt wie *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health* zu, um den Integritätsstatus von eureka anzuzeigen.
+    Greifen Sie z. B. auf einen Endpunkt wie *'https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health '* zu, um den Integritätsstatus von eureka anzuzeigen.
 
     Wenn die Antwort *401 Unauthorized* (401 Nicht autorisiert) ist, überprüfen Sie, ob die Rolle erfolgreich zugewiesen wurde.  Es dauert einige Minuten, bis die Rolle wirksam wird. Sie können auch überprüfen, ob das Zugriffstoken abgelaufen ist.
 

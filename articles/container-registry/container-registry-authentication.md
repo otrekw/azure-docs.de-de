@@ -3,12 +3,12 @@ title: Authentifizierungsoptionen für die Registrierung
 description: Hier erfahren Sie mehr über Authentifizierungsoptionen für eine private Azure-Containerregistrierung wie z. B. das Anmelden mit einer Azure Active Directory-Identität, mithilfe von Dienstprinzipalen sowie mittels optionalen Administratoranmeldeinformationen.
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: 7ff55d569e2659262ce9f323e4db2ea7ed671d20
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d12895502ecd30991fbef836903a8ceea445b770
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784279"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285500"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Authentifizieren mit einer Azure-Containerregistrierung
 
@@ -31,7 +31,7 @@ In der folgenden Tabelle werden die verfügbaren Authentifizierungsmethoden und 
 
 ## <a name="individual-login-with-azure-ad"></a>Individuelle Anmeldung bei Azure AD
 
-Wenn Sie direkt mit Ihrer Registrierung arbeiten, z. B. beim Pullen von Images auf eine bzw. beim Pushen von Images von einer Entwicklungsarbeitsstation in eine von Ihnen erstellte Registrierung, authentifizieren Sie sich mithilfe Ihrer individuellen Azure-Identität. Melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei der [Azure CLI](/cli/azure/install-azure-cli) an, und führen Sie dann den Befehl [az acr login](/cli/azure/acr#az_acr_login) aus:
+Wenn Sie direkt mit Ihrer Registrierung arbeiten, z. B. beim Pullen von Images auf eine bzw. beim Pushen von Images von einer Entwicklungsarbeitsstation in eine von Ihnen erstellte Registrierung, authentifizieren Sie sich mithilfe Ihrer individuellen Azure-Identität. Melden Sie sich mit [az login](/cli/azure/reference-index#az-login) bei der [Azure CLI](/cli/azure/install-azure-cli) an, und führen Sie dann den Befehl [az acr login](/cli/azure/acr#az-acr-login) aus:
 
 ```azurecli
 az login
@@ -111,7 +111,7 @@ docker login myregistry.azurecr.io
 
 Bewährte Methoden zur Verwaltung von Docker-Anmeldeinformationen finden Sie in der Befehlsreferenz zu [Docker-Login](https://docs.docker.com/engine/reference/commandline/login/).
 
-Um den Administratorbenutzer für eine vorhandene Registrierung zu aktivieren, können Sie den `--admin-enabled`-Parameter des [az acr update](/cli/azure/acr#az_acr_update)-Befehls in der Azure CLI verwenden:
+Um den Administratorbenutzer für eine vorhandene Registrierung zu aktivieren, können Sie den `--admin-enabled`-Parameter des [az acr update](/cli/azure/acr#az-acr-update)-Befehls in der Azure CLI verwenden:
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

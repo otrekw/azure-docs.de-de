@@ -2,13 +2,13 @@
 title: Löschung des vollständigen Modus
 description: Zeigt, wie die Ressourcentypen die Löschung des vollständigen Modus in Azure Resource Manager-Vorlagen verarbeiten.
 ms.topic: conceptual
-ms.date: 04/16/2021
-ms.openlocfilehash: 6986f600274beaaa67f2f6ce64cbc3d0ceaf322e
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.date: 04/08/2021
+ms.openlocfilehash: 9b1c12c061149d60f1e279c78c141cd8b245218c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576061"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228026"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus
 
@@ -916,8 +916,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | galleries | Ja |
 > | galleries/applications | Nein |
 > | galleries/applications/versions | Nein |
-> | galleries/images | Ja |
-> | galleries/images/versions | Ja |
+> | galleries/images | Nein |
+> | galleries/images/versions | Nein |
 > | hostGroups | Ja |
 > | hostGroups/hosts | Ja |
 > | images | Ja |

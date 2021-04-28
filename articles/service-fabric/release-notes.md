@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 36fb512181986fd04a95e72aa028b7c0253aa45f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f7e929000b85462e7fabf6d717c52abc454b47ad
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731223"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313333"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
@@ -22,11 +22,40 @@ ms.locfileid: "105731223"
 
 Dieser Artikel enthält weitere Informationen zu den neuesten Versionen und Updates für die Service Fabric-Runtime und -SDKs.
 
-## <a name="service-fabric-72"></a>Service Fabric 7.2
+## <a name="service-fabric-80"></a>Service Fabric 8.0
 
-Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 7.2 der Service Fabric-Runtime zusammen mit Tools und SDK-Updates in den verschiedenen Azure-Regionen begonnen hat. Die Updates für .NET SDK, Java SDK und Service Fabric-Runtime sind über den Webplattform-Installer, NuGet-Pakete und Maven-Repositorys verfügbar.
+Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 8.0 der Service Fabric-Runtime zusammen mit Tools und SDK-Updates in den verschiedenen Azure-Regionen begonnen hat. Die Updates für .NET SDK, Java SDK und Service Fabric-Runtime sind über den Webplattform-Installer, NuGet-Pakete und Maven-Repositorys verfügbar.
 
 ### <a name="key-announcements"></a>Wichtige Ankündigungen
+
+- **Allgemeine Verfügbarkeit** der Unterstützung für .NET 5 für Windows
+- **Allgemeine Verfügbarkeit** [zustandsloser NodeTypes](https://docs.microsoft.com/azure/service-fabric/service-fabric-stateless-node-types)
+- Möglichkeit zum Verschieben zustandsloser Dienstinstanzen
+- Möglichkeit zum Hinzufügen parametrisierter DefaultLoad-Einstellungen im Anwendungsmanifest
+- Für Singletonreplikatupgrades: Möglichkeit, einige der Einstellungen auf Clusterebene auf Anwendungsebene zu definieren
+- Möglichkeit zur intelligenten Platzierung basierend auf Knotentags
+- Möglichkeit zum Definieren des Schwellenwerts für den Prozentsatz fehlerhafter Knoten, die die Clusterintegrität beeinflussen
+- Möglichkeit zum Abfragen der besten geladenen Dienste
+- Möglichkeit zum Hinzufügen eines neuen Intervalls für neue Fehlercodes
+- Funktion zum Markieren einer Dienstinstanz als abgeschlossen
+- Unterstützung des wellenbasierten Bereitstellungsmodells für automatische Upgrades
+- Bereitschaftstest für containerisierte Anwendungen hinzugefügt
+- UseSeparateSecondaryMoveCost standardmäßig als TRUE festlegen
+- StateManager wurde korrigiert, um den Verweis freizugeben, sobald die Freigabe sicher ist
+- Entfernen des zentralen Geheimnisdiensts beim Speichern von Benutzergeheimnissen blockieren
+
+
+### <a name="service-fabric-80-releases"></a>Service Fabric 8.0-Releases
+| Veröffentlichungsdatum | Release | Weitere Informationen |
+|---|---|---|
+| 08. April 2021 | [Azure Service Fabric 8.0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-release/ba-p/2260016)  | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80.md)|
+
+
+## <a name="previous-versions"></a>Vorgängerversionen
+
+### <a name="service-fabric-72"></a>Service Fabric 7.2
+
+#### <a name="key-announcements"></a>Wichtige Ankündigungen
 
 - **Vorschau**: [**Verwaltete Service Fabric-Cluster**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) befinden sich nun in der öffentlichen Vorschau. Verwaltete Service Fabric-Cluster sollen die Clusterbereitstellung und -verwaltung vereinfachen, indem die zugrunde liegenden Ressourcen, aus denen sich der Service Fabric-Cluster zusammensetzt, in einer einzelnen ARM-Ressource gekapselt werden. Weitere Einzelheiten finden Sie unter [Übersicht über verwaltete Service Fabric-Cluster](./overview-managed-cluster.md).
 - **Vorschau**: [**Die Unterstützung zustandsloser Dienste mit mehr Instanzen als Knoten**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) befindet sich nun in der öffentlichen Vorschau. Eine Platzierungsrichtlinie ermöglicht das Erstellen mehrerer zustandsloser Instanzen einer Partition auf einem Knoten.
@@ -40,7 +69,7 @@ Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 7.
 - **RunToCompletion:** Service Fabric unterstützt das Konzept der Ausführung bis zum Abschluss für ausführbare Gastanwendungsdateien. Wenn die Ausführung des Replikats mit diesem Update abgeschlossen ist, werden die diesem Replikat zugewiesenen Clusterressourcen freigegeben.
 - [**Die Unterstützung der Ressourcengovernance wurde verbessert**](./service-fabric-resource-governance.md), sodass jetzt auch die Angaben für Anforderungen und Grenzwerte für CPU- und Arbeitsspeicherressourcen möglich sind.
 
-### <a name="service-fabric-72-releases"></a>Service Fabric 7.2-Releases
+#### <a name="service-fabric-72-releases"></a>Service Fabric 7.2-Releases
 | Veröffentlichungsdatum | Release | Weitere Informationen |
 |---|---|---|
 | 21. Oktober 2020 | [Azure Service Fabric 7.2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-release/ba-p/1805653)  | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72-releasenotes.md)|
@@ -51,7 +80,6 @@ Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 7.
 | 17. Februar 2021 | [Azure Service Fabric 7.2 Sixth Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
 | 10. März 2021 | [Azure Service Fabric 7.2 Seventh Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-seventh-refresh-release/ba-p/2201100) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU7-releasenotes.md)
 
-## <a name="previous-versions"></a>Vorgängerversionen
 
 ### <a name="service-fabric-71"></a>Service Fabric 7.1
 
