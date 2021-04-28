@@ -11,12 +11,12 @@ ms.service: dns
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 34e810fa8244cf3ff00e57f193624a2c1fa4d755
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 3ec97385d9774b93c04ebc4b8c5885d7effbbcd0
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107539017"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949450"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines DNS-Eintrags mithilfe einer ARM-Vorlage
 
@@ -26,7 +26,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure R
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-dns-new-zone%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazure-dns-new-zone%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 
 In dieser Schnellstartanleitung erstellen Sie eine eindeutige DNS-Zone mit dem Suffix `azurequickstart.org`. Ein `A`-Eintrag, der auf zwei IP-Adressen verweist, wird ebenfalls in der Zone platziert.
 
-:::code language="json" source="~/quickstart-templates/101-azure-dns-new-zone/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azure-dns-new-zone/azuredeploy.json":::
 
 In der Vorlage wurden zwei Azure-Ressourcen definiert:
 
@@ -54,7 +54,7 @@ Weitere Vorlagen zu Azure Traffic Manager finden Sie unter [Azure-Schnellstartvo
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-azure-dns-new-zone/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/azure-dns-new-zone/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 

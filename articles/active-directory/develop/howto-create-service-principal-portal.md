@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 621bd392c12bb6ef1269eaed4731063490664f7e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 12739d535e37c4d1de89e69237a0daddd9569217
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750786"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897467"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -138,7 +138,7 @@ Für Dienstprinzipale sind zwei Arten von Authentifizierung verfügbar: kennwort
 
 ### <a name="option-1-upload-a-certificate"></a>Option 1: Hochladen eines Zertifikats
 
-Sie können ein vorhandenes Zertifikat verwenden, wenn Sie eins besitzen.  Optional können Sie *ausschließlich für Testzwecke* ein selbstsigniertes Zertifikat erstellen. Zum Erstellen eines selbstsignierten Zertifikats öffnen Sie PowerShell, und führen Sie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) mit den folgenden Parametern aus, um das Zertifikat im Benutzerzertifikatspeicher auf Ihrem Computer zu erstellen:
+Sie können ein vorhandenes Zertifikat verwenden, wenn Sie eins besitzen.  Optional können Sie *ausschließlich für Testzwecke* ein selbstsigniertes Zertifikat erstellen. Zum Erstellen eines selbstsignierten Zertifikats öffnen Sie PowerShell, und führen Sie [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) mit den folgenden Parametern aus, um das Zertifikat im Benutzerzertifikatspeicher auf Ihrem Computer zu erstellen:
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -182,7 +182,7 @@ Wenn Sie sich entscheiden, kein Zertifikat zu verwenden, können Sie ein neues A
    ![Den geheimen Wert kopieren, weil er später nicht mehr abgerufen werden kann](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Konfigurieren von Zugriffsrichtlinien für Ressourcen
-Beachten Sie, dass Sie möglicherweise zusätzliche Berechtigungen für Ressourcen konfigurieren müssen, auf die Ihre Anwendung zugreifen muss. Sie müssen beispielsweise auch die [Zugriffsrichtlinien eines Schlüsseltresors aktualisieren](../../key-vault/general/security-overview.md#privileged-access), um der Anwendung Zugriff auf Schlüssel, Geheimnisse oder Zertifikate zu gewähren.
+Beachten Sie, dass Sie möglicherweise zusätzliche Berechtigungen für Ressourcen konfigurieren müssen, auf die Ihre Anwendung zugreifen muss. Sie müssen beispielsweise auch die [Zugriffsrichtlinien eines Schlüsseltresors aktualisieren](../../key-vault/general/security-features.md#privileged-access), um der Anwendung Zugriff auf Schlüssel, Geheimnisse oder Zertifikate zu gewähren.
 
 1. Navigieren Sie im <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> zu Ihrem Schlüsseltresor, und wählen Sie **Zugriffsrichtlinien** aus.
 1. Wählen Sie **Zugriffsrichtlinie hinzufügen** und anschließend die Schlüssel-, Geheimnis- und Zertifikatberechtigungen aus, die Sie Ihrer Anwendung gewähren möchten.  Wählen Sie den zuvor erstellten Dienstprinzipal aus.

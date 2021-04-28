@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 5bd218c0d94922b6137a964e3993f516216ca4b7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9a07f2b1d4b63005bff4a8963bd1258ad72e87ee
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104787260"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137272"
 ---
 # <a name="tutorial-visualize-data-with-time-series-insights-tsi"></a>Tutorial: Visualisieren von Daten mit Time Series Insights (TSI)
 
@@ -54,21 +54,21 @@ Beachten Sie im TSI-Explorer die nicht zugewiesenen Time Series-Instanzen. Eine
 
 Die Telemetriedaten können im Diagramm visualisiert werden, indem Sie mit der rechten Maustaste auf die TSI-Instanz klicken und den Wert auswählen. Der im Diagramm zu verwendende Zeitrahmen kann in der rechten oberen Ecke angepasst werden. Der Wert mehrerer Instanzen kann auf der Grundlage der gleichen Zeitbasisauswahl visualisiert werden.
 
-Weitere Informationen finden Sie unter [Schnellstart: Erkunden der Azure Time Series Insights Gen2-Demoumgebung](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+Weitere Informationen finden Sie unter [Schnellstart: Erkunden der Azure Time Series Insights Gen2-Demoumgebung](../time-series-insights/quickstart-explore-tsi.md).
 
 ## <a name="define-and-apply-a-new-model"></a>Definieren und Anwenden eines neuen Modells
 
 Da sich die Telemetrieinstanzen im Rohformat befinden, müssen sie mit dem passenden Modell kontextualisiert werden. 
 
-Ausführliche Informationen zu TSI-Modellen finden Sie unter [Zeitreihenmodell in Azure Time Series Insights Gen2](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm).
+Ausführliche Informationen zu TSI-Modellen finden Sie unter [Zeitreihenmodell in Azure Time Series Insights Gen2](../time-series-insights/concepts-model-overview.md).
 
 1. Schritt 1: Definieren Sie im Explorer auf der Registerkarte „Modell“ eine neue Hierarchie für die erfassten Telemetriedaten. Bei einer Hierarchie handelt es sich um die logische Struktur, die es dem Benutzer ermöglichen soll, die Metainformationen einzufügen, die für eine intuitivere Navigation durch die TSI-Instanzen erforderlich sind. Ein Benutzer kann Hierarchievorlagen erstellen, löschen und ändern, die später für die verschiedenen TSI-Instanzen instanziiert werden können.
 
-   ![Schritt 1](media/tutorial-iiot-visualize-data-tsi/tutorial-time-series-insights-step-1.png)
+   ![Schritt 1](media/tutorial-iiot-visualize-data-tsi/tutorial-time-series-insights-step-1.png)
 
 2. Schritt 2: Definieren Sie einen neuen Typ für die Werte. In unserem Beispiel werden nur numerische Datentypen behandelt.
 
-   ![Schritt 2](media/tutorial-iiot-visualize-data-tsi/tutorial-time-series-insights-step-2.png)
+   ![Schritt 2](media/tutorial-iiot-visualize-data-tsi/tutorial-time-series-insights-step-2.png)
 
 3. Schritt 3: Wählen Sie die neue TSI-Instanz aus, die in der zuvor definierten Hierarchie kategorisiert werden muss.
 
@@ -88,7 +88,7 @@ Ausführliche Informationen zu TSI-Modellen finden Sie unter [Zeitreihenmodell i
 
 ## <a name="connect-time-series-insights-to-power-bi"></a>Verbinden von Time Series Insights mit Power BI
 
-Die Time Series Insights-Umgebung kann auch mit Power BI verknüpft werden.  Weitere Informationen finden Sie unter [Visualisieren der Daten von Azure Time Series Insights in Power BI](https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi) sowie unter [Verbinden von Azure Time Series Insights Gen2 mit Power BI](https://docs.microsoft.com/azure/time-series-insights/concepts-power-bi).
+Die Time Series Insights-Umgebung kann auch mit Power BI verknüpft werden.  Weitere Informationen finden Sie unter [Visualisieren der Daten von Azure Time Series Insights in Power BI](../time-series-insights/how-to-connect-power-bi.md) sowie unter [Verbinden von Azure Time Series Insights Gen2 mit Power BI](../time-series-insights/concepts-power-bi.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

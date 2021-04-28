@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6d4f3f744a85c14c42ffef1c894b237081e871f8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: dc4368075e1cecb43887c9fab21e55b23208dbab
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752424"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814926"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informationen zu Azure Key Vault-Geheimnissen
 
@@ -132,5 +132,5 @@ Schrittanleitungen zum Steuern des Zugriffs in Key Vault:
 - [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../general/about-keys-secrets-certificates.md)
 - [Informationen zu Schlüsseln](../keys/about-keys.md)
 - [Informationen zu Zertifikaten](../certificates/about-certificates.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-overview.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-features.md)
 - [Entwicklerhandbuch für Key Vault](../general/developers-guide.md)

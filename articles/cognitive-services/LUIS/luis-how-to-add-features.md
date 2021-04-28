@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1a0fb15be92e25b576cd29e671eed3c6a5b948f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95999925"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313265"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Verstärken des Signals von Wortlisten mithilfe von Features
 
@@ -37,7 +37,7 @@ Machen Sie sich mit den [Konzepten](luis-concept-feature.md) vertraut, um zu erf
 
     Sobald Sie genügend Werte für LUIS eingegeben haben, werden Vorschläge angezeigt. Sie können **+ Alle hinzufügen** verwenden, um alle vorgeschlagenen Werte hinzufügen, oder einzelne Begriffe auswählen.
 
-1. Lassen Sie die Option **These values are interchangeable** (Diese Werte sind austauschbar.) aktiviert, wenn die Ausdrücke synonym verwendet werden können.
+1. Lassen Sie die Option **These values are interchangeable** (Diese Werte sind austauschbar.) aktiviert, wenn die Ausdrücke synonym verwendet werden können. Das Feature für austauschbare Ausdruckslisten dient als Liste von Synonymen für das Training. Nicht austauschbare Ausdruckslisten dienen als separate Features für das Training (das heißt, die Features sind ähnlich, aber die Absicht ändert sich, wenn Sie Ausdrücke austauschen).
 
 1. Die Liste der Ausdrücke kann auf die gesamte App mit der Einstellung **Global** oder nur auf ein bestimmtes Modell (Absicht oder Entität) angewendet werden. Wenn Sie die Ausdrucksliste als _Feature_ auf der Grundlage einer Absicht oder Entität erstellen, ist die Umschaltfläche nicht auf global festgelegt. In diesem Fall bedeutet die Umschaltfläche, dass es sich um ein lokales Feature handelt, das nur für dieses Modell (und somit _nicht global_ für die Anwendung) gilt.
 

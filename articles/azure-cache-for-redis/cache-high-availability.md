@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: ad6696fc4fe2af7047c25a3a9c260d3b12588ee2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69dec2ce00b263f3536e30ba0a5376e6d922b79c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203299"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308352"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Hochverfügbarkeit für Azure Cache for Redis
 
@@ -21,9 +21,9 @@ Azure Cache for Redis implementiert Hochverfügbarkeit durch Verwendung mehrerer
 
 | Option | BESCHREIBUNG | Verfügbarkeit | Standard | Premium | Enterprise |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [Standardreplikation](#standard-replication)| Replizierte Konfiguration mit zwei Knoten in einem Rechenzentrum mit automatischem Failover | 99,9 % |✔|✔|-|
-| [Zonenredundanz](#zone-redundancy) | Replizierte Konfiguration mit mehreren Knoten in allen Verfügbarkeitszonen mit automatischem Failover | 99,95 % (Premium-Tarif), 99,99 % (Enterprise-Tarife) |-|Vorschau|Vorschau|
-| [Georeplikation](#geo-replication) | Verknüpfte Cacheinstanzen in zwei Regionen mit benutzergesteuertem Failover | 99,999 % (Enterprise-Tarif) |-|✔|Vorschau|
+| [Standardreplikation](#standard-replication)| Replizierte Konfiguration mit zwei Knoten in einem Rechenzentrum mit automatischem Failover | 99,9 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |✔|✔|-|
+| [Zonenredundanz](#zone-redundancy) | Replizierte Konfiguration mit mehreren Knoten in allen Verfügbarkeitszonen mit automatischem Failover | Bis zu 99,99 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|Vorschau|Vorschau|
+| [Georeplikation](#geo-replication) | Verknüpfte Cacheinstanzen in zwei Regionen mit benutzergesteuertem Failover | Bis zu 99,999 % (siehe [Details](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|✔|Vorschau|
 
 ## <a name="standard-replication"></a>Standardreplikation
 

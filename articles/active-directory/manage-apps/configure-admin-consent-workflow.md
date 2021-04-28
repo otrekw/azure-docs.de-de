@@ -2,26 +2,26 @@
 title: Konfigurieren des Workflows für die Administratoreinwilligung – Azure Active Directory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie für Endbenutzer eine Möglichkeit zur Zugriffsanforderung für Anwendungen konfigurieren, die eine Administratoreinwilligung erfordern.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/29/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d89ea0cbc7d1e0379a9cbfce40f11d4f8ac93f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9811c3d1833a02ad3cbaf22b9f0b31fd2da5bb6d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643761"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375184"
 ---
-# <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
+# <a name="configure-the-admin-consent-workflow"></a>Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
 
-In diesem Artikel wird beschrieben, wie Sie den Workflow für die Administratoreinwilligung (Vorschau) aktivieren, mit dem Endbenutzer Zugriff auf Anforderungen anfordern können, für die eine Administratoreinwilligung benötigt wird.
+In diesem Artikel wird beschrieben, wie Sie den Workflow für die Administratoreinwilligung aktivieren, mit dem Endbenutzer Zugriff auf Anwendungen anfordern können, für die eine Administratoreinwilligung benötigt wird.
 
 Ohne einen Workflow für die Administratoreinwilligung wird ein Benutzer in einem Mandanten mit deaktivierter Benutzereinwilligung blockiert, wenn er versucht, auf eine Anwendung zuzugreifen, die Berechtigungen für den Zugriff auf Unternehmensdaten erfordert. Der Benutzer wird in einer allgemeinen Fehlermeldung darüber informiert, dass er nicht zum Zugriff auf die App autorisiert ist und sich zwecks Unterstützung an den Administrator wenden soll. Häufig weiß der Benutzer aber nicht, an wen er sich wenden muss, sodass er entweder aufgibt oder ein neues lokales Konto in der Anwendung erstellt. Und selbst wenn ein Administrator benachrichtigt wird, ist nicht immer ein optimierter Prozess vorhanden, mit dem der Administrator den Zugriff gewähren und die Benutzer benachrichtigen kann.
  
@@ -38,7 +38,7 @@ So aktivieren Sie den Workflow für die Administratoreinwilligung und wählen Pr
 3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**. 
 5. Wählen Sie unter **Verwalten** die Option **Benutzereinstellungen** aus.
-6. Legen Sie unter **Anforderungen zur Administratoreinwilligung (Vorschau)** die Option **Benutzer können Administratoreinwilligungen für Apps anfordern, bei denen sie selbst keine Einwilligung erteilen können** auf **Ja** fest.
+6. Legen Sie unter **Anforderungen zur Administratoreinwilligung** die Option **Benutzer können Administratoreinwilligungen für Apps anfordern, bei denen sie selbst keine Einwilligung erteilen können** auf **Ja** fest.
 
    ![Konfigurieren von Einstellungen für den Workflow für die Administratoreinwilligung](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
@@ -78,7 +78,7 @@ So überprüfen Sie die Anforderungen zur Administratoreinwilligung und ergreife
 2. Klicken Sie oben im Navigationsmenü auf der linken Seite auf **Alle Dienste**. Die **Azure Active Directory-Erweiterung** wird geöffnet.
 3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**.
-5. Wählen Sie unter **Aktivität** die Option **Anforderungen zur Administratoreinwilligung (Vorschau)** aus.
+5. Wählen Sie unter **Aktivität** die Option **Anforderungen zur Administratoreinwilligung** aus.
 
    > [!NOTE]
    > Prüfer sehen nur die Administratoranforderungen, die nach ihrer Festlegung als Prüfer erstellt wurden.
@@ -112,11 +112,7 @@ Anforderer erhalten in folgenden Fällen eine E-Mail-Benachrichtigung:
  
 ## <a name="audit-logs"></a>Überwachungsprotokolle 
  
-Die folgende Tabelle zeigt die Szenarien und Überwachungswerte, die für den Workflow für die Administratoreinwilligung zur Verfügung stehen. 
-
-> [!NOTE]
-> Der Benutzerkontext des Überwachungsakteurs fehlt aktuell in allen Szenarien. Dies ist eine bekannte Einschränkung der Vorschauversion.
-
+Die folgende Tabelle zeigt die Szenarien und Überwachungswerte, die für den Workflow für die Administratoreinwilligung zur Verfügung stehen.
 
 |Szenario  |Überwachungsdienst  |Überwachungskategorie  |Überwachungsaktivität  |Überwachungsakteur  |Überwachungsprotokolleinschränkungen  |
 |---------|---------|---------|---------|---------|---------|

@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 03/01/2021
+ms.date: 04/06/2021
 ms.author: yashar
-ms.openlocfilehash: 9270b7fb135eddd78a7aeb30cf88af4d704e176e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a6ddcef1493f15442a723bcc93850e6197db84d8
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030703"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285597"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilität bei der VM-Größe mit reservierten VM-Instanzen
 
@@ -39,6 +39,7 @@ Sie kaufen eine reservierte VM-Instanz der Größe Standard_DS4_v2, für die das
 - Szenario 1: Sie führen acht VMs der Größe Standard_DS1_v2 mit einem Verhältnis von 1 aus. Ihr Reservierungsrabatt gilt für alle acht VMs.
 - Szenario 2: Sie führen zwei VMs der Größe Standard_DS2_v2 mit einem Verhältnis von jeweils 2 aus. Außerdem führen Sie eine VM der Größe Standard_DS3_v2 mit einem Verhältnis von 4 aus. Der gesamte Speicherbedarf ist 2 + 2 + 4 = 8. Ihr Reservierungsrabatt gilt somit für alle drei VMs.
 - Szenario 3: Sie führen eine VM der Größe Standard_DS5_v2 mit einem Verhältnis von 16 aus. Ihr Reservierungsrabatt gilt für die Hälfte der Computekosten dieser VM.
+- Szenario 4: Führen Sie eine Standard_DS5_v2 mit einem Verhältnis von 16 aus, und erwerben Sie eine zusätzliche Standard_DS4_v2-Reservierung mit einem Verhältnis von 8. Beide Reservierungen kombinieren den Rabatt und wenden ihn auf die gesamte VM an.
 
 Den folgenden Abschnitten können Sie entnehmen, welche Größen in derselben Gruppe einer Größenserie enthalten sind, wenn Sie eine für Flexibilität bei der Instanzgröße optimierte reservierte VM-Instanz kaufen.
 

@@ -1,17 +1,17 @@
 ---
 title: Warteaktivität in Azure Data Factory
 description: Die Warteaktivität hält die Ausführung der Pipeline für den angegebenen Zeitraum an.
-author: dcstwh
-ms.author: weetok
+author: chez-charlie
+ms.author: chez
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 9271723e68e5edd6805f0197bca9cdefc3c5e921
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb9227546b135365fb3ac8d47156da95e75470bb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388327"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906193"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Ausführen der Warteaktivität in Azure Data Factory
 Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline den angegebenen Zeitraum, bevor Sie die Ausführung nachfolgender Aktivitäten fortsetzt. 

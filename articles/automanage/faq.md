@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5a9ff7661fda372631d1bb912b1c137b37c7e07
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688007"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363358"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Häufig gestellte Fragen zur automatischen Azure-Verwaltung für VMs
 
@@ -104,7 +104,10 @@ Nein, die automatische Verwaltung wird sie nicht erneut konfigurieren. Wir werde
 
 **Warum weist meine VM im Portal für die automatische Verwaltung den Status „Fehler“ auf?**
 
-Wenn der Status *Fehler* angezeigt wird, können Sie die Bereitstellung über die Ressourcengruppe beheben, in der sich Ihre VM befindet. Wechseln Sie zu **Ressourcengruppen**, wählen Sie Ihre Ressourcengruppe aus, klicken Sie auf **Bereitstellungen**, und beachten Sie dort den Status *Fehler* zusammen mit Fehlerdetails.
+Wenn der Status *Fehler* angezeigt wird, können Sie die Problembehandlung für die Bereitstellung auf verschiedene Arten durchführen:
+* Wechseln Sie zu **Ressourcengruppen**, wählen Sie Ihre Ressourcengruppe aus, klicken Sie auf **Bereitstellungen**, und beachten Sie dort den Status *Fehler* zusammen mit Fehlerdetails.
+* Wechseln Sie zu **Abonnements**, wählen Sie Ihre Ressourcengruppe aus, klicken Sie auf **Bereitstellungen**, und prüfen Sie dort den Status *Fehler* zusammen mit Fehlerdetails.
+* Sie können auch das Aktivitätsprotokoll einer VM besuchen. Dort werden Sie einen Eintrag für „Create or Update Configuration Profile Assignments“ (Konfigurationsprofilzuweisungen erstellen oder aktualisieren) finden. Vielleicht sind auch weitere Einzelheiten zu Ihrer Bereitstellung enthalten.
 
 **Wie erhalte ich Unterstützung bei der Problembehandlung für die automatische Verwaltung?**
 

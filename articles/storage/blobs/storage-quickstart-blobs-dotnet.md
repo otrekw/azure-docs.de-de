@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7ab7c52f6fe392cfebd056a86f0566705fb2b8e6
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: f913b33d0bea425a24d2fd336c9d065978606e82
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280665"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869255"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET
 
@@ -228,4 +228,4 @@ Weitere Beispiel-Apps für Blob Storage finden Sie unter:
 > [Azure Blob Storage SDK v12: .NET-Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
 
 * Tutorials, Beispiele, Schnellstarts und weitere Dokumentation finden Sie unter [Azure für .NET- und .NET Core-Entwickler](/dotnet/azure/).
-* Weitere Informationen zu .NET Core finden Sie unter [Get started with .NET in 10 minutes](https://www.microsoft.com/net/learn/get-started/) (Einstieg in .NET in 10 Minuten).
+* Weitere Informationen zu .NET Core finden Sie unter [Get started with .NET in 10 minutes](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro) (Einstieg in .NET in 10 Minuten).

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b5bb9fd6e3d34fc4a6b0ae90a2cd76fc84e9ce1
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652924"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366520"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers
 
@@ -43,7 +43,7 @@ Zum Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers ben
 
     ![Erstellen eines Servers mit der REST-API](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
- 6. Scrollen Sie im Abschnitt „Anforderungstext“ nach unten, und fügen Sie das Folgende für „Speicherort des gelöschten Servers“, „submissionTimestamp“ und „resourceId“ ein. Geben Sie für „restorePointinTime“ den Wert „submissionTimestamp“ minus **15 Minuten** an, um sicherzustellen, dass der Befehl nicht fehlerhaft ist.
+ 6. Scrollen Sie im Abschnitt „Anforderungstext“ nach unten, und fügen Sie das Folgende für „Speicherort des gelöschten Servers“ (z. B. CentralUS, EastUS usw.), „submissionTimestamp“ und „resourceId“ ein. Geben Sie für „restorePointinTime“ den Wert „submissionTimestamp“ minus **15 Minuten** an, um sicherzustellen, dass der Befehl nicht fehlerhaft ist.
     
     ```json
     {

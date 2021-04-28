@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/19/2020
+ms.date: 04/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c175a6d225be268f27854b9ab63886892cf029fb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fdf6398daf2c0206f5239a90667448d9ea789f65
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557274"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001086"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Entwicklerhinweise zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -99,13 +99,13 @@ Die Funktionen für benutzerdefinierte Richtlinien werden ständig weiterentwick
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [PhoneFactor-Authentifizierung](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure AD MFA-Authentifizierung](multi-factor-auth-technical-profile.md) |  | X |  |  |
-| [Einmalkennwort](one-time-password-technical-profile.md) |  | X |  |  |
+| [Einmalkennwort](one-time-password-technical-profile.md) |  |  | X |  |
 | [Azure Active Directory](active-directory-technical-profile.md) als lokales Verzeichnis |  |  | X |  |
 | E-Mail-Subsystem in Azure für die Überprüfung per E-Mail |  |  | X |  |
-| [E-Mail-Dienste von Drittanbietern](custom-email-mailjet.md) |  |X  |  |  |
+| [E-Mail-Dienste von Drittanbietern](custom-email-mailjet.md) |  |  | X |  |
 | [Unterstützung für mehrere Sprachen](localization.md)|  |  | X |  |
 | [Prädikatüberprüfungen](predicates.md) |  |  | X | z.B. Kennwortkomplexität |
-| [Anzeigesteuerelemente](display-controls.md) |  |X  |  |  |
+| [Anzeigesteuerelemente](display-controls.md) |  |  |X  |  |
 
 
 ### <a name="app-ief-integration"></a>App-IEF-Integration

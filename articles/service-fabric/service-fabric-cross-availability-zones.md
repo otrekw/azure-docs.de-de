@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: a49fd6f97a9130fa0369d2a36cdc38e59613afc1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcf96a222dd40909401b70d8f1812b7d29b6088b
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544382"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012461"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 Verfügbarkeitszonen sind in Azure ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
@@ -33,7 +33,7 @@ Die empfohlene Topologie für den primären Knotentyp erfordert die nachfolgend 
 * Eine Netzwerksicherheitsgruppe (NSG), auf die das Subnetz verweist, in dem Sie Ihren virtuellen Computer bereitstellen.
 
 >[!NOTE]
-> Die Eigenschaft der VM-Skalierungsgruppe für die einzelne Platzierungsgruppe muss auf „true“ festgelegt sein, da eine einzelne VM-Skalierungsgruppe, die mehrere Zonen umfasst, von Service Fabric nicht unterstützt wird.
+> Die Eigenschaft für die einzelne Platzierungsgruppe der VM-Skalierungsgruppe muss auf „true“ festgelegt werden.
 
 Diagramm der Architektur der Azure Service Fabric-Verfügbarkeitszone![Diagramm der Architektur der Azure Service Fabric-Verfügbarkeitszone.][sf-architecture]
 

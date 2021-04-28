@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439458"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228230"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -289,20 +289,20 @@ Wenn Sie die nicht beschädigten Verbindungen beibehalten möchten, können Sie 
 
 Nachdem Sie alle Ihre Verbindungen überprüft haben, müssen Sie für alle Verbindungsnamen, die nicht zurückgesetzt werden, ihre beschädigten Daten löschen (falls vorhanden) und sie mit den Standardschritten in Storage-Explorer zurücksetzen:
 
-# <a name="windows"></a>[Windows](#tab/Windows)
+### <a name="windows"></a>[Windows](#tab/Windows)
 
 1. Suchen Sie im Menü **Start** nach der **Anmeldeinformationsverwaltung** und öffnen Sie sie.
 2. Wechseln Sie zu **Windows-Anmeldeinformationen**.
 3. Suchen Sie unter **Generische Anmeldeinformationen** nach Einträgen, die den Schlüssel `<connection_type_key>/<corrupted_connection_name>` aufweisen (z. B. `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Löschen Sie diese Einträge, und fügen Sie die Verbindungen erneut hinzu.
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+### <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Öffnen Sie Spotlight (BEFEHL+LEERTASTE), und suchen Sie nach **Schlüsselbundverwaltung (Keychain Access)** .
 2. Suchen Sie nach Einträgen, die den Schlüssel `<connection_type_key>/<corrupted_connection_name>` aufweisen (z. B. `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Löschen Sie diese Einträge, und fügen Sie die Verbindungen erneut hinzu.
 
-# <a name="linux"></a>[Linux](#tab/Linux)
+### <a name="linux"></a>[Linux](#tab/Linux)
 
 Die lokale Anmeldeinformationsverwaltung variiert je nach Linux-Distribution. Wenn Ihre Linux-Distribution kein integriertes GUI-Tool für die lokale Anmeldeinformationsverwaltung enthält, können Sie ein Drittanbietertool zur Verwaltung Ihrer lokalen Anmeldeinformationen installieren. Sie können z. B. [Seahorse](https://wiki.gnome.org/Apps/Seahorse/) verwenden, ein Open-Source-GUI-Tool zur Verwaltung lokaler Anmeldeinformationen für Linux.
 
@@ -356,7 +356,7 @@ Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfeh
 > [!NOTE]
 > Storage-Explorer bis Version 1.7.0 erfordert .NET Core 2.0. Wenn Sie bereits eine neuere Version von .NET Core installiert haben, müssen Sie [Storage-Explorer mit Patches versehen](#patching-storage-explorer-for-newer-versions-of-net-core). Wenn Sie Storage-Explorer 1.8.0 oder höher ausführen, benötigen Sie mindestens .NET Core 2.1.
 
-# <a name="ubuntu-2004"></a>[Ubuntu 20.04 ](#tab/2004)
+### <a name="ubuntu-2004"></a>[Ubuntu 20.04 ](#tab/2004)
 
 1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
 2. Installieren Sie die [.NET Core-Runtime](/dotnet/core/install/linux):
@@ -369,7 +369,7 @@ Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfeh
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
+### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
 2. Installieren Sie die [.NET Core-Runtime](/dotnet/core/install/linux):
@@ -382,7 +382,7 @@ Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfeh
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
+### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
 2. Installieren Sie die [.NET Core-Runtime](/dotnet/core/install/linux):
@@ -431,6 +431,98 @@ Wenn die Schaltfläche **In Explorer öffnen** im Azure-Portal nicht funktionier
 * Mozilla Firefox
 * Google Chrome
 * Microsoft Internet Explorer
+
+## <a name="gathering-logs"></a>Sammeln von Protokollen
+
+Wenn Sie ein Problem an GitHub melden, werden Sie möglicherweise aufgefordert, bestimmte Protokolle zu sammeln, um Ihr Problem zu diagnostizieren.
+
+### <a name="storage-explorer-logs"></a>Storage-Explorer-Protokolle
+
+Ab Version 1.16.0 protokolliert der Storage-Explorer verschiedene Dinge in ihren eigenen Anwendungsprotokollen. Sie können auf einfache Weise zu diesen Protokollen kommen, indem Sie auf „Hilfe > Protokollverzeichnis öffnen“ klicken. Standardmäßig werden Storage-Explorer-Protokolle mit einem geringen Ausführlichkeitsgrad erfasst. Um den Ausführlichkeitsgrad zu ändern, fügen Sie eine Umgebungsvariable mit dem Namen `STG_EX_LOG_LEVEL` und einen der folgenden Werte hinzu:
+- `silent`
+- `critical`
+- `error`
+- `warning`
+- `info` (Standardebene)
+- `verbose`
+- `debug`
+
+Protokolle werden für jede ausgeführte Sitzung des Storage-Explorers in Ordner aufgeteilt. Es wird empfohlen, alle Protokolldateien, die Sie bereitstellen möchten, in einem ZIP-Archiv zusammenzufassen, wobei die Dateien aus verschiedenen Sitzungen in unterschiedlichen Ordnern abgelegt werden.
+
+### <a name="authentication-logs"></a>Authentifizierungsprotokolle
+
+Bei Problemen im Zusammenhang mit der Anmeldung oder Storage-Explorer-Authentifizierungsbibliothek müssen Sie höchstwahrscheinlich Authentifizierungsprotokolle sammeln. Authentifizierungsprotokolle werden hier gespeichert:
+- Windows: `C:\Users\<your username>\AppData\Local\Temp\servicehub\logs`
+- macOS und Linux `~/.ServiceHub/logs`
+
+Im Allgemeinen können Sie die folgenden Schritte ausführen, um die Protokolle zu erfassen:
+
+1. Wechseln Sie zu „Einstellungen > Anmelden“, und aktivieren Sie „Ausführliche Authentifizierungsprotokollierung“. Wenn der Storage-Explorer aufgrund eines Problems mit der Authentifizierungsbibliothek nicht gestartet werden kann, wird dies für Sie durchgeführt.
+2. Schließen Sie Storage Explorer.
+1. Optional/empfohlen: Löschen Sie vorhandene Protokolle aus dem Ordner `logs`. Dadurch wird die Menge an Informationen reduziert, die Sie uns senden müssen.
+4. Öffnen Sie den Storage-Explorer, und reproduzieren Sie das Problem.
+5. Schließen Sie den Storage-Explorer.
+6. Zippen Sie den Inhalt des Ordners `log`.
+
+### <a name="azcopy-logs"></a>AzCopy-Protokolle
+
+Wenn Sie Probleme beim Übertragen von Daten haben, müssen Sie möglicherweise die AzCopy-Protokolle abrufen. AzCopy-Protokolle können problemlos mit zwei verschiedenen Methoden gefunden werden:
+- Für fehlgeschlagene Übertragungen, die sich noch im Aktivitätsprotokoll finden, klicken Sie auf „Zur AzCopy-Protokolldatei wechseln“.
+- Wechseln Sie für Übertragungen, bei denen in der Vergangenheit Fehler aufgetreten sind, zum Ordner „AzCopy-Protokolle“. Dieser Ordner befindet sich unter:
+  - Windows: `C:\Users\<your username>\.azcopy`
+  - macOS und Linux `~/.azcopy
+
+### <a name="network-logs"></a>Netzwerkprotokolle
+
+Bei einigen Problemen müssen Sie Protokolle der Netzwerkaufrufe bereitstellen, die von Storage-Explorer durchgeführt werden. Unter Windows können Sie dazu Fiddler verwenden.
+
+> [!NOTE]
+> Fiddler-Ablaufverfolgungen können Kennwörter enthalten, die Sie während der Erfassung der Ablaufverfolgung in Ihrem Browser eingegeben/gesendet haben. Lesen Sie unbedingt die Anweisungen zum Bereinigen einer Fiddler-Ablaufverfolgung. Laden Sie keine Fiddler-Ablaufverfolgungen auf GitHub hoch. Sie werden informiert, wohin Sie Ihre Fiddler-Ablaufverfolgung sicher senden können.
+
+Teil 1: Installieren und Konfigurieren von Fiddler
+
+1. Installieren Sie Fiddler.
+2. Starten Sie Fiddler.
+3. Klicken Sie auf „Tools > Optionen“.
+4. Klicken Sie auf die Registerkarte „HTTPS“.
+5. Stellen Sie sicher, dass „Capture CONNECTs“ (CONNECTs erfassen) und „Decrypt HTTPS traffic“ (HTTPS-Datenverkehr entschlüsseln) aktiviert sind.
+6. Klicken Sie auf die Schaltfläche „Actions“ (Aktionen).
+7. Wählen Sie im nächsten Dialogfeld „Trust Root Certificate“ (Stammzertifikat vertrauen) und dann „Yes“ (Ja) aus.
+8. Klicken Sie noch mal auf die Schaltfläche „Actions“ (Aktionen).
+9. Wählen Sie „Export Root Certificate to Desktop“ (Stammzertifikat nach Desktop exportieren) aus.
+10. Wechseln Sie zu Ihrem Desktop.
+11. Suchen Sie die Datei „FiddlerRoot.cer“.
+12. Doppelklick Sie auf die Datei, um sie zu öffnen.
+13. Navigieren Sie zur Registerkarte „Details“.
+14. Klicken Sie auf „In Datei kopieren...“.
+15. Wählen Sie im Export-Assistenten die folgenden Optionen aus:
+    - Base64-codiertes X.509
+    - Für den Dateinamen klicken Sie auf „Durchsuchen...“ in C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs, und dann können Sie die Datei unter einem beliebigen Dateinamen speichern.
+16. Schließen Sie das Fenster „Zertifikat“.
+17. Starten Sie den Storage-Explorer.
+18. Wechseln Sie zu „Bearbeiten > Proxy konfigurieren“.
+19. Wählen Sie im Dialogfeld „App-Proxyeinstellungen verwenden“ aus, und legen Sie die URL auf http://localhost und den Port auf 8888 fest.
+20. Klicken Sie auf OK.
+21. Neustart von Storage-Explorer
+22. In Fiddler sollten Netzwerkaufrufe aus einem `storageexplorer:`-Prozess angezeigt werden.
+
+Teil 2: Reproduzieren des Problems
+1. Schließen Sie alle Apps bis auf Fiddler.
+2. Löschen Sie das Fiddler-Protokoll (X-Symbol oben links in der Nähe des Menüs „Ansicht“).
+3. Optional/empfohlen: Lassen Sie Fiddler sich einige Minuten einrichten. Wenn Netzwerkaufrufe angezeigt werden, klicken Sie mit der rechten Maustaste darauf, und wählen Sie „Jetzt filtern“ > „<process name> ausblenden“ aus.
+4. Starten Sie den Storage-Explorer.
+5. Reproduzieren Sie das Problem.
+6. Klicken Sie auf „Datei > Speichern > Alle Sitzungen...“, und speichern Sie diese an einem Ort, den Sie sich gut merken können.
+7. Schließen Sie Fiddler und den Storage-Explorer.
+
+Teil 3: Bereinigen der Fiddler-Ablaufverfolgung
+1. Doppelklicken Sie auf die Fiddler-Ablaufverfolgung (SAZ-Datei).
+2. Drücken Sie `ctrl`+`f`.
+3. Stellen Sie sich, dass im angezeigten Dialogfeld die folgenden Optionen festgelegt sind: Suchen = Anforderungen und Antworten, Untersuchen = Header und Textkörper
+4. Suchen Sie nach allen Kennwörtern, die Sie beim Erfassen der Fiddler-Ablaufverfolgung verwendet haben, sowie nach hervorgehobenen Einträgen. Klicken Sie mit der rechten Maustaste, und wählen Sie „Entfernen > Ausgewählte Sitzungen“ aus.
+5. Wenn Sie beim Erfassen der Ablaufverfolgung definitiv Kennwörter in Ihren Browser eingegeben haben, aber mithilfe von STRG+F keine Einträge finden und Ihre Kennwörter nicht ändern möchten bzw. die verwendeten Kennwörter für andere Konten verwendet werden, können Sie das Senden der SAZ-Datei überspringen. Vorsicht ist besser als Nachsicht. :)
+6. Speichern Sie die Ablaufverfolgung noch mal unter einem neuen Namen.
+7. Optional: Löschen Sie die ursprüngliche Ablaufverfolgung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

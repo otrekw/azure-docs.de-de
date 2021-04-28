@@ -8,19 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 48e823b19c1c6d30e73a7a673cbeab82a4d007a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489218"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256955"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Benutzerdefinierte E-Mail-Überprüfung mit Mailjet
 
-Verwenden Sie benutzerdefinierte E-Mails in Azure Active Directory B2C (Azure AD B2C), um angepasste E-Mails an Benutzer zu senden, die sich für die Verwendung Ihrer Anwendungen registrieren. Mithilfe von [Anzeigesteuerelementen](display-controls.md) (derzeit in der Vorschauphase) und dem E-Mail-Drittanbieter Mailjet können Sie eigene E-Mail-Vorlagen sowie *Absenderadressen* und Betreffzeilentexte verwenden. Darüber hinaus werden die Lokalisierung und benutzerdefinierte Einstellungen für Einmalkennwörter (One-Time Password, OTP) unterstützt.
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Verwenden Sie benutzerdefinierte E-Mails in Azure Active Directory B2C (Azure AD B2C), um angepasste E-Mails an Benutzer zu senden, die sich für die Verwendung Ihrer Anwendungen registrieren. Mithilfe vom E-Mail-Drittanbieter Mailjet können Sie eigene E-Mail-Vorlagen sowie *Absenderadressen* und Betreffzeilentexte verwenden. Darüber hinaus werden die Lokalisierung und benutzerdefinierte Einstellungen für Einmalkennwörter (One-Time Password, OTP) unterstützt.
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Für die benutzerdefinierte E-Mail-Überprüfung ist die Verwendung eines E-Mail-Drittanbieters wie [Mailjet](https://Mailjet.com), [SendGrid](./custom-email-sendgrid.md) oder [SparkPost](https://sparkpost.com), einer benutzerdefinierten REST-API oder eines HTTP-basierten E-Mail-Anbieters (einschließlich Ihres eigenen Anbieters) erforderlich. In diesem Artikel wird das Einrichten einer Lösung beschrieben, bei der Mailjet verwendet wird.
 
@@ -576,3 +587,5 @@ Ein Beispiel für eine Richtlinie für die benutzerdefinierte E-Mail-Überprüfu
 
 - [Custom email verification - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol) (Benutzerdefinierte E-Mail-Überprüfung – Display Controls)
 - Informationen zur Verwendung einer benutzerdefinierten REST-API oder eines HTTP-basierten SMTP-E-Mail-Anbieters finden Sie unter [Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Azure AD B2C-Richtlinie](restful-technical-profile.md).
+
+::: zone-end

@@ -2,13 +2,13 @@
 title: Resource Manager-Bereitstellung und klassische Bereitstellung
 description: Beschreibt die Unterschiede zwischen dem Ressourcen-Manager-Bereitstellungsmodell und dem klassischen Bereitstellungsmodell (auch als "Dienstverwaltungsmodell" bekannt).
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: da260db84de0cc8bd092eb95491b7cc38df93a12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: c2009034c431e53d162cb0f2c1f0d9815c8d1942
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96185843"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306931"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager und klassische Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
 
@@ -17,7 +17,7 @@ ms.locfileid: "96185843"
 
 In diesem Artikel wird sowohl das Azure Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell erläutert. Das Resource Manager-Bereitstellungsmodell und das klassische Bereitstellungsmodell sind zwei unterschiedliche Methoden zum Bereitstellen und Verwalten Ihrer Azure-Lösungen. Sie nutzen sie unter Verwendung von zwei verschiedenen API-Sätzen, und die bereitgestellten Ressourcen weisen unter Umständen erhebliche Unterschiede auf. Die beiden Modelle sind nicht miteinander kompatibel. In diesem Artikel werden diese Unterschiede beschrieben.
 
-Um die Bereitstellung und Verwaltung der Ressourcen zu vereinfachen, empfiehlt Microsoft die Verwendung von Resource Manager für alle neuen Ressourcen. Darüber hinaus empfiehlt Microsoft nach Möglichkeit die erneute Bereitstellung vorhandener Ressourcen über den Resource Manager.
+Um die Bereitstellung und Verwaltung der Ressourcen zu vereinfachen, empfiehlt Microsoft die Verwendung von Resource Manager für alle neuen Ressourcen. Darüber hinaus empfiehlt Microsoft nach Möglichkeit die erneute Bereitstellung vorhandener Ressourcen über den Resource Manager. Wenn Sie die Cloud Services verwendet haben, können Sie Ihre Lösung zu [Cloud Services (erweiterter Support)](../../cloud-services-extended-support/overview.md) migrieren.
 
 Falls der Resource Manager neu für Sie ist, ist es ratsam, zuerst die Terminologiedefinitionen unter [Übersicht über Azure Resource Manager](overview.md)durchzulesen.
 
@@ -40,7 +40,7 @@ Nach Einführung des Ressourcen-Managers wurden alle Ressourcen nachträglich zu
 
 Es sind drei Szenarien möglich:
 
-1. Cloud Services bietet keine Unterstützung für das Resource Manager-Bereitstellungsmodell.
+1. [Cloud Services (klassisch)](../../cloud-services/cloud-services-choose-me.md) bietet keine Unterstützung für das Resource Manager-Bereitstellungsmodell. [Cloud Services (erweiterter Support)](../../cloud-services-extended-support/overview.md) unterstützt das Resource Manager-Bereitstellungsmodell.
 2. Virtuelle Computer, Speicherkonten und virtuelle Netzwerke unterstützen sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
 3. Alle anderen Azure-Dienste unterstützen Resource Manager.
 
@@ -95,7 +95,7 @@ Im Folgenden sind die Komponenten und ihre Beziehungen für die klassische Berei
 
 Komponenten der klassischen Lösung zum Hosten eines virtuellen Computers:
 
-* Ein erforderlicher Clouddienst, der als Container für das Hosten virtueller Computer (Compute) fungiert. Virtuelle Computer werden automatisch mit einer Netzwerkschnittstellenkarte bereitgestellt, und ihnen wird von Azure eine IP-Adresse zugewiesen. Darüber hinaus enthält der Clouddienst eine externe Lastenausgleichsinstanz, eine öffentliche IP-Adresse und Standardendpunkte, um Remotedesktop- und Remote-PowerShell-Datenverkehr für die Windows-basierten virtuellen Computer und Secure Shell-Datenverkehr (SSH) für Linux-basierte virtuelle Computer zu ermöglichen.
+* Cloud Services (klassisch) fungiert als Container für das Hosting von virtuellen Computern (Compute). Virtuelle Computer werden automatisch mit einer Netzwerkschnittstellenkarte bereitgestellt, und ihnen wird von Azure eine IP-Adresse zugewiesen. Darüber hinaus enthält der Clouddienst eine externe Lastenausgleichsinstanz, eine öffentliche IP-Adresse und Standardendpunkte, um Remotedesktop- und Remote-PowerShell-Datenverkehr für die Windows-basierten virtuellen Computer und Secure Shell-Datenverkehr (SSH) für Linux-basierte virtuelle Computer zu ermöglichen.
 * Ein erforderliches Speicherkonto, in dem die virtuellen Festplatten für einen virtuellen Computer gespeichert werden, einschließlich des Betriebssystems sowie temporärer und zusätzlicher Datenträger (Speicher).
 * Ein optionales virtuelles Netzwerk, das als zusätzlicher Container fungiert, in dem Sie eine Subnetzstruktur erstellen und das Subnetz auswählen können, in dem sich der virtuelle Computer befindet (Netzwerk).
 

@@ -3,13 +3,13 @@ title: 'Erstellen einer Java-Funktion über die Befehlszeile: Azure Functions'
 description: Erfahren Sie, wie Sie eine JavaScript-Funktion über die Befehlszeile erstellen und anschließend das lokale Node.js-Projekt für das serverlose Hosten in Azure Functions veröffentlichen.
 ms.date: 11/03/2020
 ms.topic: quickstart
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: b8db78e56087e7cb777d1aa85391d4b6ac2aae27
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: eb162bcff647e9e1dbced19ddea33a8f3c54b58e
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787537"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831940"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer JavaScript-Funktion über die Befehlszeile in Azure
 
