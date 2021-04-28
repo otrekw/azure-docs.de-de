@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f44cbf3764063c511c896f11bb7ebfaae2973f0c
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: ebc403553443a9ea04525323b751fbdb51d23c6e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365398"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500582"
 ---
 # <a name="set-up-msix-app-attach-using-powershell"></a>Einrichten des MSIX-Features zum Anfügen von Apps mit PowerShell
 
@@ -19,14 +19,10 @@ Neben dem Azure-Portal können Sie auch PowerShell verwenden, um das MSIX-Featur
 
 ## <a name="requirements"></a>Anforderungen
 
->[!IMPORTANT]
->Bevor Sie beginnen, sollten Sie [dieses Formular](https://aka.ms/enablemsixappattach) ausfüllen und übermitteln, um das MSIX-Feature zum Anfügen von Apps in Ihrem Abonnement zu aktivieren. Wenn Ihre Anforderung noch nicht genehmigt wurde, funktioniert das MSIX-Feature zum Anfügen von Apps nicht. Die Genehmigung von Anforderungen kann an Werktagen bis zu 24 Stunden dauern. Sie erhalten eine E-Mail, wenn Ihre Anforderung akzeptiert und abgeschlossen wurde.
-
 Folgendes benötigen Sie, um das MSIX-Feature zum Anfügen von Apps zu konfigurieren:
 
 - Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Windows Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Windows Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
 - Ein Windows Virtual Desktop-Hostpool mit mindestens einem aktiven Sitzungshost.
-- Dieser Hostpool muss sich in der Überprüfungsumgebung befinden.
 - Eine Desktop-/Remote-App-Gruppe.
 - Das MSIX-Pakettool.
 - Eine MSIX-gepackte Anwendung, die in ein MSIX-Image erweitert wurde, das in eine Dateifreigabe hochgeladen wird.

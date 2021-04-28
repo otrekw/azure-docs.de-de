@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ec8104a5fd8d1c524f75c7a5173015115d85a253
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4d7123aa22d95e3e4c3850be775ddad96f28d280
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064306"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785305"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -90,7 +90,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="afs-region-availability"></a>
   **Welche Regionen werden für die Azure-Dateisynchronisierung unterstützt?**  
-    Eine Liste der verfügbaren Regionen finden Sie im Abschnitt [Regionsverfügbarkeit](storage-sync-files-planning.md#azure-file-sync-region-availability) im Planungshandbuch für die Azure-Dateisynchronisierung. Wir erweitern den Support kontinuierlich auf weitere Regionen, einschließlich nicht öffentliche Regionen.
+    Eine Liste der verfügbaren Regionen finden Sie im Abschnitt [Regionsverfügbarkeit](../file-sync/file-sync-planning.md#azure-file-sync-region-availability) im Planungshandbuch für die Azure-Dateisynchronisierung. Wir erweitern den Support kontinuierlich auf weitere Regionen, einschließlich nicht öffentliche Regionen.
 
 * <a id="cross-domain-sync"></a>
   **Kann ich in Domänen eingebundene Server und nicht in Domänen eingebundene Server in derselben Synchronisierungsgruppe verwenden?**  
@@ -119,28 +119,28 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="sizeondisk-versus-size"></a>
   **Warum stimmt die Eigenschaft *Größe auf Datenträger* einer Datei nach der Verwendung der Azure-Dateisynchronisierung nicht mit der Eigenschaft *Größe* überein?**  
-  Siehe [Grundlegendes zum Cloudtiering der Azure-Dateisynchronisierung](storage-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior)
+  Siehe [Grundlegendes zum Cloudtiering der Azure-Dateisynchronisierung](../file-sync/file-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior)
 
 * <a id="is-my-file-tiered"></a>
   **Woran erkenne ich, ob eine Datei per Tiering ausgelagert wurde?**  
-  Siehe [Verwalten von Dateien, die von der Azure-Dateisynchronisierung ausgelagert werden](storage-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered)
+  Siehe [Grundlegendes zum Cloudtiering](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered).
 
 * <a id="afs-recall-file"></a>**Eine Datei, die ich verwenden möchte, wurde per Tiering ausgelagert. Wie kann ich die Datei auf den Datenträger zurückrufen, um sie lokal zu verwenden?**  
-  Siehe [Verwalten von Dateien, die von der Azure-Dateisynchronisierung ausgelagert werden](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk)
+  Siehe [Grundlegendes zum Cloudtiering](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk).
 
 * <a id="afs-force-tiering"></a>
   **Wie kann ich das Tiering einer Datei oder eines Verzeichnisses erzwingen?**  
-  Siehe [Verwalten von Dateien, die von der Azure-Dateisynchronisierung ausgelagert werden](storage-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered)
+  Siehe [Grundlegendes zum Cloudtiering](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered).
 
 * <a id="afs-effective-vfs"></a>
   **Wie wird *freier Speicherplatz auf Volume* interpretiert, wenn ich über mehrere Serverendpunkte auf einem Volume verfüge?**  
-  Siehe [Auswählen von Cloudtieringrichtlinien der Azure-Dateisynchronisierung](storage-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume)
+  Siehe [Grundlegendes zum Cloudtiering](../file-sync/file-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume).
   
 * <a id="afs-tiered-files-tiering-disabled"></a>
   **Ich habe Cloudtiering deaktiviert. Warum befinden sich mehrstufige Dateien am Speicherort des Serverendpunkts?**  
     Es gibt zwei Gründe, warum mehrstufige Dateien am Speicherort des Serverendpunkts vorhanden sein können:
 
-    - Wenn Sie beim Hinzufügen eines neuen Serverendpunkts zu einer vorhandenen Synchronisierungsgruppe entweder die Option „recall namespace first“ (Namespace zuerst abrufen) oder die Option „recall namespace only“ (Nur Namespace abrufen) als anfänglichen Downloadmodus auswählen, werden die Dateien als mehrstufig angezeigt, bis sie lokal heruntergeladen werden. Wählen Sie die Option zur Vermeidung ausgelagerter Dateien als anfänglichen Downloadmodus aus, um dies zu vermeiden. Zum manuellen Abrufen von Dateien verwenden Sie das Cmdlet [Invoke-StorageSyncFileRecall](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk).
+    - Wenn Sie beim Hinzufügen eines neuen Serverendpunkts zu einer vorhandenen Synchronisierungsgruppe entweder die Option „recall namespace first“ (Namespace zuerst abrufen) oder die Option „recall namespace only“ (Nur Namespace abrufen) als anfänglichen Downloadmodus auswählen, werden die Dateien als mehrstufig angezeigt, bis sie lokal heruntergeladen werden. Wählen Sie die Option zur Vermeidung ausgelagerter Dateien als anfänglichen Downloadmodus aus, um dies zu vermeiden. Zum manuellen Abrufen von Dateien verwenden Sie das Cmdlet [Invoke-StorageSyncFileRecall](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk).
 
     - Wenn das Cloudtiering auf dem Serverendpunkt aktiviert und anschließend deaktiviert wurde, bleiben die Dateien so lange mehrstufig, bis auf Sie zugegriffen wird.
 
@@ -150,11 +150,11 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
     Dieses Verhalten ist nicht spezifisch für die Azure-Dateisynchronisierung. In Windows-Explorer wird für alle Dateien, die das Attribut „Offline“ aufweisen, ein graues „X“ angezeigt. Dieses „X“ wird beim Zugriff auf Dateien über SMB angezeigt. Eine ausführliche Erläuterung des Verhaltens finden Sie unter [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105).
 
-    Fragen zum Verwalten von ausgelagerten Dateien finden Sie unter [Verwalten von mehrstufigen Dateien](storage-sync-how-to-manage-tiered-files.md).
+    Fragen zum Verwalten von ausgelagerten Dateien finden Sie unter [Verwalten von mehrstufigen Dateien](../file-sync/file-sync-how-to-manage-tiered-files.md).
 
 * <a id="afs-files-excluded"></a>
   **Welche Dateien oder Ordner werden automatisch von der Azure-Dateisynchronisierung ausgeschlossen?**  
-  Siehe [Übersprungene Dateien](storage-sync-files-planning.md#files-skipped).
+  Siehe [Übersprungene Dateien](../file-sync/file-sync-planning.md#files-skipped).
 
 * <a id="afs-os-support"></a>
   **Kann ich die Azure-Dateisynchronisierung entweder mit Windows Server 2008 R2, Linux oder meinem NAS-Gerät (Network Attached Storage) verwenden?**  
@@ -162,7 +162,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **Warum sind mehrstufige Dateien außerhalb des Serverendpunkt-Namespaces vorhanden?**  
-    Vor der Agent-Version 3 der Azure-Dateisynchronisierung blockierte die Azure-Dateisynchronisierung die Verschiebung mehrstufiger Dateien außerhalb des Serverendpunkts, aber auf demselben Volume wie der Serverendpunkt. Kopiervorgänge, Verschiebungen nicht mehrstufiger Dateien und Verschiebungen mehrstufiger Dateien in andere Volumes waren hiervon nicht betroffen. Der Grund für dieses Verhalten war die implizite Annahme, dass Datei-Explorer und andere Windows-APIs Verschiebungen auf dem gleichen Volume durchführen, die (fast) unmittelbare Umbenennungsvorgänge sind. Dies bedeutet, dass Datei-Explorer oder andere Methoden zum Verschieben (z.B. über die Befehlszeile oder PowerShell) scheinbar nicht mehr reagieren, während die Azure-Dateisynchronisierung die Daten aus der Cloud abruft. Beginnend mit [Version 3.0.12.0 des Azure-Dateisynchronisierungs-Agents](storage-files-release-notes.md#supported-versions) lässt die Azure-Dateisynchronisierung zu, dass Sie eine mehrstufige Datei außerhalb des Serverendpunkts verschieben. Wir vermeiden die bereits erwähnten negativen Auswirkungen, indem wir zulassen, dass die mehrstufige Datei außerhalb des Serverendpunkts als mehrstufige Datei vorhanden ist, und dann die Datei im Hintergrund abrufen. Dies bedeutet, dass Verschiebungen auf dem gleichen Volume unmittelbar sind, und wir erledigen die gesamte Arbeit zum Abrufen der Datei auf den Datenträger, nachdem der Verschiebevorgang abgeschlossen ist. 
+    Vor der Agent-Version 3 der Azure-Dateisynchronisierung blockierte die Azure-Dateisynchronisierung die Verschiebung mehrstufiger Dateien außerhalb des Serverendpunkts, aber auf demselben Volume wie der Serverendpunkt. Kopiervorgänge, Verschiebungen nicht mehrstufiger Dateien und Verschiebungen mehrstufiger Dateien in andere Volumes waren hiervon nicht betroffen. Der Grund für dieses Verhalten war die implizite Annahme, dass Datei-Explorer und andere Windows-APIs Verschiebungen auf dem gleichen Volume durchführen, die (fast) unmittelbare Umbenennungsvorgänge sind. Dies bedeutet, dass Datei-Explorer oder andere Methoden zum Verschieben (z.B. über die Befehlszeile oder PowerShell) scheinbar nicht mehr reagieren, während die Azure-Dateisynchronisierung die Daten aus der Cloud abruft. Beginnend mit [Version 3.0.12.0 des Azure-Dateisynchronisierungs-Agents](../file-sync/file-sync-release-notes.md#supported-versions) lässt die Azure-Dateisynchronisierung zu, dass Sie eine mehrstufige Datei außerhalb des Serverendpunkts verschieben. Wir vermeiden die bereits erwähnten negativen Auswirkungen, indem wir zulassen, dass die mehrstufige Datei außerhalb des Serverendpunkts als mehrstufige Datei vorhanden ist, und dann die Datei im Hintergrund abrufen. Dies bedeutet, dass Verschiebungen auf dem gleichen Volume unmittelbar sind, und wir erledigen die gesamte Arbeit zum Abrufen der Datei auf den Datenträger, nachdem der Verschiebevorgang abgeschlossen ist. 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
   **Es besteht ein Problem mit der Azure-Dateisynchronisierung auf dem Server (Synchronisierung, Cloudtiering usw.). Soll der Serverendpunkt entfernt und neu erstellt werden?**  
@@ -170,7 +170,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     
 * <a id="afs-resource-move"></a>
   **Kann ich den Speichersynchronisierungsdienst und/oder das Speicherkonto in eine andere Ressourcengruppe, ein anderes Abonnement oder einen anderen Azure AD-Mandanten verschieben?**  
-   Ja, der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe, ein anderes Abonnement oder einen anderen Azure AD-Mandanten verschoben werden. Wenn der Speichersynchronisierungsdienst oder das Speicherkonto verschoben wurde, müssen Sie der Anwendung „Microsoft.StorageSync“ Zugriff auf das Speicherkonto gewähren (siehe [Sicherstellen, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
+   Ja, der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe, ein anderes Abonnement oder einen anderen Azure AD-Mandanten verschoben werden. Wenn der Speichersynchronisierungsdienst oder das Speicherkonto verschoben wurde, müssen Sie der Anwendung „Microsoft.StorageSync“ Zugriff auf das Speicherkonto gewähren (siehe [Sicherstellen, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt](../file-sync/file-sync-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > Beim Erstellen des Cloudendpunkts müssen sich der Speichersynchronisierungsdienst und das Speicherkonto im selben Azure AD-Mandanten befinden. Nach der Erstellung des Cloudendpunkts können der Speichersynchronisierungsdienst und das Speicherkonto in verschiedene Azure AD Mandanten verschoben werden.
@@ -494,4 +494,4 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 ## <a name="see-also"></a>Weitere Informationen
 * [Behandeln von Azure Files-Problemen unter Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Behandeln von Azure Files-Problemen unter Linux](storage-troubleshoot-linux-file-connection-problems.md)
-* [Problembehandlung für die Azure-Dateisynchronisierung](storage-sync-files-troubleshoot.md)
+* [Problembehandlung für die Azure-Dateisynchronisierung](../file-sync/file-sync-troubleshoot.md)

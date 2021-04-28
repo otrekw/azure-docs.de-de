@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b524869998dd2464ed359ec61ce655a807899aaa
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: d3247a86795b9661196c3264c60b06e7c61d6e23
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565715"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877899"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements mit Vorschau-APIs
 
@@ -198,7 +198,7 @@ Wenn Sie eine vollständige Liste aller Parameter anzeigen möchten, finden Sie 
 
 Installieren Sie zunächst die Vorschauerweiterung, indem Sie `az extension add --name subscription` ausführen.
 
-Führen Sie den folgenden [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create)-Befehl aus, und ersetzen Sie dabei `<enrollmentAccountObjectId>` durch den `name`-Wert, den Sie im ersten Schritt (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) kopiert haben. Informationen zum Festlegen von Besitzern finden Sie [hier](grant-access-to-create-subscription.md#userObjectId).
+Führen Sie den folgenden [az account create](/cli/azure/account#-ext-subscription-az-account-create)-Befehl aus, und ersetzen Sie dabei `<enrollmentAccountObjectId>` durch den `name`-Wert, den Sie im ersten Schritt (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) kopiert haben. Informationen zum Festlegen von Besitzern finden Sie [hier](grant-access-to-create-subscription.md#userObjectId).
 
 ```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
@@ -213,7 +213,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `owner-upn`    | Nein       | String | Die E-Mail-Adresse eines Benutzers, den Sie als Azure RBAC-Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird. Sie können den Parameter anstelle von `owner-object-id` verwenden.|
 | `owner-spn` | Nein       | String | Die Anwendungs-ID eines Dienstprinzipals, den Sie als Azure RBAC-Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird. Sie können den Parameter anstelle von `owner-object-id` verwenden. Wenn Sie den Parameter verwenden, benötigt der Dienstprinzipal [Lesezugriff auf das Verzeichnis](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
-Wenn Sie eine vollständige Liste aller Parameter anzeigen möchten, finden Sie weitere Informationen unter [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create).
+Wenn Sie eine vollständige Liste aller Parameter anzeigen möchten, finden Sie weitere Informationen unter [az account create](/cli/azure/account#-ext-subscription-az-account-create).
 
 ---
 
@@ -365,7 +365,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 | `skuId` | Ja      | String | Die SKU-ID, die den Typ des Azure-Plans bestimmt. |
 | `owners`      | Nein       | String | Die Objekt-ID eines Benutzers oder Dienstprinzipals, den Sie als Azure RBAC-Besitzer für das Abonnement bei der Erstellung hinzufügen möchten  |
 | `costCenter` | Nein      | String | Die Kostenstelle, die dem Abonnement zugeordnet ist. Sie wird in der CSV-Datei zur Nutzung angezeigt. |
-| `managementGroupId` | Nein      | String | Die ID der Verwaltungsgruppe, der das Abonnement hinzugefügt wird. Informationen zum Erhalt der Liste mit den Verwaltungsgruppen finden Sie im API-Artikel [Verwaltungsgruppen – Liste](/rest/api/resources/managementgroups/list). Verwenden Sie die ID einer Verwaltungsgruppe über die API. |
+| `managementGroupId` | Nein      | String | Die ID der Verwaltungsgruppe, der das Abonnement hinzugefügt wird. Informationen zum Erhalt der Liste mit den Verwaltungsgruppen finden Sie im API-Artikel [Verwaltungsgruppen – Liste](/rest/api/managementgroups/entities/list). Verwenden Sie die ID einer Verwaltungsgruppe über die API. |
 
 In der Antwort wird ein `subscriptionCreationResult`-Objekt für die Überwachung zurückgegeben. Nach Abschluss der Erstellung des Abonnements gibt das `subscriptionCreationResult`-Objekt ein `subscriptionLink`-Objekt zurück, das die Abonnement-ID enthält.
 

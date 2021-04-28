@@ -3,14 +3,14 @@ title: Ausschließliches Bereitstellen von zustandslosen Knotentypen in einem Se
 description: Erfahren Sie, wie Sie zustandslose Knotentypen in Azure Service Fabric-Clustern erstellen und bereitstellen.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/16/2021
+ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 68c617b6e9345910bfd913e61e227a8e6c401bbc
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576039"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030008"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>Bereitstellen eines Azure Service Fabric-Clusters mit ausschließlich zustandslosen Knotentypen
 Für Service Fabric-Knotentypen gilt die Annahme, dass zu einem bestimmten Zeitpunkt ggf. zustandsbehaftete Dienste auf den Knoten platziert werden. Zustandslose Knotentypen lockern diese Annahme für einen Knotentyp und ermöglichen so die Nutzung anderer Funktionen wie schnellere Aufskalierungsvorgänge, Unterstützung für automatische Betriebssystemupgrades bei Bronze-Dauerhaftigkeit und horizontales Skalieren auf mehr als 100 Knoten in einer einzigen VM-Skalierungsgruppe.

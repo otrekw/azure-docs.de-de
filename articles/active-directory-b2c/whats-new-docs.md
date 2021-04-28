@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 7a2384a451d851d1bede24fc2dd73a386c019430
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 61c24a7c14eb2fafff8a052f24a50a85f03de404
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443711"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107225953"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: Neuerungen
 
@@ -87,7 +87,7 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation von Azure Acti
 - [Einrichten der Registrierung und Anmeldung mit einem Twitter-Konto mithilfe von Azure Active Directory B2C](identity-provider-twitter.md)
 - [Einrichten der Registrierung und Anmeldung mit einem WeChat-Konto mithilfe von Azure Active Directory B2C](identity-provider-wechat.md)
 - [Einrichten der Registrierung und Anmeldung mit einem Weibo-Konto mithilfe von Azure Active Directory B2C](identity-provider-weibo.md)
-- [Übersicht über Benutzerdefinierte Azure AD B2C-Richtlinien](custom-policy-trust-frameworks.md)
+- [Übersicht über Benutzerdefinierte Azure AD B2C-Richtlinien](custom-policy-overview.md)
 
 
 ## <a name="december-2020"></a>Dezember 2020

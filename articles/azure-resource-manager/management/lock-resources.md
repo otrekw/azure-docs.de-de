@@ -4,12 +4,12 @@ description: Verhindern Sie, dass Benutzer Azure-Ressourcen aktualisieren oder l
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 71637318a60e66bf5000de2f564d740cc101cc60
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1cc96a855c2bfe79bbf5876f0476c016d36ca9a4
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768721"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030065"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
@@ -278,7 +278,7 @@ Remove-AzResourceLock -LockId $lockId
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Sperren Sie bereitgestellte Ressourcen mit der Azure CLI, indem Sie den Befehl [az lock create](/cli/azure/lock#az_lock_create) verwenden.
+Sperren Sie bereitgestellte Ressourcen mit der Azure CLI, indem Sie den Befehl [az lock create](/cli/azure/lock#az-lock-create) verwenden.
 
 Geben Sie zum Sperren einer Ressource den Namen der Ressource, ihren Ressourcentyp und ihren Ressourcengruppennamen an.
 
@@ -292,7 +292,7 @@ Geben Sie zum Sperren einer Ressourcengruppe ihren Namen an.
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-Verwenden Sie zum Abrufen von Informationen zu einer Sperre [az lock list](/cli/azure/lock#az_lock_list). Rufen Sie alle Sperren im Abonnement mit dem folgenden Befehl ab:
+Verwenden Sie zum Abrufen von Informationen zu einer Sperre [az lock list](/cli/azure/lock#az-lock-list). Rufen Sie alle Sperren im Abonnement mit dem folgenden Befehl ab:
 
 ```azurecli
 az lock list

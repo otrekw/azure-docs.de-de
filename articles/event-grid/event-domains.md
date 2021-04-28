@@ -2,13 +2,13 @@
 title: Ereignisdomänen in Azure Event Grid
 description: Dieser Artikel beschreibt, wie Sie Ereignisdomänen verwenden, um den Fluss benutzerdefinierter Ereignisse für Ihre verschiedenen Geschäftsorganisationen, Kunden oder Anwendungen zu verwalten.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/13/2021
+ms.openlocfilehash: 32c06ac55f667ec9807c7952127c2cf0f0384024
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198656"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374708"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Grundlegendes zu Ereignisdomänen für die Verwaltung von Event Grid-Themen
 
@@ -23,7 +23,7 @@ Dieser Artikel beschreibt, wie Sie Ereignisdomänen verwenden, um den Fluss benu
 
 Eine Ereignisdomäne ist ein Verwaltungstool für eine große Anzahl von Event Grid-Themen, die sich auf dieselbe Anwendung beziehen. Sie können sie sich als ein Metathema vorstellen, das Tausende von Einzelthemen aufweisen kann.
 
-Ereignisdomänen stellen Ihnen die Architektur, die Azure-Dienste (wie Storage und IoT Hub) zum Veröffentlichen ihrer Ereignisse verwenden, zur Verfügung. Sie ermöglichen es Ihnen, Ereignisse für Tausende von Themen zu veröffentlichen. Domänen geben Ihnen auch die Autorisierungs- und Authentifizierungskontrolle über jedes Thema, damit Sie Ihre Mandanten partitionieren können.
+Ereignisdomänen stellen Ihnen die Architektur zur Verfügung, die Azure-Dienste (wie Storage und IoT Hub) zum Veröffentlichen ihrer Ereignisse verwenden. Sie ermöglichen es Ihnen, Ereignisse für Tausende von Themen zu veröffentlichen. Domänen geben Ihnen auch die Autorisierungs- und Authentifizierungskontrolle über jedes Thema, damit Sie Ihre Mandanten partitionieren können.
 
 ## <a name="example-use-case"></a>Beispiel eines Anwendungsfalls
 [!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
@@ -43,6 +43,9 @@ Weitere Informationen zu diesen Rollen finden Sie unter [Integrierte Rollen für
 ## <a name="subscribing-to-topics"></a>Abonnieren von Themen
 
 Das Abonnieren von Ereignissen zu einem Thema innerhalb einer Ereignisdomäne ist identisch mit dem [Erstellen eines Ereignisabonnements für ein benutzerdefiniertes Thema](./custom-event-quickstart.md) oder dem Abonnieren eines Ereignisses von einem Azure-Dienst.
+
+> [!IMPORTANT]
+> Das Domänenthema wird in Event Grid als **automatisch verwaltete** Ressource betrachtet. Sie können ein Ereignisabonnement im Domänenthemabereich erstellen, ohne das Domänenthema zu erstellen. In diesem Fall erstellt Event Grid automatisch das Domänenthema in Ihrem Namen. Natürlich können Sie das Domänenthema auch manuell erstellen. Dieses Verhalten ermöglicht es Ihnen, sich um eine Ressource weniger zu kümmern, wenn Sie mit einer großen Anzahl von Domänenthemen arbeiten. Wenn das letzte Abonnement eines Domänenthemas gelöscht wird, wird das Domänenthema auch gelöscht, und zwar unabhängig davon, ob das Domänenthema manuell oder automatisch erstellt wurde. 
 
 ### <a name="domain-scope-subscriptions"></a>Domänenbereichabonnements
 
@@ -94,7 +97,7 @@ Im Anschluss sind die Grenzwerte und Kontingente für Ereignisdomänen angegeben
 - 50 Domänenbereichabonnements 
 - 5\.000 Ereignisse pro Sekunde (Rate für die Erfassung in einer Domäne)
 
-Sollten diese Grenzwerte für Sie nicht geeignet sein, wenden Sie sich an das Produktteam, indem Sie entweder ein Supportticket erstellen oder eine E-Mail an [askgrid@microsoft.com](mailto:askgrid@microsoft.com) senden. 
+Wenn Ihnen diese Grenzwerte nicht zusagen, öffnen Sie ein Supportticket, oder senden Sie eine E-Mail an [askgrid@microsoft.com](mailto:askgrid@microsoft.com). 
 
 ## <a name="pricing"></a>Preise
 Für Ereignisdomänen gelten die gleichen [Betriebspreise](https://azure.microsoft.com/pricing/details/event-grid/) wie für alle anderen Features in Event Grid.

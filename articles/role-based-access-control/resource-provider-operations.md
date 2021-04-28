@@ -9,16 +9,16 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: e11e03ec7379dede6bf998f639a237201c297e72
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d6126e9d782765b992ae2fd51016984389c9b187
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303626"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778299"
 ---
 # <a name="azure-resource-provider-operations"></a>Vorgänge für Azure-Ressourcenanbieter
 
-In diesem Abschnitt werden die Vorgänge für Azure-Ressourcenanbieter aufgelistet, die in integrierten Rollen verwendet werden. Sie können diese Vorgänge in eigenen [benutzerdefinierten Azure-Rollen](custom-roles.md) verwendet, um eine präzise Zugriffssteuerung für Ressourcen in Azure bereitzustellen. Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwenden Sie [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) oder [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list), um die neuesten Vorgänge abzurufen.
+In diesem Abschnitt werden die Vorgänge für Azure-Ressourcenanbieter aufgelistet, die in integrierten Rollen verwendet werden. Sie können diese Vorgänge in eigenen [benutzerdefinierten Azure-Rollen](custom-roles.md) verwendet, um eine präzise Zugriffssteuerung für Ressourcen in Azure bereitzustellen. Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwenden Sie [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) oder [az provider operation list](/cli/azure/provider/operation#az_provider_operation_list), um die neuesten Vorgänge abzurufen.
 
 Klicken Sie in der folgenden Tabelle auf den Namen des Ressourcenanbieters, um die Liste der Vorgänge anzuzeigen.
 
@@ -5023,7 +5023,7 @@ Azure-Dienst: [Power BI Embedded](/azure/power-bi-embedded/)
 Azure-Dienst: [Azure Purview](../purview/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Aktion | BESCHREIBUNG |
+> | Aktion | Beschreibung |
 > | --- | --- |
 > | Microsoft.Purview/register/action | Registriert das Abonnement für den Microsoft Purview-Anbieter |
 > | Microsoft.Purview/unregister/action | Hebt die Registrierung des Abonnements für den Microsoft Purview-Anbieter auf |
