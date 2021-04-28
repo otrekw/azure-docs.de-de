@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 774eb05ae43e393db3d11e8e21a427736614809b
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: a37b740333e599d19248ffa9b21be3e4d6fe78b3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285109"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306295"
 ---
 # <a name="language-support-for-computer-vision"></a>Sprachunterstützung für maschinelles Sehen
 
@@ -25,7 +25,7 @@ Einige Features des maschinellen Sehens unterstützen mehrere Sprachen; alle hie
 
 Die OCR-APIs für maschinelles Sehen unterstützen verschiedene Sprachen. Es muss kein Sprachcode angegeben werden. Weitere Informationen finden Sie in der [Übersicht über die optische Zeichenerkennung (OCR)](overview-ocr.md).
 
-|Sprache| Sprachcode | OCR-API | Read 3.0/3.1 | Read v3.2 Vorschau |
+|Sprache| Sprachcode | OCR-API | Read 3.0/3.1 | Read v3.2 |
 |:-----|:----:|:-----:|:---:|:---:|
 |Afrikaans|`af`| | |✔ |
 |Albanisch |`sq`| | |✔ |
@@ -46,7 +46,7 @@ Die OCR-APIs für maschinelles Sehen unterstützen verschiedene Sprachen. Es mus
 |Dänisch | `da` |✔ | |✔ |
 |Niederländisch | `nl` |✔ |✔ |✔ |
 |Englisch | `en` |✔ |✔ |✔ |
-|Estnisch  |`crh`| | |✔ |
+|Estnisch  |`et`| | |✔ |
 |Fidschi |`fj`| | |✔ |
 |Filipino  |`fil`| | |✔ |
 |Finnisch | `fi` |✔ | |✔ |

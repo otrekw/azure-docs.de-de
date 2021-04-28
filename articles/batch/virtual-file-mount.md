@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie ein virtuelles Dateisystem in einen Batch-Poo
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 03/26/2021
-ms.openlocfilehash: dc5fbdf9ca0df8362a8999856c3f7163dd5e59b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dcd56a12d8728b83cdcb7cea4c16c4aedd4251a7
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626026"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105747"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Einbinden eines virtuellen Dateisystems in einen Batch-Pool
 
@@ -53,7 +53,7 @@ In den folgenden Codebeispielen wird das Einbinden verschiedener Dateifreigaben 
 
 ### <a name="azure-files-share"></a>Azure Files-Freigabe
 
-Azure Files ist das Standardangebot für Azure-Clouddateisysteme. Weitere Informationen zum Abrufen eines der Parameter im Codebeispiel für die Einbindungskonfiguration finden Sie unter [Verwenden einer Azure Files-Freigabe](../storage/files/storage-how-to-use-files-windows.md).
+Azure Files ist das Standardangebot für Azure-Clouddateisysteme. Weitere Informationen zum Abrufen von Parametern im Codebeispiel für die Bereitstellungskonfiguration finden Sie unter [Verwenden einer Azure Files-Freigabe – SMB](../storage/files/storage-how-to-use-files-windows.md) oder [Verwenden einer Azure Files-Freigabe mit – NFS](../storage/files/storage-files-how-to-create-nfs-shares.md).
 
 ```csharp
 new PoolAddParameter

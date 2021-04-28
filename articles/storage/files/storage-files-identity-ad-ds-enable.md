@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 5ee4481b3151e28d5d37760e486a43adbc194994
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2be762adfeb296546a289e745794e53e4ee16a09
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553220"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895845"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Teil 1: Aktivieren der AD DS-Authentifizierung für Ihre Dateifreigaben in Azure 
 
@@ -41,27 +41,30 @@ Das vom Cmdlet erstellte AD DS-Konto repräsentiert das Speicherkonto. Wenn das 
 Ersetzen Sie die Platzhalterwerte in den Parametern unten durch ihre eigenen Werte, bevor Sie das Skript in PowerShell ausführen.
 > [!IMPORTANT]
 > Mit dem Cmdlet für den Domänenbeitritt wird ein AD-Konto erstellt, das das Speicherkonto (die Dateifreigabe) in AD repräsentiert. Sie können sich wahlweise als Computerkonto oder Dienstanmeldekonto registrieren. Einzelheiten finden Sie unter [Häufig gestellte Fragen](./storage-files-faq.md#security-authentication-and-access-control). Für Computerkonten gilt eine Standardfrist für den Ablauf des Kennworts, die in AD auf 30 Tage festgelegt ist. Analog dazu kann für das Dienstanmeldekonto in der AD-Domäne oder Organisationseinheit (OU) eine Standardablauffrist für das Kennwort festgelegt sein.
-> Für beide Kontotypen wir empfohlen, das in Ihrer AD-Umgebung konfigurierte Kenntwortablaufalter zu überprüfen und eine [Aktualisierung des Kennworts Ihrer Speicherkontoidentität](storage-files-identity-ad-ds-update-password.md) für das AD-Konto zu planen, bevor das maximale Kennwortalter erreicht ist. Sie können in Erwägung ziehen, [eine neue AD-Organisationseinheit (OE) in AD](/powershell/module/addsadministration/new-adorganizationalunit) zu erstellen und die Richtlinie zum Ablauf des Kennworts für [Computerkonten](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) oder Dienstanmeldekonten entsprechend zu deaktivieren. 
+> Für beide Kontotypen wir empfohlen, das in Ihrer AD-Umgebung konfigurierte Kenntwortablaufalter zu überprüfen und eine [Aktualisierung des Kennworts Ihrer Speicherkontoidentität](storage-files-identity-ad-ds-update-password.md) für das AD-Konto zu planen, bevor das maximale Kennwortalter erreicht ist. Sie können in Erwägung ziehen, [eine neue AD-Organisationseinheit (OE) in AD](/powershell/module/activedirectory/new-adorganizationalunit) zu erstellen und die Richtlinie zum Ablauf des Kennworts für [Computerkonten](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) oder Dienstanmeldekonten entsprechend zu deaktivieren. 
 
 ```PowerShell
-#Change the execution policy to unblock importing AzFilesHybrid.psm1 module
+# Change the execution policy to unblock importing AzFilesHybrid.psm1 module
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 
 # Navigate to where AzFilesHybrid is unzipped and stored and run to copy the files into your path
 .\CopyToPSPath.ps1 
 
-#Import AzFilesHybrid module
+# Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
+# Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
+# If you are logging into an Azure environment other than Public (ex. AzureUSGovernment) you will need to specify that.
+# See https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-ps
+# for more information.
 Connect-AzAccount
 
-#Define parameters
+# Define parameters, $StorageAccountName currently has a maximum limit of 15 characters
 $SubscriptionId = "<your-subscription-id-here>"
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
 
-#Select the target subscription for the current session
+# Select the target subscription for the current session
 Select-AzSubscription -SubscriptionId $SubscriptionId 
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
@@ -89,7 +92,7 @@ Wenn Sie das oben beschriebene Skript `Join-AzStorageAccountForAuth` bereits erf
 
 ### <a name="checking-environment"></a>Überprüfen der Umgebung
 
-Sie müssen als ersten Schritt den Zustand der Umgebung überprüfen. Insbesondere müssen Sie überprüfen, ob [Active Directory PowerShell](/powershell/module/addsadministration/) installiert ist und die Shell mit Administratorrechten ausgeführt wird. Überprüfen Sie dann, ob das [Modul „Az.Storage 2.0“](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) installiert ist. Ist dies nicht der Fall, installieren Sie das Modul. Wenn Sie diese beiden Überprüfungen durchgeführt haben, überprüfen Sie, ob Ihre AD DS-Umgebung ein bereits vorhandenes [Computerkonto](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (Standardwert) oder ein [Dienstanmeldekonto](/windows/win32/ad/about-service-logon-accounts) mit dem SPN/UPN „cifs/ihr-speicherkontoname.file.core.windows.net“ aufweist. Wenn das Konto nicht vorhanden ist, erstellen Sie wie im folgenden Abschnitt beschrieben ein Konto.
+Sie müssen als ersten Schritt den Zustand der Umgebung überprüfen. Insbesondere müssen Sie überprüfen, ob [Active Directory PowerShell](/powershell/module/activedirectory/) installiert ist und die Shell mit Administratorrechten ausgeführt wird. Überprüfen Sie dann, ob das [Modul „Az.Storage 2.0“](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) installiert ist. Ist dies nicht der Fall, installieren Sie das Modul. Wenn Sie diese beiden Überprüfungen durchgeführt haben, überprüfen Sie, ob Ihre AD DS-Umgebung ein bereits vorhandenes [Computerkonto](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (Standardwert) oder ein [Dienstanmeldekonto](/windows/win32/ad/about-service-logon-accounts) mit dem SPN/UPN „cifs/ihr-speicherkontoname.file.core.windows.net“ aufweist. Wenn das Konto nicht vorhanden ist, erstellen Sie wie im folgenden Abschnitt beschrieben ein Konto.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Manuelles Erstellen einer Identität, die das Speicherkonto in Ihrem AD darstellt
 

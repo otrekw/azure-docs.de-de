@@ -8,13 +8,13 @@ ms.custom: seodec18, references_regions
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/10/2020
-ms.openlocfilehash: 0a2d0ce683261ca3460c7aeaa0d7a42152b81a1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2020
+ms.openlocfilehash: a7a7bbb8b911f86b81cdeafe3fe57e1fdf820681
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98680181"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228281"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportieren und Löschen Ihrer Kundendaten aus LUIS in Cognitive Services
 
@@ -85,7 +85,15 @@ Die Erstellungsressourcen für die USA (auch als Programmierungs-APIs bezeichnet
 
 * Azure-Regionen, die in den Erstellungsregionen Europa und Australien nicht unterstützt werden
 
-Bei der Bereitstellung in diesen Azure-Regionen werden die am Endpunkt von Endbenutzern Ihrer App eingegangenen Äußerungen für das aktive Lernen in der Azure-Region „USA“ gespeichert. 
+Bei der Bereitstellung in diesen Azure-Regionen werden die am Endpunkt von Endbenutzern Ihrer App eingegangenen Äußerungen für das aktive Lernen in der Azure-Region „USA“ gespeichert.
+
+### <a name="switzerland-north"></a>Schweiz, Norden
+
+Die Erstellungsressourcen für die Schweiz, Norden, (auch als Programmierungs-APIs bezeichnet) werden in der geografischen Azure-Region „Schweiz“ gehostet und unterstützen die Bereitstellung von Endpunkten in den folgenden Azure-Regionen:
+
+* Schweiz 
+
+Bei der Bereitstellung in diesen Azure-Regionen werden die am Endpunkt von Endbenutzern Ihrer App eingegangenen Äußerungen für das aktive Lernen in der Azure-Region „Schweiz“ gespeichert.
 
 ## <a name="disable-active-learning"></a>Deaktivieren des aktiven Lernens
 

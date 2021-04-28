@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: bbe9a3f18463285521dde0ee64b369cffcd71d75
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: b26fab6f8b92e3cb996f545f1f6201d32b1eaced
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975743"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310511"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>Anforderungen für IoT Plug & Play-Zertifizierungen
 
@@ -51,7 +51,7 @@ Dies sind die Versprechen der IoT Plug & Play-Zertifizierung:
 | **Betriebssystem**                  | Agnostisch                                                     |
 | **Überprüfungstyp**     | Automatisiert                                                    |
 | **Überprüfung**          | Das Gerät muss eine einfache Besitzübertragung des DPS-ID-Bereichs implementieren, ohne dass der eingebettete Code neu kompiliert werden muss. Microsoft stellt den [Portalworkflow](https://certify.azure.com) für die Ausführung der Tests zur Verfügung, um zu prüfen, ob das Gerät DPS unterstützt **1.** Der Benutzer muss eine der Nachweismethoden (X.509, TPM und SAS-Schlüssel) auswählen **2.** Je nach gewählter Nachweismethode muss der Benutzer entsprechende Maßnahmen ergreifen, wie etwa **a)** Hochladen eines X.509-Zertifikats in den AICS-verwalteten DPS-Bereich **b)** Implementieren des SAS-Schlüssels oder Endorsement Keys auf dem Gerät |
-| **Ressourcen**           | **a)** [Device Provisioning Service – Übersicht](../iot-dps/about-iot-dps.md), **b)** [Beispielkonfigurationsdatei für die DPS ID-Bereichsübertragung](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples/digitaltwin_sample_ll_device/sample_config) |
+| **Ressourcen**           | **a)** [Device Provisioning Service – Übersicht](../iot-dps/about-iot-dps.md), **b)** [Beispielkonfigurationsdatei für die DPS ID-Bereichsübertragung](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |
 
 **[Erforderlich] DTDL v2: Der Zweck des Test ist, sicherzustellen, dass die definierten Gerätemodelle und Schnittstellen mit der Digital Twins Definition Language v2 kompatibel sind.**                                                              
 
@@ -95,7 +95,7 @@ Dies sind die Versprechen der IoT Plug & Play-Zertifizierung:
 | **Gilt für**          | Jedes Gerät                                                   |
 | **Betriebssystem**                  | Agnostisch                                                     |
 | **Überprüfungstyp**     | Automatisiert                                                    |
-| **Überprüfung**          | Der [Portalworkflow](https://certify.azure.com) überprüft, ob die [Geräteinformationsschnittstelle](https://repo.azureiotrepository.com/Models/dtmi:azure:DeviceManagement:DeviceInformation;1?api-version=2020-05-01-previewureiot:DeviceManagement:DeviceInformation:1) vom Gerätecode implementiert wird **1.** Überprüft, ob die Werte vom Gerätecode an IoT Hub ausgegeben werden **2.** Überprüft, ob die Schnittstelle im DCM implementiert ist (diese Implementierung wird in DTDL v2 geändert) **3.** Überprüft, ob die Eigenschaften schreibgeschützt sind (nur Lesezugriff zulassen) **4.** Überprüft, ob der Schematyp Zeichenfolge und/oder long und nicht NULL ist |
+| **Überprüfung**          | Der [Portalworkflow](https://certify.azure.com) überprüft, ob die Geräteinformatinsschnittstelle vom Gerätecode implementiert wird **1.** Überprüft, ob die Werte vom Gerätecode an IoT Hub ausgegeben werden **2.** Überprüft, ob die Schnittstelle im DCM implementiert ist (diese Implementierung wird in DTDL v2 geändert) **3.** Überprüft, ob die Eigenschaften schreibgeschützt sind (nur Lesezugriff zulassen) **4.** Überprüft, ob der Schematyp Zeichenfolge und/oder long und nicht NULL ist |
 | **Ressourcen**           | [Von Microsoft definierte Schnittstelle](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
 | **Für Azure empfohlen**  | Nicht zutreffend                                                          |
 

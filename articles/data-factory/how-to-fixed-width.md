@@ -1,17 +1,17 @@
 ---
 title: Verarbeiten von Textdateien mit fester Länge mithilfe von Mapping Data Flows in Azure Data Factory
 description: Erfahren Sie, wie Sie Textdateien mit fester Länge in Azure Data Factory mithilfe von Mapping Data Flows verarbeiten.
-author: balakreshnan
+author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 2297364e8f1a531b4512f2497bc4d99963d61179
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f8c1cf8535d35d5141a589670a8281ddba75385
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386202"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906114"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Verarbeiten von Textdateien mit fester Länge mithilfe von Data Factory Mapping Data Flows
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d84c5fff41a7f00405c29ab4b4921ed2e28bdfde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac1daff6d7256bdb406cf07f4d5cb45414f9da86
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580095"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127099"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Häufig gestellte Fragen (FAQ)
 
@@ -103,7 +103,7 @@ Nein. Azure AD Connect ist nicht für die Verwendung mit Azure AD B2C ausgelegt.
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Kann meine App Azure AD B2C-Seiten in einem iFrame öffnen?
 
-Dieses Feature befindet sich in der Phase der öffentlichen Vorschau. Weitere Informationen finden Sie [Eingebettete Anmeldung](https://docs.microsoft.com/azure/active-directory-b2c/embedded-login).
+Dieses Feature befindet sich in der Phase der öffentlichen Vorschau. Weitere Informationen finden Sie [Eingebettete Anmeldung](./embedded-login.md).
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Funktioniert Azure AD B2C in Verbindung mit CRM-Systemen wie Microsoft Dynamics?
 
@@ -131,7 +131,7 @@ Ja, siehe [Sprachanpassung in Azure Active Directory B2C](language-customization
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Kann ich auf meinen von Azure AD B2C bereitgestellten Seiten für die Registrierung und Anmeldung meine eigenen URLs verwenden? Kann ich beispielsweise die URL von „contoso.b2clogin.com“ in „login.contoso.com“ ändern?
 
-Dieses Feature ist als Public Preview verfügbar. Weitere Informationen finden Sie unter [Aktivieren von benutzerdefinierten Domänen für Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow).
+Dieses Feature ist als Public Preview verfügbar. Weitere Informationen finden Sie unter [Aktivieren von benutzerdefinierten Domänen für Azure AD B2C](./custom-domain.md?pivots=b2c-user-flow).
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Wie lösche ich meinen Azure AD B2C-Mandanten?
 

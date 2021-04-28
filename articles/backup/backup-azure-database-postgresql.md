@@ -2,14 +2,14 @@
 title: Sichern von Azure Database for PostgreSQL
 description: Weitere Informationen zur Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4730cad32203642f0d1b84529a5822d7595d6bf8
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737571"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375086"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 
@@ -135,10 +135,9 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
 
 1. Legen Sie die Einstellungen für die **Aufbewahrung** fest. Sie können eine oder mehrere Aufbewahrungsregeln hinzufügen. Jede Aufbewahrungsregel nimmt Eingaben für bestimmte Sicherungen und den Datenspeicher sowie die Aufbewahrungsdauer für diese Sicherungen an.
 
-1. Sie können Ihre Sicherungen in einem der beiden Datenspeicher (oder in einer der beiden Ebenen) speichern: **Sicherungsdatenspeicher** (Standard-Tarif) oder **Archivdatenspeicher** (Vorschau). Sie können zwischen **zwei Tiering-Optionen** wählen, um festzulegen, wann die Sicherungen über die beiden Datenspeicher verteilt werden:
+1. Sie können Ihre Sicherungen in einem der beiden Datenspeicher (oder in einer der beiden Ebenen) speichern: **Sicherungsdatenspeicher** (Standard-Tarif) oder **Archivdatenspeicher** (Vorschau).
 
-    - Kopieren Sie **sofort**, wenn Sie gleichzeitig eine Sicherungskopie für sowohl Sicherungs- als auch Archivdatenspeicher haben möchten.
-    - Wählen Sie die Option zum Verschieben nach **Ablauf**, wenn Sie die Sicherung nach Ablauf im Sicherungsdatenspeicher in den Archivdatenspeicher verschieben möchten.
+   Sie können die Option **Ablauf** auswählen, wenn Sie die Sicherung nach Ablauf im Sicherungsdatenspeicher in den Archivdatenspeicher verschieben möchten.
 
 1. Die **Standardaufbewahrungsregel** wird angewandt, wenn keine andere Aufbewahrungsregel vorhanden ist. Sie hat einen Standardwert von drei Monaten.
 
@@ -197,7 +196,21 @@ Führen Sie diese Schrittanleitung aus, um eine Wiederherstellung auszulösen:
 
     ![Wiederherstellen als Dateien](./media/backup-azure-database-postgresql/restore-as-files.png)
 
+1. Wenn sich der Wiederherstellungspunkt auf der Archivebene befindet, müssen Sie den Wiederherstellungspunkt vor der Wiederherstellung erneut aktivieren.
+   
+   ![Aktivierungseinstellungen](./media/backup-azure-database-postgresql/rehydration-settings.png)
+   
+   Sie müssen folgende Zusatzparameter für die Aktivierung angeben:
+   - **Aktivierungspriorität:** Der Standardwert ist **Standard.**
+   - **Aktivierungsdauer:** Die maximale Aktivierungsdauer beträgt 30 Tage, und die minimale Aktivierungsdauer beträgt 10 Tage. Standardwert: **15**.
+   
+   Der Wiederherstellungspunkt wird für die festgelegte Aktivierungsdauer im **Sicherungsdatenspeicher** gespeichert.
+
+
 1. Überprüfen Sie die Informationen, und wählen Sie **Wiederherstellen** aus. Dadurch wird ein entsprechender Wiederherstellungsauftrag ausgelöst, der unter **Sicherungsaufträge** nachverfolgt werden kann.
+
+>[!NOTE]
+>Die Archivunterstützung für Azure Database for PostgreSQL ist als eingeschränkte öffentliche Vorschauversion verfügbar.
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>Erforderliche Berechtigungen zum Konfigurieren der Sicherung und Wiederherstellung
 
@@ -220,7 +233,7 @@ Wählen Sie Aufbewahrungsregeln in der Liste aus, die in der zugehörigen Sicher
 
 ### <a name="stop-protection"></a>Schutz beenden
 
-Sie können den Schutz für ein Sicherungselement beenden. Dadurch werden auch die zugehörigen Wiederherstellungspunkte für das Sicherungselement gelöscht. Derzeit gibt es noch keine Möglichkeit, den Schutz unter Beibehaltung der bestehenden Wiederherstellungspunkte zu beenden.
+Sie können den Schutz für ein Sicherungselement beenden. Dadurch werden auch die zugehörigen Wiederherstellungspunkte für das Sicherungselement gelöscht. Für Wiederherstellungspunkte, die sich mindestens sechs Monate lang nicht auf der Archivebene befunden haben, wird beim Löschen eine Gebühr für vorzeitiges Löschen fällig. Derzeit gibt es noch keine Möglichkeit, den Schutz unter Beibehaltung der bestehenden Wiederherstellungspunkte zu beenden.
 
 ![Schutz beenden](./media/backup-azure-database-postgresql/stop-protection.png)
 
@@ -242,7 +255,7 @@ Dieser Abschnitt enthält Informationen zur Problembehandlung beim Sichern von A
 
 ### <a name="usererrormsimissingpermissions"></a>UserErrorMSIMissingPermissions
 
-Erteilen Sie der Sicherungstresor-MSI **Lesezugriff** auf dem PG-Server, den Sie sichern oder wiederherstellen möchten:
+Sie müssen Backup Vault MSI **Lesezugriff** für den PG-Server einrichten, den Sie sichern oder wiederherstellen möchten.
 
 Zum Herstellen einer sicheren Verbindung mit der PostgreSQL-Datenbank verwendet Azure Backup das Authentifizierungsmodell [Verwaltete Dienstidentität (MSI)](../active-directory/managed-identities-azure-resources/overview.md). Dies bedeutet, dass der Sicherungstresor nur auf die Ressourcen zugreifen kann, denen der Benutzer explizit eine Berechtigung erteilt hat.
 
@@ -260,15 +273,11 @@ Schritte:
 
 1. Geben Sie im rechten Kontextbereich, der geöffnet wird, Folgendes ein:<br>
 
-    **Rolle:** Leser<br>
-    **Zugriff zuweisen zu**: Wählen Sie **Sicherungstresor** aus.<br>
-    Wenn Sie in der Dropdownliste die Option **Sicherungstresor** nicht finden können, wählen Sie die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus.<br>
+   - **Rolle:** Wählen Sie in der Dropdownliste die Rolle **Leser** aus.<br>
+   - **Zugriff zuweisen zu:** Wählen Sie in der Dropdownliste aus den Optionen **Benutzer, Gruppe oder Dienstprinzipal** aus.<br>
+   - **Auswählen**: Geben Sie den Namen des Sicherungstresors ein, in dem Sie diesen Server und dessen Datenbanken sichern möchten.<br>
 
-    ![Rolle auswählen](./media/backup-azure-database-postgresql/select-role.png)
-
-    **Auswählen**: Geben Sie den Namen des Sicherungstresors ein, in dem Sie diesen Server und dessen Datenbanken sichern möchten.<br>
-
-    ![Eingeben des Namens des Sicherungstresors](./media/backup-azure-database-postgresql/enter-backup-vault-name.png)
+    ![Rolle auswählen](./media/backup-azure-database-postgresql/select-role-and-enter-backup-vault-name.png)
 
 ### <a name="usererrorbackupuserauthfailed"></a>UserErrorBackupUserAuthFailed
 

@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: a45b8db1f17ead8e55bac2b2bf82aa44cb7f080e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ceb39893327af82e8dff3e82ef570727b3bdfa33
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304697"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141948"
 ---
 # <a name="glossary-of-iot-terms"></a>Glossar mit IoT-Begriffen
 
@@ -178,7 +178,7 @@ Die Geräteverwaltung umfasst den vollständigen Lebenszyklus, der der Verwaltun
 
 ### <a name="device-model"></a>Gerätemodell
 
-Ein Gerätemodell ist ein Typ von [Modell](#model), bei dem die [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) zum Beschreiben der Funktionen eines IoT Plug & Play-Geräts verwendet wird. Ein einfaches Gerätemodell verwendet eine einzelne Schnittstelle, um die Gerätefunktionen zu beschreiben. Ein komplexeres Gerätemodell umfasst mehrere Komponenten, die jeweils eine Reihe von Funktionen beschreiben. Weitere Informationen finden Sie unter [IoT Plug & Play-Komponenten in Modellen](../iot-pnp/concepts-components.md).
+Ein Gerätemodell ist ein Typ von [Modell](#model), bei dem die [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) zum Beschreiben der Funktionen eines IoT Plug & Play-Geräts verwendet wird. Ein einfaches Gerätemodell verwendet eine einzelne Schnittstelle, um die Gerätefunktionen zu beschreiben. Ein komplexeres Gerätemodell umfasst mehrere Komponenten, die jeweils eine Reihe von Funktionen beschreiben. Weitere Informationen finden Sie unter [IoT Plug & Play-Komponenten in Modellen](../iot-pnp/concepts-modeling-guide.md).
 
 ### <a name="device-modeling"></a>Gerätemodellierung
 

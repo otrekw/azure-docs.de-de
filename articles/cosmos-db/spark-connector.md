@@ -1,23 +1,23 @@
 ---
-title: Verbinden von Apache Spark mit Azure Cosmos DB
-description: Hier erfahren Sie mehr über den Azure Cosmos DB Spark-Connector, mit dem Sie Apache Spark mit Azure Cosmos DB verbinden können.
-author: tknandu
+title: Verbinden von Apache Spark 2 mit Azure Cosmos DB
+description: Hier erfahren Sie mehr über den Spark 2-OLTP-Connector von Azure Cosmos DB, mit dem Sie Apache Spark mit Azure Cosmos DB verbinden können.
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/21/2019
-ms.author: ramkris
-ms.openlocfilehash: 06498a27b95a72148497efd2d1e600d802414359
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.author: anfeldma
+ms.openlocfilehash: 9d4a1a7d359bac83159d0e5ca4bddfc5935394a5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359556"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364259"
 ---
-# <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB
+# <a name="accelerate-big-data-analytics-by-using-the-apache-spark-v2-to-azure-cosmos-db-oltp-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark v2-OLTP-Connector von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Sie können [Spark](https://spark.apache.org/)-Aufträge mit in Azure Cosmos DB gespeicherten Daten mithilfe des Cosmos DB-Spark-Connectors ausführen. Sie können Cosmos für die Batch- und Streamverarbeitung und als Bereitstellungsebene für Zugriff mit geringer Latenz verwenden.
+Sie können [Spark v2](https://spark.apache.org/)-Aufträge mit in Azure Cosmos DB gespeicherten Daten mithilfe des Spark 2-OLTP-Connectors für Cosmos DB ausführen. Sie können Cosmos für die Batch- und Streamverarbeitung und als Bereitstellungsebene für Zugriff mit geringer Latenz verwenden.
 
 Sie können den Connector mit [Azure Databricks](https://azure.microsoft.com/services/databricks) oder [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) verwenden, die beide verwaltete Spark-Cluster in Azure bieten. Die folgende Tabelle zeigt die unterstützten Spark-Versionen.
 
@@ -33,7 +33,7 @@ Sie können den Connector mit [Azure Databricks](https://azure.microsoft.com/ser
 > Verwenden Sie für die Cosmos DB-Cassandra-API den [Cassandra-Spark-Connector](https://github.com/datastax/spark-cassandra-connector).
 
 > [!IMPORTANT]
-> Der Azure Cosmos DB-Spark-Connector wird derzeit in [serverlosen](serverless.md) Konten nicht unterstützt. Dies wird geändert, wenn das serverlose Angebot allgemein verfügbar wird.
+> Der Spark-OLTP-Connector von Azure Cosmos DB wird derzeit in [serverlosen](serverless.md) Konten nicht unterstützt. Dies wird geändert, wenn das serverlose Angebot allgemein verfügbar wird.
 
 ## <a name="quickstart"></a>Schnellstart
 

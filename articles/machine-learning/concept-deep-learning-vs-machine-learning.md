@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 01/14/2020
+ms.date: 04/12/2021
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 48de06d28442b4d05cd3a7ab287732c0999e434c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9e87796c3557f21bb6192c7d7d0c0925d08d786
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101659697"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311752"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Vergleich von Deep Learning und Machine Learning in Azure Machine Learning
 
@@ -99,7 +99,7 @@ Mit der richtigen Datentransformation kann ein neuronales Netz Text-, Audio- und
 
 Die auf Deep Learning-Methoden basierende Textanalyse umfasst das Analysieren großer Mengen von Textdaten (z. B. medizinischen Dokumenten oder Ausgabenbelegen), das Erkennen von Mustern und das Erstellen von organisierten und präzisen Informationen aus diesen.
 
-Unternehmen führen mit Deep Learning Textanalysen durch, um Insidergeschäfte zu erkennen und die Einhaltung gesetzlicher Vorschriften zu gewährleisten. Ein weiteres gängiges Beispiel ist Versicherungsbetrug: Mithilfe von Textanalysen wurden häufig große Mengen von Dokumenten analysiert, um zu ermitteln, mit welcher Wahrscheinlichkeit es sich bei einem Versicherungsanspruch um Betrug handelte. 
+Unternehmen führen mit Deep Learning Textanalysen durch, um Insidergeschäfte zu erkennen und die Einhaltung gesetzlicher Vorschriften zu gewährleisten. Ein weiteres gängiges Beispiel ist Versicherungsbetrug: Mithilfe von Textanalysen wurden häufig große Mengen von Dokumenten analysiert, um zu ermitteln, mit welcher Wahrscheinlichkeit es sich bei einem Versicherungsanspruch um Betrug handelte.
 
 ## <a name="artificial-neural-networks"></a>Künstliche neuronale Netze
 
@@ -111,15 +111,33 @@ Die gängigsten Typologien künstlicher neuronaler Netze werden in den folgenden
 
 Das neuronale Feedforward-Netz ist die einfachste Art von künstlichen neuronalen Netzen. In einem Feedforward-Netz werden Informationen nur in einer Richtung von der Eingabeschicht an die Ausgabeschicht übertragen. In neuronalen feedforward-Netzen werden Eingaben transformiert, indem sie eine Reihe von Zwischenschichten durchlaufen. Jede Schicht besteht aus einer Reihe von Neuronen, wobei jede Schicht vollständig mit allen Neuronen in der vorherigen Schicht verbunden ist. Die letzte vollständig verbundene Schicht (die Ausgabeschicht) stellt die generierten Vorhersagen dar.
 
-### <a name="recurrent-neural-network"></a>Recurrent Neural Network
+### <a name="recurrent-neural-network-rnn"></a>Recurrent Neural Network (RNN)
 
 Recurrent Neural Networks sind häufig verwendete künstliche neuronale Netze. Diese Netze speichern die Ausgabe einer Schicht und geben Sie zurück in die Eingabeschicht, um das Ergebnis der Schicht vorherzusagen. Recurrent Neural Networks weisen großartige Lernmöglichkeiten auf. Sie werden häufig für komplexe Aufgaben wie Zeitreihenvorhersagen, das Erlernen von Handschrift und die Spracherkennung verwendet.
 
-### <a name="convolutional-neural-network"></a>Convolutional Neural Network
+### <a name="convolutional-neural-network-cnn"></a>Convolutional Neural Network (CNN)
 
 Ein Convolutional Neural Network (faltendes neuronales Netz, CNN) ist ein besonders effektives künstliches neuronales Netz und stellt eine einzigartige Architektur dar. Die Schichten sind in drei Dimensionen organisiert: Breite, Höhe und Tiefe. Die Neuronen in einer Schicht sind nicht mit allen Neuronen in der nächsten Schicht, sondern nur mit einem kleinen Bereich der Neuronen der Schicht verbunden. Die endgültige Ausgabe wird auf einen einzelnen Vektor mit Wahrscheinlichkeitsbewertungen reduziert, der entlang der Tiefendimension organisiert ist. 
 
 Convolutional Neural Networks wurden bereits in Bereichen wie Videoerkennung, Bilderkennung und Empfehlungssysteme verwendet.
+
+### <a name="generative-adversarial-network-gan"></a>Generative Adversarial Network (GAN)
+
+Generative Adversarial Networks (generierende gegnerische Netzwerke) sind generative Modelle, die darauf trainiert sind, realistische Inhalte wie z. B. Bilder zu erstellen. Sie besteht aus zwei Netzwerken, die als Generator und Diskriminator bezeichnet werden. Beide Netzwerke werden gleichzeitig trainiert. Während des Trainings verwendet der Generator Zufallsrauschen, um neue synthetische Daten zu erstellen, die echten Daten sehr ähnlich sind. Der Diskriminator nimmt die Ausgabe des Generators als Eingabe und verwendet echte Daten, um zu bestimmen, ob der generierte Inhalt real oder synthetisch ist. Beide Netzwerke konkurrieren miteinander. Der Generator versucht, synthetische Inhalte zu generieren, die nicht von echten Inhalten zu unterscheiden sind, und der Diskriminator versucht, Eingaben ordnungsgemäß als real oder synthetisch zu klassifizieren. Die Ausgabe wird dann verwendet, um die Gewichtungen beider Netzwerke zu aktualisieren, damit sie ihre jeweiligen Ziele besser erreichen können.
+
+Generative Adversarial Networks werden verwendet, um Probleme wie Bild-zu-Bild-Übersetzung und Altersverläufe zu lösen.
+
+### <a name="transformers"></a>Transformatoren
+
+Transformatoren sind eine Modellarchitektur, die sich zum Lösen von Problemen mit Sequenzen wie Text- oder Zeitreihendaten eignet. Sie bestehen aus [Encoder- und Decoderebenen](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)#Encoder). Der Encoder nimmt eine Eingabe und ordnet sie einer numerischen Darstellung zu, die Informationen wie den Kontext enthält. Der Decoder verwendet Informationen vom Encoder, um eine Ausgabe zu erzeugen, z. B. übersetzten Text. Was Transformatoren von anderen Architekturen unterscheidet, die Encoder und Decoder enthalten, sind die untergeordneten Ebenen der Aufmerksamkeit. Als Aufmerksamkeit wird das Konzept bezeichnet, sich auf bestimmte Teile einer Eingabe basierend auf der Wichtigkeit ihres Kontexts im Vergleich zu anderen Eingaben in einer Sequenz zu konzentrieren. Wenn Sie beispielsweise einen Nachrichtenartikel zusammenfassen, sind nicht alle Sätze relevant, um die Kernaussage zu beschreiben. Durch die Konzentration auf Schlüsselwörter im gesamten Artikel kann die Zusammenfassung in einem einzigen Satz erfolgen, der Überschrift.
+
+Transformatoren wurden verwendet, um Probleme bei der Verarbeitung natürlicher Sprache wie Übersetzung, Textgenerierung, Beantwortung von Fragen und Textzusammenfassung zu lösen.
+
+Einige bekannte Implementierungen von Transformatoren sind:
+
+- Bidirektionale Encoderdarstellungen von Transformatoren (Bidirectional Encoder Representations from Transformers, BERT)
+- Generativer vortrainierter Transformator 2 (Generative Pre-trained Transformer 2, GPT-2)
+- Generativer vortrainierter Transformator 3 (Generative Pre-trained Transformer 3, GPT-3)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

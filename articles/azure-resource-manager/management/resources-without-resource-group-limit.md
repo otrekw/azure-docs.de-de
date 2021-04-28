@@ -2,19 +2,25 @@
 title: Ressourcen ohne Beschränkung auf 800 Instanzen
 description: Aufstellung der Azure-Ressourcentypen, die mehr als 800 Instanzen in einer Ressourcengruppe aufweisen können.
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 6736118f0713a27a91618173e06423530e6f10cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: d132773ff35d53dc373c759326efc8179f4993d6
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563112"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366537"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe
 
 Standardmäßig können Sie bis zu 800 Instanzen eines Ressourcentyps in jeder Ressourcengruppe bereitstellen. Einige Ressourcentypen sind jedoch von der Beschränkung auf 800 Instanzen ausgenommen. In diesem Artikel sind die Azure-Ressourcentypen aufgeführt, die mehr als 800 Instanzen in einer Ressourcengruppe aufweisen können. Alle anderen Ressourcentypen sind auf 800 Instanzen beschränkt.
 
 Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Beschränkung auf 800 Instanzen aufgehoben wird. Diese Ressourcentypen sind in diesem Artikel angegeben.
+
+
+## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+
+* resourceHealthAlertRules
+* smartDetectorAlertRules
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -75,6 +81,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 
 * flexibleServers
 * serverGroups
+* serverGroupsv2
 * servers
 * serversv2
 
@@ -107,7 +114,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
 * machines: unterstützt bis zu 5.000 Instanzen
-* extensions: unterstützt eine unbegrenzte Anzahl von VM-Erweiterungsinstanzen
+* machines/extensions: unterstützt eine unbegrenzte Anzahl von VM-Erweiterungsinstanzen
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 
@@ -129,6 +136,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 * netAppAccounts/capacityPools/volumes
 * netAppAccounts/capacityPools/volumes/mountTargets
 * netAppAccounts/capacityPools/volumes/snapshots
+* netAppAccounts/volumeGroups
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -179,6 +187,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
+* autoScaleVCores : Standardmäßig auf 800 Instanzen beschränkt. Dieser Grenzwert kann bei Kontaktaufnahme mit dem Support erhöht werden.
 * capacities: Standardmäßig auf 800 Instanzen beschränkt. Dieser Grenzwert kann bei Kontaktaufnahme mit dem Support erhöht werden.
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay

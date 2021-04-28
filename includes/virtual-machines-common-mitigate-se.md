@@ -9,13 +9,13 @@ ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96509480"
 ---
-**Letzte Aktualisierung des Dokuments**: 12. November 2019 10:00 PST.
+**Letzte Aktualisierung des Dokuments**: 12. November 2019 10 Uhr PST.
 
 Eine öffentlich gemachte [neue Art von CPU-Sicherheitsrisiken](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), die als „Seitenkanalangriffe mit spekulativer Ausführung“ bezeichnet wird, hatte Fragen von Kunden zur Folge, die sich mehr Klarheit wünschen.  
 
@@ -83,7 +83,7 @@ CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
 Wenn die Anzahl logischer Prozessoren die Anzahl physischer Prozessoren (Kerne) übersteigt, ist Hyperthreading aktiviert.  Wenn Sie einen virtuellen Computer mit Hyperthreading ausführen, [wenden Sie sich an den Azure-Support](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical), um das Hyperthreading zu deaktivieren.  Nach Deaktivierung des Hyperthreadings ist ein **vollständiger Neustart des virtuellen Computers erforderlich**. Unter [Anzahl Kerne](#core-count) erfahren Sie, warum sich die Anzahl Ihrer VM-Kerne verringert hat.
 
 
-**Schritt 2:** Führen Sie parallel zu Schritt 1 die Anweisungen unter [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) aus, um mit dem [SpeculationControl](https://aka.ms/SpeculationControlPS)-PowerShell-Modul sicherzustellen, dass der Schutz aktiviert ist.
+**Schritt 2**: Führen Sie parallel zu Schritt 1 die Anweisungen unter [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) aus, um mit dem [SpeculationControl](https://aka.ms/SpeculationControlPS)-PowerShell-Modul sicherzustellen, dass der Schutz aktiviert ist.
 
 > [!NOTE]
 > Wenn Sie dieses Modul bereits zu einem früheren Zeitpunkt heruntergeladen haben, müssen Sie die neueste Version installieren.
@@ -105,10 +105,10 @@ Wenn die Ausgabe `MDS mitigation is enabled: False` anzeigt, [wenden Sie sich an
 
 
 
-**Schritt 3:** Folgen Sie den Anweisungen in [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution), um die Betriebssystemunterstützung für KVAS (Kernel Virtual Address Shadowing) und BTI (Branch Target Injection) zu aktivieren, damit Schutz über die `Session Manager`-Registrierungsschlüssel aktiviert wird. Es ist ein Neustart erforderlich.
+**Schritt 3**: Folgen Sie den Anweisungen in [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution), um die Betriebssystemunterstützung für KVAS (Kernel Virtual Address Shadowing) und BTI (Branch Target Injection) zu aktivieren, damit Schutz über die `Session Manager`-Registrierungsschlüssel aktiviert wird. Es ist ein Neustart erforderlich.
 
 
-**Schritt 4:** Für Bereitstellungen, in denen [geschachtelte Virtualisierung](../articles/virtual-machines/windows/nested-virtualization.md) verwendet wird (nur D3 und E3): Diese Anweisungen gelten für den virtuellen Computer, den Sie als Hyper-V-Host verwenden.
+**Schritt 4**: Für Bereitstellungen mit Verwendung von [geschachtelter Virtualisierung](../articles/virtual-machines/windows/nested-virtualization.md) (nur D3 und E3): Diese Anleitung gilt auf der VM, die Sie als Hyper-V-Host verwenden.
 
 1.  Befolgen Sie die Anleitung unter [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution), um den Schutz über die `MinVmVersionForCpuBasedMitigations`-Registrierungsschlüssel zu aktivieren.
 2.  Legen Sie den Typ des Hypervisorplaners auf `Core` fest, indem Sie [diese Anweisungen](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types) ausführen.
@@ -145,7 +145,7 @@ Wenn Sie einen virtuellen Computer mit Hyperthreading ausführen, [wenden Sie si
 
 
 
-**Schritt 2:** Informationen zum Einleiten von Gegenmaßnahmen für die folgenden Sicherheitsrisiken durch Seitenkanalangriffe mit spekulativer Ausführung finden Sie in der Dokumentation Ihres Betriebssystemanbieters:   
+**Schritt 2**: Informationen zum Einleiten von Gegenmaßnahmen für die folgenden Sicherheitsrisiken durch Seitenkanalangriffe mit spekulativer Ausführung finden Sie in der Dokumentation Ihres Betriebssystemanbieters:   
  
 - [RedHat und CentOS](https://access.redhat.com/security/vulnerabilities) 
 - [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 

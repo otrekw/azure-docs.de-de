@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67177766"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -18,7 +18,7 @@ ms.locfileid: "67177766"
 
 Nachdem Sie nun über eine Tabelle verfügen, können wir uns als Nächstes mit der Verwaltung von Entitäten (oder Zeilen) in der Tabelle beschäftigen. 
 
-Entitäten können bis zu 255 Eigenschaften aufweisen, einschließlich drei Systemeigenschaften: **PartitionKey**, **RowKey** und **Timestamp**. Sie sind für das Einfügen und Aktualisieren der Werte von **PartitionKey** und **RowKey** zuständig. Der Server verwaltet die Werte von **Timestamp**, die nicht geändert werden können. Zusammen identifizieren **PartitionKey** und **RowKey** jede Entität in einer Tabelle eindeutig.
+Entitäten können bis zu 255 Eigenschaften besitzen, einschließlich der drei Systemeigenschaften **PartitionKey**, **RowKey** und **Timestamp**. Sie sind für das Einfügen und Aktualisieren der Werte von **PartitionKey** und **RowKey** zuständig. Der Server verwaltet die Werte von **Timestamp**, die nicht geändert werden können. Zusammen identifizieren **PartitionKey** und **RowKey** jede Entität in einer Tabelle eindeutig.
 
 * **PartitionKey**: Bestimmt die Partition, in der die Entität gespeichert ist.
 * **RowKey**: Identifiziert die Entität innerhalb der Partition eindeutig.
@@ -60,7 +60,7 @@ Add-AzTableRow `
 Mit dem Befehl **Get-AzTableRow** können Sie die Entitäten in einer Tabelle abfragen.
 
 > [!NOTE]
-> Die Cmdlets **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName** und  **Get-AzureStorageTableRowByCustomFilter** sind veraltet und werden in einem zukünftigen Versionsupdate entfernt.
+> Die Cmdlets **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName** und **Get-AzureStorageTableRowByCustomFilter** sind veraltet und werden in einem zukünftigen Versionsupdate entfernt.
 
 #### <a name="retrieve-all-entities"></a>Abrufen aller Entitäten
 

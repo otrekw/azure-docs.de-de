@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 02/26/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 34adcf2218e29572ec9a86583addc7c021313085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1
+ms.openlocfilehash: 4154d73cbf7a82c78dcc8ea30f11b8d984dd6af0
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519638"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896673"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Optimierung der Hyperparameter eines Modells mit Azure Machine Learning
 
@@ -183,7 +183,7 @@ run_logger.log("accuracy", float(val_accuracy))
 
 Mit dem Trainingsskript wird der `val_accuracy`-Wert berechnet und als die primäre Metrik „accuracy“ protokolliert. Jedes Mal, wenn die Metrik protokolliert wird, wird der Wert vom Dienst zur Hyperparameteroptimierung empfangen. Die Häufigkeit der Berichterstellung können Sie bestimmen.
 
-Weitere Informationen zur Protokollierung von Werten bei Modelltrainingsausführungen finden Sie unter [Aktivieren der Protokollierung in Azure ML-Trainingsausführungen](how-to-track-experiments.md).
+Weitere Informationen zur Protokollierung von Werten bei Modelltrainingsausführungen finden Sie unter [Aktivieren der Protokollierung in Azure ML-Trainingsausführungen](how-to-log-view-metrics.md).
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Festlegen einer Richtlinie für vorzeitige Beendigung
 
@@ -424,7 +424,7 @@ Sie können Ihre Ausführungen der Hyperparameteroptimierung im Azure Machine Le
 
 ### <a name="studio"></a>Studio
 
-Sie können alle Ihre Ausführungen der Hyperparameteroptimierung im [Azure Machine Learning Studio](https://ml.azure.com) visualisieren. Weitere Informationen zum Anzeigen von Experimenten im Portal finden Sie unter [Anzeigen von Ausführungsaufzeichnungen in Studio](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
+Sie können alle Ihre Ausführungen der Hyperparameteroptimierung im [Azure Machine Learning Studio](https://ml.azure.com) visualisieren. Weitere Informationen zum Anzeigen von Experimenten im Portal finden Sie unter [Anzeigen von Ausführungsaufzeichnungen in Studio](how-to-log-view-metrics.md#view-the-experiment-in-the-web-portal).
 
 - **Metrikdiagramm:** Diese Visualisierung dient zum Nachverfolgen der Metriken, die im Rahmen der Hyperparameteroptimierung für die einzelnen untergeordneten HyperDrive-Ausführungen protokolliert werden. Jede Zeile stellt eine untergeordnete Ausführung dar, und jeder Punkt misst den primären Metrikwert bei dieser Laufzeititeration.  
 
@@ -464,7 +464,7 @@ Nach Abschluss aller Ausführungen der Hyperparameteroptimierung ermitteln Sie d
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()
 best_run_metrics = best_run.get_metrics()
-parameter_values = best_run.get_details()['runDefinition']['Arguments']
+parameter_values = best_run.get_details()['runDefinition']['arguments']
 
 print('Best Run Id: ', best_run.id)
 print('\n Accuracy:', best_run_metrics['accuracy'])
@@ -481,5 +481,5 @@ Weitere Informationen finden Sie in den Notebooks zum Trainieren von Hyperparame
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Nachverfolgen eines Experiments](how-to-track-experiments.md)
+* [Nachverfolgen eines Experiments](how-to-log-view-metrics.md)
 * [Bereitstellen eines trainierten Modells](how-to-deploy-and-where.md)
