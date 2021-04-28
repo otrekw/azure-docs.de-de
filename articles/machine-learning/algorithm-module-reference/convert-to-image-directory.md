@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/12/2020
-ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bf30e636fc1bf1031f6c379a998979d92909b81
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94555582"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890490"
 ---
 # <a name="convert-to-image-directory"></a>Konvertieren in ein Bildverzeichnis
 
@@ -36,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie das Modul „Convert to Image Directory�
     Your_image_folder_name/Category_2/asd932_.png
     ```
     
-    Im Bilddatasetordner gibt es mehrere Unterordner. Jeder Unterordner enthält Bilder jeweils einer Kategorie. Die Namen von Unterordnern werden als Bezeichnungen für Aufgaben wie die Bildklassifizierung betrachtet. Weitere Informationen finden Sie unter [Torchvision-Datasets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder).
+    Im Bilddatasetordner gibt es mehrere Unterordner. Jeder Unterordner enthält Bilder jeweils einer Kategorie. Die Namen von Unterordnern werden als Bezeichnungen für Aufgaben wie die Bildklassifizierung betrachtet. Weitere Informationen finden Sie unter [Torchvision-Datasets](https://pytorch.org/vision/stable/datasets.html#imagefolder).
 
     > [!WARNING]
     > Derzeit werden von der Datenbeschriftung exportierte Datasets im Designer nicht unterstützt.

@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 57a3d76f24c33984a883e926a8d4c68736e9f121
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7d90e874f22b6eaf43a99f4465b88aedbff2659c
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869887"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064609"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrieren von Apache Spark und Apache Hive unter Azure HDInsight per Hive Warehouse Connector
 
@@ -62,7 +62,7 @@ Für Hive Warehouse Connector werden separate Cluster für Spark- und Interactiv
 
 1. Navigieren Sie zu **Configs** > **Advanced** > **Advanced hive-site** > **hive.zookeeper.quorum**, und notieren Sie sich den Wert. Der Wert kann wie folgt lauten: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
-1. Navigieren Sie zu **Configs** > **Advanced** > **General** > **hive.metastore.uris**, und notieren Sie sich den Wert. Der Wert kann wie folgt lauten: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Navigieren Sie zu **Configs** > **Advanced** > **General** > **hive.metastore.uris**, und notieren Sie sich den Wert. Der Wert kann wie folgt lauten: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn*.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
 1. Navigieren Sie zu **Configs** > **Advanced** > **Advanced hive-interactive-site** > **hive.llap.daemon.service.hosts**, und notieren Sie sich den Wert. Der Wert kann wie folgt lauten: `@llap0`.
 
@@ -109,7 +109,7 @@ Fügen Sie zusätzlich zu den im vorherigen Abschnitt erwähnten Konfigurationen
 
         :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Hive Warehouse Connector Azure AD-Domäne" border="true":::
 
-    * Beispielsweise `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET`.
+    * Beispielsweise `hive/hn*.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET`.
     
 1. Speichern Sie Änderungen, und starten Sie Komponenten nach Bedarf neu.
 

@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/04/2021
-ms.openlocfilehash: bb954a32a4e598c45578d4b06606bc133babb50d
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3455cc5b7ce5e1ddb7db3c3a9de4aedefcedc4b5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107151"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133401"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrieren von Co-Selling-Lösungen von OCP GTM zum kommerziellen Marketplace
 
@@ -36,7 +36,7 @@ Stellen Sie sicher, dass Sie über eine aktive Microsoft Partner Network-Mitglie
 
 ## <a name="publishing-updates-for-attaining-co-sell-ready-status"></a>Veröffentlichen von Updates zum Erreichen des Co-Sell Ready-Status
 
-Damit Ihre Lösung für Verkäufer und Partner von Microsoft sichtbar ist, muss sie die [Co-Sell Ready-Anforderungen](marketplace-co-sell.md) erfüllen. Damit ein Microsoft-Verkäufer Incentives erhalten kann, muss Ihre Lösung die [Anforderungen für Incentiveberechtigungen](marketplace-co-sell.md) erfüllen. Geben Sie die erforderlichen Informationen auf der Registerkarte „Co-Selling“ im Partner Center an. (Weitere Informationen finden Sie in [dieser Abbildung](#cosell-tab) weiter unten in diesem Artikel).
+Damit Ihre Lösung für Verkäufer und Partner von Microsoft sichtbar ist, muss sie die [Co-Sell Ready-Anforderungen](./co-sell-overview.md) erfüllen. Damit ein Microsoft-Verkäufer Incentives erhalten kann, muss Ihre Lösung die [Anforderungen für Incentiveberechtigungen](./co-sell-overview.md) erfüllen. Geben Sie die erforderlichen Informationen auf der Registerkarte „Co-Selling“ im Partner Center an. (Weitere Informationen finden Sie in [dieser Abbildung](#cosell-tab) weiter unten in diesem Artikel).
 
 > [!NOTE]
 > Im kommerziellen Marketplace werden Ihre Lösungen in der gesamten Umgebung für Veröffentlichungen als „Angebote“ bezeichnet.
@@ -137,7 +137,7 @@ Ausführliche Anweisungen zu den Informationen, die Sie angeben müssen, bevor d
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="Registerkarten mit einer Übersicht der Angebotseinrichtung im Partner Center":::
 
-3. Einige Details zu Microsoft-Verkäufern wurden aus der OCP GTM-Lösung kopiert. Bearbeiten Sie die übrigen erforderlichen Informationen auf der Registerkarte **Co-Selling mit Microsoft**, um den Co-Sell Ready-Status für Ihr Angebot zu erhalten. Wählen Sie **Überprüfen und veröffentlichen** aus, wenn Sie fertig sind. Weitere Informationen finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](commercial-marketplace-co-sell.md).
+3. Einige Details zu Microsoft-Verkäufern wurden aus der OCP GTM-Lösung kopiert. Bearbeiten Sie die übrigen erforderlichen Informationen auf der Registerkarte **Co-Selling mit Microsoft**, um den Co-Sell Ready-Status für Ihr Angebot zu erhalten. Wählen Sie **Überprüfen und veröffentlichen** aus, wenn Sie fertig sind. Weitere Informationen finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md).
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="Registerkarte für das Co-Selling von Angeboten im Partner Center":::
 
@@ -155,5 +155,5 @@ Ausführliche Anweisungen zu den Informationen, die Sie angeben müssen, bevor d
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Verkaufen über CSP-Partner](cloud-solution-providers.md)
-- [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](commercial-marketplace-co-sell.md)
+- [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md)
 - Lesen Sie diese [FAQ](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF)

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: c10963d28e0d2ecee73150e8b5af89cee96d28b2
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: ff7bd9145b64f82ca514897ebb67526bc28de867
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077005"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143573"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -147,7 +147,7 @@ Falls Ihre Instanz sowohl für Azure SQL-Datenbank als auch für Azure SQL Man
 Dieser Fall kann eintreten, wenn der in den Bewertungseigenschaften ausgewählte Zielbereitstellungstyp **Empfohlen** lautet und die SQL-Instanz nicht für Azure SQL-Datenbank und Azure SQL Managed Instance bereit ist. Dem Benutzer wird empfohlen, in Azure Migration eine Bewertung mit dem Bewertungstyp **Azure-VM** zu erstellen, um zu ermitteln, ob der Server, auf dem die Instanz ausgeführt wird, zu einem virtuellen Azure-Computer migriert werden kann.
 Dem Benutzer wird empfohlen, in Azure Migrate eine Bewertung mit dem Bewertungstyp **Azure-VM** zu erstellen, um zu ermitteln, ob der Server, auf dem die Instanz ausgeführt wird, stattdessen zu einem virtuellen Azure-Computer migriert werden kann.
 - Bei Bewertungen vom Typ „Azure-VM“ in Azure Migrate liegt das Hauptaugenmerk aktuell auf Lift & Shift-Migrationen, und die spezifischen Leistungsmetriken für die Ausführung von SQL-Instanzen und -Datenbanken auf dem virtuellen Azure-Computer werden nicht berücksichtigt. 
-- Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) für SQL Server auf virtuellen Azure-Computern.
+- Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md) für SQL Server auf virtuellen Azure-Computern.
 
 ## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>In meiner Bewertung werden einige Datenbanken nicht angezeigt, obwohl die Instanz Teil der Bewertung ist.
 
@@ -155,7 +155,7 @@ Die Azure SQL-Bewertung enthält nur Datenbanken, die online sind. Bei Datenban
 
 ## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Ich möchte die Kosten für das Ausführen meiner SQL-Instanzen auf einem virtuellen Azure-Computer mit den Kosten für Azure SQL-Datenbank-Instanzen/Azure SQL Managed Instance vergleichen.
 
-Sie können eine Bewertung mit dem Typ **Azure-VM** in der gleichen Gruppe erstellen, die in Ihrer Bewertung vom Typ **Azure SQL** verwendet wurde. Anschließend können Sie die beiden Berichte miteinander vergleichen. Bei Bewertungen vom Typ „Azure-VM“ in Azure Migrate liegt das Hauptaugenmerk allerdings aktuell auf Lift & Shift-Migrationen, und die spezifischen Leistungsmetriken für die Ausführung von SQL-Instanzen und -Datenbanken auf dem virtuellen Azure-Computer werden nicht berücksichtigt. Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) für SQL Server auf virtuellen Azure-Computern.
+Sie können eine Bewertung mit dem Typ **Azure-VM** in der gleichen Gruppe erstellen, die in Ihrer Bewertung vom Typ **Azure SQL** verwendet wurde. Anschließend können Sie die beiden Berichte miteinander vergleichen. Bei Bewertungen vom Typ „Azure-VM“ in Azure Migrate liegt das Hauptaugenmerk allerdings aktuell auf Lift & Shift-Migrationen, und die spezifischen Leistungsmetriken für die Ausführung von SQL-Instanzen und -Datenbanken auf dem virtuellen Azure-Computer werden nicht berücksichtigt. Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md) für SQL Server auf virtuellen Azure-Computern.
 
 ## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Die Speicherkosten in meiner Azure SQL-Bewertung liegen bei null.
 Für Azure SQL Managed Instance werden für die ersten 32 GB Speicher pro Instanz und Monat keine Speicherkosten hinzugefügt, und zusätzliche Speicherkosten werden in 32-GB-Schritten hinzugefügt. [Weitere Informationen](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)

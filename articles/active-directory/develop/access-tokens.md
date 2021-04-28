@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/18/2021
+ms.date: 04/02/2021
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 8630dd2fb1157fbeba99f2a06d73712ab46a63f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f5a60f14799e872d835d651fc043edd27dfc6990
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035066"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105594"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -176,6 +176,12 @@ Microsoft-Identitäten können auf verschiedene Arten authentifiziert werden, di
 | `ngcmfa` | Entspricht `mfa` und wird zum Bereitstellen bestimmter erweiterter Anmeldeinformationstypen verwendet. |
 | `wiaormfa`| Der Benutzer hat sich mit Windows oder MFA-Anmeldeinformationen authentifiziert. |
 | `none` | Es wurde keine Authentifizierung durchgeführt. |
+
+## <a name="access-token-lifetime"></a>Gültigkeitsdauer Zugriffstoken
+
+Die Standardgültigkeitsdauer eines Zugriffstokens variiert und ist abhängig von der Clientanwendung, die das Token anfordert. Beispielsweise erhalten CAE-fähige Clients (Continuous Access Evaluation), die CAE-fähige Sitzungen aushandeln, eine lange Tokengültigkeitsdauer (bis zu 28 Stunden).  Wenn das Zugriffstoken abläuft muss der Client das Aktualisierungstoken verwenden, um (meist im Hintergrund) ein neues Aktualisierungstoken und Zugriffstoken abzurufen.
+
+Sie können die Gültigkeitsdauer eines Zugrifftokens anpassen, um zu steuern, wie oft die Clientanwendung den Ablauf der Anwendungssitzung veranlasst, und wie oft sich der Benutzer erneut authentifizieren werden muss (entweder im Hintergrund oder interaktiv). Weitere Informationen hierzu finden Sie unter [Konfigurierbare Tokengültigkeitsdauer](active-directory-configurable-token-lifetimes.md).
 
 ## <a name="validating-tokens"></a>Überprüfen von Token
 

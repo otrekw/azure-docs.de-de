@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 225e72bc00ce0a80ff655a76562b5c6b70b7fa79
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c174504ea48330821d7734def5b6a5904d3ec2b8
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479490"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883920"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
@@ -79,7 +79,7 @@ Wenn Ihre Azure Time Series Insights-Umgebung eine Anforderung empfängt, wird z
 
 - Zugriff über das [Azure-Portal](https://portal.azure.com/) erteilen: Befolgen Sie die Anleitung im Artikel [Gewähren von Datenzugriff auf eine Umgebung](concepts-access-policies.md). Wenn Sie den Benutzer auswählen, können Sie über den Namen oder die ID nach der verwalteten Identität bzw. App-Registrierung suchen.
 
-- Zugriff über die Azure CLI erteilen: Führen Sie den folgenden Befehl aus. Eine vollständige Liste der für die Zugriffsverwaltung verfügbaren Befehle finden Sie [in der Dokumentation](/cli/azure/ext/timeseriesinsights/tsi/access-policy).
+- Zugriff über die Azure CLI erteilen: Führen Sie den folgenden Befehl aus. Eine vollständige Liste der für die Zugriffsverwaltung verfügbaren Befehle finden Sie [in der Dokumentation](/cli/azure/tsi/access-policy).
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"

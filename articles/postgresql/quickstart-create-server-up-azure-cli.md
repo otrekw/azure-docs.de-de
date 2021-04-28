@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 28007b4e17bd698e4aaa2bddbf0c8f9ffaaa8351
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b1f56e2982afc8767ee1addaa2e47ac26cf29c0
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606452"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072907"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden des Azure CLI-Befehls „az postgres up“ (Vorschau) zum Erstellen eines Azure Database for PostgreSQL-Einzelservers
 
 > [!IMPORTANT]
-> Der Befehl [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) der Azure-Befehlszeilenschnittstelle befindet sich in der Vorschauphase.
+> Der Befehl [az postgres up](/cli/azure/postgres#az_postgres_up) der Azure-Befehlszeilenschnittstelle befindet sich in der Vorschauphase.
 
-Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Schnellstart wird veranschaulicht, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle und des Befehls [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) einen Azure Database for PostgreSQL-Server erstellen. Zusätzlich zum Server erstellt der Befehl `az postgres up` auch eine Beispieldatenbank und einen Root-Benutzer in der Datenbank, er öffnet die Firewall für Azure-Dienste und erstellt Firewallregeln für den Clientcomputer. Diese Standardeinstellungen tragen zur Beschleunigung des Entwicklungsprozesses bei.
+Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Schnellstart wird veranschaulicht, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle und des Befehls [az postgres up](/cli/azure/postgres#az_postgres_up) einen Azure Database for PostgreSQL-Server erstellen. Zusätzlich zum Server erstellt der Befehl `az postgres up` auch eine Beispieldatenbank und einen Root-Benutzer in der Datenbank, er öffnet die Firewall für Azure-Dienste und erstellt Firewallregeln für den Clientcomputer. Diese Standardeinstellungen tragen zur Beschleunigung des Entwicklungsprozesses bei.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,7 +42,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Erstellen einer Azure-Datenbank für PostgreSQL-Server
 
-Damit Sie die Befehle verwenden können, installieren Sie die Erweiterung [db-up](/cli/azure/ext/db-up). Falls ein Fehler auftritt, vergewissern Sie sich, dass die neueste Version der Azure-Befehlszeilenschnittstelle installiert ist. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
+Damit Sie die Befehle verwenden können, installieren Sie die Erweiterung [db-up](/cli/azure/ext/db-up/mysql). Falls ein Fehler auftritt, vergewissern Sie sich, dass die neueste Version der Azure-Befehlszeilenschnittstelle installiert ist. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
 ```azurecli
 az extension add --name db-up
@@ -71,7 +71,7 @@ admin-user | Systemgeneriert | Der Benutzername für den Administrator.
 admin-password | Systemgeneriert | Das Kennwort des Administratorbenutzers.
 
 > [!NOTE]
-> Weitere Informationen zum Befehl `az postgres up` und den zugehörigen zusätzlichen Parametern finden Sie in der [Dokumentation der Azure-Befehlszeilenschnittstelle](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up).
+> Weitere Informationen zum Befehl `az postgres up` und den zugehörigen zusätzlichen Parametern finden Sie in der [Dokumentation der Azure-Befehlszeilenschnittstelle](/cli/azure/postgres#az_postgres_up).
 
 Nach der Erstellung weist Ihr Server die folgenden Einstellungen auf:
 
@@ -87,7 +87,7 @@ Nach der Erstellung weist Ihr Server die folgenden Einstellungen auf:
 
 Nach Abschluss des Befehls `az postgres up` wird eine Liste von Verbindungszeichenfolgen für verbreitete Programmiersprachen an Sie zurückgegeben. Diese Verbindungszeichenfolgen sind mit bestimmten Attributen Ihres neu erstellten Azure Database for PostgreSQL-Servers vorkonfiguriert.
 
-Sie können den Befehl [az postgres show-connection-string](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-show-connection-string) verwenden, um diese Verbindungszeichenfolgen erneut aufzulisten.
+Sie können den Befehl [az postgres show-connection-string](/cli/azure/postgres#az_postgres_show_connection_string) verwenden, um diese Verbindungszeichenfolgen erneut aufzulisten.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -97,7 +97,7 @@ Bereinigen Sie alle im Schnellstart erstellten Ressourcen mit dem folgenden Befe
 az postgres down --delete-group
 ```
 
-Wenn Sie nur den neu erstellten Server löschen möchten, können Sie den Befehl [az postgres down](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-down) ausführen.
+Wenn Sie nur den neu erstellten Server löschen möchten, können Sie den Befehl [az postgres down](/cli/azure/postgres#az_postgres_down) ausführen.
 
 ```azurecli
 az postgres down

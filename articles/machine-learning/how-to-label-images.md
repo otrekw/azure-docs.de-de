@@ -6,15 +6,15 @@ author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5ba399418d8f93204b168c1058be20ffc775ef70
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 3418eeb2ada6951c45e24961c6dc2c45a74f32d3
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096965"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885018"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt 
 
@@ -74,11 +74,6 @@ Möglicherweise werden Machine Learning-Algorithmen ausgelöst. Wenn diese Algor
 * Bei Objektidentifizierungsmodellen sind Begrenzungsrahmen und Bezeichnungen möglicherweise bereits vorhanden.  Korrigieren Sie alle Fehler, bevor Sie die Seite senden.
 
 * Bei Segmentierungsmodellen sind Polygone und Bezeichnungen möglicherweise bereits vorhanden.  Korrigieren Sie alle Fehler, bevor Sie die Seite senden. 
-
-    > [!IMPORTANT]
-    > Features, für die „(Vorschau)“ angegeben ist, befinden sich in der öffentlichen Vorschauphase.   
-    > Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 Insbesondere in der Anfangsphase eines Bezeichnungsprojekts ist die Genauigkeit des Machine Learning-Modells möglicherweise nur für die Kennzeichnung einer kleinen Teilmenge von Bildern ausreichend. Sobald diese Bilder gekennzeichnet wurden, kehrt das Bezeichnungsprojekt zur manuellen Kennzeichnung zurück, um mehr Daten für das nächste Modelltraining zu erfassen. Im Laufe der Zeit erhöht sich die Zuverlässigkeit des Modells für einen größeren Teil von Bildern, was im weiteren Projektverlauf zu mehr Vorabbeschriftungsaufgaben führt.
 

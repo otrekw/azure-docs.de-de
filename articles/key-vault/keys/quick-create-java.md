@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 75cb7b6c9225e8579561f980df10da8994257133
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ecebeb6d14a00a92ef845001cf04a59f10345e23
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777183"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815574"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für Java
 Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-Schlüsselclientbibliothek für Java. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
@@ -269,6 +269,6 @@ public class App {
 In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt sowie einen Schlüssel erstellt, abgerufen und gelöscht. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
-- [Azure Key Vault-Sicherheitsübersicht](../general/security-overview.md)
+- [Azure Key Vault-Sicherheitsübersicht](../general/security-features.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-overview.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-features.md)

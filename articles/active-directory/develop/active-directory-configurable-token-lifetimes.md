@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 04/08/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 374e8bb61886a78289fcf44ce9582df325a4e64c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1753391c7b61b6e9bd9e6ac0d142b4ee94502d8
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549038"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363970"
 ---
 # <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)
 
@@ -42,11 +42,11 @@ Kunden mit [Microsoft 365 Business-Lizenzen](/office365/servicedescriptions/micr
 
 ## <a name="token-lifetime-policies-for-access-saml-and-id-tokens"></a>Richtlinien für die Tokenlebensdauer für Zugriffs-, SAML- und ID-Token
 
-Sie können die Tokenlebensdauer-Richtlinien für Zugriffstoken, SAML-Token und ID-Token festlegen. 
+Sie können die Tokenlebensdauer-Richtlinien für Zugriffstoken, SAML-Token und ID-Token festlegen.
 
 ### <a name="access-tokens"></a>Zugriffstoken
 
-Clients nutzen Zugriffstoken, um auf eine geschützte Ressource zuzugreifen. Ein Zugriffstoken kann nur für eine bestimmte Kombination aus Benutzer, Client und Ressource verwendet werden. Zugriffstoken können nicht widerrufen werden und sind bis zu ihrem Ablauf gültig. Ein böswilliger Akteur, der ein Zugriffstoken abgerufen hat, kann es während seiner gesamten Lebensdauer verwenden. Das Anpassen der Gültigkeitsdauer eines Zugriffstokens erfordert einen Kompromiss. Hierbei steht eine Verbesserung der Systemleistung einer Verlängerung der Zeitspanne gegenüber, über die der Client weiterhin Zugriff hat, nachdem das Konto des Benutzers deaktiviert wurde. Eine verbesserte Systemleistung wird dadurch erzielt, dass ein Client weniger oft ein neues Zugriffstoken abrufen muss.  Die Standardeinstellung ist „1 Stunde“. Nach einer Stunde muss der Client das Aktualisierungstoken verwenden, um (meist im Hintergrund) ein neues Aktualisierungstoken und Zugriffstoken abzurufen.
+Clients nutzen Zugriffstoken, um auf eine geschützte Ressource zuzugreifen. Ein Zugriffstoken kann nur für eine bestimmte Kombination aus Benutzer, Client und Ressource verwendet werden. Zugriffstoken können nicht widerrufen werden und sind bis zu ihrem Ablauf gültig. Ein böswilliger Akteur, der ein Zugriffstoken abgerufen hat, kann es während seiner gesamten Lebensdauer verwenden. Das Anpassen der Gültigkeitsdauer eines Zugriffstokens erfordert einen Kompromiss. Hierbei steht eine Verbesserung der Systemleistung einer Verlängerung der Zeitspanne gegenüber, über die der Client weiterhin Zugriff hat, nachdem das Konto des Benutzers deaktiviert wurde. Eine verbesserte Systemleistung wird dadurch erzielt, dass ein Client weniger oft ein neues Zugriffstoken abrufen muss.  Der Standardwert variiert abhängig von der Clientanwendung, die das Token anfordert. Beispielsweise erhalten CAE-fähige Clients (Continuous Access Evaluation), die CAE-fähige Sitzungen aushandeln, eine lange Tokengültigkeitsdauer (bis zu 28 Stunden). Wenn das Token abläuft, muss der Client das Aktualisierungstoken verwenden, um (meist im Hintergrund) ein neues Aktualisierungstoken und Zugriffstoken abzurufen.
 
 ### <a name="saml-tokens"></a>SAML-Token
 
@@ -60,144 +60,43 @@ Die im Element `<SubjectConfirmationData>` angegebene Antragstellerbestätigung 
 
 ID-Token werden an Websites und native Clients übergeben. ID-Token enthalten Profilinformationen zu einem Benutzer. Ein ID-Token ist an eine bestimmte Kombination von Benutzer und Client gebunden. ID-Token werden bis zu ihrem Ablaufdatum als gültig betrachtet. In der Regel passt eine Webanwendung die Gültigkeitsdauer der Sitzung eines Benutzers in der Anwendung an die Gültigkeitsdauer des für den Benutzer ausgegebenen ID-Tokens an. Sie können die Gültigkeitsdauer eines ID-Tokens anpassen, um zu steuern, wie oft die Webanwendung den Ablauf der Anwendungssitzung veranlasst und wie oft der Benutzer sich erneut bei Microsoft Identity Platform authentifizieren muss (entweder im Hintergrund oder interaktiv).
 
-### <a name="token-lifetime-policy-properties"></a>Eigenschaften von Tokengültigkeitsdauer-Richtlinien
-
-Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln für die Tokengültigkeitsdauer enthält. Diese Richtlinie steuert, wie lange Zugriffstoken und ID-Token für diese Ressource als gültig angesehen werden. Wenn keine Richtlinie festgelegt ist, erzwingt das System den Standardwert für die Gültigkeitsdauer. 
-
-Durch das Reduzieren des Werts für die Eigenschaft „Gültigkeitsdauer Zugriffstoken“ wird das Risiko verringert, dass ein Zugriffstoken oder ID-Token von einem böswilligen Akteur für einen längeren Zeitraum verwendet wird. (Diese Token können nicht widerrufen werden.) Der Nachteil hierbei ist, dass die Leistung beeinträchtigt wird, da die Token häufiger ersetzt werden müssen.
-
-Ein Beispiel finden Sie unter [Erstellen einer Richtlinie für die Webanmeldung](configure-token-lifetimes.md#create-a-policy-for-web-sign-in).
-
-| Eigenschaft | Richtlinien-Eigenschaftszeichenfolge | Betrifft | Standard | Minimum | Maximum |
-| --- | --- | --- | --- | --- | --- |
-| Gültigkeitsdauer Zugriffstoken |AccessTokenLifetime |Zugriffstoken, ID-Token, SAML2-Token |1 Stunde |10 Minuten |1 Tag |
-
-> [!NOTE]
-> Damit der Microsoft Teams-Webclient funktioniert, empfiehlt es sich, „AccessTokenLifetime“ für Microsoft Teams auf mehr als 15 Minuten festzulegen.
-
 ## <a name="token-lifetime-policies-for-refresh-tokens-and-session-tokens"></a>Richtlinien für die Tokenlebensdauer für Aktualisierungstoken und Sitzungstoken
 
 Für Aktualisierungs- und Sitzungstoken können keine Richtlinien für die Tokenlebensdauer festgelegt werden.
 
 > [!IMPORTANT]
-> Ab dem 30. Januar 2021 können Sie die Gültigkeitsdauer von Aktualisierungs- und Sitzungstoken nicht mehr konfigurieren. Azure Active Directory berücksichtigt die Konfigurationen von Aktualisierungs- und Sitzungstoken in vorhandenen Richtlinien nicht mehr.  Für neue Token, die nach dem Ablauf vorhandener Token ausgegeben werden, wird jetzt die [Standardkonfiguration](#configurable-token-lifetime-properties-after-the-retirement) festgelegt. Die Gültigkeitsdauer von Zugriffs-, SAML- und ID-Token kann jedoch auch noch nach der Einstellung der Konfiguration von Aktualisierungs- und Sitzungstoken konfiguriert werden.
+> Ab dem 30. Januar 2021 können Sie die Gültigkeitsdauer von Aktualisierungs- und Sitzungstoken nicht mehr konfigurieren. Azure Active Directory berücksichtigt die Konfigurationen von Aktualisierungs- und Sitzungstoken in vorhandenen Richtlinien nicht mehr.  Für neue Token, die nach dem Ablauf vorhandener Token ausgegeben werden, wird jetzt die [Standardkonfiguration](#configurable-token-lifetime-properties) festgelegt. Die Gültigkeitsdauer von Zugriffs-, SAML- und ID-Token kann jedoch auch noch nach der Einstellung der Konfiguration von Aktualisierungs- und Sitzungstoken konfiguriert werden.
 >
 > Die Gültigkeitsdauer des vorhandenen Tokens wird nicht geändert. Nach dem Ablauf des Tokens wird auf Basis des Standardwerts ein neues Token ausgegeben.
 >
 > Wenn Sie weiterhin definieren möchten, nach welcher Zeit ein Benutzer zur erneuten Anmeldung aufgefordert werden soll, können Sie die Anmeldehäufigkeit im bedingten Zugriff konfigurieren. Weitere Informationen zum bedingten Zugriff finden Sie unter [Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](../conditional-access/howto-conditional-access-session-lifetime.md).
 
-:::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="Informationen zur Ausmusterung":::
+## <a name="configurable-token-lifetime-properties"></a>Konfigurierbare Eigenschaften der Tokengültigkeitsdauer
+Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln für die Tokengültigkeitsdauer enthält. Diese Richtlinie steuert, wie lange Zugriffstoken und ID-Token für diese Ressource als gültig angesehen werden. Richtlinien für die Tokengültigkeitsdauer können nicht für Aktualisierungs- und Sitzungstoken festgelegt werden. Wenn keine Richtlinie festgelegt ist, erzwingt das System den Standardwert für die Gültigkeitsdauer.
 
-### <a name="refresh-tokens"></a>Aktualisierungstoken
+### <a name="access-id-and-saml2-token-lifetime-policy-properties"></a>Eigenschaften der Richtlinien für die Gültigkeitsdauer von Zugriffs-, ID- und SAML2-Token
 
-Wenn ein Client ein Zugriffstoken für den Zugriff auf eine geschützte Ressource abruft, erhält er auch ein Aktualisierungstoken. Das Aktualisierungstoken wird verwendet, um neue Zugriffs-/Aktualisierungstoken-Paare abzurufen, wenn das aktuelle Zugriffstoken abläuft. Ein Aktualisierungstoken ist an eine Kombination aus Benutzer und Client gebunden. Ein Aktualisierungstoken kann [jederzeit widerrufen werden](access-tokens.md#token-revocation), und die Gültigkeit des Tokens wird bei jeder Verwendung des Tokens geprüft.  Aktualisierungstoken werden nicht widerrufen, wenn sie zum Abrufen neuer Zugriffstoken verwendet werden. Dies ist eine bewährte Methode, um das alte Token beim Abrufen eines neuen Tokens sicher zu löschen.
-
-Es ist wichtig, zwischen vertraulichen Clients und öffentlichen Clients zu unterscheiden, da dies eine Auswirkung darauf hat, wie lange Aktualisierungstoken verwendet werden können. Weitere Informationen zu den verschiedenen Clienttypen finden Sie unter [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
-
-#### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Tokengültigkeitsdauer bei Aktualisierungstoken von vertraulichen Clients
-Vertrauliche Clients sind Anwendungen, die ein Clientkennwort (Geheimnis) sicher speichern können. Damit kann bewiesen werden, dass Anforderungen von der geschützten Clientanwendung stammen, und nicht von einem böswilligen Akteur. Eine Web-App ist beispielsweise ein vertraulicher Client, da sie ein Clientgeheimnis auf dem Webserver speichern kann. Sie ist daher nicht gefährdet. Da derartige Flows sicherer sind, lautet die Standardgültigkeitsdauer von Aktualisierungstoken, die für diese Flows ausgestellt werden, `until-revoked`. Sie kann nicht mithilfe einer Richtlinie geändert werden und wird bei der absichtlichen Kennwortzurücksetzung nicht zurückgesetzt.
-
-#### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Tokengültigkeitsdauer bei Aktualisierungstoken von öffentlichen Clients
-
-Öffentliche Clients können ein Clientkennwort (Geheimnis) nicht sicher speichern. Eine iOS- oder Android-App kann beispielsweise kein Geheimnis vor dem Ressourcenbesitzer verbergen und gilt daher als öffentlicher Client. Sie können Richtlinien für Ressourcen festlegen, um zu verhindern, dass Aktualisierungstoken aus öffentlichen Clients, deren Alter einen festgelegten Wert überschritten hat, ein neues Zugriffs-/Aktualisierungstoken-Paar abrufen können. Verwenden Sie hierfür die Eigenschaft [Max. Zeit der Inaktivität für Aktualisierungstoken](#refresh-token-max-inactive-time) (`MaxInactiveTime`). Sie können Richtlinien auch verwenden, um einen Zeitraum bis zum einem Punkt festzulegen, ab dem die Aktualisierungstoken nicht mehr akzeptiert werden. Verwenden Sie zu diesem Zweck eine der Eigenschaften [Max. Alter Single-Factor-Aktualisierungstoken](#single-factor-session-token-max-age) oder [Max. Alter Multi-Factor-Sitzungstoken](#multi-factor-refresh-token-max-age). Sie können die Gültigkeitsdauer eines Aktualisierungstokens anpassen, um zu steuern, wann und wie oft der Benutzer erneut Anmeldeinformationen eingeben muss, anstatt automatisch erneut authentifiziert zu werden, wenn er eine öffentliche Clientanwendung verwendet.
-
-Die Eigenschaft „Max. Alter“ ist die Zeitspanne, in der ein Token verwendet werden kann. 
-
-### <a name="single-sign-on-session-tokens"></a>Sitzungstoken für einmaliges Anmelden
-Wenn sich ein Benutzer mit Microsoft Identity Platform authentifiziert, wird eine SSO-Sitzung (Single Sign-On, einmaliges Anmelden) im Browser des Benutzers und bei Microsoft Identity Platform hergestellt. Das SSO-Token stellt diese Sitzung dar (in Form eines Cookies). Das SSO-Sitzungstoken ist nicht an eine bestimmte Ressource/Clientanwendung gebunden. SSO-Sitzungstoken können widerrufen werden, und ihre Gültigkeit wird bei jeder Verwendung überprüft.
-
-Microsoft Identity Platform verwendet zwei Arten von SSO-Sitzungstoken: beständig und nicht beständig. Beständige Sitzungstoken werden vom Browser als beständige Cookies gespeichert. Nicht beständige Sitzungstoken werden als Sitzungscookies gespeichert. (Sitzungscookies werden zerstört, wenn der Browser geschlossen wird.) In der Regel wird ein nicht persistentes Sitzungstoken gespeichert. Wenn der Benutzer jedoch während der Authentifizierung das Kontrollkästchen **Angemeldet bleiben** wählt, wird ein persistentes Sitzungstoken gespeichert.
-
-Nicht beständige Sitzungstoken haben eine Gültigkeitsdauer von 24 Stunden. Beständige Token haben eine Gültigkeitsdauer von 90 Tagen. Jedes Mal, wenn ein SSO-Sitzungstoken innerhalb seiner Gültigkeitsdauer verwendet wird, verlängert sich die Gültigkeitsdauer je nach Tokentyp um weitere 24 Stunden bzw. 90 Tage. Wenn ein SSO-Sitzungstoken innerhalb seiner Gültigkeitsdauer nicht verwendet wird, wird es als abgelaufen erachtet und nicht mehr akzeptiert.
-
-Sie können eine Richtlinie verwenden, um den Zeitpunkt nach dem Ausstellen des ersten Sitzungstokens festzulegen, nach dem das Sitzungstoken nicht mehr akzeptiert wird. (Verwenden Sie hierfür die Eigenschaft „Max. Alter Sitzungstoken“.) Sie können die Gültigkeitsdauer eines Sitzungstokens anpassen, um zu steuern, wann und wie oft ein Benutzer erneut Anmeldeinformationen eingeben muss, anstatt automatisch authentifiziert zu werden, wenn er eine Webanwendung verwendet.
-
-### <a name="refresh-and-session-token-lifetime-policy-properties"></a>Eigenschaften von Tokenlebensdauer-Richtlinien für Aktualisierungs- und Sitzungstoken
-Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln für die Tokengültigkeitsdauer enthält. Verwenden Sie die Eigenschaften der Richtlinie, um angegebene Tokengültigkeitsdauern zu steuern. Wenn keine Richtlinie festgelegt ist, erzwingt das System den Standardwert für die Gültigkeitsdauer.
-
-#### <a name="configurable-token-lifetime-properties"></a>Konfigurierbare Eigenschaften der Tokengültigkeitsdauer
-| Eigenschaft | Richtlinien-Eigenschaftszeichenfolge | Betrifft | Standard | Minimum | Maximum |
-| --- | --- | --- | --- | --- | --- |
-| Max. Zeit der Inaktivität für Aktualisierungstoken |MaxInactiveTime |Aktualisierungstoken |90 Tage |10 Minuten |90 Tage |
-| Max. Alter Single-Factor-Aktualisierungstoken |MaxAgeSingleFactor |Aktualisierungstoken (für alle Benutzer) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
-| Max. Alter Multi-Factor-Aktualisierungstoken |MaxAgeMultiFactor |Aktualisierungstoken (für alle Benutzer) | Bis zum Widerruf |10 Minuten |180 Tage<sup>1</sup> |
-| Max. Alter Single-Factor-Sitzungstoken |MaxAgeSessionSingleFactor |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
-| Max. Alter Multi-Factor-Sitzungstoken |MaxAgeSessionMultiFactor |Sitzungstoken (beständig und nicht beständig) | Bis zum Widerruf |10 Minuten | 180 Tage<sup>1</sup> |
-
-* <sup>1</sup>365 Tage ist die explizite Maximallänge, die für diese Attribute festgelegt werden kann.
-
-#### <a name="exceptions"></a>Ausnahmen
-| Eigenschaft | Betrifft | Standard |
-| --- | --- | --- |
-| Maximales Alter des Aktualisierungstokens (für Verbundbenutzer mit unzureichenden Widerrufsinformationen ausgestellt<sup>1</sup>) |Aktualisierungstoken (für Verbundbenutzer mit unzureichenden Widerrufsinformationen ausgestellt<sup>1</sup>) |12 Stunden |
-| Max. Zeit der Inaktivität für Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Aktualisierungstoken (für vertrauliche Clients ausgestellt) |90 Tage |
-| Max. Alter Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Bis zum Widerruf |
-
-* <sup>1</sup> Zu Verbundbenutzern mit unzureichenden Widerrufsinformationen zählen Benutzer, bei denen das Attribut „LastPasswordChangeTimestamp“ nicht synchronisiert wird. Für diese Benutzer gilt dieses kurze maximale Alter, weil Azure Active Directory nicht überprüfen kann, wann an alte Anmeldeinformationen (z. B. ein geändertes Kennwort) gebundene Token widerrufen werden müssen, und häufiger sicherstellen muss, dass es zwischen dem Benutzer und den zugeordneten Token keine Probleme gibt. Zum Verbessern dieses Verfahrens müssen Mandantenadministratoren sicherstellen, dass das Attribut „LastPasswordChangeTimestamp“ synchronisiert wird (dies kann für das Benutzerobjekt über PowerShell oder AADSync festgelegt werden).
-
-### <a name="configurable-policy-property-details"></a>Details zu konfigurierbaren Richtlinieneigenschaften
-
-#### <a name="refresh-token-max-inactive-time"></a>Max. Zeit der Inaktivität für Aktualisierungstoken
-**Zeichenfolge:** MaxInactiveTime
-
-**Betrifft:** Aktualisierungstoken
-
-**Zusammenfassung:** Diese Richtlinie steuert, wie alt ein Aktualisierungstoken sein darf, bevor ein Client es nicht mehr verwenden kann, um ein neues Zugriffs-/Aktualisierungstoken-Paar abzurufen, wenn versucht wird, auf diese Ressource zuzugreifen. Da bei Verwendung eines Aktualisierungstokens normalerweise ein neues Aktualisierungstoken zurückgegeben wird, wird mit dieser Richtlinie der Zugriff verhindert, wenn der Client versucht, während des angegeben Zeitraums mit dem aktuellen Aktualisierungstoken auf eine Ressource zuzugreifen.
-
-Durch diese Richtlinie werden Benutzer, die nicht auf ihrem Client aktiv waren, gezwungen, sich erneut zu authentifizieren, um ein neues Aktualisierungstoken abzurufen.
-
-Die Eigenschaft „Maximale Inaktivitätszeit Aktualisierungstoken“ muss auf einen niedrigeren Wert als die Eigenschaften „Maximales Alter Single-Factor-Token“ und „Maximales Alter Multi-Factor-Aktualisierungstoken“ festgelegt werden.
-
-Ein Beispiel finden Sie unter [Erstellen einer Richtlinie für eine native App, die eine Web-API aufruft](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
-
-#### <a name="single-factor-refresh-token-max-age"></a>Max. Alter Single-Factor-Aktualisierungstoken
-**Zeichenfolge:** MaxAgeSingleFactor
-
-**Betrifft:** Aktualisierungstoken
-
-**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer ein Aktualisierungstoken verwenden kann, um ein neues Zugriffs-/Aktualisierungstoken-Paar abzurufen, nachdem die letzte erfolgreiche Authentifizierung mit einem einzigen Faktor durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Aktualisierungstoken erhalten hat, kann er den Aktualisierungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Aktualisierungstoken nicht widerrufen wird und nicht länger als für den Inaktivitätszeitraum ungenutzt bleibt.) An diesem Punkt wird der Benutzer zum erneuten Authentifizieren gezwungen, um ein neues Aktualisierungstoken zu erhalten.
-
-Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authentifizieren. Da die Single-Factor Authentication als weniger sicher als die Multi-Factor Authentication erachtet wird, wird empfohlen, diese Eigenschaft auf einen Wert festzulegen, der kleiner oder gleich dem Wert für die Eigenschaft „Max. Alter Multi-Factor-Aktualisierungstoken“ ist.
-
-Ein Beispiel finden Sie unter [Erstellen einer Richtlinie für eine native App, die eine Web-API aufruft](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
-
-#### <a name="multi-factor-refresh-token-max-age"></a>Max. Alter Multi-Factor-Aktualisierungstoken
-**Zeichenfolge:** MaxAgeMultiFactor
-
-**Betrifft:** Aktualisierungstoken
-
-**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer ein Aktualisierungstoken verwenden kann, um ein neues Zugriffs-/Aktualisierungstoken-Paar abzurufen, nachdem die letzte erfolgreiche Authentifizierung mit mehreren Faktoren durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Aktualisierungstoken erhalten hat, kann er den Aktualisierungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Aktualisierungstoken nicht widerrufen wird und nicht länger als für den Inaktivitätszeitraum ungenutzt bleibt.) An diesem Punkt werden Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Aktualisierungstoken zu erhalten.
-
-Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authentifizieren. Da die Single-Factor Authentication als weniger sicher als die Multi-Factor Authentication erachtet wird, wird empfohlen, diese Eigenschaft auf einen Wert festzulegen, der größer oder gleich dem Wert für die Eigenschaft „Max. Alter Single-Factor-Aktualisierungstoken“ ist.
-
-Ein Beispiel finden Sie unter [Erstellen einer Richtlinie für eine native App, die eine Web-API aufruft](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
-
-#### <a name="single-factor-session-token-max-age"></a>Max. Alter Single-Factor-Sitzungstoken
-**Zeichenfolge:** MaxAgeSessionSingleFactor
-
-**Betrifft:** Sitzungstoken (beständig und nicht beständig)
-
-**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer ein Sitzungstoken verwenden kann, um ein neues ID- und Sitzungstoken abrufen, nachdem die letzte erfolgreiche Authentifizierung mit einem einzigen Faktor durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Sitzungstoken erhalten hat, kann er den Sitzungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Sitzungstoken nicht widerrufen wird und nicht abgelaufen ist.) Nach dem angegebenen Zeitraum wird der Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Sitzungstoken zu erhalten.
-
-Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authentifizieren. Da die Single-Factor Authentication als weniger sicher als die Multi-Factor Authentication erachtet wird, wird empfohlen, diese Eigenschaft auf einen Wert festzulegen, der kleiner oder gleich dem Wert für die Eigenschaft „Max. Alter Multi-Factor-Sitzungstoken“ ist.
+Durch das Reduzieren des Werts für die Eigenschaft „Gültigkeitsdauer Zugriffstoken“ wird das Risiko verringert, dass ein Zugriffstoken oder ID-Token von einem böswilligen Akteur für einen längeren Zeitraum verwendet wird. (Diese Token können nicht widerrufen werden.) Der Nachteil hierbei ist, dass die Leistung beeinträchtigt wird, da die Token häufiger ersetzt werden müssen.
 
 Ein Beispiel finden Sie unter [Erstellen einer Richtlinie für die Webanmeldung](configure-token-lifetimes.md#create-a-policy-for-web-sign-in).
 
-#### <a name="multi-factor-session-token-max-age"></a>Max. Alter Multi-Factor-Sitzungstoken
-**Zeichenfolge:** MaxAgeSessionMultiFactor
+Die folgenden Eigenschaften und die entsprechenden Werte haben Auswirkungen auf die Konfiguration von Zugriffs-, ID- und SAML2-Token:
 
-**Betrifft:** Sitzungstoken (beständig und nicht beständig)
+- **Eigenschaft**: Gültigkeitsdauer des Zugriffstokens
+- **Zeichenfolge der Richtlinieneigenschaft**: AccessTokenLifetime
+- **Betrifft**: Zugriffstoken, ID-Token, SAML2-Token
+- **Standardwert**:
+    - Zugriffstoken: hängt von der Clientanwendung ab, die das Token anfordert. Beispielsweise erhalten CAE-fähige Clients (Continuous Access Evaluation), die CAE-fähige Sitzungen aushandeln, eine lange Tokengültigkeitsdauer (bis zu 28 Stunden).
+    - ID-Token, SAML2-Token: 1 Stunde
+- **Minimum**: 10 Minuten
+- **Maximum:** 1 Tag
 
-**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer ein Sitzungstoken verwenden kann, um ein neues ID- und Sitzungstoken abzurufen, nachdem die letzte erfolgreiche Authentifizierung mit mehreren Faktoren durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Sitzungstoken erhalten hat, kann er den Sitzungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Sitzungstoken nicht widerrufen wird und nicht abgelaufen ist.) Nach dem angegebenen Zeitraum wird der Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Sitzungstoken zu erhalten.
+### <a name="refresh-and-session-token-lifetime-policy-properties"></a>Eigenschaften von Tokenlebensdauer-Richtlinien für Aktualisierungs- und Sitzungstoken
 
-Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authentifizieren. Da die Single-Factor Authentication als weniger sicher als die Multi-Factor Authentication erachtet wird, wird empfohlen, diese Eigenschaft auf einen Wert festzulegen, der größer oder gleich dem Wert für die Eigenschaft „Max. Alter Single-Factor-Sitzungstoken“ ist.
-
-## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Konfigurierbare Eigenschaften der Tokenlebensdauer nach der Einstellung
-Die folgenden Eigenschaften und die entsprechenden Werte haben Auswirkungen auf die Konfiguration von Aktualisierungs- und Sitzungstoken. Nach der Ausmusterung der Konfiguration für Aktualisierungs- und Sitzungstoken am 30. Januar 2021 berücksichtigt Azure AD nur die unten beschriebenen Standardwerte. Wenn Sie sich entscheiden, den bedingten Zugriff nicht für die Verwaltung der Anmeldehäufigkeit zu verwenden, wird für Ihre Aktualisierungs- und Sitzungstoken an diesem Datum die Standardkonfiguration festgelegt, und sie können ihre Lebensdauer nicht mehr ändern.  
+Die folgenden Eigenschaften und die entsprechenden Werte haben Auswirkungen auf die Konfiguration von Aktualisierungs- und Sitzungstoken. Nach der Ausmusterung der Konfiguration für Aktualisierungs- und Sitzungstoken am 30. Januar 2021 berücksichtigt Azure AD nur die unten beschriebenen Standardwerte. Wenn Sie sich entscheiden, zum Verwalten der Anmeldehäufigkeit nicht den [bedingten Zugriff](../conditional-access/howto-conditional-access-session-lifetime.md) zu verwenden, wird für Ihre Aktualisierungs- und Sitzungstoken an diesem Datum die Standardkonfiguration festgelegt, und Sie können ihre Gültigkeitsdauer nicht mehr ändern.  
 
 |Eigenschaft   |Richtlinien-Eigenschaftszeichenfolge    |Betrifft |Standard |
 |----------|-----------|------------|------------|
-|Gültigkeitsdauer Zugriffstoken |AccessTokenLifetime |Zugriffstoken, ID-Token, SAML2-Token |1 Stunde |
 |Max. Zeit der Inaktivität für Aktualisierungstoken |MaxInactiveTime  |Aktualisierungstoken |90 Tage  |
 |Max. Alter Single-Factor-Aktualisierungstoken  |MaxAgeSingleFactor  |Aktualisierungstoken (für alle Benutzer)  |Bis zum Widerruf  |
 |Max. Alter Multi-Factor-Aktualisierungstoken  |MaxAgeMultiFactor  |Aktualisierungstoken (für alle Benutzer) |Bis zum Widerruf  |
@@ -212,31 +111,13 @@ Sie können eine Richtlinie für die Gültigkeitsdauer von Token erstellen und d
 * Wenn eine Richtlinie explizit dem Dienstprinzipal zugewiesen ist, wird sie erzwungen.
 * Wenn dem Dienstprinzipal nicht explizit eine Richtlinie zugewiesen ist, wird eine Richtlinie erzwungen, die explizit der übergeordneten Organisation des Dienstprinzipals zugewiesen ist.
 * Wenn dem Dienstprinzipal oder der Organisation nicht explizit eine Richtlinie zugewiesen ist, wird die Richtlinie erzwungen, die der Anwendung zugewiesen ist.
-* Wenn dem Dienstprinzipal, der Organisation oder dem Anwendungsobjekt keine Richtlinie zugewiesen ist, werden die Standardwerte erzwungen. (Siehe Tabelle unter [Konfigurierbare Eigenschaften der Tokengültigkeitsdauer](#configurable-token-lifetime-properties-after-the-retirement).)
+* Wenn dem Dienstprinzipal, der Organisation oder dem Anwendungsobjekt keine Richtlinie zugewiesen ist, werden die Standardwerte erzwungen. (Siehe Tabelle unter [Konfigurierbare Eigenschaften der Tokengültigkeitsdauer](#configurable-token-lifetime-properties).)
 
 Ausführliche Informationen zu den Beziehungen zwischen Anwendungsobjekten und Dienstprinzipalobjekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](app-objects-and-service-principals.md).
 
 Die Gültigkeit des Tokens wird zum Zeitpunkt seiner Verwendung überprüft. Die Richtlinie mit der höchsten Priorität für die Anwendung, auf die zugegriffen wird, wird wirksam.
 
 Alle hier verwendeten Zeiträume werden nach dem C#-Objekt [TimeSpan](/dotnet/api/system.timespan) (D.HH:MM:SS) formatiert.  Danach werden 80 Tage und 30 Minuten im Format `80.00:30:00` dargestellt.  Das führende D kann gelöscht werden, wenn der Wert 0 ist. Danach werden 90 Minuten im Format `00:90:00` dargestellt.  
-
-### <a name="example-scenario"></a>Beispielszenario
-
-Ein Benutzer möchte auf zwei Webanwendungen zugreifen: Webanwendung A und Webanwendung B.
-
-Faktoren:
-* Beide Webanwendungen gehören zu derselben übergeordneten Organisation.
-* Als Standard für die übergeordnete Organisation wird die Tokengültigkeitsdauer-Richtlinie 1 mit einem maximalen Alter für Sitzungstoken von acht Stunden festgelegt.
-* Webanwendung A ist eine regelmäßig verwendete Webanwendung, die nicht mit Richtlinien verknüpft ist.
-* Webanwendung B wird für hochsensible Prozesse verwendet. Der dazugehörige Dienstprinzipal ist mit der Tokengültigkeitsdauer-Richtlinie 2 verknüpft, die über ein maximales Alter für Sitzungstoken von 30 Minuten verfügt.
-
-Um 12:00 Uhr startet der Benutzer eine neue Browsersitzung und versucht, auf Webanwendung A zuzugreifen. Der Benutzer wird an Microsoft Identity Platform umgeleitet und aufgefordert, sich anzumelden. Es wird ein Cookie erstellt, das über ein Sitzungstoken im Browser verfügt. Der Benutzer wird mit einem ID-Token an die Webanwendung A zurückgeleitet. Dieses ID-Token erlaubt dem Benutzer den Zugriff auf die Anwendung.
-
-Um 12:15 Uhr versucht der Benutzer, auf Webanwendung B zuzugreifen. Der Browser führt die Umleitung an Microsoft Identity Platform durch, wo das Sitzungscookie erkannt wird. Der Dienstprinzipal von Webanwendung B ist mit Tokengültigkeitsdauer-Richtlinie 2 verknüpft, ist aber zugleich Teil der übergeordneten Organisation mit der Tokengültigkeitsdauer-Standardrichtlinie 1. Tokengültigkeitsdauer-Richtlinie 2 wird wirksam, da mit Dienstprinzipalen verknüpfte Richtlinien eine höhere Priorität als Organisationsstandardrichtlinien haben. Das Sitzungstoken wurde innerhalb der letzten 30 Minuten erstmalig ausgegeben, weshalb es als gültig erachtet wird. Der Benutzer wird mit einem ID-Token, das ihm Zugriff gewährt, an die Webanwendung B zurückgeleitet.
-
-Um 13:00 Uhr versucht der Benutzer, auf Webanwendung A zuzugreifen. Er wird an Microsoft Identity Platform umgeleitet. Webanwendung A ist nicht mit Richtlinien verknüpft, aber da sie sich in einer Organisation mit Tokengültigkeitsdauer-Standardrichtlinie 1 befindet, ist diese Richtlinie wirksam. Das Sitzungscookie, das innerhalb der letzten acht Stunden ursprünglich ausgestellt wurde, wird erkannt. Der Benutzer wird automatisch zurück an Webanwendung A mit einem neuen ID-Token umgeleitet. Der Benutzer muss sich nicht authentifizieren.
-
-Unmittelbar danach versucht der Benutzer, auf Webanwendung B zuzugreifen. Er wird an Microsoft Identity Platform umgeleitet. Wie zuvor auch, ist Tokengültigkeitsdauer-Richtlinie 2 wirksam. Da das Token vor mehr als 30 Minuten ausgestellt wurde, wird der Benutzer aufgefordert, die Anmeldeinformationen erneut einzugeben. Ein ganz neues Sitzungstoken und ein ID-Token werden ausgestellt. Nun kann der Benutzer auf Webanwendung B zugreifen.
 
 ## <a name="cmdlet-reference"></a>Cmdlet-Referenz
 

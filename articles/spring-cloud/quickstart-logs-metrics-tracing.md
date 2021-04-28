@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 907bf06323d13b2d26dec5003e4739f2ae9faf74
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b3b94de0fe97bb812921b831a92de44887df4070
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378515"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132969"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung
 
@@ -26,9 +26,9 @@ In den folgenden Verfahren wird erläutert, wie Sie Protokollstreaming, die Prot
 
 * Absolvieren Sie die vorherigen Schnellstarts in dieser Serie:
 
-  * [Bereitstellen des Azure Spring Cloud-Diensts](spring-cloud-quickstart-provision-service-instance.md)
-  * [Einrichten des Azure Spring Cloud-Konfigurationsservers](spring-cloud-quickstart-setup-config-server.md)
-  * [Erstellen und Bereitstellen von Apps](spring-cloud-quickstart-deploy-apps.md)
+  * [Bereitstellen des Azure Spring Cloud-Diensts](./quickstart-provision-service-instance.md)
+  * [Einrichten des Azure Spring Cloud-Konfigurationsservers](./quickstart-setup-config-server.md)
+  * [Erstellen und Bereitstellen von Apps](./quickstart-deploy-apps.md)
 
 ## <a name="logs"></a>Protokolle
 
@@ -73,7 +73,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
    [ ![Protokollanalyseabfrage: Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
-1. Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalten Sie unter [Azure Monitor-Protokollabfragen](/azure/data-explorer/kusto/query/). Wenn Sie alle Log Analytics-Protokolle über einen zentralisierten Client abfragen möchten, lesen Sie die Informationen unter [Abfragen von Daten in Azure Monitor mit Azure Data Explorer (Vorschau)](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
+1. Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalten Sie unter [Azure Monitor-Protokollabfragen](/azure/data-explorer/kusto/query/). Wenn Sie alle Log Analytics-Protokolle über einen zentralisierten Client abfragen möchten, lesen Sie die Informationen unter [Abfragen von Daten in Azure Monitor mit Azure Data Explorer (Vorschau)](/azure/data-explorer/query-monitor-data).
 
 ## <a name="metrics"></a>Metriken
 
@@ -115,9 +115,9 @@ Mit der integrierten Überwachungsfunktion in Azure Spring Cloud können Sie kom
 
 Schließen Sie die vorherigen Schritte ab: 
 
-* [Bereitstellen einer Instanz von Azure Spring Cloud](spring-cloud-quickstart-provision-service-instance.md)
-* [Einrichten des Konfigurationsservers](spring-cloud-quickstart-setup-config-server.md)
-* [Erstellen und Bereitstellen von Apps](spring-cloud-quickstart-deploy-apps.md)
+* [Bereitstellen einer Instanz von Azure Spring Cloud](./quickstart-provision-service-instance.md)
+* [Einrichten des Konfigurationsservers](./quickstart-setup-config-server.md)
+* [Erstellen und Bereitstellen von Apps](./quickstart-deploy-apps.md)
 
 ## <a name="logs"></a>Protokolle
 
@@ -171,7 +171,7 @@ So rufen Sie die Protokolle mit dem Azure-Toolkit für IntelliJ ab:
 
    [ ![Protokollanalyseabfrage](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 
-1. Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalten Sie unter [Azure Monitor-Protokollabfragen](/azure/data-explorer/kusto/query/). Wenn Sie alle Log Analytics-Protokolle über einen zentralisierten Client abfragen möchten, lesen Sie die Informationen unter [Abfragen von Daten in Azure Monitor mit Azure Data Explorer (Vorschau)](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
+1. Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalten Sie unter [Azure Monitor-Protokollabfragen](/azure/data-explorer/kusto/query/). Wenn Sie alle Log Analytics-Protokolle über einen zentralisierten Client abfragen möchten, lesen Sie die Informationen unter [Abfragen von Daten in Azure Monitor mit Azure Data Explorer (Vorschau)](/azure/data-explorer/query-monitor-data).
 
 ## <a name="metrics"></a>Metriken
 
@@ -228,6 +228,6 @@ Informationen zu weiteren Überwachungsfunktionen von Azure Spring Cloud finden 
 > [!div class="nextstepaction"]
 > [Diagnosedienste](diagnostic-services.md)
 >
-> [Verteilte Ablaufverfolgung](spring-cloud-howto-distributed-tracing.md)
+> [Verteilte Ablaufverfolgung](./how-to-distributed-tracing.md)
 >
-> [Streamen von Protokollen in Echtzeit](spring-cloud-howto-log-streaming.md)
+> [Streamen von Protokollen in Echtzeit](./how-to-log-streaming.md)

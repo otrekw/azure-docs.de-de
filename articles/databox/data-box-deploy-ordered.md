@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: eae8cca0302993c16ea29adddf6e4ee9b5b24be8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ed539df9fec3c66b3881257ff1ce68d03cf4c382
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770896"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878594"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Tutorial: Bestellen von Azure Data Box
 
@@ -449,7 +449,7 @@ Führen Sie für die Azure CLI die folgenden Schritte aus, um ein Gerät zu best
    |Abfrage| JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter [JMESPath](http://jmespath.org/). | --query <string>|
    |Ausführlich| Einbinden der ausführlichen Protokollierung. | --verbose |
 
-2. Führen Sie an der Eingabeaufforderung oder im Terminal Ihrer Wahl [az databox job create](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-create) aus, um Ihre Azure Data Box-Bestellung zu erstellen.
+2. Führen Sie an der Eingabeaufforderung oder im Terminal Ihrer Wahl [az databox job create](/cli/azure/databox/job#az_databox_job_create) aus, um Ihre Azure Data Box-Bestellung zu erstellen.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -617,7 +617,7 @@ Microsoft bereitet dann Ihr Gerät vor und versendet es über einen regionalen K
 
 ### <a name="track-a-single-order"></a>Nachverfolgen einer einzelnen Bestellung
 
-Führen Sie [`az databox job show`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-show) aus, um Nachverfolgungsinformationen zu einer einzelnen vorhandenen Azure Data Box-Bestellung zu erhalten. Mit dem Befehl werden Informationen zur Bestellung angezeigt, z. B. Name, Ressourcengruppe, Nachverfolgungsinformationen, Abonnement-ID, Kontaktinformationen, Versandtyp und Geräte-SKU.
+Führen Sie [`az databox job show`](/cli/azure/databox/job#az_databox_job_show) aus, um Nachverfolgungsinformationen zu einer einzelnen vorhandenen Azure Data Box-Bestellung zu erhalten. Mit dem Befehl werden Informationen zur Bestellung angezeigt, z. B. Name, Ressourcengruppe, Nachverfolgungsinformationen, Abonnement-ID, Kontaktinformationen, Versandtyp und Geräte-SKU.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -658,7 +658,7 @@ Führen Sie [`az databox job show`](/cli/azure/ext/databox/databox/job#ext-datab
 
 ### <a name="list-all-orders"></a>Auflisten aller Bestellungen
 
-Wenn Sie mehrere Geräte bestellt haben, können Sie [`az databox job list`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-list) ausführen, um Ihre gesamten Azure Data Box-Bestellungen anzuzeigen. Mit dem Befehl werden alle Bestellungen aufgelistet, die zu einer bestimmten Ressourcengruppe gehören. Weitere angezeigte Elemente in der Ausgabe: Name der Bestellung, Versandstatus, Azure-Region, Übermittlungstyp, Bestellstatus. Stornierte Bestellungen sind ebenfalls in der Liste enthalten.
+Wenn Sie mehrere Geräte bestellt haben, können Sie [`az databox job list`](/cli/azure/databox/job#az_databox_job_list) ausführen, um Ihre gesamten Azure Data Box-Bestellungen anzuzeigen. Mit dem Befehl werden alle Bestellungen aufgelistet, die zu einer bestimmten Ressourcengruppe gehören. Weitere angezeigte Elemente in der Ausgabe: Name der Bestellung, Versandstatus, Azure-Region, Übermittlungstyp, Bestellstatus. Stornierte Bestellungen sind ebenfalls in der Liste enthalten.
 Mit dem Befehl werden auch die Zeitstempel der einzelnen Bestellungen angezeigt.
 
 ```azurecli
@@ -777,7 +777,7 @@ Um eine stornierte Bestellung zu löschen, navigieren Sie zu **Übersicht** und 
 
 ### <a name="cancel-an-order"></a>Abbrechen eines Auftrags
 
-Führen Sie zum Stornieren einer Azure Data Box-Bestellung den Befehl [`az databox job cancel`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-cancel) aus. Sie müssen den Grund für die Stornierung der Bestellung angeben.
+Führen Sie zum Stornieren einer Azure Data Box-Bestellung den Befehl [`az databox job cancel`](/cli/azure/databox/job#az_databox_job_cancel) aus. Sie müssen den Grund für die Stornierung der Bestellung angeben.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -814,7 +814,7 @@ Führen Sie zum Stornieren einer Azure Data Box-Bestellung den Befehl [`az datab
 
 ### <a name="delete-an-order"></a>Löschen einer Bestellung
 
-Wenn Sie eine Azure Data Box-Bestellung storniert haben, können Sie [`az databox job delete`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-delete) ausführen, um die Bestellung zu löschen.
+Wenn Sie eine Azure Data Box-Bestellung storniert haben, können Sie [`az databox job delete`](/cli/azure/databox/job#az_databox_job_delete) ausführen, um die Bestellung zu löschen.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]

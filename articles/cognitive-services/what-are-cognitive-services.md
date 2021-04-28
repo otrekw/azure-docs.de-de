@@ -9,15 +9,15 @@ keywords: Cognitive Services, kognitive Intelligenz, kognitive Lösungen, KI-Die
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 10/22/2020
+ms.date: 04/16/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c89131cc34d45ea94f3bb290ac11ec86f4b83be3
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 108c716708936aa5e0e5a563bdb8787466ad06ef
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587611"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076849"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
@@ -59,7 +59,7 @@ In den folgenden Abschnitten dieses Artikels werden die zugehörigen Dienste die
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Language Understanding (LUIS)](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) ist ein cloudbasierter Konversations-KI-Dienst, der benutzerdefinierte Machine Learning-Intelligenz auf natürliche Konversationssprachtexte eines Benutzers anwendet, um die allgemeine Bedeutung vorherzusagen sowie relevante und detaillierte Informationen abzurufen. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Erstellen einer neuen App im LUIS-Portal](./luis/get-started-portal-build-app.md).|
+|[Language Understanding (LUIS)](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) ist ein cloudbasierter Konversations-KI-Dienst, der benutzerdefinierte Machine Learning-Intelligenz auf natürliche Konversationssprachtexte eines Benutzers anwendet, um die allgemeine Bedeutung vorherzusagen sowie relevante und detaillierte Informationen abzurufen. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Erstellen einer neuen App im LUIS-Portal](./luis/luis-get-started-create-app.md).|
 |[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker ermöglicht es Ihnen, aus Ihren teilstrukturierten Inhalten einen Frage- und Antwortdienst zu erstellen. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank](./qnamaker/quickstarts/create-publish-knowledge-base.md).|
 |[Textanalyse](./text-analytics/index.yml "Textanalyse")| Die Textanalyse bietet die Verarbeitung von natürlicher Sprache für unformatierten Text für die Standpunktanalyse, die Schlüsselbegriffserkennung und die Sprachenerkennung. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Verwenden der Textanalyse-Clientbibliothek und der REST-API](./text-analytics/quickstarts/client-libraries-rest-api.md).|
 |[Translator](./translator/index.yml "Übersetzer")|Translator ermöglicht eine maschinenbasierte Textübersetzung in Quasi-Echtzeit.|
@@ -134,7 +134,7 @@ Azure Cognitive Services bietet ein mehrschichtiges Sicherheitsmodell einschlie�
 
 Die APIs in Cognitive Services werden in einem wachsenden Netzwerk mit von Microsoft verwalteten Rechenzentren gehostet. Informationen zur regionalen Verfügbarkeit der einzelnen APIs finden Sie in der [Liste mit den Azure-Regionen](https://azure.microsoft.com/regions "Liste der Azure-Regionen").
 
-Suchen Sie nach einer Region, die noch nicht unterstützt wird? Teilen Sie uns dies mit, indem Sie im [UserVoice-Forum](https://cognitive.uservoice.com/ "UserVoice-Forum") eine Featureanfrage erstellen.
+Suchen Sie nach einer Region, die noch nicht unterstützt wird? Teilen Sie uns dies mit, indem Sie im [UserVoice-Forum](https://feedback.azure.com/forums/932041-azure-cognitive-services "UserVoice-Forum") eine Featureanfrage erstellen.
 
 ## <a name="supported-cultural-languages"></a>Unterstützte Kultursprachen
 

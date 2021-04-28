@@ -6,12 +6,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 88e433dbfa87d8ea483789b1fd838c62a6a481c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ac1456e2dc640e1076857da78cf4145b61ea69d4
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92536758"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832786"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Verwalten von Azure Cache for Redis mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -139,7 +140,7 @@ Weitere Informationen zu Microsoft Azure Deutschland finden Sie unter [Microsoft
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Eigenschaften, die für Azure Cache for Redis-PowerShell verwendet werden
 Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, die beim Erstellen und Verwalten Ihrer Azure Cache for Redis-Instanzen mithilfe von Azure PowerShell häufig verwendet werden.
 
-| Parameter | BESCHREIBUNG | Standard |
+| Parameter | Beschreibung | Standard |
 | --- | --- | --- |
 | Name |Name des Caches | |
 | Location |Ort des Caches | |
