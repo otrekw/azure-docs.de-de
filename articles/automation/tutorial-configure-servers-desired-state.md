@@ -4,13 +4,14 @@ description: In diesem Artikel erfahren Sie, wie Sie Computer in einem gewünsch
 services: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.date: 08/08/2018
-ms.openlocfilehash: f16db3f55ebd0f09e4d7b75750fa319daf03977e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/15/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d29c8ec4e0b992f38eec9e203ad6ad302f71308b
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99053566"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018491"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Konfigurieren von Computern mit einem gewünschten Status
 
@@ -136,27 +137,6 @@ $reports = Get-AzAutomationDscNodeReport -ResourceGroupName 'MyResourceGroup' -A
 # Display the most recent report
 $reports[0]
 ```
-
-## <a name="remove-nodes-from-service"></a>Entfernen von Knoten aus dem Dienst
-
-Wenn Sie Azure Automation State Configuration einen Knoten hinzufügen, werden die Einstellungen im lokalen Konfigurations-Manager so festgelegt, dass eine Registrierung beim Dienst erfolgt und Konfigurationen sowie erforderliche Module zum Konfigurieren des Computers abgerufen werden.
-Wenn Sie den Knoten aus dem Dienst entfernen möchten, können Sie dazu entweder das Azure-Portal oder die Az-Cmdlets verwenden.
-
-> [!NOTE]
-> Durch das Aufheben der Registrierung eines Knotens beim Dienst werden die Einstellungen des lokalen Konfigurations-Managers lediglich so festgelegt, dass der Knoten keine Verbindung mehr mit dem Dienst herstellt.
-> Dies hat keine Auswirkung auf die Konfiguration, die derzeit auf den Knoten angewendet wird.
-> Zum Entfernen der aktuellen Konfiguration verwenden Sie [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument), oder löschen Sie die lokale Konfigurationsdatei (dies ist für Linux-Knoten die einzige Option).
-
-### <a name="azure-portal"></a>Azure-Portal
-
-Klicken Sie in Azure Automation im Inhaltsverzeichnis auf **Zustandskonfiguration (DSC)** .
-Klicken Sie dann auf **Knoten**, um die Liste der Knoten anzuzeigen, die beim Dienst registriert sind.
-Klicken Sie auf den Namen des Knotens, den Sie entfernen möchten.
-Klicken Sie in der daraufhin geöffneten Knotenansicht auf **Registrierung aufheben**.
-
-### <a name="powershell"></a>PowerShell
-
-Zum Aufheben der Registrierung eines Knotens beim Azure Automation State Configuration-Dienst mithilfe von PowerShell befolgen Sie die Anweisungen in der Dokumentation für das Cmdlet [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

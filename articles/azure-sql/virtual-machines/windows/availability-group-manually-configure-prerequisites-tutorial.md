@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c64a4e06ed452c895c1bc2cf20adc2d9c0060c3
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1f7d73a6553d8baed86c87da0c4e7a5b036e99f7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219262"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134319"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Tutorial: Voraussetzungen für die Erstellung von Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -374,7 +374,7 @@ Im nächsten Schritt erstellen Sie drei VMs: zwei SQL Server-VMs und eine VM fü
 <br/>
 
 > [!NOTE]
-> Die hier vorgeschlagenen VM-Größen sind für das Testen von Verfügbarkeitsgruppen in Azure Virtual Machines vorgesehen. Die beste Leistung für Produktionsarbeitslasten finden Sie unter den Empfehlungen für die Größe und Konfiguration der SQL Server-Computer in [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Die hier vorgeschlagenen VM-Größen sind für das Testen von Verfügbarkeitsgruppen in Azure Virtual Machines vorgesehen. Die beste Leistung für Produktionsarbeitslasten finden Sie unter den Empfehlungen für die Größe und Konfiguration der SQL Server-Computer in [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](./performance-guidelines-best-practices-checklist.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 >
 
 Nachdem die drei virtuellen Computer vollständig bereitgestellt wurden, müssen Sie sie in die Domäne **corp.contoso.com** einbinden und „CORP\Install“ Administratorrechte für die Computer gewähren.

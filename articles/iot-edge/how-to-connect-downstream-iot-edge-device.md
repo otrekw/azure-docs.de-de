@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 500833d1bb4fc492942c08239bd488c2d2c16d30
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310018"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484318"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway
 
@@ -78,9 +78,9 @@ Sie können auch Beziehungen zwischen übergeordneten und untergeordneten Gerät
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Die [azure-iot](/cli/azure/ext/azure-iot)-Erweiterung für die Azure CLI bietet Befehle, mit denen Sie Ihre IoT-Ressourcen verwalten können. Sie können die Beziehung zwischen übergeordnetem und untergeordnetem Gerät von IoT- und IoT Edge-Geräten beim Erstellen neuer Geräteidentitäten verwalten, oder Sie bearbeiten vorhandene Geräte.
+Die [azure-iot](/cli/azure/iot)-Erweiterung für die Azure CLI bietet Befehle, mit denen Sie Ihre IoT-Ressourcen verwalten können. Sie können die Beziehung zwischen übergeordnetem und untergeordnetem Gerät von IoT- und IoT Edge-Geräten beim Erstellen neuer Geräteidentitäten verwalten, oder Sie bearbeiten vorhandene Geräte.
 
-Die [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity)-Befehle ermöglichen es Ihnen, die Beziehungen zwischen übergeordneten und untergeordneten Geräten für ein bestimmtes Gerät zu verwalten.
+Die [az iot hub device-identity](/cli/azure/iot/hub/device-identity)-Befehle ermöglichen es Ihnen, die Beziehungen zwischen übergeordneten und untergeordneten Geräten für ein bestimmtes Gerät zu verwalten.
 
 Der `create`-Befehl beinhaltet Parameter für das Hinzufügen von untergeordneten Geräten und das Festlegen eines übergeordneten Geräts bei der Geräteerstellung.
 

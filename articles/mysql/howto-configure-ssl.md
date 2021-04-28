@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 1c3e5a44e01f3fa43b82644103066f5a03684ad2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7bcdbd4229bda56af80cc5068dc5421dc2e5b58d
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94591579"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001572"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit der Azure-Datenbank für MySQL
 
@@ -24,7 +24,7 @@ Laden Sie das Zertifikat, das für die SSL-Kommunikation mit Ihrem Azure Databas
 **Für Microsoft Internet Explorer und Microsoft Edge**: Benennen Sie nach dem Download das Zertifikat in „BaltimoreCyberTrustRoot.crt.pem“ um.
 
 >[!NOTE]
-> Basierend auf dem Feedback von Kunden haben wir die eingestellte Unterstützung des Stammzertifikats für unsere vorhandene Baltimore-Stamm Zertifizierungsstelle bis zum 15. Februar 2021 (15.02.2021) verlängert.
+> Basierend auf dem Feedback von Kunden haben wir die eingestellte Unterstützung des Stammzertifikats für unsere vorhandene Baltimore-Stammzertifizierungsstelle bis zum 15. Februar 2021 (15.02.2021) verlängert.
 
 > [!IMPORTANT] 
 > Das SSL-Stammzertifikat wird ab dem 15. Februar 2021 (15.02.2021) auslaufen. Aktualisieren Sie Ihre Anwendung bitte mithilfe des [neuen Zertifikats](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem). Weitere Informationen finden Sie unter [Geplante Zertifikatupdates](concepts-certificate-rotation.md)
@@ -253,6 +253,28 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 {
     connection.Open();
 }
+```
+
+### <a name="nodejs"></a>Node.js
+
+```node
+var fs = require('fs');
+var mysql = require('mysql');
+const serverCa = [fs.readFileSync("/var/www/html/BaltimoreCyberTrustRoot.crt.pem", "utf8")];
+var conn=mysql.createConnection({
+    host:"mydemoserver.mysql.database.azure.com",
+    user:"myadmin@mydemoserver",
+    password:"yourpassword",
+    database:"quickstartdb",
+    port:3306,
+    ssl: {
+        rejectUnauthorized: true,
+        ca: serverCa
+    }
+});
+conn.connect(function(err) {
+  if (err) throw err;
+});
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -5,13 +5,13 @@ author: Bashar-MSFT
 ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/03/2020
-ms.openlocfilehash: 5b5bb9fd6e3d34fc4a6b0ae90a2cd76fc84e9ce1
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.date: 04/26/2021
+ms.openlocfilehash: 0cfbf6fa6a329e2038120703e6fe29fca23bfa06
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366520"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018030"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers
 
@@ -37,13 +37,13 @@ Zum Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers ben
 3. Wählen Sie das Ereignis für **PostgreSQL-Server löschen** und anschließend die Registerkarte **JSON** aus. Kopieren Sie die Attribute `resourceId` und `submissionTimestamp` in der JSON-Ausgabe. Die Ressourcen-ID (resourceId) hat das folgende Format: `/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/deletedserver`.
 
 
- 4. Navigieren Sie zur [PostgreSQL-Seite der REST-API für die Servererstellung](/rest/api/PostgreSQL/servers/create), und wählen Sie die grün hervorgehobene Option **Jetzt testen** aus. Melden Sie sich mit Ihrem Azure-Konto an.
+ 1. Navigieren Sie zur [PostgreSQL-Seite der REST-API für die Servererstellung](https://docs.microsoft.com/rest/api/postgresql/singleserver/servers/create), und wählen Sie die grün hervorgehobene Option **Jetzt testen** aus. Melden Sie sich mit Ihrem Azure-Konto an.
 
- 5. Geben Sie Werte für die Eigenschaften **resourceGroupName**, **serverName** (Name des gelöschten Servers) und **subscriptionId** an (basierend auf dem JSON-Wert für das Attribut „resourceId“, das Sie zuvor in Schritt 3 erfasst haben). Die Eigenschaft „api-version“ wurde vorab aufgefüllt und kann unverändert bleiben, wie in der folgenden Abbildung zu sehen:
+ 2. Geben Sie Werte für die Eigenschaften **resourceGroupName**, **serverName** (Name des gelöschten Servers) und **subscriptionId** an (basierend auf dem JSON-Wert für das Attribut „resourceId“, das Sie zuvor in Schritt 3 erfasst haben). Die Eigenschaft „api-version“ wurde vorab aufgefüllt und kann unverändert bleiben, wie in der folgenden Abbildung zu sehen:
 
     ![Erstellen eines Servers mit der REST-API](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
- 6. Scrollen Sie im Abschnitt „Anforderungstext“ nach unten, und fügen Sie das Folgende für „Speicherort des gelöschten Servers“ (z. B. CentralUS, EastUS usw.), „submissionTimestamp“ und „resourceId“ ein. Geben Sie für „restorePointinTime“ den Wert „submissionTimestamp“ minus **15 Minuten** an, um sicherzustellen, dass der Befehl nicht fehlerhaft ist.
+ 3. Scrollen Sie im Abschnitt „Anforderungstext“ nach unten, und fügen Sie das Folgende für „Speicherort des gelöschten Servers“ (z. B. CentralUS, EastUS usw.), „submissionTimestamp“ und „resourceId“ ein. Geben Sie für „restorePointinTime“ den Wert „submissionTimestamp“ minus **15 Minuten** an, um sicherzustellen, dass der Befehl nicht fehlerhaft ist.
     
     ```json
     {
@@ -62,7 +62,7 @@ Zum Wiederherstellen eines gelöschten Azure Database for PostgreSQL-Servers ben
     > [!Important]
     > Nach dem Löschen des Servers beginnt ein Zeitlimit von fünf Tagen. Nach fünf Tagen tritt erwartungsgemäß ein Fehler auf, da die Sicherungsdatei nicht gefunden wird.
     
-7. Wenn Sie „Antwortcode 201“ oder 202 sehen, wurde die Wiederherstellungsanforderung erfolgreich übermittelt. 
+4. Wenn Sie „Antwortcode 201“ oder 202 sehen, wurde die Wiederherstellungsanforderung erfolgreich übermittelt. 
 
     Die Servererstellung kann abhängig von der Datenbankgröße und den Computeressourcen, die auf dem ursprünglichen Server bereitgestellt werden, eine Weile dauern. Der Wiederherstellungsstatus kann über das Aktivitätsprotokoll überwacht werden durch filtern nach 
    - **Abonnement** = Ihr Abonnement

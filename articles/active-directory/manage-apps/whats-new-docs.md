@@ -6,15 +6,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: kenwith
-author: kenwith
-manager: daveba
-ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: iangithinji
+author: iantheninja
+manager: CelesteDG
+ms.openlocfilehash: 57a26592ec34153020e88450f3eb36b3361649b4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450037"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144173"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory-Anwendungsverwaltung: Neues
 
@@ -40,10 +40,10 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 - [Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 - [Schnellstart: Einrichten des SAML-basierten einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)](add-application-portal-setup-sso.md)
 - [Azure Active Directory-Anwendungsverwaltung: Neues](whats-new-docs.md)
-- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.md)
+- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.yml)
 - [Beheben von Anmeldeproblemen bei einer Anwendung aus „Meine Apps“ in Azure AD](application-sign-in-other-problem-access-panel.md)
 - [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
-- [Optimieren des Datenverkehrsflusses mit dem Azure Active Directory-Anwendungsproxy](application-proxy-network-topology.md)
+- [Optimieren des Datenverkehrsflusses mit Azure Active Directory-Anwendungsproxy](application-proxy-network-topology.md)
 - [Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen](application-proxy-release-version-history.md)
 - [Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)](configure-authentication-for-federated-users-portal.md)
 - [Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory](migrate-adfs-apps-to-azure.md)
@@ -75,7 +75,7 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 - [Bewährte Methoden für die Anwendungsverwaltung](application-management-fundamentals.md)
 - [Erste Schritte zur Integration von Anwendungen in Azure Active Directory](plan-an-application-integration.md)
 - [Worum handelt es sich bei der Anwendungsverwaltung?](what-is-application-management.md)
-- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.md)
+- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.yml)
 - [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md)
 - [Entwickeln von Branchen-Apps für Azure Active Directory](../develop/v2-overview.md)
@@ -83,7 +83,7 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 - [Grundlagen der verknüpften Anmeldung](configure-linked-sign-on.md)
 - [Grundlegendes zum kennwortbasierten einmaligen Anmelden](configure-password-single-sign-on-non-gallery-applications.md)
 - [Grundlegendes zum SAML-basierten einmaligen Anmelden](configure-saml-single-sign-on.md)
-- [Behandeln gängiger Probleme beim Hinzufügen oder Entfernen einer Anwendung in Azure Active Directory](troubleshoot-adding-apps.md)
+- [Behandeln gängiger Probleme beim Hinzufügen oder Entfernen einer Anwendung in Azure Active Directory](/troubleshoot/azure/active-directory/troubleshoot-adding-apps)
 - [Anzeigen von Apps mithilfe Ihres Azure AD-Mandanten für die Identitätsverwaltung](application-types.md)
 - [Informationen dazu, wie Benutzer Apps in Azure Active Directory zugewiesen werden](ways-users-get-assigned-to-applications.md)
 - [Schnellstart: Löschen einer Anwendung von Ihrem Azure AD-Mandanten (Azure Active Directory)](delete-application-portal.md)
@@ -141,7 +141,7 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 
 ### <a name="updated-articles"></a>Aktualisierte Artikel
 - [Schnellstart: Hinzufügen einer Anwendung zu Ihrem Azure AD-Mandanten (Azure Active Directory)](add-application-portal.md)
-- [Behandeln gängiger Probleme beim Hinzufügen oder Entfernen einer Anwendung in Azure Active Directory](troubleshoot-adding-apps.md)
+- [Behandeln gängiger Probleme beim Hinzufügen oder Entfernen einer Anwendung in Azure Active Directory](/troubleshoot/azure/active-directory/troubleshoot-adding-apps)
 - [Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen](manage-consent-requests.md)
 - [Anzeigen von Apps mithilfe Ihres Azure AD-Mandanten für die Identitätsverwaltung](application-types.md)
 - [Informationen dazu, wie Benutzer Apps in Azure Active Directory zugewiesen werden](ways-users-get-assigned-to-applications.md)

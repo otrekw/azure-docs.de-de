@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8a26f8ced5e91810f8cadff0a27796dc817e6517
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e87198d66e94204b0465919e7a94e0d04f9c885
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94491568"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128845"
 ---
 # <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kostenverwaltung für serverlose SQL-Pools in Azure Synapse Analytics
 
@@ -142,4 +142,4 @@ SELECT * FROM sys.dm_external_data_processed
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Optimierung der Leistung Ihrer Abfragen finden Sie unter [Bewährte Methoden für serverlose SQL-Pools](best-practices-sql-on-demand.md).
+Informationen zur Optimierung der Leistung Ihrer Abfragen finden Sie unter [Bewährte Methoden für serverlose SQL-Pools](./best-practices-serverless-sql-pool.md).

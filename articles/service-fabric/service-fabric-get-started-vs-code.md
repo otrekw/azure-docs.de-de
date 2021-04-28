@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
-ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d54b4b048632324a58708f893a4778a56137916
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92316669"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876077"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric für Visual Studio Code
 
@@ -48,7 +48,7 @@ Die folgenden Voraussetzungen müssen für die Java-Entwicklung installiert werd
 
 Die folgenden Voraussetzungen müssen für die .NET Core/C#-Entwicklung installiert werden:
 
-* [.NET Core](https://www.microsoft.com/net/learn/get-started) (ab Version 2.0.0)
+* [.NET Core](https://dotnet.microsoft.com/download) (ab Version 2.0.0)
 * [C# für Visual Studio Code (unterstützt von OmniSharp) VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) Wird zum Debuggen von C#-Diensten benötigt. Sie können installieren, indem Sie auf „Erweiterungen“ in der **Aktivitätsleiste** in VS Code klicken und die Erweiterung suchen, oder aber über den Visual Studio Code Marketplace.
 
 ## <a name="setup"></a>Einrichten

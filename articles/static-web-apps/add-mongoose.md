@@ -6,12 +6,12 @@ ms.author: chrhar
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 01/25/2021
-ms.openlocfilehash: f64cc67ad6f0296ad289d858795ee783943f3daf
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: fb1c1d64d77ca1c69960b77cbec7f60bb717c26c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259864"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143519"
 ---
 # <a name="tutorial-access-data-in-cosmos-db-using-mongoose-with-azure-static-web-apps"></a>Tutorial: Zugreifen auf Daten in Cosmos DB per Mongoose mit Azure Static Web Apps
 
@@ -37,7 +37,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-a-cosmos-db-serverless-database"></a>Erstellen einer serverlosen Cosmos DB-Datenbank
 
-Erstellen Sie als Erstes ein Konto vom Typ [Cosmos DB serverlos](https://docs.microsoft.com/azure/cosmos-db/serverless). Bei Verwendung eines serverlosen Kontos zahlen Sie nur für die Ressourcen, wenn diese auch genutzt werden. Zudem vermeiden Sie die Erstellung einer vollständigen Infrastruktur.
+Erstellen Sie als Erstes ein Konto vom Typ [Cosmos DB serverlos](../cosmos-db/serverless.md). Bei Verwendung eines serverlosen Kontos zahlen Sie nur für die Ressourcen, wenn diese auch genutzt werden. Zudem vermeiden Sie die Erstellung einer vollständigen Infrastruktur.
 
 1. Navigieren Sie zu [https://portal.azure.com](https://portal.azure.com).
 2. Klicken Sie auf **Ressource erstellen**.
@@ -140,4 +140,3 @@ Falls Sie diese Anwendung nicht mehr benötigen, löschen Sie die Ressourcengrup
 Im nächsten Artikel erfahren Sie, wie Sie die lokale Entwicklung konfigurieren.
 > [!div class="nextstepaction"]
 > [Einrichten der lokalen Entwicklung](./local-development.md)
- 

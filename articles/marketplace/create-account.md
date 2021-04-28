@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/06/2021
-ms.openlocfilehash: 09810008c402d9c47d609fc0c77781af141edd30
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 2b3516d5f573f13655963b678a2f164c460fd140
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107895"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133149"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
@@ -56,7 +56,7 @@ Melden Sie sich mit einem Geschäftskonto an, damit Sie die E-Mail-Kontodomäne 
 
 #### <a name="agree-to-the-terms-and-conditions"></a>Zustimmen zu den Bestimmungen
 
-Im Rahmen des Registrierungsprozesses für den kommerziellen Marketplace müssen Sie den Bestimmungen der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560) zustimmen. Wenn Sie neu im Microsoft Partner Network sind, müssen Sie auch den Bestimmungen der Microsoft Partner Network-Vereinbarung zustimmen.
+Im Rahmen des Registrierungsprozesses für den kommerziellen Marketplace müssen Sie den Bestimmungen der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement) zustimmen. Wenn Sie neu im Microsoft Partner Network sind, müssen Sie auch den Bestimmungen der Microsoft Partner Network-Vereinbarung zustimmen.
 
 Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Fahren Sie mit dem [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](add-publishers.md) fort.
 
@@ -93,7 +93,7 @@ Anschließend können Sie Ihren Benutzern die entsprechenden Benutzerrollen und 
 
 1. Wählen Sie die MPN-ID aus, die Sie mit Ihrem Herausgeberkonto verknüpfen möchten, und geben Sie den Namen Ihres Unternehmens ein.
 
-1. Lesen Sie die Bestimmungen der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560), und wählen Sie dann **Zustimmen und fortfahren** aus, um die Registrierung abzuschließen.
+1. Lesen Sie die Bestimmungen der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement), und wählen Sie dann **Zustimmen und fortfahren** aus, um die Registrierung abzuschließen.
 
     > [!IMPORTANT]
     > Um diesen Bestimmungen zustimmen zu können, müssen Sie befugt sein, im Namen Ihres Unternehmens zu handeln.
@@ -119,7 +119,7 @@ Wenn Sie sich für den kommerziellen Marketplace mit dem gleichen Konto registri
 1. Wählen Sie oben rechts **Einstellungen** > **Kontoeinstellungen** > **Programme** aus.
 1. Wählen Sie unter **Kommerzieller Marketplace** die Option **Los geht's** aus, und geben Sie Ihre geschäftliche E-Mail-Adresse ein.
 1. Geben Sie auf der Seite **Herausgeberprofil** die erforderlichen Details an.
-1. Lesen Sie die Bestimmungen der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560), und wählen Sie dann **Zustimmen und fortfahren** aus, um die Registrierung abzuschließen.
+1. Lesen Sie die Bestimmungen der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement), und wählen Sie dann **Zustimmen und fortfahren** aus, um die Registrierung abzuschließen.
 
     >[!Important]
     > Um diesen Bestimmungen zustimmen zu können, müssen Sie befugt sein, im Namen Ihres Unternehmens zu handeln.
