@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 5632f9a6126615255306cc89425bd08a9ffa9753
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 97261755f55f9193d0169e91597318928bb45b97
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877537"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134697"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Skalieren einer Anwendung in Azure Spring Cloud
 
@@ -29,7 +29,7 @@ Anschließend wissen Sie, wie jede Anwendung in Ihrem Dienst schnell manuell ge�
 Um die folgenden Verfahren ausführen zu können, benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
-* Eine bereitgestellte Azure Spring Cloud-Dienstinstanz.  Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](spring-cloud-quickstart.md).
+* Eine bereitgestellte Azure Spring Cloud-Dienstinstanz.  Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](./quickstart.md).
 * Mindestens eine bereits in Ihrer Dienstinstanz erstellte Anwendung.
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Navigieren zur Seite „Skalieren“ im Azure-Portal
@@ -63,11 +63,11 @@ Wählen Sie unbedingt **Speichern** aus, um Ihre Skalierungseinstellungen zu üb
 Nach wenigen Sekunden werden die von Ihnen vorgenommenen Änderungen auf der Seite **Übersicht** angezeigt. Weitere Details können Sie auf der Registerkarte **Anwendungsinstanzen** einsehen. Für die Skalierung sind weder Codeänderungen noch eine erneute Bereitstellung erforderlich.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Upgrade auf den Standard-Tarif
-Wenn Sie sich im Tarif „Basic“ befinden und durch eins oder mehrere dieser [Limits](spring-cloud-quotas.md) eingeschränkt sind, können Sie ein Upgrade auf den Tarif „Standard“ durchführen. Wechseln Sie zu diesem Zweck zum Menü „Preise“, indem Sie zuerst die Tarifspalte „Standard“ auswählen und dann auf die Schaltfläche **Upgrade** klicken.
+Wenn Sie sich im Tarif „Basic“ befinden und durch eins oder mehrere dieser [Limits](./quotas.md) eingeschränkt sind, können Sie ein Upgrade auf den Tarif „Standard“ durchführen. Wechseln Sie zu diesem Zweck zum Menü „Preise“, indem Sie zuerst die Tarifspalte „Standard“ auswählen und dann auf die Schaltfläche **Upgrade** klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Beispiel wurde erläutert, wie Sie eine Azure Spring Cloud-Anwendung manuell skalieren. Informationen zur Überwachung einer Anwendung durch Einrichten von Warnungen finden Sie unter [Einrichten der Autoskalierung für Microserviceanwendungen](spring-cloud-tutorial-setup-autoscale.md).
+In diesem Beispiel wurde erläutert, wie Sie eine Azure Spring Cloud-Anwendung manuell skalieren. Informationen zur Überwachung einer Anwendung durch Einrichten von Warnungen finden Sie unter [Einrichten der Autoskalierung für Microserviceanwendungen](./how-to-setup-autoscale.md).
 
 > [!div class="nextstepaction"]
-> [Informationen zum Einrichten von Warnungen](spring-cloud-tutorial-alerts-action-groups.md)
+> [Informationen zum Einrichten von Warnungen](./tutorial-alerts-action-groups.md)

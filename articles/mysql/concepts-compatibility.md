@@ -6,19 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 59f70659f25f925f8f802b0fcaa1f61d4e7f7dc0
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3614dffeca90e3986f7900d513682ad8b91fd066
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106937"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987126"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-Treiber und -Verwaltungstools, die mit Azure Database for MySQL kompatibel sind
 
 In diesem Artikel werden die Treiber und Verwaltungstools beschrieben, die mit Azure Database for MySQL Single Server kompatibel sind.
 
 >[!NOTE]
->Dieser Artikel gilt nur für Azure Database for MySQL Single Server, um sicherzustellen, dass Treiber mit der [Verbindungsarchitektur](concepts-connectivity-architecture.md) des Single Server-Diensts kompatibel sind. [Azure Database for MySQL Flexible Server](/../flexible-server/overview.md) ist mit allen unterstützten Treibern und Tools kompatibel und mit der MySQL Community Edition kompatibel. 
+>Dieser Artikel gilt nur für Azure Database for MySQL Single Server, um sicherzustellen, dass Treiber mit der [Verbindungsarchitektur](concepts-connectivity-architecture.md) des Single Server-Diensts kompatibel sind. [Azure Database for MySQL Flexible Server](/azure/mysql/flexible-server/overview) ist mit allen unterstützten Treibern und Tools kompatibel und mit der MySQL Community Edition kompatibel. 
 
 ## <a name="mysql-drivers"></a>MySQL-Treiber
 Azure Database for MySQL verwendet die weltweit am häufigsten verwendete Communityedition von MySQL-Datenbank. Daher ist es mit einer Vielzahl von Programmiersprachen und Treibern kompatibel. Das Ziel besteht darin, die drei letzten Versionen von MySQL-Treibern zu unterstützen. Außerdem soll durch einen ständigen Austausch mit den Autoren der Open-Source-Community eine kontinuierliche Verbesserung von Funktionalität und Verwendbarkeit der MySQL-Treibern erreicht werden. Eine Liste der Treiber, die getestet und als mit Azure Database for MySQL 5.6 und 5.7 kompatibel eingestuft wurden, finden Sie in der folgenden Tabelle:

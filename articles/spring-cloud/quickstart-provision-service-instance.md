@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 6f25c4172b384abd487d2084f31981d16e73ee93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 47ab010d5306d57a03687ca2fc11520e3fd6acb2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877582"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132735"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Schnellstart: Bereitstellen des Azure Spring Cloud-Diensts
 
@@ -160,7 +160,7 @@ Im folgenden Verfahren wird die Azure CLI-Erweiterung zum Bereitstellen einer Az
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie Azure-Ressourcen erstellt, für die weiterhin Gebühren anfallen, falls sie in Ihrem Abonnement verbleiben. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten, lesen Sie die Informationen unter [Bereinigen von Ressourcen](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources). Fahren Sie andernfalls mit der nächsten Schnellstartanleitung fort:
+In dieser Schnellstartanleitung haben Sie Azure-Ressourcen erstellt, für die weiterhin Gebühren anfallen, falls sie in Ihrem Abonnement verbleiben. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten, lesen Sie die Informationen unter [Bereinigen von Ressourcen](./quickstart-logs-metrics-tracing.md#clean-up-resources). Fahren Sie andernfalls mit der nächsten Schnellstartanleitung fort:
 
 > [!div class="nextstepaction"]
-> [Einrichten eines Konfigurationsservers](spring-cloud-quickstart-setup-config-server.md)
+> [Einrichten eines Konfigurationsservers](./quickstart-setup-config-server.md)

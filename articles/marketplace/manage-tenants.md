@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: 446792b26527126a4db99da14a2585c17cf8610c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 79120eb6d3d5aad9c27ed42bc825fdad4907af49
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107967"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144760"
 ---
 # <a name="manage-tenants-in-the-commercial-marketplace"></a>Verwalten von Mandanten im kommerziellen Marketplace
 
@@ -53,7 +53,7 @@ So erstellen Sie einen neuen Azure AD-Mandanten mit Ihrem Partner Center-Konto
 1. Wählen Sie Erstellen aus, um die neuen Domänen- und Kontoinformationen zu bestätigen.
 1. Melden Sie sich mit Ihrem neuen Benutzernamen und Kennwort als globaler Azure AD-Administrator an, um [Benutzer hinzufügen und zu verwalten](add-manage-users.md).
 
-Weitere Informationen zum Erstellen neuer Mandanten im Azure-Portal statt im Partner Center-Portal finden Sie im Artikel [Erstellen eines neuen Mandanten in Azure Active Directory](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+Weitere Informationen zum Erstellen neuer Mandanten im Azure-Portal statt im Partner Center-Portal finden Sie im Artikel [Erstellen eines neuen Mandanten in Azure Active Directory](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 ## <a name="remove-a-tenant"></a>Entfernen eines Mandanten
 

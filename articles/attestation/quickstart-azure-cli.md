@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ae283785b4d4dc80c6b9b6c3997aaf82c9ff0f2f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 648317c6e534d7f6af84704e9dd2b2fb603806ee
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178710"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016309"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Schnellstart: Einrichten von Azure Attestation mithilfe der Azure CLI
 
-Führen Sie erste Schritte mit [Azure Attestation unter Verwendung der Azure CLI](/cli/azure/ext/attestation/attestation) aus.
+Führen Sie erste Schritte mit [Azure Attestation unter Verwendung der Azure CLI](/cli/azure/attestation) aus.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -69,13 +69,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Die folgenden Befehle können Sie zum Erstellen und Verwalten des Nachweisanbieters verwenden:
 
-1. Führen Sie den Befehl [az attestation create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) aus, um einen Nachweisanbieter ohne Richtliniensignierungsanforderung zu erstellen:
+1. Führen Sie den Befehl [az attestation create](/cli/azure/attestation#az_attestation_create) aus, um einen Nachweisanbieter ohne Richtliniensignierungsanforderung zu erstellen:
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
    
-1. Führen Sie den Befehl [az attestation show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) aus, um Nachweisanbietereigenschaften wie „status“ und „AttestURI“ abzurufen:
+1. Führen Sie den Befehl [az attestation show](/cli/azure/attestation#az_attestation_show) aus, um Nachweisanbietereigenschaften wie „status“ und „AttestURI“ abzurufen:
 
    ```azurecli
    az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
@@ -95,7 +95,7 @@ Die folgenden Befehle können Sie zum Erstellen und Verwalten des Nachweisanbiet
    TagsTable:
    ```
 
-Sie können einen Nachweisanbieter mithilfe des Befehls [az attestation delete](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) löschen:
+Sie können einen Nachweisanbieter mithilfe des Befehls [az attestation delete](/cli/azure/attestation#az_attestation_delete) löschen:
 
 ```azurecli
 az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
@@ -105,7 +105,7 @@ az attestation delete --name "myattestationprovider" --resource-group "sample-re
 
 Verwenden Sie die hier beschriebenen Befehle, um die Richtlinienverwaltung für einen Nachweisanbieter (jeweils ein Nachweistyp) zu ermöglichen.
 
-Der Befehl [az attestation policy show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) gibt die aktuelle Richtlinie für die angegebene TEE zurück:
+Der Befehl [az attestation policy show](/cli/azure/attestation/policy#az_attestation_policy_show) gibt die aktuelle Richtlinie für die angegebene TEE zurück:
 
 ```azurecli
 az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
@@ -120,7 +120,7 @@ Folgende TEE-Typen werden unterstützt:
 - `SGX-OpenEnclaveSDK`
 - `TPM`
 
-Mit dem Befehl [az attestation policy set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) wird eine neue Richtlinie für den angegebenen Nachweistyp festgelegt.
+Mit dem Befehl [az attestation policy set](/cli/azure/attestation/policy#az_attestation_policy_set) wird eine neue Richtlinie für den angegebenen Nachweistyp festgelegt.
 
 So legen Sie die Richtlinie im Textformat für eine bestimmte Art von Nachweistyp mithilfe des Dateipfads fest:
 
