@@ -7,12 +7,12 @@ ms.subservice: enterprise
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 777c8549d79f820c1847e711969919df128cebd3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 4ac9c38c3f86c1226edf3b448324205cf5f98568
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132413"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058866"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Überprüfen von Abrechnungsdaten der Enterprise-Registrierung mit REST-APIs
 
@@ -37,7 +37,7 @@ Die folgenden Header sind erforderlich:
 |Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
-|*Authorization:*|Erforderlich. Legen Sie diese Option auf einen gültigen `Bearer`-[API-Schlüssel](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
+|*Authorization:*|Erforderlich. Legen Sie diese Option auf einen gültigen -`Bearer` [API-Schlüssel](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
 
 In diesem Beispiel wird ein synchroner Aufruf gezeigt, der Details für den aktuellen Abrechnungszyklus zurückgibt. Aus Leistungsgründen geben synchrone Aufrufe Informationen des letzten Monats zurück.  Sie können auch die [API asynchron](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) aufrufen, um Daten von 36 Monaten zurückzugeben.
 
@@ -90,7 +90,7 @@ Die folgenden Header sind erforderlich:
 |Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
-|*Authorization:*|Erforderlich. Legen Sie diese Option auf einen gültigen `Bearer`-[API-Schlüssel](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
+|*Authorization:*|Erforderlich. Legen Sie diese Option auf einen gültigen -`Bearer` [API-Schlüssel](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
 
 In diesem Beispiel wird ein synchroner Aufruf gezeigt, der Details für den aktuellen Abrechnungszyklus zurückgibt. Aus Leistungsgründen geben synchrone Aufrufe Informationen des letzten Monats zurück.  Sie können auch die [API asynchron](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) aufrufen, um Daten von 36 Monaten zurückzugeben.
 
@@ -146,7 +146,7 @@ Die folgenden Header sind erforderlich:
 |Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
-|*Authorization:*|Erforderlich. Legen Sie diese Option auf einen gültigen `Bearer`-[API-Schlüssel](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
+|*Authorization:*|Erforderlich. Legen Sie diese Option auf einen gültigen -`Bearer` [API-Schlüssel](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
 
 In diesem Beispiel wird ein synchroner Aufruf gezeigt, der Details für den aktuellen Abrechnungszyklus zurückgibt. Aus Leistungsgründen geben synchrone Aufrufe Informationen des letzten Monats zurück.  Sie können auch die [API asynchron](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) aufrufen, um Daten von 36 Monaten zurückzugeben.
 

@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5d945c421dc0a4abed17b3a355339c131dd922df
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598239"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728048"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Grundlegendes zu Ihrer Azure Enterprise-Rechnung
 
@@ -396,51 +396,6 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
     Den API-Schlüssel erhalten Sie im Azure Enterprise Portal auf der Registerkarte **Nutzung herunterladen**. Wählen Sie **API-Zugriffsschlüssel** aus, und fügen Sie den Schlüssel in das Feld **Kontoschlüssel** ein.
 1. Das Laden von Daten in Power BI dauert je nach Größe der Datasets ungefähr 5-30 Minuten.
-
-## <a name="reports-faq"></a>Häufig gestellte Fragen zu Berichten
-
-In diesem Abschnitt werden häufig gestellte Fragen zu Berichten behandelt.
-
-### <a name="why-is-my-cost-showing-as-0"></a>Warum werden meine Kosten als „0 USD“ angezeigt?
-
-Für Kunden mit **direkter Registrierung** können Unternehmensadministratoren Kontobesitzern und Abteilungsadministratoren Zugriff auf Kosten-/Preisinformationen in den Nutzungsberichten gestatten. Folgen Sie diesen Schritten:
-
-1. Wählen Sie im Azure Enterprise Portal im Navigationsbereich auf der linken Seite **Verwalten** aus.
-1. Wählen Sie den blauen Stift neben „DA-Ansichtsgebühren“ (Department Administrator, Abteilungsadministrator) aus.
-1. Wählen Sie **Aktiviert** aus, und speichern Sie.
-1. Wählen Sie den blauen Stift neben „AO-Ansichtsgebühren“ (Account Owner, Kontobesitzer) aus.
-1. Wählen Sie **Aktiviert** aus, und speichern Sie.
-
-> [!NOTE]
-> Wenn Sie ein Kontobesitzer oder Abteilungsadministrator sind, wenden Sie sich an Ihren Unternehmensadministrator, um das Preisfeature zu aktivieren.
-
-Wenn Sie ein Kunde mit **indirekter Registrierung** sind, wenden Sie sich an Ihren Partner, um zu überprüfen, ob er das Preisfeature für Sie aktiviert hat. Dies kann nur vom Partner vorgenommen werden. Nach der Aktivierung können Sie die Kosten und Preise für Ihre Registrierung als Unternehmensadministrator anzeigen.
-
-Wenn Sie als Partner die Gebührenanzeigefunktion für einen Kontobesitzer oder Abteilungsadministrator aktivieren möchten, befolgen Sie die Schritte unter **direkte Registrierung**.
-
-### <a name="why-is-there-no-sku-information-on-my-usage-detail-report"></a>Warum enthält mein Verwendungsdetailsbericht keine SKU-Informationen?
-
-Der Verwendungsdetailsbericht enthält keine SKU-Informationen. Der Bericht enthält jedoch Nutzungsinformationen, sodass Sie den Preisblattbericht herunterladen können, um die SKU-Informationen zu erhalten.
-
-### <a name="why-doesnt-the-total-amount-on-azure-marketplace-match-the-reports-for-usage-summary-and-detail"></a>Warum entspricht der Gesamtbetrag in Azure Marketplace nicht den Berichten für die Nutzungszusammenfassung und -details?
-
-Der Azure Marketplace-Gebührenbericht zeigt nur die nutzungsbasierten Gebühren an. Einmalige Gebühren werden nicht angezeigt. Auf der Seite mit der Nutzungszusammenfassung können Sie sich sowohl über die aktuellen nutzungsbasierten als auch einmalige Gebühren informieren.
-
-### <a name="why-is-there-no-information-on-my-api-report"></a>Warum sind keine Informationen zu meinem API-Bericht vorhanden?
-
-API-Schlüssel laufen alle sechs Monate ab. Wenn ein Problem vorliegt, sollte ein Unternehmensadministrator einen neuen API-Schlüssel generieren. Führen Sie die im Artikel zu häufig gestellten Fragen zu API-Berichten beschriebenen Schritte aus.
-
-### <a name="why-isnt-my-power-bi-report-working"></a>Warum funktioniert mein Power BI-Bericht nicht?
-
-Melden Sie bei Problemen mit Power BI ein Ticket beim [Power BI-Supportteam](https://support.powerbi.com) an.
-
-### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>Warum werden meine Ressourcentags nicht in meinen Berichten angezeigt?
-
-Ressourcentags werden im Azure-Portal verwaltet. Sie können sich im [Azure-Portal](https://portal.azure.com) an das Azure-Abonnementteam wenden. Befolgen Sie die Schritte im Artikel [Gewusst wie: Erstellen einer Azure-Supportanfrage](../../azure-portal/supportability/how-to-create-azure-support-request.md).
-
-### <a name="why-does-my-resource-rate-change-every-day"></a>Warum ändert sich mein Ressourcensatz jeden Tag?
-
-Der im detaillierten Nutzungsbericht angezeigte Ressourcensatz ist ein berechneter Wert. Er stellt die durchschnittliche monatliche Rate dar, die für den Dienst abgerechnet wurde. Dieser Ressourcensatz wird anhand des Durchschnitts des Mindestverbrauchs und Ihrer monatlichen Überschreitungsgebühren für eine Diensteinheit berechnet. Der Anteil der Nutzung, der mit Ihrem Mindestverbrauch und Ihrer Überschreitungsrate abgerechnet wird, ändert sich an dem Tag, an dem der Monat endet. Daher ändert sich auch der aufgeführte Ressourcensatz während des Monats. Der Ressourcensatz wird am fünften Tag nach dem Monatsende gesperrt.
 
 ### <a name="glossary-of-processes-for-calculating-the-resource-rate"></a>Glossar der Prozesse zum Berechnen des Ressourcensatzes
 

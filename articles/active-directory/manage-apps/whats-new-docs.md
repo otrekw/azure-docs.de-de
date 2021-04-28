@@ -1,24 +1,53 @@
 ---
 title: Neuerungen bei der Azure Active Directory-Anwendungsverwaltung
 description: Neue und aktualisierte Dokumentation für die Azure Active Directory-Anwendungsverwaltung
-ms.date: 03/08/2021
+ms.date: 04/04/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: kenwith
-author: kenwith
-manager: daveba
-ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: iangithinji
+author: iantheninja
+manager: CelesteDG
+ms.openlocfilehash: 17dca502d3c65563cb9e4d2c382afb79f4d612e9
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775509"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376051"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory-Anwendungsverwaltung: Neues
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Active Directory-Anwendungsverwaltung. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Anwendungsverwaltungsdienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="march-2021"></a>März 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Azure Active Directory (Azure AD) Anwendungsmanagement- Zertifikate häufig gestellte Fragen](application-management-certs-faq.md)
+- [Azure Active Directory-PowerShell-Beispiele für die Anwendungsverwaltung](app-management-powershell-samples.md)
+- [Deaktivieren der automatischen Anmeldebeschleunigung an einen Verbundidentitätsanbieter während der Benutzeranmeldung per Richtlinie zur Startbereichsermittlung (Home Realm Discovery, HRD)](prevent-domain-hints-with-home-realm-discovery.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Planen der Konfiguration von „Meine Apps“ in Azure Active Directory](my-apps-deployment-plan.md)
+- [Erste Schritte zur Integration von Anwendungen in Azure Active Directory](plan-an-application-integration.md)
+- [Integrieren mit SharePoint (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [Migrieren der Anwendungsauthentifizierung zu Azure Active Directory](migrate-application-authentication-to-azure-active-directory.md)
+- [Verwenden des AD FS-Anwendungsaktivitätsberichts, um Anwendungen zu Azure AD zu migrieren](migrate-adfs-application-activity.md)
+- [Planen einer Bereitstellung für einmaliges Anmelden](plan-sso-deployment.md)
+- [Azure Active Directory-PowerShell-Beispiele für die Anwendungsverwaltung](app-management-powershell-samples.md)
+- [Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+- [Schnellstart: Einrichten des SAML-basierten einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)](add-application-portal-setup-sso.md)
+- [Azure Active Directory-Anwendungsverwaltung: Neues](whats-new-docs.md)
+- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.yml)
+- [Beheben von Anmeldeproblemen bei einer Anwendung aus „Meine Apps“ in Azure AD](application-sign-in-other-problem-access-panel.md)
+- [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Optimieren des Datenverkehrsflusses mit Azure Active Directory-Anwendungsproxy](application-proxy-network-topology.md)
+- [Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen](application-proxy-release-version-history.md)
+- [Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)](configure-authentication-for-federated-users-portal.md)
+- [Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory](migrate-adfs-apps-to-azure.md)
+
 
 ## <a name="february-2021"></a>Februar 2021
 
@@ -46,7 +75,7 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 - [Bewährte Methoden für die Anwendungsverwaltung](application-management-fundamentals.md)
 - [Erste Schritte zur Integration von Anwendungen in Azure Active Directory](plan-an-application-integration.md)
 - [Worum handelt es sich bei der Anwendungsverwaltung?](what-is-application-management.md)
-- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.md)
+- [Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)](application-proxy-faq.yml)
 - [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md)
 - [Entwickeln von Branchen-Apps für Azure Active Directory](../develop/v2-overview.md)

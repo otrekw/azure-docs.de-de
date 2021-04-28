@@ -1,22 +1,22 @@
 ---
-title: Erfassen von Metriken zum Spring Cloud Resilience4J-Trennschalter
-description: Erfassen von Metriken zum Spring Cloud Resilience4J-Trennschalter.
+title: Erfassen von Metriken zum Spring Cloud Resilience4J-Trennschalter mit Micrometer
+description: Vorgehensweise beim Erfassen von Metriken zum Spring Cloud Resilience4J-Trennschalter mit Micrometer in Azure Spring Cloud.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 9fc8ccc5ba21f02885b2002d5040051baac92068
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: fedebd9182c168b9b7c455d5f6726e66720e0a8b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877336"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479158"
 ---
-# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>Erfassen von Metriken zum Spring Cloud Resilience4J-Trennschalter (Vorschau)
+# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>Erfassen von Metriken zum Spring Cloud Resilience4J-Trennschalter mit Micrometer (Vorschau)
 
-In diesem Dokument wird erklärt, wie Sie Metriken zum Spring Cloud Resilience4J-Trennschalter mit dem Java-In-Process-Agent Application Insights erfassen.  Mit diesem Feature können Sie Metriken zum Resilience4J-Trennschalter von Application Insights überwachen.
+In diesem Dokument wird erklärt, wie Sie Metriken zum Spring Cloud Resilience4J-Trennschalter mit dem Java-In-Process-Agent Application Insights erfassen. Mit diesem Feature können Sie Metriken zum Resilience4J-Trennschalter von Application Insights mit Micrometer überwachen.
 
 In [spring-cloud-circuit-breaker-demo](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) wird veranschaulicht, wie dies funktioniert.
 

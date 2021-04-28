@@ -10,14 +10,14 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709717"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385580"
 ---
-# <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts (Vorschau)
+# <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts
 
 Gestaffelte Rollouts ermöglichen Ihnen das selektive Testen von Benutzergruppen mit Cloudauthentifizierungsfunktionen (wie Azure AD Multi-Factor Authentication (MFA), bedingter Zugriff, Identity Protection für kompromittierte Anmeldeinformationen, Identity Governance usw.) vor der Umstellung Ihrer Domänen.  In diesem Artikel wird erläutert, wie Sie den Umstieg vornehmen. Bevor Sie mit dem gestaffelten Rollout beginnen, sollten Sie jedoch die Auswirkungen berücksichtigen, wenn mindestens eine der folgenden Bedingungen zutrifft:
     
@@ -79,7 +79,7 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 - Administratoren können den Rollout der Cloudauthentifizierung mithilfe von Sicherheitsgruppen ausführen. Um Synchronisierungslatenzen zu vermeiden, wenn Sie lokale Active Directory-Sicherheitsgruppen verwenden, empfehlen wir Ihnen, Cloudsicherheitsgruppen zu verwenden. Die folgenden Bedingungen gelten:
 
     - Pro Feature können maximal 10 Gruppen verwendet werden. Das heißt, Sie können jeweils 10 Gruppen für *Kennworthashsynchronisierung*, *Passthrough-Authentifizierung* und *nahtloses SSO* verwenden.
-    - Geschachtelte Gruppen werden *nicht unterstützt*. Die öffentliche Vorschau weist den gleichen Geltungsbereich auf.
+    - Geschachtelte Gruppen werden *nicht unterstützt*. 
     - Dynamische Gruppen werden für den gestaffelten Rollout *nicht unterstützt*.
     - Kontaktobjekte innerhalb der Gruppe blockieren das Hinzufügen der Gruppe.
 
@@ -168,19 +168,19 @@ Sie können Rollouts für eine der folgenden Optionen ausführen:
 
 Gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich am [Azure AD Portal](https://aka.ms/stagedrolloutux) an, um auf die Vorschau-UX zuzugreifen.
+1. Um auf die UX zuzugreifen, melden Sie sich am [Azure AD Portal](https://aka.ms/stagedrolloutux) an.
 
-2. Klicken Sie auf den Link **Gestaffelten Rollout für verwaltete Benutzeranmeldung aktivieren (Vorschau)** .
+2. Wählen Sie den Link **Stufenweises Rollout für verwaltete Benutzeranmeldung aktivieren**.
 
    Wenn Sie z.B. *Option A* aktivieren möchten, stellen Sie den Schieberegler für die Steuerelemente **Kennworthashsynchronisierungs** und **Nahtloses SSO** auf die Position **Ein**, wie in den folgenden Abbildungen gezeigt.
 
-   ![Die Azure AD Connect-Seite](./media/how-to-connect-staged-rollout/sr4.png)
+   
 
-   ![Die Seite „Features für gestaffelten Rollout aktivieren (Vorschau)“](./media/how-to-connect-staged-rollout/sr5.png)
+  
 
 3. Fügen Sie dem Feature die Gruppen hinzu, um *Passthrough-Authentifizierung* und *nahtloses SSO* zu aktivieren. Um ein UX-Timeout zu vermeiden, stellen Sie sicher, dass die Sicherheitsgruppen anfangs nicht mehr als 200 Mitglieder enthalten.
 
-   ![Die Seite „Gruppen für Kennworthashsynchronisierung verwalten (Vorschau)“](./media/how-to-connect-staged-rollout/sr6.png)
+   
 
    >[!NOTE]
    >Die Mitglieder einer Gruppe werden automatisch für den gestaffelten Rollout aktiviert. Geschachtelte und dynamische Gruppen werden für gestaffelte Rollouts nicht unterstützt.

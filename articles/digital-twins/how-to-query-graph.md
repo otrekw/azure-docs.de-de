@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d15e2b8bfcddfd1f554ab2a27083fe5256e9e2b
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462676"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226327"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
@@ -94,19 +94,14 @@ Hier ist eine Beispielabfrage, in der für alle drei Parameter ein Wert angegebe
 
 Für Abfragen anhand der **Beziehungen** von digitalen Zwillingen weist die Azure Digital Twins-Abfragesprache eine besondere Syntax auf.
 
-Beziehungen werden in der `FROM`-Klausel in den Abfragebereich übernommen. Ein wichtiger Unterschied zu „klassischen“ SQL-artigen Sprachen besteht darin, dass die Ausdrücke in dieser `FROM`-Klausel keine Tabellen sind. Stattdessen drückt die `FROM`-Klausel einen entitätsübergreifenden Beziehungsdurchlauf aus, der mit einer Azure Digital Twins-Version von `JOIN` geschrieben wird.
+Beziehungen werden in der `FROM`-Klausel in den Abfragebereich übernommen. Anders als in „klassischen“ Sprachen vom Typ SQL ist jeder Ausdruck in dieser `FROM`-Klausel keine Tabelle, vielmehr drückt die `FROM`-Klausel eine entitätsübergreifende Beziehungstraversierung aus. Zum Durchlaufen von Beziehungen verwendet Azure Digital Twins eine benutzerdefinierte Version von `JOIN`.
 
-Denken Sie daran, dass in den Funktionen des Azure Digital Twins-[Modells](concepts-models.md) Beziehungen nur in Abhängigkeit von Zwillingen vorhanden sind. Dies bedeutet, dass sich `JOIN` in der Azure Digital Twins-Abfragesprache leicht von `JOIN` in allgemeiner SQL-Form unterscheidet, da Beziehungen hier nicht unabhängig abgefragt werden können und an einen Zwilling gebunden sein müssen.
-Um diesen Unterschied zu berücksichtigen, wird das Schlüsselwort `RELATED` in der `JOIN`-Klausel verwendet, um auf den Beziehungssatz eines Zwillings zu verweisen.
+Denken Sie daran, dass in den Funktionen des Azure Digital Twins-[Modells](concepts-models.md) Beziehungen nur in Abhängigkeit von Zwillingen vorhanden sind. Dies bedeutet, dass Beziehungen hier nicht unabhängig abgefragt werden können und an einen Zwilling gebunden sein müssen.
+Um dies zu berücksichtigen, wird das Schlüsselwort `RELATED` in der `JOIN`-Klausel verwendet, um den Satz eines bestimmten Beziehungstyps aus der Zwillingssammlung zu pullen. Die Abfrage muss dann in der `WHERE`-Klausel filtern, welche bestimmten Zwillinge in der Beziehungsabfrage verwendet werden sollen (unter Verwendung der `$dtId`-Werte der Zwillinge).
 
-Der folgende Abschnitt enthält einige Beispiele dafür.
+Die folgenden Abschnitte zeigen Beispiele dafür, wie dies aussehen kann.
 
-> [!TIP]
-> Konzeptionell imitiert dieses Feature die dokumentzentrische Funktionalität von Cosmos DB, bei der `JOIN` für untergeordnete Objekte innerhalb eines Dokuments ausgeführt werden kann. Cosmos DB gibt über das Schlüsselwort `IN` an, dass `JOIN` Arrayelemente im aktuellen Kontextdokument durchlaufen soll.
-
-### <a name="relationship-based-query-examples"></a>Beispiele für beziehungsbasierte Abfragen
-
-Um ein Dataset mit Beziehungen zu erhalten, verwenden Sie eine einzelne `FROM`-Anweisung gefolgt von N `JOIN`-Anweisungen, wobei die `JOIN`-Anweisungen Beziehungen zum Ergebnis einer vorherigen `FROM`- oder `JOIN`-Anweisung ausdrücken.
+### <a name="basic-relationship-query"></a>Grundlegende Beziehungsabfrage
 
 Hier ist ein Beispiel für eine beziehungsbasierte Abfrage. Mit diesem Codeausschnitt werden alle digitalen Zwillinge mit der *ID*-Eigenschaft „ABC“ und alle digitalen Zwillinge, die zu diesen digitalen Zwillingen eine *contains*-Beziehung haben, ausgewählt.
 
@@ -114,6 +109,18 @@ Hier ist ein Beispiel für eine beziehungsbasierte Abfrage. Mit diesem Codeaussc
 
 > [!NOTE]
 > Der Entwickler muss dieses `JOIN` nicht mit einem Schlüsselwert in der `WHERE`-Klausel korrelieren (oder in der `JOIN`-Definition einen Schlüsselwert angeben). Diese Korrelation wird automatisch vom System berechnet, da die Beziehungseigenschaften die Zielentität direkt identifizieren.
+
+### <a name="query-by-the-source-or-target-of-a-relationship"></a>Abfragen nach der Quelle oder dem Ziel einer Beziehung
+
+Sie können die Beziehungsabfragestruktur verwenden, um einen digitalen Zwilling zu identifizieren, der die Quelle oder das Ziel einer Beziehung ist.
+
+Sie können z. B. mit einem Quellzwilling beginnen und seinen Beziehungen folgen, um die Zielzwillinge der Beziehungen zu ermitteln. Hier ist ein Beispiel für eine Abfrage, die die Zielzwillinge der *feeds*-Beziehungen ermittelt, die vom Zwilling *source-twin* stammen.
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipSource":::
+
+Sie können auch mit dem Ziel der Beziehung beginnen und die Beziehung zurückverfolgen, um den Quellzwilling zu ermitteln. Hier ist ein Beispiel für eine Abfrage, die den Quellzwilling einer *feeds*-Beziehung zum Zwilling *target-twin* ermittelt.
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipTarget":::
 
 ### <a name="query-the-properties-of-a-relationship"></a>Abfragen der Eigenschaften einer Beziehung
 
@@ -128,7 +135,9 @@ Beachten Sie im obigen Beispiel, dass *reportedCondition* eine Eigenschaft der *
 
 ### <a name="query-with-multiple-joins"></a>Abfragen mit mehreren JOINs
 
-Bis zu fünf `JOIN`s werden in einer einzelnen Abfrage unterstützt. Dies ermöglicht es Ihnen, mehrere Beziehungsebenen gleichzeitig zu durchlaufen.
+Bis zu fünf `JOIN`s werden in einer einzelnen Abfrage unterstützt. Dies ermöglicht es Ihnen, mehrere Beziehungsebenen gleichzeitig zu durchlaufen. 
+
+Um Abfragen für mehrere Beziehungsebenen auszuführen, verwenden Sie eine einzelne `FROM`-Anweisung gefolgt von N `JOIN`-Anweisungen, wobei die `JOIN`-Anweisungen Beziehungen zum Ergebnis einer vorherigen `FROM`- oder `JOIN`-Anweisung ausdrücken.
 
 Hier ist ein Beispiel für eine Multijoin-Abfrage, die alle Glühbirnen in den hellen Bereichen in den Räumen 1 und 2 abruft.
 

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: df826a682eec15d09b60857e63c363b0f9941c01
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 8a8cc6563d8e3cae942c4dfb43afa3d05f6f2b75
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779935"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257301"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (Portal)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-In Azure Digital Twins können Sie [Ereignisbenachrichtigungen](how-to-interpret-event-data.md) an Downstreamdienste oder verbundene Computeressourcen weiterleiten. Dies erfolgt, indem zunächst **Endpunkte** eingerichtet werden, die die Ereignisse empfangen können. Anschließend können Sie [**Ereignisrouten**](concepts-route-events.md) erstellen, die angeben, welche von Azure Digital Twins generierten Ereignisse an welche Endpunkte übermittelt werden.
+In Azure Digital Twins können Sie [Ereignisbenachrichtigungen](concepts-event-notifications.md) an Downstreamdienste oder verbundene Computeressourcen weiterleiten. Dies erfolgt, indem zunächst **Endpunkte** eingerichtet werden, die die Ereignisse empfangen können. Anschließend können Sie [**Ereignisrouten**](concepts-route-events.md) erstellen, die angeben, welche von Azure Digital Twins generierten Ereignisse an welche Endpunkte übermittelt werden.
 
 In diesem Artikel wird der Vorgang zum Erstellen von Endpunkten und Routen mit dem [Azure-Portal](https://portal.azure.com) Schritt für Schritt beschrieben.
 
@@ -153,7 +153,9 @@ Verwenden Sie auf der Seite *Create an event route* (Ereignisroute erstellen) de
 Sie können entweder eine Auswahl aus einigen grundlegenden allgemeinen Filteroptionen treffen oder die erweiterten Filteroptionen verwenden, um Ihre eigenen benutzerdefinierten Filter zu schreiben.
 
 >[!NOTE]
-> Filter sind **fallspezifisch** und müssen nach Nutzlastfall vergleichen (der nicht notwendigerweise mit dem Modellfall übereinstimmt).
+> Filter unterscheiden zwischen **Groß- und Kleinschreibung** und müssen mit der Groß-/Kleinschreibung der Nutzlast übereinstimmen. 
+>
+> Für Telemetriefilter bedeutet dies, dass die Groß-/Kleinschreibung mit der Groß-/Kleinschreibung in der vom Gerät gesendeten Telemetrie übereinstimmen muss und nicht unbedingt mit der im Modell des Zwillings definierten Groß-/Kleinschreibung.
 
 #### <a name="use-the-basic-filters"></a>Verwenden der grundlegenden Filter
 
@@ -200,4 +202,4 @@ Dies sind die unterstützten Routenfilter. Die Details in der Spalte *Filtertext
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über die verschiedenen Arten von Ereignismeldungen, die Sie erhalten können:
-* [*Gewusst wie: Interpretieren von Ereignisdaten*](how-to-interpret-event-data.md)
+* [*Konzepte: Ereignisbenachrichtigungen*](concepts-event-notifications.md)
