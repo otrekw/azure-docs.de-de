@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: ea1296fd4e31c2deaed79e980ab764c523a2bfd7
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: e34ca9c3164713e62ae28581055644933d8c791d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364361"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127189"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -668,7 +668,7 @@ Bevor Sie fortfahren, vergewissern Sie sich, dass Sie den SUSE-Hochverfügbarkei
 
 ### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>Zusätzliches Setup in Azure Load Balancer für „Aktiv/Lesezugriff“-Setup
 
-Um mit zusätzlichen Schritten für die Bereitstellung der zweiten virtuellen IP-Adresse fortzufahren, stellen Sie sicher, dass Sie Azure Load Balancer wie im Abschnitt [Manuelle Bereitstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#manual-deployment) beschrieben konfiguriert haben.
+Um mit zusätzlichen Schritten für die Bereitstellung der zweiten virtuellen IP-Adresse fortzufahren, stellen Sie sicher, dass Sie Azure Load Balancer wie im Abschnitt [Manuelle Bereitstellung](#manual-deployment) beschrieben konfiguriert haben.
 
 1. Führen Sie für den **standardmäßigen** Lastenausgleich die unten aufgeführten zusätzlichen Schritte für denselben Lastenausgleich aus, den Sie im vorherigen Abschnitt erstellt haben.
 
@@ -677,7 +677,7 @@ Um mit zusätzlichen Schritten für die Bereitstellung der zweiten virtuellen IP
    - Öffnen Sie den Lastenausgleich, und wählen Sie den **Front-End-IP-Pool** und dann **Hinzufügen** aus.
    - Geben Sie den Namen des zweiten Front-End-IP-Pools ein (z. B. **hana-secondaryIP**).
    - Legen Sie die **Zuweisung** auf **Statisch** fest, und geben Sie die IP-Adresse ein (z. B. **10.0.0.14**).
-   - Wählen Sie **OK** aus.
+   - Klicken Sie auf **OK**.
    - Notieren Sie nach Erstellen des neuen Front-End-IP-Pools die Front-End-IP-Adresse.
 
    b. Erstellen Sie als Nächstes einen Integritätstest:
@@ -699,7 +699,7 @@ Um mit zusätzlichen Schritten für die Bereitstellung der zweiten virtuellen IP
 
 ### <a name="configure-hana-activeread-enabled-system-replication"></a>Konfigurieren der „Aktiv/Lesezugriff“-HANA-Systemreplikation
 
-Die Schritte zum Konfigurieren der HANA-Systemreplikation werden im Abschnitt [Konfigurieren der SAP Hana 2.0-Systemreplikation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#configure-sap-hana-20-system-replication) beschrieben. Wenn Sie ein sekundäres Szenario mit Lesezugriff bereitstellen, während Sie die Systemreplikation auf dem zweiten Knoten konfigurieren, führen Sie den folgenden Befehl als **hanasid** adm aus:
+Die Schritte zum Konfigurieren der HANA-Systemreplikation werden im Abschnitt [Konfigurieren der SAP Hana 2.0-Systemreplikation](#configure-sap-hana-20-system-replication) beschrieben. Wenn Sie ein sekundäres Szenario mit Lesezugriff bereitstellen, während Sie die Systemreplikation auf dem zweiten Knoten konfigurieren, führen Sie den folgenden Befehl als **hanasid** adm aus:
 
 ```
 sapcontrol -nr 03 -function StopWait 600 10 

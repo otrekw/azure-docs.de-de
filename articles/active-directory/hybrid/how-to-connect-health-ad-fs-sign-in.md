@@ -14,16 +14,16 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74769feba1d717a2f1a72d311f85bdfbeac7b7db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 035215bf9350243f667c4883786a923a172cb89c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574776"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126559"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>AD FS-Anmeldungen in Azure AD mit Connect Health – Vorschau
 
-AD FS-Anmeldungen können nun mithilfe von Connect Health in den Azure Active Directory-Anmeldebericht integriert werden. Der [Azure AD-Anmeldebericht](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-all-sign-ins#:~:text=Interactive%20user%20sign-ins%20are%20sign-ins%20where%20a%20user,to%20Azure%20AD%20or%20to%20a%20helper%20app.) enthält Informationen dazu, wann sich Benutzer, Anwendungen und verwaltete Ressourcen bei Azure AD anmelden und auf Ressourcen zugreifen. 
+AD FS-Anmeldungen können nun mithilfe von Connect Health in den Azure Active Directory-Anmeldebericht integriert werden. Der [Azure AD-Anmeldebericht](../reports-monitoring/concept-all-sign-ins.md) enthält Informationen dazu, wann sich Benutzer, Anwendungen und verwaltete Ressourcen bei Azure AD anmelden und auf Ressourcen zugreifen. 
 
 Der Connect Health für AD FS-Agent korreliert mehrere Ereignis-IDs aus AD FS in Abhängigkeit von der Serverversion, um Informationen über die Anforderung und im Fall von Anforderungsfehlern Fehlerdetails bereitzustellen. Diese Informationen werden mit dem Azure AD-Anmeldberichtsschema korreliert und auf der Benutzeroberfläche des Azure AD-Anmeldeberichts angezeigt. Neben dem Bericht ist ein neuer Log Analytics-Stream mit den AD FS-Daten und eine neue Azure Monitor-Arbeitsmappenvorlage verfügbar. Die Vorlage kann zur ausführlichen Analyse von Szenarien wie AD FS-Kontosperrungen, fehlerhaften Kennwortantwortversuchen und Spitzen unerwarteter Anmeldeversuche verwendet und geändert werden.
 
@@ -48,7 +48,7 @@ Jede Registerkarte auf dem Blatt „Anmeldungen“ enthält die unten aufgeführ
 #### <a name="authentication-method-information"></a>Informationen zur Authentifizierungsmethode
 Die folgenden Werte können auf der Registerkarte „Authentifizierung" angezeigt werden. Die Authentifizierungsmethode wird aus den AD FS-Auditprotokollen übernommen.
 
-|Authentifizierungsmethode|BESCHREIBUNG|
+|Authentifizierungsmethode|Beschreibung|
 |-----|-----|
 |Formulare|Authentifizierung mit Benutzername/Kennwort|
 |Windows|Integrierte Windows-Authentifizierung|
@@ -111,8 +111,3 @@ Der Bericht weist ein bekanntes Problem auf, bei dem das Feld „Authentifizieru
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Installieren des Azure AD Connect Health-Agents](how-to-connect-health-agent-install.md)
 * [Bericht über riskante IP-Adressen](how-to-connect-health-adfs-risky-ip.md)
-
-
-
-
-

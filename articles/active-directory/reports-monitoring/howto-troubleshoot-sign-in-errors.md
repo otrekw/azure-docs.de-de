@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4de9f5a21f38f741dcf65d285446d9482716d4f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e35d3ffa98c2713f86bb56974670832e9fd416a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85608125"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137849"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Gewusst wie: Durchführen der Problembehandlung für Anmeldefehler mit Azure Active Directory-Berichten
 
@@ -57,11 +57,11 @@ Erforderlich:
 
 6. Die Fehlerursache beschreibt den Fehler. Im obigen Szenario lautet die Fehlerursache beispielsweise **Ungültiger Benutzername bzw. ungültiges Kennwort oder ungültiger lokaler Benutzername bzw. Kennwort**. Die Lösung besteht darin, die Anmeldung einfach mit dem richtigen Benutzernamen und Kennwort erneut durchzuführen.
 
-7. Sie können weitere Informationen abrufen, z.B. Ideen für Lösungen, indem Sie in diesem Beispiel unter [Fehlercodes des Berichts mit den Anmeldeaktivitäten](reference-sign-ins-error-codes.md) nach dem Fehlercode **50126** suchen. 
+7. Sie können weitere Informationen abrufen, z.B. Ideen für Lösungen, indem Sie in diesem Beispiel unter [Fehlercodes des Berichts mit den Anmeldeaktivitäten](./concept-sign-ins.md) nach dem Fehlercode **50126** suchen. 
 
 8. Wenn Sie keinen Erfolg haben oder das Problem trotz der empfohlenen Vorgehensweise weiterhin besteht, können Sie [ein Supportticket erstellen](../fundamentals/active-directory-troubleshooting-support-howto.md), indem Sie die Schritte auf der Registerkarte **Problembehandlung und Support** ausführen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Fehlercodes des Berichts mit den Anmeldeaktivitäten](reference-sign-ins-error-codes.md)
+* [Fehlercodes des Berichts mit den Anmeldeaktivitäten](./concept-sign-ins.md)
 * [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal](concept-sign-ins.md)

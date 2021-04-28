@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c2d4181a80f48f5f6dd5775e6eb3bd172a65df8
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703274"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209628"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -72,7 +72,7 @@ Nutzen Sie das folgende Tutorial, um sich mit SSPR vertraut zu machen:
 
 ## <a name="require-users-to-register-when-they-sign-in"></a>Erzwingen der Registrierung für Benutzer bei der Anmeldung
 
-Sie können diese Option aktivieren, damit Benutzer die Registrierung für den SSPR abschließen müssen, wenn sie sich mit Azure AD in einer Anwendung anmelden. Dieser Workflow schließt die folgenden Anwendungen ein:
+Sie können diese Option aktivieren, damit Benutzer die SSPR-Registrierung abschließen müssen, wenn sie sich mit der modernen Authentifizierung oder einem Webbrowser bei Anwendungen, die Azure AD verwenden, anmelden. Dieser Workflow schließt die folgenden Anwendungen ein:
 
 * Microsoft 365
 * Azure-Portal

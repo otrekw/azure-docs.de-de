@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 57d5627e45e79263408b9b5760c8332122ce8c91
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 88492d914b710c7a738dd6d7f501e22d490065b6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167395"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833812"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Erstellen von grafischen Azure Automation-Runbooks
 
@@ -254,7 +255,7 @@ Beim Erstellen Ihres Runbooks können Sie auf dessen Eingabeparameter zugreifen,
 
 Jeder Eingabeparameter wird durch die Eigenschaften in der folgenden Tabelle definiert:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | Name | Erforderlich. Der Name des Parameters. Der Name muss innerhalb des Runbooks eindeutig sein. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Unterstriche enthalten. Der Name darf kein Leerzeichen enthalten. |
 | BESCHREIBUNG |Optional. Beschreibung zum Zweck des Eingabeparameters. |

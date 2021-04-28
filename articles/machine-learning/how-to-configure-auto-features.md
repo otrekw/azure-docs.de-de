@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to,automl,contperf-fy21q2
+ms.topic: how-to
+ms.custom: automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 563f4e84bf17f749eb4a02bd9a470984e20aa289
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98610300"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131438"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Datenfeaturisierung mit automatisiertem maschinellem Lernen
 
@@ -319,7 +319,7 @@ Um BERT aufzurufen, legen Sie `enable_dnn: True` in Ihren „automl_settings“ 
 
 AutoML führt die folgenden Schritte für BERT aus. 
 
-1. **Vorverarbeitung und Tokenisierung aller Textspalten**. Beispielsweise ist der „StringCast“-Transformator in der Zusammenfassung der Featurisierung für das endgültige Modell zu finden. Ein Beispiel dafür, wie die Zusammenfassung der Featurisierung des Modells zu erstellen ist, findet sich in [diesem Notebook](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b).
+1. **Vorverarbeitung und Tokenisierung aller Textspalten**. Beispielsweise ist der „StringCast“-Transformator in der Zusammenfassung der Featurisierung für das endgültige Modell zu finden. Ein Beispiel dafür, wie die Zusammenfassung der Featurisierung des Modells zu erstellen ist, findet sich in [diesem Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb).
 
 2. **Verketten Sie alle Textspalten zu einer einzelnen Textspalte**, daher das `StringConcatTransformer` im endgültigen Modell. 
 
@@ -363,4 +363,4 @@ automl_settings = {
 
 * Lernen Sie, [wie und wo Sie Modelle bereitstellen](how-to-deploy-and-where.md) können.
 
-* Erfahren Sie mehr über das [Trainieren eines Regressionsmodells mit automatisiertem maschinellem Lernen](tutorial-auto-train-models.md) und das [Trainieren mit automatisiertem maschinellem Lernen auf einer Remoteressource](how-to-auto-train-remote.md).
+* Erfahren Sie mehr über das [Trainieren eines Regressionsmodells mit automatisiertem maschinellem Lernen](tutorial-auto-train-models.md) und das [Trainieren mit automatisiertem maschinellem Lernen auf einer Remoteressource](concept-automated-ml.md#local-remote).

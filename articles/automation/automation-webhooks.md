@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: c46a8753c87e981d9e3d6ecdd698bbbe6cba9894
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 338fb56c4af5c24b7b746ffd6508c2fe7d52b131
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775781"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830194"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Starten eines Runbooks über einen Webhook
 
@@ -120,7 +121,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Der Client empfängt einen der folgenden Rückgabecodes als Antwort auf die `POST`-Anforderung.
 
-| Code | Text | Beschreibung |
+| Code | Text | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | 202 |Zulässig |Die Anforderung wurde akzeptiert, und das Runbook wurde erfolgreich in die Warteschlange gestellt. |
 | 400 |Ungültige Anforderung |Die Anforderung wurde aus einem der folgenden Gründe nicht akzeptiert: <ul> <li>Der Webhook ist abgelaufen.</li> <li>Der Webhook ist deaktiviert.</li> <li>Das Token in der URL ist ungültig.</li>  </ul> |

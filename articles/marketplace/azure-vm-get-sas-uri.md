@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 21ccafe3e15f902e35657a9aa31516bbaeb3b4c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/21/2021
+ms.openlocfilehash: 0f7d63a1213b6fe6625f16f33f18680b7a9e6bcb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558005"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906834"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Generieren eines SAS-URI für ein VM-Image
 
@@ -21,7 +21,6 @@ ms.locfileid: "105558005"
 
 Für das Generieren von SAS-URIs für Ihre VHDs gelten folgende Anforderungen:
 
-- Sie unterstützen nur nicht verwaltete VHDs.
 - Es sind nur Auflistungs- und Leseberechtigungen erforderlich. Gewähren Sie keinen Schreib- oder Löschzugriff.
 - Die Zugriffsdauer (Ablaufdatum) sollte mindestens drei Wochen betragen, gerechnet ab dem Erstellungsdatum des SAS-URI.
 - Um Fehler aufgrund von UTC-Zeitabweichungen zu vermeiden, sollten Sie das Startdatum auf einen Tag vor dem aktuellen Datum festlegen. Wählen Sie beispielsweise den 15.6.2020 aus, wenn das aktuelle Datum der 16. Juni 2020 ist.

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 04/12/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 541f76ad825f492679530902c571096ca4b01902
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ee7739d9dbfd34190dc1e856b98fdd21be15743
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726230"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364939"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens 
 
@@ -80,22 +80,6 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `object_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den object_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
 | `client_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den client_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
 | `mi_res_id` | (Optional) Ein Abfragezeichenfolgenparameter, der das Element „mi_res_id“ (Azure-Ressourcen-ID) der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt. |
-
-Beispielanforderung mit dem VM-Erweiterungsendpunkt für verwaltete Identitäten für Azure-Ressourcen *(Veraltung geplant für Januar 2019)* :
-
-```http
-GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
-Metadata: true
-```
-
-| Element | BESCHREIBUNG |
-| ------- | ----------- |
-| `GET` | Das HTTP-Verb, mit dem angegeben wird, dass Sie Daten vom Endpunkt abrufen möchten. In diesem Fall ist dies ein OAuth-Zugriffstoken. | 
-| `http://localhost:50342/oauth2/token` | Der Endpunkt für verwaltete Identitäten für Azure-Ressourcen, wobei 50342 der Standardport und konfigurierbar ist. |
-| `resource` | Ein Abfragezeichenfolgenparameter, der den App-ID-URI der Zielressource angibt. Er wird auch im Anspruch `aud` (audience) des ausgestellten Tokens angezeigt. In diesem Beispiel wird ein Token für den Zugriff auf Azure Resource Manager angefordert, das über den App-ID-URI `https://management.azure.com/` verfügt. |
-| `Metadata` | Ein HTTP-Anforderungsheader-Feld, das für verwaltete Identitäten für Azure-Ressourcen als Maßnahme gegen SSRF-Angriffe (Server Side Request Forgery) erforderlich ist. Dieser Wert muss auf „true“ (in Kleinbuchstaben) festgelegt werden.|
-| `object_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den object_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
-| `client_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den client_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
 
 Beispiel für eine Antwort:
 
@@ -342,9 +326,10 @@ echo The managed identities for Azure resources access token is $access_token
 
 ## <a name="token-caching"></a>Zwischenspeichern von Tokens
 
-Zwar speichert das verwendete Subsystem für verwaltete Identitäten für Azure-Ressourcen (IMDS/VM-Erweiterung für verwaltete Identitäten für Azure-Ressourcen) Tokens zwischen, es wird jedoch empfohlen, auch die Zwischenspeicherung von Token in Ihrem Code zu implementieren. Daher sollten Sie Vorbereitungen für Szenarien treffen, bei denen die Ressource angibt, dass das Token abgelaufen ist. 
+Auch wenn das Subsystem für verwaltete Identitäten für Azure-Ressourcen Token zwischenspeichert, empfehlen wir auch, die Tokenzwischenspeicherung in Ihrem Code zu implementieren. Daher sollten Sie Vorbereitungen für Szenarien treffen, bei denen die Ressource angibt, dass das Token abgelaufen ist. 
 
 Aufrufe an Azure AD über das Netzwerk erfolgen nur in folgenden Fällen:
+
 - Cachefehler aufgrund eines fehlenden Tokens im Cache des Subsystems für verwaltete Identitäten für Azure-Ressourcen
 - Abgelaufenes zwischengespeichertes Token
 
@@ -377,7 +362,7 @@ In diesem Abschnitt sind die möglichen Fehlerantworten aufgeführt. Der Status 
 | 400 – Ungültige Anforderung | bad_request_102 | Erforderlicher Metadatenheader nicht angegeben | Entweder fehlt der `Metadata`-Anforderungsheader in Ihrer Anforderung, oder er ist falsch formatiert. Der Wert muss als `true` (in Kleinbuchstaben) angegeben werden. Ein Beispiel finden Sie im vorherigen REST-Abschnitt unter „Beispiel für eine Anforderung“.|
 | 401 – Nicht autorisiert | unknown_source | Unbekannte Quelle *\<URI\>* | Stellen Sie sicher, dass Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Der Teil `scheme:host/resource-path` muss als `http://localhost:50342/oauth2/token` angegeben werden. Ein Beispiel finden Sie im vorherigen REST-Abschnitt unter „Beispiel für eine Anforderung“.|
 |           | invalid_request | In der Anforderung fehlt ein erforderlicher Parameter, ist ein ungültiger Parameter enthalten oder ist ein Parameter mehrfach vorhanden, oder die Anforderung ist auf andere Weise fehlerhaft. |  |
-|           | unauthorized_client | Der Client ist zum Anfordern eines Zugriffstokens mit dieser Methode nicht autorisiert. | Ursache ist eine Anforderung, die keinen lokalen Loopback zum Aufrufen der Erweiterung verwendet hat, oder ein virtueller Computer, auf dem keine verwalteten Identitäten für Azure-Ressourcen ordnungsgemäß konfiguriert sind. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md). |
+|           | unauthorized_client | Der Client ist zum Anfordern eines Zugriffstokens mit dieser Methode nicht autorisiert. | Ursache ist eine Anforderung auf einem virtuellen Computer, auf dem verwaltete Identitäten für Azure-Ressourcen nicht ordnungsgemäß konfiguriert sind. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md). |
 |           | access_denied | Der Ressourcenbesitzer oder Autorisierungsserver hat die Anforderung verweigert. |  |
 |           | unsupported_response_type | Der Autorisierungsserver unterstützt das Abrufen eines Zugriffstokens mit dieser Methode nicht. |  |
 |           | invalid_scope | Der angeforderte Bereich ist ungültig, unbekannt oder falsch formatiert. |  |

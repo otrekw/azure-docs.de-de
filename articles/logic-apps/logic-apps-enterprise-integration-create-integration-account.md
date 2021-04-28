@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: 9a7a0795a15de52c34b8591c4224c3ca5883445c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ae5ca6ac822dabd32b6463c3a742901f32b34323
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772071"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862253"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für die B2B-Unternehmensintegration in Azure Logic Apps
 
@@ -65,7 +65,7 @@ Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritt
 
    ![Bereitstellen von Details zum Integrationskonto](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | Eigenschaft | Erforderlich | Wert | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Name** | Ja | <*integration-account-name*> | Der Name Ihres Integrationskontos, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten kann. In diesem Beispiel wird „Fabrikam-Integration“ verwendet. |
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |
@@ -93,7 +93,7 @@ Sie können ein Integrationskonto mithilfe der Azure CLI-Befehle in diesem Absch
 
 Verwenden Sie diese Befehle, um ein Integrationskonto zu erstellen.
 
-1. Um die Erweiterung [az logic integration-account](/cli/azure/ext/logic/logic/integration-account) hinzuzufügen, verwenden Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add):
+1. Um die Erweiterung [az logic integration-account](/cli/azure/logic/integration-account) hinzuzufügen, verwenden Sie den Befehl [az extension add](/cli/azure/extension#az_extension_add):
 
    ```azurecli
    az extension add –-name logic
@@ -105,13 +105,13 @@ Verwenden Sie diese Befehle, um ein Integrationskonto zu erstellen.
    az group create --name myresourcegroup --location westus
    ```
 
-   Um die Integrationskonten für eine Ressourcengruppe aufzulisten, verwenden Sie den Befehl [az logic integration-account list](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_list):
+   Um die Integrationskonten für eine Ressourcengruppe aufzulisten, verwenden Sie den Befehl [az logic integration-account list](/cli/azure/logic/integration-account#az_logic_integration_account_list):
 
    ```azurecli
    az logic integration-account list --resource-group myresourcegroup
    ```
 
-1. Führen Sie zum Erstellen eines Integrationskontos den Befehl [az logic integration-account create](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_create) aus:
+1. Führen Sie zum Erstellen eines Integrationskontos den Befehl [az logic integration-account create](/cli/azure/logic/integration-account#az_logic_integration_account_create) aus:
 
    ```azurecli
    az logic integration-account create --resource-group myresourcegroup \
@@ -123,13 +123,13 @@ Verwenden Sie diese Befehle, um ein Integrationskonto zu erstellen.
    > [!TIP]
    > Um ein Integrationskonto in einer [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) (ISE) zu erstellen, wählen Sie diese ISE als Standort aus. Weitere Informationen finden Sie unter [Erstellen von Integrationskonten in einer ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment).
 
-   Um ein bestimmtes Integrationskonto anzuzeigen, verwenden Sie den Befehl [az logic integration-account show](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_show):
+   Um ein bestimmtes Integrationskonto anzuzeigen, verwenden Sie den Befehl [az logic integration-account show](/cli/azure/logic/integration-account#az_logic_integration_account_show):
 
    ```azurecli
    az logic integration-account show --name integration_account_01 --resource-group myresourcegroup
    ```
 
-   Mit dem Befehl [az logic integration-account update](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_update) können Sie die SKU oder den Tarif ändern:
+   Mit dem Befehl [az logic integration-account update](/cli/azure/logic/integration-account#az_logic_integration_account_update) können Sie die SKU oder den Tarif ändern:
 
    ```azurecli
    az logic integration-account update --sku name=Basic --name integration_account_01 \
@@ -142,14 +142,14 @@ Verwenden Sie diese Befehle, um ein Integrationskonto zu erstellen.
    * [Logic Apps – Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
    * [Logik-Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/)
 
-Um ein Integrationskonto mithilfe einer JSON-Datei zu importieren, verwenden Sie den Befehl [az logic integration-account import](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_import):
+Um ein Integrationskonto mithilfe einer JSON-Datei zu importieren, verwenden Sie den Befehl [az logic integration-account import](/cli/azure/logic/integration-account#az_logic_integration_account_import):
 
 ```azurecli
 az logic integration-account import --name integration_account_01 \
     --resource-group myresourcegroup --input-path integration.json
 ```
 
-Führen Sie zum Löschen eines Integrationskontos den Befehl [az logic integration-account delete](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_delete) aus:
+Führen Sie zum Löschen eines Integrationskontos den Befehl [az logic integration-account delete](/cli/azure/logic/integration-account#az_logic_integration_account_delete) aus:
 
 ```azurecli
 az logic integration-account delete --name integration_account_01 --resource-group myresourcegroup

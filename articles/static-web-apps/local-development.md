@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: e19d39a32d48ec55473bb957595d47ec5148e74b
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: d279ae82d85fd877320e95c92446481c43aac40b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588784"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125641"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Einrichten der lokalen Entwicklung für Azure Static Web Apps (Vorschau)
 
@@ -79,7 +79,7 @@ Das folgende Diagramm veranschaulicht die lokale Behandlung von Anforderungen:
 
     `swa start`
 
-1. Navigieren Sie zu http://localhost:4280, um die App im Browser anzuzeigen.
+1. Navigieren Sie zu `http://localhost:4280`, um die App im Browser anzuzeigen.
 
 ### <a name="other-ways-to-start-the-cli"></a>Weitere Möglichkeiten zum Starten der Befehlszeilenschnittstelle
 
@@ -113,7 +113,7 @@ Nach der Anmeldung gilt Folgendes:
 
 - Sie können den Endpunkt `/.auth/me` oder einen Funktionsendpunkt verwenden, um den [Clientprinzipal](./user-information.md) des Benutzers abzurufen.
 
-- Wenn Sie zu `./auth/logout` navigieren, wird der Clientprinzipal gelöscht und der simulierte Benutzer abgemeldet.
+- Wenn Sie zu `/.auth/logout` navigieren, wird der Clientprinzipal gelöscht und der simulierte Benutzer abgemeldet.
 
 ## <a name="debugging"></a>Debuggen
 

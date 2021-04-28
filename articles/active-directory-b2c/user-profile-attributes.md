@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7dfad71d05a882e3a3941a96e12489adb5fb3234
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42bc87259265b45dabb631507ce6956e07077a7d
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500528"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070477"
 ---
 # <a name="user-profile-attributes"></a>Benutzerprofilattribute
 
@@ -59,7 +59,6 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 |immutableId     |String|Ein Bezeichner, der in der Regel für Benutzer verwendet wird, die von einer lokalen Active Directory-Instanz migriert werden.|Nein|Nein|Persistent, Ausgabe|
 |legalAgeGroupClassification|String|Rechtliche Altersgruppenklassifizierung. Dieses Attribut ist schreibgeschützt und wird basierend auf den Eigenschaften „ageGroup“ und „consentProvidedForMinor“ berechnet. Zulässige Werte: „Null“, „minorWithOutParentalConsent“, „minorWithParentalConsent“, „minorNoParentalConsentRequired“, „notAdult“ und „adult“.|Ja|Nein|Persistent, Ausgabe|
 |legalCountry<sup>1</sup>  |String|Land/Region für rechtliche Zwecke.|Nein|Nein|Persistent, Ausgabe|
-|mail            |String|Die SMTP-Adresse für den Benutzer, z. B. „bob@contoso.com“. Schreibgeschützt.|Nein|Nein|Persistent, Ausgabe|
 |mailNickName    |String|Der E-Mail-Alias für den Benutzer. Maximale Länge: 64 Zeichen.|Nein|Nein|Persistent, Ausgabe|
 |mobile (mobilePhone) |String|Die primäre Mobiltelefonnummer des Benutzers. Maximale Länge: 64 Zeichen.|Ja|Nein|Persistent, Ausgabe|
 |netId           |String|Die Netz-ID.|Nein|Nein|Persistent, Ausgabe|

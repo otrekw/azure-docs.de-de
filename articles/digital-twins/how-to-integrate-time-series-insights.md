@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d89ee4c8e66ba4dda004fbd27e15b96ab13c642b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1ac9a0bc83c2a33becb5348862e5a572dddf3ac2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783771"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133923"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrieren von Azure Digital Twins in Azure Time Series Insights
 
@@ -100,7 +100,7 @@ az dt endpoint create eventhub -n <your-Azure-Digital-Twins-instance-name> --eve
 
 ### <a name="create-twins-hub-event-route"></a>Erstellen einer Ereignisroute für den Zwillingshub
 
-Azure Digital Twins-Instanzen können [Ereignisse zur Aktualisierung von Zwillingen](how-to-interpret-event-data.md) ausgeben, wenn der Zustand eines Zwillings aktualisiert wird. In diesem Abschnitt erstellen Sie eine Azure Digital Twins-**Ereignisroute**, die diese Aktualisierungsereignisse zur weiteren Verarbeitung an den Zwillingshub weiterleitet.
+Azure Digital Twins-Instanzen können [Ereignisse zur Aktualisierung von Zwillingen](./concepts-event-notifications.md) ausgeben, wenn der Zustand eines Zwillings aktualisiert wird. In diesem Abschnitt erstellen Sie eine Azure Digital Twins-**Ereignisroute**, die diese Aktualisierungsereignisse zur weiteren Verarbeitung an den Zwillingshub weiterleitet.
 
 Erstellen Sie eine [Route](concepts-route-events.md#create-an-event-route) in Azure Digital Twins, um Ereignisse zur Aktualisierung von Zwillingen an Ihren obigen Endpunkt zu senden. Der Filter in dieser Route erlaubt nur das Weitergeben von Nachrichten über Zwillingsaktualisierungen an Ihren Endpunkt. Geben Sie einen Namen für die Zwillingshub-Ereignisroute an.
 

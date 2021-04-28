@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.date: 03/25/2021
+ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630107"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629824"
 ---
 ## <a name="generalize-the-image"></a>Generalisieren des Images
 
@@ -52,7 +52,9 @@ Sobald Ihre VM bereit ist, können Sie sie in Azure Shared Image Gallery erfasse
 8. Wählen Sie **Bewerten + erstellen** aus, um Ihre Auswahl zu überprüfen.
 9. Klicken Sie auf **Erstellen**, sobald die Überprüfung bestanden wurde.
 
-Zum Veröffentlichen muss das Herausgeberkonto über Besitzerzugriff auf Shared Image Gallery verfügen. So gewähren Sie den Zugriff:
+Zum Veröffentlichen muss sich das Azure-Abonnement, das Shared Image Gallery enthält, unter demselben Mandanten wie das Herausgeberkonto befinden. Außerdem muss das Herausgeberkonto über Besitzerzugriff auf Shared Image Gallery verfügen. 
+
+So gewähren Sie den Zugriff:
 
 1. Rufen Sie Shared Image Gallery auf.
 2. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.

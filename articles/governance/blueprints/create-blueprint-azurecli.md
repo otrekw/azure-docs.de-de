@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Blaupause mit Azure CLI'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprint, um Artefakte mithilfe der Azure CLI zu erstellen, zu definieren und bereitzustellen.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: fbe5c12f1c94d4b59dbdc2a97b6a4cb9af5a2328
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 506877eddd78ce54681bd4870e1d9040b4738c27
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563666"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877406"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit der Azure CLI
 
@@ -117,7 +117,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
      > [!NOTE]
      > Verwenden Sie den Dateinamen _blueprint.json_, wenn Sie Ihre Blaupausendefinitionen importieren.
-     > Dieser Dateiname wird beim Aufrufen von [az blueprint import](/cli/azure/ext/blueprint/blueprint#ext_blueprint_az_blueprint_import) verwendet.
+     > Dieser Dateiname wird beim Aufrufen von [az blueprint import](/cli/azure/blueprint#az_blueprint_import) verwendet.
 
      Das Blaupausenobjekt wird standardmäßig im Standardabonnement erstellt. Verwenden Sie zum Angeben der Verwaltungsgruppe den Parameter **managementgroup**. Verwenden Sie zum Angeben des Abonnements den Parameter **subscription**.
 
