@@ -3,12 +3,12 @@ title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 027d1d5e81d5a652a7e2d5441c40440c661f730f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 005d8f15c20749dff7d45385124a08a64b213afb
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778623"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139037"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -104,7 +104,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Erstellen von [Diagnoseeinstellungen](../..//azure-monitor/essentials/diagnostic-settings.md) in Kundenmandanten zum Senden von Ressourcenprotokollen an Arbeitsbereiche im verwaltenden Mandanten
 - Für SAP-Workloads sollten Sie [die Metriken von SAP-Lösungen mit einer aggregierten Sicht über Kundenmandanten hinweg überwachen](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293).
 
-[Azure-Netzwerkoptionen](../../networking/networking-overview.md):
+[Azure-Netzwerkoptionen](../../networking/fundamentals/networking-overview.md):
 
 - Bereitstellen und Verwalten einer [Azure Virtual Network](../../virtual-network/index.yml)-Instanz und virtueller Netzwerkschnittstellenkarten (vNICs) innerhalb verwalteter Mandanten
 - Bereitstellen und Konfigurieren von [Azure Firewall](../../firewall/overview.md), um die Virtual Network-Ressourcen der Kunden zu schützen

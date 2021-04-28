@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 04/09/2021
-ms.openlocfilehash: 24c4686306aff9d84fe7bf74ddfdccff987244d9
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: c15e7261587952c93d059cfcfadd06c7d204d80d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368513"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135671"
 ---
 # <a name="control-egress-traffic-for-your-azure-red-hat-openshift-aro-cluster-preview"></a>Steuern des ausgehenden Datenverkehrs für Ihren Azure Red Hat OpenShift-Cluster (ARO) (Vorschau)
 
@@ -19,7 +19,7 @@ Dieser Artikel enthält die erforderlichen Informationen, die Sie zum Schützen 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Artikel wird vorausgesetzt, dass Sie einen neuen Cluster erstellen. Falls Sie einen einfachen ARO-Cluster benötigen, helfen Ihnen die Informationen in der [Schnellstartanleitung zu ARO](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster) weiter.
+In diesem Artikel wird vorausgesetzt, dass Sie einen neuen Cluster erstellen. Falls Sie einen einfachen ARO-Cluster benötigen, helfen Ihnen die Informationen in der [Schnellstartanleitung zu ARO](./tutorial-create-cluster.md) weiter.
 
 > [!IMPORTANT]
 > ARO-Vorschaufunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. ARO-Vorschauversionen werden teilweise vom Kundensupport auf Grundlage der bestmöglichen Leistung abgedeckt.
@@ -99,7 +99,7 @@ Auf der OpenShift Container Platform können Kunden die Berichterstellung zur In
 
 ### <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
 
-Der Zugriff auf Azure Monitor für Container kann auf zwei Arten ermöglicht werden: Sie können das Azure Monitor-Diensttag ([ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags)) zulassen **oder** Zugriff auf die erforderlichen FQDNs/Anwendungsregeln gewähren.  Eine Anleitung zum Hinzufügen von Azure Monitor zu Ihrem vorhandenen ARO-Cluster finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-azure-redhat4-setup).
+Der Zugriff auf Azure Monitor für Container kann auf zwei Arten ermöglicht werden: Sie können das Azure Monitor-Diensttag ([ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags)) zulassen **oder** Zugriff auf die erforderlichen FQDNs/Anwendungsregeln gewähren.  Eine Anleitung zum Hinzufügen von Azure Monitor zu Ihrem vorhandenen ARO-Cluster finden Sie [hier](../azure-monitor/containers/container-insights-azure-redhat4-setup.md).
 
 #### <a name="required-network-rules"></a>Benötigte Netzwerkregeln
 

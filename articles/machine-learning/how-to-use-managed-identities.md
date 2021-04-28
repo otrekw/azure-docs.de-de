@@ -8,14 +8,14 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3246f6668a653c05599001a2f8d8fc8d376936ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eda711d6dce705cb64c1545a9c6ffe9b373ad442
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642412"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140423"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Verwenden von verwalteten Identitäten mit Azure Machine Learning (Vorschau)
 
@@ -234,7 +234,7 @@ Nachdem Sie ACR ohne Administratorbenutzer (wie oben beschrieben) konfiguriert h
 
 Beim Erstellen eines Arbeitsbereichs können Sie eine benutzerseitig zugewiesene verwaltete Identität angeben, die für den Zugriff auf die zugehörigen Ressourcen verwendet werden soll: ACR, KeyVault, Storage und App Insights.
 
-Erstellen Sie zunächst [eine vom Benutzer zugewiesene verwaltete Identität](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli), und notieren Sie sich die ARM-Ressourcen-ID der verwalteten Identität.
+Erstellen Sie zunächst [eine vom Benutzer zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md), und notieren Sie sich die ARM-Ressourcen-ID der verwalteten Identität.
 
 Verwenden Sie dann die Azure CLI oder das Python SDK zum Erstellen des Arbeitsbereichs. Wenn Sie die CLI verwenden, geben Sie die ID mithilfe des Parameters `--primary-user-assigned-identity` an. Verwenden Sie `primary_user_assigned_identity`, wenn Sie das SDK verwenden. Im Folgenden finden Sie Beispiele für die Verwendung der Azure CLI und von Python, um mithilfe dieser Parameter einen neuen Arbeitsbereich zu erstellen:
 

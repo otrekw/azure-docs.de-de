@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: a22fa184f91cb409f7a4d7795a4bc34bdd83e598
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c9319465c4e77eab294606ed046f7946948f2cc1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077804"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140369"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Bewertungsübersicht (Migration zu Azure SQL)
 
@@ -77,11 +77,11 @@ Die folgenden Eigenschaften sind in den Azure SQL-Bewertungseigenschaften enthal
 --- | ---
 **Zielstandort** | Die Azure-Region, zu der die Migration durchgeführt werden soll. Empfehlungen zur Azure SQL-Konfiguration und zu den Kosten basieren auf dem von Ihnen angegebenen Standort.
 **Typ der Zielbereitstellung** | Der Zielbereitstellungstyp, für den die Bewertung ausgeführt werden soll: <br/><br/> Wählen Sie die Option **Empfohlen** aus, wenn mit Azure Migrate die Bereitschaft Ihrer SQL-Server für die Migration zu Azure SQL MI und Azure SQL-Datenbank bewertet werden soll und zusätzlich die am besten geeignete Zielbereitstellungsoption, der Zieltarif, die Azure SQL-Konfiguration und monatliche Schätzungen empfohlen werden sollen.<br/><br/>Wählen Sie **Azure SQL-Datenbank** aus, falls Sie nur Ihre SQL Server-Instanzen für die Migration zu Azure SQL-Datenbank-Instanzen bewerten lassen und den Zieltarif, die Azure SQL DB-Konfiguration und die monatlichen Schätzungen überprüfen möchten.<br/><br/>Wählen Sie **Azure SQL MI** aus, falls Sie nur Ihre SQL Server-Instanzen für die Migration zu Azure SQL-Datenbank-Instanzen bewerten lassen und den Zieltarif, die Azure SQL MI-Konfiguration und die monatlichen Schätzungen überprüfen möchten.
-**Reservierte Kapazität** | Gibt reservierte Kapazität an, damit diese bei Kostenschätzungen in der Bewertung berücksichtigt wird.<br/><br/> Wenn Sie eine Option für reservierte Kapazität auswählen, können Sie nicht „Abzug (%)“ auswählen.
+**Reservierte Kapazität** | Gibt die reservierte Kapazität an, damit diese bei Kostenschätzungen in der Bewertung berücksichtigt wird.<br/><br/> Wenn Sie eine Option für reservierte Kapazität auswählen, können Sie nicht „Abzug (%)“ auswählen.
 **Größenkriterien** | Diese Eigenschaft wird für die Dimensionierung der Azure SQL-Konfiguration verwendet. <br/><br/> Sie wird standardmäßig auf **Leistungsbasiert** festgelegt, was bedeutet, dass die Bewertung die Leistungsmetriken für die SQL Server-Instanzen und -Datenbanken erfasst, um Empfehlungen für eine optimale Dimensionierung für Tarif und Konfiguration von Azure SQL Managed Instance und/oder Azure SQL-Datenbank zu geben.
 **Leistungsverlauf** | Der Leistungsverlauf gibt den Zeitraum für die Bewertung von Leistungsdaten an.
 **Perzentilwert der Nutzung** | Der Perzentilwert der Nutzung gibt den für die Größenanpassung zu verwendenden Perzentilwert der Leistungsstichprobe an.
-**Komfortfaktor** | Der bei der Bewertung verwendete Puffer. Er berücksichtigt Aspekte wie saisonale Nutzung, einen kurzen Leistungsverlauf und eine voraussichtliche Zunahme der zukünftigen Nutzung.<br/><br/> Beispiel: Für eine Instanz mit zehn Kernen und einer Auslastung von 20 % ergibt sich normalerweise eine Instanz mit zwei Kernen. Bei einem Komfortfaktor von 2.0 ist das Ergebnis dagegen eine Instanz mit vier Kernen.
+**Komfortfaktor** | Der bei der Bewertung verwendete Puffer. Er berücksichtigt Aspekte wie saisonale Nutzung, einen kurzen Leistungsverlauf und eine voraussichtliche Zunahme der zukünftigen Nutzung.<br/><br/> Beispiel: Für eine Instanz mit zehn Kernen und einer Auslastung von 20 % ergibt sich normalerweise eine Instanz mit zwei Kernen. Bei einem Komfortfaktor von 2,0 ist das Ergebnis dagegen eine Instanz mit vier Kernen.
 **Angebot/Lizenzierungsprogramm** | Das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/), für das Sie registriert sind. Derzeit können Sie nur zwischen „Nutzungsbasierte Bezahlung“ und „Dev/Test Pay-As-You-Go“ wählen. Beachten Sie, dass Sie einen zusätzlichen Rabatt erzielen können, indem Sie zusätzlich zum Angebot „Nutzungsbasierte Bezahlung“ die reservierte Kapazität und den Azure-Hybridvorteil anwenden.
 **Dienstebene** | Die am besten geeignete Dienstebenenoption, um Ihre geschäftlichen Anforderungen für die Migration zu Azure SQL-Datenbank und/oder Azure SQL Managed Instance zu erfüllen:<br/><br/>**Empfohlen**, wenn von Azure Migrate die am besten geeignete Dienstebene für Ihre Server empfohlen werden soll. Dies kann beispielsweise „Universell“ oder „Unternehmenskritisch“ sein. <br/><br/> **Universell**, wenn Sie eine Azure SQL-Konfiguration erzielen möchten, die für budgetorientierte Workloads ausgelegt ist. [Weitere Informationen](../azure-sql/database/service-tier-general-purpose.md) <br/><br/> **Unternehmenskritisch**, wenn Sie eine Azure SQL-Konfiguration erhalten möchten, die auf latenzarme Workloads mit hoher Resilienz gegenüber Fehlern und schnellen Failovern ausgelegt ist. [Weitere Informationen](../azure-sql/database/service-tier-business-critical.md)
 **Währung** | Die Rechnungswährung für Ihr Konto.
@@ -127,7 +127,7 @@ Wenn Sie den Zielbereitstellungstyp wie in den Azure SQL-Bewertungseigenschaften
 Wenn die SQL-Instanz nicht für Azure SQL-Datenbank und Azure SQL Managed Instance bereit ist, wird der empfohlene Bereitstellungstyp als *Potenziell bereit für Azure-VM* gekennzeichnet.
 - Dem Benutzer wird empfohlen, in Azure Migrate eine Bewertung mit dem Bewertungstyp „Azure-VM“ zu erstellen, um zu ermitteln, ob der Server, auf dem die Instanz ausgeführt wird, stattdessen zu einem virtuellen Azure-Computer migriert werden kann. Beachten Sie dabei Folgendes:
     - Bei Bewertungen vom Typ „Azure-VM“ in Azure Migrate liegt das Hauptaugenmerk aktuell auf Lift & Shift-Migrationen, und die spezifischen Leistungsmetriken für die Ausführung von SQL-Instanzen und -Datenbanken auf dem virtuellen Azure-Computer werden nicht berücksichtigt. 
-    - Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) für SQL Server auf virtuellen Azure-Computern.
+    - Wenn Sie eine Bewertung vom Typ „Azure-VM“ auf einem Server ausführen, gelten die Größenempfehlung und die Kostenschätzungen für alle Instanzen, die auf dem Server ausgeführt werden und mithilfe des Servermigrationstools zu einem virtuellen Azure-Computer migriert werden können. Lesen Sie vor der Migration die [Leistungsrichtlinien](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md) für SQL Server auf virtuellen Azure-Computern.
 
 
 ## <a name="calculate-sizing"></a>Berechnen der Dimensionierung

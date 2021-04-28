@@ -10,19 +10,19 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 43eff2bea6f6d95291e9ba9650ff42187e39fc70
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 2de361a63d3e0ed45b5d99d48063064cc46a0390
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600164"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136353"
 ---
 # <a name="migration-guide-ibm-db2-to-sql-server-on-azure-vm"></a>Anleitung zur Migration: IBM Db2 zu SQL Server auf Azure VM
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
 
 In diesem Handbuch erfahren Sie, wie Sie Ihre IBM Db2-Datenbanken mithilfe des SQL Server-Migrationsassistenten für Db2 auf SQL Server auf Azure VM migrieren. 
 
-Weitere Migrationsleitfäden finden Sie in den [Leitfäden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
+Weitere Migrationsleitfäden finden Sie in den [Leitfäden zur Azure-Datenbankmigration](/data-migration). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -108,11 +108,11 @@ Wenn Sie die Bewertung Ihrer Datenbanken und die Behandlung etwaiger Abweichunge
 
 Führen Sie die folgenden Schritte aus, um das Schema zu veröffentlichen und Ihre Daten zu migrieren:
 
-1. Veröffentlichen des Schemas: Klicken Sie im **SQL Server Metadata Explorer** im Knoten **Databases** mit der rechten Maustaste auf die Datenbank. Wählen Sie dann **Mit Datenbank synchronisieren**.
+1. Veröffentlichen Sie das Schema. Klicken Sie im **SQL Server Metadata Explorer** im Knoten **Databases** mit der rechten Maustaste auf die Datenbank. Wählen Sie dann **Mit Datenbank synchronisieren**.
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/synchronize-with-database.png" alt-text="Screenshot, der die Option zur Synchronisierung mit der Datenbank zeigt.":::
 
-1. Migrieren der Daten: Klicken Sie im **Db2 Metadata Explorer** mit der rechten Maustaste auf die Datenbank oder das Objekt, das Sie migrieren möchten, und wählen Sie **Daten migrieren**. Alternativ können Sie in der Navigationsleiste **Daten migrieren** auswählen. Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der gewünschten Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
+1. Migrieren der Daten. Klicken Sie im **Db2 Metadata Explorer** mit der rechten Maustaste auf die Datenbank oder das Objekt, das Sie migrieren möchten, und wählen Sie **Daten migrieren**. Alternativ können Sie in der Navigationsleiste **Daten migrieren** auswählen. Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie die **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/migrate-data.png" alt-text="Screenshot, der die Auswahl des Schemas und die Auswahl der Datenmigration zeigt.":::
 

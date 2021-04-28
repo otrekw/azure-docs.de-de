@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 774344c4215088482b110de91f8951bae4a41d25
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 5abbd1ed5c33d0ec0957d34dd8d78a958208e8f6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365823"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142871"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit bei hochskalierten SAP HANA-Lösungen mit Azure NetApp Files unter Red Hat Enterprise Linux
 
@@ -489,13 +489,13 @@ Dies ist ein wichtiger Schritt, um die Integration in den Cluster zu optimieren 
      chown -R hn1adm:sapsys /hana/shared/myHooks
     ```
 
-   2. Beenden Sie HANA auf beiden Knoten. Führen Sie den Vorgang als <SID\>adm aus:  
+   2. Beenden Sie HANA auf beiden Knoten. Führen Sie den Vorgang als „<sid\>adm“ aus:  
    
     ```bash
     sapcontrol -nr 03 -function StopSystem
     ```
 
-   3. Passen Sie `global.ini` auf jedem Clusterknoten an.  
+   3. Passen Sie die Datei `global.ini` auf jedem Clusterknoten an.  
  
     ```bash
     # add to global.ini
@@ -508,7 +508,7 @@ Dies ist ein wichtiger Schritt, um die Integration in den Cluster zu optimieren 
     ha_dr_saphanasr = info
     ```
 
-2. **[A]** Der Cluster erfordert sudoers-Konfiguration auf jedem Clusterknoten für <SID\>adm. In diesem Beispiel wird dies durch das Erstellen einer neuen Datei erreicht. Führen Sie die Befehle als `root` aus.    
+2. **[A]** Der Cluster erfordert die Konfiguration von „sudoers“ auf jedem Clusterknoten für „<sid\>adm“. In diesem Beispiel wird dies durch das Erstellen einer neuen Datei erreicht. Führen Sie die Befehle als `root` aus.    
     ```bash
     cat << EOF > /etc/sudoers.d/20-saphana
     # Needed for SAPHanaSR python hook
@@ -666,9 +666,9 @@ In diesem Beispiel verfügt jeder Clusterknoten über ein eigenes HANA-NFS-Datei
 
 ## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Konfigurieren der Systemreplikation im Pacemaker-Cluster, für die HANA/Lesevorgänge aktiviert ist/sind
 
-Ab SAP HANA 2.0 SPS 01 SAP sind aktive Setups bzw. Setups mit aktivierten Lesevorgängen für die SAP HANA-Systemreplikation möglich, bei denen die sekundären Systeme der SAP HANA-Systemreplikation aktiv für Workloads mit vielen Lesevorgängen verwendet werden können. Zur Unterstützung eines solchen Setups in einem Cluster ist eine zweite virtuelle IP-Adresse erforderlich, mit der Clients auf die sekundäre SAP HANA-Datenbank mit aktivierten Lesevorgängen zugreifen können. Damit nach einer Übernahme weiterhin auf die sekundäre Replikationswebsite zugegriffen werden kann, muss der Cluster die virtuelle IP-Adresse zusammen mit der sekundären Instanz der SAP HANA-Ressource verschieben.
+Ab SAP HANA 2.0 SPS 01 SAP sind „Aktiv/Lesezugriff“-Setups für die SAP HANA-Systemreplikation möglich, bei denen die sekundären Systeme der SAP HANA-Systemreplikation aktiv für Workloads mit vielen Lesevorgängen verwendet werden können. Zur Unterstützung eines solchen Setups in einem Cluster ist eine zweite virtuelle IP-Adresse erforderlich, mit der Clients auf die sekundäre SAP HANA-Datenbank mit aktivierten Lesevorgängen zugreifen können. Damit nach einer Übernahme weiterhin auf die sekundäre Replikationswebsite zugegriffen werden kann, muss der Cluster die virtuelle IP-Adresse zusammen mit der sekundären Instanz der SAP HANA-Ressource verschieben.
 
-Informationen zu der zusätzlichen Konfiguration, die erforderlich ist, um Systemreplikationen, für die HANA/Lesevorgänge aktiviert ist/sind, in einem Red Hat-Hochverfügbarkeitscluster mit einer zweiten virtuellen IP-Adresse zu verwalten, finden Sie unter [Konfigurieren der Systemreplikation im Pacemaker-Cluster, für die HANA/Lesevorgänge aktiviert ist/sind](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster).  
+Informationen zu der zusätzlichen Konfiguration, die erforderlich ist, um Systemreplikationen, für die HANA/Lesevorgänge aktiviert ist/sind, in einem Red Hat-Hochverfügbarkeitscluster mit einer zweiten virtuellen IP-Adresse zu verwalten, finden Sie unter [Konfigurieren der Systemreplikation im Pacemaker-Cluster, für die HANA/Lesevorgänge aktiviert ist/sind](./sap-hana-high-availability-rhel.md#configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster).  
 
 Bevor Sie fortfahren, vergewissern Sie sich, dass Sie den Red Hat-Hochverfügbarkeitscluster, der die SAP HANA-Datenbank verwaltet, wie in den obigen Abschnitten der Dokumentation beschrieben vollständig konfiguriert haben.    
 

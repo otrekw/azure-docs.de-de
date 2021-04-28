@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 62981686c7aadc713c4abc78075be8613fe0af45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 30a823b7e78145224929b427e9e37522a7e29f09
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199305"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871289"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Überwachen der Gerätekonnektivität per Azure CLI
 
@@ -22,7 +22,7 @@ ms.locfileid: "102199305"
 
 Verwenden Sie die IoT-Erweiterung der Azure CLI, um Meldungen anzuzeigen, die Ihre Geräte an IoT Central senden und Änderungen im Gerätezwilling zu beobachten. Mit diesem Tool können Sie die Gerätekonnektivität debuggen und beobachten und Probleme von Gerätemeldungen diagnostizieren, die die Cloud oder Geräte nicht erreichen, die auf Änderungen beim Zwilling nicht reagieren.
 
-[Weitere Einzelheiten erhalten Sie in der Referenz zu Azure CLI-Erweiterungen.](/cli/azure/ext/azure-iot/iot/central)
+[Weitere Einzelheiten erhalten Sie in der Referenz zu Azure CLI-Erweiterungen.](/cli/azure/iot/central)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

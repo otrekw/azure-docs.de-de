@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: d5b9197bfd2526dd414406ebf1aca509d3b3fa91
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 108beee178cbf65bb4ba4f29479b335ab8d01a1e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107924"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141593"
 ---
 # <a name="add-and-manage-users-for-the-commercial-marketplace"></a>Hinzufügen und Verwalten von Benutzern für den kommerziellen Marketplace
 
@@ -38,7 +38,7 @@ So fügen Sie Ihrem Partner Center-Konto Benutzer hinzu, die bereits im [Geschä
 
 ## <a name="create-new-users"></a>Erstellen neuer Benutzer
 
-Um neue Benutzerkonten zu erstellen, benötigen Sie ein Konto mit den Berechtigungen [Globaler Administrator](/azure/active-directory/roles/permissions-reference).
+Um neue Benutzerkonten zu erstellen, benötigen Sie ein Konto mit den Berechtigungen [Globaler Administrator](../active-directory/roles/permissions-reference.md).
 
 1. Wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), und wählen Sie **Benutzer hinzufügen** und dann **Neue Benutzer erstellen** aus.
 1. Geben Sie einen Vornamen, einen Nachnamen und einen Benutzernamen für jeden neuen Benutzer ein.
@@ -52,7 +52,7 @@ Wenn Sie einen neuen Benutzer in Partner Center erstellen, wird für diesen Benu
 
 ## <a name="invite-new-users-by-email"></a>Einladen neuer Benutzer per E-Mail
 
-Um Benutzer per E-Mail einzuladen, die derzeit nicht zum Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens gehören, benötigen Sie ein Konto mit Berechtigungen als [globaler Administrator](/azure/active-directory/roles/permissions-reference).
+Um Benutzer per E-Mail einzuladen, die derzeit nicht zum Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens gehören, benötigen Sie ein Konto mit Berechtigungen als [globaler Administrator](../active-directory/roles/permissions-reference.md).
 
 1. Wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), und wählen Sie dann **Benutzer hinzufügen** und anschließend **Benutzer per E-Mail einladen** aus.
 1. Geben Sie bis zu 10 E-Mail-Adressen getrennt durch Kommas oder Semikolons ein.
@@ -63,7 +63,7 @@ Die von Ihnen eingeladenen Benutzer erhalten eine E-Mail-Einladung zur Teilnahme
 
 Wenn Sie eine Einladung erneut senden möchten, wechseln Sie auf die Seite *Benutzer*, suchen Sie die Einladung in der Benutzerliste, und wählen Sie die betreffende E-Mail-Adresse aus (oder den Text *Die Einladung steht aus*). Wählen Sie dann am unteren Rand der Seite **Einladung erneut senden** aus.
 
-Wenn Ihre Organisation [Verzeichnisintegration](https://docs.microsoft.com/previous-versions/azure/azure-services/jj573653(v=azure.100)) verwendet, um den lokalen Verzeichnisdienst mit Ihrem Azure AD zu synchronisieren, können Sie keine neuen Benutzer, Gruppen oder Azure AD-Anwendungen in Partner Center erstellen. Diese müssen Sie (oder ein anderer Administrator in Ihrem lokalen Verzeichnis) direkt im lokalen Verzeichnis erstellen, bevor Sie sie im Partner Center anzeigen und hinzufügen können.
+Wenn Ihre Organisation [Verzeichnisintegration](/previous-versions/azure/azure-services/jj573653(v=azure.100)) verwendet, um den lokalen Verzeichnisdienst mit Ihrem Azure AD zu synchronisieren, können Sie keine neuen Benutzer, Gruppen oder Azure AD-Anwendungen in Partner Center erstellen. Diese müssen Sie (oder ein anderer Administrator in Ihrem lokalen Verzeichnis) direkt im lokalen Verzeichnis erstellen, bevor Sie sie im Partner Center anzeigen und hinzufügen können.
 
 ## <a name="remove-a-user"></a>Benutzer entfernen
 
@@ -71,7 +71,7 @@ Um einen Benutzer aus Ihrem Geschäftskonto (Azure AD-Mandant) zu entfernen, wec
 
 ## <a name="change-a-user-password"></a>Ändern eines Benutzerkennworts
 
-Ein Benutzer kann sein Kennwort bei Bedarf selbst ändern, sofern Sie beim Erstellen des Benutzerkontos eine *E-Mail-Adresse zur Kenntwortwiederherstellung* angegeben haben. Sie können das Kennwort eines Benutzers auch aktualisieren, indem Sie die folgenden Schritte ausführen. Um das Kennwort eines Benutzers im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens zu ändern, müssen Sie bei einem Konto mit den Berechtigungen als [globaler Administrator](/azure/active-directory/roles/permissions-reference) angemeldet sein. Hierdurch werden das Kennwort des Benutzers in Ihrem Azure AD-Mandanten und das Kennwort geändert, das er zum Zugriff auf Partner Center verwendet.
+Ein Benutzer kann sein Kennwort bei Bedarf selbst ändern, sofern Sie beim Erstellen des Benutzerkontos eine *E-Mail-Adresse zur Kenntwortwiederherstellung* angegeben haben. Sie können das Kennwort eines Benutzers auch aktualisieren, indem Sie die folgenden Schritte ausführen. Um das Kennwort eines Benutzers im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens zu ändern, müssen Sie bei einem Konto mit den Berechtigungen als [globaler Administrator](../active-directory/roles/permissions-reference.md) angemeldet sein. Hierdurch werden das Kennwort des Benutzers in Ihrem Azure AD-Mandanten und das Kennwort geändert, das er zum Zugriff auf Partner Center verwendet.
 
 1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) den Namen des Benutzerkontos aus, das Sie bearbeiten möchten.
 1. Wählen Sie unten auf der Seite die Schaltfläche **Kennwort zurücksetzen** aus.
