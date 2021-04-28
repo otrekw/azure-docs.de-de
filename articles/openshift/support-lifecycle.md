@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/06/2021
-ms.openlocfilehash: 35cbaf2b6d2618d116d2dd322ae5ac28f578cecc
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 22ae9bdbee4b9d6f66d08d0e3ffc37675bc5d3da
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303541"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143555"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Supportlebenszyklus für Azure Red Hat OpenShift 4
 
@@ -114,7 +114,7 @@ Das Zurücksetzen des Clusters auf eine frühere Version oder ein Rollback wird 
 
 **Was bedeutet „nicht unterstützt“?**
 
-Wenn ihr ARO-Cluster eine OpenShift-Version ausführt, die nicht in der Liste der unterstützten Versionen enthalten ist oder eine [nicht unterstützte Clusterkonfiguration](https://docs.microsoft.com/azure/openshift/support-policies-v4) verwendet, befindet sich Ihr Cluster „außerhalb des Supports“. Infolgedessen:
+Wenn ihr ARO-Cluster eine OpenShift-Version ausführt, die nicht in der Liste der unterstützten Versionen enthalten ist oder eine [nicht unterstützte Clusterkonfiguration](./support-policies-v4.md) verwendet, befindet sich Ihr Cluster „außerhalb des Supports“. Infolgedessen:
 - Wenn Sie ein Supportticket für Ihren Cluster öffnen, werden Sie aufgefordert, den Cluster auf eine unterstützte Version zu aktualisieren. bevor Sie Support erhalten, es sei denn, Sie befinden sich innerhalb der 30-tägigen Toleranzperiode nach Ende des Versionssupports. 
 - Alle Laufzeit- oder SLA-Garantien für Cluster außerhalb des Supports werden aufgehoben.
 - Cluster außerhalb des Supports werden nur nach bestem Bemühen gepatcht.

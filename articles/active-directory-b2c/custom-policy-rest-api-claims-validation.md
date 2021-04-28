@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 761bc4db7760ef5e84e3fc3c8a5deea5d4508f51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89542a0a30bacf5cb45755fb578b22ce5c34ba4e
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94951926"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070711"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey zum Überprüfen der Benutzereingabe
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Das Identity Experience Framework, das Azure Active Directory B2C (Azure AD B2C) zugrunde liegt, ermöglicht Identitätsentwicklern die Integration einer Interaktion mit einer RESTful-API in eine User Journey.  Am Ende dieser exemplarischen Vorgehensweise sind Sie in der Lage, eine Azure AD B2C User Journey zu erstellen, die mit [RESTful-Diensten](custom-policy-rest-api-intro.md) interagiert, um Benutzereingaben zu überprüfen.
+Das Identity Experience Framework, das Azure Active Directory B2C (Azure AD B2C) zugrunde liegt, ermöglicht Identitätsentwicklern die Integration einer Interaktion mit einer RESTful-API in eine User Journey.  Am Ende dieser exemplarischen Vorgehensweise sind Sie in der Lage, eine Azure AD B2C User Journey zu erstellen, die mit [RESTful-Diensten](api-connectors-overview.md) interagiert, um Benutzereingaben zu überprüfen.
 
 In diesem Szenario fügen wir die Möglichkeit für Benutzer hinzu, auf der Azure AD B2C-Registrierungsseite eine Treuebonusnummer einzugeben. Wir überprüfen, ob diese Kombination aus E-Mail und Treuebonusnummer einem Aktionscode zugeordnet ist, indem wir diese Daten an eine REST-API senden. Wenn die REST-API einen Aktionscode für diesen Benutzer findet, wird dieser an Azure AD B2C zurückgegeben. Schließlich wird der Aktionscode in die Tokenansprüche so eingefügt, dass er von der Anwendung genutzt werden kann.
 
@@ -30,8 +30,8 @@ Sie können die Interaktion auch als Orchestrierungsschritt entwerfen. Dies biet
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) aus. Sie sollten eine funktionierende benutzerdefinierte Richtlinie für die Registrierung und Anmeldung bei lokalen Konten besitzen.
-- Weitere Informationen finden Sie unter [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie](custom-policy-rest-api-intro.md).
+- Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy) aus. Sie sollten eine funktionierende benutzerdefinierte Richtlinie für die Registrierung und Anmeldung bei lokalen Konten besitzen.
+- Weitere Informationen finden Sie unter [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie](api-connectors-overview.md).
 
 ## <a name="prepare-a-rest-api-endpoint"></a>Vorbereiten eines REST-API-Endpunkts
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aec870e6027d9a6d2e6c3b66363f93c73fad5e78
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587898"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064141"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Steuern von Azure AD-Dienstkonten
 
@@ -40,7 +40,7 @@ Dokumentieren Sie vor der Erstellung eines Dienstkontos oder der Registrierung e
 | CMDB-Link| Link zu den Ressourcen, auf die zugegriffen werden soll, sowie zu Skripts, in denen das Dienstkonto verwendet wird.| Dokumentieren Sie die Ressourcen- und Skriptbesitzer, um alle notwendigen Upstream- und Downstreamauswirkungen von Änderungen kommunizieren zu können. |
 | Risikobewertung| Das Risiko und die geschäftlichen Auswirkungen im Falle einer Kompromittierung des Kontos.| Verwenden Sie diese Informationen, um den Berechtigungsbereich einzugrenzen und zu bestimmen, wer Zugriff auf die Kontoinformationen haben soll. |
 | Überprüfungszeitraum| Der Zeitplan für die Überprüfung des Dienstkontos durch den Besitzer.| Verwenden Sie diese Information, um die Überprüfungskommunikation und Überprüfungen zu planen. Dokumentieren Sie, was geschehen soll, wenn bis zu einem bestimmten Zeitpunkt nach dem geplanten Überprüfungszeitraum keine Überprüfung stattgefunden hat. |
-| Gültigkeitsdauer| Die voraussichtliche maximale Lebensdauer eines Kontos.| Verwenden Sie diese Information, um die Kommunikation mit dem Besitzer zu planen und die Konten letztendlich zu deaktivieren und anschließend zu löschen. Legen Sie nach Möglichkeit ein Ablaufdatum für Anmeldeinformationen fest, sofern kein automatischer Rollover für Anmeldeinformationen möglich ist. |
+| Lebensdauer| Die voraussichtliche maximale Lebensdauer eines Kontos.| Verwenden Sie diese Information, um die Kommunikation mit dem Besitzer zu planen und die Konten letztendlich zu deaktivieren und anschließend zu löschen. Legen Sie nach Möglichkeit ein Ablaufdatum für Anmeldeinformationen fest, sofern kein automatischer Rollover für Anmeldeinformationen möglich ist. |
 | Name| Standardisierter Name des Kontos| Erstellen Sie ein Benennungsschema für alle Dienstkonten, um problemlos nach Dienstkonten suchen, sortieren und filtern zu können. |
 
 
@@ -172,7 +172,7 @@ Richten Sie einen Überprüfungsprozess ein, um eine regelmäßige Überprüfung
 
 **Die Prozesse für die Aufhebung der Bereitstellung sollten die folgenden Aufgaben umfassen:**
 
-1. [Überwachen Sie die Anmeldungen](../reports-monitoring/concept-sign-ins.md#sign-ins-report) und den Ressourcenzugriff durch das Dienstkonto, nachdem die Bereitstellung der zugeordneten Anwendung oder des zugeordneten Skripts aufgehoben wurde.
+1. [Überwachen Sie die Anmeldungen](../reports-monitoring/concept-sign-ins.md) und den Ressourcenzugriff durch das Dienstkonto, nachdem die Bereitstellung der zugeordneten Anwendung oder des zugeordneten Skripts aufgehoben wurde.
 
    * Ist das Konto weiterhin aktiv, ermitteln Sie, wie es verwendet wird, bevor Sie weitere Schritte ausführen.
  

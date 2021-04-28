@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 03/31/2021
-ms.openlocfilehash: 19c346bd3bdc0a5882244ff595bfeedbde8c06e4
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 5496e1778d47e30d338c38e492f1862212339c48
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123092"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134230"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-core-web-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer ASP.NETÂ Core-Web-App 
 
@@ -430,7 +430,7 @@ Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelÃ
 Informationen zur Bereitstellung in Azure:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](/azure/app-service/tutorial-dotnetcore-sqldb-app)
+> [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](../app-service/tutorial-dotnetcore-sqldb-app.md)
 
 Informationen zum Speichern des Cacheverbindungsgeheimnisses in Azure Key Vault:
 

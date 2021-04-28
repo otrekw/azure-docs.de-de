@@ -1,17 +1,17 @@
 ---
 title: Deltaformat in Azure Data Factory
 description: Transformieren und Verschieben von Daten aus einer Delta Lake-Instanz unter Verwendung des Deltaformats
-author: dcstwh
+author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.author: weetok
-ms.openlocfilehash: 6d9d2b0d185750cf8ed8192661f28a2b82d88b78
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.author: makromer
+ms.openlocfilehash: 38138be8ddd6babd9740a81ffcbedb9088a412f4
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222537"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906168"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Deltaformat in Azure Data Factory
 
@@ -29,7 +29,7 @@ Dieser Connector ist als [Inlinedataset](data-flow-source.md#inline-datasets) in
 
 Die folgende Tabelle enthält die von einer Deltaquelle unterstützten Eigenschaften. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Das Format muss `delta` sein | ja | `delta` | format |
 | Dateisystem | Der Container bzw. das Dateisystem der Delta Lake-Instanz. | ja | String | fileSystem |
@@ -66,7 +66,7 @@ source(output(movieId as integer,
 
 Die folgende Tabelle enthält die von einer Deltasenke unterstützten Eigenschaften. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Das Format muss `delta` sein | ja | `delta` | format |
 | Dateisystem | Der Container bzw. das Dateisystem der Delta Lake-Instanz. | ja | String | fileSystem |

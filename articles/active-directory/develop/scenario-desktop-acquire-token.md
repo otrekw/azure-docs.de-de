@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 4a244c543aa83ae84891e3f942995dc340a7209d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1020496f7aea0c30ed815f21756addfd9ed0ae09
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582654"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124273"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -91,20 +91,6 @@ return result;
 
 ```
 
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-result = None
-
-# Firstly, check the cache to see if this end user has signed in before
-accounts = app.get_accounts(username=config["username"])
-if accounts:
-    result = app.acquire_token_silent(config["scope"], account=accounts[0])
-
-if not result:
-    result = app.acquire_token_by_xxx(scopes=config["scope"])
-```
-
 # <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>In MSAL für iOS und macOS
@@ -145,6 +131,83 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
     }
 }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Im MSAL Node rufen Sie Token über den Autorisierungscodefluss mit einem Prüfschlüssel für den Codeaustausch (Proof Key for Code Exchange, PKCE) ab. Der MSAL Node verwendet einen In-Memory-Tokencache, um festzustellen, ob Benutzerkonten im Cache vorhanden sind. Wenn dies der Fall ist, kann das Kontoobjekt zum Abrufen eines zwischengespeicherten Zugriffstokens der `acquireTokenSilent()`-Methode übergeben werden.
+
+```JavaScript
+
+const msal = require("@azure/msal-node");
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+const msalTokenCache = pca.getTokenCache();
+
+let accounts = await msalTokenCache.getAllAccounts();
+
+    if (accounts.length > 0) {
+
+        const silentRequest = {
+            account: accounts[0], // Index must match the account that is trying to acquire token silently
+            scopes: ["user.read"],
+        };
+    
+        pca.acquireTokenSilent(silentRequest).then((response) => {
+            console.log("\nSuccessful silent token acquisition");
+            console.log("\nResponse: \n:", response);
+            res.sendStatus(200);
+        }).catch((error) => console.log(error));
+    } else {
+        const {verifier, challenge} = await msal.cryptoProvider.generatePkceCodes();
+
+        const authCodeUrlParameters = {
+            scopes: ["User.Read"],
+            redirectUri: "your_redirect_uri",
+            codeChallenge: challenge, // PKCE Code Challenge
+            codeChallengeMethod: "S256" // PKCE Code Challenge Method 
+        };
+        
+        // get url to sign user in and consent to scopes needed for application
+        pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+            console.log(response);
+        
+            const tokenRequest = {
+                code: response["authorization_code"],
+                codeVerifier: verifier // PKCE Code Verifier 
+                redirectUri: "your_redirect_uri",
+                scopes: ["User.Read"],
+            };
+            
+            // acquire a token by exchanging the code
+            pca.acquireTokenByCode(tokenRequest).then((response) => {
+                console.log("\nResponse: \n:", response);
+            }).catch((error) => {
+                console.log(error);
+            });
+        }).catch((error) => console.log(JSON.stringify(error)));
+    }
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    result = app.acquire_token_by_xxx(scopes=config["scope"])
+```
 ---
 
 Im Folgenden werden die verschiedenen Möglichkeiten zum Abrufen von Token in einer Desktopanwendung beschrieben.
@@ -154,6 +217,7 @@ Im Folgenden werden die verschiedenen Möglichkeiten zum Abrufen von Token in ei
 Das folgende Beispiel enthält den mindestens erforderlichen Code zum interaktiven Abrufen eines Tokens zum Lesen des Benutzerprofils mit Microsoft Graph.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
+
 ### <a name="in-msalnet"></a>In MSAL.NET
 
 ```csharp
@@ -193,13 +257,13 @@ WithParentActivityOrWindow(IWin32Window window)
 // Mac
 WithParentActivityOrWindow(NSWindow window)
 
-// .Net Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
+// .NET Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
 WithParentActivityOrWindow(object parent).
 ```
 
 Anmerkungen:
 
-- In .NET Standard ist das erwartete `object` `Activity` für Android, `UIViewController` für iOS, `NSWindow` für MAC und `IWin32Window` oder `IntPr` für Windows.
+- In .NET Standard ist das erwartete `object` `Activity` für Android, `UIViewController` für iOS, `NSWindow` für Mac und `IWin32Window` oder `IntPr` für Windows.
 - Unter Windows müssen Sie `AcquireTokenInteractive` aus dem UI-Thread aufrufen, sodass der eingebettete Browser den entsprechenden UI-Synchronisierungskontext abruft. Erfolgt kein Aufruf aus dem UI-Thread, werden Meldungen möglicherweise nicht fehlerfrei übertragen, oder es treten Deadlock-Szenarien in der Benutzeroberfläche auf. Sie können Microsoft-Authentifizierungsbibliotheken (MSALs) aus dem UI-Thread aufrufen, wenn Sie sich nicht bereits im UI-Thread befinden, indem Sie `Dispatcher` in WPF verwenden.
 - Wenn Sie mit WPF ein Fenster aus einem WPF-Steuerelement abrufen, können Sie die `WindowInteropHelper.Handle`-Klasse verwenden. Dann erfolgt der Aufruf aus einem WPF-Steuerelement (`this`):
 
@@ -213,15 +277,26 @@ Anmerkungen:
 
 Mit `WithPrompt()` wird durch Angabe einer Eingabeaufforderung die Interaktivität mit dem Benutzer gesteuert.
 
-![Abbildung mit den Feldern in der Struktur der Eingabeaufforderung. Diese konstanten Werte steuern die Interaktivität mit dem Benutzer, indem sie den Typ der Eingabeaufforderung definieren, der mit der „WithPrompt ()“-Methode angezeigt wird.](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![Abbildung mit den Feldern in der Struktur der Eingabeaufforderung. Diese konstanten Werte steuern die Interaktivität mit dem Benutzer, indem sie den Typ der Eingabeaufforderung definieren, der mit der „WithPrompt ()“-Methode angezeigt wird.](https://user-images.githubusercontent.com/34331512/112267137-3f1c3a00-8c32-11eb-97fb-33604311329a.png)
 
 Die Klasse definiert die folgenden Konstanten:
 
 - ``SelectAccount``: Hiermit wird STS gezwungen, das Dialogfeld zur Kontoauswahl mit Konten anzuzeigen, für die der Benutzer über eine Sitzung verfügt. Diese Option ist nützlich, wenn Anwendungsentwickler Benutzern die Auswahl unter verschiedenen Identitäten ermöglichen möchten. Diese Option bewirkt, dass MSAL ``prompt=select_account`` an den Identitätsanbieter sendet. Diese Option ist die Standardeinstellung. Damit wird die bestmögliche Benutzererfahrung auf Grundlage der verfügbaren Informationen bereitgestellt (z. B. Konto, Vorhandensein einer Sitzung für den Benutzer). Ändern Sie diese Option nicht ohne triftigen Grund.
 - ``Consent``: Hiermit kann der Anwendungsentwickler erzwingen, dass der Benutzer zur Zustimmung aufgefordert wird, selbst wenn die Zustimmung zuvor erteilt wurde. In diesem Fall sendet MSAL `prompt=consent` an den Identitätsanbieter. Diese Option kann in bestimmten sicherheitsorientierten Anwendungen verwendet werden, wenn die Governance des Unternehmens vorschreibt, dass für den Benutzer bei jeder Verwendung der Anwendung das Zustimmungsdialogfeld angezeigt wird.
 - ``ForceLogin``: Hiermit kann der Anwendungsentwickler angeben, dass der Dienst den Benutzer zur Eingabe von Anmeldeinformationen auffordert, selbst wenn eine solche Benutzerabfrage nicht erforderlich ist. Diese Option kann nützlich sein, um dem Benutzer das erneute Anmelden zu ermöglichen, wenn das Abrufen eines Tokens fehlschlägt. In diesem Fall sendet MSAL `prompt=login` an den Identitätsanbieter. Diese Option wird gelegentlich in sicherheitsorientierten Anwendungen verwendet, wenn die Governance des Unternehmens vorschreibt, dass sich Benutzer beim Zugriff auf bestimmte Teile einer Anwendung stets erneut anmelden müssen.
+- ``Create`` löst eine Anmeldeumgebung aus, die durch Senden von `prompt=create` an den Identitätsanbieter für External Identities verwendet wird. Diese Eingabeaufforderung sollte nicht für Azure AD B2C-Apps gesendet werden. Weitere Informationen finden Sie unter [Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App](../external-identities/self-service-sign-up-user-flow.md).
 - ``Never`` (nur für .NET 4.5 und WinRT) fragt den Benutzer nicht ab, sondern versucht stattdessen, das in der ausgeblendeten eingebetteten Webansicht gespeicherte Cookie zu verwenden. Weitere Informationen finden Sie unter „Webansichten“ in MSAL.NET. Die Verwendung dieser Option schlägt möglicherweise fehl. In diesem Fall löst `AcquireTokenInteractive` eine Ausnahme aus mit der Meldung, dass eine Interaktion auf der Benutzeroberfläche erforderlich ist. Sie müssen einen anderen `Prompt`-Parameter verwenden.
 - ``NoPrompt`` sendet keine Eingabeaufforderung an den Identitätsanbieter. Diese Option empfiehlt sich nur für Azure Active Directory (Azure AD) B2C-Richtlinien für die Profilbearbeitung. Weitere Informationen finden Sie unter [Spezifische Informationen zu Azure AD B2C](https://aka.ms/msal-net-b2c-specificities).
+
+#### <a name="withuseembeddedwebview"></a>WithUseEmbeddedWebView
+
+Mit dieser Methode können Sie angeben, ob Sie die Verwendung einer eingebetteten Webansicht oder der Systemwebansicht (sofern verfügbar) erzwingen möchten. Weitere Informationen finden Sie unter [Verwenden von Webbrowsern](msal-net-web-browsers.md).
+
+ ```csharp
+ var result = await app.AcquireTokenInteractive(scopes)
+                   .WithUseEmbeddedWebView(true)
+                   .ExecuteAsync();
+  ```
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
@@ -355,25 +430,6 @@ private static IAuthenticationResult acquireTokenInteractive() throws Exception 
 }
 ```
 
-# <a name="python"></a>[Python](#tab/python)
-
-MSAL Python stellt keine direkte interaktive Methode zum Abrufen von Token bereit. Stattdessen muss die Anwendung in ihrer Implementierung des Benutzerinteraktionsflows eine Autorisierungsanforderung senden, um einen Autorisierungscode zu erhalten. Dieser Code kann dann zum Abrufen des Tokens an die `acquire_token_by_authorization_code`-Methode übergeben werden.
-
-```Python
-result = None
-
-# Firstly, check the cache to see if this end user has signed in before
-accounts = app.get_accounts(username=config["username"])
-if accounts:
-    result = app.acquire_token_silent(config["scope"], account=accounts[0])
-
-if not result:
-    result = app.acquire_token_by_authorization_code(
-         request.args['code'],
-         scopes=config["scope"])
-
-```
-
 # <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>In MSAL für iOS und macOS
@@ -408,6 +464,70 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
     // Get access token from result
     let accessToken = authResult.accessToken
 })
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Im MSAL Node rufen Sie Token über den Autorisierungscodefluss mit einem Prüfschlüssel für den Codeaustausch (Proof Key for Code Exchange, PKCE) ab. Der Prozess umfasst zwei Schritte: Zuerst erhält die Anwendung eine URL, die verwendet werden kann, um einen Autorisierungscode zu generieren. Diese URL kann in einem Browser Ihrer Wahl geöffnet werden, in dem der Benutzer seine Anmeldeinformationen eingeben kann und mit einem Autorisierungscode an den (während der App-Registrierung registrierten) `redirectUri` zurückgeleitet wird. Zweitens übergibt die Anwendung den empfangenen Autorisierungscode an die `acquireTokenByCode()`-Methode, die ihn gegen ein Zugriffstoken austauscht.
+
+```JavaScript
+const msal = require("@azure/msal-node");
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+
+const {verifier, challenge} = await msal.cryptoProvider.generatePkceCodes();
+
+const authCodeUrlParameters = {
+    scopes: ["User.Read"],
+    redirectUri: "your_redirect_uri",
+    codeChallenge: challenge, // PKCE Code Challenge
+    codeChallengeMethod: "S256" // PKCE Code Challenge Method 
+};
+
+// get url to sign user in and consent to scopes needed for application
+pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+    console.log(response);
+
+    const tokenRequest = {
+        code: response["authorization_code"],
+        codeVerifier: verifier // PKCE Code Verifier 
+        redirectUri: "your_redirect_uri",
+        scopes: ["User.Read"],
+    };
+    
+    // acquire a token by exchanging the code
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+    }).catch((error) => {
+        console.log(error);
+    });
+}).catch((error) => console.log(JSON.stringify(error)));
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+MSAL Python stellt keine direkte interaktive Methode zum Abrufen von Token bereit. Stattdessen muss die Anwendung in ihrer Implementierung des Benutzerinteraktionsflows eine Autorisierungsanforderung senden, um einen Autorisierungscode zu erhalten. Dieser Code kann dann zum Abrufen des Tokens an die `acquire_token_by_authorization_code`-Methode übergeben werden.
+
+```Python
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    result = app.acquire_token_by_authorization_code(
+         request.args['code'],
+         scopes=config["scope"])
+
 ```
 ---
 
@@ -586,13 +706,17 @@ private static IAuthenticationResult acquireTokenIwa() throws Exception {
 }
 ```
 
-# <a name="python"></a>[Python](#tab/python)
-
-Dieser Flow wird in MSAL Python noch nicht unterstützt.
-
 # <a name="macos"></a>[macOS](#tab/macOS)
 
 Dieser Flow gilt nicht für macOS.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Dieser Flow wird in MSAL Node noch nicht unterstützt.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Dieser Flow wird in MSAL Python noch nicht unterstützt.
 
 ---
 
@@ -882,6 +1006,41 @@ private static IAuthenticationResult acquireTokenUsernamePassword() throws Excep
 }
 ```
 
+# <a name="macos"></a>[macOS](#tab/macOS)
+
+Dieser Flow wird in MSAL für macOS nicht unterstützt.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Dies ist ein Auszug aus den [MSAL Node-Entwicklungsbeispielen](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/username-password). Im folgenden Codeausschnitt sind der Benutzername und das Kennwort nur zu Illustrationszwecken hart codiert. Dies sollte in der Produktion vermieden werden. Stattdessen wird eine Basisbenutzeroberfläche empfohlen, die den Benutzer zur Eingabe des Benutzernamens bzw. Kennworts auffordert. 
+
+```JavaScript
+const msal = require("@azure/msal-node");
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+
+// For testing, enter your username and password below.
+// In production, replace this with a UI prompt instead.
+const usernamePasswordRequest = {
+    scopes: ["user.read"],
+    username: "", // Add your username here
+    password: "", // Add your password here
+};
+
+pca.acquireTokenByUsernamePassword(usernamePasswordRequest).then((response) => {
+    console.log("acquired token by password grant");
+}).catch((error) => {
+    console.log(error);
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Dies ist ein Auszug aus den [MSAL Python-Entwicklungsbeispielen](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/).
@@ -911,10 +1070,6 @@ if not result:
     result = app.acquire_token_by_username_password(
         config["username"], config["password"], scopes=config["scope"])
 ```
-
-# <a name="macos"></a>[macOS](#tab/macOS)
-
-Dieser Flow wird in MSAL für macOS nicht unterstützt.
 
 ---
 
@@ -1094,6 +1249,39 @@ private static IAuthenticationResult acquireTokenDeviceCode() throws Exception {
 }
 ```
 
+# <a name="macos"></a>[macOS](#tab/macOS)
+
+Dieser Flow gilt nicht für macOS.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Dies ist ein Auszug aus den [MSAL Node-Entwicklungsbeispielen](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/device-code).
+
+```JavaScript
+const msal = require('@azure/msal-node');
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+
+const deviceCodeRequest = {
+    deviceCodeCallback: (response) => (console.log(response.message)),
+    scopes: ["user.read"],
+    timeout: 20,
+};
+
+pca.acquireTokenByDeviceCode(deviceCodeRequest).then((response) => {
+    console.log(JSON.stringify(response));
+}).catch((error) => {
+    console.log(JSON.stringify(error));
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Dies ist ein Auszug aus den [MSAL Python-Entwicklungsbeispielen](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/).
@@ -1144,10 +1332,6 @@ if not result:
         # or you may even turn off the blocking behavior,
         # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
 ```
-
-# <a name="macos"></a>[macOS](#tab/macOS)
-
-Dieser Flow gilt nicht für macOS.
 
 ---
 

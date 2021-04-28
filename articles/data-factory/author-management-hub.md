@@ -3,15 +3,15 @@ title: Verwaltungshub
 description: Verwalten Sie Ihre Verbindungen, Ihre Konfiguration für die Quellcodeverwaltung und Ihre globalen Erstellungseigenschaften im Azure Data Factory-Verwaltungshub.
 ms.service: data-factory
 ms.topic: conceptual
-author: dcstwh
-ms.author: weetok
+author: minhe-msft
+ms.author: hemin
 ms.date: 02/01/2021
-ms.openlocfilehash: b4b9ecef84f8ffcc82107299ad6603466380d1c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3812e044fa37c07538caae87a4851024ad53b0fd
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371497"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905358"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Verwaltungshub in Azure Data Factory
 

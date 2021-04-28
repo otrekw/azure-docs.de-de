@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a28266210fd8b6f0b731b972f00aa3d413c0d0c
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4bf27ffc888e189f15e1c435309cbeddb1c11fec
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027736"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830338"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Bereitstellen eines Windows Hybrid Runbook Workers
 
@@ -93,16 +94,16 @@ Von dem Runbook werden folgende Parameter verwendet:
 
 | Parameter | Status | BESCHREIBUNG |
 | ------- | ----- | ----------- |
-| `Location` | Obligatorisch. | Der Standort für den Log Analytics-Arbeitsbereich. |
+| `Location` | Obligatorisch. | Der Speicherort für den Log Analytics-Arbeitsbereich. |
 | `ResourceGroupName` | Obligatorisch. | Die Ressourcengruppe für Ihr Automation-Konto. |
 | `AccountName` | Obligatorisch. | Der Name des Automation-Kontos, bei dem der Hybrid Runbook Worker registriert wird. |
 | `CreateLA` | Obligatorisch. | Bei „true“ wird der Wert von `WorkspaceName` verwendet, um einen Log Analytics-Arbeitsbereich zu erstellen. Bei „false“ muss der Wert von `WorkspaceName` auf einen vorhandenen Arbeitsbereich verweisen. |
-| `LAlocation` | Optional | Der Standort, an dem der Log Analytics-Arbeitsbereich erstellt wird oder an dem er bereits vorhanden ist. |
+| `LAlocation` | Optional | Der Speicherort, an dem der Log Analytics-Arbeitsbereich erstellt wird oder an dem er bereits vorhanden ist. |
 | `WorkspaceName` | Optional | Der Name des zu verwendenden Log Analytics-Arbeitsbereichs. |
 | `CreateVM` | Obligatorisch. | Bei „true“ wird der Wert von `VMName` als Name eines neuen virtuellen Computers verwendet. Bei „false“ wird `VMName` verwendet, um einen vorhandenen virtuellen Computer zu suchen und zu registrieren. |
 | `VMName` | Optional | Der Name des virtuellen Computers, der entweder erstellt oder registriert wird (je nach Wert von `CreateVM`). |
 | `VMImage` | Optional | Der Name des zu erstellenden VM-Images. |
-| `VMlocation` | Optional | Der Standort des virtuellen Computers, der erstellt oder registriert wird. Ohne Angabe dieses Standorts wird der Wert von `LAlocation` verwendet. |
+| `VMlocation` | Optional | Der Speicherort des virtuellen Computers, der erstellt oder registriert wird. Ohne Angabe dieses Speicherorts wird der Wert von `LAlocation` verwendet. |
 | `RegisterHW` | Obligatorisch. | Bei „true“ wird der virtuelle Computer als Hybrid Worker registriert. |
 | `WorkerGroupName` | Obligatorisch. | Der Name der Hybrid Worker-Gruppe. |
 

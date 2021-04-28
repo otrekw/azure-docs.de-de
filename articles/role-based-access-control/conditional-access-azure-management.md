@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 2a52635dbaa7a76034f3a535b099320a901e8c07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 547dd3f039f2205d5d83c4b5b5f6105482f94d87
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83758774"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065041"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff
 
@@ -44,6 +44,9 @@ Die von Ihnen erstellte Richtlinie gilt für alle Azure-Verwaltungsendpunkte, ei
 - Administratorportal für Visual Studio-Abonnements
 - Azure DevOps
 - Azure Data Factory-Portal
+- [Azure SQL-Datenbank](https://docs.microsoft.com/azure/azure-sql/database/conditional-access-configure)
+- Verwaltete SQL-Instanz
+- Azure Synapse
 
 Hinweis: Die Richtlinie gilt für Azure PowerShell, von dem die Azure Resource Manager-API aufgerufen wird. Sie gilt nicht für [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), von dem Microsoft Graph aufgerufen wird.
 

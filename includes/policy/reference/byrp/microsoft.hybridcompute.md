@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5fd53519f20c48261a12b349167993650cac0a67
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 42b3757d6080de1a91b5337c67fd1613569b4a2e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499654"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877485"
 ---
 |Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -85,4 +85,4 @@ ms.locfileid: "107499654"
 |[Windows-Computer müssen die Anforderungen für „Windows-Komponenten“ erfüllen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8537fe96-8cbe-43de-b0ef-131bc72bc22a) |Windows-Computer müssen die angegebenen Gruppenrichtlinieneinstellungen in der Kategorie „Windows-Komponenten“ für Standardauthentifizierung, unverschlüsselten Datenverkehr, Microsoft-Konten, Telemetrie, Cortana und das Windows-Verhalten in Bezug auf weitere Aspekte aufweisen. Diese Richtlinie erfordert, dass die Voraussetzungen für die Gastkonfiguration im Bereich der Richtlinienzuweisung bereitgestellt wurden. Einzelheiten dazu finden Sie unter [https://aka.ms/gcpol](https://aka.ms/gcpol). |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsComponents_AINE.json) |
 |[Windows-Computer müssen die Anforderungen für „Windows-Firewalleigenschaften“ erfüllen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F35d9882c-993d-44e6-87d2-db66ce21b636) |Windows-Computer müssen die angegebenen Gruppenrichtlinieneinstellungen in der Kategorie „Windows-Firewalleigenschaften“ für Firewallzustand, Verbindungen, Regelverwaltung und Benachrichtigungen aufweisen. Diese Richtlinie erfordert, dass die Voraussetzungen für die Gastkonfiguration im Bereich der Richtlinienzuweisung bereitgestellt wurden. Einzelheiten dazu finden Sie unter [https://aka.ms/gcpol](https://aka.ms/gcpol). |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsFirewallProperties_AINE.json) |
 |[Windows-Computer müssen die Anforderungen für die Azure Security Center-Baseline erfüllen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F72650e9f-97bc-4b2a-ab5f-9781a9fcecbc) |Erfordert, dass die erforderlichen Komponenten im Bereich der Richtlinienzuweisung bereitgestellt werden. Einzelheiten dazu finden Sie unter [https://aka.ms/gcpol](https://aka.ms/gcpol). Computer sind nicht konform, wenn der Computer für eine der Empfehlungen in der Azure Security Center-Baseline nicht ordnungsgemäß konfiguriert ist. |AuditIfNotExists, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AzureWindowsBaseline_AINE.json) |
-|[Windows-Webserver müssen zur Verwendung sicherer Kommunikationsprotokolle konfiguriert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5752e6d6-1206-46d8-8ab1-ecc2f71a8112) |Um den Schutz von Informationen zu gewährleisten, die über das Internet kommuniziert werden, sollten Ihre Webserver die neueste Version des Industriestandard-Verschlüsselungsprotokolls „TLS“ (Transport Layer Security) verwenden. TLS schützt die Kommunikation über ein Netzwerk, indem Sicherheitszertifikate zum Verschlüsseln einer Verbindung zwischen Computern verwendet werden. TLS 1.3 ist schneller und sicherer als die früheren Versionen: TLS 1.0–1.2 und SSL 2–3, die alle als Legacyprotokolle angesehen werden. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SecureWebProtocol_AINE.json) |
+|[Windows-Webserver müssen zur Verwendung sicherer Kommunikationsprotokolle konfiguriert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5752e6d6-1206-46d8-8ab1-ecc2f71a8112) |Um den Schutz von Informationen zu gewährleisten, die über das Internet kommuniziert werden, sollten Ihre Webserver die neueste Version des Industriestandard-Verschlüsselungsprotokolls „TLS“ (Transport Layer Security) verwenden. TLS schützt die Kommunikation über ein Netzwerk, indem Sicherheitszertifikate zum Verschlüsseln einer Verbindung zwischen Computern verwendet werden. |AuditIfNotExists, Disabled |[2.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SecureWebProtocol_AINE.json) |

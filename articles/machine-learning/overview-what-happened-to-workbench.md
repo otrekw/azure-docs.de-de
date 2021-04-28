@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: c800901ae139b16e75613b0cc8de3a9485186896
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c680be897c4c1bf2ccf20df1d34ab6f59f559f2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521372"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816150"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Was ist mit der Azure Machine Learning Workbench geschehen?
 
@@ -35,13 +35,13 @@ In diesem Artikel erfahren Sie, was sich geändert hat und welche Auswirkungen d
 
 Die neueste Version von Azure Machine Learning umfasst folgende Funktionen:
 + Ein [vereinfachtes Azure-Ressourcenmodell](concept-azure-machine-learning-architecture.md).
-+ Eine [neue Portal-Benutzeroberfläche](how-to-track-experiments.md) zum Verwalten Ihrer Experimente und Compute-Ziele.
++ Eine [neue Portal-Benutzeroberfläche](how-to-log-view-metrics.md) zum Verwalten Ihrer Experimente und Compute-Ziele.
 + Ein neues, umfangreicheres Python-<a href="/python/api/overview/azure/ml/intro" target="_blank">SDK</a>.
 + Die neue, erweiterte [Azure CLI-Erweiterung](reference-azure-machine-learning-cli.md) für Machine Learning.
 
 Die [Architektur](concept-azure-machine-learning-architecture.md) wurde im Hinblick auf leichte Bedienbarkeit umgestaltet. Statt mehrerer Azure-Ressourcen und -Konten benötigen Sie nur einen [Azure Machine Learning-Arbeitsbereich](concept-workspace.md). Arbeitsbereiche können schnell im [Azure-Portal](how-to-manage-workspace.md) erstellt werden. Durch die Verwendung eines Arbeitsbereichs können mehrere Benutzer Computeziele für Training und Bereitstellung, Modellexperimente, Docker-Images, bereitgestellte Modelle usw. speichern.
 
-Zwar gibt es in der aktuellen Version neue, verbesserte CLI- und SDK-Clients, die eigentliche Workbench-Desktopanwendung wurde aber eingestellt. Experimente können im [Arbeitsbereichdashboard von Azure Machine Learning Studio](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal) verwaltet werden. Verwenden Sie das Dashboard, um Ihren Experimentverlauf abzurufen, die an Ihren Arbeitsbereich angefügten Computeziele zu verwalten, Ihre Modelle und Docker-Images zu verwalten und sogar Webdienste bereitzustellen.
+Zwar gibt es in der aktuellen Version neue, verbesserte CLI- und SDK-Clients, die eigentliche Workbench-Desktopanwendung wurde aber eingestellt. Experimente können im [Arbeitsbereichdashboard von Azure Machine Learning Studio](how-to-log-view-metrics.md#view-the-experiment-in-the-web-portal) verwaltet werden. Verwenden Sie das Dashboard, um Ihren Experimentverlauf abzurufen, die an Ihren Arbeitsbereich angefügten Computeziele zu verwalten, Ihre Modelle und Docker-Images zu verwalten und sogar Webdienste bereitzustellen.
 
 <a name="timeline"></a>
 

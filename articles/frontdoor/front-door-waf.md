@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: d315fa5b588c6e5f2e4643ca18626e400e6ca01b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f02a8fff9ed3e75f5add287a2d5205988f87949f
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785647"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896781"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Tutorial: Schnelles Skalieren und Schützen einer Webanwendung mithilfe von Azure Front Door und Azure Web Application Firewall (WAF)
 
@@ -48,7 +48,7 @@ In diesem Tutorial lernen Sie Folgendes:
    ```
 
 > [!NOTE] 
-> Weitere Informationen zu den in diesem Tutorial verwendeten Befehlen finden Sie in der [Azure CLI-Referenz für Front Door](/cli/azure/ext/front-door).
+> Weitere Informationen zu den in diesem Tutorial verwendeten Befehlen finden Sie in der [Azure CLI-Referenz für Front Door](/cli/azure/).
 
 ## <a name="create-an-azure-front-door-resource"></a>Erstellen einer Azure Front Door-Ressource
 

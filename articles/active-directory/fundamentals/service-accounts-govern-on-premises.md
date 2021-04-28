@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: caffa68a111b66f3607954b1086ca858162863a4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642378"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072673"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Steuern lokaler Dienstkonten
 
@@ -64,7 +64,7 @@ Verwenden Sie die folgenden Einstellungen für Benutzerkonten, die als Dienstkon
 
 *  **Anmeldearbeitsstationen**: Schränken Sie die Berechtigungen auf die Standorte ein, von denen sich das Dienstkonto anmelden kann. Wenn es lokal auf einem Computer ausgeführt wird und nur auf Ressourcen auf diesem Computer zugreift, unterbinden Sie die Anmeldung von einem anderen Standort.
 
-* [**Keine Kennwortänderung**](/powershell/module/addsadministration/set-aduser): Verhindern Sie, dass das Dienstkonto sein eigenes Kennwort ändert, indem Sie den Parameter auf „False“ festlegen.
+* [**Keine Kennwortänderung**](/powershell/module/activedirectory/set-aduser): Verhindern Sie, dass das Dienstkonto sein eigenes Kennwort ändert, indem Sie den Parameter auf „False“ festlegen.
 
  
 ## <a name="build-a-lifecycle-management-process"></a>Erstellen eines Lebenszyklusverwaltungsprozesses
@@ -151,9 +151,9 @@ Erstellen Sie erst dann ein Dienstkonto, wenn relevante Informationen in ihrer C
 
 * [Kontoablaufdatum](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
 
-   * Definieren Sie für alle Benutzerkonten, die als Dienstkonten verwendet werden, ein realistisches und definitives Enddatum für die Nutzung. Legen Sie diese Einstellung mit dem Flag „Konto läuft ab“ fest. Weitere Einzelheiten finden Sie unter [Set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration). 
+   * Definieren Sie für alle Benutzerkonten, die als Dienstkonten verwendet werden, ein realistisches und definitives Enddatum für die Nutzung. Legen Sie diese Einstellung mit dem Flag „Konto läuft ab“ fest. Weitere Einzelheiten finden Sie unter [Set-ADAccountExpiration](/powershell/module/activedirectory/set-adaccountexpiration). 
 
-* Anmelden bei ([Anmeldearbeitsstation](/powershell/module/addsadministration/set-aduser))
+* Anmelden bei ([Anmeldearbeitsstation](/powershell/module/activedirectory/set-aduser))
 
 * Anforderungen für [Kennwortrichtlinien](../../active-directory-domain-services/password-policy.md)
 
