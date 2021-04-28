@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 1282d1916d669f1026707e15cc8d5437d885087f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93e97f1f04aea2a31b62b2014a88a5aaa998ed2d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668995"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376085"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Anbieter von Azure Monitor für SAP-Lösungen (Vorschau)
 
@@ -25,6 +25,7 @@ Kunden können auch mehrere Anbieter eines bestimmten Anbietertyps konfigurieren
 - SAP HANA
 - Hochverfügbarkeitscluster
 - Microsoft SQL Server
+- SAP NetWeaver
 
 ![Anbieter von Azure Monitor für SAP-Lösungen](./media/azure-monitor-sap/azure-monitor-providers.png)
 
@@ -108,6 +109,27 @@ In der öffentlichen Vorschau können Kunden die folgenden Daten mit dem SQL Ser
 Zur Konfiguration des Microsoft SQL Server-Anbieters sind die SAP-System-ID, die Host-IP-Adresse, die SQL Server-Portnummer sowie der SQL Server-Anmeldename und das Kennwort erforderlich.
 
 ![Anbieter von Azure Monitor für SAP-Lösungen – SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
+
+## <a name="provider-type-sap-netweaver"></a>Anbietertyp „SAP NetWeaver“
+
+Kunden können einen oder mehrere Anbieter des Anbietertyps „SAP NetWeaver“ konfigurieren, um die Datenerfassung aus der SAP NetWeaver-Ebene zu ermöglichen. Der AMS NetWeaver-Anbieter nutzt die vorhandene [SAPControl-Webdienstschnittstelle,](https://www.sap.com/documents/2016/09/0a40e60d-8b7c-0010-82c7-eda71af511fa.html) um die entsprechenden Telemetriedaten abzurufen.
+
+Für das aktuelle Release sind unten die standardmäßigen SOAP-Webmethoden aufgeführt, die von AMS aufgerufen werden.
+|Webmethode|    ABAP|   Java|   Metrics|
+|--|--|--|--|
+|GetSystemInstanceList| X|  X|  Instanzverfügbarkeit, Nachrichtenserver, Gateway, ICM, ABAP-Verfügbarkeit|
+|GetProcessList|    X|  X|  Wenn die Instanzliste RED lautet, kann der Prozess abgerufen werden, der diesen Server zu RED veranlasst.|
+|GetQueueStatistic| X|  X|  Warteschlangenstatistik (DIA/BATCH/UPD)|
+|ABAPGetWPTable|    X|   -| Arbeitsprozessauslastung|
+|EnqGetStatistic|   X   |X  |Locks|
+
+In der öffentlichen Vorschau können Kunden die folgenden Daten mit dem SAP NetWeaver-Anbieter erwarten: 
+- Verfügbarkeit von Systemen und Instanzen
+- Arbeitsprozessauslastung
+- Warteschlangenauslastung
+- Statistik zu in die Warteschlange eingereihten Sperren
+
+![image](https://user-images.githubusercontent.com/75772258/114581825-a9f2eb00-9c9d-11eb-8e6f-79cee7c5093f.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

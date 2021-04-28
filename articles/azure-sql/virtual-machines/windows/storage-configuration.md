@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 982bd9239c5e95c9b7af09b5f54c5a09067ca7c6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cf41d6f9219397e439e8d89ea011c454662e6903
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565418"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126487"
 ---
 # <a name="configure-storage-for-sql-server-vms"></a>Konfigurieren von Speicher für SQL Server-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,7 +48,7 @@ Wenn Sie eine Azure-VM mithilfe eines SQL Server-Katalogimages bereitstellen, w�
 
 Wählen Sie unter **Speicheroptimierung** den Typ der Workload aus, für den Sie SQL Server bereitstellen. Mit der Optimierungsoption **Allgemein** verfügen Sie standardmäßig über einen Datenträger mit maximal 5.000 IOPS, und Sie verwenden dasselbe Laufwerk für Ihre Daten, das Transaktionsprotokoll und den TempDB-Speicher. 
 
-Wenn Sie entweder **Transaktionale Verarbeitung** (OLTP) oder **Data Warehousing** auswählen, wird ein separater Datenträger für Daten, ein separater Datenträger für das Transaktionsprotokoll und eine lokale SSD für TempDB erstellt. Es gibt keine Speicherunterschiede zwischen **Transaktionale Verarbeitung** und **Datenlagerung**, aber die jeweilige Option ändert Ihre [Stripesetkonfiguration und Ablaufverfolgungsflags](#workload-optimization-settings). Wenn Sie Storage Premium auswählen, wird die Zwischenspeicherung auf *Schreibgeschützt* für das Datenlaufwerk und *Keine* für das Protokolllaufwerk festgelegt, wie unter [Bewährte Methoden für die SQL Server-VM-Leistung](performance-guidelines-best-practices.md) beschrieben. 
+Wenn Sie entweder **Transaktionale Verarbeitung** (OLTP) oder **Data Warehousing** auswählen, wird ein separater Datenträger für Daten, ein separater Datenträger für das Transaktionsprotokoll und eine lokale SSD für TempDB erstellt. Es gibt keine Speicherunterschiede zwischen **Transaktionale Verarbeitung** und **Datenlagerung**, aber die jeweilige Option ändert Ihre [Stripesetkonfiguration und Ablaufverfolgungsflags](#workload-optimization-settings). Wenn Sie Storage Premium auswählen, wird die Zwischenspeicherung auf *Schreibgeschützt* für das Datenlaufwerk und *Keine* für das Protokolllaufwerk festgelegt, wie unter [Bewährte Methoden für die SQL Server-VM-Leistung](./performance-guidelines-best-practices-checklist.md) beschrieben. 
 
 ![SQL Server-VM-Speicherkonfiguration während der Bereitstellung](./media/storage-configuration/sql-vm-storage-configuration.png)
 
@@ -197,7 +197,7 @@ Gehen Sie folgendermaßen vor, um die Schreibbeschleunigung über das Azure-Port
 Für einen höheren Durchsatz können Sie zusätzliche Datenträger für Daten hinzufügen und Datenträgerstriping verwenden. Um die Anzahl der Datenträger für Daten zu bestimmen, analysieren Sie den Durchsatz und die Bandbreite, die für Ihre SQL Server-Datendateien erforderlich sind, einschließlich Protokoll und tempdb. Die Grenzwerte für Durchsatz und Bandbreite variieren je nach VM-Größe. Weitere Informationen finden Sie unter [VM-Größe](../../../virtual-machines/sizes.md).
 
 
-* Verwenden Sie [Speicherplätze](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11)) für Windows 8 und Windows Server 2012 oder höher mit den folgenden Richtlinien:
+* Verwenden Sie [Speicherplätze](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11)) für Windows 8 und Windows Server 2012 oder höher mit den folgenden Richtlinien:
 
   1. Legen Sie die Überlappung (Stripesetgröße) auf 64 KB (65.536 Byte) fest, um Leistungseinbußen durch falsche Partitionsausrichtung zu vermeiden. Dies muss mit PowerShell festgelegt werden.
 
@@ -216,9 +216,9 @@ Mit PowerShell erstellen Sie z. B. wie folgt einen neuen Speicherpool mit einer
       -AllocationUnitSize 65536 -Confirm:$false 
   ```
 
-  * Für Windows 2008 R2 oder früher können Sie dynamische Datenträger (Betriebssystem-Stripesetvolumes) verwenden, und die Stripesetgröße ist immer 64 KB. Diese Option ist seit Windows 8/Windows Server 2012 veraltet. Informationen hierzu finden Sie in der Supporterklärung unter [Virtual Disk Service is transitioning to Windows Storage Management API](https://docs.microsoft.com/windows/win32/w8cookbook/vds-is-transitioning-to-wmiv2-based-windows-storage-management-api)(Übergang des Diensts für virtuelle Datenträger in die Windows-Speicherverwaltungs-API, in englischer Sprache).
+  * Für Windows 2008 R2 oder früher können Sie dynamische Datenträger (Betriebssystem-Stripesetvolumes) verwenden, und die Stripesetgröße ist immer 64 KB. Diese Option ist seit Windows 8/Windows Server 2012 veraltet. Informationen hierzu finden Sie in der Supporterklärung unter [Virtual Disk Service is transitioning to Windows Storage Management API](/windows/win32/w8cookbook/vds-is-transitioning-to-wmiv2-based-windows-storage-management-api)(Übergang des Diensts für virtuelle Datenträger in die Windows-Speicherverwaltungs-API, in englischer Sprache).
  
-  * Bei Verwendung von [Direkte Speicherplätze](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) (Storage Spaces Direct, S2D) mit [SQL Server-Failoverclusterinstanzen](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure) müssen Sie einen einzelnen Pool konfigurieren. Auch wenn für einen einzelnen Pool unterschiedliche Volumes erstellt werden können, weisen diese alle die gleichen Merkmale (z.B. die gleiche Cacherichtlinie) auf.
+  * Bei Verwendung von [Direkte Speicherplätze](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) (Storage Spaces Direct, S2D) mit [SQL Server-Failoverclusterinstanzen](./failover-cluster-instance-storage-spaces-direct-manually-configure.md) müssen Sie einen einzelnen Pool konfigurieren. Auch wenn für einen einzelnen Pool unterschiedliche Volumes erstellt werden können, weisen diese alle die gleichen Merkmale (z.B. die gleiche Cacherichtlinie) auf.
  
   * Bestimmen Sie auf Basis der erwarteten Auslastung die Anzahl der jedem Speicherpool zugeordneten Datenträger. Bedenken Sie, dass verschiedene VM-Größen unterschiedlich viele angefügte Datenträger für Daten unterstützen. Weitere Informationen finden Sie unter [Größen für virtuelle Computer](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json).
 

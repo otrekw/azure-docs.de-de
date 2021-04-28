@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5eacf9c53715bf42c466aaf6a58938bd681630b9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 631b01dadacf81d66c3f42dc1401d2cf492316b8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280648"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869237"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v11 für .NET
 
@@ -401,5 +401,5 @@ Informationen zum Erstellen einer Web-App, die ein Bild in Blob Storage hochläd
 > [!div class="nextstepaction"]
 > [Tutorial: Hochladen von Bilddaten in die Cloud mit Azure Storage](storage-upload-process-images.md)
 
-* Weitere Informationen zu .NET Core finden Sie unter [Get started with .NET in 10 minutes](https://www.microsoft.com/net/learn/get-started/) (Einstieg in .NET in 10 Minuten).
+* Weitere Informationen zu .NET Core finden Sie unter [Get started with .NET in 10 minutes](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro) (Einstieg in .NET in 10 Minuten).
 * Eine Beispielanwendung, die Sie über Visual Studio für Windows bereitstellen können, finden Sie unter [.NET Photo Gallery Web Application Sample with Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/) (Beispiel für .NET-Fotogalerie-Anwendung mit Azure Blob Storage).

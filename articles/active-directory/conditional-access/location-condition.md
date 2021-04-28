@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07af586bac71ee9b33ef314756454cb3c52ec912
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97615710"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305921"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Verwenden der Standortbedingung in einer Richtlinie für bedingten Zugriff 
 
@@ -32,39 +32,37 @@ Organisationen können diesen Netzwerkstandort für gängige Aufgaben wie die fo
 
 Der Netzwerkstandort wird über die öffentliche IP-Adresse bestimmt, die ein Client in Azure Active Directory angibt. Richtlinien für bedingten Zugriff werden standardmäßig auf alle IPv4- und IPv6-Adressen angewendet. 
 
-> [!TIP]
-> IPv6-Adressbereiche werden nur in der Schnittstelle **[Benannter Standort (Vorschau)](#preview-features)** unterstützt. 
-
 ## <a name="named-locations"></a>Benannte Orte
 
-Standorte werden im Azure-Portal unter **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** > **Benannte Standorte** angegeben. Diese benannten Netzwerkstandorte können Standorte wie z. B. die Netzwerkbereiche des Hauptsitzes einer Organisation, VPN-Netzwerkbereiche oder Bereiche umfassen, die Sie blockieren möchten. 
+Standorte werden im Azure-Portal unter **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** > **Benannte Standorte** angegeben. Diese benannten Netzwerkstandorte können Standorte wie z. B. die Netzwerkbereiche des Hauptsitzes einer Organisation, VPN-Netzwerkbereiche oder Bereiche umfassen, die Sie blockieren möchten. Benannte Standorte können durch IPv4/IPv6-Adressbereiche oder durch Länder/Regionen definiert werden. 
 
 ![Benannte Standorte im Azure-Portal](./media/location-condition/new-named-location.png)
 
-Um einen Standort zu konfigurieren, müssen Sie mindestens einen **Namen** und den IP-Adressbereich angeben. 
+### <a name="ip-address-ranges"></a>IP-Adressbereiche
 
-Die Anzahl von benannten Orten, die Sie konfigurieren können, wird durch die Größe des zugehörigen Objekts in Azure AD eingeschränkt. Sie können Standorte basierend auf den folgenden Einschränkungen konfigurieren:
+Geben Sie einen **Namen** und einen IP-Adressbereich an, um einen benannten Speicherort durch IPv4-/IPv6-Adressbereiche zu definieren. 
 
-- Einen benannten Standort mit bis zu 1.200 IPv4-Bereichen.
-- Maximal 90 benannte Standorte, denen jeweils ein IP-Bereich zugewiesen ist.
-
-> [!TIP]
-> IPv6-Adressbereiche werden nur in der Schnittstelle **[Benannter Standort (Vorschau)](#preview-features)** unterstützt. 
+Benannte Speicherorte, die durch IPv4/IPv6-Adressbereiche definiert werden, unterliegen den folgenden Einschränkungen: 
+- Konfigurieren von bis zu 195 benannten Standorten
+- Konfigurieren von bis zu 2.000 IP-Adressbereichen pro benanntem Standort
+- IPv4- und IPv6-Adressbereiche werden unterstützt.
+- Private IP-Adressbereiche können nicht konfiguriert werden.
+- Die Anzahl von IP-Adressen innerhalb eines Bereichs ist begrenzt. Beim Konfigurieren eines IP-Adressbereichs sind nur CIDR-Masken größer als /8 zulässig. 
 
 ### <a name="trusted-locations"></a>Vertrauenswürdige Standorte
 
-Beim Erstellen eines Netzwerkstandorts hat ein Administrator die Option, den Standort als vertrauenswürdig zu markieren. 
+Administratoren können benannte Standorte, die durch IP-Adressbereiche definiert sind, als vertrauenswürdige benannte Standorte festlegen. 
 
 ![Vertrauenswürdige Standorte im Azure-Portal](./media/location-condition/new-trusted-location.png)
 
-Diese Option kann in Richtlinien für bedingten Zugriff einfließen, wenn Sie z. B. eine Registrierung für die mehrstufige Authentifizierung von einem vertrauenswürdigen Netzwerkstandort als erforderlich festlegen. Sie wird auch bei der Risikoberechnung von Azure AD Identity Protection berücksichtigt und senkt das Anmelderisiko eines Benutzers, wenn die Anforderung von einem als vertrauenswürdig gekennzeichneten Standort aus erfolgt.
+Die Anmeldung von vertrauenswürdigen benannten Standorten verbessert die Genauigkeit der Risikoberechnung von Azure AD Identity Protection. Außerdem wird das Anmelderisiko von Benutzern verringert, wenn sie sich von einem als vertrauenswürdig gekennzeichneten Standort authentifizieren. Darüber hinaus können vertrauenswürdige benannte Standorte in Richtlinien für bedingten Zugriff verwendet werden. Sie können zum Beispiel festlegen, dass nur für vertrauenswürdige benannte Standorte eine Registrierung mit mehrstufiger Authentifizierung durchgeführt werden muss. 
 
 ### <a name="countries-and-regions"></a>Länder und Regionen
 
-Einige Organisationen können sich dafür entscheiden, IP-Grenzen für ganze Länder oder Regionen als benannte Standorte für Richtlinien für bedingten Zugriff zu definieren. Sie können mithilfe dieser Standorte unnötigen Datenverkehr blockieren, wenn sie wissen, dass gültige Benutzer niemals aus einem Standort wie etwa Nordkorea stammen. Diese Zuordnungen von IP-Adressen zu einem Land werden in regelmäßigen Abständen aktualisiert. 
+Einige Organisationen können mit bedingtem Zugriff den Zugriff auf bestimmte Länder oder Regionen einschränken. Zusätzlich zum Definieren benannter Standorte durch IP-Adressbereiche können Administratoren benannte Standorte durch Länder oder Regionen definieren. Wenn sich Benutzer anmelden, löst Azure AD ihre IPv4-Adresse in ein Land oder eine Region auf, und die Zuordnung wird regelmäßig aktualisiert. Organisationen können durch Länder definierte benannte Standorte verwenden, um Datenverkehr aus Ländern zu blockieren, in denen sie nicht tätig sind, zum Beispiel Nordkorea. 
 
 > [!NOTE]
-> IPv6-Adressbereiche können Ländern nicht zugeordnet werden. Nur IPv4-Adressen werden Ländern zugeordnet.
+> Anmeldungen von IPv6-Adressen können keinen Ländern oder Regionen zugeordnet werden und gelten als unbekannte Bereiche. Nur IPv4-Adressen können Ländern oder Regionen zugeordnet werden.
 
 ![Erstellen eines neuen Standorts basierend auf Land oder Region im Azure-Portal](./media/location-condition/new-named-location-country-region.png)
 
@@ -91,33 +89,6 @@ Für mobile und Desktopanwendungen mit langer Sitzungslebensdauer wird der bedin
 
 Wenn bei beiden Schritten ein Fehler auftritt, wird ein Benutzer nicht mehr als vertrauenswürdige IP angesehen.
 
-## <a name="preview-features"></a>Previewfunktionen
-
-Zusätzlich zum allgemein verfügbaren Feature für benannte Standorte gibt es das Feature „Benannte Standorte (Vorschau)“. Sie können auf „Benannte Standorte (Vorschau)“ zugreifen, indem Sie oben auf dem Blatt des aktuellen benannten Standorts auf das Banner klicken.
-
-![Ausprobieren von „Benannte Standorte (Vorschau)“](./media/location-condition/preview-features.png)
-
-„Benannte Standorte (Vorschau)“ bietet folgende Möglichkeiten:
-
-- Konfigurieren von bis zu 195 benannten Standorten
-- Konfigurieren von bis zu 2.000 IP-Adressbereichen pro benanntem Standort
-- Konfigurieren von IPv6-Adressen zusätzlich zu IPv4-Adressen
-
-Darüber hinaus wurden einige zusätzliche Überprüfungen eingefügt, um fehlerhafte Konfigurationen zu vermeiden.
-
-- Private IP-Adressbereiche können nicht länger konfiguriert werden.
-- Die Anzahl von IP-Adressen, die in einen Bereich eingeschlossen werden können, ist begrenzt. Beim Konfigurieren eines IP-Adressbereichs sind nur CIDR-Masken größer als /8 zulässig.
-
-Mit der Vorschau stehen bei der Erstellung nun zwei Optionen zur Verfügung: 
-
-- **Länder (Standort)**
-- **IP-Adressbereiche (Standort)**
-
-> [!NOTE]
-> IPv6-Adressbereiche können Ländern nicht zugeordnet werden. Nur IPv4-Adressen werden Ländern zugeordnet.
-
-![Schnittstelle „Benannte Standorte (Vorschau)“](./media/location-condition/named-location-preview.png)
-
 ## <a name="location-condition-in-policy"></a>Standortbedingung in Richtlinie
 
 Beim Konfigurieren der Standortbedingung können Sie zwischen diesen Optionen wählen:
@@ -143,7 +114,7 @@ Mit dieser Option können Sie einen oder mehrere benannte Speicherorte auswähle
 
 ## <a name="ipv6-traffic"></a>IPv6-Datenverkehr
 
-Richtlinien für bedingten Zugriff werden standardmäßig auf den gesamten IPv6-Datenverkehr angewendet. Mit der Option [Benannter Standort (Vorschau)](#preview-features) können Sie bestimmte IPv6-Adressbereiche aus einer Richtlinie für bedingten Zugriff ausschließen. Diese Option ist hilfreich, wenn die Richtlinie für bestimmte IPv6-Adressbereiche nicht erzwungen werden soll. Beispiel: Sie möchten eine Richtlinie für Anwendungsfälle in Ihrem Unternehmensnetzwerk nicht erzwingen, und Ihr Unternehmensnetzwerk wird in öffentlichen IPv6-Adressbereichen gehostet.  
+Richtlinien für bedingten Zugriff werden standardmäßig auf den gesamten IPv6-Datenverkehr angewendet. Sie können bestimmte IPv6-Adressbereiche aus einer Richtlinie für bedingten Zugriff ausschließen, wenn Sie bei diesen nicht möchten, dass Richtlinien erzwungen werden. Beispiel: Sie möchten eine Richtlinie für Anwendungsfälle in Ihrem Unternehmensnetzwerk nicht erzwingen, und Ihr Unternehmensnetzwerk wird in öffentlichen IPv6-Adressbereichen gehostet.  
 
 ### <a name="when-will-my-tenant-have-ipv6-traffic"></a>Wann tritt bei meinem Mandanten IPv6-Datenverkehr auf?
 

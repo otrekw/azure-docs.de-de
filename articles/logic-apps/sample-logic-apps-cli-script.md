@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: b81d9b4a637965dd103d8fa89305424686a0c72c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8086ce0e5964d4e37a5ffc3082d5f2856058e4e5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789913"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875483"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI-Skriptbeispiel – Erstellen einer Logik-App
 
-Dieses Skript erstellt eine Beispiel-Logik-App über die [Logic Apps-Erweiterung in der Azure CLI](/cli/azure/ext/logic/logic) (`az logic`). Eine ausführliche Anleitung zum Erstellen und Verwalten von Logik-Apps über die Azure CLI finden Sie im [Logic Apps-Schnellstart für die Azure CLI](quickstart-logic-apps-azure-cli.md).
+Dieses Skript erstellt eine Beispiel-Logik-App über die [Logic Apps-Erweiterung in der Azure CLI](/cli/azure/logic) (`az logic`). Eine ausführliche Anleitung zum Erstellen und Verwalten von Logik-Apps über die Azure CLI finden Sie im [Logic Apps-Schnellstart für die Azure CLI](quickstart-logic-apps-azure-cli.md).
 
 > [!WARNING]
 > Die Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle ist derzeit eine *experimentelle Erweiterung*, für die *kein Kundensupport* bereitgestellt wird. Verwenden Sie diese CLI-Erweiterung mit Bedacht – insbesondere in Produktionsumgebungen.
@@ -198,7 +198,7 @@ In diesem Beispielskript werden die folgenden Befehle verwendet, um eine neue Re
 | Get-Help | Notizen |
 | ------- | ----- |
 | [`az group create`](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der die Ressourcen Ihrer Logik-App gespeichert sind. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Erstellt eine Logik-App auf Grundlage des im Parameter `--definition` definierten Workflows. |
+| [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) | Erstellt eine Logik-App auf Grundlage des im Parameter `--definition` definierten Workflows. |
 | [`az group delete`](/cli/azure/vm/extension) | Löscht eine Ressourcengruppe und alle ihre geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

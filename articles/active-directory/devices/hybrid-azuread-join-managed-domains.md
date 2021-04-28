@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4545e92767a427b8cd89af07ed4d06053685977a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9656be1dd51095a53265bc3d5149aad1aee9fd41
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578004"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139847"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
@@ -60,7 +60,7 @@ Machen Sie sich mit diesen Artikeln vertraut:
 Vergewissern Sie sich, dass Azure AD Connect die Computerobjekte der Geräte für die Azure AD-Hybrideinbindung mit Azure AD synchronisiert. Wenn die Computerobjekte zu bestimmten Organisationseinheiten (OEs) gehören, konfigurieren Sie diese Organisationseinheiten ebenfalls so, dass sie in Azure AD Connect synchronisiert werden. Weitere Informationen zum Synchronisieren von Computerobjekten mit Azure AD Connect finden Sie unter [Filterung basierend auf Organisationseinheiten](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
 
 > [!NOTE]
-> Damit „sync join“ für die Geräteregistrierung erfolgreich ist, schließen Sie im Rahmen der Geräteregistrierungskonfiguration nicht die Standardgeräteattribute aus der Konfiguration der Azure AD Connect-Synchronisierung aus. Weitere Informationen zu Standardgeräteattributen, die mit AAD synchronisiert werden, finden Sie unter [Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
+> Damit „sync join“ für die Geräteregistrierung erfolgreich ist, schließen Sie im Rahmen der Geräteregistrierungskonfiguration nicht die Standardgeräteattribute aus der Konfiguration der Azure AD Connect-Synchronisierung aus. Weitere Informationen zu Standardgeräteattributen, die mit AAD synchronisiert werden, finden Sie unter [Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute](../hybrid/reference-connect-sync-attributes-synchronized.md#windows-10).
 
 Ab Version 1.1.819.0 enthält Azure AD Connect einen Assistenten für die Konfiguration der Azure AD-Hybrideinbindung. Mit dem Assistenten wird der Konfigurationsprozess erheblich vereinfacht. Der Assistent konfiguriert die Dienstverbindungspunkte (SCP) für die Geräteregistrierung.
 

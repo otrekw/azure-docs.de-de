@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2021
 ms.author: jeedes
-ms.openlocfilehash: bed45b413ae1c6ab3b83c1b8ef656891c13a2723
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 2660f9b4262db7a98dc7c1b124439896c4c45d23
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223131"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108148008"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EAB
 
@@ -123,7 +123,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-eab-sso"></a>Einmaliges Anmelden aufseiten von EAB konfigurieren
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **EAB** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von EAB ](mailto:EABTechSupport@eab.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **EAB** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von EAB](mailto:EABTechSupport@eab.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-eab-test-user"></a>EAB-Testbenutzer erstellen
 
@@ -137,7 +137,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die EAB-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „EAB“ klicken, werden Sie zur Anmelde-URL für EAB weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „EAB“ klicken, werden Sie zur Anmelde-URL für EAB weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 03/16/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 79eb7783fd3daf546539dd5b9048f4e9f484374f
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7cc854c850b02674151da7c88d94a2800b6572f5
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279798"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015967"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-net"></a>Senden von Nachrichten an ein Azure Service Bus-Thema und Empfangen von Nachrichten von Abonnements für das Thema (.NET)
 In diesem Tutorial erstellen Sie eine C#-Anwendung für die folgenden Aufgaben:
@@ -188,7 +188,7 @@ Diese Methode führt die folgenden Schritte aus:
     Hier sind die wesentlichen Schritte aus dem Code aufgeführt:
     1. Erstellen eines [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient)-Objekts unter Verwendung der Verbindungszeichenfolge für den Namespace 
     1. Aufrufen der Methode [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) für das `ServiceBusClient`-Objekt, um ein [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender)-Objekt für das angegebene Service Bus-Thema zu erstellen 
-    1. Aufrufen der Hilfsmethode `GetMessages` zum Abrufen einer Warteschlange mit Nachrichten, die an das Service Bus-Thema gesendet werden sollen 
+    1. Aufrufen der Hilfsmethode `CreateMessages` zum Abrufen einer Warteschlange mit Nachrichten, die an das Service Bus-Thema gesendet werden sollen 
     1. Erstellen von [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch) mithilfe von [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync)
     1. Hinzufügen von Nachrichten zum Batch mithilfe von [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage). Beim Hinzufügen der Nachrichten zum Batch werden sie aus der .NET-Warteschlange entfernt. 
     1. Senden des Nachrichtenbatches an das Service Bus-Thema mithilfe der Methode [ServiceBusSender.SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync)

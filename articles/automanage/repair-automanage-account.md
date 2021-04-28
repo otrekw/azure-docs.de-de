@@ -8,12 +8,13 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e6bf5404a33e0b4e57c2ff8d82d8791eda3d0f06
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183701"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834190"
 ---
 # <a name="repair-an-automanage-account"></a>Reparieren eines Automanage-Kontos
 Ihr [Azure Automanage-Konto](./automanage-virtual-machines.md#automanage-account) ist der Sicherheitskontext bzw. die Identität, unter dem bzw. unter der die automatisierten Vorgänge ausgeführt werden. Wenn Sie vor kurzem ein Abonnement mit einem Automanage-Konto in einen neuen Mandanten verschoben haben, müssen Sie das Konto neu konfigurieren. Hierzu müssen Sie den Identitätstyp zurücksetzen und die entsprechenden Rollen für das Konto zuweisen.

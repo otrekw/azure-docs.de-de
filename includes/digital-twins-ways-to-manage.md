@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 11/11/2020
 ms.author: baanders
-ms.openlocfilehash: 02f6c59a76a3fdb7bd4360570b29d7b40a1aff8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f66101fc1231be2e5ce36dc348b1ca850113867
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102473658"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303757"
 ---
 In diesem Artikel wird erläutert, wie Sie unterschiedliche Verwaltungsvorgänge mithilfe des [Azure Digital Twins .NET (C#) **SDK**](/dotnet/api/overview/azure/digitaltwins/management) durchführen. Sie können dieselben Verwaltungsaufrufe auch mit den anderen Sprach-SDKs erstellen, wie im folgenden Artikel beschrieben: [*Vorgehensweise: Verwenden der Azure Digital Twins-APIs und SDKs*](../articles/digital-twins/how-to-use-apis-sdks.md).
 

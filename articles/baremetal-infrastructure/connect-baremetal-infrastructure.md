@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie im Azure-Portal oder mithilfe der Azure-
 ms.topic: how-to
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: a7fdc17aa4271915f7dc02aaa2d7a688016bf892
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 8f28579a83c45692e5d1eade2e4632ff8c1c8e42
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579188"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139613"
 ---
 # <a name="connect-baremetal-infrastructure-instances-in-azure"></a>Herstellen von Verbindungen mit BareMetal-Infrastrukturinstanzen in Azure
 
@@ -83,7 +83,7 @@ Während der Bereitstellung Ihrer BareMetal-Instanzen wird in dem von Ihnen in d
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Um alle Ihre BareMetal-Instanzen anzuzeigen, führen Sie den Befehl [az baremetalinstance list](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) für Ihre Ressourcengruppe aus:
+Um alle Ihre BareMetal-Instanzen anzuzeigen, führen Sie den Befehl [az baremetalinstance list](/cli/azure/baremetalinstance#az_baremetalinstance_list) für Ihre Ressourcengruppe aus:
 
 ```azurecli
 az baremetalinstance list --resource-group DSM05A-T550 –output table
@@ -123,11 +123,11 @@ Mögliche Hardwarerevisionen:
 Auf der rechten Seite finden Sie zudem den Namen der [Azure-Näherungsplatzierungsgruppe](../virtual-machines/co-location.md), die für jede bereitgestellte BareMetal-Instanz automatisch erstellt wird. Referenzieren Sie die Näherungsplatzierungsgruppe bei der Bereitstellung der Azure-VMs, die die Anwendungsschicht hosten. Durch die Verwendung der Näherungsplatzierungsgruppe, die der BareMetal-Instanz zugeordnet ist, stellen Sie sicher, dass die Azure-VMs in unmittelbarer Nähe der BareMetal-Instanz bereitgestellt werden.
  
 >[!TIP]
->Informationen darüber, wie Sie die Anwendungsschicht im gleichen Azure-Rechenzentrum wie Revision 4.x unterbringen, finden Sie unter [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz](/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios).
+>Informationen darüber, wie Sie die Anwendungsschicht im gleichen Azure-Rechenzentrum wie Revision 4.x unterbringen, finden Sie unter [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz](../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md).
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Führen Sie zum Anzeigen der Details einer BareMetal-Instanz den Befehl [az baremetalinstance show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) aus:
+Führen Sie zum Anzeigen der Details einer BareMetal-Instanz den Befehl [az baremetalinstance show](/cli/azure/baremetalinstance#az_baremetalinstance_show) aus:
 
 ```azurecli
 az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
@@ -159,7 +159,7 @@ Das Löschen von Tags funktioniert auch auf die gleiche Weise wie bei VMs. Das A
 
 Das Zuweisen von Tags zu BareMetal-Instanzen funktioniert auf die gleiche Weise wie bei virtuellen Computern. Wie bei VMs befinden sich die Tags in den Azure-Metadaten. Und für die Tags für BareMetal-Instanzen gelten dieselben Einschränkungen wie für Tags für VMs.
 
-Führen Sie zum Hinzufügen von Tags zu einer BareMetal-Instanz den Befehl [az baremetalinstance update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) aus:
+Führen Sie zum Hinzufügen von Tags zu einer BareMetal-Instanz den Befehl [az baremetalinstance update](/cli/azure/baremetalinstance#az_baremetalinstance_update) aus:
 
 ```azurecli
 az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
@@ -197,7 +197,7 @@ Wenn Sie eine BareMetal-Instanz neu starten, kommt es zu einer Verzögerung. Wä
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie zum Neustarten einer BareMetal-Instanz den Befehl [az baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart):
+Verwenden Sie zum Neustarten einer BareMetal-Instanz den Befehl [az baremetalinstance restart](/cli/azure/baremetalinstance#az_baremetalinstance_restart):
 
 ```azurecli
 az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01

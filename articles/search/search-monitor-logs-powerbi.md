@@ -1,25 +1,25 @@
 ---
-title: Visualisieren von Azure Cognitive Search-Protokollen und -Metriken mit Power BI
+title: Visualisieren von Protokollen und Metriken mit Power BI
 description: Visualisieren von Azure Cognitive Search-Protokollen und -Metriken mit Power BI
-manager: eladz
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 4056e892855c06ce6c412ec4a592ebcd97fc11a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: fbbeb861e50abfd393b416ddc46ff147fffb7b8e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96325382"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581623"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Visualisieren von Azure Cognitive Search-Protokollen und -Metriken mit Power BI
-Mit [Azure Cognitive Search](./search-what-is-azure-search.md) können Sie Vorgangsprotokolle und Dienstmetriken zu Ihrem Suchdienst in einem Azure Storage-Konto speichern. Diese Seite enthält Anweisungen dazu, wie Sie diese Informationen über eine Power BI-Vorlagen-App visualisieren können. Die App bietet detaillierte Einblicke in ihren Suchdienst, einschließlich Informationen zu Suchen, Indizierung, Vorgängen und Dienstmetriken.
+
+[Azure Cognitive Search](./search-what-is-azure-search.md) kann Vorgangsprotokolle und Dienstmetriken an ein Azure Storage-Konto senden, die Sie dann in Power BI visualisieren können. In diesem Artikel werden die Schritte und die Verwendung einer Power BI-Vorlagen-App zum Visualisieren der Daten erläutert. Die Vorlage kann Ihnen helfen, detaillierte Einblicke in Ihren Suchdienst zu gewinnen, einschließlich Informationen über Abfragen, Indizierung, Vorgänge und Dienstmetriken.
 
 Sie finden die Power BI-Vorlagen-App **Azure Cognitive Search: Analyze Logs and Metrics** im [Power BI-Apps-Marketplace](https://appsource.microsoft.com/marketplace/apps).
 
-## <a name="how-to-get-started-with-the-app"></a>Erste Schritte mit der App
+## <a name="set-up-the-app"></a>Einrichten der App
 
 1. Aktivieren Sie Metriken und Ressourcenprotokollierung für Ihren Suchdienst:
 
@@ -67,7 +67,8 @@ Sie finden die Power BI-Vorlagen-App **Azure Cognitive Search: Analyze Logs and 
 
     :::image type="content" source="media/search-monitor-logs-powerbi/powerbi-search.png" alt-text="Screenshot des Azure Cognitive Search Power BI-Berichts.":::
 
-## <a name="how-to-change-the-app-parameters"></a>So ändern Sie die App-Parameter
+## <a name="modify-app-parameters"></a>Ändern von App-Parametern
+
 Wenn Sie Daten aus einem anderen Speicherkonto visualisieren oder die Anzahl der Tage, deren Daten abgefragt werden sollen, ändern möchten, führen Sie die folgenden Schritte aus, um die Parameter **Tage** und **StorageAccount** zu ändern.
 
 1. Navigieren Sie zu ihren Power BI-Apps, suchen Sie Ihre Azure Cognitive Search-App, und wählen Sie die Schaltfläche **App bearbeiten** aus, um den Arbeitsbereich anzuzeigen.
@@ -86,7 +87,8 @@ Wenn Sie Daten aus einem anderen Speicherkonto visualisieren oder die Anzahl der
 
 1. Öffnen Sie den Bericht, um die aktualisierten Daten anzuzeigen. Möglicherweise müssen Sie den Bericht auch aktualisieren, um die neuesten Daten anzuzeigen.
 
-## <a name="troubleshooting"></a>Problembehandlung
+## <a name="troubleshooting-report-issues"></a>Problembehandlung bei Berichtsproblemen
+
 Wenn Sie feststellen, dass Ihre Daten nicht angezeigt werden, befolgen Sie diese Schritte zur Problembehandlung:
 
 1. Öffnen Sie den Bericht, und aktualisieren Sie die Seite, um sicherzustellen, dass Sie die neuesten Daten anzeigen. Der Bericht enthält eine Option zum Aktualisieren der Daten. Wählen Sie diese Option aus, um die neuesten Daten zu erhalten.
@@ -98,8 +100,7 @@ Wenn Sie feststellen, dass Ihre Daten nicht angezeigt werden, befolgen Sie diese
 1. Überprüfen Sie, ob das Dataset weiterhin aktualisiert wird. Der Aktualisierungsstatusindikator wird oben in Schritt 8 angezeigt. Wenn die Aktualisierung noch immer ausgeführt wird, warten Sie, bis die Aktualisierung beendet ist, um den Bericht zu öffnen und zu aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Weitere Informationen zu Azure Cognitive Search](./index.yml)
 
-[Was ist Power BI?](/power-bi/fundamentals/power-bi-overview)
-
-[Grundlegende Konzepte für Designer im Power BI-Dienst](/power-bi/service-basic-concepts)
++ [Überwachen von Suchvorgängen und -aktivitäten](search-monitor-usage.md)
++ [Was ist Power BI?](/power-bi/fundamentals/power-bi-overview)
++ [Grundlegende Konzepte für Designer im Power BI-Dienst](/power-bi/service-basic-concepts)

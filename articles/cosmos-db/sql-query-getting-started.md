@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 04/09/2021
 ms.author: tisande
-ms.openlocfilehash: d5d5bc0a108cd08283ea29ce3bdc2de49310c5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad43d83782a2c7e9eb5cc20128be89a45f0213d1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499559"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312177"
 ---
 # <a name="getting-started-with-sql-queries"></a>Erste Schritte mit SQL-Abfragen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Im verbleibenden Teil dieser Dokumentation erfahren Sie, wie Sie SQL-Abfragen in
 
 ## <a name="upload-sample-data"></a>Hochladen von Beispieldaten
 
-Öffnen Sie in Ihrem Cosmos DB-Konto der SQL-API den [Data Explorer](./data-explorer.md), um einen Container mit dem Namen `Families` zu erstellen. Verwenden Sie nach dem Erstellen den Datenstrukturbrowser, um ihn zu suchen und zu öffnen. In Ihrem `Families`-Container wird die Option `Items` direkt unterhalb des Namens des Containers angezeigt. Öffnen Sie diese Option. Daraufhin wird auf der Menüleiste in der Mitte des Bildschirms eine Schaltfläche angezeigt, mit der Sie ein neues Element erstellen können. Sie verwenden diese Funktion, um die folgenden JSON-Elemente zu erstellen.
+Öffnen Sie in Ihrem Cosmos DB-Konto der SQL-API den [Data Explorer](./data-explorer.md), um einen Container mit dem Namen `Families` zu erstellen. Verwenden Sie nach dem Erstellen des Containers den Datenstrukturbrowser, um ihn zu suchen und zu öffnen. In Ihrem `Families`-Container wird die Option `Items` direkt unterhalb des Namens des Containers angezeigt. Öffnen Sie diese Option. Daraufhin wird auf der Menüleiste in der Mitte des Bildschirms eine Schaltfläche angezeigt, mit der Sie ein neues Element erstellen können. Sie verwenden diese Funktion, um die folgenden JSON-Elemente zu erstellen.
 
 ### <a name="create-json-items"></a>Erstellen von JSON-Elementen
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1b7cfad1db6f6b96712565168dbc9d3e27d6689
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96007357"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952618"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Behandeln von Problemen bei der Replikation während der Notfallwiederherstellung von Azure-VMs
 
@@ -108,7 +108,7 @@ Einige der häufigsten Probleme sind nachfolgend aufgeführt.
 
 ### <a name="app-consistency-not-enabled-on-linux-servers"></a>App-Konsistenz ist auf Linux-Servern nicht aktiviert
 
-**Problembehandlung**: Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinierte Anwendungsskripts für App-Konsistenz. Das benutzerdefinierte Skript mit „Pre“- und „Post“-Optionen wird vom Mobilitäts-Agent von Azure Site Recovery für die App-Konsistenz verwendet. Die Schritte für die Aktivierung finden Sie [hier](./site-recovery-faq.md#replication).
+**Problembehandlung**: Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinierte Anwendungsskripts für App-Konsistenz. Das benutzerdefinierte Skript mit „Pre“- und „Post“-Optionen wird vom Mobilitäts-Agent von Azure Site Recovery für die App-Konsistenz verwendet. Die Schritte für die Aktivierung finden Sie [hier](/azure/site-recovery/site-recovery-faq#replication).
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>Weitere Ursachen aufgrund von VSS-bezogenen Problemen:
 

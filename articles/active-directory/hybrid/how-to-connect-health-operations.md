@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37e41a00c1489d5b7b4822fec8bb4da35e917826
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 836c7bf9aefd4b2cb7d52c66bbd37e7ba38a467c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101686460"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377309"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health-Vorgänge
 In diesem Thema werden die verschiedenen Vorgänge beschrieben, die Sie mit Azure Active Directory (Azure AD) Connect Health durchführen können.
@@ -35,12 +35,13 @@ Sie können Azure AD Connect Health so konfigurieren, dass E-Mail-Benachrichtigu
 >
 
 ### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>So aktivieren Sie Azure AD Connect Health-E-Mail-Benachrichtigungen
-1. Öffnen Sie das Blatt **Warnungen** für den Dienst, für den Sie E-Mail-Benachrichtigungen empfangen möchten.
-2. Klicken Sie in der Aktionsleiste auf **Benachrichtigungseinstellungen**.
-3. Legen Sie die Einstellung für E-Mail-Benachrichtigungen auf **EIN** fest.
-4. Aktivieren Sie das Kontrollkästchen, wenn alle globalen Administratoren E-Mail-Benachrichtigungen erhalten sollen.
-5. Wenn E-Mail-Benachrichtigungen an andere E-Mail-Adressen gesendet werden sollen, können Sie diese im Feld **Weitere E-Mail-Empfänger** angeben. Um eine E-Mail-Adresse aus dieser Liste zu entfernen, klicken Sie mit der rechten Maustaste auf den Eintrag und wählen **Löschen**.
-6. Klicken Sie zum Abschließen der Änderungen auf **Speichern**. Die Änderungen werden erst nach dem Speichern wirksam.
+1. Suchen Sie im Azure-Portal nach Azure AD Connect Health
+2. Wählen Sie **Synchronisierungsfehler** aus.
+3. Wählen Sie **Benachrichtigungseinstellungen** aus.
+5. Legen Sie die Einstellung für E-Mail-Benachrichtigungen auf **EIN** fest.
+6. Aktivieren Sie das Kontrollkästchen, wenn alle globalen Administratoren E-Mail-Benachrichtigungen erhalten sollen.
+7. Wenn E-Mail-Benachrichtigungen an andere E-Mail-Adressen gesendet werden sollen, können Sie diese im Feld **Weitere E-Mail-Empfänger** angeben. Um eine E-Mail-Adresse aus dieser Liste zu entfernen, klicken Sie mit der rechten Maustaste auf den Eintrag und wählen **Löschen**.
+8. Klicken Sie zum Abschließen der Änderungen auf **Speichern**. Die Änderungen werden erst nach dem Speichern wirksam.
 
 >[!NOTE] 
 > Wenn beim Verarbeiten von Synchronisierungsanforderungen in unserem Back-End-Dienst Probleme auftreten, sendet dieser Dienst eine Benachrichtigungs-E-Mail mit den Details des Fehlers an die E-Mail-Adresse(n) des Administratorkontakts Ihres Mandanten. Wir haben Feedback von Kunden erhalten, dass die Menge dieser Nachrichten in bestimmten Fällen unangemessen groß ist, sodass wir die Art und Weise ändern, wie diese Nachrichten gesendet werden. 

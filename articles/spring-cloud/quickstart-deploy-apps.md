@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 727354593488cd5af77408eaa7c8d9e747a0b071
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 99a2544a755f04bad0fcf36ead865a4311705566
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877591"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132843"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Schnellstart: Erstellen und Bereitstellen von Apps in Azure Spring Cloud
 
@@ -24,8 +24,8 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie Microserviceanwendungen mi
 
 * Absolvieren Sie die vorherigen Schnellstarts in dieser Serie:
 
-  * [Bereitstellen des Azure Spring Cloud-Diensts](spring-cloud-quickstart-provision-service-instance.md)
-  * [Einrichten des Azure Spring Cloud-Konfigurationsservers](spring-cloud-quickstart-setup-config-server.md)
+  * [Bereitstellen des Azure Spring Cloud-Diensts](./quickstart-provision-service-instance.md)
+  * [Einrichten des Azure Spring Cloud-Konfigurationsservers](./quickstart-setup-config-server.md)
 
 ## <a name="download-the-sample-app"></a>Herunterladen der Beispiel-App
 
@@ -183,7 +183,7 @@ In diesem Dokument wird erläutert, wie Sie Microserviceanwendungen mithilfe der
 * Maven-Plug-In
 * IntelliJ
 
-Führen Sie vor der Bereitstellung mithilfe der Azure CLI oder von Maven die Beispiele aus, die [eine Instanz von Azure Spring Cloud bereitstellen](spring-cloud-quickstart-provision-service-instance.md) und [den Konfigurationsserver einrichten](spring-cloud-quickstart-setup-config-server.md).
+Führen Sie vor der Bereitstellung mithilfe der Azure CLI oder von Maven die Beispiele aus, die [eine Instanz von Azure Spring Cloud bereitstellen](./quickstart-provision-service-instance.md) und [den Konfigurationsserver einrichten](./quickstart-setup-config-server.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -313,7 +313,7 @@ Für die Bereitstellung in Azure müssen Sie sich mit Ihrem Azure-Konto beim Azu
 1. Fügen Sie im Feld **Name** die Zeichenfolge *:gateway* an den vorhandenen **Namen** an.
 1. Wählen Sie im Textfeld **Artefakt** die Option *com.piggymetrics:gateway:1.0-SNAPSHOT* aus.
 1. Überprüfen Sie im Textfeld **Abonnement** Ihr Abonnement.
-1. Wählen Sie im Textfeld **Spring Cloud** die Instanz von Azure Spring Cloud aus, die Sie unter [Schnellstart: Bereitstellen des Azure Spring Cloud-Diensts](./spring-cloud-quickstart-provision-service-instance.md) erstellt haben.
+1. Wählen Sie im Textfeld **Spring Cloud** die Instanz von Azure Spring Cloud aus, die Sie unter [Schnellstart: Bereitstellen des Azure Spring Cloud-Diensts](./quickstart-provision-service-instance.md) erstellt haben.
 1. Legen Sie **Öffentlicher Endpunkt** auf *Aktivieren* fest.
 1. Wählen Sie im Textfeld **App:** die Option **App erstellen...** aus.
 1. Geben Sie *gateway* ein, und klicken Sie dann auf **OK**.
@@ -355,7 +355,7 @@ Sie können auch im Azure-Portal navigieren, um die URL zu suchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie Azure-Ressourcen erstellt, für die weiterhin Gebühren anfallen, falls sie in Ihrem Abonnement verbleiben. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten, lesen Sie die Informationen unter [Bereinigen von Ressourcen](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources). Fahren Sie andernfalls mit der nächsten Schnellstartanleitung fort:
+In dieser Schnellstartanleitung haben Sie Azure-Ressourcen erstellt, für die weiterhin Gebühren anfallen, falls sie in Ihrem Abonnement verbleiben. Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren möchten, lesen Sie die Informationen unter [Bereinigen von Ressourcen](./quickstart-logs-metrics-tracing.md#clean-up-resources). Fahren Sie andernfalls mit der nächsten Schnellstartanleitung fort:
 
 > [!div class="nextstepaction"]
-> [Protokolle, Metriken und Ablaufverfolgung](spring-cloud-quickstart-logs-metrics-tracing.md)
+> [Protokolle, Metriken und Ablaufverfolgung](./quickstart-logs-metrics-tracing.md)

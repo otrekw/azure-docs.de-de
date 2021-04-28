@@ -1,16 +1,16 @@
 ---
-ms.openlocfilehash: 42d079a2aa98549b12aafecdd8d58f3361db8b4d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6a9628f3bd77e2e7001a5c8cf371259c18fa373c
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307480"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107984310"
 ---
 ## <a name="setting-up"></a>Einrichten
 
-## <a name="create-a-new-python-application"></a>Erstellen einer neuen Python-Anwendung
+### <a name="create-a-new-python-application"></a>Erstellen einer neuen Python-Anwendung
 
-Öffnen Sie Ihr Terminal- oder Befehlsfenster, erstellen Sie ein neues Verzeichnis für Ihre App, und navigieren Sie zu diesem Verzeichnis.
+Öffnen Sie Ihr Terminal- bzw. Befehlsfenster, erstellen Sie ein neues Verzeichnis für Ihre App, und greifen Sie auf das Verzeichnis zu.
 
 ```console
 mkdir managed-identity-quickstart && cd managed-identity-quickstart
@@ -45,7 +45,7 @@ Wir verwenden [DefaultAzureCredential](/python/api/azure-identity/azure.identity
      credential = DefaultAzureCredential()
 ```
 
-## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>Erstellen Sie eine Identität, und stellen Sie ein Tokens mit verwalteten Identitäten aus.
+## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>Erstellen einer Identität und Ausstellen eines Tokens mit verwalteten Identitäten
 
 Nun fügen wir Code hinzu, der die erstellten Anmeldeinformationen verwendet, um ein VoIP-Zugriffstoken auszugeben. Wir werden diesen Code später aufrufen:
 
