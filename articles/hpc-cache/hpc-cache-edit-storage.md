@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ebf68c1eb06984e2de8114c53e1bb55d52aed70a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258910"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862631"
 ---
 # <a name="edit-storage-targets"></a>Bearbeiten von Speicherzielen
 
@@ -45,7 +45,7 @@ Wenn Sie ein Speicherziel entfernen möchten, öffnen Sie die Seite **Speicherzi
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
-Verwenden Sie [az hpc-cache storage-target remove](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-remove), um ein Speicherziel aus dem Cache zu löschen.
+Verwenden Sie [az hpc-cache storage-target remove](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage_target_remove), um ein Speicherziel aus dem Cache zu löschen.
 
 ```azurecli
 $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-cache0629 --name blob1
@@ -84,7 +84,7 @@ Klicken Sie auf **OK**, nachdem Sie die Änderungen vorgenommen haben, um das Sp
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
-Verwenden Sie den Befehl [az hpc-cache blob-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update), um den Namespace eines Blobspeicherziels zu ändern. Nur der `--virtual-namespace-path`-Wert kann geändert werden.
+Verwenden Sie den Befehl [az hpc-cache blob-storage-target update](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update), um den Namespace eines Blobspeicherziels zu ändern. Nur der `--virtual-namespace-path`-Wert kann geändert werden.
 
   ```azurecli
   az hpc-cache blob-storage-target update --cache-name cache-name --name target-name \
@@ -125,7 +125,7 @@ Verwenden Sie die Seite **Namespace** für Ihre Azure HPC Cache-Instanz, um Name
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
-Verwenden Sie die ``--junction``-Option im [az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target)-Befehl, um den Namespacepfad, den NFS-Export oder das Exportunterverzeichnis zu ändern.
+Verwenden Sie die ``--junction``-Option im [az hpc-cache nfs-storage-target update](/cli/azure/hpc-cache/nfs-storage-target)-Befehl, um den Namespacepfad, den NFS-Export oder das Exportunterverzeichnis zu ändern.
 
 Der Parameter ``--junction`` verwendet diese Werte:
 
@@ -170,7 +170,7 @@ Verwenden Sie den Selektor im Dropdown, um ein neues Nutzungsmodell auszuwählen
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
-Verwenden Sie den [az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update)-Befehl.
+Verwenden Sie den [az hpc-cache nfs-storage-target update](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update)-Befehl.
 
 Der Aktualisierungsbefehl ist beinahe identisch mit dem Befehl, den Sie verwenden, um ein NFS-Speicherziel hinzuzufügen. Details und Beispiele finden Sie unter [Erstellen eines NFS-Speicherziels](hpc-cache-add-storage.md#create-an-nfs-storage-target).
 
@@ -178,7 +178,7 @@ Aktualisieren Sie die Option ``--nfs3-usage-model``, um das Nutzungsmodell zu ä
 
 Die Werte für Cachename, für den Namen des Speicherziels und für die Ressourcengruppe sind ebenfalls erforderlich.
 
-Wenn Sie die Namen der Nutzungsmodelle überprüfen möchten, verwenden Sie den Befehl [az hpc-cache usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list).
+Wenn Sie die Namen der Nutzungsmodelle überprüfen möchten, verwenden Sie den Befehl [az hpc-cache usage-model list](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage-model-list).
 
 Wenn der Cache beendet wurde oder sich nicht in einem fehlerfreien Zustand befindet, wird das Update angewendet, nachdem der Cache fehlerfrei ist.
 

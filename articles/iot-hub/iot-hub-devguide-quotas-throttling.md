@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 4b65d42522f40eb7d0e65356223313a924de3039
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 394e4da38f599b9662c8a764cac2a3abbbcad04b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656990"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147299"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -87,7 +87,7 @@ Ein Beispiel: Sie verwenden ein simuliertes Gerät, um 200 Gerät-zu-Cloud-Nachr
 
 Geräteidentitätsregistrierungsvorgänge sind für die Verwendung zur Laufzeit in Szenarios für die Geräteverwaltung und -bereitstellung vorgesehen. Das Lesen oder Aktualisieren einer großen Anzahl von Geräteidentitäten wird durch [Import-/Exportaufträge](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) unterstützt.
 
-Beim Initiieren von Identitätsvorgängen durch [Massenregistrierungs-Aktualisierungsvorgänge](https://docs.microsoft.com/rest/api/iothub/service/bulkregistry/updateregistry) (*nicht* Massenimport- und Massenexportaufträge) gelten dieselben Drosselungsgrenzwerte. Wenn Sie z. B. einen Massenvorgang zum Erstellen von 50 Geräten übermitteln möchten und über einen S1-IoT-Hub mit einer Einheit verfügen, werden nur zwei dieser Massenanforderungen pro Minute akzeptiert. Dies liegt daran, dass die Identitätsvorgangsdrosselung für einen S1-IoT-Hub mit einer Einheit 100/Minute/Einheit beträgt. Außerdem würde in diesem Fall eine dritte (und weitere) Anforderung in derselben Minute abgelehnt werden, da der Grenzwert bereits erreicht wurde. 
+Beim Initiieren von Identitätsvorgängen durch [Massenregistrierungs-Aktualisierungsvorgänge](/rest/api/iothub/service/bulkregistry/updateregistry) (*nicht* Massenimport- und Massenexportaufträge) gelten dieselben Drosselungsgrenzwerte. Wenn Sie z. B. einen Massenvorgang zum Erstellen von 50 Geräten übermitteln möchten und über einen S1-IoT-Hub mit einer Einheit verfügen, werden nur zwei dieser Massenanforderungen pro Minute akzeptiert. Dies liegt daran, dass die Identitätsvorgangsdrosselung für einen S1-IoT-Hub mit einer Einheit 100/Minute/Einheit beträgt. Außerdem würde in diesem Fall eine dritte (und weitere) Anforderung in derselben Minute abgelehnt werden, da der Grenzwert bereits erreicht wurde. 
 
 ### <a name="device-connections-throttle"></a>Drosselung von Geräteverbindungen
 

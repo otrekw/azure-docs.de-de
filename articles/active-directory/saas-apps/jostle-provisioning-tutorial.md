@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2021
 ms.author: Zhchia
-ms.openlocfilehash: d2ab0009f036afa38dc9e401223854a034d45e42
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 385a61b3bda6c75b6fb87a5655fadb45080b7f08
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368500"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124129"
 ---
 # <a name="tutorial-configure-jostle-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Jostle für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Jostle als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Bei der Konfiguration stellt Azure AD mithilfe des Azure AD-Bereitstellungsdiensts automatisch Benutzer und Gruppen in [Jostle](https://www.jostle.me/) bereit bzw. hebt die Bereitstellung von Benutzern und Gruppen auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md). 
+In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Jostle als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Bei der Konfiguration stellt Azure AD mithilfe des Azure AD-Bereitstellungsdiensts automatisch Benutzer und Gruppen in [Jostle](https://www.jostle.me/) bereit bzw. hebt die Bereitstellung von Benutzern und Gruppen auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Unterstützte Funktionen
@@ -81,7 +81,7 @@ Im nächsten Schritt rufen Sie die **API-URL** und den **API-Schlüssel** aus Jo
 1. Als Nächstes verwenden Sie die **API-URL** und den **API-Schlüssel** zum Konfigurieren der Integration in Azure.
 ## <a name="step-3-add-jostle-from-the-azure-ad-application-gallery"></a>Schritt 3 Hinzufügen von Jostle aus dem Azure AD-Anwendungskatalog
 
-Fügen Sie Jostle aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in Jostle zu beginnen. Wenn Sie Jostle zuvor für das einmalige Anmelden eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-gallery-app.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
+Fügen Sie Jostle aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in Jostle zu beginnen. Wenn Sie Jostle zuvor für das einmalige Anmelden eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Schritt 4. Definieren der Benutzer für den Bereitstellungsbereich 
 

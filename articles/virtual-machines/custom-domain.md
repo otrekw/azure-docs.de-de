@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2021
 ms.author: jamesser
 ms.reviewer: cynthn
-ms.openlocfilehash: c4797420904b6dc03550f658c2aa950a4de99c9c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: e8e3567d752627915596645b13246236bad321c9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107250909"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146309"
 ---
 # <a name="add-custom-domain-to-azure-vm-or-resource"></a>Hinzufügen einer benutzerdefinierten Domäne zu einer Azure-VM oder -Ressource
 
@@ -23,7 +23,7 @@ In Azure gibt es mehrere Möglichkeiten, um eine benutzerdefinierte Domäne mit 
 ## <a name="prerequisites"></a>Voraussetzungen 
 - Sie benötigen eine VM, auf der ein Webserver ausgeführt wird. Sie können den Schritten im [Schnellstart](./linux/quick-create-cli.md) folgen, um eine VM zu erstellen und NGINX hinzuzufügen.
 
-- Die VM muss über das Internet zugänglich sein (Port 80 oder 443 geöffnet). Wenn Sie eine sicherere Bereitstellung wünschen, platzieren Sie Ihre VM zuerst hinter einem Lastenausgleich oder Anwendungsgateway. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Lastenausgleichs](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal?tabs=option-1-create-load-balancer-standard).
+- Die VM muss über das Internet zugänglich sein (Port 80 oder 443 geöffnet). Wenn Sie eine sicherere Bereitstellung wünschen, platzieren Sie Ihre VM zuerst hinter einem Lastenausgleich oder Anwendungsgateway. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Lastenausgleichs](../load-balancer/quickstart-load-balancer-standard-public-portal.md?tabs=option-1-create-load-balancer-standard).
 
 - Sie benötigen eine vorhandene Domäne und Zugriff auf DNS-Einstellungen. Weitere Informationen finden Sie unter [Kaufen eines benutzerdefinierten Domänennamens für Azure App Service](../app-service/manage-custom-dns-buy-domain.md).
 
@@ -73,4 +73,3 @@ Die DNS-Verteilung nach dem Erstellen des Eintrags dauert in der Regel etwa eine
 ## <a name="next-steps"></a>Nächste Schritte
 [Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway](../application-gateway/ssl-overview.md)
 
- 

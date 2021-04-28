@@ -12,12 +12,12 @@ ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 75d838e8ce785a4f59b056bf0dec736b982ea716
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 6e08f9090682a62ffe209122e88adca9e9710b96
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283812"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064033"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -196,7 +196,7 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant: Fehler bei der Authentifizierung. Das Aktualisierungstoken ist ungültig. Der Fehler kann aus den folgenden Gründen auftreten:<ul><li>Der Bindungsheader des Tokens ist leer.</li><li>Der Tokenbindungshash stimmt nicht überein.</li></ul> |
 | AADSTS70001 | UnauthorizedClient: Die Anwendung ist deaktiviert. Weitere Informationen finden Sie im Artikel zur Behebung von Fehler [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory). |
-| AADSTS70002 | InvalidClient: Fehler beim Überprüfen der Anmeldeinformationen. Der angegebene Wert für „client_secret“ entspricht nicht dem erwarteten Wert für diesen Client. Korrigieren Sie „client_secret“, und versuchen Sie es noch mal. Weitere Informationen finden Sie unter [Anfordern eines Zugriffstokens mithilfe des Autorisierungscodes](v2-oauth2-auth-code-flow.md#request-an-access-token). |
+| AADSTS70002 | InvalidClient: Fehler beim Überprüfen der Anmeldeinformationen. Der angegebene Wert für „client_secret“ entspricht nicht dem erwarteten Wert für diesen Client. Korrigieren Sie „client_secret“, und versuchen Sie es noch mal. Weitere Informationen finden Sie unter [Anfordern eines Zugriffstokens mithilfe des Autorisierungscodes](v2-oauth2-auth-code-flow.md#redeem-a-code-for-an-access-token). |
 | AADSTS70003 | UnsupportedGrantType: Die App hat einen nicht unterstützten Gewährungstyp zurückgegeben. |
 | AADSTS70004 | InvalidRedirectUri: Die App hat einen ungültigen Umleitungs-URI zurückgegeben. Die vom Client angegebene Umleitungsadresse stimmt nicht mit den konfigurierten Adressen oder anderen Adressen in der Liste mit den OIDC-Genehmigungen überein. |
 | AADSTS70005 | UnsupportedResponseType: Die App hat aus den folgenden Gründen einen nicht unterstützten Antworttyp zurückgegeben:<ul><li>Der Antworttyp „token“ ist für die App nicht aktiviert.</li><li>Für den Antworttyp „id_token“ ist der Bereich „OpenID“ erforderlich: - Enthält einen nicht unterstützten OAuth-Parameterwert im codierten wctx-Element.</li></ul> |

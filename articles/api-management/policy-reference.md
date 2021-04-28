@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure API Management
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure API Management. Diese integrierten Richtliniendefinitionen bieten Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 author: georgewallace
 ms.author: gwallace
 ms.service: api-management
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0676557deb0acab07190ea3f75bddde3ae722bcf
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: ec15a1c3a856d6de4a5c77db74f09c1adc9b9ec7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500385"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866243"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Integrierten Azure Policy-Richtliniendefinitionen für Azure API Management
 

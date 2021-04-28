@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 15816d58105841ee53f3724158ebcbfa65df4877
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660218"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133131"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Häufig gestellte Fragen zum kommerziellen Marketplace von Microsoft
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie im [Hub für den kommerziellen Microsoft-Market
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Gibt es eine Gebühr für die Auflistung im kommerziellen Microsoft-Marketplace?
 
-Nein, es fallen keine Kosten für die Veröffentlichung von Angeboten in unserem kommerziellen Marketplace an. Wir behalten einen geringen Prozentsatz des Umsatzes als Transaktionsgebühr ein und investieren ihn in das Marketplace-Prämienprogramm, in die Plattforminnovation und den Betrieb des kommerziellen Marketplace. Diese Transaktionsgebühr wird für [Azure-IP-Co-Selling](./marketplace-co-sell.md)-Incentive-Angebote und für kostenpflichtige SaaS-Angebote in AppSource reduziert, die einer Microsoft Teams-App oder mindestens zwei Microsoft 365-Add-Ins (Excel, PowerPoint, Word, Outlook und SharePoint) zugeordnet sind.
+Nein, es fallen keine Kosten für die Veröffentlichung von Angeboten in unserem kommerziellen Marketplace an. Wir behalten einen geringen Prozentsatz des Umsatzes als Transaktionsgebühr ein und investieren ihn in das Marketplace-Prämienprogramm, in die Plattforminnovation und den Betrieb des kommerziellen Marketplace. Diese Transaktionsgebühr wird für [Azure-IP-Co-Selling](./co-sell-overview.md)-Incentive-Angebote und für kostenpflichtige SaaS-Angebote in AppSource reduziert, die einer Microsoft Teams-App oder mindestens zwei Microsoft 365-Add-Ins (Excel, PowerPoint, Word, Outlook und SharePoint) zugeordnet sind.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Wie registriere ich mich als Herausgeber im kommerziellen Microsoft-Marketplace?
 

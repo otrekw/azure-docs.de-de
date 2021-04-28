@@ -1,25 +1,25 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Security Center
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Security Center. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8023dcc29fe8ea3af853237e911524549e4d2bcb
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 7c40e40566555d9c752f0e93671f2c361f618b82
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739636"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146741"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Integrierte Azure Policy-Definitionen für Azure Security Center
 
 Diese Seite enthält einen Index der integrierten [Azure Policy](../governance/policy/overview.md)-Richtliniendefinitionen im Zusammenhang mit Azure Security Center. Die folgenden Gruppierungen von Richtliniendefinitionen sind verfügbar:
 
 - Die Gruppe [Initiativen](#azure-security-center-initiatives) listet die Definitionen der Azure Policy-Initiativen in der Kategorie „Security Center“ auf.
-- In der Gruppe [Standardinitiative](#azure-security-center-initiatives) werden alle Azure Policy-Definitionen aufgeführt, die Teil der Security Center-Standardinitiative [Azure-Sicherheitsvergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction) sind. Diese von Microsoft erstellte, weit verbreitete Benchmark basiert auf Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
+- In der Gruppe [Standardinitiative](#azure-security-center-initiatives) werden alle Azure Policy-Definitionen aufgeführt, die Teil der Security Center-Standardinitiative [Azure-Sicherheitsvergleichstest](/security/benchmark/azure/introduction) sind. Diese von Microsoft erstellte, weit verbreitete Benchmark basiert auf Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
 - Die Gruppe [Kategorie](#azure-security-center-category) listet alle Azure Policy-Definitionen in der Kategorie „Security Center“ auf.
 
 Weitere Informationen zu Sicherheitsrichtlinien finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](./tutorial-security-policy.md). Weitere Azure Policy-Integrationen für andere Dienste finden Sie unter [Integrierte Azure Policy-Richtliniendefinitionen](../governance/policy/samples/built-in-policies.md).

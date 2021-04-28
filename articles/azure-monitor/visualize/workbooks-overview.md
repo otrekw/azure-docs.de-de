@@ -1,21 +1,20 @@
 ---
 title: Übersicht über Azure Monitor-Arbeitsmappen
 description: Erfahren Sie, wie Arbeitsmappen einen flexiblen Bereich für die Datenanalyse und die Erstellung umfassender visueller Berichte innerhalb des Azure-Portals bieten.
-manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: e401eb4a5608db6e5767298f53046099a42679b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a02e5fced0a9e338a32d8d8beaa9e4b5fca994e8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100599507"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309475"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor-Arbeitsmappen
 
-Arbeitsmappen bieten einen flexiblen Bereich für die Datenanalyse und die Erstellung umfassender visueller Berichte innerhalb des Azure-Portals. Mit ihnen können Sie mehrere Datenquellen in Azure nutzen und sie zu vereinheitlichten interaktiven Oberflächen kombinieren. 
+Arbeitsmappen bieten einen flexiblen Bereich für die Datenanalyse und die Erstellung umfassender visueller Berichte innerhalb des Azure-Portals. Mit ihnen können Sie mehrere Datenquellen in Azure nutzen und sie zu vereinheitlichten interaktiven Oberflächen kombinieren.
 
 Im Folgenden finden Sie eine Videoanleitung zum Erstellen von Arbeitsmappen.
 
@@ -39,7 +38,7 @@ Arbeitsmappen sind derzeit mit den folgenden Datenquellen kompatibel:
 
 ## <a name="visualizations"></a>Visualisierungen
 
-Arbeitsmappen bieten eine Vielzahl von Funktionen zur Visualisierung Ihrer Daten. Ausführliche Beispiele der einzelnen Visualisierungstypen stehen über die folgenden Beispiellinks bereit:
+Arbeitsmappen bieten eine Vielzahl von Funktionen zur Visualisierung Ihrer Daten. Ausführliche Beispiele der einzelnen Visualisierungstypen stehen über die folgenden Links bereit:
 
 * [Text](../visualize/workbooks-text-visualizations.md)
 * [Diagramme](../visualize/workbooks-chart-visualizations.md)
@@ -49,7 +48,7 @@ Arbeitsmappen bieten eine Vielzahl von Funktionen zur Visualisierung Ihrer Daten
 * [Graphs](../visualize/workbooks-graph-visualizations.md)
 * [Gestapelte Säule](../visualize/workbooks-composite-bar.md)
 
-![Visualisierungsbeispiele für Arbeitsmappen](./media/workbooks-overview/visualizations.png)
+:::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="Visualisierungsbeispiele für Arbeitsmappen" border="false" lightbox="./media/workbooks-overview/visualizations.png":::
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -57,19 +56,40 @@ Zum Erkunden der Oberfläche für Arbeitsmappen navigieren Sie zunächst zum Azu
 
 Wählen Sie dann **Arbeitsmappen** aus.
 
-![Screenshot der Schaltfläche „Arbeitsmappen“ in einem roten Kasten](./media/workbooks-overview/workbooks.png)
+:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="Screenshot der Schaltfläche „Arbeitsmappen“ in einem roten Kasten" border="false":::
 
-### <a name="gallery"></a>Galerie
+### <a name="gallery"></a>Katalog
 
-Dadurch gelangen Sie zum Arbeitsmappenkatalog:
+Der Katalog erleichtert das Organisieren, Sortieren und Verwalten von Arbeitsmappen jedes Typs.
 
-![Screenshot des Azure Monitor-Arbeitsmappenkatalogs](./media/workbooks-overview/gallery.png)
+:::image type="content" source="./media/workbooks-overview/gallery-all-tab.png" alt-text="Screenshot des Katalogs auf der Registerkarte „Alle“" lightbox="media/workbooks-overview/gallery-all-tab.png":::
+
+#### <a name="gallery-tabs"></a>Registerkarten des Katalogs
+
+Der Katalog enthält vier Registerkarten zum Organisieren von Arbeitsmappentypen.
+
+| Registerkarte              | BESCHREIBUNG                                       |
+|------------------|---------------------------------------------------|
+| Alle | Hier werden die vier wichtigsten Elemente für jeden Typ angezeigt: Arbeitsmappen, öffentliche Vorlagen und eigene Vorlagen. Arbeitsmappen werden nach Änderungsdatum sortiert, sodass die acht zuletzt geänderten Arbeitsmappen angezeigt werden.|
+| Arbeitsmappen | Hier wird die Liste aller verfügbaren Arbeitsmappen angezeigt, die Sie erstellt haben oder für Sie freigegeben wurden. |
+| Öffentliche Vorlagen | Hier wird die Liste aller verfügbaren, sofort einsatzbereiten und funktionalen Arbeitsmappenvorlagen angezeigt, die von Microsoft veröffentlicht wurden. Diese sind nach Kategorien gruppiert. |
+| Meine Vorlagen | Hier wird die Liste aller verfügbaren und bereitgestellten Arbeitsmappenvorlagen angezeigt, die Sie erstellt haben oder für Sie freigegeben wurden. Diese sind nach Kategorien gruppiert. |
+
+#### <a name="features"></a>Features
+
+* Auf jeder Registerkarte befindet sich ein Raster mit Informationen zu den Arbeitsmappen. Es enthält: Beschreibung, Datum der letzten Änderung, Tags, Abonnement, Ressourcengruppe, Region und Freigabestatus. Sie können die Arbeitsmappen auch nach diesen Informationen sortieren.
+* Filtern Sie nach Ressourcengruppe, Abonnements, Arbeitsmappen-/Vorlagenname oder Vorlagenkategorie.
+* Wählen Sie mehrere Arbeitsmappen zum Löschen oder Massenlöschen aus.
+* Jede Arbeitsmappe verfügt über ein Kontextmenü (Auslassungspunkte/drei Punkte am Ende), bei dessen Auswahl eine Liste mit schnellen Aktionen geöffnet wird.
+    * Anzeigen der Ressource: Rufen Sie die Registerkarte „Arbeitsmappenressource“ auf, um die Ressourcen-ID der Arbeitsmappe anzuzeigen, Tags hinzuzufügen, Sperren zu verwalten usw.
+    * Löschen oder Umbenennen der Arbeitsmappe
+    * Anheften der Arbeitsmappe an das Dashboard
 
 ### <a name="workbooks-versus-workbook-templates"></a>Arbeitsmappen im Vergleich zu Arbeitsmappenvorlagen
 
-Es werden eine _Arbeitsmappe_ in Grün und eine Reihe von _Arbeitsmappenvorlagen_ in Violett angezeigt. Vorlagen dienen als zusammengestellte Berichte, die von mehreren Benutzern und Teams flexibel wiederverwendet werden können. Beim Öffnen einer Vorlage wird eine temporäre Arbeitsmappe mit dem Inhalt der Vorlage erstellt. 
+Es werden eine _Arbeitsmappe_ in Grün und eine Reihe von _Arbeitsmappenvorlagen_ in Violett angezeigt. Vorlagen dienen als zusammengestellte Berichte, die von mehreren Benutzern und Teams flexibel wiederverwendet werden können. Beim Öffnen einer Vorlage wird eine temporäre Arbeitsmappe mit dem Inhalt der Vorlage erstellt.
 
-Sie können die Parameter der vorlagenbasierten Arbeitsmappe anpassen und Analysen durchführen, ohne befürchten zu müssen, dass die zukünftige Berichtsoberfläche für Kollegen verändert wird. Wenn Sie eine Vorlage öffnen, einige Anpassungen vornehmen und dann das Speichersymbol auswählen, speichern Sie die Vorlage als Arbeitsmappe, die dann in Grün angezeigt wird, während die ursprüngliche Vorlage unverändert bleibt. 
+Sie können die Parameter der vorlagenbasierten Arbeitsmappe anpassen und Analysen durchführen, ohne befürchten zu müssen, dass die zukünftige Berichtsoberfläche für Kollegen verändert wird. Wenn Sie eine Vorlage öffnen, einige Anpassungen vornehmen und dann das Speichersymbol auswählen, speichern Sie die Vorlage als Arbeitsmappe, die dann in Grün angezeigt wird, während die ursprüngliche Vorlage unverändert bleibt.
 
 Vorlagen unterscheiden sich auch von gespeicherten Arbeitsmappen. Beim Speichern einer Arbeitsmappe wird eine zugeordnete Azure Resource Manager-Ressource erstellt, während der beim Öffnen einer Vorlage erstellten temporären Arbeitsmappe keine eindeutige Ressource zugeordnet ist. Weitere Informationen zur Verwaltung der Zugriffssteuerung in Arbeitsmappen finden Sie im [Artikel zur Zugriffssteuerung für Arbeitsmappen](../visualize/workbooks-access-control.md).
 
@@ -77,7 +97,7 @@ Vorlagen unterscheiden sich auch von gespeicherten Arbeitsmappen. Beim Speichern
 
 Wählen Sie **Analyse der Anwendungsfehler** aus, um eine der Standardvorlagen für Anwendungsarbeitsmappen anzuzeigen.
 
-![Screenshot der Vorlage zur Anwendungsfehleranalyse](./media/workbooks-overview/failure-analysis.png)
+:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="Screenshot der Vorlage zur Anwendungsfehleranalyse" border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
 
 Wie bereits erwähnt, wird beim Öffnen der Vorlage eine temporäre Arbeitsmappe erstellt, mit der Sie interagieren können. Standardmäßig wird die Arbeitsmappe im Lesemodus geöffnet, in dem nur die Informationen für die gewünschte Analyse angezeigt werden, die vom ursprünglichen Vorlagenautor erstellt wurden.
 
@@ -87,34 +107,35 @@ Im Fall dieser speziellen Arbeitsmappe ist die Oberfläche interaktiv. Sie könn
 
 Um zu verstehen, wie diese Arbeitsmappenvorlage zusammengesetzt ist, müssen Sie in den Bearbeitungsmodus wechseln. Dazu wählen Sie **Bearbeiten** aus.
 
-![Screenshot der Schaltfläche „Bearbeiten“ in Arbeitsmappen](./media/workbooks-overview/edit.png)
+:::image type="content" source="./media/workbooks-overview/edit.png" alt-text="Screenshot der Schaltfläche „Bearbeiten“ in Arbeitsmappen" border="false" :::
 
 Nachdem Sie in den Bearbeitungsmodus gewechselt haben, wird eine Reihe von Feldern des Typs **Bearbeiten** rechts neben den einzelnen Aspekten der Arbeitsmappe angezeigt.
 
-![Screenshot der Schaltfläche „Bearbeiten“](./media/workbooks-overview/edit-mode.png)
+:::image type="content" source="./media/workbooks-overview/edit-mode.png" alt-text="Screenshot der Schaltfläche „Bearbeiten“" border="false" lightbox="./media/workbooks-overview/edit-mode.png":::
 
 Wenn Sie die Schaltfläche „Bearbeiten“ direkt unterhalb des Rasters mit Anforderungsdaten auswählen, sehen Sie, dass dieser Teil der Arbeitsmappe aus einer Kusto-Abfrage für Daten von einer Application Insights-Ressource besteht.
 
-![Screenshot der zugrunde liegenden Kusto-Abfrage](./media/workbooks-overview/kusto.png)
+:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="Screenshot der zugrunde liegenden Kusto-Abfrage" border="false" lightbox="./media/workbooks-overview/kusto.png":::
 
-Wenn Sie auf die anderen Schaltflächen **Bearbeiten** auf der rechten Seite klicken, wird eine Reihe von Kernkomponenten angezeigt, aus denen sich Arbeitsmappen zusammensetzen, wie markdownbasierte [Textfelder](../visualize/workbooks-text-visualizations.md), Benutzeroberflächenelemente für die [Parameterauswahl](../visualize/workbooks-parameters.md) und andere [Diagramm-/Visualisierungstypen](#visualizations). 
+
+Wenn Sie auf die anderen Schaltflächen **Bearbeiten** auf der rechten Seite klicken, wird eine Reihe von Kernkomponenten angezeigt, aus denen sich Arbeitsmappen zusammensetzen, wie markdownbasierte [Textfelder](../visualize/workbooks-text-visualizations.md), Benutzeroberflächenelemente für die [Parameterauswahl](../visualize/workbooks-parameters.md) und andere [Diagramm-/Visualisierungstypen](#visualizations).
 
 Das Erkunden der vordefinierten Vorlagen im Bearbeitungsmodus, das anschließende Anpassen an Ihre Anforderungen und das Speichern Ihrer eigenen benutzerdefinierten Arbeitsmappe ist eine hervorragende Möglichkeit, um zu erfahren, welche Möglichkeiten Azure Monitor-Arbeitsmappen bieten.
 
 ## <a name="pinning-visualizations"></a>Anheften von Visualisierungen
 
-Die Schritte für Text, Abfrage und Metriken in einer Arbeitsmappe können mithilfe der Schaltfläche „Anheften“ an diese Elemente angeheftet werden, während sich die Arbeitsmappe im entsprechenden Modus befindet oder wenn der Arbeitsmappenautor Einstellungen für dieses Element aktiviert hat, damit das Symbol zum Anheften angezeigt wird. 
+Die Schritte für Text, Abfrage und Metriken in einer Arbeitsmappe können mithilfe der Schaltfläche „Anheften“ an diese Elemente angeheftet werden, während sich die Arbeitsmappe im entsprechenden Modus befindet oder wenn der Arbeitsmappenautor Einstellungen für dieses Element aktiviert hat, damit das Symbol zum Anheften angezeigt wird.
 
 Zum Zugreifen auf den Modus für Anheften klicken Sie auf **Bearbeiten**, um in den Bearbeitungsmodus zu wechseln, und wählen Sie dann in der oberen Leiste das blaue Stecknadelsymbol aus. Daraufhin wird auf der rechten Seite des Bildschirms ein einzelnes Stecknadelsymbol oberhalb des Felds *Bearbeiten* für den entsprechenden Arbeitsmappenteil angezeigt.
 
-![Anheften](./media/workbooks-overview/pin-experience.png)
+:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="Screenshot der Anheftfunktion" border="false":::
 
 > [!NOTE]
 > Der Zustand der Arbeitsmappe wird zum Zeitpunkt des Anheftens gespeichert, und angeheftete Arbeitsmappen auf einem Dashboard werden beim Ändern der zugrunde liegenden Arbeitsmappe nicht aktualisiert. Um einen angehefteten Arbeitsmappenteil zu aktualisieren, müssen Sie diesen Teil löschen und erneut anheften.
 
 ## <a name="dashboard-time-ranges"></a>Zeitbereiche auf dem Dashboard
 
-Bei angehefteten Abfrageteilen der Arbeitsmappe wird der Zeitbereich des Dashboards berücksichtigt, sofern das angeheftete Element für die Verwendung eines *Zeitbereichsparameters* konfiguriert ist. Der Zeitbereichswert des Dashboards wird als Wert für den Zeitbereichsparameter verwendet, und jede Änderung des Zeitbereichs des Dashboards bewirkt eine Aktualisierung des angehefteten Elements. Wenn ein angehefteter Teil den Zeitbereich des Dashboards verwendet, wird bei jeder Änderung des Zeitbereichs der Untertitel des angehefteten Teils aktualisiert, um den Zeitbereich des Dashboards anzuzeigen. 
+Bei angehefteten Abfrageteilen der Arbeitsmappe wird der Zeitbereich des Dashboards berücksichtigt, sofern das angeheftete Element für die Verwendung eines *Zeitbereichsparameters* konfiguriert ist. Der Zeitbereichswert des Dashboards wird als Wert für den Zeitbereichsparameter verwendet, und jede Änderung des Zeitbereichs des Dashboards bewirkt eine Aktualisierung des angehefteten Elements. Wenn ein angehefteter Teil den Zeitbereich des Dashboards verwendet, wird bei jeder Änderung des Zeitbereichs der Untertitel des angehefteten Teils aktualisiert, um den Zeitbereich des Dashboards anzuzeigen.
 
 Außerdem werden angeheftete Arbeitsmappenteile, die einen Zeitbereichsparameter verwenden, automatisch mit einer Rate aktualisiert, die durch den Zeitbereich des Dashboards bestimmt wird. Der letzte Zeitpunkt, zu dem die Abfrage ausgeführt wurde, wird im Untertitel des angehefteten Teils angezeigt.
 

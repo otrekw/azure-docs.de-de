@@ -6,18 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/22/2021
+ms.date: 04/12/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 53edd3ec9a8d30d0c25f994db4a8b6f0199c2169
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7f09e744dfdd7be73c62c70bcfa91804f14aaa68
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558413"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313673"
 ---
 # <a name="azure-customer-usage-attribution"></a>Zuordnung der Azure-Nutzung durch Kunden
 
-Bei der Zuordnung der Nutzung durch Kunden wird die Nutzung von Azure-Ressourcen in Kundenabonnements Ihnen als Partner zugeordnet, die bei der Bereitstellung Ihres geistigen Eigentums erstellt wurden. Die Bildung dieser Zuordnungen in internen Microsoft-Systemen sorgt für mehr Transparenz des Azure-Speicherbedarfs Ihrer Software. Bei [Angeboten für Azure-Anwendungen im kommerziellen Marketplace](#commercial-marketplace-azure-apps) hilft diese Nachverfolgungsfunktion Ihnen dabei, sich an Microsoft-Vertriebsteams zu orientieren und Gutschriften für Microsoft-Partnerprogramme zu erhalten.
+Bei der Zuordnung der Nutzung durch Kunden wird die Nutzung von Azure-Ressourcen in Kundenabonnements Ihnen als Partner zugeordnet, die bei der Bereitstellung Ihres geistigen Eigentums erstellt wurden. Die Bildung dieser Zuordnungen in internen Microsoft-Systemen sorgt für mehr Transparenz des Azure-Speicherbedarfs Ihrer Software. Bei [Angeboten für Azure-Anwendungen im kommerziellen Marketplace](#commercial-marketplace-azure-apps) hilft diese Nachverfolgungsfunktion Ihnen dabei, sich an Microsoft-Vertriebsteams zu orientieren und Gutschriften für Microsoft-Partnerprogramme zu erhalten. Die Zuordnung der Nutzung durch Kunden gilt nicht für [Azure-VM-Angebote im kommerziellen Marketplace](./azure-vm-create.md). Ein Marketplace-Herausgeber muss keinerlei Schritte für VM-Angebote ausführen, um sicherzustellen, dass der Azure-Verbrauch in Endkundenabonnements nachverfolgt wird.
 
 Die Zuordnung der Nutzung durch Kunden unterstützt drei Bereitstellungsmethoden:
 

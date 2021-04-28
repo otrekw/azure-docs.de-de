@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 0a25e1b50455cad5bdbe5b76b2a291f2a1c11940
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: b17041f25fdd26bd0f8328a206267ef1c4984672
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107005"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144743"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
@@ -73,7 +73,7 @@ Je nach verwendeter Transaktionsoption fallen folgende Abonnementgebühren an:
 > [!NOTE]
 > Angebote, die nach Verbrauch abgerechnet werden, sind nach Verwendung der Lösung nicht erstattungsfähig.
 
-Wenn ein Herausgeber die einem Angebot zugeordneten Nutzungsgebühren ändern möchte, sollte er zunächst das Angebot (oder den jeweiligen Plan innerhalb des Angebots) aus dem kommerziellen Marketplace entfernen. Das Entfernen sollte in Übereinstimmung mit den Anforderungen der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560) erfolgen. Anschließend kann der Herausgeber ein neues Angebot (oder einen Plan innerhalb des Angebots) mit den neuen Nutzungsgebühren veröffentlichen. Weitere Informationen zum Entfernen eines Angebots oder Plans finden Sie unter [Einstellen des Verkaufs eines Angebots oder Plans](./partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan).
+Wenn ein Herausgeber die einem Angebot zugeordneten Nutzungsgebühren ändern möchte, sollte er zunächst das Angebot (oder den jeweiligen Plan innerhalb des Angebots) aus dem kommerziellen Marketplace entfernen. Das Entfernen sollte in Übereinstimmung mit den Anforderungen der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement) erfolgen. Anschließend kann der Herausgeber ein neues Angebot (oder einen Plan innerhalb des Angebots) mit den neuen Nutzungsgebühren veröffentlichen. Weitere Informationen zum Entfernen eines Angebots oder Plans finden Sie unter [Einstellen des Verkaufs eines Angebots oder Plans](./partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan).
 
 ### <a name="free-contact-me-and-bring-your-own-license-byol-pricing"></a>Preisgestaltung für die Optionen „Kostenlos“, „Kontaktaufnahme“ und „BYOL“ (Bring-Your-Own-License)
 
@@ -147,7 +147,7 @@ In diesem Szenario stellt Microsoft 100.00 USD für Ihre Softwarelizenz in Rech
 
 ### <a name="commercial-marketplace-service-fees"></a>Dienstgebühren im kommerziellen Marketplace
 
-Wir berechnen eine Store-Standarddienstgebühr von 20 %, wenn Kunden Ihr Transaktionsangebot über den kommerziellen Marketplace erwerben. Ausführliche Informationen zu dieser Gebühr finden Sie in Abschnitt 5c der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560).
+Wir berechnen eine Store-Standarddienstgebühr von 20 %, wenn Kunden Ihr Transaktionsangebot über den kommerziellen Marketplace erwerben. Ausführliche Informationen zu dieser Gebühr finden Sie in Abschnitt 5c der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement).
 
 Bestimmte Transaktionsangebote, die Sie im kommerziellen Marketplace veröffentlichen, sind ggf. für eine reduzierte Store-Dienstgebühr von zehn Prozent qualifiziert. Ein entsprechend qualifiziertes Angebot muss von Microsoft als _Azure IP Co-Sell Incentivized_ gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr in Anspruch genommen werden kann. Sobald die Anforderungen für die Berechtigung erfüllt sind, wird die reduzierte Dienstgebühr für alle Transaktionen ab dem ersten Tag des Folgemonats gewährt, bis der Status _Azure IP Co-Sell Incentivized_ nicht mehr gegeben ist. Einzelheiten zur Berechtigung für das IP-Co-Selling finden Sie unter [Requirements for Co-sell Status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status).
 
@@ -178,7 +178,7 @@ Kunden kaufen in der Regel im Rahmen eines Enterprise Agreement oder eines Vertr
 
 #### <a name="billing-questions-and-support"></a>Fragen zu Abrechnung und Support
 
-Weitere Informationen und gesetzliche Richtlinien finden Sie in der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560). Hilfe bei Abrechnungsfragen erhalten Sie vom [Support für Herausgeber im kommerziellen Marketplace](https://aka.ms/marketplacepublishersupport).
+Weitere Informationen und gesetzliche Richtlinien finden Sie in der [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement). Hilfe bei Abrechnungsfragen erhalten Sie vom [Support für Herausgeber im kommerziellen Marketplace](https://aka.ms/marketplacepublishersupport).
 
 ## <a name="transact-requirements"></a>Anforderungen für die Veröffentlichungsoption „Transaktion“
 

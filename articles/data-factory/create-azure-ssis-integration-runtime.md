@@ -3,15 +3,15 @@ title: Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory | Mi
 description: Hier erfahren Sie, wie Sie zur Bereitstellung und Ausführung von SSIS-Paketen in Azure die Azure-SSIS-Integration Runtime in Azure Data Factory erstellen.
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 04/09/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 4b26abe1d1340e4e8c5f034fad72f612f0b246a2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e4f60539e2eb524e95c76814f7527377630349e2
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739407"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285240"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft-Dokumentation
 
@@ -95,7 +95,7 @@ Befolgen Sie die Schritt-für-Schritt-Anleitung unter [Erstellen einer Data Fact
 
 ### <a name="provision-an-azure-ssis-integration-runtime"></a>Bereitstellen einer Azure-SSIS Integration Runtime
 
-Wählen Sie auf der Seite **Los geht‘s** die Kachel **SSIS Integration Runtime konfigurieren** aus, um den Bereich **Integration Runtime-Setup** zu öffnen.
+Wählen Sie auf der Seite **Los geht‘s** die Kachel **SSIS-Integration konfigurieren** aus, um den Bereich **Integration Runtime-Setup** zu öffnen.
 
    ![Kachel „Configure SSIS Integration Runtime“ (SSIS Integration Runtime konfigurieren)](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
@@ -123,7 +123,7 @@ Führen Sie auf der Seite **Allgemeine Einstellungen** des Bereichs **Integratio
 
    7. Wählen Sie unter **Sparen Sie Geld** die Option „Azure-Hybridvorteil“ für Ihre Integration Runtime aus: **Ja** oder **Nein**. Wählen Sie **Ja**, wenn Sie eine eigene SQL Server-Lizenz mit Software Assurance verwenden möchten, um bei der Hybridnutzung von Kostenersparnissen zu profitieren.
 
-   8. Wählen Sie **Weiter** aus.
+   8. Wählen Sie **Weiter**.
 
 #### <a name="deployment-settings-page"></a>Seite „Bereitstellungseinstellungen“
 
@@ -165,7 +165,7 @@ Wenn Sie das Kontrollkästchen aktivieren, führen Sie die folgenden Schritte au
 
    1. Wählen Sie unter **Katalogdatenbank-Dienstebene** die Dienstebene für Ihren Datenbankserver zum Hosten der SSISDB aus. Wählen Sie den Tarif „Basic“, „Standard“ oder „Premium“ oder den Namen eines Pools für elastische Datenbanken aus.
 
-Wählen Sie ggf. **Verbindung testen** und – bei erfolgreichem Test – **Weiter** aus.
+Wählen Sie ggf. **Verbindung testen** und – bei erfolgreichem Test – die Option **Weiter** aus.
 
 > [!NOTE]
    > Wenn Sie den Azure SQL-Datenbankserver zum Hosten von SSISDB verwenden, werden Ihre Daten standardmäßig im georedundanten Speicher für Sicherungen gespeichert. Wenn Sie nicht möchten, dass Ihre Daten in anderen Regionen repliziert werden, befolgen Sie die Anweisungen zum [Konfigurieren der Redundanz für Sicherungsspeicher mithilfe von PowerShell](../azure-sql/database/automated-backups-overview.md?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
@@ -187,7 +187,7 @@ Führen Sie im Bereich **Paketspeicher hinzufügen** die folgenden Schritte aus.
    1. Wählen Sie unter **Mit Paketspeicher verknüpfter Dienst** Ihren vorhandenen verknüpften Dienst zum Speichern der Zugriffsinformationen für das Dateisystem/Azure Files/die verwaltete Azure SQL-Instanz aus, in dem bzw. der Ihre Pakete bereitgestellt werden, oder erstellen Sie einen neuen Dienst, indem Sie **Neu** auswählen. Führen Sie im Bereich **Neuer verknüpfter Dienst** die folgenden Schritte aus.
    
       > [!NOTE]
-      > Für den Zugriff auf Azure Files können Sie die verknüpften Dienste **Azure File Storage** oder **Dateisystem** verwenden. Wenn Sie den verknüpften Dienst **Azure File Storage** verwenden, unterstützt der Azure-SSIS IR-Paketspeicher derzeit nur die **Standardauthentifizierungsmethode**. (**Kontoschlüssel** und **SAS-URI** werden nicht unterstützt.) Wenn Sie die **Standardauthentifizierung** für den verknüpften Dienst **Azure File Storage** nutzen möchten, können Sie `?feature.upgradeAzureFileStorage=false` an die ADF-Portal-URL in Ihrem Browser anfügen. Alternativ können Sie den verknüpften Dienst **Dateisystem** verwenden, um stattdessen auf Azure Files zuzugreifen. 
+      > Für den Zugriff auf Azure Files können Sie die verknüpften Dienste **Azure File Storage** oder **Dateisystem** verwenden. Wenn Sie den verknüpften Dienst **Azure File Storage** verwenden, unterstützt der Azure-SSIS IR-Paketspeicher derzeit nur die **Standardauthentifizierungsmethode**. (**Kontoschlüssel** und **SAS-URI** werden nicht unterstützt.)  
 
       ![Bereitstellungseinstellungen für verknüpfte Dienste](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -199,7 +199,7 @@ Führen Sie im Bereich **Paketspeicher hinzufügen** die folgenden Schritte aus.
 
       1. Sie können **Verbinden über Integration Runtime** ignorieren, da wir immer Ihre Azure-SSIS IR zum Abrufen der Zugriffsinformationen für Paketspeicher verwenden.
 
-      1. Wenn Sie **Azure File Storage** auswählen, führen Sie die folgenden Schritte aus. 
+      1. Wählen Sie bei Auswahl von **Azure File Storage** für **Authentifizierungsmethode** die Option **Standard** aus, und führen Sie anschließend die folgenden Schritte aus. 
 
          1. Wählen Sie unter **Kontoauswahlmethode** eine der Methoden **Aus Azure-Abonnement** oder **Manuell eingeben** aus.
          
@@ -209,21 +209,21 @@ Führen Sie im Bereich **Paketspeicher hinzufügen** die folgenden Schritte aus.
 
       1. Wenn Sie **Verwaltete Azure SQL-Instanz** auswählen, führen Sie die folgenden Schritte aus. 
 
-         1. Wählen Sie **Verbindungszeichenfolge** aus, um sie manuell einzugeben, oder Ihren **Azure Key Vault** aus, in dem sie als Geheimnis gespeichert ist.
-         
+         1. Wählen Sie **Verbindungszeichenfolge** oder Ihre **Azure Key Vault**-Instanz aus, in der sie als Geheimnis gespeichert ist.
+
          1. Wenn Sie **Verbindungszeichenfolge** auswählen, führen Sie die folgenden Schritte aus. 
+             1. Wählen Sie bei Auswahl von **Aus Azure-Abonnement** unter **Methode für Kontoauswahl** das entsprechende **Azure-Abonnement**, den **Servernamen**, den **Endpunkttyp** und den **Datenbanknamen** aus. Führen Sie bei Auswahl von **Manuell eingeben** die folgenden Schritte aus. 
+                1.  Geben Sie unter **Vollqualifizierter Domänenname** `<server name>.<dns prefix>.database.windows.net` oder `<server name>.public.<dns prefix>.database.windows.net,3342` als privaten bzw. öffentlichen Endpunkt Ihrer verwalteten Azure SQL-Instanz ein. Wenn Sie den privaten Endpunkt eingeben, kann **Verbindung testen** nicht angewendet werden, da dieser Endpunkt über die ADF-Benutzeroberfläche nicht erreicht werden kann.
 
-            1. Geben Sie unter **Vollqualifizierter Domänenname** `<server name>.<dns prefix>.database.windows.net` oder `<server name>.public.<dns prefix>.database.windows.net,3342` als privaten bzw. öffentlichen Endpunkt Ihrer verwalteten Azure SQL-Instanz ein. Wenn Sie den privaten Endpunkt eingeben, kann **Verbindung testen** nicht angewendet werden, da dieser Endpunkt über die ADF-Benutzeroberfläche nicht erreicht werden kann.
+                1. Geben Sie unter **Datenbankname** `msdb` ein.
 
-            1. Geben Sie unter **Datenbankname** `msdb` ein.
-               
             1. Wählen Sie unter **Authentifizierungstyp** einen der Typen **SQL-Authentifizierung**, **Verwaltete Identität** oder **Dienstprinzipal** aus.
 
-            1. Wenn Sie **SQL-Authentifizierung** auswählen, geben Sie die entsprechenden Werte für **Benutzername** und **Kennwort** ein, oder wählen Sie Ihren **Azure Key Vault** aus, in dem diese Werte als Geheimnis gespeichert sind.
+                - Wenn Sie **SQL-Authentifizierung** auswählen, geben Sie die entsprechenden Werte für **Benutzername** und **Kennwort** ein, oder wählen Sie Ihren **Azure Key Vault** aus, in dem diese Werte als Geheimnis gespeichert sind.
 
-            1. Wenn Sie **Verwaltete Identität** auswählen, gewähren Sie Ihrer verwalteten ADF-Identität Zugriff auf Ihre verwaltete Azure SQL-Instanz.
+                -  Wenn Sie **Verwaltete Identität** auswählen, gewähren Sie Ihrer verwalteten ADF-Identität Zugriff auf Ihre verwaltete Azure SQL-Instanz.
 
-            1. Wenn Sie **Dienstprinzipal** auswählen, geben Sie die entsprechenden Werte für **Dienstprinzipal-ID** und **Dienstprinzipalschlüssel** ein, oder wählen Sie Ihren **Azure Key Vault** aus, in dem diese Werte als Geheimnis gespeichert sind.
+                - Wenn Sie **Dienstprinzipal** auswählen, geben Sie die entsprechenden Werte für **Dienstprinzipal-ID** und **Dienstprinzipalschlüssel** ein, oder wählen Sie Ihren **Azure Key Vault** aus, in dem diese Werte als Geheimnis gespeichert sind.
 
       1. Wenn Sie **Dateisystem** auswählen, geben Sie den UNC-Pfad des Ordners, in dem Ihre Pakete für **Host** bereitgestellt werden, sowie die entsprechenden Werte für **Benutzername** und **Kennwort** ein, oder wählen Sie Ihren **Azure Key Vault** aus, in dem diese Werte als Geheimnis gespeichert sind.
 
@@ -231,7 +231,7 @@ Führen Sie im Bereich **Paketspeicher hinzufügen** die folgenden Schritte aus.
 
    1. Ihre hinzugefügten Paketspeicher werden auf der Seite **Bereitstellungseinstellungen** angezeigt. Wenn Sie sie entfernen möchten, können Sie die entsprechenden Kontrollkästchen aktivieren und dann **Löschen** auswählen.
 
-Wählen Sie ggf. **Verbindung testen** und – bei erfolgreichem Test – **Weiter** aus.
+Wählen Sie ggf. **Verbindung testen** und – bei erfolgreichem Test – die Option **Weiter** aus.
 
 #### <a name="advanced-settings-page"></a>Seite „Erweiterte Einstellungen“
 
@@ -314,7 +314,7 @@ Wechseln Sie im Bereich **Verbindungen** von **Verwaltungshub** zur Seite **Inte
 
 ### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>Azure SSIS Integration Runtimes im Portal
 
-1. Wechseln Sie auf der Azure Data Factory-Benutzeroberfläche zur Registerkarte **Bearbeiten**, und wählen Sie **Verbindungen** aus. Wechseln Sie anschließend zur Registerkarte **Integration Runtimes**, um die vorhandenen Integration Runtimes Ihrer Data Factory-Instanz anzuzeigen.
+1. Wechseln Sie auf der Azure Data Factory-Benutzeroberfläche zur Registerkarte **Verwalten** und dann im Bereich **Verbindungen** zur Registerkarte **Integration Runtimes**, um vorhandene Integration Runtimes in Ihrer Data Factory anzuzeigen.
 
    ![Anzeigen vorhandener IRs](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 

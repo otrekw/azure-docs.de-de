@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79fa9b3a84bbf523fe243b1d37d798dfd1172a6b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882381"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146273"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Storage Premium: Entwurf für hohe Leistung
 
@@ -326,7 +326,7 @@ Eine wichtige Konfigurationseinstellung beim Datenträgerstriping ist die Stripe
 
 Wenn beispielsweise eine von Ihrer Anwendung generierte E/A-Anweisung größer als die Stripegröße des Datenträgers ist, wird sie vom Speichersystem über Stripe-Einheitsgrenzen hinweg auf mehrere Datenträger geschrieben. Wenn auf diese Daten zugegriffen werden soll, muss zum Erfüllen der Anforderung mehr als eine Stripe-Einheit durchsucht werden. Die kumulative Wirkung eines solchen Verhaltens kann zu beträchtlichen Leistungseinbußen führen. Wenn hingegen die Größe der E/A-Anforderung kleiner als die Stripegröße ist und diese zufälliger Art ist, können sich die E/A-Anforderungen auf demselben Datenträger anhäufen, was zu einem Engpass und schließlich zu einer Verschlechterung der E/A-Leistung führt.
 
-Wählen Sie abhängig vom Workload Ihrer Anwendung eine geeignete Stripegröße aus. Wählen Sie für zufällige kleine E/A-Anforderungen eine kleinere Stripegröße. Wählen Sie hingegen für große sequenzielle E/A-Anforderungen eine größere Stripegröße. Ermitteln Sie Empfehlungen für die Stripegröße für die Anwendung, die Sie in Storage Premium ausführen. Für SQL Server konfigurieren Sie die Stripegröße mit 64 KB für OLTP-Workloads und 256 KB für Data Warehouse-Workloads. Weitere Informationen finden Sie unter [Optimale Verfahren für die Leistung für SQL Server in Azure Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
+Wählen Sie abhängig vom Workload Ihrer Anwendung eine geeignete Stripegröße aus. Wählen Sie für zufällige kleine E/A-Anforderungen eine kleinere Stripegröße. Wählen Sie hingegen für große sequenzielle E/A-Anforderungen eine größere Stripegröße. Ermitteln Sie Empfehlungen für die Stripegröße für die Anwendung, die Sie in Storage Premium ausführen. Für SQL Server konfigurieren Sie die Stripegröße mit 64 KB für OLTP-Workloads und 256 KB für Data Warehouse-Workloads. Weitere Informationen finden Sie unter [Optimale Verfahren für die Leistung für SQL Server in Azure Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md) .
 
 > [!NOTE]
 > Bei einer VM der DS-Serie können Sie ein Stripeset mit maximal 32 Storage Premium-Datenträgern und bei einer VM der GS-Serie mit maximal 64 Storage Premium-Datenträgern bilden.
@@ -390,5 +390,5 @@ Weitere Informationen zu den verfügbaren Datenträgertypen finden Sie unter
 
 Für SQL Server-Benutzer bietet sich das Lesen von Artikeln zu den bewährten Methoden für die Leistung von SQL Server an:
 
-* [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
+* [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)
 * [Azure Storage Premium bietet höchste Leistung für SQL Server in Azure-VM](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)

@@ -3,17 +3,16 @@ title: Überwachen von Zuordnungsdatenflüssen
 description: Hier erfahren Sie, wie Sie Azure Data Factory-Zuordnungsdatenflüsse visuell überwachen.
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/22/2020
-ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 82aba428627cba1a3df26fc67c5da0cde52d368c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96004868"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309066"
 ---
 # <a name="monitor-data-flows"></a>Überwachen von Datenflüssen
 
@@ -77,9 +76,15 @@ Wenn Sie die JSON-Ausgabe Ihrer Datenflussaktivität in der ADF-Pipelineüberwac
 }
 ```
 
-### <a name="post-processing-time"></a>Nachbearbeitungszeit
+### <a name="sink-processing-time"></a>Verarbeitungszeit für die Senke
 
 Wenn Sie in der Zuordnung ein Symbol für eine Senkentransformation auswählen, zeigt das Flyout-Panel auf der rechten Seite unten einen zusätzlichen Datenpunkt namens „Nachbearbeitungszeit“. Dies ist die Zeitspanne, die für die Ausführung des Auftrags im Spark-Cluster benötigt wurde, *nachdem* die Daten geladen, transformiert und geschrieben wurden. Dieser Zeitraum kann das Schließen von Verbindungspools, das Herunterfahren von Treibern, das Löschen von Dateien, dass Zusammenfügen von Dateien und weitere Aufgaben umfassen. Wenn Sie in Ihrem Flow Aktionen wie „Dateien verschieben“ und „Ausgabe in einer einzelnen Datei“ ausführen, werden Sie vermutlich einen Anstieg des Werts für die Nachbearbeitungszeit bemerken.
+
+* Dauer der Schreibphase: Die Zeit zum Schreiben der Daten an einen Stagingspeicherort für Synapse SQL.
+* Dauer der SQL-Tabellenvorgänge: Die Zeit für das Verschieben von Daten aus temporären Tabellen in die Zieltabelle.
+* Dauer der vorab und im Anschluss ausgeführten SQL-Vorgänge: Die Zeit für das Ausführen vor-/nachgeschalteter SQL-Befehle.
+* Dauer der vorab und im Anschluss ausgeführten Befehle: Die Zeit für das Ausführen vor-/nachgeschalteter Vorgänge für dateibasierte Quellen/Senken. Beispielsweise das Verschieben oder Löschen von Dateien nach der Verarbeitung.
+* Zusammenführungsdauer: Die Zeit für das Zusammenführen der Datei. Zusammengeführte Dateien werden für dateibasierte Senken verwendet, wenn in eine einzelne Datei geschrieben oder „Dateiname als Spaltendaten“ verwendet wird. Wenn für diese Metrik viel Zeit aufgewendet wird, sollten Sie diese Optionen vermeiden.
   
 ## <a name="error-rows"></a>Fehlerzeilen
 

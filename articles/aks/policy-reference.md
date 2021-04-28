@@ -1,15 +1,15 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Kubernetes Service
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Kubernetes Service. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 40c3d48e7f969eabc6b2ff81a149e0d93fe8e8c1
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 92516094be1ce7cbeb4ea444d2f78e9c5fc5b4c0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500516"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877276"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Integrierte Azure Policy-Definitionen für Azure Kubernetes Service
 

@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 0b24e8e07b4038d6def9945b7c347bb81ae5378b
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: be67e2fb1bafaecd538f6fc671c006ac013cc849
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258179"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135273"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>Erfassen von Metriken zum Spring Cloud Resilience4J-Trennschalter mit Micrometer (Vorschau)
 
@@ -22,7 +22,7 @@ In [spring-cloud-circuit-breaker-demo](https://github.com/spring-cloud-samples/s
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Aktivieren Sie den Java-In-Process-Agent entsprechend der Anleitung [Leitfaden zum Java In-Process Agent für Application Insights](./spring-cloud-howto-application-insights.md#enable-java-in-process-agent-for-application-insights). 
+* Aktivieren Sie den Java-In-Process-Agent entsprechend der Anleitung [Leitfaden zum Java In-Process Agent für Application Insights](./how-to-application-insights.md#enable-java-in-process-agent-for-application-insights). 
 
 * Aktivieren Sie die Dimensionssammlung für Resilience4j-Metriken aus dem [Leitfaden zu Application Insights](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 
@@ -125,6 +125,6 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Application Insights](spring-cloud-howto-application-insights.md)
-* [Verteilte Ablaufverfolgung](spring-cloud-howto-distributed-tracing.md)
-* [Dashboard für Trennschalter](spring-cloud-tutorial-circuit-breaker.md)
+* [Application Insights](./how-to-application-insights.md)
+* [Verteilte Ablaufverfolgung](./how-to-distributed-tracing.md)
+* [Dashboard für Trennschalter](./tutorial-circuit-breaker.md)

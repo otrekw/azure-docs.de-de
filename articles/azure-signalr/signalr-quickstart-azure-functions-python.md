@@ -10,12 +10,12 @@ ms.devlang: python
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: a279c1ed16cac69932001146d4108cec19203e22
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: bfaf0463f1ee4904562a5d7b3dd565c9d149ff35
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536640"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124831"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Schnellstart: Erstellen eines Chatraums mit Azure Functions und SignalR Service mithilfe von Python
 
@@ -29,7 +29,7 @@ Stellen Sie sicher, dass Sie einen Code-Editor wie [Visual Studio Code](https://
 
 Installieren Sie die [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (Version 2.7.1505 oder höher), um in Python programmierte Azure Functions-Apps lokal auszuführen.
 
-Azure Functions erfordert [mindestens Python 3.6](https://www.python.org/downloads/). (Siehe [Unterstützte Python-Versionen](/azure/azure-functions/functions-reference-python#python-version))
+Azure Functions erfordert [mindestens Python 3.6](https://www.python.org/downloads/). (Siehe [Unterstützte Python-Versionen](../azure-functions/functions-reference-python.md#python-version))
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
