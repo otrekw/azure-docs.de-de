@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: ef7e0450725b456a7fb2b1ab61c50d7edece52ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 60e1e06dfdc904683f2d65e984d3c752e1e6a055
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867558"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064681"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Verwenden von SSH-Tunneling zum Zugriff auf die Apache Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Apache Oozie und andere Benutzeroberflächen
 
@@ -151,7 +151,7 @@ Nachdem der Cluster eingerichtet wurde, gehen Sie folgendermaßen vor, um zu üb
     :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png" alt-text="Abbildung der Hadoop NameNode-Benutzeroberfläche":::
 
     > [!NOTE]  
-    > Beachten Sie die URL für diese Seite, die etwa so aussehen sollte: `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`. Bei diesem URI wird der interne vollqualifizierte Domänenname (FQDN) des Knotens verwendet, auf den nur über einen SSH-Tunnel zugegriffen werden kann.
+    > Beachten Sie die URL für diese Seite, die etwa so aussehen sollte: `http://hn*.randomcharacters.cx.internal.cloudapp.net:8088/cluster`. Bei diesem URI wird der interne vollqualifizierte Domänenname (FQDN) des Knotens verwendet, auf den nur über einen SSH-Tunnel zugegriffen werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

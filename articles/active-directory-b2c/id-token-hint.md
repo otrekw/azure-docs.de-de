@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3f8a0562df4b4eeef338ddf357f37d7d0bc8f5a
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97669158"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946635"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen ID-Tokenhinweisprofils in einer benutzerdefinierten Azure Active Directory B2C-Richtlinie
 
@@ -99,7 +99,7 @@ Die folgenden Metadaten sind relevant, wenn ein asymmetrischer Schlüssel verwen
 
 Bei Verwendung eines symmetrischen Schlüssels enthält das Element **CryptographicKeys** die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Dies ist der Kryptografieschlüssel, der zum Überprüfen der JWT-Tokensignatur verwendet wird.|
 
@@ -189,7 +189,7 @@ Sehen Sie sich das .NET-MVC-Controllerbeispiel [TokenMetadataController.cs](http
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>Schritt 1: Vorbereiten eines selbstsignierten Zertifikats
 
-Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie für diese Schrittanleitung ein selbstsigniertes Zertifikat verwenden. Unter Windows können Sie das PowerShell-Cmdlet [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) verwenden, um ein Zertifikat zu generieren.
+Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie für diese Schrittanleitung ein selbstsigniertes Zertifikat verwenden. Unter Windows können Sie das PowerShell-Cmdlet [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) verwenden, um ein Zertifikat zu generieren.
 
 Führen Sie diesen PowerShell-Befehl aus, um ein selbstsigniertes Zertifikat zu generieren. Ändern Sie das Argument `-Subject` entsprechend Ihrer Anwendung und des Azure AD B2C-Mandantennamens. Sie können auch das `-NotAfter`-Datum anpassen, um einen anderen Ablaufzeitpunkt für das Zertifikat anzugeben.
 

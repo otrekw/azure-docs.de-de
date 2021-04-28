@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 8cecd1b57395fa51fd95c824e88885d9c3ae3f09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7056027965bd5e0f41c07835d21b454ab772a55a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023298"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132249"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Einrichten Ihres Azure Percept DK und Bereitstellen Ihres ersten KI-Modells
 
@@ -130,7 +130,7 @@ Gehen Sie wie folgt vor, um sich zu vergewissern, dass Ihr Azure-Konto innerhalb
     - Wählen Sie den Tarif „S1“ (Standard) aus.
 
     > [!NOTE]
-    > Wenn Sie für Ihre Edge-KI-Anwendungen einen höheren [Nachrichtendurchsatz](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling#message-throughput) benötigen, können Sie Ihre IoT Hub-Instanz im Azure-Portal jederzeit [auf einen höheren Standard-Tarif upgraden](https://docs.microsoft.com/azure/iot-hub/iot-hub-upgrade). In den Tarifen B und F wird Azure Percept NICHT unterstützt.
+    > Wenn Sie für Ihre Edge-KI-Anwendungen einen höheren [Nachrichtendurchsatz](../iot-hub/iot-hub-scaling.md#message-throughput) benötigen, können Sie Ihre IoT Hub-Instanz im Azure-Portal jederzeit [auf einen höheren Standard-Tarif upgraden](../iot-hub/iot-hub-upgrade.md). In den Tarifen B und F wird Azure Percept NICHT unterstützt.
 
 1. Die IoT Hub-Bereitstellung kann mehrere Minuten dauern. Klicken Sie nach Abschluss der Bereitstellung auf **Registrieren**.
 

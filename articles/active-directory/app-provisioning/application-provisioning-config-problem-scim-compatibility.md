@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 04/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 268931715500631ac2d10feacebff1d5c65931bf
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256897"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028790"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -51,7 +51,7 @@ Verwenden Sie die weiter unten angegebenen Flags in der Mandanten-URL Ihrer Anwe
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM-Flags zum Ändern des Verhaltens":::
 
 * Verwenden Sie die folgende URL, um das PATCH-Verhalten zu aktualisieren und SCIM-Konformität sicherzustellen (z. B. aktiv als boolescher Wert und ordnungsgemäßes Entfernen von Gruppenmitgliedschaften). Dieses Verhalten ist derzeit nur verfügbar, wenn Sie das Flag verwenden, wird jedoch in den nächsten Monaten zum Standardverhalten. Beachten Sie, dass dieses Vorschauflag bei bedarfsgesteuerter Bereitstellung nicht funktioniert. 
-  * **URL (SCIM-konform):** AzureAdScimPatch062020
+  * **URL (SCIM-konform):** aadOptscim062020
   * **SCIM-RFC-Verweise:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2
   * **Verhalten:**

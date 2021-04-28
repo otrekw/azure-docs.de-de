@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/24/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 76871565e0bb4ca1811d46531d07b89181d07e19
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: b10d31cf069bc4f28a1597ec12160fa6ed98b8ce
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105917"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789553"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)
 
@@ -112,7 +112,7 @@ Weisen Sie Benutzern Rollen für einen bestimmten Namespace mithilfe von Rollenb
 
 Wenn Sie Rollen über den gesamten Cluster oder an Clusterressourcen außerhalb eines bestimmten Namespace binden möchten, verwenden Sie stattdessen *Clusterrollenbindungen*.
 
-#### <a name="clusterrolebinding"></a>Clusterrollenbindung
+#### <a name="clusterrolebinding"></a>ClusterRoleBinding
 
 Mit einer Clusterrollenbindung binden Sie Rollen an Benutzer und wenden sie auf Ressourcen im gesamten Cluster und nicht auf einen bestimmten Namespace an. Mit diesem Ansatz können Sie Ihren Administratoren oder Supporttechnikern Zugriff auf alle Ressourcen im AKS-Cluster gewähren.
 
@@ -170,7 +170,7 @@ In der [Schrittanleitung zu der von AKS verwalteten Azure AD-Integration](manag
 
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ist ein Autorisierungssystem, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht.
 
-| RBAC-System | BESCHREIBUNG |
+| RBAC-System | Beschreibung |
 |---|---|
 | RBAC in Kubernetes | Ist für Kubernetes-Ressourcen innerhalb Ihres AKS-Clusters bestimmt. |
 | Azure RBAC | Ist für Ressourcen innerhalb Ihres Azure-Abonnements bestimmt. |
@@ -267,7 +267,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 
 <!-- LINKS - Internal -->
 [openid-connect]: ../active-directory/develop/v2-protocols-oidc.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: managed-aad.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md

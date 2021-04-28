@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 203af340a8bd48bdb6dee70f92c2ecc39708b8e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cb778d826ef094d71fd27f3c10bc1f2c292baa47
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732328"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862397"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Überwachen von Azure-Ressourcen mit Azure Monitor
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure-Ressourcen generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -131,7 +131,7 @@ Azure Monitor-Protokolle konsolidieren Protokolle und Metriken aus mehreren Dien
 Mithilfe der [Azure PowerShell](/powershell/azure/)- oder [Azure-Befehlszeilenschnittstelle](/cli/azure/) können Sie über eine Befehlszeile auf Überwachungsdaten zugreifen, die von ihrer Ressource gesammelt wurden, oder diese in ein Skript einschließen. 
 
 - Weitere Informationen zum Zugriff auf Metrikdaten über eine Befehlszeilenschnittstelle finden Sie unter [CLI-Metriken – Referenz](/cli/azure/monitor/metrics).
-- Weitere Informationen zum Zugriff auf Azure Monitor-Protokolldaten mithilfe einer Protokollabfrage über eine Befehlszeilenschnittstelle finden Sie unter [CLI-Protokollanalyse – Referenz](/cli/azure/ext/log-analytics/monitor/log-analytics).
+- Weitere Informationen zum Zugriff auf Azure Monitor-Protokolldaten mithilfe einer Protokollabfrage über eine Befehlszeilenschnittstelle finden Sie unter [CLI-Protokollanalyse – Referenz](/cli/azure/monitor/log-analytics).
 - Weitere Informationen zum Zugriff auf Metrikdaten aus Azure PowerShell finden Sie unter [Azure PowerShell-Metriken – Referenz](/powershell/module/azurerm.insights/get-azurermmetric).
 - Weitere Informationen zum Zugriff auf Azure Monitor-Protokolldaten mithilfe einer Protokollabfrage aus Azure PowerShell finden Sie unter [Azure PowerShell-Protokollabfrage – Referenz](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery).
 

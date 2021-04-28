@@ -4,13 +4,13 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 03/15/2021
-ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: fc9af94b07add5728201baaa8fa6992728a60a8c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466496"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786007"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -91,9 +91,10 @@ Wenn Sie für eine bestimmte Metrik eine Warnung anzeigen möchten, diese aber b
 Wenn Sie Warnungen für [spezifische Dimensionswerte einer Metrik](./alerts-metric-overview.md#using-dimensions) ausgeben möchten und diese nicht finden können, sollten Sie den folgenden Hinweis beachten:
 
 1. Es kann einige Minuten dauern, bis die Dimensionswerte in der Liste **Dimensionswerte** angezeigt werden.
-1. Die angezeigten Dimensionswerte basieren auf Metrikdaten, die am letzten Tag erfasst wurden.
-1. Wenn der Dimensionswert noch nicht ausgegeben wurde oder nicht angezeigt wird, können Sie mithilfe der Option „Benutzerdefinierten Wert hinzufügen“ einen benutzerdefinierten Dimensionswert hinzufügen.
-1. Wenn Sie für alle möglichen Werte einer Dimension (einschließlich zukünftiger Werte) eine Warnung ausgeben möchten, wählen Sie die Option „Alle aktuellen und zukünftigen Werte auswählen“ aus.
+2. Die angezeigten Dimensionswerte basieren auf Metrikdaten, die am letzten Tag erfasst wurden.
+3. Wenn der Dimensionswert noch nicht ausgegeben wurde oder nicht angezeigt wird, können Sie mithilfe der Option „Benutzerdefinierten Wert hinzufügen“ einen benutzerdefinierten Dimensionswert hinzufügen.
+4. Wenn Sie für alle möglichen Werte einer Dimension (einschließlich zukünftiger Werte) eine Warnung ausgeben möchten, wählen Sie die Option „Alle aktuellen und zukünftigen Werte auswählen“ aus.
+5. Benutzerdefinierte Metrikdimensionen von Application Insights-Ressourcen sind standardmäßig deaktiviert. Informationen zum Aktivieren der Auflistung von Dimensionen für diese benutzerdefinierten Metriken finden Sie [hier](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>Metrikwarnungsregeln sind für eine gelöschte Ressource weiterhin definiert 
 
@@ -174,7 +175,7 @@ Führen Sie die folgenden Schritte durch, um den derzeitigen Verbrauch durch Met
 
 - PowerShell: [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST-API: [Auflisten nach Abonnement](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI: [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
+- Azure CLI: [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Verwalten von Warnungsregeln mithilfe von Resource Manager-Vorlagen, der REST-API, PowerShell oder der Azure CLI
 

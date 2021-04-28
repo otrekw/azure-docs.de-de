@@ -3,15 +3,15 @@ title: Ausführen von Azure Machine Learning-Pipelines
 description: Hier erfahren Sie, wie Sie Ihre Azure Machine Learning-Pipelines in Ihren Azure Data Factory-Pipelines ausführen.
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: abnarain
-author: nabhishek
+ms.author: weetok
+author: dcstwh
 ms.date: 07/16/2020
-ms.openlocfilehash: d5013bf12647ababb7aa0765a13751e749dae9d8
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: d0b941325d6bbabcb083b5f71a40c145d3ef48d0
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904728"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103469"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Ausführen von Azure Machine Learning-Pipelines in Azure Data Factory-Pipelines
 

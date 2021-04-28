@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/30/2020
-ms.topic: conceptual
-ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 472bc66c75881d622e8ecfe23031f58db773a919
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/22/2021
+ms.topic: how-to
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 6271875c368f637140010401cf2ebe21039be9a9
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518924"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897359"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen 
 
@@ -186,16 +186,6 @@ Das Azure Machine Learning Python SDK bietet die Klasse [PrivateEndpointConfig](
 > [!IMPORTANT]  
 > Das Verwenden eines privaten Endpunkts mit Azure Machine Learning-Arbeitsbereichen befindet sich derzeit in der Public Preview. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.     
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-### <a name="multiple-workspaces-with-private-endpoint"></a>Mehrere Arbeitsbereiche mit privatem Endpunkt
-
-Wenn Sie einen privaten Endpunkt erstellen, wird eine neue private DNS-Zone namens __privatelink.api.azureml.ms__ erstellt. Diese enthält einen Link zum virtuellen Netzwerk. Wenn Sie mehrere Arbeitsbereiche mit privaten Endpunkten in derselben Ressourcengruppe erstellen, kann nur das virtuelle Netzwerk für den ersten privaten Endpunkt zur DNS-Zone hinzugefügt werden. Um den virtuellen Netzwerken, die von den zusätzlichen Arbeitsbereichen bzw. privaten Endpunkten verwendet werden, Einträge hinzuzufügen, führen Sie folgende Schritte aus:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Ressourcengruppe aus, die den Arbeitsbereich enthält. Wählen Sie dann die Ressource namens __privatelink.api.azureml.ms__ für die private DNS-Zone aus.
-2. Klicken Sie unter __Einstellungen__ auf __VNET-Verknüpfungen__.
-3. Wählen Sie __Hinzufügen__. Geben Sie auf der Seite __VNET-Verknüpfung hinzufügen__ einen eindeutigen __Linknamen__ an, und wählen Sie dann das __virtuelle Netzwerk__ aus, das hinzugefügt werden soll. Klicken Sie auf __OK__, um die Netzwerkverknüpfung hinzuzufügen.
-
-Weitere Informationen finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md).
 
 ### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken
 

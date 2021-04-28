@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: efc1438fdc539af278ebff1f292c5fa0a91b7b91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: 24298734a46b8339a2a8818692641b4c10812294
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016099"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104880"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 
@@ -29,15 +29,16 @@ Im Folgenden finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 
 |Ressourcentyp  |Unterstützte Dimensionen |Warnungen mit mehreren Ressourcen| Verfügbare Metriken|
 |---------|---------|-----|----------|
-|Microsoft.Aadiam/azureADMetrics | Ja | Nein | |
+|Microsoft.Aadiam/azureADMetrics | Ja | Nein | [Azure AD](../essentials/metrics-supported.md#microsoftaadiamazureadmetrics) |
 |Microsoft.ApiManagement/service | Ja | Nein | [API Management](../essentials/metrics-supported.md#microsoftapimanagementservice) |
 |Microsoft.AppConfiguration/configurationStores |Ja | Nein | [App Configuration](../essentials/metrics-supported.md#microsoftappconfigurationconfigurationstores) |
-|Microsoft.AppPlatform/Spring | Ja | Nein | [Azure Spring Cloud](../essentials/metrics-supported.md#microsoftappplatformspring) |
+|Microsoft.AppPlatform/spring | Ja | Nein | [Azure Spring Cloud](../essentials/metrics-supported.md#microsoftappplatformspring) |
 |Microsoft.Automation/automationAccounts | Ja| Nein | [Automation-Konten](../essentials/metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft.AVS/privateClouds | Nein | Nein | [Azure VMware Solution](../essentials/metrics-supported.md#microsoftavsprivateclouds) |
 |Microsoft.Batch/batchAccounts | Ja | Nein | [Batch-Konten](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
 |Microsoft.BotService/botServices | Ja | Nein  | [Botdienste](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
-|Microsoft.Cache/Redis | Ja | Ja | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
+|Microsoft.Cache/redis | Ja | Ja | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
+|microsoft.Cdn/profiles | Ja | Nein | [CDN-Profile](../essentials/metrics-supported.md#microsoftcdnprofiles) |
 |Microsoft.ClassicCompute/domainNames/slots/roles | Nein | Nein | [Cloud Services (klassisch)](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft.ClassicCompute/virtualMachines | Nein | Nein | [Virtuelle Computer (klassisch)](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft.ClassicStorage/storageAccounts | Ja | Nein | [Speicherkonten (klassisch)](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccounts) |

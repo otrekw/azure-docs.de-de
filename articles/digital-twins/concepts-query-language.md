@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef583d21647681cb1be730ea93a67a9339c74aae
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490975"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930981"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Abfragesprache für Azure Digital Twins
 
@@ -39,7 +39,7 @@ Beachten Sie beim Schreiben von Abfragen für Azure Digital Twins Folgendes:
 * **Denken Sie an die Beachtung der Groß-/Kleinschreibung:** Bei allen Azure Digital Twins-Abfragevorgängen wird die Groß-/Kleinschreibung beachtet. Verwenden Sie daher genau die in den Modellen definierten Namen. Wenn Eigenschaftennamen falsch oder in falscher Groß-/Kleinschreibung geschrieben werden, ist das Resultset leer, und es werden keine Fehler zurückgegeben.
 * **Versehen Sie einfache Anführungszeichen mit Escapezeichen:** Wenn die Daten Ihres Abfragetexts ein einfaches Anführungszeichen enthalten, muss dieses mit dem Escapezeichen `\` versehen werden. Im folgenden Beispiel wird der Umgang mit dem Eigenschaftswert *D'Souza* gezeigt:
 
-  :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="EscapedSingleQuote":::
+  :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="EscapedSingleQuote":::
 
 ## <a name="reference-expressions-and-conditions"></a>Referenz: Ausdrücke und Bedingungen
 

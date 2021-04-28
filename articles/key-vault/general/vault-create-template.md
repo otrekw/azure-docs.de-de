@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 3/14/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e70906cbf26c899744bfbe137da4ce9cfa651b20
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d157419614ee3a3f89036177e962e5b7fc4466b2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753144"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815030"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Erstellen eines Azure-Schlüsseltresors und von Tresorzugriffsrichtlinien mithilfe einer Resource Manager-Vorlage
 
@@ -213,10 +213,10 @@ Write-Host "Press [ENTER] to continue..."
 
 - Lesen Sie die [Übersicht über den Azure-Schlüsseltresor](../general/overview.md).
 - Hier finden Sie weitere Informationen zum [Azure-Ressourcen-Manager](../../azure-resource-manager/management/overview.md).
-- [Azure Key Vault-Sicherheitsübersicht](security-overview.md)
+- [Azure Key Vault-Sicherheitsübersicht](security-features.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Sicherer Zugriff auf einen Schlüsseltresor](security-overview.md)
+- [Sicherer Zugriff auf einen Schlüsseltresor](security-features.md)
 - [Authentifizieren bei einem Schlüsseltresor](authentication.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](developers-guide.md)

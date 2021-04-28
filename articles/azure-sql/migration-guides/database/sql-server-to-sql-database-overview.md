@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: f515725ea0f306546039b92d953254a093b15b8b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 72e27e79bc1eea7633d7594f1f72e31abbfd7744
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065173"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136515"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>Migrationsübersicht: SQL Server zu Azure SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ Sie können SQL Server-Datenbanken migrieren, die vor Ort oder folgenden Systeme
 - Compute Engine in Google Cloud Platform (GCP)  
 - Cloud-SQL für SQL Server in GCP 
 
-Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
+Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
 ## <a name="overview"></a>Übersicht
 
@@ -195,7 +195,7 @@ Weitere Unterstützung finden Sie in den folgenden Ressourcen, die für reale Mi
 |[Automatisierung der PerfMon-Datensammlung mithilfe von Logman](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Sie können das Logman-Tool verwenden, um PerfMon-Daten zu erfassen (damit Sie die grundlegende Leistung besser verstehen können) und Empfehlungen für die Migration der virtuellen Maschine zu erhalten. Das Tool verwendet die ausführbare Datei „logman.exe“, um den Befehl zu erstellen, der die Leistungsindikatoren für eine SQL Server-Remoteinstanz erstellt, startet, beendet und löscht.|
 |[Whitepaper zur Datenbankmigration zu Azure SQL-Datenbank mithilfe von BACPAC-Dateien](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20-%20Benchmarks%20and%20Steps%20to%20Import%20to%20Azure%20SQL%20DB%20Single%20Database%20from%20BACPAC.pdf)|Dieses Whitepaper enthält Anleitungen und Schritte, die Ihnen helfen, die Migration von SQL Server zu Azure SQL-Datenbank mithilfe von BACPAC-Dateien zu beschleunigen.|
 
-Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptaufgabe dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
+Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

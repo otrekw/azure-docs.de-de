@@ -1,17 +1,17 @@
 ---
 title: 'Azure Data Factory: Häufig gestellte Fragen '
 description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Azure Data Factory.
-author: ssabat
-ms.author: susabat
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e40f5bfb47ff4686828457308882fb9f50ab5b4a
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 2027e3555a7eb616ad024ec00bf6b0f8f452167c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906132"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258519"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 

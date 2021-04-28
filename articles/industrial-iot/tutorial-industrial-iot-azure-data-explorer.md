@@ -6,16 +6,16 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 4c344dc09ad6c8aa4b2aa431952fc271d946b60d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9a18609ab0dc41031a22db6d8b21c1fff83920f2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104787240"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137308"
 ---
 # <a name="tutorial-pull-azure-industrial-iot-data-into-adx"></a>Tutorial: Pullen von Azure Industrial IoT-Daten in ADX
 
-Die IIoT-Plattform (Azure Industrial IoT) kombiniert Edge-Module und cloudbasierte Microservices mit einer Reihe von Azure-PaaS-Diensten, um Funktionen für die Ermittlung von Industrial-Assets und die Erfassung von Daten aus diesen Assets per OPC UA zu ermöglichen. [Azure Data Explorer (ADX)](https://docs.microsoft.com/azure/data-explorer) ist ein natürliches Ziel für IIoT-Daten und bietet Datenanalysefeatures, die flexible Abfragen für die erfassten Daten der OPC UA-Server ermöglichen, die über OPC Publisher mit der IoT Hub-Instanz verbunden sind. Von einem ADX-Cluster können Daten zwar direkt aus der IoT Hub-Instanz erfasst werden, von der IIoT-Plattform werden die Daten jedoch noch weiter verarbeitet, um ihren Nutzen zu erhöhen, bevor sie auf dem Event Hub platziert werden, der bei Verwendung einer vollständigen Bereitstellung der Microservices bereitgestellt wird. (Sehen Sie sich dazu die IIoT-Plattformarchitektur an.)
+Die IIoT-Plattform (Azure Industrial IoT) kombiniert Edge-Module und cloudbasierte Microservices mit einer Reihe von Azure-PaaS-Diensten, um Funktionen für die Ermittlung von Industrial-Assets und die Erfassung von Daten aus diesen Assets per OPC UA zu ermöglichen. [Azure Data Explorer (ADX)](/azure/data-explorer) ist ein natürliches Ziel für IIoT-Daten und bietet Datenanalysefeatures, die flexible Abfragen für die erfassten Daten der OPC UA-Server ermöglichen, die über OPC Publisher mit der IoT Hub-Instanz verbunden sind. Von einem ADX-Cluster können Daten zwar direkt aus der IoT Hub-Instanz erfasst werden, von der IIoT-Plattform werden die Daten jedoch noch weiter verarbeitet, um ihren Nutzen zu erhöhen, bevor sie auf dem Event Hub platziert werden, der bei Verwendung einer vollständigen Bereitstellung der Microservices bereitgestellt wird. (Sehen Sie sich dazu die IIoT-Plattformarchitektur an.)
 
 In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
@@ -31,13 +31,13 @@ Das durch die Klasse „Microsoft.Azure.IIoT.OpcUa.Subscriber.Models.MonitoredIt
 ![Struktur](media/tutorial-iiot-data-adx/industrial-iot-in-azure-data-explorer-pic-1.png)
 
 Im Anschluss finden Sie die Schritte, die ausgeführt werden müssen, um die Daten im ADX-Cluster verfügbar zu machen und effektive Abfragen zu ermöglichen.  
-1. Erstellen Sie einen ADX-Cluster. Falls Sie mit der IIoT-Plattform noch keinen ADX-Cluster bereitgestellt haben oder einen anderen Cluster verwenden möchten, führen Sie die [hier](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#create-a-cluster) beschriebenen Schritte aus. 
-2. Aktivieren Sie die Streamingerfassung für den ADX-Cluster, wie [hier](https://docs.microsoft.com/azure/data-explorer/ingest-data-streaming#enable-streaming-ingestion-on-your-cluster) beschrieben. 
-3. Erstellen Sie eine ADX-Datenbank. Die entsprechenden Schritte finden Sie [hier](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#create-a-database).
+1. Erstellen Sie einen ADX-Cluster. Falls Sie mit der IIoT-Plattform noch keinen ADX-Cluster bereitgestellt haben oder einen anderen Cluster verwenden möchten, führen Sie die [hier](/azure/data-explorer/create-cluster-database-portal#create-a-cluster) beschriebenen Schritte aus. 
+2. Aktivieren Sie die Streamingerfassung für den ADX-Cluster, wie [hier](/azure/data-explorer/ingest-data-streaming#enable-streaming-ingestion-on-your-cluster) beschrieben. 
+3. Erstellen Sie eine ADX-Datenbank. Die entsprechenden Schritte finden Sie [hier](/azure/data-explorer/create-cluster-database-portal#create-a-database).
 
-Im folgenden Schritt wird die [ADX-Weboberfläche](https://docs.microsoft.com/azure/data-explorer/web-query-data) verwendet, um die erforderlichen Abfragen auszuführen. Fügen Sie Ihren Cluster der Weboberfläche hinzu, wie unter dem Link beschrieben.  
+Im folgenden Schritt wird die [ADX-Weboberfläche](/azure/data-explorer/web-query-data) verwendet, um die erforderlichen Abfragen auszuführen. Fügen Sie Ihren Cluster der Weboberfläche hinzu, wie unter dem Link beschrieben.  
  
-4. Erstellen Sie in ADX eine Tabelle für die erfassten Daten.  Das Schema der ADX-Tabelle kann zwar mithilfe der Klasse „MonitoredItemMessageModel“ definiert werden, es empfiehlt sich jedoch, die Daten zunächst in einer Stagingtabelle mit einer Spalte vom Typ [Dynamisch](https://docs.microsoft.com/azure/data-explorer/kusto/query/scalar-data-types/dynamic) zu erfassen. Dadurch haben Sie mehr Flexibilität bei der Handhabung der Daten und bei der Verarbeitung für andere Tabellen, die für mehrere Anwendungsfälle geeignet sind (sowie ggf. die Möglichkeit, die Daten mit anderen Datenquellen zu kombinieren). Mit der folgenden ADX-Abfrage wird die Stagingtabelle „iiot_stage“ mit einer Spalte namens „payload“ erstellt:
+4. Erstellen Sie in ADX eine Tabelle für die erfassten Daten.  Das Schema der ADX-Tabelle kann zwar mithilfe der Klasse „MonitoredItemMessageModel“ definiert werden, es empfiehlt sich jedoch, die Daten zunächst in einer Stagingtabelle mit einer Spalte vom Typ [Dynamisch](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) zu erfassen. Dadurch haben Sie mehr Flexibilität bei der Handhabung der Daten und bei der Verarbeitung für andere Tabellen, die für mehrere Anwendungsfälle geeignet sind (sowie ggf. die Möglichkeit, die Daten mit anderen Datenquellen zu kombinieren). Mit der folgenden ADX-Abfrage wird die Stagingtabelle „iiot_stage“ mit einer Spalte namens „payload“ erstellt:
 
 ```
 .create table ['iiot_stage']  (['payload']:dynamic)
@@ -50,7 +50,7 @@ Darüber hinaus benötigen wir eine JSON-Erfassungszuordnung, um den Cluster anz
 ```
 
 5. Die Tabelle ist nun bereit, Daten aus dem Event Hub zu empfangen. 
-6. Gehen Sie wie [hier](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub#connect-to-the-event-hub) beschrieben vor, um den Event Hub mit dem ADX-Cluster zu verbinden und damit zu beginnen, Daten in der Stagingtabelle zu erfassen. Wir müssen lediglich die Verbindung herstellen, da wir bereits über einen Event Hub verfügen, der von der IIoT-Plattform bereitgestellt wurde.  
+6. Gehen Sie wie [hier](/azure/data-explorer/ingest-data-event-hub#connect-to-the-event-hub) beschrieben vor, um den Event Hub mit dem ADX-Cluster zu verbinden und damit zu beginnen, Daten in der Stagingtabelle zu erfassen. Wir müssen lediglich die Verbindung herstellen, da wir bereits über einen Event Hub verfügen, der von der IIoT-Plattform bereitgestellt wurde.  
 7. Nach erfolgreicher Überprüfung der Verbindung werden der Tabelle nach und nach Daten hinzugefügt, die wir nach einer kurzen Wartezeit untersuchen können. Verwenden Sie die folgende Abfrage auf der ADX-Weboberfläche, um sich ein Datenbeispiel mit zehn Zeilen anzusehen. Wie Sie sehen, ähneln die Nutzdaten der bereits erwähnten Klasse „MonitoredItemMessageModel“.
 
 ![Abfrage](media/tutorial-iiot-data-adx/industrial-iot-in-azure-data-explorer-pic-2.png)
@@ -95,9 +95,9 @@ iiot_stage
 }
 ```
 
-Weitere Informationen zur Zuordnung von Datentypen in ADX finden Sie [hier](https://docs.microsoft.com/azure/data-explorer/kusto/query/scalar-data-types/dynamic). Informationen zu Funktionen in ADX stehen [hier](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/stored-functions) zur Verfügung.
+Weitere Informationen zur Zuordnung von Datentypen in ADX finden Sie [hier](/azure/data-explorer/kusto/query/scalar-data-types/dynamic). Informationen zu Funktionen in ADX stehen [hier](/azure/data-explorer/kusto/query/schema-entities/stored-functions) zur Verfügung.
  
-11. Wenden Sie die Funktion aus dem vorherigen Schritt mithilfe einer Aktualisierungsrichtlinie auf die analysierte Tabelle an. Durch die [Aktualisierungsrichtlinie](https://docs.microsoft.com/azure/data-explorer/kusto/management/updatepolicy) wird ADX angewiesen, Daten automatisch an eine Zieltabelle anzufügen, wenn neue Daten in die Quelltabelle eingefügt werden (basierend auf einer Transformationsabfrage, die für die in die Quelltabelle eingefügten Daten ausgeführt wird). Wir können die folgende Abfrage verwenden, um die analysierte Tabelle als Ziel und die Stagingtabelle als Quelle für die Aktualisierungsrichtlinie zuzuweisen, die durch die im vorherigen Schritt erstellte Funktion definiert wird.
+11. Wenden Sie die Funktion aus dem vorherigen Schritt mithilfe einer Aktualisierungsrichtlinie auf die analysierte Tabelle an. Durch die [Aktualisierungsrichtlinie](/azure/data-explorer/kusto/management/updatepolicy) wird ADX angewiesen, Daten automatisch an eine Zieltabelle anzufügen, wenn neue Daten in die Quelltabelle eingefügt werden (basierend auf einer Transformationsabfrage, die für die in die Quelltabelle eingefügten Daten ausgeführt wird). Wir können die folgende Abfrage verwenden, um die analysierte Tabelle als Ziel und die Stagingtabelle als Quelle für die Aktualisierungsrichtlinie zuzuweisen, die durch die im vorherigen Schritt erstellte Funktion definiert wird.
 
 ```
 .alter table iiot_parsed policy update

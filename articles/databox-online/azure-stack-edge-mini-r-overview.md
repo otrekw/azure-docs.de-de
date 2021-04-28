@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 14a425c3aca3a1c296b96855b2c920d558e89f9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d733f2642df4ff9f74d8013d45d67159fbb032f8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585977"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139271"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Was ist Azure Stack Edge Mini R?
 
@@ -79,7 +79,7 @@ Das physische Azure Stack Edge Mini R-Gerät, die Azure-Ressource und das Ziels
 
 - **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar. Die Regionen, in denen die Speicherkonten Azure Stack Edge Mini R-Daten speichern, sollten sich in der Nähe des Gerätestandorts befinden, um optimale Leistung zu erzielen. Ein weit entfernt vom Gerät befindliches Speicherkonto führt zu langen Wartezeiten und einer langsameren Leistung.
 
-Der Azure Stack Edge-Dienst ist ein nicht regionaler Dienst. Weitere Informationen finden Sie unter [Regionen und Verfügbarkeitszonen in Azure](https://docs.microsoft.com/azure/availability-zones/az-overview). Beim Azure Stack Edge-Dienst besteht keine Abhängigkeit von einer bestimmten Azure-Region. Deshalb ist er resilienter gegen zonenweite oder regionsweite Ausfälle.
+Der Azure Stack Edge-Dienst ist ein nicht regionaler Dienst. Weitere Informationen finden Sie unter [Regionen und Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md). Beim Azure Stack Edge-Dienst besteht keine Abhängigkeit von einer bestimmten Azure-Region. Deshalb ist er resilienter gegen zonenweite oder regionsweite Ausfälle.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

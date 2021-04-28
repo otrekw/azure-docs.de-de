@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: 19de46bc87b72ada221c63e36e87d0545304d344
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2be560d16b133696c520b8872406ff6a36b0087b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122152"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137110"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Verwenden des Inhaltstyps zum Speichern von JSON-Schlüssel-Wert-Paaren in App Configuration
 
@@ -170,7 +170,7 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 ```
 
 > [!NOTE]
-> Wenn Ihr App Configuration-Store Schlüssel-Wert-Paare ohne JSON-Inhaltstyp aufweist, werden diese ebenfalls im Zeichenfolgenformat in dieselbe Datei exportiert. Wenn lediglich die JSON-Schlüssel-Wert-Paare exportiert werden sollen, weisen Sie Ihren JSON-Schlüssel-Wert-Paaren eine eindeutige Bezeichnung oder ein Präfix zu, und filtern Sie die Inhalte beim Export nach dieser Bezeichnung oder diesem Präfix.
+> Wenn Ihr App Configuration-Store Schlüssel-Wert-Paare ohne JSON-Inhaltstyp aufweist, werden diese ebenfalls im Zeichenfolgenformat in dieselbe Datei exportiert.
 
 
 ## <a name="consuming-json-key-values-in-applications"></a>Verwenden von JSON-Schlüssel-Wert-Paaren in Anwendungen

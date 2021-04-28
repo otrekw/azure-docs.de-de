@@ -15,12 +15,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca99a997d621bfd2455e909b36b6802775b20ac2
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: dfa329999cb7b53835907196ceaa9b02920da149
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074606"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124255"
 ---
 # <a name="adsync-service-account"></a>ADSync-Dienstkonto
 Azure AD Connect installiert einen lokalen Dienst, der die Synchronisierung zwischen Active Directory und Azure Active Directory orchestriert.  Der Synchronisierungsdienst Microsoft Azure AD Sync (ADSync) wird auf einem Server in Ihrer lokalen Umgebung ausgeführt.  Die Anmeldeinformationen für den Dienst sind in den Express-Installationen standardmäßig festgelegt, können aber an die Sicherheitsanforderungen Ihrer Organisation angepasst werden.  Diese Anmeldeinformationen werden nicht verwendet, um eine Verbindung mit Ihren lokalen Gesamtstrukturen oder Azure Active Directory herzustellen.
@@ -53,8 +53,8 @@ Legende:
 - Nicht fett formatiert: unterstützte Option 
 - Lokales Konto: lokales Benutzerkonto auf dem Server 
 - Domänenkonto: Domänenbenutzerkonto 
-- sMSA: [eigenständig verwaltetes Dienstkonto](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
-- gMSA: [gruppenverwaltetes Dienstkonto](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
+- sMSA: [eigenständig verwaltetes Dienstkonto](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA: [gruppenverwaltetes Dienstkonto](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
 
 |Computertyp |**LocalDB</br> Express**|**LocalDB/LocalSQL</br> Benutzerdefiniert**|**SQL-Remotecomputer </br> Benutzerdefiniert**|
 |-----|-----|-----|-----|
@@ -69,11 +69,11 @@ Ein virtuelles Dienstkonto ist ein besonderer Typ eines verwalteten lokalen Kont
 
 Das virtuelle Dienstkonto ist für den Einsatz in Szenarien vorgesehen, in denen das Synchronisierungsmodul und SQL sich auf demselben Server befinden. Wenn Sie einen SQL-Remotecomputer verwenden, empfehlen wir stattdessen den Einsatz eines gruppenverwalteten Dienstkontos. 
 
-Das virtuelle Dienstkonto kann aufgrund von Problemen mit der [Windows-Datenschutz-API (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) nicht auf einem Domänencontroller verwendet werden. 
+Das virtuelle Dienstkonto kann aufgrund von Problemen mit der [Windows-Datenschutz-API (DPAPI)](/previous-versions/ms995355(v=msdn.10)) nicht auf einem Domänencontroller verwendet werden. 
 
 ## <a name="managed-service-account"></a>Verwaltetes Dienstkonto 
 
-Wenn Sie einen Remoteserver mit SQL Server verwenden, empfehlen wir den Einsatz eines gruppenverwalteten Dienstkontos. Weitere Informationen zum Vorbereiten von Active Directory für das gruppenverwaltete Dienstkonto finden Sie unter [Gruppenverwaltete Dienstkonten: Übersicht](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)). 
+Wenn Sie einen Remoteserver mit SQL Server verwenden, empfehlen wir den Einsatz eines gruppenverwalteten Dienstkontos. Weitere Informationen zum Vorbereiten von Active Directory für das gruppenverwaltete Dienstkonto finden Sie unter [Gruppenverwaltete Dienstkonten: Übersicht](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)). 
 
 Um diese Option zu verwenden, wählen Sie auf der Seite [Erforderliche Komponenten installieren](how-to-connect-install-custom.md#install-required-components) die Optionen **Vorhandenes Dienstkonto verwenden** und **Verwaltetes Dienstkonto**. 
 

@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Sie die Aufteilung von Datasets und die Kreuzvali
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, automl
+ms.topic: how-to
+ms.custom: automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: 31d3dc2c2d8194541ba1fe7d0865e6c939d75f73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00c3cd6f6a4e5878a3a426aa5622cc53487f2bdd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501581"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131402"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurieren von Datenaufteilung und Kreuzvalidierung im automatisierten maschinellen Lernen
 
@@ -47,7 +47,7 @@ Für diesen Artikel ist Folgendes erforderlich:
 
 ## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>Standarddatenaufteilung und Kreuzvalidierung beim maschinellen Lernen
 
-Verwenden Sie das [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)-Objekt zum Definieren Ihrer Experiment- und Trainingseinstellungen. Beachten Sie im folgenden Codeausschnitt, dass nur die erforderlichen Parameter definiert sind, d. h., die Parameter für `n_cross_validation` oder `validation_ data` sind **nicht** enthalten.
+Verwenden Sie das [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)-Objekt zum Definieren Ihrer Experiment- und Trainingseinstellungen. Beachten Sie im folgenden Codeausschnitt, dass nur die erforderlichen Parameter definiert sind, d. h., die Parameter für `n_cross_validations` oder `validation_data` sind **nicht** enthalten.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -62,7 +62,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-Wenn Sie nicht explizit die Parameter `validation_data` oder `n_cross_validation` angeben, werden beim automatisierten maschinellen Lernen Standardverfahren angewandt, die von der Anzahl der Zeilen im übergebenen einzelnen Dataset `training_data` abhängen:
+Wenn Sie nicht explizit die Parameter `validation_data` oder `n_cross_validations` angeben, werden beim automatisierten maschinellen Lernen Standardverfahren angewandt, die von der Anzahl der Zeilen im übergebenen einzelnen Dataset `training_data` abhängen:
 
 |Größe der Trainings&nbsp;daten&nbsp;| Validierungsverfahren |
 |---|-----|

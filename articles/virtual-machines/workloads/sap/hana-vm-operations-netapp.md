@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de8af71928ad6a83d4930e4e6e0b8dd257148111
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09fc8f9697f418533131e86c069afd3157a71c78
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666620"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142979"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA
 
@@ -137,7 +137,7 @@ Das gleiche gilt für das Volume, das Sie für das Schreiben vollständiger HANA
  
 
 ## <a name="backup"></a>Backup
-Neben Streamingsicherungen und dem Azure Backup-Dienst, der SAP HANA-Datenbanken wie im Artikel [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](./sap-hana-backup-guide.md) beschrieben sichert, eröffnet Azure NetApp Files die Möglichkeit, speicherbasierte Momentaufnahmensicherungen auszuführen. 
+Neben Streamingsicherungen und dem Azure Backup-Dienst, der SAP HANA-Datenbanken wie im Artikel [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](../../../backup/sap-hana-db-about.md) beschrieben sichert, eröffnet Azure NetApp Files die Möglichkeit, speicherbasierte Momentaufnahmensicherungen auszuführen. 
 
 SAP HANA unterstützt:
 

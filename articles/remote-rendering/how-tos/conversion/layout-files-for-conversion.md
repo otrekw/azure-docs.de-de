@@ -5,20 +5,23 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a094755dfb9381b1e4d6abdf1c0e6342d7427c1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91318074"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308438"
 ---
 # <a name="laying-out-files-for-conversion"></a>Festlegen des Layouts von Dateien für die Konvertierung
 
 Um eine Ressource ordnungsgemäß zu verarbeiten, muss der Konvertierungsdienst alle Eingabedateien finden können.
 Diese bestehen aus der zu konvertierenden Hauptressourcendatei und in der Regel aus anderen Dateien, auf die in den Pfaden innerhalb der Ressourcendatei verwiesen wird.
-Der Anforderung zum Konvertieren einer Ressource werden zwei Parameter übergeben, die bestimmen, wie der Konvertierungsdienst diese Dateien findet: Der `input.folderPath` (optional) und der `input.inputAssetPath`.
+Der Anforderung zum Konvertieren einer Ressource werden zwei Parameter übergeben, die bestimmen, wie der Konvertierungsdienst diese Dateien findet: Der `settings.inputLocation.blobPrefix` (optional) und der `settings.inputLocation.relativeInputAssetPath`.
 Sie sind vollständig auf der Seite [Verwenden der REST-API für die Modellkonvertierung](conversion-rest-api.md) dokumentiert.
-Für das Dateienlayout ist wichtig zu beachten, dass der `folderPath` einen kompletten Satz von Dateien festlegt, die bei der Verarbeitung der Ressource für den Konvertierungsdienst verfügbar sind.
+Für das Dateienlayout ist wichtig zu beachten, dass der `BlobPrefix` einen kompletten Satz von Dateien festlegt, die bei der Verarbeitung der Ressource für den Konvertierungsdienst verfügbar sind.
+
+> [!Note]
+> Der Dienst lädt alle Dateien unter dem input.BlobPrefix herunter. Vergewissern Sie sich, dass Dateinamen und Pfade die [Windows-Grenzwerte für die Pfadlänge](https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation) nicht überschreiten, um Probleme mit dem Dienst zu vermeiden. 
 
 ## <a name="placing-files-so-they-can-be-found"></a>Platzieren von Dateien, sodass diese gefunden werden können
 

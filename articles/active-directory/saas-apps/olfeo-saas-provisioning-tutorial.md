@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2021
 ms.author: Zhchia
-ms.openlocfilehash: b74175c7847bb19aa9410edd613afbfe1d762d05
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0afd2e2420868e40847ff1243fc61fb5b15c4853
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105548780"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144084"
 ---
 # <a name="tutorial-configure-olfeo-saas-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Olfeo SAAS für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Olfeo SAAS als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Nach der Konfiguration stellt Azure AD automatisch mithilfe des Azure AD-Bereitstellungsdiensts Benutzer und Gruppen für [Olfeo SAAS](https://www.olfeo.com) bereit bzw. hebt deren Bereitstellung auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md). 
+In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Olfeo SAAS als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Nach der Konfiguration stellt Azure AD automatisch mithilfe des Azure AD-Bereitstellungsdiensts Benutzer und Gruppen für [Olfeo SAAS](https://www.olfeo.com) bereit bzw. hebt deren Bereitstellung auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Unterstützte Funktionen
@@ -60,7 +60,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-3-add-olfeo-saas-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Olfeo SAAS aus dem Azure AD-Anwendungskatalog
 
-Fügen Sie Olfeo SAAS aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in Olfeo SAAS zu beginnen. Wenn Sie Olfeo SAAS zuvor für einmaliges Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-gallery-app.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
+Fügen Sie Olfeo SAAS aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in Olfeo SAAS zu beginnen. Wenn Sie Olfeo SAAS zuvor für einmaliges Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Schritt 4. Definieren der Benutzer für den Bereitstellungsbereich 
 
@@ -107,7 +107,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Olfeo SAAS synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Olfeo SAAS für Updatevorgänge verwendet werden. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern, müssen Sie sicherstellen, dass die Olfeo SAAS-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-   |Attribut|Typ|Unterstützung für das Filtern|
+   |Attribut|type|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |displayName|String|
@@ -123,7 +123,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Olfeo SAAS synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in Olfeo SAAS für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |Attribut|Typ|Unterstützung für das Filtern|
+      |attribute|type|Unterstützung für das Filtern|
       |---|---|---|
       |displayName|String|&check;|
       |externalId|String|

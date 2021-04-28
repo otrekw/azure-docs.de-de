@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: ac2d1ea17460c56a3369d00d2cc8e41cca616363
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b76812abb80c466480e9982a6c8c4ace64fab624
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310919"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139667"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen    
 
@@ -127,7 +127,7 @@ Keiner der Legacytarife bietet regionsbezogene Preise.
 
 ## <a name="log-analytics-and-azure-defender-security-center"></a>Log Analytics und Azure Defender (Security Center)
 
-Die Abrechnung für [Azure Defender (Security Center)](../../security-center/index.yml) ist eng mit der Log Analytics-Abrechnung verbunden. Azure Defender bietet eine Zuordnung von 500 MB/Knoten/Tag für die folgende Teilmenge von [Sicherheitsdatentypen](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) und die Datentypen „Update“ und „UpdateSummary“, wenn die Lösung für die Updateverwaltung nicht im Arbeitsbereich ausgeführt wird oder die Zielgruppenadressierung aktiviert ist. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/security-center/security-center-pricing#what-data-types-are-included-in-the-500-mb-free-data-limit). Wenn für den Arbeitsbereich der Legacytarif „Pro Knoten“ gilt, werden die Azure Defender- und Log Analytics-Zuordnungen kombiniert und gemeinsam auf alle abrechenbaren erfassten Daten angewendet.  
+Die Abrechnung für [Azure Defender (Security Center)](../../security-center/index.yml) ist eng mit der Log Analytics-Abrechnung verbunden. Azure Defender bietet eine Zuordnung von 500 MB/Knoten/Tag für die folgende Teilmenge von [Sicherheitsdatentypen](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) und die Datentypen „Update“ und „UpdateSummary“, wenn die Lösung für die Updateverwaltung nicht im Arbeitsbereich ausgeführt wird oder die Zielgruppenadressierung aktiviert ist. Weitere Informationen finden Sie [hier](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance). Wenn für den Arbeitsbereich der Legacytarif „Pro Knoten“ gilt, werden die Azure Defender- und Log Analytics-Zuordnungen kombiniert und gemeinsam auf alle abrechenbaren erfassten Daten angewendet.  
 
 ## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums
 
@@ -239,7 +239,7 @@ Die tägliche Obergrenze kann über ARM konfiguriert werden, indem Sie den Param
 _LogOperation | where Operation == "Workspace Configuration" | where Detail contains "Daily quota"
 ```
 
-Weitere Informationen zur Funktion „_LogOperation“ finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/logs/monitor-workspace). 
+Weitere Informationen zur Funktion „_LogOperation“ finden Sie [hier](./monitor-workspace.md). 
 
 ### <a name="view-the-effect-of-the-daily-cap"></a>Anzeigen der Auswirkung der täglichen Obergrenze
 
@@ -261,7 +261,7 @@ Usage
 
 Im Azure-Portal wird bei Erreichen des Schwellenwerts für das Datenlimit zwar ein visueller Hinweis angezeigt, dieses Verhalten steht jedoch möglicherweise nicht im Einklang mit der gewünschten Behandlung von Betriebsproblemen, die eine umgehende Reaktion erfordern.  Wenn Sie eine Warnbenachrichtigung erhalten möchten, können Sie in Azure Monitor eine neue Warnregel erstellen.  Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen](../alerts/alerts-metric.md).
 
-Im Anschluss finden Sie die empfohlenen Einstellungen für die Warnung zur Abfrage der Tabelle `Operation` mithilfe der Funktion `_LogOperation`. (Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/logs/monitor-workspace).) 
+Im Anschluss finden Sie die empfohlenen Einstellungen für die Warnung zur Abfrage der Tabelle `Operation` mithilfe der Funktion `_LogOperation`. (Weitere Informationen finden Sie [hier](./monitor-workspace.md).) 
 
 - Ziel: Wählen Sie Ihre Log Analytics-Ressource aus.
 - Kriterien: 
@@ -352,7 +352,7 @@ Beachten Sie, dass durch die Klausel `where _IsBillable = true` Datentypen besti
 
 ### <a name="data-volume-by-solution"></a>Datenvolumen nach Lösung
 
-Die Abfrage, mit der die abrechenbare Datenmenge nach Lösung während des letzten Monats (ohne den letzten angebrochenen Tag) angezeigt wird, kann unter Verwendung des Datentyps [Usage](https://docs.microsoft.com/azure/azure-monitor/reference/tables/usage) (Nutzung) wie folgt erstellt werden:
+Die Abfrage, mit der die abrechenbare Datenmenge nach Lösung während des letzten Monats (ohne den letzten angebrochenen Tag) angezeigt wird, kann unter Verwendung des Datentyps [Usage](/azure/azure-monitor/reference/tables/usage) (Nutzung) wie folgt erstellt werden:
 
 ```kusto
 Usage 
@@ -486,7 +486,7 @@ Hier finden Sie einige Vorschläge zum Verringern der erfassten Protokolle:
 
 | Quelle mit hohem Datenvolumen | Reduzieren des Datenvolumens |
 | -------------------------- | ------------------------- |
-| Datensammlungsregeln      | Der [Azure Monitor-Agent](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview) verwendet Datensammlungsregeln, um das Sammeln von Daten zu verwalten. Sie können die [Datensammlung einschränken](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-azure-monitor-agent#limit-data-collection-with-custom-xpath-queries), indem Sie benutzerdefinierte XPath-Abfragen verwenden. | 
+| Datensammlungsregeln      | Der [Azure Monitor-Agent](../agents/azure-monitor-agent-overview.md) verwendet Datensammlungsregeln, um das Sammeln von Daten zu verwalten. Sie können die [Datensammlung einschränken](../agents/data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries), indem Sie benutzerdefinierte XPath-Abfragen verwenden. | 
 | Container Insights         | [Konfigurieren Sie Container Insights](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost), um nur die Daten zu erfassen, die Sie benötigen. |
 | Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](../../security-center/security-center-enable-data-collection.md#data-collection-tier) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für die <br> - [Überwachung der Filterplattform](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [Überwachung der Registrierung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [Überwachung des Dateisystems](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [Überwachung des Kernelobjekts](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [Überwachung der Handleänderung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - Überwachung von Wechselmedien |
 | Leistungsindikatoren       | Ändern Sie [Leistungsindikatoren-Konfiguration](../agents/data-sources-performance-counters.md) in: <br> - Reduzieren der Sammlungshäufigkeit <br> - Reduzieren der Anzahl von Leistungsindikatoren |
@@ -687,7 +687,7 @@ Führen Sie die Schritte unter *Erstellen einer täglichen Datenobergrenze* aus,
 
 ## <a name="late-arriving-data"></a>Spät eintreffende Daten   
 
-Es kann vorkommen, dass Daten mit sehr alten Zeitstempeln erfasst werden – etwa, wenn ein Agent aufgrund eines Konnektivitätsproblems nicht mit Log Analytics kommunizieren kann. Auch kann es vorkommen, dass das Datum oder die Uhrzeit eines Hosts nicht korrekt ist. Verwenden Sie zum Diagnostizieren dieser Probleme die Spalte `_TimeReceived` ([weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/logs/log-standard-columns#_timereceived)) sowie die Spalte `TimeGenerated`. `TimeReceived` ist die Zeit, zu der der Datensatz vom Azure Monitor-Erfassungspunkt in der Azure-Cloud empfangen wurde.  
+Es kann vorkommen, dass Daten mit sehr alten Zeitstempeln erfasst werden – etwa, wenn ein Agent aufgrund eines Konnektivitätsproblems nicht mit Log Analytics kommunizieren kann. Auch kann es vorkommen, dass das Datum oder die Uhrzeit eines Hosts nicht korrekt ist. Verwenden Sie zum Diagnostizieren dieser Probleme die Spalte `_TimeReceived` ([weitere Informationen](./log-standard-columns.md#_timereceived)) sowie die Spalte `TimeGenerated`. `TimeReceived` ist die Zeit, zu der der Datensatz vom Azure Monitor-Erfassungspunkt in der Azure-Cloud empfangen wurde.  
 
 ## <a name="limits-summary"></a>Zusammenfassung der Grenzwerte
 
