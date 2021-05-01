@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Azure Cosmos DB-Konten mit
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 69a9f0a82f5c19504564825e47f69ab8414e0909
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69677ed419fa9bac2cbcb06c394c92f68d0b7777
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565834"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930927"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>Konfigurieren eines Azure Cosmos DB-Kontos mit regelmäßiger Sicherung
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,11 +31,35 @@ Azure Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen Ih
 
 * Die Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit Ihrer Anwendungen. Azure Cosmos DB erstellt die Datensicherung im Hintergrund, ohne zusätzlichen bereitgestellten Durchsatz (Anforderungseinheiten, RUs) zu beanspruchen oder die Leistung und Verfügbarkeit Ihrer Datenbank zu beeinträchtigen.
 
+> [!Note]
+> Konten mit Synapse Link-Aktivierung werden nicht unterstützt.
+
+## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>Redundanz für Sicherungsspeicher
+
+Standardmäßig speichert Azure Cosmos DB regelmäßig Sicherungsdaten im georedundanten [Blobspeicher](../storage/common/storage-redundancy.md), der in einem [Regionspaar](../best-practices-availability-paired-regions.md) repliziert wird.  
+
+Damit Ihre Sicherungsdaten in der Region bleiben, in der auch Ihr Azure Cosmos DB-Konto bereitgestellt wird, können Sie den standardmäßigen georedundanten Sicherungsspeicher ändern und entweder lokal redundanten oder zonenredundanten Speicher konfigurieren. Mechanismen der Speicherredundanz speichern mehrere Kopien Ihrer Sicherungen, damit sie vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern über Netzwerk- oder Stromausfälle bis hin zu schweren Naturkatastrophen.
+
+Sicherungsdaten in Azure Cosmos DB werden dreimal in der primären Region repliziert. Sie können Speicherredundanz für den regelmäßigen Sicherungsmodus zum Zeitpunkt der Kontoerstellung konfigurieren oder für ein vorhandenes Konto aktualisieren. Sie können die folgenden drei Optionen für die Datenredundanz im regelmäßigen Sicherungsmodus verwenden:
+
+* **Georedundanter Sicherungsspeicher:** Mit dieser Option werden Ihre Daten asynchron im Regionspaar kopiert.
+
+* **Zonenredundanter Sicherungsspeicher:** Mit dieser Option werden Ihre Daten asynchron über drei Azure-Verfügbarkeitszonen hinweg in der primären Region kopiert.
+
+* **Lokal redundanter Sicherungsspeicher:** Mit dieser Option werden Ihre Daten asynchron innerhalb eines einzelnen physischen Standorts in der primären Region kopiert.
+
+> [!NOTE]
+> Zonenredundanter Speicher steht zurzeit nur in [bestimmten Regionen](high-availability.md#availability-zone-support) zur Verfügung. Basierend auf der ausgewählten Region. Diese Option ist für neue oder vorhandene Konten nicht verfügbar.
+>
+> Die Aktualisierung der Redundanz für den Sicherungsspeicher wirkt sich nicht auf die Preise für den Sicherungsspeicher aus.
+
 ## <a name="modify-the-backup-interval-and-retention-period"></a><a id="configure-backup-interval-retention"></a>Ändern des Sicherungsintervalls und des Aufbewahrungszeitraums
 
 Von Azure Cosmos DB wird alle vier Stunden automatisch eine vollständige Sicherung Ihrer Daten erstellt, und es sind immer die beiden neuesten Sicherungen gespeichert. Diese Konfiguration ist die Standardoption, die ohne Zusatzkosten angeboten wird. Sie können das Standardsicherungsintervall und den Aufbewahrungszeitraum während der Erstellung des Azure Cosmos-Kontos oder nach dem Erstellen des Kontos ändern. Die Sicherungskonfiguration wird auf der Ebene des Azure Cosmos-Kontos festgelegt, und Sie müssen sie für jedes Konto vornehmen. Nachdem Sie die Sicherungsoptionen für ein Konto konfiguriert haben, wird es auf alle Container innerhalb dieses Kontos angewandt. Derzeit können Sie die Sicherungsoptionen nur im Azure-Portal ändern.
 
 Wenn Sie Ihre Daten versehentlich gelöscht oder beschädigt haben, stellen Sie **vor dem Erstellen einer Supportanfrage zum Wiederherstellen der Daten sicher, den Aufbewahrungszeitraum für Ihr Konto auf mindestens sieben Tage zu erhöhen. Es empfiehlt sich, den Aufbewahrungszeitraum innerhalb von 8 Stunden nach diesem Ereignis zu erhöhen.** Auf diese Weise hat das Azure Cosmos DB-Team genug Zeit, um Ihr Konto wiederherzustellen.
+
+### <a name="modify-backup-options-for-an-existing-account"></a>Ändern von Sicherungsoptionen für ein vorhandenes Konto
 
 Gehen Sie anhand der folgenden Schritte vor, um die Standardsicherungsoptionen für ein vorhandenes Azure Cosmos-Konto zu ändern:
 
@@ -48,11 +72,18 @@ Gehen Sie anhand der folgenden Schritte vor, um die Standardsicherungsoptionen f
 
    * **Aufbewahrte Kopien der Daten:** Standardmäßig werden zwei Sicherungskopien Ihrer Daten kostenlos angeboten. Wenn Sie mehr als zwei Kopien benötigen, fallen zusätzliche Gebühren an. Im Abschnitt „Speichernutzung“ auf der Seite [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) erfahren Sie den genauen Preis für zusätzliche Kopien.
 
-   :::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-interval-retention.png" alt-text="Konfigurieren des Sicherungsintervalls und Aufbewahrungszeitraums für ein vorhandenes Azure Cosmos-Konto." border="true":::
+   * **Redundanz für Sicherungsspeicher**: Wählen Sie die erforderliche Speicherredundanzoption aus, um die verfügbaren Optionen im Abschnitt [Redundanz für Sicherungsspeicher](#backup-storage-redundancy) anzuzeigen. Standardmäßig verfügen Ihre vorhandenen Konten für den regelmäßigen Sicherungsmodus über georedundanten Speicher. Sie können einen anderen Speicher wie z. B. lokal redundanten auswählen, um sicherzustellen, dass die Sicherung nicht in einer anderen Region repliziert wird. Die an einem vorhandenen Konto vorgenommenen Änderungen werden nur auf zukünftige Sicherungen angewendet. Nach der Aktualisierung der Redundanz für den Sicherungsspeicher eines vorhandenen Kontos kann maximal die doppelte Zeit eines Sicherungsintervalls verstreichen, bis die Änderungen wirksam werden, und **Sie verlieren den Zugriff, um die älteren Sicherungen sofort wiederherzustellen**.
 
-Wenn Sie während der Kontoerstellung Sicherungsoptionen konfigurieren, können Sie die **Sicherungsrichtlinie** konfigurieren, die **regelmäßig** oder **fortlaufend** sein kann. Bei einer Richtlinie für regelmäßige Sicherungen können Sie das Sicherungsintervall und den Aufbewahrungszeitraum für Sicherungen konfigurieren. Die Richtlinie für fortlaufende Sicherungen ist zurzeit nur bei der Registrierung verfügbar. Das Team von Azure Cosmos DB bewertet Ihre Workload und genehmigt Ihre Anforderung.
+   > [!NOTE]
+   > Ihnen muss die [Azure Cosmos DB-Rolle „Kontoleser“](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role) auf Abonnementebene zugewiesen werden, damit Sie die Redundanz für den Sicherungsspeicher konfigurieren können.
 
-:::image type="content" source="./media/configure-periodic-backup-restore/configure-periodic-continuous-backup-policy.png" alt-text="Konfigurieren einer Richtlinie für regelmäßige oder fortlaufende Sicherungen für neue Azure Cosmos-Konten." border="true":::
+   :::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-options-existing-accounts.png" alt-text="Konfigurieren von Sicherungsintervall, Aufbewahrungszeitraum und Redundanz für den Speicher für ein vorhandenes Azure Cosmos-Konto." border="true":::
+
+### <a name="modify-backup-options-for-a-new-account"></a>Ändern von Sicherungsoptionen für ein neues Konto
+
+Wenn Sie ein neues Konto bereitstellen, wählen Sie auf der Registerkarte **Sicherungsrichtlinie** die Sicherungsrichtlinie **Periodisch** _ aus. Bei einer Richtlinie für regelmäßige Sicherungen können Sie das Sicherungsintervall, den Aufbewahrungszeitraum und die Redundanz für den Sicherungsspeicher konfigurieren. Sie können z. B. die Optionen _ *Lokal redundanter Sicherungsspeicher** oder **Zonenredundanter Sicherungsspeicher** auswählen, um die Replikation von Sicherungsdaten außerhalb Ihrer Region zu verhindern.
+
+:::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-options-new-accounts.png" alt-text="Konfigurieren einer Richtlinie für regelmäßige oder fortlaufende Sicherungen für neue Azure Cosmos-Konten." border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a><a id="request-restore"></a>Anfordern der Datenwiederherstellung aus einer Sicherung
 
@@ -115,8 +146,7 @@ Wenn Sie den Durchsatz auf Datenbankebene bereitstellen, erfolgen die Sicherungs
 Prinzipale, die zur Rolle [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator) gehören, Besitzer oder Mitwirkende dürfen eine Wiederherstellung anfordern oder den Aufbewahrungszeitraum ändern.
 
 ## <a name="understanding-costs-of-extra-backups"></a>Grundlegendes zu den Kosten zusätzlicher Sicherungen
-Zwei Sicherungen werden kostenlos bereitgestellt. Zusätzliche Sicherungen werden zu den regionsbasierten Preisen für den Sicherungsspeicher berechnet, die unter den [Preisen für Sicherungsspeicher](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/) beschrieben werden. Ein Beispiel: Die Aufbewahrungsdauer für Sicherungen ist auf 240 Stunden (10 Tage) und das Sicherungsintervall auf 24 Stunden festgelegt. Dies ergibt zehn Kopien der Sicherungsdaten. Bei 1 TB Daten in der Region „USA, Westen 2“ bedeutet das 0,12 * 1.000 * 8 für den Sicherungsspeicher im Monat. 
-
+Zwei Sicherungen werden kostenlos bereitgestellt. Zusätzliche Sicherungen werden zu den regionsbasierten Preisen für den Sicherungsspeicher berechnet, die unter den [Preisen für Sicherungsspeicher](https://azure.microsoft.com/pricing/details/cosmos-db/) beschrieben werden. Ein Beispiel: Die Aufbewahrungsdauer für Sicherungen ist auf 240 Stunden (10 Tage) und das Sicherungsintervall auf 24 Stunden festgelegt. Dies ergibt zehn Kopien der Sicherungsdaten. Bei 1 TB Daten in der Region „USA, Westen 2“ bedeutet das 0,12 * 1.000 * 8 für den Sicherungsspeicher im Monat.
 
 ## <a name="options-to-manage-your-own-backups"></a>Optionen für das Verwalten Ihrer eigenen Sicherungen
 

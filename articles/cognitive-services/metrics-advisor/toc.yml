@@ -16,7 +16,7 @@
     - name: REST-API und Clientbibliotheken
       href: quickstarts/rest-api-and-client-library.md
 - name: Beispiele
-  href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure&terms=metrics-advisor'
+  href: /samples/browse/?products=azure&terms=metrics-advisor
 - name: Anleitungen
   items:
     - name: Durchführen des Onboardings für Ihre Daten

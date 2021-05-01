@@ -134,6 +134,8 @@
           href: custom-translator/training-and-model.md
         - name: BLEU-Bewertung
           href: custom-translator/what-is-bleu-score.md
+        - name: Vom Kunden verwaltete Schlüssel
+          href: encrypt-data-at-rest.md
 - name: Dokumentübersetzung
   items:
     - name: Was ist die Dokumentübersetzung?
@@ -164,22 +166,12 @@
           href: document-translation/reference/get-translation-status.md
         - name: Abbrechen der Übersetzung
           href: document-translation/reference/cancel-translation.md
-- name: Exemplarische Vorgehensweisen
-  items:
-    - name: Unternehmensfähigkeit
-      items:
-        - name: Einrichten von virtuellen Netzwerken
-          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/translator/context/context
-        - name: Verwenden kundenseitig verwalteter Schlüssel
-          href: encrypt-data-at-rest.md
 - name: Ressourcen
   items:
-    - name: Unternehmensfähigkeit
-      items:
-        - name: Unterstützung für Regionen
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-        - name: Konformität und Zertifizierung
-          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Unterstützung für Regionen
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Konformität und Zertifizierung
+      href: 'https://www.microsoft.com/translator/business/notrace/'
     - name: Support- und Hilfeoptionen
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: Codebeispiele auf GitHub
