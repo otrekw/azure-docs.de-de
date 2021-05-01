@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: article
-ms.date: 04/05/2021
+ms.topic: conceptual
+ms.date: 04/19/2021
 tags: connectors
-ms.openlocfilehash: 5eae6b48a65f919ea233ad77a215ed5672425175
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a19253e117f748b4d4045bfd2a29552018bba91e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385852"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781557"
 ---
 # <a name="create-and-manage-sftp-files-using-ssh-and-azure-logic-apps"></a>Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -51,7 +51,7 @@ Weitere Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector find
 
   | Aktion | Unterstützung für Blockerstellung | Unterstützung für die Außerkraftsetzung der Blockgröße |
   |--------|------------------|-----------------------------|
-  | **Datei kopieren** | Nein | Nicht verfügbar |
+  | **Datei kopieren** | Nein | Nicht zutreffend |
   | **Datei erstellen** | Ja | Ja |
   | **Ordner erstellen** | Nicht verfügbar | Nicht verfügbar |
   | **Datei löschen** | Nicht verfügbar | Nicht verfügbar |
@@ -123,7 +123,7 @@ Wenn ein Trigger eine neue Datei findet, überprüft er, ob die neue Datei volls
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>Verschiebung und Drift von Triggerwiederholungen
 
-Verbindungsbasierte Trigger, bei denen Sie zuerst eine Verbindung erstellen müssen, z. B. der SFTP-SSH-Trigger, unterscheiden sich von integrierten Triggern, die in Azure Logic Apps nativ ausgeführt werden, z. B der [Wiederholungstrigger](../connectors/connectors-native-recurrence.md). Bei wiederkehrenden, verbindungsbasierten Triggern ist der Wiederholungszeitplan nicht der einzige Faktor, der die Ausführung steuert, und die Zeitzone bestimmt nur die anfängliche Startzeit. Nachfolgende Ausführungen richten sich nach dem Wiederholungszeitplan, der letzten Triggerausführung *und* anderen Faktoren, die zu einer Verschiebung der Ausführungszeiten oder zu unerwartetem Verhalten führen können. Das unerwartete Verhalten kann beispielsweise so aussehen, dass der angegebene Zeitplan nicht beibehalten wird, wenn die Sommerzeit (DST) beginnt und endet. Um sicherzustellen, dass sich die Wiederholungszeit nicht verschiebt, wenn die Sommerzeit wirksam wird, sollten Sie die Wiederholung manuell anpassen. So wird der Workflow weiterhin zur erwarteten Zeit ausgeführt. Andernfalls verschiebt sich die Startzeit um eine Stunde nach vorn, wenn die Sommerzeit beginnt, und eine Stunde nach hinten, wenn die Sommerzeit endet. Weitere Informationen finden Sie unter [Wiederholung für verbindungsbasierte Trigger](../connectors/apis-list.md#recurrence-connection-based).
+Verbindungsbasierte Trigger, bei denen Sie zuerst eine Verbindung erstellen müssen, z. B. der SFTP-SSH-Trigger, unterscheiden sich von integrierten Triggern, die in Azure Logic Apps nativ ausgeführt werden, z. B der [Wiederholungstrigger](../connectors/connectors-native-recurrence.md). Bei wiederkehrenden, verbindungsbasierten Triggern ist der Wiederholungszeitplan nicht der einzige Faktor, der die Ausführung steuert, und die Zeitzone bestimmt nur die anfängliche Startzeit. Nachfolgende Ausführungen richten sich nach dem Wiederholungszeitplan, der letzten Triggerausführung *und* anderen Faktoren, die zu einer Verschiebung der Ausführungszeiten oder zu unerwartetem Verhalten führen können. Das unerwartete Verhalten kann beispielsweise so aussehen, dass der angegebene Zeitplan nicht beibehalten wird, wenn die Sommerzeit (DST) beginnt und endet. Um sicherzustellen, dass sich die Wiederholungszeit nicht verschiebt, wenn die Sommerzeit wirksam wird, sollten Sie die Wiederholung manuell anpassen. So wird der Workflow weiterhin zur erwarteten Zeit ausgeführt. Andernfalls verschiebt sich die Startzeit um eine Stunde nach vorn, wenn die Sommerzeit beginnt, und eine Stunde nach hinten, wenn die Sommerzeit endet. Weitere Informationen finden Sie unter [Wiederholung für verbindungsbasierte Trigger](../connectors/apis-list.md#recurrence-for-connection-based-triggers).
 
 <a name="convert-to-openssh"></a>
 

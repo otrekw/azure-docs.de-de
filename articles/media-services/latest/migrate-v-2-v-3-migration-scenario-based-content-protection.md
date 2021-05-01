@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 04/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: 59f74740117ba9f549133c4ca9bcb510928eb105
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a481759da3f1e7d67accdca7b4322db53abbcb0c
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138875"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490946"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Szenariobasierter Migrationsleitfaden für den Inhaltsschutz
 
@@ -51,7 +51,7 @@ Wenn Sie z. B. zuvor über eine v2-Ressource mit der ID `nb:cid:UUID:8cb39104-1
 
 Alle Ressourcen, die mit der v2-API erstellt und veröffentlicht wurden, verfügen in der v3-API sowohl über eine `ContentKeyPolicy` als auch einen `ContentKey` anstelle einer standardmäßigen Inhaltsschlüsselrichtlinie in der `StreamingPolicy`.
 
-Weitere Informationen finden Sie in den Dokumentationen [Richtlinien für Inhaltsschlüssel](./drm-content-key-policy-concept.md) und [Streamingrichtlinien](./stream-streaming-policy-concept.md).
+Weitere Informationen finden Sie in den Dokumentationen [Richtlinien für Inhaltsschlüssel](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept) und [Streamingrichtlinien](https://docs.microsoft.com/azure/media-services/latest/stream-streaming-policy-concept).
 
 ## <a name="use-azure-media-services-explorer-amse-v2-and-amse-v3-tools-side-by-side"></a>Parallele Verwendung von Azure Media Services Explorer (AMSE) v2- und AMSE v3-Tools
 
@@ -63,19 +63,19 @@ Ein Codebeispiel zum Vergleichen der Unterschiede in Ressourcenbezeichnern mit [
 
 ## <a name="list-the-streaming-locators"></a>Auflisten der Streaminglocators
 
-Sie können die `StreamingLocators`, die mit den in der v2-API mit der neuen v3-Methode [ListStreamingLocators](/rest/api/media/assets/liststreaminglocators) erstellten Ressourcen verknüpft sind, auf der Ressourcenentität abfragen.  Verweisen Sie auch auf die .NET-Client-SDK-Version von [ListStreamingLocatorsAsync](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?preserve-view=true&view=azure-dotnet).
+Sie können die `StreamingLocators`, die mit den in der v2-API mit der neuen v3-Methode [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) erstellten Ressourcen verknüpft sind, auf der Ressourcenentität abfragen.  Verweisen Sie auch auf die .NET-Client-SDK-Version von [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true).
 
 Die Ergebnisse der `ListStreamingLocators`-Methode stellen für Sie den `Name` und die `StreamingLocatorId` des Locators zusammen mit dem `StreamingPolicyName` bereit.
 
 ## <a name="find-the-content-keys"></a>Suchen der Inhaltsschlüssel
 
-Um die mit Ihren `StreamingLocators` verwendeten `ContentKeys` zu suchen, können Sie die [StreamingLocator.ListContentKeysAsync](/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?preserve-view=true&view=azure-dotnet)-Methode aufrufen.  
+Um die mit Ihren `StreamingLocators` verwendeten `ContentKeys` zu suchen, können Sie die [StreamingLocator.ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true)-Methode aufrufen.  
 
-Weitere Informationen zum Inhaltsschutz in der v3-API finden Sie im Artikel [Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services](./drm-content-protection-concept.md).
+Weitere Informationen zum Inhaltsschutz in der v3-API finden Sie im Artikel [Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services](https://docs.microsoft.com/azure/media-services/latest/drm-content-protection-concept).
 
 ## <a name="change-the-v2-contentkeypolicy-keeping-the-same-contentkey"></a>Ändern der v2-ContentKeyPolicy unter Beibehalten desselben ContentKey-Werts
 
-Sie sollten zuerst die Veröffentlichung auf der Ressource über das v2-SDK aufheben (alle Streaminglocators entfernen). Gehen Sie dabei folgendermaßen vor:
+Sie sollten zuerst die Veröffentlichung auf der Ressource über das v2-SDK aufheben (alle Streaminglocators entfernen). Gehen Sie dazu wie folgt vor:
 
 1. Löschen Sie den Locator.
 1. Heben Sie die Verknüpfung der `ContentKeyAuthorizationPolicy` auf.

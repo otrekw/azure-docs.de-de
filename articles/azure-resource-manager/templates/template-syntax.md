@@ -2,13 +2,13 @@
 title: Vorlagenstruktur und -syntax
 description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen (ARM-Vorlagen) mithilfe deklarativer JSON-Syntax.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.date: 03/26/2021
+ms.openlocfilehash: 42b893e25155bb3ebe66e0deac180698446a2c9b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120415"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612176"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -193,6 +193,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
           "capacity": <sku-capacity>
       },
       "kind": "<type-of-resource>",
+      "scope": "<target-scope-for-extension-resources>",
       "copy": {
           "name": "<name-of-copy-loop>",
           "count": <number-of-iterations>,
@@ -235,6 +236,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 | tags |Nein |Markierungen, die der Ressource zugeordnet sind Verwenden Sie Tags zum logischen Organisieren der Ressourcen in Ihrem Abonnement. |
 | sku | Nein | Einige Ressourcen lassen Werte zu, die die bereitzustellende SKU definieren. Beispielsweise können Sie den Typ der Redundanz für ein Speicherkonto angeben. |
 | kind | Nein | Einige Ressourcen lassen einen Wert zu, der den Typ der Ressource definiert, die Sie bereitstellen. Beispielsweise können Sie den Typ der zu erstellenden Cosmos DB angeben. |
+| scope | Nein | Die Bereichseigenschaft ist nur für [Erweiterungsressourcentypen](../management/extension-resource-types.md) verfügbar. Verwenden Sie sie, wenn Sie einen Bereich angeben, der sich vom Bereitstellungsbereich unterscheidet. Siehe [Festlegen des Bereichs für Erweiterungsressourcen in Azure Resource Manager-Vorlagen](scope-extension-resources.md). |
 | copy |Nein |Wenn mehr als eine Instanz erforderlich ist, die Anzahl der zu erstellenden Ressourcen. Der Standardmodus ist parallel. Geben Sie den seriellen Modus an, wenn nicht alle Ressourcen gleichzeitig bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](copy-resources.md). |
 | Tarif | Nein | Einige Ressourcen lassen Werte zu, die den bereitzustellenden Tarif definieren. Beispielsweise können Sie das Marketplace-Image für einen virtuellen Computer angeben. |
 | properties |Nein |Ressourcenspezifische Konfigurationseinstellungen. Die Werte für die Eigenschaften sind mit den Werten identisch, die Sie im Anforderungstext für den REST-API-Vorgang (PUT-Methode) angegeben haben, um die Ressource zu erstellen. Sie können auch ein Kopierarray angeben, um mehrere Instanzen einer Eigenschaft zu erstellen. Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). |

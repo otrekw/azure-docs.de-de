@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: a1492593c24c2bc350205536006b648608cc5e46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b33beaad580e64a4760b0557f04f266ecfc1b4d
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712639"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718807"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Schnellstart: Erstellen einer Azure IoT Central-Anwendung
 
@@ -21,13 +21,14 @@ In dieser Schnellstartanleitung wird gezeigt, wie Sie eine Azure IoT Central-An
 
 ## <a name="prerequisite"></a>Voraussetzung 
 
-Sie benötigen ein Azure-Abonnement mit *Mitwirkender*-Zugriff.
+ - Ein Azure-Konto mit einem aktiven Abonnement. Erstellen Sie ein [kostenloses Konto](https://aka.ms/createazuresubscription).
+ - Ihr Azure-Abonnement muss über Zugriff als Mitwirkender verfügen.
 
 ## <a name="create-an-application"></a>Erstellen einer Anwendung
 
 Navigieren Sie zur Buildwebsite für [Azure IoT Central](https://aka.ms/iotcentral). Melden Sie sich dann mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto an.
 
-Sie erstellen eine neue Anwendung entweder anhand der Liste mit den branchenrelevanten IoT Central-Vorlagen, um schnell einzusteigen, oder Sie starten von Grund auf neu, indem Sie eine Vorlage für **benutzerdefinierte Apps** verwenden. In dieser Schnellstartanleitung verwenden Sie die Vorlage **Benutzerdefinierte Anwendung**.
+Sie können eine neue Anwendung entweder anhand der Liste mit den branchenrelevanten IoT Central-Vorlagen erstellen, um schnell einzusteigen, oder Sie starten mithilfe einer Vorlage für **benutzerdefinierte Apps** von Grund auf neu. In dieser Schnellstartanleitung verwenden Sie die Vorlage **Benutzerdefinierte Anwendung**.
 
 So erstellen Sie eine neue Azure IoT Central-Anwendung über die Vorlage **Benutzerdefinierte Anwendung**:
 
@@ -35,11 +36,13 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung über die Vorlage **Benut
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-new-application.png" alt-text="Seite „Eigene IoT-Anwendung erstellen“":::
 
-1. Wählen Sie **Benutzerdefinierte Apps** aus, und vergewissern Sie sich, dass die Vorlage **Benutzerdefinierte Anwendung** ausgewählt ist.
+1. Wählen Sie **Benutzerdefinierte App** aus.
 
-1. Azure IoT Central schlägt automatisch einen **Anwendungsnamen** entsprechend der von Ihnen ausgewählten Anwendungsvorlage vor. Sie können diesen Namen übernehmen oder einen eigenen aussagekräftigen Namen eingeben.
+1. Vergewissern Sie sich auf der Seite **Neue Anwendung**, dass unter **Anwendungsvorlage** die Option **Benutzerdefinierte Anwendung** ausgewählt ist.
 
-1. Azure IoT Central generiert außerdem für Sie entsprechend dem Anwendungsnamen ein Präfix mit einer eindeutigen **Anwendungs-URL**. Über diese URL können Sie auf Ihre Anwendung zugreifen. Sie können dieses URL-Präfix in einen einprägsameren Wert ändern.
+1. Azure IoT Central schlägt automatisch einen **Anwendungsnamen** entsprechend der von Ihnen ausgewählten Anwendungsvorlage vor. Sie können diesen Namen übernehmen oder einen eigenen aussagekräftigen Namen eingeben.
+
+1. Azure IoT Central generiert für Sie außerdem entsprechend dem Anwendungsnamen ein eindeutiges **URL**-Präfix. Über diese URL können Sie auf Ihre Anwendung zugreifen. Sie können dieses URL-Präfix in einen einprägsameren Wert ändern.
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-custom.png" alt-text="Azure IoT Central-Seite „Anwendung erstellen“":::
 
@@ -58,7 +61,7 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung über die Vorlage **Benut
         - Mit einem *Azure-Abonnement* können Sie Instanzen von Azure-Diensten erstellen. IoT Central stellt Ressourcen in Ihrem Abonnement bereit. Wenn Sie kein Azure-Abonnement besitzen, können Sie auf der [Azure-Anmeldeseite](https://aka.ms/createazuresubscription) kostenlos eines erstellen. Nachdem Sie das Azure-Abonnement erstellt haben, navigieren Sie zurück zur Seite **Neue Anwendung**. Ihr neues Abonnement wird nun in der Dropdownliste **Azure-Abonnement** angezeigt.
         - Der *Standort* beschreibt die [geografische Region](https://azure.microsoft.com/global-infrastructure/geographies/), in der Sie Ihre Anwendung erstellen möchten. Normalerweise wählen Sie den Standort aus, der Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen. Nachdem Sie einen Standort ausgewählt haben, können Sie Ihre Anwendung nicht zu einem späteren Zeitpunkt an einen anderen Standort verschieben.
 
-1. Lesen Sie die Geschäftsbedingungen, und wählen Sie **Erstellen** im unteren Bereich der Seite aus. Die IoT Central-Anwendung kann nach einigen Minuten verwendet werden.
+1. Lesen Sie die Geschäftsbedingungen, und wählen Sie **Erstellen** im unteren Bereich der Seite aus. Ihre IoT Central-Anwendung kann nach einigen Minuten verwendet werden:
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentral-application.png" alt-text="Azure IoT Central-Anwendung":::
 

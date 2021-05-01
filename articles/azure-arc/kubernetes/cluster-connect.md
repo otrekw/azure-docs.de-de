@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Verwenden von Cluster Connect zum sicheren Herstellen einer Verbindung mit Kubernetes-Clustern mit Azure Arc-Unterstützung
-ms.openlocfilehash: c6b6555c7d18c0aa0d2e7c94ad2c32353da19502
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 54a462164e4b992451cc66f8a0ec229aff27f2e1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450823"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145589"
 ---
 # <a name="use-cluster-connect-to-connect-to-azure-arc-enabled-kubernetes-clusters"></a>Verwenden von Cluster Connect zum Herstellen einer Verbindung mit Kubernetes-Clustern mit Azure Arc-Unterstützung
 
@@ -26,7 +26,7 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [Cluster 
 
 ## <a name="prerequisites"></a>Voraussetzungen   
 
-- [Installieren oder aktualisieren Sie Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) auf eine Version >= 2.16.0
+- [Installieren oder aktualisieren Sie Azure CLI](/cli/azure/install-azure-cli) auf eine Version >= 2.16.0
 
 - Installieren Sie die Azure CLI-Erweiterung `connectedk8s` in einer Version >= 1.1.0:
 
@@ -148,8 +148,8 @@ You must be logged in to the server (Error:Error while retrieving group info. Er
 ```
 
 So umgehen Sie diesen Fehler:
-1. Erstellen Sie einen [Dienstprinzipal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli), der weniger wahrscheinlich Mitglied von mehr als 200 Gruppen ist.
-1. [Melden Sie sich](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal) bei Azure CLI mit dem Dienstprinzipal an, bevor Sie den `az connectedk8s proxy`-Befehl ausführen.
+1. Erstellen Sie einen [Dienstprinzipal](/cli/azure/create-an-azure-service-principal-azure-cli), der weniger wahrscheinlich Mitglied von mehr als 200 Gruppen ist.
+1. [Melden Sie sich](/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal) bei Azure CLI mit dem Dienstprinzipal an, bevor Sie den `az connectedk8s proxy`-Befehl ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 566ca1598857f67e25faea9f19d134c4a91bfb18
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: be4348359e6b53c3e7454e9ab7c1af8ce8a7020a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555930"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305553"
 ---
 # <a name="manage-vm-tags-on-azure-stack-edge-via-azure-powershell"></a>Verwalten von VM-Tags auf Azure Stack Edge über Azure PowerShell
 
@@ -36,17 +36,7 @@ Um einen virtuellen Computer mithilfe von PowerShell auf Ihrem Gerät bereitstel
 
 ## <a name="verify-connection-to-local-azure-resource-manager"></a>Überprüfen der Verbindung mit der lokalen Azure Resource Manager-Instanz
 
-Stellen Sie sicher, dass Sie mit den folgenden Schritten von Ihrem Client aus auf das Gerät zugreifen können.
-
-Vergewissern Sie sich, dass Ihr Client eine Verbindung mit der lokalen Azure Resource Manager-Instanz herstellen kann. 
-
-1. Rufen Sie zur Authentifizierung lokale Geräte-APIs auf:
-
-    ```powershell
-    login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d  
-    ```
-
-1. Geben Sie den Benutzernamen `EdgeArmUser` und das Kennwort für die Verbindung über Azure Resource Manager an. Sollten Sie Ihr Kennwort vergessen haben, [setzen Sie das Kennwort für Azure Resource Manager zurück](azure-stack-edge-gpu-set-azure-resource-manager-password.md), und melden Sie sich mit diesem Kennwort an.
+[!INCLUDE [azure-stack-edge-gateway-verify-azure-resource-manager-connection](../../includes/azure-stack-edge-gateway-verify-azure-resource-manager-connection.md)]
 
 
 ## <a name="add-a-tag-to-a-vm"></a>Hinzufügen eines Tags zu einer VM

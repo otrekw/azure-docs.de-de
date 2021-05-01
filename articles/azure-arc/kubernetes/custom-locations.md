@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions
 description: Verwenden benutzerdefinierter Speicherorte zum Bereitstellen von Azure-PaaS-Diensten in Kubernetes-Clustern mit Azure Arc-Unterstützung
-ms.openlocfilehash: ddda6420acd7126cb46b043f5c1bce67758342bc
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b3a0d89f0c352b8344aea68a613653eae43a41e4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450866"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147767"
 ---
 # <a name="custom-locations-on-azure-arc-enabled-kubernetes"></a>Benutzerdefinierte Speicherorte in Kubernetes-Clustern mit Azure Arc-Unterstützung
 
@@ -27,7 +27,7 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benut
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Installieren oder aktualisieren Sie Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) auf eine Version >= 2.16.0.
+- [Installieren oder aktualisieren Sie Azure CLI](/cli/azure/install-azure-cli) auf eine Version >= 2.16.0.
 
 - Azure CLI-Erweiterungen `connectedk8s` (Version >= 1.1.0), `k8s-extension` (Version >= 0.2.0) und `customlocation` (Version >= 0.1.0). Installieren Sie diese Azure CLI-Erweiterungen, indem Sie die folgenden Befehle ausführen:
   
@@ -88,7 +88,7 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
     ```
 
     > [!NOTE]
-    > Der Proxy für ausgehenden Datenverkehr ohne Authentifizierung und der Proxy für ausgehenden Datenverkehr mit Standardauthentifizierung werden von der Data Services-Clustererweiterung mit Arc-Unterstützung aktiviert. Proxys für ausgehenden Datenverkehr, die vertrauenswürdige Zertifikate erwarten, werden aktuell nicht unterstützt.
+    > Der Proxy für ausgehenden Datenverkehr ohne Authentifizierung und der Proxy für ausgehenden Datenverkehr mit Standardauthentifizierung werden von der Data Services-Clustererweiterung mit Arc-Unterstützung aktiviert. Proxys für ausgehenden Datenverkehr, von denen Zertifikate erwartet werden, werden aktuell nicht unterstützt.
 
 1. Rufen Sie den Azure Resource Manager-Bezeichner des Kubernetes-Clusters mit Azure Arc-Unterstützung ab, auf den in späteren Schritten als `connectedClusterId` verwiesen wird:
 
@@ -111,4 +111,4 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> Sicheres Herstellen der Verbindung mit dem Cluster über [Cluster Connect](cluster-connect.md)
+> Sicheres Herstellen einer Verbindung mit dem Cluster über [Cluster Connect](cluster-connect.md)

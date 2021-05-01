@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28e37ad0b404b5275a224c8debab5c11c07948b4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80985438"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738808"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Tutorial: Konfigurieren eines Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen 
 
@@ -36,8 +36,8 @@ Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.com“. Ve
 
 ## <a name="create-the-network-infrastructure"></a>Erstellen der Netzwerkinfrastruktur
 Erstellen Sie zuerst ein virtuelles Netzwerk und ein Subnetz, um die Webserver darin zu platzieren.
-1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-2. Klicken Sie links oben im Portal auf **Ressource erstellen**. Geben Sie *Ressourcengruppe* in das Suchfeld ein, und erstellen Sie eine Ressourcengruppe namens **RG-DNS-Alias-pip**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie im Azure-Portal auf der linken Seite die Option **Ressource erstellen** aus. Geben Sie *Ressourcengruppe* in das Suchfeld ein, und erstellen Sie eine Ressourcengruppe namens **RG-DNS-Alias-pip**.
 3. Wählen Sie **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
 4. Erstellen Sie ein virtuelles Netzwerk namens **VNet-Servers**. Platzieren Sie es in der Ressourcengruppe **RG-DNS-Alias-pip**, und nennen Sie das Subnetz **SN-Web**.
 
@@ -45,10 +45,10 @@ Erstellen Sie zuerst ein virtuelles Netzwerk und ein Subnetz, um die Webserver d
 1. Wählen Sie **Ressource erstellen** > **Windows Server 2016-VM** aus.
 2. Geben Sie als Name **Web-01** ein, und platzieren Sie den virtuellen Computer in der Ressourcengruppe **RG-DNS-Alias-TM**. Geben Sie einen Benutzernamen und ein Kennwort ein, und wählen Sie **OK** aus.
 3. Wählen Sie unter **Größe** eine SKU mit 8 GB RAM aus.
-4. Wählen Sie unter **Einstellungen** das virtuelle Netzwerk **VNet-Servers** und das Subnetz **SN-Web** aus. Wählen Sie für die öffentlichen Eingangsports **HTTP** > **HTTPS** > **RDP (3389)** und anschließend **OK** aus.
+4. Wählen Sie unter **Einstellungen** das virtuelle Netzwerk **VNet-Servers** und das Subnetz **SN-Web** aus. Wählen Sie für öffentliche Eingangsports **HTTP (80)**  > **HTTPS (443)**  > **RDP (3389)** und anschließend **OK** aus.
 5. Klicken Sie auf der Seite **Zusammenfassung** auf **Erstellen**.
 
-Der Vorgang dauert einige Minuten. Der virtuelle Computer verfügt über eine angefügte NIC mit der einfachen dynamischen öffentlichen IP-Adresse Web-01-ip. Die öffentliche IP-Adresse ändert sich jedes Mal, wenn der virtuelle Computer neu gestartet wird.
+Diese Bereitstellung dauert einige Minuten. Der virtuelle Computer verfügt über eine angefügte NIC mit einer einfachen dynamischen öffentlichen IP-Adresse namens „Web-01-ip“. Die öffentliche IP-Adresse ändert sich jedes Mal, wenn der virtuelle Computer neu gestartet wird.
 
 ### <a name="install-iis"></a>Installieren von IIS
 

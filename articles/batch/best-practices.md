@@ -3,12 +3,12 @@ title: Bewährte Methoden
 description: Erfahren Sie, welche bewährten Methoden und nützlichen Tipps es für das Entwickeln Ihrer Azure Batch-Lösungen gibt.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7ef94b07a5131726c42a94088fd3ee1f413dbec7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1a53915f4cdbae03fd86137f3a436bb6e9a6f615
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802351"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147587"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -32,7 +32,7 @@ In diesem Artikel werden bewährte Methoden und nützliche Tipps für die effekt
 - **Pools sollten mehrere Computeknoten aufweisen**: Es ist nicht garantiert, dass einzelne Knoten immer verfügbar sind. Wenn auch ungewöhnlich, so können Hardwareausfälle, Betriebssystemupdates und eine Menge anderer Probleme dazu führen, dass einzelne Knoten offline sind. Wenn Ihr Batch-Workload deterministischen, garantierten Fortschritt erfordert, sollten Sie Pools mit mehreren Knoten zuordnen.
 
 - **Verwenden Sie keine Images mit bevorstehendem EOL (End of Life).**
-    Es wird dringend empfohlen, keine Images zu verwenden, die bald nicht mehr von Batch unterstützt werden. Die Datumsangaben für die Unterstützungseinstellung können Sie über die [`ListSupportedImages`-API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages), [PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage) oder über die [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images) ermitteln. Es liegt in Ihrer Verantwortung, die Ansicht der für Ihre Pools relevanten EOL-Datumsangaben in regelmäßigen Abständen zu aktualisieren und Ihre Workloads vor dem EOL zu migrieren. Wenn Sie ein benutzerdefiniertes Image mit einem angegebenen Knoten-Agent verwenden, müssen Sie sicherstellen, dass Sie die EOL-Datumsangaben der Batch-Unterstützung für das Image befolgen, von dem Ihr benutzerdefiniertes Image abgeleitet oder an dem es ausgerichtet wird.
+    Es wird dringend empfohlen, keine Bilder zu verwenden, die bald nicht mehr von Batch unterstützt werden. Die Datumsangaben für die Unterstützungseinstellung können Sie über die [`ListSupportedImages`-API](/rest/api/batchservice/account/listsupportedimages), [PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) oder über die [Azure CLI](/cli/azure/batch/pool/supported-images) ermitteln. Es liegt in Ihrer Verantwortung, die Ansicht der für Ihre Pools relevanten EOL-Datumsangaben in regelmäßigen Abständen zu aktualisieren und Ihre Workloads vor dem EOL zu migrieren. Wenn Sie ein benutzerdefiniertes Image mit einem angegebenen Knoten-Agent verwenden, müssen Sie sicherstellen, dass Sie die EOL-Datumsangaben der Batch-Unterstützung für das Image befolgen, von dem Ihr benutzerdefiniertes Image abgeleitet oder an dem es ausgerichtet wird.
 
 - **Verwenden Sie Ressourcennamen nicht wieder.**
     Batch-Ressourcen (Aufträge, Pools usw.) kommen und gehen häufig im Laufe der Zeit. Beispielsweise erstellen Sie vielleicht am Montag einen Pool, den Sie am Dienstag löschen, um dann am Donnerstag einen weiteren Pool zu erstellen. Jeder neue Ressource, die Sie erstellen, sollte einen eindeutigen Name erhalten, den Sie zuvor noch nicht verwendet haben. Hierzu können Sie eine GUID (entweder als vollständiger Ressourcennamen oder als Teil davon) verwenden oder die Erstellungszeit der Ressource in den Ressourcennamen einbetten. Batch unterstützt [DisplayNam-](/dotnet/api/microsoft.azure.batch.jobspecification.displayname), womit Sie einer Ressource einen von Menschen lesbaren Namen geben können, auch wenn die tatsächliche Ressourcen-ID nicht wirklich menschenfreundlich ist. Durch die Verwendung eindeutiger Namen können Sie leichter unterscheiden, welche spezifische Ressource in Protokollen und Metriken etwas bewirkt hat. Außerdem entfällt hierdurch jede eventuelle Mehrdeutigkeit, wenn Sie jemals eine Supportanfrage für eine Ressource einreichen müssen.

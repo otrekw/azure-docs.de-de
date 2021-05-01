@@ -1,18 +1,18 @@
 ---
 title: 'Vorgehensweise: Verwenden des Komponentenfeatures im Azure Certified Device-Portal'
 description: Eine Anleitung zur optimalen Verwendung des Komponentenfeatures des Abschnitts „Gerätedetails“ zur genauen Beschreibung Ihres Geräts.
-author: nkuntjoro
+author: nikuntjo
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 220a6c2107063734201064115898611c20cab650
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 091a666026853d677f1e9ed7e5e1736307cecbe8
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304459"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105975775"
 ---
 # <a name="add-components-on-the-portal"></a>Hinzufügen von Komponenten im Portal
 
@@ -62,7 +62,7 @@ Möglicherweise haben Sie Fragen dazu, wie viele Komponenten eingeschlossen werd
 
 | Produkttyp                                       | Nein. Komponenten | Komponente 1/Anlagentyp      | Komponenten 2+/Anlagentyp                    |
 |----------------------------------------------------|------------|----------------------------------|--------------------------------------------------|
-| Fertiggestelltes Produkt                                   | 1          | Sofort einsatzfähiges Produkt, Eigenständig | –                                              |
+| Fertiges Produkt                                   | 1          | Sofort einsatzfähiges Produkt, Eigenständig | –                                              |
 | Fertiges Produkt mit **abnehmbaren Peripheriegeräten** | 2 oder mehr  | Sofort einsatzfähiges Produkt, Eigenständig | Peripheriegerät/Eigenständig oder integriert              |
 | Fertiges Produkt mit **integrierten Komponenten**  | 2 oder mehr  | Sofort einsatzfähiges Produkt, Eigenständig | Geeigneten Typ auswählen/Eigenständig oder Integriert |
 | Implementierungsfertiges Entwicklungskit                             | 2 oder mehr  | Sofort einsatzfähiges Produkt, Eigenständig | Geeigneten Typ auswählen/Eigenständig oder integriert |

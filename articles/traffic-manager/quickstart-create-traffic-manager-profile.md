@@ -3,26 +3,30 @@ title: 'Schnellstart: Erstellen eines Profils für die Hochverfügbarkeit von An
 description: In diesem Schnellstartartikel wird beschrieben, wie Sie mithilfe des Azure-Portals ein Traffic Manager-Profil erstellen, um eine hochverfügbare Webanwendung zu entwickeln.
 services: traffic-manager
 author: duongau
-manager: twooley
-ms.service: traffic-manager
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2020
 ms.author: duau
-ms.openlocfilehash: 1a26becbc7ffaddc09dc06c5dff12f83deaa9ee2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: twooley
+ms.date: 04/19/2021
+ms.topic: quickstart
+ms.service: traffic-manager
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 13b5925310c615461424f78d90ba9849c9bf58c5
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067213"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727976"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Schnellstart: Erstellen eines Traffic Manager-Profils im Azure-Portal
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, mit dem die Hochverfügbarkeit für Ihre Webanwendung sichergestellt wird.
 
 In dieser Schnellstartanleitung werden zwei Instanzen einer Webanwendung beschrieben. Jede Instanz wird in einer anderen Azure-Region ausgeführt. Sie erstellen ein Traffic Manager-Profil basierend auf der [Endpunktpriorität](traffic-manager-routing-methods.md#priority-traffic-routing-method). Das Profil leitet den Benutzerdatenverkehr an den primären Standort, an dem die Webanwendung ausgeführt wird. Die Webanwendung wird von Traffic Manager ständig überwacht. Wenn der primäre Standort nicht verfügbar ist, erfolgt automatisch ein Failover zum Sicherungsstandort.
+
+:::image type="content" source="./media/quickstart-create-traffic-manager-profile/environment-diagram.png" alt-text="Diagramm: Traffic Manager-Bereitstellungsumgebung" border="false":::
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
@@ -81,7 +85,7 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 1. Wählen Sie das Profil in den Suchergebnissen aus.
 1. Wählen Sie im **Traffic Manager-Profil** im Abschnitt **Einstellungen** die Option **Endpunkte** und dann **Hinzufügen**.
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-endpoint-menu.png" alt-text="Endpunkteinstellungen im Traffic Manager-Profil":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-endpoint-menu.png" alt-text="Screenshot: Endpunkteinstellungen im Traffic Manager-Profil":::
 
 1. Geben Sie die folgenden Einstellungen ein (bzw. wählen Sie sie aus):
 
@@ -120,7 +124,7 @@ In diesem Abschnitt überprüfen Sie den Domänennamen Ihres Traffic Manager-Pro
 1. Wählen Sie das Traffic Manager-Profil aus. Die **Übersicht** wird angezeigt.
 1. Unter **Traffic Manager-Profil** wird der DNS-Name Ihres neu erstellten Traffic Manager-Profils angezeigt.
   
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="Screenshot: Standort Ihres Traffic Manager-DNS-Namens":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="Screenshot: Ihr Traffic Manager-DNS-Name":::
 
 ### <a name="view-traffic-manager-in-action"></a>Anzeigen von Traffic Manager in Aktion
 

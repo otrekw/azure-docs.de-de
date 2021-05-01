@@ -6,25 +6,25 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 6e81b3d62fb5b208c88257d7660f74ac25f099b8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5ca821cb4f85deb77595e4a9029cc10298dbb884
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048011"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611972"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Skalieren der Migration von virtuellen VMware-Computern zu Azure ohne Agents
 
-In diesem Artikel erfahren Sie, wie Sie eine Appliance für die horizontale Skalierung verwenden, um mithilfe der Migrationsfunktion des Azure Migrate-Servermigrationstools ohne Agent eine große Anzahl von virtuellen VMware-Computern (VMs) zu Azure zu migrieren. 
+In diesem Artikel erfahren Sie, wie Sie eine Appliance für die horizontale Skalierung verwenden, um mithilfe der Migrationsmethode des Azure Migrate-Servermigrationstools für die Migration von VMware-VMs ohne Agent eine große Anzahl von VMware-VMs zu Azure zu migrieren.
 
-Mit der Funktion des Servermigrationstools für die Migration von virtuellen VMware-Computern ohne Agent haben Sie folgende Möglichkeiten:
+Mithilfe der Migrationsmethode für VMware-VMs ohne Agent können Sie folgende Aktionen ausführen:
 
 - Replizieren von bis zu 300 VMs gleichzeitig von einem einzelnen vCenter-Server mithilfe einer Azure Migrate-Appliance
 - Replizieren von bis zu 500 VMs gleichzeitig von einem einzelnen vCenter-Server durch das Bereitstellen einer zweiten Appliance für die horizontale Skalierung für die Migration
 
 In diesem Artikel wird Folgendes behandelt:
 
-- Bereitstellen einer Appliance für die horizontale Skalierung für die VMware-Migration
+- Hinzufügen einer Appliance für die horizontale Skalierung für die Migration von VMware-VMs ohne Agent
 - Migrieren von bis zu 500 VMs gleichzeitig mithilfe der Appliance für die horizontale Skalierung
 
 ##  <a name="prerequisites"></a>Voraussetzungen
@@ -37,12 +37,13 @@ Bevor Sie beginnen, müssen Sie folgende Schritte ausführen:
 > [!IMPORTANT]
 > Sie müssen über mindestens einen replizierenden virtuellen Computer im Projekt verfügen, bevor Sie eine Appliance für die horizontale Skalierung für die Migration hinzufügen können.
 
-## <a name="deploy-a-scale-out-appliance"></a>Bereitstellen einer Appliance für die horizontale Skalierung
+Weitere Informationen zum Ausführen des obigen Verfahrens finden Sie im Tutorial zum [Migrieren von VMware-VMs zu Azure mithilfe der Migrationsmethode ohne Agent](./tutorial-migrate-vmware.md).
 
+## <a name="deploy-a-scale-out-appliance"></a>Bereitstellen einer Appliance für die horizontale Skalierung
 
 Führen Sie die im Folgenden aufgeführten Schritte aus, um eine Appliance für die horizontale Skalierung hinzuzufügen:
 
-1. Klicken Sie auf **Ermitteln** > **Sind Ihre Computer virtualisiert?** . 
+1. Klicken Sie auf **Ermitteln** > **Sind Ihre Computer virtualisiert?** 
 1. Klicken Sie auf **Ja, mit VMware vSphere-Hypervisor**.
 1. Wählen Sie im nächsten Schritt die Replikation ohne Agent aus.
 1. Wählen Sie für das Menü „Select the type of appliance“ (Art der Appliance auswählen) die Option **Scale-out an existing primary appliance** (Vorhandene primäre Appliance horizontal skalieren) aus.
@@ -53,7 +54,7 @@ Führen Sie die im Folgenden aufgeführten Schritte aus, um eine Appliance für 
 ### <a name="1-generate-the-azure-migrate-project-key"></a>1. Generieren des Azure Migrate-Projektschlüssels
 
 1. Geben Sie unter **Generate Azure Migrate project key** (Azure Migrate-Projektschlüssel generieren) einen Suffixnamen für die Appliance für die horizontale Skalierung an. Das Suffix darf nur alphanumerische Zeichen enthalten und eine Länge von maximal 14 Zeichen aufweisen.
-2. Klicken Sie auf **Schlüssel generieren**, um mit der Erstellung der erforderlichen Azure-Ressourcen zu beginnen. Schließen Sie die Seite „Computer ermitteln“ nicht, während die Ressourcen erstellt werden.
+2. Klicken Sie auf **Schlüssel generieren**, um mit der Erstellung der erforderlichen Azure-Ressourcen zu beginnen. Schließen Sie die Ermittlungsseite nicht, während die Ressourcen erstellt werden.
 3. Kopieren Sie den generierten Schlüssel. Sie benötigen den Schlüssel später, um die Registrierung der Appliance für die horizontale Skalierung abzuschließen.
 
 ### <a name="2-download-the-installer-for-the-scale-out-appliance"></a>2. Laden Sie das Installationsprogramm für die Appliance für die horizontale Skalierung herunter.
@@ -67,8 +68,8 @@ Klicken Sie unter **Download Azure Migrate appliance** (Azure Migrate-Appliance 
 > 1. Öffnen Sie eine Eingabeaufforderung als Administrator.
 > 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispielverwendung für die öffentliche Cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. Laden Sie die neueste Version des Installationsprogramms für die Appliance für die horizontale Skalierung aus dem Portal herunter, wenn der berechnete Hashwert nicht mit dieser Zeichenfolge identisch ist: e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74.
+    - Beispielverwendung für die öffentliche Cloud: ```C:\>Get-FileHash -Path .\AzureMigrateInstaller-VMware-Public-Scaleout.zip -Algorithm SHA256 ```
+> 3. Laden Sie die neueste Version des Installationsprogramms für die Appliance für die horizontale Skalierung aus dem Portal herunter, wenn der berechnete Hashwert nicht mit dieser Zeichenfolge identisch ist: 1E6B6E3EE8B2A800818B925F5DA67EF7874DAD87E32847120B32F3E21F5960F9.
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Ausführen des Azure Migrate-Installationsskripts
 Das Installationsskript führt folgende Schritte aus:
@@ -107,7 +108,7 @@ Bevor Sie beginnen, sollten Sie sicherstellen, dass [diese Azure-Endpunkte](migr
 - Akzeptieren Sie die **Lizenzbedingungen**, und lesen Sie die Drittanbieterinformationen.
 - Navigieren Sie im Konfigurations-Manager zu **Erforderliche Komponenten einrichten**, und führen Sie die folgenden Schritte aus:
    - **Konnektivität**: Die Appliance überprüft, ob der Server über Internetzugriff verfügt. Wenn der Server einen Proxy verwendet:
-     1. Klicken Sie auf **Proxy einrichten**, um die Proxyadresse im Format http://ProxyIPAddress oder http://ProxyFQDN) und den überwachenden Port anzugeben.
+     1. Klicken Sie auf **Proxy einrichten**, um die Proxyadresse (in der Form http://ProxyIPAddress oder http://ProxyFQDN) und den Lauschport anzugeben.
      2. Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
      3. Es werden nur HTTP-Proxys unterstützt.
      4. Wenn Sie Proxydetails hinzugefügt oder den Proxy und/oder die Authentifizierung deaktiviert haben, klicken Sie auf **Speichern**, um die Konnektivitätsprüfung erneut auszulösen.
@@ -147,10 +148,10 @@ Klicken Sie auf **Importieren**, um die erforderlichen Konfigurationsdateien von
 1. Wählen Sie im Popupfenster, das im vorherigen Schritt geöffnet wurde, den Speicherort der kopierten ZIP-Konfigurationsdatei aus, und klicken Sie auf **Speichern**.
 
 Nachdem die Dateien erfolgreich importiert wurden, wird die Registrierung der Appliance für die horizontale Skalierung abgeschlossen, und der Zeitstempel des letzten erfolgreichen Imports wird angezeigt. Sie können die Registrierungsdetails auch anzeigen, indem Sie auf **Details anzeigen** klicken.
-:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="Erfolgreicher Import":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="Screenshot: Geräteregistrierung mit horizontaler Skalierung mit einem Azure Migrate-Projekt":::
 
-An diesem Punkt sollten Sie erneut überprüfen, ob die Appliance für die horizontale Skalierung eine Verbindung mit Ihrem vCenter-Server herstellen kann. Klicken Sie auf **Revalidate** (Erneut überprüfen), um die vCenter Server-Konnektivität von der Appliance für die horizontale Skalierung zu überprüfen.
-:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="Erfolgreicher Import":::
+An diesem Punkt sollten Sie erneut überprüfen, ob die Appliance für die horizontale Skalierung eine Verbindung mit Ihrer vCenter Server-Instanz herstellen kann. Klicken Sie auf **Revalidate** (Erneut überprüfen), um die vCenter Server-Konnektivität von der Appliance für die horizontale Skalierung zu überprüfen.
+:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="Screenshot: Anzeige der zu validierenden Anmeldeinformationen und Ermittlungsquellen":::
 
 > [!IMPORTANT]
 > Wenn Sie die vCenter Server-Anmeldeinformationen für die primäre Appliance bearbeiten, sollten Sie sicherstellen, dass Sie die Konfigurationsdateien noch mal auf der Appliance für die horizontale Skalierung importieren, um die neueste Konfiguration zu erhalten und fortlaufende Replikationen fortzusetzen.<br/> Vergewissern Sie sich, dass Sie die Appliance für die horizontale Skalierung deaktivieren, wenn Sie diese nicht mehr benötigen. [**Informieren Sie sich weiter**](./common-questions-appliance.md), wie Sie die Appliance für die horizontale Skalierung deaktivieren, wenn Sie diese nicht mehr benötigen.
@@ -175,4 +176,4 @@ In diesem Artikel wurde Folgendes beschrieben:
 - Replizieren von VMs mithilfe einer Appliance für die horizontale Skalierung
 
 
-[Informieren Sie sich weiter](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) über das Migrieren von Servern zu Azure mithilfe des Azure Migrate-Servermigrationstools.
+[Informieren Sie sich weiter](./tutorial-migrate-vmware.md) über das Migrieren von Servern zu Azure mithilfe des Azure Migrate-Servermigrationstools.

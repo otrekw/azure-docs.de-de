@@ -2,19 +2,73 @@
 title: Neuerungen in Azure Defender für IoT
 description: In diesem Artikel wird beschrieben, welche Neuerungen das aktuelle Release von Defender für IoT enthält.
 ms.topic: overview
-ms.date: 03/14/2021
-ms.openlocfilehash: 7d8c4ebfc55c80878b780fe9f663aaec62a75f9d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.date: 04/19/2021
+ms.openlocfilehash: da5358ccf0f69ca2ba8f5722b75889b6b7c92c07
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382911"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752604"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Neuerungen in Azure Defender für IoT
 
 In diesem Artikel sind neue und verbesserte Features von Defender für IoT aufgeführt.
 
 Die genannten Features befinden sich in der Vorschauphase. Die [ergänzenden Bestimmungen für Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
+## <a name="april-2021"></a>April 2021
+
+### <a name="work-with-automatic-threat-intelligence-updates-public-preview"></a>Verwenden automatischer Threat Intelligence-Updates (Public Preview)
+
+Neue Threat Intelligence-Pakete können jetzt automatisch an mit der Cloud verbundene Sensoren gepusht werden, sobald sie von Microsoft Defender für IoT veröffentlicht werden. Diese Option steht zusätzlich zum Herunterladen von Threat Intelligence-Paketen und zum anschließenden Hochladen auf Sensoren zur Verfügung.
+
+Durch die Verwendung automatischer Updates lässt sich der Betriebsaufwand reduzieren und eine höhere Sicherheit gewährleisten. Aktivieren Sie die automatische Aktualisierung, indem Sie Ihren mit der Cloud verbundenen Sensor im Portal von Defender für IoT integrieren. Aktivieren Sie dazu die Umschaltfläche **Automatic Threat Intelligence Updates** (Automatische Threat Intelligence-Updates).
+
+Wenn Sie einen konservativeren Ansatz zum Aktualisieren Ihrer Threat Intelligence-Daten verfolgen möchten, können Sie Pakete nur dann manuell aus dem Portal von Azure Defender für IoT an mit der Cloud verbundene Sensoren pushen, wenn Sie es für erforderlich halten.
+Dadurch können Sie steuern, wann ein Paket installiert wird, ohne es herunterladen und dann auf Ihre Sensoren hochladen zu müssen. Updates werden in Defender für IoT über die Seite **Standorte und Sensoren** manuell an Sensoren gepusht.
+
+Sie können auch die folgenden Informationen zu Threat Intelligence-Paketen überprüfen:
+
+- Installierte Paketversion
+- Modus des Threat Intelligence-Updates 
+- Status des Threat Intelligence-Updates
+
+### <a name="view-cloud-connected-sensor-information-public-preview"></a>Anzeigen von Informationen zu mit der Cloud verbundenen Sensoren (Public Preview)
+
+Wichtige Betriebsinformationen zu mit der Cloud verbundenen Sensoren finden Sie auf der Seite **Standorte und Sensoren**.
+
+- Installierte Sensorversion
+- Der Status der Sensorverbindung mit der Cloud.
+- Der letzte Zeitpunkt, zu dem die Verbindungsherstellung des Sensors mit der Cloud erkannt wurde
+
+### <a name="alert-api-enhancements"></a>Verbesserungen der Warnungs-API
+
+Für Benutzer, die Warnungs-APIs verwenden, sind neue Felder verfügbar.
+
+**Lokale Verwaltungskonsole**
+
+- Quell- und Zieladresse
+- Schritte zur Bereinigung
+- Der vom Benutzer definierte Name des Sensors
+- Der Name der Zone, die dem Sensor zugeordnet ist 
+- Der Name des Standorts, der dem Sensor zugeordnet ist
+
+**Sensor**
+
+- Quell- und Zieladresse
+- Schritte zur Bereinigung
+
+Bei Verwendung der neuen Felder ist API-Version 2 erforderlich.
+
+### <a name="features-delivered-as-generally-available-ga"></a>Als allgemein verfügbar bereitgestellte Features
+
+Die folgenden Features waren zuvor für die Public Preview verfügbar und sind jetzt allgemein verfügbar:
+
+- Sensor: erweiterte benutzerdefinierte Warnungsregeln
+- Lokale Verwaltungskonsole: Exportieren von Warnungen
+- Hinzufügen einer zweiten Netzwerkschnittstelle zur lokalen Verwaltungskonsole
+- Gerätehersteller: neuer Mikro-Agent
+
 ## <a name="march-2021"></a>März 2021
 
 ### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>Sensor: erweiterte benutzerdefinierte Warnungsregeln (Public Preview)
@@ -26,6 +80,12 @@ Dieses Feature ist mit der Veröffentlichung der Version 10.2 im Sensor verfüg
 ### <a name="on-premises-management-console---export-alerts-public-preview"></a>Lokale Verwaltungskonsole: Exportieren von Warnungen (Public Preview)
 
 Informationen zu Warnungen können jetzt aus der lokalen Verwaltungskonsole in eine CSV-Datei exportiert werden. Sie können Informationen zu allen erkannten Warnungen oder Informationen basierend auf der gefilterten Ansicht exportieren.
+
+Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von Version 10.2 verfügbar.
+
+### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>Hinzufügen einer zweiten Netzwerkschnittstelle zur lokalen Verwaltungskonsole (Public Preview)
+
+Sie können die Sicherheit Ihrer Bereitstellung nun verbessern, indem Sie Ihrer lokalen Verwaltungskonsole eine zweite Netzwerkschnittstelle hinzufügen. Mit diesem Feature können Sie die verbundenen Sensoren Ihrer lokalen Verwaltung in einem sicheren Netzwerk verwenden und gleichzeitig Ihren Benutzern den Zugriff auf die lokale Verwaltungskonsole über eine zweite separate Netzwerkschnittstelle ermöglichen.
 
 Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von Version 10.2 verfügbar.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b58040917ed3d3345a35b7acbe31b6b500f05562
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: c0ca74b6cf63e3c81d830eca76eea6815548faa1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073371"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732158"
 ---
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>Benötige ich eine öffentliche IP-Adresse auf meinem virtuellen Computer, um eine Verbindung über Azure Bastion herzustellen?
 
@@ -51,7 +51,7 @@ Dieses Feature funktioniert nicht bei Computern, die mit der AADJ VM-Erweiterung
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Welche Browser werden unterstützt?
 
-Verwenden Sie unter Windows den Microsoft Edge-Browser oder Google Chrome. Verwenden Sie unter macOS Google Chrome. Microsoft Edge Chromium wird auch für Windows und Mac unterstützt.
+Der Browser muss HTML 5 unterstützen. Verwenden Sie unter Windows den Microsoft Edge-Browser oder Google Chrome. Verwenden Sie unter macOS Google Chrome. Microsoft Edge Chromium wird auch für Windows und Mac unterstützt.
 
 ### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Wo speichert Azure Bastion Kundendaten?
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8af1a5e73592dc1c3392f0bc1fecfe6139a54710
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 34ac4a3b7f55c42711e4bc33c75bba964b49c65e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529834"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551627"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Microsoft 365-Gruppen
 
@@ -111,7 +111,7 @@ Wenn die Gruppe, die Sie wiederherstellen, Dokumente, SharePoint-Websites oder a
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>Abrufen des Ablaufdatums für eine Microsoft 365-Gruppe
 
-Zusätzlich zum Zugriffsbereich, in dem Benutzer Gruppendetails einschließlich Ablaufdatum und letztem Erneuerungsdatum anzeigen können, kann das Ablaufdatum für eine Microsoft 365-Gruppe aus der Betaversion der Microsoft Graph-REST-API abgerufen werden. expirationDateTime als Gruppeneigenschaft wurde in der Betaversion von Microsoft Graph aktiviert. Sie kann mit einer GET-Anforderung abgerufen werden. Weitere Informationen finden Sie in [diesem Beispiel](/graph/api/group-get?view=graph-rest-beta#example&preserve-view=true).
+Zusätzlich zum Zugriffsbereich, in dem Benutzer Gruppendetails einschließlich Ablaufdatum und letztem Erneuerungsdatum anzeigen können, kann das Ablaufdatum für eine Microsoft 365-Gruppe aus der Betaversion der Microsoft Graph-REST-API abgerufen werden. expirationDateTime als Gruppeneigenschaft wurde in der Betaversion von Microsoft Graph aktiviert. Sie kann mit einer GET-Anforderung abgerufen werden. Weitere Informationen finden Sie in [diesem Beispiel](/graph/api/group-get?view=graph-rest-beta#example).
 
 > [!NOTE]
 > Um Gruppenmitgliedschaften im Zugriffsbereich zu verwalten, muss „Zugriff auf Gruppen im Zugriffsbereich einschränken“ in der Allgemeinen Einstellung für Azure Active Directory-Gruppen auf „Nein“ festgelegt werden.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 383bd00bb0daf165f37ed98e48a5d36708367920
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 745cc7be37120cda27fe4d4077b9bda0fa07badf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130861"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550777"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -239,7 +239,7 @@ Wählen Sie **Ja** aus, wenn Benutzer beim Einbinden von Geräten in Azure AD di
 
 ![Multi-factor Auth zum Hinzufügen von Geräten erforderlich](./media/azureadjoin-plan/03.png)
 
-**Empfehlung:** Erzwingen Sie mit der Benutzeraktion [Geräte registrieren oder einbinden](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) in bedingtem Zugriff die Verwendung von MFA für das Einbinden von Geräten.
+**Empfehlung:** Erzwingen Sie mit der Benutzeraktion [Geräte registrieren oder einbinden](/conditional-access/concept-conditional-access-cloud-apps#user-actions) in bedingtem Zugriff die Verwendung von MFA für das Einbinden von Geräten.
 
 ## <a name="configure-your-mobility-settings"></a>Konfigurieren Ihrer Mobilitätseinstellungen
 

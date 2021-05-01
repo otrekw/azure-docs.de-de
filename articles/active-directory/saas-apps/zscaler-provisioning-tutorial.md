@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 9f368a4aebc4d5de38ebbab800241366650633e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92553e9d598823ee1b812a4f07480dec380b2490
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936582"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739420"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler für die automatische Benutzerbereitstellung
 
@@ -76,6 +76,10 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 ## <a name="configuring-automatic-user-provisioning-to-zscaler"></a>Konfigurieren der automatischen Benutzerbereitstellung in Zscaler
 
 In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts zum Erstellen, Aktualisieren und Deaktivieren von Benutzern bzw. Gruppen in Zscaler auf der Grundlage von Benutzer- oder Gruppenzuweisungen in Azure AD erläutert.
+
+
+> [!NOTE]
+> Öffnen Sie ein [Supportticket](https://help.zscaler.com/), um eine Domäne in Zscaler zu erstellen.
 
 > [!TIP]
 > Sie können auch das SAML-basierte einmalige Anmelden für Zscaler aktivieren. Befolgen Sie dazu die Anweisungen im [SSO-Tutorial zu Zscaler](zscaler-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.

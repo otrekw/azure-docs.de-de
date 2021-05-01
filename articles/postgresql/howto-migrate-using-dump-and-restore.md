@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: f99e966d3f4230320c71a10cca9cb2a80abc47da
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 809ff06fe460a06a689d7bbc11cdbd5ee247f585
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135507"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450054"
 ---
 # <a name="migrate-your-postgresql-database-by-using-dump-and-restore"></a>Migrieren Ihrer PostgreSQL-Datenbank durch Sichern und Wiederherstellen
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
@@ -117,4 +117,6 @@ Denken Sie daran, diese Befehle in einer Testumgebung zu testen und zu überprü
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Migrieren einer PostgreSQL-Datenbank mithilfe von Export und Import finden Sie unter [Migrieren der PostgreSQL-Datenbank mit Import und Export](howto-migrate-using-export-and-import.md).
-- Weitere Informationen zum Migrieren von Datenbanken zu Azure Database for PostgreSQL finden Sie im [Leitfaden zur Datenbankmigration](/data-migration/).
+- Weitere Informationen zum Migrieren von Datenbanken zu Azure Database for PostgreSQL finden Sie im [Leitfaden zur Datenbankmigration](https://aka.ms/datamigration).
+
+

@@ -11,12 +11,12 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 4b35cfeded13a50e5e27c240b0826f1d108ff7eb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f2473955db5439911280360b169f469b8c93eb93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529447"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043596"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
@@ -74,7 +74,7 @@ Sie können in Ihrem Mandanten externe Benutzer als Gastbenutzer einladen. Ein t
 
 Wenn Sie Gastbenutzer in Ihren Mandanten eingeladen haben, geben Sie die E-Mail-Adresse des Empfängers und eine Nachricht ein, die die Einladung beschreibt. Über den Einladungslink gelangt der Benutzer zur Zustimmungsseite. Wenn an die E-Mail-Adresse kein Posteingang angefügt ist, kann der Benutzer zur Zustimmungsseite navigieren, indem er mit den Anmeldeinformationen der Einladung zu einer Microsoft-Seite wechselt. Der Benutzer ist dann gezwungen, die Einladung in gleicher Weise wie beim Klicken auf den Link in der E-Mail einzulösen. Beispiel: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-Sie können auch mit der [Microsoft Graph-API](/graph/api/invitation-post) Gastbenutzer einladen.
+Sie können auch mit der [Microsoft Graph-API](/graph/api/invitation-post?view=graph-rest-beta) Gastbenutzer einladen.
 
 ## <a name="consumer-user"></a>Consumerbenutzer
 

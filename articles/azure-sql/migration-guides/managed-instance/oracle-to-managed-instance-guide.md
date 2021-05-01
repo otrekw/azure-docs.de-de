@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5e3b84c0a4b4124a020c54f02393eb1319707c21
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2bb019a692178c5b44c3589d401d3b2b34c3dccb
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136453"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553905"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-managed-instance"></a>Migrationsleitfaden: Oracle zu Azure SQL Managed Instance
 
@@ -23,7 +23,7 @@ ms.locfileid: "108136453"
 
 In diesem Leitfaden erfahren Sie, wie Sie Ihre Oracle-Schemas über SQL Server Migration Assistant für Oracle (SSMA für Oracle) zu Azure SQL Managed Instance migrieren.
 
-Weitere Migrationsleitfäden finden Sie in den [Leitfäden zur Azure-Datenbankmigration](/data-migration).
+Weitere Migrationsleitfäden finden Sie in den [Leitfäden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -99,14 +99,14 @@ So konvertieren Sie das Schema
 
    ![Screenshot vom Vergleich von Tabellenempfehlungen](./media/oracle-to-managed-instance-guide/table-comparison.png)
 
-1. Vergleichen Sie den konvertierten Transact-SQL-Text mit dem ursprünglichen Code und prüfen Sie die Empfehlungen.
+1. Vergleichen Sie den konvertierten Transact-SQL-Text mit dem ursprünglichen Code, und prüfen Sie die Empfehlungen.
 
    ![Screenshot vom Vergleich von Prozedurempfehlungen](./media/oracle-to-managed-instance-guide/procedure-comparison.png)
 
 1. Wählen Sie im Ausgabebereich **Ergebnisse überprüfen** aus, und überprüfen Sie die Fehler im Bereich **Fehlerliste**.
 1. Speichern Sie das Projekt für eine Übung zur Offlineschemakorrektur lokal. Wählen Sie im Menü **Datei** die Option **Projekt speichern** aus. So können Sie das Quell- und Zielschema offline auswerten und Probleme behandeln, bevor Sie das Schema auf SQL Managed Instance veröffentlichen.
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrieren
 
 Wenn Sie die Bewertung Ihrer Datenbanken und die Behandlung etwaiger Abweichungen abgeschlossen haben, besteht der nächste Schritt in der Durchführung des Migrationsprozesses. Die Migration umfasst zwei Schritte: das Veröffentlichen des Schemas und das Migrieren der Daten.
 
@@ -152,8 +152,8 @@ Das [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?i
 
 Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
-1. **Entwickeln von Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die für die Quell- und die Zieldatenbank ausgeführt werden sollen. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
-2. **Einrichten der Testumgebung:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
+1. **Entwickeln Sie Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die für die Quell- und die Zieldatenbank ausgeführt werden sollen. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
+2. **Richten Sie eine Testumgebung ein:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 3. **Führen Sie die Validierungstests aus**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 4. **Führen Sie Leistungstests aus**: Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
 
@@ -176,7 +176,7 @@ Weitere Unterstützung bei der Durchführung dieses Migrationsszenarios finden S
 | [SSMA für Oracle: häufige Probleme und deren Behebung](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | In Oracle kann eine nicht skalare Bedingung in der WHERE-Klausel zugewiesen werden. Dieser Bedingungstyp wird von SQL Server jedoch nicht unterstützt. SSMA für Oracle konvertiert daher keine Abfragen, die eine nicht skalare Bedingung in der WHERE-Klausel aufweisen. Stattdessen wird der Fehler O2SS0001 generiert. In diesem Whitepaper finden Sie weitere Einzelheiten zu diesem Problem sowie die erforderlichen Schritte zur Problembehandlung.          |
 | [Handbuch für die Migration von Oracle zu SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | In diesem Whitepaper sind die Aufgaben bei der Migration eines Oracle-Schemas zur neuesten Version von SQL Server-Datenbank beschrieben. Wenn für die Migration Änderungen an Features oder Funktionen erforderlich sind, müssen die Auswirkungen dieser Änderungen auf die Anwendungen, die die Datenbank verwenden, sorgfältig abgewogen werden.                                                     |
 
-Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
+Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Kernaufgabe dieses Teams ist die Freigabe und Beschleunigung komplexer Modernisierungsprojekte für die Migration von Datenplattformen auf die Azure-Datenplattform von Microsoft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

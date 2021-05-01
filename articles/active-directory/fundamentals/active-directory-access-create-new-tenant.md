@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93ae1982dfaef6e10edf39013474b6663dd688d0
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fc51c645c470f2b5b0a009eaf831db2f1957617e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130609"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780136"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory
 
@@ -63,9 +63,9 @@ Ihr neuer Mandant wird mit der Domäne „contoso.onmicrosoft.com“ erstellt.
 
 ## <a name="your-user-account-in-the-new-tenant"></a>Ihr Benutzerkonto im neuen Mandanten
 
-Wenn Sie einen neuen Azure AD-Mandanten erstellen, werden Sie der erste Benutzer dieses Mandanten. Als erster Benutzer wird Ihnen automatisch die Rolle [Globaler Administrator](../roles/permissions-reference.md#global-administrator) zugewiesen. Sehen Sie sich Ihr Benutzerkonto an, indem Sie zur Seite [**Benutzer**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) navigieren.
+Wenn Sie einen neuen Azure AD-Mandanten erstellen, werden Sie der erste Benutzer dieses Mandanten. Als erster Benutzer wird Ihnen automatisch die Rolle [Globaler Administrator](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#global-administrator) zugewiesen. Sehen Sie sich Ihr Benutzerkonto an, indem Sie zur Seite [**Benutzer**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) navigieren.
 
-Standardmäßig werden Sie auch als [technischer Kontakt](/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean) für den Mandanten aufgeführt. Die Informationen zum technischen Kontakt können unter [**Eigenschaften**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) geändert werden.
+Standardmäßig werden Sie auch als [technischer Kontakt](https://docs.microsoft.com/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean) für den Mandanten aufgeführt. Die Informationen zum technischen Kontakt können unter [**Eigenschaften**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) geändert werden.
 
 > [!WARNING]
 > Stellen Sie sicher, dass Ihrem Verzeichnis mindestens zwei Konten mit Berechtigungen vom Typ „Globaler Administrator“ zugewiesen sind. Das ist hilfreich, wenn ein globaler Administrator gesperrt ist. Ausführlichere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md).

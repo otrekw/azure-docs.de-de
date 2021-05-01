@@ -2,31 +2,28 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 4a9454abc2c4e41d711a4aef6a30438a72d27edb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750226"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106072899"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Eine bereitgestellte Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](../../create-communication-resource.md).
-- Ein `User Access Token`, um den Anrufclient zu aktivieren. Weitere Informationen zum [Abrufen eines `User Access Token`](../../access-tokens.md)
-- Optional: Gehen Sie den Schnellstart [Erste Schritte beim Hinzufügen von Anruffunktionen zu einer Anwendung](../getting-started-with-calling.md) durch.
+- Ein Benutzerzugriffstoken zum Aktivieren des Anrufclients. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Zugriffstoken](../../access-tokens.md).
+- Optional: Durchlaufen Sie den Schnellstart zum [Hinzufügen von Sprachanrufen zu Ihrer Anwendung](../getting-started-with-calling.md).
 
-## <a name="setting-up"></a>Einrichten
-
-### <a name="install-the-client-library"></a>Installieren der Clientbibliothek
+## <a name="install-the-sdk"></a>Installieren des SDK
 
 > [!NOTE]
-> Dieses Dokument verwendet Version 1.0.0-beta.6 der aufrufenden Clientbibliothek.
+> Dieses Dokument verwendet das ACS Calling Web SDK.
 
-Verwenden Sie den Befehl `npm install`, um die Azure Communication Services-Clientbibliotheken „Calling“ und „Common“ für JavaScript zu installieren.
-Dieses Dokument verweist auf Typen in Version 1.0.0-beta.5 der aufrufenden Bibliothek.
+Verwenden Sie den Befehl `npm install`, um das Azure Communication Services Calling SDK sowie allgemeine SDKs für JavaScript zu installieren.
 
 ```console
 npm install @azure/communication-common --save
@@ -36,24 +33,30 @@ npm install @azure/communication-calling --save
 
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features der Azure Communication Services-Clientbibliothek „Calling“:
+Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features des Azure Communication Services Calling SDK:
 
-| Name                             | Beschreibung                                                                                                                                 |
+| Name                             | BESCHREIBUNG                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | CallClient ist der Haupteinstiegspunkt in die Clientbibliothek „Calling“.                                                                       |
-| CallAgent                        | CallAgent dient zum Starten und Verwalten von Anrufen.                                                                                            |
-| DeviceManager                    | DeviceManager wird zum Verwalten von Mediengeräten verwendet.                                                                                           |
-| AzureCommunicationTokenCredential | Die AzureCommunicationTokenCredential-Klasse implementiert die CommunicationTokenCredential-Schnittstelle, die zum Instanziieren von CallAgent verwendet wird. |
+| `CallClient`                      | Der Haupteinstiegspunkt des Calling SDK.                                                                       |
+| `CallAgent`                        | Dient zum Starten und Verwalten von Anrufen.                                                                                            |
+| `DeviceManager`                    | Dient zum Verwalten von Mediengeräten.                                                                                           |
+| `AzureCommunicationTokenCredential` | Implementiert die `CommunicationTokenCredential`-Schnittstelle zum Instanziieren von `callAgent`. |
 
+## <a name="initialize-a-callclient-instance-create-a-callagent-instance-and-access-devicemanager"></a>Initialisieren einer CallClient-Instanz, Erstellen einer CallAgent-Instanz und Zugreifen auf deviceManager
 
-## <a name="initialize-the-callclient-create-callagent-and-access-devicemanager"></a>Initialisieren von CallClient, Erstellen von CallAgent und Zugreifen auf DeviceManager
+Erstellen Sie eine neue `CallClient`-Instanz. Sie können sie mit benutzerdefinierten Optionen wie eine Protokollierungsinstanz konfigurieren.
 
-Instanziieren Sie eine neue `CallClient`-Instanz. Sie können sie mit benutzerdefinierten Optionen wie eine Protokollierungsinstanz konfigurieren.
-Nachdem ein `CallClient` instanziiert wurde, können Sie eine `CallAgent`-Instanz erstellen, indem Sie die `createCallAgent`-Methode für die `CallClient`-Instanz aufrufen. Dadurch wird ein `CallAgent`-Instanzobjekt asynchron zurückgegeben.
-Die `createCallAgent`-Methode verwendet `CommunicationTokenCredential` als Argument, das ein [Benutzerzugriffstoken](../../access-tokens.md) akzeptiert.
-Um auf `DeviceManager` zugreifen zu können, muss zunächst eine callAgent-Instanz erstellt werden. Anschließend können Sie die `getDeviceManager`-Methode für die `CallClient`-Instanz ausführen, um DeviceManager abzurufen.
+Wenn Sie eine `CallClient`-Instanz verwenden, können Sie eine `CallAgent`-Instanz erstellen, indem Sie die Methode `createCallAgent` für die `CallClient`-Instanz aufrufen. Dadurch wird ein `CallAgent`-Instanzobjekt asynchron zurückgegeben.
+
+Die Methode `createCallAgent` verwendet `CommunicationTokenCredential` als Argument, welches ein [Benutzerzugriffstoken](../../access-tokens.md) akzeptiert.
+
+Nachdem Sie eine `callAgent`-Instanz erstellt haben, können Sie mit der Methode `getDeviceManager` für die `CallClient`-Instanz auf `deviceManager` zugreifen.
 
 ```js
+// Set the logger's log level
+setLogLevel('verbose');
+// Redirect logger output to wherever desired. By default it logs to console
+AzureLogger.log = (...args) => { console.log(...args) };
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationTokenCredential(userToken);
@@ -61,35 +64,38 @@ const callAgent = await callClient.createCallAgent(tokenCredential, {displayName
 const deviceManager = await callClient.getDeviceManager()
 ```
 
-## <a name="place-an-outgoing-call"></a>Tätigen eines ausgehenden Anrufs
-
-Um einen Anruf zu erstellen und zu starten, müssen Sie eine der APIs für CallAgent aufrufen und einen Benutzer bereitstellen, den Sie über die Communication Services-Clientbibliothek „Administration“ erstellt haben.
-
-Erstellung und Start des Anrufs erfolgen synchron. Die Anrufinstanz ermöglicht Ihnen das Abonnieren aller Ereignisse im Rahmen des Anrufs.
-
 ## <a name="place-a-call"></a>Tätigen eines Anrufs
 
-### <a name="place-a-11-call-to-a-user-or-pstn"></a>Tätigen eines 1:1-Anrufs eines Benutzers einer Festnetznummer
-Um einen Anruf mit einem anderen Communication Services-Benutzer zu tätigen, rufen Sie die Methode `startCall` für `callAgent` auf, und übergeben den CommunicationUserIdentifier des Anrufers, den Sie [mit der Communication Services-Bibliothek „Administration“ erstellt haben](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
+Um einen Anruf zu erstellen und zu starten, verwenden Sie eine der APIs für `callAgent`, und geben Sie einen Benutzer an, den Sie über das Communication Services Identity SDK erstellt haben.
+
+Erstellung und Start des Anrufs erfolgen synchron. Die Anrufinstanz ermöglicht Ihnen das Abonnieren von Anrufereignissen.
+
+### <a name="place-a-1n-call-to-a-user-or-pstn"></a>Tätigen eines 1:n-Anrufs an einen Benutzer oder ein Telefonfestnetz
+
+Um einen anderen Communication Services-Benutzer anzurufen, verwenden Sie die Methode `startCall` für `callAgent`, und übergeben Sie den `CommunicationUserIdentifier`, den Sie [mit der Communication Services-Verwaltungsbibliothek](../../access-tokens.md) erstellt haben.
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }
 const oneToOneCall = callAgent.startCall([userCallee]);
 ```
 
-Um einen Anruf einer Festnetznummer zu tätigen, rufen Sie die `startCall`-Methode für `callAgent` auf und übergeben den PhoneNumberIdentifier des Angerufenen.
-Die Communication Services-Ressource muss so konfiguriert werden, dass Anrufe über das Telefonfestnetz möglich sind.
-Wenn Sie Festnetznummern anrufen, müssen Sie Ihre alternative Anrufer-ID angeben. Eine alternative Anrufer-ID bezieht sich auf eine Telefonnummer (basierend auf dem E.164-Standard), die den Aufrufer in einem PSTN-Anruf identifiziert. Wenn Sie z. B. eine alternative Anrufer-ID für den PSTN-Anruf angeben, ist es diese Telefonnummer, die dem Angerufenen angezeigt wird, wenn der Anruf eingeht.
+Um einen Anruf an ein PSTN (Public Switched Telephone Network) zu tätigen, verwenden Sie die Methode `startCall` für `callAgent`, und übergeben Sie den `PhoneNumberIdentifier` des Empfängers. Die Communication Services-Ressource muss so konfiguriert werden, dass Anrufe über das Telefonfestnetz möglich sind.
 
-> [!WARNING]
-> Anrufe über das Telefonfestnetz sind derzeit in der Phase „Private Vorschau“. [Bewerben Sie sich für den Zugriff auf das Early Adopter-Programm](https://aka.ms/ACS-EarlyAdopter).
+Wenn Sie eine Telefonfestnetznummer anrufen, geben Sie Ihre alternative Anrufer-ID an. Eine alternative Anrufer-ID bezieht sich auf eine Telefonnummer (basierend auf dem E.164-Standard), die den Anrufer in einem PSTN-Anruf identifiziert. Dies ist die Telefonnummer, die dem Anrufempfänger bei einem eingehenden Anruf angezeigt wird.
+
+> [!NOTE]
+> Anrufe über das Telefonfestnetz sind derzeit in der Phase „Private Vorschau“. Um auf diese Funktion zuzugreifen, [bewerben Sie sich für das Early Adopter-Programm](https://aka.ms/ACS-EarlyAdopter).
+
+Verwenden Sie für einen 1:1-Anruf den folgenden Code:
+
 ```js
 const pstnCalee = { phoneNumber: '<ACS_USER_ID>' }
 const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
 const oneToOneCall = callAgent.startCall([pstnCallee], {alternateCallerId});
 ```
 
-### <a name="place-a-1n-call-with-users-and-pstn"></a>1:n-Anruf mit Benutzern und Festnetznummern
+Verwenden Sie für einen 1:n-Anruf den folgenden Code:
+
 ```js
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
@@ -99,37 +105,59 @@ const groupCall = callAgent.startCall([userCallee, pstnCallee], {alternateCaller
 ```
 
 ### <a name="place-a-11-call-with-video-camera"></a>Tätigen eines 1:1-Anrufs mit Videokamera
-> [!WARNING]
+
+> [!IMPORTANT]
 > Derzeit ist nicht mehr als ein ausgehender lokaler Videostream möglich.
-Um einen Videoanruf zu tätigen, müssen Sie die lokalen Kameras mit der deviceManager-API `getCameras()` auflisten.
-Sobald Sie die gewünschte Kamera ausgewählt haben, erstellen Sie damit eine `LocalVideoStream`-Instanz und übergeben diese innerhalb von `videoOptions` als Element innerhalb des `localVideoStream`-Arrays an die `startCall`-Methode.
-Sobald die Anrufverbindung hergestellt ist, wird automatisch ein Videostream von der ausgewählten Kamera an andere Teilnehmer gesendet. Dies gilt auch für die Videooptionen Call.Accept() und CallAgent.join().
+
+Zum Tätigen eines Videoanrufs müssen Sie Ihre Kameras über die Methode `getCameras()` in `deviceManager` angeben.
+
+Nachdem Sie eine Kamera ausgewählt haben, verwenden Sie sie, um eine `LocalVideoStream`-Instanz zu erstellen. Übergeben Sie sie in `videoOptions` als Element innerhalb des `localVideoStream`-Arrays an die `startCall`-Methode.
+
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const cameras = await deviceManager.getCameras();
-videoDeviceInfo = cameras[0];
-localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const camera = cameras[0]
+localVideoStream = new LocalVideoStream(camera);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
 const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 
 ```
 
+Sobald die Anrufverbindung hergestellt ist, wird automatisch ein Videostream von der ausgewählten Kamera an den anderen Teilnehmer gesendet. Dies gilt auch für die `Call.Accept()`- und die `CallAgent.join()`-Videooptionen.
+
 ### <a name="join-a-group-call"></a>Teilnehmen an einem Gruppenanruf
-Um einen neuen Gruppenanruf zu starten oder an einem laufenden Gruppenanruf teilzunehmen, müssen Sie die „join“-Methode aufrufen und ein Objekt mit einer `groupId`-Eigenschaft übergeben. Der Wert muss eine GUID sein.
+
+> [!NOTE]
+> Der `groupId`-Parameter wird als Systemmetadaten angesehen und kann von Microsoft für Vorgänge verwendet werden, die zum Ausführen des Systems erforderlich sind. Fügen Sie keine personenbezogenen Daten in den `groupId`-Wert ein. Microsoft behandelt diesen Parameter nicht wie personenbezogene Daten. Seine Inhalte sind möglicherweise für Microsoft-Mitarbeiter sichtbar oder werden langfristig gespeichert.
+>
+> Der `groupId`-Parameter erfordert, dass Daten im GUID-Format vorliegen. Es wird empfohlen, zufällig generierte GUIDs zu verwenden, die in Ihren Systemen nicht als personenbezogene Daten betrachtet werden.
+>
+
+Um einen neuen Gruppenanruf zu starten oder an einem aktuellen Gruppenanruf teilzunehmen, müssen Sie die Methode `join` aufrufen und ein Objekt mit einer `groupId`-Eigenschaft übergeben. Der `groupId`-Wert muss eine GUID sein.
+
 ```js
 
 const context = { groupId: <GUID>}
 const call = callAgent.join(context);
 
 ```
-### <a name="join-a-teams-meeting"></a>Teilnahme an einer Teams-Besprechung
-Verwenden Sie für die Teilnahme an einer Teams-Besprechung die „join“-Methode, und übergeben Sie einen Besprechungslink oder genaue Informationen zur Besprechung.
+
+### <a name="join-a-teams-meeting"></a>Teilnehmen an einer Teams-Besprechung
+> [!NOTE]
+> Diese API wird als Vorschau für Entwickler bereitgestellt. Je nachdem, welches Feedback wir dazu erhalten, werden möglicherweise Änderungen vorgenommen. Verwenden Sie diese API nicht in einer Produktionsumgebung. Um diese API einzusetzen, verwenden Sie das Betarelease des ACS Calling Web SDK.
+
+Verwenden Sie für die Teilnahme an einer Teams-Besprechung die Methode `join`, und übergeben Sie einen Besprechungslink oder die Besprechungsdaten.
+
+Teilnehmen über einen Besprechungslink:
+
 ```js
-// Join using meeting link
 const locator = { meetingLink: <meeting link>}
 const call = callAgent.join(locator);
+```
 
-// Join using meeting coordinates
+Teilnehmen über Besprechungsdaten:
+
+```js
 const locator = {
     threadId: <thread id>,
     organizerId: <organizer id>,
@@ -139,106 +167,118 @@ const locator = {
 const call = callAgent.join(locator);
 ```
 
-## <a name="receiving-an-incoming-call"></a>Empfangen eines eingehenden Aufrufs
+## <a name="receive-an-incoming-call"></a>Empfangen eines eingehenden Anrufs
 
-Die `CallAgent`-Instanz gibt das Ereignis `incomingCall` aus, wenn die angemeldete Identität einen eingehenden Anruf empfängt. Um auf dieses Ereignis zu lauschen, abonnieren Sie es wie folgt:
+Die `callAgent`-Instanz gibt das Ereignis `incomingCall` aus, wenn die angemeldete Identität einen eingehenden Anruf empfängt. Um auf dieses Ereignis zu lauschen, abonnieren Sie es mithilfe einer der folgenden Optionen:
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-    //Get information about caller
+
+    //Get incoming call ID
+    var incomingCallId = incomingCall.id
+
+    // Get information about caller
     var callerInfo = incomingCall.callerInfo
-    
-    //accept the call
+
+    // Accept the call
     var call = await incomingCall.accept();
 
-    //reject the call
+    // Reject the call
     incomingCall.reject();
+
+    // Subscribe to callEnded event and get the call end reason
+     incomingCall.on('callEnded', args => {
+        console.log(args.callEndReason);
+    });
+
+    // callEndReason is also a property of IncomingCall
+    var callEndReason = incomingCall.callEndReason;
 };
 callAgentInstance.on('incomingCall', incomingCallHander);
 ```
 
-Das Ereignis `incomingCall` stellt eine Instanz von `IncomingCall` zur Verfügung, mit der Sie einen Anruf annehmen oder ablehnen können.
+Das `incomingCall`-Ereignis umfasst eine `incomingCall`-Instanz, die Sie akzeptieren oder ablehnen können.
 
+## <a name="manage-calls"></a>Verwalten von Anrufen
 
-## <a name="call-management"></a>Anrufverwaltung
+Während eines Anrufs können Sie auf Anrufeigenschaften zugreifen und Video- und Audioeinstellungen verwalten.
 
-Sie können auf Anrufeigenschaften zugreifen und während eines Anrufs verschiedene Vorgänge ausführen, um Einstellungen für Video und Audio zu verwalten.
+### <a name="check-call-properties"></a>Überprüfen von Anrufeigenschaften
 
-### <a name="call-properties"></a>Anrufeigenschaften
-* Rufen Sie die eindeutige ID (Zeichenfolge) für diesen Anruf ab.
-```js
+Abrufen der eindeutigen ID (Zeichenfolge) für einen Anruf:
 
-const callId: string = call.id;
+   ```js
+    const callId: string = call.id;
+   ```
 
-```
+Erhalten Sie Informationen zu anderen Anrufteilnehmern, indem Sie sich die `remoteParticipants`-Sammlung für die call-Instanz ansehen:
 
-* Um mehr über andere Anrufteilnehmer zu erfahren, sehen Sie sich die `remoteParticipant`-Sammlung für die `call`-Instanz an: Das Array enthält `RemoteParticipant`-Listenobjekte
-```js
-const remoteParticipants = call.remoteParticipants;
-```
+   ```js
+   const remoteParticipants = call.remoteParticipants;
+   ```
 
-* Der Bezeichner des Anrufers bei einem eingehenden Anruf. Der Bezeichner ist einer der `CommunicationIdentifier`-Typen
-```js
+Identifizieren des Anrufers eines eingehenden Anrufs:
 
-const callerIdentity = call.callerInfo.identifier;
+   ```js
+   const callerIdentity = call.callerInfo.identifier;
+   ```
 
-* Get the state of the Call.
-```js
+   `identifier` ist einer der `CommunicationIdentifier`-Typen.
 
-const callState = call.state;
+Abrufen des Anrufzustands:
 
-```
-Gibt eine Zeichenfolge zurück, die den aktuellen Zustand eines Anrufs darstellt:
-* None: ursprünglicher Anrufzustand
-* Incoming: gibt an, dass ein Anruf eingeht, der entweder angenommen oder abgelehnt werden muss
-* Connecting: anfänglicher Übergangszustand, sobald ein Anruf getätigt oder angenommen wird
-* Ringing: für einen ausgehenden Anruf; gibt an, dass für den Anruf bei Remoteteilnehmern ein Klingeln ertönt; auf ihrer Seite ist der Status „Incoming“.
-* EarlyMedia: gibt einen Zustand an, bei dem eine Ansage wiedergegeben wird, bevor der Anruf verbunden wird
-* Connected: der Anruf wurde verbunden
-* LocalHold: Der Anruf wird vom lokalen Teilnehmer gehalten; es werden keine Medien zwischen lokalem Endpunkt und Remoteteilnehmern übertragen.
-* RemoteHold: Der Anruf wird vom Remoteteilnehmer gehalten; es werden keine Medien zwischen lokalem Endpunkt und Remoteteilnehmern übertragen.
-* Disconnecting: Übergangsstatus, ehe der Anruf in den Zustand „Disconnected“ wechselt.
-* Disconnected: der Endzustand des Anrufs
-  * Wenn die Netzwerkverbindung unterbrochen wird, wechselt der Status nach ungefähr 2 Minuten in „Disconnected“.
+   ```js
+   const callState = call.state;
+   ```
 
-* Um zu ermitteln, warum ein bestimmter Anruf beendet wurde, überprüfen Sie die `callEndReason`-Eigenschaft.
-```js
+   Gibt eine Zeichenfolge zurück, die den aktuellen Zustand eines Anrufs darstellt:
 
-const callEndReason = call.callEndReason;
-// callEndReason.code (number) code associated with the reason
-// callEndReason.subCode (number) subCode associated with the reason
-```
+  - `None`: anfänglicher Anrufzustand.
+  - `Connecting`: anfänglicher Übergangszustand, wenn ein Anruf getätigt oder angenommen wird.
+  - `Ringing`: Weist bei einem ausgehenden Anruf darauf hin, dass für den Anruf Remoteteilnehmer ein Klingeln ertönt. Auf deren Seite lautet der Status `Incoming`.
+  - `EarlyMedia`: Gibt einen Zustand an, in dem vor dem Verbinden des Anrufs eine Ansage wiedergegeben wird.
+  - `Connected`: Gibt an, dass der Anruf verbunden wurde.
+  - `LocalHold`: Gibt an, dass der Anruf von einem lokalen Teilnehmer gehalten wird. Zwischen dem lokalen Endpunkt und den Remoteteilnehmern werden keine Medien übertragen.
+  - `RemoteHold`: Gibt an, dass der Anruf von einem Remoteteilnehmer gehalten wird. Zwischen dem lokalen Endpunkt und den Remoteteilnehmern werden keine Medien übertragen.
+  - `Disconnecting`: Übergangszustand, bevor der Anruf in einen `Disconnected`-Zustand wechselt.
+  - `Disconnected`: Abschließender Anrufzustand. Wenn die Netzwerkverbindung unterbrochen wird, ändert sich der Zustand nach zwei Minuten in `Disconnected`.
 
-* Um festzustellen, ob es sich bei dem aktuellen Anruf um einen ein- oder ausgehenden Anruf handelt, prüfen Sie die `direction`-Eigenschaft; sie gibt `CallDirection` zurück.
-```js
-const isIncoming = call.direction == 'Incoming';
-const isOutgoing = call.direction == 'Outgoing';
-```
+Ermitteln Sie, warum der Anruf beendet wurde, indem Sie die Eigenschaft `callEndReason` überprüfen:
 
-*  Um festzustellen, ob das aktuelle Mikrofon stummgeschaltet ist, prüfen Sie die `muted`-Eigenschaft; sie gibt `Boolean` zurück.
-```js
+   ```js
+   const callEndReason = call.callEndReason;
+   const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+   const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
+   ```
 
-const muted = call.isMicrophoneMuted;
+Erfahren Sie, ob der aktuelle Anruf ein- oder ausgeht, indem Sie die Eigenschaft `direction` überprüfen. Er gibt `CallDirection` zurück.
 
-```
+  ```js
+   const isIncoming = call.direction == 'Incoming';
+   const isOutgoing = call.direction == 'Outgoing';
+   ```
 
-* Um zu bestimmen, ob der Bildschirmübertragungs-Stream von einem bestimmten Endpunkt aus gesendet wird, überprüfen Sie die `isScreenSharingOn`-Eigenschaft; sie gibt `Boolean` zurück.
-```js
+Stellen Sie fest, ob das aktuelle Mikrofon stummgeschaltet ist. Er gibt `Boolean` zurück.
 
-const isScreenSharingOn = call.isScreenSharingOn;
+   ```js
+   const muted = call.isMuted;
+   ```
 
-```
+Ermitteln Sie, ob der Bildschirmübertragungsstream von einem bestimmten Endpunkt aus gesendet wird, indem Sie die Eigenschaft `isScreenSharingOn` überprüfen. Er gibt `Boolean` zurück.
 
-* Um aktive Videostreams zu untersuchen, überprüfen Sie die `localVideoStreams`-Sammlung; sie enthält `LocalVideoStream`-Objekte.
-```js
+   ```js
+   const isScreenSharingOn = call.isScreenSharingOn;
+   ```
 
-const localVideoStreams = call.localVideoStreams;
+Untersuchen Sie aktive Videostreams, indem Sie sich die `localVideoStreams`-Sammlung ansehen. Sie gibt `LocalVideoStream`-Objekte zurück.
 
-```
+   ```js
+   const localVideoStreams = call.localVideoStreams;
+   ```
 
-### <a name="call-ended-event"></a>Ereignis „Anruf beendet“
+### <a name="check-a-callended-event"></a>Überprüfen eines callEnded-Ereignisses
 
-Die `Call`-Instanz gibt das Ereignis `callEnded` aus, wenn der Anruf endet. Um auf dieses Ereignis zu lauschen, abonnieren Sie es wie folgt:
+Die `call`-Instanz gibt das Ereignis `callEnded` aus, wenn der Anruf endet. Um auf dieses Ereignis zu lauschen, abonnieren Sie es mithilfe des folgenden Codes:
 
 ```js
 const callEndHander = async (args: { callEndReason: CallEndReason }) => {
@@ -254,124 +294,125 @@ Zum Stummschalten oder Aufheben der Stummschaltung des lokalen Endpunkts können
 
 ```js
 
-//mute local device 
+//mute local device
 await call.mute();
 
-//unmute local device 
+//unmute local device
 await call.unmute();
 
 ```
 
 ### <a name="start-and-stop-sending-local-video"></a>Starten und Beenden des Sendens von lokalem Video
 
-
-Um ein Video zu starten, müssen Sie Kameras mit der `getCameras`-Methode für das `deviceManager`-Objekt aufzählen. Erstellen Sie dann eine neue Instanz von `LocalVideoStream`, indem Sie die gewünschte Kamera als Argument an die `startVideo`-Methode übergeben:
-
+Um ein Video zu starten, müssen Sie mit der Methode `getCameras` Kameras für das `deviceManager`-Objekt angeben. Erstellen Sie dann eine neue Instanz von `LocalVideoStream`, indem Sie die gewünschte Kamera als Argument an die Methode `startVideo` übergeben:
 
 ```js
-const localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const deviceManager = await callClient.getDeviceManager();
+const cameras = await deviceManager.getCameras();
+const camera = cameras[0]
+const localVideoStream = new LocalVideoStream(camera);
 await call.startVideo(localVideoStream);
-
 ```
 
-Sobald Sie erfolgreich mit dem Senden von Video beginnen, wird eine `LocalVideoStream`-Instanz der `localVideoStreams`-Sammlung für eine Anrufinstanz hinzugefügt.
+Sobald Videodaten erfolgreich gesendet werden, wird eine `LocalVideoStream`-Instanz der `localVideoStreams`-Sammlung für eine Anrufinstanz hinzugefügt.
 
 ```js
-
 call.localVideoStreams[0] === localVideoStream;
-
 ```
 
 Um das lokale Video anzuhalten, übergeben Sie die `localVideoStream`-Instanz, die in der `localVideoStreams`-Sammlung verfügbar ist:
 
 ```js
-
 await call.stopVideo(localVideoStream);
-
 ```
 
-Sie können während des Sendens von Video auf ein anderes Kameragerät umschalten, indem Sie `switchSource` für eine `localVideoStream`-Instanz aufrufen:
+Sie können während des Sendens von Videodaten auf ein anderes Kameragerät umschalten, indem Sie `switchSource` für eine `localVideoStream`-Instanz aufrufen:
 
 ```js
 const cameras = await callClient.getDeviceManager().getCameras();
-localVideoStream.switchSource(cameras[1]);
-
+const camera = cameras[1];
+localVideoStream.switchSource(camera);
 ```
 
-## <a name="remote-participants-management"></a>Verwaltung von Remoteteilnehmern
+## <a name="manage-remote-participants"></a>Verwalten von Remoteteilnehmern
 
 Alle Remoteteilnehmer werden durch den Typ `RemoteParticipant` dargestellt und sind über die `remoteParticipants`-Sammlung für eine Anrufinstanz verfügbar.
 
-### <a name="list-participants-in-a-call"></a>Auflisten der Teilnehmer an einem Anruf
-Die `remoteParticipants`-Sammlung gibt eine Liste der Remoteteilnehmer an einem angegebenen Anruf zurück:
+### <a name="list-the-participants-in-a-call"></a>Auflisten der Teilnehmer an einem Anruf
+
+Die `remoteParticipants`-Sammlung gibt eine Liste der Remoteteilnehmer eines Anrufs zurück:
 
 ```js
-
 call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
-
 ```
 
-### <a name="remote-participant-properties"></a>Eigenschaften von Remoteteilnehmern
-Einem Remoteteilnehmer sind eine Reihe von Eigenschaften und Sammlungen zugeordnet.
-#### <a name="communicationidentifier"></a>CommunicationIdentifier
-Ruft den Bezeichner dieses Remoteteilnehmers ab.
-Die Identität ist einer der „CommunicationIdentifier“-Typen:
-```js
-const identifier = remoteParticipant.identifier;
-```
-Es kann sich um einen der folgenden Typen von CommunicationIdentifier handeln:
-  * { communicationUserId: '<ACS_USER_ID'> }: Objekt, das den ACS-Benutzer darstellt
-  * { phoneNumber: '<E.164>' }: Objekt, das die Telefonnummer im E.164-Format darstellt
-  * { microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" }: Objekt, das den Teams-Benutzer darstellt
+### <a name="access-remote-participant-properties"></a>Zugreifen auf Eigenschaften von Remoteteilnehmern
 
-#### <a name="state"></a>State
-Ruft den Zustand dieses Remoteteilnehmers ab.
-```js
+Remoteteilnehmern ist ein Satz von Eigenschaften und Sammlungen zugeordnet:
 
-const state = remoteParticipant.state;
-```
-Folgende Werte sind hierfür möglich:
-* Idle: Anfangszustand
-* Connecting: Übergangszustand, während sich der Teilnehmer mit dem Anruf verbindet
-* Ringing: Der Teilnehmer klingelt.
-* Connected: Teilnehmer ist mit dem Anruf verbunden
-* Hold: Teilnehmer wird gehalten
-* EarlyMedia: Ansage wird wiedergegeben, bevor der Teilnehmer mit dem Anruf verbunden ist
-* Disconnected: In diesem Endzustand ist der Teilnehmer vom Anruf getrennt
-  * Wenn die Netzwerkverbindung des Remoteteilnehmers unterbrochen wird, ändert sich dessen Status nach etwa 2 Minuten in „Disconnected“.
+- `CommunicationIdentifier`: Ruft den Bezeichner eines Remoteteilnehmers ab. „Identity“ ist einer der `CommunicationIdentifier`-Typen:
 
-#### <a name="call-end-reason"></a>Grund für Anrufende
-Um zu erfahren, warum ein Teilnehmer den Anruf verlassen hat, prüfen Sie die `callEndReason`-Eigenschaft:
-```js
-const callEndReason = remoteParticipant.callEndReason;
-// callEndReason.code (number) code associated with the reason
-// callEndReason.subCode (number) subCode associated with the reason
-```
-#### <a name="is-muted"></a>Stummgeschaltet
-Um zu prüfen, ob dieser Remoteteilnehmer stummgeschaltet ist oder nicht, prüfen Sie die `isMuted`-Eigenschaft; sie gibt `Boolean` zurück.
-```js
-const isMuted = remoteParticipant.isMuted;
-```
-#### <a name="is-speaking"></a>Spricht gerade
-Um zu prüfen, ob dieser Remoteteilnehmer spricht oder nicht, prüfen Sie die `isSpeaking`-Eigenschaft; sie gibt `Boolean` zurück.
-```js
-const isSpeaking = remoteParticipant.isSpeaking;
-```
+  ```js
+  const identifier = remoteParticipant.identifier;
+  ```
 
-#### <a name="video-streams"></a>Videodatenströme
-Um alle Videostreams zu prüfen, die ein bestimmter Teilnehmer im Rahmen dieses Anrufs sendet, sehen Sie sich die `videoStreams`-Sammlung an; sie enthält `RemoteVideoStream`-Objekte.
-```js
+  Mögliche `CommunicationIdentifier`-Typen:
 
-const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+  - `{ communicationUserId: '<ACS_USER_ID'> }`: Objekt, das den ACS-Benutzer darstellt.
+  - `{ phoneNumber: '<E.164>' }`: Objekt, das die Telefonnummer im E.164-Format darstellt.
+  - `{ microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" }`: Objekt, das den Teams-Benutzer darstellt.
+  - `{ id: string }`: Objekt, das den Bezeichner darstellt, der keinem der anderen Bezeichnertypen entspricht.
 
-```
+- `state`: Ruft den Zustand eines Remoteteilnehmers ab.
 
+  ```js
+  const state = remoteParticipant.state;
+  ```
+
+  Mögliche Zustände:
+
+  - `Idle`: Anfangszustand.
+  - `Connecting`: Übergangszustand, während sich der Teilnehmer mit dem Anruf verbindet.
+  - `Ringing`: Für den Teilnehmeranruf ertönt ein Klingeln.
+  - `Connected`: Der Teilnehmer ist mit dem Anruf verbunden.
+  - `Hold`: Der Teilnehmer wird gehalten.
+  - `EarlyMedia`: Ansage, die vor dem Verbinden eines Teilnehmers mit dem Anruf wiedergegeben wird.
+  - `Disconnected`: Abschließender Zustand. Der Teilnehmer wird vom Anruf getrennt. Wenn der Remoteteilnehmer seine Netzwerkkonnektivität verliert, ändert sich der Zustand nach zwei Minuten in `Disconnected`.
+
+- `callEndReason`: Um zu erfahren, warum ein Teilnehmer den Anruf verlassen hat, prüfen Sie die Eigenschaft `callEndReason`:
+
+  ```js
+  const callEndReason = remoteParticipant.callEndReason;
+  const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+  const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
+  ```
+
+- `isMuted`-Status: Um herauszufinden, ob ein Remoteteilnehmer stummgeschaltet wurde, überprüfen Sie die Eigenschaft `isMuted`. Er gibt `Boolean` zurück.
+
+  ```js
+  const isMuted = remoteParticipant.isMuted;
+  ```
+
+- `isSpeaking`-Status: Um herauszufinden, ob ein Remoteteilnehmer gerade spricht, überprüfen Sie die Eigenschaft `isSpeaking`. Er gibt `Boolean` zurück.
+
+  ```js
+  const isSpeaking = remoteParticipant.isSpeaking;
+  ```
+
+- `videoStreams`: Um alle Videostreams zu prüfen, die ein bestimmter Teilnehmer im Rahmen dieses Anrufs sendet, sehen Sie sich die `videoStreams`-Sammlung an. Sie enthält `RemoteVideoStream`-Objekte.
+
+  ```js
+  const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+  ```
+- `displayName`: Um den Anzeigenamen für diesen Remoteteilnehmer zu erhalten, überprüfen Sie die zurückgegebene Zeichenfolge der Eigenschaft `displayName`. 
+
+  ```js
+  const displayName = remoteParticipant.displayName;
+  ```
 
 ### <a name="add-a-participant-to-a-call"></a>Hinzufügen eines Teilnehmers zu einem Anruf
 
-Um einen Teilnehmer einem Anruf hinzuzufügen (entweder als Benutzer oder Telefonnummer), können Sie `addParticipant` aufrufen.
-Geben Sie einen der „Identifier“-Typen an.
-Dadurch wird die Instanz des Remoteteilnehmers synchron zurückgegeben.
+Wenn Sie einem Anruf einen Teilnehmer (einen Benutzer oder eine Telefonnummer) hinzufügen möchten, können Sie `addParticipant` verwenden. Geben Sie einen der `Identifier`-Typen an. Dieser gibt die `remoteParticipant`-Instanz zurück.
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -380,11 +421,9 @@ const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier, {alternateCallerId: '<Alternate Caller ID>'});
 ```
 
-### <a name="remove-participant-from-a-call"></a>Entfernen eines Teilnehmers aus einem Anruf
+### <a name="remove-a-participant-from-a-call"></a>Entfernen eines Teilnehmers aus einem Anruf
 
-Um einen Teilnehmer aus einem Anruf zu entfernen (entweder als Benutzer oder Telefonnummer), können Sie `removeParticipant` aufrufen.
-Sie müssen einen der „Identifier“-Typen übergeben. Dieser wird asynchron aufgelöst, sobald der Teilnehmer aus dem Anruf entfernt wird.
-Der Teilnehmer wird auch aus der `remoteParticipants`-Sammlung entfernt.
+Um einen Teilnehmer (einen Benutzer oder eine Telefonnummer) aus einem Anruf zu entfernen, können Sie `removeParticipant` aufrufen. Sie müssen einen der `Identifier`-Typen übergeben. Dieser Vorgang wird asynchron aufgelöst, nachdem der Teilnehmer aus dem Anruf entfernt wurde. Der Teilnehmer wird auch aus der `remoteParticipants`-Sammlung entfernt.
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -401,24 +440,23 @@ Um die Video- und Bildschirmübertragungs-Streams der Remoteteilnehmer aufzulist
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
- 
-Zum Rendern eines `RemoteVideoStream` müssen Sie ein `isAvailableChanged`-Ereignis abonnieren.
-Wenn sich die Eigenschaft `isAvailable` in `true` ändert, sendet ein Remoteteilnehmer einen Stream.
-Sobald dies passiert, erstellen Sie eine neue Instanz von `Renderer` und anschließend mit der asynchronen `createView`-Methode eine neue `RendererView`-Instanz.  Sie können dann `view.target` an ein beliebiges Benutzeroberflächenelement anfügen.
-Immer wenn sich die Verfügbarkeit eines Remotestreams ändert, können Sie wählen, ob Sie den gesamten Renderer, eine bestimmte `RendererView` zerstören oder sie behalten möchten, was jedoch zur Anzeige leerer Videobilder führt.
+
+Zum Rendern von `RemoteVideoStream` müssen Sie ein `isAvailableChanged`-Ereignis abonnieren. Wenn sich die Eigenschaft `isAvailable` in `true` ändert, sendet ein Remoteteilnehmer einen Stream. Erstellen Sie daraufhin eine neue Instanz von `VideoStreamRenderer` und anschließend mit der asynchronen Methode `createView` eine neue `VideoStreamRendererView`-Instanz.  Sie können dann `view.target` an ein beliebiges Benutzeroberflächenelement anfügen.
+
+Immer wenn sich die Verfügbarkeit eines Remotestreams ändert, können Sie wählen, ob Sie den gesamten `VideoStreamRenderer`, eine bestimmte `VideoStreamRendererView` zerstören oder sie behalten möchten, was jedoch zur Anzeige leerer Videobilder führt.
 
 ```js
 function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
-    let renderer: Renderer = new Renderer(remoteVideoStream);
+    let videoStreamRenderer: VideoStreamRenderer = new VideoStreamRenderer(remoteVideoStream);
     const displayVideo = () => {
-        const view = await renderer.createView();
+        const view = await videoStreamRenderer.createView();
         htmlElement.appendChild(view.target);
     }
-    remoteVideoStream.on('availabilityChanged', async () => {
+    remoteVideoStream.on('isAvailableChanged', async () => {
         if (remoteVideoStream.isAvailable) {
             displayVideo();
         } else {
-            renderer.dispose();
+            videoStreamRenderer.dispose();
         }
     });
     if (remoteVideoStream.isAvailable) {
@@ -428,77 +466,76 @@ function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
 ```
 
 ### <a name="remote-video-stream-properties"></a>Eigenschaften von Remotevideostreams
+
 Für Remotevideostreams gibt es die folgenden Eigenschaften:
 
-* `Id`: ID eines Remotevideostreams
+- `id`: ID eines Remotevideostreams.
+
+  ```js
+  const id: number = remoteVideoStream.id;
+  ```
+
+- `mediaStreamType`: Dies kann `Video` oder `ScreenSharing` sein.
+
+  ```js
+  const type: MediaStreamType = remoteVideoStream.mediaStreamType;
+  ```
+
+- `isAvailable`: Gibt an, ob der Endpunkt des Remoteteilnehmers aktiv einen Stream sendet.
+
+  ```js
+  const type: boolean = remoteVideoStream.isAvailable;
+  ```
+
+### <a name="videostreamrenderer-methods-and-properties"></a>Methoden und Eigenschaften von VideoStreamRenderer
+
+Erstellen Sie eine `VideoStreamRendererView`-Instanz, die in der Benutzeroberfläche der Anwendung angefügt werden kann, um den Remotevideostream zu rendern. Verwenden Sie die asynchrone Methode `createView()`. Sie wird aufgelöst, wenn der Stream zum Rendern bereit ist, und gibt ein Objekt mit der Eigenschaft `target` zurück. Dieses stellt ein `video`-Element dar, das an beliebiger Stelle in der DOM-Struktur angefügt werden kann.
+
+  ```js
+  videoStreamRenderer.createView()
+  ```
+
+Löscht `videoStreamRenderer` und alle zugeordneten `VideoStreamRendererView`-Instanzen:
+
+  ```js
+  videoStreamRenderer.dispose()
+  ```
+
+### <a name="videostreamrendererview-methods-and-properties"></a>Methoden und Eigenschaften von VideoStreamRendererView
+
+Beim Erstellen von `VideoStreamRendererView` können Sie die Eigenschaften `scalingMode` und `isMirrored` angeben. `scalingMode` kann `Stretch`, `Crop` oder `Fit` sein. Bei Angabe von `isMirrored` wird der gerenderte Stream vertikal gespiegelt.
+
 ```js
-const id: number = remoteVideoStream.id;
+const videoStreamRendererView: VideoStreamRendererView = await videoStreamRenderer.createView({ scalingMode, isMirrored });
 ```
 
-* `StreamSize`: Größe (Breite/Höhe) eines Remotevideostreams
-```js
-const size: {width: number; height: number} = remoteVideoStream.size;
-```
-
-* `MediaStreamType`: kann „Video“ oder „ScreenSharing“ sein
-```js
-const type: MediaStreamType = remoteVideoStream.mediaStreamType;
-```
-* `isAvailable`: gibt an, ob der Endpunkt des Remoteteilnehmers einen Stream aktiv sendet
-```js
-const type: boolean = remoteVideoStream.isAvailable;
-```
-
-### <a name="renderer-methods-and-properties"></a>Methoden und Eigenschaften des Renderers
-
-* Erstellt eine `RendererView`-Instanz, die später auf der Benutzeroberfläche der Anwendung angefügt werden kann, um Remotevideostreams zu rendern.
-```js
-renderer.createView()
-```
-
-* Löscht den Renderer und alle zugeordneten `RendererView`-Instanzen.
-```js
-renderer.dispose()
-```
-
-
-### <a name="rendererview-methods-and-properties"></a>Methoden und Eigenschaften von RendererView
-Beim Erstellen einer `RendererView` können Sie die Eigenschaften `scalingMode` und `isMirrored` angeben.
-Das Skalierungsmodus kann „Stretch“, „Crop“ oder „Fit“ sein. Wenn `isMirrored` angegeben ist, wird der gerenderte Stream vertikal gespiegelt.
+Jede `VideoStreamRendererView`-Instanz verfügt über eine `target`-Eigenschaft, die die Renderingoberfläche darstellt. Fügen Sie diese Eigenschaft in der Benutzeroberfläche der Anwendung an:
 
 ```js
-const rendererView: RendererView = renderer.createView({ scalingMode, isMirrored });
-```
-Eine `RendererView`-Instanz verfügt über eine `target`-Eigenschaft, die die Renderingoberfläche darstellt. Diese muss auf der Benutzeroberfläche der Anwendung angefügt werden:
-```js
-document.body.appendChild(rendererView.target);
+htmlElement.appendChild(view.target);
 ```
 
-Sie können den Skalierungsmodus später aktualisieren, indem Sie die `updateScalingMode`-Methode aufrufen.
+Sie können `scalingMode` aktualisieren, indem Sie die Methode `updateScalingMode` aufrufen:
+
 ```js
 view.updateScalingMode('Crop')
 ```
 
 ## <a name="device-management"></a>Geräteverwaltung
 
-`DeviceManager` ermöglicht Ihnen das Aufzählen lokaler Geräte, die in einem Anruf zur Übertragung Ihrer Audio-/Videostreams verwendet werden können. DeviceManager erlaubt Ihnen auch, von einem Benutzer die Berechtigung für den Zugriff auf sein Mikrofon und seine Kamera über die native Browser-API anzufordern.
+In `deviceManager` können Sie lokale Geräte angeben, die Ihre Audio- und Videostreams in einem Anruf übertragen können. deviceManager unterstützt Sie auch beim Anfordern von Berechtigungen für den Zugriff auf das Mikrofon und die Kamera eines anderen Benutzers über die native Browser-API.
 
-Sie können auf `deviceManager` zugreifen, indem Sie die `callClient.getDeviceManager()`-Methode aufrufen.
-> [!WARNING]
-> Derzeit muss zuerst ein `callAgent`-Objekt instanziiert werden, um Zugriff auf DeviceManager zu erhalten.
+Sie können auf `deviceManager` zugreifen, indem Sie die Methode `callClient.getDeviceManager()` aufrufen:
 
 ```js
-
 const deviceManager = await callClient.getDeviceManager();
-
 ```
 
-### <a name="enumerate-local-devices"></a>Aufzählen lokaler Geräte
+### <a name="get-local-devices"></a>Abrufen lokaler Geräte
 
-Für den Zugriff auf lokale Geräte können Sie Enumerationsmethoden für den Geräte-Manager verwenden. Enumeration ist ein asynchroner Vorgang.
+Für den Zugriff auf lokale Geräte können Sie Enumerationsmethoden für `deviceManager` verwenden.
 
 ```js
-
 //  Get a list of available video devices for use.
 const localCameras = await deviceManager.getCameras(); // [VideoDeviceInfo, VideoDeviceInfo...]
 
@@ -507,59 +544,58 @@ const localMicrophones = await deviceManager.getMicrophones(); // [AudioDeviceIn
 
 // Get a list of available speaker devices for use.
 const localSpeakers = await deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
-
 ```
 
-### <a name="set-default-microphonespeaker"></a>Festlegen des Standardmikrofons/-lautsprechers
+### <a name="set-the-default-microphone-and-speaker"></a>Festlegen des Standardmikrofons und -lautsprechers
 
-Mit dem Geräte-Manager können Sie ein Standardgerät festlegen, das beim Starten eines Anrufs verwendet wird.
-Wenn keine Clientstandardwerte festgelegt sind, nutzt Communication Services die Standardeinstellungen des Betriebssystems.
+In `deviceManager` können Sie ein Standardgerät festlegen, das zum Starten eines Anrufs verwendet wird. Wenn keine Clientstandardwerte festgelegt sind, verwendet Communication Services die Standardwerte des Betriebssystems.
 
 ```js
-
 // Get the microphone device that is being used.
 const defaultMicrophone = deviceManager.selectedMicrophone;
 
 // Set the microphone device to use.
-await deviceManager.selectMicrophone(AudioDeviceInfo);
+await deviceManager.selectMicrophone(localMicrophones[0]);
 
 // Get the speaker device that is being used.
 const defaultSpeaker = deviceManager.selectedSpeaker;
 
 // Set the speaker device to use.
-await deviceManager.selectSpeaker(AudioDeviceInfo);
-
+await deviceManager.selectSpeaker(localSpeakers[0]);
 ```
 
 ### <a name="local-camera-preview"></a>Vorschau auf lokaler Kamera
 
-Sie können `DeviceManager` und `Renderer` verwenden, um mit dem Rendern von Streams über Ihre lokale Kamera zu beginnen. Dieser Stream wird nicht an andere Teilnehmer gesendet. Es handelt sich um einen lokalen Vorschaufeed. Dies ist ein asynchroner Vorgang.
+Sie können `deviceManager` und `VideoStreamRenderer` verwenden, um mit dem Rendern von Streams über Ihre lokale Kamera zu beginnen. Dieser Stream wird nicht an andere Teilnehmer gesendet. Es handelt sich um einen lokalen Vorschaufeed.
 
 ```js
 const cameras = await deviceManager.getCameras();
-const localVideoDevice = cameras[0];
-const localCameraStream = new LocalVideoStream(localVideoDevice);
-const renderer = new Renderer(localCameraStream);
-const view = await renderer.createView();
-document.body.appendChild(view.target);
+const camera = cameras[0];
+const localCameraStream = new LocalVideoStream(camera);
+const videoStreamRenderer = new VideoStreamRenderer(localCameraStream);
+const view = await videoStreamRenderer.createView();
+htmlElement.appendChild(view.target);
 
 ```
 
-### <a name="request-permission-to-cameramicrophone"></a>Anfordern der Berechtigung für Kamera/Mikrofon
+### <a name="request-permission-to-camera-and-microphone"></a>Anfordern der Berechtigung für Kamera und Mikrofon
 
-Fordern Sie den Benutzer auf, Berechtigungen für Kamera/Mikrofon mit Folgendem zu erteilen:
+Fordern Sie einen Benutzer auf, Berechtigungen für Kamera und Mikrofon zu erteilen:
 
 ```js
 const result = await deviceManager.askDevicePermission({audio: true, video: true});
 ```
-Wird asynchron mit einem Objekt aufgelöst, das angibt, ob die Berechtigungen `audio` und `video` erteilt wurden:
+
+Dies wird mit einem Objekt aufgelöst, das angibt, ob `audio`- und `video`-Berechtigungen erteilt wurden:
+
 ```js
 console.log(result.audio);
 console.log(result.video);
 ```
 
-
-## <a name="call-recording-management"></a>Verwaltung der Anrufaufzeichnung
+## <a name="record-calls"></a>Aufzeichnen von Anrufen
+> [!NOTE]
+> Diese API wird als Vorschau für Entwickler bereitgestellt. Je nachdem, welches Feedback wir dazu erhalten, werden möglicherweise Änderungen vorgenommen. Verwenden Sie diese API nicht in einer Produktionsumgebung. Um diese API einzusetzen, verwenden Sie das Betarelease des ACS Calling Web SDK.
 
 Die Anrufaufzeichnung ist ein erweitertes Feature der zentralen `Call`-API. Sie müssen zunächst das API-Objekt der Aufzeichnungsfunktion abrufen:
 
@@ -567,7 +603,7 @@ Die Anrufaufzeichnung ist ein erweitertes Feature der zentralen `Call`-API. Sie 
 const callRecordingApi = call.api(Features.Recording);
 ```
 
-Um dann zu prüfen, ob der Anruf aufgezeichnet wird, untersuchen Sie die `isRecordingActive`-Eigenschaft von `callRecordingApi`; sie gibt `Boolean` zurück.
+Um anschließend herauszufinden, ob der Anruf aufgezeichnet wird, prüfen Sie die Eigenschaft `isRecordingActive` von `callRecordingApi`. Er gibt `Boolean` zurück.
 
 ```js
 const isResordingActive = callRecordingApi.isRecordingActive;
@@ -581,10 +617,12 @@ const isRecordingActiveChangedHandler = () => {
 };
 
 callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
-               
+
 ```
 
-## <a name="call-transfer-management"></a>Verwaltung der Anrufdurchstellung
+## <a name="transfer-calls"></a>Durchstellen von Anrufen
+> [!NOTE]
+> Diese API wird als Vorschau für Entwickler bereitgestellt. Je nachdem, welches Feedback wir dazu erhalten, werden möglicherweise Änderungen vorgenommen. Verwenden Sie diese API nicht in einer Produktionsumgebung. Um diese API einzusetzen, verwenden Sie das Betarelease des ACS Calling Web SDK.
 
 Die Anrufdurchstellung ist ein erweitertes Feature der zentralen `Call`-API. Sie müssen zunächst das API-Objekt der Durchstellungsfunktion abrufen:
 
@@ -592,27 +630,26 @@ Die Anrufdurchstellung ist ein erweitertes Feature der zentralen `Call`-API. Sie
 const callTransferApi = call.api(Features.Transfer);
 ```
 
-An der Anrufdurchstellung sind drei Parteien beteiligt: *Durchsteller*, *Durchgestellter* und *Durchstellungsziel*. Der Ablauf der Durchstellung ist wie folgt:
+Am Durchstellen von Anrufen sind drei Parteien beteiligt:
 
-1. Es besteht bereits eine Anrufverbindung zwischen *Durchsteller* und *Durchgestelltem*.
-2. Der *Durchsteller* beschließt die Durchstellung des Anrufs (*Durchgestellter* -> *Durchstellungsziel*).
-3. Der *Durchsteller* ruft die `transfer`-API auf.
-4. Der *Durchgestellte* entscheidet über das `transferRequested`-Ereignis, ob er die Durchstellungsanforderung an das *Durchstellungsziel* annehmen (`accept`) oder ablehnen (`reject`) soll.
-5. Das *Durchstellungsziel* empfängt nur dann einen eingehenden Anruf, wenn der *Durchgestellte* die Durchstellungsanforderung akzeptiert (`accept`) hat.
+- *Durchsteller*: die Person, die die Durchstellungsanforderung auslöst.
+- *Durchgestellter*: die Person, deren Anruf durchgestellt wird.
+- *Durchstellungsziel*: die Person, an die der Anruf durchgestellt wird.
 
-### <a name="transfer-terminology"></a>Terminologie der Durchstellung
+Beim Durchstellen werden folgende Schritt durchgeführt:
 
-- Durchsteller: die Person, die die Durchstellungsanforderung auslöst
-- Durchgestellter: die Person, die vom Durchsteller zum Durchstellungsziel durchgestellt wird
-- Durchstellungsziel: die Person, zu der die Durchstellung erfolgt
+1. Es besteht bereits eine Anrufverbindung zwischen dem *Durchsteller* und dem *Durchgestellten*. Der *Durchsteller* beschließt, den Anruf vom *Durchgestellten* an das *Durchstellungsziel* zu übertragen.
+1. Der *Durchsteller* ruft die `transfer`-API auf.
+1. Der *Durchgestellte* entscheidet bei einem `transferRequested`-Ereignis mithilfe von `accept` oder `reject`, ob er die Durchstellungsanforderung an das *Durchstellungsziel* annimmt oder ablehnt.
+1. Das *Durchstellungsziel* empfängt nur dann einen eingehenden Anruf, wenn der *Durchgestellte* die Durchstellungsanforderung akzeptiert.
 
-Um den aktuellen Anruf durchzustellen, können Sie synchrone `transfer`-API verwenden. `transfer` verwendet optionale `TransferCallOptions`, mit denen Sie das Flag `disableForwardingAndUnanswered` festlegen können:
+Zum Durchstellen eines aktuellen Anrufs können Sie die `transfer`-API verwenden. `transfer` verwendet die optionalen `transferCallOptions`, mit denen Sie ein Flag `disableForwardingAndUnanswered` festlegen können:
 
-- `disableForwardingAndUnanswered` = false: Wenn das *Durchstellungsziel* den durchgestellten Anruf nicht annimmt, befolgt es die Einstellungen für Weiterleitung und Nichtannahme des *Durchstellungsziels*.
-- `disableForwardingAndUnanswered` = true: Wenn das *Durchstellungsziel* den durchgestellten Anruf nicht annimmt, wird der Durchstellungsversuch beendet.
+- `disableForwardingAndUnanswered = false`: Wenn das *Durchstellungsziel* den durchgestellten Anruf nicht annimmt, werden die Einstellungen für Weiterleitung und Nichtannahme des *Durchstellungsziels* befolgt.
+- `disableForwardingAndUnanswered = true`: Wenn das *Durchstellungsziel* den durchgestellten Anruf nicht annimmt, wird der Durchstellungsversuch beendet.
 
 ```js
-// transfer target can be ACS user
+// transfer target can be an ACS user
 const id = { communicationUserId: <ACS_USER_ID> };
 ```
 
@@ -621,17 +658,17 @@ const id = { communicationUserId: <ACS_USER_ID> };
 const transfer = callTransferApi.transfer({targetParticipant: id});
 ```
 
-Die Durchstellung erlaubt Ihnen das Abonnieren der Ereignisse `transferStateChanged` und `transferRequested`. Das Ereignis `transferRequsted` stammt von der `call`-Instanz. Das Ereignis `transferStateChanged` und `state` und `error` der Durchstellung stammen von der `transfer`-Instanz.
+Die `transferRequested`-API erlaubt Ihnen das Abonnieren der Ereignisse `transfer` und `transferStateChanged`. Ein `transferRequested`-Ereignis stammt aus einer `call`-Instanz. Ein `transferStateChanged`-Ereignis sowie `state` und `error` des Durchstellungsvorgangs stammen aus einer `transfer`-Instanz.
 
 ```js
 // transfer state
 const transferState = transfer.state; // None | Transferring | Transferred | Failed
 
 // to check the transfer failure reason
-const transferError = transfer.error; // transfer error code that describes the failure if transfer request failed
+const transferError = transfer.error; // transfer error code that describes the failure if a transfer request failed
 ```
 
-Der Durchgestellte kann die vom Durchsteller ausgelöste Durchstellungsanforderung im Ereignis `transferRequested` über `accept()` oder `reject()` in `transferRequestedEventArgs` annehmen oder ablehnen. Sie können auf Informationen zu `targetParticipant` und in `transferRequestedEventArgs` auf die Methoden `accept` und `reject` zugreifen.
+Der *Durchgestellte* kann die vom *Durchsteller* ausgelöste Durchstellungsanforderung im Ereignis `transferRequested` über `accept()` oder `reject()` in `transferRequestedEventArgs` annehmen oder ablehnen. Sie können auf `targetParticipant`-Informationen und auf die Methoden `accept` und `reject` in `transferRequestedEventArgs` zugreifen.
 
 ```js
 // Transferee to accept the transfer request
@@ -645,13 +682,14 @@ callTransferApi.on('transferRequested', args => {
 });
 ```
 
-## <a name="eventing-model"></a>Ereignismodell
-Sie müssen aktuelle Werte untersuchen und Aktualisierungsereignisse für zukünftige Werte abonnieren.
+## <a name="learn-about-eventing-models"></a>Weitere Informationen zu Ereignismodellen
+
+Untersuchen Sie aktuelle Werte, und abonnieren Sie Aktualisierungsereignisse, um zukünftige Werte zu erhalten.
 
 ### <a name="properties"></a>Eigenschaften
 
 ```js
-// Inspect current value
+// Inspect the current value
 console.log(object.property);
 
 // Subscribe to value updates
@@ -665,7 +703,7 @@ object.off('propertyChanged', () => {});
 
 
 
-// Example for inspecting call state
+// Example for inspecting a call state
 console.log(call.state);
 call.on('stateChanged', () => {
     console.log(call.state);
@@ -674,8 +712,9 @@ call.off('stateChanged', () => {});
 ```
 
 ### <a name="collections"></a>Auflistungen
+
 ```js
-// Inspect current collection
+// Inspect the current collection
 object.collection.forEach(v => {
     console.log(v);
 });
@@ -694,8 +733,6 @@ object.on('collectionUpdated', e => {
 
 // Unsubscribe from updates:
 object.off('collectionUpdated', () => {});
-
-
 
 // Example for subscribing to remote participants and their video streams
 call.remoteParticipants.forEach(p => {

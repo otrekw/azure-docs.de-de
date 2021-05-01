@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 73b2e8e59774e12ddb9aa684382510d1f2c151b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63ea252a4b4c673ae3028adb7ab793ac21fb2e99
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101098064"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564584"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>Zwischenspeichern mit Azure Front Door Standard/Premium (Vorschau)
 
@@ -26,6 +26,10 @@ In diesem Artikel wird das Verhalten der Routen und Regelsätze in Front Door St
 > Azure Front Door Standard/Premium (Vorschau) befindet sich derzeit in der öffentlichen Vorschauversion.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="request-methods"></a>Anforderungsmethoden
+
+Nur die GET-Anforderungsmethode kann zwischengespeicherten Inhalt in Azure Front Door generieren. Alle anderen Anforderungsmethoden werden immer per Proxy über das Netzwerk gesendet.
 
 ## <a name="delivery-of-large-files"></a>Übermittlung großer Dateien
 

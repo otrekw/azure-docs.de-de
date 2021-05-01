@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5037450d401153811899b8d769ca92af7ce4068e
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 261dceb70a6059c76dbe3bd1d7636eee5d9d77bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103775"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936290"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle
 
@@ -25,7 +25,7 @@ Zusätzlich zur Verwaltung Ihrer Azure Digital Twins-Instanz im Azure-Portal ver
 * Verwalten von [Routen](concepts-route-events.md)
 * Konfigurieren der [Sicherheit](concepts-security.md) über die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC)
 
-Der Befehlssatz besitzt die Bezeichnung **az dt** und ist Teil der [Azure IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension). Die vollständige Liste der Befehle und deren Verwendung finden Sie in der Referenzdokumentation für den `az iot`-Befehlssatz: [*az dt*-Befehlsreferenz](/cli/azure/dt).
+Der Befehlssatz besitzt die Bezeichnung **az dt** und ist Teil der [Azure IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension). Die vollständige Liste der Befehle und deren Verwendung finden Sie in der Referenzdokumentation für den `az iot`-Befehlssatz: [*az dt*-Befehlsreferenz](/cli/azure/ext/azure-iot/dt).
 
 ## <a name="uses-deploy-and-validate"></a>Verwendungen (bereitstellen und validieren)
 
@@ -61,4 +61,4 @@ az extension add --upgrade -n azure-iot
 ## <a name="next-steps"></a>Nächste Schritte
 
 Machen Sie sich anhand der Referenzdokumentation mit der Befehlszeilenschnittstelle und ihrem vollständigen Befehlssatz vertraut:
-* [*az dt*-Befehlsreferenz](/cli/azure/dt)
+* [*az dt*-Befehlsreferenz](/cli/azure/ext/azure-iot/dt)

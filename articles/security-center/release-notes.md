@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/11/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: 3e4dddf61656ea38bac406366bf993788fd34943
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 92138b0253d28c8bf2617ee7b17474f30ac5cafe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303150"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751201"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Neuerungen in Azure Security Center
 
@@ -30,10 +30,12 @@ Weitere Informationen zu den *geplanten* Änderungen, die demnächst im Security
 Zu den Updates im April gehören:
 - [Vor Kurzem gepullte Images der Containerregistrierung werden jetzt wöchentlich erneut überprüft (allgemeine Verfügbarkeit)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [Verwenden von Azure Defender für Kubernetes zum Schützen von Hybrid- und Multi-Cloud Kubernetes-Bereitstellungen (Vorschau)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [Empfehlungen zum Aktivieren von Azure Defender für DNS und Resource Manager (Vorschau)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
 - [Vier neue Empfehlungen im Zusammenhang mit der Gastkonfiguration (Vorschau)](#four-new-recommendations-related-to-guest-configuration-preview)
 - [CMK-Empfehlungen wurden in bewährte Methoden für die Sicherheitskontrolle verschoben](#cmk-recommendations-moved-to-best-practices-security-control)
 - [Elf Azure Defender-Warnungen als veraltet eingestuft](#11-azure-defender-alerts-deprecated)
 - [Zwei Empfehlungen der Sicherheitskontrolle „Systemupdates anwenden“ wurden als veraltet eingestuft](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+- [Kachel für Azure Defender für SQL auf Computern vom Azure Defender-Dashboard entfernt](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
 
 ### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>Vor Kurzem gepullte Images der Containerregistrierung werden jetzt wöchentlich erneut überprüft (allgemeine Verfügbarkeit)
 
@@ -66,6 +68,19 @@ Weitere Informationen finden Sie unter [Verwenden von Azure Defender für Kubern
 
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center-Empfehlung zur Bereitstellung der Azure Defender-Erweiterung für Azure Arc-fähige Kubernetes-Cluster" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
 
+
+### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview"></a>Empfehlungen zum Aktivieren von Azure Defender für DNS und Resource Manager (Vorschau)
+
+Zwei neue Empfehlungen wurden hinzugefügt, um den Prozess zum Aktivieren von [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md) und [Azure Defender für DNS](defender-for-dns-introduction.md) zu vereinfachen:
+
+- **Azure Defender für Resource Manager muss aktiviert sein**: Defender für Resource Manager überwacht automatisch die Ressourcenverwaltungsvorgänge in Ihrer Organisation. Azure Defender erkennt Bedrohungen und warnt Sie bei verdächtigen Aktivitäten.
+- **Azure Defender für DNS muss aktiviert sein**: Defender für DNS bietet eine zusätzliche Schutzebene für Ihre Cloudressourcen, indem alle DNS-Abfragen aus Ihren Azure-Ressourcen fortlaufend überwacht werden. Azure Defender warnt Sie bei verdächtigen Aktivitäten auf der DNS-Ebene.
+
+Bei Aktivierung dieser Azure Defender-Pläne fallen Gebühren an. Weitere Informationen zu den Preisen pro Region finden Sie in der Security Center-Preisübersicht unter https://aka.ms/pricing-security-center.
+
+> [!TIP]
+> Empfehlungen der Vorschau versetzen keine Ressourcen in einen fehlerhaften Zustand, und sie werden nicht in die Berechnungen Ihrer Sicherheitsbewertung einbezogen. Setzen Sie sie trotzdem um, wann immer möglich, damit sie nach Ablauf des Vorschauzeitraums zu Ihrer Bewertung beitragen. Informationen zum Umgang mit diesen Empfehlungen finden Sie unter [Umsetzen von Empfehlungen in Azure Security Center](security-center-remediate-recommendations.md).
+
 ### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Vier neue Empfehlungen im Zusammenhang mit der Gastkonfiguration (Vorschau)
 
 Die [Erweiterung für Gastkonfigurationen](../governance/policy/concepts/guest-configuration.md) von Azure sendet Meldungen an Security Center, um sicherzustellen, dass die In-Guest-Einstellungen Ihrer virtuellen Computer festgeschrieben werden. Die Erweiterung ist für Computer mit Arc-Unterstützung nicht erforderlich, da sie im Arc Connected Machine-Agenten enthalten ist. Die Erweiterung erfordert eine vom System verwaltete Identität auf dem Computer.
@@ -73,8 +88,8 @@ Die [Erweiterung für Gastkonfigurationen](../governance/policy/concepts/guest-c
 Wir haben vier neue Empfehlungen zum Security Center hinzugefügt, damit Sie diese Erweiterung optimal nutzen können.
 
 - In zwei Empfehlungen werden Sie aufgefordert, die Erweiterung und die erforderliche vom System verwaltete Identität zu installieren:
-    - **Die Erweiterung „Gastkonfiguration“ muss auf Ihren Computern installiert sein.**
-    - **Die VM-Erweiterung „Gastkonfiguration“ muss mit systemseitig zugewiesener verwalteter Identität bereitgestellt werden.**
+    - **Erweiterung „Gastkonfiguration“ muss auf Ihren Computern installiert sein**
+    - **VM-Erweiterung „Gastkonfiguration“ muss mit einer systemseitig zugewiesenen verwalteten Identität bereitgestellt werden**
 
 - Wenn die Erweiterung installiert ist und ausgeführt wird, beginnt Sie mit der Überprüfung ihrer Computer, und Sie werden aufgefordert, Einstellungen wie die Konfiguration der Betriebssystem- und Umgebungseinstellungen festzuschreiben. Mit diesen beiden Empfehlungen werden Sie dazu aufgefordert, Ihre Windows-und Linux-Computer wie beschrieben festzuschreiben:
     - **Windows Defender Exploit Guard muss auf Ihren Computern aktiviert sein**
@@ -141,6 +156,10 @@ Die folgenden beiden Empfehlungen wurden als veraltet eingestuft und die Änderu
 Wir empfehlen Ihnen, Ihre Konfigurationen für den fortlaufenden Export und die Workflowautomatisierung zu überprüfen, um zu ermitteln, ob diese Empfehlungen darin enthalten sind. Darüber hinaus sollten Sie alle Dashboards oder anderen Überwachungstools, für die diese ggf. genutzt werden, entsprechend aktualisieren.
 
 Weitere Informationen zu diesen Empfehlungen finden Sie auf der [Referenzseite zu Sicherheitsempfehlungen](recommendations-reference.md).
+
+### <a name="azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard"></a>Kachel für Azure Defender für SQL auf Computern vom Azure Defender-Dashboard entfernt
+
+Der Abdeckungsbereich des Azure Defender-Dashboards enthält Kacheln für die relevanten Azure Defender-Pläne für Ihre Umgebung. Aufgrund eines Problems mit der Meldung der Anzahl geschützter und nicht geschützter Ressourcen haben wir uns entschieden, den Ressourcenabdeckungsstatus für **Azure Defender für SQL auf Computern** vorübergehend zu entfernen, bis das Problem behoben ist.
 
 
 ## <a name="march-2021"></a>März 2021
@@ -329,7 +348,7 @@ Wenn Sie Azure Defender für Server auf einem Windows-Server aktivieren, ist im 
 Die Unterstützung wurde nun auf Windows Server 2019 und [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md) erweitert.
 
 > [!NOTE]
-> Stellen Sie beim Aktivieren von Defender für Endpunkt auf einem Windows Server 2019-Computer sicher, dass die unter [Aktivieren der Integration von Microsoft Defender für Endpunkt](security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) beschriebenen Voraussetzungen erfüllt sind.
+> Stellen Sie beim Aktivieren von Defender für Endpunkt auf einem Windows Server 2019-Computer sicher, dass die unter [Aktivieren der Integration von Microsoft Defender für Endpunkt](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration) beschriebenen Voraussetzungen erfüllt sind.
 
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Direkter Link zur Richtlinie auf der Seite mit den Empfehlungsdetails
 
@@ -411,7 +430,7 @@ Auf bereits vorhandene Empfehlungen hat dies keine Auswirkungen, und im Zuge des
 
 Weitere Informationen finden Sie auf den folgenden Seiten:
 
-- [Weitere Informationen zum Vergleichstest für die Azure-Sicherheit](../security/benchmarks/introduction.md)
+- [Weitere Informationen zum Vergleichstest für die Azure-Sicherheit](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Die Sicherheitsrisikobewertung für lokale Computer und Multi-Cloud-Computer ist jetzt allgemein verfügbar.
@@ -526,7 +545,7 @@ Weitere Informationen finden Sie unter [Anfordern mandantenweiter Berechtigungen
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 Vorschauempfehlungen werden hinzugefügt, um die Abdeckung des Azure-Sicherheitsvergleichstests zu erhöhen
 
-Der Azure-Sicherheitsvergleichstest ist die Standardrichtlinieninitiative in Azure Security Center. 
+Der [Azure-Sicherheitsvergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction) ist die Standardrichtlinieninitiative in Azure Security Center. 
 
 Die folgenden 35 Vorschauempfehlungen wurden zu Security Center hinzugefügt, um die Abdeckung dieser Benchmark zu erhöhen.
 
@@ -544,7 +563,7 @@ Die folgenden 35 Vorschauempfehlungen wurden zu Security Center hinzugefügt, u
 
 Verwandte Links:
 
-- [Weitere Informationen zum Vergleichstest für die Azure-Sicherheit](../security/benchmarks/introduction.md)
+- [Weitere Informationen zum Vergleichstest für die Azure-Sicherheit](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Weitere Informationen zu Azure Database for MariaDB](../mariadb/overview.md)
 - [Weitere Informationen zu Azure Database for MySQL](../mysql/overview.md)
 - [Weitere Informationen zu Azure Database for PostgreSQL](../postgresql/overview.md)
@@ -770,7 +789,7 @@ Updates im November:
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 Vorschauempfehlungen hinzugefügt, um die Abdeckung des Azure Security-Vergleichstests zu erhöhen
 
-Beim Azure-Sicherheitsvergleichstest handelt es sich um einen von Microsoft erstellten Satz mit Azure-spezifischen Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md)
+Beim Azure-Sicherheitsvergleichstest handelt es sich um einen von Microsoft erstellten Satz mit Azure-spezifischen Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction)
 
 Die folgenden 29 Vorschauempfehlungen wurden zu Security Center hinzugefügt, um die Abdeckung dieses Vergleichstests zu erhöhen.
 
@@ -787,7 +806,7 @@ Empfehlungen der Vorschau versetzen keine Ressourcen in einen fehlerhaften Zusta
 
 Verwandte Links:
 
-- [Weitere Informationen zum Vergleichstest für die Azure-Sicherheit](../security/benchmarks/introduction.md)
+- [Weitere Informationen zum Vergleichstest für die Azure-Sicherheit](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Weitere Informationen zu API-Apps in Azure](../app-service/app-service-web-tutorial-rest-api.md)
 - [Weitere Informationen zu Funktions-Apps in Azure](../azure-functions/functions-overview.md)
 - [Weitere Informationen zu Web-Apps in Azure](../app-service/overview.md)

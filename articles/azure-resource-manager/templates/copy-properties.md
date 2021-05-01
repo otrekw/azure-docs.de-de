@@ -3,12 +3,12 @@ title: Definieren mehrerer Instanzen einer Eigenschaft
 description: Erfahren Sie, wie Sie den copy-Vorgang in einer Azure Resource Manager-Vorlage (ARM) verwenden, um sie beim Erstellen einer Eigenschaft für eine Ressource mehrmals zu durchlaufen.
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 16c293f1c3aff64aeb8b6cae4b7f1aa14dcd0a77
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 94bc153a49f80694ab9b2d5b04fdf57e8a12e8c8
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480000"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385750"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschafteniteration in ARM-Vorlagen
 
@@ -49,7 +49,7 @@ Mit Schleifen können mehrere Eigenschaften deklariert werden durch:
   ```bicep
   <property-name>: [for <item> in <collection>: {
     <properties>
-  }]
+  }
   ```
 
 - Durchlaufen der Elemente eines Arrays
@@ -57,7 +57,7 @@ Mit Schleifen können mehrere Eigenschaften deklariert werden durch:
   ```bicep
   <property-name>: [for (<item>, <index>) in <collection>: {
     <properties>
-  }]
+  }
   ```
 
 - Verwenden des Schleifenindexes
@@ -65,7 +65,7 @@ Mit Schleifen können mehrere Eigenschaften deklariert werden durch:
   ```bicep
   <property-name>: [for <index> in range(<start>, <stop>): {
     <properties>
-  }]
+  }
   ```
 
 ---

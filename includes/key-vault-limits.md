@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 03/09/2021
 ms.author: ambapat
-ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ecfcff00e6f44f5c739513c063baaa3fa02a3db
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803399"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753294"
 ---
 Der Azure Key Vault-Dienst unterstützt zwei Arten von Ressourcen: Tresore und verwaltete HSMs. In den beiden folgenden Abschnitten werden jeweils die entsprechenden Diensteinschränkungen beschrieben.
 
@@ -65,7 +65,7 @@ Wenn Sie ein Schlüsseltresorobjekt (Geheimnis, Schlüssel oder Zertifikat) sich
 #### <a name="azure-private-link-integration"></a>Azure Private Link-Integration
 
 > [!NOTE]
-> Die Anzahl der Schlüsseltresore mit den pro Abonnement aktivierten privaten Endpunkten ist ein anpassbarer Grenzwert. Der gezeigte Grenzwert ist der Standardwert. Wenn Sie eine Erhöhung des Grenzwerts für Ihren Dienst beantragen möchten, senden Sie eine E-Mail an akv-privatelink@microsoft.com. Wir genehmigen diese Anträge je nach Fall.
+> Die Anzahl der Schlüsseltresore mit den pro Abonnement aktivierten privaten Endpunkten ist ein anpassbarer Grenzwert. Der gezeigte Grenzwert ist der Standardwert. Wenn Sie eine Erhöhung des Grenzwerts für Ihren Dienst anfordern möchten, können Sie eine Supportanfrage erstellen. Diese wird dann von uns für Ihren speziellen Fall geprüft.
 
 | Resource | Begrenzung |
 | -------- | -----:|

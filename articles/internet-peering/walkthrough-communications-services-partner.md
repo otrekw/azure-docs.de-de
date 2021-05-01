@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: gatharej
-ms.openlocfilehash: 4c4e3e2331ce334fbdd1c273fecd899bcd24612b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ff6750883a904ff5ddbddd3ddfd1ed82e72aebbc
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124561"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498872"
 ---
 # <a name="azure-internet-peering-for-communications-services-walkthrough"></a>Exemplarische Vorgehensweise zum Azure-Internetpeering für Communication Services
 
@@ -47,7 +47,7 @@ Führen Sie die folgenden Schritte aus, um eine direkte Verbindung mithilfe des 
 
 Wenn der Peer dem Azure-Abonnement bereits die öffentliche ASN zugeordnet hat, ignorieren Sie diesen Schritt.
 
-[Zuordnen der Peer-ASN zum Azure-Abonnement über das Portal: Azure | Microsoft-Dokumentation](./howto-subscription-association-portal.md)
+[Zuordnen der Peer-ASN zum Azure-Abonnement über das Portal: Azure | Microsoft-Dokumentation](https://docs.microsoft.com/azure/internet-peering/howto-subscription-association-portal)
 
 Der nächste Schritt ist das Erstellen einer Direct Peering-Verbindung für Peering Service.
 
@@ -56,7 +56,7 @@ Der nächste Schritt ist das Erstellen einer Direct Peering-Verbindung für Peer
 
 **2.    Erstellen einer Direct Peering-Verbindung für Peering Service:**
 
-Befolgen Sie die Anweisungen zum [Erstellen oder Ändern einer Instanz für Direct Peering über das Portal](./howto-direct-portal.md).
+Befolgen Sie die Anweisungen zum [Erstellen oder Ändern einer Instanz für Direct Peering über das Portal](https://docs.microsoft.com/azure/internet-peering/howto-direct-portal).
 
 Achten Sie darauf, dass sie die Hochverfügbarkeitsanforderung erfüllt.
 
@@ -83,10 +83,10 @@ Für Peering Service verwenden:   **Aktiviert**
   **2a. Verwenden einer vorhandenen Direct Peering-Verbindung für Peering Service**
 
 Wenn Sie über eine Direct Peering-Verbindung verfügen, die Sie zur Unterstützung von Peering Service verwenden möchten, können Sie sie im Azure-Portal aktivieren.
-1.  Befolgen Sie die Anweisungen in [Konvertieren einer älteren Instanz für Direct Peering in eine Azure-Ressource über das Portal](./howto-legacy-direct-portal.md).
+1.  Befolgen Sie die Anweisungen in [Konvertieren einer älteren Instanz für Direct Peering in eine Azure-Ressource über das Portal](https://docs.microsoft.com/azure/internet-peering/howto-legacy-direct-portal).
 Falls erforderlich, bestellen Sie zusätzliche Leitungen, um den Anforderungen an Hochverfügbarkeit zu genügen.
 
-2.  Befolgen Sie die Schritte zum [Aktivieren von Azure Peering Service für Direct Peering über das Azure-Portal](./howto-peering-service-portal.md).
+2.  Befolgen Sie die Schritte zum [Aktivieren von Azure Peering Service für Direct Peering über das Azure-Portal](https://docs.microsoft.com/azure/internet-peering/howto-peering-service-portal).
 
 
 
@@ -94,7 +94,7 @@ Falls erforderlich, bestellen Sie zusätzliche Leitungen, um den Anforderungen a
 **3.    Registrieren Sie Ihre Präfixe für optimiertes Routing.**
 
 Um ein optimiertes Routing für die Präfixe Ihrer Communication Services-Infrastruktur zu gewährleisten, sollten Sie alle Präfixe bei Ihren Peeringverbindungen registrieren.
-[Registrieren von Peering Service über das Azure-Portal | Microsoft-Dokumentation](../peering-service/azure-portal.md)
+[Registrieren von Peering Service über das Azure-Portal | Microsoft-Dokumentation](https://docs.microsoft.com/azure/peering-service/azure-portal)
 
 Der Schlüssel „Präfix“ wird für Communication Services-Partner automatisch ausgefüllt, sodass der Partner für die Registrierung keinen Präfixschlüssel verwenden muss. 
 
@@ -141,4 +141,4 @@ Stellen Sie sicher, dass die zu registrierenden Präfixe über die für die Regi
 
 **F.** Können APIs für das Onboarding verwendet werden?
 
-**A.** Zurzeit gibt es keine API-Unterstützung, und die Konfiguration muss über das Webportal erfolgen.
+**A.** Zurzeit gibt es keine API-Unterstützung, und die Konfiguration muss über das Webportal erfolgen. 

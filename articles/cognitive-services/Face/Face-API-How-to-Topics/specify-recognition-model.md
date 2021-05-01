@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd4ed992557a3c333919b63cc36757beb2f70454
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d22f2fb0bb550d966cbc5e181882552514513b2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433555"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936579"
 ---
 # <a name="specify-a-face-recognition-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -87,7 +87,7 @@ Es gibt keine Änderung bei der API [Face - Identify]. Sie müssen nur die Model
 
 ## <a name="find-similar-faces-with-specified-model"></a>Suchen ähnlicher Gesichter mit dem angegebenen Modell
 
-Sie können auch ein Erkennungsmodell für die Ähnlichkeitssuche angeben. Sie können die Modellversion mit `recognitionModel` beim Erstellen der Liste der Gesichter mit der API [FaceList – Create] oder [LargeFaceList – Create] zuweisen. Wenn Sie diesen Parameter nicht angeben, wird standardmäßig Modell `recognition_01` verwendet. Eine Gesichterliste verwendet immer das Erkennungsmodell, mit dem sie erstellt wurde, und neue Gesichter werden diesem Modell beim Hinzufügen zur Liste zugeordnet. Dies kann nach der Erstellung nicht mehr geändert werden. Verwenden Sie die API [FaceList – Get] mit dem Parameter _returnRecognitionModel_, der auf **true** festgelegt ist, um festzustellen, mit welchem Modell eine Gesichterliste konfiguriert ist.
+Sie können auch ein Erkennungsmodell für die Ähnlichkeitssuche angeben. Sie können die Modellversion mit `recognitionModel` zuweisen, wenn Sie **FaceList** mithilfe der API [FaceList – Create] oder [LargeFaceList – Create] erstellen. Wenn Sie diesen Parameter nicht angeben, wird standardmäßig Modell `recognition_01` verwendet. Eine **FaceList** verwendet immer das Erkennungsmodell, mit dem sie erstellt wurde, und neue Gesichter werden diesem Modell beim Hinzufügen zur Liste zugeordnet. Dies kann nach der Erstellung nicht mehr geändert werden. Um festzustellen, mit welchem Modell eine **FaceList** konfiguriert ist, verwenden Sie die API [FaceList – Get] mit dem Parameter _returnRecognitionModel_, der auf **TRUE** festgelegt ist.
 
 Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 
@@ -95,7 +95,7 @@ Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-Dieser Code erstellt eine Gesichterliste namens `My face collection`, die das Modell _recognition_04_ zum Extrahieren der Merkmale verwendet. Wenn Sie diese Gesichterliste für ein neu erkanntes Gesicht nach ähnlichen Gesichtern durchsuchen, dann muss dieses Gesicht mit dem Modell _recognition_04_ erkannt worden sein ([Face – Detect]). Wie im vorherigen Abschnitt muss das Modell konsistent sein.
+Dieser Code erstellt eine **FaceList** namens `My face collection`, die das Modell _recognition_04_ zum Extrahieren von Merkmalen verwendet. Wenn Sie diese **FaceList** für ein neu erkanntes Gesicht nach ähnlichen Gesichtern durchsuchen, dann muss dieses Gesicht mit dem Modell _recognition_04_ erkannt worden sein ([Face – Detect]). Wie im vorherigen Abschnitt muss das Modell konsistent sein.
 
 Es gibt keine Änderung bei der API [Face – Find Similar]. Sie geben nur die Modellversion bei der Erkennung an.
 

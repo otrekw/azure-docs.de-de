@@ -3,16 +3,18 @@ title: 'Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal (Vor
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Azure Purview-Konto erstellen und Berechtigungen für dessen Verwendung konfigurieren.
 author: nayenama
 ms.author: nayenama
+ms.date: 10/23/2020
+ms.topic: quickstart
 ms.service: purview
 ms.subservice: purview-data-catalog
-ms.topic: quickstart
-ms.date: 10/23/2020
-ms.openlocfilehash: 0346b467bc299b4eb6125df04a4449e94c035e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 158eed6d287fa384023defbb20a7a1c39ea3d838
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666463"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728588"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal
 
@@ -117,7 +119,7 @@ Führen Sie bei Bedarf die folgenden Schritte aus, um Ihr Abonnement so zu konfi
    :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Screenshot: Erstellen einer Azure Purview-Kontoinstanz im Azure-Portal":::
 
     > [!Note] 
-    > Das Konto von Azure Purview kann nicht in eine andere Region verschoben werden. Weitere Informationen hierzu finden Sie auf der [Seite mit den von Azure unterstützten Diensten](../azure-resource-manager/management/region-move-support.md).
+    > Das Konto von Azure Purview kann nicht in eine andere Region verschoben werden. Weitere Informationen hierzu finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](../azure-resource-manager/management/move-support-resources.md).
 
 1. Gehen Sie auf dem Blatt **Basiseinstellungen** wie folgt vor:
     1. Wählen Sie eine **Ressourcengruppe** aus.

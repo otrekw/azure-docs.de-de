@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 01/24/2021
+ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: 25639509cfb689e025ea4388f302378648af8ba6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f9ab258f59279112d0b90c5d460e6761ac911a2d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439492"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713352"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatisieren der Integration von Azure Security Center mithilfe von PowerShell
 
@@ -75,9 +75,9 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
     > Sie sollten die automatische Bereitstellung aktivieren, um sicherzustellen, dass Ihre virtuellen Azure-Computer automatisch mit Azure Security Center geschützt werden.
     >
 
-1. Optional: Es wird dringend empfohlen, die Sicherheitskontaktinformationen für die zu integrierenden Abonnements anzugeben. Die Sicherheitskontakte sind die Empfänger der von Security Center generierten Warnungen und Benachrichtigungen:
+1. Optional: Es wird dringend empfohlen, die [Sicherheitskontaktinformationen](security-center-provide-security-contact-details.md) für die zu integrierenden Abonnements anzugeben. Die Sicherheitskontakte erhalten die von Security Center generierten Warnungen und Benachrichtigungen:
 
-    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert```
+    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -AlertAdmin -NotifyOnAlert```
 
 1. Weisen Sie die Security Center-Standardrichtlinieninitiative zu:
 

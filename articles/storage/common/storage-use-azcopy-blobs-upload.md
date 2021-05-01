@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ec88a3c740ceda7ccf352f8f32f94e2cd52d0988
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cdc10720b6fa93cf1893d2040fd1c1f3e9e1f02
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97358757"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728861"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>Hochladen von Dateien in Azure Blob Storage mithilfe von AzCopy v10
 
@@ -37,7 +37,7 @@ Sie können den Befehl [azcopy make](storage-ref-azcopy-make.md) verwenden, um e
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
-|    |     |
+| Syntax/Beispiel | Code |
 |--------|-----------|
 | **Syntax** | `azcopy make 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>'` |
 | **Beispiel** | `azcopy make 'https://mystorageaccount.blob.core.windows.net/mycontainer'` |
@@ -52,7 +52,7 @@ Laden Sie eine Datei mithilfe des Befehls [azcopy copy](storage-ref-azcopy-copy.
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
-|    |     |
+| Syntax/Beispiel  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'` |
 | **Beispiel** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
@@ -69,7 +69,7 @@ Dieses Beispiel kopiert ein Verzeichnis (sowie alle in diesem Verzeichnis enthal
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
-|    |     |
+| Syntax/Beispiel  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --recursive` |
 | **Beispiel** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
@@ -77,7 +77,7 @@ Dieses Beispiel kopiert ein Verzeichnis (sowie alle in diesem Verzeichnis enthal
 
 Um ein Verzeichnis innerhalb des Containers zu kopieren, geben Sie einfach den Namen des Verzeichnisses in Ihrer Befehlszeichenfolge an.
 
-|    |     |
+| Syntax/Beispiel  |  Code |
 |--------|-----------|
 | **Beispiel** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
 | **Beispiel** (hierarchischer Namespace) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
@@ -91,7 +91,7 @@ Laden Sie den Inhalt eines Verzeichnisses mithilfe des Befehls [azcopy copy](sto
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
-|    |     |
+| Syntax/Beispiel  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
 | **Beispiel** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory'` |
@@ -111,7 +111,7 @@ Sie können bestimmte Dateien mithilfe von vollständigen Dateinamen, partiellen
 
 Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-path`. Trennen Sie einzelne Dateinamen durch ein Semikolon (`;`).
 
-|    |     |
+| Syntax/Beispiel  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` |
 | **Beispiel** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
@@ -125,7 +125,7 @@ Mit der Option `--exclude-path` können Sie auch Dateien ausschließen. Weitere 
 
 Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Option `--include-pattern`. Geben Sie Namen mithilfe von Platzhalterzeichen teilweise an. Trennen Sie die Namen durch Semikolons (`;`). 
 
-|    |     |
+| Syntax/Beispiel  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **Beispiel** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
@@ -141,7 +141,7 @@ Verwenden Sie den Befehl [azcopy copy](storage-ref-azcopy-copy.md) mit der Optio
 
 In den folgenden Beispielen werden Dateien hochgeladen, die am oder nach dem angegebenen Datum geändert wurden.
 
-|    |     |
+| Syntax/Beispiel  |  Code |
 |--------|-----------|
 | **Syntax** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>` |
 | **Beispiel** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory'  --include-after '2020-08-19T15:04:00Z'` |
@@ -164,7 +164,7 @@ In den folgenden Beispielen wird die Verwendung der Option `--blob-tags` gezeigt
 > [!TIP]
 > In diesem Beispiel werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
-|    |     |
+| Syntax/Beispiel  |  Code |
 |--------|-----------|
 | **Hochladen einer Datei** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
 | **Hochladen eines Verzeichnisses** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'`|

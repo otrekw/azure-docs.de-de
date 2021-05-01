@@ -3,23 +3,23 @@ title: Was ist Azure IoT Central? | Microsoft-Dokumentation
 description: Azure IoT Central ist eine IoT-Anwendungsplattform, die das Erstellen von IoT-Lösungen vereinfacht und den Aufwand und die Kosten für IoT-Verwaltungsvorgänge und -Entwicklung senkt. Dieser Artikel enthält eine Übersicht über die Features von Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 88f59c1b3fc1014cef5035845f1f2e8616bea908
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505126"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739906"
 ---
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
 IoT Central ist eine IoT-Anwendungsplattform, die Aufwand und Kosten für die Entwicklung, Verwaltung und Wartung von IoT-Lösungen auf Unternehmensniveau verringert. Die Entscheidung zur Entwicklung mit IoT Central gibt Ihnen die Möglichkeit, Zeit, Geld und Energie auf die Transformation Ihres Unternehmens mit IoT-Daten zu konzentrieren, anstatt sich lediglich mit der Wartung und Aktualisierung einer komplexen und sich ständig weiterentwickelnden IoT-Infrastruktur zu beschäftigen.
 
-Mit der Webbenutzeroberfläche können Sie Gerätebedingungen überwachen, Regeln erstellen und Millionen von Geräten und zugehöriger Daten über ihren gesamten Lebenszyklus hinweg verwalten. Darüber hinaus können Sie auf Geräteerkenntnisse reagieren, indem Sie die IoT-Intelligenz auf Branchenanwendungen erweitern.
+Mit der Webbenutzeroberfläche können Sie schnell Geräte verbinden, Gerätebedingungen überwachen, Regeln erstellen und Millionen von Geräten und zugehöriger Daten über ihren gesamten Lebenszyklus hinweg verwalten. Darüber hinaus können Sie auf Geräteerkenntnisse reagieren, indem Sie die IoT-Intelligenz auf Branchenanwendungen erweitern.
 
 In diesem Artikel werden folgende Punkte für IoT Central behandelt:
 
@@ -41,14 +41,18 @@ In der Dokumentation von IoT Central werden vier Benutzerrollen verwendet, die m
 
 ## <a name="create-your-iot-central-application"></a>Erstellen der IoT Central-Anwendung
 
-Als Lösungsentwickler verwenden Sie IoT Central, um eine benutzerdefinierte, in der Cloud gehostete IoT-Lösung für Ihre Organisation zu erstellen. Eine benutzerdefinierte IoT-Lösung umfasst in der Regel Folgendes:
+Sie können schnell eine neue IoT Central-Anwendung bereitstellen und anschließend an Ihre spezifischen Anforderungen anpassen. Beginnen Sie mit einer generischen _Anwendungsvorlage_ oder mit einer der branchenspezifischen Anwendungsvorlagen:
 
-- Eine cloudbasierte Anwendung, die Telemetriedaten von Ihren Geräten empfängt und die Verwaltung dieser Geräte ermöglicht
-- Mehrere Geräte, auf denen benutzerdefinierter Code ausgeführt wird und die mit Ihrer cloudbasierten Anwendung verbunden sind
+- [Retail (Einzelhandel)](../retail/overview-iot-central-retail.md)
+- [Energieversorgung](../energy/overview-iot-central-energy.md)
+- [Behörden](../government/overview-iot-central-government.md)
+- [Gesundheitswesen](../healthcare/overview-iot-central-healthcare.md)
 
-Sie können eine neue IoT Central-Anwendung schnell bereitstellen und anschließend in Ihrem Browser an Ihre spezifischen Anforderungen anpassen. Sie können mit einer generischen _Anwendungsvorlage_ oder mit einer der branchenspezifischen Anwendungsvorlagen für [Einzelhandel](../retail/overview-iot-central-retail.md), [Energiebranche](../energy/overview-iot-central-energy.md), [Behörden](../government/overview-iot-central-government.md) oder [Gesundheitswesen](../healthcare/overview-iot-central-healthcare.md) beginnen.
+Eine exemplarische Vorgehensweise zum Erstellen Ihrer ersten Anwendung finden Sie unter [Schnellstart: Erstellen einer Azure IoT Central-Anwendung](quick-deploy-iot-central.md).
 
-Als Lösungsentwickler können Sie mithilfe der webbasierten Tools eine _Gerätevorlage_ für die Geräte erstellen, die eine Verbindung mit Ihrer Anwendung herstellen. Eine Gerätevorlage ist die Blaupause zum Definieren der Merkmale und des Verhaltens eines Gerätetyps. Hierzu zählt beispielsweise Folgendes:
+## <a name="connect-devices"></a>Herstellen einer Verbindung zwischen Geräten
+
+Nachdem Sie Ihre Anwendung erstellt haben, besteht der erste Schritt im Erstellen und Verbinden von Geräten. Jedes Gerät, das mit IoT Central verbunden ist, verwendet eine _Gerätevorlage_. Eine Gerätevorlage ist die Blaupause zum Definieren der Merkmale und des Verhaltens eines Gerätetyps. Hierzu zählt beispielsweise Folgendes:
 
 - Telemetriedaten, die das Gerät sendet Beispiele hierfür sind die Temperatur und die Luftfeuchtigkeit. Bei Telemetriedaten handelt es sich um Streamingdaten.
 - Geschäftliche Eigenschaften, die ein Bediener ändern kann Beispiele hierfür sind eine Kundenadresse und das Datum der letzten Wartung.
@@ -56,7 +60,7 @@ Als Lösungsentwickler können Sie mithilfe der webbasierten Tools eine _Geräte
 - Vom Bediener festgelegte Eigenschaften, die das Verhalten des Geräts bestimmen Beispielsweise eine Zieltemperatur für das Gerät.
 - Befehle, die von einem Operator aufgerufen werden können und auf einem Gerät ausgeführt werden. Ein Beispiel hierfür ist ein Befehl für einen Remoteneustart eines Geräts.
 
-Diese [Gerätevorlage](howto-set-up-template.md) enthält Folgendes:
+Jede [Gerätevorlage](howto-set-up-template.md) enthält Folgendes:
 
 - Ein _Gerätemodell_ zur Beschreibung der Funktionen, die von einem Gerät implementiert werden sollen. Die Gerätefunktionen umfassen Folgendes:
 
@@ -68,25 +72,21 @@ Diese [Gerätevorlage](howto-set-up-template.md) enthält Folgendes:
 - Cloudeigenschaften, die nicht auf dem Gerät gespeichert werden
 - Anpassungen, Dashboards und Formulare, die Teil der IoT Central-Anwendung sind
 
-### <a name="create-device-templates"></a>Erstellen von Gerätevorlagen
-
-Als Lösungsentwickler haben Sie mehrere Möglichkeiten zum Erstellen von Gerätevorlagen:
+Sie haben mehrere Möglichkeiten zum Erstellen von Gerätevorlagen:
 
 - Entwerfen Sie die Gerätevorlage in IoT Central, und implementieren Sie dann das entsprechende Gerätemodell in Ihrem Gerätecode.
 - Erstellen Sie ein Gerätemodell mit Visual Studio-Code, und veröffentlichen Sie es in einem Repository. Implementieren Sie den Gerätecode aus dem Modell, und verbinden Sie Ihr Gerät mit Ihrer IoT Central-Anwendung. IoT Central verwendet das Gerätemodell aus dem Repository und erstellt eine einfache Gerätevorlage für Sie.
 - Erstellen Sie ein Gerätemodell mit Visual Studio-Code. Implementieren Sie Ihren Gerätecode aus dem Modell. Importieren Sie das Gerätemodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die Ihre IoT Central-Anwendung benötigt.
 
-Als Lösungsentwickler können Sie mit IoT Central Code für Testgeräte generieren, um Ihre Gerätevorlagen zu überprüfen.
-
-Wenn Sie ein Geräteentwickler sind, finden Sie unter [Übersicht über die Geräteentwicklung für IoT Central](./overview-iot-central-developer.md) eine Einführung in die Implementierung von Geräten, bei denen diese Gerätevorlagen verwendet werden.
+Eine exemplarische Vorgehensweise zum Erstellen und Verbinden Ihres ersten Geräts finden Sie unter [Schnellstart: Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung](quick-create-simulated-device.md).
 
 ### <a name="customize-the-ui"></a>Anpassen der Benutzeroberfläche
 
-Als Lösungsentwickler können Sie auch die Benutzeroberfläche der IoT Central-Anwendung für die Bediener anpassen, die die Anwendung tagtäglich verwenden. Die Anpassungsmöglichkeiten für Lösungsentwickler umfassen Folgendes:
+Sie können auch die Benutzeroberfläche der IoT Central-Anwendung für die Operatoren anpassen, die die Anwendung tagtäglich verwenden. Sie können u. a. folgende Anpassungen vornehmen:
 
-- Definieren des Layouts von Eigenschaften und Einstellungen für eine Gerätevorlage
 - Konfigurieren benutzerdefinierter Dashboards, um Bediener bei der Gewinnung von Erkenntnissen sowie bei der schnelleren Behebung von Problemen zu unterstützen
 - Konfigurieren benutzerdefinierter Analysen zur Untersuchung von Zeitreihendaten Ihrer verbundenen Geräte
+- Definieren des Layouts von Eigenschaften und Einstellungen für eine Gerätevorlage
 
 ## <a name="manage-your-devices"></a>Verwalten von Geräten
 
@@ -96,9 +96,9 @@ Als Operator verwenden Sie die IoT Central-Anwendung zur [Verwaltung der Geräte
 - Behandeln und Beheben von Problemen mit Geräten
 - Bereitstellen neuer Geräte
 
-Als Lösungsentwickler können Sie [benutzerdefinierte Regeln und Aktionen definieren](howto-configure-rules.md), die über Datenstreaming von verbundenen Geräten ausgeführt werden. Bediener können diese Regeln auf der Geräteebene aktivieren oder deaktivieren, um Aufgaben innerhalb der Anwendung zu steuern und zu automatisieren.
+Sie können [benutzerdefinierte Regeln und Aktionen definieren](howto-configure-rules.md), die über Datenstreaming von verbundenen Geräten ausgeführt werden. Bediener können diese Regeln auf der Geräteebene aktivieren oder deaktivieren, um Aufgaben innerhalb der Anwendung zu steuern und zu automatisieren.
 
-Für jede skalierbare IoT-Lösung ist eine strukturierte Geräteverwaltung unverzichtbar. Es reicht nicht aus, Ihre Geräte einfach nur mit der Cloud zu verbinden. Sie müssen auch die Konnektivität und die Integrität Ihrer Geräte gewährleisten. Operatoren stehen folgende IoT Central-Funktionen zur Verfügung, um Ihre Geräte über den gesamten Anwendungslebenszyklus hinweg zu verwalten:
+Wie bei jeder skalierbaren IoT-Lösung ist eine strukturierte Geräteverwaltung unverzichtbar. Es reicht nicht aus, Ihre Geräte einfach nur mit der Cloud zu verbinden. Sie müssen auch die Konnektivität und die Integrität Ihrer Geräte gewährleisten. Ihnen stehen folgende IoT Central-Funktionen zur Verfügung, um Ihre Geräte über den gesamten Anwendungslebenszyklus hinweg zu verwalten:
 
 ### <a name="dashboards"></a>Dashboards
 

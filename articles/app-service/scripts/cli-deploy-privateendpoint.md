@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: acebc75b579b13ebb2cfad0e18057245781165ad
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3c8d0927c3fb74c52e54ceb5ff8ba5c0361c4f46
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175276"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787829"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>Erstellen einer App Service-App und Bereitstellen eines privaten Endpunkts mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location francecentral
 ## <a name="create-an-app-service-plan"></a>Erstellen eines App Service-Plans
 
 Sie müssen einen App Service-Plan zum Hosten Ihrer Web-App erstellen.
-Erstellen Sie einen App Service-Plan mithilfe von [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create).
+Erstellen Sie einen App Service-Plan mithilfe von [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create).
 In diesem Beispiel wird ein App Service-Plan namens *myAppServicePlan* am Standort *francecentral* mit der SKU *P1V2* und einem einzelnen Worker erstellt: 
 
 ```azurecli-interactive
@@ -52,7 +52,7 @@ az appservice plan create \
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
 Nachdem Sie nun über einen App Service-Plan verfügen, können Sie eine Web-App bereitstellen.
-Erstellen Sie eine Web-App mithilfe von [az appservice plan create](/cli/azure/webapp#az-webapp-create).
+Erstellen Sie eine Web-App mithilfe von [az appservice plan create](/cli/azure/webapp#az_webapp_create).
 In diesem Beispiel wird eine Web-App namens *mySiteName* im Plan *myAppServicePlan* erstellt.
 
 ```azurecli-interactive
@@ -78,7 +78,7 @@ az network vnet create \
 
 ## <a name="configure-the-subnet"></a>Konfigurieren des Subnetzes 
 
-Sie müssen das Subnetz aktualisieren, um Netzwerkrichtlinien für private Endpunkte zu deaktivieren. Aktualisieren Sie eine Subnetzkonfiguration mit dem Namen *mySubnet* mit [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+Sie müssen das Subnetz aktualisieren, um Netzwerkrichtlinien für private Endpunkte zu deaktivieren. Aktualisieren Sie eine Subnetzkonfiguration mit dem Namen *mySubnet* mit [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update):
 
 ```azurecli-interactive
 az network vnet subnet update \

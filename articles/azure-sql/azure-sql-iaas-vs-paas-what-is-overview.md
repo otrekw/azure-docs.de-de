@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 1202843781ab1c08b2d573967e5118ed04d48990
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 394b3390386c60e2a64f52dd944dfcdb0d33951e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129907"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727022"
 ---
 # <a name="what-is-azure-sql"></a>Was ist Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -168,7 +168,7 @@ Für **SQL Server auf Azure-VM** bietet Microsoft eine SLA mit einer Verfügbark
 
 **Azure SQL Managed Instance** vereinfacht die Migration bestehender Anwendungen zu Azure erheblich, sodass Sie eine migrierte Datenbankanwendung in Azure schnell auf den Markt bringen können.
 
-**SQL Server auf Azure-VM** eignet sich hervorragend, wenn Ihre bereits vorhandenen oder neuen Anwendungen große Datenbanken oder Zugriff auf sämtliche Features in SQL Server oder Windows/Linux benötigen und Sie Zeit und Kosten für den Erwerb neuer lokaler Hardware einsparen möchten. Diese Option ist auch eine gute Wahl, wenn Sie vorhandene lokale Anwendungen und Datenbanken unverändert zu Azure migrieren möchten, d. h. in Fällen, in denen sich SQL-Datenbank oder SQL Managed Instance nicht gut eignet. Da Sie keine Änderungen an der Präsentations-, Anwendungs- und Datenschicht vornehmen müssen, sparen Sie sich die Zeit und das Geld, die sonst für den Neuentwurf der vorhandenen Lösung nötig wären. Sie können in diesem Fall alle Lösungen sofort zu Azure migrieren und müssen lediglich einige Leistungsoptimierungen durchführen, die möglicherweise von der Azure-Plattform verlangt werden. Weitere Informationen finden Sie unter [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](./virtual-machines/windows/performance-guidelines-best-practices-checklist.md).
+**SQL Server auf Azure-VM** eignet sich hervorragend, wenn Ihre bereits vorhandenen oder neuen Anwendungen große Datenbanken oder Zugriff auf sämtliche Features in SQL Server oder Windows/Linux benötigen und Sie Zeit und Kosten für den Erwerb neuer lokaler Hardware einsparen möchten. Diese Option ist auch eine gute Wahl, wenn Sie vorhandene lokale Anwendungen und Datenbanken unverändert zu Azure migrieren möchten, d. h. in Fällen, in denen sich SQL-Datenbank oder SQL Managed Instance nicht gut eignet. Da Sie keine Änderungen an der Präsentations-, Anwendungs- und Datenschicht vornehmen müssen, sparen Sie sich die Zeit und das Geld, die sonst für den Neuentwurf der vorhandenen Lösung nötig wären. Sie können in diesem Fall alle Lösungen sofort zu Azure migrieren und müssen lediglich einige Leistungsoptimierungen durchführen, die möglicherweise von der Azure-Plattform verlangt werden. Weitere Informationen finden Sie unter [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines/windows/performance-guidelines-best-practices.md).
 
 [!INCLUDE [sql-database-create-manage-portal](includes/sql-database-create-manage-portal.md)]
 

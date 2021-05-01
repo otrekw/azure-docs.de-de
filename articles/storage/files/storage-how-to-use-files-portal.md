@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie Azure-Dateifreigaben im Azure-Portal ers
 author: roygara
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6a88124397812f7599ce54b46b23d22e626cf520
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7867a4bd60bb179c18fff49691072d683660f7e
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629817"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717846"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit dem Azure-Portal 
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können unter Windows, Linux und macOS bereitgestellt werden. In dieser Anleitung werden die Grundlagen der Arbeit mit Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com/) Schritt für Schritt beschrieben.
@@ -26,12 +26,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 So erstellen Sie eine Azure-Dateifreigabe:
 
 1. Wählen Sie im Dashboard das Speicherkonto aus.
-2. Wählen Sie auf der Speicherkontoseite im Abschnitt **Dienste** die Option **Dateien**.
-    ![Screenshot: Abschnitt „Dienste“ des Speicherkontos, Auswahl des Diensts „Dateien“](media/storage-how-to-use-files-portal/create-file-share-1.png)
+1. Wählen Sie auf der Speicherkontoseite im Abschnitt **Dienste** die Option **Dateien**.
+    
+    ![Screenshot: Abschnitt „Datenspeicher“ des Speicherkontos. Auswählen von „Dateifreigaben“](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. Klicken Sie im Menü oben auf der Seite **Dateidienst** auf **Dateifreigabe**. Die Seite **Neue Dateifreigabe** wird angezeigt.
-4. Geben Sie unter **Name** den Namen *myshare* ein.
-5. Klicken Sie auf **OK**, um die Azure-Dateifreigabe zu erstellen.
+1. Klicken Sie im Menü oben auf der Seite **Dateidienst** auf **Dateifreigabe**. Die Seite **Neue Dateifreigabe** wird angezeigt.
+1. Geben Sie unter **Name** den Namen *myshare* und dann ein Kontingent ein, und lassen Sie unter **Tarife** die Option **Transaktion optimiert** ausgewählt.
+1. Wählen Sie **Erstellen** aus, um die Azure-Dateifreigabe zu erstellen.
 
 Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten und dürfen nicht mit einem Bindestrich beginnen. Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
@@ -60,20 +61,21 @@ Nachdem Sie nun eine Azure-Dateifreigabe erstellt haben, können Sie die Dateifr
 Gehen Sie wie folgt vor, um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen:
 
 1. Wählen Sie auf der Seite **Dateidienst** die Dateifreigabe **myshare** aus. Die Seite für Ihre Dateifreigabe wird geöffnet.
-2. Wählen Sie im Menü oben auf der Seite die Option **+ Verzeichnis hinzufügen**. Die Seite **Neues Verzeichnis** wird angezeigt.
-3. Geben Sie *myDirectory* ein, und klicken Sie anschließend auf **OK**.
+1. Wählen Sie im Menü oben auf der Seite die Option **+ Verzeichnis hinzufügen**. Die Seite **Neues Verzeichnis** wird angezeigt.
+1. Geben Sie *myDirectory* ein, und klicken Sie anschließend auf **OK**.
 
 #### <a name="upload-a-file"></a>Hochladen einer Datei 
 Um das Hochladen einer Datei demonstrieren zu können, müssen Sie zuerst eine Datei erstellen oder auswählen, die hochgeladen werden kann. Hierfür können Sie die von Ihnen bevorzugte Vorgehensweise verwenden. Gehen Sie wie folgt vor, nachdem Sie die gewünschte Datei zum Hochladen ausgewählt haben:
 
 1. Klicken Sie auf das Verzeichnis **myDirectory**. Das Panel **myDirectory** wird geöffnet.
-2. Klicken Sie oben im Menü auf **Hochladen**. Das Panel **Dateien hochladen** wird geöffnet.  
+1. Wählen Sie im Menü am oberen Rand die Option **Hochladen**. Das Panel **Dateien hochladen** wird geöffnet.  
+    
     ![Screenshot: Panel zum Hochladen von Dateien](media/storage-how-to-use-files-portal/upload-file-1.png)
 
-3. Klicken Sie auf das Ordnersymbol, um ein Fenster zu öffnen, in dem Sie Ihre lokalen Dateien durchsuchen können. 
-4. Wählen Sie eine Datei aus, und klicken Sie anschließend auf **Öffnen**. 
-5. Überprüfen Sie auf der Seite **Dateien hochladen** den Dateinamen, und klicken Sie anschließend auf **Hochladen**.
-6. Nach Abschluss des Vorgangs sollte die Datei in der Liste auf der Seite **myDirectory** angezeigt werden.
+1. Klicken Sie auf das Ordnersymbol, um ein Fenster zu öffnen, in dem Sie Ihre lokalen Dateien durchsuchen können. 
+1. Wählen Sie eine Datei aus, und klicken Sie anschließend auf **Öffnen**. 
+1. Überprüfen Sie auf der Seite **Dateien hochladen** den Dateinamen, und klicken Sie anschließend auf **Hochladen**.
+1. Nach Abschluss des Vorgangs sollte die Datei in der Liste auf der Seite **myDirectory** angezeigt werden.
 
 #### <a name="download-a-file"></a>Herunterladen einer Datei
 Sie können eine Kopie der hochgeladenen Datei herunterladen, indem Sie mit der rechten Maustaste auf die Datei klicken. Nachdem Sie auf die Schaltfläche zum Herunterladen geklickt haben, richtet sich die genaue Vorgehensweise nach dem verwendeten Betriebssystem und Browser.

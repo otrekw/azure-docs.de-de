@@ -3,7 +3,7 @@ title: Azure DDoS Protection – Referenzarchitekturen
 description: Machen Sie sich mit den Azure DDoS Protection-Referenzarchitekturen vertraut.
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 51fb66cbaa8a4088136c205ea6eaaa79fb673191
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: ddb42dde242bb9c3f33a6dc3f8f52a147367f295
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293979"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139109"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection – Referenzarchitekturen
 
@@ -72,7 +72,7 @@ Die Back-End-Ressourcen in der lokalen Umgebung werden nicht über das öffentli
 
 Wenn DDoS Protection Standard für das virtuelle Netzwerk aktiviert ist, in dem AppGW/WAF enthalten ist, wird DDoS Protection Standard Ihre Anwendung schützen, indem der fehlerhafte Datenverkehr vermindert und der vermeintlich saubere Datenverkehr an Ihre Anwendung weitergeleitet wird. 
 
-In diesem [Artikel](https://docs.microsoft.com/azure/azure-vmware/protect-azure-vmware-solution-with-application-gateway) erfahren Sie, wie Sie DDoS Protection Standard zusammen mit Application Gateway verwenden können, um eine Web-App zu schützen, die in einer Azure VMware-Lösung ausgeführt wird.
+In diesem [Artikel](../azure-vmware/protect-azure-vmware-solution-with-application-gateway.md) erfahren Sie, wie Sie DDoS Protection Standard zusammen mit Application Gateway verwenden können, um eine Web-App zu schützen, die in einer Azure VMware-Lösung ausgeführt wird.
 
 ## <a name="mitigation-for-non-web-paas-services"></a>Entschärfung für Non-Web-PaaS-Dienste
 

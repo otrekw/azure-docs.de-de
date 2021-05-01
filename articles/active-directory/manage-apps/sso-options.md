@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: iangithinji
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: d81ad34c81a451f1faecb6cb33c0cc427567f122
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 202ccf6f540ec78c2bb30e0f0a0173609bba578c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379603"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751452"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Optionen für einmaliges Anmelden in Azure AD
 
@@ -86,13 +86,12 @@ Bei der kennwortbasierten Anmeldung melden sich Benutzer mit einem Benutzernamen
 
 Beim kennwortbasierten einmaligen Anmelden wird der vorhandene Authentifizierungsvorgang der Anwendung verwendet. Wenn Sie einmaliges Anmelden per Kennwort für eine Anwendung aktivieren, sammelt Azure AD Benutzernamen und Kennwörter für die Anwendung und speichert diese sicher. Anmeldeinformationen des Benutzers werden in einem verschlüsselten Zustand im Verzeichnis gespeichert.
 
+Darüber hinaus kann der Administrator Azure AD-Richtlinien für bedingten Zugriff oder die mehrstufige Authentifizierung für kennwortbasiertes einmaliges Anmelden aktivieren.
+
 Wählen Sie das kennwortbasierte einmalige Anmelden in folgenden Fällen:
 
 - Eine Anwendung unterstützt das SAML-SSO-Protokoll nicht.
 - Eine Anwendung authentifiziert sich mit Benutzername und Kennwort anstelle von Zugriffstoken und Headern.
-
->[!NOTE]
->Sie können keine Richtlinien für bedingten Zugriff oder mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) auf das kennwortbasierte einmalige Anmelden anwenden.
 
 Das kennwortbasierte einmalige Anmelden wird für jede cloudbasierte Anwendung unterstützt, die über eine HTML-basierte Anmeldeseite verfügt. Der Benutzer kann jeden der folgenden Browser verwenden:
 

@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 11/17/2020
+ms.date: 03/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2ac8633e48c98b9e1d778ac1d07835683e00e1c0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3fecb84196ba736120273955b2c88af8cb4dadea
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102424477"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095814"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure Cognitive Services-Containerimagetags und -Versionshinweise
 
@@ -1355,6 +1355,24 @@ Dieses Containerimage verfügt über die folgenden Tags. Eine vollständige List
 | `3.0-nl`   | Standpunktanalyse v3 (Niederländisch)                 |
 | `2.1`    | Standpunktanalyse v2      |
 
+
+## <a name="text-analytics-for-health"></a>Textanalyse für Gesundheit
+
+Das Containerimage [Text Analytics for Health][ta-he] befindet sich im Containerregistrierungssyndikat `mcr.microsoft.com`. Es befindet sich im Repository `azure-cognitive-services/textanalytics/` und trägt den Namen `healthcare`. Der vollqualifizierte Containerimagename lautet `mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare`.
+
+Dieses Containerimage verfügt über die folgenden Tags. Eine vollständige Liste der [Tags finden Sie auch in der MCR](https://mcr.microsoft.com/v2/azure-cognitive-services/textanalytics/healthcare/tags/list).
+
+
+Versionshinweise für `3.0.015490002-onprem-amd64`:
+
+* neue Modellversion `2021-03-01`
+* Für MCR freigegebener Container.
+
+| Imagetags | Notizen                                         |
+|------------|:----------------------------------------------|
+| `latest`   |                                               |
+| `3.0.015490002-onprem-amd64`   |               |
+
 [ad-containers]: ../anomaly-Detector/anomaly-detector-container-howto.md
 [cv-containers]: ../computer-vision/computer-vision-how-to-install-containers.md
 [fa-containers]: ../face/face-how-to-install-containers.md
@@ -1369,3 +1387,4 @@ Dieses Containerimage verfügt über die folgenden Tags. Eine vollständige List
 [ta-kp]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
 [ta-la]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
 [ta-se]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+[ta-he]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare

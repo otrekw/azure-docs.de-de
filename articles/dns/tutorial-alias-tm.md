@@ -6,19 +6,18 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0101133c68142845a8ada50d9921d341cf10ad0
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77149948"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738790"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager 
 
 Sie können einen Aliaseintrag für den Domänennamen-Apex erstellen, um auf ein Azure Traffic Manager-Profil zu verweisen. Ein Beispiel wäre etwa „contoso.com“. Statt einen Umleitungsdienst zu verwenden, können Sie Azure DNS so konfigurieren, dass direkt von Ihrer Zone aus auf ein Traffic Manager-Profil verwiesen wird. 
-
 
 In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
@@ -27,7 +26,6 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 > * Erstellen eines Traffic Manager-Profils
 > * Erstellen eines Aliaseintrags
 > * Testen des Aliaseintrags
-
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -39,24 +37,28 @@ Eine Anleitung zum Hosten Ihrer Domäne in Azure DNS finden Sie unter [Tutorial:
 Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.com“. Verwenden Sie aber ruhig Ihren eigenen Domänennamen.
 
 ## <a name="create-the-network-infrastructure"></a>Erstellen der Netzwerkinfrastruktur
+
 Erstellen Sie zuerst ein virtuelles Netzwerk und ein Subnetz, um die Webserver darin zu platzieren.
+
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Klicken Sie links oben im Portal auf **Ressource erstellen**. Geben Sie *Ressourcengruppe* in das Suchfeld ein, und erstellen Sie eine Ressourcengruppe namens **RG-DNS-Alias-TM**.
 3. Wählen Sie **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
 4. Erstellen Sie ein virtuelles Netzwerk namens **VNet-Servers**. Platzieren Sie es in der Ressourcengruppe **RG-DNS-Alias-TM**, und nennen Sie das Subnetz **SN-Web**.
 
 ## <a name="create-two-web-server-virtual-machines"></a>Erstellen von zwei virtuellen Webservercomputern
+
 1. Wählen Sie **Ressource erstellen** > **Windows Server 2016-VM** aus.
 2. Geben Sie als Name **Web-01** ein, und platzieren Sie den virtuellen Computer in der Ressourcengruppe **RG-DNS-Alias-TM**. Geben Sie einen Benutzernamen und ein Kennwort ein, und wählen Sie **OK** aus.
 3. Wählen Sie unter **Größe** eine SKU mit 8 GB RAM aus.
 4. Wählen Sie unter **Einstellungen** das virtuelle Netzwerk **VNet-Servers** und das Subnetz **SN-Web** aus.
 5. Wählen Sie **Öffentliche IP-Adresse**. Wählen Sie unter **Zuweisung** die Option **Statisch** und anschließend **OK** aus.
-6. Wählen Sie für die öffentlichen Eingangsports **HTTP** > **HTTPS** > **RDP (3389)** und anschließend **OK** aus.
+6. Wählen Sie für öffentliche Eingangsports **HTTP (80)**  > **HTTPS (443)**  > **RDP (3389)** und anschließend **OK** aus.
 7. Klicken Sie auf der Seite **Zusammenfassung** auf **Erstellen**. Der Vorgang dauert einige Minuten.
 
 Wiederholen Sie dieses Verfahren, um einen weiteren virtuellen Computer mit dem Namen **Web-02** zu erstellen.
 
 ### <a name="add-a-dns-label"></a>Hinzufügen einer DNS-Bezeichnung
+
 Für die Verwendung der öffentlichen IP-Adressen mit Traffic Manager ist eine DNS-Bezeichnung erforderlich.
 1. Wählen Sie in der Ressourcengruppe **RG-DNS-Alias-TM** die öffentliche IP-Adresse **Web-01-ip** aus.
 2. Klicken Sie unter **Einstellungen** auf **Konfiguration**.

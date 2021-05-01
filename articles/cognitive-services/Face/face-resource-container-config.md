@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5287fe6df4a2f0cb728bf0e705a4ce989ca38487
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "80878424"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934035"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
 
@@ -67,7 +67,7 @@ Die Konfigurationseinstellungen im Abschnitt `CloudAI` umfassen containerspezifi
 
 ### <a name="storage-scenario-settings"></a>Einstellungen für das Speicherszenario
 
-Der Container für die Gesichtserkennung kann Blob-, Cache-, Meta- und Warteschlangendaten speichern. So werden beispielsweise Trainingsindizes und -ergebnisse für eine große Personengruppe als Blobdaten gespeichert. Der Container für die Gesichtserkennung bietet zwei unterschiedliche Speicherszenarien für die Interaktion mit diesen Datentypen und deren Speicherung:
+Der Container für die Gesichtserkennung kann Blob-, Cache-, Meta- und Warteschlangendaten speichern. So werden beispielsweise Trainingsindizes und -ergebnisse für eine große Personengruppe (**LargePersonGroup**) als Blobdaten gespeichert. Der Container für die Gesichtserkennung bietet zwei unterschiedliche Speicherszenarien für die Interaktion mit diesen Datentypen und deren Speicherung:
 
 * Arbeitsspeicher  
   Alle vier Datentypen werden im Arbeitsspeicher gespeichert. Sie sind weder verteilt noch persistent. Wenn der Container für die Gesichtserkennung beendet oder entfernt wird, gehen sämtliche Daten für den betreffenden Container im Speicher verloren.  

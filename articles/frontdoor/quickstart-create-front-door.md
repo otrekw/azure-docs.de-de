@@ -4,26 +4,30 @@ description: In dieser Schnellstartanleitung wird die Vorgehensweise zum Verwend
 services: front-door
 documentationcenter: na
 author: duongau
-manager: KumudD
-ms.service: frontdoor
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: 1869098362e37ea18c7ca9a9f827b0e5ec98ea3c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: KumudD
+ms.date: 04/19/2021
+ms.topic: quickstart
+ms.service: frontdoor
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 74b7c16904c86751076d40056027999fe44cb868
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067570"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727865"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Schnellstart: Erstellen Sie eine „Front Door“ für eine hoch verfügbare globale Webanwendung.
 
 Führen Sie erste Schritte mit Azure Front Door aus, indem Sie Hochverfügbarkeit für eine Webanwendung über das Azure-Portal einrichten.
 
 In dieser Schnellstartanleitung fasst Azure Front Door zwei Instanzen einer Webanwendung in einem Pool zusammen, die in verschiedenen Azure-Regionen ausgeführt werden. Sie erstellen eine Front Door-Konfiguration auf der Grundlage von Back-Ends mit gleicher Gewichtung und gleicher Priorität. Diese Konfiguration leitet Datenverkehr an den nächstgelegenen Standort weiter, an dem die Anwendung ausgeführt wird. Die Webanwendung wird von Azure Front Door ständig überwacht. Der Dienst bietet automatisches Failover auf den nächsten verfügbaren Standort, wenn der nächstgelegene Standort nicht verfügbar ist.
+
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="Diagramm: Front Door-Bereitstellungsumgebung mit dem Azure-Portal" border="false":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -65,8 +69,8 @@ Erstellen Sie nach Abschluss der Bereitstellung eine zweite Web-App. Verwenden S
 | ---              | ---  |
 | **Ressourcengruppe**   | Wählen Sie **Neu erstellen** aus, und geben Sie *FrontDoorQS_rg2* ein. |
 | **Name**             | Geben Sie einen eindeutigen Namen für Ihre Web-App ein. In diesem Beispiel wird *WebAppContoso-2* verwendet.  |
-| **Region**           | Geben Sie eine andere Region ein. In diesem Beispiel wird *USA, Süden-Mitte* verwendet. |
-| **App Service-Plan** > **Windows-Plan**         | Wählen Sie **Neu** aus, geben Sie *myAppServicePlanSouthCentralUS* ein, und wählen Sie dann **OK** aus. |
+| **Region**           | Geben Sie eine andere Region ein. In diesem Beispiel wird *USA, Osten* verwendet. |
+| **App Service-Plan** > **Windows-Plan**         | Wählen Sie **Neu** aus, geben Sie *myAppServicePlanEastUS* ein, und wählen Sie dann **OK** aus. |
 
 ## <a name="create-a-front-door-for-your-application"></a>Erstellen einer Front Door-Instanz für Ihre Anwendung
 

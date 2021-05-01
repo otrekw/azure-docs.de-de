@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d572509b3b2b3a0fc69f207d005984ee07ce34a4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100389177"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076818"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link für Azure Data Factory
 
@@ -54,7 +54,7 @@ Die Aktivierung des Private Link-Diensts für die genannten Kommunikationskanäl
    - Die Befehlskommunikation zwischen einer selbstgehosteten Integration Runtime und dem Azure Data Factory-Dienst kann sicher in einer privaten Netzwerkumgebung stattfinden. Der Datenverkehr zwischen der selbstgehosteten Integration Runtime und dem Azure Data Factory-Dienst erfolgt über Private Link. 
 - **Derzeit nicht unterstützt:**
    - Die interaktive Erstellung mithilfe der selbstgehosteten Integration Runtime durchläuft Private Link, z. B. für eine Testverbindung, das Durchsuchen der Ordner- und Tabellenliste, das Abrufen eines Schemas und das Anzeigen einer Vorschau von Daten.
-   - Wenn Sie die automatische Aktualisierung aktivieren, kann die neue Version der selbstgehosteten Integration Runtime automatisch aus dem Microsoft Download Center heruntergeladen werden.
+   - Die neue Version der selbstgehosteten Integration Runtime, die automatisch aus dem Microsoft Download Center heruntergeladen werden kann, wenn Sie die automatische Aktualisierung aktivieren, wird zurzeit nicht unterstützt.
 
    > [!NOTE]
    > Für Funktionen, die derzeit nicht unterstützt werden, müssen Sie die oben genannte Domäne und den Port weiterhin im virtuellen Netzwerk oder der Unternehmensfirewall konfigurieren. 
@@ -72,7 +72,7 @@ Wenn Sie die Endpunkt-URL der Data Factory außerhalb des VNET mit dem privaten 
 
 Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für die Data Factory „DataFactoryA“ bei Auflösung von außerhalb des VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net | CNAME   | < öffentlicher Endpunkt des Data Factory-Diensts > |
@@ -80,7 +80,7 @@ Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für die Data Fa
 
 Die DNS-Ressourceneinträge für „DataFactoryA“ lauten nach dem Auflösen im VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net   | Ein | < IP-Adresse des privaten Endpunkts > |

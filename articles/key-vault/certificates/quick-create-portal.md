@@ -3,7 +3,6 @@ title: 'Azure-Schnellstart: Festlegen und Abrufen eines Zertifikats aus Key Vaul
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal ein Zertifikat in Azure Key Vault festlegen und daraus abrufen.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e55c0832638105ad681f74cbeb6429a6704b7fb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be138a0c97e02cace45a57d8d6b32d7c9aea83b7
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935137"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749976"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen und Abrufen eines Zertifikats aus Azure Key Vault über das Azure-Portal
 
@@ -61,7 +60,8 @@ Um dem Tresor ein Zertifikat hinzuzufügen, sind nur einige zusätzliche Schritt
     - **Methode der Zertifikaterstellung**: Generieren.
     - **Zertifikatname**: ExampleCertificate.
     - **Antragsteller:** CN=ExampleDomain
-    - Behalten Sie bei den anderen Optionen die Standardwerte bei. Klicken Sie auf **Erstellen**.
+    - Behalten Sie bei den anderen Optionen die Standardwerte bei. (Wenn Sie in der erweiterten Richtlinie keine Besonderheiten angeben, kann sie standardmäßig als Clientauthentifizierungszertifikat verwendet werden.)
+ 4. Klicken Sie auf **Erstellen**.
 
 Nachdem Sie die Meldung erhalten haben, dass das Zertifikat erfolgreich erstellt wurde, können Sie in der Liste auf das Zertifikat klicken. Daraufhin werden einige der Eigenschaften angezeigt. Wenn Sie auf die aktuelle Version klicken, sehen Sie den Wert, den Sie im vorherigen Schritt angegeben haben.
 

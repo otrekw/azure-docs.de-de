@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 361a151d1f1835f82e440704105cf8b3844a4c54
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: bd64c95bcf59cef27aa988712315403c00a5dfd7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221624"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871253"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -43,7 +43,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial d
 
 * Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“.
 * Ein AMD64 Gerät, auf dem Azure IoT Edge mit Linux Containern ausgeführt wird. Mithilfe der Schnellstarts können Sie ein [Linux-Gerät](quickstart-linux.md) oder ein [Windows-Gerät](quickstart.md) einrichten.
-  * Auf ARM-Geräten (etwa Raspberry Pi) kann SQL Server nicht ausgeführt werden. Wenn Sie SQL auf einem ARM-Gerät verwenden möchten, können Sie sich zum Testen der Vorschauversion von [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) registrieren.
+  * Auf ARM-Geräten (etwa Raspberry Pi) kann SQL Server nicht ausgeführt werden. Wenn Sie SQL auf einem ARM-Gerät verwenden möchten, können Sie [Azure SQL Edge](../azure-sql-edge/overview.md) nutzen.
 * Eine Containerregistrierung wie [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/), der mit den [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) konfiguriert wurde.
 * [Docker CE](https://docs.docker.com/install/), das zur Ausführung von Linux-Containern konfiguriert wurde.
@@ -51,7 +51,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial d
 In diesem Tutorial wird ein Azure Functions-Modul verwendet, um Daten an den SQL Server zu senden. Um ein IoT Edge-Modul mit Azure Functions zu entwickeln, installieren Sie die folgenden zusätzlichen Voraussetzungen auf Ihrem Entwicklungscomputer:
 
 * [C#-Erweiterung für Visual Studio Code (unterstützt von OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1).
 
 ## <a name="create-a-function-project"></a>Erstellen eines Funktionsprojekts
 

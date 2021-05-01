@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 2b14c6e679a25ad5f37a9cb10bce78616126990b
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c28cfbbdff9e3fbf6cfe8d53ab7529c2ce9bd96e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113244"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725160"
 ---
 Hier erhalten Sie Informationen zu den ersten Schritten mit der Custom Vision-Clientbibliothek für .NET. Führen Sie diese Schritte aus, um das Paket zu installieren und den Beispielcode zum Erstellen eines Objekterkennungsmodells auszuprobieren. Sie erstellen ein Projekt, fügen Tags hinzu, trainieren das Projekt anhand von Beispielbildern und verwenden die Vorhersageendpunkt-URL des Projekts, um es programmgesteuert zu testen. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Bilderkennungsanwendung.
 
@@ -95,7 +95,7 @@ Erstellen Sie in der **Main**-Methode der Anwendung Variablen für den Schlüsse
 > [!IMPORTANT]
 > Öffnen Sie das Azure-Portal. Wenn die im Abschnitt **Voraussetzungen** erstellten Custom Vision-Ressourcen erfolgreich bereitgestellt wurden, klicken Sie unter **Nächste Schritte** auf die Schaltfläche **Zu Ressource wechseln**. Ihre **Schlüssel und den Endpunkt** finden Sie auf den entsprechenden Seiten der Ressourcen unter **Ressourcenverwaltung**. Sie müssen die Schlüssel für Ihre Trainings-und Vorhersage Ressourcen zusammen mit dem API-Endpunkt für Ihre Schulungs Ressource erhalten.
 >
-> Denken Sie daran, die Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und machen Sie sie niemals öffentlich zugänglich. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../../../cognitive-services-security.md).
+> Denken Sie daran, die Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und machen Sie sie niemals öffentlich zugänglich. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Artikel zur [Sicherheit](../../../cognitive-services-security.md) von Cognitive Services.
 
 Fügen Sie in der **Main**-Methode der Anwendung Aufrufe für die Methoden hinzu, die in dieser Schnellstartanleitung verwendet werden. Sie führen die Implementierung hierfür zu einem späteren Zeitpunkt durch.
 
