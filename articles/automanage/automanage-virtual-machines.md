@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4e1d22e2e7175135e88a08ed5a6d5ae7f021d49
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643519"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491275"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Automatische Azure-Verwaltung für virtuelle Computer
 
@@ -70,12 +70,14 @@ Wenn Sie Automanage mit einem neuen Automanage-Konto aktivieren:
 Wenn Sie Automanage mit einem vorhandenen Automanage-Konto aktivieren:
 * Rolle **Mitwirkender** für die Ressourcengruppe, die Ihre VMs enthält.
 
+Dem Automanage-Konto werden die Berechtigungen **Mitwirkender** und **Mitwirkender bei Ressourcenrichtlinien** zum Ausführen von Aktionen auf Automanage-Computern erteilt.
+
 > [!NOTE]
 > Wenn Sie Automanage auf einem virtuellen Computer verwenden möchten, der mit einem Arbeitsbereich in einem anderen Abonnement verbunden ist, müssen Sie in jedem Abonnement über die oben beschriebenen Berechtigungen verfügen.
 
 ## <a name="participating-services"></a>Beteiligte Dienste
 
-:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services.png" alt-text="Intelligentes Durchführen des Onboardings von Diensten.":::
+:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services-1.png" alt-text="Intelligentes Durchführen des Onboardings von Diensten.":::
 
 Die vollständige Liste der teilnehmenden Azure-Dienste sowie deren unterstützte Umgebung finden Sie unter:
 - [Automanage für Linux](automanage-linux.md)
@@ -94,6 +96,19 @@ Wenn Sie zum ersten Mal die automatische Verwaltung für Ihre VM aktivieren, kö
 
 Die einzige Zeit, in der Sie möglicherweise mit dieser VM interagieren müssen, um diese Dienste zu verwalten, ist für den Fall, dass wir versucht haben, Ihre VM zu reparieren, dies jedoch nicht gelungen ist. Wenn wir Ihre VM erfolgreich korrigieren, stellen wir die Compliance wieder her, ohne Sie überhaupt zu warnen. Weitere Details finden Sie unter [Status von VMs](#status-of-vms).
 
+## <a name="enabling-automanage-for-vms-using-azure-policy"></a>Aktivieren von Automanage für VMs mit Azure Policy
+Sie können Automanage auch im großen Stil auf VMs aktivieren, indem Sie die Azure Policy-Integration verwenden. Die Richtlinie besitzt einen DeployIfNotExists-Effekt. Dies bedeutet, dass alle berechtigten VMs, die sich innerhalb des Richtlinienbereichs befinden, automatisch in die Best Practices für Automanage-VMs integriert werden.
+
+Einen direkten Link zur Richtlinie finden Sie [hier](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3).
+
+### <a name="how-to-apply-the-policy"></a>Anwenden der Richtlinie
+1. Zeigen Sie die Richtliniendefinition an, und klicken Sie auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie den Bereich aus, in dem Sie die Richtlinie anwenden möchten. (Dabei kann es sich um eine Verwaltungsgruppe, ein Abonnement oder eine Ressourcengruppe handeln.)
+1. Geben Sie unter **Parameter** Parameter für das Automanage-Konto, das Konfigurationsprofil und den Effekt an. (Der Effekt sollte normalerweise „DeployIfNotExists“ lauten.)
+    1. Wenn Sie über kein Automanage-Konto verfügen, müssen Sie [eines erstellen](#create-an-automanage-account).
+1. Aktivieren Sie unter **Wartung** das Kontrollkästchen „Auf Wartungsaufgabe klicken“. Dadurch wird das Onboarding in Automanage durchgeführt.
+1. Klicken Sie auf **Überprüfen und erstellen**, und stellen Sie sicher, dass alle Einstellungen fehlerfrei sind.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="environment-configuration"></a>Umgebungskonfiguration
 
@@ -142,6 +157,43 @@ Wenn Sie Automanage mit einem vorhandenen Automanage-Konto aktivieren, müssen S
 > [!NOTE]
 > Wenn Sie bewährte Methoden für Automanage deaktivieren, bleiben die Berechtigungen des Automanage-Kontos für alle zugeordneten Abonnements erhalten. Entfernen Sie die Berechtigungen manuell, indem Sie die IAM-Seite des Abonnements aufrufen oder das Automanage-Konto löschen. Das Automanage-Konto kann nicht gelöscht werden, wenn es noch Computer verwaltet.
 
+### <a name="create-an-automanage-account"></a>Erstellen eines Automanage-Kontos
+Sie können ein Automanage-Konto über das Portal oder mithilfe einer ARM-Vorlage erstellen.
+
+#### <a name="portal"></a>Portal
+1. Navigieren Sie zum Blatt **Automanage** im Portal.
+1. Klicken Sie auf **Für vorhandenen Computer aktivieren**.
+1. Klicken Sie unter **Erweitert** auf „Neues Konto erstellen“.
+1. Füllen Sie die erforderlichen Felder aus, und klicken Sie auf **Erstellen**.
+
+#### <a name="arm-template"></a>ARM-Vorlage
+Speichern Sie die folgende ARM-Vorlage unter `azuredeploy.json`, und führen Sie den folgenden Befehl aus: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automanageAccountName": {
+            "type": "String"
+        },
+        "location": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2020-06-30-preview",
+            "type": "Microsoft.Automanage/accounts",
+            "name": "[parameters('automanageAccountName')]",
+            "location": "[parameters('location')]",
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="status-of-vms"></a>Status von VMs
 

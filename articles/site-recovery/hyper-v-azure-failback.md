@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ramamill
-ms.openlocfilehash: a31a28728dd0521262bd0518cc49a385f4314302
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 96c3dce17ab78e08b28bb41c0100e51a72a666e7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87416229"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110252"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Durchführen eines Failbacks für virtuelle Hyper-V-Computer
 
@@ -26,7 +26,7 @@ In diesem Artikel wird beschrieben, wie Sie mit [Azure Site Recovery](site-recov
 ## <a name="before-you-start"></a>Vorbereitung
 
 1. [Überprüfen Sie die Typen der Failbacks](failover-failback-overview.md#hyper-v-reprotectionfailback), die Sie verwenden können: Wiederherstellung am ursprünglichen Standort und Wiederherstellung an einem anderen Standort.
-2. Stellen Sie sicher, dass die Azure-VMs ein Speicherkonto und keine verwalteten Datenträger verwenden. Ein Failback von virtuellen Hyper-V-Computern, die über verwaltete Datenträger repliziert werden, wird nicht unterstützt.
+2. Stellen Sie sicher, dass die Azure-VMs ein Speicherkonto und keine verwalteten Datenträger verwenden. Das Failback von virtuellen Hyper-V-Computern, für die ein Failover auf Azure-Computer mit verwalteten Datenträgern ausgeführt wurde, wird nicht unterstützt.
 3. Überprüfen Sie, ob der lokale Hyper-V-Host (oder System Center VMM-Server bei Verwendung von Site Recovery) ausgeführt wird und mit Azure verbunden ist. 
 4. Stellen Sie sicher, dass für die VMs alle Failover und Commits abgeschlossen wurden. Sie müssen keine spezifischen Site Recovery-Komponenten für das Failback von Hyper-V-VMs aus Azure einrichten.
 5. Die Zeit zum Durchführen der Datensynchronisierung und zum Starten der lokalen VM ist von einer Reihe von Faktoren abhängig. Um das Herunterladen von Daten zu beschleunigen, können Sie den Microsoft Azure Recovery Services-Agent konfigurieren, sodass mehr Threads verwendet und der Download parallelisiert wird. [Weitere Informationen](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage)

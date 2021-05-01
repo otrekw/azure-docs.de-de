@@ -1,117 +1,185 @@
 ---
-title: Upgrade der Azure Service Fabric-Version eines Clusters
-description: Upgraden Sie den Service Fabric-Code und/oder die Konfiguration für die Ausführung eines Service Fabric-Clusters, und machen Sie sich unter anderem mit dem Festlegen des Clusteraktualisierungsmodus, dem Upgraden von Zertifikaten, dem Hinzufügen von Anwendungsports und dem Anwenden von Betriebssystempatches vertraut. Was können Sie erwarten, wenn die Upgrades durchgeführt werden?
-ms.topic: conceptual
-ms.date: 11/12/2018
-ms.openlocfilehash: 01fe916f0ee78c8481ac6b17b8f7409b47c852ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+title: Verwalten von Service Fabric-Clusterupgrades
+description: Verwalten Sie Ort und Art des Updates Ihrer Service Fabric-Clusterruntime.
+ms.topic: how-to
+ms.date: 03/26/2021
+ms.openlocfilehash: 98c3300e5cc51c32d894397839879e25190d979b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90564286"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731162"
 ---
-# <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Aktualisieren der Service Fabric-Version eines Clusters
+# <a name="manage-service-fabric-cluster-upgrades"></a>Verwalten von Service Fabric-Clusterupgrades
 
-Moderner Systeme müssen upgradefähig sein, um den langfristigen Erfolg Ihres Produkts zu gewährleisten. Ein Azure Service Fabric-Cluster ist eine Ressource, die Sie besitzen, die jedoch teilweise von Microsoft verwaltet wird. In diesem Artikel erfahren Sie, wie Sie die in Ihrem Azure-Cluster ausgeführte Service Fabric-Version upgraden.
+Ein Azure Service Fabric-Cluster ist eine Ressource, die Sie besitzen, die jedoch teilweise von Microsoft verwaltet wird. Hier erfahren Sie, wie Sie den Zeitpunkt und die Art der Aktualisierung Ihres Azure Service Fabric-Clusters durch Microsoft verwalten.
 
-Sie können Ihren Cluster so konfigurieren, dass er Fabric-Upgrades automatisch erhält, wenn diese von Microsoft veröffentlicht werden. Alternativ können Sie eine unterstützte Fabric-Version auswählen, die in Ihrem Cluster verwendet werden soll.
+Weitere Hintergrundinformationen zu Konzepten und Prozessen für Clusterupgrades finden Sie unter [Upgrade und Update von Azure Service Fabric-Clustern](service-fabric-cluster-upgrade.md).
 
-Hierzu legen Sie die Clusterkonfiguration „upgradeMode“ über das Portal oder mithilfe von Resource Manager fest – entweder zum Zeitpunkt der Clustererstellung oder später für einen aktiven Cluster. 
+## <a name="set-upgrade-mode"></a>Festlegen des Upgrademodus
+
+Sie können für Ihren Cluster festlegen, dass er automatische Service Fabric-Upgrades erhält, sobald sie von Microsoft veröffentlicht werden, oder Sie können manuell aus einer Liste der derzeit unterstützten Versionen auswählen, indem Sie den Upgrademodus für Ihren Cluster festlegen. Dies kann entweder über das Steuerelement *Fabric-Upgrademodus* im Azure-Portal oder die `upgradeMode`-Einstellung in der Vorlage für die Clusterbereitstellung erfolgen.
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Wenn Sie das Azure-Portal verwenden, wählen Sie beim Erstellen eines neuen Service Fabric-Clusters zwischen automatischen und manuellen Upgrades.
+
+:::image type="content" source="media/service-fabric-cluster-upgrade/portal-new-cluster-upgrade-mode.png" alt-text="Auswahl zwischen automatischen und manuellen Upgrades beim Erstellen eines neuen Clusters im Azure-Portal in den „Erweitert“-Optionen":::
+
+Sie können auch im Abschnitt **Fabric-Upgrades** einer vorhandenen Clusterressource zwischen automatischen und manuellen Upgrades umschalten.
+
+:::image type="content" source="./media/service-fabric-cluster-upgrade/fabric-upgrade-mode.png" alt-text="Auswählen von automatischen oder manuellen Upgrades im Abschnitt „Fabric-Upgrades“ Ihrer Clusterressource im Azure-Portal":::
+
+### <a name="manual-upgrades-with-azure-portal"></a>Manuelle Upgrades im Azure-Portal
+
+Wenn Sie die manuelle Upgradeoption auswählen, müssen Sie zum Initiieren eines Upgrades lediglich die verfügbaren Versionen in der Dropdownliste und dann *Speichern* auswählen. Von dort aus wird das Clusterupgrade sofort gestartet.
+
+Bei dem Upgrade werden die [Clusterintegritätsrichtlinien](#custom-policies-for-manual-upgrades) (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt. Wenn die Clusterintegritätsrichtlinien nicht erfüllt sind, wird das Upgrade zurückgesetzt.
+
+Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte ausführen wie zuvor.
+
+### <a name="resource-manager-template"></a>Resource Manager-Vorlage
+
+Wenn Sie den Clusterupgrademodus mithilfe einer Resource Manager-Vorlage ändern möchten, geben Sie für die `upgradeMode`-Eigenschaft der Ressourcendefinition *Microsoft.ServiceFabric/clusters* entweder *Automatisch* oder *Manuell* an. Wenn Sie manuelle Upgrades auswählen, legen Sie auch `clusterCodeVersion` auf eine zurzeit [unterstützte Fabric-Version](#query-for-supported-cluster-versions) fest.
+
+:::image type="content" source="./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG" alt-text="Screenshot mit Vorlage, in der der Klartext eingerückt ist, um die Struktur widerzuspiegeln. Die Eigenschaften „clusterCodeVersion“ und „upgradeMode“ sind hervorgehoben.":::
+
+Nach erfolgreicher Bereitstellung der Vorlage werden Änderungen am Clusterupgrademodus angewendet. Wenn sich der Cluster im manuellen Modus befindet, wird das Clusterupgrade automatisch gestartet.
+
+Bei dem Upgrade werden die [Clusterintegritätsrichtlinien](#custom-policies-for-manual-upgrades) (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt. Wenn die Clusterintegritätsrichtlinien nicht erfüllt sind, wird das Upgrade zurückgesetzt.
+
+Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte ausführen wie zuvor.
+
+## <a name="wave-deployment-for-automatic-upgrades"></a>Bereitstellung in Zyklen für automatische Upgrades
+
+Mit dem automatischen Upgrademodus haben Sie die Möglichkeit, Ihren Cluster für die Bereitstellung in Zyklen zu aktivieren. Mit der Bereitstellung in Zyklen können Sie eine Pipeline erstellen, mit der Sie Ihre Test-, Bereitstellungs- und Produktionscluster nacheinander, durch die integrierte „Bake Time“ getrennt aktualisieren können, um anstehende Service Fabric-Versionen zu validieren, bevor die Produktionscluster aktualisiert werden.
+
+### <a name="enable-wave-deployment"></a>Aktivieren der Bereitstellung in Zyklen
 
 > [!NOTE]
-> Achten Sie immer darauf, dass in Ihrem Cluster eine unterstützte Fabric-Version ausgeführt wird. Nach der Ankündigung einer neuen Service Fabric-Version beträgt die verbleibende Supportdauer der vorherigen Version noch mindestens 60 Tage. Neue Versionen werden im [Blog des Service Fabric-Teams](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)angekündigt. Ab dann kann die neue Version ausgewählt werden. 
-> 
-> 
+> Die Bereitstellung in Zyklen erfordert die API-Version `2020-12-01-preview` (oder höher) für Ihre *Microsoft.ServiceFabric/clusters*-Ressource.
 
-14 Tage vor Ablauf der in Ihrem Cluster verwendeten Version wird ein Integritätsereignis generiert, das den Cluster in einen Warnzustand versetzt. Der Cluster bleibt so lange in dem Warnzustand, bis Sie ein Upgrade auf eine unterstützte Fabric-Version durchführen.
+Zum Aktivieren der Bereitstellung in Zyklen für das automatische Upgrade legen Sie zunächst fest, welcher Zyklus Ihrem Cluster zugewiesen werden soll:
 
-## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>Festlegen des Upgrademodus im Azure-Portal
-Bei der Clustererstellung haben Sie die Wahl zwischen einem automatischen und einem manuellen Modus:
+* **Wave 0** (`Wave0`): Cluster werden aktualisiert, sobald ein neuer Service Fabric-Build freigegeben wird. Für Test/Dev-Cluster vorgesehen.
+* **Wave 1** (`Wave1`): Cluster werden eine Woche (sieben Tage), nachdem ein neuer Build freigegeben wurde, aktualisiert. Für Vorproduktions-/Stagingcluster vorgesehen.
+* **Wave 2** (`Wave2`): Cluster werden zwei Wochen (14 Tage), nachdem ein neuer Build freigegeben wurde, aktualisiert. Für Produktionscluster vorgesehen.
 
-![Screenshot mit dem Bereich „Service Fabric-Cluster erstellen“ mit ausgewählter Option 2 „Clusterkonfiguration“ sowie dem geöffneten Bereich für die Clusterkonfiguration][Create_Manualmode]
+Fügen Sie dann Ihrer Clusterressourcenvorlage einfach mit einem der oben aufgeführten Wave-Werte eine `upgradeWave`-Eigenschaft hinzu. Stellen Sie sicher, dass Sie über Version `2020-12-01-preview` oder höher der Clusterressourcen-API verfügen.
 
-Einen aktiven Cluster können Sie über die Verwaltungsoberfläche in den automatischen oder manuellen Modus versetzen. 
-
-### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal"></a>Upgraden auf eine neue Version in einem Cluster im manuellen Modus über das Portal
-Für ein Upgrade auf eine neue Version müssen Sie lediglich die verfügbare Version im Dropdownmenü auswählen und auf „Speichern“ klicken. Das Fabric-Upgrade wird automatisch initiiert. Bei dem Upgrade werden die Clusterintegritätsrichtlinien (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt.
-
-Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird das Upgrade zurückgesetzt. Weitere Informationen zum Festlegen dieser benutzerdefinierten Integritätsrichtlinien finden Sie weiter unten in diesem Dokument. 
-
-Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte ausführen wie zuvor.
-
-![Screenshot mit dem Fenster zu Service Fabric-Clustern mit dem geöffneten Bereich zu Fabric-Upgrades und den hervorgehobenen Upgradeoptionen, einschließlich „automatisch“ und „manuell“][Manage_Automaticmode]
-
-## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>Festlegen des Upgrademodus mithilfe einer Resource Manager-Vorlage
-Fügen Sie der Microsoft.ServiceFabric/Clusterressourcendefinition die Konfiguration „upgradeMode“ hinzu, legen Sie „clusterCodeVersion“ wie unten gezeigt auf eine der unterstützten Fabric-Versionen fest, und stellen Sie dann die Vorlage bereit. Gültige Werte für „upgradeMode“ sind „Manual“ und „Automatic“.
-
-![Screenshot mit Vorlage, in der der Klartext eingerückt ist, um die Struktur widerzuspiegeln; clusterCodeVersion und upgradeMode sind hervorgehoben][ARMUpgradeMode]
-
-### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Upgraden auf eine neue Version in einem Cluster im manuellen Modus mithilfe einer Resource Manager-Vorlage
-Wenn sich der Cluster im manuellen Modus befindet und Sie ein Upgrade auf eine neue Version durchführen möchten, legen Sie „clusterCodeVersion“ auf eine unterstützte Version fest, und stellen Sie sie bereit. Das Fabric-Upgrade wird durch die Bereitstellung der Vorlage automatisch initiiert. Bei dem Upgrade werden die Clusterintegritätsrichtlinien (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt.
-
-Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird das Upgrade zurückgesetzt.  
-
-Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte ausführen wie zuvor.
-
-## <a name="set-custom-health-polices-for-upgrades"></a>Festlegen benutzerdefinierter Integritätsrichtlinien für Upgrades
-Sie können benutzerdefinierte Integritätsrichtlinien für Fabric-Upgrades angeben. Wenn Sie Ihren Cluster für automatische Fabric-Upgrades konfiguriert haben, werden diese Richtlinien auf die [erste Phase der automatischen Fabric-Upgrades](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades) angewendet.
-Wenn sich der Cluster im manuellen Fabric-Upgrademodus befindet, werden diese Richtlinien immer dann angewendet, wenn Sie eine neue Version auswählen und so das Fabric-Upgrade in Ihrem Cluster initiieren. Wenn Sie die Richtlinien nicht überschreiben, werden die Standardwerte verwendet.
-
-Sie können benutzerdefinierte Integritätsrichtlinien angeben oder die aktuellen Einstellungen auf dem Fabric-Upgradeblatt überprüfen, indem Sie die erweiterten Upgradeeinstellungen auswählen. Wie das geht, zeigt die folgende Abbildung: 
-
-![Verwalten benutzerdefinierter Integritätsrichtlinien][HealthPolices]
-
-## <a name="list-all-available-versions-for-all-environments-for-a-given-subscription"></a>Auflisten aller verfügbaren Versionen für alle Umgebungen eines bestimmten Abonnements
-Führen Sie den folgenden Befehl aus, um eine Ausgabe wie die folgende zu erhalten.
-
-„supportExpiryUtc“ gibt an, wann eine bestimmte Version abläuft oder abgelaufen ist. Die neueste Version besitzt anstelle eines gültigen Datums den Wert „9999-12-31T23:59:59.9999999“, was bedeutet, dass noch kein Ablaufdatum feststeht.
-
-```REST
-GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2016-09-01
-
-Example: https://management.azure.com/subscriptions/1857f442-3bce-4b96-ad95-627f76437a67/providers/Microsoft.ServiceFabric/locations/eastus/clusterVersions?api-version=2016-09-01
-
-Output:
+```json
 {
-                  "value": [
-                    {
-                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/5.0.1427.9490",
-                      "name": "5.0.1427.9490",
-                      "type": "Microsoft.ServiceFabric/environments/clusterVersions",
-                      "properties": {
-                        "codeVersion": "5.0.1427.9490",
-                        "supportExpiryUtc": "2016-11-26T23:59:59.9999999",
-                        "environment": "Windows"
-                      }
-                    },
-                    {
-                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.0.1427.9490",
-                      "name": "5.1.1427.9490",
-                      "type": " Microsoft.ServiceFabric/environments/clusterVersions",
-                      "properties": {
-                        "codeVersion": "5.1.1427.9490",
-                        "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                        "environment": "Windows"
-                      }
-                    },
-                    {
-                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.4.1427.9490",
-                      "name": "4.4.1427.9490",
-                      "type": " Microsoft.ServiceFabric/environments/clusterVersions",
-                      "properties": {
-                        "codeVersion": "4.4.1427.9490",
-                        "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                        "environment": "Linux"
-                      }
-                    }
-                  ]
-                }
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+     ...
+        "fabricSettings": [...],
+        "managementEndpoint": ...,
+        "nodeTypes": [...],
+        "provisioningState": ...,
+        "reliabilityLevel": ...,
+        "upgradeMode": "Automatic",
+        "upgradeWave": "Wave1",
+       ...
 ```
 
+Nachdem Sie die aktualisierte Vorlage bereitgestellt haben, wird Ihr Cluster im angegebenen Zyklus für den nächsten Upgradezeitraum und danach registriert.
+
+Sie können sich für [E-Mail-Benachrichtigungen registrieren](#register-for-notifications), die Links zu weiterer Hilfe enthalten, wenn bei einem Clusterupgrade ein Fehler auftritt.
+
+### <a name="register-for-notifications"></a>Registrieren für Benachrichtigungen
+
+Sie können sich dafür registrieren, Benachrichtigungen zu erhalten, wenn bei einem Clusterupgrade ein Fehler auftritt. Eine E-Mail mit weiteren Informationen zum Upgradefehler und Links zu weiteren Hilfethemen wird an die angegebene(n) E-Mail-Adresse(n) gesendet.
+
+> [!NOTE]
+> Die Registrierung für die Bereitstellung in Zyklen ist nicht erforderlich, um Benachrichtigungen über Upgradefehler zu erhalten.
+
+Um sich für Benachrichtigungen zu registrieren, fügen Sie der Clusterressourcenvorlage einen `notifications`-Abschnitt hinzu, und geben Sie eine oder mehrere E-Mail-Adressen (*receivers*) an, um Benachrichtigungen zu erhalten:
+
+```json
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+     ...
+        "upgradeMode": "Automatic",
+        "upgradeWave": "Wave1",
+        "notifications": [
+        {
+            "isEnabled": true,
+            "notificationCategory": "WaveProgress",
+            "notificationLevel": "Critical",
+            "notificationTargets": [
+            {
+                "notificationChannel": "EmailUser",
+                "receivers": [
+                    "devops@contoso.com"
+                ]
+            }]
+        }]
+```
+
+Nachdem Sie die aktualisierte Vorlage bereitgestellt haben, werden Sie für Benachrichtigungen über Upgradefehler registriert.
+
+## <a name="custom-policies-for-manual-upgrades"></a>Benutzerdefinierte Richtlinien für manuelle Upgrades
+
+Sie können benutzerdefinierte Integritätsrichtlinien für manuelle Clusterupgrades angeben. Diese Richtlinien werden jedes Mal angewendet, wenn Sie eine neue Runtimeversion auswählen, wodurch im System der Start des Upgrade Ihres Clusters ausgelöst wird. Wenn Sie die Richtlinien nicht überschreiben, werden die Standardwerte verwendet.
+
+Sie können die benutzerdefinierten Integritätsrichtlinien angeben oder die aktuellen Einstellungen im Abschnitt **Fabric-Upgrades** Ihrer Clusterressource im Azure-Portal überprüfen, indem Sie die Option *Benutzerdefiniert* für **Upgraderichtlinie** auswählen.
+
+:::image type="content" source="./media/service-fabric-cluster-upgrade/custom-upgrade-policy.png" alt-text="Wählen Sie die Upgraderichtlinienoption „Benutzerdefiniert“ im Abschnitt „Fabric-Upgrades“ Ihrer Clusterressource im Azure-Portal aus, um während des Upgrades benutzerdefinierte Integritätsrichtlinien festzulegen.":::
+
+## <a name="query-for-supported-cluster-versions"></a>Abfrage nach unterstützten Clusterversionen
+
+Mit der [Azure-REST-API](/rest/api/azure/) können Sie alle verfügbaren Service Fabric-Runtimeversionen ([clusterVersions](/rest/api/servicefabric/sfrp-api-clusterversions_list)) auflisten, die für den angegebenen Speicherort und Ihr Abonnement verfügbar sind.
+
+Sie können auch auf [Service Fabric-Versionen](service-fabric-versions.md) verweisen, um weitere Informationen zu unterstützten Versionen und Betriebssystemen zu erhalten.
+
+```REST
+GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2018-02-01
+
+"value": [
+  {
+    "id": "subscriptions/########-####-####-####-############/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/5.0.1427.9490",
+    "name": "5.0.1427.9490",
+    "type": "Microsoft.ServiceFabric/environments/clusterVersions",
+    "properties": {
+      "codeVersion": "5.0.1427.9490",
+      "supportExpiryUtc": "2016-11-26T23:59:59.9999999",
+      "environment": "Windows"
+    }
+  },
+  {
+    "id": "subscriptions/########-####-####-####-############/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.0.1427.9490",
+    "name": "5.1.1427.9490",
+    "type": " Microsoft.ServiceFabric/environments/clusterVersions",
+    "properties": {
+      "codeVersion": "5.1.1427.9490",
+      "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+      "environment": "Windows"
+    }
+  },
+  {
+    "id": "subscriptions/########-####-####-####-############/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.4.1427.9490",
+    "name": "4.4.1427.9490",
+    "type": " Microsoft.ServiceFabric/environments/clusterVersions",
+    "properties": {
+      "codeVersion": "4.4.1427.9490",
+      "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+      "environment": "Linux"
+    }
+  }
+]
+}
+```
+
+`supportExpiryUtc` in der Ausgabe meldet, wenn ein bestimmtes Release abläuft oder abgelaufen ist. Die neueste Version besitzt anstelle eines gültigen Datums den Wert *9999-12-31T23:59:59.9999999*, was bedeutet, dass noch kein Ablaufdatum feststeht.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
-* Informieren Sie sich über das [Anpassen von Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md).
-* Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-in-out.md)
+
+* [Verwalten von Service Fabric-Upgrades](service-fabric-cluster-upgrade-version-azure.md)
+* Anpassen Ihrer [Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md)
+* [Ab- und Aufskalieren Ihres Clusters](service-fabric-cluster-scale-in-out.md)
 * Machen Sie sich mit [Anwendungsupgrades](service-fabric-application-upgrade.md)
+
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

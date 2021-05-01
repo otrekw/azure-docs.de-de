@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 69677ed419fa9bac2cbcb06c394c92f68d0b7777
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: d0470759a589927b65462f258b20446af608175c
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930927"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284033"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>Konfigurieren eines Azure Cosmos DB-Kontos mit regelmäßiger Sicherung
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -30,9 +30,6 @@ Azure Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen Ih
   :::image type="content" source="./media/configure-periodic-backup-restore/automatic-backup.png" alt-text="Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage." lightbox="./media/configure-periodic-backup-restore/automatic-backup.png" border="false":::
 
 * Die Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit Ihrer Anwendungen. Azure Cosmos DB erstellt die Datensicherung im Hintergrund, ohne zusätzlichen bereitgestellten Durchsatz (Anforderungseinheiten, RUs) zu beanspruchen oder die Leistung und Verfügbarkeit Ihrer Datenbank zu beeinträchtigen.
-
-> [!Note]
-> Konten mit Synapse Link-Aktivierung werden nicht unterstützt.
 
 ## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>Redundanz für Sicherungsspeicher
 
