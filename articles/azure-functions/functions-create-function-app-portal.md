@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ihre erste Azure-Funktion für die serverlose
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 6ca187181d68d7924f97ebfac08e81dec77251e9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ea5b6a9e51b6982a33dc748f72557ed539b8e2e0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492116"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385988"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Erstellen Ihrer ersten Funktion im Azure-Portal
 
@@ -60,11 +60,7 @@ Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
 
     ![Kopieren der URL der Funktion aus dem Azure-Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Fügen Sie die URL der Funktion in die Adressleiste Ihres Browsers ein. Fügen Sie den Wert der Abfragezeichenfolge `?name=<your_name>` am Ende der URL hinzu, und drücken Sie die EINGABETASTE, um die Anforderung auszuführen. 
-
-    Das folgende Beispiel zeigt die Antwort im Browser:
-
-    ![Funktionsantwort im Browser.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
+1. Fügen Sie die URL der Funktion in die Adressleiste Ihres Browsers ein. Fügen Sie den Wert der Abfragezeichenfolge `?name=<your_name>` am Ende der URL hinzu, und drücken Sie die EINGABETASTE, um die Anforderung auszuführen. Im Browser sollte eine Antwortmeldung angezeigt werden, die den Wert Ihrer Abfragezeichenkette zurückgibt. 
 
     Wenn die Anforderungs-URL einen [Zugriffsschlüssel](functions-bindings-http-webhook-trigger.md#authorization-keys) (`?code=...`) enthielt, bedeutet dies, dass Sie beim Erstellen der Funktion die Zugriffsebene **Funktion** anstelle der Zugriffsebene **Anonym** auswählen. In diesem Fall sollte stattdessen `&name=<your_name>` angefügt werden.
 

@@ -3,22 +3,22 @@ title: Importieren von Containerimages
 description: Importieren von Containerimages in eine Azure-Containerregistrierung mithilfe von Azure-APIs, ohne dass Docker-Befehle ausgeführt werden müssen
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b481a2b4f0a08f0ccbfd33f7059e5d8e0c04f5f0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988235"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221499"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importieren von Containerimages in eine Containerregistrierung
 
 Sie können Containerimages einfach in eine Azure-Containerregistrierung importieren (kopieren), ohne Docker-Befehle verwenden zu müssen. Sie können beispielsweise Images aus einer Entwicklungsregistrierung in eine Produktionsregistrierung importieren oder Basisimages aus einer öffentlichen Registrierung kopieren.
 
-Azure Container Registry ermöglicht einige allgemeine Szenarien zum Kopieren von Images aus einer vorhandenen Registrierung:
+Azure Container Registry ermöglicht einige allgemeine Szenarien zum Kopieren von Images und anderer Artefakte aus einer vorhandenen Registrierung:
 
-* Importieren aus einer öffentlichen Registrierung
+* Importieren von Images aus einer öffentlichen Registrierung
 
-* Importieren von Images aus einer anderen Azure-Containerregistrierung im selben oder in einem anderen Azure-Abonnement oder -Mandanten
+* Importieren von Images oder OCI-Artefakten einschließlich Helm 3-Diagrammen aus einer anderen Azure Container Registry-Instanz in demselben oder einem anderen Azure-Abonnement oder -Mandanten
 
 * Importieren aus einer Azure-fremden privaten Containerregistrierung
 

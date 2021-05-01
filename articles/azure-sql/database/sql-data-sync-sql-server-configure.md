@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 75de7b122bff75ea13e3b66bb0b79452142dc36c
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968610"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500089"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Tutorial: Einrichten der SQL-Datensynchronisierung zwischen Datenbanken in Azure SQL-Datenbank und SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -236,6 +236,11 @@ Häufig gestellte Fragen zum Client-Agent finden Sie unter [Agent – Häufig ge
 **Muss die private Verbindung manuell genehmigt werden, damit sie verwendet werden kann?**
 
 Ja. Sie müssen den dienstseitig verwalteten privaten Endpunkt manuell genehmigen – entweder während der Synchronisierungsgruppenbereitstellung im Azure-Portal auf der Seite mit den Verbindungen mit privaten Endpunkten oder mithilfe von PowerShell.
+
+**Warum tritt ein Firewallfehler auf, wenn der Synchronisierungsauftrag meine Azure-Datenbank bereitstellt?**
+
+Dieser Fehler kann auftreten, wenn Azure-Ressourcen nicht auf Ihren Server zugreifen dürfen. Stellen Sie sicher, dass für die Firewall in der Azure-Datenbank die Einstellung „Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten“ auf „Ja“ festgelegt ist.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

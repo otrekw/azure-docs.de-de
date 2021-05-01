@@ -2,18 +2,20 @@
 title: 'Schnellstart: Erstellen eines virtuellen Azure Confidential Computing-Computers im Azure-Portal'
 description: Machen Sie sich als Einstieg in Ihre Bereitstellungen damit vertraut, wie Sie im Azure-Portal schnell einen virtuellen Confidential Computing-Computer erstellen können.
 author: JBCook
+ms.author: JenCook
+ms.date: 04/23/2020
+ms.topic: quickstart
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
-ms.topic: quickstart
-ms.date: 04/23/2020
-ms.author: JenCook
-ms.openlocfilehash: 3f0984acd66bd5d6c148be8451938d3152fb9ca7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: f43229570f6bab942cc57a2ea3be163d37f02f89
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566667"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536171"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Schnellstart: Bereitstellen eines virtuellen Azure Confidential Computing-Computers im Azure-Portal
 
@@ -148,7 +150,7 @@ Weitere Informationen zum Herstellen einer Verbindung mit virtuellen Linux-Compu
 
 Befolgen Sie die Schritt-für-Schritt-Anleitung für die Installation des [OE SDK](https://github.com/openenclave/openenclave) auf Ihrem virtuellen Computer der DCsv2-Serie, auf dem ein Image vom Typ „Ubuntu 18.04 LTS Gen 2“ ausgeführt wird. 
 
-Wenn Ihr virtueller Computer unter Ubuntu 16.04 LTS Gen 2 ausgeführt wird, gilt die [Installationsanleitung für Ubuntu 16.04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md).
+Wenn Ihr virtueller Computer unter Ubuntu 18.04 LTS Gen 2 ausgeführt wird, gilt die [Installationsanleitung für Ubuntu 18.04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md).
 
 #### <a name="1-configure-the-intel-and-microsoft-apt-repositories"></a>1. Konfigurieren der Intel- und Microsoft APT-Repositorys
 

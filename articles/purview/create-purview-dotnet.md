@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 4/2/2021
 ms.author: nayenama
-ms.openlocfilehash: 04ed5cef351c81355a2390dd0b983c162f2b9532
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: b3dc7bf8ac7650a7219c15a09a31d4dcf84a40bf
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387171"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587798"
 ---
 # <a name="quickstart-create-a-purview-account-using-net-sdk"></a>Schnellstart: Erstellen eines Purview-Kontos mithilfe des .NET SDK
 
@@ -55,7 +55,7 @@ Erstellen Sie im nächsten Schritt in Visual Studio eine C# .NET-Konsolenanwendu
 
 1. Starten Sie **Visual Studio**.
 2. Wählen Sie im Fenster „Start“ die Option **Neues Projekt erstellen** > **Konsolen-App (.NET Framework)** aus. .NET-Version 4.5.2 oder höher ist erforderlich.
-3. Geben Sie unter **Projektname** den Namen **ADFv2QuickStart** ein.
+3. Geben Sie unter **Projektname** den Namen **PurviewQuickStart** ein.
 4. Wählen Sie **Create** (Erstellen), um das Projekt zu erstellen.
 
 ## <a name="install-nuget-packages"></a>Installieren von NuGet-Paketen

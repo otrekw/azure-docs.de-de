@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1977663f4661fca316e4839671abd76e07b5acda
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0986a1d6a75f0d464eb405841af821c606c68200
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304799"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565320"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Verwenden externer Tabellen mit Synapse SQL
 
@@ -339,7 +339,7 @@ Dient zum Angeben des Ordners oder des Dateipfads und Dateinamens für die tats�
 Wenn Sie mithilfe von „LOCATION“ einen Ordnerspeicherort angeben, wird bei einer Abfrage des serverlosen SQL-Pools eine Auswahl aus der Tabelle getroffen, und es werden Dateien aus dem Ordner abgerufen.
 
 > [!NOTE]
-> Im Gegensatz zu Hadoop und PolyBase werden vom serverlosen SQL-Pool nur dann Unterordner zurückgegeben, wenn Sie „/**“ am Ende des Pfads angeben.
+> Im Gegensatz zu Hadoop und PolyBase werden vom serverlosen SQL-Pool nur dann Unterordner zurückgegeben, wenn Sie „/**“ am Ende des Pfads angeben. Wie bei Hadoop und PolyBase werden keine Dateien zurückgegeben, deren Dateiname mit einem Unterstrich (_) oder einem Punkt (.) beginnt.
 
 In diesem Beispiel werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus „mydata.txt“ zurückgegeben, wenn „LOCATION='/webdata/'“ angegeben wird. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden.
 

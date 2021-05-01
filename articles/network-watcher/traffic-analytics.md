@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d877f666e03bbbe2b9d4f01bc9059b95f9a1f6b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095362"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385274"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -78,7 +78,8 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
       USA (Ost) 2  
       USA, Osten 2 (EUAP)  
       Frankreich, Mitte  
-      Deutschland, Westen-Mitte Japan, Osten  
+      Deutschland, Westen-Mitte  
+      Japan, Osten  
       Japan, Westen  
       Korea, Mitte  
       Korea, Süden  
@@ -130,9 +131,7 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
    :::column span="":::
       USA (Ost) 2  
       USA, Osten 2 (EUAP)  
-      Frankreich, Mitte  
-      Deutschland, Westen-Mitte  
-      Japan, Osten  
+      Frankreich, Mitte; Japan, Osten  
       Korea, Mitte  
       USA Nord Mitte  
       Nordeuropa  

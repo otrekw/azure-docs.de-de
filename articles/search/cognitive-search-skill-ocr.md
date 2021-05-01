@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa9c8e1d5579538df11358edc08eb7e2043cea74
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91950804"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285840"
 ---
 # <a name="ocr-cognitive-skill"></a>Der Skill „OCR“
 
 Mit dem Skill für die **optische Zeichenerkennung (OCR)** wird gedruckter und handschriftlicher Text in Bilddateien erkannt. Dieser Skill verwendet die Machine Learning-Modelle, die durch [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) der [Maschinelles Sehen](../cognitive-services/computer-vision/overview.md)-API in Cognitive Services bereitgestellt werden. Die Qualifikation **OCR** ist den folgenden Funktionen zugeordnet:
 
-+ Für Englisch, Spanisch, Deutsch Französisch, Italienisch, Portugiesisch und Niederländisch wird die neue [Lese](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api)-API verwendet.
-+ Für alle anderen Sprachen wird die [OCR](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api)-API verwendet.
++ Für Englisch, Spanisch, Deutsch Französisch, Italienisch, Portugiesisch und Niederländisch wird die neue [Lese](../cognitive-services/computer-vision/overview-ocr.md#read-api)-API verwendet.
++ Für alle anderen Sprachen wird die [Legacy-OCR](../cognitive-services/computer-vision/overview-ocr.md#ocr-api)-API verwendet.
 
 Der Skill **OCR** extrahiert Text aus Bilddateien. Folgende Dateiformate werden unterstützt:
 
@@ -43,8 +43,8 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| `detectOrientation`   | Aktiviert die automatische Erkennung der Bildausrichtung. <br/> Gültige Werte: „true“ und „false“|
-| `defaultLanguageCode` | <p>   Sprachcode des Eingabetexts. Unterstützte Sprachen: <br/> zh-Hans (Vereinfachtes Chinesisch) <br/> zh-Hant (Traditionelles Chinesisch) <br/>cs (Tschechisch) <br/>da (Dänisch) <br/>nl (Niederländisch) <br/>en (Englisch) <br/>fi (Finnisch)  <br/>fr (Französisch) <br/>  de (Deutsch) <br/>el (Griechisch) <br/> hu (Ungarisch) <br/> it (Italienisch) <br/>  ja (Japanisch) <br/> ko (Koreanisch) <br/> nb (Norwegisch) <br/>   pl (Polnisch) <br/> pt (Portugiesisch) <br/>  ru (Russisch) <br/>  es (Spanisch) <br/>  sv (Schwedisch) <br/>  tr (Türkisch) <br/> ar (Arabisch) <br/> ro (Rumänisch) <br/> sr-Cyrl (Serbisch, kyrillisch) <br/> sr-Latn (Serbisch, lateinisch) <br/>  sk (Slowakisch) <br/>  unk (Unbekannt) <br/><br/> Wenn der Sprachcode nicht angegeben oder Null ist, wird als Sprache automatisch Englisch festgelegt. Wenn die Sprache explizit auf „unk“ festgelegt ist, wird die Sprache automatisch erkannt. </p> |
+| `detectOrientation`    | Aktiviert die automatische Erkennung der Bildausrichtung. <br/> Gültige Werte: „true“ und „false“|
+| `defaultLanguageCode` | <p>    Sprachcode des Eingabetexts. Unterstützte Sprachen: <br/> zh-Hans (Vereinfachtes Chinesisch) <br/> zh-Hant (Traditionelles Chinesisch) <br/>cs (Tschechisch) <br/>da (Dänisch) <br/>nl (Niederländisch) <br/>en (Englisch) <br/>fi (Finnisch)  <br/>fr (Französisch) <br/>  de (Deutsch) <br/>el (Griechisch) <br/> hu (Ungarisch) <br/> it (Italienisch) <br/>  ja (Japanisch) <br/> ko (Koreanisch) <br/> nb (Norwegisch) <br/>   pl (Polnisch) <br/> pt (Portugiesisch) <br/>  ru (Russisch) <br/>  es (Spanisch) <br/>  sv (Schwedisch) <br/>  tr (Türkisch) <br/> ar (Arabisch) <br/> ro (Rumänisch) <br/> sr-Cyrl (Serbisch, kyrillisch) <br/> sr-Latn (Serbisch, lateinisch) <br/>  sk (Slowakisch) <br/>  unk (Unbekannt) <br/><br/> Wenn der Sprachcode nicht angegeben oder Null ist, wird als Sprache automatisch Englisch festgelegt. Wenn die Sprache explizit auf „unk“ festgelegt ist, wird die Sprache automatisch erkannt. </p> |
 | `lineEnding` | Der Wert, der zwischen jeder erkannten Zeile verwendet werden soll. Mögliche Werte: "Space", "CarriageReturn", "LineFeed".  Der Standardwert ist "Space". |
 
 Bislang konnte mithilfe des Parameters „textExtractionAlgorithm“ angegeben werden, ob der Skill gedruckten Text (printed) oder handschriftlichen Text (handwritten) extrahieren soll.  Dieser Parameter ist inzwischen veraltet und nicht mehr erforderlich, da der neueste Algorithmus der Read-API beide Arten von Text gleichzeitig extrahieren kann.  Falls Ihr Skill diesen Parameter bereits enthält, müssen Sie ihn nicht entfernen. Er wird jedoch nicht mehr verwendet, und es werden beide Arten von Text extrahiert – unabhängig davon, auf welchen Wert der Parameter festgelegt ist.
@@ -57,9 +57,9 @@ Bislang konnte mithilfe des Parameters „textExtractionAlgorithm“ angegeben w
 
 
 ## <a name="skill-outputs"></a>Skillausgaben
-| Ausgabename     | BESCHREIBUNG                   |
+| Ausgabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| `text`            | Aus dem Bild extrahierter Nur-Text-Inhalt.   |
+| `text`             | Aus dem Bild extrahierter Nur-Text-Inhalt.   |
 | `layoutText`    | Komplexer Typ, der den extrahierten Text und die Fundstelle beschreibt.|
 
 

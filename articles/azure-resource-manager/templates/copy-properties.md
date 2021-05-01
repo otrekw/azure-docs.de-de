@@ -2,25 +2,27 @@
 title: Definieren mehrerer Instanzen einer Eigenschaft
 description: Erfahren Sie, wie Sie den copy-Vorgang in einer Azure Resource Manager-Vorlage (ARM) verwenden, um sie beim Erstellen einer Eigenschaft für eine Ressource mehrmals zu durchlaufen.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 1bee4fb672fc0794d5372a4af60b1270105f1755
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/01/2021
+ms.openlocfilehash: 16c293f1c3aff64aeb8b6cae4b7f1aa14dcd0a77
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889007"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480000"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschafteniteration in ARM-Vorlagen
 
-In diesem Artikel erfahren Sie, wie Sie in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) mehrere Instanzen einer Eigenschaft erstellen. Durch Hinzufügen des Elements `copy` zum Eigenschaftenabschnitt einer Ressource in Ihrer Vorlage kann die Anzahl von Elementen für eine Eigenschaft während der Bereitstellung dynamisch festgelegt werden. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
+In diesem Artikel erfahren Sie, wie Sie in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) mehrere Instanzen einer Eigenschaft erstellen. Durch Hinzufügen der copy-Schleife zum Eigenschaftenabschnitt einer Ressource in Ihrer Vorlage kann die Anzahl von Elementen für eine Eigenschaft während der Bereitstellung dynamisch festgelegt werden. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
 
-Sie können `copy` nur mit Ressourcen der obersten Ebene verwenden, auch wenn Sie `copy` auf eine Eigenschaft anwenden. Weitere Informationen zum Ändern einer untergeordneten Ressource in eine Ressource der obersten Ebene finden Sie unter [Iterationen für eine untergeordnete Ressource](copy-resources.md#iteration-for-a-child-resource).
+Sie können die copy-Schleife nur mit Ressourcen der obersten Ebene verwenden, auch wenn Sie eine copy-Schleife auf eine Eigenschaft anwenden. Weitere Informationen zum Ändern einer untergeordneten Ressource in eine Ressource der obersten Ebene finden Sie unter [Iterationen für eine untergeordnete Ressource](copy-resources.md#iteration-for-a-child-resource).
 
-„copy“ kann auch mit [Ressourcen](copy-resources.md), [Variablen](copy-variables.md) und [Ausgaben](copy-outputs.md) verwendet werden.
+Die copy-Schleife kann auch mit [Ressourcen](copy-resources.md), [Variablen](copy-variables.md) und [Ausgaben](copy-outputs.md) verwendet werden.
 
 ## <a name="syntax"></a>Syntax
 
-Das copy-Element hat das folgende allgemeine Format:
+# <a name="json"></a>[JSON](#tab/json)
+
+Fügen Sie das `copy`-Element im Ressourcenabschnitt Ihrer Vorlage ein, um die Anzahl der Elemente für eine Eigenschaft festzulegen. Das copy-Element hat das folgende allgemeine Format:
 
 ```json
 "copy": [
@@ -38,22 +40,54 @@ Die Eigenschaft `count` gibt die gewünschte Anzahl von Iterationen für die Eig
 
 Die Eigenschaft `input` gibt die Eigenschaften an, die Sie wiederholen möchten. Erstellen Sie ein Array von Elementen, das aus dem Wert in der `input`-Eigenschaft erstellt wird.
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Mit Schleifen können mehrere Eigenschaften deklariert werden durch:
+
+- Durchlaufen eines Arrays:
+
+  ```bicep
+  <property-name>: [for <item> in <collection>: {
+    <properties>
+  }]
+  ```
+
+- Durchlaufen der Elemente eines Arrays
+
+  ```bicep
+  <property-name>: [for (<item>, <index>) in <collection>: {
+    <properties>
+  }]
+  ```
+
+- Verwenden des Schleifenindexes
+
+  ```bicep
+  <property-name>: [for <index> in range(<start>, <stop>): {
+    <properties>
+  }]
+  ```
+
+---
+
 ## <a name="copy-limits"></a>Einschränkungen für „copy“
 
 Der Wert von „count“ darf 800 nicht überschreiten.
 
 Der Wert von „count“ darf nicht negativ sein. Er kann Null sein, wenn Sie die Vorlage mit einer neueren Version von Azure CLI, PowerShell oder der REST-API bereitstellen. Insbesondere müssen Sie Folgendes verwenden:
 
-* Azure PowerShell **2.6** oder höher
-* Azure CLI **2.0.74** oder höher
-* REST-API-Version **2019-05-10** oder höher
-* [Verknüpfte Bereitstellungen](linked-templates.md) müssen API-Version **2019-05-10** oder höher für den Bereitstellungsressourcentyp verwenden.
+- Azure PowerShell **2.6** oder höher
+- Azure CLI **2.0.74** oder höher
+- REST-API-Version **2019-05-10** oder höher
+- [Verknüpfte Bereitstellungen](linked-templates.md) müssen API-Version **2019-05-10** oder höher für den Bereitstellungsressourcentyp verwenden.
 
 Frühere Versionen von PowerShell, CLI und der REST-API unterstützen den Wert „0“ (null) für „count“ nicht.
 
 ## <a name="property-iteration"></a>Iteration von Eigenschaften
 
-Im folgenden Beispiel wird veranschaulicht, wie `copy` auf die `dataDisks`-Eigenschaft auf einer VM angewandt wird:
+Im folgenden Beispiel wird veranschaulicht, wie die copy-Schleife auf die `dataDisks`-Eigenschaft auf einer VM angewandt wird:
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -74,7 +108,7 @@ Im folgenden Beispiel wird veranschaulicht, wie `copy` auf die `dataDisks`-Eigen
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2017-03-30",
+      "apiVersion": "2020-06-01",
       ...
       "properties": {
         "storageProfile": {
@@ -84,13 +118,14 @@ Im folgenden Beispiel wird veranschaulicht, wie `copy` auf die `dataDisks`-Eigen
               "name": "dataDisks",
               "count": "[parameters('numberOfDataDisks')]",
               "input": {
-                "diskSizeGB": 1023,
                 "lun": "[copyIndex('dataDisks')]",
-                "createOption": "Empty"
+                "createOption": "Empty",
+                "diskSizeGB": 1023
               }
             }
           ]
         }
+        ...
       }
     }
   ]
@@ -99,13 +134,13 @@ Im folgenden Beispiel wird veranschaulicht, wie `copy` auf die `dataDisks`-Eigen
 
 Beachten Sie Folgendes: Bei Verwendung von `copyIndex` in einer Eigenschaften-Iteration müssen Sie den Namen der Iteration angeben. Von der Eigenschafteniteration wird auch ein Offsetargument unterstützt. Der Offset muss nach dem Namen der Iteration angegeben werden, z. B. mit `copyIndex('dataDisks', 1)`.
 
-Ressourcen-Manager erweitert das `copy`-Array während der Bereitstellung. Der Name des Arrays wird zum Namen der Eigenschaft. Die Eingabewerte werden zu den Eigenschaften des Objekts. Die bereitgestellte Vorlage sieht wie folgt aus:
+Die bereitgestellte Vorlage sieht wie folgt aus:
 
 ```json
 {
   "name": "examplevm",
   "type": "Microsoft.Compute/virtualMachines",
-  "apiVersion": "2017-03-30",
+  "apiVersion": "2020-06-01",
   "properties": {
     "storageProfile": {
       "dataDisks": [
@@ -134,57 +169,57 @@ Die folgende Beispielvorlage erstellt eine Failovergruppe für Datenbanken, die 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "primaryServerName": {
-            "type": "string"
-        },
-        "secondaryServerName": {
-            "type": "string"
-        },
-        "databaseNames": {
-            "type": "array",
-            "defaultValue": [
-                "mydb1",
-                "mydb2",
-                "mydb3"
-            ]
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "primaryServerName": {
+      "type": "string"
     },
-    "variables": {
-        "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+    "secondaryServerName": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Sql/servers/failoverGroups",
-            "apiVersion": "2015-05-01-preview",
-            "name": "[variables('failoverName')]",
-            "properties": {
-                "readWriteEndpoint": {
-                    "failoverPolicy": "Automatic",
-                    "failoverWithDataLossGracePeriodMinutes": 60
-                },
-                "readOnlyEndpoint": {
-                    "failoverPolicy": "Disabled"
-                },
-                "partnerServers": [
-                    {
-                        "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
-                    }
-                ],
-                "copy": [
-                    {
-                        "name": "databases",
-                        "count": "[length(parameters('databaseNames'))]",
-                        "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
-                    }
-                ]
-            }
-        }
-    ],
-    "outputs": {
+    "databaseNames": {
+      "type": "array",
+      "defaultValue": [
+        "mydb1",
+        "mydb2",
+        "mydb3"
+      ]
     }
+  },
+  "variables": {
+    "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers/failoverGroups",
+      "apiVersion": "2015-05-01-preview",
+      "name": "[variables('failoverName')]",
+      "properties": {
+        "readWriteEndpoint": {
+          "failoverPolicy": "Automatic",
+          "failoverWithDataLossGracePeriodMinutes": 60
+        },
+        "readOnlyEndpoint": {
+          "failoverPolicy": "Disabled"
+        },
+        "partnerServers": [
+          {
+            "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
+          }
+        ],
+        "copy": [
+          {
+            "name": "databases",
+            "count": "[length(parameters('databaseNames'))]",
+            "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
+          }
+        ]
+      }
+    }
+  ],
+  "outputs": {
+  }
 }
 ```
 
@@ -216,7 +251,64 @@ Das `copy`-Element ist ein Array, sodass Sie mehrere Eigenschaften für die Ress
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+@minValue(0)
+@maxValue(16)
+@description('The number of dataDisks to be returned in the output array.')
+param numberOfDataDisks int = 16
+
+resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
+  ...
+  properties: {
+    storageProfile: {
+      ...
+      dataDisks: [for i in range(0, numberOfDataDisks): {
+        lun: i
+        createOption: 'Empty'
+        diskSizeGB: 1023
+      }]
+    }
+    ...
+  }
+}
+```
+
+Die bereitgestellte Vorlage sieht wie folgt aus:
+
+```json
+{
+  "name": "examplevm",
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2020-06-01",
+  "properties": {
+    "storageProfile": {
+      "dataDisks": [
+        {
+          "lun": 0,
+          "createOption": "Empty",
+          "diskSizeGB": 1023
+        },
+        {
+          "lun": 1,
+          "createOption": "Empty",
+          "diskSizeGB": 1023
+        },
+        {
+          "lun": 2,
+          "createOption": "Empty",
+          "diskSizeGB": 1023
+        }
+      ],
+      ...
+```
+
+---
+
 Sie können die Ressourcen- und die Eigenschaften-Iteration zusammen verwenden. Verweisen Sie anhand des Namens auf die Eigenschaften-Iteration.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -250,6 +342,30 @@ Sie können die Ressourcen- und die Eigenschaften-Iteration zusammen verwenden. 
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for i in range(0, 2): {
+  name: concat(vnetname, i)
+  location: resourceGroup().location
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        addressPrefix
+      ]
+    }
+    subnets: [for j in range(0, 2): {
+      name: 'subnet-${j}'
+      properties: {
+        addressPrefix: subnetAddressPrefix[j]
+      }
+    }]
+  }
+}]
+```
+
+---
+
 ## <a name="example-templates"></a>Beispielvorlagen
 
 Das folgende Beispiel zeigt ein gängiges Szenario für die Erstellung mehrerer Werte für eine Eigenschaft:
@@ -260,10 +376,10 @@ Das folgende Beispiel zeigt ein gängiges Szenario für die Erstellung mehrerer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit ARM-Vorlagen](template-tutorial-create-multiple-instances.md).
-* Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
-  * [Ressourceniteration in ARM-Vorlagen](copy-resources.md)
-  * [Variableniteration in ARM-Vorlagen](copy-variables.md)
-  * [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md)
-* Weitere Informationen zu den Abschnitten in einer Vorlage finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
-* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
+- Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit ARM-Vorlagen](template-tutorial-create-multiple-instances.md).
+- Informationen zu anderen Verwendungsmöglichkeiten der copy-Schleife finden Sie unter:
+  - [Ressourceniteration in ARM-Vorlagen](copy-resources.md)
+  - [Variableniteration in ARM-Vorlagen](copy-variables.md)
+  - [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md)
+- Weitere Informationen zu den Abschnitten in einer Vorlage finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+- Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).

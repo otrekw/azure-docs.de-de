@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 0e07839c3c5ce542335eeadc92e6a3c98fe87856
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 418c8f0844bf2336ce0d4a681071f237d81877ca
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606979"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505716"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Was ist Azure Dedicated HSM?
 
@@ -32,7 +32,7 @@ Nachdem sie bereitgestellt wurden, sind die HSM-Geräte direkt mit dem virtuelle
 
 ### <a name="fips-140-2-level-3-compliance"></a>Konformität mit „FIPS 140-2 Level 3“
 
-Aufgrund strenger branchenspezifischer Vorschriften müssen in vielen Organisationen die kryptografischen Schlüssel in HSMs gespeichert werden, die gemäß [FIPS 140-2 Level 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) überprüft wurden. Azure Dedicated HSM und das neue Einzelmandantangebot [Verwaltetes Azure Key Vault-HSM (Vorschau)](https://docs.microsoft.com/azure/key-vault/managed-hsm) unterstützen Kunden aus verschiedenen Branchensegmenten (etwa Finanzdienstleister, Behörden usw.) dabei, die Anforderungen von „TPS 140-2 Level 3“ zu erfüllen. Der mehrinstanzenfähige [Azure Key Vault](https://docs.microsoft.com/azure/key-vault)-Dienst von Microsoft nutzt derzeit nur HSMs, die gemäß „FIPS 140-2 Level 2“ überprüft wurden. 
+Aufgrund strenger branchenspezifischer Vorschriften müssen in vielen Organisationen die kryptografischen Schlüssel in HSMs gespeichert werden, die gemäß [FIPS 140-2 Level 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) überprüft wurden. Azure Dedicated HSM und das neue Einzelmandantangebot [Verwaltetes Azure Key Vault-HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm) unterstützen Kunden aus verschiedenen Branchensegmenten (etwa Finanzdienstleister, Behörden usw.) dabei, die Anforderungen von „FIPS 140-2 Level-3“ zu erfüllen. Der mehrinstanzenfähige [Azure Key Vault](https://docs.microsoft.com/azure/key-vault)-Dienst von Microsoft nutzt derzeit nur HSMs, die gemäß „FIPS 140-2 Level 2“ überprüft wurden. 
 
 ### <a name="single-tenant-devices"></a>Geräte mit nur einem Mandanten
 
@@ -72,7 +72,7 @@ Azure Dedicated HSM ist für die folgende Art von Szenario nicht gut geeignet: F
 
 ### <a name="it-depends"></a>Das ist unterschiedlich.
 
-Ob Azure Dedicated HSM für Sie funktioniert, hängt von einer potenziell komplexen Mischung aus Anforderungen und Kompromissen ab, die Sie eingehen können oder auch nicht. Ein Beispiel ist die FIPS 140-2 Level 3-Anforderung. Diese Anforderung ist üblich, und derzeit wird sie nur von Azure Dedicated HSM und dem neuen Einzelmandantangebot [Verwaltetes HSM von Azure Key Vault (Vorschauversion)](https://docs.microsoft.com/azure/key-vault/managed-hsm) erfüllt. Wenn diese gesetzlichen Anforderungen nicht relevant sind, besteht häufig die Wahl zwischen Azure Key Vault und Azure Dedicated HSM. Werten Sie Ihre Anforderungen vor einer Entscheidung aus.
+Ob Azure Dedicated HSM für Sie funktioniert, hängt von einer potenziell komplexen Mischung aus Anforderungen und Kompromissen ab, die Sie eingehen können oder auch nicht. Ein Beispiel ist die FIPS 140-2 Level 3-Anforderung. Diese Anforderung ist üblich, und derzeit wird sie nur von Azure Dedicated HSM und dem neuen Einzelmandantangebot [Verwaltetes HSM von Azure Key Vault](https://docs.microsoft.com/azure/key-vault/managed-hsm) erfüllt. Wenn diese gesetzlichen Anforderungen nicht relevant sind, besteht häufig die Wahl zwischen Azure Key Vault und Azure Dedicated HSM. Werten Sie Ihre Anforderungen vor einer Entscheidung aus.
 
 Zu den Situationen, in denen Sie Ihre Optionen abwägen müssen, gehören unter anderem: 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 383bd00bb0daf165f37ed98e48a5d36708367920
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96435449"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130861"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -168,13 +168,11 @@ Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige
 
 ### <a name="on-premises-network-shares"></a>Lokale Netzwerkfreigaben
 
-Ihre Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige Gerät Zugriff auf einen lokalen Domänencontroller hat.
+Ihre Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige Gerät Zugriff auf einen lokalen Domänencontroller hat. [Erfahren Sie, wie dies funktioniert.](azuread-join-sso.md)
 
 ### <a name="printers"></a>Drucker
 
-Für Drucker müssen Sie [Hybrid Cloud Print](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) zur Erkennung von Druckern auf in Azure AD eingebundenen Geräten bereitstellen. 
-
-Drucker können in einer reinen Cloudumgebung nicht automatisch erkannt werden, aber Ihre Benutzer können auch den UNC-Pfad von Druckern verwenden, um sie direkt hinzuzufügen. 
+Sie sollten [Universal Print](/universal-print/fundamentals/universal-print-whatis) bereitstellen, um eine cloudbasierte Druckverwaltungslösung ohne lokale Abhängigkeiten zu besitzen. 
 
 ### <a name="on-premises-applications-relying-on-machine-authentication"></a>Lokale Anwendungen, die Computerauthentifizierung verwenden
 
@@ -221,7 +219,7 @@ Wählen Sie Ihre Bereitstellungsmethode(n), indem Sie die obige Tabelle durchgeh
 
 ## <a name="configure-your-device-settings"></a>Konfigurieren Ihrer Geräteeinstellungen
 
-Im Azure-Portal können Sie die Bereitstellung von in Azure AD eingebundenen Geräten in Ihrer Organisation steuern. Wählen Sie zum Konfigurieren der entsprechenden Einstellungen auf der Seite **Azure Active Directory** die Option `Devices > Device settings` aus.
+Im Azure-Portal können Sie die Bereitstellung von in Azure AD eingebundenen Geräten in Ihrer Organisation steuern. Wählen Sie zum Konfigurieren der entsprechenden Einstellungen auf der Seite **Azure Active Directory** die Option `Devices > Device settings` aus. [Weitere Informationen](device-management-azure-portal.md)
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>Benutzer dürfen Geräte in Azure AD einbinden
 
@@ -235,11 +233,13 @@ Wählen Sie **Ausgewählte** aus, und wählen Sie die Benutzer aus, die Sie der 
 
 ![Weitere lokale Administratoren für in Azure AD eingebundene Geräte](./media/azureadjoin-plan/02.png)
 
-### <a name="require-multi-factor-auth-to-join-devices"></a>Multi-factor Auth zum Hinzufügen von Geräten erforderlich
+### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>Voraussetzen der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für das Einbinden von Geräten
 
 Wählen Sie **Ja** aus, wenn Benutzer beim Einbinden von Geräten in Azure AD die Multi-Factor Authentication (MFA) ausführen müssen. Für die Benutzer, die Geräte in Azure AD mit der MFA einbinden, wird das Gerät selbst zum zweiten Faktor.
 
 ![Multi-factor Auth zum Hinzufügen von Geräten erforderlich](./media/azureadjoin-plan/03.png)
+
+**Empfehlung:** Erzwingen Sie mit der Benutzeraktion [Geräte registrieren oder einbinden](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) in bedingtem Zugriff die Verwendung von MFA für das Einbinden von Geräten.
 
 ## <a name="configure-your-mobility-settings"></a>Konfigurieren Ihrer Mobilitätseinstellungen
 

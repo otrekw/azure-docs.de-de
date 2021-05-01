@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 297c1d4afca5a1d605a046d69b086a05a9322bc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06990a5bd1d6619f07952e84870a01f5cd5068df
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104872080"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384424"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurieren des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster mittels Firewall
 
@@ -32,7 +32,7 @@ Hier sehen Sie eine Zusammenfassung der Schritte, um von HDInsight ausgehenden D
 
 1. Erstellen Sie ein Subnetz.
 1. Erstellen einer Firewall.
-1. Hinzufügen von Anwendungsregeln zur Firewall
+1. Fügen Sie der Firewall Anwendungsregeln hinzu.
 1. Fügen Sie der Firewall Netzwerkregeln hinzu.
 1. Erstellen Sie eine Routingtabelle.
 
@@ -76,7 +76,7 @@ Erstellen Sie eine Anwendungsregelsammlung, die dem Cluster ermöglicht, wichtig
     | --- | --- | --- | --- | --- |
     | Regel 2 | * | https:443 | login.windows.net | Lässt Windows Anmeldeaktivität zu |
     | Regel 3 | * | https:443 | login.microsoftonline.com | Lässt Windows Anmeldeaktivität zu |
-    | Regel 4 | * | https:443,http:80 | storage_account_name.blob.core.windows.net | Ersetzen Sie `storage_account_name` durch den tatsächlichen Namen Ihres Speicherkontos. Sollen nur HTTPS-Verbindungen verwendet werden, vergewissern Sie sich, dass im Speicherkonto die Option [Sichere Übertragung erforderlich](../storage/common/storage-require-secure-transfer.md) aktiviert ist. Wenn Sie einen privaten Endpunkt für den Zugriff auf Speicherkonten verwenden, ist dieser Schritt nicht erforderlich, und der Speicherdatenverkehr wird nicht an die Firewall weitergeleitet.|
+    | Regel 4 | * | https:443 | storage_account_name.blob.core.windows.net | Ersetzen Sie `storage_account_name` durch den tatsächlichen Namen Ihres Speicherkontos. Vergewissern Sie sich, dass im Speicherkonto die Option [Sichere Übertragung erforderlich](../storage/common/storage-require-secure-transfer.md) aktiviert ist. Wenn Sie einen privaten Endpunkt für den Zugriff auf Speicherkonten verwenden, ist dieser Schritt nicht erforderlich, und der Speicherdatenverkehr wird nicht an die Firewall weitergeleitet.|
 
    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png" alt-text="Titel: Eingeben der Details der Anwendungsregelsammlung":::
 
@@ -84,7 +84,7 @@ Erstellen Sie eine Anwendungsregelsammlung, die dem Cluster ermöglicht, wichtig
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurieren der Firewall mit Netzwerkregeln
 
-Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu konfigurieren.
+Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu konfigurieren. 
 
 1. Navigieren Sie im Anschluss an den vorherigen Schritt zu **Netzwerkregelsammlung** >  **+ Netzwerkregelsammlung hinzufügen**.
 
@@ -102,14 +102,14 @@ Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu 
 
     | Name | Protocol | Quelladressen | Diensttags | Zielports | Notizen |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | Konfigurieren Sie im Abschnitt „Diensttags“ für SQL eine Netzwerkregel, mit der Sie SQL-Datenverkehr protokollieren und überwachen können, wenn Sie die von HDInsight bereitgestellten SQL-Standardserver verwenden. Es sei denn, Sie haben Dienstendpunkte für SQL Server im HDInsight-Subnetz konfiguriert, wodurch die Firewall umgangen wird. Wenn Sie benutzerdefinierte SQL Server-Instanzen für Metastores von Ambari, Oozie, Ranger und Hive verwenden, müssen Sie nur den Datenverkehr an Ihre eigenen benutzerdefinierten SQL Server-Instanzen zulassen.|
+    | Rule_5 | TCP | * | SQL | 1433, 11000-11999 | Konfigurieren Sie im Abschnitt „Diensttags“ für SQL eine Netzwerkregel, mit der Sie SQL-Datenverkehr protokollieren und überwachen können, wenn Sie die von HDInsight bereitgestellten SQL-Standardserver verwenden. Es sei denn, Sie haben Dienstendpunkte für SQL Server im HDInsight-Subnetz konfiguriert, wodurch die Firewall umgangen wird. Wenn Sie benutzerdefinierte SQL Server-Instanzen für Metastores von Ambari, Oozie, Ranger und Hive verwenden, müssen Sie nur den Datenverkehr an Ihre eigenen benutzerdefinierten SQL Server-Instanzen zulassen. Unter [Verbindungsarchitektur von Azure SQL-Datenbank und Azure Synapse Analytics](../azure-sql/database/connectivity-architecture.md) erfahren Sie, warum der Portbereich 11000-11999 zusätzlich zu 1433 benötigt wird. |
     | Rule_6 | TCP | * | Azure Monitor | * | (optional) Kunden, die die Verwendung der automatischen Skalierungsfunktion planen, sollten diese Regel hinzufügen. |
     
    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png" alt-text="Titel: Eingeben einer Anwendungsregelsammlung":::
 
 1. Wählen Sie **Hinzufügen**.
 
-### <a name="create-and-configure-a-route-table"></a>Erstellen und Konfigurieren einer Routingtabelle
+### <a name="create-and-configure-a-route-table"></a>Erstellen und Konfigurieren einer Routingtabelle 
 
 Erstellen Sie eine Routingtabelle mit den folgenden Einträgen:
 

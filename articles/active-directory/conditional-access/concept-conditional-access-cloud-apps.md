@@ -11,19 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff9fe969c90a2bb4aa9f954b984f511fb490ba3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 80ec5133ad12dda4a6883c663007b8b7fec2e81a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579143"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551933"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
 
 Cloud-Apps oder -aktionen sind ein wichtiger Bestandteil einer Richtlinie für bedingten Zugriff. Richtlinien für bedingten Zugriff ermöglichen Administratoren das Zuweisen von Steuerelementen zu bestimmten Anwendungen oder Aktionen.
 
 - Administratoren stehen eine Reihe von Anwendungen zur Auswahl. Dazu zählen integrierte Microsoft-Anwendungen und alle [in Azure AD integrierten Anwendungen](../manage-apps/what-is-application-management.md) (Katalog- und Nicht-Kataloganwendungen) sowie über den [Anwendungsproxy](../manage-apps/what-is-application-proxy.md) veröffentlichte Anwendungen.
-- Administratoren haben die Wahl, die Richtlinie nicht auf Basis einer Cloudanwendung, sondern basierend auf einer Benutzeraktion zu definieren. Als einzige Aktion wird „Sicherheitsinformationen registrieren (Vorschauversion)“ unterstützt. Hierbei können durch den bedingten Zugriff Steuerelemente rund um die Funktion [Kombinierte Registrierung von Sicherheitsinformationen](../authentication/howto-registration-mfa-sspr-combined.md) erzwungen werden.
+- Administratoren haben die Wahl, die Richtlinie nicht auf Basis einer Cloudanwendung, sondern basierend auf einer Benutzeraktion zu definieren. Wir unterstützen zwei Benutzeraktionen:
+   - „Sicherheitsinformationen registrieren (Vorschau)“, um Kontrollen rund um die [kombinierte Registrierung von Sicherheitsinformationen](../authentication/howto-registration-mfa-sspr-combined.md) zu erzwingen. 
+   - „Geräte registrieren oder einbinden (Vorschau)“, um Kontrollen zu erzwingen, wenn Benutzer Geräte in Azure AD [registrieren](../devices/concept-azure-ad-register.md) oder [einbinden](../devices/concept-azure-ad-join.md). 
 
 ![Definieren einer Richtlinie für bedingten Zugriff und Angeben von Cloud-Apps](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
@@ -31,7 +33,7 @@ Cloud-Apps oder -aktionen sind ein wichtiger Bestandteil einer Richtlinie für b
 
 Viele der vorhandenen Microsoft-Cloudanwendungen sind in der Liste der Anwendungen enthalten, die zur Auswahl stehen. 
 
-Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zugriff zuweisen. Zu einigen Apps wie Office 365 und Microsoft Azure Management gehören mehrere untergeordnete Apps oder Dienste. Die folgende Liste ist nicht vollständig und kann sich ändern.
+Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zugriff zuweisen. Zu einigen Apps wie Office 365 und Microsoft Azure Management gehören mehrere untergeordnete Apps oder Dienste. Wir fügen ständig weitere Apps hinzu, sodass die folgende Liste nicht vollständig ist und geändert werden kann.
 
 - [Office 365](#office-365)
 - Azure Analysis Services
@@ -66,6 +68,8 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - Skype for Business Online
 - Virtuelles privates Netzwerk (VPN):
 - Windows Defender ATP
+
+Anwendungen, die für den bedingten Zugriff verfügbar sind, haben einen Onboarding- und Validierungsprozess durchlaufen. Dies schließt nicht alle Microsoft-Apps ein, da viele Back-End-Dienste sind und keine Richtlinie direkt auf sie angewendet werden soll. Wenn Sie eine fehlende Anwendung suchen, können Sie sich an das jeweilige Anwendungsteam wenden oder eine Anforderung an [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) senden.
 
 ### <a name="office-365"></a>Office 365
 
@@ -129,9 +133,10 @@ Benutzeraktionen sind Aufgaben, die von einem Benutzer ausgeführt werden könne
 
 - **Sicherheitsinformationen registrieren**: Mit dieser Benutzeraktion kann eine Richtlinie für bedingten Zugriff erzwungen werden, wenn Benutzer, für die die kombinierte Registrierung aktiviert ist, versuchen, ihre Sicherheitsinformationen zu registrieren. Weitere Informationen finden Sie im Artikel [Kombinierte Registrierung von Sicherheitsinformationen](../authentication/concept-registration-mfa-sspr-combined.md).
 
-- **Geräte registrieren oder verknüpfen (Vorschau)** : Mit dieser Benutzeraktion können Administratoren eine Richtlinie für bedingten Zugriff erzwingen, wenn Benutzer Geräte in Azure AD [registrieren](../devices/concept-azure-ad-register.md) oder mit Azure AD [verknüpfen](../devices/concept-azure-ad-join.md). Bei dieser Benutzeraktion müssen zwei wichtige Aspekte berücksichtigt werden: 
+- **Geräte registrieren oder verknüpfen (Vorschau)** : Mit dieser Benutzeraktion können Administratoren eine Richtlinie für bedingten Zugriff erzwingen, wenn Benutzer Geräte in Azure AD [registrieren](../devices/concept-azure-ad-register.md) oder mit Azure AD [verknüpfen](../devices/concept-azure-ad-join.md). Sie bietet Granularität bei der Konfiguration der Multi-Factor Authentication für das Registrieren oder Einbinden von Geräten anstelle einer derzeit vorhandenen mandantenweiten Richtlinie. Bei dieser Benutzeraktion sind drei wichtige Punkte zu beachten: 
    - `Require multi-factor authentication` ist die einzige Zugriffssteuerung, die bei dieser Benutzeraktion verfügbar ist. Alle anderen Zugriffssteuerungen sind deaktiviert. Durch diese Einschränkung werden Konflikte mit Zugriffssteuerungen verhindert, die entweder von der Azure AD-Geräteregistrierung abhängig sind oder nicht für die Azure AD-Geräteregistrierung gelten. 
-   - Wenn bei dieser Benutzeraktion eine Richtlinie für bedingten Zugriff aktiviert ist, muss **Azure Active Directory** > **Geräte** > **Geräteeinstellungen** - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` auf **Nein** festgelegt werden. Anderenfalls wird die Richtlinie für bedingten Zugriff bei dieser Benutzeraktion nicht ordnungsgemäß erzwungen. Weitere Informationen zu dieser Geräteeinstellung finden Sie unter [Konfigurieren von Geräteeinstellungen](../devices/device-management-azure-portal.md#configure-device-settings). Diese Benutzeraktion bietet die Möglichkeit, eine mehrstufige Authentifizierung für die Registrierung oder Verknüpfung von Geräten für bestimmte Benutzer und Gruppen oder Bedingungen festzulegen (anstelle einer mandantenweiten Richtlinie in den Geräteeinstellungen). 
+   - Die Bedingungen `Client apps` und `Device state` sind bei dieser Benutzeraktion nicht verfügbar, da sie zum Erzwingen von Richtlinien für den bedingten Zugriff von der Azure AD-Geräteregistrierung abhängig sind.
+   - Wenn bei dieser Benutzeraktion eine Richtlinie für bedingten Zugriff aktiviert ist, muss **Azure Active Directory** > **Geräte** > **Geräteeinstellungen** - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` auf **Nein** festgelegt werden. Anderenfalls wird die Richtlinie für den bedingten Zugriff bei dieser Benutzeraktion nicht ordnungsgemäß erzwungen. Weitere Informationen zu dieser Geräteeinstellung finden Sie unter [Konfigurieren von Geräteeinstellungen](../devices/device-management-azure-portal.md#configure-device-settings). 
    
 ## <a name="next-steps"></a>Nächste Schritte
 

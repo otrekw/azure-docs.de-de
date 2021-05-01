@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine hostbasierte Verschlüsselung in einem A
 services: container-service
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: f4e599ae7aa81c15f86d0e8b1c934824010ea45b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6942a3d445892faf0ea0570561eb06019e841e23
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430154"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443192"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Hostbasierte Verschlüsselung in Azure Kubernetes Service (AKS) (Vorschau)
 
@@ -28,11 +28,18 @@ Diese Funktion kann nur bei der Erstellung des Clusters oder bei der Erstellung 
 - Stellen Sie sicher, dass die CLI-Erweiterung `aks-preview` (v0.4.73 oder höher) installiert ist.
 - Stellen Sie sicher, dass das `EnableEncryptionAtHostPreview`-Featureflag unter `Microsoft.ContainerService` aktiviert ist.
 
-Sie müssen das Feature für Ihr Abonnement aktivieren lassen, um die Verschlüsselung auf dem Host für Ihre virtuellen Computer oder VM-Skalierungsgruppen verwenden zu können. Senden Sie eine E-Mail mit Ihren Abonnement-IDs an **encryptionAtHost@microsoft.com** , um das Feature für Ihre Abonnements aktivieren zu lassen. 
+Sie müssen das Feature für Ihr Abonnement aktivieren, bevor Sie die EncryptionAtHost-Eigenschaft für Ihren Azure Kubernetes Service-Cluster verwenden. Führen Sie die folgenden Schritte aus, um das Feature für Ihr Abonnement zu aktivieren:
 
-> [!IMPORTANT]
-> Sie müssen eine E-Mail mit Ihren Abonnement-IDs an **encryptionAtHost@microsoft.com** senden, damit das Feature für Computeressourcen aktiviert wird. Sie können es für Computeressourcen nicht selbst aktivieren.
+1. Führen Sie den folgenden Befehl aus, um das Feature für Ihr Abonnement zu registrieren.
 
+```azurecli-interactive
+Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
+```
+2. Überprüfen Sie mithilfe des folgenden Befehls, ob der Registrierungsstatus „Registriert“ lautet (dies dauert einige Minuten), bevor Sie das Feature ausprobieren.
+
+```azurecli-interactive
+Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
+```
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 

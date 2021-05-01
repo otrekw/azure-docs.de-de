@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: f83f743b692ae5a625a4c881b12cbad999f1f606
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d64dc4f3c034279aee7401503bbb60883c9ed4e7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106767"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492238"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Serverparameter in Azure Database for MySQL – Flexibler Server
 
@@ -39,9 +39,11 @@ In den folgenden Abschnitten erfahren Sie mehr über die Grenzen der verschieden
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-In Azure Database for MySQL – Flexibler Server sind binäre Protokolle immer aktiviert (d. h., `log_bin` ist auf ON festgelegt). Wenn Sie versuchen, Trigger zu verwenden, erhalten Sie einen Fehler wie *Sie verfügen nicht über die SUPER-Berechtigung, und die binäre Protokollierung ist aktiviert (es kann ratsam sein, die weniger sichere Variable `log_bin_trust_function_creators` zu verwenden)* . 
+In Azure Database for MySQL – Flexibler Server sind binäre Protokolle immer aktiviert (d. h., `log_bin` ist auf ON festgelegt). log_bin_trust_function_creators ist in flexiblen Servern standardmäßig auf ON festgelegt. 
 
-Das Format für binäre Protokollierung ist immer **ROW** (Zeile), und für alle Verbindungen mit dem Server wird **IMMER** die zeilenbasierte binäre Protokollierung verwendet. Bei der zeilenbasierten binären Protokollierung gibt es keine Sicherheitsprobleme, und die binäre Protokollierung kann nicht unterbrochen werden, sodass Sie [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) sicher auf **TRUE** festlegen können.
+Das Format für binäre Protokollierung ist immer **ROW** (Zeile), und für alle Verbindungen mit dem Server wird **IMMER** die zeilenbasierte binäre Protokollierung verwendet. Bei der zeilenbasierten binären Protokollierung gibt es keine Sicherheitsprobleme, und die binäre Protokollierung kann nicht unterbrochen werden, sodass [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) sicher auf **ON** bleiben kann.
+
+Wenn [`log_bin_trust_function_creators`] auf OFF gesetzt ist, und Sie versuchen, Trigger zu erstellen, erhalten Sie möglicherweise eine Fehlermeldung wie *Sie verfügen nicht über die SUPER-Berechtigung, und die binäre Protokollierung ist aktiviert (es kann ratsam sein, die weniger sichere Variable `log_bin_trust_function_creators` zu verwenden)* . 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 

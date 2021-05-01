@@ -6,12 +6,12 @@ author: dlepow
 ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0090d981e93cee12f2feaaf7d2c12f341564f6ec
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649545"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482329"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Tutorial: Verwenden der API Management-Erweiterung für Visual Studio Code zum Importieren und Verwalten von APIs
 
@@ -101,7 +101,7 @@ Um die importierte API und die Richtlinien zu testen, die angewendet werden, ben
 ### <a name="test-an-api-operation"></a>Testen eines API-Vorgangs
 
 1. Erweitern Sie im Explorer-Bereich den Knoten **Operations** unter der *demo-conference-api*, die Sie importiert haben.
-1. Wählen Sie einen Vorgang aus, z. B. *GetSpeakers*.
+1. Wählen Sie einen Vorgang wie *GetSpeakers* aus, klicken Sie dann mit der rechten Maustaste auf den Vorgang, und wählen Sie **Vorgang testen** aus.
 1. Ersetzen Sie im Editor-Fenster `{{SubscriptionKey}}` neben **Ocp-Apim-Subscription-Key** durch den von Ihnen kopierten Abonnementschlüssel.
 1. Klicken Sie auf **Anforderung senden**. 
 

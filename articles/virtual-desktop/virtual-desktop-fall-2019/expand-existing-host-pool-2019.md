@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: ab661943542b3621792dfe0ca8c3fb26f64508a5
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+manager: femila
+ms.openlocfilehash: f82b831d887f0ebdd659167935f2134583b3bb87
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120706"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551950"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Erweitern eines vorhandenen Hostpools in Windows Virtual Desktop (klassisch) mit neuen Sitzungshosts
 
@@ -39,7 +39,7 @@ Sie benötigen außerdem folgende Informationen aus dem Vorgang der ersten Erste
 In den nächsten Abschnitten werden die drei Methoden beschrieben, die Sie zum Erweitern des Hostpools verwenden können. Sie können jede dieser Methoden mit dem von Ihnen bevorzugten Bereitstellungstool verwenden.
 
 >[!NOTE]
->Während der Bereitstellungsphase werden Fehlermeldungen für Ressourcen der vorherigen Sitzungshost-VMs angezeigt, wenn diese derzeit herunterfahren sind. Diese Fehler treten auf, weil Azure die PowerShell-DSC-Erweiterung nicht ausführen kann, um zu überprüfen, ob die Sitzungshost-VMs ordnungsgemäß bei Ihrem vorhandenen Hostpool registriert sind. Sie können diese Fehler getrost ignorieren. Wenn Sie die Fehler vermeiden möchten, starten Sie alle Sitzungshost-VMs im vorhandenen Hostpool, bevor Sie den Bereitstellungsprozess starten.
+>Während der Bereitstellungsphase werden Fehlermeldungen für Ressourcen der vorherigen Sitzungshost-VMs angezeigt, wenn diese derzeit herunterfahren sind. Diese Fehler treten auf, weil Azure die PowerShell-DSC-Erweiterung nicht ausführen kann, um zu überprüfen, ob die Sitzungshost-VMs ordnungsgemäß bei Ihrem vorhandenen Hostpool registriert sind. Der Sitzungshost, dessen Name mit „-0“ endet, muss ausgeführt werden. Sie können diese Fehler für andere Sitzungshosts jedoch problemlos ignorieren, oder die Fehler vermeiden, indem Sie alle Sitzungshost-VMs im vorhandenen Hostpool vor dem Bereitstellungsprozess starten.
 
 ## <a name="redeploy-from-azure"></a>Erneutes Bereitstellen aus Azure
 

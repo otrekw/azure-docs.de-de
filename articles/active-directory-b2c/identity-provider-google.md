@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a3b0be062025681af2b03dfd2e57f1af2d99d701
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e4dee196d3ff0796802d2552f073446ad6912663
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448352"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028263"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Google-Konto mithilfe von Azure Active Directory B2C
 
@@ -47,7 +47,9 @@ Wenn Sie die Anmeldung für Benutzer mit einem Google-Konto in Azure Active Dire
 Geben Sie einen **Namen** für Ihre Anwendung ein. Geben Sie im Abschnitt *Autorisierte Domänen* die Zeichenfolge **b2clogin.com** ein, und wählen Sie **Speichern** aus.
 1. Wählen Sie im linken Menü die Option **Credentials** (Anmeldeinformationen) und anschließend **Create credentials** > **Oauth client ID** (Anmeldeinformationen erstellen > OAuth-Client-ID) aus.
 1. Wählen Sie unter **Anwendungstyp** die Option **Webanwendung** aus.
-1. Geben Sie einen **Namen** für die Anwendung an, und geben Sie `https://your-tenant-name.b2clogin.com` unter **Authorized JavaScript origins** (Autorisierte JavaScript-Quellen) und `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. Verwenden Sie bei der Eingabe Ihres Mandantennamens nur Kleinbuchstaben, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält.
+    1. Geben Sie einen **Namen** für Ihre Anwendung ein.
+    1. Geben Sie für **Autorisierte JavaScript-Ursprünge** `https://your-tenant-name.b2clogin.com` ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name` ein.
+    1. Geben Sie für **Autorisierte Umleitungs-URIs** `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-domain-name` durch Ihre benutzerdefinierte Domäne und `your-tenant-name` durch den Namen Ihres Mandanten. Verwenden Sie bei der Eingabe Ihres Mandantennamens nur Kleinbuchstaben, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält.
 1. Klicken Sie auf **Erstellen**.
 1. Kopieren Sie die Werte für **Client-ID** und **Clientgeheimnis**. Sie benötigen beide Angaben, um Google als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Das **Clientgeheimnis** ist eine wichtige Anmeldeinformation.
 
@@ -65,6 +67,9 @@ Geben Sie einen **Namen** für Ihre Anwendung ein. Geben Sie im Abschnitt *Autor
 1. Wählen Sie **Speichern** aus.
 
 ## <a name="add-google-identity-provider-to-a-user-flow"></a>Hinzufügen von Google als Identitätsanbieter zu einem Benutzerflow 
+
+Der Google-Identitätsanbieter ist jetzt eingerichtet, er ist jedoch noch auf keiner der Anmeldeseiten verfügbar. So fügen Sie den Google-Identitätsanbieter einem Benutzerflow hinzu:
+
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 1. Klicken Sie auf den Benutzerflow, dem Sie Google als Identitätsanbieter hinzufügen möchten.
@@ -176,7 +181,7 @@ Sie können ein Google-Konto als Anspruchsanbieter definieren, indem Sie es in d
 ## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
-1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
 1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Google** aus, um sich mit einem Google-Konto anzumelden.
 

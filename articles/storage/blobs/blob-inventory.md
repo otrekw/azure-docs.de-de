@@ -2,20 +2,20 @@
 title: Verwalten von Blobdaten mit dem Azure Storage-Bestand (Vorschau)
 description: Der Azure Storage-Bestand ist ein Tool, mit dem Sie eine Übersicht über alle Ihre Blobdaten in einem Speicherkonto erhalten.
 services: storage
-author: mhopkins-msft
+author: twooley
 ms.service: storage
-ms.date: 03/05/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.author: mhopkins
-ms.reviewer: yzheng
+ms.author: twooley
+ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 7972385ba017059407b994029c37f347b919cad3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 33d50d1a6b5e84d178b522851795bcc42f5fc169
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435119"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277265"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Verwalten von Blobdaten mit dem Azure Storage-Blobbestand (Vorschau)
 
@@ -26,7 +26,7 @@ Die Funktion Azure Storage-Blobbestand bietet Ihnen eine Übersicht über Ihre B
 Der Blobbestand wird sowohl für die universelle Version 2 (General Purpose Version, GPv2) als auch für Blockblobspeicher mit Premium-Leistung unterstützt. Diese Funktion wird mit oder ohne aktivierte Funktion [hierarchischer Namespace](data-lake-storage-namespace.md) unterstützt.
 
 > [!IMPORTANT]
-> Der Blobbestand befindet sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Der Blobbestand befindet sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 ### <a name="preview-regions"></a>Vorschauregionen
 
@@ -37,6 +37,7 @@ Die Vorschauversion des Blobbestands ist für Speicherkonten in den folgenden Re
 - Kanada, Osten
 - East US
 - USA (Ost 2)
+- Europa, Westen
 
 ### <a name="pricing-and-billing"></a>Preise und Abrechnung
 
@@ -203,6 +204,15 @@ Beispielereignis:
 }
 ```
 
+## <a name="known-issues"></a>Bekannte Probleme
+
+In diesem Abschnitt werden Einschränkungen und bekannte Probleme des Azure Storage-Blobbestandsfeatures beschrieben.
+
+### <a name="inventory-job-fails-to-complete"></a>Bestandsauftrag kann nicht beendet werden
+
+Für ein Konto mit Millionen von Blobs und Aktivierung hierarchischer Namespaces kann der Bestandsauftrag möglicherweise nicht innerhalb von 24 Stunden abgeschlossen werden. In diesem Fall wird keine Bestandsdatei erstellt.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)
+- [Berechnen der Anzahl und Gesamtgröße von Blobs pro Container](calculate-blob-count-size.md)
+- [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)

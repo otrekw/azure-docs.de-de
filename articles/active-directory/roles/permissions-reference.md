@@ -9,44 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 02/17/2021
+ms.date: 03/29/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65b91e3dff3ef412dad8bbe57383a9dbf8c7765
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a99cf6a73e0afb60c644cf38fcfa810a97a9fce4
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032244"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285806"
 ---
 # <a name="azure-ad-built-in-roles"></a>Integrierte Rollen in Azure AD
 
-Mithilfe von Azure Active Directory (Azure AD) können Sie Administratoren mit eingeschränkten Rechten bestimmen, um Identitätsaufgaben in Rollen mit weniger Rechten zu verwalten. Administratoren können für Zwecke wie das Hinzufügen oder Ändern von Benutzern, das Zuweisen von Administratorrollen, das Zurücksetzen von Benutzerkennwörtern, das Verwalten von Benutzerlizenzen oder das Verwalten von Domänennamen festgelegt werden. Die [Standardberechtigungen für Benutzer](../fundamentals/users-default-permissions.md) können nur in den Benutzereinstellungen in Azure AD geändert werden.
+Wenn ein anderer Administrator oder ein Benutzer ohne Administratorrechte Azure AD-Ressourcen in Azure Active Directory (Azure AD) verwalten muss, müssen Sie ihm einer Azure AD-Rolle zuweisen, die die erforderlichen Berechtigungen bereitstellt. Beispielsweise können Sie Rollen zuweisen, die das Hinzufügen oder Ändern von Benutzern, das Zurücksetzen von Benutzerkennwörtern, das Verwalten von Benutzerlizenzen oder das Verwalten von Domänennamen erlauben.
 
-## <a name="limit-use-of-global-administrator"></a>Einschränken der Verwendung der Rolle „Globaler Administrator“
-
-Benutzer, denen die Rolle „Globaler Administrator“ zugewiesen ist, können alle administrativen Einstellungen in Ihrer Azure AD-Organisation lesen und ändern. Wenn ein Benutzer sich für einen Microsoft-Clouddienst registriert, wird standardmäßig ein Azure AD-Mandant erstellt, und der Benutzer wird Mitglied der Rolle „Globaler Administrator“. Wenn Sie einem vorhandenen Mandanten ein Abonnement hinzufügen, werden Sie nicht der Rolle „Globaler Administrator“ zugewiesen. Nur globale Administratoren und Administratoren für privilegierte Rollen können Administratorrollen delegieren. Um das Risiko für Ihr Unternehmen zu verringern, wird empfohlen, diese Rolle möglichst wenigen Personen in Ihrer Organisation zuzuweisen.
-
-Als bewährte Methode wird empfohlen, diese Rolle weniger als fünf Personen in Ihrer Organisation zuzuweisen. Im Folgenden finden Sie einige Möglichkeiten zum Verringern der Verwendung der Rolle „Globaler Administrator“, die Sie nutzen können, wenn diese Rolle in Ihrer Organisation mehr als fünf Adminisratoren zugewiesen ist.
-
-### <a name="find-the-role-you-need"></a>Suchen nach der erforderlichen Rolle
-
-Es kann frustrierend sein, eine umfangreiche Rollenliste nach der benötigten Rolle zu durchsuchen. Azure AD kann daher anhand von Rollenkategorien eine Teilmenge der Rollen anzeigen. Sehen Sie sich unseren neuen Filter **Typ** für [Rollen und Administratoren](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) in Azure AD an, mit dem Sie nur die Rollen im ausgewählten Typ anzeigen können.
-
-### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>Jetzt ist eine Rolle vorhanden, die noch nicht verfügbar war, als Sie die Rolle „Globaler Administrator“ zugewiesen haben.
-
-Es ist möglich, dass Azure AD Rollen hinzugefügt wurden, die differenziertere Berechtigungen bieten, die nicht zur Verfügung standen, als Sie einige Benutzer auf die Rolle „Globaler Administrator“ heraufgestuft haben. Im Lauf der Zeit stellen wir zusätzliche Rollen bereit, die das Ausführen von Aufgaben ermöglichen, die zuvor nur von einem globalen Administrator ausgeführt werden konnten. Diese werden nachstehend im Abschnitt [Alle Rollen](#all-roles) aufgeführt.
-
-## <a name="assign-or-remove-administrator-roles"></a>Zuweisen oder Entfernen von Administratorrollen
-
-Anweisungen zum Zuweisen von Administratorrollen zu einem Benutzer in Azure Active Directory finden Sie unter [Anzeigen und Zuweisen von Administratorrollen in Azure Active Directory](manage-roles-portal.md).
-
-> [!Note]
-> Wenn Sie über eine Azure AD P2 Premium-Lizenz verfügen und bereits PIM-Benutzer (Privileged Identity Management) sind, werden alle Rollenverwaltungsaufgaben in Privileged Identity Management und nicht in Azure AD ausgeführt.
->
-> ![In PIM verwaltete Azure AD-Rollen für Benutzer, die PIM bereits nutzen und über eine P2 Premium-Lizenz verfügen](./media/permissions-reference/pim-manages-roles-for-p2.png)
+In diesem Artikel werden die in Azure AD integrierten Rollen aufgelistet, die Sie zuweisen können, um die Verwaltung von Azure AD-Ressourcen zuzulassen. Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Zuweisen von Azure AD-Rollen zu Benutzern](manage-roles-portal.md).
 
 ## <a name="all-roles"></a>Alle Rollen
 
@@ -86,11 +65,12 @@ Anweisungen zum Zuweisen von Administratorrollen zu einem Benutzer in Azure Acti
 > | [Gruppenadministrator](#groups-administrator) | Mitglieder dieser Rolle können Gruppen erstellen/verwalten, Gruppeneinstellungen wie Benennungs- und Ablaufrichtlinien erstellen und verwalten sowie Aktivitäts- und Überwachungsberichte von Gruppen anzeigen. | fdd7a751-b60b-444a-984c-02652fe8fa1c |
 > | [Gasteinladender](#guest-inviter) | Einladen von Gastbenutzernunabhängig von der Einstellung „Mitglieder können Gäste einladen“. | 95e79109-95c0-4d8e-aee3-d01accf2d47b |
 > | [Helpdeskadministrator](#helpdesk-administrator) | Zurücksetzen von Kennwörtern für Nicht-Administratoren und Helpdeskadministratoren. | 729827e3-9c14-49f7-bb1b-9608f156bbb8 |
-> | [Hybrididentitätsadministrator](#hybrid-identity-administrator) | Kann die Einstellungen für die Cloudbereitstellungen zwischen AD und Azure AD sowie die Verbundeinstellungen verwalten. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
+> | [Hybrididentitätsadministrator](#hybrid-identity-administrator) | Kann die Cloudbereitstellung zwischen AD und Azure AD sowie Azure AD Connect und Verbundeinstellungen verwalten. | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
 > | [Insights Administrator](#insights-administrator) | Administratorzugriff in der Microsoft 365 Insights-App. | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c |
 > | [Insights Business Leader](#insights-business-leader) | Kann Dashboards und Erkenntnisse über die M365-Insights-App anzeigen und freigeben. | 31e939ad-9672-4796-9c2e-873181342d2d |
 > | [Intune-Administrator](#intune-administrator) | Verwalten sämtlicher Aspekte des Produkts Intune. | 3a2c62db-5318-420d-8d74-23affee5d9d5 |
 > | [Kaizala-Administrator](#kaizala-administrator) | Kann Einstellungen für Microsoft Kaizala verwalten. | 74ef975b-6605-40af-a5d2-b9539d836353 |
+> | [Wissensadministrator](#knowledge-administrator) | Kann Wissens-, Lern- und andere intelligente Features konfigurieren. | b5a8dcf3-09d5-43a9-a639-8e29ef291470 |
 > | [Lizenzadministrator](#license-administrator) | Kann Produktlizenzen für Benutzer und Gruppen verwalten. | 4d6ac14f-3453-41d0-bef9-a3e0c569773a |
 > | [Nachrichtencenter-Datenschutzleseberechtigter](#message-center-privacy-reader) | Kann Sicherheitsnachrichten und -updates nur im Office 365-Nachrichtencenter lesen. | ac16e43d-7b2d-40e0-ac05-243ff356ab5b |
 > | [Nachrichtencenter-Leseberechtigter](#message-center-reader) | Lesen von Nachrichten und Updates für die Organisation ausschließlich im Office 365-Nachrichtencenter. | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b |
@@ -130,7 +110,7 @@ Benutzer mit dieser Rolle können alle Aspekte von Unternehmensanwendungen, Anwe
 Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen (mit Ausnahme von Anwendungsberechtigungen für Microsoft Graph und Azure AD Graph).
 
 > [!IMPORTANT]
-> Aufgrund dieser Ausnahme können Sie immer noch Berechtigungen für _andere_ Apps (z. B. nicht von Microsoft stammenden Apps oder Apps, die Sie registriert haben) zustimmen. Sie können diese Berechtigungen weiterhin im Rahmen der App-Registrierung _anfordern_, für das _Erteilen_ dieser Berechtigungen (d. h. die Zustimmung) ist jedoch ein Administrator mit höheren Rechten (z. B. ein globaler Administrator) erforderlich.
+> Aufgrund dieser Ausnahme können Sie immer noch Berechtigungen für _andere_ Apps (z. B. nicht von Microsoft stammende Apps oder von Ihnen registrierte Apps) zustimmen. Sie können diese Berechtigungen weiterhin im Rahmen der App-Registrierung _anfordern_. Für das _Erteilen_ dieser Berechtigungen (d. h. die Zustimmung) ist jedoch ein Administrator mit höheren Rechten (z. B. ein globaler Administrator) erforderlich.
 >
 >Diese Rolle ermöglicht die Verwaltung von Anmeldeinformationen für Anwendungen. Benutzer, die dieser Rolle zugewiesen sind, können einer Anwendung Anmeldeinformationen hinzufügen und diese Anmeldeinformationen verwenden, um die Anwendung zu imitieren. Wenn der Identität der Anwendung der Zugriff auf eine Ressource gewährt wurde, z. B. die Berechtigung, Benutzer oder andere Objekte zu erstellen oder zu aktualisieren, kann ein dieser Rolle zugewiesener Benutzer diese Aktionen ausführen, während er die Identität der Anwendung annimmt. Diese Fähigkeit, die Identität der Anwendung anzunehmen, bedeutet ggf. eine Rechteerweiterung im Vergleich zu den Rollenzuweisungen des Benutzers. Beachten Sie, dass das Zuweisen eines Benutzers zur Anwendungsadministratorrolle ihm die Möglichkeit gibt, die Identität einer Anwendung anzunehmen.
 
@@ -160,7 +140,7 @@ Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und An
 > | microsoft.directory/connectors/allProperties/read | Lesen sämtlicher Eigenschaften von Anwendungsproxyconnectors |
 > | microsoft.directory/connectorGroups/create | Erstellen von Anwendungsproxy-Connectorgruppen |
 > | microsoft.directory/connectorGroups/delete | Löschen von Anwendungsproxy-Connectorgruppen |
-> | microsoft.directory/connectorGroups/allProperties/read | Lesen aller Eigenschaften von Anwendungsproxy-Connectorgruppen |
+> | microsoft.directory/connectorGroups/allProperties/read | Lesen sämtlicher Eigenschaften von Anwendungsproxy-Connectorgruppen |
 > | microsoft.directory/connectorGroups/allProperties/update | Aktualisieren aller Eigenschaften von Anwendungsproxy-Connectorgruppen |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Erstellen und Löschen von OAuth 2.0-Berechtigungszuweisungen und Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/applicationPolicies/create | Erstellen von Anwendungsrichtlinien |
@@ -191,11 +171,11 @@ Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und An
 > | microsoft.directory/servicePrincipals/policies/update | Aktualisieren der Richtlinien für Dienstprinzipale |
 > | microsoft.directory/servicePrincipals/tag/update | Aktualisieren der tag-Eigenschaft für Dienstprinzipale |
 > | microsoft.directory/servicePrincipals/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die Ihrem Dienstprinzipal zugeordnet sind |
-> | microsoft.directory/signInReports/allProperties/read | Lesen aller Eigenschaften für Anmeldeberichte (einschließlich privilegierter Eigenschaften) |
+> | microsoft.directory/signInReports/allProperties/read | Lesen sämtlicher Eigenschaften für Anmeldeberichte (einschließlich privilegierter Eigenschaften) |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Service Health im Microsoft 365 Admin Center |
-> | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
+> | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
 
 ## <a name="application-developer"></a>Anwendungsentwickler
@@ -239,7 +219,7 @@ Die Rolle [Privilegierter Authentifizierungsadministrator](#privileged-authentic
 
 Die Rolle [Authentifizierungsrichtlinienadministrator](#authentication-policy-administrator) verfügt über Berechtigungen zum Festlegen der Authentifizierungsmethodenrichtlinie des Mandanten, mit der bestimmt wird, welche Methoden die einzelnen Benutzer registrieren und verwenden können.
 
-| Role | Verwalten der Authentifizierungsmethoden des Benutzers | Aktivieren der Multi-Factor Authentication (MFA) pro Benutzer | Verwalten der MFA-Einstellungen | Verwalten der Authentifizierungsmethodenrichtlinie | Verwalten der Kennwortschutzrichtlinie |
+| Rolle | Verwalten der Authentifizierungsmethoden des Benutzers | Aktivieren der Multi-Factor Authentication (MFA) pro Benutzer | Verwalten der MFA-Einstellungen | Verwalten der Authentifizierungsmethodenrichtlinie | Verwalten der Kennwortschutzrichtlinie |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Authentifizierungsadministrator | Ja, für einige Benutzer (siehe oben) | Ja, für einige Benutzer (siehe oben) | Nein | Nein | Nein |
 | Privilegierter Authentifizierungsadministrator| Ja, für alle Benutzer | Ja, für alle Benutzer | Nein | Nein | Nein |
@@ -255,7 +235,7 @@ Die Rolle [Authentifizierungsrichtlinienadministrator](#authentication-policy-ad
 >* Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
 
 > [!IMPORTANT]
-> Diese Rolle kann derzeit die Multi-Factor Authentication (MFA) pro Benutzer im alten MFA-Verwaltungsportal nicht verwalten. Die gleichen Funktionen können mithilfe des Cmdlets [Set-MsolUser](/powershell/module/msonline/set-msoluser) im Azure AD PowerShell-Modul erreicht werden.
+> Diese Rolle kann die MFA-Einstellungen im Legacy-MFA-Verwaltungsportal oder Hardware-OATH-Token nicht verwalten. Die gleichen Funktionen können mithilfe des Cmdlets [Set-MsolUser](/powershell/module/msonline/set-msoluser) im Azure AD PowerShell-Modul erreicht werden.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -281,7 +261,7 @@ Die Rollen [Authentifizierungsadministrator](#authentication-administrator) und 
 | Authentifizierungsrichtlinienadministrator | Nein | Nein | Ja | Ja | Ja |
 
 > [!IMPORTANT]
-> Diese Rolle kann derzeit die MFA-Einstellungen im alten MFA-Verwaltungsportal nicht verwalten.
+> Diese Rolle kann die MFA-Einstellungen im Legacy-MFA-Verwaltungsportal oder Hardware-OATH-Token nicht verwalten. 
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -416,7 +396,7 @@ Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und An
 > | microsoft.directory/servicePrincipals/synchronizationJobs/manage | Starten, Neustarten und Anhalten von Synchronisierungsaufträgen für die Anwendungsbereitstellung |
 > | microsoft.directory/servicePrincipals/synchronizationSchema/manage | Erstellen und Verwalten von Synchronisierungsaufträgen und -schemas für die Anwendungsbereitstellung |
 > | microsoft.directory/servicePrincipals/managePasswordSingleSignOnCredentials | Lesen von Anmeldeinformationen für das einmalige Anmelden per Kennwort für Dienstprinzipale |
-> | microsoft.directory/servicePrincipals/managePermissionGrantsForAll.microsoft-application-admin | Erteilen der Zustimmung zu Anwendungsberechtigungen und delegierten Berechtigungen für einen oder alle Benutzer (mit Ausnahme von Anwendungsberechtigungen für Microsoft Graph und Azure AD Graph)  |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForAll.microsoft-application-admin | Erteilen der Zustimmung zu Anwendungsberechtigungen und delegierten Berechtigungen für einen oder alle Benutzer (mit Ausnahme von Anwendungsberechtigungen für Microsoft Graph und Azure AD Graph) |
 > | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Aktualisieren von Rollenzuweisungen für Dienstprinzipale |
 > | microsoft.directory/servicePrincipals/audience/update | Aktualisieren der Zielgruppeneigenschaften für Dienstprinzipale |
 > | microsoft.directory/servicePrincipals/authentication/update | Aktualisieren der Authentifizierungseigenschaften für Dienstprinzipale |
@@ -427,7 +407,7 @@ Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und An
 > | microsoft.directory/servicePrincipals/policies/update | Aktualisieren der Richtlinien für Dienstprinzipale |
 > | microsoft.directory/servicePrincipals/tag/update | Aktualisieren der tag-Eigenschaft für Dienstprinzipale |
 > | microsoft.directory/servicePrincipals/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die Ihrem Dienstprinzipal zugeordnet sind |
-> | microsoft.directory/signInReports/allProperties/read | Lesen aller Eigenschaften für Anmeldeberichte (einschließlich privilegierter Eigenschaften) |
+> | microsoft.directory/signInReports/allProperties/read | Lesen sämtlicher Eigenschaften für Anmeldeberichte (einschließlich privilegierter Eigenschaften) |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Service Health im Microsoft 365 Admin Center |
@@ -745,7 +725,7 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen in Microsoft Exchange 
 > | microsoft.directory/groups.unified/owners/update | Aktualisieren der Besitzer von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
-> | microsoft.office365.exchange/allEntities/allTasks | Verwalten sämtlicher Aspekte von Exchange Online |
+> | microsoft.office365.exchange/allEntities/basic/allTasks | Verwalten sämtlicher Aspekte von Exchange Online |
 > | microsoft.office365.network/performance/allProperties/read | Lesen aller Netzwerkleistungseigenschaften im Microsoft 365 Admin Center |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Service Health im Microsoft 365 Admin Center |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
@@ -786,9 +766,13 @@ Dieser Administrator verwaltet den Verbund zwischen Azure AD-Organisationen und
 
 Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in Azure Active Directory sowie Dienste, die Azure Active Directory-Identitäten nutzen, z.B. Microsoft 365 Security Center, Microsoft 365 Compliance Center, Exchange Online, SharePoint Online oder Skype for Business Online. Zudem können globale Administratoren ihre [Zugriffsrechte erhöhen](../../role-based-access-control/elevate-access-global-admin.md), um alle Azure-Abonnements und Verwaltungsgruppen zu verwalten. Dadurch erhalten sie mithilfe des entsprechenden Azure AD-Mandanten Vollzugriff auf alle Azure-Ressourcen. Die Person, die die Anmeldung für die Azure AD-Organisation vornimmt, wird ein globaler Administrator. In Ihrem Unternehmen können mehrere globale Administratoren vorhanden sein. Globale Administratoren können das Kennwort für alle Benutzer und alle anderen Administratoren zurücksetzen.
 
+> [!NOTE]
+> Als bewährte Methode empfiehlt Microsoft, die Rolle „Globaler Administrator“ weniger als fünf Personen in Ihrer Organisation zuzuweisen. Weitere Informationen finden Sie unter [Bewährte Methoden für Azure AD-Rollen](best-practices.md).
+
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
 > | --- | --- |
+> | microsoft.directory/accessReviews/allProperties/allTasks | Erstellen und Löschen von Zugriffsüberprüfungen sowie Lesen und Aktualisieren aller Eigenschaften von Zugriffsüberprüfungen in Azure AD |
 > | microsoft.directory/administrativeUnits/allProperties/allTasks | Erstellen und Verwalten von Verwaltungseinheiten (einschließlich Mitgliedern). |
 > | microsoft.directory/applications/allProperties/allTasks | Erstellen und Löschen von Anwendungen sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/applications/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die dem Anwendungsobjekt zugeordnet sind |
@@ -816,9 +800,10 @@ Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in 
 > | microsoft.directory/domains/allProperties/allTasks | Erstellen und Löschen von Domänen sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/entitlementManagement/allProperties/allTasks | Erstellen und Löschen von Ressourcen sowie Lesen und Aktualisieren aller Eigenschaften in der Azure AD-Berechtigungsverwaltung |
 > | microsoft.directory/groups/allProperties/allTasks | Erstellen und Löschen von Gruppen sowie Lesen und Aktualisieren aller Eigenschaften |
-> | microsoft.directory/groupsAssignableToRoles/allProperties/update | Aktualisieren von Gruppen, bei denen die isAssignableToRole-Eigenschaft auf TRUE festgelegt ist |
-> | microsoft.directory/groupsAssignableToRoles/create | Erstellen von Gruppen, bei denen die isAssignableToRole-Eigenschaft auf TRUE festgelegt ist |
-> | microsoft.directory/groupsAssignableToRoles/delete | Löschen von Gruppen, bei denen die isAssignableToRole-Eigenschaft auf TRUE festgelegt ist |
+> | microsoft.directory/groupsAssignableToRoles/create | Erstellen einer Gruppe, der Rollen zugeordnet werden können |
+> | microsoft.directory/groupsAssignableToRoles/delete | Löschen von Gruppen, denen Rollen zugewiesen werden können |
+> | microsoft.directory/groupsAssignableToRoles/restore | Wiederherstellen von Gruppen, denen Rollen zugewiesen werden können |
+> | microsoft.directory/groupsAssignableToRoles/allProperties/update | Aktualisieren von Gruppen, denen Rollen zugeordnet werden können |
 > | microsoft.directory/groupSettings/allProperties/allTasks | Erstellen und Löschen von Gruppeneinstellungen sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/groupSettingTemplates/allProperties/allTasks | Erstellen und Löschen von Vorlagen für Gruppeneinstellungen sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/identityProtection/allProperties/allTasks | Erstellen und Löschen sämtlicher Ressourcen sowie Lesen und Aktualisieren der Standardeigenschaften in Azure AD Identity Protection |
@@ -838,7 +823,7 @@ Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in 
 > | microsoft.directory/serviceAction/getAvailableExtentionProperties | Ausführen der Dienstaktion „Getavailableextentionproperties“ |
 > | microsoft.directory/servicePrincipals/allProperties/allTasks | Erstellen und Löschen von Dienstprinzipalen sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/servicePrincipals/managePermissionGrantsForAll.microsoft-company-admin | Erteilen der Zustimmung zu einer beliebigen Berechtigung für eine beliebige Anwendung |
-> | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Gewähren des direkten Zugriffs auf Gruppendaten für einen Dienstprinzipal  |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Gewähren des direkten Zugriffs auf Gruppendaten für einen Dienstprinzipal |
 > | microsoft.directory/servicePrincipals/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die Ihrem Dienstprinzipal zugeordnet sind |
 > | microsoft.directory/signInReports/allProperties/read | Lesen sämtlicher Eigenschaften für Anmeldeberichte (einschließlich privilegierter Eigenschaften) |
 > | microsoft.directory/subscribedSkus/allProperties/allTasks | Erwerben und Verwalten von Abonnements sowie Löschen von Abonnements |
@@ -847,6 +832,10 @@ Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in 
 > | microsoft.directory/permissionGrantPolicies/delete | Löschen von Richtlinien für die Berechtigungszuweisung |
 > | microsoft.directory/permissionGrantPolicies/standard/read | Lesen der Standardeigenschaften von Richtlinien für die Berechtigungszuweisung |
 > | microsoft.directory/permissionGrantPolicies/basic/update | Aktualisieren grundlegender Eigenschaften von Richtlinien für die Berechtigungszuweisung |
+> | microsoft.directory/servicePrincipalCreationPolicies/create | Erstellen von Erstellungsrichtlinien für Dienstprinzipale |
+> | microsoft.directory/servicePrincipalCreationPolicies/delete | Löschen von Erstellungsrichtlinien für Dienstprinzipale |
+> | microsoft.directory/servicePrincipalCreationPolicies/standard/read | Lesen von Standardeigenschaften von Erstellungsrichtlinien für Dienstprinzipale |
+> | microsoft.directory/servicePrincipalCreationPolicies/basic/update | Aktualisieren grundlegender Eigenschaften von Erstellungsrichtlinien für Dienstprinzipale |
 > | microsoft.azure.advancedThreatProtection/allEntities/allTasks | Verwalten sämtlicher Aspekte von Azure Advanced Threat Protection |
 > | microsoft.azure.informationProtection/allEntities/allTasks | Verwalten sämtlicher Aspekte von Azure Information Protection |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
@@ -857,11 +846,12 @@ Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in 
 > | microsoft.intune/allEntities/allTasks | Verwalten sämtlicher Aspekte von Microsoft Intune |
 > | microsoft.office365.complianceManager/allEntities/allTasks | Verwalten sämtlicher Aspekte von Office 365 Compliance-Manager |
 > | microsoft.office365.desktopAnalytics/allEntities/allTasks | Verwalten sämtlicher Aspekte von Desktop Analytics |
-> | microsoft.office365.exchange/allEntities/allTasks | Verwalten sämtlicher Aspekte von Exchange Online |
+> | microsoft.office365.exchange/allEntities/basic/allTasks | Verwalten sämtlicher Aspekte von Exchange Online |
 > | microsoft.office365.lockbox/allEntities/allTasks | Verwalten sämtlicher Aspekte der Kunden-Lockbox |
 > | microsoft.office365.messageCenter/messages/read | Lesen von Nachrichten im Nachrichtencenter im Microsoft 365 Admin Center (mit Ausnahme von Sicherheitsmeldungen) |
 > | microsoft.office365.messageCenter/securityMessages/read | Lesen von Sicherheitsmeldungen im Nachrichtencenter im Microsoft 365 Admin Center |
-> | microsoft.office365.protectionCenter/allEntities/allProperties/allTasks | Verwalten sämtlicher Aspekte von Office 365 Protection Center |
+> | microsoft.office365.network/performance/allProperties/read | Lesen aller Netzwerkleistungseigenschaften im Microsoft 365 Admin Center |
+> | microsoft.office365.protectionCenter/allEntities/allProperties/allTasks | Verwalten aller Aspekte des Security & Compliance Center |
 > | microsoft.office365.search/content/manage | Erstellen und Löschen von Inhalten sowie Lesen und Aktualisieren aller Eigenschaften in Microsoft Search |
 > | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Erstellen und Löschen aller Ressourcen sowie Lesen und Aktualisieren von Standardeigenschaften im Microsoft 365 Security and Compliance Center |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Service Health im Microsoft 365 Admin Center |
@@ -917,11 +907,11 @@ Benutzer in dieser Rolle können in Microsoft 365-Diensten Einstellungen und adm
 > | microsoft.directory/signInReports/allProperties/read | Lesen sämtlicher Eigenschaften für Anmeldeberichte (einschließlich privilegierter Eigenschaften) |
 > | microsoft.directory/users/strongAuthentication/read | Lesen der Eigenschaft für die starke Authentifizierung für Benutzer |
 > | microsoft.commerce.billing/allEntities/read | Lesen sämtlicher Ressourcen der Office 365-Abrechnung |
-> | microsoft.office365.exchange/allEntities/read | Lesen sämtlicher Ressourcen von Exchange Online |
+> | microsoft.office365.exchange/allEntities/standard/read | Lesen sämtlicher Ressourcen von Exchange Online |
 > | microsoft.office365.messageCenter/messages/read | Lesen von Nachrichten im Nachrichtencenter im Microsoft 365 Admin Center (mit Ausnahme von Sicherheitsmeldungen) |
 > | microsoft.office365.messageCenter/securityMessages/read | Lesen von Sicherheitsmeldungen im Nachrichtencenter im Microsoft 365 Admin Center |
 > | microsoft.office365.network/performance/allProperties/read | Lesen aller Netzwerkleistungseigenschaften im Microsoft 365 Admin Center |
-> | microsoft.office365.protectionCenter/allEntities/allProperties/read | Lesen sämtlicher Aspekte von Office 365 Protection Center |
+> | microsoft.office365.protectionCenter/allEntities/allProperties/read | Lesen aller Eigenschaften im Security & Compliance Center |
 > | microsoft.office365.securityComplianceCenter/allEntities/read | Lesen von Standardeigenschaften im Microsoft 365 Security and Compliance Center |
 > | microsoft.office365.usageReports/allEntities/allProperties/read | Lesen von Office 365-Nutzungsberichten |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
@@ -948,7 +938,7 @@ Benutzer mit dieser Rolle können Gruppen und die zugehörigen Einstellungen wie
 > | microsoft.directory/groups/owners/update | Aktualisieren der Besitzer von Gruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
 > | microsoft.directory/groups/settings/update | Aktualisieren von Gruppeneinstellungen |
 > | microsoft.directory/groups/visibility/update | Aktualisieren der visibility-Eigenschaft von Gruppen |
-> | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Gewähren des direkten Zugriffs auf Gruppendaten für einen Dienstprinzipal  |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Gewähren des direkten Zugriffs auf Gruppendaten für einen Dienstprinzipal |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Service Health im Microsoft 365 Admin Center |
@@ -1004,7 +994,7 @@ Im [Azure-Portal](https://portal.azure.com/) hieß diese Rolle früher „Kennwo
 
 ## <a name="hybrid-identity-administrator"></a>Hybrididentitätsadministrator
 
-Benutzer mit dieser Rolle können die Bereitstellungskonfigurationseinstellungen aus AD in Azure AD mithilfe der Cloudbereitstellung erstellen, verwalten und bereitstellen sowie Verbundeinstellungen verwalten. Mit dieser Rolle können Benutzer auch Probleme beheben und Protokolle überwachen.
+Benutzer mit dieser Rolle können die Konfigurationseinrichtung bei Bereitstellungen zwischen AD und Azure AD mithilfe der Cloudbereitstellung erstellen, verwalten und bereitstellen sowie Azure AD Connect und Verbundeinstellungen verwalten. Mit dieser Rolle können Benutzer auch Probleme beheben und Protokolle überwachen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -1107,7 +1097,6 @@ Mit dieser Rolle können alle Sicherheitsgruppen erstellt und verwaltet werden. 
 > | microsoft.directory/groups.security/basic/update | Aktualisieren grundlegender Eigenschaften für Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.security/classification/update | Aktualisieren der Klassifizierungseigenschaft der Sicherheitsgruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
 > | microsoft.directory/groups.security/dynamicMembershipRule/update | Aktualisieren der dynamicMembershipRule-Eigenschaft der Sicherheitsgruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
-> | microsoft.directory/groups.security/groupType/update | Aktualisieren der Gruppentypeigenschaft der Sicherheitsgruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
 > | microsoft.directory/groups.security/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.security/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.security/visibility/update | Aktualisieren der Sichtbarkeitseigenschaft der Sicherheitsgruppen unter Ausschluss von zu Rollen zuweisbaren Gruppen |
@@ -1126,6 +1115,26 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen zum Verwalten von Eins
 > | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Service Health im Microsoft 365 Admin Center |
+> | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
+> | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
+
+## <a name="knowledge-administrator"></a>Wissensadministrator
+
+Benutzer mit dieser Rolle haben Vollzugriff auf alle Einstellungen für Wissens-, Lern- und intelligenten Features im Microsoft 365 Admin Center. Sie verfügen über ein allgemeines Verständnis der Produktsuite und der Lizenzierungsdetails und sind für die Zugriffssteuerung verantwortlich. Der Wissensadministrator kann Inhalte wie Themen, Akronyme und Lernressourcen erstellen und verwalten. Darüber hinaus können diese Benutzer Inhaltscenter erstellen, die Dienstintegrität überwachen und Service Requests erstellen.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | microsoft.directory/groups.security/create | Erstellen von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/createAsOwner | Erstellen von Sicherheitsgruppen mit der Ausnahme von Gruppen, denen Rollen zugewiesen werden können, und der Ersteller wird als erster Besitzer hinzugefügt |
+> | microsoft.directory/groups.security/delete | Löschen von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/basic/update | Aktualisieren grundlegender Eigenschaften für Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/members/update | Aktualisieren der Mitglieder von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.directory/groups.security/owners/update | Aktualisieren der Besitzer von Sicherheitsgruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
+> | microsoft.office365.knowledge/contentUnderstanding/allProperties/allTasks | Lesen und Aktualisieren aller Eigenschaften von Content Understanding in Microsoft 365 Admin Center |
+> | microsoft.office365.knowledge/knowledgeNetwork/allProperties/allTasks | Lesen und Aktualisieren aller Eigenschaften des Wissensnetzwerks in Microsoft 365 Admin Center |
+> | microsoft.office365.protectionCenter/sensitivityLabels/allProperties/read | Lesen von Vertraulichkeitsbezeichnungen im Security & Compliance Center |
+> | microsoft.office365.sharePoint/allEntities/allTasks | Erstellen und Löschen aller Ressourcen sowie Lesen und Aktualisieren der Standardeigenschaften in SharePoint |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
 
@@ -1386,7 +1395,7 @@ Die Rolle [Authentifizierungsadministrator](#authentication-administrator) verf�
 
 Die Rolle [Authentifizierungsrichtlinienadministrator](#authentication-policy-administrator) verfügt über Berechtigungen zum Festlegen der Authentifizierungsmethodenrichtlinie des Mandanten, mit der bestimmt wird, welche Methoden die einzelnen Benutzer registrieren und verwenden können.
 
-| Role | Verwalten der Authentifizierungsmethoden des Benutzers | Aktivieren der Multi-Factor Authentication (MFA) pro Benutzer | Verwalten der MFA-Einstellungen | Verwalten der Authentifizierungsmethodenrichtlinie | Verwalten der Kennwortschutzrichtlinie |
+| Rolle | Verwalten der Authentifizierungsmethoden des Benutzers | Aktivieren der Multi-Factor Authentication (MFA) pro Benutzer | Verwalten der MFA-Einstellungen | Verwalten der Authentifizierungsmethodenrichtlinie | Verwalten der Kennwortschutzrichtlinie |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Authentifizierungsadministrator | Ja, für einige Benutzer (siehe oben) | Ja, für einige Benutzer (siehe oben) | Nein | Nein | Nein |
 | Privilegierter Authentifizierungsadministrator| Ja, für alle Benutzer | Ja, für alle Benutzer | Nein | Nein | Nein |
@@ -1403,7 +1412,7 @@ Die Rolle [Authentifizierungsrichtlinienadministrator](#authentication-policy-ad
 
 
 > [!IMPORTANT]
-> Diese Rolle kann derzeit die Multi-Factor Authentication (MFA) pro Benutzer im alten MFA-Verwaltungsportal nicht verwalten. Die gleichen Funktionen können mithilfe des Cmdlets [Set-MsolUser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) im Azure AD PowerShell-Modul erreicht werden.
+> Diese Rolle kann derzeit die Multi-Factor Authentication (MFA) pro Benutzer im alten MFA-Verwaltungsportal nicht verwalten. Die gleichen Funktionen können mithilfe des Cmdlets [Set-MsolUser](/powershell/module/msonline/set-msoluser) im Azure AD PowerShell-Modul erreicht werden.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -1430,9 +1439,10 @@ Benutzer mit dieser Rolle können Rollenzuweisungen in Azure Active Directory un
 > | microsoft.directory/appRoleAssignments/allProperties/allTasks | Erstellen und Löschen von appRoleAssignments sowie Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/authorizationPolicy/allProperties/allTasks | Verwalten sämtlicher Aspekte von Autorisierungsrichtlinien |
 > | microsoft.directory/directoryRoles/allProperties/allTasks | Erstellen und Löschen von Verzeichnisrollen sowie Lesen und Aktualisieren aller Eigenschaften |
-> | microsoft.directory/groupsAssignableToRoles/allProperties/update | Aktualisieren von Gruppen, bei denen die isAssignableToRole-Eigenschaft auf TRUE festgelegt ist |
-> | microsoft.directory/groupsAssignableToRoles/create | Erstellen von Gruppen, bei denen die isAssignableToRole-Eigenschaft auf TRUE festgelegt ist |
-> | microsoft.directory/groupsAssignableToRoles/delete | Löschen von Gruppen, bei denen die isAssignableToRole-Eigenschaft auf TRUE festgelegt ist |
+> | microsoft.directory/groupsAssignableToRoles/create | Erstellen einer Gruppe, der Rollen zugeordnet werden können |
+> | microsoft.directory/groupsAssignableToRoles/delete | Löschen von Gruppen, denen Rollen zugewiesen werden können |
+> | microsoft.directory/groupsAssignableToRoles/restore | Wiederherstellen von Gruppen, denen Rollen zugewiesen werden können |
+> | microsoft.directory/groupsAssignableToRoles/allProperties/update | Aktualisieren von Gruppen, denen Rollen zugeordnet werden können |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Erstellen und Löschen von OAuth 2.0-Berechtigungszuweisungen und Lesen und Aktualisieren aller Eigenschaften |
 > | microsoft.directory/privilegedIdentityManagement/allProperties/allTasks | Erstellen und Löschen aller Ressourcen sowie Lesen und Aktualisieren von Standardeigenschaften in Privileged Identity Management |
 > | microsoft.directory/roleAssignments/allProperties/allTasks | Erstellen und Löschen von Rollenzuweisungen und Lesen und Aktualisieren aller Rollenzuweisungseigenschaften |
@@ -1454,6 +1464,7 @@ Benutzer mit dieser Rolle können Nutzungsberichtsdaten und das Berichtsdashboar
 > | microsoft.directory/provisioningLogs/allProperties/read | Lesen aller Eigenschaften von Bereitstellungsprotokollen |
 > | microsoft.directory/signInReports/allProperties/read | Lesen sämtlicher Eigenschaften für Anmeldeberichte (einschließlich privilegierter Eigenschaften) |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
+> | microsoft.office365.network/performance/allProperties/read | Lesen aller Netzwerkleistungseigenschaften im Microsoft 365 Admin Center |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Service Health im Microsoft 365 Admin Center |
 > | microsoft.office365.usageReports/allEntities/allProperties/read | Lesen von Office 365-Nutzungsberichten |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
@@ -1529,8 +1540,8 @@ Windows Defender ATP und EDR | Zuweisen von Rollen<br>Verwalten von Computergrup
 > | microsoft.directory/signInReports/allProperties/read | Lesen sämtlicher Eigenschaften für Anmeldeberichte (einschließlich privilegierter Eigenschaften) |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
-> | microsoft.office365.protectionCenter/allEntities/standard/read | Lesen von Standardeigenschaften aller Ressourcen im Office 365 Protection Center |
-> | microsoft.office365.protectionCenter/allEntities/basic/update | Aktualisieren grundlegender Eigenschaften aller Ressourcen im Office 365 Protection Center |
+> | microsoft.office365.protectionCenter/allEntities/standard/read | Lesen der Standardeigenschaften aller Ressourcen im Security & Compliance Center |
+> | microsoft.office365.protectionCenter/allEntities/basic/update | Aktualisieren der grundlegenden Eigenschaften aller Ressourcen im Security & Compliance Center |
 > | microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/allTasks | Erstellen und Verwalten von Angriffsnutzdaten im Angriffssimulator |
 > | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Lesen von Berichten zu Angriffssimulationen, Reaktionen und zugehörigen Schulungsunterlagen |
 > | microsoft.office365.protectionCenter/attackSimulator/simulation/allProperties/allTasks | Erstellen und Verwalten von Angriffssimulationsvorlagen im Angriffssimulator |
@@ -1560,6 +1571,7 @@ Windows Defender ATP und EDR | Alle Berechtigungen der Rolle „Sicherheitsleseb
 > | microsoft.directory/cloudAppSecurity/allProperties/allTasks | Erstellen und Löschen aller Ressourcen sowie Lesen und Aktualisieren von Standardeigenschaften in Microsoft Cloud App Security |
 > | microsoft.directory/identityProtection/allProperties/allTasks | Erstellen und Löschen sämtlicher Ressourcen sowie Lesen und Aktualisieren der Standardeigenschaften in Azure AD Identity Protection |
 > | microsoft.directory/privilegedIdentityManagement/allProperties/read | Lesen aller Ressourcen in Privileged Identity Management |
+> | microsoft.directory/provisioningLogs/allProperties/read | Lesen aller Eigenschaften von Bereitstellungsprotokollen |
 > | microsoft.directory/signInReports/allProperties/read | Lesen sämtlicher Eigenschaften für Anmeldeberichte (einschließlich privilegierter Eigenschaften) |
 > | microsoft.azure.advancedThreatProtection/allEntities/allTasks | Verwalten sämtlicher Aspekte von Azure Advanced Threat Protection |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
@@ -1601,7 +1613,7 @@ Windows Defender ATP und EDR | Anzeigen und Untersuchen von Warnungen. Wenn Sie 
 > | microsoft.directory/provisioningLogs/allProperties/read | Lesen aller Eigenschaften von Bereitstellungsprotokollen |
 > | microsoft.directory/signInReports/allProperties/read | Lesen sämtlicher Eigenschaften für Anmeldeberichte (einschließlich privilegierter Eigenschaften) |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
-> | microsoft.office365.protectionCenter/allEntities/standard/read | Lesen von Standardeigenschaften aller Ressourcen im Office 365 Protection Center |
+> | microsoft.office365.protectionCenter/allEntities/standard/read | Lesen der Standardeigenschaften aller Ressourcen im Security & Compliance Center |
 > | microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/read | Lesen aller Eigenschaften von Angriffsnutzdaten im Angriffssimulator |
 > | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Lesen von Berichten zu Angriffssimulationen, Reaktionen und zugehörigen Schulungsunterlagen |
 > | microsoft.office365.protectionCenter/attackSimulator/simulation/allProperties/read | Lesen aller Eigenschaften von Angriffssimulationsvorlagen im Angriffssimulator |
@@ -1620,6 +1632,7 @@ Benutzer mit dieser Rolle können bei Microsoft Supportanfragen für Azure- und 
 > | --- | --- |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
+> | microsoft.office365.network/performance/allProperties/read | Lesen aller Netzwerkleistungseigenschaften im Microsoft 365 Admin Center |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Service Health im Microsoft 365 Admin Center |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
@@ -1684,7 +1697,7 @@ Benutzer mit dieser Rolle können alle Aspekte der Microsoft Teams-Workload übe
 > | microsoft.directory/groups.unified/basic/update | Aktualisieren grundlegender Eigenschaften von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.unified/members/update | Aktualisieren von Mitgliedern von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.unified/owners/update | Aktualisieren der Besitzer von Microsoft 365-Gruppen (mit Ausnahme der Gruppen, denen Rollen zugewiesen werden können) |
-> | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Gewähren des direkten Zugriffs auf Gruppendaten für einen Dienstprinzipal  |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Gewähren des direkten Zugriffs auf Gruppendaten für einen Dienstprinzipal |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 > | microsoft.office365.network/performance/allProperties/read | Lesen aller Netzwerkleistungseigenschaften im Microsoft 365 Admin Center |
@@ -1756,6 +1769,7 @@ Benutzer mit dieser Rolle können zur Nutzungs- und Produktivitätsbewertung im 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
 > | --- | --- |
+> | microsoft.office365.network/performance/allProperties/read | Lesen aller Netzwerkleistungseigenschaften im Microsoft 365 Admin Center |
 > | microsoft.office365.usageReports/allEntities/standard/read | Lesen aggregierter Office 365-Nutzungsberichte auf Mandantenebene |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
 
@@ -1825,6 +1839,23 @@ Benutzer mit dieser Rolle können Benutzer erstellen und alle Aspekte von Benutz
 > | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
 
+## <a name="how-to-understand-role-permissions"></a>Grundlegendes zu Rollenberechtigungen
+
+Das Schema für Berechtigungen folgt im Wesentlichen dem REST-Format von Microsoft Graph:
+
+`<namespace>/<entity>/<propertySet>/<action>`
+
+Beispiel:
+
+`microsoft.directory/applications/credentials/update`
+
+| Berechtigungselement | BESCHREIBUNG |
+| --- | --- |
+| Namespace | Produkt oder Dienst zum Verfügbarmachen der Aufgabe, Präfix: `microsoft`. Beispielsweise verwenden alle Aufgaben in Azure AD den Namespace `microsoft.directory`. |
+| Entität | Logische Funktion oder Komponente, die vom Dienst in Microsoft Graph verfügbar gemacht wird. Beispielsweise macht Azure AD Benutzer und Gruppen verfügbar, OneNote macht Notizen verfügbar, und Exchange macht Postfächer und Kalender verfügbar. Es gibt ein spezielles Schlüsselwort `allEntities` zum Angeben aller Entitäten in einem Namespace. Dieses wird häufig in Rollen verwendet, die Zugriff auf ein gesamtes Produkt gewähren. |
+| propertySet | Bestimmte Eigenschaften oder Aspekte der Entität, für die der Zugriff gewährt wird. Beispielsweise bietet `microsoft.directory/applications/authentication/read` die Möglichkeit, die Antwort-URL, die Abmelde-URL und eine implizite Floweigenschaft für das Anwendungsobjekt in Azure AD zu lesen.<ul><li>`allProperties` legt alle Eigenschaften der Entität fest, einschließlich privilegierter Eigenschaften.</li><li>`standard` legt allgemeine Eigenschaften fest, schließt jedoch privilegierte Eigenschaften im Zusammenhang mit der Aktion `read` aus. Beispielsweise bietet `microsoft.directory/user/standard/read` die Möglichkeit, Standardeigenschaften wie die öffentliche Telefonnummer und E-Mail-Adresse zu lesen, aber nicht die private sekundäre Telefonnummer oder E-Mail-Adresse, die für die mehrstufige Authentifizierung verwendet wird.</li><li>`basic` legt allgemeine Eigenschaften fest, schließt jedoch privilegierte Eigenschaften im Zusammenhang mit der Aktion `update` aus. Die Eigenschaften, die Sie lesen können, unterscheiden sich möglicherweise von denen, die Sie aktualisieren können. Um dies abzubilden, gibt es die Schlüsselwörter `standard` und `basic`.</li></ul> |
+| action | Der gewährte Vorgang, in der Regel CRUD (Create, Read, Update, Delete). Es gibt ein spezielles Schlüsselwort `allTasks` zum Angeben aller oben genannten Möglichkeiten (Create, Read, Update, Delete). |
+
 ## <a name="deprecated-roles"></a>Veraltete Rollen
 
 Die folgenden Rollen sollten nicht verwendet werden. Sie sind veraltet und werden aus Azure AD entfernt.
@@ -1879,6 +1910,6 @@ Leseberechtigter für Berichte mit Nutzungszusammenfassung | &nbsp; | :heavy_che
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Zuweisen eines Benutzers als Administrator eines Azure-Abonnements finden Sie unter [Zuweisen eines Benutzers als Administrator eines Azure-Abonnements](../../role-based-access-control/role-assignments-portal-subscription-admin.md).
-* Informationen zum Steuern des Zugriffs auf Ressourcen in Microsoft Azure finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* Ausführliche Informationen zur Beziehung zwischen Abonnements und einem Azure AD-Mandanten oder eine Anleitung zum Zuordnen oder Hinzufügen eines Abonnements finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+- [Zuweisen von Azure AD-Rollen zu Gruppen](groups-assign-role.md)
+- [Grundlegendes zu den verschiedenen Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Zuweisen von Administratorzugriff für ein Azure-Abonnement](../../role-based-access-control/role-assignments-portal-subscription-admin.md)

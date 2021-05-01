@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 6861fd7a92c26fad883f14fb430a03b237c90122
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba730adaa1e3b111586012ba1849c6dc84d6db00
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609257"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553990"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Verwenden von Azure Monitor mit Ihrem Azure Synapse Analytics-Arbeitsbereich
 
@@ -103,10 +103,14 @@ Melden Sie sich beim Azure-Portal an, und wählen Sie **Überwachen** > **Warnun
 
 Nachfolgend finden Sie die von Azure Synapse Analytics-Arbeitsbereichen ausgegebenen Protokolle:
 
-| Name der Log Analytics-Tabelle | Name der Protokollkategorie                 | BESCHREIBUNG |
-|-------------------------------|-------------------------------------------------|-------------|
-| SynapseGatewayApiRequests     | GatewayApiRequests             | Azure Synapse-Gateway-API-Anforderungen. |
-| SynapseRbacOperations         | SynapseRbacOperations          | Vorgänge der rollenbasierten Azure Synapse-Zugriffssteuerung (Synapse Role-Based Access Control, SRBAC). |
+| Name der Log Analytics-Tabelle       | Name der Protokollkategorie              | BESCHREIBUNG          |
+|--------------------------------|--------------------------------|----------------------|
+| SynapseGatewayApiRequests      | GatewayApiRequests             | Azure Synapse-Gateway-API-Anforderungen. |
+| SynapseRbacOperations          | SynapseRbacOperations          | Vorgänge der rollenbasierten Azure Synapse-Zugriffssteuerung (Synapse Role-Based Access Control, SRBAC). |
+| SynapseBuiltinSqlReqsEnded     | BuiltinSqlReqsEnded            | Die Anforderungen des integrierten serverlosen Azure Synapse-SQL-Pools sind beendet. |
+| SynapseIntegrationPipelineRuns | IntegrationPipelineRuns        | Azure Synapse-Integrationspipeline wird ausgeführt. |
+| SynapseIntegrationActivityRuns | IntegrationActivityRuns        | Azure Synapse-Integrationsaktivität wird ausgeführt. |
+| SynapseIntegrationTriggerRuns  | IntegrationTriggerRuns         | Azure Synapse-Integrationstrigger wird ausgeführt. |
 
 ### <a name="dedicated-sql-pool-logs"></a>Protokolle dedizierter SQL-Pools
 

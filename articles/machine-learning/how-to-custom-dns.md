@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/20/2020
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 66a709f15191a8142f10f15d825276ea2ba4b83f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.custom: how-to, contperf-fy21q3
+ms.openlocfilehash: 9021c3f70c9fc053998d1b31271a1ca3b0124b4d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487983"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169537"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Verwenden Ihres Arbeitsbereichs mit einem benutzerdefinierten DNS-Server
 
-Wenn Sie einen Azure Machine Learning-Arbeitsbereich mit einem privaten Endpunkt verwenden, gibt es [verschiedene Möglichkeiten, die DNS-Namensauflösung zu verarbeiten](../private-link/private-endpoint-dns.md). Standardmäßig übernimmt Azure automatisch die Namensauflösung für Ihren Arbeitsbereich und Ihren privaten Endpunkt. Wenn Sie stattdessen _Ihren eigenen benutzerdefinierten DNS-Server_ verwenden, müssen Sie DNS-Einträge für den Arbeitsbereich manuell erstellen oder bedingte Weiterleitungen verwenden.
+Wenn Sie einen Azure Machine Learning-Arbeitsbereich mit einem privaten Endpunkt verwenden, gibt es [verschiedene Möglichkeiten, die DNS-Namensauflösung zu verarbeiten](../private-link/private-endpoint-dns.md). Standardmäßig übernimmt Azure automatisch die Namensauflösung für Ihren Arbeitsbereich und Ihren privaten Endpunkt. Wenn Sie stattdessen __Ihren eigenen benutzerdefinierten DNS-Server__ verwenden, müssen Sie DNS-Einträge für den Arbeitsbereich manuell erstellen oder bedingte Weiterleitungen verwenden.
 
 > [!IMPORTANT]
 > In diesem Artikel wird nur behandelt, wie der vollqualifizierte Domänenname (FQDN) und die IP-Adressen für diese Einträge gefunden werden können. Er enthält KEINE Informationen zum Konfigurieren der DNS-Einträge für diese Elemente. Weitere Informationen zum Hinzufügen von Einträgen finden Sie in der Dokumentation zu Ihrer DNS-Software.
@@ -37,33 +37,23 @@ Wenn Sie einen Azure Machine Learning-Arbeitsbereich mit einem privaten Endpunkt
 
 - Optional die [Azure CLI](/cli/azure/install-azure-cli) oder [Azure PowerShell](/powershell/azure/install-az-ps).
 
-## <a name="fqdns-in-use"></a>Verwendete vollqualifizierte Domänennamen (FQDN)
-### <a name="these-fqdns-are-in-use-in-the-following-regions-eastus-southcentralus-and-westus2"></a>Diese FQDNs werden in den folgenden Regionen verwendet: „eastus“, „southcentralus“ und „westus2“.
-Die folgende Liste enthält die vollqualifizierten Domänennamen (FQDN), die von Ihrem Arbeitsbereich verwendet werden:
+## <a name="public-regions"></a>Öffentliche Regionen
+
+Die folgende Liste enthält den FQDN (vollqualifizierter Domänenname), der von Ihrem Arbeitsbereich verwendet wird, wenn dieser sich in einer öffentlichen Region befindet:
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
-* `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
-* `<workspace-GUID>.workspace.<region>.aether.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
-* Wenn Sie eine Compute-Instanz erstellen, müssen Sie auch einen Eintrag für `<instance-name>.<region>.instances.azureml.ms` mit der privaten IP-Adresse des privaten Endpunkts für den Arbeitsbereich hinzufügen.
+* `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.azure.net`
 
     > [!NOTE]
-    > Auf Compute-Instanzen kann nur innerhalb des virtuellen Netzwerks zugegriffen werden.
-    
-### <a name="these-fqdns-are-in-use-in-all-other-public-regions"></a>Diese FQDNs werden in allen anderen öffentlichen Regionen verwendet.
-Die folgende Liste enthält die vollqualifizierten Domänennamen (FQDN), die von Ihrem Arbeitsbereich verwendet werden:
-
-* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
-* `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
+    > Der Arbeitsbereichsname für diesen FQDN wird unter Umständen abgeschnitten. Hierdurch wird das Limit von 63 Zeichen für `ml-<workspace-name, truncated>-<region>-<workspace-guid>` eingehalten.
 * `<instance-name>.<region>.instances.azureml.ms`
 
     > [!NOTE]
-    > Auf Compute-Instanzen kann nur innerhalb des virtuellen Netzwerks zugegriffen werden.
+    > * Auf Compute-Instanzen kann nur innerhalb des virtuellen Netzwerks zugegriffen werden.
+    > * Die IP-Adresse für diesen vollqualifizierten Domänennamen ist **nicht** die IP-Adresse der Compute-Instanz. Verwenden Sie stattdessen die private IP-Adresse des privaten Arbeitsbereichsendpunkts (die IP-Adresse der `*.api.azureml.ms`-Einträge).
 
-### <a name="azure-china-21vianet-regions"></a>Azure China 21Vianet-Regionen
+## <a name="azure-china-21vianet-regions"></a>Azure China 21Vianet-Regionen
 
 Die folgenden FQDNs gelten für Azure China 21Vianet-Regionen:
 
@@ -72,7 +62,7 @@ Die folgenden FQDNs gelten für Azure China 21Vianet-Regionen:
 * `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.chinacloudapi.cn`
 
     > [!NOTE]
-    > Der Arbeitsbereichsname für diesen FQDN wird unter Umständen abgeschnitten. Durch das Abschneiden wird sichergestellt, dass der FQDN maximal 63 Zeichen umfasst.
+    > Der Arbeitsbereichsname für diesen FQDN wird unter Umständen abgeschnitten. Hierdurch wird das Limit von 63 Zeichen für `ml-<workspace-name, truncated>-<region>-<workspace-guid>` eingehalten.
 * `<instance-name>.<region>.instances.ml.azure.cn`
 ## <a name="find-the-ip-addresses"></a>Suchen der IP-Adressen
 
@@ -119,7 +109,7 @@ Die Informationen, die von allen Methoden zurückgegeben werden, sind dieselben:
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`
-> * Wenn Sie über eine Compute-Instanz verfügen, verwenden Sie `<instance-name>.<region>.instances.azureml.ms`, wobei `<instance-name>` der Name Ihrer Compute-Instanz ist. Verwenden Sie die private IP-Adresse des privaten Endpunkts des Arbeitsbereichs. Beachten Sie, dass nur innerhalb des virtuellen Netzwerks auf die Compute-Instanz zugegriffen werden kann.
+> * Wenn Sie über eine Compute-Instanz verfügen, verwenden Sie `<instance-name>.<region>.instances.azureml.ms`, wobei `<instance-name>` der Name Ihrer Compute-Instanz ist. Verwenden Sie die private IP-Adresse des privaten Arbeitsbereichsendpunkts. Der Zugriff auf die Compute-Instanz ist nur innerhalb des virtuellen Netzwerks möglich.
 >
 > Verwenden Sie für alle diese IP-Adressen dieselbe Adresse wie die `*.api.azureml.ms`-Einträge, die von den vorherigen Schritten zurückgegeben wurden.
 

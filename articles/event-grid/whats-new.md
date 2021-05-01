@@ -2,13 +2,13 @@
 title: 'Neuigkeiten Versionshinweise: Azure Event Grid'
 description: Hier finden Sie Informationen zu den Neuerungen in Azure Event Grid, z. B. aktuelle Versionshinweise, bekannte Probleme, Fehlerbehebungen, veraltete Funktionen und anstehende Änderungen.
 ms.topic: overview
-ms.date: 07/23/2020
-ms.openlocfilehash: da0b26e4f163f428e6955a37636ceb19bb34abc5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/27/2021
+ms.openlocfilehash: ccb8df774838a1b71ddec08394d7487bf3176039
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107532"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135921"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Welche Neuerungen gibt es in Azure Event Grid?
 
@@ -21,6 +21,24 @@ Es werden fortlaufend Verbesserungen an Azure Event Grid vorgenommen. Damit Sie 
 - Behebung von Programmfehlern
 - Veraltete Funktionen
 - Pläne für Änderungen
+
+## <a name="610-preview-2020-10"></a>6.1.0-preview (2020-10)
+- [Verwaltete Identitäten für Systemthemen](enable-identity-system-topics.md)
+- [Benutzerdefinierte Übermittlungseigenschaften](delivery-properties.md)
+- [Speicherwarteschlange: Gültigkeitsdauer für Nachrichten](delivery-properties.md#configure-time-to-live-on-outgoing-events-to-azure-storage-queues)
+- [Verbesserungen der erweiterten Filterung](event-filtering.md#advanced-filtering)
+    - Unterstützung der Filterung nach Arraydaten in eingehenden Ereignissen
+    - Zulassen der Filterung nach Kontextattributen für CloudEvents-Erweiterungen
+    - Neue Operatoren
+        - StringNotContains
+        - StringNotBeginsWith
+        - StringNotEndsWith
+        - NumberInRange
+        - NumberNotInRange
+        - IsNullOrUndefined
+        - IsNotNull
+- [Zulassen von Transformationen von Event Grid-Schemas in CloudEvents 1.0-Schemas für benutzerdefinierte Themen und Domänen](cloudevents-schema.md#configure-event-grid-for-cloudevents)
+        
 
 ## <a name="600-2020-06"></a>6.0.0 (2020-06)
 - Hinzugefügte Unterstützung für neue allgemein verfügbare Dienst-API-Version 2020-06-01.

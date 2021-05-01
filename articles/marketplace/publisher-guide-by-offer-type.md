@@ -6,19 +6,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 10/06/2020
-ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 381ee45bd678ef22222483675ddf001e16970628
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879223"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552052"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Leitfaden zur Veröffentlichung nach Angebotstyp
 
 In diesem Artikel werden die im kommerziellen Marketplace verfügbaren Angebotstypen beschrieben. Der *Angebotstyp* definiert die Angebotsstruktur einschließlich der Metadaten, Artefakte und sonstigen Inhalte, die im kommerziellen Marketplace präsentiert werden.
 
 Nachdem Sie sich für eine [Veröffentlichungsoption entschieden haben](determine-your-listing-type.md), müssen Sie einen Angebotstyp auswählen, bevor Sie mit der Erstellung Ihres Angebots in Partner Center beginnen. Der Angebotstyp hängt davon ab, welchen Lösungstyp, welche App oder welches Dienstangebot Sie veröffentlichen möchten, sowie von der Ausrichtung des Angebots an Produkten und Diensten von Microsoft.
+
+> [!NOTE]
+> Nachdem Sie einen Angebotstyp ausgewählt haben, können Sie den Typ des Angebots nicht mehr ändern. Um einen anderen Angebotstyp zu erstellen, müssen Sie ein neues Angebot erstellen.
 
 Sie können einen einzelnen Angebotstyp auf verschiedene Weisen konfigurieren, um unterschiedliche Veröffentlichungsoptionen, Auflistungsoptionen, Bereitstellungen oder Preisgestaltungen zu ermöglichen. Die Veröffentlichungsoption und Konfiguration des Angebotstyps entsprechen auch der Angebotsberechtigung und technischen Anforderungen.
 

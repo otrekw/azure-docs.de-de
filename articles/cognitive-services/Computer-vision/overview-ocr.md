@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 41b3552a633c9cebce1138fa042dbd154eee0cb5
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: da4ada8b505c747d24738e175a1701b5ea73b4e4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314115"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536733"
 ---
 # <a name="what-is-optical-character-recognition"></a>Was ist Optische Zeichenerkennung?
 
@@ -42,7 +42,6 @@ Der Aufruf **Read** nimmt Bilder und Dokumente als Eingabe entgegen. Es bestehen
 * Unterstützte Dateiformate: JPEG, PNG, BMP, PDF und TIFF
 * Für PDF- und TIFF-Dateien werden bis zu 2000 Seiten (nur die ersten beiden Seiten für den Free-Tarif) verarbeitet.
 * Die Dateigröße muss weniger als 50 MB (4 MB für den Free-Tarif) betragen und eine Größe von mindestens 50 x 50 Pixel und höchstens 10000 × 10000 Pixel aufweisen. 
-* Die Abmessungen bei PDF-Dateien dürfen maximal 17 × 17 Zoll betragen. Dies entspricht den Papierformaten Legal oder DIN A3 und kleineren Formaten.
 
 ## <a name="read-api"></a>Lese-API 
 
@@ -50,6 +49,21 @@ Die [Read-API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/c
 
 ![So konvertiert die optische Zeichenerkennung Bilder und Dokumente in eine strukturierte Ausgabe mit extrahiertem Text](./Images/how-ocr-works.svg)
 
+### <a name="key-features"></a>Wichtigste Funktionen
+
+Die Lese-API umfasst die folgenden Funktionen: 
+
+* Extrahieren von Drucktext in 73 Sprachen
+* Extrahieren von handschriftlichem Text in englischer Sprache
+* Textzeilen und Wörter mit Standort und Zuverlässigkeitsbewertungen
+* Keine Sprachenerkennung erforderlich
+* Unterstützung für gemischte Sprachen und gemischten Modus (gedruckter und handschriftlicher Text)
+* Auswählen von Seiten und Seitenbereichen aus großen, mehrseitigen Dokumenten
+* Natürliche Leserichtung für Textzeilen
+* Handschriftklassifizierung für Textzeilen
+* Verfügbar als Docker-Container ohne Distribution für die lokale Bereitstellung
+
+[Hier](./vision-api-how-to-topics/call-read-api.md) erfahren Sie mehr über die Verwendung der OCR-Features.
 
 ## <a name="use-the-cloud-api-or-deploy-on-premise"></a>Verwenden der Cloud-API oder lokale Bereitstellung
 Die Read 3.x-Cloud-APIs sind die bevorzugte Option der meisten Kunden, da sie sich einfach integrieren und schnell vorgefertigt produktiv einsetzen lassen. Azure und der Dienst für maschinelles Sehen verarbeiten Skalierungs-, Leistungs-, Datensicherheits- und Complianceanforderungen, während Sie sich auf die Erfüllung der Anforderungen Ihrer Kunden konzentrieren.

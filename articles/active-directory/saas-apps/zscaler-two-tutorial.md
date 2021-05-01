@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 8c3d76f24cce860538dc3bd5dcf29b59708bdb5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4d39492a05ee90c0ba2e081336d7b04579a5c43
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726223"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Tutorial: Azure Active Directory-Integration in Zscaler Two
 
@@ -37,11 +37,14 @@ Um die Azure AD-Integration in Zscaler Two konfigurieren zu können, ist Folgend
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Zscaler Two unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Zscaler Two unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-* Zscaler Two unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Zscaler Two unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-## <a name="adding-zscaler-two-from-the-gallery"></a>Hinzufügen von Zscaler Two aus dem Katalog
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+
+## <a name="add-zscaler-two-from-the-gallery"></a>Hinzufügen von Zscaler Two aus dem Katalog
 
 Zum Konfigurieren der Integration von Zscaler Two in Azure AD müssen Sie Zscaler Two aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -69,7 +72,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Zscaler Three** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Zscaler Two** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
@@ -134,23 +137,15 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Zscaler Two gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Zscaler Two gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **Zscaler Two** aus.
-2. Wählen Sie in der Liste der Anwendungen **Zscaler Two** aus.
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste die Benutzerin **Britta Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-
-    ![Screenshot des Dialogfelds „Benutzer und Gruppen“ zum Auswählen eines Benutzers](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
-
-6. Wählen Sie im Dialogfeld **Rolle auswählen** die geeignete Rolle in der Liste aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-
-    ![Screenshot des Dialogfelds „Rolle auswählen“ zum Auswählen einer Benutzerrolle](./media/zscaler-two-tutorial/tutorial_zscalertwo_roles.png)
-
-7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
-
-    ![Screenshot des Dialogfelds „Zuweisung hinzufügen“ zum Auswählen der Schaltfläche „Zuweisen“](./media/zscaler-two-tutorial/tutorial_zscalertwo_assign.png)
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Liste der Anwendungen **Zscaler Two** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-zscaler-two-sso"></a>Konfigurieren des einmaligen Anmeldens für Zscaler Two
 
@@ -166,7 +161,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 4. Navigieren Sie zu **Verwaltung > Authentifizierung > Authentifizierungseinstellungen**, und führen Sie die folgenden Schritte aus:
    
-    ![Screenshot der Zscaler One-Website mit den beschriebenen Schritten](./media/zscaler-two-tutorial/ic800206.png "Verwaltung")
+    ![Screenshot der Zscaler One-Website mit den beschriebenen Schritten](./media/zscaler-two-tutorial/administrator.png "Verwaltung")
 
     a. Wählen Sie **SAML** als Authentifizierungstyp aus.
 
@@ -174,7 +169,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 5. Führen Sie im Fenster **Edit SAML** (SAML bearbeiten) die folgenden Schritte aus, und klicken Sie auf „Speichern“.  
             
-    ![Benutzer & Authentifizierung verwalten](./media/zscaler-two-tutorial/ic800208.png "Benutzer & Authentifizierung verwalten")
+    ![Benutzer & Authentifizierung verwalten](./media/zscaler-two-tutorial/authentication.png "Benutzer & Authentifizierung verwalten")
     
     a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
@@ -194,20 +189,21 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 6. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
 
-    ![Screenshot des Dialogfelds „Benutzerauthentifizierung konfigurieren“ mit ausgewählter Option „Aktivieren“](./media/zscaler-two-tutorial/ic800207.png)
+    ![Screenshot des Dialogfelds „Benutzerauthentifizierung konfigurieren“ mit ausgewählter Option „Aktivieren“](./media/zscaler-two-tutorial/activation.png)
 
     a. Bewegen Sie den Mauszeiger unten links auf das Menü **Aktivierung**.
 
     b. Klicken Sie auf **Aktivieren**.
 
 ## <a name="configuring-proxy-settings&quot;></a>Konfigurieren von Proxyeinstellungen
+
 ### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
 
 1. Starten Sie **Internet Explorer**.
 
 2. Wählen Sie im Menü **Extras** die Option **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.   
     
-     ![Internetoptionen](./media/zscaler-two-tutorial/ic769492.png &quot;Internetoptionen")
+     ![Internetoptionen](./media/zscaler-two-tutorial/internet.png &quot;Internetoptionen")
 
 3. Klicken Sie auf die Registerkarte **Verbindungen** .   
   
@@ -217,7 +213,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 5. Führen Sie im Abschnitt "Proxyserver" die folgenden Schritte aus:   
    
-    ![Proxyserver](./media/zscaler-two-tutorial/ic769494.png "Proxyserver")
+    ![Proxyserver](./media/zscaler-two-tutorial/proxy.png "Proxyserver")
 
     a. Wählen Sie **Proxyserver für LAN verwenden** aus.
 
@@ -239,7 +235,7 @@ In diesem Abschnitt wird in Zscaler Two ein Benutzer namens Britta Simon erstel
 >[!Note]
 >Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam von Zscaler Two](https://www.zscaler.com/company/contact).
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
@@ -248,7 +244,6 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 * Rufen Sie direkt die Zscaler Two-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
 * Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Zscaler Two“ klicken, werden Sie zur Anmelde-URL für Zscaler Two umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

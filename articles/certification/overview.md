@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: b9d599542a53e3d809748b72028512c66409b4ec
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e7cd664e9eb61cae4f1888e4c94f02f19301e9e5
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307706"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502095"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Was ist das Azure Certified Device-Programm?
 
-Vielen Dank für Ihr Interesse am Azure Certified Device-Programm. Mit diesem Programm können Sie IoT-Geräte, die für die Verwendung mit Azure entwickelt wurden, mühelos differenzieren, bewerben und finden. Ob intelligente Kameras oder vernetzte Sensoren: Dieses verbesserte Zertifizierungsprogramm für IoT-Geräte ermöglicht es Geräteentwicklern, die Sichtbarkeit ihrer Produkte zu verbessern, und hilft Kunden dabei, die Lösungsentwicklung zu beschleunigen.
+Vielen Dank für Ihr Interesse am Azure Certified Device-Programm. Azure Certified Device ist ein kostenloses Programm, mit dem Sie Ihre IoT-Geräte, die für die Ausführung in Azure erstellt wurden, hervorheben, zertifizieren und bewerben können. Ob intelligente Kameras oder vernetzte Sensoren: Dieses verbesserte Zertifizierungsprogramm für IoT-Geräte ermöglicht es Geräteentwicklern, die Sichtbarkeit ihrer Produkte zu verbessern, und hilft Kunden dabei, die Lösungsentwicklung zu beschleunigen.
 
 ## <a name="our-certification-promise"></a>Unser Zertifizierungsversprechen
 
@@ -58,7 +58,10 @@ Die Zertifizierung eines Geräts umfasst verschiedene Hauptschritte im [Azure C
 1. Überprüfen Sie die Gerätefunktionalität.
 1. Übermitteln Sie die Angaben, und schließen Sie die Überprüfung ab.
 
-Nachdem Sie Ihr Gerät zertifiziert haben, können Sie optional zwei der folgenden Aktivitäten durchführen:
+> [!Note]
+> Der Überprüfungsprozess kann bis zu einer Woche, manchmal aber auch länger dauern.
+
+Nachdem Sie Ihr Gerät zertifiziert haben, können Sie optional zwei der folgenden Aktivitäten durchführen: 
 
 1. Veröffentlichen im Azure Certified Device-Katalog (optional)
 1. Aktualisieren Ihres Projekts nach der Genehmigung/Veröffentlichung (optional)

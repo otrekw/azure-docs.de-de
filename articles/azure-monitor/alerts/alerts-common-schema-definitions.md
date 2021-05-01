@@ -4,19 +4,19 @@ description: Informationen zu Definitionen des allgemeinen Warnungsschemas für 
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 02092f5a241824d2a9aef242b544f8900af7ebec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045393"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491711"
 ---
 # <a name="common-alert-schema-definitions"></a>Definitionen des allgemeinen Warnungsschemas
 
 In diesem Artikel werden die [Definitionen des allgemeinen Warnungsschemas](./alerts-common-schema.md) für Azure Monitor beschrieben. Dazu gehören die Definitionen für Webhooks, Azur Logic Apps, Azure Functions und Azure Automation Runbooks. 
 
 Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der Warnung. Diese Instanzen werden im allgemeinen Schema in den folgenden Abschnitten beschrieben:
-* **Zusammenfassung**: Eine Gruppe standardisierter Felder (für alle Warnungstypen gleich), die beschreiben, auf welcher Ressource sich die Warnung befindet, sowie zusätzliche allgemeine Warnungsmetadaten (z.B. Schweregrad oder Beschreibung). 
+* **Zusammenfassung**: Eine Gruppe standardisierter Felder (für alle Warnungstypen gleich), die beschreiben, auf welcher Ressource sich die Warnung befindet, sowie zusätzliche allgemeine Warnungsmetadaten (z.B. Schweregrad oder Beschreibung). Definitionen des Schweregrads finden Sie in der [Übersicht der Warnungen](alerts-overview.md#overview). 
 * **Warnungskontext**: Eine Gruppe von Feldern, mit denen die Ursache der Warnung beschrieben wird. Die Felder variieren basierend auf dem Warnungstyp. Eine Metrikwarnung enthält im Warnungskontext beispielsweise Felder wie den Metriknamen und -wert, während eine Aktivitätsprotokollwarnung Informationen zum Ereignis enthält, von dem die Warnung generiert wurde. 
 
 **Beispielnutzlast einer Warnung**

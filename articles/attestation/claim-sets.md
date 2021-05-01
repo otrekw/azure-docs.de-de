@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0d6d5a08ea85ebb666acc0336f1e1d7ec5e097da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e82e9fc93bf8c816fcbfd5869156745dea630313
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044667"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517554"
 ---
 # <a name="claim-sets"></a>Anspruchsätze
 
@@ -30,11 +30,66 @@ Ansprüche, die während der Nachweisgenerierung für Enclaves mit Microsoft Azu
 
 Ansprüche, die von Richtlinienerstellern verwendet werden, um Autorisierungsregeln in einer SGX-Nachweisrichtlinie zu definieren:
 
-- **x-ms-sgx-is-debuggable**: ein boolescher Wert, der angibt, ob Debugging für die Enclave aktiviert ist oder nicht
-- **x-ms-sgx-product-id**: Produkt-ID-Wert der SGX-Enclave 
-- **x-ms-sgx-mrsigner**: Hexadezimal codierter Wert des Felds „mrsigner“ des Angebots
-- **x-ms-sgx-mrenclave**: Hexadezimal codierter Wert des Felds „mrenclave“ des Angebots
-- **x-ms-sgx-svn**: Im Angebot codierte Sicherheitsversionsnummer 
+- **x-ms-sgx-is-debuggable**: Ein boolescher Wert, der angibt, ob Debugging für die Enclave aktiviert ist.
+  
+  SGX-Enclaves können mit deaktiviertem oder aktiviertem Debuggen geladen werden. Wenn das Flag in der Enclave auf „true“ festgelegt ist, werden Debugfeatures für den Enclave-Code aktiviert. Dies schließt auch die Möglichkeit mit ein, auf den Arbeitsspeicher der Enclave zuzugreifen. Daher sollte das Flag nur zu Entwicklungszwecken auf „true“ festgelegt werden. Wenn diese Option in einer Produktionsumgebung aktiviert wird, erlöschen die SGX-Sicherheitsgarantien.
+  
+  Azure Attestation-Benutzer können mithilfe der Nachweisrichtlinie überprüfen, ob das Debuggen für die SGX-Enclave deaktiviert ist. Nach dem Hinzufügen der Richtlinienregel tritt beim Nachweis ein Fehler auf, wenn ein böswilliger Benutzer die Debugunterstützung aktiviert, um Zugriff auf den Enclave-Inhalt zu erlangen.
+
+- **x-ms-sgx-product-id**: Ein ganzzahliger Wert, der die Produkt-ID der SGX-Enclave angibt.
+
+  Vom Enclave-Autor wird jeder Enclave eine Produkt-ID zugewiesen. Die Produkt-ID ermöglicht es dem Enclave-Autor, Enclaves zu segmentieren, die mit dem gleichen MRSIGNER-Wert signiert wurden. Durch Hinzufügen einer Validierungsregel zur Nachweisrichtlinie können Kunden überprüfen, ob sie die beabsichtigten Enclaves verwenden. Beim Nachweis tritt ein Fehler auf, wenn die Produkt-ID der Enclave nicht dem vom Enclave-Autor veröffentlichten Wert entspricht.
+
+- **x-ms-sgx-mrsigner**: Ein Zeichenfolgenwert, der den Autor der SGX-Enclave identifiziert.
+
+  MRSIGNER ist der Hash des öffentlichen Schlüssels des Enclave-Autors, der zum Signieren der Binärdatei der Enclave verwendet wird. Durch die Überprüfung des MRSIGNER-Werts über eine Nachweisrichtlinie können Kunden prüfen, ob innerhalb einer Enclave vertrauenswürdige Binärdateien ausgeführt werden. Wenn der Richtlinienanspruch nicht dem MRSIGNER-Wert des Enclave-Autors entspricht, deutet dies darauf hin, dass die Binärdatei der Enclave nicht von einer vertrauenswürdigen Quelle signiert wurde, und bei dem Nachweis tritt ein Fehler auf.
+  
+  Wenn ein Enclave-Autor MRSIGNER aus Sicherheitsgründen rotieren möchte, muss die Azure Attestation-Richtlinie aktualisiert werden, um die neuen und alten MRSIGNER-Werte zu unterstützen, bevor die Binärdateien aktualisiert werden. Andernfalls tritt bei Autorisierungsprüfungen und somit bei Nachweisen ein Fehler auf.
+  
+  Die Nachweisrichtlinie muss im folgenden Format aktualisiert werden: 
+ 
+  #### <a name="before-key-rotation"></a>Vor der Schlüsselrotation
+ 
+   ```
+    version= 1.0;
+    authorizationrules 
+    {
+    [ type=="x-ms-sgx-is-debuggable", value==false]&&
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+    };
+  ```
+
+   #### <a name="during-key-rotation"></a>Während der Schlüsselrotation
+
+    ```
+      version= 1.0;
+      authorizationrules 
+      {
+      [ type=="x-ms-sgx-is-debuggable", value==false]&&
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+      [ type=="x-ms-sgx-is-debuggable", value==false ]&& 
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
+      };
+    ```
+
+   #### <a name="after-key-rotation"></a>Nach der Schlüsselrotation
+
+    ```
+      version= 1.0;
+      authorizationrules 
+      { 
+      [ type=="x-ms-sgx-is-debuggable", value==false]&& 
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
+      };
+    ```
+
+- **x-ms-sgx-mrenclave**: Ein Zeichenfolgenwert, der den Code und die Daten identifiziert, die in den Enclave-Arbeitsspeicher geladen wurden. 
+
+  MRENCLAVE ist eine der Enclave-Messungen, die zum Überprüfen der Enclave-Binärdateien verwendet werden können. Hierbei handelt es sich um den Hash des Codes, der innerhalb der Enclave ausgeführt wird. Die Messung ändert sich mit jeder Änderung am Binärcode der Enclave. Durch die Überprüfung des MRENCLAVE-Werts über eine Nachweisrichtlinie können Kunden prüfen, ob innerhalb einer Enclave die beabsichtigten Binärdateien ausgeführt werden. Da sich MRENCLAVE jedoch bei jeder noch so kleinen Änderung des vorhandenen Codes ändert, empfiehlt es sich, Enclave-Binärdateien mithilfe der MRSIGNER-Überprüfung in einer Nachweisrichtlinie zu überprüfen.
+
+- **x-ms-sgx-svn**: Ein ganzzahliger Wert, der die Sicherheitsversionsnummer der SGX-Enclave angibt.
+
+  Der Enclave-Autor weist jeder Version der SGX-Enclave eine Sicherheitsversionsnummer (SVN) zu. Wird im Enclave-Code ein Sicherheitsproblem erkannt, erhöht der Enclave-Autor den SVN-Wert nach der Beseitigung des Sicherheitsrisikos. Um die Interaktion mit unsicherem Enclave-Code zu verhindern, können Kunden der Nachweisrichtlinie eine entsprechende Validierungsregel hinzufügen. Wenn die SVN des Enclave-Codes nicht der vom Enclave-Autor empfohlenen Version entspricht, tritt bei dem Nachweis ein Fehler auf.
 
 Die unten angegebenen Ansprüche werden als veraltet eingestuft, aber sie werden vollständig unterstützt und sind auch in Zukunft noch vorhanden. Wir empfehlen Ihnen, die nicht als veraltet eingestuften Anspruchsnamen zu verwenden.
 

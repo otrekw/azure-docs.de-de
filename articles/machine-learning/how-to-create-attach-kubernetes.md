@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/11/2021
-ms.openlocfilehash: bc8f7aa6827ce251799acd0673d43344c0833c3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149323"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276653"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Erstellen und Anfügen eines Azure Kubernetes Service-Clusters
 
@@ -48,12 +48,8 @@ Mit Azure Machine Learning kann ein trainiertes Machine Learning-Modell im Azure
 
 - Wenn Sie einen privaten AKS-Cluster (mit Azure Private Link) verwenden möchten, müssen Sie zuerst den Cluster erstellen und diesen dann **an den Arbeitsbereich anfügen**. Weitere Informationen finden Sie unter [Erstellen eines privaten Azure Kubernetes Service-Clusters](../aks/private-clusters.md).
 
-- Der Computename für den AKS-Cluster MUSS innerhalb Ihres Azure ML-Arbeitsbereichs eindeutig sein.
-    - Der Name ist erforderlich und muss zwischen 3 und 24 Zeichen lang sein.
-    - Gültige Zeichen sind Groß- und Kleinbuchstaben, Ziffern und das Zeichen -.
-    - Der Name muss mit einem Buchstaben beginnen.
-    - Der Name muss auf allen vorhandenen Compute-Instanzen innerhalb einer Azure-Region eindeutig sein. Sie erhalten eine Warnung, wenn der von Ihnen gewählte Name nicht eindeutig ist.
-   
+- Der Computename für den AKS-Cluster MUSS innerhalb Ihres Azure ML-Arbeitsbereichs eindeutig sein. Er kann Buchstaben, Ziffern und Bindestriche enthalten. Er muss mit einem Buchstaben beginnen, mit einem Buchstaben oder einer Ziffer enden und zwischen 3 und 24 Zeichen lang sein.
+ 
  - Wenn Sie Modelle auf **GPU**-Knoten oder **FPGA**-Knoten (oder einer bestimmten SKU) bereitstellen möchten, müssen Sie einen Cluster mit der jeweiligen SKU erstellen. Das Erstellen eines sekundären Knotenpools in einem vorhandenen Cluster und Bereitstellen von Modellen im sekundären Knotenpool wird nicht unterstützt.
  
 - Beim Erstellen oder Anfügen eines Clusters können Sie auswählen, ob der Cluster für __Dev/Test__ oder die __Produktion__ erstellt werden soll. Wenn Sie einen AKS-Cluster für __Entwicklung__, __Validierung__ und __Tests__ statt für die Produktion erstellen möchten, legen Sie __Clusterzweck__ auf __Dev/Test__ fest. Wenn Sie den Clusterzweck nicht angeben, wird ein Cluster für die __Produktion__ erstellt. 

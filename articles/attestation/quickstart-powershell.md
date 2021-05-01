@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 628bb9886264574bf33ac927cf5480f91144c39c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501123"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533995"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Schnellstart: Einrichten von Azure Attestation mithilfe von Azure PowerShell
 
@@ -120,6 +120,10 @@ $attestationResourceGroup = "<attestation provider resource group name>"
 New-AzResourceGroup -Name $attestationResourceGroup -Location $location 
 ```
 
+ > [!NOTE]
+   > Wenn ein Nachweisanbieter in dieser Ressourcengruppe erstellt wird, muss ein Azure AD-Benutzer über die Rolle **Mitwirkender an Nachweis** für den Anbieter verfügen, um Vorgänge wie die Verwaltung von Richtlinienkonfigurations-/Richtlinien-Signaturgeberzertifikaten durchzuführen. Diese Berechtigungen können auch mit Rollen wie **Besitzer** (Platzhalterberechtigungen)/**Mitwirkender** (Platzhalterberechtigungen) für das Abonnement bzw. die Ressourcengruppe geerbt werden.  
+
+
 ## <a name="create-and-manage-an-attestation-provider"></a>Erstellen und Verwalten eines Nachweisanbieters
 
 Mit „New-AzAttestation“ wird ein Nachweisanbieter erstellt.
@@ -170,12 +174,12 @@ Für die Verwaltung von Richtlinien benötigt ein Azure AD-Benutzer die folgend
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-Diese Berechtigungen können einem AD-Benutzer über eine Rolle wie „Besitzer“ (Platzhalterberechtigungen), „Mitwirkender“ (Platzhalterberechtigungen) oder „Mitwirkender an Nachweis“ (spezifische Berechtigungen nur für Azure Attestation) zugewiesen werden.  
+ Zum Ausführen dieser Aktionen muss ein Azure AD-Benutzer über die Rolle **Mitwirkender an Nachweis** für den Nachweisanbieter verfügen. Diese Berechtigungen können auch mit Rollen wie **Besitzer** (Platzhalterberechtigungen)/**Mitwirkender** (Platzhalterberechtigungen) für das Abonnement bzw. die Ressourcengruppe geerbt werden.  
 
 Für das Lesen von Richtlinien benötigt ein Azure AD-Benutzer die folgenden Berechtigungen für „Aktionen“:
 - Microsoft.Attestation/attestationProviders/attestation/read
 
-Diese Berechtigung kann einem AD-Benutzer über eine Rolle wie „Leser“ (Platzhalterberechtigungen) oder „Nachweisleser“ (spezifische Berechtigungen nur für Azure Attestation) zugewiesen werden.
+ Zum Ausführen dieser Aktionen muss ein Azure AD-Benutzer über die Rolle **Nachweisleser** für den Nachweisanbieter verfügen. Die Leseberechtigung kann auch mit Rollen wie **Leser** (Platzhalterberechtigungen) für das Abonnement bzw. die Ressourcengruppe geerbt werden.  
 
 Die folgenden PowerShell-Cmdlets ermöglichen die Richtlinienverwaltung für einen Nachweisanbieter (jeweils eine TEE):
 

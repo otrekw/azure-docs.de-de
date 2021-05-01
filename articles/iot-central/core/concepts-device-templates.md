@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 04c2330ffee396f5fc30b85640e992df77c08263
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2396768d87b93c4df16b6de78d03faf1d8d1cc2b
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97795427"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492000"
 ---
 # <a name="what-are-device-templates"></a>Was sind Gerätevorlagen?
 
@@ -39,70 +39,122 @@ Ein Gerätemodell definiert, wie ein Gerät mit Ihrer IoT Central-Anwendung inte
 
 Ein Lösungsentwickler kann auch eine JSON-Datei exportieren, die das Gerätemodell enthält. Ein Geräteentwickler kann anhand dieses JSON-Dokuments verstehen, wie das Gerät mit der IoT Central-Anwendung kommunizieren soll.
 
-Die JSON-Datei mit der Definition des Gerätemodells verwendet [Digital Twin Definition Language (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central erwartet, dass die JSON-Datei das Gerätemodell mit inline und nicht in separaten Dateien definierten Schnittstellen enthält.
+Die JSON-Datei mit der Definition des Gerätemodells verwendet [Digital Twin Definition Language (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central erwartet, dass die JSON-Datei das Gerätemodell mit inline und nicht in separaten Dateien definierten Schnittstellen enthält. Weitere Informationen finden Sie im [Modellhandbuch für IoT Plug & Play](../../iot-pnp/concepts-modeling-guide.md).
 
 Ein typisches IoT-Gerät besteht aus folgenden Komponenten:
 
 - Benutzerdefinierte Komponenten, die Ihr Gerät einzigartig machen
 - Standardkomponenten, die bei allen Geräten identisch sind
 
-Diese Komponenten werden in einem Gerätemodell als _Schnittstellen_ bezeichnet. Schnittstellen definieren die Details der einzelnen mit Ihrem Gerät implementierten Komponenten. Schnittstellen lassen sich in mehreren Gerätemodellen wiederverwenden. In der DTDL verweist eine Komponente auf eine Schnittstelle, die in einer separaten DTDL-Datei definiert ist.
+Diese Komponenten werden in einem Gerätemodell als _Schnittstellen_ bezeichnet. Schnittstellen definieren die Details der einzelnen mit Ihrem Gerät implementierten Komponenten. Schnittstellen lassen sich in mehreren Gerätemodellen wiederverwenden. In DTDL verweist eine Komponente auf eine andere Schnittstelle, die in einer separaten DTDL-Datei oder in einem separaten Abschnitt der Datei definiert werden kann.
 
-Das folgende Beispiel zeigt die Gliederung des Gerätemodells für ein Temperatursteuerungsgerät. Die Standardkomponente enthält Definitionen für `workingSet`, `serialNumber`und `reboot`. Das Gerätemodell umfasst auch die Schnittstellen `thermostat` und `deviceInformation`:
+Das folgende Beispiel zeigt die Gliederung des Gerätemodells für ein [Temperatursteuerungsgerät](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/temperaturecontroller-2.json). Die Standardkomponente enthält Definitionen für `workingSet`, `serialNumber`und `reboot`. Das Gerätemodell umfasst auch zwei `thermostat`-Komponenten und eine `deviceInformation`-Komponente. Der Inhalt der drei Komponenten wurde der Prägnanz halber entfernt:
 
 ```json
-{
-  "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:TemperatureController;1",
-  "@type": "Interface",
-  "displayName": "Temperature Controller",
-  "description": "Device with two thermostats and remote reboot.",
-  "contents": [
-    {
-      "@type": [
-        "Telemetry", "DataSize"
-      ],
-      "name": "workingSet",
-      "displayName": "Working Set",
-      "description": "Current working set of the device memory in KiB.",
-      "schema": "double",
-      "unit" : "kibibyte"
-    },
-    {
-      "@type": "Property",
-      "name": "serialNumber",
-      "displayName": "Serial Number",
-      "description": "Serial number of the device.",
-      "schema": "string"
-    },
-    {
-      "@type": "Command",
-      "name": "reboot",
-      "displayName": "Reboot",
-      "description": "Reboots the device after waiting the number of seconds specified.",
-      "request": {
-        "name": "delay",
-        "displayName": "Delay",
-        "description": "Number of seconds to wait before rebooting the device.",
-        "schema": "integer"
+[
+  {
+    "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+    ],
+    "@id": "dtmi:com:example:TemperatureController;2",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": [
+          "Telemetry",
+          "DataSize"
+        ],
+        "description": {
+          "en": "Current working set of the device memory in KiB."
+        },
+        "displayName": {
+          "en": "Working Set"
+        },
+        "name": "workingSet",
+        "schema": "double",
+        "unit": "kibibit"
+      },
+      {
+        "@type": "Property",
+        "displayName": {
+          "en": "Serial Number"
+        },
+        "name": "serialNumber",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@type": "Command",
+        "commandType": "synchronous",
+        "description": {
+          "en": "Reboots the device after waiting the number of seconds specified."
+        },
+        "displayName": {
+          "en": "Reboot"
+        },
+        "name": "reboot",
+        "request": {
+          "@type": "CommandPayload",
+          "description": {
+            "en": "Number of seconds to wait before rebooting the device."
+          },
+          "displayName": {
+            "en": "Delay"
+          },
+          "name": "delay",
+          "schema": "integer"
+        }
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "thermostat1"
+        },
+        "name": "thermostat1",
+        "schema": "dtmi:com:example:Thermostat;2"
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "thermostat2"
+        },
+        "name": "thermostat2",
+        "schema": "dtmi:com:example:Thermostat;2"
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "DeviceInfo"
+        },
+        "name": "deviceInformation",
+        "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1"
       }
-    },
-    {
-      "@type" : "Component",
-      "schema": "dtmi:com:example:Thermostat;1",
-      "name": "thermostat",
-      "displayName": "Thermostat",
-      "description": "Thermostat One."
-    },
-    {
-      "@type": "Component",
-      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
-      "name": "deviceInformation",
-      "displayName": "Device Information interface",
-      "description": "Optional interface with basic device hardware information."
+    ],
+    "displayName": {
+      "en": "Temperature Controller"
     }
-  ]
-}
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:example:Thermostat;2",
+    "@type": "Interface",
+    "displayName": "Thermostat",
+    "description": "Reports current temperature and provides desired temperature control.",
+    "contents": [
+      ...
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:azure:DeviceManagement:DeviceInformation;1",
+    "@type": "Interface",
+    "displayName": "Device Information",
+    "contents": [
+      ...
+    ]
+  }
+]
 ```
 
 Eine Schnittstelle umfasst einige Pflichtfelder:
@@ -132,7 +184,7 @@ Das folgende Beispiel zeigt die Definition für eine Thermostatschnittstelle:
 ```json
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:Thermostat;1",
+  "@id": "dtmi:com:example:Thermostat;2",
   "@type": "Interface",
   "displayName": "Thermostat",
   "description": "Reports current temperature and provides desired temperature control.",
@@ -143,8 +195,8 @@ Das folgende Beispiel zeigt die Definition für eine Thermostatschnittstelle:
         "Temperature"
       ],
       "name": "temperature",
-      "displayName" : "Temperature",
-      "description" : "Temperature in degrees Celsius.",
+      "displayName": "Temperature",
+      "description": "Temperature in degrees Celsius.",
       "schema": "double",
       "unit": "degreeCelsius"
     },
@@ -157,7 +209,7 @@ Das folgende Beispiel zeigt die Definition für eine Thermostatschnittstelle:
       "schema": "double",
       "displayName": "Target Temperature",
       "description": "Allows to remotely specify the desired target temperature.",
-      "unit" : "degreeCelsius",
+      "unit": "degreeCelsius",
       "writable": true
     },
     {
@@ -167,7 +219,7 @@ Das folgende Beispiel zeigt die Definition für eine Thermostatschnittstelle:
       ],
       "name": "maxTempSinceLastReboot",
       "schema": "double",
-      "unit" : "degreeCelsius",
+      "unit": "degreeCelsius",
       "displayName": "Max temperature since last reboot.",
       "description": "Returns the max temperature since last device reboot."
     },
@@ -183,7 +235,7 @@ Das folgende Beispiel zeigt die Definition für eine Thermostatschnittstelle:
         "schema": "dateTime"
       },
       "response": {
-        "name" : "tempReport",
+        "name": "tempReport",
         "displayName": "Temperature Report",
         "schema": {
           "@type": "Object",
@@ -199,17 +251,17 @@ Das folgende Beispiel zeigt die Definition für eine Thermostatschnittstelle:
               "schema": "double"
             },
             {
-              "name" : "avgTemp",
+              "name": "avgTemp",
               "displayName": "Average Temperature",
               "schema": "double"
             },
             {
-              "name" : "startTime",
+              "name": "startTime",
               "displayName": "Start Time",
               "schema": "dateTime"
             },
             {
-              "name" : "endTime",
+              "name": "endTime",
               "displayName": "End Time",
               "schema": "dateTime"
             }
@@ -233,9 +285,9 @@ Dieses Beispiel zeigt zwei Eigenschaften (eine schreibgeschützte und eine besch
 
 Standardmäßig sind Eigenschaften schreibgeschützt. Schreibgeschützte Eigenschaften bedeuten, dass das Gerät Aktualisierungen der Eigenschaftswerte an Ihre IoT Central-Anwendung sendet. Ihre IoT Central-Anwendung kann den Wert einer schreibgeschützten Eigenschaft nicht festlegen.
 
-Sie können eine Eigenschaft auch als beschreibbar für eine Schnittstelle markieren. Ein Gerät kann eine Aktualisierung einer beschreibbaren Eigenschaft von Ihrer IoT Central-Anwendung empfangen sowie Aktualisierungen der Eigenschaftswerte an Ihre Anwendung senden.
+Sie können eine Eigenschaft einer Schnittstelle auch als beschreibbar markieren. Ein Gerät kann eine Aktualisierung einer beschreibbaren Eigenschaft von Ihrer IoT Central-Anwendung empfangen sowie Aktualisierungen der Eigenschaftswerte an Ihre Anwendung senden.
 
-Geräte müssen nicht verbunden sein, um Eigenschaftswerte festzulegen. Die aktualisierten Werte werden übertragen, wenn das Gerät das nächste Mal mit der Anwendung verbunden wird. Dieses Verhalten gilt sowohl für schreibgeschützte als auch für beschreibbare Eigenschaften.
+Geräte müssen nicht verbunden sein, um Eigenschaftswerte festzulegen. Die aktualisierten Werte werden übertragen, wenn das Gerät das nächste Mal mit der Anwendung verbunden wird. Dieses Verhalten gilt sowohl für schreibgeschützte als auch beschreibbare Eigenschaften.
 
 Verwenden Sie keine Eigenschaften, um Telemetriedaten von Ihrem Gerät zu senden. Beispielsweise bedeutet die schreibgeschützte `temperatureSetting=80`-Eigenschaft, dass die Gerätetemperatur auf 80 festgelegt wurde und das Gerät versucht, diese Temperatur zu erreichen oder zu halten.
 

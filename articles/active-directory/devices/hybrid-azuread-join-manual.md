@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 04/16/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f1043bf94276c752b816e458ee7513837db0ecd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577987"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130627"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -76,7 +76,7 @@ Wenn Ihre Organisation für Windows 10-Geräte mit Version 1703 oder einer älte
 Ab Version 1803 von Windows 10 versucht das Gerät, die Azure AD-Hybrideinbindung unter Verwendung des synchronisierten Computers/Geräts durchzuführen, auch wenn eine Azure AD-Hybrideinbindung durch ein Gerät in einer Verbunddomäne mit AD FS nicht erfolgreich war (sofern Azure AD Connect für die Synchronisierung des Computer-/Geräteobjekts mit Azure AD konfiguriert ist).
 
 > [!NOTE]
-> Damit „sync join“ für die Geräteregistrierung erfolgreich ist, schließen Sie im Rahmen der Geräteregistrierungskonfiguration nicht die Standardgeräteattribute aus der Konfiguration der Azure AD Connect-Synchronisierung aus. Weitere Informationen zu Standardgeräteattributen, die mit Azure AD synchronisiert werden, finden Sie unter [Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
+> Damit „sync join“ für die Geräteregistrierung erfolgreich ist, schließen Sie im Rahmen der Geräteregistrierungskonfiguration nicht die Standardgeräteattribute aus der Konfiguration der Azure AD Connect-Synchronisierung aus. Weitere Informationen zu Standardgeräteattributen, die mit Azure AD synchronisiert werden, finden Sie unter [Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute](../hybrid/reference-connect-sync-attributes-synchronized.md#windows-10).
 
 Sie können das Skript zum [Testen der Geräteregistrierungskonnektivität](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) verwenden, um zu überprüfen, ob das Gerät unter dem Systemkonto auf die oben genannten Microsoft-Ressourcen zugreifen kann.
 
@@ -145,7 +145,7 @@ Mit dem folgenden Skript wird ein Beispiel für die Verwendung des Cmdlets veran
 
 Für das `Initialize-ADSyncDomainJoinedComputerSync`-Cmdlet gilt Folgendes:
 
-* Es verwendet das Active Directory-PowerShell-Modul und die Tools von Azure Active Directory Domain Services (Azure AD DS). Diese Tools basieren auf Active Directory-Webdiensten, die auf einem Domänencontroller ausgeführt werden. Active Directory-Webdienste werden auf Domänencontrollern mit Windows Server 2008 R2 und höher unterstützt.
+* Es verwendet das Active Directory-PowerShell-Modul und die Tools von Active Directory Domain Services (AD DS). Diese Tools basieren auf Active Directory-Webdiensten, die auf einem Domänencontroller ausgeführt werden. Active Directory-Webdienste werden auf Domänencontrollern mit Windows Server 2008 R2 und höher unterstützt.
 * Es wird nur von der MSOnline PowerShell-Modulversion 1.1.166.0 unterstützt. Dieses Modul können Sie [hier](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0) herunterladen.
 * Wenn die AD DS-Tools nicht installiert sind, ist `Initialize-ADSyncDomainJoinedComputerSync` nicht erfolgreich. Die AD DS-Tools können über den Server-Manager unter **Features** > **Remoteserver-Verwaltungstools** > **Rollenverwaltungstools** installiert werden.
 

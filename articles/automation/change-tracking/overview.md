@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed29def305bfa33a0a947a331775de89275e5f7f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572607"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220865"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
@@ -40,6 +40,8 @@ Computer, die mit dem Log Analytics-Arbeitsbereich verbunden sind, verwenden den
 
 > [!NOTE]
 > Die Funktion „Änderungsnachverfolgung und Bestand“ setzt voraus, dass ein Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto verknüpft wird. Eine aktuelle Liste der unterstützten Regionen finden Sie unter [Arbeitsbereichzuordnungen in Azure](../how-to/region-mappings.md). Die Regionszuordnungen haben keine Auswirkung auf die Möglichkeit, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.
+
+Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure Lighthouse](../../lighthouse/overview.md) integriert. Mit Azure Lighthouse können Sie umfangreiche Vorgänge mehrere Azure Active Directory-Mandanten (Azure AD) übergreifend gleichzeitig durchzuführen, sodass Sie Verwaltungsaufgaben wie Änderungsnachverfolgung und Bestand für die Mandanten, für die Sie verantwortlich sind, effizienter bewältigen können. Änderungsnachverfolgung und Bestand können Computer in mehreren Abonnements im selben Mandanten oder Mandanten übergreifend mit der [Delegierten Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) verwalten.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 

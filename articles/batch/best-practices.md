@@ -1,14 +1,14 @@
 ---
 title: Bewährte Methoden
 description: Erfahren Sie, welche bewährten Methoden und nützlichen Tipps es für das Entwickeln Ihrer Azure Batch-Lösungen gibt.
-ms.date: 02/03/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 278aae410af536a5cc41e55dabf1dd71de04151b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 7ef94b07a5131726c42a94088fd3ee1f413dbec7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550860"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802351"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -25,29 +25,28 @@ In diesem Artikel werden bewährte Methoden und nützliche Tipps für die effekt
 
 - **Poolzuordnungsmodus**: Beim Erstellen eines Batch-Kontos können Sie zwischen zwei Modi der Poolzuordnung wählen: **Batch-Dienst** und **Benutzerabonnement**. In den meisten Fällen sollten Sie den standardmäßigen Batchdienstmodus wählen, in dem Pools im Hintergrund von Batch verwalteten Abonnements zugeordnet werden. Im alternativen Benutzerabonnementmodus werden virtuelle Batchcomputer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Benutzerabonnementkonten werden hauptsächlich zum Ermöglichen einer wichtigen, aber kleinen Teilmenge von Szenarien verwendet. Weitere Informationen zum Benutzerabonnementmodus finden Sie unter [Zusätzliche Konfiguration für den Benutzerabonnementmodus](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
-- **‚cloudServiceConfiguration‘ oder ‚virtualMachineConfiguration‘.**
-    ‚virtualMachineConfiguration‘ sollte verwendet werden. Alle Batch-Funktionen werden von den ‚virtualMachineConfiguration‘-Pools unterstützt. Nicht alle Funktionen werden für ‚cloudServiceConfiguration‘-Pools unterstützt, und es werden keine neuen Funktionen geplant.
+- **„virtualMachineConfiguration“ oder „cloudServiceConfiguration“** : Obwohl Sie Pools derzeit mithilfe einer der beiden Konfigurationen erstellen können, sollten neue Pools mit „virtualMachineConfiguration“ und nicht mit „cloudServiceConfiguration“ konfiguriert werden. Alle aktuellen und neuen Batch-Funktionen werden von den Pools der Konfiguration des virtuellen Computers unterstützt. Pools mit Cloud Services-Konfiguration unterstützen nicht alle Features, und es sind keine neuen Funktionen geplant. Sie können [nach dem 29. Februar 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/) weder neue cloudServiceConfiguration-Pools erstellen noch vorhandenen Pools neue Knoten hinzuzufügen. Weitere Informationen finden Sie unter [Migrieren der Batch-Poolkonfiguration von Cloud Services zu Virtual Machines](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
-- **Berücksichtigen Sie die Ausführungszeit von Aufträgen und Aufgaben beim Festlegen der Zuordnung von Aufträgen zum Pool.**
-    Wenn Sie Aufträge haben, die hauptsächlich aus kurzen Aufgaben bestehen, und wenn die erwartete Gesamtzahl der Aufgaben gering ist, sodass auch die insgesamt zu erwartende Ausführungszeit des Auftrags nicht lang ist, sollten Sie nicht für jeden Auftrag einen neuen Pool zuordnen. Die Zuordnungszeit der Knoten verringert die Laufzeit des Auftrags.
+- **Ziehen Sie beim Festlegen der Zuordnung zwischen Auftrag und Pool die Ausführungszeit von Aufträgen und Aufgaben in Betracht**: Wenn Sie Aufträge verwenden, die hauptsächlich aus kurzen Aufgaben bestehen, und wenn die erwartete Gesamtzahl der Aufgaben und somit auch die insgesamt zu erwartende Ausführungszeit des Auftrags gering ist, sollten Sie nicht für jeden Auftrag einen neuen Pool zuordnen. Die Zuordnungszeit der Knoten verringert die Laufzeit des Auftrags.
 
-- **Pools sollten mehr als einen Computeknoten besitzen.**
-    Es ist nicht garantiert, dass einzelne Knoten immer verfügbar sind. Wenn auch ungewöhnlich, so können Hardwareausfälle, Betriebssystemupdates und eine Menge anderer Probleme dazu führen, dass einzelne Knoten offline sind. Wenn Ihr Batch-Workload deterministischen, garantierten Fortschritt erfordert, sollten Sie Pools mit mehreren Knoten zuordnen.
+- **Pools sollten mehrere Computeknoten aufweisen**: Es ist nicht garantiert, dass einzelne Knoten immer verfügbar sind. Wenn auch ungewöhnlich, so können Hardwareausfälle, Betriebssystemupdates und eine Menge anderer Probleme dazu führen, dass einzelne Knoten offline sind. Wenn Ihr Batch-Workload deterministischen, garantierten Fortschritt erfordert, sollten Sie Pools mit mehreren Knoten zuordnen.
+
+- **Verwenden Sie keine Images mit bevorstehendem EOL (End of Life).**
+    Es wird dringend empfohlen, keine Images zu verwenden, die bald nicht mehr von Batch unterstützt werden. Die Datumsangaben für die Unterstützungseinstellung können Sie über die [`ListSupportedImages`-API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages), [PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage) oder über die [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images) ermitteln. Es liegt in Ihrer Verantwortung, die Ansicht der für Ihre Pools relevanten EOL-Datumsangaben in regelmäßigen Abständen zu aktualisieren und Ihre Workloads vor dem EOL zu migrieren. Wenn Sie ein benutzerdefiniertes Image mit einem angegebenen Knoten-Agent verwenden, müssen Sie sicherstellen, dass Sie die EOL-Datumsangaben der Batch-Unterstützung für das Image befolgen, von dem Ihr benutzerdefiniertes Image abgeleitet oder an dem es ausgerichtet wird.
 
 - **Verwenden Sie Ressourcennamen nicht wieder.**
     Batch-Ressourcen (Aufträge, Pools usw.) kommen und gehen häufig im Laufe der Zeit. Beispielsweise erstellen Sie vielleicht am Montag einen Pool, den Sie am Dienstag löschen, um dann am Donnerstag einen weiteren Pool zu erstellen. Jeder neue Ressource, die Sie erstellen, sollte einen eindeutigen Name erhalten, den Sie zuvor noch nicht verwendet haben. Hierzu können Sie eine GUID (entweder als vollständiger Ressourcennamen oder als Teil davon) verwenden oder die Erstellungszeit der Ressource in den Ressourcennamen einbetten. Batch unterstützt [DisplayNam-](/dotnet/api/microsoft.azure.batch.jobspecification.displayname), womit Sie einer Ressource einen von Menschen lesbaren Namen geben können, auch wenn die tatsächliche Ressourcen-ID nicht wirklich menschenfreundlich ist. Durch die Verwendung eindeutiger Namen können Sie leichter unterscheiden, welche spezifische Ressource in Protokollen und Metriken etwas bewirkt hat. Außerdem entfällt hierdurch jede eventuelle Mehrdeutigkeit, wenn Sie jemals eine Supportanfrage für eine Ressource einreichen müssen.
 
-- **Kontinuität während Wartung und Ausfall von Pools.**
-    Es ist optimal, wenn Ihre Aufträge Pools dynamisch verwenden. Wenn Ihre Aufträge denselben Pool für alles verwenden, besteht die Möglichkeit, dass Ihre Aufträge nicht ausgeführt werden, wenn ein Problem mit dem Pool auftritt. Dies ist besonders wichtig für zeitkritische Workloads. Um dieses Problem zu beheben, wählen oder erstellen Sie einen Pool dynamisch, wenn Sie die einzelnen Aufträge planen, oder implementieren Sie eine Methode, um den Poolnamen außer Kraft zu setzen, sodass fehlerhafte Pools umgangen werden können.
 
-- **Geschäftskontinuität während Poolverwaltung und -ausfall**: Es gibt viele mögliche Ursachen, die möglicherweise verhindern, dass ein Pool auf die gewünschte Größe anwächst, z. B. interne Fehler, Kapazitätseinschränkungen usw. Aus diesem Grund sollten Sie bereit sein, Aufträge nötigenfalls einem anderen Pool zuzuweisen (möglicherweise mit einer anderen VM-Größe; Batch unterstützt dies mittels [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)). Vermeiden Sie die Verwendung einer statischen Pool-ID mit der Erwartung, dass Sie nie gelöscht und nie geändert wird.
+- **Kontinuität bei Wartung und Ausfällen des Pools**: Ihre Aufträge sollten Pools dynamisch verwenden. Wenn Ihre Aufträge denselben Pool für alles verwenden, besteht die Möglichkeit, dass Ihre Aufträge nicht ausgeführt werden, wenn ein Problem mit dem Pool auftritt. Dies ist besonders wichtig für zeitkritische Workloads. Um dieses Problem zu beheben, wählen oder erstellen Sie einen Pool dynamisch, wenn Sie die einzelnen Aufträge planen, oder implementieren Sie eine Methode, um den Poolnamen außer Kraft zu setzen, sodass fehlerhafte Pools umgangen werden können.
+
+- **Geschäftskontinuität während Poolwartung und -ausfall**: Es gibt viele Ursachen dafür, dass ein Pool nicht auf die gewünschte Größe anwächst, z. B. interne Fehler oder Kapazitätseinschränkungen. Daher sollten Sie dazu in der Lage sein, Aufträge notfalls einem anderen Pool zuzuweisen (möglicherweise mit einer anderen VM-Größe; Batch unterstützt dies mittels [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)). Vermeiden Sie die Verwendung einer statischen Pool-ID mit der Erwartung, dass Sie nie gelöscht und nie geändert wird.
 
 ### <a name="pool-lifetime-and-billing"></a>Lebensdauer und Abrechnung für Pools
 
 Die Poollebensdauer kann abhängig von der Zuordnungsmethode und den auf die Poolkonfiguration angewendeten Optionen variieren. Pools können eine beliebige Lebensdauer sowie eine jederzeit variable Anzahl von Computeknoten im Pool besitzen. Es liegt in Ihrer Verantwortung, die Serverknoten im Pool entweder explizit oder durch vom Dienst bereitgestellte Features ([Autoskalierung](nodes-and-pools.md#automatic-scaling-policy) oder [automatischer Pool](nodes-and-pools.md#autopools)) zu verwalten.
 
-- **Pools aktuell halten.**
-    Setzen Sie die Größe Ihrer Pools alle paar Monate auf null zurück, um sicherzustellen, dass Sie die [neuesten Updates und Fehlerbehebungen](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) für den Knoten-Agent erhalten. Ihr Pool empfängt keine Updates für den Knoten-Agent, es sei denn, er wird neu erstellt oder seine Größe auf 0 Computeknoten geändert. Vor dem erneuten Erstellen oder Ändern der Größe Ihres Pools wird empfohlen, alle Knoten-Agent-Protokolle zu Debuggingzwecken herunterzuladen, wie im Abschnitt [Knoten](#nodes) erläutert.
+- **Halten Sie Pools auf dem neuesten Stand**: Sie sollten die Größe Ihrer Pools alle paar Monate auf null zurücksetzen, um sicherzustellen, dass Sie die [neuesten Updates und Fehlerbehebungen für den Knoten-Agent erhalten](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md). Ihr Pool empfängt keine Updates für den Knoten-Agent, es sei denn, er wird neu erstellt oder seine Größe auf 0 Computeknoten geändert. Vor dem erneuten Erstellen oder Ändern der Größe Ihres Pools wird empfohlen, alle Knoten-Agent-Protokolle zu Debuggingzwecken herunterzuladen, wie im Abschnitt [Knoten](#nodes) erläutert.
 
 - **Erneutes Erstellen eines Pools**: In ähnlicher Weise ist es nicht empfehlenswert, Ihre Pools täglich zu löschen und neu zu erstellen. Erstellen Sie stattdessen einen neuen Pool, und aktualisieren Sie die vorhandenen Aufträge so, dass Sie auf den neuen Pool verweisen. Nachdem alle Aufgaben in den neuen Pool verschoben wurden, löschen Sie den alten Pool.
 
@@ -73,7 +72,7 @@ Pools können mithilfe von auf Azure Marketplace veröffentlichten Images von Dr
 
 ### <a name="azure-region-dependency"></a>Abhängigkeit von Azure-Regionen
 
-Es wird empfohlen, keine Abhängigkeit von einer einzelnen Azure-Region einzurichten, wenn Sie eine zeitkritische oder Produktionsworkload haben. In seltenen Fällen kann es Probleme geben, die sich auf eine ganze Region auswirken können. Wenn Ihre Verarbeitung beispielsweise zu einem bestimmten Zeitpunkt gestartet werden muss, sollten Sie erwägen, den Pool in ihrer primären Region zentral hochzuskalieren, und zwar *eine ganze Weile im Voraus vor der Startzeit*. Wenn diese Poolskalierung fehlschlägt, können Sie als Plan B einen Pool in einer (oder mehreren) Sicherungsregion(en) zentral hochskalieren. Pools über mehrere Konten hinweg in unterschiedlichen Regionen bieten eine bereite, leicht zugängliche Sicherung, wenn bei einem anderen Pool etwas schiefgeht. Weitere Informationen finden Sie unter [Entwerfen Ihrer Anwendung für Hochverfügbarkeit](high-availability-disaster-recovery.md).
+Sie sollten sich nicht auf eine einzige Azure-Region verlassen, wenn Sie eine zeitkritische oder eine Produktionsworkload verarbeiten. In seltenen Fällen kann es Probleme geben, die sich auf eine ganze Region auswirken können. Wenn Ihre Verarbeitung beispielsweise zu einem bestimmten Zeitpunkt gestartet werden muss, sollten Sie erwägen, den Pool in ihrer primären Region zentral hochzuskalieren, und zwar *eine ganze Weile im Voraus vor der Startzeit*. Wenn diese Poolskalierung fehlschlägt, können Sie als Plan B einen Pool in einer (oder mehreren) Sicherungsregion(en) zentral hochskalieren. Pools über mehrere Konten hinweg in unterschiedlichen Regionen bieten eine bereite, leicht zugängliche Sicherung, wenn bei einem anderen Pool etwas schiefgeht. Weitere Informationen finden Sie unter [Entwerfen Ihrer Anwendung für Hochverfügbarkeit](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Aufträge
 
@@ -133,7 +132,7 @@ Ein gängiges Beispiel hierfür ist eine Aufgabe zum Kopieren von Dateien auf ei
 
 ### <a name="avoid-short-execution-time"></a>Vermeiden kurzer Ausführungszeit
 
-Aufgaben, die nur für eine bis zwei Sekunden ausgeführt werden, sind nicht ideal. Sie sollten versuchen, eine signifikante Menge an Arbeit in einer einzelnen Aufgabe zu verrichten (mindestens 10 Sekunden, bis zu Stunden oder Tage). Wenn jede Aufgabe für eine Minute (oder mehr) ausgeführt wird, ist der Planungsaufwand als Anteil an der gesamten Computezeit gering.
+Aufgaben, die nur für eine bis zwei Sekunden ausgeführt werden, sind nicht ideal. Versuchen Sie, eine signifikante Menge an Arbeit in einer einzelnen Aufgabe zu verrichten (mindestens 10 Sekunden, bis zu Stunden oder Tage). Wenn jede Aufgabe für eine Minute (oder mehr) ausgeführt wird, ist der Planungsaufwand als Anteil an der gesamten Computezeit gering.
 
 ### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>Verwenden des Poolbereichs für Aufgaben mit kurzer Ausführungszeit in Windows-Knoten
 
@@ -238,6 +237,6 @@ Wenn Sie einen Dienst unter Windows aus dem Arbeitsverzeichnis „startTask“ a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen und Verwalten eines Azure Batch-Kontos im Azure-Portal](batch-account-create-portal.md).
 - Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
 - Erfahren Sie mehr über [Azure Batch-Standardkontingente, Grenzwerte und Einschränkungen sowie die Anforderung von Kontingentsteigerungen](batch-quota-limit.md).
+- Erfahren Sie, wie Sie [Fehler in Pool- und Knotenhintergrundvorgängen erkennen und vermeiden](batch-pool-node-error-checking.md) können.

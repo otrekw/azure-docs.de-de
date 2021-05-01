@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: 92d1534b5dd0233ce88b81d605c6502b67a121df
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f4cc631bd3ff05dc63566677ec96ef0360d362c9
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307893"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517350"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Überblick über Synapse Knowledge Center
 
 In diesem Tutorial erfahren Sie, wie Sie Synapse Studio Knowledge Center verwenden.
 
-## <a name="introduction-to-the-knowledge-center"></a>Einführung in Knowledge Center
+## <a name="finding-to-the-knowledge-center"></a>Suchen des Knowledge Center
 
 Es gibt zwei Möglichkeiten, das Knowledge Center in Synapse Studio aufzurufen:
 
@@ -30,12 +30,14 @@ Es gibt zwei Möglichkeiten, das Knowledge Center in Synapse Studio aufzurufen:
 
 Wählen Sie eine der beiden Methoden aus, und öffnen Sie das **Knowledge Center**.
 
+## <a name="exploring-the-knowledge-center"></a>Weitere Informationen zum Knowledge Center
+
 Sie sehen nach dem Öffnen, dass das **Knowledge Center** drei Aktionen ermöglicht:
 * **Use samples immediately** (Beispiele sofort verwenden). Wenn Sie ein kurzes Beispiel für die Funktionsweise von Synapse sehen möchten, wählen Sie diese Option aus.
 * **Katalog durchsuchen** Mit dieser Option können Sie Beispieldatasets verknüpfen und Beispielcode in Form von SQL-Skripts, Notebooks und Pipelines hinzufügen.
 * **Einführung in Synapse Studio**: Mit dieser Option können Sie sich einen kurzen Überblick über die Hauptbereiche von Synapse Studio verschaffen. Dies ist hilfreich, wenn Sie Synapse Studio noch nie verwendet haben.
 
-## <a name="exploring-use-samples-immediately"></a>Untersuchen: Use samples immediately (Beispiele sofort verwenden)
+## <a name="use-samples-immediately-three-samples-to-help-you-get-started-fast"></a>Sofortiges Verwenden von Beispielen: Drei Beispiele für den schnellen Einstieg
 
 Dieser Abschnitt enthält drei Elemente:
 * Beispieldaten mit Spark erkunden
@@ -49,7 +51,7 @@ Dieser Abschnitt enthält drei Elemente:
 1. Scrollen Sie zur ersten Abfrage (Zeilen 28 bis 32), und wählen Sie den Abfragetext aus.
 1. Klicken Sie auf "Ausführen". Nur der von Ihnen ausgewählte Code wird ausgeführt.
 
-## <a name="loading-more-nyc-taxi-data"></a>Laden von weiteren NYC Taxi-Daten
+## <a name="gallery-a-collectiopn-of-sample-data-sets-and-sample-code"></a>Katalog: Eine Sammlung von Beispieldatasets und Beispielcode
 
 1. Navigieren Sie zu **Knowledge Center**, und klicken Sie auf **Katalog durchsuchen**.
 1. Wählen Sie oben die Registerkarte **SQL scripts** (SQL-Skripts) aus.

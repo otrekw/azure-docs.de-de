@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: c6b9cfab4256c72118a65f7fb0c8e672e2082ffe
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: d4a6e25578cd26b10b34f74a9f859d4957cc553b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199661"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104783811"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Verwenden von Postman zum Senden von Anforderungen an die Azure Digital Twins-APIs
 
@@ -21,9 +21,13 @@ ms.locfileid: "102199661"
 
 In diesem Artikel wird beschrieben, wie Sie über die folgenden Schritte den [Postman-REST-Client](https://www.getpostman.com/) für die Interaktion mit den Azure Digital Twins-APIs konfigurieren:
 
-1. Verwenden Sie die [Azure CLI](/cli/azure/install-azure-cli), um ein Bearertoken zu erhalten, das Sie für API-Anforderungen in Postman verwenden können.
-1. Richten Sie eine Postman-Sammlung ein, und konfigurieren Sie den Postman-REST-Client, um das Bearertoken für die Authentifizierung zu verwenden.
-1. Verwenden Sie das konfigurierte Postman-Tool zum Erstellen und Senden einer Anforderung an die Azure Digital Twins-APIs.
+1. Verwenden Sie die Azure CLI, um [**ein Bearertoken zu erhalten**](#get-bearer-token), das Sie für API-Anforderungen in Postman verwenden können.
+1. Richten Sie eine [**Postman-Sammlung**](#about-postman-collections) ein, und konfigurieren Sie den Postman-REST-Client, um das Bearertoken für die Authentifizierung zu verwenden. Beim Einrichten der Sammlung können Sie eine der folgenden Optionen auswählen:
+    1. [**Importieren**](#import-collection-of-azure-digital-twins-apis) Sie eine vorgefertigte Sammlung von Azure Digital Twins-API-Anforderungen.
+    1. [**Erstellen**](#create-your-own-collection) Sie Ihre eigene Sammlung von Grund auf neu.
+1. Fügen Sie Ihrer konfigurierten Sammlung [**Anforderungen hinzu**](#add-an-individual-request), und senden Sie sie an die Azure Digital Twins-APIs.
+
+Azure Digital Twins bietet zwei Sätze von APIs, mit denen Sie arbeiten können: **Datenebene** und **Steuerungsebene**. Weitere Informationen zu den Unterschieden zwischen diesen API-Sätzen finden Sie unter [*Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md). Dieser Artikel enthält Informationen für beide API-Sätze.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,69 +56,209 @@ Andernfalls können Sie ein [Azure Cloud Shell](https://shell.azure.com)-Fenster
     az login
     ```
 
-1. Verwenden Sie als Nächstes den Befehl [az account get-access-token](/cli/azure/account#az_account_get_access_token), um ein Bearertoken mit Zugriff auf den Azure Digital Twins-Dienst abzurufen.
+2. Verwenden Sie als Nächstes den Befehl [az account get-access-token](/cli/azure/account#az_account_get_access_token), um ein Bearertoken mit Zugriff auf den Azure Digital Twins-Dienst abzurufen. In diesem Befehl übergeben Sie die Ressourcen-ID für den Azure Digital Twins-Dienstendpunkt, um ein Zugriffstoken zu erhalten, das auf Azure Digital Twins-Ressourcen zugreifen kann. 
 
+    Der erforderliche Kontext für das Token hängt vom verwendeten API-Satz ab. Verwenden Sie daher die unten aufgeführten Registerkarten, um zwischen den APIs der [Datenebene](how-to-use-apis-sdks.md#overview-data-plane-apis) und denen der [Steuerungsebene](how-to-use-apis-sdks.md#overview-control-plane-apis) auszuwählen.
+
+    # <a name="data-plane"></a>[Datenebene](#tab/data-plane)
+    
+    Um ein Token für die APIs der **Datenebene** zu erhalten, verwenden Sie den folgenden statischen Wert für den Tokenkontext: `0b07f429-9f4b-4714-9392-cc5e8e80c8b0`. Dies ist die Ressourcen-ID für den Azure Digital Twins-Dienstendpunkt.
+    
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
+    
+    # <a name="control-plane"></a>[Steuerungsebene](#tab/control-plane)
+    
+    Um ein Token für die APIs der **Steuerungsebene** zu erhalten, verwenden Sie den folgenden Wert für den Tokenkontext: `https://management.azure.com/`.
+    
+    ```azurecli-interactive
+    az account get-access-token --resource https://management.azure.com/
+    ```
+    ---
 
-1. Kopieren Sie den Wert `accessToken` in das Ergebnis, und speichern Sie ihn für die Verwendung im nächsten Abschnitt. Dies ist der **Tokenwert**, den Sie dem Postman-Tool bereitstellen, um Ihre Anforderungen zu authentifizieren.
 
-    :::image type="content" source="media/how-to-use-postman/console-access-token.png" alt-text="Ansicht eines lokalen Konsolenfensters, das das Ergebnis des Befehls „az account get-access-token“ anzeigt. Eines der Felder im Ergebnis wird als „accessToken“ bezeichnet, und der Beispielwert, der mit „ey“ beginnt, wird hervorgehoben.":::
+3. Kopieren Sie den Wert `accessToken` in das Ergebnis, und speichern Sie ihn für die Verwendung im nächsten Abschnitt. Dies ist Ihr **Tokenwert**, den Sie dem Postman-Tool bereitstellen, um Ihre Anforderungen zu autorisieren.
+
+    :::image type="content" source="media/how-to-use-postman/console-access-token.png" alt-text="Screenshot der Konsole mit dem Ergebnis des Befehls „az account get-access-token“. Das Feld „accessToken“ und der zugehörige Beispielwert sind hervorgehoben.":::
 
 >[!TIP]
 >Dieses Token ist für mindestens 5 Minuten und höchstens 60 Minuten gültig. Wenn die für das aktuelle Token zugewiesene Zeit abgelaufen ist, können Sie die Schritte in diesem Abschnitt wiederholen, um ein neues Token zu erhalten.
 
-## <a name="set-up-postman-collection-and-authorization"></a>Einrichten der Postman-Sammlung und -Autorisierung
+Als Nächstes richten Sie Postman so ein, dass dieses Token für API-Anforderungen an Azure Digital Twins verwendet wird.
 
-Richten Sie als Nächstes Postman ein, um API-Anforderungen zu stellen.
-Diese Schritte werden in Ihrer lokalen Postman-Anwendung ausgeführt. Öffnen Sie die Postman-Anwendung auf dem Computer.
+## <a name="about-postman-collections"></a>Informationen zu Postman-Sammlungen
+
+Anforderungen in Postman werden in **Sammlungen** (Gruppen von Anforderungen) gespeichert. Wenn Sie eine Sammlung erstellen, um Ihre Anforderungen zu gruppieren, können Sie allgemeine Einstellungen auf viele Anforderungen gleichzeitig anwenden. Dies kann die Autorisierung erheblich vereinfachen, wenn Sie planen, mehrere Anforderungen mit der Azure Digital Twins-API zu erstellen, da Sie diese Details nur einmal für die gesamte Sammlung konfigurieren müssen.
+
+Wenn Sie mit Azure Digital Twins arbeiten, können Sie zunächst eine [vorgefertigte Sammlung aller Azure Digital Twins-Anforderungen](#import-collection-of-azure-digital-twins-apis) importieren. Dies ist möglicherweise sinnvoll, wenn Sie die APIs ausprobieren und schnell ein Projekt mit Anforderungsbeispielen einrichten möchten.
+
+Alternativ dazu können Sie auch ganz von vorn beginnen, indem Sie eine [eigene leere Sammlung erstellen](#create-your-own-collection) und sie mit einzelnen Anforderungen auffüllen, die nur die benötigten APIs aufrufen. 
+
+In den folgenden Abschnitten werden beide Vorgehensweisen beschrieben. Der weitere Verlauf dieses Artikels bezieht sich auf Ihre lokale Postman-Anwendung. Öffnen Sie daher jetzt die Postman-Anwendung auf Ihrem Computer.
+
+## <a name="import-collection-of-azure-digital-twins-apis"></a>Importieren einer Sammlung von Azure Digital Twins-APIs
+
+Eine schnelle Einstiegsmöglichkeit für Azure Digital Twins in Postman besteht darin, eine vorgefertigte Sammlung von Anforderungen für die Azure Digital Twins-APIs zu importieren.
+
+### <a name="download-the-collection-file"></a>Herunterladen der Sammlungsdatei
+
+Der erste Schritt beim Importieren des API-Satzes ist das Herunterladen einer Sammlung. Wählen Sie eine der unten gezeigten Registerkarten für die Datenebene oder die Steuerungsebene aus, um die vorgefertigten Sammlungsoptionen anzuzeigen.
+
+# <a name="data-plane"></a>[Datenebene](#tab/data-plane)
+
+Zurzeit stehen zwei Azure Digital Twins-Sammlungen für die Datenebene zur Auswahl:
+* [**Azure Digital Twins Postman Collection**](https://github.com/microsoft/azure-digital-twins-postman-samples): Diese Sammlung bietet einen einfachen Einstieg in Azure Digital Twins in Postman. Die Anforderungen enthalten Beispieldaten, sodass Sie sie mit minimalen erforderlichen Änderungen ausführen können. Wählen Sie diese Sammlung aus, wenn Sie einen praktischen Satz von Schlüssel-API-Anforderungen mit Beispielinformationen wünschen.
+    - Um die Sammlung zu finden, navigieren Sie zum Repositorylink, und öffnen Sie die Datei namens *postman_collection.json*.
+* **[Swagger-Datei der Azure Digital Twins-Datenebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)** : Dieses Repository enthält die komplette Swagger-Datei für den Azure Digital Twins-API-Satz. Sie kann heruntergeladen und in Postman als Sammlung importiert werden. Dadurch wird ein umfassender Satz aller API-Anforderungen bereitgestellt, jedoch mit leeren Daten anstelle von Beispieldaten. Wählen Sie diese Sammlung aus, wenn Sie auf alle API-Aufrufe zugreifen und alle Daten selbst ausfüllen möchten.
+    - Um die Sammlung zu finden, navigieren Sie zum Repositorylink, und wählen Sie den Ordner für die neueste Version der Spezifikation aus. Öffnen Sie darin die Datei namens *digitaltwins.json*.
+
+# <a name="control-plane"></a>[Steuerungsebene](#tab/control-plane)
+
+Die derzeit für die Steuerungsebene verfügbare Sammlung ist die [**Swagger-Datei der Azure Digital Twins-Steuerungsebene**](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Dieses Repository enthält die komplette Swagger-Datei für den Azure Digital Twins-API-Satz. Sie kann heruntergeladen und in Postman als Sammlung importiert werden. Dadurch erhalten Sie einen umfassenden Satz aller API-Anforderungen.
+
+Um die Sammlung zu finden, navigieren Sie zum Repositorylink, und wählen Sie den Ordner für die neueste Version der Spezifikation aus. Öffnen Sie darin die Datei namens *digitaltwins.json*.
+
+---
+
+Im Folgenden wird beschrieben, wie Sie Ihre ausgewählte Sammlung auf Ihren Computer herunterladen, damit Sie sie in Postman importieren können.
+1. Verwenden Sie die oben aufgeführten Links, um die Sammlungsdatei in GitHub in Ihrem Browser zu öffnen.
+1. Wählen Sie die Schaltfläche **Raw** (Rohdaten) aus, um den Rohtext der Datei zu öffnen.
+    :::image type="content" source="media/how-to-use-postman/swagger-raw.png" alt-text="Screenshot der Datei „digitaltwins.json“ der Datenebene auf GitHub. Die Schaltfläche „Raw“ ist hervorgehoben." lightbox="media/how-to-use-postman/swagger-raw.png":::
+1. Kopieren Sie den Text aus dem Fenster, und fügen Sie ihn in eine neue Datei auf Ihrem Computer ein.
+1. Speichern Sie die Datei mit der Erweiterung *.json*. (Sie können einen beliebigen Dateinamen festlegen, solange Sie die Datei später wiederfinden.)
+
+### <a name="import-the-collection"></a>Importieren der Sammlung
+
+Importieren Sie als Nächstes die Sammlung in Postman.
+
+1. Wählen Sie im Hauptfenster von Postman die Schaltfläche **Import** aus.
+    :::image type="content" source="media/how-to-use-postman/postman-import-collection.png" alt-text="Screenshot eines neu geöffneten Postman-Fensters. Die Schaltfläche „Import“ ist hervorgehoben." lightbox="media/how-to-use-postman/postman-import-collection.png":::
+
+1. Wählen Sie im nachfolgenden Fenster „Import“ die Option **Upload Files** (Dateien hochladen) aus, und navigieren Sie zu der zuvor erstellten Sammlungsdatei auf Ihrem Computer. Wählen Sie Öffnen aus.
+1. Klicken Sie zur Bestätigung auf die Schaltfläche **Import**.
+
+    :::image type="content" source="media/how-to-use-postman/postman-import-collection-2.png" alt-text="Screenshot des Postman-Fensters „Import“, das die als Sammlung zu importierende Datei und die Schaltfläche „Import“ zeigt.":::
+
+Die neu importierte Sammlung kann jetzt in der Hauptansicht von Postman auf der Registerkarte „Collections“ (Sammlungen) angezeigt werden.
+
+:::image type="content" source="media/how-to-use-postman/postman-post-collection-imported.png" alt-text="Screenshot des Hauptfensters von Postman. Die neu importierte Sammlung wird auf der Registerkarte „Collections“ (Sammlungen) hervorgehoben." lightbox="media/how-to-use-postman/postman-post-collection-imported.png":::
+
+Fahren Sie anschließend mit dem nächsten Abschnitt fort, um der Sammlung ein Bearertoken für die Autorisierung hinzuzufügen und es mit ihrer Azure Digital Twins-Instanz zu verbinden.
+
+### <a name="configure-authorization"></a>Konfigurieren der Autorisierung
+
+Bearbeiten Sie als Nächstes die erstellte Sammlung, um einige Zugriffsdetails zu konfigurieren. Markieren Sie die von Ihnen erstellte Sammlung, und wählen Sie das Symbol **Weitere Aktionen anzeigen** aus, um ein Menü zu öffnen. Wählen Sie **Bearbeiten** aus.
+
+:::image type="content" source="media/how-to-use-postman/postman-edit-collection.png" alt-text="Screenshot von Postman. Das Symbol „Weitere Aktionen anzeigen“ für die importierte Sammlung ist hervorgehoben, und in den Optionen ist „Edit“ (Bearbeiten) markiert." lightbox="media/how-to-use-postman/postman-edit-collection.png":::
+
+Gehen Sie folgendermaßen vor, um der Sammlung ein Bearertoken für die Autorisierung hinzuzufügen. An dieser Stelle kommt der **Tokenwert** zum Einsatz, den Sie im Abschnitt [Abrufen des Bearertokens](#get-bearer-token) abgerufen haben, um ihn für alle API-Anforderungen in der Sammlung zu verwenden.
+
+1. Stellen Sie im Dialogfeld für Ihre Sammlung sicher, dass Sie sich auf der Registerkarte **Authorization** (Autorisierung) befinden. 
+
+    :::image type="content" source="media/how-to-use-postman/postman-authorization-imported.png" alt-text="Screenshot des Bearbeitungsdialogfelds der importierten Sammlung in Postman mit der Registerkarte „Authorization“ (Autorisierung)." lightbox="media/how-to-use-postman/postman-authorization-imported.png":::
+
+1. Legen Sie den Typ auf **OAuth 2.0** fest, fügen Sie das Zugriffstoken im Feld „Access Token“ (Zugriffstoken) ein, und klicken Sie auf **Save** (Speichern).
+
+    :::image type="content" source="media/how-to-use-postman/postman-paste-token-imported.png" alt-text="Screenshot des Postman-Bearbeitungsdialogfelds für die importierte Sammlung auf der Registerkarte „Authorization“ (Autorisierung). Der Typ lautet „OAuth 2.0“, und das Feld „Access Token“ (Zugriffstoken) ist hervorgehoben." lightbox="media/how-to-use-postman/postman-paste-token-imported.png":::
+
+### <a name="additional-configuration"></a>Zusätzliche Konfiguration
+
+# <a name="data-plane"></a>[Datenebene](#tab/data-plane)
+
+Wenn Sie eine Sammlung auf [Datenebene](how-to-use-apis-sdks.md#overview-data-plane-apis) erstellen, können Sie diese ganz einfach mit Ihren Azure Digital Twins-Ressourcen verbinden, indem Sie einige in den Sammlungen bereitgestellte **Variablen** festlegen. Wenn viele Anforderungen in einer Sammlung denselben Wert erfordern (z. B. den Hostnamen Ihrer Azure Digital Twins-Instanz), können Sie den Wert in einer Variablen speichern, die für jede Anforderung in der Sammlung gilt. Beide herunterladbaren Sammlungen für Azure Digital Twins verfügen über vorab erstellte Variablen, die Sie auf Sammlungsebene festlegen können.
+
+1. Wechseln Sie im Bearbeitungsdialogfeld für Ihre Sammlung zur Registerkarte **Variables** (Variablen).
+
+1. Verwenden Sie den **Hostnamen** Ihrer Instanz aus dem Abschnitt [*Voraussetzungen*](#prerequisites), um das Feld CURRENT VALUE (AKTUELLER WERT) der relevanten Variablen festzulegen. Wählen Sie **Speichern** aus.
+
+    :::image type="content" source="media/how-to-use-postman/postman-variables-imported.png" alt-text="Screenshot des Bearbeitungsdialogfelds der importierten Sammlung in Postman mit der Registerkarte „Variables“ (Variablen). Das Feld CURRENT VALUE (AKTUELLER WERT) ist hervorgehoben." lightbox="media/how-to-use-postman/postman-variables-imported.png":::
+
+1. Wenn Ihre Sammlung zusätzliche Variablen umfasst, füllen Sie auch diese Werte aus, und speichern Sie sie.
+
+Nach Durchführung der obigen Schritte haben Sie die Konfiguration der Sammlung abgeschlossen. Wenn Sie möchten, können Sie die Bearbeitungsregisterkarte für die Sammlung schließen.
+
+# <a name="control-plane"></a>[Steuerungsebene](#tab/control-plane)
+
+Wenn Sie eine Sammlung der [Steuerungsebene](how-to-use-apis-sdks.md#overview-control-plane-apis) erstellen, haben Sie bereits alle Schritte ausgeführt, die zum Konfigurieren der Sammlung erforderlich sind. Wenn Sie möchten, können Sie die Bearbeitungsregisterkarte für die Sammlung schließen und mit dem nächsten Abschnitt fortfahren.
+
+--- 
+
+### <a name="explore-requests"></a>Erkunden von Anforderungen
+
+Sehen Sie sich als Nächstes die Anforderungen in der Azure Digital Twins-API-Sammlung an. Sie können die Sammlung erweitern, um die vorab erstellten Anforderungen (nach Kategorie des Vorgangs sortiert) anzuzeigen. 
+
+Für unterschiedliche Anforderungen sind unterschiedliche Informationen zu Ihrer Instanz und den zugehörigen Daten erforderlich. Wenn Sie alle Informationen anzeigen möchten, die zum Erstellen einer bestimmten Anforderung erforderlich sind, suchen Sie in der [Referenzdokumentation zur REST-API für Azure Digital Twins](/rest/api/azure-digitaltwins/) nach den Anforderungsdetails.
+
+Mithilfe der folgenden Schritte können Sie die Details einer Anforderung in der Postman-Sammlung bearbeiten:
+
+1. Wählen Sie sie aus der Liste aus, um die bearbeitbaren Details zu öffnen. 
+
+1. Geben Sie Werte für die Variablen ein, die auf der Registerkarte **Params** (Parameter) unter **Path Variables** (Pfadvariablen) aufgelistet sind.
+
+    :::image type="content" source="media/how-to-use-postman/postman-request-details-imported.png" alt-text="Screenshot von Postman. Die Sammlung wurde erweitert, um eine Anforderung anzuzeigen. Der Abschnitt „Path Variables (Pfadvariablen) ist in den Anforderungsdetails hervorgehoben." lightbox="media/how-to-use-postman/postman-request-details-imported.png":::
+
+1. Geben Sie auf den jeweiligen Registerkarten alle erforderlichen Details für **Header** oder **Body** (Textkörper) an.
+
+Nachdem alle erforderlichen Informationen bereitgestellt wurden, können Sie die Anforderung über die Schaltfläche **Send** (Senden) ausführen.
+
+Mithilfe der im folgenden Abschnitt [*Hinzufügen einer eigenen Anforderung*](#add-an-individual-request) beschriebenen Vorgehensweise können Sie der Sammlung auch eigene Anforderungen hinzufügen.
+
+## <a name="create-your-own-collection"></a>Erstellen Ihrer eigenen Sammlung
+
+Statt die vorhandene Sammlung aller Azure Digital Twins-APIs zu importieren, können Sie auch eine eigene Sammlung ganz neu erstellen. Anschließend können Sie sie gemäß der [Referenzdokumentation zur REST-API für Azure Digital Twins](/rest/api/azure-digitaltwins/) mit eigenen Anforderungen auffüllen.
 
 ### <a name="create-a-postman-collection"></a>Erstellen einer Postman-Sammlung
 
-Anforderungen in Postman werden in **Sammlungen** (Gruppen von Anforderungen) gespeichert. Wenn Sie eine Sammlung erstellen, um Ihre Anforderungen zu gruppieren, können Sie allgemeine Einstellungen auf viele Anforderungen gleichzeitig anwenden. Dies kann die Autorisierung erheblich vereinfachen, wenn Sie planen, mehr als eine Anforderung mit der Azure Digital Twins-API zu erstellen, da Sie die Authentifizierung nur einmal für die gesamte Sammlung konfigurieren müssen.
+1. Um eine Sammlung zu erstellen, klicken Sie im Hauptfenster von Postman auf die Schaltfläche **New** (Neu).
 
-1. Klicken Sie auf die Schaltfläche *+ Neue Sammlung*, um eine Sammlung zu erstellen.
+    :::image type="content" source="media/how-to-use-postman/postman-new.png" alt-text="Screenshot des Hauptfensters von Postman. Die Schaltfläche „New“ (Neu) ist hervorgehoben." lightbox="media/how-to-use-postman/postman-new.png":::
 
-    :::image type="content" source="media/how-to-use-postman/postman-new-collection.png" alt-text="Ansicht eines neu geöffneten Postman-Fensters. Die Schaltfläche „Neue Sammlung“ wird hervorgehoben.":::
+    Wählen Sie einen Typ für **Collection** (Sammlung) aus.
 
-1. Geben Sie im darauf folgenden Fenster *NEUE SAMMLUNG ERSTELLEN* einen **Namen** und eine optionale **Beschreibung** für die Sammlung ein.
+    :::image type="content" source="media/how-to-use-postman/postman-new-collection-2.png" alt-text="Screenshot des Dialogfelds „Create New“ (Neu erstellen) in Postman. Die Option „Collection“ (Sammlung) ist hervorgehoben.":::
+
+1. Dadurch wird eine Registerkarte zur Eingabe der Details für die neue Sammlung geöffnet. Wählen Sie das Bearbeitungssymbol neben dem Standardnamen der Sammlung (**New Collection**, neue Sammlung) aus, um ihn durch einen eigenen Namen zu ersetzen. 
+
+    :::image type="content" source="media/how-to-use-postman/postman-new-collection-3.png" alt-text="Screenshot des Bearbeitungsdialogfelds der neuen Sammlung in Postman. Das Bearbeitungssymbol neben dem Namen „New Collection“ (Neue Sammlung) ist hervorgehoben." lightbox="media/how-to-use-postman/postman-new-collection-3.png":::
 
 Fahren Sie anschließend mit dem nächsten Abschnitt fort, um der Sammlung ein Bearertoken für die Autorisierung hinzuzufügen.
 
-### <a name="add-authorization-token-and-finish-collection"></a>Hinzufügen eines Autorisierungstoken und Beenden der Sammlung
+### <a name="configure-authorization"></a>Konfigurieren der Autorisierung
 
-1. Wechseln Sie im Dialogfeld *NEUE SAMMLUNG ERSTELLEN* zur Registerkarte *Autorisierung*. An dieser Stelle platzieren Sie den **Tokenwert**, den Sie im Abschnitt [Abrufen des Bearertokens](#get-bearer-token) abgerufen haben, um ihn für alle API-Anforderungen in der Sammlung zu verwenden.
+Gehen Sie folgendermaßen vor, um der Sammlung ein Bearertoken für die Autorisierung hinzuzufügen. An dieser Stelle kommt der **Tokenwert** zum Einsatz, den Sie im Abschnitt [Abrufen des Bearertokens](#get-bearer-token) abgerufen haben, um ihn für alle API-Anforderungen in der Sammlung zu verwenden.
 
-    :::image type="content" source="media/how-to-use-postman/postman-authorization.png" alt-text="Das Postman-Fenster „NEUE SAMMLUNG ERSTELLEN“, das die Registerkarte „Autorisierung“ anzeigt":::
+1. Wechseln Sie im Bearbeitungsdialogfeld für Ihre neue Sammlung zur Registerkarte **Authorization** (Autorisierung).
 
-1. Legen Sie den *Typ* auf _**OAuth 2.0**_ fest, und fügen Sie den Zugriffstoken in das Feld *Zugriffstoken* ein.
+    :::image type="content" source="media/how-to-use-postman/postman-authorization-custom.png" alt-text="Screenshot des Bearbeitungsdialogfelds der neuen Sammlung in Postman mit der Registerkarte „Authorization“ (Autorisierung)." lightbox="media/how-to-use-postman/postman-authorization-custom.png":::
 
-    :::image type="content" source="media/how-to-use-postman/postman-paste-token.png" alt-text="Das Postman-Fenster „NEUE SAMMLUNG ERSTELLEN“, das die Registerkarte „Autorisierung“ anzeigt. Der Typ „OAuth 2,0“ ist ausgewählt, und das Feld „Zugriffstoken“, in das der Zugriffstokenwert eingefügt werden kann, wird hervorgehoben.":::
+1. Legen Sie den Typ auf **OAuth 2.0** fest, fügen Sie das Zugriffstoken im Feld „Access Token“ (Zugriffstoken) ein, und klicken Sie auf **Save** (Speichern).
 
-1. Klicken Sie nach dem Einfügen des Bearertokens auf *Erstellen*, um die Erstellung der Sammlung zu beenden.
+    :::image type="content" source="media/how-to-use-postman/postman-paste-token-custom.png" alt-text="Screenshot des Postman-Bearbeitungsdialogfelds für die neue Sammlung auf der Registerkarte „Authorization“ (Autorisierung). Der Typ lautet „OAuth 2.0“, und das Feld „Access Token“ (Zugriffstoken) ist hervorgehoben." lightbox="media/how-to-use-postman/postman-paste-token-custom.png":::
 
-Die neue Sammlung wird nun in ihrer Hauptansicht von Postman unter *Sammlungen* angezeigt.
+Nach Durchführung der obigen Schritte haben Sie die Konfiguration der Sammlung abgeschlossen. Wenn Sie möchten, können Sie die Bearbeitungsregisterkarte für die neue Sammlung schließen.
 
-:::image type="content" source="media/how-to-use-postman/postman-post-collection.png" alt-text="Ansicht des Hauptfensters von Postman. Die neu erstellte Sammlung wird auf der Registerkarte „Sammlungen“ hervorgehoben.":::
+Die neue Sammlung wird in der Hauptansicht von Postman auf der Registerkarte „Collections“ (Sammlungen) angezeigt.
 
-## <a name="create-a-request"></a>Erstellen einer Anforderung
+:::image type="content" source="media/how-to-use-postman/postman-post-collection-custom.png" alt-text="Screenshot des Hauptfensters von Postman. Die neu erstellte benutzerdefinierte Sammlung wird auf der Registerkarte „Collections“ (Sammlungen) hervorgehoben." lightbox="media/how-to-use-postman/postman-post-collection-custom.png":::
 
-Nachdem Sie die vorherigen Schritte abgeschlossen haben, können Sie Anforderungen für die Azure Digital Twins-APIs erstellen.
+## <a name="add-an-individual-request"></a>Hinzufügen einer eigenen Anforderung
 
-1. Klicken Sie auf die Schaltfläche *+ Neu*, um eine Anforderung zu erstellen.
+Nachdem Sie Ihre Sammlung eingerichtet haben, können Sie den Azure Digital Twin-APIs Ihre eigenen Anforderungen hinzufügen.
 
-    :::image type="content" source="media/how-to-use-postman/postman-new-request.png" alt-text="Ansicht des Hauptfensters von Postman. Die Schaltfläche „Neu“ wird hervorgehoben.":::
+1. Verwenden Sie noch einmal die Schaltfläche **New** (Neu), um eine Anforderung zu erstellen.
 
-1. Klicken Sie auf *Anforderung*.
+    :::image type="content" source="media/how-to-use-postman/postman-new.png" alt-text="Screenshot des Hauptfensters von Postman. Die Schaltfläche „New“ (Neu) ist hervorgehoben." lightbox="media/how-to-use-postman/postman-new.png":::
 
-    :::image type="content" source="media/how-to-use-postman/postman-new-request-2.png" alt-text="Ansicht der Optionen, die Sie auswählen können, um etwas Neues zu erstellen. Die Option „Anforderung“ wird hervorgehoben.":::
+    Wählen Sie einen Typ für **Request** (Anforderung) aus.
 
-1. Mit dieser Aktion wird das Fenster *Anforderung speichern* geöffnet, in dem Sie einen Namen und eine optionale Beschreibung für die Anforderung eingeben können. Zudem können Sie die Sammlung auswählen, zu der sie gehört. Geben Sie die Informationen ein, und speichern Sie die Anforderung in der Sammlung, die Sie zuvor erstellt haben.
+    :::image type="content" source="media/how-to-use-postman/postman-new-request-2.png" alt-text="Screenshot des Dialogfelds „Create New“ (Neu erstellen) in Postman. Die Option „Request“ (Anforderung) ist hervorgehoben.":::
+
+1. Mit dieser Aktion wird das Fenster SAVE REQUEST (ANFORDERUNG SPEICHERN) geöffnet, in dem Sie einen Namen und eine optionale Beschreibung für die Anforderung eingeben können. Zudem können Sie die Sammlung auswählen, zu der sie gehört. Geben Sie die Informationen ein, und speichern Sie die Anforderung in der Sammlung, die Sie zuvor erstellt haben.
 
     :::row:::
         :::column:::
-            :::image type="content" source="media/how-to-use-postman/postman-save-request.png" alt-text="Ansicht des Fensters „Anforderung speichern“, in dem Sie die beschriebenen Felder ausfüllen können. Die Schaltfläche „Save to Azure Digital Twins collection“ (In Azure Digital Twins-Sammlung speichern) wird hervorgehoben.":::
+            :::image type="content" source="media/how-to-use-postman/postman-save-request.png" alt-text="Screenshot des Fensters „Save request“ (Anforderung speichern) in Postman mit den beschriebenen Feldern. Die Schaltfläche „Save to Azure Digital Twins collection“ (In Azure Digital Twins-Sammlung speichern) ist hervorgehoben.":::
         :::column-end:::
         :::column:::
         :::column-end:::
@@ -122,7 +266,7 @@ Nachdem Sie die vorherigen Schritte abgeschlossen haben, können Sie Anforderung
 
 Nun können Sie die Anforderung in der Sammlung anzeigen und diese auswählen, um die bearbeitbaren Details aufzurufen.
 
-:::image type="content" source="media/how-to-use-postman/postman-request-details.png" alt-text="Ansicht des Hauptfensters von Postman. Die Azure Digital Twins-Sammlung ist erweitert und die Anforderung „Query twins“ wird hervorgehoben. Informationen zur Anforderung werden in der Mitte der Seite angezeigt." lightbox="media/how-to-use-postman/postman-request-details.png":::
+:::image type="content" source="media/how-to-use-postman/postman-request-details-custom.png" alt-text="Screenshot von Postman. Die Azure Digital Twins-Sammlung ist erweitert und zeigt die Details der Anforderung an." lightbox="media/how-to-use-postman/postman-request-details-custom.png":::
 
 ### <a name="set-request-details"></a>Festlegen von Anforderungsdetails
 
@@ -133,24 +277,24 @@ In diesem Artikel wird die Abfrage-API und die entsprechende [Referenzdokumentat
 1. Die URL und den Typ der Anforderung erhalten Sie in der Referenzdokumentation. Für die Abfrage-API ist dies derzeit *POST `https://digitaltwins-hostname/query?api-version=2020-10-31`* .
 1. Legen Sie in Postman den Typ für die Anforderung fest, und geben Sie die Anforderungs-URL ein. Füllen Sie dabei die Platzhalter in der URL nach Bedarf aus. Hier verwenden Sie den **Hostnamen** der Instanz aus dem Abschnitt [*Voraussetzungen*](#prerequisites).
     
-   :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Bei den Informationen der neuen Anforderung wurde die Abfrage-URL aus der Referenzdokumentation in das Feld „Anforderungs-URL“ eingegeben." lightbox="media/how-to-use-postman/postman-request-url.png":::
+   :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Screenshot der Details der neuen Anforderung in Postman. Die Abfrage-URL aus der Referenzdokumentation wurde im Feld für die Anforderungs-URL eingegeben." lightbox="media/how-to-use-postman/postman-request-url.png":::
     
-1. Überprüfen Sie, ob die Parameter, die für die Anforderung auf der Registerkarte *Parameter* angezeigt werden, den in der Referenzdokumentation beschriebenen Parametern entsprechen. Für diese Anforderung in Postman wurde der Parameter `api-version` automatisch aufgefüllt, als die Anforderungs-URL im vorherigen Schritt eingegeben wurde. Bei der Abfrage-API ist dies der einzige erforderliche Parameter, sodass dieser Schritt erledigt ist.
-1. Legen Sie auf der Registerkarte *Autorisierung* den *Typ* auf *Authentifizierung von der übergeordneten Instanz erben*. Dies gibt an, dass für diese Anforderung die Authentifizierung verwendet wird, die Sie zuvor für die gesamte Sammlung eingerichtet haben.
-1. Überprüfen Sie, ob die Header, die für die Anforderung auf der Registerkarte *Header* angezeigt werden, den in der Referenzdokumentation beschriebenen entsprechen. Für diese Anforderung wurden mehrere Header automatisch ausgefüllt. Bei der Abfrage-API ist keine der Headeroptionen erforderlich, sodass dieser Schritt erledigt ist.
-1. Überprüfen Sie, ob der Textkörper, der für die Anforderung in der Registerkarte *Textkörper* angezeigt wird, den in der Referenzdokumentation beschriebenen Anforderungen entspricht. Für die Abfrage-API ist ein JSON-Textkörper erforderlich, um den Abfragetext bereitzustellen. Nachfolgend finden Sie ein Beispieltextkörper für diese Anforderung, die alle digitalen Zwillinge in der Instanz abfragt:
+1. Überprüfen Sie, ob die Parameter, die für die Anforderung auf der Registerkarte **Parameter** angezeigt werden, den in der Referenzdokumentation beschriebenen Parametern entsprechen. Für diese Anforderung in Postman wurde der Parameter `api-version` automatisch aufgefüllt, als die Anforderungs-URL im vorherigen Schritt eingegeben wurde. Bei der Abfrage-API ist dies der einzige erforderliche Parameter, sodass dieser Schritt erledigt ist.
+1. Legen Sie auf der Registerkarte **Autorisierung** den Typ auf **Authentifizierung von der übergeordneten Instanz erben**. Dies gibt an, dass für diese Anforderung die Autorisierung verwendet wird, die Sie zuvor für die gesamte Sammlung eingerichtet haben.
+1. Überprüfen Sie, ob die Header, die für die Anforderung auf der Registerkarte **Header** angezeigt werden, den in der Referenzdokumentation beschriebenen entsprechen. Für diese Anforderung wurden mehrere Header automatisch ausgefüllt. Bei der Abfrage-API ist keine der Headeroptionen erforderlich, sodass dieser Schritt erledigt ist.
+1. Überprüfen Sie, ob der Textkörper, der für die Anforderung in der Registerkarte **Textkörper** angezeigt wird, den in der Referenzdokumentation beschriebenen Anforderungen entspricht. Für die Abfrage-API ist ein JSON-Textkörper erforderlich, um den Abfragetext bereitzustellen. Nachfolgend finden Sie ein Beispieltextkörper für diese Anforderung, die alle digitalen Zwillinge in der Instanz abfragt:
 
-   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="In den Details der neuen Anforderung wird die Registerkarte „Textkörper“ angezeigt. Sie enthält einen unformatierten JSON-Textkörper mit einer Abfrage von „SELECT * FROM DIGITALTWINS“." lightbox="media/how-to-use-postman/postman-request-body.png":::
+   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="Screenshot der Details der neuen Anforderung in Postman mit der Registerkarte „Body“ (Textkörper). Diese enthält einen unformatierten JSON-Textkörper mit der Abfrage „SELECT * FROM DIGITALTWINS“." lightbox="media/how-to-use-postman/postman-request-body.png":::
 
    Weitere Informationen zum Erstellen von Azure Digital Twins-Abfragen finden Sie unter [*Abfragen des Zwillingsdiagramms von Azure Digital Twins*](how-to-query-graph.md).
 
 1. Überprüfen Sie die Referenzdokumentation für alle anderen Felder, die möglicherweise für den Typ der Anforderung erforderlich sind. Bei der Abfrage-API sind nun alle Anforderungen in der Postman-Anforderung erfüllt, sodass dieser Schritt erledigt ist.
-1. Verwenden Sie die Schaltfläche *Senden*, um die abgeschlossene Anforderung zu senden.
-   :::image type="content" source="media/how-to-use-postman/postman-request-send.png" alt-text="Neben den Details der neuen Anforderung wird die Schaltfläche „Senden“ hervorgehoben." lightbox="media/how-to-use-postman/postman-request-send.png":::
+1. Verwenden Sie die Schaltfläche **Senden**, um die abgeschlossene Anforderung zu senden.
+   :::image type="content" source="media/how-to-use-postman/postman-request-send.png" alt-text="Screenshot von Postman mit den Details der neuen Anforderung. Die Schaltfläche „Send“ (Senden) ist hervorgehoben." lightbox="media/how-to-use-postman/postman-request-send.png":::
 
 Nachdem die Anforderung gesendet wurde, werden die Antwortinformationen im Postman-Fenster unterhalb der Anforderung angezeigt. Sie können den Statuscode der Antwort und jeden Textkörper anzeigen.
 
-:::image type="content" source="media/how-to-use-postman/postman-request-response.png" alt-text="Unterhalb der Details der gesendeten Anforderung werden die Details der Antwort hervorgehoben. Der Status „200 OK“ und ein Textkörper, der die digitalen Zwillinge beschreibt, die von der Abfrage zurückgegeben wurden, wird angezeigt." lightbox="media/how-to-use-postman/postman-request-response.png":::
+:::image type="content" source="media/how-to-use-postman/postman-request-response.png" alt-text="Screenshot der gesendeten Anforderung in Postman. Unterhalb der Anforderungsdetails wird die Antwort angezeigt. Der Status lautet „200 OK“, und der Textkörper zeigt die Abfrageergebnisse an." lightbox="media/how-to-use-postman/postman-request-response.png":::
 
 Sie können auch die Antwort mit den erwarteten Antwortdaten vergleichen, die in der Referenzdokumentation angegeben sind, um das Ergebnis zu überprüfen oder weitere Informationen zu auftretenden Fehlern zu erhalten.
 

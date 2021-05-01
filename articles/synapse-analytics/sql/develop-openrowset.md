@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 28c54865ab9c2876d998896f5f536a11088962f8
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307944"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566425"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -138,7 +138,7 @@ Wenn Sie den Pfad für unstrukturierte Daten (unstructured_data_path) als Ordner
 Durch Angabe von „/**“ am Ende des Pfads können Sie den serverlosen SQL-Pool anweisen, Ordner zu durchlaufen. Beispiel: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Im Gegensatz zu Hadoop und PolyBase werden vom serverlosen SQL-Pool nur dann Unterordner zurückgegeben, wenn Sie „/**“ am Ende des Pfads angeben.
+> Im Gegensatz zu Hadoop und PolyBase werden vom serverlosen SQL-Pool nur dann Unterordner zurückgegeben, wenn Sie „/**“ am Ende des Pfads angeben. Wie bei Hadoop und PolyBase werden keine Dateien zurückgegeben, deren Dateiname mit einem Unterstrich (_) oder einem Punkt (.) beginnt.
 
 Das folgende Beispiel zeigt: Bei Verwendung von „unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`“ werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus „mydata.txt“ zurückgegeben. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden.
 

@@ -2,17 +2,17 @@
 title: Umschreiben von HTTP-Headern und URL mit Azure Application Gateway | Microsoft-Dokumentation
 description: In diesem Artikel erhalten Sie eine Übersicht über das erneute Generieren von HTTP-Headern und einer URL in Azure Application Gateway.
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.author: surmb
-ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.author: azhussai
+ms.openlocfilehash: 3e7bdc92dc6268c712eecbd69ff014e2229b3b84
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726511"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490963"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Umschreiben von HTTP-Headern und einer URL mithilfe von Application Gateway
 
@@ -38,7 +38,7 @@ Informationen zum Umschreiben von Anforderungs- und Antwortheadern mit Applicati
 
 Sie können alle Header in Anforderungen und Antworten mit Ausnahme von Host-, Verbindungs- und Upgradeheader umschreiben. Sie können auch über das Anwendungsgateway benutzerdefinierte Header erstellen und den Anforderungen und Antworten hinzufügen, die über das Gateway weitergeleitet werden.
 
-### <a name="url-path-and-query-string-preview"></a>URL-Pfad und Abfragezeichenfolge (Vorschauversion)
+### <a name="url-path-and-query-string"></a>URL-Pfad und Abfragezeichenfolge
 
 Mit der Funktion zum Umschreiben einer URL in Application Gateway können Sie folgende Aktionen ausführen:
 
@@ -51,9 +51,6 @@ Mit der Funktion zum Umschreiben einer URL in Application Gateway können Sie fo
 Informationen zum Umschreiben der URL mit Application Gateway über das Azure-Portal finden Sie [hier](rewrite-url-portal.md).
 
 ![Diagramm, das den Prozess zum Umschreiben einer URL mit Application Gateway beschreibt](./media/rewrite-http-headers-url/url-rewrite-overview.png)
-
->[!NOTE]
-> Das Feature zum Umschreiben einer URL befindet sich in der Vorschauphase und ist nur für die Application Gateway-SKUs Standard_v2 und WAF_v2 verfügbar. Von der Verwendung dieser Option in Produktionsumgebungen wird abgeraten. Weitere Informationen zu Vorschauversionen finden Sie unter [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="rewrite-actions"></a>Aktionen für das erneute Generieren
 
@@ -129,7 +126,20 @@ Das Application Gateway unterstützt die folgenden Servervariablen:
 | ssl_enabled               | „Ein“, wenn die Verbindung im TLS-Modus ausgeführt wird. Andernfalls eine leere Zeichenfolge. |
 | uri_path                  | Identifiziert die spezifische Ressource auf dem Host, auf die der Webclient zugreifen möchte. Dies ist der Teil des Anforderungs-URI ohne die Argumente. Beispiel: In der Anforderung `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` lautet der Wert von „uri_path“ `/article.aspx`. |
 
- 
+### <a name="mutual-authentication-server-variables-preview"></a>Servervariablen für die gegenseitige Authentifizierung (Vorschau)
+
+Application Gateway unterstützt die folgenden Servervariablen für Szenarien der gegenseitigen Authentifizierung. Verwenden Sie diese Servervariablen auf die gleiche Weise wie die oben beschriebenen anderen Servervariablen. 
+
+|   Variablenname    |                   BESCHREIBUNG                                           |
+| ------------------------- | ------------------------------------------------------------ |
+| client_certificate        | Das Clientzertifikat in PEM-Formaten für eine hergestellte SSL-Verbindung. |
+| client_certificate_end_date| Das Enddatum des Clientzertifikats. |
+| client_certificate_fingerprint| Der SHA1-Fingerabdruck des Clientzertifikats für eine hergestellte SSL-Verbindung. |
+| client_certificate_issuer | Die Zeichenfolge „Aussteller-DN“ des Clientzertifikats für eine hergestellte SSL-Verbindung. |
+| client_certificate_serial | Die Seriennummer des Clientzertifikats für eine hergestellte SSL-Verbindung.  |
+| client_certificate_start_date| Das Startdatum des Clientzertifikats. |
+| client_certificate_subject| Die Zeichenfolge „Antragsteller-DN“ des Clientzertifikats für eine hergestellte SSL-Verbindung. |
+| client_certificate_verification| Das Ergebnis der Überprüfung des Clientzertifikats: *SUCCESS*, *FAILED:<reason>* oder *NONE*, wenn kein Zertifikat vorhanden war. | 
 
 ## <a name="rewrite-configuration"></a>Konfiguration für das erneute Generieren
 
@@ -148,6 +158,25 @@ Ein Umschreibungsregelsatz enthält Folgendes:
       * **URL-Pfad:** Der Wert, in den der Pfad umgeschrieben werden soll. 
       * **URL-Abfragezeichenfolge:** Der Wert, in den die Abfragezeichenfolge umgeschrieben werden soll. 
       * **Pfadzuordnung neu auswerten:** Legt fest, ob die URL-Pfadzuordnung erneut ausgewertet werden soll. Wenn diese Option deaktiviert bleibt, wird der ursprüngliche URL-Pfad verwendet, um eine Übereinstimmung für das Pfadmuster in der URL-Pfadzuordnung zu ermitteln. Wenn diese Option auf TRUE festgelegt ist, wird die URL-Pfadzuordnung erneut ausgewertet, um die Übereinstimmung mit dem umgeschriebenen Pfad zu überprüfen. Das Aktivieren dieses Schalters hilft beim Routing der Anforderung an einen anderen Back-End-Pool nach dem Umschreiben.
+
+## <a name="rewrite-configuration-common-pitfall"></a>Häufige Stolperfallen bei der Konfiguration der Umschreibung (Rewrite)
+
+* Das Aktivieren von „Pfadzuordnung neu auswerten“ ist für grundlegende Anforderungsroutingregeln nicht zulässig. So wird eine Endlosschleife bei der Auswertung einer grundlegenden Routingregel verhindert.
+
+* Es muss mindestens eine bedingte Umschreibungsregel oder eine Umschreibungsregel vorhanden sein, für die „Pfadzuordnung neu auswerten“ für pfadbasierte Routingregeln nicht aktiviert ist, um eine Endlosschleife bei der Auswertung einer pfadbasierten Routingregel zu verhindern.
+
+* Eingehende Anforderungen werden mit Fehlercode 500 beendet, wenn eine Schleife dynamisch basierend auf Clienteingaben erstellt wird. In einem solchen Szenario setzt die Application Gateway-Instanz die Verarbeitung anderer Anforderungen ohne Beeinträchtigung fort.
+
+### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Verwenden der Umschreibung von URLs (URL-Rewrite) oder Hostheadern mit Web Application Firewall (WAF_v2 SKU)
+
+Wenn Sie URL-Rewrite oder das Umschreiben von Hostheadern konfigurieren, erfolgt die WAF-Auswertung nach der Änderung der Anforderungsheader- oder URL-Parameter (nach dem Umschreiben). Wenn Sie die Konfiguration von URL-Rewrite oder der Umschreibung von Hostheadern auf der Application Gateway-Instanz entfernen, erfolgt die WAF-Auswertung vor dem Umschreiben des Headers. Diese Reihenfolge stellt sicher, dass WAF-Regeln auf die endgültige Anforderung angewendet werden, die von Ihrem Back-End-Pool empfangen wird.
+
+Angenommen, Sie verwenden die folgende Regel zur Headerumschreibung für den Header `"Accept" : "text/html"`: Wenn der Wert des Headers `"Accept"` mit `"text/html"` übereinstimmt, soll der Wert in `"image/png"` umgeschrieben werden.
+
+Wenn nur das Umschreiben von Headern konfiguriert ist, erfolgt die WAF-Auswertung für `"Accept" : "text/html"`. Wenn Sie jedoch URL-Rewrite oder das Umschreiben von Hostheadern konfigurieren, wird die WAF-Auswertung für `"Accept" : "image/png"` durchgeführt.
+
+>[!NOTE]
+> URL-Rewrite-Vorgänge führen erwartungsgemäß zu einer geringfügigen Zunahme der CPU-Auslastung Ihrer WAF Application Gateway-Instanz. Es wird empfohlen, die [Metrik für die CPU-Auslastung](high-traffic-support.md) für einen kurzen Zeitraum zu überwachen, nachdem Sie die URL-Rewrite-Regeln für die WAF Application Gateway-Instanz aktiviert haben.
 
 ### <a name="common-scenarios-for-header-rewrite"></a>Häufige Szenarien für die Headerumschreibungen
 

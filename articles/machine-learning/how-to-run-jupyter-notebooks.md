@@ -11,18 +11,21 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 953b987e908736df703c354067ee27fc27d56073
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518720"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220707"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
 Erfahren Sie, wie Sie in Azure Machine Learning Studio Ihr Jupyter Notebook direkt in Ihrem Arbeitsbereich ausführen können. Sie können zwar [Jupyter](https://jupyter.org/) oder [JupyterLab](https://jupyterlab.readthedocs.io) starten, aber Sie können Ihre Notebooks auch bearbeiten und ausführen, ohne den Arbeitsbereich zu verlassen.
 
 Informationen zum Erstellen und Verwalten von Dateien, einschließlich Notebooks, finden Sie unter [Erstellen und Verwalten von Dateien in Ihrem Arbeitsbereich](how-to-manage-files.md).
+
+> [!IMPORTANT]
+> Mit „(Vorschau)“ gekennzeichnete Features werden ohne Vereinbarung zum Servicelevel bereitgestellt und nicht für Produktionsworkloads empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,22 +46,35 @@ Sie können Jupyter oder JupyterLab auch über die Notebook-Symbolleiste starten
 
 Verwenden Sie den Fokusmodus, um Ihre aktuelle Ansicht zu erweitern, sodass Sie sich auf Ihre aktiven Registerkarten konzentrieren können. Der Fokusmodus blendet den Datei-Explorer für Notebooks aus.
 
-1. Wählen Sie auf der Symbolleiste des Terminalfensters **Fokusmodus** aus, um den Fokusmodus zu aktivieren. Abhängig von Ihrer Fensterbreite befindet sich diese möglicherweise unter dem Menüpunkt **...** auf Ihrer Symbolleiste.
+1. Wählen Sie auf der Symbolleiste des Terminalfensters **Fokusmodus** aus, um den Fokusmodus zu aktivieren. Abhängig von Ihrer Fensterbreite befindet sich dieses Tool möglicherweise unter dem Menüpunkt **...** auf Ihrer Symbolleiste.
 1. Kehren Sie im Fokusmodus zur Standardansicht zurück, indem Sie **Standardansicht** auswählen.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Wechsel zwischen Fokusmodus/Standardansicht":::
 
-## <a name="use-intellisense"></a>Verwenden von IntelliSense
+## <a name="code-completion-intellisense"></a>Codevervollständigung [IntelliSense]
 
-[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) ist eine hilfreiche Anwendung zur Codevervollständigung mit Features wie: Auflisten von Elementen, Parameterinformationen, QuickInfo und Wort vervollständigen. Diese Features helfen Ihnen, mehr über den von Ihnen verwendeten Code zu erfahren, die von Ihnen eingegebenen Parameter zu verfolgen und Aufrufe von Eigenschaften und Methoden mit nur wenigen Tastatureingaben hinzuzufügen.  
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) ist eine hilfreiche Anwendung zur Codevervollständigung mit vielen Features wie: Auflisten von Elementen, Parameterinformationen, QuickInfo und Wortvervollständigung. Mit nur wenigen Tastatureingaben können Sie Folgendes ausführen:
+* Mehr über den von Ihnen verwendeten Code erfahren
+* Die Parameter nachverfolgen, die Sie eingeben
+* Aufrufe von Eigenschaften und Methoden hinzufügen 
 
-Wenn Sie Code eingeben, verwenden Sie STRG+LEERTASTE, um IntelliSense auszulösen.
+### <a name="insert-code-snippets-preview"></a>Codeausschnitte einfügen (Vorschau)
+
+Lösen Sie mit **STRG+LEERTASTE** IntelliSense-Codeausschnitte aus.  Scrollen Sie durch die Vorschläge, oder starten Sie die Eingabe, um den Code zu finden, den Sie einfügen möchten.  Nachdem Sie Code eingefügt haben, durchlaufen Sie mit der TAB-Taste die Argumente, um den Code Ihrem Zweck anzupassen.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/insert-snippet.gif" alt-text="Einfügen eines Codeausschnitts":::
+
+Dieselben Ausschnitte sind verfügbar, wenn Sie Ihr Notebook in VS Code öffnen. Eine umfassende Liste der verfügbaren Codeausschnitte finden Sie unter [Azure Machine Learning VS Code Snippets](https://github.com/Azure/azureml-snippets/blob/main/snippets/snippets.md) (VS Code-Ausschnitte für Azure Machine Learning).
+
+Um die Liste der Ausschnitte zu durchsuchen, können Sie in der Notebook-Symbolleiste den Ausschnittbereich öffnen.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/open-snippet-panel.png" alt-text="Öffnen des Ausschnittbereichstools in der Notebook-Symbolleiste":::
+
+Im Ausschnittbereich können Sie auch eine Anforderung zum Hinzufügen neuer Codeausschnitte senden.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="Im Ausschnittbereich können Sie einen neuen Ausschnitt vorschlagen.":::
 
 ## <a name="clean-your-notebook-preview"></a>Bereinigen des Notebooks (Vorschau)
-
-> [!IMPORTANT]
-> Die Funktion „Sammeln“ ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Im Laufe der Erstellung eines Notebooks verfügen Sie in der Regel über Zellen, die Sie zum Durchsuchen von Daten oder zum Debuggen verwendet haben. Mithilfe der Funktion *Sammeln* können Sie ein sauberes Notebook ohne diese irrelevanten Zellen erstellen.
 
@@ -78,7 +94,7 @@ Wählen Sie in der Notebook-Symbolleiste das Menü und dann **Datei&gt;Save and 
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Screenshot des Speichertools auf der Notebook-Symbolleiste":::
 
-Jedes Notebook wird alle 30 Sekunden automatisch gespeichert. Die automatische Speicherung aktualisiert nur die ursprüngliche *IPYNB*-Datei, nicht die Prüfpunktdatei.
+Jedes Notebook wird alle 30 Sekunden automatisch gespeichert. Das automatische Speichern aktualisiert nur die ursprüngliche *IPYNB*-Datei, nicht die Prüfpunktdatei.
  
 Wählen Sie **Checkpoints** (Prüfpunkte) im Notebook-Menü aus, um einen benannten Prüfpunkt zu erstellen und das Notebook auf einen gespeicherten Prüfpunkt zurückzusetzen.
 
@@ -158,7 +174,7 @@ Mit diesen Aktionen werden der Notebook-Zustand und alle Variablen im Notebook z
 
 ## <a name="add-new-kernels"></a>Hinzufügen neuer Kernel
 
-[Verwenden Sie das Terminal ](how-to-access-terminal.md#add-new-kernels), um neue Kernel zu erstellen und sie Ihrer Compute-Instanz hinzuzufügen. Das Notebook findet automatisch alle Jupyter-Kernel, die auf der verbundenen Compute-Instanz installiert sind.
+[Verwenden Sie das Terminal ](how-to-access-terminal.md#add-new-kernels), um neue Kernel zu erstellen und sie Ihrer Computeinstanz hinzuzufügen. Das Notebook findet automatisch alle Jupyter-Kernel, die auf der verbundenen Compute-Instanz installiert sind.
 
 Verwenden Sie die Kernel-Dropdownliste auf der rechten Seite, um zu einem der installierten Kernel zu wechseln.  
 
@@ -272,8 +288,8 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Machine Learning
 ## <a name="troubleshooting"></a>Problembehandlung
 
 * Wenn Sie keine Verbindung mit einem Notebook herstellen können, stellen Sie sicher, dass die WebSocket-Kommunikation **nicht** deaktiviert ist. Damit die Jupyter-Funktionen für Compute-Instanzen eingesetzt werden können, muss die WebSocket-Kommunikation aktiviert sein. Stellen Sie sicher, dass Ihr Netzwerk WebSocket-Verbindungen mit *.instances.azureml.net und *.instances.azureml.ms zulässt. 
+* Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur [im virtuellen Netzwerk darauf zugegriffen werden](./how-to-secure-training-vnet.md#compute-instance). Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<Region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md?tabs=azure-cli).
 
-* Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur [im virtuellen Netzwerk darauf zugegriffen werden](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<Region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md?tabs=azure-cli).
     
 ## <a name="next-steps"></a>Nächste Schritte
 

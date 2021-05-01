@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 76aadd667691e12c61e0e5e13c13ca0241a9f0ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40c5e0ff2c2301607f5a548ff05c742c5c5a948d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045500"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517061"
 ---
 # <a name="register-and-scan-oracle-source-preview"></a>Oracle-Quelle registrieren und überprüfen (Vorschau)
 
@@ -38,9 +38,7 @@ Die Oracle-Quelle unterstützt die **vollständige Überprüfung**, um Metadaten
 
 5.  Unterstützte Versionen von Oracle-Datenbanken sind 6i bis 19c.
 
-6.  Benutzerberechtigung: Um zum ersten Mal eine erfolgreiche Überprüfung sicherzustellen, ist eine Berechtigung als vollständiger Systemadministrator erforderlich.
-
-    Für nachfolgende Überprüfungen ist ein schreibgeschützter Zugriff auf Systemtabellen erforderlich. Der Benutzer muss über die Berechtigung zum Erstellen einer Sitzung sowie die Rolle SELECT\_CATALOG\_ROLE verfügen. Alternativ kann dem Benutzer die SELECT-Berechtigung für jede einzelne Systemtabelle erteilt werden, von der dieser Connector Metadaten abfragt:
+6.  Benutzerberechtigung: Schreibgeschützter Zugriff auf Systemtabellen ist erforderlich. Der Benutzer muss über die Berechtigung zum Erstellen einer Sitzung sowie die Rolle SELECT\_CATALOG\_ROLE verfügen. Alternativ kann dem Benutzer die SELECT-Berechtigung für jede einzelne Systemtabelle erteilt werden, von der dieser Connector Metadaten abfragt:
        > grant create session to \[Benutzer\];\
         grant select on all\_users to \[Benutzer\];\
         grant select on dba\_objects to \[Benutzer\];\

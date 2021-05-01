@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51fb66cbaa8a4088136c205ea6eaaa79fb673191
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94992436"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293979"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection – Referenzarchitekturen
 
@@ -59,6 +59,20 @@ Der gesamte für die Webanwendung bestimmte Datenverkehr aus dem Internet wird �
 Sie sollten die Application Gateway-WAF-SKU (Verhinderungsmodus) zum Schutz vor Angriffen auf Schicht 7 (HTTP/HTTPS/Websocket) konfigurieren. Darüber hinaus werden die Web-Apps so konfiguriert, dass sie Datenverkehr nur über die Application Gateway-IP-Adresse akzeptieren (siehe [IP and Domain Restrictions for Windows Azure Web Sites (IP- und Domäneneinschränkungen für Windows Azure-Websites)](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)).
 
 Lesen Sie [diesen Artikel](/azure/architecture/reference-architectures/app-service-web-app/multi-region), um weitere Informationen zu dieser Referenzarchitektur zu erhalten.
+
+## <a name="protecting-on-premises-resources"></a>Schützen lokaler Ressourcen
+
+Sie können die Skalierung, Kapazität und Effizienz von Azure DDoS Protection Standard nutzen, um Ihre lokalen Ressourcen zu schützen, indem Sie eine öffentliche IP-Adresse in Azure hosten und den Datenverkehr zum Back-End-Ursprung in Ihrer lokalen Umgebung umleiten.
+
+![Schützen lokaler Ressourcen](./media/reference-architectures/ddos-on-prem.png)
+
+Wenn Sie über eine Webanwendung verfügen, die Datenverkehr aus dem Internet empfängt, können Sie die Webanwendung hinter Application Gateway hosten und dann mit WAF gegen Layer 7-Webangriffe wie Einschleusung von SQL-Befehlen und Slowloris schützen. Die Back-End-Ursprünge Ihrer Anwendung befinden sich in Ihrer lokalen Umgebung, die über das VPN verbunden ist. 
+
+Die Back-End-Ressourcen in der lokalen Umgebung werden nicht über das öffentliche Internet verfügbar gemacht. Nur die öffentliche AppGW/WAF-IP-Adresse ist für das Internet verfügbar, und der DNS-Name Ihrer Anwendung wird dieser öffentlichen IP-Adresse zugeordnet. 
+
+Wenn DDoS Protection Standard für das virtuelle Netzwerk aktiviert ist, in dem AppGW/WAF enthalten ist, wird DDoS Protection Standard Ihre Anwendung schützen, indem der fehlerhafte Datenverkehr vermindert und der vermeintlich saubere Datenverkehr an Ihre Anwendung weitergeleitet wird. 
+
+In diesem [Artikel](https://docs.microsoft.com/azure/azure-vmware/protect-azure-vmware-solution-with-application-gateway) erfahren Sie, wie Sie DDoS Protection Standard zusammen mit Application Gateway verwenden können, um eine Web-App zu schützen, die in einer Azure VMware-Lösung ausgeführt wird.
 
 ## <a name="mitigation-for-non-web-paas-services"></a>Entschärfung für Non-Web-PaaS-Dienste
 

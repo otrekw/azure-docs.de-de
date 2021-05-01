@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0072e699107ea51764a728ce3e9987b86b2a6806
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97032523"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492323"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
@@ -52,7 +52,7 @@ So fügen Sie ein Gerät Ihrer Azure IoT Central-Anwendung hinzu:
 
 1. Schalten Sie die Umschaltfläche **Simuliert** auf **Ein** oder **Aus**. Ein reales Gerät steht für ein physisches Gerät, dessen Verbindung mit der Azure IoT Central-Anwendung Sie herstellen. Ein simuliertes Gerät enthält Beispieldaten, die von Azure IoT Central für Sie generiert werden.
 
-1. Klicken Sie auf **Erstellen**.
+1. Wählen Sie **Erstellen** aus.
 
 1. Dieses Gerät wird jetzt in der Geräteliste für diese Vorlage angezeigt. Wählen Sie das Gerät aus, um die Seite „Gerätedetails“ anzuzeigen, die alle Ansichten für das Gerät enthält.
 
@@ -162,11 +162,11 @@ Cloudeigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z.B. der O
 
 1. Wählen Sie die Gerätevorlage des Geräts aus, dessen Eigenschaften Sie ändern möchten, und das Zielgerät.
 
-1. Wählen Sie die Ansicht, die Eigenschaften für Ihr Gerät enthält. In dieser Ansicht können Sie Werte eingeben und oben auf der Seite **Speichern** auswählen. Hier sehen Sie alle Eigenschaften Ihres Geräts und ihre aktuellen Werte. Cloudeigenschaften und schreibbare Eigenschaften haben bearbeitbare Felder, Geräteeigenschaften sind schreibgeschützt. Bei schreibbaren Eigenschaften sehen Sie deren Synchronisationsstatus am unteren Rand des Feldes. 
+1. Wählen Sie die Ansicht, die Eigenschaften für Ihr Gerät enthält. In dieser Ansicht können Sie Werte eingeben und oben auf der Seite **Speichern** auswählen. Hier sehen Sie alle Eigenschaften Ihres Geräts und ihre aktuellen Werte. Cloudeigenschaften und beschreibbare Eigenschaften haben bearbeitbare Felder, Geräteeigenschaften sind schreibgeschützt. Bei beschreibbaren Eigenschaften sehen Sie deren Synchronisationsstatus am unteren Rand des Feldes. 
 
 1. Ändern Sie die Eigenschaften in die benötigten Werte. Sie können mehrere Eigenschaften auf einmal ändern und alle gleichzeitig aktualisieren.
 
-1. Wählen Sie **Speichern** aus. Wenn Sie schreibbare Eigenschaften gespeichert haben, werden die Werte an Ihr Gerät gesendet. Wenn das Gerät die Änderung für die beschreibbare Eigenschaft bestätigt, wird der Status wieder auf **synchronisiert** gesetzt. Wenn Sie eine Cloudeigenschaft gespeichert haben, wird der Wert aktualisiert.
+1. Wählen Sie **Speichern** aus. Wenn Sie beschreibbare Eigenschaften gespeichert haben, werden die Werte an Ihr Gerät gesendet. Wenn das Gerät die Änderung für die beschreibbare Eigenschaft bestätigt, wird der Status wieder auf **synchronisiert** gesetzt. Wenn Sie eine Cloudeigenschaft gespeichert haben, wird der Wert aktualisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

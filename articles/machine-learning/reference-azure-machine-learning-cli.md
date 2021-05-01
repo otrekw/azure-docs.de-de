@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jordane
 author: jpe316
-ms.date: 06/22/2020
+ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e073310d62bfb772ea1120bd379cdc277137da0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a22700782c584015add2c83ecc96ccc610b8509
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519111"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219619"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installieren und Verwenden der CLI-Erweiterung für Azure Machine Learning
 
@@ -60,22 +60,7 @@ Andere Methoden zur Authentifizierung finden Sie unter [Anmelden mit der Azure C
 
 ## <a name="install-the-extension"></a>Installieren der Erweiterung
 
-Um die Machine Learning-CLI-Erweiterung zu installieren, verwenden Sie den folgenden Befehl:
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-> [!TIP]
-> Beispieldateien, die Sie mit den [hier](https://aka.ms/azml-deploy-cloud) aufgeführten Befehlen verwenden können.
-
-Klicken Sie bei Aufforderung auf `y`, um die Erweiterung zu installieren.
-
-Um sicherzustellen, dass die Erweiterung installiert wurde, verwenden Sie den folgenden Befehl zum Anzeigen einer Liste von ML-spezifischen Unterbefehlen:
-
-```azurecli-interactive
-az ml -h
-```
+Die Erweiterung wird automatisch installiert, wenn Sie zum ersten Mal versuchen, einen Befehl zu verwenden, der mit `az ml` beginnt.
 
 ## <a name="update-the-extension"></a>Aktualisieren der Erweiterung
 
@@ -84,7 +69,6 @@ Um die Machine Learning-CLI-Erweiterung zu aktualisieren, verwenden Sie den folg
 ```azurecli-interactive
 az extension update -n azure-cli-ml
 ```
-
 
 ## <a name="remove-the-extension"></a>Entfernen der Erweiterung
 

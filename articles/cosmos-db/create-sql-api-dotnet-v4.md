@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/07/2021
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 559ace3e9cb9f6daeb6dc3da581bb99d3ff9145e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: devx-track-dotnet, devx-track-azurecli
+ms.openlocfilehash: 495191dfcdfd7a4d318bef508878e951d88b3ae6
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365160"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483876"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-preview-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Schnellstart: Erstellen einer Konsolen-App zum Verwalten von Azure Cosmos DB-SQL-API-Kontoressourcen mithilfe von Version 4 des .NET SDK (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -96,7 +96,7 @@ Das Erstellen des Azure Cosmos-Kontos dauert eine Weile. Wenn der Vorgang erfolg
 Erstellen Sie eine neue .NET-Anwendung in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. Öffnen Sie auf Ihrem lokalen Computer die Windows-Eingabeaufforderung oder ein Terminalfenster. Sie führen alle Befehle in den nächsten Abschnitten über die Eingabeaufforderung oder das Terminal aus.  Führen Sie den folgenden „dotnet new“-Befehl aus, um eine neue App mit dem Namen `todo` zu erstellen. Mit dem Parameter „--langVersion“ wird die LangVersion-Eigenschaft in der erstellten Projektdatei festgelegt.
 
    ```bash
-   dotnet new console –langVersion:8 -n todo
+   dotnet new console â€“langVersion:8 -n todo
    ```
 
 Wechseln Sie zum Ordner der neu erstellten App. Sie können die Anwendung mit folgendem Befehl erstellen:

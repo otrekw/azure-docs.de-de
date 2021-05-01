@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Dieser Artikel enthält eine Übersicht über die Architekturen Azure Arc-fähiger Kubernetes-Agents.
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f59a897e4868d7b16d0a50c28ce2142320992f71
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953067"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442540"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Architektur eines Azure Arc-fähigen Kubernetes-Agents
 
@@ -49,7 +49,10 @@ Die meisten lokalen Rechenzentren erzwingen strikte Netzwerkregeln, die eingehen
         | `deployment.apps/cluster-metadata-operator` | Sammelt Clustermetadaten, einschließlich Clusterversion, Knotenanzahl und Version des Azure Arc-Agents. |
         | `deployment.apps/resource-sync-agent` | Synchronisiert die oben erwähnten Clustermetadaten mit Azure. |
         | `deployment.apps/flux-logs-agent` | Sammelt Protokolle von den bei der Konfiguration der Quellcodeverwaltung bereitgestellten Flux-Operatoren. |
-    
+        | `deployment.apps/extension-manager` | Installiert Erweiterungs-Helm-Diagramme und verwaltet deren Lebenszyklus |  
+        | `deployment.apps/clusterconnect-agent` | Der Reverseproxy-Agent, der ermöglicht, dass das Cluster Connect-Feature Zugriff auf den `apiserver` des Clusters bereitstellt. Dies ist eine optionale Komponente, die nur dann bereitgestellt wird, wenn das Feature `cluster-connect` im Cluster aktiviert ist.   |
+        | `deployment.apps/guard` | Authentifizierungs- und Autorisierungs-Webhookserver, der für das AAD RBAC-Feature verwendet wird. Dies ist eine optionale Komponente, die nur dann bereitgestellt wird, wenn das Feature `azure-rbac` im Cluster aktiviert ist.   |
+
 1. Sobald alle Agent-Pods von Kubernetes mit Azure Arc-Unterstützung sich im Zustand `Running` befinden, stellen Sie sicher, dass Ihr Cluster mit Azure Arc verbunden ist. Folgendes sollte angezeigt werden:
     * Eine Azure Arc-fähige Kubernetes-Ressource in [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Azure verfolgt diese Ressource als Projektion des kundenseitig verwalteten Kubernetes-Clusters nach, nicht den eigentlichen Kubernetes-Cluster selbst.
     * Clustermetadaten (wie Kubernetes-Version, Agent-Version und Anzahl der Knoten) werden in der Kubernetes-Ressource mit Azure Arc-Unterstützung als Metadaten angezeigt.

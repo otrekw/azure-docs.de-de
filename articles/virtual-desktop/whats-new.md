@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: da93da4c08a23e158d5a22c4552d5e5754ceb01a
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107056"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988044"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Neuheiten in Windows Virtual Desktop
 
@@ -42,11 +42,19 @@ Der Windows Virtual Desktop-Agent wird mindestens einmal pro Monat aktualisiert.
 
 Nachfolgend sind die Änderungen im Windows Virtual Desktop-Agent aufgeführt:
 
-- Version 1.0.2866.1500: Dieses Update wurde am 26. März 2021 veröffentlicht und hat ein Problem mit der Integritätsprüfung des Stapels behoben.
+- Version 1.0.2990.800: Dieses Update wurde am 13. April 2021 veröffentlicht und enthält die folgenden Änderungen:
+    - Agent-Fehlermeldungen aktualisiert
+    - Ausnahme hinzugefügt, die verhindert, dass Sie Nicht-Windows 7-Agents auf virtuellen Windows 7-Computern installieren
+    - Heartbeatdienstlogik aktualisiert
+- Version 1.0.2944.1400: Dieses Update wurde am 7. April 2021 veröffentlicht und enthält die folgenden Änderungen:
+    - Links zum Leitfaden zur Problembehandlung für Windows Virtual Desktop-Agent in den Protokollen der Ereignisanzeige für Agent-Fehler platziert
+    - Zusätzliche Ausnahme hinzugefügt, um eine bessere Fehlerbehandlung zu ermöglichen
+    - WVDAgentUrlTool.exe hinzugefügt. Damit können Kunden überprüfen, auf welche erforderlichen URLs sie zugreifen können.
+- Version 1.0.2866.1500: Dieses Update wurde am 26. März 2021 veröffentlicht. Damit wird ein Problem mit der Integritätsprüfung des Stapels behoben.
 - Version 1.0.2800.2802: Dieses Update wurde am 10. März 2021 veröffentlicht und enthält allgemeine Verbesserungen und Fehlerbehebungen.
-- Version 1.0.2800.2800: Dieses Update wurde am 2. März 2, 2021 veröffentlicht. Damit wurde ein Problem mit der umgekehrten Verbindung behoben.
+- Version 1.0.2800.2800: Dieses Update wurde am 2. März 2021 veröffentlicht. Damit wird ein Problem mit der umgekehrten Verbindung behoben.
 - Version 1.0.2800.2700: Dieses Update wurde am 10. Februar 2021 veröffentlicht und enthält allgemeine Verbesserungen und Fehlerbehebungen.
-- Version 1.0.2800.2700: Dieses Update wurde am 4. Februar 2021 veröffentlicht. Damit wurde ein Orchestrierungsproblem im Zusammenhang mit verweigertem Zugriff behoben.
+- Version 1.0.2800.2700: Dieses Update wurde am 4. Februar 2021 veröffentlicht. Damit wird ein Orchestrierungsproblem im Zusammenhang mit verweigertem Zugriff behoben.
 
 ## <a name="fslogix-updates"></a>FSLogix-Updates
 
@@ -307,7 +315,7 @@ Sie können nun den [Qualitätsschätzer](https://azure.microsoft.com/services/v
 
 - Azure Advisor ist jetzt Teil von Windows Virtual Desktop. Wenn Sie über das Azure-Portal auf Windows Virtual Desktop zugreifen, können Sie Empfehlungen zur Optimierung der Windows Virtual Desktop-Umgebung anzeigen. Weitere Informationen zu [Azure Advisor](azure-advisor.md)
 
-- Die Azure CLI unterstützt jetzt Windows Virtual Desktop (`az desktopvirtualization`), um Sie bei der Automatisierung der Windows Virtual Desktop-Bereitstellungen zu unterstützen. Eine Liste der Erweiterungsbefehle finden Sie unter [desktopvirtualization](/cli/azure/ext/desktopvirtualization/).
+- Die Azure CLI unterstützt jetzt Windows Virtual Desktop (`az desktopvirtualization`), um Sie bei der Automatisierung der Windows Virtual Desktop-Bereitstellungen zu unterstützen. Eine Liste der Erweiterungsbefehle finden Sie unter [desktopvirtualization](/cli/azure/desktopvirtualization).
 
 - Wir haben die Bereitstellungsvorlagen aktualisiert, damit sie vollständig mit den Azure Resource Manager-Schnittstellen von Windows Virtual Desktop kompatibel sind. Die Vorlagen finden Sie auf [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
 

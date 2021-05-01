@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c9e1de7b5dee8e351cd8744287c07b0bbb174512
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cbccc3fb4cc513d7c86253ae07fbced4626a15e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92516459"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>Tutorial: Azure Active Directory-Integration mit Tidemark
 
@@ -101,7 +101,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Tidemar
 
     ![SSO-Informationen zur Domäne und zu den URLs für Tidemark](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: .
 
     - `https://<subdomain>.tidemark.com/login`
     - `https://<subdomain>.tidemark.net/login`
@@ -113,7 +113,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Tidemar
     - `https://<subdomain>.tidemark.net/saml`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Tidemark-Client](http://www.tidemark.com/contact-us), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das Supportteam für den Tidemark-Client, um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -131,7 +131,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Tidemar
 
 ### <a name="configure-tidemark-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Tidemark
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Tidemark** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Tidemark](http://www.tidemark.com/contact-us) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Tidemark** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das Supportteam von Tidemark senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -185,7 +185,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-tidemark-test-user"></a>Erstellen eines Tidemark-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Tidemark einen Benutzer namens Britta Simon. Wenden Sie sich an das [Tidemark-Supportteam](http://www.tidemark.com/contact-us), um die Benutzer auf der Tidemark-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Tidemark einen Benutzer namens Britta Simon. Wenden Sie sich an das Tidemark-Supportteam, um die Benutzer auf der Tidemark-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

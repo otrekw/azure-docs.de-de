@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/08/2018
+ms.date: 04/06/2021
 ms.author: kumud
-ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 077e92b67f0cf6dac673cc870b7ff8c86fbe60dd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234153"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551287"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Notfallwiederherstellung mit Azure DNS und Traffic Manager
 
-Die Notfallwiederherstellung konzentriert sich auf die Wiederherstellung nach einem schwerwiegenden Ausfall der Anwendungsfunktionalität. Um sich für eine Notfallwiederherstellungs-Lösung zu entscheiden, müssen die Eigentümer von Unternehmen und Technologien zunächst den Grad der Funktionalität bestimmen, der während eines Notfalls erforderlich ist, z.B. nicht verfügbar, teilweise über reduzierte Funktionalität oder verzögerte Verfügbarkeit oder vollständig verfügbar.
+Die Notfallwiederherstellung konzentriert sich auf die Wiederherstellung nach einem schwerwiegenden Ausfall der Anwendungsfunktionalität. Um sich für eine Notfallwiederherstellungs-Lösung zu entscheiden, müssen die Eigentümer von Unternehmen und Technologien zunächst den Grad der Funktionalität bestimmen, der während eines Notfalls erforderlich ist, z. B. nicht verfügbar, teilweise über reduzierte Funktionalität oder verzögerte Verfügbarkeit oder vollständig verfügbar.
 Die meisten Enterprise-Kunden entscheiden sich für eine Architektur für mehrere Regionen, um die Ausfallsicherheit gegenüber einem Failover auf Anwendungs- oder Infrastrukturebene zu gewährleisten. Kunden können verschiedene Ansätze wählen, um Failover und Hochverfügbarkeit über eine redundante Architektur zu erzielen. Im Folgenden finden Sie einige der gängigen Ansätze:
 
 - **Aktiv/Passiv mit Standbymodus „Verzögert betriebsbereit“:** Bei dieser Failoverlösung werden die in einer Standbyregion ausgeführten VMs und andere Appliances erst dann aktiv, wenn ein Failover erforderlich ist. Allerdings wird die Produktionsumgebung in Form von Sicherungen, VM-Images oder Ressourcen Manager-Vorlagen in einer anderen Region repliziert. Dieser Failovermechanismus ist kostengünstig, ein vollständiger Failovervorgang dauert jedoch länger.
@@ -33,13 +33,13 @@ Die meisten Enterprise-Kunden entscheiden sich für eine Architektur für mehrer
     
     *Abbildung: Notfallwiederherstellungs-Konfiguration Aktiv/Passiv mit Standbymodus „Verzögert betriebsbereit“*
 
-- **Aktiv/Passiv mit Steuerlicht**: Bei dieser Failoverlösung wird die Standbyumgebung mit einer minimalen Konfiguration eingerichtet. Das Setup enthält nur die notwendigen Dienste, um nur einen minimalen und kritischen Satz von Anwendungen zu unterstützen. In seiner systemeigenen Form kann dieses Szenario nur minimale Funktionalitäten ausführen, aber es kann zusätzliche Dienste skalieren und erstellen, um einen Großteil der Produktionslast zu übernehmen, wenn ein Failover auftritt.
+- **Aktiv/Passiv mit Steuerlicht**: Bei dieser Failoverlösung wird die Standbyumgebung mit einer minimalen Konfiguration eingerichtet. Das Setup enthält nur die notwendigen Dienste, um nur einen minimalen und kritischen Satz von Anwendungen zu unterstützen. In seiner nativen Form kann dieses Szenario nur minimale Funktionalitäten ausführen, aber es kann hochskalieren und weitere Dienste erstellen, um einen Großteil der Produktionslast zu übernehmen, wenn ein Failover auftritt.
     
     ![Aktiv/Passiv mit Steuerlicht](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
     *Abbildung: Notfallwiederherstellungs-Konfiguration Aktiv/Passiv mit Steuerlicht*
 
-- **Aktiv/Passiv mit Standbymodus „Betriebsbereit“**: Bei dieser Failoverlösung wird die Standbyregion vorgewärmt und kann die Grundlast verarbeiten, die automatische Skalierung ist aktiviert und alle Instanzen sind betriebsbereit. Diese Lösung kann nicht für die Verarbeitung der vollen Produktionslast skaliert werden, ist aber funktionsfähig, und alle Dienste sind einsatzbereit. Diese Lösung ist eine erweiterte Version des Ansatzes mit Steuerlicht.
+- **Aktiv/Passiv mit Standbymodus „Betriebsbereit“** : Bei dieser Failoverlösung wird die Standbyregion vorgewärmt und kann die Grundlast verarbeiten, die automatische Skalierung wird aktiviert und alle Instanzen sind betriebsbereit. Diese Lösung kann nicht für die Verarbeitung der vollen Produktionslast skaliert werden, ist aber funktionsfähig, und alle Dienste sind einsatzbereit. Diese Lösung ist eine erweiterte Version des Ansatzes mit Steuerlicht.
     
     ![Aktiv/Passiv mit Standbymodus „Betriebsbereit“](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
@@ -94,7 +94,7 @@ Erstellen Sie innerhalb dieser Zone drei Einträge (z. B. www\.contoso.com, pro
 
 *Abbildung – Erstellen von DNS-Zoneneinträgen in Azure*
 
-In diesem Szenario hat die Website www\.contoso.com eine TTL von 30 Minuten, die unter der angegebenen RTO liegt, und zeigt auf die Produktionswebsite prod.contoso.com. Diese Konfiguration wird im normalen Geschäftsbetrieb verwendet. Die TTL von prod.contoso.com und dr.contoso.com wurde auf 300 Sekunden oder 5 Minuten festgelegt. Sie können einen Azure-Überwachungsdienst z.B. Azure Monitor oder Azure App Insights oder beliebige Überwachungslösungen von Partnern verwenden, z.B. Dynatrace. Sie können sogar selbst entwickelte Lösungen verwenden, die Ausfälle auf der Ebene von Anwendungen oder der virtuellen Infrastruktur überwachen oder erkennen können.
+In diesem Szenario hat die Website www\.contoso.com eine TTL von 30 Minuten, die unter der angegebenen RTO liegt, und zeigt auf die Produktionswebsite prod.contoso.com. Diese Konfiguration wird im normalen Geschäftsbetrieb verwendet. Die TTL von prod.contoso.com und dr.contoso.com wurde auf 300 Sekunden oder 5 Minuten festgelegt. Sie können einen Azure-Überwachungsdienst (z. B. Azure Monitor oder Azure App Insights) oder beliebige Partnerüberwachungslösungen wie Dynatrace verwenden. Sie können sogar selbstentwickelte Lösungen nutzen, mit denen Fehler auf der Ebene der Anwendung oder der virtuellen Infrastruktur überwacht oder erkannt werden können.
 
 ### <a name="step-3-update-the-cname-record"></a>Schritt 3: Aktualisieren des CNAME-Eintrags
 
@@ -155,7 +155,7 @@ Auf ähnliche Weise erstellen Sie auch den Notfallwiederherstellungs-Endpunkt in
 
 ### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Schritt 3: Einrichten der Integritätsprüfungen und der Failoverkonfiguration
 
-In diesem Schritt legen Sie die DNS-TTL auf 10 Sekunden, die von den meisten rekursiven Resolvern mit Internetzugriff berücksichtigt wird. Diese Konfigurationen bedeutet, dass ein DNS-Resolver die Informationen für maximal 10 Sekunden zwischenspeichert. Für die Einstellungen des Endpunktmonitors ist der Pfad aktuell auf / oder Stamm eingestellt, aber Sie können die Endpunkteinstellungen anpassen, um einen Pfad auszuwerten, z. B. prod.contoso.com/index. Das nachfolgende Beispiel ist **https** das Testprotokoll. Sie können jedoch auch **http** oder **tcp** auswählen. Die Wahl des Protokolls hängt von der Endanwendung ab. Das Testintervall ist auf 10 Sekunden festgelegt, sodass schnelle Tests möglich sind, und die Anzahl der Wiederholungen ist auf 3 gesetzt. Folglich führt Traffic Manager ein Failover auf den zweiten Endpunkt durch, wenn in drei aufeinander folgende Intervallen ein Fehler registriert wird. Die folgende Formel definiert die Gesamtzeit für ein automatisches Failover: Zeit für Failover = TTL + Wiederholung * Testintervall. In diesem Fall ist der Wert 10 + 3 * 10 = 40 Sekunden (Max).
+In diesem Schritt legen Sie die DNS-TTL auf 10 Sekunden, die von den meisten rekursiven Resolvern mit Internetzugriff berücksichtigt wird. Diese Konfigurationen bedeutet, dass ein DNS-Resolver die Informationen für maximal 10 Sekunden zwischenspeichert. Für die Einstellungen des Endpunktmonitors ist der Pfad aktuell auf / oder Stamm eingestellt, aber Sie können die Endpunkteinstellungen anpassen, um einen Pfad auszuwerten, z. B. prod.contoso.com/index. Das nachfolgende Beispiel ist **https** das Testprotokoll. Sie können jedoch auch **http** oder **tcp** auswählen. Die Wahl des Protokolls hängt von der Endanwendung ab. Das Testintervall ist auf 10 Sekunden festgelegt, sodass schnelle Tests möglich sind, und die Anzahl der Wiederholungen ist auf 3 gesetzt. Folglich führt Traffic Manager ein Failover auf den zweiten Endpunkt durch, wenn in drei aufeinander folgenden Intervallen ein Fehler registriert wird. Die folgende Formel definiert die Gesamtzeit für ein automatisches Failover: Zeit für Failover = TTL + Wiederholung * Testintervall. In diesem Fall ist der Wert 10 + 3 * 10 = 40 Sekunden (Max).
 Wenn die Anzahl der Wiederholungen auf 1 sowie die TTL auf 10 Sekunden festgelegt ist, beträgt die Zeit für das Failover 10 + 1 * 10 = 20 Sekunden. Leben Sie die Anzahl der Wiederholungen auf einen Wert von mehr als **1** fest, um die Wahrscheinlichkeit von Failovers aufgrund von falsch positiven Werten oder kleineren Netzwerk-Blips zu vermeiden. 
 
 
@@ -165,7 +165,7 @@ Wenn die Anzahl der Wiederholungen auf 1 sowie die TTL auf 10 Sekunden festgeleg
 
 ### <a name="how-automatic-failover-works-using-traffic-manager"></a>Funktionsweise des automatischen Failover mit Azure Traffic Manager
 
-Während eines Notfalls wird der primäre Endpunkt getestet, der Status ändert sich in **Beeinträchtigt** und der Notfallwiederherstellungsstandort bleibt **Online**. Standardmäßig sendet Traffic Manager den gesamten Datenverkehr an den primären Endpunkt (mit der höchsten Priorität). Wenn der primäre Endpunkt als beeinträchtigt angezeigt wird, leitet Traffic Manager den Datenverkehr an den zweiten Endpunkt, solange dieser fehlerfrei ist. Sie haben die Möglichkeit, weitere Endpunkte innerhalb von Traffic Manager zu konfigurieren, die als zusätzliche Failoverendpunkte oder als Lastenausgleichsmodule zur Lastverteilung zwischen den Endpunkten dienen können.
+Während eines Notfalls wird der primäre Endpunkt getestet, der Status ändert sich in **Beeinträchtigt** und der Notfallwiederherstellungsstandort bleibt **Online**. Standardmäßig sendet Traffic Manager den gesamten Datenverkehr an den primären Endpunkt (mit der höchsten Priorität). Wenn der primäre Endpunkt als beeinträchtigt angezeigt wird, leitet Traffic Manager den Datenverkehr an den zweiten Endpunkt, solange dieser fehlerfrei ist. Sie können weitere Endpunkte innerhalb von Traffic Manager konfigurieren, die als zusätzliche Failoverendpunkte oder als Lastenausgleichsmodule zur Lastverteilung zwischen den Endpunkten dienen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).

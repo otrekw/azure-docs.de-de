@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 995f4670b17d55fe04d5c30a834ea4be576a8348
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100535313"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106489977"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetrie-, Eigenschaften- und Befehlsnutzlasten
 
@@ -51,6 +51,10 @@ In IoT Central können Sie die Rohdaten anzeigen, die ein Gerät an eine Anwendu
     In dieser Ansicht können Sie die anzuzeigenden Spalten auswählen und einen Zeitbereich zum Anzeigen festlegen. In der Spalte für **Nicht modellierte Daten** werden die Daten des Geräts angezeigt, die keiner der Definitionen für Eigenschaften oder Telemetriedaten in der Gerätevorlage entsprechen.
 
 ## <a name="telemetry"></a>Telemetrie
+
+### <a name="telemetry-in-components"></a>Telemetrie in Komponenten
+
+Wenn die Telemetrie in einer Komponente definiert ist, fügen Sie eine benutzerdefinierte Nachrichteneigenschaft namens `$.sub` mit dem Namen der Komponente hinzu, wie im Gerätemodell definiert. Weitere Informationen finden Sie unter [Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
 
 ### <a name="primitive-types"></a>Einfache Typen
 
@@ -437,6 +441,21 @@ Ein Geräteclient sollte den Zustand als JSON-Code senden, der wie im folgenden 
 > [!NOTE]
 > Die Nutzlastformate für Eigenschaften gelten für Anwendungen, die am 14.07.2020 oder danach erstellt wurden.
 
+### <a name="properties-in-components"></a>Eigenschaften in Komponenten
+
+Wenn die Eigenschaft in einer-Komponente definiert ist, umschließen Sie die Eigenschaft im Komponentennamen. Im folgenden Beispiel wird `maxTempSinceLastReboot` in der Komponente `thermostat2` festgelegt. Der Marker `__t` gibt an, dass es sich um eine Komponente handelt:
+
+```json
+{
+  "thermostat2" : {  
+    "__t" : "c",  
+    "maxTempSinceLastReboot" : 38.7
+    } 
+}
+```
+
+Weitere Informationen finden Sie unter [Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
+
 ### <a name="primitive-types"></a>Einfache Typen
 
 In diesem Abschnitt werden Beispiele für einfache Eigenschaftstypen gezeigt, die ein Gerät an eine IoT Central-Anwendung sendet.
@@ -715,11 +734,27 @@ Ein Geräteclient sollte eine JSON-Nutzlast, die wie im folgenden Beispiel aussi
 }
 ```
 
-### <a name="writeable-property-types"></a>Schreibbare Eigenschaftstypen
+### <a name="writable-property-types"></a>Beschreibbare Eigenschaftstypen
 
-In diesem Abschnitt werden Beispiele für schreibbare Eigenschaftstypen gezeigt, die ein Gerät von einer IoT Central-Anwendung empfängt.
+In diesem Abschnitt werden Beispiele für beschreibbare Eigenschaftstypen gezeigt, die ein Gerät von einer IoT Central-Anwendung empfängt.
 
-IoT Central erwartet vom Gerät eine Antwort zu Aktualisierungen von schreibbaren Eigenschaften. Die Antwortnachricht sollte die Felder `ac` und `av` enthalten. Das Feld `ad` ist optional. Beispiele hierzu finden Sie in den folgenden Codeausschnitten.
+Wenn die beschreibbare Eigenschaft in einer Komponente definiert ist, enthält die gewünschte Eigenschaftsnachricht den Komponentennamen. Das folgende Beispiel zeigt die Nachricht, in der das Gerät zum Aktualisieren von `targetTemperature` in der Komponente `thermostat2` aufgefordert wird. Der Marker `__t` gibt an, dass es sich um eine Komponente handelt:
+
+```json
+{
+  "thermostat2": {
+    "targetTemperature": {
+      "value": 57
+    },
+    "__t": "c"
+  },
+  "$version": 3
+}
+```
+
+Weitere Informationen finden Sie unter [Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
+
+IoT Central erwartet vom Gerät eine Antwort auf Aktualisierungen von beschreibbaren Eigenschaften. Die Antwortnachricht sollte die Felder `ac` und `av` enthalten. Das Feld `ad` ist optional. Beispiele hierzu finden Sie in den folgenden Codeausschnitten.
 
 `ac` ist ein numerisches Feld, in dem die Werte in der folgenden Tabelle verwendet werden:
 
@@ -734,7 +769,7 @@ IoT Central erwartet vom Gerät eine Antwort zu Aktualisierungen von schreibbare
 
 `ad` ist eine Beschreibung der Optionszeichenfolge.
 
-Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines schreibbaren `string`-Eigenschaftstyps:
+Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines beschreibbaren `string`-Eigenschaftstyps:
 
 ```json
 {
@@ -769,7 +804,7 @@ Das Gerät sollte nach Verarbeitung des Updates die folgende JSON-Nutzlast an Io
 }
 ```
 
-Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines schreibbaren `Enum`-Eigenschaftstyps:
+Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines beschreibbaren `Enum`-Eigenschaftstyps:
 
 ```json
 {
@@ -834,6 +869,8 @@ Das Gerät sollte nach Verarbeitung des Updates die folgende JSON-Nutzlast an Io
 ```
 
 ## <a name="commands"></a>Befehle
+
+Wenn der Befehl in einer Komponente definiert ist, enthält der Name des vom Gerät empfangenen Befehls den Komponentennamen. Beispiel: Wenn der Befehl `getMaxMinReport` und die Komponente `thermostat2` lautet, empfängt das Gerät eine Anforderung zum Ausführen eines Befehls namens `thermostat2*getMaxMinReport`.
 
 Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines Befehls, der weder Parameter aufweist noch eine Rückgabe vom Gerät erwartet:
 

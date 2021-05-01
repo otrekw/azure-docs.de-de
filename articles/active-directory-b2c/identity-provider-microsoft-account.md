@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0d8ba3fc578580e6eee02f435272f4ea53523586
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 60a846d72c1760c7f9dddac891f36e834b8364f3
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448216"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028161"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Microsoft-Konto mithilfe von Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Wenn Sie die Anmeldung für Benutzer mit einem Microsoft-Konto in Azure Active D
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)** (Konten in allen Organisationsverzeichnissen (beliebiges Azure AD-Verzeichnis: mehrere Mandanten) und persönliche Microsoft-Konten (z. B. Skype, Xbox)) aus.
 
    Weitere Informationen zur Auswahl anderer Kontotypen finden Sie unter [Schnellstart: Registrieren einer Anwendung bei der Microsoft Identity Platform](../active-directory/develop/quickstart-register-app.md).
-1. Klicken Sie unter **Umleitungs-URI (optional)** auf **Web**, und geben Sie `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp` in das Textfeld ein. Ersetzen Sie `<tenant-name>` durch den Azure AD B2C-Mandantennamen.
+1. Wählen Sie unter **Umleitungs-URI (optional)** die Option **Web** aus, und geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten und `your-domain-name` durch Ihre benutzerdefinierte Domäne.
 1. Wählen Sie **Registrieren** aus.
 1. Notieren Sie die **Anwendungs-ID (Client)** , die auf der Seite „Übersicht“ der Anwendung angezeigt wird. Sie benötigen die Client-ID beim Konfigurieren des Identitätsanbieters im nächsten Abschnitt.
 1. Wählen Sie **Zertifikate und Geheimnisse** aus.
@@ -68,6 +68,8 @@ Wenn Sie die Anmeldung für Benutzer mit einem Microsoft-Konto in Azure Active D
 1. Wählen Sie **Speichern** aus.
 
 ## <a name="add-microsoft-identity-provider-to-a-user-flow"></a>Hinzufügen von Microsoft als Identitätsanbieter zu einem Benutzerflow 
+
+Der Microsoft-Identitätsanbieter ist jetzt eingerichtet, er ist jedoch noch auf keiner der Anmeldeseiten verfügbar. So fügen Sie den Microsoft-Identitätsanbieter einem Benutzerflow hinzu:
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 1. Klicken Sie auf den Benutzerflow, dem Sie Microsoft als Identitätsanbieter hinzufügen möchten.
@@ -194,7 +196,7 @@ Sie haben Ihre Richtlinie jetzt so konfiguriert, dass Azure AD B2C mit Ihrer Mic
 ## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
-1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
 1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Microsoft** aus, um sich mit dem Microsoft-Konto anzumelden.
 

@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c42b79cb8b92b5f96f31eb58f091ff0ce79b84f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: b2c-support
+ms.openlocfilehash: 4b35cfeded13a50e5e27c240b0826f1d108ff7eb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652129"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529447"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
@@ -36,7 +37,8 @@ Ein Geschäftskonto wird für alle Mandanten auf die gleiche Weise basierend auf
 
 Beim Hinzufügen eines neuen Geschäftskontos müssen Sie die folgenden Konfigurationseinstellungen berücksichtigen:
 
-- **Name** und **Benutzername**: Die Eigenschaft **Name** enthält den Vor- und Nachnamen des Benutzers. Der **Benutzername** ist der Bezeichner, den der Benutzer eingibt, um sich anzumelden. Der Benutzername enthält den vollständigen Domänennamen. Der Domänennamensteil des Benutzernamens muss entweder der anfängliche Standarddomänenname *Ihre_Domäne.onmicrosoft.com* oder ein bestätigter, nicht im Verbund konfigurierter [benutzerdefinierter Domänenname](../active-directory/fundamentals/add-custom-domain.md) wie *contoso.com* sein.
+- **Name** und **Benutzername**: Die Eigenschaft **Name** enthält den Vor- und Nachnamen des Benutzers. Der **Benutzername** ist der Bezeichner, den der Benutzer eingibt, um sich anzumelden. Der Benutzername enthält den vollständigen Domänennamen. Der Domänennamensteil des Benutzernamens muss entweder der anfängliche Standarddomänenname *Ihre_Domäne.onmicrosoft.com* oder ein bestätigter, nicht im Verbund konfigurierter [benutzerdefinierter Domänenname](../active-directory/fundamentals/add-custom-domain.md) wie *contoso.com* sein. 
+- **E-Mail**: Der neue Benutzer kann sich auch mit einer E-Mail-Adresse anmelden. Sonderzeichen oder Multibytezeichen in E-Mails, z. B. japanische Zeichen, werden nicht unterstützt.
 - **Profil**: Das Konto wird mit einem Profil mit Daten des Benutzers eingerichtet. Sie haben die Möglichkeit, einen Vornamen, Nachnamen, eine Position und einen Abteilungsnamen einzugeben. Sie können das Profil bearbeiten, nachdem das Konto erstellt wurde.
 - **Gruppen**: Verwenden Sie Gruppen zum Ausführen von Verwaltungsaufgaben, z. B. zum gleichzeitigen Zuweisen von Lizenzen oder Berechtigungen für viele Benutzer oder Geräte. Sie können das neue Konto einer bestehenden [Gruppe](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) in Ihrem Mandanten zuordnen.
 - **Verzeichnisrolle**: Sie müssen die Zugriffsebene angeben, die das Benutzerkonto auf Ressourcen in Ihrem Mandanten hat. Die folgenden Berechtigungsebenen sind verfügbar:
@@ -72,7 +74,7 @@ Sie können in Ihrem Mandanten externe Benutzer als Gastbenutzer einladen. Ein t
 
 Wenn Sie Gastbenutzer in Ihren Mandanten eingeladen haben, geben Sie die E-Mail-Adresse des Empfängers und eine Nachricht ein, die die Einladung beschreibt. Über den Einladungslink gelangt der Benutzer zur Zustimmungsseite. Wenn an die E-Mail-Adresse kein Posteingang angefügt ist, kann der Benutzer zur Zustimmungsseite navigieren, indem er mit den Anmeldeinformationen der Einladung zu einer Microsoft-Seite wechselt. Der Benutzer ist dann gezwungen, die Einladung in gleicher Weise wie beim Klicken auf den Link in der E-Mail einzulösen. Beispiel: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-Sie können auch mit der [Microsoft Graph-API](/graph/api/invitation-post?view=graph-rest-beta) Gastbenutzer einladen.
+Sie können auch mit der [Microsoft Graph-API](/graph/api/invitation-post) Gastbenutzer einladen.
 
 ## <a name="consumer-user"></a>Consumerbenutzer
 

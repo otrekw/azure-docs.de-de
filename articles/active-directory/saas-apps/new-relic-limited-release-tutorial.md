@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 29e19eea51b5ee55831bf1d694a9a6473a62d471
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c0ffe4affb6b30f2e2a1aa97a0f4795c130f59b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97504048"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517605"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit New Relic
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie New Relic in Azure Active Directory (Az
 * Steuern in Azure AD, wer Zugriff auf New Relic hat
 * Ermöglichen, dass sich Benutzer mit ihren Azure AD-Konten automatisch bei New Relic anmelden können
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) mit Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,13 +38,12 @@ Zunächst benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * New Relic unterstützt vom Dienstanbieter oder vom Identitätsanbieter initiiertes einmaliges Anmelden.
-* Nach dem Konfigurieren von New Relic können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="add-new-relic-from-the-gallery"></a>Hinzufügen von New Relic aus dem Katalog
 
 Zum Konfigurieren der Integration von New Relic in Azure AD müssen Sie **New Relic (By Organization)** über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wähle den Dienst **Azure Active Directory** aus.
 1. Wählen Sie **Unternehmensanwendungen** > **Neue Anwendung** aus.
 1. Geben Sie auf der Seite **Azure AD-Katalog durchsuchen** im Suchfeld den Suchbegriff **New Relic (By Organization)** ein.
@@ -69,7 +66,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **New Relic by Organization** zum Abschnitt **Verwalten**. Wählen Sie dann **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **New Relic by Organization** zum Abschnitt **Verwalten**. Wählen Sie dann **Einmaliges Anmelden** aus.
 
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 
@@ -98,32 +95,27 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-Nachfolgend wird beschrieben, wie Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon erstellen.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus.
-1. Wählen Sie **Benutzer** > **Neuer Benutzer** aus.
-1. Führen Sie auf der Seite **Neuer Benutzer** die folgenden Aktionen aus:
-   1. Geben Sie im Feld **Benutzername** die Zeichenfolge `username@companydomain.extension` ein. Beispiel: `b.simon@contoso.com`. Dies sollte der E-Mail-Adresse entsprechen, die Sie aufseiten von New Relic verwenden.
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
-   1. Wählen Sie **Kennwort anzeigen** aus, und speichern Sie dann den angezeigten Wert.
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-Nachfolgend wird beschrieben, wie Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure AD ermöglichen, indem Sie ihr Zugriff auf die Anwendung New Relic by Organization gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf New Relic gewähren.
 
-1. Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus.
-1. Wählen Sie **Unternehmensanwendungen** > **New Relic by Organization** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **New Relic** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Screenshot des Abschnitts „Verwalten“, in dem die Option „Benutzer und Gruppen“ hervorgehoben ist](common/users-groups-blade.png)
-
-1. Klicken Sie auf **Benutzer hinzufügen**. Wählen Sie unter **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** (bzw. je nach Planebene **Benutzer**) aus.
-
-   ![Screenshot der Option „Benutzer hinzufügen“](common/add-assign-user.png)
-
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** (bzw. **Benutzer**) in der Liste **Benutzer** den Eintrag **B. Simon** aus, und wählen Sie dann im unteren Bereich des Bildschirms die Option **Auswählen** aus.
-1. Wählen Sie unter **Zuweisung hinzufügen** die Option **Zuweisen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-new-relic-sso"></a>Konfigurieren des einmaligen Anmeldens für New Relic
 
@@ -167,18 +159,20 @@ In diesem Abschnitt erstellen Sie in New Relic einen Benutzer namens „B. Simo
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-Nachfolgend wird beschrieben, wie Sie Ihre Konfiguration des einmaligen Anmeldens von Azure AD über den Zugriffsbereich testen.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich die Option **New Relic by Organization** auswählen, sollten Sie automatisch bei New Relic angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für New Relic weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
+* Rufen Sie direkt die New Relic-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der New Relic-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-- [Ausprobieren von New Relic mit Azure AD](https://aad.portal.azure.com/)
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „New Relic“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der New Relic-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von New Relic können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

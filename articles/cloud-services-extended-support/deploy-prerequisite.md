@@ -8,36 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bce09fad6ffa169a019628498a686226eff266c7
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728109"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384975"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Voraussetzungen für die Bereitstellung von Azure Cloud Services (erweiterter Support)
 
-> [!IMPORTANT]
-> Cloud Services (erweiterter Support) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Um eine erfolgreiche Bereitstellung von Cloud Services (erweiterter Support) zu gewährleisten, führen Sie die folgenden Schritte durch und schließen jeden Punkt ab, bevor Sie mit der Bereitstellung beginnen. 
-
-## <a name="register-the-cloudservices-feature"></a>Registrieren des CloudServices-Features
-Registrieren Sie das Features für Ihr Abonnement. Die Registrierung kann mehrere Minuten dauern. 
-
-```powershell
-Register-AzProviderFeature -FeatureName CloudServices -ProviderNamespace Microsoft.Compute
-```
-
-Überprüfen Sie den Status der Registrierung wie folgt:  
-```powershell
-Get-AzProviderFeature 
-
-#Sample output
-FeatureName               ProviderName      RegistrationState
-CloudServices           Microsoft.Compute    Registered
-```
 
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Erforderliche Aktualisierungen der Dienstkonfigurationsdatei (CSCFG-Datei)
 
@@ -78,8 +58,16 @@ Entfernen Sie alte Remotedesktopeinstellungen aus der Dienstkonfigurationsdatei 
 <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2021-12-17T23:59:59.0000000+05:30" /> 
 <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" /> 
 ```
+Entfernen Sie die alten Diagnoseeinstellungen für jede Rolle in der Dienstkonfigurationsdatei (.cscfg).
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+```
 
 ## <a name="required-service-definition-file-csdef-updates"></a>Erforderliche Aktualisierungen der Dienstdefinitionsdatei (CSDEF-Datei)
+
+> [!NOTE]
+> Für Änderungen in der Dienstdefinitionsdatei (CSDEF) muss die Paketdatei (CSPKG) erneut generiert werden. Um die neuesten Einstellungen für Ihren Clouddienst zu erhalten, erstellen Sie die CSPKG-Datei, und verpacken Sie sie neu, nachdem Sie die folgenden Änderungen in der CSDEF-Datei vorgenommen haben.
 
 ### <a name="1-virtual-machine-sizes"></a>1) VM-Größen
 Die folgenden Größen sind in Azure Resource Manager veraltet. Wenn Sie diese jedoch weiterhin verwenden möchten, aktualisieren Sie den `vmsize`-Namen mit der zugeordneten Azure Resource Manager-Benennungskonvention.  
@@ -117,10 +105,15 @@ In Bereitstellungen, die die alten Remotedesktop-Plug-Ins genutzt haben, müssen
 <Import moduleName="RemoteForwarder" /> 
 </Imports> 
 ```
+Für Bereitstellungen, die die alten Diagnose-Plug-Ins verwendet haben, müssen die Einstellungen für jede Rolle aus der Dienstdefinitionsdatei (.csdef) entfernt werden.
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+```
 
 ## <a name="key-vault-creation"></a>Erstellen einer Key Vault-Instanz 
 
-Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei auf die Zertifikatfingerabdrücke. Außerdem müssen Sie Key Vault für entsprechende Berechtigungen aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Key Vault kann über das [Azure-Portal](../key-vault/general/quick-create-portal.md) und mit [PowerShell](../key-vault/general/quick-create-powershell.md) erstellt werden. Key Vault muss in derselben Region und im selben Abonnement wie der Clouddienst erstellt werden. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
+Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei auf die Zertifikatfingerabdrücke. Außerdem müssen Sie (im Portal) in Key Vault „Zugriffsrichtlinien“ für „Azure Virtual Machines für Bereitstellung“ aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Sie können einen Schlüsseltresor im [Azure-Portal](../key-vault/general/quick-create-portal.md) oder mithilfe von [PowerShell](../key-vault/general/quick-create-powershell.md) erstellen. Der Schlüsseltresor muss in derselben Region und demselben Abonnement wie der Clouddienst erstellt werden. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Nächste Schritte 
 - Überprüfen Sie die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support).

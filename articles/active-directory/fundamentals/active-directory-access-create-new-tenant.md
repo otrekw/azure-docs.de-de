@@ -12,14 +12,15 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93ae1982dfaef6e10edf39013474b6663dd688d0
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96437239"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130609"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory
+
 Sie können alle Verwaltungsaufgaben über das Azure Active Directory-Portal (Azure AD-Portal) ausführen. Dazu gehört auch das Erstellen eines neuen Mandanten für Ihre Organisation. 
 
 In diesem Schnellstart erfahren Sie, wie Sie das Azure-Portal und Azure Active Directory aufrufen, und wie Sie einen Basismandanten für Ihre Organisation erstellen.
@@ -27,6 +28,7 @@ In diesem Schnellstart erfahren Sie, wie Sie das Azure-Portal und Azure Active D
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>Erstellen eines neuen Mandanten für Ihre Organisation
+
 Nach der Anmeldung im Azure-Portal können Sie einen neuen Mandanten für Ihre Organisation erstellen. Ihr neuer Mandant stellt Ihre Organisation dar und unterstützt Sie dabei, eine bestimmte Microsoft Cloud Services-Instanz für Ihre internen und externen Benutzer zu verwalten.
 
 ### <a name="to-create-a-new-tenant"></a>Erstellen eines neuen Mandanten
@@ -59,10 +61,20 @@ Nach der Anmeldung im Azure-Portal können Sie einen neuen Mandanten für Ihre O
 
 Ihr neuer Mandant wird mit der Domäne „contoso.onmicrosoft.com“ erstellt.
 
+## <a name="your-user-account-in-the-new-tenant"></a>Ihr Benutzerkonto im neuen Mandanten
+
+Wenn Sie einen neuen Azure AD-Mandanten erstellen, werden Sie der erste Benutzer dieses Mandanten. Als erster Benutzer wird Ihnen automatisch die Rolle [Globaler Administrator](../roles/permissions-reference.md#global-administrator) zugewiesen. Sehen Sie sich Ihr Benutzerkonto an, indem Sie zur Seite [**Benutzer**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) navigieren.
+
+Standardmäßig werden Sie auch als [technischer Kontakt](/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean) für den Mandanten aufgeführt. Die Informationen zum technischen Kontakt können unter [**Eigenschaften**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) geändert werden.
+
+> [!WARNING]
+> Stellen Sie sicher, dass Ihrem Verzeichnis mindestens zwei Konten mit Berechtigungen vom Typ „Globaler Administrator“ zugewiesen sind. Das ist hilfreich, wenn ein globaler Administrator gesperrt ist. Ausführlichere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md).
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 Wenn Sie diese Anwendung nicht mehr verwenden möchten, können Sie den Mandanten folgendermaßen löschen:
 
-- Vergewissern Sie sich anhand des Filters **Verzeichnis + Abonnement** im Azure-Portal, dass Sie bei dem Verzeichnis angemeldet sind, das Sie löschen möchten, und wechseln Sie ggf. zum Zielverzeichnis.
+- Vergewissern Sie sich anhand des Filters **Verzeichnis + Abonnement** im Azure-Portal, dass Sie bei dem Verzeichnis angemeldet sind, das Sie löschen möchten. Wechseln Sie ggf. zum Zielverzeichnis.
 - Wählen Sie **Azure Active Directory**, die Seite **Contoso – Übersicht** und dann **Verzeichnis löschen** aus.
 
     Der Mandant und die dazugehörigen Informationen werden gelöscht.
@@ -70,6 +82,7 @@ Wenn Sie diese Anwendung nicht mehr verwenden möchten, können Sie den Mandante
     <kbd>![Seite „Übersicht“ mit hervorgehobener Schaltfläche „Verzeichnis löschen“](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Wie Sie zusätzliche Domänennamen ändern oder hinzufügen, erfahren Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](add-custom-domain.md).
 
 - Weitere Informationen zum Hinzufügen von Benutzern finden Sie unter [Hinzufügen oder Löschen eines neuen Benutzers](add-users-azure-active-directory.md).

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2e9acda136654a0dd654eded7b4c17e560fc0aa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0cb3b3fd2010bf4ad1288b767d62d3d76f7b37e3
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709700"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550964"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
@@ -150,7 +150,7 @@ Sie legen nun die Google-Client-ID und den geheimen Clientschlüssel fest. Dazu 
    > Verwenden Sie die Client-ID und den geheimen Clientschlüssel der App, die Sie hier erstellt haben: „Schritt 1: Konfigurieren eines Google-Entwicklerprojekts“. Weitere Informationen finden Sie unter [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview&preserve-view=true). 
  
 ## <a name="how-do-i-remove-google-federation"></a>Wie entferne ich einen Google Verbund?
-Sie können Ihre Google-Verbundeinrichtung löschen. Wenn Sie dies tun, können sich Google-Gastbenutzer, die ihre Einladungen bereits eingelöst haben, nicht mehr anmelden. Sie können ihnen aber erneut Zugriff auf Ihre Ressourcen gewähren, indem Sie sie aus dem Verzeichnis löschen und erneut einladen. 
+Sie können Ihre Google-Verbundeinrichtung löschen. Wenn Sie dies tun, können sich Google-Gastbenutzer, die ihre Einladungen bereits eingelöst haben, nicht mehr anmelden. Sie können ihnen jedoch den Zugriff auf ihre Ressourcen zurückgeben, indem Sie [ihren Einlösungsstatus zurücksetzen](reset-redemption-status.md).
  
 **So löschen Sie den Google-Verbund im Azure AD-Portal**
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
