@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 430ece58bd3dc1651ac391ba0e29515085ee507b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4879c8370953a5ac8c6b46efe8010db9692d3052
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878188"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714504"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Ermitteln, Bewerten und Migrieren von virtuellen AWS-Computern (Amazon Web Services) zu Azure
 
@@ -145,7 +145,9 @@ Der erste Schritt bei der Migration besteht darin, die Replikationsappliance ein
 5. Klicken Sie auf **Ressourcen erstellen**. Daraufhin wird im Hintergrund ein Azure Site Recovery-Tresor erstellt.
     - Falls Sie die Migration bereits mit dem Tool für die Azure Migrate-Servermigration eingerichtet haben, kann die Zieloption nicht konfiguriert werden, da die Ressourcen bereits vorher eingerichtet wurden.
     - Nach dem Klicken auf diese Schaltfläche kann die Zielregion für dieses Projekt nicht mehr geändert werden.
-    - Um ihre VMs in eine andere Region zu migrieren, müssen Sie ein neues/anderes Azure Migrate-Projekt erstellen.
+    - Um ihre VMs in eine andere Region zu migrieren, müssen Sie ein neues/anderes Azure Migrate-Projekt erstellen.  
+    > [!NOTE]
+    > Wenn Sie bei der Erstellung des Azure Migrate-Projekts den privaten Endpunkt als Konnektivitätsmethode ausgewählt haben, wird der Recovery Services-Tresor auch für die Konnektivität mit privaten Endpunkten konfiguriert. Stellen Sie sicher, dass die privaten Endpunkte von der Replikationsappliance aus erreichbar sind. [**Weitere Informationen**](how-to-use-azure-migrate-with-private-endpoints.md#troubleshoot-network-connectivity)
 
 6. Wählen Sie unter **Möchten Sie eine neue Replikationsappliance installieren oder ein vorhandenes Setup horizontal hochskalieren?** die Option **Replikationsappliance installieren**.
 7. Führen Sie unter **Laden Sie die Software für die Replikationsappliance herunter, und installieren Sie sie** den Download des Installationsprogramms für die Appliance und des Registrierungsschlüssels durch. Sie benötigen den Schlüssel zum Registrieren der Appliance. Der Schlüssel ist nach dem Herunterladen fünf Tage lang gültig.
@@ -244,13 +246,18 @@ Ein Mobilitätsdienst-Agent muss auf den AWS-VMs installiert sein, die migriert 
     ![Auswählen von VMs](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 8. Wählen Sie unter **Zieleinstellungen** das Abonnement und die Zielregion für die Migration aus, und geben Sie die Ressourcengruppe an, in der sich die Azure-VMs nach der Migration befinden.
-9. Wählen Sie unter **Virtuelles Netzwerk** das Azure-VNET/-Subnetz aus, in das die Azure-VMs nach der Migration eingebunden werden.
-10. Wählen Sie unter **Verfügbarkeitsoptionen** Folgendes aus:
+9. Wählen Sie unter **Virtuelles Netzwerk** das Azure-VNET/-Subnetz aus, in das die Azure-VMs nach der Migration eingebunden werden.  
+10. Behalten Sie im **Cachespeicherkonto** die Standardoption bei, um das Cachespeicherkonto zu verwenden, das automatisch für das Projekt erstellt wird. Verwenden Sie die Dropdownliste, wenn Sie ein anderes Speicherkonto angeben möchten, das als Cachespeicherkonto für die Replikation verwendet werden soll. <br/> 
+    > [!NOTE]
+    >
+    > - Wenn Sie den privaten Endpunkt als Konnektivitätsmethode für das Azure Migrate-Projekt ausgewählt haben, gewähren Sie dem Recovery Services-Tresor Zugriff auf das Cachespeicherkonto. [**Weitere Informationen**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
+    > - Erstellen Sie einen privaten Endpunkt für das Cachespeicherkonto, um die Replikation mithilfe von ExpressRoute mit privatem Peering zu ermöglichen. [**Weitere Informationen**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional) 
+11. Wählen Sie unter **Verfügbarkeitsoptionen** Folgendes aus:
     -  Verfügbarkeitszone, um den migrierten Computer einer bestimmten Verfügbarkeitszone in der Region anzuheften. Verteilen Sie mit dieser Option Server, die eine Anwendungsebene mit mehreren Knoten bilden, über Verfügbarkeitszonen. Wenn Sie diese Option auswählen, müssen Sie die Verfügbarkeitszone angeben, die für jeden auf der Registerkarte „Compute“ ausgewählten Computer verwendet werden soll. Diese Option ist nur verfügbar, wenn die für die Migration ausgewählte Zielregion Verfügbarkeitszonen unterstützt.
     -  Verfügbarkeitsgruppe, um den migrierten Computer in einer Verfügbarkeitsgruppe zu platzieren. Um diese Option verwenden zu können, muss die ausgewählte Zielressourcengruppe über mindestens eine Verfügbarkeitsgruppe verfügen.
     - Die Infrastrukturredundanzoption ist nicht erforderlich, wenn Sie keine dieser Verfügbarkeitskonfigurationen für die migrierten Computer benötigen.
     
-11. Wählen Sie unter **Datenträgerverschlüsselungstyp** Folgendes aus:
+12. Wählen Sie unter **Datenträgerverschlüsselungstyp** Folgendes aus:
     - Verschlüsselung ruhender Daten mit plattformseitig verwaltetem Schlüssel
     - Verschlüsselung ruhender Daten mit kundenseitig verwaltetem Schlüssel
     - Mehrfachverschlüsselung mit plattformseitig und kundenseitig verwalteten Schlüsseln
@@ -258,14 +265,14 @@ Ein Mobilitätsdienst-Agent muss auf den AWS-VMs installiert sein, die migriert 
    > [!NOTE]
    > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
   
-12. Wählen Sie unter **Azure-Hybridvorteil**
+13. Wählen Sie unter **Azure-Hybridvorteil**
 
     - die Option **Nein** aus, falls Sie den Azure-Hybridvorteil nicht anwenden möchten. Klicken Sie dann auf **Weiter**.
     - Wählen Sie **Ja** aus, wenn Sie über Windows Server-Computer verfügen, die durch aktive Software Assurance- oder Windows Server-Abonnements abgedeckt sind, und den Vorteil auf die zu migrierenden Computer anwenden möchten. Klicken Sie dann auf **Weiter**.
 
     ![Zieleinstellungen](./media/tutorial-migrate-vmware/target-settings.png)
 
-13. Überprüfen Sie in **Compute** Name, Größe, Betriebssystem- Datenträger und Verfügbarkeitskonfiguration der VM (falls im vorherigen Schritt ausgewählt). Die VMs müssen die [Azure-Anforderungen](migrate-support-matrix-physical-migration.md#azure-vm-requirements) erfüllen.
+14. Überprüfen Sie in **Compute** Name, Größe, Betriebssystem- Datenträger und Verfügbarkeitskonfiguration der VM (falls im vorherigen Schritt ausgewählt). Die VMs müssen die [Azure-Anforderungen](migrate-support-matrix-physical-migration.md#azure-vm-requirements) erfüllen.
 
     - **VM-Größe**: Bei Verwendung von Bewertungsempfehlungen zeigt die Dropdownliste für die VM-Größe die empfohlene Größe. Andernfalls wählt Azure Migrate eine Größe basierend auf der höchsten Übereinstimmung im Azure-Abonnement aus. Alternativ können Sie unter **Azure-VM-Größe** manuell eine Größe auswählen.
     - **Betriebssystemdatenträger**: Geben Sie den Betriebssystemdatenträger (Startdatenträger) für die VM an. Der Betriebssystemdatenträger enthält den Bootloader und das Installationsprogramm des Betriebssystems.
@@ -274,13 +281,13 @@ Ein Mobilitätsdienst-Agent muss auf den AWS-VMs installiert sein, die migriert 
 
 ![Computeeinstellungen](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-14. Geben Sie unter **Datenträger** an, ob die VM-Datenträger in Azure repliziert werden sollen, und wählen Sie den Datenträgertyp (SSD Standard/HDD Standard oder Managed Disks Premium) in Azure aus. Klicken Sie dann auf **Weiter**.
+15. Geben Sie unter **Datenträger** an, ob die VM-Datenträger in Azure repliziert werden sollen, und wählen Sie den Datenträgertyp (SSD Standard/HDD Standard oder Managed Disks Premium) in Azure aus. Klicken Sie dann auf **Weiter**.
     - Sie können Datenträger von der Replikation ausschließen.
     - Wenn Sie Datenträger ausschließen, sind diese nach der Migration nicht auf der Azure-VM vorhanden. 
 
     ![Datenträgereinstellungen](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-15. Überprüfen Sie unter **Replikation prüfen und starten** die Einstellungen, und klicken Sie auf **Replizieren**, um die erste Replikation für die Server zu starten.
+16. Überprüfen Sie unter **Replikation prüfen und starten** die Einstellungen, und klicken Sie auf **Replizieren**, um die erste Replikation für die Server zu starten.
 
 > [!NOTE]
 > Sie können die Replikationseinstellungen vor Beginn der Replikation jederzeit unter **Verwalten** > **Aktuell replizierte Computer** aktualisieren. Die Einstellungen können nach dem Beginn der Replikation nicht mehr geändert werden.

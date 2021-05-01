@@ -2,13 +2,13 @@
 title: 'Neuigkeiten Versionshinweise: Azure Event Grid'
 description: Hier finden Sie Informationen zu den Neuerungen in Azure Event Grid, z. B. aktuelle Versionshinweise, bekannte Probleme, Fehlerbehebungen, veraltete Funktionen und anstehende Änderungen.
 ms.topic: overview
-ms.date: 04/27/2021
-ms.openlocfilehash: ccb8df774838a1b71ddec08394d7487bf3176039
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/23/2020
+ms.openlocfilehash: f135b25f28002c037dd24fa0cb3bb7476a06309f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135921"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389586"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Welche Neuerungen gibt es in Azure Event Grid?
 
@@ -35,7 +35,7 @@ Es werden fortlaufend Verbesserungen an Azure Event Grid vorgenommen. Damit Sie 
         - StringNotEndsWith
         - NumberInRange
         - NumberNotInRange
-        - IsNullOrUndefined
+        - IsNull
         - IsNotNull
 - [Zulassen von Transformationen von Event Grid-Schemas in CloudEvents 1.0-Schemas für benutzerdefinierte Themen und Domänen](cloudevents-schema.md#configure-event-grid-for-cloudevents)
         
