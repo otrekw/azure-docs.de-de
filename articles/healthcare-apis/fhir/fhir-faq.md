@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 22d9df80bce6e79f0058567f8df76935e431e598
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: f571deaa0b67e9be7b8ce3f01d87f5c955f7140d
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019334"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319069"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Häufig gestellte Fragen zu Azure API for FHIR
 
@@ -104,7 +104,7 @@ Einige Beispiele hierfür sehen Sie im Folgenden:
 
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Welche Sortierung wird bei der Suche nach Ressourcen in Azure API for FHIR standardmäßig verwendet?
 
-Als Sortierkriterium wird das Datum der letzten Aktualisierung unterstützt: _sort=_lastUpdated. Weitere Informationen zu anderen unterstützten Suchparametern finden Sie auf der [Seite mit den unterstützten Features](fhir-features-supported.md#search).
+Als Sortierkriterium wird das Datum der letzten Aktualisierung unterstützt: _sort=_lastUpdated. Weitere Informationen zu anderen unterstützten Suchparametern finden Sie unter [Übersicht über die FHIR-Suche.](overview-of-search.md)
 
 ### <a name="does-the-azure-api-for-fhir-support-everything"></a>Unterstützt die Azure API for FHIR „$everything“? 
 
