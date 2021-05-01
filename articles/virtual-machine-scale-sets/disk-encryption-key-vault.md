@@ -9,16 +9,16 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 77a2fc900e3888575fb6411a8c2b76b2c639d719
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d0b35b0976b46dd22bbf7f15ebb1def3ec721b5d
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748586"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891462"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption
 
-Azure Disk Encryption verwendet Azure Key Vault zum Steuern und Verwalten von Verschlüsselungsschlüsseln und Geheimnissen für die Datenträgerverschlüsselung.  Weitere Informationen zu Schlüsseltresoren finden Sie unter [Informationen zu Azure Key Vault](../key-vault/general/overview.md) und [Azure Key Vault-Sicherheit](../key-vault/general/security-overview.md).
+Azure Disk Encryption verwendet Azure Key Vault zum Steuern und Verwalten von Verschlüsselungsschlüsseln und Geheimnissen für die Datenträgerverschlüsselung.  Weitere Informationen zu Schlüsseltresoren finden Sie unter [Informationen zu Azure Key Vault](../key-vault/general/overview.md) und [Azure Key Vault-Sicherheit](../key-vault/general/security-features.md).
 
 Das Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption umfasst drei Schritte:
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: a641ca1206cb41ded0513db72daa278dc3753c85
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 32150fb4cce76d5a2537c5ec969f265e0d8aae20
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750390"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816186"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Schnellstart: Festlegen und Abrufen eines Zertifikats aus Azure Key Vault mit Azure PowerShell
 
@@ -84,4 +84,4 @@ In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und e
 
 - [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
 - Sehen Sie sich die Referenz zu den [Azure PowerShell-Cmdlets für Key Vault](/powershell/module/az.keyvault/) an.
-- [Azure Key Vault-Sicherheitsübersicht](../general/security-overview.md)
+- [Azure Key Vault-Sicherheitsübersicht](../general/security-features.md)

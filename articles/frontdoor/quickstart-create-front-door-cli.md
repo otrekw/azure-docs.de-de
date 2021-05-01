@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/19/2021
 ms.author: duau
-ms.openlocfilehash: 99204a2d4c3a2455f0916878fb09a348dc79ac7a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3567d5af31b0c7bc2443e3d02426a5bb7aba06f7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778771"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862001"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Schnellstart: Erstellen einer hochverfügbaren globalen Front Door-Webanwendung mit der Azure CLI
 
@@ -105,7 +105,7 @@ Notieren Sie sich den Standardhostnamen jeder Web-App, damit Sie die Back-End-Ad
 
 Erstellen Sie eine einfache Front Door-Instanz mit Standardeinstellungen für den Lastenausgleich, einem Integritätstest und Routingregeln, indem Sie Folgendes ausführen:
 
-Erstellen Sie eine Front Door-Instanz mit [az network front-door create](/cli/azure/ext/front-door/network/front-door#ext_front_door_az_network_front_door_create&preserve-view=true):
+Erstellen Sie eine Front Door-Instanz mit [az network front-door create](/cli/azure/network/front-door#az_network_front_door_create&preserve-view=true):
 
 ```azurecli-interactive
 az network front-door create \
