@@ -24,7 +24,7 @@
     - name: Jupyter Notebook (Multivariat)
       href: 'https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb'
     - name: Azure-Beispiele
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=anomaly-detector'
+      href: /samples/browse/?products=azure&terms=anomaly-detector
 - name: Anleitungen
   items:
     - name: Ermitteln von Anomalien in Ihren Daten
@@ -95,7 +95,7 @@
     - name: Support- und Hilfeoptionen
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
     - name: Microsoft Learn-Module
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
+      href: /learn/modules/intro-to-anomaly-detector/
     - name: Benutzergenerierter Inhalt
       href: user-generated-content.md
     - name: Beitreten zur Ratgebergruppe für die Anomalieerkennung auf Microsoft Teams
