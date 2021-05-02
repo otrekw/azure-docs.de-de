@@ -1,18 +1,18 @@
 ---
 title: Leistungsprobleme mit Azure-Dateifreigaben – Handbuch zur Problembehandlung
 description: Hier finden Sie Informationen zur Behandlung bekannter Leistungsprobleme mit Azure-Dateifreigaben. Machen Sie sich mit möglichen Ursachen und entsprechenden Problemumgehungen vertraut.
-author: gunjanj
+author: roygara
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 11/16/2020
-ms.author: gunjanj
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9f858549f36d196c6412aec549d0ab2e2d864145
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b303dbc20cf0caf4bb0d75f28a2983bc0f27064d
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417670"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065023"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
@@ -65,7 +65,7 @@ Wenn Sie überprüfen möchten, ob Ihre Freigabe gerade gedrosselt wird, können
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>Ursache 2: Hohe Arbeitsauslastung bei Metadaten oder Namespace
 
-Wenn die meisten Ihrer Anforderungen metadatenorientiert sind (z. B. Datei erstellen, Datei öffnen, Datei schließen, Infos abfragen oder Verzeichnis abfragen), ist die Latenz gravierender als die bei Lese-/Schreibvorgängen.
+Wenn der größte Teil Ihrer Anforderungen metadatenzentriert ist (z. B. `createfile`, `openfile`, `closefile`, `queryinfo` oder `querydirectory`), wird die Latenz schlimmer als diejenige von Lese-/Schreibvorgängen sein.
 
 Wenn Sie ermitteln möchten, ob die meisten Ihrer Anforderungen metadatenzentriert sind, beginnen Sie mit der Ausführung der Schritte 1–4, wie oben in „Ursache 1“ beschrieben. Wenn Sie in Schritt 5 keinen Filter für **Antworttyp** hinzufügen möchten, fügen Sie stattdessen einen Eigenschaftsfilter für **API-Name** hinzu.
 
@@ -74,7 +74,7 @@ Wenn Sie ermitteln möchten, ob die meisten Ihrer Anforderungen metadatenzentrie
 ### <a name="workaround"></a>Problemumgehung
 
 - Überprüfen Sie, ob die Anwendung so geändert werden kann, dass sich die Anzahl von Metadatenvorgängen verringert.
-- Fügen Sie auf der Dateifreigabe eine virtuelle Festplatte (Virtual Hard Disk, VHD) hinzu, und binden Sie die VHD über SMB vom Client ein, um Dateivorgänge für die Daten durchzuführen. Dieser Ansatz funktioniert bei Szenarien mit einem einzelnen Writer und mehreren Readern und ermöglicht die lokale Ausführung von Metadatenvorgängen. Das-Setup bietet eine ähnliche Leistung wie bei einem lokalen, direkt angeschlossenen Speicher.
+- Fügen Sie auf der Dateifreigabe eine virtuelle Festplatte (Virtual Hard Disk, VHD) hinzu, und binden Sie die VHD über SMB vom Client ein, um Dateivorgänge für die Daten durchzuführen. Dieser Ansatz funktioniert bei Szenarios mit einem einzelnen Writer/Reader oder bei Szenarios mit mehreren Readern und keinen Writern. Weil das Dateisystem im Besitz des Clients (und nicht von Azure Files) ist, dürfen Metadatenvorgänge lokal sein. Das-Setup bietet eine ähnliche Leistung wie bei einem lokalen, direkt angeschlossenen Speicher.
 
 ### <a name="cause-3-single-threaded-application"></a>Ursache 3: Singlethread-Anwendung
 
@@ -117,8 +117,8 @@ Dies ist ein bekanntes Problem bei der Implementierung des SMB-Clients unter Lin
 ### <a name="workaround"></a>Problemumgehung
 
 - Verteilen Sie die Last auf mehrere virtuelle Computer.
-- Verwenden Sie auf demselben virtuellen Computer mehrere Bereitstellungspunkte mit der Option **nosharesock**, und verteilen Sie die Last auf diese Punkte.
-- Versuchen Sie unter Linux, die Einbindung mit einer Option **nostrictsync** durchzuführen, um eine SMB-Leerung bei jedem Aufruf von **fsync** zu vermeiden. Bei Azure Files beeinträchtigt diese Option nicht die Datenkonsistenz. Sie könnte aber in Verzeichnisauflistungen zu veralteten Dateimetadaten (Befehl **ls -l**) führen. Durch direktes Abfragen von Dateimetadaten mit dem Befehl **stat** werden die aktuellsten Dateimetadaten zurückgegeben.
+- Verwenden Sie auf demselben virtuellen Computer mehrere Bereitstellungspunkte mit der Option `nosharesock`, und verteilen Sie die Last auf diese Punkte.
+- Versuchen Sie unter Linux, die Einbindung mit einer Option `nostrictsync` durchzuführen, um eine SMB-Leerung bei jedem Aufruf von `fsync` zu vermeiden. Bei Azure Files beeinträchtigt diese Option nicht die Datenkonsistenz. Sie könnte aber in Verzeichnisauflistungen zu veralteten Dateimetadaten (Befehl `ls -l`) führen. Durch direktes Abfragen von Dateimetadaten mit dem Befehl `stat` werden die aktuellsten Dateimetadaten zurückgegeben.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Hohe Latenzen bei metadatenorientierten hohen Arbeitslasten, die sich aus umfangreichen Öffnen-/Schließen-Vorgängen ergeben
 
@@ -129,7 +129,7 @@ Es werden keine Verzeichnis-Leasedauern unterstützt.
 ### <a name="workaround"></a>Problemumgehung
 
 - Vermeiden Sie nach Möglichkeit, dass Öffnen-/Schließen-Vorgänge in demselben Verzeichnis innerhalb kurzer Zeit verarbeitet werden müssen.
-- Erhöhen Sie für virtuelle Linux-Computer das Cachetimeout für Verzeichniseinträge, indem Sie **actimeo=\<sec>** als eine Bereitstellungsoption angeben. Standardmäßig beträgt das Timeout 1 Sekunde, sodass ein größerer Wert, z. B. 3 oder 5 Sekunden, hilfreich sein könnte.
+- Erhöhen Sie bei virtuellen Linux-Computern das Cachetimeout für Verzeichniseinträge, indem Sie die Einbindungsoption `actimeo=<sec>` angeben. Standardmäßig beträgt das Timeout 1 Sekunde, sodass ein größerer Wert, z. B. 3 oder 5 Sekunden, hilfreich sein könnte.
 - Aktualisieren Sie das System bei virtuellen CentOS Linux- oder Red Hat Enterprise Linux (RHEL)-Computern auf CentOS Linux 8.2 bzw. RHEL 8.2. Aktualisieren Sie bei anderen virtuellen Linux-Computern den Kernel auf mindestens 5.0.
 
 ## <a name="low-iops-on-centos-linux-or-rhel"></a>Wenige IOPS unter CentOS Linux oder RHEL
@@ -292,7 +292,7 @@ Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Si
 7. Wählen Sie in der Dropdownliste **Dimensionswerte** die Dateifreigabe oder Freigaben aus, für die Sie eine Warnung einrichten möchten.
 8. Definieren Sie die Warnungsparameter, indem Sie in den Dropdownlisten **Operator**, **Schwellenwert**, **Aggregationsgranularität** und **Häufigkeit der Auswertung** die gewünschten Werte und dann **Fertig** auswählen.
 
-   Die Metriken „Eingehend“, „Ausgehend“ und „Transaktionen“ werden in Minuten ausgedrückt, obwohl die Abrechnung für „Eingehend“, „Ausgehend“ und „E/A“ nach Sekunden erfolgt. Wenn Ihr bereitgestellter ausgehender Datenverkehr beispielsweise 90&nbsp;Mebibyte pro Sekunde (MiB/s) ist und Ihr Schwellenwert 80&nbsp;% des bereitgestellten ausgehenden Datenverkehrs sein soll, wählen Sie die folgenden Warnungsparameter aus: 
+   Die Metriken „Eingehend“, „Ausgehend“ und „Transaktionen“ werden in Minuten ausgedrückt, obwohl die Abrechnung für „Eingehend“, „Ausgehend“ und „E/A“ nach Sekunden erfolgt. Wenn Ihr bereitgestellter ausgehender Datenverkehr beispielsweise 90&nbsp;MiB/Sekunde ist und Ihr Schwellenwert 80&nbsp;% des bereitgestellten ausgehenden Datenverkehrs sein soll, wählen Sie die folgenden Warnungsparameter aus: 
    - Für **Fehlerschwellenwert**: *75497472* 
    - Für **Operator**: *Größer als oder gleich*
    - Für **Aggregationstyp**: *Durchschnitt*

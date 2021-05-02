@@ -11,18 +11,21 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 03/26/2021
-ms.openlocfilehash: f3bc1dfcfeeb6dda110f71ed7a1c53909153cf00
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/28/2021
+ms.openlocfilehash: 417aa0e4080bd81cac39165b5ffbe03ba9364116
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762153"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132105"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Mit dem Feature „Autofailover-Gruppen“ können Sie die Replikation und das Failover einer Gruppe von Datenbanken auf einem Server oder aller Datenbanken in einer verwalteten Instanz in eine andere Region verwalten. Hierbei handelt es sich um eine deklarative Abstraktion, die auf dem bereits vorhandenen Feature [Aktive Georeplikation](active-geo-replication-overview.md) basiert und dazu dient, die Bereitstellung und Verwaltung georeplizierter Datenbanken zu vereinfachen. Sie können ein Failover manuell einleiten oder basierend auf einer benutzerdefinierten Richtlinie an den Azure-Dienst delegieren. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der SQL-Datenbank-Instanz oder SQL Managed Instance in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Eine Failovergruppe kann eine oder mehrere Datenbanken enthalten, die in der Regel von der gleichen Anwendung verwendet werden. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server oder in einer sekundären Instanz in einer anderen Region.
+
+>[!NOTE]
+>Autofailover-Gruppen werden in der Dienstebene [Hyperscale](service-tier-hyperscale.md) zurzeit nicht unterstützt. Verwenden Sie für geografisches Failover einer Hyperscale-Datenbank die [aktive Georeplikation](active-geo-replication-overview.md).
 
 > [!NOTE]
 > Wenn Sie mehrere sekundäre Azure SQL-Datenbank-Instanzen in der gleichen oder in verschiedenen Regionen wünschen, nutzen Sie [aktive Georeplikation](active-geo-replication-overview.md).

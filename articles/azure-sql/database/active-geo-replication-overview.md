@@ -10,18 +10,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 08/27/2020
-ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/28/2021
+ms.openlocfilehash: 04831c7cb56082854097a2091b3c8099e4d488a6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634293"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124795"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Erstellen und Verwenden der aktiven Georeplikation: Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Die aktive Georeplikation ist ein Feature in Azure SQL-Datenbank, mit der Sie lesbare sekundäre Datenbanken für einzelne Datenbanken auf einem Server im selben oder in einem anderen Rechenzentrum (Region) erstellen können.
+
+> [!NOTE]
+> Die aktive Georeplikation für Azure SQL Hyperscale [befindet sich jetzt in der öffentlichen Vorschau](https://aka.ms/hsgeodr). Die aktuellen Einschränkungen umfassen: nur eine sekundäre Geodatenbank in derselben oder einer anderen Region; nur erzwungenes Failover wird unterstützt; Wiederherstellung einer Datenbank aus sekundärer Geodatenbank wird nicht unterstützt; Verwendung einer sekundären Geodatenbank als Quelldatenbank für Datenbankkopie oder als primäre Datenbank für eine andere sekundäre Geodatenbank wird nicht unterstützt.
+
 
 > [!NOTE]
 > Die aktive Georeplikation wird von Azure SQL Managed Instance nicht unterstützt. Für ein geografisches Failover von Instanzen von Azure SQL Managed Instance können Sie [Autofailover-Gruppen](auto-failover-group-overview.md) verwenden.

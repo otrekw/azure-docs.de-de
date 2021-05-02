@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 276dd7aa1925fefaaa94dfdd5d7a5baba5164f56
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bdcee6b8ced45dba34309724e5a634cbb60a6d37
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790255"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818816"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über die SMB- und NFS-Dateisystemprotokolle zugegriffen werden kann. Dieser Artikel behandelt die Skalierbarkeits- und Leistungsziele für Azure Files und Azure-Dateisynchronisierung.
@@ -35,8 +35,8 @@ Azure unterstützt mehrere Arten von Speicherkonten für unterschiedliche Kunden
 | Maximale Speicherkontokapazität | 5 PiB<sup>1</sup> | 100 TiB (bereitgestellt) |
 | Maximale Anzahl der Dateifreigaben | Unbegrenzt | Unbegrenzt, die gesamte bereitgestellte Größe aller Freigaben muss kleiner sein als die maximale Speicherkontokapazität. |
 | Rate für maximale Anzahl von gleichzeitigen Anforderungen | 20.000 IOPS<sup>1</sup> | 100.000 IOPS |
-| Maximaler Eingang | <ul><li>USA/Europa: 10 GBP/s<sup>1</sup></li><li>Andere Regionen (LRS/ZRS): 10 GBP/s<sup>1</sup></li><li>Andere Regionen (GRS): 5 GBP/s<sup>1</sup></li></ul> | 4\.136 MiB/s |
-| Maximaler Ausgang | 50 GBP/s<sup>1</sup> | 6\.204 MiB/s |
+| Maximaler Eingang | <ul><li>USA/Europa: 9.536 MiB/Sekunde<sup>1</sup></li><li>Andere Regionen (LRS/ZRS): 9.536 MiB/Sekunde<sup>1</sup></li><li>Andere Regionen (GRS): 4.768 GiB/Sekunde<sup>1</sup></li></ul> | 4\.136 MiB/s |
+| Maximaler Ausgang | 47.683 MiB/Sekunde<sup>1</sup> | 6\.204 MiB/s |
 | Maximale Anzahl von Regeln für virtuelle Netzwerke | 200 | 200 |
 | Maximale Anzahl von IP-Adressregeln | 200 | 200 |
 | Lesevorgänge für die Verwaltung | 800 pro 5 Minuten | 800 pro 5 Minuten |
