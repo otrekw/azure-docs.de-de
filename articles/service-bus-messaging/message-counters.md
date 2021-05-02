@@ -3,46 +3,111 @@ title: 'Azure Service Bus: Nachrichtenanzahl'
 description: Rufen Sie die Anzahl der Nachrichten, die in Warteschlangen und Abonnements gespeichert sind, mit Azure Resource Manager und den NamespaceManager-APIs von Service Bus ab.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d0e1a7a5c6eb0b281b4e6ac08135f41f28ecbec8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ef2e50521b57fc45846acecf9e776e3ff24c5d4
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85341278"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987324"
 ---
-# <a name="message-counters"></a>Nachrichtenzähler
+# <a name="get-message-counters"></a>Abrufen von Nachrichtenzählern
+In diesem Artikel werden verschiedene Möglichkeiten zum Abrufen der folgenden Nachrichtenanzahlen für eine Warteschlange oder ein Abonnement erläutert. Die Anzahl aktiver Nachrichten zu kennen ist nützlich, um festzustellen, ob eine Warteschlange einen Rückstand aufbaut, der mehr Ressourcen für die Verarbeitung benötigt als diejenigen, die derzeit bereitgestellt sind. 
 
-Sie können die Anzahl der Nachrichten, die in Warteschlangen und Abonnements gespeichert sind, mit Azure Resource Manager und den [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-APIs von Service Bus im .NET Framework SDK abrufen.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Mit PowerShell können Sie die Anzahl wie folgt abrufen:
-
-```powershell
-(Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue).CountDetails
-```
-
-## <a name="message-count-details"></a>Details zur Anzahl von Nachrichten
-
-Die Anzahl aktiver Nachrichten zu kennen ist nützlich, um festzustellen, ob eine Warteschlange einen Rückstand aufbaut, der mehr Ressourcen für die Verarbeitung benötigt als diejenigen, die derzeit bereitgestellt sind. Die [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails)-Klasse bietet die folgenden Details zur Anzahl:
-
--   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): Nachrichten in der Warteschlange oder im Abonnement, die sich im aktiven Zustand befinden und zustellbereit sind.
--   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): Nachrichten in der Warteschlange für unzustellbare Nachrichten.
--   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): Nachrichten im Zustand „Geplant“.
--   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): Nachrichten, die nicht in eine andere Warteschlange oder ein anderes Thema übertragen wurden und die in die Warteschlange für unzustellbare Nachrichten verschoben wurden.
--   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Nachrichten, deren Übertragung in eine andere Warteschlange oder ein anderes Thema aussteht.
+| Leistungsindikator | BESCHREIBUNG |
+| ----- | ---------- | 
+| ActiveMessageCount | Anzahl von Nachrichten in der Warteschlange oder im Abonnement, die sich im aktiven Zustand befinden und zustellbereit sind. |
+| ScheduledMessageCount | Anzahl von Nachrichten im Zustand „Geplant“. |
+| DeadLetterMessageCount | Anzahl von Nachrichten in der Warteschlange für unzustellbare Nachrichten. |
+| TransferMessageCount | Anzahl von Nachrichten, deren Übertragung in eine andere Warteschlange oder ein anderes Thema aussteht. |
+| TransferDeadLetterMessageCount | Anzahl von Nachrichten, die nicht in eine andere Warteschlange oder ein anderes Thema übertragen und in die Warteschlange für unzustellbare Nachrichten verschoben wurden. |
 
 Wenn eine Anwendung Ressourcen anhand der Länge der Warteschlange skalieren möchte, sollte sie dies langsam tun. Die Erfassung der Nachrichtenzählern ist ein aufwendiger Vorgang innerhalb des Nachrichtenbrokers, dessen Ausführung häufig direkte und negative Auswirkungen auf die Leistung der Entität hat.
 
 > [!NOTE]
-> Die an ein Service Bus-Thema gesendeten Nachrichten werden an Abonnements für dieses Thema weitergeleitet. Somit ist die Anzahl aktiver Nachrichten für das Thema selbst 0, da diese Nachrichten erfolgreich an das Abonnement weitergeleitet wurden. Ermitteln Sie die Anzahl der Nachrichten für das Abonnement, und überprüfen Sie, ob sie größer als 0 ist. Auch wenn Nachrichten im Abonnement angezeigt werden, befinden sie sich tatsächlich in einem Speicher, der im Besitz des Themas ist. 
+> Die an ein Service Bus-Thema gesendeten Nachrichten werden an Abonnements für dieses Thema weitergeleitet. Somit ist die Anzahl aktiver Nachrichten für das Thema selbst 0, da diese Nachrichten erfolgreich an das Abonnement weitergeleitet wurden. Ermitteln Sie die Anzahl der Nachrichten für das Abonnement, und überprüfen Sie, ob sie größer als 0 ist. Auch wenn Nachrichten im Abonnement angezeigt werden, befinden sie sich tatsächlich in einem Speicher, der im Besitz des Themas ist. Wenn Sie die Abonnements anzeigen, ist die Anzahl der Nachrichten im Abonnement ungleich 0 (null) (und beanspruchen einen Teil des Speicherplatzes von 323 MB für die gesamte Entität).
 
-Wenn Sie die Abonnements anzeigen, ist die Anzahl der Nachrichten im Abonnement ungleich 0 (null) (und beanspruchen einen Teil des Speicherplatzes von 323 MB für die gesamte Entität).
+
+## <a name="using-azure-portal"></a>Verwenden des Azure-Portals
+Navigieren Sie zu Ihrem Namespace, und wählen Sie die Warteschlange aus. Auf der Seite **Übersicht** für die Warteschlange werden Nachrichtenzähler angezeigt.
+
+:::image type="content" source="./media/message-counters/queue-overview.png" alt-text="Nachrichtenzähler auf der Übersichtsseite für die Warteschlange":::
+
+Navigieren Sie zu Ihrem Namespace, wählen Sie das Thema aus, und wählen Sie dann das Abonnement für das Thema aus. Auf der Seite **Übersicht** für die Warteschlange werden Nachrichtenzähler angezeigt.
+
+:::image type="content" source="./media/message-counters/subscription-overview.png" alt-text="Nachrichtenzähler auf der Übersichtsseite für das Abonnement":::
+
+## <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
+Verwenden Sie den Befehl [`az servicebus queue show`](/cli/azure/servicebus/queue#az_servicebus_queue_show), um die Details zur Nachrichtenanzahl für eine Warteschlange abzurufen, wie im folgenden Beispiel gezeigt. 
+
+```azurecli-interactive
+az servicebus queue show --resource-group myresourcegroup \
+    --namespace-name mynamespace \
+    --name myqueue \
+    --query countDetails
+```
+
+Hier ist eine Beispielausgabe:
+
+```bash
+ActiveMessageCount    DeadLetterMessageCount    ScheduledMessageCount    TransferMessageCount    TransferDeadLetterMessageCount
+--------------------  ------------------------  -----------------------  ----------------------  --------------------------------
+0                     0                         0                        0                       0
+```
+
+Verwenden Sie den Befehl [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_show), um die Details zur Nachrichtenanzahl für ein Abonnement abzurufen, wie im folgenden Beispiel gezeigt. 
+
+```azurecli-interactive
+az servicebus topic subscription show --resource-group myresourcegroup \
+    --namespace-name mynamespace \
+    --topic-name mytopic \
+    --name mysub \
+    --query countDetails
+```
+
+## <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
+Mit PowerShell können Sie die Details zur Nachrichtenanzahl für eine Warteschlange wie folgt abrufen:
+
+```azurepowershell-interactive
+$queueObj=Get-AzServiceBusQueue -ResourceGroup myresourcegroup `
+                    -NamespaceName mynamespace `
+                    -QueueName myqueue 
+
+$queueObj.CountDetails
+```
+
+Hier ist die Beispielausgabe:
+
+```bash
+ActiveMessageCount             : 7
+DeadLetterMessageCount         : 1
+ScheduledMessageCount          : 3
+TransferMessageCount           : 0
+TransferDeadLetterMessageCount : 0
+```
+
+Sie können die Details zur Nachrichtenanzahl für ein Abonnement wie folgt abrufen:
+
+```azurepowershell-interactive
+$topicObj= Get-AzServiceBusSubscription -ResourceGroup myresourcegroup `
+                -NamespaceName mynamespace `
+                -TopicName mytopic `
+                -SubscriptionName mysub
+
+$topicObj.CountDetails
+```
+
+Das zurückgegebene `MessageCountDetails`-Objekt weist die folgenden Eigenschaften auf: `ActiveMessageCount`, `DeadLetterMessageCount`, `ScheduledMessageCount`, `TransferDeadLetterMessageCount`, `TransferMessageCount`. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Service Bus-Messaging finden Sie in folgenden Themen:
+Sehen Sie sich die Beispiele in der Sprache Ihrer Wahl an, um Azure Service Bus-Features zu untersuchen. 
 
-* [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)
-* [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
-* [Verwenden von Service Bus-Themen und -Abonnements](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Azure Service Bus-Clientbibliothekbeispiele für .NET (neueste Version)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
+- [Azure Service Bus-Clientbibliothekbeispiele für Java (neueste Version)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Azure Service Bus-Clientbibliothekbeispiele für Python](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [Azure Service Bus-Clientbibliothekbeispiele für JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Azure Service Bus-Clientbibliothekbeispiele für TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+
+Hier finden Sie Beispiele für die älteren .NET- und Java-Clientbibliotheken:
+- [Azure Service Bus-Clientbibliothekbeispiele für .NET (Legacy)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Azure Service Bus-Clientbibliothekbeispiele für Java (Legacy)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)

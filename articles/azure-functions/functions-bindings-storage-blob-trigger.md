@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 1d83a828829d27d85749b3fa7b283cad9683bffc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4624a33b12afc5eff033fe2d57bf25f812c9e667
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455913"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891300"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-Trigger für Azure Functions
 
@@ -35,6 +35,9 @@ Der Abruf funktioniert als Kombination aus dem Überprüfen von Protokollen und 
 
 ### <a name="event-grid-trigger"></a>Event Grid-Trigger
 
+> [!NOTE]
+> Bei Verwendung der Storage-Erweiterungen 5.x oder höher verfügt der Blobtrigger über integrierte Unterstützung für einen auf Event Grid basierenden Blobtrigger. Weitere Informationen finden Sie weiter unten im Abschnitt [Storage-Erweiterung 5.x oder höher](#storage-extension-5x-and-higher).
+
 Der [Event Grid-Trigger](functions-bindings-event-grid.md) bietet auch integrierte Unterstützung für [Blobereignisse](../storage/blobs/storage-blob-event-overview.md). Verwenden Sie Event Grid anstelle der Blobspeichertrigger für die folgenden Szenarien:
 
 - **Reine Blobspeicherkonten**: [Reine Blobspeicherkonten](../storage/common/storage-account-overview.md#types-of-storage-accounts) werden für die Blobeingabe- und -ausgabebindungen, jedoch nicht für Blobtrigger unterstützt.
@@ -44,6 +47,12 @@ Der [Event Grid-Trigger](functions-bindings-event-grid.md) bietet auch integrier
 - **Minimieren der Latenzzeit**: Wenn Ihre Funktions-App im Verbrauchsplan enthalten ist, kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktionen-App in den Leerlauf gewechselt ist. Um dies Wartezeit zu vermeiden, können Sie zu einem App Service-Plan wechseln, für den „Always On“ aktiviert ist. Sie können auch einen [Event Grid-Trigger](functions-bindings-event-grid.md) mit Ihrem Blobspeicherkonto verwenden. Ein Beispiel finden Sie im [Event Grid-Tutorial](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json).
 
 Ein Beispiel für ein Event Grid finden Sie im Tutorial [Ändern der Imagegröße mit Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
+
+#### <a name="storage-extension-5x-and-higher"></a>Storage-Erweiterung 5.x oder höher
+
+Wenn Sie die Vorschau der Storage-Erweiterung verwenden, steht integrierte Unterstützung für Event Grid im Blobtrigger zur Verfügung, für den der `source`-Parameter in Ihrem vorhandenen Blobtrigger auf Event Grid festgelegt werden muss. 
+
+Weitere Informationen zur Verwendung des Blobtriggers basierend auf Event Grid finden Sie im [Leitfaden zum Event Grid-Blobtrigger](./functions-event-grid-blob-trigger.md).
 
 ### <a name="queue-storage-trigger"></a>Queue Storage-Trigger
 
@@ -323,7 +332,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `in` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. Ausnahmen sind im Abschnitt [Verwendung](#usage) angegeben. |
 |**name** | – | Der Name der Variablen, die das Blob im Funktionscode darstellt. |
 |**path** | **BlobPath** |Der zu überwachende [Container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).  Kann ein [Blobnamensmuster](#blob-name-patterns) sein. |
-|**connection** | **Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [Blobspeicherkonto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.<br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Weitere Informationen finden Sie unter [Verbindungen](./functions-reference.md#connections).|
+|**connection** | **Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [Blobspeicherkonto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.<br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Siehe [Verbindungen](./functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

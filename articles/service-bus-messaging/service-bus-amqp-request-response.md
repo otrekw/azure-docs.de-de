@@ -2,13 +2,13 @@
 title: AMQP 1.0-Anforderungs-/Antwortvorgänge in Azure Service Bus
 description: In diesem Artikel wird die Liste der Vorgänge im Zusammenhang mit AMQP-Anforderungen und -Antworten in Microsoft Azure Service Bus definiert.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: b845f4086ee1ac4fe868571c1754caf6d29b9021
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/26/2020
+ms.openlocfilehash: 2fd72e30d609d789d6513e666866878dfb4732d5
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88064413"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016867"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 in Microsoft Azure Service Bus: anforderungs-/antwortbasierte Vorgänge
 
@@ -17,11 +17,7 @@ In diesem Artikel wird die Liste der anforderungs-/antwortbasierten Vorgänge in
 Eine ausführliche Anleitung zum AMQP 1.0-Wire-Protokoll, die erläutert, wie Service Bus die technische Spezifikation für OASIS AMQP implementiert und darauf aufbaut, finden Sie unter [AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden][AMQP 1.0 – Protokollleitfaden].  
   
 ## <a name="concepts"></a>Konzepte  
-  
-### <a name="entity-description"></a>Entitätsbeschreibung  
-
-Eine Entitätsbeschreibung verweist entweder auf ein Service Bus-Objekt der [QueueDescription-Klasse](/dotnet/api/microsoft.servicebus.messaging.queuedescription), der [TopicDescription-Klasse](/dotnet/api/microsoft.servicebus.messaging.topicdescription) oder auf eines der [SubscriptionDescription-Klasse](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription).  
-  
+    
 ### <a name="brokered-message"></a>Im Broker gespeicherte Nachricht  
 
 Stellt eine Nachricht in Service Bus dar, die einer AMQP-Nachricht zugeordnet ist. Die Zuordnung wird im [Service Bus AMQP-Protokollhandbuch](service-bus-amqp-protocol-guide.md) definiert.  
@@ -115,7 +111,7 @@ Service Bus-Entitäten müssen wie folgt adressiert werden:
   
 ### <a name="message-renew-lock"></a>Erneuerung der Nachrichtensperrung auf Nachrichtenebene  
 
-Verlängert den Sperrzustand der Nachricht um die in der Entitätsbeschreibung angegebene Zeitspanne  
+Erweitert die Sperre einer Nachricht um die für die Warteschlange oder das Abonnement festgelegte Sperrdauer.  
   
 #### <a name="request"></a>Anforderung  
 
@@ -133,7 +129,7 @@ Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:
 |`lock-tokens`|UUID-Array|Ja|Zu erneuernde Token für die Nachrichtensperre|  
 
 > [!NOTE]
-> Sperrtoken stellen die `DeliveryTag`-Eigenschaft für empfangene Nachrichten dar. Im folgenden Beispiel im [.NET SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) werden diese abgerufen. Das Token kann auch in den „DeliveryAnnotations“ als „x-opt-lock-token“ angezeigt werden. Dies ist jedoch nicht garantiert, und das `DeliveryTag` sollte bevorzugt werden. 
+> Das Sperrtoken bezieht sich hier auf die `delivery-tag`-Eigenschaft für die empfangene AMQP-Nachricht. Wenn Sie eine verzögerte Nachricht erhalten haben und ihre Sperre erneuern möchten, verwenden Sie die `lock-token`-Eigenschaft für die Nachricht anstelle von `delivery-tag`. 
 > 
   
 #### <a name="response"></a>Antwort  
@@ -268,7 +264,7 @@ Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:
   
 ### <a name="session-renew-lock"></a>Erneuerung der Nachrichtensperrung auf Sitzungsebene  
 
-Verlängert den Sperrzustand der Nachricht um die in der Entitätsbeschreibung angegebene Zeitspanne  
+Erweitert die Sperre einer Nachricht um die für die Warteschlange oder das Abonnement festgelegte Sperrdauer.  
   
 #### <a name="request"></a>Anforderung  
 
