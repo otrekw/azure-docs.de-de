@@ -5,23 +5,23 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 8952e6e1bda8763d403c02dcd5815f1e1c0941e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6aa6537cefb110662f9fbc535832d8c9423a6f68
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641877"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136587"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Migrationsleitfaden: MySQL zu Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihre MySQL-Datenbank mithilfe von SQL Server Migration Assistant für MySQL (SSMA für MySQL) zu einer Azure SQL-Datenbank migrieren. 
+In diesem Leitfaden erfahren Sie, wie Sie Ihre MySQL-Datenbank mithilfe von [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant für MySQL (SSMA für MySQL) zu einer Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey). 
 
-Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
+Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +33,7 @@ Bevor Sie mit der Migration der MySQL-Datenbank zu einer SQL-Datenbank beginnen,
 
 ## <a name="pre-migration"></a>Vor der Migration 
 
-Wenn diese Voraussetzungen erfüllt sind, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit der Migration bewerten.
+Nachdem Sie diese Voraussetzungen erfüllt haben, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit Ihrer [Azure-Cloudmigration](https://azure.microsoft.com/migration) bewerten.
 
 ### <a name="assess"></a>Bewerten 
 
@@ -44,7 +44,7 @@ Führen Sie die folgenden Schritte aus, um eine Bewertung zu erstellen:
 1. Öffnen Sie [SSMA für MySQL](https://www.microsoft.com/download/details.aspx?id=54257). 
 1. Wählen Sie **Datei** und dann **Neues Projekt** aus. 
 1. Geben Sie im Bereich **Neues Projekt** einen Namen und einen Speicherort für das Projekt ein, und wählen Sie dann in der Dropdown Liste **Migrieren zu** die Option **Azure SQL-Datenbank** aus. 
-1. Klicken Sie auf **OK**.
+1. Wählen Sie **OK** aus.
 
    ![Screenshot des Bereichs „Neues Projekt“ zur Eingabe des Namens, des Speicherorts und des Ziels für das Migrationsprojekt](./media/mysql-to-sql-database-guide/new-project.png)
 
@@ -52,7 +52,7 @@ Führen Sie die folgenden Schritte aus, um eine Bewertung zu erstellen:
 
    ![Screenshot des Bereichs „Verbindung mit MySQL herstellen“ zur Angabe von Verbindungen mit der Quelle](./media/mysql-to-sql-database-guide/connect-to-mysql.png)
 
-1. Klicken Sie im Bereich **Metadaten-Explorer für MySQL** mit der rechten Maustaste auf das MySQL-Schema, und wählen Sie dann **Bericht erstellen** aus. Alternativ können Sie rechts oben die Registerkarte **Bericht erstellen** auswählen.
+1. Klicken Sie im Bereich **Metadaten-Explorer für MySQL** mit der rechten Maustaste auf das MySQL-Schema, und wählen Sie dann **Bericht erstellen** aus. Alternativ dazu können Sie die Registerkarte **Bericht erstellen** in der oberen rechten Ecke auswählen.
 
    ![Screenshot der Links „Bericht erstellen“ in SSMA für MySQL](./media/mysql-to-sql-database-guide/create-report.png)
 
@@ -80,11 +80,11 @@ Gehen Sie folgendermaßen vor, um das Schema zu konvertieren:
 
 1. (Fakultativ) Zum Konvertieren von dynamischen oder spezialisierten Abfragen klicken Sie mit der rechten Maustaste auf den Knoten, und wählen Sie dann **Anweisung hinzufügen** aus. 
 
-1. Wählen Sie die Registerkarte **Verbindung mit Azure SQL-Datenbank herstellen** aus, und gehen Sie dann wie folgt vor:
+1. Wählen Sie die Registerkarte **mit Azure SQL-Datenbank verbinden** aus, und gehen Sie dann wie folgt vor:
 
    a. Geben Sie die Details zum Herstellen einer Verbindung mit Ihrer SQL-Datenbank ein.  
    b. Wählen Sie in der Dropdownliste die Zielinstanz in SQL-Datenbank aus. Alternativ können Sie einen neuen Namen angeben. In diesem Fall wird eine Datenbank auf dem Zielserver erstellt.  
-   c. Geben Sie Authentifizierungsdetails an.  
+   c. Angeben von Authentifizierungsdetails.  
    d. Wählen Sie **Verbinden** aus.
 
    ![Screenshot des Bereichs „Verbindung mit Azure SQL-Datenbank herstellen“ in SSMA für MySQL](./media/mysql-to-sql-database-guide/connect-to-sqldb.png)
@@ -97,12 +97,12 @@ Gehen Sie folgendermaßen vor, um das Schema zu konvertieren:
 
    ![Screenshot eines Vergleichs der konvertierten Objekte mit den ursprünglichen Objekten](./media/mysql-to-sql-database-guide/table-comparison.png)
 
-   Vergleichen Sie den konvertierten Transact-SQL-Text mit dem ursprünglichen Code, und prüfen Sie die Empfehlungen.
+   Vergleichen Sie den konvertierten Transact-SQL-Text mit dem ursprünglichen Code und prüfen Sie die Empfehlungen.
 
-   ![Screenshot, der einen Vergleich der konvertierten Abfragen mit dem Quellcode anzeigt](./media/mysql-to-sql-database-guide/procedure-comparison.png)
+   ![Screenshot, der einen Vergleich der konvertierten Abfragen mit dem Quellcode anzeigt.](./media/mysql-to-sql-database-guide/procedure-comparison.png)
 
 1. Klicken Sie im Bereich **Ausgabe** auf **Ergebnisse überprüfen**, und überprüfen Sie die Fehler im Bereich **Fehlerliste**. 
-1. Speichern Sie das Projekt für eine Übung zur Offlineschemakorrektur lokal. Wählen Sie hierzu **Datei** > **Projekt speichern** aus. So können Sie das Quell- und Zielschema offline auswerten und warten, bevor Sie das Schema auf Ihrer SQL-Datenbank veröffentlichen.
+1. Speichern Sie das Projekt für eine Übung zur Offlineschemakorrektur lokal. Wählen Sie hierzu **Datei**  >  **Projekt speichern** aus. So können Sie das Quell- und Zielschema offline auswerten und warten, bevor Sie das Schema auf Ihrer SQL-Datenbank veröffentlichen.
 
    Vergleichen Sie die konvertierten Prozeduren mit den ursprünglichen Prozeduren, wie hier gezeigt: 
 
@@ -115,13 +115,13 @@ Nachdem Sie Ihre Datenbanken ausgewertet und Abweichungen gelöst haben, können
 
 Führen Sie die folgenden Schritte aus, um das Schema zu veröffentlichen und die Daten zu migrieren: 
 
-1. Veröffentlichen Sie das Schema. Klicken Sie in der Anzeige des **Azure SQL Database Metadata Explorers** mit der rechten Maustaste auf die Datenbank, mit der Sie arbeiten, und wählen Sie dann **Mit Datenbank synchronisieren** aus. Mit dieser Aktion wird das MySQL-Schema in Ihrer SQL-Datenbank veröffentlicht.
+1. Veröffentlichen Sie das Schema. Klicken Sie in der Anzeige des **Azure SQL Database Metadata Explorers** mit der rechten Maustaste auf die Datenbank, mit der Sie arbeiten, und wählen Sie dann **mit Datenbank synchronisieren** aus. Mit dieser Aktion wird das MySQL-Schema in Ihrer SQL-Datenbank veröffentlicht.
 
    ![Screenshot des Bereichs für die Synchronisierung mit der Datenbank zum Überprüfen der Datenbankzuordnung](./media/mysql-to-sql-database-guide/synchronize-database-review.png)
 
-1. Migrieren Sie die Daten. Klicken Sie im **Metadaten-Explorer für MySQL** mit der rechten Maustaste auf das zu migrierende MySQL-Schema, und wählen Sie dann **Daten migrieren** aus. Alternativ können Sie rechts oben die Registerkarte **Daten migrieren** auswählen.
+1. Migrieren der Daten: Klicken Sie im **Metadaten-Explorer für MySQL** mit der rechten Maustaste auf das zu migrierende MySQL-Schema, und wählen Sie dann **Daten migrieren** aus. Alternativ können Sie rechts oben die Registerkarte **Daten migrieren** auswählen.
 
-   Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Um Daten aus einzelnen Tabellen zu migrieren, erweitern Sie die Datenbank, erweitern Sie **Tabellen** und aktivieren Sie dann das Kontrollkästchen neben der Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
+   Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie die **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der Tabelle. Deaktivieren Sie das Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
 
    ![Screenshot des Befehls „Daten migrieren“ im Bereich „Metadaten-Explorer für MySQL“](./media/mysql-to-sql-database-guide/migrate-data.png)
 
@@ -145,9 +145,9 @@ Wenn die Daten in die Zielumgebung migriert wurden, müssen alle Anwendungen, di
 
 Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
-1. **Entwickeln Sie Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die sowohl gegen die Quell- als auch gegen die Zieldatenbank ausgeführt werden. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
+1. **Entwickeln von Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die sowohl gegen die Quell- als auch gegen die Zieldatenbank ausgeführt werden. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
 
-1. **Richten Sie eine Testumgebung ein:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
+1. **Einrichten der Testumgebung:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 
 1. **Führen Sie die Validierungstests aus**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 
@@ -167,7 +167,7 @@ Weitere Unterstützung bei der Durchführung dieses Migrationsszenarios finden S
 | --- | --- |
 | [Data Workload Assessment Model and Tool (Datenarbeitsauslastungs-Bewertungsmodell und -tool)](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Stellt für bestimmte Workloads Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen. |
 
-Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Kernaufgabe dieses Teams ist die Freigabe und Beschleunigung komplexer Modernisierungsprojekte für die Migration von Datenplattformen auf die Azure-Datenplattform von Microsoft.
+Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
@@ -178,3 +178,5 @@ Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Kernaufgabe d
 - Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/). 
 
 - Videos zur Migration finden Sie unter [Übersicht über den Migrationsprozess sowie empfohlene Tools und Dienste für die Migration und Bewertung](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/).
+
+- Weitere [Cloudmigrationsressourcen](https://azure.microsoft.com/migration/resources/)finden Sie unter [Cloudmigrationslösungen](https://azure.microsoft.com/migration).

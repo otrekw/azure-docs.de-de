@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/07/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9e2dcace673a1c7215634434f9e89ddc6b953a63
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439577"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834611"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
@@ -237,10 +237,17 @@ Einige der Funktionen, die über die REST-API verfügbar sind:
 
 ## <a name="faq---adaptive-application-controls"></a>Häufig gestellte Fragen zu adaptiven Anwendungssteuerungen
 
+- [Gibt es Optionen zur Erzwingung der Anwendungssteuerung?](#are-there-any-options-to-enforce-the-application-controls)
+- [Warum wird in meinen empfohlenen Anwendungen eine Qualys-App angezeigt?](#why-do-i-see-a-qualys-app-in-my-recommendeded-applications)
+
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Gibt es Optionen zur Erzwingung der Anwendungssteuerung?
 Derzeit sind keine Erzwingungsoptionen verfügbar. Adaptive Anwendungssteuerungen sollen **Sicherheitswarnungen** ausgeben, wenn eine andere als die von Ihnen als sicher definierte Anwendung ausgeführt wird. Sie bieten eine Reihe von Vorteilen ([Was sind die Vorteile adaptiver Anwendungssteuerungen?](#what-are-the-benefits-of-adaptive-application-controls)) und sind, wie auf dieser Seite gezeigt, überaus anpassbar.
 
- 
+### <a name="why-do-i-see-a-qualys-app-in-my-recommendeded-applications"></a>Warum wird in meinen empfohlenen Anwendungen eine Qualys-App angezeigt?
+[Azure Defender für Server](defender-for-servers-introduction.md) umfasst eine kostenlose Überprüfung auf Sicherheitsrisiken für Ihre Computer. Sie benötigen keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. Ausführliche Informationen zu diesem Scanner und Anweisungen zu seiner Bereitstellung finden Sie in der [integrierten Sicherheitsrisikobewertungslösung für Defender](deploy-vulnerability-assessment-vm.md).
+
+Um sicherzustellen, dass keine Warnungen generiert werden, wenn Security Center den Scanner bereitstellt, enthält die empfohlene Zulassungsliste der adaptiven Anwendungssteuerung die Scanner für alle Computer. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie mithilfe der adaptiven Anwendungssteuerung in Azure Security Center Zulassungslisten von Anwendungen definieren, die auf Azure- und Nicht-Azure-Computern ausgeführt werden. Weitere Informationen zu einigen anderen Cloudworkload-Schutzfeatures in Security Center finden Sie unter:

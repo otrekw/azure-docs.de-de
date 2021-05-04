@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 4ba679459686340396e0e4d65344295c0fa9c4be
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cd22ad59da4961644c4e4d05150ba8565bf47a0
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869955"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929757"
 ---
-# <a name="what-is-azure-application-consistent-snapshot-tool-preview"></a>Grundlegendes zum Tool für konsistente Momentaufnahmen in Azure-Anwendungen für Azure NetApp Files (Vorschau)
+# <a name="what-is-azure-application-consistent-snapshot-tool"></a>Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?
 
 Das Tools für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap) ist ein Befehlszeilentool, das den Datenschutz für Datenbanken von Drittanbietern ermöglicht, indem es die gesamte Orchestrierung abwickelt, die erforderlich ist, damit die Anwendungsdaten konsistent sind, bevor eine Speichermomentaufnahme erstellt wird, nach der die Daten in einem Betriebszustand zurückgegeben werden.
 
@@ -80,7 +80,7 @@ Die Befehlsoptionen sind wie folgt, wobei die Befehle als Hauptaufzählungszeich
   - Weitere Informationen finden Sie in der [Referenz zum Befehl „details“](azacsnap-cmd-ref-details.md).
 - **`-c delete`** Dieser Befehl löscht eine Speichermomentaufnahme oder Gruppe von Momentaufnahmen. Sie können die SAP HANA-Sicherungs-ID in HANA Studio oder den Namen der Speichermomentaufnahme verwenden. Die Sicherungs-ID ist nur mit den `hana`-Momentaufnahmen verknüpft, die für die Daten- und freigegebenen Volumes erstellt werden. Andernfalls wird bei Eingabe des Namens der Momentaufnahme nach allen Momentaufnahmen gesucht, die mit dem eingegebenen Namen der Momentaufnahme übereinstimmen.
   - Weitere Informationen finden Sie unter [delete](azacsnap-cmd-ref-delete.md).
-- **`-c restore`** bietet zwei Methoden zum Wiederherstellen einer Momentaufnahme auf einem Volume. Entweder wird ein neues Volume auf Basis der Momentaufnahme erstellt, oder ein Volume wird auf einen Vorschaustatus zurückgesetzt.
+- **`-c restore`** bietet zwei Methoden zum Wiederherstellen einer Momentaufnahme auf einem Volume. Entweder wird ein neues Volume auf Basis der Momentaufnahme erstellt, oder ein Volume wird auf einen vorherigen Status zurückgesetzt.
   - **`--restore snaptovol`** Erstellt ein neues Volume basierend auf der letzten Momentaufnahme auf dem Zielvolume.
   - **`-c restore --restore revertvolume`** Setzt das Zielvolume auf Grundlage der letzten Momentaufnahme auf einen früheren Zustand zurück.
   - Weitere Informationen finden Sie in der [Referenz zum Befehl „restore“](azacsnap-cmd-ref-restore.md).

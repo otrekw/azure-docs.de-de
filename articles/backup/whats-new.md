@@ -2,13 +2,13 @@
 title: Neuerungen in Azure Backup
 description: Erfahren Sie mehr über die neuen Features in Azure Backup.
 ms.topic: conceptual
-ms.date: 11/11/2020
-ms.openlocfilehash: 68e0e5cc0876840c30ab9e428a2b96bd7d667756
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/22/2021
+ms.openlocfilehash: 57b650d482c9d29776aa6cf9dd5ba01d6a5ef757
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516330"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886332"
 ---
 # <a name="whats-new-in-azure-backup"></a>Neuerungen in Azure Backup
 
@@ -18,6 +18,8 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
 
 ## <a name="updates-summary"></a>Übersicht über Updates
 
+- April 2021
+  - [Verbesserungen bei der Verschlüsselung mit kundenseitig verwalteten Schlüsseln für Azure Backup (in der Vorschau)](#enhancements-to-encryption-using-customer-managed-keys-for-azure-backup-in-preview)
 - März 2021
   - [Azure Disk Backup ist nun allgemein verfügbar](#azure-disk-backup-is-now-generally-available)
   - [Backup Center ist nun allgemein verfügbar](#backup-center-is-now-generally-available)
@@ -152,6 +154,22 @@ Eines dieser Features ist das vorläufige Löschen. Beim vorläufigen Löschen w
 Zusätzlich zur Unterstützung für vorläufiges Löschen von Azure-VMs werden nun auch SQL Server- und SAP HANA-Workloads auf Azure-VMs durch vorläufiges Löschen geschützt.
 
 Weitere Informationen finden Sie unter [Vorläufiges Löschen für SQL Server auf Azure-VMs und SAP HANA in Azure-VM-Workloads](soft-delete-sql-saphana-in-azure-vm.md).
+
+## <a name="enhancements-to-encryption-using-customer-managed-keys-for-azure-backup-in-preview"></a>Verbesserungen bei der Verschlüsselung mit kundenseitig verwalteten Schlüsseln für Azure Backup (in der Vorschau)
+
+Azure Backup bietet jetzt erweiterte Funktionen (in der Vorschau) zur Verwaltung der Verschlüsselung mit kundenseitig verwalteten Schlüsseln. In Azure Backup können Sie Ihre eigenen Schlüssel zum Verschlüsseln der Sicherungsdaten in den Recovery Services-Tresoren verwenden und erhalten so eine noch bessere Kontrolle.
+
+- Unterstützt benutzerseitig zugewiesene verwaltete Identitäten, um den Schlüsseln Berechtigungen zum Verwalten der Datenverschlüsselung im Recovery Services-Tresor zu gewähren.
+- Ermöglicht die Verschlüsselung mit kundenseitig verwalteten Schlüsseln beim Erstellen eines Recovery Services-Tresors.
+  >[!NOTE]
+  >Dieses Feature befindet sich zurzeit in der eingeschränkten Vorschau. Zum Anmelden füllen Sie [dieses Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURDNTVVhGOUxXSVBZMEwxUU5FNDkyQkU4Ny4u) aus, und schreiben Sie uns an [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+- Ermöglicht die Verwendung von Azure-Richtlinien zum Überwachen und Erzwingen der Verschlüsselung mit kundenseitig verwalteten Schlüsseln.
+>[!NOTE]
+>- Die oben genannten Funktionen werden nur über die Azure-Portal unterstützt. PowerShell wird derzeit nicht unterstützt.<br>Wenn Sie PowerShell zum Verwalten von Verschlüsselungsschlüsseln für die Sicherung verwenden, empfiehlt es sich nicht, die Schlüssel über das Portal zu aktualisieren.<br>Wenn Sie den Schlüssel über das Portal aktualisieren, können Sie PowerShell nicht verwenden, um den Verschlüsselungsschlüssel weiter zu aktualisieren, bis ein PowerShell-Update zur Unterstützung des neuen Modells verfügbar ist. Sie können jedoch weiterhin den Schlüssel aus der Azure-Portal aktualisieren.
+>- Sie können die Überwachungsrichtlinie für die Überwachung von Tresoren mit Verschlüsselung verwenden, indem Sie kundenseitig verwaltete Schlüssel verwenden, die nach dem 01.04.2021 aktiviert wurden.  
+>- Bei Tresoren, bei denen die CMK-Verschlüsselung vor diesem Datum aktiviert wurde, kann die Richtlinie möglicherweise nicht angewendet werden oder falsch negative Ergebnisse anzeigen (d. h. diese Tresore werden möglicherweise als nicht konform gemeldet, obwohl die CMK-Verschlüsselung aktiviert ist). [Weitere Informationen](encryption-at-rest-with-cmk.md#using-azure-policies-for-auditing-and-enforcing-encryption-utilizing-customer-managed-keys-in-preview)
+
+Weitere Informationen finden Sie unter [Verschlüsselung für Azure Backup mit kundenseitig verwalteten Schlüsseln](encryption-at-rest-with-cmk.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

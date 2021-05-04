@@ -4,7 +4,7 @@ description: Einführung in die Berichte zu Anmeldeaktivitäten im Azure Active 
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,27 +13,27 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/16/2021
+ms.date: 04/19/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: dc9aa77b3fdc3cda94670545f847bb9de31e1160
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552732"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718951"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Berichte zu Azure Active Directory-Anmeldeaktivitäten – Vorschau
 
-Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) umfasst die folgenden Komponenten:
+Als IT-Administrator müssen Sie wissen, wie Ihre IT-Umgebung funktioniert. Anhand der Informationen zur Integrität Ihres Systems können Sie bewerten, ob und wie Sie auf potenzielle Probleme reagieren müssen. 
 
-- **Aktivität** 
-    - **Anmeldungen** – Informationen dazu, wann sich Benutzer, Anwendungen und verwaltete Ressourcen bei Azure AD anmelden und auf Ressourcen zugreifen.
-    - **Überwachungsprotokolle** - [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
-- **Security** 
-    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](../identity-protection/overview-identity-protection.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
-    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](../identity-protection/overview-identity-protection.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
+Um Sie bei diesem Ziel zu unterstützen, bietet Ihnen das Azure Active Directory-Portal Zugriff auf drei Aktivitätsprotokolle:
+
+- **Anmeldungen**: Informationen zu Anmeldungen und zur Verwendung Ihrer Ressourcen durch Ihre Benutzer.
+- **[Überwachung](concept-audit-logs.md)** : Informationen zu Änderungen, die auf Ihren Mandanten angewendet wurden, z. B. Benutzer- und Gruppenverwaltung oder Updates, die auf die Ressourcen Ihres Mandanten angewendet wurden.
+- **[Bereitstellung](concept-provisioning-logs.md)** : Vom Bereitstellungsdienst ausgeführte Aktivitäten, z. B. die Erstellung einer Gruppe in ServiceNow oder der Import eines Benutzers aus Workday.
+
 
 Der klassische Bericht zu Anmeldeaktivitäten in Azure AD bietet Ihnen einen Überblick über interaktive Benutzeranmeldungen. Außerdem haben Sie jetzt Zugriff auf drei zusätzliche Anmeldeberichte, die sich zurzeit in der Vorschau befinden:
 
@@ -130,7 +130,8 @@ Interaktive Benutzeranmeldungen sind Anmeldungen, bei denen ein Benutzer einen A
 
 
 
-Hinweis: Der Bericht mit interaktiven Benutzeranmeldungen enthält einige nicht interaktive Anmeldungen von Microsoft Exchange-Clients. Obwohl diese Anmeldungen nicht interaktiv waren, werden sie für bessere Sichtbarkeit in den Bericht zu interaktiven Benutzeranmeldungen eingeschlossen. Seitdem der Bericht zu nicht interaktiven Benutzeranmeldungen im November 2020 als öffentliche Vorschauversion veröffentlicht wurde, werden die Protokolle zu nicht interaktiven Anmeldeereignissen richtigerweise dort erfasst. 
+> [!NOTE] 
+> Der Bericht mit interaktiven Benutzeranmeldungen enthält einige nicht interaktive Anmeldungen von Microsoft Exchange-Clients. Obwohl diese Anmeldungen nicht interaktiv waren, werden sie zur besseren Sichtbarkeit in den Bericht zu interaktiven Benutzeranmeldungen eingeschlossen. Seitdem der Bericht zu nicht interaktiven Benutzeranmeldungen im November 2020 als öffentliche Vorschauversion veröffentlicht wurde, werden die Protokolle zu nicht interaktiven Anmeldeereignissen richtigerweise dort erfasst. 
 
 
 **Berichtsgröße:** klein <br> 
@@ -326,6 +327,18 @@ Um die Verarbeitung der Daten zu vereinfachen, werden verwaltete Identitäten f�
 Wählen Sie ein Element in der Listenansicht aus, um alle unter einem Knoten gruppierten Anmeldungen anzuzeigen.
 
 Wählen Sie ein gruppiertes Element aus, um alle Details der Anmeldung anzuzeigen. 
+
+
+## <a name="sign-in-error-code"></a>Anmeldefehler
+
+Wenn bei der Anmeldung ein Fehler aufgetreten ist, erhalten Sie weitere Informationen zur Ursache im Abschnitt **Grundlegende Informationen** des zugehörigen Protokollelements. 
+
+![Screenshot: Ansicht mit ausführlichen Informationen](./media/concept-all-sign-ins/error-code.png)
+ 
+Während das Protokollelement einen Fehlergrund bereitstellt, gibt es Fälle, in denen Sie möglicherweise weitere Informationen mit dem Tool für die [Fehlersuche bei der Anmeldung](https://login.microsoftonline.com/error) erhalten. Wenn verfügbar, stellt dieses Tool beispielsweise Schritte zur Problembehebung bereit.  
+
+![Fehlercode-Suchtool](./media/concept-all-sign-ins/error-code-lookup-tool.png)
+
 
 
 ## <a name="filter-sign-in-activities"></a>Filtern von Anmeldeaktivitäten

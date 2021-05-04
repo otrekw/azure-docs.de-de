@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/08/2021
+ms.date: 04/26/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecd33549536323658a7116d7d5c311eaaec98487
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c76ffbbaf6bbbb2afb5d84e92b6fe9ce04dc4a30
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107302946"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128701"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
 Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
@@ -35,6 +35,7 @@ Bei der Microsoft Azure-Speicherung von HDD Standard, SSD Standard, Azure Storag
 Es gibt mehrere weitere Redundanzmethoden, die im Artikel [Azure Storage-Replikation](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) beschrieben werden und für einige der verschiedenen Speichertypen von Azure gelten. 
 
 Beachten Sie auch, dass sich unterschiedliche Azure-Speichertypen auf die SLAs zur Verfügbarkeit einzelner VMs auswirken (wie unter [SLA für Virtuelle Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines) beschrieben).
+
 
 ### <a name="azure-managed-disks"></a>Verwaltete Azure-Datenträger
 
@@ -69,6 +70,10 @@ Informationen zu Einschränkungen der Unterstützung für Azure-Speichertypen f�
 
 In den Abschnitten, in denen die verschiedenen Azure-Speichertypen beschrieben werden, erhalten Sie weitere Hintergrundinformationen zu den Einschränkungen und Möglichkeiten der Verwendung der von SAP unterstützten Speicherung. 
 
+### <a name="storage-choices-when-using-dbms-replication"></a>Speicheroptionen bei Verwendung der DBMS-Replikation
+Unsere Referenzarchitekturen setzen die Verwendung von DBMS-Funktionen wie SQL Server Always On, HANA-Systemreplikation, DB2 HADR oder Oracle Data Guard voraus. Falls Sie diese Technologien zwischen zwei oder mehreren virtuellen Azure-Computern verwenden, müssen die für jeden virtuellen Computer ausgewählten Speichertypen identisch sein. Dies bedeutet, dass, wenn der für das Wiederholungsprotokollvolume eines DBMS-Systems ausgewählte Speicher Azure Storage Premium auf einem virtuellen Computer ist, alle anderen VMs auf demselben Volume auf Azure Storage Premium basieren müssen, die sich in derselben Konfiguration für die Hochverfügbarkeitssynchronisierung befinden. Dasselbe gilt für die Datenvolumes, die für die Datenbankdateien verwendet werden.
+  
+
 ## <a name="storage-recommendations-for-sap-storage-scenarios"></a>Speicherempfehlungen für SAP-Speicherszenarien
 Bevor auf die Einzelheiten eingegangen wird, werden zunächst die Zusammenfassung und die Empfehlungen vorgestellt. Die Details zu den einzelnen Azure-Speichertypen folgen auf diesen Abschnitt. Die Speicherempfehlungen für die SAP-Speicherszenarien sind in der folgenden Tabelle zusammengefasst:
 
@@ -81,9 +86,9 @@ Bevor auf die Einzelheiten eingegangen wird, werden zunächst die Zusammenfassun
 | DBMS-Protokollvolume, SAP HANA, M/Mv2-VM-Familien | Nicht unterstützt | Nicht unterstützt | empfohlen<sup>1</sup> | empfohlen | empfohlen<sup>2</sup> | 
 | DBMS-Datenvolume, SAP HANA, Esv3/Edsv4-VM-Familien | Nicht unterstützt | Nicht unterstützt | empfohlen | empfohlen | empfohlen<sup>2</sup> |
 | DBMS-Protokollvolume, SAP HANA, Esv3/Edsv4-VM-Familien | Nicht unterstützt | Nicht unterstützt | Nicht unterstützt | empfohlen | empfohlen<sup>2</sup> | 
-| DBMS-Datenvolume, Nicht-HANA | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen | empfohlen | Nicht unterstützt |
-| DBMS-Protokollvolume, Nicht-HANA, M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen<sup>1</sup> | empfohlen | Nicht unterstützt |
-| DBMS-Protokollvolume, Nicht-HANA, Nicht-M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | geeignet für bis zu mittlerer Workload | empfohlen | Nicht unterstützt |
+| DBMS-Datenvolume, Nicht-HANA | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux |
+| DBMS-Protokollvolume, Nicht-HANA, M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen<sup>1</sup> | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux |
+| DBMS-Protokollvolume, Nicht-HANA, Nicht-M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | geeignet für bis zu mittlerer Workload | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux |
 
 
 <sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes <sup>2</sup> Für die Verwendung von ANF müssen „/hana/data“ und „/hana/log“ in ANF enthalten sein. 
@@ -92,15 +97,15 @@ Merkmale der verschiedenen Speichertypen:
 
 | Verwendungsszenario | HDD Standard | SSD Standard | Storage Premium | Ultra-Datenträger | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
-| Durchsatz/IOPS-SLA | nein | Nein | Ja | Ja | ja |
+| Durchsatz/IOPS-SLA | nein | nein | ja | ja | ja |
 | Latenz Lesevorgänge | high | mittel bis hoch | niedrig | unter einer Millisekunde | unter einer Millisekunde |
 | Latenz Schreibvorgänge | high | mittel bis hoch  | niedrig (unter einer Millisekunde<sup>1</sup>) | unter einer Millisekunde | unter einer Millisekunde |
 | Von HANA unterstützt | nein | nein | ja<sup>1</sup> | ja | ja |
-| Datenträger-Momentaufnahmen möglich | ja | Ja | Ja | Nein | ja |
+| Datenträger-Momentaufnahmen möglich | ja | ja | ja | nein | ja |
 | Zuordnung von Datenträgern in verschiedenen Speicherclustern bei Verwendung von Verfügbarkeitsgruppen | über verwaltete Datenträger | über verwaltete Datenträger | über verwaltete Datenträger | Datenträgertyp wird mit über Verfügbarkeitsgruppen bereitgestellten virtuellen Computern nicht unterstützt | nein<sup>3</sup> |
-| Angepasst an Verfügbarkeitszonen | ja | Ja | Ja | ja | erfordert Unterstützung von Microsoft |
+| Angepasst an Verfügbarkeitszonen | ja | ja | ja | ja | erfordert Unterstützung von Microsoft |
 | Zonenredundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | nein |
-| Georedundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | Nein | nein |
+| Georedundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | nein | nein |
 
 
 <sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 9656da8be086724482f129efab323e02b73e117e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cefa1461691f384603f464e0d0a4ea8ceb8bc90
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954958"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071719"
 ---
 # <a name="single-page-application-move-to-production"></a>Single-Page-Webanwendung: Überführen in die Produktion
 
@@ -36,10 +36,10 @@ Diese Codebeispiele veranschaulichen verschiedene wichtige Vorgänge bei einer S
 
 - [Node.js-Web-API (Azure AD):](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) Überprüfen von Zugriffstoken für Ihre Back-End-Web-API (Node.js) mithilfe von **passport-azure-ad**
 
-- [Single-Page-Webanwendung (SPA) mit Azure AD B2C:](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) Verwenden von **MSAL.js** zum Anmelden von Benutzern bei einer App, die bei **Azure Active Directory B2C** (Azure AD B2C) registriert ist
+- [Single-Page-Webanwendung (SPA) mit Azure AD B2C:](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) Verwenden von **MSAL.js** zum Anmelden von Benutzern bei einer App, die bei **Azure Active Directory B2C** (Azure AD B2C) registriert ist
 
-- [Node.js-Web-API (Azure AD B2C):](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) Verwenden von **passport-azure-ad** zum Überprüfen von Zugriffstoken für Apps, die mit **Azure Active Directory B2C** (Azure AD B2C) registriert wurden
+- [Node.js-Web-API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi): So verwenden Sie **passport-azure-ad**, um Zugriffstoken für Apps zu validieren, die im **Azure Active Directory B2C** (Azure AD B2C) registriert sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [JavaScript-SPA-Tutorial:](./tutorial-v2-javascript-spa.md) Ausführliche Informationen zum Anmelden von Benutzern und Abrufen eines Zugriffstokens zum Aufrufen der **Microsoft Graph-API** mit **MSAL.js**
+- [JavaScript-SPA-Tutorial:](./tutorial-v2-javascript-auth-code.md) Ausführliche Informationen zum Anmelden von Benutzern und Abrufen eines Zugriffstokens zum Aufrufen der **Microsoft Graph-API** mit **MSAL.js**

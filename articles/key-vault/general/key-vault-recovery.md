@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 author: msmbaldwin
 ms.date: 09/30/2020
-ms.openlocfilehash: c3ffbba9546ada54a42c3f2c2aa5d98da599b353
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b9c249bedd0432458b3e6f5c010cdc5ff39dff44
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749728"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815664"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault-Wiederherstellungsverwaltung mit Schutz durch vorläufiges Löschen und Bereinigungsschutz
 
@@ -398,6 +398,5 @@ Weitere Informationen zum vorläufigen Löschen finden Sie unter [Übersicht üb
 - [Azure CLI-Befehle für Key Vault](/cli/azure/keyvault)
 - [Sicherung in Azure Key Vault](backup.md)
 - [Aktivieren der Protokollierung in Key Vault](howto-logging.md)
-- [Sicherer Zugriff auf einen Schlüsseltresor](security-overview.md)
+- [Azure Key Vault-Sicherheitsfunktionen](security-features.md)
 - [Entwicklerhandbuch zu Azure Key Vault](developers-guide.md)
-- [Bewährte Methoden zum Verwenden von Key Vault](security-overview.md)

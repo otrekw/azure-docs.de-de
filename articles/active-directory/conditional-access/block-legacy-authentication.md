@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09f98e3d6c7997d9cae2737b25f4323021e29bfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84c8b82219f2b2aea39bbcd23f030243d9ea8635
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98892438"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861803"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
 Um Ihren Benutzern den einfachen Zugriff auf Ihre Cloud-Apps zu ermöglichen, unterstützt Azure Active Directory (Azure AD) eine Vielzahl von Authentifizierungsprotokollen einschließlich der Legacyauthentifizierung. Ältere Protokolle unterstützen jedoch nicht die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA). MFA ist in vielen Umgebungen eine allgemeine Anforderung zum Schutz vor Identitätsdiebstahl. 
 
-Alex Weinert, Director of Identity Security bei Microsoft, hebt in seinem Blogbeitrag vom 12. März 2020 mit dem Titel [Neue Tools zum Blockieren der Legacyauthentifizierung in Ihrer Organisation](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#) hervor, warum Organisationen die Legacyauthentifizierung blockieren sollten und welche zusätzlichen Tools Microsoft für diese Aufgabe bereitstellt:
+Alex Weinert, Director of Identity Security bei Microsoft, hebt in seinem am 12. März 2020 veröffentlichten Blogbeitrag [Neue Tools zum Blockieren der Legacyauthentifizierung in Ihrer Organisation](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#) hervor, warum Organisationen die Legacyauthentifizierung blockieren sollten und welche weiteren Tools Microsoft für diese Aufgabe bereitstellt:
 
 > Damit die mehrstufige Authentifizierung (MFA) wirksam wird, müssen Sie auch die Legacyauthentifizierung blockieren. Legacyauthentifizierungsprotokolle wie POP, SMTP, IMAP und MAPI können nämlich keine MFA erzwingen und sind dadurch bevorzugte Einstiegspunkte für Angreifer, die Ihre Organisation attackieren...
 > 
@@ -33,7 +33,7 @@ Alex Weinert, Director of Identity Security bei Microsoft, hebt in seinem Blogbe
 > - Bei Azure AD-Konten in Organisationen, welche die Legacyauthentifizierung deaktiviert haben, sind 67 Prozent weniger Angriffe festzustellen als bei Organisation mit aktivierter Legacyauthentifizierung
 >
 
-Wenn Ihre Umgebung für das Blockieren der Legacyauthentifizierung bereit ist, um den Schutz Ihres Mandanten zu verbessern, können Sie dieses Ziel mit bedingtem Zugriff erreichen. In diesem Artikel wird erläutert, wie Sie die Richtlinien für bedingten Zugriff konfigurieren können, mit denen die Legacyauthentifizierung für Ihren Mandanten blockiert wird.
+Wenn Ihre Umgebung für das Blockieren der Legacyauthentifizierung bereit ist, um den Schutz Ihres Mandanten zu verbessern, können Sie dieses Ziel mit bedingtem Zugriff erreichen. In diesem Artikel wird erläutert, wie Sie die Richtlinien für bedingten Zugriff konfigurieren können, mit denen die Legacyauthentifizierung für Ihren Mandanten blockiert wird. Kunden ohne Lizenzen, die bedingten Zugriff einschließen, können [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) verwenden, um die Legacyauthentifizierung zu blockieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +46,7 @@ Azure AD unterstützt mehrere der am häufigsten verwendeten Protokolle zur Auth
 - Ältere Microsoft Office-Apps
 - Apps, die E-Mail-Protokolle wie POP, IMAP und SMTP verwenden
 
-Eine einstufige Authentifizierung (z. B. mit Benutzername und Kennwort) reicht heutzutage nicht mehr aus. Kennwörter sind unzulänglich, weil sie leicht zu erraten sind, und wir (Menschen) sind schlecht darin, gute Kennwörter auszuwählen. Kennwörter sind auch für eine Vielzahl von Angriffen wie Phishing und Kennwort-Spray anfällig. Eine der einfachsten Maßnahmen, die Sie ergreifen können, um sich vor Kennwortsicherheitsverletzungen zu schützen, ist das Implementieren der mehrstufigen Authentifizierung (MFA). Denn selbst wenn ein Angreifer in den Besitz des Kennworts eines Benutzers gelangt, reicht bei Verwendung von MFA das Kennwort allein nicht aus, um sich erfolgreich authentifizieren und auf die Daten zugreifen zu können.
+Eine einstufige Authentifizierung (z. B. mit Benutzername und Kennwort) reicht heutzutage nicht mehr aus. Kennwörter sind unzulänglich, weil sie leicht zu erraten sind, und wir (Menschen) sind schlecht darin, gute Kennwörter auszuwählen. Kennwörter sind auch für verschiedene Angriffe wie Phishing und Kennwort-Spray anfällig. Eine der einfachsten Maßnahmen, die Sie ergreifen können, um sich vor Kennwortsicherheitsverletzungen zu schützen, ist das Implementieren der mehrstufigen Authentifizierung (MFA). Denn selbst wenn ein Angreifer in den Besitz des Kennworts eines Benutzers gelangt, reicht bei Verwendung von MFA das Kennwort allein nicht aus, um sich erfolgreich authentifizieren und auf die Daten zugreifen zu können.
 
 Wie können Sie verhindern, dass Apps mit Legacyauthentifizierung auf Ressourcen Ihres Mandanten zugreifen? Es wird empfohlen, diese Apps einfach mit einer Richtlinie für bedingten Zugriff zu blockieren. Gegebenenfalls können Sie nur bestimmten Benutzern und bestimmten Netzwerkadressen die Verwendung von Apps erlauben, die auf der Legacyauthentifizierung basieren.
 
@@ -85,7 +85,7 @@ Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, m
 1. Klicken Sie auf **Filter hinzufügen** > **Client-App**, und wählen Sie alle älteren Authentifizierungsprotokolle aus. Klicken Sie auf eine Stelle außerhalb des Filterdialogfelds, um die Auswahl anzuwenden und das Dialogfeld zu schließen.
 1. Wenn Sie die [neuen Berichte zu Anmeldeaktivitäten (Vorschau)](../reports-monitoring/concept-all-sign-ins.md) aktiviert haben, wiederholen Sie die obigen Schritte auch auf der Registerkarte **Benutzeranmeldungen (nicht interaktiv)** .
 
-Durch das Filtern werden Ihnen nur Anmeldeversuche von Legacyauthentifizierungsprotokollen angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Das **Client-App**-Feld auf der Registerkarte **Grundlegende Informationen** gibt an, welche Legacyauthentifizierungsprotokolle verwendet wurden.
+Durch das Filtern werden Ihnen nur Anmeldeversuche von Legacyauthentifizierungsprotokollen angezeigt. Wenn Sie auf die einzelnen Anmeldeversuche klicken, werden Ihnen weitere Details angezeigt. Das **Client-App**-Feld auf der Registerkarte **Grundlegende Informationen** gibt an, welche Legacyauthentifizierungsprotokolle verwendet wurden.
 
 Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizierung abhängig sind, und welche Anwendungen ältere Protokolle für Authentifizierungsanforderungen verwenden. Implementieren Sie für Benutzer, die in diesen Protokollen nicht aufgeführt sind und nachweislich keine Legacyauthentifizierung verwenden, eine Richtlinie für bedingten Zugriff, die nur für diese Benutzer vorgesehen ist.
 

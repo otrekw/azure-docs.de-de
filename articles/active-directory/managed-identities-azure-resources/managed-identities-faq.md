@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 04/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 0d6527c27420617728428e440c94a60236701212
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 07b106630cffae75c5e4588d14de7ae938945614
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376765"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534123"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>Häufig gestellte Fragen zu verwalteten Identitäten für Azure-Ressourcen – Azure AD
 
@@ -139,7 +139,7 @@ Nein. Verwaltete Identitäten unterstützen derzeit keine verzeichnisübergreife
 Begrenzungen für verwaltete Identitäten hängen von Azure-Diensteinschränkungen, von IMDS-Grenzwerten (Azure Instance Metadata Service) und von Azure Active Directory-Diensteinschränkungen ab.
 
 - **Azure-Diensteinschränkungen**: Sie definieren die Anzahl der Erstellungsvorgänge, die auf Mandanten- und Abonnementebene ausgeführt werden können. Für vom Benutzer zugewiesene verwaltete Identitäten gibt es außerdem [Einschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md#managed-identity-limits) hinsichtlich der Namensgebung.
-- **IMDS**: Im Allgemeinen sind Anforderungen an IMDS auf fünf (5) Anforderungen pro Sekunde beschränkt. Anforderungen, die diesen Grenzwert überschreiten, werden mit der Antwort 429 abgelehnt. Anforderungen an die Kategorie Verwaltete Identität sind auf 20 Anforderungen pro Sekunde und 5 gleichzeitige Anforderungen beschränkt. Weitere Informationen finden Sie im Artikel [Azure Instance Metadata Service (Windows).](../../virtual-machines/windows/instance-metadata-service.md?tabs=windows#managed-identity)
+- **IMDS**: Im Allgemeinen sind Anforderungen an IMDS auf fünf (5) Anforderungen pro Sekunde beschränkt. Anforderungen, die diesen Schwellenwert überschreiten, werden mit der Antwort 429 abgelehnt. Anforderungen an die Kategorie Verwaltete Identität sind auf 20 Anforderungen pro Sekunde und 5 gleichzeitige Anforderungen beschränkt. Weitere Informationen finden Sie im Artikel [Verwaltete Identität](../../virtual-machines/windows/instance-metadata-service.md?tabs=windows#managed-identity).
 - **Azure Active Directory-Dienst**: Jede verwaltete Identität wird auf den Objektkontingentgrenzwert in einem Azure AD-Mandanten angerechnet, wie unter [Dienst- und andere Einschränkungen für Azure AD](../enterprise-users/directory-service-limits-restrictions.md) beschrieben.
 
 

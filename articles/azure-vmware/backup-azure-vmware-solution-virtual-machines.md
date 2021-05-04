@@ -3,12 +3,12 @@ title: Sichern von Azure VMware Solution-VMs mit Azure Backup Server
 description: Konfigurieren Sie Ihre Azure VMware Solution-Umgebung zum Sichern von VMs mit Azure Backup Server.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: 163065556b7dbc979d68613744ea827c209d9fda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92affbf883215f0d051115fb64e9e7bf7a1430b3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618915"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871775"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Sichern von Azure VMware Solution-VMs mit Azure Backup Server
 
@@ -358,5 +358,5 @@ Sie können einzelne Dateien eines geschützten VM-Wiederherstellungspunkts wied
 
 Nachdem Sie sich mit dem Sichern Ihrer Azure VMware Solution-VMs mit Azure Backup Server vertraut gemacht haben, sollten Sie sich über die folgenden Themen informieren: 
 
-- [Behandeln von Problemen mit Azure Backup Server](../backup/backup-azure-mabs-troubleshoot.md)
+- [Behandeln von Problemen beim Einrichten von Sicherungen mit Azure Backup Server](../backup/backup-azure-mabs-troubleshoot.md)
 - [Lebenszyklusverwaltung von Azure VMware Solution-VMs](lifecycle-management-of-azure-vmware-solution-vms.md)

@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: kumud
-ms.openlocfilehash: 9b608312d66e6a3e7455c4577ea4644b33e4e82e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8ed448f9f4f8dc688271f2ce671b2d89da0f342f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079815"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146810"
 ---
 # <a name="azure-networking-architecture-documentation"></a>Dokumentation zur Azure-Netzwerkarchitektur
 
@@ -22,7 +22,7 @@ Dieser Artikel enthält Informationen zu Architekturleitfäden, mit deren Hilfe 
 
 In der folgenden Tabelle sind Artikel aufgeführt, die eine Netzwerkübersicht für ein virtuelles Rechenzentrum und eine Hub-Spoke-Topologie in Azure bereitstellen.
 
-|Titel |BESCHREIBUNG  |
+|Titel |Beschreibung  |
 |---------|---------|
 |[Virtuelle Datencenter](/azure/architecture/vdc/networking-virtual-datacenter)   | Stellt ein virtuelles Rechenzentrum in Azure aus Netzwerkperspektive dar.       |
 |[Hub-Spoke-Topologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)  |Bietet eine Übersicht über die Hub-Spoke-Netzwerktopologie in Azure sowie Informationen zu Abonnementlimits und mehreren Hubs.          |
@@ -31,7 +31,7 @@ In der folgenden Tabelle sind Artikel aufgeführt, die eine Netzwerkübersicht f
 
 Die folgende Tabelle enthält Artikel zu Azure-Netzwerkdiensten, die Konnektivität zwischen Azure-Ressourcen, Konnektivität zwischen einem lokalen Netzwerk und Azure-Ressourcen sowie Konnektivität zwischen Verzweigungen in Azure bereitstellen.
 
-|Titel |BESCHREIBUNG  |
+|Titel |Beschreibung  |
 |---------|---------|
 |[Hinzufügen von IP-Adressräumen zu virtuellen Netzwerken mit Peering](/azure/architecture/networking/prefixes/add-ip-space-peered-vnet)     | Stellt Skripts bereit, mit denen IP-Adressbereiche virtuellen Netzwerken mit Peering hinzugefügt werden können.        |
 |[Verbinden von eigenständigen Servern mithilfe des Azure-Netzwerkadapters](/azure/architecture/hybrid/azure-network-adapter)   | Zeigt, wie Sie einen lokalen eigenständigen Server mithilfe des Azure-Netzwerkadapters, den Sie über Windows Admin Center bereitstellen, mit virtuellen Microsoft Azure-Netzwerken verbinden.        |
@@ -43,20 +43,21 @@ Die folgende Tabelle enthält Artikel zu Azure-Netzwerkdiensten, die Konnektivit
 
 Die in der folgenden Tabelle aufgeführten Artikel beschreiben, wie Sie Ihre Anwendungen mithilfe einer Kombination aus Azure-Netzwerkdiensten für Hochverfügbarkeit bereitstellen.
 
-|Titel |BESCHREIBUNG  |
+|Titel |Beschreibung  |
 |---------|---------|
 |[n-schichtige Anwendung für mehrere Regionen](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)  | Beschreibt eine regionsübergreifende n-schichtige Anwendung, die mithilfe von Traffic Manager eingehende Anforderungen an eine primäre Region weiterleitet. Sollte diese Region nicht mehr verfügbar sein, führt Traffic Manager ein Failover auf die sekundäre Region aus.      |
-| [Mehrinstanzenfähige SaaS-Anwendungen in Azure](https://docs.microsoft.com/azure/architecture/example-scenario/multi-saas/multitenant-saas)       |   Verwendet eine mehrinstanzenfähige Lösung, die eine Kombination aus Front Door und Application Gateway umfasst.  Front-Door unterstützt den regionsübergreifenden Lastenausgleich des Datenverkehrs und Application Gateway routet den Datenverkehr intern in der Anwendung zu den verschiedenen Diensten, die die Geschäftsanforderungen der Kunden erfüllen, und führt dabei ebenfalls einen Lastenausgleich durch.  |
-| [Für Hochverfügbarkeit und Notfallwiederherstellung konzipierte Multi-Tier-Webanwendung](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)        |      Stellt resiliente Multi-Tier-Anwendungen bereit, die für Hochverfügbarkeit und Notfallwiederherstellung entwickelt wurden. Wenn die primäre Region nicht mehr verfügbar ist, führt Traffic Manager ein Failover zur sekundären Region aus.  |
+| [Mehrinstanzenfähige SaaS-Anwendungen in Azure](/azure/architecture/example-scenario/multi-saas/multitenant-saas)       |   Verwendet eine mehrinstanzenfähige Lösung, die eine Kombination aus Front Door und Application Gateway umfasst.  Front-Door unterstützt den regionsübergreifenden Lastenausgleich des Datenverkehrs und Application Gateway routet den Datenverkehr intern in der Anwendung zu den verschiedenen Diensten, die die Geschäftsanforderungen der Kunden erfüllen, und führt dabei ebenfalls einen Lastenausgleich durch.  |
+| [Für Hochverfügbarkeit und Notfallwiederherstellung konzipierte Multi-Tier-Webanwendung](/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)        |      Stellt resiliente Multi-Tier-Anwendungen bereit, die für Hochverfügbarkeit und Notfallwiederherstellung entwickelt wurden. Wenn die primäre Region nicht mehr verfügbar ist, führt Traffic Manager ein Failover zur sekundären Region aus.  |
 |[IaaS: Webanwendung mit relationaler Datenbank](/azure/architecture/high-availability/ref-arch-iaas-web-and-db)    |   Beschreibt, wie Sie mit auf mehrere Zonen verteilten Ressourcen eine Hochverfügbarkeitsarchitektur für das Hosten einer IaaS-Webanwendung (Infrastructure-as-a-Service) und einer SQL Server-Datenbank bereitstellen.     |
 |[Teilen des Standorts in Echtzeit mithilfe kostengünstiger serverloser Azure-Dienste](/azure/architecture/example-scenario/signalr/#azure-front-door)       |   Verwendet Azure Front Door, um die Verfügbarkeit Ihrer Anwendungen stärker zu erhöhen als dies durch Bereitstellung in einer einzelnen Region möglich wäre. Wenn ein regionaler Ausfall die primäre Region beeinträchtigt, können Sie mit Front Door ein Failover zur sekundären Region ausführen.      |
 |[Hochverfügbare virtuelle Netzwerkgeräte](/azure/architecture/reference-architectures/dmz/nva-ha)     | Zeigt, wie eine Reihe virtueller Netzwerkappliances für Hochverfügbarkeit in Azure bereitgestellt wird.        |
+|[Regionsübergreifender Lastenausgleich mit Traffic Manager und Application Gateway](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway)     | Hier wird beschrieben, wie Sie resiliente mehrschichtige Anwendungen in mehreren Azure-Regionen bereitstellen, um Verfügbarkeit und eine stabile Infrastruktur für die Notfallwiederherstellung zu implementieren.        |
 
 ## <a name="secure-your-network-resources"></a>Schützen Ihrer Netzwerkressourcen
 
 Die in der folgenden Tabelle aufgeführten Artikel beschreiben, wie Sie Ihre Netzwerkressourcen mithilfe von Azure-Netzwerkdiensten schützen.
 
-|Titel |BESCHREIBUNG  |
+|Titel |Beschreibung  |
 |---------|---------|
 |[Bewährte Methoden für die Netzwerksicherheit](../../security/fundamentals/network-best-practices.md) |Hier werden bewährte Methoden von Azure zur Verbesserung der Netzwerksicherheit beschrieben.         |
 [Entwerfen einer Firewall mit Lastenausgleich in Azure](/azure/architecture/example-scenario/firewalls/) | Bietet einen strukturierten Ansatz zum Entwerfen von Hochverfügbarkeitsfirewalls in Azure mithilfe virtueller Appliances von Drittanbietern.        |

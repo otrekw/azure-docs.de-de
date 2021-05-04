@@ -86,6 +86,17 @@
           href: configure-export-data.md
         - name: Konfigurieren von Private Link
           href: configure-private-link.md
+    - name: 'Suchen,'
+      expand: false
+      items:
+        - name: Übersicht über die FHIR-Suche
+          href: overview-of-search.md
+        - name: Definieren von benutzerdefinierten Suchparametern
+          href: how-to-do-custom-search.md
+        - name: Ausführen eines Auftrags zum Neuindizieren
+          href: how-to-run-a-reindex.md
+        - name: Suchbeispiele für die Azure-API für FHIR
+          href: search-samples.md
     - name: Exportieren von Daten
       expanded: false
       items:

@@ -3,27 +3,19 @@ title: 'Konfigurieren von MSIX App Attach für Windows Virtual Desktop mit Power
 description: Erfahren Sie, wie Sie PowerShell-Skripts für MSIX App Attach für Windows Virtual Desktop erstellen.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 224f2e773ecd42dcbdd356531d9ce94636de002f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 43a8cb00804927784982999db13ee193c34f55ca
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448269"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835378"
 ---
-# <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>Erstellen von PowerShell-Skripts für MSIX App Attach (Vorschau)
-
-> [!IMPORTANT]
-> Das MSIX-Features zum Anfügen von Apps befindet sich zurzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-powershell-scripts-for-msix-app-attach"></a>Erstellen von PowerShell-Skripts für das MSIX-Feature zum Anfügen von Apps
 
 In diesem Thema erfahren Sie, wie Sie PowerShell-Skripts für MSIX App Attach einrichten.
-
->[!IMPORTANT]
->Bevor Sie beginnen, sollten Sie [dieses Formular](https://aka.ms/enablemsixappattach) ausfüllen und übermitteln, um MSIX App Attach in Ihrem Abonnement zu aktivieren. Wenn Ihre Anforderung noch nicht genehmigt wurde, funktioniert das MSIX-Feature zum Anfügen von Apps nicht. Die Genehmigung von Anforderungen kann an Werktagen bis zu 24 Stunden dauern. Sie erhalten eine E-Mail, wenn Ihre Anforderung akzeptiert und abgeschlossen wurde.
 
 ## <a name="install-certificates"></a>Installieren von Zertifikaten
 
@@ -32,7 +24,7 @@ Sie müssen Zertifikate auf allen Sitzungshosts im Hostpool installieren, auf de
 Wenn Ihre App ein Zertifikat verwendet, das nicht öffentlich vertrauenswürdig ist oder selbst signiert wurde, wird dieses wie folgt installiert:
 
 1. Klicken Sie mit der rechten Maustaste auf das Paket, und wählen Sie **Eigenschaften** aus.
-2. Wählen Sie im angezeigten Fenster die Registerkarte **Digitale Signaturen** aus. Es darf nur ein Element in der Liste auf der Registerkarte vorhanden sein, wie in der folgenden Abbildung gezeigt. Wählen Sie dieses Element aus, um das Element zu markieren, und wählen Sie dann **Details** aus.
+2. Wählen Sie im daraufhin angezeigten Fenster die Registerkarte **Digitale Signaturen** aus. Die Liste auf der Registerkarte sollte nur ein Element enthalten. Wählen Sie dieses Element aus, um es hervorzuheben, und wählen Sie **Details** aus.
 3. Wenn das Fenster mit den Details zur digitalen Signatur angezeigt wird, klicken Sie auf die Registerkarte **Allgemein**, dann auf **View Certificate** (Zertifikat anzeigen) und schließlich auf **Install certificate** (Zertifikat installieren).
 4. Wenn das Installationsprogramm geöffnet wird, wählen Sie **Lokaler Computer** als Speicherort aus, und klicken Sie dann auf **Weiter**.
 5. Wenn Sie vom Installationsprogramm gefragt werden, ob Sie zulassen möchten, dass die App Änderungen an Ihrem Gerät vornimmt, wählen Sie **Ja** aus.

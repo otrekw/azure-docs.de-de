@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2021
+ms.date: 04/27/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a51f874d09aebfcb2c0b73e0b484f68042d1bb6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cde810bb9f612b0dc84fb4dd7593761b057e722
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496200"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142853"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure
 
@@ -33,9 +33,23 @@ Windows Server-Failoverclustering ist die Grundlage für eine SAP ASCS/SCS-Insta
 Bei einem Failovercluster handelt es sich um eine Gruppe von 1+n unabhängigen Servern, die zur Steigerung der Verfügbarkeit von Anwendungen und Diensten zusammenarbeiten. Wenn ein Knotenfehler auftritt, berechnet das Windows Server-Failoverclustering die Anzahl von Fehlern, die auftreten können, und erhält weiterhin einen fehlerfreien Cluster für die Bereitstellung der Anwendungen und Dienste aufrecht. Sie können zwischen verschiedenen Quorummodi wählen, um das Failoverclustering zu erzielen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie mit den in diesem Artikel beschriebenen Aufgaben beginnen, lesen Sie diesen Artikel:
+Bevor Sie mit den in diesem Artikel beschriebenen Aufgaben beginnen, lesen Sie die folgenden Artikel und SAP-Hinweise:
 
 * [Azure Virtual Machines – Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver][sap-high-availability-architecture-scenarios]
+* SAP-Hinweis [1928533][1928533] mit folgendem Inhalt:  
+  * Liste der für die Bereitstellung von SAP-Software unterstützten Azure-VM-Größen
+  * Wichtige Kapazitätsinformationen für Größen von Azure-VMs
+  * Unterstützte SAP-Software und Kombinationen aus Betriebssystem (OS) und Datenbank
+  * erforderliche SAP-Kernelversion für Windows in Microsoft Azure
+* In SAP-Hinweis [2015553][2015553] sind die Voraussetzungen für Bereitstellungen von SAP-Software in Azure aufgeführt, die von SAP unterstützt werden.
+* SAP-Hinweis [2178632][2178632] enthält ausführliche Informationen zu allen Überwachungsmetriken, die für SAP in Azure gemeldet werden.
+* SAP-Hinweis [1999351][1999351] enthält Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP.
+* SAP-Hinweis [2287140](https://launchpad.support.sap.com/#/notes/2287140) mit den Voraussetzungen für die von SAP unterstützten CA-Funktionen des SMB 3.x-Protokolls
+* SAP-Hinweis [2802770](https://launchpad.support.sap.com/#/notes/2802770) mit Informationen zur Problembehandlung bei der langsamen Ausführung von SAP-Transaktion AL11 unter Windows 2012 und 2016
+* SAP-Hinweis [1911507](https://launchpad.support.sap.com/#/notes/1911507) mit Informationen zur Funktion für transparente Failover für eine Dateifreigabe unter Windows Server mit dem SMB 3.0-Protokoll
+* SAP-Hinweis [662452](https://launchpad.support.sap.com/#/notes/662452) mit Empfehlungen (Deaktivierung der Namensgenerierung aus Version 8.3) für das Beheben von Problemen im Zusammenhang mit einer schlechten Dateisystemleistung und das Beheben von Fehlern während des Datenzugriffs
+* [Installieren von SAP NetWeaver-Hochverfügbarkeit in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS-/SCS-Instanzen in Azure](./sap-high-availability-installation-wsfc-file-share.md) 
+* [Installieren einer (A)SCS-Instanz auf einem Failovercluster](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 
 > [!IMPORTANT]
 > Das Gruppieren von SAP ASCS/SCS-Instanzen über eine Dateifreigabe wird für SAP NetWeaver 7.40-Produkte (und höher) mit SAP Kernel 7.49 (und höher) unterstützt.

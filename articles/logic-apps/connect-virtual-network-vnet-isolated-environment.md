@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/30/2021
-ms.openlocfilehash: a56a41b704b12da08cf86b450ac1c734409c8032
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/21/2021
+ms.openlocfilehash: bfef9f2b5420ac9377cc369d7bf9a9bdac76743b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219313"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874223"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -122,7 +122,7 @@ In dieser Tabelle werden die Ports beschrieben, die für Ihre ISE erforderlich s
 | Zweck | Quelldiensttag oder IP-Adressen | Quellports | Zieldiensttag oder IP-Adressen | Zielports | Notizen |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Kommunikation zwischen Subnetzen innerhalb des virtuellen Netzwerks | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Erforderlich für die Übertragung von Datenverkehr *zwischen* den Subnetzen in Ihrem virtuellen Netzwerk. <p><p>**Wichtig**: Damit Datenverkehr zwischen den *Komponenten* in den einzelnen Subnetzen übertragen werden kann, müssen alle Ports innerhalb der einzelnen Subnetze geöffnet werden. |
-| Kommunikation von Ihrer Logik-App | **VirtualNetwork** | * | Variiert abhängig vom Ziel | 80, 443 | Das Ziel variiert je nach den Endpunkten für den externen Dienst, mit dem Ihre Logik-App kommunizieren muss. |
+| Kommunikation von Ihrer Logik-App | **VirtualNetwork** | * | Variiert abhängig vom Ziel | Variiert abhängig vom Ziel | Zielports variieren je nach den Endpunkten für die externen Dienste, mit denen Ihre Logik-App kommunizieren muss. <p><p>Beispielsweise ist der Zielport 443 für einen Webdienst, Port 25 für einen SMTP-Dienst Port 25, für einen SFTP-Dienst Port 22 usw. |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80, 443 ||
 | Azure Storage-Abhängigkeit | **VirtualNetwork** | * | **Storage** | 80, 443, 445 ||
 | Verbindungsverwaltung | **VirtualNetwork** | * | **AppService** | 443 ||
@@ -186,7 +186,7 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
 
    ![Angeben von Umgebungsdetails](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Das für Ihre Umgebung zu verwendende Azure-Abonnement |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Eine neue oder vorhandene Azure-Ressourcengruppe, in der Sie Ihre Umgebung erstellen möchten. |

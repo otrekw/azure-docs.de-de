@@ -3,12 +3,12 @@ title: Konzepte – Netzwerkinterkonnektivität
 description: Erfahren Sie mehr über wichtige Aspekte und Anwendungsfälle für Netzwerke und Interkonnektivität in Azure VMware Solution.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 4c964151c49e2fea56031dd24bacf4655753a18d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7222a9de7eb92b3cdd571ad70adf7ab107be73cd
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491808"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951167"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Solution – Netzwerk- und Interkonnektivitätskonzepte
 
@@ -69,11 +69,11 @@ Nachdem Sie sich mit den Netzwerk- und Konnektivitätskonzepten bei Azure VMware
 
 - [Speicherkonzepte von Azure VMware Solution](concepts-storage.md)
 - [Identitätskonzepte von Azure VMware Solution](concepts-identity.md)
-- [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
+- [So aktivieren Sie die Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md
 
 <!-- LINKS - internal -->
-[concepts-upgrades]: ./concepts-upgrades.md
+[concepts-upgrades]: ./concepts-private-clouds-clusters#host-maintenance-and-lifecycle-management
 [concepts-storage]: ./concepts-storage.md

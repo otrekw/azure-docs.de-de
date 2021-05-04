@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d70514e81bc838b4193862e66b0c03440d006128
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ce29158c2a44f01fa06649e4b4497bf5c5076866
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307459"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107513322"
 ---
 ## <a name="setting-up"></a>Einrichten
 
@@ -82,7 +82,7 @@ async function sendSms(resourceEndpoint, fromNumber, toNumber, message) {
 }
 ```
 
-## <a name="write-the-main-method"></a>Schreiben der Main-Methode
+## <a name="write-the-main-function"></a>Schreiben der main-Funktion
 
 Nachdem wir unsere Funktionen erstellt haben, können wir nun eine Main-Funktion schreiben, die sie aufruft und die Verwendung von verwalteten Identitäten veranschaulicht:
 ```JavaScript

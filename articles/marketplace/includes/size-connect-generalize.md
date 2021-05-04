@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 03/25/2021
-ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/16/2021
+ms.openlocfilehash: e119d40cd0b8f482d33c3c86c644cf6a0846390a
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629824"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727119"
 ---
 ## <a name="generalize-the-image"></a>Generalisieren des Images
 
@@ -40,6 +40,9 @@ Mit dem folgenden Prozess wird eine Linux-VM generalisiert und als separate VM e
 
 ### <a name="capture-image"></a>Erfassen des Images
 
+> [!NOTE]
+> Zum Veröffentlichen muss sich das Azure-Abonnement, das Shared Image Gallery enthält, unter demselben Mandanten wie das Herausgeberkonto befinden. Darüber hinaus muss das Herausgeberkonto mindestens über Zugriff als Mitwirkender auf das Abonnement verfügen, das SIG enthält.
+
 Sobald Ihre VM bereit ist, können Sie sie in Azure Shared Image Gallery erfassen. Führen Sie hierzu die folgenden Schritte aus:
 
 1. Navigieren Sie im [Azure-Portal](https://ms.portal.azure.com/) zur Seite Ihres virtuellen Computers.
@@ -51,8 +54,6 @@ Sobald Ihre VM bereit ist, können Sie sie in Azure Shared Image Gallery erfasse
 7. Geben Sie eine **Versionsnummer** für das Image ein.
 8. Wählen Sie **Bewerten + erstellen** aus, um Ihre Auswahl zu überprüfen.
 9. Klicken Sie auf **Erstellen**, sobald die Überprüfung bestanden wurde.
-
-Zum Veröffentlichen muss sich das Azure-Abonnement, das Shared Image Gallery enthält, unter demselben Mandanten wie das Herausgeberkonto befinden. Außerdem muss das Herausgeberkonto über Besitzerzugriff auf Shared Image Gallery verfügen. 
 
 So gewähren Sie den Zugriff:
 

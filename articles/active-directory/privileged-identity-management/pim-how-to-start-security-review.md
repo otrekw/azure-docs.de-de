@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 4/05/2021
+ms.date: 4/27/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aba8d9de5e068cd98675f67cb26b0eac8d1ad6d
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 60473d034820627605616c0bc280f1f105f4b3e5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552823"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124102"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Erstellen einer Zugriffsüberprüfung für Azure AD-Rollen in Privileged Identity Management
 
@@ -29,10 +29,10 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
 
 ## <a name="prerequisite-license"></a>Erforderliche Lizenz
 
-[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]. Weitere Informationen zu Lizenzen für Benutzer finden Sie unter [Lizenzanforderungen für die Verwendung von Privileged Identity Management](subscription-requirements.md).
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]Weitere Informationen zu Lizenzen für PIM finden Sie unter [Lizenzanforderungen für die Verwendung von Privileged Identity Management](subscription-requirements.md).
 
 > [!Note]
->  Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschauversion) mit einer aktiven Azure Active Directory Premium P2-Edition in Ihrem Mandanten beschränken. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich.
+>  Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschau) mit einer in Ihrem Anker aktiven Azure Active Directory Premium P2-Edition durchführen. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,35 +42,35 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Benutzer an, der Mitglied der Rolle „Administrator für privilegierte Rollen“ ist.
 
-1. Wählen Sie **Identity Governance** aus
+2. Wählen Sie **Identity Governance** aus
  
-1. Wählen Sie **Azure AD-Rollen** unter  **Azure AD Privileged Identity Management** aus.
+3. Wählen Sie **Azure AD-Rollen** unter  **Azure AD Privileged Identity Management** aus.
  
-1. Wählen Sie **Azure AD-Rollen** aus, ebenfalls unter **Verwalten**.
+4. Wählen Sie **Azure AD-Rollen** aus, ebenfalls unter **Verwalten**.
 
-1. Wählen Sie unter „Verwalten“ die Option **Zugriffsüberprüfungen** und anschließend **Neu** aus.
+5. Wählen Sie unter „Verwalten“ die Option **Zugriffsüberprüfungen** und anschließend **Neu** aus.
 
     ![Azure AD-Rollen: Liste der Zugriffsüberprüfungen mit dem Status aller Überprüfungen](./media/pim-how-to-start-security-review/access-reviews.png)
 
-Klicken Sie auf **Neu**, um eine neue Zugriffsüberprüfung zu erstellen.
+6. Klicken Sie auf **Neu**, um eine neue Zugriffsüberprüfung zu erstellen.
 
-1. Benennen Sie die Zugriffsüberprüfung. Wahlweise können Sie jeder Überprüfung eine Beschreibung hinzufügen. Den Prüfern werden Name und Beschreibung angezeigt.
+7. Benennen Sie die Zugriffsüberprüfung. Wahlweise können Sie jeder Überprüfung eine Beschreibung hinzufügen. Den Prüfern werden Name und Beschreibung angezeigt.
 
     ![Erstellen einer Zugriffsüberprüfung – Name und Beschreibung der Überprüfung](./media/pim-how-to-start-security-review/name-description.png)
 
-1. Legen Sie das **Startdatum** fest. Standardmäßig findet eine Zugriffsüberprüfung einmalig statt. Sie beginnt an dem Tag, an dem sie erstellt wird, und endet nach einem Monat. Sie können Start- und Enddatum so ändern, dass der Start der Zugriffsüberprüfung in der Zukunft liegt und sie so lange dauert, wie Sie wünschen.
+8. Legen Sie das **Startdatum** fest. Standardmäßig findet eine Zugriffsüberprüfung einmalig statt. Sie beginnt an dem Tag, an dem sie erstellt wird, und endet nach einem Monat. Sie können Start- und Enddatum so ändern, dass der Start der Zugriffsüberprüfung in der Zukunft liegt und sie so lange dauert, wie Sie wünschen.
 
     ![Startdatum, Häufigkeit, Dauer, Ende, Anzahl und Enddatum](./media/pim-how-to-start-security-review/start-end-dates.png)
 
-1. Wenn die Zugriffsüberprüfung wiederholt ausgeführt werden soll, ändern Sie die Einstellung **Häufigkeit** von **Einmal** in **Wöchentlich**, **Monatlich**,  **Vierteljährlich**, **Jährlich** oder **Halbjährlich**. Verwenden Sie den Schieberegler oder das Textfeld **Dauer**, um festzulegen, wie viele Tage Prüfer Eingaben für jede Überprüfung der Serie vornehmen können. Für eine monatliche Überprüfung kann beispielsweise eine maximale Dauer von 27 Tagen angegeben werden, um Überschneidungen zu vermeiden.
+9. Wenn die Zugriffsüberprüfung wiederholt ausgeführt werden soll, ändern Sie die Einstellung **Häufigkeit** von **Einmal** in **Wöchentlich**, **Monatlich**,  **Vierteljährlich**, **Jährlich** oder **Halbjährlich**. Verwenden Sie den Schieberegler oder das Textfeld **Dauer**, um festzulegen, wie viele Tage Prüfer Eingaben für jede Überprüfung der Serie vornehmen können. Für eine monatliche Überprüfung kann beispielsweise eine maximale Dauer von 27 Tagen angegeben werden, um Überschneidungen zu vermeiden.
 
-1. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Reihe kann auf drei Arten enden: Die Serie wird unendlich ausgeführt, um Überprüfungen ohne zeitliche Beschränkung zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie (oder ein anderer Benutzeradministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie unter **Einstellungen** das Datum ändern, sodass die Serie an diesem Datum endet.
+10. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Reihe kann auf drei Arten enden: Die Serie wird unendlich ausgeführt, um Überprüfungen ohne zeitliche Beschränkung zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie (oder ein anderer Benutzeradministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie unter **Einstellungen** das Datum ändern, sodass die Serie an diesem Datum endet.
 
-1. Wählen Sie im **Benutzerbereich** den Bereich der Bewertung aus. Wenn Sie Benutzer und Gruppen mit Zugriff auf die Azure AD-Rolle überprüfen möchten, wählen Sie **Benutzer und Gruppen** aus, oder wählen Sie **(Vorschau) Dienstprinzipal** aus, um die Computerkonten mit Zugriff auf die Azure AD-Rolle zu überprüfen.
+11. Wählen Sie im **Benutzerbereich** den Bereich der Bewertung aus. Wenn Sie Benutzer und Gruppen mit Zugriff auf die Azure AD-Rolle überprüfen möchten, wählen Sie **Benutzer und Gruppen** aus, oder wählen Sie **(Vorschau) Dienstprinzipal** aus, um die Computerkonten mit Zugriff auf die Azure AD-Rolle zu überprüfen.
 
     ![Benutzerbereich zum Überprüfen der Rollenmitgliedschaft](./media/pim-how-to-start-security-review/users.png)
 
-1. Wählen Sie unter **Überprüfen der Rollenmitgliedschaft** die privilegierten Azure AD-Rollen aus, die zu überprüfen sind. 
+12. Wählen Sie unter **Überprüfen der Rollenmitgliedschaft** die privilegierten Azure AD-Rollen aus, die zu überprüfen sind. 
 
     > [!NOTE]
     > - Die hier ausgewählten Rollen enthalten [permanente und berechtigte Rollen](../privileged-identity-management/pim-how-to-add-role-to-user.md).
@@ -84,7 +84,7 @@ Klicken Sie auf **Neu**, um eine neue Zugriffsüberprüfung zu erstellen.
 
     ![Bereich „Mitgliedschaft überprüfen“ mit aufgeführten Azure-Ressourcenrollen, die Sie auswählen können](./media/pim-how-to-start-security-review/review-membership-azure-resource-roles.png)
 
-1. Wählen Sie im Abschnitt **Prüfer** mindestens eine Person für die Überprüfung aller Benutzer aus. Alternativ können Sie auswählen, dass die Mitglieder ihren eigenen Zugriff überprüfen.
+13. Wählen Sie im Abschnitt **Prüfer** mindestens eine Person für die Überprüfung aller Benutzer aus. Alternativ können Sie auswählen, dass die Mitglieder ihren eigenen Zugriff überprüfen.
 
     ![Liste der Prüfer mit ausgewählten Benutzer oder Mitgliedern (selbst)](./media/pim-how-to-start-security-review/reviewers.png)
 
@@ -106,6 +106,10 @@ Klicken Sie auf **Neu**, um eine neue Zugriffsüberprüfung zu erstellen.
     - **Zugriff entfernen**: Dem Benutzer wird der Zugriff entzogen.
     - **Zugriff genehmigen**: Der Zugriff des Benutzers wird genehmigt.
     - **Empfehlungen annehmen**: Die Systemempfehlungen hinsichtlich der Ablehnung oder Gewährung des weiteren Benutzerzugriffs werden verwendet.
+
+1. Sie können Benachrichtigungen an weitere Benutzer oder Gruppen (Vorschauversion) senden, um Überprüfungsabschlussupdates zu erhalten. Mit diesem Feature können andere Beteiligte als der Ersteller der Überprüfung über den Fortschritt der Überprüfung aktualisiert werden. Um dieses Feature zu verwenden, wählen Sie **Benutzer oder Gruppen auswählen** aus, und fügen Sie einen zusätzlichen Benutzer oder eine Gruppe hinzu, wenn Sie den Status des Abschlusses erhalten möchten.
+
+    ![Nach Abschluss der Einstellungen: Hinzufügen zusätzlicher Benutzer zum Empfangen von Benachrichtigungen](./media/pim-how-to-start-security-review/upon-completion-settings-additional-receivers.png) 
 
 ### <a name="advanced-settings"></a>Erweiterte Einstellungen
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 17a4df3037f9922d92fca924de0d246458cfa08e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acae7a6121587a1a58c6f19b0b09287b3d93cc84
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456187"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992159"
 ---
 # <a name="azure-sentinel-entity-types-reference"></a>Referenz zu Azure Sentinel-Entitätstypen
 
@@ -66,7 +66,7 @@ Im Folgenden finden Sie eine ausführlichere Beschreibung der vollständigen Sch
 
 *Entitätsname: Account*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘account’ |
 | Name | String | Der Kontoname. Dieses Feld sollte nur den Namen enthalten, ohne dass eine Domäne hinzugefügt wird. |
@@ -102,7 +102,7 @@ Schwache Bezeichner einer Kontoentität:
 
 ## <a name="host"></a>Host
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘host’ |
 | DnsDomain | Zeichenfolge | Die DNS-Domäne, zu der dieser Host gehört. Sollte das vollständige DNS-Suffix für die Domäne enthalten, sofern bekannt. |
@@ -135,7 +135,7 @@ Schwache Bezeichner einer Hostentität:
 
 *Entitätsname: IP*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘ip’ |
 | Adresse | Zeichenfolge | Die IP-Adresse als Zeichenfolge, z. B. 127.0.0.1 (in IPv4 oder IPv6). |
@@ -147,7 +147,7 @@ Starke Bezeichner einer IP-Entität:
 
 ## <a name="malware"></a>Malware
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘malware’ |
 | Name | String | Der Name der Schadsoftware vom Hersteller, z. B `Win32/Toga!rfn`. |
@@ -162,7 +162,7 @@ Starke Bezeichner einer Malwareentität:
 
 ## <a name="file"></a>Datei
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘file’ |
 | Verzeichnis | Zeichenfolge | Der vollständige Pfad zur Datei. |
@@ -178,7 +178,7 @@ Starke Bezeichner einer Dateientität:
 
 ## <a name="process"></a>Prozess
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘process’ |
 | ProcessId | Zeichenfolge | Die Prozess-ID. |
@@ -208,7 +208,7 @@ Schwache Bezeichner einer Prozessentität:
 
 *Entitätsname: CloudApplication*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘cloud-application’ |
 | AppId | Int | Der technische Bezeichner der Anwendung. Dies sollte einer der Werte sein, die in der Liste der [Cloudanwendungsbezeichner](#cloud-application-identifiers) definiert sind. Der Wert für das AppId-Feld ist optional. |
@@ -226,7 +226,7 @@ Starke Bezeichner einer Cloudanwendungsentität:
 
 *Entitätsname: DNS*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘dns’ |
 | DomainName | Zeichenfolge | Der Name des DNS-Eintrags, der der Warnung zugeordnet ist. |
@@ -243,7 +243,7 @@ Schwache Bezeichner einer DNS-Entität:
 
 ## <a name="azure-resource"></a>Azure-Ressource
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'azure-resource' |
 | resourceId | String | Die Azure-Ressourcen-ID der Ressource. |
@@ -260,7 +260,7 @@ Starke Bezeichner einer Azure-Ressourcenentität:
 
 *Entitätsname: FileHash*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'filehash' |
 | Algorithmus | Enumeration | Der Hashalgorithmustyp. Mögliche Werte:<li>Unbekannt<li>MD5<li>SHA1<li>SHA256<li>SHA256AC |
@@ -274,7 +274,7 @@ Starke Bezeichner einer Dateihashentität:
 
 *Entitätsname: RegistryKey*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘registry-key’ |
 | Hive | Enum? | Einer der folgenden Werte:<li>HKEY_LOCAL_MACHINE<li>HKEY_CLASSES_ROOT<li>HKEY_CURRENT_CONFIG<li>HKEY_USERS<li>HKEY_CURRENT_USER_LOCAL_SETTINGS<li>HKEY_PERFORMANCE_DATA<li>HKEY_PERFORMANCE_NLSTEXT<li>HKEY_PERFORMANCE_TEXT<li>HKEY_A<li>HKEY_CURRENT_USER |
@@ -288,7 +288,7 @@ Starke Bezeichner einer Registrierungsschlüsselentität:
 
 *Entitätsname: RegistryValue*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | ‘registry-value’ |
 | Schlüssel | Entität (RegistryKey) | Die Registrierungsschlüsselentität. |
@@ -307,7 +307,7 @@ Schwache Bezeichner einer Registrierungswertentität:
 
 *Entitätsname: SecurityGroup*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'security-group' |
 | DistinguishedName | Zeichenfolge | Der Distinguished Name (DN) der Gruppe. |
@@ -322,7 +322,7 @@ Starke Bezeichner einer Sicherheitsgruppenentität:
 
 ## <a name="url"></a>URL
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'url' |
 | url | Uri | Eine vollständige URL, auf die die Entität verweist. |
@@ -338,7 +338,7 @@ Schwache Bezeichner einer URL-Entität:
 
 *Entitätsname: IoTDevice*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'iotdevice' |
 | IoTHub | Entität (AzureResource) | Die AzureResource-Entität, die den IoT Hub darstellt, zu dem das Gerät gehört. |
@@ -365,7 +365,7 @@ Schwache Bezeichner einer IoT-Geräteentität:
 
 ## <a name="mailbox"></a>Mailbox
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'mailbox' |
 | MailboxPrimaryAddress | Zeichenfolge | Die primäre Adresse des Postfachs. |
@@ -383,9 +383,9 @@ Starke Bezeichner einer Postfachentität:
 *Entitätsname: MailCluster*
 
 > [!NOTE]
-> **MDO** = **Microsoft Defender für Office 365** wurde früher als Office 365 Advanced Threat Protection (Office 365 ATP) bezeichnet.
+> **Microsoft Defender für Office 365** wurde früher als Office 365 Advanced Threat Protection (O365 ATP) bezeichnet.
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'mail-cluster' |
 | NetworkMessageIds | IList&lt;String&gt; | Die E-Mail-Nachrichten-IDs, die Teil des Nachrichtenclusters sind. |
@@ -399,10 +399,10 @@ Starke Bezeichner einer Postfachentität:
 | IsVolumeAnomaly | Bool? | Bestimmt, ob es sich um einen Volumenanomalie-Nachrichtencluster handelt. |
 | `Source` | String | Die Quelle des Nachrichtenclusters (Standardwert ist „O365 ATP“). |
 | ClusterSourceIdentifier | Zeichenfolge | Die Netzwerknachrichten-ID der E-Mail, die die Quelle dieses Nachrichtenclusters ist. |
-| ClusterSourceType | Zeichenfolge | Der Quelltyp des Nachrichtenclusters. Dies wird der MailClusterSourceType-Einstellung aus MDO zugeordnet (siehe Hinweis oben). |
-| ClusterQueryStartTime | DateTime? | Startzeit des Clusters: wird als Startzeit für die Abfrage der Clusteranzahl verwendet. In der Regel Datumsangaben zur Endzeit minus DaysToLookBack-Einstellung aus MDO (siehe Hinweis oben). |
+| ClusterSourceType | Zeichenfolge | Der Quelltyp des Nachrichtenclusters. Dieser wird der MailClusterSourceType-Einstellung von Microsoft Defender für Office 365 zugeordnet (siehe Hinweis oben). |
+| ClusterQueryStartTime | DateTime? | Startzeit des Clusters: wird als Startzeit für die Abfrage der Clusteranzahl verwendet. Datiert in der Regel auf der Endzeit minus der DaysToLookBack-Einstellung aus Microsoft Defender für Office 365 (siehe Hinweis oben). |
 | ClusterQueryEndTime | DateTime? | Endzeit des Clusters: wird als Endzeit für die Abfrage der Clusteranzahl verwendet. Normalerweise die Empfangszeit der Daten der E-Mail. |
-| ClusterGroup | Zeichenfolge | Entspricht dem Kusto-Abfrageschlüssel, der für MDO verwendet wird (siehe Hinweis oben). |
+| ClusterGroup | Zeichenfolge | Entspricht dem Kusto-Abfrageschlüssel, der von Microsoft Defender für Office 365 verwendet wird (siehe Hinweis oben). |
 |
 
 Starke Bezeichner einer Nachrichtencluster Entität:
@@ -412,7 +412,7 @@ Starke Bezeichner einer Nachrichtencluster Entität:
 
 *Entitätsname: MailMessage*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'mail-message' |
 | Dateien | IList&lt;File&gt; | Die Dateientitäten der Anlagen dieser E-Mail-Nachricht. |
@@ -446,7 +446,7 @@ Starke Bezeichner einer E-Mail-Nachrichtenentität:
 
 *Entitätsname: SubmissionMail*
 
-| Feld | type | BESCHREIBUNG |
+| Feld | type | Beschreibung |
 | ----- | ---- | ----------- |
 | type | String | 'SubmissionMail' |
 | SubmissionId | Guid? | Die Übermittlungs-ID. |

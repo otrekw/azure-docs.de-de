@@ -3,15 +3,15 @@ title: 'Virtuellen Computer bei Verbindung starten: Azure'
 description: Vorgehensweise beim Konfigurieren des Features zum Starten eines virtuellen Computers bei Verbindung.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 04/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d9ce9811cd660c9a9b1fcb6f9e24cadd65d3c2bc
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 05500ded7512b54446d153e37233e4889b3107ff
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445600"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949186"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>VM bei Verbindung starten (Vorschau)
 
@@ -19,7 +19,7 @@ ms.locfileid: "106445600"
 > Das Feature „VM bei Verbindung starten“ befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Mit dem Feature „VM bei Verbindung starten“ (Vorschau) können Sie Kosten sparen, indem Sie die Zuordnung Ihrer virtuellen Computer aufheben, wenn Sie sie nicht verwenden. Wenn Sie den virtuellen Computer erneut verwenden müssen, müssen Sie ihn lediglich wieder einschalten.
+Mit dem Feature „VM bei Verbindung starten (Vorschau)“ können Sie Kosten sparen, indem Sie Endbenutzern erlauben, ihre virtuellen Computer (VMs) nur dann zu aktivieren, wenn sie sie benötigen. Nicht benötigte VMs können Sie dann deaktivieren.
 
 >[!NOTE]
 >Windows Virtual Desktop (klassisch) unterstützt dieses Feature nicht.
@@ -32,11 +32,12 @@ Die folgenden Remotedesktopclients unterstützen das Feature „VM bei Verbindun
 
 - [Der Webclient](connect-web.md)
 - [Der Windows-Client (Version 1.2748 oder höher)](connect-windows-7-10.md)
+- [Der Android-Client (Version 10.0.10 oder höher)](connect-android.md)
+- [Der macOS-Client (Version 10.6.4 oder höher)](connect-macos.md)
 
 Sie können im [Tech Community-Forum](https://aka.ms/wvdtc) nach Ankündigungen zu Updates und zur Clientunterstützung suchen.
 
->[!IMPORTANT]
->Das Feature „VM bei Verbindung starten“ unterstützt zurzeit nur PowerShell und REST-API, nicht das Azure-Portal. Weitere Informationen finden Sie unter [Erstellen oder Aktualisieren eines Hostpools](/rest/api/desktopvirtualization/hostpools/createorupdate).
+Die Azure Government-Cloud unterstützt zurzeit „VM bei Verbindung starten“ nicht.
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>Erstellen einer benutzerdefinierten Rolle für „VM bei Verbindung starten“
 
@@ -116,6 +117,24 @@ Nachdem Sie Ihrem Abonnement die Rolle zugewiesen haben, können Sie das Feature
 >[!IMPORTANT]
 > Dieses Feature kann nur in vorhandenen Hostpools konfiguriert werden. Wenn Sie einen neuen Hostpool erstellen, ist dieses Feature nicht verfügbar.
 
+### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+
+So verwenden Sie das Azure-Portal zum Konfigurieren von „VM bei Verbindung starten“:
+
+1. Öffnen Sie Ihren Browser, und wechseln Sie zum [Azure-Portal](https://portal.azure.com).
+
+2. Wechseln Sie im Azure-Portal zu **Windows Virtual Desktop**.
+
+3. Wählen Sie **Hostpools** aus. Suchen Sie dann den Hostpool mit den persönlichen Desktops, denen Sie die Rolle zugewiesen haben.
+
+   >[!NOTE]
+   > Der Hostpool, in dem Sie dieses Feature konfigurieren, muss persönliche Desktops mit direkten Rollenzuweisungen enthalten. Wenn die Desktops im Hostpool nicht richtig konfiguriert werden, funktioniert der Konfigurationsprozess nicht.
+
+4. Wählen Sie im Hostpool **Eigenschaften** aus. Wählen Sie unter **VM bei Verbindung starten** die Option **Ja** und dann **Speichern** aus, damit die Einstellung sofort angewendet wird.
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot des Fensters „Eigenschaften“. Die Option „VM bei Verbindung starten“ ist rot hervorgehoben.](media/properties-start-vm-on-connect.png)
+
 ### <a name="use-powershell"></a>Verwenden von PowerShell
 
 Um diese Einstellung mit PowerShell zu konfigurieren, müssen Sie sicherstellen, dass Sie über die Namen der Ressourcengruppe und der Hostpools verfügen, die Sie konfigurieren möchten. Außerdem müssen Sie das [Azure PowerShell-Modul (Version 2.1.0 oder höher)](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.1.0) installieren.
@@ -136,7 +155,7 @@ So konfigurieren Sie „VM bei Verbindung starten“ mit PowerShell:
     Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -StartVMOnConnect:$false
     ```
 
-## <a name="user-experience"></a>Benutzererfahrung
+## <a name="user-experience"></a>Benutzerfreundlichkeit
 
 In normalen Sitzungen nimmt die Zeit zu, die ein Benutzer zum Herstellen der Verbindung mit einer VM benötigt, deren Zuordnung aufgehoben wurde, da das erneute Einschalten der VM ähnlich wie das Einschalten eines physischen Computers eine Weile dauert. Der Remotedesktopclient hat einen Indikator, der dem Benutzer mitteilt, dass der PC eingeschaltet wird, während er die Verbindung herstellt.
 

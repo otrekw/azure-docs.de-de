@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: a8c007d7f4419ddbe1555b50ceb6fb92ea0a6f98
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e5c855675990d6fd3ec97b839539acd843016a7d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783897"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864701"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -274,6 +274,7 @@ Sie können den anonymen Pullzugriff jederzeit deaktivieren, indem Sie `--anonym
 > * Führen Sie vor einem anonymen Pullvorgang den Befehl `docker logout` aus, um alle ggf. vorhandenen Docker-Anmeldeinformationen zu löschen.
 > * Für nicht authentifizierte Clients sind nur Datenebenenvorgänge verfügbar.
 > * Die Registrierung kann eine hohe Quote an nicht authentifizierten Anforderungen drosseln.
+> * Derzeit wird anonymer Pullzugriff in [georeplizierten](container-registry-geo-replication.md) Registrierungsregionen nicht unterstützt.
 
 > [!WARNING]
 > Der anonyme Pullzugriff gilt zurzeit für alle Repositorys in der Registrierung. Wenn Sie den Repositoryzugriff mithilfe von [Token mit Repositorygültigkeitsbereich](container-registry-repository-scoped-permissions.md) verwalten, beachten Sie, dass alle Benutzer aus diesen Repositorys in einer Registrierung, die für anonymes Pullen aktiviert ist, pullen können. Es wird empfohlen, Token zu löschen, wenn der anonyme Pullzugriff aktiviert ist.

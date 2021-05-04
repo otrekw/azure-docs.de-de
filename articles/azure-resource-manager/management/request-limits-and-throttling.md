@@ -4,12 +4,12 @@ description: Beschreibt, wie eine Begrenzung von Azure Resource Manager-Anforder
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c1fd707bf9f13ed88bf9acb5d2ad70d56c453a90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 677cd0fc047cbdbbe91a308600201087c36e050a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024624"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129997"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
 
@@ -55,6 +55,10 @@ Der Ressourcenanbieter Microsoft.Network wendet die folgenden Drosselungsgrenzwe
 | --------- | ----- |
 | Schreib-/Löschvorgänge (PUT) | 1000 pro 5 Minuten |
 | Lesevorgänge (GET) | 10000 pro 5 Minuten |
+
+> [!NOTE]
+> Für **Azure Privates DNS** gilt ein Drosselungslimit von 500 Lesevorgängen (GET) pro 5 Minuten.
+>
 
 ### <a name="compute-throttling"></a>Computedrosselung
 

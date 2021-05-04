@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 55876d85e72555f51ce47b9bd77a961a194f4e4a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b51f52e24ca843abd94a8511e86b3193a797edd5
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307458"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512783"
 ---
 ## <a name="additional-prerequisites-for-java"></a>Zusätzliche Voraussetzungen für Java
 Für Java benötigen Sie außerdem:
@@ -102,7 +102,7 @@ Als weiteres Beispiel für die Verwendung verwalteter Identitäten fügen wir di
 ```
 ## <a name="write-the-main-method"></a>Schreiben der Main-Methode
 
-Ihr `App.java` sollte bereits über eine Main-Methode verfügen. Fügen Sie nun Code hinzu, der unseren zuvor erstellten Code aufruft, um die Verwendung verwalteter Identitäten zu veranschaulichen:
+Ihre `App.java` sollte bereits über eine Main-Methode verfügen. Fügen Sie nun Code hinzu, der unseren zuvor erstellten Code aufruft, um die Verwendung verwalteter Identitäten zu veranschaulichen:
 ```java
     public static void main(String[] args) {
           App instance = new App();

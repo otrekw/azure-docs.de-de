@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: da084bfab39eb0e12d90f25f3658dc4507ca63dc
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366554"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906654"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Einrichten des MSIX-Features zum Anfügen von Apps mit dem Azure-Portal
 
@@ -19,19 +19,16 @@ In diesem Artikel wird erläutert, wie Sie das MSIX-Feature zum Anfügen von App
 
 ## <a name="requirements"></a>Anforderungen
 
->[!IMPORTANT]
->Bevor Sie beginnen, sollten Sie [dieses Formular](https://aka.ms/enablemsixappattach) ausfüllen und übermitteln, um das MSIX-Feature zum Anfügen von Apps in Ihrem Abonnement zu aktivieren. Wenn Ihre Anforderung noch nicht genehmigt wurde, funktioniert das MSIX-Feature zum Anfügen von Apps nicht. Die Genehmigung von Anforderungen kann an Werktagen bis zu 24 Stunden dauern. Sie erhalten eine E-Mail, wenn Ihre Anforderung akzeptiert und abgeschlossen wurde.
-
 Folgendes benötigen Sie, um das MSIX-Feature zum Anfügen von Apps zu konfigurieren:
 
 - Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Windows Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Windows Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
 - Ein Windows Virtual Desktop-Hostpool mit mindestens einem aktiven Sitzungshost.
-- Dieser Hostpool muss sich in der Überprüfungsumgebung befinden. 
 - Das MSIX-Pakettool.
 - Eine MSIX-gepackte Anwendung, die in ein MSIX-Image erweitert wurde, das in eine Dateifreigabe hochgeladen wird.
 - Eine Dateifreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.
 - Die Dateifreigabe, in die Sie das MSIX-Image hochgeladen haben, muss auch für alle virtuellen Computer (VMs) im Hostpool zugänglich sein. Benutzer benötigen Leseberechtigungen, um auf das Image zugreifen zu können.
 - Wenn das Zertifikat nicht öffentlich vertrauenswürdig ist, befolgen Sie die Anweisungen unter [Installieren von Zertifikaten](app-attach.md#install-certificates).
+- Die Azure Government Cloud unterstützt derzeit keine MSIX-App-Anfügung.
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Deaktivieren von automatischen Updates für Anwendungen mit dem MSIX-Feature zum Anfügen von Apps
 
@@ -51,9 +48,6 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
 
 ```
-
->[!NOTE]
->Es wird empfohlen, den virtuellen Computer nach der Aktivierung von Hyper-V neu zu starten.
 
 ## <a name="configure-the-msix-app-attach-management-interface"></a>Konfigurieren der Verwaltungsschnittstelle für das MSIX-Feature zum Anfügen von Apps
 

@@ -5,24 +5,26 @@ description: Hier erfahren Sie, wie Sie Apache Spark-Pools für Data Wrangling 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
-ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 3d8c8f8df162d31c4f646866d7c82e9af237eaa8
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.custom: devx-track-python, data4ml, synapse-azureml
+ms.openlocfilehash: ec0ceb496d2e6d1b15819aa6b2353e54a5303354
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553803"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889770"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Anfügen von Apache Spark-Pools (unterstützt von Azure Synapse Analytics) für Data Wrangling (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie einen von [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) unterstützten Apache Spark-Pool für Data Wrangling im großen Stil anfügen und starten. 
+In diesem Artikel erfahren Sie, wie Sie einen Apache Spark-Pool, der von [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) unterstützt wird, Ihrem Azure Machine Learning-Arbeitsbereich anfügen, damit Sie ihn starten und Data Wrangling in großem Umfang durchführen können. 
 
-Dieser Artikel enthält Anleitungen zum interaktiven Ausführen von Data Wrangling-Aufgaben innerhalb einer dedizierten Synapse-Sitzung in einer Jupyter Notebook-Instanz. Wenn Sie die Verwendung von Azure Machine Learning-Pipelines bevorzugen, finden Sie weitere Informationen unter [Verwenden von Apache Spark (unterstützt von Azure Synapse Analytics) in Ihrer Machine Learning-Pipeline (Vorschau)](how-to-use-synapsesparkstep.md).
+Dieser Artikel enthält Anleitungen zum interaktiven Ausführen von Data Wrangling-Aufgaben innerhalb einer dedizierten Synapse-Sitzung in einer Jupyter Notebook-Instanz mit dem [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/). Wenn Sie die Verwendung von Azure Machine Learning-Pipelines bevorzugen, finden Sie weitere Informationen unter [Verwenden von Apache Spark (unterstützt von Azure Synapse Analytics) in Ihrer Machine Learning-Pipeline (Vorschau)](how-to-use-synapsesparkstep.md).
+
+Eine Anleitung zur Verwendung von Azure Synapse Analytics mit einem Synapse-Arbeitsbereich finden Sie in der Reihe [Erste Schritte mit Azure Synapse Analytics](../synapse-analytics/get-started.md).
 
 >[!IMPORTANT]
 > Die Integration von Azure Machine Learning und Azure Synapse Analytics befindet sich in der Vorschauphase. Die in diesem Artikel vorgestellten Funktionen verwenden das Paket `azureml-synapse`, das [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktionen enthält, die sich jederzeit ändern können.
@@ -32,6 +34,8 @@ Dieser Artikel enthält Anleitungen zum interaktiven Ausführen von Data Wrangl
 Die Integration von Azure Synapse Analytics in Azure Machine Learning (Vorschau) ermöglicht Ihnen das Anfügen eines von Azure Synapse unterstützten Apache Spark-Pools für die interaktive Datenuntersuchung und -aufbereitung. Dank dieser Integration können Sie eine dedizierte Computeressource für das Data Wrangling im großen Stil innerhalb des gleichen Python-Notebooks nutzen, das Sie auch zum Trainieren Ihrer Machine Learning-Modelle verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+* Das [Azure Machine Learning Python SDK muss installiert sein](/python/api/overview/azure/ml/install). 
 
 * [Erstellen Sie einen Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md?tabs=python).
 
@@ -57,11 +61,15 @@ Zum Abrufen und Verwenden eines vorhandenen verknüpften Diensts sind Berechtigu
 Zeigen Sie alle verknüpften Dienste an, die Ihrem Machine Learning-Arbeitsbereich zugeordnet sind. 
 
 ```python
+from azureml.core import LinkedService
+
 LinkedService.list(ws)
 ```
 
 In diesem Beispiel wird ein vorhandener verknüpfter Dienst (`synapselink1`) aus dem Arbeitsbereich `ws` mit der Methode [`get()`](/python/api/azureml-core/azureml.core.linkedservice#get-workspace--name-) abgerufen.
 ```python
+from azureml.core import LinkedService
+
 linked_service = LinkedService.get(ws, 'synapselink1')
 ```
  
@@ -72,7 +80,7 @@ Wenn Sie den verknüpften Dienst abgerufen haben, fügen Sie einen Synapse Apac
 Sie können Apache Spark-Pools über folgende Komponenten anfügen:
 * Azure Machine Learning Studio
 * [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
-* Python SDK 
+* Python-SDK für Azure Machine Learning 
 
 ### <a name="attach-a-pool-via-the-studio"></a>Anfügen eines Pools über Studio
 Folgen Sie diesen Schritten: 
@@ -92,13 +100,13 @@ Folgen Sie diesen Schritten:
 Sie können einen Apache Spark-Pool auch mithilfe des **Python SDK** anfügen. 
 
 Mit dem unten genannten Code werden die folgenden Schritte ausgeführt: 
-1. Konfigurieren von SynapseCompute mit
+1. Konfiguration von [`SynapseCompute`](/python/api/azureml-core/azureml.core.compute.synapsecompute) mit
 
-   1. dem verknüpften Dienst `linked_service`, den Sie im vorherigen Schritt erstellt oder abgerufen haben 
+   1. dem [`LinkedService`](/python/api/azureml-core/azureml.core.linkedservice), `linked_service`, den Sie im vorherigen Schritt erstellt oder abgerufen haben. 
    1. dem Typ des Computeziels, das Sie anfügen möchten: `SynapseSpark`
    1. dem Namen des Apache Spark-Pools. Dieser muss einem vorhandenen Apache Spark-Pool entsprechen, der sich in Ihrem Azure Synapse Analytics-Arbeitsbereich befindet.
    
-1. Erstellen eines Machine Learning-Elements vom Typ „ComputeTarget“ durch Übergabe 
+1. Erstellen eines Machine Learning-[`ComputeTarget`](/python/api/azureml-core/azureml.core.computetarget) durch Übergabe 
    1. des Machine Learning-Arbeitsbereichs, den Sie verwenden möchten: `ws`
    1. des Namens, mit dem Sie im Azure Machine Learning-Arbeitsbereich auf die Computeressource verweisen möchten 
    1. der Anfügekonfiguration (attach_configuration), die Sie beim Konfigurieren der Synapse-Computeressource angegeben haben
@@ -109,11 +117,11 @@ from azureml.core.compute import SynapseCompute, ComputeTarget
 
 attach_config = SynapseCompute.attach_configuration(linked_service, #Linked synapse workspace alias
                                                     type='SynapseSpark', #Type of assets to attach
-                                                    pool_name="<Synapse Spark pool name>") #Name of Synapse spark pool 
+                                                    pool_name=synapse_spark_pool_name) #Name of Synapse spark pool 
 
 synapse_compute = ComputeTarget.attach(workspace= ws,                
-                                       name="<Synapse Spark pool alias in Azure ML>", 
-                                       attach_configuration=attach_config
+                                       name= synapse_compute_name, 
+                                       attach_configuration= attach_config
                                       )
 
 synapse_compute.wait_for_completion()
@@ -125,7 +133,7 @@ synapse_compute.wait_for_completion()
 ws.compute_targets['Synapse Spark pool alias']
 ```
 
-## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>Starten des Synapse Spark-Pools für Datenaufbereitungsaufgaben
+## <a name="launch-synapse-spark-pool-for-data-wrangling-tasks"></a>Starten des Synapse Spark-Pools für Data Wrangling-Aufgaben
 
 Geben Sie für die Datenaufbereitung mit dem Apache Spark-Pool zunächst den Namen des Apache Spark-Pools an:
 
@@ -238,8 +246,8 @@ Sie können auch ein vorhandenes registriertes Dataset in Ihrem Arbeitsbereich a
 Im folgenden Beispiel wird der Arbeitsbereich authentifiziert sowie das registrierte Tabellendataset (TabularDataset) `blob_dset` abgerufen, das auf Dateien im Blobspeicher verweist, und in einen Spark-Datenrahmen konvertiert. Beim Konvertieren Ihrer Datasets in einen Spark-Datenrahmen können Sie die `pyspark`-Datenuntersuchung und -Vorbereitungsbibliotheken nutzen.  
 
 ``` python
-
 %%synapse
+
 from azureml.core import Workspace, Dataset
 
 subscription_id = "<enter your subscription ID>"
@@ -262,6 +270,7 @@ Der folgende Code erweitert das HDFS-Beispiel im vorherigen Abschnitt, filtert d
 
 ```python
 %%synapse
+
 from pyspark.sql.functions import col, desc
 
 df.filter(col('Survived') == 1).groupBy('Age').count().orderBy(desc('count')).show(10)
@@ -309,10 +318,46 @@ train_ds = Dataset.File.from_files(path=datastore_paths, validate=True)
 input1 = train_ds.as_mount()
 
 ```
+## <a name="use-a-scriptrunconfig-to-submit-an-experiment-run-to-a-synapse-spark-pool"></a>Verwenden eines `ScriptRunConfig` zum Übermitteln einer Experimentausführung an einen Synapse Spark-Pool
+
+Sie können auch [den Synapse Spark-Cluster nutzen, den Sie zuvor als Computeziel angefügt haben](#attach-a-pool-with-the-python-sdk), um eine Experimentausführung mit einem [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig)-Objekt zu übermitteln.
+
+```Python
+from azureml.core import RunConfiguration
+from azureml.core import ScriptRunConfig 
+from azureml.core import Experiment
+
+run_config = RunConfiguration(framework="pyspark")
+run_config.target = synapse_compute_name
+
+run_config.spark.configuration["spark.driver.memory"] = "1g" 
+run_config.spark.configuration["spark.driver.cores"] = 2 
+run_config.spark.configuration["spark.executor.memory"] = "1g" 
+run_config.spark.configuration["spark.executor.cores"] = 1 
+run_config.spark.configuration["spark.executor.instances"] = 1 
+
+run_config.environment.python.conda_dependencies = conda_dep
+
+script_run_config = ScriptRunConfig(source_directory = './code',
+                                    script= 'dataprep.py',
+                                    arguments = ["--tabular_input", input1, 
+                                                 "--file_input", input2,
+                                                 "--output_dir", output],
+                                    run_config = run_config)
+```
+
+Nachdem Ihr `ScriptRunConfig`-Objekt eingerichtet wurde, können Sie die Ausführung übermitteln.
+
+```python
+from azureml.core import Experiment 
+
+exp = Experiment(workspace=ws, name="synapse-spark") 
+run = exp.submit(config=script_run_config) 
+run
+```
+Weitere Details, z. B. das in diesem Beispiel verwendete `dataprep.py`-Skript, finden Sie im [Beispielnotebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb).
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
-
-Nachdem Sie Ihre Daten vorbereitet haben, erfahren Sie, wie Sie [ein Synapse-Spark-Cluster als Computeziel für das Modelltraining nutzen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb).
 
 In diesem [Beispielnotebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) finden Sie weitere Konzepte und Demonstrationen der Azure Synapse Analytics- und Azure Machine Learning-Integrationsfunktionen.
 

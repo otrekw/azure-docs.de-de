@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 70b56e70ec0e6f511142c48cc89720c054807a5c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 180a5edd00b6085ffd91568471ca763f5e4e9711
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105042797"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814854"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen
 
@@ -75,7 +75,7 @@ Auf der Registerkarte **Regellogik festlegen** können Sie im Feld **Regelabfrag
 
     > [!NOTE]
     > #### <a name="rule-query-best-practices"></a>Bewährte Methoden für Abfragen
-    > - Die Abfrage sollte zwischen 1 und 10.000 Zeichen lang sein und darf weder `search *` noch `union *` enthalten.
+    > - Die Abfrage sollte zwischen 1 und 10.000 Zeichen lang sein und darf weder `search *` noch `union *` enthalten. Sie können [benutzerdefinierte Funktionen](/azure/data-explorer/kusto/query/functions/user-defined-functions) verwenden, um die Einschränkung der Abfragelänge außer Kraft zu setzen.
     >
     > - Das Erstellen von Azure Data Explorer-Abfragen mit ADX-Funktionen innerhalb des Log Analytics-Abfragefensters **wird nicht unterstützt**.
     >

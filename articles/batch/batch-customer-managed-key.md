@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: peshultz
-ms.openlocfilehash: d3f10436b95aaeb5eb35a873c2a3862c1492bd47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36883489e1a9a50406ad1b1bde78d2f25ee227b7
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385063"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989322"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Batch-Konto mit Azure Key Vault und Verwaltete Identität
 
@@ -196,7 +196,7 @@ az batch account set \
 - **Wie kann ich meine Schlüssel rotieren?** Kundenseitig verwaltete Schlüssel werden nicht automatisch rotiert. Zum Rotieren des Schlüssels müssen Sie den Schlüsselbezeichner aktualisieren, dem das Konto zugeordnet ist.
 - **Wie lange dauert es nach dem Wiederherstellen des Zugriffs, bis das Batch-Konto wieder funktioniert?** Nach dem Wiederherstellen des Zugriffs kann es bis zu 10 Minuten dauern, bis das Konto wieder zugänglich ist.
 - **Was geschieht mit meinen Ressourcen, während das Batch-Konto nicht verfügbar ist?** Alle Pools, die ausgeführt werden, wenn der Batch-Zugriff auf kundenseitig verwaltete Schlüssel verloren geht, werden weiterhin ausgeführt. Die Knoten werden jedoch in den Zustand „Nicht verfügbar“ versetzt, und die Ausführung von Tasks wird beendet (und sie werden erneut in die Warteschlange gestellt). Sobald der Zugriff wieder hergestellt wurde, werden die Knoten wieder verfügbar, und die Tasks werden neu gestartet.
-- **Gilt dieser Verschlüsselungsmechanismus für VM-Datenträger in einem Batch-Pool?** Nein. Bei mit der Clouddienstkonfiguration erstellten Pools wird keine Verschlüsselung auf das Betriebssystem und den temporären Datenträger angewendet. Bei mit der VM-Konfiguration erstellten Pools werden das Betriebssystem und die angegebenen Datenträger standardmäßig mit einem von der Microsoft-Plattform verwalteten Schlüssel verschlüsselt. Derzeit können Sie keinen eigenen Schlüssel für diese Datenträger angeben. Um den temporären Datenträger von VMs für einen Batch-Pool mit einem von der Microsoft-Plattform verwalteten Schlüssel zu verschlüsseln, müssen Sie die Eigenschaft [diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) im Pool der [Konfiguration der virtuellen Maschine](/rest/api/batchservice/pool/add#virtualmachineconfiguration) aktivieren. Für höchst vertrauliche Daten empfehlen wir, die Verschlüsselung temporärer Datenträger zu aktivieren und das Speichern von vertraulichen Daten auf Betriebssystemdatenträgern und Datenträgern für Daten zu vermeiden. Weitere Informationen finden Sie unter [Erstellen eines Pools mit aktivierter Datenträgerverschlüsselung](./disk-encryption.md).
+- **Gilt dieser Verschlüsselungsmechanismus für VM-Datenträger in einem Batch-Pool?** Nein. Bei mit der Cloud Services-Konfiguration erstellten Pools (als [veraltet](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/) markiert) wird keine Verschlüsselung auf das Betriebssystem und den temporären Datenträger angewendet. Bei mit der VM-Konfiguration erstellten Pools werden das Betriebssystem und die angegebenen Datenträger standardmäßig mit einem von der Microsoft-Plattform verwalteten Schlüssel verschlüsselt. Derzeit können Sie keinen eigenen Schlüssel für diese Datenträger angeben. Um den temporären Datenträger von VMs für einen Batch-Pool mit einem von der Microsoft-Plattform verwalteten Schlüssel zu verschlüsseln, müssen Sie die Eigenschaft [diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) im Pool der [Konfiguration der virtuellen Maschine](/rest/api/batchservice/pool/add#virtualmachineconfiguration) aktivieren. Für höchst vertrauliche Daten empfehlen wir, die Verschlüsselung temporärer Datenträger zu aktivieren und das Speichern von vertraulichen Daten auf Betriebssystemdatenträgern und Datenträgern für Daten zu vermeiden. Weitere Informationen finden Sie unter [Erstellen eines Pools mit aktivierter Datenträgerverschlüsselung](./disk-encryption.md).
 - **Ist die vom System zugewiesene verwaltete Identität für das Batch-Konto auf den Computeknoten verfügbar?** Nein. Die systemseitig zugewiesene verwaltete Identität wird derzeit nur für den Zugriff auf Azure Key Vault für den kundenseitig verwalteten Schlüssel verwendet. Um eine benutzerseitig zugeordnete verwaltete Identität auf Computeknoten zu verwenden, lesen Sie [Konfigurieren verwalteter Identitäten in Azure Batch-Pools](managed-identity-pools.md).
 
 ## <a name="next-steps"></a>Nächste Schritte

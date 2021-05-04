@@ -5,20 +5,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 664e985e0da1a9eeb43c99775b1685bb7645ff20
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 80c3409a69b8605d0d8ba9902c2be68d88e825c3
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492646"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905970"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>Schützen von Kubernetes-Clustern mit Azure Arc-Unterstützung, die in lokalen und Multicloud-Umgebungen ausgeführt werden
 
-Um Ihre lokalen Cluster mit denselben Funktionen zur Bedrohungserkennung zu schützen, die zurzeit für Azure Kubernetes Service-Cluster angeboten werden, aktivieren Sie Azure Arc in den Clustern, und stellen Sie die **Azure Defender für Kubernetes-Clustererweiterung** bereit.
+Die **Azure Defender für Kubernetes-Clustererweiterung** kann Ihre lokalen Cluster mit denselben Funktionen zur Bedrohungserkennung zu schützen, die für Azure Kubernetes Service-Cluster angeboten werden. Aktivieren Sie [Kubernetes mit Azure Arc-Aktivierung](../azure-arc/kubernetes/overview.md) auf Ihren Clustern, und stellen Sie die Erweiterung bereit, wie auf dieser Seite beschrieben wird. 
 
-Sie können die Erweiterung auch zum Schützen von Kubernetes-Clustern verwenden, die auf Computern in anderen Cloudanbietern bereitgestellt werden, allerdings nicht in Managed Kubernetes-Diensten.
+Die Erweiterung kann auch Kubernetes-Cluster bei anderen Cloudanbietern schützen, allerdings nicht in deren Managed Kubernetes-Diensten.
 
 > [!TIP]
 > Zur Unterstützung beim Installationsvorgang haben wir einige Beispieldateien in den [Installationsbeispielen auf GitHub](https://aka.ms/kubernetes-extension-installation-examples) eingestellt.
@@ -27,7 +27,7 @@ Sie können die Erweiterung auch zum Schützen von Kubernetes-Clustern verwenden
 
 | Aspekt | Details |
 |--------|---------|
-| Releasestatus | **Vorschau** [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
+| Releasestatus | **Vorschau**<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 | Erforderliche Rollen und Berechtigungen | Der [Sicherheitsadministrator](../role-based-access-control/built-in-roles.md#security-admin) kann Warnungen verwerfen.<br>Der [Sicherheitsleseberechtigte](../role-based-access-control/built-in-roles.md#security-reader) kann Ergebnisse anzeigen. |
 | Preise | [Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md) erforderlich |
 | Unterstützte Kubernetes-Distributionen | [Azure Kubernetes Service in Azure Stack HCI](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS-Engine](https://github.com/Azure/aks-engine)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (Version 4.6 oder höher) |
@@ -56,21 +56,21 @@ Sie können die Azure Defender-Erweiterung mithilfe einer Reihe von Methoden ber
 
 ### <a name="azure-portal"></a>[**Azure-Portal**](#tab/k8s-deploy-asc)
 
-### <a name="use-the-quick-fix-option-from-the-security-center-recommendation"></a>Verwenden der Option „Schnelle Problembehebung“ in der Security Center-Empfehlung
+### <a name="use-the-fix-button-from-the-security-center-recommendation"></a>Verwenden Sie die Schaltfläche „Korrigieren“ aus der Security Center Empfehlung.
 
 Eine dedizierte Empfehlung in Azure Security Center bietet Folgendes:
 
 - **Sichtbarkeit** der Cluster, auf denen die Defender für Kubernetes-Erweiterung bereitgestellt wird
-- **Eine Option zur schnellen Problembehebung** für die Bereitstellung in Clustern ohne die Erweiterung
+- Schaltfläche **Korrigieren** zu deren Bereitstellung für Cluster ohne die Erweiterung
 
 1. Öffnen Sie auf der Seite mit Azure Security Center-Empfehlungen das Sicherheitssteuerungselement **Azure Defender aktivieren**.
 
 1. Verwenden Sie den Filter, um die Empfehlung namens **Für Azure Arc-fähige Kubernetes-Cluster muss die Azure Defender-Erweiterung installiert sein** zu finden.
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center-Empfehlung zur Bereitstellung der Azure Defender-Erweiterung für Kubernetes-Cluster mit Azure Arc-Unterstützung" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center-Empfehlung zur Bereitstellung der Azure Defender-Erweiterung für Azure Arc-fähige Kubernetes-Cluster" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
 
     > [!TIP]
-    > Beachten Sie in der Aktionsspalte das Symbol für die schnelle Problembehebung.
+    > Beachten Sie in der Aktionsspalte das Symbol **Korrigieren**.
 
 1. Wählen Sie die Erweiterung aus, um die Details der fehlerfreien und fehlerhaften Ressourcen anzuzeigen: Cluster mit und ohne Erweiterung.
 
@@ -78,14 +78,14 @@ Eine dedizierte Empfehlung in Azure Security Center bietet Folgendes:
 
 1. Wählen Sie den relevanten Log Analytics-Arbeitsbereich aus, und klicken Sie auf **x Ressource korrigieren**.
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/security-center-deploy-extension.gif" alt-text="Bereitstellen der Azure Defender-Erweiterung für Azure Arc mit der Security Center-Option zur schnellen Problembehebung":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/security-center-deploy-extension.gif" alt-text="Bereitstellen der Azure Defender-Erweiterung für Azure Arc mit der Security Center-Option zum Korrigieren":::
 
 
 ### <a name="azure-cli"></a>[**Azure CLI**](#tab/k8s-deploy-cli)
 
 ### <a name="use-azure-cli-to-deploy-the-azure-defender-extension"></a>Verwenden der Azure CLI zum Bereitstellen der Azure Defender-Erweiterung
 
-1. Melden Sie sich bei Azure an:
+1. Anmelden bei Azure:
 
     ```azurecli
     az login
@@ -103,7 +103,7 @@ Eine dedizierte Empfehlung in Azure Security Center bietet Folgendes:
 
     Im Folgenden werden alle unterstützten Konfigurationseinstellungen für den Azure Defender-Erweiterungstyp beschrieben:
 
-    | Eigenschaft | BESCHREIBUNG |
+    | Eigenschaft | Beschreibung |
     |----------|-------------|
     | logAnalyticsWorkspaceResourceID | **Optional:** Vollständige Ressourcen-ID Ihres eigenen Log Analytics-Arbeitsbereichs.<br>Wenn keine Angabe vorliegt, wird der Standardarbeitsbereich der Region verwendet.<br><br>Um die vollständige Ressourcen-ID zu erhalten, zeigen Sie die Liste der Arbeitsbereiche in Ihren Abonnements im JSON-Standardformat an, indem Sie den folgenden Befehl ausführen:<br>```az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json```<br><br>Die Ressourcen-ID des Log Analytics Arbeitsbereichs weist folgende Syntax auf:<br>/subscriptions/{Ihre-Abonnement-ID}/resourceGroups/{Ihre-Ressourcengruppe}/providers/Microsoft.OperationalInsights/workspaces/{Ihr-Arbeitsbereichsname}. <br>Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereiche](../azure-monitor/logs/data-platform-logs.md#log-analytics-workspaces). |
     | auditLogPath |**Optional:** Der vollständige Pfad zu den Überwachungsprotokolldateien.<br>Wenn nicht angegeben, wird der Standardpfad ``/var/log/kube-apiserver/audit.log`` verwendet.<br>Für die AKS-Engine lautet der Standardpfad ``/var/log/kubeaudit/audit.log``. |
@@ -141,7 +141,7 @@ Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, b
 
     Hierbei gilt:
 
-    | Name            | Geben Sie in   | Erforderlich | Typ   | BESCHREIBUNG                                  |
+    | Name            | Geben Sie in   | Erforderlich | type   | BESCHREIBUNG                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | Abonnement-ID | path | True     | Zeichenfolge | Abonnement-ID Ihrer Kubernetes-Ressource mit Azure Arc-Unterstützung |
     | Ressourcengruppe  | path | True     | Zeichenfolge | Name der Ressourcengruppe, in der Ihre Kubernetes-Ressource mit Azure Arc-Unterstützung enthalten ist |
@@ -168,7 +168,7 @@ Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, b
 
     Im Folgenden werden die Eigenschaften beschrieben:
 
-    | Eigenschaft | BESCHREIBUNG | 
+    | Eigenschaft | Beschreibung | 
     | -------- | ----------- |
     | logAnalytics.workspaceId | Arbeitsbereichs-ID der Log Analytics-Ressource |
     | logAnalytics.key         | Schlüssel der Log Analytics-Ressource | 
@@ -188,7 +188,7 @@ Um sicherzustellen, dass die Azure Defender-Erweiterung auf Ihrem Cluster instal
 
 1. Wählen Sie die Empfehlung namens **Für Azure Arc-fähige Kubernetes-Cluster muss die Azure Defender-Erweiterung installiert sein** aus.
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center-Empfehlung zur Bereitstellung der Azure Defender-Erweiterung für Kubernetes-Cluster mit Azure Arc-Unterstützung" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center-Empfehlung zur Bereitstellung der Azure Defender-Erweiterung für Azure Arc-fähige Kubernetes-Cluster" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
 
 1. Überprüfen Sie, ob der Cluster, auf dem Sie die Erweiterung bereitgestellt haben, als **Fehlerfrei** aufgeführt ist.
 
@@ -273,7 +273,7 @@ Eine vollständige Liste unterstützter Warnungen finden Sie in der [Verweistabe
 
 ## <a name="removing-the-azure-defender-extension"></a>Entfernen der Azure Defender-Erweiterung
 
-Sie können die Erweiterung mithilfe des Azure-Portals, der Azure CLI oder der REST-API entfernen. Die Vorgehensweise wird auf den folgenden Registerkarten erläutert.
+Sie können die Erweiterung über das Azure-Portal, mithilfe der Azure CLI oder der REST-API entfernen. Die Vorgehensweise wird auf den Registerkarten unten erläutert.
 
 ### <a name="azure-portal---arc"></a>[**Azure-Portal – Arc**](#tab/k8s-remove-arc)
 
@@ -324,7 +324,7 @@ Um die Erweiterung mit der REST-API zu entfernen, führen Sie den folgenden DELE
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| Name            | Geben Sie in   | Erforderlich | Typ   | BESCHREIBUNG                                           |
+| Name            | Geben Sie in   | Erforderlich | type   | BESCHREIBUNG                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | Abonnement-ID | path | True     | Zeichenfolge | Abonnement-ID Ihres Kubernetes-Clusters mit Arc-Unterstützung |
 | Ressourcengruppe  | path | True     | Zeichenfolge | Ressourcengruppe Ihres Kubernetes-Clusters mit Arc-Unterstützung  |

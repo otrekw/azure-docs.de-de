@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 5790c7c62b9d97df9683773170301b6e09a47667
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029776"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728480"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -64,6 +64,8 @@ Ab Version „v3.1-preview.3“ stellt die Textanalyse-API zwei asynchrone Endpu
 * Mit dem Endpunkt `/analyze` für die Textanalyse können Sie dieselben Textdokumente mit mehreren Textanalysefeatures in einem einzigen API-Aufruf analysieren. Bisher mussten Sie für jeden Vorgang separate API-Aufrufe durchführen, um mehrere Features verwenden zu können. Denken Sie an diese Funktion, wenn Sie große Mengen von Dokumenten mit mehr als einem Textanalyse-Feature analysieren müssen.
 
 * Mit dem Endpunkt `/health` für die Textanalyse für das Gesundheitssystem können relevante medizinische Informationen aus klinischen Dokumenten extrahiert und gekennzeichnet werden.  
+
+Beachten Sie, dass die Endpunkte „/analyze“ und „/health“ nur in den folgenden Regionen verfügbar sind: „USA, Westen 2“, „USA, Osten 2“, „USA, Mitte“, „Europa, Norden“ und „Europa, Westen“.
 
 In der folgenden Tabelle wird gezeigt, welche Features asynchron verwendet werden können. Beachten Sie, dass nur einige wenige Features über den Endpunkt `/analyze` aufgerufen werden können. 
 

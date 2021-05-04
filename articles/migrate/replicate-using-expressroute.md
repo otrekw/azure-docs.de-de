@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 9aa9a42422f3c114490d1dbb28a146b6e76ca8cd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dd2a4ee0ba8ef5b64e52e7d840874a98a0e72939
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558617"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930837"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Replizieren von Daten über ExpressRoute mithilfe des Azure Migrate-Servermigrationstools
 
@@ -32,8 +32,9 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="replicate-data-using-an-expressroute-circuit-with-private-peering"></a>Replizieren von Daten mithilfe einer ExpressRoute-Verbindung mit privatem Peering
 
-> [!NOTE]
-> Die Replikation über eine private Peeringverbindung wird derzeit nur für die [Migration von virtuellen VMware-Computern zu Azure ohne Agent](./tutorial-migrate-vmware.md) unterstützt. Die Unterstützung für private Endpunkte für andere [Replikationsmethoden](./migrate-services-overview.md#azure-migrate-server-migration-tool) ist in Kürze verfügbar.
+> [!Note]
+> Dieser Artikel veranschaulicht, wie die Replikation über eine private Peering-Schaltung für die [**agentenlose Migration von virtuellen VMware-Maschinen nach Azure funktioniert**](./tutorial-migrate-vmware.md). Um die Unterstützung privater Endpunkte für [**andere Replikationsmethoden**](./migrate-services-overview.md#azure-migrate-server-migration-tool) zu nutzen, lesen Sie [**diesen Artikel**](./how-to-use-azure-migrate-with-private-endpoints.md).  
+ 
 
 Bei der Methode zum Migrieren von virtuellen VMware-Computern zu Azure ohne Agent lädt die Azure Migrate-Appliance zunächst Replikationsdaten in ein Speicherkonto (Cachespeicherkonto) in Ihrem Abonnement hoch. Replizierte Daten aus dem Cachespeicherkonto werden dann vom Azure Migrate-Dienst auf vom Replikat verwaltete Datenträger in Ihrem Abonnement verschoben. Wenn Sie eine private Peeringverbindung für die Replikation verwenden möchten, erstellen Sie einen privaten Endpunkt, und fügen diesen an das zu verwendende Cachespeicherkonto an. Private Endpunkte verwenden eine oder mehrere private IP-Adressen Ihres virtuellen Netzwerks (VNet), sodass das Speicherkonto effektiv in Ihr virtuelles Azure-Netzwerk integriert wird. Der private Endpunkt ermöglicht der Azure Migrate-Appliance, mithilfe des privaten ExpressRoute-Peerings eine Verbindung mit dem Cachespeicherkonto herzustellen und Daten direkt über die private IP-Adresse zu übertragen. <br/>  
 

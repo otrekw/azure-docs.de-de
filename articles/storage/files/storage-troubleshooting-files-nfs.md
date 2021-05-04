@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 4c87887f77d5f227fe4d4cdee220397289878d7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e097a5642befb2e3b91423379c734cb5acdfa7d0
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99574464"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073591"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Behandeln von Problemen mit Azure NFS-Dateifreigaben
 
@@ -160,6 +160,10 @@ Bei Verwendung von „wc -c“ wird immer der aktuelle Wert vom Server abgerufen
 
 #### <a name="workaround-2-use-noac-mount-flag"></a>Problemumgehung 2: Verwenden Sie das Einbindungsflag „noac“.
 Binden Sie das Dateisystem mit dem Befehl „mount“ und dem Flag „noac“ erneut ein. Damit werden immer alle Metadatenwerte vom Server abgerufen. Bei allen Metadatenvorgängen kann ein geringfügiger Leistungsmehraufwand auftreten, wenn diese Problemumgehung verwendet wird.
+
+
+## <a name="unable-to-mount-an-nfs-share-that-is-restored-back-from-soft-deleted-state"></a>Eine NFS-Freigabe, die aus dem Zustand „Vorläufig gelöscht“ wiederhergestellt wird, kann nicht wiederhergestellt werden
+Während der Vorschauversion tritt ein bekanntes Problem auf, bei dem NFS-Freigaben vorläufig gelöscht werden, obwohl sie von der Plattform nicht vollständig unterstützt werden. Diese Freigaben werden nach Ablauf routinemäßig gelöscht. Sie können sie auch frühzeitig löschen, indem Sie den Flow „Freigabe wiederherstellen + vorläufig löschen deaktivieren + Freigabe löschen“ aktivieren. Wenn Sie jedoch versuchen, die Freigaben wiederherzustellen und zu verwenden, erhalten Sie „Zugriff verweigert“ oder „Berechtigung verweigert“ bzw. „NFS-E/A-Fehler“ auf dem Client.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

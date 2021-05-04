@@ -2,13 +2,13 @@
 title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: bb6be070ac0fb408ac37c8ae7b003b54da5d6dea
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/26/2021
+ms.openlocfilehash: fd148c88eaace70caa237ce8cb694d0167db9338
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773655"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064975"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -162,15 +162,51 @@ Führen Sie die folgenden Schritte aus, um den Schutz zu beenden und die Sicheru
 
     ![Auswählen von „Geschützte Daten löschen“ im Bereich „Schutz beenden“](./media/backup-azure-delete-vault/delete-storage-online.png)
 
-    Der Status des geschützten Mitglieds ändert sich in *Inaktives Replikat verfügbar*.
+    Für die folgenden Versionen werden Sie aufgefordert, eine Sicherheits-PIN (persönliche Identifikationsnummer) einzugeben, die Sie manuell generieren müssen.
+    
 
-4. Klicken Sie mit der rechten Maustaste auf die inaktive Schutzgruppe, und wählen Sie **Inaktiven Schutz entfernen** aus.
+    - DPM 2019 UR1 und höher
+    - DPM 2016 UR9 und höher
+    - MABS V3 UR1 und höher
+    
+    Führen Sie zum Generieren einer PIN die folgenden Schritte aus:
+    
+    1. Melden Sie sich beim Azure-Portal an.
+    1. Navigieren Sie zu **Recovery Services-Tresor** > **Einstellungen** > **Eigenschaften**.
+    1. Wählen Sie unter **Sicherheits-PIN** die Option **Generieren** aus.
+    1. Kopieren Sie diese PIN. 
+       >[!NOTE]
+       >Die PIN ist nur fünf Minuten lang gültig.
+    1. Fügen Sie die PIN in der Verwaltungskonsole ein, und klicken Sie anschließend auf **Senden**.
+       ![Sicherheits-PIN eingeben](./media/backup-azure-delete-vault/enter-security-pin.png)
+
+4. Wenn Sie zuvor im Dialogfeld **Schutz beenden** die Option **Onlinespeicher löschen** ausgewählt haben, ignorieren Sie diesen Schritt. Klicken Sie mit der rechten Maustaste auf die inaktive Schutzgruppe, und wählen Sie **Inaktiven Schutz entfernen** aus.
 
     ![Entfernen des inaktiven Schutzes](./media/backup-azure-delete-vault/remove-inactive-protection.png)
 
 5. Aktivieren Sie im Fenster **Inaktiven Schutz entfernen** das Kontrollkästchen **Speicher online löschen**, und klicken Sie dann auf **OK**.
 
     ![Löschen des Onlinespeichers](./media/backup-azure-delete-vault/remove-replica-on-disk-and-online.png)
+
+    Für die folgenden Versionen werden Sie aufgefordert, eine Sicherheits-PIN (persönliche Identifikationsnummer) einzugeben, die Sie manuell generieren müssen.
+    
+
+    - DPM 2019 UR1 und höher
+    - DPM 2016 UR9 und höher
+    - MABS V3 UR1 und höher
+    
+    Führen Sie zum Generieren einer PIN die folgenden Schritte aus:
+    
+    1. Melden Sie sich beim Azure-Portal an.
+    1. Navigieren Sie zu **Recovery Services-Tresor** > **Einstellungen** > **Eigenschaften**.
+    1. Wählen Sie unter **Sicherheits-PIN** die Option **Generieren** aus.
+    1. Kopieren Sie diese PIN. 
+       >[!NOTE]
+       >Die PIN ist nur fünf Minuten lang gültig.
+    1. Fügen Sie die PIN in der Verwaltungskonsole ein, und klicken Sie anschließend auf **Senden**.
+       ![Sicherheits-PIN eingeben](./media/backup-azure-delete-vault/enter-security-pin.png)
+ 
+     Der Status des geschützten Mitglieds ändert sich in *Inaktives Replikat verfügbar*.
 
 #### <a name="method-2"></a>Methode 2
 

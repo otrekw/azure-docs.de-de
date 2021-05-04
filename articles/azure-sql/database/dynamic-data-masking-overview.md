@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: ccc648f06cad46b490ac73fe777066c9de2ff2b9
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: b44248732891163bc2630cdfe5b297a06f3cf730
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551644"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001014"
 ---
 # <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,7 +30,7 @@ Beispielsweise könnte ein Servicemitarbeiter in einem Callcenter einen Anrufer 
 
 ## <a name="dynamic-data-masking-basics"></a>Grundlegendes zur dynamischen Datenmaskierung
 
-Sie richten eine Richtlinie für die dynamische Datenmaskierung im Azure-Portal durch Auswählen des Blatts **Dynamische Datenmaskierung** unter **Sicherheit** im Konfigurationsbereich Ihrer SQL-Datenbank-Instanz ein. Dieses Feature kann nicht über das Portal für SQL Managed Instance festgelegt werden. (Verwenden Sie stattdessen PowerShell oder die REST-API.) Weitere Informationen finden Sie unter [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking).
+Sie richten eine Richtlinie für die dynamische Datenmaskierung im Azure-Portal durch Auswählen des Blatts **Dynamische Datenmaskierung** unter **Sicherheit** im Konfigurationsbereich Ihrer SQL-Datenbank-Instanz ein. Diese Funktion kann nicht über das Portal für SQL Managed Instance eingestellt werden. Weitere Informationen finden Sie unter [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking).
 
 ### <a name="dynamic-data-masking-policy"></a>Richtlinie für die dynamische Datenmaskierung
 

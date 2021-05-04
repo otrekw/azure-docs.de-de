@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 03/19/2021
-ms.topic: conceptual
-ms.custom: how-to, designer
-ms.openlocfilehash: 09eabffb0e01ee6c5ea6b541378773a7d60397a3
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 04/09/2020
+ms.topic: how-to
+ms.custom: designer
+ms.openlocfilehash: ba5af77022c3f230fdaf77d115a1c1a4b2151c3e
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080723"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888150"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>Verwenden von Pipelineparametern im Designer zum Erstellen vielseitiger Pipelines
 
@@ -95,9 +95,11 @@ Wenn Sie Ihre Pipeline mit Variablendatasets übermitteln möchten, müssen Sie 
 
 Wenn Sie die Pipeline das nächste Mal ausführen, können Sie mit dem Pipelineparameter nun ein anderes Dataset angeben.
 
-## <a name="attach-module-parameter-to-pipeline-parameter"></a>Anfügen von Modulparametern an Pipelineparameter 
+## <a name="attach-and-detach-module-parameter-to-pipeline-parameter"></a>Anfügen und Trennen von Modulparametern an bzw. von Pipelineparametern 
 
-In diesem Abschnitt erfahren Sie, wie Sie Modulparameter an Pipelineparameter anfügen.
+In diesem Abschnitt erfahren Sie, wie Sie Modulparameter an Pipelineparameter anfügen und sie davon trennen.
+
+### <a name="attach-module-parameter-to-pipeline-parameter"></a>Anfügen von Modulparametern an Pipelineparameter
 
 Sie können dieselben Modulparameter duplizierter Module an denselben Pipelineparameter anfügen, wenn Sie den Wert beim Auslösen der Pipelineausführung gleichzeitig ändern möchten.
 
@@ -115,10 +117,16 @@ Das folgende Beispiel enthält ein dupliziertes **Clean Missing Data**-Modul. F�
 
    ![Screenshot, der das Anfügen an einen Pipelineparameter zeigt](media/how-to-use-pipeline-parameter/attach-replace-value-to-pipeline-parameter.png)
 
-Sie haben das Feld **Replacement value** erfolgreich Ihrem Pipelineparameter angefügt. Der **Replacement value** in den Modulen ist nicht aktionsfähig.
+Sie haben das Feld **Replacement value** erfolgreich Ihrem Pipelineparameter angefügt. 
+
+
+### <a name="detach-module-parameter-to-pipeline-parameter"></a>Trennen von Modulparametern von Pipelineparametern
+
+Nachdem Sie den **Replacement value** an den Pipelineparameter angefügt haben, ist er nicht aktionsfähig.
+
+Sie können den Modulparameter vom Pipelineparameter trennen, indem Sie auf die Auslassungspunkte ( **...** ) neben dem Modulparameter klicken und **Detach from pipeline parameter** (Vom Pipelineparameter trennen) auswählen.
 
  ![Screenshot, der den nicht aktionsfähigen „Replacement value“ nach dem Anfügen an den Pipelineparameter zeigt](media/how-to-use-pipeline-parameter/non-actionable-module-parameter.png)
-
 
 ## <a name="update-and-delete-pipeline-parameters"></a>Aktualisieren und Löschen von Pipelineparametern
 
@@ -133,7 +141,7 @@ Führen Sie die folgenden Schritte aus, um einen Modul-Pipelineparameter zu aktu
 
 ### <a name="delete-a-dataset-pipeline-parameter"></a>Löschen eines Dataset-Pipelineparameters
 
-Trennen Sie mit folgenden Schritten einen Dataset-Pipelineparameter:
+Einen Dataset-Pipelineparameter können Sie mit den folgenden Schritten löschen:
 
 1. Wählen Sie das Datasetmodul aus.
 1. Deaktivieren Sie die Option **Set as pipeline parameter** (Als Pipelineparameter festlegen).
@@ -147,22 +155,14 @@ Löschen Sie mit folgenden Schritten einen Modul-Pipelineparameter:
 
 1. Wählen Sie die Auslassungspunkte ( **...** ) neben dem Pipelineparameter aus.
 
-    In dieser Ansicht sehen Sie, welchen Modulen der Pipelineparameter angefügt ist. Um einen Pipelineparameter zu löschen, müssen Sie ihn zuerst von allen Modulparametern trennen.
+    In dieser Ansicht sehen Sie, welchen Modulen der Pipelineparameter angefügt ist.
 
-    ![Screenshot, der den aktuellen Pipelineparameter zeigt, der auf ein Modul angewendet wird](media/how-to-use-pipeline-parameter/current-pipeline-parameter.png)
+    ![Screenshot, der den aktuellen Pipelineparameter zeigt, der auf ein Modul angewendet wird](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
 
-1. Wählen Sie in der Canvas ein Modul aus, dem der Pipelineparameter immer noch angefügt ist.
-1. Suchen Sie im Moduleigenschaftenbereich rechts das Feld, dem der Pipelineparameter angefügt ist.
-1. Setzen Sie den Mauszeiger über das Feld, dem er angefügt ist. Wählen Sie dann die angezeigten Auslassungspunkte ( **...** ) aus.
-1. Wählen Sie **Detach from pipeline parameter** (Vom Pipelineparameter trennen) aus.
-
-    ![Screenshot, der das Trennen von Pipelineparametern zeigt](media/how-to-use-pipeline-parameter/detach-from-pipeline-parameter.png)
-
-1. Wiederholen Sie die vorherigen Schritte, bis Sie den Pipelineparameter von allen Feldern getrennt haben.
-1. Wählen Sie die Auslassungspunkte ( **...** ) neben dem Pipelineparameter aus.
 1. Wählen Sie **Delete parameter** (Parameter löschen) aus, um den Pipelineparameter zu löschen.
 
-    ![Screenshot, der das Löschen von Pipelineparametern zeigt](media/how-to-use-pipeline-parameter/delete-pipeline-parameter.png)
+    > [!NOTE]
+    > Das Löschen eines Pipelineparameters bewirkt, dass alle angefügten Modulparameter getrennt werden und der Wert der getrennten Modulparameter den aktuellen Wert des Pipelineparameters beibehält.     
 
 ## <a name="trigger-a-pipeline-run-with-pipeline-parameters"></a>Auslösen einer Pipelineausführung mit Pipelineparametern 
 

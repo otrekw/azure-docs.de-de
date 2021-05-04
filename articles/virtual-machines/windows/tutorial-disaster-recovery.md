@@ -78,7 +78,7 @@ Optional können Sie die Notfallwiederherstellung aktivieren, wenn Sie einen vir
 
 7. Geben Sie unter **Verfügbarkeits Optionen** an, ob die VM als eigenständig, in einer Verfügbarkeits Zone oder in einer Verfügbarkeits Gruppe bereitgestellt werden soll.
 
-    ::: Image Type = "Content" Source = "./Media/Tutorial-Disaster-Recovery/create-vm.png" alt-Text = "Aktivieren der Replikation auf der Eigenschaften Seite der VM-Verwaltung."
+    :::image type="content" source="./media/tutorial-disaster-recovery/create-vm.png" alt-text="Aktivieren der Replikation auf der Eigenschaften Seite der VM-Verwaltung."
 
 8. Fertigstellen des VM.
 

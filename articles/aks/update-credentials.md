@@ -5,12 +5,12 @@ description: Hier erfahren Sie, wie Sie die Dienstprinzipal- oder AAD-Anwendungs
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 0b750eb9af7dfd7bcbada7500b6ef71b015db11f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 08a52f68ffdaa3305fbbeefffeeac78a59f3903b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767473"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949144"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualisieren oder Rotieren der Anmeldeinformationen für Azure Kubernetes Service (AKS)
 
@@ -32,7 +32,7 @@ Wenn Sie die Anmeldeinformationen für einen AKS-Cluster aktualisieren möchten,
 * Erstellen eines neuen Dienstprinzipals und Aktualisieren des Clusters zur Verwendung der neuen Anmeldeinformationen. 
 
 > [!WARNING]
-> Wenn Sie sich dafür entscheiden, einen *neuen* Dienstprinzipal zu erstellen, kann die Aktualisierung eines großen AKS-Clusters zur Verwendung dieser Anmeldeinformationen sehr viel Zeit in Anspruch nehmen.
+> Wenn Sie einen *neuen* Dienstprinzipal erstellen möchten, warten Sie etwa 30 Minuten, bis die Dienstprinzipalberechtigung in alle Regionen weitergegeben wurde. Die Aktualisierung eines großen AKS-Clusters für die Verwendung dieser Anmeldeinformationen kann sehr viel Zeit in Anspruch nehmen.
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>Überprüfen des Ablaufdatums Ihres Dienstprinzipals
 

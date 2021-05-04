@@ -1,26 +1,27 @@
 ---
-title: Verschieben von Dateien für Azure-Linux-VMs per SCP
+title: Verwenden von SCP zum Verschieben von Dateien auf einen und von einem virtuellen Computer
 description: Es wird beschrieben, wie Sie Dateien mit SCP und einem SSH-Schlüsselpaar auf sichere Weise auf eine bzw. von einer Linux-VM in Azure verschieben.
 author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 07/12/2017
+ms.date: 04/20/2021
 ms.author: cynthn
-ms.subservice: disks
-ms.openlocfilehash: 83b57055ee7a3fedab014abeab96520c3877b843
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: ''
+ms.openlocfilehash: edfc44f79cff25486fde6326ac954fe5b575d846
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558439"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816438"
 ---
-# <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Verschieben von Dateien für eine Linux-VM per SCP
+# <a name="use-scp-to-move-files-to-and-from-a-linux-vm"></a>Verwenden von SCP zum Verschieben von Dateien auf einen und von einem virtuellen Linux-Computer 
 
 In diesem Artikel wird gezeigt, wie Sie Dateien per Secure Copy (SCP) von Ihrer Arbeitsstation auf eine Azure Linux-VM oder von einer Azure Linux-VM auf die Arbeitsstation verschieben. Das schnelle und sichere Verschieben von Dateien zwischen Ihrer Arbeitsstation und einer Linux-VM ist für die Verwaltung Ihrer Azure-Infrastruktur wichtig. 
 
-Für diesen Artikel muss anhand von [Dateien mit öffentlichen und privaten SSH-Schlüsseln](mac-create-ssh-keys.md) eine Linux-VM in Azure bereitgestellt werden. Sie benötigen auch einen SCP-Client für Ihren lokalen Computer. Er basiert auf SSH und ist in der standardmäßigen Bash-Shell der meisten Linux- und Macintosh-Computer sowie einigen Windows-Shells enthalten.
+Für diesen Artikel muss anhand von [Dateien mit öffentlichen und privaten SSH-Schlüsseln](mac-create-ssh-keys.md) eine Linux-VM in Azure bereitgestellt werden. Sie benötigen auch einen SCP-Client für Ihren lokalen Computer. Er basiert auf SSH und ist in der standardmäßigen Bash-Shell der meisten Linux- und Macintosh-Computer sowie in der PowerShell enthalten.
+
 
 ## <a name="quick-commands"></a>Schnellbefehle
 
@@ -50,7 +51,7 @@ Weitere Informationen zum Konfigurieren der Datei `~/.ssh/config` und zu öffent
 
 Für das erste Beispiel kopieren wir eine Azure-Konfigurationsdatei auf eine Linux-VM, die zum Bereitstellen von Automation verwendet wird. Da diese Datei Azure-API-Anmeldeinformationen sowie Geheimnisse enthält, spielt die Sicherheit eine große Rolle. Der verschlüsselte, von SSH bereitgestellte Tunnel schützt die Inhalte der Datei.
 
-Mit dem folgenden Befehl wird die lokale Datei *.azure/config* auf eine Azure-VM mit dem FQDN *myserver.eastus.cloudapp.azure.com* kopiert. Der Benutzername des Administrators auf der Azure-VM lautet *azureuser*. Die Datei wird im Verzeichnis */home/azureuser/* gespeichert. Fügen Sie Ihre eigenen Werte in diesen Befehl ein.
+Mit dem folgenden Befehl wird die lokale Datei *.azure/config* auf eine Azure-VM mit dem FQDN *myserver.eastus.cloudapp.azure.com* kopiert. Wenn Sie keinen [FQDN festgelegt](../create-fqdn.md) haben, können Sie auch die IP-Adresse der VM verwenden. Der Benutzername des Administrators auf der Azure-VM lautet *azureuser*. Die Datei wird im Verzeichnis */home/azureuser/* gespeichert. Fügen Sie Ihre eigenen Werte in diesen Befehl ein.
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config

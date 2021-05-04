@@ -3,12 +3,12 @@ title: Neuerungen in Azure Site Recovery
 description: Enthält eine Übersicht über die neuen Features und die neuesten Updates im Azure Site Recovery-Dienst.
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 423fbc563878d0cc2a63a5366d2226281a204e87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a960a62a8262128d775b0fe386a72e5ec613b7f1
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454594"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897629"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -22,6 +22,7 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 
 **Aktualisieren** |  **Einheitliches Setup** | **OVA-Datei des Konfigurationsservers** | **Mobilitätsdienst-Agent** | **Site Recovery-Anbieter** | **Recovery Services-Agent**
 --- | --- | --- | --- | --- | ---
+[.Rollup 55](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | .9.42.5941.1 | .5.1.6692.0 | .9.42.5941.1 | .5.1.6692.0  | .2.0.9208.0
 [Rollup 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 9.41.5888.1 | 5.1.6620.0 | 9.41.5888.1 | 5.1.6620.0  | 2.0.9202.0
 [Rollup 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [Rollup 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
@@ -31,6 +32,20 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 
 
 [Weitere Informationen](service-updates-how-to.md) zur Updateinstallation und -unterstützung
+
+## <a name="updates-april-2021"></a>Aktualisierungen (April 2021)
+
+### <a name="update-rollup-55"></a>Aktualisierungs-Rollup 55
+
+Das [Aktualisierungs-Rollup 55](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) umfasst die folgenden Aktualisierungen:
+
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im Rollup beschrieben. 
+**Notfallwiederherstellung für virtuelle Azure-Computer** | Unterstützung für die kontinentübergreifende Notfallwiederherstellung von Azure-VMs wurde hinzugefügt.<br/><br/> Rest-API-Unterstützung für den Schutz von VMSS Flex.<br/><br/> Wird jetzt für VMs, die Oracle Linux 8.2 und 8.3 ausführen, unterstützt.
+**Notfallwiederherstellung für VMware-VMs/physische Computer auf Azure** | Unterstützung für die Verwendung von Ubuntu-20.04 beim Einrichten des Masterzielservers hinzugefügt.<br/><br/> Wird jetzt für VMs, die Oracle Linux 8.2 und 8.3 ausführen, unterstützt.
+
 
 ## <a name="updates-february-2021"></a>Updates (Februar 2021)
 
@@ -72,7 +87,7 @@ Das [Updaterollup 52](https://support.microsoft.com/help/4597409/update-rollup-
 **Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Im Rollup sind verschiedene Fixes und Verbesserungen beschrieben, darunter auch die neue Linux-Unterstützung für den Mobilitätsdienst.
 **Notfallwiederherstellung für virtuelle Azure-Computer** | Jetzt unterstützt für VMs unter RHEL 8.3 und Oracle Linux 7.9.
-**Notfallwiederherstellung für VMware-VMs/physische Computer auf Azure** | Jetzt unterstützt für VMs unter RHEL 8.3 und Oracle Linux 7.9/8.3.
+**Notfallwiederherstellung für VMware-VMs/physische Computer auf Azure** | Jetzt unterstützt für VMs, die RHEL 8.3, Oracle Linux 7.9. ausführen.
 
 ## <a name="updates-october-2020"></a>Updates (Oktober 2020)
 

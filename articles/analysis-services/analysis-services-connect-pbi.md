@@ -4,22 +4,22 @@ description: Erfahren Sie, wie Sie mithilfe von Power BI eine Verbindung mit ein
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 4/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ed0f3d379ca961c610958c073c27c6fc9583252b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5a430c5bb24032a2665ad078311dcb5137d2bb9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96500919"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816028"
 ---
 # <a name="connect-with-power-bi"></a>Herstellen einer Verbindung mit Power BI
 
 Sobald Sie in Azure einen Server erstellt, und ein tabellarisches Modell bereitgestellt haben, können Benutzer in Ihrer Organisation beginnen, eine Verbindung herzustellen und Daten zu durchsuchen. 
 
-> [!TIP]
-> Achten Sie darauf, dass Sie die neueste Version von [Power BI Desktop](https://powerbi.microsoft.com/desktop/) verwenden.
+> [!NOTE]
+> Wenn Sie ein Power BI Desktop-Modell im Power BI-Dienst veröffentlichen, stellen Sie auf dem Azure Analysis Services-Server sicher, dass die Servereigenschaft „Beachtung der Groß-/Kleinschreibung bei Sortierung“ nicht ausgewählt ist (Standardeinstellung). Die Eigenschaft „Beachtung der Groß-/Kleinschreibung bei Sortierung“ kann mithilfe von SQL Server Management Studio festgelegt werden.
 > 
 > 
   

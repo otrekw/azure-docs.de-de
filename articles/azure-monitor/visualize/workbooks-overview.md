@@ -5,12 +5,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: a02e5fced0a9e338a32d8d8beaa9e4b5fca994e8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3d75d7605ba082aac84973aef247de79d55b4c9c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309475"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482771"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor-Arbeitsmappen
 
@@ -48,7 +48,18 @@ Arbeitsmappen bieten eine Vielzahl von Funktionen zur Visualisierung Ihrer Daten
 * [Graphs](../visualize/workbooks-graph-visualizations.md)
 * [Gestapelte Säule](../visualize/workbooks-composite-bar.md)
 
-:::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="Visualisierungsbeispiele für Arbeitsmappen" border="false" lightbox="./media/workbooks-overview/visualizations.png":::
+:::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="Beispiele der Visualisierung von Arbeitsmappen." border="false" lightbox="./media/workbooks-overview/visualizations.png":::
+
+### <a name="pinning-visualizations"></a>Anheften von Visualisierungen
+
+Die Schritte für Text, Abfrage und Metriken in einer Arbeitsmappe können mithilfe der Schaltfläche „Anheften“ an diese Elemente angeheftet werden, während sich die Arbeitsmappe im entsprechenden Modus befindet oder wenn der Arbeitsmappenautor Einstellungen für dieses Element aktiviert hat, damit das Symbol zum Anheften angezeigt wird.
+
+Zum Zugreifen auf den Modus für Anheften klicken Sie auf **Bearbeiten**, um in den Bearbeitungsmodus zu wechseln, und wählen Sie dann in der oberen Leiste das blaue Stecknadelsymbol aus. Daraufhin wird auf der rechten Seite des Bildschirms ein einzelnes Stecknadelsymbol oberhalb des Felds *Bearbeiten* für den entsprechenden Arbeitsmappenteil angezeigt.
+
+:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="Screenshot der Anheftfunktion" border="false":::
+
+> [!NOTE]
+> Der Zustand der Arbeitsmappe wird zum Zeitpunkt des Anheftens gespeichert, und angeheftete Arbeitsmappen auf einem Dashboard werden beim Ändern der zugrunde liegenden Arbeitsmappe nicht aktualisiert. Um einen angehefteten Arbeitsmappenteil zu aktualisieren, müssen Sie diesen Teil löschen und erneut anheften.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -56,9 +67,9 @@ Zum Erkunden der Oberfläche für Arbeitsmappen navigieren Sie zunächst zum Azu
 
 Wählen Sie dann **Arbeitsmappen** aus.
 
-:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="Screenshot der Schaltfläche „Arbeitsmappen“ in einem roten Kasten" border="false":::
+:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="Screenshot der Schaltfläche „Arbeitsmappen“ in einem roten Kasten." border="false":::
 
-### <a name="gallery"></a>Katalog
+### <a name="gallery"></a>Galerie
 
 Der Katalog erleichtert das Organisieren, Sortieren und Verwalten von Arbeitsmappen jedes Typs.
 
@@ -97,7 +108,7 @@ Vorlagen unterscheiden sich auch von gespeicherten Arbeitsmappen. Beim Speichern
 
 Wählen Sie **Analyse der Anwendungsfehler** aus, um eine der Standardvorlagen für Anwendungsarbeitsmappen anzuzeigen.
 
-:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="Screenshot der Vorlage zur Anwendungsfehleranalyse" border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
+:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="Screenshot der Vorlage zur Anwendungsfehleranalyse." border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
 
 Wie bereits erwähnt, wird beim Öffnen der Vorlage eine temporäre Arbeitsmappe erstellt, mit der Sie interagieren können. Standardmäßig wird die Arbeitsmappe im Lesemodus geöffnet, in dem nur die Informationen für die gewünschte Analyse angezeigt werden, die vom ursprünglichen Vorlagenautor erstellt wurden.
 
@@ -111,27 +122,15 @@ Um zu verstehen, wie diese Arbeitsmappenvorlage zusammengesetzt ist, müssen Sie
 
 Nachdem Sie in den Bearbeitungsmodus gewechselt haben, wird eine Reihe von Feldern des Typs **Bearbeiten** rechts neben den einzelnen Aspekten der Arbeitsmappe angezeigt.
 
-:::image type="content" source="./media/workbooks-overview/edit-mode.png" alt-text="Screenshot der Schaltfläche „Bearbeiten“" border="false" lightbox="./media/workbooks-overview/edit-mode.png":::
+:::image type="content" source="./media/workbooks-overview/edit-mode.png" alt-text="Screenshot der Schaltfläche „Bearbeiten“." border="false" lightbox="./media/workbooks-overview/edit-mode.png":::
 
 Wenn Sie die Schaltfläche „Bearbeiten“ direkt unterhalb des Rasters mit Anforderungsdaten auswählen, sehen Sie, dass dieser Teil der Arbeitsmappe aus einer Kusto-Abfrage für Daten von einer Application Insights-Ressource besteht.
 
-:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="Screenshot der zugrunde liegenden Kusto-Abfrage" border="false" lightbox="./media/workbooks-overview/kusto.png":::
+:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="Screenshot der zugrunde liegenden Kusto-Abfrage." border="false" lightbox="./media/workbooks-overview/kusto.png":::
 
-
-Wenn Sie auf die anderen Schaltflächen **Bearbeiten** auf der rechten Seite klicken, wird eine Reihe von Kernkomponenten angezeigt, aus denen sich Arbeitsmappen zusammensetzen, wie markdownbasierte [Textfelder](../visualize/workbooks-text-visualizations.md), Benutzeroberflächenelemente für die [Parameterauswahl](../visualize/workbooks-parameters.md) und andere [Diagramm-/Visualisierungstypen](#visualizations).
+Wenn Sie die anderen **Bearbeiten**-Schaltflächen auf der rechten Seite auswählen, wird eine Reihe von Kernkomponenten angezeigt, aus denen sich Arbeitsmappen zusammensetzen, wie markdownbasierte [Textfelder](../visualize/workbooks-text-visualizations.md), Benutzeroberflächenelemente für die [Parameterauswahl](../visualize/workbooks-parameters.md) und andere [Diagramm-/Visualisierungstypen](#visualizations).
 
 Das Erkunden der vordefinierten Vorlagen im Bearbeitungsmodus, das anschließende Anpassen an Ihre Anforderungen und das Speichern Ihrer eigenen benutzerdefinierten Arbeitsmappe ist eine hervorragende Möglichkeit, um zu erfahren, welche Möglichkeiten Azure Monitor-Arbeitsmappen bieten.
-
-## <a name="pinning-visualizations"></a>Anheften von Visualisierungen
-
-Die Schritte für Text, Abfrage und Metriken in einer Arbeitsmappe können mithilfe der Schaltfläche „Anheften“ an diese Elemente angeheftet werden, während sich die Arbeitsmappe im entsprechenden Modus befindet oder wenn der Arbeitsmappenautor Einstellungen für dieses Element aktiviert hat, damit das Symbol zum Anheften angezeigt wird.
-
-Zum Zugreifen auf den Modus für Anheften klicken Sie auf **Bearbeiten**, um in den Bearbeitungsmodus zu wechseln, und wählen Sie dann in der oberen Leiste das blaue Stecknadelsymbol aus. Daraufhin wird auf der rechten Seite des Bildschirms ein einzelnes Stecknadelsymbol oberhalb des Felds *Bearbeiten* für den entsprechenden Arbeitsmappenteil angezeigt.
-
-:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="Screenshot der Anheftfunktion" border="false":::
-
-> [!NOTE]
-> Der Zustand der Arbeitsmappe wird zum Zeitpunkt des Anheftens gespeichert, und angeheftete Arbeitsmappen auf einem Dashboard werden beim Ändern der zugrunde liegenden Arbeitsmappe nicht aktualisiert. Um einen angehefteten Arbeitsmappenteil zu aktualisieren, müssen Sie diesen Teil löschen und erneut anheften.
 
 ## <a name="dashboard-time-ranges"></a>Zeitbereiche auf dem Dashboard
 

@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c3f973da688a20fa60f2fb649b2c8d689bc2a98
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 61ecbcdd1a96fcc36caa7d0d8c21c66d856d7f89
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076648"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988998"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Features und Funktionen von Azure Arc-fähigen SQL Managed Instance-Instanzen
 
@@ -35,27 +35,29 @@ Azure Arc-fähige SQL Managed Instance-Instanzen nutzen eine gemeinsame Codebasi
   
 |Funktion|Azure Arc-fähige SQL Managed Instance-Instanz|
 |-------------|----------------|
-|Protokollversand|Ja| 
-|Sicherungskomprimierung|Ja|
-|Datenbankmomentaufnahme|Ja|
 |Always On-Failoverclusterinstanzen<sup>1</sup>| Nicht zutreffend Ähnliche Funktionen verfügbar |
 |AlwaysOn-Verfügbarkeitsgruppen<sup>2</sup>|Funktionen für Hochverfügbarkeit befinden sich in der Planung.|
 |Basis-Verfügbarkeitsgruppen <sup>2</sup>|Funktionen für Hochverfügbarkeit befinden sich in der Planung.|
 |Mindestreplikate für Commitverfügbarkeitsgruppen <sup>2</sup>|Funktionen für Hochverfügbarkeit befinden sich in der Planung.|
 |Verfügbarkeitsgruppe ohne Cluster|Ja|
+|Datenbank sichern | Ja – `COPY_ONLY` Siehe [BACKUP – (Transact-SQL)](/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true).|
+|Sicherungskomprimierung|Ja|
+|Sicherungsspiegelung |Ja|
+|Verschlüsseln der Sicherung|Ja|
+|Sicherung in Azure in (Sicherung über URL)|Ja|
+|Datenbankmomentaufnahme|Ja|
+|Schnelle Wiederherstellung|Ja|
+|Hinzufügen von Speicher im laufenden Systembetrieb und CPU|Ja|
+|Protokollversand|Ja| 
 |Onlineseiten- und Onlinedateiwiederherstellung|Ja|
 |Online-Indizierung|Ja|
-|Fortsetzbare Neuerstellung von online geschalteten Indizes|Ja|
 |Onlineschemaänderung|Ja|
-|Schnelle Wiederherstellung|Ja|
-|Gespiegelte Sicherungen|Ja|
-|Hinzufügen von Speicher im laufenden Systembetrieb und CPU|Ja|
-|Verschlüsselte Sicherung|Ja|
-|Hybridsicherung in Azure (Sicherung über URL)|Ja|
+|Fortsetzbare Neuerstellung von online geschalteten Indizes|Ja|
 
 <sup>1</sup> In dem Szenario, in dem ein Podfehler auftritt, wird eine neue SQL Managed Instance-Instanz gestartet und erneut an das persistente Volume angefügt, das die Daten enthält. [Hier erfahren Sie mehr über persistente Kubernetes-Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes).
 
 <sup>2</sup> In zukünftigen Releases werden Funktionen für Verfügbarkeitsgruppen bereitgestellt. 
+
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
 

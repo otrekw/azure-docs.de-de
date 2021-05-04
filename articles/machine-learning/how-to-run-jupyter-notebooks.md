@@ -8,15 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to
+ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 953b987e908736df703c354067ee27fc27d56073
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0a95d95842d0b361a1a276566b01b7ea735c4670
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220707"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952078"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -288,8 +287,10 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Machine Learning
 ## <a name="troubleshooting"></a>Problembehandlung
 
 * Wenn Sie keine Verbindung mit einem Notebook herstellen können, stellen Sie sicher, dass die WebSocket-Kommunikation **nicht** deaktiviert ist. Damit die Jupyter-Funktionen für Compute-Instanzen eingesetzt werden können, muss die WebSocket-Kommunikation aktiviert sein. Stellen Sie sicher, dass Ihr Netzwerk WebSocket-Verbindungen mit *.instances.azureml.net und *.instances.azureml.ms zulässt. 
+
 * Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur [im virtuellen Netzwerk darauf zugegriffen werden](./how-to-secure-training-vnet.md#compute-instance). Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<Region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md?tabs=azure-cli).
 
+* Wenn Ihr Kernel abgestürzt ist und neu gestartet wurde, können Sie den folgenden Befehl ausführen, um das Jupyter-Protokoll anzuzeigen und weitere Details zu erfahren. `sudo journalctl -u jupyter`. Wenn Kernelprobleme weiterhin bestehen, erwägen Sie, eine Compute-Instanz mit mehr Arbeitsspeicher zu verwenden.
     
 ## <a name="next-steps"></a>Nächste Schritte
 

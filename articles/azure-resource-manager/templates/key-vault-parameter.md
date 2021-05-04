@@ -2,19 +2,20 @@
 title: Key Vault-Geheimnis mit Vorlage
 description: Informationen zum Übergeben eines geheimen Schlüssels aus einem Schlüsseltresor als Parameter während der Bereitstellung.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 05749fe2e9179051c3183ea2e592cf7190ddb347
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/23/2021
+ms.openlocfilehash: 232c73f1058ad3c5a931d02fa1a2184cf004263f
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889857"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946077"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung
 
 Anstatt einen sicheren Wert (wie ein Kennwort) direkt in Ihre Vorlage oder Parameterdatei einzufügen, können Sie den Wert während einer Bereitstellung aus einem [Azure Key Vault](../../key-vault/general/overview.md) abrufen. Sie rufen den Wert ab, indem Sie den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei angeben. Der Wert wird nie offengelegt, da Sie nur auf die Schlüsseltresor-ID verweisen. Der Schlüsseltresor kann in einem anderen Abonnement als die Ressourcengruppe vorhanden sein, für die Sie ihn bereitstellen.
 
-Dieser Artikel konzentriert sich auf das Szenario, bei dem ein sensibler Wert als Vorlagenparameter zur Eingabe übergeben wird. Er behandelt nicht das Szenario, in dem eine Eigenschaft eines virtuellen Computers auf die URL eines Zertifikats in einem Schlüsseltresor festgelegt wird. Eine Schnellstartvorlage für dieses Szenario finden Sie unter [Installieren eines Zertifikats aus Azure Key Vault auf einem virtuellen Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows).
+Der Schwerpunkt dieses Artikels liegt auf der Übergabe eines sensitiven Wertes als Vorlagenparameter. Der Artikel behandelt nicht, wie Sie eine Eigenschaft der virtuellen Maschine auf die URL eines Zertifikats in einem Schlüsseltresor einstellen.
+Eine Schnellstartvorlage für dieses Szenario finden Sie unter [Installieren eines Zertifikats aus Azure Key Vault auf einem virtuellen Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows).
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Bereitstellen von Schlüsseltresoren und Geheimnissen
 
@@ -36,7 +37,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
 
 ---
 
-Verwenden Sie zum Erstellen eines neuen Schlüsseltresors Folgendes:
+Um einen neuen Schlüsseltresor zu erstellen und ein Geheimnis hinzuzufügen, verwenden Sie:
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -101,7 +102,7 @@ Weitere Informationen zum Erstellen von Schlüsseltresoren und zum Hinzufügen v
 
 Der Benutzer, der die Vorlage bereitstellt, muss die Berechtigung `Microsoft.KeyVault/vaults/deploy/action` für den Bereich der Ressourcengruppe und des Schlüsseltresors besitzen. Die Rollen [Besitzer](../../role-based-access-control/built-in-roles.md#owner) und [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) gewähren diesen Zugriff. Wenn Sie den Schlüsseltresor erstellt haben, sind Sie der Besitzer und verfügen somit über die Berechtigung.
 
-Die folgende Prozedur zeigt das Erstellen einer Rolle mit der Mindestberechtigung und das Zuweisen des Benutzers
+Das folgende Verfahren zeigt das Erstellen einer Rolle mit der Mindestberechtigung und das Zuweisen des Benutzers.
 
 1. Erstellen einer benutzerdefinierten Rollendefinition (JSON-Datei):
 
@@ -121,6 +122,7 @@ Die folgende Prozedur zeigt das Erstellen einer Rolle mit der Mindestberechtigun
       ]
     }
     ```
+
     Ersetzen Sie „00000000-0000-0000-0000-000000000000“ durch die Abonnement-ID.
 
 2. Erstellen Sie die neue Rolle mithilfe der JSON-Datei:
@@ -149,7 +151,7 @@ Die folgende Prozedur zeigt das Erstellen einer Rolle mit der Mindestberechtigun
 
     Die Beispiele weisen dem Benutzer auf Ressourcengruppenebene die benutzerdefinierte Rolle zu.
 
-Wenn ein Schlüsseltresor zusammen mit der Vorlage für eine [verwaltete Anwendung](../managed-applications/overview.md) verwendet wird, müssen Sie Zugriff auf den Dienstprinzipal des **Ressourcenanbieters der Appliance** erteilen. Weitere Informationen finden Sie unter [Zugreifen auf das Geheimnis im Schlüsseltresor bei der Bereitstellung von Azure Managed Applications](../managed-applications/key-vault-access.md).
+Wenn Sie einen Schlüsseltresor mit der Vorlage für eine [verwaltete Anwendung](../managed-applications/overview.md) verwenden, müssen Sie den Zugriff auf den **Geräte-Ressourcenanbieter**-Dienstprinzipal gewähren. Weitere Informationen finden Sie unter [Zugreifen auf das Geheimnis im Schlüsseltresor bei der Bereitstellung von Azure Managed Applications](../managed-applications/key-vault-access.md).
 
 ## <a name="reference-secrets-with-static-id"></a>Verweisen auf Geheimnisse mit einer statischen ID
 
@@ -159,7 +161,9 @@ Bei dieser Herangehensweise verweisen Sie auf den Schlüsseltresor in der Parame
 
 [Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung](./template-tutorial-use-key-vault.md) verwendet diese Methode.
 
-Die folgende Vorlage stellt einen SQL-Server bereit, der ein Administratorkennwort enthält. Der Kennwortparameter ist auf eine sichere Zeichenfolge festgelegt. Aber die Vorlage gibt nicht an, woher dieser Wert stammt.
+Die folgende Vorlage stellt einen SQL-Server bereit, der ein Administratorkennwort enthält. Der Kennwortparameter ist auf eine sichere Zeichenfolge festgelegt. Die Vorlage gibt jedoch nicht an, woher dieser Wert stammt.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -195,6 +199,29 @@ Die folgende Vorlage stellt einen SQL-Server bereit, der ein Administratorkennwo
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param adminLogin string
+
+@secure()
+param adminPassword string
+
+param sqlServerName string
+
+resource sqlServer 'Microsoft.Sql/servers@2020-11-01-preview' = {
+  name: sqlServerName
+  location: resourceGroup().location
+  properties: {
+    administratorLogin: adminLogin
+    administratorLoginPassword: adminPassword
+    version: '12.0'
+  }
+}
+```
+
+---
+
 Erstellen Sie jetzt eine Parameterdatei für der vorherige Vorlage. Geben Sie in der Parameterdatei einen Parameter an, der dem Namen des Parameters in der Vorlage entspricht. Verweisen Sie für den Parameterwert auf das Geheimnis aus dem Schlüsseltresor. Sie verweisen auf den geheimen Schlüssel, indem Sie den Ressourcenbezeichner des Schlüsseltresors und den Namen des Geheimnisses übergeben:
 
 In der folgenden Parameterdatei muss das Schlüsseltresorgeheimnis bereits vorhanden sein, und Sie geben einen statischen Wert für seine Ressourcen-ID an.
@@ -204,25 +231,25 @@ In der folgenden Parameterdatei muss das Schlüsseltresorgeheimnis bereits vorha
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "adminLogin": {
-        "value": "exampleadmin"
-      },
-      "adminPassword": {
-        "reference": {
-          "keyVault": {
+    "adminLogin": {
+      "value": "exampleadmin"
+    },
+    "adminPassword": {
+      "reference": {
+        "keyVault": {
           "id": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<vault-name>"
-          },
-          "secretName": "ExamplePassword"
-        }
-      },
-      "sqlServerName": {
-        "value": "<your-server-name>"
+        },
+        "secretName": "ExamplePassword"
       }
+    },
+    "sqlServerName": {
+      "value": "<your-server-name>"
+    }
   }
 }
 ```
 
-Wenn Sie den geheimen Schlüssel in einer Version verwenden müssen, die nicht die aktuelle Version ist, verwenden Sie die `secretVersion`-Eigenschaft.
+Wenn Sie eine andere Version des Geheimnisses als die aktuelle Version verwenden müssen, fügen Sie die `secretVersion`Eigenschaft ein.
 
 ```json
 "secretName": "ExamplePassword",
@@ -255,7 +282,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="reference-secrets-with-dynamic-id"></a>Verweisen auf Geheimnisse mit einer dynamischen ID
 
-Im vorherigen Abschnitt wurde für das Geheimnis des Schlüsseltresors eine statische Ressourcen-ID aus dem Parameter übergeben. Manchmal muss jedoch auf einen geheimen Schlüsseltresorschlüssel verwiesen werden, der je nach aktueller Bereitstellung variiert. Oder Sie möchten Parameterwerte an die Vorlage übergeben, statt einen Referenzparameter in der Parameterdatei zu erstellen. In beiden Fällen können Sie die Ressourcen-ID für ein Schlüsseltresorgeheimnis mithilfe einer verknüpften Vorlage dynamisch erstellen.
+Im vorherigen Abschnitt wurde für das Geheimnis des Schlüsseltresors eine statische Ressourcen-ID aus dem Parameter übergeben. In einigen Szenarien müssen Sie auf ein Geheimnis des Schlüsseltresors verweisen, das je nach der aktuellen Bereitstellung variiert. Oder Sie möchten Parameterwerte an die Vorlage übergeben, anstatt einen Referenzparameter in der Parameterdatei zu erstellen. Die Lösung besteht darin, die Ressourcen-ID für ein Schlüsseltresor-Geheimnis dynamisch zu erzeugen, indem eine verknüpfte Vorlage verwendet wird.
 
 Da in der Parameterdatei keine Vorlagenausdrücke zulässig sind, kann die Ressourcen-ID nicht dynamisch in der Parameterdatei generiert werden.
 
@@ -373,8 +400,11 @@ Die folgende Vorlage erstellt dynamisch die Schlüsseltresor-ID und übergibt si
 }
 ```
 
+> [!NOTE]
+> Ab der Bicep-Version 0.3.255 wird eine Parameterdatei benötigt, um ein Schlüsseltresor-Geheimnis abzurufen, da das `reference` Schlüsselwort nicht unterstützt wird. Es wird daran gearbeitet, die Unterstützung hinzuzufügen. Weitere Informationen finden Sie in der [GitHub-Ausgabe 1028](https://github.com/Azure/bicep/issues/1028).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Was ist Azure Key Vault?](../../key-vault/general/overview.md)
-- Vollständige Beispiele für Verweise auf geheime Schlüssel finden Sie unter [Key Vault examples](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)(in englischer Sprache).
+- Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Was ist der Azure Schlüsseltresor?](../../key-vault/general/overview.md)
+- Vollständige Beispiele für das Referenzieren von Schlüsselgeheimnissen finden Sie unter [Beispiele für Schlüsseltresore](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples) auf GitHub.
 - Ein Microsoft Learn-Modul, das das Übergeben eines sicheren Werts aus einem Schlüsseltresor behandelt, finden Sie unter [Verwalten komplexer Cloudbereitstellungen mithilfe erweiterter ARM-Vorlagenfunktionen](/learn/modules/manage-deployments-advanced-arm-template-features/).

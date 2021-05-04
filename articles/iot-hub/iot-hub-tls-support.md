@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: jlian
-ms.openlocfilehash: 6a02b97957cc0599e2960cba551b536e83d1a902
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3fed568d1e5b85fcfaf5c88eb736e876e9748088
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222554"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930711"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Transport Layer Security (TLS)-Unterstützung in IoT Hub
 
@@ -30,7 +30,7 @@ Während der Verlängerung der serverseitigen IoT Hub-Zertifikate wird beim IoT 
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>TLS-Zertifikat von ECC-Server (Elliptic Curve Cryptography) (Vorschau)
 
-Das TLS-Zertifikat von ECC-Server für IoT Hub steht für die öffentliche Vorschau zur Verfügung. Während die ECC-Zertifikatüberprüfung (mit Nur-ECC-Verschlüsselungssammlungen) eine ähnliche Sicherheit für RSA-Zertifikate bietet, nutzt sie bis zu 40 % weniger Compute, Arbeitsspeicher und Bandbreite. Diese Einsparungen sind wichtig für IoT-Geräte aufgrund ihrer kleineren Profile und des kleineren Arbeitsspeichers und zur Unterstützung von Anwendungsfällen in Umgebungen mit eingeschränkter Netzwerkbandbreite. 
+Das TLS-Zertifikat von ECC-Server für IoT Hub steht für die öffentliche Vorschau zur Verfügung. Während die ECC-Zertifikatüberprüfung (mit Nur-ECC-Verschlüsselungssammlungen) eine ähnliche Sicherheit für RSA-Zertifikate bietet, nutzt sie bis zu 40 % weniger Compute, Arbeitsspeicher und Bandbreite. Diese Einsparungen sind wichtig für IoT-Geräte aufgrund ihrer kleineren Profile und des kleineren Arbeitsspeichers und zur Unterstützung von Anwendungsfällen in Umgebungen mit eingeschränkter Netzwerkbandbreite. Der Stamm des ECC-Serverzertifikats lautet „DigiCert Global Root G3“.
 
 So können Sie die Vorschau des ECC-Serverzertifikats für IoT Hub anzeigen:
 

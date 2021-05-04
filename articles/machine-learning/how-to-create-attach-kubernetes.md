@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Sie mit Azure Machine Learning einen neuen Azure 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/11/2021
-ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.date: 04/08/2021
+ms.openlocfilehash: 949975c1f28c2c1d630319e5172f853f5ed44b35
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276653"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890022"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Erstellen und Anfügen eines Azure Kubernetes Service-Clusters
 
@@ -67,6 +67,10 @@ Mit Azure Machine Learning kann ein trainiertes Machine Learning-Modell im Azure
     - [Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)](../aks/cluster-autoscaler.md)
 
 - __Aktualisieren Sie den Cluster nicht direkt mithilfe einer YAML-Konfiguration__. Während Azure Kubernetes Services Updates über die YAML-Konfiguration unterstützt, überschreiben Azure Machine Learning-Bereitstellungen Ihre Änderungen. Die einzigen beiden YAML-Felder, die nicht überschrieben werden, sind __Anforderungslimits__ und __CPU und Arbeitsspeicher__.
+
+- Das Erstellen eines AKS-Clusters mithilfe der Azure Machine Learning Studio-Benutzeroberfläche, des Azure Machine Learning Studio-SDKs oder der CLI-Erweiterung ist __nicht__ idempotent. Wenn Sie versuchen, die Ressource erneut zu erstellen, führt dies zu dem Fehler, dass ein Cluster mit demselben Namen bereits vorhanden ist.
+    
+    - Die Verwendung einer Azure Resource Manager-Vorlage und der Ressource [Microsoft.MachineLearningServices/workspaces/computes](/azure/templates/microsoft.machinelearningservices/2019-11-01/workspaces/computes) zum Erstellen eines AKS-Clusters ist ebenfalls __nicht__ idempotent. Wenn Sie versuchen, die Vorlage erneut zu verwenden, um eine bereits vorhandene Ressource zu aktualisieren, wird derselbe Fehler angezeigt.
 
 ## <a name="azure-kubernetes-service-version"></a>Version von Azure Kubernetes Service
 
@@ -194,7 +198,7 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 az ml computetarget create aks -n myaks
 ```
 
-Weitere Informationen finden Sie unter [az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks).
+Weitere Informationen finden Sie unter [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -219,7 +223,7 @@ Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster verfügen, k�
 
 Weitere Informationen zum Erstellen eines AKS-Clusters mithilfe der Azure-CLI oder des Portals finden Sie in den folgenden Artikeln:
 
-* [Erstellen eines AKS-Clusters (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az-aks-create)
+* [Erstellen eines AKS-Clusters (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az_aks_create)
 * [Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal](../aks/kubernetes-walkthrough-portal.md)
 * [Erstellen eines AKS-Clusters (ARM-Vorlage auf Azure-Schnellstartvorlagen)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
@@ -271,7 +275,7 @@ Um den vorhandenen Cluster an Ihren Arbeitsbereich anzufügen, verwenden Sie den
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-Weitere Informationen finden Sie unter [az ml computetarget attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks).
+Weitere Informationen finden Sie unter [az ml computetarget attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach_aks).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

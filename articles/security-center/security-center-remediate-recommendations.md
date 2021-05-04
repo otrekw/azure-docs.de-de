@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: f382646c889d004738064cae2d09fd66d897b110
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dc279ea48472ac86dd9502e37788e8b2aad4f37c
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438266"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906794"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Umsetzen von Empfehlungen in Azure Security Center
 
@@ -30,22 +30,22 @@ Nach der Überprüfung aller Empfehlungen müssen Sie entscheiden, welche zuerst
 
 1. Nach Abschluss des Vorgangs wird eine Benachrichtigung angezeigt, in der Sie darüber informiert werden, ob das Problem behoben wurde.
 
-## <a name="quick-fix-remediation"></a>Schnelle Problembehebung
+## <a name="fix-button"></a>Korrektur-Schaltfläche
 
-Um die Problembehebung zu vereinfachen und die Sicherheit Ihrer Umgebung zu verbessern (und Ihre Sicherheitsbewertung zu erhöhen), beinhalten viele Empfehlungen eine Option zur schnellen Problembehebung.
+Um die Behebung zu vereinfachen und die Sicherheit Ihrer Umgebung zu verbessern (und Ihre Sicherheitsbewertung zu erhöhen), enthalten viele Empfehlungen eine **Korrektur**-Option.
 
-Mithilfe der schnellen Problembehebung können Sie eine Empfehlung schnell für mehrere Ressourcen umsetzen.
+Die **Korrektur** hilft Ihnen, eine Empfehlung für mehrere Ressourcen schnell zu korrigieren.
 
 > [!TIP]
-> Lösungen zur schnellen Problembehebung sind nur für bestimmte Empfehlungen verfügbar. Um die Empfehlungen zu finden, für die eine schnelle Problembehebung verfügbar ist, verwenden Sie den Filter **Antwortaktionen** für die Liste der Empfehlungen:
+> Die **Korrektur**-Funktion ist nur für bestimmte Empfehlungen verfügbar. Um Empfehlungen zu finden, für die eine Korrektur verfügbar ist, verwenden Sie den Filter **Reaktionsmaßnahmen** für die Liste der Empfehlungen:
 > 
-> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="Verwenden Sie die Filter über der Empfehlungsliste, um Empfehlungen mit der Option zur schnellen Problembehebung zu finden":::
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="Verwenden Sie die Filter über der Empfehlungsliste, um Empfehlungen mit der schnellen Korrektur-Option zu finden":::
 
-So implementieren Sie eine Lösung zur schnellen Problembehebung
+So führen Sie eine **Korrektur** aus:
 
-1. Klicken Sie in der Liste der Empfehlungen, die mit **Schnelle Problembehebung** bezeichnet sind, auf eine Empfehlung.
+1. Wählen Sie in der Liste der Empfehlungen, die das **Korrektur**-Symbol aufweisen:::image type="icon" source="media/security-center-remediate-recommendations/fix-icon.png" border="false":::, eine Empfehlung aus.
 
-    [![Wählen Sie „Schnelle Problembehebung“ aus.](media/security-center-remediate-recommendations/security-center-quick-fix-select.png)](media/security-center-remediate-recommendations/security-center-quick-fix-select.png#lightbox)
+    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-recommendations-fix-action.png" alt-text="Empfehlungsliste mit Hervorhebung der Empfehlungen mit der Korrektur-Maßnahme" lightbox="./media/security-center-remediate-recommendations/security-center-recommendations-fix-action.png#lightbox":::
 
 1. Wählen Sie auf der Registerkarte **Fehlerhafte Ressourcen** die Ressourcen aus, für die Sie die Empfehlung implementieren möchten, und wählen Sie dann **Wartung ausführen** aus.
 
@@ -57,7 +57,7 @@ So implementieren Sie eine Lösung zur schnellen Problembehebung
     ![Schnelle Problembehebung](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
 
     > [!NOTE]
-    > Die Auswirkungen sind in dem grauen Feld im Fenster **Ressourcen warten** aufgelistet, das nach dem Klicken auf **Wartung ausführen** geöffnet wird. Hier ist angegeben, welche Änderungen auftreten, wenn Sie mit der schnellen Problembehebung fortfahren.
+    > Die Auswirkungen sind in dem grauen Feld im Fenster **Ressourcen warten** aufgelistet, das nach dem Klicken auf **Wartung ausführen** geöffnet wird. Sie listen auf, welche Änderungen bei der Durchführung der **Korrektur** auftreten.
 
 1. Fügen Sie ggf. die relevanten Parameter ein, und genehmigen Sie die Korrektur.
 
@@ -66,7 +66,7 @@ So implementieren Sie eine Lösung zur schnellen Problembehebung
 
 1. Nach Abschluss des Vorgangs wird eine Benachrichtigung angezeigt, in der Sie darüber informiert werden, ob die Umstellung erfolgreich durchgeführt wurde.
 
-## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>Protokollierung der schnellen Problembehebung im Aktivitätsprotokoll <a name="activity-log"></a>
+## <a name="fix-actions-logged-to-the-activity-log"></a>Die Korrektur-Maßnahmen werden im Aktivitätsprotokoll protokolliert <a name="activity-log"></a>
 
 Beim Korrekturvorgang wird ein Vorlagenbereitstellungs- oder REST PATCH-API-Aufruf verwendet, um die Konfiguration auf die Ressource anzuwenden. Diese Vorgänge werden im [Azure-Aktivitätsprotokoll](../azure-resource-manager/management/view-activity-logs.md) protokolliert.
 

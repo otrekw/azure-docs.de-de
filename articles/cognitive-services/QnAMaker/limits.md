@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad498575b029f918538909a9b5b2d52c71c1389c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98164871"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816366"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Grenzwerte und Grenzen für QnA Maker-Wissensdatenbanken
 
@@ -108,6 +108,26 @@ Dabei handelt es sich um die Grenzwerte für die einzelnen Aktualisierungsaktion
 * Maximale Anzahl hinzugefügter oder gelöschter Metadatenfelder: 10
 * Maximale Anzahl der URLs, die aktualisiert werden können: 5
 * Maximale Anzahl zulässiger QnAs pro Aufruf: 1000
+
+## <a name="add-unstructured-file-limits"></a>Hinzufügen von Grenzwerten für unstrukturierte Dateien
+
+> [!NOTE]
+> * Wenn Sie größere Dateien verwenden müssen, als der Grenzwert zulässt, können Sie die Datei in kleinere Dateien aufteilen, bevor Sie sie an die API senden. 
+
+Diese stellen die Grenzwerte dar, wenn unstrukturierte Dateien zum *Erstellen einer Wissensdatenbank* oder zum Aufrufen der CreateKnowledgeBase-API verwendet werden:
+* Länge der Datei: Wir extrahieren die ersten 32.000 Zeichen.
+* Maximal 3 Antworten pro Datei.
+
+## <a name="prebuilt-question-answering-limits"></a>Vordefinierte Grenzwerte für die Beantwortung von Fragen
+
+> [!NOTE]
+> * Wenn Sie größere Dokumente verwenden müssen, als der Grenzwert zulässt, können Sie den Text in kleinere Textabschnitte aufteilen, bevor Sie ihn an die API senden. 
+> * Ein Dokument ist eine einzelne aus Textzeichen bestehende Zeichenfolge.  
+
+Diese stellen die Grenzwerte dar, wenn die vordefinierte API verwendet wird, um *eine Antwort zu generieren* oder die GenerateAnswer-API aufzurufen:
+* Anzahl der Dokumente: 5
+* Maximale Größe eines einzelnen Dokuments: 5.120 Zeichen
+* Maximal 3 Antworten pro Dokument.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

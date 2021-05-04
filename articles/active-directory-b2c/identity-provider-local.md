@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 04/22/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d9eb28ad19d53df542769a89b839668bbb205e30
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 48d6f6fc983de3f9a98b81011db1a8843f678939
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256105"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896259"
 ---
 # <a name="set-up-the-local-account-identity-provider"></a>Einrichten des Identitätsanbieters „Lokales Konto“
 
@@ -47,7 +47,7 @@ Mit der Benutzeroption können sich Benutzer mit einem Benutzernamen und einem K
 
 ![Registrierung oder Anmeldung mit Benutzername](./media/identity-provider-local/local-account-username-experience.png)
 
-## <a name="phone-sign-in-preview"></a>Anmeldung per Telefon (Vorschau)
+## <a name="phone-sign-in"></a>Anmeldung per Telefon
 
 Die kennwortlose Authentifizierung ist ein Authentifizierungstyp, bei dem ein Benutzer sich nicht mit seinem Kennwort anmelden muss. Über die Telefonregistrierung und -anmeldung kann sich der Benutzer mit einer Telefonnummer als primärem Anmeldungsbezeichner für die App registrieren. Die Benutzererfahrung bei Registrierung und Anmeldung sieht folgendermaßen aus:
 
@@ -81,9 +81,9 @@ Die folgenden Screenshots veranschaulichen den Ablauf der Telefonwiederherstellu
 ![Benutzerflow für Telefonwiederherstellung](./media/identity-provider-local/local-account-change-phone-flow.png)
 
 
-## <a name="phone-or-email-sign-in-preview"></a>Anmeldung per Telefon oder E-Mail (Vorschau)
+## <a name="phone-or-email-sign-in"></a>Anmeldung per Telefon oder E-Mail
 
-Sie können die [Anmeldung per Telefon](#phone-sign-in-preview) und die [Anmeldung per E-Mail-Adresse](#email-sign-in) kombinieren. Auf der Registrierungs- oder Anmeldeseite kann der Benutzer eine Telefonnummer oder E-Mail-Adresse eingeben. Basierend auf der Benutzereingabe leitet Azure AD B2C den Benutzer zum entsprechenden Flow. 
+Sie können die [Anmeldung per Telefon](#phone-sign-in) und die [Anmeldung per E-Mail-Adresse](#email-sign-in) kombinieren. Auf der Registrierungs- oder Anmeldeseite kann der Benutzer eine Telefonnummer oder E-Mail-Adresse eingeben. Basierend auf der Benutzereingabe leitet Azure AD B2C den Benutzer zum entsprechenden Flow. 
 
 ![Registrierung oder Anmeldung per Telefon oder E-Mail-Adresse](./media/identity-provider-local/local-account-phone-and-email-experience.png)
 

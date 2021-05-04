@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 3c9f1b76bb707a296da00ac503482efe6a22385b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 6ee0164dd8243d30cf691350352757f2503e34c8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278336"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862973"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Behandeln von häufigen Fehlern mit dem Onboarding von Automanage
 Die Integration eines Computers in den Dienst durch Automanage kann fehlschlagen. In diesem Dokument wird erläutert, wie Sie Bereitstellungsfehler behandeln können, Sie erfahren einige häufige Gründe für das Fehlschlagen von Bereitstellungen, und es werden mögliche nächste Schritte bei der Entschärfung beschrieben.
@@ -41,11 +41,10 @@ Die Region des Arbeitsbereichs entspricht nicht den Anforderungen an die Regions
 „Access denied because of the deny assignment with name 'System deny assignment created by managed application“ (Der Zugriff wurde aufgrund der Ablehnungszuweisung mit dem Namen „Durch eine verwaltete Anwendung erstellte Systemablehnungszuweisung“ verweigert) | Eine [denyAssignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)-Klasse wurde für Ihre Ressource erstellt, durch die Automanage am Zugriff auf Ihre Ressource gehindert wurde. Diese denyAssignment-Klasse wurde möglicherweise von einer [Blaupause](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking) oder von einer [verwalteten Anwendung](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview) erstellt.
 „OS Information: Name='(null)', ver='(null)', agent status='Not Ready'.“ (Betriebssysteminformationen: Name='(null)', Version='(null)', Agent-Status='Nicht bereit'.) | Stellen Sie sicher, dass Sie eine [unterstützte Agent-Mindestversion](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version) ausführen, dass der Agent ausgeführt wird ([Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) und [Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)) und dass der Agent auf dem neuesten Stand ist ([Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) und [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)).
 „Unable to determine the OS for the VM OS Name:, ver . Please check that the VM Agent is running, the current status is Ready.“ (Das Betriebssystem für VM-Betriebssystemname, Version konnte nicht ermittelt werden. Stellen Sie sicher, dass der VM-Agent ausgeführt wird und dass der aktuelle Status „Bereit“ lautet.) | Stellen Sie sicher, dass Sie eine [unterstützte Agent-Mindestversion](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version) ausführen, dass der Agent ausgeführt wird ([Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) und [Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)) und dass der Agent auf dem neuesten Stand ist ([Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) und [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)).
-
-„VM has reported a failure when processing extension 'IaaSAntimalware'“ (Die VM hat beim Verarbeiten der Erweiterung 'iaasantimalware' einen Fehler gemeldet.) | Stellen Sie sicher, dass auf Ihrer VM kein anderes Antischadsoftware-/Antivirus-Angebot installiert ist. Falls das Problem weiterhin besteht, wenden Sie sich an den Support.
-ASC-Arbeitsbereich: Automanage unterstützt derzeit nicht den Log Analytics-Dienst in _Standort_. | Stellen Sie sicher, dass sich Ihre VM in einer [unterstützten Region](./automanage-virtual-machines.md#supported-regions) befindet.
+„Die VM hat beim Verarbeiten der Erweiterung ‚IaaSAntimalware‘ einen Fehler gemeldet“ | Vergewissern Sie sich, dass auf Ihrer VM noch kein anderes Antischadsoftware-/Antivirenangebot installiert wurde. Falls das Problem weiterhin besteht, wenden Sie sich an den Support.
+ASC-Arbeitsbereich: Automanage unterstützt derzeit nicht den Log Analytics-Dienst in _Standort_. | Überprüfen Sie, ob sich Ihre VM in einer [unterstützten Region](./automanage-virtual-machines.md#supported-regions) befindet.
 Bei der Vorlagenbereitstellung ist aufgrund einer Richtlinienverletzung ein Fehler aufgetreten. Weitere Informationen finden Sie in den Details. | Es gibt eine Richtlinie, die das Onboarding Ihrer VM durch Automanage verhindert. Überprüfen Sie die Richtlinien, die für Ihr Abonnement oder Ihre Ressourcengruppe mit ihrer VM gelten, die Sie in Automanage integrieren möchten.
-„The assignment has failed; there is no additional information available“ (Fehler bei der Zuweisung. Es sind keine zusätzlichen Informationen verfügbar.) | Erstellen Sie eine Anfrage beim Microsoft Azure-Support.
+„Fehler bei der Zuweisung. Es gibt keine zusätzlichen Informationen.“ | Öffnen Sie einen Fall beim Microsoft Azure-Support.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

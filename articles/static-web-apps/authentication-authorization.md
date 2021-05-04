@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 9c8dd723c9cde5c0534d9fd5ca4084c7ed15d213
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0728b45a72f7d4fe67807be5c9c2b5290af11c51
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218633"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143465"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Authentifizierung und Autorisierung für Azure Static Web Apps (Vorschau)
 
@@ -24,26 +24,26 @@ Mit Azure Static Web Apps wird der Authentifizierungsablauf optimiert, indem die
 - Google<sup>1</sup>
 - Twitter
 
-Mit anbieterspezifischen [Einladungen](#invitations) werden Benutzer Rollen zugeordnet, und autorisierten Benutzern wird Zugriff auf [Routen](routes.md) mithilfe von Regeln gewährt, die in der Datei _routes.json_ definiert sind.
+Mit anbieterspezifischen [Einladungen](#invitations) werden Benutzer Rollen zugeordnet, und autorisierten Benutzern wird Zugriff auf [Routen](configuration.md#routes) mithilfe von Regeln gewährt, die in der Datei _staticwebapp.config.json_ definiert wurden.
 
 Alle Authentifizierungsanbieter sind standardmäßig aktiviert. [Blockieren Sie den Zugriff](#block-an-authorization-provider) mit einer benutzerdefinierten Routenregel, um einen Authentifizierungsanbieter auszuschließen.
 
-Die Bereiche Authentifizierung und Autorisierung weisen starke Überschneidungen mit Routingkonzepten auf. Lesen Sie zusätzlich zu diesem Artikel den [Leitfaden zum Routing](routes.md).
+Die Bereiche Authentifizierung und Autorisierung weisen starke Überschneidungen mit Routingkonzepten auf. Lesen Sie zusätzlich zu diesem Artikel den [Konfigurationsleitfaden](configuration.md#routes).
 
 ## <a name="roles"></a>Rollen
 
-Jeder Benutzer, der auf eine statische Web-App zugreift, gehört mindestens einer Rolle an.  Benutzer können zwei integrierten Rollen angehören:
+Jeder Benutzer, der auf eine statische Web-App zugreift, gehört mindestens einer Rolle an. Benutzer können zwei integrierten Rollen angehören:
 
 - **anonymous**: Alle Benutzer gehören automatisch der Rolle _anonymous_ an.
 - **authenticated**: Alle Benutzer, die angemeldet sind, gehören der Rolle _authenticated_ an.
 
-Zusätzlich zu den integrierten Rollen können Sie neue Rollen erstellen, sie mithilfe von Einladungen Benutzern zuweisen und in der Datei _routes.json_ darauf verweisen.
+Zusätzlich zu den integrierten Rollen können Sie neue Rollen erstellen, sie mithilfe von Einladungen Benutzern zuweisen und in der Datei _staticwebapp.config.json_ darauf verweisen.
 
 ## <a name="role-management"></a>Rollenverwaltung
 
 ### <a name="add-a-user-to-a-role"></a>Hinzufügen eines Benutzers zu einer Rolle
 
-Um Ihrer Website Benutzer hinzuzufügen, generieren Sie Einladungen, mit denen Sie Benutzer bestimmten Rollen zuordnen können. Rollen werden in der Datei _routes.json_ definiert und verwaltet.
+Um Ihrer Website Benutzer hinzuzufügen, generieren Sie Einladungen, mit denen Sie Benutzer bestimmten Rollen zuordnen können. Rollen werden in der Datei _staticwebapp.config.json_ definiert und verwaltet.
 
 <a name="invitations" id="invitations"></a>
 
@@ -53,25 +53,25 @@ Einladungen gelten spezifisch für einzelne Autorisierungsanbieter. Aus diesem G
 
 <a name="provider-user-details" id="provider-user-details"></a>
 
-| Autorisierungsanbieter | Offenlegung von Benutzerdaten  |
-| ---------------------- | ----------------- |
-| Azure Active Directory | E-Mail-Adresse     |
-| Facebook               | E-Mail-Adresse     |
-| GitHub                 | username          |
-| Google<sup>1</sup>     | E-Mail-Adresse     |
-| Twitter                | username          |
+| Autorisierungsanbieter | Offenlegung von Benutzerdaten |
+| ---------------------- | ---------------- |
+| Azure Active Directory | E-Mail-Adresse    |
+| Facebook               | E-Mail-Adresse    |
+| GitHub                 | username         |
+| Google<sup>1</sup>     | E-Mail-Adresse    |
+| Twitter                | username         |
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einer Static Web Apps-Ressource.
 1. Klicken Sie unter _Einstellungen_ auf **Rollenverwaltung**.
 1. Klicken Sie auf die Schaltfläche **Einladen**.
 1. Wählen Sie in der Liste mit den Optionen den Eintrag _Autorisierungsanbieter_ aus.
 1. Fügen Sie im Feld _Invitee details_ (Details zum Eingeladenen) den Benutzernamen oder die E-Mail-Adresse des Empfängers hinzu.
-    - Geben Sie bei GitHub und Twitter den Benutzernamen ein. Geben Sie für alle anderen Anbieter die E-Mail-Adresse des Empfängers ein.
+   - Geben Sie bei GitHub und Twitter den Benutzernamen ein. Geben Sie für alle anderen Anbieter die E-Mail-Adresse des Empfängers ein.
 1. Wählen Sie in der Dropdownliste _Domäne_ die Domäne Ihrer statischen Website aus.
-    - Die von Ihnen ausgewählte Domäne ist die Domäne, die in der Einladung angezeigt wird. Falls Sie über eine benutzerdefinierte Domäne verfügen, die Ihrer Website zugeordnet ist, möchten Sie wahrscheinlich diese benutzerdefinierte Domäne auswählen.
+   - Die von Ihnen ausgewählte Domäne ist die Domäne, die in der Einladung angezeigt wird. Falls Sie über eine benutzerdefinierte Domäne verfügen, die Ihrer Website zugeordnet ist, möchten Sie wahrscheinlich diese benutzerdefinierte Domäne auswählen.
 1. Fügen Sie im Feld _Rolle_ eine Liste mit Rollennamen (durch Kommas getrennt) ein.
 1. Geben Sie die Anzahl von Stunden für die maximale Gültigkeitsdauer der Einladung ein.
-    - Die Obergrenze beträgt 168 Stunden (7 Tage).
+   - Die Obergrenze beträgt 168 Stunden (7 Tage).
 1. Klicken Sie auf die Schaltfläche **Generieren**.
 1. Kopieren Sie den Link aus dem Feld _Einladungslink_.
 1. Senden Sie eine E-Mail mit dem Einladungslink an die Person, der Sie Zugriff auf Ihre App erteilen möchten.
@@ -95,7 +95,7 @@ Wenn der Benutzer in der Einladung auf den Link klickt, wird er aufgefordert, si
 1. Klicken Sie unter _Einstellungen_ auf **Rollenverwaltung**.
 1. Suchen Sie in der Liste nach dem Benutzer.
 1. Aktivieren Sie das Kontrollkästchen in der Zeile des Benutzers.
-1. Klicken Sie auf die Schaltfläche **Löschen**.
+1. Klicken Sie auf die Schaltfläche **Löschen** .
 
 Beachten Sie beim Entfernen eines Benutzers Folgendes:
 
@@ -123,7 +123,7 @@ https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 
 ## <a name="system-folder"></a>Systemordner
 
-Azure Static Web Apps nutzt den Systemordner `/.auth`, um Zugriff auf autorisierungsbezogene APIs zu gewähren. Anstatt die Routen im Ordner `/.auth` direkt für Endbenutzer offenzulegen, können Sie erwägen, [Routingregeln](routes.md) für die Erstellung von benutzerfreundlichen URLs festzulegen.
+Azure Static Web Apps nutzt den Systemordner `/.auth`, um Zugriff auf autorisierungsbezogene APIs zu gewähren. Anstatt die Routen im Ordner `/.auth` direkt für Endbenutzer offenzulegen, können Sie erwägen, [Routingregeln](configuration.md#routes) für die Erstellung von benutzerfreundlichen URLs festzulegen.
 
 ## <a name="login"></a>Anmeldename
 
@@ -189,7 +189,7 @@ Wenn ein Benutzer nach der Abmeldung zu einer bestimmten Seite zurückgeleitet w
 
 Unter Umständen möchten Sie für Ihr App die Verwendung eines Autorisierungsanbieters verhindern. Es kann beispielsweise sein, dass für Ihre App standardmäßig nur [Anbieter genutzt werden sollen, die E-Mail-Adressen offenlegen](#provider-user-details).
 
-Zum Blockieren eines Anbieters können Sie [Routenregeln](routes.md) erstellen, um einen 404-Fehler für Anforderungen zurückzugeben, die an die blockierte anbieterspezifische Route gesendet werden. Fügen Sie beispielsweise die folgende Routenregel hinzu, um Twitter als Anbieter auszuschließen.
+Zum Blockieren eines Anbieters können Sie [Routenregeln](configuration.md#routes) erstellen, um einen 404-Fehler für Anforderungen zurückzugeben, die an die blockierte anbieterspezifische Route gesendet werden. Fügen Sie beispielsweise die folgende Routenregel hinzu, um Twitter als Anbieter auszuschließen.
 
 ```json
 {

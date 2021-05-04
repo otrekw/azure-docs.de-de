@@ -8,43 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 00e51d2c9515191b6d127355f49eeed3000a46ed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285355"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514710"
 ---
-# <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Vordefiniertes ID-Modell der Formularerkennung für Ausweise
+# <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Vordefiniertes ID-Modell der Formularerkennung für Ausweise
 
-Mit der Azure-Formularerkennung können Informationen aus amtlichen Ausweisen unter Verwendung des vordefinierten ID-Modells analysiert und extrahiert werden. Dabei werden unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/overview-ocr.md) mit ID-Erkennungsfunktionen kombiniert, um wesentliche Informationen aus internationalen Reisepässen und US-amerikanischen Führerscheinen (alle 50 Bundesstaaten). Mit der ID-API werden wesentliche Informationen aus diesen Ausweisdokumenten extrahiert, z. B. Vorname, Nachname, Geburtsdatum und Dokumentnummer. Diese API ist in der Vorschauversion 2.1 der Formularerkennung als Clouddienst und als lokaler Container verfügbar.
+Mit der Azure-Formularerkennung können Informationen aus amtlichen Ausweisen unter Verwendung des vordefinierten ID-Modells analysiert und extrahiert werden. Dabei werden unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/overview-ocr.md) mit ID-Erkennungsfunktionen kombiniert, um wesentliche Informationen aus internationalen Reisepässen und US-Führerscheinen (alle 50 Bundesstaaten und D.C.) zu extrahieren. Mit der ID-API werden wesentliche Informationen aus diesen Ausweisdokumenten extrahiert, z. B. Vorname, Nachname, Geburtsdatum und Dokumentnummer. Diese API ist in der Vorschauversion 2.1 der Formularerkennung als Clouddienst und als lokaler Container verfügbar.
 
-## <a name="what-does-the-id-service-do"></a>Funktionsweise des ID-Diensts 
+## <a name="what-does-the-id-service-do"></a>Funktionsweise des ID-Diensts
 
-Der vorgefertigte ID-Dienst extrahiert die Schlüsselwerte aus den internationalen Reisepässen und den US-Führerscheinen und gibt Sie in einer organisierten strukturierten JSON-Antwort zurück. 
+Mit dem vordefinierten ID-Dienst werden die Schlüsselwerte aus internationalen Reisepässen und US-Führerscheinen extrahiert und in einer organisierten strukturierten JSON-Antwort zurückgegeben.
+
+### <a name="drivers-license-example"></a>**Führerschein als Beispiel**
 
 ![Beispiel eines Führerscheins](./media/id-example-drivers-license.JPG)
+
+### <a name="passport-example"></a>**Reisepass als Beispiel**
 
 ![Beispiel eines Reisepasses](./media/id-example-passport-result.JPG)
 
 ### <a name="fields-extracted"></a>Extrahierte Felder
 
-|Name| Typ | BESCHREIBUNG | Wert | 
+|Name| type | Beschreibung | Wert |
 |:-----|:----|:----|:----|
-|  Land | country | Ländercode, konform zu ISO 3166-Standard | „USA“ | 
-|  DateOfBirth | date | Geburtsdatum im Format JJJJ-MM-TT | „1980-01-01“ | 
-|  DateOfExpiration | date | Ablaufdatum im Format JJJJ-MM-TT | „2019-05-05“ |  
-|  DocumentNumber | Zeichenfolge | Relevante Passnummer, Führerscheinnummer usw. | „340020013“ |  
-|  FirstName | Zeichenfolge | Extrahierter Vorname und ggf. Mittelinitial | „JENNIFER“ | 
-|  LastName | Zeichenfolge | Extrahierter Nachname | „BROOKS“ |   
+|  Land | country | Ländercode, konform zu ISO 3166-Standard | „USA“ |
+|  DateOfBirth | date | Geburtsdatum im Format JJJJ-MM-TT | „1980-01-01“ |
+|  DateOfExpiration | date | Ablaufdatum im Format JJJJ-MM-TT | „2019-05-05“ |
+|  DocumentNumber | Zeichenfolge | Relevante Passnummer, Führerscheinnummer usw. | „340020013“ |
+|  FirstName | Zeichenfolge | Extrahierter Vorname und ggf. Mittelinitial | „JENNIFER“ |
+|  LastName | Zeichenfolge | Extrahierter Nachname | „BROOKS“ |
 |  Nationality | country | Ländercode, konform zu ISO 3166-Standard | „USA“ |
-|  Geschlecht | gender | Mögliche extrahierte Werte: „M“, „F“ und „X“ | "F" | 
+|  Geschlecht | gender | Mögliche extrahierte Werte: „M“, „F“ und „X“ | "F" |
 |  MachineReadableZone | Objekt | Maschinenlesbarer zweizeiliger Bereich (Machine Readable Zone, MRZ) mit jeweils 44 Zeichen | „P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816“ |
-|  DocumentType | Zeichenfolge | Dokumenttyp, z. B. Pass oder Führerschein | „passport“ |  
+|  DocumentType | Zeichenfolge | Dokumenttyp, z. B. Pass oder Führerschein | „passport“ |
 |  Adresse | Zeichenfolge | Extrahierte Adresse (nur beim Führerschein) | „123 STREET ADDRESS YOUR CITY WA 99999-1234“|
-|  Region | Zeichenfolge | Extrahierte Region, Bundesstaat, Provinz usw. (nur Führerschein) | „Washington“ | 
+|  Region | Zeichenfolge | Extrahierter Wert für Region, Bundesstaat, Provinz usw. (nur beim Führerschein) | „Washington“ |
 
 ### <a name="additional-features"></a>Zusätzliche Features
 
@@ -52,13 +56,13 @@ Mit der ID-API werden außerdem die folgenden Informationen zurückgegeben:
 
 * Feldvertrauensgrad (jedes Feld gibt einen zugehörigen Vertrauenswert zurück)
 * OCR-Rohtext (OCR-extrahierte Textausgabe für den gesamten Beleg)
-* Begrenzungsrahmen für jedes extrahierte Feld bei US-Führerscheinen
+* Begrenzungsrahmen für jedes extrahierte Feld in US-Führerscheinen
 * Begrenzungsrahmen für jeden maschinenlesbaren Bereich in Reisepässen
 
   > [!NOTE]
   > Mit der vordefinierten ID-API wird die ID-Echtheit nicht erkannt.
   >
-  > Mit der vordefinierten ID-API der Formularerkennung werden wesentliche Daten aus ID-Daten extrahiert. Die Gültigkeit oder Echtheit des Originalausweisdokuments kann jedoch nicht erkannt werden. 
+  > Mit der vordefinierten ID-API der Formularerkennung werden wesentliche Daten aus ID-Daten extrahiert. Die Gültigkeit oder Echtheit des Originalausweisdokuments kann jedoch nicht erkannt werden.
 
 ## <a name="try-it-out"></a>Ausprobieren
 
@@ -71,12 +75,12 @@ Zum Testen des ID-Diensts der Formularerkennung wechseln Sie zum Onlinetool für
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-id-types"></a>Unterstützte ID-Typen  
+## <a name="supported-id-types"></a>Unterstützte ID-Typen
 
-* **Pre-built IDs v2.1-preview.3:** Extrahiert die Schlüsselwerte aus internationalen Reisepässen und US-Führerscheinen. 
+* **Pre-built IDs v2.1-preview.3:** Extrahiert die Schlüsselwerte aus internationalen Reisepässen und US-Führerscheinen.
 
   > [!NOTE]
-  > Unterstützung von ID-Typen 
+  > Unterstützung von ID-Typen
   >
   > Derzeit werden als ID-Typen internationale Reisepässe und US-Führerscheine unterstützt. Wir arbeiten aktiv daran, die Unterstützung auf andere Ausweisdokumente auf der ganzen Welt auszuweiten.
 
@@ -112,7 +116,7 @@ Wenn im Feld **status** der Wert **succeeded** angezeigt wird, enthält die JSON
 Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der `readResults`-Knoten enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert. Der `documentResults`-Knoten enthält die vom Modell erkannten ID-Werte. Dieser Knoten enthält außerdem nützliche Schlüssel-Wert-Paare wie Vorname, Nachname, Dokumentnummer usw.
 
 ```json
-{ 
+{
    "status": "succeeded",
   "createdDateTime": "2021-03-04T22:29:33Z",
   "lastUpdatedDateTime": "2021-03-04T22:29:36Z",
@@ -157,7 +161,7 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der `re
           ...
       }
     ],
-    
+
      "documentResults": [
       {
         "docType": "prebuilt:idDocument:passport",
@@ -243,11 +247,10 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der `re
 }
 ```
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Testen Sie eigene Ausweisdokumente und Beispiele in der [Beispielbenutzeroberfläche für die Formularerkennung](https://fott-preview.azurewebsites.net/).
-- Sehen Sie sich die Informationen in einem [Schnellstart zur Formularerkennung](quickstarts/client-library.md) an, um eine Anwendung zur Verarbeitung von Ausweisdokumenten mit Formularerkennung in der gewünschten Programmiersprache zu schreiben.
+* Testen Sie eigene Ausweisdokumente und Beispiele in der [Beispielbenutzeroberfläche für die Formularerkennung](https://fott-preview.azurewebsites.net/).
+* Sehen Sie sich die Informationen in einem [Schnellstart zur Formularerkennung](quickstarts/client-library.md) an, um eine Anwendung zur Verarbeitung von Ausweisdokumenten mit Formularerkennung in der gewünschten Programmiersprache zu schreiben.
 
 ## <a name="see-also"></a>Siehe auch
 

@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 8d877f666e03bbbe2b9d4f01bc9059b95f9a1f6b
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: fab2adb932d9c74b30b1775d8fa7ab257a4f00b0
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385274"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887916"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -70,10 +70,11 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
       Indien, Mitte  
       USA (Mitte)  
       China, Osten 2  
-      China, Norden 2  
-      Asien, Osten       
+      China, Norden   
+      China, Norden 2       
    :::column-end:::
    :::column span="":::
+      Asien, Osten  
       East US  
       USA (Ost) 2  
       USA, Osten 2 (EUAP)  
@@ -83,10 +84,10 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
       Japan, Westen  
       Korea, Mitte  
       Korea, Süden  
-      USA Nord Mitte  
-      Nordeuropa    
+      USA Nord Mitte    
    :::column-end:::
    :::column span="":::
+      Nordeuropa  
       Südafrika, Norden  
       USA Süd Mitte  
       Indien (Süden)  
@@ -95,11 +96,11 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
       Schweiz, Westen  
       Vereinigte Arabische Emirate, Norden  
       UK, Süden  
-      UK, Westen   
-      US Gov Arizona  
-      USGov Texas
+      UK, Westen     
+      US Gov Arizona
    :::column-end:::
    :::column span="":::
+      USGov Texas  
       US Government, Virginia  
       US Nat East  
       US Nat West  
@@ -121,36 +122,41 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
       Australien (Osten)  
       Australien, Südosten  
       Brasilien Süd  
+      Brasilien, Südosten  
       Kanada, Mitte  
       Indien, Mitte  
       USA (Mitte)  
-      China, Osten 2  
+      China, Osten 2      
       Asien, Osten  
-      East US  
    :::column-end:::
    :::column span="":::
+      East US  
       USA (Ost) 2  
       USA, Osten 2 (EUAP)  
-      Frankreich, Mitte; Japan, Osten  
+      Frankreich, Mitte  
+      Deutschland, Westen-Mitte  
+      Japan, Osten  
+      Japan, Westen  
       Korea, Mitte  
       USA Nord Mitte  
       Nordeuropa  
-      Südafrika, Norden  
-      USA Süd Mitte  
    :::column-end:::
    :::column span="":::
+      Norwegen, Osten  
+      Südafrika, Norden  
+      USA Süd Mitte  
       Asien, Südosten  
       Schweiz, Norden  
       Schweiz, Westen  
       VAE, Mitte  
       Vereinigte Arabische Emirate, Norden  
       UK, Süden  
-      UK, Westen   
-      US Gov Arizona  
-      US Government, Virginia  
-      US Nat East   
+      UK, Westen      
    :::column-end:::
    :::column span="":::
+      US Gov Arizona  
+      US Government, Virginia  
+      US Nat East  
       US Nat West   
       US Sec East  
       US Sec West  
@@ -160,6 +166,9 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
       USA, Westen 2  
    :::column-end:::
 :::row-end:::
+
+> [!NOTE]
+> Wenn Netzwerksicherheitsgruppen eine Region unterstützen, der Log Analytics-Arbeitsbereich diese Region laut den vorstehenden Listen für Traffic Analytics jedoch nicht unterstützt, können Sie den Log Analytics-Arbeitsbereich einer beliebigen anderen unterstützten Region als Problemumgehung verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

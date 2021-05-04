@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Bereitstellen von Erweiterungen auf Kubernetes mit Azure Arc-Unterstützung und Verwalten ihres Lebenszyklus
-ms.openlocfilehash: 63fb14818d148dcc579300fdb4c89d636b47fd05
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 362f1f0ca62c915eb7c17c80084d15aaaa75110e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450863"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139649"
 ---
 # <a name="kubernetes-cluster-extensions"></a>Kubernetes-Clustererweiterungen
 
@@ -27,7 +27,7 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [Clustere
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Installieren oder aktualisieren Sie Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) auf eine Version >= 2.16.0.
+- [Installieren oder aktualisieren Sie Azure CLI](/cli/azure/install-azure-cli) auf eine Version >= 2.16.0.
 - Azure CLI-Erweiterungen `connectedk8s` (Version >= 1.1.0) und `k8s-extension` (Version >= 0.2.0). Installieren Sie diese Azure CLI-Erweiterungen, indem Sie die folgenden Befehle ausführen:
   
     ```azurecli
@@ -51,7 +51,7 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [Clustere
 | Durchwahl | BESCHREIBUNG |
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | Bietet Einblick in die Leistung von Workloads, die im Kubernetes-Cluster bereitgestellt werden. Sammelt Metriken zur Arbeitsspeicher- und CPU-Auslastung von Controllern, Knoten und Containern. |
-| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Sammelt Überwachungsprotokolldaten von Steuerungsebenenknoten des Kubernetes-Clusters. Bietet Empfehlungen und Bedrohungswarnungen auf Grundlage der gesammelten Daten. |
+| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Erfasst Sicherheitsinformationen wie Überwachungsprotokolldaten aus dem Kubernetes-Cluster. Bietet Empfehlungen und Bedrohungswarnungen auf Grundlage der gesammelten Daten. |
 
 ## <a name="usage-of-cluster-extensions"></a>Verwendung von Clustererweiterungen
 
@@ -101,7 +101,7 @@ az k8s-extension create --name azuremonitor-containers  --extension-type Microso
 
 > [!NOTE]
 > * Der Dienst kann vertrauliche Informationen nicht für mehr als 48 Stunden aufbewahren. Wenn Kubernetes-Agents mit Azure Arc-Unterstützung für mehr als 48 Stunden nicht über Netzwerkkonnektivität verfügen und nicht bestimmen können, ob eine Erweiterung auf dem Cluster erstellt werden soll, geht die Erweiterung in den Status `Failed` über. Wenn sie sich im `Failed`-Status befindet, müssen Sie `k8s-extension create` erneut ausführen, um eine neue Erweiterungs-Azure-Ressource zu erstellen.
-> * * Azure Monitor für Container ist eine Singleton-Erweiterung (nur eine pro Cluster erforderlich). Sie müssen alle vorherigen Helm-Diagramminstallationen von Azure Monitor für Container (ohne Erweiterungen) bereinigen, bevor Sie die gleichen über Erweiterungen installieren. Befolgen Sie die Anweisungen zum [Löschen des Helm-Diagramms vor der Ausführung von `az k8s-extension create`](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-hybrid).
+> * * Azure Monitor für Container ist eine Singleton-Erweiterung (nur eine pro Cluster erforderlich). Sie müssen alle vorherigen Helm-Diagramminstallationen von Azure Monitor für Container (ohne Erweiterungen) bereinigen, bevor Sie die gleichen über Erweiterungen installieren. Befolgen Sie die Anweisungen zum [Löschen des Helm-Diagramms vor der Ausführung von `az k8s-extension create`](../../azure-monitor/containers/container-insights-optout-hybrid.md).
 
 **Erforderliche Parameter**
 
@@ -235,31 +235,6 @@ az k8s-extension list --cluster-name <clusterName> --resource-group <resourceGro
   }
 ]
 ```
-
-### <a name="update-an-existing-extension-instance"></a>Aktualisieren einer vorhandenen Erweiterungsinstanz
-
-Aktualisieren einer Erweiterungsinstanz in einem Cluster mit `k8s-extension update`, wobei die zu aktualisierenden Werte übergeben werden.  Dieser Befehl aktualisiert nur die Eigenschaften `auto-upgrade-minor-version`, `release-train` und `version`. Beispiel:
-
-- **Release Train aktualisieren:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --release-train Preview
-    ```
-
-- **Automatisches Upgrade deaktivieren und Erweiterungsinstanz einer bestimmten Version anheften:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version false --version 2.2.2
-    ```
-
-- **Automatisches Upgrade für die Erweiterungsinstanz aktivieren:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version true
-    ```
-
-> [!NOTE]
-> Der `version`-Parameter kann nur festgelegt werden, wenn `--auto-upgrade-minor-version` auf `false` festgelegt ist.
 
 ### <a name="delete-extension-instance"></a>Löschen der Erweiterungsinstanz
 

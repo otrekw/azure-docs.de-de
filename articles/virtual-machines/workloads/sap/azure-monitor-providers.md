@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 93e97f1f04aea2a31b62b2014a88a5aaa998ed2d
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: fe8ac81a8b04aa88ce91a978c2bc9b979a065370
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376085"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576158"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Anbieter von Azure Monitor für SAP-Lösungen (Vorschau)
 
@@ -22,21 +22,35 @@ Im Kontext von Azure Monitor für SAP-Lösungen bezieht sich ein *Anbietertyp* a
 Kunden können verschiedene benutzerdefinierte Anbietertypen konfigurieren, um die Datensammlung aus der entsprechenden Komponente in ihrer SAP-Landschaft zu ermöglichen. Beispielsweise können Kunden einen Anbieter für den Anbietertyp „SAP HANA“, einen anderen Anbieter für den Anbietertyp „Hochverfügbarkeitscluster“ usw. konfigurieren.  
 
 Kunden können auch mehrere Anbieter eines bestimmten Anbietertyps konfigurieren, um dieselbe SAP-Monitorressource und die zugehörige verwaltete Gruppe wiederzuverwenden. Erfahren Sie mehr über die verwaltete Ressourcengruppe. Für die öffentliche Vorschau werden die folgenden Anbietertypen unterstützt:   
-- SAP HANA
-- Hochverfügbarkeitscluster
-- Microsoft SQL Server
 - SAP NetWeaver
+- SAP HANA
+- Microsoft SQL Server
+- Hochverfügbarkeitscluster
+- Betriebssystem
 
-![Anbieter von Azure Monitor für SAP-Lösungen](./media/azure-monitor-sap/azure-monitor-providers.png)
+![Anbieter von Azure Monitor für SAP-Lösungen](https://user-images.githubusercontent.com/75772258/115047655-5a5b2c00-9ef6-11eb-9e0c-073e5e1fcd0e.png)
 
 Kunden wird empfohlen, zum Zeitpunkt der Bereitstellung der SAP-Monitorressource mindestens einen Anbieter aus den verfügbaren Anbietertypen zu konfigurieren. Durch die Konfiguration eines Anbieters initiieren Kunden die Datenerfassung aus der entsprechenden Komponente, für die der Anbieter konfiguriert ist.   
 
 Wenn Kunden zum Zeitpunkt der Bereitstellung der SAP-Monitorressource keine Anbieter konfigurieren, werden keine Telemetriedaten erfasst, obwohl die SAP-Monitorressource erfolgreich bereitgestellt wird. Kunden haben die Möglichkeit, Anbieter nach der Bereitstellung über die SAP-Monitorressource im Azure-Portal hinzuzufügen. Kunden können jederzeit Anbieter in der SAP-Monitorressource hinzufügen oder löschen.
 
-> [!Tip]
-> Wenn Sie möchten, dass Microsoft einen bestimmten Anbieter implementiert, hinterlassen Sie Ihr Feedback über den Link am Ende dieses Dokuments, oder wenden Sie sich an Ihr Kontoteam.  
+## <a name="provider-type-sap-netweaver"></a>Anbietertyp: SAP NetWeaver
 
-## <a name="provider-type-sap-hana"></a>Anbietertyp „SAP HANA“
+Kunden können einen oder mehrere Anbieter des Anbietertyps „SAP NetWeaver“ konfigurieren, um die Datenerfassung aus der SAP NetWeaver-Ebene zu ermöglichen. Der AMS NetWeaver-Anbieter nutzt die vorhandene [SAPControl-Webdienstschnittstelle,](https://www.sap.com/documents/2016/09/0a40e60d-8b7c-0010-82c7-eda71af511fa.html) um die entsprechenden Telemetriedaten abzurufen.
+
+Für das aktuelle Release sind unten die standardmäßigen SOAP-Webmethoden aufgeführt, die von AMS aufgerufen werden.
+
+![image1](https://user-images.githubusercontent.com/75772258/114600036-820d8280-9cb1-11eb-9f25-d886ab1d5414.png)
+
+In der öffentlichen Vorschau können Kunden die folgenden Daten mit dem SAP NetWeaver-Anbieter erwarten: 
+- Verfügbarkeit von Systemen und Instanzen
+- Arbeitsprozessauslastung
+- Warteschlangenauslastung
+- Statistik zu in die Warteschlange eingereihten Sperren
+
+![image](https://user-images.githubusercontent.com/75772258/114581825-a9f2eb00-9c9d-11eb-8e6f-79cee7c5093f.png)
+
+## <a name="provider-type-sap-hana"></a>Anbietertyp: SAP HANA
 
 Kunden können einen oder mehrere Anbieter des Anbietertyps *SAP HANA* konfigurieren, um die Datenerfassung aus der SAP HANA-Datenbank zu ermöglichen. Der SAP HANA-Anbieter stellt über den SQL-Port eine Verbindung mit der SAP HANA-Datenbank her, pullt Telemetriedaten aus der Datenbank und pusht sie in den Log Analytics-Arbeitsbereich des Kundenabonnements. Der SAP HANA-Anbieter führt die Erfassung aus der SAP HANA-Datenbank jede Minute durch.  
 
@@ -44,7 +58,17 @@ In der öffentlichen Vorschau können Kunden die folgenden Daten mit dem SAP HAN
 
 ![Anbieter von Azure Monitor für SAP-Lösungen – SAP HANA](./media/azure-monitor-sap/azure-monitor-providers-hana.png)
 
-## <a name="provider-type-high-availability-cluster"></a>Anbietertyp „Hochverfügbarkeitscluster“
+## <a name="provider-type-microsoft-sql-server"></a>Anbietertyp: Microsoft SQL Server
+
+Kunden können einen oder mehrere Anbieter des Anbietertyps *Microsoft SQL Server* konfigurieren, um die Datenerfassung von [SQL Server auf virtuellen Computern](https://azure.microsoft.com/services/virtual-machines/sql-server/) zu ermöglichen. Der SQL Server-Anbieter stellt über den SQL-Port eine Verbindung mit Microsoft SQL Server her, pullt Telemetriedaten aus der Datenbank und pusht sie in den Log Analytics-Arbeitsbereich des Kundenabonnements. Der SQL Server muss für die SQL-Authentifizierung konfiguriert werden, und es muss eine SQL Server-Anmeldung mit der SAP DB als Standarddatenbank für den Anbieter erstellt werden. Der SQL Server-Anbieter erfasst Daten zwischen alle 60 Sekunden bis zu jeder Stunde von SQL Server.  
+
+In der öffentlichen Vorschau können Kunden die folgenden Daten mit dem SQL Server-Anbieter erwarten: Nutzung der zugrunde liegenden Infrastruktur, wichtigste SQL-Anweisungen, größte Tabelle, Aufzeichnung von Problemen in den SQL Server-Fehlerprotokollen, Blockierung von Prozessen und andere.  
+
+Zur Konfiguration des Microsoft SQL Server-Anbieters sind die SAP-System-ID, die Host-IP-Adresse, die SQL Server-Portnummer sowie der SQL Server-Anmeldename und das Kennwort erforderlich.
+
+![Anbieter von Azure Monitor für SAP-Lösungen – SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
+
+## <a name="provider-type-high-availability-cluster"></a>Anbietertyp: Hochverfügbarkeitscluster
 Kunden können einen oder mehrere Anbieter des Anbietertyps *Hochverfügbarkeitscluster* konfigurieren, um die Datenerfassung aus Pacemaker-Clustern innerhalb der SAP-Landschaft zu ermöglichen. Der Anbieter des Hochverfügbarkeitsclusters stellt über den Endpunkt [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) eine Verbindung mit Pacemaker her, pullt Telemetriedaten aus der Datenbank und pusht sie in den Log Analytics-Arbeitsbereich des Kundenabonnements. Der Anbietertyp „Hochverfügbarkeitscluster“ erfasst alle 60 Sekunden Daten von Pacemaker.  
 
 In der öffentlichen Vorschau können benutzerdefinierte Kunden die folgenden Daten mit Anbietern von Hochverfügbarkeitsclustern erwarten:   
@@ -72,8 +96,7 @@ Die Konfiguration eines Anbieters von Hochverfügbarkeitsclustern erfolgt in zwe
    - **Clustername:** Der Clustername, der beim Erstellen des Clusters verwendet wird. Sie finden den Clusternamen in der Clustereigenschaft `cluster-name`.
    - **Hostname**. Der Linux-Hostname der VM.  
 
-
-## <a name="provider-type-os-linux"></a>Anbietertyp für Betriebssystem (Linux)
+## <a name="provider-type-os-linux"></a>Anbietertyp: Betriebssystem (Linux)
 Kunden können einen oder mehrere Anbieter für den Bereitstellungstyp (Linux) konfigurieren, damit die Datensammlung von BareMetal- oder VM-Knoten aktiviert wird. Der Betriebssystemanbieter (Linux) verbindet sich mit BareMetal- oder VM-Knoten, verwendet den Endpunkt  [Node_Exporter](https://github.com/prometheus/node_exporter) , ruft Telemetriedaten von den Knoten ab und überträgt sie in den Log Analytics-Arbeitsbereich im Abonnement des Kunden. Der Betriebssystemanbieter (Linux) sammelt alle 60 Sekunden Daten für die meisten Metriken von den Knoten. 
 
 In der öffentlichen Vorschau können Kunden die folgenden Daten beim Betriebssystemanbieter (Linux) erwarten: 
@@ -99,39 +122,7 @@ Die Konfiguration eines Betriebssystemanbieters (Linux) erfolgt in zwei Hauptsch
 > [!Warning]
 > Stellen Sie sicher, dass Node Exporter nach dem Neustart des Knotens weiter ausgeführt wird. 
 
-
-## <a name="provider-type-microsoft-sql-server"></a>Anbietertyp „Microsoft SQL Server“
-
-Kunden können einen oder mehrere Anbieter des Anbietertyps *Microsoft SQL Server* konfigurieren, um die Datenerfassung von [SQL Server auf virtuellen Computern](https://azure.microsoft.com/services/virtual-machines/sql-server/) zu ermöglichen. Der SQL Server-Anbieter stellt über den SQL-Port eine Verbindung mit Microsoft SQL Server her, pullt Telemetriedaten aus der Datenbank und pusht sie in den Log Analytics-Arbeitsbereich des Kundenabonnements. Der SQL Server muss für die SQL-Authentifizierung konfiguriert werden, und es muss eine SQL Server-Anmeldung mit der SAP DB als Standarddatenbank für den Anbieter erstellt werden. Der SQL Server-Anbieter erfasst Daten zwischen alle 60 Sekunden bis zu jeder Stunde von SQL Server.  
-
-In der öffentlichen Vorschau können Kunden die folgenden Daten mit dem SQL Server-Anbieter erwarten: Nutzung der zugrunde liegenden Infrastruktur, wichtigste SQL-Anweisungen, größte Tabelle, Aufzeichnung von Problemen in den SQL Server-Fehlerprotokollen, Blockierung von Prozessen und andere.  
-
-Zur Konfiguration des Microsoft SQL Server-Anbieters sind die SAP-System-ID, die Host-IP-Adresse, die SQL Server-Portnummer sowie der SQL Server-Anmeldename und das Kennwort erforderlich.
-
-![Anbieter von Azure Monitor für SAP-Lösungen – SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
-
-## <a name="provider-type-sap-netweaver"></a>Anbietertyp „SAP NetWeaver“
-
-Kunden können einen oder mehrere Anbieter des Anbietertyps „SAP NetWeaver“ konfigurieren, um die Datenerfassung aus der SAP NetWeaver-Ebene zu ermöglichen. Der AMS NetWeaver-Anbieter nutzt die vorhandene [SAPControl-Webdienstschnittstelle,](https://www.sap.com/documents/2016/09/0a40e60d-8b7c-0010-82c7-eda71af511fa.html) um die entsprechenden Telemetriedaten abzurufen.
-
-Für das aktuelle Release sind unten die standardmäßigen SOAP-Webmethoden aufgeführt, die von AMS aufgerufen werden.
-|Webmethode|    ABAP|   Java|   Metrics|
-|--|--|--|--|
-|GetSystemInstanceList| X|  X|  Instanzverfügbarkeit, Nachrichtenserver, Gateway, ICM, ABAP-Verfügbarkeit|
-|GetProcessList|    X|  X|  Wenn die Instanzliste RED lautet, kann der Prozess abgerufen werden, der diesen Server zu RED veranlasst.|
-|GetQueueStatistic| X|  X|  Warteschlangenstatistik (DIA/BATCH/UPD)|
-|ABAPGetWPTable|    X|   -| Arbeitsprozessauslastung|
-|EnqGetStatistic|   X   |X  |Locks|
-
-In der öffentlichen Vorschau können Kunden die folgenden Daten mit dem SAP NetWeaver-Anbieter erwarten: 
-- Verfügbarkeit von Systemen und Instanzen
-- Arbeitsprozessauslastung
-- Warteschlangenauslastung
-- Statistik zu in die Warteschlange eingereihten Sperren
-
-![image](https://user-images.githubusercontent.com/75772258/114581825-a9f2eb00-9c9d-11eb-8e6f-79cee7c5093f.png)
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erstellen Sie Ihre erste Ressource für Azure Monitor für SAP-Lösungen.
+- Erfahren Sie mehr über die [Onboardingschritte](./azure-monitor-sap-quickstart.md), und erstellen Sie Ihre erste Ressource für Azure Monitor für SAP-Lösungen.
 - Haben Sie Fragen zu Azure Monitor für SAP-Lösungen? Weitere Informationen finden Sie im [FAQ](./azure-monitor-faq.md)-Abschnitt.

@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: ed31ff5d77b258d141a77fc174c2d5452adf7d01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f5edcb3a024336ce96adb015609c9faf3318b86
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92791714"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947067"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnose zur Problembehandlung bei SQL-Hyperscale
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,7 +33,9 @@ Die folgenden Wartetypen (in [sys.dm_os_wait_stats](/sql/relational-databases/sy
 |RBIO_RG_STORAGE        | Tritt auf, wenn eine Protokollgenerierungsrate für den primären Hyperscale-Datenbank-Computeknoten infolge einer verzögerten Protokollnutzung auf dem/den Seitenserver(n) gedrosselt wird.         |
 |RBIO_RG_DESTAGE        | Tritt auf, wenn eine Protokollgenerierungsrate für einen Hyperscale-Datenbank-Computeknoten infolge einer verzögerten Protokollnutzung durch den langfristigen Protokollspeicher gedrosselt wird.         |
 |RBIO_RG_REPLICA        | Tritt auf, wenn eine Protokollgenerierungsrate für einen Hyperscale-Datenbank-Serverknoten infolge einer verzögerten Protokollnutzung durch lesbare sekundären Replikate gedrosselt wird.         |
+|.RBIO_RG_GEOREPLICA    | Tritt auf, wenn die Protokollerstellungsrate eines Hyperscale-Datenbank-Rechenknotens aufgrund eines verzögerten Protokollverbrauchs durch das Geo-Sekundärreplikat gedrosselt wird.         |
 |RBIO_RG_LOCALDESTAGE   | Tritt auf, wenn eine Protokollgenerierungsrate für einen Hyperscale-Datenbank-Computeknoten infolge einer verzögerten Protokollnutzung durch den Protokolldienst gedrosselt wird.         |
+
 
 ## <a name="page-server-reads"></a>Seitenserver-Lesevorgänge
 
@@ -75,7 +77,7 @@ Der lokale RBPEX-Cache befindet sich auf dem Computereplikat im lokalen SSD-Spei
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
-Das Verhältnis von Lesevorgängen im RBPEX-Cache zu aggregierten Lesevorgängen in allen anderen Datendateien liefert die RBPEX-Cachetrefferquote.
+Das Verhältnis von Lesevorgängen im RBPEX-Cache zu aggregierten Lesevorgängen in allen anderen Datendateien liefert die RBPEX-Cachetrefferquote. Der Zähler`RBPEX cache hit ratio` wird auch in den Leistungszählern DMV `sys.dm_os_performance_counters` angezeigt.                                                                        
 
 ### <a name="data-reads"></a>Datenlesevorgänge
 
@@ -106,6 +108,7 @@ Daten-E/A für Remoteseitenserver wird nicht in Ressourcenverwendungssichten ode
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 - Informationen zu V-Kern-Ressourcenlimits für eine Hyperscale-Einzeldatenbank finden Sie unter [Dienstebene „Hyperscale“ – V-Kern-Limits](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5).
+- Zur Überwachung von Azure SQL-Datenbanken aktivieren Sie [Azure Monitor SQL insights](../../azure-monitor/insights/sql-insights-overview.md)
 - Informationen zur Leistungsoptimierung bei Azure SQL-Datenbank finden Sie unter [Abfrageleistung in Azure SQL-Datenbank](performance-guidance.md).
 - Informationen zur Leistungsoptimierung mithilfe von Abfragespeicher finden Sie unter [Leistungsüberwachung mit dem Abfragespeicher](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/).
 - Informationen zu DMV-Überwachungsskripts finden Sie unter [Überwachen der Leistung von Azure SQL-Datenbank mit dynamischen Verwaltungssichten](monitoring-with-dmvs.md).

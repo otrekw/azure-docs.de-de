@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8f378300a93fca8c7c283ad0ad0959ad93ec0bc
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607610"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896457"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Behandeln von Problemen mit ausgehenden SMTP-Verbindungen in Azure
 
@@ -39,7 +39,7 @@ Für Azure-Benutzer mit Enterprise Agreement gibt es keine technischen Änderung
 
 Wenn Sie sich vor dem 15. November 2017 für ein Abonnement mit nutzungsbasierter Bezahlung registriert haben, gelten für Sie keine technischen Änderungen beim Testen der Zustellung ausgehender E-Mails. Sie können weiterhin die Zustellung ausgehender E-Mails von Azure-VMs in diesen Abonnements direkt an externe E-Mail-Anbieter ohne Einschränkungen der Azure-Plattform testen. Es gibt auch hier keine Garantie, dass E-Mail-Anbieter eingehende E-Mails von einem bestimmten Benutzer akzeptieren. Benutzer müssen direkt mit den E-Mail-Anbietern zusammenarbeiten, um Probleme bei der Nachrichtenzustellung oder der Spamfilterung zu beheben, die bestimmte Anbieter betreffen.
 
-Für Abonnements mit nutzungsbasierter Bezahlung, die nach dem 15. November 2017 erstellt wurden, gelten technische Einschränkungen: E-Mails, die direkt von VMs in den Abonnements gesendet werden, werden blockiert. Wenn Sie in der Lage sein möchten, E-Mails von Azure-VMs direkt an externe E-Mail-Anbieter zu senden (ohne ein authentifiziertes SMTP-Relay zu verwenden), und Sie über ein ordnungsgemäß geführtes Konto mit Zahlungsverlauf verfügen, können Sie anfordern, dass die Einschränkung entfernt wird. Sie können dies im Abschnitt **Konnektivität** des Blatts **Diagnose und Problembehandlung** für eine Azure Virtual Network-Ressource im Azure-Portal vornehmen. Wenn Ihre Anforderung akzeptiert wird, wird Ihr Abonnement aktiviert, oder Sie erhalten Anweisungen für die nächsten Schritte. 
+Für Abonnements mit nutzungsbasierter Bezahlung, die nach dem 15. November 2017 erstellt wurden, gelten technische Einschränkungen: E-Mails, die direkt von VMs in den Abonnements gesendet werden, werden blockiert. Wenn Sie in der Lage sein möchten, E-Mails von Azure-VMs direkt an externe E-Mail-Anbieter zu senden (ohne ein authentifiziertes SMTP-Relay zu verwenden), und Sie über ein ordnungsgemäß geführtes Konto mit Zahlungsverlauf verfügen, können Sie anfordern, dass die Einschränkung entfernt wird. Sie können dies im Abschnitt **E-Mail kann nicht gesendet werden (SMTP-Port 25)** des Blatts **Diagnose und Problembehandlung** für eine Azure Virtual Network-Ressource im Azure-Portal vornehmen. Wenn Ihre Anforderung akzeptiert wird, wird Ihr Abonnement aktiviert, oder Sie erhalten Anweisungen für die nächsten Schritte. 
 
 Sobald für ein Abonnement mit nutzungsbasierter Bezahlung eine Ausnahmeregelung gilt und die VMs im Azure-Portal beendet und gestartet wurden, werden alle VMs in diesem Abonnement in Zukunft ausgenommen. Die Ausnahme gilt nur für das angeforderte Abonnement und ausschließlich für den VM-Datenverkehr, der direkt an das Internet weitergeleitet wird.
 
@@ -63,7 +63,7 @@ Wenn Sie diese Abonnementtypen verwenden, sollten Sie – wie oben in diesem Art
 
 ## <a name="cloud-solution-provider"></a>Cloud Solution Provider
 
-Wenn Sie Azure-Ressourcen über Cloud Solution Provider verwenden, können Sie die Aufhebung dieser Einschränkung im Abschnitt **Konnektivität** des Bereichs **Diagnose und Problembehandlung** für eine Virtual Network-Ressource im Azure-Portal anfordern. Wenn Ihre Anforderung akzeptiert wird, wird Ihr Abonnement aktiviert, oder Sie erhalten Anweisungen für die nächsten Schritte.
+Wenn Sie Azure-Ressourcen über Cloud Solution Provider verwenden, können Sie die Aufhebung dieser Einschränkung im Abschnitt **E-Mail kann nicht gesendet werden (SMTP-Port 25)** des Bereichs **Diagnose und Problembehandlung** für eine Virtual Network-Ressource im Azure-Portal anfordern. Wenn Ihre Anforderung akzeptiert wird, wird Ihr Abonnement aktiviert, oder Sie erhalten Anweisungen für die nächsten Schritte.
 
 ## <a name="microsoft-partner-network-bizspark-plus-or-azure-sponsorship"></a>Microsoft Partner Network, BizSpark Plus oder Azure Sponsorship
 
@@ -73,7 +73,7 @@ Für Abonnements der folgenden Typen, die nach dem 15. November 2017 erstellt 
 - BizSpark Plus
 - Azure Sponsorship
 
-Wenn Sie E-Mails von einer Azure-VM direkt an externe E-Mail-Anbieter senden möchten (ohne authentifiziertes SMTP-Relay), können Sie die Aufhebung der Einschränkung anfordern. Erstellen Sie dazu eine Supportanfrage mit dem folgenden Problemtyp: **Technisch** > **virtuelles Netzwerk** > **Konnektivität** > **E-Mail kann nicht gesendet werden (SMTP/Port 25)** . Geben Sie unbedingt Informationen dazu an, warum Ihre Bereitstellung E-Mails direkt an E-Mail-Anbieter senden muss, anstatt ein authentifiziertes Relay zu verwenden. Die Anfragen werden geprüft und nach Ermessen von Microsoft genehmigt. Die Anforderungen werden erst nach zusätzlichen Betrugsüberprüfungen erteilt. 
+Wenn Sie E-Mails von einer Azure-VM direkt an externe E-Mail-Anbieter senden möchten (ohne authentifiziertes SMTP-Relay), können Sie die Aufhebung der Einschränkung anfordern. Erstellen Sie dazu eine Supportanfrage mit dem folgenden Problemtyp: **Technisch** > **virtuelles Netzwerk** > **E-Mail kann nicht gesendet werden (SMTP/Port 25)** . Geben Sie unbedingt Informationen dazu an, warum Ihre Bereitstellung E-Mails direkt an E-Mail-Anbieter senden muss, anstatt ein authentifiziertes Relay zu verwenden. Die Anfragen werden geprüft und nach Ermessen von Microsoft genehmigt. Die Anforderungen werden erst nach zusätzlichen Betrugsüberprüfungen erteilt. 
 
 Sobald für ein Abonnement eine Ausnahmeregelung gilt und die VMs im Azure-Portal beendet und erneut gestartet wurden, werden alle VMs in diesem Abonnement in Zukunft ausgenommen. Die Ausnahme gilt nur für das angeforderte Abonnement und ausschließlich für den VM-Datenverkehr, der direkt an das Internet weitergeleitet wird.
 
@@ -83,4 +83,4 @@ Wenn Sie den Abonnementtyp ändern oder wenn Ihr Cloud Solution Provider-Abonnem
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. Verwenden Sie diesen Problemtyp: **Technisch** > **virtuelles Netzwerk** > **Konnektivität** > **E-Mail kann nicht gesendet werden (SMTP/Port 25)** .
+[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. Verwenden Sie diesen Problemtyp: **Technisch** > **Virtuelles Netzwerk** > **E-Mail kann nicht gesendet werden (SMTP/Port 25)** .

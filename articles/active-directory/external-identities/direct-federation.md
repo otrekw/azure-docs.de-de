@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 04/23/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff8ac540459ad79a8980542254cc15518959b5c0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 88a6d054f64201bec04ee18f492f7ba69c3cc810
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552290"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987594"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)
 
@@ -38,7 +38,7 @@ In jedem dieser Szenarien können Sie die Authentifizierungsmethode eines Gastbe
 Der direkte Verbund ist an Domänennamespaces gebunden, z. B. „contoso.com“ und „fabrikam.com“. Wenn Sie eine direkte Verbundkonfiguration mit AD FS oder einem Drittanbieter-Identitätsanbieter einrichten, ordnen Organisationen diesen Identitätsanbietern einen oder mehrere Domänennamespaces zu. 
 
 ## <a name="end-user-experience"></a>Endbenutzererfahrung 
-Bei direktem Verbund melden sich Gastbenutzer mit ihren eigenen Organisationskonten bei Ihrem Azure AD-Mandanten an. Wenn sie auf freigegebene Ressourcen zugreifen und zur Anmeldung aufgefordert werden, werden direkte Verbundbenutzer zu ihrem Identitätsanbieter umgeleitet. Nach erfolgreicher Anmeldung werden sie an Azure AD zurückgeleitet, um auf Ressourcen zuzugreifen. Die Aktualisierungstoken von direkten Verbundbenutzern sind 12 Stunden lang gültig, wobei es sich um die [Standarddauer für Pass-Through-Aktualisierungstoken](../develop/active-directory-configurable-token-lifetimes.md#exceptions) in Azure AD handelt. Wenn der Verbundidentitätsanbieter einmaliges Anmelden (SSO) aktiviert hat, erfährt der Benutzer auch SSO, und es wird nach der ersten Authentifizierung keine Anmeldeaufforderung mehr angezeigt.
+Bei direktem Verbund melden sich Gastbenutzer mit ihren eigenen Organisationskonten bei Ihrem Azure AD-Mandanten an. Wenn sie auf freigegebene Ressourcen zugreifen und zur Anmeldung aufgefordert werden, werden direkte Verbundbenutzer zu ihrem Identitätsanbieter umgeleitet. Nach erfolgreicher Anmeldung werden sie an Azure AD zurückgeleitet, um auf Ressourcen zuzugreifen. Die Aktualisierungstoken von direkten Verbundbenutzern sind 12 Stunden lang gültig, wobei es sich um die [Standarddauer für Pass-Through-Aktualisierungstoken](../develop/active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties) in Azure AD handelt. Wenn der Verbundidentitätsanbieter einmaliges Anmelden (SSO) aktiviert hat, erfährt der Benutzer auch SSO, und es wird nach der ersten Authentifizierung keine Anmeldeaufforderung mehr angezeigt.
 
 ## <a name="sign-in-endpoints"></a>Endpunkte für die Anmeldung
 
@@ -178,7 +178,7 @@ Als Nächstes konfigurieren Sie den direkten Verbund mit dem in Schritt 1 in Azu
 
 ### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>So konfigurieren Sie direkten Verbund in Azure AD mit der PowerShell
 
-1. Installieren Sie die neueste Version des Azure AD PowerShell für Graph-Moduls ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)). (Wenn Sie ausführliche Schritte benötigen, enthält der Schnellstart zum Hinzufügen eines Gastbenutzers den Abschnitt [Installieren des neuesten AzureADPreview-Moduls](b2b-quickstart-invite-powershell.md#install-the-latest-azureadpreview-module).) 
+1. Installieren Sie die neueste Version des Azure AD PowerShell für Graph-Moduls ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)). (Wenn Sie detaillierte Schritte benötigen, enthält der Schnellstart die Anleitung [PowerShell-Modul](b2b-quickstart-invite-powershell.md#prerequisites).)
 2. Führen Sie den folgenden Befehl aus: 
    ```powershell
    Connect-AzureAD

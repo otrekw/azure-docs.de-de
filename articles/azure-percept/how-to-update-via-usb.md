@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: cd6e4e62123b4d4b927cf385aaf64a066eecc1e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8ab657ec7b4ef9a413993c064c931b4fc1523c5
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104887749"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929451"
 ---
 # <a name="how-to-update-azure-percept-dk-over-a-usb-connection"></a>Aktualisieren Ihres Azure Percept DK-Geräts über eine USB-Verbindung
 
@@ -41,7 +41,7 @@ In dieser Anleitung wird beschrieben, wie Sie das Betriebssystem und die Firmwar
 
 1. [7-Zip:](https://www.7-zip.org/) Diese Software wird zum Extrahieren der Rohimagedatei aus der komprimierten XZ-Datei verwendet. Laden Sie die entsprechende EXE-Datei herunter, und installieren Sie sie.
 
-1. [Laden Sie die Updatedateien herunter.](https://go.microsoft.com/fwlink/?linkid=2155734)
+1. [Laden Sie die Updatedateien herunter.](https://go.microsoft.com/fwlink/?linkid=2155734) Sie befinden sich alle in einer ZIP-Datei, die Sie im nächsten Abschnitt extrahieren werden.
 
 1. Stellen Sie sicher, dass alle drei Buildartefakte vorhanden sind:
     - Azure-Percept-DK- *&lt;Versionsnummer&gt;* .raw.xz
@@ -54,9 +54,7 @@ In dieser Anleitung wird beschrieben, wie Sie das Betriebssystem und die Firmwar
 
 1. Kopieren Sie das UUU-Tool (**uuu.exe** oder **uuu**) in den neuen Ordner.
 
-1. Extrahieren Sie die Datei **Azure-Percept-DK- *&lt;Versionsnummer&gt;* .raw** aus der komprimierten Datei, indem Sie mit der rechten Maustaste auf **Azure-Percept-DK- *&lt;Versionsnummer&gt;* .raw.xz** klicken und **7-Zip** &gt; **Extract here** (Hier extrahieren) auswählen.
-
-1. Verschieben Sie die extrahierte Datei **Azure-Percept-DK- *&lt;Versionsnummer&gt;* .raw**, **fast-hab-fw.raw** und **emmc_full.txt** in den Ordner, der das UUU-Tool enthält.
+1. Extrahieren Sie die zuvor heruntergeladenen Updatedateien in den neuen Ordner, der das UUU-Tool enthält.
 
 ## <a name="update-your-device"></a>Aktualisieren Ihres Geräts
 

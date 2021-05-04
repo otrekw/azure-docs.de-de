@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 04/22/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c10a39b050fa66192f762ba642b4c8ac2e080250
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 5abe1755e22ac20e210aece956056ea647393dc1
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258140"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896241"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Arkose Labs mit Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Im folgenden Diagramm ist beschrieben, wie Arkose Labs mit Azure AD B2C integrie
 
 ![Abbildung des Arkose Labs-Architekturdiagramms](media/partner-arkose-labs/arkose-labs-architecture-diagram.png)
 
-| Schritt  | BESCHREIBUNG |
+| Schritt  | Beschreibung |
 |---|---|
 |1     | Ein Benutzer registriert sich und erstellt ein Konto. Wenn der Benutzer die Option „Senden“ auswählt, wird eine Arkose Labs-Abfrage angezeigt.         |
 |2     |  Nachdem der Benutzer die Abfrage abgeschlossen hat, sendet Azure AD B2C den Status zwecks Generierung eines Tokens an Arkose Labs. |
@@ -87,7 +87,7 @@ Erfahren Sie mehr über [benutzerdefinierte Attribute](./user-flow-custom-attrib
 
 Der Benutzerflow kann entweder für die **Registrierung** und **Anmeldung** oder nur für die **Registrierung** erstellt werden. Der Arkose Labs-Benutzerflow wird nur während der Registrierung angezeigt.
 
-1. Folgen Sie den [Anweisungen](./tutorial-create-user-flows.md) zum Erstellen eines Benutzerflows. Wenn Sie einen vorhandenen Benutzerflow verwenden möchten, muss dieser den Versionstyp **Empfohlen (Vorschauversion der nächsten Generation)** aufweisen.
+1. Folgen Sie den [Anweisungen](./tutorial-create-user-flows.md) zum Erstellen eines Benutzerflows. Wenn Sie einen vorhandenen Benutzerflow verwenden möchten, muss es sich dabei um einen Benutzerflow des Versionstyps **Empfohlen** handeln.
 
 2. Wechseln Sie in den Einstellungen des Benutzerflows zu **Benutzerattribute**, und wählen Sie den Anspruch **ArkoseSessionToken** aus.
 

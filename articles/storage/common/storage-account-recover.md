@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f57cd3361d7888d9d7f747955257d96282274fd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e45d2ea0c0e44e859f5339459ed834be22fbb5ea
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97357345"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950854"
 ---
 # <a name="recover-a-deleted-storage-account"></a>Wiederherstellen eines gelöschten Speicherkontos
 
@@ -24,7 +24,7 @@ In einigen Fällen kann ein gelöschtes Speicherkonto möglicherweise über das 
 - Das Speicherkonto wurde mit dem Azure Resource Manager-Bereitstellungsmodell erstellt.
 - Seit dem Löschen des ursprünglichen Kontos wurde kein neues Speicherkonto mit demselben Namen erstellt.
 
-Bevor Sie ein gelöschtes Speicherkonto wiederherzustellen versuchen, vergewissern Sie sich, dass die Ressourcengruppe für dieses Konto vorhanden ist. Wenn die Ressourcengruppe gelöscht wurde, müssen Sie sie neu erstellen. Eine Ressourcengruppe kann nicht wiederhergestellt werden. Weitere Informationen dazu finden Sie unter [Verwalten von Ressourcengruppen](../../azure-resource-manager/management/manage-resource-groups-portal.md).
+Bevor Sie ein gelöschtes Speicherkonto wiederherzustellen versuchen, vergewissern Sie sich, dass die Ressourcengruppe für dieses Konto vorhanden ist. Wenn die Ressourcengruppe gelöscht wurde, müssen Sie sie neu erstellen. Eine Ressourcengruppe kann nicht wiederhergestellt werden. Weitere Informationen finden Sie unter [Verwalten von Ressourcengruppen](../../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 Wenn das gelöschte Speicherkonto von Kunden verwaltete Schlüssel mit Azure Key Vault verwendet hat und der Schlüsseltresor ebenfalls gelöscht wurde, müssen Sie ihn zuerst wiederherstellen, bevor Sie das Speicherkonto wiederherstellen. Weitere Informationen finden Sie unter [Übersicht über die Azure Key Vault-Wiederherstellung](../../key-vault/general/key-vault-recovery.md).
 

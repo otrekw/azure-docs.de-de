@@ -3,13 +3,14 @@ title: Dienstprinzipale für Azure Kubernetes Service (AKS)
 description: Erstellen und Verwalten eines Azure Active Directory-Dienstprinzipals für einen Cluster im Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 2f32ce96097e008ac1100c62c04b6bb7001ae972
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/22/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f80a16e61760a31683cc81dfa4415aa61ee6d78d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779631"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139757"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
@@ -23,9 +24,19 @@ Für die Erstellung eines Azure AD-Dienstprinzipals müssen Sie dazu berechtigt 
 
 Wenn Sie einen Dienstprinzipal eines anderen Azure AD-Mandanten verwenden, ergeben sich zusätzliche Überlegungen zu den nach der Bereitstellung des Clusters verfügbaren Berechtigungen. Möglicherweise haben Sie nicht die entsprechenden Berechtigungen zum Lesen und Schreiben von Verzeichnisinformationen. Weitere Informationen finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?][azure-ad-permissions].
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Sie müssen außerdem Azure PowerShell Version 5.0.0 oder höher installiert haben. Führen Sie `Get-InstalledModule -Name Az` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder eine Aktualisierung vornehmen müssen, beachten Sie den Abschnitt [Installieren des Azure Az PowerShell-Moduls][install-the-azure-az-powershell-module].
+
+---
+
 ## <a name="automatically-create-and-use-a-service-principal"></a>Automatisches Erstellen und Verwenden eines Dienstprinzipals
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Beim Erstellen eines AKS-Clusters im Azure-Portal oder mithilfe des Befehls [az aks create][az-aks-create] kann Azure automatisch einen Dienstprinzipal generieren.
 
@@ -35,7 +46,21 @@ Im folgenden Azure CLI-Beispiel wird kein Dienstprinzipal angegeben. In diesem S
 az aks create --name myAKSCluster --resource-group myResourceGroup
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Beim Erstellen eines AKS-Clusters im Azure-Portal oder mithilfe des Befehls [New-AzAksCluster][new-azakscluster] kann Azure automatisch einen Dienstprinzipal erstellen.
+
+Im folgenden Azure PowerShell-Beispiel wird kein Dienstprinzipal angegeben. In diesem Szenario erstellt die Azure PowerShell einen Dienstprinzipal für den AKS-Cluster. Für den erfolgreichen Abschluss dieses Vorgangs muss Ihr Azure-Konto über die erforderlichen Rechte zum Erstellen eines Dienstprinzipals verfügen.
+
+```azurepowershell-interactive
+New-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup
+```
+
+---
+
 ## <a name="manually-create-a-service-principal"></a>Manuelles Erstellen eines Dienstprinzipals
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Verwenden Sie den Befehl [az ad sp create-for-rbac][az-ad-sp-create], um den Dienstprinzipal manuell über die Azure-Befehlszeilenschnittstelle zu erstellen. Im folgenden Beispiel verhindert der `--skip-assignment`-Parameter, dass zusätzliche Standardzuweisungen durchgeführt werden:
 
@@ -55,7 +80,40 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus: Notieren Sie sich Ihre 
 }
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Um einen Dienstprinzipal mit dem Azure PowerShell manuell zu erstellen, verwenden Sie den Befehl [New-AzADServicePrincipal][new-azadserviceprincipal]. Im folgenden Beispiel verhindert der `-SkipAssignment`-Parameter, dass zusätzliche Standardzuweisungen durchgeführt werden:
+
+```azurepowershell-interactive
+New-AzADServicePrincipal -DisplayName myAKSClusterServicePrincipal -SkipAssignment -OutVariable sp
+```
+
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus: Die Werte werden auch in einer Variablen gespeichert, die beim Erstellen eines AKS-Clusters im nächsten Abschnitt verwendet wird.
+
+```Output
+Secret                : System.Security.SecureString
+ServicePrincipalNames : {559513bd-0c19-4c1a-87cd-851a26afd5fc, http://myAKSClusterServicePrincipal}
+ApplicationId         : 559513bd-0c19-4c1a-87cd-851a26afd5fc
+ObjectType            : ServicePrincipal
+DisplayName           : myAKSClusterServicePrincipal
+Id                    : 559513bd-0c19-4c1a-87cd-851a26afd5fc
+Type                  :
+```
+
+Um den in der sicheren Zeichenfolge **Secret** gespeicherten Wert zu entschlüsseln, verwenden Sie das folgende Beispiel.
+
+```azurepowershell-interactive
+$BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
+[System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+```
+
+Weitere Informationen finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure PowerShell][create-an-azure-service-principal-with-azure-powershell]
+
+---
+
 ## <a name="specify-a-service-principal-for-an-aks-cluster"></a>Angeben eines Dienstprinzipals für einen AKS-Cluster
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Um bei der Erstellung eines AKS-Clusters mithilfe des Befehls [az aks create][az-aks-create] einen vorhandenen Dienstprinzipal zu verwenden, geben Sie mithilfe der Parameter `--service-principal` und `--client-secret` die App-ID (`appId`) und das Kennwort (`password`) aus der Ausgabe des Befehls [az ad sp create-for-rbac][az-ad-sp-create] an:
 
@@ -77,9 +135,37 @@ Wenn Sie einen AKS-Cluster über das Azure-Portal bereitstellen, wählen Sie auf
 
 ![Abbildung der Navigation zu Azure Vote](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Um einen vorhandenen Dienstprinzipal zu verwenden, wenn Sie einen AKS-Cluster erstellen, müssen Sie den Dienstprinzipal `ApplicationId` und `Secret` in ein **PSCredential-Objekt** konvertieren, wie im folgenden Beispiel angezeigt.
+
+```azurepowershell-interactive
+$Cred = New-Object -TypeName System.Management.Automation.PSCredential ($sp.ApplicationId, $sp.Secret)
+```
+
+Beim Ausführen des `New-AzAksCluster`Befehls geben Sie den `ServicePrincipalIdAndSecret`Parameter mit dem zuvor erstellten **PSCredential** Objekt als seinen Wert an.
+
+```azurepowershell-interactive
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -ServicePrincipalIdAndSecret $Cred
+```
+
+> [!NOTE]
+> Wenn Sie einen bestehenden Dienstprinzipal mit benutzerdefiniertem Geheimnis verwenden, stellen Sie sicher, dass das Geheimnis nicht länger als 190 Bytes ist.
+
+Wenn Sie einen AKS-Cluster über das Azure-Portal bereitstellen, wählen Sie auf der Seite *Authentication (Authentifizierung)* des **Create Kubernetes cluster (Kubernetes-Cluster erstellen)** -Dialogfelds **Configure service principal (Dienstprinzipal konfigurieren)** aus. Wählen Sie **Use existing (Vorhandene verwenden)** aus, und geben Sie die folgenden Werte an:
+
+- **Dienstprinzipal Client ID** ist Ihre *ApplicationId*
+- **Dienstprinzipal Clientgeheimnis** ist der verschlüsselte *Geheimnis*-Wert
+
+![Abbildung der Navigation zu Azure Vote](media/kubernetes-service-principal/portal-configure-service-principal.png)
+
+---
+
 ## <a name="delegate-access-to-other-azure-resources"></a>Delegieren des Zugriffs auf andere Azure-Ressourcen
 
 Der Dienstprinzipal für den AKS-Cluster kann verwendet werden, um auf andere Ressourcen zuzugreifen. Wenn Sie beispielsweise Ihren AKS-Cluster in ein bestehendes Subnetz eines virtuellen Azure-Netzwerks einbinden oder eine Verbindung mit Azure Container Registry (ACR) herstellen möchten, müssen Sie den Zugriff auf diese Ressourcen an den Dienstprinzipal delegieren.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Um Berechtigungen zu delegieren, erstellen Sie mit dem Befehl [az role assignment create][az-role-assignment-create] eine Rollenzuweisung. Weisen Sie `appId` einem bestimmten Bereich zu, beispielsweise einer Ressourcengruppe oder einer virtuellen Netzwerkressource. Eine Rolle definiert dann wie im folgenden Beispiel gezeigt die Berechtigungen, die der Dienstprinzipal für diese Ressource besitzt:
 
@@ -89,14 +175,34 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 Bei dem Bereich (`--scope`) für eine Ressource muss es sich um eine vollständige Ressourcen-ID handeln (beispielsweise */subscriptions/\<guid\>/resourceGroups/myResourceGroup* oder */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*).
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Um Berechtigungen zu delegieren, erstellen Sie eine Rollenzuweisung mit dem Befehl [New-AzRoleAssignment][new-azroleassignment]. Weisen Sie `ApplicationId` einem bestimmten Bereich zu, beispielsweise einer Ressourcengruppe oder einer virtuellen Netzwerkressource. Eine Rolle definiert dann wie im folgenden Beispiel gezeigt die Berechtigungen, die der Dienstprinzipal für diese Ressource besitzt:
+
+```azurepowershell-interactive
+New-AzRoleAssignment -ApplicationId <ApplicationId> -Scope <resourceScope> -RoleDefinitionName Contributor
+```
+
+Bei dem Bereich (`Scope`) für eine Ressource muss es sich um eine vollständige Ressourcen-ID handeln (beispielsweise */subscriptions/\<guid\>/resourceGroups/myResourceGroup* oder */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*).
+
+---
+
 > [!NOTE]
-> Wenn Sie die Rollenzuweisung „Mitwirkender“ aus der Knotenressourcengruppe entfernt haben, können die folgenden Vorgänge möglicherweise nicht erfolgreich ausgeführt werden.  
+> Wenn Sie die Rollenzuweisung „Mitwirkender“ aus der Knotenressourcengruppe entfernt haben, können die folgenden Vorgänge möglicherweise nicht erfolgreich ausgeführt werden.
 
 In den folgenden Abschnitten werden allgemeine Delegierungen, die Sie möglicherweise vornehmen müssen, ausführlicher erläutert.
 
 ### <a name="azure-container-registry"></a>Azure Container Registry
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 Wenn Sie Azure Container Registry (ACR) als Speicher für Containerimages verwenden, müssen Sie dem Dienstprinzipal für Ihren AKS-Cluster Berechtigungen zum Lesen und Pullen von Images erteilen. Aktuell wird die folgende Konfiguration empfohlen: Verwenden Sie den Befehl [az aks create][az-aks-create] bzw. [az aks update][az-aks-update], um eine Registrierungsintegration vorzunehmen und die entsprechende Rolle für den Dienstprinzipal zuzuweisen. Eine ausführliche Anleitung finden Sie unter [Authentifizieren per Azure Container Registry über Azure Kubernetes Service][aks-to-acr].
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Wenn Sie Azure Container Registry (ACR) als Speicher für Containerimages verwenden, müssen Sie dem Dienstprinzipal für Ihren AKS-Cluster Berechtigungen zum Lesen und Pullen von Images erteilen. Derzeit wird als Konfiguration die Verwendung des Befehls [New-AzAksCluster][new-azakscluster] oder [Set-AzAksCluster][set-azakscluster] zur Integration in eine Registrierung und zur Zuweisung der entsprechenden Rolle für den Dienstprinzipal empfohlen. Eine ausführliche Anleitung finden Sie unter [Authentifizieren per Azure Container Registry über Azure Kubernetes Service][aks-to-acr].
+
+---
 
 ### <a name="networking"></a>Netzwerk
 
@@ -117,6 +223,8 @@ Wenn Sie Virtual Kubelet für die Integration in AKS verwenden und Azure Contain
 
 ## <a name="additional-considerations"></a>Weitere Überlegungen
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen die folgenden Kriterien.
 
 - Der Dienstprinzipal für Kubernetes ist Bestandteil der Clusterkonfiguration. Verwenden Sie diese Identität jedoch nicht zum Bereitstellen des Clusters.
@@ -125,7 +233,7 @@ Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen die folgenden
 - Geben Sie als **Client-ID** des Dienstprinzipals den `appId`-Wert an.
 - Auf den Agent-Knoten-VMs im Kubernetes-Cluster werden die Anmeldeinformationen des Dienstprinzipals in der Datei `/etc/kubernetes/azure.json` gespeichert.
 - Wenn Sie den Dienstprinzipal mithilfe des Befehls [az aks create][az-aks-create] automatisch generieren, werden die Dienstprinzipal-Anmeldeinformationen auf dem Computer, auf dem der Befehl ausgeführt wird, in die Datei `~/.azure/aksServicePrincipal.json` geschrieben.
-- Wenn Sie keinen Dienstprinzipal explizit in zusätzlichen AKS-CLI-Befehlen übergeben, wird der Standarddienstprinzipal verwendet, der sich unter `~/.azure/aksServicePrincipal.json` befindet.  
+- Wenn Sie keinen Dienstprinzipal explizit in zusätzlichen AKS-CLI-Befehlen übergeben, wird der Standarddienstprinzipal verwendet, der sich unter `~/.azure/aksServicePrincipal.json` befindet.
 - Optional können Sie auch die Datei „aksServicePrincipal.json“ entfernen, woraufhin AKS einen neuen Dienstprinzipal erstellt.
 - Beim Löschen eines AKS-Clusters, der mit [az aks create][az-aks-create] erstellt wurde, wird der automatisch erstellte Dienstprinzipal nicht gelöscht.
     - Fragen Sie zum Löschen des Dienstprinzipals für Ihren Cluster *servicePrincipalProfile.clientId* ab, und verwenden Sie [az ad sp delete][az-ad-sp-delete], um ihn zu löschen. Ersetzen Sie die folgenden Namen für Ressourcengruppe und Cluster durch Ihre eigenen Werte:
@@ -134,7 +242,30 @@ Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen die folgenden
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen die folgenden Kriterien.
+
+- Der Dienstprinzipal für Kubernetes ist Bestandteil der Clusterkonfiguration. Verwenden Sie diese Identität jedoch nicht zum Bereitstellen des Clusters.
+- Standardmäßig sind die Anmeldeinformationen des Dienstprinzipals ein Jahr gültig. Sie können jederzeit die [Anmeldeinformationen des Dienstprinzipals aktualisieren oder rotieren][update-credentials].
+- Jeder Dienstprinzipal ist einer Azure AD-Anwendung zugeordnet. Der Dienstprinzipal für einen Kubernetes-Cluster kann einem beliebigen gültigen Azure AD-Anwendungsnamen zugeordnet sein (z.B. *https://www.contoso.org/example* ). Bei der URL für die Anwendung muss es sich nicht um einen realen Endpunkt handeln.
+- Geben Sie als **Client-ID** des Dienstprinzipals den `ApplicationId`-Wert an.
+- Auf den Agent-Knoten-VMs im Kubernetes-Cluster werden die Anmeldeinformationen des Dienstprinzipals in der Datei `/etc/kubernetes/azure.json` gespeichert.
+- Wenn Sie den Befehl [New-AzAksCluster][new-azakscluster]" verwenden, um den Dienstprinzipal automatisch zu erstellen, werden die Anmeldeinformationen für den Dienstprinzipal in die `~/.azure/aksServicePrincipal.json`Datei auf dem Computer geschrieben, der für die Ausführung des Befehls verwendet wird.
+- Wenn Sie in weiteren AKS-PowerShell-Befehlen nicht spezifisch einen Dienstprinzipal übergeben, wird der Standard-Dienstprinzipal verwendet, der sich bei `~/.azure/aksServicePrincipal.json`befindet.
+- Optional können Sie auch die Datei „aksServicePrincipal.json“ entfernen, woraufhin AKS einen neuen Dienstprinzipal erstellt.
+- Beim Löschen eines AKS-Clusters, der mit [New-AzAksCluster][new-azakscluster] erstellt wurde, wird der automatisch erstellte Dienstprinzipal nicht gelöscht.
+    - Um den Dienstprinzipal zu löschen, fragen Sie nach Ihrem Cluster  *ServicePrincipalProfile.ClientId ab* und löschen Sie es anschließend mit [Remove-AzADServicePrincipal][remove-azadserviceprincipal]. Ersetzen Sie die folgenden Namen für Ressourcengruppe und Cluster durch Ihre eigenen Werte:
+
+        ```azurepowershell-interactive
+        $ClientId = (Get-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster ).ServicePrincipalProfile.ClientId
+        Remove-AzADServicePrincipal -ApplicationId $ClientId
+        ```
+---
+
 ## <a name="troubleshoot"></a>Problembehandlung
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Die Dienstprinzipal-Anmeldeinformationen für einen AKS-Cluster werden von der Azure CLI zwischengespeichert. Wenn diese Anmeldeinformationen abgelaufen sind, treten Fehler bei der Bereitstellung des AKS-Clusters auf. Sollte während der Ausführung von [az aks create][az-aks-create] die folgende Fehlermeldung angezeigt werden, kann dies auf ein Problem mit den zwischengespeicherten Anmeldeinformationen des Dienstprinzipals hindeuten:
 
@@ -152,6 +283,26 @@ ls -la $HOME/.azure/aksServicePrincipal.json
 
 Die Standardablaufzeit für die Anmeldeinformationen des Dienstprinzipals beträgt ein Jahr. Wenn Ihre Datei *aksServicePrincipal.json* älter als ein Jahr ist, löschen Sie die Datei, und versuchen Sie, erneut einen AKS-Cluster bereitzustellen.
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Die Dienstprinzipal-Anmeldeinformationen für einen AKS-Cluster werden vom Azure PowerShelI zwischengespeichert. Wenn diese Anmeldeinformationen abgelaufen sind, treten Fehler bei der Bereitstellung des AKS-Clusters auf. Die folgende Fehlermeldung beim Ausführen von [New-AzAksCluster][new-azakscluster] kann auf ein Problem mit den zwischengespeicherten Dienstprinzipal-Anmeldeinformationen hinweisen:
+
+```console
+Operation failed with status: 'Bad Request'.
+Details: The credentials in ServicePrincipalProfile were invalid. Please see https://aka.ms/aks-sp-help for more details.
+(Details: adal: Refresh request failed. Status Code = '401'.
+```
+
+Überprüfen Sie das Alter der Anmeldeinformationsdatei mithilfe des folgenden Befehls:
+
+```azurepowershell-interactive
+Get-ChildItem -Path $HOME/.azure/aksServicePrincipal.json
+```
+
+Die Standardablaufzeit für die Anmeldeinformationen des Dienstprinzipals beträgt ein Jahr. Wenn Ihre Datei *aksServicePrincipal.json* älter als ein Jahr ist, löschen Sie die Datei, und versuchen Sie, erneut einen AKS-Cluster bereitzustellen.
+
+---
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure Active Directory-Dienstprinzipalen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory][service-principal].
@@ -161,21 +312,28 @@ Informationen zum Aktualisieren der Anmeldeinformationen finden Sie unter [Aktua
 <!-- LINKS - internal -->
 [aad-service-principal]:../active-directory/develop/app-objects-and-service-principals.md
 [acr-intro]: ../container-registry/container-registry-intro.md
-[az-ad-sp-create]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az-ad-sp-delete]: /cli/azure/ad/sp#az_ad_sp_delete
 [azure-load-balancer-overview]: ../load-balancer/load-balancer-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [service-principal]:../active-directory/develop/app-objects-and-service-principals.md
 [user-defined-routes]: ../load-balancer/load-balancer-overview.md
-[az-ad-app-list]: /cli/azure/ad/app#az_ad_app_list
-[az-ad-app-delete]: /cli/azure/ad/app#az_ad_app_delete
-[az-aks-create]: /cli/azure/aks#az_aks_create
-[az-aks-update]: /cli/azure/aks#az_aks_update
+[az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
+[az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-update]: /cli/azure/aks#az-aks-update
 [rbac-network-contributor]: ../role-based-access-control/built-in-roles.md#network-contributor
 [rbac-custom-role]: ../role-based-access-control/custom-roles.md
 [rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
-[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
 [aks-permissions]: concepts-identity.md#aks-service-permissions
+[install-the-azure-az-powershell-module]: /powershell/azure/install-az-ps
+[new-azakscluster]: /powershell/module/az.aks/new-azakscluster
+[new-azadserviceprincipal]: /powershell/module/az.resources/new-azadserviceprincipal
+[create-an-azure-service-principal-with-azure-powershell]: /powershell/azure/create-azure-service-principal-azureps
+[new-azroleassignment]: /powershell/module/az.resources/new-azroleassignment
+[set-azakscluster]: /powershell/module/az.aks/set-azakscluster
+[remove-azadserviceprincipal]: /powershell/module/az.resources/remove-azadserviceprincipal

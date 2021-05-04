@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 309cf3882ade99de3f2e29a037d20ca50e35f490
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8bc3c3dfba8414381c4bc26508e96d12925df7ab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066669"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135777"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -34,7 +34,7 @@ Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstati
 
 |Hauptvorteile|BESCHREIBUNG|
 |----|----|
-|Produktivität|Sie können Modelle mit integrierten Notebooks und den folgenden Tools im Azure Machine Learning Studio erstellen und bereitstellen:<br/>-  Jupyter<br/>-  JupyterLab<br/>-  RStudio (Vorschauversion)<br/>Die Compute-Instanz ist vollständig in den Arbeitsbereich und das Studio von Azure Machine Learning integriert. Sie können Notebooks und Daten mit anderen Datenanalysten im Arbeitsbereich gemeinsam nutzen.<br/> Sie können auch [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) mit Compute-Instanzen verwenden.
+|Produktivität|Sie können Modelle mit integrierten Notebooks und den folgenden Tools im Azure Machine Learning Studio erstellen und bereitstellen:<br/>-  Jupyter<br/>-  JupyterLab<br/>-  VS Code (Vorschauversion)<br/>-  RStudio (Vorschauversion)<br/>Die Compute-Instanz ist vollständig in den Arbeitsbereich und das Studio von Azure Machine Learning integriert. Sie können Notebooks und Daten mit anderen Datenanalysten im Arbeitsbereich gemeinsam nutzen.<br/> Sie können auch [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) mit Compute-Instanzen verwenden.
 |Verwaltet und sicher|Verringern Sie Ihren Sicherheitsaufwand, und gewinnen Sie Compliance mit Anforderungen der Unternehmenssicherheit. Compute-Instanzen bieten verlässliche Verwaltungsrichtlinien und sichere Netzwerkkonfigurationen wie die folgenden:<br/><br/>– Automatisierte Bereitstellung über Resource Manager-Vorlagen oder das Azure Machine Learning SDK<br/>- [Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/overview.md)<br/>- [Unterstützung virtueller Netzwerke](./how-to-secure-training-vnet.md#compute-instance)<br/>- SSH-Richtlinie zum Aktivieren/Deaktivieren des SSH-Zugriffs<br/>TLS 1.2 aktiviert |
 |Vorkonfiguriert&nbsp;für&nbsp;ML|Sparen Sie Zeit bei der Einrichtung von Aufgaben mit vorkonfigurierten und aktuellen ML-Paketen, Deep Learning- Frameworks und GPU-Treibern.|
 |Vollständig anpassbar|Umfassende Unterstützung für Azure-VM-Typen einschließlich GPUs und durchweg einfache Anpassungen wie die Installation von Paketen und Treibern machen erweiterte Szenarien zu einem Kinderspiel. |
@@ -148,6 +148,8 @@ Sie können auch eine Instanz
 
 Das Kontingent dedizierter Kerne pro Region pro VM-Familie und gesamte regionale Kontingent, das für die Erstellung von Compute-Instanzen gilt, ist einheitlich und wird mit dem Kontingent für Azure Machine Learning-Trainingcomputecluster gemeinsam genutzt. Das Beenden der Compute-Instanz gibt keine Kontingente frei, um sicherzustellen, dass Sie die Compute-Instanz erneut starten können.
 
+Die Compute-Instanz verfügt über einen P10-Betriebssystemdatenträger. Der Typ des temporären Datenträgers hängt von der ausgewählten VM-Größe ab. Derzeit ist es nicht möglich, den Betriebssystemdatenträgertyp zu ändern.
+
 
 ### <a name="create-on-behalf-of-preview"></a>Erstellen im Namen von (Vorschau)
 
@@ -180,17 +182,7 @@ Folgendes gilt für eine Compute-Instanz:
 Sie können die Compute-Instanz als gefolgertes lokales Bereitstellungsziel für Test-/Debugszenarien verwenden.
 
 > [!TIP]
-> Die Compute-Instanz verfügt über einen 120 GB Betriebssystemdatenträger. Wenn Ihnen der Speicherplatz ausgeht, [verwenden Sie das Terminal](how-to-access-terminal.md), um mindestens 1–2 GB zu löschen, bevor Sie die Compute-Instanz [beenden oder neu starten](how-to-create-manage-compute-instance.md#manage).
-
-
-## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Was ist mit der Notebook-VM passiert?
-
-Compute-Instanzen ersetzen die Notebook-VM.  
-
-Alle Notebookdateien, die in der Dateifreigabe des Arbeitsbereichs gespeichert sind, und Daten in den Datenspeichern des Arbeitsbereichs sind auf einer Compute-Instanz zugänglich. Allerdings müssen alle benutzerdefinierten Pakete, die zuvor auf einer Notebook-VM installiert waren, auf der Compute-Instanz neu installiert werden. Kontingentbeschränkungen, die für die Erstellung von Computeclustern gelten, gelten ebenso für die Erstellung von Compute-Instanzen.
-
-Neue Notebook-VMs können nicht erstellt werden. Sie können jedoch weiterhin auf die von Ihnen erstellten Notebook-VMs bei voller Funktionalität zugreifen und diese nutzen. Compute-Instanzen können im gleichen Arbeitsbereich wie die vorhandenen Notebook-VMs erstellt werden.
-
+> Die Compute-Instanz verfügt über einen 120 GB Betriebssystemdatenträger. Wenn kein Speicherplatz mehr verfügbar ist und Sie in einen nicht arbeitsfähigen Zustand geraten, löschen Sie mindestens 5 GB Speicherplatz auf dem Betriebssystemdatenträger (/dev/sda1/-Dateisystem, das in „/“ eingebunden ist) über das JupyterLab-Terminal, indem Sie Dateien/Ordner entfernen und dann einen sudo-Neustart ausführen. Um auf das JupyterLab-Terminal zuzugreifen, wechseln Sie zu https://ComputeInstanceName.AzureRegion.instances.azureml.ms/lab, wobei Sie den Namen der Compute-Instanz und der Azure-Region ersetzen, und klicken Sie dann auf „Datei->Neu->Terminal“. Löschen Sie mindestens 5 GB, bevor Sie die Compute-Instanz [beenden oder neu starten](how-to-create-manage-compute-instance.md#manage). Sie können den verfügbaren Speicherplatz auf dem Datenträger überprüfen, indem Sie „df -h“ im Terminal ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

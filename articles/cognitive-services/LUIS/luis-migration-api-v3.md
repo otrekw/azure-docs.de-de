@@ -2,15 +2,18 @@
 title: Änderungen an Vorhersageendpunkten in der V3-API
 description: Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren.
 ms.service: cognitive-services
+author: aahill
+ms.manager: nitinme
+ms.author: aahi
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 957da9d5d26e5e7eaf27433807f700f4d3243765
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98624302"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897683"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Änderungen an Vorhersageendpunkten in V3
 
@@ -55,14 +58,12 @@ Wenn Sie Bot Framework oder Bing-Rechtschreibprüfung V7 verwenden oder nur Ihre
 
 Wenn Sie wissen, dass keine Ihrer Clientanwendungen oder -integrationen (Bot Framework und Bing-Rechtschreibprüfung V7) betroffen sind und Sie mit der gleichzeitigen Migration Ihrer LUIS-App-Erstellung und des Vorhersageendpunkts einverstanden sind, beginnen Sie mit der Verwendung des V3-Vorhersageendpunkts. Der V2-Vorhersageendpunkt steht weiterhin zur Verfügung und ist eine gute Rückfallstrategie.
 
+Informationen zur Verwendung der Bing-Rechtschreibprüfungs-API finden Sie unter [Korrigieren falsch geschriebener Wörter](luis-tutorial-bing-spellcheck.md).
+
 
 ## <a name="not-supported"></a>Nicht unterstützt
 
-### <a name="bing-spell-check"></a>Bing-Rechtschreibprüfung
-
-Diese API wird auf V3-Vorhersageendpunkten nicht unterstützt. Verwenden Sie für Rechtschreibkorrekturen weiterhin V2-API-Vorhersageendpunkte. Wenn Sie die V3-API verwenden und eine Rechtschreibkorrektur benötigen, lassen Sie die Clientanwendung die API [Bing-Rechtschreibprüfung](../bing-spell-check/overview.md) aufrufen, und korrigieren Sie den Text vor der Übermittlung an die LUIS-API.
-
-## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework- und Azure Bot Service-Clientanwendungen
+### <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework- und Azure Bot Service-Clientanwendungen
 
 Verwenden Sie weiterhin den Vorhersageendpunkt der V2-API, bis V4.7 von Bot Framework veröffentlicht wird.
 

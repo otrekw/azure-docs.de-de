@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 0b30cb1767e733861d8418ea29e564bc90a5bc70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59c947684787edcf4863a8388e88c860172a9b59
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676504"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988206"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>Erstellen von Indexerverbindungen über einen privaten Endpunkt
 
@@ -192,6 +192,8 @@ Wenn die Eigenschaft `properties.provisioningState` der Ressource `Succeeded` un
 
 - Wenn Sie den Indexer ohne Festlegen der Eigenschaft `executionEnvironment` erstellt haben und er erfolgreich ausgeführt wird, hat Azure Cognitive Search entschieden, dass seine Ausführungsumgebung die suchdienstspezifische *private* Umgebung ist. Dies kann sich ändern – je nach den vom Indexer verbrauchten Ressourcen, der Last für den Suchdienst und anderen Faktoren –, und zu einem späteren Zeitpunkt kann ein Fehler auftreten. So beheben Sie das Problem:
   * Wir empfehlen dringend, dass Sie die Eigenschaft `executionEnvironment` auf `private` festlegen und so sicherstellen, dass dabei in Zukunft kein Fehler mehr auftritt.
+
+- Wenn Sie die Netzwerkseite Ihrer Datenquelle im Azure-Portal anzeigen und einen privaten Endpunkt auswählen, den Sie für ihren Azure Cognitive Search-Dienst für den Zugriff auf diese Datenquelle erstellt haben, erhalten Sie möglicherweise den Fehler *Kein Zugriff*. Dies entspricht dem erwarteten Verhalten. Sie können den Status der Verbindungsanforderung über die Portalseite des Zieldiensts ändern, aber um die freigegebene Private Link-Ressource weiter zu verwalten, müssen Sie die freigegebene Private Link-Ressource auf der Netzwerkseite Ihres Suchdienstes im Azure-Portal anzeigen.
 
 [Kontingente und Grenzwerte](search-limits-quotas-capacity.md) bestimmen, wie viele freigegebene Private Link-Ressourcen erstellt werden können und hängen von der SKU des Suchdiensts ab.
 

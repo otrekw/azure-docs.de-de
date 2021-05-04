@@ -10,24 +10,24 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 8b3bc99d4391e2079d1b0ecc39011f1b2afc4440
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 557c2591b0bd5406266e5f833ca8c5c4fb581e47
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096035"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125353"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Einführung in Microsoft Spark-Hilfsprogramme
 
-Microsoft Spark-Hilfsprogramme (MSSparkUtils) sind ein integriertes Paket, mit dem sich gängige Aufgaben leichter erledigen lassen. Sie können MSSparkUtils verwenden, um mit Dateisystemen zu arbeiten, um Umgebungsvariablen abzurufen und um mit Geheimnissen zu arbeiten. MSSparkUtils sind in `PySpark (Python)`-, `Scala`- und `.NET Spark (C#)`-Notebooks sowie in Synapse-Pipelines verfügbar.
+Microsoft Spark-Hilfsprogramme (MSSparkUtils) sind ein integriertes Paket, mit dem sich gängige Aufgaben leichter erledigen lassen. Sie können MSSparkUtils verwenden, um mit Dateisystemen zu arbeiten, Umgebungsvariablen zu erhalten, Notebooks miteinander zu verketten und mit Geheimnissen zu arbeiten. MSSparkUtils sind in `PySpark (Python)`-, `Scala`- und `.NET Spark (C#)`-Notebooks sowie in Synapse-Pipelines verfügbar.
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Konfigurieren des Zugriffs auf Azure Data Lake Storage Gen2 
 
-Synapse-Notebooks verwenden Azure Active Directory (Azure AD)-Passthrough für den Zugriff auf ADLS Gen2-Konten. Sie müssen **Mitwirkender an Storage-Blobdaten** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zugreifen zu können. 
+Synapse-Notebooks verwenden Azure Active Directory (Azure AD)-Passthrough für den Zugriff auf den ADLS Gen2-Konten. Sie müssen **Mitwirkender an Storage-Blobdaten** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zugreifen zu können. 
 
-Synapse-Pipelines verwenden die Arbeitsbereichsidentität (MSI) für den Zugriff auf die Speicherkonten. Um MSSparkUtils in Ihren Pipelineaktivitäten zu verwenden, muss Ihre Arbeitsbereichsidentität **Mitwirkender an Storage-Blobdaten** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zuzugreifen.
+Synapse-Pipelines verwenden die Managed Service Identity (MSI) des Arbeitsbereichs für den Zugriff auf die Speicherkonten. Um MSSparkUtils in Ihren Pipelineaktivitäten zu verwenden, muss Ihre Arbeitsbereichsidentität **Mitwirkender an Storage-Blobdaten** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zuzugreifen.
 
 Gehen Sie folgendermaßen vor, um sicherzustellen, dass Ihr Azure AD- und Arbeitsbereichs-MSI Zugriff auf das ADLS Gen2-Konto haben:
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/) und das Speicherkonto, auf das sie zugreifen möchten. Sie können zu dem spezifischen Container navigieren, auf den Sie zugreifen möchten.
@@ -41,7 +41,7 @@ Sie können über die folgende URL mithilfe von Synapse Spark auf Daten in ADLS 
 
 ### <a name="configure-access-to-azure-blob-storage"></a>Konfigurieren des Zugriffs auf Azure Blob Storage  
 
-Synapse nutzt **SAS (Shared Access Signature)** für den Zugriff auf Azure Blob Storage. Um das Verfügbarmachen von SAS-Schlüsseln im Code zu vermeiden, empfehlen wir, im Synapse-Arbeitsbereich einen neuen verknüpften Dienst mit dem Azure Blob Storage Konto zu erstellen, auf das Sie zugreifen möchten.
+Synapse verwendet [**Shared Access Signature (SAS)** ](../../storage/common/storage-sas-overview.md) für den Zugriff auf Azure Blob Storage. Um das Verfügbarmachen von SAS-Schlüsseln im Code zu vermeiden, empfehlen wir, im Synapse-Arbeitsbereich einen neuen verknüpften Dienst mit dem Azure Blob Storage Konto zu erstellen, auf das Sie zugreifen möchten.
 
 Befolgen Sie diese Schritte, um einen neuen verknüpften Dienst für ein Azure Blob Storage-Konto hinzuzufügen:
 
@@ -392,7 +392,7 @@ Fügt die angegebene Zeichenfolge an eine Datei an, codiert in UTF-8.
 :::zone pivot = "programming-language-python"
 
 ```python
-mssparkutils.fs.append('file path','content to append',True) # Set the last parameter as True to create the file if it does not exist
+mssparkutils.fs.append("file path", "content to append", True) # Set the last parameter as True to create the file if it does not exist
 ```
 ::: zone-end
 
@@ -407,7 +407,7 @@ mssparkutils.fs.append("file path","content to append",true) // Set the last par
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-FS.Append("file path","content to append",true) // Set the last parameter as True to create the file if it does not exist
+FS.Append("file path", "content to append", true) // Set the last parameter as True to create the file if it does not exist
 ```
 
 ::: zone-end
@@ -437,6 +437,178 @@ mssparkutils.fs.rm("file path", true) // Set the last parameter as True to remov
 FS.Rm("file path", true) // Set the last parameter as True to remove all files and directories recursively 
 ```
 
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+## <a name="notebook-utilities"></a>Notebook-Utilities 
+
+Sie können die MSSparkUtils Notebook Utilities verwenden, um ein Notebook auszuführen oder ein Notebook mit einem Wert zu beenden. Führen Sie den folgenden Befehl aus, um eine Übersicht über die verfügbaren Methoden zu erhalten:
+
+```python
+mssparkutils.notebook.help()
+```
+
+Erzielen Sie Ergebnisse:
+```
+The notebook module.
+
+exit(value: String): void -> This method lets you exit a notebook with a value.
+run(path: String, timeoutSeconds: int, arguments: Map): String -> This method runs a notebook and returns its exit value.
+
+```
+
+### <a name="run-a-notebook"></a>Ausführen eines Notebooks
+Führt ein Notebook aus und gibt dessen Exit-Wert zurück. Sie können Verschachtelungsfunktionsaufrufe in einem Notebook interaktiv oder in einer Pipeline ausführen. Das Notebook, auf das verwiesen wird, wird auf dem Spark-Pool ausgeführt, dessen Notebook diese Funktion aufruft.  
+
+```python
+
+mssparkutils.notebook.run("notebook path", <timeoutSeconds>, <parameterMap>)
+
+```
+
+Beispiel:
+
+```python
+mssparkutils.notebook.run("folder/Sample1", 90, {"input": 20 })
+```
+
+### <a name="exit-a-notebook"></a>Beenden eines Notebooks
+Beendet ein Notebook mit einem Wert. Sie können Verschachtelungsfunktionsaufrufe in einem Notebook interaktiv oder in einer Pipeline ausführen. 
+
+- Wenn Sie eine `exit()` Funktion interaktiv als Notebook aufrufen, löst Azure Synapse eine Ausnahme aus, überspringt die Ausführung von Subsequenz-Zellen und hält die Spark-Session aufrecht.
+
+- Wenn Sie ein Notizbuch orchestrieren, das eine `exit()` Funktion in einer Synapse-Pipeline aufruft, gibt Azure Synapse einen Exit-Wert zurück, schließt die Ausführung der Pipeline ab und beendet die Spark-Session.  
+
+- Wenn Sie eine Funktion in einem Notebook aufrufen, auf das `exit()` verwiesen wird, beendet Azure Synapse die weitere Ausführung im Notebook, auf das verwiesen wird, und fährt mit der Ausführung der nächsten Zellen im Notebook fort, welche die `run()` Funktion aufruft. Ein Beispiel: Notebook1 hat drei Zellen und ruft in der zweiten Zelle eine `exit()` Funktion auf. Notebook2 verfügt über fünf Zellen und ruft `run(notebook1)` in der dritten Zelle auf. Wenn Sie Notebook2 ausführen, wird Notebook1 in der zweiten Zelle beendet, sobald die Funktion erreicht `exit()` wird. Notebook2 führt fort, seine vierte Zelle und fünfte Zelle auszuführen. 
+
+
+```python
+mssparkutils.notebook.exit("value string")
+```
+
+Beispiel:
+
+**Muster1** Das Notebook sucht unter **folder/** mit den folgenden beiden Zellen: 
+- Zelle 1 definiert einen **Eingabe**-Parameter, dessen Standardwert auf 10 festgelegt ist.
+- Zelle 2 beendet das Notebook mit **Eingabe** als Exit-Wert. 
+
+![Screenshot eines Muster-Notebooks](./media/microsoft-spark-utilities/spark-utilities-run-notebook-sample.png)
+
+Sie können **Muster1** in einem anderen Notebook mit Standardwerten ausführen:
+
+```python
+
+exitVal = mssparkutils.notebook.run("folder/Sample1")
+print (exitVal)
+
+```
+Ergebnis:
+
+```
+Sample1 run success with input is 10
+```
+
+Sie können **Muster1** in einem anderen Notebook ausführen und den **Eingabewert** als 20 festlegen:
+
+```python
+exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1", 90, {"input": 20 })
+print (exitVal)
+```
+
+Ergebnis:
+
+```
+Sample1 run success with input is 20
+```
+::: zone-end
+
+
+:::zone pivot = "programming-language-scala"
+
+## <a name="notebook-utilities"></a>Notebook-Utilities 
+
+Sie können die MSSparkUtils Notebook Utilities verwenden, um ein Notebook auszuführen oder ein Notebook mit einem Wert zu beenden. Führen Sie den folgenden Befehl aus, um eine Übersicht über die verfügbaren Methoden zu erhalten:
+
+```scala
+mssparkutils.notebook.help()
+```
+
+Erzielen Sie Ergebnisse:
+```
+The notebook module.
+
+exit(value: String): void -> This method lets you exit a notebook with a value.
+run(path: String, timeoutSeconds: int, arguments: Map): String -> This method runs a notebook and returns its exit value.
+
+```
+
+### <a name="run-a-notebook"></a>Ausführen eines Notebooks
+Führt ein Notebook aus und gibt dessen Exit-Wert zurück. Sie können Verschachtelungsfunktionsaufrufe in einem Notebook interaktiv oder in einer Pipeline ausführen. Das Notebook, auf das verwiesen wird, wird auf dem Spark-Pool ausgeführt, dessen Notebook diese Funktion aufruft.  
+
+```scala
+
+mssparkutils.notebook.run("notebook path", <timeoutSeconds>, <parameterMap>)
+
+```
+
+Beispiel:
+
+```scala
+mssparkutils.notebook.run("folder/Sample1", 90, {"input": 20 })
+```
+
+### <a name="exit-a-notebook"></a>Beenden eines Notebooks
+Beendet ein Notebook mit einem Wert. Sie können Verschachtelungsfunktionsaufrufe in einem Notebook interaktiv oder in einer Pipeline ausführen. 
+
+- Wenn Sie eine `exit()` Funktion interaktiv als Notebook aufrufen, löst Azure Synapse eine Ausnahme aus, überspringt die Ausführung von Subsequenz-Zellen und hält die Spark-Session aufrecht.
+
+- Wenn Sie ein Notizbuch orchestrieren, das eine `exit()` Funktion in einer Synapse-Pipeline aufruft, gibt Azure Synapse einen Exit-Wert zurück, schließt die Ausführung der Pipeline ab und beendet die Spark-Session.  
+
+- Wenn Sie eine Funktion in einem Notebook aufrufen, auf das `exit()` verwiesen wird, beendet Azure Synapse die weitere Ausführung im Notebook, auf das verwiesen wird, und fährt mit der Ausführung der nächsten Zellen im Notebook fort, welche die `run()` Funktion aufruft. Ein Beispiel: Notebook1 hat drei Zellen und ruft in der zweiten Zelle eine `exit()` Funktion auf. Notebook2 verfügt über fünf Zellen und ruft `run(notebook1)` in der dritten Zelle auf. Wenn Sie Notebook2 ausführen, wird Notebook1 in der zweiten Zelle beendet, sobald die Funktion erreicht `exit()` wird. Notebook2 führt fort, seine vierte Zelle und fünfte Zelle auszuführen. 
+
+
+```python
+mssparkutils.notebook.exit("value string")
+```
+
+Beispiel:
+
+**Muster1** Notebook sucht unter **mssparkutils/folder/** mit den folgenden zwei Zellen: 
+- Zelle 1 definiert einen **Eingabe**-Parameter, dessen Standardwert auf 10 festgelegt ist.
+- Zelle 2 beendet das Notebook mit **Eingabe** als Exit-Wert. 
+
+![Screenshot eines Muster-Notebooks](./media/microsoft-spark-utilities/spark-utilities-run-notebook-sample.png)
+
+Sie können **Muster1** in einem anderen Notebook mit Standardwerten ausführen:
+
+```scala
+
+val exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1")
+print(exitVal)
+
+```
+Ergebnis:
+
+```
+exitVal: String = Sample1 run success with input is 10
+Sample1 run success with input is 10
+```
+
+
+Sie können **Muster1** in einem anderen Notebook ausführen und den **Eingabewert** als 20 festlegen:
+
+```scala
+val exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1", 90, {"input": 20 })
+print(exitVal)
+```
+
+Ergebnis:
+
+```
+exitVal: String = Sample1 run success with input is 20
+Sample1 run success with input is 20
+```
 ::: zone-end
 
 

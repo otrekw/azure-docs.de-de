@@ -2,16 +2,20 @@
 title: 'Azure Event Grid: Aktivieren von Diagnoseprotokollen für Themen oder Domänen'
 description: Dieser Artikel enthält schrittweise Anleitungen zum Aktivieren von Diagnoseprotokollen für ein Azure Event Grid-Thema.
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: ff00c1438c49cbc9f9e67eba0cf0acef7991a5a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/22/2021
+ms.openlocfilehash: 78dfeed0cedfe96d9a0d70411aecc7c7f2c51a72
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96576450"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897773"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Aktivieren von Diagnoseprotokollen für Azure Event Grid-Themen oder -Domänen
 Dieser Artikel enthält Schrittanleitungen zum Aktivieren von Diagnoseeinstellungen für Event Grid-Themen oder Domänen.  Mit diesen Einstellungen können Sie Protokolle zu **Veröffentlichungs- und Übermittlungsfehlern** erfassen und anzeigen. 
+
+> [!IMPORTANT]
+> Das Schema für Diagnoseprotokolle finden Sie unter [Diagnoseprotokolle](diagnostic-logs.md). 
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

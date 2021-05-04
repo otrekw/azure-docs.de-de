@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 3/3/2021
+ms.date: 4/27/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4d6502ffdd13272d396852b11a11d13f929b11b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: fd283e5ef0d7a3692e819311a749c8c12b1b38b1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532275"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137891"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen und Anwendungen in Azure AD-Zugriffsüberprüfungen
 
@@ -54,14 +54,14 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
     ![Erstellen einer Zugriffsüberprüfung – Name und Beschreibung der Überprüfung](./media/create-access-review/select-what-review.png)
 
 5. Wenn Sie in Schritt 1 **Teams und Gruppen** ausgewählt haben, stehen Ihnen in Schritt 2 zwei Optionen zur Auswahl.
-   - **All Microsoft 365 groups with guest users** (Alle Microsoft 365-Gruppen mit Gastbenutzern): Wählen Sie diese Option aus, wenn Sie wiederkehrende Überprüfungen für alle Gastbenutzer in allen Microsoft Teams- und Microsoft 365-Gruppen in Ihrer Organisation einrichten möchten. Sie können bestimmte Gruppen ausschließen, indem Sie auf „Select group(s) to exclude“ (Auszuschließende Gruppen auswählen) klicken.
+   - **All Microsoft 365 groups with guest users** (Alle Microsoft 365-Gruppen mit Gastbenutzern): Wählen Sie diese Option aus, wenn Sie wiederkehrende Überprüfungen für alle Gastbenutzer in all Ihren Microsoft Teams- und Microsoft 365-Gruppen in Ihrer Organisation erstellen möchten. Sie können bestimmte Gruppen ausschließen, indem Sie auf „Select group(s) to exclude“ (Auszuschließende Gruppen auswählen) klicken.
    - **Select teams + groups** (Teams und Gruppen auswählen): Wählen Sie diese Option aus, wenn Sie feste Teams und Gruppen für die Überprüfung angeben möchten. Nach dem Klicken auf diese Option wird auf der rechten Seite eine Liste mit Gruppen zur Auswahl angezeigt.
 
      ![Teams und Gruppen](./media/create-access-review/teams-groups.png)
 
      ![Ausgewählte Option „Teams + Groups“ (Teams und Gruppen) auf der Benutzeroberfläche](./media/create-access-review/teams-groups-detailed.png)
 
-6. Wenn Sie in Schritt 1 **Anwendungen** ausgewählt haben, können Sie in Schritt 2 eine oder mehrere Anwendungen auswählen.
+6. Wenn Sie in Schritt 1 die Option **Anwendungen** ausgewählt haben, können Sie in Schritt 2 eine oder mehrere Anwendungen auswählen.
 
     >[!NOTE]
     > Wenn Sie mehrere Gruppen oder Anwendungen auswählen, werden mehrere Zugriffsüberprüfungen erstellt. Wenn Sie z. B. fünf zu überprüfende Gruppen auswählen, werden auch fünf separate Zugriffsüberprüfungen erstellt.
@@ -94,41 +94,45 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 
     ![Erstellen einer Zugriffsüberprüfung: „Einstellungen nach Abschluss“](./media/create-access-review/upon-completion-settings-new.png)
 
-Soll abgelehnten Benutzern automatisch der Zugriff entzogen werden, legen Sie Ergebnisse automatisch auf Ressource anwenden auf Aktivieren fest. Falls Sie die Ergebnisse nach Abschluss der Überprüfung manuell anwenden möchten, legen Sie die Einstellung auf Deaktivieren fest.
-Geben Sie mithilfe der Liste If reviewers don‘t respond (Wenn die Prüfer nicht reagieren) an, was bei Benutzern geschehen soll, die vom Prüfer nicht innerhalb des vorgesehenen Zeitraums überprüft werden. Diese Einstellung hat keine Auswirkungen auf Benutzer, die von den Prüfern manuell überprüft wurden. Lautet die Entscheidung des Prüfers letztlich „Verweigern“, wird dem Benutzer der Zugriff entzogen.
+    Soll abgelehnten Benutzern automatisch der Zugriff entzogen werden, legen Sie Ergebnisse automatisch auf Ressource anwenden auf Aktivieren fest. Falls Sie die Ergebnisse nach Abschluss der Überprüfung manuell anwenden möchten, legen Sie die Einstellung auf Deaktivieren fest.
+    
+    Geben Sie mithilfe der Liste If reviewers don‘t respond (Wenn die Prüfer nicht reagieren) an, was bei Benutzern geschehen soll, die vom Prüfer nicht innerhalb des vorgesehenen Zeitraums überprüft werden. Diese Einstellung hat keine Auswirkungen auf Benutzer, die von den Prüfern manuell überprüft wurden. Lautet die Entscheidung des Prüfers letztlich „Verweigern“, wird dem Benutzer der Zugriff entzogen.
 
-- **Keine Änderung**: Der Zugriff des Benutzers bleibt unverändert.
-- **Zugriff entfernen**: Dem Benutzer wird der Zugriff entzogen.
-- **Zugriff genehmigen**: Der Zugriff des Benutzers wird genehmigt.
-- **Empfehlungen annehmen**: Die Systemempfehlungen hinsichtlich der Ablehnung oder Gewährung des weiteren Benutzerzugriffs werden verwendet.
+    - **Keine Änderung**: Der Zugriff des Benutzers bleibt unverändert.
+    - **Zugriff entfernen**: Dem Benutzer wird der Zugriff entzogen.
+    - **Zugriff genehmigen**: Der Zugriff des Benutzers wird genehmigt.
+    - **Empfehlungen annehmen**: Die Systemempfehlungen hinsichtlich der Ablehnung oder Gewährung des weiteren Benutzerzugriffs werden verwendet.
 
     ![Optionen für „Einstellungen nach Abschluss“](./media/create-access-review/upon-completion-settings-new.png)
 
-Verwenden Sie **Auf verweigerte Gastbenutzer anzuwendende Aktion**, um festzulegen, was mit Gastbenutzern geschieht, wenn diese abgelehnt werden.
-- Mit „Remove user’s membership from the resource“ (Benutzermitgliedschaft für Ressource entfernen) können Sie den Zugriff des abgelehnten Benutzers auf die zu überprüfende Gruppe oder Anwendung deaktivieren. Der Benutzer kann sich allerdings weiterhin beim Mandanten anmelden.
-- Mit „Block user from signing-in for 30 days, then remove user from the tenant“ (Anmeldung des Benutzers für 30 Tage blockieren und den Benutzer anschließend aus Mandanten entfernen) können Sie verhindern, dass der abgelehnte Benutzer sich beim Mandanten anmeldet, unabhängig davon, ob er Zugriff auf andere Ressourcen hat. Wenn ein Fehler aufgetreten ist oder ein Administrator beschließt, den Zugriff erneut zu aktivieren, kann das innerhalb von 30 Tagen nach der Deaktivierung des Benutzers geschehen. Wenn keine Aktionen mit dem deaktivierten Benutzer durchgeführt werden, wird dieser aus dem Mandanten gelöscht.
+    Verwenden Sie **Auf verweigerte Gastbenutzer anzuwendende Aktion**, um festzulegen, was mit Gastbenutzern geschieht, wenn diese abgelehnt werden.
+    - Mit „Remove user’s membership from the resource“ (Benutzermitgliedschaft für Ressource entfernen) können Sie den Zugriff des abgelehnten Benutzers auf die zu überprüfende Gruppe oder Anwendung deaktivieren. Der Benutzer kann sich allerdings weiterhin beim Mandanten anmelden.
+    - Mit „Block user from signing-in for 30 days, then remove user from the tenant“ (Anmeldung des Benutzers für 30 Tage blockieren und den Benutzer anschließend aus Mandanten entfernen) können Sie verhindern, dass der abgelehnte Benutzer sich beim Mandanten anmeldet, unabhängig davon, ob er Zugriff auf andere Ressourcen hat. Wenn ein Fehler aufgetreten ist oder ein Administrator beschließt, den Zugriff erneut zu aktivieren, kann das innerhalb von 30 Tagen nach der Deaktivierung des Benutzers geschehen. Wenn keine Aktionen mit dem deaktivierten Benutzer durchgeführt werden, wird dieser aus dem Mandanten gelöscht.
 
-Weitere Informationen zu bewährten Methoden zum Entfernen von Gastbenutzern, die keinen Zugriff mehr auf Ressourcen in Ihrer Organisation haben sollen, finden Sie im Artikel [Verwenden von Azure AD Identity Governance zum Überprüfen und Entfernen externer Benutzer, die keinen Zugriff mehr auf Ressourcen haben](access-reviews-external-users.md).
+    Weitere Informationen zu bewährten Methoden zum Entfernen von Gastbenutzern, die keinen Zugriff mehr auf Ressourcen in Ihrer Organisation haben sollen, finden Sie im Artikel [Verwenden von Azure AD Identity Governance zum Überprüfen und Entfernen externer Benutzer, die keinen Zugriff mehr auf Ressourcen haben](access-reviews-external-users.md).
 
-   >[!NOTE]
-   >Die auf abgelehnte Gastbenutzer anzuwendende Aktion kann nicht für Überprüfungen mit einem größeren Gültigkeitsbereich als Gastbenutzer konfiguriert werden. Sie kann auch nicht für die Überprüfung **aller Microsoft 365-Gruppen mit Gastbenutzern** konfiguriert werden. Wenn diese Option nicht konfiguriert werden kann, wird für abgelehnte Benutzer die Standardoption (Entfernen der Benutzermitgliedschaft aus der Ressource) verwendet.
+   > [!NOTE]
+   > Die auf abgelehnte Gastbenutzer anzuwendende Aktion kann nicht für Überprüfungen mit einem größeren Gültigkeitsbereich als Gastbenutzer konfiguriert werden. Sie kann auch nicht für die Überprüfung **aller Microsoft 365-Gruppen mit Gastbenutzern** konfiguriert werden. Wenn diese Option nicht konfiguriert werden kann, wird für abgelehnte Benutzer die Standardoption (Entfernen der Benutzermitgliedschaft aus der Ressource) verwendet.
 
-13. Wählen Sie unter **Enable review decision helpers** (Entscheidungshilfen für Überprüfungen aktivieren) aus, ob Ihre Prüfer während des Überprüfungsvorgangs Empfehlungen erhalten sollen.
+13. Sie können Benachrichtigungen an weitere Benutzer oder Gruppen (Vorschauversion) senden, um Überprüfungsabschlussupdates zu erhalten. Mit diesem Feature können andere Beteiligte als der Ersteller der Überprüfung über den Fortschritt der Überprüfung informiert werden. Um dieses Feature zu verwenden, wählen Sie **Benutzer oder Gruppen auswählen** aus, und fügen Sie einen weiteren Benutzer oder eine weitere Gruppe hinzu, wenn Sie den Status des Abschlusses erhalten möchten.
+
+    ![Nach Abschluss der Einstellungen: Hinzufügen zusätzlicher Benutzer zum Empfangen von Benachrichtigungen](./media/create-access-review/upon-completion-settings-additional-receivers.png) 
+
+14. Wählen Sie unter **Enable review decision helpers** (Entscheidungshilfen für Überprüfungen aktivieren) aus, ob Ihre Prüfer während des Überprüfungsvorgangs Empfehlungen erhalten sollen.
 
     ![Optionen für das Aktivieren von Entscheidungshilfen](./media/create-access-review/helpers.png)
 
-14. Sie können im Abschnitt **Erweiterte Einstellungen** Folgendes auswählen:
+15. Sie können im Abschnitt **Erweiterte Einstellungen** Folgendes auswählen:
     - Legen Sie **Begründung erforderlich** auf **Aktivieren** fest, damit Prüfer einen Grund für die Genehmigung angeben müssen.
     - Legen Sie **E-Mail-Benachrichtigungen** auf **Aktivieren** fest, damit Azure AD beim Start einer Zugriffsüberprüfung E-Mail-Benachrichtigungen an die Prüfer und beim Abschluss einer Überprüfung Benachrichtigungen an Administratoren sendet.
     - Legen Sie **Erinnerungen** auf **Aktivieren** fest, damit Azure AD Erinnerungen zu laufenden Zugriffsüberprüfungen an Prüfer sendet, die ihre Überprüfung noch nicht abgeschlossen haben. Diese Erinnerungen erfolgen nach Ablauf der Hälfte der Überprüfungsdauer automatisch.
     - Der Inhalt der an Prüfer gesendeten E-Mail wird automatisch basierend auf den Überprüfungsdetails generiert, z. B. Name der Überprüfung, Name der Ressource, Fälligkeitsdatum usw. Wenn Sie eine Möglichkeit benötigen, zusätzliche Informationen wie etwa weitere Anweisungen oder Kontaktinformationen mitzuteilen, können Sie diese Informationen im Abschnitt **E-Mail mit zusätzlichen Inhalten für Prüfer** angeben. Die eingegebenen Informationen werden in die Einladungs- und Erinnerungs-E-Mails an die zugewiesenen Prüfer eingefügt. Der in der Abbildung unten hervorgehobene Abschnitt zeigt, wo diese Informationen angezeigt werden.
 
-
       ![Zusätzliche Inhalte für Prüfer](./media/create-access-review/additional-content-reviewer.png)
 
-15. Klicken Sie auf **Weiter: Überprüfen und erstellen**, um zur nächsten Seite zu wechseln.
-16. Benennen Sie die Zugriffsüberprüfung. Wahlweise können Sie jeder Überprüfung eine Beschreibung hinzufügen. Den Prüfern werden Name und Beschreibung angezeigt.
-17. Überprüfen Sie die Informationen, und wählen Sie **Erstellen** aus.
+16. Klicken Sie auf **Weiter: Überprüfen und erstellen**, um zur nächsten Seite zu wechseln.
+17. Benennen Sie die Zugriffsüberprüfung. Wahlweise können Sie jeder Überprüfung eine Beschreibung hinzufügen. Den Prüfern werden Name und Beschreibung angezeigt.
+18. Überprüfen Sie die Informationen, und wählen Sie **Erstellen** aus.
 
        ![Bildschirm „Erstellen“ für Überprüfungen](./media/create-access-review/create-review.png)
 

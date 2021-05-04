@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: d1d412774dc68cba0c24709c7fc8a7999e0aeab8
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 121c22e3a25a95fa64f6f779ebc0827bb6c123c7
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094760"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015949"
 ---
 # <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
 
@@ -147,6 +147,8 @@ Sie können eine öffentliche IP-Adresse einem virtuellen [Windows](../virtual-m
 
 Wählen Sie für die öffentliche IP-Adresse **Dynamisch** oder **Statisch** aus. Informieren Sie sich über das [Zuweisen von IP-Adressen zu Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="internet-facing-load-balancers"></a>Load Balancer mit Internetzugriff
 
 Sie können eine öffentliche IP-Adresse mit einer der beiden [SKUs](#sku) einer [Azure Load Balancer](../load-balancer/load-balancer-overview.md)-Instanz zuordnen, indem Sie sie der **Front-End**-Konfiguration für den Lastenausgleich zuweisen. Diese öffentliche IP-Adresse dient als IP-Adresse mit Lastenausgleich. 
@@ -154,6 +156,8 @@ Sie können eine öffentliche IP-Adresse mit einer der beiden [SKUs](#sku) einer
 Sie können einem Load Balancer-Front-End eine dynamische oder eine statische öffentliche IP-Adresse zuweisen. Sie können einem Load Balancer-Front-End mehrere öffentliche IP-Adressen zuweisen. Diese Konfiguration ermöglicht Szenarien mit [mehreren VIPs](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), z. B. eine mehrinstanzenfähige Umgebung mit TLS-basierten Websites. 
 
 Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure load balancer standard SKU](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Standard-SKU von Azure Load Balancer).
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="vpn-gateways"></a>VPN-Gateways
 
@@ -189,7 +193,7 @@ In der folgenden Tabelle sind die Eigenschaften, über die eine öffentliche IP-
 | --- | --- | --- | --- |
 | Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
 | Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja |Ja |
-| VPN-Gateway |Gateway-IP-Konfiguration |Ja |Nein |
+| VPN-Gateway |Gateway-IP-Konfiguration |Ja |Ja (nur VPNGwAZ) |
 | Anwendungsgateway |Front-End-Konfiguration |Ja (nur V1) |Ja (nur V2) |
 | Azure Firewall | Front-End-Konfiguration | Nein | Ja|
 

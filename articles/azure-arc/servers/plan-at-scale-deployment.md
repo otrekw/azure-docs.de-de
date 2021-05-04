@@ -1,14 +1,14 @@
 ---
 title: Planen und Bereitstellen von Servern mit Azure Arc-Unterstützung
 description: Erfahren Sie, wie Sie eine große Anzahl von Computern für Server mit Azure Arc-Unterstützung aktivieren, um die Konfiguration wichtiger Sicherheits-, Verwaltungs- und Überwachungsfunktionen in Azure zu vereinfachen.
-ms.date: 03/18/2021
+ms.date: 04/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3f8fe410da56f627ceab5f17c980f2daa1a262c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023281"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831976"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Planen und Bereitstellen von Servern mit Arc-Unterstützung
 
@@ -83,7 +83,7 @@ In Phase 3 aktivieren Administratoren oder System Engineers die Automatisierung 
 |-----|-------|---------|
 |Erstellen einer Resource Health-Warnung |Wenn ein Server länger als 15 Minuten keine Heartbeats an Azure sendet, kann dies bedeuten, dass er offline ist, die Netzwerkverbindung blockiert wurde oder der Agent nicht ausgeführt wird. Entwickeln Sie einen Plan, wie Sie auf diese Vorfälle reagieren und sie untersuchen, und verwenden Sie [Resource Health-Warnungen](../..//service-health/resource-health-alert-monitor-guide.md), um benachrichtigt zu werden, wenn sie beginnen.<br><br> Geben Sie Folgendes an, wenn Sie die Warnung konfigurieren:<br> **Ressourcentyp** = **Server mit Azure Arc-Unterstützung**<br> **Aktueller Ressourcenstatus** = **Nicht verfügbar**<br> **Vorheriger Ressourcenstatus** = **Verfügbar** | Eine Stunde |
 |Erstellen einer Azure Advisor-Warnung | Für einen optimalen Betrieb und um sicherzustellen, dass die aktuellsten Sicherheits- und Fehlerfixes wirksam sind, sollten Sie den Agent der Server mit Azure Arc-Unterstützung stets auf dem neuesten Stand zu halten. Veraltete Agents werden mit einer [Azure Advisor-Warnung](../../advisor/advisor-alerts-portal.md) identifiziert.<br><br> Geben Sie Folgendes an, wenn Sie die Warnung konfigurieren:<br> **Empfehlungstyp** = **Upgrade auf die aktuelle Version des Azure Connected Machine-Agents** | Eine Stunde |
-|[Weisen Sie Azure-Richtlinien](../../governance/policy/assign-policy-portal.md) Ihrem Abonnement- oder Ressourcengruppenbereich zu. |Weisen Sie dem Abonnement- oder Ressourcengruppenbereich die [Richtlinie](../../azure-monitor/vm/vminsights-enable-policy.md) **Azure Monitor für VMs aktivieren** zu (und andere, die Ihren Anforderungen entsprechen). Mit Azure Policy können Sie Richtliniendefinitionen zuweisen, die die erforderlichen Agents für Azure Monitor für VMs in Ihrer gesamten Umgebung installieren.| Varies |
+|[Weisen Sie Azure-Richtlinien](../../governance/policy/assign-policy-portal.md) Ihrem Abonnement- oder Ressourcengruppenbereich zu. |Weisen Sie dem Abonnement- oder Ressourcengruppenbereich die [Richtlinie](../../azure-monitor/vm/vminsights-enable-policy.md) **Azure Monitor für VMs aktivieren** zu (und andere, die Ihren Anforderungen entsprechen). Mit Azure Policy können Sie Richtliniendefinitionen zuweisen, die die erforderlichen Agents für VM-Erkenntnisse in Ihrer gesamten Umgebung installieren.| Varies |
 |[Aktivieren der Updateverwaltung für Ihre Server mit Arc-Unterstützung](../../automation/update-management/enable-from-automation-account.md) |Konfigurieren Sie die Updateverwaltung in Azure Automation zur Verwaltung von Betriebssystemupdates für Ihre Windows- und Linux-VMs, die bei Servern mit Arc-Unterstützung registriert sind. | 15 Minuten |
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung mit
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/19/2021
 ms.author: thweiss
-ms.openlocfilehash: 1a6bdf55e52a7060423d2a016f07eee3608f50d4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 209d18dfbadea89f14fd90da9a1bc57b3ccf0dfe
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063473"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728071"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurieren der rollenbasierten Zugriffssteuerung mit Azure Active Directory für Ihr Azure Cosmos DB-Konto (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,6 +45,16 @@ RBAC auf Datenebene in Azure Cosmos DB basiert auf Konzepten, die in anderen RB
 
 ## <a name="permission-model"></a><a id="permission-model"></a> Berechtigungsmodell
 
+> [!IMPORTANT]
+> Dieses Berechtigungsmodell deckt nur Datenbankvorgänge ab, mit denen Daten gelesen und geschrieben werden können. Es deckt **keine** Verwaltungsvorgänge ab, wie das Erstellen von Containern oder das Ändern ihres Durchsatzes. Dies bedeutet, dass Sie **kein Azure Cosmos DB-Datenebenen-SDK verwenden können**, um Verwaltungsvorgänge mit einer AAD-Identität zu authentifizieren. Stattdessen müssen Sie [Azure RBAC](role-based-access-control.md) verwenden über:
+> - [ARM-Vorlagen](manage-with-templates.md)
+> - [Azure PowerShell-Skripts](manage-with-powershell.md),
+> - [Azure CLI-Skripts](manage-with-cli.md),
+> - Azure-Verwaltungsbibliotheken, die verfügbar sind in
+>   - [.NET](https://www.nuget.org/packages/Azure.ResourceManager.CosmosDB)
+>   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)
+>   - [Python](https://pypi.org/project/azure-mgmt-cosmosdb/)
+
 In der folgenden Tabelle sind alle Aktionen aufgeführt, die vom Berechtigungsmodell bereitgestellt werden.
 
 | Name | Entsprechende Datenbankvorgänge |
@@ -64,9 +74,6 @@ Platzhalter werden sowohl auf *Containerebene* als auch auf *Elementebene* unter
 
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`
-
-> [!IMPORTANT]
-> Dieses Berechtigungsmodell deckt nur Datenbankvorgänge ab, mit denen Daten gelesen und geschrieben werden können. Es deckt **keine** Verwaltungsvorgänge ab, wie das Erstellen von Containern oder das Ändern ihres Durchsatzes. Zum Authentifizieren von Verwaltungsvorgängen mit einer AAD-Identität verwenden Sie stattdessen [Azure RBAC](role-based-access-control.md).
 
 ### <a name="metadata-requests"></a><a id="metadata-requests"></a> Metadatenanforderungen
 

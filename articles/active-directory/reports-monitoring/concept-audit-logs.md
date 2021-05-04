@@ -1,10 +1,10 @@
 ---
-title: Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation
-description: Enthält eine Einführung in die Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal.
+title: Überwachungsprotokolle in Azure Active Directory | Microsoft-Dokumentation
+description: Hier finden Sie eine Übersicht über die Überwachungsprotokolle in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
 ms.service: active-directory
@@ -13,44 +13,94 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/17/2020
+ms.date: 04/26/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aa8f675e3fd36fbebfecf42db0f02b0f0f00115
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7da93343e7380a327b7d2586b90dd5a5df1e006f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95995980"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136856"
 ---
-# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
+# <a name="audit-logs-in-azure-active-directory"></a>Überwachungsprotokolle in Azure Active Directory 
 
-Mit Azure AD-Berichten (Azure Active Directory) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
+Als IT-Administrator müssen Sie wissen, wie Ihre IT-Umgebung funktioniert. Anhand der Informationen zur Integrität Ihres Systems können Sie bewerten, ob und wie Sie auf potenzielle Probleme reagieren müssen. 
+
+Um Sie bei diesem Ziel zu unterstützen, bietet Ihnen das Azure Active Directory-Portal Zugriff auf drei Aktivitätsprotokolle:
+
+- **[Anmeldungen](concept-sign-ins.md)** : Informationen zu Anmeldungen und zur Verwendung Ihrer Ressourcen durch Ihre Benutzer.
+- **[Überwachung](concept-audit-logs.md)** : Informationen zu Änderungen, die auf Ihren Mandanten angewendet wurden, z. B. Benutzer- und Gruppenverwaltung oder Updates, die auf die Ressourcen Ihres Mandanten angewendet wurden.
+- **[Bereitstellung](concept-provisioning-logs.md)** : Vom Bereitstellungsdienst ausgeführte Aktivitäten, z. B. die Erstellung einer Gruppe in ServiceNow oder der Import eines Benutzers aus Workday.
+
+Dieser Artikel bietet eine Übersicht über die Überwachungsprotokolle.
 
 
+## <a name="what-can-you-do-with-it"></a>Was können Sie damit machen?
 
-Diese Architektur für die Berichterstellung umfasst die folgenden Komponenten:
+Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten zu Compliancezwecken bereit.
+Die am häufigsten verwendeten Ansichten dieses Protokolls basieren auf den folgenden Kategorien:
 
-- **Aktivität** 
-    - **Anmeldungen:** Der [Bericht „Anmeldungen“](concept-sign-ins.md) enthält Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
-    - **Überwachungsprotokolle:** Ermöglichen die Nachverfolgung sämtlicher Änderungen, die von verschiedenen Features in Azure AD vorgenommen wurden. Hierzu zählen unter anderem Änderungen an Ressourcen in Azure AD, z. B. das Hinzufügen oder Entfernen von Benutzern, Apps, Gruppen, Rollen und Richtlinien.
-    - **Bereitstellungsprotokolle** - [Bereitstellungsprotokolle](./concept-provisioning-logs.md) ermöglichen Kunden die Überwachung von Aktivitäten durch den Bereitstellungsdienst, z. B. die Erstellung einer Gruppe in ServiceNow oder eines aus Workday importierten Benutzers. 
-- **Security** 
-    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](../identity-protection/overview-identity-protection.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
-    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](../identity-protection/overview-identity-protection.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
+- Benutzerverwaltung
 
-Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
+- Gruppenverwaltung
  
-## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
-
-* Benutzer mit den Rollen **Sicherheitsadministrator**, **Sicherheitsleseberechtigter**, **Berichtsleser**, **Globaler Leser** oder **Globaler Administrator**
-
-## <a name="audit-logs"></a>Überwachungsprotokolle
-
-Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten für Compliancezwecke bereit. Wählen Sie zum Auswählen des Überwachungsberichts in **Azure Active Directory** im Abschnitt **Überwachung** die Option **Überwachungsprotokolle** aus. 
+- Anwendungsverwaltung  
 
 
+Mit einer benutzer- oder gruppenorientierten Ansicht können Sie Antworten auf beispielsweise folgende Fragen erhalten:
+
+- Welche Typen von Updates wurden auf Benutzer angewendet?
+
+- Wie viele Benutzer wurden geändert?
+
+- Wie viele Kennwörter wurden geändert?
+
+- Welche Schritte hat ein Administrator in einem Verzeichnis ausgeführt?
+
+- Welche Gruppen wurden hinzugefügt?
+
+- Sind Gruppen mit Änderungen der Mitgliedschaft vorhanden?
+
+- Haben sich die Besitzer der Gruppe geändert?
+
+- Welche Lizenzen wurden einer Gruppe oder einem Benutzer zugewiesen?
+
+
+Mit einer anwendungsorientierten Ansicht können Sie Antworten auf beispielsweise folgende Fragen erhalten:
+
+- Welche Anwendungen wurden hinzugefügt oder aktualisiert?
+
+- Welche Anwendungen wurden entfernt?
+
+- Hat sich ein Dienstprinzipal für eine Anwendung geändert?
+
+- Haben sich die Namen von Anwendungen geändert?
+
+- Wer hat die Zustimmung zu einer Anwendung erteilt?
+
+ 
+## <a name="who-can-access-it"></a>Wer kann auf sie zugreifen?
+
+Um auf die Überwachungsprotokolle zugreifen zu können, muss Ihnen eine der folgenden Rollen zugewiesen sein: 
+
+- Sicherheitsadministrator
+- Sicherheitsleseberechtigter
+- Report Reader (Leseberechtigter für Berichte)
+- Globaler Leser
+- Globaler Administrator
+
+## <a name="where-can-you-find-it-in-the-azure-portal"></a>Wo finden Sie die Protokolle im Azure-Portal?
+
+Das Azure-Portal bietet Ihnen mehrere Optionen für den Zugriff auf das Protokoll. Im Azure Active Directory-Menü können Sie beispielsweise im Abschnitt **Überwachung** öffnen.  
+
+![Bereitstellungsprotokolle öffnen](./media/concept-provisioning-logs/provisioning-logs-menu.png)
+
+Darüber hinaus können Sie über den folgenden Link direkt zu den Überwachungsprotokollen gelangen: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/ProvisioningEvents](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/ProvisioningEvents)
+
+
+## <a name="what-is-the-default-view"></a>Was ist die Standansicht?
 
 Ein Überwachungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
 
@@ -162,54 +212,8 @@ Sie können die gefilterten Daten (bis zu 250.000 Datensätze) auch herunterlade
 
 ![Herunterladen von Daten](./media/concept-audit-logs/download.png "Herunterladen von Daten")
 
-## <a name="audit-logs-shortcuts"></a>Verknüpfungen für Überwachungsprotokolle
 
-Neben **Azure Active Directory** bietet das Azure-Portal noch zwei weitere Einstiegspunkte für Überwachungsdaten:
 
-- Benutzer und Gruppen
-- Unternehmensanwendungen
-
-### <a name="users-and-groups-audit-logs"></a>Überwachungsprotokolle für Benutzer und Gruppen
-
-Mit Überwachungsberichten, die auf Benutzern und Gruppen basieren, können Sie beispielsweise Antworten auf folgende Fragen erhalten:
-
-- Welche Typen von Updates wurden auf Benutzer angewendet?
-
-- Wie viele Benutzer wurden geändert?
-
-- Wie viele Kennwörter wurden geändert?
-
-- Welche Schritte hat ein Administrator in einem Verzeichnis ausgeführt?
-
-- Welche Gruppen wurden hinzugefügt?
-
-- Sind Gruppen mit Änderungen der Mitgliedschaft vorhanden?
-
-- Haben sich die Besitzer der Gruppe geändert?
-
-- Welche Lizenzen wurden einer Gruppe oder einem Benutzer zugewiesen?
-
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Benutzer** im Abschnitt **Überwachung**. Bei diesem Einstiegspunkt ist die Kategorie **UserManagement** vorab ausgewählt.
-
-![Benutzer](./media/concept-audit-logs/users.png "Benutzer")
-
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Gruppen beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Gruppen** im Abschnitt **Überwachung**. Bei diesem Einstiegspunkt ist die Kategorie **GroupManagement** vorab ausgewählt.
-
-![Filtergruppen](./media/concept-audit-logs/groups.png "Filtergruppen")
-
-### <a name="enterprise-applications-audit-logs"></a>Überwachungsprotokolle für Unternehmensanwendungen
-
-Mit Überwachungsberichten, die auf Anwendungen basieren, können Sie beispielsweise Antworten auf folgende Fragen erhalten:
-
-* Welche Anwendungen wurden hinzugefügt oder aktualisiert?
-* Welche Anwendungen wurden entfernt?
-* Hat sich ein Dienstprinzipal für eine Anwendung geändert?
-* Haben sich die Namen von Anwendungen geändert?
-* Wer hat die Zustimmung zu einer Anwendung erteilt?
-
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Ihre Anwendungen beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** des Blatts **Unternehmensanwendungen** verwenden. Bei diesem Einstiegspunkt ist für **Aktivitätsressourcentyp** bereits vorab die Option **Unternehmensanwendungen** ausgewählt.
-
-![Unternehmensanwendungen](./media/concept-audit-logs/enterpriseapplications.png "Unternehmensanwendungen")
 
 ## <a name="microsoft-365-activity-logs"></a>Microsoft 365-Aktivitätsprotokolle
 
@@ -220,5 +224,6 @@ Mithilfe der [Office 365-Verwaltungs-APIs](/office/office-365-management-api/off
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Referenz zu Überwachungsaktivitäten von Azure AD](reference-audit-activities.md)
-- [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md)
+- [Referenz zur Aufbewahrung von Azure AD-Protokollen](reference-reports-data-retention.md)
 - [Latenzen bei Azure Active Directory-Berichten](reference-reports-latencies.md)
+- [Unbekannte Akteure in Überwachungsberichten](/troubleshoot/azure/active-directory/unknown-actors-in-audit-reports)

@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 04/13/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c067dba3a8af87e354019154fad8304fe9edfbbc
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305462"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829654"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen
 
@@ -347,7 +347,7 @@ Durch das Feature „Multi-Factor Authentication speichern“ wird ein permanent
 
 Die Option **Die nächsten X Tage nicht erneut fragen** wird in Nicht-Browseranwendungen nicht angezeigt, unabhängig davon, ob diese die moderne Authentifizierung unterstützen. Diese Apps verwenden _Aktualisierungstoken_, die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens überprüft Azure AD, ob die letzte mehrstufige Authentifizierung innerhalb der angegebenen Anzahl von Tagen durchgeführt wurde.
 
-Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps, die normalerweise jedes Mal dazu auffordern. Das Feature erhöht die Anzahl der Authentifizierungen für Clients mit moderner Authentifizierung, die normalerweise alle 90 Tage zur Authentifizierung auffordern, wenn eine kürzere Dauer konfiguriert ist. Die Anzahl der Authentifizierungen kann sich auch erhöhen, wenn mit bedingten Zugriffsrichtlinien kombiniert wird.
+Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps, die normalerweise jedes Mal dazu auffordern. Die Funktion kann die Anzahl der Authentifizierungen für moderne Authentifizierungsclients, die normalerweise alle 180 Tage eine Abfrage durchführen, erhöhen, wenn eine niedrigere Dauer konfiguriert ist. Die Anzahl der Authentifizierungen kann sich auch erhöhen, wenn mit bedingten Zugriffsrichtlinien kombiniert wird.
 
 > [!IMPORTANT]
 > Das Feature **Multi-Factor Authentication speichern** ist nicht kompatibel mit dem AD FS-Feature **Angemeldet bleiben**, bei dem Benutzer die mehrstufige Authentifizierung für AD FS über Azure Multi-Factor Authentication Server oder eine Lösung zur mehrstufigen Authentifizierung von Drittanbietern ausführen.

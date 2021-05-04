@@ -4,13 +4,13 @@ description: Hier erfahren Sie, wie Sie Apps in einem produktionsfremden Slot be
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: b93fb61cc58360ddfcf15d2af2c936203d869500
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: 792801c568255b471487c14b6a812942298ad0d4
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771531"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906546"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -248,8 +248,7 @@ Nach dem Speichern der Einstellung wird der angegebene Prozentsatz von Clients n
 Sobald ein Client automatisch an einen bestimmten Slot weitergeleitet wird, ist er für die Dauer der Clientsitzung auf diesen Slot festgelegt. Im Clientbrowser sehen Sie anhand des Cookies `x-ms-routing-name` in Ihren HTTP-Headern, mit welchem Slot Ihre Sitzung verknüpft ist. Anforderungen, die an den Stagingslot weitergeleitet werden, haben das Cookie `x-ms-routing-name=staging`. Anforderungen, die an den Produktionsslot weitergeleitet werden, haben das Cookie `x-ms-routing-name=self`.
 
    > [!NOTE]
-   > Neben dem Azure-Portal können Sie auch den Befehl [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az_webapp_traffic_routing_set) in der Azure-Befehlszeilenschnittstelle verwenden, um die Prozentwerte für das Routing von CI/CD-Tools wie DevOps-Pipelines oder anderen Automatisierungssystemen festzulegen.
-   > 
+   > Sie können auch den Befehl [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az_webapp_traffic_routing_set) in der Azure-Befehlszeilenschnittstelle verwenden, um die Prozentwerte für das Routing von CI/CD-Tools wie GitHub Actions, DevOps-Pipelines oder anderen Automatisierungssystemen festzulegen.
 
 ### <a name="route-production-traffic-manually"></a>Manuelles Weiterleiten von Produktionsdatenverkehr
 
@@ -270,6 +269,9 @@ Damit Benutzer Ihre Beta-App nutzen können, müssen Sie den gleichen Abfragepar
 ```
 
 Standardmäßig erhalten neue Slots eine Routingregel von `0%`, die in grau dargestellt. Wenn Sie diesen Wert explizit auf `0%` festlegen (als schwarzer Text dargestellt), können Ihre Benutzer manuell unter Verwendung des Abfrageparameters `x-ms-routing-name` auf den Stagingslot zugreifen. Sie werden jedoch nicht automatisch an den Slot weitergeleitet, da der Prozentsatz für die Weiterleitung auf „0“ festgelegt ist. Dies ist ein erweitertes Szenario, in dem Sie Ihren Stagingslot vor der Öffentlichkeit verbergen können, während Sie gleichzeitig zulassen, dass interne Teams Änderungen am Slot testen.
+
+> [!NOTE]
+> Es gibt eine bekannte Einschränkung, die sich auf private Endpunkte und das Datenverkehrsrouting mit Slots auswirkt. Ab April 2021 führt das automatische und manuelle Anforderungsrouting zwischen Slots zu „403 Zugriff verweigert“. Diese Einschränkung wird in einer späteren Version aufgehoben. 
 
 <a name="Delete"></a>
 

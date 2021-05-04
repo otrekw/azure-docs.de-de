@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e2b27934f58402ecfb7dabf5560dc43e45f3f7dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e216d42ff1f279d87e657126514fcfb50960f806
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101678493"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811902"
 ---
 # <a name="understand-support-for-disconnected-device-updates"></a>Grundlegendes zur Unterstützung für getrennte Geräteupdates
 
@@ -20,7 +20,7 @@ In einem transparenten Gatewayszenario kann mindestens ein Gerät Nachrichten ü
 
 ## <a name="how-does-microsoft-connected-cache-preview-for-device-update-for-azure-iot-hub-work"></a>Wie funktioniert die Microsoft Connected Cache-Vorschauversion für Device Update for Azure IoT Hub?
 
-Microsoft Connected Cache ist ein intelligenter, transparenter Cache für Inhalte, die für Device Update for Azure IoT Hub-Inhalte veröffentlicht werden, und kann so angepasst werden, dass auch Inhalte aus anderen Quellen wie Paketrepositorys zwischengespeichert werden. Microsoft Connected Cache ist ein „kalter“ Cache, der durch Clientanforderungen für genau die vom Übermittlungsoptimierungs-Client angeforderten Dateibereiche aufgewärmt wird und das Seeding für den Inhalt nicht vorab durchführt. Das Diagramm und die schrittweise Beschreibung unten erklären, wie Microsoft Connected Cache innerhalb der Infrastruktur von Device Update for Azure IoT Hub funktioniert.
+Microsoft Connected Cache Preview ist ein intelligenter, transparenter Cache für Inhalte, die für Device Update for Azure IoT Hub-Inhalte veröffentlicht werden, und kann so angepasst werden, dass auch Inhalte aus anderen Quellen wie Paketrepositorys zwischengespeichert werden. Microsoft Connected Cache ist ein „kalter“ Cache, der durch Clientanforderungen für genau die vom Übermittlungsoptimierungs-Client angeforderten Dateibereiche aufgewärmt wird und das Seeding für den Inhalt nicht vorab durchführt. Das Diagramm und die schrittweise Beschreibung unten erklären, wie Microsoft Connected Cache innerhalb der Infrastruktur von Device Update for Azure IoT Hub funktioniert.
 
 >[!Note]
 >Bei der Definition dieses Flows wurde davon ausgegangen, dass das IoT-Edge-Gateway über Internetkonnektivität verfügt. Für das Szenario des IoT Edge-Downstreamgateways (Nested Edge) kann das Content Delivery Network (CDN) als das auf dem übergeordneten IoT Edge-Gateway gehostete MCC betrachtet werden.

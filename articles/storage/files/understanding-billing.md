@@ -7,15 +7,24 @@ ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 11d22fd83106bb1802514d0c7d5f67724664464d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: efcfabb931b45b8b30e755cf1a9c16d15308f9d4
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788383"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064951"
 ---
 # <a name="understand-azure-files-billing"></a>Grundlegendes zur Abrechnung für Azure Files
 Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nutzungsbasierte Zahlung“. Das Modell „Bereitgestellt“ ist nur für Premium-Dateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **FileStorage** bereitgestellt werden. Das Modell „Nutzungsbasierte Zahlung“ ist nur für Standarddateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **Universell, Version 2** bereitgestellt werden. In diesem Artikel wird die Funktionsweise beider Modelle erklärt, um Ihnen zu helfen, Ihre monatliche Azure Files-Rechnung zu verstehen.
+
+:::row:::
+    :::column:::
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/m5_-GsKv4-o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    :::column-end:::
+    :::column:::
+        Bei diesem Video handelt es sich um ein Interview, in dem die Grundlagen des Azure Files-Abrechnungsmodells besprochen werden, einschließlich der Optimierung von Azure-Dateifreigaben, um die geringstmöglichen Kosten zu erzielen, und des Vergleichs von Azure Files mit anderen Dateispeicherangeboten vor Ort und in der Cloud.
+   :::column-end:::
+:::row-end:::
 
 Preisinformationen zu Azure Files finden Sie auf der [Seite „Azure Files – Preise“](https://azure.microsoft.com/pricing/details/storage/files/).
 
@@ -23,23 +32,33 @@ Preisinformationen zu Azure Files finden Sie auf der [Seite „Azure Files – 
 In Azure Files werden Basis 2-Maßeinheiten zur Darstellung der Speicherkapazität verwendet: KiB, MiB, GiB und TiB. Bei Ihrem Betriebssystem wird möglicherweise dieselbe Maßeinheit oder dasselbe Zählsystem verwendet.
 
 ### <a name="windows"></a>Windows
-
 Sowohl im Windows-Betriebssystem als auch in Azure Files wird die Speicherkapazität mithilfe des Basis 2-Zählsystems gemessen, doch es gibt einen Unterschied bei der Bezeichnung von Einheiten. In Azure Files wird die Speicherkapazität mit Basis 2-Maßeinheiten bezeichnet, während sie in Windows mit Basis 10-Maßeinheiten bezeichnet wird. Beim Melden der Speicherkapazität gibt es in Windows keine Umwandlung von „Basis 2“ in „Basis 10“.
 
-|Akronym  |Definition  |Einheit  |Windows wird angezeigt als  |
-|---------|---------|---------|---------|
-|KiB     |1\.024 Bytes         |Kibibyte         |KB (Kilobyte)         |
-|MiB     |1\.024 KiB (1.048.576 Bytes)         |Mebibyte         |MB (Megabyte)         |
-|GiB     |1\.024 MiB (1.073.741.824 Bytes)         |Gibibyte         |GB (Gigabyte)         |
-|TiB     |1\.024 GiB (1.099.511.627.776 Bytes)         |Tebibyte         |TB (Terabyte)         |
+| Akronym | Definition                         | Einheit     | Windows wird angezeigt als |
+|---------|------------------------------------|----------|---------------------|
+| KiB     | 1\.024 Bytes                        | Kibibyte | KB (Kilobyte)       |
+| MiB     | 1\.024 KiB (1.048.576 Bytes)        | Mebibyte | MB (Megabyte)       |
+| GiB     | 1\.024 MiB (1.073.741.824 Bytes)     | Gibibyte | GB (Gigabyte)       |
+| TiB     | 1\.024 GiB (1.099.511.627.776 Bytes) | Tebibyte | TB (Terabyte)       |
 
 ### <a name="macos"></a>macOS
-
 Wenn Sie ermitteln möchten, welches Zählsystem verwendet wird, lesen Sie auf der Website von Apple [How iOS and macOS report storage capacity](https://support.apple.com/HT201402) (Wie iOS und MacOS die Speicherkapazität melden).
 
 ### <a name="linux"></a>Linux
-
 Ein anderes Zählsystem könnte von jedem Betriebssystem oder jeder individuellen Software verwendet werden. Wenn Sie erfahren möchten, wie die Speicherkapazität jeweils gemeldet wird, lesen Sie die zugehörige Dokumentation.
+
+## <a name="reserve-capacity"></a>Reservekapazität
+Azure Files unterstützt Speicherkapazitätsreservierungen, mit denen Sie einen Preisnachlass für Speicherplatz erzielen können, indem Sie sich im Voraus auf die Speichernutzung festlegen. Sie sollten den Kauf von reservierten Instanzen für alle Produktions-Workloads oder Dev/Test-Workloads mit konsistenten Footprints in Betracht ziehen. Wenn Sie reservierte Kapazität erwerben, muss Ihre Reservierung die folgenden Abmessungen angeben:
+
+- **Kapazitätsgröße**: Kapazitätsreservierungen können für entweder 10 TiB oder 100 TiB mit größeren Rabatten für den Erwerb einer Reservierung mit höherer Kapazität erfolgen. Sie können mehrere Reservierungen erwerben, einschließlich Reservierungen mit unterschiedlichen Kapazitätsgrößen, um Ihre Workload-Anforderungen zu erfüllen. Wenn Ihre Produktionsbereitstellung beispielsweise über 120 TiB Dateifreigaben verfügt, können Sie eine 100 TiB-Reservierung und zwei 10 TiB-Reservierungen erwerben, um die Gesamtkapazitätsanforderungen zu erfüllen.
+- **Laufzeit:** Reservierungen können für eine Laufzeit von einem Jahr oder drei Jahren erworben werden, mit erheblichen Rabatten für den Erwerb einer längeren Reservierungslaufzeit. 
+- **Ebene**: Die Ebene der Azure-Files für die Kapazitätsreservierung. Reservierungen für Azure Files sind derzeit für die Hot- und Cool- Ebenen verfügbar.
+- **Standort**: Die Azure-Region der Kapazitätsreservierung. Kapazitätsreservierungen sind in einer Teilmenge der Azure-Regionen verfügbar.
+- **Redundanz**: Die Speicherredundanz der Kapazitätsreservierung. Reservierungen werden für alle von Azure Files unterstützten Redundanzen unterstützt, einschließlich LRS, ZRS, GRS und GZRS.
+
+Sobald Sie eine Kapazitätsreservierung erwerben, wird sie automatisch von Ihrer vorhandenen Speicherauslastung verbraucht. Wenn Sie mehr Speicher als reserviert verwenden, zahlen Sie den Listenpreis für den Saldo, der nicht von der Kapazitätsreservierung abgedeckt ist. Gebühren für Transaktionen, Bandbreite und Datenübertragung sind nicht in der Reservierung enthalten.
+
+Weitere Informationen zum Erwerb von Speicherreservierungen finden Sie unter [Optimieren der Kosten für Azure Files mit reservierter Kapazität](files-reserve-capacity.md).
 
 ## <a name="provisioned-model"></a>Bereitgestelltes Modell
 Azure Files verwendet für Premium-Dateifreigaben das Modell „Bereitgestellt“. Beim diesem Geschäftsmodell geben Sie dem Azure Files-Dienst aktiv an, wie hoch Ihr Speicherbedarf ist, anstatt nach Inanspruchnahme abgerechnet zu werden. Dies ist vergleichbar mit dem Kauf lokaler Hardware. Wenn Sie eine Azure-Dateifreigabe mit einer bestimmten Menge Speicherplatz bereitstellen, zahlen Sie für diesen Speicher unabhängig davon, ob Sie ihn nutzen oder nicht, genauso wie Sie nicht anfangen, Kosten für lokale physische Medien zu zahlen, wenn Sie beginnen, Speicherplatz zu belegen. Im Gegensatz zum Kauf lokaler physischer Medien können bereitgestellte Dateifreigaben je nach Speicher- und E/A-Leistungsmerkmalen dynamisch hoch- oder herunterskaliert werden.
@@ -113,6 +132,21 @@ Es gibt fünf grundlegende Transaktionskategorien: „Schreiben“, „Auflisten
 
 > [!Note]  
 > NFS 4.1 ist nur für Premium-Dateifreigaben mit dem Abrechnungsmodell „Bereitgestellt“ verfügbar. Transaktionen haben keinen Einfluss auf die Abrechnung für Premium-Dateifreigaben.
+
+## <a name="file-storage-comparison-checklist"></a>Prüfliste für den Dateispeichervergleich
+Um die Kosten von Azure Files im Vergleich zu anderen Dateispeicheroptionen richtig zu bewerten, beachten Sie bitte die folgenden Fragen:
+
+- **Wie bezahlen Sie für Speicher, IOPS und Bandbreite?**  
+    Bei Azure Files hängt das verwendete Abrechnungsmodell davon ab, ob Sie [Premium](#provisioned-model)- oder [Standard](#pay-as-you-go-model)-Dateifreigaben bereitstellen. Die meisten Cloud-Lösungen verfügen über Modelle, die sich entweder an den Prinzipien des bereitgestellten Speichers ( Preisdefinition, Einfachheit) oder des Pay-as-you-go-Speichers (Sie zahlen nur für die tatsächliche Nutzung) orientieren. Von besonderem Interesse für bereitgestellte Modelle sind die Mindestgröße der bereitgestellten Freigabe, die Bereitstellungseinheit und die Möglichkeit, die Bereitstellung zu erhöhen und zu verringern. 
+
+- **Wie erzielen Sie die Speicher-Ausfallsicherheit und Redundanz?**  
+    Mit Azure Files werden Speicher-Ausfallsicherheit und Redundanz in das Produktangebot integriert. Alle Ebenen und Redundanzebenen stellen sicher, dass Daten hochverfügbar sind und auf mindestens drei Kopien Ihrer Daten zugegriffen werden kann. Wenn Sie andere Dateispeicheroptionen in Betracht ziehen, sollten Sie berücksichtigen, ob Speicher-Ausfallsicherheit und Redundanz integriert sind oder es sich um etwas handelt, das Sie selbst zusammenstellen müssen. 
+
+- **Was müssen Sie verwalten?**  
+    Bei Azure Files ist die grundlegende Verwaltungseinheit ein Speicherkonto. Andere Lösungen erfordern möglicherweise eine zusätzliche Verwaltung, z. B. Betriebssystem-Aktualisierungen oder die Verwaltung virtueller Ressourcen (VMs, Festplatten, Netzwerk-IP-Adressen usw.).
+
+- **Welche Sicherungskosten fallen an?**  
+    Mit Azure Files ist die Integration von Azure Backup einfach zu aktivieren und der Sicherungsspeicher wird als Teil des Kostenanteils abgerechnet (Sicherungen werden als differenzielle Snapshots gespeichert). Andere Lösungen erfordern möglicherweise die Lizenzierung von Sicherungssoftware und zusätzliche Kosten für Sicherungsspeicher.
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Azure Files – Preise](https://azure.microsoft.com/pricing/details/storage/files/)

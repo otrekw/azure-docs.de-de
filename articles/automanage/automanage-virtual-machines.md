@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: e4e1d22e2e7175135e88a08ed5a6d5ae7f021d49
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: e9e7ca036e9746c434f0c8349ed414509afe215a
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491275"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017281"
 ---
-# <a name="azure-automanage-for-virtual-machines"></a>Automatische Azure-Verwaltung für virtuelle Computer
+# <a name="preview-azure-automanage-for-virtual-machines"></a>Vorschau: Automatische Azure-Verwaltung (Azure Automanage) für virtuelle Computer
 
 Dieser Artikel enthält Informationen zur automatischen Azure-Verwaltung für virtuelle Computer, die folgende Vorteile bieten:
 
@@ -24,7 +24,6 @@ Dieser Artikel enthält Informationen zur automatischen Azure-Verwaltung für vi
 - Jeder Dienst wird automatisch nach den bewährten Methoden von Azure konfiguriert
 - Es erfolgt eine Überwachung auf Datendrift, der behoben wird, wenn er erkannt wird
 - Bietet eine einfache Benutzererfahrung (zeigen, klicken, festlegen, vergessen)
-
 
 ## <a name="overview"></a>Übersicht
 
@@ -59,6 +58,7 @@ Automanage unterstützt nur VMs in den folgenden Regionen:
 * UK, Süden
 * Australien, Osten
 * Australien, Südosten
+* Asien, Südosten
 
 ### <a name="required-rbac-permissions"></a>Erforderliche RBAC-Berechtigungen
 Ihr Konto erfordert etwas andere RBAC-Rollen, je nachdem, ob Sie Automanage mit einem neuen Automanage-Konto aktivieren.
@@ -105,7 +105,7 @@ Einen direkten Link zur Richtlinie finden Sie [hier](https://portal.azure.com/#b
 1. Zeigen Sie die Richtliniendefinition an, und klicken Sie auf die Schaltfläche **Zuweisen**.
 1. Wählen Sie den Bereich aus, in dem Sie die Richtlinie anwenden möchten. (Dabei kann es sich um eine Verwaltungsgruppe, ein Abonnement oder eine Ressourcengruppe handeln.)
 1. Geben Sie unter **Parameter** Parameter für das Automanage-Konto, das Konfigurationsprofil und den Effekt an. (Der Effekt sollte normalerweise „DeployIfNotExists“ lauten.)
-    1. Wenn Sie über kein Automanage-Konto verfügen, müssen Sie [eines erstellen](#create-an-automanage-account).
+    1. Wenn Sie über kein Automanage-Konto verfügen, müssen Sie [eines erstellen](./automanage-account.md).
 1. Aktivieren Sie unter **Wartung** das Kontrollkästchen „Auf Wartungsaufgabe klicken“. Dadurch wird das Onboarding in Automanage durchgeführt.
 1. Klicken Sie auf **Überprüfen und erstellen**, und stellen Sie sicher, dass alle Einstellungen fehlerfrei sind.
 1. Klicken Sie auf **Erstellen**.
@@ -142,58 +142,9 @@ Die vollständige Liste der teilnehmenden Azure-Dienste, und ob sie Voreinstellu
 
 ## <a name="automanage-account"></a>Konto für die automatische Verwaltung
 
-Das Konto für die automatische Verwaltung ist der Sicherheitskontext oder die Identität, unter der die automatisierten Vorgänge auftreten. Normalerweise müssen Sie die Automanage-Kontooption nicht auswählen, aber wenn Sie in einem Delegierungsszenario die automatische Verwaltung Ihrer Ressourcen aufteilen möchten (vielleicht zwischen zwei Systemadministratoren), können Sie mit dieser Option für jeden dieser Administratoren eine Azure-Identität definieren.
+Das Konto für die automatische Verwaltung ist der Sicherheitskontext oder die Identität, unter der die automatisierten Vorgänge auftreten. Normalerweise müssen Sie die Option „Automanage-Konto“ nicht auswählen. Wenn Sie aber in einem Delegierungsszenario die automatisierte Verwaltung Ihrer Ressourcen aufteilen möchten (vielleicht zwischen zwei Systemadministratoren), können Sie mit dieser Option im Aktivierungsfluss für jeden der beiden Administratoren eine Azure-Identität definieren.
 
-Wenn Sie in der Azure-Portalerfahrung die automatische Verwaltung auf Ihren VMs aktivieren, gibt es eine Dropdownliste „Erweitert“ auf dem Blatt **Bewährte Methode zum Aktivieren einer Azure-VM**, mit der Sie das Konto für die automatische Verwaltung zuweisen oder manuell erstellen können.
-
-Dem Automanage-Konto wird sowohl die Rolle **Mitwirkender** als auch **Mitwirkender bei Ressourcenrichtlinien** zu den Abonnements gewährt, die die Computer enthalten, die Sie in Automanage integrieren. Sie können das gleiche Automanage-Konto über mehrere Abonnements hinweg auf Computern verwenden. Dadurch werden diesem Automanage-Konto die Rollen **Mitwirkender** und **Mitwirkender bei Ressourcenrichtlinien** für alle Abonnements erteilt.
-
-Wenn Ihr virtueller Computer mit einem Log Analytics-Arbeitsbereich in einem anderen Abonnement verbunden ist, wird dem Automanage-Konto sowohl die Rolle **Mitwirkender** als auch **Mitwirkender bei Ressourcenrichtlinien** in diesem anderen Abonnement gewährt.
-
-Wenn Sie Automanage mit einem neuen Automanage-Konto aktivieren, benötigen Sie die folgenden Berechtigungen in Ihrem Abonnement: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
-
-Wenn Sie Automanage mit einem vorhandenen Automanage-Konto aktivieren, müssen Sie über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die Ihre virtuellen Computer enthält.
-
-> [!NOTE]
-> Wenn Sie bewährte Methoden für Automanage deaktivieren, bleiben die Berechtigungen des Automanage-Kontos für alle zugeordneten Abonnements erhalten. Entfernen Sie die Berechtigungen manuell, indem Sie die IAM-Seite des Abonnements aufrufen oder das Automanage-Konto löschen. Das Automanage-Konto kann nicht gelöscht werden, wenn es noch Computer verwaltet.
-
-### <a name="create-an-automanage-account"></a>Erstellen eines Automanage-Kontos
-Sie können ein Automanage-Konto über das Portal oder mithilfe einer ARM-Vorlage erstellen.
-
-#### <a name="portal"></a>Portal
-1. Navigieren Sie zum Blatt **Automanage** im Portal.
-1. Klicken Sie auf **Für vorhandenen Computer aktivieren**.
-1. Klicken Sie unter **Erweitert** auf „Neues Konto erstellen“.
-1. Füllen Sie die erforderlichen Felder aus, und klicken Sie auf **Erstellen**.
-
-#### <a name="arm-template"></a>ARM-Vorlage
-Speichern Sie die folgende ARM-Vorlage unter `azuredeploy.json`, und führen Sie den folgenden Befehl aus: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "automanageAccountName": {
-            "type": "String"
-        },
-        "location": {
-            "type": "String"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2020-06-30-preview",
-            "type": "Microsoft.Automanage/accounts",
-            "name": "[parameters('automanageAccountName')]",
-            "location": "[parameters('location')]",
-            "identity": {
-                "type": "SystemAssigned"
-            }
-        }
-    ]
-}
-```
+Weitere Informationen zum Automanage-Konto und zum Erstellen eines solchen Kontos finden Sie im [Dokument „Automanage-Konto“](./automanage-account.md).
 
 ## <a name="status-of-vms"></a>Status von VMs
 
@@ -227,10 +178,16 @@ Lesen Sie die Meldung im angezeigten Popupelement sorgfältig durch, bevor Sie d
 >
 > - Die Konfiguration der VM und der Dienste, für die Onboarding durchgeführt wird, ändert sich nicht.
 > - Sämtliche Gebühren, die durch diese Dienste anfallen, bleiben abrechenbar und fallen weiterhin an.
-> - Das gesamte Verhalten der automatischen Verwaltung wird sofort beendet.
+> - Die Überwachung des Automanage-Datendrifts wird sofort beendet.
 
 
 In erster Linie werden wir den virtuellen Computer nicht von einem der Dienste trennen, auf dem wir das Onboarding für ihn durchgeführt und ihn konfiguriert haben. Somit bleiben alle durch diese Dienste entstandenen Kosten weiterhin abrechenbar. Sie müssen ggf. das Onboarding aufheben. Jegliches Verhalten der automatischen Verwaltung wird sofort beendet. Wir werden z. B. die VM nicht mehr auf Datendrift überwachen.
+
+## <a name="automanage-and-azure-disk-encryption"></a>Automanage und Azure Disk Encryption
+Automanage ist mit VMs kompatibel, bei denen Azure Disk Encryption (ADE) aktiviert wurde.
+
+Wenn Sie die Produktionsumgebung nutzen, wird auch das Onboarding in Azure Backup durchgeführt. Es gibt eine einzige Voraussetzung für die erfolgreiche Verwendung von ADE und Azure Backup:
+* Vor dem Onboarding Ihrer ADE-fähigen VM in die Produktionsumgebung von Automanage müssen Sie die Schritte im Abschnitt **Vorbereitung** [dieses Dokuments](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#before-you-start) ausgeführt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
