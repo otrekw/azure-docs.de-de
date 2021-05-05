@@ -2,19 +2,19 @@
 title: Überwachen von Aktivitäten in der privaten Cloud
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Beschreibt die Informationen, die zur Aktivität in der Azure VMware Solution by CloudSimple-Umgebung verfügbar sind, einschließlich Warnungen, Ereignissen, Aufgaben und Überwachung.
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf07231b0883af85fb1f950cf9bb6ed9d5811211
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899302"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177312"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Überwachen der VMware Solution by CloudSimple-Aktivität
 

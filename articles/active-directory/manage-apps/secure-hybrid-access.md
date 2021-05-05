@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 2/16/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a793ebb6d2b58718a6ee42c69c38b9da1b124722
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b93fdcc125075786c237ab1eb7bfac8cf2e551f6
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589394"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108179166"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>Sicherer Hybridzugriff: Schützen von Legacy-Anwendungen mit Azure Active Directory
 
@@ -32,7 +32,7 @@ Mit Azure AD-Funktionen wie [Bedingter Zugriff](../conditional-access/overview.
 
 ## <a name="secure-hybrid-access-sha-through-azure-ad-application-proxy"></a>Sicherer Hybridzugriff über Azure AD-Anwendungsproxy
   
-Mit dem [Anwendungsproxy](./what-is-application-proxy.md) können Sie einen [sicheren Remotezugriff](./application-proxy.md) auf Ihre lokalen Webanwendungen bereitstellen. Ihre Benutzer müssen kein VPN verwenden. Benutzer profitieren nach dem [einmaligen Anmelden](./add-application-portal-setup-sso.md) von einer einfachen Verbindung mit ihren Anwendungen von jedem Gerät aus. Der Anwendungsproxy stellt den Remotezugriff als Dienst bereit und ermöglicht die [einfache Veröffentlichung Ihrer lokalen Anwendungen](./application-proxy-add-on-premises-application.md) für Benutzer außerhalb des Unternehmensnetzwerks. Unterstützung bietet er auch bei der Skalierung Ihrer Cloudzugriffsverwaltung, ohne dass Sie Ihre lokalen Anwendungen ändern müssen. [Planen Sie die Bereitstellung eines Azure AD-Anwendungsproxys](./application-proxy-deployment-plan.md) als nächsten Schritt.
+Mit dem [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) können Sie einen [sicheren Remotezugriff](../app-proxy/application-proxy.md) auf Ihre lokalen Webanwendungen bereitstellen. Ihre Benutzer müssen kein VPN verwenden. Benutzer profitieren nach dem [einmaligen Anmelden](add-application-portal-setup-sso.md) von einer einfachen Verbindung mit ihren Anwendungen von jedem Gerät aus. Der Anwendungsproxy stellt den Remotezugriff als Dienst bereit und ermöglicht die [einfache Veröffentlichung Ihrer lokalen Anwendungen](../app-proxy/application-proxy-add-on-premises-application.md) für Benutzer außerhalb des Unternehmensnetzwerks. Unterstützung bietet er auch bei der Skalierung Ihrer Cloudzugriffsverwaltung, ohne dass Sie Ihre lokalen Anwendungen ändern müssen. [Planen Sie die Bereitstellung eines Azure AD-Anwendungsproxys](application-proxy-deployment-plan.md) als nächsten Schritt.
 
 ## <a name="azure-ad-partner-integrations"></a>Azure AD-Partnerintegrationen
 

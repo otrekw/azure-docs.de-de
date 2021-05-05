@@ -1,5 +1,6 @@
 ---
-title: 'Azure-VPN Gateway: Konfigurieren von Warnungen für Diagnoseressourcenprotokollereignisse'
+title: Konfigurieren von Warnungen für Diagnoseressourcenprotokollereignisse
+titleSuffix: Azure VPN Gateway
 description: Hier erfahren Sie, wie Sie mit Azure Monitor Log Analytics Warnungen einrichten, die auf Ressourcenprotokollereignissen von Azure VPN Gateway basieren.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
-ms.openlocfilehash: 70cac6ef566ef52409cd9667708c2fc297e046f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97d66f89d59ed56b75db504e5eb84f3ccfbe8e7
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656613"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226370"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Einrichten von Warnungen für Ressourcenprotokollereignisse von VPN Gateway
 

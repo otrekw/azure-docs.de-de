@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c2d4181a80f48f5f6dd5775e6eb3bd172a65df8
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 94077a1c6329aa1fecf9593f2df41fa77afc8a44
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209628"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765915"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -93,7 +93,7 @@ Wenn die Registrierung nicht erzwungen wird, werden Benutzer nicht während der 
 
 Sie können erzwingen, dass Benutzer ihre registrierten Informationen nach einem bestimmten Zeitraum bestätigen müssen, um sicherzustellen, dass die Authentifizierungsmethoden im Falle einer Kennwortzurücksetzung oder -änderung korrekt sind. Diese Option ist nur verfügbar, wenn Sie die Option **Registrierung von Benutzern bei der Anmeldung verlangen?** aktivieren.
 
-Gültige Werte für die Aufforderung zur Bestätigung der registrierten Authentifizierungsmethoden reichen von *0* bis *730* Tagen. Wenn Sie den Wert auf *0* festlegen, werden Benutzer nie aufgefordert, ihre Authentifizierungsinformationen zu bestätigen.
+Gültige Werte für die Aufforderung zur Bestätigung der registrierten Authentifizierungsmethoden reichen von *0* bis *730* Tagen. Wenn Sie den Wert auf *0* festlegen, werden Benutzer nie aufgefordert, ihre Authentifizierungsinformationen zu bestätigen. Bei Verwendung der kombinierten Registrierung müssen Benutzer ihre Identität bestätigen, bevor sie ihre Informationen erneut bestätigen.
 
 ## <a name="authentication-methods"></a>Authentifizierungsmethoden
 

@@ -8,14 +8,13 @@ ms.date: 04/21/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
-ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f4f2f8522f6d3d1039673803d946323deb485db9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b06ea5e541634a3b6738272c7b6540ff17006df
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200265"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073627"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Überwachen von IoT Edge-Bereitstellungen
 
@@ -45,7 +44,7 @@ So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwa
 1. Wählen Sie die Registerkarte **IoT Edge-Bereitstellungen** aus.
 1. Prüfen Sie die Bereitstellungsliste.  Für jede Bereitstellung können Sie die folgenden Details anzeigen:
 
-    | Column | BESCHREIBUNG |
+    | Column | Beschreibung |
     | --- | --- |
     | id | Der Name der Bereitstellung |
     | type | Der Typ der Bereitstellung – entweder **Bereitstellung** oder **Mehrstufige Bereitstellung**. |
@@ -69,7 +68,7 @@ Informationen zum Durchführen von Änderungen an Ihrer Bereitstellung finden Si
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Überwachen einer Bereitstellung über die Azure-Befehlszeilenschnittstelle
 
-Mit dem Befehl [az IoT Edge deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) können Sie die Details einer einzelnen Bereitstellung anzeigen:
+Mit dem Befehl [az iot edge deployment show](/cli/azure/iot/edge/deployment) können Sie die Details einer einzelnen Bereitstellung anzeigen:
 
 ```azurecli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -87,7 +86,7 @@ Für diesen Befehl werden die folgenden Parameter verwendet:
 * **reportedSuccessfulCount**: Eine Gerätemetrik, die die Anzahl von IoT Edge-Geräten in der Bereitstellung angibt, für die von der IoT Edge-Clientruntime eine Erfolgsmeldung ausgegeben wurde.
 * **reportedFailedCount**: Eine Gerätemetrik, die die Anzahl von IoT -Geräten in der Bereitstellung angibt, für die von der IoT Edge-Clientruntime eine Fehlermeldung ausgegeben wurde.
 
-Sie können mit dem Befehl [az IoT Edge deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) eine Liste der Geräte-IDs oder Objekte für jede der Metriken anzeigen:
+Sie können mit dem Befehl [az iot edge deployment show-metric](/cli/azure/iot/edge/deployment) eine Liste der Geräte-IDs oder Objekte für jede der Metriken anzeigen:
 
 ```azurecli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]

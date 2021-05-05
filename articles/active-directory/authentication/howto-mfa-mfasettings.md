@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: c067dba3a8af87e354019154fad8304fe9edfbbc
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 5a65480cbfa279614250ddeaf7d565b112333a05
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829654"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285554"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen
 
@@ -154,7 +154,7 @@ Wenn Sie in den USA nicht die MFA-Anrufer-ID konfiguriert haben, stammen Anrufe 
 * *+1 (877) 668 6536*
 
 > [!NOTE]
-> Wenn Anrufe im Rahmen von Azure AD Multi-Factor Authentication über das öffentliche Telefonnetz erfolgen, werden sie manchmal über einen Netzbetreiber geroutet, der Anrufer-IDs nicht unterstützt. Aus diesem Grund gibt es keine Garantie für die Anrufer-ID, auch wenn Azure AD Multi-Factor Authentication sie immer sendet. Dies gilt sowohl für Telefonanrufe als auch für SMS-Nachrichten, die von Azure AD Multi-Factor Authentication bereitgestellt werden. Wenn Sie überprüfen müssen, ob eine Textnachricht von Azure AD Multi-Factor Authentication stammt, lesen Sie [Welche SMS-Kurzcodes werden für das Senden von Nachrichten verwendet?](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
+> Wenn Anrufe im Rahmen von Azure AD Multi-Factor Authentication über das öffentliche Telefonnetz erfolgen, werden sie manchmal über einen Netzbetreiber geroutet, der Anrufer-IDs nicht unterstützt. Aus diesem Grund gibt es keine Garantie für die Anrufer-ID, auch wenn Azure AD Multi-Factor Authentication sie immer sendet. Dies gilt sowohl für Telefonanrufe als auch für SMS-Nachrichten, die von Azure AD Multi-Factor Authentication bereitgestellt werden. Wenn Sie überprüfen müssen, ob eine Textnachricht von Azure AD Multi-Factor Authentication stammt, lesen Sie [Welche SMS-Kurzcodes werden für das Senden von Nachrichten verwendet?](multi-factor-authentication-faq.yml#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users-)
 
 Führen Sie die folgenden Schritte aus, um Ihre eigene Anrufer-ID-Nummer zu konfigurieren:
 

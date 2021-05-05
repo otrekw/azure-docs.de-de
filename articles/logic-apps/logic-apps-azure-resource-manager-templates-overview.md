@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: 08363a1a1de8f95c4ff74fbe20f4052796c41f49
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: b1551b4d9c28a693adb74436b6490ce7af62a977
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018509"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279850"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -39,7 +39,7 @@ Vorlagenressourceninformationen, die speziell für Logik-Apps, Integrationskonte
 Logik-App-Beispielvorlagen finden Sie in den folgenden Beispielen:
 
 * [Vollständige Beispielvorlage](#full-example-template), die für die Beispiele in diesem Thema verwendet wird
-* [Logik-App-Beispielvorlage für Schnellstart](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) in GitHub
+* [Logik-App-Beispielvorlage für Schnellstart](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json) in GitHub
 
 Beginnen Sie für die Logic Apps-REST-API mit der [Übersicht über die Azure Logic Apps-REST-API](/rest/api/logic).
 

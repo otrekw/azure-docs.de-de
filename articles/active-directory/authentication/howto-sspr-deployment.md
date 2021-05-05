@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3e7792546531d7f443a44b127620d508816edcb
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579194"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285770"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planen der Bereitstellung einer Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory
 
@@ -87,7 +87,7 @@ Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Active Directo
 |Tutorials |[Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe](./tutorial-enable-sspr.md) |
 | |[Aktivieren des Kennwortrückschreibens](./tutorial-enable-sspr-writeback.md) |
 | |[Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm unter Windows 10](./howto-sspr-windows.md) |
-| Häufig gestellte Fragen|[Häufig gestellte Fragen zur Kennwortverwaltung](./active-directory-passwords-faq.md) |
+| Häufig gestellte Fragen|[Häufig gestellte Fragen zur Kennwortverwaltung](./active-directory-passwords-faq.yml) |
 
 
 ### <a name="solution-architecture"></a>Lösungsarchitektur
@@ -328,7 +328,7 @@ Mithilfe der Funktion [Nutzung und Erkenntnisse](./howto-authentication-methods-
 
 * Siehe [Problembehandlung für die Self-Service-Kennwortzurücksetzung](./troubleshoot-sspr.md) 
 
-* Folgen Sie [Häufig gestellte Fragen zur Kennwortverwaltung](./active-directory-passwords-faq.md) 
+* Folgen Sie [Häufig gestellte Fragen zur Kennwortverwaltung](./active-directory-passwords-faq.yml) 
 
 ### <a name="helpful-documentation"></a>Hilfreiche Dokumentation
 
