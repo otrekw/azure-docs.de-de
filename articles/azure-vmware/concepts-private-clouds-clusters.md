@@ -2,65 +2,80 @@
 title: Konzepte – Private Clouds und Cluster
 description: Hier erfahren Sie mehr über die wichtigsten Funktionen von softwaredefinierten Azure VMware Solution-Rechenzentren und vSphere-Clustern.
 ms.topic: conceptual
-ms.date: 03/13/2021
-ms.openlocfilehash: aff66e01ae4b056eb082d2000611718b1a5cf66a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/27/2021
+ms.openlocfilehash: 4190e32e11b9baa17379df436a85c6d2bd2e0e83
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773918"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126306"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution: Konzepte – Private Clouds und Cluster
 
-Azure VMware Solution bietet VMware-basierte private Clouds in Azure. Private Clouds enthalten Cluster, die mit dedizierten Azure-Bare-Metal-Hosts erstellt werden. Sie werden über das Azure-Portal oder die CLI oder mithilfe von PowerShell bereitgestellt und verwaltet.  Cluster in privaten Clouds werden mit VMware vSphere-, vCenter-, vSAN- und NSX-Software bereitgestellt. Hardware- und Softwarebereitstellungen für private Azure VMware Solution-Clouds sind vollständig in Azure integriert und automatisiert.
+Azure VMware Solution bietet VMware-basierte private Clouds in Azure. Hardware- und Softwarebereitstellungen für private Clouds sind vollständig in Azure integriert und automatisiert. Die Bereitstellung und Verwaltung der privaten Cloud erfolgt über das Azure-Portal, die Befehlszeilenschnittstelle oder PowerShell.  
 
-Es besteht eine logische Beziehung zwischen Azure-Abonnements, privaten Azure VMware Solution-Clouds, vSAN-Clustern und Hosts. Die Abbildung zeigt ein einzelnes Azure-Abonnement mit zwei privaten Clouds, die für die Entwicklungs- und die Produktionsumgebung stehen.  In jeder dieser privaten Clouds gibt es zwei Cluster. 
+Eine private Cloud umfasst Cluster mit Folgendem:
 
-Dieser Artikel enthält eine Beschreibung aller dieser Konzepte.
+- Dedizierte Bare-Metal-Serverknoten, die mit VMware ESXi-Hypervisor bereitgestellt werden 
+- vCenter Server für die Verwaltung von ESXi und vSAN 
+- Software-Defined Networking in VMware NSX-T für VMs für vSphere-Workloads  
+- VMware vSAN-Datenspeicher für virtuelle Computer für vSphere-Workloads  
+- VMware HCX für Workloadmobilität  
+- Die in Azure zugrunde liegenden Ressourcen (für die Konnektivität und den Betrieb der privaten Cloud erforderlich)
 
-![Abbildung von zwei privaten Clouds in einem Kundenabonnement](./media/hosts-clusters-private-clouds-final.png)
+Private Clouds werden wie andere Ressourcen innerhalb eines Azure-Abonnements installiert und verwaltet. Die Anzahl der privaten Clouds innerhalb eines Abonnements ist skalierbar. Anfänglich besteht eine Begrenzung von einer privaten Cloud pro Abonnement.  Es besteht eine logische Beziehung zwischen Azure-Abonnements, privaten Azure VMware Solution-Clouds, vSAN-Clustern und Hosts. 
 
+Die Abbildung zeigt ein einzelnes Azure-Abonnement mit zwei privaten Clouds, die für eine Entwicklungs- und eine Produktionsumgebung stehen. In jeder dieser privaten Clouds gibt es zwei Cluster. 
 
-## <a name="private-clouds"></a>Private Clouds
-
-Private Clouds enthalten vSAN-Cluster, die mit dedizierten Azure-Bare-Metal-Hosts erstellt werden. Jede private Cloud kann über mehrere Cluster verfügen, die alle vom selben vCenter Server und NSX-T Manager verwaltet werden. Sie können private Clouds im Portal, über die CLI oder mit PowerShell bereitstellen und verwalten. 
-
-Private Clouds werden wie andere Ressourcen innerhalb eines Azure-Abonnements installiert und verwaltet. Die Anzahl der privaten Clouds innerhalb eines Abonnements ist skalierbar. Anfänglich besteht eine Begrenzung von einer privaten Cloud pro Abonnement.
-
-## <a name="clusters"></a>Cluster
-Für jede erstellte private Cloud gibt es standardmäßig ein vSAN-Cluster. Sie können Cluster im Azure-Portal oder über die API hinzufügen, löschen und skalieren.  Alle Cluster verfügen über eine Standardgröße von drei Hosts und können auf bis zu 16 Hosts skaliert werden. Sie können pro privater Cloud bis zu vier Cluster verwenden.
-
-Testcluster stehen zu Bewertungszwecken zur Verfügung und sind auf drei Hosts begrenzt. Pro privater Cloud gibt es einen einzelnen Testcluster. Sie können einen Testcluster während des Evaluierungszeitraums unter Verwendung eines einzelnen Hosts skalieren.
-
-Sie verwenden vSphere und NSX-T Manager, um die meisten weiteren Aspekte der Clusterkonfiguration oder des Clusterbetriebs zu verwalten. Der gesamte lokale Speicher jedes Hosts in einem Cluster befindet sich unter der Kontrolle von vSAN.
+:::image type="content" source="media/hosts-clusters-private-clouds-final.png" alt-text="Abbildung von zwei privaten Clouds in einem Kundenabonnement":::
 
 ## <a name="hosts"></a>Hosts
 
-Azure VMware Solution-Cluster basieren auf einer hyperkonvergenten Bare-Metal-Infrastruktur. Die RAM-, CPU- und Datenträgerkapazitäten des Hosts sind in der folgenden Tabelle angegeben.
+[!INCLUDE [disk-capabilities-of-the-host](includes/disk-capabilities-of-the-host.md)]
 
-| Hosttyp              |             CPU             |   RAM (GB)   |  vSAN NVMe-Cacheebene (TB, Raw)  |  vSAN SSD-Kapazitätsebene (TB, Raw)  |
-| :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| AVS36          |  Intel Dual Core, 18 Kerne 2,3 GHz  |     576      |                3.2               |                15,20               |
+## <a name="clusters"></a>Cluster
 
-Hosts, die zum Erstellen oder Skalieren von Clustern verwendet werden, stammen aus einem isolierten Hostpool. Diese Hosts wurden Hardwaretests unterzogen. Darüber hinaus wurden alle Daten sicher gelöscht. 
+[!INCLUDE [hosts-minimum-initial-deployment-statement](includes/hosts-minimum-initial-deployment-statement.md)]
 
 ## <a name="vmware-software-versions"></a>Versionen von VMware-Software
 
 [!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
-## <a name="update-frequency"></a>Aktualisierungshäufigkeit
+## <a name="host-maintenance-and-lifecycle-management"></a>Hostwartung und Lebenszyklusverwaltung
+
+Einer der Vorteile von privaten Azure VMware Solution-Clouds besteht darin, dass die Plattform für Sie verwaltet wird.  Microsoft ist für die Lebenszyklusverwaltung der VMware-Software (ESXi, vCenter und vSAN) zuständig. Außerdem ist Microsoft für die Lebenszyklusverwaltung von NSX-T-Appliances und das Bootstrapping der Netzwerkkonfiguration zuständig, z. B. die Erstellung des Gateways für Schicht 0 und die Aktivierung des Nord-Süd-Routings. Sie sind für die NSX-T-SDN-Konfiguration verantwortlich, also Netzwerksegmente, Regeln für verteilte Firewalls, Gateways für Schicht 1 und Lastenausgleich. 
 
 [!INCLUDE [vmware-software-update-frequency](includes/vmware-software-update-frequency.md)]
 
-## <a name="host-maintenance-and-lifecycle-management"></a>Hostwartung und Lebenszyklusverwaltung
+## <a name="host-monitoring-and-remediation"></a>Hostüberwachung und -wartung
 
-Die Hostwartung und Lebenszyklusverwaltung haben keine Auswirkungen auf die Kapazität oder Leistung von Clustern in privaten Clouds.  Beispiele für die automatisierte Hostwartung sind Firmwareupgrades und Hardwarereparaturen oder der Austausch von Hardware.
+Azure VMware Solution überwacht kontinuierlich sowohl die Integrität der zugrunde liegenden Ressourcen als auch der Integrität der VMware-Komponenten. Wenn Azure VMware Solution einen Fehler erkennt, ergreift es Maßnahmen, um die fehlerhaften Komponenten zu reparieren. Wenn von Azure VMware Solution ein Leistungsabfall oder ein Fehler auf dem Azure VMware Solution-Knoten erkannt wird, wird der Fehlerbehebungsprozess für den Host ausgelöst. 
 
-Microsoft ist für die Lebenszyklusverwaltung von NSX-T-Appliances wie NSX-T Manager und NSX-T Edge verantwortlich. Microsoft ist für das Bootstrapping der Netzwerkkonfiguration zuständig, z. B. die Erstellung des Gateways des Schicht 0 und die Aktivierung des Nord-Süd-Routings. Sie sind für die NSX-T-DSN-Konfiguration verantwortlich. Dazu zählen beispielsweise Netzwerksegmente, Regeln für verteilte Firewalls, Tier-1-Gateways und Lastenausgleichsmodule.
+Die Wartung für den Host umfasst das Ersetzen des fehlerhaften Knotens durch einen neuen fehlerfreien Knoten im Cluster. Anschließend wird der fehlerhafte Host nach Möglichkeit in den VMware vSphere-Wartungsmodus versetzt. VMware vMotion verschiebt die virtuellen Computer vom fehlerhaften Host auf andere verfügbare Server im Cluster. Hierbei ist es unter Umständen möglich, eine Livemigration von Workloads ohne Ausfallzeiten durchzuführen. Wenn der fehlerhafte Host nicht in den Wartungsmodus versetzt werden kann, wird er aus dem Cluster entfernt.
+
+In Azure VMware Solution werden die folgenden Bedingungen auf dem Host überwacht:  
+
+- Prozessorstatus 
+- Speicherstatus 
+- Verbindung und Betriebszustand 
+- Zustand des Hardwarelüfters 
+- Verlust der Netzwerkkonnektivität 
+- Zustand der Hardware-Hauptplatine 
+- Aufgetretene Fehler auf den Datenträgern eines vSAN-Hosts 
+- Hardwarespannung 
+- Hardware-Temperaturstatus 
+- Hardware-Betriebszustand 
+- Speicherstatus 
+- Verbindungsfehler 
+
+> [!NOTE]
+> Administratoren von Azure VMware Solution-Mandanten dürfen die obigen definierten VMware vCenter-Alarme nicht bearbeiten oder löschen, da diese über die Azure VMware Solution-Steuerungsebene in vCenter verwaltet werden. Diese Alarme werden von der Azure VMware Solution-Überwachung verwendet, um den Fehlerbehebungsprozess für den Azure VMware Solution-Host auszulösen.
 
 ## <a name="backup-and-restoration"></a>Sichern und Wiederherstellen
 
 Die vCenter- und NSX-T-Konfigurationen der privaten Cloud werden stündlich gesichert.  Sicherungen werden drei Tage lang aufbewahrt. Wenn Sie eine Wiederherstellung auf Grundlage einer Sicherung durchführen möchten, öffnen Sie eine [Supportanfrage](https://rc.portal.azure.com/#create/Microsoft.Support) im Azure-Portal, um die Wiederherstellung anzufordern.
+
+Azure VMware Solution überwacht kontinuierlich sowohl die Integrität der zugrunde liegenden Ressourcen als auch der Integrität der VMware-Komponenten. Wenn Azure VMware Solution einen Fehler erkennt, ergreift es Maßnahmen, um die fehlerhaften Komponenten zu reparieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -68,7 +83,7 @@ Nachdem Sie jetzt die Konzepte der privaten Azure VMware Solution-Cloud kennenge
 
 - [Azure VMware Solution – Netzwerk- und Interkonnektivitätskonzepte](concepts-networking.md)
 - [Speicherkonzepte von Azure VMware Solution](concepts-storage.md)
-- [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
+- [So aktivieren Sie die Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
 
 <!-- LINKS - internal -->
 [concepts-networking]: ./concepts-networking.md

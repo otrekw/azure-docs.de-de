@@ -1,21 +1,21 @@
 ---
 title: Verwenden von Visual Studio auf einem virtuellen Azure-Computer
 description: Verwenden von Visual Studio auf einem virtuellen Azure-Computer
-author: cathysull
-manager: cathys
+author: andysterland
+manager: andster
 ms.service: virtual-machines
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.author: cathys
+ms.author: andster
 keywords: visualstudio
-ms.openlocfilehash: a6acf27743f17941e14adc3f6deea903f4f5ca87
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f26bec64012e0b0909b7df5422c57ff2cb1c347e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562077"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478555"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
 Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist eine schnelle und einfache Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen. Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) verfügbar.
@@ -44,7 +44,7 @@ Weitere Informationen finden Sie in der [Visual Studio-Wartungsrichtlinie](https
 ## <a name="what-features-are-installed"></a>Welche Features werden installiert?
 Jedes Image enthält die empfohlenen Features für diese Edition von Visual Studio. Im Allgemeinen umfasst die Installation:
 
-* Alle verfügbaren Workloads, einschließlich der jeweils empfohlenen optionalen Komponenten für eine Workload
+* Alle verfügbaren Workloads, einschließlich der jeweils empfohlenen optionalen Komponenten für eine Workload. Weitere Informationen zu den Workloads, Komponenten und SDKs, die in Visual Studio enthalten sind, finden Sie in der [Dokumentation zu Visual Studio](https://docs.microsoft.com/visualstudio/install/workload-and-component-ids).
 * SDKs, unterstützte Pakete und Entwicklertools für .NET 4.6.2 und .NET 4.7
 * Visual F#
 * GitHub-Erweiterung für Visual Studio

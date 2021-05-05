@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bc7ac6b97d10e5941e46b8be3e12baff32bded4a
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577703"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483060"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -100,7 +100,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 
   > [!NOTE]
   > - Die Überwachung kann bei einem angehaltenen dedizierten SQL-Pool nicht aktiviert werden. Zum Aktivieren der Überwachung setzen Sie den Pool fort. Informieren Sie sich ausführlicher über den [dedizierten SQL-Pool](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md).
-  > - Wenn die Überwachung mit einem Log Analytics-Arbeitsbereich oder Event Hub als Ziel über das Azure-Portal oder ein PowerShell-Cmdlet konfiguriert wird, wird eine [Diagnoseeinstellung](../../azure-monitor/essentials/diagnostic-settings.md) mit aktivierter Kategorie "SQLSecurityAuditEvents" erstellt.
+  > - Wenn die Überwachung mit einem Log Analytics-Arbeitsbereich oder Event Hub als Ziel über das Azure-Portal oder ein PowerShell-Cmdlet konfiguriert ist, wird eine [Diagnoseeinstellung](../../azure-monitor/essentials/diagnostic-settings.md) mit aktivierter Kategorie „SQLSecurityAuditEvents“ erstellt.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie im Bereich für die **SQL-Datenbank** oder den **SQL Server** unter der Überschrift „Sicherheit“ zu **Überwachung**.

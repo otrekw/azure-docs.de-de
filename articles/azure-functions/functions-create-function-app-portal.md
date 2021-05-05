@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ihre erste Azure-Funktion für die serverlose
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: ea5b6a9e51b6982a33dc748f72557ed539b8e2e0
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 336e531f4ec64141770fc26d7e6eea9ebfedf922
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385988"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517136"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Erstellen Ihrer ersten Funktion im Azure-Portal
 
@@ -64,9 +64,9 @@ Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
 
     Wenn die Anforderungs-URL einen [Zugriffsschlüssel](functions-bindings-http-webhook-trigger.md#authorization-keys) (`?code=...`) enthielt, bedeutet dies, dass Sie beim Erstellen der Funktion die Zugriffsebene **Funktion** anstelle der Zugriffsebene **Anonym** auswählen. In diesem Fall sollte stattdessen `&name=<your_name>` angefügt werden.
 
-1. Wenn Ihre Funktion ausgeführt wird, werden Nachverfolgungsinformationen in die Protokolle geschrieben. Um die Nachverfolgungsausgabe anzuzeigen, kehren Sie zur Seite **Code + testen** im Portal zurück, und erweitern Sie den Pfeil **Protokolle** am unteren Rand der Seite.
+1. Wenn Ihre Funktion ausgeführt wird, werden Nachverfolgungsinformationen in die Protokolle geschrieben. Um die Nachverfolgungsausgabe anzuzeigen, kehren Sie zur Seite **Code + testen** im Portal zurück, und erweitern Sie den Pfeil **Protokolle** am unteren Rand der Seite. Rufen Sie ihre Funktion erneut auf, um die in die Protokolle geschriebene Ablaufverfolgungsausgabe anzuzeigen. 
 
-   ![Viewer der Funktionsprotokolle im Azure-Portal](./media/functions-create-first-azure-function/function-view-logs.png)
+    :::image type="content" source="media/functions-create-first-azure-function/function-view-logs.png" alt-text="Viewer der Funktionsprotokolle im Azure-Portal":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

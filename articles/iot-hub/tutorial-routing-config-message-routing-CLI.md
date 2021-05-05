@@ -2,19 +2,18 @@
 title: 'Tutorial: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe der Azure-Befehlszeilenschnittstelle'
 description: 'Tutorial: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe der Azure-Befehlszeilenschnittstelle Führen Sie je nach den Eigenschaften in der Nachricht entweder die Weiterleitung an ein Speicherkonto oder an eine Service Bus-Warteschlange durch.'
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 04/04/2021
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf994dfe3d53232ab1e2374fda620dc768127097
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9f95fd456a042d41fff94f5520802be1be5f38f3
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788887"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278378"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Tutorial: Konfigurieren des IoT Hub-Nachrichtenroutings mithilfe der Azure-Befehlszeilenschnittstelle
 

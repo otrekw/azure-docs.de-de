@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: d894ce71e0ffa5a0894a1f6b0035efe66271ded8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1900326bf03c6a32f25c7a019d8bd1e460735bd6
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591475"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505597"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Verschieben eines Azure Storage-Kontos in eine andere Region
 
@@ -55,7 +55,7 @@ So exportieren Sie eine Vorlage mithilfe des Azure-Portals
 
 2. Wählen Sie die Option **Alle Ressourcen** und dann Ihr Speicherkonto aus.
 
-3. Wählen Sie **Einstellungen** > **Vorlage exportieren** aus.
+3. Wählen Si **Automation** > **Vorlage exportieren** aus.
 
 4. Wählen Sie **Herunterladen** auf dem Blatt **Vorlage exportieren** aus.
 

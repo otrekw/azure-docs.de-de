@@ -10,13 +10,13 @@ author: gvashishtha
 ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.custom: deploy
-ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: deploy, devx-track-azurecli
+ms.openlocfilehash: 8775696a35bfccc363aa2c6ec06c6c44115916b9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107838"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479269"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Bereitstellung mit hoher Leistung mit Triton Inference Server (Vorschau) 
 
@@ -376,7 +376,7 @@ local_service.delete()
 
 * [Problembehandlung bei einer fehlerhaften Bereitstellung](how-to-troubleshoot-deployment.md): Erfahren Sie, wie Sie häufige Fehler behandeln und beheben oder umgehen können, die beim Bereitstellen eines Modells auftreten können.
 
-* Wenn in den Bereitstellungsprotokollen angezeigt wird, dass **TritonServer nicht starten konnte**, lesen Sie in der [Open Source-Dokumentation von Nvidia](https://github.com/triton-inference-server/server) nach.
+* Wenn in den Bereitstellungsprotokollen die Meldung **TritonServer konnte nicht gestartet werden** angezeigt wird, ziehen Sie die [Open Source-Dokumentation von Nvidia](https://github.com/triton-inference-server/server) zurate.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

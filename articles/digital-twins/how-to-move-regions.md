@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e268cca87479625af023b5970bb27c56721f6d39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62db56ac9791cea7d6f1a40f794241ed68fa90fa
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102049847"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483573"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Verschieben einer Azure Digital Twins-Instanz in eine andere Azure-Region
 
@@ -81,9 +81,13 @@ Wenn die Beispiel-App nicht für die Größe Ihres Graphen geeignet ist, können
 
 Um mit Azure Digital Twins-Explorer fortzufahren, laden Sie zunächst den Code der Beispielanwendung herunter, und richten Sie die Anwendung so ein, dass sie auf Ihrem Computer ausgeführt wird.
 
-Informationen zum Abrufen des Beispiels finden Sie unter [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Wählen Sie die Schaltfläche **Download ZIP** (ZIP herunterladen) aus, um eine ZIP-Datei des Beispielcodes als **Azure_Digital_Twins__ADT__explorer.zip** auf Ihren Computer herunterzuladen. Entzippen Sie die Datei.
+Navigieren Sie zum Abrufen des Beispiels zu [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Wählen Sie unterhalb des Titels die Schaltfläche **Code durchsuchen** aus. Dadurch werden Sie zum GitHub-Repository für das Beispiel weitergeleitet. Wählen Sie die Schaltfläche **Code** und dann **ZIP herunterladen** aus, um das Beispiel als *ZIP-Datei* auf Ihre Machine herunterzuladen.
 
-Richten Sie dann Berechtigungen für Azure Digital Twins-Explorer ein, und konfigurieren Sie diese. Befolgen Sie die Anleitungen im Abschnitt [Einrichten von Azure Digital Twins und Azure Digital Twins-Explorer](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer) des Azure Digital Twins-Schnellstarts. In diesem Abschnitt werden die folgenden Schritte behandelt:
+:::image type="content" source="media/how-to-move-regions/download-repo-zip.png" alt-text="Screenshot: GitHub-Repository „digital-twins-explorer“. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/how-to-move-regions/download-repo-zip.png":::
+
+Entzippen Sie die Datei.
+
+Richten Sie dann Berechtigungen für Azure Digital Twins-Explorer ein, und konfigurieren Sie diese. Befolgen Sie die Anleitungen im Abschnitt [Einrichten von Azure Digital Twins und Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer) des Azure Digital Twins-Schnellstarts. In diesem Abschnitt werden die folgenden Schritte behandelt:
 
 1. Einrichten einer Azure Digital Twins-Instanz. Sie können diesen Teil überspringen, da Sie bereits über eine Instanz verfügen.
 1. Einrichten lokaler Azure-Anmeldeinformationen zum Bereitstellen des Zugriffs auf Ihre Instanz.

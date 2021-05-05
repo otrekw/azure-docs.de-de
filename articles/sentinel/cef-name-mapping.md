@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: reference
 ms.date: 04/12/2021
-ms.openlocfilehash: 1670d1bb291e30295018146f2a24c5282feac6e7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 107d10bec77ea7bb2b67ae86f48d5b88a286869d
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311650"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229502"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF- und CommonSecurityLog-Feldzuordnung
 
@@ -72,7 +72,6 @@ Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe 
 
 |CEF-Schlüsselname  |CommonSecurityLog-Name  |BESCHREIBUNG  |
 |---------|---------|---------|
-|end     |  EndTime       | Der Zeitpunkt, zu dem die mit dem Ereignis verbundene Aktivität endete.        |
 |externalId    |   ExternalID      | Eine ID, die vom Ursprungsgerät verwendet wird. In der Regel handelt es sich um steigende Werte, die jeweils einem Ereignis zugeordnet sind.        |
 |fileCreateTime     |  FileCreateTime      | Zeitpunkt, zu dem die Datei erstellt wurde.        |
 |fileHash     |   Dateihash      |   Hash einer Datei.      |
@@ -109,16 +108,15 @@ Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe 
 
 ## <a name="r---t"></a>R - T
 
-|CEF-Schlüsselname  |CommonSecurityLog-Name  |Beschreibung  |
+|CEF-Schlüsselname  |CommonSecurityLog-Name  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Grund     |  `Reason`      |Der Grund für die Generierung eines Überwachungsereignisses. <br><br>Zum Beispiel: `Bad password` oder `Unknown user`.         |
 |Anforderung     |   RequestURL      | Die URL, auf die für eine HTTP-Anforderung zugegriffen wird, einschließlich des Protokolls. Zum Beispiel, `http://www/secure.com`        |
 |requestClientApplication     |   RequestClientApplication      |   Der Benutzer-Agent, der der Anforderung zugeordnet ist.      |
 | requestContext | RequestContext | Beschreibt den Inhalt, von dem die Anforderung stammt, z. B. den HTTP-Referrer. |
 | requestCookies | RequestCookies |Der Anforderung zugeordnete Cookies. |
 | requestMethod | RequestMethod | Die zum Zugreifen auf eine URL verwendete Methode. <br><br>Gültige Werte sind Methoden wie `POST`, `GET` usw. |
 | rt | ReceiptTime | Der Zeitpunkt, zu dem das mit der Aktivität verbundene Ereignis empfangen wurde. |
-|Schweregrad     |  <a name="logseverity"></a> LogSeverity       |  Eine Zeichenfolge oder ganze Zahl, die die Wichtigkeit des Ereignisses beschreibt.<br><br> Gültige Zeichenfolgenwerte: `Unknown`, `Low`, `Medium`, `High`, `Very-High` <br><br>Gültige ganzzahlige Werte sind:<br> - `0`-`3` = Niedrig <br>- `4`-`6` = Mittel<br>- `7`-`8` = Hoch<br>- `9`-`10` = Sehr hoch |
+|severity     |  <a name="logseverity"></a> LogSeverity       |  Eine Zeichenfolge oder ganze Zahl, die die Wichtigkeit des Ereignisses beschreibt.<br><br> Gültige Zeichenfolgenwerte: `Unknown`, `Low`, `Medium`, `High`, `Very-High` <br><br>Gültige ganzzahlige Werte sind:<br> - `0`-`3` = Niedrig <br>- `4`-`6` = Mittel<br>- `7`-`8` = Hoch<br>- `9`-`10` = Sehr hoch |
 | shost    | SourceHostName        |Identifiziert die Quelle, auf die sich das Ereignis in einem IP-Netzwerk bezieht. Das Format muss ein vollqualifizierter Domänenname (DQDN) sein, der dem Quellknoten zugeordnet ist, wenn ein Knoten verfügbar ist. Zum Beispiel: `host` oder `host.domain.com`. |
 | smac | SourceMacAddress | MAC-Adresse der Quelle. |
 | sntdom | SourceNTDomain | Der Windows-Domänenname für die Quelladresse. |
@@ -131,7 +129,6 @@ Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe 
 | sproc | SourceProcessName | Der Name des Quellprozesses des Ereignisses.|
 | spt | SourcePort | Die Quellportnummer. <br>Gültige Portnummern sind `0` - `65535`. |
 | src | SourceIP |Die Quelle, auf die ein Ereignis in einem IP-Netzwerk verweist, als IPv4-Adresse. |
-| start | StartTime | Der Zeitpunkt, zu dem die Aktivität, auf die das Ereignis verweist, gestartet wurde. |
 | suid | SourceUserID | Identifiziert den Quellbenutzer anhand der ID. |
 | suser | SourceUserName | Identifiziert den Quellbenutzer anhand des Namens. |
 | Typ | EventType | Der Ereignistyp. Hierzu gehören folgende Werte: <br>- `0`: Basisereignis <br>- `1`: aggregiert <br>- `2`: Korrelationsereignis <br>- `3`: Aktionsereignis <br><br>**Hinweis**: Dieses Ereignis kann bei Basisereignissen ausgelassen werden. |

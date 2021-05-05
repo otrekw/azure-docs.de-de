@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 8aebb5b6f6a3ac53bc49fd1d2f75de88667865fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ad57473e0950f031fbeadee2302f85557ed526f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147638"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388260"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Verwenden von Nachrichtenrouten und benutzerdefinierten Endpunkten für D2C-Nachrichten
 
@@ -32,13 +32,14 @@ Es kann vorkommen, dass sich für eine einzelne Nachricht Übereinstimmungen mit
 
 ## <a name="endpoints-and-routing"></a>Endpunkte und Routing
 
-Eine IoT Hub-Instanz verfügt standardmäßig über einen [integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md). Sie können benutzerdefinierte Endpunkte für das Routing von Nachrichten erstellen, indem Sie andere Dienste Ihres Abonnements mit dem Hub verknüpfen. IoT Hub unterstützt derzeit Azure Storage Container, Event Hubs, Service Bus-Warteschlangen und Service Bus-Themen als benutzerdefinierte Endpunkte.
+Eine IoT Hub-Instanz verfügt standardmäßig über einen [integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md). Sie können benutzerdefinierte Endpunkte für das Routing von Nachrichten erstellen, indem Sie andere Dienste in Ihren Abonnements mit dem Hub verknüpfen. IoT Hub unterstützt derzeit Azure Storage Container, Event Hubs, Service Bus-Warteschlangen und Service Bus-Themen als benutzerdefinierte Endpunkte.
 
 Bei Verwendung von Routing und benutzerdefinierten Endpunkten werden Nachrichten nur an den integrierten Endpunkt übermittelt, wenn sich keine Übereinstimmung mit einer Abfrage ergibt. Fügen Sie für die Übermittlung von Nachrichten an den integrierten Endpunkt und einen benutzerdefinierten Endpunkt eine Route hinzu, die Nachrichten an den integrierten Endpunkt **events** sendet.
 
 > [!NOTE]
 > * IoT Hub unterstützt nur das Schreiben von Daten in Azure Storage-Container als BLOBs.
 > * Service Bus-Warteschlangen und -Themen, bei denen **Sitzungen** oder **Duplikaterkennung** aktiviert wurden, werden nicht als benutzerdefinierte Endpunkte unterstützt.
+> * Im Azure-Portal können Sie benutzerdefinierte Routingendpunkte nur für Azure-Ressourcen erstellen, die sich im selben Abonnement befinden wie Ihr Hub. Sie können benutzerdefinierte Endpunkte für Ressourcen in anderen Abonnements erstellen, die Sie besitzen. Die benutzerdefinierten Endpunkte können jedoch nicht über das Azure-Portal konfiguriert werden, es muss eine andere Methode verwendet werden.
 
 Weitere Informationen zur Erstellung von benutzerdefinierten Endpunkten auf dem IoT Hub finden Sie unter [IoT Hub-Endpunkte](iot-hub-devguide-endpoints.md).
 

@@ -6,15 +6,15 @@ author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 08/17/2020
+ms.date: 04/19/2021
 ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 0c33d766bfd3dff47ddb151e8ce4ea7b25c37548
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f286e2bcded99ad59b706bd7e6d8b2b29f4b4c0a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98897950"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292360"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Satzpaarbildung und -zuordnung in parallelen Dokumenten
 
@@ -39,12 +39,14 @@ Die folgende Tabelle enthält die für ein erfolgreiches Training erforderliche 
 | Training   | 10.000                                     | Keine Obergrenze                 |
 | Optimierung     | 500                                      | 2\.500       |
 | Testen    | 500                                      | 2\.500  |
-| Wörterbuch | 0                                          | Keine Obergrenze                 |
+| Wörterbuch | 0                                          | 250.000                 |
 
 > [!NOTE]
-> - Das Training wird nicht gestartet und ist nicht erfolgreich, wenn die Mindestanzahl von 10.000 Sätzen für das Training unterschritten wird. 
-> - „Optimierung“ und „Testen“ sind optional. Ohne diese Optionen entfernt das System einen gewissen Prozentsatz aus dem Training, um ihn für die Überprüfung und zu Testzwecken zu verwenden. 
+>
+> - Das Training wird nicht gestartet und ist nicht erfolgreich, wenn die Mindestanzahl von 10.000 Sätzen für das Training unterschritten wird.
+> - „Optimierung“ und „Testen“ sind optional. Ohne diese Optionen entfernt das System einen gewissen Prozentsatz aus dem Training, um ihn für die Überprüfung und zu Testzwecken zu verwenden.
 > - Sie können ein Modell nur mit Wörterbuchdaten trainieren. Weitere Informationen finden Sie unter [Definition: Wörterbuch](./what-is-dictionary.md).
+> - Wenn Ihr Wörterbuch mehr als 250.000 Sätze enthält, ist die **[Dokumentübersetzung](../document-translation/overview.md)** wahrscheinlich eine bessere Wahl.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
