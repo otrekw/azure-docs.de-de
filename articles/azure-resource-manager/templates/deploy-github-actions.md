@@ -3,13 +3,13 @@ title: Bereitstellen von Resource Manager-Vorlagen mithilfe von GitHub Actions
 description: In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Vorlagen (ARM-Vorlage) mithilfe von GitHub Actions bereitstellen.
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: ec29ae019555c54ccdcef9dd743706f8d6401bbd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: github-actions-azure
+ms.openlocfilehash: 020e142788cf2bd31edeada8d051be74132310cf
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781971"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075427"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>Bereitstellen von ARM-Vorlagen mithilfe von GitHub Actions
 

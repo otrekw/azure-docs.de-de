@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9ec36483196ea6214742522f88ddffcd8a3b899
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612380"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292826"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Erste Schritte bei der Dokumentübersetzung (Vorschauversion)
 
@@ -261,7 +261,7 @@ Jede Anforderung der API für die Dokumentübersetzung enthält die folgenden He
 
 > [!IMPORTANT]
 >
-> Für die unten angegebenen Codebeispiele führen Sie für Ihren Schlüssel und Endpunkt das Hartcodieren durch, wo dies angegeben ist. Achten Sie darauf, den Schlüssel nach Abschluss des Vorgangs aus Ihrem Code zu entfernen und ihn nicht öffentlich zugänglich zu machen.  Informationen zum sicheren Speichern und Zugreifen auf Ihre Anmeldeinformationen finden Sie unter [Sicherheit von Azure Cognitive Services](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp).
+> Für die unten angegebenen Codebeispiele führen Sie für Ihren Schlüssel und Endpunkt das Hartcodieren durch, wo dies angegeben ist. Achten Sie darauf, den Schlüssel nach Abschluss des Vorgangs aus Ihrem Code zu entfernen und ihn nicht öffentlich zugänglich zu machen.  Informationen zum sicheren Speichern und Zugreifen auf Ihre Anmeldeinformationen finden Sie unter [Sicherheit von Azure Cognitive Services](../../cognitive-services-security.md?tabs=command-line%2ccsharp).
 >
 > Je nach Vorgang müssen Sie ggf. die folgenden Felder aktualisieren:
 >>>

@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 8534d4dd8df1e60e1b341088cbfaaa944ec1221b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385580"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073393"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts
 
@@ -38,10 +38,12 @@ Einen Überblick über das Feature finden Sie hier: „Azure Active Directory: W
 -   Sie verfügen über einen Azure AD-Mandanten (Azure Active Directory) mit Verbunddomänen.
 
 -   Sie haben sich entschieden, zu einer von zwei Optionen zu wechseln:
-    - **Option A** - *Kennworthashsynchronisierung* + *Nahtloses einmaliges Anmelden (Single Sign-On, SSO)* .  Weitere Informationen finden Sie unter [Was ist Kennworthashsynchronisierung?](whatis-phs.md) und [Nahtlose einmalige Anmeldung mit Azure Active Directory](how-to-connect-sso.md).
-    - **Option B** - *Passthrough-Authentifizierung* + *Nahtloses SSO*.  Weitere Informationen finden Sie unter [Worum handelt es sich bei der Passthrough-Authentifizierung?](how-to-connect-pta.md).  
+    - **Option A** - *Kennworthashsynchronisierung*.  Weitere Informationen finden Sie unter [Was ist Kennworthashsynchronisierung?](whatis-phs.md) 
+    - **Option B** - *Passthrough-Authentifizierung*.  Weitere Informationen finden Sie unter [Worum handelt es sich bei der Passthrough-Authentifizierung?](how-to-connect-pta.md).  
     
-    Obwohl *nahtloses SSO* optional ist, empfiehlt es sich, das nahtlose einmalige Anmelden zu aktivieren, damit Benutzer, die in die Domäne eingebundene Computer innerhalb des Unternehmensnetzwerks verwenden, von einer automatischen Anmeldung profitieren.
+    Für beide Optionen wird empfohlen, einmaliges Anmelden (Single Sign-On, SSO) zu aktivieren, um eine automatische Anmeldung zu ermöglichen. 
+    Für in die Domäne eingebundene Windows 7- oder 8.1-Geräte wird die Verwendung von nahtlosem SSO empfohlen. Weitere Informationen finden Sie unter [Was ist die nahtlose einmalige Anmeldung?](how-to-connect-sso.md). 
+    Für Windows 10, Windows Server 2016 und höhere Versionen wird die Verwendung von SSO über ein [primäres Aktualisierungstoken (Primary Refresh Token, PRT)](../devices/concept-primary-refresh-token.md) mit [in Azure AD eingebundenen Geräten](../devices/concept-azure-ad-join.md), [in Azure AD eingebundenen Hybridgeräten](../devices/concept-azure-ad-join-hybrid.md) oder mit Geräten empfohlen, die per „Geschäfts-, Schul- oder Unikonto hinzufügen“ persönlich registriert sind.
 
 -   Sie haben alle geeigneten Richtlinien für Mandantenbranding und für bedingten Zugriff konfiguriert, die Sie für Benutzer benötigen, die zur Cloudauthentifizierung migriert werden.
 
@@ -92,7 +94,7 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 - Windows 10 Hybrid Join oder Azure AD Join – Abrufen eines primären Aktualisierungstokens für alle Versionen, wenn der lokale UPN des Benutzers nicht routingfähig ist. Im Modus „Gestaffelter Rollout“ greift dieses Szenario auf den WS-Trust-Endpunkt zurück. Dies funktioniert jedoch nicht mehr, wenn die gestaffelte Migration abgeschlossen ist und die Benutzeranmeldung nicht mehr auf den Verbundserver angewiesen ist.
 
   >[!NOTE]
-  >Die endgültige Umstellung von Verbundauthentifizierung auf Cloudauthentifizierung muss weiterhin mithilfe von Azure AD Connect oder PowerShell erfolgen. Bei einem gestaffelten Rollout werden Domänen nicht von Verbunddomänen auf verwaltete Domänen umgestellt.  Weitere Informationen zur Domänenumstellung finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) und [Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso).
+  >Die endgültige Umstellung von Verbundauthentifizierung auf Cloudauthentifizierung muss weiterhin mithilfe von Azure AD Connect oder PowerShell erfolgen. Bei einem gestaffelten Rollout werden Domänen nicht von Verbunddomänen auf verwaltete Domänen umgestellt.  Weitere Informationen zur Domänenumstellung finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) und [Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso).
   
 ## <a name="get-started-with-staged-rollout"></a>Erste Schritte mit gestaffeltem Rollout
 

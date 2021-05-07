@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: c4cd9140d03bba1f9d95ed64c3628da4fe32ecd9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 96c534919e7279af61a86d24ae4c4ca984c02662
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771477"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124233"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -95,7 +95,20 @@ Alle Azure Arc-fähigen Server verfügen über eine vom System zugewiesene Ident
 | Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
 Im folgenden Dokument finden Sie Informationen zum erneuten Konfigurieren einer verwalteten Identität, wenn Sie Ihr Abonnement zu einem neuen Mandanten verschoben haben:
+
 * [Reparieren eines fehlerhaften Automanage-Kontos](../../automanage/repair-automanage-account.md)
+
+### <a name="azure-automation"></a>Azure Automation
+
+| Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+
+Informationen zur Verwendung einer verwalteten Identität mit [Azure Automation](../../automation/automation-intro.md) finden Sie in den folgenden Dokumenten:
+
+* [Übersicht über die Automation-Kontoauthentifizierung – Verwaltete Identitäten](../../automation/automation-security-overview.md#managed-identities-preview)
+* [Aktivieren und Verwenden einer verwalteten Identität für Automation](../../automation/enable-managed-identity-for-automation.md)
 
 ### <a name="azure-blueprints"></a>Azure Blueprint
 
@@ -314,7 +327,7 @@ Informationen zum Konfigurieren der verwalteten Identität für Azure Service 
 | Vom Benutzer zugewiesen | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
 
 
-Weitere Informationen finden Sie unter [Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md).
+Weitere Informationen finden Sie unter [Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung](../../spring-cloud/how-to-enable-system-assigned-managed-identity.md).
 
 ### <a name="azure-stack-edge"></a>Azure Stack Edge
 

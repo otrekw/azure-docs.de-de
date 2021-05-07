@@ -4,13 +4,13 @@ description: Informationen und Schritte zum Konfigurieren kundenseitig verwaltet
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 01/10/2021
-ms.openlocfilehash: 4033421095ead47e2bd1e97c4f2f42672644d7df
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.date: 04/21/2021
+ms.openlocfilehash: 56cbfc5c9640497d44a5a7f45cabfc9305cff480
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364854"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072317"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -105,7 +105,7 @@ Authorization: Bearer <token>
 
 ## <a name="storing-encryption-key-kek"></a>Speichern des Verschlüsselungsschlüssels (KEK)
 
-Erstellen Sie eine Azure Key Vault-Instanz oder verwenden Sie eine vorhandene Instanz, um einen Schlüssel zu generieren oder importieren, der für die Datenverschlüsselung verwendet werden soll. Azure Key Vault muss als wiederherstellbar konfiguriert werden, um Ihren Schlüssel und den Zugriff auf Ihre Daten in Azure Monitor zu schützen. Sie können diese Konfiguration unter den Eigenschaften in Ihrer Key Vault-Instanz überprüfen. Sowohl *Vorläufiges Löschen* als auch *Bereinigungsschutz* sollten aktiviert sein.
+Erstellen Sie eine neue oder verwenden Sie eine vorhandene Azure Key Vault-Instanz in der Region, in der der Cluster geplant ist, und generieren oder importieren Sie dann einen Schlüssel, der für die Protokollverschlüsselung verwendet werden soll. Azure Key Vault muss als wiederherstellbar konfiguriert werden, um Ihren Schlüssel und den Zugriff auf Ihre Daten in Azure Monitor zu schützen. Sie können diese Konfiguration unter den Eigenschaften in Ihrer Key Vault-Instanz überprüfen. Sowohl *Vorläufiges Löschen* als auch *Bereinigungsschutz* sollten aktiviert sein.
 
 ![Einstellungen für vorläufiges Löschen und Löschschutz](media/customer-managed-keys/soft-purge-protection.png)
 
@@ -163,14 +163,13 @@ Für alle Vorgänge im Cluster ist die Aktionsberechtigung `Microsoft.Operationa
 
 Mit diesem Schritt wird Azure Monitor Storage über den neuen Schlüssel und die Version informiert, die für die Datenverschlüsselung verwendet werden soll. Nach der Aktualisierung wird der neue Schlüssel zum Packen und Entpacken des Speicherschlüssels (AEK) verwendet.
 
-Wählen Sie in Azure Key Vault die aktuelle Version Ihres Schlüssels aus, um die Schlüsselbezeichnerdetails abzurufen.
+>[!IMPORTANT]
+>- Die Schlüsselrotation kann automatisch erfolgen oder eine explizite Aktualisierung des Schlüssels erfordern. Unter [Schlüsselrotation](#key-rotation) finden Sie Informationen zur Bestimmung des geeigneten Ansatzes, bevor Sie die Schlüsselbezeichnerdetails im Cluster aktualisieren.
+>- Das Clusterupdate sollte nicht sowohl Identitäts- als auch Schlüsselbezeichnerdetails in demselben Vorgang enthalten. Wenn Sie beides aktualisieren müssen, sollte das Update in zwei aufeinanderfolgenden Vorgängen erfolgen.
 
 ![Erteilen von Key Vault-Berechtigungen](media/customer-managed-keys/key-identifier-8bit.png)
 
 Aktualisieren Sie KeyVaultProperties im Cluster mit den Schlüsselbezeichnerdetails.
-
->[!NOTE]
->Für die Schlüsselrotation stehen zwei Modi zur Verfügung: automatische Rotation oder explizite Aktualisierung der Schlüsselversion. Nutzen Sie die Informationen unter [Schlüsselrotation](#key-rotation) als Entscheidungshilfe.
 
 Der Vorgang ist asynchron und kann einige Zeit in Anspruch nehmen.
 
@@ -417,6 +416,8 @@ Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestell
 - Das Verschieben eines Clusters in eine andere Ressourcengruppe oder ein anderes Abonnement wird derzeit nicht unterstützt.
 
 - Azure Key Vault, Cluster und Arbeitsbereiche müssen sich in derselben Region und in demselben Azure AD-Mandanten (Azure Active Directory) befinden, aber sie können in unterschiedlichen Abonnements enthalten sein.
+
+- Das Clusterupdate sollte nicht sowohl Identitäts- als auch Schlüsselbezeichnerdetails in demselben Vorgang enthalten. Wenn Sie beides aktualisieren müssen, sollte das Update in zwei aufeinanderfolgenden Vorgängen erfolgen.
 
 - Lockbox ist in China derzeit nicht verfügbar. 
 

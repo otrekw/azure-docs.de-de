@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e9052502eba71f025bb6724278b7001173c5217
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b84d55e2d3a2f49a870c1e57eeed3c5c0caeba4a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491616"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530419"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Konfigurieren und Aktivieren der SMS-basierten Authentifizierung von Benutzern mit Azure Active Directory 
 
@@ -149,7 +149,7 @@ Wenn Sie beim Versuch, im Azure-Portal eine Telefonnummer für ein Benutzerkonto
 
 Weitere Möglichkeiten zum Anmelden bei Azure AD ohne Kennwort, z. B. die Microsoft Authenticator-App oder FIDO2-Sicherheitsschlüssel, finden Sie unter [Optionen für die kennwortlose Authentifizierung für Azure Active Directory][concepts-passwordless].
 
-Sie können auch die Betaversion der Microsoft Graph-REST-API verwenden, um die SMS-basierte Anmeldung zu [aktivieren][rest-enable] oder zu [deaktivieren][rest-disable].
+Sie können auch Microsoft Graph-REST-API verwenden, um die SMS-basierte Anmeldung zu [aktivieren][rest-enable] oder zu [deaktivieren][rest-disable].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md
@@ -157,8 +157,8 @@ Sie können auch die Betaversion der Microsoft Graph-REST-API verwenden, um die 
 [concepts-passwordless]: concept-authentication-passwordless.md
 [tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [tutorial-sspr]: tutorial-enable-sspr.md
-[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?view=graph-rest-beta&tabs=http
-[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?view=graph-rest-beta&tabs=http
+[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?tabs=http
+[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?tabs=http
 
 <!-- EXTERNAL LINKS -->
 [azure-portal]: https://portal.azure.com
