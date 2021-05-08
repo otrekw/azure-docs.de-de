@@ -3,7 +3,7 @@ title: Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfun
 description: Planhinweisliste für eine erfolgreiche Bereitstellung von Zugriffsüberprüfungen
 services: active-directory
 documentationCenter: ''
-author: BarbaraSelden
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/23/2020
-ms.author: barclayn
+ms.date: 04/16/2021
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3af783d7ff8be36c63af871ab4f2d214ca9f9405
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: e17fe0c0ca5f1399c78def37ea7640ba8dfa395e
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532589"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988224"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -71,9 +71,12 @@ Die folgenden Videos können nützlich sein, während Sie sich über Zugriffsüb
 
 * [Erstellen von Azure AD-Zugriffsüberprüfungen](https://youtu.be/6KB3TZ8Wi40)
 
+* [So erstellen Sie automatische Zugriffsüberprüfungen für alle Gastbenutzer mit Zugriff auf Microsoft 365-Gruppen in Azure AD](https://www.youtube.com/watch?v=3D2_YW2DwQ8)
+
 * [Aktivieren von Azure AD-Zugriffsüberprüfungen](https://youtu.be/X1SL2uubx9M)
 
 * [Überprüfen des Zugriffs mit „Mein Zugriff“](https://youtu.be/tIKdQhdHLXU)
+
 
 ### <a name="licenses"></a>Lizenzen
 
@@ -136,17 +139,13 @@ Die IT ist offensichtlich bestrebt, die Kontrolle über alle Zugriffsentscheidun
 
 #### <a name="customize-email-communication"></a>Anpassen der E-Mail-Kommunikation
 
-Wenn Sie eine Überprüfung planen, schlagen Sie Benutzer vor, die diese Überprüfung durchführen werden. Diese Prüfer erhalten dann eine E-Mail-Benachrichtigung zu neuen Überprüfungen, die ihnen zugewiesen sind, sowie Erinnerungen, bevor eine ihnen zugewiesene Überprüfung abläuft.
-
-Administratoren können festlegen, dass diese Benachrichtigung entweder zur Halbzeit oder einen Tag vor Ablauf der Überprüfung gesendet wird. 
+Wenn Sie eine Überprüfung planen, schlagen Sie Benutzer vor, die diese Überprüfung durchführen werden. Diese Prüfer erhalten dann eine E-Mail-Benachrichtigung zu neuen Überprüfungen, die ihnen zugewiesen sind, sowie Erinnerungen, bevor eine ihnen zugewiesene Überprüfung abläuft. 
 
 Die an Prüfer gesendete E-Mail kann so angepasst werden, dass sie eine benutzerdefinierte kurze Nachricht enthalten, mit der sie aufgefordert werden, die Überprüfung zu bearbeiten. Es wird empfohlen, Folgendes als zusätzlichen Text anzugeben:
 
 * Eine persönliche Mitteilung an Prüfer, damit sie erkennen, dass die Nachricht von der Compliance- oder IT-Abteilung stammt.
 
-* Einen Link oder Verweis auf interne Informationen zur Zielsetzung für die Überprüfung und auf zusätzliches Referenz- oder Schulungsmaterial.
-
-* Einen Link zu Anweisungen zur [Durchführung einer Selbstüberprüfung des Zugriffs](review-your-access.md). 
+* Schliessen Sie einen Verweis auf interne Informationen darüber ein, was die Erwartungen an die Überprüfung sind sowie zusätzliche Referenz- oder Schulungsmaterialien.
 
   ![E-Mail an Prüfer](./media/deploy-access-review/2-plan-reviewer-email.png)
 
@@ -197,7 +196,6 @@ Die zum Erstellen, Verwalten oder Lesen einer Zugriffsüberprüfung erforderlich
 | Privilegierte Rollen in Azure (Ressourcen)| Globaler Administrator<p>Benutzeradministrator<p>Ressourcenbesitzer| Ersteller |
 | Zugriffspaket| Globaler Administrator<p>Ersteller des Zugriffspakets| Nur globaler Administrator |
 
-
 Weitere Informationen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../roles/permissions-reference.md).
 
 ### <a name="who-will-review-the-access-to-the-resource"></a>Wer überprüft den Zugriff auf die Ressource?
@@ -209,6 +207,8 @@ Der Ersteller der Zugriffsüberprüfung legt zum Zeitpunkt der Erstellung fest, 
 * Eine Reihe von einzeln vom Administrator für Zugriffsüberprüfungen ausgewählten Delegaten.
 
 * Endbenutzer, die eine Notwendigkeit des Fortbestands Ihres Zugriffs selbst nachweisen.
+
+* Manager überprüfen den Zugriff ihrer direkten Berichte auf die Ressource. 
 
 Beim Erstellen einer Zugriffsüberprüfung können Administratoren einen oder mehrere Prüfer auswählen. Alle Prüfer können eine Überprüfung starten und ausführen, wobei sie Benutzer für den fortwährenden Zugriff auf eine Ressource auswählen oder entfernen. 
 
@@ -238,7 +238,6 @@ Zum Erstellen einer Zugriffsüberprüfungsrichtlinie benötigen Sie die folgende
 
 * Welche Mitteilungen sollten auf Grundlage der ergriffenen Maßnahmen gesendet werden?
 
-
 **Beispiel für einen Zugriffsüberprüfungsplan**
 
 | Komponente| Wert |
@@ -246,14 +245,10 @@ Zum Erstellen einer Zugriffsüberprüfungsrichtlinie benötigen Sie die folgende
 | **Zu überprüfende Ressourcen**| Zugriff auf Microsoft Dynamics |
 | **Häufigkeit der Überprüfung**| Monatlich |
 | **Zuständiger für die Überprüfung**| Programmmanager der Dynamics-Unternehmensgruppe |
-| **Benachrichtigung**| Per E-Mail 24 Stunden vor der Überprüfung an den Alias „Dynamics-PMs“<p>Einschließen einer benutzerdefinierten Nachricht mit einer Handlungsaufforderung an die Prüfer |
+| **Benachrichtigung**| E-Mail, die zu Beginn der Überprüfung an den Alias Dynamics-Pms gesendet wird<p>Einschließen einer benutzerdefinierten Nachricht mit einer Handlungsaufforderung an die Prüfer |
 | **Zeitachse**| 48 Stunden ab Zeitpunkt der Benachrichtigung |
 |**Automatische Aktionen**| Entfernen des Zugriffs aller Konten, die sich seit 90 Tagen nicht interaktiv angemeldet haben, indem Benutzer aus der Sicherheitsgruppe „dynamics-access“ entfernt werden. <p>*Aktionen ausführen, wenn die Überprüfung nicht fristgerecht erfolgt* |
 | **Manuelle Aktionen**| Prüfer können Entfernungen bei Bedarf genehmigen, bevor die automatisierte Aktion ausgeführt wird. |
-| **Kommunikation**| Interne Benutzer (Mitglieder) erhalten eine E-Mail mit dem Hinweis, dass sie entfernt werden und wie sie wieder Zugriff anfordern. |
-
-
- 
 
 ### <a name="automate-actions-based-on-access-reviews"></a>Automatisieren von Aktionen auf Grundlage von Zugriffsüberprüfungen
 
@@ -318,6 +313,8 @@ Die Gruppenmitgliedschaft kann von folgenden Benutzern überprüft werden:
 
 * Mitglieder der Gruppe, die eine Bestätigung für sich selbst durchführen
 
+* Manager überprüfen den Zugang ihrer direkten Berichte 
+
 ### <a name="group-ownership"></a>Gruppenbesitz
 
 Es wird empfohlen, dass Gruppenbesitzer die Mitgliedschaft überprüfen, da sie am besten wissen, welche Benutzer den Zugriff benötigen. Der Besitz von Gruppen unterscheidet sich je nach Gruppentyp:
@@ -335,19 +332,11 @@ Gruppen, die von lokalem Active Directory synchronisiert werden, können in Azur
 
 ### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>Überprüfen der Mitgliedschaft von Ausschlussgruppen in Richtlinien für bedingten Zugriff 
 
-In bestimmten Fällen sollen Richtlinien für bedingten Zugriff, die zum Schutz des Netzwerks konzipiert wurden, nicht für alle Benutzer gelten. Beispielsweise gilt eine Richtlinie für bedingten Zugriff, die Benutzern eine Anmeldung nur erlaubt, wenn sie sich im Unternehmensnetzwerk befinden, möglicherweise nicht für das Vertriebsteam, das oft im Außendienst ist. In diesem Fall sollten die Mitglieder des Vertriebsteams in eine Gruppe eingefügt werden, und diese Gruppe wird von der Richtlinie für bedingten Zugriff ausgeschlossen. 
+Gehen Sie zu [Azure AD-Zugriffsüberprüfungen verwenden, um Benutzer zu verwalten, die von den Richtlinien für den bedingten Zugriff ausgeschlossen sind](conditional-access-exclusion.md), um zu erfahren, wie Sie die Mitgliedschaft von Ausschlussgruppen überprüfen.
 
-Überprüfen Sie die Gruppenmitgliedschaft regelmäßig, da der Ausschluss ein potenzielles Risiko darstellt, wenn die falschen Mitglieder von der Anforderung ausgeschlossen werden.
+### <a name="review-guest-users-group-memberships"></a>Überprüfen Sie die Gruppenmitgliedschaften von Gastbenutzern
 
-Sie können [Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für bedingten Zugriff ausgeschlossen sind](conditional-access-exclusion.md), verwenden.
-
-### <a name="review-external-users-group-memberships"></a>Überprüfen der Gruppenmitgliedschaften eines externen Benutzers
-
-Um manuelle Arbeit und die damit verbundenen potenziellen Fehler zu minimieren, sollten Sie die Verwendung von [dynamischen Gruppen](../enterprise-users/groups-create-rule.md) in Betracht ziehen, um die Gruppenmitgliedschaft auf Grundlage der Attribute eines Benutzers zuzuweisen. Möglicherweise empfiehlt es sich, eine oder mehrere dynamische Gruppen für externe Benutzer zu erstellen. Der interne Sponsor kann als Prüfer für die Mitgliedschaft in der Gruppe fungieren. 
-
-Hinweis: Externe Benutzer, die als Folge einer Zugriffsüberprüfung aus einer Gruppe entfernt werden, werden nicht aus dem Mandanten gelöscht. 
-
-Sie können entweder manuell oder über ein Skript aus einem Mandanten gelöscht werden.
+Gehen Sie zu [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews), um zu erfahren, wie Sie den Zugriff von Gastbenutzern auf Gruppenmitgliedschaften überprüfen.
 
 ### <a name="review-access-to-on-premises-groups"></a>Überprüfen des Zugriffs auf lokale Gruppen
 
@@ -405,7 +394,7 @@ Anhand von Zugriffsüberprüfungen können Prüfer feststellen, ob Benutzer eine
 
 * Alle Rollen für Microsoft 365 und die Dynamics-Dienstverwaltung
 
-Die hier ausgewählten Rollen schließen permanente und berechtigte Rollen ein. 
+Zu den überprüften Rollen gehören permanente und wählbare Zuweisungen. 
 
 Wählen Sie im Abschnitt Prüfer mindestens eine Person für die Überprüfung aller Benutzer aus. Alternativ können Sie auswählen, dass die Mitglieder ihren eigenen Zugriff überprüfen.
 
@@ -425,7 +414,6 @@ Um das Risiko eines veralteten Zugriffs zu verringern, können Administratoren r
 | [Ausführen von Zugriffsüberprüfungen](entitlement-management-access-reviews-review-access.md)| Führen Sie Zugriffsüberprüfungen für andere Benutzer aus, die einem Zugriffspaket zugewiesen sind. |
 | [Selbstüberprüfung zugewiesener Zugriffspakete](entitlement-management-access-reviews-self-review.md)| Selbstüberprüfung zugewiesener Zugriffspakete |
 
-
 > [!NOTE]
 > Endbenutzer, die eine Selbstüberprüfung ausführen und angeben, dass sie keinen Zugriff mehr benötigen, werden nicht sofort aus dem Zugriffspaket entfernt. Sie werden aus dem Zugriffspaket entfernt, wenn die Überprüfung abgeschlossen ist oder ein Administrator die Überprüfung beendet.
 
@@ -440,7 +428,6 @@ Die Notwendigkeit des Zugriffs von Mitarbeitern und Gästen auf Gruppen und Anwe
 | [Selbstüberprüfung des Zugriffs](review-your-access.md)| Mitglieder überprüfen den eigenen Zugriff auf eine Gruppe oder eine Anwendung. |
 | [Abschließen einer Zugriffsüberprüfung](complete-access-review.md)| Öffnen Sie eine Zugriffsüberprüfung, und wenden Sie die Ergebnisse an. |
 | [Ausführen von Aktionen für lokale Gruppen](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises)| PowerShell-Beispielskript, um die Ergebnisse von Zugriffsüberprüfungen für lokale Gruppen umzusetzen. |
-
 
 ### <a name="review-azure-ad-roles"></a>Überprüfen von Azure AD-Rollen
 

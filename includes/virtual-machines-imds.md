@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98866a4f06df0380d52d1aee3eede8aa2f70aaed
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103464992"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588127"
 ---
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu Instanzen virtueller Computer bereit, die derzeit ausgeführt werden. Sie können ihn zur Verwaltung und Konfiguration Ihrer virtuellen Computer verwenden.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine umfassende Liste der verfügbaren Daten finden Sie in der [Übersicht über die Endpunktkategorien](#endpoint-categories).
@@ -247,6 +247,7 @@ Wenn Sie keine Version angeben, erhalten Sie eine Fehlermeldung mit einer Liste 
 - 2020-09-01
 - 2020-10-01
 - 2020-12-01
+- 2021-01-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -314,7 +315,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `format` | Optional* | Das Format (`json` oder `text`) der Antwort. *Hinweis: Ist möglicherweise erforderlich, wenn Anforderungsparameter verwendet werden.
@@ -332,7 +333,7 @@ Aufschlüsselung des Schemas:
 | Daten | BESCHREIBUNG | Eingeführt in Version |
 |------|-------------|--------------------|
 | `azEnvironment` | Azure-Umgebung, in der die VM ausgeführt wird | 2018-10-01
-| `customData` | Diese Funktion ist derzeit deaktiviert. Diese Dokumentation wird aktualisiert, wenn die Funktion verfügbar wird. | 2019-02-01
+| `customData` | Dieses Feature ist [in IMDS](#frequently-asked-questions) veraltet und wurde deaktiviert. Es wurde durch `userData` ersetzt | 2019-02-01
 | `evictionPolicy` | Hier wird festgelegt, wie eine [Spot-VM](../articles/virtual-machines/spot-vms.md) entfernt wird. | 2020-12-01
 | `isHostCompatibilityLayerVm` | Gibt an, ob die VM auf der Hostkompatibilitätsebene ausgeführt wird | 2020-06-01
 | `licenseType` | Typ der Lizenz für [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit). Dies ist nur für AHB-aktivierte VMs verfügbar. | 2020-09-01
@@ -360,6 +361,7 @@ Aufschlüsselung des Schemas:
 | `subscriptionId` | Azure-Abonnement für den virtuellen Computer | 2017-08-01
 | `tags` | [Tags](../articles/azure-resource-manager/management/tag-resources.md) für den virtuellen Computer  | 2017-08-01
 | `tagsList` | Tags, die zur einfacheren programmgesteuerten Analyse als JSON-Arrays formatiert sind  | 2019-06-04
+| `userData` | Der Datensatz, der beim Erstellen des virtuellen Computers zur Verwendung während oder nach der Bereitstellung (Base64-codiert) angegeben wurde  | 2021-01-01
 | `version` | Version des VM-Image | 2017-04-02
 | `vmId` | [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM | 2017-04-02
 | `vmScaleSetName` | [Name Ihrer VM-Skalierungsgruppe](../articles/virtual-machine-scale-sets/overview.md) | 2017-12-01
@@ -421,6 +423,31 @@ Daten | BESCHREIBUNG |
 | `subnet.prefix` | Subnetzpräfix, Beispiel 24 | 2017-04-02
 | `ipv6.ipAddress` | Lokale IPv6-Adresse der VM | 2017-04-02
 | `macAddress` | VM-Mac-Adresse | 2017-04-02
+
+### <a name="get-user-data"></a>Abrufen von Benutzerdaten
+
+Beim Erstellen eines neuen virtuellen Computers können Sie einen Datensatz angeben, der während oder nach der Bereitstellung des virtuellen Computers verwendet werden soll, und ihn über IMDS abrufen. Verwenden Sie zum Einrichten von Benutzerdaten [diese](https://aka.ms/ImdsUserDataArmTemplate) Schnellstartvorlage. Das folgende Beispiel zeigt, wie diese Daten über IMDS abgerufen werden.
+
+> [!NOTE]
+> Dieses Feature wird mit Version `2021-01-01` veröffentlicht und hängt von einem Update der Azure-Plattform ab, das derzeit bereitgestellt wird und möglicherweise noch nicht in jeder Region verfügbar ist.
+
+> [!NOTE]
+> Sicherheitshinweis: IMDS ist für alle Anwendungen auf der VM geöffnet, vertrauliche Daten sollten nicht in den Benutzerdaten gespeichert werden.
+
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+```
+
+---
 
 
 #### <a name="sample-1-tracking-vm-running-on-azure"></a>Beispiel 1: Nachverfolgen einer in Azure ausgeführten VM
@@ -908,7 +935,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich/Optional | Beschreibung |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `nonce` | Optional | Eine 10-stellige Zeichenfolge, die als kryptografische Nonce fungiert. Wenn kein Wert angegeben wird, verwendet IMDS den aktuellen UTC-Zeitstempel.
@@ -1135,7 +1162,7 @@ Wenn ein Datenelement nicht gefunden wird oder eine Anforderung ungültig ist, g
 | `404 Not Found` | Das angeforderte Element ist nicht vorhanden.
 | `405 Method Not Allowed` | Die HTTP-Methode (Verb) wird für den Endpunkt nicht unterstützt.
 | `410 Gone` | Wiederholen Sie den Vorgang später (nach max. 70 Sekunden).
-| `429 Too Many Requests` | Die API-[Ratenbegrenzung](#rate-limiting) wurde überschritten.
+| `429 Too Many Requests` | Die API-[Ratenbegrenzungen](#rate-limiting) wurden überschritten
 | `500 Service Error` | Wiederholen Sie den Vorgang später.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
@@ -1148,6 +1175,9 @@ Wenn ein Datenelement nicht gefunden wird oder eine Anforderung ungültig ist, g
 
 - Ich habe meine VM vor einiger Zeit mithilfe von Azure Resource Manager erstellt. Warum sehe ich keine Computemetadateninformationen?
   - Wenn Sie Ihre VM nach September 2016 erstellt haben, fügen Sie ein [Tag](../articles/azure-resource-manager/management/tag-resources.md) hinzu, damit Computemetadaten angezeigt werden. Wenn Sie Ihre VM vor September 2016 erstellt haben, fügen Sie der VM-Instanz Erweiterungen oder Datenträger für Daten hinzu oder entfernen Sie diese, um die Metadaten zu aktualisieren.
+
+- Sind Benutzerdaten identisch mit benutzerdefinierten Daten?
+  - Benutzerdaten bieten die gleiche Funktionalität wie benutzerdefinierte Daten, sodass Sie Ihre eigenen Metadaten an die VM-Instanz übergeben können. Der Unterschied besteht im Abrufen von Benutzerdaten über IMDS und bleibt über die gesamte Lebensdauer der VM-Instanz bestehen. Das vorhandene benutzerdefinierte Datenfeature funktioniert weiterhin, wie in [diesem Artikel](https://docs.microsoft.com/azure/virtual-machines/custom-data) beschrieben. Sie können benutzerdefinierte Daten jedoch nur über den lokalen Systemordner und nicht über IMDS erhalten.
 
 - Warum werden nicht alle Daten für eine neue Version ausgefüllt?
   - Wenn Sie Ihre VM nach September 2016 erstellt haben, fügen Sie ein [Tag](../articles/azure-resource-manager/management/tag-resources.md) hinzu, damit Computemetadaten angezeigt werden. Wenn Sie Ihre VM vor September 2016 erstellt haben, fügen Sie der VM-Instanz Erweiterungen oder Datenträger für Daten hinzu oder entfernen Sie diese, um die Metadaten zu aktualisieren.

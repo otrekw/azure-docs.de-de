@@ -2,13 +2,13 @@
 title: Azure Service Bus-Nachrichtensitzungen | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Nachrichtensitzungen zum Ermöglichen der gemeinsamen und geordneten Verarbeitung unbegrenzter Sequenzen verwandter Nachrichten verwendet werden.
 ms.topic: article
-ms.date: 04/12/2021
-ms.openlocfilehash: c9a1c4fdccbbc8b38805e23d4895448959126f10
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/19/2021
+ms.openlocfilehash: f3b6eae7b7f4d609df5067187595230aa6b86dba
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308475"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987162"
 ---
 # <a name="message-sessions"></a>Nachrichtensitzungen
 Microsoft Azure Service Bus-Sitzungen ermöglichen die gemeinsame und geordnete Verarbeitung unbegrenzter Sequenzen zusammengehöriger Nachrichten. Sitzungen können mit **FIFO**-Mustern (First in, First Out) und **Anforderung/Antwort**-Mustern verwendet werden. In diesem Artikel wird gezeigt, wie Sie diese Muster mithilfe von Sitzungen implementieren, wenn Sie Service Bus verwenden. 
@@ -24,15 +24,6 @@ Jeder Absender kann eine Sitzung erstellen, wenn er Nachrichten an ein Thema ode
 Bei sitzungsabhängigen Warteschlangen oder Abonnements entstehen Sitzungen, wenn mindestens eine Nachricht mit der Sitzungs-ID vorhanden ist. Sobald eine Sitzung vorhanden ist, gibt es keine definierte Uhrzeit oder API für den Zeitpunkt, an dem die Sitzung abläuft oder erlischt. Theoretisch kann eine Nachricht für eine Sitzung heute und die nächste Nachricht in einem Jahr empfangen werden. Wenn die Sitzungs-ID übereinstimmt, ist die Sitzung aus Service Bus-Sicht identisch.
 
 Typischerweise verfügt eine Anwendung jedoch über klare Informationen dazu, wo eine Reihe zusammengehöriger Nachrichten beginnt und endet. Service Bus legt allerdings keine spezifischen Regeln fest. Ihre Anwendung kann die **Label**-Eigenschaft beispielsweise für die erste Nachricht auf **start** festlegen, für die Zwischennachrichten auf **content** und für die letzte Nachricht auf **end**. Die relative Position der content-Nachrichten kann als *SequenceNumber*-Delta der aktuellen Nachricht von der *SequenceNumber* der **Start**-Nachricht berechnet werden.
-
-Sie aktivieren das Feature, indem Sie die [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values)-Eigenschaft über Azure Resource Manager für die Warteschlange oder das Abonnement festlegen oder das Flag im Portal festlegen. Dies ist erforderlich, bevor Sie versuchen, die entsprechenden API-Vorgänge zu verwenden.
-
-Im Portal können Sie wie in den folgenden Beispielen gezeigt beim Erstellen einer Entität (Warteschlange oder Abonnement) Sitzungen aktivieren. 
-
-:::image type="content" source="./media/message-sessions/queue-sessions.png" alt-text="Aktivieren von Sitzungen zum Zeitpunkt der Warteschlangenerstellung":::
-
-:::image type="content" source="./media/message-sessions/subscription-sessions.png" alt-text="Aktivieren von Sitzungen zum Zeitpunkt der Abonnementerstellung":::
-
 
 > [!IMPORTANT]
 > Wenn Sitzungen für eine Warteschlange oder ein Abonnement aktiviert sind, können die Clientanwendungen ***keine*** regulären Nachrichten mehr senden/empfangen. Alle Nachrichten müssen im Rahmen einer Sitzung (durch Festlegen der Sitzungs-ID) gesendet und durch Akzeptieren der Sitzung empfangen werden.
@@ -90,14 +81,19 @@ Mehrere Anwendungen können ihre Anforderungen an eine einzelne Anforderungswart
 > Die Anwendung, die die ersten Anforderungen sendet, muss die Sitzungs-ID kennen und diese verwenden, um die Sitzung zu akzeptieren, damit die Sitzung, in der sie die Antwort erwartet, gesperrt wird. Es empfiehlt sich, eine GUID zu verwenden, die die Instanz der Anwendung eindeutig als Sitzungs-ID identifiziert. Um sicherzustellen, dass die Antworten durch bestimmte Empfänger gesperrt und verarbeitet werden können, darf kein Sitzungshandler oder -timeout auf der Seite des Sitzungsempfängers für die Warteschlange festgelegt sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
+Sie können Nachrichtensitzungen im Zuge der Erstellung einer Warteschlange per Azure-Portal, PowerShell, CLI, Resource Manager-Vorlage, .NET, Java, Python und JavaScript aktivieren. Weitere Informationen finden Sie unter [Aktivieren von Nachrichtensitzungen für eine Azure Service Bus-Warteschlange oder ein Abonnement](enable-message-sessions.md). 
 
-- [Azure.Messaging.ServiceBus-Beispiele für .NET](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
-- [Azure Service Bus-Clientbibliothek für Java: Beispiele](/samples/azure/azure-sdk-for-java/servicebus-samples/)
-- [Azure Service Bus-Clientbibliothek für Python: Beispiele](/samples/azure/azure-sdk-for-python/servicebus-samples/)
-- [Azure Service Bus-Clientbibliothek für JavaScript: Beispiele](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [Azure Service Bus-Clientbibliothek für TypeScript: Beispiele](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [Microsoft.Azure.ServiceBus-Beispiele für .NET](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/) (Sessions- und SessionState-Beispiele)  
+Sehen Sie sich die Beispiele in der Sprache Ihrer Wahl an, um sich mit Azure Service Bus-Features vertraut zu machen: 
 
-Weitere Informationen zu Service Bus-Nachrichten finden Sie unter [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md).
+- [Azure Service Bus-Clientbibliothekbeispiele für .NET (neueste Version)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
+- [Azure Service Bus-Clientbibliothekbeispiele für Java (neueste Version)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Azure Service Bus-Clientbibliothekbeispiele für Python](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [Azure Service Bus-Clientbibliothekbeispiele für JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Azure Service Bus-Clientbibliothekbeispiele für TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+
+Hier finden Sie Beispiele für die älteren .NET- und Java-Clientbibliotheken:
+- [Azure Service Bus-Clientbibliothekbeispiele für .NET (Legacy)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Azure Service Bus-Clientbibliothekbeispiele für Java (Legacy)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
 
 [1]: ./media/message-sessions/sessions.png
+

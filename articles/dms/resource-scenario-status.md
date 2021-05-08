@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: f06c1a055b2f08259bf5318afe3c969d763bbbd3
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 35ef2ea3f03ca86aea34f736de4317d75a44ae59
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818618"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330510"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden
 
@@ -37,9 +37,6 @@ In den folgenden Tabellen sind die Migrationsszenarien aufgeführt, die bei Verw
 
 > [!NOTE]
 > Wenn ein Szenario, das im Folgenden als unterstützt aufgeführt wird, auf der Benutzeroberfläche aber nicht angezeigt wird, wenden Sie sich an den Alias für [Azure-Datenbankmigrationen](mailto:AskAzureDatabaseMigrations@service.microsoft.com), um weitere Informationen zu erhalten.
-
-> [!IMPORTANT]
-> Alle derzeit in Azure Database Migration Service in der privaten Vorschau unterstützten Szenarien finden Sie auf der [DMS Preview-Website](https://aka.ms/dms-preview).
 
 ### <a name="offline-one-time-migration-support"></a>Unterstützung der Offlinemigration (einmalig)
 

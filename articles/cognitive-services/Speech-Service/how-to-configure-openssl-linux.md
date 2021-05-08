@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: a6225fec30a87ca0bbe57e414733bc21489f87ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0aee0030937a6e11860907e27b775c2671137f71
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577443"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331104"
 ---
 # <a name="configure-openssl-for-linux"></a>Konfigurieren von OpenSSL für Linux
 
@@ -53,7 +54,7 @@ export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
 
 ## <a name="certificate-revocation-checks"></a>Überprüfungen der Zertifikatsperre
-Beim Herstellen einer Verbindung mit dem Speech-Dienst überprüft das Speech SDK, ob das vom Speech-Dienst verwendete TLS-Zertifikat widerrufen wurde. Für diese Überprüfung benötigt das Speech SDK Zugriff auf die CRL-Verteilungspunkte für von Azure verwendete Zertifizierungsstellen. Eine Liste der möglichen URLs für den Download von Zertifikatssperrlisten finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes). Wenn ein Zertifikat widerrufen wurde oder die Zertifikatsperrliste nicht heruntergeladen werden kann, bricht das Speech SDK die Verbindung ab und gibt das Canceled-Ereignis aus.
+Beim Herstellen einer Verbindung mit dem Speech-Dienst überprüft das Speech SDK, ob das vom Speech-Dienst verwendete TLS-Zertifikat widerrufen wurde. Für diese Überprüfung benötigt das Speech SDK Zugriff auf die CRL-Verteilungspunkte für von Azure verwendete Zertifizierungsstellen. Eine Liste der möglichen URLs für den Download von Zertifikatssperrlisten finden Sie in [diesem Dokument](../../security/fundamentals/tls-certificate-changes.md). Wenn ein Zertifikat widerrufen wurde oder die Zertifikatsperrliste nicht heruntergeladen werden kann, bricht das Speech SDK die Verbindung ab und gibt das Canceled-Ereignis aus.
 
 Falls die Konfiguration des Netzwerks, in dem das Speech SDK verwendet wird, den Zugriff auf die URLs für den Download von Zertifikatssperrlisten nicht zulässt, kann die CRL-Überprüfung deaktiviert oder als erfolgreich festgelegt werden, wenn die Zertifikatsperrliste nicht abgerufen werden kann. Diese Konfiguration erfolgt über das Konfigurationsobjekt, das zum Erstellen eines Recognizer-Objekts verwendet wird.
 

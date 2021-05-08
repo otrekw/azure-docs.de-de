@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 4/20/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b88d63f86c863b5f1c050e293912cb6628d50b00
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 386a95b46bd4787ea9ad2925ea1d2b2a0627a05e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140027"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107796074"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -46,9 +46,9 @@ CAQuietExec64:  + FullyQualifiedErrorId : UnauthorizedAccess
 CAQuietExec64:  Error 0x80070001: Command line returned an error.
 ```
 
-Dieses Problem tritt auf, wenn die [PowerShell-Ausführungsrichtlinie](/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) mithilfe einer Gruppenrichtlinie konfiguriert wurde und die Richtlinieneinstellung „Nur signierte Skripts zulassen“ gilt. Alle Skripts, die in der Azure-Dateisynchronisierung enthalten sind, werden signiert. Die Agent-Installation der Azure-Dateisynchronisierung schlägt fehl, weil das Installationsprogramm die Skriptausführung mithilfe der Richtlinieneinstellung „Ausführung umgehen“ vorschlägt.
+Dieses Problem tritt auf, wenn die [PowerShell-Ausführungsrichtlinie](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) mithilfe einer Gruppenrichtlinie konfiguriert wurde und die Richtlinieneinstellung „Nur signierte Skripts zulassen“ gilt. Alle Skripts, die in der Azure-Dateisynchronisierung enthalten sind, werden signiert. Die Agent-Installation der Azure-Dateisynchronisierung schlägt fehl, weil das Installationsprogramm die Skriptausführung mithilfe der Richtlinieneinstellung „Ausführung umgehen“ vorschlägt.
 
-Um dieses Problem zu beheben, deaktivieren Sie vorübergehend die Gruppenrichtlinieneinstellung [Skriptausführung aktivieren](/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) auf dem Server. Nach Abschluss der Agent-Installation kann die Gruppenrichtlinieneinstellung erneut aktiviert werden.
+Um dieses Problem zu beheben, deaktivieren Sie vorübergehend die Gruppenrichtlinieneinstellung [Skriptausführung aktivieren](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) auf dem Server. Nach Abschluss der Agent-Installation kann die Gruppenrichtlinieneinstellung erneut aktiviert werden.
 
 <a id="agent-installation-on-DC"></a>**Bei der Agent-Installation tritt ein Fehler auf dem Active Directory-Domänencontroller auf.**  
 Wenn Sie versuchen, den Synchronisierungs-Agent auf einem Active Directory-Domänencontroller zu installieren, bei dem sich der Besitzer der PDC-Rolle unter Windows Server 2008 R2 oder einer älteren Version des Betriebssystems befindet, tritt bei der Installation des Synchronisierungs-Agents möglicherweise ein Fehler auf.
