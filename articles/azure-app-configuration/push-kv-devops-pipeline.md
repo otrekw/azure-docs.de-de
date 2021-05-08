@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: e1a4fb52a5f9622758e9ed805bf9380f5f608870
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 669dd99b24d605953a5bbf99a1612a07874b642f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068251"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137759"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Pushen von Einstellungen an App Configuration mit Azure Pipelines
 
@@ -33,12 +33,10 @@ Mit der Aufgabe [Azure App Configuration Push](https://marketplace.visualstudio.
 1. Wählen Sie unter **Pipelines** die Option **Dienstverbindungen** und anschließend rechts oben die Option **Neue Dienstverbindung** aus.
 1. Wählen Sie **Azure Resource Manager** aus.
 ![Screenshot des Auswählens von Azure Resource Manager in der Dropdownliste „Neue Dienstverbindung“.](./media/new-service-connection.png)
-1. Wählen Sie im Dialogfeld **Authentifizierungsmethode** die Option **Dienstprinzipal (automatisch)** aus.
-    > [!NOTE]
-    > Authentifizierung mit **verwalteter Identität** wird zurzeit für die App Configuration-Aufgabe nicht unterstützt.
+1. Wählen Sie im Dialogfeld **Authentifizierungsmethode** die Option **Dienstprinzipal (automatisch)** aus, um einen neuen Dienstprinzipal zu erstellen. Alternativ können Sie **Dienstprinzipal (manuell)** auswählen, um [einen vorhandenen Dienstprinzipal zu verwenden](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops#use-spn).
 1. Geben Sie Ihr Abonnement und Ihre Ressource an. Benennen Sie Ihre Dienstverbindung.
 
-Suchen Sie im Anschluss an die Erstellung der Dienstverbindung nach dem Namen des zugewiesenen Dienstprinzipals. Diesem Dienstprinzipal wird im nächsten Schritt eine neue Rollenzuweisung hinzugefügt.
+Wenn Sie einen neuen Dienstprinzipal erstellt haben, suchen Sie den Namen des Dienstprinzipals, der der Dienstverbindung zugewiesen ist. Diesem Dienstprinzipal wird im nächsten Schritt eine neue Rollenzuweisung hinzugefügt.
 
 1. Navigieren Sie zu **Projekteinstellungen** > **Dienstverbindungen**.
 1. Wählen Sie die Dienstverbindung aus, die Sie im vorherigen Abschnitt erstellt haben.

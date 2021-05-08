@@ -3,18 +3,18 @@ title: 'Tutorial: Ermitteln einer Route zu einem Ort | Microsoft Azure Maps'
 description: Tutorial zum Ermitteln einer Route zu einem Point of Interest. Sie erfahren, wie Sie Adresskoordinaten festlegen und eine Wegbeschreibung zu diesem Punkt vom Azure Maps-Routendienst abfragen.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/01/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 1f1647766eeae917f7a2266ebb8f00fdfab3452e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 222f54157732013309532a1ab38f3f2f8747908e
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210579"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326523"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Tutorial: Vorgehensweise beim Anzeigen von Wegbeschreibungen mithilfe von Routendienst und Kartensteuerelement von Azure Maps
 

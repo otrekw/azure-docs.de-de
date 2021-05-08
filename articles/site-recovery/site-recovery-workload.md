@@ -3,12 +3,12 @@ title: Informationen zur Notfallwiederherstellung für lokale Apps mit Azure Sit
 description: Hier werden die Workloads beschrieben, die mithilfe der Notfallwiederherstellung mit dem Azure Site Recovery-Dienst geschützt werden können.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a5d20e6feacfe72052142c07dc45753b9bc3138
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80062836"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599110"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Informationen zur Notfallwiederherstellung für lokale Apps
 
@@ -50,7 +50,7 @@ Mit Site Recovery können alle Apps repliziert werden, die auf einem unterstütz
 | Linux (Betriebssystem und Apps) |Ja (von Microsoft getestet) |Ja (von Microsoft getestet) |Ja (von Microsoft getestet) |Ja (von Microsoft getestet) |Ja (von Microsoft getestet)|
 | Dynamics AX |Ja |Ja |Ja |Ja |Ja|
 | Windows-Dateiserver |Ja |Ja |Ja |Ja |Ja|
-| Citrix XenApp und XenDesktop |Ja|– |Ja |– |Ja |
+| Citrix XenApp und XenDesktop |Nein |– |Nein |– |Nein |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replizieren von Active Directory und DNS
 
@@ -108,8 +108,8 @@ In der folgenden Tabelle werden die Replikationsoptionen aufgelistet:
 
 | **RDS** |**Replizieren von Azure-VMs in Azure** | **Replizieren von Hyper-V-VMs an einem sekundären Standort** | **Replizieren von Hyper-V-VMs in Azure** | **Replizieren von VMware-VMs an einem sekundären Standort** | **Replizieren von VMware-VMs in Azure** | **Replizieren von physischen Servern an einem sekundären Standort** | **Replizieren physischer Server in Azure** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **Virtuelle Desktops eines Pools (nicht verwaltet)** |Nein|Ja |Nein |Ja |Nein |Ja |Nein |
-| **Virtuelle Desktops eines Pools (verwaltet und ohne UPD)** |Nein|Ja |Nein |Ja |Nein |Ja |Nein |
+| **Virtuelle Desktops eines Pools (nicht verwaltet)** |Nein|Ja |Nein  |Ja |Nein  |Ja |Nein |
+| **Virtuelle Desktops eines Pools (verwaltet und ohne UPD)** |Nein|Ja |Nein  |Ja |Nein  |Ja |Nein |
 | **Remoteanwendungen und Remotedesktopsitzungen (ohne UPD)** |Ja|Ja |Ja |Ja |Ja |Ja |Ja |
 
 Weitere Informationen zur Notfallwiederherstellung für RDS finden Sie [hier](/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure).
@@ -151,14 +151,7 @@ Weitere Informationen zur Notfallwiederherstellung für die Internetinformations
 
 ## <a name="protect-citrix-xenapp-and-xendesktop"></a>Schützen von Citrix XenApp und XenDesktop
 
-Gehen Sie wie folgt vor, um Ihre Bereitstellungen von Citrix XenApp und XenDesktop mithilfe von Site Recovery zu schützen:
-
-- Aktivieren Sie den Schutz der Citrix XenApp- und XenDesktop-Bereitstellung. Replizieren Sie die verschiedenen Bereitstellungsebenen in Azure: Active Directory, DNS-Server, SQL-Datenbank-Server, Citrix Delivery Controller, StoreFront-Server, XenApp Master (VDA), Citrix XenApp License Server.
-- Vereinfachen Sie die Cloudmigration, indem Sie Ihre Citrix XenApp- und XenDesktop-Bereitstellung mithilfe von Site Recovery zu Azure migrieren.
-- Vereinfachen Sie das Testen von Citrix XenApp/XenDesktop, indem Sie bei Bedarf eine der Produktionsversion ähnliche Kopie zu Test- und Debugzwecken erstellen.
-- Diese Lösung gilt nur für virtuelle Windows Server-Desktops und nicht für virtuelle Clientdesktops. Virtuelle Clientdesktops werden für die Lizenzierung in Azure noch nicht unterstützt. Weitere Informationen zur Lizenzierung für Client-/Serverdesktopcomputer in Azure finden Sie [hier](https://azure.microsoft.com/pricing/licensing-faq/).
-
-Weitere Informationen zur Notfallwiederherstellung für Citrix XenApp- und XenDesktop-Bereitstellungen finden Sie [hier](site-recovery-citrix-xenapp-and-xendesktop.md) oder im [Citrix-Whitepaper](https://aka.ms/citrix-xenapp-xendesktop-with-asr).
+Im März 2020 hat Citrix angekündigt, dass in der öffentlichen Cloud gehostete Workloads als veraltet markiert und nicht mehr unterstützt werden. Aus diesem Grund wird die Verwendung von Site Recovery zum Schutz von Citrix-Workloads nicht empfohlen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

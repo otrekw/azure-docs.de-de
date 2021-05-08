@@ -6,28 +6,34 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 09/09/2020
-ms.openlocfilehash: 698e65c4b982c5d639ffc666b394765fd04bd202
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 7938403e67d7059e8744e7023e8a7614df37e20f
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222461"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599620"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Richtlinien und Nutzungsbedingungen für den kommerziellen Marketplace
 
->[!Note]
->„Kommerzieller Microsoft-Marketplace“ bedeutet ungeachtet des Namens eine Microsoft-eigene bzw. von Microsoft betriebene Plattform, auf der Angebote präsentiert und von Kunden erworben werden können. Sofern nicht anders angegeben, umfasst der kommerzielle Marketplace Microsoft AppSource und Azure Marketplace.
+Der _kommerzielle Microsoft-Marketplace_ ist eine Microsoft-eigene bzw. von Microsoft betriebene Plattform, auf der Angebote präsentiert und von Kunden erworben werden können. Sofern nicht anders angegeben, umfasst der kommerzielle Marketplace Microsoft AppSource und Azure Marketplace.
 
 Wir freuen uns über Ihr Interesse an der Veröffentlichung von Angeboten im kommerziellen Marketplace. Wir streben eine enge Partnerschaft mit Ihnen an, um gemeinsam eine ergiebige Quelle für Cloudlösungen und Branchenangebote zu schaffen, die Kunden weltweit begeistert. Darüber hinaus möchten wir Sie beim Auf- und Ausbau Ihres Unternehmens unterstützen.
 
-Angebote im kommerziellen Marketplace müssen unseren Richtlinien und Nutzungsbedingungen entsprechen. Wir aktualisieren diese von Zeit zu Zeit, um eine optimale Kundenerfahrung zu gewährleisten und unseren Partnern zum Erfolg zu verhelfen. Um Feedback zu unseren Richtlinien oder Nutzungsbedingungen zu hinterlassen, besuchen Sie das [Microsoft AppSource-Forum und das Azure Marketplace-Forum](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
+Angebote im kommerziellen Marketplace müssen unseren Richtlinien und Nutzungsbedingungen entsprechen. Wir aktualisieren diese von Zeit zu Zeit, um eine optimale Kundenerfahrung zu gewährleisten und unseren Partnern zum Erfolg zu verhelfen. Feedback zu unseren Richtlinien oder Nutzungsbedingungen können Sie im [Microsoft AppSource-Forum und im Azure Marketplace-Forum](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) hinterlassen.
+
+## <a name="publisher-agreement"></a>Herausgebervereinbarung
+
+- [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560)
+- [Änderungsverlauf für die Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?linkid=2159975&clcid=0x409)
+
+Die Microsoft-Herausgebervereinbarung beschreibt die Geschäftsbeziehung für das Veröffentlichen von Angeboten im kommerziellen Marketplace. Sie regelt Ihren Zugriff auf sowie Ihre Verwendung von Features in Partner Center im Zusammenhang mit der Veröffentlichung und Auflistung von Angeboten in den Onlineshops des kommerziellen Marketplace.
 
 ## <a name="policies-and-terms"></a>Richtlinien und Nutzungsbedingungen
 
 - [Zertifizierungsrichtlinien für den kommerziellen Marketplace](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)
+- [Änderungsverlauf von Zertifizierungsrichtlinien](/legal/marketplace/offer-policies-change-history)
 - [Bewertungsrichtlinien für Microsoft AppSource und Azure Marketplace](/legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context)
-- [Nutzungsbedingungen für Azure Marketplace](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

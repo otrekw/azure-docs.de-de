@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/06/2019
-ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/27/2021
+ms.openlocfilehash: 39fc84e9a83f7417836c895481da27a0d00cc71f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75979381"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137182"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Überprüfen von XML mit Schemas in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -183,6 +183,14 @@ Wenn Sie ein vorhandenes Schema aktualisieren möchten, müssen Sie eine neue Sc
 1. Nachdem die Seite **Schemas** geöffnet wurde, wählen Sie Ihr Schema und dann **Löschen** aus.
 
 1. Um zu bestätigen, dass Sie das Schema löschen möchten, wählen Sie **Ja** aus.
+
+## <a name="limitations"></a>Einschränkungen
+
+Wenn Sie ein Integrationskonto mit Ihrem Workflow verwenden und XML überprüfen möchten, fügen Sie das Schema normalerweise diesem Konto hinzu oder laden es hoch. Wenn Sie auf ein Schema verweisen oder es importieren, das nicht in Ihrem Integrationskonto enthalten ist, erhalten Sie möglicherweise den folgenden Fehler, wenn Sie das Element `xsd:redefine` verwenden:
+
+`An error occurred while processing the XML schemas: ''SchemaLocation' must successfully resolve if <redefine> contains any child other than <annotation>.'.`
+
+Um diesen Fehler zu beheben, müssen Sie das Element `xsd:import` oder `xsd:include` anstelle von `xsd:redefine` oder einen URI verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

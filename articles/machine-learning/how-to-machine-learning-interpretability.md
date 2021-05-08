@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 02/25/2021
-ms.openlocfilehash: 44ccf6b6d2459b87040fcac7d9cdcd336cc7b82f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c517cf2fc8491d62cf2379c87acd2eaadde8fe15
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522035"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576430"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modellinterpretierbarkeit in Azure Machine Learning (Vorschauversion)
 
@@ -104,5 +104,6 @@ Sie können die Erklärung per Remotezugriff in Azure Machine Learning Compute a
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zur Aktivierung der Interpretierbarkeit für das Modelltraining, sowohl lokal als auch auf Azure Machine Learning-Remotecomputeressourcen, finden Sie in der [Schrittanleitung](how-to-machine-learning-interpretability-aml.md). 
+- Erfahren Sie, wie Sie [Interpretierbarkeit für automatisierte Machine Learning-Modelle](how-to-machine-learning-interpretability-automl.md) aktivieren.
 - Weitere Szenarien finden Sie in den [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model). 
 - Wenn Sie sich für Interpretierbarkeit für Textszenarios interessieren, finden Sie Interpretierbarkeitstechniken für NLP in [Interpret-text](https://github.com/interpretml/interpret-text). Hierbei handelt es sich um ein Open-Source-Repository für [Interpret-Community](https://github.com/interpretml/interpret-community/). Das Paket `azureml.interpret` unterstützt diese Techniken derzeit noch nicht, aber Sie können mit einem [Beispielnotebook für Textklassifizierung](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb) beginnen.

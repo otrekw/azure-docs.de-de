@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: a11dbfbd6d6510b5c421e54cd2547c3aedb1bfb6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: f9f2bf2e2204e6b74bb8a31ac856dbe276a6e983
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100378195"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588750"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>Erstellen einer neuen Verzweigung im Zuordnungsdatenfluss
 
@@ -27,3 +27,10 @@ Eine neue Verzweigung kann ähnlich wie andere Transformationen aus der Transfor
 Im nachstehenden Beispiel liest der Datenfluss die Daten einer Taxifahrt. Dazu ist die aus „Day“ (Tag )und „Vendor“ (Anbieter) aggregierte Ausgabe erforderlich. Statt zwei separate Datenflüsse zu erstellen, die aus derselben Quelle gelesen werden, kann eine neue Verzweigung hinzugefügt werden. Auf diese Weise können beide Aggregationen als Teil desselben Datenflusses ausgeführt werden. 
 
 ![Screenshot: Datenfluss mit zwei Branches aus der Quelle](media/data-flow/new-branch.png "Hinzufügen einer neuen Verzweigung")
+
+> [!NOTE]
+> Wenn Sie auf das Pluszeichen (+) klicken, um Ihrem Graphen Transformationen hinzuzufügen, wird die Option „Neuer Branch“ nur angezeigt, wenn nachfolgende Transformationsblöcke vorhanden sind. Das liegt daran, dass durch „Neuer Branch“ ein Verweis auf den vorhandenen Stream erstellt wird und eine weitere Upstreamverarbeitung erforderlich ist. Sollte die Option „Neuer Branch“ nicht angezeigt werden, fügen Sie zuerst eine abgeleitete Spalte oder eine andere Transformation hinzu. Wenn Sie nun zum vorherigen Block zurückkehren, wird „Neuer Branch“ als Option angezeigt.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Branchen können Sie die [Datenflusstransformationen](data-flow-transformation-overview.md) verwenden.

@@ -5,24 +5,24 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 138a23b610ab96194424bb0f88cf94f516c2d223
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6eab839912769ad15723083185c7942f31e3df11
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626451"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136551"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Migrationsleitfaden: SAP ASE zu Azure SQL-Datenbank
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-In dieser Anleitung lernen Sie, wie Sie Ihre SAP Adapter Server Enterprise-Datenbanken (ASE) zu einer Azure SQL-Datenbank migrieren, indem Sie SQL Server Migration Assistant für SAP Adapter Server Enterprise verwenden.
+In dieser Anleitung lernen Sie, wie Sie Ihre SAP Adapter Server Enterprise-Datenbanken (ASE) zu einer Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey), indem Sie [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant für SAP Adapter Server Enterprise verwenden.
 
-Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
+Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
@@ -34,7 +34,7 @@ Bevor Sie mit der Migration der Access-Datenbank zu einer SQL-Datenbank beginnen
 
 ## <a name="pre-migration"></a>Vor der Migration
 
-Wenn diese Voraussetzungen erfüllt sind, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit der Migration bewerten.
+Nachdem Sie diese Voraussetzungen erfüllt haben, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit Ihrer [Azure-Cloudmigration](https://azure.microsoft.com/migration) bewerten.
 
 ### <a name="assess"></a>Bewerten
 
@@ -96,9 +96,9 @@ Wenn die Daten in die Zielumgebung migriert wurden, müssen alle Anwendungen, di
 
 Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
-1. **Entwickeln Sie Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die sowohl gegen die Quell- als auch gegen die Zieldatenbank ausgeführt werden. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
+1. **Entwickeln von Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die sowohl gegen die Quell- als auch gegen die Zieldatenbank ausgeführt werden. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
 
-1. **Richten Sie eine Testumgebung ein:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
+1. **Einrichten der Testumgebung:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 
 1. **Führen Sie die Validierungstests aus**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 
@@ -120,9 +120,10 @@ Weitere Informationen zu diesen Problemen und den Schritten zu ihrer Behebung fi
    - [Übersicht über SQL-Datenbank](../../database/sql-database-paas-overview.md)
    - [Azure-Gesamtkostenrechner](https://azure.microsoft.com/pricing/tco/calculator/)  
 
-- Um mehr über die Rahmenbedingungen und den Adoptionszyklus für Cloud-Migrationen zu erfahren, siehe:
+- Weitere Informationen zum Framework und zum Einführungszyklus von Cloudmigrationen finden Sie unter:
    -  [Cloud Adoption Framework für Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Bewährte Methoden für die Kostenermittlung und Größenanpassung von zu Azure migrierten Workloads](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Ressourcen zur Cloudmigration](https://azure.microsoft.com/migration/resources)
 
 - Informationen zum Bewerten der Anwendungszugriffsebene finden Sie unter [Data Access Migration Toolkit (Vorschauversion)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Ausführliche Informationen zum Ausführen von A/B-Tests auf Datenzugriffsebene finden Sie unter [Assistent für Datenbankexperimente](/sql/dea/database-experimentation-assistant-overview).

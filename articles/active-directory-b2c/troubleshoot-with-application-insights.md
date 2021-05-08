@@ -12,12 +12,12 @@ ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c9de6b8d99f09d43a045787ee6185233b9d7ef25
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 074bffb8614be1f71ba1956fd5a238bc19354c58
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443237"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028740"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Sammeln von Azure Active Directory B2C-Protokollen mit Application Insights
 
@@ -118,6 +118,50 @@ Diese Einträge können ggf. lang sein. Führen Sie einen Export in eine CSV-Dat
 
 Weitere Informationen zu Abfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
+## <a name="see-the-logs-in-vs-code-extension"></a>Anzeigen der Protokolle in der VS Code-Erweiterung
+
+Es wird empfohlen, die [Azure AD B2C-Erweiterung](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) für [VS Code](https://code.visualstudio.com/) zu installieren. Mit der Azure AD B2C-Erweiterung werden die Protokolle nach Richtlinienname, Korrelations-ID (Application Insights zeigt die erste Ziffer der Korrelations-ID) und Protokollzeitstempel organisiert. Dieses Feature hilft Ihnen, anhand des lokalen Zeitstempels das entsprechende Protokoll zu finden und die von Azure AD B2C ausgeführte User Journey anzuzeigen.
+
+> [!NOTE]
+> In der Community wurde für Azure AD B2C die VS Code-Erweiterung entwickelt, um Identitätsentwickler zu unterstützen. Die Erweiterung wird nicht von Microsoft unterstützt und wird grundsätzlich im Ist-Zustand zur Verfügung gestellt.
+
+### <a name="set-application-insights-api-access"></a>Festlegen des Application Insights-API-Zugriffs
+
+Nachdem Sie Application Insights einrichten und die benutzerdefinierte Richtlinie konfiguriert haben, müssen Sie Ihre Application Insights-**API-ID** abrufen und einen **API-Schlüssel** erstellen. Sowohl die API-ID als auch der API-Schlüssel werden von der Azure AD B2C-Erweiterung verwendet, um die Application Insights-Ereignisse (Telemetriedaten) zu lesen. Ihre API-Schlüssel sollten wie Kennwörter verwaltet werden. Halten Sie es geheim.
+
+> [!NOTE]
+> Der Application Insights-Instrumentierungsschlüssel, den Sie zuvor erstellt haben, wird von Azure AD B2C zum Senden von Telemetriedaten an Application Insights verwendet. Sie verwenden den Instrumentierungsschlüssel nur in Ihrer Azure AD B2C-Richtlinie, nicht in der VS Code-Erweiterung.
+
+So rufen Sie die Application Insights-ID sowie den -Schlüssel ab:
+
+1. Öffnen Sie im Azure-Portal die Application Insights-Ressource für Ihre Anwendung.
+1. Klicken Sie auf **Einstellungen** und dann auf **API-Zugriff**.
+1. Kopieren Sie die **Anwendungs-ID**.
+1. Wählen Sie **API-Schlüssel erstellen** aus.
+1. Aktivieren Sie das Kontrollkästchen **Telemetrie lesen**.
+1. Kopieren Sie den **Schlüssel**, bevor Sie das Blatt „API-Schlüssel erstellen“ schließen, und verwahren Sie ihn sicher. Wenn Sie den Schlüssel verlieren, müssen Sie einen weiteren erstellen.
+
+    ![Screenshot: Erstellen eines API-Zugriffsschlüssels](./media/troubleshoot-with-application-insights/application-insights-api-access.png)
+
+### <a name="set-up-azure-ad-b2c-vs-code-extension"></a>Einrichten der VS Code-Erweiterung von Azure AD B2C
+
+Da Sie jetzt über die ID und den Schlüssel der Azure Application Insights-API verfügen, können Sie die VS Code-Erweiterung zum Lesen der Protokolle konfigurieren. Die VS Code-Erweiterung für Azure AD B2C enthält zwei Einstellungsbereiche:
+
+- **User Global Settings** (Globale Benutzereinstellungen): Einstellungen, die global für jede VS Code-Instanz gelten, die Sie öffnen.
+- **Workspace Settings** (Arbeitsbereichseinstellungen): Einstellungen, die in Ihrem Arbeitsbereich gespeichert sind und nur gelten, wenn der Arbeitsbereich geöffnet wird (über VS Code > **Ordner öffnen**).
+
+1. Klicken Sie im Explorer der **Azure AD B2C-Ablaufverfolgung** auf das **Einstellungssymbol**.
+
+    ![Screenshot: Auswählen der Application Insights-Einstellungen](./media/troubleshoot-with-application-insights/app-insights-settings.png)
+
+1. Stellen Sie die Azure Application Insights-**ID** und den **-Schlüssel** bereit.
+1. Klicken Sie unten auf der Seite auf **Speichern**.
+
+Nachdem Sie die Einstellungen gespeichert haben, werden die Application Insights-Protokolle im Fenster **Azure AD B2C Trace (App Insights)** (Azure AD B2C-Ablaufverfolgung (App Insights)) angezeigt.
+
+![Screenshot: Azure AD B2C-Erweiterung für VS Code mit der Azure Application Insights-Ablaufverfolgung](./media/troubleshoot-with-application-insights/vscode-extension-application-insights-trace.png)
+
+
 ## <a name="configure-application-insights-in-production"></a>Konfigurieren von Application Insights in der Produktionsumgebung
 
 Um die Leistung der Produktionsumgebung und die Benutzerfreundlichkeit zu verbessern, müssen Sie Ihre Richtlinie so konfigurieren, dass unwichtige Nachrichten ignoriert werden. Verwenden Sie die folgende Konfiguration, um nur kritische Fehlermeldungen an Application Insights zu senden. 
@@ -143,12 +187,8 @@ Um die Leistung der Produktionsumgebung und die Benutzerfreundlichkeit zu verbes
    
 1. Laden Sie die Richtlinie hoch, und testen Sie sie.
 
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In der Community wurde ein User Journey-Viewer entwickelt, der als Hilfe für Identitätsentwickler dient. Mit dem Viewer werden Daten aus Ihrer Application Insights-Instanz gelesen, und es wird eine gut strukturierte Ansicht der User Journey-Ereignisse bereitgestellt. Sie können den Quellcode abrufen und in Ihrer eigenen Lösung bereitstellen.
-
-Der User Journey-Player wird von Microsoft nicht unterstützt und unverändert zur Verfügung gestellt.
-
-Die Version des Viewers, der Ereignisse aus Application Insights liest, befindet sich auf GitHub unter
-
-[Azure-Samples/active-directory-b2c-advanced-policies](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication).
+- [Beheben von Problemen mit benutzerdefinierten Richtlinien in Azure AD B2C](troubleshoot-custom-policies.md)
