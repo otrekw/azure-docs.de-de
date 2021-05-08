@@ -5,37 +5,37 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: 3154b180b09325a348ddfca5c375e6e69d87e347
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: bf602cabaef92bfa9096ab3225f0f6d726617776
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553735"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136677"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Migrationsleitfaden: Oracle zu Azure SQL-Datenbank
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihre Oracle-Schemas über SQL Server Migration Assistant für Oracle (SSMA für Oracle) zu Azure SQL-Datenbank migrieren.
+In diesem Leitfaden erfahren Sie, wie Sie Ihre Oracle-Schemas über [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant für Oracle (SSMA für Oracle) zu Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey) können.
 
-Weitere Migrationsleitfäden finden Sie in den [Leitfäden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration).
+Weitere Migrationsleitfäden finden Sie in den [Leitfäden zur Azure-Datenbankmigration](/data-migration).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit der Migration Ihres Oracle-Schemas zu SQL-Datenbank beginnen:
 
 - Überprüfen Sie, ob Ihre Quellumgebung unterstützt wird.
-- Laden Sie [SSMA für Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258) herunter.
+- Laden Sie [SSMA für Oracle](https://www.microsoft.com/download/details.aspx?id=54258) herunter.
 - Sie müssen über eine [SQL-Datenbank](../../database/single-database-create-quickstart.md)-Zielinstanz verfügen.
 - Fordern Sie die [erforderlichen Berechtigungen für SSMA für Oracle](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql) und den [Anbieter](/sql/ssma/oracle/connect-to-oracle-oracletosql) an.
  
 ## <a name="pre-migration"></a>Vor der Migration
 
-Wenn diese Voraussetzungen erfüllt sind, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit der Migration bewerten. Diese Schritte umfassen eine Bestandsaufnahme der Datenbanken, die migriert werden müssen, eine Untersuchung dieser Datenbanken auf potenzielle Migrationsprobleme oder Hindernisse sowie das Behandeln eventuell entdeckter Probleme.
+Nachdem Sie diese Voraussetzungen erfüllt haben, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit Ihrer [Azure-Cloudmigration](https://azure.microsoft.com/migration) bewerten. Diese Schritte umfassen eine Bestandsaufnahme der Datenbanken, die migriert werden müssen, eine Untersuchung dieser Datenbanken auf potenzielle Migrationsprobleme oder Hindernisse sowie das Behandeln eventuell entdeckter Probleme.
 
 ### <a name="assess"></a>Bewerten
 
@@ -43,7 +43,7 @@ Mithilfe von SSMA für Oracle können Sie Datenbankobjekte und Daten überprüfe
 
 So erstellen Sie eine Bewertung
 
-1. Öffnen Sie [SSMA für Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258).
+1. Öffnen Sie [SSMA für Oracle](https://www.microsoft.com/download/details.aspx?id=54258).
 1. Wählen Sie **Datei** und dann **Neues Projekt** aus.
 1. Geben Sie den Projektnamen und einen Speicherort für Ihr Projekt ein. Wählen Sie dann in der Dropdown Liste die Option **Azure SQL-Datenbank** als Migrationsziel aus, und klicken Sie auf **OK**.
 
@@ -92,7 +92,7 @@ So konvertieren Sie das Schema
 
    ![Screenshot von „Schema konvertieren“](./media/oracle-to-sql-database-guide/convert-schema.png)
 
-1. Vergleichen und überprüfen Sie nach Abschluss der Konvertierung die konvertierten Objekte mit den Ursprungsobjekten, um potenzielle Probleme zu identifizieren und diese anhand der Empfehlungen zu behandeln.
+1. Vergleichen und überprüfen Sie nach Abschluss der Konvertierung die konvertierten Objekte mit den Ursprungsobjekten, um potenzielle Probleme zu identifizieren, und behandeln Sie diese anhand der Empfehlungen.
 
    ![Screenshot von dem Schema zum Überprüfen von Empfehlungen](./media/oracle-to-sql-database-guide/table-mapping.png)
 
@@ -124,11 +124,11 @@ So veröffentlichen Sie das Schema und migrieren Ihre Daten
 1. Geben Sie die Verbindungsdetails für die Oracle- und die SQL-Datenbank an.
 1. Überprüfen Sie nach Abschluss der Migration den **Bericht zur Datenmigration**.
 
-   ![Screenshot von Bericht zur Datenmigration](./media/oracle-to-sql-database-guide/data-migration-report.png)
+   ![Screenshot: Bericht zur Datenmigration](./media/oracle-to-sql-database-guide/data-migration-report.png)
 
 1. Stellen Sie über [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) eine Verbindung mit Ihrer SQL-Datenbank-Instanz her, und überprüfen Sie die Migration durch Überprüfen der Daten und des Schemas.
 
-   ![Screenshot von der Überprüfung in SQL Server Management Studio](./media/oracle-to-sql-database-guide/validate-data.png)
+   ![Screenshot der Überprüfung in SQL Server Management Studio](./media/oracle-to-sql-database-guide/validate-data.png)
 
 Stattdessen können Sie die Migration auch über SQL Server Integration Services durchführen. Weitere Informationen finden Sie unter:
 
@@ -149,8 +149,8 @@ Das [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?i
 
 Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
-1. **Entwickeln Sie Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die für die Quell- und die Zieldatenbank ausgeführt werden sollen. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
-1. **Richten Sie eine Testumgebung ein:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
+1. **Entwickeln von Validierungstests:** Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die für die Quell- und die Zieldatenbank ausgeführt werden sollen. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
+1. **Einrichten der Testumgebung:** Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 1. **Führen Sie die Validierungstests aus**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 1. **Führen Sie Leistungstests aus**: Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
 
@@ -173,7 +173,7 @@ Weitere Unterstützung bei der Durchführung dieses Migrationsszenarios finden S
 | [SSMA für Oracle: häufige Probleme und deren Behebung](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | In Oracle kann eine nicht skalare Bedingung in der WHERE-Klausel zugewiesen werden. Dieser Bedingungstyp wird von SQL Server jedoch nicht unterstützt. SSMA für Oracle konvertiert daher keine Abfragen, die eine nicht skalare Bedingung in der WHERE-Klausel aufweisen. Stattdessen wird der Fehler O2SS0001 generiert. In diesem Whitepaper finden Sie weitere Einzelheiten zu diesem Problem sowie die erforderlichen Schritte zur Problembehandlung.          |
 | [Handbuch für die Migration von Oracle zu SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | In diesem Whitepaper sind die Aufgaben bei der Migration eines Oracle-Schemas zur neuesten Version von SQL Server-Datenbank beschrieben. Wenn für die Migration Änderungen an Features oder Funktionen erforderlich sind, müssen die Auswirkungen dieser Änderungen auf die Anwendungen, die die Datenbank verwenden, sorgfältig abgewogen werden.                                                     |
 
-Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Kernaufgabe dieses Teams ist die Freigabe und Beschleunigung komplexer Modernisierungsprojekte für die Migration von Datenplattformen auf die Azure-Datenplattform von Microsoft.
+Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -181,11 +181,12 @@ Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Kernaufgabe d
 
 - Weitere Informationen zu SQL-Datenbank finden Sie unter:
   - [Übersicht über Azure SQL-Datenbank](../../database/sql-database-paas-overview.md)
-  - [Azure-Gesamtkostenrechner](https://azure.microsoft.com/en-us/pricing/tco/calculator/)
+  - [Azure-Gesamtkostenrechner](https://azure.microsoft.com/pricing/tco/calculator/)
 
 - Weitere Informationen zum Framework und zum Einführungszyklus von Cloudmigrationen finden Sie unter:
    -  [Cloud Adoption Framework für Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Bewährte Methoden für die Kostenermittlung und Größenanpassung von zu Azure migrierten Arbeitsauslastungen](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
+   -  [Bewährte Methoden für die Kostenermittlung und Größenanpassung von zu Azure migrierten Workloads](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
+   -  [Ressourcen zur Cloudmigration](https://azure.microsoft.com/migration/resources)
 
 - Videoinhalte finden Sie unter:
     - [Übersicht über den Migrationsprozess und die Tools und Dienste, die für die Durchführung von Bewertung und Migration empfohlen werden](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)

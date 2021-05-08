@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 53058d27e94c9fdf18d726369f6a1b75a9f34db9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d56e03cd650032a775c30b02d939cf934f384fae
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567541"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568606"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Bereitstellen von Azure Data Services auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -21,7 +21,7 @@ ms.locfileid: "105567541"
 
 In diesem Artikel wird der Prozess des Erstellens eines Azure Arc-Datencontrollers und des anschließenden Bereitstellens von Azure Data Services auf Ihrem Azure Stack Edge Pro-GPU-Gerät beschrieben. 
 
-Azure Arc-Datencontroller sind die lokale Steuerungsebene, die die Verwendung von Azure Data Services in von Kunden verwalteten Umgebungen ermöglicht. Nachdem Sie den Azure Arc-Datencontroller auf dem Kubernetes-Cluster erstellt haben, der auf Ihrem Azure Stack Edge Pro-Gerät ausgeführt wird, können Sie Azure Data Services wie SQL Managed Instance (Preview) auf diesem Datencontroller ausführen.
+Azure Arc-Datencontroller sind die lokale Steuerungsebene, die die Verwendung von Azure Data Services in von Kunden verwalteten Umgebungen ermöglicht. Nachdem Sie den Azure Arc-Datencontroller im Kubernetes-Cluster erstellt haben, der auf Ihrem Azure Stack Edge Pro-GPU-Gerät ausgeführt wird, können Sie Azure Data Services wie SQL Managed Instance (Preview) auf diesem Datencontroller ausführen.
 
 Der Prozess zum Erstellen eines Datencontrollers und anschließenden Bereitstellen einer SQL Managed Instance-Instanz umfasst die Verwendung von PowerShell und dem nativen Tool `kubectl`, das Befehlszeilenzugriff auf den Kubernetes-Cluster auf dem Gerät bietet.
 
@@ -30,9 +30,9 @@ Der Prozess zum Erstellen eines Datencontrollers und anschließenden Bereitstell
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-1. Sie verfügen über Zugriff auf ein Azure Stack Edge Pro-Gerät, und Sie haben das Gerät wie unter [Tutorial: Aktivieren von Azure Stack Edge Pro mit GPU](azure-stack-edge-gpu-deploy-activate.md) beschrieben aktiviert.
+1. Sie verfügen über Zugriff auf ein Azure Stack Edge Pro-GPU-Gerät, und Sie haben das Gerät wie unter [Tutorial: Aktivieren von Azure Stack Edge Pro mit GPU](azure-stack-edge-gpu-deploy-activate.md) beschrieben aktiviert.
 
-1. Sie haben die Computerolle auf dem Gerät aktiviert. Auf dem Gerät wurde auch ein Kubernetes-Cluster erstellt, als Sie gemäß den Anweisungen in [Konfigurieren der Computerolle auf einem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-configure-compute.md) Compute auf dem Gerät konfiguriert haben.
+1. Sie haben die Computerolle auf dem Gerät aktiviert. Auf dem Gerät wurde auch ein Kubernetes-Cluster erstellt, als Sie gemäß den Anweisungen in [Tutorial: Konfigurieren der Computerolle auf einem Azure Stack Edge Pro-Gerät mit GPU](azure-stack-edge-gpu-deploy-configure-compute.md) Compute auf dem Gerät konfiguriert haben.
 
 1. Sie besitzen den Kubernetes-API-Endpunkt von der Seite **Gerät** Ihrer lokalen Webbenutzeroberfläche. Weitere Informationen finden Sie in den Anweisungen unter [Abrufen des Kubernetes-API-Endpunkts](azure-stack-edge-gpu-deploy-configure-compute.md#get-kubernetes-endpoints).
 
@@ -171,7 +171,7 @@ Der Datencontroller ist eine Sammlung von Pods, die im Kubernetes-Cluster bereit
     Die Bereitstellung dauert ungefähr fünf Minuten.
 
     > [!NOTE]
-    > Der Datencontroller, der auf dem Azure Stack Edge Pro-Gerät auf dem Kubernetes-Cluster erstellt wurde, funktioniert im aktuellen Release nur im Modus „Getrennt“.
+    > Der Datencontroller, der auf dem Azure Stack Edge Pro-GPU-Gerät im Kubernetes-Cluster erstellt wurde, funktioniert im aktuellen Release nur im Modus „Getrennt“. Der getrennte Modus gilt für den Datencontroller und nicht für Ihr Gerät.
 
 ### <a name="monitor-data-creation-status"></a>Überwachen des Status der Datencontrollererstellung
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5a4cc2b964bcf4fa49d90c8b6d5aa546b7148a1
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 6c1d78094effe6919587f24c2262612e4fab347d
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107944"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575376"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Geräteidentität und Desktopvirtualisierung
 
@@ -89,7 +89,7 @@ Microsoft empfiehlt IT-Administratoren, den folgenden Leitfaden zu implementiere
 - Für kompatible Windows-Geräte:
    - Implementieren Sie den Befehl **autoworkplacejoin /leave** als Teil des Abmeldeskripts. Dieser Befehl sollte im Kontext des Benutzers ausgelöst werden und ausgeführt werden, bevor sich der Benutzer vollständig abgemeldet hat, während noch Netzwerkkonnektivität besteht.
 - Für aktuelle Windows-Geräte in einer Verbundumgebung (z. B. AD FS):
-   - Implementieren Sie **dsregcmd /join** als Teil der VM-Startsequenz.
+   - Implementieren Sie **dsregcmd /join** als Teil der Startsequenz/Reihenfolge des virtuellen Computers und vor der Benutzeranmeldung.
    - Führen Sie „dsregcmd /leave“ **NICHT** als Teil des Prozesses zum Herunterfahren/Neustarten der VM aus.
 - Definieren und implementieren Sie einen Prozess zum [Verwalten veralteter Geräte](manage-stale-devices.md).
    - Sobald Sie über eine Strategie zum Identifizieren Ihrer nicht beständigen, in Azure AD Hybrid eingebundenen Geräte verfügen (z. B. die Verwendung eines Präfixes für den Computeranzeigenamen), können Sie die Bereinigung dieser Geräte aggressiver betreiben, um sicherzustellen, dass Ihr Verzeichnis nicht von vielen veralteten Geräten genutzt wird.

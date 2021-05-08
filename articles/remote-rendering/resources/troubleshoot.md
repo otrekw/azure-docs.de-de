@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f0fb9ab5c53c3fd1bfb32ac7b112a116301cba7
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99593332"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575342"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -249,6 +249,39 @@ Koplanare Oberflächen können eine Reihe verschiedener Ursachen haben:
 
 In einigen Fällen können benutzerdefinierte native C++-Apps, die nach dem Aufruf von [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) einen Stereorenderingmodus mit mehreren Durchläufen für lokale Inhalte verwenden (Rendering für das linke und rechte Auge in getrennten Durchläufen), einen Treiberfehler auslösen. Der Fehler führt zu nicht deterministischen Rasterungsfehlern, die dazu führen, dass einzelne Dreiecke oder Teile von Dreiecken des lokalen Inhalts zufällig verschwinden. Aus Leistungsgründen wird ohnehin empfohlen, lokale Inhalte mit einem moderneren Stereorenderingverfahren mit einzelnem Durchlauf zu rendern, z. B. mithilfe von **SV_RenderTargetArrayIndex**.
 
+## <a name="conversion-file-download-errors"></a>Fehler beim Herunterladen der Konvertierungsdatei
+
+Der Konvertierungsdienst kann aufgrund von Pfadlängenlimits, die von Windows und dem Dienst vorgegeben werden, Dateien möglicherweise nicht erfolgreich aus dem Blobspeicher herunterladen. Dateipfade und Dateinamen in Ihrem Blobspeicher dürfen nicht mehr als 178 Zeichen umfassen. Angenommen, Sie verwenden das `blobPrefix` mit dem Wert `models/Assets`, das 13 Zeichen umfasst:
+
+`models/Assets/<any file or folder path greater than 164 characters will fail the conversion>`
+
+Der Konvertierungsdienst lädt alle Dateien herunter, die unterhalb von `blobPrefix` angegeben sind, nicht nur die Dateien, die bei der Konvertierung verwendet werden. Die problematischen Dateien/Ordner sind in diesen Fällen möglicherweise weniger offensichtlich. Deshalb ist es wichtig, alle Inhalte im Speicherkonto unter `blobPrefix` zu überprüfen. Nachfolgend sehen Sie einige Beispieleingaben für heruntergeladene Inhalte.
+``` json
+{
+  "settings": {
+    "inputLocation": {
+      "storageContainerUri": "https://contosostorage01.blob.core.windows.net/arrInput",
+      "blobPrefix": "models/Assets",
+      "relativeInputAssetPath": "myAsset.fbx"
+    ...
+  }
+}
+```
+
+```
+models
+├───Assets
+│   │   myAsset.fbx                 <- Asset
+│   │
+│   └───Textures
+│   |       myTexture.png           <- Used in conversion
+│   |
+|   └───MyFiles
+|          myOtherFile.txt          <- File also downloaded under blobPrefix      
+|           
+└───OtherFiles
+        myReallyLongFileName.txt    <- Ignores files not under blobPrefix             
+```
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Systemanforderungen](../overview/system-requirements.md)
