@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: alsin
-ms.openlocfilehash: b79e061ae00c42ed2ec2ac39f5653a868f09a15f
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 02c122486ad9ca702e518445761fef05675c9067
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368530"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209695"
 ---
 # <a name="automanage-accounts"></a>Automanage Konten
 
@@ -46,7 +46,7 @@ Zum Erstellen eines Automanage-Kontos mithilfe einer ARM-Vorlage sind zwei Schri
 1. Erstellen des Automanage-Kontos
 1. Erteilen ausreichender Berechtigungen für das Konto, damit es Vorgänge für Sie ausführen darf
     1. Sie benötigen die Objekt-ID des Kontos, das Sie für diesen Schritt erstellt haben.
-        1. Schritte zum Ermitteln von Details zum Dienstprinzipal Ihres Kontos (einschließlich der Objekt-ID) finden Sie [hier](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-view-managed-identity-service-principal-portal#view-the-service-principal).
+        1. Schritte zum Ermitteln von Details zum Dienstprinzipal Ihres Kontos (einschließlich der Objekt-ID) finden Sie [hier](../active-directory/managed-identities-azure-resources/how-to-view-managed-identity-service-principal-portal.md#view-the-service-principal).
     1. Nachdem Sie Ihren Dienstprinzipal gefunden haben, kopieren Sie die **Objekt-ID**. Speichern Sie diese, da Sie sie weiter unten noch zum Delegieren von Berechtigungen benötigen.
 
 #### <a name="1-create-automanage-account-does-not-grant-permissions-to-it"></a>1. Erstellen eines Automanage-Kontos (gewährt diesem keine Berechtigungen)

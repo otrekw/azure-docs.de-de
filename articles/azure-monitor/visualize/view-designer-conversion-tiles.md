@@ -1,16 +1,16 @@
 ---
 title: Umwandlung von Kacheln von Azure Monitor-Ansichts-Designer in Arbeitsmappen
 description: Details zum Umwandeln von Kacheln in Arbeitsmappen beim Übergang von Ansichten in Azure Monitor.
-author: austonli
-ms.author: aul
+author: shijatsu
+ms.author: shijain
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 9b8d1840c0b1cea4c03312d38ed892fde94faa4c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b73aa0569fb9889de687e7b3eacba5a0fcd54cc1
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043336"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318007"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Umwandlung von Azure Monitor-Ansichts-Designer-Kacheln
 Der [Ansicht-Designer](view-designer.md) ist eine Funktion in Azure Monitor, mit der Sie verschiedene benutzerdefinierten Ansichten erstellen können, die Ihnen bei der Visualisierung von Daten in Ihrem Log Analytics-Arbeitsbereich mittels Diagrammen, Listen und Zeitachsen helfen. Sie laufen aus und werden durch Arbeitsmappen ersetzt, die zusätzliche Funktionalität bereitstellen. Dieser Artikel enthält Details zum Umwandeln verschiedener Kacheln in Arbeitsmappen.

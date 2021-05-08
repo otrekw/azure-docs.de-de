@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 751d475fcb2e8c96d05daa5b5e2144909d21a409
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: b020c74ce7479f9925c1a4e1db06fb4b3b9ef22b
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382299"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065437"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure Purview-Connector für Amazon S3
 
@@ -31,7 +31,7 @@ Der folgende Umfang ist spezifisch für die Registrierung und Überprüfung von 
 |---------|---------|
 |**Datengrenzwerte**     |    Der Purview-Überprüfungsdienst unterstützt derzeit das Überprüfen von Amazon S3-Buckets von bis zu 100 GB Daten pro Mandant.     |
 |**Dateitypen**     | Der Purview-Überprüfungsdienst unterstützt derzeit die folgenden Dateitypen: <br><br>.avro, .csv, .doc, .docm, .docx, .dot, .json, .odp, .ods, .odt, .orc, .parquet, .pdf, .pot, .pps, .ppsx, .ppt, .pptm, .pptx, .psv, .ssv, .tsv, .txt, .xlc, .xls, .xlsb, .xlsm, .xlsx, .xlt, .xml        |
-|**Regionen**     | Der Purview-Connector für den Amazon S3-Dienst wird zurzeit nur in den Regionen **AWS USA, Osten (Ohio)** und **Europa (Frankfurt)** bereitgestellt. <br><br>Weitere Informationen finden Sie unter [Speicher- und Überprüfungsregionen](#storage-and-scanning-regions).   |
+|**Regionen**     | Der Purview-Connector für den Amazon S3-Dienst wird zurzeit in den AWS-Regionen **USA, Osten (Ohio)** , **USA, Osten (Nordvirginia)** , **Europa (Irland)** , **Europa (Frankfurt)** und **Asien-Pazifik (Sydney)** bereitgestellt. <br><br>Weitere Informationen finden Sie unter [Speicher- und Überprüfungsregionen](#storage-and-scanning-regions).   |
 |     |         |
 
 Weitere Informationen finden Sie in den dokumentierten Purview-Grenzwerten unter:
@@ -39,6 +39,7 @@ Weitere Informationen finden Sie in den dokumentierten Purview-Grenzwerten unter
 - [Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Purview](how-to-manage-quotas.md)
 - [Unterstützte Datenquellen und Dateitypen in Azure Purview](sources-and-scans.md)
 - [Verwenden privater Endpunkte für Ihr Purview-Konto](catalog-private-link.md)
+
 ### <a name="storage-and-scanning-regions"></a>Speicher- und Überprüfungsregionen
 
 In der folgenden Tabelle werden die Regionen, in denen Ihre Daten gespeichert sind, der jeweiligen Region zugeordnet, in der sie von Azure Purview überprüft würden.
@@ -50,23 +51,23 @@ In der folgenden Tabelle werden die Regionen, in denen Ihre Daten gespeichert si
 | Speicherregion | Überprüfungsregion |
 | ------------------------------- | ------------------------------------- |
 | USA, Osten (Ohio)                  | USA, Osten (Ohio)                        |
-| USA, Osten (Nord Virginia)           | USA, Osten (Ohio) oder USA, Osten (N. Virginia)                       |
+| USA, Osten (Nord Virginia)           | USA, Osten (Nord Virginia)                       |
 | USA, Westen (Nord Kalifornien)         | USA, Osten (Ohio)                        |
 | USA, Westen (Oregon)                | USA, Osten (Ohio)                        |
 | Afrika (Kapstadt)              | Europa (Frankfurt)                    |
-| Asien-Pazifik (Hongkong)        | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                   |
-| Asien-Pazifik (Mumbai)           | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                   |
-| Asien-Pazifik (Osaka lokal)      | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                   |
-| Asien-Pazifik (Seoul)            | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                   |
-| Asien-Pazifik, (Singapur)        | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                   |
-| Asien-Pazifik, (Sydney)           | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                  |
-| Asien-Pazifik, (Tokio)            | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                 |
+| Asien-Pazifik (Hongkong)        | Asien-Pazifik, (Sydney)                   |
+| Asien-Pazifik (Mumbai)           | Asien-Pazifik, (Sydney)                   |
+| Asien-Pazifik (Osaka lokal)      | Asien-Pazifik, (Sydney)                   |
+| Asien-Pazifik (Seoul)            | Asien-Pazifik, (Sydney)                   |
+| Asien-Pazifik, (Singapur)        | Asien-Pazifik, (Sydney)                   |
+| Asien-Pazifik, (Sydney)           | Asien-Pazifik, (Sydney)                  |
+| Asien-Pazifik, (Tokio)            | Asien-Pazifik, (Sydney)                 |
 | Kanada (Mitte)                | USA, Osten (Ohio)                        |
 | China (Beijing)                 | Nicht unterstützt                    |
 | China (Ningxia)                 | Nicht unterstützt                   |
 | Europa (Frankfurt)              | Europa (Frankfurt)                    |
-| Europa (Irland)                | Europa (Frankfurt) oder Europa (Irland)                   |
-| Europa (London)                 | Europa (Frankfurt) oder Europa (Irland)                   |
+| Europa (Irland)                | Europa (Irland)                   |
+| Europa (London)                 | Europa (Irland)                   |
 | Europa (Mailand)                  | Europa (Frankfurt)                    |
 | Europa (Paris)                  | Europa (Frankfurt)                    |
 | Europa (Stockholm)              | Europa (Frankfurt)                    |
@@ -97,14 +98,14 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
 In diesem Verfahren wird beschrieben, wie Sie neue Purview-Anmeldeinformationen erstellen, die beim Überprüfen Ihrer AWS-Buckets verwendet werden sollen.
 
 > [!TIP]
-> Sie können im Verlauf des Prozesses auch neue Anmeldeinformationen erstellen, während Sie [Ihre Überprüfung konfigurieren](#create-a-scan-for-your-amazon-s3-bucket). Wählen Sie in diesem Fall im Feld **Anmeldeinformationen** die Option **Neu** aus.
+> Sie können im Verlauf des Prozesses auch neue Anmeldeinformationen erstellen, während Sie [Ihre Überprüfung konfigurieren](#create-a-scan-for-one-or-more-amazon-s3-buckets). Wählen Sie in diesem Fall im Feld **Anmeldeinformationen** die Option **Neu** aus.
 >
 
 1. Navigieren Sie in Purview zum **Verwaltungscenter**, und wählen Sie unter **Sicherheit und Zugriff** die Option **Anmeldeinformationen** aus.
 
 1. Wählen Sie **Neu** aus, und verwenden Sie im rechts angezeigten Bereich **Neue Anmeldeinformationen** die folgenden Felder, um Ihre Purview-Anmeldeinformationen zu erstellen:
 
-    |Feld |BESCHREIBUNG  |
+    |Feld |Beschreibung  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen für diese Anmeldeinformationen ein, oder verwenden Sie den Standardwert.        |
     |**Beschreibung**     |Geben Sie eine optionale Beschreibung für diese Anmeldeinformationen ein, z. B. `Used to scan the tutorial S3 buckets` (Zum Überprüfen der Tutorial-S3-Buckets).         |
@@ -116,9 +117,30 @@ In diesem Verfahren wird beschrieben, wie Sie neue Purview-Anmeldeinformationen 
 
     Wählen Sie **Erstellen** aus, wenn Sie fertig sind, um die Erstellung der Anmeldeinformationen abzuschließen.
 
-Weitere Informationen zu Purview-Anmeldeinformationen finden Sie in der [Dokumentation zur öffentlichen Vorschau von Azure Purview](manage-credentials.md).
+1. Kopieren Sie die Werte der **Microsoft-Konto-ID** sowie der **externen ID**, und fügen Sie sie ein (sofern noch nicht geschehen), um [eine neue AWS-Rolle für Purview zu erstellen](#create-a-new-aws-role-for-purview), was Ihr nächster Schritt ist.
+
+Weitere Informationen zu Purview-Anmeldeinformationen finden Sie unter [Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview](manage-credentials.md).
 
 ### <a name="create-a-new-aws-role-for-purview"></a>Erstellen einer neuen AWS-Rolle für Purview
+
+Für dieses Verfahren müssen Sie die Werte für Ihre Azure-Konto-ID und externe ID eingeben, wenn Sie Ihre AWS-Rolle erstellen.
+
+Wenn Sie nicht über diese Werte verfügen, suchen Sie sie zuerst in Ihren [Purview-Anmeldeinformationen.](#create-a-purview-credential-for-your-aws-bucket-scan)
+
+**So suchen Sie Ihre Microsoft-Konto-ID und externe ID:**
+
+1. Navigieren Sie in Purview zum **Verwaltungscenter** > **Sicherheit und Zugriff** > **Anmeldeinformationen**.
+
+1. Wählen Sie die Anmeldeinformationen aus, die Sie [für Ihre AWS-Bucketüberprüfung erstellt haben](#create-a-purview-credential-for-your-aws-bucket-scan), und klicken Sie dann in der Symbolleiste auf **Bearbeiten**.
+
+1. Kopieren Sie im Bereich **Anmeldeinformationen bearbeiten**, der rechts angezeigt wird **, die Werte der** Microsoft-Konto-ID **sowie der** externen ID in eine separate Datei, oder halten Sie sie bereit, um Sie in das entsprechende Feld in AWS einzugeben.
+
+    Beispiel:
+
+    [ ![Suche nach den Werten der Microsoft-Konto-ID und der externen ID](./media/register-scan-amazon-s3/locate-account-id-external-id.png) ](./media/register-scan-amazon-s3/locate-account-id-external-id.png#lightbox)
+
+
+**So erstellen Sie Ihre AWS-Rolle für Purview:**
 
 1.  Öffnen Sie Ihre **Amazon Web Services**-Konsole, und wählen Sie unter **Sicherheit, Identität und Compliance** den Eintrag **IAM** aus.
 
@@ -129,12 +151,8 @@ Weitere Informationen zu Purview-Anmeldeinformationen finden Sie in der [Dokumen
     |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Konto-ID**     |    Geben Sie Ihre Microsoft-Konto-ID ein. Beispiel: `615019938638`     |
-    |**Externe ID**     |   Wählen Sie unter „Optionen“ **Externe ID anfordern...** aus, und geben Sie dann Ihre externe ID in das angegebene Feld ein. <br>Beispiel: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`    <br><br>Sie finden diese externe ID, wenn Sie .  |
+    |**Externe ID**     |   Wählen Sie unter „Optionen“ **Externe ID anfordern...** aus, und geben Sie dann Ihre externe ID in das angegebene Feld ein. <br>Beispiel: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`     |
     | | |
-
-    > [!NOTE]
-    > Sie finden den Wert für die **Microsoft-Konto-ID** als auch für die **Externe ID** im Purview-Bereich **Verwaltungscenter** > **Anmeldeinformationen**, in dem Sie [Ihre Purview-Anmeldeinformationen erstellt haben](#create-a-purview-credential-for-your-aws-bucket-scan).
-    >
 
     Beispiel:
 
@@ -231,7 +249,7 @@ AWS-Buckets unterstützen mehrere Verschlüsselungstypen. Buckets, die **AWS-KMS
 
 ### <a name="retrieve-your-new-role-arn"></a>Abrufen Ihres neuen Rollen-ARN
 
-Sie müssen Ihren AWS-Rollen-ARN aufzeichnen und in Purview kopieren, wenn Sie [eine Überprüfung für Ihren Amazon S3-Bucket erstellen](#create-a-scan-for-your-amazon-s3-bucket).
+Sie müssen Ihren AWS-Rollen-ARN aufzeichnen und in Purview kopieren, wenn Sie [eine Überprüfung für Ihren Amazon S3-Bucket erstellen](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
 **So rufen Sie Ihren Rollen-ARN ab**
 
@@ -241,11 +259,11 @@ Sie müssen Ihren AWS-Rollen-ARN aufzeichnen und in Purview kopieren, wenn Sie [
 
     ![Kopieren Sie den Rollen-ARN-Wert in die Zwischenablage.](./media/register-scan-amazon-s3/aws-copy-role-purview.png)
 
-1. Fügen Sie diesen Wert an einem sicheren Ort ein, sodass er einsatzbereit ist, wenn Sie [eine Überprüfung für Ihren Amazon S3-Bucket erstellen](#create-a-scan-for-your-amazon-s3-bucket).
+1. Fügen Sie diesen Wert an einem sicheren Ort ein, sodass er einsatzbereit ist, wenn Sie [eine Überprüfung für Ihren Amazon S3-Bucket erstellen](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
 ### <a name="retrieve-your-amazon-s3-bucket-name"></a>Abrufen Ihres Amazon S3-Bucketnamens
 
-Sie benötigen den Namen Ihres Amazon S3-Buckets, um ihn in Purview zu kopieren, wenn Sie [eine Überprüfung für Ihren Amazon S3-Bucket erstellen](#create-a-scan-for-your-amazon-s3-bucket).
+Sie benötigen den Namen Ihres Amazon S3-Buckets, um ihn in Purview zu kopieren, wenn Sie [eine Überprüfung für Ihren Amazon S3-Bucket erstellen](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
 **So rufen Sie Ihren Bucketnamen ab**
 
@@ -282,6 +300,8 @@ Beispiel:
 
 Verwenden Sie dieses Verfahren, wenn Sie nur über einen einzigen S3-Bucket verfügen, den Sie als Datenquelle bei Purview registrieren möchten, oder wenn Sie über mehrere Buckets in Ihrem AWS-Konto verfügen, aber nicht alle bei Purview registrieren möchten.
 
+**So fügen Sie Ihren Bucket hinzu:** 
+
 1. Starten Sie das Purview-Portal mithilfe des dedizierten Purview-Connectors für die Amazon S3-URL. Diese URL wurde Ihnen vom Amazon S3 Purview-Connector-Produktverwaltungsteam bereitgestellt.
 
     ![Starten Sie das Purview-Portal.](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -296,7 +316,7 @@ Verwenden Sie dieses Verfahren, wenn Sie nur über einen einzigen S3-Bucket verf
 
 1. Geben Sie im Bereich **Quellen registrieren (Amazon S3)** , der geöffnet wird, die folgenden Details ein:
 
-    |Feld  |BESCHREIBUNG  |
+    |Feld  |Beschreibung  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen ein, oder verwenden Sie den bereitgestellten Standardwert.         |
     |**Bucket-URL**     | Geben Sie Ihre AWS-Bucket-URL mit der folgenden Syntax ein: `s3://<bucketName>`     <br><br>**Hinweis**: Stellen Sie sicher, dass Sie nur die Stammebene Ihres Buckets ohne Unterordner verwenden. Weitere Informationen finden Sie unter [Abrufen Ihres Amazon S3-Bucketnamens](#retrieve-your-amazon-s3-bucket-name). |
@@ -305,12 +325,15 @@ Verwenden Sie dieses Verfahren, wenn Sie nur über einen einzigen S3-Bucket verf
 
     Wenn Sie fertig sind, wählen Sie **Fertig stellen** aus, um die Registrierung abzuschließen.
 
-Fahren Sie mit dem [Erstellen einer Überprüfung für Ihren Amazon S3-Bucket](#create-a-scan-for-your-amazon-s3-bucket) fort.
+Fahren Sie fort mit [Erstellen einer Überprüfung für einen oder mehrere Amazon S3-Buckets](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
-## <a name="add-all-of-your-amazon-s3-buckets-as-purview-resources"></a>Hinzufügen aller Ihrer Amazon S3-Buckets als Purview-Ressourcen
+## <a name="add-an-amazon-account-as-a-purview-resource"></a>Fügen Sie ein Amazon-Konto als Purview-Ressource hinzu.
 
 Verwenden Sie dieses Verfahren, wenn Sie über mehrere S3-Buckets in Ihrem Amazon-Konto verfügen und alle als Purview-Datenquellen registrieren möchten.
 
+Wenn Sie [Ihre Überprüfung konfigurieren](#create-a-scan-for-one-or-more-amazon-s3-buckets), können Sie die bestimmten zu überprüfenden Buckets auswählen, wenn Sie nicht alle zusammen überprüfen möchten.
+
+**So fügen Sie Ihr Amazon-Konto hinzu:**
 1. Starten Sie das Purview-Portal mithilfe des dedizierten Purview-Connectors für die Amazon S3-URL. Diese URL wurde Ihnen vom Amazon S3 Purview-Connector-Produktverwaltungsteam bereitgestellt.
 
     ![Starten des Connectors für das dedizierte Purview-Portal von Amazon S3](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -325,7 +348,7 @@ Verwenden Sie dieses Verfahren, wenn Sie über mehrere S3-Buckets in Ihrem Amazo
 
 1. Geben Sie im Bereich **Quellen registrieren (Amazon S3)** , der geöffnet wird, die folgenden Details ein:
 
-    |Feld  |BESCHREIBUNG  |
+    |Feld  |Beschreibung  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen ein, oder verwenden Sie den bereitgestellten Standardwert.         |
     |**AWS-Konto-ID**     | Geben Sie Ihre AWS-Konto-ID ein. Weitere Informationen finden Sie unter [Auffinden Ihrer AWS-Konto-ID](#locate-your-aws-account-id).|
@@ -334,9 +357,9 @@ Verwenden Sie dieses Verfahren, wenn Sie über mehrere S3-Buckets in Ihrem Amazo
 
     Wenn Sie fertig sind, wählen Sie **Fertig stellen** aus, um die Registrierung abzuschließen.
 
-Fahren Sie mit dem [Erstellen einer Überprüfung für Ihren Amazon S3-Bucket](#create-a-scan-for-your-amazon-s3-bucket) fort.
+Fahren Sie fort mit [Erstellen einer Überprüfung für einen oder mehrere Amazon S3-Buckets](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
-## <a name="create-a-scan-for-your-amazon-s3-bucket"></a>Erstellen einer Überprüfung für Ihren Amazon S3-Bucket
+## <a name="create-a-scan-for-one-or-more-amazon-s3-buckets"></a>Erstellen einer Überprüfung für einen oder mehrere Amazon S3-Buckets
 
 Nachdem Sie Ihre Buckets als Purview-Datenquellen hinzugefügt haben, können Sie eine Überprüfung so konfigurieren, dass sie in geplanten Intervallen oder sofort ausgeführt wird.
 
@@ -347,14 +370,15 @@ Nachdem Sie Ihre Buckets als Purview-Datenquellen hinzugefügt haben, können Si
 
 1. Definieren Sie im rechts angezeigten Bereich **Überprüfen** die folgenden Felder, und wählen Sie dann **Weiter** aus:
 
-    |Feld  |BESCHREIBUNG  |
+    |Feld  |Beschreibung  |
     |---------|---------|
     |**Name**     |  Geben Sie einen aussagekräftigen Namen für Ihre Überprüfung ein, oder verwenden Sie den Standardwert.       |
     |**Type** |Wird nur angezeigt, wenn Sie Ihr AWS-Konto hinzugefügt haben, einschließlich aller Buckets. <br><br>Die aktuellen Optionen umfassen nur **Alle** > **Amazon S3**. Bleiben Sie dran, um über weitere auswählbare Optionen auf dem Laufenden zu bleiben, die mit der sich erweiternden Unterstützungsmatrix von Purview entwickelt werden. |
     |**Credential**     |  Wählen Sie Purview-Anmeldeinformation mit Ihrem Rollen-ARN aus. <br><br>**Tipp**: Wenn Sie zu diesem Zeitpunkt neue Anmeldeinformationen erstellen möchten, wählen Sie **Neu** aus. Weitere Informationen finden Sie unter [Erstellen von Purview-Anmeldeinformationen für Ihre AWS-Bucketüberprüfung](#create-a-purview-credential-for-your-aws-bucket-scan).     |
-    |     |         |
+    | **Amazon S3**    |   Wird nur angezeigt, wenn Sie Ihr AWS-Konto hinzugefügt haben, einschließlich aller Buckets. <br><br>Wählen Sie mindestens einen zu überprüfenden Bucket aus, oder klicken Sie auf **Alle auswählen**, um alle Buckets in Ihrem Konto zu überprüfen.      |
+    | | |
 
-    Purview überprüft automatisch, ob der Rollen-ARN gültig ist und ob der Bucket und das Objekt im Bucket zugänglich sind, und fährt dann fort, wenn die Verbindung erfolgreich hergestellt wird.
+    Purview überprüft automatisch, ob der Rollen-ARN gültig ist und ob die Buckets und Objekte in den Buckets zugänglich sind, und fährt dann fort, wenn die Verbindung erfolgreich hergestellt wird.
 
     > [!TIP]
     > Um andere Werte einzugeben und selbst die Verbindung zu testen, bevor Sie fortfahren, wählen Sie unten rechts **Verbindung testen** aus, bevor Sie **Weiter** auswählen.

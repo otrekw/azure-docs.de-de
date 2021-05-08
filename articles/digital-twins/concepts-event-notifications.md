@@ -8,12 +8,12 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 42842b00120b7e918ca5b790cce92a74ab1b99d5
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 625f69b0088ffe6931410afc6f2a825c3156fd70
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107260094"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209947"
 ---
 # <a name="event-notifications"></a>Ereignisbenachrichtigungen
 
@@ -312,4 +312,4 @@ Hier ist ein Beispiel für eine Telemetrienachricht:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Hier erfahren Sie mehr über das Bereitstellen von Ereignissen an verschiedene Ziele mithilfe von Endpunkten und Routen:
-* [*Konzepte: Ereignisrouten*](concepts-route-events.md)
+* [Konzepte: Ereignisrouten](concepts-route-events.md)

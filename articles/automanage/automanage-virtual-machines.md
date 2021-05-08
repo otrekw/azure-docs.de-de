@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: e9e7ca036e9746c434f0c8349ed414509afe215a
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 970c0a2705bc9a559eb531c8b44780053343a712
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017281"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209713"
 ---
 # <a name="preview-azure-automanage-for-virtual-machines"></a>Vorschau: Automatische Azure-Verwaltung (Azure Automanage) für virtuelle Computer
 
@@ -187,7 +187,7 @@ In erster Linie werden wir den virtuellen Computer nicht von einem der Dienste t
 Automanage ist mit VMs kompatibel, bei denen Azure Disk Encryption (ADE) aktiviert wurde.
 
 Wenn Sie die Produktionsumgebung nutzen, wird auch das Onboarding in Azure Backup durchgeführt. Es gibt eine einzige Voraussetzung für die erfolgreiche Verwendung von ADE und Azure Backup:
-* Vor dem Onboarding Ihrer ADE-fähigen VM in die Produktionsumgebung von Automanage müssen Sie die Schritte im Abschnitt **Vorbereitung** [dieses Dokuments](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#before-you-start) ausgeführt haben.
+* Vor dem Onboarding Ihrer ADE-fähigen VM in die Produktionsumgebung von Automanage müssen Sie die Schritte im Abschnitt **Vorbereitung** [dieses Dokuments](../backup/backup-azure-vms-encryption.md#before-you-start) ausgeführt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

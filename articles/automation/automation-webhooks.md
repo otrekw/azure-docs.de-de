@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/18/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 338fb56c4af5c24b7b746ffd6508c2fe7d52b131
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: cd3d903aead4877fac9e5472f1ac9d579da979d2
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830194"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209569"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Starten eines Runbooks über einen Webhook
 
@@ -28,7 +28,7 @@ Informationen zu den Clientanforderungen für TLS 1.2 mit Webhooks finden Sie u
 
 Die folgende Tabelle beschreibt die Eigenschaften, die Sie für einen Webhook konfigurieren müssen.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Name |Name des Webhooks. Sie können einen beliebigen Namen vergeben, da er nicht für den Client verfügbar gemacht wird. Sie benötigen den Namen nur zur Identifizierung des Runbooks in Azure Automation. Es empfiehlt sich, den Webhook entsprechend dem Client zu benennen, der ihn verwenden wird. |
 | URL |URL des Webhooks. Dies ist die eindeutige Adresse, die ein Client mit einer HTTP POST-Anforderung aufruft, um das mit dem Webhook verknüpfte Runbook zu starten. Sie wird beim Erstellen des Webhooks automatisch generiert. Sie können keine benutzerdefinierte URL angeben. <br> <br> Die URL enthält ein Sicherheitstoken, das es einem Drittanbietersystem ermöglicht, das Runbook ohne weitere Authentifizierung aufzurufen. Behandeln Sie die URL daher wie ein Kennwort. Aus Sicherheitsgründen können Sie die URL im Azure-Portal nur zu dem Zeitpunkt anzeigen, zu dem der Webhook erstellt wird. Sie sollten die URL zur späteren Verwendung an einem sicheren Ort speichern. |
@@ -45,7 +45,7 @@ Um Daten vom Client zu empfangen, unterstützt das Runbook einen einzelnen Param
 
 Der `WebhookData`-Parameter hat folgende Eigenschaften:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | `WebhookName` | Name des Webhooks |
 | `RequestHeader` | Die Hashtabelle mit den Headern der eingehenden POST-Anforderung |
@@ -138,7 +138,7 @@ Der Client kann weder die Bestätigung, dass ein Runbookauftrag abgeschlossen wu
 
 ### <a name="use-a-webhook-from-an-arm-template"></a>Verwenden eines Webhooks mit einer ARM-Vorlage
 
-Automatisierungswebhooks können auch von [Azure Resource Manager (ARM)-Vorlagen](/azure/azure-resource-manager/templates/overview) aufgerufen werden. Die ARM-Vorlage gibt eine `POST`-Anforderung aus und empfängt wie jeder andere Client einen Rückgabecode. Weitere Informationen finden Sie unter [Verwenden eines Webhooks](#use-a-webhook).
+Automatisierungswebhooks können auch von [Azure Resource Manager (ARM)-Vorlagen](../azure-resource-manager/templates/overview.md) aufgerufen werden. Die ARM-Vorlage gibt eine `POST`-Anforderung aus und empfängt wie jeder andere Client einen Rückgabecode. Weitere Informationen finden Sie unter [Verwenden eines Webhooks](#use-a-webhook).
 
    > [!NOTE]
    > Aus Sicherheitsgründen wird der URI nur bei der erstmaligen Bereitstellung einer Vorlage zurückgegeben.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4dab08983fc1348ca49e728a65d48aa65fe19a47
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: c38db60c89b02e932c0a381daff1013b17008f54
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105713"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208831"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Aktivieren des privaten Zugriffs mit Private Link (Vorschau): Azure CLI
 
@@ -20,7 +20,7 @@ ms.locfileid: "107105713"
 
 In diesem Artikel werden verschiedene Methoden zum [Aktivieren von Private Link mit einem privaten Endpunkt für eine Azure Digital Twins-Instanz](concepts-security.md#private-network-access-with-azure-private-link-preview) beschrieben (befindet sich derzeit in der Vorschauphase). Das Konfigurieren eines privaten Endpunkts für Ihre Azure Digital Twins-Instanz ermöglicht es Ihnen, Ihre Azure Digital Twins-Instanz zu schützen und eine öffentliche Offenlegung zu vermeiden. Außerdem wird auch die Datenexfiltration aus Ihrer [Azure Virtual Network-Instanz (virtuelles Netzwerk)](../virtual-network/virtual-networks-overview.md) verhindert.
 
-In diesem Artikel wird die Vorgehensweise mit der [**Azure CLI**](/cli/azure/what-is-azure-cli) beschrieben.
+In diesem Artikel wird die Vorgehensweise mit der [Azure CLI](/cli/azure/what-is-azure-cli) beschrieben.
 
 Die folgenden Schritte werden in diesem Artikel behandelt: 
 1. Aktivieren Sie Private Link, und konfigurieren Sie einen privaten Endpunkt für eine Azure Digital Twins-Instanz.
@@ -28,7 +28,7 @@ Die folgenden Schritte werden in diesem Artikel behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie einen privaten Endpunkt einrichten können, benötigen Sie eine [**Azure Virtual Network-Instanz (virtuelles Netzwerk)**](../virtual-network/virtual-networks-overview.md), in dem der Endpunkt bereitgestellt werden kann. Wenn Sie noch nicht über ein virtuelles Netzwerk verfügen, können Sie einen [Schnellstart](../virtual-network/quick-create-portal.md) für Azure Virtual Network durchlaufen, um eines einzurichten.
+Bevor Sie einen privaten Endpunkt einrichten können, benötigen Sie eine [Azure Virtual Network-Instanz (virtuelles Netzwerk)](../virtual-network/virtual-networks-overview.md) , in dem der Endpunkt bereitgestellt werden kann. Wenn Sie noch nicht über ein virtuelles Netzwerk verfügen, können Sie einen [Schnellstart](../virtual-network/quick-create-portal.md) für Azure Virtual Network durchlaufen, um eines einzurichten.
 
 ## <a name="manage-private-endpoints-for-an-azure-digital-twins-instance"></a>Verwalten von privaten Endpunkten für eine Azure Digital Twins-Instanz 
 
@@ -41,7 +41,7 @@ Wenn Sie die [Azure CLI](/cli/azure/what-is-azure-cli) verwenden, können Sie pr
 
 ### <a name="add-a-private-endpoint-to-an-existing-instance"></a>Hinzufügen eines privaten Endpunkts zu einer vorhandenen Instanz
 
-Verwenden Sie den Befehl [**az network private-endpoint create**](/cli/azure/network/private-endpoint#az_network_private_endpoint_create), um einen privaten Endpunkt zu erstellen und diesen mit einer Azure Digital Twins-Instanz zu verknüpfen. Identifizieren Sie die Azure Digital Twins-Instanz mithilfe ihrer vollqualifizierten ID im Parameter `--private-connection-resource-id`.
+Verwenden Sie den Befehl [az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create), um einen privaten Endpunkt zu erstellen und diesen mit einer Azure Digital Twins-Instanz zu verknüpfen. Identifizieren Sie die Azure Digital Twins-Instanz mithilfe ihrer vollqualifizierten ID im Parameter `--private-connection-resource-id`.
 
 Im folgenden Beispiel wird der Befehl zum Erstellen eines privaten Endpunkts mit nur den erforderlichen Parametern verwendet.
 
@@ -49,25 +49,25 @@ Im folgenden Beispiel wird der Befehl zum Erstellen eines privaten Endpunkts mit
 az network private-endpoint create --connection-name {private_link_service_connection} -n {name_for_private_endpoint} -g {resource_group} --subnet {subnet_ID} --private-connection-resource-id "/subscriptions/{subscription_ID}/resourceGroups/{resource_group}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{Azure_Digital_Twins_instance_name}" 
 ```
 
-Eine vollständige Liste der erforderlichen und optionalen Parameter sowie weitere Beispiele zur Erstellung privater Endpunkte finden Sie in der [Referenzdokumentation zu **az network private-endpoint create**](/cli/azure/network/private-endpoint#az_network_private_endpoint_create).
+Eine vollständige Liste der erforderlichen und optionalen Parameter sowie weitere Beispiele zur Erstellung privater Endpunkte finden Sie in der Referenzdokumentation zu [az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create).
 
 ### <a name="manage-private-endpoint-connections-on-the-instance"></a>Verwalten privater Endpunktverbindungen für die Instanz
 
-Sobald ein privater Endpunkt für Ihre Azure Digital Twins-Instanz erstellt wurde, können Sie den Befehl [**az dt network private-endpoint connection**](/cli/azure/dt/network/private-endpoint/connection) verwenden, um mit der Verwaltung **privater Endpunktverbindungen** in Bezug auf die Instanz fortzufahren. Folgende Vorgänge sind möglich:
+Sobald ein privater Endpunkt für Ihre Azure Digital Twins-Instanz erstellt wurde, können Sie den Befehl [az dt network private-endpoint connection](/cli/azure/dt/network/private-endpoint/connection) verwenden, um mit der Verwaltung **privater Endpunktverbindungen** in Bezug auf die Instanz fortzufahren. Folgende Vorgänge sind möglich:
 * Anzeigen einer privaten Endpunktverbindung
 * Festlegen des Zustands der privaten Endpunktverbindung
 * Löschen der privaten Endpunktverbindung
 * Auflisten aller privaten Endpunktverbindungen für eine Instanz
 
-Weitere Informationen und Beispiele finden Sie in der [Referenzdokumentation zu **az dt network private-endpoint**](/cli/azure/dt/network/private-endpoint).
+Weitere Informationen und Beispiele finden Sie in der Referenzdokumentation zu [az dt network private-endpoint](/cli/azure/dt/network/private-endpoint).
 
 ### <a name="manage-other-private-link-information-on-an-azure-digital-twins-instance"></a>Verwalten anderer Private Link-Informationen zu einer Azure Digital Twins-Instanz
 
-Sie können weitere Informationen zum Private Link-Status Ihrer Instanz mithilfe des Befehls [**az dt network private-link**](/cli/azure/dt/network/private-link) abrufen. Folgende Vorgänge sind möglich:
+Sie können weitere Informationen zum Private Link-Status Ihrer Instanz mithilfe des Befehls [az dt network private-link](/cli/azure/dt/network/private-link) abrufen. Folgende Vorgänge sind möglich:
 * Auflisten privater Verbindungen einer Azure Digital Twins-Instanz
 * Anzeigen einer privaten Verbindung der Instanz
 
-Weitere Informationen und Beispiele finden Sie in der [Referenzdokumentation zu **az dt network private-link**](/cli/azure/dt/network/private-link).
+Weitere Informationen und Beispiele finden Sie in der Referenzdokumentation zu [az dt network private-link](/cli/azure/dt/network/private-link).
 
 ## <a name="disable--enable-public-network-access-flags"></a>Deaktivieren und Aktivieren von Zugriffsflags für das öffentliche Netzwerk
 
@@ -116,4 +116,4 @@ armclient PATCH /subscriptions/<your-Azure-subscription-ID>/resourceGroups/<yo
 ## <a name="next-steps"></a>Nächste Schritte
 
 Hier erfahren Sie mehr über Private Link für Azure: 
-* [*Was ist der Azure Private Link-Dienst?*](../private-link/private-link-service-overview.md)
+* [Was ist der Azure Private Link-Dienst?](../private-link/private-link-service-overview.md)

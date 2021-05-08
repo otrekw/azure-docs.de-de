@@ -1,24 +1,24 @@
 ---
-title: Azure Monitor für Azure Data Explorer (Vorschau) | Microsoft-Dokumentation
-description: In diesem Artikel werden Azure Monitor-Erkenntnisse für Azure Data Explorer-Cluster beschrieben.
+title: Azure Data Explorer Insights (ADX Insights, Vorschau) | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zu Azure Data Explorer Insights (ADX Insights).
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a8aae2dc03ba87e9782cdf3952be1bfc4a1aae75
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179135"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767039"
 ---
-# <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor für Azure Data Explorer (Vorschau)
+# <a name="azure-data-explorer-insights-preview"></a>Azure Data Explorer Insights (Vorschau)
 
-Azure Monitor für Azure Data Explorer (Vorschau) bietet eine umfassende Überwachung Ihrer Cluster mithilfe einer einheitlichen Ansicht der Leistung, der Vorgänge, des Verbrauchs und der Fehler Ihres Clusters.
-In diesem Artikel erfahren Sie, wie Sie das Onboarding von Azure Monitor für Azure Data Explorer (Vorschau) und wie Sie die Plattform verwenden.
+Azure Data Explorer Insights (Vorschau) ermöglicht die umfassende Überwachung Ihrer Cluster mittels einer einheitlichen Ansicht der Leistung, Vorgänge, Nutzung und Fehler Ihres Clusters.
+Dieser Artikel enthält Informationen zum Onboarding und zur Verwendung von Azure Data Explorer Insights (Vorschau).
 
-## <a name="introduction-to-azure-monitor-for-azure-data-explorer-preview"></a>Einführung in Azure Monitor für Azure Data Explorer (Vorschau)
+## <a name="introduction-to-azure-data-explorer-insights-preview"></a>Einführung in Azure Data Explorer Insights (Vorschau)
 
 Bevor Sie sich mit der Umgebung befassen, sollten Sie sich mit der Darstellung und Visualisierung von Informationen vertraut machen.
 -    Eine **Übersichtsperspektive** zeigt eine Momentaufnahme der primären Metriken Ihres Clusters, sodass Sie die Leistung von Abfragen sowie von Erfassungs- und Exportvorgängen ganz einfach nachverfolgen können.
@@ -73,7 +73,7 @@ Diese Registerkarte bietet Informationen zu exportierten Datensätzen, Verzöger
 
 ## <a name="view-from-an-azure-data-explorer-cluster-resource-drill-down-analysis"></a>Ansicht aus einer Azure Data Explorer-Clusterressource (Detailinformationen)
 
-So greifen Sie direkt aus einem Azure Data Explorer-Cluster auf Azure Monitor für Azure Data Explorer-Cluster zu:
+So greifen Sie direkt von einem Azure Data Explorer-Cluster aus auf Azure Data Explorer Insights zu:
 
 1. Wählen Sie im Azure-Portal **Azure Data Explorer-Cluster** aus.
 
@@ -81,7 +81,7 @@ So greifen Sie direkt aus einem Azure Data Explorer-Cluster auf Azure Monitor f�
 
 Sie können auch auf diese Ansichten zugreifen, indem Sie in der Insights-Ansicht von Azure Monitor den Ressourcennamen eines Azure Data Explorer-Clusters auswählen.
 
-Azure Monitor für Azure Data Explorer kombiniert Protokolle und Metriken, um eine globale Überwachungslösung bereitzustellen. Um protokollbasierte Visualisierungen einzuschließen, müssen Benutzer die [Diagnoseprotokollierung ihres Azure Data Explorer-Clusters aktivieren und die Protokolle an einem Log Analytics-Arbeitsbereich senden](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs). Folgende Diagnoseprotokolle sollten aktiviert werden: **Command**, **Query**, **TableDetails** und **TableUsageStatistics**.
+Azure Data Explorer Insights kombiniert Protokolle und Metriken, um eine globale Überwachungslösung bereitzustellen. Um protokollbasierte Visualisierungen einzuschließen, müssen Benutzer die [Diagnoseprotokollierung ihres Azure Data Explorer-Clusters aktivieren und die Protokolle an einem Log Analytics-Arbeitsbereich senden](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs). Folgende Diagnoseprotokolle sollten aktiviert werden: **Command**, **Query**, **TableDetails** und **TableUsageStatistics**.
 
 ![Screenshot der blauen Schaltfläche mit dem Text „Protokolle für die Überwachung konfigurieren“](./media/data-explorer/enable-logs.png)
 
@@ -118,13 +118,18 @@ Auf der Registerkarte **Cache** können Benutzer die tatsächlichen Suchmuster i
 
 [![Screenshot von Cachedetails](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
+Auf der Registerkarte **Clustergrenzen** werden die Clustergrenzen basierend auf Ihrer Nutzung angezeigt. Auf dieser Registerkarte können Sie die CPU-, Erfassungs- und Cacheauslastung untersuchen. Die zugehörigen Metriken werden als „Niedrig“, „Mittel“ oder „Hoch“ bewertet. Diese Metriken und Bewertungen sind wichtig bei der Wahl der optimalen SKU und Instanzenanzahl für Ihren Cluster und werden in den SKU-/Größenempfehlung von Azure Advisor berücksichtigt. Auf dieser Registerkarte können Sie eine Metrikkachel auswählen und ausführliche Informationen zum zugehörigen Trend und zur Bewertung anzeigen. Außerdem können Sie die SKU-/Größenempfehlung von Azure Advisor für Ihren Cluster anzeigen. In der folgenden Abbildung sehen Sie beispielsweise, dass alle Metriken als „Niedrig“ bewertet werden. Dadurch erhält der Cluster eine Kostenempfehlung, die es ermöglicht, den Cluster ab- bzw. herunterzuskalieren, um Kosten zu sparen.
+
+> [!div class="mx-imgBorder"]
+> [![Screenshot: Clustergrenzen](./media/data-explorer/cluster-boundaries.png)](./media/data-explorer/cluster-boundaries.png#lightbox)
+
 ## <a name="pin-to-azure-dashboard"></a>Anheften an Azure-Dashboard
 
 Sie können einen beliebigen Metrikabschnitt (aus der Übersichtsperspektive) an ein Azure-Dashboard anheften, indem Sie rechts oben im Abschnitt das Stecknadelsymbol auswählen.
 
 ![Screenshot: Ausgewähltes Stecknadelsymbol](./media/data-explorer/pin.png)
 
-## <a name="customize-azure-monitor-for-azure-data-explorer-cluster"></a>Anpassen von Azure Monitor für Azure Data Explorer-Cluster
+## <a name="customize-azure-data-explorer-insights"></a>Anpassen von Azure Data Explorer Insights
 
 In diesem Abschnitt werden gängige Szenarien für die Bearbeitung der Arbeitsmappe erläutert, um sie zur Unterstützung Ihrer Datenanalyseanforderungen anzupassen:
 * Festlegen des Gültigkeitsbereichs der Arbeitsmappe, sodass immer ein bestimmtes Abonnement oder mindestens ein bestimmter Azure Data Explorer-Cluster ausgewählt ist
@@ -143,7 +148,7 @@ Anpassungen werden in einer benutzerdefinierten Arbeitsmappe gespeichert, um zu 
 
 Allgemeine Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).
 
-Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger gängiger Probleme, die bei der Verwendung von Azure Monitor für Azure Data Explorer-Cluster (Vorschauversion) auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
+Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger bekannter Probleme, die bei der Verwendung von Azure Data Explorer Insights (Vorschau) auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Warum werden in der Abonnementauswahl nicht alle meine Abonnements angezeigt?
 

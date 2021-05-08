@@ -1,43 +1,42 @@
 ---
 title: Was ist eine Unterressource einer virtuellen Netzwerkverknüpfung von privaten Azure DNS-Zonen?
-description: Überblick über Unterressourcen einer virtuellen Netzwerkverknüpfung einer privaten Azure DNS-Zone
+description: Überblick über die Unterressource für die VNET-Verknüpfung einer privaten Azure DNS-Zone
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: 5e43ad35cdaad89d5b9f43007bad8782f358c1a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4c18403574f6c4772d0c6c50e3efa42a118f054
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94954340"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065116"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Was ist eine virtuelle Netzwerkverknüpfung?
 
-Nachdem Sie eine private DNS-Zone in Azure erstellt haben, können Sie nicht sofort von einem beliebigen virtuellen Netzwerk aus darauf zugreifen. Sie müssen sie mit einem virtuellen Netzwerk verknüpfen, bevor ein virtueller Computer, der in diesem Netzwerk gehostet wird, auf die private DNS-Zone zugreifen kann.
-Um eine private DNS-Zone mit einem virtuellen Netzwerk zu verknüpfen, müssen Sie eine virtuelle Netzwerkverknüpfung unter der privaten DNS-Zone erstellen. Jede private DNS-Zone verfügt über eine Sammlung untergeordneter Ressourcen der virtuellen Netzwerkverknüpfung. Jede dieser Ressourcen stellt eine Verbindung mit einem virtuellen Netzwerk dar.
-
-Sie können ein virtuelles Netzwerke als virtuelles Registrierungsnetzwerk oder als virtuelles Auflösungsnetzwerk mit einer privaten DNS-Zone verknüpfen.
+Nachdem Sie eine private Azure DNS-Zone erstellt haben, müssen Sie ein virtuelles Netzwerk damit verknüpfen. Nach der Verknüpfung können in diesem virtuellen Netzwerk gehostete VMs auf die private DNS-Zone zugreifen. Jede private DNS-Zone verfügt über eine Sammlung untergeordneter Ressourcen der virtuellen Netzwerkverknüpfung. Jede dieser Ressourcen stellt eine Verbindung mit einem virtuellen Netzwerk dar. Ein virtuelles Netzwerk kann nur mit einer privaten DNS-Zone als ein virtuelles Netzwerk für die Registrierung oder Auflösung verknüpft werden.
 
 ## <a name="registration-virtual-network"></a>Virtuelles Registrierungsnetzwerk
 
-Wenn Sie [eine Verknüpfung](./private-dns-getstarted-portal.md#link-the-virtual-network) zwischen einer privaten DNS-Zone und einem virtuellen Netzwerk erstellen, haben Sie die Möglichkeit, die [automatische Registrierung](./private-dns-autoregistration.md) von DNS-Einträgen für virtuelle Computer zu aktivieren. Wenn Sie diese Option auswählen, wird das virtuelle Netzwerk zu einem virtuellen Registrierungsnetzwerk für die private DNS-Zone. Ein DNS-Eintrag wird für die virtuellen Computer, die Sie im Netzwerk bereitstellen, automatisch erstellt. DNS-Einträge werden für die virtuellen Computer, die Sie bereits im Netzwerk bereitgestellt haben, erstellt. Aus der Perspektive des virtuellen Netzwerks wird die private DNS-Zone zur Registrierungszone für dieses virtuelle Netzwerk.
-Eine private DNS-Zone kann mehrere virtuelle Registrierungsnetzwerke aufweisen, aber jedem virtuellen Netzwerk kann nur genau eine Registrierungszone zugeordnet sein.
+Wenn Sie [eine Verknüpfung zwischen einer privaten DNS-Zone und einem virtuellen Netzwerk erstellen](./private-dns-getstarted-portal.md#link-the-virtual-network), können Sie die [automatische Registrierung](./private-dns-autoregistration.md) aktivieren. Wenn diese Einstellung aktiviert ist, fungiert das virtuelle Netzwerk als Registrierungsnetzwerk für die private DNS-Zone. Für jede VM, die Sie im Netzwerk bereitstellen, wird automatisch ein DNS-Eintrag erstellt. Für bereits im Netzwerk bereitgestellte VMs wird ebenfalls ein DNS-Eintrag erstellt.
+
+Aus der Perspektive des virtuellen Netzwerks wird die private DNS-Zone zur Registrierungszone für dieses virtuelle Netzwerk. Eine private DNS-Zone kann mehrere virtuelle Registrierungsnetzwerke umfassen. Jedem virtuellen Netzwerk kann jedoch nur eine Registrierungszone zugeordnet sein.
 
 ## <a name="resolution-virtual-network"></a>Virtuelles Auflösungsnetzwerk
 
-Wenn Sie eine virtuelle Netzwerkverknüpfung unter einer privaten DNS-Zone erstellen und nicht die automatische Registrierung von DNS-Einträgen aktivieren, wird das virtuelle Netzwerk als reines virtuelles Auflösungsnetzwerk behandelt. DNS-Einträge für virtuelle Computer, die in solchen Netzwerken bereitgestellt werden, werden nicht automatisch in der verknüpften privaten DNS-Zone erstellt. Die in solchen Netzwerken bereitgestellten virtuellen Computer können jedoch die DNS-Einträge erfolgreich aus der privaten DNS-Zone abfragen. Diese Einträge können von Ihnen manuell erstellt oder aus anderen virtuellen Netzwerken aufgefüllt werden, die als Registrierungsnetzwerke mit der privaten DNS-Zone verknüpft wurden.
+Wenn Sie Ihr virtuelles Netzwerk ohne automatische Registrierung mit der privaten DNS-Zone verknüpfen möchten, wird das virtuelle Netzwerk nur als virtuelles Auflösungsnetzwerk behandelt. Für VMs, die in diesem virtuellen Netzwerk bereitgestellt sind, werden nicht automatisch DNS-Einträge in der privaten Zone erstellt. Die im virtuellen Netzwerk bereitgestellten VMs können jedoch erfolgreich DNS-Einträge in der privaten DNS-Zone abfragen. Dies schließt manuell erstellte und automatisch registrierte Einträge aus anderen virtuellen Netzwerken ein, die mit der privaten DNS-Zone verknüpft sind.
+
 Eine private DNS-Zone kann mehrere virtuelle Auflösungsnetzwerke aufweisen, und einem virtuellen Netzwerk können mehrere Auflösungszonen zugeordnet sein.
 
 ## <a name="limits"></a>Grenzwerte
 
 Um zu verstehen, wie viele Registrierungs- und Auflösungsnetzwerke Sie mit privaten DNS-Zonen verknüpfen können, finden Sie unter [Azure DNS-Limits](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits).
 
-## <a name="other-considerations"></a>Andere Aspekte
+## <a name="other-considerations"></a>Weitere Überlegungen
 
-* Virtuelle Netzwerke, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden, werden nicht unterstützt.
+* Virtuelle Netzwerke, die unter Verwendung des klassischen Bereitstellungsmodells bereitgestellt wurden, werden nicht unterstützt.
 
 * Sie können nur eine Verknüpfung zwischen einer privaten DNS-Zone und einem virtuellen Netzwerk erstellen.
 

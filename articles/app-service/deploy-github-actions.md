@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: aa4475ccedfb19ece540337f493bcc5ed64af035
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c17b18f42a5b07252874aef812a50746e069c1a9
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832462"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209731"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Bereitstellen in App Service mithilfe von GitHub Actions
 
@@ -24,7 +24,7 @@ Verwenden Sie [GitHub Actions](https://docs.github.com/en/actions/learn-github-a
 - Ein GitHub-Konto. Falls Sie noch nicht über ein Konto verfügen, können Sie sich [kostenlos](https://github.com/join) registrieren.  
 - Eine funktionierende Azure App Service-App. 
     - .NET: [Erstellen von ASP.NET Core-Web-Apps in Azure](quickstart-dotnetcore.md)
-    - ASP.NET: [Erstellen einer ASP.NET Framework-Web-App in Azure](quickstart-dotnet-framework.md)
+    - ASP.NET: [Erstellen einer ASP.NET Framework-Web-App in Azure](./quickstart-dotnetcore.md?tabs=netframework48)
     - JavaScript: [Erstellen einer Node.js-Web-App in Azure App Service](quickstart-nodejs.md)  
     - Java: [Erstellen einer Java-App in Azure App Service](quickstart-java.md)
     - Python: [Erstellen einer Python-App in Azure App Service](quickstart-python.md)

@@ -4,14 +4,14 @@ description: Informationen zum Konfigurieren von kundenseitig verwalteten Schlü
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/01/2021
+ms.date: 04/23/2021
 ms.author: thweiss
-ms.openlocfilehash: 1b1fc0b51c1cd2a99ec97bec9f588699a893ceca
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 4ea11b23c7a45fb263a3716c051e960c72a7b300
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222621"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065401"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -237,24 +237,35 @@ Diese Zugriffsrichtlinie stellt sicher, dass Ihr Azure Cosmos DB-Konto auf Ihre 
 - Mit der Erstanbieteridentität von Azure Cosmos DB können Sie Zugriff auf den Azure Cosmos DB-Dienst gewähren.
 - Mit der [verwalteten Identität](how-to-setup-managed-identity.md) Ihres Azure Cosmos DB-Kontos können Sie speziell Zugriff auf Ihr Konto gewähren.
 
-Da eine vom System zugewiesene verwaltete Identität nur nach der Erstellung Ihres Kontos abgerufen werden kann, müssen Sie Ihr Konto noch zunächst wie [oben](#add-access-policy) beschrieben mit der Erstanbieteridentität erstellen. Führen Sie dann folgende Schritte aus:
+Da eine vom System zugewiesene verwaltete Identität nur nach der Erstellung Ihres Kontos abgerufen werden kann, müssen Sie Ihr Konto noch zunächst wie [oben](#add-access-policy) beschrieben mit der Erstanbieteridentität erstellen. Führen Sie anschließend Folgendes durch:
 
 1. Wenn dies nicht während der Kontoerstellung erfolgt ist, [aktivieren Sie eine vom System zugewiesene verwaltete Identität](how-to-setup-managed-identity.md) in Ihrem Konto, und kopieren Sie die zugewiesene `principalId`.
 
 1. Fügen Sie Ihrem Azure Key Vault-Konto wie [oben](#add-access-policy) beschrieben eine neue Zugriffsrichtlinie hinzu, aber verwenden Sie die `principalId`, die Sie im vorherigen Schritt kopiert haben, anstelle der Erstanbieteridentität von Azure Cosmos DB.
 
-1. Aktualisieren Sie Ihr Azure Cosmos DB-Konto, um anzugeben, dass Sie die vom System zugewiesene verwaltete Identität beim Zugriff auf Ihre Verschlüsselungsschlüssel in Azure Key Vault verwenden möchten. Hierzu können Sie diese Eigenschaft in der Azure Resource Manager-Vorlage Ihres Kontos angeben:
+1. Aktualisieren Sie Ihr Azure Cosmos DB-Konto, um anzugeben, dass Sie die vom System zugewiesene verwaltete Identität beim Zugriff auf Ihre Verschlüsselungsschlüssel in Azure Key Vault verwenden möchten. Dazu können Sie folgende Aktionen ausführen:
 
-   ```json
-   {
-       "type": " Microsoft.DocumentDB/databaseAccounts",
-       "properties": {
-           "defaultIdentity": "SystemAssignedIdentity",
-           // ...
-       },
-       // ...
-   }
-   ```
+   - diese Eigenschaft in der Azure Resource Manager-Vorlage Ihres Kontos angeben:
+
+     ```json
+     {
+         "type": " Microsoft.DocumentDB/databaseAccounts",
+         "properties": {
+             "defaultIdentity": "SystemAssignedIdentity",
+             // ...
+         },
+         // ...
+     }
+     ```
+
+   - Ihr Konto mit Azure CLI aktualisieren:
+
+     ```azurecli
+     resourceGroupName='myResourceGroup'
+     accountName='mycosmosaccount'
+     
+     az cosmosdb update --resource-group $resourceGroupName --name $accountName --default-identity "SystemAssignedIdentity"
+     ```
 
 1. Optional können Sie die Erstanbieteridentität von Azure Cosmos DB aus Ihrer Azure Key Vault-Zugriffsrichtlinie entfernen.
 

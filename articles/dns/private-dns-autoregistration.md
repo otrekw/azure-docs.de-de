@@ -1,35 +1,34 @@
 ---
-title: Was ist die Funktion zur automatischen Registrierung von privaten Azure DNS-Zonen?
-description: Übersicht über die Funktion zur automatischen Registrierung von privaten Azure DNS-Zonen
+title: Was ist die Funktion zur automatischen Registrierung in privaten Azure DNS-Zonen?
+description: Übersicht über die Funktion zur automatischen Registrierung in privaten Azure DNS-Zonen.
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: 2e5f41c0e149c99b5524c439c59e72afe554c776
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7eedee50e8a8bfd270640ff332d21f28108239a
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783896"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065190"
 ---
-# <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Was ist die Funktion zur automatischen Registrierung von privaten Azure DNS-Zonen?
+# <a name="what-is-the-auto-registration-feature-in-azure-dns-private-zones"></a>Was ist die Funktion zur automatischen Registrierung in privaten Azure DNS-Zonen?
 
-Die Funktion zur automatischen Registrierung von privaten Azure DNS-Zonen gestaltet die Verwaltung von DNS-Einträgen für virtuelle Computer, die in einem virtuellen Netzwerk bereitgestellt sind, mühelos. Wenn Sie [ein virtuelles Netzwerk mit einer privaten DNS-Zone verknüpfen](./private-dns-virtual-network-links.md) und die automatische Registrierung für alle virtuellen Computer aktivieren, werden die DNS-Einträge für die im virtuellen Netzwerk bereitgestellten virtuellen Computer automatisch in der privaten DNS-Zone erstellt. Zusätzlich zu den Forward-Lookup-Einträgen (A-Einträge) werden ebenfalls Reverse-Lookup-Einträge (PTR-Einträge) automatisch für die virtuellen Computer erstellt.
-Wenn Sie dem virtuellen Netzwerk weitere virtuelle Computer hinzufügen, werden die DNS-Einträge für diese virtuellen Computer ebenfalls automatisch in der verknüpften privaten DNS-Zone erstellt.
+Die Funktion zur automatischen Registrierung in privaten Azure DNS-Zonen verwaltet DNS-Einträge für virtuelle Computer, die in einem virtuellen Netzwerk bereitgestellt werden. Wenn Sie [ein virtuelles Netzwerk mit einer privaten DNS-Zone verknüpfen](./private-dns-virtual-network-links.md) und diese Einstellung aktiviert ist, wird für jeden virtuellen Computer, der im virtuellen Netzwerk bereitgestellt wird, ein DNS-Eintrag erstellt. 
 
-Wenn Sie einen virtuellen Computer löschen, werden die DNS-Einträge für den virtuellen Computer automatisch in der verknüpften privaten DNS-Zone gelöscht.
+Für jeden virtuellen Computer werden ein A-Eintrag und ein PTR-Eintrag erstellt. DNS-Einträge für neu bereitgestellte virtuelle Computer werden ebenfalls automatisch in der verknüpften privaten DNS-Zone erstellt. Wird ein virtueller Computer gelöscht, werden alle zugeordneten DNS-Einträge ebenfalls aus der privaten DNS-Zone gelöscht.
 
-Sie können die automatische Registrierung aktivieren, indem Sie beim Erstellen einer virtuellen Netzwerkverbindung die Option „Automatische Registrierung aktivieren“ auswählen.
+Zum Aktivieren der automatischen Registrierung wählen Sie beim Erstellen der VNET-Verknüpfung das Kontrollkästchen „Automatische Registrierung aktivieren“ aus.
 
-![Automatische Registrierung aktivieren](./media/privatedns-concepts/enable-autoregistration.png)
+:::image type="content" source="./media/privatedns-concepts/enable-autoregistration.png" alt-text="Screenshot der Option „Automatische Registrierung aktivieren“ auf der Seite „VNET-Verknüpfung hinzufügen“":::
 
 ## <a name="restrictions"></a>Beschränkungen
 
-* Die automatische Registrierung funktioniert nur für virtuelle Computer. Für alle anderen Ressourcen wie interne Lastenausgleichsmodule usw., können Sie DNS-Einträge manuell in der privaten DNS-Zone erstellen, die mit dem virtuellen Netzwerk verknüpft ist.
+* Die automatische Registrierung funktioniert nur für virtuelle Computer. Für alle anderen Ressourcen, z. B. interne Lastenausgleichsmodule, können Sie DNS-Einträge manuell in der privaten DNS-Zone erstellen, die mit dem virtuellen Netzwerk verknüpft ist.
 * DNS-Einträge werden nur für die primäre NIC des virtuellen Computers automatisch erstellt. Wenn Ihre virtuellen Computer über mehr als eine Netzwerkkarte verfügen, können Sie die DNS-Einträge für andere Netzwerkschnittstellen manuell erstellen.
-* DNS-Einträge werden nur dann automatisch erstellt, wenn die primäre NIC des virtuellen Computers DHCP verwendet. Wenn statische IP-Adressen konfiguriert sind (z. B. zur Verwendung von [mehreren IP-Adressen in Azure](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config)), werden bei der automatischen Registrierung keine Einträge für diesen virtuellen Computer erstellt.
+* DNS-Einträge werden nur dann automatisch erstellt, wenn die primäre NIC des virtuellen Computers DHCP verwendet. Wenn Sie statische IP-Adressen verwenden, z. B. eine Konfiguration mit [mehreren IP-Adressen in Azure](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config), werden bei der automatischen Registrierung keine Einträge für diesen virtuellen Computer erstellt.
 * Die automatische Registrierung für IPv6 (AAAA-Einträge) wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -38,4 +37,4 @@ Sie können die automatische Registrierung aktivieren, indem Sie beim Erstellen 
 
 * Informieren Sie sich über einige gängige [Szenarien zu privaten Zonen](./private-dns-scenarios.md), die mit privaten Zonen in Azure DNS realisiert werden können.
 
-* Allgemeine Fragen und Antworten zu privaten Zonen in Azure DNS, einschließlich des spezifischen Verhaltens für bestimmte Vorgänge, finden Sie unter [Häufig gestellte Fragen zu privatem Azure DNS](./dns-faq-private.md).
+* Allgemeine Fragen und Antworten zu privaten Zonen in Azure DNS finden Sie unter [Häufig gestellte Fragen zu privatem Azure-DNS](./dns-faq-private.md).

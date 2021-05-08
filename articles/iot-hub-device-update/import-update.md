@@ -1,26 +1,25 @@
 ---
-title: Importieren eines neuen Updates | Microsoft-Dokumentation
-description: Schrittanleitung zum Importieren eines neuen Updates in IoT Hub Device Update für IoT Hub.
+title: Hinzufügen eines neuen Updates | Microsoft-Dokumentation
+description: Schrittanleitung zum Hinzufügen eines neuen Updates in Device Update for IoT Hub.
 author: andrewbrownmsft
 ms.author: andbrown
-ms.date: 2/11/2021
+ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ede0d279b8769f49afcdae1cb9352c1b47fb59b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ebfeee2828b3a36f9cf47891f8aea6d889db85bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932402"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763575"
 ---
-# <a name="import-new-update"></a>Importieren eines neuen Updates
-Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub importieren. Wenn Sie es noch nicht getan haben, sollten Sie sich mit den grundlegenden [Importkonzepten](import-concepts.md) vertraut machen.
+# <a name="add-an-update-to-device-update-for-iot-hub"></a>Hinzufügen eines Updates zu Device Update for IoT Hub
+Hier erfahren Sie, wie Sie in Device Update for IoT Hub ein neues Update hinzufügen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Zugriff auf einen IoT Hub mit aktiviertem Device Update for IoT Hub](create-device-update-account.md). 
-* Ein IoT-Gerät (oder Simulator), das/der für Device Update in IoT Hub bereitgestellt wird.
-   * Wenn Sie ein echtes Gerät verwenden, benötigen Sie eine Updateimagedatei für ein Imageupdate oder eine [APT-Manifestdatei](device-update-apt-manifest.md) für ein Paketupdate.
+* Ein [für Device Update bereitgestelltes](device-update-agent-provisioning.md) IoT-Gerät (oder ein entsprechender Simulator) in IoT Hub.
 * [PowerShell 5](/powershell/scripting/install/installing-powershell) oder später (einschließlich Linux-, macOS-und Windows-Installationen)
 * Unterstützte Browser:
   * [Microsoft Edge](https://www.microsoft.com/edge)
@@ -29,9 +28,19 @@ Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub import
 > [!NOTE]
 > Einige an diesen Dienst übermittelte Daten werden möglicherweise in einer Region außerhalb der Region verarbeitet, in der diese Instanz erstellt wurde.
 
-## <a name="create-device-update-import-manifest"></a>Erstellen eines Importmanifests für Geräteupdates
+## <a name="obtain-an-update-for-your-devices"></a>Abrufen eines Updates für Ihre Geräte
 
-1. Stellen Sie sicher, dass sich Ihre Updateimagedatei oder APT-Manifestdatei in einem Verzeichnis befindet, auf das PowerShell zugreifen kann.
+Nachdem Sie Device Update eingerichtet und Ihre Geräte bereitgestellt haben, benötigen Sie die Updatedatei(en), die Sie auf diesen Geräten bereitstellen möchten.
+
+Wenn Sie Geräte von einem OEM oder Lösungsintegrator erworben haben, stellt die entsprechende Organisation höchstwahrscheinlich Updatedateien für Sie bereit, ohne dass Sie die Updates selbst erstellen müssen. Wenden Sie sich an den OEM oder Lösungsintegrator, um zu erfahren, wie Updates verfügbar gemacht werden.
+
+Falls Ihre Organisation bereits Software für die von Ihnen verwendeten Geräte erstellt, werden die Updates für diese Software von der zuständigen Gruppe erstellt. Beginnen Sie beim Erstellen eines Updates mit Device Update for IoT Hub je nach Szenario entweder [mit dem imagebasierten oder mit dem paketbasierten Ansatz](understand-device-update.md#support-for-a-wide-range-of-update-artifacts). Hinweis: Wenn Sie Ihre eigenen Updates erstellen möchten, aber gerade erst am Anfang stehen, ist GitHub eine hervorragende Option für die Entwicklungsverwaltung. Sie können dort Ihren Quellcode speichern und verwalten sowie CI- und CD-Vorgänge (Continuous Integration und Continuous Deployment) mithilfe von [GitHub Actions](https://docs.github.com/en/actions/guides/about-continuous-integration) durchführen.
+
+## <a name="create-a-device-update-import-manifest"></a>Erstellen eines Device Update-Importmanifests
+
+Wenn Sie es noch nicht getan haben, sollten Sie sich mit den grundlegenden [Importkonzepten](import-concepts.md) vertraut machen.
+
+1. Stellen Sie sicher, dass sich Ihre Updatedateien in einem für PowerShell zugänglichen Verzeichnis befinden.
 
 2. Erstellen Sie eine Textdatei namens **AduUpdate.psm1** im Verzeichnis, indem sich Ihre Updateimagedatei oder die APT-Manifestdatei befinden. Öffnen Sie dann das PowerShell-Cmdlet [AduUpdate.psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets), kopieren Sie den Inhalt in Ihre Textdatei, und speichern Sie dann die Textdatei.
 
@@ -67,7 +76,7 @@ Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub import
     | updateFilePath(s) | Pfad zu der/den Updatedatei(en) auf Ihrem Computer
 
 
-## <a name="review-generated-import-manifest"></a>Überprüfen des generierten Importmanifests
+## <a name="review-the-generated-import-manifest"></a>Überprüfen des generierten Importmanifests
 
 Beispiel:
 ```json
@@ -110,10 +119,10 @@ Beispiel:
 }
 ```
 
-## <a name="import-update"></a>Importieren des Updates
+## <a name="import-an-update"></a>Importieren eines Updates
 
-[!NOTE]
-Die folgenden Anweisungen zeigen, wie Sie ein Update über die Benutzeroberfläche des Azure-Portals importieren. Sie können auch das [Geräteupdate für IoT Hub-APIs](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) verwenden, um ein Update zu importieren. 
+> [!NOTE]
+> Die folgenden Anweisungen zeigen, wie Sie ein Update über die Benutzeroberfläche des Azure-Portals importieren. Sie können auch das [Geräteupdate für IoT Hub-APIs](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) verwenden, um ein Update zu importieren. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub-Instanz mit Device Update.
 

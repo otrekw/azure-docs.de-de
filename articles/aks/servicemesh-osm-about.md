@@ -7,12 +7,12 @@ ms.date: 3/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: b0a37400d02ff324e7191bb0b04243d7f16090bd
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e3bf6748157e53093cc848ffaff37df7c711e64c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877154"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209263"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Open Service Mesh AKS-Zusatzmodul (Vorschau)
 
@@ -54,7 +54,7 @@ OSM kann Ihre AKS-Bereitstellungen in den folgenden Szenarien unterstützen:
 
 ## <a name="osm-service-quotas-and-limits-preview"></a>OSM-Dienst-Kontingente und-Grenzwerte (Vorschau)
 
-Einschränkungen für die OSM-Vorschau für Dienst-Kontingente und-Grenzwerte finden Sie auf der [Seite AKS-Kontingente und regionale Grenzwerte](https://docs.microsoft.com/azure/aks/quotas-skus-regions).
+Einschränkungen für die OSM-Vorschau für Dienst-Kontingente und-Grenzwerte finden Sie auf der [Seite AKS-Kontingente und regionale Grenzwerte](./quotas-skus-regions.md).
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -118,7 +118,7 @@ az group create --name <myosmaksgroup> --location <eastus2>
 Sie werden nun einen neuen AKS-Cluster mit aktiviertem OSM-Add-on bereitstellen.
 
 > [!NOTE]
-> Bitte beachten Sie, dass der folgende AKS-Bereitstellungsbefehl ephemere Festplatten des Betriebssystems verwendet. Weitere Informationen zu [Kurzlebige Betriebssystemdatenträger für AKS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os)finden Sie unter
+> Bitte beachten Sie, dass der folgende AKS-Bereitstellungsbefehl ephemere Festplatten des Betriebssystems verwendet. Weitere Informationen zu [Kurzlebige Betriebssystemdatenträger für AKS](./cluster-configuration.md#ephemeral-os)finden Sie unter
 
 ```azurecli-interactive
 az aks create -n osm-addon-cluster -g <myosmaksgroup> --kubernetes-version 1.19.6 --node-osdisk-type Ephemeral --node-osdisk-size 30 --network-plugin azure --enable-managed-identity -a open-service-mesh
@@ -1544,7 +1544,7 @@ Rufen Sie bei bestehender Portweiterleitung die folgende URL in einem Browser au
 #### <a name="deploy-a-new-application-gateway"></a>Bereitstellen eines neuen Application Gateway
 
 > [!NOTE]
-> Wir verweisen auf die bestehende Dokumentation zur Aktivierung des Add-ons Application Gateway Ingress Controller für einen bestehenden AKS-Cluster. Es wurden einige Anpassungen an die OSM-Materialien vorgenommen. Eine ausführlichere Dokumentation zu diesem Thema finden Sie [hier](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing).
+> Wir verweisen auf die bestehende Dokumentation zur Aktivierung des Add-ons Application Gateway Ingress Controller für einen bestehenden AKS-Cluster. Es wurden einige Anpassungen an die OSM-Materialien vorgenommen. Eine ausführlichere Dokumentation zu diesem Thema finden Sie [hier](../application-gateway/tutorial-ingress-controller-add-on-existing.md).
 
 Sie stellen nun ein neues Application Gateway bereit, um ein vorhandenes Application Gateway zu simulieren, das Sie für den Lastenausgleich des Datenverkehrs zum AKS-Cluster _myCluster_ verwenden möchten. Das Application Gateway erhält den Namen _myApplicationGateway_, Sie müssen jedoch zunächst eine Ressource mit öffentlicher IP-Adresse und dem Namen _myPublicIp_ und ein neues virtuelles Netzwerk mit dem Namen _myVnet_ und dem Adressraum 11.0.0.0/8 erstellen sowie ein Subnetz mit dem Adressraum 11.1.0.0/16 und dem Namen _mySubnet_. Stellen Sie dann das Application Gateway in _mySubnet_ mithilfe von _myPublicIp_ bereit.
 
@@ -1701,7 +1701,7 @@ Die folgende Ausgabe muss angezeigt werden:
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
-- [AGIC Dokumentation zur Problembehandlung](https://docs.microsoft.com/azure/application-gateway/ingress-controller-troubleshoot)
+- [AGIC Dokumentation zur Problembehandlung](../application-gateway/ingress-controller-troubleshoot.md)
 - [Weitere Tools zur Problembehandlung sind im GitHub-Repository von Agic verfügbar.](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/docs/troubleshootings/troubleshooting-installing-a-simple-application.md)
 
 ## <a name="open-service-mesh-osm-monitoring-and-observability-using-azure-monitor-and-applications-insights"></a>Open Service Mesh (OSM)-Überwachung und-Observability mithilfe von Azure Monitor und Application Insights
