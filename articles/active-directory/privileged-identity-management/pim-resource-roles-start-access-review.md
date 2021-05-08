@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 04/05/2021
+ms.date: 04/27/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87c0ce72348f67c22759915a3a15c69193ad2f60
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 923c084066b8e40dd8c17541222e9f44c6cc6147
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552789"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124064"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in Privileged Identity Management
 
@@ -28,7 +28,7 @@ Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann
 
 ## <a name="prerequisite-license"></a>Voraussetzung Lizenz
 
-[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]. Weitere Informationen zu Lizenzen für PIM finden Sie unter [Lizenzanforderungen für die Verwendung von Privileged Identity Management](subscription-requirements.md).
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)] Weitere Informationen zu Lizenzen für PIM finden Sie unter [Lizenzanforderungen für die Verwendung von Privileged Identity Management](subscription-requirements.md).
 
 > [!Note]
 >  Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschau) mit einer in Ihrem Anker aktiven Azure Active Directory Premium P2-Edition durchführen. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich.
@@ -105,6 +105,10 @@ Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann
     - **Zugriff entfernen**: Dem Benutzer wird der Zugriff entzogen.
     - **Zugriff genehmigen**: Der Zugriff des Benutzers wird genehmigt.
     - **Empfehlungen annehmen**: Die Systemempfehlungen hinsichtlich der Ablehnung oder Gewährung des weiteren Benutzerzugriffs werden verwendet.
+
+1. Sie können Benachrichtigungen an weitere Benutzer oder Gruppen (Vorschau) senden, um Updates zum Überprüfungsabschluss zu erhalten. Mit diesem Feature können andere Beteiligte als der Ersteller der Überprüfung über den Fortschritt der Überprüfung informiert werden. Um dieses Feature zu verwenden, wählen Sie **Benutzer oder Gruppen auswählen** aus, und fügen Sie einen weiteren Benutzer oder eine weitere Gruppe hinzu, wenn Sie Statusinformationen zur Überprüfung erhalten möchten.
+
+    ![Einstellungen nach Abschluss: Hinzufügen zusätzlicher Benutzer zum Empfangen von Benachrichtigungen](./media/pim-resource-roles-start-access-review/upon-completion-settings-additional-receivers.png) 
 
 ### <a name="advanced-settings"></a>Erweiterte Einstellungen
 

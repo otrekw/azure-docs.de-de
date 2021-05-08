@@ -3,12 +3,12 @@ title: Beheben von Netzwerkproblemen mit der Registrierung
 description: Enthält eine Beschreibung der Symptome, Ursachen und Lösungen häufiger Probleme, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten.
 ms.topic: article
 ms.date: 03/30/2021
-ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: dc2110405713791d11fb438565fc091da9c9dd5c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220112"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780750"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Beheben von Netzwerkproblemen mit der Registrierung
 
@@ -28,6 +28,7 @@ Beispiele für Symptome sind:
 * Einstellungen für das virtuelle Netzwerk oder Regeln für den öffentlichen Zugriff können nicht hinzugefügt oder geändert werden.
 * Mit ACR Tasks können keine Images gepusht oder gepullt werden.
 * Mit Azure Security Center können keine Images in der Registrierung gescannt werden, oder die Scanergebnisse werden in Azure Security Center nicht angezeigt.
+* Sie erhalten einen `host is not reachable`-Fehler, wenn Sie versuchen, auf eine Registrierung zuzugreifen, die mit einem privaten Endpunkt konfiguriert ist.
 
 ## <a name="causes"></a>Ursachen
 
@@ -38,7 +39,7 @@ Beispiele für Symptome sind:
 
 ## <a name="further-diagnosis"></a>Weitere Diagnose 
 
-Führen Sie den Befehl [az acr check-health](/cli/azure/acr#az-acr-check-health) aus, um weitere Informationen zur Integrität der Registrierungsumgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Diagnostizieren Sie beispielsweise bestimmte Probleme mit der Netzwerkkonnektivität oder -konfiguration. 
+Führen Sie den Befehl [az acr check-health](/cli/azure/acr#az_acr_check_health) aus, um weitere Informationen zur Integrität der Registrierungsumgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Diagnostizieren Sie beispielsweise bestimmte Probleme mit der Netzwerkkonnektivität oder -konfiguration. 
 
 Befehlsbeispiele finden Sie unter [Überprüfen der Integrität einer Azure-Containerregistrierung](container-registry-check-health.md). Wenn Fehler gemeldet werden, überprüfen Sie die [Fehlerreferenz](container-registry-health-error-reference.md) und die folgenden Abschnitte für empfohlene Lösungen.
 
@@ -86,6 +87,8 @@ Verwandte Links:
 
 Vergewissern Sie sich, dass für das virtuelle Netzwerk entweder ein privater Endpunkt für Private Link oder ein Dienstendpunkt (Vorschau) konfiguriert ist. Ein Azure Bastion-Endpunkt wird derzeit nicht unterstützt.
 
+Wenn ein privater Endpunkt konfiguriert ist, vergewissern Sie sich, dass das DNS den öffentlichen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Registrierung (z. B. *myregistry.azurecr.io*) in die private IP-Adresse der Registrierung auflöst. Verwenden Sie für das DNS-Lookup ein Netzwerkhilfsprogramm, z. B. `dig` oder `nslookup`. Stellen Sie sicher, dass [DNS-Einträge](container-registry-private-link.md#dns-configuration-options) für den Registrierungs-FQDN und für jeden der Datenendpunkt-FQDNs konfiguriert sind.
+
 Überprüfen Sie die NSG-Regeln und die Diensttags, mit denen der Datenverkehr von anderen Ressourcen im Netzwerk zur Registrierung eingeschränkt wird. 
 
 Wenn ein Dienstendpunkt für die Registrierung konfiguriert ist, sollten Sie sich vergewissern, dass der Registrierung eine Netzwerkregel hinzugefügt wird, die den Zugriff über dieses Netzwerksubnetz zulässt. Der Dienstendpunkt unterstützt nur den Zugriff über virtuelle Computer und AKS-Cluster im Netzwerk.
@@ -94,11 +97,10 @@ Wenn Sie den Registrierungszugriff mithilfe eines virtuellen Netzwerks in einem 
 
 Wenn im Netzwerk Azure Firewall oder eine ähnliche Lösung konfiguriert ist, sollten Sie überprüfen, ob der ausgehende Datenverkehr von anderen Ressourcen, z. B. einem AKS-Cluster, möglich ist, damit die Registrierungsendpunkte erreicht werden können.
 
-Wenn ein privater Endpunkt konfiguriert ist, vergewissern Sie sich, dass das DNS den öffentlichen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Registrierung (z. B. *myregistry.azurecr.io*) in die private IP-Adresse der Registrierung auflöst. Verwenden Sie für das DNS-Lookup ein Netzwerkhilfsprogramm, z. B. `dig` oder `nslookup`.
-
 Verwandte Links:
 
 * [Herstellen einer privaten Verbindung mit einer Azure-Containerregistrierung über Azure Private Link](container-registry-private-link.md)
+* [Behandeln von Problemen mit der Konnektivität privater Azure-Endpunkte](../private-link/troubleshoot-private-endpoint-connectivity.md)
 * [Beschränken des Zugriffs auf eine Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk](container-registry-vnet.md)
 * [Erforderliche Netzwerkregeln für ausgehenden Datenverkehr und FQDNs für AKS-Cluster](../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
 * [Kubernetes: Debuggen der DNS-Auflösung](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)

@@ -6,24 +6,24 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 82dcd8c59c55a2866b51fd6dee896ea1298b6cf6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: b0ea5728618c7b69403fcc4c0a3575b70fac6038
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877296"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482601"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
 
-**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
+**Dieser Artikel gilt für:** âœ”ï¸ Java âœ”ï¸ C#
 
 In diesem Tutorial wird erläutert, wie Sie eine Azure Spring Cloud-Instanz in Ihrem virtuellen Netzwerk bereitstellen. Diese Bereitstellung wird manchmal als VNET-Einschleusung bezeichnet.
 
 Die Bereitstellung ermöglicht Folgendes:
 
-* Isolierung von Azure Spring Cloud-Apps und der Dienstruntime vom Internet in Ihrem Unternehmensnetzwerk.
-* Azure Spring Cloud-Interaktion mit Systemen in lokalen Rechenzentren oder Azure-Diensten in anderen virtuellen Netzwerken.
+* Isolation von Azure Spring Cloud-Apps und der Dienstruntime vom Internetâ€‹ in Ihrem Unternehmensnetzwerkâ€‹.
+* Azure Spring Cloud-Interaktion mit Systemen in â€‹lokalen Rechenzentren â€‹oder Azure-Diensten in anderen virtuellen Netzwerken.
 * Befähigung von Kunden zum Steuern der eingehenden und ausgehenden Netzwerkkommunikation für Azure Spring Cloud.
 
 > [!Note]

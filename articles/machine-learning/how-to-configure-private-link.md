@@ -5,18 +5,18 @@ description: Verwenden Sie Azure Private Link, um sicher von einem virtuellen Ne
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 0ea4e3ae0113608203dad63f636ae4adb4eeff9b
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: cb1a1cdf99e94bb4b4dc0cb6ef66da54a1b93ce8
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737512"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885792"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurieren von Azure Private Link für einen Azure Machine Learning-Arbeitsbereich
 
@@ -66,7 +66,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) stellt den Befehl [az ml workspace create](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_create) bereit. Mit den folgenden Parametern für diesen Befehl kann ein Arbeitsbereich mit einem privaten Netzwerk erstellt werden, aber er erfordert ein vorhandenes virtuelles Netzwerk:
+Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) stellt den Befehl [az ml workspace create](/cli/azure/ml/workspace#az_ml_workspace_create) bereit. Mit den folgenden Parametern für diesen Befehl kann ein Arbeitsbereich mit einem privaten Netzwerk erstellt werden, aber er erfordert ein vorhandenes virtuelles Netzwerk:
 
 * `--pe-name`: Der Name des erstellten privaten Endpunkts.
 * `--pe-auto-approval`: Gibt an, ob private Endpunktverbindungen mit dem Arbeitsbereich automatisch genehmigt werden sollen.
@@ -116,7 +116,7 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen und Methoden
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) stellt den Befehl [az ml workspace private-endpoint add](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) bereit.
+Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) stellt den Befehl [az ml workspace private-endpoint add](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) bereit.
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -153,7 +153,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) stellt den Befehl [az ml workspace private-endpoint delete](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) bereit.
+Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) stellt den Befehl [az ml workspace private-endpoint delete](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete) bereit.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -192,7 +192,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) bietet den Befehl [az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_update). Fügen Sie zum Aktivieren des öffentlichen Zugriffs auf den Arbeitsbereich den Parameter `--allow-public-access true` hinzu.
+Die [Azure CLI-Erweiterung für maschinelles Lernen](reference-azure-machine-learning-cli.md) bietet den Befehl [az ml workspace update](/cli/azure/ml/workspace#az_ml_workspace_update). Fügen Sie zum Aktivieren des öffentlichen Zugriffs auf den Arbeitsbereich den Parameter `--allow-public-access true` hinzu.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

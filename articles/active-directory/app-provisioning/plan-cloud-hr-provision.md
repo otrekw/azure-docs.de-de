@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9171226de7c975e75139af92798ea78419428f0
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256710"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175422"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
@@ -204,7 +204,7 @@ Folgende Produktionskonfigurationen werden empfohlen:
 
 Die Lösung für die Benutzerbereitstellung von der HR-Cloud-App in Azure Active Directory erfordert das Bereitstellen von mindestens einem Azure AD Connect-Bereitstellungs-Agent auf Servern unter Windows 2012 R2 oder höher. Die Server müssen über mindestens 4 GB RAM und .NET 4.7.1 Runtime verfügen. Stellen Sie sicher, dass der Hostserver Netzwerkzugriff auf die Azure Active Directory-Zieldomäne hat.
 
-Um die lokale Umgebung vorzubereiten, registriert der Konfigurationsassistent des Azure AD Connect-Bereitstellungs-Agents den Agent bei Ihrem Azure AD-Mandanten, [öffnet Ports](../manage-apps/application-proxy-add-on-premises-application.md#open-ports), [gestattet den Zugriff auf URLs](../manage-apps/application-proxy-add-on-premises-application.md#allow-access-to-urls) und unterstützt die [HTTPS-Proxy-Konfiguration für den ausgehenden Datenverkehr](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
+Um die lokale Umgebung vorzubereiten, registriert der Konfigurationsassistent des Azure AD Connect-Bereitstellungs-Agents den Agent bei Ihrem Azure AD-Mandanten, [öffnet Ports](../app-proxy/application-proxy-add-on-premises-application.md#open-ports), [gestattet den Zugriff auf URLs](../app-proxy/application-proxy-add-on-premises-application.md#allow-access-to-urls) und unterstützt die [HTTPS-Proxy-Konfiguration für den ausgehenden Datenverkehr](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
 
 Der Bereitstellungs-Agent verwendet ein Dienstkonto für die Kommunikation mit den Azure Active Directory-Domänen. Erstellen Sie vor der Installation des Agents in „Azure Active Directory-Benutzer und -Computer“ ein Dienstkonto, das folgende Anforderungen erfüllt:
 

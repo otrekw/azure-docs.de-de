@@ -4,12 +4,12 @@ description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: bb10e2023187c74a9e8b9a2e4c72115841e89a84
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: af2766d5692f232970c3c7c735d4c34abebe9c3c
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552596"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070387"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -131,7 +131,7 @@ Eine Workload erfordert für die logische Isolation möglicherweise das Aufteile
 
 * Alle Subnetze, die Knotenpools zugewiesen sind, müssen demselben virtuellen Netzwerk angehören.
 * Systempods müssen Zugriff auf alle Knoten/Pods im Cluster haben, um eine kritische Funktionalität bereitzustellen, z. B. DNS-Auflösung und Tunneln von kubectl-Protokollen/exec/Port-Weiterleitungsproxy.
-* Wenn Sie Ihr VNET nach dem Erstellen Ihres Clusters erweitern, müssen Sie den Cluster aktualisieren (einen beliebigen verwalteten Clustervorgang ausführen, aber Knotenpoolvorgänge werden nicht gezählt), bevor Sie ein Subnetz außerhalb der ursprünglichen CIDR hinzufügen. Wenn der Agentpool hinzugefügt wird, tritt jetzt bei AKS ein Fehler auf, obwohl wir dies ursprünglich zugelassen haben. Falls Sie nicht wissen, wie Sie Ihren Cluster abstimmen können, öffnen Sie ein Supportticket. 
+* Wenn Sie Ihr VNET nach dem Erstellen Ihres Clusters erweitern, müssen Sie den Cluster aktualisieren (einen beliebigen verwalteten Clustervorgang ausführen, Knotenpoolvorgänge zählen jedoch nicht), bevor Sie ein Subnetz außerhalb des ursprünglichen CIDR-Bereichs hinzufügen. Wenn der Agentpool hinzugefügt wird, tritt jetzt bei AKS ein Fehler auf, obwohl wir dies ursprünglich zugelassen haben. Falls Sie nicht wissen, wie Sie Ihren Cluster abstimmen können, öffnen Sie ein Supportticket. 
 * Die Calico-Netzwerkrichtlinie wird nicht unterstützt. 
 * Die Azure-Netzwerkrichtlinie wird nicht unterstützt.
 * Kube-Proxy erwartet eine einzelne zusammenhängende CIDR und verwendet sie für drei Optimierungen. Siehe diese [K.E.P.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) Einzelheiten zu „Cluster-CIDR“ finden Sie [hier](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/). In Azure CNI wird das Subnetz Ihres ersten Knotenpools an Kube-Proxy übergeben. 
@@ -408,9 +408,12 @@ Es dauert einige Minuten, bis *gpunodepool* erfolgreich erstellt wurde.
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Angeben von Taint, Bezeichnung oder Tag für einen Knotenpool
 
-### <a name="setting-nodepool-taints"></a>Festlegen von Knotenpooltaints
-
 Beim Erstellen eines Knotenpools können Sie diesem Knotenpool Taints, Bezeichnungen oder Tags hinzufügen. Wenn Sie einen Taint, eine Bezeichnung oder ein Tag hinzufügen, erhalten alle Knoten innerhalb dieses Knotenpools ebenfalls diesen Taint, diese Bezeichnung oder dieses Tag.
+
+> [!IMPORTANT]
+> Das Hinzufügen von Taints, Bezeichnungen oder Tags zu Knoten sollte für den gesamten Knotenpool mithilfe von `az aks nodepool` erfolgen. Das Anwenden von Taints, Bezeichnungen oder Tags auf einzelne Knoten in einem Knotenpool mit `kubectl` wird nicht empfohlen.  
+
+### <a name="setting-nodepool-taints"></a>Festlegen von Knotenpooltaints
 
 Verwenden Sie [az aks nodepool add][az-aks-nodepool-add], um einen Knotenpool mit einem Taint zu erstellen. Geben Sie den Namen *taintnp* an, und verwenden Sie den Parameter `--node-taints`, um *sku=gpu:NoSchedule* für den Taint anzugeben.
 

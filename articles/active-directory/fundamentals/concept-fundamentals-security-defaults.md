@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 04/20/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efa88e1be5c5df5dd09cb5a97c8ece352496ccdb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98600138"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769695"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
-Die Aufrechterhaltung der Sicherheit kann schwierig sein, da gängige identitätsbezogene Angriffe, z. B. Kennwortspray, Replay und Phishing, immer zahlreicher und beliebter werden. Sicherheitsstandards in Azure Active Directory (Azure AD) können den Schutz Ihrer Organisation vor solchen Angriffen mit vorkonfigurierten Sicherheitseinstellungen vereinfachen:
+Die Aufrechterhaltung der Sicherheit kann sich angesichts der zunehmenden Verbreitung gängiger identitätsbezogener Angriffe wie Kennwortspray, Replay und Phishing als schwierig erweisen. Sicherheitsstandards in Azure Active Directory (Azure AD) können den Schutz Ihrer Organisation vor solchen Angriffen mit vorkonfigurierten Sicherheitseinstellungen vereinfachen:
 
 - Festlegen, dass sich alle Benutzer für Azure AD Multi-Factor Authentication registrieren müssen.
 - Festlegen, dass Administratoren mehrstufige Authentifizierung durchführen müssen.
@@ -35,7 +35,7 @@ Weitere Informationen dazu, warum diese Sicherheitsstandards verfügbar gemacht 
 
 ## <a name="availability"></a>Verfügbarkeit
 
-Microsoft stellt allen Benutzern Sicherheitsstandards zur Verfügung. Das Ziel ist sicherzustellen, dass in allen Organisationen eine Standardsicherheitsebene ohne zusätzliche Kosten aktiviert ist. Sie aktivieren die Sicherheitsstandards im Azure-Portal. Wenn Ihr Mandant am oder nach dem 22. Oktober 2019 erstellt wurde, ist es möglich, dass in Ihrem Mandanten bereits Sicherheitsstandards aktiviert sind. Um alle unsere Benutzer zu schützen, werden die Sicherheitsstandards für alle neu erstellten Mandanten eingeführt.
+Microsoft stellt allen Benutzern Sicherheitsstandards zur Verfügung. Das Ziel ist sicherzustellen, dass in allen Organisationen eine Standardsicherheitsebene ohne zusätzliche Kosten aktiviert ist. Sie aktivieren die Sicherheitsstandards im Azure-Portal. Wenn Ihr Mandant am oder nach dem 22. Oktober 2019 erstellt wurde, ist es möglich, dass in Ihrem Mandanten bereits Sicherheitsstandards aktiviert sind. Zum Schutz unserer Benutzer werden Sicherheitsstandards für alle neu erstellten Mandanten eingeführt.
 
 ### <a name="whos-it-for"></a>Für wen eignet sich diese Funktion?
 
@@ -46,7 +46,7 @@ Microsoft stellt allen Benutzern Sicherheitsstandards zur Verfügung. Das Ziel i
 
 - Wenn Sie eine Organisation sind, die derzeit Richtlinien für den bedingten Zugriff verwendet, um Signale zusammenzuführen, Entscheidungen zu treffen und Organisationsrichtlinien zu erzwingen, sind Sicherheitsstandards möglicherweise nicht für Sie geeignet. 
 - Wenn Sie ein Unternehmen mit Azure Active Directory Premium-Lizenzen sind, sind Sicherheitsstandards möglicherweise nicht das Richtige für Sie.
-- Wenn Ihre Organisation über komplexe Sicherheitsanforderungen verfügt, sollten Sie bedingten Zugriff in Erwägung ziehen.
+- Bei komplexen Sicherheitsanforderungen empfiehlt sich ggf. die Verwendung von bedingtem Zugriff.
 
 ## <a name="policies-enforced"></a>Erzwungene Richtlinien
 
@@ -70,6 +70,9 @@ Nach Abschluss der Azure AD Multi-Factor Authentication-Registrierung ist für 
 - Benutzeradministrator
 - Authentifizierungsadministrator
 
+> [!WARNING]
+> Stellen Sie sicher, dass Ihrem Verzeichnis mindestens zwei Konten mit Berechtigungen vom Typ „Globaler Administrator“ zugewiesen sind. Dies ist hilfreich, wenn ein globaler Administrator gesperrt wird. Ausführlichere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md).
+
 ### <a name="protecting-all-users"></a>Schützen aller Benutzer
 
 Wir gehen häufig davon aus, dass nur Administratorkonten durch eine mehrstufige Authentifizierung geschützt werden müssen. Administratoren haben umfassenden Zugriff auf vertrauliche Informationen und können Änderungen an abonnementweiten Einstellungen vornehmen. Angriffe richten sich jedoch häufig gegen Endbenutzer. 
@@ -80,12 +83,12 @@ Eine gängige Methode zur Verbesserung des Schutzes für alle Benutzer besteht i
 
 ### <a name="blocking-legacy-authentication"></a>Blockieren der Legacyauthentifizierung
 
-Um Ihren Benutzern den einfachen Zugriff auf Ihre Cloud-Apps zu ermöglichen, unterstützt Azure AD eine Vielzahl von Authentifizierungsprotokollen – einschließlich der Legacyauthentifizierung. Der Begriff *Legacyauthentifizierung* bezieht sich auf eine Authentifizierungsanforderung von:
+Von Azure AD werden verschiedene Authentifizierungsprotokolle (einschließlich Legacyauthentifizierung) unterstützt, damit Benutzer problemlos auf Ihre Cloud-Apps zugreifen können. Der Begriff *Legacyauthentifizierung* bezieht sich auf eine Authentifizierungsanforderung von:
 
 - Clients, die keine moderne Authentifizierung verwenden (z. B. ein Office 2010-Client)
 - jedem Client, der ältere E-Mail-Protokolle wie IMAP, SMTP oder POP3 verwendet
 
-Der Großteil aller gefährdenden Anmeldeversuche erfolgt über Legacyauthentifizierungen. Die Legacyauthentifizierung unterstützt keine mehrstufige Authentifizierung. Selbst wenn Sie in Ihrem Verzeichnis eine MFA-Richtlinie aktiviert haben, kann sich ein Angreifer mit einem älteren Protokoll authentifizieren und die mehrstufige Authentifizierung umgehen. 
+Heutzutage sind die meisten gefährdenden Anmeldeversuche auf Legacyauthentifizierungen zurückzuführen. Die Legacyauthentifizierung unterstützt keine mehrstufige Authentifizierung. Selbst wenn Sie in Ihrem Verzeichnis eine MFA-Richtlinie aktiviert haben, kann sich ein Angreifer mit einem älteren Protokoll authentifizieren und die mehrstufige Authentifizierung umgehen. 
 
 Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten werden alle Authentifizierungsanforderungen blockiert, die über ein Legacyprotokoll an einen beliebigen Mandanten gerichtet werden. Durch die Sicherheitsstandards ist die Standardauthentifizierung für Exchange Active Sync blockiert.
 
@@ -96,13 +99,13 @@ Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten werden alle Authent
 
 ### <a name="protecting-privileged-actions"></a>Schützen privilegierter Aktionen
 
-Organisationen verwenden eine Vielzahl von Azure-Diensten, die über die Azure Resource Manager-API verwaltet werden, darunter z. B.:
+Organisationen verwenden verschiedene Azure-Dienste, die über die Azure Resource Manager-API verwaltet werden. Hierzu zählen beispielsweise:
 
 - Azure-Portal 
 - Azure PowerShell 
 - Azure CLI
 
-Benutzer, die Dienste mit Azure Resource Manager verwalten, verfügen über weitreichende Berechtigungen. Beispielsweise können mit Azure Resource Manager mandantenweite Konfigurationen wie Diensteinstellungen und die Abonnementabrechnung geändert werden. Die einstufige Authentifizierung ist für eine Vielzahl von Bedrohungen anfällig, beispielsweise für Phishing- und Kennwortspray-Angriffe. 
+Benutzer, die Dienste mit Azure Resource Manager verwalten, verfügen über weitreichende Berechtigungen. Beispielsweise können mit Azure Resource Manager mandantenweite Konfigurationen wie Diensteinstellungen und die Abonnementabrechnung geändert werden. Die einstufige Authentifizierung ist für verschiedene Bedrohungen anfällig, beispielsweise für Phishing- und Kennwortspray-Angriffe. 
 
 Es ist wichtig, die Identität der Benutzer zu überprüfen, die auf Azure Resource Manager zugreifen und Konfigurationen aktualisieren möchten. Sie überprüfen die Identität von Benutzern, indem Sie vor der Zugriffserteilung eine zusätzliche Authentifizierung anfordern.
 

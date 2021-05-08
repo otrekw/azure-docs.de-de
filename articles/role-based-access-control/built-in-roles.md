@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 04/09/2021
+ms.date: 04/26/2021
 ms.custom: generated
-ms.openlocfilehash: f4112d4b9bf55e45ec865f5c8606ead9088a7983
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 4e2df06b67ee9148d3c74700ebfadd72bff8392f
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752388"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069973"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
@@ -137,6 +137,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Cognitive Services: Custom Vision-Leser](#cognitive-services-custom-vision-reader) | Schreibgeschützte Aktionen im Projekt. Leser können das Projekt weder erstellen noch aktualisieren. | 93586559-c37d-4a6b-ba08-b9f0940c2d73 |
 > | [Cognitive Services: Custom Vision-Trainer](#cognitive-services-custom-vision-trainer) | Anzeigen, Bearbeiten von Projekten und Trainieren der Modelle, einschließlich der Möglichkeit zum Veröffentlichen, Aufheben der Veröffentlichung und Exportieren der Modelle. Trainer können das Projekt weder erstellen noch löschen. | 0a5ae4ab-0d65-4eeb-be61-29fc9b54394b |
 > | [Cognitive Services-Datenleser (Vorschau)](#cognitive-services-data-reader-preview) | Ermöglicht das Lesen von Cognitive Services-Daten. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
+> | [Cognitive Services: Gesichtserkennung](#cognitive-services-face-recognizer) | Ermöglicht Ihnen das Ausführen von Vorgängen zum Erkennen, Überprüfen, Identifizieren und Gruppieren sowie zum Auffinden ähnlicher Gesichter in der Gesichtserkennungs-API. Diese Rolle lässt keine Erstellungs- oder Löschvorgänge zu. Daher eignet sie sich gut für Endpunkte, die nur Rückschlussfunktionen basierend auf der Regel der geringsten Rechte benötigen. | 9894cab4-e18a-44aa-828b-cb588cd6f2d7 |
 > | [Cognitive Services Metrics Advisor-Administrator](#cognitive-services-metrics-advisor-administrator) | Vollzugriff auf das Projekt, einschließlich der Konfiguration auf Systemebene. | cb43c632-a144-4ec5-977c-e80c4affc34a |
 > | [Cognitive Services QnA Maker-Editor](#cognitive-services-qna-maker-editor) | Erstellen, Bearbeiten, Importieren und Exportieren einer Wissensdatenbank. Sie können keine Wissensdatenbank veröffentlichen oder löschen. | f4cc2bf9-21be-47a1-bdf1-5c5804381025 |
 > | [Cognitive Services QnA Maker-Leseberechtigter](#cognitive-services-qna-maker-reader) | Sie können Wissensdatenbanken nur lesen und testen. | 466ccd10-b268-4a11-b098-b4849f024126 |
@@ -2487,7 +2488,7 @@ Ermöglicht den Lesezugriff auf Dateien/Verzeichnisse in Azure-Dateifreigaben. D
 Lesen, Schreiben und Löschen von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Weitere Informationen](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | Beschreibung |
+> | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/delete | Löschen einer Warteschlange. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | Zurückgeben einer Warteschlange oder Liste mit Warteschlangen. |
@@ -2887,7 +2888,7 @@ Ermöglicht Ihrem App-Server den Zugriff auf SignalR Service mit AAD-Authentifiz
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | Generiert einen temporären AccessKey zum Signieren von Clienttoken. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | Generiert einen Zugriffsschlüssel für das Signieren von Zugriffstoken. Der Schlüsse läuft standardmäßig nach 90 Minuten ab. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/serverConnection/write | Startet eine Serververbindung. |
 > | **NotDataActions** |  |
 > | *keine* |  |
@@ -2977,7 +2978,7 @@ Ermöglicht Ihrer App den Zugriff auf den Dienst im serverlosen Modus mit AAD-Au
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | Generiert ein ClientToken zum Starten einer Clientverbindung. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | Generiert ein Zugriffstoken für den Client zur Verbindungsherstellung mit ASRS. Das Token läuft standardmäßig nach 5 Minuten ab. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -3016,8 +3017,8 @@ Bietet Vollzugriff auf Azure SignalR Service-REST-APIs.
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | Generiert einen temporären AccessKey zum Signieren von Clienttoken. |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | Generiert ein ClientToken zum Starten einer Clientverbindung. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | Generiert einen Zugriffsschlüssel für das Signieren von Zugriffstoken. Der Schlüsse läuft standardmäßig nach 90 Minuten ab. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | Generiert ein Zugriffstoken für den Client zur Verbindungsherstellung mit ASRS. Das Token läuft standardmäßig nach 5 Minuten ab. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/hub/send/action | Überträgt Nachrichten an alle Clientverbindungen im Hub. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/send/action | Überträgt eine Nachricht an eine Gruppe. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | Überprüft die Existenz einer Gruppe oder die Existenz eines Benutzers in einer Gruppe. |
@@ -5707,6 +5708,53 @@ Ermöglicht das Lesen von Cognitive Services-Daten.
 }
 ```
 
+### <a name="cognitive-services-face-recognizer"></a>Cognitive Services: Gesichtserkennung
+
+Ermöglicht Ihnen das Ausführen von Vorgängen zum Erkennen, Überprüfen, Identifizieren und Gruppieren sowie zum Auffinden ähnlicher Gesichter in der Gesichtserkennungs-API. Diese Rolle lässt keine Erstellungs- oder Löschvorgänge zu. Daher eignet sie sich gut für Endpunkte, die nur Rückschlussfunktionen basierend auf der Regel der geringsten Rechte benötigen.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/Face/detect/action | Hiermit werden menschliche Gesichter in einem Bild erkannt und Rechtecke für die Gesichter sowie optional faceIds, Sehenswürdigkeiten und Attribute zurückgegeben. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/Face/verify/action | Hiermit überprüfen Sie, ob zwei Gesichter zu derselben Person gehören oder ob je ein Gesicht zu einer Person gehört. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/Face/identify/action | 1:n-Identifikationsvorgang zum Ermitteln der besten Ergebnisse für das Gesicht der abgefragten Person aus einer Personengruppe oder umfangreichen Personengruppe. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/Face/group/action | Hiermit unterteilen Sie die Gesichter der Kandidaten basierend auf der Gesichterähnlichkeit in Gruppen. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/Face/findsimilars/action | Hiermit können Sie anhand der faceId des abgefragten Gesichts ähnliche Gesichter aus einem faceId-Array, einer Gesichterliste oder einer umfangreichen Gesichterliste suchen. faceId |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you perform detect, verify, identify, group, and find similar operations on Face API. This role does not allow create or delete operations, which makes it well suited for endpoints that only need inferencing capabilities, following 'least privilege' best practices.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/9894cab4-e18a-44aa-828b-cb588cd6f2d7",
+  "name": "9894cab4-e18a-44aa-828b-cb588cd6f2d7",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.CognitiveServices/accounts/Face/detect/action",
+        "Microsoft.CognitiveServices/accounts/Face/verify/action",
+        "Microsoft.CognitiveServices/accounts/Face/identify/action",
+        "Microsoft.CognitiveServices/accounts/Face/group/action",
+        "Microsoft.CognitiveServices/accounts/Face/findsimilars/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Cognitive Services Face Recognizer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="cognitive-services-metrics-advisor-administrator"></a>Cognitive Services Metrics Advisor-Administrator
 
 Vollzugriff auf das Projekt, einschließlich der Konfiguration auf Systemebene. [Weitere Informationen](../cognitive-services/metrics-advisor/how-tos/alerts.md)
@@ -8210,7 +8258,7 @@ Ausführen beliebiger Aktionen für die Zertifikate eines Schlüsseltresors mit 
 
 ### <a name="key-vault-contributor"></a>Key Vault-Mitwirkender
 
-Verwalten von Schlüsseltresoren, gestattet Ihnen jedoch nicht, Rollen in Azure RBAC zuzuweisen, und ermöglicht keinen Zugriff auf Geheimnisse, Schlüssel oder Zertifikate. [Weitere Informationen](../key-vault/general/security-overview.md)
+Verwalten von Schlüsseltresoren, gestattet Ihnen jedoch nicht, Rollen in Azure RBAC zuzuweisen, und ermöglicht keinen Zugriff auf Geheimnisse, Schlüssel oder Zertifikate. [Weitere Informationen](../key-vault/general/security-features.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |

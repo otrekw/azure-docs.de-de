@@ -5,12 +5,13 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 5c1ef7d8de32564e2b1d3b1578fcd72cefde0327
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c050ae9eb67276ff873864b6ab49ed50afad210f
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047144"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319411"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Log Analytics-Arbeitsbereiche in Azure Monitor
 Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen in Azure Monitor. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
@@ -681,7 +682,7 @@ Im folgenden Beispiel wird einem vorhandenen Arbeitsbereich die Erfassung [benut
                         ]
                     }
                     },
-                    "extractionType": "DateTime"
+                    "extractionType&quot;: &quot;DateTime"
                 }
                 ]
             }

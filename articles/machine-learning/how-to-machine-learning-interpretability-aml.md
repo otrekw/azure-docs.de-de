@@ -9,18 +9,16 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: devx-track-python, responsible-ml
+ms.openlocfilehash: 6afe193cb29b313f45335e46aa9fcaec2e8bf240
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98222750"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889050"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Erläutern von ML-Modellen und -Vorhersagen in Python mithilfe des Interpretierbarkeitspakets (Vorschauversion)
-
-
 
 In diesem Leitfaden erfahren Sie, wie Sie das Interpretierbarkeitspaket des Python-SDK für Azure Machine Learning für die folgenden Aufgaben nutzen können:
 
@@ -36,8 +34,9 @@ In diesem Leitfaden erfahren Sie, wie Sie das Interpretierbarkeitspaket des Pyth
 * Stellen Sie einen Bewertungsexplainer mit Ihrem Modell bereit, um die Erklärungen während der Rückschlüsse zu beobachten.
 
 
-
 Weitere Informationen zu den unterstützten Interpretierbarkeitstechniken und den Modellen des maschinellen Lernens finden Sie unter [Modellinterpretierbarkeit in Azure Machine Learning](how-to-machine-learning-interpretability.md) und [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model).
+
+Eine Anleitung zum Aktivieren der Interpretierbarkeit für Modelle, die mit automatisiertem maschinellem Lernen trainiert wurden, finden Sie unter [Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen (Vorschau)](how-to-machine-learning-interpretability-automl.md). 
 
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Generieren des Werts für die Featurerelevanz auf Ihrem persönlichen Computer 
 Das folgende Beispiel zeigt, wie Sie das Interpretierbarkeitspaket auf Ihrem persönlichen Computer verwenden, ohne auf Azure-Dienste zurückzugreifen.
@@ -296,7 +295,7 @@ Das folgende Beispiel zeigt die Verwendung der `ExplanationClient`-Klasse zum Ak
 
 ## <a name="visualizations"></a>Visualisierungen
 
-Nachdem Sie die Erklärungen in Ihr lokales Jupyter Notebook heruntergeladen haben, können Sie das Visualisierungsdashboard zum Auswerten und Interpretieren Ihres Modells verwenden. Verwenden Sie den folgenden Code, um das Visualisierungsdashboard-Widget in Ihrem Jupyter Notebook zu laden:
+Nachdem Sie die Erklärungen in Ihre lokale Jupyter Notebook-Instanz heruntergeladen haben, können Sie Ihr Modell anhand der Visualisierungen auf dem Erklärungsdashboard auswerten und interpretieren. Verwenden Sie den folgenden Code, um das Erklärungsdashboard-Widget in Ihrer Jupyter Notebook-Instanz zu laden:
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -304,7 +303,7 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
-Die Visualisierung unterstützt Erklärungen sowohl für entwickelte als auch für Rohfeatures. Erklärungen im Rohformat basieren auf den Features des ursprünglichen Datasets, und Erklärungen im entwickelten Format basieren auf den Features des Datasets mit Anwendung von Feature Engineering („Featurisierung“).
+Die Visualisierungen unterstützen Erklärungen für entwickelte Features sowie für Features im Rohformat. Erklärungen im Rohformat basieren auf den Features des ursprünglichen Datasets, und Erklärungen im entwickelten Format basieren auf den Features des Datasets mit Anwendung von Feature Engineering („Featurisierung“).
 
 Beim Interpretieren eines Modells in Bezug auf das ursprüngliche Dataset empfehlen wir Ihnen, Erklärungen im Rohformat zu nutzen, da jede Featurerelevanz jeweils einer Spalte aus dem ursprünglichen Dataset entspricht. Ein Szenario, in dem Erklärungen im entwickelten Format ggf. hilfreich sind, sind Untersuchungen der Auswirkung einzelner Kategorien eines kategorischen Features. Wenn eine 1-Hot-Codierung auf ein kategorisches Feature angewendet wird, enthalten die sich ergebenden Erklärungen im entwickelten Format einen anderen Relevanzwert pro Kategorie (einen pro entwickeltem Feature mit 1-Hot-Codierung). Dies kann hilfreich sein, wenn eingegrenzt werden soll, welcher Teil des Datasets für das Modell die meisten Informationen enthält.
 
@@ -353,11 +352,11 @@ Auf der vierten Registerkarte der Seite mit den Erklärungen können Sie einen D
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Visualisierung in Azure Machine Learning-Studio
 
-Wenn Sie die Schritte zur [Remoteinterpretierbarkeit](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (Hochladen der generierten Erklärung in den Azure Machine Learning-Ausführungsverlauf) abgeschlossen haben, können Sie das Visualisierungsdashboard im [Azure Machine Learning Studio](https://ml.azure.com) anzeigen. Dieses Dashboard ist eine vereinfachte Version des oben erwähnten Visualisierungsdashboards. Die Generierung von Was-wäre-wenn-Datenpunkten und die ICE-Plots sind deaktiviert, da in Azure Machine Learning Studio keine aktive Computeressource vorhanden ist, mit der die Echtzeitberechnungen durchgeführt werden können.
+Wenn Sie die Schritte zur [Remoteinterpretierbarkeit](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (Hochladen der generierten Erklärungen in den Azure Machine Learning-Ausführungsverlauf) abgeschlossen haben, können Sie die Visualisierungen auf dem Erklärungsdashboard in [Azure Machine Learning Studio](https://ml.azure.com) anzeigen. Bei diesem Dashboard handelt es sich um eine einfachere Version des Dashboardwidgets, das in Ihrer Jupyter Notebook-Instanz generiert wird. Die Generierung von Was-wäre-wenn-Datenpunkten und die ICE-Plots sind deaktiviert, da in Azure Machine Learning Studio keine aktive Computeressource vorhanden ist, mit der die Echtzeitberechnungen durchgeführt werden können.
 
 Wenn die Dataset-, globalen und lokalen Erklärungen verfügbar sind, werden auf allen Registerkarten Daten eingefügt. Falls nur eine globale Erklärung verfügbar ist, wird die Registerkarte für „Individuelle Featurerelevanz“ deaktiviert.
 
-Sie haben zwei Möglichkeiten, um auf das Visualisierungsdashboard in Azure Machine Learning-Studio zuzugreifen:
+Sie haben zwei Möglichkeiten, um auf das Erklärungsdashboard in Azure Machine Learning Studio zuzugreifen:
 
 * Bereich **Experimente** (Vorschau)
   1. Klicken Sie im linken Bereich auf **Experimente**, damit Ihnen eine Liste mit Experimenten angezeigt wird, die Sie in Azure Machine Learning ausgeführt haben.
@@ -368,7 +367,7 @@ Sie haben zwei Möglichkeiten, um auf das Visualisierungsdashboard in Azure Mach
 
 * Bereich **Modelle**
   1. Wenn Sie Ihr ursprüngliches Modell mithilfe der Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning](./how-to-deploy-and-where.md) registriert haben, können Sie **Modelle** im linken Bereich auswählen, um sie anzuzeigen.
-  1. Wählen Sie ein Modell aus, und klicken Sie dann auf die Registerkarte **Erklärungen**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
+  1. Wählen Sie ein Modell und anschließend die Registerkarte **Erklärungen** aus, um das Erklärungsdashboard anzuzeigen.
 
 ## <a name="interpretability-at-inference-time"></a>Interpretierbarkeit beim Ziehen von Rückschlüssen
 
