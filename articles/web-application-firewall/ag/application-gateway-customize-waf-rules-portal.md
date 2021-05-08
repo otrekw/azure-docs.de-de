@@ -4,15 +4,15 @@ description: Dieser Artikel enthält Informationen zum Anpassen von Web Applicat
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 04/21/2021
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ab122d178e5390a53e5a3a39f1b7763b298dc6d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74048378"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878324"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Anpassen von Web Application Firewall-Regeln mit dem Azure-Portal
 
@@ -21,7 +21,7 @@ Die Web Application Firewall (WAF) von Azure Application Gateway bietet Schutz f
 >[!NOTE]
 > Wenn Ihr Anwendungsgateway nicht auf die WAF-Ebene zurückgreift, wird die Option zum Aktualisieren des Anwendungsgateways auf die WAF-Ebene im rechten Bereich angezeigt. 
 
-![Aktivieren der WAF][fig1]
+:::image type="content" source="../media/application-gateway-customize-waf-rules-portal/1.png" alt-text="Aktivieren der WAF"::: 
 
 ## <a name="view-rule-groups-and-rules"></a>Anzeigen von Regelgruppen und Regeln
 
@@ -37,16 +37,13 @@ Die Web Application Firewall (WAF) von Azure Application Gateway bietet Schutz f
 > [!IMPORTANT]
 > Gehen Sie vorsichtig vor, wenn Sie Regelgruppen oder Regeln deaktivieren. Dies könnte Sie erhöhten Sicherheitsrisiken aussetzen.
 
-Wenn Sie Regeln deaktivieren, können Sie eine gesamte Regelgruppe oder bestimmte Regeln in einer oder mehreren Regelgruppen deaktivieren. 
-
 **So deaktivieren Sie Regelgruppen oder bestimmte Regeln**
 
    1. Suchen Sie nach den Regeln oder Regelgruppen, die Sie deaktivieren möchten.
    2. Aktivieren Sie die Kontrollkästchen für die Regeln, die Sie deaktivieren möchten. 
    3. Wählen Sie die Aktion am oberen Rand der Seite (Aktivieren/Deaktivieren) für die ausgewählten Regeln aus.
-   2. Wählen Sie **Speichern** aus. 
-
-![Speichern der Änderungen][3]
+   2. Wählen Sie **Speichern** aus.
+    :::image type="content" source="../media/application-gateway-customize-waf-rules-portal/figure3.png" alt-text="Speichern deaktivierter Regeln"::: 
 
 ## <a name="mandatory-rules"></a>Obligatorische Regeln
 
@@ -66,6 +63,3 @@ CRS 3.x-spezifisch:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nach dem Konfigurieren Ihrer deaktivierten Regeln können Sie sich darüber informieren, wie Sie WAF-Protokolle anzeigen. Weitere Informationen finden Sie unter [Application Gateway-Diagnose](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
-
-[fig1]: ../media/application-gateway-customize-waf-rules-portal/1.png
-[3]: ../media/application-gateway-customize-waf-rules-portal/figure3.png

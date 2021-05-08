@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: a33b248c18bcbf322a1e2d911453a1c4c087e625
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32b9753b79273ce747d00cba077dd8a5ee6d724d
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550517"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565286"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Herunterladen einer Windows-VHD von Azure
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals eine Windows-
 
 ## <a name="optional-generalize-the-vm"></a>Optional: Generalisieren des virtuellen Computers
 
-Wenn Sie die VHD als [Image](tutorial-custom-images.md) verwenden möchten, um andere VMs zu erstellen, sollten Sie mithilfe von [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) das Betriebssystem generalisieren. 
+Wenn Sie die VHD als [Image](tutorial-custom-images.md) verwenden möchten, um andere VMs zu erstellen, sollten Sie mithilfe von [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) das Betriebssystem generalisieren. Andernfalls müssen Sie den Datenträger für jeden virtuellen Computer kopieren, den Sie erstellen möchten.
 
 Um die VHD als Image zum Erstellen von anderen VMs zu verwenden, generalisieren Sie die VM.
 
@@ -33,15 +33,33 @@ Um die VHD als Image zum Erstellen von anderen VMs zu verwenden, generalisieren 
 5. Wählen Sie im Dialogfeld „Systemvorbereitungsprogramm“ die Option **Out-of-Box-Experience (OOBE) für System aktivieren** aus, und vergewissern Sie sich, dass **Verallgemeinern** ausgewählt ist.
 6. Wählen Sie unter „Optionen für Herunterfahren“ die Option **Herunterfahren** aus, und klicken Sie dann auf **OK**. 
 
+Wenn Sie Ihren aktuellen virtuellen Computer nicht generalisieren möchten, können Sie trotzdem ein generalisiertes Image erstellen, indem Sie zunächst eine [Momentaufnahme des Betriebssystemdatenträgers](#alternative-snapshot-the-vm-disk) erstellen, einen neuen virtuellen Computer aus der Momentaufnahme erstellen und dann die Kopie generalisieren.
 
 ## <a name="stop-the-vm"></a>Beenden des virtuellen Computers
 
-Eine VHD kann nicht von Azure heruntergeladen werden, wenn sie an eine ausgeführte VM angefügt ist. Sie müssen die VM beenden, um eine VHD herunterzuladen. 
+Eine VHD kann nicht von Azure heruntergeladen werden, wenn sie an eine ausgeführte VM angefügt ist. Wenn Sie den virtuellen Computer weiter ausführen möchten, können Sie [eine Momentaufnahme erstellen und dann die Momentaufnahme herunterladen](#alternative-snapshot-the-vm-disk).
 
 1. Klicken Sie im Hub-Menü im Azure-Portal auf **Virtuelle Computer**.
 1. Wählen Sie die VM aus der Liste aus.
 1. Klicken Sie auf dem Blatt für die VM auf **Beenden**.
 
+### <a name="alternative-snapshot-the-vm-disk"></a>Alternative: Momentaufnahme des VM-Datenträgers
+
+Machen Sie eine Momentaufnahme des Datenträgers, um ihn herunterzuladen.
+
+1. Wählen Sie im [Portal](https://portal.azure.com) den virtuellen Computer aus.
+2. Wählen Sie im linken Menü **Datenträger** aus und dann den Datenträger, den Sie momentaufnahmen möchten. Die Details des Datenträgers werden angezeigt.  
+3. Wählen Sie im oberen Menü die Option **Momentaufnahme erstellen** aus. Die Seite **Momentaufnahme erstellen** wird geöffnet.
+4. Geben Sie unter **Name** einen Namen für die Momentaufnahme ein. 
+5. Wählen Sie für **Momentaufnahmetyp** die Option **Vollständig** oder **Inkrementell** aus.
+6. Wählen Sie abschließend **Überprüfen + Erstellen** aus.
+
+Ihre Momentaufnahme wird in Kürze erstellt und kann dann zum Herunterladen oder Erstellen eines anderen virtuellen Computers verwendet werden.
+
+> [!NOTE]
+> Wenn Sie den virtuellen Computer nicht zuerst beenden, ist die Momentaufnahme nicht bereinigt. Der Snapshot befindet sich in dem Zustand, als ob die VM zum Zeitpunkt der Erstellung des Snapshots heruntergefahren oder abgestürzt wäre.  Obwohl dies normalerweise sicher ist, kann dies zu Problemen führen, wenn die ausgeführten Anwendungen, die zu einem bestimmten Zeitpunkt ausgeführt werden, nicht absturzsicher waren.
+>  
+> Diese Methode wird nur für VMs mit einem einzelnen Betriebssystemdatenträger empfohlen. VMs mit mindestens einem Datenträger sollten vor dem Herunterladen oder vor dem Erstellen einer Momentaufnahme für den Betriebssystemdatenträger und jeden Datenträger beendet werden.
 
 ## <a name="generate-download-url"></a>Generieren der Download-URL
 
@@ -50,11 +68,11 @@ Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signa
 1. Klicken Sie auf der Seite für den virtuellen Computer im linken Menü auf **Datenträger**.
 1. Wählen Sie den Betriebssystemdatenträger für die VM aus.
 1. Wählen Sie auf der Seite für den Datenträger im linken Menü die Option **Datenträgerexport** aus.
-1. Die Standardablaufzeit der URL beträgt *3.600* Sekunden. Erhöhen Sie dies für Windows-Betriebssystemdatenträger auf **36.000**.
+1. Die Standardablaufzeit der URL beträgt *3600* Sekunden (eine Stunde). Möglicherweise müssen Sie dies für Windows-Betriebssystemdatenträger oder große Datenträger erhöhen. **36.000** Sekunden (10 Stunden) sind in der Regel ausreichend.
 1. Klicken Sie auf **URL generieren**.
 
 > [!NOTE]
-> Die Ablaufzeit wird von der Standardzeit erhöht, um genug Zeit für das Herunterladen der großen VHD-Datei für ein Windows Server-Betriebssystem bereitzustellen. Sie können davon ausgehen, dass das Herunterladen einer VHD-Datei mit dem Windows Server-Betriebssystem mehrere Stunden dauert, je nach Ihrer Verbindung. Wenn Sie eine VHD für einen Datenträger herunterladen, reicht die Standardzeit. 
+> Die Ablaufzeit wird von der Standardzeit erhöht, um genug Zeit für das Herunterladen der großen VHD-Datei für ein Windows Server-Betriebssystem bereitzustellen. Das Herunterladen großer VHDs kann je nach Verbindung und Größe des virtuellen Computers mehrere Stunden dauern. 
 > 
 > 
 

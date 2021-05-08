@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6fcb3b3fece367ab950426c29df2d1b39735957
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393349"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228721"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools
 
@@ -128,8 +128,6 @@ Mit Hilfe der [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) ka
 1. Um die zurzeit ausgewählten Filteroptionen als Abfrage im Resource Graph-Explorer anzuzeigen, wählen Sie **Abfrage öffnen** aus.
 
     ![Ressourcenbestandabfrage in ARG](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
-
-1. So führen Sie eine zuvor definierte Logik-App aus 
 
 1. Wenn Sie einige Filter definiert und die Seite offen gelassen haben, aktualisiert Security Center die Ergebnisse nicht automatisch. Änderungen an den Ressourcen wirken sich nicht auf die angezeigten Ergebnisse aus, es sei denn, Sie laden die Seite manuell neu oder wählen **Aktualisieren** aus.
 

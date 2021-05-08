@@ -3,14 +3,14 @@ title: Bereitstellen eines Clusters für Verfügbarkeitszonen
 description: Erfahren Sie, wie Sie einen Azure Service Fabric-Cluster über Verfügbarkeitszonen hinweg bereitstellen.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: bcf96a222dd40909401b70d8f1812b7d29b6088b
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 1d4c92d91a620a56afbee9a1f41c8a67aa4b8f6a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012461"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072979"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 Verfügbarkeitszonen sind in Azure ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
@@ -359,7 +359,7 @@ Um Zonen zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden 
 
 * Der erste Wert ist die **zones**-Eigenschaft, die angibt, welche Verfügbarkeitszonen in der VM-Skalierungsgruppe vorhanden sind.
 * Der zweite Wert ist die Eigenschaft „singlePlacementGroup“, die auf „true“ festgelegt werden muss. **Die Skalierungsgruppe erstreckt sich über drei Verfügbarkeitszonen und kann auf bis zu 300 VMs skaliert werden, auch mit „singlePlacementGroup = true“.**
-* Der dritte Wert zoneBalance stellt das strikte Zonengleichgewicht sicher. Dieser Wert muss „true“ lauten. Dadurch wird sichergestellt, dass die zonenübergreifenden VM-Verteilungen nicht unausgeglichen sind, sodass sichergestellt ist, dass die beiden anderen Zonen, wenn eine der Zonen ausfällt, über ausreichend viele VMs verfügen, um sicherzustellen, dass der Cluster ununterbrochen ausgeführt wird. Ein Cluster mit einer unausgeglichenen VM-Verteilung kann in einem Szenario mit Zonenausfall möglicherweise nicht überstehen, da diese Zone möglicherweise die Mehrzahl der VMs enthält. Eine unausgeglichene VM-Verteilung über Zonen hinweg führt auch zu Problemen mit der Dienstplatzierung, und Infrastrukturupdates bleiben hängen. Informieren Sie sich über [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+* Der dritte Wert zoneBalance stellt das strikte Zonengleichgewicht sicher. Dieser Wert muss „true“ lauten. Dadurch wird sichergestellt, dass die zonenübergreifenden VM-Verteilungen nicht unausgeglichen sind, sodass sichergestellt ist, dass die beiden anderen Zonen, wenn eine der Zonen ausfällt, über ausreichend viele VMs verfügen, um sicherzustellen, dass der Cluster ununterbrochen ausgeführt wird. Ein Cluster mit einer unausgeglichenen VM-Verteilung kann in einem Szenario mit Zonenausfall möglicherweise nicht überstehen, da diese Zone möglicherweise die Mehrzahl der VMs enthält. Eine unausgeglichene zonenübergreifende VM-Verteilung führt außerdem zu Problemen mit der Dienstplatzierung und dazu, dass Infrastrukturupdates nicht erfolgreich abgeschlossen werden können. Informieren Sie sich über [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 * Die Außerkraftsetzungen für FaultDomain und UpgradeDomain müssen nicht konfiguriert werden.
 
 ```json
@@ -377,18 +377,18 @@ Um Zonen zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden 
 ```
 
 >[!NOTE]
-> * **Service Fabric-Cluster müssen mindestens einen primären NodeType aufweisen. Primäre NodeTypes müssen mindestens den DurabilityLevel „Silver“ aufweisen.**
-> * Die sich über die VZs erstreckende VM-Skalierungsgruppe sollte unabhängig vom durabilityLevel mit mindestens 3 Verfügbarkeitszonen konfiguriert werden.
-> * Die sich über die VZs erstreckende VM-Skalierungsgruppe mit Silver-Dauerhaftigkeit (oder höher) sollte mindestens 15 VMs aufweisen.
-> * Die sich über die VZs erstreckende VM-Skalierungsgruppe mit Bronze-Dauerhaftigkeit sollte mindestens 6 VMs aufweisen.
+> * **Service Fabric-Cluster müssen mindestens einen primären nodeType aufweisen. Primäre nodeTypes müssen mindestens den DurabilityLevel-Wert „Silver“ aufweisen.**
+> * Die verfügbarkeitszonenübergreifende VM-Skalierungsgruppe sollte unabhängig vom durabilityLevel-Wert mit mindestens 3 Verfügbarkeitszonen konfiguriert werden.
+> * Eine verfügbarkeitszonenübergreifende VM-Skalierungsgruppe mit der Dauerhaftigkeit „Silver“ (oder höher) sollte mindestens 15 VMs umfassen.
+> * Eine verfügbarkeitszonenübergreifende VM-Skalierungsgruppe mit der Dauerhaftigkeit „Bronze“ sollte mindestens 6 VMs aufweisen.
 
 ### <a name="enabling-the-support-for-multiple-zones-in-the-service-fabric-nodetype"></a>Aktivieren der Unterstützung für mehrere Zonen im Service Fabric-NodeType
 Der Service Fabric-NodeType muss aktiviert werden, um mehrere Verfügbarkeitszonen zu unterstützen.
 
 * Der erste Wert, der für NodeType auf „true“ festgelegt werden sollte, ist **multipleAvailabilityZones**.
-* Der zweite, optionale Wert ist **sfZonalUpgradeMode**. Diese Eigenschaft kann nicht geändert werden, wenn ein NodeType mit mehreren VZs bereits im Cluster vorhanden ist.
+* Der zweite, optionale Wert ist **sfZonalUpgradeMode**. Diese Eigenschaft kann nicht geändert werden, wenn im Cluster bereits ein Knotentyp mit mehreren Verfügbarkeitszonen vorhanden ist.
   Die Eigenschaft steuert die logische Gruppierung von VMs in Upgradedomänen.
-  **Folgendes gilt, wenn der Wert auf „Parallel“ festgelegt wird:** Virtuelle Computer unter dem Knotentyp werden in UDs gruppiert, wobei die Zoneninformationen in fünf UDs ignoriert werden. Dies führt dazu, dass UD0 in allen Zonen gleichzeitig aktualisiert wird. Dieser Bereitstellungsmodus ist bei Upgrades schneller, wird jedoch nicht empfohlen, da er gegen die SDP-Richtlinien verstößt, die festlegen, dass Updates jeweils in nur einer Zone gleichzeitig angewendet werden sollen.
+  **Folgendes gilt, wenn der Wert auf „Parallel“ festgelegt wird**: VMs unter dem Knotentyp werden in Upgradedomänen gruppiert, wobei die Zoneninformationen in 5 Upgradedomänen ignoriert werden. Dies führt dazu, dass UD0 in allen Zonen gleichzeitig aktualisiert wird. Dieser Bereitstellungsmodus ist für Upgrades schneller, wird jedoch nicht empfohlen, da er gegen die Richtlinien für sichere Bereitstellungen verstößt, nach denen Updates jeweils in nur einer Zone gleichzeitig angewendet werden sollten.
   **Folgendes gilt, wenn der Wert ausgelassen oder auf „Hierarchical“ (Hierarchisch) festgelegt wird:** VMs werden gruppiert, um die zonale Verteilung in bis zu 15 UDs widerzuspiegeln. Jede der drei Zonen erhält fünf UDS. Dadurch wird sichergestellt, dass die Aktualisierungen pro Zoneerfolgen und erst nach Abschluss von 5 UDs in der ersten Zone mit der nächsten Zone fortfahren. Dies ist über 15 UDs hin (3 Zonen, 5 UDS) zwar langsam, aber aus der Perspektive des Clusters und der Benutzeranwendung sicherer.
   Diese Eigenschaft definiert nur das Upgradeverhalten für ServiceFabric-Anwendungs- und Codeupgrades. Die zugrunde liegenden Upgrades für VM-Skalierungsgruppen werden in allen VZ weiterhin parallel durchlaufen.
   Diese Eigenschaft wirkt sich nicht auf die UD-Verteilung für Knotentypen aus, für die nicht mehrere Zonen aktiviert sind.
@@ -422,20 +422,20 @@ Der Service Fabric-NodeType muss aktiviert werden, um mehrere Verfügbarkeitszon
 >[!NOTE]
 > * Öffentliche IP- und Load Balancer-Ressourcen sollten die Standard SKU verwenden, wie zuvor in diesem Artikel beschrieben.
 > * Die Eigenschaft „multipleAvailabilityZones“ für NodeType kann nur zum Zeitpunkt der Erstellung von „NodeType“ definiert und später nicht geändert werden. Folglich können vorhandene NodeType-Typen nicht mit dieser Eigenschaft konfiguriert werden.
-> * Wenn „sfZonalUpgradeMode“ ausgelassen oder auf „Hierarchisch“ festgelegt wird, werden die Cluster- und Anwendungsbereitstellungen langsamer, da im Cluster weitere Upgradedomänen vorhanden sind. Es ist wichtig, die Upgraderichtlinientimeouts ordnungsgemäß für die Upgradezeitdauer für 15 Upgradedomänen anzupassen. Die Upgraderichtlinie für App und Cluster sollte aktualisiert werden, um sicherzustellen, dass die Bereitstellung nicht die Timeouts der Dienstbereitstellung für die Azure Resource von 12 Stunden überschreitet. Dies bedeutet, dass die Bereitstellung für 15 UDs mehr als 12 Stunden dauern sollte, d. h. nicht mehr als 40 Min./UD in Anspruch nehmen darf.
+> * Wenn „sfZonalUpgradeMode“ ausgelassen oder auf „Hierarchisch“ festgelegt wird, werden die Cluster- und Anwendungsbereitstellungen langsamer, da im Cluster weitere Upgradedomänen vorhanden sind. Es ist wichtig, die Upgraderichtlinientimeouts ordnungsgemäß für die Upgradezeitdauer für 15 Upgradedomänen anzupassen. Die Upgraderichtlinie für App und Cluster sollte aktualisiert werden, um sicherzustellen, dass die Bereitstellung nicht das Timeout von 12 Stunden für die Azure-Ressourcendienstbereitstellung überschreitet. Dies bedeutet, dass die Bereitstellung für 15 Upgradedomänen nicht mehr als 12 Stunden gesamt und nicht mehr als 40 Min./UD in Anspruch nehmen darf.
 > * Legen Sie für den Cluster **reliabilityLevel = Platinum** fest, um sicherzustellen, dass der Cluster das Szenario mit einer ausgefallenen Zone übersteht.
 
 >[!NOTE]
 > Für bewährte Methoden empfiehlt es sich, sfZonalUpgradeMode auf „Hierarchisch“ festzulegen oder wegzulassen. Die Bereitstellung befolgt die zonale Verteilung von virtuellen Computern, die sich auf eine geringere Anzahl von Replikaten und/oder Instanzen auswirkt und sie sicherer macht.
-> Verwenden Sie sfZonalUpgradeMode mit der Einstellung „Parallel“, wenn die Bereitstellungsgeschwindigkeit eine Priorität ist oder nur eine zustandslose Workload auf dem Knotentyp mit mehreren VZs ausgeführt wird. Dies führt dazu, dass der UD-Gang in allen VZs parallel erfolgt.
+> Verwenden Sie sfZonalUpgradeMode mit der Einstellung „Parallel“, wenn die Bereitstellungsgeschwindigkeit eine Priorität ist oder nur eine zustandslose Workload auf dem Knotentyp mit mehreren VZs ausgeführt wird. Dies führt dazu, dass der Upgradedomänenvorgang in allen Verfügbarkeitszonen parallel erfolgt.
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migration zum Knotentyp mit mehreren Verfügbarkeitszonen
-Für alle Migrationsszenarien muss ein neuer NodeType hinzugefügt werden, der mehrere Verfügbarkeitszonen unterstützt. Ein vorhandener NodeType kann nicht migriert werden, um mehrere Zonen zu unterstützen.
-In [diesem](./service-fabric-scale-up-primary-node-type.md) Artikel werden die ausführlichen Schritte zum Hinzufügen eines neuen NodeTypes und zum Hinzufügen der anderen Ressourcen erfasst, die für den neuen NodeType erforderlich sind, wie die IP-und LB-Ressourcen. Außerdem wird im gleichen Artikel beschrieben, wie Sie den vorhandenen NodeType außer Kraft setzen, nachdem der NodeType mit mehreren Verfügbarkeitszonen dem Cluster hinzugefügt wurde.
+Für alle Migrationsszenarien muss ein neuer Knotentyp hinzugefügt werden, der mehrere Verfügbarkeitszonen unterstützt. Ein vorhandener nodeType kann nicht migriert werden, um mehrere Zonen zu unterstützen.
+[Dieser Artikel](./service-fabric-scale-up-primary-node-type.md) enthält ausführliche Informationen zum Hinzufügen eines neuen nodeType und der weiteren Ressourcen, die für den neuen Knotentyp erforderlich sind, beispielsweise die IP- und LB-Ressourcen. Außerdem wird in diesem Artikel beschrieben, wie Sie den vorhandenen Knotentyp außer Betrieb nehmen, nachdem der nodeType mit mehreren Verfügbarkeitszonen dem Cluster hinzugefügt wurde.
 
-* Migration von einem NodeType, der grundlegende LB- und IP-Ressourcen verwendet: Dies wird bereits [hier](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) für die Lösung mit einem Knotentyp pro VZ beschrieben. 
-    Der einzige Unterschied für den neuen Knotentyp besteht darin, dass es nur 1 VM-Skalierungsgruppe und 1 NodeType für alle VZs anstatt 1 pro VZ gibt.
-* Migration von einem NodeType, der Standard SKU-LB- und -IP-Ressourcen verwendet:   Befolgen Sie das oben beschriebene Verfahren mit der Ausnahme, dass es nicht erforderlich ist, neue LB-, IP- und NSG-Ressourcen hinzuzufügen, und dass die gleichen Ressourcen im neuen NodeType wiederverwendet werden können.
+* Migration von einem nodeType, der die SKU „Basic“ für LB- und IP-Ressourcen verwendet: Diese Migration wird bereits [hier](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) für die Lösung mit einem Knotentyp pro Verfügbarkeitszone beschrieben. 
+    Der einzige Unterschied für den neuen Knotentyp besteht darin, dass nur 1 VM-Skalierungsgruppe und 1 Knotentyp für alle Verfügbarkeitszonen (anstelle von 1 Knotentyp für jede Verfügbarkeitszone) vorhanden ist.
+* Migration von einem nodeType, der die SKU „Standard“ für LB- und IP-Ressourcen mit NSG verwendet: Gehen Sie wie oben beschrieben vor, mit folgenden Abweichungen: Es ist nicht erforderlich, neue LB-, IP- und NSG-Ressourcen hinzuzufügen, und im neuen nodeType können dieselben Ressourcen wiederverwendet werden.
 
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png

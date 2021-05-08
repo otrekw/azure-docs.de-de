@@ -5,13 +5,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 04/11/2021
-ms.openlocfilehash: 3e48eee5bf36732edc4f897103cb72bbbe75a5c3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/16/2021
+ms.openlocfilehash: da8d193d140d96d9742666429ebc85672c71ad4e
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306312"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567263"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Datenflussaktivität in Azure Data Factory
 
@@ -57,9 +57,9 @@ Verwenden Sie die Datenflussaktivität, um Daten mithilfe von Mapping Data Flow 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 dataflow | Der Verweis auf den Datenfluss, der ausgeführt wird. | DataFlowReference | Ja
-integrationRuntime | Die Computeumgebung, in der der Datenfluss ausgeführt wird. Ohne Angabe wird die Azure Integration Runtime mit automatischer Auflösung verwendet. | IntegrationRuntimeReference | Nein
-compute.coreCount | Die Anzahl von Kernen, die im Spark-Cluster verwendet werden. Kann nur angegeben werden, wenn die Azure Integration Runtime mit automatischer Auflösung verwendet wird. | 8, 16, 32, 48, 80, 144, 272 | Nein
-compute.computeType | Der Computetyp, der im Spark-Cluster verwendet wird. Kann nur angegeben werden, wenn die Azure Integration Runtime mit automatischer Auflösung verwendet wird. | "General", "ComputeOptimized", "MemoryOptimized" | Nein
+integrationRuntime | Die Computeumgebung, in der der Datenfluss ausgeführt wird. Ohne Angabe wird die Azure Integration Runtime mit automatischer Auflösung verwendet. | IntegrationRuntimeReference | Nein 
+compute.coreCount | Die Anzahl von Kernen, die im Spark-Cluster verwendet werden. Kann nur angegeben werden, wenn die Azure Integration Runtime mit automatischer Auflösung verwendet wird. | 8, 16, 32, 48, 80, 144, 272 | Nein 
+compute.computeType | Der Computetyp, der im Spark-Cluster verwendet wird. Kann nur angegeben werden, wenn die Azure Integration Runtime mit automatischer Auflösung verwendet wird. | "General", "ComputeOptimized", "MemoryOptimized" | Nein 
 staging.linkedService | Geben Sie das für PolyBase-Staging verwendete Speicherkonto an, wenn Sie eine Azure Synapse Analytics-Quelle oder -Senke verwenden.<br/><br/>Wenn Ihre Azure Storage-Instanz mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität mit für das Speicherkonto aktivierter Option „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). Außerdem erhalten Sie Informationen zu den erforderlichen Konfigurationen für [Azure Blob](connector-azure-blob-storage.md#managed-identity) bzw. [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity).<br/> | LinkedServiceReference | Nur wenn der Datenfluss Daten in Azure Synapse Analytics liest oder schreibt
 staging.folderPath | Der für das PolyBase-Staging verwendete Ordnerpfad im Blobspeicherkonto, wenn Sie eine Azure Synapse Analytics-Quelle oder -Senke verwenden. | String | Nur wenn der Datenfluss Daten in Azure Synapse Analytics liest oder schreibt
 traceLevel | Festlegen des Protokolliergrads für die Ausführung Ihrer Datenflussaktivität | Fein, Grob, Keine | Nein
@@ -125,7 +125,7 @@ Sie können die Anzahl von Kernen oder den Computetyp parametrisieren, wenn Sie 
 
 Wenn Sie ein Debugging der Pipeline mit einer Datenflussaktivität ausführen möchten, müssen Sie den Datenfluss-Debugmodus über den Schieberegler **Datenfluss debuggen** auf der oberen Leiste aktivieren. Im Debugmodus können Sie den Datenfluss für einen aktiven Spark-Cluster ausführen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
 
-![Schaltfläche „Debuggen“](media/data-flow/debugbutton.png "Schaltfläche „Debuggen“")
+![Screenshot: Position der Schaltfläche „Debuggen“](media/data-flow/debug-button-3.png)
 
 Das Debuggen der Pipeline wird für den aktiven Debugcluster und nicht für die Integration Runtime-Umgebung ausgeführt, die in den Einstellungen für die Datenflussaktivität angegeben ist. Beim Starten des Debugmodus können Sie die Computeumgebung für das Debuggen auswählen.
 

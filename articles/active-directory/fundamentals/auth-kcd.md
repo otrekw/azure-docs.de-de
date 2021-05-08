@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1c7aa4d2300a6dee44da067b122fc7af97f7aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc182be0d92f3b15d1546017a164d0a6061e4bbf
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96172855"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175818"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows-Authentifizierung – Eingeschränkte Kerberos-Delegierung mit Azure Active Directory
 
@@ -54,5 +54,5 @@ Es besteht die Notwendigkeit, Remotezugriff bereitzustellen, mit Vorauthentifizi
 
 * [Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) 
 
-* [Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](../manage-apps/application-proxy-add-on-premises-application.md)
+* [Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](../app-proxy/application-proxy-add-on-premises-application.md)
 

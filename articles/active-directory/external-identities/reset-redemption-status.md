@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0396698fe63cb62fc1cfaf5d930b8a97a7b1bbc
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: f5bfce7ef2621cbe3bbbfdd95bf9a75e427c8cbd
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552256"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531875"
 ---
 # <a name="reset-redemption-status-for-a-guest-user-preview"></a>Zurücksetzen des Einlösestatus für einen Gastbenutzer (Vorschau)
 
@@ -37,7 +37,9 @@ Wenn ein Benutzer sich mit einer anderen E-Mail-Adresse anmelden möchte:
 3. Verwenden Sie eine der folgenden Methoden, um den Einlösestatus des Benutzers zurückzusetzen.
 
 > [!NOTE]
->Wenn Sie während der öffentlichen Vorschau die E-Mail-Adresse des Benutzers zurücksetzen, sollten Sie für die `mail`-Eigenschaft die neue E-Mail-Adresse festlegen. Auf diese Weise kann der Benutzer die Einladung einlösen, indem er sich zusätzlich zur Verwendung des Einlösungslinks in der Einladung bei Ihrem Verzeichnis anmeldet.
+>Während der öffentlichen Vorschau gelten zwei Empfehlungen:
+>- Wenn Sie die E-Mail-Adresse des Benutzers auf eine neue Adresse zurücksetzen, sollten Sie die `mail`-Eigenschaft festlegen. Auf diese Weise kann der Benutzer die Einladung einlösen, indem er sich zusätzlich zur Verwendung des Einlösungslinks in der Einladung bei Ihrem Verzeichnis anmeldet.
+>- Wenn Sie den Status für einen B2B-Gastbenutzer zurücksetzen, achten Sie darauf, dies im Benutzerkontext zu tun. Ausschließliche App-Aufrufe werden derzeit nicht unterstützt.
 >
 ## <a name="use-powershell-to-reset-redemption-status"></a>Zurücksetzen des Einlösestatus mithilfe von PowerShell
 
@@ -54,7 +56,7 @@ New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitat
 
 ## <a name="use-microsoft-graph-api-to-reset-redemption-status"></a>Zurücksetzen des Einlösestatus mithilfe der Microsoft Graph-API
 
-Legen Sie mithilfe der [Microsoft Graph-Einladungs-API](/graph/api/resources/invitation?view=graph-rest-1.0) die Eigenschaft `resetRedemption` auf `true` fest, und geben Sie die neue E-Mail-Adresse in der Eigenschaft `invitedUserEmailAddress` an.
+Legen Sie mithilfe der [Microsoft Graph-Einladungs-API](/graph/api/resources/invitation?view=graph-rest-beta&preserve-view=true) die Eigenschaft `resetRedemption` auf `true` fest, und geben Sie die neue E-Mail-Adresse in der Eigenschaft `invitedUserEmailAddress` an.
 
 ```json
 POST https://graph.microsoft.com/beta/invitations  

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 963ff8f77b2e78927dfadc4a114085de4eb39811
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 40ca670f3033c003c41caae8bda6da5b8dd56892
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107867752"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108211412"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Systemseitig zugewiesene verwaltete Identität hinzufügen, um Gastkonfigurationszuweisungen auf VMs ohne Identität zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) |Mit dieser Richtlinie wird eine systemseitig zugewiesene verwaltete Identität für in Azure gehostete VMs hinzugefügt, die durch die Gastkonfiguration unterstützt werden, aber keine verwaltete Identität aufweisen. Eine systemseitig zugewiesene verwaltete Identität ist eine Voraussetzung für alle Gastkonfigurationszuweisungen und muss auf den Computern bereitgestellt werden, bevor eine Richtliniendefinition der Gastkonfiguration verwendet werden kann. Weitere Informationen zur Gastkonfiguration finden Sie unter [https://aka.ms/gcpol](https://aka.ms/gcpol). |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenNone_Prerequisite.json) |
 |[Systemseitig zugewiesene verwaltete Identität hinzufügen, um Gastkonfigurationszuweisungen auf VMs mit einer benutzerseitig zugewiesenen Identität zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) |Mit dieser Richtlinie wird eine systemseitig zugewiesene verwaltete Identität für in Azure gehostete VMs hinzugefügt, die durch die Gastkonfiguration unterstützt werden und mindestens eine benutzerseitig zugewiesene verwaltete Identität aufweisen, aber keine systemseitig zugewiesene verwaltete Identität. Eine systemseitig zugewiesene verwaltete Identität ist eine Voraussetzung für alle Gastkonfigurationszuweisungen und muss auf den Computern bereitgestellt werden, bevor eine Richtliniendefinition der Gastkonfiguration verwendet werden kann. Weitere Informationen zur Gastkonfiguration finden Sie unter [https://aka.ms/gcpol](https://aka.ms/gcpol). |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenUser_Prerequisite.json) |

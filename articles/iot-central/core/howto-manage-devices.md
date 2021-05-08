@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 0072e699107ea51764a728ce3e9987b86b2a6806
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 2ea75adfb7c2d990cfa543270f245113e15e4ee2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492323"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389841"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
@@ -52,16 +52,20 @@ So fügen Sie ein Gerät Ihrer Azure IoT Central-Anwendung hinzu:
 
 1. Schalten Sie die Umschaltfläche **Simuliert** auf **Ein** oder **Aus**. Ein reales Gerät steht für ein physisches Gerät, dessen Verbindung mit der Azure IoT Central-Anwendung Sie herstellen. Ein simuliertes Gerät enthält Beispieldaten, die von Azure IoT Central für Sie generiert werden.
 
-1. Wählen Sie **Erstellen** aus.
+1. Klicken Sie auf **Erstellen**.
 
 1. Dieses Gerät wird jetzt in der Geräteliste für diese Vorlage angezeigt. Wählen Sie das Gerät aus, um die Seite „Gerätedetails“ anzuzeigen, die alle Ansichten für das Gerät enthält.
 
 ## <a name="import-devices"></a>Importieren von Geräten
 
-Um eine Verbindung einer großen Anzahl von Geräten mit Ihrer Anwendung herzustellen, können Sie einen Massenimport von Geräten aus einer CSV-Datei ausführen. Die CSV-Datei sollte die folgenden Spalten und Kopfzeilen haben:
+Um eine Verbindung einer großen Anzahl von Geräten mit Ihrer Anwendung herzustellen, können Sie einen Massenimport von Geräten aus einer CSV-Datei ausführen. Eine CSV-Beispieldatei finden Sie im [Repository mit Azure-Beispielen](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/bulk-upload-devices). Die CSV-Datei sollte die folgenden Spaltenüberschriften enthalten:
 
-* **IOTC_DeviceID**: Die Geräte-ID kann Buchstaben, Ziffern und das Zeichen `-` enthalten.
-* **IOTC_DeviceName** – diese Spalte ist optional.
+| Column | Beschreibung 
+| - | - | 
+| IOTC_DEVICEID | Die Geräte-ID ist eine eindeutige ID, die von diesem Gerät für die Verbindungsherstellung verwendet wird. Die Geräte-ID kann Buchstaben, Ziffern und das Zeichen `-` ohne Leerzeichen enthalten. |
+| IOTC_DEVICENAME | Optional. Der Gerätename ist ein Anzeigename, der in der gesamten Anwendung angezeigt wird. Ohne Angabe entspricht dieser Name der Geräte-ID.   |
+
+
 
 So führen Sie die Massenregistrierung von Geräten in Ihrer Anwendung durch:
 

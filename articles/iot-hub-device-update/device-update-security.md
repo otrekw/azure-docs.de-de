@@ -3,15 +3,15 @@ title: Sicherheit für Device Update for IoT Hub | Microsoft-Dokumentation
 description: Erfahren Sie, wie Device Update for IoT Hub sicherstellt, dass Geräte auf sichere Weise aktualisiert werden.
 author: lichris
 ms.author: lichris
-ms.date: 2/11/2021
+ms.date: 4/15/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: 86b2dbe6a28d1440f93788eb40e133d9b62d3f0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b10049e03e26cfe8da2bd57cc9f69dd933af706b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489428"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567297"
 ---
 # <a name="device-update-security-model"></a>Device Update-Sicherheitsmodell
 
@@ -23,9 +23,11 @@ Jeder Schritt im Device Update-Workflow wird durch verschiedene Sicherheitsfeatu
 
 Da Lösungsoperatoren Updates in Ihre Device Update-Instanz importieren, lädt der Dienst die Updatebinärdateien hoch und überprüft diese, um sicherzustellen, dass sie nicht von einem böswilligen Benutzer geändert oder ausgetauscht wurden. Nach der Überprüfung generiert der Device Update-Dienst ein internes [Updatemanifest](./update-manifest.md) mit Dateihashes aus dem Importmanifest und anderen Metadaten. Dieses Updatemanifest wird dann vom Device Update-Dienst signiert.
 
+Nachdem sie im Dienst erfasst und in Azure gespeichert wurden, werden die Binärdateien für Updates und die zugehörigen Kundenmetadaten vom Azure-Speicherdienst automatisch im Ruhezustand verschlüsselt. Der Device Update-Dienst bietet keine automatische zusätzliche Verschlüsselung, gibt Entwicklern jedoch die Möglichkeit, Inhalte selbst zu verschlüsseln, bevor der Inhalt den Device Update-Dienst erreicht.
+
 Wenn der Lösungsoperator die Aktualisierung eines Geräts anfordert, wird eine signierte Nachricht über den geschützten IoT Hub-Kanal an das Gerät gesendet. Die Signatur der Anforderung wird vom Device Update-Agent des Geräts als authentisch bestätigt. 
 
-Jeder sich ergebende binäre Download wird durch Validierung der Signatur des Updatemanifests gesichert. Das Updatemanifest enthält die Binärdateihashes. Sobald das Manifest vertrauenswürdig ist, vertraut der Device Update-Agent den Hashwerten und gleicht sie mit den Binärdateien ab. Nachdem die Updatebinärdatei heruntergeladen und überprüft wurde, wird sie an das Installationsprogramm auf dem Gerät übergeben.
+Jeder sich ergebende binäre Download wird durch Validierung der Signatur des Updatemanifests gesichert. Das Updatemanifest enthält die Binärdateihashes. Sobald das Manifest vertrauenswürdig ist, vertraut der Device Update-Agent den Hashwerten und gleicht sie mit den Binärdateien ab. Nachdem die Updatebinärdatei heruntergeladen und überprüft wurde, wird sie auf sichere Weise an das Installationsprogramm auf dem Gerät übergeben.
 
 ## <a name="for-device-builders"></a>Für Gerätegeneratoren
 
