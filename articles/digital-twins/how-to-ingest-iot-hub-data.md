@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a5e00ef81afc709a9072eedbb07983057f57eb08
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b69ba164a7bd0edecf427866cd3e872a65e41355
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304296"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208741"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Erfassen von IoT Hub Telemetriedaten in Azure Digital Twins
 
@@ -26,7 +26,7 @@ In dieser Schrittanleitung wird erläutert, wie Sie eine Funktion schreiben, die
 
 Bevor Sie mit diesem Beispiel fortfahren können, müssen Sie die folgenden Ressourcen als Voraussetzungen einrichten:
 * **Einen IoT-Hub**. Anweisungen finden Sie im Abschnitt *Erstellen eines IoT-Hubs* in [diesem IoT Hub-Schnellstart](../iot-hub/quickstart-send-telemetry-cli.md).
-* **Eine Azure Digital Twins-Instanz** zum Empfangen Ihrer Gerätetelemetrie. Anweisungen dazu finden Sie unter [*Gewusst wie: Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung*](./how-to-set-up-instance-portal.md).
+* **Eine Azure Digital Twins-Instanz** zum Empfangen Ihrer Gerätetelemetrie. Anweisungen dazu finden Sie unter [Gewusst wie: Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung](./how-to-set-up-instance-portal.md).
 
 ### <a name="example-telemetry-scenario"></a>Beispieltelemetrieszenario
 
@@ -88,7 +88,7 @@ In diesem Abschnitt erstellen Sie eine Azure-Funktion für den Zugriff auf Azure
 
 #### <a name="step-1-create-a-function-app-project"></a>Schritt 1: Erstellen eines Funktions-App-Projekts
 
-Erstellen Sie zunächst in Visual Studio ein neues Funktions-App-Projekt. Anweisungen hierzu finden Sie im Abschnitt [**Erstellen einer Funktions-App in Visual Studio**](how-to-create-azure-function.md#create-a-function-app-in-visual-studio) im Artikel *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
+Erstellen Sie zunächst in Visual Studio ein neues Funktions-App-Projekt. Anweisungen hierzu finden Sie im Abschnitt [Erstellen einer Funktions-App in Visual Studio](how-to-create-azure-function.md#create-a-function-app-in-visual-studio) im Artikel *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
 
 #### <a name="step-2-fill-in-function-code"></a>Schritt 2: Ausfüllen des Funktionscodes
 
@@ -107,17 +107,17 @@ Speichern Sie Ihren Funktionscode.
 
 Veröffentlichen Sie das Projekt mit der Funktion *IoTHubtoTwins.cs* in einer Funktions-App in Azure.
 
-Anweisungen hierzu finden Sie im Abschnitt [**Veröffentlichen der Funktions-App in Azure**](how-to-create-azure-function.md#publish-the-function-app-to-azure) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
+Anweisungen hierzu finden Sie im Abschnitt [Veröffentlichen der Funktions-App in Azure](how-to-create-azure-function.md#publish-the-function-app-to-azure) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
 
 #### <a name="step-4-configure-the-function-app"></a>Schritt 4: Konfigurieren der Funktions-App
 
-**Weisen Sie dann eine Zugriffsrolle** für die Funktion zu, und **Konfigurieren Sie die Anwendungseinstellungen**, damit sie auf Ihre Azure Digital Twins-Instanz zugreifen kann. Anweisungen hierzu finden Sie im Abschnitt [**Einrichten des Sicherheitszugriff für die Funktions-App**](how-to-create-azure-function.md#set-up-security-access-for-the-function-app) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
+**Weisen Sie dann eine Zugriffsrolle** für die Funktion zu, und **Konfigurieren Sie die Anwendungseinstellungen**, damit sie auf Ihre Azure Digital Twins-Instanz zugreifen kann. Anweisungen hierzu finden Sie im Abschnitt [Einrichten des Sicherheitszugriff für die Funktions-App](how-to-create-azure-function.md#set-up-security-access-for-the-function-app) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
 
 ## <a name="connect-your-function-to-iot-hub"></a>Verbinden Ihrer Funktion mit IoT Hub
 
 In diesem Abschnitt richten Sie Ihre Funktion als Ereignisziel für die IoT Hub-Gerätedaten ein. Dadurch wird sichergestellt, dass die Daten aus dem Thermostatgerät in IoT Hub zur Verarbeitung an die Azure-Funktion gesendet werden.
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer IoT Hub-Instanz, die Sie im Abschnitt [*Voraussetzungen*](#prerequisites) erstellt haben. Erstellen Sie unter **Ereignisse** ein Abonnement für Ihre Funktion.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer IoT Hub-Instanz, die Sie im Abschnitt [Voraussetzungen](#prerequisites) erstellt haben. Erstellen Sie unter **Ereignisse** ein Abonnement für Ihre Funktion.
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Screenshot des Azure-Portals mit „Hinzufügen eines Ereignisabonnements“":::
 
@@ -146,11 +146,11 @@ Wählen Sie die Schaltfläche _Erstellen_ aus, um ein Ereignisabonnement zu erst
 
 ## <a name="send-simulated-iot-data"></a>Senden von simulierten IoT-Daten
 
-Verwenden Sie zum Testen Ihrer neuen Eingangsfunktion den Gerätesimulator aus [*Tutorial: Erstellen einer End-to-End-Lösung*](./tutorial-end-to-end.md). Grundlage dieses Tutorials ist ein in C# geschriebenes Beispielprojekt. Den Beispielcode finden Sie hier: [End-to-End-Beispiele für Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples) Sie verwenden in diesem Repository das Projekt **DeviceSimulator**.
+Verwenden Sie zum Testen Ihrer neuen Eingangsfunktion den Gerätesimulator aus [Tutorial: Erstellen einer End-to-End-Lösung](./tutorial-end-to-end.md). Grundlage dieses Tutorials ist ein in C# geschriebenes Beispielprojekt. Den Beispielcode finden Sie hier: [End-to-End-Beispiele für Azure Digital Twins](/samples/azure-samples/digital-twins-samples/digital-twins-samples) Sie verwenden in diesem Repository das Projekt **DeviceSimulator**.
 
 Führen Sie im End-to-End-Tutorial die folgenden Schritte aus:
-1. [*Registrieren des simulierten Geräts für IoT Hub*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
-2. [*Konfigurieren und Ausführen der Simulation*](./tutorial-end-to-end.md#configure-and-run-the-simulation)
+1. [Registrieren des simulierten Geräts für IoT Hub](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
+2. [Konfigurieren und Ausführen der Simulation](./tutorial-end-to-end.md#configure-and-run-the-simulation)
 
 ## <a name="validate-your-results"></a>Überprüfen Ihrer Ergebnisse
 
@@ -189,4 +189,4 @@ Führen Sie zum Anzeigen der Wertänderung den vorstehenden Abfragebefehl wieder
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über eingehende und ausgehende Daten mit Azure Digital Twins:
-* [*Konzepte: Integration in andere Dienste*](concepts-integration.md)
+* [Konzepte: Integration in andere Dienste](concepts-integration.md)

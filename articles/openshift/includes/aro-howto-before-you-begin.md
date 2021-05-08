@@ -2,12 +2,12 @@
 author: sabbour
 ms.author: asabbour
 ms.date: 4/5/2020
-ms.openlocfilehash: d888d4df3f578bf88f8f38cb979ed70f681c64e8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1fded0ad08af4b1e5d915e32e09087c1a78bd318
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108157665"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520558"
 ---
 ### <a name="create-the-cluster"></a>Erstellen Sie den Cluster.
 
@@ -20,7 +20,7 @@ Zum Verwalten eines Azure Red Hat OpenShift-Clusters verwenden Sie [oc](https://
 > [!NOTE]
 > Es wird empfohlen, die [OpenShift-Befehlszeile](../tutorial-connect-cluster.md) auf [Azure Cloud Shell](https://shell.azure.com/) zu installieren und sie für alle unten aufgeführten Befehlszeilenvorgänge zu verwenden. Starten Sie Ihre Shell über shell.azure.com oder durch Klicken auf den Link:
 >
-> [![Start einbetten](/azure/includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png "Starten von Azure Cloud Shell")](https://shell.azure.com/bash)
+> [![Start einbetten](https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png "Starten von Azure Cloud Shell")](https://shell.azure.com/bash)
 
 Befolgen Sie das Tutorial zum Installieren der CLI, dem Abrufen der Clusteranmeldeinformationen und dem [Herstellen einer Verbindung mit dem Cluster](../tutorial-connect-cluster.md) mithilfe der Webkonsole und der OpenShift CLI.
 

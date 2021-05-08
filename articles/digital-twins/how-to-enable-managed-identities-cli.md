@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e9eb5950b5cf7d4e7d0270deed72866ee28e3962
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 374c4764689447b855476128ee31e2077211a794
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106903"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208903"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau): Azure CLI
 
@@ -20,7 +20,7 @@ ms.locfileid: "107106903"
 
 In diesem Artikel wird beschrieben, wie Sie eine [systemseitig zugewiesene Identität für eine Azure Digital Twins-Instanz](concepts-security.md#managed-identity-for-accessing-other-resources-preview) (derzeit in der Vorschauphase) aktivieren und die Identität zum Weiterleiten von Ereignissen an unterstützte Ziele wie [Event Hub](../event-hubs/event-hubs-about.md), [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) und [Azure Storage Container](../storage/blobs/storage-blobs-introduction.md) verwenden.
 
-In diesem Artikel wird die Vorgehensweise mit der [**Azure CLI**](/cli/azure/what-is-azure-cli) beschrieben.
+In diesem Artikel wird die Vorgehensweise mit der [Azure CLI](/cli/azure/what-is-azure-cli) beschrieben.
 
 Die folgenden Schritte werden in diesem Artikel behandelt: 
 
@@ -83,7 +83,7 @@ Im Folgenden finden Sie die mindestens erforderlichen Rollen, die eine Identitä
 | Azure-Servicebus | Azure Service Bus-Datensender |
 | Azure-Speichercontainer | Mitwirkender an Storage-Blobdaten |
 
-Weitere Informationen über Endpunkte, Routen und die verschiedenen unterstützten Ziele für das Routing in Azure Digital Twins finden Sie unter [*Konzepte: Ereignisrouten*](concepts-route-events.md).
+Weitere Informationen über Endpunkte, Routen und die verschiedenen unterstützten Ziele für das Routing in Azure Digital Twins finden Sie unter [Konzepte: Ereignisrouten](concepts-route-events.md).
 
 ### <a name="assign-the-role"></a>Zuweisen der Rolle
 
@@ -97,9 +97,9 @@ Hier sehen Sie ein Beispiel, bei dem eine Instanz mit einer systemseitig verwalt
 az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
 ```
 
-Weitere Beispiele für Rollenzuweisungen mit diesem Befehl finden Sie in der [Referenzdokumentation zu **az dt create**](/cli/azure/dt#az_dt_create).
+Weitere Beispiele für Rollenzuweisungen mit diesem Befehl finden Sie in der Referenzdokumentation zu [az dt create](/cli/azure/dt#az_dt_create).
 
-Alternativ können Sie auch die Befehlsgruppe [**az role assignment**](/cli/azure/role/assignment) verwenden, um Rollen zu erstellen und zu verwalten. Sie können diese Vorgehensweise verwenden, um weitere Szenarios zu unterstützen, in denen Sie die Rollenzuweisung nicht mit dem Erstellbefehl gruppieren möchten.
+Alternativ können Sie auch die Befehlsgruppe [az role assignment](/cli/azure/role/assignment) verwenden, um Rollen zu erstellen und zu verwalten. Sie können diese Vorgehensweise verwenden, um weitere Szenarios zu unterstützen, in denen Sie die Rollenzuweisung nicht mit dem Erstellbefehl gruppieren möchten.
 
 ## <a name="create-an-endpoint-with-identity-based-authentication"></a>Erstellen eines Endpunkts mit identitätsbasierter Authentifizierung
 
@@ -125,4 +125,4 @@ Sie müssen den Endpunkt löschen und mit einem anderen Authentifizierungstyp [n
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lernen Sie mehr über verwaltete Identitäten in Azure AD: 
-* [*Verwaltete Identitäten für Azure-Ressourcen*](../active-directory/managed-identities-azure-resources/overview.md)
+* [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md)

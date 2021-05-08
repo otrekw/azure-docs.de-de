@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Arrayeigenschaften für Ressourcen
 description: Erfahren Sie, wie Sie mit Arrayparametern und Arrayausdrücken arbeiten, den [*]-Alias auswerten und Elemente mit Azure Policy-Definitionsregeln anfügen.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 18afbee0ca8b1c488e3bd3ce50dacc726bd2ef25
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 8953b67d0935ac81cffa20ee8fc48d6d9b091861
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305190"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165423"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Erstellen von Richtlinien für Arrayeigenschaften für Azure-Ressourcen
 
@@ -147,7 +147,7 @@ Die Bedingung ist nur dann TRUE, wenn die ermittelte Anzahl größer als 0 ist.
 
 Verwenden Sie einen Parameterverweis anstelle eines Literalarrays, um die Bedingung oben generischer zu gestalten:
 
- ```json
+```json
 {
     "count": {
         "value": "[parameters('patterns')]",

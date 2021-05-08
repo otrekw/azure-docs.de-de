@@ -4,20 +4,16 @@ description: Hier erfahren Sie, wie Sie die IP-Adressen eines Azure API Manage
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 04/13/2021
 ms.author: apimpm
-ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5939292b6e810634723fada17521bb227764b989
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80047748"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534038"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-Adressen von Azure API Management
 
@@ -106,4 +102,4 @@ Im Developer-, Basic-, Standard- und Premium-Tarif von API Management sind die 
 * Azure Virtual Network wird dem Dienst hinzugefügt oder daraus entfernt.
 * Der API Management-Dienst wird zwischen dem externen und internen VNet-Bereitstellungsmodus umgeschaltet.
 
-Bei [Bereitstellungen in mehreren Regionen](api-management-howto-deploy-multi-region.md) ändert sich die regionale IP-Adresse, wenn eine Region verlassen und anschließend reaktiviert wird.
+Bei [Bereitstellungen in mehreren Regionen](api-management-howto-deploy-multi-region.md) ändert sich die regionale IP-Adresse, wenn eine Region verlassen und anschließend reaktiviert wird. Die regionale IP-Adresse ändert sich auch, wenn Sie [Verfügbarkeitszonen](zone-redundancy.md) aktivieren, hinzufügen oder entfernen.

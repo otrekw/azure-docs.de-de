@@ -7,16 +7,16 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: 516576f4e005cc9fe2303945ecb1a13489908a5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f52900086afef09d69b80bf44474d5514e25235
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696352"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748878"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> Problembehandlung für Fehler bei ausgehenden Verbindungen
 
-Dieser Artikel bietet Lösungen für häufige Probleme, die bei ausgehenden Verbindungen von Azure Load Balancer auftreten können. Die meisten Probleme mit der ausgehenden Konnektivität, die bei Kunden auftreten, sind auf die SNAT-Portauslastung und Verbindungstimeouts zurückzuführen, die zu verworfenen Paketen führen. Dieser Artikel enthält Schritte zur Behebung dieser Probleme.
+Dieser Artikel beschreibt Lösungen für häufige Probleme, die bei ausgehenden Azure Load Balancer-Verbindungen auftreten können. Die meisten Probleme mit der ausgehenden Konnektivität, die bei Kunden auftreten, sind auf die SNAT-Portauslastung und Verbindungstimeouts zurückzuführen, die zu verworfenen Paketen führen. Dieser Artikel enthält Schritte zur Behebung dieser Probleme.
 
 ## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> Verwalten der SNAT-Portauslastung (PAT)
 Wie unter [Eigenständiger virtueller Computer ohne öffentliche IP-Adresse](load-balancer-outbound-connections.md) und [Virtueller Computer mit Lastenausgleich ohne öffentliche IP-Adresse](load-balancer-outbound-connections.md) beschrieben wird, sind für [PAT](load-balancer-outbound-connections.md) verwendete [kurzlebige Ports](load-balancer-outbound-connections.md) eine begrenzte Ressource. Sie können Ihre Nutzung von kurzlebigen Ports überwachen und mit Ihrer aktuellen Zuordnung vergleichen, um das Risiko zu ermitteln oder die SNAT-Auslastung anhand [dieses Leitfadens](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) zu bestätigen.

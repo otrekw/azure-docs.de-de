@@ -1,16 +1,16 @@
 ---
-title: Übersicht über die BareMetal-Infrastruktur in Azure
+title: Worum handelt es sich bei der BareMetal-Infrastruktur in Azure?
 description: Hier finden Sie eine Übersicht über die BareMetal-Infrastruktur in Azure.
 ms.custom: references_regions
 ms.topic: conceptual
 ms.subservice: workloads
-ms.date: 04/08/2021
-ms.openlocfilehash: 7a4998a096a5c5d9e793c34d5046dce59262a2ae
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 04/14/2021
+ms.openlocfilehash: c0fd250a63ce93d3f8b62dfe76fe753c928801ce
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257567"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536898"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>Worum handelt es sich bei der BareMetal-Infrastruktur in Azure?
 
@@ -47,6 +47,22 @@ Vorteile der BareMetal-Infrastruktur:
 - Momentaufnahmen, Archiv, Spiegelung und Klonen jeweils anwendungsabhängig
 
 
+## <a name="baremetal-benefits"></a>Bare-Metal-Vorteile  
+
+Die Bare-Metal-Infrastruktur ist für unternehmenskritische Workloads vorgesehen, die eine Zertifizierung erfordern, um Ihre Unternehmensanwendungen auszuführen. Die Bare-Metal-Instanzen sind ausschließlich für Sie dediziert, und Sie haben Vollzugriff (Root-Zugriff) auf das Betriebssystem (OS). Sie können die Betriebssystem- und Anwendungsinstallation gemäß Ihren Anforderungen verwalten. Aus Sicherheitsgründen werden die Instanzen in Ihrem Azure Virtual Network (VNet) ohne Internetkonnektivität bereitgestellt. Nur Dienste, die auf Ihren virtuellen Computern (virtual machines, VMs) ausgeführt werden, sowie andere Azure-Dienste im gleichen Netzwerk der Ebene 2 können mit Ihren Bare-Metal-Instanzen kommunizieren.  
+
+Vorteile der BareMetal-Infrastruktur: 
+
+- Zertifizierte Hardware für spezialisierte Workloads
+- SAP (siehe [SAP-Hinweis 1928533](https://launchpad.support.sap.com/#/notes/1928533))
+- Oracle (siehe [Oracle-Dokument-ID 948372.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=52088246571495&id=948372.1&_adf.ctrl-state=kwnkj1hzm_52))
+- Bare-Metal-Instanz ohne Hypervisor, Besitz eines einzelnen Mandanten
+- Geringe Wartezeit zwischen in Azure gehosteten Anwendungs-VMs und BareMetal-Instanzen (0,35 ms)
+- Unterstützung von SSD und NVMe (flashbasiert)
+- Datenbank mit bis zu 1 PB/Mandant 
+- IOPS von bis zu 1,2 Millionen/Mandant 
+- Netzwerkbandbreite von 50 GB 
+
 ## <a name="sku-availability-in-azure-regions"></a>SKU-Verfügbarkeit nach Azure-Regionen
 
 BareMetal Infrastructure bietet verschiedene SKUs, die für spezialisierte Workloads zertifiziert sind. Nutzen Sie die workloadspezifischen SKUs, um Ihre Anforderungen zu erfüllen.
@@ -62,18 +78,18 @@ Die BareMetal-Infrastruktur für spezialisierte Workloads ist in den folgenden A
 - USA, Osten (Zonenunterstützung)
 - USA, Westen (Zonenunterstützung)
 - USA, Westen 2 (Zonenunterstützung)
-- USA, Süden-Mitte
+- USA Süd Mitte
 
 >[!NOTE]
 >**Zonenunterstützung** bezieht sich auf Verfügbarkeitszonen innerhalb einer Region, in der BareMetal-Instanzen zonenübergreifend bereitgestellt werden können, um hohe Resilienz und Verfügbarkeit zu erzielen. Dies ermöglicht die Unterstützung der Aktiv/Aktiv-Skalierung für mehrere Standorte.
 
 ## <a name="managing-baremetal-instances-in-azure"></a>Verwalten von BareMetal-Instanzen in Azure 
 
-Die Anwendungstopologien der BareMetal-Infrastruktur können abhängig von Ihren Anforderungen durchaus komplex sein. Sie können mehrere Instanzen an einem oder mehreren Standorten mit gemeinsam genutztem oder dediziertem Speicher sowie mit speziellen LAN- und WAN-Verbindungen bereitstellen. Daher bietet Azure für die BareMetal-Infrastruktur eine Erfassung dieser Informationen zu Beratungszwecken durch einen Außendienstmitarbeiter (CSA/GBB) in einem Bereitstellungsportal. 
+Die Anwendungstopologien der BareMetal-Infrastruktur können abhängig von Ihren Anforderungen durchaus komplex sein. Sie können mehrere Instanzen an einem oder mehreren Standorten mit freigegebenem oder dediziertem Speicher sowie mit speziellen LAN- und WAN-Verbindungen bereitstellen. Daher bietet Azure für die BareMetal-Infrastruktur eine Erfassung dieser Informationen zu Beratungszwecken durch einen Außendienstmitarbeiter (CSA/GBB) in einem Bereitstellungsportal. 
 
-Zum Zeitpunkt der Bereitstellung Ihrer BareMetal-Infrastruktur sind Betriebssystem, Netzwerke, Speichervolumes, Platzierungen in Zonen und Regionen sowie WAN-Verbindungen zwischen Standorten bereits vorkonfiguriert. Sie können Ihre Betriebssystemlizenzen (BYOL) registrieren, das Betriebssystem konfigurieren und die Anwendungsschicht installieren.
+Zum Zeitpunkt der Bereitstellung Ihrer Bare-Metal-Infrastruktur sind Betriebssystem, Netzwerke, Speichervolumes, Platzierungen in Zonen und Regionen sowie WAN-Verbindungen zwischen Standorten bereits vorkonfiguriert. Sie können Ihre Betriebssystemlizenzen (BYOL) registrieren, das Betriebssystem konfigurieren und die Anwendungsschicht installieren.
 
-Alle Ressourcen der BareMetal-Infrastruktur sowie deren Status und Attribute werden im Azure-Portal angezeigt. Vor dort aus können Sie die Instanzen auch betreiben sowie Service Requests und Supporttickets erstellen. 
+Alle Bare-Metal-Ressourcen sowie deren Status und Attribute werden im Azure-Portal angezeigt. Vor dort aus können Sie die Instanzen auch betreiben sowie Service Requests und Supporttickets erstellen. 
 
 ## <a name="operational-model"></a>Betriebsmodell
 BareMetal Infrastructure ist mit ISO 27001, ISO 27017, SOC 1 und SOC 2 konform. Außerdem wird das BYOL-Modell (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz) für Betriebssystem, spezialisierte Workloads und Anwendungen von Drittanbietern unterstützt.  
@@ -94,7 +110,7 @@ Im BareMetal-Instanzstempel selbst sind die folgenden Komponenten kombiniert:
 
 - **Computing:** Auf der Intel Xeon-Prozessorgeneration basierende Server, die die erforderliche Rechenleistung bieten und für die spezialisierte Workload zertifiziert sind
 
-- **Netzwerk:** Ein einheitliches Hochgeschwindigkeits-Netzwerkfabric, das die Computing-, Speicher- und LAN-Komponenten miteinander verbindet
+- **Netzwerk**: Ein einheitliches Hochgeschwindigkeits-Netzwerkfabric, das die Computing-, Speicher- und LAN-Komponenten miteinander verbindet
 
 - **Speicher:** Eine Infrastruktur, auf die über ein einheitliches Netzwerkfabric zugegriffen wird
 

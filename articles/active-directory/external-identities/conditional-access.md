@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22a5388d15b18180539eb95990a29f7ddf4f1951
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646281"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739546"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit
 
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Organisationen Richtlinien für bedingte
 
 Im folgenden Diagramm ist der Ablauf dargestellt: ![Abbildung: Authentifizierungsablauf für B2B-Gastbenutzer aus einem externen Verzeichnis](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-| Schritt | BESCHREIBUNG |
+| Schritt | Beschreibung |
 |--------------|-----------------------|
 | 1. | Der B2B-Gastbenutzer fordert Zugriff auf eine Ressource an. Die Ressource leitet den Benutzer an ihren Ressourcenmandanten (vertrauenswürdiger IdP) weiter.|
 | 2. | Der Ressourcenmandant identifiziert den Benutzer als „Extern“ und leitet ihn an den IdP des B2B-Gastbenutzers um. Der Benutzer führt die primäre Authentifizierung über den IdP durch.
@@ -39,7 +39,7 @@ Im folgenden Diagramm ist der Ablauf dargestellt: ![Abbildung: Authentifizierung
 
 Im folgenden Diagramm ist der Ablauf dargestellt: ![Abbildung: Authentifizierungsablauf für B2B-Gastbenutzer mit Einmalkennung](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
 
-| Schritt | BESCHREIBUNG |
+| Schritt | Beschreibung |
 |--------------|-----------------------|
 | 1. |Der Benutzer fordert den Zugriff auf eine Ressource auf einem anderen Mandanten an. Die Ressource leitet den Benutzer an ihren Ressourcenmandanten (vertrauenswürdiger IdP) weiter.|
 | 2. | Der Ressourcenmandant identifiziert den Benutzer als [externen Benutzer mit Einmalkennung](./one-time-passcode.md) und sendet eine E-Mail mit der Einmalkennung an den Benutzer.|
@@ -67,7 +67,7 @@ Der Ressourcenmandant ist immer für die mehrstufige Azure AD-Authentifizierung 
 6. Fabrikam muss über eine ausreichende Zahl von Azure AD-Premium-Lizenzen verfügen, für die die mehrstufige Azure AD-Authentifizierung unterstützt wird. Der Contoso-Benutzer nutzt dann diese Lizenz von Fabrikam. Informationen zur B2B-Lizenzierung finden Sie unter [Abrechnungsmodell für externe Identitäten in Azure AD](./external-identities-pricing.md).
 
 >[!NOTE]
->Die mehrstufige Azure AD-Authentifizierung wird auf dem Ressourcenmandanten durchgeführt, um die Vorhersagbarkeit sicherzustellen.
+>Die mehrstufige Azure AD-Authentifizierung wird auf dem Ressourcenmandanten durchgeführt, um die Vorhersagbarkeit sicherzustellen. Wenn sich der Gastbenutzer anmeldet, wird im Hintergrund die Anmeldeseite des Ressourcenmandanten angezeigt, und im Vordergrund werden die Anmeldeseite für den eigenen Basismandanten und das Unternehmenslogo angezeigt.
 
 ### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>Einrichten der mehrstufigen Azure AD-Authentifizierung für B2B-Benutzer
 

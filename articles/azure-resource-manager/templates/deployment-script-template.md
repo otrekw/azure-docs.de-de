@@ -5,14 +5,15 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: jgao
-ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3ac1afe3658db60297735e897d69caa463358a4c
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308964"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318385"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Verwenden von Bereitstellungsskripts in ARM-Vorlagen
 
@@ -136,7 +137,7 @@ Nachfolgend finden Sie ein JSON-Beispiel. Weitere Informationen finden Sie im ne
 
 Details zu Eigenschaftswerten:
 
-- `identity`: Für die API-Version 2020-10-01 oder höher des Bereitstellungsskripts ist eine vom Benutzer zugewiesene verwaltete Identität optional, es sei denn, Sie müssen Azure-spezifische Aktionen im Skript ausführen.  Für die API-Version 2019-10-01-preview ist eine verwaltete Identität erforderlich, da der Bereitstellungsskriptdienst diese verwendet, um die Skripts auszuführen. Zurzeit wird nur eine benutzerseitig zugewiesene verwaltete Identität unterstützt.
+- `identity`: Für die API-Version 2020-10-01 oder höher des Bereitstellungsskripts ist eine vom Benutzer zugewiesene verwaltete Identität optional, es sei denn, Sie müssen Azure-spezifische Aktionen im Skript ausführen.  Für die API-Version 2019-10-01-preview ist eine verwaltete Identität erforderlich, da der Bereitstellungsskriptdienst diese verwendet, um die Skripts auszuführen. Wenn die Identitätseigenschaft angegeben wird, ruft der Skriptdienst `Connect-AzAccount -Identity` auf, bevor das Benutzerskript aufgerufen wird. Zurzeit wird nur eine benutzerseitig zugewiesene verwaltete Identität unterstützt. Um sich mit einer anderen Identität anzumelden, können Sie [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) im Skript aufrufen.
 - `kind`: Geben Sie den Typ des Skripts an. Zurzeit werden Azure PowerShell- und Azure CLI-Skripts unterstützt. Die Werte sind **AzurePowerShell** und **AzureCLI**.
 - `forceUpdateTag`: Wenn Sie diesen Wert zwischen Vorlagenbereitstellungen ändern, wird das Bereitstellungsskript erneut ausgeführt. Die beiden Funktionen `newGuid()` und `utcNow()` können nur mit dem Standardwert eines Parameters verwendet werden. Weitere Informationen finden Sie unter [Mehrmaliges Ausführen des Skripts](#run-script-more-than-once).
 - `containerSettings`: Geben Sie die Einstellungen zum Anpassen der Azure-Containerinstanz an. Im Bereitstellungsskript muss eine neue Azure-Containerinstanz angegeben werden. Sie können keine vorhandene Azure-Containerinstanz angeben. Sie können jedoch den Namen der Containergruppe mithilfe von `containerGroupName` anpassen. Falls nicht angegeben, wird der Gruppenname automatisch generiert.
@@ -250,7 +251,7 @@ reference('<ResourceName>').outputs.text
 
 ## <a name="work-with-outputs-from-cli-script"></a>Arbeiten mit Ausgaben von CLI-Skripts
 
-Anders als das PowerShell-Bereitstellungsskript stellt die CLI-/Bash-Unterstützung keine allgemeine Variable zum Speichern von Skriptausgaben bereit. Stattdessen ist eine Umgebungsvariable namens `AZ_SCRIPTS_OUTPUT_PATH` vorhanden, in der der Speicherort der Skriptausgabedatei gespeichert wird. Wenn ein Bereitstellungsskript aus einer Resource Manager-Vorlage ausgeführt wird, wird diese Umgebungsvariable von der Bash-Shell automatisch für Sie festgelegt.
+Anders als das PowerShell-Bereitstellungsskript stellt die CLI-/Bash-Unterstützung keine allgemeine Variable zum Speichern von Skriptausgaben bereit. Stattdessen ist eine Umgebungsvariable namens `AZ_SCRIPTS_OUTPUT_PATH` vorhanden, in der der Speicherort der Skriptausgabedatei gespeichert wird. Wenn ein Bereitstellungsskript aus einer Resource Manager-Vorlage ausgeführt wird, wird diese Umgebungsvariable von der Bash-Shell automatisch für Sie festgelegt. Der Wert von `AZ_SCRIPTS_OUTPUT_PATH` lautet */mnt/azscripts/azscriptoutput/scriptoutputs.json*.
 
 Die Ausgaben von Bereitstellungsskripts müssen am Speicherort `AZ_SCRIPTS_OUTPUT_PATH` gespeichert werden, und es muss sich bei den Ausgaben um ein gültiges JSON-Zeichenfolgenobjekt handeln. Der Inhalt der Datei muss als Schlüssel-Wert-Paar gespeichert werden. Beispielsweise wird ein Array von Zeichenfolgen als `{ "MyResult": [ "foo", "bar"] }` gespeichert.  Das Speichern nur der Arrayergebnisse (z. B. `[ "foo", "bar" ]`) ist ungültig.
 
@@ -310,6 +311,26 @@ Wenn ein vorhandenes Speicherkonto zum Einsatz kommt, erstellt der Skriptdienst 
 Sie können steuern, wie PowerShell auf Fehler ohne Abbruch reagieren soll, indem Sie die Variable `$ErrorActionPreference` in Ihrem Bereitstellungsskript verwenden. Wenn die Variable in Ihrem Bereitstellungsskript nicht festgelegt ist, wird der Standardwert **Continue** (Fortsetzen) verwendet.
 
 Tritt bei dem Skript ein Fehler auf, wird der Bereitstellungsstatus der Ressource ungeachtet der Einstellung von `$ErrorActionPreference` auf **Fehler** festgelegt.
+
+### <a name="use-environment-variables"></a>Verwenden von Umgebungsvariablen
+
+Das Bereitstellungsskript verwendet diese Umgebungsvariablen:
+
+|Umgebungsvariable|Standardwert|System-reserviert|
+|--------------------|-------------|---------------|
+|AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|N|
+|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration|N|
+|AZ_SCRIPTS_OUTPUT_PATH|<AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY>/<AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME>|J|
+|AZ_SCRIPTS_PATH_INPUT_DIRECTORY|/mnt/azscripts/azscriptinput|J|
+|AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY|/mnt/azscripts/azscriptoutput|J|
+|AZ_SCRIPTS_PATH_USER_SCRIPT_FILE_NAME|Azure PowerShell: userscript.ps1; Azure CLI: userscript.sh|J|
+|AZ_SCRIPTS_PATH_PRIMARY_SCRIPT_URI_FILE_NAME|primaryscripturi.config|J|
+|AZ_SCRIPTS_PATH_SUPPORTING_SCRIPT_URI_FILE_NAME|supportingscripturi.config|J|
+|AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME|scriptoutputs.json|J|
+|AZ_SCRIPTS_PATH_EXECUTION_RESULTS_FILE_NAME|executionresult.json|J|
+|AZ_SCRIPTS_USER_ASSIGNED_IDENTITY|/subscriptions/|N|
+
+Weitere Informationen zur Verwendung von `AZ_SCRIPTS_OUTPUT_PATH` finden Sie unter [Verwenden der Ausgaben vom CLI-Skript](#work-with-outputs-from-cli-script).
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Übergeben von sicheren Zeichenfolgen an Bereitstellungsskripts
 
@@ -377,10 +398,10 @@ Timeout             : PT1H
 
 Über die Azure-Befehlszeilenschnittstelle können Sie Bereitstellungsskripts im Abonnement- oder Ressourcengruppenbereich verwalten:
 
-- [az deployment-scripts delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete): Dient zum Löschen eines Bereitstellungsskripts.
-- [az deployment-scripts list](/cli/azure/deployment-scripts#az-deployment-scripts-list): Dient zum Auflisten aller Bereitstellungsskripts.
-- [az deployment-scripts show](/cli/azure/deployment-scripts#az-deployment-scripts-show): Dient zum Abrufen eines Bereitstellungsskripts.
-- [az deployment-scripts show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log): Dient zum Anzeigen von Bereitstellungsskriptprotokollen.
+- [az deployment-scripts delete](/cli/azure/deployment-scripts#az_deployment_scripts_delete): Dient zum Löschen eines Bereitstellungsskripts.
+- [az deployment-scripts list](/cli/azure/deployment-scripts#az_deployment_scripts_list): Dient zum Auflisten aller Bereitstellungsskripts.
+- [az deployment-scripts show](/cli/azure/deployment-scripts#az_deployment_scripts_show): Dient zum Abrufen eines Bereitstellungsskripts.
+- [az deployment-scripts show-log](/cli/azure/deployment-scripts#az_deployment_scripts_show_log): Dient zum Anzeigen von Bereitstellungsskriptprotokollen.
 
 Die Ausgabe des Befehls „list“ sieht in etwa wie folgt aus:
 

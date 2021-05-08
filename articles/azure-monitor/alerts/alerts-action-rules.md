@@ -2,13 +2,13 @@
 title: Aktionsregeln für Azure Monitor-Warnungen
 description: In diesem Artikel wird erläutert, was Aktionsregeln in Azure Monitor sind und wie sie konfiguriert und verwaltet werden können.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: 4f54ee7d21d52386bd18921aec33cabe02046852
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105036780"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772557"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
@@ -79,15 +79,22 @@ Diese Regel gilt nur für Warnungen, die von einer bestimmten Warnungsregel stam
 Zum Beispiel bedeutet **alert rule ID = "/subscriptions/SubId1/resourceGroups/RG1/providers/microsoft.insights/metricalerts/API-Latency"** , dass diese Regel nur für Warnungen gilt, die von der Metrikwarnungsregel „API-Latency“ stammen.  
 _HINWEIS: Sie können die entsprechende Warnungsregel-ID abrufen, indem Sie Ihre Warnungsregeln über die CLI auflisten oder indem Sie eine spezifische Warnungsregel im Portal öffnen. Hierzu klicken Sie auf „Eigenschaften“ und kopieren den Wert „Ressourcen-ID“._
 * **Überwachungsbedingung**  
-Diese Regel gilt nur für Warnungsereignisse mit der festgelegten Überwachungsbedingung – entweder **Ausgelöst** oder **Behoben**.
+Diese Regel gilt nur für Warnungsereignisse mit der festgelegten Überwachungsbedingung – entweder **„Ausgelöst“** oder **„Behoben“** .
 * **Beschreibung**  
 Diese Regel gilt nur für Warnungen, die eine bestimmte Zeichenfolge im Beschreibungsfeld enthalten. Dieses Feld enthält die Beschreibung der Warnungsregel.  
-Zum Beispiel bedeutet **description contains 'prod'** , dass die Regel nur Warnungen abgleicht, die die Zeichenfolge „prod“ in ihrer Beschreibung enthalten.
+Zum Beispiel bedeutet **description contains „prod“** , dass die Regel nur Warnungen abgleicht, die die Zeichenfolge „prod“ in ihrer Beschreibung enthalten.
 * **Warnungskontext (Nutzlast)**  
 Diese Regel gilt nur für Warnungen, die mindestens einen der spezifischen Werte in den Warnungskontextfeldern enthalten.  
-Zum Beispiel bedeutet **alert context (payload) contains 'Computer-01'** , dass die Regel nur für Warnungen gilt, deren Nutzlasten die Zeichenfolge „Computer-01“ enthalten.
+Zum Beispiel bedeutet **alert context (payload) contains „Computer-01“** , dass die Regel nur für Warnungen gilt, deren Nutzlasten die Zeichenfolge „Computer-01“ enthalten.
 
-Wenn Sie mehrere Filter in einer Regel festlegen, gelten sie alle. Wenn Sie beispielsweise **resource type = "Virtual Machines"** und **severity = "Sev0"** festlegen, gilt die Regel nur für Warnungen mit dem Schweregrad „Sev0“ auf virtuellen Computern.
+> [!NOTE]
+> Jeder Filter kann bis zu fünf Werte enthalten.  
+> Beispielsweise kann ein Filter für den Überwachungsdienst bis zu fünf Überwachungsdienstnamen enthalten.
+
+
+
+
+Wenn Sie mehrere Filter in einer Regel festlegen, gelten sie alle. Wenn Sie beispielsweise **resource type = „Virtual Machines“** und **severity = „Sev0“** festlegen, gilt die Regel nur für Warnungen mit dem Schweregrad „Sev0“ auf virtuellen Computern.
 
 ![Filter für Aktionsregeln](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -136,7 +143,7 @@ Sie können Aktionsregeln mit der Azure-Befehlszeilenschnittstelle (Azure CLI) e
 
 1. Melden Sie sich an.
 
-   Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az-login) an, falls Sie eine lokale Installation der Befehlszeilenschnittstelle verwenden.  Führen Sie die in Ihrem Terminal angezeigten Schritte aus, um den Authentifizierungsprozess abzuschließen.
+   Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az_login) an, falls Sie eine lokale Installation der Befehlszeilenschnittstelle verwenden.  Führen Sie die in Ihrem Terminal angezeigten Schritte aus, um den Authentifizierungsprozess abzuschließen.
 
     ```azurecli
     az login

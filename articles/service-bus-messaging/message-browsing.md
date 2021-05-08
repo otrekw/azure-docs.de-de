@@ -3,49 +3,53 @@ title: 'Azure Service Bus: Durchsuchen von Nachrichten'
 description: Durch das Durchsuchen und Einsehen von Service Bus-Nachrichten kann ein Azure Service Bus-Client alle Nachrichten in einer Warteschlange oder in einem Abonnement aufzählen.
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: f4943685f03eccb1c3b8da079973cf083bdcc416
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: deafe9e6ddeeebf233922aade36823ddaaede864
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090306"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520121"
 ---
 # <a name="message-browsing"></a>Einsehen von Nachrichten
-
 Das Einsehen von Nachrichten ermöglicht einem Service Bus-Client, alle Nachrichten in einer Warteschlange oder einem Abonnement zu Diagnose- und Debugzwecken aufzuzählen.
 
-Das Einsehen einer Warteschlange gibt alle Nachrichten in der **Warteschlange** zurück, nicht nur diejenigen, die für die sofortige Übernahme. Das Einsehen für ein **Abonnement** gibt alle Nachrichten außer geplante Nachrichten im Abonnementnachrichtenprotokoll zurück. 
+Der Peek-Vorgang für eine Warteschlange oder ein Abonnement gibt höchstens die angeforderte Anzahl von Nachrichten zurück. Die folgende Tabelle zeigt die Typen von Nachrichten, die vom Peek-Vorgang zurückgegeben werden. 
 
-Verbrauchte und abgelaufene Nachrichten werden durch eine asynchrone Ausführung von „Garbage Collection“ bereinigt. Dieser Schritt tritt möglicherweise nicht unmittelbar nach dem Ablauf von Nachrichten auf. Deshalb kann ein Peek-Vorgang Nachrichten zurückgeben, die bereits abgelaufen sind. Diese Nachrichten werden entfernt oder in die Warteschlange für unzustellbare Nachrichten verschoben, wenn das nächste Mal ein Empfangsvorgang für die Warteschlange oder das Abonnement aufgerufen wird. Beachten Sie dieses Verhalten, wenn Sie versuchen, verzögerte Nachrichten aus der Warteschlange wiederherzustellen. Eine abgelaufene kann nicht mehr auf andere Weise regelmäßig abgerufen werden, selbst wenn sie von Peek zurückgegeben wird. Die Rückgabe dieser Nachrichten ist beabsichtigt, da Peek ein Diagnosetool ist, das den aktuellen Status des Protokolls widerspiegelt.
+| Nachrichtentyp | Enthalten? | 
+| ---------------- | ----- | 
+| Aktive Nachrichten | Ja |
+| Unzustellbare Nachrichten | Nein | 
+| Gesperrte Nachrichten | Ja |
+| Abgelaufene Nachrichten |  Möglicherweise (bevor sie unzustellbar sind) |
+| Geplante Nachrichten | Ja für Warteschlangen. Nein für Abonnements |
 
-Peek gibt auch Nachrichten zurück, die gesperrt wurden und aktuell von anderen Empfängern verarbeitet werden. Da Peek jedoch eine getrennte Momentaufnahme zurückgibt, kann der Sperrzustand einer Nachricht für eingesehene Nachrichten nicht beobachtet werden.
+## <a name="dead-lettered-messages"></a>Unzustellbare Nachrichten
+Um einen Einblick in **unzustellbare** Nachrichten einer Warteschlange oder eines Abonnements zu erhalten, sollte der Peek-Vorgang in der Warteschlange für unzustellbare Nachrichten ausgeführt werden, die der Warteschlange oder dem Abonnement zugeordnet ist. Weitere Informationen finden Sie unter [Zugreifen auf Warteschlangen für unzustellbare Nachrichten](service-bus-dead-letter-queues.md#path-to-the-dead-letter-queue).
+
+## <a name="expired-messages"></a>Abgelaufene Nachrichten
+Abgelaufene Nachrichten können in den Ergebnissen enthalten sein, die vom Peek-Vorgang zurückgegeben werden. Verbrauchte und abgelaufene Nachrichten werden durch eine asynchrone Ausführung von „Garbage Collection“ bereinigt. Dieser Schritt tritt möglicherweise nicht unmittelbar nach dem Ablauf von Nachrichten auf. Deshalb kann ein Peek-Vorgang Nachrichten zurückgeben, die bereits abgelaufen sind. Diese Nachrichten werden entfernt oder in die Warteschlange für unzustellbare Nachrichten verschoben, wenn das nächste Mal ein Empfangsvorgang für die Warteschlange oder das Abonnement aufgerufen wird. Beachten Sie dieses Verhalten, wenn Sie versuchen, verzögerte Nachrichten aus der Warteschlange wiederherzustellen. 
+
+Eine abgelaufene kann nicht mehr auf andere Weise regelmäßig abgerufen werden, selbst wenn sie von Peek zurückgegeben wird. Die Rückgabe dieser Nachrichten ist beabsichtigt, da Peek ein Diagnosetool ist, das den aktuellen Status des Protokolls widerspiegelt.
+
+## <a name="locked-messages"></a>Gesperrte Nachrichten
+Peek gibt auch Nachrichten zurück, die **gesperrt** wurden und aktuell von anderen Empfängern verarbeitet werden. Da Peek jedoch eine getrennte Momentaufnahme zurückgibt, kann der Sperrzustand einer Nachricht für eingesehene Nachrichten nicht beobachtet werden.
 
 ## <a name="peek-apis"></a>Peek-APIs
-## <a name="azuremessagingservicebus"></a>[Azure.Messaging.ServiceBus](#tab/dotnet)
-Die [PeekMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.peekmessageasync) -Methode und die [PeekMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.peekmessagesasync) -Methode sind auf Empfänger-Objekte vorhanden: `ServiceBusReceiver` , `ServiceBusSessionReceiver` . Peek funktioniert für Warteschlangen, Abonnements und ihre jeweiligen Warteschlangen für unzustellbare Nachrichten.
+Peek funktioniert für Warteschlangen, Abonnements und ihre Warteschlangen für unzustellbare Nachrichten. 
 
-Bei wiederholtem Aufruf listet `PeekMessageAsync` alle Nachrichten in der Warteschlange oder dem Abonnementprotokoll auf, und zwar in der Reihenfolge der Sequenznummern von der niedrigsten verfügbaren bis zur höchsten. Dies ist die Reihenfolge, in der Nachrichten in die Warteschlange gestellt wurden, und nicht die Reihenfolge, in der Nachrichten schließlich abgerufen werden.
-PeekMessagesAsync ruft mehrere Nachrichten ab und gibt sie als Aufzählung zurück. Wenn keine Nachrichten verfügbar sind, ist das Enumerationsobjekt leer, nicht NULL.
+Bei wiederholtem Aufruf listet der Peek-Vorgang alle Nachrichten in der Warteschlange oder dem Abonnement auf, und zwar in der Reihenfolge der Sequenznummern von der niedrigsten verfügbaren bis zur höchsten. Dies ist die Reihenfolge, in der Nachrichten in die Warteschlange gestellt wurden, und nicht die Reihenfolge, in der Nachrichten schließlich abgerufen werden.
 
-Sie können auch den from [fromSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.eventposition.fromsequencenumber)-Parameter mit einer SequenceNumber füllen, bei der Sie beginnen möchten, und dann die Methode erneut aufrufen, ohne den Parameter für die weitere Aufzählung anzugeben. `PeekMessagesAsync` funktioniert vergleichbar, ruft aber eine Gruppe von Nachrichten auf einmal ab.
-
-
-## <a name="microsoftazureservicebus"></a>[Microsoft.Azure.ServiceBus](#tab/dotnetold)
-Die Methoden [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) und [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) sind in Empfängerobjekten vorhanden: `MessageReceiver`, `MessageSession`. Peek funktioniert für Warteschlangen, Abonnements und ihre jeweiligen Warteschlangen für unzustellbare Nachrichten.
-
-Bei wiederholtem Aufruf listet `Peek` alle Nachrichten in der Warteschlange oder dem Abonnementprotokoll auf, und zwar in der Reihenfolge der Sequenznummern von der niedrigsten verfügbaren bis zur höchsten. Dies ist die Reihenfolge, in der Nachrichten in die Warteschlange gestellt wurden, und nicht die Reihenfolge, in der Nachrichten schließlich abgerufen werden.
-
-[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) ruft mehrere Nachrichten ab und gibt diese als Enumeration zurück. Wenn keine Nachrichten verfügbar sind, ist das Enumerationsobjekt leer, nicht NULL.
-
-Sie können auch eine Überladung der Methode mit einer [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) auslösen, bei der gestartet werden soll, und dann die parameterlose Methodenüberladung aufrufen, um die Aufzählung fortzusetzen. **PeekBatch** funktioniert vergleichbar, ruft aber eine Gruppe von Nachrichten auf einmal ab.
-
-
----
+Sie können auch „SequenceNumber“ an einen Peek-Vorgang übergeben. Sie wird verwendet, um zu bestimmen, wo Sie mit dem Peek-Vorgang beginnen sollen. Sie können nachfolgende Aufrufe des Peek-Vorgangs vornehmen, ohne den Parameter anzugeben, der weiter enumeriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
+Probieren Sie die Beispiele in der Sprache Ihrer Wahl aus, um die Funktion zum Peek-Vorgang oder Durchsuchen von Nachrichten zu untersuchen:
 
-Weitere Informationen zum Service Bus-Messaging finden Sie in folgenden Themen:
+- [Azure Service Bus-Clientbibliotheksbeispiele für Java](/samples/azure/azure-sdk-for-java/servicebus-samples/) - **Einsehen eines Nachrichtenbeispiels**
+- [Azure Service Bus-Clientbibliotheksbeispiele für Python](/samples/azure/azure-sdk-for-python/servicebus-samples/) - **Beispiel: „receive_peek.py“**
+- [Azure Service Bus-Clientbibliotheksbeispiele für JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/) - **browseMessages.js**-Beispiel
+- [Azure Service Bus-Clientbibliotheksbeispiele für TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/) - **browseMessages.js**-Beispiel
+- [Azure.Messaging.ServiceBus-Beispiele für .NET:](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) - Siehe „Einsehen von Methoden zu Empfängerklassen“ in der [Referenzdokumentation](/dotnet/api/azure.messaging.servicebus).
 
-* [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)
-* [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
-* [Verwenden von Service Bus-Themen und -Abonnements](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+Hier finden Sie Beispiele für die älteren .NET- und Java-Clientbibliotheken:
+- [Microsoft.Azure.ServiceBus-Beispiele für .NET](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/) - **Beispiel für das Durchsuchen von Nachrichten (Peek)** 
+- [azure-servicebus-Beispiele für Java](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse) - **Durchsuchen von Nachrichten**-Beispiel. 

@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Service Bus-Warteschlangen und -Themen mit
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc41bcf31102b19dd35f62452b956faf4f029551
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796634"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750912"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
 
@@ -146,6 +146,7 @@ Derzeit gelten bei Service Bus die folgenden Einschränkungen für partitioniert
 * Service Bus erlaubt derzeit bis zu 100 partitionierte Warteschlangen oder Themen pro Namespace. Jede partitionierte Warteschlange bzw. jedes partitionierte Thema wird in das zulässige Kontingent von 10.000 Entitäten pro Namespace eingerechnet (gilt nicht für Premium-Tarif).
 
 ## <a name="next-steps"></a>Nächste Schritte
+Sie können die Partitionierung mit dem Azure-Portal, PowerShell, der CLI, einer Resource Manager-Vorlage, .NET, Java, Python und JavaScript aktivieren. Weitere Informationen finden Sie unter [Aktivieren der Partitionierung für eine Warteschlange oder ein Thema von Azure Service Bus](enable-partitions.md). 
 
 Informieren Sie sich im [AMQP 1.0-Protokollhandbuch](service-bus-amqp-protocol-guide.md) über die grundlegenden Konzepte der Messagingspezifikation von AMQP 1.0.
 

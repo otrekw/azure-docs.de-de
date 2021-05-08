@@ -7,27 +7,27 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c7efebaf23bd8e897243f6ee12b23d3821a4c033
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 9adc69734a1b2de806d7af6cf0e987110b605ec4
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257329"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208597"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-In Azure Digital Twins können Sie [Ereignisbenachrichtigungen](concepts-event-notifications.md) an Downstreamdienste oder verbundene Computeressourcen weiterleiten. Dies erfolgt, indem zunächst **Endpunkte** eingerichtet werden, die die Ereignisse empfangen können. Anschließend können Sie [**Ereignisrouten**](concepts-route-events.md) erstellen, die angeben, welche von Azure Digital Twins generierten Ereignisse an welche Endpunkte übermittelt werden.
+In Azure Digital Twins können Sie [Ereignisbenachrichtigungen](concepts-event-notifications.md) an Downstreamdienste oder verbundene Computeressourcen weiterleiten. Dies erfolgt, indem zunächst **Endpunkte** eingerichtet werden, die die Ereignisse empfangen können. Anschließend können Sie [Ereignisrouten](concepts-route-events.md) erstellen, die angeben, welche von Azure Digital Twins generierten Ereignisse an welche Endpunkte übermittelt werden.
 
 In diesem Artikel wird das Erstellen von Endpunkten und Routen mit den [REST-APIs](/rest/api/azure-digitaltwins/), dem [.NET SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client) und der [Azure Digital Twins-CLI](how-to-use-cli.md) ausführlich erläutert.
 
-Alternativ können Sie auch Endpunkte und Routen mit dem [Azure-Portal](https://portal.azure.com) verwalten. Eine Version dieses Artikels, die stattdessen das Portal verwendet, finden Sie unter [*Vorgehensweise: Verwalten von Endpunkten und Routen (Portal)*](how-to-manage-routes-portal.md).
+Alternativ können Sie auch Endpunkte und Routen mit dem [Azure-Portal](https://portal.azure.com) verwalten. Eine Version dieses Artikels, die stattdessen das Portal verwendet, finden Sie unter [Vorgehensweise: Verwalten von Endpunkten und Routen (Portal)](how-to-manage-routes-portal.md) .
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Sie benötigen ein **Azure-Konto** (Sie können [hier](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ein kostenloses Konto einrichten).
-- Sie benötigen eine **Azure Digital Twins-Instanz** in Ihrem Azure-Abonnement. Falls Sie noch keine Instanz besitzen, können Sie zum Erstellen die Schritte unter [*Vorgehensweise: Einrichten einer Instanz und von Authentifizierung*](how-to-set-up-instance-cli.md) verwenden. Notieren Sie sich die folgenden Werte aus dem Setup, um sie später in diesem Artikel zu verwenden:
+- Sie benötigen eine **Azure Digital Twins-Instanz** in Ihrem Azure-Abonnement. Falls Sie noch keine Instanz besitzen, können Sie zum Erstellen die Schritte unter [Vorgehensweise: Einrichten einer Instanz und von Authentifizierung](how-to-set-up-instance-cli.md) verwenden. Notieren Sie sich die folgenden Werte aus dem Setup, um sie später in diesem Artikel zu verwenden:
     - Instanzname
     - Ressourcengruppe
 
@@ -40,7 +40,7 @@ Dies sind die unterstützten Typen von Endpunkten, die Sie für Ihre Instanz ers
 * [Event Hubs](../event-hubs/event-hubs-about.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Weitere Informationen zu den verschiedenen Endpunkttypen finden Sie unter [*Wählen zwischen Azure-Messagingdiensten*](../event-grid/compare-messaging-services.md).
+Weitere Informationen zu den verschiedenen Endpunkttypen finden Sie unter [Wählen zwischen Azure-Messagingdiensten](../event-grid/compare-messaging-services.md).
 
 In diesem Abschnitt wird erläutert, wie diese Endpunkte mithilfe der Azure CLI erstellt werden. Sie können Endpunkte auch mit den [DigitalTwinsEndpoint-Steuerungsebenen-APIs](/rest/api/digital-twins/controlplane/endpoints) verwalten.
 
@@ -90,7 +90,7 @@ Wenn ein Endpunkt innerhalb eines bestimmten Zeitraums oder nach einer bestimmte
 
 Endpunkte mit aktivierter Funktion für unzustellbare Nachrichten können mit der [Azure Digital Twins-CLI](how-to-use-cli.md) oder mit [Steuerungsebenen-APIs](how-to-use-apis-sdks.md#overview-control-plane-apis) eingerichtet werden.
 
-Weitere Informationen zu unzustellbaren Nachrichten finden Sie unter [*Konzepte: Ereignisrouten*](concepts-route-events.md#dead-letter-events). Anweisungen zum Einrichten eines Endpunkts mit unzustellbaren Nachrichten finden Sie im Rest dieses Abschnitts.
+Weitere Informationen zu unzustellbaren Nachrichten finden Sie unter [Konzepte: Ereignisrouten](concepts-route-events.md#dead-letter-events). Anweisungen zum Einrichten eines Endpunkts mit unzustellbaren Nachrichten finden Sie im Rest dieses Abschnitts.
 
 #### <a name="set-up-storage-resources"></a>Einrichten von Speicherressourcen
 
@@ -100,8 +100,8 @@ Später geben Sie den URI für diesen Container an, wenn Sie den Endpunkt erstel
 
 Führen Sie die folgenden Schritte aus, um diese Speicherressourcen in Ihrem Azure-Konto einzurichten, um so die Einrichtung der Endpunktverbindung im nächsten Abschnitt vorzubereiten.
 
-1. Befolgen Sie die Schritte in [*Erstellen eines Speicherkontos*](../storage/common/storage-account-create.md?tabs=azure-portal), um ein **Speicherkonto** in Ihrem Azure-Abonnement zu erstellen. Notieren Sie den Namen des Speicherkontos zur späteren Verwendung.
-2. Befolgen Sie die Schritte in [*Erstellen eines Containers*](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container), um einen **Container** innerhalb des neuen Speicherkontos zu erstellen. Notieren Sie sich den Containernamen, um ihn später zu verwenden.
+1. Befolgen Sie die Schritte in [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md?tabs=azure-portal), um ein **Speicherkonto** in Ihrem Azure-Abonnement zu erstellen. Notieren Sie den Namen des Speicherkontos zur späteren Verwendung.
+2. Befolgen Sie die Schritte in [Erstellen eines Containers](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container), um einen **Container** innerhalb des neuen Speicherkontos zu erstellen. Notieren Sie sich den Containernamen, um ihn später zu verwenden.
 3. Erstellen Sie als nächstes ein **SAS-Token** für Ihr Speicherkonto, das der Endpunkt für den Zugriff darauf verwenden kann. Navigieren Sie zunächst zu Ihrem Speicherkonto im [Azure-Portal](https://ms.portal.azure.com/#home) (Sie finden es über die Suchleiste im Portal).
 4. Wählen Sie auf der Speicherkontoseite den Link _Shared Access Signature_ in der linken Navigationsleiste, um mit der Einrichtung des SAS-Tokens zu beginnen.
 
@@ -127,7 +127,7 @@ Der Wert für den Parameter ist der **SAS-URI für unzustellbare Nachrichten**, 
 --deadletter-sas-uri https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>
 ```
 
-Fügen Sie diesen Parameter am Ende des Befehls zum Erstellen des Endpunkts aus dem Abschnitt [*Erstellen des Endpunkts*](#create-the-endpoint) hinzu, um einen Endpunkt des gewünschten Typs zu erstellen, für den die Funktion für unzustellbare Nachrichten aktiviert ist.
+Fügen Sie diesen Parameter am Ende des Befehls zum Erstellen des Endpunkts aus dem Abschnitt [Erstellen des Endpunkts](#create-the-endpoint) hinzu, um einen Endpunkt des gewünschten Typs zu erstellen, für den die Funktion für unzustellbare Nachrichten aktiviert ist.
 
 Alternativ können Sie Endpunkte für unzustellbare Nachrichten mithilfe der [Azure Digital Twins-Steuerungsebenen-APIs](how-to-use-apis-sdks.md#overview-control-plane-apis) anstelle der CLI verwenden. Lesen Sie hierzu die [DigitalTwinsEndpoint-Dokumentation](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate), um herauszufinden, wie Sie die Anforderung strukturieren und die Parameter für unzustellbare Nachrichten hinzufügen.
 
@@ -204,7 +204,7 @@ Wenn es keinen Routennamen gibt, werden keine Nachrichten außerhalb von Azure D
 
 Eine Route sollte es ermöglichen, mehrere Benachrichtigungen und Ereignistypen auszuwählen. 
 
-Ereignisrouten können mit den [**EventRoutes**-Datenebenen-APIs](/rest/api/digital-twins/dataplane/eventroutes) für Azure Digital Twins oder den [**az dt route**-CLI-Befehlen](/cli/azure/dt/route) erstellt werden. Der Rest dieses Abschnitts führt Sie durch den Erstellungsprozess.
+Ereignisrouten können mit den [EventRoutes-Datenebenen-APIs](/rest/api/digital-twins/dataplane/eventroutes) für Azure Digital Twins oder den [az dt route-CLI-Befehlen](/cli/azure/dt/route) erstellt werden. Der Rest dieses Abschnitts führt Sie durch den Erstellungsprozess.
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Erstellen von Routen mit den APIs und dem C#-SDK
 
@@ -227,7 +227,7 @@ Die folgende Beispielmethode zeigt, wie Sie eine Ereignisroute mit dem C#-SDK er
 
 Routen können auch mithilfe der [az dt route](/cli/azure/dt/route)-Befehle für die Azure Digital Twins-CLI verwaltet werden. 
 
-Weitere Informationen zur Verwendung der CLI und zu den verfügbaren Befehlen finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md).
+Weitere Informationen zur Verwendung der CLI und zu den verfügbaren Befehlen finden Sie unter [Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md).
 
 ## <a name="filter-events"></a>Filtern von Ereignissen
 
@@ -256,4 +256,4 @@ Dies sind die unterstützten Routenfilter. Verwenden Sie die Details in der Spal
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über die verschiedenen Arten von Ereignismeldungen, die Sie erhalten können:
-* [*Konzepte: Ereignisbenachrichtigungen*](concepts-event-notifications.md)
+* [Konzepte: Ereignisbenachrichtigungen](concepts-event-notifications.md)

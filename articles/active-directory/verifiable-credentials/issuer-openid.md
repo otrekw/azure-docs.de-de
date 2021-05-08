@@ -9,31 +9,31 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 8771c61f96b244e0cc0bca1c61ceb8042b4a5b4c
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 6aa502e1ed0e49192220174d5a8573690035a4a3
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220197"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739132"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>Beispiele für die Kommunikation des Ausstellerdiensts (Vorschau)
 
-Der Dienst zum Ausstellen von überprüfbaren Berechtigungsnachweisen kann überprüfbare Berechtigungsnachweise ausstellen, indem er Ansprüche aus einem ID-Token abruft, das vom OpenID-konformen Identitätsanbieter Ihrer Organisation generiert wurde. In diesem Artikel wird beschrieben, wie Sie Ihren Identitätsanbieter einrichten, damit der Authentifikator damit kommunizieren und das korrekte ID-Token abrufen kann, das an den ausstellenden Dienst übergeben werden soll. 
+Der Dienst zum Ausstellen von überprüfbaren Berechtigungsnachweisen von Azure AD kann überprüfbare Berechtigungsnachweise ausstellen, indem er Ansprüche aus einem ID-Token abruft, das vom OpenID-konformen Identitätsanbieter Ihrer Organisation generiert wurde. In diesem Artikel wird beschrieben, wie Sie Ihren Identitätsanbieter einrichten, damit der Authentifikator damit kommunizieren und das korrekte ID-Token abrufen kann, das an den ausstellenden Dienst übergeben werden soll. 
 
 > [!IMPORTANT]
-> Überprüfbare Anmeldeinformationen für Azure Active Directory befinden sich derzeit in der öffentlichen Vorschauphase.
+> Überprüfbare Anmeldeinformationen für Azure Active Directory-befinden sich derzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 Zum Ausstellen von überprüfbaren Anmelde Informationen wird der Authentifikator durch Herunterladen des Vertrags angewiesen, um Eingaben vom Benutzer zu erfassen und diese Informationen an den ausstellenden Dienst zu senden. Wenn Sie ein ID-Token verwenden müssen, müssen Sie Ihren Identitätsanbieter so einrichten, dass der Authenticator einen Benutzer über das OpenID Connect-Protokoll anmelden kann. Die Angaben im resultierenden ID-Token werden verwendet, um den Inhalt Ihres verifizierbaren Berechtigungsnachweises aufzufüllen. Der Authentifikator authentifiziert den Benutzer mithilfe des OpenID Connect-Autorisierungs Kode-Flusses. Ihr OpenID-Anbieter muss die folgenden OpenID Connect-Features unterstützen: 
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 | ------- | ----------- |
 | Gewährungstyp | Muss den Grant-Typ-Berechtigungscode unterstützen. |
 | Tokenformat | Es muss unverschlüsselte kompakte JWTs erzeugen. |
-| Signaturalgorithmus | Muss JWTs erzeugen, die mit RSA 256 signiert sind. |
+| Signaturalgorithmus | Muss JWTs erzeugen, die mit RS 256 signiert sind. |
 | Konfigurations-Dokument | Muss das OpenID Connect-Konfigurations Dokument unterstützen `jwks_uri` . | 
-| Clientregistrierung | Muss die öffentliche Client-Registrierung unterstützen, unter Verwendung eines `redirect_uri`Werts von `vclient://openid/`. | 
+| Clientregistrierung | Muss die öffentliche Client-Registrierung unterstützen, unter Verwendung eines `redirect_uri`Werts von `vcclient://openid/`. | 
 | PKCE | Empfohlen aus Sicherheitsgründen, jedoch nicht erforderlich. |
 
 Beispiele für die HTTP-Anfragen, die an Ihren Identitätsanbieter gesendet werden, sind unten aufgeführt. Ihr Identitätsanbieter muss diese Anfragen in Übereinstimmung mit dem OpenID Connect-Authentifizierungsstandard akzeptieren und beantworten.
@@ -144,4 +144,4 @@ Das ID-Token muss das kompakte Serialisierungsformat JWT verwenden und darf nich
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Vorgehensweise beim Anpassen Ihrer überprüfbaren Anmeldeinformationen für das Azure Active Directory](credential-design.md)
+- [Vorgehensweise beim Anpassen Ihrer überprüfbaren Anmeldeinformationen für Azure Active Directory](credential-design.md)

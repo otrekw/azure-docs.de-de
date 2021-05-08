@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.author: ali
 author: AliciaLiMicrosoft
 ms.date: 04/19/2021
-ms.openlocfilehash: 5e312941e02c5605132971a55041a0b4f7d6dbc9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6659b515ee2d25a4b9136ccfac4cc3444e491438
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139091"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107741174"
 ---
 # <a name="log-analytics-migration-guide-for-azure-hdinsight-clusters"></a>Log Analytics-Migrationshandbuch für Azure HDInsight-Cluster
 
@@ -59,7 +59,7 @@ In den folgenden Abschnitten wird beschrieben, wie Kunden das neue Azure Monitor
 ## <a name="activate-a-new-azure-monitor-integration"></a>Aktivieren einer neuen Azure Monitor-Integration 
 
 > [!NOTE]
-> Sie benötigen einen Log Analytics-Arbeitsbereich, der in einem Abonnement erstellt wurde, auf das Sie Zugriff haben, bevor Sie die neue Integration aktivieren. Weitere Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
+> Sie benötigen einen Log Analytics-Arbeitsbereich, der in einem Abonnement erstellt wurde, auf das Sie Zugriff haben, bevor Sie die neue Integration aktivieren. Weitere Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
 
 Aktivieren Sie die neue Integration, indem Sie zur Portalseite Ihres Clusters navigieren und im Menü auf der linken Seite nach unten scrollen, bis Sie den Abschnitt **Überwachung** erreichen. Wählen Sie im Abschnitt **Überwachung** die Option **Integration überwachen** aus. Wählen Sie dann **Aktivieren** aus, dann Sie können den Log Analytics-Arbeitsbereich auswählen, an den Ihre Protokolle gesendet werden sollen. Wählen Sie **Speichern** aus, nachdem Sie Ihren Arbeitsbereich ausgewählt haben. 
 
@@ -112,7 +112,7 @@ Sie können Ihre eigenen Abfragen im Abfrageprotokoll-Editor eingeben. Abfragen,
 
 #### <a name="insights"></a>Einblicke
 
-Erkenntnisse sind clusterspezifische Visualisierungsdashboards, die mithilfe von [Azure-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) erstellt wurden. Diese Dashboards bieten Ihnen detaillierte Diagramme und Visualisierungen zur Ausführung Ihres Clusters. Die Dashboards verfügen über Abschnitte für jeden Clustertyp, YARN, Systemmetriken und Komponentenprotokolle. Sie können auf das Dashboard Ihres Clusters zugreifen, indem Sie die Seite Ihres Clusters im Portal aufrufen, nach unten zum Abschnitt **Überwachung** scrollen und den Bereich **Erkenntnisse** auswählen. Das Dashboard wird automatisch geladen, wenn Sie die neue Integration aktiviert haben. Warten Sie einige Sekunden, bis die Diagramme geladen werden, während sie die Protokolle abfragen.
+Erkenntnisse sind clusterspezifische Visualisierungsdashboards, die mithilfe von [Azure-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md) erstellt wurden. Diese Dashboards bieten Ihnen detaillierte Diagramme und Visualisierungen zur Ausführung Ihres Clusters. Die Dashboards verfügen über Abschnitte für jeden Clustertyp, YARN, Systemmetriken und Komponentenprotokolle. Sie können auf das Dashboard Ihres Clusters zugreifen, indem Sie die Seite Ihres Clusters im Portal aufrufen, nach unten zum Abschnitt **Überwachung** scrollen und den Bereich **Erkenntnisse** auswählen. Das Dashboard wird automatisch geladen, wenn Sie die neue Integration aktiviert haben. Warten Sie einige Sekunden, bis die Diagramme geladen werden, während sie die Protokolle abfragen.
 
 :::image type="content" source="./media/log-analytics-migration/visualization-dashboard.png" lightbox="./media/log-analytics-migration/visualization-dashboard.png" alt-text="Screenshot des Dashboards des Visualisierungsdashboards.":::
 
@@ -130,9 +130,9 @@ Verwenden Sie unsere neue Arbeitsmappe im großen Stil, um eine Überwachung mit
 
    :::image type="content" source="./media/log-analytics-migration/at-scale-workbook.png" lightbox="./media/log-analytics-migration/at-scale-workbook.png" alt-text="Screenshot, der den Bildschirm „Arbeitsmappe im großen Stil“ zeigt." border="false":::
 
-#### <a name="alerts"></a>Warnungen
+#### <a name="alerts"></a>Alerts
 
-Sie können Ihren Clustern und Arbeitsbereichen im Protokollabfrage-Editor benutzerdefinierte Warnungen hinzufügen. Wechseln Sie zum Protokollabfrage-Editor, indem Sie im Cluster- oder Arbeitsbereichsportal auf den Bereich **Protokolle** klicken. Führen Sie eine Abfrage aus und wählen Sie dann **Neue Warnungsregel** aus, wie im folgenden Screenshot gezeigt. Weitere Informationen finden Sie unter [Konfigurieren von Warnungen](../azure-monitor/alerts/alerts-log.md).
+Sie können Ihren Clustern und Arbeitsbereichen im Protokollabfrage-Editor benutzerdefinierte Warnungen hinzufügen. Wechseln Sie zum Protokollabfrage-Editor, indem Sie im Cluster- oder Arbeitsbereichsportal auf den Bereich **Protokolle** klicken. Führen Sie eine Abfrage aus und wählen Sie dann **Neue Warnungsregel** aus, wie im folgenden Screenshot gezeigt. Weitere Informationen finden Sie unter [Konfigurieren von Warnungen](../azure-monitor/platform/alerts-log.md).
 
 :::image type="content" source="./media/log-analytics-migration/new-rule-alert.png" alt-text="Screenshot: Fenster „Neue Warnungsregel“." border="false":::
 
