@@ -2,18 +2,18 @@
 title: Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern
 description: Azure Storage schützt Ihre Daten, indem der Dienst diese im Ruhezustand verschlüsselt, bevor diese auf Storage-Clustern gespeichert werden. Sie können mit kundenseitig verwalteten Schlüsseln die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten, oder Sie können sich bei der Verschlüsselung Ihrer verwalteten Datenträger auf von Microsoft verwaltete Schlüssel verlassen.
 author: roygara
-ms.date: 03/11/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 786ecef5d62c7dd18e3992fa0b233b27a80d762b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09ec15eb45029c42fd5bc02288a0c45e167e7092
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721850"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146291"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
 
@@ -21,7 +21,7 @@ Die meisten von Azure verwalteten Datenträger werden mit der Azure Storage-Vers
 
 Daten in verwalteten Azure-Datenträgern werden transparent mit 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) – einer der stärksten verfügbaren Blockverschlüsselungen – FIPS 140-2-konform ver- und entschlüsselt. Weitere Informationen zu den kryptografischen Modulen, die verwalteten Azure-Datenträgern zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](/windows/desktop/seccng/cng-portal).
 
-Die Azure Storage-Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus, und es fallen keine zusätzlichen Kosten an. Weitere Informationen über die Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung](/azure/storage/common/storage-service-encryption).
+Die Azure Storage-Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus, und es fallen keine zusätzlichen Kosten an. Weitere Informationen über die Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung](../storage/common/storage-service-encryption.md).
 
 > [!NOTE]
 > Temporäre Datenträger sind keine verwalteten Datenträger und werden nicht von SSE verschlüsselt, es sei denn, Sie aktivieren die Verschlüsselung auf dem Host.
@@ -81,6 +81,8 @@ Temporäre Datenträger und kurzlebige Betriebssystemdatenträger werden im Ruhe
 #### <a name="supported-vm-sizes"></a>Unterstützte VM-Größen
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
+
+Sie können die VM-Größen auch programmgesteuert ermitteln. Informationen zum programmgesteuerten Abrufen finden Sie im Abschnitt zum Ermitteln der unterstützten VM-Größen im Artikel zum [Azure PowerShell-Modul](windows/disks-enable-host-based-encryption-powershell.md#finding-supported-vm-sizes) oder zur [Azure CLI](linux/disks-enable-host-based-encryption-cli.md#finding-supported-vm-sizes).
 
 Informationen zum Aktivieren der End-to-End-Verschlüsselung mithilfe der Verschlüsselung auf dem Host finden Sie in den Artikeln, in denen erläutert wird, wie Sie diese entweder mit dem [Azure PowerShell-Modul](windows/disks-enable-host-based-encryption-powershell.md), der [Azure CLI](linux/disks-enable-host-based-encryption-cli.md) oder dem [Azure-Portal](disks-enable-host-based-encryption-portal.md) aktivieren.
 

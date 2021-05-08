@@ -5,24 +5,27 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f5bdae17126048da153f70bf27609bcc4b92fe21
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604837"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599586"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Bekannte Probleme bei virtuellen Computern der H-Serie und der N-Serie
 
 Dieser Artikel versucht, die jüngsten häufigen Probleme und ihre Lösungen bei der Verwendung der HPC- und GPU-VMs der [H-Serie](../../sizes-hpc.md) und [N-Serie](../../sizes-gpu.md) aufzulisten.
 
+## <a name="qp0-access-restriction"></a>qp0-Zugriffseinschränkung
+
+Um Zugriffe auf Low-Level-Hardware zu verhindern, die zu Sicherheitsrisiken führen können, haben virtuelle Gastcomputer keinen Zugriff auf das Warteschlangenpaar 0. Dies ist in der Regel nur für Aktionen im Zusammenhang mit der Verwaltung der ConnectX InfiniBand NIC oder mit der Ausführung einiger InfiniBand-Diagnosen (beispielsweise „ibdiagnet“) relevant, nicht aber für Endbenutzeranwendungen.
+
 ## <a name="mofed-installation-on-ubuntu"></a>MOFED-Installation auf Ubuntu
-Unter Ubuntu-18.04 wies die Mellanox-OFED eine Inkompatibilität mit der Kernel Version `5.4.0-1039-azure #42` und höher auf, was eine Erhöhung der VM-Start Zeit auf ungefähr 30 Minuten zur Folge hat. Dies wurde für die beiden Mellanox-OFED-Versionen 5.2-1.0.4.0 und 5.2-2.2.0.0 gemeldet.
-Die temporäre Lösung besteht darin, den **Kanonischen: UbuntuServer: 18_04-LTS-gen2:18.04.202101290** Marketplace Image oder älter zu verwenden und den Kernel nicht zu aktualisieren.
-Es wird erwartet, dass dieses Problem mit einem neueren MOFED (TBD) behoben wird.
+Auf Ubuntu-18.04-basierten Marketplace-VM-Images mit Kernelversion `5.4.0-1039-azure #42` und neuer sind einige ältere Mellanox OFED-Versionen inkompatibel, was in einigen Fällen zu einer Erhöhung der VM-Startzeit von bis zu 30 Minuten führt. Dies wurde für die beiden Mellanox-OFED-Versionen 5.2-1.0.4.0 und 5.2-2.2.0.0 gemeldet. Das Problem wurde mit Mellanox OFED 5.3-1.0.0.1 behoben.
+Wenn es erforderlich ist, den inkompatiblen OFED zu verwenden, besteht eine Lösung in der Verwendung des Marketplace-VM-Images **Canonical:UbuntuServer:18_04-lts-gen2:18.04.202101290** oder älter, damit der Kernel nicht aktualisiert werden muss.
 
 ## <a name="mpi-qp-creation-errors"></a>MPI-QP-Erstellungsfehler
 Wenn bei der Ausführung von MPI-Workloads InfiniBand QP-Erstellungsfehler wie unten gezeigt auftreten, empfehlen wir, die VM neu zu starten und den Workload erneut zu versuchen. Dieses Problem wird zukünftig behoben.
@@ -72,10 +75,6 @@ Diese „doppelte MAC-Adresse mit cloud-init bei Ubuntu“ ist ein bekanntes Pro
       version: 2
     EOF
     ```
-
-## <a name="qp0-access-restriction"></a>qp0-Zugriffseinschränkung
-
-Um Zugriffe auf Low-Level-Hardware zu verhindern, die zu Sicherheitsrisiken führen können, haben virtuelle Gastcomputer keinen Zugriff auf das Warteschlangenpaar 0. Dies ist in der Regel nur für Aktionen im Zusammenhang mit der Verwaltung der ConnectX-5-NIC oder mit der Ausführung einiger InfiniBand-Diagnosen (beispielsweise „ibdiagnet“) relevant, nicht aber für Endbenutzeranwendungen.
 
 ## <a name="dram-on-hb-series-vms"></a>DRAM in den VMs der HB-Serie
 

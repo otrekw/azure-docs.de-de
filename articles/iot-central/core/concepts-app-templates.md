@@ -1,22 +1,22 @@
 ---
 title: Anwendungsvorlagen in Azure IoT Central | Microsoft-Dokumentation
 description: Azure IoT Central-Anwendungsvorlagen ermöglichen Ihnen den Einstieg in die Entwicklung von IoT-Lösungen.
-author: philmea
-ms.author: philmea
+author: ankitscribbles
+ms.author: ankitgup
 ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8309a567436d1526c1341f3d7db774acf4879dc2
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97797127"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600618"
 ---
 # <a name="what-are-application-templates"></a>Was sind Anwendungsvorlagen?
 
-Anwendungsvorlagen in Azure IoT Central sind ein Tool, das Lösungsentwickler beim Einstieg in die IoT-Lösungsentwicklung unterstützt. Sie können App-Vorlagen zu vielen Zwecken verwenden – vom Gewinnen einer Übersicht über die Möglichkeiten bis hin zur vollständigen Anpassung der Anwendung für den Verkauf an Ihre Kunden.
+Anwendungsvorlagen in Azure IoT Central sind ein Tool, das Lösungsentwickler beim Einstieg in die IoT-Lösungsentwicklung unterstützt. App-Vorlagen sind vielseitig einsetzbar. Sie können sich beispielsweise einen ersten Eindruck von den Möglichkeiten verschaffen oder Ihre Anwendung für den Weiterverkauf an Ihre Kunden vollständig anpassen.
 
 Anwendungsvorlagen bestehen aus:
 
@@ -52,10 +52,6 @@ Azure IoT Central ist eine branchenunabhängige Anwendungsplattform. Anwendungsv
   - Überwachung der Wasserqualität
 - [Gesundheitswesen](../healthcare/overview-iot-central-healthcare.md)
   - Fortlaufende Patientenüberwachung
-
-## <a name="application-versions"></a>Anwendungsversionen
-
-Vorlagen sind bestimmten IoT Central-Anwendungsversionen zugeordnet. Sie finden die Version einer Anwendung auf der Seite [Informationen zu Ihrer App](./howto-get-app-info.md), die Sie über den Link **Hilfe** aufrufen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

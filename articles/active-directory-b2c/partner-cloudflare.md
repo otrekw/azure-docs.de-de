@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 04/24/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: cb4f18fd5fbd2e8eb484875bb58c9809460eb8df
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8494e9048ef298fbb3c2e70de10ec793f2bddec5
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128629"
+ms.locfileid: "108161607"
 ---
 # <a name="tutorial-configure-clouldflare-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Clouldflare mit Azure Active Directory B2C
 

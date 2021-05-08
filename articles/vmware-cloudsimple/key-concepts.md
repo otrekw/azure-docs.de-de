@@ -2,19 +2,19 @@
 title: Wichtige Konzepte für die Verwaltung von Azure VMware Solution by CloudSimple
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Hier werden wichtige Konzepte für die Verwaltung von Azure VMware Solution by CloudSimple beschrieben.
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 04/24/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5544ef7725855d28e20d39ff345db6bb07671a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e97abdd46e1c83d7883a51ddbd73ea0aa75b9f2
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895324"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108184260"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Wichtige Konzepte für die Verwaltung von Azure VMware Solution by CloudSimple
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 5171cefdb82b958ae8148ff63f1daef5f67916c6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 36b54cc9b4440f883b4335fc6ad2ca069a5b19db
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044956"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137579"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Installieren des Log Analytics-Agents auf Linux-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Linux-Computern mithilfe der folgenden Methoden:
@@ -71,16 +71,16 @@ Die ausführbare python2-Datei muss dem Alias *python* zugewiesen werden. Mit de
     ```
 
 ## <a name="supported-linux-hardening"></a>Unterstützte Linux-Härtung
-Der OMS-Agent verfügt über eingeschränkte Anpassungsunterstützung für Linux. 
+Der OMS-Agent verfügt über eingeschränkte Anpassungsunterstützung und Härtungssupport für Linux.
 
 Folgendes wird derzeit unterstützt: 
 - FIPs
 
-Folgendes wird in Erwägung gezogen, aber noch nicht unterstützt:
+Folgende Tabellen werden nicht unterstützt:
 - CIS
 - SELINUX
 
-Andere Härtungs- und Anpassungsmethoden werden für den OMS-Agent weder unterstützt noch geplant.  
+Die Unterstützung der CIS- und SPLATUX-Härtung ist für den [Azure Monitoring Agent](./azure-monitor-agent-overview.md) geplant. Andere Härtungs- und Anpassungsmethoden werden für den OMS-Agent weder unterstützt noch geplant.  
 
 ## <a name="agent-prerequisites"></a>Agent-Voraussetzungen
 

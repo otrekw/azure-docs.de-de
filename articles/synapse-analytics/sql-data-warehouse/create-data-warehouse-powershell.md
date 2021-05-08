@@ -15,12 +15,12 @@ ms.custom:
 - azure-synapse
 - devx-track-azurepowershell
 - mode-api
-ms.openlocfilehash: 65bf509c8eb654a9f7712fdf7b94ff7fa26a3d32
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 38f3f3e3c227b9a2abb6bd82c9711a9f6a03292f
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537459"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161589"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Schnellstart: Erstellen eines dedizierten SQL-Pools (vormals SQL DW) mit Azure PowerShell
 
@@ -115,7 +115,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 
 Das folgende Beispiel erstellt einen dedizierten SQL-Pool (vormals SQL DW) mit den zuvor definierten Variablen.  Das Dienstziel wird als DW100c angegeben. Dies ist ein kostengünstiger Ausgangspunkt für Ihren dedizierten SQL-Pool (vormals SQL DW).
 
-```Powershell
+```powershell
 New-AzSqlDatabase `
     -ResourceGroupName $resourcegroupname `
     -ServerName $servername `

@@ -3,16 +3,16 @@ title: 'Azure IoT Hub Device Provisioning Service: Gerätekonzepte'
 description: Dieser Artikel beschreibt Konzepte für die erneute Bereitstellung von Geräten für Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbc83ec62c10fae00e371cd9ad95cf2860495fad
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91842851"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575767"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub Device-Konzepte für die erneute Bereitstellung
 
@@ -61,6 +61,9 @@ Je nach Szenario sendet ein Gerät in der Regel beim Neustart eine Anforderung a
     ![Diese Abbildung zeigt, wie eine Richtlinie angewendet wird, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Bereitstellungsanforderung senden.](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
 * **Niemals erneut bereitstellen**: Das Gerät wird niemals einem anderen Hub zugewiesen. Diese Richtlinie dient der Verwaltung der Abwärtskompatibilität.
+
+> [!NOTE]
+> DPS ruft unabhängig von der Richtlinie für die erneute Bereitstellung immer den benutzerdefinierten Zuteilungswebhook auf, falls für das Gerät neue [ReturnData](how-to-send-additional-data.md) vorhanden sind. Wenn die Richtlinie für die erneute Bereitstellung auf **Nie erneut bereitstellen** festgelegt ist, wird der Webhook zwar aufgerufen, das Gerät ändert seinen zugewiesenen Hub jedoch nicht.
 
 ### <a name="managing-backwards-compatibility"></a>Verwalten der Abwärtskompatibilität
 

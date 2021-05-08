@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: fcd333d82b5bb7e8f6adf604511f8ca84680c93d
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 3b6104bcf68c720fa727d16e408a25adcba805aa
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490374"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259573"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Erstellen eines NFS-Volumes für Azure NetApp Files
 
-Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMB3 oder einem dualen Protokoll (NFSv3 und SMB). Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet. In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. 
+Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMB3 oder einem dualen Protokoll (NFSv3 und SMB). Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet. 
+
+In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Informationen zu SMB-Volumes finden Sie unter [Erstellen eines SMB-Volumes](azure-netapp-files-create-volumes-smb.md). Informationen zu Volumen mit dualem Protokoll finden Sie unter [Erstellen eines Volumes mit dualem Protokoll](create-volumes-dual-protocol.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
 * Sie müssen bereits einen Kapazitätspool eingerichtet haben.  
