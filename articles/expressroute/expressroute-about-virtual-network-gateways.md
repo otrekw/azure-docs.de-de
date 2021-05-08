@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/05/2021
+ms.date: 04/23/2021
 ms.author: duau
-ms.openlocfilehash: 796e35be12939920f9392e6f3ce4cae660415f80
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 62f51922399a300b9ed803c3ee2d380dcab615b8
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504687"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987522"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Informationen zu ExpressRoute-Gateways für virtuelle Netzwerke
 
@@ -36,12 +36,18 @@ Wenn Sie das Gateway auf eine leistungsfähigere Gateway-SKU aktualisieren möch
 ### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>Geschätzte Leistungen nach Gateway-SKU
 In der folgenden Tabelle sind die Gatewaytypen und die geschätzten Leistungen angegeben. Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
 
+> [!IMPORTANT]
+> Die Anwendungsleistung hängt von mehreren Faktoren ab, z.B. der End-to-End-Latenz und der Anzahl der Datenflüsse, die die Anwendung öffnet. Die Zahlen in der Tabelle stellen die Obergrenze dar, die die Anwendung theoretisch in einer idealen Umgebung erzielen kann.
+>
+>
+
+> [!NOTE]
+> Die maximale Anzahl von ExpressRoute-Verbindungen vom gleichen Peeringstandort, die eine Verbindung mit demselben virtuellen Netzwerk herstellen können, beträgt 4 für alle Gateways.
+>
+>
+
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
-> [!IMPORTANT]
-> * Die Anzahl der virtuellen Computer im virtuellen Netzwerk umfasst auch virtuelle Computer in über Peering verbundenen virtuellen Netzwerken, die ein ExpressRoute-Remotegateway verwenden.
-> * Die Anwendungsleistung hängt von mehreren Faktoren ab, z.B. der End-to-End-Latenz und der Anzahl der Datenflüsse, die die Anwendung öffnet. Die Zahlen in der Tabelle stellen die Obergrenze dar, die die Anwendung theoretisch in einer idealen Umgebung erzielen kann.
->
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>Gatewaysubnetz
 

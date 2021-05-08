@@ -3,20 +3,20 @@ title: Microsoft Teams in Windows Virtual Desktop – Azure
 description: Hier erfahren Sie, wie Sie Microsoft Teams in Windows Virtual Desktop verwenden.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 04/09/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ba5b80fa7f147fb5f30c60e2dc005d88010b0d71
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0c528f183106472850d6b5d2a8b492ea8939eda6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445515"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285257"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Verwenden von Microsoft Teams in Windows Virtual Desktop
 
 >[!IMPORTANT]
->Die Medienoptimierung für Teams wird für Microsoft 365 Government- (GCC) und GCC-High-Umgebungen unterstützt. Die Medienoptimierung für Teams wird für GCC-High oder DoD nicht unterstützt.
+>Die Medienoptimierung für Teams wird für Microsoft 365 Government- (GCC) und GCC-High-Umgebungen unterstützt. Die Medienoptimierung für Teams wird für Microsoft 365 DoD nicht unterstützt.
 
 >[!NOTE]
 >Die Medienoptimierung für Microsoft Teams steht nur für den Windows Desktop-Client auf Windows 10-Computern zur Verfügung. Medienoptimierungen erfordern Windows Desktop-Clientversion 1.2.1026.0 oder höher.

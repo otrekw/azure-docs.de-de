@@ -4,12 +4,12 @@ description: Sie sehen in Azure Application Insights keine Daten? Versuchen Sie 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 3b550e434db5b616ffedef7ebe9891b36fa431a2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092450"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311225"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problembehandlung ohne Daten – Application Insights für .NET/.NET Core
 
@@ -28,6 +28,10 @@ ms.locfileid: "99092450"
 *In der Konsolen-App oder in der Web-App kommt es beim Beenden der App zu Datenverlusten.*
 
 * Der SDK-Kanal speichert Telemetriedaten im Puffer und sendet sie in Batches. Wenn die Anwendung gerade heruntergefahren wird, müssen Sie möglicherweise [Flush()](api-custom-events-metrics.md#flushing-data) explizit aufrufen. Das Verhalten von `Flush()` hängt vom tatsächlich verwendeten [Kanal](telemetry-channels.md#built-in-telemetry-channels) ab.
+
+## <a name="request-count-collected-by-application-insights-sdk-does-not-match-the-iis-log-count-for-my-application"></a>Die vom Application Insights SDK erfasste Anforderungsanzahl passt nicht zur IIS-Protokollanzahl für meine Anwendung.
+
+Internetinformationsdienste (IIS) protokollieren die Anzahl aller Anforderungen, die IIS erreichen und können sich grundsätzlich von der Gesamtanzahl der Anforderungen unterscheiden, die eine Anwendung erreicht. Aus diesem Grund kann nicht garantiert werden, dass die von den SDKs erfasste Anforderungsanzahl mit der Gesamtzahl der IIS-Protokolle übereinstimmt. 
 
 ## <a name="no-data-from-my-server"></a>Keine Daten vom Server
 *Ich habe meine App auf meinem Webserver installiert, und nun werden mit keine Telemetriedaten von ihm angezeigt. Auf dem Entwicklungscomputer hat dies aber funktioniert.*
@@ -68,11 +72,11 @@ Beim Upgrade von älteren SDKs als 2.4 müssen Sie sicherstellen, dass die folge
     </TelemetryModules>
     ```
 
-**_Wenn ein Upgrade nicht ordnungsgemäß durchgeführt wird, können unerwartete Ausnahmen auftreten oder Telemetriedaten nicht erfasst werden._* _
+***Wenn ein Upgrade nicht ordnungsgemäß durchgeführt wird, können unerwartete Ausnahmen auftreten oder Telemetriedaten nicht erfasst werden.***
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Keine Option „Application Insights hinzufügen“ in Visual Studio
-_Wenn ich im Projektmappen-Explorer mit der rechten Maustaste auf ein vorhandenes Projekt klicke, werden keine Application Insights-Optionen angezeigt.*
+*Wenn ich im Projektmappen-Explorer mit der rechten Maustaste auf ein vorhandenes Projekt klicke, werden keine Application Insights-Optionen angezeigt.*
 
 * Nicht alle Typen von .NET-Projekten werden von den Tools unterstützt. Web- und WCF-Projekte werden unterstützt. Für andere Projekttypen, z.B. Desktop- oder Dienstanwendungen, können Sie [Ihrem Projekt trotzdem manuell ein Application Insights SDK hinzufügen](./windows-desktop.md).
 * Stellen Sie sicher, dass Sie über [Visual Studio 2013 Update 3 oder höher](/visualstudio/releasenotes/vs2013-update3-rtm-vs)verfügen. Darin sind die Developer Analytics-Tools mit dem Application Insights SDK bereits vorinstalliert.
@@ -224,7 +228,7 @@ Befolgen Sie diese Anweisungen, um Problembehandlungsprotokolle für Ihr Framewo
 
     ```xml
     <TelemetryModules>
-      <Add Type="Microsoft.ApplicationInsights.Extensibility.HostingStartup.FileDiagnosticsTelemetryModule, Microsoft.AspNet.ApplicationInsights.HostingStartup">
+      <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.FileDiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
         <Severity>Verbose</Severity>
         <LogFileName>mylog.txt</LogFileName>
         <LogFilePath>C:\\SDKLOGS</LogFilePath>
@@ -282,7 +286,9 @@ Weitere Informationen finden Sie unter:
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Sammeln von Protokollen mit dotnet-trace
 
-Eine alternative Methode zum Sammeln von Protokollen für die Problembehandlung, die für Linux-basierte Umgebungen besonders hilfreich sein kann, ist [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace).
+Alternativ können Kunden auch ein plattformübergreifendes .NET Core-Tool ([`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)) verwenden, um Protokolle zu sammeln, die bei der Problembehandlung weitere Unterstützung bieten. Dies kann besonders für Linux-basierte Umgebungen hilfreich sein.
+
+Führen Sie nach der Installation von [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) den folgenden Befehl in Bash aus.
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -294,4 +300,3 @@ Erfahren Sie, wie Sie Application Insights in Visual Studio entfernen, indem Sie
 
 ## <a name="still-not-working"></a>Noch nicht funktionsfähig ...
 * [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Application Insights](/answers/topics/azure-monitor.html)
-

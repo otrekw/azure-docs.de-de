@@ -4,20 +4,20 @@ description: Erfahren Sie, welche Betriebssysteme zur Ausführung von Azure IoT 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/11/2021
+ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f59e2ca06f4ec435522cd06815b22d706a2d894c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67532fce2cac0ec9d05b4caa069e63014b813bd8
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772415"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576345"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Von Azure IoT Edge unterstützte Systeme
 
-[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 In diesem Artikel erhalten Sie Informationen darüber, welche Systeme und Komponenten (offiziell oder als Vorschauversion) von IoT Edge unterstützt werden.
 
@@ -25,7 +25,7 @@ In diesem Artikel erhalten Sie Informationen darüber, welche Systeme und Kompon
 
 Wenn bei der Verwendung von Azure IoT Edge Probleme auftreten, gibt es mehrere Möglichkeiten, um Unterstützung zu erhalten. Versuchen Sie es mit einer der folgenden Supportoptionen:
 
-**Melden von Fehlern:** Der Großteil der Entwicklungsarbeiten für Azure IoT Edge findet im Rahmen des entsprechenden Open-Source-Projekts statt. Fehler können auf der [Problemseite](https://github.com/azure/iotedge/issues) des Projekts gemeldet werden. Fehler im Zusammenhang mit Azure IoT Edge für Linux unter Windows können auf der Seite für [iotedge-eflow-Probleme](https://github.com/azure/iotedge-eflow/issues) gemeldet werden. Fehlerbehebungen aus den Projekten werden schnell in Produktupdates integriert.
+**Melden von Fehlern:** Der Großteil der Entwicklungsarbeiten für Azure IoT Edge findet im Rahmen des entsprechenden Open-Source-Projekts statt. Fehler können auf der [Problemseite](https://github.com/azure/iotedge/issues) des Projekts gemeldet werden. Fehler im Zusammenhang mit Azure IoT Edge für Linux unter Windows können auf der Seite [iotedge-eflow-Probleme](https://github.com/azure/iotedge-eflow/issues) gemeldet werden. Fehlerbehebungen aus den Projekten werden schnell in Produktupdates integriert.
 
 **Microsoft-Kundendienstteam:** Benutzer mit einem [Supportplan](https://azure.microsoft.com/support/plans/) können direkt über das [Azure-Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac) ein Supportticket erstellen, um sich an das Microsoft-Kundendienstteam zu wenden.
 
@@ -52,18 +52,39 @@ Azure IoT Edge ist für die meisten containerfähigen Betriebssysteme geeignet. 
   * Microsoft hat informelle Tests auf den Plattformen durchgeführt oder weiß, dass ein Partner Azure IoT Edge auf der Plattform erfolgreich ausführt.
   * Installationspakete für andere Plattformen können ggf. auch für diese Plattformen verwendet werden.
 
-Die Familie des Hostbetriebssystems muss mit der Familie des Gastbetriebssystems, das im Container eines Moduls verwendet wird, immer übereinstimmen. Mit anderen Worten: Sie können unter Linux nur Linux-Container und unter Windows nur Windows-Container verwenden. Bei Verwendung von Windows werden nur Container mit Prozessisolation unterstützt, keine Container mit Hyper-V-Isolation.  
+Die Familie des Hostbetriebssystems muss mit der Familie des Gastbetriebssystems, das im Container eines Moduls verwendet wird, immer übereinstimmen.
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Mit anderen Worten: Sie können unter Linux nur Linux-Container und unter Windows nur Windows-Container verwenden. Bei Verwendung von Windows-Containern werden nur Container mit Prozessisolation, aber keine Container mit Hyper-V-Isolation unterstützt.  
 
 IoT Edge für Linux unter Windows verwendet IoT Edge auf einer Linux-VM, die auf einem Windows-Host ausgeführt wird. Auf diese Weise können Sie Linux-Module auf einem Windows-Gerät ausführen.
+:::moniker-end
+<!-- end 1.1 -->
 
 ### <a name="tier-1"></a>Ebene 1
 
 Die in der folgenden Tabelle aufgeführten Systeme (entweder allgemein verfügbare Versionen oder Vorschauversionen) werden von Microsoft unterstützt und mit jedem neuen Release getestet.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Azure IoT Edge unterstützt Module, die entweder als Linux- oder Windows-Container erstellt wurden. Linux-Container können auf Linux-Geräten bereitgestellt oder mithilfe von IoT Edge für Linux unter Windows auf Windows-Geräten bereitgestellt werden. Windows-Container können nur auf Windows-Geräten bereitgestellt werden.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Von der Azure IoT Edge-Version 1.2 werden nur Module unterstützt, die als Linux-Container erstellt wurden.
+
+Die Ausführung von IoT Edge-Version 1.2 auf Windows-Geräten wird derzeit nicht unterstützt. Für die Ausführung von IoT Edge auf Windows-Geräten wird die Verwendung von [IoT Edge für Linux unter Windows](iot-edge-for-linux-on-windows.md) empfohlen. Dabei wird allerdings nur IoT Edge 1.1 ausgeführt. Weitere Informationen finden Sie in der Version [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true) dieses Artikels.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 #### <a name="linux-containers"></a>Linux-Container
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Module, die als Linux-Container erstellt wurden, können auf Linux- oder Windows-Geräten bereitgestellt werden. Bei Linux-Geräten wird die IoT Edge-Runtime direkt auf dem Hostgerät installiert. Bei Windows-Geräten wird ein virtueller, mit der IoT Edge-Runtime vordefinierter Linux-Computer auf dem Hostgerät ausgeführt.
 
 [IoT Edge für Linux unter Windows](iot-edge-for-linux-on-windows.md) befindet sich zurzeit in der öffentlichen Vorschau, wird aber zur Ausführung von IoT Edge auf Windows-Geräten empfohlen.
@@ -78,12 +99,27 @@ Module, die als Linux-Container erstellt wurden, können auf Linux- oder Windows
 | Windows Server 2019 | Public Preview |  |  |
 
 Es kommen nur Windows-Betriebssysteme ab Version 1809 (Build 17763) infrage.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+| Betriebssystem | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Public Preview |
+
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >Der Support für Ubuntu Server 16.04 endete mit dem Release von IoT Edge, Version 1.1.
 
 #### <a name="windows-containers"></a>Windows-Container
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 >[!IMPORTANT]
 >IoT Edge 1.1 LTS ist der letzte Releasekanal, der Windows-Container unterstützt. Ab Version 1.2 werden Windows-Container nicht mehr unterstützt. Wenn Sie IoT Edge auf Windows-Geräten ausführen möchten, sollten Sie [IoT Edge für Linux unter Windows](iot-edge-for-linux-on-windows.md) verwenden oder dorthin wechseln.
 
@@ -99,6 +135,17 @@ Es kommen nur Windows-Betriebssysteme mit Version 1809 (Build 17763) infrage. D
 
 >[!NOTE]
 >Der Support für Windows 10 IoT Core endete mit dem Release von IoT Edge, Version 1.1.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge 1.1 LTS ist der letzte Releasekanal, der Windows-Container unterstützt. Ab Version 1.2 werden Windows-Container nicht mehr unterstützt.
+
+Informationen zu unterstützten Betriebssystemen für Windows-Container finden Sie in der Version [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true) dieses Artikels.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="tier-2"></a>Ebene 2
 
@@ -124,11 +171,17 @@ Die in der folgenden Tabelle aufgeführten Systeme gelten als kompatibel mit Azu
 
 IoT Edge-Releaseressourcen und -Hinweise sind auf der Seite [azure-iotedge releases](https://github.com/Azure/azure-iotedge/releases) verfügbar. Dieser Abschnitt spiegelt Informationen aus diesen Versionshinweisen wider, um Ihnen die Visualisierung der Komponenten der einzelnen Versionen zu erleichtern.
 
-IoT Edge-Komponenten können einzeln installiert oder aktualisiert werden und sind abwärtskompatibel mit Komponenten aus älteren Versionen. In der folgenden Tabelle sind die in den einzelnen Releases enthaltenen Komponenten aufgeführt:
+In der folgenden Tabelle sind die in den einzelnen Releases enthaltenen Komponenten aufgeführt (ab 1.2.0): Die in dieser Tabelle angegebenen Komponenten können einzeln installiert oder aktualisiert werden und sind mit älteren Versionen kompatibel.
 
-| Release | Sicherheitsdaemon | Edge-Hub<br>Edge-Agent | Libiothsm | Moby |
+| Freigabe | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
+| ------- | ---------- | -------------------- | ---------------------- |
+| **1.2** | 1.2.0      | 1.2.0                | 1.2.0                  |
+
+In der folgenden Tabelle sind die in den einzelnen Releases enthaltenen Komponenten aufgeführt (bis 1.1 LTS): Die in dieser Tabelle angegebenen Komponenten können einzeln installiert oder aktualisiert werden und sind mit älteren Versionen kompatibel.
+
+| Freigabe | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
 |--|--|--|--|--|
-| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 |   |
+| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1<br><br> | 1.1.0<br>1.1.1<br>1.1.2 | 1.1.0<br>1.1.1<br><br> |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
 | **1.0.9** | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 |  |
 | **1.0.8** | 1.0.8 | 1.0.8<br>1.0.8.1<br>1.0.8.2<br>1.0.8.3<br>1.0.8.4<br>1.0.8.5 | 1.0.8 | 3.0.6 |
@@ -145,7 +198,8 @@ IoT Edge verwendet das Microsoft.Azure.Device.Client SDK. Weitere Informationen 
 
 | IoT Edge-Version | Microsoft.Azure.Devices.Client-SDK-Version |
 |------------------|--------------------------------------------|
-| 1.1 (LTS)      | 1.28.0                                     |
+| 1.2.0            | 1.33.4-NestedEdge
+| 1.1 (LTS)        | 1.28.0                                     |
 | 1.0.10           | 1.28.0                                     |
 | 1.0.9            | 1.21.1                                     |
 | 1.0.8            | 1.20.3                                     |
@@ -158,10 +212,28 @@ IoT Edge verwendet das Microsoft.Azure.Device.Client SDK. Weitere Informationen 
 Azure IoT Edge kann auf virtuellen Computern ausgeführt werden. Das Verwenden eines virtuellen Computers als IoT Edge-Gerät ist eine verbreitete Vorgehensweise, wenn Kunden eine vorhandene Infrastruktur um Edgeintelligenz erweitern möchten. Die Familie des Host-VM-Betriebssystems muss mit der Familie des Gastbetriebssystems übereinstimmen, das im Container eines Moduls verwendet wird. Diese Anforderung gilt auch, wenn Azure IoT Edge direkt auf einem Gerät ausgeführt wird. Azure IoT Edge ist unabhängig von der zugrunde liegenden Virtualisierungstechnologie und funktioniert auf virtuellen Computern, die von Plattformen wie Hyper-V und vSphere unterstützt werden.
 
 <br>
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+<center>
+
+![Azure IoT Edge auf einem virtuellen Computer](./media/support/edge-on-vm-with-windows.png)
+
+</center>
+
+::: moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
 <center>
 
 ![Azure IoT Edge auf einem virtuellen Computer](./media/support/edge-on-vm.png)
+
 </center>
+
+:::moniker-end
 
 ## <a name="minimum-system-requirements"></a>Mindestsystemanforderungen
 

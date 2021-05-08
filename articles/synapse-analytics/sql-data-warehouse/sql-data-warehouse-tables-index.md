@@ -2,21 +2,21 @@
 title: Indizieren von Tabellen
 description: Empfehlungen und Beispiele für das Indizieren von Tabellen in einem dedizierten SQL-Pool.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/18/2019
+ms.date: 04/16/2021
+author: XiaoyuMSFT
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: fabbdf330d43737ffa85379f9cc4d5ac59c4a734
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58f3eed8b16ff3ed02c6dfac6dc7d72ebb4ca374
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673517"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599977"
 ---
 # <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Indizieren von dedizierten SQL-Pooltabellen in Azure Synapse Analytics
 
@@ -30,7 +30,7 @@ Weitere Informationen zum Erstellen einer Tabelle mit einem Index finden Sie in 
 
 ## <a name="clustered-columnstore-indexes"></a>Gruppierte Columnstore-Indizes
 
-Ein dedizierter SQL-Pool erstellt standardmäßig einen gruppierten Columnstore-Index, wenn in einer Tabelle keine Indizierungsoptionen angegeben werden. Gruppierte Columnstore-Tabellen bieten sowohl den höchsten Grad an Datenkomprimierung als auch die beste Gesamtabfrageleistung.  Gruppierte Columnstore-Tabellen weisen normalerweise eine höhere Leistung als gruppierte Indizes oder Heaptabellen auf und stellen für große Tabellen meist die beste Wahl dar.  Aus diesen Gründen ist der gruppierte Columnstore der beste Einstieg, wenn Sie nicht sicher sind, wie Sie Ihre Tabelle indizieren sollen.  
+Ein dedizierter SQL-Pool erstellt standardmäßig einen gruppierten Columnstore-Index, wenn in einer Tabelle keine Indizierungsoptionen angegeben werden. Gruppierte Columnstore-Tabellen bieten den höchsten Grad an Datenkomprimierung und gleichzeitig die beste Gesamtabfrageleistung.  Gruppierte Columnstore-Tabellen weisen normalerweise eine höhere Leistung als gruppierte Indizes oder Heaptabellen auf und stellen für große Tabellen meist die beste Wahl dar.  Aus diesen Gründen ist der gruppierte Columnstore der beste Einstieg, wenn Sie nicht sicher sind, wie Sie Ihre Tabelle indizieren sollen.  
 
 Geben Sie zum Erstellen einer gruppierten Columnstore-Tabelle in der WITH-Klausel einfach CLUSTERED COLUMNSTORE INDEX an, oder lassen Sie die WITH-Klausel deaktiviert:
 
@@ -177,6 +177,16 @@ Nachdem Sie die Abfrage ausgeführt haben, können Sie die Daten anzeigen und di
 | [CLOSED_rowgroup_rows_AVG] |Wie oben. |
 | [Rebuild_Index_SQL] |SQL-Code zum Neuerstellen des Columnstore-Index für eine Tabelle |
 
+## <a name="impact-of-index-maintenance"></a>Auswirkungen der Indexwartung
+
+Die Spalte `Rebuild_Index_SQL` in der `vColumnstoreDensity`-Ansicht enthält eine `ALTER INDEX REBUILD`-Anweisung, die verwendet werden kann, um Ihre Indizes neu zu erstellen. Stellen Sie beim Neuerstellen der Indizes sicher, dass Sie der Sitzung, mit der Ihr Index neu erstellt wird, genügend Arbeitsspeicher zuordnen. Erhöhen Sie hierzu die [Ressourcenklasse](resource-classes-for-workload-management.md) eines Benutzers, der über die Berechtigungen zum Neuerstellen des Index für diese Tabelle verfügt, bis auf das empfohlene Minimum. Ein Beispiel finden Sie unter [Neuerstellen von Indizes zur Verbesserung der Segmentqualität](#rebuilding-indexes-to-improve-segment-quality) weiter unten in diesem Artikel.
+
+Bei einer Tabelle mit einem sortierten gruppierten Columnstore-Index werden mit `ALTER INDEX REBUILD` die Daten mit „tempdb“ neu sortiert. Überwachen Sie tempdb während der Neuerstellungsvorgänge. Wenn Sie mehr tempdb-Speicherplatz benötigen, können Sie den Datenbank-Pool hochskalieren. Skalieren Sie es nach Abschluss der Indexneuerstellung wieder herunter.
+
+Für eine Tabelle mit einem sortierten, gruppierten Columnstore-Index sortiert `ALTER INDEX REORGANIZE` die Daten nicht neu. Verwenden Sie zum erneuten Sortieren von Daten `ALTER INDEX REBUILD`.
+
+Weitere Informationen zum sortierten gruppierten Columnstore-Index finden Sie unter [Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index](performance-tuning-ordered-cci.md).
+
 ## <a name="causes-of-poor-columnstore-index-quality"></a>Ursachen für eine schlechte Qualität des Columnstore-Index
 
 Wenn Sie Tabellen mit schlechter Segmentqualität identifiziert haben, sollten Sie die Hauptursache ermitteln.  Unten sind einige andere häufige Ursachen für eine schlechte Segmentqualität aufgeführt:
@@ -194,7 +204,7 @@ Die Anzahl von Zeilen pro komprimierter Zeilengruppe hängt direkt mit der Breit
 
 ### <a name="high-volume-of-dml-operations"></a>Hohes Volumen von DML-Vorgängen
 
-Ein hohes Volumen von DML-Vorgängen, mit denen Zeilen aktualisiert und gelöscht werden, sorgen für Ineffizienz im Columnstore. Dies gilt insbesondere, wenn der Großteil der Zeilen in einer Zeilengruppe geändert wird.
+Ein hohes Volumen von DML-Vorgängen, mit denen Zeilen aktualisiert und gelöscht werden, sorgen für Ineffizienz im Columnstore. Dies gilt insbesondere, wenn der die meisten Zeilen in einer Zeilengruppe geändert wird.
 
 - Das Löschen einer Zeile aus einer komprimierten Zeilengruppe kennzeichnet die Zeile nur logisch als gelöscht. Die Zeile verbleibt in der komprimierten Zeilengruppe, bis die Partition oder Tabelle erneut erstellt wird.
 - Beim Einfügen einer Zeile wird die Zeile einer internen Rowstore-Tabelle hinzugefügt, die als Deltazeilengruppe bezeichnet wird. Die eingefügte Zeile wird erst in das Columnstore-Format konvertiert, wenn die Deltazeilengruppe voll und als geschlossen markiert ist. Zeilengruppen werden geschlossen, sobald sie die maximale Kapazität von 1.048.576 Zeilen erreichen.
@@ -218,38 +228,38 @@ Führen Sie nach dem Laden der Tabellen mit einigen Daten die unten angegebenen 
 
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Schritt 1: Identifizieren oder Erstellen eines Benutzers, der die richtige Ressourcenklasse verwendet
 
-Eine schnelle Möglichkeit zur sofortigen Verbesserung der Seqmentqualität besteht darin, den Index neu zu erstellen.  Mit dem von der obigen Sicht zurückgegebenen SQL-Code wird eine ALTER INDEX REBUILD-Anweisung zurückgegeben, die zum Neuerstellen der Indizes verwendet werden kann. Stellen Sie beim Neuerstellen der Indizes sicher, dass Sie der Sitzung, mit der Ihr Index neu erstellt wird, genügend Arbeitsspeicher zuordnen.  Erhöhen Sie hierzu die Ressourcenklasse eines Benutzers, der über die Berechtigungen zum Neuerstellen des Index für diese Tabelle verfügt, bis auf das empfohlene Minimum.
+Eine schnelle Möglichkeit zur sofortigen Verbesserung der Seqmentqualität besteht darin, den Index neu zu erstellen.  Mit dem von der obigen Sicht zurückgegebenen SQL-Code wird eine ALTER INDEX REBUILD-Anweisung zurückgegeben, die zum Neuerstellen der Indizes verwendet werden kann. Stellen Sie beim Neuerstellen der Indizes sicher, dass Sie der Sitzung, mit der Ihr Index neu erstellt wird, genügend Arbeitsspeicher zuordnen. Erhöhen Sie hierzu die Ressourcenklasse eines Benutzers, der über die Berechtigungen zum Neuerstellen des Index für diese Tabelle verfügt, bis auf das empfohlene Minimum.
 
 Unten ist ein Beispiel dafür angegeben, wie Sie einem Benutzer mehr Arbeitsspeicher zuordnen, indem Sie seine Ressourcenklasse erhöhen. Informationen zur Verwendung von Ressourcenklassen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).
 
 ```sql
-EXEC sp_addrolemember 'xlargerc', 'LoadUser'
+EXEC sp_addrolemember 'xlargerc', 'LoadUser';
 ```
 
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Schritt 2: Neuerstellen von gruppierten Columnstore-Indizes mit einem Benutzer mit einer höheren Ressourcenklasse
 
-Melden Sie sich als der Benutzer aus Schritt 1 an (z. B. LoadUser), für den jetzt eine höhere Ressourcenklasse verwendet wird, und führen Sie die ALTER INDEX-Anweisungen aus. Stellen Sie sicher, dass dieser Benutzer über die ALTER-Berechtigung für die Tabellen verfügt, in denen der Index neu erstellt wird. Diese Beispiele zeigen, wie Sie den gesamten Columnstore-Index bzw. eine einzelne Partition neu erstellen. Bei großen Tabellen ist es praktischer, die Indizes Partition für Partition neu zu erstellen.
+Melden Sie sich als der Benutzer aus Schritt 1 an (LoadUser), für den jetzt eine höhere Ressourcenklasse verwendet wird, und führen Sie die ALTER INDEX-Anweisungen aus. Stellen Sie sicher, dass dieser Benutzer über die ALTER-Berechtigung für die Tabellen verfügt, in denen der Index neu erstellt wird. Diese Beispiele zeigen, wie Sie den gesamten Columnstore-Index bzw. eine einzelne Partition neu erstellen. Bei großen Tabellen ist es praktischer, die Indizes Partition für Partition neu zu erstellen.
 
 Anstatt den Index neu zu erstellen, können Sie alternativ dazu die Tabelle per [CTAS](sql-data-warehouse-develop-ctas.md) in eine neue Tabelle kopieren. Welche Methode ist am besten geeignet? Bei großen Datenmengen ist CTAS in der Regel schneller als [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Bei kleineren Datenmengen ist ALTER INDEX einfacher zu verwenden, und das Auslagern der Tabelle ist nicht erforderlich.
 
 ```sql
 -- Rebuild the entire clustered index
-ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD
+ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ```
 
 ```sql
 -- Rebuild a single partition
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5;
 ```
 
 ```sql
 -- Rebuild a single partition with archival compression
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE)
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE);
 ```
 
 ```sql
 -- Rebuild a single partition with columnstore compression
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE);
 ```
 
 Die Neuerstellung eines Indexes in einem dedizierten SQL-Pool ist ein Offlinevorgang.  Weitere Informationen zur Neuerstellung von Indizes finden Sie im Abschnitt zu ALTER INDEX REBUILD in [Columnstore-Indexdefragmentierung](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) und [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).

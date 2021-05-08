@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1b7a846ee92da001ea2ac3ddd02efa9a870f72c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 958b0de97b79b447f2570dd9c57c87f380bcd551
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501905"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589339"
 ---
 # <a name="write-client-app-authentication-code"></a>Schreiben von Authentifizierungscode für die Client-App
 
@@ -107,6 +107,20 @@ Wenn Sie die Authentifizierung in einer Funktion verwenden möchten, müssen Sie
 * [Aktivieren der verwalteten Identität](../app-service/overview-managed-identity.md?tabs=dotnet)
 * Verwenden von [Umgebungsvariablen](/sandbox/functions-recipes/environment-variables?tabs=csharp) nach Bedarf
 * Zuweisen von Berechtigungen zur Funktions-App, um dieser den Zugriff auf die Digital Twins-APIs zu ermöglichen. Weitere Informationen zu Azure Functions-Prozessen finden Sie unter [*Vorgehensweise: von Azure Functions-Apps für die Verarbeitung von Daten*](how-to-create-azure-function.md).
+
+## <a name="authenticate-across-tenants"></a>Mandantenübergreifende Authentifizierung
+
+Bei Azure Digital Twins handelt es sich um einen Dienst, der nur einen einzelnen [Azure AD-Mandanten (Azure Active Directory)](../active-directory/develop/quickstart-create-new-tenant.md) unterstützt: den Hauptmandanten aus dem Abonnement, in dem sich die Azure Digital Twins-Instanz befindet.
+
+[!INCLUDE [digital-twins-tenant-limitation](../../includes/digital-twins-tenant-limitation.md)]
+
+Wenn Sie mit einem Dienstprinzipal oder Benutzerkonto eines anderen Mandanten auf Ihre Azure Digital Twins-Instanz zugreifen müssen, können Sie dafür sorgen, dass von jeder Verbundidentität eines anderen Mandanten ein **Token** vom Basismandanten der Azure Digital Twins-Instanz angefordert wird. 
+
+[!INCLUDE [digital-twins-tenant-solution-1](../../includes/digital-twins-tenant-solution-1.md)]
+
+Sie können auch den Basismandanten in den Anmeldeinformationsoptionen in Ihrem Code angeben. 
+
+[!INCLUDE [digital-twins-tenant-solution-2](../../includes/digital-twins-tenant-solution-2.md)]
 
 ## <a name="other-credential-methods"></a>Andere Methoden für Anmeldeinformationen
 

@@ -3,14 +3,14 @@ title: Ausschließliches Bereitstellen von zustandslosen Knotentypen in einem Se
 description: Erfahren Sie, wie Sie zustandslose Knotentypen in Azure Service Fabric-Clustern erstellen und bereitstellen.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 4847fd88a96e96788f8e6ebdb4ee3cfa7f15fbdc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030008"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135453"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>Bereitstellen eines Azure Service Fabric-Clusters mit ausschließlich zustandslosen Knotentypen
 Für Service Fabric-Knotentypen gilt die Annahme, dass zu einem bestimmten Zeitpunkt ggf. zustandsbehaftete Dienste auf den Knoten platziert werden. Zustandslose Knotentypen lockern diese Annahme für einen Knotentyp und ermöglichen so die Nutzung anderer Funktionen wie schnellere Aufskalierungsvorgänge, Unterstützung für automatische Betriebssystemupgrades bei Bronze-Dauerhaftigkeit und horizontales Skalieren auf mehr als 100 Knoten in einer einzigen VM-Skalierungsgruppe.
@@ -20,7 +20,7 @@ Für Service Fabric-Knotentypen gilt die Annahme, dass zu einem bestimmten Zeitp
 * Zustandslose Knotentypen werden nur für Service Fabric-Laufzeitversion 7.1.409 oder höher unterstützt.
 
 
-Es sind Beispielvorlagen verfügbar: [Vorlage für zustandslose Service Fabric-Knotentypen](https://github.com/Azure-Samples/service-fabric-cluster-templates)
+Es sind Beispielvorlagen verfügbar: [Vorlagen für zustandslose Service Fabric-Knotentypen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-2-NodeTypes-Windows-Stateless-Secure)
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Aktivieren von zustandslosen Knotentypen in einem Service Fabric-Cluster
 Legen Sie die **isStateless**-Eigenschaft auf **TRUE** fest, um mindestens einen Knotentyp in einer Clusterressource als zustandslos festzulegen. Wenn Sie einen Service Fabric-Cluster mit zustandslosen Knotentypen bereitstellen, denken Sie daran, mindestens einen primären Knotentyp in der Clusterressource zu verwenden.
@@ -76,7 +76,7 @@ Zum Aktivieren von zustandslosen Knotentypen sollten Sie Folgendes für die zugr
 * Der parallele Upgrademodus erfordert die konfigurierte Anwendungsintegritätserweiterung oder Integritätstests. Konfigurieren Sie den Integritätstest mit der Standardkonfiguration für zustandslose Knotentypen, wie unten vorgeschlagen. Nach der Bereitstellung von Anwendungen für den Knotentyp können Integritätstest-/Integritätserweiterungsports geändert werden, um die Anwendungsintegrität zu überwachen.
 
 >[!NOTE]
-> Bei Verwendung von automatischer Skalierung mit zustandslosen Knotentypen wird der Knotenzustand nach dem Herunterskalieren nicht automatisch bereinigt. Um den Knotenzustand ausgefallener Knoten während der automatischen Skalierung zu bereinigen, empfiehlt sich die Verwendung der [Service Fabric-Hilfsanwendung für die Autoskalierung](https://github.com/Azure/service-fabric-autoscale-helper).
+> Bei Verwendung der automatischen Skalierung mit zustandslosen Knotentypen wird der Knotenzustand nach dem Herunterskalieren nicht automatisch bereinigt. Um den Knotenzustand ausgefallener Knoten während der automatischen Skalierung zu bereinigen, empfiehlt sich die Verwendung der [Service Fabric-Hilfsanwendung für die Autoskalierung](https://github.com/Azure/service-fabric-autoscale-helper).
 
 ```json
 {
@@ -116,7 +116,7 @@ Zum Aktivieren von zustandslosen Knotentypen sollten Sie Folgendes für die zugr
                 "Enabled": true
             },
         },
-        "typeHandlerVersion": "1.0"
+        "typeHandlerVersion": "1.1"
     }
     },
     {
@@ -138,14 +138,14 @@ Zum Aktivieren von zustandslosen Knotentypen sollten Sie Folgendes für die zugr
 ```
 
 ## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>Konfigurieren zustandsloser Knotentypen mit mehreren Verfügbarkeitszonen
-Zur Konfiguration von zustandslosen Knotentypen, die sich über mehrere Verfügbarkeitszonen erstrecken, befolgen Sie die [hier](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set) verfügbare Dokumentation zusammen mit wenigen Änderungen wie folgt:
+Zur Konfiguration von zustandslosen Knotentypen, die sich über mehrere Verfügbarkeitszonen erstrecken, folgen Sie den Anweisungen in der [hier](/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set) verfügbaren Dokumentation. Darüber hinaus gelten einige wenige Änderungen:
 
 * Festlegen von **singlePlacementGroup**: **FALSE**, wenn mehrere Platzierungsgruppen aktiviert werden müssen.
 * Festlegen von **upgradeMode**: **Rolling**, und fügen Sie Anwendungszustandserweiterungen/Integritätstests wie oben erwähnt hinzu.
 * Festlegen von **platformFaultDomainCount**: **5** für VM-Skalierungsgruppe.
 
 >[!NOTE]
-> Unabhängig vom VMSSZonalUpgradeMode, der im Cluster konfiguriert ist, erfolgen Aktualisierungen von VM-Skalierungsgruppen immer sequenziell nacheinander für den zustandslosen Knotentyp, der sich über mehrere Zonen erstreckt, da der parallele Upgrademodus verwendet wird.
+> Unabhängig vom VMSSZonalUpgradeMode, der im Cluster konfiguriert ist, erfolgen Aktualisierungen von VM-Skalierungsgruppen für den zonenübergreifenden zustandslosen Knotentyp immer für eine Verfügbarkeitszone nach der anderen, weil der parallele Upgrademodus verwendet wird.
 
 Weitere Informationen finden Sie in der [Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) zum Konfigurieren zustandsloser Knotentypen mit mehreren Verfügbarkeitszonen.
 
@@ -272,4 +272,3 @@ Nachdem die Bereitstellung der Ressourcen abgeschlossen wurde, können Sie begin
 ## <a name="next-steps"></a>Nächste Schritte 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)
 * [Knotentypen und VM-Skalierungsgruppen](service-fabric-cluster-nodetypes.md)
-
