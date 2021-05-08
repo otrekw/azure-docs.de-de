@@ -12,22 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 2031cbf07d700307ae1e11c516f9fc736bce5080
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 2546236399853f3ed6fad9e07e031edb568fbfe9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498876"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311531"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Konfigurieren von ADDS LDAP mit erweiterten Gruppen für Zugriff auf NFS-Volumes
 
-Wenn Sie [ein NFS-Volume erstellen](azure-netapp-files-create-volumes.md), haben Sie die Möglichkeit, die Funktion LDAP mit erweiterten Gruppen (**LDAP**-Option) für das Volume zu aktivieren. Mit dieser Funktion können Active Directory LDAP-Benutzer und erweiterte Gruppen (bis zu 1024 Gruppen) auf das Volume zugreifen.  
+Wenn Sie [ein NFS-Volume erstellen](azure-netapp-files-create-volumes.md), haben Sie die Möglichkeit, die Funktion LDAP mit erweiterten Gruppen (**LDAP**-Option) für das Volume zu aktivieren. Mit dieser Funktion können Active Directory LDAP-Benutzer und erweiterte Gruppen (bis zu 1024 Gruppen) auf das Volume zugreifen. Sie können LDAP mit dem Feature für erweiterte Gruppen sowohl mit den NFSv4.1- als auch mit den NFSv3-Volumes verwenden. 
 
 Dieser Artikel erklärt die Überlegungen und Schritte zum Aktivieren von LDAP mit erweiterten Gruppen, wenn Sie ein NFS-Volume erstellen.  
 
 ## <a name="considerations"></a>Überlegungen
+
+* LDAP mit erweiterten Gruppen wird nur mit Active Directory Domain Services (AD DS) oder Azure Active Directory Domain Services (AADDS) unterstützt. OpenLDAP oder andere LDAP-Verzeichnisdienste von Drittanbietern werden nicht unterstützt. 
 
 * LDAP über TLS darf *nicht* aktiviert werden, wenn Sie Azure Active Directory Domain Services (AADDS) verwenden.  
 
@@ -69,11 +71,23 @@ Dieser Artikel erklärt die Überlegungen und Schritte zum Aktivieren von LDAP m
 
 2. LDAP-Volumes erfordern eine Active Directory Konfiguration für LDAP-Servereinstellungen. Befolgen Sie die Anweisungen unter [Anforderungen für Active Directory-Verbindungen](create-active-directory-connections.md#requirements-for-active-directory-connections) und [erstellen Sie eine Active Directory Verbindung](create-active-directory-connections.md#create-an-active-directory-connection), um Active Directory Verbindungen auf dem Azure-Portal zu konfigurieren.  
 
-3. Stellen Sie sicher, dass der Active Directory LDAP-Server auf dem Active Directory ausgeführt wird. Hierzu können Sie die Rolle [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) auf dem AD-Computer installieren und konfigurieren.
+    > [!NOTE]
+    > Stellen Sie sicher, dass Sie die Active Directory-Verbindungseinstellungen konfiguriert haben. Ein Computerkonto wird in der Organisationseinheit (OE) erstellt, die in den Active Directory-Verbindungseinstellungen angegeben ist. Die Einstellungen werden vom LDAP-Client für die Authentifizierung bei Active Directory verwendet.
 
-4. LDAP-NFS-Benutzer müssen bestimmte POSIX-Attribute auf dem LDAP-Server haben. Befolgen Sie die Anweisungen unter [Verwalten der POSIX-Attribute von LDAP](create-volumes-dual-protocol.md#manage-ldap-posix-attributes) zum Festlegen der erforderlichen Attribute.  
+3. Stellen Sie sicher, dass der Active Directory LDAP-Server auf dem Active Directory ausgeführt wird. 
 
-5. Wenn Sie einen mit LDAP integrierten Linux-Client konfigurieren möchten, finden Sie weitere Informationen unter [Konfigurieren eines NFS-Clients für Azure NetApp Files](configure-nfs-clients.md).
+4. LDAP-NFS-Benutzer müssen bestimmte POSIX-Attribute auf dem LDAP-Server haben. Legen Sie die Attribute für LDAP-Benutzer und LDAP-Gruppen wie folgt fest: 
+
+    * Erforderliche Attribute für LDAP-Benutzer:   
+        `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: user`
+    * Erforderliche Attribute für LDAP-Gruppen:   
+        `objectClass: group`, `gidNumber: 555`
+
+    Sie können POSIX-Attribute verwalten, indem Sie das MMC-Snap-In „Active Directory-Benutzer und -Computer“ verwenden Im folgenden Beispiel ist der Active Directory-Attribut-Editor dargestellt:  
+
+    ![Active Directory-Attribut-Editor](../media/azure-netapp-files/active-directory-attribute-editor.png) 
+
+5. Wenn Sie einen mit LDAP integrierten NFSv4.1-Client von Linux konfigurieren möchten, finden Sie weitere Informationen unter [Konfigurieren eines NFS-Clients für Azure NetApp Files](configure-nfs-clients.md).
 
 6.  Führen Sie die unter [Erstellen eines NFS-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md) angegebenen Schritte aus, um das NFS-Volume zu erstellen. Aktivieren Sie während der Volumeerstellung auf der Registerkarte **Protokoll** die **LDAP**-Option.   
 

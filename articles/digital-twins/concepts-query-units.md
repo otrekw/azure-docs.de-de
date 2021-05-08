@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0e1c5f08c4292e4f3dfec448d8bf54d5d5601840
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a4d0c4a9df3cb5b07267cc540e5cf1651861545
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99050497"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207949"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Abfrageeinheiten in Azure Digital Twins 
 
@@ -41,8 +41,8 @@ Der folgende Codeausschnitt veranschaulicht das Extrahieren der durch den Aufruf
 
 Weitere Informationen über das Abfragen von Azure Digital Twins finden Sie in den folgenden Artikeln:
 
-* [*Konzepte: Abfragesprache*](concepts-query-language.md)
-* [*Verwenden Abfragen des Zwillingsgraphen*](how-to-query-graph.md)
+* [Konzepte: Abfragesprache](concepts-query-language.md)
+* [Gewusst wie: Abfragen des Zwillingsgraphen](how-to-query-graph.md)
 * [Abfrage-API-Referenzdokumentation](/rest/api/digital-twins/dataplane/query/querytwins)
 
-Sie finden die abfragenbezogenen Azure Digital Twins-Einschränkungen unter [*Diensteinschränkungen*](reference-service-limits.md).
+Sie finden die abfragenbezogenen Azure Digital Twins-Einschränkungen unter [Diensteinschränkungen](reference-service-limits.md).

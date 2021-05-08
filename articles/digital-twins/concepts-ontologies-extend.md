@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b38b4910773c433ed63fd2082c5cbefce81e0e9e
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 547081122b1bc6611200e2abc2042a111e4284e1
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480229"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208075"
 ---
 # <a name="extending-ontologies"></a>Erweitern von Ontologien 
 
@@ -30,7 +30,7 @@ Ein Teil dieser Hierarchie entspricht der Darstellung im folgenden Diagramm.
 
 :::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="Flussdiagramm: Teil der RealEstateCore-Bereichshierarchie. In der obersten Ebene gibt es ein Element namens „Space“ (Bereich), das mit einem Pfeil „extends“ (erweitert) eine Ebene darunter mit dem Element „Room“ (Raum) verbunden ist, das wiederum eine weitere Ebene darunter über zwei Pfeile mit den Elementen „ConferenceRoom“ (Konferenzraum) und „Office“ (Büro) verbunden ist."::: 
 
-Weitere Informationen über die RealEstateCore-Ontologie finden Sie unter [*Konzepte: Übernehmen von Branchenstandardontologien*](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology).
+Weitere Informationen über die RealEstateCore-Ontologie finden Sie unter [Konzepte: Übernehmen von Branchenstandardontologien](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology).
 
 ## <a name="extending-the-realestatecore-space-hierarchy"></a>Erweitern der RealEstateCore-Bereichshierarchie 
 
@@ -162,4 +162,4 @@ Die DTDL für die erweiterten Schnittstellen (beschränkt auf den oben behandelt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fahren Sie mit dem Pfad für das Entwickeln von Modellen basierend auf Ontologien fort: [*Verwenden von Ontologiestrategien in einem Modellentwicklungspfad*](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path).
+Fahren Sie mit dem Pfad für das Entwickeln von Modellen basierend auf Ontologien fort: [Verwenden von Ontologiestrategien in einem Modellentwicklungspfad](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path).

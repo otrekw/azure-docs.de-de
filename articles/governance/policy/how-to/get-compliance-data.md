@@ -1,14 +1,14 @@
 ---
 title: Abrufen von Daten zur Richtlinienkonformität
 description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen Ihrer Azure-Ressourcen abrufen.
-ms.date: 03/16/2021
+ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: cdd23d685750fb8a5d3803f4b6030e7e67bbddce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1a9a7fcbbcbd7f490b2f665b40c7ed922ec61ee
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598540"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864593"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -35,6 +35,8 @@ Auswertungen zugewiesener Richtlinien und Initiativen geschehen im Zuge untersch
 - Eine Richtlinie oder Initiative, die bereits einem Bereich zugewiesen ist, wird aktualisiert. Der Auswertungszyklus und die zeitliche Steuerung für dieses Szenario entspricht denjenigen von Neuzuweisungen zu einem Bereich.
 
 - Eine Ressource wird in einem Bereich mit einer Zuweisung über Azure Resource Manager, die REST-API oder ein unterstütztes SDK bereitgestellt oder aktualisiert. In diesem Szenario werden nach etwa 15 Minuten die Informationen über das betroffene Ereignis (Anfügen, Überwachen, Verweigern, Bereitstellen) und den Konformitätsstatus für die jeweilige Ressource im Portal und den SDKs verfügbar. Dieses Ereignis löst keine Auswertung anderer Ressourcen aus.
+
+- Ein Abonnement (Ressourcentyp `Microsoft.Resource/subscriptions`) wird innerhalb einer [Verwaltungsgruppenhierarchie](../../management-groups/overview.md) mit einer zugewiesenen Richtliniendefinition für den Abonnementressourcentyp erstellt oder verschoben. Die Auswertung der vom Abonnement unterstützten Auswirkungen (audit, auditIfNotExist, deployIfNotExists, modify), Protokollierung und Korrekturaktionen dauert etwa 30 Minuten.
 
 - Eine [Richtlinienausnahme](../concepts/exemption-structure.md) wird erstellt, aktualisiert oder gelöscht. In diesem Szenario wird die entsprechende Zuweisung für den definierten Ausnahmebereich ausgewertet.
 
