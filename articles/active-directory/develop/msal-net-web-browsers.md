@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4121d4b9ac73ed18da7dce0e397fe919589ac6f0
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583738"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478759"
 ---
 # <a name="using-web-browsers-msalnet"></a>Verwenden von Webbrowsern (MSAL.NET)
 
@@ -63,11 +63,11 @@ MSAL.NET unterstützt standardmäßig den Systemwebbrowser unter Xamarin.iOS, Xa
 
 Die Nutzung des Systembrowsers hat den entscheidenden Vorteil, dass der SSO-Zustand mit anderen Anwendungen und mit Webanwendungen geteilt wird, ohne dass ein Broker (Unternehmensportal/Authentifikator) erforderlich ist. Der Systembrowser wurde standardmäßig in MSAL.NET für die Xamarin.iOS- und Xamarin.Android-Plattformen verwendet, weil der Systemwebbrowser auf diesen Plattformen den ganzen Bildschirm belegt und somit die Benutzererfahrung verbessert. Die Systemwebansicht ist von einem Dialogfeld nicht zu unterscheiden. Unter iOS muss der Benutzer jedoch ggf. seine Einwilligung geben, dass der Browser einen Rückruf an die Anwendung senden darf, was zeitraubend sein kann.
 
-## <a name="system-browser-experience-on-net-core"></a>Systembrowser in .NET Core
+## <a name="system-browser-experience-on-net"></a>Systembrowser in .NET 
 
 In .NET Core startet MSAL.NET den Systembrowser als separaten Prozess. MSAL.NET kann diesen Browser nicht steuern, aber nachdem der Benutzer die Authentifizierung abgeschlossen hat, wird die Webseite so umgeleitet, dass MSAL.NET den URI abfangen kann.
 
-Sie können auch für .NET Classic geschriebene Apps für die Verwendung dieses Browsers konfigurieren, indem Sie Folgendes angeben:
+Sie können auch für .NET Classic oder .NET 5 geschriebene Apps für die Verwendung dieses Browsers konfigurieren, indem Sie Folgendes angeben:
 
 ```csharp
 await pca.AcquireTokenInteractive(s_scopes)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: 6500805a4dc7e26f5e1bc601df9ea78279ae17e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16cf1b89c2660d2505685fa931cc8b97ccb42a9b
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709341"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992288"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Verknüpfen von Daten aus Microsoft 365 Defender mit Azure Sentinel
 
@@ -35,7 +35,7 @@ ms.locfileid: "101709341"
 
 Der [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection)-Connector (M365D) von Azure Sentinel mit Incidentintegration ermöglicht es Ihnen, alle M365D-Incidents und -Warnungen in Azure Sentinel zu streamen. Außerdem sorgt er dafür, dass Incidents zwischen den Portalen synchronisiert werden. M365D-Incidents enthalten alle dazugehörigen Warnungen, Entitäten und andere relevante Informationen. Diese Informationen werden angereichert. Warnungen aus den Komponentendiensten von M365D, **Microsoft Defender für Endpunkt**, **Microsoft Defender for Identity**, **Microsoft Defender für Office 365** und **Microsoft Cloud App Security**, werden zusammen gruppiert.
 
-Der Connector ermöglicht Ihnen auch das Streamen von Ereignissen der **erweiterten Bedrohungssuche** aus Microsoft Defender für Endpunkt zu Azure Sentinel. So können Sie erweiterte Abfragen der erweiterten Bedrohungssuche in Microsoft Defender für Endpunkt in Azure Sentinel kopieren, Sentinel-Warnungen mit Rohereignisdaten aus Microsoft Defender für Endpunkt anreichen, um zusätzliche Erkenntnisse zu ermöglichen, und die Protokolle mit erhöhter Aufbewahrungsdauer in Log Analytics speichern.
+Der Connector ermöglicht Ihnen auch das Streamen von Ereignissen der **erweiterten Bedrohungssuche** aus Microsoft Defender für Endpunkt zu Azure Sentinel. So können Sie erweiterte Abfragen der erweiterten Bedrohungssuche in Defender für Endpunkt in Azure Sentinel kopieren, Sentinel-Warnungen mit Rohereignisdaten aus Defender für Endpunkt anreichen, um zusätzliche Erkenntnisse zu ermöglichen, und die Protokolle mit erhöhter Aufbewahrungsdauer in Log Analytics speichern.
 
 Weitere Informationen zur Incidentintegration und zur Erfassung von Ereignissen der erweiterten Bedrohungssuche finden Sie unter [Microsoft 365 Defender-Integration mit Azure Sentinel](microsoft-365-defender-sentinel-integration.md).
 
@@ -60,7 +60,7 @@ Weitere Informationen zur Incidentintegration und zur Erfassung von Ereignissen 
     > [!NOTE]
     > Wenn Sie den Microsoft 365 Defender-Connector aktivieren, werden alle Connectors der M365D-Komponenten (wie zu Beginn dieses Artikels erwähnt) automatisch im Hintergrund verbunden. Damit die Verbindung eines der Connectors der Komponenten getrennt wird, müssen Sie zunächst die Verbindung des Microsoft 365 Defender-Connectors aufheben.
 
-1. Wenn Sie M365 Defender-Incidentdaten abfragen möchten, verwenden Sie die folgende Anweisung im Abfragefenster:
+1. Wenn Sie Microsoft 365 Defender-Incidentdaten abfragen möchten, verwenden Sie die folgende Anweisung im Abfragefenster:
     ```kusto
     SecurityIncident
     | where ProviderName == "Microsoft 365 Defender"
@@ -92,7 +92,7 @@ Weitere Informationen zur Incidentintegration und zur Erfassung von Ereignissen 
 
 Das Datendiagramm auf der Connectorseite weist darauf hin, dass Sie Daten erfassen. Wie Sie sehen können wird für Incidents, Warnungen und Ereignisse jeweils eine Zeile angezeigt. Bei der Ereigniszeile handelt es sich um eine Aggregation des Ereignisvolumens für alle aktivierten Tabellen. Sobald Sie den Connector aktiviert haben, können Sie die folgenden KQL-Abfragen verwenden, um spezifischere Graphen zu generieren.
 
-Verwenden Sie die folgende KQL-Abfrage für einen Graph der eingehenden M365 Defender-Incidents:
+Verwenden Sie die folgende KQL-Abfrage für einen Graph der eingehenden Microsoft 365 Defender-Incidents:
 
 ```kusto
 let Now = now(); 

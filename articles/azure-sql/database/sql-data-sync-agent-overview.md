@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: ed8d51adf5a93b470f287383a4d3eeb866b15236
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9996d7597631ec3c910e5be340ec3776ce77dbcf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92791459"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147803"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>Datensynchronisierungs-Agent für die SQL-Datensynchronisierung
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -79,6 +79,14 @@ Wenn Sie den lokalen Agent auf einem anderen Computer als dem ausführen möchte
 3. Übergeben Sie den neuen Agent-Schlüssel über die Benutzeroberfläche des neuen Agents.
 4. Warten Sie, während der Client-Agent die Liste der zuvor registrierten lokalen Datenbanken herunterlädt.
 5. Geben Sie Datenbankanmeldeinformationen für alle Datenbanken ein, die als nicht erreichbar angezeigt werden. Diese Datenbanken müssen auf dem neuen Computer erreichbar sein, auf denen der Agent installiert ist.
+
+### <a name="how-do-i-delete-the-sync-metadata-database-if-the-sync-agent-is-still-associated-with-it"></a>Gewusst wie - die Synchronisierungsmetadaten-Datenbank löschen, wenn der Synchronisierungs-Agent noch zugeordnet ist
+
+Um eine Synchronisierungsmetadatendatenbank zu löschen, der ein Synchronisierungs-Agent zugeordnet ist, müssen Sie zuerst den Synchronisierungs-Agent löschen. Gehen Sie zum Löschen des Agents wie folgt vor: 
+
+1. Wählen Sie die Datenbank synchronisieren aus. 
+2. Wechseln Sie zur Seite **Mit anderen Datenbanken synchronisieren.**
+3. Wählen Sie den Synchronisierungs-Agent aus, und klicken Sie auf **Löschen.** 
 
 ## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a> Beheben von Problemen mit dem Datensynchronisierungs-Agent
 

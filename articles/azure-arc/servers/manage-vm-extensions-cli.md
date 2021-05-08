@@ -1,19 +1,22 @@
 ---
 title: Aktivieren von VM-Erweiterungen mithilfe der Azure-Befehlszeilenschnittstelle
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle VM-Erweiterungen auf Servern mit Azure Arc-Unterstützung bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
-ms.date: 01/05/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6edb7d55e542f963c75693d535fa3b50dc5b827b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2255742e626e62f771730359c1c19c3b10f9d71
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97916200"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015175"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe der Azure-Befehlszeilenschnittstelle
 
 In diesem Artikel erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle verwenden, um VM-Erweiterungen, die von Servern mit Azure Arc-Unterstützung unterstützt werden, auf einem Linux- oder Windows-Hybridcomputer bereitzustellen oder zu deinstallieren.
+
+> [!NOTE]
+> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu Azure-VMs finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
 
 [!INCLUDE [Azure CLI Prepare your environment](../../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -27,7 +30,7 @@ az extension add --name connectedmachine
 
 ## <a name="enable-extension"></a>Aktivieren der Erweiterung
 
-Verwenden Sie [az connectedmachine extension create](/cli/azure/ext/connectedmachine/connectedmachine/extension#ext_connectedmachine_az_connectedmachine_extension_create) mit den Parametern `--machine-name`, `--extension-name`, `--location`, `--type`, `settings` und `--publisher`, um eine VM-Erweiterung auf Ihrem Server mit Arc-Unterstützung zu aktivieren.
+Verwenden Sie [az connectedmachine extension create](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_create) mit den Parametern `--machine-name`, `--extension-name`, `--location`, `--type`, `settings` und `--publisher`, um eine VM-Erweiterung auf Ihrem Server mit Arc-Unterstützung zu aktivieren.
 
 Das folgende Beispiel aktiviert die Log Analytics-VM-Erweiterung auf einem Arc-fähigen Server:
 
@@ -49,7 +52,7 @@ az connectedmachine extension create --resource-group "resourceGroupName" --mach
 
 ## <a name="list-extensions-installed"></a>Auflisten der Installierten Erweiterungen
 
-Verwenden Sie [az connectedmachine extension list](/cli/azure/ext/connectedmachine/connectedmachine/extension#ext_connectedmachine_az_connectedmachine_extension_list) mit den Parametern `--machine-name` und `--resource-group`, um eine Liste der VM-Erweiterungen auf dem Server mit Arc-Unterstützung abzurufen.
+Verwenden Sie [az connectedmachine extension list](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_list) mit den Parametern `--machine-name` und `--resource-group`, um eine Liste der VM-Erweiterungen auf dem Server mit Arc-Unterstützung abzurufen.
 
 Beispiel:
 
@@ -74,7 +77,7 @@ Das folgende Beispiel zeigt die partielle JSON-Ausgabe des Befehls `az connected
 
 ## <a name="remove-an-installed-extension"></a>Entfernen einer installierten Erweiterung
 
-Verwenden Sie [az connectedmachine extension delete](/cli/azure/ext/connectedmachine/connectedmachine/extension#ext_connectedmachine_az_connectedmachine_extension_delete) mit den Parametern `--extension-name`, `--machine-name` und `--resource-group`, um eine installierte VM-Erweiterung auf Ihrem Server mit Arc-Unterstützung zu entfernen.
+Verwenden Sie [az connectedmachine extension delete](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_delete) mit den Parametern `--extension-name`, `--machine-name` und `--resource-group`, um eine installierte VM-Erweiterung auf Ihrem Server mit Arc-Unterstützung zu entfernen.
 
 Um beispielsweise die Log Analytics-VM-Erweiterung für Linux zu entfernen, führen Sie den folgenden Befehl aus:
 
@@ -88,4 +91,4 @@ az connectedmachine extension delete --machine-name "myMachineName" --name "OmsA
 
 - Informationen zur Problembehandlung finden Sie im [Problembehandlungs-Handbuch für VM-Erweiterungen](troubleshoot-vm-extensions.md).
 
-- Weitere Informationen zu den Befehlen finden Sie in der [Übersicht](/cli/azure/ext/connectedmachine/connectedmachine/extension) über die VM-Erweiterung der Azure-Befehlszeilenschnittstelle.
+- Weitere Informationen zu den Befehlen finden Sie in der [Übersicht](/cli/azure/connectedmachine/extension) über die VM-Erweiterung der Azure-Befehlszeilenschnittstelle.

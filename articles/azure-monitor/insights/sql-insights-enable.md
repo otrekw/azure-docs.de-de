@@ -5,15 +5,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: e8dd887d151eb553131048f232940555dbef324b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 385bf6382fd25406fc9927df806f35dbf973d8fa
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025032"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142529"
 ---
 # <a name="enable-sql-insights-preview"></a>Aktivieren von SQL Insights (Vorschau)
 In diesem Artikel wird beschrieben, wie Sie [SQL Insights](sql-insights-overview.md) zum Überwachen Ihrer SQL-Bereitstellungen aktivieren. Die Überwachung erfolgt über einen virtuellen Azure-Computer, der eine Verbindung mit Ihren SQL-Bereitstellungen herstellt und dynamische Verwaltungssichten (Dynamic Management Views, DMVs) verwendet, um Überwachungsdaten zu erfassen. Sie können mithilfe eines Überwachungsprofils steuern, welche Datasets mit welcher Häufigkeit gesammelt werden.
+
+> [!NOTE]
+> Informationen zum Aktivieren von SQL Insights durch Erstellen des Überwachungsprofils und des virtuellen Computers mithilfe einer Resource Manager-Vorlage finden Sie unter [ Ressourcenmanager Vorlagenbeispiele für SQL Insights](resource-manager-sql-insights.md).
 
 ## <a name="create-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
 SQL Insights speichert die Daten in mindestens einem [Log Analytics-Arbeitsbereich](../logs/data-platform-logs.md#log-analytics-workspaces).  Bevor Sie SQL Insights aktivieren können, müssen Sie entweder [einen Arbeitsbereich erstellen](../logs/quick-create-workspace.md) oder einen vorhandenen auswählen. Ein einzelner Arbeitsbereich kann mit mehreren Überwachungsprofilen verwendet werden, aber der Arbeitsbereich und die Profile müssen sich in derselben Azure-Region befinden. Um die Features in SQL Insights aktivieren und darauf zugreifen zu können, müssen Sie im Arbeitsbereich über die Rolle [Log Analytics-Mitwirkender](../logs/manage-access.md) verfügen. 
@@ -21,12 +24,15 @@ SQL Insights speichert die Daten in mindestens einem [Log Analytics-Arbeitsberei
 ## <a name="create-monitoring-user"></a>Erstellen eines Überwachungsbenutzers 
 Sie benötigen einen Benutzer für die SQL-Bereitstellungen, die Sie überwachen möchten. Führen Sie die folgenden Verfahren für verschiedene Arten von SQL-Bereitstellungen aus.
 
+Die folgenden Anweisungen beziehen sich auf den Prozess pro SQL-Typ, den Sie überwachen können.  Um dies mit einem Skript für mehrere SQL-Resouces gleichzeitig zu erreichen, lesen Sie die folgende [README-Datei](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Workloads/SQL/SQL%20Insights%20Onboarding%20Scripts/Permissions_LoginUser_Account_Creation-README.txt) und das [Beispielskript](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Workloads/SQL/SQL%20Insights%20Onboarding%20Scripts/Permissions_LoginUser_Account_Creation.ps1).
+
+
 ### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 Öffnen Sie Azure SQL-Datenbank mit [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) oder dem [Abfrage-Editor (Vorschau)](../../azure-sql/database/connect-query-portal.md) im Azure-Portal.
 
 Führen Sie das folgende Skript aus, um einen Benutzer mit den erforderlichen Berechtigungen zu erstellen. Ersetzen Sie *user* durch einen Benutzernamen und *mystrongpassword* durch ein Kennwort.
 
-```
+```sql
 CREATE USER [user] WITH PASSWORD = N'mystrongpassword'; 
 GO 
 GRANT VIEW DATABASE STATE TO [user]; 
@@ -39,11 +45,23 @@ Vergewissern Sie sich, dass der Benutzer erstellt wurde.
 
 :::image type="content" source="media/sql-insights-enable/telegraf-user-database-verify.png" alt-text="Überprüfen eines Telegraf-Benutzerskripts." lightbox="media/sql-insights-enable/telegraf-user-database-verify.png":::
 
+```sql
+select name as username,
+       create_date,
+       modify_date,
+       type_desc as type,
+       authentication_type_desc as authentication_type
+from sys.database_principals
+where type not in ('A', 'G', 'R', 'X')
+       and sid is not null
+order by username
+```
+
 ### <a name="azure-sql-managed-instance"></a>Verwaltete Azure SQL-Instanz
 Melden Sie sich an Ihrer Azure SQL Managed Instance an und führen Sie mit [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) oder einem ähnlichen Tool das folgende Skript aus, um den Überwachungsbenutzer mit den erforderlichen Berechtigungen zu erstellen. Ersetzen Sie *user* durch einen Benutzernamen und *mystrongpassword* durch ein Kennwort.
 
  
-```
+```sql
 USE master; 
 GO 
 CREATE LOGIN [user] WITH PASSWORD = N'mystrongpassword'; 
@@ -58,7 +76,7 @@ GO
 Melden Sie sich bei Ihrem virtuellen Azure-Computer an, auf dem SQL Server ausgeführt wird, und verwenden Sie [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) oder ein ähnliches Tool, um das folgende Skript zum Erstellen des Überwachungsbenutzers mit den erforderlichen Berechtigungen auszuführen. Ersetzen Sie *user* durch einen Benutzernamen und *mystrongpassword* durch ein Kennwort.
 
  
-```
+```sql
 USE master; 
 GO 
 CREATE LOGIN [user] WITH PASSWORD = N'mystrongpassword'; 
@@ -67,6 +85,19 @@ GRANT VIEW SERVER STATE TO [user];
 GO 
 GRANT VIEW ANY DEFINITION TO [user]; 
 GO
+```
+
+Vergewissern Sie sich, dass der Benutzer erstellt wurde.
+
+```sql
+select name as username,
+       create_date,
+       modify_date,
+       type_desc as type
+from sys.server_principals
+where type not in ('A', 'G', 'R', 'X')
+       and sid is not null
+order by username
 ```
 
 ## <a name="create-azure-virtual-machine"></a>Erstellen eines virtuellen Azure-Computers 
@@ -94,7 +125,7 @@ Jeder SQL-Typ bietet Methoden, mit denen der virtuelle Computer für die Überwa
 
 SQL Insights unterstützt den Zugriff auf Ihre Azure SQL-Datenbank-Instanz sowohl über den öffentlichen Endpunkt als auch über das virtuelle Netzwerk.
 
-Für den Zugriff über den öffentlichen Endpunkt müssen Sie auf der Seite **Firewalleinstellungen** im Abschnitt [IP-Firewalleinstellungen](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-firewall-rules) eine Regel hinzufügen.  Um den Zugriff aus einem virtuellen Netzwerk anzugeben, können Sie [Firewallregeln für virtuelle Netzwerke](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#virtual-network-firewall-rules) und die [vom Azure Monitor-Agent benötigten Diensttags](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking) festlegen.  In [diesem Artikel](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-vs-virtual-network-firewall-rules) werden die Unterschiede zwischen diesen beiden Arten von Firewallregeln beschrieben.
+Für den Zugriff über den öffentlichen Endpunkt müssen Sie auf der Seite **Firewalleinstellungen** im Abschnitt [IP-Firewalleinstellungen](../../azure-sql/database/network-access-controls-overview.md#ip-firewall-rules) eine Regel hinzufügen.  Um den Zugriff aus einem virtuellen Netzwerk anzugeben, können Sie [Firewallregeln für virtuelle Netzwerke](../../azure-sql/database/network-access-controls-overview.md#virtual-network-firewall-rules) und die [vom Azure Monitor-Agent benötigten Diensttags](../agents/azure-monitor-agent-overview.md#networking) festlegen.  In [diesem Artikel](../../azure-sql/database/network-access-controls-overview.md#ip-vs-virtual-network-firewall-rules) werden die Unterschiede zwischen diesen beiden Arten von Firewallregeln beschrieben.
 
 :::image type="content" source="media/sql-insights-enable/set-server-firewall.png" alt-text="Festlegen der Serverfirewall" lightbox="media/sql-insights-enable/set-server-firewall.png":::
 
@@ -103,11 +134,11 @@ Für den Zugriff über den öffentlichen Endpunkt müssen Sie auf der Seite **Fi
 
 ### <a name="azure-sql-managed-instances"></a>Verwaltete Azure SQL-Instanzen 
 
-Wenn sich der virtuelle Computer für die Überwachung im selben VNET wie Ihre SQL MI-Ressourcen befindet, informieren Sie sich unter [Herstellen einer Verbindung im selben VNET](https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance#connect-inside-the-same-vnet). Wenn sich der virtuelle Computer für die Überwachung in einem anderen VNET als die SQL MI-Ressourcen befindet, informieren Sie sich unter [Herstellen einer Verbindung in einem anderen VNET](https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance#connect-inside-a-different-vnet).
+Wenn sich der virtuelle Computer für die Überwachung im selben VNET wie Ihre SQL MI-Ressourcen befindet, informieren Sie sich unter [Herstellen einer Verbindung im selben VNET](../../azure-sql/managed-instance/connect-application-instance.md#connect-inside-the-same-vnet). Wenn sich der virtuelle Computer für die Überwachung in einem anderen VNET als die SQL MI-Ressourcen befindet, informieren Sie sich unter [Herstellen einer Verbindung in einem anderen VNET](../../azure-sql/managed-instance/connect-application-instance.md#connect-inside-a-different-vnet).
 
 
 ### <a name="azure-virtual-machine-and-azure-sql-virtual-machine"></a>Virtueller Azure-Computer und virtueller Azure SQL-Computer  
-Wenn sich der virtuelle Computer für die Überwachung im selben VNET wie Ihre SQL-VM-Ressourcen befindet, informieren Sie sich unter [Verbinden mit SQL Server innerhalb eines virtuellen Netzwerks](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/ways-to-connect-to-sql#connect-to-sql-server-within-a-virtual-network). Wenn sich der virtuelle Computer für die Überwachung in einem anderen VNET als Ihre SQL-VM-Ressourcen befindet, informieren Sie sich unter [Verbinden mit SQL Server über das Internet](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/ways-to-connect-to-sql#connect-to-sql-server-over-the-internet).
+Wenn sich der virtuelle Computer für die Überwachung im selben VNET wie Ihre SQL-VM-Ressourcen befindet, informieren Sie sich unter [Verbinden mit SQL Server innerhalb eines virtuellen Netzwerks](../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md#connect-to-sql-server-within-a-virtual-network). Wenn sich der virtuelle Computer für die Überwachung in einem anderen VNET als Ihre SQL-VM-Ressourcen befindet, informieren Sie sich unter [Verbinden mit SQL Server über das Internet](../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md#connect-to-sql-server-over-the-internet).
 
 ## <a name="store-monitoring-password-in-key-vault"></a>Speichern des Überwachungskennworts in Key Vault
 Sie sollten Ihre SQL-Benutzerverbindungs-Kennwörter in einer Key Vault-Instanz speichern, anstatt sie direkt in die Verbindungszeichenfolgen für das Überwachungsprofil einzugeben.
@@ -167,7 +198,7 @@ Geben Sie Ihre Verbindungszeichenfolge in dieser Form ein:
 
 ```
 sqlAzureConnections": [ 
-   "Server=mysqlserver.database.windows.net;Port=1433;Database=mydatabase;User Id=$username;Password=$password;" 
+   "Server=mysqlserver.database.windows.net;Port=1433;Database=mydatabase;User Id=$username;Password=$password;" 
 }
 ```
 
@@ -175,7 +206,7 @@ Rufen Sie die Details aus dem Menüelement **Verbindungszeichenfolgen** für die
 
 :::image type="content" source="media/sql-insights-enable/connection-string-sql-database.png" alt-text="Verbindungszeichenfolge für die SQL-Datenbank" lightbox="media/sql-insights-enable/connection-string-sql-database.png":::
 
-Zum Überwachen eines lesbaren sekundären Replikats fügen Sie den Schlüsselwert `ApplicationIntent=ReadOnly` in die Verbindungszeichenfolge ein.
+Zum Überwachen eines lesbaren sekundären Replikats fügen Sie den Schlüsselwert `ApplicationIntent=ReadOnly` in die Verbindungszeichenfolge ein. SQL Insights unterstützt die Überwachung einer einzelnen sekundären Datenbank. Die gesammelten Daten werden als primäre oder sekundäre Daten gekennzeichnet. 
 
 
 #### <a name="azure-virtual-machines-running-sql-server"></a>Azure-VMs mit SQL Server 
@@ -183,7 +214,7 @@ Geben Sie Ihre Verbindungszeichenfolge in dieser Form ein:
 
 ```
 "sqlVmConnections": [ 
-   "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
+   "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
 ] 
 ```
 
@@ -191,15 +222,13 @@ Wenn sich der virtuelle Computer für die Überwachung im selben VNET befindet, 
 
 :::image type="content" source="media/sql-insights-enable/sql-vm-security.png" alt-text="Sicherheit virtueller SQL-Computer" lightbox="media/sql-insights-enable/sql-vm-security.png":::
 
-Zum Überwachen eines lesbaren sekundären Replikats fügen Sie den Schlüsselwert `ApplicationIntent=ReadOnly` in die Verbindungszeichenfolge ein.
-
 
 ### <a name="azure-sql-managed-instances"></a>Verwaltete Azure SQL-Instanzen 
 Geben Sie Ihre Verbindungszeichenfolge in dieser Form ein:
 
 ```
 "sqlManagedInstanceConnections": [ 
-      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;", 
+      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;", 
     ] 
 ```
 Rufen Sie die Details aus dem Menüelement **Verbindungszeichenfolgen** für die verwaltete Instanz ab.
@@ -207,8 +236,7 @@ Rufen Sie die Details aus dem Menüelement **Verbindungszeichenfolgen** für die
 
 :::image type="content" source="media/sql-insights-enable/connection-string-sql-managed-instance.png" alt-text="SQL Managed Instance-Verbindungszeichenfolge" lightbox="media/sql-insights-enable/connection-string-sql-managed-instance.png":::
 
-Zum Überwachen eines lesbaren sekundären Replikats fügen Sie den Schlüsselwert `ApplicationIntent=ReadOnly` in die Verbindungszeichenfolge ein.
-
+Zum Überwachen eines lesbaren sekundären Replikats fügen Sie den Schlüsselwert `ApplicationIntent=ReadOnly` in die Verbindungszeichenfolge ein. SQL Insights unterstützt die Überwachung einer einzelnen sekundären Datenbank, und die gesammelten Daten werden als primäre oder sekundäre Datenbank gekennzeichnet. 
 
 
 ## <a name="monitoring-profile-created"></a>Überwachungs Profil erstellt 

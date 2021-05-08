@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: eda711d6dce705cb64c1545a9c6ffe9b373ad442
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 61f0f2a71240c0ade13f7cd20b6c411f3df7f278
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140423"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279152"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Verwenden von verwalteten Identitäten mit Azure Machine Learning (Vorschau)
 
@@ -255,7 +255,7 @@ ws = Workspace.create(name="workspace name",
     primary_user_assigned_identity="managed identity ARM ID")
 ```
 
-Sie können auch [eine ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) verwenden, um einen Arbeitsbereich mit einer benutzerseitig zugewiesenen verwalteten Identität zu erstellen.
+Sie können auch [eine ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced) verwenden, um einen Arbeitsbereich mit einer benutzerseitig zugewiesenen verwalteten Identität zu erstellen.
 
 > [!IMPORTANT]
 > Wenn Sie Ihre eigenen zugehörigen Ressourcen bereitstellen, anstatt sie vom Azure Machine Learning Service erstellen zu lassen, müssen Sie der verwalteten Identität entsprechende Rollen für diese Ressourcen gewähren. Verwenden Sie die [ARM-Vorlage für die Rollenzuweisung](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment), um die Zuweisungen vorzunehmen.

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a90d4c2a8649e270365af9b11fa408b865945f92
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cabc4784dfb19f569212f4d0cb93e6838473e559
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877546"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714486"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Anwendung für die Bereitstellung in Azure Spring Cloud
 
@@ -142,7 +142,7 @@ Azure Spring Cloud unterstützt sowohl Java 8 als auch Java 11. Die Hostingumg
 
 Wenn Sie eine vorhandene Spring Boot-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten möchten, nehmen Sie die Abhängigkeiten von Spring Boot und Spring Cloud in die POM-Datei der Anwendung auf, wie in den folgenden Abschnitten gezeigt wird.
 
-Azure Spring Cloud unterstützt ausschließlich Spring Boot-Anwendungen der Version 2.1 oder Version 2.2. Die folgende Tabelle enthält die unterstützten Spring Boot- und Spring Cloud-Kombinationen:
+Azure Spring Cloud unterstützt die Spring Boot-Versionen 2.2, 2.3 und 2.4. Die folgende Tabelle enthält die unterstützten Spring Boot- und Spring Cloud-Kombinationen:
 
 Spring Boot-Version | Spring Cloud-Version
 ---|---

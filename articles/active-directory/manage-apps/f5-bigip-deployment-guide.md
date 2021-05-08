@@ -12,12 +12,12 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 139009c55573e1e115a22069671f66e93695a635
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aeb48b5ee2bd3fbb127b3a88e7dda4946e96c163
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783321"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108184782"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Tutorial zum Bereitstellen von VMs mit F5 BIG-IP Virtual Edition in Azure IaaS für sicheren Hybridzugriff
 
@@ -249,7 +249,7 @@ Standardmäßig sind Azure-VNETs und die zugehörigen Subnetze private Netzwerke
  |Ziel-IP-Adressen|Durch Trennzeichen getrennte Liste aller sekundären privaten IP-Adressen der BIG-IP-VM|
  |Zielports| 80, 443|
  |Protokoll| TCP |
- |Aktion| Allow|
+ |Aktion| Zulassen|
  |Priorität|Der niedrigste verfügbare Wert zwischen 100 und 4096|
  |Name | Ein aussagekräftiger Name, z. B. `BIG-IP-VM_Web_Services_80_443`|
 
@@ -265,7 +265,7 @@ BIG-IP-Systeme werden über die Benutzeroberfläche für die Webkonfiguration ve
 
 - Von einem VPN-Client, der mit dem internen Netzwerk der BIG-IP-VM verbunden ist
 
-- Veröffentlicht über den [Azure AD-Anwendungsproxy](./application-proxy-add-on-premises-application.md)
+- Veröffentlicht über den [Azure AD-Anwendungsproxy](../app-proxy/application-proxy-add-on-premises-application.md)
 
 Sie müssen sich für die am besten geeignete Methode entscheiden, bevor Sie mit der restlichen Konfigurationen fortfahren können. Falls erforderlich, können Sie auch eine direkte Verbindung mit der Webkonfiguration über das Internet herstellen, indem Sie als primäre IP-Adresse von BIG-IP eine öffentliche IP-Adresse konfigurieren. Fügen Sie dann eine NSG-Regel hinzu, um Datenverkehr an diese primäre IP-Adresse über Port 8443 zuzulassen. Stellen Sie sicher, dass Sie die Quelle auf Ihre eigene vertrauenswürdige IP-Adresse beschränken. Andernfalls kann jeder Benutzer eine Verbindung herstellen.
 

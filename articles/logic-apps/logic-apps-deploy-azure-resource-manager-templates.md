@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4672225f65eab6cac98ece488ed07dda17b1ec4
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 0f8a71aa4545316313f4ef2d9f349646ca8769d7
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076633"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278432"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Bereitstellen von Azure Resource Manager-Vorlagen für Azure Logic Apps
 
@@ -31,7 +31,7 @@ Nachdem Sie eine Azure Resource Manager-Vorlage für Ihre Logik-App erstellt hab
 
 Um eine Logik-App-Vorlage automatisch in Azure bereitzustellen, können Sie die folgende Schaltfläche **In Azure bereitstellen** auswählen. Darüber werden Sie im Azure-Portal angemeldet und zur Eingabe von Informationen zu Ihrer Logik-App aufgefordert. Sie können dann alle notwendigen Änderungen an der Logik-App-Vorlage oder den Parametern vornehmen.
 
-[![In Azure bereitstellen](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![In Azure bereitstellen](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.logic%2Flogic-app-create%2Fazuredeploy.json)
 
 Sie werden beispielsweise nach der Anmeldung beim Azure-Portal zur Eingabe der folgenden Informationen aufgefordert:
 
@@ -60,7 +60,7 @@ Um eine Logik-App-Vorlage aus einem Azure-Ressourcengruppenprojekt bereitzustell
 Für die Bereitstellung in einer bestimmten *Azure-Ressourcengruppe* verwenden Sie den folgenden Befehl:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json
 ```
 
 Weitere Informationen finden Sie in den folgenden Themen:
@@ -75,7 +75,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
 Für die Bereitstellung in einer bestimmten *Azure-Ressourcengruppe* verwenden Sie den folgenden Befehl:
 
 ```azurecli
-az deployment group create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+az deployment group create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json
 ```
 
 Weitere Informationen finden Sie in den folgenden Themen:

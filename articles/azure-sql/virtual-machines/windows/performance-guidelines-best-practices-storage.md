@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 001a9a15c259d0b0d73eec9c9a39ad7c27f26721
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f1138f0b33e75968f51965355528805dd29033b3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572249"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145626"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Speicher: Bewährte Methoden zur Leistung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -53,7 +53,7 @@ In der folgenden Prüfliste finden Sie eine kurze Übersicht über die bewährte
 - [Auf Guthaben basierendes Datenträgerbursting](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) sollte nur für kleinere Dev-/Test-Workloads und Abteilungssysteme in Betracht gezogen werden.
 - Stellen Sie das Speicherkonto in derselben Region wie die SQL Server-VM bereit. 
 - Deaktivieren Sie den georedundanten Azure-Speicher (Georeplikation), und verwenden Sie LRS (lokal redundanter Speicher) für das Speicherkonto.
-- Formatieren Sie den Datenträger, um die Größe der Zuordnungseinheiten für 64 KB für alle Datendateien zu verwenden, die auf einem anderen Laufwerk als dem temporären Laufwerk abgelegt werden `D:\` (Standardwert: 4 KB). SQL Server-VMs, die über Azure Marketplace bereitgestellt werden, werden mit Datenträgern geliefert, die mit der Größe der Zuordnungseinheit und dem Interleave für den Speicherpool auf 64 KB formatiert sind. 
+- Formatieren Sie den Datenträger, um die Blockgröße (Größe der Zuordnungseinheiten) von 64 KB für alle Datendateien zu verwenden, die auf einem anderen Laufwerk als dem temporären Laufwerk `D:\` abgelegt werden (Standardwert: 4 KB). Virtuelle SQL Server-Computer, die über Azure Marketplace bereitgestellt werden, werden mit Datenträgern geliefert, die mit der Blockgröße und dem Interleave für den Speicherpool auf 64 KB formatiert sind. 
 
 Informationen zum Vergleichen der Prüfliste für den Speicher mit den anderen, finden Sie unter [Prüfliste für bewährte Methoden für die Leistung](performance-guidelines-best-practices-checklist.md). 
 
@@ -163,7 +163,7 @@ Die Dokumentation der [M-Serie](../../../virtual-machines/m-series.md) zeigt z.�
 
 Ebenso können Sie sehen, dass der Typ „Standard_M32ts“ 20.000 Datenträger-IOPS ohne Zwischenspeicherung und 500 MBit/s Datenträgerdurchsatz ohne Zwischenspeicherung unterstützt. Diese Begrenzung wird auf der Ebene des virtuellen Computers geregelt, unabhängig von dem zugrunde liegenden Premium-Datenträgerspeicher.
 
-Weitere Informationen finden Sie unter [Nicht zwischengespeicherte und zwischengespeicherte Grenzwerte](../../../virtual-machines/linux/disk-performance-linux.md#virtual-machine-uncached-vs-cached-limits).
+Weitere Informationen finden Sie unter [Nicht zwischengespeicherte und zwischengespeicherte Grenzwerte](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits).
 
 
 ### <a name="cached-and-temp-storage-throughput"></a>Zwischengespeicherter und temporärer Speicherdurchsatz
@@ -231,7 +231,7 @@ Weitere Informationen zu den Einschränkungen der Datenträgerbegrenzung und zur
 
 ## <a name="write-acceleration"></a>Schreibbeschleunigung
 
-Die Schreibbeschleunigung ist ein Datenträgerfeature, das nur für die virtuellen Computer (VMs) der [M-Serie](https://docs.microsoft.com/azure/virtual-machines/m-series) verfügbar ist. Der Zweck der Schreibbeschleunigung besteht darin, die E/A-Wartezeit von Schreibvorgängen für Azure Storage Premium zu verbessern, wenn Sie aufgrund von unternehmenskritischen OLTP-Workloads mit hohem Volumen oder Data Warehouse-Umgebungen eine einstellige E/A-Wartezeit benötigen. 
+Die Schreibbeschleunigung ist ein Datenträgerfeature, das nur für die virtuellen Computer (VMs) der [M-Serie](../../../virtual-machines/m-series.md) verfügbar ist. Der Zweck der Schreibbeschleunigung besteht darin, die E/A-Wartezeit von Schreibvorgängen für Azure Storage Premium zu verbessern, wenn Sie aufgrund von unternehmenskritischen OLTP-Workloads mit hohem Volumen oder Data Warehouse-Umgebungen eine einstellige E/A-Wartezeit benötigen. 
 
 Verwenden Sie die Schreibbeschleunigung, um die Schreibwartezeit für das Laufwerk zu verbessern, auf dem die Protokolldateien gespeichert sind. Verwenden Sie die Schreibbeschleunigung nicht für SQL Server-Datendateien. 
 

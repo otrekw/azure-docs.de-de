@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f2a8368a5473a3f3d2f679b2be696ca04bc6e5e4
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 2e0a04cef7952822931887f038410ff867cc2afe
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070765"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286724"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
@@ -26,8 +26,8 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 ### <a name="computer-vision-v32-ga"></a>Allgemeine Verfügbarkeit von Maschinelles Sehen v3.2
 
 Die Maschinelles Sehen-API v3.2 ist jetzt mit den folgenden Updates allgemein verfügbar:
-* Verbessertes Bildmarkierungsmodell: Analysiert visuelle Inhalte und generiert relevante Tags basierend auf im Bild angezeigten Objekten, Aktionen und Inhalten. Dieses Modell ist über die [Bildmarkierungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) verfügbar. Weitere Informationen finden Sie in der [Schrittanleitung](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) und in der [Übersicht](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) zur Bildanalyse.
-* Aktualisiertes Inhaltsmoderationsmodell: Erkennt nicht jugendfreie Inhalte und stellt Flags zum Filtern von Bildern bereit, die nicht jugendfreie und freizügige visuelle Inhalte enthalten. Dieses Modell ist über die [Analyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) verfügbar. Weitere Informationen finden Sie in der [Schrittanleitung](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) und in der [Übersicht](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) zur Bildanalyse.
+* Verbessertes Bildmarkierungsmodell: Analysiert visuelle Inhalte und generiert relevante Tags basierend auf im Bild angezeigten Objekten, Aktionen und Inhalten. Dieses Modell ist über die [Bildmarkierungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) verfügbar. Weitere Informationen finden Sie in der [Schrittanleitung](./vision-api-how-to-topics/howtocallvisionapi.md) und in der [Übersicht](./overview-image-analysis.md) zur Bildanalyse.
+* Aktualisiertes Inhaltsmoderationsmodell: Erkennt nicht jugendfreie Inhalte und stellt Flags zum Filtern von Bildern bereit, die nicht jugendfreie und freizügige visuelle Inhalte enthalten. Dieses Modell ist über die [Analyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) verfügbar. Weitere Informationen finden Sie in der [Schrittanleitung](./vision-api-how-to-topics/howtocallvisionapi.md) und in der [Übersicht](./overview-image-analysis.md) zur Bildanalyse.
 * [OCR (Lesen) für 73 Sprachen verfügbar](./language-support.md#optical-character-recognition-ocr), einschließlich vereinfachtes und traditionelles Chinesisch, Japanisch, Koreanisch und lateinische Sprachen
 * [OCR (Lesen)](./overview-ocr.md) auch als [Container ohne Distribution](./computer-vision-how-to-install-containers.md?tabs=version-3-2) für die lokale Bereitstellung verfügbar
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 1fd2b8461bd66c826dc4890c331b740c4703f896
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61993df77b0831926f16339a741a2553e80c2a0d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96903988"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713838"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Häufig gestellte Fragen zu IoT-Solution Accelerators
 
@@ -24,7 +24,7 @@ Informationen finden Sie auch in den [häufig gestellten Fragen zur verbundenen 
 Der Quellcode wird in den folgenden GitHub-Repositorys gespeichert:
 
 * [Solution Accelerator für verbundene Factorys](https://github.com/Azure/azure-iot-connected-factory)
-* [Solution Accelerator für die Gerätesimulation](https://github.com/Azure/device-simulation-dotnet)
+* [Solution Accelerator für die Gerätesimulation](https://github.com/Azure/azure-iot-pcs-device-simulation)
 
 ### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>Wo finde ich die Solution Accelerators für Remoteüberwachung und Predictive Maintenance?
 
@@ -36,7 +36,7 @@ Auf vorhandene Bereitstellungen hat das Entfernen der Solution Accelerators für
 
 ### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>Wie stelle ich den Solution Accelerator für die Gerätesimulation bereit?
 
-Informationen zum Bereitstellen des Solution Accelerators für die Gerätesimulation finden Sie im GitHub-Repository zur [Gerätesimulation](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md).
+Informationen zum Bereitstellen des Solution Accelerators für die Gerätesimulation finden Sie im GitHub-Repository zur [Gerätesimulation](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md).
 
 ### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>Wo finde ich Informationen zu den entfernten Solution Accelerators?
 

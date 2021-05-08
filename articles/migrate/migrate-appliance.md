@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: d7fc04e65e2b79d43c48acd5a8c621f28d5c0403
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075694"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714666"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -23,10 +23,10 @@ Die Azure Migrate-Appliance wird in den folgenden Szenarien verwendet.
 
 **Szenario** | **Tool** | **Verwendung für**
 --- | --- | ---
-**Ermittlung und Bewertung von Servern, die in einer VMware-Umgebung ausgeführt werden** | Azure Migrate: Ermittlung und Bewertung | Ermitteln von Servern, die in Ihrer VMware-Umgebung ausgeführt werden<br/><br/> Ermitteln der Inventur der installierten Software, der Abhängigkeitsanalyse ohne Agent sowie von SQL Server-Instanzen und -Datenbanken<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
+**Ermittlung und Bewertung von Servern, die in einer VMware-Umgebung ausgeführt werden** | Azure Migrate: Ermittlung und Bewertung | Ermitteln von Servern, die in Ihrer VMware-Umgebung ausgeführt werden<br/><br/> Führen Sie die Ermittlung des installierten Softwareinventars und die Abhängigkeitsanalyse ohne Agent aus, und ermitteln Sie SQL Server-Instanzen und -Datenbanken.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
 **Migration ohne Agent von Servern, die in VMware-Umgebungen ausgeführt werden** | Azure Migrate-Servermigration | Ermitteln Sie Server, die in Ihrer VMware-Umgebung ausgeführt werden. <br/><br/> Replizieren Sie Server ohne Installation von Agents.
-**Ermittlung und Bewertung von Servern, die in einer Hyper-V-Umgebung ausgeführt werden** | Azure Migrate: Ermittlung und Bewertung | Ermitteln Sie Server, die in Ihrer Hyper-V-Umgebung ausgeführt werden.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
-**Ermittlung und Bewertung lokaler physischer oder virtualisierter Server** |  Azure Migrate: Ermittlung und Bewertung |  Erkennen Sie lokale physische oder virtualisierte Server.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
+**Ermittlung und Bewertung von Servern, die in einer Hyper-V-Umgebung ausgeführt werden** | Azure Migrate: Ermittlung und Bewertung | Ermitteln Sie Server, die in Ihrer Hyper-V-Umgebung ausgeführt werden.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
+**Ermittlung und Bewertung lokaler physischer oder virtualisierter Server** |  Azure Migrate: Ermittlung und Bewertung |  Erkennen Sie lokale physische oder virtualisierte Server.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
 
 ## <a name="deployment-methods"></a>Bereitstellungsmethoden
 
@@ -128,7 +128,44 @@ download.microsoft.com/download | Zulassen von Downloads vom Microsoft Download 
 *.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
 *.hypervrecoverymanager.windowsazure.us | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
 *.blob.core.usgovcloudapi.net  |  **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>Hochladen von Daten in Storage für die Migration
-*.applicationinsights.us | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.
+*.applicationinsights.us | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.  
+
+### <a name="public-cloud-urls-for-private-link-connectivity"></a>URLs für öffentliche Clouds für Private Link-Konnektivität
+
+Die Appliance benötigt Zugriff auf die folgenden URLs (direkt oder über einen Proxy) über den Private Link-Zugriff hinaus. 
+
+**URL** | **Details**  
+--- | --- | 
+*.portal.azure.com  | Navigieren Sie zum Azure-Portal.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com | Melden Sie sich bei Ihrem Azure-Abonnement an.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
+management.azure.com | Erstellen von Azure AD-Apps, damit die Appliance mit Azure Migrate kommunizieren kann.
+*.services.visualstudio.com (optional) | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.
+aka.ms/* (optional) | Zulassen des Zugriffs auf aka-Links; die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden.
+download.microsoft.com/download | Zulassen von Downloads vom Microsoft Download Center.
+*.servicebus.windows.net | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst
+*.vault.azure.net | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>  Stellen Sie sicher, dass die zu replizierenden Server darauf zugreifen können.
+*.hypervrecoverymanager.windowsazure.com | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
+*.blob.core.windows.net |  **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>Hochladen von Daten in Storage für die Migration
+
+### <a name="government-cloud-urls-for-private-link-connectivity"></a>URLs für Government-Clouds für Private Link-Konnektivität   
+
+Die Appliance benötigt Zugriff auf die folgenden URLs (direkt oder über einen Proxy) über den Private Link-Zugriff hinaus. 
+
+**URL** | **Details**  
+--- | --- |
+*.portal.azure.us  | Navigieren Sie zum Azure-Portal.
+graph.windows.net | Melden Sie sich bei Ihrem Azure-Abonnement an.
+login.microsoftonline.us  | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
+management.usgovcloudapi.net | Erstellen von Azure AD-Apps, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
+*.services.visualstudio.com (optional) | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.
+aka.ms/* (optional) | Zulassen des Zugriffs auf aka-Links; die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden.
+download.microsoft.com/download | Zulassen von Downloads vom Microsoft Download Center.
+*.servicebus.usgovcloudapi.net  | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst 
+*.vault.usgovcloudapi.net | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Verwalten von Geheimnissen in Azure Key Vault
+*.hypervrecoverymanager.windowsazure.us | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
+*.blob.core.usgovcloudapi.net  |  **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>Hochladen von Daten in Storage für die Migration
+*.applicationinsights.us (optional) | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.  
 
 ## <a name="collected-data---vmware"></a>Gesammelte Daten – VMware
 
