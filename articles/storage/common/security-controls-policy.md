@@ -1,18 +1,18 @@
 ---
 title: Azure Policy-Kontrollen zur Einhaltung gesetzlicher Bestimmungen für Azure Storage
 description: Hier werden Azure Policy-Kontrollen zur Einhaltung gesetzlicher Bestimmungen aufgeführt, die für Azure Storage verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: sample
 author: twooley
 ms.author: twooley
 ms.service: storage
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1eab937bd71b2cd2783589c025636b8387be2228
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cb323654df5555ca303101b5e29f206c24f845b7
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874014"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181225"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-storage"></a>Azure Policy-Kontrollen zur Einhaltung gesetzlicher Bestimmungen für Azure Storage
 

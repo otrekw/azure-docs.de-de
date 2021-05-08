@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 01/22/2021
 ms.author: iangithinji
 ms.reviewer: ''
-ms.openlocfilehash: 8bdb8eb9cf176f8e190769e38c81d02ad2985196
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 4a880fadb91daa34688e3876ba665d97659db015
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376391"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320851"
 ---
 # <a name="what-is-application-management"></a>Worum handelt es sich bei der Anwendungsverwaltung?
 
@@ -58,7 +58,7 @@ Sie können Azure AD als Identitätssystem für nahezu jede App verwenden. Zahl
 
 Sie können die meisten Apps manuell für einmaliges Anmelden konfigurieren, wenn sie sich nicht bereits im Katalog befinden. Azure AD bietet mehrere Optionen für einmaliges Anmelden. Zu den beliebtesten zählen SAML-basiertes SSO und OIDC-basiertes SSO. Weitere Informationen zur Integration von Apps zum Aktivieren von SSO finden Sie unter [Optionen für einmaliges Anmelden in Azure AD](sso-options.md). 
 
-Verwendet Ihre Organisation lokale Apps? Sie können sie mithilfe des App-Proxys integrieren. Weitere Informationen finden Sie unter [Remotezugriff auf lokale Anwendungen über den Azure AD-Anwendungsproxy](application-proxy.md).
+Verwendet Ihre Organisation lokale Apps? Sie können sie mithilfe des App-Proxys integrieren. Weitere Informationen finden Sie unter [Remotezugriff auf lokale Anwendungen über den Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md).
 
 >[!TIP]
 >Wenn Sie eigene branchenspezifische Apps erstellen, können Sie sie in Azure AD integrieren, um einmaliges Anmelden zu unterstützen. Weitere Informationen zum Entwickeln von Apps für Azure AD finden Sie unter [Was ist die Microsoft Identity Platform?](..//develop/v2-overview.md).

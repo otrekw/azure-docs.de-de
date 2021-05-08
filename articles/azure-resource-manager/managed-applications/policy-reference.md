@@ -1,17 +1,17 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Managed Applications
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Managed Applications. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: reference
 author: tfitzmac
 ms.author: tomfitz
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 99b408cca3dbcc9a8e0dae5682e1ea8983ee2add
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 7dc8489ff06881022f6fbcfaf669d80bbf368ce8
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876830"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181351"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-managed-applications"></a>Integrierte Azure Policy-Definitionen für Azure Managed Applications
 

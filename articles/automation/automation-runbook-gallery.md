@@ -1,41 +1,64 @@
 ---
 title: Verwenden von Azure Automation-Runbooks und -Modulen im PowerShell-Katalog
-description: In diesem Artikel wird erläutert, wie Sie Runbooks und Module von Microsoft und der Community im PowerShell-Katalog verwenden.
+description: In diesem Artikel wird erläutert, wie Sie Runbooks und Module aus Microsoft GitHub-Repositorys und dem PowerShell-Katalog verwenden.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/04/2021
+ms.date: 04/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: b8f1fbdcb3b268c24eb19517a0686c6c72c50842
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: 2df019888d293cd8a25a34e6f0f4e7dd215c6a41
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106294007"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030632"
 ---
-# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Verwenden von Runbooks und Modulen im PowerShell-Katalog
+# <a name="use-existing-runbooks-and-modules"></a>Verwenden vorhandener Runbooks und Module
 
-Statt eigene Runbooks und Module in Azure Automation zu erstellen, können Sie Szenarien nutzen, die bereits von Microsoft und der Community entwickelt wurden. Sie können PowerShell-Runbooks und -[Module](#modules-in-powershell-gallery) aus dem PowerShell-Katalog sowie [Python-Runbooks](#use-python-runbooks) von der Azure Automation-GitHub-Organisation abrufen. Sie können auch etwas zur Community beitragen, indem Sie [von Ihnen entwickelte Szenarien](#add-a-powershell-runbook-to-the-gallery) zur Verfügung stellen.
+Statt eigene Runbooks und Module in Azure Automation zu erstellen, können Sie Szenarien nutzen, die bereits von Microsoft und der Community entwickelt wurden. Aus dem Runbookkatalog im Azure-Portal können Sie Azure-bezogene PowerShell- und Python-Runbooks abrufen und aus dem PowerShell-Katalog [Module](#modules-in-the-powershell-gallery) und [Runbooks](#runbooks-in-the-powershell-gallery) (die teilweise Azure-spezifisch sein können). Sie können auch etwas zur Community beitragen, indem Sie [von Ihnen entwickelte Szenarien](#contribute-to-the-community) zur Verfügung stellen.
 
 > [!NOTE]
-> Das TechNet Script Center (TechNet-Skriptcenter) wird eingestellt. Alle Runbooks aus dem Script Center im Runbook-Katalog wurden in unsere [Automation-GitHub-Organisation](https://github.com/azureautomation) verschoben. Weitere Informationen finden Sie [hier](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337).
+> Das TechNet Script Center (TechNet-Skriptcenter) wird eingestellt. Alle Runbooks aus dem Script Center im Runbookkatalog wurden in unsere [Automation-GitHub-Organisation](https://github.com/azureautomation) verschoben. Weitere Informationen finden Sie unter [Migration der Azure Automation-Runbooks zu GitHub](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337).
 
-## <a name="runbooks-in-powershell-gallery"></a>Runbooks im PowerShell-Katalog
+## <a name="import-runbooks-from-github-with-the-azure-portal"></a>Importieren von Runbooks aus GitHub über das Azure-Portal
 
-Der [PowerShell-Katalog](https://www.powershellgallery.com/packages) bietet zahlreiche Runbooks von Microsoft und der Community, die Sie in Azure Automation importieren können. Um eins zu verwenden, können Sie ein Runbook aus dem Katalog herunterladen, oder Sie können Runbooks direkt aus dem Katalog oder aus Ihrem Automation-Konto im Azure-Portal importieren.
+1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
+2. Wählen Sie unter **Prozessautomatisierung** die Option **Runbookkatalog** aus.
+3. Wählen Sie **Quelle: GitHub** aus.
+4. Sie können die Filter über der Liste verwenden, um die Anzeige nach Herausgeber, Typ und Sortierung einzuschränken. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus.
+
+   :::image type="content" source="./media/automation-runbook-gallery/browse-gallery-github.png" alt-text="Durchsuchen des Runbookkatalogs" lightbox="./media/automation-runbook-gallery/browse-gallery-github-expanded.png":::
+
+5. Klicken Sie auf der Detailseite auf **Importieren**, um ein Element zu importieren.
+
+   :::image type="content" source="./media/automation-runbook-gallery/gallery-item-import.png" alt-text="Importieren eines Katalogelements":::
+
+6. Ändern Sie optional den Namen des Runbooks auf dem Blatt „Importieren“, und klicken Sie zum Importieren des Runbooks auf **OK**.
+
+   :::image type="content" source="./media/automation-runbook-gallery/gallery-item-import-blade.png" alt-text="Blatt „Importieren“ eines Katalogelements":::
+
+7. Das Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
+ 
+## <a name="runbooks-in-the-powershell-gallery"></a>Runbooks im PowerShell-Katalog
+
+> [!IMPORTANT]
+> Sie sollten die Inhalte jedes Runbooks überprüfen, das Sie aus dem PowerShell-Katalog enthalten. Gehen Sie äußerst vorsichtig vor, wenn Sie die Inhalte in einer Produktionsumgebung installieren und ausführen.
+
+Der [PowerShell-Katalog](https://www.powershellgallery.com/packages) bietet verschiedene Runbooks von Microsoft und der Community, die Sie in Azure Automation importieren können. Um eins zu verwenden, können Sie ein Runbook aus dem Katalog herunterladen, oder Sie können Runbooks direkt aus dem Katalog oder aus Ihrem Automation-Konto im Azure-Portal importieren.
 
 > [!NOTE]
 > Grafische Runbooks werden im PowerShell-Katalog nicht unterstützt.
 
-Das direkte Importieren aus dem PowerShell-Katalog ist nur über das Azure-Portal möglich. Diese Funktion kann nicht mithilfe von PowerShell ausgeführt werden.
+Das direkte Importieren aus dem PowerShell-Katalog ist nur über das Azure-Portal möglich. Diese Funktion kann nicht mithilfe von PowerShell ausgeführt werden. Das Verfahren ist identisch mit dem unter [Importieren von Runbooks aus GitHub mit dem Azure-Portal](#import-runbooks-from-github-with-the-azure-portal) gezeigten Verfahren, mit der Ausnahme, dass die **Quelle** der **PowerShell-Katalog** ist.
 
-> [!NOTE]
-> Überprüfen Sie unbedingt den Inhalt der aus dem PowerShell-Katalog heruntergeladenen Runbooks, und seien Sie äußerst vorsichtig, wenn Sie sie in einer Produktionsumgebung installieren und ausführen.
+:::image type="content" source="./media/automation-runbook-gallery/source-runbook-gallery-small.png" alt-text="Anzeigen der Auswahl der Quelle des Runbookkatalogs" lightbox="./media/automation-runbook-gallery/source-runbook-gallery-large.png":::
 
-## <a name="modules-in-powershell-gallery"></a>Module im PowerShell-Katalog
+## <a name="modules-in-the-powershell-gallery"></a>Module im PowerShell-Katalog
 
 PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können. Vorhandene Module, die Sie in Azure Automation installieren können, sind im [PowerShell-Katalog](https://www.powershellgallery.com) verfügbar. Sie starten diesen Katalog über das Azure-Portal und installieren die Module direkt in Azure Automation. Sie können sie auch manuell herunterladen und installieren.
 
-## <a name="common-scenarios-available-in-powershell-gallery"></a>Allgemeine im PowerShell-Katalog verfügbare Szenarien
+Sie finden auch Module, die Sie im Azure-Portal importieren können. Diese finden Sie für Ihr Automation-Konto im **Modulkatalog** unter **Freigegebene Ressourcen**.
+
+## <a name="common-scenarios-available-in-the-powershell-gallery"></a>Allgemeine im PowerShell-Katalog verfügbare Szenarios
 
 Die nachstehende Liste enthält einige Runbooks, die gängige Szenarien unterstützen. Eine vollständige Liste der vom Azure Automation-Team erstellten Runbooks finden Sie im [AzureAutomationTeam-Profil](https://www.powershellgallery.com/profiles/AzureAutomationTeam).
 
@@ -44,51 +67,40 @@ Die nachstehende Liste enthält einige Runbooks, die gängige Szenarien unterst�
    * [Copy-ItemFromAzureVM:](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) kopiert eine Remotedatei von einem virtuellen Microsoft Azure-Computer.
    * [Copy-ItemToAzureVM:](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) kopiert eine lokale Datei auf einen virtuellen Azure-Computer.
 
-## <a name="import-a-powershell-runbook-from-github-with-the-azure-portal"></a>Importieren eines PowerShell-Runbooks von GitHub über das Azure-Portal
+## <a name="contribute-to-the-community"></a>Mitwirken in der Community
 
-1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-1. Wählen Sie unter **Prozessautomatisierung** die Option **Runbookkatalog** aus.
-1. Wählen Sie **Quelle: GitHub** aus.
-1. Sie können die Filter über der Liste verwenden, um die Anzeige nach Herausgeber, Typ und Sortierung einzuschränken. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus.
+Es wird jedem empfohlen, sich in der Azure Automation-Community zu beteiligen, damit diese noch größer wird. Teilen Sie die beeindruckenden Runbooks, die Sie für die Community erstellt haben. Ihre Beiträge werden sehr geschätzt.
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="Durchsuchen des GitHub-Katalogs." lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
+### <a name="add-a-runbook-to-the-github-runbook-gallery"></a>Hinzufügen eines Runbooks zum Runbookkatalog von GitHub
 
-1. Um ein Element zu importieren, klicken Sie auf dem Blatt „Details“ auf **Importieren**.
+Mit diesem GitHub-Workflow können Sie dem Runbookkatalog neue PowerShell- oder Python-Runbooks hinzufügen.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="Detaillierte Ansicht eines Runbooks aus dem GitHub-Katalog." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
+1. Erstellen Sie ein öffentliches Repository auf GitHub, und fügen Sie das Runbook und alle anderen erforderlichen Dateien hinzu (z. B. „readme.md“, Beschreibung usw.).
+1. Fügen Sie das Thema `azureautomationrunbookgallery` hinzu, um sicherzustellen, dass das Repository von unserem Dienst ermittelt werden kann, und damit es im Automation Runbookkatalog angezeigt werden kann.
+1. Wenn das von Ihnen erstellte Runbook ein PowerShell-Workflow ist, fügen Sie das Thema `PowerShellWorkflow` hinzu. Wenn es sich um ein Python 3-Runbook handelt, fügen Sie `Python3` hinzu. Für Azure-Runbooks sind keine weiteren spezifischen Themen erforderlich. Wir empfehlen Ihnen jedoch, weitere Themen hinzuzufügen, die für die Kategorisierung und Suche im Runbookkatalog verwendet werden können.
 
-1. Ändern Sie optional den Namen des Runbooks, und klicken Sie zum Importieren des Runbooks auf **OK** .
-1. Das Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
+   >[!NOTE]
+   >Sehen Sie sich vorhandene Runbooks im Katalog an, um Informationen zur Formatierung, zu Headern und vorhandenen Tags zu erhalten, die Sie möglicherweise verwenden (z. B. `Azure Automation` oder `Linux Azure Virtual Machines`).
 
-## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Importieren eines PowerShell-Runbooks aus dem Runbookkatalog im Azure-Portal
+Wenn Sie Änderungen an einem vorhandenen Runbook vorschlagen möchten, reichen Sie einen Pull Request dafür ein. 
 
-1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-1. Wählen Sie unter **Prozessautomatisierung** die Option **Runbookkatalog** aus.
-1. Wählen Sie **Quelle: PowerShell-Katalog** aus. Dadurch wird eine Liste der verfügbaren Runbooks angezeigt, die Sie durchsuchen können.
-1. Sie können das Suchfeld über der Liste verwenden, um die Liste einzugrenzen, oder Sie können die Filter verwenden, um die Anzeige nach Herausgeber, Typ und Sortierung einzuschränken. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus.
+Wenn Sie ein vorhandenes Runbook klonen und bearbeiten möchten, sollten Sie ihm einen anderen Namen geben. Wenn Sie den alten Namen erneut verwenden, wird er zweimal in der Runbookkatalogauflistung angezeigt.
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-sm.png" alt-text="Durchsuchen des Runbook-Katalogs." lightbox="media/automation-runbook-gallery/browse-gallery-lg.png":::
+>[!NOTE]
+>Warten Sie mindestens 12 Stunden für die Synchronisierung zwischen GitHub und dem Automation-Runbookkatalog, sowohl für aktualisierte als auch für neue Runbooks.
 
-1. Um ein Element zu importieren, klicken Sie auf dem Blatt „Details“ auf **Importieren**.
-
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Anzeigen von Details eines Runbook-Katalogelements." lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
-
-1. Ändern Sie optional den Namen des Runbooks, und klicken Sie zum Importieren des Runbooks auf **OK** .
-1. Das Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
-
-## <a name="add-a-powershell-runbook-to-the-gallery"></a>Hinzufügen eines PowerShell-Runbooks zum Katalog
+### <a name="add-a-powershell-runbook-to-the-powershell-gallery"></a>Hinzufügen eines PowerShell-Runbooks zum PowerShell-Katalog
 
 Microsoft empfiehlt, Runbooks aus dem PowerShell-Katalog hinzuzufügen, die für andere Kunden nützlich sein könnten. Der PowerShell-Katalog akzeptiert PowerShell-Module und PowerShell-Skripts. Sie können ein Runbook hinzufügen, indem Sie [es in den PowerShell-Katalog hochladen](/powershell/scripting/gallery/how-to/publishing-packages/publishing-a-package).
 
-## <a name="import-a-module-from-the-module-gallery-with-the-azure-portal"></a>Importieren eines Moduls aus dem Modulkatalog im Azure-Portal
+## <a name="import-a-module-from-the-modules-gallery-in-the-azure-portal"></a>Importieren eines Moduls aus dem Modulkatalog im Azure-Portal
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-1. Wählen Sie **Module** unter **Freigegebene Ressourcen** aus, um die Liste der Module zu öffnen.
-1. Klicken Sie oben auf der Seite auf **Katalog durchsuchen**.
+1. Wählen Sie unter **Freigegebene Ressourcen**  den **Modulkatalog** aus, um die Liste der Module zu öffnen.
 
       :::image type="content" source="media/automation-runbook-gallery/modules-blade-sm.png" alt-text="Ansicht des Modulkatalogs." lightbox="media/automation-runbook-gallery/modules-blade-lg.png":::
 
-1. Auf der Seite „Katalog durchsuchen“ können Sie das Suchfeld verwenden, um Übereinstimmungen in einem der folgenden Felder zu finden:
+1. Auf der Seite „Katalog durchsuchen“ können Sie anhand der folgenden Felder suchen:
 
    * Name des Moduls
    * `Tags`
@@ -110,17 +122,13 @@ Microsoft empfiehlt, Runbooks aus dem PowerShell-Katalog hinzuzufügen, die für
 > [!NOTE]
 > Module, die nur PowerShell Core unterstützen, werden in Azure Automation nicht unterstützt und können nicht in das Azure-Portal importiert werden oder direkt über den PowerShell-Katalog bereitgestellt werden.
 
-## <a name="use-python-runbooks"></a>Verwenden von Python-Runbooks
-
-Python-Runbooks finden Sie in der [Azure Automation-GitHub-Organisation](https://github.com/azureautomation). Wenn Sie an unserem GitHub-Repository mitwirken, fügen Sie das Tag **(GitHub-Thema) hinzu: Python3**, wenn Sie Ihren Beitrag hochladen.
-
 ## <a name="request-a-runbook-or-module"></a>Anfordern eines Runbooks oder Moduls
 
 Sie können Anforderungen an [User Voice](https://feedback.azure.com/forums/246290-azure-automation/)senden.  Wenn Sie Hilfe beim Schreiben eines Runbooks benötigen oder eine Frage zu PowerShell haben, stellen Sie eine Frage auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-automation.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu den ersten Schritten mit einem PowerShell-Runbook finden Sie unter [Tutorial: Erstellen eines PowerShell-Runbooks](learn/automation-tutorial-runbook-textual-powershell.md).
+* Informationen zu den ersten Schritten mit PowerShell-Runbooks finden Sie unter [Tutorial: Erstellen eines PowerShell-Runbooks](learn/automation-tutorial-runbook-textual-powershell.md).
 * Informationen zur Arbeit mit Runbooks finden Sie unter [Verwalten eines Runbooks in Azure Automation](manage-runbooks.md).
-* Details zu PowerShell finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
+* Weitere Informationen zur PowerShell-Skripterstellung finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
 * Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation).

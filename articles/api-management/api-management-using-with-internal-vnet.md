@@ -5,21 +5,18 @@ description: Hier erfahren Sie, wie Azure API Management für ein internes virtu
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: kjoshi
 editor: ''
-ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 03/09/2021
+ms.topic: how-to
+ms.date: 04/12/2021
 ms.author: apimpm
-ms.openlocfilehash: 10154f496d76ce6b9eb19d610fdff8d7a4023c2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 35d813b6dfedbd7f76a88713757ce83c2644ff95
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565953"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813144"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Verwenden von Azure API Management mit einem internen virtuellen Netzwerk
 Mit virtuellen Azure-Netzwerken kann API Management APIs verwalten, auf die nicht über das Internet zugegriffen werden kann. Für die Verbindungsherstellung stehen verschiedene VPN-Technologien zur Verfügung. API Management kann in einem virtuellen Netzwerk in zwei Hauptmodi bereitgestellt werden:
@@ -37,6 +34,8 @@ Mit API Management im internen Modus sind folgende Szenarien möglich:
 * Das Verfügbarmachen von cloudbasierten und lokalen APIs über ein gemeinsames Gateway ermöglicht Hybrid Cloud-Szenarien.
 * APIs, die an mehreren geografischen Standorten gehostet werden, können mit einem einzelnen Gatewayendpunkt verwaltet werden.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -48,22 +47,25 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + **Eine API Management-Instanz.** Weitere Informationen finden Sie unter [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
-+ Wenn ein API Management-Dienst in einem virtuellen Netzwerk bereitgestellt ist, wird eine [Liste von Ports](./api-management-using-with-vnet.md#required-ports) verwendet, die geöffnet werden müssen. 
+
+[!INCLUDE [api-management-public-ip-for-vnet](../../includes/api-management-public-ip-for-vnet.md)]
+
+Wenn ein API Management-Dienst in einem virtuellen Netzwerk bereitgestellt ist, wird eine [Liste von Ports](./api-management-using-with-vnet.md#required-ports) verwendet, die geöffnet werden müssen. 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>Erstellen von API Management in einem internen virtuellen Netzwerk
-Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter einem [internen Lastenausgleich (klassisch)](/previous-versions/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud) gehostet. Dies ist die einzige verfügbare Option und kann nicht geändert werden.
+Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter einem internen Load Balancer der Basic-SKU gehostet, wenn der Dienst mit der Client-API-Version 2020-12-01 erstellt wird. Ein Dienst, der mit Client-API-Version 2021-01-01-preview erstellt wird und eine öffentliche IP-Adresse aus dem Kundenabonnement aufweist, wird hinter einem internen Load Balancer der Standard-SKU gehostet. Weitere Informationen finden Sie unter [Azure Load Balancer-SKUs](../load-balancer/skus.md).
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Aktivieren einer Verbindung mit einem virtuellen Netzwerk über das Azure-Portal
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer Azure API Management-Instanz.
-2. Wählen Sie **Virtuelles Netzwerk** aus.
-3. Konfigurieren Sie die API Management-Instanz für die Bereitstellung innerhalb eines virtuellen Netzwerks.
+1. Wählen Sie **Virtuelles Netzwerk** aus.
+1. Konfigurieren Sie den **internen** Zugriffstyp. Ausführliche Schritte finden Sie unter [Aktivieren der VNET-Konnektivität über das Azure-Portal](api-management-using-with-vnet.md#enable-vnet-connectivity-using-the-azure-portal).
 
     ![Menü zum Einrichten einer Azure API Management-Instanz in einem internen virtuellen Netzwerk][api-management-using-internal-vnet-menu]
 
 4. Wählen Sie **Speichern** aus.
 
-Nach erfolgreicher Bereitstellung sollten die **private** virtuelle IP-Adresse und die **öffentliche** virtuelle IP-Adresse Ihres API Management-Diensts auf dem Blatt „Übersicht“ angezeigt werden. Die **private** virtuelle IP-Adresse ist eine IP-Adresse mit Lastenausgleich in dem von API Management delegierten Subnetz, über die auf die Endpunkte `gateway`, `portal`, `management` und `scm` zugegriffen werden kann. Die **öffentliche** virtuelle IP-Adresse wird **nur** für den Datenverkehr auf Steuerungsebene an den Endpunkt `management` über Port 3443 verwendet. Sie kann über das [ApiManagement][ServiceTags]-Diensttag gesperrt werden.
+Nach erfolgreicher Bereitstellung sollten die **private** virtuelle IP-Adresse und die **öffentliche** virtuelle IP-Adresse Ihres API Management-Diensts auf dem Blatt „Übersicht“ angezeigt werden. Die **private** virtuelle IP-Adresse ist eine IP-Adresse mit Lastenausgleich in dem von API Management delegierten Subnetz, über die auf die Endpunkte `gateway`, `portal`, `management` und `scm` zugegriffen werden kann. Die **öffentliche** virtuelle IP-Adresse wird **nur** für den Datenverkehr auf Steuerungsebene an den Endpunkt `management` über Port 3443 verwendet. Sie kann durch das [ApiManagement][ServiceTags]-Diensttag eingeschränkt werden.
 
 ![API Management-Dashboard mit konfiguriertem internem virtuellen Netzwerk][api-management-internal-vnet-dashboard]
 
@@ -72,18 +74,19 @@ Nach erfolgreicher Bereitstellung sollten die **private** virtuelle IP-Adresse u
 
 ### <a name="deploy-api-management-into-virtual-network"></a><a name="deploy-apim-internal-vnet"> </a>Bereitstellen von API Management in einem virtuellen Netzwerk
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
+Verbindungen mit virtuellen Netzwerken können auch mithilfe der folgenden Methoden aktiviert werden.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
-Verbindungen mit virtuellen Netzwerken können auch mithilfe von PowerShell-Cmdlets aktiviert werden.
+### <a name="api-version-2020-12-01"></a>API-Version 2020-12-01
 
-* Erstellen eines API Management-Diensts in einem virtuellen Netzwerk: Verwenden Sie das Cmdlet [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement), um einen Azure API Management-Dienst in einem virtuellen Netzwerk zu erstellen und so zu konfigurieren, dass als Typ ein internes virtuelles Netzwerk verwendet wird.
+* Azure Resource Manager-[Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-management-create-with-internal-vnet)
 
-* Aktualisieren einer Bereitstellung eines API Management-Diensts in einem virtuellen Netzwerk: Verwenden Sie das Cmdlet [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion), um einen vorhandenen API Management-Dienst in ein virtuelles Netzwerk zu verschieben und so zu konfigurieren, dass als Typ ein internes virtuelles Netzwerk verwendet wird.
+     [![Bereitstellung in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
+
+* Azure PowerShell-Cmdlets: [Erstellen](/powershell/module/az.apimanagement/new-azapimanagement) oder [Aktualisieren](/powershell/module/az.apimanagement/update-azapimanagementregion) einer API Management-Instanz in einem virtuellen Netzwerk
 
 ## <a name="dns-configuration"></a><a name="apim-dns-configuration"></a>DNS-Konfiguration
-Wenn sich API Management im Modus eines externen virtuellen Netzwerks befindet, wird DNS von Azure verwaltet. Beim Modus eines internen virtuellen Netzwerks müssen Sie die DNS-Verwaltung selbst übernehmen. Das Konfigurieren einer privaten Azure DNS-Zone und deren Verknüpfung mit dem virtuellen API Management-Netzwerkdienst wird in dieser empfohlenen Option bereitgestellt.  Klicken Sie [hier](../dns/private-dns-getstarted-portal.md), um zu erfahren, wie Sie eine private Zone in Azure DNS einrichten.
+Wenn sich API Management im Modus eines externen virtuellen Netzwerks befindet, wird DNS von Azure verwaltet. Beim Modus eines internen virtuellen Netzwerks müssen Sie die DNS-Verwaltung selbst übernehmen. Das Konfigurieren einer privaten Azure DNS-Zone und deren Verknüpfung mit dem virtuellen API Management-Netzwerkdienst wird in dieser empfohlenen Option bereitgestellt. Erfahren Sie mehr über das [Einrichten einer privaten Zone in Azure DNS](../dns/private-dns-getstarted-portal.md).
 
 > [!NOTE]
 > Der API Management-Dienst lauscht nicht auf von IP-Adressen stammende Anforderungen. Er reagiert nur auf Anforderungen für den Hostnamen, der für seine Dienstendpunkte konfiguriert ist. Zu diesen Endpunkten zählen das Gateway, das Azure-Portal und das Entwicklerportal, der Endpunkt für die direkte Verwaltung und Git.
@@ -127,7 +130,7 @@ Wenn Sie einen benutzerdefinierten DNS-Server in einem virtuellen Netzwerk verwe
 ## <a name="routing"></a><a name="routing"> </a> Routing
 
 * Eine private *virtuelle* IP-Adresse mit Lastenausgleich aus dem Subnetzbereich wird reserviert und für den Zugriff auf die API Management-Dienstendpunkte aus dem virtuellen Netzwerk verwendet. Diese *private* IP-Adresse finden Sie auf dem Blatt „Übersicht“ für den Dienst im Azure-Portal. Diese Adresse muss bei den DNS-Servern für das virtuelle Netzwerk registriert sein.
-* Eine *öffentliche* IP-Adresse (VIP) mit Lastenausgleich wird auch reserviert, um den Zugriff auf den Verwaltungs-Dienstendpunkt über Port 3443 zu ermöglichen. Diese *öffentliche* IP-Adresse finden Sie auf dem Blatt „Übersicht“ für den Dienst im Azure-Portal. Die *öffentliche* IP-Adresse wird nur für den Datenverkehr auf Steuerungsebene an den Endpunkt `management` über Port 3443 verwendet. Sie kann über das [ApiManagement][ServiceTags]-Diensttag gesperrt werden.
+* Eine *öffentliche* IP-Adresse (VIP) mit Lastenausgleich wird auch reserviert, um den Zugriff auf den Verwaltungs-Dienstendpunkt über Port 3443 zu ermöglichen. Diese *öffentliche* IP-Adresse finden Sie auf dem Blatt „Übersicht“ für den Dienst im Azure-Portal. Die *öffentliche* IP-Adresse wird nur für den Datenverkehr auf Steuerungsebene an den Endpunkt `management` über Port 3443 verwendet. Sie kann durch das [ApiManagement][ServiceTags]-Diensttag eingeschränkt werden.
 * IP-Adressen aus dem IP-Adressbereich des Subnetzes (DIP) können jedem virtuellen Computer im Dienst zugewiesen werden. Sie werden für den Zugriff auf Ressourcen innerhalb des virtuellen Netzwerks verwendet. Eine öffentliche IP-Adresse (VIP) wird für den Zugriff auf Ressourcen außerhalb des virtuellen Netzwerks verwendet. Falls Einschränkungslisten mit IP-Adressen verwendet werden, um Ressourcen im virtuellen Netzwerk zu schützen, muss für den gesamten Bereich des Subnetzes, in dem der API Management-Dienst bereitgestellt wird, der Zugriff gewährt oder verweigert werden.
 * Die öffentlichen und privaten IP-Adressen mit Lastenausgleich finden Sie auf dem Blatt „Übersicht“ im Azure-Portal.
 * Die IP-Adressen für den öffentlichen und privaten Zugriff können sich ändern, wenn der Dienst aus dem virtuellen Netzwerk entfernt und dann wieder hinzugefügt wird. In diesem Fall müssen Sie möglicherweise die DNS-Registrierungen, Routingregeln und IP-Einschränkungslisten innerhalb des virtuellen Netzwerks aktualisieren.

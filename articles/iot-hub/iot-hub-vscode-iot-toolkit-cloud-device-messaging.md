@@ -10,32 +10,24 @@ ms.date: 01/18/2019
 ms.author: junhan
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: b9d8f0c2a573ba1749b414a389cd7181ddd5f95a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c4a840233e576c528e9c58d57eca0b3d524bf4d
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87321682"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566927"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe der Azure IoT-Tools für Visual Studio Code.
 
 ![Lückenloses Diagramm](./media/iot-hub-vscode-iot-toolkit-cloud-device-messaging/e-to-e-diagram.png)
 
+In diesem Artikel erfahren Sie, wie Sie mit Azure IoT Tools für Visual Studio Code Gerät-zu-Cloud-Nachrichten (Device to Cloud, D2C) überwachen und Cloud-zu-Gerät-Nachrichten (Cloud to Device, C2D) senden. Gerät-zu-Cloud-Nachrichten können Sensordaten sein, die Ihr Gerät erfasst und dann an Ihren IoT Hub sendet. Cloud-zu-Gerät-Nachrichten können Befehle sein, die Ihr IoT Hub an Ihr Gerät sendet, um eine LED blinken zu lassen, die mit Ihrem Gerät verbunden ist.
+
 Die [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) sind eine nützliche Visual Studio Code-Erweiterung, die die IoT Hub-Verwaltung und die IoT-Anwendungsentwicklung vereinfachen. In diesem Artikel wird beschrieben, wie Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe der Azure IoT-Tools für Visual Studio Code gesendet und empfangen werden.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="what-you-will-learn"></a>Lernziele
-
-Sie erfahren, wie Sie mit den Azure IoT-Tools für Visual Studio Code Gerät-zu-Cloud-Nachrichten (Device to Cloud, D2C) überwachen und Cloud-zu-Gerät-Nachrichten (Cloud to Device, C2D) senden. Gerät-zu-Cloud-Nachrichten können Sensordaten sein, die Ihr Gerät erfasst und dann an Ihren IoT Hub sendet. Cloud-zu-Gerät-Nachrichten können Befehle sein, die Ihr IoT Hub an Ihr Gerät sendet, um eine LED blinken zu lassen, die mit Ihrem Gerät verbunden ist.
-
-## <a name="what-you-will-do"></a>Aufgaben
-
-* Überwachen Sie Gerät-zu-Cloud-Nachrichten mithilfe der Azure IoT-Tools für Visual Studio Code.
-
-* Senden Sie Cloud-zu-Gerät-Nachrichten mithilfe der Azure IoT-Tools für Visual Studio Code.
-
-## <a name="what-you-need"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein aktives Azure-Abonnement.
 

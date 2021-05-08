@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 455d78ed21403952046448dd4447b5ec54f77c00
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96452346"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566978"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Wettervorhersage mithilfe von Sensordaten Ihres IoT-Hubs in Azure Machine Learning Studio (klassisch)
 
@@ -23,25 +23,11 @@ ms.locfileid: "96452346"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-Machine Learning ist ein Data Science-Verfahren, bei dem Computer aus vorhandenen Daten lernen können, um zukünftiges Verhalten, Ergebnisse und Trends vorherzusagen. Azure Machine Learning Studio (klassisch) ist ein Predictive Analytics-Clouddienst, der die schnelle Erstellung und Bereitstellung von Vorhersagemodellen als Analyselösungen ermöglicht.
+Machine Learning ist ein Data Science-Verfahren, bei dem Computer aus vorhandenen Daten lernen können, um zukünftiges Verhalten, Ergebnisse und Trends vorherzusagen. Azure Machine Learning Studio (klassisch) ist ein Predictive Analytics-Clouddienst, der die schnelle Erstellung und Bereitstellung von Vorhersagemodellen als Analyselösungen ermöglicht. In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning Studio (klassisch) für eine Wettervorhersage (Regenrisiko) mithilfe der Temperatur- und Luftfeuchtigkeitsdaten Ihres Azure IoT-Hubs verwenden. Das Regenrisiko ist die Ausgabe eines vorbereiteten Wettervorhersagemodells. Das Modell basiert auf Verlaufsdaten zur Vorhersage der Regenwahrscheinlichkeit basierend auf Temperatur und Luftfeuchtigkeit.
 
-## <a name="what-you-learn"></a>Lerninhalt
+## <a name="prerequisites"></a>Voraussetzungen
 
-Sie erfahren, wie Sie Azure Machine Learning Studio (klassisch) für eine Wettervorhersage (Regenrisiko) mithilfe der Temperatur- und Luftfeuchtigkeitsdaten Ihres Azure IoT-Hubs verwenden. Das Regenrisiko ist die Ausgabe eines vorbereiteten Wettervorhersagemodells. Das Modell basiert auf Verlaufsdaten zur Vorhersage der Regenwahrscheinlichkeit basierend auf Temperatur und Luftfeuchtigkeit.
-
-## <a name="what-you-do"></a>Aufgaben
-
-- Stellen Sie das Wettervorhersagemodell als Webdienst bereit.
-- Bereiten Sie Ihren IoT Hub für den Datenzugriff vor, indem Sie eine Consumergruppe hinzufügen.
-- Erstellen Sie einen Stream Analytics-Auftrag, und konfigurieren Sie ihn für folgende Aufgaben:
-  - Lesen der Temperatur- und Luftfeuchtigkeitsdaten von Ihrem IoT Hub.
-  - Aufrufen des Webdiensts, um das Regenrisiko abzurufen.
-  - Speichern des Ergebnisses in einem Azure Blob Storage.
-- Verwenden des Microsoft Azure Storage-Explorers zur Anzeige der Wettervorhersage.
-
-## <a name="what-you-need"></a>Voraussetzungen
-
-- Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials wie [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) abgeschlossen haben. In diesen werden folgende Anforderungen beschrieben:
+- Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials abgeschlossen haben. Sie können beispielsweise zu [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) oder zu einer der Schnellstartanleitungen zum [Senden von Telemetriedaten](quickstart-send-telemetry-dotnet.md) wechseln. In diesen Artikeln werden folgende Anforderungen beschrieben:
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
   - Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.

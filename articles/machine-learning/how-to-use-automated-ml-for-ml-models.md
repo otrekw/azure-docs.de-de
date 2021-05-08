@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: nibaccam
-author: aniththa
+author: cartacioS
 ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5718e0e3732f57b46500f9d2cdb1165e883ca44f
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562721"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575580"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
 
@@ -180,15 +180,15 @@ Führen Sie einen Drilldown für eines der abgeschlossenen Modelle aus, um Detai
 
 [![Details zur Iteration](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
-## <a name="model-explanations"></a>Modellerklärungen
+## <a name="model-explanations-preview"></a>Modellerklärungen (Vorschau)
 
 Zum besseren Verständnis Ihres Modells können Sie sich auf dem Dashboard für Modellerklärungen ansehen, welche Datenfeatures (Rohdaten oder verarbeitete Daten) die Vorhersagen des Modells beeinflusst haben. 
 
-Das Dashboard für Modellerklärungen enthält eine Gesamtanalyse des trainierten Modells sowie die zugehörigen Vorhersagen und Erklärungen. Außerdem können Sie hier Detailinformationen für einen Datenpunkt sowie die jeweils zugehörige Featurerelevanz anzeigen. Weitere Informationen zu den Visualisierungen des Erklärungsdashboards und zu spezifischen Plots finden Sie [hier](how-to-machine-learning-interpretability-aml.md#visualizations).
+Das Dashboard für Modellerklärungen enthält eine Gesamtanalyse des trainierten Modells sowie die zugehörigen Vorhersagen und Erklärungen. Außerdem können Sie hier Detailinformationen für einen Datenpunkt sowie die jeweils zugehörige Featurerelevanz anzeigen. Weitere Informationen zu den Visualisierungen des Erklärungsdashboards finden Sie [hier](how-to-machine-learning-interpretability-aml.md#visualizations).
 
 So rufen Sie Erklärungen für ein bestimmtes Modell ab: 
 
-1. Wählen Sie auf der Registerkarte **Modelle** das gewünschte Modell aus. 
+1. Wählen Sie auf der Registerkarte **Modelle** das Modell aus, zu dem Sie Informationen wünschen. 
 1. Wählen Sie die Schaltfläche **Modell erklären** aus, und geben Sie eine Computeressource zum Generieren der Erklärungen an.
 1. Überprüfen Sie den Status auf der Registerkarte **Untergeordnete Ausführungen**. 
 1. Navigieren Sie nach Abschluss des Vorgangs zur Registerkarte **Erklärungen (Vorschau)** . Dort finden Sie das Erklärungsdashboard. 

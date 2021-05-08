@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: 7799266bf9cece1ed789d6fab64ec970a09fbfcb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 178604335968c3664bde51c144759c1c040c359d
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588437"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564912"
 ---
 # <a name="search-the-azure-purview-data-catalog"></a>Suchen im Azure Purview-Datenkatalog
 
@@ -55,8 +55,8 @@ Die folgenden Operatoren können Sie in Ihrer Suchabfrage verwenden. In einer ei
 | NICHT | Gibt an, dass eine Ressource das Schlüsselwort hinter der NOT-Klausel nicht enthalten darf. | Durch die Abfrage `hive NOT database` werden Ressourcen zurückgegeben, die „hive“, aber nicht „database“ enthalten. |
 | () | Gruppiert mehrere Schlüsselwörter und Operatoren. Werden mehrere Operatoren miteinander kombiniert, geben die Klammern die Reihenfolge der Vorgänge an. | Durch die Abfrage `hive AND (database OR warehouse)` werden Ressourcen zurückgegeben, die „hive“ und entweder „database“ oder „warehouse“ oder beides enthalten. |
 | "" | Gibt den exakten Inhalt eines Ausdrucks an, mit dem die Abfrage übereinstimmen muss. | Durch die Abfrage `"hive database"` werden Ressourcen zurückgegeben, deren Eigenschaften den Ausdruck „hive database“ enthalten. |
-| * | Platzhalter für ein oder mehrere Zeichen. Darf nicht das erste Zeichen eines Schlüsselworts darstellen. | Durch die Abfrage `hiv\`* werden Ressourcen zurückgegeben, deren Eigenschaften mit „hiv“ beginnen, wie z. B. „hive“ oder „hive-table“. |
-| ? | Platzhalter für ein einzelnes Zeichen. Darf nicht das erste Zeichen eines Schlüsselworts darstellen. | Durch die Abfrage `hiv?` werden Ressourcen zurückgegeben, deren Eigenschaften mit „hiv“ beginnen und die aus vier Zeichen bestehen, wie z. B. „hive“ oder „hiva“. |
+| * | Platzhalter für ein oder mehrere Zeichen. Darf nicht das erste Zeichen eines Schlüsselworts darstellen. | Durch die Abfrage `dat*` werden Ressourcen zurückgegeben, deren Eigenschaften mit „dat“ beginnen, wie z. B. „data“ oder „database“. |
+| ? | Platzhalter für ein einzelnes Zeichen. Darf nicht das erste Zeichen eines Schlüsselworts darstellen. | Durch die Abfrage `dat?` werden Ressourcen zurückgegeben, deren Eigenschaften mit „dat“ beginnen und die aus vier Zeichen bestehen, wie z. B. „date“ oder „data“. |
 
 > [!Note]
 > Geben Sie boolesche Operatoren (**AND**, **OR**, **NOT**) immer vollständig in Großbuchstaben an. Ansonsten spielen weder die Groß-/Kleinschreibung noch zusätzliche Leerzeichen eine Rolle.

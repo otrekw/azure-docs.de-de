@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 9f4473d6c8a584bf60e5c8fe2d69d6a56a55e71d
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5f7617fdfea68c8005c8a33ec782edc2bbe01f4b
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107955"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930771"
 ---
 # <a name="azure-cognitive-search-performance-benchmarks"></a>Azure Cognitive Search-Leistungsvergleichstests
 
@@ -182,6 +182,24 @@ Die Abfragewartezeit variiert je nach Auslastung des Diensts, und Dienste mit h�
 | 20%  | 45 ms  | 31 ms  | 55 ms   | 73 ms | 84 ms | 109 ms |
 | 50%  | 63 ms  | 39 ms  | 81 ms   | 106 ms | 123 ms | 163 ms |
 | 80 %  | 115 ms  | 73 ms  | 145 ms   | 191 ms | 224 ms | 291 ms |
+
+### <a name="s3-performance"></a>S3-Leistung
+
+#### <a name="queries-per-second"></a>Abfragen pro Sekunde
+
+Das folgende Diagramm zeigt die höchste Abfragelast in Bezug auf Abfragen pro Sekunde (QPS), die ein Dienst über einen längeren Zeitraum verarbeiten konnte.
+
+![Höchster verarbeitbarer QPS-Wert, Dokumentationssuche S3](./media/performance-benchmarks/s3-docsearch-qps.png)
+
+#### <a name="query-latency"></a>Abfragewartezeit
+
+Die Abfragewartezeit variiert je nach Auslastung des Diensts, und Dienste mit höherer Belastung haben eine höhere durchschnittliche Abfragewartezeit. Die folgende Tabelle zeigt das 25., 50., 75., 90., 95. und 99. Perzentil der Abfragewartezeit für drei verschiedene Nutzungsebenen.
+
+| Prozentanteil der max. QPS  | Durchschnittliche Latenz | 25 % | 75 % | 90% | 95 % | 99 %|
+|---|---|---|---| --- | --- | --- |
+| 20%  | 43 ms  | 29 ms  | 53 ms   | 74 ms | 86 ms | 111 ms |
+| 50%  | 65 ms  | 37 ms  | 85 ms   | 111 ms | 128 ms | 164 ms |
+| 80 %  | 126 ms  | 83 ms  | 162 ms   | 205 ms | 233 ms | 281 ms |
 
 ## <a name="takeaways"></a>Wesentliche Punkte
 

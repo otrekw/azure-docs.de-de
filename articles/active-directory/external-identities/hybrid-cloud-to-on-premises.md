@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b832e7b8aef92e14435ba78303bfc26a9a14e23
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93131019"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108180444"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD
 
@@ -29,7 +29,7 @@ Wenn Ihre lokalen Apps die SAML-basierte Authentifizierung verwenden, können Si
 Dazu müssen Sie die folgenden zwei Schritte ausführen:
 
 - Integrieren Sie die App unter Verwendung von SAML, wie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](../manage-apps/configure-saml-single-sign-on.md) beschrieben. Notieren Sie unbedingt den Wert, den Sie für **Anmelde-URL** angeben.
--  Verwenden Sie den Azure AD-Anwendungsproxy, um die lokale App mit **Azure Active Directory** als Authentifizierungsquelle zu veröffentlichen. Anweisungen dazu finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../manage-apps/application-proxy-add-on-premises-application.md). 
+-  Verwenden Sie den Azure AD-Anwendungsproxy, um die lokale App mit **Azure Active Directory** als Authentifizierungsquelle zu veröffentlichen. Anweisungen dazu finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../app-proxy/application-proxy-add-on-premises-application.md). 
 
    Verwenden Sie beim Konfigurieren der Einstellung **Interne URL** die Anmelde-URL, die Sie in der Vorlage „Nicht-Kataloganwendung“ angegeben haben. Auf diese Weise können Benutzer außerhalb der Unternehmensgrenzen auf die App zugreifen. Der Anwendungsproxy führt das SAML-basierte einmalige Anmelden für die lokale App aus.
  
@@ -39,7 +39,7 @@ Dazu müssen Sie die folgenden zwei Schritte ausführen:
 
 Um B2B-Benutzern den Zugriff auf lokale Anwendungen zu ermöglichen, die durch die integrierte Windows-Authentifizierung und eingeschränkte Kerberos-Delegierung geschützt sind, benötigen Sie die folgenden Komponenten:
 
-- **Authentifizierung über den Azure AD-Anwendungsproxy**. B2B-Benutzer müssen sich bei der lokalen Anwendung authentifizieren können. Zu diesem Zweck müssen Sie die lokale App über den Azure AD-Anwendungsproxy veröffentlichen. Weitere Informationen finden Sie im [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy](../manage-apps/application-proxy-add-on-premises-application.md).
+- **Authentifizierung über den Azure AD-Anwendungsproxy**. B2B-Benutzer müssen sich bei der lokalen Anwendung authentifizieren können. Zu diesem Zweck müssen Sie die lokale App über den Azure AD-Anwendungsproxy veröffentlichen. Weitere Informationen finden Sie im [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy](../app-proxy/application-proxy-add-on-premises-application.md).
 - **Autorisierung über ein B2B-Benutzerobjekt im lokalen Verzeichnis**. Die Anwendung muss Zugriffsüberprüfungen für Benutzer ausführen können und ihnen Zugriff auf die richtigen Ressourcen gewähren. IWA und KCD erfordern für diese Autorisierung ein Benutzerobjekt im lokalen Windows Server Active Directory-Verzeichnis. Der Anwendungsproxy benötigt dieses Benutzerobjekt, um die Identität des Benutzers anzunehmen und ein Kerberos-Token für die App abzurufen (siehe [So funktioniert das einmalige Anmelden mit KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)). 
 
    > [!NOTE]

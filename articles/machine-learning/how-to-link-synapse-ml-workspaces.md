@@ -11,18 +11,18 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 511ee1aa5f5036f5ca5450def0e4481c0608db33
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 23184eee67013e39400446db5f744dd0ddb7bc50
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227346"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575734"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Verknüpfen von Azure Synapse Analytics- und Azure Machine Learning-Arbeitsbereichen (Vorschauversion)
 
 In diesem Artikel wird beschrieben, wie Sie einen verknüpften Dienst erstellen, mit dem Ihr [Azure Synapse Analytics-Arbeitsbereich](/azure/synapse-analytics/overview-what-is) und [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) verknüpft werden.
 
-Nachdem Ihr Azure Machine Learning-Arbeitsbereich mit Ihrem Azure Synapse-Arbeitsbereich verknüpft wurde, können Sie einen Apache Spark-Pool als dedizierte Compute-Umgebung für Data Wrangling im großen Stil anfügen und das Modelltraining über dasselbe Notebook durchführen.
+Nachdem Ihr Azure Machine Learning-Arbeitsbereich mit Ihrem Azure Synapse-Arbeitsbereich verknüpft wurde, können Sie einen Apache Spark-Pool als dedizierte Compute-Umgebung für Data Wrangling im großen Stil anfügen oder das Modelltraining über dasselbe Python-Notebook durchführen.
 
 Sie können Ihren ML-Arbeitsbereich und den Synapse-Arbeitsbereich über das [Python SDK](#link-sdk) oder [Azure Machine Learning Studio](#link-studio) verknüpfen.
 
@@ -104,7 +104,7 @@ Verknüpfen Sie mit den folgenden Schritten den Machine Learning-Arbeitsbereich
 1. Wählen Sie **Integration hinzufügen** aus.
 1. Füllen Sie die Felder im Formular **Arbeitsbereich verknüpfen** aus.
 
-    |Feld| BESCHREIBUNG    
+    |Feld| Beschreibung    
     |---|---
     |Name| Geben Sie einen Namen für Ihren verknüpften Dienst ein. Dieser Name wird verwendet, um auf diesen bestimmten verknüpften Dienst zu verweisen.
     |Abonnementname | Wählen Sie den Namen Ihres Abonnements aus, das Ihrem Machine Learning-Arbeitsbereich zugeordnet ist. 

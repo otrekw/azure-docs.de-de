@@ -2,23 +2,29 @@
 title: Bicep-Operatoren
 description: Hier werden die für Azure Resource Manager-Bereitstellungen verfügbaren Bicep-Operatoren beschrieben.
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 4bf1005a11b1dcfea9f4b28d6bd3fa7c33e3278f
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 04/15/2021
+ms.openlocfilehash: 0838ebf6bc03f4237ef76e07f1eb6f25aa996fc0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107211245"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537834"
 ---
 # <a name="bicep-operators"></a>Bicep-Operatoren
 
-In diesem Artikel werden die Bicep-Operatoren beschrieben, die verfügbar sind, wenn Sie eine Bicep-Vorlage erstellen und Ressourcen mit Azure Resource Manager bereitstellen. Operatoren werden verwendet, um Werte zu berechnen, Werte zu vergleichen oder Bedingungen auszuwerten. Es gibt drei Typen von Bicep-Operatoren: [Vergleichsoperatoren](#comparison), [logische](#logical) und [numerische](#numeric) Operatoren.
+In diesem Artikel werden die Bicep-Operatoren beschrieben, die verfügbar sind, wenn Sie eine Bicep-Vorlage erstellen und Ressourcen mit Azure Resource Manager bereitstellen. Operatoren werden verwendet, um Werte zu berechnen, Werte zu vergleichen oder Bedingungen auszuwerten. Es gibt drei Typen von Bicep-Operatoren:
+
+- [Vergleich](#comparison)
+- [Logisch](#logical)
+- [numeric](#numeric)
+
+Wenn Sie einen Ausdruck zwischen `(` und `)` einschließen, können Sie die Standardrangfolge des Bicep-Operators überschreiben. Beispielsweise wertet der Ausdruck x + y / z zuerst die Division und dann die Addition aus. Der Ausdruck (x + y) / z wertet jedoch die Addition zuerst und die Division danach aus.
 
 ## <a name="comparison"></a>Vergleich
 
 Die Vergleichsoperatoren vergleichen Werte und geben entweder `true` oder `false` zurück.
 
-| Operator | Name | BESCHREIBUNG |
+| Operator | Name | Beschreibung |
 | ---- | ---- | ---- |
 | `>=` | [Größer oder gleich](bicep-operators-comparison.md#greater-than-or-equal-) | Wertet aus, ob der erste Wert größer oder gleich dem zweiten Wert ist. |
 | `>`  | [Größer als](bicep-operators-comparison.md#greater-than-) | Wertet aus, ob der erste Wert größer ist als der zweite Wert. |
@@ -33,7 +39,7 @@ Die Vergleichsoperatoren vergleichen Werte und geben entweder `true` oder `false
 
 Die logischen Operatoren werten boolesche Werte aus, geben Werte zurück, die ungleich NULL sind, oder werten einen bedingten Ausdruck aus.
 
-| Operator | Name | BESCHREIBUNG |
+| Operator | Name | Beschreibung |
 | ---- | ---- | ---- |
 | `&&` | [Und](bicep-operators-logical.md#and-) | Gibt `true` zurück, wenn alle Werte WAHR sind. |
 | `||`| [Oder](bicep-operators-logical.md#or-) | Gibt `true` zurück, wenn einer der beiden Werte WAHR ist. |
@@ -45,7 +51,7 @@ Die logischen Operatoren werten boolesche Werte aus, geben Werte zurück, die un
 
 Die numerischen Operatoren verwenden zur Ausführung von Berechnungen ganze Zahlen und geben ganzzahlige Werte zurück.
 
-| Operator | Name | BESCHREIBUNG |
+| Operator | Name | Beschreibung |
 | ---- | ---- | ---- |
 | `*` | [Multiplizieren](bicep-operators-numeric.md#multiply-) | Multipliziert zwei ganze Zahlen. |
 | `/` | [Dividieren](bicep-operators-numeric.md#divide-) | Dividiert eine ganze Zahl durch eine ganze Zahl. |
@@ -61,5 +67,5 @@ Die numerischen Operatoren verwenden zur Ausführung von Berechnungen ganze Zahl
 
 - Informationen zum Erstellen einer Bicep-Datei finden Sie unter [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Bicep-Datei](bicep-tutorial-create-first-bicep.md).
 - Informationen zum Beheben von Bicep-Typfehlern finden Sie unter [any-Funktion für Bicep](template-functions-any.md).
-- Informationen zum Vergleichen der Syntax für Bicep und JSON finden Sie unter [Vergleichen von JSON mit Bicep für Vorlagen](compare-template-syntax.md).
+- Einen Vergleich der Syntax für Bicep und JSON finden Sie unter [Vergleichen von JSON mit Bicep für Vorlagen](compare-template-syntax.md).
 - Beispiele für Bicep- und ARM-Vorlagenfunktionen finden Sie unter [ARM-Vorlagenfunktionen](template-functions.md).

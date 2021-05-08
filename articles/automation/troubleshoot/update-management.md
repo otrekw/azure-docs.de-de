@@ -3,14 +3,14 @@ title: Beheben von Problemen bei der Azure Automation-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Azure Automation-Updateverwaltung beheben.
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 04/16/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c16b032502401b633532ab0fcf9518aa85a1b8d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f23632ba6a6b83f92b2bfc90beb4c1a8613c090a
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579741"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587362"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
@@ -188,11 +188,13 @@ Führen Sie im Azure-Portal die folgenden Schritte aus, um den Automation-Ressou
 
 5. Wenn dieser nicht aufgeführt ist, registrieren Sie den Anbieter Microsoft.Automation mithilfe der Schritte unter [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
-## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>Szenario: Bei einem geplanten Update mit einem dynamischen Zeitplan wurden einige Computer ausgelassen.
+## <a name="scenario-scheduled-update-did-not-patch-some-machines"></a><a name="scheduled-update-missed-machines"></a>Szenario: Bei geplanten Updates wurden einige Computer nicht gepatcht
 
 ### <a name="issue"></a>Problem
 
-In eine Updatevorschau eingeschlossene Computer werden nicht komplett in der Liste der Computer aufgeführt, die während einer geplanten Ausführung gepatcht wurden.
+Von den Computern, die in einer Updatevorschau enthalten sind, werden nicht alle in der Liste der Computer angezeigt, die während einer geplanten Ausführung gepatcht wurden, oder VMs für ausgewählte Bereiche einer dynamischen Gruppe werden nicht in der Liste der Updatevorschau im Portal angezeigt.
+
+Die Updatevorschauliste besteht aus allen Computern, die von einer [Azure Resource Graph](../../governance/resource-graph/overview.md)-Abfrage für die ausgewählten Bereiche abgerufen werden. Die Bereiche werden nach Computern gefiltert, auf denen ein Hybrid Runbook Worker-System installiert sind und für die Sie über Zugriffsberechtigungen verfügen.
 
 ### <a name="cause"></a>Ursache
 
@@ -201,6 +203,12 @@ Das Problem kann eine der folgenden Ursachen haben:
 * Die im Gültigkeitsbereich einer dynamischen Abfrage definierten Abonnements sind für den registrierten Automation-Ressourcenanbieter nicht konfiguriert.
 
 * Die Computer waren beim Ausführen des Zeitplans nicht verfügbar, oder sie verfügten nicht über die entsprechenden Tags.
+
+* Sie verfügen nicht über die richtigen Zugriffsberechtigungen für die ausgewählten Bereiche.
+
+* Die Azure Resource Graph-Abfrage ruft nicht die erwarteten Computer ab.
+
+* Das System Hybrid Runbook Worker ist nicht auf den Computern installiert.
 
 ### <a name="resolution"></a>Lösung
 
@@ -238,31 +246,15 @@ Führen Sie das folgende Verfahren aus, wenn Ihr Abonnement für den Automation-
 
 7. Führen Sie den Updatezeitplan erneut aus, um sicherzustellen, dass die Bereitstellung mit den angegebenen dynamischen Gruppen alle Computer einschließt.
 
-## <a name="scenario-expected-machines-dont-appear-in-preview-for-dynamic-group"></a><a name="machines-not-in-preview"></a>Szenario: Erwartete Computer werden in der Vorschau für die dynamische Gruppe nicht angezeigt.
-
-### <a name="issue"></a>Problem
-
-VMs für ausgewählte Bereiche einer dynamischen Gruppe werden nicht in der Vorschauliste des Azure-Portals angezeigt. Diese Liste enthält alle Computer, die mit einer ARG-Abfrage für die ausgewählten Bereiche abgerufen werden. Die Bereiche werden nach Computern gefiltert, auf denen Hybrid Runbook Worker installiert sind und für die Sie über Zugriffsberechtigungen verfügen.
-
-### <a name="cause"></a>Ursache
-
-Mögliche Ursachen für dieses Problem:
-
-* Sie verfügen nicht über die richtigen Zugriffsberechtigungen für die ausgewählten Bereiche.
-* Die ARG-Abfrage gibt nicht die erwarteten Computer zurück.
-* Hybrid Runbook Worker ist nicht auf den Computern installiert.
-
-### <a name="resolution"></a>Lösung 
-
 #### <a name="incorrect-access-on-selected-scopes"></a>Inkorrekter Zugriff auf ausgewählte Bereiche
 
 Im Azure-Portal werden nur Computer angezeigt, für die Sie in einem bestimmten Bereich über Schreibzugriff verfügen. Wenn Sie nicht über den entsprechenden Zugriff für einen Bereich verfügen, informieren Sie sich unter [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer über das Azure-Portal](../../role-based-access-control/quickstart-assign-role-user-portal.md).
 
-#### <a name="arg-query-doesnt-return-expected-machines"></a>Die ARG-Abfrage gibt nicht die erwarteten Computer zurück.
+#### <a name="resource-graph-query-doesnt-return-expected-machines"></a>Die Resource Graph-Abfrage gibt nicht die erwarteten Computer zurück
 
 Führen Sie die Schritte unten aus, um festzustellen, ob Ihre Abfragen ordnungsgemäß funktionieren.
 
-1. Führen Sie im Azure-Portal auf dem Blatt „Resource Graph-Explorer“ eine ARG-Abfrage aus, die wie unten veranschaulicht formatiert ist. Diese Abfrage imitiert die Filter, die Sie beim Erstellen der dynamischen Gruppe in der Updateverwaltung ausgewählt haben. Siehe [Verwenden dynamischer Gruppen mit der Updateverwaltung](../update-management/configure-groups.md).
+1. Führen Sie im Azure-Portal auf dem Blatt „Resource Graph-Explorer“ eine Azure Resource Graph-Abfrage aus, die wie unten veranschaulicht formatiert ist. Wenn Sie noch nie mit Azure Resource Graph gearbeitet haben, finden Sie in dieser [Schnellstartanleitung](../../governance/resource-graph/first-query-portal.md) Informationen zum Arbeiten mit Resource Graph Explorer. Diese Abfrage imitiert die Filter, die Sie beim Erstellen der dynamischen Gruppe in der Updateverwaltung ausgewählt haben. Siehe [Verwenden dynamischer Gruppen mit der Updateverwaltung](../update-management/configure-groups.md).
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -287,7 +279,7 @@ Führen Sie die Schritte unten aus, um festzustellen, ob Ihre Abfragen ordnungsg
 
 #### <a name="hybrid-runbook-worker-not-installed-on-machines"></a>Hybrid Runbook Worker ist auf Computern nicht installiert.
 
-Computer werden in Ergebnissen einer ARG-Abfrage aufgeführt, sie sind jedoch nicht in der Vorschau der dynamischen Gruppe aufgelistet. In diesem Fall sind die Computer möglicherweise nicht als Hybrid Worker festgelegt und können daher keine Updateverwaltungs- und Azure Automation-Aufträge ausführen. Gehen Sie wie folgt vor, um sicherzustellen, dass die erwarteten Computer als Hybrid Runbook Worker eingerichtet sind:
+Computer werden in Ergebnissen einer Azure Resource Graph-Abfrage aufgeführt, sie sind jedoch nicht in der Vorschau der dynamischen Gruppe aufgelistet. In diesem Fall sind die Computer möglicherweise nicht als Hybrid Runbook Worker-System festgelegt und können daher keine Updateverwaltungs- und Azure Automation-Aufträge ausführen. Gehen Sie wie folgt vor, um sicherzustellen, dass die erwarteten Computer als Hybrid Runbook Worker-Systeme eingerichtet sind:
 
 1. Wechseln Sie im Azure-Portal zum Automation-Konto für einen Computer, der nicht ordnungsgemäß angezeigt wird.
 
@@ -297,11 +289,9 @@ Computer werden in Ergebnissen einer ARG-Abfrage aufgeführt, sie sind jedoch ni
 
 4. Überprüfen Sie, ob der Hybrid Worker für diesen Computer vorhanden ist.
 
-5. Wenn der Computer nicht als Hybrid Worker eingerichtet ist, nehmen Sie mithilfe der Anweisungen unter [Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) die erforderlichen Anpassungen vor.
+5. Wenn der Computer nicht als Hybrid Runbook Worker-System eingerichtet ist, lesen Sie die Methoden zum Aktivieren des Computers im Abschnitt [Updateverwaltung aktivieren](../update-management/overview.md#enable-update-management) des Artikels „Übersicht über die Updateverwaltung“. Die zu aktivierende Methode basiert auf der Umgebung, in der der Computer ausgeführt wird.
 
-6. Legen Sie den Computer als Mitglied der Hybrid Runbook Worker-Gruppe fest.
-
-7. Wiederholen Sie die obigen Schritte für alle Computer, die nicht in der Vorschau angezeigt werden.
+6. Wiederholen Sie die obigen Schritte für alle Computer, die nicht in der Vorschau angezeigt werden.
 
 ## <a name="scenario-update-management-components-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Szenario: Komponenten für die Updateverwaltung sind aktiviert, während weiterhin angezeigt wird, dass die VM konfiguriert wird
 

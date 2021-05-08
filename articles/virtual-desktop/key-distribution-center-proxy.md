@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 21db7ed0cf13a3ed282929b09847c6c3ba8a36ed
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 79ae61d21693ae56dff280402c7a3d114822be7f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307247"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132357"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Konfigurieren eines Kerberos-Schlüsselverteilungscenter-Proxys (Vorschau)
 
@@ -29,15 +29,15 @@ Es gibt zwei Komponenten für den virtuellen Windows Virtual Desktop-Dienst, die
 - Der Feed im Windows Virtual Desktop-Client, mit dem Benutzer eine Liste der verfügbaren Desktops oder Anwendungen erhalten, auf die sie Zugriff haben. Dieser Authentifizierungsvorgang erfolgt in Azure Active Directory. Das bedeutet, dass diese Komponente nicht im Mittelpunkt dieses Artikels steht.
 - Die RDP-Sitzung, die sich daraus ergibt, dass ein Benutzer eine dieser verfügbaren Ressourcen auswählt. Diese Komponente verwendet die Kerberos-Authentifizierung und erfordert einen KDC-Proxy für Remotebenutzer.
 
-In diesem Artikel erfahren Sie, wie Sie den Feed im Windows Virtual Desktop-Client im Azure-Portal konfigurieren. Informationen zum Konfigurieren der RD-Gateway-Rolle finden Sie unter [Bereitstellen der RD-Gateway-Rolle](/azure/virtual-desktop/rd-gateway-role).
+In diesem Artikel erfahren Sie, wie Sie den Feed im Windows Virtual Desktop-Client im Azure-Portal konfigurieren. Informationen zum Konfigurieren der RD-Gateway-Rolle finden Sie unter [Bereitstellen der RD-Gateway-Rolle](/windows-server/remote/remote-desktop-services/remote-desktop-gateway-role).
 
 ## <a name="requirements"></a>Anforderungen
 
 Zum Konfigurieren eines Windows Virtual Desktop-Sitzungshosts mit einem KDC-Proxy benötigen Sie Folgendes:
 
 - Zugriff auf das Azure-Portal und ein Azure-Administratorkonto.
-- Auf den Remoteclientcomputern muss entweder Windows 10 oder Windows 7 ausgeführt werden, und der [Windows Desktop-Client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop) muss installiert sein.
-- Auf dem Computer muss bereits ein KDC-Proxy installiert sein. Weitere Informationen hierzu finden Sie unter [Einrichten der RD-Gateway-Rolle für Windows Virtual Desktop](rd-gateway-role.md).
+- Auf den Remoteclientcomputern muss entweder Windows 10 oder Windows 7 ausgeführt werden, und der [Windows Desktop-Client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop) muss installiert sein. Derzeit wird der Webclient nicht unterstützt.
+- Auf dem Computer muss bereits ein KDC-Proxy installiert sein. Weitere Informationen hierzu finden Sie unter [Einrichten der RD-Gateway-Rolle für Windows Virtual Desktop](/windows-server/remote/remote-desktop-services/remote-desktop-gateway-role).
 - Betriebssystem des Computers muss Windows Server 2016 oder höher sein.
 
 Nachdem Sie sichergestellt haben, dass Sie diese Anforderungen erfüllen, kann es losgehen.
@@ -70,6 +70,6 @@ Konfigurieren Sie den KDC-Proxy wie folgt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen dazu, wie Sie den KDC-Proxy hinsichtlich Remotedesktopdienste verwalten und die RD-Gateway-Rolle zuweisen, finden Sie unter [Bereitstellen der RD-Gateway-Rolle](rd-gateway-role.md).
+Informationen dazu, wie Sie den KDC-Proxy hinsichtlich Remotedesktopdienste verwalten und die RD-Gateway-Rolle zuweisen, finden Sie unter [Bereitstellen der RD-Gateway-Rolle](/windows-server/remote/remote-desktop-services/remote-desktop-gateway-role).
 
 Wenn Sie Ihre KDC-Proxyserver skalieren möchten, finden Sie weitere Informationen zum Einrichten der Hochverfügbarkeit für den KDC-Proxy unter [Hinzufügen von Hochverfügbarkeit zu RD-Web und RD-Gateway (Webfront)](/windows-server/remote/remote-desktop-services/rds-rdweb-gateway-ha).

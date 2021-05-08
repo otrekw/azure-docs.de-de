@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: 82caf13618fe8483ab8d3a622c6c0d51ab05a206
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0b099f4ce91fd24e8d7baec054bcfc5a6cf0b032
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177333"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567110"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Verwenden von Power BI zum Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit
 
@@ -22,24 +22,14 @@ ms.locfileid: "102177333"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-learn"></a>Lerninhalt
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Power BI von Azure IoT Hub empfangene Echtzeit-Sensordaten visualisieren. Wenn Sie versuchen möchten, die Daten in Ihrem IoT Hub mit einer Web-App visuell darzustellen, helfen Ihnen die Informationen unter [Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit mit einer Web-App](iot-hub-live-data-visualization-in-web-apps.md) weiter.
 
-Sie erfahren, wie Sie mit Power BI von Azure IoT Hub empfangene Sensordaten in Echtzeit visualisieren. Wenn Sie versuchen möchten, die Daten in Ihrem IoT Hub mit einer Web-App visuell darzustellen, helfen Ihnen die Informationen unter [Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit mit einer Web-App](iot-hub-live-data-visualization-in-web-apps.md) weiter.
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="what-you-do"></a>Aufgaben
-
-* Bereiten Sie Ihren IoT Hub für den Datenzugriff vor, indem Sie eine Consumergruppe hinzufügen.
-
-* Erstellen und konfigurieren Sie einen Stream Analytics-Auftrag zum Übertragen von Daten von Ihrem IoT Hub zu Ihrem Power BI-Konto, und führen Sie ihn aus.
-
-* Erstellen und veröffentlichen Sie einen Power BI-Bericht zum Visualisieren der Daten.
-
-## <a name="what-you-need"></a>Voraussetzungen
-
-* Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials wie [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) abgeschlossen haben. In diesen Artikeln werden folgende Anforderungen beschrieben:
+* Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials abgeschlossen haben. Sie können beispielsweise zu [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) oder zu einer der Schnellstartanleitungen zum [Senden von Telemetriedaten](quickstart-send-telemetry-dotnet.md) wechseln. In diesen Artikeln werden folgende Anforderungen beschrieben:
   
   * Ein aktives Azure-Abonnement.
-  * Ein Azure IoT Hub in Ihrem Abonnement.
+  * Eine Azure IoT Hub-Instanz in Ihrem Abonnement
   * Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.
 
 * Ein Power BI-Konto. ([Power BI kostenlos testen](https://powerbi.microsoft.com/))
