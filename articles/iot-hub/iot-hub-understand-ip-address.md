@@ -6,13 +6,13 @@ ms.author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 1bfae8c7afbfdc6e73dd8bb17b94e6543361e9ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 7d807a15d358bd621baedbff253f0c731e43ed26
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83848227"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874169"
 ---
 # <a name="iot-hub-ip-addresses"></a>IP-Adressen von IoT Hub
 
@@ -45,7 +45,7 @@ Sie können mithilfe dieser IP-Adresspräfixe die Konnektivität zwischen IoT Hu
 
 ## <a name="limitations-and-workarounds"></a>Einschränkungen und Problemumgehungen
 
-* Die IoT Hub-IP-Filterfunktion hat einen Grenzwert von 10 Regeln. Dieser Grenzwert kann über Anforderungen, die vom Azure-Kundensupport ausgelöst wurden, angehoben werden. 
+* Für die IoT Hub-IP-Filterfunktion gilt ein Grenzwert von 100 Regeln. Dieser Grenzwert kann über Anforderungen, die vom Azure-Kundensupport ausgelöst wurden, angehoben werden. 
 
 * Ihre konfigurierten [IP-Filterregeln](iot-hub-ip-filtering.md) werden nur auf Ihre IoT Hub-IP-Endpunkte angewendet und nicht auf den integrierten Event Hub-Endpunkt Ihres IoT Hubs. Wenn Sie außerdem anfordern, dass die IP-Filterung auf den Event Hub, auf dem Ihre Nachrichten gespeichert sind, angewendet werden soll, können Sie dafür Ihre eigene Event Hub-Ressource verwenden und dort Ihre gewünschten IP-Filterregeln direkt konfigurieren. Hierzu müssen Sie Ihre eigene Event Hub-Ressource bereitstellen und das [Nachrichtenrouting](./iot-hub-devguide-messages-d2c.md) so einrichten, dass Ihre Nachrichten an diese Ressource statt an den integrierten Event Hub Ihres IoT Hubs gesendet werden. Und schließlich: Wie in der vorstehenden Tabelle erläutert, müssen Sie zum Aktivieren der Nachrichtenroutingfunktionen auch Konnektivität zwischen den IP-Adresspräfixen des IoT Hubs und Ihrer bereitgestellten Event Hub-Ressource zulassen.
 

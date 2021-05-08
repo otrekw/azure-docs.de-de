@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: e34e1f589442be41e2a4eac3ac893f377675e4b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2423d6bd29d893f9a27749dcc2b6d2af8a12e941
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379504"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478130"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Ausführen einer selbstgehosteten Integration Runtime in einem Windows-Container
 
@@ -24,7 +24,7 @@ Azure Data Factory stellt die offizielle Windows-Containerunterstützung für di
 ## <a name="prerequisites"></a>Voraussetzungen 
 - [Anforderungen von Windows-Containern](/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker, Version 2.3 und höher 
-- Selbstgehostete Integration Runtime, Version 4.11.7512.1 und höher 
+- Selbstgehostete Integration Runtime, Version 5.2.7713.1 und höher 
 ## <a name="get-started"></a>Erste Schritte 
 1.  Installieren von Docker und Aktivieren von Windows-Containern 
 2.  Herunterladen des Quellcodes von https://github.com/Azure/Azure-Data-Factory-Integration-Runtime-in-Windows-Container
@@ -40,7 +40,7 @@ docker build . -t "yourDockerImageName" 
 ```
 6.  Ausführen des Docker-Containers: 
 ```console
-docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATION_KEY" -e ENABLE_HA=true HA_PORT=8060 "yourDockerImageName"    
+docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATION_KEY" -e ENABLE_HA=true -e HA_PORT=8060 "yourDockerImageName"    
 ```
 > [!NOTE]
 > AUTH_KEY ist für diesen Befehl obligatorisch. NODE_NAME, ENABLE_HA und HA_PORT sind optional. Wenn Sie den Wert nicht festlegen, verwendet der Befehl die Standardwerte. Der Standardwert ENABLE_HA ist „false“, und HA_PORT ist 8060.

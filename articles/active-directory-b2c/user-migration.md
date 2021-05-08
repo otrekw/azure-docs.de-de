@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 04/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e60b80a4ebeaef7d31d4c0c1d9d4bfc41ec3a56
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: e4976deea08b8d0edc9a484f8a8ad4c07ad4512c
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256207"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070513"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrieren von Benutzern zu Azure AD B2C
 
@@ -43,9 +43,9 @@ Verwenden Sie die nahtlose Migration, wenn im alten Identitätsanbieter nicht au
 - Das Kennwort ist in einem unidirektionalen verschlüsselten Format gespeichert (etwa mit einer Hashfunktion).
 - Das Kennwort wurde vom alten Identitätsanbieter so gespeichert, dass Sie keinen Zugriff darauf haben. Dies kann beispielsweise der Fall sein, wenn der Identitätsanbieter Anmeldeinformationen per Webdienstaufruf überprüft.
 
-Bei der nahtlose Migration ist zwar ebenfalls eine Prämigration von Benutzerkonten erforderlich, anschließend wird jedoch eine [benutzerdefinierte Richtlinie](user-flow-overview.md) verwendet, um eine (von Ihnen erstellte) [REST-API](custom-policy-rest-api-intro.md) abzufragen und das Kennwort der einzelnen Benutzer jeweils bei der ersten Anmeldung festzulegen.
+Bei der nahtlose Migration ist zwar ebenfalls eine Prämigration von Benutzerkonten erforderlich, anschließend wird jedoch eine [benutzerdefinierte Richtlinie](user-flow-overview.md) verwendet, um eine (von Ihnen erstellte) [REST-API](api-connectors-overview.md) abzufragen und das Kennwort der einzelnen Benutzer jeweils bei der ersten Anmeldung festzulegen.
 
-Die nahtlose Migration umfasst somit zwei Phasen: *Prämigration* und *Festlegen der Anmeldeinformationen*.
+Die nahtlose Migration umfasst somit zwei Phasen: *Migrationsvorbereitung* und *Festlegen der Anmeldeinformationen*.
 
 ### <a name="phase-1-pre-migration"></a>Phase 1: Prämigration
 
@@ -67,15 +67,13 @@ Ein Beispiel für eine benutzerdefinierte Richtlinie und eine REST-API finden Si
 
 ![Flussdiagramm: Nahtlose Benutzermigration](./media/user-migration/diagram-01-seamless-migration.png)<br />*Diagramm: Ablauf der dynamischen Migration*
 
-## <a name="best-practices"></a>Bewährte Methoden
-
-### <a name="security"></a>Sicherheit
+## <a name="security"></a>Sicherheit
 
 Bei der nahtlosen Migration wird Ihre eigene benutzerdefinierte REST-API verwendet, um die Anmeldeinformationen eines Benutzers anhand der Angaben des alten Identitätsanbieters zu überprüfen.
 
 **Die REST-API muss vor Brute-Force-Angriffen geschützt sein.** Ein Angreifer kann mehrere Kennwörter übermitteln und so unter Umständen die Anmeldeinformationen eines Benutzers erraten. Beenden Sie zum Schutz vor derartigen Angriffen die Verarbeitung von Anforderungen für Ihre REST-API, wenn die Anzahl von Anmeldeversuchen einen bestimmten Schwellenwert übersteigt. Schützen Sie außerdem die Kommunikation zwischen Azure AD B2C und Ihrer REST-API. Informationen zum Schützen Ihrer RESTful-APIs für die Produktionsumgebung finden Sie unter [Schützen von RESTful-APIs](secure-rest-api.md).
 
-### <a name="user-attributes"></a>Benutzerattribute
+## <a name="user-attributes"></a>Benutzerattribute
 
 Nicht alle Informationen des alten Identitätsanbieter sollten zu Ihrem Azure AD B2C-Verzeichnis migriert werden. Ermitteln Sie vor der Migration, welche Benutzerattribute in Azure AD B2C gespeichert werden sollen.
 
@@ -92,10 +90,10 @@ Es empfiehlt sich, vor Beginn der Migration Ihr Verzeichnis zu bereinigen.
 
 - Identifizieren Sie die Benutzerattribute, die in Azure AD B2C gespeichert werden sollen, und migrieren Sie nur das, was Sie benötigen. Bei Bedarf können Sie [benutzerdefinierte Attribute](user-flow-custom-attributes.md) erstellen, um weitere Benutzerdaten zu speichern.
 - Wenn Sie aus einer Umgebung mit mehreren Authentifizierungsquellen migrieren, in der beispielsweise jede Anwendung über ein eigenes Benutzerverzeichnis verfügt, verwenden Sie als Migrationsziel ein einheitliches Konto in Azure AD B2C.
-- Wenn mehrere Anwendungen über unterschiedliche Benutzernamen verfügen, können diese mithilfe der Identitätensammlung in einem Azure AD B2C-Benutzerkonto gespeichert werden. Lassen Sie den Benutzer ein Kennwort wählen, und legen Sie dieses im Verzeichnis fest. Bei der nahtlosen Migration sollte beispielsweise nur das gewählte Kennwort im Azure AD B2C-Konto gespeichert werden.
-- Entfernen Sie nicht verwendete Benutzerkonten vor der Migration, oder migrieren Sie keine veralteten Konten.
+- Wenn mehrere Anwendungen über unterschiedliche Benutzernamen verfügen, können diese mithilfe der Identitätensammlung in einem Azure AD B2C-Benutzerkonto gespeichert werden. Lassen Sie den Benutzer ein Kennwort auswählen, und legen Sie dieses im Verzeichnis fest. Bei der nahtlosen Migration sollte beispielsweise nur das gewählte Kennwort im Azure AD B2C-Konto gespeichert werden.
+- Entfernen Sie nicht verwendete Benutzerkonten, oder migrieren Sie keine veralteten Konten.
 
-### <a name="password-policy"></a>Kennwortrichtlinie
+## <a name="password-policy"></a>Kennwortrichtlinie
 
 Wenn die Konten, die Sie migrieren möchten, nicht über die [hohe Kennwortsicherheit](../active-directory/authentication/concept-sspr-policy.md) verfügen, die von Azure AD B2C erzwungen wird, können Sie die Erzwingung sicherer Kennwörter deaktivieren. Weitere Informationen finden Sie unter [Eigenschaft „passwordPolicies“ (Kennwortrichtlinien)](user-profile-attributes.md#password-policy-attribute).
 

@@ -1,14 +1,14 @@
 ---
 title: Entfernen von VM-Erweiterungen über das Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
-ms.date: 01/22/2020
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: b0e114b314179d42ccd47b7d7bd534d3a824a411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5b4ff79d68ec9ff0cc61b9dbb7d3c5d7fe93598
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587662"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388277"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Aktivieren von Azure-VM-Erweiterungen über das Azure-Portal
 
@@ -16,6 +16,9 @@ In diesem Artikel erfahren Sie, wie Sie Azure-VM-Erweiterungen, die von Azure Ar
 
 > [!NOTE]
 > Die Key Vault-VM-Erweiterung (Vorschau) unterstützt keine Bereitstellung über das Azure-Portal, sondern lediglich über die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder eine Azure Resource Manager-Vorlage.
+
+> [!NOTE]
+> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu Azure-VMs finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
 
 ## <a name="enable-extensions-from-the-portal"></a>Aktivieren von Erweiterungen über das Portal
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e0801daa5bf83889be87987d440e377287b5ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c792888b65f331332c320deecbcd2b5f8d7e2ee3
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92366189"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175764"
 ---
 # <a name="conditional-access-block-access"></a>Bedingter Zugriff: Zugriff blockieren
 
@@ -79,6 +79,9 @@ Nachfolgend wird eine zweite Richtlinie erstellt, die für Benutzer von Microsof
    1. Wählen Sie **Auswählen**.
 1. Bestätigen Sie die Einstellungen, und legen Sie **Richtlinie aktivieren** auf **Nur Bericht** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
+
+> [!NOTE]
+> Richtlinien für den bedingten Zugriff werden durchgesetzt, wenn die First-Factor-Authentifizierung abgeschlossen ist. Der bedingte Zugriff nicht ist als erste Abwehrmaßnahme einer Organisation für Szenarien wie Denial-of-Service-Angriffe (DoS) gedacht, sondern kann Signale von diesen Ereignissen nutzen, um den Zugriff zu bestimmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

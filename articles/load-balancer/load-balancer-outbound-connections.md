@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 99f15afdab917fe28e22df8cb0e372b6c30c8526
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3b92ef3ce195a2eee9bce53e08d977593a9f1fc2
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027328"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477705"
 ---
 # <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>Verwendung von SNAT (Source Network Address Translation) für ausgehende Verbindungen
 
@@ -64,14 +64,16 @@ Um eindeutige Datenflüsse aufrechtzuerhalten, schreibt der Host den Quellport j
   * VM ohne öffentliche IP-Adresse
   * VM ohne öffentliche IP-Adresse und ohne Load Balancer Standard
         
- ### <a name="scenario-1-virtual-machine-with-public-ip"></a><a name="scenario1"></a> Szenario 1: VM mit öffentlicher IP-Adresse
+ ### <a name="scenario-1-virtual-machine-with-public-ip-either-with-or-without-a-load-balancer"></a><a name="scenario1"></a> Szenario 1: Virtueller Computer mit öffentlicher IP-Adresse mit oder ohne Lastenausgleich
 
  | Associations | Methode | IP-Protokolle |
  | ---------- | ------ | ------------ |
- | Öffentlicher Load Balancer oder eigenständig | [SNAT (Source Network Address Translation)](#snat) </br> Nicht verwendet. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (Encapsulating Security Payload) |
+ | Öffentlicher Load Balancer oder eigenständig | [SNAT (Source Network Address Translation)](#snat) </br> wird nicht verwendet. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (Encapsulating Security Payload) |
 
  #### <a name="description"></a>BESCHREIBUNG
 
+ Der gesamte Datenverkehr wird von der öffentlichen IP-Adresse des virtuellen Computers (IP-Adresse auf Instanzebene) wieder an den anfordernden Client geleitet.
+ 
  In Azure wird die öffentliche IP-Adresse verwendet, die der IP-Konfiguration der NIC einer Instanz für alle ausgehenden Datenflüsse zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. Es ist unerheblich, ob der virtuelle Computer einen Lastenausgleich aufweist oder nicht. Dieses Szenario hat Vorrang vor den anderen Szenarien. 
 
  Eine öffentliche IP-Adresse, die einem virtuellen Computer zugewiesen ist, ist eine 1:1-Beziehung (keine 1:n-Beziehung) und wird als zustandslose 1:1-NAT implementiert.

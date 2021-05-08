@@ -3,18 +3,18 @@ title: Migrieren von Datenbanken zu SQL Managed Instance mithilfe des Protokollw
 description: Es wird beschrieben, wie Sie Datenbanken aus SQL Server zu SQL Managed Instance migrieren, indem Sie den Protokollwiedergabedienst verwenden.
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/31/2021
-ms.openlocfilehash: 8e78db5b9d496c2ac13c9f1214b386770c11e21e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 730a03ce06efe96347d32409961638532823f6dc
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075882"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883578"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mit dem Protokollwiedergabedienst (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -400,9 +400,9 @@ Für den Protokollwiedergabedienst gelten die folgenden funktionalen Beschränku
 Verwenden Sie nach dem Starten des Protokollwiedergabediensts das Cmdlet für die Überwachung (`get-azsqlinstancedatabaselogreplay` oder `az_sql_midb_log_replay_show`), um den Status des Vorgangs anzuzeigen. Falls der Protokollwiedergabedienst nicht gestartet werden kann und ein Fehler angezeigt wird, sollten Sie eine Überprüfung auf die häufigsten Fehler durchführen:
 
 - Verfügt eine vorhandene Datenbank in SQL Managed Instance über den gleichen Namen wie die Datenbank, die aus SQL Server migriert werden soll? Lösen Sie diesen Konflikt auf, indem Sie eine der Datenbanken umbenennen.
-- Wurde für die Erstellung der Datenbanksicherung unter SQL Server die Option `CHECKSUM` verwendet?
-- Verfügt das SAS-Token ausschließlich über die Berechtigungen „Lesen“ und „Auflisten“ für den Protokollwiedergabedienst?
-- Haben Sie als SAS-Token für den Protokollwiedergabedienst die Zeichenfolge nach dem Fragezeichen (`?`) kopiert, die mit `sv=2020-02-10...` beginnt? 
+- Wurde die Datenbanksicherung in SQL Server mithilfe der Option `CHECKSUM` erstellt?
+- Verfügt das SAS-Token nur über die Berechtigungen „Lesen“ und „Auflisten“ für LRS?
+- Haben Sie das SAS-Token für LRS nach dem Fragezeichen (`?`) kopiert, dessen Inhalt mit `sv=2020-02-10...` beginnt? 
 - Stimmt die Gültigkeitsdauer des SAS-Tokens mit dem Zeitfenster für Starten und Abschließen der Migration überein? Aufgrund der unterschiedlichen Zeitzonen, die für SQL Managed Instance und das SAS-Token verwendet werden, kann es ggf. zu Konflikten kommen. Versuchen Sie, das SAS-Token erneut zu generieren und das Gültigkeitsdauer-Zeitfenster des Tokens vor und nach dem aktuellen Datum zu vergrößern.
 - Sind der Datenbankname, der Ressourcengruppenname und der Name der verwalteten Instanz richtig geschrieben?
 - Wenn Sie den Protokollwiedergabedienst im Modus „AutoVervollständigen“ gestartet haben: Wurde für die letzte Sicherungsdatei ein gültiger Dateiname angegeben?

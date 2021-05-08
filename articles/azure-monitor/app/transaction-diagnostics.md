@@ -4,12 +4,12 @@ description: Application Insights-End-to-End-Transaktionsdiagnose
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60365079c295e154ff0a38277c9ccdec35157e6e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746096"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481394"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Einheitliche komponentenübergreifende Transaktionsdiagnose
 
@@ -94,3 +94,6 @@ Die Zeitachsen im Transaktionsdiagramm gleichen Uhrabweichungen aus. Sie können
 
 Dies ist beabsichtigt. Alle zugehörigen Elemente über alle Komponenten hinweg stehen bereits auf der linken Seite zur Verfügung (oberer und unterer Abschnitt). Die neue Benutzeroberfläche weist zwei zugehörige Elemente auf, die von der linken Seite nicht abgedeckt werden: die gesamte Telemetrie fünf Minuten vor und nach dem Ereignis und die Benutzerzeitachse.
 
+*Bei der Verwendung des JavaScript SDK für die Transaktionsdiagnose werden mehr Ereignisse als erwartet Application Insights angezeigt. Gibt es eine Möglichkeit, weniger Ereignisse pro Transaktion zu sehen?*
+
+In der Transaktionsdiagnose werden alle Telemetriedaten in einem [einzelnen Vorgang](correlation.md#data-model-for-telemetry-correlation) angezeigt, die eine gemeinsame [Vorgangs-ID](data-model-context.md#operation-id) verwenden. Standardmäßig erstellt das Application Insights SDK für JavaScript einen neuen Vorgang für jede eindeutige Seitenansicht. In einer Single-Page-Anwendung (SPA) wird nur ein Seitenansichtsereignis generiert, und eine einzelne Vorgangs-ID wird für alle generierten Telemetriedaten verwendet. Dies kann dazu führen, dass viele Ereignisse mit demselben Vorgang korreliert werden. In diesen Szenarien können Sie die automatische Routenverfolgung verwenden, um automatisch neue Vorgänge für die Navigation in Ihrer Single-Page-App zu erstellen. Sie müssen [enableAutoRouteTracking](javascript.md#single-page-applications) aktivieren, damit bei jeder Aktualisierung der URL-Route (logische Seitenansicht) eine Seitenansicht generiert wird. Wenn Sie die Vorgangs-ID manuell aktualisieren möchten, können Sie `appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` aufrufen. Durch das manuelle Auslösen eines PageView-Ereignisses wird auch die Vorgangs-ID zurückgesetzt.

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5134c0eeaf3ebd1467b35cf825aa64bd1b445bd5
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 0b947d9169347c00b693f27a3683a76173188070
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010578"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175062"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -128,14 +128,14 @@ Die folgenden Anforderungen gelten für den Azure AD-Kennwortschutz-Proxydienst
 * Alle Computer, auf denen der Proxydienst für den Azure AD-Kennwortschutz gehostet wird, müssen so konfiguriert werden, dass Domänencontrollern die Anmeldung beim Proxydienst ermöglicht wird. Dies wird über die Zuweisung der Berechtigung „Auf diesen Computer vom Netzwerk aus zugreifen“ gesteuert.
 * Alle Computer, die den Proxydienst für den Azure AD-Kennwortschutz hosten, müssen so konfiguriert sein, dass sie ausgehenden HTTP-Datenverkehr mit TLS 1.2 zulassen.
 * Ein Konto vom Typ *Globaler Administrator* oder *Sicherheitsadministrator* zum Registrieren des Azure AD-Kennwortschutz-Proxydiensts und der Gesamtstruktur bei Azure AD.
-* Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die im Artikel [Setupprozeduren für die Anwendungsproxyumgebung](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) angegeben sind.
+* Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die im Artikel [Setupprozeduren für die Anwendungsproxyumgebung](../app-proxy/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) angegeben sind.
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Voraussetzungen für Microsoft Azure AD Connect Agent Updater
 
 Der Microsoft Azure AD Connect Agent Updater-Dienst wird zusammen mit dem Azure AD-Kennwortschutz-Proxydienst installiert. Damit der Microsoft Azure AD Connect Agent Updater-Dienst funktionieren kann, ist eine zusätzliche Konfiguration erforderlich:
 
 * Wenn in Ihrer Umgebung ein HTTP-Proxyserver verwendet wird, befolgen Sie die im Artikel [Verwenden von vorhandenen lokalen Proxyservern](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md) angegebenen Richtlinien.
-* Der Microsoft Azure AD Connect Agent Updater-Dienst erfordert auch die TLS 1.2-Schritte, die in den [TLS-Anforderungen](../manage-apps/application-proxy-add-on-premises-application.md#tls-requirements) angegeben werden.
+* Der Microsoft Azure AD Connect Agent Updater-Dienst erfordert auch die TLS 1.2-Schritte, die in den [TLS-Anforderungen](../app-proxy/application-proxy-add-on-premises-application.md#tls-requirements) angegeben werden.
 
 > [!WARNING]
 > Für den Azure AD-Kennwortschutz-Proxy und den Azure AD-Anwendungsproxy werden unterschiedliche Versionen des Microsoft Azure AD Connect Agent Updater-Diensts installiert. Daher beziehen sich die Anweisungen auf Inhalte für den Anwendungsproxy. Diese verschiedenen Versionen sind nicht kompatibel, wenn sie parallel installiert sind. Eine solche parallele Installation verhindert, dass der Agent Updater-Dienst Azure für Softwareupdates kontaktiert. Sie sollten also nie den Azure AD-Kennwortschutzproxy und den Azure AD-Anwendungsproxy auf demselben Computer installieren.

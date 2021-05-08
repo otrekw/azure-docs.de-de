@@ -2,14 +2,14 @@
 title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 02/17/2019
+ms.date: 04/14/2021
 ms.custom: references_regions
-ms.openlocfilehash: 349a48b6178d5e4618aa62d9f0c3a150fe561e05
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 5c74a34efe8075ab7a34fab4570d9513900b3f81
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284390"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517418"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -33,7 +33,7 @@ In der folgenden Tabelle werden die Features von Recovery Services-Tresoren besc
 --- | ---
 **Tresore im Abonnement** | Bis zu 500 Recovery Services-Tresore pro Abonnement.
 **Computer in einem Tresor** | Bis zu 2.000 Datenquellen für alle Workloads (z. B. virtuelle Azure-Computer, SQL Server-VM, MABS-Server usw.) können in einem einzigen Tresor geschützt werden.<br><br>Bis zu 1.000 virtuelle Azure-Computer pro Tresor.<br/><br/> Bis zu 50 MABS-Server können in einem einzigen Tresor registriert werden.
-**Datenquellen** | Die maximale Größe einer einzelnen [Datenquelle](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) ist 54.400 GB. Diese Beschränkung gilt nicht für Sicherungen von Azure-VMs. Es gilt keine Beschränkung der Datenmenge, die in einem Tresor gesichert werden kann.
+**Datenquellen** | Die maximale Größe einer einzelnen [Datenquelle](./backup-azure-backup-faq.yml#how-is-the-data-source-size-determined-) ist 54.400 GB. Diese Beschränkung gilt nicht für Sicherungen von Azure-VMs. Es gilt keine Beschränkung der Datenmenge, die in einem Tresor gesichert werden kann.
 **Sicherungen im Tresor** | **Virtuelle Azure-Computer:** Einmal täglich<br/><br/>**Per DPM/MABS geschützte Computer:** Zweimal pro Tag.<br/><br/> **Computer mit direkter Sicherung per MARS-Agent:** Dreimal pro Tag.
 **Sicherungen zwischen Tresoren** | Die Sicherung erfolgt innerhalb einer Region.<br/><br/> Sie benötigen einen Tresor in jeder Azure-Region, die VMs enthält, die Sie sichern möchten. Eine Sicherung in eine andere Region ist nicht möglich.
 **Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](./backup-azure-move-recovery-services-vault.md). Das Verschieben von Tresoren zwischen Regionen wird hingegen nicht unterstützt.
@@ -151,7 +151,7 @@ In Azure Backup wurde ein Feature zur regionsübergreifenden Wiederherstellung h
 
 | Sicherungsverwaltungstyp | Unterstützt                                                    | Unterstützte Regionen |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Wird bei virtuellen Azure-Computern mit verwalteten und nicht verwalteten Datenträgern unterstützt. Für klassische VMs nicht unterstützt. | Verfügbar in allen öffentlichen Azure- und Sovereign Cloud-Regionen mit Ausnahme von „Frankreich, Mitte“, „Australien, Mitte“, „Südafrika, Norden“, „VAE, Norden“, „Schweiz, Norden“, „Deutschland, Westen-Mitte“, „Norwegen, Osten“, „UG IOWA“ und „UG Virginia“. <br>Weitere Informationen zur Verwendung in diesen Regionen erhalten Sie von [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com). |
+| Azure VM               | Wird bei virtuellen Azure-Computern (einschließlich verschlüsselter virtueller Azure-Computer) mit verwalteten und nicht verwalteten Datenträgern unterstützt. Für klassische VMs nicht unterstützt. | Verfügbar in allen öffentlichen Azure- und Sovereign Cloud-Regionen mit Ausnahme von „Frankreich, Mitte“, „Australien, Mitte“, „Südafrika, Norden“, „VAE, Norden“, „Schweiz, Norden“, „Deutschland, Westen-Mitte“, „Norwegen, Osten“, „UG IOWA“ und „UG Virginia“. <br>Weitere Informationen zur Verwendung in diesen Regionen erhalten Sie von [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com). |
 | SQL/SAP HANA | In der Vorschau                                                      | Verfügbar in allen öffentlichen Azure- und Sovereign Cloud-Regionen mit Ausnahme von „Frankreich, Mitte“, „Australien, Mitte“, „Südafrika, Norden“, „VAE, Norden“, „Schweiz, Norden“, „Deutschland, Westen-Mitte“, „Norwegen, Osten“, „UG IOWA“ und „UG Virginia“. <br>Weitere Informationen zur Verwendung in diesen Regionen erhalten Sie von [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com). |
 | MARS-Agent/lokal  | Nein                                                           | –               |
 | AFS (Azure-Dateifreigaben)                 | Nein                                                           | –               |

@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3eecb584f468bc170f0325da8d734a1890691483
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45cdb9217eebf6e3129718a96d9f7b72a3ab62b3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601770"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533619"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Verwenden der Azure CLI zum Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host
 
@@ -27,7 +27,8 @@ Wenn Sie die Verschlüsselung auf dem Host aktivieren, werden die auf dem VM-Hos
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-Sie können die VM-Größen auch programmgesteuert ermitteln. Informationen dazu, wie Sie sie programmgesteuert abrufen können, finden Sie im Abschnitt [Ermitteln der unterstützten VM-Größen](#finding-supported-vm-sizes).
+Die vollständige Liste unterstützter VM-Größen kann programmgesteuert per Pull abgerufen werden. Informationen dazu, wie Sie sie programmgesteuert abrufen können, finden Sie im Abschnitt [Ermitteln der unterstützten VM-Größen](#finding-supported-vm-sizes).
+Ein Upgrade der VM-Größe führt zu einem Validierungsprozess, um zu überprüfen, ob die neue VM-Größe das EncryptionAtHost-Feature unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

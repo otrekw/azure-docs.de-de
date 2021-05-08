@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 41336d59d51685d5daf78a1809ce6c0df2cd6124
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da70f06bf2789bad300a29bd7307f69af2945756
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781312"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895863"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Verwalten von Azure AD B2C mit Microsoft Graph
 
@@ -37,7 +37,7 @@ Zum Verwenden der MS Graph-API und Interagieren mit Ressourcen auf Ihrem Azure A
 
 ## <a name="user-phone-number-management-beta"></a>Verwaltung der Telefonnummer des Benutzers (Beta)
 
-Eine Telefonnummer, mit der sich ein Benutzer per [SMS oder Sprachanruf](identity-provider-local.md#phone-sign-in-preview) oder per [mehrstufiger Authentifizierung](multi-factor-authentication.md) anmelden kann. Weitere Informationen finden Sie unter [Ressourcentyp „phoneAuthenticationMethod“](/graph/api/resources/phoneauthenticationmethod).
+Eine Telefonnummer, mit der sich ein Benutzer per [SMS oder Sprachanruf](identity-provider-local.md#phone-sign-in) oder per [mehrstufiger Authentifizierung](multi-factor-authentication.md) anmelden kann. Weitere Informationen finden Sie unter [Ressourcentyp „phoneAuthenticationMethod“](/graph/api/resources/phoneauthenticationmethod).
 
 - [Add (Hinzufügen)](/graph/api/authentication-post-phonemethods)
 - [Liste](/graph/api/authentication-list-phonemethods)
@@ -48,6 +48,9 @@ Eine Telefonnummer, mit der sich ein Benutzer per [SMS oder Sprachanruf](identit
 Hinweis: Durch den [Auflistungsvorgang](/graph/api/authentication-list-phonemethods) werden nur aktivierte Telefonnummern zurückgegeben. Die folgende Telefonnummer muss aktiviert werden, um mit den Auflistungsvorgängen verwendet werden zu können. 
 
 ![Aktivieren der Anmeldung per Telefon](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+
+> [!NOTE]
+> In der aktuellen Betaversion funktioniert diese API nur, wenn die Telefonnummer mit einem Leerzeichen zwischen der Länderkennzahl und der Telefonnummer gespeichert wird. Der Azure AD B2C-Dienst fügt dieses Leerzeichen derzeit nicht standardmäßig hinzu.
 
 ## <a name="self-service-password-reset-email-address-beta"></a>E-Mail-Adresse für Self-Service-Kennwortzurücksetzung (Beta)
 
@@ -140,7 +143,7 @@ Weitere Informationen zum Zugriff auf Azure AD B2C-Überwachungsprotokolle finde
 
 ## <a name="conditional-access"></a>Bedingter Zugriff
 
-- [Auflisten aller Richtlinien für bedingten Zugriff](/graph/api/conditionalaccessroot-list-policies?view=graph-rest-beta&tabs=http)
+- [Auflisten aller Richtlinien für bedingten Zugriff](/graph/api/conditionalaccessroot-list-policies?tabs=http)
 - [Lesezugriffeigenschaften und Beziehungen einer Richtlinie für bedingten Zugriff](/graph/api/conditionalaccesspolicy-get)
 - [Erstellen einer neuen Richtlinie für bedingten Zugriff](/graph/api/resources/application)
 - [Aktualisieren einer Richtlinie für bedingten Zugriff](/graph/api/conditionalaccesspolicy-update)
