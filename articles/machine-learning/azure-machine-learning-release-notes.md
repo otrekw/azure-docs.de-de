@@ -9,18 +9,116 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1bdc439bc281338fc3df95f7d82784a5eebf7a4a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166682"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288542"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
 In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro).
 
 __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wird, indem Sie die folgende URL kopieren und in Ihren Feedreader einfügen: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-04-19"></a>19.04.2021
+
+### <a name="azure-machine-learning-sdk-for-python-v1270"></a>Azure Machine Learning SDK für Python v1.27.0
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-core**
+    + Die Möglichkeit der Änderung des Standardwerts für das Timeout beim Hochladen von Artefakten über die Umgebungsvariable „AZUREML_ARTIFACTS_DEFAULT_TIMEOUT“ wurde hinzugefügt.
+    + Ein Fehler wurde behoben, durch den Docker-Einstellungen im Environment-Objekt von ScriptRunConfig nicht beachtet wurden.
+    + Partitionierung eines Datasets beim Kopieren in ein Ziel wird nun zugelassen.
+    + OutputDatasetConfig wurde ein benutzerdefinierter Modus hinzugefügt, mit dem die Übergabe von erstellten Datasets in Pipelines über eine Linkfunktion ermöglicht wird. Diese unterstützen Erweiterungen, die vorgenommen wurden, um die tabellarische Partitionierung für PRS zu aktivieren.
+    + azureml-core wurde der neue Computetyp KubernetesCompute hinzugefügt.
+  + **azureml-pipeline-core**
+    + OutputDatasetConfig wurde ein benutzerdefinierter Modus hinzugefügt. Außerdem können Benutzer nun erstellte Datasets in Pipelines über eine Linkfunktion übergeben. Dateipfadziele unterstützen Platzhalter. Diese unterstützen die Verbesserungen, die vorgenommen wurden, um die tabellarische Partitionierung für PRS zu aktivieren.
+    + azureml-core wurde der neue Computetyp KubernetesCompute hinzugefügt.
+  + **azureml-pipeline-steps**
+    + azureml-core wurde der neue Computetyp KubernetesCompute hinzugefügt.
+  + **azureml-synapse**
+    + Die URL der Spark-Benutzeroberfläche im Widget von Azure ML Synapse wurde aktualisiert.
+  + **azureml-train-automl-client**
+    + Der STL-Featurizer für die Vorhersageaufgabe verwendet jetzt eine stabilere Saisonabhängigkeitserkennung, die auf der Häufigkeit der Zeitreihen basiert.
+  + **azureml-train-core**
+    + Ein Fehler wurde behoben, durch den Docker-Einstellungen im Environment-Objekt nicht beachtet wurden.
+    + azureml-core wurde der neue Computetyp KubernetesCompute hinzugefügt.
+
+
+## <a name="2021-04-05"></a>05.04.2021
+
+### <a name="azure-machine-learning-sdk-for-python-v1260"></a>Azure Machine Learning SDK für Python v1.26.0
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-core**
+    + Ein Problem wurde behoben, bei dem Naive-Modelle in AutoMLStep-Ausführungen empfohlen wurden und zu Fehlern durch Verzögerungen oder rollierende Zeitfenster führten. Diese Modelle werden nicht empfohlen, wenn Zielwerte für die Verzögerung oder die Größe der rollierenden Zeitfenster festgelegt sind.
+    +  Die Konsolenausgabe beim Übermitteln einer AutoML-Ausführung wurde geändert, um einen Portallink zur Ausführung anzuzeigen.
+  + **azureml-core**
+    + Der HDFS-Modus wurde in der Dokumentation hinzugefügt.
+    + Unterstützung zum Verstehen von Dateidatasetpartitionen basierend auf der globalen Struktur wurde hinzugefügt.
+    + Unterstützung für das Aktualisieren der dem AzureML-Arbeitsbereich zugeordneten Containerregistrierung wurde hinzugefügt.
+    + Veraltete Environment-Attribute in DockerSection: „enabled“, „shared_volume“ und „arguments“ sind jetzt Teil von DockerConfiguration in RunConfiguration.
+    + Die Dokumentation zum Klonen mit der Pipeline-Befehlszeilenschnittstelle wurde aktualisiert.
+    + Die Portal-URIs wurden so aktualisiert, dass der Mandant für die Authentifizierung eingeschlossen wird.
+    + Der Experimentname wurde aus Ausführungs-URIs entfernt, um Umleitungen zu vermeiden. 
+    + Der Experiment-URI wurde aktualisiert, sodass die Experiment-ID verwendet wird.
+    + Fehlerbehebungen beim Anfügen von Remotecomputing mit der AzureML-Befehlszeilenschnittstelle.
+    + Die Portal-URIs wurden so aktualisiert, dass der Mandant für die Authentifizierung eingeschlossen wird.
+    + Der Experiment-URI wurde aktualisiert, sodass die Experiment-ID zu verwendet wird.
+  + **azureml-interpret**
+    + azureml-interpret wurde auf die Verwendung von interpret-community 0.17.0. aktualisiert.
+  + **azureml-opendatasets**
+    + Typvalidierung bei der Eingabe des Start- und Enddatums mit einer Fehleranzeige, wenn es sich nicht um einen datetime-Typ handelt.
+  + **azureml-parallel-run**
+    + [Experimentelles Feature] Der `partition_keys`-Parameter in ParallelRunConfig wurde hinzugefügt. Falls angegeben, werden die Eingabedatasets durch die darin angegebenen Schlüssel in Minibatches partitioniert. Es müssen alle Eingabedatasets partitioniert werden.
+  + **azureml-pipeline-steps**
+    + Fehlerbehebung: Unterstützung für path_on_compute beim Übergeben der Datasetkonfiguration als Download.
+    + RScriptStep wurde zugunsten von CommandStep für die Ausführung von R-Skripts in Pipelines als veraltet markiert. 
+    + EstimatorStep wurde zugunsten von CommandStep zum Ausführen von ML-Training (einschließlich verteiltem Training) in Pipelines als veraltet markiert.
+  + **azureml-sdk**
+    + python_requires wurde für azureml-sdk auf < 3.9 aktualisiert.
+  + **azureml-train-automl-client**
+    +  Die Konsolenausgabe beim Übermitteln einer AutoML-Ausführung wurde geändert, um einen Portallink zur Ausführung anzuzeigen.
+  + **azureml-train-core**
+    + Die DockerSection-Attribute „enabled“, „shared_volume“ und „arguments“ wurden zugunsten von DockerConfiguration mit ScriptRunConfig als veraltet markiert.
+    +  Verwenden von Azure Open Datasets für MNIST-Datenbank
+    + Hyperdrive-Fehlermeldungen wurden aktualisiert.
+
+
+## <a name="2021-03-22"></a>22.03.2021
+
+### <a name="azure-machine-learning-sdk-for-python-v1250"></a>Azure Machine Learning SDK für Python v1.25.0
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-core**
+    +  Die Konsolenausgabe beim Übermitteln einer AutoML-Ausführung wurde geändert, um einen Portallink zur Ausführung anzuzeigen.
+  + **azureml-core**
+    + Unterstützung für das Aktualisieren der Containerregistrierung für Arbeitsbereiche im SDK und an der Befehlszeilenschnittstelle wurde hinzugefügt.
+    + Die DockerSection-Attribute „enabled“, „shared_volume“ und „arguments“ wurden zugunsten von DockerConfiguration mit ScriptRunConfig als veraltet markiert.
+    + Die Dokumentation zum Klonen mit der Pipeline-Befehlszeilenschnittstelle wurde aktualisiert.
+    + Die Portal-URIs wurden so aktualisiert, dass der Mandant für die Authentifizierung eingeschlossen wird.
+    + Der Experimentname wurde aus Ausführungs-URIs entfernt, um Umleitungen zu vermeiden.
+    + Der Experiment-URI wurde aktualisiert, sodass die Experiment-ID verwendet wird.
+    + Fehlerbehebungen für das Anfügen von Remotecomputing mit der Azure-Befehlszeilenschnittstelle
+    + Die Portal-URIs wurden so aktualisiert, dass der Mandant für die Authentifizierung eingeschlossen wird.
+    + Unterstützung zum Verstehen von Dateidatasetpartitionen basierend auf der globalen Struktur wurde hinzugefügt.
+  + **azureml-interpret**
+    + azureml-interpret wurde auf die Verwendung von interpret-community 0.17.0. aktualisiert.
+  + **azureml-opendatasets**
+    + Typvalidierung bei der Eingabe des Start- und Enddatums mit einer Fehleranzeige, wenn es sich nicht um einen datetime-Typ handelt.
+  + **azureml-pipeline-core**
+    + Fehlerbehebung: Unterstützung für path_on_compute beim Übergeben der Datasetkonfiguration als Download.
+  + **azureml-pipeline-steps**
+    + Fehlerbehebung: Unterstützung für path_on_compute beim Übergeben der Datasetkonfiguration als Download.
+    + RScriptStep wurde zugunsten von CommandStep für die Ausführung von R-Skripts in Pipelines als veraltet markiert. 
+    + EstimatorStep wurde zugunsten von CommandStep zum Ausführen von ML-Training (einschließlich verteiltem Training) in Pipelines als veraltet markiert.
+  + **azureml-train-automl-runtime**
+    +  Die Konsolenausgabe beim Übermitteln einer AutoML-Ausführung wurde geändert, um einen Portallink zur Ausführung anzuzeigen.
+  + **azureml-train-core**
+    + Die DockerSection-Attribute „enabled“, „shared_volume“ und „arguments“ wurden zugunsten von DockerConfiguration mit ScriptRunConfig als veraltet markiert.
+    + Verwenden von Azure Open Datasets für MNIST-Datenbank
+    + Hyperdrive-Fehlermeldungen wurden aktualisiert.
+
 
 ## <a name="2021-03-31"></a>31.03.2021
 ### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure Machine Learning Studio Notebooks Erfahrung (Aktualisierung vom März)
@@ -38,6 +136,7 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
   + Links sind jetzt im Terminal anklickbar
   + Verbesserte IntelliSense-Leistung
 
+
 ## <a name="2021-03-08"></a>08.03.2021
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Azure Machine Learning SDK für Python v1.24.0
@@ -50,8 +149,6 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
     + Funktionalität zum Filtern von tabellarischen Datasets nach Spaltenwerten und Dateidatasets nach Metadaten hinzugefügt.
   + **azureml-contrib-fairness**
     + JSON-Schema in Drehscheibe für `azureml-contrib-fairness` eingefügt
-  + **azureml-contrib-k8s**
-    + „resource_id“ zum Anfügen muss jetzt bereitgestellt werden, anstatt der Ressourcengruppe und des Clusternamens.
   + **azureml-contrib-mir**
     + Indem die Einstellung „show_output“ beim Bereitstellen von Modellen auf „True“ festgelegt wird, wird die Rückschluss- und Bereitstellungskonfiguration wiedergegeben, bevor die Anforderung an den Server gesendet wird.
   + **azureml-core**
@@ -72,7 +169,7 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Oberfläche von Azure Machine Learning Studio Notebooks (Aktualisierung vom Februar)
 + **Neue Features**
   + [Natives Terminal (GA)](./how-to-access-terminal.md). Benutzer haben jetzt über das integrierte Terminal Zugriff auf ein integriertes Terminal und auf Git-Vorgänge.
-  + [Notebook-Codeausschnitte (Vorschauversion)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Häufig verwendete Azure ML-Codeauszüge sind jetzt direkt verfügbar. Navigieren Sie über die Symbolleiste zum Bereich mit den Codeausschnitten, oder aktivieren Sie mit STRG+LEERTASTE das Menü mit den Codeausschnitten.  
+  + Notebook-Codeausschnitte (Vorschauversion). Häufig verwendete Azure ML-Codeauszüge sind jetzt direkt verfügbar. Navigieren Sie über die Symbolleiste zum Bereich mit den Codeausschnitten, oder aktivieren Sie mit STRG+LEERTASTE das Menü mit den Codeausschnitten.  
   + [Tastenkombinationen](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts). Vollständige Parität mit den in Jupyter verfügbaren Tastenkombinationen. 
   + Angeben von Zellenparametern. Zeigt Benutzern, welche Zellen in einem Notebook Parameterzellen sind und über [Papermill](https://github.com/nteract/papermill) auf der Compute-Instanz parametrisierte Notebooks ausführen können.
   + Terminal- und Kernel-Sitzungs-Manager: Benutzer können alle Kernel und Terminalsitzungen verwalten, die auf ihrer Compute-Instanz ausgeführt werden.
@@ -343,7 +440,7 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
 
 Der Projekttyp für die Segmentierung von Bildinstanzen (Polygonanmerkungen) bei der Datenbeschriftung ist ab sofort verfügbar. Benutzer können also Polygone zeichnen und mit Anmerkungen um die Kontur der Objekte herum auf Bildern versehen. Benutzer können den einzelnen Objekten eine Klasse und ein Polygon zuweisen, das für ein Bild relevant ist.
 
-Weitere Informationen zum [Taggen von Bildern in einem Bezeichnungsprojekt](how-to-label-images.md)
+Weitere Informationen zum [Taggen von Bildern in einem Bezeichnungsprojekt](how-to-label-data.md)
 
 
 

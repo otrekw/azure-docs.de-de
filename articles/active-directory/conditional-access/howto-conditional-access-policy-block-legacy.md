@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 982c33c5c55e32ce48131a4b2f0911e4f23dd408
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6358f5589e785cfadf243ee2017434aad5dd94a9
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98877287"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176034"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Bedingter Zugriff: Blockieren älterer Authentifizierungsmethoden
 
@@ -43,6 +43,9 @@ Durch Ausführen der folgenden Schritte können Sie eine Richtlinie für bedingt
    1. Wählen Sie **Auswählen**.
 1. Bestätigen Sie die Einstellungen, und legen Sie **Richtlinie aktivieren** auf **Nur Bericht** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
+
+> [!NOTE]
+> Richtlinien für den bedingten Zugriff werden durchgesetzt, wenn die First-Factor-Authentifizierung abgeschlossen ist. Der bedingte Zugriff nicht ist als erste Abwehrmaßnahme einer Organisation für Szenarien wie Denial-of-Service-Angriffe (DoS) gedacht, sondern kann Signale von diesen Ereignissen nutzen, um den Zugriff zu bestimmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

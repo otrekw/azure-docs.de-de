@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 25d4774144ff4ea601badb1fb71b51c8142def26
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1c4760362e7c2b3965638b3213910b5b8cd6f079
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304108"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516177"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge-preview"></a>Veröffentlichen und Abonnieren mit Azure IoT Edge (Vorschau)
 
@@ -94,7 +94,7 @@ Von IoT Edge bereitgestellte Module verwenden [Authentifizierung mit symmetrisch
 Nachdem ein MQTT-Client für IoT Edge-Hub authentifiziert wurde, muss er zum Herstellen einer Verbindung autorisiert werden. Nachdem die Verbindung hergestellt wurde, muss sie zum Veröffentlichen oder Abonnieren in bestimmten Themen autorisiert werden. Diese Autorisierungen werden vom IoT Edge-Hub basierend auf seiner Autorisierungsrichtlinie erteilt. Die Autorisierungsrichtlinie ist eine Gruppe von als JSON-Struktur ausgedrückten Anweisungen, die an den IoT Edge-Hub über seinen Zwilling gesendet wird. Bearbeiten Sie einen IoT Edge-Hub-Zwilling, um dessen Autorisierungsrichtlinie zu konfigurieren.
 
 > [!NOTE]
-> Bei der öffentlichen Vorschau ist die Bearbeitung von Autorisierungsrichtlinien für den MQTT-Broker nur über Visual Studio, Visual Studio Code oder die Azure-Befehlszeilenschnittstelle verfügbar. Das Azure-Portal unterstützt zurzeit nicht die Bearbeitung des IoT Edge-Hub-Zwillings und seiner Autorisierungsrichtlinie.
+> Während der Public Preview-Phase werden Bereitstellungen mit MQTT-Brokerautorisierungsrichtlinien nur von der Azure CLI unterstützt. Das Azure-Portal unterstützt zurzeit nicht die Bearbeitung des IoT Edge-Hub-Zwillings und seiner Autorisierungsrichtlinie.
 
 Jede Autorisierungsrichtlinienanweisung besteht aus der Kombination von `identities`, den Auswirkungen von `allow` oder `deny` sowie `operations` und `resources`:
 
@@ -170,10 +170,11 @@ Beim Schreiben Ihrer Autorisierungsrichtlinie müssen Sie einige Punkte beachten
 - Standardmäßig werden alle Vorgänge abgelehnt.
 - Autorisierungsanweisungen werden in der Reihenfolge ausgewertet, in der sie in der JSON-Definition angezeigt werden. Sie beginnt mit einem Blick auf `identities` und wählt dann die ersten „allow“- oder „deny“-Anweisungen aus, die mit der Anforderung übereinstimmen. Bei Konflikten zwischen „allow“- und „deny“-Anweisungen hat die „deny“-Anweisung Priorität.
 - In der Autorisierungsrichtlinie können mehrere Variablen (z. B. Ersetzungen) verwendet werden:
-    - `{{iot:identity}}` stellt die Identität des zurzeit verbundenen Clients dar. Beispiele sind eine Geräteidentität wie `myDevice` oder eine Modulidentität wie `myEdgeDevice/SampleModule`.
-    - `{{iot:device_id}}` stellt die Identität des zurzeit verbundenen Geräts dar. Beispiele sind eine Geräteidentität wie `myDevice` oder die Geräteidentität, unter der ein Modul ausgeführt wird, etwa `myEdgeDevice`.
-    - `{{iot:module_id}}` stellt die Identität des zurzeit verbundenen Moduls dar. Diese Variable ist bei verbundenen Geräten leer oder eine Modulidentität wie `SampleModule`.
-    - `{{iot:this_device_id}}` stellt die Identität des IoT Edge-Geräts dar, auf dem die Autorisierungsrichtlinie ausgeführt wird. Beispiel: `myIoTEdgeDevice`.
+
+  - `{{iot:identity}}` stellt die Identität des zurzeit verbundenen Clients dar. Beispiele sind eine Geräteidentität wie `myDevice` oder eine Modulidentität wie `myEdgeDevice/SampleModule`.
+  - `{{iot:device_id}}` stellt die Identität des zurzeit verbundenen Geräts dar. Beispiele sind eine Geräteidentität wie `myDevice` oder die Geräteidentität, unter der ein Modul ausgeführt wird, etwa `myEdgeDevice`.
+  - `{{iot:module_id}}` stellt die Identität des zurzeit verbundenen Moduls dar. Diese Variable ist bei verbundenen Geräten leer oder eine Modulidentität wie `SampleModule`.
+  - `{{iot:this_device_id}}` stellt die Identität des IoT Edge-Geräts dar, auf dem die Autorisierungsrichtlinie ausgeführt wird. Beispiel: `myIoTEdgeDevice`.
 
 Die Themen zu „Autorisierungen für IoT Hub“ werden etwas anders als benutzerdefinierte Themen behandelt. Hier sind wichtige Punkte, die Sie beachten sollten:
 
@@ -220,40 +221,43 @@ Erstellen Sie zwei IoT-Geräte in IoT Hub, und rufen Sie deren Kennwörter ab. F
 
 1. Erstellen Sie zwei IoT-Geräte in IoT Hub, und machen Sie sie zu übergeordneten Elementen Ihres IoT Edge-Geräts:
 
-    ```azurecli-interactive
-    az iot hub device-identity create --device-id  sub_client --hub-name <iot_hub_name> --pd <edge_device_id>
-    az iot hub device-identity create --device-id  pub_client --hub-name <iot_hub_name> --pd <edge_device_id>
-    ```
+   ```azurecli-interactive
+   az iot hub device-identity create --device-id  sub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   az iot hub device-identity create --device-id  pub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   ```
 
 2. Rufen Sie deren Kennwörter durch Generieren eines SAS-Tokens ab:
 
-    - Für ein Gerät:
-    
-       ```azurecli-interactive
-       az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
-       ```
-    
-       Dabei ist „3600“ die Lebensdauer des SAS-Tokens in Sekunden (z. B. 3.600 = 1 Stunde).
-    
-    - Für ein Modul:
-    
-       ```azurecli-interactive
-       az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
-       ```
-    
-       Dabei ist „3600“ die Lebensdauer des SAS-Tokens in Sekunden (z. B. 3.600 = 1 Stunde).
+   - Für ein Gerät:
+
+     ```azurecli-interactive
+     az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
+     ```
+
+     Dabei ist „3600“ die Lebensdauer des SAS-Tokens in Sekunden (z. B. 3.600 = 1 Stunde).
+
+   - Für ein Modul:
+
+     ```azurecli-interactive
+     az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
+     ```
+
+     Dabei ist „3600“ die Lebensdauer des SAS-Tokens in Sekunden (z. B. 3.600 = 1 Stunde).
 
 3. Kopieren Sie das SAS-Token. Dies ist der Wert, der dem Schlüssel „sas“ aus der Ausgabe entspricht. Hier ist eine Beispielausgabe aus dem vorstehenden Azure CLI-Befehl:
 
-    ```
-    {
-       "sas": "SharedAccessSignature sr=example.azure-devices.net%2Fdevices%2Fdevice_1%2Fmodules%2Fmodule_a&sig=H5iMq8ZPJBkH3aBWCs0khoTPdFytHXk8VAxrthqIQS0%3D&se=1596249190"
-    }
-    ```
+   ```output
+   {
+      "sas": "SharedAccessSignature sr=example.azure-devices.net%2Fdevices%2Fdevice_1%2Fmodules%2Fmodule_a&sig=H5iMq8ZPJBkH3aBWCs0khoTPdFytHXk8VAxrthqIQS0%3D&se=1596249190"
+   }
+   ```
 
 ### <a name="authorize-publisher-and-subscriber-clients"></a>Autorisieren von Herausgeber- und Abonnentenclients
 
-Zum Autorisieren des Herausgebers und Abonnenten bearbeiten Sie den IoT Edge-Hub-Zwilling, indem Sie eine IoT Edge-Bereitstellung über Azure CLI, Visual Studio oder Visual Studio Code erstellen, um die folgende Autorisierungsrichtlinie einzubeziehen:
+Bearbeiten Sie zum Autorisieren des Herausgebers und Abonnenten den IoT Edge-Hub-Zwilling in einer IoT Edge-Bereitstellung, die die folgende Autorisierungsrichtlinie beinhaltet.
+
+>[!NOTE]
+>Aktuell können Bereitstellungen mit MQTT-Autorisierungseigenschaften nur über die Azure CLI auf IoT Edge-Geräte angewendet werden.
 
 ```json
 {
@@ -377,13 +381,13 @@ Erstellen Sie außerdem eine Route, z. B. `FROM /messages/* INTO $upstream`, zu
 
 Das Abrufen des Geräte-/Modulzwillings ist kein typisches MQTT-Muster. Der Client muss eine Anforderung für den Zwilling ausgeben, den IoT Hub bereitstellen wird.
 
-Zum Empfangen von Zwillingen muss der Client ein bestimmtes IoT Hub-Thema (`$iothub/twin/res/#`) abonnieren. Dieser Themenname wird von IoT Hub geerbt, und alle Clients müssen dasselbe Thema abonnieren. Dies bedeutet nicht, dass Geräte oder Module den Zwilling voneinander empfangen. IoT Hub und IoT Edge-Hub wissen, welcher Zwilling wohin übermittelt werden sollte, auch wenn alle Geräte auf denselben Themennamen lauschen. 
+Zum Empfangen von Zwillingen muss der Client ein bestimmtes IoT Hub-Thema (`$iothub/twin/res/#`) abonnieren. Dieser Themenname wird von IoT Hub geerbt, und alle Clients müssen dasselbe Thema abonnieren. Dies bedeutet nicht, dass Geräte oder Module den Zwilling voneinander empfangen. IoT Hub und IoT Edge-Hub wissen, welcher Zwilling wohin übermittelt werden sollte, auch wenn alle Geräte auf denselben Themennamen lauschen.
 
 Nachdem das Abonnement erstellt wurde, muss der Client den Zwilling anfordern, indem er eine Nachricht für ein bestimmtes IoT Hub-Thema (`$iothub/twin/GET/?rid=<request_id>/#`) veröffentlicht. Dabei ist `<request_id>` ein beliebiger Bezeichner. IoT Hub sendet dann seine Antwort mit den angeforderten Daten im Thema `$iothub/twin/res/200/?rid=<request_id>`, das der Client abonniert. Auf diese Weise kann ein Client seine Anforderungen mit den Antworten koppeln.
 
 ### <a name="receive-twin-patches"></a>Empfangen von Zwillingspatches
 
-Zum Empfangen von Zwillingspatches muss ein Client ein spezielles IoT Hub-Thema (`$iothub/twin/PATCH/properties/desired/#`) abonnieren. Nachdem das Abonnement erstellt wurde, empfängt der Client die von IoT Hub in diesem Thema gesendeten Zwillingspatches. 
+Zum Empfangen von Zwillingspatches muss ein Client ein spezielles IoT Hub-Thema (`$iothub/twin/PATCH/properties/desired/#`) abonnieren. Nachdem das Abonnement erstellt wurde, empfängt der Client die von IoT Hub in diesem Thema gesendeten Zwillingspatches.
 
 ### <a name="receive-direct-methods"></a>Empfangen von direkten Methoden
 
@@ -398,23 +402,23 @@ Weil das Senden einer direkten Methode ein HTTP-Aufruf ist, geschieht dies nicht
 Zum Verbinden von zwei MQTT-Brokern enthält der IoT Edge-Hub eine MQTT-Bridge. Eine MQTT-Bridge wird häufig zum Verbinden eines MQTT-Brokers verwendet, der auf einem anderen MQTT-Broker ausgeführt wird. In der Regel wird nur eine Teilmenge des lokalen Datenverkehrs an einen anderen Broker gepusht.
 
 > [!NOTE]
-> Die IoT Edge-Hub-Bridge kann zurzeit nur zwischen geschachtelten IoT Edge-Geräten verwendet werden. Sie kann nicht zum Senden von Daten an IoT Hub verwendet werden, da IoT Hub kein MQTT-Broker mit vollem Funktionsumfang ist. Weitere Informationen zur Unterstützung von IoT Hub-MQTT-Brokerfunktionen finden Sie unter [Kommunikation mit Ihrem IoT-Hub mithilfe des Protokolls MQTT](../iot-hub/iot-hub-mqtt-support.md). Weitere Informationen zum Schachteln von IoT Edge-Geräten finden Sie unter [Connect a downstream IoT Edge device to an Azure IoT Edge gateway](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices) (Herstellen einer Verbindung zwischen einem nachgeschalteten IoT Edge-Gerät und einem Azure IoT Edge-Gateway). 
+> Die IoT Edge-Hub-Bridge kann zurzeit nur zwischen geschachtelten IoT Edge-Geräten verwendet werden. Sie kann nicht zum Senden von Daten an IoT Hub verwendet werden, da IoT Hub kein MQTT-Broker mit vollem Funktionsumfang ist. Weitere Informationen zur Unterstützung von IoT Hub-MQTT-Brokerfunktionen finden Sie unter [Kommunikation mit Ihrem IoT-Hub mithilfe des Protokolls MQTT](../iot-hub/iot-hub-mqtt-support.md). Weitere Informationen zum Schachteln von IoT Edge-Geräten finden Sie unter [Konfigurieren von IoT Edge auf Geräten](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices).
 
 In einer geschachtelten Konfiguration fungiert die IoT Edge-Hub-MQTT-Bridge als Client des übergeordneten MQTT-Brokers. Daher müssen Autorisierungsregeln für den übergeordneten Edge-Hub so festgelegt werden, dass der untergeordnete Edge-Hub bestimmte benutzerdefinierte Themen veröffentlichen und abonnieren darf, für die die Bridge konfiguriert wurde.
 
 Die IoT Edge-MQTT-Bridge wird über eine JSON-Struktur konfiguriert, die an den IoT Edge-Hub über seinen Zwilling gesendet wird. Bearbeiten Sie einen IoT Edge-Hub-Zwilling, um seine MQTT-Bridge zu konfigurieren.
 
 > [!NOTE]
-> Bei der öffentlichen Vorschau ist die Konfiguration der MQTT-Bridge nur über Visual Studio, Visual Studio Code oder Azure CLI verfügbar. Das Azure-Portal unterstützt zurzeit nicht die Bearbeitung des IoT Edge-Hub-Zwillings und seiner MQTT-Bridgekonfiguration.
+> Während der Public Preview-Phase werden Bereitstellungen mit MQTT-Bridgekonfigurationen nur von der Azure CLI unterstützt. Das Azure-Portal unterstützt zurzeit nicht die Bearbeitung des IoT Edge-Hub-Zwillings und seiner MQTT-Bridgekonfiguration.
 
 Die MQTT-Bridge kann so konfiguriert werden, dass sie einen IoT Edge-Hub-MQTT-Broker mit mehreren externen Brokern verbindet. Für jeden externen Broker sind die folgenden Einstellungen erforderlich:
 
 - `endpoint` ist die Adresse des Remote-MQTT-Brokers, mit dem eine Verbindung hergestellt werden soll. Zurzeit werden nur übergeordnete IoT Edge-Geräte unterstützt, die durch die Variable `$upstream` definiert werden.
 - `settings` definiert, welche Themen für einen Endpunkt überbrückt werden müssen. Es kann mehrere Einstellungen pro Endpunkt geben, und zu dessen Konfiguration werden die folgenden Werte verwendet:
-    - `direction`: entweder `in` zum Abonnieren der Themen des Remotebrokers oder `out` zum Veröffentlichen in den Themen des Remotebrokers.
-    - `topic`: das abzugleichende Kernthemamuster. [MQTT-Platzhalter](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107) können zum Definieren dieses Musters verwendet werden. Auf dieses Themenmuster auf dem lokalen Broker und dem Remotebroker können unterschiedliche Präfixe angewendet werden.
-    - `outPrefix`: Ein Präfix, das auf das Muster `topic` auf dem Remotebroker angewandt wird.
-    - `inPrefix`: Ein Präfix, das auf das Muster `topic` auf dem lokalen Broker angewandt wird.
+  - `direction`: entweder `in` zum Abonnieren der Themen des Remotebrokers oder `out` zum Veröffentlichen in den Themen des Remotebrokers.
+  - `topic`: das abzugleichende Kernthemamuster. [MQTT-Platzhalter](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107) können zum Definieren dieses Musters verwendet werden. Auf dieses Themenmuster auf dem lokalen Broker und dem Remotebroker können unterschiedliche Präfixe angewendet werden.
+  - `outPrefix`: Ein Präfix, das auf das Muster `topic` auf dem Remotebroker angewandt wird.
+  - `inPrefix`: Ein Präfix, das auf das Muster `topic` auf dem lokalen Broker angewandt wird.
 
 Das folgende Beispiel zeigt eine IoT Edge-MQTT-Bridgekonfiguration, die alle in den Themen `alerts/#` eines übergeordneten IoT Edge-Geräts empfangenen Nachrichten auf einem untergeordneten IoT Edge-Gerät in denselben Themen erneut veröffentlicht und dann alle in den Themen `/local/telemetry/#` eines untergeordneten IoT Edge-Geräts gesendeten Nachrichten auf einem übergeordneten IoT Edge-Gerät in den Themen `/remote/messages/#` erneut veröffentlicht.
 

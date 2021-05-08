@@ -1,19 +1,19 @@
 ---
 title: 'Azure VMware Solution by CloudSimple: Einrichten von Workload-DNS und -DHCP für die private Cloud'
 description: Beschreibt das Einrichten von DNS und DHCP für Anwendungen und Workloads, die in ihrer privaten CloudSimple-Cloudumgebung ausgeführt werden.
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cdcb3cd7afa660909fad416ca455c041dc50321e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b8e5cddb8616cc346cce16cc64c6770699a94c6
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97896991"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176898"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>Einrichten von DNS- und DHCP-Anwendungen und -Workloads in der privaten CloudSimple-Cloud
 

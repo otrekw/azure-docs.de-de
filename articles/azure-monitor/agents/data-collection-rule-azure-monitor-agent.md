@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 8943986bf8e8c082889d3a0b18618ac54c75e6d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 884f048ac099cfc6b799fe266172a0eecef3db6f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022975"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478368"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)
 
@@ -110,7 +110,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe der REST-API eine Datensamml
 
 ## <a name="create-association-using-resource-manager-template"></a>Erstellen einer Zuordnung mithilfe einer Resource Manager-Vorlage
 
-Sie können eine Datensammlungsregel nicht mithilfe einer Resource Manager-Vorlage erstellen, das Erstellen einer Zuordnung zu einer Azure-VM oder einem Server mit Azure Arc-Unterstützung mithilfe einer Resource Manager-Vorlage ist jedoch möglich. Beispielvorlagen finden Sie unter [Beispiele für Resource Manager-Vorlagen für Datensammlungsregeln in Azure Monitor](./resource-manager-data-collection-rules.md).
+Sie können eine Zuordnung zu einer Azure-VM oder einem Server mit Azure Arc-Unterstützung mithilfe einer Resource Manager-Vorlage erstellen. Beispielvorlagen finden Sie unter [Beispiele für Resource Manager-Vorlagen für Datensammlungsregeln in Azure Monitor](./resource-manager-data-collection-rules.md).
 
 
 

@@ -1,19 +1,19 @@
 ---
-title: Wiederherstellen – Azure-Portal – Azure Database for MySQL – Flexible Server
-description: In diesem Artikel wird beschrieben, wie Sie Wiederherstellungsvorgänge in Azure Database for MySQL im Azure-Portal durchführen.
+title: Wiederherstellen einer Instanz von Azure Database for MySQL Flexible Server über das Azure-Portal
+description: In diesem Artikel wird beschrieben, wie Sie Wiederherstellungsvorgänge für Azure Database for MySQL Flexible Server über das Azure-Portal durchführen.
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
-ms.date: 09/21/2020
-ms.openlocfilehash: 062d53fcb122ebacd004d7dca5e11f5a883354cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/01/2021
+ms.openlocfilehash: 962a2cbdbcc238517616c9ade235eed9b8cae6f7
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241955"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502044"
 ---
-# <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>Zeitpunktwiederherstellung von Azure Database for MySQL – Flexible Server (Vorschau)
+# <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Zeitpunktwiederherstellung einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau) über das Azure-Portal
 
 
 > [!IMPORTANT]
@@ -37,12 +37,9 @@ Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der 
 
 3.  Klicken Sie auf der Seite „Übersicht“ auf **Wiederherstellen**.
 
-    [Platzhalter]
-
 4.  Die Wiederherstellungsseite wird angezeigt, und Sie können zwischen **Neuester Wiederherstellungspunkt** und „Benutzerdefinierter Wiederherstellungspunkt“ auswählen.
 
 5.  Wählen Sie **Neuester Wiederherstellungspunkt** aus.
-
 
 6.  Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein.
 
@@ -60,8 +57,6 @@ Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der 
 
 2.  Klicken Sie auf der Seite „Übersicht“ auf **Wiederherstellen**.
 
-    [Platzhalter]
-
 3.  Die Wiederherstellungsseite wird angezeigt, und Sie können zwischen „Frühester Wiederherstellungspunkt“ und „Benutzerdefinierter Wiederherstellungspunkt“ auswählen.
 
 4.  Wählen Sie **Benutzerdefinierter Wiederherstellungspunkt** aus.
@@ -70,14 +65,23 @@ Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der 
 
 6.  Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein.
 
-6.  Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein. 
-   
+6.  Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein.
+
     :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="Übersicht anzeigen":::
- 
+
 7.  Klicken Sie auf **OK**.
 
 8.  Es wird eine Benachrichtigung angezeigt, dass der Wiederherstellungsvorgang eingeleitet wurde.
 
-## <a name="next-steps"></a>Nächste Schritte
 
-Platzhalter
+## <a name="perform-post-restore-tasks"></a>Durchführen der Aufgaben nach der Wiederherstellung
+Nachdem die Wiederherstellung abgeschlossen ist, sollten Sie die folgenden Aufgaben durchführen, um Ihre Benutzer und Anwendungen wieder in den betriebsbereiten Zustand zu versetzen:
+
+- Umleiten von Clients und Clientanwendungen an den neuen Server, wenn der neue Server den ursprünglichen Server ersetzen soll.
+- Stellen Sie sicher, dass geeignete VNET-Regeln vorhanden sind, damit Benutzer eine Verbindung herstellen können. Diese Regeln werden nicht vom ursprünglichen Server kopiert.
+- Sicherstellen, dass geeignete Anmeldungen und Berechtigungen auf Datenbankebene vorhanden sind.
+- Konfigurieren von Warnungen nach Bedarf für den neuen Wiederherstellungsserver
+
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zur [Geschäftskontinuität](concepts-business-continuity.md)

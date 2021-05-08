@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml, contperf-fy21q2
-ms.openlocfilehash: e7da81e896c0d59af966cca2760b1adb163762aa
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 95fb2dfeea98b988eaeaea43efc4ea44fd6e33fd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067502"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770307"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Erkennen von Datendrift (Vorschau) in Datasets
 
@@ -28,7 +28,7 @@ Azure Machine Learning-Datasetmonitore (Vorschau) ermöglichen Folgendes:
 * **Überwachen von neuen Daten** auf Änderungen zwischen Baseline- und Zieldatasets.
 * **Erstellen von Profilen für Features in Daten**, um nachzuverfolgen, wie sich statistische Eigenschaften im Lauf der Zeit ändern.
 * **Einrichten von Warnungen zur Datendrift**, um bei potenziellen Problemen frühzeitig eine Benachrichtigung zu erhalten. 
-* **[Erstellen einer neuen Datasetversion](how-to-version-track-datasets)** , wenn Sie ermitteln, dass die Daten zu stark abgewichen sind.
+* **[Erstellen einer neuen Datasetversion](how-to-version-track-datasets.md)** , wenn eine zu starke Datenabweichung ermittelt wird.
 
 Für die Monitorerstellung wird ein [Azure Machine Learning-Dataset](how-to-create-register-datasets.md) verwendet. Das Dataset muss eine Zeitstempelspalte enthalten.
 
@@ -77,7 +77,7 @@ Der Datendriftalgorithmus misst Änderungen von Daten allgemein und bietet Hinwe
 
 Aus konzeptioneller Sicht gibt es drei primäre Szenarien für die Einrichtung von Datasetmonitoren in Azure Machine Learning.
 
-Szenario | BESCHREIBUNG
+Szenario | Beschreibung
 ---|---
 Überwachen der Nutzungsdaten eines Modells auf Drift gegenüber den Trainingsdaten | Angesichts der Tatsache, dass die Modellgenauigkeit abnimmt, wenn die Nutzungsdaten von den Trainingsdaten abweichen, können die Ergebnisse dieses Szenarios als Überwachung eines Proxys für die Modellgenauigkeit interpretiert werden.
 Überwachen eines Zeitreihendatasets auf Drift gegenüber einem vorherigen Zeitraum | Dieses Szenario ist allgemeiner und kann zum Überwachen von Datasets verwendet werden, die an Prozessen vor oder nach der Modellerstellung beteiligt sind.  Das Zieldataset muss über eine Zeitstempelspalte verfügen. Das Baselinedataset kann ein beliebiges tabellarische Dataset sein, das über gemeinsame Features mit dem Zieldataset verfügt.
@@ -232,7 +232,7 @@ monitor = monitor.enable_schedule()
 
 * **Monitoreinstellungen**:  Diese Einstellungen gelten für die geplante Datasetmonitor-Pipeline, die erstellt wird. 
 
-    | Einstellung | BESCHREIBUNG | Tipps | Veränderlich | 
+    | Einstellung | Beschreibung | Tipps | Veränderlich | 
     | ------- | ----------- | ---- | ------- |
     | Name | Name des Datasetmonitors. | | Nein |
     | Features | Liste der Features, die im Hinblick auf Datendrift im Lauf der Zeit analysiert werden. | Legen Sie diese Einstellung auf die Ausgabefeatures eines Modells fest, um eine konzeptionelle Drift zu messen. Schließen Sie keine Features ein, für die im Laufe der Zeit eine natürliche Drift auftritt (Monat, Jahr, Index usw.). Nach dem Anpassen der Featureliste können Sie einen Abgleich für alle vorhandenen Datendriftmonitore durchführen. | Ja | 
@@ -290,7 +290,7 @@ Die Metriken im Diagramm hängen von der Art des Features ab.
 
 * Numerische Features
 
-    | Metrik | BESCHREIBUNG |  
+    | Metrik | Beschreibung |  
     | ------ | ----------- |  
     | Wasserstein-Distanz | Der Mindestarbeitsaufwand, der für die Transformation der Baselineverteilung in die Zielverteilung erforderlich ist. |
     | Mittelwert | Durchschnittlicher Wert des Features. |

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 04/16/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 358e066631304e727d18d092bd4b9a5b2a0bb89a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d117ecaed626c6226a381c34b3d9a0f4f21175b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199608"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126793"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
 
@@ -47,15 +47,21 @@ Die [Application-Entität][MS-Graph-App-Entity] von Microsoft Graph definiert da
 ## <a name="service-principal-object"></a>Dienstprinzipalobjekt
 Um auf Ressourcen zugreifen zu können, die von einem Azure AD-Mandanten geschützt werden, muss die Entität, die Zugriff benötigt, durch einen Sicherheitsprinzipal dargestellt werden. Diese Anforderung gilt für Benutzer (Benutzerprinzipal) und Anwendungen (Dienstprinzipal). Der Sicherheitsprinzipal definiert die Zugriffsrichtlinie und Berechtigungen für den Benutzer/die Anwendung im Azure AD-Mandanten. Dies aktiviert die Kernfunktionen wie die Authentifizierung des Benutzers/der Anwendung während der Anmeldung und die Autorisierung beim Zugriff auf Ressourcen.
 
-Ein Dienstprinzipal ist die lokale Darstellung (bzw. Anwendungsinstanz) eines globalen Anwendungsobjekts in einem einzelnen Mandanten oder Verzeichnis. Ein Dienstprinzipal ist eine konkrete Instanz, die aus dem Anwendungsobjekt erstellt wird und bestimmte Eigenschaften von diesem Anwendungsobjekt erbt. Ein Dienstprinzipal wird in jedem Mandanten erstellt, in dem die Anwendung verwendet wird, und verweist auf das global eindeutige Anwendungsobjekt.  Das Dienstprinzipalobjekt definiert, was die App tatsächlich im jeweiligen Mandanten ausführen kann, wer auf die App zugreifen kann und auf welche Ressourcen die App zugreifen kann.
+Es gibt drei Dienstprinzipaltypen: „Anwendung“, „Verwaltete Identität“ und „Legacy“.
+
+Der erste Dienstprinzipaltyp ist die lokale Darstellung (bzw. Anwendungsinstanz) eines globalen Anwendungsobjekts in einem einzelnen Mandanten oder Verzeichnis. In diesem Fall ist der Dienstprinzipal eine konkrete Instanz, die aus dem Anwendungsobjekt erstellt wird und bestimmte Eigenschaften von diesem Anwendungsobjekt erbt. Ein Dienstprinzipal wird in jedem Mandanten erstellt, in dem die Anwendung verwendet wird, und verweist auf das global eindeutige Anwendungsobjekt.  Das Dienstprinzipalobjekt definiert, was die App tatsächlich im jeweiligen Mandanten ausführen kann, wer auf die App zugreifen kann und auf welche Ressourcen die App zugreifen kann.
 
 Wenn eine Anwendung die Berechtigung zum Zugriff auf Ressourcen in einem Mandanten erhält (bei der Registrierung oder [Zustimmung](developer-glossary.md#consent)), wird ein Dienstprinzipalobjekt erstellt. Sie können auch mit [Azure PowerShell](howto-authenticate-service-principal-powershell.md), der [Azure-Befehlszeilenschnittstelle](/cli/azure/create-an-azure-service-principal-azure-cli), [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http), im [Azure-Portal][AZURE-Portal] und mit anderen Tools Dienstprinzipalobjekte in einem Mandanten erstellen. Wenn Sie das Portal verwenden, wird beim Registrieren einer Anwendung automatisch ein Dienstprinzipal erstellt.
+
+Der zweite Dienstprinzipaltyp repräsentiert eine [verwaltete Identität](../managed-identities-azure-resources/overview.md). Dank verwalteter Identitäten müssen Entwickler keine Anmeldeinformationen mehr verwalten. Verwaltete Identitäten stellen eine Identität bereit, mit deren Hilfe Anwendungen eine Verbindung mit Ressourcen herstellen können, die die Azure AD-Authentifizierung unterstützen. Wenn eine verwaltete Identität aktiviert ist, wird in Ihrem Mandanten ein Dienstprinzipal erstellt, der diese verwaltete Identität repräsentiert. Dienstprinzipale, die verwaltete Identitäten repräsentieren, können Zugriff und Berechtigungen erhalten, sie können jedoch nicht direkt aktualisiert oder geändert werden.
+
+Der dritte Dienstprinzipaltyp repräsentiert eine Legacy-App (eine App, die vor der Einführung von App-Registrierungen oder über eine Legacybenutzeroberfläche erstellt wurden). Ein Legacydienstprinzipal kann Anmeldeinformationen, Dienstprinzipalnamen, Antwort-URLs und andere Eigenschaften aufweisen, die von einem autorisierten Benutzer bearbeitet werden können. Dieser Dienstprinzipaltyp kann jedoch keiner App-Registrierung zugeordnet werden. Ein Legacydienstprinzipal kann nur in dem Mandanten verwendet werden, in dem er erstellt wurde.
+
+Die [ServicePrincipal-Entität][MS-Graph-Sp-Entity] von Microsoft Graph definiert das Schema für die Eigenschaften eines Dienstprinzipalobjekts.
 
 Auf dem Blatt **Unternehmensanwendungen** im Portal werden die Dienstprinzipale in einem Mandanten aufgelistet und verwaltet. Sie können die Berechtigungen des Dienstprinzipals, die vom Benutzer genehmigten Berechtigungen, die Benutzer, die diese Genehmigung erteilt haben, die Anmeldeinformationen und mehr anzeigen.
 
 ![Blatt „Unternehmens-Apps“](./media/app-objects-and-service-principals/enterprise-apps-blade.png)
-
-Die [ServicePrincipal-Entität][MS-Graph-Sp-Entity] von Microsoft Graph definiert das Schema für die Eigenschaften eines Dienstprinzipalobjekts.
 
 ## <a name="relationship-between-application-objects-and-service-principals"></a>Beziehung zwischen Anwendungsobjekten und Dienstprinzipalen
 

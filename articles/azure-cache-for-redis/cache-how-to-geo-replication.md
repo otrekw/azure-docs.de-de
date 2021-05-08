@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 8701f7bcb2e7ff705e4f1d1b401f4eb3e680f28b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0be2bb59b46dc827001d89f8e0f1be23f35a714d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501038"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536094"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Konfigurieren der Georeplikation für Azure Cache for Redis-Instanzen (Premium)
 
@@ -42,7 +42,7 @@ Einige Funktionen werden für die Georeplikation nicht unterstützt:
 
 Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für Ihr verknüpftes Cachepaar:
 
-- Der sekundäre verknüpfte Cache ist schreibgeschützt: Sie können nur Daten lesen, jedoch keine Daten darin schreiben. 
+- Der sekundäre verknüpfte Cache ist schreibgeschützt: Sie können nur Daten lesen, jedoch keine Daten darin schreiben. Falls Sie Daten aus der sekundären Geoinstanz lesen möchten, beachten Sie Folgendes: Wenn zwischen der primären und der sekundären Geoinstanz eine vollständige Datensynchronisierung stattfindet (was bei einer Aktualisierung der primären oder sekundären Geoinstanz und auch in einigen Neustartszenarien geschieht), werden von der sekundären Geoinstanz bei jedem für sie ausgeführten Redis-Vorgang Fehler mit einem Hinweis auf die vollständige Datensynchronisierung ausgelöst, bis die vollständige Datensynchronisierung zwischen der primären und der sekundären Geoinstanz abgeschlossen ist. Anwendungen, die Daten aus der sekundären Geoinstanz lesen, müssen so gestaltet sein, dass sie auf die primäre Geoinstanz ausweichen, wenn von der sekundären Geoinstanz solche Fehler ausgelöst werden. 
 - Alle Daten, die vor dem Hinzufügen der Verknüpfung im sekundären verknüpften Cache enthalten waren, werden entfernt. Wenn die Georeplikation aber später entfernt wird, verbleiben die replizierten Daten im sekundären verknüpften Cache.
 - Sie können keinen dieser Caches [skalieren](cache-how-to-scale.md), während die Caches verknüpft sind.
 - Sie können die [Anzahl von Shards nicht ändern](cache-how-to-premium-clustering.md), wenn für den Cache das Clustering aktiviert ist.

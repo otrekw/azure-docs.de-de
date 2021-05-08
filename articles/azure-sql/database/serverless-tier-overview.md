@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 2/22/2021
-ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/16/2021
+ms.openlocfilehash: d5b0c8e60632be5e058900680dc376b7f0761150
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101658587"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781575"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ Automatisches Anhalten wird ausgelöst, wenn die folgenden Bedingungen für die 
 
 Es ist eine Option verfügbar, mit der AutoAnhalten ggf. deaktiviert werden kann.
 
-Die folgenden Features unterstützen AutoAnhalten nicht, sondern nur automatische Skalierung.  Bei Verwendung eines der folgenden Features sollte AutoAnhalten deaktiviert werden, und die Datenbank bleibt online (ungeachtet der Dauer der Inaktivität der Datenbank):
+Die folgenden Features unterstützen AutoAnhalten nicht, sondern nur automatische Skalierung.  Bei Verwendung eines der folgenden Features muss AutoAnhalten deaktiviert werden, und die Datenbank bleibt online (ungeachtet der Dauer der Inaktivität der Datenbank):
 
 - Georeplikation (aktive Georeplikation und Gruppen für automatisches Failover).
 - Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen.
@@ -255,7 +255,7 @@ Führen Sie zum Ändern der Ober- oder Untergrenze für V-Kerne sowie der Verzö
 
 ### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
-Führen Sie zum Ändern der Ober- oder Untergrenze für V-Kerne sowie der Verzögerung für das automatische Anhalten den Azure CLI-Befehl [az sql db update](/cli/azure/sql/db#az-sql-db-update) mit den Argumenten `capacity`, `min-capacity` und `auto-pause-delay` aus.
+Führen Sie zum Ändern der Ober- oder Untergrenze für V-Kerne sowie der Verzögerung für das automatische Anhalten den Azure CLI-Befehl [az sql db update](/cli/azure/sql/db#az_sql_db_update) mit den Argumenten `capacity`, `min-capacity` und `auto-pause-delay` aus.
 
 
 ## <a name="monitoring"></a>Überwachung
@@ -266,7 +266,7 @@ Die Ressourcen einer serverlosen Datenbank werden von App-Paket, SQL-Instanz und
 
 #### <a name="app-package"></a>App-Paket
 
-Das App-Paket ist die „Außengrenze“ der Ressourcenverwaltung für eine Datenbank, wobei es keine Rolle spielt, ob sich die Datenbank auf einer serverlosen oder einer bereitgestellten Computeebene befindet. Das App-Paket enthält die SQL-Instanz und externe Dienste, die zusammen sämtliche Benutzer- und Systemressourcen umfassen, die von einer Datenbank in SQL-Datenbank genutzt werden. Beispiele für externe Dienste sind R und die Volltextsuche. Die SQL-Instanz bestimmt generell die allgemeine Ressourcennutzung für das gesamte App-Paket.
+Das App-Paket ist die „Außengrenze“ der Ressourcenverwaltung für eine Datenbank, wobei es keine Rolle spielt, ob sich die Datenbank auf einer serverlosen oder einer bereitgestellten Computeebene befindet. Das App-Paket enthält die SQL-Instanz und externe Dienste wie Volltextsuche, die zusammen sämtliche Benutzer- und Systemressourcen umfassen, die von einer Datenbank in SQL-Datenbank genutzt werden. Die SQL-Instanz bestimmt generell die allgemeine Ressourcennutzung für das gesamte App-Paket.
 
 #### <a name="user-resource-pool"></a>Benutzerressourcenpool
 
