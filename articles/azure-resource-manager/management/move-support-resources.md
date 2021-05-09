@@ -1,14 +1,14 @@
 ---
 title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
-description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
+description: Eine Liste der Azure-Ressourcentypen, die in eine neue Ressourcengruppe, ein neues Abonnement oder eine neue Region verschoben werden können.
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: f3832a32f15debd8737aa16b0a9347b435a238c0
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.date: 04/23/2021
+ms.openlocfilehash: 90fd683a12dcc9f9d63003f1fd87332db5f2b9aa
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227448"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945987"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -112,6 +112,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
+> - [Microsoft.IoTHub](#microsoftiothub)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Microsoft.Kubernetes](#microsoftkubernetes)
@@ -203,73 +204,73 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 ## <a name="microsoftaad"></a>Microsoft.AAD
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | domainservices | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | domainservices | Nein | Nein |  Nein |
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | diagnosticsettings | Nein | Nein |
-> | diagnosticsettingscategories | Nein | Nein |
-> | privatelinkforazuread | Ja | Ja |
-> | tenants | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | diagnosticsettings | Nein | Nein | Nein |
+> | diagnosticsettingscategories | Nein | Nein | Nein |
+> | privatelinkforazuread | Ja | Ja | Nein |
+> | tenants | Ja | Ja | Nein |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | supportproviders | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | supportproviders | Nein | Nein | Nein |
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | aadsupportcases | Nein | Nein |
-> | addsservices | Nein | Nein |
-> | agents | Nein | Nein |
-> | anonymousapiusers | Nein | Nein |
-> | Konfiguration | Nein | Nein |
-> | logs | Nein | Nein |
-> | reports | Nein | Nein |
-> | servicehealthmetrics | Nein | Nein |
-> | services | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | aadsupportcases | Nein | Nein | Nein |
+> | addsservices | Nein | Nein | Nein |
+> | agents | Nein | Nein | Nein |
+> | anonymousapiusers | Nein | Nein | Nein |
+> | Konfiguration | Nein | Nein | Nein |
+> | logs | Nein | Nein | Nein |
+> | reports | Nein | Nein | Nein |
+> | servicehealthmetrics | Nein | Nein | Nein |
+> | services | Nein | Nein | Nein |
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | Konfigurationen | Nein | Nein |
-> | generaterecommendations | Nein | Nein |
-> | metadata | Nein | Nein |
-> | empfehlungen | Nein | Nein |
-> | suppressions | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | Konfigurationen | Nein | Nein | Nein |
+> | generaterecommendations | Nein | Nein | Nein |
+> | metadata | Nein | Nein | Nein |
+> | empfehlungen | Nein | Nein | Nein |
+> | suppressions | Nein | Nein | Nein |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | actionRules | Ja | Ja |
-> | alerts | Nein | Nein |
-> | alertslist | Nein | Nein |
-> | alertsmetadata | Nein | Nein |
-> | alertssummary | Nein | Nein |
-> | alertssummarylist | Nein | Nein |
-> | smartdetectoralertrules | Ja | Ja |
-> | smartgroups | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | actionRules | Ja | Ja | Nein |
+> | alerts | Nein | Nein | Nein |
+> | alertslist | Nein | Nein | Nein |
+> | alertsmetadata | Nein | Nein | Nein |
+> | alertssummary | Nein | Nein | Nein |
+> | alertssummarylist | Nein | Nein | Nein |
+> | smartdetectoralertrules | Ja | Ja | Nein |
+> | smartgroups | Nein | Nein | Nein |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | servers | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | servers | Ja | Ja | Nein |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
@@ -277,25 +278,25 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Ein auf die Verbrauchs-SKU festgelegter API Management-Dienst kann nicht verschoben werden.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | reportfeedback | Nein | Nein |
-> | Dienst | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | reportfeedback | Nein | Nein | Nein |
+> | Dienst | Ja | Ja | Ja (Vorlage verwenden) <br/><br/> [Regionsübergreifendes Verschieben von API Management](../../api-management/api-management-howto-migrate.md). |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | configurationstores | Ja | Ja |
-> | configurationstores/eventgridfilters | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | configurationstores | Ja | Ja | Nein |
+> | configurationstores/eventgridfilters | Nein | Nein | Nein |
 
 ## <a name="microsoftappplatform"></a>Microsoft.AppPlatform
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | spring | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | spring | Ja | Ja | Nein |
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 
@@ -303,39 +304,39 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | apiapps | Nein | Nein |
-> | appidentities | Nein | Nein |
-> | gateways | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | apiapps | Nein | Nein | Ja (Vorlage verwenden)<br/><br/> [Verschieben einer App Service-Apps in eine andere Region](../../app-service/manage-move-across-regions.md) |
+> | appidentities | Nein | Nein | Nein |
+> | gateways | Nein | Nein | Nein |
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | attestationproviders | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | attestationproviders | Ja | Ja | Nein |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | classicadministrators | Nein | Nein |
-> | dataaliases | Nein | Nein |
-> | denyassignments | Nein | Nein |
-> | elevateaccess | Nein | Nein |
-> | findorphanroleassignments | Nein | Nein |
-> | locks | Nein | Nein |
-> | Berechtigungen | Nein | Nein |
-> | policyassignments | Nein | Nein |
-> | policydefinitions | Nein | Nein |
-> | policysetdefinitions | Nein | Nein |
-> | privatelinkassociations | Nein | Nein |
-> | resourcemanagementprivatelinks | Nein | Nein |
-> | roleassignments | Nein | Nein |
-> | roleassignmentsusagemetrics | Nein | Nein |
-> | roledefinitions | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | classicadministrators | Nein | Nein | Nein |
+> | dataaliases | Nein | Nein | Nein |
+> | denyassignments | Nein | Nein | Nein |
+> | elevateaccess | Nein | Nein | Nein |
+> | findorphanroleassignments | Nein | Nein | Nein |
+> | locks | Nein | Nein | Nein |
+> | Berechtigungen | Nein | Nein | Nein |
+> | policyassignments | Nein | Nein | Nein |
+> | policydefinitions | Nein | Nein | Nein |
+> | policysetdefinitions | Nein | Nein | Nein |
+> | privatelinkassociations | Nein | Nein | Nein |
+> | resourcemanagementprivatelinks | Nein | Nein | Nein |
+> | roleassignments | Nein | Nein | Nein |
+> | roleassignmentsusagemetrics | Nein | Nein | Nein |
+> | roledefinitions | Nein | Nein | Nein |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -345,122 +346,122 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Verschieben Ihres Azure Automation-Kontos in ein anderes Abonnement](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json).
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | automationaccounts | Ja | Ja |
-> | automationaccounts/configurations | Ja | Ja |
-> | automationaccounts/runbooks | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | automationaccounts | Ja | Ja | Ja (Vorlage verwenden) <br/><br/> [Verwenden von Georeplikation](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |
+> | automationaccounts/configurations | Ja | Ja | Nein |
+> | automationaccounts/runbooks | Ja | Ja | Nein |
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | privateclouds | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | privateclouds | Ja | Ja | Nein |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | b2cdirectories | Ja | Ja |
-> | b2ctenants | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | b2cdirectories | Ja | Ja | Nein |
+> | b2ctenants | Nein | Nein | Nein |
 
 ## <a name="microsoftazuredata"></a>Microsoft.AzureData
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | datacontrollers | Nein | Nein |
-> | hybriddatamanagers | Nein | Nein |
-> | postgresinstances | Nein | Nein |
-> | sqlinstances | Nein | Nein |
-> | sqlmanagedinstances | Nein | Nein |
-> | sqlserverinstances | Nein | Nein |
-> | sqlserverregistrations | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | datacontrollers | Nein | Nein | Nein |
+> | hybriddatamanagers | Nein | Nein | Nein |
+> | postgresinstances | Nein | Nein | Nein |
+> | sqlinstances | Nein | Nein | Nein |
+> | sqlmanagedinstances | Nein | Nein | Nein |
+> | sqlserverinstances | Nein | Nein | Nein |
+> | sqlserverregistrations | Ja | Ja | Nein |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | cloudmanifestfiles | Nein | Nein |
-> | registrations | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | cloudmanifestfiles | Nein | Nein | Nein |
+> | registrations | Ja | Ja | Nein |
 
 ## <a name="microsoftazurestackhci"></a>Microsoft.AzureStackHCI
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | clusters | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | clusters | Nein | Nein | Nein |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | batchaccounts | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | batchaccounts | Ja | Ja | Batch-Konten können nicht direkt aus einer Region in eine andere verschoben werden, Sie können jedoch eine Vorlage verwenden, um eine Vorlage zu exportieren, sie zu ändern und dann die Vorlage in der neuen Region bereitzustellen. <br/><br/> Informationen zum [Verschieben eines Batch-Kontos zwischen Regionen](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | billingaccounts | Nein | Nein |
-> | billingperiods | Nein | Nein |
-> | billingpermissions | Nein | Nein |
-> | billingproperty | Nein | Nein |
-> | billingroleassignments | Nein | Nein |
-> | billingroledefinitions | Nein | Nein |
-> | departments | Nein | Nein |
-> | enrollmentaccounts | Nein | Nein |
-> | invoices | Nein | Nein |
-> | transfers | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | billingaccounts | Nein | Nein | Nein |
+> | billingperiods | Nein | Nein | Nein |
+> | billingpermissions | Nein | Nein | Nein |
+> | billingproperty | Nein | Nein | Nein |
+> | billingroleassignments | Nein | Nein | Nein |
+> | billingroledefinitions | Nein | Nein | Nein |
+> | departments | Nein | Nein | Nein |
+> | enrollmentaccounts | Nein | Nein | Nein |
+> | invoices | Nein | Nein | Nein |
+> | transfers | Nein | Nein | Nein |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | mapapis | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | mapapis | Nein | Nein | Nein |
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | biztalk | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | biztalk | Nein | Nein | Nein |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | blockchainmembers | Nein | Nein |
-> | cordamembers | Nein | Nein |
-> | watchers | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | blockchainmembers | Nein | Nein | Nein <br/><br/> Das Blockchain-Netzwerk kann keine Knoten in unterschiedlichen Regionen haben. |
+> | cordamembers | Nein | Nein | Nein |
+> | watchers | Nein | Nein | Nein |
 
 ## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | tokenservices | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | tokenservices | Nein | Nein | Nein |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | blueprintassignments | Nein | Nein |
-> | blueprints | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | blueprintassignments | Nein | Nein | Nein |
+> | blueprints | Nein | Nein | Nein |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | botservices | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | botservices | Ja | Ja | Nein |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
@@ -468,38 +469,38 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Weitere Informationen finden Sie unter [Einschränkungen beim Verschieben von Netzwerkressourcen](./move-limitations/networking-move-limitations.md).
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | redis | Ja | Ja |
-> | redisenterprise | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | redis | Ja | Ja | Nein |
+> | redisenterprise | Nein | Nein | Nein |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | appliedreservations | Nein | Nein |
-> | calculateexchange | Nein | Nein |
-> | calculateprice | Nein | Nein |
-> | calculatepurchaseprice | Nein | Nein |
-> | catalogs | Nein | Nein |
-> | commercialreservationorders | Nein | Nein |
-> | Börse | Nein | Nein |
-> | reservationorders | Nein | Nein |
-> | reservations | Nein | Nein |
-> | ressourcen | Nein | Nein |
-> | validatereservationorder | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | appliedreservations | Nein | Nein | Nein |
+> | calculateexchange | Nein | Nein | Nein |
+> | calculateprice | Nein | Nein | Nein |
+> | calculatepurchaseprice | Nein | Nein | Nein |
+> | catalogs | Nein | Nein | Nein |
+> | commercialreservationorders | Nein | Nein | Nein |
+> | Börse | Nein | Nein | Nein |
+> | reservationorders | Nein | Nein | Nein |
+> | reservations | Nein | Nein | Nein |
+> | ressourcen | Nein | Nein | Nein |
+> | validatereservationorder | Nein | Nein | Nein |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | cdnwebapplicationfirewallmanagedrulesets | Nein | Nein |
-> | cdnwebapplicationfirewallpolicies | Ja | Ja |
-> | edgenodes | Nein | Nein |
-> | profiles | Ja | Ja |
-> | profiles/endpoints | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | cdnwebapplicationfirewallmanagedrulesets | Nein | Nein | Nein |
+> | cdnwebapplicationfirewallpolicies | Ja | Ja | Nein |
+> | edgenodes | Nein | Nein | Nein |
+> | profiles | Ja | Ja | Nein |
+> | profiles/endpoints | Ja | Ja | Nein |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
@@ -507,9 +508,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | certificateorders | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | certificateorders | Ja | Ja | Nein |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -517,14 +518,14 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | capabilities | Nein | Nein |
-> | domainnames | Ja | Nein |
-> | quotas | Nein | Nein |
-> | resourcetypes | Nein | Nein |
-> | validatesubscriptionmoveavailability | Nein | Nein |
-> | virtualmachines | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | capabilities | Nein | Nein | Nein |
+> | domainnames | Ja | Nein | Nein |
+> | quotas | Nein | Nein | Nein |
+> | resourcetypes | Nein | Nein | Nein |
+> | validatesubscriptionmoveavailability | Nein | Nein | Nein |
+> | virtualmachines | Ja | Ja | Nein |
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
 
@@ -532,9 +533,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | classicinfrastructureresources | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | classicinfrastructureresources | Nein | Nein | Nein |
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
@@ -542,16 +543,16 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | capabilities | Nein | Nein |
-> | expressroutecrossconnections | Nein | Nein |
-> | expressroutecrossconnections/peerings | Nein | Nein |
-> | gatewaysupporteddevices | Nein | Nein |
-> | networksecuritygroups | Nein | Nein |
-> | quotas | Nein | Nein |
-> | reservedips | Nein | Nein |
-> | virtualnetworks | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | capabilities | Nein | Nein | Nein |
+> | expressroutecrossconnections | Nein | Nein | Nein |
+> | expressroutecrossconnections/peerings | Nein | Nein | Nein |
+> | gatewaysupporteddevices | Nein | Nein | Nein |
+> | networksecuritygroups | Nein | Nein | Nein |
+> | quotas | Nein | Nein | Nein |
+> | reservedips | Nein | Nein | Nein |
+> | virtualnetworks | Nein | Nein | Nein |
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
@@ -559,16 +560,16 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | disks | Nein | Nein |
-> | images | Nein | Nein |
-> | osimages | Nein | Nein |
-> | osplatformimages | Nein | Nein |
-> | publicimages | Nein | Nein |
-> | quotas | Nein | Nein |
-> | storageaccounts | Ja | Nein |
-> | vmimages | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | disks | Nein | Nein | Nein |
+> | images | Nein | Nein | Nein |
+> | osimages | Nein | Nein | Nein |
+> | osplatformimages | Nein | Nein | Nein |
+> | publicimages | Nein | Nein | Nein |
+> | quotas | Nein | Nein | Nein |
+> | storageaccounts | Ja | Nein | Ja |
+> | vmimages | Nein | Nein | Nein |
 
 ## <a name="microsoftclassicsubscription"></a>Microsoft.ClassicSubscription
 
@@ -576,24 +577,25 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | Vorgänge | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | Vorgänge | Nein | Nein | Nein |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Ja | Ja | Nein |
+> | Cognitive Search | Ja | Ja | Unterstützt mit manuellen Schritten.<br/><br/> Informationen zum [Verschieben Ihres Azure Cognitive Search-Diensts in eine andere Region](../../search/search-howto-move-across-regions.md) |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | ratecard | Nein | Nein |
-> | usageaggregates | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | ratecard | Nein | Nein | Nein |
+> | usageaggregates | Nein | Nein | Nein |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -601,439 +603,441 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Move guidance for virtual machines](./move-limitations/virtual-machines-move-limitations.md) (Anleitung zum Verschieben virtueller Computer).
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | availabilitysets | Ja | Ja |
-> | diskaccesses | Nein | Nein |
-> | diskencryptionsets | Nein | Nein |
-> | disks | Ja | Ja |
-> | galleries | Nein | Nein |
-> | galleries/images | Nein | Nein |
-> | galleries/images/versions | Nein | Nein |
-> | hostgroups | Nein | Nein |
-> | hostgroups/hosts | Nein | Nein |
-> | images | Ja | Ja |
-> | proximityplacementgroups | Ja | Ja |
-> | restorepointcollections | Nein | Nein |
-> | restorepointcollections/restorepoints | Nein | Nein |
-> | sharedvmextensions | Nein | Nein |
-> | sharedvmimages | Nein | Nein |
-> | sharedvmimages/versions | Nein | Nein |
-> | snapshots | Ja | Ja |
-> | sshpublickeys | Nein | Nein |
-> | virtualmachines | Ja | Ja |
-> | virtualmachines/extensions | Ja | Ja |
-> | virtualmachinescalesets | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | availabilitysets | Ja | Ja |  Ja <br/><br/> Verschieben Sie mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) Verfügbarkeitsgruppen. |
+> | diskaccesses | Nein | Nein | Nein |
+> | diskencryptionsets | Nein | Nein | Nein |
+> | disks | Ja | Ja | Ja <br/><br/> Verschieben Sie mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) Azure-VMs und zugehörige Datenträger. |
+> | galleries | Nein | Nein | Nein |
+> | galleries/images | Nein | Nein | Nein |
+> | galleries/images/versions | Nein | Nein | Nein |
+> | hostgroups | Nein | Nein | Nein |
+> | hostgroups/hosts | Nein | Nein | Nein |
+> | images | Ja | Ja | Nein |
+> | proximityplacementgroups | Ja | Ja | Nein |
+> | restorepointcollections | Nein | Nein | Nein |
+> | restorepointcollections/restorepoints | Nein | Nein | Nein |
+> | sharedvmextensions | Nein | Nein | Nein |
+> | sharedvmimages | Nein | Nein | Nein |
+> | sharedvmimages/versions | Nein | Nein | Nein |
+> | snapshots | Ja | Ja | Nein |
+> | sshpublickeys | Nein | Nein | Nein |
+> | virtualmachines | Ja | Ja | Ja <br/><br/> Verschieben Sie mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) Azure-VMs. |
+> | virtualmachines/extensions | Ja | Ja | Nein |
+> | virtualmachinescalesets | Ja | Ja | Nein |
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | aggregatedcost | Nein | Nein |
-> | balances | Nein | Nein |
-> | budgets | Nein | Nein |
-> | charges | Nein | Nein |
-> | costtags | Nein | Nein |
-> | credits | Nein | Nein |
-> | events | Nein | Nein |
-> | forecasts | Nein | Nein |
-> | lots | Nein | Nein |
-> | marketplaces | Nein | Nein |
-> | pricesheets | Nein | Nein |
-> | products | Nein | Nein |
-> | reservationdetails | Nein | Nein |
-> | reservationrecommendationdetails | Nein | Nein |
-> | reservationrecommendations | Nein | Nein |
-> | reservationsummaries | Nein | Nein |
-> | reservationtransactions | Nein | Nein |
-> | tags | Nein | Nein |
-> | tenants | Nein | Nein |
-> | terms | Nein | Nein |
-> | usagedetails | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | aggregatedcost | Nein | Nein | Nein |
+> | balances | Nein | Nein | Nein |
+> | budgets | Nein | Nein | Nein |
+> | charges | Nein | Nein | Nein |
+> | costtags | Nein | Nein | Nein |
+> | credits | Nein | Nein | Nein |
+> | events | Nein | Nein | Nein |
+> | forecasts | Nein | Nein | Nein |
+> | lots | Nein | Nein | Nein |
+> | marketplaces | Nein | Nein | Nein |
+> | pricesheets | Nein | Nein | Nein |
+> | products | Nein | Nein | Nein |
+> | reservationdetails | Nein | Nein | Nein |
+> | reservationrecommendationdetails | Nein | Nein | Nein |
+> | reservationrecommendations | Nein | Nein | Nein |
+> | reservationsummaries | Nein | Nein | Nein |
+> | reservationtransactions | Nein | Nein | Nein |
+> | tags | Nein | Nein | Nein |
+> | tenants | Nein | Nein | Nein |
+> | terms | Nein | Nein | Nein |
+> | usagedetails | Nein | Nein | Nein |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | containergroups | Nein | Nein |
-> | serviceassociationlinks | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | containergroups | Nein | Nein | Nein |
+> | serviceassociationlinks | Nein | Nein | Nein |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | registries | Ja | Ja |
-> | registries/agentpools | Ja | Ja |
-> | registries/buildtasks | Ja | Ja |
-> | registries/replications | Ja | Ja |
-> | registries/tasks | Ja | Ja |
-> | registries/webhooks | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | registries | Ja | Ja | Nein |
+> | registries/agentpools | Ja | Ja | Nein |
+> | registries/buildtasks | Ja | Ja | Nein |
+> | registries/replications | Ja | Ja | Nein |
+> | registries/tasks | Ja | Ja | Nein |
+> | registries/webhooks | Ja | Ja | Nein |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | containerservices | Nein | Nein |
-> | managedclusters | Nein | Nein |
-> | openshiftmanagedclusters | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | containerservices | Nein | Nein | Nein |
+> | managedclusters | Nein | Nein | Nein |
+> | openshiftmanagedclusters | Nein | Nein | Nein |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | applications | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | applications | Nein | Nein | Nein |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Nein | Nein | Nein |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | alerts | Nein | Nein |
-> | billingaccounts | Nein | Nein |
-> | budgets | Nein | Nein |
-> | cloudconnectors | Nein | Nein |
-> | connectors | Ja | Ja |
-> | departments | Nein | Nein |
-> | dimensions | Nein | Nein |
-> | enrollmentaccounts | Nein | Nein |
-> | exports | Nein | Nein |
-> | externalbillingaccounts | Nein | Nein |
-> | forecast | Nein | Nein |
-> | Abfrage | Nein | Nein |
-> | Registrieren | Nein | Nein |
-> | reportconfigs | Nein | Nein |
-> | reports | Nein | Nein |
-> | settings | Nein | Nein |
-> | showbackrules | Nein | Nein |
-> | views | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | alerts | Nein | Nein | Nein |
+> | billingaccounts | Nein | Nein | Nein |
+> | budgets | Nein | Nein | Nein |
+> | cloudconnectors | Nein | Nein | Nein |
+> | connectors | Ja | Ja | Nein |
+> | departments | Nein | Nein | Nein |
+> | dimensions | Nein | Nein | Nein |
+> | enrollmentaccounts | Nein | Nein | Nein |
+> | exports | Nein | Nein | Nein |
+> | externalbillingaccounts | Nein | Nein | Nein |
+> | forecast | Nein | Nein | Nein |
+> | Abfrage | Nein | Nein | Nein |
+> | Registrieren | Nein | Nein | Nein |
+> | reportconfigs | Nein | Nein | Nein |
+> | reports | Nein | Nein | Nein |
+> | settings | Nein | Nein | Nein |
+> | showbackrules | Nein | Nein | Nein |
+> | views | Nein | Nein | Nein |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | hubs | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | hubs | Nein | Nein | Nein |
 
 ## <a name="microsoftcustomerlockbox"></a>Microsoft.CustomerLockbox
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | requests | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | requests | Nein | Nein | Nein |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | associations | Nein | Nein |
-> | resourceproviders | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | associations | Nein | Nein | Nein |
+> | resourceproviders | Ja | Ja | Nein |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | jobs | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | jobs | Nein | Nein | Nein |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | availableskus | Nein | Nein |
-> | databoxedgedevices | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | availableskus | Nein | Nein | Nein |
+> | databoxedgedevices | Nein | Nein | Nein |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | workspaces | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | workspaces | Nein | Nein | Nein |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | catalogs | Ja | Ja |
-> | datacatalogs | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | catalogs | Ja | Ja | Nein |
+> | datacatalogs | Nein | Nein | Nein |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | connectionmanagers | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | connectionmanagers | Nein | Nein | Nein |
 
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | packages | Nein | Nein |
-> | plans | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | packages | Nein | Nein | Nein |
+> | plans | Nein | Nein | Nein |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | datafactories | Ja | Ja |
-> | factories | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | datafactories | Ja | Ja | Nein |
+> | factories | Ja | Ja | Nein |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | datalakeaccounts | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | datalakeaccounts | Nein | Nein | Nein |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Ja | Ja | Nein |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Ja | Ja | Nein |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | services | Nein | Nein |
-> | services/projects | Nein | Nein |
-> | slots | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | services | Nein | Nein | Nein |
+> | services/projects | Nein | Nein | Nein |
+> | slots | Nein | Nein | Nein |
 
 ## <a name="microsoftdataprotection"></a>Microsoft.DataProtection
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | backupvaults | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ---------- |
+> | backupvaults | Nein | Nein | Nein |
 
 ## <a name="microsoftdatashare"></a>Microsoft.DataShare
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Ja | Ja | Nein |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | servers | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | servers | Ja | Ja | Zum Verschieben eines vorhandenen Servers können Sie ein regionsübergreifendes Lesereplikat verwenden. [Weitere Informationen](../../postgresql/howto-move-regions-portal.md)<br/><br/> Wenn der Dienst mit georedundantem Sicherungsspeicher bereitgestellt wird, können Sie die Geowiederherstellung für die Wiederherstellung in anderen Regionen verwenden. [Weitere Informationen](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | flexibleServers | Nein | Nein |
-> | servers | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | flexibleServers | Nein | Nein | Nein |
+> | servers | Ja | Ja | Zum Verschieben eines vorhandenen Servers können Sie ein regionsübergreifendes Lesereplikat verwenden. [Weitere Informationen](../../mysql/howto-move-regions-portal.md)
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | flexibleServers | Nein | Nein |
-> | servergroups | Nein | Nein |
-> | servers | Ja | Ja |
-> | serversv2 | Ja | Ja |
-> | singleservers | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | flexibleServers | Nein | Nein | Nein |
+> | servergroups | Nein | Nein | Nein |
+> | servers | Ja | Ja | Zum Verschieben eines vorhandenen Servers können Sie ein regionsübergreifendes Lesereplikat verwenden. [Weitere Informationen](../../postgresql/howto-move-regions-portal.md)
+> | serversv2 | Ja | Ja | Nein |
+> | singleservers | Ja | Ja | Nein |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | artifactsources | Ja | Ja |
-> | rollouts | Ja | Ja |
-> | servicetopologies | Ja | Ja |
-> | servicetopologies/services | Ja | Ja |
-> | servicetopologies/services/serviceunits | Ja | Ja |
-> | steps | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | artifactsources | Ja | Ja | Nein |
+> | rollouts | Ja | Ja | Nein |
+> | servicetopologies | Ja | Ja | Nein |
+> | servicetopologies/services | Ja | Ja | Nein |
+> | servicetopologies/services/serviceunits | Ja | Ja | Nein |
+> | steps | Ja | Ja | Nein |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft.DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | applicationgroups | Ja | Ja |
-> | hostpools | Ja | Ja |
-> | workspaces | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | applicationgroups | Ja | Ja | Nein |
+> | hostpools | Ja | Ja | Nein |
+> | workspaces | Ja | Ja | Nein |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | elasticpools | Nein | Nein |
-> | elasticpools/iothubtenants | Nein | Nein |
-> | iothubs | Ja | Ja |
-> | provisioningservices | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | elasticpools | Nein | Nein | Nein. Die Ressource wird nicht verfügbar gemacht. |
+> | elasticpools/iothubtenants | Nein | Nein | Nein. Die Ressource wird nicht verfügbar gemacht. |
+> | iothubs | Ja | Ja | Ja. [Weitere Informationen](../../iot-hub/iot-hub-how-to-clone.md) |
+> | provisioningservices | Ja | Ja | Nein |
 
 ## <a name="microsoftdevops"></a>Microsoft.DevOps
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | pipelines | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | pipelines | Ja | Ja | Nein |
+> | Controller | **Ausstehend** | **Ausstehend** | Nein |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | Controller | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | Controller | Ja | Ja | Nein |
+> | AKS-Cluster | **Ausstehend** | **Ausstehend** | Nein<br/><br/> [Weitere Informationen](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) zum Verschieben in eine andere Region.
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | labcenters | Nein | Nein |
-> | labs | Ja | Nein |
-> | labs/environments | Ja | Ja |
-> | labs/servicerunners | Ja | Ja |
-> | labs/virtualmachines | Ja | Nein |
-> | schedules | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | labcenters | Nein | Nein | Nein |
+> | labs | Ja | Nein | Nein |
+> | labs/environments | Ja | Ja | Nein |
+> | labs/servicerunners | Ja | Ja | Nein |
+> | labs/virtualmachines | Ja | Nein | Nein |
+> | schedules | Ja | Ja | Nein |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | digitaltwinsinstances | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | digitaltwinsinstances | Nein | Nein | Ja, durch Neuerstellen von Ressourcen in einer neuen Region. [Weitere Informationen](../../digital-twins/how-to-move-regions.md) |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | databaseaccountnames | Nein | Nein |
-> | databaseaccounts | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | databaseaccountnames | Nein | Nein | Nein |
+> | databaseaccounts | Ja | Ja | Nein |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | domains | Ja | Ja |
-> | generatessorequest | Nein | Nein |
-> | topleveldomains | Nein | Nein |
-> | validatedomainregistrationinformation | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | domains | Ja | Ja | Nein |
+> | generatessorequest | Nein | Nein | Nein |
+> | topleveldomains | Nein | Nein | Nein |
+> | validatedomainregistrationinformation | Nein | Nein | Nein |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | services | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | services | Ja | Ja | Nein |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | domains | Ja | Ja |
-> | eventsubscriptions | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. |
-> | extensiontopics | Nein | Nein |
-> | partnernamespaces | Ja | Ja |
-> | partnerregistrations | Nein | Nein |
-> | partnertopics | Ja | Ja |
-> | systemtopics | Ja | Ja |
-> | topics | Ja | Ja |
-> | topictypes | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | domains | Ja | Ja | Nein |
+> | eventsubscriptions | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. | Nein |
+> | extensiontopics | Nein | Nein | Nein |
+> | partnernamespaces | Ja | Ja | Nein |
+> | partnerregistrations | Nein | Nein | Nein |
+> | partnertopics | Ja | Ja | Nein |
+> | systemtopics | Ja | Ja | Nein |
+> | topics | Ja | Ja | Nein |
+> | topictypes | Nein | Nein | Nein |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | clusters | Ja | Ja |
-> | Namespaces | Ja | Ja |
-> | sku | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | clusters | Ja | Ja | Nein |
+> | Namespaces | Ja | Ja | Ja (mit Vorlage)<br/><br/> [Verschieben eines Event Hub-Namespace in eine andere Region](../../event-hubs/move-across-regions.md) |
+> | sku | Nein | Nein | Nein |
 
 ## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | experimentworkspaces | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | experimentworkspaces | Nein | Nein | Nein |
 
 ## <a name="microsoftfalcon"></a>Microsoft.Falcon
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | Namespaces | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | Namespaces | Ja | Ja | Nein |
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | featureproviders | Nein | Nein |
-> | Features | Nein | Nein |
-> | providers | Nein | Nein |
-> | subscriptionfeatureregistrations | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | featureproviders | Nein | Nein | Nein |
+> | Features | Nein | Nein | Nein |
+> | providers | Nein | Nein | Nein |
+> | subscriptionfeatureregistrations | Nein | Nein | Nein |
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Nein | Nein | Nein |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | automanagedaccounts | Nein | Nein |
-> | automanagedvmconfigurationprofiles | Nein | Nein |
-> | guestconfigurationassignments | Nein | Nein |
-> | software | Nein | Nein |
-> | softwareupdateprofile | Nein | Nein |
-> | softwareupdates | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | automanagedaccounts | Nein | Nein | Nein |
+> | automanagedvmconfigurationprofiles | Nein | Nein | Nein |
+> | guestconfigurationassignments | Nein | Nein | Nein |
+> | software | Nein | Nein | Nein |
+> | softwareupdateprofile | Nein | Nein | Nein |
+> | softwareupdates | Nein | Nein | Nein |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | hanainstances | Nein | Nein |
-> | sapmonitors | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | hanainstances | Nein | Nein | Nein |
+> | sapmonitors | Nein | Nein | Nein |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | dedicatedhsms | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | dedicatedhsms | Nein | Nein | Nein |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -1043,115 +1047,123 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Beim Verschieben eines HDInsight-Clusters in ein neues Abonnement sollten Sie zunächst andere Ressourcen (z.B. das Speicherkonto) verschieben. Verschieben Sie erst anschließend den HDInsight-Cluster.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | clusters | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | clusters | Ja | Ja | Nein |
 
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | services | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | services | Ja | Ja | Nein |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | machines | Ja | Ja |
-> | machines/extensions | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | machines | Ja | Ja | Nein |
+> | machines/extensions | Ja | Ja | Nein |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | datamanagers | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | datamanagers | Ja | Ja | Nein |
 
 ## <a name="microsofthybridnetwork"></a>Microsoft.HybridNetwork
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | devices | Nein | Nein |
-> | vnfs | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | devices | Nein | Nein | Nein |
+> | vnfs | Nein | Nein | Nein |
 
 ## <a name="microsofthydra"></a>Microsoft.Hydra
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | components | Nein | Nein |
-> | networkscopes | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | components | Nein | Nein | Nein |
+> | networkscopes | Nein | Nein | Nein |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | jobs | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | jobs | Ja | Ja | Nein |
 
-## <a name="microsoftinsights"></a>microsoft.insights
+## <a name="microsoftinsights"></a>Microsoft.Insights
 
 > [!IMPORTANT]
 > Berücksichtigen Sie beim Verschieben in ein neues Abonnement die [Abonnementkontingente](azure-subscription-service-limits.md#azure-monitor-limits).
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | actiongroups | Ja | Ja |
-> | activitylogalerts | Nein | Nein |
-> | alertrules | Ja | Ja |
-> | autoscalesettings | Ja | Ja |
-> | baseline | Nein | Nein |
-> | components | Ja | Ja |
-> | datacollectionrules | Nein | Nein |
-> | diagnosticsettings | Nein | Nein |
-> | diagnosticsettingscategories | Nein | Nein |
-> | eventcategories | Nein | Nein |
-> | eventtypes | Nein | Nein |
-> | extendeddiagnosticsettings | Nein | Nein |
-> | guestdiagnosticsettings | Nein | Nein |
-> | listmigrationdate | Nein | Nein |
-> | logdefinitions | Nein | Nein |
-> | logprofiles | Nein | Nein |
-> | logs | Nein | Nein |
-> | metricalerts | Nein | Nein |
-> | metricbaselines | Nein | Nein |
-> | metricbatch | Nein | Nein |
-> | metricdefinitions | Nein | Nein |
-> | metricnamespaces | Nein | Nein |
-> | metrics | Nein | Nein |
-> | migratealertrules | Nein | Nein |
-> | migratetonewpricingmodel | Nein | Nein |
-> | myworkbooks | Nein | Nein |
-> | notificationgroups | Nein | Nein |
-> | privatelinkscopes | Nein | Nein |
-> | rollbacktolegacypricingmodel | Nein | Nein |
-> | scheduledqueryrules | Ja | Ja |
-> | Topologie | Nein | Nein |
-> | Transaktionen | Nein | Nein |
-> | vminsightsonboardingstatuses | Nein | Nein |
-> | webtests | Ja | Ja |
-> | webtests/gettestresultfile | Nein | Nein |
-> | workbooks | Ja | Ja |
-> | workbooktemplates | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Ja | Ja | Nein. [Weitere Informationen](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region) |
+> | actiongroups | Ja | Ja | Nein |
+> | activitylogalerts | Nein | Nein | Nein |
+> | alertrules | Ja | Ja | Nein |
+> | autoscalesettings | Ja | Ja | Nein |
+> | baseline | Nein | Nein | Nein |
+> | components | Ja | Ja | Nein |
+> | datacollectionrules | Nein | Nein | Nein |
+> | diagnosticsettings | Nein | Nein | Nein |
+> | diagnosticsettingscategories | Nein | Nein | Nein |
+> | eventcategories | Nein | Nein | Nein |
+> | eventtypes | Nein | Nein | Nein |
+> | extendeddiagnosticsettings | Nein | Nein | Nein |
+> | guestdiagnosticsettings | Nein | Nein | Nein |
+> | listmigrationdate | Nein | Nein | Nein |
+> | logdefinitions | Nein | Nein | Nein |
+> | logprofiles | Nein | Nein | Nein |
+> | logs | Nein | Nein | Nein |
+> | metricalerts | Nein | Nein | Nein |
+> | metricbaselines | Nein | Nein | Nein |
+> | metricbatch | Nein | Nein | Nein |
+> | metricdefinitions | Nein | Nein | Nein |
+> | metricnamespaces | Nein | Nein | Nein |
+> | metrics | Nein | Nein | Nein |
+> | migratealertrules | Nein | Nein | Nein |
+> | migratetonewpricingmodel | Nein | Nein | Nein |
+> | myworkbooks | Nein | Nein | Nein |
+> | notificationgroups | Nein | Nein | Nein |
+> | privatelinkscopes | Nein | Nein | Nein |
+> | rollbacktolegacypricingmodel | Nein | Nein | Nein |
+> | scheduledqueryrules | Ja | Ja | Nein |
+> | Topologie | Nein | Nein | Nein |
+> | Transaktionen | Nein | Nein | Nein |
+> | vminsightsonboardingstatuses | Nein | Nein | Nein |
+> | webtests | Ja | Ja | Nein |
+> | webtests/gettestresultfile | Nein | Nein | Nein |
+> | workbooks | Ja | Ja | Nein |
+> | workbooktemplates | Ja | Ja | Nein |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | apptemplates | Nein | Nein |
-> | iotapps | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | apptemplates | Nein | Nein | Nein |
+> | iotapps | Ja | Ja | Nein |
+
+## <a name="microsoftiothub"></a>Microsoft.IoTHub
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | iothub | Ja | Ja | Ja (Hub klonen) <br/><br/> [Klonen eines IoT-Hubs in eine andere Region](../../iot-hub/iot-hub-how-to-clone.md) |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | graph | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | graph | Ja | Ja | Nein |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -1159,236 +1171,238 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Für die Datenträgerverschlüsselung verwendete Schlüsseltresore können nicht in einer Ressourcengruppe im gleichen Abonnement oder zwischen Abonnements verschoben werden.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | deletedvaults | Nein | Nein |
-> | hsmpools | Nein | Nein |
-> | managedhsms | Nein | Nein |
-> | vaults | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | deletedvaults | Nein | Nein | Nein |
+> | hsmpools | Nein | Nein | Nein |
+> | managedhsms | Nein | Nein | Nein |
+> | vaults | Ja | Ja | Nein |
 
 ## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | connectedclusters | Ja | Ja |
-> | registeredsubscriptions | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | connectedclusters | Ja | Ja | Nein |
+> | registeredsubscriptions | Nein | Nein | Nein |
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft.KubernetesConfiguration
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | sourcecontrolconfigurations | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | sourcecontrolconfigurations | Nein | Nein | Nein |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | clusters | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | clusters | Ja | Ja | Nein |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | labaccounts | Nein | Nein |
-> | users | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | labaccounts | Nein | Nein | Nein |
+> | users | Nein | Nein | Nein |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Nein | Nein | Nein |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Nein | Nein | Nein, dies ist ein globaler Dienst. |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | hostingenvironments | Nein | Nein |
-> | integrationaccounts | Ja | Ja |
-> | integrationserviceenvironments | Ja | Nein |
-> | integrationserviceenvironments/managedapis | Ja | Nein |
-> | isolatedenvironments | Nein | Nein |
-> | workflows | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | hostingenvironments | Nein | Nein | Nein |
+> | integrationaccounts | Ja | Ja | Nein |
+> | integrationserviceenvironments | Ja | Nein | Nein |
+> | integrationserviceenvironments/managedapis | Ja | Nein | Nein |
+> | isolatedenvironments | Nein | Nein | Nein |
+> | workflows | Ja | Ja | Nein |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | commitmentplans | Nein | Nein |
-> | webservices | Ja | Nein |
-> | workspaces | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | commitmentplans | Nein | Nein | Nein |
+> | webservices | Ja | Nein | Nein |
+> | workspaces | Ja | Ja | Nein |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | operationalizationclusters | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | operationalizationclusters | Nein | Nein | Nein |
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
-> | teamaccounts | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Nein | Nein | Nein |
+> | teamaccounts | Nein | Nein | Nein |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Nein | Nein | Nein |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | workspaces | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | workspaces | Nein | Nein | Nein |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | configurationassignments | Nein | Nein |
-> | maintenanceconfigurations | Ja | Ja |
-> | updates | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | configurationassignments | Nein | Nein | Ja. [Weitere Informationen](../../virtual-machines/move-region-maintenance-configuration.md) |
+> | maintenanceconfigurations | Ja | Ja | Ja. [Weitere Informationen](../../virtual-machines/move-region-maintenance-configuration-resources.md) |
+> | updates | Nein | Nein | Nein |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | Identitäten | Nein | Nein |
-> | userassignedidentities | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | Identitäten | Nein | Nein | Nein |
+> | userassignedidentities | Nein | Nein | Nein |
 
 ## <a name="microsoftmanagednetwork"></a>Microsoft.ManagedNetwork
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | managednetworks | Nein | Nein |
-> | managednetworks/managednetworkgroups | Nein | Nein |
-> | managednetworks/managednetworkpeeringpolicies | Nein | Nein |
-> | Benachrichtigung | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | managednetworks | Nein | Nein | Nein |
+> | managednetworks/managednetworkgroups | Nein | Nein | Nein |
+> | managednetworks/managednetworkpeeringpolicies | Nein | Nein | Nein |
+> | Benachrichtigung | Nein | Nein | Nein |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | marketplaceregistrationdefinitions | Nein | Nein |
-> | registrationassignments | Nein | Nein |
-> | registrationdefinitions | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | marketplaceregistrationdefinitions | Nein | Nein | Nein |
+> | registrationassignments | Nein | Nein | Nein |
+> | registrationdefinitions | Nein | Nein | Nein |
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | getentities | Nein | Nein |
-> | managementgroups | Nein | Nein |
-> | managementgroups/settings | Nein | Nein |
-> | ressourcen | Nein | Nein |
-> | starttenantbackfill | Nein | Nein |
-> | tenantbackfillstatus | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | getentities | Nein | Nein | Nein |
+> | managementgroups | Nein | Nein | Nein |
+> | managementgroups/settings | Nein | Nein | Nein |
+> | ressourcen | Nein | Nein | Nein |
+> | starttenantbackfill | Nein | Nein | Nein |
+> | tenantbackfillstatus | Nein | Nein | Nein |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Ja | Ja |
-> | accounts/privateatlases | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Ja | Ja | Nein, Azure Maps ist ein räumlicher Dienst. |
+> | accounts/privateatlases | Ja | Ja | Nein |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | offers | Nein | Nein |
-> | offertypes | Nein | Nein |
-> | privategalleryitems | Nein | Nein |
-> | privatestoreclient | Nein | Nein |
-> | privatestores | Nein | Nein |
-> | products | Nein | Nein |
-> | publishers | Nein | Nein |
-> | Registrieren | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | offers | Nein | Nein | Nein |
+> | offertypes | Nein | Nein | Nein |
+> | privategalleryitems | Nein | Nein | Nein |
+> | privatestoreclient | Nein | Nein | Nein |
+> | privatestores | Nein | Nein | Nein |
+> | products | Nein | Nein | Nein |
+> | publishers | Nein | Nein | Nein |
+> | Registrieren | Nein | Nein | Nein |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | classicdevservices | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | classicdevservices | Nein | Nein | Nein |
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | agreements | Nein | Nein |
-> | offertypes | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | agreements | Nein | Nein | Nein |
+> | offertypes | Nein | Nein | Nein |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | mediaservices | Ja | Ja |
-> | mediaservices/liveevents | Ja | Ja |
-> | mediaservices/streamingendpoints | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | mediaservices | Ja | Ja | Nein |
+> | mediaservices/liveevents | Ja | Ja | Nein |
+> | mediaservices/streamingendpoints | Ja | Ja | Nein |
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft.Microservices4Spring
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | appclusters | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | appclusters | Nein | Nein | Nein |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | assessmentprojects | Nein | Nein |
-> | migrateprojects | Nein | Nein |
-> | movecollections | Nein | Nein |
-> | projects | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | assessmentprojects | Nein | Nein | Nein |
+> | migrateprojects | Nein | Nein | Nein |
+> | movecollections | Nein | Nein | Nein |
+> | projects | Nein | Nein | Nein |
 
 ## <a name="microsoftmixedreality"></a>Microsoft.MixedReality
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | holographicsbroadcastaccounts | Nein | Nein |
-> | objectunderstandingaccounts | Nein | Nein |
-> | remoterenderingaccounts | Ja | Ja |
-> | spatialanchorsaccounts | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ---------- |
+> | holographicsbroadcastaccounts | Nein | Nein | Nein |
+> | objectunderstandingaccounts | Nein | Nein | Nein |
+> | remoterenderingaccounts | Ja | Ja | Nein |
+> | spatialanchorsaccounts | Ja | Ja | Nein |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | netappaccounts | Nein | Nein |
-> | netappaccounts/capacitypools | Nein | Nein |
-> | netappaccounts/capacitypools/volumes | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | netappaccounts | Nein | Nein | Nein |
+> | netappaccounts/capacitypools | Nein | Nein | Nein |
+> | netappaccounts/capacitypools/volumes | Nein | Nein | Nein |
+> | netappaccounts/capacitypools/volumes/mounttargets | Nein | Nein | Nein |
+> | netappaccounts/capacitypools/volumes/snapshots | Nein | Nein | Nein |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -1396,88 +1410,88 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Move guidance for networking resources](./move-limitations/networking-move-limitations.md) (Anleitung zum Verschieben von Netzwerkressourcen).
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | applicationgateways | Nein | Nein |
-> | applicationgatewaywebapplicationfirewallpolicies | Nein | Nein |
-> | applicationsecuritygroups | Ja | Ja |
-> | azurefirewalls | Nein | Nein |
-> | bastionhosts | Nein | Nein |
-> | bgpservicecommunities | Nein | Nein |
-> | connections | Ja | Ja |
-> | ddoscustompolicies | Ja | Ja |
-> | ddosprotectionplans | Nein | Nein |
-> | dnszones | Ja | Ja |
-> | expressroutecircuits | Nein | Nein |
-> | expressroutegateways | Nein | Nein |
-> | expressrouteserviceproviders | Nein | Nein |
-> | firewallpolicies | Ja | Ja |
-> | frontdoors | Nein | Nein |
-> | ipallocations | Ja | Ja |
-> | ipgroups | Ja | Ja |
-> | loadbalancers | Ja: Basic-SKU<br> Ja: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
-> | localnetworkgateways | Ja | Ja |
-> | natgateways | Nein | Nein |
-> | networkexperimentprofiles | Nein | Nein |
-> | networkintentpolicies | Ja | Ja |
-> | networkinterfaces | Ja | Ja |
-> | networkprofiles | Nein | Nein |
-> | networksecuritygroups | Ja | Ja |
-> | networkwatchers | Nein | Nein |
-> | networkwatchers/connectionmonitors | Ja | Nein |
-> | networkwatchers/flowlogs | Ja | Nein |
-> | networkwatchers/pingmeshes | Ja | Nein |
-> | p2svpngateways | Nein | Nein |
-> | privatednszones | Ja | Ja |
-> | privatednszones/virtualnetworklinks | Ja | Ja |
-> | privatednszonesinternal | Nein | Nein |
-> | privateendpointredirectmaps | Nein | Nein |
-> | privateendpoints | Nein | Nein |
-> | privatelinkservices | Nein | Nein |
-> | publicipaddresses | Ja: Basic-SKU<br>Ja: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
-> | publicipprefixes | Ja | Ja |
-> | routefilters | Nein | Nein |
-> | routetables | Ja | Ja |
-> | securitypartnerproviders | Ja | Ja |
-> | serviceendpointpolicies | Ja | Ja |
-> | trafficmanagergeographichierarchies | Nein | Nein |
-> | trafficmanagerprofiles | Ja | Ja |
-> | trafficmanagerprofiles/heatmaps | Nein | Nein |
-> | trafficmanagerusermetricskeys | Nein | Nein |
-> | virtualhubs | Nein | Nein |
-> | virtualnetworkgateways | Ja | Ja |
-> | virtualnetworks | Ja | Ja |
-> | virtualnetworktaps | Nein | Nein |
-> | virtualrouters | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | applicationgateways | Nein | Nein | Nein |
+> | applicationgatewaywebapplicationfirewallpolicies | Nein | Nein | Nein |
+> | applicationsecuritygroups | Ja | Ja | Nein |
+> | azurefirewalls | Nein | Nein | Nein |
+> | bastionhosts | Nein | Nein | Nein |
+> | bgpservicecommunities | Nein | Nein | Nein |
+> | connections | Ja | Ja | Nein |
+> | ddoscustompolicies | Ja | Ja | Nein |
+> | ddosprotectionplans | Nein | Nein | Nein |
+> | dnszones | Ja | Ja | Nein |
+> | expressroutecircuits | Nein | Nein | Nein |
+> | expressroutegateways | Nein | Nein | Nein |
+> | expressrouteserviceproviders | Nein | Nein | Nein |
+> | firewallpolicies | Ja | Ja | Nein |
+> | frontdoors | Nein | Nein | Nein |
+> | ipallocations | Ja | Ja | Nein |
+> | ipgroups | Ja | Ja | Nein |
+> | loadbalancers | Ja: Basic-SKU<br> Ja: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja <br/><br/> Verschieben Sie in- und externe Lastenausgleichsmodule mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md). |
+> | localnetworkgateways | Ja | Ja | Nein |
+> | natgateways | Nein | Nein | Nein |
+> | networkexperimentprofiles | Nein | Nein | Nein |
+> | networkintentpolicies | Ja | Ja | Nein |
+> | networkinterfaces | Ja | Ja | Ja <br/><br/> Verschieben Sie NICs mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md). |
+> | networkprofiles | Nein | Nein | Nein |
+> | networksecuritygroups | Ja | Ja | Ja <br/><br/> Verschieben Sie Netzwerksicherheitsgruppen (NSGs) mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md). |
+> | networkwatchers | Nein | Nein | Nein |
+> | networkwatchers/connectionmonitors | Ja | Nein | Nein |
+> | networkwatchers/flowlogs | Ja | Nein | Nein |
+> | networkwatchers/pingmeshes | Ja | Nein | Nein |
+> | p2svpngateways | Nein | Nein | Nein |
+> | privatednszones | Ja | Ja | Nein |
+> | privatednszones/virtualnetworklinks | Ja | Ja | Nein |
+> | privatednszonesinternal | Nein | Nein | Nein |
+> | privateendpointredirectmaps | Nein | Nein | Nein |
+> | privateendpoints | Nein | Nein | Nein |
+> | privatelinkservices | Nein | Nein | Nein |
+> | publicipaddresses | Ja: Basic-SKU<br>Ja: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja<br/><br/> Verschieben Sie öffentliche IP-Adressen mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md). |
+> | publicipprefixes | Ja | Ja | Nein |
+> | routefilters | Nein | Nein | Nein |
+> | routetables | Ja | Ja | Nein |
+> | securitypartnerproviders | Ja | Ja | Nein |
+> | serviceendpointpolicies | Ja | Ja | Nein |
+> | trafficmanagergeographichierarchies | Nein | Nein | Nein |
+> | trafficmanagerprofiles | Ja | Ja | Nein |
+> | trafficmanagerprofiles/heatmaps | Nein | Nein | Nein |
+> | trafficmanagerusermetricskeys | Nein | Nein | Nein |
+> | virtualhubs | Nein | Nein | Nein |
+> | virtualnetworkgateways | Ja | Ja | Nein |
+> | virtualnetworks | Ja | Ja | Nein |
+> | virtualnetworktaps | Nein | Nein | Nein |
+> | virtualrouters | Ja | Ja | Nein |
 > | virtualwans | Nein | Nein |
-> | vpngateways (Virtual WAN) | Nein | Nein |
-> | vpnserverconfigurations | Nein | Nein |
-> | vpnsites (Virtual WAN) | Nein | Nein |
+> | vpngateways (Virtual WAN) | Nein | Nein | Nein |
+> | vpnserverconfigurations | Nein | Nein | Nein |
+> | vpnsites (Virtual WAN) | Nein | Nein | Nein |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | Namespaces | Ja | Ja |
-> | namespaces/notificationhubs | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | Namespaces | Ja | Ja | Nein |
+> | namespaces/notificationhubs | Ja | Ja | Nein |
 
 ## <a name="microsoftobjectstore"></a>Microsoft.ObjectStore
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | osnamespaces | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | osnamespaces | Ja | Ja | Nein |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | hypervsites | Nein | Nein |
-> | importsites | Nein | Nein |
-> | serversites | Nein | Nein |
-> | vmwaresites | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | hypervsites | Nein | Nein | Nein |
+> | importsites | Nein | Nein | Nein |
+> | serversites | Nein | Nein | Nein |
+> | vmwaresites | Nein | Nein | Nein |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
@@ -1487,93 +1501,100 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Arbeitsbereiche, die ein verknüpftes Automation-Konto besitzen, können nicht verschoben werden. Bevor Sie mit einem Verschiebevorgang beginnen, stellen Sie sicher, dass Sie die Verknüpfung jeglicher Automation-Kontos aufheben.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | clusters | Nein | Nein |
-> | deletedworkspaces | Nein | Nein |
-> | linktargets | Nein | Nein |
-> | storageinsightconfigs | Nein | Nein |
-> | workspaces | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | clusters | Nein | Nein | Nein |
+> | deletedworkspaces | Nein | Nein | Nein |
+> | linktargets | Nein | Nein | Nein |
+> | storageinsightconfigs | Nein | Nein | Nein |
+> | workspaces | Ja | Ja | Nein |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | managementassociations | Nein | Nein |
-> | managementconfigurations | Ja | Ja |
-> | solutions | Ja | Ja |
-> | views | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | managementassociations | Nein | Nein | Nein |
+> | managementconfigurations | Ja | Ja | Nein |
+> | solutions | Ja | Ja | Nein |
+> | views | Ja | Ja | Nein |
 
 ## <a name="microsoftpeering"></a>Microsoft.Peering
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | legacypeerings | Nein | Nein |
-> | peerasns | Nein | Nein |
-> | peeringlocations | Nein | Nein |
-> | peerings | Nein | Nein |
-> | peeringservicecountries | Nein | Nein |
-> | peeringservicelocations | Nein | Nein |
-> | peeringserviceproviders | Nein | Nein |
-> | peeringservices | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | legacypeerings | Nein | Nein | Nein |
+> | peerasns | Nein | Nein | Nein |
+> | peeringlocations | Nein | Nein | Nein |
+> | peerings | Nein | Nein | Nein |
+> | peeringservicecountries | Nein | Nein | Nein |
+> | peeringservicelocations | Nein | Nein | Nein |
+> | peeringserviceproviders | Nein | Nein | Nein |
+> | peeringservices | Nein | Nein | Nein |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | policyevents | Nein | Nein |
-> | policystates | Nein | Nein |
-> | policytrackedresources | Nein | Nein |
-> | remediations | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | policyevents | Nein | Nein | Nein |
+> | policystates | Nein | Nein | Nein |
+> | policytrackedresources | Nein | Nein | Nein |
+> | remediations | Nein | Nein | Nein |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | consoles | Nein | Nein |
-> | dashboards | Ja | Ja |
-> | usersettings | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | consoles | Nein | Nein | Nein |
+> | dashboards | Ja | Ja | Nein |
+> | usersettings | Nein | Nein | Nein |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | workspacecollections | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | workspacecollections | Ja | Ja | Nein |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | capacities | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | capacities | Ja | Ja | Nein |
 
 ## <a name="microsoftprojectbabylon"></a>Microsoft.ProjectBabylon
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ---------- |
+> | accounts | Nein | Nein | Nein |
+
+## <a name="microsoftpurview"></a>Microsoft.Purview
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ---------- |
+> | accounts | **Ausstehend** | **Ausstehend** | Nein |
 
 ## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | availableaccounts | Nein | Nein |
-> | providerregistrations | Nein | Nein |
-> | rollouts | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | availableaccounts | Nein | Nein | Nein |
+> | providerregistrations | Nein | Nein | Nein |
+> | rollouts | Nein | Nein | Nein |
 
 ## <a name="microsoftquantum"></a>Microsoft.Quantum
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | workspaces | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | workspaces | Nein | Nein | Nein |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1581,73 +1602,73 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | replicationeligibilityresults | Nein | Nein |
-> | vaults | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | replicationeligibilityresults | Nein | Nein | Nein |
+> | vaults | Ja | Ja | Nein.<br/><br/> Das Verschieben von Recovery Services-Tresoren für Azure Backup zwischen Azure-Regionen wird nicht unterstützt.<br/><br/> In Recovery Services-Tresoren für Azure Site Recovery können Sie [den Tresor deaktivieren und in der Zielregion neu erstellen](../../site-recovery/move-vaults-across-regions.md). |
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft.RedHatOpenShift
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | openshiftclusters | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | openshiftclusters | Nein | Nein | Nein |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | Namespaces | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | Namespaces | Ja | Ja | Nein |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | Abfragen | Ja | Ja |
-> | resourcechangedetails | Nein | Nein |
-> | resourcechanges | Nein | Nein |
-> | ressourcen | Nein | Nein |
-> | resourceshistory | Nein | Nein |
-> | subscriptionsstatus | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | Abfragen | Ja | Ja | Nein |
+> | resourcechangedetails | Nein | Nein | Nein |
+> | resourcechanges | Nein | Nein | Nein |
+> | ressourcen | Nein | Nein | Nein |
+> | resourceshistory | Nein | Nein | Nein |
+> | subscriptionsstatus | Nein | Nein | Nein |
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | childresources | Nein | Nein |
-> | emergingissues | Nein | Nein |
-> | events | Nein | Nein |
-> | metadata | Nein | Nein |
-> | Benachrichtigungen | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | childresources | Nein | Nein | Nein |
+> | emergingissues | Nein | Nein | Nein |
+> | events | Nein | Nein | Nein |
+> | metadata | Nein | Nein | Nein |
+> | Benachrichtigungen | Nein | Nein | Nein |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | deployments | Nein | Nein |
-> | deploymentscripts | Nein | Nein |
-> | deploymentscripts/logs | Nein | Nein |
-> | Verknüpfungen | Nein | Nein |
-> | providers | Nein | Nein |
-> | resourcegroups | Nein | Nein |
-> | ressourcen | Nein | Nein |
-> | subscriptions | Nein | Nein |
-> | tags | Nein | Nein |
-> | templatespecs | Nein | Nein |
-> | templatespecs/versions | Nein | Nein |
-> | tenants | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | deployments | Nein | Nein | Nein |
+> | deploymentscripts | Nein | Nein | Ja<br/><br/>[Verschieben von Ressourcen unter Microsoft.Resources in eine neue Region](microsoft-resources-move-regions.md) |
+> | deploymentscripts/logs | Nein | Nein | Nein |
+> | Verknüpfungen | Nein | Nein | Nein |
+> | providers | Nein | Nein | Nein |
+> | resourcegroups | Nein | Nein | Nein |
+> | ressourcen | Nein | Nein | Nein |
+> | subscriptions | Nein | Nein | Nein |
+> | tags | Nein | Nein | Nein |
+> | templatespecs | Nein | Nein | Ja<br/><br/>[Verschieben von Ressourcen unter Microsoft.Resources in eine neue Region](microsoft-resources-move-regions.md) |
+> | templatespecs/versions | Nein | Nein | Nein |
+> | tenants | Nein | Nein | Nein |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | applications | Ja | Nein |
-> | saasresources | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | applications | Ja | Nein | Nein |
+> | saasresources | Nein | Nein | Nein |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -1655,154 +1676,154 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | resourcehealthmetadata | Nein | Nein |
-> | searchservices | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | resourcehealthmetadata | Nein | Nein | Nein |
+> | searchservices | Ja | Ja | Nein |
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | adaptivenetworkhardenings | Nein | Nein |
-> | advancedthreatprotectionsettings | Nein | Nein |
-> | alerts | Nein | Nein |
-> | allowedconnections | Nein | Nein |
-> | applicationwhitelistings | Nein | Nein |
-> | assessmentmetadata | Nein | Nein |
-> | assessments | Nein | Nein |
-> | autodismissalertsrules | Nein | Nein |
-> | automations | Ja | Ja |
-> | autoprovisioningsettings | Nein | Nein |
-> | complianceresults | Nein | Nein |
-> | compliances | Nein | Nein |
-> | datacollectionagents | Nein | Nein |
-> | devicesecuritygroups | Nein | Nein |
-> | discoveredsecuritysolutions | Nein | Nein |
-> | externalsecuritysolutions | Nein | Nein |
-> | informationprotectionpolicies | Nein | Nein |
-> | iotsecuritysolutions | Ja | Ja |
-> | iotsecuritysolutions/analyticsmodels | Nein | Nein |
-> | iotsecuritysolutions/analyticsmodels/aggregatedalerts | Nein | Nein |
-> | iotsecuritysolutions/analyticsmodels/aggregatedrecommendations | Nein | Nein |
-> | jitnetworkaccesspolicies | Nein | Nein |
-> | Richtlinien | Nein | Nein |
-> | pricings | Nein | Nein |
-> | regulatorycompliancestandards | Nein | Nein |
-> | regulatorycompliancestandards/regulatorycompliancecontrols | Nein | Nein |
-> | regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments | Nein | Nein |
-> | securitycontacts | Nein | Nein |
-> | securitysolutions | Nein | Nein |
-> | securitysolutionsreferencedata | Nein | Nein |
-> | securitystatuses | Nein | Nein |
-> | securitystatusessummaries | Nein | Nein |
-> | servervulnerabilityassessments | Nein | Nein |
-> | settings | Nein | Nein |
-> | subassessments | Nein | Nein |
-> | Tasks | Nein | Nein |
-> | topologies | Nein | Nein |
-> | workspacesettings | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | adaptivenetworkhardenings | Nein | Nein | Nein |
+> | advancedthreatprotectionsettings | Nein | Nein | Nein |
+> | alerts | Nein | Nein | Nein |
+> | allowedconnections | Nein | Nein | Nein |
+> | applicationwhitelistings | Nein | Nein | Nein |
+> | assessmentmetadata | Nein | Nein | Nein |
+> | assessments | Nein | Nein | Nein |
+> | autodismissalertsrules | Nein | Nein | Nein |
+> | automations | Ja | Ja | Nein |
+> | autoprovisioningsettings | Nein | Nein | Nein |
+> | complianceresults | Nein | Nein | Nein |
+> | compliances | Nein | Nein | Nein |
+> | datacollectionagents | Nein | Nein | Nein |
+> | devicesecuritygroups | Nein | Nein | Nein |
+> | discoveredsecuritysolutions | Nein | Nein | Nein |
+> | externalsecuritysolutions | Nein | Nein | Nein |
+> | informationprotectionpolicies | Nein | Nein | Nein |
+> | iotsecuritysolutions | Ja | Ja | Nein |
+> | iotsecuritysolutions/analyticsmodels | Nein | Nein | Nein |
+> | iotsecuritysolutions/analyticsmodels/aggregatedalerts | Nein | Nein | Nein |
+> | iotsecuritysolutions/analyticsmodels/aggregatedrecommendations | Nein | Nein | Nein |
+> | jitnetworkaccesspolicies | Nein | Nein | Nein |
+> | Richtlinien | Nein | Nein | Nein |
+> | pricings | Nein | Nein | Nein |
+> | regulatorycompliancestandards | Nein | Nein | Nein |
+> | regulatorycompliancestandards/regulatorycompliancecontrols | Nein | Nein | Nein |
+> | regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments | Nein | Nein | Nein |
+> | securitycontacts | Nein | Nein | Nein |
+> | securitysolutions | Nein | Nein | Nein |
+> | securitysolutionsreferencedata | Nein | Nein | Nein |
+> | securitystatuses | Nein | Nein | Nein |
+> | securitystatusessummaries | Nein | Nein | Nein |
+> | servervulnerabilityassessments | Nein | Nein | Nein |
+> | settings | Nein | Nein | Nein |
+> | subassessments | Nein | Nein | Nein |
+> | Tasks | Nein | Nein | Nein |
+> | topologies | Nein | Nein | Nein |
+> | workspacesettings | Nein | Nein | Nein |
 
 ## <a name="microsoftsecurityinsights"></a>Microsoft.SecurityInsights
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | aggregations | Nein | Nein |
-> | alertrules | Nein | Nein |
-> | alertruletemplates | Nein | Nein |
-> | automationrules | Nein | Nein |
-> | bookmarks | Nein | Nein |
-> | cases | Nein | Nein |
-> | dataconnectors | Nein | Nein |
-> | entities | Nein | Nein |
-> | entityqueries | Nein | Nein |
-> | incidents | Nein | Nein |
-> | officeconsents | Nein | Nein |
-> | settings | Nein | Nein |
-> | threatintelligence | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | aggregations | Nein | Nein | Nein |
+> | alertrules | Nein | Nein | Nein |
+> | alertruletemplates | Nein | Nein | Nein |
+> | automationrules | Nein | Nein | Nein |
+> | bookmarks | Nein | Nein | Nein |
+> | cases | Nein | Nein | Nein |
+> | dataconnectors | Nein | Nein | Nein |
+> | entities | Nein | Nein | Nein |
+> | entityqueries | Nein | Nein | Nein |
+> | incidents | Nein | Nein | Nein |
+> | officeconsents | Nein | Nein | Nein |
+> | settings | Nein | Nein | Nein |
+> | threatintelligence | Nein | Nein | Nein |
 
 ## <a name="microsoftserialconsole"></a>Microsoft.SerialConsole
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | consoleservices | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | consoleservices | Nein | Nein | Nein |
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | gateways | Nein | Nein |
-> | nodes | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | gateways | Nein | Nein | Nein |
+> | nodes | Nein | Nein | Nein |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | Namespaces | Ja | Ja |
-> | premiummessagingregions | Nein | Nein |
-> | sku | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | Namespaces | Ja | Ja | Nein |
+> | premiummessagingregions | Nein | Nein | Nein |
+> | sku | Nein | Nein | Nein |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | applications | Nein | Nein |
-> | clusters | Ja | Ja |
-> | containergroups | Nein | Nein |
-> | containergroupsets | Nein | Nein |
-> | edgeclusters | Nein | Nein |
-> | managedclusters | Nein | Nein |
-> | networks | Nein | Nein |
-> | secretstores | Nein | Nein |
-> | volumes | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | applications | Nein | Nein | Nein |
+> | clusters | Ja | Ja | Nein |
+> | containergroups | Nein | Nein | Nein |
+> | containergroupsets | Nein | Nein | Nein |
+> | edgeclusters | Nein | Nein | Nein |
+> | managedclusters | Nein | Nein | Nein |
+> | networks | Nein | Nein | Nein |
+> | secretstores | Nein | Nein | Nein |
+> | volumes | Nein | Nein | Nein |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | applications | Ja | Ja |
-> | containergroups | Nein | Nein |
-> | gateways | Ja | Ja |
-> | networks | Ja | Ja |
-> | secrets | Ja | Ja |
-> | volumes | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | applications | Ja | Ja | Nein |
+> | containergroups | Nein | Nein | Nein |
+> | gateways | Ja | Ja | Nein |
+> | networks | Ja | Ja | Nein |
+> | secrets | Ja | Ja | Nein |
+> | volumes | Ja | Ja | Nein |
 
 ## <a name="microsoftservices"></a>Microsoft.Services
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | rollouts | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | rollouts | Nein | Nein | Nein |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | signalr | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | signalr | Ja | Ja | Nein |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | hybridusebenefits | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | hybridusebenefits | Nein | Nein | Nein |
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | applicationdefinitions | Nein | Nein |
-> | applications | Nein | Nein |
-> | jitrequests | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | applicationdefinitions | Nein | Nein | Nein |
+> | applications | Nein | Nein | Nein |
+> | jitrequests | Nein | Nein | Nein |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
@@ -1810,68 +1831,69 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Datenbank und Server müssen sich in der gleichen Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank- und Azure Synapse Analytics-Datenbanken.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | instancepools | Nein | Nein |
-> | locations | Ja | Ja |
-> | managedinstances | Nein | Nein |
-> | servers | Ja | Ja |
-> | servers/databases | Ja | Ja |
-> | servers/databases/backuplongtermretentionpolicies | Ja | Ja |
-> | servers/elasticpools | Ja | Ja |
-> | servers/jobaccounts | Ja | Ja |
-> | servers/jobagents | Ja | Ja |
-> | virtualclusters | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | instancepools | Nein | Nein | Nein |
+> | locations | Ja | Ja | Nein |
+> | managedinstances | Nein | Nein | Ja <br/><br/> [Erfahren Sie mehr](../../azure-sql/database/move-resources-across-regions.md) über das regionsübergreifende Verschieben verwalteter Instanzen. |
+> | managedinstances/databases | Nein | Nein | Ja |
+> | servers | Ja | Ja |Ja |
+> | servers/databases | Ja | Ja | Ja <br/><br/> [Erfahren Sie mehr](../../azure-sql/database/move-resources-across-regions.md) über das regionsübergreifende Verschieben von Datenbanken.<br/><br/> [Erfahren Sie mehr](../../resource-mover/tutorial-move-region-sql.md) über das Verschieben von Azure SQL-Datenbank-Instanzen mit Azure Resource Mover.  |
+> | servers/databases/backuplongtermretentionpolicies | Ja | Ja | Nein |
+> | servers/elasticpools | Ja | Ja | Ja <br/><br/> [Erfahren Sie mehr](../../azure-sql/database/move-resources-across-regions.md) über das regionsübergreifende Verschieben von Pools für elastische Datenbanken.<br/><br/> [Erfahren Sie mehr](../../resource-mover/tutorial-move-region-sql.md) über das Verschieben von Pools für elastische Azure SQL-Datenbank-Instanzen mit Azure Resource Mover.  |
+> | servers/jobaccounts | Ja | Ja | Nein |
+> | servers/jobagents | Ja | Ja | Nein |
+> | virtualclusters | Ja | Ja | Ja |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | sqlvirtualmachinegroups | Ja | Ja |
-> | sqlvirtualmachines | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | sqlvirtualmachinegroups | Ja | Ja | Nein |
+> | sqlvirtualmachines | Ja | Ja | Nein |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | storageaccounts | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | storageaccounts | Ja | Ja | Ja<br/><br/> [Verschieben eines Azure Storage-Kontos in eine andere Region](../../storage/common/storage-account-move.md) |
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | caches | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | caches | Nein | Nein | Nein |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | storagesyncservices | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | storagesyncservices | Ja | Ja | Nein |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | storagesyncservices | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | storagesyncservices | Nein | Nein | Nein |
 
 ## <a name="microsoftstoragesyncint"></a>Microsoft.StorageSyncInt
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | storagesyncservices | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | storagesyncservices | Nein | Nein | Nein |
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | managers | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | managers | Nein | Nein | Nein |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
@@ -1879,115 +1901,115 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Stream Analytics-Aufträge können nicht verschoben werden, während sie ausgeführt werden.
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | clusters | Nein | Nein |
-> | streamingjobs | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | clusters | Nein | Nein | Nein |
+> | streamingjobs | Ja | Ja | Nein |
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | environments | Nein | Nein |
-> | instances | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | environments | Nein | Nein | Nein |
+> | instances | Nein | Nein | Nein |
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | subscriptions | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | subscriptions | Nein | Nein | Nein |
 
-## <a name="microsoftsupport"></a>microsoft.support
+## <a name="microsoftsupport"></a>Microsoft.Support
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | services | Nein | Nein |
-> | supporttickets | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | services | Nein | Nein | Nein |
+> | supporttickets | Nein | Nein | Nein |
 
 ## <a name="microsoftsynapse"></a>Microsoft.Synapse
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | workspaces | Nein | Nein |
-> | workspaces/bigdatapools | Nein | Nein |
-> | workspaces/sqlpools | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | workspaces | Nein | Nein | Nein |
+> | workspaces/bigdatapools | Nein | Nein | Nein |
+> | workspaces/sqlpools | Nein | Nein | Nein |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | environments | Ja | Ja |
-> | environments/eventsources | Ja | Ja |
-> | environments/referencedatasets | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | environments | Ja | Ja | Nein |
+> | environments/eventsources | Ja | Ja | Nein |
+> | environments/referencedatasets | Ja | Ja | Nein |
 
 ## <a name="microsofttoken"></a>Microsoft.Token
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | stores | Ja | Ja |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | stores | Ja | Ja | Nein |
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | imagetemplates | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | imagetemplates | Nein | Nein | Nein |
 
-## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
+## <a name="microsoftvisualstudio"></a>Microsoft.VisualStudio
 
 > [!IMPORTANT]
 > Informationen zum Ändern des Abonnements für Azure DevOps finden Sie unter [Change or remove the Azure subscription that your organization uses for billing](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) (Ändern oder Entfernen des Azure-Abonnements, das von Ihrer Organisation für die Abrechnung verwendet wird).
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | account | Nein | Nein |
-> | account/extension | Nein | Nein |
-> | account/project | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | account | Nein | Nein | Nein |
+> | account/extension | Nein | Nein | Nein |
+> | account/project | Nein | Nein | Nein |
 
 ## <a name="microsoftvmware"></a>Microsoft.VMware
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | arczones | Nein | Nein |
-> | resourcepools | Nein | Nein |
-> | vcenters | Nein | Nein |
-> | virtualmachines | Nein | Nein |
-> | virtualmachinetemplates | Nein | Nein |
-> | virtualnetworks | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | arczones | Nein | Nein | Nein |
+> | resourcepools | Nein | Nein | Nein |
+> | vcenters | Nein | Nein | Nein |
+> | virtualmachines | Nein | Nein | Nein |
+> | virtualmachinetemplates | Nein | Nein | Nein |
+> | virtualnetworks | Nein | Nein | Nein |
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | dedicatedcloudnodes | Nein | Nein |
-> | dedicatedcloudservices | Nein | Nein |
-> | virtualmachines | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | dedicatedcloudnodes | Nein | Nein | Nein |
+> | dedicatedcloudservices | Nein | Nein | Nein |
+> | virtualmachines | Nein | Nein | Nein |
 
 ## <a name="microsoftvnfmanager"></a>Microsoft.VnfManager
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | devices | Nein | Nein |
-> | vnfs | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | devices | Nein | Nein | Nein |
+> | vnfs | Nein | Nein | Nein |
 
 ## <a name="microsoftvsonline"></a>Microsoft.VSOnline
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
-> | plans | Nein | Nein |
-> | registeredsubscriptions | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | accounts | Nein | Nein | Nein |
+> | plans | Nein | Nein | Nein |
+> | registeredsubscriptions | Nein | Nein | Nein |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -1995,62 +2017,62 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | availablestacks | Nein | Nein |
-> | billingmeters | Nein | Nein |
-> | certificates | Nein | Ja |
-> | connectiongateways | Ja | Ja |
-> | connections | Ja | Ja |
-> | customapis | Ja | Ja |
-> | deletedsites | Nein | Nein |
-> | deploymentlocations | Nein | Nein |
-> | georegions | Nein | Nein |
-> | hostingenvironments | Nein | Nein |
-> | kubeenvironments | Ja | Ja |
-> | publishingusers | Nein | Nein |
-> | empfehlungen | Nein | Nein |
-> | resourcehealthmetadata | Nein | Nein |
-> | runtimes | Nein | Nein |
-> | serverfarms | Ja | Ja |
-> | serverfarms/eventgridfilters | Nein | Nein |
-> | sites | Ja | Ja |
-> | sites/premieraddons | Ja | Ja |
-> | sites/slots | Ja | Ja |
-> | sourcecontrols | Nein | Nein |
-> | staticsites | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | availablestacks | Nein | Nein | Nein |
+> | billingmeters | Nein | Nein | Nein |
+> | certificates | Nein | Ja | Nein |
+> | connectiongateways | Ja | Ja | Nein |
+> | connections | Ja | Ja | Nein |
+> | customapis | Ja | Ja | Nein |
+> | deletedsites | Nein | Nein | Nein |
+> | deploymentlocations | Nein | Nein | Nein |
+> | georegions | Nein | Nein | Nein |
+> | hostingenvironments | Nein | Nein | Nein |
+> | kubeenvironments | Ja | Ja | Nein |
+> | publishingusers | Nein | Nein | Nein |
+> | empfehlungen | Nein | Nein | Nein |
+> | resourcehealthmetadata | Nein | Nein | Nein |
+> | runtimes | Nein | Nein | Nein |
+> | serverfarms | Ja | Ja | Nein |
+> | serverfarms/eventgridfilters | Nein | Nein | Nein |
+> | sites | Ja | Ja | Nein |
+> | sites/premieraddons | Ja | Ja | Nein |
+> | sites/slots | Ja | Ja | Nein |
+> | sourcecontrols | Nein | Nein | Nein |
+> | staticsites | Nein | Nein | Nein |
 
 ## <a name="microsoftwindowsesu"></a>Microsoft.WindowsESU
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | multipleactivationkeys | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | multipleactivationkeys | Nein | Nein | Nein |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | deviceservices | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | deviceservices | Nein | Nein | Nein |
 
 ## <a name="microsoftworkloadbuilder"></a>Microsoft.WorkloadBuilder
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | workloads | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | workloads | Nein | Nein | Nein |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 
 > [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | components | Nein | Nein |
-> | componentssummary | Nein | Nein |
-> | monitorinstances | Nein | Nein |
-> | monitorinstancessummary | Nein | Nein |
-> | monitors | Nein | Nein |
+> | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
+> | ------------- | ----------- | ---------- | ----------- |
+> | components | Nein | Nein | Nein |
+> | componentssummary | Nein | Nein | Nein |
+> | monitorinstances | Nein | Nein | Nein |
+> | monitorinstancessummary | Nein | Nein | Nein |
+> | monitors | Nein | Nein | Nein |
 
 ## <a name="third-party-services"></a>Dienste von Drittanbietern
 
@@ -2058,6 +2080,6 @@ Derzeit wird der Verschiebevorgang nicht für Drittanbieterdienste unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Befehle zum Verschieben von Ressourcen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](move-resource-group-and-subscription.md).
-
-Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden Sie [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) herunter.
+- Befehle zum Verschieben von Ressourcen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](move-resource-group-and-subscription.md).
+- Weitere Informationen zum Resource Mover-Dienst finden Sie [hier](../../resource-mover/overview.md).
+- Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden Sie [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) herunter.

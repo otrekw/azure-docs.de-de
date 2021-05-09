@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2021
-ms.openlocfilehash: 7938403e67d7059e8744e7023e8a7614df37e20f
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: bc66c922f5d5954adce0361ed88fc80ba80e0836
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599620"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133095"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Richtlinien und Nutzungsbedingungen für den kommerziellen Marketplace
 
@@ -24,8 +24,8 @@ Angebote im kommerziellen Marketplace müssen unseren Richtlinien und Nutzungsbe
 
 ## <a name="publisher-agreement"></a>Herausgebervereinbarung
 
-- [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560)
-- [Änderungsverlauf für die Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?linkid=2159975&clcid=0x409)
+- [Microsoft-Herausgebervereinbarung](/legal/marketplace/msft-publisher-agreement)
+- [Änderungsverlauf für die Microsoft-Herausgebervereinbarung](/legal/marketplace/mpa-change-history)
 
 Die Microsoft-Herausgebervereinbarung beschreibt die Geschäftsbeziehung für das Veröffentlichen von Angeboten im kommerziellen Marketplace. Sie regelt Ihren Zugriff auf sowie Ihre Verwendung von Features in Partner Center im Zusammenhang mit der Veröffentlichung und Auflistung von Angeboten in den Onlineshops des kommerziellen Marketplace.
 

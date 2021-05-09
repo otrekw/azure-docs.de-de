@@ -8,19 +8,19 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: cabc4784dfb19f569212f4d0cb93e6838473e559
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 5afdc2e46e4c234204a27261ae87061a3631071c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714486"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134751"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Anwendung für die Bereitstellung in Azure Spring Cloud
 
 ::: zone pivot="programming-language-csharp"
 Azure Spring Cloud bietet robuste Dienste zum Hosten, Überwachen, Skalieren und Aktualisieren einer Steeltoe-App. In diesem Artikel wird gezeigt, wie Sie eine vorhandene Steeltoe-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten. 
 
-In diesem Artikel werden die Abhängigkeiten, die Konfiguration und der Code erläutert, die zum Ausführen einer .NET Core-Steeltoe-App in Azure Spring Cloud erforderlich sind. Informationen zum Bereitstellen einer Anwendung in Azure Spring Cloud finden Sie unter [Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](spring-cloud-quickstart.md).
+In diesem Artikel werden die Abhängigkeiten, die Konfiguration und der Code erläutert, die zum Ausführen einer .NET Core-Steeltoe-App in Azure Spring Cloud erforderlich sind. Informationen zum Bereitstellen einer Anwendung in Azure Spring Cloud finden Sie unter [Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md).
 
 >[!Note]
 > Steeltoe-Unterstützung für Azure Spring Cloud wird zurzeit als öffentliche Vorschau angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zum Support während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md) einreichen.
@@ -124,11 +124,11 @@ using (var client = new HttpClient(discoveryHandler, false))
 ::: zone pivot="programming-language-java"
 In diesem Thema wird gezeigt, wie Sie eine vorhandene Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten. Bei ordnungsgemäßer Konfiguration bietet Azure Spring Cloud stabile Dienste zur Überwachung, Skalierung und Aktualisierung Ihrer Java Spring Cloud-Anwendung.
 
-Bevor Sie dieses Beispiel ausführen, können Sie den [grundlegenden Schnellstart](spring-cloud-quickstart.md) ausprobieren.
+Bevor Sie dieses Beispiel ausführen, können Sie den [grundlegenden Schnellstart](./quickstart.md) ausprobieren.
 
 In anderen Beispielen wird erläutert, wie eine Anwendung in Azure Spring Cloud bereitgestellt wird, wenn die POM-Datei konfiguriert ist. 
-* [Starten Ihrer ersten App](spring-cloud-quickstart.md)
-* [Erstellen und Ausführen von Microservices](spring-cloud-quickstart-sample-app-introduction.md)
+* [Starten Ihrer ersten App](./quickstart.md)
+* [Erstellen und Ausführen von Microservices](./quickstart-sample-app-introduction.md)
 
 In diesem Artikel werden die erforderlichen Abhängigkeiten erläutert und wie diese zur POM-Datei hinzugefügt werden.
 
@@ -151,7 +151,7 @@ Spring Boot-Version | Spring Cloud-Version
 2.4.1 oder höher | 2020.0.0
 
 > [!NOTE]
-> Wir haben ein Problem mit Spring Boot 2.4.0 bei der TLS-Authentifizierung zwischen ihren Apps und Eureka identifiziert. Verwenden Sie Version 2.4.1 oder höher. Eine Problemumgehung finden Sie in unseren [häufig gestellten Fragen](./spring-cloud-faq.md?pivots=programming-language-java#development), wenn Sie unbedingt Version 2.4.0 verwenden möchten.
+> Wir haben ein Problem mit Spring Boot 2.4.0 bei der TLS-Authentifizierung zwischen ihren Apps und Eureka identifiziert. Verwenden Sie Version 2.4.1 oder höher. Eine Problemumgehung finden Sie in unseren [häufig gestellten Fragen](./faq.md?pivots=programming-language-java#development), wenn Sie unbedingt Version 2.4.0 verwenden möchten.
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>Abhängigkeiten für die Spring Boot-Version 2.2/2.3
 
@@ -284,7 +284,7 @@ Schließen Sie die Abhängigkeit `spring-boot-starter-actuator` in den Abhängig
 
 ### <a name="distributed-tracing"></a>Verteilte Ablaufverfolgung
 
-Darüber hinaus müssen Sie eine Azure Application Insights-Instanz für die Verwendung mit der Azure Spring Cloud-Dienstinstanz aktivieren. Informationen zur Verwendung von Application Insights mit Azure Spring Cloud finden Sie in der [Dokumentation zur verteilten Ablaufverfolgung](spring-cloud-tutorial-distributed-tracing.md).
+Darüber hinaus müssen Sie eine Azure Application Insights-Instanz für die Verwendung mit der Azure Spring Cloud-Dienstinstanz aktivieren. Informationen zur Verwendung von Application Insights mit Azure Spring Cloud finden Sie in der [Dokumentation zur verteilten Ablaufverfolgung](./how-to-distributed-tracing.md).
 
 #### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
 Schließen Sie die folgenden Abhängigkeiten vom Typ `spring-cloud-starter-sleuth` und `spring-cloud-starter-zipkin` in den Abhängigkeitenabschnitt der Datei „pom.xml“ ein:
@@ -312,14 +312,14 @@ Schließen Sie die folgende Abhängigkeit `spring-cloud-sleuth-zipkin` in den Ab
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Analysieren von Anwendungsprotokollen und -metriken](./diagnostic-services.md)
-* [Einrichten Ihres Konfigurationsservers](spring-cloud-tutorial-config-server.md)
-* [Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](spring-cloud-tutorial-distributed-tracing.md)
+* [Einrichten Ihres Konfigurationsservers](./how-to-config-server.md)
+* [Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](./how-to-distributed-tracing.md)
 * [Schnellstartanleitung zu Spring](https://spring.io/quickstart)
 * [Spring Boot-Dokumentation](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Thema haben Sie erfahren, wie Sie eine Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud konfigurieren. Informationen zum Einrichten einer Konfigurationsserverinstanz finden Sie unter [Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst](spring-cloud-tutorial-config-server.md).
+In diesem Thema haben Sie erfahren, wie Sie eine Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud konfigurieren. Informationen zum Einrichten einer Konfigurationsserverinstanz finden Sie unter [Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst](./how-to-config-server.md).
 
 Weitere Beispiele finden Sie auf GitHub: [Azure Spring Cloud-Beispiele](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
 ::: zone-end

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f3c783c57b49b45943882703aec6d735d12bf830
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 180226741d77defb0a9f0d00165cf858cb65ecbb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481955"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906510"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe von X.509-Zertifikaten
 
@@ -229,7 +229,6 @@ Halten Sie die folgenden Informationen bereit:
 * Den DPS-Wert **ID-Bereich**. Sie können diesen Wert im Azure-Portal von der Übersichtsseite für Ihre DPS-Instanz abrufen.
 * Die Kettendatei für das Geräteidentitätszertifikat auf dem Gerät.
 * Die Schlüsseldatei für die Geräteidentität auf dem Gerät.
-* Eine optionale Registrierungs-ID. Wenn keine angegeben wurde, wird die ID aus dem allgemeinen Namen im Geräteidentitätszertifikat abgerufen.
 
 ### <a name="linux-device"></a>Linux-Gerät
 
@@ -268,7 +267,7 @@ Halten Sie die folgenden Informationen bereit:
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`
 
-1. Optional können Sie eine `registration_id` für das Gerät angeben. Oder behalten Sie die Auskommentierung dieser Zeile bei, damit das Gerät mit dem CN-Namen des Identitätszertifikats registriert wird.
+1. Geben Sie optional die `registration_id` für das Gerät an. Diese muss mit dem allgemeinen Namen (Common Name, CN) des Identitätszertifikats übereinstimmen. Wenn Sie diese Zeile auskommentiert lassen, wird der CN automatisch angewendet.
 
 1. Verwenden Sie optional die Zeilen `always_reprovision_on_startup` oder `dynamic_reprovisioning`, um das Verhalten bei der erneuten Bereitstellung Ihres Geräts zu konfigurieren. Wenn für ein Gerät die erneute Bereitstellung beim Start festgelegt wurde, wird es immer zuerst versuchen, mit DPS bereitzustellen, und bei einem Fehler auf die Bereitstellungssicherung zurückgreifen. Wurde für ein Gerät festgelegt, dass es sich selbst dynamisch erneut bereitstellt, wird IoT Edge neu gestartet und erneut bereitgestellt, wenn ein erneutes Bereitstellungsereignis erkannt wird. Weitere Informationen finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](../iot-dps/concepts-device-reprovision.md).
 
@@ -309,22 +308,24 @@ Halten Sie die folgenden Informationen bereit:
    
    [provisioning.attestation]
    method = "x509"
-   # registration_id = "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+   registration_id = "<REGISTRATION ID>"
 
-   identity_cert = "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+   identity_cert = "<DEVICE IDENTITY CERTIFICATE>"
 
-   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   identity_pk = "<DEVICE IDENTITY PRIVATE KEY>"
    ```
 
-1. Aktualisieren Sie die Werte `id_scope`, `identity_cert`und `identity_pk` mit Ihren DPS- und Geräteinformationen.
+1. Aktualisieren Sie den Wert von `id_scope` mit der Bereichs-ID, die Sie zuvor aus Ihrer DPS-Instanz kopiert haben.
+
+1. Geben Sie eine `registration_id` für das Gerät an. Dies ist die ID, die das Gerät in IoT Hub aufweist. Die Registrierungs-ID muss mit dem allgemeinen Namen (Common Name, CN) des Identitätszertifikats übereinstimmen.
+
+1. Aktualisieren Sie die Werte von `identity_cert` und `identity_pk` mit Ihren Zertifikat- und Schlüsselinformationen.
 
    Der Wert des Identitätszertifikats kann als Datei-URI bereitgestellt oder mithilfe von EST oder einer lokalen Zertifizierungsstelle dynamisch ausgestellt werden. Heben Sie die Auskommentierung von nur einer Zeile auf, basierend auf dem Format, das Sie verwenden möchten.
 
    Der Wert des privaten Identitätsschlüssels kann als Datei-URI oder PKCS#11-URI angegeben werden. Heben Sie die Auskommentierung von nur einer Zeile auf, basierend auf dem Format, das Sie verwenden möchten.
 
    Wenn Sie PKCS#11-URIs verwenden, suchen Sie in der Konfigurationsdatei den Abschnitt **PKCS#11**, und stellen Sie Informationen zu Ihrer PKCS#11-Konfiguration bereit.
-
-1. Optional können Sie eine `registration_id` für das Gerät angeben. Oder behalten Sie die Auskommentierung dieser Zeile bei, damit das Gerät mit dem allgemeinen Namen des Identitätszertifikats registriert wird.
 
 1. Speichern und schließen Sie die Datei.
 

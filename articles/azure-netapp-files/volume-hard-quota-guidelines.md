@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 5e7f71f91e5778b4f096bb760bfe5a0a89b5cbcb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a0080687d65c7165b0c2a463229a9a817fb045e0
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764277"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288176"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Auswirkungen der Änderungen am festen Volumekontingent auf Ihren Azure NetApp Files-Dienst
 
@@ -160,7 +160,7 @@ Sie können die Volume- oder Kapazitätspoolgröße manuell über das Portal ode
 
 ##### <a name="portal"></a>Portal 
 
-Sie können die [Größe eines Volumes](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-volume) nach Bedarf ändern. Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet.
+Sie können die [Größe eines Volumes](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-volume-using-the-azure-portal) nach Bedarf ändern. Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet.
 
 1. Klicken Sie auf dem Blatt „Manage NetApp Account“ auf **Volumes**.  
 2. Klicken Sie mit der rechten Maustaste auf den Namen des Volumes, dessen Größe Sie anpassen möchten, oder klicken Sie am Ende der Zeile mit dem Volume auf das Symbol `…`, um das Kontextmenü anzuzeigen. 
@@ -170,7 +170,7 @@ Sie können die [Größe eines Volumes](azure-netapp-files-resize-capacity-pools
 
    ![Screenshot: Fenster „Volumekontingent aktualisieren“](../media/azure-netapp-files/hard-quota-update-volume-quota.png) 
 
-Manchmal ist auf dem hostenden Kapazitätspool nicht genügend Kapazität vorhanden, um die Volumegröße zu erhöhen. Sie können die [Größe des Kapazitätspools](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-the-capacity-pool) jedoch in 1-TiB-Inkrementen erhöhen oder verringern. Ein Kapazitätspool darf allerdings nicht kleiner als 4 TiB sein. *Durch eine Größenänderung des Kapazitätspools wird die erworbene Azure NetApp Files-Kapazität geändert.*
+Manchmal ist auf dem hostenden Kapazitätspool nicht genügend Kapazität vorhanden, um die Volumegröße zu erhöhen. Sie können die [Größe des Kapazitätspools](azure-netapp-files-resize-capacity-pools-or-volumes.md#resizing-the-capacity-pool-or-a-volume-using-azure-cli) jedoch in 1-TiB-Inkrementen erhöhen oder verringern. Ein Kapazitätspool darf allerdings nicht kleiner als 4 TiB sein. *Durch eine Größenänderung des Kapazitätspools wird die erworbene Azure NetApp Files-Kapazität geändert.*
 
 1. Klicken Sie auf dem Blatt „Manage NetApp Account“ (NetApp-Konto verwalten) auf den Kapazitätspool, dessen Größe Sie anpassen möchten.
 2. Klicken Sie mit der rechten Maustaste auf den Namen des Kapazitätspools, oder klicken Sie am Ende der Zeile mit dem Kapazitätspool auf das Symbol `…`, um das Kontextmenü anzuzeigen.

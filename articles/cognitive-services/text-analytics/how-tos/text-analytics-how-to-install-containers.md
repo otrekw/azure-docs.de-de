@@ -5,19 +5,19 @@ description: Verwenden Sie die Docker-Container für die Textanalyse-API, um die
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18, cog-serv-seo-aug-2020
+ms.custom: seodec18, cog-serv-seo-aug-2020, devx-track-azurecli
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: aahi
 keywords: Lokal, Docker, Container, Stimmungsanalyse, Verarbeitung natürlicher Sprache
-ms.openlocfilehash: 012e725e31097af5af634a1aba7693048c4c6b3e
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 09d0da5aa811f694657ae6a0b8059bf55bcbf657
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277469"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290252"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
@@ -50,7 +50,7 @@ Zur Verwendung des Containers für die Textanalyse müssen die folgenden Vorauss
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
-Wenn Sie den Container für die Textanalyse im Gesundheitsbereich ausführen, muss die Bestätigung der [verantwortungsbewussten KI](https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-health) ebenfalls mit dem Wert `accept` vorhanden sein.
+Wenn Sie den Container für die Textanalyse im Gesundheitsbereich ausführen, muss die Bestätigung der [verantwortungsbewussten KI](/legal/cognitive-services/text-analytics/transparency-note-health) ebenfalls mit dem Wert `accept` vorhanden sein.
 
 ## <a name="the-host-computer"></a>Der Hostcomputer
 

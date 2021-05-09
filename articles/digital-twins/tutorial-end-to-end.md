@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 998657c1e183d1b0dd0d533bb763ee7c13a3f474
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: a0584bea6fab1d49c552785d093e7e2df823b11b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904188"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205825"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutorial: Erstellen einer End-to-End-Lösung
 
@@ -72,9 +72,9 @@ Ein Konsolenfenster wird geöffnet, die Authentifizierung wird durchgeführt, un
 SetupBuildingScenario
 ```
 
-Die Ausgabe dieses Befehls umfasst eine Reihe von Bestätigungsmeldungen, während auf Ihrer Azure Digital Twins-Instanz drei [**digitale Zwillinge**](concepts-twins-graph.md) erstellt und verbunden werden: die Etage *floor1*, der Raum *room21* und der Temperatursensor *thermostat67*. Diese digitalen Zwillinge stehen für die Entitäten, die auch in einer realen Umgebung vorhanden wären.
+Die Ausgabe dieses Befehls umfasst eine Reihe von Bestätigungsmeldungen, während auf Ihrer Azure Digital Twins-Instanz drei [digitale Zwillinge](concepts-twins-graph.md) erstellt und verbunden werden: die Etage *floor1*, der Raum *room21* und der Temperatursensor *thermostat67*. Diese digitalen Zwillinge stehen für die Entitäten, die auch in einer realen Umgebung vorhanden wären.
 
-Sie werden über Beziehungen mit dem folgenden [**Zwillingsgraphen**](concepts-twins-graph.md) verbunden. Der Zwillingsgraph steht für die gesamte Umgebung, z. B. für die Interaktion der Entitäten und ihre Beziehung untereinander.
+Sie werden über Beziehungen mit dem folgenden [Zwillingsgraphen](concepts-twins-graph.md) verbunden. Der Zwillingsgraph steht für die gesamte Umgebung, z. B. für die Interaktion der Entitäten und ihre Beziehung untereinander.
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="Graph: „floor1“ enthält „room21“, und „room21“ enthält „thermostat67“" border="false":::
 
@@ -129,7 +129,7 @@ Für die Funktions-App müssen zwei Einstellungen festgelegt werden, damit der Z
 
 #### <a name="assign-access-role"></a>Zuweisen der Zugriffsrolle
 
-Die erste Einstellung weist der Funktions-App die Rolle **Azure Digital Twins-Datenbesitzer** in der Azure Digital Twins-Instanz zu. Diese Rolle ist für alle Benutzer oder Funktionen erforderlich, von denen auf der Instanz viele Datenebenenaktivitäten durchgeführt werden sollen. Weitere Informationen zu Sicherheits- und Rollenzuweisungen finden Sie unter [*Konzepte: Sicherheit für Azure Digital Twins-Lösungen*](concepts-security.md). 
+Die erste Einstellung weist der Funktions-App die Rolle **Azure Digital Twins-Datenbesitzer** in der Azure Digital Twins-Instanz zu. Diese Rolle ist für alle Benutzer oder Funktionen erforderlich, von denen auf der Instanz viele Datenebenenaktivitäten durchgeführt werden sollen. Weitere Informationen zu Sicherheits- und Rollenzuweisungen finden Sie unter [Konzepte: Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md). 
 
 1. Verwenden Sie den folgenden Befehl, um die Details der systemseitig verwalteten Identität für die Funktion anzuzeigen. Beachten Sie in der Ausgabe das Feld **principalId**.
 
@@ -156,7 +156,7 @@ Die Ausgabe dieses Befehls enthält Informationen zur von Ihnen erstellten Rolle
 
 #### <a name="configure-application-settings"></a>Konfigurieren von Anwendungseinstellungen
 
-Die zweite Einstellung erstellt eine **Umgebungsvariable** für die Funktion mit der URL Ihrer Azure Digital Twins-Instanz. Der Funktionscode verweist damit auf Ihre Instanz. Weitere Informationen zu Umgebungsvariablen finden Sie unter [*Verwalten Ihrer Funktions-App*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
+Die zweite Einstellung erstellt eine **Umgebungsvariable** für die Funktion mit der URL Ihrer Azure Digital Twins-Instanz. Der Funktionscode verweist damit auf Ihre Instanz. Weitere Informationen zu Umgebungsvariablen finden Sie unter [Verwalten Ihrer Funktions-App](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
 
 Führen Sie den folgenden Befehl aus, und ersetzen Sie die Platzhalter durch die Details Ihrer Ressourcen.
 
@@ -171,7 +171,7 @@ Bei der Ausgabe handelt es sich um die Liste der Einstellungen für die Azure-Fu
 
 Ein Azure Digital Twins-Graph sollte auf Telemetriedaten von realen Geräten basieren. 
 
-In diesem Schritt verbinden Sie ein simuliertes Thermostat, das unter [IoT Hub](../iot-hub/about-iot-hub.md) registriert ist, mit dem digitalen Zwilling, der das Gerät in Azure Digital Twins repräsentiert. Wenn das simulierte Gerät Telemetriedaten ausgibt, werden die Daten über die Azure-Funktion *ProcessHubToDTEvents* geleitet, die ein entsprechendes Update auf dem digitalen Zwilling auslöst. Auf diese Weise bleibt der digitale Zwilling über die Daten des realen Geräts auf dem Laufenden. In Azure Digital Twins wird das Leiten von Ereignisdaten von einem Ort an einen anderen als das [**Weiterleiten von Ereignissen**](concepts-route-events.md) bezeichnet.
+In diesem Schritt verbinden Sie ein simuliertes Thermostat, das unter [IoT Hub](../iot-hub/about-iot-hub.md) registriert ist, mit dem digitalen Zwilling, der das Gerät in Azure Digital Twins repräsentiert. Wenn das simulierte Gerät Telemetriedaten ausgibt, werden die Daten über die Azure-Funktion *ProcessHubToDTEvents* geleitet, die ein entsprechendes Update auf dem digitalen Zwilling auslöst. Auf diese Weise bleibt der digitale Zwilling über die Daten des realen Geräts auf dem Laufenden. In Azure Digital Twins wird das Leiten von Ereignisdaten von einem Ort an einen anderen als das [Weiterleiten von Ereignissen](concepts-route-events.md) bezeichnet.
 
 Dies wird in diesem Teil des End-to-End-Szenarios durchgeführt (**Pfeil B**):
 
@@ -439,4 +439,4 @@ In diesem Tutorial haben Sie ein End-to-End-Szenario erstellt, mit dem veranscha
 Sehen Sie sich als Nächstes die Konzeptdokumentation an, um mehr über die Elemente zu erfahren, mit denen Sie in diesem Tutorial gearbeitet haben:
 
 > [!div class="nextstepaction"]
-> [*Konzepte: Grundlegendes zu Zwillingsmodellen in Azure Digital Twins*](concepts-models.md)
+> [Konzepte: Benutzerdefinierte Modelle](concepts-models.md)

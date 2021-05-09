@@ -3,12 +3,13 @@ title: Erstellen einer neuen Azure Application Insights-Ressource | Microsoft Do
 description: Richten Sie manuell die Application Insights-Überwachung für eine neue Liveanwendung ein.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 6158b5604046897e20053c67321f26d650c21b7f
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2130872003b1d91661f71468009025fa086af40b
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566221"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321967"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
@@ -27,7 +28,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen 
 
 ![Klicken Sie links oben auf das Pluszeichen (+). Auswählen von „Entwicklertools“ und „Application Insights“](./media/create-new-resource/new-app-insights.png)
 
-   | Einstellungen        |  Wert           | Beschreibung  |
+   | Einstellungen        |  Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | `Unique value` | Der Name, der die zu überwachende App identifiziert |
    | **Ressourcengruppe**     | `myResourceGroup`      | Der Name der neuen oder vorhandenen Ressourcengruppe, die Application Insights-Daten hosten soll |
@@ -155,7 +156,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure CLI-Dokumentation](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create).
+Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure CLI-Dokumentation](/cli/azure/monitor/app-insights/component#az_monitor_app_insights_component_create).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Diagnosesuche](./diagnostic-search.md)
@@ -168,4 +169,3 @@ Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
-

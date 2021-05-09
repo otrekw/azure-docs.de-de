@@ -2,13 +2,14 @@
 title: Bereitstellen von Ressourcen für einen Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: 0b17b8741d1701720de86d8039be3b6cd28ace5c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/27/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2137d71c78a5cb02e0e574be9c38d5bf18180789
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781899"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108322201"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Mandantenbereitstellungen mit ARM-Vorlagen
 
@@ -18,13 +19,7 @@ Im Zuge der Entwicklung Ihrer Organisation müssen unter Umständen [Richtlinien
 
 Nicht alle Ressourcentypen können auf Mandantenebene bereitgestellt werden. Im folgenden Abschnitt werden die unterstützten Ressourcentypen aufgelistet.
 
-Verwenden Sie für Azure-Richtlinien:
-
-* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
-* [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
-* [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-
-Verwenden Sie für rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) Folgendes:
+Verwenden Sie für rollenbasierte Zugriffssteuerung von Azure (Azure RBAC):
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 
@@ -49,6 +44,8 @@ Verwenden Sie zum Verwalten von Kosten:
 Verwenden Sie zum Konfigurieren des Portals:
 
 * [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
+
+Integrierte Richtliniendefinitionen sind Ressourcen auf Mandantenebene, aber Sie können keine benutzerdefinierten Richtliniendefinitionen im Mandanten bereitstellen. Ein Beispiel für das Zuweisen einer integrierten Richtliniendefinition zu einer Ressource finden Sie unter [tenantResourceId-Beispiel.](./template-functions-resource.md#tenantresourceid-example)
 
 ## <a name="schema"></a>Schema
 

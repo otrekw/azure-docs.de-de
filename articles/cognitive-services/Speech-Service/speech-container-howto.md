@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: cb99dc3c5e16ee117df46d7fda0caab9c57f0853
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: efc92bbd149bf66abf8d1582902443df054ce0e6
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388090"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930217"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts 
 
@@ -34,7 +34,6 @@ Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur 
 > * Text-zu-Sprache (neuronal)
 >
 > Die folgenden Speech-Container sind in der geschlossenen Vorschau verfügbar:
-> * Benutzerdefinierte Sprachsynthese
 > * Speech-Sprachenerkennung 
 >
 > Wenn Sie die Speech-Container verwenden möchten, müssen Sie eine Onlineanfrage einreichen und diese genehmigen lassen. Weitere Informationen finden Sie weiter unten im Abschnitt **Anfordern der Genehmigung für die Containerausführung**.
@@ -44,7 +43,6 @@ Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur 
 | Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.11.0 |
 | Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.11.0 |
 | Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.13.0 |
-| Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.13.0 |
 | Speech-Sprachenerkennung | Erkennen der in Audiodateien gesprochenen Sprache | 1.0 |
 | Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.5.0 |
 
@@ -85,7 +83,6 @@ Die folgende Tabelle beschreibt die minimale und empfohlene Zuordnung von Ressou
 | Spracherkennung | 2 Kerne, 2 GB Arbeitsspeicher | 4 Kerne, 4 GB Arbeitsspeicher |
 | Benutzerdefinierte Spracherkennung | 2 Kerne, 2 GB Arbeitsspeicher | 4 Kerne, 4 GB Arbeitsspeicher |
 | Text-zu-Sprache | Ein Kern, 2 GB Arbeitsspeicher | 2 Kerne, 3 GB Arbeitsspeicher |
-| Benutzerdefinierte Sprachsynthese | Ein Kern, 2 GB Arbeitsspeicher | 2 Kerne, 3 GB Arbeitsspeicher |
 | Speech-Sprachenerkennung | 1 Kern, 1 GB Arbeitsspeicher | 1 Kern, 1 GB Arbeitsspeicher |
 | Text-zu-Sprache (neuronal) | 6 Kerne, 12 GB Arbeitsspeicher | 8 Kerne, 16 GB Arbeitsspeicher |
 
@@ -130,12 +127,6 @@ Containerimages für Speech stehen in der folgenden Container Registry zur Verf�
 | Container | Repository |
 |-----------|------------|
 | Text-zu-Sprache (neuronal) | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest` |
-
-# <a name="custom-text-to-speech"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
-
-| Container | Repository |
-|-----------|------------|
-| Benutzerdefinierte Sprachsynthese | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest` |
 
 # <a name="speech-language-detection"></a>[Speech-Sprachenerkennung](#tab/lid)
 
@@ -257,19 +248,6 @@ Informationen zu allen unterstützten Gebietsschemas und den entsprechenden Stim
 
 > [!IMPORTANT]
 > Beim Erstellen einer HTTP POST-Anforderung für *Text-zu-Sprache (neuronal)* erfordert die Meldung der [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) ein `voice`-Element mit einem `name`-Attribut. Der Wert ist das entsprechende Gebietsschema des Containers und die Stimme, auch bekannt als „[Kurzname](language-support.md#neural-voices)“. Das Tag `latest` beispielsweise weist den Sprachnamen `en-US-AriaNeural` auf.
-
-# <a name="custom-text-to-speech"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
-
-#### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Docker-Pullvorgang für den benutzerdefinierten Sprachsynthesecontainer
-
-Verwenden Sie den [Docker-Pull](https://docs.docker.com/engine/reference/commandline/pull/)-Befehl, um ein Containerimage aus Microsoft Container Registry herunterzuladen.
-
-```Docker
-docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest
-```
-
-> [!NOTE]
-> Die Werte für `locale` und `voice` für benutzerdefinierte Speech-Container werden durch das benutzerdefinierte Modell bestimmt, das vom Container erfasst wird.
 
 # <a name="speech-language-detection"></a>[Speech-Sprachenerkennung](#tab/lid)
 
@@ -520,49 +498,6 @@ Dieser Befehl:
 * Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
 
-# <a name="custom-text-to-speech"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
-
-Der Container für die *benutzerdefinierte Sprachsynthese* basiert auf einem benutzerdefinierten Sprachmodell. Das benutzerdefinierte Modell muss über das [Custom Voice-Portal](https://aka.ms/custom-voice-portal)[trainiert](how-to-custom-voice-create-voice.md) worden sein. Die **Modell-ID** für Custom Voice ist zur Ausführung des Containers erforderlich. Sie finden diese auf der Seite **Training** des Custom Voice-Portals. Navigieren Sie im Custom Voice-Portal zur Seite **Training**, und wählen Sie das Modell aus.
-<br>
-
-![Seite „Training“ im Custom Voice-Portal](media/custom-voice/custom-voice-model-training.png)
-
-Rufen Sie die **Modell-ID** ab, um diese als Argument für den `ModelId`-Parameter des docker run-Befehls zu verwenden.
-<br>
-
-![Details des Custom Voice-Modells](media/custom-voice/custom-voice-model-details.png)
-
-Die folgende Tabelle zeigt die verschiedenen `docker run`-Parameter und die entsprechenden Beschreibungen:
-
-| Parameter | BESCHREIBUNG |
-|---------|---------|
-| `{VOLUME_MOUNT}` | Die [Volumebereitstellung](https://docs.docker.com/storage/volumes/) des Hostcomputers, die Docker zum dauerhaften Speichern des benutzerdefinierten Modells verwendet. Beispiel: *C:\CustomSpeech*, wobei sich *Laufwerk „C“* auf dem Hostcomputer befindet. |
-| `{MODEL_ID}` | Die **Modell-ID** für Custom Speech von der Seite **Training** des Custom Voice-Portals. |
-| `{ENDPOINT_URI}` | Der Endpunkt ist zur Messung und Abrechnung erforderlich. Weitere Informationen finden Sie unter [Ermitteln erforderlicher Parameter](#gathering-required-parameters). |
-| `{API_KEY}` | Der API-Schlüssel ist erforderlich. Weitere Informationen finden Sie unter [Ermitteln erforderlicher Parameter](#gathering-required-parameters). |
-
-Zum Ausführen des Containers für die *benutzerdefinierte Sprachsynthese* führen Sie den folgenden `docker run`-Befehl aus:
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
--v {VOLUME_MOUNT}:/usr/local/models \
-mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech \
-ModelId={MODEL_ID} \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-Dieser Befehl:
-
-* Führt einen Container für die *benutzerdefinierte Sprachsynthese* aus dem Containerimage aus.
-* Ordnet 1 CPU-Kern und 2 GB Arbeitsspeicher zu.
-* Lädt das Modell für die *benutzerdefinierte Sprachsynthese* aus der Volumebereitstellung für die Eingabe, z. B. *C:\CustomVoice*.
-* Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
-* Lädt das Modell anhand der `ModelId` herunter (sofern diese in der Volumebereitstellung nicht gefunden wird).
-* Wenn das benutzerdefinierte Modell zuvor bereits heruntergeladen wurde, wird die `ModelId` ignoriert.
-* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
-
 # <a name="speech-language-detection"></a>[Speech-Sprachenerkennung](#tab/lid)
 
 Führen Sie zum Ausführen des Containers für die *Speech-Sprachenerkennung* den folgenden `docker run`-Befehl aus.
@@ -614,7 +549,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 | Container | SDK-Host-URL | Protocol |
 |--|--|--|
 | Standardmäßige und benutzerdefinierte Spracherkennung | `ws://localhost:5000` | WS |
-| Sprachsynthese (einschließlich standardmäßige, benutzerdefinierte und neuronale Sprachsynthese), Speech-Sprachenerkennung | `http://localhost:5000` | HTTP |
+| Sprachsynthese (einschließlich standardmäßige und neuronale Sprachsynthese), Speech-Sprachenerkennung | `http://localhost:5000` | HTTP |
 
 Weitere Informationen zur Verwendung der Protokolle WSS und HTTPS finden Sie unter [Containersicherheit](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
 
@@ -739,7 +674,7 @@ speech_config.set_service_property(
 )
 ```
 
-### <a name="text-to-speech-standard-neural-and-custom"></a>Sprachsynthese (standardmäßig, neuronal und benutzerdefiniert)
+### <a name="text-to-speech-standard-and-neural"></a>Sprachsynthese (Standard und neuronal)
 
 [!INCLUDE [Query Text-to-speech container endpoint](includes/text-to-speech-container-query-endpoint.md)]
 
