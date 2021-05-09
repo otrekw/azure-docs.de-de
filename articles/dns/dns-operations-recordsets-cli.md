@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.workload: infrastructure-services
-ms.date: 05/15/2018
+ms.date: 04/28/2021
 ms.author: rohink
-ms.openlocfilehash: 2d3989b3c477a35d602f1ccf3e45d6f597f5d78d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52e82e52ba0476aba02b4d083537e085181bbde9
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011563"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228068"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Verwalten von DNS-Einträgen und Ressourceneintragssätzen in Azure DNS mit der Azure CLI
 
@@ -24,9 +24,9 @@ ms.locfileid: "96011563"
 > * [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-Dieser Artikel zeigt, wie Sie DNS-Einträge für Ihre DNS-Zone mit der plattformübergreifenden Azure CLI verwalten, die für Windows, Mac und Linux verfügbar ist. Sie können Ihre DNS-Einträge auch mithilfe von [Azure PowerShell](dns-operations-recordsets.md) oder über das [Azure-Portal](dns-operations-recordsets-portal.md) verwalten.
+In diesem Artikel wird gezeigt, wie Sie DNS-Einträge für Ihre DNS-Zone mithilfe der plattformübergreifenden Azure-Befehlszeilenschnittstelle (Azure CLI) verwalten können. Azure CLI ist für Windows, Mac und Linux verfügbar. Sie können Ihre DNS-Einträge auch mithilfe von [Azure PowerShell](dns-operations-recordsets.md) oder über das [Azure-Portal](dns-operations-recordsets-portal.md) verwalten.
 
-Bei den Beispielen in diesem Artikel wird vorausgesetzt, dass Sie bereits [die Azure-Befehlszeilenschnittstelle installiert haben, angemeldet sind und eine DNS-Zone erstellt haben](dns-operations-dnszones-cli.md).
+Bei den Beispielen in diesem Artikel wird vorausgesetzt, dass Sie bereits [die Azure CLI installiert haben, angemeldet sind und eine DNS-Zone erstellt haben](dns-operations-dnszones-cli.md).
 
 ## <a name="introduction"></a>Einführung
 
@@ -40,27 +40,32 @@ Weitere Informationen zu DNS-Einträgen in Azure DNS finden Sie unter [DNS-Zonen
 
 Verwenden Sie zum Erstellen eines DNS-Eintrags den Befehl `az network dns record-set <record-type> add-record` (wobei `<record-type>` der Typ des Eintrags ist, z.B. a, srv, txt usw.). Entsprechende Hilfeinformationen finden Sie unter `az network dns record-set --help`.
 
-Beim Erstellen eines Eintrags müssen Sie den Ressourcengruppennamen, den Zonennamen und den Namen des Eintragssatzes sowie den Eintragstyp und die Details zu dem zu erstellenden Eintrag angeben. Der Name des Eintragssatzes muss ein *relativer* Name sein, also ein Name ohne Zonenname.
+Beim Erstellen eines Eintrags müssen Sie die folgenden Informationen angeben: 
 
-Ist der Eintragssatz noch nicht vorhanden, wird er vom Befehl für Sie erstellt. Ist der Eintragssatz bereits vorhanden, fügt dieser Befehl den von Ihnen angegebenen Eintrag zum vorhandenen Eintragssatz hinzu.
+* Ressourcengruppenname
+* Zonenname
+* Name des Eintragssatzes
+* Eintragstyp
+
+Der Name des Eintragssatzes muss ein *relativer* Name sein, also ein Name ohne Zonenname. Wenn der Eintragssatz noch nicht vorhanden ist, wird er durch diesen Befehl für Sie erstellt. Dieser Befehl fügt aber den von Ihnen angegebenen Eintrag hinzu, wenn er der Eintragssatz bereits vorhanden ist.
 
 Bei der Erstellung eines neuen Eintragssatzes wird ein Standardwert von 3600 für die Gültigkeitsdauer (Time-To-Live, TTL) verwendet. Anleitungen zum Verwenden verschiedener TTL-Werte finden Sie unter [Erstellen eines DNS-Ressourceneintragssatzes](#create-a-dns-record-set).
 
 Im folgenden Beispiel wird in der Ressourcengruppe *MyResourceGroup* in der Zone *contoso.com* ein A-Eintrag namens *www* erstellt. Die IP-Adresse des A-Eintrags lautet *1.2.3.4*.
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
 Zum Erstellen eines Ressourceneintragssatzes auf oberster Ebene des Zonen-Apex (in diesem Fall „contoso.com“) verwenden Sie den Namen des Eintrags „\@“, einschließlich der Anführungszeichen:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
 ```
 
 ## <a name="create-a-dns-record-set"></a>Erstellen eines DNS-Ressourceneintragssatzes
 
-In den oben gezeigten Beispielen wurde der DNS-Eintrag entweder zu einem vorhandenen Eintragssatz hinzugefügt oder der Eintragssatz wurde *implizit* erstellt. Sie können einen Eintragssatz auch *explizit* erstellen, bevor Sie Datensätze hinzufügen. Azure DNS unterstützt „leere“ Eintragssätze. Diese können als Platzhalter verwendet werden, um vor der Erstellung von DNS-Einträgen einen DNS-Namen zu reservieren. Leere Ressourceneintragssätze sind auf der Steuerungsebene von Azure DNS sichtbar, aber nicht auf den Azure DNS-Namenservern.
+In den oben gezeigten Beispielen wurde der DNS-Eintrag entweder zu einem vorhandenen Eintragssatz hinzugefügt oder der Eintragssatz wurde *implizit* erstellt. Sie können einen Eintragssatz auch *explizit* erstellen, bevor Sie Datensätze hinzufügen. Azure DNS unterstützt „leere“ Eintragssätze. Diese können als Platzhalter verwendet werden, um vor der Erstellung von DNS-Einträgen einen DNS-Namen zu reservieren. Leere Eintragssätze sind auf der Steuerungsebene von Azure DNS sichtbar, werden auf den Azure DNS-Namenservern aber nicht angezeigt.
 
 Eintragssätze werden mit dem Befehl `az network dns record-set <record-type> create` erstellt. Entsprechende Hilfeinformationen finden Sie unter `az network dns record-set <record-type> create --help`.
 
@@ -68,13 +73,13 @@ Durch explizites Erstellen eines Eintragssatzes können Sie Eigenschaften für d
 
 Im folgenden Beispiel wird mithilfe des Parameters `--ttl` (Kurzform: `-l`) ein leerer Eintragssatz vom Typ „A“ mit einer Gültigkeitsdauer von 60 Sekunden erstellt:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --ttl 60
 ```
 
-Das folgende Beispiel erstellt mithilfe des `--metadata`-Parameters einen Eintragssatz mit zwei Metadateneinträgen („dept=finance“ und „environment=production“):
+Das folgende Beispiel erstellt mithilfe des Parameters `--metadata` einen Eintragssatz mit zwei Metadateneinträgen („dept=finance“ und „environment=production“):
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --metadata "dept=finance" "environment=production"
 ```
 
@@ -88,17 +93,17 @@ Die zum Angeben der Eintragsdaten verwendeten Parameter variieren abhängig vom 
 
 Für jeden Fall wird gezeigt, wie Sie einen einzelnen Eintrag erstellen. Der Eintrag wird dem vorhandenen Eintragssatz hinzugefügt, oder es wird implizit ein Eintragssatz erstellt. Weitere Informationen zum Erstellen von Eintragssätzen und zum expliziten Definieren von Eintragssatzparametern finden Sie unter [Erstellen eines DNS-Ressourceneintragssatzes](#create-a-dns-record-set).
 
-Die Erstellung eines SOA-Ressourceneintragssatzes wird hier nicht gezeigt, da SOAs zusammen mit der jeweiligen DNS-Zone erstellt und gelöscht werden und nicht separat erstellt oder gelöscht werden können. Der SOA-Eintrag kann jedoch geändert werden. Dies wird in einem [späteren Beispiel](#to-modify-an-soa-record) gezeigt.
+Es gibt kein Beispiel für das Erstellen eines SOA-Eintragssatzes, weil SOAs mit jeder DNS-Zone erstellt und gelöscht werden. Der SOA-Eintrag kann nicht separat erstellt oder gelöscht werden. Er kann jedoch [geändert](#to-modify-an-soa-record) werden. Dies wird in einem späteren Beispiel gezeigt.
 
 ### <a name="create-an-aaaa-record"></a>Erstellen eines AAAA-Eintrags
 
-```azurecli
+```azurecli-interactive
 az network dns record-set aaaa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-aaaa --ipv6-address 2607:f8b0:4009:1803::1005
 ```
 
-### <a name="create-an-caa-record"></a>Erstellen eines CAA-Eintrags
+### <a name="create-a-caa-record"></a>Erstellen eines CAA-Eintrags
 
-```azurecli
+```azurecli-interactive
 az network dns record-set caa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-caa --flags 0 --tag "issue" --value "ca1.contoso.com"
 ```
 
@@ -109,7 +114,7 @@ az network dns record-set caa add-record --resource-group myresourcegroup --zone
 > 
 > Weitere Informationen finden Sie unter [CNAME-Einträge](dns-zones-records.md#cname-records).
 
-```azurecli
+```azurecli-interactive
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.contoso.com
 ```
 
@@ -117,13 +122,13 @@ az network dns record-set cname set-record --resource-group myresourcegroup --zo
 
 In diesem Beispiel verwenden wir den Namen des Eintragssatzes „\@“ zum Erstellen des MX-Eintrags auf oberster Ebene des Zonen-Apex (in diesem Fall „contoso.com“).
 
-```azurecli
+```azurecli-interactive
 az network dns record-set mx add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
 ```
 
 ### <a name="create-an-ns-record"></a>Erstellen eines NS-Eintrags
 
-```azurecli
+```azurecli-interactive
 az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-ns --nsdname ns1.contoso.com
 ```
 
@@ -131,15 +136,15 @@ az network dns record-set ns add-record --resource-group myresourcegroup --zone-
 
 In diesem Fall ist „my-arpa-zone.com“ die ARPA-Zone, die Ihren IP-Adressbereich darstellt. Jeder PTR-Eintragssatz in dieser Zone entspricht einer IP-Adresse innerhalb dieses IP-Adressbereichs.  Der Eintragsname „10“ ist das letzte Oktett der IP-Adresse innerhalb dieses IP-Adressbereichs, der durch diesen Eintrag dargestellt wird.
 
-```azurecli
+```azurecli-interactive
 az network dns record-set ptr add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name my-arpa.zone.com --ptrdname myservice.contoso.com
 ```
 
 ### <a name="create-an-srv-record"></a>Erstellen eines SRV-Eintrags
 
-Geben Sie beim Erstellen eines [SRV-Ressourceneintragssatzes](dns-zones-records.md#srv-records) den *\_Dienst* und das *\_Protokoll* im Namen des Ressourceneintragssatzes an. Wenn Sie einen SRV-Ressourceneintragssatz auf der obersten Ebene des Zonen-Apex erstellen, muss „\@“ nicht in den Namen des Ressourceneintragssatzes eingeschlossen werden.
+Geben Sie beim Erstellen eines [SRV-Ressourceneintragssatzes](dns-zones-records.md#srv-records) den *\_Dienst* und das *\_Protokoll* im Namen des Ressourceneintragssatzes an. Wenn Sie einen SRV-Eintragssatz an der Zonenspitze (Zonen-Apex) erstellen, muss „\@“ in den Namen des Eintragssatzes nicht einbezogen werden.
 
-```azurecli
+```azurecli-interactive
 az network dns record-set srv add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
 ```
 
@@ -147,7 +152,7 @@ az network dns record-set srv add-record --resource-group myresourcegroup --zone
 
 Das folgende Beispiel zeigt die Erstellung eines TXT-Eintrags. Weitere Informationen zur maximal unterstützten Zeichenfolgenlänge in TXT-Einträgen finden Sie unter [TXT-Einträge](dns-zones-records.md#txt-records).
 
-```azurecli
+```azurecli-interactive
 az network dns record-set txt add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-txt --value "This is a TXT record"
 ```
 
@@ -155,11 +160,11 @@ az network dns record-set txt add-record --resource-group myresourcegroup --zone
 
 Verwenden Sie `az network dns record-set <record-type> show`zum Abrufen eines vorhandenen Ressourceneintragssatzes. Entsprechende Hilfeinformationen finden Sie unter `az network dns record-set <record-type> show --help`.
 
-Wie beim Erstellen eines Eintrags oder Eintragssatzes muss der Name des Eintragssatzes ein *relativer* Name sein, also ein Name ohne Zonenname. Außerdem müssen Sie den Eintragstyp, die Zone, die den Eintragssatz enthält, und die Ressourcengruppe, die die Zone enthält, angeben.
+Wenn ein Eintrag oder Eintragssatz erstellt wird, muss der Eintragssatz einen *relativen* Namen erhalten. Dieser Name enthält nicht den Zonennamen. Außerdem müssen Sie den Eintragstyp, die Zone, die den Eintragssatz enthält, und die Ressourcengruppe, die die Zone enthält, angeben.
 
 Das folgende Beispiel ruft den Eintrag *www* vom Typ A aus der Zone *contoso.com* in der Ressourcengruppe *MyResourceGroup* ab:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a show --resource-group myresourcegroup --zone-name contoso.com --name www
 ```
 
@@ -167,15 +172,15 @@ az network dns record-set a show --resource-group myresourcegroup --zone-name co
 
 Sie können alle Eintragssätze in einer DNS-Zone mit dem Befehl `az network dns record-set list` auflisten. Entsprechende Hilfeinformationen finden Sie unter `az network dns record-set list --help`.
 
-Dieses Beispiel gibt alle Eintragssätze in der Zone *contoso.com* in der Ressourcengruppe *MyResourceGroup* zurück, unabhängig vom Namen oder Typ:
+Dieses Beispiel gibt alle Eintragssätze in der Zone *contoso.com* in der Ressourcengruppe *MyResourceGroup* zurück:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set list --resource-group myresourcegroup --zone-name contoso.com
 ```
 
 Dieses Beispiel gibt alle Eintragssätze zurück, die dem angegebenen Eintragstyp (in diesem Fall „A“-Einträge) entsprechen:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a list --resource-group myresourcegroup --zone-name contoso.com 
 ```
 
@@ -191,11 +196,11 @@ Um einen DNS-Eintrag aus einem vorhandenen Eintragssatz zu entfernen, verwenden 
 
 Dieser Befehl löscht einen DNS-Eintrag aus einem Eintragssatz. Wenn der letzte Eintrag in einem Eintragssatz gelöscht wird, wird auch der Eintragssatz selbst gelöscht. Verwenden Sie die Option `--keep-empty-record-set`, um stattdessen den leeren Eintragssatz beizubehalten.
 
-Sie müssen den zu löschenden Eintrag und die Zone angeben, aus der der Eintrag gelöscht werden soll. Verwenden Sie dazu die gleichen Parameter wie beim Erstellen eines Eintrags mithilfe von `az network dns record-set <record-type> add-record`. Diese Parameter werden unter [Erstellen eines DNS-Eintrags](#create-a-dns-record) und [Erstellen anderer Eintragstypen](#create-records-of-other-types) weiter oben beschrieben.
+Wenn Sie den Befehl `az network dns record-set <record-type> add-record` verwenden, müssen Sie den Datensatz angeben, der gelöscht wird, und die Zone, aus der er gelöscht werden soll. Diese Parameter werden unter [Erstellen eines DNS-Eintrags](#create-a-dns-record) und [Erstellen anderer Eintragstypen](#create-records-of-other-types) weiter oben beschrieben.
 
 Das folgende Beispiel löscht den A-Eintrag mit dem Wert „1.2.3.4“ aus dem Eintragssatz *www* in der Zone *contoso.com* der Ressourcengruppe *MyResourceGroup*.
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "www" --ipv4-address 1.2.3.4
 ```
 
@@ -209,34 +214,34 @@ Um einen vorhandenen Eintrag vom Typ A, AAAA, CAA, MX, NS, PTR, SRV oder TXT zu 
 
 Das folgende Beispiel zeigt, wie Sie einen A-Eintrag von der IP-Adresse 1.2.3.4 in die IP-Adresse 5.6.7.8 ändern:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 5.6.7.8
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
-Sie können im automatisch erstellten NS-Ressourceneintragssatz auf der obersten Ebene der Zone (`--Name "@"`, einschließlich Anführungszeichen) keine Einträge hinzufügen, entfernen oder ändern. Für diesen Eintragssatz können Sie nur die Gültigkeitsdauer (Time-to-Live, TTL) und die Metadaten ändern.
+Sie können im automatisch erstellten NS-Eintragssatz an der Zonenspitze (`--Name "@"`, einschließlich Anführungszeichen) keine Einträge hinzufügen, entfernen oder ändern. Für diesen Eintragssatz können Sie nur die Gültigkeitsdauer (Time-to-Live, TTL) und die Metadaten ändern.
 
 ### <a name="to-modify-a-cname-record"></a>Ändern eines CNAME-Eintrags
 
-Im Gegensatz zu den meisten anderen Eintragstypen kann ein CNAME-Eintrag nur einen einzelnen Eintrag enthalten.  Aus diesem Grund ist es nicht wie bei anderen Eintragstypen möglich, den aktuellen Wert zu ersetzen, indem ein neuer Eintrag hinzugefügt und der vorhandene Eintrag entfernt wird.
+Im Gegensatz zu den meisten anderen Eintragstypen kann ein CNAME-Eintrag nur einen einzelnen Eintrag enthalten.  Deshalb können Sie nicht wie bei anderen Eintragstypen den aktuellen Wert ersetzen, indem Sie einen neuen Eintrag hinzufügen und den vorhandenen Eintrag entfernen.
 
 Verwenden Sie zum Ändern eines CNAME-Eintrags daher `az network dns record-set cname set-record`. Entsprechende Hilfeinformationen finden Sie unter `az network dns record-set cname set-record --help`.
 
 Diese Beispiel ändert den CNAME-Eintragssatz *www* in der Zone *contoso.com* der Ressourcengruppe *MyResourceGroup* so, dass er auf „www.fabrikam.net“ anstatt auf den vorhandenen Wert zeigt:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.fabrikam.net
 ``` 
 
 ### <a name="to-modify-an-soa-record"></a>So ändern Sie einen SOA-Eintrag
 
-Im Gegensatz zu den meisten anderen Eintragstypen kann ein CNAME-Eintrag nur einen einzelnen Eintrag enthalten.  Aus diesem Grund ist es nicht wie bei anderen Eintragstypen möglich, den aktuellen Wert zu ersetzen, indem ein neuer Eintrag hinzugefügt und der vorhandene Eintrag entfernt wird.
+Im Gegensatz zu den meisten anderen Eintragstypen kann ein SOA-Eintragssatz nur einen einzigen Eintrag enthalten.  Deshalb können Sie nicht wie bei anderen Eintragstypen den aktuellen Wert ersetzen, indem Sie einen neuen Eintrag hinzufügen und den vorhandenen Eintrag entfernen.
 
 Verwenden Sie zum Ändern des SOA-Eintrags stattdessen `az network dns record-set soa update`. Entsprechende Hilfeinformationen finden Sie unter `az network dns record-set soa update --help`.
 
-Das folgende Beispiel zeigt, wie Sie die Eigenschaft „email“ des SOA-Eintrags für die Zone *contoso.com* in der Ressourcengruppe *MyResourceGroup* festlegen:
+Das folgende Beispiel zeigt, wie Sie die Eigenschaft „email“ des SOA-Eintrags für die Zone *contoso.com* festlegen:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set soa update --resource-group myresourcegroup --zone-name contoso.com --email admin.contoso.com
 ```
 
@@ -244,13 +249,13 @@ az network dns record-set soa update --resource-group myresourcegroup --zone-nam
 
 Der für die Zonenspitze festgelegte NS-Eintrag wird für jede DNS-Zone automatisch erstellt. Er enthält die Namen der Azure DNS-Namenserver, die der Zone zugewiesen sind.
 
-Sie können diesem NS-Eintragssatz weitere Namenserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Datensatz ändern. Es ist aber nicht möglich, die vorab mit Daten aufgefüllten Azure-DNS-Namensserver zu entfernen oder zu ändern.
+Sie können diesem NS-Eintragssatz weitere Namenserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Außerdem können Sie die Gültigkeitsdauer und die Metadaten für diesen Eintragssatz ändern. Sie können aber die vorab mit Daten aufgefüllten Azure DNS-Namenserver nicht entfernen oder ändern.
 
-Beachten Sie, dass dies nur für den NS-Eintragssatz der Zonenspitze gilt. Andere NS-Eintragssätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen geändert werden.
+Diese Einschränkung gilt nur für den NS-Eintragssatz an der Zonenspitze. Andere NS-Eintragssätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen geändert werden.
 
-Im folgenden Beispiel wird gezeigt, wie Sie dem NS-Eintragssatz der Zonenspitze einen zusätzlichen Namenserver hinzufügen:
+Im folgenden Beispiel wird gezeigt, wie Sie dem NS-Eintragssatz an der Zonenspitze einen zusätzlichen Namenserver hinzufügen:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
 ```
 
@@ -260,7 +265,7 @@ Um die Gültigkeitsdauer eines vorhandenen Eintragssatzes zu ändern, verwenden 
 
 Das folgende Beispiel zeigt, wie Sie die Gültigkeitsdauer eines Eintragssatzes ändern, in diesem Fall in 60 Sekunden:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a update --resource-group myresourcegroup --zone-name contoso.com --name www --set ttl=60
 ```
 
@@ -268,9 +273,9 @@ az network dns record-set a update --resource-group myresourcegroup --zone-name 
 
 Mithilfe von [Metadaten für den Eintragssatz](dns-zones-records.md#tags-and-metadata) können den einzelnen Eintragssätzen anwendungsspezifische Daten als Schlüssel-Wert-Paare zugeordnet werden. Um die Metadaten eines vorhandenen Eintragssatzes zu ändern, verwenden Sie `az network dns record-set <record-type> update`. Entsprechende Hilfeinformationen finden Sie unter `az network dns record-set <record-type> update --help`.
 
-Im folgenden Beispiel wird gezeigt, wie Sie einen Eintragssatz mit zwei Metadateneinträgen („dept=finance“ und „environment=production“) ändern. Beachten Sie, dass jegliche vorhandenen Metadaten durch die angegebenen Werte *ersetzt* werden.
+Im folgenden Beispiel wird gezeigt, wie Sie einen Eintragssatz mit zwei Metadateneinträgen („dept=finance“ und „environment=production“) ändern. Alle vorhandenen Metadaten werden durch die angegebenen Werte *ersetzt*.
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a update --resource-group myresourcegroup --zone-name contoso.com --name www --set metadata.dept=finance metadata.environment=production
 ```
 
@@ -283,7 +288,7 @@ Eintragssätze können mit dem Befehl `az network dns record-set <record-type> d
 
 Das folgende Beispiel löscht den Eintragssatz namens *www* vom Typ A aus der Zone *contoso.com* in der Ressourcengruppe *MyResourceGroup*:
 
-```azurecli
+```azurecli-interactive
 az network dns record-set a delete --resource-group myresourcegroup --zone-name contoso.com --name www
 ```
 

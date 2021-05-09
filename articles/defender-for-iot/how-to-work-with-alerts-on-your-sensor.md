@@ -3,12 +3,12 @@ title: Verstehen Sie die Sensorwarnungen
 description: Arbeiten Sie mit Warnungen, um die Sicherheit und den Betrieb Ihres Netzwerks zu verbessern.
 ms.date: 3/29/2021
 ms.topic: how-to
-ms.openlocfilehash: a34871342e9a868ba593ae894fdd91b5e99c5a44
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 353f7fb0da85a0ffa737dc5c4afa70763b2fb185
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729421"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208939"
 ---
 # <a name="about-sensor-alerts"></a>Informationen zu Sensorwarnungen
 
@@ -56,7 +56,7 @@ Es sind Tools zum Aktivieren und Deaktivieren von Sensormodulen verfügbar. Von 
 
 ## <a name="alerts-and-sensor-reporting"></a>Warnungen und Sensorberichte
 
-In Warnungen reflektierte Aktivitäten können beim Generieren von Data Mining-, Risikobewertungs- und Angriffsvektorberichten berechnet werden. Wenn Sie diese Ereignisse verwalten, aktualisiert der Sensor die Berichte entsprechend.
+In Warnungen reflektierte Aktivitäten werden beim Generieren von Data Mining-, Risikobewertungs- und Angriffsvektorberichten berechnet. Wenn Sie diese Ereignisse verwalten, aktualisiert der Sensor die Berichte entsprechend.
 
 Beispiel:
 

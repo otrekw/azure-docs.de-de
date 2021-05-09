@@ -1,14 +1,14 @@
 ---
 title: Installation von Defender für IoT
 description: Hier erfahren Sie, wie Sie einen Sensor und die lokale Verwaltungskonsole für Azure Defender für IoT installieren.
-ms.date: 12/2/2020
+ms.date: 04/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 5bdb292750ea041be68a22519583511f58b3b517
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77ff5a6d29544599a74bd6176e8b8e99a5c41968
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782247"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076480"
 ---
 # <a name="defender-for-iot-installation"></a>Installation von Defender für IoT
 
@@ -210,7 +210,7 @@ So konfigurieren Sie das Dell BIOS:
 
 #### <a name="import-the-bios-configuration-file"></a>Importieren der BIOS-Konfigurationsdatei
 
-In diesem Artikel wird beschrieben, wie das BIOS mithilfe der Konfigurationsdatei konfiguriert wird.
+In diesem Abschnitt wird beschrieben, wie das BIOS mithilfe der Konfigurationsdatei konfiguriert wird.
 
 1. Schließen Sie einen PC mit der statischen vorkonfigurierten IP-Adresse **10.100.100.200** an den **iDRAC**-Port an.
 
@@ -328,11 +328,11 @@ So führen Sie die Installation durch:
 
 1. Wählen Sie **SENSOR-RELEASE-\<version\> Enterprise** aus.
 
-   :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Screenshot der Versionsauswahl":::   
+   :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Wählen Sie Ihre Sensorversion und Ihren Unternehmenstyp aus.":::   
 
 1. Definieren Sie das Applianceprofil und die Netzwerkeigenschaften:
 
-   :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="Screenshot des Applianceprofils":::   
+   :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="Screenshot mit dem Applianceprofil und den Netzwerkeigenschaften":::   
 
    | Parameter | Konfiguration |
    |--|--|
@@ -354,7 +354,7 @@ So führen Sie die Installation durch:
 
 ## <a name="hpe-proliant-dl20-installation"></a>HPE ProLiant DL20-Installation
 
-In diesem Artikel wird der Vorgang zur Installation von HPE ProLiant DL20 beschrieben, der die folgenden Schritte umfasst:
+In diesem Abschnitt wird der Vorgang zur Installation von HPE ProLiant DL20 beschrieben, der die folgenden Schritte umfasst:
 
   - Aktivieren Sie den Remotezugriff, und aktualisieren Sie das Standardadministratorkennwort.
   - Konfigurieren Sie die BIOS- und RAID-Einstellungen.
@@ -470,7 +470,7 @@ So installieren Sie die Software:
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Screenshot des Bildschirms zum Auswählen einer Version":::
 
-1. Definieren Sie im Installations-Assistenten das Applianceprofil und die Netzwerkeigenschaften:
+1. Definieren Sie im Installations-Assistenten das Hardwareprofil und die Netzwerkeigenschaften:
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="Screenshot des Installations-Assistenten":::
 
@@ -571,10 +571,101 @@ So führen Sie die Installation durch:
 
 1. Wählen Sie **Eingeben** aus, um den Vorgang fortzusetzen.
 
+## <a name="hp-edgeline-300-installation"></a>Installation von HP EdgeLine 300
+
+•   Ein Standardadministrator wird bereitgestellt. Wir empfehlen, dass Sie das Kennwort während der Netzwerkkonfiguration ändern.
+
+•   Der Installationsvorgang dauert ungefähr 20 Minuten. Nach der Installation wird das System mehrmals neu gestartet.
+
+### <a name="hp-edgeline-300-back-panel"></a>Rückseite von HP EdgeLine 300
+
+:::image type="content" source="media/tutorial-install-components/edgeline-el300-panel.png" alt-text="Ansicht der Rückseite von EL300":::
+
+### <a name="enable-remote-access"></a>Aktivieren des Remotezugriffs
+
+1. Geben Sie die ISM-IP-Adresse in Ihren Webbrowser ein.
+
+1. Melden Sie sich mit dem Standardbenutzernamen und -kennwort an, das Sie auf Ihrer Appliance finden.
+
+1. Navigieren Sie zu **Wired and Wireless Network**(Verkabeltes und drahtloses Netzwerk) > **IPV4**.
+
+    :::image type="content" source="media/tutorial-install-components/wired-and-wireless.png" alt-text="Navigieren Sie zu hervorgehobenen Abschnitten.":::
+
+1. Deaktivieren Sie den **DHCP-Umschalter**.
+
+1. Konfigurieren Sie die IPv4-Adressen so:
+    - **IPV4-Adresse**: `192.168.1.125`
+    - **IPV4-Subnetzmaske**: `255.255.255.0`
+    - **IPV4-Gateway**: `192.168.1.1`
+
+1. Wählen Sie **Übernehmen**.
+
+1. Melden Sie sich ab, und starten Sie die Appliance neu.
+
+### <a name="configure-the-bios"></a>Konfigurieren des BIOS
+
+Im folgenden Verfahren wird beschrieben, wie Sie das BIOS für die HP EL300-Appliance konfigurieren können.
+
+So konfigurieren Sie das BIOS:
+
+1. Schalten Sie die Appliance ein, und drücken Sie **F9**, um das BIOS zu aktivieren.
+
+1. Wählen Sie **Erweitert** aus, und scrollen Sie nach unten zu **CSM Support**.
+
+    :::image type="content" source="media/tutorial-install-components/csm-support.png" alt-text="Aktivieren Sie „CSM Support“, um das zusätzliche Menü zu öffnen.":::
+
+1. Drücken Sie die **EINGABETASTE,** , um „CSM Support“ zu aktivieren.
+
+1. Navigieren Sie zu **Speicher** und pushen Sie **+/-** , um ihn in „Legacy“ zu ändern.
+
+1. Navigieren Sie zu **Video** und pushen Sie **+/-** , um es in „Legacy“ zu ändern.
+
+    :::image type="content" source="media/tutorial-install-components/storage-and-video.png" alt-text="Navigieren Sie zu „Speicher“ und „Video“, und ändern Sie beide in „Legacy“.":::
+
+1. Navigieren Sie zu **Boot** (Start) > **Boot mode select** (Auswahl des Startmodus).
+
+1. Pushen Sie **+/-** , um ihn in „Legacy“ zu ändern.
+
+    :::image type="content" source="media/tutorial-install-components/boot-mode.png" alt-text="„Boot mode select“ (Auswahl des Startmodus) in „Legacy“ ändern.":::
+
+1. Navigieren Sie zu **Speichern und beenden**.
+
+1. Wählen Sie **Änderungen speichern und beenden** aus.
+
+    :::image type="content" source="media/tutorial-install-components/save-and-exit.png" alt-text="Speichern Sie Ihre Änderungen, und beenden Sie das System.":::
+
+1. Wählen Sie **Ja** aus. Dann wird die Appliance neu gestartet.
+
+1. Drücken Sie **F11**, um das **Startmenü** zu öffnen.
+
+1. Wählen Sie das Gerät mit dem Sensorbild aus. Geben Sie **DVD** oder **USB** ein.
+
+1. Wählen Sie Ihre Sprache aus.
+
+1. Wählen Sie **sensor-10.0.3.12-62a2a3f724 Office: 4 CPUS, 8GB RAM, 100GB STORAGE** aus.
+
+    :::image type="content" source="media/tutorial-install-components/sensor-select-screen.png" alt-text="Wählen Sie die Sensorversion wie gezeigt aus.":::
+
+1. Definieren Sie im Installations-Assistenten das Applianceprofil und die Netzwerkeigenschaften:
+
+    :::image type="content" source="media/tutorial-install-components/appliance-parameters.png" alt-text="Definieren Sie das Profil und die Netzwerkkonfigurationen der Appliance mit den folgenden Parametern.":::
+
+    | Parameter | Konfiguration |
+    |--|--|
+    | **Konfigurieren eines Hardwareprofils** | **office** |
+    | **Konfigurieren der Verwaltungsnetzwerkschnittstelle** | **enp3s0** <br />oder <br />**möglicher Wert** |
+    | **Konfigurieren der IP-Adresse des Verwaltungsnetzwerks:** | **Die vom Kunden angegebene IP-Adresse** |
+    | **Konfigurieren der Subnetzmaske:** | **Die vom Kunden angegebene IP-Adresse** |
+    | **Konfigurieren von DNS:** | **Die vom Kunden angegebene IP-Adresse** |
+    | **Konfigurieren der IP-Adresse des Standardgateways:** | **Die vom Kunden angegebene IP-Adresse** |
+    | **Konfigurieren von einer oder mehreren Eingabeschnittstelle(n)** | **enp4s0** <br />oder <br />**möglicher Wert** |
+    | **Konfigurieren von einer oder mehreren Bridge-Schnittstelle(n)** | – |
+
+1. Akzeptieren Sie die Einstellungen, und setzen Sie den Vorgang durch Eingabe von `Y` fort.
+
 ## <a name="sensor-installation-for-the-virtual-appliance"></a>Sensorinstallation für das virtuelle Gerät
 
 Sie können den virtuellen Computer für den Defender für IoT-Sensor in den folgenden Architekturen bereitstellen:
-
 
 | Aufbau | Spezifikationen | Verwendung | Kommentare |
 |---|---|---|---|
@@ -703,6 +794,111 @@ So führen Sie die Installation durch:
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Screenshot des Zugriffs auf die Verwaltungskonsole":::
 
+## <a name="on-premises-management-console-installation"></a>Installation der lokalen Verwaltungskonsole
+
+Vor Installation der Software auf der Appliance müssen Sie deren BIOS-Konfiguration anpassen:
+
+### <a name="bios-configuration"></a>BIOS-Konfiguration
+
+So konfigurieren Sie das BIOS für Ihre Appliance:
+
+1. [Aktivieren Sie den Remotezugriff, und aktualisieren Sie das Kennwort](#enable-remote-access-and-update-the-password).
+
+1. [Konfigurieren Sie das BIOS](#configure-the-hpe-bios).
+
+### <a name="software-installation"></a>Softwareinstallation
+
+Der Installationsvorgang dauert ungefähr 20 Minuten. Nach der Installation wird das System mehrmals neu gestartet. 
+
+Während des Installationsvorgangs können Sie eine sekundäre NIC hinzufügen. Wenn Sie die sekundäre NIC während der Installation nicht installieren möchten, können Sie zu einem späteren Zeitpunkt [eine sekundäre NIC hinzufügen](#add-a-secondary-nic). 
+
+So installieren Sie die Software:
+
+1. Wählen Sie Ihre bevorzugte Sprache für den Installationsvorgang aus.
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-language-select.png" alt-text="Wählen Sie Ihre bevorzugte Sprache für den Installationsvorgang aus.":::     
+
+1. Wählen Sie **MANAGEMENT-RELEASE-\<version\>\<deployment type\>** aus.
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-install-screen.png" alt-text="Wählen Sie Ihre Version aus.":::   
+
+1. Definieren Sie im Installations-Assistenten die Netzwerkeigenschaften:
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-first-steps-install.png" alt-text="Screenshot des Applianceprofils":::   
+
+   | Parameter | Konfiguration |
+   |--|--|
+   | **Konfigurieren der Verwaltungsnetzwerkschnittstelle** | Für Dell: **eth0, eth1** <br /> Für HP: **enu1, enu2** <br /> oder <br />**möglicher Wert** |
+   | **Konfigurieren der IP-Adresse des Verwaltungsnetzwerks:** | **Die vom Kunden angegebene IP-Adresse** |
+   | **Konfigurieren der Subnetzmaske:** | **Die vom Kunden angegebene IP-Adresse** |
+   | **Konfigurieren von DNS:** | **Die vom Kunden angegebene IP-Adresse** |
+   | **Konfigurieren der IP-Adresse des Standardgateways:** | **Die vom Kunden angegebene IP-Adresse** |
+   
+1. **(Optional)** Wenn Sie eine sekundäre Netzwerkschnittstellenkarte (Network Interface Card, NIC) installieren möchten, definieren Sie das folgende Applianceprofil und die folgenden Netzwerkeigenschaften:
+
+    :::image type="content" source="media/tutorial-install-components/on-prem-secondary-nic-install.png" alt-text="Screenshot mit Fragen zur Installation der sekundären NIC":::
+
+   | Parameter | Konfiguration |
+   |--|--|
+   | **Konfigurieren der Sensorüberwachungsschnittstelle (optional):** | **eth1** oder **möglicher Wert** |
+   | **Konfigurieren einer IP-Adresse für die Sensorüberwachungsschnittstelle:** | **Die vom Kunden angegebene IP-Adresse** |
+   | **Konfigurieren einer Subnetzmaske für die Sensorüberwachungsschnittstelle:** | **Die vom Kunden angegebene IP-Adresse** |
+
+1. Akzeptieren Sie die Einstellungen, und setzen Sie den Vorgang durch Eingabe von `Y` fort. 
+
+1. Nach ungefähr 10 Minuten werden die beiden Anmeldeinformationssätze angezeigt. Einer ist für einen **CyberX**-Benutzer und einer für einen **Support**-Benutzer bestimmt.
+
+   :::image type="content" source="media/tutorial-install-components/credentials-screen.png" alt-text="Kopieren Sie diese Anmeldeinformationen, weil sie nicht erneut angezeigt werden.":::  
+
+   Speichern Sie die Benutzernamen und Kennwörter. Sie benötigen diese Anmeldeinformationen für den Zugriff auf die Plattform, wenn Sie sie zum ersten Mal verwenden.
+
+1. Wählen Sie **Eingeben** aus, um den Vorgang fortzusetzen.
+
+Informationen dazu, wie Sie den physischen Port auf Ihrer Appliance finden können, finden Sie unter [Suchen Ihres Ports](#find-your-port).
+
+### <a name="add-a-secondary-nic"></a>Hinzufügen einer sekundären NIC
+
+Sie können die Sicherheit Ihrer lokalen Verwaltungskonsole erhöhen, indem Sie eine sekundäre NIC hinzufügen. Durch das Hinzufügen einer sekundären NIC haben Sie eine dedizierte NIC für Ihre Benutzer, und die andere NIC unterstützt die Konfiguration eines Gateways für geroutete Netzwerke. Die sekundäre NIC wird für alle angefügten Sensoren innerhalb eines IP-Adressbereichs dediziert.
+
+Bei beiden NICs ist die Benutzeroberfläche aktiviert. Wenn kein Routing erforderlich ist, stehen alle von der Benutzeroberfläche unterstützten Features auf der sekundären NIC zur Verfügung. Hochverfügbarkeit wird auf der sekundären NIC bereitgestellt.
+
+Wenn Sie wählen, dass Sie keine sekundäre NIC bereitstellen möchten, stehen alle Features über die primäre NIC zur Verfügung. 
+
+Wenn Sie Ihre lokale Verwaltungskonsole bereits konfiguriert haben und ihr eine sekundäre NIC hinzufügen möchten, führen Sie die folgenden Schritte aus:
+
+1. Verwenden Sie den Befehl zum Neukonfigurieren des Netzwerks („network reconfigure“):
+
+    ```bash
+    sudo cyberx-management-network-reconfigure
+    ```
+
+1. Geben Sie auf die folgenden Fragen die folgenden Antworten ein:
+
+    :::image type="content" source="media/tutorial-install-components/network-reconfig-command.png" alt-text="Geben Sie die folgenden Antworten zum Konfigurieren Ihrer Appliance ein.":::
+
+    | Parameter | Einzugebende Antwort |
+    |--|--|
+    | **IP-Adresse des Verwaltungsnetzwerks** | `N` |
+    | **Subnetzmaske** | `N` |
+    | **DNS** | `N` |
+    | **IP-Adresse des Standardgateways** | `N` |
+    | **Sensorüberwachungsschnittstelle (Optional. Anwendbar, wenn sich Sensoren in einem anderen Netzwerksegment befinden. Weitere Informationen finden Sie in den „Installationsanleitungen“.)**| `Y`, **wählen Sie einen möglichen Wert aus.** |
+    | **Eine IP-Adresse für die Sensorüberwachungsschnittstelle (auf die die Sensoren zugreifen können)** | `Y`, **die vom Kunden angegebene IP-Adresse**|
+    | **Eine Subnetzmaske für die Sensorüberwachungsschnittstelle (auf die die Sensoren zugreifen können)** | `Y`, **die vom Kunden angegebene IP-Adresse** |
+    | **Hostname** | **wird vom Kunden angegeben** |
+
+1. Überprüfen Sie alle Auswahlmöglichkeiten, und geben Sie `Y` ein, um die Änderungen zu akzeptieren. Das System wird neu gestartet.
+
+### <a name="find-your-port"></a>Suchen Ihres Ports
+
+Wenn Sie Probleme bei der Suche nach dem physischen Port auf Ihrem Gerät haben, können Sie den folgenden Befehl verwenden:
+
+```bash
+sudo ethtool -p <port value> <time-in-seconds>
+```
+
+Dieser Befehl führt dazu, dass das Licht am Port während des angegebenen Zeitraums blinkt. Wenn Sie beispielsweise `sudo ethtool -p eno1 120` eingeben, blinkt Port „eno1“ 2 Minuten lang, sodass Sie den Port auf der Rückseite Ihrer Appliance finden können. 
+
 ## <a name="virtual-appliance-on-premises-management-console-installation"></a>Virtuelles Gerät: Installation der lokalen Verwaltungskonsole
 
 Der virtuelle Computer der lokalen Verwaltungskonsole unterstützt die folgenden Architekturen:
@@ -823,11 +1019,7 @@ So erstellen Sie einen virtuellen Computer mithilfe von Hyper-V:
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>Softwareinstallation (ESXi und Hyper-V)
 
-Mit dem Start des virtuellen Computers wird der Installationsvorgang aus dem ISO-Image gestartet. Um die Sicherheit zu erhöhen, können Sie eine zweite Netzwerkschnittstelle in der lokalen Verwaltungskonsole erstellen. Eine Netzwerkschnittstelle ist für Ihre Benutzer vorgesehen und kann die Konfiguration eines Gateways für geroutete Netzwerke unterstützen. Die zweite Netzwerkschnittstelle wird für alle angeschlossenen Sensoren innerhalb eines IP-Adressbereichs verwendet.
-
-Für beide Netzwerkschnittstellen ist die Benutzeroberfläche (UI) aktiviert, und alle von der Benutzeroberfläche unterstützten Funktionen sind auf der sekundären Netzwerkschnittstelle verfügbar, wenn kein Routing benötigt wird. Hochverfügbarkeit wird auf der sekundären Netzwerkschnittstelle bereitgestellt.
-
-Wenn Sie keine sekundäre Netzwerkschnittstelle bereitstellen, stehen alle Funktionen über die primäre Netzwerkschnittstelle zur Verfügung. 
+Mit dem Start des virtuellen Computers wird der Installationsvorgang aus dem ISO-Image gestartet.
 
 So installieren Sie die Software:
 
@@ -837,22 +1029,9 @@ So installieren Sie die Software:
 
 1. Definieren Sie die Netzwerkschnittstelle für das Sensorverwaltungsnetzwerk: Schnittstelle, IP, Subnetz, DNS-Server und Standardgateway.
 
-1. (Optional:) Fügen Sie der lokalen Verwaltungskonsole eine zweite Netzwerkschnittstelle hinzu.
+1. Anmeldeinformationen werden automatisch generiert. Speichern Sie den Benutzernamen und die Kennwörter. Sie benötigen diese Anmeldeinformationen für den Zugriff auf die Plattform, wenn Sie sie zum ersten Mal verwenden.
 
-    1. `Please type sensor monitoring interface (Optional. Applicable when sensors are on a different network segment. For more information see the Installation instructions): <name of interface>`
-    
-    1. `Please type an IP address for the sensor monitoring interface (accessible by the sensors): <ip address>`
-    
-    1. `Please type a subnet mask for the sensor monitoring interface (accessible by the sensors): <subnet>`
-
-1. Anmeldeinformationen werden automatisch generiert und angezeigt. Bewahren Sie diese Anmeldeinformationen an einem sicheren Ort auf, weil sie für die Anmeldung und Verwaltung erforderlich sind.
-
-    | Username | BESCHREIBUNG |
-    |--|--|
-    | Support | Der Administrator für die Benutzerverwaltung. |
-    | CyberX | Die Entsprechung von „root“ für den Zugriff auf die Appliance. |
-
-1. Die Appliance wird neu gestartet.
+   Die Appliance wird dann neu gestartet.
 
 1. Greifen Sie über die zuvor konfigurierte IP-Adresse auf die Verwaltungskonsole zu: `<https://ip_address>`.
 

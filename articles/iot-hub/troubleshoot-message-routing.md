@@ -1,18 +1,18 @@
 ---
 title: Behandeln von Problemen mit dem Azure IoT-Nachrichtenrouting
-description: Hier erfahren Sie, wie Sie Probleme im Zusammenhang mit dem Azure IoT-Nachrichtenrouting behandeln.
+description: Hier erfahren Sie, wie Sie Probleme im Zusammenhang mit dem Nachrichtenrouting von Azure IoT Hub behandeln können.
 author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 3abff5645775d724042acba3ee2461c7cad771a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daa0b1dd47884b104cc353a7483d71ff7eded2c7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149663"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287858"
 ---
 # <a name="troubleshooting-message-routing"></a>Behandeln von Problemen mit dem Nachrichtenrouting
 
@@ -59,11 +59,13 @@ Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten End
 
 Durch die Fallbackroute werden alle Nachrichten, die die Abfragebedingungen für die vorhandenen Routen nicht erfüllen, an den [integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md) (messages/events) gesendet, der mit [Event Hubs](../event-hubs/index.yml) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Wenn keine Routen zum integrierten Endpunkt vorhanden sind und eine Fallbackroute aktiviert ist, werden nur Nachrichten an den integrierten Endpunkt gesendet, die keinen Abfragebedingungen in Routen entsprechen. Wenn alle vorhandenen Routen gelöscht wurden, muss eine Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen.
 
-Sie können die Fallbackroute im Azure-Portal auf dem Blatt „Nachrichtenrouting“ aktivieren und deaktivieren. Sie können auch Azure Resource Manager verwenden, um [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) für die Nutzung eines benutzerdefinierten Endpunkts für die Fallbackroute festzulegen.
+Durch die Fallbackroute werden alle Nachrichten, die eine der Abfragebedingungen in einer der vorhandenen Routen nicht erfüllen, an den [integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md) (messages/events) gesendet, der mit [Event Hubs](../event-hubs/index.yml) kompatibel ist. Wenn das Nachrichtenrouting aktiviert ist, können Sie die Funktion der Fallbackroute verwenden. Wenn es keine Routen zum integrierten Endpunkt gibt und eine Fallbackroute aktiviert wurde, werden nur Nachrichten, die keinen Abfragebedingungen in Routen entsprechen, an den integrierten Endpunkt gesendet. Wenn alle vorhandenen Routen gelöscht werden, muss außerdem die Fallbackroute aktiviert werden, um alle Daten im integrierten Endpunkt zu empfangen.
+
+Sie können die Fallbackroute im Azure-Portal über das Blatt „Nachrichtenrouting“ für den IoT Hub aktivieren oder deaktivieren. Sie können auch mithilfe von Azure Resource Manager [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) zur Nutzung eines benutzerdefinierten Endpunkts für eine Fallbackroute festlegen.
 
 ## <a name="last-known-errors-for-iot-hub-routing-endpoints"></a>Letzte bekannte Fehler für IoT Hub-Routingendpunkte
 
-<a id="last-known-errors"></a>
+<a id="last-known-errors"></a>  <!-- why are we using anchors? robin -->
 [!INCLUDE [iot-hub-include-last-known-errors](../../includes/iot-hub-include-last-known-errors.md)]
 
 ## <a name="routes-resource-logs"></a>Ressourcenprotokolle zu Routen

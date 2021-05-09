@@ -6,12 +6,12 @@ ms.author: rywinter
 ms.service: iot-develop
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: aa99594fe3de98635e37d15beebf015f15dc4f64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 482acaa4fbec2991bf61f949602958b14144c2ce
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100656347"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226892"
 ---
 # <a name="overview-of-azure-iot-device-types"></a>Übersicht über Azure IoT-Gerätetypen
 IoT-Geräte sind auf einer breiten Auswahl von Hardwareplattformen vorhanden. Es gibt kleine 8-Bit-Mikrocontroller bis hin zu den neuesten x86-CPUs in einem Desktopcomputer. Bei der Auswahl der Hardware für ein IoT-Gerät spielen viele Variablen eine Rolle. In diesem Artikel werden einige der wichtigsten Unterschiede beschrieben.
@@ -44,8 +44,13 @@ In der folgenden Tabelle werden einige wesentliche Unterschiede zwischen auf Mik
 |**RAM**| Kleiner | Mehr |
 |**Blinken**| Kleiner | Mehr |
 |**Betriebssystem**| Kein Betriebssystem oder Echtzeitbetriebssystem (RTOS) | Universell |
-|**Entwicklungsschwierigkeit**| Schwieriger |  Einfacher |
+|**Entwicklungsschwierigkeit**| Schwieriger | Einfacher |
 |**Stromverbrauch**| Geringer | Höher |
 |**Kosten**| Geringer | Höher |
-|**Deterministisch**| Ja | Nein – mit Ausnahmen|
+|**Deterministisch**| Ja | Nein – mit Ausnahmen |
 |**Gerätegröße**| Kleiner | Größer |
+
+## <a name="next-steps"></a>Nächste Schritte
+Der von Ihnen ausgewählte IoT-Gerätetyp wirkt sich direkt darauf aus, wie das Gerät mit Azure IoT verbunden wird.
+
+Durchsuchen Sie die verschiedenen [Azure IoT SDKs](about-iot-sdks.md), um das SDK zu finden, das für Ihre Geräteanforderungen am besten geeignet ist.

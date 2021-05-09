@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/12/2019
+ms.date: 04/28/2021
 ms.author: duau
-ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be671ec7a1f2e8fb11c49b8d17290c88f5db254a
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92206287"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203377"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
 
@@ -33,7 +33,8 @@ Um eine Verbindung mit Microsoft-Peering herstellen zu können, müssen Sie die 
 
 Informieren Sie sich unter [Asymmetrisches Routing mit mehreren Netzwerkpfaden](./expressroute-asymmetric-routing.md) über die Einschränkungen des asymmetrischen Routings, bevor Sie das Microsoft-Peering konfigurieren.
 
-* Wenn Sie öffentliches Peering verwenden und derzeit über IP-Netzwerkregeln für öffentliche IP-Adressen verfügen, mit denen auf [Azure Storage](../storage/common/storage-network-security.md) oder [Azure SQL-Datenbank](../azure-sql/database/vnet-service-endpoint-rule-overview.md) zugegriffen wird, müssen Sie sicherstellen, dass der mit Microsoft-Peering konfigurierte NAT-IP-Adressenpool in der Liste der öffentlichen IP-Adressen für das Azure Storage- oder Azure SQL-Konto enthalten ist.<br>
+* Wenn Sie öffentliches Peering verwenden und derzeit über IP-Netzwerkregeln für öffentliche IP-Adressen verfügen, mit denen auf [Azure Storage](../storage/common/storage-network-security.md) oder [Azure SQL-Datenbank](../azure-sql/database/vnet-service-endpoint-rule-overview.md) zugegriffen wird, müssen Sie sicherstellen, dass der mit Microsoft-Peering konfigurierte NAT-IP-Adressenpool in der Liste der öffentlichen IP-Adressen für das Azure Storage- oder Azure SQL-Konto enthalten ist.
+* Beachten Sie, dass das ältere öffentliche Peering die Quellnetzwerkadressübersetzung (Source Network Address Translation, SNAT) zu einer bei Microsoft registrierten öffentlichen IP-Adresse verwendet, während das Microsoft-Peering dies nicht tut.
 * Führen Sie die Schritte in diesem Artikel in der angegebenen Reihenfolge aus, damit es bei der Umstellung auf Microsoft-Peering zu keinen Ausfällen kommt.
 
 ## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. Erstellen Sie Microsoft-Peering

@@ -5,183 +5,195 @@ author: rohinkoul
 ms.service: dns
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 05/29/2017
+ms.date: 04/29/2021
 ms.author: rohink
-ms.openlocfilehash: 0c85049d6c8921432a753bf08989cab473b7c734
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6db63f564d481dd57d1bdbf090678616989f83e1
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99525126"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317007"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hosten von Reverse-DNS-Lookupzonen in Azure DNS
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In diesem Artikel wird erläutert, wie Sie Reverse-DNS-Lookupzonen für Ihre zugewiesenen IP-Adressbereiche in Azure DNS hosten. Die durch Reverse-Lookupzonen dargestellten IP-Adressbereiche müssen Ihrer Organisation zugewiesen werden – in der Regel durch Ihren Internetdienstanbieter.
+In diesem Artikel wird erläutert, wie Sie Reverse-DNS-Lookupzonen für Ihre zugewiesenen IP-Adressbereiche mit Azure DNS hosten können. Die durch Reverse-Lookupzonen dargestellten IP-Adressbereiche müssen Ihrer Organisation zugewiesen werden – in der Regel durch Ihren Internetdienstanbieter.
 
-Informationen zum Konfigurieren von Reverse-DNS für eine Azure-eigene IP-Adresse, die Ihrem Azure-Dienst zugewiesen ist, finden Sie unter [Konfigurieren von Reverse-DNS für in Azure gehostete Dienste](dns-reverse-dns-for-azure-services.md).
+Informationen zum Konfigurieren von Reverse-DNS für eine Azure-eigene IP-Adresse, die Ihrem Azure-Dienst zugewiesen wurde, finden Sie unter [Konfigurieren von Reverse-DNS für in Azure gehostete Dienste](dns-reverse-dns-for-azure-services.md).
 
-Bevor Sie diesen Artikel lesen, sollten Sie sich mit der [Übersicht über Reverse-DNS und die Unterstützung in Azure](dns-reverse-dns-overview.md) vertraut machen.
+Bevor Sie diesen Artikel lesen, sollten Sie sich mit der [Übersicht über Reverse-DNS](dns-reverse-dns-overview.md) vertraut machen, die in Azure unterstützt wird.
 
-In diesem Artikel werden die Schritte zum Erstellen Ihrer ersten Reverse-Lookup-DNS-Zone und des dazugehörigen Eintrags per Azure-Portal, Azure PowerShell, klassischer Azure CLI oder Azure CLI erläutert.
+In diesem Artikel erfahren Sie, wie Sie Ihre erste Reverse-Lookup-DNS-Zone und den zugehörigen Eintrag über das Azure-Portal, mithilfe von Azure PowerShell, über die klassische Befehlszeilenschnittstelle und die Azure-Befehlszeilenschnittstelle erstellen können.
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Erstellen einer Reverse-DNS-Lookupzone
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Klicken Sie im Menü **Hub** auf **Neu** > **Netzwerk** und anschließend auf **DNS-Zone**.
 
-   ![Klicken auf „DNS-Zone“](./media/dns-reverse-dns-hosting/figure1.png)
+1. Wählen Sie links oben auf dem Bildschirm **Ressource erstellen** aus, und suchen Sie nach **DNS-Zone**. Wählen Sie dann **Erstellen** aus.
 
-1. Benennen Sie Ihre DNS-Zone im Bereich **DNS-Zone erstellen**. Der Name der Zone wird für IPv4- und IPv6-Präfixe unterschiedlich definiert. Gehen Sie zum Benennen der Zone gemäß den Anweisungen für [IPv4](#ipv4) oder [IPv6](#ipv6) vor. Klicken Sie abschließend auf **Erstellen**, um die Zone zu erstellen.
+      :::image type="content" source="./media/dns-operations-dnszones-portal/search-dns-zone.png" alt-text="Screenshot zum Erstellen einer Ressourcensuche für eine Reverse-DNS-Zone":::
+
+1. Wählen Sie auf der Seite **DNS-Zone erstellen** die folgenden Einstellungen aus, oder geben Sie sie ein:
+
+    | Einstellung | Details |
+    | --- | --- |
+    | **Abonnement** | Wählen Sie ein Abonnement aus, in dem die DNS-Zone erstellt werden soll.|
+    | **Ressourcengruppe** | Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie eine neue. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
+    | **Name** | Geben Sie einen Namen für die DNS-Zone ein. Der Name der Zone wird für IPv4- und IPv6-Präfixe unterschiedlich definiert. Gehen Sie zum Benennen der Zone gemäß den Anweisungen für [IPv4](#ipv4) oder [IPv6](#ipv6) vor.  |
+    | **Location** | Wählen Sie den Speicherort für die Ressourcengruppe aus. Wenn Sie eine zuvor erstellte Ressourcengruppe verwenden, ist der Speicherort bereits ausgewählt. |
+
+1. Wählen Sie **Überprüfen und erstellen** und nach Abschluss der Überprüfung **Erstellen** aus.
 
 ### <a name="ipv4"></a>IPv4
 
-Der Name einer IPv4-Reverse-Lookupzone basiert auf dem IP-Adressbereich, den sie darstellt. Er sollte das folgende Format aufweisen: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Beispiele finden Sie in der [Übersicht über Reverse-DNS und die Unterstützung in Azure](dns-reverse-dns-overview.md#ipv4).
+Der Name einer IPv4-Reverse-Lookupzone basiert auf dem IP-Adressbereich, den sie darstellt. Er sollte das folgende Format aufweisen: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Beispiele finden Sie unter [Übersicht über Reverse-DNS](dns-reverse-dns-overview.md#ipv4) für IPv4.
 
 > [!NOTE]
-> Beim Erstellen von klassenlosen Reverse-DNS-Lookupzonen in Azure DNS muss im Zonennamen anstelle eines Schrägstrichs (`/`) ein Bindestrich (`-`) verwendet werden.
+> Wenn Sie klassenlose Reverse-DNS-Lookupzonen in Azure DNS erstellen, müssen Sie im Zonennamen einen Bindestrich (`-`) – statt eines Schrägstrichs (`/`) – verwenden.
 >
-> Beispiel: Für den IP-Adressbereich 192.0.2.128/26 müssen Sie `128-26.2.0.192.in-addr.arpa` als Zonennamen verwenden, nicht `128/26.2.0.192.in-addr.arpa`.
+> Beispiel: Für den IP-Adressbereich „192.0.2.128/26“ verwenden Sie `128-26.2.0.192.in-addr.arpa` als Zonennamen, nicht `128/26.2.0.192.in-addr.arpa`.
 >
 > Der DNS-Standard unterstützt zwar beide Methoden, Azure DNS unterstützt jedoch keine DNS-Zonennamen mit Schrägstrich (`/`).
 
 Das folgende Beispiel zeigt, wie Sie über das Azure-Portal eine Reverse-DNS-Zone der Klasse C mit dem Namen `2.0.192.in-addr.arpa` in Azure DNS erstellen:
 
- ![Screenshot, der zeigt, wie Sie über das Azure-Portal eine Reverse-DNS-Zone der Klasse C mit dem Namen „2.0.192.in-addr.arpa“ in Azure DNS erstellen.](./media/dns-reverse-dns-hosting/figure2.png)
+:::image type="content" source="./media/dns-reverse-dns-hosting/ipv4-arpa-zone.png" alt-text="Screenshot zum Erstellen einer IPv4-Arpa-DNS-Zone":::
 
-**Ressourcengruppenstandort** definiert den Standort für die Ressourcengruppe. Die Angabe hat keine Auswirkungen auf die DNS-Zone. Der Standort der DNS-Zone ist immer „global“ und wird nicht angezeigt.
-
-Die folgenden Beispiele zeigen, wie diese Aufgabe mit Azure PowerShell und der Azure-Befehlszeilenschnittstelle durchgeführt wird:
+Die folgenden Beispiele zeigen, wie diese Aufgabe mithilfe von Azure PowerShell und über die Azure-Befehlszeilenschnittstelle ausgeführt wird.
 
 #### <a name="powershell"></a>PowerShell
 
-```powershell
-New-AzDnsZone -Name 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
+```azurepowershell-interactive
+New-AzDnsZone -Name 2.0.192.in-addr.arpa -ResourceGroupName mydnsresourcegroup
 ```
 
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-azure network dns zone create MyResourceGroup 2.0.192.in-addr.arpa
+azure network dns zone create mydnsresourcegroup 2.0.192.in-addr.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-```azurecli
-az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
+```azurecli-interactive
+az network dns zone create -g mydnsresourcegroup -n 2.0.192.in-addr.arpa
 ```
 
 ### <a name="ipv6"></a>IPv6
 
-Der Name einer IPv6-Reverse-Lookupzone sollte folgendes Format aufweisen: `<IPv6 network prefix in reverse order>.ip6.arpa`.  Beispiele finden Sie in der [Übersicht über Reverse-DNS und die Unterstützung in Azure](dns-reverse-dns-overview.md#ipv6).
+Der Name einer IPv6-Reverse-Lookupzone sollte folgendes Format aufweisen: `<IPv6 network prefix in reverse order>.ip6.arpa`.  Beispiele finden Sie unter [Übersicht über Reverse-DNS](dns-reverse-dns-overview.md#ipv6) für IPv6.
 
 
 Das folgende Beispiel zeigt, wie Sie eine IPv6-Reverse-DNS-Lookupzone mit dem Namen `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` in Azure DNS über das Azure-Portal erstellen:
 
- ![Bereich „DNS-Zone erstellen“ mit ausgefüllten Feldern](./media/dns-reverse-dns-hosting/figure3.png)
+:::image type="content" source="./media/dns-reverse-dns-hosting/ipv6-arpa-zone.png" alt-text="Screenshot zum Erstellen einer IPv6-Arpa-DNS-Zone":::
 
-**Ressourcengruppenstandort** definiert den Standort für die Ressourcengruppe. Die Angabe hat keine Auswirkungen auf die DNS-Zone. Der Standort der DNS-Zone ist immer „global“ und wird nicht angezeigt.
-
-Die folgenden Beispiele zeigen, wie diese Aufgabe mit Azure PowerShell und der Azure-Befehlszeilenschnittstelle durchgeführt wird:
+Die folgenden Beispiele zeigen, wie diese Aufgabe mithilfe von Azure PowerShell und über die Azure-Befehlszeilenschnittstelle ausgeführt wird.
 
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzDnsZone -Name 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
+New-AzDnsZone -Name 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName mydnsresourcegroup
 ```
 
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-azure network dns zone create MyResourceGroup 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+azure network dns zone create mydnsresourcegroup 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+az network dns zone create -g mydnsresourcegroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 ## <a name="delegate-a-reverse-dns-lookup-zone"></a>Delegieren einer Reverse-DNS-Lookupzone
 
-Nachdem Sie Ihre Reverse-DNS-Lookupzone erstellt haben, müssen Sie sicherstellen, dass die Zone aus der übergeordneten Zone delegiert wird. Die DNS-Delegierung ermöglicht es dem DNS-Namensauflösungsprozess, nach den Namenservern zu suchen, die Ihre Reverse-DNS-Lookupzone hosten. Diese Namenserver können dann auf DNS-Reverse-Abfragen für die IP-Adressen in Ihrem Adressbereich reagieren.
+Sobald die Reverse-DNS-Lookupzone erstellt wurde, müssen Sie sicherstellen, dass die Zone von der übergeordneten Zone delegiert wird. Die DNS-Delegierung ermöglicht es dem DNS-Namensauflösungsprozess, nach den Namenservern zu suchen, die Ihre Reverse-DNS-Lookupzone hosten. Diese Namenserver können dann auf DNS-Reverse-Abfragen für die IP-Adressen in Ihrem Adressbereich reagieren.
 
-Für Forward-Lookupzonen wird der Vorgang der Delegierung einer DNS-Zone unter [Delegieren einer Domäne an Azure DNS](dns-delegate-domain-azure-dns.md) beschrieben. Die Delegierung für Reverse-Lookupzonen funktioniert auf dieselbe Weise. Der einzige Unterschied besteht darin, dass Sie die Namenserver nicht mit der Registrierungsstelle Ihres Domänennamens konfigurieren müssen, sondern mit dem Internetdienstanbieter, der den IP-Adressbereich bereitgestellt hat.
+Für Forward-Lookupzonen wird der Vorgang der Delegierung einer DNS-Zone unter [Delegieren einer Domäne an Azure DNS](dns-delegate-domain-azure-dns.md) beschrieben. Die Delegierung für Reverse-Lookupzonen funktioniert auf dieselbe Weise. Der einzige Unterschied besteht darin, dass Sie die Namenserver beim ISP (Internet Service Provider, Internetdienstanbieter) konfigurieren müssen. Weil der ISP Ihren IP-Adressbereich verwaltet, muss er die Namenserver statt der Domänennamen-Registrierungsstelle aktualisieren.
 
 ## <a name="create-a-dns-ptr-record"></a>Erstellen eines DNS-PTR-Eintrags
 
 ### <a name="ipv4"></a>IPv4
 
-Im folgenden Beispiel wird die Erstellung eines PTR-Eintrags in einer Reverse-DNS-Zone in Azure DNS ausführlich erläutert. Informationen zu anderen Eintragstypen und zum Ändern vorhandener Einträge finden Sie unter [Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal](dns-operations-recordsets-portal.md).
+Im folgenden Beispiel wird der Prozess zur Erstellung eines PTR-Eintrags für eine Reverse-DNS-Zone in Azure DNS erläutert. Weitere Informationen zu Eintragstypen oder zum Ändern vorhandener Einträge finden Sie unter [Verwalten von DNS-Einträgen und -Eintragssätzen](dns-operations-recordsets-portal.md).
 
-1. Klicken Sie oben im Bereich **DNS-Zone** auf **+ Datensatzgruppe**, um den Bereich **Datensatzgruppe hinzufügen** zu öffnen.
+1. Wählen Sie oben auf der Übersichtsseite *DNS-Zone* die Option **+ Eintragssatz** aus, um den Bereich *Eintragssatz hinzufügen* zu öffnen.
 
-   ![Screenshot des Bereichs der DNS-Zone mit einem Pfeil, der auf die Schaltfläche „+ Datensatzgruppe“ zeigt.](./media/dns-reverse-dns-hosting/figure4.png)
+    :::image type="content" source="./media/dns-reverse-dns-hosting/create-record-set-ipv4.png" alt-text="Screenshot zum Erstellen eines IPv4-Zeigereintragssatzes":::
 
-1. Der Name des Datensatzes für einen PTR-Eintrag muss der restliche Teil der IPv4-Adresse in umgekehrter Reihenfolge sein. 
+1. Der Name des Eintragssatzes für einen PTR-Eintrag ist der restliche Teil der IPv4-Adresse in umgekehrter Reihenfolge. 
 
-   In diesem Beispiel werden die ersten drei Oktette bereits als Teil des Namens der Zone (.2.0.192) eingetragen. Aus diesem Grund wird im Feld **Name** nur das letzte Oktett angegeben. Eine Datensatzgruppe für eine Ressource mit der IP-Adresse 192.0.2.15 können Sie beispielsweise **15** nennen.  
-1. Wählen Sie unter **Typ** die Option **PTR** aus.  
-1. Geben Sie für **DOMÄNENNAME** den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Ressource an, die die IP-Adresse verwendet.
-1. Klicken Sie im unteren Bereich auf **OK**, um den DNS-Eintrag zu erstellen.
+    In diesem Beispiel wurden die ersten drei Oktette bereits als Teil des Zonennamens `.2.0.192` aufgefüllt. Deshalb ist nur das letzte Oktett im Feld **Name** erforderlich. So geben Sie beispielsweise Ihrem Eintragssatz für eine Ressource mit der IP-Adresse **den Namen** 15`192.0.2.15`.  
 
-   ![Bereich „Datensatzgruppe hinzufügen“ mit ausgefüllten Feldern](./media/dns-reverse-dns-hosting/figure5.png)
+    :::image type="content" source="./media/dns-reverse-dns-hosting/create-ipv4-ptr.png" alt-text="Screenshot zum Erstellen eines IPv4-Zeigereintrags":::
 
-Die folgenden Beispiele zeigen, wie diese Aufgabe mit PowerShell oder mit der Azure-Befehlszeilenschnittstelle durchgeführt wird:
+1. Wählen Sie unter *Typ* die Option **PTR** aus.
 
-#### <a name="powershell&quot;></a>PowerShell
+1. Geben Sie für *DOMÄNENNAME* den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Ressource an, die die IP-Adresse verwendet.
 
-```powershell
-New-AzDnsRecordSet -Name 15 -RecordType PTR -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname &quot;dc1.contoso.com")
+1. Wählen Sie **OK** aus, um den DNS-Eintrag zu erstellen.
+
+Die folgenden Beispiele zeigen, wie diese Aufgabe mit Azure PowerShell und der Azure-Befehlszeilenschnittstelle durchgeführt wird:
+
+#### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+New-AzDnsRecordSet -Name 15 -RecordType PTR -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName mydnsresourcegroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "dc1.contoso.com")
 ```
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 PTR --ptrdname dc1.contoso.com  
+azure network dns record-set add-record mydnsresourcegroup 2.0.192.in-addr.arpa 15 PTR --ptrdname dc1.contoso.com  
 ```
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-```azurecli
-az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
+```azurecli-interactive
+az network dns record-set ptr add-record -g mydnsresourcegroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
 ```
 
 ### <a name="ipv6"></a>IPv6
 
-Im folgenden Beispiel werden die einzelnen Schritte zur Erstellung eines neuen PTR-Eintrags erläutert. Informationen zu anderen Eintragstypen und zum Ändern vorhandener Einträge finden Sie unter [Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal](dns-operations-recordsets-portal.md).
+Im folgenden Beispiel wird der Prozess zur Erstellung eines neuen PTR-Eintrags für IPv6 erläutert. Weitere Informationen zu Eintragstypen oder zum Ändern vorhandener Einträge finden Sie unter [Verwalten von DNS-Einträgen und -Eintragssätzen](dns-operations-recordsets-portal.md).
 
-1. Klicken Sie oben im Bereich **DNS-Zone** auf **+ Datensatzgruppe**, um den Bereich **Datensatzgruppe hinzufügen** zu öffnen.
+1. Klicken Sie oben im Bereich *DNS-Zone* auf **+ Datensatzgruppe**, um den Bereich *Datensatzgruppe hinzufügen* zu öffnen.
 
-   ![Schaltfläche zum Erstellen einer Datensatzgruppe](./media/dns-reverse-dns-hosting/figure6.png)
+   :::image type="content" source="./media/dns-reverse-dns-hosting/create-record-set-ipv6.png" alt-text="Screenshot zum Erstellen eines IPv6-Zeigereintragssatzes":::
 
-2. Der Name des Datensatzes für einen PTR-Eintrag muss der restliche Teil der IPv6-Adresse in umgekehrter Reihenfolge sein. Er darf keine Nullkomprimierung enthalten. 
+1. Der Name des Eintragssatzes für einen PTR-Eintrag ist der restliche Teil der IPv6-Adresse in umgekehrter Reihenfolge. Er darf keine Nullkomprimierung enthalten. 
 
-   In diesem Beispiel wurden die ersten 64 Bits der IPv6-Adresse bereits als Teil des Zonennamens aufgefüllt (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa). Aus diesem Grund werden im Feld **Name** nur die letzten 64 Bits angegeben. Die letzten 64 Bits der IP-Adresse werden in umgekehrter Reihenfolge eingegeben, und die einzelnen hexadezimalen Zahlen werden jeweils durch einen Punkt getrennt. Eine Datensatzgruppe für eine Ressource, deren IP-Adresse 2001:0db8:abdc:0000:f524:10bc:1af9:405e lautet, kann beispielsweise wie mit **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f** benannt werden.  
-3. Wählen Sie unter **Typ** die Option **PTR** aus.  
-4. Geben Sie für **DOMÄNENNAME** den FQDN der Ressource an, die die IP-Adresse verwendet.
-5. Klicken Sie im unteren Bereich auf **OK**, um den DNS-Eintrag zu erstellen.
+    In diesem Beispiel werden die ersten 64 Bit der IPv6-Adresse als Teil des Zonennamens („0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa“) aufgefüllt. Deshalb werden im Feld **Name** nur die letzten 64 Bit angegeben. Die letzten 64 Bit der IP-Adresse werden in umgekehrter Reihenfolge eingegeben, und die einzelnen hexadezimalen Zahlen werden jeweils durch einen Punkt getrennt. Wenn Sie eine Ressource haben, deren IP-Adresse „2001:0db8:abdc:0000:f524:10bc:1af9:405e“ lautet, benennen Sie Ihren Eintragssatz mit **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f**.
 
-![Screenshot des Bereichs „Datensatzgruppe hinzufügen“ mit einem Pfeil, der auf den Wert im Typfeld zeigt.](./media/dns-reverse-dns-hosting/figure7.png)
+    :::image type="content" source="./media/dns-reverse-dns-hosting/create-ipv6-ptr.png" alt-text="Screenshot zum Erstellen eines IPv6-Zeigereintrags":::
+
+1. Wählen Sie unter *Typ* die Option **PTR** aus.  
+
+1. Geben Sie für *DOMÄNENNAME* den FQDN der Ressource an, die die IP-Adresse verwendet.
+
+1. Wählen Sie **OK** aus, um den DNS-Eintrag zu erstellen.
 
 Die folgenden Beispiele zeigen, wie diese Aufgabe mit PowerShell oder mit der Azure-Befehlszeilenschnittstelle durchgeführt wird:
 
-#### <a name="powershell&quot;></a>PowerShell
+#### <a name="powershell"></a>PowerShell
 
-```powershell
-New-AzDnsRecordSet -Name &quot;e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f&quot; -RecordType PTR -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname &quot;dc2.contoso.com")
+```azurepowershell-interactive
+New-AzDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName mydnsresourcegroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "dc2.contoso.com")
 ```
 
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f PTR --ptrdname dc2.contoso.com 
+azure network dns record-set add-record mydnsresourcegroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f PTR --ptrdname dc2.contoso.com 
 ```
  
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-```azurecli
-az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
+```azurecli-interactive
+az network dns record-set ptr add-record -g mydnsresourcegroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
 ```
 
 ## <a name="view-records"></a>Anzeigen von Datensätzen
@@ -190,54 +202,54 @@ Navigieren Sie zum Anzeigen der erstellten Einträge im Azure-Portal zu Ihrer DN
 
 ### <a name="ipv4"></a>IPv4
 
-Im Bereich **DNS-Zone** werden die IPv4-PTR-Einträge angezeigt:
+Auf der Seite **DNS-Zone** wird der IPv4-PTR-Eintrag angezeigt:
 
-![Bereich „DNS-Zone“ mit IPv4-Einträgen](./media/dns-reverse-dns-hosting/figure8.png)
+:::image type="content" source="./media/dns-reverse-dns-hosting/view-ipv4-ptr-record.png" alt-text="Screenshot des IPv4-Zeigereintrags auf der Übersichtsseite" lightbox="./media/dns-reverse-dns-hosting/view-ipv4-ptr-record-expanded.png":::
 
-Die folgenden Beispiele zeigen, wie die PTR-Einträge mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle angezeigt werden:
+Die folgenden Beispiele zeigen, wie die PTR-Einträge mithilfe von Azure PowerShell und über die Azure-Befehlszeilenschnittstelle angezeigt werden:
 
 #### <a name="powershell"></a>PowerShell
 
-```powershell
-Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
+```azurepowershell-interactive
+Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName mydnsresourcegroup
 ```
 
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
+azure network dns record-set list mydnsresourcegroup 2.0.192.in-addr.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-```azurecli
-az network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
+```azurecli-interactive
+az network dns record-set list -g mydnsresourcegroup -z 2.0.192.in-addr.arpa
 ```
 
 ### <a name="ipv6"></a>IPv6
 
-Im Bereich **DNS-Zone** werden die IPv6-PTR-Einträge angezeigt:
+Auf der Seite **DNS-Zone** wird der IPv6-PTR-Eintrag angezeigt:
 
-![Bereich „DNS-Zone“ mit IPv6-Einträgen](./media/dns-reverse-dns-hosting/figure9.png)
+:::image type="content" source="./media/dns-reverse-dns-hosting/view-ipv6-ptr-record.png" alt-text="Screenshot des IPv6-Zeigereintrags auf der Übersichtsseite" lightbox="./media/dns-reverse-dns-hosting/view-ipv6-ptr-record-expanded.png":::
 
 Die folgenden Beispiele zeigen, wie die Einträge mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle angezeigt werden:
 
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
+Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName mydnsresourcegroup
 ```
 
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+azure network dns record-set list mydnsresourcegroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+az network dns record-set list -g mydnsresourcegroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 ## <a name="faq"></a>Häufig gestellte Fragen
@@ -246,7 +258,7 @@ az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0
 
 Ja. Das Hosten der Reverse-Lookupzonen (ARPA) für eigene IP-Adressbereiche in Azure DNS wird vollständig unterstützt.
 
-Erstellen Sie die Reverse-Lookupzone in Azure DNS, wie in diesem Artikel erläutert, und [delegieren Sie die Zone](dns-domain-delegation.md) dann in Zusammenarbeit mit Ihrem Internetdienstanbieter. Sie können dann die PTR-Einträge für jedes Reverse-Lookup auf dieselbe Weise wie andere Eintragstypen verwalten.
+Erstellen Sie die Reverse-Lookupzone in Azure DNS, wie in diesem Artikel erläutert wird. Arbeiten Sie dann mit Ihrem ISP zusammen, um [die Zone zu delegieren](dns-domain-delegation.md). Sie können dann die PTR-Einträge für jedes Reverse-Lookup auf dieselbe Weise wie andere Eintragstypen verwalten.
 
 ### <a name="how-much-does-hosting-my-reverse-dns-lookup-zone-cost"></a>Wie viel kostet das Hosten meiner Reverse-DNS-Lookupzone?
 
@@ -260,10 +272,10 @@ Ja. In diesem Artikel wird erläutert, wie Reverse-DNS-Lookupzonen für sowohl I
 
 Ja. Vorhandene DNS-Zonen können über die Azure-Befehlszeilenschnittstelle in Azure DNS importiert werden. Diese Methode kann sowohl für Forward-Lookupzonen als auch für Reverse-Lookupzonen verwendet werden.
 
-Weitere Informationen finden Sie unter [Importieren und Exportieren einer DNS-Zonendatei mit Azure CLI 1.0](dns-import-export.md).
+Weitere Informationen finden Sie unter [Importieren und Exportieren einer DNS-Zonendatei über die Azure-Befehlszeilenschnittstelle](dns-import-export.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Reverse-DNS finden Sie unter [Reverse DNS](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) in der Wikipedia.
-<br>
-Erfahren Sie, wie Sie [Reverse-DNS-Einträge für Ihre Azure-Dienste verwalten](dns-reverse-dns-for-azure-services.md).
+* Weitere Informationen zu Reverse-DNS finden Sie unter [Reverse DNS](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) in der Wikipedia.
+
+* Erfahren Sie, wie Sie [Reverse-DNS-Einträge für Ihre Azure-Dienste verwalten](dns-reverse-dns-for-azure-services.md).
