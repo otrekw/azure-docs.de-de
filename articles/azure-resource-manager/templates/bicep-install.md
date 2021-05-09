@@ -3,12 +3,13 @@ title: Richten Sie die Bicep-Entwicklungs- und Einsatzumgebungen ein
 description: Konfigurieren von Bicep-Entwicklungs- und -Bereitstellungsumgebungen
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 0e62e6a4633bee09fcbe8b783118cc95ccd5702e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 08880e1f41ef3fdaacc119cd6c4c1ed191425285
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626100"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316513"
 ---
 # <a name="install-bicep-preview"></a>Installieren Sie den BICEP (Vorschau)
 
@@ -96,7 +97,7 @@ az bicep upgrade
 So installieren Sie eine bestimmte Version
 
 ```bash
-az bicep install --version v0.3.126
+az bicep install --version v0.3.255
 ```
 
 > [!IMPORTANT]
@@ -158,10 +159,10 @@ bicep --help
 
 ```sh
 # Add the tap for bicep
-brew tap azure/bicep https://github.com/azure/bicep
+brew tap azure/bicep
 
 # Install the tool
-brew install azure/bicep/bicep
+brew install bicep
 ```
 
 ##### <a name="macos-manual-install"></a>Manuelle Installation unter macOS

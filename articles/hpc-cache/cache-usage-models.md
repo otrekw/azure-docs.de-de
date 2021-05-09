@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: a22f4b257476e96c51ae491b8570e3798f7b3ab7
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 7e1b11fd15cca9b11fc627222318f08d31743336
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259726"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719185"
 ---
 # <a name="understand-cache-usage-models"></a>Grundlegendes zu Cache-Verwendungsmodellen
 
@@ -82,7 +82,7 @@ Wenn Sie Fragen zum optimalen Verwendungsmodell für Ihren Azure HPC Cache-Workf
 
 In einigen Fällen müssen Sie Clients möglicherweise erneut bereitstellen, wenn Sie das Nutzungsmodell eines Speicherziels ändern. Dies ist aufgrund der Art und Weise erforderlich, in der verschiedene Nutzungsmodelle Anforderungen des Netzwerksperrungs-Managers (Network Lock Manager, NLM) verarbeiten.
 
-Die HPC Cache-Instanz befindet sich zwischen Clients und dem Back-End-Speichersystem. In der Regel übergibt der Cache NLM-Anforderungen an das Back-End-Speichersystem, aber in einigen Fällen bestätigt der Cache selbst die NLM-Anforderung und gibt einen Wert an den Client zurück. In Azure HPC Cache ist dies nur bei Verwendung des Nutzungsmodells **Leseintensiv, unregelmäßige Schreibvorgänge** der Fall (oder in einem Blobspeicher-Standardziel, für das keine konfigurierbaren Nutzungsmodelle verfügbar sind).
+Die HPC Cache-Instanz befindet sich zwischen Clients und dem Back-End-Speichersystem. In der Regel übergibt der Cache NLM-Anforderungen an das Back-End-Speichersystem, aber in einigen Fällen bestätigt der Cache selbst die NLM-Anforderung und gibt einen Wert an den Client zurück. In Azure HPC Cache ist dies nur bei Verwendung des Nutzungsmodells **Leseintensiv, unregelmäßige Schreibvorgänge** der Fall (oder mit einem Blobspeicher-Standardziel, für das keine konfigurierbaren Nutzungsmodelle verfügbar sind).
 
 Es besteht ein geringes Risiko von Dateikonflikten, wenn Sie zwischen dem Nutzungsmodell **Leseintensiv, unregelmäßige Schreibvorgänge** und einem anderen Nutzungsmodell wechseln. Es gibt keine Möglichkeit, den aktuellen NLM-Status vom Cache in das Speichersystem (oder umgekehrt) zu übertragen. Daher ist der Sperrstatus des Clients ungenau.
 

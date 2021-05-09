@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 04/14/2021
 ms.author: rolyon
-ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40a17da6383fb1f368c74a82fefa71991cdc1b19
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556030"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517673"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Schritte zum Zuweisen einer Azure-Rolle
 
@@ -78,6 +78,8 @@ Zum Zuweisen von Rollen müssen Sie als Benutzer angemeldet sein, dem eine Rolle
 - `Microsoft.Authorization/roleAssignments/delete`
 
 Wenn Ihr Benutzerkonto nicht über Berechtigungen zum Zuweisen einer Rolle in Ihrem Abonnement verfügt, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass Ihr Konto keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ besitzt. Wenden Sie sich in diesem Fall an die Administratoren Ihres Abonnements, da sie die Berechtigungen in Ihrem Namen zuweisen können.
+
+Wenn Sie einen Dienstprinzipal zum Zuweisen von Rollen verwenden, erhalten Sie möglicherweise die Fehlermeldung „Unzureichende Berechtigungen zum Durchführen des Vorgangs“. Dieser Fehler liegt wahrscheinlich daran, dass Azure versucht, die Identität der zugewiesenen Person in Azure AD (Azure Active Directory) nachzuschlagen, und der Dienstprinzipal kann Azure AD nicht standardmäßig lesen. In diesem Fall müssen Sie dem Dienstprinzipal Berechtigungen zum Lesen von Daten im Verzeichnis erteilen. Wenn Sie die Azure CLI verwenden, können Sie alternativ die Rollenzuweisung erstellen, indem Sie die Objekt-ID der zugewiesenen Person verwenden, um die Azure AD-Suche zu überspringen. Weitere Informationen finden Sie unter [Behandeln von Problemen bei Azure RBAC](troubleshooting.md).
 
 ## <a name="step-5-assign-role"></a>Schritt 5: Zuweisen einer Rolle
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 7b75e2cbffaaf05dc0f5ca30497c165b91adf6d1
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: bcc47c22bd3537e9944c19fcb0c7b85ccdc8987a
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515344"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>Tutorial: Azure Active Directory-Integration mit Powerschool Performance Matters
 
@@ -55,9 +55,9 @@ Zum Konfigurieren der Integration von Powerschool Performance Matters in Azure A
 
 ## <a name="configure-and-test-azure-ad-sso-for-powerschool-performance-matters"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Powerschool Performance Matters
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Powerschool Performance Matters mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Powerschool Performance Matters eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Powerschool Performance Matters mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Egnyte eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Powerschool Performance Matters die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Egnyte die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
@@ -136,8 +136,8 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Powerschool Performance Matters-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Powerschool Performance Matters“ klicken, werden Sie zur Anmelde-URL für Powerschool Performance Matters weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Powerschool Performance Matters“ klicken, werden Sie zur Anmelde-URL für Powerschool Performance Matters weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Powerschool Performance Matters können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Powerschool Performance Matters können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

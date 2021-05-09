@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8779ee2d3c4d83c06a2c1803e65219d43f0ef14
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 436a972693aafd220d277d7411c0da12636e9cc6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275803"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829798"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln 
 
@@ -32,6 +32,7 @@ In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf Sicherheits
 - WebAuthN erfordert Windows 10, Version 1903 oder höher**
 
 Um Sicherheitsschlüssel für die Anmeldung bei Web-Apps und-Diensten verwenden zu können, benötigen Sie einen Browser, der das WebAuthN-Protokoll unterstützt. Hierzu zählen Microsoft Edge, Chrome, Firefox und Safari.
+
 
 ## <a name="prepare-devices"></a>Vorbereiten von Geräten
 
@@ -90,7 +91,9 @@ Wenn Sie Feedback geben möchten oder Probleme mit diesem Feature auftreten, tei
 
 Die Administratorbereitstellung und Bereitstellungsaufhebung von Sicherheitsschlüsseln ist nicht verfügbar.
 
-**Hinweis:** Die zwischengespeicherte FIDO2-Anmeldung ist bei in Azure AD eingebundenen Hybridcomputern nicht erfolgreich. Hierbei handelt es sich um ein spezifisches Problem der Windows 10-Version 20H2 (wenn LOS zu DC nicht verfügbar ist). Dies wird derzeit vom Entwicklungsteam untersucht.
+### <a name="cached-logon-on-hybrid-azure-ad-joined-devices"></a>Zwischengespeicherte Anmeldung für hybride, in Azure AD eingebundene Geräte
+
+Bei der zwischengespeicherten Anmeldung mit FIDO2-Schlüsseln kommt es für hybride, in Azure AD eingebundene Geräte unter Windows 10, Version 20H2 zu einem Fehler. Dadurch können sich Benutzer nicht anmelden, wenn keine Sichtverbindung mit dem lokalen Domänencontroller verfügbar ist. Dies wird derzeit geprüft.
 
 ### <a name="upn-changes"></a>Änderungen des Benutzerprinzipalnamens
 

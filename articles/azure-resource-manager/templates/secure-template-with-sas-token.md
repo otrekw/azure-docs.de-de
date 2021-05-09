@@ -3,12 +3,13 @@ title: Sicheres Bereitstellen von Vorlagen mithilfe des SAS-Token
 description: Bereitstellen von Ressourcen in Azure mithilfe einer Azure Resource Manager-Vorlage, die mit einem SAS-Token geschützt ist. Zeigt Azure PowerShell und Azure CLI.
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 69462759eca08b409b1333b856fb9cd7c48a8914
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88855653"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316099"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>Bereitstellen einer privaten ARM-Vorlage mit SAS-Token
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/24/2021
 ms.author: jeedes
-ms.openlocfilehash: af7d126bfdc9ff8edf6b498747fab9c7f497a0f4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: cf7e990fccd4b1d649a66495799e8590d80f7f5c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484845"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205987"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Tutorial: Azure Active Directory-Integration mit Symantec Web Security Service (WSS)
 
@@ -134,8 +134,8 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Symantec Web Security Service (WSS)-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Symantec Web Security Service (WSS)“ klicken, sollten Sie automatisch bei der Symantec Web Security Service (WSS)-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Symantec Web Security Service (WSS)“ klicken, sollten Sie automatisch bei der Symantec Web Security Service (WSS)-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Symantec Web Security Service (WSS) können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Symantec Web Security Service (WSS) können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

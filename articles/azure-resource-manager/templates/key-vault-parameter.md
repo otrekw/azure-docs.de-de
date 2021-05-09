@@ -3,12 +3,13 @@ title: Key Vault-Geheimnis mit Vorlage
 description: Informationen zum Übergeben eines geheimen Schlüssels aus einem Schlüsseltresor als Parameter während der Bereitstellung.
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.openlocfilehash: 232c73f1058ad3c5a931d02fa1a2184cf004263f
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 584d48fb91173adb4c1c08665c6a05e373fc79d0
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946077"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316423"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung
 

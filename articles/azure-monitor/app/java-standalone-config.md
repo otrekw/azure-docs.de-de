@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 8457d64b541bd012dc85cf9964f09e69b10e962c
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449969"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108006690"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -256,13 +256,13 @@ So deaktivieren Sie die automatische Erfassung von Micrometer-Metriken (einschli
 }
 ```
 
-## <a name="auto-collected-azure-sdk-telemetry"></a>Automatisch erfasste Azure SDK-Telemetriedaten
+## <a name="auto-collected-azure-sdk-telemetry-preview"></a>Automatisch erfasste Azure SDK-Telemetriedaten (Vorschauversion)
 
-Dieses Feature befindet sich in der Vorschauphase.
+Viele der neuesten Azure SDK-Bibliotheken geben Telemetriedaten aus (siehe die [vollständige Liste](./java-in-process-agent.md#azure-sdks-preview)).
 
-Viele der neuesten Azure SDK-Bibliotheken geben Telemetriedaten aus.
+Ab Application Insights Java 3.0.3 können Sie die Erfassung dieser Telemetriedaten aktivieren.
 
-Ab Version 3.0.3 können Sie die Erfassung dieser Telemetriedaten aktivieren:
+Wenn Sie dieses Feature aktivieren möchten:
 
 ```json
 {
@@ -276,8 +276,7 @@ Ab Version 3.0.3 können Sie die Erfassung dieser Telemetriedaten aktivieren:
 }
 ```
 
-Sie können dieses Feature auch mithilfe der Umgebungsvariablen `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` aktivieren
-(dies hat dann Vorrang vor der Aktivierung, die in der JSON-Konfiguration angegeben ist).
+Sie können dieses Feature auch aktivieren, indem Sie die Umgebungsvariable `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` auf `true` festlegen (die dann Vorrang vor dem in der JSON-Konfiguration angegebenen „aktiviert“ hat).
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Unterdrücken bestimmter automatisch erfasster Telemetriedaten
 
@@ -314,7 +313,7 @@ Ab Version 3.0.3 können bestimmte automatisch erfasste Telemetriedaten mithilf
 }
 ```
 
-Sie können diese Instrumentierungen auch mithilfe der folgenden Umgebungsvariablen unterdrücken:
+Sie können diese Instrumentierungen auch unterdrücken, indem Sie folgende Umgebungsvariablen auf `false` festlegen:
 
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
@@ -357,7 +356,7 @@ Wenn sich Ihre Anwendung hinter einer Firewall befindet und nicht direkt mit App
 }
 ```
 
-Application Insights Java 3.0 respektiert auch die globalen Werte `-Dhttps.proxyHost` und `-Dhttps.proxyPort`, wenn diese festgelegt sind.
+Application Insights Java 3.0 respektiert auch die globalen Systemeigenschaften `https.proxyHost` und `https.proxyPort`, wenn diese festgelegt sind (sowie `http.nonProxyHosts`, falls erforderlich).
 
 ## <a name="metric-interval"></a>Metrikintervall
 

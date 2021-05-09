@@ -1,14 +1,14 @@
 ---
 title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen von Richtliniendefinitionen, mit dem jeweiligen SDK und dem Add-On für Kubernetes beheben.
-ms.date: 01/26/2021
+ms.date: 04/19/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4feae11c6d8d78a43bae9882405e292a18e90bd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592602"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725060"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Problembehandlung mit Azure Policy
 
@@ -124,6 +124,24 @@ Eine Richtlinienzuweisung für den Bereich, in dem sich die neue oder aktualisie
 #### <a name="resolution"></a>Lösung
 
 Die Fehlermeldung bei einer Richtlinienzuweisung vom Typ „deny“ umfasst die Richtliniendefinition und die Richtlinienzuweisungs-IDs. Wenn die Fehlerinformationen in der Nachricht fehlen, stehen diese auch im [Aktivitätsprotokoll](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log) zur Verfügung. Diese Informationen geben Ihnen weitere Details, um die Ressourceneinschränkungen zu verstehen und die Ressourceneigenschaften in der Anforderung so anzupassen, dass sie zulässigen Werten entsprechen.
+
+### <a name="scenario-definition-targets-multiple-resource-types"></a>Szenario: Definition für mehrere Ressourcentypen
+
+#### <a name="issue"></a>Problem
+
+Bei der Erstellung oder Aktualisierung tritt im Rahmen der Überprüfung einer Richtliniendefinition mit mehreren Ressourcentypen der folgende Fehler auf:
+
+```error
+The policy definition '{0}' targets multiple resource types, but the policy rule is authored in a way that makes the policy not applicable to the target resource types '{1}'.
+```
+
+#### <a name="cause"></a>Ursache
+
+Die Richtliniendefinitionsregel enthält mindestens eine Bedingung, die von den Zielressourcentypen nicht ausgewertet wird.
+
+#### <a name="resolution"></a>Lösung
+
+Achten Sie bei Verwendung eines Alias darauf, dass der Alias nur anhand des Ressourcentyps ausgewertet wird, zu dem er gehört. Fügen Sie hierzu davor eine Typbedingung hinzu. Alternativ können Sie die Richtliniendefinition in mehrere Definitionen aufteilen, um zu vermeiden, dass mehrere Ressourcentypen als Ziel verwendet werden.
 
 ## <a name="template-errors"></a>Vorlagenfehler
 

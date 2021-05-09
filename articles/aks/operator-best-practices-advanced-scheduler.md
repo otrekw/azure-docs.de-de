@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices des Clusteroperators für die Verwend
 services: container-service
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 27b32d7d10b691ed806e4d7aa31a095630d2bfc9
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 971916c3fc903ff5d69db2e0f82fd884acf807b3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103622"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831580"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -42,13 +42,18 @@ Der Kubernetes-Scheduler verwendet Taints und Toleranzen, um einzuschränken, we
 * Wenden Sie ein **Taint** auf einen Knoten an, um anzugeben, dass nur bestimmte Pods auf ihm geplant werden können.
 * Dann wenden Sie eine **Toleranz** auf einen Pod an, sodass dieser den Taint des Knotens *tolerieren* kann.
 
-Wenn Sie einen Pod in einem AKS-Cluster bereitstellen, plant Kubernetes nur Pods auf Knoten, deren Taint der Toleranz entspricht. Angenommen, Sie verfügen über einen Knotenpool in Ihrem AKS-Cluster für Knoten mit GPU-Unterstützung. Sie definieren einen Namen, z.B. *gpu* und dann einen Wert für die Planung. Wenn Sie diesen Wert auf *NoSchedule* festlegen, kann der Kubernetes-Scheduler keine Pods mit nicht definierter Toleranz auf dem Knoten planen.
+Wenn Sie einen Pod in einem AKS-Cluster bereitstellen, plant Kubernetes nur Pods auf Knoten, deren Taint der Toleranz entspricht. Angenommen, Sie haben Ihrem AKS-Cluster einen Knotenpool für Knoten mit GPU-Unterstützung hinzugefügt. Sie definieren einen Namen, z.B. *gpu* und dann einen Wert für die Planung. Wenn Sie diesen Wert auf *NoSchedule* festlegen, kann der Kubernetes-Scheduler keine Pods mit nicht definierter Toleranz auf dem Knoten planen.
 
-```console
-kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
 ```
 
-Wenn für Knoten ein Taint angewendet wird, definieren Sie in den Podspezifikationen eine Toleranz, die eine Planung auf den Knoten ermöglicht. Im folgenden Beispiel werden `sku: gpu` und `effect: NoSchedule` so definiert, dass der im vorherigen Schritt für den Knoten angewendete Taint toleriert wird.
+Wenn für Knoten im Knotenpool ein Taint angewendet wird, definieren Sie in den Podspezifikationen eine Toleranz, die eine Planung für die Knoten ermöglicht. Im folgenden Beispiel werden `sku: gpu` und `effect: NoSchedule` so definiert, dass der im vorherigen Schritt für den Knoten angewendete Taint toleriert wird:
 
 ```yaml
 kind: Pod
@@ -115,16 +120,22 @@ Wenn Sie einen Knotenpool in AKS skalieren, werden Taints und Toleranzen absicht
 > 
 > Steuern Sie die Planung von Pods auf Knoten mithilfe von Knotenelektoren, Knotenaffinität oder Pod-interner Affinität. Diese Einstellungen ermöglichen es dem Kubernetes-Scheduler, Workloads logisch zu isolieren, z.B. durch Hardware im Knoten.
 
-Mit Taints und Toleranzen werden Ressourcen durch eine harte Trennung logisch isoliert. Wenn der Pod den Taint eines Knotens nicht toleriert, wird er nicht auf dem Knoten geplant. 
+Mit Taints und Toleranzen werden Ressourcen durch eine harte Trennung logisch isoliert. Wenn der Pod den Taint eines Knotens nicht toleriert, wird er nicht auf dem Knoten geplant.
 
-Alternativ können Sie Knotenselektoren verwenden. Beispielsweise bezeichnen Sie Knoten, um einen lokal angefügten SSD-Speicher oder eine große Menge an Speicher anzuzeigen, und definieren dann in der Podspezifikation einen Knotenselektor. Kubernetes plant diese Pods auf einem übereinstimmenden Knoten. 
+Alternativ können Sie Knotenselektoren verwenden. Beispielsweise bezeichnen Sie Knoten, um einen lokal angefügten SSD-Speicher oder eine große Menge an Speicher anzuzeigen, und definieren dann in der Podspezifikation einen Knotenselektor. Kubernetes plant diese Pods auf einem übereinstimmenden Knoten.
 
 Im Gegensatz zu Toleranzen können Pods ohne einen übereinstimmenden Knotenselektor dennoch auf bezeichneten Knoten geplant werden. Dieses Verhalten ermöglicht es, ungenutzte Ressourcen auf den Knoten zu verwenden, priorisiert aber Pods, die den passenden Knotenselektor definieren.
 
-Sehen wir uns ein Beispiel für Knoten mit einer hohe Menge an Arbeitsspeicher an. Diese Knoten priorisieren Pods, für die viel Speicher erforderlich ist. Um sicherzustellen, dass die Ressourcen nicht ungenutzt bleiben, können sie auch andere Pods ausführen.
+Sehen wir uns ein Beispiel für Knoten mit einer hohe Menge an Arbeitsspeicher an. Diese Knoten priorisieren Pods, für die viel Speicher erforderlich ist. Um sicherzustellen, dass die Ressourcen nicht ungenutzt bleiben, können sie auch andere Pods ausführen. Der folgende Beispielbefehl fügt *myAKSCluster* in *myResourceGroup* einen Knotenpool mit der Bezeichnung *hardware=highmem* hinzu. Alle Knoten in diesem Knotenpool verfügen über diese Bezeichnung.
 
-```console
-kubectl label node aks-nodepool1 hardware=highmem
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels hardware=highmem \
+    --no-wait
 ```
 
 Eine Podspezifikation fügt dann die Eigenschaft `nodeSelector` hinzu, um einen Knotenselektor zu definieren, der mit der auf einem Knoten festgelegten Bezeichnung übereinstimmt:
@@ -155,7 +166,7 @@ Weitere Informationen zur Verwendung von Knotenselektoren finden Sie unter [Zuwe
 
 ### <a name="node-affinity"></a>Knotenaffinität
 
-Ein Knotenselektor ist eine grundlegende Methode zum Zuweisen von Pods zu einem bestimmten Knoten. Die *Knotenaffinität* bietet mehr Flexibilität. Hiermit können Sie definieren, was geschieht, wenn für den Pod kein übereinstimmender Knoten vorhanden ist. Sie können: 
+Ein Knotenselektor ist eine grundlegende Methode zum Zuweisen von Pods zu einem bestimmten Knoten. Die *Knotenaffinität* bietet mehr Flexibilität. Hiermit können Sie definieren, was geschieht, wenn für den Pod kein übereinstimmender Knoten vorhanden ist. Ihre Möglichkeiten: 
 * *Anfordern*, dass der Kubernetes-Scheduler einem Pod mit einem bezeichneten Host entspricht. Oder:
 * *Eine Übereinstimmung bevorzugen*, aber zulassen, dass der Pod auf einem anderen Host geplant wird, wenn keine Übereinstimmung vorhanden ist.
 

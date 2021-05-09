@@ -3,12 +3,13 @@ title: Konvertieren von Vorlagen zwischen JSON und Bicep
 description: Hier sind die Befehle zum Konvertieren von Azure Resource Manager-Vorlagen aus Bicep in JSON und aus JSON in Bicep beschrieben.
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 6d242f5846996cd0f5b9510a1a2b9f2bf063a0c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 81cad004ef106bc3d9e5732dac9fbb7b4f0a60e1
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103422110"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316495"
 ---
 # <a name="converting-arm-templates-between-json-and-bicep"></a>Konvertieren von ARM-Vorlagen zwischen JSON und Bicep
 

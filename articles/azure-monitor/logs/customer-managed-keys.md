@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/21/2021
-ms.openlocfilehash: 56cbfc5c9640497d44a5a7f45cabfc9305cff480
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c9f59c5c4410bbb3a8f53a53b0febaa2b04ba2aa
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072317"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315989"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 

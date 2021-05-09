@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4948e17d1e0e782a8fa18c3eb5a2185e816a459a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8b32413d59abce8bc9d6d523071a701368511fc
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631403"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163659"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von Vorlagen
 
@@ -42,7 +42,7 @@ Wie beim Azure-Portal und der Skripterstellung bieten [Azure Resource Manager](.
    - Verwenden einer [benutzerdefinierten Vorlage aus Azure Marketplace](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template). Dies ermöglicht Ihnen, eine ganz neue Vorlage zu erstellen oder eine Vorlage zu verwenden, die auf einer vorhandenen, häufig genutzten Vorlage oder einer [Schnellstartvorlage](https://azure.microsoft.com/documentation/templates/) basiert.
    - Ableiten von einer vorhandenen Ressourcengruppe, indem eine Vorlage aus [der ursprünglichen Bereitstellung](../../azure-resource-manager/templates/export-template-portal.md) oder aus dem [aktuellen Status der Bereitstellung](../../azure-resource-manager/templates/export-template-portal.md) exportiert wird.
    - Verwenden eines lokalen [JSON-Editors (z.B. VS Code)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) und anschließendes Hochladen und Bereitstellen mithilfe von PowerShell oder CLI.
-   - Verwenden des [Azure-Ressourcengruppenprojekts](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) von Visual Studio für das Erstellen und Bereitstellen einer Vorlage.  
+   - Verwenden des [Azure-Ressourcengruppenprojekts](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) von Visual Studio für das Erstellen und Bereitstellen einer Vorlage.
 
 Unabhängig von der gewählten Option ist die Vorlagensyntax während der ursprünglichen und erneuten Bereitstellung identisch. Die Aktivierung einer vom System oder vom Benutzer zugewiesenen verwalteten Identität auf einer neuen oder vorhandenen VM erfolgt auf dieselbe Weise. Standardmäßig führt Azure Resource Manager außerdem ein [inkrementelles Update](../../azure-resource-manager/templates/deployment-modes.md) für Bereitstellungen durch.
 
@@ -58,17 +58,15 @@ Zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf einem vi
 
 2. Um die vom System zugewiesene verwaltete Identität zu aktivieren, laden Sie die Vorlage in einem Editor, suchen Sie die gewünschte Ressource `Microsoft.Compute/virtualMachines` im Abschnitt `resources`, und fügen Sie die `"identity"`-Eigenschaft in der gleichen Ebene wie die `"type": "Microsoft.Compute/virtualMachines"`-Eigenschaft hinzu. Verwenden Sie die folgende Syntax:
 
-   ```JSON
+   ```json
    "identity": {
        "type": "SystemAssigned"
    },
    ```
 
-
-
 3. Wenn Sie fertig sind, sollten die folgenden Abschnitte dem Abschnitt `resource` der Vorlage hinzugefügt worden sein. Diese sollte wie folgt aussehen:
 
-   ```JSON
+   ```json
     "resources": [
         {
             //other resource provider properties...
@@ -95,7 +93,7 @@ Ihrem Konto muss die Rolle [Benutzerzugriffsadministrator](../../role-based-acce
 
    Fügen Sie unter dem Abschnitt `parameters` Folgendes hinzu:
 
-    ```JSON
+    ```json
     "builtInRoleType": {
         "type": "string",
         "defaultValue": "Reader"
@@ -107,13 +105,13 @@ Ihrem Konto muss die Rolle [Benutzerzugriffsadministrator](../../role-based-acce
 
     Fügen Sie unter dem Abschnitt `variables` Folgendes hinzu:
 
-    ```JSON
+    ```json
     "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
     ```
 
     Fügen Sie unter dem Abschnitt `resources` Folgendes hinzu:
 
-    ```JSON
+    ```json
     {
         "apiVersion": "2017-09-01",
         "type": "Microsoft.Authorization/roleAssignments",
@@ -135,7 +133,7 @@ Zum Entfernen der systemseitig zugewiesenen verwalteten Identität von einem vir
 
 1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
 
-2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachines`-Ressource im Abschnitt `resources`. Wenn Ihre VM nur über eine vom System zugewiesene verwaltete Identität verfügt, können Sie diese deaktivieren, indem Sie den Identitätstyp in `None` ändern.  
+2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachines`-Ressource im Abschnitt `resources`. Wenn Ihre VM nur über eine vom System zugewiesene verwaltete Identität verfügt, können Sie diese deaktivieren, indem Sie den Identitätstyp in `None` ändern.
 
    **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**
 
@@ -143,27 +141,27 @@ Zum Entfernen der systemseitig zugewiesenen verwalteten Identität von einem vir
 
    **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**
 
-   Wenn `2017-12-01` als `apiVersion` verwendet wird und Ihre VM sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem `identityIds`-Array der vom Benutzer zugewiesenen verwalteten Identitäten bei.  
+   Wenn `2017-12-01` als `apiVersion` verwendet wird und Ihre VM sowohl vom System als auch vom Benutzer zugewiesene verwaltete Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem `identityIds`-Array der vom Benutzer zugewiesenen verwalteten Identitäten bei.
 
 Das folgende Beispiel zeigt, wie Sie eine vom System zugewiesene verwaltete Identität von einem virtuellen Computer ohne vom Benutzer zugewiesene verwaltete Identitäten entfernen:
 
- ```JSON
- {
-     "apiVersion": "2018-06-01",
-     "type": "Microsoft.Compute/virtualMachines",
-     "name": "[parameters('vmName')]",
-     "location": "[resourceGroup().location]",
-     "identity": {
-         "type": "None"
-     }
- }
- ```
+```json
+{
+    "apiVersion": "2018-06-01",
+    "type": "Microsoft.Compute/virtualMachines",
+    "name": "[parameters('vmName')]",
+    "location": "[resourceGroup().location]",
+    "identity": {
+        "type": "None"
+    }
+}
+```
 
 ## <a name="user-assigned-managed-identity"></a>Benutzerseitig zugewiesene verwaltete Identität
 
 In diesem Abschnitt weisen Sie einer Azure-VM mit der Azure Resource Manager-Vorlage eine vom Benutzer zugewiesene verwaltete Identität zu.
 
-> [!Note]
+> [!NOTE]
 > Weitere Informationen zum Erstellen einer vom Benutzer zugewiesenen verwalteten Identität mit einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen einer vom Benutzer zugewiesenen verwalteten Identität](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zu einem virtuellen Azure-Computer
@@ -176,7 +174,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
 
    Wenn `2018-06-01` als `apiVersion` verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `userAssignedIdentities`-Wörterbuchformat gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Abschnitt `variables` der Vorlage definierten Variable gespeichert werden.
 
-   ```JSON
+   ```json
     {
         "apiVersion": "2018-06-01",
         "type": "Microsoft.Compute/virtualMachines",
@@ -195,7 +193,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
 
    Wenn `2017-12-01` als `apiVersion` verwendet wird, werden die vom Benutzer zugewiesenen verwalteten Identitäten im `identityIds`-Array gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Abschnitt `variables` der Vorlage definierten Variable gespeichert werden.
 
-   ```JSON
+   ```json
    {
        "apiVersion": "2017-12-01",
        "type": "Microsoft.Compute/virtualMachines",
@@ -212,9 +210,9 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
 
 3. Wenn Sie fertig sind, sollten die folgenden Abschnitte dem Abschnitt `resource` der Vorlage hinzugefügt worden sein. Diese sollte wie folgt aussehen:
 
-   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**    
+   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**
 
-   ```JSON
+   ```json
      "resources": [
         {
             //other resource provider properties...
@@ -231,9 +229,10 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
         }
     ] 
    ```
+
    **Microsoft.Compute/virtualMachines-API, Version 2017-12-01**
 
-   ```JSON
+   ```json
    "resources": [
         {
             //other resource provider properties...

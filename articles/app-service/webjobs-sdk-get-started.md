@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7df6eabbecca9538de3c45bf1c9fc7ca6e4334bd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91652039"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205375"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -311,7 +311,7 @@ In diesem Abschnitt führen Sie die folgenden Aufgaben zum Einrichten der Applic
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>Erstellen einer App Service-App und einer Application Insights-Instanz
 
-1. Wenn Sie noch nicht über eine App Service-App verfügen, die Sie verwenden können, [erstellen Sie eine](quickstart-dotnet-framework.md). Beim Erstellen Ihrer App können Sie auch eine verbundene Application Insights-Ressource erstellen. Wenn Sie sich dazu entscheiden, wird das `APPINSIGHTS_INSTRUMENTATIONKEY`-Element in Ihrer App für Sie festgelegt.
+1. Wenn Sie noch nicht über eine App Service-App verfügen, die Sie verwenden können, [erstellen Sie eine](./quickstart-dotnetcore.md?tabs=netframework48). Beim Erstellen Ihrer App können Sie auch eine verbundene Application Insights-Ressource erstellen. Wenn Sie sich dazu entscheiden, wird das `APPINSIGHTS_INSTRUMENTATIONKEY`-Element in Ihrer App für Sie festgelegt.
 
 1. Wenn Sie noch nicht über eine Application Insights-Ressource verfügen, die Sie verwenden können, [erstellen Sie eine](../azure-monitor/app/create-new-resource.md ). Legen Sie den **Anwendungstyp** auf **Allgemein** fest, und überspringen Sie die Abschnitte die dem Abschnitt **Kopieren des Instrumentierungsschlüssels** folgen.
 
@@ -514,7 +514,7 @@ Eingabebindungen vereinfachen Code, der Daten liest. In diesem Beispiel ist die 
    Executed 'Functions.ProcessQueueMessage' (Succeeded, Id=5a2ac479-de13-4f41-aae9-1361f291ff88)
    ```
 
-## <a name="add-an-output-binding"></a>Hinzufügen einer Ausgabebindung
+## <a name="add-an-output-binding&quot;></a>Hinzufügen einer Ausgabebindung
 
 Ausgabebindungen vereinfachen Code, der Daten schreibt. In diesem Beispiel wird der vorherige Code geändert, indem eine Kopie des Blobs geschrieben wird, statt dessen Größe zu protokollieren. Blobspeicherbindungen sind im Azure Storage-Erweiterungspaket enthalten, das wir zuvor installiert haben.
 
@@ -522,7 +522,7 @@ Ausgabebindungen vereinfachen Code, der Daten schreibt. In diesem Beispiel wird 
 
    ```cs
    public static void ProcessQueueMessage(
-       [QueueTrigger("queue")] string message,
+       [QueueTrigger(&quot;queue")] string message,
        [Blob("container/{queueTrigger}", FileAccess.Read)] Stream myBlob,
        [Blob("container/copy-{queueTrigger}", FileAccess.Write)] Stream outputBlob,
        ILogger logger)

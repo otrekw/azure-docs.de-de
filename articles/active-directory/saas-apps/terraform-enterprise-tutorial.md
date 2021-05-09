@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/05/2021
 ms.author: jeedes
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 69ce53126a45e74f43514779f391c2df66d8f225
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 18a91f5b04ab31680a335a1e9e044b821d8324d8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518421"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206005"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-enterprise"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Terraform Enterprise
 
@@ -132,8 +132,8 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Terraform Enterprise-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Terraform Enterprise“ klicken, werden Sie zur Anmelde-URL für Terraform Enterprise umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Terraform Enterprise“ klicken, werden Sie zur Anmelde-URL für Terraform Enterprise umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Terraform Enterprise können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Terraform Enterprise können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

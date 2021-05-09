@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 04/20/2021
-ms.openlocfilehash: d50cf1009fb674f2d3d5914715dcbd9699565489
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 857c0e41f52c99d83142b3db7471b51b55316b5e
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796058"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316171"
 ---
 # <a name="managed-connectors-for-logic-apps"></a>Verwaltete Connectors für Azure Logic Apps
 
@@ -514,7 +514,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können](/logic-apps/logic-apps-create-api-app)
+> [Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können](../logic-apps/logic-apps-create-api-app.md)
 
 <!--Managed connector icons-->
 [appfigures-icon]: ./media/apis-list/appfigures.png
