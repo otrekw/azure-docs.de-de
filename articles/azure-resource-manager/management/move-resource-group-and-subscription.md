@@ -2,14 +2,14 @@
 title: Verschieben von Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe
 description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben.
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 04/16/2021
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: e899319460c4d9b144a580e0cb093488ea76683c
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078382"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108322165"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -160,7 +160,7 @@ retry-after: 15
 ...
 ```
 
-Die Statuscode 202 gibt an, dass die Überprüfungsanforderung akzeptiert wurde, jedoch noch nicht ermittelt wurde, ob der Verschiebungsvorgang erfolgreich verläuft. Die Wert `location` enthält eine URL, über die Sie den Status des lang andauernden Vorgangs überprüfen können.  
+Die Statuscode 202 gibt an, dass die Überprüfungsanforderung akzeptiert wurde, jedoch noch nicht ermittelt wurde, ob der Verschiebungsvorgang erfolgreich verläuft. Die Wert `location` enthält eine URL, über die Sie den Status des lang andauernden Vorgangs überprüfen können.
 
 Um den Status zu überprüfen, senden Sie die folgende Anforderung:
 
@@ -209,8 +209,6 @@ Nachdem Sie überprüft haben, dass die Ressourcen verschoben werden können, wi
 
 Sobald der Vorgang abgeschlossen ist, werden Sie über das Ergebnis informiert.
 
-Wenn ein Fehler auftritt, lesen Sie [Problembehandlung beim Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](troubleshoot-move.md).
-
 ## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 
 Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [Move-AzResource](/powershell/module/az.resources/move-azresource). Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden.
@@ -223,11 +221,9 @@ Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Resource
 
 Um Ressourcen in ein neues Abonnement zu verschieben, schließen Sie einen Wert für den Parameter `DestinationSubscriptionId` ein.
 
-Wenn ein Fehler auftritt, lesen Sie [Problembehandlung beim Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](troubleshoot-move.md).
-
 ## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [az resource move](/cli/azure/resource#az-resource-move). Geben Sie die Ressourcen-IDs der zu verschiebenden Ressourcen an. Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden. Geben Sie im `--ids`-Parameter eine durch Leerzeichen getrennte Liste der zu verschiebenden Ressourcen-IDs an.
+Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [az resource move](/cli/azure/resource#az_resource_move). Geben Sie die Ressourcen-IDs der zu verschiebenden Ressourcen an. Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden. Geben Sie im `--ids`-Parameter eine durch Leerzeichen getrennte Liste der zu verschiebenden Ressourcen-IDs an.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -236,8 +232,6 @@ az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
 Um Ressourcen in ein neues Abonnement zu verschieben, geben Sie den Parameter`--destination-subscription-id` an.
-
-Wenn ein Fehler auftritt, lesen Sie [Problembehandlung beim Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](troubleshoot-move.md).
 
 ## <a name="use-rest-api"></a>REST-API
 
@@ -255,8 +249,6 @@ Geben Sie im Anforderungstext die Zielgruppe und die zu verschiebenden Ressource
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
-
-Wenn ein Fehler auftritt, lesen Sie [Problembehandlung beim Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](troubleshoot-move.md).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -303,6 +295,18 @@ Ein weiteres gängiges Beispiel beinhaltet das Verschieben eines virtuellen Netz
 **Frage: Warum kann ich einige Ressourcen in Azure nicht verschieben?**
 
 Derzeit unterstützen nicht alle Ressourcen in Azure das Verschieben. Eine Liste der Ressourcen, die das Verschieben unterstützen, finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](move-support-resources.md).
+
+**Frage: Wie viele Ressourcen kann ich in einem einzigen Vorgang verschieben?**
+
+Unterteilen Sie große Verschiebevorgänge nach Möglichkeit in separate Verschiebevorgänge. Resource Manager gibt sofort einen Fehler aus, wenn ein einziger Vorgang mehr als 800 Ressourcen umfasst. Beim Verschieben von weniger als 800 Ressourcen kann jedoch ebenfalls ein Fehler durch ein Timeout auftreten.
+
+**Frage: Was bedeutet der Fehler, dass eine Ressource nicht erfolgreich ist?**
+
+Wenn Sie eine Fehlermeldung erhalten, die besagt, dass eine Ressource nicht verschoben werden kann, da sie sich nicht in einem erfolgreichen Zustand befindet, blockiert möglicherweise eine abhängige Ressource die Verschiebung. In der Regel lautet der Fehlercode **MoveCannotProceedWithResourcesNotInSucceededState**.
+
+Wenn die Quell- oder Zielgruppenressource ein virtuelles Netzwerk enthält, werden während des Verschiebens die Zustände aller abhängigen Ressourcen des virtuellen Netzwerks überprüft. Die Überprüfung umfasst direkt und indirekt vom virtuellen Netzwerk abhängige Ressourcen. Wenn eine dieser Ressourcen den Zustand „Ausgefallen“ aufweist, wird die Verschiebung blockiert. Wenn beispielsweise ein virtueller Computer, der das virtuelle Netzwerk nutzt, ausgefallen ist, wird das Verschieben blockiert. Das Verschieben wird selbst dann blockiert, wenn der virtuelle Computer nicht zu den zu verschiebenden Ressourcen gehört und sich nicht in einer der Ressourcengruppen des Verschiebevorgangs befindet.
+
+Wenn Sie diesen Fehler erhalten, haben Sie zwei Möglichkeiten. Verschieben Sie entweder Ihre Ressourcen in eine Ressourcengruppe ohne virtuelles Netzwerk, oder [kontaktieren Sie den Support](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,16 +6,16 @@ ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 02/14/2021
-ms.openlocfilehash: eb6dbb74fe0d345a157049e79f7a3642499d7cfa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d21ee7a60d11a154737c5380ec20d3e9c4490962
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037981"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786061"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Aktualisieren von Warnungs- oder Aktionsregeln beim Verschieben der entsprechenden Zielressource in eine andere Azure-Region
 
-In diesem Artikel erfahren Sie, warum das Verschieben anderer Azure-Ressourcen in eine andere Region möglicherweise Auswirkungen auf vorhandene [Warnungsregeln](./alerts-overview.md) und [Aktionsregeln](./alerts-action-rules.md) hat, und wie Sie diese Probleme identifizieren und beheben. Weitere Informationen dazu, wann ein Verschieben von Ressourcen in eine andere Region sinnvoll ist, sowie eine Checkliste für die Planung eines Verschiebungsvorgangs finden Sie in der [Hauptdokumentation für das Verschieben von Ressourcen](../../azure-resource-manager/management/move-region.md).
+In diesem Artikel erfahren Sie, warum das Verschieben anderer Azure-Ressourcen in eine andere Region möglicherweise Auswirkungen auf vorhandene [Warnungsregeln](./alerts-overview.md) und [Aktionsregeln](./alerts-action-rules.md) hat, und wie Sie diese Probleme identifizieren und beheben. Weitere Informationen dazu, wann ein Verschieben von Ressourcen in eine andere Region sinnvoll ist, sowie eine Checkliste für die Planung eines Verschiebungsvorgangs finden Sie in der [Hauptdokumentation für das Verschieben von Ressourcen](../../azure-resource-manager/management/move-resources-overview.md).
 
 ## <a name="why-the-problem-exists"></a>Gründe für das Problem
 
@@ -82,7 +82,7 @@ Wenn **nur ein paar** der Ressourcen im Bereich verschoben wurden, müssen Sie d
 
 ### <a name="change-the-scope-of-a-rule-using-azure-resource-manager-templates"></a>Ändern des Bereichs einer Regel mithilfe von Azure Resource Manager-Vorlagen
 
-1. Rufen Sie die Azure Resource Manager-Vorlage für die Regel ab.  So exportieren Sie die Vorlage für eine Regel im Azure-Portal:
+1. Rufen Sie die Azure Resource Manager-Vorlage für die Regel ab.   So exportieren Sie die Vorlage für eine Regel im Azure-Portal:
    1. Navigieren Sie im Portal zum Abschnitt „Ressourcengruppen“, und öffnen Sie die Ressourcengruppe, die die Regel enthält.
    2. Aktivieren Sie im Abschnitt „Übersicht“ das Kontrollkästchen bei **Ausgeblendete Typen anzeigen**, und filtern Sie nach dem entsprechenden Regeltyp.
    3. Klicken Sie auf die entsprechende Regel, um die zugehörigen Details anzuzeigen.
@@ -104,8 +104,8 @@ Wenn **nur ein paar** der Ressourcen im Bereich verschoben wurden, müssen Sie d
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Ändern des Bereichs einer Regel über die Azure CLI
 
-1.  Rufen Sie die vorhandene Regel ab ([Metrikwarnungen](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show), [Aktivitätsprotokollwarnungen](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
-2.  Aktualisieren Sie den Regelbereich direkt ([Metrikwarnungen](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [Aktivitätsprotokollwarnungen](/cli/azure/monitor/activity-log/alert/scope)).
+1.  Rufen Sie die vorhandene Regel ab ([Metrikwarnungen](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_show), [Aktivitätsprotokollwarnungen](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log-alert_list)).
+2.  Aktualisieren Sie den Regelbereich direkt ([Metrikwarnungen](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_update), [Aktivitätsprotokollwarnungen](/cli/azure/monitor/activity-log/alert/scope)).
 3.  Teilen Sie die Regel ggf. in zwei Regeln auf (bei Metrikwarnungen in einigen Fällen relevant, siehe oben).
 
 ## <a name="next-steps"></a>Nächste Schritte

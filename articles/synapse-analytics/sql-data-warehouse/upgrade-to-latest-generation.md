@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b5a9d1781bd0498ac6ad74439b1572c52e3c345a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12ac49154fabbc0ce96390d5fffa5d02d7886324
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96459252"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165999"
 ---
 # <a name="optimize-performance-by-upgrading-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Optimieren der Leistung durch ein Upgrade des dedizierten SQL-Pools (früher SQL DW) in Azure Synapse Analytics
 
@@ -94,7 +94,7 @@ In [unterstützten Regionen](gen2-migration-schedule.md#automated-schedule-and-r
 
    Ursprünglicher T-SQL-Befehl für Gen 1:
 
-   ```SQL
+   ```sql
    ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300') ;
    ```
 
@@ -222,7 +222,7 @@ Verwenden Sie das Cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/resto
 5. Erstellen Sie die Wiederherstellungsanforderung für die Datenbank, indem Sie einen Gen2-ServiceObjectiveName angeben.
 6. Überprüfen Sie den Status der mittels Geowiederherstellung wiederhergestellten Datenbank.
 
-```Powershell
+```powershell
 Connect-AzAccount
 Get-AzSubscription
 Select-AzSubscription -SubscriptionName "<Subscription_name>"

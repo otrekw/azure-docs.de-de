@@ -3,13 +3,13 @@ title: Anforderungsgrenzwerte und -drosselung
 description: Beschreibt, wie eine Begrenzung von Azure Resource Manager-Anforderungen genutzt wird, wenn Abonnementgrenzwerte erreicht wurden.
 ms.topic: conceptual
 ms.date: 12/15/2020
-ms.custom: seodec18
-ms.openlocfilehash: 677cd0fc047cbdbbe91a308600201087c36e050a
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: cb562d6f6489ff30c6b940963a20974eb987b031
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129997"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108322183"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
 

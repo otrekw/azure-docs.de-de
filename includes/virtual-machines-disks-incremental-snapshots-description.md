@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 04/21/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 39750a86ccf781a10109e299e27a55a03173acb6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9b09012237d8f519322c927f8f2bbca1d3edef2
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98900929"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107925383"
 ---
-Inkrementelle Momentaufnahmen sind Point-in-Time-Sicherungen für verwaltete Datenträger, die bei der Erfassung nur aus den Änderungen seit der letzten Momentaufnahme bestehen. Beim Wiederherstellen eines Datenträgers aus einer inkrementellen Momentaufnahme rekonstruiert das System den vollständigen Datenträger, der die Point-in-Time-Sicherung des Datenträgers zu dem Zeitpunkt darstellt, zu dem die inkrementelle Momentaufnahme erstellt wurde. Durch diese neue Funktion für Momentaufnahmen verwalteter Datenträger werden diese potenziell kostengünstiger, da Sie nicht mehr mit jeder einzelnen Momentaufnahme den gesamten Datenträger speichern müssen, es sei denn, Sie entscheiden sich dazu. Wie vollständige Momentaufnahmen können auch inkrementelle Momentaufnahmen verwendet werden, um entweder einen vollständigen verwalteten Datenträger oder eine vollständige Momentaufnahme zu erstellen.
+Inkrementelle Momentaufnahmen sind Point-in-Time-Sicherungen für verwaltete Datenträger, die bei der Erfassung nur aus den Änderungen seit der letzten Momentaufnahme bestehen. Beim Wiederherstellen eines Datenträgers aus einer inkrementellen Momentaufnahme rekonstruiert das System den vollständigen Datenträger, der die Point-in-Time-Sicherung des Datenträgers zu dem Zeitpunkt darstellt, zu dem die inkrementelle Momentaufnahme erstellt wurde. Durch diese Funktion für Momentaufnahmen verwalteter Datenträger werden diese potenziell kostengünstiger, da Sie nicht mehr mit jeder einzelnen Momentaufnahme den gesamten Datenträger speichern müssen, es sei denn, Sie entscheiden sich dazu. Wie vollständige Momentaufnahmen können auch inkrementelle Momentaufnahmen verwendet werden, um entweder einen vollständigen verwalteten Datenträger oder eine vollständige Momentaufnahme zu erstellen. Sowohl vollständige als auch inkrementelle Momentaufnahmen können sofort nach dem Erstellen verwendet werden. Anders ausgedrückt: Sobald Sie eine Momentaufnahme erstellen, können Sie die zugrunde liegende VHD sofort lesen und zum Wiederherstellen von Datenträgern verwenden.
 
 Es gibt einige Unterschiede zwischen einer inkrementellen und einer vollständigen Momentaufnahme. Inkrementelle Momentaufnahmen verwenden immer Festplattenlaufwerk-Standardspeicher, und zwar unabhängig vom Speichertyp des Datenträgers, wohingegen vollständige Momentaufnahmen Premium-SSD-Datenträger verwenden können. Wenn Sie vollständige Momentaufnahmen auf Storage Premium zum Hochskalieren von VM-Bereitstellungen verwenden, empfiehlt es sich, benutzerdefinierte Images im Standardspeicher in [Shared Image Gallery](../articles/virtual-machines/shared-image-galleries.md) zu verwenden. Dies unterstützt Sie dabei, eine umfangreiche Skalierung mit geringeren Kosten zu erzielen. Außerdem bieten inkrementelle Momentaufnahmen möglicherweise bessere Zuverlässigkeit durch [zonenredundanten Speicher](../articles/storage/common/storage-redundancy.md) (ZRS). Wenn ZRS in der ausgewählten Region verfügbar ist, verwendet eine inkrementelle Momentaufnahme automatisch ZRS. Wenn ZRS nicht in der Region verfügbar ist, wird für die Momentaufnahme standardmäßig [lokal redundanter Speicher](../articles/storage/common/storage-redundancy.md) (LRS) verwendet. Sie können dieses Verhalten außer Kraft setzen und manuell ein anderes Verhalten auswählen. Dies wird jedoch nicht empfohlen.
 

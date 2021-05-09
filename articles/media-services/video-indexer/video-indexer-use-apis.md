@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac0b206a86edf3157141b56e0c2623a8429b0c7a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028225"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785521"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Tutorial: Verwenden der Video Indexer-API
 
@@ -38,18 +38,19 @@ In diesem Artikel wird veranschaulicht, wie Entwickler die [Video Indexer-API](h
    > * Sie müssen denselben Anbieter verwenden, den Sie beim Anmelden für Video Indexer genutzt haben.
    > * Persönliche Google- und Microsoft-Konten (Outlook/Live) können nur für Testkonten verwendet werden. Für Konten, die über eine Verbindung mit Azure verfügen, ist Azure AD erforderlich.
    > * Pro E-Mail-Adresse kann nur ein aktives Konto vorhanden sein. Wenn ein Benutzer versucht, sich mit user@gmail.com für LinkedIn anzumelden, und später user@gmail.com auch für Google verwendet, wird für die zweite Anmeldung eine Fehlerseite mit dem Hinweis angezeigt, dass der Benutzer bereits vorhanden ist.
+
 2. Führen Sie den Schritt zum Abonnieren aus.
 
-    Wählen Sie die Registerkarte [Produkte](https://api-portal.videoindexer.ai/products). Wählen Sie anschließend „Authorization“ (Autorisierung), und führen Sie den Vorgang für die Einrichtung des Abonnements durch.
+   Wählen Sie die Registerkarte [Produkte](https://api-portal.videoindexer.ai/products). Wählen Sie anschließend „Authorization“ (Autorisierung), und führen Sie den Vorgang für die Einrichtung des Abonnements durch.
     
-    ![Registerkarte „Products“ im Video Indexer-Entwicklerportal](./media/video-indexer-use-apis/authorization.png)
+   ![Registerkarte „Products“ im Video Indexer-Entwicklerportal](./media/video-indexer-use-apis/authorization.png)
 
-    > [!NOTE]
-    > Für neue Benutzer wird das Abonnement der Autorisierung automatisch eingerichtet.
+   > [!NOTE]
+   > Für neue Benutzer wird das Abonnement der Autorisierung automatisch eingerichtet.
     
-    Nach Abschluss des Abonnementvorgangs finden Sie Ihr Abonnement unter **Produkte** -> **Autorisierung**. Auf der Abonnementseite wird der primäre und sekundäre Schlüssel angezeigt. Die Schlüssel sollten geschützt werden. Die Schlüssel sollten nur von Ihrem Servercode verwendet werden. Sie sollten nicht auf Clientseite (.js, .html usw.) verfügbar sein.
+   Nach Abschluss des Abonnementvorgangs finden Sie Ihr Abonnement unter **Produkte** -> **Autorisierung**. Auf der Abonnementseite wird der primäre und sekundäre Schlüssel angezeigt. Die Schlüssel sollten geschützt werden. Die Schlüssel sollten nur von Ihrem Servercode verwendet werden. Sie sollten nicht auf Clientseite (.js, .html usw.) verfügbar sein.
 
-    ![Abonnement und Schlüssel im Video Indexer-Entwicklerportal](./media/video-indexer-use-apis/subscriptions.png)
+   ![Abonnement und Schlüssel im Video Indexer-Entwicklerportal](./media/video-indexer-use-apis/subscriptions.png)
 
 > [!TIP]
 > Video Indexer-Benutzer können einen einzelnen Abonnementschlüssel verwenden, um eine Verbindung mit mehreren Video Indexer-Konten herzustellen. Sie können diese Video Indexer-Konten dann mit unterschiedlichen Media Services-Konten verknüpfen.
@@ -64,7 +65,10 @@ Jeder Aufruf der Operations-API sollte einem Zugriffstoken zugeordnet sein und m
 - Kontoebene: Mit Zugriffstoken auf Kontoebene können Sie Vorgänge auf der **Konto**-Ebene oder der **Video**-Ebene ausführen. Beispiele hierfür sind das Hochladen von Videos, Auflisten aller Videos, Abrufen von Videoerkenntnissen usw.
 - Videoebene: Mit Zugriffstoken auf Videoebene können Sie Vorgänge für ein bestimmtes **Video** ausführen. Beispiele hierfür sind das Abrufen von Videoinformationen, Herunterladen von Untertiteln, Abrufen von Widgets usw.
 
-Sie können durch Angeben von **allowEdit=true/false** steuern, ob diese Token schreibgeschützt sind oder bearbeitet werden können.
+Sie können die Berechtigungsebene von Token auf zwei Arten steuern:
+
+* Für **Konto**-Token können Sie die **Kontozugriffstoken mit Berechtigung abrufen**-API verwenden und den Berechtigungstyp angeben (**Leser**/**Mitwirkender**/**MyAccessManager**/**Besitzer**).
+* Für alle Tokentypen (einschließlich **Konto**-Token) können Sie **allowEdit=true/false** angeben. **false** entspricht der Berechtigung **Leser** (schreibgeschützt), und **true** entspricht der Berechtigung **Mitwirkender** (Lese-/Schreibzugriff).
 
 Für die meisten Server-zu-Server-Szenarien nutzen Sie voraussichtlich dasselbe Token vom Typ „Konto“ (**account**), da hiermit sowohl **account**-Vorgänge als auch **video**-Vorgänge abgedeckt sind. Falls Sie planen, clientseitig Aufrufe von Video Indexer auszuführen (z. B. per JavaScript), sollten Sie aber ein **video**-Zugriffstoken verwenden, um zu verhindern, dass Clients Zugriff auf das gesamte Konto erhalten. Dies ist auch der Grund, warum Sie beim Einbetten von Video Indexer-Clientcode in Ihren Client (z. B. per **Get Insights Widget** (Insights-Widget abrufen) oder **Get Player Widget** (Player-Widget abrufen)) ein **video**-Zugriffstoken angeben müssen.
 
@@ -88,7 +92,7 @@ Der Parameter für die Konto-ID (Account ID) ist in allen API-Aufrufen für Vorg
 
 * Im  **Portal für Video Indexer-Entwickler** können Sie die Konto-ID programmgesteuert abrufen.
 
-    Verwenden Sie die API [Get account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) (Konto abrufen).
+    Verwenden Sie die API [Get account](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account) (Konto abrufen).
 
     > [!TIP]
     > Sie können Zugriffstoken für die Konten generieren, indem Sie `generateAccessTokens=true` definieren.
