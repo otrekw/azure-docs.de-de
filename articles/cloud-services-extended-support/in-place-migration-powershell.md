@@ -8,12 +8,12 @@ ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: eea49a41e81e7e580becce815ff91aff6aa430d6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: aab67914b1317bc0cc443f333932ecef924176b6
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286741"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293024"
 ---
 # <a name="migrate-to-azure-cloud-services-extended-support-using-powershell"></a>Migrieren zu Azure Cloud Services (erweiterter Support) mit PowerShell
 
@@ -28,7 +28,7 @@ Die Planung ist der wichtigste Schritt für eine erfolgreiche Migration. Lesen S
 ## <a name="2-install-the-latest-version-of-powershell"></a>2) Installieren der neuesten Version von PowerShell
 Für die Installation von Azure PowerShell stehen zwei Hauptoptionen zur Verfügung: [PowerShell-Katalog](https://www.powershellgallery.com/profiles/azure-sdk/) oder [Webplattform-Installer (WebPI)](https://aka.ms/webpi-azps). WebPI empfängt monatliche Updates. Der PowerShell-Katalog wird fortlaufend aktualisiert. Dieser Artikel basiert auf Azure PowerShell Version 2.1.0.
 
-Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0&preserve-view=true).
+Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/servicemanagement/install-azure-ps?preserve-view=true&view=azuresmps-4.0.0).
 
 ## <a name="3-ensure-admin-permissions"></a>3) Sicherstellen der Administratorberechtigungen
 Um diese Migration auszuführen, müssen Sie im [Azure-Portal](https://portal.azure.com) als Co-Administrator für das Abonnement hinzugefügt werden.
@@ -193,4 +193,4 @@ Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie den Abschnitt [Änderungen nach der Migration](in-place-migration-overview.md#post-migration-changes), um Änderungen in Bereitstellungsdateien, die Automatisierung und andere Attribute der neuen Cloud Services-Bereitstellung (erweiterter Support) anzuzeigen. 
+Lesen Sie den Abschnitt [Änderungen nach der Migration](in-place-migration-overview.md#post-migration-changes), um Änderungen in Bereitstellungsdateien, die Automatisierung und andere Attribute der neuen Cloud Services-Bereitstellung (erweiterter Support) anzuzeigen.

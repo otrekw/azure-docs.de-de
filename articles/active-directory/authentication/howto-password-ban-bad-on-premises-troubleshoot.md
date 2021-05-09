@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b34194c0b9afa622d6ae751752092ed3f750f0b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648724"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285752"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Problembehandlung: Lokaler Azure AD-Kennwortschutz
 
@@ -402,6 +402,6 @@ VerifyAzureConnectivityViaSpecificProxy Passed
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Häufig gestellte Fragen zum Azure AD-Kennwortschutz](howto-password-ban-bad-on-premises-faq.md)
+[Häufig gestellte Fragen zum Azure AD-Kennwortschutz](howto-password-ban-bad-on-premises-faq.yml)
 
 Weitere Informationen zu der Liste global gesperrter und benutzerdefinierter gesperrter Kennwörter finden Sie im Artikel [Beseitigen falscher Kennwörter in Ihrer Organisation](concept-password-ban-bad.md)

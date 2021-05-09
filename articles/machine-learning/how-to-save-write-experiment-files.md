@@ -9,15 +9,14 @@ manager: danielsc
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: ad641c2270f94b9d902a25e8d061fb1137a0cdb7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8e0e5ee04ab435842bb0b37202b10473258aee18
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518601"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888636"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Verzeichnisse zum Speichern und Schreiben von Dateien für Azure Machine Learning-Experimente
 
@@ -30,13 +29,13 @@ Bei Beginn von Trainingsausführungen auf einem [Computeziel](concept-compute-ta
 
 Bevor Sie ein Experiment auf einem Computeziel oder Ihrem lokalen Computer initiieren können, müssen Sie sicherstellen, dass die erforderlichen Dateien, z.B. Abhängigkeitsdateien und Datendateien, die Ihr Code zum Ausführen benötigt, für das Computeziel verfügbar sind.
 
-Zum Ausführen von Trainingsskripts wird von Azure Machine Learning das gesamte Quellverzeichnis kopiert. Sind vertrauliche Daten vorhanden, die nicht hochgeladen werden sollen, verwenden Sie die [IGNORE-Datei](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots), oder platzieren Sie sie nicht im Quellverzeichnis. Greifen Sie stattdessen mit einem [Datenspeicher](/python/api/azureml-core/azureml.data) auf Ihre Daten zu.
+Zum Ausführen von Trainingsskripts wird von Azure Machine Learning das gesamte Quellverzeichnis kopiert. Sind vertrauliche Daten vorhanden, die nicht hochgeladen werden sollen, verwenden Sie eine [IGNORE-Datei](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots), oder platzieren Sie diese Daten nicht im Quellverzeichnis. Greifen Sie stattdessen mit einem [Datenspeicher](/python/api/azureml-core/azureml.data) auf Ihre Daten zu.
 
 Das Speicherlimit für Momentaufnahmen des Experiments liegt bei 300 MB und/oder 2000 Dateien.
 
 Aus diesem Grund empfehlen wir Folgendes:
 
-* **Speichern Sie Ihre Dateien in einem Azure Machine Learning-[Datenspeicher](/python/api/azureml-core/azureml.data).** Dadurch werden Probleme mit Wartezeiten beim Experiment vermieden, und Sie erhalten die Vorteile des Datenzugriffs von einem Remotecomputeziel aus, was bedeutet, dass Funktionen wie die Authentifizierung und die Einbindung von Azure Machine Learning verwaltet werden. Weitere Informationen zum Angeben eines Datenspeichers als Ihr Quellverzeichnis und Hochladen von Dateien in Ihren Datenspeicher finden Sie im Artikel [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
+* **Speichern Sie Ihre Dateien in einem Azure Machine Learning-[Dataset](/python/api/azureml-core/azureml.data).** Dadurch werden Probleme mit Wartezeiten beim Experiment vermieden, und Sie erhalten die Vorteile des Datenzugriffs von einem Remotecomputeziel aus, was bedeutet, dass Funktionen wie die Authentifizierung und die Einbindung von Azure Machine Learning verwaltet werden. Weitere Informationen zum Angeben eines Datasets als Eingabedatenquelle in Ihrem Trainingsskript finden Sie unter [Trainieren mit Datasets](how-to-train-with-datasets.md).
 
 * **Wenn Sie nur wenige Datendateien und Abhängigkeitsskripts benötigen und keinen Datenspeicher verwenden können,** legen Sie die Dateien in demselben Ordnerverzeichnis wie Ihr Trainingsskript ab. Geben Sie diesen Ordner direkt in Ihrem Trainingsskript als Ihr `source_directory` an, oder in dem Code, der Ihr Trainingsskript aufruft.
 
@@ -64,9 +63,9 @@ Jupyter Notebooks| Erstellen Sie eine `.amlignore`-Datei, oder verschieben Sie I
 
 Aufgrund der Isolation von Trainingsexperimenten werden die während Ausführungen auftretenden Änderungen an Dateien nicht unbedingt außerhalb Ihrer Umgebung beibehalten. Wenn Ihr Skript die lokalen zu berechnenden Dateien ändert, werden die Änderungen für Ihre nächste Experimentausführung nicht beibehalten und auch nicht automatisch an den Clientcomputer zurückgeleitet. Darum sollten die während der ersten Ausführung des Experiments vorgenommenen Änderungen sich nicht auf die Änderungen der zweiten Ausführung auswirken.
 
-Wenn Sie Änderungen vornehmen, wird empfohlen, Dateien in einen Azure Machine Learning-Datenspeicher zu schreiben. Weitere Informationen finden Sie unter [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
+Beim Schreiben von Änderungen wird empfohlen, Dateien über ein Azure Machine Learning-Dataset mit einem [OutputFileDatasetConfig-Objekt](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig) in den Speicher zu schreiben. Erfahren Sie mehr über das [Erstellen eines OutputFileDatasetConfig-Objekts](how-to-train-with-datasets.md#where-to-write-training-output).
 
-Wenn Sie keinen Datenspeicher benötigen, schreiben Sie Dateien in die Ordner `./outputs` und/oder `./logs`.
+Schreiben Sie Dateien andernfalls in den Ordner `./outputs` und/oder in den Ordner `./logs`.
 
 >[!Important]
 > Zwei Ordner, *outputs* und *logs*, erhalten eine besondere Behandlung durch Azure Machine Learning. Wenn Sie während des Trainings Dateien in die Ordner `./outputs` und `./logs` schreiben, werden diese Dateien automatisch in Ihren Ausführungsverlauf hochgeladen, damit Sie Zugriff darauf haben, wenn die Ausführung abgeschlossen ist.
@@ -77,6 +76,6 @@ Wenn Sie keinen Datenspeicher benötigen, schreiben Sie Dateien in die Ordner `.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über das [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
+* Erfahren Sie mehr über das [Zugreifen auf Daten aus dem Speicher](how-to-access-data.md).
 
 * Erfahren Sie mehr über das [Erstellen von Computezielen für Modelltraining und -bereitstellung](how-to-create-attach-compute-studio.md)
