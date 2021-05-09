@@ -5,24 +5,25 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 04/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: b55fe0bf404ecb8a81e3fe1975dfa9f5ba5dfb06
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 0b0a4c712333516dcdd20dcde9ef4b9c74b5f228
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103350"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018653"
 ---
 # <a name="point-to-site-vpn-session-management"></a>Point-to-Site-VPN-Sitzungsverwaltung
 
-Azure Virtual Network-Gateways bieten eine einfache Möglichkeit, aktuelle Point-to-Site-VPN-Sitzungen anzuzeigen und zu trennen. Dieser Artikel unterstützt Sie beim Anzeigen und Trennen von aktuellen Sitzungen.
+Azure Virtual Network-Gateways bieten eine einfache Möglichkeit, aktuelle Point-to-Site-VPN-Sitzungen anzuzeigen und zu trennen. Dieser Artikel unterstützt Sie beim Anzeigen und Trennen von aktuellen Sitzungen. Der Sitzungsstatus wird alle fünf Minuten aktualisiert. Er wird nicht sofort aktualisiert. 
 
->[!NOTE]
->Der Sitzungsstatus wird alle fünf Minuten aktualisiert. Er wird nicht sofort aktualisiert.
->
 
 ## <a name="portal"></a>Portal
+
+>[!NOTE]
+> Informationen zur Verbindungsquelle werden nur für IKEv2- und OpenVPN-Verbindungen bereitgestellt.
+> 
 
 So zeigen Sie eine Sitzung im Portal an und trennen die Verbindung
 
