@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: daf4ad39f0379f7e903c40b9d5073ab87f455bab
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 295579d17f3b24adcf43f6907cc4b1aca01dcae2
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218769"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565915"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Bereitstellen eines virtuellen Computers mit aktiviertem vertrauenswürdigem Start (Vorschau)
 
@@ -41,19 +41,20 @@ Erstellen Sie einen virtuellen Computer, für den vertrauenswürdiger Start akti
 5. Stellen Sie sicher, dass unter **Projektdetails** das richtige Abonnement ausgewählt ist.
 6. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für Ihre Ressourcengruppe an, oder wählen Sie in der Dropdownliste eine vorhandene Ressourcengruppe aus.
 7. Geben Sie unter **Details zur Instanz** einen Namen für den virtuellen Computer ein, und wählen Sie eine Region aus, die den [vertrauenswürdigen Start](trusted-launch.md#public-preview-limitations) unterstützt.
-8. Wählen Sie unter **Image** ein [Image aus, das den vertrauenswürdigen Start unterstützt](trusted-launch.md#public-preview-limitations). Sie sehen möglicherweise nur die Gen 1-Version des Images. Das ist OK, fahren Sie mit dem nächsten Schritt fort.
-9. Wechseln Sie zur Registerkarte **Erweitert**, indem Sie sie oben auf der Seite auswählen.
-10. Scrollen Sie nach unten zum Abschnitt **VM-Generierung**, und wählen Sie dann **Gen 2** aus.
-11. Scrollen Sie auf der Registerkarte **Erweitert** nach unten zu **Vertrauenswürdiger Start**, und aktivieren Sie dann das Kontrollkästchen **Vertrauenswürdiger Start**. Dadurch werden zwei weitere Optionen angezeigt: „Sicherer Start“ und „vTPM“. Wählen Sie die passenden Optionen für Ihre Bereitstellung aus.
-
-    :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="Screenshot mit den Optionen für den vertrauenswürdigen Start.":::
-
-12. Gehen Sie zurück zu **Image** auf der Registerkarte **Grundlagen**, und stellen Sie sicher, dass Sie folgende Meldung sehen: **Dieses Image unterstützt „Vertrauenswürdiger Start (Vorschau)“. Konfigurieren Sie das Feature auf der Registerkarte „Erweitert“.** Das Gen 2-Image sollte jetzt ausgewählt sein.
+8. Wählen Sie unter **Image** ein [Gen 2-Image, das den vertrauenswürdigen Start unterstützt](trusted-launch.md#public-preview-limitations), aus. Vergewissern Sie sich, dass die folgende Meldung angezeigt wird: **Dieses Image unterstützt „Vertrauenswürdiger Start (Vorschau)“. Konfigurieren Sie das Feature auf der Registerkarte „Erweitert“.**
+   > [!TIP]
+   > Sollte die Gen 2-Version des gewünschten Images in der Dropdownliste nicht angezeigt werden, wählen Sie **Alle Images anzeigen** aus, und ändern Sie dann den Filter **VM-Generation** so, dass nur Gen 2-Images angezeigt werden. Suchen Sie das Image in der Liste, und verwenden Sie dann die Dropdownliste **Auswählen**, um die Gen 2-Version auszuwählen.
 
     :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="Screenshot mit der Meldung, die bestätigt, dass dieses Gen 2-Image den vertrauenswürdigen Start unterstützt.":::
 
 13. Wählen Sie eine VM-Größe, die den vertrauenswürdigen Start unterstützt. Die Liste der unterstützten Größen finden Sie [hier](trusted-launch.md#public-preview-limitations).
-14. Geben Sie die Informationen für das **Administratorkonto** und dann die **Regeln für eingehende Ports** ein.
+14. Geben Sie die Informationen für das **Administratorkonto** und dann die **Regeln für eingehende Ports** ein. 
+1. Wechseln Sie zur Registerkarte **Erweitert**, indem Sie sie oben auf der Seite auswählen.
+1. Scrollen Sie nach unten zum Abschnitt **VM-Generierung**. Vergewissern Sie sich, dass **2. Generation** ausgewählt ist.
+1. Scrollen Sie auf der Registerkarte **Erweitert** nach unten zu **Vertrauenswürdiger Start**, und aktivieren Sie dann das Kontrollkästchen **Vertrauenswürdiger Start**. Dadurch werden zwei weitere Optionen angezeigt: „Sicherer Start“ und „vTPM“. Wählen Sie die passenden Optionen für Ihre Bereitstellung aus.
+
+    :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="Screenshot mit den Optionen für den vertrauenswürdigen Start.":::
+
 15. Wählen Sie unten auf der Seite die Option **Überprüfen + erstellen** aus.
 16. Auf der Seite zum **Erstellen eines virtuellen Computers** werden die Details des virtuellen Computers angezeigt, den Sie bereitstellen möchten. Klicken Sie auf **Erstellen**, wenn Sie so weit sind.
 

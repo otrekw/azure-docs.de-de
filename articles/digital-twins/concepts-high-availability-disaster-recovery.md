@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 41edef58910fe2b772831ef083e5aca8bb52a321
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ee2bd4ab66b7a67be04c1a710caa12c57c705d19
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482267"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209965"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung: Azure Digital Twins
 
@@ -24,7 +24,7 @@ Azure Digital Twins unterstützt die folgenden Featureoptionen:
 * *Hochverfügbarkeit zwischen Regionen*: Integrierte Redundanz, um die Betriebszeit des Diensts zu optimieren.
 * *Regionsübergreifende Notfallwiederherstellung*: Failover zu einer geografisch gekoppelten Azure-Region im Falle eines unerwarteten Rechenzentrumsfehlers.
 
-Allgemeine Azure-Anleitungen zum Entwerfen von Hochverfügbarkeit/Notfallwiederherstellung finden Sie auch im Abschnitt [*Bewährte Methoden*](#best-practices).
+Allgemeine Azure-Anleitungen zum Entwerfen von Hochverfügbarkeit/Notfallwiederherstellung finden Sie auch im Abschnitt [Bewährte Methoden](#best-practices).
 
 ## <a name="intra-region-ha"></a>Regionale Hochverfügbarkeit
  
@@ -65,12 +65,12 @@ Beachten Sie, dass die in diesem Tool angezeigten Informationen nicht für eine 
 ## <a name="best-practices"></a>Bewährte Methoden
 
 Bewährte Methoden für Hochverfügbarkeit/Notfallwiederherstellung finden Sie in den folgenden Azure-Anleitungen zu diesem Thema: 
-* Der Artikel [*Geschäftskontinuität mit Azure – technische Dokumentation*](/azure/architecture/framework/resiliency/overview) bietet einen allgemeinen Überblick über Geschäftskontinuität und Notfallwiederherstellung. 
-* Das Dokument [*Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen*](/azure/architecture/framework/resiliency/backup-and-recovery) enthält Architekturanleitungen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
+* Der Artikel [Geschäftskontinuität mit Azure – technische Dokumentation](/azure/architecture/framework/resiliency/overview) bietet einen allgemeinen Überblick über Geschäftskontinuität und Notfallwiederherstellung. 
+* Das Dokument [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](/azure/architecture/framework/resiliency/backup-and-recovery) enthält Architekturanleitungen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
 Erfahren Sie mehr über die ersten Schritte mit Azure Digital Twins-Lösungen:
  
-* [*Was ist Azure Digital Twins?*](overview.md)
-* [*Schnellstart: Erkunden eines Beispielszenarios*](quickstart-azure-digital-twins-explorer.md)
+* [Was ist Azure Digital Twins?](overview.md)
+* [Schnellstart: Erkunden eines Beispielszenarios](quickstart-azure-digital-twins-explorer.md)

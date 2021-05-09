@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0c6f5dc55f7406aba7d6e3dc1a278b57fe4ec9ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 470d5efae68366b5cc96243bab4ebb8552771650
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721270"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600878"
 ---
 # <a name="configure-and-optimize-vms"></a>Konfigurieren und Optimieren von virtuellen Computern
 
@@ -124,7 +124,7 @@ Optional kann der WALinuxAgent zur maximalen Verfügbarkeit der VM-Ressource fü
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die [InfiniBand-Aktivierung](enable-infiniband.md) auf der InfiniBand-fähigen [H-Serie](../../sizes-hpc.md) und [N-Serie](../../sizes-gpu.md) virtueller Computer.
-- Erfahren Sie mehr über die Installation verschiedener [unterstützter MPI-Bibliotheken](setup-mpi.md) sowie ihre optimale Konfiguration auf den VMs.
+- Erfahren Sie mehr über die Installation und Ausführung verschiedener [unterstützter MPI-Bibliotheken](setup-mpi.md) auf den VMs.
 - Weitere Informationen finden Sie in den Artikeln [Übersicht über virtuelle Computer der HBv3-Serie](hbv3-series-overview.md) und [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md).
 - Informieren Sie sich über die neuesten Ankündigungen, HPC-Workloadbeispiele und Leistungsergebnisse in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

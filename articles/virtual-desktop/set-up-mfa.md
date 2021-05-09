@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/10/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7ebf38226ff725865104707a3f28e7ce51a86c31
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 719b4579d97992cdfc3563ccb72b31809569182c
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445651"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898259"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Aktivieren von Azure Multi-Factor Authentication für Windows Virtual Desktop
 
@@ -67,7 +67,7 @@ Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die
    > 
    > Wenn Sie Windows Virtual Desktop (klassisch) verwenden und die Richtlinie für bedingten Zugriff den gesamten Zugriff blockiert und nur Windows Virtual Desktop-App-IDs ausnimmt, können Sie das Problem beheben, indem Sie der Richtlinie die App-ID „9cdead84-a844-4324-93f2-b2e6bb768d07“ hinzufügen. Wenn Sie diese App-ID nicht hinzufügen, wird die Feedermittlung für Ressourcen von Windows Virtual Desktop (klassisch) blockiert.
 
-10. Wechseln Sie zu **Bedingungen** > **Client-Apps**, und wählen Sie dann aus, wo Sie die Richtlinie anwenden möchten:
+10. Wechseln Sie zu **Bedingungen** > **Client-Apps**. Wählen Sie unter **Konfigurieren** die Option **Ja** aus, und wählen Sie dann aus, wo die Richtlinie angewendet werden soll:
     
     - Aktivieren Sie **Browser**, wenn die Richtlinie auf den Webclient angewandt werden soll.
     - Aktivieren Sie **Mobile Apps und Desktopclients**, wenn die Richtlinie auf andere Clients angewandt werden soll.

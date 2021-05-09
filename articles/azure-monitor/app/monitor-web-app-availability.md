@@ -1,50 +1,27 @@
 ---
-title: Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites | Microsoft Docs
-description: Richten Sie Webtests in Application Insights ein. Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert.
+title: Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites - Azure Monitor
+description: Richten Sie Pingtests in Application Insights ein. Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert.
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/15/2021
 ms.reviewer: sdash
-ms.openlocfilehash: d7c610e374dcb7b97850d815ba8bb927cdebacfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60698862e26175425221940a4b69867cb414fe86
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012563"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598872"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Überwachen der Verfügbarkeit von Websites
 
-Nachdem Sie die Web-App/Website bereitgestellt haben, können Sie regelmäßige Tests einrichten, um die Verfügbarkeit und Reaktionszeit zu überwachen. [Azure Application Insights](./app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Außerdem kann dieser Dienst Sie warnen, wenn Ihre Anwendung nicht oder zu langsam reagieren sollte.
+Der Begriff „URL-Pingtest“ ist irreführend. Diese Tests setzen nämlich kein ICMP (Internet Control Message Protocol) ein, um die Verfügbarkeit der jeweiligen Website zu prüfen. Stattdessen verwenden sie erweiterte Funktionen von HTTP-Anforderungen, um zu überprüfen, ob ein Endpunkt reagiert. Außerdem wird die Leistung gemessen, die in Zusammenhang mit dieser Antwort steht, und es können benutzerdefinierte Erfolgskriterien festgelegt werden, die an erweiterte Features wie das Analysieren von abhängigen Anforderungen und das Zulassen von Wiederholungsversuchen gekoppelt sind.
 
-Sie können für jeden HTTP- oder HTTPS-Endpunkt, der über das öffentliche Internet zugänglich ist, Verfügbarkeitstests einrichten. Sie müssen keinerlei Änderungen an der Website vornehmen, die Sie testen. Sie müssen nicht einmal der Eigentümer der Website sein. Sie können die Verfügbarkeit einer REST-API testen, von der Ihr Dienst abhängig ist.
+Um einen Verfügbarkeitstest zu erstellen, müssen Sie eine vorhandene Application Insight-Ressource verwenden oder [eine Application Insights-Ressource erstellen.](create-new-resource.md)
 
-### <a name="types-of-availability-tests"></a>Arten von Verfügbarkeitstests:
+Öffnen Sie den Bereich „Verfügbarkeit“, und klicken Sie auf   **Test erstellen**, um Ihre erste Verfügbarkeitsanforderung zu erstellen.
 
-Es gibt drei Arten von Verfügbarkeitstests:
+:::image type="content" source="./media/monitor-web-app-availability/availability-create-test-001.png" alt-text="Screenshot: Erstellen eines Tests.":::
 
-* [URL-Pingtest](#create-a-url-ping-test): Dies ist ein einfacher Test, den Sie im Azure-Portal erstellen können.
-* [Multi-step web test (Mehrstufiger Webtest):](availability-multistep.md) Eine Aufzeichnung einer Sequenz von Webanforderungen, die wiedergegeben werden kann, um komplexere Szenarios zu testen. Mehrstufige Webtests werden in Visual Studio Enterprise erstellt und zur Ausführung im Portal hochgeladen.
-* [Custom Track Availability Tests (Benutzerdefinierte Tests zum Nachverfolgen der Verfügbarkeit):](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) Wenn Sie eine benutzerdefinierte Anwendung zum Ausführen von Verfügbarkeitstests erstellen möchten, können Sie die `TrackAvailability()`-Methode verwenden, um die Ergebnisse an Application Insights zu senden.
-
-**Sie können bis zu 100 Verfügbarkeitstests pro Application Insights-Ressource erstellen.**
-
-> [!IMPORTANT]
-> Sowohl der [URL-Pingtest](#create-a-url-ping-test) als auch der [mehrstufige Webtest](availability-multistep.md) basieren auf der DNS-Infrastruktur des öffentlichen Internet, um die Domänennamen der getesteten Endpunkte aufzulösen. Wenn Sie privates DNS verwenden, müssen Sie daher sicherstellen, dass jeder Domänenname des Tests auch durch die öffentlichen Domänennamenserver aufgelöst werden kann. Wenn dies nicht möglich ist, können Sie stattdessen [benutzerdefinierte Tests zum Nachverfolgen der Verfügbarkeit](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) verwenden.
-
-## <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
-
-Damit Sie einen Verfügbarkeitstest erstellen können, müssen Sie zunächst eine Application Insights-Ressource erstellen. Wenn Sie bereits eine Ressource erstellt haben, gehen Sie zum nächsten Abschnitt, [und erstellen Sie einen URL-Pingtest](#create-a-url-ping-test).
-
-Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Entwicklertools** > **Application Insights**, und [erstellen Sie eine Application Insights-Ressource](create-new-resource.md).
-
-## <a name="create-a-url-ping-test"></a>Erstellen eines URL-Pingtests
-
-Der Begriff „URL-Pingtest“ ist irreführend. Der Test setzt nämlich kein ICMP (Internet Control Message Protocol) ein, um die Verfügbarkeit der jeweiligen Website zu prüfen. Stattdessen verwendet er erweiterte Funktionen von HTTP-Anforderungen, um zu überprüfen, ob ein Endpunkt reagiert. Außerdem wird die Leistung gemessen, die in Zusammenhang mit dieser Antwort steht, und es können benutzerdefinierte Erfolgskriterien festgelegt werden, die an erweiterte Features wie das Analysieren von abhängigen Anforderungen und das Zulassen von Wiederholungsversuchen gekoppelt sind.
-
-Öffnen Sie den Bereich „Verfügbarkeit“, und klicken Sie auf **Test erstellen**, um Ihre erste Verfügbarkeitsanforderung zu erstellen.
-
-![Mindestens die URL der Website eintragen](./media/monitor-web-app-availability/availability-create-test-001.png)
-
-### <a name="create-a-test"></a>Erstellen eines Tests
+## <a name="create-a-test"></a>Erstellen eines Tests
 
 |Einstellung| Erklärung
 |----|----|----|
@@ -59,7 +36,7 @@ Der Begriff „URL-Pingtest“ ist irreführend. Der Test setzt nämlich kein IC
 > [!NOTE]
 > Es wird dringend empfohlen, Tests an mehreren Standorten auszuführen **(mindestens fünf)** . Dies dient dazu, Fehlalarme zu vermeiden, die durch vorübergehende Probleme an einem bestimmten Standort entstehen können. Darüber hinaus haben wir festgestellt, dass in einer optimalen Konfiguration die **Anzahl von Teststandorten dem Warnungsschwellenwert für Standorte + 2 entspricht**.
 
-### <a name="success-criteria"></a>Erfolgskriterien
+## <a name="success-criteria"></a>Erfolgskriterien
 
 |Einstellung| Erklärung
 |----|----|----|
@@ -67,18 +44,18 @@ Der Begriff „URL-Pingtest“ ist irreführend. Der Test setzt nämlich kein IC
 | **HTTP-Antwort** | Der zurückgegebene Statuscode, der als Erfolg gezählt wird. 200 ist der Code, der angibt, dass eine normale Webseite zurückgegeben wurde.|
 | **Inhaltsübereinstimmung** | Eine Zeichenfolge, z. B. „Willkommen!“ Wir vergewissern uns, dass in jeder Antwort eine exakte Übereinstimmung unter Berücksichtigung der Groß-und Kleinschreibung vorkommt. Dies muss eine Zeichenfolge in Klartext, ohne Platzhalter sein. Vergessen Sie nicht, diese zu aktualisieren, wenn sich der Seiteninhalt ändert. **Inhaltsübereinstimmungen werden nur für englische Zeichen unterstützt.** |
 
-### <a name="alerts"></a>Alerts
+## <a name="alerts"></a>Alerts
 
 |Einstellung| Erklärung
 |----|----|----|
 |**Near-realtime (Preview)** (Nahezu in Echtzeit (Vorschauversion)) | Es wird empfohlen, Warnungen zu verwenden, die nahezu in Echtzeit angezeigt werden. Diese Art von Warnung ist bereits vollständig konfiguriert, sobald Sie einen Verfügbarkeitstest erstellt haben.  |
 |**Schwellenwert für den Warnungsspeicherort**|Es wird ein Mindestwert von 3/5 Standorten empfohlen. Das optimale Verhältnis zwischen dem Schwellenwert für den Warnungsspeicherort und der Anzahl von Teststandorten lautet **Warnungsschwellenwert für Standort** = **Anzahl von Teststandorten -2, bei einer Mindestanzahl von fünf Teststandorten.**|
 
-### <a name="location-population-tags"></a>Auffüllungstags für den Standort
+## <a name="location-population-tags"></a>Auffüllungstags für den Standort
 
 Beim Bereitstellen eines URL-Pingtests für die Verfügbarkeit mithilfe von Azure Resource Manager können für das Attribut für den geografischen Standort die folgenden Auffüllungstags verwendet werden.
 
-#### <a name="azure-gov"></a>Azure Gov
+### <a name="azure-gov"></a>Azure Gov
 
 | Anzeigename   | Auffüllungsname     |
 |----------------|---------------------|
@@ -115,11 +92,11 @@ Verfügbarkeitstestergebnisse können sowohl in Zeilenansichten als auch in Punk
 
 Klicken Sie nach einigen Minuten auf **Aktualisieren**, um Ihre Testergebnisse anzuzeigen.
 
-![Screenshot: Seite „Verfügbarkeit“, auf der die Schaltfläche „Aktualisieren“ hervorgehoben ist](./media/monitor-web-app-availability/availability-refresh-002.png)
+:::image type="content" source="./media/monitor-web-app-availability/availability-refresh-002.png" alt-text="Screenshot: Seite „Verfügbarkeit“, auf der die Schaltfläche „Aktualisieren“ hervorgehoben ist":::
 
 Das Punktdiagramm zeigt Stichproben der Testergebnisse an, die Diagnosedetails zu Testschritten enthalten. Die Test-Engine speichert Diagnosedetails für Tests mit Fehlern. Für erfolgreiche Tests werden Diagnosedetails für eine Teilmenge der Ausführungen gespeichert. Bewegen Sie den Mauszeiger über einen der grünen oder roten Punkte, um den Test, den Testnamen und den Standort anzuzeigen.
 
-![Zeilenansicht](./media/monitor-web-app-availability/availability-scatter-plot-003.png)
+:::image type="content" source="./media/monitor-web-app-availability/availability-scatter-plot-003.png" alt-text="Zeilenansicht." border="false":::
 
 Wählen Sie einen bestimmten Test oder Standort aus, oder verringern Sie den Zeitraum, um weitere Ergebnisse um den gewünschten Zeitraum anzuzeigen. Verwenden Sie den Suchexplorer, um Ergebnisse von allen Ausführungen anzuzeigen, oder Analytics-Abfragen, um benutzerdefinierte Berichte für diese Daten auszuführen.
 
@@ -127,28 +104,29 @@ Wählen Sie einen bestimmten Test oder Standort aus, oder verringern Sie den Zei
 
 Wenn Sie einen Test bearbeiten, vorübergehend deaktivieren oder löschen möchten, klicken Sie auf die drei Punkte neben dem jeweiligen Testnamen. Es kann bis zu 20 Minuten dauern, bis Konfigurationsänderungen an alle Test-Agent weitergegeben werden.
 
-![Testdetails anzeigen Bearbeiten und Deaktivieren von Webtests](./media/monitor-web-app-availability/edit.png)
+:::image type="content" source="./media/monitor-web-app-availability/edit.png" alt-text="Testdetails anzeigen, Webtest bearbeiten und deaktivieren." border="false":::
 
 Eventuell möchten Sie Verfügbarkeitstests oder die damit verknüpften Warnungsregeln deaktivieren, während Sie Ihren Dienst warten.
 
 ## <a name="if-you-see-failures"></a>Anleitung zum Vorgehen bei Fehlern
 
-Klicken Sie auf einen roten Punkt.
+Einen roten Punkt auswählen.
 
-![Auf einen roten Punkt klicken](./media/monitor-web-app-availability/open-instance-3.png)
+:::image type="content" source="./media/monitor-web-app-availability/end-to-end.png" alt-text="Screenshot: Details der Registerkarte End-to-End-Transaktionen." border="false":::
 
 Aus einem Verfügbarkeitstestergebnis können Sie die Transaktionsdetails für alle Komponenten ablesen. Mögliche nächste Schritte:
 
+* Überprüfen Sie den Bericht zur Problembehandlung, um zu ermitteln, was möglicherweise dazu geführt hat, dass der Test fehlschlägt, obwohl Ihre Anwendung aber weiterhin verfügbar ist.
 * Untersuchen Sie die vom Server erhaltene Antwort.
 * Diagnostizieren Sie den Fehler mit korrelierten serverseitigen Telemetriedaten, die während der Verarbeitung des fehlerhaften Verfügbarkeitstests gesammelt wurden.
 * Protokollieren Sie in Git oder Azure Boards ein Problem oder ein Arbeitselement, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
 * Öffnen Sie das Webtestergebnis in Visual Studio.
 
-Weitere Informationen zur End-to-End-Transaktionsdiagnoseerfahrung finden Sie [hier](./transaction-diagnostics.md).
+Weitere Informationen zur End-to-End-Transaktionsdiagnose finden Sie in der Dokumentation zur [Transaktionsdiagnose](./transaction-diagnostics.md).
 
 Klicken Sie auf die Ausnahmezeile, um die Details der serverseitigen Ausnahme anzuzeigen, die zum Fehlschlagen des synthetischen Verfügbarkeitstest geführt hat. Sie können auch die [Debugmomentaufnahme](./snapshot-debugger.md) abrufen, um eine umfangreichere Diagnose auf Codeebene durchzuführen.
 
-![Serverseitige Diagnose](./media/monitor-web-app-availability/open-instance-4.png)
+:::image type="content" source="./media/monitor-web-app-availability/open-instance-4.png" alt-text="Serverseitige Diagnose.":::
 
 Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../essentials/metrics-getting-started.md) zwei wichtige Verfügbarkeitsmetriken abrufen:
 
@@ -160,12 +138,9 @@ Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../essent
 * [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Verfügbarkeitstests](./powershell.md#add-an-availability-test).
 * Richten Sie einen [Webhook](../alerts/alerts-webhooks.md) ein, der bei einer Warnung aufgerufen wird.
 
-## <a name="troubleshooting"></a>Problembehandlung
-
-[Artikel zur Problembehandlung](troubleshoot-availability.md) (Dedicated)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Availability Alerts (Verfügbarkeitswarnungen)](availability-alerts.md)
 * [Multi-step web tests (Mehrstufige Webtests)](availability-multistep.md)
-
+* [Problembehandlung](troubleshoot-availability.md)

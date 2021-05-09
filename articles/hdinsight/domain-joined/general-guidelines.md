@@ -4,12 +4,12 @@ description: Einige bewährte Methoden, mit denen die Bereitstellung und Verwalt
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 92ad8362f75cdf0613d4ee95f39c23aa6d4819bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57bf6d1773857b7627b8cea5b69d18e337e41427
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933572"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292844"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Allgemeine Informationen und Richtlinien für die Unternehmenssicherheit in Azure HDInsight
 
@@ -112,7 +112,7 @@ Verwenden Sie für jeden Cluster eine neue Ressourcengruppe, um zwischen Cluster
 [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) (Azure AD DS) stellt verwaltete Domänendienste bereit, z. B. Domänenbeitritt, Gruppenrichtlinie, LDAP (Lightweight Directory Access Protocol) und Kerberos-/NTLM-Authentifizierung, die mit Windows Server Active Directory vollständig kompatibel sind.
 
 Azure AD DS ist erforderlich, damit sichere Cluster einer Domäne beitreten können.
-HDInsight kann nicht von lokalen Domänencontrollern oder benutzerdefinierten Domänencontrollern abhängig sein, da dies zu viele Fehlerpunkte, eine gemeinsame Verwendung von Anmeldeinformationen, DNS-Berechtigungen usw. mit sich bringt. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure AD DS](../../active-directory-domain-services/faqs.md).
+HDInsight kann nicht von lokalen Domänencontrollern oder benutzerdefinierten Domänencontrollern abhängig sein, da dies zu viele Fehlerpunkte, eine gemeinsame Verwendung von Anmeldeinformationen, DNS-Berechtigungen usw. mit sich bringt. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure AD DS](../../active-directory-domain-services/faqs.yml).
 
 ### <a name="azure-ad-ds-instance"></a>Azure AD DS-Instanz
 

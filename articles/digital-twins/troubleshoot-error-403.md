@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: ad28b3300e9107c7f6d4b1987205583ef60ed658
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b49ded912037c8935b67e64d4e4bb09402576bc7
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100545699"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203629"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Fehler bei Service Request. Status: 403 (Unzulässig)
 
@@ -58,7 +58,7 @@ Wenn Sie ein Besitzer des Abonnements sind, können Sie diesen Befehl selbst aus
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-Weitere Informationen zu dieser Rollenanforderung und zum Zuweisungsvorgang finden Sie im [Abschnitt *Einrichten der Zugriffsberechtigungen für Ihren Benutzer*](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) unter *Gewusst wie: Einrichten einer Instanz und der Authentifizierung (CLI oder Portal)* .
+Weitere Informationen zu dieser Rollenanforderung und zum Zuweisungsvorgang finden Sie im Abschnitt [Einrichten der Zugriffsberechtigungen für Ihren Benutzer](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) unter *Gewusst wie: Einrichten einer Instanz und der Authentifizierung (CLI oder Portal)* .
 
 Wenn Sie bereits über diese Rollenzuweisung verfügen *und* eine Azure AD-App-Registrierung zur Authentifizierung einer Client-App verwenden, können Sie mit der nächsten Lösung fortfahren, falls diese Lösung das 403-Problem nicht gelöst hat.
 
@@ -86,12 +86,12 @@ Wählen Sie als Nächstes auf der Menüleiste *API-Berechtigungen* aus, um sich 
 
 #### <a name="fix-issues"></a>Beheben von Problemen
 
-Wenn etwas anders als beschrieben aussieht, befolgen Sie die Anweisungen zum Einrichten einer App-Registrierung unter [*Vorgehensweise: Erstellen einer App-Registrierung*](how-to-create-app-registration.md).
+Wenn etwas anders als beschrieben aussieht, befolgen Sie die Anweisungen zum Einrichten einer App-Registrierung unter [Vorgehensweise: Erstellen einer App-Registrierung](how-to-create-app-registration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie die Einrichtungsschritte zum Erstellen und Authentifizieren einer neuen Azure Digital Twins-Instanz:
-* [*Verwenden Einrichten einer Instanz und der Authentifizierung (CLI)*](how-to-set-up-instance-cli.md)
+* [Verwenden Einrichten einer Instanz und der Authentifizierung (CLI)](how-to-set-up-instance-cli.md)
 
 Informieren Sie sich weiter über die Sicherheit und Berechtigungen in Azure Digital Twins:
-* [*Konzepte: Sicherheit für Azure Digital Twins-Lösungen*](concepts-security.md)
+* [Konzepte: Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md)

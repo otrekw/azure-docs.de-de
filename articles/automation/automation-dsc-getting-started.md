@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 95072970004ae53663f130a78af36a84a6fab685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce6a33b569a86cd539de99264dd8e7f583559a6f
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051497"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018329"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Erste Schritte mit Azure Automation State Configuration
 
@@ -216,16 +216,7 @@ Sie können einen Knoten einer anderen Knotenkonfiguration als der ursprünglich
 
 ## <a name="unregister-a-node"></a>Aufheben der Registrierung eines Knotens
 
-Wenn ein Knoten nicht mehr von State Configuration verwaltet werden soll, können Sie seine Registrierung aufheben.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-1. Klicken Sie auf der Seite „Automation-Konto“ unter **Konfigurationsverwaltung** auf **State Configuration (DSC)** .
-1. Klicken Sie auf der Seite „State Configuration (DSC)“ auf die Registerkarte **Knoten**.
-1. Klicken Sie auf der Registerkarte **DSC-Knoten** auf den Namen des Knotens, dessen Registrierung Sie aufheben möchten.
-1. Klicken Sie im Bereich dieses Knotens auf **Registrierung aufheben**.
-
-    ![Screenshot der Seite „Knotendetails“ mit hervorgehobener Schaltfläche „Registrierung aufheben“](./media/automation-dsc-getting-started/UnregisterNode.png)
+Wenn ein Knoten nicht mehr von State Configuration verwaltet werden soll, können Sie seine Registrierung aufheben. Siehe [Entfernen einer Konfiguration und eines Knotens aus Automation State Configuration](./how-to/remove-desired-state-configuration-package.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

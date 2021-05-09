@@ -1,29 +1,25 @@
 ---
 title: Verwenden des Dashboards für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center
 description: Hier erfahren Sie, wie Sie gesetzliche Standards auf dem Dashboard für die Einhaltung gesetzlicher Bestimmungen in Security Center hinzufügen und entfernen.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: f1fe1f15d2a2a2a3da7a7978b2d7645db65beae1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738952"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146687"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
 Azure Security Center vergleicht die Konfiguration Ihrer Ressourcen kontinuierlich mit den Anforderungen von Branchenstandards, Vorschriften und Benchmarks. Das **Dashboard für die Einhaltung gesetzlicher Bestimmungen** bietet Erkenntnisse zu Ihrem Compliancestatus basierend auf der Erfüllung bestimmter Complianceanforderungen.
 
+> [!TIP]
+> Weitere Informationen zum Security Center-Dashboard zur Einhaltung gesetzlicher Bestimmungen finden Sie in den [häufig gestellten Fragen](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard).
 
 ## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Wie werden die Standards für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center dargestellt?
 
@@ -38,15 +34,17 @@ Microsoft überwacht die gesetzlichen Standards selbst und passt die Pakete im L
 
 ## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Welche Standards für die Einhaltung gesetzlicher Bestimmungen sind im Azure Security Center verfügbar?
 
-Standardmäßig ist jedem Abonnement der **Azure Security-Vergleichstest** zugewiesen. Hierbei handelt es sich um von Microsoft erstellte, Azure-spezifische Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction)
+Standardmäßig ist jedem Abonnement der **Azure Security-Vergleichstest** zugewiesen. Hierbei handelt es sich um von Microsoft erstellte, Azure-spezifische Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](/security/benchmark/azure/introduction)
 
 Sie können auch beispielsweise folgende Standards hinzufügen:
 
-- NIST SP 800-53 R4
+- NIST SP 800-53
 - SWIFT CSP CSCF-v2020
 - UK Official und UK NHS
 - Canada Federal PBMM
-- Azure CIS 1.1.0
+- Azure CIS 1.3.0
+- CMMC Level 3
+- Durch New Zealand ISM eingeschränkt
 
 Standards werden dem Dashboard hinzugefügt, sobald Sie verfügbar werden.
 
@@ -71,13 +69,15 @@ In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre
 
 1. Auf der Seite **Standards zur Einhaltung gesetzlicher Bestimmungen hinzufügen** können Sie nach verfügbaren Standards suchen, z. B.:
 
-    - **NIST SP 800-53 R4**
-    - **NIST SP 800 171 R2**
+    - **NIST SP 800-53**
+    - **NIST SP 800 171**
     - **SWIFT CSP CSCF v2020**
     - **UKO und UK NHS**
     - **Canada Federal PBMM**
     - **HIPAA HITRUST**
-    - **Azure CIS 1.1.0**
+    - **Azure CIS 1.3.0**
+    - **CMMC Level 3**
+    - **Durch New Zealand ISM eingeschränkt**
     
     ![Hinzufügen von Compliancestandards zum Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
@@ -122,6 +122,6 @@ In diesem Artikel haben Sie Informationen zum **Hinzufügen von Compliancestanda
 
 Verwandte Informationen finden Sie auf den folgenden Seiten:
 
-- [Einführung zum Azure Security-Vergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction)
+- [Einführung zum Azure Security-Vergleichstest](/security/benchmark/azure/introduction)
 - [Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md) – Erfahren Sie, wie Sie Ihre Daten über die Einhaltung gesetzlicher Vorschriften mit Security Center und externen Tools verfolgen und exportieren.
 - [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md)

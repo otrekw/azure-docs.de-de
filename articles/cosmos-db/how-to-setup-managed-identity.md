@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie verwaltete Identitäten mit Azure Active Dire
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/02/2021
+ms.date: 04/23/2021
 ms.author: thweiss
-ms.openlocfilehash: 30efaed09a400611861bdd3adeae1f650054b405
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3f33cc08fcb9f3c43d9da312ce9ff12d9b20d722
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106230854"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065293"
 ---
 # <a name="configure-managed-identities-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>Konfigurieren Sie verwaltete Identitäten mit Azure Active Directory für Ihr Azure Cosmos DB-Konto
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -64,6 +64,79 @@ Nachdem Ihr Azure Cosmos DB Konto erstellt oder aktualisiert wurde, wird die fol
     "tenantId": "<azure-ad-tenant-id>",
     "principalId": "<azure-ad-principal-id>"
 }
+```
+
+### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
+
+Um beim Erstellen eines neuen Azure Cosmos DB-Kontos eine systemseitig zugewiesene Identität zu aktivieren, fügen Sie die Option `--assign-identity` hinzu:
+
+```azurecli
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
+
+az cosmosdb create \
+    -n $accountName \
+    -g $resourceGroupName \
+    --locations regionName='West US 2' failoverPriority=0 isZoneRedundant=False \
+    --assign-identity
+```
+
+Sie können über den Befehl `az cosmosdb identity assign` auch einem vorhandenen Konto eine systemseitig zugewiesene Identität hinzufügen:
+
+```azurecli
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
+
+az cosmosdb identity assign \
+    -n $accountName \
+    -g $resourceGroupName
+```
+
+Nachdem Ihr Azure Cosmos DB-Konto erstellt oder aktualisiert wurde, können Sie die zugewiesene Identität mit dem Befehl `az cosmosdb identity show` abrufen:
+
+```azurecli
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
+
+az cosmosdb identity show \
+    -n $accountName \
+    -g $resourceGroupName
+```
+
+```json
+{
+    "type": "SystemAssigned",
+    "tenantId": "<azure-ad-tenant-id>",
+    "principalId": "<azure-ad-principal-id>"
+}
+```
+
+## <a name="remove-a-system-assigned-identity"></a>Entfernen einer systemseitig zugewiesenen Identität
+
+### <a name="using-an-azure-resource-manager-arm-template"></a>Verwenden einer Azure-Ressourcenmanager (ARM) Vorlage
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass Sie ein `apiVersion` oder `2021-03-15` höher verwenden, wenn Sie mit verwalteten Identitäten arbeiten.
+
+Legen Sie den `type` der Eigenschaft `identity` auf `None` fest, um eine systemseitig zugewiesene Identität aus Ihrem Azure Cosmos DB-Konto zu entfernen:
+
+```json
+"identity": {
+    "type": "None"
+}
+```
+
+### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
+
+Verwenden Sie den Befehl `az cosmosdb identity remove`, um eine systemseitig zugewiesene Identität aus Ihrem Azure Cosmos DB-Konto zu entfernen:
+
+```azurecli
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
+
+az cosmosdb identity remove \
+    -n $accountName \
+    -g $resourceGroupName
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
