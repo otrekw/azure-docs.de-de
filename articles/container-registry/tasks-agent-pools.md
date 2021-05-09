@@ -4,12 +4,12 @@ description: Richten Sie einen dedizierten Computepool (Agentpool) in Ihrer Regi
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 8b1f077d6216443ad267f8620f87882439cb355c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: c23d2ab866f621db27488860ab62a41765faef40
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284140"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763701"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Ausführen eines ACR Tasks mit einem dedizierten Agentpool
 
@@ -31,7 +31,7 @@ Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung ve
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
 - Taskagentpools unterstützen derzeit Linux-Knoten. Windows-Knoten werden zurzeit nicht unterstützt.
-- Taskagentpools sind als Vorschau in den folgenden Regionen verfügbar: „USA, Westen 2“, „USA, Süden-Mitte“, „USA, Osten 2“, „USA, Osten“, „USA, Mitte“, „Europa, Westen“, „Kanada, Mitte“, „USGov, Arizona“, „USGov, Texas“ und „USGov, Virginia“.
+- Taskagentpools sind als Vorschau in den folgenden Regionen verfügbar: „USA, Westen 2“, „USA, Süden-Mitte“, „USA, Osten 2“, „USA, Osten“, „USA, Mitte“, „Europa, Westen“, „Europa, Norden“, „Kanada, Mitte“, „USGov, Arizona“, „USGov, Texas“ und „USGov, Virginia“.
 - Für jede Registrierung hat das standardmäßige vCPU-Kontingent (Core) für alle Standard-Agentpools den Wert 16 und den Wert 0 für isolierte Agentpools. Öffnen Sie eine [Supportanfrage][open-support-ticket], um zusätzliche Zuordnungen zu erhalten.
 - Sie können zurzeit keine Aufgaben abbrechen, die in einem Agentpool ausgeführt werden.
 
@@ -185,11 +185,11 @@ Weitere Beispiele für die Erstellung und Wartung von Containerimages in der Clo
 [azure-cli]:           /cli/azure/install-azure-cli
 [open-support-ticket]: https://aka.ms/acr/support/create-ticket
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
-[az-configure]: /cli/azure#az-configure
-[az-acr-agentpool-create]: /cli/azure/acr/agentpool#az-acr-agentpool-create
-[az-acr-agentpool-update]: /cli/azure/acr/agentpool#az-acr-agentpool-update
-[az-acr-agentpool-show]: /cli/azure/acr/agentpool#az-acr-agentpool-show
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-configure]: /cli/azure#az_configure
+[az-acr-agentpool-create]: /cli/azure/acr/agentpool#az_acr_agentpool_create
+[az-acr-agentpool-update]: /cli/azure/acr/agentpool#az_acr_agentpool_update
+[az-acr-agentpool-show]: /cli/azure/acr/agentpool#az_acr_agentpool_show
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
 [create-reg-cli]: container-registry-get-started-azure-cli.md

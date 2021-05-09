@@ -1,14 +1,14 @@
 ---
 title: Importieren und Exportieren von Blaupausen mit PowerShell
 description: Erfahren Sie, wie Sie mit Blaupausendefinitionen als Code arbeiten. Verwenden Sie die Export- und Importbefehle für Freigabe, Quellcodeverwaltung und Verwaltung.
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: how-to
-ms.openlocfilehash: a5b1adda0b02e2e2490441c5958ca9334febc24c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e214d618173f072bc0688e15a2b170958abe0749
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919985"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323643"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Importieren und Exportieren von Blaupausendefinitionen mit PowerShell
 

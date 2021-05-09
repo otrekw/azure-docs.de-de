@@ -1,19 +1,19 @@
 ---
 title: Verkleinern einer privaten Cloud für Azure VMware Solution by CloudSimple
 description: Hier erfahren Sie, wie Sie eine private Cloud in CloudSimple dynamisch verkleinern, indem Sie einen Knoten aus einem vorhandenen vSphere-Cluster oder einen gesamten Cluster entfernen.
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 07/01/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a99b9b56f17b78a98f37d47dcefab26dd9c859de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cad88e2b151efb17516fb22a1132fe7d7825454e
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899132"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181092"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>Verkleinern einer privaten Cloud von CloudSimple
 

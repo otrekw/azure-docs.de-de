@@ -6,12 +6,12 @@ ms.subservice: ''
 ms.date: 01/27/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b497b0a8f34b4310e3f11beed982c4453fc79159
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 36f8b9d8fc890eb486ec59b972cc2fdf52ae0c80
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830824"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166053"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Behandeln von Problemen bei freigegebenen Ressourcen
 
@@ -97,20 +97,20 @@ Es ist keine allgemeine Anforderung, dass sich alle AzureRM- oder Az-Module im s
 
 Wenn der Updateprozess angehalten wird, fügen Sie den dem Skript **Update-AzureModules.ps1** den Parameter `SimultaneousModuleImportJobCount` hinzu und geben einen niedrigeren Wert als den Standardwert 10 an. Beginnen Sie beim Implementieren dieser Logik mit einem Wert von 3 oder 5. `SimultaneousModuleImportJobCount` ist ein Parameter des **Update-AutomationAzureModulesForAccount**-Systemrunbooks, das zum Aktualisieren der Azure-Module verwendet wird. Wenn Sie diese Anpassung vornehmen, dauert der Updateprozess länger, aber die Wahrscheinlichkeit, dass er vollständig abgeschlossen wird, ist höher. Das folgende Beispiel zeigt den Parameter und seine Position im Runbook:
 
- ```powershell
-         $Body = @"
-            {
-               "properties":{
-               "runbook":{
-                   "name":"Update-AutomationAzureModulesForAccount"
-               },
-               "parameters":{
-                    ...
-                    "SimultaneousModuleImportJobCount":"3",
-                    ... 
-               }
-              }
-           }
+```powershell
+$Body = @"
+   {
+      "properties":{
+      "runbook":{
+            "name":"Update-AutomationAzureModulesForAccount"
+      },
+      "parameters":{
+            ...
+            "SimultaneousModuleImportJobCount":"3",
+            ... 
+      }
+      }
+   }
 "@
 ```
 

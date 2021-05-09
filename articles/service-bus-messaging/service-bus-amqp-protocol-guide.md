@@ -2,13 +2,13 @@
 title: AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Microsoft Docs
 description: Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 8d346aeef74e1f67d3d525c061d40314ee5342aa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624488"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531011"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -368,11 +368,10 @@ Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werd
 
 | Tokentyp | Tokenbeschreibung | Texttyp | Notizen |
 | --- | --- | --- | --- |
-| amqp:jwt |JSON Web Token (JWT) |AMQP-Wert (Zeichenfolge) |Noch nicht verfügbar. |
-| amqp:swt |Einfaches Webtoken (Simple Web Token, SWT) |AMQP-Wert (Zeichenfolge) |Wird nur für von AAD/ACS ausgestellte SWTs unterstützt. |
+| jwt |JSON Web Token (JWT) |AMQP-Wert (Zeichenfolge) | |
 | servicebus.windows.net:sastoken |Service Bus-SAS-Token |AMQP-Wert (Zeichenfolge) |- |
 
-Mit Token werden Rechte gewährt. Service Bus kennt drei grundlegende Rechte: „Senden“ (Send) für das Senden, „Lauschen“ (Listen) für das Empfangen und „Verwalten“ (Manage) für das Ändern von Entitäten. Von AAD/ACS ausgestellte SWTs enthalten diese Rechte als Ansprüche. Service Bus-SAS-Token beziehen sich auf Regeln, die für den Namespace oder die Entität konfiguriert sind, und diese Regeln werden mit den Rechten konfiguriert. Das Signieren des Tokens mit dem Schlüssel, der der Regel zugeordnet ist, führt daher dazu, dass das Token die entsprechenden Rechte ausdrückt. Das Token, das einer Entität mithilfe von *put-token* zugeordnet wurde, ermöglicht dem verbundenen Client, gemäß den Tokenrechten mit der Entität zu interagieren. Für eine Verknüpfung, bei der der Client die Rolle des Absenders (*sender*) übernimmt, ist das Recht „Senden“ erforderlich. Für die Rolle des Empfängers (*receiver*) wird das Recht „Lauschen“ benötigt.
+Mit Token werden Rechte gewährt. Service Bus kennt drei grundlegende Rechte: „Senden“ (Send) für das Senden, „Lauschen“ (Listen) für das Empfangen und „Verwalten“ (Manage) für das Ändern von Entitäten. Service Bus-SAS-Token beziehen sich auf Regeln, die für den Namespace oder die Entität konfiguriert sind, und diese Regeln werden mit den Rechten konfiguriert. Das Signieren des Tokens mit dem Schlüssel, der der Regel zugeordnet ist, führt daher dazu, dass das Token die entsprechenden Rechte ausdrückt. Das Token, das einer Entität mithilfe von *put-token* zugeordnet wurde, ermöglicht dem verbundenen Client, gemäß den Tokenrechten mit der Entität zu interagieren. Für eine Verknüpfung, bei der der Client die Rolle des Absenders (*sender*) übernimmt, ist das Recht „Senden“ erforderlich. Für die Rolle des Empfängers (*receiver*) wird das Recht „Lauschen“ benötigt.
 
 Die Antwortnachricht verfügt über die folgenden *application-properties*-Werte:
 

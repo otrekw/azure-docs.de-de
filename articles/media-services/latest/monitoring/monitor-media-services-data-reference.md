@@ -7,78 +7,50 @@ manager: femila
 ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
-ms.date: 03/17/2021
-ms.openlocfilehash: 8908fd1acc64fb180121ac0b6a4dc38ce5a02572
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.date: 04/21/2021
+ms.openlocfilehash: 1fff4cdf24f9be245026757e18050aa121b4d62a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121165"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138857"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Datenreferenz zur Überwachung von Media Services
 
 In diesem Artikel werden die Daten behandelt, die für die Überwachung von Media Services nützlich sind. Weitere Informationen zu allen Plattformmetriken, die in Azure Monitor unterstützt werden, finden Sie unter [In Azure Monitor unterstützte Metriken](../../../azure-monitor/essentials/metrics-supported.md).
 
-## <a name="media-services-metrics"></a>Media Services-Metriken
+## <a name="metrics"></a>Metriken
 
 Metriken werden in regelmäßigen Abständen gesammelt, unabhängig davon, ob sich der Wert ändert oder nicht. Sie sind für Warnmeldungen gut geeignet, da sie häufig abgetastet werden können und eine Warnung mit relativ einfacher Logik schnell ausgelöst werden kann.
 
+
 Media Services unterstützt das Überwachen von Metriken für die folgenden Ressourcen:
 
-* Konto
-* Streamingendpunkt
+|Metriktyp | Ressourcenanbieter/Typnamespace<br/> und Link zu einzelnen Metriken |
+|-------|-----|
+| Media Services: Allgemein | [Allgemein](../../../azure-monitor/essentials/metrics-supported.md#microsoftmediamediaservices) |
+| Liveereignisse | [Microsoft.Media/mediaservices/liveEvents](../../../azure-monitor/essentials/metrics-supported.md#microsoftmediamediaservicesliveevents) 
+| Streamingendpunkte | [Microsoft.Media/mediaservices/streamingEndpoints](../../../azure-monitor/essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints), die für die [REST-API der Streamingendpunkte](/rest/api/media/streamingendpoints) relevant sind. 
 
-### <a name="account"></a>Konto
-
-Sie können die folgenden Kontometriken überwachen.
-
-|Metrikname|`Display name`|BESCHREIBUNG|
-|---|---|---|
-|AssetCount|Anzahl der Medienobjekte|Die Medienobjekte in Ihrem Konto.|
-|AssetQuota|Kontingent der Medienobjekte|Das Kontingent der Medienobjekte in Ihrem Konto.|
-|AssetQuotaUsedPercentage|Prozentsatz des verwendeten Kontingents der Medienobjekte|Der Prozentsatz des bereits verwendeten Kontingents der Medienobjekte.|
-|ContentKeyPolicyCount|Anzahl der Richtlinien für Inhaltsschlüssel|Die Richtlinien für Inhaltsschlüssel in Ihrem Konto.|
-|ContentKeyPolicyQuota|Kontingent der Richtlinien für Inhaltsschlüssel|Das Kontingent der Richtlinien für Inhaltsschlüssel in Ihrem Konto.|
-|ContentKeyPolicyQuotaUsedPercentage|Prozentsatz des Kontingents der Richtlinien für Inhaltsschlüssel|Der Prozentsatz des bereits verwendeten Kontingents der Richtlinien für Inhaltsschlüssel.|
-|StreamingPolicyCount|Anzahl der Streamingrichtlinien|Die Streamingrichtlinien in Ihrem Konto.|
-|StreamingPolicyQuota|Kontingent der Streamingrichtlinien|Das Kontingent der Streamingrichtlinien in Ihrem Konto.|
-|StreamingPolicyQuotaUsedPercentage|Prozentsatz des verwendeten Kontingents der Streamingrichtlinien|Der Prozentsatz des bereits verwendeten Kontingents der Streamingrichtlinien.|
 
 Informieren Sie sich außerdem über [Kontingente und Grenzwerte für Konten](../limits-quotas-constraints-reference.md).
 
-### <a name="streaming-endpoint"></a>Streamingendpunkt
-
-Die folgenden [Streamingendpunkte](/rest/api/media/streamingendpoints) von Media Services-Metriken werden unterstützt:
-
-|Metrikname|`Display name`|BESCHREIBUNG|
-|---|---|---|
-|Requests|Requests|Gibt die Gesamtzahl der HTTP-Anforderungen an, die vom Streamingendpunkt behandelt werden.|
-|Ausgehende Daten|Ausgehende Daten|Ausgehende Bytes gesamt pro Minute pro Streamingendpunkt.|
-|SuccessE2ELatency|End-to-End-Wartezeit bei Erfolg|Die Zeitspanne zwischen dem Empfang der Anforderung durch den Streamingendpunkt und dem Senden des letzten Bytes der Antwort.|
-|CPU-Auslastung| | CPU-Auslastung für Premium-Streamingendpunkte. Diese Daten stehen für Standard-Streamingendpunkte nicht zur Verfügung. |
-|Ausgangsbandbreite | | Ausgangsbandbreite in Bits pro Sekunde.|
 
 ## <a name="metric-dimensions"></a>Metrikdimensionen
 
 Weitere Informationen zu Metrikdimensionen finden Sie unter [Mehrdimensionale Metriken](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
-<!--**PLACEHOLDER** for dimensions table.-->
+Media Services umfasst die folgenden Metrikdimensionen.  Sie sind selbsterklärend, basierend auf den Metriken, die sie unterstützen.  Weitere Informationen finden Sie über die oben angegebenen [Metriklinks](#metrics).   
+- OutputFormat
+- HttpStatusCode 
+- ErrorCode 
+- TrackName 
 
 ## <a name="resource-logs"></a>Ressourcenprotokolle
 
-## <a name="media-services-diagnostic-logs"></a>Media Services-Diagnoseprotokolle
+Ressourcenprotokolle liefern regelmäßig erfasste umfassende Daten zum Betrieb einer Azure-Ressource. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../../azure-monitor/essentials/platform-logs-overview.md).
 
-Diagnoseprotokolle liefern regelmäßig umfassende Daten zum Betrieb einer Azure-Ressource. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../../azure-monitor/essentials/platform-logs-overview.md).
-
-Media Services unterstützt die folgenden Diagnoseprotokolle:
-
-* Schlüsselübermittlung
-
-### <a name="key-delivery"></a>Schlüsselübermittlung
-
-|Name|BESCHREIBUNG|
-|---|---|
-|Dienstanforderung zur Schlüsselübermittlung|Protokolle, die die wichtigsten Informationen zur Dienstanforderung für die Schlüsselübermittlung anzeigen. Weitere Informationen finden Sie unter [Schemas](monitor-media-services-data-reference.md).|
+Media Services unterstützt die folgenden Ressourcenprotokolle: [Microsoft.Media/mediaservices](../../../azure-monitor/essentials/resource-logs-categories.md#microsoftmediamediaservices)
 
 ## <a name="schemas"></a>Schemas
 
