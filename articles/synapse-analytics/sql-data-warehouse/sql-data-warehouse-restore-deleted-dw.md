@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7264791654bf1b646338f0d429930b63f0cc3a06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b85e16d546989200adbfc37c2ef656022ad87cef
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96449924"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163461"
 ---
 # <a name="restore-a-deleted-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Wiederherstellen eines gelöschten dedizierten SQL-Pools (früher SQL Data Warehouse) in Azure Synapse Analytics
 
@@ -43,7 +43,7 @@ Mit dem Cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqlda
 7. Überprüfen Sie, ob die wiederhergestellte Data Warehouse-Instanz online ist.
 8. Nach Abschluss der Wiederherstellung können Sie Ihre wiederhergestellte Data Warehouse-Instanz konfigurieren. Befolgen Sie hierzu die Anleitung [Konfigurieren der Datenbank nach der Wiederherstellung](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
-```Powershell
+```powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net

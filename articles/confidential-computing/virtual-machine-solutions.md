@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8621dc8cfc10ab44ecb358a40fdae1a1b2081734
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 580c53f311bc8ee70e974df2bc4111e6361d06f6
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566582"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818960"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Lösungen auf virtuellen Azure-Computern
 
@@ -66,7 +66,7 @@ Folgen Sie einem Tutorial zum Schnellstart, um eine VM der DCsv2-Serie in wenige
   
 - **Größenänderung:** Aufgrund ihrer speziellen Hardware können Sie die Größe von Confidential Computing-Instanzen nur innerhalb der gleichen Größenfamilie anpassen. So können Sie beispielsweise die Größe einer VM der DCsv2-Serie nur in eine andere Größe der DCsv2-Serie ändern. Eine Änderung von einer Nicht-Confidential Computing-Größe in eine Confidential Computing-Größe wird nicht unterstützt.  
 
-- **Image**: Um Unterstützung für Intel Software Guard Extension (Intel SGX) auf Confidential Computing-Instanzen zu bieten, müssen alle Bereitstellungen auf Images der Generation 2 erfolgen. Azure Confidential Computing unterstützt Workloads, die unter Ubuntu 18.04 Gen 2, Ubuntu 16.04 Gen 2 und Windows Server 2019 Gen 2 und Windows Server 2016 Gen 2 ausgeführt werden. Weitere Informationen zu unterstützten und nicht unterstützten Szenarien finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../virtual-machines/generation-2.md). 
+- **Image**: Um Unterstützung für Intel Software Guard Extension (Intel SGX) auf Confidential Computing-Instanzen zu bieten, müssen alle Bereitstellungen auf Images der Generation 2 erfolgen. Azure Confidential Computing unterstützt Workloads, die unter Ubuntu 18.04 Gen 2, Ubuntu 20.04 Gen 2 und Windows Server 2019 Gen 2 sowie Windows Server 2016 Gen 2 ausgeführt werden. Weitere Informationen zu unterstützten und nicht unterstützten Szenarien finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../virtual-machines/generation-2.md). 
 
 - **Speicher**: Datenträger für Azure Confidential Computing-VMs und kurzlebige Betriebssystemdatenträger befinden sich auf NVMe-Datenträgern. Instanzen unterstützen ausschließlich SSD Premium- und SSD Standard- und keine SSD Ultra- oder HDD Standard-Datenträger. Die VM-Größe **DC8_v2** unterstützt nicht Storage Premium. 
 
@@ -122,10 +122,10 @@ Unter **properties** müssen Sie zudem unter **storageProfile** auf ein Image ve
         "sku": "18_04-lts-gen2",
         "version": "latest"
       },
-      "16_04-lts-gen2": {
+      "20_04-lts-gen2": {
         "offer": "UbuntuServer",
         "publisher": "Canonical",
-        "sku": "16_04-lts-gen2",
+        "sku": "20_04-lts-gen2",
         "version": "latest"
       }
 ```

@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.openlocfilehash: bfb4db5d3ebf69f9c7f552c175d33a8b817d1562
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c94bb23f5d514fef5cdacb855657efdf5219631
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595139"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714738"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Löschen eines Azure Migrate-Projekts
 
@@ -49,7 +49,9 @@ Diese Tabelle enthält eine Übersicht über die Ressourcen, die für die Ermitt
 > [!NOTE]
 > Löschen Sie den Schlüsseltresor mit Vorsicht, da er Sicherheitsschlüssel enthalten kann.
 
-### <a name="vmwarephysical-server"></a>VMware/physischer Server
+### <a name="projects-with-public-endpoint-connectivity"></a>Projekte mit Verbindungen über öffentliche Endpunkte
+
+#### <a name="vmwarephysical-server"></a>VMware/physischer Server
 
 **Ressource** | **Typ**
 --- | ---
@@ -63,9 +65,9 @@ migrateappligwsa* | Speicherkonto
 migrateapplilsa* | Speicherkonto
 migrateapplicsa* | Speicherkonto
 migrateapplikv* | Schlüsseltresor
-migrateapplisbns16041 | Service Bus- Namespace
+migrateapplisbns* | Service Bus- Namespace
 
-### <a name="hyper-v-vm"></a>Virtueller Hyper-V-Computer 
+#### <a name="hyper-v-vm"></a>Virtueller Hyper-V-Computer
 
 **Ressource** | **Typ**
 --- | ---
@@ -74,6 +76,50 @@ migrateapplisbns16041 | Service Bus- Namespace
 HyperV*kv | Schlüsseltresor
 HyperV*Site | Microsoft.OffAzure/HyperVSites
 "ProjectName"-MigrateVault-* | Recovery Services-Tresor
+
+<br/>
+In den folgenden Tabellen sind die Ressourcen zusammengefasst, die von Azure Migrate zum Ermitteln, Bewerten und Migrieren von Servern über ein privates Netzwerk mithilfe von [Azure Private Link](./how-to-use-azure-migrate-with-private-endpoints.md) erstellt werden.
+
+### <a name="projects-with-private-endpoint-connectivity"></a>Projekte mit Verbindungen über private Endpunkte
+
+#### <a name="vmware-vms---agentless-migrations"></a>VMware-VMs: Migrationen ohne Agent
+
+**Typ** | **Ressource** | **Privater Endpunkt <br/>** |
+--- | --- | ---
+Microsoft.Migrate/migrateprojects | "ProjectName" | "ProjectName"\*pe 
+Ermittlungsstandort (Hauptstandort) | "ProjectName"*mastersite | "ProjectName"\*mastersite\*pe 
+Microsoft.Migrate/assessmentProjects | "ApplianceName"*project | "ApplianceName"\*project\*pe 
+Schlüsseltresor | "ProjectName"*kv | "ProjectName"\*kv\*pe
+Microsoft.OffAzure/VMwareSites | "ApplianceName"*site | Nicht verfügbar
+Recovery Services-Tresor | "ApplianceName"*vault | Nicht verfügbar
+Speicherkonto | "ApplianceName"*usa | "ApplianceName"\*usa\*pe
+Recovery Services-Tresor | "ProjectName"-MigrateVault-* | Nicht verfügbar
+Speicherkonto | migrateappligwsa* | Nicht verfügbar
+Speicherkonto | migrateapplilsa* | Nicht verfügbar
+Schlüsseltresor | migrateapplikv* | Nicht verfügbar
+Service Bus- Namespace | migrateapplisbns* | Nicht verfügbar
+
+#### <a name="hyper-v-vms"></a>Virtuelle Hyper-V-Computer 
+
+**Typ** | **Ressource** | **Privater Endpunkt <br/>** |
+--- | --- | ---
+Microsoft.Migrate/migrateprojects | "ProjectName" | "ProjectName"\*pe 
+Ermittlungsstandort (Hauptstandort) | "ProjectName"*mastersite | "ProjectName"\*mastersite\*pe 
+Microsoft.Migrate/assessmentProjects | "ApplianceName"*project | "ApplianceName"\*project\*pe 
+Schlüsseltresor | "ProjectName"*kv | "ProjectName"\*kv\*pe
+Microsoft.OffAzure/HyperVSites | "ApplianceName"*site | Nicht verfügbar
+Recovery Services-Tresor | "ProjectName"-MigrateVault-* | "ProjectName"-MigrateVault-*pe
+
+#### <a name="physical-servers--aws-vms--gcp-vms"></a>Physische Server/AWS-VMs/GCP-VMs 
+
+**Typ** | **Ressource** | **Privater Endpunkt <br/>** |
+--- | --- | ---
+Microsoft.Migrate/migrateprojects | "ProjectName" | "ProjectName"\*pe 
+Ermittlungsstandort (Hauptstandort) | "ProjectName"*mastersite | "ProjectName"\*mastersite\*pe 
+Microsoft.Migrate/assessmentProjects | "ApplianceName"*project | "ApplianceName"\*project\*pe 
+Schlüsseltresor | "ProjectName"*kv | "ProjectName"\*kv\*pe
+Microsoft.OffAzure/serversites | "ApplianceName"*site | Nicht verfügbar
+Recovery Services-Tresor | "ProjectName"-MigrateVault-* | "ProjectName"-MigrateVault-*pe
 
 
 ## <a name="next-steps"></a>Nächste Schritte

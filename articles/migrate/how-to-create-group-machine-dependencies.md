@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 0d935cac68fc1b9e8d97a875c4b6e48078324fb8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6ded5d4ed8c2a55939bba908a05adbd2dea2ccbf
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143609"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714774"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 
@@ -55,7 +55,7 @@ In diesem Artikel wird das Einrichten der agentbasierten Abhängigkeitsanalyse i
     ![Hinzufügen eines neuen Arbeitsbereichs](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 > [!Note]
-> [Erfahren Sie](../azure-monitor/logs/private-link-security.md), wie Sie den OMS-Arbeitsbereich für Verbindungen über private Endpunkt konfigurieren.  
+> [Erfahren Sie](https://docs.microsoft.com/azure/azure-monitor/logs/private-link-security), wie Sie den OMS-Arbeitsbereich für Verbindungen über private Endpunkt konfigurieren.  
 
 ## <a name="download-and-install-the-vm-agents"></a>Herunterladen und Installieren der VM-Agents
 

@@ -3,12 +3,12 @@ title: Beschleunigen von Warnungsworkflows
 description: Verbessern Sie Warnungs- und Incidentworkflows.
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.openlocfilehash: c12d1135b7a7bc87a38a609aeeb6ada8caa9a25e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ff6f1fec17a190a8af8bf7fdf6f2e13b078dd5d
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779119"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204547"
 ---
 # <a name="accelerate-alert-workflows"></a>Beschleunigen von Warnungsworkflows
 
@@ -105,7 +105,7 @@ Warnungsgruppen sind vordefiniert. Weitere Informationen zu Warnungen, die mit W
 
 ## <a name="customize-alert-rules"></a>Anpassen von Warnungsregeln
 
-Verwenden Sie benutzerdefinierte Warnungsregeln, um die für Sie interessanten Aktivitäten genauer einzukreisen. 
+Verwenden Sie benutzerdefinierte Warnungsregeln, um die für Sie interessanten Aktivitäten genauer einzukreisen.
 
 Sie können benutzerdefinierte Warnungsregeln basierend auf Folgendem hinzufügen:
 
@@ -129,7 +129,7 @@ Die Warnmeldung gibt an, dass eine benutzerdefinierte Regel die Warnung ausgelö
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/customized-alerts-screen.png" alt-text="Screenshot: Benutzerdefinierte Warnungen":::
 
-So erstellen Sie eine benutzerdefinierte Warnungsregel:
+**So erstellen Sie eine benutzerdefinierte Warnungsregel:**
 
 1. Wählen Sie im Seitenmenü eines Sensors **Benutzerdefinierte Warnungen** aus.
 1. Wählen Sie das Pluszeichen ( **+** ) aus, um eine Regel zu erstellen.

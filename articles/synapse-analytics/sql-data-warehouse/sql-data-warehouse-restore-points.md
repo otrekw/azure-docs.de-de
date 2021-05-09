@@ -11,12 +11,12 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 097a3132208eee98b3f95291e414263e637bc265
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60fe76c4321b510cd5881e6d92d2deaf10ad687e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96545586"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163371"
 ---
 # <a name="user-defined-restore-points-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Benutzerdefinierte Wiederherstellungspunkte für einen dedizierten SQL-Pool (früher SQL DW)
 
@@ -32,7 +32,7 @@ Verwenden Sie zum Erstellen eines benutzerdefinierten Wiederherstellungspunkts d
 4. Wählen Sie das Abonnement aus, in dem die wiederherzustellende Datenbank enthalten ist.
 5. Erstellen Sie einen Wiederherstellungspunkt für eine sofortige Kopie Ihrer Data Warehouse-Instanz.
 
-```Powershell
+```powershell
 
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
@@ -46,12 +46,11 @@ Select-AzSubscription -SubscriptionName $SubscriptionName
 
 # Create a restore point of the original database
 New-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -RestorePointLabel $Label
-
 ```
 
 6. Sehen Sie sich die Liste aller vorhandenen Wiederherstellungspunkte an.
 
-```Powershell
+```powershell
 # List all restore points
 Get-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 ```

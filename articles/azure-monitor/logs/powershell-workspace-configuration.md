@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: a1abe79b4ab1caad04a088f659c0afceb2668eac
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ed34e8f253c2d53a850b082f22774722e6143189
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106920"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314713"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs in Azure Monitor mithilfe von PowerShell
 Dieser Artikel enthält zwei Codebeispiele, die zeigen, wie ein Log Analytics-Arbeitsbereich in Azure Monitor erstellt und konfiguriert wird.  
@@ -213,7 +214,7 @@ Im obigen Beispiel wurde regexDelimiter als „\\n“ für den Zeilenumbruch def
 ## <a name="troubleshooting"></a>Problembehandlung
 Wenn Sie einen Arbeitsbereich erstellen, der in den letzten 14 Tagen gelöscht wurde und sich im [Zustand des vorläufigen Löschens](../logs/delete-workspace.md#soft-delete-behavior) befindet, kann der Vorgang je nach Arbeitsbereichskonfiguration ein anderes Ergebnis aufweisen:
 1. Wenn Sie denselben Arbeitsbereichsnamen, dieselbe Ressourcengruppe, dasselbe Abonnement und dieselbe Region wie beim gelöschten Arbeitsbereich angeben, wird der Arbeitsbereich einschließlich Daten, Konfiguration und verbundener Agents wiederhergestellt.
-2. Der Arbeitsbereichsname muss innerhalb einer Ressourcengruppe eindeutig sein. Bei Verwendung eines bereits vorhandenen Arbeitsbereichsnamens wird die Fehlermeldung *Der Arbeitsbereichsname „Arbeitsbereichsname“ ist nicht eindeutig* oder ein *Konflikt* angezeigt. Dies gilt auch bei vorläufig gelöschten Elementen Ihrer Ressourcengruppe. Wenn Sie das vorläufige Löschen außer Kraft setzen, den Arbeitsbereich dauerhaft löschen und einen neuen, gleichnamigen Arbeitsbereich erstellen möchten, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:
+2. Der Arbeitsbereichsname muss innerhalb einer Ressourcengruppe eindeutig sein. Wenn Sie einen bereits vorhandenen Arbeitsbereichsnamen verwenden, wird Ihnen die Fehlermeldung *Der Arbeitsbereichsname „Arbeitsbereichsname“ ist nicht eindeutig* oder ein *Konflikt* angezeigt. Dies trifft auch auf vorläufig gelöschte Elemente in Ihrer Ressourcengruppe zu. Wenn Sie das vorläufige Löschen außer Kraft setzen, den Arbeitsbereich dauerhaft löschen und einen neuen, gleichnamigen Arbeitsbereich erstellen möchten, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:
    * [Wiederherstellen](../logs/delete-workspace.md#recover-workspace) Ihres Arbeitsbereichs
    * [Dauerhaftes Löschen](../logs/delete-workspace.md#permanent-workspace-delete) Ihres Arbeitsbereichs
    * Erstellen eines neuen Arbeitsbereichs mit demselben Arbeitsbereichsnamen

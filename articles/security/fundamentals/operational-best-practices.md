@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 86874a60d48ddcbdaca5ae779ad554ee58cc233b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6634a536828b3c19d771d135fdb3a1224d3dfdf3
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498845"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717421"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
@@ -122,7 +122,7 @@ Anhand der Sicherheitsbewertung, die auf CIS-Steuerelementen (Center for Interne
 **Detail**: Verwenden Sie [Azure Monitor zum Sammeln und Exportieren von Daten](../../azure-monitor/overview.md#integrate-and-export-data). Diese Vorgehensweise ist wichtig, damit Sicherheitsincidents untersucht werden können. Außerdem ist die Aufbewahrung von Onlineprotokollen beschränkt. Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Datenquellen](../../sentinel/connect-data-sources.md).
 
 **Bewährte Methode**: Beschleunigen Sie Ihre Untersuchungs- und Ermittlungsprozesse, und verringern Sie falsch positive Ergebnisse durch Integration von Funktionen für Endpoint Detection and Response (EDR) in Ihre Untersuchung von Angriffen.   
-**Detail**: [Aktivieren Sie die Integration von Microsoft Defender für den Endpunkt](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) über Ihre Security Center-Sicherheitsrichtlinie. Ziehen Sie die Verwendung von Azure Sentinel zur Ermittlung von Bedrohungen und für die Reaktion auf Incidents in Betracht.
+**Detail**: [Aktivieren Sie die Integration von Microsoft Defender für den Endpunkt](../../security-center/security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration) über Ihre Security Center-Sicherheitsrichtlinie. Ziehen Sie die Verwendung von Azure Sentinel zur Ermittlung von Bedrohungen und für die Reaktion auf Incidents in Betracht.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Szenariobasierte End-to-End-Netzwerküberwachung
 Kunden erstellen ein End-to-End-Netzwerk in Azure, indem sie verschiedene Netzwerkressourcen wie z.B. virtuelle Netzwerke, ExpressRoute, Application Gateway und Load Balancer miteinander kombinieren. Überwachung steht für jede der Netzwerkressourcen zur Verfügung.

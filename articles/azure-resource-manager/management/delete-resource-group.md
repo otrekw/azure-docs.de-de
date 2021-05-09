@@ -3,13 +3,13 @@ title: Löschen von Ressourcengruppen und Ressourcen
 description: Beschreibt, wie Ressourcengruppen und Ressourcen gelöscht werden. Es wird beschrieben, in welcher Reihenfolge Azure Resource Manager das Löschen von Ressourcen beim Löschen einer Ressourcengruppe ausführt. Sie erhalten Informationen zu den Antwortcodes und dazu, wie Resource Manager anhand der Codes bestimmt, ob die Löschung erfolgreich war.
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.custom: seodec18
-ms.openlocfilehash: 3c062c2f775e145347129f24b201748ee517daf4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: ccf5a9b1fac50dbf96d648acbf625b360bafb249
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768667"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315235"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Löschen von Ressourcengruppen und Ressourcen mit Azure Resource Manager
 

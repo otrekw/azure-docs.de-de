@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e0fbd0e49b1ac80161d0447d2f75a9cc03844abb
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 011eb74158d9e004aca04c595e5cfe4b76d3cb51
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130123"
+ms.locfileid: "108163353"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>Migration: SQL Server zu einer Azure Arc-fähigen SQL Managed Instance-Instanz
 
@@ -22,7 +22,7 @@ In diesem Szenario werden Sie durch die Schritte zum Migrieren einer Datenbank v
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="use-azure-blob-storage"></a>Verwendung von Azure Blob Storage 
+## <a name="use-azure-blob-storage"></a>Verwendung von Azure Blob Storage
 
 Verwenden Sie Azure Blob Storage für die Migration zu einer Azure Arc-fähigen SQL Managed Instance-Instanz.
 
@@ -133,10 +133,10 @@ Diese Methode veranschaulicht, wie Sie mithilfe einer beliebigen Methode eine Si
 
 Sichern Sie die SQL Server-Datenbank in Ihrem lokalen Dateipfad wie eine beliebige typische SQL Server-Sicherung auf einem Datenträger:
 
- ```sql
+```sql
 BACKUP DATABASE Test
 TO DISK = 'c:\tmp\test.bak'
-WITH FORMAT, MEDIANAME = 'Test’ ;
+WITH FORMAT, MEDIANAME = 'Test' ;
 GO
 ```
 
@@ -146,7 +146,7 @@ Suchen Sie den Namen des Pods, in dem die SQL-Instanz bereitgestellt wird. Diese
 
 Rufen Sie die Liste aller Pods ab, indem Sie folgenden Befehl ausführen:
 
- ```console
+```console
 kubectl get pods -n <namespace of data controller>
 ```
 
@@ -154,7 +154,7 @@ Beispiel:
 
 Kopieren Sie die Sicherungsdatei aus dem lokalen Speicher in den SQL-Pod im Cluster.
 
- ```console
+```console
 kubectl cp <source file location> <pod name>:var/opt/mssql/data/<file name> -n <namespace name>
 
 #Example:
@@ -186,7 +186,6 @@ WITH MOVE 'test' to '/var/opt/mssql/data/test.mdf'
 ,STATS = 5;  
 GO
 ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

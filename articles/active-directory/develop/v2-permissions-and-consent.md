@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 04/14/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: bdcfb0adf2c92fa6e084c2efbc2e5c066a3e3ede
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2a975a0aba06ecfd010fe328ef6c8cda75290f2b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305853"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515582"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
@@ -43,11 +43,7 @@ Aufgrund dieser Arten von Berechtigungsdefinitionen kann die Ressource die Daten
 
 Die Unterteilung der Funktionen einer Ressource in kleinere Berechtigungssätze ermöglicht die Erstellung von Drittanbieter-Apps, von denen nur die spezifischen Berechtigungen angefordert werden, die diese Apps für ihr jeweilige Funktion benötigen. Benutzer und Administratoren können erkennen, auf welche Daten die App zugreifen kann. Und sie können mit höherer Wahrscheinlichkeit davon ausgehen, dass die App keine böswilligen Absichten verfolgt. Entwickler sollten sich immer an das Prinzip der geringsten Rechte halten und nur die Berechtigungen anfordern, die für die Funktion ihrer Anwendungen erforderlich sind.
 
-In OAuth 2.0 werden diese Arten von Berechtigungssätzen *Bereiche* genannt. Oftmals werden sie auch als *Berechtigungen* bezeichnet. In Microsoft Identity Platform wird eine Berechtigung als Zeichenfolgenwert dargestellt. Im Beispiel von Microsoft Graph lautet der Zeichenfolgenwert für die einzelnen Berechtigungen wie folgt:
-
-* Lesen des Kalenders eines Benutzers mit `Calendars.Read`
-* Schreiben in den Kalender eines Benutzers mit `Calendars.ReadWrite`
-* Senden von E-Mails als Benutzer mit `Mail.Send`
+In OAuth 2.0 werden diese Arten von Berechtigungssätzen *Bereiche* genannt. Oftmals werden sie auch als *Berechtigungen* bezeichnet. In Microsoft Identity Platform wird eine Berechtigung als Zeichenfolgenwert dargestellt. Eine App fordert die erforderlichen Berechtigungen an, indem sie die Berechtigung im `scope` -Anforderungsparameter angibt. Identity Platform unterstützt mehrere klar definierte OpenID Connect-Bereiche sowie ressourcenbasierte Berechtigungen (jede Berechtigung wird durch Anfügen des [Berechtigungswerts](#openid-connect-scopes) an den Bezeichner oder Anwendungs-ID-URI der Ressource angegeben). Beispielsweise wird die `https://graph.microsoft.com/Calendars.Read`-Berechtigungszeichenfolge verwendet, um die Berechtigung zum Lesen von Benutzerkalendern in der Microsoft Graph anzufordern.
 
 Eine App fordert diese Berechtigungen meist durch Angabe der Bereiche in Anforderungen an den Microsoft Identity Platform-Autorisierungsendpunkt an. Bestimmte erhöhte Berechtigungen können jedoch nur mit der Einwilligung des Administrators gewährt werden. Sie können unter Verwendung des [Endpunkts für die Administratoreinwilligung](#admin-restricted-permissions) angefordert/gewährt werden. Lesen Sie weiter, um mehr zu erfahren.
 
@@ -217,7 +213,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Parameter        | Bedingung        | BESCHREIBUNG                                                                                |
+| Parameter        | Bedingung        | Beschreibung                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Erforderlich | Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Er kann als GUID oder als Anzeigename bereitgestellt werden. Alternativ kann er generisch mit Organisationen referenziert werden, wie im Beispiel zu sehen. Verwenden Sie nicht „Allgemein“, da persönliche Konten die Administratoreinwilligung nur im Kontext eines Mandanten bereitstellen können. Verwenden Sie nach Möglichkeit die Mandanten-ID, um die bestmögliche Kompatibilität mit persönlichen Konten zu gewährleisten, die Mandanten verwalten. |
 | `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App [im Azure-Portal unter „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |

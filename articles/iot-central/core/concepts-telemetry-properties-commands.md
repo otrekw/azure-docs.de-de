@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 995f4670b17d55fe04d5c30a834ea4be576a8348
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 11bfe1fbb9b0ba7c38eb946918b04d1568d2d1da
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106489977"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108000996"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetrie-, Eigenschaften- und Befehlsnutzlasten
 
@@ -1042,11 +1042,20 @@ Wenn das Gerät die Verarbeitung der Anforderung abgeschlossen hat, sollte es ei
 
 ### <a name="offline-commands"></a>Offlinebefehle
 
-In der IOT Central-Webbenutzeroberfläche können Sie die Option **Warteschlange (falls offline)** für einen Befehl auswählen. Offlinebefehle sind unidirektionale Benachrichtigungen von Ihrer Lösung an ein Gerät, die übermittelt werden, sobald das Gerät eine Verbindung herstellt. Offlinebefehle können Anforderungsparameter aufweisen, geben aber keine Antwort zurück.
+In der IOT Central-Webbenutzeroberfläche können Sie die Option **Warteschlange (falls offline)** für einen Befehl auswählen. Offlinebefehle sind unidirektionale Benachrichtigungen von Ihrer Lösung an ein Gerät, die übermittelt werden, sobald das Gerät eine Verbindung herstellt. Offlinebefehle können einen Anforderungsparameter enthalten, geben aber keine Antwort zurück.
 
 Die Einstellung **Warteschlange (falls offline)** wird nicht einbezogen, wenn Sie ein Modell oder eine Schnittstelle aus der Gerätevorlage exportieren. Wenn Sie sich ein exportiertes Modell oder ein Interface-JSON anschauen, können Sie nicht erkennen, ob ein Befehl ein Offline-Befehl ist.
 
 Offline Befehle verwenden [Cloud-zu-Gerät-Nachrichten von IoT Hub](../../iot-hub/iot-hub-devguide-messages-c2d.md), um den Befehl und die Nutzlast an das Gerät zu senden.
+
+Die Nutzlast der Nachricht, die das Gerät empfängt, ist der Rohwert des Parameters. Der Name des IoT Central-Befehls wird in der benutzerdefinierten Eigenschaft `method-name` gespeichert. Die folgende Tabelle zeigt einige Beispielnutzlasten:
+
+| IoT Central Anforderungsschema | Beispielnutzlast, die vom Gerät empfangen wurde |
+| -------------------------- | ---------------------------------- |
+| Kein Anforderungsparameter       | `@`                                |
+| Double                     | `1.23`                             |
+| String                     | `sample string`                    |
+| Object                     | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
 
 Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines Befehls. Der Befehl enthält einen Objektparameter mit einem „DateTime“-Feld und einer Enumeration:
 

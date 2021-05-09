@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9aa3c7258ceba73215e2b003e92bc43676ce6a7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94491153"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818924"
 ---
 # <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Leitfaden für die Veröffentlichung von Angeboten für Microsoft 365, Dynamics 365, Power Apps und Power BI
 
@@ -29,7 +29,7 @@ In der folgenden Tabelle finden Sie Links zu Veröffentlichungsprozessen und -ri
 | Microsoft 365 | Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](/office/dev/store/submit-to-appsource-via-partner-center). |
 | Dynamics 365 Business Central | Informationen zum Veröffentlichen eines Angebots in Partner Center finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 Business Central](./partner-center-portal/create-new-business-central-offer.md). |
 | Dynamics 365 for Finance and Operations | Lesen Sie bei der Erstellung für die Enterprise Edition die Informationen zum [Veröffentlichungsprozess und den Richtlinien](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source).<br/>Informationen zum Veröffentlichen eines Angebots in Partner Center finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md).  |
-| Dynamics 365 for Customer Engagement | Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](/dynamics365/customer-engagement/developer/publish-app-appsource).<br/>Informationen zum Veröffentlichen eines Angebots in Partner Center finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement und Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md).  |
+| Dynamics 365 for Customer Engagement und Power Apps | Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](/dynamics365/customer-engagement/developer/publish-app-appsource).<br/>Informationen zum Veröffentlichen eines Angebots in Partner Center finden Sie unter [Erstellen eines Angebots für Dynamics 365 for Customer Engagement und Power Apps](dynamics-365-customer-engage-offer-setup.md).  |
 | Power Apps | Erfahren Sie, wie Sie [Kunden das Testen Ihrer App in AppSource ermöglichen können](https://powerapps.microsoft.com/blog/appsource-test-drive/). |
 | Power BI | Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](/power-bi/developer/office-store). |
 

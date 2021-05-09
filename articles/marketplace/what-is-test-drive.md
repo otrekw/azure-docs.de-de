@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e44d5d94a8dc172962a26f3e0dae9ccbb7f8a865
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96490039"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818888"
 ---
 # <a name="what-is-a-test-drive"></a>Worum handelt es sich bei einer Testversion?
 
@@ -60,7 +60,7 @@ Diese Bereitstellungsvorlage enthält alle Azure-Ressourcen, aus denen Ihre Lös
 
 Bei einer gehosteten Testversion entfällt die Komplexität der Einrichtung, da Microsoft den Dienst, der die Testversion, die Bereitstellung für Benutzer und die Aufhebung der Bereitstellung durchführt, hostet und verwaltet. Wenn Sie ein Angebot in Microsoft AppSource haben, bauen Sie Ihre Testversion so auf, dass sie mit einer Dynamics AX/CRM-Instanz verbunden werden kann. Sie können die folgenden AppSource-Angebote verwenden:
 
-- Verwenden Sie [Dynamics 365 for Customer Engagement](partner-center-portal/create-new-customer-engagement-offer.md) für ein Kundenbindungssystem für Vertrieb, Services, Projektdienst und Außendienst.
+- Verwenden Sie [Dynamics 365 for Customer Engagement und Power Apps](dynamics-365-customer-engage-offer-setup.md) für ein Kundenbindungssystem für Vertrieb, Service, Projektdienst und Außendienst.
 - Verwenden Sie [Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) für ein ERP-System (Enterprise Resource Planning) von Business Central für Finanzen, Betrieb, Fertigung und Lieferkette.
 
 ### <a name="logic-app-test-drive"></a>Testversion für Logik-Apps

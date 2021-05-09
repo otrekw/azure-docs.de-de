@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f44d3eb84715233e6d9aa4a1d06d626d162973ee
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095718"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205267"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Apps in Azure App Service mit Visual Studio
 ## <a name="overview"></a>Übersicht
@@ -29,7 +29,7 @@ Sie lernen Folgendes:
 Wenn Sie über Visual Studio Ultimate verfügen, können Sie auch [IntelliTrace](/visualstudio/debugger/intellitrace) zum Debuggen verwenden. IntelliTrace wird in diesem Lernprogramm nicht behandelt.
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>Voraussetzungen
-Dieses Tutorial verwendet die Entwicklungsumgebung, das Webprojekt und die App Service-App, die Sie unter [Erstellen von ASP.NET-Apps in Azure App Service](quickstart-dotnet-framework.md) eingerichtet haben. Für die WebJobs-Abschnitte benötigen Sie die Anwendung, die Sie in den [ersten Schritten mit dem Azure WebJobs SDK][GetStartedWJ] erstellen.
+Dieses Tutorial verwendet die Entwicklungsumgebung, das Webprojekt und die App Service-App, die Sie unter [Erstellen von ASP.NET-Apps in Azure App Service](./quickstart-dotnetcore.md?tabs=netframework48) eingerichtet haben. Für die WebJobs-Abschnitte benötigen Sie die Anwendung, die Sie in den [ersten Schritten mit dem Azure WebJobs SDK][GetStartedWJ] erstellen.
 
 Die Codebeispiele in diesem Lernprogramm stammen aus einer C# MVC-Webanwendung. Die Prozeduren gelten jedoch auch für die Problembehandlung in Visual Basic- und Web Forms-Anwendungen.
 
@@ -51,7 +51,7 @@ Visual Studio bietet Zugriff auf einen Teil der App-Verwaltungsfunktionen und -K
 
     Weitere Informationen zum Herstellen einer Verbindung mit Azure-Ressourcen über Visual Studio finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 2. Erweitern Sie im **Server-Explorer** den Knoten **Azure**, und erweitern Sie dann **App Service**.
-3. Erweitern Sie die Ressourcengruppe, die die in [Erstellen einer ASP.NET-App in Azure App Service](quickstart-dotnet-framework.md) erstellte App enthält, klicken Sie mit der rechten Maustaste auf den App-Knoten, und klicken Sie dann auf **Anzeigeeinstellungen**.
+3. Erweitern Sie die Ressourcengruppe, die die in [Erstellen einer ASP.NET-App in Azure App Service](./quickstart-dotnetcore.md?tabs=netframework48) erstellte App enthält, klicken Sie mit der rechten Maustaste auf den App-Knoten, und klicken Sie dann auf **Anzeigeeinstellungen**.
 
     ![Anzeigeeinstellungen im Server-Explorer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -108,9 +108,9 @@ Falls die detaillierte Fehlermeldung nicht genügend Informationen liefert und s
 
 Remotedebuggen funktioniert nicht in den Express-Editionen von Visual Studio.
 
-Dieser Abschnitt veranschaulicht das Remotedebuggen anhand des Projekts, das Sie in [Erstellen einer ASP.NET-App in Azure App Service](quickstart-dotnet-framework.md) erstellt haben.
+Dieser Abschnitt veranschaulicht das Remotedebuggen anhand des Projekts, das Sie in [Erstellen einer ASP.NET-App in Azure App Service](./quickstart-dotnetcore.md?tabs=netframework48) erstellt haben.
 
-1. Öffnen Sie das Webprojekt, das Sie in [Erstellen einer ASP.NET-App in Azure App Service](quickstart-dotnet-framework.md) erstellt haben.
+1. Öffnen Sie das Webprojekt, das Sie in [Erstellen einer ASP.NET-App in Azure App Service](./quickstart-dotnetcore.md?tabs=netframework48) erstellt haben.
 
 1. Öffnen Sie *Controllers\HomeController.cs*.
 
@@ -129,7 +129,7 @@ Dieser Abschnitt veranschaulicht das Remotedebuggen anhand des Projekts, das Sie
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und klicken Sie anschließend auf **Veröffentlichen**.
 
-1. Wählen Sie in der Dropdownliste **Profil** dasselbe Profil aus, das Sie in [Erstellen einer ASP.NET-App in Azure App Service](quickstart-dotnet-framework.md) verwendet haben. Klicken Sie dann auf „Einstellungen“.
+1. Wählen Sie in der Dropdownliste **Profil** dasselbe Profil aus, das Sie in [Erstellen einer ASP.NET-App in Azure App Service](./quickstart-dotnetcore.md?tabs=netframework48) verwendet haben. Klicken Sie dann auf „Einstellungen“.
 
 1. Klicken Sie im Dialogfeld **Veröffentlichen** auf die Registerkarte **Einstellungen**, ändern Sie **Konfiguration** in **Debug**, und klicken Sie anschließend auf **Speichern**.
 
@@ -264,7 +264,7 @@ Die Protokolle werden in den Ordner *LogFiles* im Dateisystem Ihrer App geschrie
 ## <a name="create-and-view-application-trace-logs"></a><a name="apptracelogs"></a>Erstellen und Anzeigen von Anwendungs-Ablaufprotokollen
 In diesem Abschnitt führen Sie die folgenden Aufgaben aus:
 
-* Fügen Sie dem Webprojekt, das Sie in [Erste Schritte mit Azure und ASP.NET](quickstart-dotnet-framework.md) erstellt haben, Ablaufverfolgungsanweisungen hinzu.
+* Fügen Sie dem Webprojekt, das Sie in [Erste Schritte mit Azure und ASP.NET](./quickstart-dotnetcore.md?tabs=netframework48) erstellt haben, Ablaufverfolgungsanweisungen hinzu.
 * Anzeigen der Protokolle, wenn Sie das Projekt lokal ausführen.
 * Anzeigen der Protokolle, während diese von der Anwendung unter Azure generiert werden.
 

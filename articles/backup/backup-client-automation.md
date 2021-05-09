@@ -3,12 +3,12 @@ title: Verwenden von PowerShell zum Sichern von Windows Server in Azure
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows Server-Computer oder einem Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8876dc30cc60356accaf3c828f0162cca8d7372e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90987109"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162417"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 
@@ -30,7 +30,7 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-2. Der Recovery Services-Tresor ist eine Azure Resource Manager-Ressource und muss daher in einer Ressourcengruppe platziert werden. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Wenn Sie eine neue Ressourcengruppe erstellen, geben Sie den Namen und den Speicherort für die Ressourcengruppe an.  
+2. Der Recovery Services-Tresor ist eine Azure Resource Manager-Ressource und muss daher in einer Ressourcengruppe platziert werden. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Wenn Sie eine neue Ressourcengruppe erstellen, geben Sie den Namen und den Speicherort für die Ressourcengruppe an.
 
     ```powershell
     New-AzResourceGroup –Name "test-rg" –Location "WestUS"
@@ -64,7 +64,7 @@ Führen Sie den Befehl **Get-AzRecoveryServicesVault** aus, damit alle Tresore i
 Get-AzRecoveryServicesVault
 ```
 
-```Output
+```output
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -82,12 +82,12 @@ Bevor Sie den Azure Backup-Agent installieren, müssen Sie das Installationsprog
 
 Alternativ können Sie das Downloadprogramm mithilfe von PowerShell abrufen:
 
- ```powershell
- $MarsAURL = 'https://aka.ms/Azurebackup_Agent'
- $WC = New-Object System.Net.WebClient
- $WC.DownloadFile($MarsAURL,'C:\downloads\MARSAgentInstaller.EXE')
- C:\Downloads\MARSAgentInstaller.EXE /q
- ```
+```powershell
+$MarsAURL = 'https://aka.ms/Azurebackup_Agent'
+$WC = New-Object System.Net.WebClient
+$WC.DownloadFile($MarsAURL,'C:\downloads\MARSAgentInstaller.exe')
+C:\Downloads\MARSAgentInstaller.exe /q
+```
 
 Um den Agent zu installieren, führen Sie den folgenden Befehl in einer PowerShell-Konsole mit erhöhten Rechten aus:
 
@@ -168,7 +168,7 @@ Nachdem Sie die Onlinesicherungs-Cmdlets geladen haben, registrieren Sie die Tre
 Start-OBRegistration -VaultCredentials $CredsFilename.FilePath -Confirm:$false
 ```
 
-```Output
+```output
 CertThumbprint      : 7a2ef2caa2e74b6ed1222a5e89288ddad438df2
 SubscriptionID      : ef4ab577-c2c0-43e4-af80-af49f485f3d1
 ServiceResourceName : testvault
@@ -178,8 +178,6 @@ Machine registration succeeded.
 
 > [!IMPORTANT]
 > Verwenden Sie zur Angabe der Tresoranmeldedatendatei keine relativen Pfade. Sie müssen einen absoluten Pfad als Eingabe für das Cmdlet angeben.
->
->
 
 ## <a name="networking-settings"></a>Netzwerkeinstellungen
 
@@ -193,7 +191,7 @@ Das Festlegen von Proxy- und Bandbreitendetails erfolgt mithilfe des [Set-OBMach
 Set-OBMachineSetting -NoProxy
 ```
 
-```Output
+```output
 Server properties updated successfully.
 ```
 
@@ -201,7 +199,7 @@ Server properties updated successfully.
 Set-OBMachineSetting -NoThrottle
 ```
 
-```Output
+```output
 Server properties updated successfully.
 ```
 
@@ -211,7 +209,7 @@ Die Sicherungsdaten, die an Azure Backup gesendet werden, werden verschlüsselt,
 
 Sie müssen eine Sicherheits-PIN generieren, indem Sie im Azure-Portal im Abschnitt **Recovery Services-Tresor** unter **Einstellungen** > **Eigenschaften** > **Sicherheits-PIN** auf **Generieren** klicken.
 
->[!NOTE]
+> [!NOTE]
 > Die Sicherheits-PIN kann nur über das Azure-Portal generiert werden.
 
 Verwenden Sie diese PIN anschließend im folgenden Befehl als `generatedPIN`:
@@ -221,14 +219,12 @@ $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -
 Set-OBMachineSetting -EncryptionPassPhrase $PassPhrase -SecurityPin "<generatedPIN>"
 ```
 
-```Output
+```output
 Server properties updated successfully
 ```
 
 > [!IMPORTANT]
 > Sichern Sie die Passphrase-Informationen, nachdem Sie sie festgelegt haben. Das Wiederherstellen von Daten aus Azure ohne diese Passphrase ist nicht möglich.
->
->
 
 ## <a name="back-up-files-and-folders"></a>Sichern von Dateien und Ordnern
 
@@ -265,7 +261,7 @@ Der Sicherungszeitplan muss einer Richtlinie zugeordnet werden. Dazu kann das [S
 Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
 ```
 
-```Output
+```output
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
 
@@ -283,7 +279,7 @@ Die Aufbewahrungsrichtlinie muss der Hauptrichtlinie mithilfe des [Set-OBRetenti
 Set-OBRetentionPolicy -Policy $NewPolicy -RetentionPolicy $RetentionPolicy
 ```
 
-```Output
+```output
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
                   Every 1 week(s)
@@ -322,7 +318,7 @@ $Exclusions = New-OBFileSpec -FileSpec @("C:\windows", "C:\temp") -Exclude
 Add-OBFileSpec -Policy $NewPolicy -FileSpec $Inclusions
 ```
 
-```Output
+```output
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
                   Every 1 week(s)
@@ -363,7 +359,7 @@ PolicyState     : Valid
 Add-OBFileSpec -Policy $NewPolicy -FileSpec $Exclusions
 ```
 
-```Output
+```output
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
                   Every 1 week(s)
@@ -416,7 +412,7 @@ Das Richtlinienobjekt ist jetzt fertig und verfügt über einen zugeordneten Sic
 Get-OBPolicy | Remove-OBPolicy
 ```
 
-```Output
+```output
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
@@ -426,7 +422,7 @@ Zum Ausführen eines Commits für das Richtlinienobjekt wird das [Set-OBPolicy](
 Set-OBPolicy -Policy $NewPolicy
 ```
 
-```Output
+```output
 Microsoft Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s)
 DsList : {DataSource
@@ -474,7 +470,7 @@ Sie können die Details der vorhandenen Sicherungsrichtlinie mit dem [Get-OBPoli
 Get-OBPolicy | Get-OBSchedule
 ```
 
-```Output
+```output
 SchedulePolicyName : 71944081-9950-4f7e-841d-32f0a0a1359a
 ScheduleRunDays : {Saturday, Sunday}
 ScheduleRunTimes : {16:00:00}
@@ -485,7 +481,7 @@ State : Existing
 Get-OBPolicy | Get-OBRetentionPolicy
 ```
 
-```Output
+```output
 RetentionDays : 7
 RetentionPolicyName : ca3574ec-8331-46fd-a605-c01743a5265e
 State : Existing
@@ -495,7 +491,7 @@ State : Existing
 Get-OBPolicy | Get-OBFileSpec
 ```
 
-```Output
+```output
 FileName : *
 FilePath : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
 FileSpec : D:\
@@ -529,7 +525,7 @@ Nachdem eine Sicherungsrichtlinie festgelegt wurde, werden die Sicherungen entsp
 Get-OBPolicy | Start-OBBackup
 ```
 
-```Output
+```output
 Initializing
 Taking snapshot of volumes...
 Preparing storage...
@@ -562,13 +558,13 @@ $rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -Retention
 
 ```powershell
 New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
- ```
+```
 
 ### <a name="verifying-the-policy"></a>Überprüfen der Richtlinie
 
 ```powershell
 Get-OBSystemStatePolicy
- ```
+```
 
 ## <a name="restore-data-from-azure-backup"></a>Wiederherstellen von Daten aus Azure Backup
 
@@ -588,7 +584,7 @@ $Source = Get-OBRecoverableSource
 $Source
 ```
 
-```Output
+```output
 FriendlyName : C:\
 RecoverySourceName : C:\
 ServerName : myserver.microsoft.com
@@ -607,7 +603,7 @@ $Rps = Get-OBRecoverableItem $Source[0]
 $Rps
 ```
 
-```Output
+```output
 
 IsDir                : False
 ItemNameFriendly     : C:\
@@ -643,7 +639,7 @@ $Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
 $Item
 ```
 
-```Output
+```output
 IsDir                : False
 ItemNameFriendly     : C:\Test\cat.jpg
 ItemNameGuid         :
@@ -654,7 +650,6 @@ PointInTime          : 10/17/2019 7:52:13 PM
 ServerName           : myserver.microsoft.com
 ItemSize             :
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
-
 ```
 
 ### <a name="triggering-the-restore-process"></a>Auslösen des Wiederherstellungsvorgangs
@@ -671,7 +666,7 @@ Jetzt lösen Sie die Wiederherstellung mithilfe des Befehls [Start-OBRecovery](/
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption
 ```
 
-```Output
+```output
 Estimating size of backup items...
 Estimating size of backup items...
 Estimating size of backup items...
@@ -706,7 +701,7 @@ Standardmäßig ist der WinRM-Dienst für den manuellen Start konfiguriert. Der 
 Get-Service -Name WinRM
 ```
 
-```Output
+```output
 Status   Name               DisplayName
 ------   ----               -----------
 Running  winrm              Windows Remote Management (WS-Manag...
@@ -718,7 +713,7 @@ PowerShell sollte für Remoting konfiguriert sein.
 Enable-PSRemoting -Force
 ```
 
-```Output
+```output
 WinRM is already set up to receive requests on this computer.
 WinRM has been updated for remote management.
 WinRM firewall exception enabled.

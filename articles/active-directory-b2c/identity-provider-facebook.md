@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7e7a99daa169c994a0b9656786926f0715fa17a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 329a8340bdb7353553866e2f4182f6df2c60ccce
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580061"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001302"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C
 
@@ -36,28 +36,30 @@ ms.locfileid: "104580061"
 
 ## <a name="create-a-facebook-application"></a>Erstellen einer Facebook-Anwendung
 
-Wenn Sie die Anmeldung für Benutzer mit einem Facebook-Konto in Azure Active Directory B2C (Azure AD B2C) aktivieren möchten, müssen Sie eine Anwendung im [Facebook-App-Dashboard](https://developers.facebook.com/) erstellen. Weitere Informationen finden Sie unter [App-Entwicklung](https://developers.facebook.com/docs/development). Wenn Sie noch über kein Facebook-Konto verfügen, können Sie sich unter [https://www.facebook.com/](https://www.facebook.com/) registrieren.
+Wenn Sie die Anmeldung für Benutzer mit einem Facebook-Konto in Azure Active Directory B2C (Azure AD B2C) aktivieren möchten, müssen Sie eine Anwendung im [Facebook-App-Dashboard](https://developers.facebook.com/) erstellen. Weitere Informationen finden Sie unter [App-Entwicklung](https://developers.facebook.com/docs/development).
 
-1. Melden Sie sich auf der [Facebook-Entwickler-Website](https://developers.facebook.com/) mit den Anmeldeinformationen für Ihr Facebook-Konto an.
-1. Wenn Sie dies noch nicht getan haben, müssen Sie sich als Facebook-Entwickler registrieren. Dazu wählen Sie oben rechts auf der Seite die Option **Get Started** (Erste Schritte) aus, akzeptieren die Facebook-Richtlinien und führen die Registrierungsschritte aus.
-1. Wählen Sie **My Apps** (Meine Apps) und dann **Create App** (App erstellen) aus.
-1. Wählen Sie **Build Connected Experiences** (Verbundene Umgebungen erstellen) aus.
-1. Geben Sie unter **Display Name** einen Anzeigenamen und unter **Contact Email** (Kontakt-E-Mail) eine gültige E-Mail-Adresse ein.
-1. Wählen Sie **App-ID erstellen** aus. Hierzu müssen Sie möglicherweise die Richtlinien für die Facebook-Plattform akzeptieren und eine Online-Sicherheitsüberprüfung durchführen.
+Wenn Sie noch nicht über ein Facebook-Konto verfügen, können Sie sich unter [https://www.facebook.com](https://www.facebook.com) registrieren. Starten Sie nach der Registrierung oder Anmeldung mit Ihrem Facebook-Konto den [Registrierungsvorgang für Facebook-Entwicklerkonten](https://developers.facebook.com/async/registration). Weitere Informationen finden Sie unter [Register as a Facebook Developer](https://developers.facebook.com/docs/development/register) (Registrieren als Facebook-Entwickler).
+
+1. Melden Sie sich auf der [Facebook-Entwicklerwebsite](https://developers.facebook.com/apps) mit den Anmeldeinformationen für Ihr Facebook-Entwicklerkonto an.
+1. Wählen Sie **App erstellen** aus.
+1. Wählen Sie unter **Select an app type** (App-Typ auswählen) die Option **Consumer** und dann **Continue** (Weiter) aus.
+1. Geben Sie einen App-Anzeigenamen (**App Display Name**) und eine gültige Kontakt-E-Mail-Adresse für die App (**App Contact Email**) an.
+1. Wählen Sie **App erstellen** aus. Für diesen Schritt müssen Sie möglicherweise die Richtlinien für die Facebook-Plattform akzeptieren und eine Online-Sicherheitsüberprüfung durchführen.
 1. Wählen Sie **Settings** > **Basic** (Einstellungen > Allgemeines) aus.
+    1. Kopieren Sie den Wert unter **App ID**.
+    1. Wählen Sie **Show** (Anzeigen) aus, und kopieren Sie den Wert unter **App Secret** (App-Geheimnis). Sie benötigen beide Angaben, um Facebook als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. **App Secret** handelt es sich um eine wichtige Sicherheitsinformation für die Anmeldung.
+    1. Geben Sie unter **Privacy Policy URL** (Datenrichtlinien-URL) eine URL ein, z.B. `https://www.contoso.com/privacy`. Die Richtlinien-URL ist eine von Ihnen verwaltete Seite, die Datenschutzinformationen zu Ihrer Anwendung enthält.
+    1. Geben Sie eine URL für **Terms of Service URL** (URL der Nutzungsbedingungen) ein, z. B. `https://www.contoso.com/tos`. Die Richtlinien-URL ist eine von Ihnen verwaltete Seite, die Nutzungsbedingungen Ihrer Anwendung enthält.
+    1. Geben Sie eine URL für das **Löschen von Benutzerdaten** ein, z. B. `https://www.contoso.com/delete_my_data`. Die URL zum Löschen von Benutzerdaten ist eine Seite, die Sie verwalten, um Benutzern die Möglichkeit zu geben, ihre Daten löschen zu lassen. 
     1. Wählen Sie eine **Kategorie**, z.B. `Business and Pages`. Dieser Wert ist für Facebook erforderlich, wird aber nicht für Azure AD B2C verwendet.
-    1. Geben Sie eine URL für **Terms of Service URL** (URL der Nutzungsbedingungen) ein, z. B. `http://www.contoso.com/tos`. Die Richtlinien-URL ist eine von Ihnen verwaltete Seite, die Nutzungsbedingungen Ihrer Anwendung enthält.
-    1. Geben Sie unter **Privacy Policy URL** (Datenrichtlinien-URL) eine URL ein, z.B. `http://www.contoso.com/privacy`. Die Richtlinien-URL ist eine von Ihnen verwaltete Seite, die Datenschutzinformationen zu Ihrer Anwendung enthält.
 1. Wählen Sie unten auf der Seite die Option **Add Platform** (Plattform hinzufügen) und dann **Website** aus.
 1. Geben Sie im Feld **Website-URL** die Adresse Ihrer Website (z. B. `https://contoso.com`) ein. 
 1. Klicken Sie auf **Save changes** (Änderungen speichern).
-1. Kopieren Sie im oberen Bereich der Seite den Wert von **App ID** (App-ID).
-1. Wählen Sie **Show** (Anzeigen) aus, und kopieren Sie den Wert unter **App Secret** (App-Geheimnis). Sie benötigen beide Angaben, um Facebook als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. **App Secret** handelt es sich um eine wichtige Sicherheitsinformation für die Anmeldung.
 1. Wählen Sie im Menü das **Pluszeichen** neben **PRODUCTS** (Produkte) aus. Wählen Sie unter **Add Products to Your App** (Produkte Ihrer App hinzufügen) unter **Facebook Login** (Facebook-Anmeldung) **Set up** (Einrichten) aus.
 1. Wählen Sie im Menü **Facebook Login** (Facebook-Anmeldung) und dann **Settings** (Einstellungen) aus.
 1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` unter **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten und `your-domain-name` durch Ihre benutzerdefinierte Domäne. 
 1. Wählen Sie unten auf der Seite die Option **Save Changes** (Änderungen speichern) aus.
-1. Klicken Sie rechts oben auf der Seite auf den Statusselektor, und legen Sie ihn auf **On** (Ein) fest, um die Anwendung öffentlich und Ihre Facebook-Anwendung für Azure AD B2C verfügbar zu machen. Wählen Sie anschließend **Switch Mode** (Modus wechseln) aus.  An diesem Punkt sollte sich der Status von **Entwicklung** in **Live** ändern.
+1. Klicken Sie rechts oben auf der Seite auf den Statusselektor, und legen Sie ihn auf **On** (Ein) fest, um die Anwendung öffentlich und Ihre Facebook-Anwendung für Azure AD B2C verfügbar zu machen. Wählen Sie anschließend **Switch Mode** (Modus wechseln) aus. An diesem Punkt sollte sich der Status von **Entwicklung** in **Live** ändern. Weitere Informationen finden Sie unter [Facebook App Development](https://developers.facebook.com/docs/development/release) (App-Entwicklung mit Facebook).
 
 ::: zone pivot="b2c-user-flow"
 

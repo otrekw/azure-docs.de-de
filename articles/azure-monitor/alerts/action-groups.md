@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: dukek
-ms.openlocfilehash: 7010e20b65142cf0ab85c29d6b22c925c977f1f8
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 1486415c5d225163dd2b2c7e79cd008ad0a76588
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104982"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514868"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. 
@@ -147,6 +147,13 @@ Wenn Sie keine Benachrichtigungen an der *primären E-Mail-Adresse* erhalten, k�
   :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Beispiel für das Hinzufügen einer primären E-Mail-Adresse" border="true":::
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von E-Mail-Aktionen verfügen. Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./alerts-rate-limiting.md).
+
+Beim Einrichten der *E-Mail-ARM-Rolle* müssen Sie sicherstellen, dass die drei folgenden Bedingungen erfüllt sind:
+
+1. Der Typ der Entität, die der Rolle zugewiesen wird, muss **Benutzer** lauten.
+2. Die Zuweisung muss auf **Abonnementebene** erfolgen.
+3. Der Benutzer muss eine E-Mail im **AAD-Profil** konfiguriert haben. 
+
 
 ### <a name="function"></a>Funktion
 Diese Aktion ruft einen vorhandenen HTTP-Triggerendpunkt in [Azure Functions](../../azure-functions/functions-get-started.md) auf. Ihr Endpunkt muss das HTTP POST-Verb verarbeiten, um eine Anforderung zu verarbeiten.

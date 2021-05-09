@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 462d69a8bde0dec2689ac30620276b5bcd335410
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516375"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717691"
 ---
 # <a name="secure-your-restful-services"></a>Schützen Ihrer RESTful-Dienste 
 
@@ -230,9 +230,50 @@ Ein Anspruch ermöglicht die temporäre Speicherung von Daten während der Ausf�
 
 ### <a name="acquiring-an-access-token"></a>Abrufen eines Zugriffstokens 
 
-Sie können ein Zugriffstoken auf eine von mehreren Arten abrufen: durch Abrufen des Tokens [von einem Verbundidentitätsanbieter](idp-pass-through-user-flow.md), durch Aufrufen einer REST-API, die ein Zugriffstoken zurückgibt, mithilfe eines [ROPC-Flows](../active-directory/develop/v2-oauth-ropc.md) oder mithilfe des [Clientanmeldeinformationsflows](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md).  
+Sie können ein Zugriffstoken auf eine von mehreren Arten abrufen: durch Abrufen des Tokens [von einem Verbundidentitätsanbieter](idp-pass-through-user-flow.md), durch Aufrufen einer REST-API, die ein Zugriffstoken zurückgibt, mithilfe eines [ROPC-Flows](../active-directory/develop/v2-oauth-ropc.md) oder mithilfe des [Clientanmeldeinformationsflows](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Der Clientanmeldeinformationsflow wird häufig für Interaktionen zwischen Servern verwendet, die ohne Benutzereingriff im Hintergrund ausgeführt werden müssen.
 
-Im folgenden Beispiel wird ein technisches REST-API-Profil verwendet, um eine Anforderung an den Azure AD-Tokenendpunkt zu senden, wobei die Clientanmeldeinformationen als HTTP-Standardauthentifizierung verwendet werden. Informationen zur entsprechenden Konfiguration in Azure AD finden Sie unter [Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Möglicherweise müssen Sie Änderungen daran vornehmen, um die Interaktion mit Ihrem Identitätsanbieter zu ermöglichen. 
+#### <a name="acquiring-an-azure-ad-access-token"></a>Abrufen eines Azure AD-Zugriffstokens 
+
+Im folgenden Beispiel wird ein technisches REST-API-Profil verwendet, um eine Anforderung an den Azure AD-Tokenendpunkt zu senden, wobei die Clientanmeldeinformationen als HTTP-Standardauthentifizierung verwendet werden. Weitere Informationen finden Sie unter [Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). 
+
+Um ein zugriffsbasiertes Azure AD abzurufen, erstellen Sie eine Anwendung in Ihrem Azure AD Mandanten:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD-Mandanten enthält.
+1. Wählen Sie im linken Menü **Azure Active Directory** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
+1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispiel: *Client_Credentials_Auth_app*.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
+1. Wählen Sie **Registrieren**.
+2. Notieren Sie sich die **Anwendungs-ID (Client)** . 
+
+
+Für einen Clientanmeldeinformationenflow müssen Sie ein Anwendungsgeheimnis erstellen. Der geheime Clientschlüssel wird auch als Anwendungskennwort bezeichnet. Das Geheimnis wird von Ihrer Anwendung verwendet, um ein Zugriffstoken zu erhalten.
+
+1. Wählen Sie auf der Seite **Azure AD B2C – App-Registrierungen** die von Ihnen erstellte Anwendung (z. B. *Client_Credentials_Auth_app*) aus.
+1. Wählen Sie im linken Menü unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
+1. Wählen Sie **Neuer geheimer Clientschlüssel**.
+1. Geben Sie im Feld **Beschreibung** eine Beschreibung für das Clientgeheimnis ein. Beispielsweise *clientsecret1*.
+1. Wählen Sie unter **Läuft ab** einen Zeitraum aus, für den das Geheimnis gültig ist, und wählen Sie dann **Hinzufügen** aus.
+1. Notieren Sie sich den **Wert** des Geheimnisses, das in Ihrem Clientanwendungscode verwendet werden soll. Dieser Geheimniswert kann nach Verlassen dieser Seite nicht erneut angezeigt werden. Sie verwenden diesen Wert als Anwendungsgeheimnis im Code Ihrer Anwendung.
+
+#### <a name="create-azure-ad-b2c-policy-keys"></a>Erstellen der Azure AD B2C-Richtlinienschlüssel
+
+Sie müssen die Client-ID und den geheimen Clientschlüssel speichern, den Sie zuvor in Ihrem Azure AD B2C-Mandanten notiert haben.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
+3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+4. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
+5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+6. Klicken Sie unter **Optionen** auf `Manual`.
+7. Geben Sie einen **Namen** für den Richtlinienschlüssel ein, `SecureRESTClientId`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
+8. Geben Sie im Feld **Geheimnis** die Client-ID ein, die Sie zuvor notiert haben.
+9. Wählen Sie für **Schlüsselverwendung** die Option `Signature` aus.
+10. Klicken Sie auf **Erstellen**.
+11. Erstellen Sie einen weiteren Richtlinienschlüssel mit den folgenden Einstellungen:
+    -   **Name**: `SecureRESTClientSecret`.
+    -   **Geheimnis**: Geben Sie den geheimen Clientschlüssel ein, den Sie zuvor notiert haben
 
 Ersetzen Sie im „ServiceUrl“-Element den Platzhalter „your-tenant-name“ durch den Namen Ihres Azure AD-Mandanten. Alle verfügbaren Optionen finden Sie unter [Definieren eines technischen RESTful-Profils](restful-technical-profile.md).
 
@@ -251,7 +292,7 @@ Ersetzen Sie im „ServiceUrl“-Element den Platzhalter „your-tenant-name“ 
   </CryptographicKeys>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="client_credentials" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://secureb2cfunction.azurewebsites.net/.default" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://graph.microsoft.com/.default" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="bearerToken" PartnerClaimType="access_token" />

@@ -4,14 +4,14 @@ description: Voraussetzungen für die Verwendung von Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/14/2021
 ms.author: v-erkel
-ms.openlocfilehash: a03c3987c0cada69f6a7d47d7c1aa7cbf6d5015a
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 3cddbba3dca64561d7e2b7b27715152a26a8c9e9
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258876"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717583"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -59,7 +59,7 @@ Die bewährte Methode besteht im Erstellen eines neuen Subnetzes für die einzel
 Der Cache benötigt DNS für den Zugriff auf Ressourcen außerhalb seines virtuellen Netzwerks. Je nachdem, welche Ressourcen Sie verwenden, müssen Sie möglicherweise einen angepassten DNS-Server einrichten und die Weiterleitung zwischen diesem Server und Azure DNS-Servern konfigurieren:
 
 * Um auf Azure Blob Storage-Endpunkte und andere interne Ressourcen zuzugreifen, benötigen Sie den Azure-basierten DNS-Server.
-* Um auf lokalen Speicher zuzugreifen, müssen Sie einen benutzerdefinierten DNS-Server konfigurieren, der Ihre Speicherhostnamen auflösen kann. Diese Aktion müssen Sie ausführen, **bevor** Sie den Cache erstellen.
+* Um auf lokalen Speicher zuzugreifen, müssen Sie einen benutzerdefinierten DNS-Server konfigurieren, der Ihre Speicherhostnamen auflösen kann. Diese Aktion müssen Sie ausführen, bevor Sie den Cache erstellen.
 
 Wenn Sie nur Blobspeicher verwenden, können Sie den von Azure bereitgestellten DNS-Standardserver für Ihren Cache verwenden. Wenn Sie jedoch auf Speicherressourcen und andere Ressourcen außerhalb von Azure zugreifen müssen, sollten Sie einen benutzerdefinierten DNS-Server erstellen und diesen zum Weiterleiten jeglicher Azure-spezifischen Auflösungsanforderungen an den Azure DNS-Server konfigurieren.
 
@@ -72,8 +72,8 @@ Um einen benutzerdefinierten DNS-Server verwenden zu können, müssen Sie die fo
   Führen Sie die folgenden Schritte im Azure-Portal aus, um den DNS-Server zum virtuellen Netzwerk hinzuzufügen:
 
   1. Öffnen Sie das virtuelle Netzwerk im Azure-Portal.
-  1. Wählen Sie in der Randleiste im Menü **Einstellungen** die Option **DNS-Server** aus.
-  1. Wählen Sie **Benutzerdefiniert** aus.
+  1. Wählen Sie in der Randleiste im Menü Einstellungen die Option DNS-Server aus.
+  1. Wählen Sie Benutzerdefiniert aus.
   1. Geben Sie die IP-Adresse des DNS-Server in das Feld ein.
 
 Ein einfacher DNS-Server kann außerdem für den Lastenausgleich für Clientverbindungen zwischen allen verfügbaren Cache-Einbindungspunkten verwendet werden.
@@ -106,14 +106,16 @@ Wenn Sie Azure-Blobspeicher in Kombination mit Ihrem Cache verwenden möchten, b
 
 Erstellen Sie das Konto, bevor Sie versuchen, ein Speicherziel hinzufügen. Beim Hinzufügen des Ziels können Sie einen neuen Container erstellen.
 
-Verwenden Sie diese Einstellungen, um ein kompatibles Speicherkonto zu erstellen:
+Verwenden Sie eine der folgenden Kombinationen, um ein kompatibles Speicherkonto zu erstellen:
 
-* Leistung: **Standard**
-* Kontoart: **StorageV2 (universell v2)**
-* Replikation: **Lokal redundanter Speicher (LRS)**
-* Zugriffsebene (Standard): **Heiße Ebene**
+| Leistung | type | Replikation | Zugriffsebene |
+|--|--|--|--|
+| Standard | StorageV2 (allgemein, Version 2)| Lokal redundanter Speicher (LRS) oder zonenredundanten Speicher (ZRS) | heiße Ebene |
+| Premium | Blockblobs | Lokal redundanter Speicher (LRS) | heiße Ebene |
 
-Es wird empfohlen, ein Speicherkonto am Standort Ihres Caches zu verwenden.
+Auf das Speicherkonto muss über das private Subnetz Ihres Caches zugegriffen werden können. Wenn Ihr Konto einen privaten Endpunkt oder einen öffentlichen Endpunkt verwendet, der auf bestimmte virtuelle Netzwerke beschränkt ist, stellen Sie sicher, dass Sie den Zugriff über das Subnetz des Caches aktivieren. (Ein offener öffentlicher Endpunkt wird nicht empfohlen.)
+
+Es wird empfohlen, ein Speicherkonto in derselben Azure-Region Ihres Caches zu verwenden.
 
 Außerdem müssen Sie der Cacheanwendung Zugriff auf Ihr Azure-Speicherkonto erteilt haben (wie weiter oben unter [Berechtigungen](#permissions) beschrieben). Befolgen Sie das Verfahren unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um dem Cache die erforderlichen Zugriffsrollen zuzuweisen. Wenn Sie nicht der Besitzer des Speicherkontos sind, lassen Sie den Besitzer diesen Schritt ausführen.
 
@@ -127,9 +129,9 @@ Vergewissern Sie sich bei Verwendung eines NFS-Speichersystems (beispielsweise e
 
 Weitere Informationen finden Sie unter [Behandeln von Problemen mit der NAS-Konfiguration und dem NFS-Speicherziel](troubleshoot-nas.md).
 
-* **Netzwerkkonnektivität:** Azure HPC Cache benötigt Netzwerkzugriff mit hoher Bandbreite zwischen dem Cachesubnetz und dem Rechenzentrum des NFS-Systems. [ExpressRoute](../expressroute/index.yml) oder ein ähnliches Zugriffsverfahren wird empfohlen. Bei Verwendung eines VPN muss TCP MSS ggf. mit 1350 verknüpft werden, um die Blockierung großer Pakete zu vermeiden. Weitere Informationen zur Problembehandlung bei VPN-Einstellungen finden Sie unter [Einschränkungen der VPN-Paketgröße](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions).
+* Netzwerkkonnektivität: Azure HPC Cache benötigt Netzwerkzugriff mit hoher Bandbreite zwischen dem Cachesubnetz und dem Rechenzentrum des NFS-Systems. [ExpressRoute](../expressroute/index.yml) oder ein ähnliches Zugriffsverfahren wird empfohlen. Bei Verwendung eines VPN muss TCP MSS ggf. mit 1350 verknüpft werden, um die Blockierung großer Pakete zu vermeiden. Weitere Informationen zur Problembehandlung bei VPN-Einstellungen finden Sie unter [Einschränkungen der VPN-Paketgröße](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions).
 
-* **Portzugriff:** Der Cache benötigt Zugriff auf bestimmte TCP/UDP-Ports Ihres Speichersystems. Verschiedene Speichertypen haben unterschiedliche Portanforderungen.
+* Portzugriff: Der Cache benötigt Zugriff auf bestimmte TCP/UDP-Ports Ihres Speichersystems. Verschiedene Speichertypen haben unterschiedliche Portanforderungen.
 
   Gehen Sie wie folgt vor, um die Einstellungen Ihres Speichersystems zu überprüfen:
 
@@ -157,7 +159,7 @@ Weitere Informationen finden Sie unter [Behandeln von Problemen mit der NAS-Konf
 
   * Vergewissern Sie sich, dass die Firewalleinstellungen Datenverkehr an allen diesen erforderlichen Ports zulassen. Überprüfen Sie sowohl in Azure verwendete Firewalls als auch lokale Firewalls in Ihrem Rechenzentrum.
 
-* **Root-Zugriff** (Lesen/Schreiben): Der Cache stellt als Benutzer mit der ID 0 eine Verbindung mit dem Back-End-System her. Überprüfen Sie die folgenden Einstellungen für Ihr Speichersystem:
+* Root-Zugriff (Lesen/Schreiben): Der Cache stellt als Benutzer mit der ID 0 eine Verbindung mit dem Back-End-System her. Überprüfen Sie die folgenden Einstellungen für Ihr Speichersystem:
   
   * `no_root_squash`aktivieren. Diese Option sorgt dafür, dass der Root-Remotebenutzer auf Dateien zugreifen kann, die sich im Besitz von Root befinden.
 
@@ -190,9 +192,9 @@ Im Folgenden finden Sie eine allgemeine Übersicht über die Schritte. Diese Sch
 
    * Befolgen Sie die Anweisungen der [exemplarischen Vorgehensweise](../storage/blobs/network-file-system-protocol-support-how-to.md), anstatt die Speicherkontoeinstellungen für ein Standard-Blobspeicherkonto zu verwenden. Die unterstützten Speicherkontotypen können je nach Azure-Region variieren.
 
-   * Wählen Sie im Abschnitt **Netzwerk** einen privaten Endpunkt im sicheren VNet aus, das Sie erstellt haben (empfohlen), oder wählen Sie einen öffentlichen Endpunkt mit eingeschränktem Zugriff des sicheren VNets aus.
+   * Wählen Sie im Abschnitt Netzwerk einen privaten Endpunkt im sicheren VNet aus, das Sie erstellt haben (empfohlen), oder wählen Sie einen öffentlichen Endpunkt mit eingeschränktem Zugriff des sicheren VNets aus.
 
-   * Denken Sie daran, den Abschnitt **Erweitert** auszufüllen, in dem Sie den NFS-Zugriff aktivieren.
+   * Denken Sie daran, den Abschnitt Erweitert auszufüllen, in dem Sie den NFS-Zugriff aktivieren.
 
    * Erteilen Sie der Cacheanwendung Zugriff auf Ihr Azure-Speicherkonto (wie oben unter [Berechtigungen](#permissions) beschrieben). Dies ist bei der ersten Erstellung eines Speicherziels möglich. Befolgen Sie das Verfahren unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um dem Cache die erforderlichen Zugriffsrollen zuzuweisen.
 

@@ -7,12 +7,12 @@ ms.date: 03/11/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d545610b8fa13d0c0f8b91bf92107d53b81454c3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 13abb35d0fa9ad3ee949b6edf5205de601a02956
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313843"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718555"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Ausschließen von Ressource und Empfehlungen aus der Sicherheitsbewertung 
 
@@ -35,7 +35,7 @@ In solchen Fällen können Sie eine Ausnahme für eine Empfehlung erstellen:
 | Status des Release:                  | Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
 | Preise:                        | Dies ist eine Premium-Richtlinienfunktion von Azure, die für Azure Defender-Kunden kostenlos zur Verfügung steht. Für andere Benutzer fallen hierfür in Zukunft unter Umständen Gebühren an.                                                                                                                                                                 |
 | Erforderliche Rollen und Berechtigungen: | **Besitzer** oder **Mitwirkender bei Ressourcenrichtlinien** zum Erstellen einer Ausnahme<br>Zum Erstellen einer Regel benötigen Sie Berechtigungen zum Bearbeiten von Richtlinien in Azure Policy.<br>Weitere Informationen finden Sie unter [Azure RBAC-Berechtigungen in Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
-| Einschränkungen:                    | Ausnahmen können nur für Empfehlungen erstellt werden, die in der Standardinitiative von Security Center, im Azure-Sicherheitsvergleichstest oder in einer der bereitgestellten Initiativen für gesetzliche Standards enthalten sind. Für Empfehlungen, die über benutzerdefinierte Initiativen generiert werden, können keine Ausnahmen gemacht werden. Weitere Informationen über die Beziehungen zwischen Richtlinien, Initiativen und Empfehlungen finden Sie [unter diesem Link](security-policy-concept.md). |
+| Einschränkungen:                    | Ausnahmen können nur für Empfehlungen erstellt werden, die in der Standardinitiative von Security Center, im [Azure-Sicherheitsvergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction) oder in einer der bereitgestellten Initiativen für gesetzliche Standards enthalten sind. Für Empfehlungen, die über benutzerdefinierte Initiativen generiert werden, können keine Ausnahmen gemacht werden. Weitere Informationen über die Beziehungen zwischen Richtlinien, Initiativen und Empfehlungen finden Sie [unter diesem Link](security-policy-concept.md). |
 | Clouds:                         | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
