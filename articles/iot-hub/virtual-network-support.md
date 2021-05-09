@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: 1e28c7767868904fb20ae6d27c6aea9e7077eb62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df38f9b3482847ea0415af5cb47540e244b0510b
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98630292"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739888"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -174,7 +174,7 @@ Das Feature für die Ausnahme für vertrauenswürdige Microsoft-Erstanbieterdien
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>Ausgehende Konnektivität zu Speicherkontoendpunkten für das Routing
 
-IoT Hub kann Nachrichten an ein Speicherkonto im Kundenbesitz weiterleiten. Damit die Routingfunktion trotz Firewalleinschränkungen auf ein Speicherkonto zugreifen kann, muss Ihre IoT Hub-Instanz über eine [verwaltete Identität](#turn-on-managed-identity-for-iot-hub) verfügen. Nachdem eine verwaltete Identität bereitgestellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihr Speicherkonto zu erteilen.
+IoT Hub kann Nachrichten an ein Speicherkonto im Kundenbesitz weiterleiten. Damit die Routingfunktion trotz Firewalleinschränkungen auf ein Speicherkonto zugreifen kann, muss Ihre IoT Hub-Instanz über eine verwaltete Identität verfügen, um auf das Speicherkonto zugreifen zu können. Zuerst benötigt Ihr Hub eine [verwaltete Identität](#turn-on-managed-identity-for-iot-hub). Nachdem eine verwaltete Identität bereitgestellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihr Speicherkonto zu erteilen.
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
 
@@ -192,7 +192,7 @@ Nun ist Ihr benutzerdefinierter Speicherendpunkt für die Verwendung der vom Sys
 
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>Ausgehende Konnektivität zu Event Hub-Endpunkten für das Routing
 
-IoT Hub kann so konfiguriert werden, dass Nachrichten an einen Event Hub-Namespace im Besitz von Kunden weitergeleitet werden. Damit die Routingfunktion trotz Firewalleinschränkungen auf eine Event Hub-Ressource zugreifen kann, muss Ihre IoT Hub-Instanz über eine verwaltete Identität verfügen. Nachdem eine verwaltete Identität erstellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihre Event Hub-Instanzen zu erteilen.
+IoT Hub kann so konfiguriert werden, dass Nachrichten an einen Event Hub-Namespace im Besitz von Kunden weitergeleitet werden. Damit die Routingfunktion trotz Firewalleinschränkungen auf eine Event Hub-Ressource zugreifen kann, muss Ihre IoT Hub-Instanz über eine verwaltete Identität verwenden, um auf die Event Hub-Ressource zuzugreifen. Zuerst benötigt Ihr Hub eine verwaltete Identität. Nachdem eine verwaltete Identität erstellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihre Event Hub-Instanzen zu erteilen.
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Event Hubs, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
 
@@ -210,7 +210,7 @@ Nun ist Ihr benutzerdefinierter Event Hub-Endpunkt für die Verwendung der vom S
 
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>Ausgehende Konnektivität zu Service Bus-Endpunkten für das Routing
 
-IoT Hub kann so konfiguriert werden, dass Nachrichten an einen Service Bus-Namespace im Besitz von Kunden weitergeleitet werden. Damit die Routingfunktion trotz Firewalleinschränkungen auf eine Service Bus-Ressource zugreifen kann, muss Ihre IoT Hub-Instanz über eine verwaltete Identität verfügen. Nachdem eine verwaltete Identität bereitgestellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihre Service Bus-Instanz zu erteilen.
+IoT Hub kann so konfiguriert werden, dass Nachrichten an einen Service Bus-Namespace im Besitz von Kunden weitergeleitet werden. Damit die Routingfunktion trotz Firewalleinschränkungen auf eine Servicebus-Ressource zugreifen kann, muss Ihre IoT Hub-Instanz über eine verwaltete Identität verwenden, um auf die Servicebus-Ressource zuzugreifen. Zuerst benötigt Ihr Hub eine verwaltete Identität. Nachdem eine verwaltete Identität bereitgestellt wurde, führen Sie die folgenden Schritte aus, um der Ressourcenidentität Ihres Hubs die Azure RBAC-Berechtigung für den Zugriff auf Ihre Service Bus-Instanz zu erteilen.
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Service Bus, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
 

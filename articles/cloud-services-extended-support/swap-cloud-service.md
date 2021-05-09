@@ -1,6 +1,6 @@
 ---
-title: Wechseln/Umschalten zwischen zwei Azure-Clouddiensten (erweiterter Support)
-description: Wechseln/Umschalten zwischen zwei Azure-Clouddiensten (erweiterter Support)
+title: Austauschen oder Wechseln von Bereitstellungen in Azure Cloud Services (erweiterter Support)
+description: Erfahren Sie mehr über das Austauschen oder Wechseln von Bereitstellungen in Azure Cloud Services (erweiterter Support).
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 author: surbhijain
@@ -8,46 +8,65 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
 ms.custom: ''
-ms.openlocfilehash: 6f96656af9afd9874cc6273a9cea9ed43e8c69cc
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: f5e01075ffb460c7ddd70b40a6b19f7ea70dd776
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106294231"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748818"
 ---
-# <a name="swapswitch-between-two-azure-cloud-services-extended-support"></a>Wechseln/Umschalten zwischen zwei Azure-Clouddiensten (erweiterter Support)
-Mit Clouddiensten (erweiterter Support) können Sie zwischen zwei unabhängigen Clouddienstbereitstellungen wechseln. Anders als bei Clouddiensten (klassisch) ist das Konzept von Slots beim Azure Resource Manager-Modell nicht vorhanden. Wenn Sie sich für die Bereitstellung eines neuen Release eines Clouddiensts (erweiterter Support) entscheiden, können Sie ihn mit einem anderen vorhandenen Clouddienst (erweiterter Support) austauschbar machen, sodass Sie Ihr neues Release mithilfe dieser Bereitstellung stagen und testen können. Ein Clouddienst kann nur zum Zeitpunkt der Bereitstellung des zweiten Clouddiensts (des Paars) mit einem anderen Clouddienst austauschbar gemacht werden. Bei Verwendung der ARM-vorlagenbasierten Bereitstellungsmethode wird hierzu die Eigenschaft „SwappableCloudService“ im Netzwerkprofil des Clouddienstobjekts auf die ID des anderen Clouddiensts festgelegt. 
+# <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>Austauschen oder Wechseln von Bereitstellungen in Azure Cloud Services (erweiterter Support)
 
-```
+In Azure Cloud Services (erweiterter Support) können Sie zwei unabhängige Clouddienstbereitstellungen gegeneinander austauschen. Im Gegensatz zu Azure Cloud Services (klassisch) verwendet das Azure Resource Manager-Modell in Azure Cloud Services (erweiterter Support) keine Bereitstellungsslots. Wenn Sie in Azure Cloud Services (erweiterter Support) ein neues Release eines Clouddiensts bereitstellen, können Sie den Clouddienst so konfigurieren, dass er gegen einen vorhandenen Clouddienst in Azure Cloud Services (erweiterter Support) ausgetauscht werden kann.
+
+Nachdem Sie die Bereitstellungen ausgetauscht haben, können Sie Ihr neues Release mithilfe der neuen Clouddienstbereitstellung bereitstellen und testen. Tatsächlich wird bei einem Austausch ein neuer (gestageter) Clouddienst zum Produktionsrelease höhergestuft.
+
+> [!NOTE]
+> Sie können nicht zwischen einer Azure Cloud Services-Bereitstellung (klassisch) und einer Azure Cloud Services-Bereitstellung (erweiterter Support) wechseln.
+
+Sie müssen einen Clouddienst als austauschbar festlegen, wenn Sie den zweiten Dienst eines Clouddienstpaars bereitstellen.
+
+Sie können die Bereitstellungen mithilfe einer ARM-Vorlage (Azure Resource Manager), dem Azure-Portal oder der REST-API austauschen.
+
+## <a name="arm-template"></a>ARM-Vorlage
+
+Wenn Sie als Bereitstellungsmethode eine ARM-Vorlage verwenden, legen Sie die Eigenschaft `SwappableCloudService` im `networkProfile` des Objekts `cloudServices` auf die ID des gekoppelten Clouddiensts fest, um den Austausch der Clouddienste zu ermöglichen:
+
+```json
 "networkProfile": {
  "SwappableCloudService": {
               "id": "[concat(variables('swappableResourcePrefix'), 'Microsoft.Compute/cloudServices/', parameters('cloudServicesToBeSwappedWith'))]"
             },
+        }
 ```
-> [!Note] 
-> Sie können nicht zwischen einem klassischen Clouddienst und einem Clouddienst mit erweitertem Support wechseln.
 
-Verwenden Sie **Austausch**, um die URLs auszutauschen, mit denen die beiden Clouddienste adressiert werden, und dadurch einen neuen (gestageten) Clouddienst zum Produktionsrelease höher zu stufen.
-Sie können Bereitstellungen über die Seite Cloud-Dienste oder über das Dashboard austauschen.
+## <a name="azure-portal"></a>Azure-Portal
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com)den Clouddienst aus, den Sie aktualisieren möchten. Dieser Schritt öffnet das Blatt für die Clouddienstinstanz.
-2. Wählen Sie auf dem Blatt die Option **Austausch** aus.
-   :::image type="content" source="media/swap-cloud-service-1.png" alt-text="Abbildung: Austauschoption für den Clouddienst":::
-   
-3. Die folgende Bestätigungsaufforderung wird geöffnet:
-   
-   :::image type="content" source="media/swap-cloud-service-2.png" alt-text="Abbildung: Austauschen des Clouddiensts":::
-   
-4. Klicken Sie nach dem Überprüfen der Bereitstellungsinformationen auf OK, um die Bereitstellungen auszutauschen.
-Der Austausch erfolgt schnell, da sich nur die virtuellen IP-Adressen (VIPs) für die beiden Clouddienste ändern.
+So tauschen Sie eine Bereitstellung im Azure-Portal aus:
 
-Um Computekosten zu sparen, können Sie einen der (als Stagingumgebung für die Anwendungsbereitstellung festgelegten) Clouddienste löschen, nachdem Sie sich vergewissert haben, dass Ihr ausgetauschter Clouddienst erwartungsgemäß funktioniert.
+1. Wählen Sie im Portalmenü **Cloud Services (erweiterter Support)** oder **Dashboard** aus.
+1. Wählen Sie dann den Clouddienst aus, den Sie aktualisieren möchten.
+1. Wählen Sie unter **Übersicht** für den Clouddienst die Option **Austauschen** aus:
 
-Im Anschluss sehen Sie die REST-API zum Durchführen eines Austauschs zweier Clouddienstbereitstellungen mit erweitertem Support:
+   :::image type="content" source="media/swap-cloud-service-portal-swap.png" alt-text="Screenshot: Registerkarte „Austausch“ für den Clouddienst":::
+
+1. Überprüfen Sie im Bereich zur Bestätigung des Austauschs die Bereitstellungsinformationen. Klicken Sie dann auf **OK** aus, um die Bereitstellungen auszutauschen:
+
+   :::image type="content" source="media/swap-cloud-service-portal-confirm.png" alt-text="Screenshot: Bestätigen der Informationen zum Bereitstellungsaustausch":::
+
+Der Bereitstellungsaustausch erfolgt schnell, da sich nur die virtuellen IP-Adresse (VIP) für den bereitgestellten Clouddienst ändert.
+
+Um Computekosten zu sparen, können Sie einen der (als Stagingumgebung für Ihre Anwendungsbereitstellung festgelegten) Clouddienste löschen, nachdem Sie sich vergewissert haben, dass Ihr ausgetauschter Clouddienst erwartungsgemäß funktioniert.
+
+## <a name="rest-api"></a>REST-API
+
+Verwenden Sie den folgenden Befehl und die nachstehend gezeigte JSON-Konfiguration, um mithilfe der REST-API zu einer neuen Clouddienstbereitstellung in Azure Cloud Services (erweiterter Support) zu wechseln:
+
 ```http
 POST https://management.azure.com/subscriptions/subId/providers/Microsoft.Network/locations/region/setLoadBalancerFrontendPublicIpAddresses?api-version=2020-11-01
 ```
-```
+
+```json
 {
   "frontendIPConfigurations": [
     {
@@ -68,23 +87,36 @@ POST https://management.azure.com/subscriptions/subId/providers/Microsoft.Networ
     }
   ]
  }
+}
 ```
+
 ## <a name="common-questions-about-swapping-deployments"></a>Häufig gestellte Fragen zum Austauschen der Bereitstellungen
 
-### <a name="what-are-the-prerequisites-for-swapping-between-two-cloud-services"></a>Welche Voraussetzungen müssen erfüllt sein, um zwei Clouddienste austauschen zu können?
-Es gibt zwei Hauptvoraussetzungen für einen erfolgreichen Austausch von Clouddiensten (erweiterter Support):
+Lesen Sie diese Antworten auf häufig gestellte Fragen zum Bereitstellungsaustausch in Azure Cloud Services (erweiterter Support).
+
+### <a name="what-are-the-prerequisites-for-swapping-to-a-new-cloud-services-deployment"></a>Welche Voraussetzungen müssen erfüllt sein, um zu einer neuen Clouddienstbereitstellung wechseln zu können?
+
+Für einen erfolgreichen Bereitstellungsaustausch in Azure Cloud Services (erweiterter Support) müssen zwei Voraussetzungen erfüllt sein:
+
 * Wenn Sie für einen der austauschbaren Clouddienste eine statische/reservierte IP-Adresse verwenden möchten, muss der andere Clouddienst ebenfalls eine reservierte IP-Adresse verwenden. Andernfalls tritt bei dem Austausch ein Fehler auf.
-* Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im Azure-Portal auf dem Blatt Übersicht überprüfen. Alternativ können Sie den Befehl „Get-AzRole“ in Windows PowerShell verwenden.
+* Alle Instanzen Ihrer Rollen müssen ausgeführt werden, damit der Austausch erfolgreich durchgeführt werden kann. Um den Status Ihrer Instanzen zu überprüfen, wechseln Sie im Azure-Portal für den neu bereitgestellten Clouddienst zu **Übersicht**, oder verwenden Sie den Befehl `Get-AzRole` in Windows PowerShell.
 
-Updates von Gastbetriebssystemen sowie Dienstreparaturvorgänge können ebenfalls dazu führen, dass beim Austauschen von Bereitstellungen ein Fehler auftritt. Weitere Informationen finden Sie unter Behandeln von Problemen mit der Clouddienstbereitstellung.
+Updates von Gastbetriebssystemen sowie Dienstreparaturvorgänge können ebenfalls dazu führen, dass ein Bereitstellungsaustausch nicht erfolgreich durchgeführt werden kann. Weitere Informationen finden Sie unter [Behandeln von Bereitstellungsproblemen mit Azure Cloud Services (klassisch)](../cloud-services/cloud-services-troubleshoot-deployment-problems.md).
 
-### <a name="can-i-perform-a-vip-swap-in-parallel-with-another-mutating-operation"></a>Kann ein VIP-Austausch gleichzeitig mit einem anderen Änderungsvorgang durchgeführt werden?
-Nein. Der VIP-Austausch ist eine reine Netzwerkänderung, die abgeschlossen sein muss, bevor ein anderer Computevorgang für den Clouddienst bzw. für die Clouddienste ausgeführt wird. Wenn für die Clouddienste während eines VIP-Austauschs ein Aktualisierungs-, Lösch- oder Autoskalierungsvorgang ausgeführt oder ein VIP-Austausch ausgelöst wird, während ein anderer Computevorgang aktiv ist, kann dies einen unerwünschten Zustand des Clouddiensts ohne Möglichkeit zur Wiederherstellung zur Folge haben. 
+### <a name="can-i-make-a-vip-swap-in-parallel-with-another-mutating-operation"></a>Kann ein VIP-Austausch gleichzeitig mit einem anderen Änderungsvorgang durchgeführt werden?
 
-### <a name="does-a-swap-incur-downtime-for-my-application-how-should-i-handle-it"></a>Führt ein Austausch zu einer Ausfallzeit für die Anwendung? Wie sollte ich dabei vorgehen?
-Wie im vorherigen Abschnitt beschrieben, erfolgt der Austausch von Clouddiensten in der Regel schnell, da es sich nur um eine Konfigurationsänderung in Azure Load Balancer handelt. In einigen Fällen kann der Austausch jedoch zehn oder mehr Sekunden dauern und zu vorübergehenden Verbindungsausfällen führen. Um die Auswirkungen auf Ihre Kunden zu minimieren, ist es empfehlenswert, Clientwiederholungslogik zu implementieren.
+Nein. Ein VIP-Austausch ist eine reine Netzwerkänderung. Die Änderung muss abgeschlossen sein, bevor ein anderer Computevorgang für einen Clouddienst gestartet wird. Das Starten einer Aktualisierung, Löschung oder automatischen Skalierung für einen Clouddienst während eines VIP-Austauschs oder das Auslösen eines VIP-Austauschs während der Durchführung eines anderen Computevorgangs kann dazu führen, dass der Clouddienst in einen nicht behebbaren Fehlerzustand wechselt.
+
+### <a name="does-a-swap-incur-downtime-for-my-application-and-how-should-i-handle-it"></a>Führt ein Austausch zu einer Downtime für die Anwendung? Wie sollte ich dem begegnen?
+
+Der Austausch von Clouddiensten erfolgt in der Regel schnell, da es sich lediglich um eine Konfigurationsänderung in Azure Load Balancer handelt. In einigen Fällen kann der Austausch jedoch 10 Sekunden oder länger dauern und zu vorübergehenden Verbindungsausfällen führen. Um die Auswirkungen des Austauschs auf Benutzer zu begrenzen, erwägen Sie die Implementierung einer Clientwiederholungslogik.
 
 ## <a name="next-steps"></a>Nächste Schritte 
-- Überprüfen Sie die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support).
-- Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
-- Stellen Sie eine Cloud Service-Instanz (erweiterter Support) über das [Azure-Portal](deploy-portal.md), mit [PowerShell](deploy-powershell.md), einer [Vorlage](deploy-template.md) oder [Visual Studio](deploy-visual-studio.md) bereit.
+
+* Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Azure Cloud Services (erweiterter Support).
+* Sehen Sie sich den Abschnitt [Häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support)](faq.md) an.
+* Stellen Sie einen Azure Cloud Services-Clouddienst (erweiterter Support) mithilfe einer der folgenden Optionen bereit:
+  * [Azure portal](deploy-portal.md)
+  * [PowerShell](deploy-powershell.md)
+  * [ARM-Vorlage](deploy-template.md)
+  * [Visual Studio](deploy-visual-studio.md)

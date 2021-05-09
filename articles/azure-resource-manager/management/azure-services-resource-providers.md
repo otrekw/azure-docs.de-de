@@ -3,12 +3,13 @@ title: Ressourcenanbieter durch Azure-Dienste
 description: Listet alle Ressourcenanbieter-Namespaces für Azure Resource Manager auf und gibt den Azure-Dienst für den jeweiligen Namespace an.
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: f33017713d8154fb56472ad5f53b97b22d32e0e3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2264883ed6b7b4d23a6030b93d1aef88816c1fd7
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167871"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330781"
 ---
 # <a name="resource-providers-for-azure-services"></a>Ressourcenanbieter für Azure-Dienste
 
@@ -158,7 +159,6 @@ Die Ressourcenanbieter, die mit **– registriert** gekennzeichnet sind, sind st
 | Microsoft.SerialConsole – [registriert](#registration) | [Serielle Azure-Konsole für Windows](/troubleshoot/azure/virtual-machines/serial-console-windows) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
-| Microsoft.ServiceFabricMesh | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
 | Microsoft.Services | core |
 | Microsoft.SignalRService | [Azure SignalR Service](../../azure-signalr/index.yml) |
 | Microsoft.SoftwarePlan | Lizenz |

@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 20f11983a76b4ea703981e257b088c13cf577935
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 72ff2a1a7b8bcff768248833183ce03a169f9a4d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123391"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752118"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
 
@@ -92,5 +92,5 @@ Beachten Sie, dass bei einer Bestellung beim Zertifikataussteller die x509-Zerti
 
 ## <a name="see-also"></a>Weitere Informationen
 
- - Schrittanleitung zum Erstellen von Zertifikaten in Key Vault mithilfe des [Portals](./quick-create-portal.md), der [Azure CLI](./quick-create-cli.md) und [Azure PowerShell](./quick-create-powershell.md)
+ - Schrittanleitung zum Erstellen von Zertifikaten in Key Vault mithilfe des [Portals](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal), der [Azure CLI](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-cli) und [Azure PowerShell](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-powershell)
  - [Überwachen und Verwalten der Zertifikaterstellung](create-certificate-scenarios.md)

@@ -2,13 +2,13 @@
 title: Sichern von virtuellen Hyper-V-Computern mit MABS
 description: Dieser Artikel enthält die Verfahren zum Sichern und Wiederherstellen von virtuellen Computern mit Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
-ms.date: 07/18/2019
-ms.openlocfilehash: c1c894df29659dce312d092f1aa3ea5d584e248a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/20/2021
+ms.openlocfilehash: b4de791269161b477fc07d6539feaa975fdd72ad
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107209"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739996"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Sichern von virtuellen Hyper-V-Computern mit Azure Backup Server
 
@@ -126,7 +126,7 @@ Eine virtueller Replikatcomputer wird deaktiviert, bis ein Failover eingeleitet 
 
 Wenn Sie einen gesicherten virtuellen Computer wiederherstellen können, wählen Sie den virtuellen Computer und den jeweiligen Wiederherstellungspunkt über den Wiederherstellungsassistenten aus. So öffnen Sie den Wiederherstellungs-Assistenten und stellen einen virtuellen Computer wieder her:
 
-1. Geben Sie in der MABS-Administratorkonsole den Namen des virtuellen Computers ein, oder erweitern Sie die Liste der geschützten Elemente, und wählen Sie die VM aus, die Sie wiederherstellen möchten.
+1. Geben Sie in der MABS-Administratorkonsole den Namen des virtuellen Computers ein, oder erweitern Sie die Liste der geschützten Elemente, navigieren Sie zu **Alle geschützten HyperV-Daten**, und wählen Sie den virtuellen Computer aus, den Sie wiederherstellen möchten.
 
 2. Wählen Sie im Bereich **Wiederherstellungspunkte für** im Kalender ein beliebiges Datum aus, um die verfügbaren Wiederherstellungspunkte anzuzeigen. Wählen Sie dann im Bereich **Pfad** den Wiederherstellungspunkt aus, den Sie im Wiederherstellungs-Assistenten verwenden möchten.
 

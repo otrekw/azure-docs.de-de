@@ -4,13 +4,13 @@ description: Bereitstellen und Konfigurieren eines Hyperledger Fabric-Konsortium
 ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: contperf-fy21q3, devx-track-azurecli
+ms.openlocfilehash: 69f8518482830f143776dc9d11480a1c818f2fc6
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101102"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886201"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Bereitstellen eines Hyperledger Fabric-Konsortiums in Azure Kubernetes Service (AKS)
 
@@ -124,7 +124,7 @@ Auf der folgenden Abbildung sehen Sie Schritt für Schritt den Prozess für das 
 
 ![Diagramm des Prozesses zum Erstellen eines Konsortiums.](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
 
-Nach Abschluss der Anfangseinrichtung verwenden Sie die Clientanwendung, um die folgenden Vorgänge durchzuführen:  
+Nach Abschluss der Anfangseinrichtung verwenden Sie die Clientanwendung, um die folgenden Vorgänge durchzuführen: â€¯
 
 - Kanalverwaltung
 - Konsortiumsverwaltung
@@ -293,15 +293,15 @@ Führen Sie vom Client der Peerorganisation aus den Befehl zum Festlegen der Ank
 # Peer organization name where the chaincode operation will be performed
 ORGNAME=<PeerOrgName>
 USER_IDENTITY="admin.$ORGNAME"  
-# If you are using chaincode_example02 then set CC_NAME=“chaincode_example02”
+# If you are using chaincode_example02 then set CC_NAME=â€œchaincode_example02â€
 CC_NAME=<chaincodeName>  
-# If you are using chaincode_example02 then set CC_VERSION=“1” for validation
+# If you are using chaincode_example02 then set CC_VERSION=â€œ1â€ for validation
 CC_VERSION=<chaincodeVersion>
 # Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'  
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
 # CC_PATH contains the path where your chaincode is placed. This is the absolute path to the chaincode project root directory.
-# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
+# If you are using chaincode_example02 to validate then CC_PATH=â€œ/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/goâ€
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode will be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  
@@ -355,7 +355,7 @@ Führen Sie vom Client der Peerorganisation aus den folgenden Befehl aus, um die
 ./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-Übergeben Sie den Namen der Aufruffunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in `<invokeFunction>` bzw. `<invokeFuncArgs>`  Fahren Sie mit dem Chaincodebeispiel „chaincode_example02.go“ fort, und legen Sie `<invokeFunction>` auf `invoke` und `<invokeFuncArgs>` auf `"a" "b" "10"` fest, um einen Aufrufvorgang auszuführen.  
+Übergeben Sie den Namen der Aufruffunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen inâ€¯`<invokeFunction>`â€¯andâ€¯`<invokeFuncArgs>`â€¯. Fahren Sie mit dem Chaincodebeispiel „chaincode_example02.go“ fort, und legen Sie setâ€¯`<invokeFunction>`â€¯toâ€¯`invoke`â€¯andâ€¯`<invokeFuncArgs>`â€¯auf `"a" "b" "10"` fest, um einen Aufrufvorgang auszuführen.  
 
 >[!NOTE]
 > Führen Sie den Befehl jeweils ein Mal aus jeder Peerorganisation im Kanal aus. Sobald die Transaktion erfolgreich an den Auftraggeber übermittelt wurde, verteilt der Auftraggeber diese Transaktion an alle Peerorganisationen im Kanal. Dann wird der World State auf allen Peerknoten aller Peerorganisationen im Kanal aktualisiert.  
@@ -372,7 +372,7 @@ Unterstützende Peers sind Peers, bei denen Chaincode installiert ist und zur Au
 
 Wenn Sie Chaincode mithilfe von *azhlfTool* installieren, übergeben Sie alle Peerknotennamen als Wert an das unterstützende Peerargument. Chaincode wird auf jedem Peerknoten für diese Organisation installiert. 
 
-Übergeben Sie den Namen der Abfragefunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in `<queryFunction>` bzw. `<queryFuncArgs>`  Wenn nun wieder der Chaincode „chaincode_example02.go“ als Referenz verwendet wird, müssen Sie `<queryFunction>` auf `query` und `<queryArgs>` auf `"a"` festlegen, um den Wert von „a“ im World State abzufragen.  
+Übergeben Sie den Namen der Abfragefunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen inâ€¯`<queryFunction>`â€¯andâ€¯`<queryFuncArgs>`â€¯. Wenn nun wieder der Chaincode „chaincode_example02.go“ als Referenz verwendet wird, müssen Sie setâ€¯`<queryFunction>`â€¯toâ€¯`query` andâ€¯`<queryArgs>` auf `"a"` festlegen, um den Wert von „a“ im World State abzufragen.  
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

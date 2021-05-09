@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f571fa6e04d19412db856a42232cb2d151ceb6ab
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a8f1b8c54ad4fd42cc8ebda4965aaf1233143f39
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141485"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107741258"
 ---
 # <a name="how-to-use-dfs-namespaces-with-azure-files"></a>Verwenden von DFS-Namespaces mit Azure Files
-[DFS-Namespaces (Distributed File Systems Namespaces)](/windows-server/storage/dfs-namespaces/dfs-overview) oder DFS-N bezeichnet eine Windows Server-Serverrolle, die vielfach verwendet wird, um die Bereitstellung und Wartung von SMB-Dateifreigaben in der Produktion zu vereinfachen. DFS-Namespaces ist eine Technologie für die Virtualisierung von Speichernamespaces, mit deren Hilfe Sie eine indirekte Ebene zwischen dem UNC-Pfad Ihrer Dateifreigaben und den eigentlichen Dateifreigaben bereitstellen können. DFS-Namespaces funktionieren mit SMB-Dateifreigaben, wobei es keine Rolle spielt, wo diese Dateifreigaben gehostet werden: Sie können SMB-Freigaben verwenden, die auf einem lokalen Windows-Dateiserver mit oder ohne Azure-Dateisynchronisierung gehostet werden, direkte Azure-Dateifreigaben, SMB-Dateifreigaben mit Hosting in Azure NetApp Files oder anderen Drittanbieterangeboten oder sogar Dateifreigaben, die in anderen Clouds gehostet werden. 
+[DFS-Namespaces (Distributed File Systems Namespaces)](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview) oder DFS-N bezeichnet eine Windows Server-Serverrolle, die vielfach verwendet wird, um die Bereitstellung und Wartung von SMB-Dateifreigaben in der Produktion zu vereinfachen. DFS-Namespaces ist eine Technologie für die Virtualisierung von Speichernamespaces, mit deren Hilfe Sie eine indirekte Ebene zwischen dem UNC-Pfad Ihrer Dateifreigaben und den eigentlichen Dateifreigaben bereitstellen können. DFS-Namespaces funktionieren mit SMB-Dateifreigaben, wobei es keine Rolle spielt, wo diese Dateifreigaben gehostet werden: Sie können SMB-Freigaben verwenden, die auf einem lokalen Windows-Dateiserver mit oder ohne Azure-Dateisynchronisierung gehostet werden, direkte Azure-Dateifreigaben, SMB-Dateifreigaben mit Hosting in Azure NetApp Files oder anderen Drittanbieterangeboten oder sogar Dateifreigaben, die in anderen Clouds gehostet werden. 
 
 Im Kern bietet DFS-Namespaces eine Zuordnung zwischen einem benutzerfreundlichen UNC-Pfad wie `\\contoso\shares\ProjectX` und dem zugrunde liegenden UNC-Pfad der SMB-Freigabe, z. B. `\\Server01-Prod\ProjectX` oder `\\storageaccount.file.core.windows.net\projectx`. Wenn der Endbenutzer zu seiner Dateifreigabe navigieren möchte, gibt er den benutzerfreundlichen UNC-Pfad ein, aber der zugehörige SMB-Client greift auf den zugrunde liegenden SMB-Pfad der Zuordnung zu. Es ist zudem möglich, dieses grundlegende Konzept zu erweitern, um einen Namen eines vorhandenen Dateiservers wie beispielsweise `\\MyServer\ProjectX` zu übernehmen. Sie können diese Funktion verwenden, um die folgenden Szenarien zu unterstützen:
 
@@ -39,7 +39,7 @@ DFS-Namespaces bietet zwei grundlegende Arten von Namespaces:
 - **Domänenbasierter Namespace**: Ein Namespace, der als Teil Ihrer Windows Server AD-Domäne gehostet wird. Namespaces, die als Teil von AD gehostet werden, umfassen einen UNC-Pfad, der den Namen Ihrer Domäne enthält. Dieser lautet z. B. `\\contoso.com\shares\myshare`, wenn Ihre Domäne `contoso.com` heißt. Domänenbasierte Namespaces unterstützen höhere Skalierungsgrenzwerte und integrierte Redundanz über AD. Es darf sich nicht um eine Clusterressource in einem Failovercluster handeln. 
 - **Eigenständiger Namespace**: Ein Namespace, der nicht als Teil der Windows Server AD-Instanz, sondern auf einem einzelnen Server gehostet wird. Der Name eines eigenständige Namespaces basiert auf dem Namen des eigenständigen Servers. Er kann z. B. `\\MyStandaloneServer\shares\myshare` lauten, wenn Ihr eigenständiger Server den Namen `MyStandaloneServer` hat. Eigenständige Namespaces unterstützen niedrigere Skalierungsziele als domänenbasierte Namespaces, können aber als Clusterressource in einem Failovercluster gehostet werden.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Um DFS-Namespaces mit Azure Files und Dateisynchronisierung verwenden zu können, benötigen Sie die folgenden Ressourcen:
 
 - Eine Active Directory-Domäne. Diese kann an einem beliebigen Ort gehostet werden, z. B. lokal, auf einer Azure-VM oder sogar in einer anderen Cloud.
@@ -207,7 +207,7 @@ New-DfsnFolder -Path $sharePath -TargetPath $targetUNC
 
 Nachdem Sie nun einen Namespace, einen Ordner und ein Ordnerziel erstellt haben, sollten Sie Ihre Dateifreigabe über DFS-Namespaces einbinden können. Wenn Sie einen domänenbasierten Namespace verwenden, sollte der vollständige Pfad für Ihre Freigabe `\\<domain-name>\<namespace>\<share>` lauten. Bei Verwendung eines eigenständigen Namespace sollte der vollständige Pfad für Ihre Freigabe `\\<DFS-server>\<namespace>\<share>` lauten. Wenn Sie einen eigenständigen Namespace mit Stammkonsolidierung verwenden, können Sie direkt über Ihren alten Servernamen zugreifen, z. B. `\\<old-server>\<share>`.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 - Bereitstellen einer Azure-Dateifreigabe: [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md) und [Erstellen einer Azure-Dateifreigabe](storage-how-to-create-file-share.md)
 - Konfigurieren des Zugriffs auf Dateifreigaben: [Identitätsbasierte Authentifizierung](storage-files-active-directory-overview.md) und [Azure Files – Überlegungen zum Netzwerkbetrieb](storage-files-networking-overview.md)
-- [Übersicht über DFS-Namespaces](/windows-server/storage/dfs-namespaces/dfs-overview)
+- [Übersicht über DFS-Namespaces](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)

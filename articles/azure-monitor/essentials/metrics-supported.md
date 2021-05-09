@@ -4,14 +4,14 @@ description: Liste der Metriken, die mit Azure Monitor für jeden Ressourcentyp 
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 04/01/2021
+ms.date: 04/15/2021
 ms.author: robb
-ms.openlocfilehash: 6f664450d5450782d9a01d75abfb5a96b3e0bba6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f8e54fbc275a230140cab445d58c59454f0c546c
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221193"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330636"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -281,6 +281,20 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 |Knoten insgesamt|Ja|Knoten insgesamt|Anzahl|Average|Gesamtanzahl von Knoten|Scenario, ClusterName|
 |Nicht verwendbare Kerne|Ja|Nicht verwendbare Kerne|Anzahl|Average|Anzahl der nicht verwendbaren Kerne|Scenario, ClusterName|
 |Unusable Nodes (Nicht verwendbare Knoten)|Ja|Unusable Nodes (Nicht verwendbare Knoten)|Anzahl|Average|Anzahl nicht verwendbarer Knoten|Scenario, ClusterName|
+
+## <a name="microsoftbingaccounts"></a>microsoft.bing/accounts
+
+|Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
+|---|---|---|---|---|---|---|
+|BlockedCalls|Ja|Blockierte Aufrufe|Anzahl|Gesamt|Anzahl von Aufrufen, bei denen das Raten- oder Kontingentlimit überschritten wurde|ApiName, ServingRegion, StatusCode|
+|ClientErrors|Ja|Clientfehler|Anzahl|Gesamt|Anzahl von Aufrufen mit Clientfehler (HTTP-Statuscode 4xx)|ApiName, ServingRegion, StatusCode|
+|DataIn|Ja|Eingehende Daten|Byte|Gesamt|Eingehende Anforderung: Inhaltslänge in Bytes|ApiName, ServingRegion, StatusCode|
+|DataOut|Ja|Datenausgabe|Byte|Gesamt|Ausgehende Antwort: Inhaltslänge in Bytes|ApiName, ServingRegion, StatusCode|
+|Latency|Ja|Latency|Millisekunden|Average|Wartezeit in Millisekunden|ApiName, ServingRegion, StatusCode|
+|ServerErrors|Ja|Serverfehler|Anzahl|Gesamt|Anzahl von Aufrufen mit Serverfehler (HTTP-Statuscode 5xx)|ApiName, ServingRegion, StatusCode|
+|SuccessfulCalls|Ja|Erfolgreiche Aufrufe|Anzahl|Gesamt|Anzahl erfolgreicher Aufrufe (HTTP-Statuscode 2xx)|ApiName, ServingRegion, StatusCode|
+|TotalCalls|Ja|Aufrufe gesamt|Anzahl|Gesamt|Gesamtanzahl von Aufrufen|ApiName, ServingRegion, StatusCode|
+|TotalErrors|Ja|Fehler insgesamt|Anzahl|Gesamt|Anzahl von Aufrufen mit Fehler (HTTP-Statuscode 4xx oder 5xx)|ApiName, ServingRegion, StatusCode|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
@@ -1734,6 +1748,9 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 |IoTConnectorMeasurementIngestionLatencyMs|Ja|Durchschnittliche Wartezeit der Gruppierungsphase|Millisekunden|Average|Die Zeitspanne zwischen dem Empfang der Gerätedaten durch den IoT-Connector und der Verarbeitung der Daten in der FHIR-Konvertierungsphase.|Vorgang, ConnectorName|
 |IoTConnectorNormalizedEvent|Ja|Anzahl normalisierter Nachrichten|Anzahl|SUM|Die Gesamtanzahl zugeordneter normalisierter Werte, die in der Normalisierungsphase des Azure IoT-Connectors für FHIR ausgegeben wurden.|Vorgang, ConnectorName|
 |IoTConnectorTotalErrors|Ja|Gesamtfehlerzahl|Anzahl|SUM|Die Gesamtanzahl der vom Azure IoT-Connector für FHIR protokollierten Fehler|Name, Vorgang, ErrorType, ErrorSeverity, ConnectorName|
+|ServiceApiErrors|Ja|Dienstfehler|Anzahl|SUM|Die Gesamtanzahl der vom Dienst generierten internen Serverfehler.|Protokoll, Authentifizierung, Operation, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
+|ServiceApiLatency|Ja|Dienstlatenz|Millisekunden|Average|Die Antwortlatenz des Diensts.|Protokoll, Authentifizierung, Operation, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
+|ServiceApiRequests|Ja|Service Requests|Anzahl|SUM|Die Gesamtanzahl der vom Dienst empfangenen Anforderungen.|Protokoll, Authentifizierung, Operation, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalErrors|Ja|Fehler insgesamt|Anzahl|SUM|Die Gesamtanzahl der internen Serverfehler im Dienst.|Protokoll, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalLatency|Ja|Gesamtlatenz|Millisekunden|Average|Die Antwortlatenz des Diensts.|Protocol|
 |TotalRequests|Ja|Anzahl von Anforderungen|Anzahl|SUM|Die Gesamtanzahl der vom Dienst empfangenen Anforderungen.|Protocol|
@@ -1803,6 +1820,10 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
+|c2d.commands.failure|Ja|Fehlerhafte Befehlsaufrufe|Anzahl|Gesamt|Anzahl aller fehlerhaften Befehlsanforderungen, die von IoT Central initiiert wurden|Keine Dimensionen|
+|c2d.commands.requestSize|Ja|Anforderungsgröße der Befehlsaufrufe|Byte|Gesamt|Anforderungsgröße aller von IoT Central initiierten Befehlsanforderungen|Keine Dimensionen|
+|c2d.commands.responseSize|Ja|Antwortgröße der Befehlsaufrufe|Byte|Gesamt|Antwortgröße aller von IoT Central initiierten Befehlsantworten|Keine Dimensionen|
+|c2d.commands.success|Ja|Erfolgreiche Befehlsaufrufe|Anzahl|Gesamt|Anzahl aller erfolgreichen Befehlsanforderungen, die von IoT Central initiiert wurden|Keine Dimensionen|
 |c2d.property.read.failure|Ja|Fehlerhafte Lesevorgänge für Geräteeigenschaften über IoT Central|Anzahl|Gesamt|Die Anzahl aller fehlerhaften Eigenschaftslesevorgänge, die über IoT Central initiiert wurden|Keine Dimensionen|
 |c2d.property.read.success|Ja|Erfolgreiche Lesevorgänge für Geräteeigenschaften über IoT Central|Anzahl|Gesamt|Die Anzahl aller erfolgreichen Eigenschaftslesevorgänge, die über IoT Central initiiert wurden|Keine Dimensionen|
 |c2d.property.update.failure|Ja|Fehlerhafte Aktualisierungen von Geräteeigenschaften über IoT Central|Anzahl|Gesamt|Die Anzahl aller fehlerhaften Eigenschaftsaktualisierungen, die über IoT Central initiiert wurden|Keine Dimensionen|
@@ -1812,11 +1833,15 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 |d2c.property.read.success|Ja|Erfolgreiche Lesevorgänge für Geräteeigenschaften über Geräte|Anzahl|Gesamt|Die Anzahl aller erfolgreichen Eigenschaftslesevorgänge, die von Geräten initiiert wurden|Keine Dimensionen|
 |d2c.property.update.failure|Ja|Fehlerhafte Aktualisierungen von Geräteeigenschaften über Geräte|Anzahl|Gesamt|Die Anzahl aller fehlerhaften Eigenschaftsaktualisierungen, die über Geräte initiiert wurden|Keine Dimensionen|
 |d2c.property.update.success|Ja|Erfolgreiche Aktualisierungen von Geräteeigenschaften über Geräte|Anzahl|Gesamt|Die Anzahl aller erfolgreichen Eigenschaftsaktualisierungen, die über Geräte initiiert wurden|Keine Dimensionen|
+|d2c.telemetry.Ingress.allProtocol|Ja|Sendeversuche für Telemetrienachrichten gesamt|Anzahl|Gesamt|Anzahl von Telemetrienachrichten vom Gerät zur Cloud, für die Versuche zum Senden an die IoT Central-Anwendung unternommen wurden|Keine Dimensionen|
+|d2c.telemetry.ingress.success|Ja|Gesendete Telemetrienachrichten gesamt|Anzahl|Gesamt|Anzahl von Telemetrienachrichten vom Gerät zur Cloud, die erfolgreich an die IoT Central-Anwendung gesendet wurden|Keine Dimensionen|
 |dataExport.error|Ja|Datenexportfehler|Anzahl|Gesamt|Anzahl der beim Datenexport aufgetretenen Fehler|exportId, exportDisplayName, destinationId, destinationDisplayName|
 |dataExport.messages.filtered|Ja|Gefilterte Datenexportnachrichten|Anzahl|Gesamt|Anzahl der Nachrichten, die beim Datenexport Filter durchlaufen haben|exportId, exportDisplayName, destinationId, destinationDisplayName|
 |dataExport.messages.filtered|Ja|Empfangene Datenexportnachrichten|Anzahl|Gesamt|Anzahl der Nachrichten, die beim Datenexport eingehen, ehe Filterung und Anreicherung erfolgen|exportId, exportDisplayName, destinationId, destinationDisplayName|
 |dataExport.messages.written|Ja|Geschriebene Datenexportnachrichten|Anzahl|Gesamt|Anzahl der in ein Ziel geschriebenen Nachrichten|exportId, exportDisplayName, destinationId, destinationDisplayName|
-
+|dataExport.statusChange|Ja|Änderung des Datenexportstatus|Anzahl|Gesamt|Anzahl von Statusänderungen|exportId, exportDisplayName, destinationId, destinationDisplayName, status|
+|deviceDataUsage|Ja|Datennutzung durch Geräte gesamt|Byte|Gesamt|Anzahl übertragener Bytes an Geräte und von Geräten, die mit der IoT Central-Anwendung verbunden sind|Keine Dimensionen|
+|provisionedDeviceCount|Nein|Bereitgestellte Geräte gesamt|Anzahl|Average|Anzahl von Geräten, die in der IoT Central-Anwendung bereitgestellt werden|Keine Dimensionen|
 
 ## <a name="microsoftkeyvaultmanagedhsms"></a>microsoft.keyvault/managedhsms
 
@@ -2685,24 +2710,6 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 |UserErrors|Nein|Benutzerfehler.|Anzahl|Gesamt|Benutzerfehler für Microsoft.ServiceBus.|EntityName, OperationResult|
 |WSXNS|Nein|Speicherauslastung (Deprecated)|Percent|Maximum|Speicherauslastungsmetrik für Service Bus-Premium-Namespace Diese Metrik ist veraltet. Verwenden Sie stattdessen die Speicherauslastingsmetrik (NamespaceMemoryUsage).|Replikat|
 
-
-## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
-
-|Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
-|---|---|---|---|---|---|---|
-|ActualCpu|Nein|ActualCpu|Anzahl|Average|Tatsächliche CPU-Auslastung in Millicores|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|ActualMemory|Nein|ActualMemory|Byte|Average|Tatsächliche Arbeitsspeichernutzung in MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|AllocatedCpu|Nein|AllocatedCpu|Anzahl|Average|Diesem Container zugeordnete CPU in Millicores|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|AllocatedMemory|Nein|AllocatedMemory|Byte|Average|Diesem Container zugeordneter Arbeitsspeicher in MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|ApplicationStatus|Nein|ApplicationStatus|Anzahl|Average|Status der Service Fabric Mesh-Anwendung|ApplicationName, Status|
-|ContainerStatus|Nein|ContainerStatus|Anzahl|Average|Status des Containers in der Service Fabric Mesh-Anwendung|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName, Status|
-|CpuUtilization|Nein|CpuUtilization|Percent|Average|Auslastung der CPU für diesen Container als Prozentsatz von AllocatedCpu|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|MemoryUtilization|Nein|MemoryUtilization|Percent|Average|Auslastung der CPU für diesen Container als Prozentsatz von AllocatedCpu|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|RestartCount|Nein|RestartCount|Anzahl|Average|Anzahl Neustarts eines Containers in Service Fabric Mesh-Anwendung|ApplicationName, Status, ServiceName, ServiceReplicaName, CodePackageName|
-|ServiceReplicaStatus|Nein|ServiceReplicaStatus|Anzahl|Average|Integritätsstatus eines Dienstreplikats in Service Fabric Mesh-Anwendung|ApplicationName, Status, ServiceName, ServiceReplicaName|
-|ServiceStatus|Nein|ServiceStatus|Anzahl|Average|Integritätsstatus eines Diensts in Service Fabric Mesh-Anwendung|ApplicationName, Status, ServiceName|
-
-
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -2719,10 +2726,9 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
-|ConnectionCount|Ja|Anzahl der Verbindungen|Anzahl|Maximum|Die Anzahl der Benutzerverbindungen.|Keine Dimensionen|
 |InboundTraffic|Ja|Eingehender Datenverkehr|Byte|Gesamt|Der eingehende Datenverkehr des Diensts|Keine Dimensionen|
 |OutboundTraffic|Ja|Ausgehender Datenverkehr|Byte|Gesamt|Der ausgehende Datenverkehr des Diensts|Keine Dimensionen|
-
+|TotalConnectionCount|Ja|Anzahl der Verbindungen|Anzahl|Maximum|Die Anzahl der Benutzerverbindungen.|Keine Dimensionen|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
@@ -3002,7 +3008,6 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse/workspaces
-
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
 |BuiltinSqlPoolDataProcessedBytes|Nein|Verarbeitete Daten (Bytes)|Byte|Gesamt|Gesamtmenge an Daten, die von Abfragen verarbeitet wurden|Keine Dimensionen|
@@ -3011,6 +3016,20 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 |IntegrationActivityRunsEnded|Nein|Beendete Aktivitätsausführungen|Anzahl|Gesamt|Die Anzahl der erfolgreichen, fehlerhaften oder abgebrochenen Integrationsaktivitäten|Result, FailureType, Activity, ActivityType, Pipeline|
 |IntegrationPipelineRunsEnded|Nein|Beendete Pipelineausführungen|Anzahl|Gesamt|Die Anzahl der erfolgreichen, fehlerhaften oder abgebrochenen Integrationspipelineausführungen|Result, FailureType, Pipeline|
 |IntegrationTriggerRunsEnded|Nein|Beendete Triggerausführungen|Anzahl|Gesamt|Die Anzahl der erfolgreichen, fehlerhaften oder abgebrochenen Integrationstrigger|Result, FailureType, Trigger|
+|SQLStreamingBackloggedInputEventSources|Nein|Eingabeereignisse im Rückstand (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Anzahl von Eingabeereignisquellen im Rückstand.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingConversionErrors|Nein|Datenkonvertierungsfehler (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Anzahl der Ausgabeereignisse, die nicht in das erwartete Ausgabeschema konvertiert werden konnten. Die Fehlerrichtlinie kann auf „Drop“ geändert werden, um Ereignisse zu löschen, bei denen dieses Szenario auftritt.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingDeserializationError|Nein|Eingabedeserialisierungsfehler (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Anzahl der Eingabeereignisse, die nicht deserialisiert werden konnten.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingEarlyInputEvents|Nein|Frühe Eingabeereignisse (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Anzahl von Eingabeereignissen, bei denen die Anwendungszeit im Vergleich zur Eingangszeit als früh betrachtet wird (gemäß der Richtlinie für den frühen Eingang).|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingInputEventBytes|Nein|Eingabeereignisbytes (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Vom Streamingauftrag empfangene Datenmenge (in Bytes). Kann verwendet werden, um sicherzustellen, dass Ereignisse an die Eingabequelle gesendet werden.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingInputEvents|Nein|Eingabeereignisse (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Anzahl von Eingabeereignissen.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingInputEventsSourcesPerSecond|Nein|Empfangene Eingabequellen (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Anzahl von Eingabeereignisquellen pro Sekunde.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingLateInputEvents|Nein|Späte Eingabeereignisse (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Anzahl von Eingabeereignissen, bei denen die Anwendungszeit im Vergleich zur Eingangszeit als spät betrachtet wird (gemäß der Richtlinie für die Eingangsverzögerung).|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingOutOfOrderEvents|Nein|Ereignisse für falsche Reihenfolge (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Anzahl von Event Hub-Ereignissen (serialisierte Nachrichten), die vom Event Hub-Eingabeadapter in falscher Reihenfolge empfangen und entweder gelöscht oder mit einem angepassten Zeitstempel versehen wurden (gemäß der Richtlinie für die Ereignissortierung).|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingOutputEvents|Nein|Ausgabeereignisse (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Anzahl von Ausgabeereignissen.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingOutputWatermarkDelaySeconds|Nein|Wasserzeichenverzögerung (Vorschau)|Anzahl|Maximum|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Wasserzeichenverzögerung bei der Ausgabe (in Sekunden).|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingResourceUtilization|Nein|Ressourcenverwendung in Prozent (Vorschau)|Percent|Maximum|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik.
+ Als Prozentsatz angegebene Ressourcenverwendung. Eine hohe Auslastung deutet darauf hin, dass der Auftrag fast die Höchstzahl der bereitgestellten Ressourcen verwendet.|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
+|SQLStreamingRuntimeErrors|Nein|Laufzeitfehler (Vorschau)|Anzahl|Gesamt|In „USA, Osten“ und „Europa, Westen“ verfügbare Vorschaumetrik. Gesamtanzahl von Fehlern im Zusammenhang mit der Abfrageverarbeitung (mit Ausnahme von Fehlern, die beim Untersuchen von Ereignissen oder beim Ausgeben von Ergebnissen ermittelt werden).|ResourceName, SQLPoolName, SQLDatabaseName, JobName, LogicalName, PartitionId, ProcessorInstance|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools

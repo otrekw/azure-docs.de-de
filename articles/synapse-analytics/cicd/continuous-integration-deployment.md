@@ -3,17 +3,17 @@ title: Continuous Integration und Continuous Delivery für Synapse-Arbeitsbereic
 description: Erfahren Sie, wie Sie Continuous Integration und Continuous Delivery verwenden, um Änderungen an einem Arbeitsbereich aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere zu überführen.
 author: liudan66
 ms.service: synapse-analytics
-ms.subservice: cicd
+ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2d49deef4cc7f646032219ff9e8f541cc9c1afd6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 833478d956560c981bd6cc3ba03b48bb602f563c
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131185"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739672"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Continuous Integration und Continuous Delivery für Azure Synapse-Arbeitsbereiche
 
@@ -32,10 +32,10 @@ Für eine Automatisierung der Bereitstellung eines Azure Synapse-Arbeitsbereichs
 ### <a name="azure-devops"></a>Azure DevOps
 
 - Für die Ausführung der Releasepipeline wurde ein Azure DevOps-Projekt vorbereitet.
-- [Gewähren Sie allen Benutzern, die Code einchecken, Basic-Zugriff auf Organisationsebene](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page&preserve-view=true), damit sie das Repository anzeigen können.
+- [Gewähren Sie allen Benutzern, die Code einchecken, Basic-Zugriff auf Organisationsebene](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page), damit sie das Repository anzeigen können.
 - Gewähren Sie Besitzerrechte für das Azure Synapse-Repository.
 - Stellen Sie sicher, dass Sie einen selbstgehosteten Azure DevOps-VM-Agent erstellt haben, oder verwenden Sie einen von Azure DevOps gehosteten Agent.
-- Berechtigungen zum [Erstellen einer Azure Resource Manager-Dienstverbindung (ARM) für die Ressourcengruppe](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml&preserve-view=true).
+- Berechtigungen zum [Erstellen einer Azure Resource Manager-Dienstverbindung (ARM) für die Ressourcengruppe](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml).
 - Ein Azure Active Directory-Administrator (Azure AD) muss die [Agent-Erweiterung für die Azure DevOps Synapse-Arbeitsbereichsbereitstellung in der Azure DevOps-Organisation installieren](/azure/devops/marketplace/install-extension).
 - Erstellen Sie ein Dienstkonto für die Pipelineausführung, oder legen Sie für die Ausführung ein vorhandenes Dienstkonto fest. Sie können anstelle eines Dienstkontos ein persönliches Zugriffstoken verwenden, aber Ihre Pipelines funktionieren nicht mehr, wenn das Benutzerkonto gelöscht wird.
 

@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure RBAC
 description: Enthält eine Liste mit den Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy, die für die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 860fda027e93aa208e8e46aef927322e03aeabfd
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: bd5c7bf49937546fb06483c4e29a16168efe122d
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875130"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108178165"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure RBAC
 

@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bea1ccf0777c6325bc86c15e0f88304c465d89c9
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653899"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750282"
 ---
 # <a name="managed-hsm-access-control"></a>Zugriffssteuerung für verwaltetes HSM
 
@@ -65,6 +65,7 @@ Die folgende Tabelle zeigt die Endpunkte für die Verwaltungs- und Datenebene.
 | Verwaltungsebene | **Global:**<br> management.azure.com:443<br> | Erstellen, Lesen, Aktualisieren, Löschen und Verschieben von verwalteten HSMs<br>Festlegen von verwalteten HSM-Tags | Azure RBAC |
 | Datenebene | **Global:**<br> &lt;hsm-name&gt;.managedhsm.azure.net:443<br> | **Schlüssel**: decrypt, encrypt,<br> unwrap, wrap, verify, sign, get, list, update, create, import, delete, backup, restore, purge<br/><br/> **Rollenverwaltung auf Datenebene (Lokale RBAC für verwaltetes HSM):** _Rollendefinitionen auflisten, Rollen zuweisen, Rollenzuweisungen löschen, benutzerdefinierte Rollen definieren<br/><br/>_ *Sicherung/Wiederherstellung: **Sicherung, Wiederherstellung, Status von Sicherungs-/Wiederherstellungsvorgängen überprüfen <br/><br/>** Sicherheitsdomäne:** Sicherheitsdomäne herunter- und hochladen | Lokale RBAC für verwaltetes HSM |
 |||||
+
 ## <a name="management-plane-and-azure-rbac"></a>Verwaltungsebene und Azure RBAC
 
 In der Verwaltungsebene autorisieren Sie mit Azure RBAC die Vorgänge, die ein Anrufer ausführen darf. Im Azure RBAC-Modell verfügt jedes Azure-Abonnement über eine Instanz von Azure Active Directory. Über dieses Verzeichnis gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff. Der Zugriff wird gewährt, um Ressourcen im Azure-Abonnement zu verwalten, die das Bereitstellungsmodell von Azure Resource Manager verwenden. Um den Zugriff zu gewähren, können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/install-classic-cli), [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder die [Azure Resource Manager-REST-APIs](/rest/api/authorization/roleassignments) verwenden.
@@ -87,6 +88,6 @@ Sie gewähren einem Sicherheitsprinzipal Zugriff zur Ausführung bestimmter Schl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Ein Tutorial mit ersten Schritten für Administratoren finden Sie unter [Was ist verwaltetes HSM von Azure Key Vault? (Vorschauversion)](overview.md).
+- Ein Tutorial mit ersten Schritten für Administratoren finden Sie unter [Was ist verwaltetes HSM?](overview.md).
 - Ein Tutorial zur Rollenverwaltung finden Sie unter [Lokale RBAC für verwaltetes HSM](role-management.md).
 - Weitere Informationen zur Verwendungsprotokollierung für verwaltete HSMs finden Sie unter [Protokollierung für verwaltete HSMs](logging.md).
