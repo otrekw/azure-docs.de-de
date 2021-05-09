@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 695409740348e78ae51b263b44d9ed1cbadc1054
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103562058"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531930"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -151,6 +151,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 - Gibt es Tabellen, die denselben Namen, aber unterschiedlichen Schemas haben (z. B. dbo.customers und sales.customers), kann nur eine der Tabellen in der Synchronisierung hinzugefügt werden.
 - Spalten mit benutzerdefinierten Datentypen werden nicht unterstützt.
 - Das Verschieben von Servern zwischen verschiedenen Abonnements wird nicht unterstützt. 
+- Wenn sich zwei Primärschlüssel nur in Bezug auf die Groß-/Kleinschreibung unterscheiden (z. B. „Foo“ und „foo“), wird dieses Szenario von der Datensynchronisierung nicht unterstützt.
 
 #### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
 

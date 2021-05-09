@@ -2,16 +2,16 @@
 title: Konfigurieren des Log Analytics-Arbeitsbereichs für VM Insights
 description: In diesem Artikel wird beschrieben, wie der Log Analytics-Arbeitsbereich mithilfe von VM Insights erstellt und konfiguriert wird.
 ms.topic: conceptual
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
-ms.openlocfilehash: 5a0e04772cfc1c9be77c0ad8b32b0e93be8b9f54
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0a4b6e1f90e24b3289b453e849b4ad979b10e202
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046719"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319915"
 ---
 # <a name="configure-log-analytics-workspace-for-vm-insights"></a>Konfigurieren des Log Analytics-Arbeitsbereichs für VM Insights
 VM Insights erfasst die Daten von mindestens einem Log Analytics-Arbeitsbereich in Azure Monitor. Vor dem Integrieren von Agents müssen Sie einen Arbeitsbereich erstellen und konfigurieren. In diesem Artikel werden die Anforderungen für den Arbeitsbereich und dessen Konfiguration für VM Insights beschrieben.

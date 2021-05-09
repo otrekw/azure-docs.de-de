@@ -1,14 +1,14 @@
 ---
 title: Details zur Richtlinienzuweisungsstruktur
 description: Beschreibt die Definition der Richtlinienzuweisung, die von Azure Policy verwendet wird, um Richtliniendefinitionen und -parameter zur Bewertung mit Ressourcen in Beziehung zu setzen.
-ms.date: 03/17/2021
+ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9de210b17264330e79ab5978a449e7a494054be2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604864"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535869"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-Zuweisungsstruktur
 
@@ -60,6 +60,30 @@ Alle Azure Policy-Beispiele sind unter [Azure Policy-Beispiele](../samples/index
 ## <a name="display-name-and-description"></a>Anzeigename und Beschreibung
 
 Sie verwenden **displayName** und **description**, um die Richtlinienzuweisung zu identifizieren und den Kontext für ihre Verwendung mit einem bestimmten Satz von Ressourcen bereitzustellen. **displayName** hat eine maximale Länge von _128_ Zeichen, und **description** hat eine maximale Länge von _512_ Zeichen.
+
+## <a name="metadata"></a>Metadaten
+
+Die optionale Eigenschaft `metadata` dient zum Speichern von Informationen zur Richtlinienzuweisung. Kunden können alle für ihre Organisation nützlichen Eigenschaften und Werte in `metadata` definieren. Es gibt jedoch einige _allgemeine_ Eigenschaften, die von Azure Policy verwendet werden. Jede `metadata`-Eigenschaft ist auf 1.024 Zeichen begrenzt.
+
+### <a name="common-metadata-properties"></a>Allgemeine Metadateneigenschaften
+
+- `assignedBy` (Zeichenfolge): Der Anzeigename des Sicherheitsprinzipals, durch den die Zuweisung erstellt wurde.
+- `createdBy` (Zeichenfolge): Die GUID des Sicherheitsprinzipals, durch den die Zuweisung erstellt wurde.
+- `createdOn` (Zeichenfolge): Das Universal ISO 8601-DateTime-Format der Erstellungszeit der Zuweisung.
+- `parameterScopes` (Objekt): Eine Sammlung von Schlüssel-Wert-Paaren, bei denen der Schlüssel einem mit [strongType](./definition-structure.md#strongtype) konfigurierten Parameternamen entspricht und der Wert den Ressourcenbereich definiert, der im Portal verwendet wird, um die Liste der verfügbaren Ressourcen per Abgleich von _strongType_ bereitzustellen. Dieser Wert wird vom Portal festgelegt, wenn sich der Bereich vom Zuweisungsbereich unterscheidet. Ist der Wert festgelegt, wird der Bereich für den Parameter bei einer Bearbeitung der Richtlinienzuweisung im Portal automatisch auf diesen Wert festgelegt. Der Wert ist jedoch nicht unveränderlich und kann in einen anderen Bereich geändert werden.
+
+  Im folgenden Beispiel für `parameterScopes` wird ein Parameter vom Typ _strongType_ mit dem Namen **backupPolicyId** verwendet, um einen Bereich für die Ressourcenauswahl festzulegen, wenn die Zuweisung im Portal bearbeitet wird.
+
+  ```json
+  "metadata": {
+      "parameterScopes": {
+          "backupPolicyId": "/subscriptions/{SubscriptionID}/resourcegroups/{ResourceGroupName}"
+      }
+  }
+  ```
+
+- `updatedBy` (Zeichenfolge): Der Anzeigename des Sicherheitsprinzipals, durch den die Zuweisung aktualisiert wurde (sofern zutreffend).
+- `updatedOn` (Zeichenfolge): Das Universal ISO 8601-DateTime-Format der Aktualisierungszeit der Zuweisung (sofern zutreffend).
 
 ## <a name="enforcement-mode"></a>Erzwingungsmodus
 

@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 09ec15eb45029c42fd5bc02288a0c45e167e7092
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 4607778c78b8b062b265a5754337c09c41ba83f1
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146291"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531543"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
 
@@ -21,7 +21,7 @@ Die meisten von Azure verwalteten Datenträger werden mit der Azure Storage-Vers
 
 Daten in verwalteten Azure-Datenträgern werden transparent mit 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) – einer der stärksten verfügbaren Blockverschlüsselungen – FIPS 140-2-konform ver- und entschlüsselt. Weitere Informationen zu den kryptografischen Modulen, die verwalteten Azure-Datenträgern zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](/windows/desktop/seccng/cng-portal).
 
-Die Azure Storage-Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus, und es fallen keine zusätzlichen Kosten an. Weitere Informationen über die Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung](../storage/common/storage-service-encryption.md).
+Die Azure Storage-Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus, und es fallen keine zusätzlichen Kosten an. Weitere Informationen über die Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung](/azure/storage/common/storage-service-encryption).
 
 > [!NOTE]
 > Temporäre Datenträger sind keine verwalteten Datenträger und werden nicht von SSE verschlüsselt, es sei denn, Sie aktivieren die Verschlüsselung auf dem Host.

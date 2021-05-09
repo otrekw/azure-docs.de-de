@@ -3,14 +3,14 @@ title: Übersicht über das Entfernen der Azure Automation-Funktion „VMs auße
 description: In diesem Artikel wird beschrieben, wie Sie die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ entfernen und die Verknüpfung eines Automation-Kontos mit dem Log Analytics-Arbeitsbereich aufheben.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/04/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ec76197bfde6bb679f70c44ab01712f9f52bfd2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122084"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533949"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Entfernen von „VMs außerhalb der Geschäftszeiten starten/beenden“ aus Automation-Konto
 
@@ -21,6 +21,9 @@ Nachdem das Feature „VMs außerhalb der Geschäftszeiten starten/beenden“ ak
 * Löschen Sie dieses Feature aus einem Automation-Konto und einem verknüpften Arbeitsbereich zur Unterstützung anderer Verwaltungs- und Überwachungsziele.
 
 Durch das Löschen dieses Features werden nur die zugehörigen Runbooks entfernt, nicht aber die während der Bereitstellung erstellten benutzerdefinierten Zeitpläne bzw. nachträglich erstellten benutzerdefinierten Zeitpläne oder Variablen gelöscht.
+
+> [!NOTE]
+> Bevor Sie fortfahren, stellen Sie sicher, dass keine [Resource Manager-Sperren](../azure-resource-manager/management/lock-resources.md) auf das Abonnement, die Ressourcengruppe oder die Ressource angewendet wurden, die ein versehentliches Löschen oder Ändern kritischer Ressourcen verhindern. Wenn Sie die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ bereitstellen, wird die Sperrebene für mehrere abhängige Ressourcen im Automation-Konto (insbesondere die zugehörigen Runbooks und Variablen) auf **CanNotDelete** festgelegt. Alle Sperren müssen entfernt werden, damit Sie das Automation-Konto löschen können.
 
 ## <a name="delete-the-dedicated-resource-group"></a>Löschen der dedizierten Ressourcengruppe
 

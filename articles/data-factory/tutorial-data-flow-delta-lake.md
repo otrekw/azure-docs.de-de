@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 02/09/2021
-ms.openlocfilehash: cb8d44353e826df14ed3baab2c4ca66ffed4a569
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 4a88ed2df74d3eebb96c42e2cdc87b14153419cd
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416691"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565371"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Transformieren von Daten in einem Delta-Lake mithilfe von Zuordnungsdatenflüssen
 
@@ -58,15 +58,15 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
    ![Erstellen der Pipeline](./media/doc-common-process/get-started-page.png)
 
 1. Geben Sie auf der Registerkarte **Allgemein** der Pipeline als **Namen** der Pipeline **DeltaLake** ein.
-1. Setzen Sie auf der oberen Leiste der Factory den Schieberegler **Datenfluss debuggen** auf „Ein“. Der Debugmodus ermöglicht das interaktive Testen von Transformationslogik mit einem aktiven Spark-Cluster. Die Aufwärmphase von Datenflussclustern dauert 5 bis 7 Minuten. Den Benutzern wird empfohlen, zuerst den Debugmodus zu aktivieren, wenn sie die Entwicklung eines Datenflusses planen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
-
-    ![Datenflussaktivität](media/tutorial-data-flow/dataflow1.png)
 1. Erweitern Sie im Bereich **Aktivitäten** das Accordion-Element **Verschieben und transformieren**. Ziehen Sie die **Datenfluss**-Aktivität per Drag & Drop aus dem Bereich auf die Pipelinecanvas.
 
     ![Screenshot der Pipelinecanvas, auf der die Datenflussaktivität abgelegt werden kann](media/tutorial-data-flow/activity1.png)
 1. Wählen Sie im Popupfenster **Datenfluss hinzufügen** die Option **Neuen Datenfluss erstellen** aus, und geben Sie dem Datenfluss den Namen **DeltaLake**. Klicken Sie anschließend auf „Fertig stellen“.
 
     ![Screenshot des Fensters, in dem beim Erstellen eines neuen Datenflusses der Name eingegeben wird](media/tutorial-data-flow/activity2.png)
+1. Setzen Sie den Schieberegler **Datenfluss debuggen** in der oberen Pipeline-Canvas-Leiste auf „ein“. Der Debugmodus ermöglicht das interaktive Testen von Transformationslogik mit einem aktiven Spark-Cluster. Die Aufwärmphase von Datenflussclustern dauert 5 bis 7 Minuten. Den Benutzern wird empfohlen, zuerst den Debugmodus zu aktivieren, wenn sie die Entwicklung eines Datenflusses planen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
+
+    ![Screenshot: Position des Schiebereglers „Datenflüsse debuggen“.](media/tutorial-data-flow/dataflow1.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>Erstellen von Transformationslogik auf der Datenflusscanvas
 
