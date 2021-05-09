@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 72dc92ae211034e2a49bc77f60880f17ab15dec7
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 366692113872856852fd933ca32ab51ca608de14
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868175"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291278"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis
 
@@ -82,7 +82,7 @@ Mehrere Azure-Ressourcen weisen eine Abhängigkeit von einem Abonnement oder ein
 | Azure Managed Disks | Ja | Ja |  |  Wenn Sie Datenträgerverschlüsselungssätze verwenden, um Managed Disks mit vom Kunden verwalteten Schlüsseln zu verschlüsseln, müssen Sie die vom System zugewiesenen Identitäten, die den Datenträgerverschlüsselungssätzen zugeordnet sind, deaktivieren und erneut aktivieren. Außerdem müssen Sie die Rollenzuweisungen neu erstellen: Sie müssen den Datenträgerverschlüsselungssätzen in den Key Vaults die erforderlichen Berechtigungen erneut erteilen. |
 | Azure Kubernetes Service | Ja | Nein |  | Ihr AKS-Cluster und die zugehörigen Ressourcen können nicht in ein anderes Verzeichnis übertragen werden. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Azure Kubernetes Service (AKS)](../aks/faq.md). |
 | Azure Policy | Ja | Nein | Alle Azure Policy-Objekte, einschließlich benutzerdefinierter Definitionen, Zuweisungen, Ausnahmen und Compliancedaten. | Sie müssen Definitionen [exportieren](../governance/policy/how-to/export-resources.md), importieren und neu zuweisen. Erstellen Sie dann neue Richtlinienzuweisungen sowie alle erforderlichen [Richtlinienausnahmen](../governance/policy/concepts/exemption-structure.md). |
-| Azure Active Directory Domain Services | Ja | Nein |  | Es ist nicht möglich, eine verwaltete Azure AD Domain Services-Domäne in ein anderes Verzeichnis übertragen. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Azure Active Directory Domain Services](../active-directory-domain-services/faqs.md). |
+| Azure Active Directory Domain Services | Ja | Nein |  | Es ist nicht möglich, eine verwaltete Azure AD Domain Services-Domäne in ein anderes Verzeichnis übertragen. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Azure Active Directory Domain Services](../active-directory-domain-services/faqs.yml). |
 | App-Registrierungen | Ja | Ja |  |  |
 
 > [!WARNING]

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
-ms.openlocfilehash: 31d5c528112ccacab47282729b1b5f8a72f19af0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97036266911a8ffd7dca00ad2eaeeed32e620dba
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91999290"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166377"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio-Bindung für Azure Functions
 
@@ -301,7 +301,7 @@ public static CreateMessageOptions Run(
 {
     ...
 }
- ```
+```
 
 Ein vollständiges Beispiel finden Sie unter [C#-Beispiel](#example).
 
@@ -336,7 +336,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Dieser Wert muss auf den Namen einer App-Einstellung festgelegt werden, die Ihr Twilio-Authentifizierungstoken (`TwilioAccountAuthToken`) enthält. Wenn er nicht festgelegt wird, lautet der Standardname der App-Einstellung „AzureWebJobsTwilioAuthToken“. |
 |**to**| N/V – in Code angeben | **An**| Dieser Wert wird auf die Telefonnummer festgelegt, an die die SMS-Textnachricht gesendet wird.|
 |**from**|**from** | **From**| Dieser Wert wird auf die Telefonnummer festgelegt, von der die SMS-Textnachricht gesendet wird.|
-|**body**|**body** | **Text**| Dieser Wert kann verwendet werden, um die SMS-Textnachricht als vordefinierten Code festzulegen und nicht dynamisch im Code für die Funktion. |  
+|**body**|**body** | **Text**| Dieser Wert kann verwendet werden, um die SMS-Textnachricht als vordefinierten Code festzulegen und nicht dynamisch im Code für die Funktion. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

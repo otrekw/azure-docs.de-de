@@ -54,6 +54,9 @@
         - name: Identity Governance
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
+        - name: Anwendungsproxy
+          tocHref: /azure/active-directory/app-proxy/
+          topicHref: /azure/active-directory/app-proxy/
         - name: Bereitstellung von Anwendungen
           tocHref: /azure/active-directory/app-provisioning/
           topicHref: /azure/active-directory/app-provisioning/

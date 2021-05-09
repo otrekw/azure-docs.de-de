@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen einer freigegebenen Abfrage mit der Azure CLI'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren der Resource Graph-Erweiterung für die Azure CLI und zum Erstellen einer freigegebenen Abfrage aus.
-ms.date: 02/05/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 2befc2b6895cd9d2c797fc8ed0e28a27eb6e73e8
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 62904a10beef9118056f34ff830f266156f42590
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870551"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326037"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Schnellstart: Erstellen einer freigegebenen Resource Graph-Abfrage mithilfe der Azure CLI
 

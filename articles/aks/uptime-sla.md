@@ -5,22 +5,22 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 846446b4c19c066afe789bf636d68ad37b20709e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 288e1b9e361bd8c0cf41e4bb86fcfce15dda8ac9
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779559"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166395"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS): Betriebszeit-SLA
 
 Betriebszeit-SLA ist ein optionales Feature, das eine finanziell abgesicherte, höhere SLA für einen Cluster ermöglicht. Betriebszeit-SLA garantiert eine Verfügbarkeit von 99,95 % des Kubernetes-API-Serverendpunkts für Cluster, die [Verfügbarkeitszonen][availability-zones] verwenden, und eine Verfügbarkeit von 99,9 % für Cluster, die keine Verfügbarkeitszonen verwenden. AKS verwendet Masterknotenreplikate über Update- und Fehlerdomänen hinweg, um sicherzustellen, dass die SLA-Anforderungen erfüllt werden.
 
-Kunden, die eine SLA benötigen, um Complianceanforderungen zu erfüllen, oder die eine Erweiterung einer SLA auf ihre Endbenutzer erfordern, sollten dieses Feature aktivieren. Kunden mit kritischen Workloads, die von einer höheren Betriebszeit-SLA profitieren, haben möglicherweise ebenfalls Vorteile. Die Verwendung der Betriebszeit-SLA mit Verfügbarkeitszonen ermöglicht eine höhere Verfügbarkeit für die Betriebszeit des Kubernetes-API-Servers.  
+Kunden, die eine SLA benötigen, um Complianceanforderungen zu erfüllen, oder die eine Erweiterung einer SLA auf ihre Endbenutzer erfordern, sollten dieses Feature aktivieren. Kunden mit kritischen Workloads, die von einer höheren Betriebszeit-SLA profitieren, haben möglicherweise ebenfalls Vorteile. Die Verwendung der Betriebszeit-SLA mit Verfügbarkeitszonen ermöglicht eine höhere Verfügbarkeit für die Betriebszeit des Kubernetes-API-Servers.
 
 Kunden können nach wie vor unbegrenzt kostenlose Cluster mit einem Servicelevelziel (SLO) von 99,5 % erstellen und sich je nach Bedarf für die bevorzugte SLO- oder SLA-Betriebszeit entscheiden.
 
-> [!Important]
+> [!IMPORTANT]
 > Für Cluster mit ausgehender Sperrung finden Sie unter [Einschränken des ausgehenden Datenverkehrs](limit-egress-traffic.md) Informationen zum Öffnen entsprechender Ports.
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
@@ -46,12 +46,14 @@ Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup*
 # Create a resource group
 az group create --name myResourceGroup --location eastus
 ```
+
 Erstellen Sie mithilfe des Befehls [`az aks create`][az-aks-create] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* mit einem Knoten erstellt. Dieser Vorgang dauert einige Minuten:
 
 ```azurecli-interactive
 # Create an AKS cluster with uptime SLA
 az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1
 ```
+
 Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zum Cluster im JSON-Format zurückgegeben. Der folgende JSON-Codeausschnitt enthält den kostenpflichtigen Tarif für die SKU, was darauf hindeutet, dass die Betriebszeit-SLA für Ihren Cluster aktiviert ist:
 
 ```output
@@ -91,18 +93,18 @@ Verwenden Sie den Befehl [`az aks update`][az-aks-update], um den vorhandenen Cl
 
 ```azurecli-interactive
 # Update an existing cluster to use Uptime SLA
- az aks update --resource-group myResourceGroup --name myAKSCluster --uptime-sla
- ```
+az aks update --resource-group myResourceGroup --name myAKSCluster --uptime-sla
+```
 
- Der folgende JSON-Codeausschnitt enthält den kostenpflichtigen Tarif für die SKU, was darauf hindeutet, dass die Betriebszeit-SLA für Ihren Cluster aktiviert ist:
+Der folgende JSON-Codeausschnitt enthält den kostenpflichtigen Tarif für die SKU, was darauf hindeutet, dass die Betriebszeit-SLA für Ihren Cluster aktiviert ist:
 
- ```output
+```output
   },
   "sku": {
     "name": "Basic",
     "tier": "Paid"
   },
-  ```
+```
 
 ## <a name="opt-out-of-uptime-sla"></a>Abmelden von der Uptime-SLA
 
@@ -111,7 +113,7 @@ Sie können Ihren Cluster aktualisieren, um zum kostenlosen Tarif zu wechseln un
 ```azurecli-interactive
 # Update an existing cluster to opt out of Uptime SLA
  az aks update --resource-group myResourceGroup --name myAKSCluster --no-uptime-sla
- ```
+```
 
 ## <a name="clean-up"></a>Bereinigung
 
@@ -120,7 +122,6 @@ Bereinigen Sie alle erstellten Ressourcen, um Kosten zu vermeiden. Wenn Sie den 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

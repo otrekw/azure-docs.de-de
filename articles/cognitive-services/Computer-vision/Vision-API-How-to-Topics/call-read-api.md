@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: pafarley
-ms.openlocfilehash: 8e0ef789653181d744100ef6e179bcf328f6d704
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 195beaaae2925ce9cc6e7cc70bd0415ded49f155
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308624"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166701"
 ---
 # <a name="call-the-read-api"></a>Aufrufen der Lese-API
 
@@ -47,24 +47,24 @@ Der Aufruf wird mit einem Antwortheaderfeld namens `Operation-Location` zurückg
 Der [Read](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)-Aufruf weist einen optionalen Anforderungsparameter für die Sprache auf. Read unterstützt die automatische Sprachidentifikation und mehrsprachige Dokumente. Geben Sie also nur einen Sprachcode an, wenn Sie erzwingen möchten, dass das Dokument in dieser spezifischen Sprache verarbeitet wird.
 
 ### <a name="natural-reading-order-output-latin-languages-only"></a>Ausgabe der natürlichen Leserichtung (nur lateinische Sprachen)
+
 Mit dem Abfrageparameter `readingOrder` geben Sie die Leserichtung an, in der die Textzeilen ausgegeben werden. Verwenden Sie `natural` für eine benutzerfreundlichere Ausgabe der Lesereihenfolge, wie im folgenden Beispiel gezeigt. Dieses Feature wird nur für lateinische Sprachen unterstützt.
 
-:::image border type="content" source="../Images/ocr-reading-order-example.png" alt-text="Beispiel für OCR-Leserichtung":::
-
-
+:::image type="content" source="../Images/ocr-reading-order-example.png" alt-text="Beispiel für OCR-Leserichtung" border="true" :::
 
 ### <a name="select-pages-or-page-ranges-for-text-extraction"></a>Auswählen von Seiten oder Seitenbereichen für die Textextraktion
+
 Verwenden Sie bei großen mehrseitigen Dokumenten den Abfrageparameter `pages` zur Angabe von Seitenzahlen oder Seitenbereichen, um Text nur von diesen Seiten zu extrahieren. Das folgende Beispiel zeigt ein Dokument mit 10 Seiten, wobei für beide Fälle – alle Seiten (1-10) und ausgewählte Seiten (3-6) – Text extrahiert wurde.
 
-:::image border type="content" source="../Images/ocr-select-pages.png" alt-text="Ausgabe ausgewählter Seiten":::
+:::image type="content" source="../Images/ocr-select-pages.png" alt-text="Ausgabe ausgewählter Seiten" border="true" :::
 
 ## <a name="get-results-from-the-service"></a>Abrufen von Ergebnissen aus dem Dienst
 
-Der zweite Schritt umfasst das Aufrufen des Vorgangs [Get Read Results](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d9869604be85dee480c8750). Dieser Vorgang erfasst die Vorgangs-ID, die beim Read-Vorgang erstellt wurde, als Eingabe. 
+Der zweite Schritt umfasst das Aufrufen des Vorgangs [Get Read Results](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d9869604be85dee480c8750). Dieser Vorgang erfasst die Vorgangs-ID, die beim Read-Vorgang erstellt wurde, als Eingabe.
 
 `https://{endpoint}/vision/v3.2/read/analyzeResults/{operationId}`
 
-Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. 
+Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält.
 
 |Wert | Bedeutung |
 |:-----|:----|
@@ -159,9 +159,10 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
 ```
 
 ### <a name="handwritten-classification-for-text-lines-latin-languages-only"></a>Handschriftliche Klassifizierung für Textzeilen (nur lateinische Sprachen)
+
 Die Antwort umfasst die Klassifizierung, ob es sich bei den einzelnen Textzeilen um einen handschriftlichen Stil handelt, sowie eine Konfidenzbewertung. Dieses Feature wird nur für lateinische Sprachen unterstützt. Das folgende Beispiel zeigt die handschriftliche Klassifizierung für den Text im Bild.
 
-:::image border type="content" source="../Images/ocr-handwriting-classification.png" alt-text="Beispiel für OCR-Handschriftklassifizierung":::
+:::image type="content" source="../Images/ocr-handwriting-classification.png" alt-text="Beispiel für OCR-Handschriftklassifizierung" border="true" :::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

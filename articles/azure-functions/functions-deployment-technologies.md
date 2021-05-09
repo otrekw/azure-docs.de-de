@@ -4,12 +4,12 @@ description: Lernen Sie die verschiedenen Methoden kennen, mit denen Code in Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 4a65a00c28a20c9381d3dcc6fd7545137528d5c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca81067fa60836d77c4d8af121ebf415c772a1d7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943635"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789211"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -106,7 +106,7 @@ Die folgenden Bereitstellungsmethoden sind in Azure Functions verfügbar.
 
 Sie können eine externe Paket-URL verwenden, um auf eine Remotepaketdatei (ZIP-Datei) zu verweisen, die ihre Funktions-App enthält. Die Datei wird von der angegebenen URL heruntergeladen, und die App wird im Modus [Aus Paketdatei ausführen](run-functions-from-deployment-package.md) ausgeführt.
 
->__Verwendung:__ Fügen Sie [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) zu Ihren Anwendungseinstellungen hinzu. Der Wert dieser Einstellung muss eine URL sein (der Speicherort der spezifischen Paketdatei, die Sie ausführen möchten). Einstellungen können entweder [über das Portal](functions-how-to-use-azure-function-app-settings.md#settings) oder [mithilfe der Azure-Befehlszeilenschnittstelle](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) hinzugefügt werden.
+>__Verwendung:__ Fügen Sie [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) zu Ihren Anwendungseinstellungen hinzu. Der Wert dieser Einstellung muss eine URL sein (der Speicherort der spezifischen Paketdatei, die Sie ausführen möchten). Einstellungen können entweder [über das Portal](functions-how-to-use-azure-function-app-settings.md#settings) oder [mithilfe der Azure-Befehlszeilenschnittstelle](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) hinzugefügt werden.
 >
 >Bei Verwendung von Blob Storage muss ein privater Container mit einer [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) verwendet werden, damit Functions auf das Paket zugreifen kann. Jedes Mal, wenn die Anwendung neu gestartet wird, ruft Sie eine Kopie des Inhalts ab. Ihr Verweis muss für die Lebensdauer der Anwendung gültig sein.
 
@@ -118,7 +118,7 @@ Verwenden Sie ZIP-Bereitstellung, um eine ZIP-Datei mit ihrer Funktions-APP in A
 
 >__Verwendung:__ Führen Sie die Bereitstellung mithilfe Ihres bevorzugten Clienttools aus: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure) oder über die Befehlszeile mithilfe der [Azure Functions Core Tools](functions-run-local.md#project-file-deployment). Standardmäßig verwenden diese Tools ZIP-Bereitstellung und werden [aus dem Paket](run-functions-from-deployment-package.md) ausgeführt. Die Core Tools und die Visual Studio Code-Erweiterung aktivieren bei der Bereitstellung unter Linux die [Remotebuildfunktion](#remote-build). Eine Anleitung zum manuellen Bereitstellen einer ZIP-Datei für Ihre Funktions-App finden Sie unter [Bereitstellen mithilfe einer ZIP-Datei oder URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
->Wenn die Bereitstellung mithilfe der ZIP-Bereitstellung erfolgt, können Sie die App auf [Run from Package](run-functions-from-deployment-package.md) (Aus Paket ausführen) festlegen. Für die Ausführung über ein Paket legen Sie den Wert der [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package-Anwendungseinstellung auf `1` fest. Wir empfehlen die ZIP-Bereitstellung. Sie führt zu schnelleren Ladezeiten für Ihre Anwendungen und ist die Standardeinstellung für VS Code, Visual Studio und die Azure CLI.
+>Wenn die Bereitstellung mithilfe der ZIP-Bereitstellung erfolgt, können Sie die App auf [Run from Package](run-functions-from-deployment-package.md) (Aus Paket ausführen) festlegen. Zur Ausführung über ein Paket legen Sie den Wert der Anwendungseinstellung [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) auf `1` fest. Wir empfehlen die ZIP-Bereitstellung. Sie führt zu schnelleren Ladezeiten für Ihre Anwendungen und ist die Standardeinstellung für VS Code, Visual Studio und die Azure CLI.
 
 >__Einsatzgebiete:__ Die ZIP-Bereitstellung ist die empfohlene Bereitstellungstechnologie für Azure Functions.
 
