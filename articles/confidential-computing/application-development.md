@@ -8,12 +8,12 @@ ms.subservice: confidential-computing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 0ba6ee92111da66a2118ba4c490b94e5bc9449e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 571c1a4ce545976db09f46a07d963d5344c02c29
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551384"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791011"
 ---
 # <a name="application-development-on-intel-sgx"></a>Anwendungsentwicklung unter Intel SGX 
 
@@ -23,6 +23,7 @@ Die Infrastruktur für Confidential Computing erfordert spezielle Tools und Soft
 Für die Nutzung der Leistungsfähigkeit von Enklaven und isolierten Umgebungen müssen Sie Tools verwenden, die Confidential Computing unterstützen. Es gibt unterschiedliche Tools, die die Entwicklung von Enklavenanwendungen unterstützen. Beispielsweise können Sie die folgenden Open-Source-Frameworks verwenden: 
 
 - [Das Open Enclave Software Development Kit (OE SDK)](#oe-sdk)
+- [Das EGo Software Development Kit](#ego)
 - [Confidential Consortium Framework (CCF)](#ccf)
 
 ## <a name="overview"></a>Übersicht
@@ -48,6 +49,10 @@ Während des Anwendungsentwurfs ist es wichtig, zu identifizieren und zu bestimm
 Verwenden Sie eine Bibliothek oder ein Framework, die bzw. das von Ihrem Anbieter unterstützt wird, falls Sie Code für die Ausführung in einer Enklave schreiben möchten. Das [Open Enclave SDK](https://github.com/openenclave/openenclave) (OE SDK) ist ein Open-Source-SDK, das die Abstraktion über unterschiedliche Confidential Computing-fähige Hardware ermöglicht. 
 
 Das OE SDK ist so konzipiert, dass es als einzelne Abstraktionsschicht für beliebige Hardware und CSPs genutzt wird. Das OE SDK kann zusätzlich zu virtuellen Azure Confidential Computing-Computern verwendet werden, um Anwendungen basierend auf Enklaven zu erstellen und auszuführen.
+
+## <a name="ego-software-development-kit"></a>EGo Software Development Kit <a id="ego"></a>
+
+[EGo](https://ego.dev/) ist ein Open-Source-SDK, mit dem Sie in der Programmiersprache Go geschriebene Anwendungen innerhalb von Enclaves ausführen können. EGo baut auf dem OE SDK auf und verfügt über eine In-Enclave-Go-Bibliothek für Nachweis und Versiegelung. Viele vorhandene Go-Anwendungen werden ohne Änderungen in EGo ausgeführt.  
 
 ## <a name="confidential-consortium-framework-ccf"></a>Confidential Consortium Framework (CCF) <a id="ccf"></a>
 

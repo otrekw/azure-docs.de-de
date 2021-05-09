@@ -2,14 +2,14 @@
 title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 04/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1f63d0c3ad448a8ab9b91764d4c369fefddea25d
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: c96c80721cd66f895c9c0dade590fc11d25de346
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516721"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890760"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -151,7 +151,7 @@ Wiederherstellen von an Zonen angehefteten virtuellen Computern | Unterstützt (
 Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederherstellung von [Gen2-VMS](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Bei Wiederherstellung über einen Wiederherstellungspunkt werden diese VMs als [Gen2-VMs](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) wiederhergestellt.
 Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete virtuelle Computer nicht unterstützt. <br><br> Wird für verwaltete virtuelle Computer unterstützt.
 [Spot-VMs](../virtual-machines/spot-vms.md) | Nicht unterstützt. Azure Backup stellt Spot-VMs als reguläre Azure-VMs wieder her.
-[Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | Unterstützt
+[Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | Unterstützt<br></br>Beim Wiederherstellen eines virtuellen Azure-Computers über die Option [Neu erstellen](backup-azure-arm-restore-vms.md#create-a-vm) kann der virtuelle Azure-Computer auf dem dedizierten Host nicht wiederhergestellt werden, obwohl die Wiederherstellung erfolgreich ist. Um dies zu erreichen, empfiehlt sich das Wiederherstellen als Datenträger. Erstellen Sie beim [Wiederherstellen als Datenträger](backup-azure-arm-restore-vms.md#restore-disks) mit der Vorlage einen virtuellen Computer auf einem dedizierten Host, und fügen Sie die Datenträger dann an.<br></br>Dies gilt auch für die sekundäre Region bei Ausführen einer [regionsübergreifenden Wiederherstellung](backup-azure-arm-restore-vms.md#cross-region-restore).
 Konfiguration von „Windows-Speicherplätze“ für eigenständige virtuelle Azure-Computer | Unterstützt
 [Skaliersets für virtuelle Azure-Computer](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | Wird sowohl für einheitliche als auch flexible Orchestrierungsmodelle zum Sichern und Wiederherstellen einzelner virtueller Azure-Computer unterstützt.
 

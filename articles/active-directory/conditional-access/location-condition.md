@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 07af586bac71ee9b33ef314756454cb3c52ec912
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c17814b51f1ebd6640bc6f500fbedbd7874cdd94
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305921"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947787"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Verwenden der Standortbedingung in einer Richtlinie für bedingten Zugriff 
 
@@ -74,13 +74,13 @@ Einige IP-Adressen (einschließlich aller IPv6-Adressen) sind weder einem bestim
 
 Ferner können Sie in den [Einstellungen für den mehrstufigen Authentifizierungsdienst](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx) IP-Adressbereiche konfigurieren, die das lokale Intranet Ihrer Organisation darstellen. Mithilfe dieser Funktion können Sie bis zu 50 IP-Adressbereiche konfigurieren. Die IP-Adressbereiche müssen im CIDR-Format angegeben werden. Weitere Informationen finden Sie unter [Vertrauenswürdige IP-Adressen](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
-Wenn Sie vertrauenswürdige IP-Adressen konfiguriert haben, werden Sie als **Für MFA vertrauenswürdige IPs** in der Liste der Standorte für die Standortbedingung angezeigt.
+Wenn Sie vertrauenswürdige IP-Adressen konfiguriert haben, werden diese in der Liste der Standorte für die Standortbedingung als **Durch MFA bestätigte IP-Adressen** angezeigt.
 
 ### <a name="skipping-multi-factor-authentication"></a>Überspringen der mehrstufigen Authentifizierung
 
 Auf der Einstellungsseite für den mehrstufigen Authentifizierungsdienst können Sie Benutzer aus dem Unternehmensintranet identifizieren, indem Sie **Für Anforderungen von Partnerbenutzern in meinem Intranet die mehrstufige Authentifizierung überspringen** aktivieren. Diese Einstellung gibt an, dass der Anspruch innerhalb des Unternehmensnetzwerks, der von AD FS ausgestellt wird, als vertrauenswürdig angesehen und dazu verwendet wird, den Benutzer als innerhalb des Unternehmensnetzwerks ansässig zu erkennen. Weitere Informationen finden Sie unter [Aktivieren des Features vertrauenswürdige IPs beim bedingten Zugriff](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
-Nach dem Aktivieren wird diese Option, einschließlich des benannten Standorts **Für MFA vertrauenswürdige IPs**, auf alle Richtlinien angewendet, für die diese Option ausgewählt ist.
+Nach dem Aktivieren wird diese Option, einschließlich des benannten Standorts **Durch MFA bestätigte IP-Adressen**, auf alle Richtlinien angewendet, für die diese Option ausgewählt ist.
 
 Für mobile und Desktopanwendungen mit langer Sitzungslebensdauer wird der bedingte Zugriff in regelmäßigen Abständen neu ausgewertet. Die Standardeinstellung ist einmal pro Stunde. Wenn der Anspruch innerhalb des Unternehmensnetzwerks nur zum Zeitpunkt der erstmaligen Authentifizierung ausgegeben wird, verfügt Azure AD möglicherweise nicht über eine Liste der vertrauenswürdigen IP-Bereiche. In diesem Fall ist die Bestimmung, ob sich der Benutzer noch im Unternehmensnetzwerk befindet, schwieriger:
 
@@ -106,7 +106,7 @@ Standardmäßig bewirkt das Aktivieren von **Alle Standorte**, dass eine Richtli
 Diese Option gilt für:
 
 - Alle Standorte, die als vertrauenswürdiger Standort gekennzeichnet wurden
-- **Für MFA vertrauenswürdige IPs** (sofern konfiguriert)
+- **Durch MFA bestätigte IP-Adressen** (sofern konfiguriert)
 
 ### <a name="selected-locations"></a>Ausgewählte Speicherorte
 
@@ -128,7 +128,7 @@ Der größte Teil des IPv6-Datenverkehrs, der über einen Proxy an Azure AD gel
 Dies sind die häufigsten Gründe, bei denen Sie an Ihren benannten Standorten möglicherweise IPv6-Adressbereiche konfigurieren müssen. Wenn Sie Azure-VNets verwenden, geht außerdem Datenverkehr von einer IPv6-Adresse ein. Wenn der VNet-Datenverkehr durch eine Richtlinie für bedingten Zugriff blockiert wird, überprüfen Sie Ihr Azure AD-Anmeldeprotokoll. Nachdem Sie den Datenverkehr identifiziert haben, können Sie die verwendete IPv6-Adresse von Ihrer Richtlinie ausschließen. 
 
 > [!NOTE]
-> Wenn Sie für eine einzelne Adresse einen IP-CIDR-Bereich angeben möchten, wenden Sie die /128-Bitmaske an. Wenn die IPv6-Adresse z. B. „2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a“ lautet und Sie diese einzelne Adresse als Adressbereich ausschließen möchten, würden Sie „2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/128“ verwenden.
+> Wenn Sie für eine einzelne Adresse einen IP-CIDR-Bereich angeben möchten, wenden Sie die /128-Bitmaske an. Wenn die IPv6-Adresse „2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a“ angezeigt wird und Sie diese einzelne Adresse als Adressbereich ausschließen möchten, würden Sie „2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/128“ verwenden.
 
 ### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Identifizieren von IPv6-Datenverkehr in den Azure AD-Anmeldeaktivitätsberichten
 
@@ -165,7 +165,7 @@ Wenn ein Cloud-Proxy zum Einsatz kommt, kann eine Richtlinie verwendet werden, m
 
 ### <a name="api-support-and-powershell"></a>API-Unterstützung und PowerShell
 
-Eine Vorschauversion der Graph-API für benannte Standorte ist verfügbar. Weitere Informationen finden Sie unter [namedLocation-API](/graph/api/resources/namedlocation?view=graph-rest-beta).
+Eine Vorschauversion der Graph-API für benannte Standorte ist verfügbar. Weitere Informationen finden Sie unter [namedLocation-API](/graph/api/resources/namedlocation).
 
 > [!NOTE]
 > Benannte Standorte, die Sie mithilfe von PowerShell erstellen, werden nur unter „Benannte Standorte (Vorschau)“ angezeigt. Benannte Orte können nicht in der alten Ansicht angezeigt werden.  
