@@ -1,19 +1,19 @@
 ---
 title: Azure-VMware-Lösung – DNS-Weiterleitung von der privaten Cloud zu lokalen Standorten
 description: Hier wird beschrieben, wie Sie Ihren Private CloudSimple-Cloud-DNS-Server in die Lage versetzen, die Suche nach lokalen Ressourcen weiterzuleiten.
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 02/29/2020
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3481e21a93fbf5f658c5ca00513ea179c8f95400
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eed8addcf9064bddf761fabb7db22e7bcecc7a71
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899200"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108185250"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>Ermöglichen Sie es Private CloudSimple-Cloud-DNS-Servern, die DNS-Suche von lokalen Ressourcen an Ihre DNS-Server weiterzuleiten.
 

@@ -9,12 +9,12 @@ ms.author: tagore
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 79889b08baa80dc67b30ae445004e37d9f9fe295
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: b1a3d6f1c30cf6c52dde3f70f222d9cbb0fce556
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286705"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293168"
 ---
 # <a name="migrate-to-cloud-services-extended-support-using-the-azure-portal"></a>Migrieren von Cloud Services (erweiterter Support) über das Azure-Portal
 
@@ -37,7 +37,7 @@ Sollten Sie keinen Co-Administrator hinzufügen können, lassen Sie sich von ein
 
 **Registrieren Sie sich als Migrationsressourcenanbieter**
 
-1. Registrieren Sie sich mit dem [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1) beim Migrationsressourcenanbieter `Microsoft.ClassicInfrastructureMigrate` und der Previewfunktion `Cloud Services` unter dem Microsoft.Compute-Namespace.  
+1. Registrieren Sie sich mit dem [Azure-Portal](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider-1) beim Migrationsressourcenanbieter `Microsoft.ClassicInfrastructureMigrate` und der Previewfunktion `Cloud Services` unter dem Microsoft.Compute-Namespace.  
 1. Warten Sie fünf Minuten, bis die Registrierung abgeschlossen ist, und überprüfen Sie dann den Genehmigungsstatus. 
 
 ## <a name="migrate-your-cloud-service-resources"></a>Migrieren Ihrer Clouddienst-Ressourcen
@@ -94,4 +94,4 @@ Sollten Sie keinen Co-Administrator hinzufügen können, lassen Sie sich von ein
     Geben Sie "Ja" ein, um die Migration auszuführen und den Vorgang zu bestätigen. Die Migration ist nun abgeschlossen. Die migrierten Cloud Services (erweiterter Support) werden für alle Vorgänge entsperrt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie den Abschnitt [Änderungen nach der Migration](in-place-migration-overview.md#post-migration-changes), um Änderungen für die Bereitstellungsdateien, die Automatisierung und andere Attribute der neuen Cloud Services-Bereitstellung (erweiterter Support) anzuzeigen. 
+Lesen Sie den Abschnitt [Änderungen nach der Migration](in-place-migration-overview.md#post-migration-changes), um Änderungen in Bereitstellungsdateien, die Automatisierung und andere Attribute der neuen Cloud Services-Bereitstellung (erweiterter Support) anzuzeigen.

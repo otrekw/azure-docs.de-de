@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 21910718d837750db7ae87afa36a2e7576a729cf
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 1e5c932460ada6060c77d233b2271813d6ea327b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016561"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292304"
 ---
 # <a name="sdks-and-rest-apis"></a>SDKs und REST-APIs
 
@@ -28,12 +28,12 @@ Communication Services-APIs sind unter [docs.microsoft.com](/rest/api/azure/) ne
 
 | Assembly | Namespaces| Protokolle | Funktionen |
 |------------------------|-------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------|
-| Azure Resource Manager | Azure.ResourceManager.Communication | [REST](https://docs.microsoft.com/rest/api/communication/communicationservice)| Dient zum Bereitstellen und Verwalten von Communication Services-Ressourcen|
+| Azure Resource Manager | Azure.ResourceManager.Communication | [REST](/rest/api/communication/communicationservice)| Dient zum Bereitstellen und Verwalten von Communication Services-Ressourcen|
 | Allgemein | Azure.Communication.Common| REST | Stellt Basistypen für andere SDKs zur Verfügung |
-| Identity | Azure.Communication.Identity| [REST](https://docs.microsoft.com/rest/api/communication/communicationidentity)| Verwalten von Benutzern, Zugriffstoken|
+| Identity | Azure.Communication.Identity| [REST](/rest/api/communication/communicationidentity)| Verwalten von Benutzern, Zugriffstoken|
 | Telefonnummern _(beta)_| Azure.Communication.PhoneNumbers| [REST](/rest/api/communication/phonenumbers)| Erfassen und Verwalten von Telefonnummern |
-| Chat | Azure.Communication.Chat| [REST](https://docs.microsoft.com/rest/api/communication/) mit proprietärer Signalisierung | Dient zum Hinzufügen von textbasiertem Chat in Echtzeit zu Ihren Anwendungen |
-| SMS| Azure.Communication.SMS | [REST](https://docs.microsoft.com/rest/api/communication/sms)| Dient zum Senden und Empfangen von SMS-Nachrichten|
+| Chat | Azure.Communication.Chat| [REST](/rest/api/communication/) mit proprietärer Signalisierung | Dient zum Hinzufügen von textbasiertem Chat in Echtzeit zu Ihren Anwendungen |
+| SMS| Azure.Communication.SMS | [REST](/rest/api/communication/sms)| Dient zum Senden und Empfangen von SMS-Nachrichten|
 | Aufrufen| Azure.Communication.Calling | Proprietärer Transport | Nutzung von Sprach-, Video-, Bildschirmfreigabe- und anderen Echtzeit-Datenkommunikationsfunktionen |
 
 Die Azure Resource Manager-, Identity- und SMS-SDKs sind auf die Integration von Diensten ausgerichtet, und in vielen Fällen entstehen Sicherheitsprobleme, wenn Sie diese Funktionen in Endbenutzeranwendungen integrieren. Die SDKs Common und Chat sind für Service- und Client-Anwendungen geeignet. Das Calling SDK ist für Client-Anwendungen konzipiert. Ein SDK mit Fokus auf Service-Szenarien ist in der Entwicklung.
@@ -56,13 +56,13 @@ Die Veröffentlichungsstandorte für die einzelnen SDK-Pakete sind unten aufgef�
 
 
 ## <a name="rest-api-throttles"></a>REST-API-Drosselungen
-Bestimmte Rest-APIs und entsprechende SDK-Methoden haben Drosselungs-Limits, die Sie berücksichtigen sollten. Das Überschreiten dieser Drosselungs-Limits löst eine  `429 - Too Many Requests` Fehler Antwort aus. Diese Grenzwerte können anhand [einer Anforderung an den Azure-Support](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)erhöht werden.
+Bestimmte Rest-APIs und entsprechende SDK-Methoden haben Drosselungs-Limits, die Sie berücksichtigen sollten. Das Überschreiten dieser Drosselungs-Limits löst eine  `429 - Too Many Requests` Fehler Antwort aus. Diese Grenzwerte können anhand [einer Anforderung an den Azure-Support](../../azure-portal/supportability/how-to-create-azure-support-request.md)erhöht werden.
 
 | API                                                                                                                          | Drosselung            |
 |------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | [Alle Such-Telefonnummernplan-APIs](/rest/api/communication/phonenumbers)         | 4 Anfragen/Tag      |
 | [Telefonnummer-Plan erwerben](/rest/api/communication/phonenumbers/purchasephonenumbers) | 1 Kauf pro Monat  |
-| [Senden einer SMS](https://docs.microsoft.com/rest/api/communication/sms/send)                                                       | 200 Anfragen/Minute |
+| [Senden einer SMS](/rest/api/communication/sms/send)                                                       | 200 Anfragen/Minute |
 
 
 ## <a name="sdk-platform-support-details"></a>Details zur SDK-Plattformunterstützung

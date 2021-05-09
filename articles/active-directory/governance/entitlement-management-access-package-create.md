@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0312d905284f8c5a9817e9550d340bf6135032
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f19425ea4a72f62689daa9dda08a22667aa50bc6
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532206"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331356"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -140,7 +140,7 @@ Sie können auch mithilfe von Microsoft Graph ein Zugriffspaket erstellen.  Ein 
 
 1. [die accessPackageResources im Katalog aufzulisten](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta&preserve-view=true) und [eine accessPackageResourceRequest zu erstellen](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta&preserve-view=true), die sich auf alle Ressourcen bezieht, die noch nicht im Katalog enthalten sind.
 1. [Auflisten der accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) für jede accessPackageResource in einem accessPackageCatalog. Diese Rollenliste wird dann zum Auswählen einer Rolle verwendet, wenn anschließend ein accessPackageResourceRoleScope erstellt wird.
-1. [Erstellen eines accessPackage](/graph/tutorial-access-package-api&view=graph-rest-beta&preserve-view=true).
+1. [Erstellen eines accessPackage](/graph/tutorial-access-package-api).
 1. [Erstellen einer accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta&preserve-view=true).
 1. [Erstellen eines accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) für jede Ressourcenrolle, die im Zugriffspaket benötigt wird.
 

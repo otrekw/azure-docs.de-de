@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 7f9a8cb54458999d8f20a258bc36241dfdbd0de8
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 9873b3626b77a898b7bd682446e11a77b270b297
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376034"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897305"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Neuerungen in Azure Sentinel
 
@@ -32,7 +32,16 @@ Entsprechend gekennzeichnete Features sind derzeit als VORSCHAUVERSION verfügba
 
 ## <a name="april-2021"></a>April 2021
 
+- [Azure Policy-basierte Datenconnectors](#azure-policy-based-data-connectors)
 - [Zeitachse für Incidents (Public Preview)](#incident-timeline-public-preview)
+
+### <a name="azure-policy-based-data-connectors"></a>Azure Policy-basierte Datenconnectors
+
+Azure Policy kann verwendet werden, um eine allgemeine Gruppe von Diagnoseprotokolleinstellungen auf alle (aktuellen und zukünftigen) Ressourcen eines bestimmten Typs anzuwenden, deren Protokolle in Azure Sentinel erfasst werden sollen.
+
+In Fortsetzung unserer Bemühungen, die Leistungsfähigkeit von [Azure Policy](../governance/policy/overview.md) für die Konfiguration von Datensammlungen zu nutzen, bieten wir nun einen weiteren, durch Azure Policy erweiterten Datensammler für [Azure Storage-Kontoressourcen](connect-azure-storage-account.md) an, der zur öffentlichen Vorschau freigegeben wurde.
+
+Außerdem wurden zwei unserer Connectors in der Vorschauversion für [Azure Key Vault](connect-azure-key-vault.md) und [Azure Kubernetes Service](connect-azure-kubernetes-service.md)jetzt für die allgemeine Verfügbarkeit (GA) veröffentlicht, die unserem [Connector für Azure SQL-Datenbanken](connect-azure-sql-logs.md) beitreten.
 
 ### <a name="incident-timeline-public-preview"></a>Zeitachse für Incidents (Public Preview)
 
@@ -52,8 +61,8 @@ Weitere Informationen finden Sie im [Tutorial: Untersuchen von Incidents mit Azu
 
 - [Festlegen der automatischen Aktualisierung von Arbeitsmappen im Ansichtsmodus](#set-workbooks-to-automatically-refresh-while-in-view-mode)
 - [Neue Erkennungen für Azure Firewall](#new-detections-for-azure-firewall)
-- [Automatisierungsregeln und durch Incidents ausgelöste Playbooks](#automation-rules-and-incident-triggered-playbooks) (einschließlich der neuen Playbookdokumentation)
-- [Neue Warnungsfeatures: verbesserte Entitätszuordnung und benutzerdefinierte Details](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
+- [Automatisierungsregeln und ereignisgesteuerte Playbooks (öffentliche Vorschau)](#automation-rules-and-incident-triggered-playbooks-public-preview) (einschließlich komplett neuer Playbook-Dokumentation)
+- [Neue Alarm-Anreicherungen: erweiterte Entity-Zuordnung und benutzerdefinierte Details (öffentliche Vorschau)](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details-public-preview)
 - [Drucken von Azure Sentinel-Arbeitsmappen oder Speichern von Arbeitsmappen als PDF](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
 - [Speicherung von Incidentfiltern und Sortierungseinstellungen in der Sitzung (Public Preview)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
 - [Integration von Microsoft 365 Defender-Incidents (Public Preview)](#microsoft-365-defender-incident-integration-public-preview)
@@ -95,7 +104,7 @@ Dem integrierten Vorlagenkatalog werden laufend Erkennungen für Azure Firewall
 
 Weitere Informationen finden Sie unter [Neue Erkennungen für Azure Firewall in Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-network-security/new-detections-for-azure-firewall-in-azure-sentinel/ba-p/2244958).
 
-### <a name="automation-rules-and-incident-triggered-playbooks"></a>Automatisierungsregeln und durch Incidents ausgelöste Playbooks
+### <a name="automation-rules-and-incident-triggered-playbooks-public-preview"></a>Automatisierungsregeln und ereignisgesteuerte Playbooks (Öffentliche Vorschau)
 
 Automatisierungsregeln sind ein neues Konzept in Azure Sentinel, mit dem Sie die Automatisierung der Incidentbehandlung zentral verwalten können. Mit Automatisierungsregeln können Sie nicht nur Playbooks Incidents zuweisen (nicht nur Alerts wie bisher), sondern auch Antworten für mehrere Analyseregeln gleichzeitig automatisieren, Incidents automatisch kennzeichnen, zuweisen oder schließen, ohne dass Playbooks erforderlich sind, und die Reihenfolge der ausgeführten Aktionen steuern. Automatisierungsregeln optimieren den Einsatz von Automatisierungen in Azure Sentinel und ermöglichen es Ihnen, komplexe Workflows für Ihre Incident-Orchestrierungsprozesse zu vereinfachen.
 
@@ -105,7 +114,7 @@ Wie bereits erwähnt, können Playbooks nun nicht mehr nur mit dem Warnungstrigg
 
 Erfahren Sie mehr über die [erweiterten Playbookfeatures](automate-responses-with-playbooks.md) und das [Erstellen eines Reaktionsworkflows](tutorial-respond-threats-playbook.md) mithilfe von Playbooks und Automatisierungsregeln.
 
-### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>Neue Warnungsfeatures: verbesserte Entitätszuordnung und benutzerdefinierte Details
+### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details-public-preview"></a>Neue Alarm-Anreicherungen: erweiterte Entity-Zuordnung und benutzerdefinierte Details (öffentliche Vorschau)
 
 Es gibt jetzt zwei neue Möglichkeiten, Ihre Warnungen benutzerfreundlicher und informativer zu gestalten.
 
@@ -152,7 +161,7 @@ Zu den über Richtlinien steuerbaren Eigenschaften gehören die Erstellung und V
 Azure Policy-basierte Connectors sind nun für die folgenden Azure-Dienste verfügbar:
 - [Azure Key Vault](connect-azure-key-vault.md) (öffentliche Vorschau)
 - [Azure Kubernetes Service](connect-azure-kubernetes-service.md) (öffentliche Vorschau)
-- Azure SQL-Datenbanken/-Server (allgemeine Verfügbarkeit)
+- [Azure SQL-Datenbanken/-Server (allgemeine Verfügbarkeit)](connect-azure-sql-logs.md) (GA)
 
 Kunden können die Protokolle weiterhin manuell für bestimmte Instanzen senden, ohne die Richtlinien-Engine zu verwenden.
 

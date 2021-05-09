@@ -1,14 +1,14 @@
 ---
 title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
-ms.date: 02/17/2021
+ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d819c20c27a2c2f4a316e60da1c0fdb7c8bb859
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741819"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896890"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -64,7 +64,8 @@ Die Auswirkung „append“ weist nur ein Array **details** auf, das erforderlic
 
 ### <a name="append-examples"></a>Beispiele für „append“
 
-Beispiel 1: Einzelnes **field/value**-Paar, das einen Nicht- **\[\*\]** -[Alias](definition-structure.md#aliases) mit einem Arraywert (**value**) verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Wenn der Nicht- **\[\*\]** -Alias ein Array ist, wird der **value** durch den Effekt als gesamtes Array angefügt. Wenn das Array bereits vorhanden ist, wird durch den Konflikt ein deny-Ereignis ausgelöst.
+Beispiel 1: Einzelnes **field/value**-Paar, das einen Nicht- **\[\*\]** 
+[Alias](definition-structure.md#aliases)mit einem **Arraywert** (value) verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Wenn der Nicht- **\[\*\]** -Alias ein Array ist, wird der **value** durch den Effekt als gesamtes Array angefügt. Wenn das Array bereits vorhanden ist, wird durch den Konflikt ein deny-Ereignis ausgelöst.
 
 ```json
 "then": {
@@ -100,7 +101,7 @@ Die Auswirkung „audit“ wird verwendet, um ein Warnungsereignis im Aktivität
 
 ### <a name="audit-evaluation"></a>Auswertung von „audit“
 
-„audit“ ist die letzte Auswirkung, die von Azure Policy während der Erstellung oder Aktualisierung einer Ressource überprüft wird. Bei einem Resource Manager-Modus wird die Ressource von Azure Policy an den Ressourcenanbieter gesendet. „audit“ funktioniert bei einer Ressourcenanforderung und einem Auswertungszyklus auf gleiche Weise. Bei neuen und aktualisierten Ressourcen fügt Azure Policy dem Aktivitätsprotokoll einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu und markiert die Ressource als nicht konform.
+„audit“ ist die letzte Auswirkung, die von Azure Policy während der Erstellung oder Aktualisierung einer Ressource überprüft wird. Bei einem Resource Manager-Modus wird die Ressource von Azure Policy an den Ressourcenanbieter gesendet. Beim Auswerten einer Erstellungs- oder Aktualisierungsanforderung für eine Ressource fügt Azure Policy dem Aktivitätsprotokoll einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu und markiert die Ressource als nicht konform. Während eines Standard-Konformitätsauswertungszyklus wird nur der Konformitätsstatus für die Ressource aktualisiert.
 
 ### <a name="audit-properties"></a>Eigenschaften von „audit“
 

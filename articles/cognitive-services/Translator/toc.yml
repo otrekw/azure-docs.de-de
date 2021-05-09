@@ -136,6 +136,10 @@
           href: custom-translator/what-is-bleu-score.md
         - name: Vom Kunden verwaltete Schlüssel
           href: encrypt-data-at-rest.md
+    - name: Verweis
+      items:
+        - name: Versionshinweise
+          href: custom-translator/release-notes.md
 - name: Dokumentübersetzung
   items:
     - name: Was ist die Dokumentübersetzung?

@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Service Bus Messaging
 description: Enthält eine Liste mit Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy, die für Azure Service Bus Messaging verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 2ddc6ba999cf7b22594e2bba65833cdf33165bde
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 4582cb3a53c3462043615dfe7384bf481e441cd2
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876191"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108184554"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-bus-messaging"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Service Bus Messaging
 

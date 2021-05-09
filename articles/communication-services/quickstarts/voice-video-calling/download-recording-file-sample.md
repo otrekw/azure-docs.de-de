@@ -9,12 +9,12 @@ ms.author: joseys
 ms.date: 04/14/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 493a35a627f458fe649931d9fabc175b0affc3a6
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 486dbc4e3bafe34fad9f6eeb00460ee6b9bf5613
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107730313"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292808"
 ---
 # <a name="record-and-download-calls-with-event-grid"></a>Aufzeichnen und Herunterladen von Anrufen mit Event Grid
 
@@ -64,7 +64,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
 ```
 
 
-Der obige Code hängt vom NuGet-Paket `Microsoft.Azure.EventGrid` ab. Weitere Informationen zur Event Grid-Endpunktüberprüfung finden Sie in der [Dokumentation zur Endpunktüberprüfung](https://docs.microsoft.com/azure/event-grid/receive-events#endpoint-validation).
+Der obige Code hängt vom NuGet-Paket `Microsoft.Azure.EventGrid` ab. Weitere Informationen zur Event Grid-Endpunktüberprüfung finden Sie in der [Dokumentation zur Endpunktüberprüfung](../../../event-grid/receive-events.md#endpoint-validation).
 
 Anschließend abonnieren Sie diesen Webhook für das `recording`-Ereignis:
 
@@ -218,6 +218,6 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- Sehen Sie sich das [Beispiel für Webanrufe](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample) an.
-- Informieren Sie sich über die [Funktionen des Calling SDK](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web).
-- Informieren Sie sich über die [Funktionsweise von Anrufen](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types).
+- Sehen Sie sich das [Beispiel für Webanrufe](../../samples/web-calling-sample.md) an.
+- Informieren Sie sich über die [Funktionen des Calling SDK](./calling-client-samples.md?pivots=platform-web).
+- Informieren Sie sich über die [Funktionsweise von Anrufen](../../concepts/voice-video-calling/about-call-types.md).

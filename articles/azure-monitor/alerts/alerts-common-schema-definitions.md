@@ -3,13 +3,13 @@ title: Warnungsschemadefinitionen in Azure Monitor
 description: Informationen zu Definitionen des allgemeinen Warnungsschemas für Azure Monitor
 author: ofirmanor
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 04/12/2021
+ms.openlocfilehash: a026fa846901d4db7cb56196de50508f077e4fc6
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491711"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018257"
 ---
 # <a name="common-alert-schema-definitions"></a>Definitionen des allgemeinen Warnungsschemas
 
@@ -72,7 +72,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 
 | Feld | BESCHREIBUNG|
 |:---|:---|
-| alertId | Die GUID, die diese Warnungsinstanz eindeutig identifiziert. |
+| alertId | Die eindeutige Ressourcen-ID, die die Warnungsinstanz identifiziert. |
 | alertRule | Der Name der Warnungsregel, die die Warnungsinstanz generiert hat. |
 | severity | Der Schweregrad der Warnung. Mögliche Werte: Sev0, Sev1, Sev2, Sev3 oder Sev4. |
 | signalType | Identifiziert das Signal, für das die Warnungsregel definiert wurde. Mögliche Werte: Metrik, Protokoll oder Aktivitätsprotokoll. |
@@ -110,7 +110,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 
 ## <a name="alert-context"></a>Warnungskontext
 
-### <a name="metric-alerts"></a>Metrikwarnungen
+### <a name="metric-alerts-excluding-availability-tests"></a>Metrikwarnungen (ohne Verfügbarkeitstests)
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
@@ -145,10 +145,41 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 }
 ```
 
+### <a name="metric-alerts-availability-tests"></a>Metrikwarnungen (Verfügbarkeitstests)
+
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
+
+**Beispielwerte**
+```json
+{
+  "alertContext": {
+      "properties": null,
+      "conditionType": "WebtestLocationAvailabilityCriteria",
+      "condition": {
+        "windowSize": "PT5M",
+        "allOf": [
+          {
+            "metricName": "Failed Location",
+            "metricNamespace": null,
+            "operator": "GreaterThan",
+            "threshold": "2",
+            "timeAggregation": "Sum",
+            "dimensions": [],
+            "metricValue": 5,
+            "webTestName": "myAvailabilityTest-myApplication"
+          }
+        ],
+        "windowStartTime": "2019-03-22T13:40:03.064Z",
+        "windowEndTime": "2019-03-22T13:45:03.064Z"
+      }
+    }
+}
+```
+
 ### <a name="log-alerts"></a>Protokollwarnungen
 
 > [!NOTE]
-> Für Protokollwarnungen mit benutzerdefiniertem E-Mail-Betreff und/oder benutzerdefinierter JSON-Nutzlast wird das E-Mail-Betreff- und/oder Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludeSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie unter Verwendung von `LinkToFilteredSearchResultsAPI` oder `LinkToSearchResultsAPI` mit der [Log Analytics-API](/rest/api/loganalytics/dataaccess/query/get) auf die Suchergebnisse zugreifen.
+> Für Protokollwarnungen mit benutzerdefiniertem E-Mail-Betreff und/oder benutzerdefinierter JSON-Nutzlast wird das E-Mail-Betreff- und/oder Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Das bedeutet: Wenn Sie eine benutzerdefinierte JSON-Nutzlast definieren möchten, kann der Webhook das allgemeine Warnungsschema nicht verwenden. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludeSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie unter Verwendung von `LinkToFilteredSearchResultsAPI` oder `LinkToSearchResultsAPI` mit der [Log Analytics-API](/rest/api/loganalytics/dataaccess/query/get) auf die Suchergebnisse zugreifen.
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

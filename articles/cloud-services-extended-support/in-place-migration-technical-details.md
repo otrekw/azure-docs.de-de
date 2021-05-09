@@ -8,12 +8,12 @@ ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 4ff7d9aa2075b675a7ecd979c08d5621bbdd831a
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 4898c0ec17766d0bcbd89176194aec9dee7157ea
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286734"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293042"
 ---
 # <a name="technical-details-of-migrating-to-azure-cloud-services-extended-support"></a>Technische Details der Migration zu Azure Cloud Services (erweiterter Support)   
 
@@ -36,7 +36,7 @@ In diesem Artikel werden die technischen Details des Migrationstools für Cloud 
 ### <a name="service-configuration-and-service-definition-files"></a>Dienstkonfiguration und Dienstdefinitionsdateien
 - Die CSCFG- und CSDEF-Dateien müssen für Cloud Services (erweiterter Support) geringfügig geändert werden. 
 - Die Namen von Ressourcen wie beispielsweise dem virtuellen Netzwerk und der VM-SKU lauten anders. Siehe hierzu [Übersetzung von Ressourcen und Namenskonventionen nach der Migration](#translation-of-resources-and-naming-convention-post-migration).
-- Kunden können ihre neuen Bereitstellungen über [PowerShell](https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice&preserve-view=true) und die [REST-API](https://docs.microsoft.com/rest/api/compute/cloudservices/get) abrufen. 
+- Kunden können ihre neuen Bereitstellungen über [PowerShell](/powershell/module/az.cloudservice/?preserve-view=true&view=azps-5.4.0#cloudservice) und die [REST-API](/rest/api/compute/cloudservices/get) abrufen. 
 
 ### <a name="cloud-service-and-deployments"></a>Clouddienst und Bereitstellungen
 - Jede Bereitstellung von Cloud Services (erweiterter Support) ist ein unabhängiger Clouddienst. Bereitstellungen werden nicht länger mithilfe von Slots in einem Clouddienst gruppiert.
@@ -100,4 +100,4 @@ Während der Migration werden die Ressourcennamen geändert, und einige wenige C
 - Kunden können PowerShell oder REST-API für Abbruch oder Commit verwenden. 
 
 ### <a name="how-much-time-can-the-operations-takebr"></a>Wie lange können die Vorgänge dauern?<br>
-Die Validierung ist als schneller Vorgang konzipiert. Die Vorbereitung dauert am längsten und kann abhängig von der Gesamtanzahl der migrierten Rolleninstanzen einige Zeit in Anspruch nehmen. Abbruch und Commit können ebenfalls eine Weile dauern, nehmen aber weniger Zeit in Anspruch als die Vorbereitung. Alle Vorgänge werden nach 24 Stunden mit einem Timeout abgebrochen. 
+Die Validierung ist als schneller Vorgang konzipiert. Die Vorbereitung dauert am längsten und kann abhängig von der Gesamtanzahl der migrierten Rolleninstanzen einige Zeit in Anspruch nehmen. Abbruch und Commit können ebenfalls eine Weile dauern, nehmen aber weniger Zeit in Anspruch als die Vorbereitung. Alle Vorgänge werden nach 24 Stunden mit einem Timeout abgebrochen.

@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: e5c855675990d6fd3ec97b839539acd843016a7d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 84567f9667619bb9208f066460b3c4483123b3fc
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864701"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331446"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -33,7 +33,7 @@ Hinweise zur Problembehandlung in der Registrierung finden Sie hier:
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Kann ich eine Azure Container Registry-Instanz mithilfe einer Resource Manager-Vorlage erstellen?
 
-Ja. Hier ist [eine Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry), mit deren Hilfe Sie eine Registrierung erstellen können.
+Ja. Hier ist [eine Vorlage](https://azure.microsoft.com/resources/templates/101-container-registry/), mit deren Hilfe Sie eine Registrierung erstellen können.
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Gibt es in ACR Überprüfungen auf Sicherheitsrisiken für Images?
 
