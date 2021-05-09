@@ -3,12 +3,12 @@ title: Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMwa
 description: Erstellen Sie eine Inhaltsbibliothek zum Bereitstellen einer VM in einer privaten Azure VMware Solution-Cloud.
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b27d2682d8799bec6b09a08e5063359113b20a88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382003"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873881"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution
 
@@ -94,7 +94,7 @@ Nachdem Sie die Inhaltsbibliothek erstellt haben, können Sie ein ISO-Image hinz
 
 Nachdem Sie sich mit dem Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
 
-- [Bereitstellen und Konfigurieren von VMware HCX](tutorial-deploy-vmware-hcx.md), um VM-Workloads zu Ihrer privaten Cloud zu migrieren
+- [So migrieren Sie VM-Workloads in Ihre Private Cloud](tutorial-deploy-vmware-hcx.md)
 - [Lebenszyklusverwaltung von Azure VMware Solution-VMs](lifecycle-management-of-azure-vmware-solution-vms.md)
 
 <!-- LINKS - external-->

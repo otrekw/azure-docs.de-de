@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aa4dde51c077152dd5c8a938ad64ad0a051f89ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22b41fce59bf7dbe9db1186036c5ed44f07a4aad
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100563371"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484477"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>Konvertieren von Branchenstandardontologien in DTDL für Azure Digital Twins
 
@@ -49,7 +49,9 @@ Dabei handelt es sich um die .NET Core-Befehlszeilenanwendung **RdfToDtdlConvert
 
 Hier können Sie die Beispielanwendung herunterladen: [**RdfToDtdlConverter**](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/). 
 
-Um den Code auf Ihren Computer herunterzuladen, klicken Sie auf die Schaltfläche *ZIP herunterladen* unterhalb des Titels auf der Landing Page der Beispielanwendung. Dadurch wird eine *ZIP-Datei* mit dem Namen *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip* heruntergeladen, die Sie dann entzippen und ausprobieren können.
+Um den Code auf Ihren Computer herunterzuladen, wählen Sie auf der Beispielseite unterhalb des Titels die Schaltfläche **Code durchsuchen** aus. Sie gelangen zum GitHub-Repository für das Beispiel. Klicken Sie auf die Schaltfläche **Code** und dann auf **ZIP herunterladen**, um das Beispiel als *ZIP*-Datei namens *RdfToDtdlConverter-main.zip* herunterzuladen. Anschließend können Sie die Datei entzippen und den Code untersuchen.
+
+:::image type="content" source="media/concepts-ontologies-convert/download-repo-zip.png" alt-text="Screenshot: GitHub-Repository „RdfToDtdlConverter“. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/concepts-ontologies-convert/download-repo-zip.png":::
 
 Sie können sich mit dieser Beispielanwendung die Konvertierungsmuster im Kontext ansehen und als Baustein für Ihre eigenen Anwendungen verwenden. Außerdem können Sie entsprechend Ihren spezifischen Anforderungen Modellkonvertierungen durchführen.
 

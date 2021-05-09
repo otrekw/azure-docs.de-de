@@ -5,22 +5,22 @@ description: Es wird beschrieben, wie Sie Azure Synapse- und Azure Machine Learn
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
-ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 23184eee67013e39400446db5f744dd0ddb7bc50
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.custom: devx-track-python, data4ml, synapse-azureml
+ms.openlocfilehash: 3ee5986fbe92d7e585a7c9f2f50bdeceb132c268
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575734"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131384"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Verknüpfen von Azure Synapse Analytics- und Azure Machine Learning-Arbeitsbereichen (Vorschauversion)
 
-In diesem Artikel wird beschrieben, wie Sie einen verknüpften Dienst erstellen, mit dem Ihr [Azure Synapse Analytics-Arbeitsbereich](/azure/synapse-analytics/overview-what-is) und [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) verknüpft werden.
+In diesem Artikel wird beschrieben, wie Sie einen verknüpften Dienst erstellen, mit dem Ihr [Azure Synapse Analytics-Arbeitsbereich](../synapse-analytics/overview-what-is.md) und [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) verknüpft werden.
 
 Nachdem Ihr Azure Machine Learning-Arbeitsbereich mit Ihrem Azure Synapse-Arbeitsbereich verknüpft wurde, können Sie einen Apache Spark-Pool als dedizierte Compute-Umgebung für Data Wrangling im großen Stil anfügen oder das Modelltraining über dasselbe Python-Notebook durchführen.
 
@@ -35,9 +35,9 @@ Sie können zum Verknüpfen von Arbeitsbereichen und Anfügen eines Synapse Spar
 
 * [Erstellen Sie einen Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md?tabs=python).
 
-* [Erstellen eines Synapse-Arbeitsbereichs im Azure-Portal](/azure/synapse-analytics/quickstart-create-workspace)
+* [Erstellen eines Synapse-Arbeitsbereichs im Azure-Portal](../synapse-analytics/quickstart-create-workspace.md)
 
-* [Erstellen eines Apache Spark-Pools über das Azure-Portal, Webtools oder Synapse Studio](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)
+* [Erstellen eines Apache Spark-Pools über das Azure-Portal, Webtools oder Synapse Studio](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)
 
 * Installieren des [Python SDK für Azure Machine Learning](/python/api/overview/azure/ml/intro)
 
@@ -104,7 +104,7 @@ Verknüpfen Sie mit den folgenden Schritten den Machine Learning-Arbeitsbereich
 1. Wählen Sie **Integration hinzufügen** aus.
 1. Füllen Sie die Felder im Formular **Arbeitsbereich verknüpfen** aus.
 
-    |Feld| Beschreibung    
+    |Feld| BESCHREIBUNG    
     |---|---
     |Name| Geben Sie einen Namen für Ihren verknüpften Dienst ein. Dieser Name wird verwendet, um auf diesen bestimmten verknüpften Dienst zu verweisen.
     |Abonnementname | Wählen Sie den Namen Ihres Abonnements aus, das Ihrem Machine Learning-Arbeitsbereich zugeordnet ist. 

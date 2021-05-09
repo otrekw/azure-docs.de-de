@@ -10,12 +10,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 03/02/2021
   ms.author: aahi
-  ms.openlocfilehash: 2adab9ab076a23260656f973e959bb14314ae8c1
-  ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+  ms.openlocfilehash: c8592674cdb6dd88e22f1089cedb935a65c8ad0a
+  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/30/2021
-  ms.locfileid: "102035473"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108128074"
 title: Häufig gestellte Fragen (FAQ) zu Azure Cognitive Services-Containern
 summary: ''
 sections:
@@ -74,7 +74,7 @@ sections:
       Wir testen keine Container mit OpenShift, aber im Allgemeinen sollten Cognitive Services-Container auf jeder Plattform ausgeführt werden können, die Docker-Images unterstützt. Wenn Sie OpenShift verwenden, empfehlen wir, die Container als `root-user` auszuführen.
   - question: Wie stelle ich Produktfeedback und Featureempfehlungen bereit?
     answer: >
-      Kunden werden aufgefordert, [ihre Bedenken öffentlich zu äußern](https://cognitive.uservoice.com/) und andere, die ebenso vorgegangen sind, an den Stellen, an denen sich potenzielle Probleme überschneiden, zu unterstützen. Das User Voice Tool kann sowohl für Produktfeedback als auch für Featureempfehlungen verwendet werden.
+      Kunden werden aufgefordert, [ihre Bedenken öffentlich zu äußern](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737) und andere, die ebenso vorgegangen sind, an den Stellen, an denen sich potenzielle Probleme überschneiden, zu unterstützen. Das Feedback-Tool kann sowohl für Produktfeedback als auch für Featureempfehlungen verwendet werden.
   - question: Welche Statusmeldungen und Fehler werden von Cognitive Services-Containern zurückgegeben?
     answer: >
       In der folgenden Tabelle finden Sie eine Liste von Statusmeldungen und Fehlern.

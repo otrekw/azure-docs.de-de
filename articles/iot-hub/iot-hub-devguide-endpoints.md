@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: a58e141c6232db08b125b265e3d4ad74c784ba24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2b9ea2e075ddcf20860ccb9ab1f2eff654993ad
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92152180"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499375"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
 
@@ -76,7 +76,7 @@ Alle IoT Hub-Endpunkte verwenden das [TLS](https://tools.ietf.org/html/rfc5246)-
 
 ## <a name="custom-endpoints"></a>Benutzerdefinierte Endpunkte
 
-Sie können vorhandene Azure-Dienste in Ihrem Abonnement mit Ihrem IoT-Hub verknüpfen, die als Endpunkte für das Nachrichtenrouting fungieren. Diese Endpunkte fungieren als Dienstendpunkte und werden als Senken für Nachrichtenrouten verwendet. Geräte können nicht direkt auf die zusätzlichen Endpunkte schreiben. Erfahren Sie mehr über das [Nachrichtenrouting](../iot-hub/iot-hub-devguide-messages-d2c.md).
+Sie können vorhandene Azure-Dienste in Ihren Azure-Abonnements mit Ihrem IoT-Hub verknüpfen, damit sie als Endpunkte für das Nachrichtenrouting fungieren. Diese Endpunkte fungieren als Dienstendpunkte und werden als Senken für Nachrichtenrouten verwendet. Geräte können nicht direkt auf die zusätzlichen Endpunkte schreiben. Erfahren Sie mehr über das [Nachrichtenrouting](../iot-hub/iot-hub-devguide-messages-d2c.md).
 
 IoT Hub unterstützt derzeit folgende Azure-Dienste als zusätzliche Endpunkte:
 

@@ -1,18 +1,14 @@
 ---
 title: Warnungstypen und -beschreibungen
 description: Lesen Sie die Beschreibungen der Warnungen zu Defender für IoT.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 4/8/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9ef7aa388d0f25adcafec1cb4a5b38dcfb8597a1
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 483563b53a5849b0354986269568bc42b9124cc2
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210464"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477994"
 ---
 # <a name="alert-types-and-descriptions"></a>Warnungstypen und -beschreibungen
 
@@ -20,7 +16,7 @@ In diesem Artikel werden sämtliche Warnungstypen beschrieben, die von den Defen
 
 ## <a name="policy-engine-alerts"></a>Warnungen der Richtlinien-Engine
 
-Die Warnungen der Richtlinien-Engine beschreiben Abweichungen vom gelernten normalen Verhalten des Netzwerks.
+Die Warnungen der Richtlinien-Engine beschreiben erkannte Abweichungen vom gelernten normalen Verhalten.
 
 | Titel  | BESCHREIBUNG | severity |
 |--|--|--|
@@ -122,6 +118,8 @@ Die Warnungen der Richtlinien-Engine beschreiben Abweichungen vom gelernten norm
 
 ## <a name="anomaly-engine-alerts"></a>Engine-Warnungen zu Anomalien
 
+Warnungen der Anomalie-Engine beschreiben erkannte Anomalien in der Netzwerkaktivität.
+
 | Titel | BESCHREIBUNG | severity |
 |--|--|--|
 | Ungewöhnliches Ausnahmemuster auf untergeordnetem Gerät | Auf einem Quellgerät wurde eine übermäßige Anzahl von Fehlern erkannt. Dies kann durch ein Betriebsproblem verursacht worden sein. | Nebenversion |
@@ -150,6 +148,8 @@ Die Warnungen der Richtlinien-Engine beschreiben Abweichungen vom gelernten norm
 | Unerwarteter Datenverkehr für Standardport | Auf einem Gerät wurde Datenverkehr über einen Port erkannt, der für ein anderes Protokoll reserviert ist. | Hauptversion |
 
 ## <a name="protocol-violation-engine-alerts"></a>Warnungen der Protokollverstoß-Engine
+
+Warnungen der Protokoll-Engine beschreiben erkannte Abweichungen in der Paketstruktur oder in Feldwerten im Vergleich zu Protokollspezifikationen.
 
 | Titel | BESCHREIBUNG | severity |
 |--|--|--|
@@ -181,6 +181,8 @@ Die Warnungen der Richtlinien-Engine beschreiben Abweichungen vom gelernten norm
 
 ## <a name="malware-engine-alerts"></a>Warnungen der Malware-Engine
 
+Warnungen der Schadsoftware-Engine beschreiben erkannte schädliche Netzwerkaktivitäten.
+
 | Titel | BESCHREIBUNG| severity |
 |--|--|--|
 | Verbindungsversuch mit bekannter böswilliger IP-Adresse | Es wurde eine verdächtige Netzwerkaktivität erkannt. Diese Aktivität kann einem Angriff zugeordnet werden, bei dem eine Methode verwendet wird, für die eine bestimmte Malware bekannt ist. | Hauptversion |
@@ -210,6 +212,8 @@ Die Warnungen der Richtlinien-Engine beschreiben Abweichungen vom gelernten norm
 | Verdächtiger Datenverkehr erkannt | Es wurde eine verdächtige Netzwerkaktivität erkannt. Diese Aktivität kann einem Angriff zugeordnet werden, bei dem eine Methode verwendet wird, für die eine bestimmte Malware bekannt ist. | Kritisch |
 
 ## <a name="operational-engine-alerts"></a>Warnungen der Betriebs-Engine
+
+Warnungen der Betriebs-Engine beschreiben erkannte Betriebsvorfälle oder Entitäten mit Funktionsfehlern.
 
 | Titel | BESCHREIBUNG | severity |
 |--|--|--|

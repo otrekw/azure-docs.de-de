@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fda56d987bd4866d5124973329a5db7c74872b3f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94920439"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123409"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -107,6 +107,10 @@ Die folgenden Importtypen werden für das PEM-Dateiformat unterstützt. Ein einz
 -----BEGIN PRIVATE KEY----- -----END PRIVATE KEY-----
 
 Wenn Sie das Zertifikat importieren, müssen Sie sicherstellen, dass der Schlüssel in der Datei selbst enthalten ist. Wenn der private Schlüssel separat in einem anderen Format vorliegt, müssen Sie den Schlüssel mit dem Zertifikat kombinieren. Einige Zertifizierungsstellen bieten Zertifikate in verschiedenen Formaten an. Stellen Sie daher vor dem Importieren des Zertifikats sicher, dass in einem der Formate PEM oder PFX vorliegt. 
+
+
+>[!Note]
+>Stellen Sie sicher, dass keine anderen Metadaten in der Zertifikatsdatei enthalten sind und dass der private Schlüssel nicht als verschlüsselt angezeigt wird.
 
 ### <a name="formats-of-merge-csr-we-support"></a>Unterstützte Formate von Merge CSR
 AKV unterstützt zwei PEM-basierte Formate. Sie können ein einzelnes PKCS#8-codiertes Zertifikat oder eine Base64-codierte P7B-Datei (von der Zertifizierungsstelle signierte Zertifikatkette) zusammenführen. 

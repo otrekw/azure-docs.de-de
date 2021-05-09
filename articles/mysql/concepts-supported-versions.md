@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: d84f56e5ae0f3c364a0fd3a08ccb173d7c65a5e2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 77b43561ea0c1fdf9ff7a8d0fcce7fa7b9a2e0fa
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121760"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129385"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
 
@@ -21,7 +21,7 @@ Azure Database for MySQL wurde basierend auf [MySQL Community Edition](https://w
 
 ## <a name="connect-to-a-gateway-node-that-is-running-a-specific-mysql-version"></a>Stellen Sie eine Verbindung zu einem Gateway-Knoten her, auf dem eine bestimmte MySQL-Version läuft
 
-Bei der Bereitstellungsoption „Einzelserver“ werden die Verbindungen mit einem Gateway zu Serverinstanzen umgeleitet. Sobald die Verbindung hergestellt ist, zeigt der MySQL-Client die im Gateway festgelegte Version von MySQL an, nicht die tatsächliche Version, die auf Ihrer MySQL-Serverinstanz ausgeführt wird. Um die Version Ihrer MySQL-Serverinstanz zu ermitteln, geben Sie den `SELECT VERSION();`-Befehl an der MySQL-Eingabeaufforderung ein. Überprüfen Sie die [Konnektivitätsarchitektur](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture#connectivity-architecture), um mehr über Gateways in der Dienstarchitektur von Azure Database for MySQL zu erfahren.
+Bei der Bereitstellungsoption „Einzelserver“ werden die Verbindungen mit einem Gateway zu Serverinstanzen umgeleitet. Sobald die Verbindung hergestellt ist, zeigt der MySQL-Client die im Gateway festgelegte Version von MySQL an, nicht die tatsächliche Version, die auf Ihrer MySQL-Serverinstanz ausgeführt wird. Um die Version Ihrer MySQL-Serverinstanz zu ermitteln, geben Sie den `SELECT VERSION();`-Befehl an der MySQL-Eingabeaufforderung ein. Überprüfen Sie die [Konnektivitätsarchitektur](./concepts-connectivity-architecture.md#connectivity-architecture), um mehr über Gateways in der Dienstarchitektur von Azure Database for MySQL zu erfahren.
 
 Da Azure Database for MySQL die Hauptversionen v5.6, v5.7 und v8.0 unterstützt, wird auf dem Standardport 3306 zur Verbindung mit Azure Database for MySQL die MySQL-Clientversion 5.6 (kleinster gemeinsamer Nenner) ausgeführt, um Verbindungen zu Servern aller 3 unterstützten Hauptversionen zu unterstützen. Wenn Ihre Anwendung jedoch eine Verbindung zu einer bestimmten Hauptversion, z. B. v5.7 oder v8.0, herstellen muss, können Sie dies tun, indem Sie den Port in der Verbindungszeichenfolge Ihres Servers ändern.
 
@@ -29,11 +29,13 @@ Im Azure Database für den MySQL-Dienst lauschen die Gateway-Knoten auf Port 330
 
 :::image type="content" source="./media/concepts-supported-versions/concepts-supported-versions-gateway.png" alt-text="Beispiel für das Herstellen einer Verbindung über verschiedene Gateway MySQL-Versionen":::
 
+> [!NOTE]
+> Verbindungen mit Azure Database for MySQL über die Ports 3308 und 3309 werden nur für öffentliche Verbindungen unterstützt, Private Link und VNET-Dienst-Endpunkte können nur mit Port 3306 verwendet werden.
 
 ## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>Azure Database for MySQL unterstützt derzeit die folgenden Haupt- und Nebenversionen von MySQL:
 
 
-| Version | [Single Server](overview.md) <br/> Aktuelle Nebenversion |[Flexible Server (Vorschau)](/../flexible-server/overview.md) <br/> Aktuelle Nebenversion  |
+| Version | [Single Server](overview.md) <br/> Aktuelle Nebenversion |[Flexible Server (Vorschau)](./flexible-server/overview.md) <br/> Aktuelle Nebenversion  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL-Version 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (eingestellt) | Nicht unterstützt|
 |MySQL-Version 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|

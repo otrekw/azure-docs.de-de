@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 03/25/2020
+ms.date: 04/12/2021
 ms.author: aahi
-ms.openlocfilehash: 3fecb84196ba736120273955b2c88af8cb4dadea
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: aeb5ba4145409db5b2884102d7e886222a37de7a
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095814"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388362"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure Cognitive Services-Containerimagetags und -Versionshinweise
 
@@ -52,18 +52,24 @@ Dieses Containerimage verfügt über die folgenden Tags. Eine vollständige List
 
 # <a name="latest-version"></a>[Aktuelle Version](#tab/current)
 
+Versionshinweise für `3.2`:
+
+* Der OCR-Container für das Lesen ist jetzt allgemein verfügbar.
+
+| Imagetags                    | Notizen |
+|-------------------------------|:------|
+| `3.2`                     |       |
+
+# <a name="previous-versions"></a>[Vorherige Versionen](#tab/previous)
+
+
 Versionshinweise für `3.2-preview.2`:
+
 * Version ohne Distribution
 * ReadingOrder-Parameter zur Auswahl der Reihenfolge der Textzeilen in der JSON-Antwort
 * Verbesserte Protokollierung
 * Hotfixes für das CJK-Modell
-
-| Imagetags                    | Notizen |
-|-------------------------------|:------|
-|3.2.2.014850001-49e0eac6-amd64-preview                     |       |
-
-# <a name="previous-versions"></a>[Vorherige Versionen](#tab/previous)
-
+* 
 Versionshinweise für `v2.0.013250001-amd64-preview`:
 
 * Verringern Sie die Speicherauslastung für den Container weiter.
@@ -93,6 +99,7 @@ Versionshinweise für `1.1.013050001-amd64-preview`
 
 | Imagetags                    | Notizen |
 |-------------------------------|:------|
+| `3.2.2.014850001-49e0eac6-amd64-preview` |       |
 | `2.0.013250001-amd64-preview` |       |
 | `1.1.013050001-amd64-preview` |       |
 | `1.1.011580001-amd64-preview` |       |
@@ -154,20 +161,24 @@ Das Containerimage [Benutzerdefinierte Spracherkennung][sp-cstt] befindet sich i
 
 # <a name="latest-version"></a>[Aktuelle Version](#tab/current)
 
-Versionshinweise für `2.10.0-amd64`:
+Versionshinweise für `2.11.0-amd64`:
 
-**Feature**
-* Führen Sie ein Upgrade auf die aktuellen Modelle durch.
+**Fehlerbehebungen**
+* Bei Benutzereingaben wird die Groß-/Kleinschreibung beibehalten.
 
-Beachten Sie, dass dieses Containerimage aufgrund der enthaltenen Ausdruckslisten größer geworden ist.
+Beachten Sie, dass dieses Containerimage aufgrund des Ausdruckslistenfeatures größer geworden ist.
 
 | Imagetags                    | Notizen | Digest                                                                   |
 |-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:944f051e3b90aa8eb8a37a4d4a18d4e13dbb49f9fe6d5ced61a0f99b3b3e312c`|
-| `2.10.0-amd64`                |       | `sha256:944f051e3b90aa8eb8a37a4d4a18d4e13dbb49f9fe6d5ced61a0f99b3b3e312c`|
+| `latest`                      |       | `sha256:bbf23ded55bf61421f673bffa7d97aca5724f782328a80efe43020c9979cd069`|
+| `2.11.0-amd64`                |       | `sha256:bbf23ded55bf61421f673bffa7d97aca5724f782328a80efe43020c9979cd069`|
 
 
 # <a name="previous-version"></a>[Vorherige Version](#tab/previous)
+
+Versionshinweise für `2.10.0-amd64`:
+
+Regelmäßiges monatliches Release
 
 Versionshinweise für `2.9.0-amd64`:
 
@@ -214,6 +225,7 @@ Versionshinweise für `2.5.0-amd64`:
 
 | Imagetags                    | Notizen               |
 |-------------------------------|:--------------------|
+| `2.10.0-amd64`                |                     |
 | `2.9.0-amd64`                 |                     |
 | `2.7.0-amd64`                 |                     |
 | `2.6.0-amd64`                 |                     |
@@ -228,18 +240,22 @@ Das Containerimage [Benutzerdefinierte Sprachsynthese][sp-ctts] befindet sich im
 
 # <a name="latest-version"></a>[Aktuelle Version](#tab/current)
 
-Versionshinweise für `1.12.0-amd64`:
+Versionshinweise für `1.13.0-amd64`:
 
-**Feature**
-* Führen Sie ein Upgrade auf die aktuellen Modelle durch.
+**Fehlerbehebungen**
+* Bei Benutzereingaben wird die Groß-/Kleinschreibung beibehalten.
 
 | Imagetags                    | Notizen | Digest                                                                   |
 |-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:82806245b8ccce808523c4276d8f447c8429db8b04ff26bdbc4d36ba6a704db4` |
-| `1.12.0-amd64`                |       | `sha256:82806245b8ccce808523c4276d8f447c8429db8b04ff26bdbc4d36ba6a704db4` |
+| `latest`                      |       | `sha256:390ff9e4981c798058058e7825cd1e6d173d9d54d66d8fdc450d157cf393aaec` |
+| `1.13.0-amd64`                |       | `sha256:390ff9e4981c798058058e7825cd1e6d173d9d54d66d8fdc450d157cf393aaec` |
 
 
 # <a name="previous-version"></a>[Vorherige Version](#tab/previous)
+
+Versionshinweise für `1.12.0-amd64`:
+
+Regelmäßiges monatliches Release
 
 Versionshinweise für `1.11.0-amd64`:
 
@@ -262,6 +278,7 @@ Versionshinweise für `1.7.0-amd64`:
 
 | Imagetags                    | Notizen               |
 |-------------------------------|:--------------------|
+| `1.12.0-amd64`                |                     |
 | `1.11.0-amd64`                |                     |
 | `1.9.0-amd64`                 |                     |
 | `1.8.0-amd64`                 |                     |
@@ -277,17 +294,182 @@ Seit Spracherkennung v2.5.0 werden Images in der Region *US Government Virginia
 
 # <a name="latest-version"></a>[Aktuelle Version](#tab/current)
 
+Versionshinweise für `2.11.0-amd64-<locale>`:
+
+**Feature**
+* Führen Sie ein Upgrade auf die aktuellen Modelle durch.
+
+**Fehlerbehebungen**
+* Bei Benutzereingaben wird die Groß-/Kleinschreibung beibehalten.
+
+Beachten Sie, dass dieses Containerimage aufgrund des Ausdruckslistenfeatures größer geworden ist. 
+
+| Imagetags                    | Notizen                                                                                                |
+|-------------------------------|:-----------------------------------------------------------------------------------------------------|
+| `latest`                      | Containerimage mit dem Gebietsschema `en-US`.                                                             |
+| `2.11.0-amd64-<locale>`       | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.11.0-amd64-en-us`.|
+
+Für diesen Container sind die folgenden Gebietsschemas verfügbar.
+
+| Gebietsschema für v2.11.0          | Notizen                                    | Digest                                                                    |
+|-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|
+| `ar-ae`                     | Containerimage mit dem Gebietsschema `ar-AE`. | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-bh`                     | Containerimage mit dem Gebietsschema `ar-BH`. | `sha256:a6af48cdaf9f7562bfaced449016106dbde5c678fdd4c69985d166959a38b146` |
+| `ar-eg`                     | Containerimage mit dem Gebietsschema `ar-EG`. | `sha256:43cec166dcde9dc7cd535228440d11d396518fcfb14d9fa617e6e26f5156dc84` |
+| `ar-iq`                     | Containerimage mit dem Gebietsschema `ar-IQ`. | `sha256:b55095b27e8eef60dfe9657735a425b9ca1fe3c29ce4ff1f3d67bf7b2ac77bb1` |
+| `ar-jo`                     | Containerimage mit dem Gebietsschema `ar-JO`. | `sha256:7cc4ad997a76844414a982982251653525f27dc396db44f23b7f012d20f53677` |
+| `ar-kw`                     | Containerimage mit dem Gebietsschema `ar-KW`. | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-lb`                     | Containerimage mit dem Gebietsschema `ar-LB`. | `sha256:5d3b402f41f616ee792a5e7e3f41b4ec5638dc8ad60a3c133ec588e07b09d581` |
+| `ar-om`                     | Containerimage mit dem Gebietsschema `ar-OM`. | `sha256:c4f88fdaec73ebe241d6c94695b20eb2c792a9fd77dbb51f24fc7807dfd0dc61` |
+| `ar-qa`                     | Containerimage mit dem Gebietsschema `ar-QA`. | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-sa`                     | Containerimage mit dem Gebietsschema `ar-SA`. | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-sy`                     | Containerimage mit dem Gebietsschema `ar-SY`. | `sha256:a42b6f63a16313f280088bd47978e177bc2f1bf2d392a070cf5c6a06d9f7a62c` |
+| `bg-bg`                     | Containerimage mit dem Gebietsschema `bg-BG`. | `sha256:21425557e62d71326e9eb614c535878f981a914bf66d9dd883221656ca891858` |
+| `ca-es`                     | Containerimage mit dem Gebietsschema `ca-ES`. | `sha256:682e8a8ad5f2582f25a18b0518f9fba9b3849b72eb5dab5454586724272c52de` |
+| `cs-cz`                     | Containerimage mit dem Gebietsschema `cs-CZ`. | `sha256:1d0661ae5920f82e607c72ae7d6eee917c190d80c3d13403d770947c67a4294e` |
+| `da-dk`                     | Containerimage mit dem Gebietsschema `da-DK`. | `sha256:8d5257d6c326e4d96ba395faa0c717f48c4d437866f8dc1e1252c5e983b3008f` |
+| `de-de`                     | Containerimage mit dem Gebietsschema `de-DE`. | `sha256:086a4e33f746868fc1865322f1d7dfb5c1c3af64bdbd369804155f18710ad96e` |
+| `el-gr`                     | Containerimage mit dem Gebietsschema `el-GR`. | `sha256:0e2c7d5337f953d45fc7594317e6eab5eecec44a1c15fba51a128fc510519c3f` |
+| `en-au`                     | Containerimage mit dem Gebietsschema `en-AU`. | `sha256:dcfe3fc95b895d0205a7b72368595e98dfdcb4b6398522e7daa2fbbe2b087ef6` |
+| `en-ca`                     | Containerimage mit dem Gebietsschema `en-CA`. | `sha256:f04cedb6b50560f0584cb3634cbfee5e9c147d60fc044cbd0df10fc28f04ed98` |
+| `en-gb`                     | Containerimage mit dem Gebietsschema `en-GB`. | `sha256:9692c45c6b5b8716f99852a2ddf4b7fd1e2c00ea29f9a20da68e899cf3064fa1` |
+| `en-hk`                     | Containerimage mit dem Gebietsschema `en-HK`. | `sha256:97106aa991b4ef5b0f1859ae7a7df3c6e22dd009123281a7458d336a78ebd854` |
+| `en-ie`                     | Containerimage mit dem Gebietsschema `en-IE`. | `sha256:da2bc14cd86f200a439b3ce708c6643d507d482daabae87c351bee4c10efa60b` |
+| `en-in`                     | Containerimage mit dem Gebietsschema `en-IN`. | `sha256:f8fc43e5d20afe8108b6f35c3e09d403557f150413672d45322421be1fddff20` |
+| `en-nz`                     | Containerimage mit dem Gebietsschema `en-NZ`. | `sha256:abb8ca669c806a71af88d3643694252e1833ca99aacbd739a3962ec00c3cdb61` |
+| `en-ph`                     | Containerimage mit dem Gebietsschema `en-PH`. | `sha256:13bc7717dd73f4323956a3f7441b24dd2f86c13d41adc709e3f6f26266cacd91` |
+| `en-sg`                     | Containerimage mit dem Gebietsschema `en-SG`. | `sha256:b7f44d7cf4bbe4d89729207a38e91726c321ea03a66c5e5624b27ae9913fdafa` |
+| `en-us`                     | Containerimage mit dem Gebietsschema `en-US`. | `sha256:d81ee15821646607aec9fa46223c9197f74675a89070912ca892ad5adfcab6f9` |
+| `en-za`                     | Containerimage mit dem Gebietsschema `en-ZA`. | `sha256:2e2f9102c9f6fba0736fb01d745d35b677bf92750eed5cad245ee089998f66f2` |
+| `es-ar`                     | Containerimage mit dem Gebietsschema `es-AR`. | `sha256:dd962ec3f32b8fdeb15f7ab18ea9d19e7c93baf4c801fac59d44f5cf845e9935` |
+| `es-bo`                     | Containerimage mit dem Gebietsschema `es-BO`. | `sha256:f89c0e513f43800e1d19177384b815c1a04f5b07ccba8fd9c80aa5ebf5c71648` |
+| `es-cl`                     | Containerimage mit dem Gebietsschema `es-CL`. | `sha256:3ebc64dceb1b7fbef716de3736a020b23e8fb4e9aceb183524863681e0b278fe` |
+| `es-co`                     | Containerimage mit dem Gebietsschema `es-CO`. | `sha256:ba05465c312acf6b9a1a1866c81c795027470e8bda8389dd0fcb641c9f1af592` |
+| `es-cr`                     | Containerimage mit dem Gebietsschema `es-CR`. | `sha256:51d49d90f600ae971019974a6a38c71b3bf01a84301ee6e8604c3f424bc6773f` |
+| `es-cu`                     | Containerimage mit dem Gebietsschema `es-CU`. | `sha256:a19f0ab805d0268c06a0e83aad2dcab458638e8c2f7869f5b2315695ae2ea4d8` |
+| `es-do`                     | Containerimage mit dem Gebietsschema `es-DO`. | `sha256:a9539f091ec3feef34511ce9d337436151980eda69c7f8c8f2493e8d1be81e66` |
+| `es-ec`                     | Containerimage mit dem Gebietsschema `es-EC`. | `sha256:a0f5c19a683b92566747db79e30ac7ad09cde07bcb15451166b5257d036a86bc` |
+| `es-es`                     | Containerimage mit dem Gebietsschema `es-ES`. | `sha256:2aa5e82c726a8771c706a2de38bed09ca9c8298bb166c49fa227b8966011efa4` |
+| `es-gt`                     | Containerimage mit dem Gebietsschema `es-GT`. | `sha256:60361c1a305d0fef3deb0e4886c4044aebcf41878a748bc0615b94fcf9489cf9` |
+| `es-hn`                     | Containerimage mit dem Gebietsschema `es-HN`. | `sha256:d628b894966988880bb11f1ec1380702077bd45c2a83b912ae3e7451d8fd90cb` |
+| `es-mx`                     | Containerimage mit dem Gebietsschema `es-MX`. | `sha256:2bd901c320237e041ecca1ea34c359cf847cf8dacecfcb0e1ed8fd1794463fe5` |
+| `es-ni`                     | Containerimage mit dem Gebietsschema `es-NI`. | `sha256:099d21e5e5816d5d7e0965cda5878bfe78f5447e4994957dcc45ae40223b14b1` |
+| `es-pa`                     | Containerimage mit dem Gebietsschema `es-PA`. | `sha256:af6c258b7e984ee17d32b9dfc49969cfc1d7ee33aa2485017fab191d8d574e92` |
+| `es-pe`                     | Containerimage mit dem Gebietsschema `es-PE`. | `sha256:7d0e03c7f44f61b4632b730c2cf8e3d7c584a869bb5d53b9e5021549d1d500a8` |
+| `es-pr`                     | Containerimage mit dem Gebietsschema `es-PR`. | `sha256:ad580c1ac73d919434387869803d9fabec24e19afd6b4cc5aa7e809fb93dc908` |
+| `es-py`                     | Containerimage mit dem Gebietsschema `es-PY`. | `sha256:2e85df2af0003c0a41752c6e989ed8b724a22958e7ed3cbf67e54ca621bb5975` |
+| `es-sv`                     | Containerimage mit dem Gebietsschema `es-SV`. | `sha256:bae49ae543878096c1dd0c77a8f83a30ba1416605efa58dad59ca3577f7006ea` |
+| `es-us`                     | Containerimage mit dem Gebietsschema `es-US`. | `sha256:fd9deebe4e5a4466af439a8e40a1a39261a7b0228a4ed979b8086e1c65c60e26` |
+| `es-uy`                     | Containerimage mit dem Gebietsschema `es-UY`. | `sha256:0e69fc4689dafad97e00bed7c4eb7ca44b94e3a3d9357d6d36bed8135963e9e4` |
+| `es-ve`                     | Containerimage mit dem Gebietsschema `es-VE`. | `sha256:37ebac38fac4306668858140736d83e008ae0756f8e1fe5ed6386780bc9796ba` |
+| `et-ee`                     | Containerimage mit dem Gebietsschema `et-EE`. | `sha256:223d494cf64cdceaabe6e9bae82d378d7ea53eb8c01d58bdbd2e1ed360aaa34b` |
+| `fi-fi`                     | Containerimage mit dem Gebietsschema `fi-FI`. | `sha256:378e5735198e38d6bed8c87a59ed69f8c3bd57ac8a462332d74dd8495cb07ed2` |
+| `fr-ca`                     | Containerimage mit dem Gebietsschema `fr-CA`. | `sha256:d92f672c2a61a67db43d9884bc2692c304b3c2c5446bed2d315892876270366b` |
+| `fr-fr`                     | Containerimage mit dem Gebietsschema `fr-FR`. | `sha256:11dc172c7ae91b6cba7fb4ab1a61e48b27b193bf434a68827eb197c0ba05d6fb` |
+| `ga-ie`                     | Containerimage mit dem Gebietsschema `ga-IE`. | `sha256:3057eaaf8e0403690c0223c0db3a392b05f2ec45e53511327b8447912e32b8b4` |
+| `gu-in`                     | Containerimage mit dem Gebietsschema `gu-IN`. | `sha256:37062edf6805dce30309e4615c2947dded730b5b5be7e3bcd85bb93e38b08f31` |
+| `hi-in`                     | Containerimage mit dem Gebietsschema `hi-IN`. | `sha256:9f1bf1901a6b0e2caf4c9ff30e0b6bb3f1f4f814ad86fc62a471d4fe1fe4c101` |
+| `hr-hr`                     | Containerimage mit dem Gebietsschema `hr-HR`. | `sha256:095b40ad1afeebd932c299410a4732fd64da2251230aa044ca2c43b4d0bb6791` |
+| `hu-hu`                     | Containerimage mit dem Gebietsschema `hu-HU`. | `sha256:60e9257735cee7dc6cde1b5725588b1c1ea84f852220f1f4f3e873177a24fc5c` |
+| `it-it`                     | Containerimage mit dem Gebietsschema `it-IT`. | `sha256:71c5e3a9196155678a6ad9cd62b812386579521ac410b40e3526dee153d749e1` |
+| `ja-jp`                     | Containerimage mit dem Gebietsschema `ja-JP`. | `sha256:fce7d215575d2a94cdb4818bb1525f6448f5f881fc3e7f04274c64978bd6aaa7` |
+| `ko-kr`                     | Containerimage mit dem Gebietsschema `ko-KR`. | `sha256:d71d8e1e3692bb0781e98b984dea79950a8009a6fa03e729325c338ca5c09a98` |
+| `lt-lt`                     | Containerimage mit dem Gebietsschema `lt-LT`. | `sha256:dc2e35e158c09fd793b180050a0100df4a3716da4d0a7a528dc3ea65b6ecf21b` |
+| `lv-lv`                     | Containerimage mit dem Gebietsschema `lv-LV`. | `sha256:e6ab373eb9477d90d44175fffb646298d403405633e0a61ccf20f9e7381243b8` |
+| `mr-in`                     | Containerimage mit dem Gebietsschema `mr-IN`. | `sha256:0ce15c2d14bba49639adea30c91df1ac47e7b2a7796be551276bad8ec8312ed4` |
+| `mt-mt`                     | Containerimage mit dem Gebietsschema `mt-MT`. | `sha256:bbe958ff9c7c51efc6521866173b26ac2cfe682d114ce3ed6b1f6b8e9b3a7327` |
+| `nb-no`                     | Containerimage mit dem Gebietsschema `nb-NO`. | `sha256:4e4d890605e09717ef88982f586611c605342465a8ef81f2280f665ad1378522` |
+| `nl-nl`                     | Containerimage mit dem Gebietsschema `nl-NL`. | `sha256:60bd2d1f817019e6626876b15f5697be07c3b2b368e4cc7e3c3871c3e9181052` |
+| `pl-pl`                     | Containerimage mit dem Gebietsschema `pl-PL`. | `sha256:c8520e7155ef176fb9fea48c541acae995a6a80ba6913ac4289786ee55062ce6` |
+| `pt-br`                     | Containerimage mit dem Gebietsschema `pt-BR`. | `sha256:c8440308a5cb77791f33ae458c49abc084a1be8c418df9feeda9a4aa917a59bc` |
+| `pt-pt`                     | Containerimage mit dem Gebietsschema `pt-PT`. | `sha256:a66739b36a410c181ccd2205c59fee2726b3905d1c5ba4531909be96cf85a55c` |
+| `ro-ro`                     | Containerimage mit dem Gebietsschema `ro-RO`. | `sha256:c4ba7ff5c11d4243a3e128aca1f8110e62df82d956706c97c237016a94cb485f` |
+| `ru-ru`                     | Containerimage mit dem Gebietsschema `ru-RU`. | `sha256:c3fc4117598c0dcea0fd5e6f19adf7763e42732e32e3ac93ff74795fdc167e67` |
+| `sk-sk`                     | Containerimage mit dem Gebietsschema `sk-SK`. | `sha256:78bcfa610f645c113134cc24c8af8dd3c630065c1b009fb5e36dfab4999c16fb` |
+| `sl-si`                     | Containerimage mit dem Gebietsschema `sl-SI`. | `sha256:134eb68c900787bae3a98a2bdf192f2a5460fb96b92590d65765d982245a7ccf` |
+| `sv-se`                     | Containerimage mit dem Gebietsschema `sv-SE`. | `sha256:d194aaefe82a5f91df9e01beec271ad9565c4d36cb0539421e947b5c8e67228d` |
+| `ta-in`                     | Containerimage mit dem Gebietsschema `ta-IN`. | `sha256:cf272b112b10587c034f00f7df2bfcdefbf542859fa089c15581040db99ed383` |
+| `te-in`                     | Containerimage mit dem Gebietsschema `te-IN`. | `sha256:7364a1068f9940e9bb6ea5476b0a007a37d42b899dc4ba56be833e4d2b8d359d` |
+| `th-th`                     | Containerimage mit dem Gebietsschema `th-TH`. | `sha256:21ce33714fa37bfede60560a7a24c17c88566c767b76c58c877a48c51811c9ac` |
+| `tr-tr`                     | Containerimage mit dem Gebietsschema `tr-TR`. | `sha256:b97035a4f0334f890ff3630a2de249b72a879de3c7d4fcc849c3d76aa97f4d2e` |
+| `zh-cn`                     | Containerimage mit dem Gebietsschema `zh-CN`. | `sha256:ae4a89a26768c978d91ed797e9ecb8035fdb61f12c1b1124c86939c79ddcb38e` |
+| `zh-hk`                     | Containerimage mit dem Gebietsschema `zh-HK`. | `sha256:41bc980abe79cd69034a8ade2be203478b531a00f5e74b1f7b8f9c5267700261` |
+| `zh-tw`                     | Containerimage mit dem Gebietsschema `zh-TW`. | `sha256:51a50a7fcd5a9db6422235a2df0e8fba360efcd3cefee9abe44ab2cdce62088f` |
+
+
+# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
+
 Versionshinweise für `2.10.0-amd64-<locale>`:
 
 **Feature**
 * Führen Sie ein Upgrade auf die aktuellen Modelle durch.
 
+Versionshinweise für `2.9.0-amd64-<locale>`:
+
+**Feature**
+* Weitere Fehlerdetails zu Problemen beim Abrufen von benutzerdefinierten Modellen nach ID.
+* Die Hypothese wird in den Konversationsergebnissen standardmäßig unterstützt.
+
+Versionshinweise für `2.7.0-amd64-<locale>`:
+
+**Funktionen**
+* Unterstützung für die folgenden neuen Gebietsschemas:
+    * ar-bh, ar-iq, ar-jo, ar-lb, ar-om, ar-sy
+    * bg-BG
+    * el-GR
+    * en-hk, en-ie, en-ph, en-sg, en-za
+    * es-ar, es-bo, es-cl, es-co, es-cr, es-cu, es-do, es-ec, es-gt, es-pa, es-pe, es-pr, es-py, es-sv, es-us, es-uy, es-ve
+    * et-EE
+    * ga-IE
+    * hr-HR
+    * hu-hu
+    * lt-LT
+    * lv-LV
+    * mt-MT
+    * ro-RO
+    * sk-SK
+    * sl-SL
+* Interpunktion ist standardmäßig aktiviert.
+
 Beachten Sie, dass dieses Containerimage aufgrund der enthaltenen Ausdruckslisten größer geworden ist. 
 
-| Imagetags                    | Notizen                                                                                                |
-|-------------------------------|:-----------------------------------------------------------------------------------------------------|
-| `latest`                      | Containerimage mit dem Gebietsschema `en-US`.                                                             |
-| `2.10.0-amd64-<locale>`       | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.10.0-amd64-en-us`.|
+Versionshinweise für `2.6.0-amd64-<locale>`:
+
+**Funktionen**
+* Upgrade auf die neuesten Modelle erfolgt und vollständig migriert zu .NET 3.1
+* Unterstützung für PhraseList v2
+* Ausdruckslisten werden in folgenden Gebietsschemas unterstützt:
+    * en-au
+    * en-ca
+    * en-gb
+    * en-in
+    * de-de
+    * zh-cn
+* Unterstützung für das neue Gebietsschema `cs-CZ` 
+    * Groß-/Kleinschreibung und Satzzeichen werden zurzeit nicht unterstützt.
+
+**Fehlerbehebungen**
+* Ein Problem wurde behoben, bei dem der Konfidenzscore im Diarisierungsmodus immer 1 war.
+* Migriert zur TextAnalytics 3.0-API
+
+Beachten Sie, dass dieses Containerimage aufgrund der enthaltenen Ausdruckslisten größer geworden ist. 
+
+Versionshinweise für `2.5.0-amd64-<locale>`:
+
+**Funktionen**
+* Unterstützung für Azure US Government Cloud
+
+**Fehlerbehebungen**
+* Behebt ein Problem mit „Ausführen als Nicht-Root-Benutzer“ im Diarisierungsmodus
+
+| Imagetags                  | Notizen                                    |
+|-----------------------------|:-----------------------------------------|
+| `2.10.0-amd64-<locale>`     | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.10.0-amd64-en-us`.|
+| `2.9.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.9.0-amd64-en-us`. |
+| `2.7.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.7.0-amd64-en-us`. |
+| `2.6.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.6.0-amd64-en-us`. |
+| `2.5.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.5.0-amd64-en-us`. |
+
 
 Für diesen Container sind die folgenden Gebietsschemas verfügbar.
 
@@ -375,77 +557,6 @@ Für diesen Container sind die folgenden Gebietsschemas verfügbar.
 | `zh-cn`                     | Containerimage mit dem Gebietsschema `zh-CN`. | `sha256:9087a08cc455772515f5775a788cdde35d7f5bbe3aa3ba34ae99573fd87b29a1` |
 | `zh-hk`                     | Containerimage mit dem Gebietsschema `zh-HK`. | `sha256:372e1c256520e9ee84c4c400eae935c1d6b1d59adb2be4c4dbc56439db069ba0` |
 | `zh-tw`                     | Containerimage mit dem Gebietsschema `zh-TW`. | `sha256:8406a3be34530c7d654d1dfa1c593dd51b8946b480fe80a100e599e86385dc2b` |
-
-
-# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
-
-Versionshinweise für `2.9.0-amd64-<locale>`:
-
-**Feature**
-* Weitere Fehlerdetails zu Problemen beim Abrufen von benutzerdefinierten Modellen nach ID.
-* Die Hypothese wird in den Konversationsergebnissen standardmäßig unterstützt.
-
-Versionshinweise für `2.7.0-amd64-<locale>`:
-
-**Funktionen**
-* Unterstützung für die folgenden neuen Gebietsschemas:
-    * ar-bh, ar-iq, ar-jo, ar-lb, ar-om, ar-sy
-    * bg-BG
-    * el-GR
-    * en-hk, en-ie, en-ph, en-sg, en-za
-    * es-ar, es-bo, es-cl, es-co, es-cr, es-cu, es-do, es-ec, es-gt, es-pa, es-pe, es-pr, es-py, es-sv, es-us, es-uy, es-ve
-    * et-EE
-    * ga-IE
-    * hr-HR
-    * hu-hu
-    * lt-LT
-    * lv-LV
-    * mt-MT
-    * ro-RO
-    * sk-SK
-    * sl-SL
-* Interpunktion ist standardmäßig aktiviert.
-
-Beachten Sie, dass dieses Containerimage aufgrund der enthaltenen Ausdruckslisten größer geworden ist. 
-
-Versionshinweise für `2.6.0-amd64-<locale>`:
-
-**Funktionen**
-* Upgrade auf die neuesten Modelle erfolgt und vollständig migriert zu .NET 3.1
-* Unterstützung für PhraseList v2
-* Ausdruckslisten werden in folgenden Gebietsschemas unterstützt:
-    * en-au
-    * en-ca
-    * en-gb
-    * en-in
-    * de-de
-    * zh-cn
-* Unterstützung für das neue Gebietsschema `cs-CZ` 
-    * Groß-/Kleinschreibung und Satzzeichen werden zurzeit nicht unterstützt.
-
-**Fehlerbehebungen**
-* Ein Problem wurde behoben, bei dem der Konfidenzscore im Diarisierungsmodus immer 1 war.
-* Migriert zur TextAnalytics 3.0-API
-
-Beachten Sie, dass dieses Containerimage aufgrund der enthaltenen Ausdruckslisten größer geworden ist. 
-
-Versionshinweise für `2.5.0-amd64-<locale>`:
-
-**Funktionen**
-* Unterstützung für Azure US Government Cloud
-
-**Fehlerbehebungen**
-* Behebt ein Problem mit „Ausführen als Nicht-Root-Benutzer“ im Diarisierungsmodus
-
-| Imagetags                  | Notizen                                    |
-|-----------------------------|:-----------------------------------------|
-| `2.9.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.9.0-amd64-en-us`. |
-| `2.7.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.7.0-amd64-en-us`. |
-| `2.6.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.6.0-amd64-en-us`. |
-| `2.5.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.5.0-amd64-en-us`. |
-
-
-Für diesen Container sind die folgenden Gebietsschemas verfügbar.
 
 | Gebietsschema für v2.9.0           | Notizen                                    | Digest                                                                    |
 |-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|
@@ -713,7 +824,7 @@ Dieses Containerimage verfügt über die folgenden Tags. Eine vollständige List
 
 # <a name="latest-version"></a>[Aktuelle Version](#tab/current)
 
-Versionshinweise für `1.12.0-amd64-<locale-and-voice>`:
+Versionshinweise für `1.13.0-amd64-<locale-and-voice>`:
 
 **Feature**
 * Führen Sie ein Upgrade auf die aktuellen Modelle durch.
@@ -721,7 +832,128 @@ Versionshinweise für `1.12.0-amd64-<locale-and-voice>`:
 | Imagetags                                  | Notizen                                                                                                         |
 |---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
 | `latest`                                    | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaRUS`.                                            | 
+| `1.13.0-amd64-<locale-and-voice>`           | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.13.0-amd64-en-us-ariarus`. |
+
+| Gebietsschemas für v1.13.0                         | Notizen                                                                      | Digest                         |
+|---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
+| `ar-eg-hoda`                                | Containerimage mit dem Gebietsschema `ar-EG` und der Stimme `ar-EG-Hoda`.            | `sha256:8ff6360ba584d81b987582ce1c2cb6bb624cf68e4d71544805b9afc0401542dd` |
+| `ar-sa-naayf`                               | Containerimage mit dem Gebietsschema `ar-SA` und der Stimme `ar-SA-Naayf`.           | `sha256:da5037de95c00362cb1871374735778c3eb68640ae4cb6a260659e7e0a67c37e` |
+| `bg-bg-ivan`                                | Containerimage mit dem Gebietsschema `bg-BG` und der Stimme `bg-BG-Ivan`.            | `sha256:871140e57c126ac79c92c69572b86587150d1f14447c91152de3d4b10b3ef9f6` |
+| `ca-es-herenarus`                           | Containerimage mit dem Gebietsschema `ca-ES` und der Stimme `ca-ES-HerenaRUS`.       | `sha256:7291ca9c579b1967cca941ce11321daa06ed6a9a1f0922d425d39f70a4aa8acd` |
+| `cs-cz-jakub`                               | Containerimage mit dem Gebietsschema `cs-CZ` und der Stimme `cs-CZ-Jakub`.           | `sha256:c8f34c3a7fc5af5141da5439b520614e039d133b6180e8157f12ec7279e9163a` |
+| `da-dk-hellerus`                            | Containerimage mit dem Gebietsschema `da-DK` und der Stimme `da-DK-HelleRUS`.        | `sha256:694eb294595700266355f8d57530ec3cccd4e04aa74dd630b96558bf2b481e71` |
+| `de-at-michael`                             | Containerimage mit dem Gebietsschema `de-AT` und der Stimme `de-AT-Michael`.         | `sha256:f875435d8fadb56df2123d5aa1ceca34990d00f4c75678eb2526b83058972717` |
+| `de-ch-karsten`                             | Containerimage mit dem Gebietsschema `de-CH` und der Stimme `de-CH-Karsten`.         | `sha256:c58359bd6e6676e23dda181a86caee1771366b0329a44fae0f363bbd381058ad` |
+| `de-de-heddarus`                            | Containerimage mit dem Gebietsschema `de-DE` und der Stimme `de-DE-Hedda`.           | `sha256:c8e615d40c6e96216b90e329bf7185060de646db1e92fd1fdcd344a52bd86b55` |
+| `de-de-hedda`                               | Containerimage mit dem Gebietsschema `de-DE` und der Stimme `de-DE-Hedda`.           | `sha256:c8e615d40c6e96216b90e329bf7185060de646db1e92fd1fdcd344a52bd86b55` |
+| `de-de-stefan-apollo`                       | Containerimage mit dem Gebietsschema `de-DE` und der Stimme `de-DE-Stefan-Apollo`.   | `sha256:e8e3f04f0ee74d4247ffb7c69e54559f0cc6db66a121406e06ceb9dcdc3c4379` |
+| `el-gr-stefanos`                            | Containerimage mit dem Gebietsschema `el-GR` und der Stimme `el-GR-Stefanos`.        | `sha256:15112a55bc7ccb6c29ee0a1de464fa6352a0e9953399032e5c8a0d29ec064af0` |
+| `en-au-catherine`                           | Containerimage mit dem Gebietsschema `en-AU` und der Stimme `en-AU-Catherine`.       | `sha256:9a77bb5451889f62b8a146bfcc4a412c1cef95fd2102650528ccee84a08b25b8` |
+| `en-au-hayleyrus`                           | Containerimage mit dem Gebietsschema `en-AU` und der Stimme `en-AU-HayleyRUS`.       | `sha256:90ee1094fbb8e739788545b3b9f4fabad5b4dffb5b7087cfd01c3b21ba1b2473` |
+| `en-ca-heatherrus`                          | Containerimage mit dem Gebietsschema `en-CA` und der Stimme `en-CA-HeatherRUS`.      | `sha256:43b7d3c87162129253fd5c150307a5d9dc6ea28b8fa19776b66f4aa7a546f43b` |
+| `en-ca-linda`                               | Containerimage mit dem Gebietsschema `en-CA` und der Stimme `en-CA-Linda`.           | `sha256:75a4423d5b24136efdc5de28a7a5b50a3a09b65b3824f86dd50a95eefea7ead6` |
+| `en-gb-george-apollo`                       | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-George-Apollo`.   | `sha256:87e926f7db4a27870c735c80ad801bc5480fb2665594727ae760c8c287677088` |
+| `en-gb-hazelrus`                            | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-HazelRUS`.        | `sha256:3fbd6a824831f158762036aa41c0397f7c1148150a4dc045db5f19ba840e74b6` |
+| `en-gb-susan-apollo`                        | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-Susan-Apollo`.    | `sha256:646810c4129f8919ff56d91701b488e229bd12b3dd9c89a1635868f9340e00b8` |
+| `en-ie-sean`                                | Containerimage mit dem Gebietsschema `en-IE` und der Stimme `en-IE-Sean`.            | `sha256:641abfa96380f142d4b2f9145cd02886d44f01bce68614094b48c1e01b50ed59` |
+| `en-in-heera-apollo`                        | Containerimage mit dem Gebietsschema `en-IN` und der Stimme `en-IN-Heera-Apollo`.    | `sha256:c0acfffceae9c1ff5ad305d8b98929d9c65eca25f49ddcb8999d7de6118392d2` |
+| `en-in-priyarus`                            | Containerimage mit dem Gebietsschema `en-IN` und der Stimme `en-IN-PriyaRUS`.        | `sha256:fbdc9ef0b4308ffce87d6ff6854814804b3cafacad6c4dc5cdac6a47c6de7975` |
+| `en-in-ravi-apollo`                         | Containerimage mit dem Gebietsschema `en-IN` und der Stimme `en-IN-Ravi-Apollo`.     | `sha256:f31c40c9db2f1e826686649e748d0b2be0c00abcac62c2aae5b8981b0d8c681d` |
+| `en-us-aria24krus`                          | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-Aria24kRUS`.      | `sha256:1232b798aae3ce68d1e555a5b35142bde5b4c871488f8c82c3d7c0767925afd8` |
+| `en-us-ariarus`                             | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaRUS`.         | `sha256:1232b798aae3ce68d1e555a5b35142bde5b4c871488f8c82c3d7c0767925afd8` |
+| `en-us-benjaminrus`                         | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-BenjaminRUS`.     | `sha256:5fd7e9fbcc84ab467d04e95b18f5411579ce2d9a153b7f6e396f2412d08898dc` |
+| `en-us-guy24krus`                           | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-Guy24kRUS`.       | `sha256:5fbbd16ab58b7f2440778b258bb0cd966286de0dbb3ce7f5e54d0f244f63dd3f` |
+| `en-us-zirarus`                             | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-ZiraRUS`.         | `sha256:806b92916b2fe1e7855023a009742033a48cb7eddde84ddf7c93be93b9621026` |
+| `es-es-helenarus`                           | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-HelenaRUS`.       | `sha256:507d9f40dcb846a5d1511a5e9e1cf94b360b1d9922f4b1143c3146d1b3bc69a2` |
+| `es-es-laura-apollo`                        | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-Laura-Apollo`.    | `sha256:594add691d03d02fa5925f817e6a25c091fac1a924e0ea4b626e0fce858a78cb` |
+| `es-es-pablo-apollo`                        | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-Pablo-Apollo`.    | `sha256:09d288b58fea080689471618227d1cb3ccc467f2edc9477eaaffffb09b3d6d8b` |
+| `es-mx-hildarus`                            | Containerimage mit dem Gebietsschema `es-MX` und der Stimme `es-MX-HildaRUS`.        | `sha256:7019c80c88444a60bf1016eb66284745dc8184b051685df4a1b3c40d32c8ad7f` |
+| `es-mx-raul-apollo`                         | Containerimage mit dem Gebietsschema `es-MX` und der Stimme `es-MX-Raul-Apollo`.     | `sha256:eed46588733b884c330fff1ff7f4e3e3fd6416cb340ebd80e44c4b3d1e085e55` |
+| `fi-fi-heidirus`                            | Containerimage mit dem Gebietsschema `fi-FI` und der Stimme `fi-FI-HeidiRUS`.        | `sha256:00f7a854c4a01bdbef88e0b138c97f732f1c6008a8b2c1722fc8da3a91fa79a4` |
+| `fr-ca-caroline`                            | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-Caroline`.        | `sha256:5f32e838a0925c560d2961a42487b99dd7e79e04661a7711f905d36c55973fd6` |
+| `fr-ca-harmonierus`                         | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-HarmonieRUS`.     | `sha256:6f3d3237c990f8f04d4c8f488746f74fa94edd2c5f1def758af90b2be251900e` |
+| `fr-ch-guillaume`                           | Containerimage mit dem Gebietsschema `fr-CH` und der Stimme `fr-CH-Guillaume`.       | `sha256:282e2e48c1147b74d927e801534be52b1301a081ff881994e85bb9d85b6e85fb` |
+| `fr-fr-hortenserus`                         | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-HortenseRUS`.     | `sha256:16370c22530c93fc6c5ebeaf10663de7c3d45db58eccc716abd5274b5bee56d3` |
+| `fr-fr-julie-apollo`                        | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-Julie-Apollo`.    | `sha256:e6541e82b8555f748f1feb5eef1c0ebf884245c5448f0ced46e6f25dabb925a2` |
+| `fr-fr-paul-apollo`                         | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-Paul-Apollo`.     | `sha256:a4cf0bab208a31da3e796bf353969dfd98184b30e0cf713df49cb4fb07ff568b` |
+| `he-il-asaf`                                | Containerimage mit dem Gebietsschema `he-IL` und der Stimme `he-IL-Asaf`.            | `sha256:4417d0a14098b564eb4ba91772eb7ad5976ac52b0b59ae484fc3a88017e0776b` |
+| `hi-in-hemant`                              | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Hemant`.          | `sha256:da086a3e2bc3e17f4e44165055fc61679e9356688d3735ee8cfd81e6265b8622` |
+| `hi-in-kalpana-apollo`                      | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Kalpana-Apollo`.  | `sha256:0c9915bf34e3045e39aa245c597aa7223fbf6100d7e20cbcc1bf131f89ee785e` |
+| `hi-in-kalpana`                             | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Kalpana`.         | `sha256:0c9915bf34e3045e39aa245c597aa7223fbf6100d7e20cbcc1bf131f89ee785e` |
+| `hr-hr-matej`                               | Containerimage mit dem Gebietsschema `hr-HR` und der Stimme `hr-HR-Matej`.           | `sha256:fc08c968efe882ed11ad0ee0755a9d43eff88b96da8ec19e7a5c071810c84d8c` |
+| `hu-hu-szabolcs`                            | Containerimage mit dem Gebietsschema `hu-HU` und der Stimme `hu-HU-Szabolcs`.        | `sha256:b6ad73f07efd1576e166b4d7e54a4ff419bfedc513a175fbb968389eb289a4ee` |
+| `id-id-andika`                              | Containerimage mit dem Gebietsschema `id-ID` und der Stimme `id-ID-Andika`.          | `sha256:3aad5ccf0c155593934c29a3e50502bc80b0370fa29626e67cda141d4bf5ac89` |
+| `it-it-cosimo-apollo`                       | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-Cosimo-Apollo`.   | `sha256:01502f274bad378e6e99bed5f80fdb476880ce04e8775ca56d338de2f2d43e8c` |
+| `it-it-luciarus`                            | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-LuciaRUS`.        | `sha256:fdc20724194612d99e8339d25c72c7fe937ad741abe46d86def6c62880913c2a` |
+| `ja-jp-ayumi-apollo`                        | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-Ayumi-Apollo`.    | `sha256:abf0e442ec972e25743a8af55da49a6fd5bf2ffd6ca09619d68e4dc9f9db779a` |
+| `ja-jp-harukarus`                           | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-HarukaRUS`.       | `sha256:9eff152cd4bea6f9de3b101c0704f37c8a061e060287e3f9f8fc2eb28d7dcec7` |
+| `ja-jp-ichiro-apollo`                       | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-Ichiro-Apollo`.   | `sha256:83aa3c569f7598843d4957f075915ac2635d3aaf577ac1158c12a1238dd7e148` |
+| `ko-kr-heamirus`                            | Containerimage mit dem Gebietsschema `ko-KR` und der Stimme `ko-KR-HeamiRUS`.        | `sha256:ea404c7857f9df0a23cbf3fac12ae00f11c32a6822d91078a321302f09f01082` |
+| `ms-my-rizwan`                              | Containerimage mit dem Gebietsschema `ms-MY` und der Stimme `ms-MY-Rizwan`.          | `sha256:d4c15f7da8e03650395489b6cb6975d59322b1bbd2c59957617f0c0a297409ee` |
+| `nb-no-huldarus`                            | Containerimage mit dem Gebietsschema `nb-NO` und der Stimme `nb-NO-HuldaRUS`.        | `sha256:cb2c0fb57513c66e00bd6b8cbb44882d5bb7d483c19784d2b1e09511d58842bc` |
+| `nl-nl-hannarus`                            | Containerimage mit dem Gebietsschema `nl-NL` und der Stimme `nl-NL-HannaRUS`.        | `sha256:7b9a92ab8a9856f422e65b428b845571a059c0923dc1c348134f271ed7a4abe0` |
+| `pl-pl-paulinarus`                          | Containerimage mit dem Gebietsschema `pl-PL` und der Stimme `pl-PL-PaulinaRUS`.      | `sha256:cface74973368a78d75a2a079214aa748574c5f037b0c4189888269b6016f230` |
+| `pt-br-daniel-apollo`                       | Containerimage mit dem Gebietsschema `pt-BR` und der Stimme `pt-BR-Daniel-Apollo`.   | `sha256:cc3e74228002b8d4e7dc487ff6f930316ac5d7a93f97937942a23f41b484ba8c` |
+| `pt-br-heloisarus`                          | Containerimage mit dem Gebietsschema `pt-BR` und der Stimme `pt-BR-HeloisaRUS`.      | `sha256:dca613867e2f559d9485f9ba553ecea3de6d4b2779d4eed0ce1e53e7f7939773` |
+| `pt-pt-heliarus`                            | Containerimage mit dem Gebietsschema `pt-PT` und der Stimme `pt-PT-HeliaRUS`.        | `sha256:791ac2b3100725f909cfeceb17fc0d5fd1022242db45ba455d7ea088d76ac033` |
+| `ro-ro-andrei`                              | Containerimage mit dem Gebietsschema `ro-RO` und der Stimme `ro-RO-Andrei`.          | `sha256:3b93df188bcbdf9416d203a7e30ade8908728316666cd3451a5f0320cdf219a9` |
+| `ru-ru-ekaterinarus`                        | Containerimage mit dem Gebietsschema `ru-RU` und der Stimme `ru-RU-EkaterinaRUS`.    | `sha256:d2f636e35e67be196a4ad79f168e4df74d2f00d5b5c6123bd61f9aec72bfd1a7` |
+| `ru-ru-irina-apollo`                        | Containerimage mit dem Gebietsschema `ru-RU` und der Stimme `ru-RU-Irina-Apollo`.    | `sha256:247a4c6025faced1be1738d816c1bb74b23bbc5d49458f9afe95dc32ab3ea71c` |
+| `ru-ru-pavel-apollo`                        | Containerimage mit dem Gebietsschema `ru-RU` und der Stimme `ru-RU-Pavel-Apollo`.    | `sha256:355c3a0f64f003d0a041a757b8ddcdea8130b6a56a7c4003a68ba0412400c446` |
+| `sk-sk-filip`                               | Containerimage mit dem Gebietsschema `sk-SK` und der Stimme `sk-SK-Filip`.           | `sha256:55fff1cde012a7791c756104ba68a360e609a765bd776024a9f5f00199f568e5` |
+| `sl-si-lado`                                | Containerimage mit dem Gebietsschema `sl-SI` und der Stimme `sl-SI-Lado`.            | `sha256:7f80965dde85e3a5aae9f69561c296d073289f0b6aa37e95ff0aa5192a5b7f90` |
+| `sv-se-hedvigrus`                           | Containerimage mit dem Gebietsschema `sv-SE` und der Stimme `sv-SE-HedvigRUS`.       | `sha256:1bd43f513a5b2752c44a107e1898459cdda5d7267ec21f379679d411700e5189` |
+| `ta-in-valluvar`                            | Containerimage mit dem Gebietsschema `ta-IN` und der Stimme `ta-IN-Valluvar`.        | `sha256:8062e2479a6a3dc17b8342c07a94a39dd1e1f788c1def0a1ab55a885b491bbab` |
+| `te-in-chitra`                              | Containerimage mit dem Gebietsschema `te-IN` und der Stimme `te-IN-Chitra`.          | `sha256:6ce345df654bd1db213c16c866b608037dcefb1d056fc14727db3b9e21437762` |
+| `th-th-pattara`                             | Containerimage mit dem Gebietsschema `th-TH` und der Stimme `th-TH-Pattara`.         | `sha256:9b9c8ad7f8621f887f3e9fda26f43995855dba76831fdf2598ef383cf3d20f39` |
+| `tr-tr-sedarus`                             | Containerimage mit dem Gebietsschema `tr-TR` und der Stimme `tr-TR-SedaRUS`.         | `sha256:2e45f019df702d8788c1d9c20ff75cfd94aecaaf6facb9f41b642ef1bfe7d318` |
+| `vi-vn-an`                                  | Containerimage mit dem Gebietsschema `vi-VN` und der Stimme `vi-VN-An`.              | `sha256:3b142a414ff9f30ebef144e22bf979589600f226442d2f882384695795739178` |
+| `zh-cn-huihuirus`                           | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-HuihuiRUS`.       | `sha256:23b76501492c9b60e8888eda2f6b0258859f68ed6ff7fb49bacbb18cd5f542ed` |
+| `zh-cn-kangkang-apollo`                     | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-Kangkang-Apollo`. | `sha256:e9acc58168f6800d9dd11cbc569c9d279ecf28f3d17c702528d25f67edd447c9` |
+| `zh-cn-yaoyao-apollo`                       | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-Yaoyao-Apollo`.   | `sha256:85e7d7ae77d41195de5102b772621ef34564d40fad224a0ed21a8fe8daf98b0f` |
+| `zh-hk-danny-apollo`                        | Containerimage mit dem Gebietsschema `zh-HK` und der Stimme `zh-HK-Danny-Apollo`.    | `sha256:1fcba05138c0e5bf36447530311800e2d4044824b5d893439a12f3ebc6380135` |
+| `zh-hk-tracy-apollo`                        | Containerimage mit dem Gebietsschema `zh-HK` und der Stimme `zh-HK-Tracy-Apollo`.    | `sha256:d02bd8759e085abbc95725aa4f70f124c4505aa0856a17696a1555b2cf64512e` |
+| `zh-hk-tracyrus`                            | Containerimage mit dem Gebietsschema `zh-HK` und der Stimme `zh-HK-TracyRUS`.        | `sha256:d02bd8759e085abbc95725aa4f70f124c4505aa0856a17696a1555b2cf64512e` |
+| `zh-tw-hanhanrus`                           | Containerimage mit dem Gebietsschema `zh-TW` und der Stimme `zh-TW-HanHanRUS`.       | `sha256:a3f68538088b5b07f4dc27239fa3a6308d949c2643638634c74f3ee132bca911` |
+| `zh-tw-yating-apollo`                       | Containerimage mit dem Gebietsschema `zh-TW` und der Stimme `zh-TW-Yating-Apollo`.   | `sha256:bb0696685f3a90fe6898ff1487cb0c5957e02f3c63cdb7d02394b5c061339bf3` |
+| `zh-tw-zhiwei-apollo`                       | Containerimage mit dem Gebietsschema `zh-TW` und der Stimme `zh-TW-Zhiwei-Apollo`.   | `sha256:1772b3bc8b166f429356b00d07ca438202c75d578b6d1655351b9c1e06ae1424` |
+
+
+# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
+
+Versionshinweise für `1.12.0-amd64-<locale-and-voice>`:
+
+**Feature**
+* Führen Sie ein Upgrade auf die aktuellen Modelle durch.
+
+Versionshinweise für `1.11.0-amd64-<locale-and-voice>`:
+
+**Feature**
+* Weitere Fehlerdetails zu Problemen beim Abrufen von benutzerdefinierten Modellen nach ID.
+
+Versionshinweise für `1.9.0-amd64-<locale-and-voice>`:
+
+* Regelmäßiges monatliches Release
+
+Versionshinweise für `1.8.0-amd64-<locale-and-voice>`:
+
+**Feature**
+
+* Vollständig migriert zu .NET 3.1
+
+Versionshinweise für `1.7.0-amd64-<locale-and-voice>`:
+
+**Feature**
+
+* Upgrade von Komponenten auf .NET 3.1
+
+| Imagetags                                  | Notizen                                                                                                         |
+|---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
 | `1.12.0-amd64-<locale-and-voice>`           | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.12.0-amd64-en-us-ariarus`. |
+| `1.11.0-amd64-<locale-and-voice>`           | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.11.0-amd64-en-us-ariarus`. |
+| `1.9.0-amd64-<locale-and-voice>`            | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.9.0-amd64-en-us-ariarus`.  |
+| `1.8.0-amd64-<locale-and-voice>`            | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.8.0-amd64-en-us-ariarus`.  |
+| `1.7.0-amd64-<locale-and-voice>`            | 1\. allgemein verfügbare Version. Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.7.0-amd64-en-us-ariarus`.  |
 
 | Gebietsschemas für v1.12.0                         | Notizen                                                                      | Digest                         |
 |---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
@@ -806,37 +1038,6 @@ Versionshinweise für `1.12.0-amd64-<locale-and-voice>`:
 | `zh-tw-hanhanrus`                           | Containerimage mit dem Gebietsschema `zh-TW` und der Stimme `zh-TW-HanHanRUS`.       | `sha256:9802fc4a9656063cb9f215ca757db5289960d323244272ce280db0395ddd46ac` |
 | `zh-tw-yating-apollo`                       | Containerimage mit dem Gebietsschema `zh-TW` und der Stimme `zh-TW-Yating-Apollo`.   | `sha256:05f50dffbeb17e4215a5a53cc0791d825b63bc1e2b007b00797e5d0e1b1d6d1e` |
 | `zh-tw-zhiwei-apollo`                       | Containerimage mit dem Gebietsschema `zh-TW` und der Stimme `zh-TW-Zhiwei-Apollo`.   | `sha256:e96f4aecba6e3c0741218f3e1aec35e53147b12543be9fdcd76ff98d4c34cf84` |
-
-
-# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
-
-Versionshinweise für `1.11.0-amd64-<locale-and-voice>`:
-
-**Feature**
-* Weitere Fehlerdetails zu Problemen beim Abrufen von benutzerdefinierten Modellen nach ID.
-
-Versionshinweise für `1.9.0-amd64-<locale-and-voice>`:
-
-* Regelmäßiges monatliches Release
-
-Versionshinweise für `1.8.0-amd64-<locale-and-voice>`:
-
-**Feature**
-
-* Vollständig migriert zu .NET 3.1
-
-Versionshinweise für `1.7.0-amd64-<locale-and-voice>`:
-
-**Feature**
-
-* Upgrade von Komponenten auf .NET 3.1
-
-| Imagetags                                  | Notizen                                                                                                         |
-|---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
-| `1.11.0-amd64-<locale-and-voice>`           | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.11.0-amd64-en-us-ariarus`. |
-| `1.9.0-amd64-<locale-and-voice>`            | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.9.0-amd64-en-us-ariarus`.  |
-| `1.8.0-amd64-<locale-and-voice>`            | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.8.0-amd64-en-us-ariarus`.  |
-| `1.7.0-amd64-<locale-and-voice>`            | 1\. allgemein verfügbare Version. Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.7.0-amd64-en-us-ariarus`.  |
 
 | Gebietsschemas für v1.11.0                         | Notizen                                                                      | Digest                         |
 |---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
@@ -1185,16 +1386,72 @@ Dieses Containerimage verfügt über die folgenden Tags. Eine vollständige List
 
 # <a name="latest-version"></a>[Aktuelle Version](#tab/current)
 
+Versionshinweise für `v1.5.0`:
+* Upgrade auf die neuesten Modelle mit Qualitätsverbesserungen und Fehlerbehebungen
+* Unterstützung von bis zu 38 neuronalen Stimmen
+
+| Imagetags                                  | Notizen                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaNeural`.      |
+| `1.5.0-amd64-<locale-and-voice>`            | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.5.0-amd64-en-us-arianeural`. |
+
+
+| Gebietsschemas und Stimmen für v1.5.0           | Notizen                                                                      |
+|-------------------------------------|:---------------------------------------------------------------------------|
+| `de-de-conradneural`                | Containerimage mit dem Gebietsschema `de-DE` und der Stimme `de-DE-ConradNeural`.    |
+| `de-de-katjaneural`                 | Containerimage mit dem Gebietsschema `de-DE` und der Stimme `de-DE-KatjaNeural`.     |
+| `en-au-natashaneural`               | Containerimage mit dem Gebietsschema `en-AU` und der Stimme `en-AU-NatashaNeural`.   |
+| `en-au-williamneural`               | Containerimage mit dem Gebietsschema `en-AU` und der Stimme `en-AU-WilliamNeural`.   |
+| `en-ca-claraneural`                 | Containerimage mit dem Gebietsschema `en-CA` und der Stimme `en-CA-ClaraNeural`.     |
+| `en-ca-liamneural`                  | Containerimage mit dem Gebietsschema `en-CA` und der Stimme `en-CA-LiamNeural`.      |
+| `en-gb-libbyneural`                 | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-LibbyNeural`.     |
+| `en-gb-mianeural`                   | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-MiaNeural`.       |
+| `en-gb-ryanneural`                  | Containerimage mit dem Gebietsschema `en-GB` und der Stimme `en-GB-RyanNeural`.      |
+| `en-us-arianeural`                  | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaNeural`.      |
+| `en-us-guyneural`                   | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-GuyNeural`.       |
+| `en-us-jennyneural`                 | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-JennyNeural`.     |
+| `es-es-alvaroneural`                | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-AlvaroNeural`.    |
+| `es-es-elviraneural`                | Containerimage mit dem Gebietsschema `es-ES` und der Stimme `es-ES-ElviraNeural`.    |
+| `es-mx-dalianeural`                 | Containerimage mit dem Gebietsschema `es-MX` und der Stimme `es-MX-DaliaNeural`.     |
+| `es-mx-jorgeneural`                 | Containerimage mit dem Gebietsschema `es-MX` und der Stimme `es-MX-JorgeNeural`.     |
+| `fr-ca-antoineneural`               | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-AntoineNeural`.   |
+| `fr-ca-jeanneural`                  | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-JeanNeural`.      |
+| `fr-ca-sylvieneural`                | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-SylvieNeural`.    |
+| `fr-fr-deniseneural`                | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-DeniseNeural`.    |
+| `fr-fr-henrineural`                 | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-HenriNeural`.     |
+| `hi-in-madhurneural`                | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-MadhurNeural`.    |
+| `hi-in-swaraneural`                 | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Swaraneural`.     |
+| `it-it-diegoneural`                 | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-DiegoNeural`.     |
+| `it-it-elsaneural`                  | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-ElsaNeural`.      |
+| `it-it-isabellaneural`              | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-IsabellaNeural`.  |
+| `ja-jp-keitaneural`                 | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-KeitaNeural`.     |
+| `ja-jp-nanamineural`                | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-NanamiNeural`.    |
+| `ko-kr-injoonneural`                | Containerimage mit dem Gebietsschema `ko-KR` und der Stimme `ko-KR-InJoonNeural`.    |
+| `ko-kr-sunhineural`                 | Containerimage mit dem Gebietsschema `ko-KR` und der Stimme `ko-KR-SunHiNeural`.     |
+| `pt-br-antonioneural`               | Containerimage mit dem Gebietsschema `pt-BR` und der Stimme `pt-BR-AntonioNeural`.   |
+| `pt-br-franciscaneural`             | Containerimage mit dem Gebietsschema `pt-BR` und der Stimme `pt-BR-FranciscaNeural`. |
+| `tr-tr-ahmetneural`                 | Containerimage mit dem Gebietsschema `tr-TR` und der Stimme `tr-TR-AhmetNeural`.     |
+| `tr-tr-emelneural`                  | Containerimage mit dem Gebietsschema `tr-TR` und der Stimme `tr-TR-EmelNeural`.      |
+| `zh-cn-xiaoxiaoneural`              | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-XiaoxiaoNeural`.  |
+| `zh-cn-xiaoyouneural`               | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-XiaoYouNeural`.   |
+| `zh-cn-yunyangneural`               | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-YunYangNeural`.   |
+| `zh-cn-yunyeneural`                 | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-YunYeNeural`.     |
+
+# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
+
 Versionshinweise für `v1.4.0`:
 * Führen Sie ein Upgrade auf die aktuellen Modelle durch. 
 * Die CPU-Kosten und die Wartezeit wurden reduziert.
 * Bessere Unterstützung der Satzrhythmusoptimierung mit SSML-Tag (beispielsweise Tonhöhenkontur).
 
+Versionshinweise für `v1.3.0`:
+* Der „Text-zu-Sprache (neuronal)“-Container ist jetzt allgemein verfügbar. 
+
 | Imagetags                                  | Notizen                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaNeural`.      |
-| `1.4.0-amd64-<locale-and-voice>`    | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.4.0-amd64-en-us-arianeural`. |
-
+| `1.4.0-amd64-<locale-and-voice>`            | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.4.0-amd64-en-us-arianeural`. |
+| `1.3.0-amd64-<locale-and-voice>-preview`    | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.3.0-amd64-en-us-arianeural-preview`. |
+| `1.2.0-amd64-<locale-and-voice>-preview`    | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.2.0-amd64-en-us-arianeural-preview`. |
 
 | Gebietsschemas und Stimmen für v1.4.0           | Notizen                                                                      |
 |-------------------------------------|:---------------------------------------------------------------------------|
@@ -1210,7 +1467,7 @@ Versionshinweise für `v1.4.0`:
 | `es-mx-dalianeural`                 | Containerimage mit dem Gebietsschema `es-MX` und der Stimme `es-MX-DaliaNeural`.     |
 | `fr-ca-sylvieneural`                | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-SylvieNeural`.    |
 | `fr-fr-deniseneural`                | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-DeniseNeural`.    |
-| `hi-in-swaracpuneural`              | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Swaraneural`.     |
+| `hi-in-swaraneural`                 | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Swaraneural`.     |
 | `it-it-elsaneural`                  | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-ElsaNeural`.      |
 | `ja-jp-nanamineural`                | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-NanamiNeural`.    |
 | `ko-kr-sunhineural`                 | Containerimage mit dem Gebietsschema `ko-KR` und der Stimme `ko-KR-SunHiNeural`.     |
@@ -1219,17 +1476,6 @@ Versionshinweise für `v1.4.0`:
 | `zh-cn-xiaoyouneural`               | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-XiaoYouNeural`.   |
 | `zh-cn-yunyangneural`               | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-YunYangNeural`.   |
 | `zh-cn-yunyeneural`                 | Containerimage mit dem Gebietsschema `zh-CN` und der Stimme `zh-CN-YunYeNeural`.     |
-
-# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
-
-Versionshinweise für `v1.3.0`:
-* Der „Text-zu-Sprache (neuronal)“-Container ist jetzt allgemein verfügbar. 
-
-| Imagetags                                  | Notizen                                                                      |
-|---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | Containerimage mit dem Gebietsschema `en-US` und der Stimme `en-US-AriaNeural`.      |
-| `1.3.0-amd64-<locale-and-voice>-preview`    | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.3.0-amd64-en-us-arianeural-preview`. |
-| `1.2.0-amd64-<locale-and-voice>-preview`    | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `1.2.0-amd64-en-us-arianeural-preview`. |
 
 | v1.3.0 Gebietsschemas und Stimmen           | Notizen                                                                      |
 |-------------------------------------|:---------------------------------------------------------------------------|
@@ -1245,7 +1491,7 @@ Versionshinweise für `v1.3.0`:
 | `es-mx-dalianeural`                 | Containerimage mit dem Gebietsschema `es-MX` und der Stimme `es-MX-DaliaNeural`.     |
 | `fr-ca-sylvieneural`                | Containerimage mit dem Gebietsschema `fr-CA` und der Stimme `fr-CA-SylvieNeural`.    |
 | `fr-fr-deniseneural`                | Containerimage mit dem Gebietsschema `fr-FR` und der Stimme `fr-FR-DeniseNeural`.    |
-| `hi-in/swaracpuneural`              | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Swaraneural`.     |
+| `hi-in-swaraneural`                 | Containerimage mit dem Gebietsschema `hi-IN` und der Stimme `hi-IN-Swaraneural`.     |
 | `it-it-elsaneural`                  | Containerimage mit dem Gebietsschema `it-IT` und der Stimme `it-IT-ElsaNeural`.      |
 | `ja-jp-nanamineural`                | Containerimage mit dem Gebietsschema `ja-JP` und der Stimme `ja-JP-NanamiNeural`.    |
 | `ko-kr-sunhineural`                 | Containerimage mit dem Gebietsschema `ko-KR` und der Stimme `ko-KR-SunHiNeural`.     |

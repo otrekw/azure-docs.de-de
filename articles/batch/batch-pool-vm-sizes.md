@@ -4,12 +4,12 @@ description: 'Vorgehensweise: Auswahl aus den verfügbaren VM-Größen und Betri
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: 2c3b90d6188dc6660233ae659fb4280dc1d4f2a5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6de7decbf40eede74dd7b92f9f1139e1b31450c8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027379"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126253"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe und eines Images für Computeknoten in einem Azure Batch-Pool
 
@@ -66,9 +66,12 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 
 Einige VM-Serien (etwa [Mv2](../virtual-machines/mv2-series.md)) können nur mit [VM-Images der zweiten Generation](../virtual-machines/generation-2.md) verwendet werden. VM-Images der zweiten Generation werden genau wie andere VM-Images unter Verwendung der Eigenschaft „sku“ der Konfiguration [imageReference](/rest/api/batchservice/pool/add#imagereference) angegeben. Die SKU-Zeichenfolgen besitzen ein Suffix wie „-g2“ oder „-gen2“. Eine Liste mit von Batch unterstützten VM-Images (einschließlich Images der zweiten Generation) können Sie über die [API zum Auflisten der unterstützten Images](/rest/api/batchservice/account/listsupportedimages), über [PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) oder über die [Azure-Befehlszeilenschnittstelle](/cli/azure/batch/pool/supported-images) abrufen.
 
-### <a name="pools-in-cloud-service-configuration"></a>Pools in der Clouddienstkonfiguration
+### <a name="pools-in-cloud-services-configuration"></a>Pools in der Cloud Services-Konfiguration
 
-Batch-Pools in der Clouddienstkonfiguration unterstützen alle [VM-Größen für Cloud Services](../cloud-services/cloud-services-sizes-specs.md) **mit Ausnahme** der folgenden:
+> [!WARNING]
+> Cloud Services-Konfigurationspools sind [veraltet](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Verwenden Sie stattdessen VM-Konfigurationspools.
+
+Batch-Pools in der Cloud Services-Konfiguration unterstützen alle [VM-Größen für Cloud Services](../cloud-services/cloud-services-sizes-specs.md) **mit Ausnahme** der folgenden:
 
 | VM-Serie  | Nicht unterstützte Größen |
 |------------|-------------------|
@@ -87,7 +90,7 @@ Batch-Pools in der Clouddienstkonfiguration unterstützen alle [VM-Größen für
 
 - **Kontingente**: Die [Kernkontingente](batch-quota-limit.md#resource-quotas) in Ihrem Batch-Konto können die Anzahl der Knoten einer bestimmten Größe beschränken, die Sie einem Batch-Pool hinzufügen können. Bei Bedarf können Sie eine [Kontingenterhöhung](batch-quota-limit.md#increase-a-quota) anfordern.
 
-- **Poolkonfiguration**: Im Allgemeinen stehen Ihnen mehr VM-Größenoptionen zur Verfügung, wenn Sie einen Pool in der Konfiguration des virtuellen Computers anstatt in der Clouddienstkonfiguration erstellen.
+- **Poolkonfiguration:** Im Allgemeinen stehen Ihnen mehr VM-Größenoptionen zur Verfügung, wenn Sie einen Pool in der Konfiguration der VM anstatt in der Cloud Services-Konfiguration erstellen.
 
 ## <a name="supported-vm-images"></a>Unterstützte VM-Images
 
@@ -97,7 +100,7 @@ Verwenden Sie eine der folgenden APIs, um eine Liste mit Windows- und Linux-VM-I
 - Mit PowerShell: [Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI: [az batch pool supported-images](/cli/azure/batch/pool/supported-images)
 
-Es wird dringend empfohlen, keine Bilder zu verwenden, die bald nicht mehr von Batch unterstützt werden. Die Datumsangaben für die Unterstützungseinstellung können Sie über die [`ListSupportedImages`-API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages), [PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage) oder über die [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images) ermitteln. Weitere Informationen zur Auswahl eines VM-Image für den Batch-Pool finden Sie im Leitfaden zu den [bewährten Methoden für Batch](best-practices.md).
+Es wird dringend empfohlen, keine Bilder zu verwenden, die bald nicht mehr von Batch unterstützt werden. Die Datumsangaben für die Unterstützungseinstellung können Sie über die [`ListSupportedImages`-API](/rest/api/batchservice/account/listsupportedimages), [PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) oder über die [Azure CLI](/cli/azure/batch/pool/supported-images) ermitteln. Weitere Informationen zur Auswahl eines VM-Image für den Batch-Pool finden Sie im Leitfaden zu den [bewährten Methoden für Batch](best-practices.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

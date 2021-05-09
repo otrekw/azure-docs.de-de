@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92d1e5b8ac6492b0b1d819431e4616d32a092cc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a43388c2750c7f82d407d59b6923258046fa00c7
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94836919"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175872"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Bereitstellungshandbuch für Azure Active Directory-Features
 
@@ -83,7 +83,7 @@ Während wir weiter auf den vorherigen Phasen aufbauen, identifizieren wir Kandi
 | ---- | ------ | ---------------- |
 | Identifizieren Ihrer Anwendungen | Identifizieren Sie in Ihrer Organisation verwendete Anwendungen: lokale Anwendungen, SaaS-Anwendungen in der Cloud und andere Branchenanwendungen. Legen Sie fest, ob diese Anwendungen mit Azure AD verwaltet werden können und sollten. | Keine Lizenz erforderlich |
 | [Integrieren von unterstützten SaaS-Anwendungen in den Katalog](../manage-apps/add-application-portal.md) | Azure AD enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen. Einige der von Ihrer Organisation verwendeten Anwendungen sind wahrscheinlich im Katalog enthalten, der direkt über das Azure-Portal zugänglich ist. | Azure AD Free |
-| [Verwenden eines Anwendungsproxys für die Integration lokaler Anwendungen](../manage-apps/application-proxy-add-on-premises-application.md) | Mit einem Anwendungsproxy können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. | |
+| [Verwenden eines Anwendungsproxys für die Integration lokaler Anwendungen](../app-proxy/application-proxy-add-on-premises-application.md) | Mit einem Anwendungsproxy können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. | |
 
 ## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>Phase 4: Überwachen berechtigter Identitäten, Durchführen einer Zugriffsüberprüfung und Verwalten des Benutzerlebenszyklus
 

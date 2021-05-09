@@ -1,14 +1,15 @@
 ---
 title: Übersicht über den Connected Machine-Agent
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Azure Arc-fähige Server, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
-ms.date: 03/25/2021
+ms.date: 04/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2db1758240dca448409af9f4ec00c01d684c920a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 31dfb9ac38b1a6d808b5ab060600297987ab4236
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609229"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071629"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Azure Arc-fähige Server
 
@@ -41,6 +42,7 @@ Metadateninformationen zum verbundenen Computer werden gesammelt, nachdem der Co
 
 * Betriebssystemname, -typ und -version
 * Computername
+* Computerhersteller und -modell
 * Vollqualifizierter Domänenname (FQDN) des Computers
 * Version des Connected Machine-Agents
 * Vollqualifizierter Domänenname (FQDN) für Active Directory und DNS
@@ -49,6 +51,8 @@ Metadateninformationen zum verbundenen Computer werden gesammelt, nachdem der Co
 * Version des Connected Machine-Agents
 * Öffentlicher Schlüssel für verwaltete Identität
 * Richtlinienkonformitätsstatus und Details (bei Verwendung von Azure Policy-Richtlinien für Gastkonfigurationen)
+* SQL Server installiert (boolescher Wert)
+* Clusterressourcen-ID (für Azure Stack HCI-Knoten) 
 
 Die folgenden Metadateninformationen werden vom Agent von Azure angefordert:
 
@@ -81,9 +85,9 @@ Für den Azure Connected Machine-Agent werden offiziell folgende Windows- und 
 
 - Windows Server 2008 R2, Windows Server 2012 R2 und höher (einschließlich Server Core)
 - Ubuntu 16.04 und 18.04 LTS (x64)
-- CentOS Linux 7 (x64)
+- CentOS Linux 7 und 8  (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
-- Red Hat Enterprise Linux (RHEL) 7 (x64)
+- Red Hat Enterprise Linux (RHEL) 7 und 8 (x64)
 - Amazon Linux 2 (x64)
 - Oracle Linux 7
 

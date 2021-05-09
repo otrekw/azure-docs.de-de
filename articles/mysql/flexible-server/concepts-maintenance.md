@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a2e99440a7c8f33eee9d3c9fe2276ac3868ff4b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 424402db1933c0a20ddd25a6e5af11d84d0775a8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91331759"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481156"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>Geplante Wartung in Azure Database for MySQL: Flexible Server
 
@@ -39,9 +39,15 @@ Beim Konfigurieren der Einstellungen für den Wartungszeitplan können Sie einen
 >
 > Bei einem kritischen Notfallupdate, z. B. zur Behebung eines schwerwiegenden Sicherheitsrisikos, kann das Benachrichtigungsfenster aber auch kürzer als fünf Tage sein. Das kritische Update kann auch dann auf Ihren Server angewendet werden, wenn innerhalb der letzten 30 Tage eine erfolgreiche geplante Wartung durchgeführt wurde.
 
-Sie können die Zeitplaneinstellungen jederzeit aktualisieren. Wenn für Ihren flexiblen Server eine Wartung geplant ist und Sie die Zeitplaneinstellungen aktualisieren, wird das aktuelle Ereignis planungsgemäß fortgesetzt, und die Änderungen an den Zeitplaneinstellungen werden nach dem erfolgreichen Abschluss wirksam.
+Sie können die Zeitplaneinstellungen jederzeit aktualisieren. Wenn für Ihren flexiblen Server eine Wartung geplant ist und Sie die Zeitplaneinstellungen aktualisieren, wird die aktuelle Einführung planungsgemäß fortgesetzt, und die Änderungen an den Zeitplaneinstellungen werden nach dem erfolgreichen Abschluss bis zur nächsten geplanten Wartung wirksam.
 
-In seltenen Fällen kann ein Wartungsereignis vom System abgebrochen oder möglicherweise nicht erfolgreich abgeschlossen werden. In diesem Fall erstellt das System eine Benachrichtigung über das abgebrochene bzw. fehlerhafte Wartungsereignis. Der nächste Wartungsversuch wird gemäß den aktuellen Zeitplaneinstellungen geplant, und Sie erhalten fünf Tage im Voraus eine Benachrichtigung.
+Sie können einen vom System verwalteten oder benutzerdefinierten Zeitplan für jeden flexiblen Server in Ihrem Azure-Abonnement definieren.  
+* Mit einem benutzerdefinierten Zeitplan können Sie Ihr Wartungsfenster für den Server angeben, indem Sie den Wochentag und ein Ein-Stunden-Zeitfenster auswählen.  
+* Bei einem vom System verwalteten Zeitplan wählt das System ein beliebiges einstündiges Fenster zwischen 23:00 Uhr und 7:00 Uhr in der Region Ihres Servers aus.  
+
+Im Rahmen der Einführung von Änderungen wenden wir die Updates auf die Server an, die mit einem vom System verwalteten Zeitplan konfiguriert wurden, gefolgt von Servern mit benutzerdefiniertem Zeitplan nach einer Mindestlücke von 7 Tagen innerhalb einer bestimmten Region. Wenn Sie beabsichtigen, frühzeitige Updates für eine Liste von Entwicklungs- und Testumgebungsservern zu erhalten, empfiehlt es sich, den vom System verwalteten Zeitplan für Server zu konfigurieren, die in der Entwicklungs- und Testumgebung verwendet werden. Dadurch können Sie das neueste Update zuerst in Ihrer Dev/Test-Umgebung zum Testen und Auswerten für die Validierung erhalten. Wenn Verhaltensänderungen oder Breaking Changes auftreten, haben Sie Zeit, sie zu beheben, bevor das gleiche Update auf Produktionsservern mit einem benutzerdefinierten verwalteten Zeitplan ausgeführt wird. Das Update beginnt nach sieben Tagen mit der Einführung auf flexiblen Servern nach benutzerdefiniertem Zeitplan und wird im definierten Wartungsfenster auf Ihren Server angewendet. Zu diesem Zeitpunkt gibt es keine Option, das Update hinauszuzögern, nachdem die Benachrichtigung gesendet wurde. Diese benutzerdefinierte Methode wird nur für Produktionsumgebungen empfohlen. 
+
+In seltenen Fällen kann ein Wartungsereignis vom System abgebrochen oder möglicherweise nicht erfolgreich abgeschlossen werden. Wenn das Update fehlschlägt, wird das Update wiederhergestellt, und die vorherige Version der Binärdateien wird wiederhergestellt. In solchen Szenarios mit fehlerhaften Updates kann während des Wartungsfensters weiterhin ein Neustart des Servers angezeigt werden. Wenn das Update abgebrochen wird oder fehlgeschlagen ist, erstellt das System eine Benachrichtigung über ein abgebrochenes oder fehlgeschlagenes Wartungsereignis, das Sie benachrichtigt. Der nächste Wartungsversuch wird gemäß Ihren aktuellen Zeitplaneinstellungen geplant, und Sie erhalten fünf Tage im Voraus eine Benachrichtigung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
