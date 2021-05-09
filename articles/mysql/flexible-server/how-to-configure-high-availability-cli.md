@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 04/1/2021
 ms.custom: references_regions
-ms.openlocfilehash: fb53ad309c741fc898bcf3e27347038c0e382ea4
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c364a27b7885877231e76a694472a7ad81fe3e29
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107508960"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147011"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-with-azure-cli"></a>Verwalten von zonenredundanter Hochverfügbarkeit für Azure Database für MySQL Flexible Server mit Azure CLI
 
@@ -24,7 +24,7 @@ Der Artikel beschreibt, wie Sie die zonenredundante Hochverfügbarkeitskonfigura
 Die Hochverfügbarkeitsfunktion stellt ein physisch getrenntes primäres und Standbyreplikat in unterschiedlichen Zonen bereit. Weitere Informationen finden Sie unter [Dokumentation zu Hochverfügbarkeitskonzepten](./concepts/../concepts-high-availability.md). Durch die Aktivierung/Deaktivierung der Hochverfügbarkeit werden keine Ihrer anderen Einstellungen geändert, einschließlich der VNET-Konfiguration, der Firewalleinstellungen und der Sicherungsaufbewahrung. Das Deaktivieren der Hochverfügbarkeit wirkt sich nicht auf die Konnektivität und die Vorgänge Ihrer Anwendung aus.
 
 > [!IMPORTANT]
-> Zonenredundante Hochverfügbarkeit ist in einer begrenzten Anzahl von Regionen verfügbar. Die unterstützten Regionen finden Sie [hier](https://docs.microsoft.com/azure/mysql/flexible-server/overview#azure-regions). 
+> Zonenredundante Hochverfügbarkeit ist in einer begrenzten Anzahl von Regionen verfügbar. Die unterstützten Regionen finden Sie [hier](./overview.md#azure-regions). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.

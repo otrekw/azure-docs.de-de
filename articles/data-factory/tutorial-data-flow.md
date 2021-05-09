@@ -1,19 +1,19 @@
 ---
 title: Transformieren von Daten mithilfe eines Zuordnungsdatenflusses
 description: Dieses Tutorial enthält Schritt-für-Schritt-Anleitungen für die Verwendung von Azure Data Factory zum Transformieren von Daten mithilfe von Mapping Data Flow.
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/16/2021
-ms.openlocfilehash: f8570c8b252fae91986508abd3725cbbedd361a0
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: dda6d756b1e660fa90e54c6cc0b80178363cd73e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565422"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905736"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformieren von Daten mithilfe von Mapping Data Flow
 
