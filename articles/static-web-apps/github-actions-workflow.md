@@ -7,18 +7,21 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 4f1f432da33bded4fc0f04170673e5943dec5fb0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b20a1670c13a272ed48088567a205d854ac99179
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311327"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791245"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub Actions-Workflows für Azure Static Web Apps (Vorschau)
 
-Wenn Sie eine neue Azure Static Web Apps-Ressource erstellen, generiert Azure einen GitHub Actions-Workflow, um die Continuous Deployment-Vorgänge für die App zu steuern. Der Workflow basiert auf einer YAML-Datei. In diesem Artikel werden die Struktur und die Optionen der Workflowdatei ausführlich erläutert.
+Wenn Sie eine neue Azure Static Web Apps-Ressource erstellen, generiert Azure einen GitHub Actions-Workflow, um die Continuous Deployment-Vorgänge für die App zu steuern. Der Workflow basiert auf einer YAML-Datei. In diesem Artikel werden die Struktur und die Optionen der Workflowdatei ausführlich erläutert.
 
 Bereitstellungen werden durch [Trigger](#triggers) initiiert, von denen [Aufträge](#jobs) ausgeführt werden, die durch einzelne [Schritte](#steps) definiert sind.
+
+> [!NOTE]
+> Azure Static Web Apps unterstützt auch Azure DevOps. Informationen zum Einrichten einer Pipeline finden Sie unter [Tutorial: Veröffentlichen von Azure Static Web Apps mit Azure DevOps](publish-devops.md).
 
 ## <a name="file-location"></a>Dateispeicherort
 
@@ -170,22 +173,25 @@ with:
   ###### End of Repository/Build Configurations ######
 ```
 
-| Eigenschaft         | BESCHREIBUNG                                                 |
+| Eigenschaft         | Beschreibung                                                 |
 | ---------------- | ----------------------------------------------------------- |
 | `skip_app_build` | Legen Sie den Wert auf `true` fest, um das Erstellen der Front-End-App zu überspringen. |
 
 > [!NOTE]
 > Sie können das Erstellen nur für die Front-End-App überspringen. Wenn Ihre App über eine API verfügt, wird sie weiterhin von der GitHub-Aktion von Static Web Apps erstellt.
 
-## <a name="route-file-location"></a>Speicherort der Datei „routes“
+## <a name="route-file-location"></a>Speicherort der Routendatei
 
-Sie können den Workflow so anpassen, dass in allen Ordnern Ihres Repositorys nach [staticwebapp.config.json](routes.md) gesucht wird. Die folgende Eigenschaft kann im Abschnitt `with` eines Auftrags definiert werden.
+Sie können den Workflow so anpassen, dass in allen Ordnern Ihres Repositorys nach [routes.json](routes.md) gesucht wird. Die folgende Eigenschaft kann im Abschnitt `with` eines Auftrags definiert werden.
 
 | Eigenschaft          | BESCHREIBUNG                                                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `routes_location` | Definiert den Verzeichnisspeicherort, an dem die Datei _staticwebapp.config.json_ zu finden ist. Dieser Speicherort ist relativ zum Stammverzeichnis des Repositorys. |
+| `routes_location` | Definiert den Verzeichnisspeicherort, an dem die Datei _routes.json_ zu finden ist. Dieser Speicherort ist relativ zum Stammverzeichnis des Repositorys. |
 
-Die explizite Angabe des Speicherorts Ihrer Datei _staticwebapp.config.json_ ist besonders wichtig, falls diese Datei während des Buildschritts Ihres Front-End-Frameworks nicht standardmäßig nach `output_location` verschoben wird.
+Die explizite Angabe des Speicherorts Ihrer Datei _routes.json_ ist besonders wichtig, falls diese Datei während des Buildschritts Ihres Front-End-Frameworks nicht standardmäßig nach `output_location` verschoben wird.
+
+> [!IMPORTANT]
+> Die in der Datei _routes.json_ definierten Funktionen sind nun veraltet. Informationen zu _staticwebapp.config.json_ finden Sie in der [Konfigurationsdatei](./configuration.md) von Azure Static Web Apps.
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 

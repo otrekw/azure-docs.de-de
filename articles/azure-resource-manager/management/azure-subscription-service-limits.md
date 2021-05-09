@@ -3,12 +3,12 @@ title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 3ef3e6f3b67e8c92e0137f36e19c62cba79e1c14
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 8aad2f885c39d6f5ecd237a6167363b0efe8cef4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030819"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290384"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -366,7 +366,7 @@ Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [Ressou
 
 ## <a name="azure-synapse-analytics-limits"></a>Grenzwerte für Azure Synapse Analytics
 
-Informationen zu den Grenzwerten für Azure Synapse Analytics finden Sie unter [Azure Synapse-Ressourcenlimits](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+[!INCLUDE [synapse-analytics-limits](../../../includes/synapse-analytics-limits.md)]
 
 ## <a name="azure-files-and-azure-file-sync"></a>Azure Files und Azure-Dateisynchronisierung
 Informationen zu den Limits für Azure Files und Azure-Dateisynchronisierung finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../../storage/files/storage-files-scale-targets.md).

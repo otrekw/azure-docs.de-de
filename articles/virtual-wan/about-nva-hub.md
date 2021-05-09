@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-ms.openlocfilehash: e70b899ea0133704e4ecab42dd4c2a09bca41804
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 7c3ae14cd409e7bfc9be77c1a593964b73a12ddc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226310"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791047"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Virtuelles Netzwerkgerät in einem Azure Virtual WAN-Hub (Vorschauversion)
 
@@ -77,13 +77,14 @@ NVAs im virtuellen Hub sind in den folgenden Regionen als Vorschauversion verfü
 
 |Geopolitische Region | Azure-Regionen|
 |---|---|
-| Nordamerika| USA, Westen; USA, Süden-Mitte; USA, Osten 2   |
-| Südamerika | Brasilien Süd |
-| Europa | Europa, Westen; Vereinigtes Königreich, Süden|
+| Nordamerika| „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „USA, Westen-Mitte“, „USA, Westen“, „USA, Westen 2“ |
+| Südamerika | „Brasilien, Süden“, „Brasilien, Südosten“ |
+| Europa | „Frankreich, Mitte“, „Frankreich, Süden“, „Deutschland, Norden“, „Deutschland, Westen-Mitte“, „Europa, Norden“, „Norwegen, Osten“, „Norwegen, Westen“, „Schweiz, Norden“, „Schweiz, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“|
 |  Naher Osten | Vereinigte Arabische Emirate, Norden |
-| Asia | Japan, Osten |
-| Australien | Australien (Osten) |
-
+| Asia |  „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Asien, Südosten“ | 
+| Australien | „Australien, Südosten“, „Australien, Osten“, „Australien, Mitte“, „Australien, Mitte 2“|
+| Afrika | Südafrika, Norden |
+| Indien | „Indien, Süden“, „Indien, Westen“, „Indien, Mitte“ | 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 ### <a name="i-am-a-network-appliance-partner-and-want-to-get-our-nva-in-the-hub--can-i-join-this-partner-program"></a>Ich bin ein Partner für Netzwerkgeräte und möchte die Bereitstellung unseres NVA im Hub ermöglichen.  Kann ich an diesem Partnerprogramm teilnehmen?
@@ -92,7 +93,7 @@ Leider haben wir zurzeit keine Kapazität für neue Partnerangebote. Versuchen S
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Kann ich ein beliebiges NVA aus dem Azure Marketplace im Virtual WAN-Hub bereitstellen?
 
-Zurzeit sind nur [Barracuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer) und [Cisco Cloud vWAN Application](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) zur Bereitstellung im Virtual WAN-Hub verfügbar.
+Zurzeit sind nur [Barracuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer), [Cisco Cloud vWAN Application](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) und [VMware Sd-WAN](https://aka.ms/vmwareMarketplaceLink) zur Bereitstellung im Virtual WAN-Hub verfügbar.
 
 ### <a name="what-is-the-cost-of-the-nva"></a>Welche Kosten fallen für das NVA an?
 
@@ -104,7 +105,7 @@ Nein. Sie müssen einen Standard-Hub verwenden, wenn Sie ein NVA bereitstellen m
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>Kann ich ein NVA in einem geschützten Hub bereitstellen?
 
-Ja. Barracuda CloudGen WAN kann in einem Hub mit Azure Firewall bereitgestellt werden.
+Ja. Partner-NVAs können in einem Hub mit Azure Firewall bereitgestellt werden.
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>Kann ich ein beliebiges CPE-Gerät in meiner Zweigstelle mit dem Barracuda CloudGen WAN-NVA im Hub verbinden?
 

@@ -1,5 +1,6 @@
 ---
 title: 'Azure-VPN Gateway: Informationen zum P2S-Routing'
+titleSuffix: Azure VPN Gateway
 description: Erfahren Sie mehr über das Azure Point-to-Site-VPN-Routing für verschiedene Betriebssysteme, Remotezugriffsprotokolle und virtuelle Netzwerkkonfigurationen.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0b9b8ba555cddd56c49c750709e69ec180291c95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e99e0930fa4afc4d5b9ddf74b8e0f1e4f9b673f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91827217"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292070"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Informationen zu Point-to-Site-VPN-Routing
 

@@ -1,22 +1,22 @@
 ---
 title: Azure Policy-Erweiterung für Visual Studio Code
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Policy-Erweiterung für Visual Studio Code nach Azure Resource Manager-Aliassen suchen.
-ms.date: 01/11/2021
+ms.date: 04/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fe0d22aeb307f82034d697e8564f8fccab61a81
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98107938"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133833"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Verwenden der Azure Policy-Erweiterung für Visual Studio Code
 
-> Gilt für Version **0.1.1** und höher der Azure Policy-Erweiterung.
+> Gilt für Version **0.1.2** der Azure Policy-Erweiterung (und höher)
 
-Hier erfahren Sie, wie Sie die Azure Policy-Erweiterung für Visual Studio Code verwenden, um nach [Aliasen](../concepts/definition-structure.md#aliases) zu suchen, Ressourcen und Richtlinien zu überprüfen, Objekte zu exportieren und Richtliniendefinitionen auszuwerten. Zunächst wird beschrieben, wie Sie die Azure Policy-Erweiterung in Visual Studio Code installieren. Anschließend erfahren Sie, wie Sie Aliase suchen.
+Erfahren Sie, wie Sie die Azure Policy-Erweiterung für Visual Studio Code verwenden, um nach [Aliasen](../concepts/definition-structure.md#aliases) zu suchen, Ressourcen und Richtliniendefinitionen zu überprüfen, Objekte zu exportieren und Richtliniendefinitionen auszuwerten. Zunächst wird beschrieben, wie Sie die Azure Policy-Erweiterung in Visual Studio Code installieren. Anschließend erfahren Sie, wie Sie Aliase suchen.
 
-Die Azure Policy-Erweiterung für Visual Studio Code kann unter Windows installiert werden.
+Die Azure Policy-Erweiterung für Visual Studio Code kann unter Linux, Mac und Windows installiert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +46,7 @@ Führen Sie für Benutzer der nationalen Cloud die folgenden Schritte aus, um zu
 ## <a name="using-the-policy-extension"></a>Verwenden der Azure Policy-Erweiterung
 
 > [!NOTE]
-> Lokal an Richtlinien vorgenommene Änderungen, die in der Azure Policy-Erweiterung für Visual Studio Code angezeigt werden, werden nicht mit Azure synchronisiert.
+> Lokal an Richtliniendefinitionen vorgenommene Änderungen, die in der Azure Policy-Erweiterung für Visual Studio Code angezeigt werden, werden nicht mit Azure synchronisiert.
 
 ### <a name="connect-to-an-azure-account"></a>Verbinden mit einem Azure-Konto
 
@@ -70,7 +70,7 @@ Zum Auswerten von Ressourcen und Suchen nach Aliasen müssen Sie eine Verbindung
 
 ### <a name="select-subscriptions"></a>Auswählen von Abonnements
 
-Bei der ersten Anmeldung werden nur die Ressourcen und Richtlinien des Standardabonnements von der Azure Policy-Erweiterung geladen. Gehen Sie folgendermaßen vor, um Abonnements für die Anzeige von Ressourcen und Richtlinien hinzuzufügen oder zu entfernen:
+Bei der ersten Anmeldung werden nur die Ressourcen und Richtliniendefinitionen des Standardabonnements von der Azure Policy-Erweiterung geladen. Gehen Sie folgendermaßen vor, um Abonnements für die Anzeige von Ressourcen und Richtliniendefinitionen hinzuzufügen oder zu entfernen:
 
 1. Starten Sie den Abonnementbefehl über die Befehlspalette oder die Fensterfußzeile.
 
@@ -105,7 +105,7 @@ Kunden mit Hunderten oder Tausenden von Ressourcen in einem einzelnen Abonnement
 
    - Befehlspalette:
 
-     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Ressourcen: Ressourcen suchen** ein.
+     Navigieren Sie in der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Azure Policy: Ressourcen suchen** ein.
 
 1. Wenn mehr als ein Abonnement für die Anzeige ausgewählt ist, wählen Sie mit dem Filter das zu durchsuchende Abonnement aus.
 
@@ -124,9 +124,9 @@ Sobald eine Ressource geöffnet ist, wird beim Zeigen auf den Namen oder den Wer
 > [!NOTE]
 > Die VS Code-Erweiterung unterstützt nur die Auswertung von Eigenschaften des Resource Manager-Modus. Weitere Informationen zu den Modi finden Sie in den [Modusdefinitionen](../concepts/definition-structure.md#mode).
 
-### <a name="search-for-and-view-policies-and-assignments"></a>Suchen nach und Anzeigen von Richtlinien und Zuweisungen
+### <a name="search-for-and-view-policy-definitions-and-assignments"></a>Suchen nach und Anzeigen von Richtliniendefinitionen und -zuweisungen
 
-Die Azure Policy-Erweiterung listet Richtlinientypen und Richtlinienzuweisungen in Form einer Strukturansicht für die Abonnements auf, die zur Anzeige im Bereich **Richtlinien** ausgewählt wurden. Kunden mit Hunderten oder Tausenden von Richtlinien oder Zuweisungen in einem einzelnen Abonnement bevorzugen möglicherweise eine Suchmethode zum Auffinden ihrer Richtlinien oder Zuweisungen. Die Azure Policy-Erweiterung ermöglicht die Suche nach einer bestimmten Richtlinie oder Zuweisung mit den folgenden Schritten:
+Die Azure Policy-Erweiterung listet Richtlinientypen und Richtlinienzuweisungen in Form einer Strukturansicht für die Abonnements auf, die zur Anzeige im Bereich **Richtlinien** ausgewählt wurden. Kunden mit Hunderten oder Tausenden von Richtliniendefinitionen oder -zuweisungen in einem einzelnen Abonnement bevorzugen möglicherweise eine Suchmethode zum Auffinden ihrer Richtliniendefinitionen oder -zuweisungen. Die Azure Policy-Erweiterung ermöglicht die Suche nach einer bestimmten Richtlinie oder Zuweisung mit den folgenden Schritten:
 
 1. Starten Sie die Suchschnittstelle über die Azure Policy-Erweiterung oder die Befehlspalette.
 
@@ -136,7 +136,7 @@ Die Azure Policy-Erweiterung listet Richtlinientypen und Richtlinienzuweisungen 
 
    - Befehlspalette:
 
-     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Richtlinien: Richtlinien suchen** ein.
+     Navigieren Sie in der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Azure Policy: Richtlinien suchen** ein.
 
 1. Wenn mehr als ein Abonnement für die Anzeige ausgewählt ist, wählen Sie mit dem Filter das zu durchsuchende Abonnement aus.
 
@@ -170,7 +170,7 @@ Ein Auswertungsscan kann mit der Azure Policy-Erweiterung für Visual Studio Co
 1. Wählen Sie oben im Bereich **Auswertung** das Symbol zum Ausführen der Auswertung aus. In Visual Studio Code wird ein neuer Bereich mit den resultierenden Auswertungsdetails im JSON-Format geöffnet.
 
 > [!NOTE]
-> Verwenden Sie bei Auswahl der Richtliniendefinition [AuditIfNotExists](../concepts/effects.md#auditifnotexists) oder [DeployIfNotExists](../concepts/effects.md#deployifnotexists) im Bereich **Auswertung** das Pluszeichen, um eine _verwandte_ Ressource für die Überprüfung auf das Vorhandensein auszuwählen.
+> Verwenden Sie für die Richtliniendefinition [AuditIfNotExists](../concepts/effects.md#auditifnotexists) oder [DeployIfNotExists](../concepts/effects.md#deployifnotexists) im Bereich **Auswertung** das Pluszeichen oder **Azure Policy: Ressource für Existenzprüfung auswählen (nur für if-not-exists-Richtlinien verwendet)** , um eine _verwandte_ Ressource für die Existenzprüfung auszuwählen.
 
 Die Auswertungsergebnisse enthalten Informationen zur Richtliniendefinition und die Richtlinienzuweisung sowie die Eigenschaft **policyEvaluations.evaluationResult**. Die Ausgabe sieht etwa folgendermaßen aus:
 
@@ -205,6 +205,6 @@ Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und gebe
 - Sehen Sie sich die Beispiele unter [Azure Policy-Beispiele](../samples/index.md) an.
 - Lesen Sie die Informationen unter [Struktur von Azure Policy-Definitionen](../concepts/definition-structure.md).
 - Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](../concepts/effects.md).
-- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](programmatically-create.md).
+- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtliniendefinitionen](programmatically-create.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).
