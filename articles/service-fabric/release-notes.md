@@ -5,12 +5,12 @@ ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 2a035f531e03dc42e8be4f3dab403406eb7c8f14
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: e06bb472a87f05eb8830468512c27e3abaeafbe1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518625"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138605"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
@@ -31,7 +31,7 @@ Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 8.
 ### <a name="key-announcements"></a>Wichtige Ankündigungen
 
 - **Allgemeine Verfügbarkeit** der Unterstützung für .NET 5 für Windows
-- **Allgemeine Verfügbarkeit** [zustandsloser NodeTypes](https://docs.microsoft.com/azure/service-fabric/service-fabric-stateless-node-types)
+- **Allgemeine Verfügbarkeit** [zustandsloser NodeTypes](./service-fabric-stateless-node-types.md)
 - Möglichkeit zum Verschieben zustandsloser Dienstinstanzen
 - Möglichkeit zum Hinzufügen parametrisierter DefaultLoad-Einstellungen im Anwendungsmanifest
 - Für Singletonreplikatupgrades: Möglichkeit, einige der Einstellungen auf Clusterebene auf Anwendungsebene zu definieren
