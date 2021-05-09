@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6b3ac012da97194134f58d061dd9d84e945db554
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1570906ae036b31dc2e97f35c827385933093f73
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774465"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162201"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Auswählen der Autorisierung des Zugriffs auf Warteschlangendaten mit der Azure CLI
 
@@ -52,7 +52,7 @@ Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugrif
 
 Die Azure Storage-Erweiterungen werden für Vorgänge für Warteschlangendaten unterstützt. Welche Vorgänge Sie aufrufen können, hängt von den Berechtigungen des Azure AD-Sicherheitsprinzipals ab, mit dem Sie sich bei der Azure-Befehlszeilenschnittstelle anmelden. Die Berechtigungen für Warteschlangen werden über Azure RBAC zugewiesen. Wenn Ihnen beispielsweise die Rolle **Storage-Warteschlangendatenleser** zugewiesen ist, können Sie Skriptbefehle ausführen, die Daten aus einer Warteschlange lesen. Wenn Ihnen die Rolle **Mitwirkender an Storage-Warteschlangendaten** zugewiesen ist, können Sie Skriptbefehle ausführen, die eine Warteschlange bzw. die darin enthaltenen Daten lesen, schreiben oder löschen.
 
-Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgänge für Warteschlangen erforderlich sind, finden Sie unter [Aufrufen von Speichervorgängen mit OAuth-Token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgänge für Warteschlangen erforderlich sind, finden Sie unter [Aufrufen von Speichervorgängen mit OAuth-Token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).
 
 ### <a name="example-authorize-an-operation-to-create-a-queue-with-azure-ad-credentials"></a>Beispiel: Autorisieren eines Vorgangs zum Erstellen einer Warteschlange mit Azure AD-Anmeldeinformationen
 

@@ -4,12 +4,12 @@ description: Beschreibung von Warteschlangen für unzustellbare Nachrichten in A
 ms.topic: article
 ms.date: 04/08/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 6459c8edd03427357810c1ad30161e87c18e059c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6293a3a9a760ece137644578d8ee7dccebc63d95
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304323"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812370"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten
 
@@ -31,7 +31,7 @@ Es ist nicht möglich, auf Themenebene die Anzahl von Nachrichten in der Wartesc
 
 ![Nachrichtenanzahl der Warteschlange für unzustellbare Nachrichten](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-Sie können die Anzahl von Nachrichten in der Warteschlange für unzustellbare Nachrichten auch abrufen, indem Sie den folgenden Azure CLI-Befehl verwenden: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az-servicebus-topic-subscription-show). 
+Sie können die Anzahl von Nachrichten in der Warteschlange für unzustellbare Nachrichten auch abrufen, indem Sie den folgenden Azure CLI-Befehl verwenden: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_show). 
 
 ## <a name="moving-messages-to-the-dlq"></a>Verschieben von Nachrichten in die Warteschlange für unzustellbare Nachrichten
 Es gibt verschiedene Aktivitäten in Service Bus, durch welche Nachrichten aus dem Messaging-Engine selbst per Push in die Warteschlange für unzustellbare Nachrichten übertragen werden. Eine Anwendung kann Nachrichten auch explizit in die Warteschlange für unzustellbare Nachrichten verschieben. Die folgenden beiden Eigenschaften (Ursache und Beschreibung für unzustellbare Nachricht) werden zu unzustellbaren Nachrichten hinzugefügt. Anwendungen können ihre eigenen Codes für die Eigenschaft „Ursache für unzustellbare Nachricht“ definieren, aber das System legt die folgenden Werte fest:
@@ -75,9 +75,4 @@ Sie können auf die Warteschlange für unzustellbare Nachrichten zugreifen, inde
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Weitere Informationen zu Service Bus-Warteschlangen finden Sie in den folgenden Artikeln:
-
-* [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
-* [Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-
+Sehen Sie sich unter [Aktivieren der Verarbeitung unzustellbarer Nachrichten für eine Warteschlange oder ein Abonnement](enable-dead-letter.md) die verschiedenen Möglichkeiten beim Konfigurieren der Einstellung **Verarbeitung unzustellbarer Nachrichten bei Nachrichtenablauf** an.

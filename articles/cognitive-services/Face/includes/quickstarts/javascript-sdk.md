@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 8f968572a357bb3c98d9c3133a7ec0a0a94dbf93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3873a15c6a56d6ee4944cc596f447c966c275950
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958365"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313554"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Schnellstart: Clientbibliothek zur Gesichtserkennung für JavaScript
 
@@ -178,7 +178,7 @@ Erstellen Sie die folgende Hilfsfunktion, um auf den Abschluss des Trainings der
 ### <a name="create-a-persongroup"></a>Erstellen einer PersonGroup
 
 Der folgende Code führt folgende Aktionen aus:
-- Erstellen einer Personengruppe ([PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup))
+- Erstellen einer Personengruppe ([PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup))
 - Hinzufügen von Gesichtern zur **PersonGroup** durch Aufruf der zuvor erstellten Funktion `AddFacesToPersonGroup`.
 - Trainieren der **PersonGroup**.
 - Identifizieren der Gesichter in der **PersonGroup**.

@@ -10,16 +10,13 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: c6e8be5462e0caffec7a1c88dae54f3f818ec323
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 2a573a4df8abcdc2b32204faadbaa0df8c3dac15
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498770"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313520"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
-
-
 Das **Hero-Beispiel für Gruppenanrufe für Android** von Azure Communication Services veranschaulicht, wie das Calling Android SDK von Communication Services verwendet werden kann, um eine Benutzeroberfläche für Gruppenanrufe mit Sprach- und Videofunktion zu erstellen. In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie Sie das Beispiel einrichten und ausführen. Es ist auch eine Übersicht über das Beispiel vorhanden, um Informationen zum Kontext bereitzustellen.
 
 ## <a name="download-code"></a>Code herunterladen
@@ -141,4 +138,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Azure Communication GitHub](https://github.com/Azure/communication): Weitere Beispiele und Informationen finden Sie auf der offiziellen GitHub-Seite
 - [Beispiele:](./../overview.md) In der Übersicht über Beispiele finden Sie weitere Beispiele.
-- [Azure Communication Calling-Funktionen](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features): Weitere Informationen zum Android Calling SDK finden Sie unter [Azure Communication Android Calling SDK](https://search.maven.org/artifact/com.azure.android/azure-communication-calling)
+- [Azure Communication Calling-Funktionen](../../concepts/voice-video-calling/calling-sdk-features.md): Weitere Informationen zum Android Calling SDK finden Sie unter [Azure Communication Android Calling SDK](https://search.maven.org/artifact/com.azure.android/azure-communication-calling)

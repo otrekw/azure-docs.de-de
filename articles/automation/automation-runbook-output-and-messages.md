@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 033900ddd0bd19332b4a9a996c68b3b187d631c4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 0b41880bea25c1b833ab2a996a50edcf557f37b8
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833560"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161661"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>Konfigurieren der Ausgabe und Meldungsdatenströme von Runbooks
 
@@ -101,14 +101,14 @@ Workflow Test-Runbook
   $output = "This is some string output."
   Write-Output $output
 }
- ```
+```
 
 #### <a name="declare-output-data-type-in-a-graphical-runbook"></a>Deklarieren des Ausgabedatentyps in einem grafischen Runbook
 
 Um einen Ausgabetyp in einem grafischen Runbook oder einem grafischen PowerShell-Workflow-Runbook zu deklarieren, können Sie die Menüoption **Ein- und Ausgabe** auswählen und Ausgabetyp eingeben. Es wird empfohlen, den vollständigen .NET-Klassennamen zu verwenden, um den Typ bei Verweisen von einem übergeordneten Runbook darauf einfach identifizieren zu können. Durch die Verwendung des vollständigen Namens werden alle Eigenschaften der Klasse dem Datenbus im Runbook verfügbar gemacht, und die Flexibilität steigt, wenn die Eigenschaften für bedingte Logik, Protokollierung und Verweise als Werte für andere Runbookaktivitäten verwendet werden.<br> ![Option für Runbookeingabe und -ausgabe](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
->[!NOTE]
->Nachdem Sie im Bereich „Eingabe- und Ausgabeeigenschaften“ in das Feld **Ausgabetyp** einen Wert eingegeben haben, stellen Sie sicher, dass Sie außerhalb des Steuerelements klicken, damit dieses Ihre Eingabe erkennt.
+> [!NOTE]
+> Nachdem Sie im Bereich „Eingabe- und Ausgabeeigenschaften“ in das Feld **Ausgabetyp** einen Wert eingegeben haben, stellen Sie sicher, dass Sie außerhalb des Steuerelements klicken, damit dieses Ihre Eingabe erkennt.
 
 Im folgenden Beispiel werden zwei grafische Runbooks gezeigt, um die Eingabe- und Ausgabefunktion zu demonstrieren. Wenn Sie das modulare Entwurfsmodell für Runbooks verwenden, verfügen Sie über ein Runbook als Authentifizierungsrunbook-Vorlage, das die Authentifizierung bei Azure unter Verwendung des ausführenden Kontos verwaltet. Das zweite Runbook, das in der Regel die Kernlogik zum Automatisieren eines bestimmten Szenarios ausführt, führt in diesem Fall die Authentifizierungsrunbook-Vorlage aus. Die Ergebnisse werden im Testausgabebereich angezeigt. Unter normalen Umständen würde dieses Runbook eine Aktion in einer Ressource ausführen und dabei die Ausgabe des untergeordneten Runbooks nutzen.
 
@@ -208,8 +208,8 @@ Mithilfe der Registerkarte **Konfigurieren** im Azure-Portal können Sie ein Run
 
 Wenn Sie die Protokollierung von Statusdatensätzen aktivieren, schreibt ihr Runbook vor und nach der Ausführung jeder Aktivität einen Datensatz in den Auftragsverlauf. Beim Testen eines Runbooks werden auch dann keine Statusmeldungen angezeigt, wenn das Runbook zum Protokollieren von Statusdatensätzen konfiguriert ist.
 
->[!NOTE]
->Das Cmdlet [Write-Progress](/powershell/module/microsoft.powershell.utility/write-progress) ist in einem Runbook ungültig, da es zur Verwendung mit einem interaktiven Benutzer vorgesehen ist.
+> [!NOTE]
+> Das Cmdlet [Write-Progress](/powershell/module/microsoft.powershell.utility/write-progress) ist in einem Runbook ungültig, da es zur Verwendung mit einem interaktiven Benutzer vorgesehen ist.
 
 ## <a name="work-with-preference-variables"></a>Verwenden von Einstellungsvariablen
 
@@ -263,13 +263,13 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 
 ### <a name="retrieve-runbook-output-and-messages-in-graphical-runbooks"></a>Abrufen von Runbookausgabe und -meldungen in grafischen Runbooks
 
-Für grafische Runbooks steht eine zusätzliche Protokollierung der Ausgabe und Meldungen in Form einer Ablaufverfolgung auf Aktivitätsebene zur Verfügung. Es gibt zwei Stufen der Ablaufverfolgung: „Standard“ und „Ausführlich“. Eine Ablaufverfolgung der Stufe „Standard“ zeigt die Start- und Endzeit jeder Aktivität im Runbook sowie Informationen zu allen Aktivitätswiederholungen an. Beispiele sind die Anzahl von Versuchen und die Startzeit der Aktivität. Eine Ablaufverfolgung der Stufe „Ausführlich“ umfasst grundlegende Ablaufverfolgungsfunktionen, zuzüglich der Protokollierung von Ein- und Ausgabedaten für jede Aktivität. 
+Für grafische Runbooks steht eine zusätzliche Protokollierung der Ausgabe und Meldungen in Form einer Ablaufverfolgung auf Aktivitätsebene zur Verfügung. Es gibt zwei Stufen der Ablaufverfolgung: „Standard“ und „Ausführlich“. Eine Ablaufverfolgung der Stufe „Standard“ zeigt die Start- und Endzeit jeder Aktivität im Runbook sowie Informationen zu allen Aktivitätswiederholungen an. Beispiele sind die Anzahl von Versuchen und die Startzeit der Aktivität. Eine Ablaufverfolgung der Stufe „Ausführlich“ umfasst grundlegende Ablaufverfolgungsfunktionen, zuzüglich der Protokollierung von Ein- und Ausgabedaten für jede Aktivität.
 
 Derzeit schreibt die Ablaufverfolgung auf Aktivitätsebene Datensätze mithilfe des ausführlichen Datenstroms. Daher müssen Sie die ausführliche Protokollierung aktivieren, wenn Sie die Ablaufverfolgung aktivieren. Bei grafischen Runbooks mit aktivierter Ablaufverfolgung ist es nicht erforderlich, Statusdatensätze zu protokollieren. Einfache Ablaufverfolgung dient demselben Zweck und ist informativer.
 
 ![Ansicht der Auftragsdatenströme bei der grafischen Inhaltserstellung](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
-In der Abbildung können Sie sehen, dass bei aktivierter ausführlicher Protokollierung und Ablaufverfolgung für grafische Runbooks in der Produktionsansicht der **Auftragsdatenströme** deutlich mehr Informationen zur Verfügung stehen. Diese zusätzlichen Informationen können für die Behandlung von Produktionsproblemen mit einem Runbook von wesentlicher Bedeutung sein. 
+In der Abbildung können Sie sehen, dass bei aktivierter ausführlicher Protokollierung und Ablaufverfolgung für grafische Runbooks in der Produktionsansicht der **Auftragsdatenströme** deutlich mehr Informationen zur Verfügung stehen. Diese zusätzlichen Informationen können für die Behandlung von Produktionsproblemen mit einem Runbook von wesentlicher Bedeutung sein.
 
 Sofern Sie diese Informationen also nicht zur Nachverfolgung des Fortschritts eines Runbooks im Rahmen der Problembehandlung benötigen, sollten Sie die Ablaufverfolgung generell deaktiviert lassen. Die Anzahl von Ablaufverfolgungsdatensätzen kann erheblich sein. Bei der Ablaufverfolgung für grafische Runbooks können Sie zwei bis vier Datensätze pro Aktivität erhalten – abhängig davon, ob Sie die Ablaufverfolgung der Stufe „Standard“ oder „Ausführlich“ konfiguriert haben.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95e4474924d32eca848d4dcb0e7028f328cb59c1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96509480"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157676"
 ---
 **Letzte Aktualisierung des Dokuments**: 12. November 2019 10 Uhr PST.
 
@@ -108,7 +108,7 @@ Wenn die Ausgabe `MDS mitigation is enabled: False` anzeigt, [wenden Sie sich an
 **Schritt 3**: Folgen Sie den Anweisungen in [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution), um die Betriebssystemunterstützung für KVAS (Kernel Virtual Address Shadowing) und BTI (Branch Target Injection) zu aktivieren, damit Schutz über die `Session Manager`-Registrierungsschlüssel aktiviert wird. Es ist ein Neustart erforderlich.
 
 
-**Schritt 4**: Für Bereitstellungen mit Verwendung von [geschachtelter Virtualisierung](../articles/virtual-machines/windows/nested-virtualization.md) (nur D3 und E3): Diese Anleitung gilt auf der VM, die Sie als Hyper-V-Host verwenden.
+**Schritt 4**: Für Bereitstellungen mit Verwendung von [geschachtelter Virtualisierung](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) (nur D3 und E3): Diese Anleitung gilt auf der VM, die Sie als Hyper-V-Host verwenden.
 
 1.  Befolgen Sie die Anleitung unter [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution), um den Schutz über die `MinVmVersionForCpuBasedMitigations`-Registrierungsschlüssel zu aktivieren.
 2.  Legen Sie den Typ des Hypervisorplaners auf `Core` fest, indem Sie [diese Anweisungen](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types) ausführen.

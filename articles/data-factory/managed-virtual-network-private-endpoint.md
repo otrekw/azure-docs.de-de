@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d777588f0abdd1f771deb259c597f6407e61d874
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 34211feb34b3e2ec21b9bc0e6a180df0febd8c76
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364607"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987936"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
 
@@ -121,9 +121,9 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 ### <a name="supported-data-sources"></a>Unterstützte Datenquellen
 Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten Link aus einem verwalteten virtuellen ADF-Netzwerk unterstützt.
-- Azure Blob Storage
-- Azure-Tabellenspeicher
-- Azure Files
+- Azure Blob Storage (ohne Speicherkonto V1)
+- Azure Table Storage (ohne Speicherkonto V1)
+- Azure Files (ohne Speicherkonto V1)
 - Azure Data Lake Gen2
 - Azure SQL-Datenbank (ohne Azure SQL Managed Instance)
 - Azure Synapse Analytics
@@ -136,32 +136,36 @@ Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten 
 - Azure Database for MariaDB
 
 ### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory ist in den folgenden Azure-Regionen verfügbar:
-- East US
-- USA (Ost) 2
-- USA, Westen-Mitte
-- USA (Westen)
-- USA, Westen 2
-- USA Süd Mitte
-- USA (Mitte)
-- Nordeuropa
-- Europa, Westen
-- UK, Süden
-- Asien, Südosten
 - Australien (Osten)
 - Australien, Südosten
-- Norwegen, Osten
+- Brasilien Süd
+- Kanada, Mitte
+- Kanada, Osten
+- Indien, Mitte
+- USA (Mitte)
+- East US
+- USA (Ost 2)
+- Frankreich, Mitte
 - Japan, Osten
 - Japan, Westen
 - Korea, Mitte
-- Brasilien Süd
-- Frankreich, Mitte
+- Nordeuropa
+- Norwegen, Osten
+- Südafrika, Norden
+- USA Süd Mitte
+- Südostasien
 - Schweiz, Norden
+- Vereinigte Arabische Emirate, Norden
+- UK, Süden
 - UK, Westen
-- Kanada, Osten
-- Kanada, Mitte
+- USA, Westen-Mitte
+- Europa, Westen
+- USA (Westen)
+- USA, Westen 2
+
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Ausgehende Kommunikation über einen öffentlichen Endpunkt von einem verwaltetem virtuellen ADF-Netzwerk
-- Nur Port 443 wird für die ausgehende Kommunikation geöffnet.
+- Alle Ports sind für die ausgehende Kommunikation geöffnet.
 - Azure Storage und Azure Data Lake Gen2 werden für eine Verbindung über einen öffentlichen Endpunkt von einem verwalteten virtuellen ADF-Netzwerk nicht unterstützt.
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Erstellung eines verknüpften Diensts von Azure Key Vault 

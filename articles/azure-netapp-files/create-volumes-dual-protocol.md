@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/27/2021
 ms.author: b-juche
-ms.openlocfilehash: bbb8baf111c62e3a1207de9b910979a77927cd6e
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: b195b1a816576ec8a065ebe83bd02fa3aeb53c5a
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490799"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161391"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll (NFSv3 und SMB) für Azure NetApp Files
 
-Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMB3 oder dualem Protokoll. In diesem Artikel wird beschrieben, wie Sie ein Volume erstellen, das ein duales Protokoll aus NFSv3 und SMB mit Unterstützung der LDAP-Benutzerzuordnung verwendet.  
+Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMB3 oder dualem Protokoll. In diesem Artikel wird beschrieben, wie Sie ein Volume erstellen, das ein duales Protokoll aus NFSv3 und SMB mit Unterstützung der LDAP-Benutzerzuordnung verwendet. 
 
+Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NFS-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md). Informationen zum Erstellen von SMB-Volumes finden Sie unter [Erstellen eines SMB-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes-smb.md). 
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
 
@@ -38,7 +39,6 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
 * Achten Sie darauf, die [Anforderungen für Active Directory-Verbindungen](create-active-directory-connections.md#requirements-for-active-directory-connections) zu erfüllen. 
 * Erstellen Sie eine Reverse-Lookup-Zone auf dem DNS-Server, und fügen Sie dann einen Zeigereintrag (PTR) des AD-Hostcomputers in dieser Reverse-Lookup-Zone hinzu. Andernfalls kann das Volume mit dualem Protokoll nicht erstellt werden.
 * Stellen Sie sicher, dass der NFS-Client auf dem neuesten Stand ist, und führen Sie die neuesten Updates für das Betriebssystem aus.
-* Stellen Sie sicher, dass der Active Directory (AD) LDAP-Server auf dem AD ausgeführt wird. Hierzu können Sie die Rolle [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) auf dem AD-Computer installieren und konfigurieren.
 * Doppelprotokollvolumes unterstützen zurzeit keine Azure Active Directory Domain Services (AADDS). LDAP über TLS darf nicht aktiviert werden, wenn Sie AADDS verwenden.
 * Die von einem Doppelprotokollvolume verwendete NFS-Version ist NFSv3. Dabei gelten die folgenden Bedingungen:
     * Das duale Protokoll unterstützt die erweiterten Attribute `set/get` von Windows-ACLs von NFS-Clients nicht.
@@ -111,6 +111,27 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
 
     * Geben Sie den zu verwendenden **Sicherheitsstil** an: NTFS (Standard) oder UNIX.
 
+    * Wenn Sie die SMB3-Protokollverschlüsselung für das Volume mit dualem Protokoll aktivieren möchten, wählen Sie **SMB3-Protokollverschlüsselung aktivieren** aus.   
+
+        Durch dieses Feature wird die Verschlüsselung nur für In-Flight-SMB3-Daten aktiviert. NfSv3-In-Flight-Daten werden nicht verschlüsselt. SMB-Clients ohne Verwendung der SMB3-Verschlüsselung können nicht auf dieses Volume zugreifen. Ruhende Daten werden unabhängig von dieser Einstellung verschlüsselt. Weitere Informationen finden Sie in den [häufig gestellten Fragen zur SMB-Verschlüsselung](azure-netapp-files-faqs.md#smb-encryption-faqs). 
+
+        Das Feature **SMB3-Protokollverschlüsselung** befindet sich zurzeit in der Vorschauphase. Wenn Sie dieses Feature zum ersten Mal verwenden, registrieren Sie es vor der Verwendung: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+
+        Überprüfen Sie den Status der Funktionsregistrierung: 
+
+        > [!NOTE]
+        > Der **RegistrationState** kann für bis zu 60 Minuten den Status `Registering` aufweisen, bevor der Wechsel in `Registered` erfolgt. Warten Sie, bis der Status `Registered` lautet, bevor Sie fortfahren.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+        
+        Sie können auch die [Azure CLI-Befehle](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen.  
+
     * Optional können Sie [die Exportrichtlinie für das Volume konfigurieren](azure-netapp-files-configure-export-policy.md).
 
     ![Angeben eines dualen Protokolls](../media/azure-netapp-files/create-volume-protocol-dual.png)
@@ -140,9 +161,9 @@ Sie können POSIX-Attribute wie z. B. UID, Basisverzeichnis und andere Werte ü
 
 Sie müssen die folgenden Attribute für LDAP-Benutzer und LDAP-Gruppen festlegen: 
 * Erforderliche Attribute für LDAP-Benutzer:   
-    `uid`: Alice, `uidNumber`: 139, `gidNumber`: 555, `objectClass`: posixAccount
+    `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
 * Erforderliche Attribute für LDAP-Gruppen:   
-    `objectClass`: "posixGroup", `gidNumber`: 555
+    `objectClass: posixGroup`, `gidNumber: 555`
 
 ## <a name="configure-the-nfs-client"></a>Konfigurieren des NFS-Clients 
 

@@ -3,12 +3,12 @@ title: Aktivieren der Erkennung doppelter Nachrichten – Azure Service Bus
 description: In diesem Artikel wird erläutert, wie Sie die Erkennung doppelter Nachrichten mit Azure-Portal, PowerShell, CLI und Programmiersprachen (C#, Java, Python und JavaScript) aktivieren
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 708009fcf2479660316b38ac0b7d545d450de28c
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1e299b86991a7785cc89f2e72227e7a8ced883d7
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107755058"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989124"
 ---
 # <a name="enable-duplicate-message-detection-for-an-azure-service-bus-queue-or-a-topic"></a>Aktivieren der Erkennung doppelter Nachrichten für eine Azure Service Bus-Warteschlange oder ein Thema
 Wenn Sie die Duplikaterkennung für eine Warteschlange oder ein Thema aktivieren, speichert Azure Service Bus einen Verlauf aller Nachrichten, die an die Warteschlange oder das Thema gesendet werden, für einen konfigurierten Zeitraum. In diesem Intervall werden in der Warteschlange oder dem Thema keine doppelten Nachrichten gespeichert. Wenn Sie diese Eigenschaft aktivieren, wird die Übermittlung genau einmal über einen benutzerdefinierten Zeitraum garantiert. Weitere Informationen finden Sie unter [Duplikaterkennung](duplicate-detection.md). In diesem Artikel werden verschiedene Möglichkeiten zum Aktivieren der Erkennung doppelter Nachrichten für eine Service Bus-Warteschlange oder ein Thema beschrieben. 
@@ -255,12 +255,12 @@ Um **ein Thema mit aktivierter Duplikaterkennung zu erstellen**, stellen Sie im 
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die Beispiele in der Sprache Ihrer Wahl an, um Azure Service Bus-Features zu untersuchen. 
 
-- [Azure Service Bus-Clientbibliothekbeispiele für Java](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Azure Service Bus-Clientbibliothekbeispiele für .NET (neueste Version)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
+- [Azure Service Bus-Clientbibliothekbeispiele für Java (neueste Version)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Azure Service Bus-Clientbibliothekbeispiele für Python](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [Azure Service Bus-Clientbibliothekbeispiele für JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [Azure Service Bus-Clientbibliothekbeispiele für TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [Azure.Messaging.ServiceBus-Beispiele für .NET](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
 
 Hier finden Sie Beispiele für die älteren .NET- und Java-Clientbibliotheken:
-- [Microsoft.Azure.ServiceBus-Beispiele für .NET](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [Azure-ServiceBus-Beispiele für Java](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
+- [Azure Service Bus-Clientbibliothekbeispiele für .NET (Legacy)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Azure Service Bus-Clientbibliothekbeispiele für Java (Legacy)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)

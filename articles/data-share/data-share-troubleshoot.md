@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 12/16/2020
-ms.openlocfilehash: 3aa1c0b8579bd37d2bb51cbde70997131c696813
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/22/2021
+ms.openlocfilehash: 57b5e5f483ce8076622e4705a3a5b566e2e3aa1f
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97964506"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987882"
 ---
 # <a name="troubleshoot-common-problems-in-azure-data-share"></a>Behandeln allgemeiner Probleme in Azure Data Share 
 
@@ -20,11 +20,7 @@ In diesem Artikel erfahren Sie, wie Sie allgemeine Probleme in Azure Data Share 
 
 ## <a name="azure-data-share-invitations"></a>Azure Data Share-Einladungen 
 
-In einigen Fällen wird möglicherweise eine leere Einladungsliste angezeigt, wenn neue Benutzer in einer E-Mail-Einladung auf **Einladung annehmen** klicken. 
-
-:::image type="content" source="media/no-invites.png" alt-text="Screenshot: leere Einladungsliste":::
-
-Das Problem kann eine der folgenden Ursachen haben:
+In einigen Fällen wird möglicherweise eine leere Einladungsliste angezeigt, wenn neue Benutzer in einer E-Mail-Einladung auf **Einladung annehmen** klicken. Das Problem kann eine der folgenden Ursachen haben:
 
 * **Der Azure Data Share-Dienst ist im Azure-Mandanten nicht als Ressourcenanbieter eines Azure-Abonnements registriert.** Dieses Problem tritt auf, wenn Ihr Azure-Mandant keine Data Share-Ressource enthält. 
 
@@ -73,15 +69,35 @@ Für Speicherkonten kann es zu Fehlern bei der Momentaufnahme kommen, weil zum Z
 
 Für SQL-Quellen kann es aus anderen Gründen zu Fehlern bei Momentaufnahmen kommen:
 
-* Das SQL-Quellskript oder das SQL-Zielskript zum Gewähren der Data Share-Berechtigung wurde nicht ausgeführt. Möglicherweise wird das Skript auch für Azure SQL-Datenbank oder Azure Synapse Analytics (vormals Azure SQL Data Warehouse) unter Verwendung der SQL-Authentifizierung anstelle der Azure Active Directory-Authentifizierung ausgeführt.  
+* Das SQL-Quellskript oder das SQL-Zielskript zum Gewähren der Data Share-Berechtigung wurde nicht ausgeführt. Möglicherweise wird das Skript auch für Azure SQL-Datenbank oder Azure Synapse Analytics (vormals Azure SQL Data Warehouse) unter Verwendung der SQL-Authentifizierung anstelle der Azure Active Directory-Authentifizierung ausgeführt. Sie können die folgende Abfrage ausführen, um zu überprüfen, ob das Data Share-Konto über die richtige Berechtigung für die SQL-Datenbank verfügt. Für die SQL-Quelldatenbank sollte das Abfrageergebnis angeben, dass das Data Share-Konto über die Rolle *db_datareader* verfügt. Für die SQL-Zieldatenbank sollte das Abfrageergebnis angeben, dass das Data Share-Konto über die Rollen *db_datareader*, *db_datawriter* und *db_dlladmin* verfügt.
+
+    ```sql
+        SELECT DP1.name AS DatabaseRoleName,
+        isnull (DP2.name, 'No members') AS DatabaseUserName
+        FROM sys.database_role_members AS DRM
+        RIGHT OUTER JOIN sys.database_principals AS DP1
+        ON DRM.role_principal_id = DP1.principal_id
+        LEFT OUTER JOIN sys.database_principals AS DP2
+        ON DRM.member_principal_id = DP2.principal_id
+        WHERE DP1.type = 'R'
+        ORDER BY DP1.name; 
+     ``` 
+
 * Der Quelldatenspeicher oder der SQL-Zieldatenspeicher wurde angehalten.
 * Der Prozess für Momentaufnahmen oder der Zieldatenspeicher unterstützt keine SQL-Datentypen. Weitere Informationen finden Sie im Artikel zur [Freigabe aus SQL-Quellen](how-to-share-from-sql.md#supported-data-types).
 * Der Quelldatenspeicher oder SQL-Zieldatenspeicher ist durch andere Prozesse gesperrt. Durch Azure Data Share erfolgt keine Sperrung dieser Datenspeicher. Vorhandene Sperren für diese Datenspeicher können jedoch zu Fehlern bei der Momentaufnahmeerstellung führen.
 * Auf die SQL-Zieltabelle wird mit einer Fremdschlüsseleinschränkung verwiesen. Wenn bei der Momentaufnahmeerstellung eine gleichnamige Zieltabelle vorhanden ist, löscht Azure Data Share die Tabelle und erstellt eine neue Tabelle. Wenn auf die SQL-Zieltabelle mit einer Fremdschlüsseleinschränkung verwiesen wird, kann die Tabelle nicht gelöscht werden.
 * Die CSV-Zieldatei wird generiert, aber die Daten können nicht in Excel gelesen werden. Dieses Problem tritt möglicherweise auf, wenn die SQL-Quelltabelle Daten mit Sonderzeichen umfasst. Wählen Sie in Excel die Registerkarte **Daten abrufen** und dann die CSV-Datei aus. Wählen Sie den Dateiursprung **65001: Unicode (UTF-8)** aus, und laden Sie anschließend die Daten.
 
-## <a name="updated-snapshot-schedules"></a>Aktualisierte Zeitpläne für Momentaufnahmen
-Nachdem der Datenanbieter den Momentaufnahmezeitplan für die gesendete Freigabe aktualisiert hat, muss der Datenconsumer den vorherigen Momentaufnahmezeitplan deaktivieren. Anschließend muss der aktualisierte Momentaufnahmezeitplan für die empfangene Freigabe aktiviert werden. 
+## <a name="update-snapshot-schedule"></a>Aktualisieren des Momentaufnahmezeitplans
+Nachdem der Datenanbieter den Momentaufnahmezeitplan für die gesendete Freigabe aktualisiert hat, muss der Datenconsumer den früheren Momentaufnahmezeitplan deaktivieren und dann den aktualisierten Momentaufnahmezeitplan für die empfangene Freigabe erneut aktivieren. Der Momentaufnahmezeitplan wird in UTC gespeichert und auf der Benutzeroberfläche als lokale Computerzeit angezeigt. Er wird nicht automatisch an die Sommer- bzw. Winterzeit angepasst.  
+
+## <a name="in-place-sharing"></a>Direkte Freigabe
+Bei der Datasetzuordnung kann für Azure Data Explorer-Cluster aus folgenden Gründen ein Fehler auftreten:
+
+* Der Benutzer hat keine *Schreibberechtigung* für den Azure Data Explorer-Cluster. Diese Berechtigung ist üblicherweise in der Rolle „Mitwirkender“ enthalten. 
+* Der Azure Data Explorer-Quell- oder Zielcluster wurde angehalten.
+* Der Azure Data Explorer-Quellcluster ist EngineV2 und der Zielcluster EngineV3 oder umgekehrt. Die Freigabe zwischen Azure Data Explorer-Clustern mit unterschiedlichen Engine-Versionen wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

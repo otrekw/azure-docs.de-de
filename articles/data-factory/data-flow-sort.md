@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
-ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a6567f8576e2507704956233bc593b203b48239
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81606335"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588733"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>Transformation zum Sortieren in einem Zuordnungsdatenfluss
 
@@ -22,7 +22,7 @@ ms.locfileid: "81606335"
 Mit der Transformation zum Sortieren können Sie die eingehenden Zeilen im aktuellen Datenstrom sortieren. Sie können einzelne Spalten auswählen und in aufsteigender oder absteigender Reihenfolge sortieren.
 
 > [!NOTE]
-> Zuordnungsdatenflüsse werden auf Spark-Clustern ausgeführt, die Daten auf mehrere Knoten und Partitionen verteilen. Wenn Sie Ihre Daten in einer nachfolgenden Transformation neu partitionieren möchten, geht Ihre Sortierung möglicherweise aufgrund dieser Umverteilung von Daten verloren.
+> Zuordnungsdatenflüsse werden auf Spark-Clustern ausgeführt, die Daten auf mehrere Knoten und Partitionen verteilen. Wenn Sie Ihre Daten in einer nachfolgenden Transformation neu partitionieren möchten, geht Ihre Sortierung möglicherweise aufgrund dieser Umverteilung von Daten verloren. Die beste Möglichkeit, die Sortierreihenfolge in Ihrem Datenfluss zu verwalten, besteht darin, eine einzelne Partition auf der Registerkarte „Optimieren“ für die Transformation festzulegen und die Sortiertransformation so nah wie möglich an der Senke zu platzieren.
 
 ## <a name="configuration"></a>Konfiguration
 

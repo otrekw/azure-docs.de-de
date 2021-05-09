@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d28a20a6afc78939491e56f46a32782b4c0844cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd221215d6be3c14ce1200e8bd374a97cb7608a0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879002"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503013"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -30,7 +30,6 @@ azcopy remove [resourceURL] [flags]
 - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
 - [Übertragen von Daten mit AzCopy und Blobspeicher](./storage-use-azcopy-v10.md#transfer-data)
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
-- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Beispiele
 
@@ -103,7 +102,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--list-of-files** string  Definiert den Speicherort einer Datei, die die Liste der zu löschenden Dateien und Verzeichnisse enthält. Die relativen Pfade sollten durch Zeilenumbrüche getrennt werden, und die Pfade sollten NICHT URL-codiert sein. 
 
-**--list-of-versions** string  Gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile steht. Stellen Sie sicher, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. Die angegebenen Versions-IDs des angegebenen Blobs werden aus Azure Storage gelöscht. 
+**--list-of-versions** string   Gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile aufgeführt wird. Beachten Sie, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. Die angegebenen Versions-IDs des jeweiligen Blobs werden aus Azure Storage gelöscht. 
 
 **--log-level** string  Definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Ebenen umfassen: `INFO`(alle Anforderungen/Antworten), `WARNING`(langsame Antworten), `ERROR`(nur fehlerhafte Anforderungen) und `NONE`(keine Ausgabeprotokolle). (Standard `INFO`) (Standard `INFO`)
 

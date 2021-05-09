@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: e8f71eb120b86f35672c9123b52f7f19c9fee662
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/22/2021
+ms.openlocfilehash: 9fdc2d2567e6ea24a68398139007be978cb639b5
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608458"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989358"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL Flexible Server
 
@@ -60,6 +60,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | Überprüft die Informationen zur Zuordnung von Sichtbarkeiten (VM) und Sichtbarkeit auf Seitenebene|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
+> |[pglogisch](https://github.com/2ndQuadrant/pglogical)                     | 2.3.2           | PostgreSQL: logische Replikation|
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | Anzeige von Statistiken auf Tupelebene|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL: Prozedurale Sprache|
@@ -109,6 +110,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | Überprüft die Informationen zur Zuordnung von Sichtbarkeiten (VM) und Sichtbarkeit auf Seitenebene|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
+> |[pglogisch](https://github.com/2ndQuadrant/pglogical)                     | 2.3.2           | PostgreSQL: logische Replikation|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | Anzeige von Statistiken auf Tupelebene|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL: Prozedurale Sprache|

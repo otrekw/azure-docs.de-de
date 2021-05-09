@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5317edcf7ef00c6d82c1799582ad2a92005b7cb
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97108415"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161625"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
 
@@ -77,7 +77,6 @@ Mit der Methode „IsLengthRange“ wird überprüft, ob die Länge eines Zeiche
 | ------- | ----------- | ----------- |
 | Maximum | Ja | Die maximale Anzahl von Zeichen, die eingegeben werden können. |
 | Minimum | Ja | Die minimale Anzahl von Zeichen, die eingegeben werden müssen. |
-
 
 Das folgende Beispiel zeigt eine „IsLengthRange“-Methode mit den Parametern `Minimum` und `Maximum`, die den Längenbereich der Zeichenfolge angeben:
 
@@ -224,7 +223,6 @@ Das **PredicateReference**-Element enthält die folgenden Attribute:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird.  |
-
 
 ## <a name="configure-password-complexity"></a>Konfigurieren der Kennwortkomplexität
 
@@ -424,7 +422,7 @@ Fügen Sie in Ihrem Anspruchstyp ein **PredicateValidationReference**-Element hi
   <UserInputType>DateTimeDropdown</UserInputType>
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
- ```
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

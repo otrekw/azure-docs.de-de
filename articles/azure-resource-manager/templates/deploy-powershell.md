@@ -3,12 +3,13 @@ title: Bereitstellen von Ressourcen mit PowerShell und Vorlagen
 description: Verwenden Sie Azure Resource Manager und Azure PowerShell, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage oder einer BICEP-Datei definiert.
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 11a293ca58fc6acf3bd99bb0169d817dae11fb94
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: db43613b1b359e6d6378e081f3f61ee1449bd641
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543804"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314641"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell
 

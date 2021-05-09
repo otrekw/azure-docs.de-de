@@ -6,19 +6,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 38194ed7290d6cd9c4889d27ff458f950603c5be
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 84abd3d617c059c1bbc9565d0b8a23840f81f60d
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "106072889"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313376"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe des Calling SDK von Azure Communication Services für Android beginnen.
-
-[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
-
-> [!NOTE]
-> Dieses Dokument verwendet Version 1.0.0-beta.8 des Calling SDK.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -264,11 +259,11 @@ private void getAllPermissions() {
 
 Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features des Azure Communication Services Calling SDK:
 
-| name                                  | Beschreibung                                                  |
+| Name                                  | Beschreibung                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| Der CallClient ist der Haupteinstiegspunkt des Calling SDK.|
+| CallClient| „CallClient“ ist der Haupteinstiegspunkt des Calling SDK.|
 | CallAgent | CallAgent dient zum Starten und Verwalten von Anrufen. |
-| CommunicationUserCredential | „CommunicationUserCredential“ dient als tokengestützte Anmeldeinformation zum Instanziieren von „CallAgent“.|
+| CommunicationTokenCredential | „CommunicationTokenCredential“ dient als tokengestützte Anmeldeinformation zum Instanziieren von „CallAgent“.|
 | CommunicationIdentifier | „CommunicationIdentifier“ wird als anderer Typ von Teilnehmer verwendet, der Teil eines Anrufs sein könnte.|
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>Erstellen eines Agents aus dem Benutzerzugriffstoken

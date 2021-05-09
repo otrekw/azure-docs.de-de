@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fb4c797df7961726ca785a56a6ab25807999842
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695742"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600861"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
 
@@ -70,15 +70,9 @@ Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und f
 
 Nachdem Sie nun der verwalteten Purview-Identität die Berechtigung erteilt haben, eine Verbindung mit der Administrator-API Ihres Power BI-Mandanten herzustellen, können Sie Ihre Überprüfung über Azure Purview Studio einrichten.
 
-Fügen Sie zunächst ein spezielles Featureflag zu Ihrer Purview-URL hinzu. 
+1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
 
-1. Wählen Sie das **Verwaltungscenter**-Symbol aus.
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Verwaltungscenter-Symbol":::
-
-1. Wählen Sie dann **+ Neu** für **Datenquellen** aus.
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/data-sources.png" alt-text="Bild der Schaltfläche „Neue Datenquelle“":::
+1. Klicken Sie anschließend auf **Registrieren**.
 
     Wählen Sie **Power BI** als Ihre Datenquelle aus.
 

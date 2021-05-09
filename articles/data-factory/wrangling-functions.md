@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: f7a4041d87e00fa01ae5ae4dff0cade3b9755d31
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896662"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600935"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Transformationsfunktionen in Power Query für Data Wrangling
 
@@ -99,6 +99,23 @@ Verwenden Sie [Table.Sort](/powerquery-m/table-sort), um Werte zu sortieren.
 | Fehlerbehandlung auf Zeilenebene | Die Fehlerbehandlung auf Zeilenebene wird derzeit nicht unterstützt. Wenn Sie z. B. nicht numerische Werte aus einer Spalte herausfiltern möchten, können Sie u. a. die Textspalte in eine Zahl transformieren. Jede Zelle, die nicht transformiert werden kann, weist einen Fehlerstatus auf und muss gefiltert werden. Dieses Szenario ist bei M-Funktionen mit horizontaler Skalierung nicht möglich. |
 | Table.Transpose | Nicht unterstützt |
 | Table.Pivot | Nicht unterstützt |
+| Table.SplitColumn | Teilweise unterstützt |
+
+## <a name="m-script-workarounds"></a>Problemumgehungen bei M-Skripts
+
+### <a name="for-splitcolumn-there-is-an-alternate-for-split-by-length-and-by-position"></a>Für ```SplitColumn``` gibt es eine Alternative zum Teilen nach Länge und Position.
+
+* Table.AddColumn(Source, "First characters", each Text.Start([Email], 7), type text)
+* Table.AddColumn(#"Inserted first characters", "Text range", each Text.Middle([Email], 4, 9), type text)
+
+Auf diese Option kann über die Option „Extrahieren“ auf dem Menüband zugegriffen werden.
+
+![Power Query: Spalte hinzufügen](media/wrangling-data-flow/pq-split.png)
+
+### <a name="for-tablecombinecolumns"></a>Für ```Table.CombineColumns```
+
+* Table.AddColumn(RemoveEmailColumn, "Name", each [FirstName] & " " & [LastName])
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 98866a4f06df0380d52d1aee3eede8aa2f70aaed
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 49704de9eb4a392b552429180da98568cafa210f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588127"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157582"
 ---
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu Instanzen virtueller Computer bereit, die derzeit ausgeführt werden. Sie können ihn zur Verwaltung und Konfiguration Ihrer virtuellen Computer verwenden.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine umfassende Liste der verfügbaren Daten finden Sie in der [Übersicht über die Endpunktkategorien](#endpoint-categories).
@@ -315,7 +315,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | Beschreibung |
+| Name | Erforderlich/Optional | BESCHREIBUNG |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `format` | Optional* | Das Format (`json` oder `text`) der Antwort. *Hinweis: Ist möglicherweise erforderlich, wenn Anforderungsparameter verwendet werden.
@@ -935,7 +935,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | Beschreibung |
+| Name | Erforderlich/Optional | BESCHREIBUNG |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `nonce` | Optional | Eine 10-stellige Zeichenfolge, die als kryptografische Nonce fungiert. Wenn kein Wert angegeben wird, verwendet IMDS den aktuellen UTC-Zeitstempel.
@@ -1177,7 +1177,7 @@ Wenn ein Datenelement nicht gefunden wird oder eine Anforderung ungültig ist, g
   - Wenn Sie Ihre VM nach September 2016 erstellt haben, fügen Sie ein [Tag](../articles/azure-resource-manager/management/tag-resources.md) hinzu, damit Computemetadaten angezeigt werden. Wenn Sie Ihre VM vor September 2016 erstellt haben, fügen Sie der VM-Instanz Erweiterungen oder Datenträger für Daten hinzu oder entfernen Sie diese, um die Metadaten zu aktualisieren.
 
 - Sind Benutzerdaten identisch mit benutzerdefinierten Daten?
-  - Benutzerdaten bieten die gleiche Funktionalität wie benutzerdefinierte Daten, sodass Sie Ihre eigenen Metadaten an die VM-Instanz übergeben können. Der Unterschied besteht im Abrufen von Benutzerdaten über IMDS und bleibt über die gesamte Lebensdauer der VM-Instanz bestehen. Das vorhandene benutzerdefinierte Datenfeature funktioniert weiterhin, wie in [diesem Artikel](https://docs.microsoft.com/azure/virtual-machines/custom-data) beschrieben. Sie können benutzerdefinierte Daten jedoch nur über den lokalen Systemordner und nicht über IMDS erhalten.
+  - Benutzerdaten bieten die gleiche Funktionalität wie benutzerdefinierte Daten, sodass Sie Ihre eigenen Metadaten an die VM-Instanz übergeben können. Der Unterschied besteht im Abrufen von Benutzerdaten über IMDS und bleibt über die gesamte Lebensdauer der VM-Instanz bestehen. Das vorhandene benutzerdefinierte Datenfeature funktioniert weiterhin, wie in [diesem Artikel](../articles/virtual-machines/custom-data.md) beschrieben. Sie können benutzerdefinierte Daten jedoch nur über den lokalen Systemordner und nicht über IMDS erhalten.
 
 - Warum werden nicht alle Daten für eine neue Version ausgefüllt?
   - Wenn Sie Ihre VM nach September 2016 erstellt haben, fügen Sie ein [Tag](../articles/azure-resource-manager/management/tag-resources.md) hinzu, damit Computemetadaten angezeigt werden. Wenn Sie Ihre VM vor September 2016 erstellt haben, fügen Sie der VM-Instanz Erweiterungen oder Datenträger für Daten hinzu oder entfernen Sie diese, um die Metadaten zu aktualisieren.

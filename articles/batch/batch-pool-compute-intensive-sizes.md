@@ -3,12 +3,12 @@ title: Verwenden rechenintensiver Azure-VMs mit Batch
 description: Informationen zum Nutzen der HPC- und GPU-VM-Größen in Azure Batch-Pools. Hier finden Sie Informationen zu Betriebssystemabhängigkeiten und erhalten einige Szenariobeispiele.
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f3156296e1ae1ec892be86fc41738fcb7f29090
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86147345"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988332"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -36,30 +36,32 @@ Die RDMA- oder GPU-Funktionen rechenintensiver Größen in Batch werden nur unte
 | Size | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS oder<br/>CentOS-basierter HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux-RDMA-Treiber | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
-| [NC-, NCv2-, NCv3-, NDv2-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Ubuntu 16.04 LTS oder<br/>CentOS 7.3 oder 7.4<br/>(Azure Marketplace) | NVIDIA CUDA- oder CUDA Toolkit-Treiber | Nicht zutreffend | 
-| [NV-, NVv2-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS oder<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID-Treiber | Nicht zutreffend |
+| [NC-, NCv2-, NCv3-, NDv2-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Ubuntu 16.04 LTS oder<br/>CentOS 7.3 oder 7.4<br/>(Azure Marketplace) | NVIDIA CUDA- oder CUDA Toolkit-Treiber | – | 
+| [NV-, NVv2-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS oder<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID-Treiber | – |
 
 <sup>*</sup>RDMA-fähige Größen der N-Serie umfassen auch NVIDIA Tesla GPUs.
 
-### <a name="windows-pools---virtual-machine-configuration"></a>Windows-Pools – Konfiguration „Virtueller Computer“
+### <a name="windows-pools---virtual-machine-configuration"></a>Windows-Pools: VM-Konfiguration
 
 | Size | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 oder<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 oder höher oder<br/> Intel MPI 5<br/><br/>Windows-RDMA-Treiber | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
-| [NC-, NCv2-, NCv3-, ND-, NDv2-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Windows Server 2016 oder <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA- oder CUDA Toolkit-Treiber| Nicht zutreffend | 
-| [NV-, NVv2-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 oder<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID-Treiber | Nicht zutreffend |
+| [NC-, NCv2-, NCv3-, ND-, NDv2-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Windows Server 2016 oder <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA- oder CUDA Toolkit-Treiber| – | 
+| [NV-, NVv2-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 oder<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID-Treiber | – |
 
 <sup>*</sup>RDMA-fähige Größen der N-Serie umfassen auch NVIDIA Tesla GPUs.
 
-### <a name="windows-pools---cloud-services-configuration"></a>Windows-Pools – Konfiguration „Clouddienst“
+### <a name="windows-pools---cloud-services-configuration"></a>Windows-Pools: Cloud Services-Konfiguration
 
-> [!NOTE]
-> Größen der N-Serie werden in Batch-Pools mit der Clouddienstkonfiguration nicht unterstützt.
->
+> [!WARNING]
+> Cloud Services-Konfigurationspools sind [veraltet](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Verwenden Sie stattdessen VM-Konfigurationspools.
 
 | Size | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md) | RDMA | Windows Server 2016, 2012 R2, 2012 oder<br/>2008 R2 (Gastbetriebssystemfamilie) | Microsoft MPI 2012 R2 oder höher oder<br/>Intel MPI 5<br/><br/>Windows-RDMA-Treiber | Kommunikation zwischen Knoten aktivieren,<br/> parallele Taskausführung deaktivieren |
+
+> [!NOTE]
+> Größen der N-Serie werden in Cloud Services-Konfigurationspools nicht unterstützt.
 
 ## <a name="pool-configuration-options"></a>Poolkonfigurationsoptionen
 

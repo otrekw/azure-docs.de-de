@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bd3ba88650161bd11a24697b4ff8575d307120e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64f18d3217d7f5b7c2feb28190475ef885d4e72b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102424460"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203503"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Tutorial: Codieren mit den Azure Digital Twins-APIs
 
@@ -128,7 +128,7 @@ Erstellen Sie in dem Verzeichnis, in dem Sie Ihr Projekt erstellt haben, eine ne
 > Wenn Sie für dieses Tutorial Visual Studio verwenden, können Sie die neu erstellte JSON-Datei auswählen und im Eigenschaften-Inspektor die Eigenschaft *In Ausgabeverzeichnis kopieren* auf *Kopieren, falls aktueller* oder *Immer kopieren* festlegen. So kann Visual Studio die JSON-Datei mit dem Standardpfad finden, wenn Sie das Programm im weiteren Verlauf des Tutorials mit **F5** ausführen.
 
 > [!TIP] 
-> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie unter [ *Clientseitige DTDL-Parserbibliothek*](how-to-parse-models.md).
+> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie in [Gewusst wie: Analysieren und Validieren von Modellen](how-to-parse-models.md).
 
 Als Nächstes fügen Sie *Program.cs* weiteren Code hinzu, um das soeben erstellte Modell in Ihre Azure Digital Twins-Instanz hochzuladen.
 
@@ -271,4 +271,4 @@ In diesem Tutorial haben Sie eine Clientanwendung für die .NET-Konsole von Grun
 Fahren Sie mit dem nächsten Tutorial fort, um zu untersuchen, welche Möglichkeiten eine solche Beispiel-Client-App bietet: 
 
 > [!div class="nextstepaction"]
-> [*Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App*](tutorial-command-line-app.md)
+> [Tutorial: Untersuchen der Grundlagen mit einer Beispielclient-App](tutorial-command-line-app.md)
