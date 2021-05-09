@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 60f67ea618746c9f2b0cd65a9fbc7fb2b5fbfe86
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 51b04feffd887fd86157d029168bc53546adfeeb
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520002"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208165"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
 Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit virtuellen Computern verwendet werden können.
@@ -55,7 +55,7 @@ Weitere Informationen zu Antischadsoftware zum Schutz Ihrer virtuellen Computer:
 * [Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer](../../virtual-machines/extensions/symantec.md)
 * [Willkommen im Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 
-Für einen noch leistungsfähigeren Schutz verwenden Sie [Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection). Windows Defender ATP bietet:
+Für einen noch leistungsfähigeren Schutz verwenden Sie [Windows Defender Advanced Threat Protection](/mem/configmgr/protect/deploy-use/defender-advanced-threat-protection). Windows Defender ATP bietet:
 
 * [Reduzierung der Angriffsfläche](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [Schutz der nächsten Generation](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
@@ -69,7 +69,7 @@ Für einen noch leistungsfähigeren Schutz verwenden Sie [Windows Defender Advan
 Weitere Informationen:
 
 * [Erste Schritte mit Windows Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)  
-* [Übersicht über Windows Defender ATP-Funktionen](/windows/security/threat-protection/windows-defender-atp/overview)  
+* [Übersicht über Windows Defender ATP-Funktionen](/microsoft-365/security/defender-endpoint/whats-new-in-microsoft-defender-atp)  
 
 ## <a name="hardware-security-module"></a>Hardwaresicherheitsmodul
 

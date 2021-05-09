@@ -6,22 +6,26 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: fbc3502952e11830ef9abb06cb709fcc60288343
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: d1817db4615d321db3d5f098d449410ee5b0606c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739528"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141847"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Device Update for IoT Hub und IoT Plug & Play
 
 Device Update for IoT Hub verwendet [IoT Plug & Play](../iot-pnp/index.yml) zum Erkennen und Verwalten von Geräten, die OTA-Updates (Over-the-Air) empfangen können. Der Device Update-Dienst sendet Eigenschaften und Nachrichten an Geräte und empfängt diese von Geräten, die PnP-Schnittstellen verwenden. Device Update for IoT Hub erfordert, dass IoT-Geräte die folgenden Schnittstellen und die model-id wie unten beschrieben implementieren.
 
+Konzepte: 
+* Grundlegendes zum [IoT Plug & Play-Geräteclient.](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device?pivots=programming-language-csharp#implement-telemetry,-properties,-and-commands) 
+* Erfahren Sie, wie der [Geräteupdate-Agent implementiert wird.](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)
+
 ## <a name="adu-core-interface"></a>ADU Core-Schnittstelle
 
 Die Schnittstelle „ADUCoreInterface“ wird verwendet, um Updateaktionen und Metadaten an Geräte zu senden und den Updatestatus von Geräten zu empfangen. Die Schnittstelle „ADU Core“ ist in zwei Objekteigenschaften aufgeteilt.
 
-Der erwartete Komponentenname im Modell ist **azureDeviceUpdateAgent**, wenn diese Schnittstelle implementiert wird. Weitere Informationen zu [Azure IoT PnP-Komponenten](../iot-pnp/concepts-components.md)
+Der erwartete Komponentenname im Modell ist **azureDeviceUpdateAgent**, wenn diese Schnittstelle implementiert wird. Weitere Informationen zu [Azure IoT PnP-Komponenten](../iot-pnp/concepts-modeling-guide.md)
 
 ### <a name="agent-metadata"></a>Agent-Metadaten
 
@@ -57,6 +61,27 @@ Es handelt sich um den Satz der Eigenschaften, die den Hersteller und das Modell
 |aduVer|Zeichenfolge|Gerät an Cloud|Version des Device Update-Agents, der auf dem Gerät ausgeführt wird. Dieser Wert wird nur dann aus dem Build gelesen, wenn während der Kompilierungszeit ENABLE_ADU_TELEMETRY_REPORTING auf 1 (TRUE) festgelegt ist. Kunden können sich entscheiden, die Versionsberichterstellung zu deaktivieren, indem Sie den Wert auf 0 (FALSE) festlegen. [Anpassen der Eigenschaften des Device Update-Agents](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md).|
 |doVer|Zeichenfolge|Gerät an Cloud|Version des Übermittlungsoptimierungs-Agents, der auf dem Gerät ausgeführt wird. Der Wert wird nur dann aus dem Build gelesen, wenn während der Kompilierungszeit ENABLE_ADU_TELEMETRY_REPORTING auf 1 (TRUE) festgelegt ist. Kunden können sich entscheiden, die Versionsberichterstellung zu deaktivieren, indem Sie den Wert auf 0 (FALSE) festlegen. [Anpassen von Eigenschaften des Übermittlungsoptimierungs-Agents](https://github.com/microsoft/do-client/blob/main/README.md#building-do-client-components).|
 
+Beispiel für IoT Hub-Gerätezwilling
+```json
+ "azureDeviceUpdateAgent": {
+                           "__t": "c",
+                           "client": {
+                                     "state": 0,
+                                     "resultCode": 200,
+                                     "extendedResultCode": 0,
+                                     "deviceProperties": {
+                                                         "manufacturer": "Contoso",
+                                                         "model": "Video",
+                                                         "aduVer": "DU;agent/0.6.0",
+                                                         "doVer": "DU;lib/v0.4.0,DU;agent/v0.4.0,DU;plugin-apt/v0.2.0"
+                                                         },
+                                     "installedUpdateId": "{\"provider\":\"Contoso\",\"name\":\"SampleUpdate1\",\"version\":\"1.0.4\"}"
+                                     },
+                            }
+```
+
+Hinweis: Das Gerät oder Modul muss die {"__t": "c"} Markierung hinzufügen, um anzuzeigen, dass sich das Element auf eine Komponente bezieht, erfahren Sie mehr [hier](https://docs.microsoft.com/azure/iot-pnp/concepts-convention#sample-multiple-components-writable-property).
+
 ### <a name="service-metadata"></a>Dienstmetadaten
 
 Dienstmetadaten enthalten Felder, die von den Device Update-Diensten zum Kommunizieren von Aktionen und Daten an den Device Update-Agent verwendet werden.
@@ -83,7 +108,7 @@ Dienstmetadaten enthalten Felder, die von den Device Update-Diensten zum Kommuni
 
 Die Geräteinformationsschnittstelle ist ein Konzept, das in der [IoT Plug & Play-Architektur](../iot-pnp/overview-iot-plug-and-play.md) verwendet wird. Sie enthält Gerät-zu-Cloud-Eigenschaften, die Informationen zur Hardware und zum Betriebssystem des Geräts bereitstellen. Device Update for IoT Hub verwendet die Eigenschaften DeviceInformation.manufacturer und DeviceInformation.model für Telemetriedaten und Diagnosen verwendet. Weitere Informationen zur Geräteinformationsschnittstelle finden Sie in diesem [Beispiel](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json).
 
-Der erwartete Komponentenname im Modell ist **deviceInformation**, wenn diese Schnittstelle implementiert wird. [Weitere Informationen zu Azure IoT PnP-Komponenten](../iot-pnp/concepts-components.md)
+Der erwartete Komponentenname im Modell ist **deviceInformation**, wenn diese Schnittstelle implementiert wird. [Weitere Informationen zu Azure IoT PnP-Komponenten](../iot-pnp/concepts-modeling-guide.md)
 
 |Name|type|Schema|Direction|BESCHREIBUNG|Beispiel|
 |----|----|------|---------|-----------|-----------|

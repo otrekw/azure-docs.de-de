@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/07/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3c896e2aad7dae8d03b26e2a16ecb96224ab547b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ac794fda92e2ad005b30fc1aa153cc0546430fbe
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303759"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208561"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
-Sie können die [Modelle](concepts-models.md), Ihrer Azure Digital Twins-Instanz mithilfe der [**DigitalTwinModels-APIs**](/rest/api/digital-twins/dataplane/models), mit dem [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder über die [Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md) verwalten. 
+Sie können die [Modelle](concepts-models.md), Ihrer Azure Digital Twins-Instanz mithilfe der [DigitalTwinModels-APIs](/rest/api/digital-twins/dataplane/models), mit dem [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder über die [Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md) verwalten. 
 
 Zu den Verwaltungsvorgängen gehören das Hochladen, Überprüfen, Abrufen und Löschen von Modellen. 
 
@@ -120,7 +120,7 @@ Wenn Sie einen neuen Zwilling erstellen, da die neue Modellversion und die alte 
 
 Dies bedeutet auch, dass sich das Hochladen einer neuen Version eines Modells nicht automatisch auf vorhandene Zwillinge auswirkt. Die vorhandenen Zwillinge bleiben einfach Instanzen der alten Modellversion.
 
-Sie können diese vorhandenen Zwillinge auf die neue Modellversion aktualisieren, indem Sie sie patchen, wie im Abschnitt [*Aktualisieren eines Modells eines digitalen Zwillings*](how-to-manage-twin.md#update-a-digital-twins-model) von *Gewusst wie: Verwalten digitaler Zwillinge* beschrieben. Innerhalb desselben Patches müssen Sie sowohl die **Modell-ID** (für die neue Version) aktualisieren und **alle Felder, die im Zwilling geändert werden müssen, um sie an das neue Modell anzupassen**.
+Sie können diese vorhandenen Zwillinge auf die neue Modellversion aktualisieren, indem Sie sie patchen, wie im Abschnitt [Aktualisieren eines Modells eines digitalen Zwillings](how-to-manage-twin.md#update-a-digital-twins-model) von *Gewusst wie: Verwalten digitaler Zwillinge* beschrieben. Innerhalb desselben Patches müssen Sie sowohl die **Modell-ID** (für die neue Version) aktualisieren und **alle Felder, die im Zwilling geändert werden müssen, um sie an das neue Modell anzupassen**.
 
 ## <a name="remove-models"></a>Entfernen von Modellen
 
@@ -142,7 +142,7 @@ Der Status „Außerbetriebsetzung“ eines Modells ist in den `ModelData`-Daten
 
 Sie können entweder alle Modelle auf einmal aus der Instanz löschen oder einzeln bestimmte Modelle zum Löschen auswählen.
 
-Ein Beispiel für das Löschen aller Modelle finden Sie in der Beispiel-App, die im folgenden Tutorial verwendet wird: [*Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App*](tutorial-command-line-app.md). In der Datei *CommandLoop.cs* wird dies in einer `CommandDeleteAllModels`-Funktion durchgeführt.
+Ein Beispiel für das Löschen aller Modelle finden Sie in der Beispiel-App, die im folgenden Tutorial verwendet wird: [Tutorial: Untersuchen der Grundlagen mit einer Beispielclient-App](tutorial-command-line-app.md). In der Datei *CommandLoop.cs* wird dies in einer `CommandDeleteAllModels`-Funktion durchgeführt.
 
 Im Rest dieses Abschnitts wird das Löschen von Modellen ausführlicher beschrieben, und Sie erfahren, wie Sie einzelne Modelle löschen können.
 
@@ -198,4 +198,4 @@ Azure Digital Twins geht dagegen nicht vor. Deshalb sollten Sie darauf achten, T
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Erstellen und Verwalten von digitalen Zwillingen basierend auf Ihren Modellen finden Sie unter
-* [*Verwenden Verwalten digitaler Zwillinge*](how-to-manage-twin.md)
+* [Gewusst wie: Verwalten digitaler Zwillinge](how-to-manage-twin.md)

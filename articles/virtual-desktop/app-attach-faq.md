@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1a2464735ff8039bb31c43d6956cbf03e694c63
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 1277e053e9a9eb6e54eb11a9ede42ca28d99d073
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448405"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141305"
 ---
 # <a name="msix-app-attach-faq"></a>Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps
 
@@ -59,6 +59,10 @@ Ja. Das MSIX-Feature zum Anfügen von Apps unterstützt keine automatische Aktua
 
 Alle virtuellen Computer (VMs) in einem Hostpool, der das MSIX-Feature zum Anfügen von Apps verwendet, müssen über Leseberechtigungen für die Dateifreigabe verfügen, in der die MSIX-Images gespeichert sind. Wenn er auch Azure Files verwendet, müssen ihnen sowohl rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) als auch NTFS-Berechtigungen (New Technology File System) gewährt werden.
 
+## <a name="can-i-use-azure-active-directory-domain-services-azure-ad-ds-with-msix-app-attach"></a>Kann ich Azure Active Directory Domain Services (Azure AD DS) mit dem MSIX-Feature zum Anfügen von Apps verwenden?
+
+Das MSIX-Feature zum Anfügen von Apps bietet derzeit keine Azure AD DS-Unterstützung. Da Azure AD DS-Computerobjekte nicht mit Azure Active Directory (Azure AD) synchronisiert werden, kann der Administrator nicht die erforderlichen Berechtigungen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure Files angeben.
+
 ## <a name="can-i-use-msix-app-attach-for-http-or-https"></a>Kann ich das MSIX-Feature zum Anfügen von Apps für HTTP oder HTTPS verwenden?
 
 Die Verwendung des MSIX-Features zum Anfügen von Apps über HTTP oder HTTPS wird derzeit nicht unterstützt.
@@ -71,6 +75,16 @@ Ja. Sie können bereits bereitgestellte Anwendungen erneut bereitstellen. Dies s
 
 Ja. Sie müssen das selbst signierte Zertifikat auf allen Sitzungshost-VMs installieren, auf denen das MSIX-Feature zum Anfügen von Apps verwendet wird, um die selbst signierte Anwendung zu hosten.
 
+## <a name="what-applications-can-i-repackage-to-msix"></a>Welche Anwendungen kann ich für MSIX neu packen?
+
+Jede Anwendung verwendet verschiedene Features des Betriebssystems, der Programmiersprachen und der Frameworks. Um Ihre Anwendung neu zu packen, befolgen Sie die Anweisungen unter [Umstellen Ihrer vorhandenen Installer auf MSIX](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix). Eine Liste der Elemente, die Sie zum erneuten Packen einer Anwendung benötigen, finden Sie unter [Vorbereiten des Verpackens einer Desktopanwendung](/windows/msix/desktop/desktop-to-uwp-prepare). 
+
+Bestimmte Anwendungen unterstützen keine Anwendungsschichten, d. h., sie können nicht in einer MSIX-Datei neu gepackt werden. Dies gilt für die folgenden Anwendungen:
+
+- Treiber 
+- Active-X oder Silverlight
+- VPN-Clients
+- Antivirenprogramme
 
 ## <a name="next-steps"></a>Nächste Schritte
 

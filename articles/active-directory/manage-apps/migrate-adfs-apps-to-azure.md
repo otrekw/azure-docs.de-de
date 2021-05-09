@@ -2,21 +2,21 @@
 title: Verschieben der Anwendungsauthentifizierung von AD FS in Azure Active Directory
 description: Hier erfahren Sie, wie Sie Azure Active Directory verwenden, um Active Directory-Verbunddienste (AD FS) zu ersetzen und Benutzern SSO (einmaliges Anmelden) für alle ihre Anwendungen bereitstellen.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: baselden
-ms.openlocfilehash: ee1d863ccb974b30213179a1aba9e27d5a3a2bda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e9bedc63a3b1d53222c732b6611d132249b07c6
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103418350"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320797"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory
 
@@ -46,9 +46,9 @@ Das Migrieren Ihrer gesamten Anwendungsauthentifizierung zu Azure AD ist optimal
 
 Ihre Anwendungen können moderne oder ältere Protokolle für die Authentifizierung verwenden. Wenn Sie die Migration zu Azure AD planen, empfiehlt es sich, zunächst die Apps zu migrieren, die moderne Authentifizierungsprotokolle (SAML und Open ID Connect) verwenden. Diese Apps können für die Authentifizierung mit Azure AD entweder über einen integrierten Connector aus dem App-Katalog oder durch Registrieren der Anwendung in Azure AD neu konfiguriert werden. Apps, die ältere Protokolle verwenden, können mit Anwendungsproxys integriert werden.
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-* [Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy](what-is-application-proxy.md)
+* [Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy](../app-proxy/what-is-application-proxy.md)
 * [Worum handelt es sich bei der Anwendungsverwaltung?](what-is-application-management.md)
 * [Verwenden des AD FS-Anwendungsaktivitätsberichts, um Anwendungen zu Azure AD zu migrieren](migrate-adfs-application-activity.md)
 * [Überwachen von AD FS mithilfe von Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md)
@@ -120,7 +120,7 @@ Wenn sich Ihre Benutzer bei Saas-Apps wie Salesforce, ServiceNow oder Workday an
 
 Die meisten SaaS-Anwendungen können in Azure AD konfiguriert werden. Microsoft verfügt im [Azure AD-Anwendungskatalog](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) über viele vorkonfigurierte Verbindungen mit SaaS-Apps, was den Übergang vereinfacht. SAML 2.0-Anwendungen können entweder über den Azure AD-Anwendungskatalog oder als [nicht im Katalog enthaltene Anwendungen](add-application-portal.md) in Azure AD integriert werden.
 
-Apps, für die OAuth 2.0 oder OpenID Connect verwendet wird, können auf ähnliche Weise als [App-Registrierungen](../develop/quickstart-register-app.md) mit Azure AD integriert werden. Apps, die ältere Protokolle verwenden, können den [Azure AD-Anwendungsproxy](application-proxy.md) für das Authentifizieren mit Azure AD verwenden.
+Apps, für die OAuth 2.0 oder OpenID Connect verwendet wird, können auf ähnliche Weise als [App-Registrierungen](../develop/quickstart-register-app.md) mit Azure AD integriert werden. Apps, die ältere Protokolle verwenden, können den [Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md) für das Authentifizieren mit Azure AD verwenden.
 
 Wenn Sie Probleme mit dem Onboarding Ihrer SaaS-Apps haben, können Sie den [Supportalias für die SaaS-Anwendungsintegration](mailto:SaaSApplicationIntegrations@service.microsoft.com) kontaktieren.
 
@@ -177,7 +177,7 @@ Apps, für die die folgenden Protokollfunktionen erforderlich sind, können derz
 
 Apps, für die die folgenden Ansprüche in Tokenfunktionen erforderlich sind, können derzeit nicht migriert werden.
 
-* Ansprüche aus Attributen werden außerhalb des Azure AD-Verzeichnisses gespeichert, es sei denn, diese Daten werden mit Azure AD synchronisiert. Weitere Informationen finden Sie in der [Übersicht über die Azure AD-Synchronisierungs-API](/graph/api/resources/synchronization-overview?view=graph-rest-beta).
+* Ansprüche aus Attributen werden außerhalb des Azure AD-Verzeichnisses gespeichert, es sei denn, diese Daten werden mit Azure AD synchronisiert. Weitere Informationen finden Sie in der [Übersicht über die Azure AD-Synchronisierungs-API](/graph/api/resources/synchronization-overview).
 * Ausstellung von mehrwertigen Verzeichnisattributen. Beispielsweise ist es zu diesem Zeitpunkt nicht möglich, einen mehrwertigen Anspruch für Proxyadressen auszugeben.
 
 ## <a name="map-app-settings-from-ad-fs-to-azure-ad"></a>Zuordnen von App-Einstellungen von AD FS zu Azure AD
@@ -414,7 +414,7 @@ Vergewissern Sie sich, dass das einmalige Anmelden je nach Konfiguration Ihrer A
 | OAuth und OpenID Connect| Wählen Sie **Unternehmensanwendungen > Berechtigungen** aus, und stellen Sie sicher, dass Sie in den Benutzereinstellungen für Ihre App der Verwendung der Anwendung zugestimmt haben.|
 | SAML-basiertes SSO | Verwenden Sie die Schaltfläche [SAML-Einstellungen testen](debug-saml-sso-issues.md) unter **Einmaliges Anmelden**. |
 | Kennwortbasiertes einmaliges Anmelden |  Laden Sie die [My Apps Secure Sign](../user-help/my-apps-portal-end-user-access.md)[-](../user-help/my-apps-portal-end-user-access.md)[in-Erweiterung](../user-help/my-apps-portal-end-user-access.md) herunter, und installieren Sie diese. Mit dieser Erweiterung können Sie alle Cloud-Apps Ihrer Organisation starten, bei denen Sie einen SSO-Prozess verwenden müssen. |
-| Anwendungsproxy | Stellen Sie sicher, dass Ihr Connector ausgeführt wird und der Anwendung zugewiesen ist. Im Leitfaden zum [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](application-proxy-troubleshoot.md) finden Sie weitere Unterstützung. |
+| Anwendungsproxy | Stellen Sie sicher, dass Ihr Connector ausgeführt wird und der Anwendung zugewiesen ist. Im Leitfaden zum [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](../app-proxy/application-proxy-troubleshoot.md) finden Sie weitere Unterstützung. |
 
 > [!NOTE]
 > Cookies aus der alten AD FS-Umgebung bleiben weiterhin auf den Computern des Benutzers erhalten. Diese Cookies können Probleme bei der Migration verursachen, da Benutzer an die alte AD FS-Anmeldeumgebung anstelle der neuen Azure AD-Anmeldung umgeleitet werden könnten. Möglicherweise müssen Sie die Benutzerbrowsercookies manuell oder mithilfe eines Skripts löschen. Sie können auch System Center Configuration Manager oder eine ähnliche Plattform verwenden.

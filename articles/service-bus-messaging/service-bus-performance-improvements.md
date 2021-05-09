@@ -4,18 +4,73 @@ description: Beschreibt, wie Service Bus verwendet wird, um die Leistung beim Au
 ms.topic: article
 ms.date: 03/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d4093d93da11e992ed9e6558a5386eb88f417ef9
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 19c365a233a2dafc98fb91e340717ba998616891
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967760"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904692"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Service Bus die Leistung beim Austausch von im Broker gespeicherten Nachrichten optimieren. Im ersten Teil dieses Artikels werden die verschiedenen Mechanismen zur Leistungssteigerung beschrieben. Der zweite Teil bietet eine Anleitung zur Verwendung von Service Bus auf eine Weise, die die beste Leistung in einem bestimmten Szenario ermöglichen kann.
 
 Im Rahmen dieses Artikels bezieht sich der Begriff „Client“ auf eine Entität, die auf Service Bus zugreift. Ein Client kann die Rolle eines Absenders oder eines Empfängers annehmen. Der Begriff „Absender“ wird für einen Service Bus-Warteschlangenclient oder für einen Service Bus-Themaclient verwendet, der Nachrichten an eine Service Bus-Warteschlange oder an ein Service Bus-Thema sendet. Der Begriff „Empfänger“ bezieht sich auf einen Service Bus-Warteschlangenclient oder einen auf einen Service Bus-Abonnementclient, der Nachrichten von einer Service Bus-Warteschlange oder einem Service Bus-Abonnement empfängt.
+
+## <a name="resource-planning-and-considerations"></a>Ressourcenplanung und Überlegungen
+
+Wie bei jeder technischen Ressource ist umsichtige Planung der Schlüssel, um sicherzustellen, dass Azure Service Bus die Leistung erbringt, die Ihre Anwendung erwartet. Die richtige Konfiguration oder Topologie für Ihre Service Bus-Namespaces hängt von einer Vielzahl von Faktoren ab, die Ihre Anwendungsarchitektur und die Art und Weise betreffen, wie die einzelnen Service Bus-Funktionen verwendet werden.
+
+### <a name="pricing-tier"></a>Tarif
+
+Service Bus bietet verschiedene Tarife. Es wird empfohlen, den geeigneten Tarif für Ihre Anwendungsanforderungen auszuwählen.
+
+   * **Standard-Tarif:** Geeignet für Entwickler-/Testumgebungen oder Szenarien mit geringem Durchsatz, in denen Anwendungen **nicht negativ** auf Drosselung reagieren.
+
+   * **Premium-Tarif:** Geeignet für Produktionsumgebungen mit unterschiedlichen Durchsatzanforderungen, in denen vorhersagbare Latenz und vorhersagbarer Durchsatz erforderlich sind. Darüber hinaus können Service Bus Premium-Namespaces [automatisch skaliert](automate-update-messaging-units.md) werden, um Durchsatzspitzen zu bewältigen.
+
+> [!NOTE]
+> Wenn nicht der richtige Tarif ausgewählt wird, besteht die Gefahr, dass der Service Bus-Namespace überfordert wird, was zu [Drosselung](service-bus-throttling.md) führen kann.
+>
+> Drosselung führt nicht zu Datenverlusten. Anwendungen, die das Service Bus SDK nutzen, können die Standardwiederholungsrichtlinie verwenden, um sicherzustellen, dass die Daten schließlich von Service Bus akzeptiert werden.
+>
+
+### <a name="calculating-throughput-for-premium"></a>Berechnen des Durchsatzes für den Premium-Tarif
+
+Daten, die an Service Bus gesendet werden, werden in binäre Daten serialisiert und dann deserialisiert, wenn sie vom Empfänger empfangen werden. Während Anwendungen **Nachrichten** als atomare Arbeitseinheiten betrachten, misst Service Bus den Durchsatz in Byte (oder Megabyte).
+
+Berücksichtigen Sie bei der Berechnung der Durchsatzanforderung die Daten, die an Service Bus (Eingang) gesendet werden, und die Daten, die von Service Bus (Ausgang) empfangen werden.
+
+Wie erwartet ist der Durchsatz für kleinere Nachrichtennutzdaten höher, die in Batches zusammengefasst werden können.
+
+#### <a name="benchmarks"></a>Vergleichstests
+
+Hier sehen Sie ein [GitHub-Beispiel](https://github.com/Azure-Samples/service-bus-dotnet-messaging-performance), das Sie ausführen können, um den erwarteten Durchsatz zu ermitteln, den Sie für Ihren SB-Namespace erhalten. In unseren [Benchmarktests](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722) haben wir ungefähr 4 MB/Sekunde pro Messagingeinheit (Messaging Unit, MU) von ein- und ausgehenden Daten beobachtet.
+
+Im Benchmarkbeispiel werden keine erweiterten Features verwendet, sodass der Durchsatz, den Ihre Anwendungen erzielen, je nach Szenario unterschiedlich ist.
+
+#### <a name="compute-considerations"></a>Computeaspekte
+
+Die Verwendung bestimmter Service Bus-Features erfordert möglicherweise eine Computeauslastung, die den erwarteten Durchsatz verringern kann. Einige dieser Features betreffen Folgendes:
+
+1. Sitzungen.
+2. Auffächern in mehrere Abonnements für ein einzelnes Thema.
+3. Ausführen zahlreicher Filter für ein einzelnes Abonnement.
+4. Geplante Nachrichten.
+5. Verzögerte Nachrichten.
+6. Transaktionen
+7. Deduplizierung und Rückschauzeitfenster.
+8. Weiterleiten (Weiterleitung von einer Entität an eine andere).
+
+Wenn Ihre Anwendung eines der oben genannten Features nutzt und Sie nicht den erwarteten Durchsatz erzielen, können Sie die **CPU-Nutzungsmetriken** überprüfen und erwägen, Ihren Service Bus Premium-Namespace zentral hochzuskalieren.
+
+Sie können auch Azure Monitor verwenden, um den [Service Bus-Namespace automatisch zu skalieren](automate-update-messaging-units.md).
+
+### <a name="sharding-across-namespaces"></a>Namespaceübergreifendes Sharding
+
+Das Hochskalieren von Computeressourcen (Messagingeinheiten), die dem Namespace zugeordnet sind, ist zwar eine einfachere Lösung, **führt jedoch möglicherweise nicht** zu einer linearen Erhöhung des Durchsatzes. Dies liegt an Service Bus-Interna (Speicher, Netzwerk usw.), die den Durchsatz möglicherweise einschränken.
+
+Die bessere Lösung besteht in diesem Fall in Sharding Ihrer Entitäten (Warteschlangen und Themen) über verschiedene Service Bus Premium-Namespaces hinweg. Sie können auch Sharding für verschiedene Namespaces in verschiedenen Azure-Regionen in Betracht ziehen.
 
 ## <a name="protocols"></a>Protokolle
 Service Bus ermöglicht Clients das Senden und Empfangen von Nachrichten über eins von drei Protokollen:

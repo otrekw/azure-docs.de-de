@@ -7,27 +7,27 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8a8cc6563d8e3cae942c4dfb43afa3d05f6f2b75
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 4aef4f3a0da17abc497225bcd0a27b98e4eaea95
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257301"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208507"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (Portal)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-In Azure Digital Twins können Sie [Ereignisbenachrichtigungen](concepts-event-notifications.md) an Downstreamdienste oder verbundene Computeressourcen weiterleiten. Dies erfolgt, indem zunächst **Endpunkte** eingerichtet werden, die die Ereignisse empfangen können. Anschließend können Sie [**Ereignisrouten**](concepts-route-events.md) erstellen, die angeben, welche von Azure Digital Twins generierten Ereignisse an welche Endpunkte übermittelt werden.
+In Azure Digital Twins können Sie [Ereignisbenachrichtigungen](concepts-event-notifications.md) an Downstreamdienste oder verbundene Computeressourcen weiterleiten. Dies erfolgt, indem zunächst **Endpunkte** eingerichtet werden, die die Ereignisse empfangen können. Anschließend können Sie [Ereignisrouten](concepts-route-events.md) erstellen, die angeben, welche von Azure Digital Twins generierten Ereignisse an welche Endpunkte übermittelt werden.
 
 In diesem Artikel wird der Vorgang zum Erstellen von Endpunkten und Routen mit dem [Azure-Portal](https://portal.azure.com) Schritt für Schritt beschrieben.
 
-Sie können Endpunkte und Routen alternativ auch mit den [Ereignisrouten-APIs](/rest/api/digital-twins/dataplane/eventroutes), den [SDKs](how-to-use-apis-sdks.md#overview-data-plane-apis) oder der [CLI von Azure Digital Twins](how-to-use-cli.md) verwalten. Eine Version dieses Artikels, in der diese Mechanismen anstelle des Portals verwendet werden, finden Sie unter [*Anleitung: Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)*](how-to-manage-routes-apis-cli.md).
+Sie können Endpunkte und Routen alternativ auch mit den [Ereignisrouten-APIs](/rest/api/digital-twins/dataplane/eventroutes), den [SDKs](how-to-use-apis-sdks.md#overview-data-plane-apis) oder der [CLI von Azure Digital Twins](how-to-use-cli.md) verwalten. Eine Version dieses Artikels, in der diese Mechanismen anstelle des Portals verwendet werden, finden Sie unter [Anleitung: Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)](how-to-manage-routes-apis-cli.md) .
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Sie benötigen ein **Azure-Konto** (Sie können [hier](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ein kostenloses Konto einrichten).
-* Sie benötigen eine **Azure Digital Twins-Instanz** in Ihrem Azure-Abonnement. Falls Sie noch keine Instanz besitzen, können Sie zum Erstellen die Schritte unter [*Vorgehensweise: Einrichten einer Instanz und von Authentifizierung*](how-to-set-up-instance-portal.md) verwenden. Notieren Sie sich die folgenden Werte aus dem Setup, um sie später in diesem Artikel zu verwenden:
+* Sie benötigen eine **Azure Digital Twins-Instanz** in Ihrem Azure-Abonnement. Falls Sie noch keine Instanz besitzen, können Sie zum Erstellen die Schritte unter [Vorgehensweise: Einrichten einer Instanz und von Authentifizierung](how-to-set-up-instance-portal.md) verwenden. Notieren Sie sich die folgenden Werte aus dem Setup, um sie später in diesem Artikel zu verwenden:
     - Instanzname
     - Ressourcengruppe
 
@@ -46,7 +46,7 @@ Dies sind die unterstützten Typen von Endpunkten, die Sie für Ihre Instanz ers
 * [Event Hubs](../event-hubs/event-hubs-about.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Weitere Informationen zu den verschiedenen Endpunkttypen finden Sie unter [*Wählen zwischen Azure-Messagingdiensten*](../event-grid/compare-messaging-services.md).
+Weitere Informationen zu den verschiedenen Endpunkttypen finden Sie unter [Wählen zwischen Azure-Messagingdiensten](../event-grid/compare-messaging-services.md).
 
 In diesem Abschnitt wird erläutert, wie Sie einen dieser Endpunkte im [Azure-Portal](https://portal.azure.com) erstellen.
 
@@ -76,7 +76,7 @@ Sobald Sie die Endpunktressourcen erstellt haben, können Sie sie für einen Azu
 1. Schließen Sie die Erstellung Ihres Endpunkts ab, indem Sie auf _Speichern_ klicken.
 
 >[!IMPORTANT]
-> Damit Sie die identitätsbasierte Authentifizierung erfolgreich für Ihren Endpunkt verwenden können, müssen Sie eine verwaltete Identität für Ihre Instanz erstellen, indem Sie die Schritte unter [*Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau)*](./how-to-enable-managed-identities-portal.md) befolgen.
+> Damit Sie die identitätsbasierte Authentifizierung erfolgreich für Ihren Endpunkt verwenden können, müssen Sie eine verwaltete Identität für Ihre Instanz erstellen, indem Sie die Schritte unter [Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau)](./how-to-enable-managed-identities-portal.md)  befolgen.
 
 Nach Erstellung Ihres Endpunkts können Sie überprüfen, ob der Endpunkt erfolgreich erstellt wurde, indem Sie das Benachrichtigungssymbol oben in der Leiste im Azure-Portal überprüfen: 
 
@@ -100,11 +100,11 @@ Wenn ein Endpunkt innerhalb eines bestimmten Zeitraums oder nach einer bestimmte
 
 Zum Erstellen eines Endpunkts mit aktivierten unzustellbaren Nachrichten müssen Sie die [CLI-Befehle](how-to-use-cli.md) oder die [APIs der Steuerungsebene](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) anstelle des Azure-Portals verwenden, um den Endpunkt zu erstellen.
 
-Anweisungen dazu, wie dies mit diesen Tools funktioniert, finden Sie in der [*APIs und CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)-Version dieses Artikels.
+Anweisungen dazu, wie dies mit diesen Tools funktioniert, finden Sie in der [APIs und CLI](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)-Version dieses Artikels.
 
 ## <a name="create-an-event-route"></a>Erstellen einer Ereignisroute
 
-Wenn Sie tatsächlich Daten von Azure Digital Twins an einen Endpunkt senden möchten, müssen Sie eine **Ereignisroute** definieren. Diese Routen ermöglichen es Entwicklern, den Ereignisdatenfluss im gesamten System und zu Downstreamdiensten einzurichten. Weitere Informationen zu Ereignisrouten finden Sie unter [*Konzepte: Weiterleiten von Azure Digital Twins-Ereignissen*](concepts-route-events.md).
+Wenn Sie tatsächlich Daten von Azure Digital Twins an einen Endpunkt senden möchten, müssen Sie eine **Ereignisroute** definieren. Diese Routen ermöglichen es Entwicklern, den Ereignisdatenfluss im gesamten System und zu Downstreamdiensten einzurichten. Weitere Informationen zu Ereignisrouten finden Sie unter [Konzepte: Weiterleiten von Azure Digital Twins-Ereignissen](concepts-route-events.md).
 
 **Voraussetzung**: Sie müssen wie weiter oben in diesem Artikel beschrieben Endpunkte erstellen, bevor Sie mit dem Erstellen einer Route fortfahren können. Nachdem die Einrichtung Ihrer Endpunkte abgeschlossen ist, können Sie mit dem Erstellen einer Ereignisroute fortfahren.
 
@@ -119,7 +119,7 @@ Eine Ereignisroutendefinition enthält die folgenden Elemente:
 * Ein Filter, der definiert, welche Ereignisse an den Endpunkt gesendet werden.
     - Um die Route zu deaktivieren, damit keine Ereignisse gesendet werden, verwenden Sie den Filterwert `false`.
     - Um eine Route zu aktivieren, für die keine bestimmte Filterung gilt, verwenden Sie den Filterwert `true`.
-    - Ausführliche Informationen zu allen anderen Filtertypen finden Sie unten im Abschnitt [*Filtern von Ereignissen*](#filter-events).
+    - Ausführliche Informationen zu allen anderen Filtertypen finden Sie unten im Abschnitt [Filtern von Ereignissen](#filter-events).
 
 Eine einzelne Route kann es ermöglichen, dass mehrere Benachrichtigungen und Ereignistypen ausgewählt werden.
 
@@ -202,4 +202,4 @@ Dies sind die unterstützten Routenfilter. Die Details in der Spalte *Filtertext
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über die verschiedenen Arten von Ereignismeldungen, die Sie erhalten können:
-* [*Konzepte: Ereignisbenachrichtigungen*](concepts-event-notifications.md)
+* [Konzepte: Ereignisbenachrichtigungen](concepts-event-notifications.md)
