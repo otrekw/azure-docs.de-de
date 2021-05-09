@@ -1,14 +1,14 @@
 ---
 title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen für Abonnements und Mandanten ermöglicht.
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: overview
-ms.openlocfilehash: b5df124d07b8ecfb20f5dec08830d8156e8df2cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfbd0aad0ddc7a6b5aa0ccb78429c82f6aa33b3d
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919140"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326055"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 

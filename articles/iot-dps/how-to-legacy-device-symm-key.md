@@ -3,17 +3,17 @@ title: 'Bereitstellen von Geräten mit symmetrischen Schlüsseln: Azure IoT Hub 
 description: Erfahren Sie, wie Sie symmetrische Schlüssel zum Bereitstellen von Geräten mit Ihrer Device Provisioning Service-Instanz (DPS) verwenden.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/28/2021
+ms.date: 04/23/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: lizross
-ms.openlocfilehash: 5d193d30428d24ccf65c3f70885192acad2fdc9f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 754db21fa8e14045696f1af2bcfe375fb1161d94
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228327"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930567"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Bereitstellen von Geräten mit symmetrischen Schlüsseln für Registrierungsgruppen
 
@@ -150,7 +150,23 @@ Verwenden Sie zum Generieren von Geräteschlüsseln den Hauptschlüssel der Regi
 > [!WARNING]
 > Der Gerätecode für jedes Gerät sollte nur den entsprechenden abgeleiteten Geräteschlüssel für dieses Gerät enthalten. Fügen Sie Ihren Gruppenhauptschlüssel nicht in Ihren Gerätecode ein. Ein kompromittierter Hauptschlüssel kann die Sicherheit aller Geräte gefährden, die mit ihm authentifiziert werden.
 
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
+Die IoT-Erweiterung für die Azure CLI stellt den Befehl [`compute-device-key`](/cli/azure/iot/dps?view=azure-cli-latest&preserve-view=true#az_iot_dps_compute_device_key) zum Generieren abgeleiteter Geräteschlüssel bereit. Dieser Befehl kann von Windows- oder Linux-Systemen aus PowerShell oder einer Bash-Shell verwendet werden.
+
+Ersetzen Sie den Wert des Arguments `--key` durch den **Primärschlüssel** aus Ihrer Registrierungsgruppe.
+
+Ersetzen Sie den Wert des Arguments `--registration-id` durch Ihre Registrierungs-ID.
+
+```azurecli
+az iot dps compute-device-key --key 8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw== --registration-id sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+```
+
+Beispielergebnis:
+
+```azurecli
+"Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc="
+```
 # <a name="windows"></a>[Windows](#tab/windows)
 
 Wenn Sie eine Windows-Arbeitsstation verwenden, können Sie die abgeleiteten Geräteschlüssel mit PowerShell generieren, wie im folgenden Beispiel gezeigt.

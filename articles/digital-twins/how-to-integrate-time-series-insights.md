@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1ac9a0bc83c2a33becb5348862e5a572dddf3ac2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5aa74920919e7af98368d08bfea892494273f946
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133923"
+ms.locfileid: "108208633"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrieren von Azure Digital Twins in Azure Time Series Insights
 
@@ -23,14 +23,14 @@ Mithilfe der in diesem Artikel beschriebenen Lösung können Sie Verlaufsdaten z
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie eine Beziehung mit Time Series Insights einrichten können, müssen Sie die folgenden Ressourcen einrichten:
-* Einen **IoT-Hub**. Anweisungen hierzu finden Sie unter *Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Durchführen der Überwachung per Azure CLI* im Abschnitt [*Erstellen eines IoT Hubs*](../iot-hub/quickstart-send-telemetry-cli.md#create-an-iot-hub).
+* Einen **IoT-Hub**. Anweisungen hierzu finden Sie unter Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Durchführen der Überwachung per Azure CLI im Abschnitt *[Erstellen eines IoT Hubs](../iot-hub/quickstart-send-telemetry-cli.md#create-an-iot-hub)*.
 * Eine **Azure Digital Twins-Instanz**.
-Anweisungen dazu finden Sie unter [*Gewusst wie: Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung*](./how-to-set-up-instance-portal.md).
+Anweisungen dazu finden Sie unter [Gewusst wie: Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung](./how-to-set-up-instance-portal.md).
 * Ein **Modell und einen Zwilling in der Azure Digital Twins-Instanz**.
-Sie müssen die Informationen des Zwillings einige Male aktualisieren, damit die Daten in Time Series Insights nachverfolgt werden können. Anweisungen finden Sie im Artikel *Erfassen von IoT Hub Telemetriedaten in Azure Digital Twins* im Abschnitt [*Hinzufügen eines Modells und eines Zwillings*](how-to-ingest-iot-hub-data.md#add-a-model-and-twin).
+Sie müssen die Informationen des Zwillings einige Male aktualisieren, damit die Daten in Time Series Insights nachverfolgt werden können. Anweisungen finden Sie im Artikel Erfassen von IoT Hub Telemetriedaten in Azure Digital Twins im Abschnitt *[Hinzufügen eines Modells und eines Zwillings](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)*.
 
 > [!TIP]
-> In diesem Artikel werden die geänderten Werte für digitale Zwillinge, die in Time Series Insights angezeigt werden, der Einfachheit halber manuell aktualisiert. Wenn Sie diesen Artikel jedoch mit simulierten Livedaten durcharbeiten möchten, können Sie eine Azure-Funktion einrichten, die digitale Zwillinge basierend auf IoT-Telemetrieereignissen von einem simulierten Gerät aktualisiert. Anweisungen hierzu finden Sie unter [*Erfassen von IoT Hub-Telemetriedaten in Azure Digital Twins*](how-to-ingest-iot-hub-data.md). In diesem Artikel werden u. a. die letzten Schritte zum Ausführen des Gerätesimulators und zum Überprüfen der ordnungsgemäßen Funktion des Datenflusses erläutert.
+> In diesem Artikel werden die geänderten Werte für digitale Zwillinge, die in Time Series Insights angezeigt werden, der Einfachheit halber manuell aktualisiert. Wenn Sie diesen Artikel jedoch mit simulierten Livedaten durcharbeiten möchten, können Sie eine Azure-Funktion einrichten, die digitale Zwillinge basierend auf IoT-Telemetrieereignissen von einem simulierten Gerät aktualisiert. Anweisungen hierzu finden Sie unter [Erfassen von IoT Hub-Telemetriedaten in Azure Digital Twins](how-to-ingest-iot-hub-data.md). In diesem Artikel werden u. a. die letzten Schritte zum Ausführen des Gerätesimulators und zum Überprüfen der ordnungsgemäßen Funktion des Datenflusses erläutert.
 >
 > Suchen Sie später nach einem weiteren TIPP, um zu sehen, wo Sie mit der Ausführung des Gerätesimulators beginnen, und lassen Sie ihre Azure-Funktionen die Zwillinge automatisch aktualisieren, anstatt manuelle Befehle zum Aktualisieren digitaler Zwillinge zu senden.
 
@@ -49,7 +49,7 @@ Sie fügen Time Series Insights über den folgenden Pfad an Azure Digital Twins 
 
 ## <a name="create-event-hub-namespace"></a>Erstellen eines Event Hub-Namespace
 
-Bevor Sie die Event Hubs erstellen, erstellen Sie zuerst einen Event Hub-Namespace, der Ereignisse von Ihrer Azure Digital Twins-Instanz empfängt. Sie können entweder die folgenden Azure CLI Anweisungen oder das Azure-Portal verwenden: [*Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals*](../event-hubs/event-hubs-create.md). Informationen zu Regionen, die Event Hubs unterstützen, finden Sie unter [*Verfügbare Produkte nach Region*](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs).
+Bevor Sie die Event Hubs erstellen, erstellen Sie zuerst einen Event Hub-Namespace, der Ereignisse von Ihrer Azure Digital Twins-Instanz empfängt. Sie können entweder die folgenden Azure CLI Anweisungen oder das Azure-Portal verwenden: [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md). Informationen zu Regionen, die Event Hubs unterstützen, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs).
 
 ```azurecli-interactive
 az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --resource-group <your-resource-group> -l <region>
@@ -162,7 +162,7 @@ In diesem Abschnitt erstellen Sie eine Azure-Funktion, die Ereignisse zur Aktual
 
 ### <a name="step-1-create-function-app"></a>Schritt 1: Erstellen einer Funktions-App
 
-Erstellen Sie zunächst in Visual Studio ein neues Funktions-App-Projekt. Anweisungen hierzu finden Sie im Abschnitt [**Erstellen einer Funktions-App in Visual Studio**](how-to-create-azure-function.md#create-a-function-app-in-visual-studio) im Artikel *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
+Erstellen Sie zunächst in Visual Studio ein neues Funktions-App-Projekt. Anweisungen hierzu finden Sie im Abschnitt [Erstellen einer Funktions-App in Visual Studio](how-to-create-azure-function.md#create-a-function-app-in-visual-studio) im Artikel *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
 
 ### <a name="step-2-add-a-new-function"></a>Schritt 2: Hinzufügen einer neuen Funktion
 
@@ -187,13 +187,13 @@ Speichern Sie Ihren Funktionscode.
 
 Veröffentlichen Sie das Projekt mit der Funktion *ProcessDTUpdatetoTSI.cs* in einer Funktions-App in Azure.
 
-Anweisungen hierzu finden Sie im Abschnitt [**Veröffentlichen der Funktions-App in Azure**](how-to-create-azure-function.md#publish-the-function-app-to-azure) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
+Anweisungen hierzu finden Sie im Abschnitt [Veröffentlichen der Funktions-App in Azure](how-to-create-azure-function.md#publish-the-function-app-to-azure) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
 
 Speichern Sie den Namen der Funktions-App, um sie später zum Konfigurieren der App-Einstellungen für die beiden Event Hubs zu verwenden.
 
 ### <a name="step-5-security-access-for-the-function-app"></a>Schritt 5: Sicherheitszugriff für die Funktions-App
 
-**Weisen Sie dann eine Zugriffsrolle** für die Funktion zu, und **Konfigurieren Sie die Anwendungseinstellungen**, damit sie auf Ihre Azure Digital Twins-Instanz zugreifen kann. Anweisungen hierzu finden Sie im Abschnitt [**Einrichten des Sicherheitszugriff für die Funktions-App**](how-to-create-azure-function.md#set-up-security-access-for-the-function-app) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
+**Weisen Sie dann eine Zugriffsrolle** für die Funktion zu, und **Konfigurieren Sie die Anwendungseinstellungen**, damit sie auf Ihre Azure Digital Twins-Instanz zugreifen kann. Anweisungen hierzu finden Sie im Abschnitt [Einrichten des Sicherheitszugriff für die Funktions-App](how-to-create-azure-function.md#set-up-security-access-for-the-function-app) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
 
 ### <a name="step-6-configure-app-settings-for-the-two-event-hubs"></a>Schritt 6: Konfigurieren von App-Einstellungen für die beiden Event Hubs
 
@@ -213,7 +213,7 @@ az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-t
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Erstellen und Verbinden einer Time Series Insights-Instanz
 
-In diesem Abschnitt richten Sie eine Time Series Insights-Instanz zum Empfangen von Daten von Ihrem Zeitreihenhub ein. Weitere Informationen zu diesem Prozess finden Sie unter [*Tutorial: Einrichten einer Azure Time Series Insights Gen2-Umgebung*](../time-series-insights/tutorial-set-up-environment.md). Führen Sie die folgenden Schritte aus, um eine Time Series Insights-Umgebung zu erstellen:
+In diesem Abschnitt richten Sie eine Time Series Insights-Instanz zum Empfangen von Daten von Ihrem Zeitreihenhub ein. Weitere Informationen zu diesem Prozess finden Sie unter [Tutorial: Einrichten einer Azure Time Series Insights Gen2-Umgebung](../time-series-insights/tutorial-set-up-environment.md). Führen Sie die folgenden Schritte aus, um eine Time Series Insights-Umgebung zu erstellen:
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach *Time Series Insights-Umgebungen*, und wählen Sie die Schaltfläche **Hinzufügen** aus. Wählen Sie die folgenden Optionen aus, um die Zeitreihenumgebung zu erstellen:
 
@@ -222,7 +222,7 @@ In diesem Abschnitt richten Sie eine Time Series Insights-Instanz zum Empfangen 
     * **Umgebungsname**: Geben Sie einen Namen für Ihre Zeitreihenumgebung an.
     * **Standort**: Wählen Sie einen Standort aus.
     * **Tarif**: Wählen Sie den Tarif **Gen2(L1)** aus.
-    * **Eigenschaftenname**: Geben Sie **$dtId** ein. (Weitere Informationen zur Auswahl eines ID-Werts finden Sie unter [*Bewährte Methoden für die Auswahl einer Time Series-ID*](../time-series-insights/how-to-select-tsid.md).)
+    * **Eigenschaftenname**: Geben Sie **$dtId** ein. (Weitere Informationen zur Auswahl eines ID-Werts finden Sie unter [Bewährte Methoden für die Auswahl einer Time Series-ID](../time-series-insights/how-to-select-tsid.md).)
     * **Speicherkontoname**: Geben Sie einen Speicherkontonamen an.
     * **Warm Storage aktivieren**: Lassen Sie dieses Feld auf *Ja* festgelegt.
 
@@ -261,7 +261,7 @@ az dt twin update -n <your-azure-digital-twins-instance-name> --twin-id thermost
 **Wiederholen Sie den Befehl mindestens vier weitere Male mit unterschiedlichen Temperaturwerten**, um mehrere Datenpunkte zu erstellen, die später in der Time Series Insights-Umgebung beobachtet werden können.
 
 > [!TIP]
-> Wenn Sie diesen Artikel mit simulierten Livedaten abschließen möchten, anstatt die Werte des digitalen Zwillings manuell zu aktualisieren, stellen Sie zunächst sicher, dass Sie den Tipp aus dem Abschnitt [*Voraussetzungen*](#prerequisites) zum Einrichten einer Azure-Funktion abgeschlossen haben, die Zwillinge von einem simulierten Gerät aktualisiert.
+> Wenn Sie diesen Artikel mit simulierten Livedaten abschließen möchten, anstatt die Werte des digitalen Zwillings manuell zu aktualisieren, stellen Sie zunächst sicher, dass Sie den Tipp aus dem Abschnitt [Voraussetzungen](#prerequisites) zum Einrichten einer Azure-Funktion abgeschlossen haben, die Zwillinge von einem simulierten Gerät aktualisiert.
 Danach können Sie das Gerät nun ausführen, um mit dem Senden simulierter Daten und dem Aktualisieren Ihres digitalen Zwillings über diesen Datenfluss zu beginnen.
 
 ## <a name="visualize-your-data-in-time-series-insights"></a>Visualisieren Ihrer Daten in Time Series Insights
@@ -288,9 +288,9 @@ Nach einer viel längeren Ausführung der Simulation sieht die Visualisierung et
 
 Die digitalen Zwillinge werden standardmäßig als flache Hierarchie in Time Series Insights gespeichert, können jedoch für die Organisation mit Modellinformationen und einer Hierarchie mit mehreren Ebenen erweitert werden. Weitere Informationen zu diesem Vorgang finden Sie im 
 
-* [*Tutorial: Definieren und Anwenden eines Modells*](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
+* [Tutorial: Definieren und Anwenden eines Modells](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
 
 Sie können eine benutzerdefinierte Logik schreiben, um diese Informationen mithilfe der bereits in Azure Digital Twins gespeicherten Modell- und Diagrammdaten automatisch bereitzustellen. Weitere Informationen zum Verwalten, Aktualisieren und Abrufen von Informationen aus dem Zwillingsgraphen finden Sie in den folgenden Referenzen:
 
-* [*Verwenden Verwalten digitaler Zwillinge*](./how-to-manage-twin.md)
-* [*Verwenden Abfragen des Zwillingsgraphen*](./how-to-query-graph.md)
+* [Verwenden Verwalten digitaler Zwillinge](./how-to-manage-twin.md)
+* [Gewusst wie: Abfragen des Zwillingsgraphen](./how-to-query-graph.md)
