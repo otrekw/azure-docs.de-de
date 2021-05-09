@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b9f76eba9697d6ad47ecf8dc51689538923f88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05a83b94a94831e96dc1851f2ded5f911e7d6cc5
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101094477"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288902"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -119,7 +119,7 @@ Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltun
 
 **A:** Ja. Wenn die Funktion „Kennwort zurückschreiben“ aktiviert ist, werden die von einem Administrator ausgeführten Kennwortvorgänge in Ihre lokale Umgebung zurückgeschrieben.  
 
-<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellte Fragen zur Kennwortverwaltung](../authentication/active-directory-passwords-faq.md).
+<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellte Fragen zur Kennwortverwaltung](../authentication/active-directory-passwords-faq.yml).
 ---
 **F:  Was kann ich tun, wenn ich mein vorhandenes Microsoft 365-/Azure AD-Kennwort ändern möchte, aber das Kennwort vergessen habe?**
 

@@ -3,12 +3,12 @@ title: Steuerungen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 description: Steuerungszuordnung des Blaupausenbeispiels „Payment Card Industry Data Security Standard v3.2.1“ zu Azure Policy und Azure RBAC
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 028981e7c6fc6e3886781d33079dcdfa0aebcc39
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 7011f0b55e73f193fb85881ed18812de97876fda
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386079"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166665"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels PCI-DSS v3.2.1
 
@@ -65,7 +65,7 @@ Bei nur einem Azure-Abonnementbesitzer ist keine administrative Redundanz mögli
 
 Mit dieser Blaupause können Sie Rechte für den privilegierten Zugriff einschränken und steuern, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um externe Konten mit Besitzer-, Schreib- und/oder Leseberechtigungen und Mitarbeiterkonten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen. Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie verwalten, wer Zugriff auf Azure-Ressourcen hat. Wenn Sie wissen, wo benutzerdefinierte Azure RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte Azure RBAC-Regeln fehleranfällig sind. Diese Blaupause weist auch [Azure Policy](../../../policy/overview.md)-Definitionen zu, um die Verwendung der Azure Active Directory-Authentifizierung für SQL-Server-Instanzen zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung vereinfacht die Verwaltung von Berechtigungen und zentralisiert die Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft  
 -Diensten.
- 
+
 - Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 - Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 - Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden

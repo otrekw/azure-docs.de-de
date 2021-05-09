@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen einer Blaupause mit Azure CLI'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprint, um Artefakte mithilfe der Azure CLI zu erstellen, zu definieren und bereitzustellen.
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 506877eddd78ce54681bd4870e1d9040b4738c27
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: df21354f1ce60c23a5a6e232422fc03c105b9715
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877406"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323445"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit der Azure CLI
 

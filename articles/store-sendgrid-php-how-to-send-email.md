@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed13dd922595a051db77426281f062efd5176f57
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023787"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166726"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Verwenden des E-Mail-Diensts SendGrid aus PHP
 
@@ -28,6 +28,7 @@ Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufg
 Beschrieben werden die Szenarien **Erstellen einer E-Mail**, **Senden einer E-Mail** und **Hinzufügen von Anlagen**. Weitere Informationen zu SendGrid und zum Senden von E-Mails erhalten Sie im Abschnitt [Nächste Schritte](#next-steps) .
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Was ist der SendGrid-E-Mail-Dienst?
+
 SendGrid ist ein [cloudbasierter E-Mail-Dienst], der zuverlässige [transaktionale E-Mail-Übermittlung], Skalierbarkeit und Echtzeitanalysen mit flexiblen APIs bietet, die die benutzerdefinierte Integration erleichtern. Häufige Verwendungsszenarien für SendGrid:
 
 * Automatisches Versenden von Empfangsbestätigungen an Kunden
@@ -118,6 +119,7 @@ Wenn Sie eine E-Mail über die SendGrid-SMTP-API senden möchten, verwenden Sie 
 ```
 
 ### <a name="web-api"></a>Web-API
+
 Um E-Mails über die SendGrid-Web-API zu versenden, verwenden Sie die [Curl -Funktion][curl function] von PHP.
 
 ```php
@@ -309,7 +311,7 @@ Verwenden Sie [Composer] , um die Bibliothek zu installieren:
 php composer.phar require sendgrid/sendgrid 2.1.1
 ```
 
-### <a name="example"></a>Beispiel  
+### <a name="example"></a>Beispiel
 
 ```php
 <?php
@@ -404,7 +406,7 @@ php composer.phar require sendgrid/sendgrid 2.1.1
  $response = $sendgrid->send($email);
 
  print_r($response);
- ```
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

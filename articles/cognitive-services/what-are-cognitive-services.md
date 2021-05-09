@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/16/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 108c716708936aa5e0e5a563bdb8787466ad06ef
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: c6b83a25816c29f1642625618e66624aa3e0a6de
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076849"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289802"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
@@ -43,7 +43,7 @@ In den folgenden Abschnitten dieses Artikels werden die zugehörigen Dienste die
 |[Custom Vision Service](./custom-vision-service/index.yml "Custom Vision Service")|Der Custom Vision-Dienst ermöglicht Ihnen das Erstellen, Bereitstellen und Optimieren eigener Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der basierend auf den visuellen Merkmalen in einem Bild Bezeichnungen auf Bilder anwendet. |
 |[Gesichtserkennung](./face/index.yml "Gesicht")| Der Gesichtserkennungsdienst ermöglicht den Zugriff auf erweiterte Algorithmen zur Gesichtserkennung, wodurch die Ermittlung von Gesichtsmerkmalen sowie die Gesichtserkennung ermöglicht wird. Informationen zu den ersten Schritten mit dem Dienst finden Sie unter [Schnellstart: Verwenden der Clientbibliothek für die Gesichtserkennung](./face/quickstarts/client-libraries.md).|
 |[Formularerkennung](./form-recognizer/index.yml "Formularerkennung")|Die Formularerkennung identifiziert und extrahiert Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten und gibt dann strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Verwenden der Clientbibliothek oder REST-API für die Formularerkennung](./form-recognizer/quickstarts/client-library.md).|
-|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer ermöglicht es Ihnen, Erkenntnisse aus Ihrem Video zu extrahieren. Informationen zu den ersten Schritten finden Sie in der [Schnellstartanleitung zu Video Indexer](/azure/media-services/video-indexer/video-indexer-get-started).|
+|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer ermöglicht es Ihnen, Erkenntnisse aus Ihrem Video zu extrahieren. Informationen zu den ersten Schritten finden Sie in der [Schnellstartanleitung zu Video Indexer](../media-services/video-indexer/video-indexer-get-started.md).|
 
 ## <a name="speech-apis"></a>Spracherkennungs-APIs
 

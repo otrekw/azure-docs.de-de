@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Azure-Dateifreigaben mit Windows und Windows�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e864dcaa2a611746ae813a4f0adf8409fbc50871
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94626893"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789787"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -48,7 +48,7 @@ Stellen Sie sicher, dass Port 445 geöffnet ist: Das SMB-Protokoll erfordert da
 ## <a name="using-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 Zum Verwenden einer Azure-Dateifreigabe mit Windows müssen Sie sie entweder einbinden, d.h. ihr einen Laufwerkbuchstaben oder Bereitstellungspunktpfad zuweisen, oder über ihren [UNC-Pfad](/windows/win32/fileio/naming-a-file) darauf zugreifen. 
 
-In diesem Artikel wird der Speicherkontoschlüssel für den Zugriff auf die Dateifreigabe verwendet. Ein Speicherkontoschlüssel ist ein Administratorschlüssel für ein Speicherkonto, der Administratorberechtigungen für alle Dateien und Ordner in der Dateifreigabe, auf die Sie zugreifen, sowie für alle Dateifreigaben und anderen Speicherressourcen (Blobs, Warteschlangen, Tabellen usw.) in Ihrem Speicherkonto umfasst. Wenn dies für Ihre Workload nicht ausreicht, können Sie [Azure-Dateisynchronisierung](storage-sync-files-planning.md) verwenden, oder Sie verwenden [identitätsbasierte Authentifizierung über SMB](storage-files-active-directory-overview.md).
+In diesem Artikel wird der Speicherkontoschlüssel für den Zugriff auf die Dateifreigabe verwendet. Ein Speicherkontoschlüssel ist ein Administratorschlüssel für ein Speicherkonto, der Administratorberechtigungen für alle Dateien und Ordner in der Dateifreigabe, auf die Sie zugreifen, sowie für alle Dateifreigaben und anderen Speicherressourcen (Blobs, Warteschlangen, Tabellen usw.) in Ihrem Speicherkonto umfasst. Wenn dies für Ihre Workload nicht ausreicht, können Sie [Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md) verwenden, oder Sie verwenden [identitätsbasierte Authentifizierung über SMB](storage-files-active-directory-overview.md).
 
 Ein allgemeines Muster für das Migrieren von Branchenanwendungen per Lift & Shift, die eine SMB-Dateifreigabe an Azure erwarten, ist die Verwendung einer Azure-Dateifreigabe als Alternative für die Ausführung eines dedizierten Windows-Dateiservers auf einem virtuellen Azure-Computer. Ein wichtiger Aspekt für die erfolgreiche Migration einer Branchenanwendung zur Verwendung einer Azure-Dateifreigabe ist, dass viele Branchenanwendungen im Kontext eines dedizierten Dienstkontos mit begrenzten Berechtigungen anstatt des Administratorkontos eines virtuellen Computers ausgeführt werden. Daher müssen Sie sicherstellen, dass Sie die Anmeldeinformationen für die Azure-Dateifreigabe aus dem Kontext des Dienstkontos und nicht Ihres Administratorkontos einbinden/speichern.
 
@@ -63,7 +63,7 @@ So erhalten Sie das Skript
 1. Klicken Sie auf **Dateifreigaben**.
 1. Wählen Sie die Dateifreigabe aus, die Sie einbinden möchten.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="Beispiel":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="Screenshot des Blatts „Dateifreigaben“, auf dem die Dateifreigabe hervorgehoben ist.":::
 
 1. Wählen Sie **Verbinden**.
 
@@ -72,7 +72,7 @@ So erhalten Sie das Skript
 1. Wählen Sie den Laufwerkbuchstaben aus, unter dem die Freigabe eingebunden werden soll.
 1. Kopieren Sie das bereitgestellte Skript.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Beispieltext":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Screenshot des Blatts „Verbinden“, auf dem die Schaltfläche „Kopieren“ im Skript hervorgehoben ist.":::
 
 1. Fügen Sie das Skript in eine Shell auf dem Host ein, auf dem Sie die Dateifreigabe einbinden möchten, und führen Sie es aus.
 

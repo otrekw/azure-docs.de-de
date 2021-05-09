@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb6f3c6a1463e2a3b71057145a6df770ea880b9d
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954214"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181164"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -137,8 +137,8 @@ In diesem Schritt erstellen Sie eine uneingeschränkte oder eingeschränkte Sich
    * Bitte wenden Sie sich an Ihren Workday-Integrationspartner, um den geeigneten Sicherheitsgruppentyp für die Integration auszuwählen.
    * Sobald Sie den Gruppentyp kennen, wählen Sie **Integrationssystem-Sicherheitsgruppe (Uneingeschränkt)** oder **Integrationssystem-Sicherheitsgruppe (Eingeschränkt)** aus der Dropdownliste **Typ der Mandantensicherheitsgruppe**.
 
-     > [!div class="mx-imgBorder"]
-     >![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_04.png "Sicherheitsgruppe erstellen")
+     > [!div class="mx-imgBorder&quot;]
+     >![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_04.png &quot;Sicherheitsgruppe erstellen")
 
 3. Nach dem Erstellen der Sicherheitsgruppe wird eine Seite angezeigt, auf der Sie der Sicherheitsgruppe Mitglieder zuweisen können. Fügen Sie den im vorherigen Schritt erstellten neuen Benutzer des Integrationssystems zu dieser Sicherheitsgruppe hinzu. Wenn Sie die Sicherheitsgruppe *eingeschränkt* verwenden, müssen Sie auch den entsprechenden Organisationsbereich auswählen.
 
@@ -557,7 +557,7 @@ Ersetzen Sie der Variablen [[proxy-server] ] und [proxy-port] durch den Namen Ih
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Wie stelle ich sicher, dass der Bereitstellungs-Agent mit dem Azure AD-Mandanten kommunizieren kann, und dass keine Firewalls die vom Agenten benötigten Ports blockieren?
 
-Sie können auch überprüfen, ob alle [erforderlichen Ports](../manage-apps/application-proxy-add-on-premises-application.md#open-ports) geöffnet sind.
+Sie können auch überprüfen, ob alle [erforderlichen Ports](../app-proxy/application-proxy-add-on-premises-application.md#open-ports) geöffnet sind.
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>Kann ein Bereitstellungs-Agent für die Bereitstellung mehrerer AD-Domänen konfiguriert werden?
 

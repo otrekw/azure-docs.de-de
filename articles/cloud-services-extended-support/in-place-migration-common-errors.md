@@ -9,12 +9,12 @@ ms.author: tagore
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 58203730793202649c401d96182469fa1eac6ef1
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 2e56e3d6b5f29996d8fe9606ac9a1b3778201803
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286759"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288722"
 ---
 # <a name="common-errors-and-known-issues-when-migration-to-azure-cloud-services-extended-support"></a>Häufige Fehler und bekannte Probleme bei der Migration zu Azure Cloud Services (erweiterter Support)
 
@@ -42,8 +42,8 @@ Häufige Fehler bei der Migration und Gegenmaßnahmen.
 | Fehlermeldung | Details | 
 |---|---|
 | Der Ressourcentyp konnte nicht im Namespace „{2020-10-01}“ für API-Version `Microsoft.Compute` gefunden werden. | [Registrieren Sie das Abonnement für das](in-place-migration-overview.md#setup-access-for-migration) Cloud Services-Feature-Flag, um auf die öffentliche Vorschau zuzugreifen. | 
-| Auf dem Server ist ein interner Fehler aufgetreten. Wiederholen Sie die Anforderung. | Wiederholen Sie den Vorgang und wenden Sie sich an [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
-| Der Server erkannte einen unerwarteten Fehler beim Zuweisen von Netzwerkressourcen für den Cloud Service. Wiederholen Sie die Anforderung. | Wiederholen Sie den Vorgang und wenden Sie sich an [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
+| Auf dem Server ist ein interner Fehler aufgetreten. Wiederholen Sie die Anforderung. | Wiederholen Sie den Vorgang und wenden Sie sich an [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
+| Der Server erkannte einen unerwarteten Fehler beim Zuweisen von Netzwerkressourcen für den Cloud Service. Wiederholen Sie die Anforderung. | Wiederholen Sie den Vorgang und wenden Sie sich an [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
 | Bereitstellung „Bereitstellungsname“ im Cloud Service „Cloud Service“ muss sich in einem virtuellen Netzwerk befinden, das migriert werden soll. | Die Bereitstellung befindet sich nicht in einem virtuellen Netzwerk. Ausführlichere Informationen finden Sie in [diesem](in-place-migration-technical-details.md#migration-of-deployments-not-in-a-virtual-network) Dokument. | 
 | Migration der Bereitstellung „Bereitstellung“ im Cloud Service „Cloud Service“ wird nicht unterstützt, da Sie sich in der Region „Regionsname“ befindet. Zulässige Regionen: [Liste der verfügbaren Regionen]. | Die Region wird für die Migration noch nicht unterstützt. | 
 | Die Bereitstellung „Bereitstellungsname“ im Cloud Service „Cloud Service-Name“ kann nicht migriert werden, weil dem/den Rollennamen der Rolle(n) keine Subnetze zugeordnet sind. Ordnen Sie alle Rollen einem Subnetz zu und wiederholen Sie dann die Migration des Cloud Services. | Aktualisieren Sie die Bereitstellung des Cloud Services (klassisch), indem Sie ihn vor der Migration in einem Subnetz platzieren. |  
@@ -62,11 +62,11 @@ Häufige Fehler bei der Migration und Gegenmaßnahmen.
 | Die Standardoption „VNet-Ziel“ ist nicht implementiert. | Der „Default“-Wert wird für die Eigenschaft „DestinationVirtualNetwork“ im REST-Anforderungstext nicht unterstützt. | 
 | Die Bereitstellung {0} kann nicht migriert werden, weil die CSPKG nicht verfügbar ist. | Aktualisieren Sie die Bereitstellung und wiederholen Sie den Vorgang. | 
 | Das Subnetz mit der ID {0} befindet sich an einem anderen Speicherort als die Bereitstellung {1} im gehosteten Dienst {2}. Der Speicherort für das Subnetz ist {3} und der Speicherort für den gehosteten Dienst {4} ist.  Geben Sie ein Subnetz an demselben Speicherort wie die Bereitstellung an. | Aktualisieren Sie den Cloud Service so, dass sich vor der Migration sowohl ein Subnetz als auch ein Cloud Service am selben Standort befinden. | 
-| Die Migration der Bereitstellung {0} im HostedService {1} wird gerade abgebrochen und kann erst geändert werden, wenn sie erfolgreich abgeschlossen wurde. | Warten Sie, bis der Abbruch abgeschlossen ist, oder wiederholen Sie den Abbruch. Wenden Sie sich an [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
+| Die Migration der Bereitstellung {0} im HostedService {1} wird gerade abgebrochen und kann erst geändert werden, wenn sie erfolgreich abgeschlossen wurde. | Warten Sie, bis der Abbruch abgeschlossen ist, oder wiederholen Sie den Abbruch. Wenden Sie sich an [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
 | Die Bereitstellung {0} in HostedService {1} wurde nicht für die Migration vorbereitet. | Führen Sie Prepare für den Cloud Service aus, bevor Sie den Commit-Vorgang ausführen. | 
-| UnknownExceptionInEndExecute: Contract.Assert fehlgeschlagen: rgName ist null oder leer: Ausnahme wurde in EndExecute empfangen, bei der es sich nicht um eine RdfeException handelt. |   Wenden Sie sich an [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
-| UnknownExceptionInEndExecute: eine Aufgabe wurde abgebrochen: in EndExecute wurde eine Ausnahme empfangen, die keine RdfeException ist. | Wenden Sie sich an [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
-| XrpVirtualNetworkMigrationError: Fehler bei der Migration des virtuellen Netzwerks. | Wenden Sie sich an [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
+| UnknownExceptionInEndExecute: Contract.Assert fehlgeschlagen: rgName ist null oder leer: Ausnahme wurde in EndExecute empfangen, bei der es sich nicht um eine RdfeException handelt. |   Wenden Sie sich an [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
+| UnknownExceptionInEndExecute: eine Aufgabe wurde abgebrochen: in EndExecute wurde eine Ausnahme empfangen, die keine RdfeException ist. | Wenden Sie sich an [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
+| XrpVirtualNetworkMigrationError: Fehler bei der Migration des virtuellen Netzwerks. | Wenden Sie sich an [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) oder an den Support. | 
 | Die Bereitstellung {0} in HostedService {1}  gehört zum virtuellen Netzwerk {2}. Migrieren Sie das virtuelle Netzwerk {2} zum Migrieren dieses HostedService {1}. | Siehe [Migration des virtuellen Netzwerks](in-place-migration-technical-details.md#virtual-network-migration). | 
 | Das aktuelle Kontingent für den Ressourcennamen in Azure Resource Manager reicht nicht aus, um die Migration abzuschließen. Das aktuelle Kontingent ist {0}, zusätzlich erforderlich ist {1}. Senden Sie eine Supportanfrage, um das Kontingent zu erhöhen, und wiederholen Sie die Migration, wenn das Kontingent erhöht wurde.    | Befolgen Sie die entsprechenden Kanäle, um die Kontingenterhöhung anzufordern: <br>[Kontingenterhöhung für Netzwerkressourcen](../azure-portal/supportability/networking-quota-requests.md) <br>[Kontingenterhöhung für Computerressourcen](../azure-portal/supportability/per-vm-quota-requests.md) | 
 

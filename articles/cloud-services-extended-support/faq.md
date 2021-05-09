@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 33bafac9247f007978fef568469d643f1a1098df
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 8707578eef3467cc24cfeb3cd1c5156d7f5b3b1d
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383585"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288758"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support)
 In diesem Artikel werden häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support) behandelt.
@@ -59,7 +59,7 @@ Die Bereitstellung von Cloud Services (erweiterter Support) unterstützt nur den
 Bereitstellungen von Cloud Services (erweiterter Support) können nicht über mehrere Cluster, Verfügbarkeitszonen und Regionen hinweg skaliert werden. 
 
 ### <a name="how-can-i-get-the-deployment-id-for-my-cloud-service-extended-support"></a>Wie kann ich die Bereitstellungs-ID für meinen Clouddienst erhalten (erweiterter Support)?
-Auf die Bereitstellungs-ID, die als private ID bezeichnet wird, können Sie mit der [CloudServiceInstanceView](https://docs.microsoft.com/rest/api/compute/cloudservices/getinstanceview#cloudserviceinstanceview) -API zugreifen. Sie ist auch auf dem Azure-Portal auf dem Blatt „Rollen und Instanzen“ des Clouddienstes verfügbar (erweiterter Support).
+Auf die Bereitstellungs-ID, die als private ID bezeichnet wird, können Sie mit der [CloudServiceInstanceView](/rest/api/compute/cloudservices/getinstanceview#cloudserviceinstanceview) -API zugreifen. Sie ist auch auf dem Azure-Portal auf dem Blatt „Rollen und Instanzen“ des Clouddienstes verfügbar (erweiterter Support).
 
 ### <a name="are-there-any-pricing-differences-between-cloud-services-classic-and-cloud-services-extended-support"></a>Gibt es Preisunterschiede zwischen Cloud Services (klassisch) und Cloud Services (erweiterter Support)?
 Cloud Services (erweiterter Support) verwendet Azure Key Vault und öffentliche Basic-IP-Adressen (ARM). Kunden, die Zertifikate benötigen, müssen Azure Key Vault für die Zertifikatverwaltung verwenden ([weitere Informationen](https://azure.microsoft.com/pricing/details/key-vault/) zu Azure Key Vault-Preisen).  Jede öffentliche IP-Adresse für Cloud Services (erweiterter Support) wird separat abgerechnet ([weitere Informationen](https://azure.microsoft.com/pricing/details/ip-addresses/) zu Preisen für öffentliche IP-Adressen). 
