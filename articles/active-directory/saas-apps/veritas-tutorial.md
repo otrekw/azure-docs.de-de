@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 2796928316197bd48723253dbc97dfcd34ac95e8
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a39c2c15107f7bad79a02aaa9e98ee6d5e2b521f
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222281"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Tutorial: Azure Active Directory-Integration mit Veritas Enterprise Vault.cloud SSO
 
@@ -148,8 +148,8 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Anmelde-URL für Veritas Enterprise Vault.cloud SSO auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in den "Meine Apps" auf die Kachel "Veritas Enterprise Vault.cloud SSO" klicken, wird diese an die Anmelde-URL "Veritas Enterprise Vault.Cloud SSO" umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in den "Meine Apps" auf die Kachel "Veritas Enterprise Vault.cloud SSO" klicken, wird diese an die Anmelde-URL "Veritas Enterprise Vault.Cloud SSO" umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Veritas Enterprise Vault.cloud SSO können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Veritas Enterprise Vault.cloud SSO können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

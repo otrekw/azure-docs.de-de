@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 4/5/2021
 ms.author: victorh
-ms.openlocfilehash: 83e9a96573bbc72e0afff61cc0f151f95b081e30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3cc1e85a18eab1adb0a1dd8307a074cb43ba0c70
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97031578"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529549"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure Firewall-Diensttags
 
@@ -23,6 +23,38 @@ Azure Firewall-Diensttags können im Zielfeld für Netzwerkregeln verwendet werd
 ## <a name="supported-service-tags"></a>Unterstützte Diensttags
 
 Eine Liste mit Diensttags, die für Azure Firewall-Netzwerkregeln verfügbar sind, finden Sie unter [Diensttags für virtuelle Netzwerke](../virtual-network/service-tags-overview.md#available-service-tags).
+
+## <a name="configuration"></a>Konfiguration
+
+Azure Firewall unterstützt die Konfiguration von Diensttags über PowerShell, die Azure CLI oder das Azure-Portal.
+
+### <a name="configure-via-azure-powershell"></a>Konfigurieren über Azure PowerShell
+
+In diesem Beispiel müssen wir zunächst Kontext zu unserer zuvor erstellten Azure Firewall-Instanz abrufen.
+
+```Get the context to an existing Azure Firewall
+$FirewallName = "AzureFirewall"
+$ResourceGroup = "AzureFirewall-RG"
+$azfirewall = Get-AzFirewall -Name $FirewallName -ResourceGroupName $ResourceGroup
+```
+
+Als Nächstes müssen wir eine neue Regel erstellen.  Als Quelle oder Ziel können Sie den Textwert des Diensttags angeben, das Sie verwenden möchten, wie oben in diesem Artikel erwähnt.
+
+````Create new Network Rules using Service Tags
+$rule = New-AzFirewallNetworkRule -Name "AllowSQL" -Description "Allow access to Azure Database as a Service (SQL, MySQL, PostgreSQL, Datawarehouse)" -SourceAddress "10.0.0.0/16" -DestinationAddress Sql -DestinationPort 1433 -Protocol TCP
+$ruleCollection = New-AzFirewallNetworkRuleCollection -Name "Data Collection" -Priority 1000 -Rule $rule -ActionType Allow
+````
+
+Anschließend müssen wir die Variable, die unsere Azure Firewall-Definition enthält, mit den neu erstellten Netzwerkregeln aktualisieren.
+
+````Merge the new rules into our existing Azure Firewall variable
+$azFirewall.NetworkRuleCollections.add($ruleCollection)
+`````
+
+Zuletzt müssen wir für die Änderungen an den Netzwerkregeln in der ausgeführten Azure Firewall-Instanz ein Commit durchführen.
+````Commit the changes to Azure
+Set-AzFirewall -AzureFirewall $azfirewall
+````
 
 ## <a name="next-steps"></a>Nächste Schritte
 

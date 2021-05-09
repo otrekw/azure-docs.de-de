@@ -4,14 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihr Automation-Konto in den
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-ms.date: 03/18/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: c3a514aa507fcf069671f987e175b7ae5be59d10
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fe2d99a610be3877b4a347e4bd0dd17df53ba326
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734919"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834154"
 ---
 # <a name="how-to-delete-your-azure-automation-account"></a>So löschen Sie Ihre Azure Automation-Konto
 
@@ -28,7 +29,10 @@ Das Entfernen dieses Features kann mit einer der folgenden Methoden basierend au
 * Heben Sie die Verknüpfung des Log Analytics-Arbeitsbereichs mit dem Automation-Konto auf und löschen Sie das Automation-Konto.
 * Löschen Sie die Funktion aus dem verknüpften Arbeitsbereich, entfernen Sie die Verknüpfung des Kontos mit dem Arbeitsbereich, und löschen Sie dann das Automation-Konto.
 
-In diesem Artikel erfahren Sie, wie Sie Ihr Automation-Konto über die Azure Portal, PowerShell, die Azure CLI oder die Rest-API vollständig entfernen.
+In diesem Artikel erfahren Sie, wie Sie Ihr Automation-Konto über das Azure-Portal, Azure PowerShell, die Azure CLI oder die REST-API vollständig entfernen.
+
+> [!NOTE]
+> Stellen Sie vor dem Fortfahren sicher, dass keine [Resource Manager-Sperren](../azure-resource-manager/management/lock-resources.md) auf das Abonnement, die Ressourcengruppe oder die Ressource angewendet wurden, die ein versehentliches Löschen oder Ändern kritischer Ressourcen verhindern. Wenn Sie die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ bereitgestellt haben, wird die Sperrebene für mehrere abhängige Ressourcen im Automation-Konto (insbesondere die zugehörigen Runbooks und Variablen) auf **CanNotDelete** festgelegt. Alle Sperren müssen entfernt werden, damit Sie das Automation-Konto löschen können.
 
 ## <a name="delete-the-dedicated-resource-group"></a>Löschen der dedizierten Ressourcengruppe
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 958b0de97b79b447f2570dd9c57c87f380bcd551
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: f153544d27621e4978b496d74f8d79e4e0bf2024
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589339"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207787"
 ---
 # <a name="write-client-app-authentication-code"></a>Schreiben von Authentifizierungscode für die Client-App
 
@@ -20,11 +20,11 @@ Nachdem Sie eine [Azure Digital Twins-Instanz und -Authentifizierung eingerichte
 
 Azure Digital Twins führt die Authentifizierung mithilfe von [Azure AD-Sicherheitstoken basierend auf OAuth 2.0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) aus. Zum Authentifizieren Ihres SDK müssen Sie ein Bearertoken mit den richtigen Berechtigungen für Azure Digital Twins abrufen und es zusammen mit ihren API-Aufrufen übergeben. 
 
-In diesem Artikel wird beschrieben, wie Sie mithilfe der `Azure.Identity`-Clientbibliothek Anmeldeinformationen abrufen. Dieser Artikel zeigt Codebeispiele in C#, z. B. Codebeispiele für das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client). Sie können jedoch unabhängig vom verwendeten SDK eine Version von `Azure.Identity` verwenden (weitere Informationen zu den für Azure Digital Twins verfügbaren SDKs finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md).
+In diesem Artikel wird beschrieben, wie Sie mithilfe der `Azure.Identity`-Clientbibliothek Anmeldeinformationen abrufen. Dieser Artikel zeigt Codebeispiele in C#, z. B. Codebeispiele für das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client). Sie können jedoch unabhängig vom verwendeten SDK eine Version von `Azure.Identity` verwenden (weitere Informationen zu den für Azure Digital Twins verfügbaren SDKs finden Sie unter [Vorgehensweise: Verwenden der Azure Digital Twins-APIs und SDKs](how-to-use-apis-sdks.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie zunächst die Schritte zur Einrichtung unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md) aus. Dadurch wird sichergestellt, dass Sie über eine Azure Digital Twins-Instanz verfügen und der Benutzer Zugriffsberechtigungen besitzt. Nachdem Sie diese Einrichtung abgeschlossen haben, können Sie Client-App-Code schreiben.
+Führen Sie zunächst die Schritte zur Einrichtung unter [Vorgehensweise: Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-portal.md) aus. Dadurch wird sichergestellt, dass Sie über eine Azure Digital Twins-Instanz verfügen und der Benutzer Zugriffsberechtigungen besitzt. Nachdem Sie diese Einrichtung abgeschlossen haben, können Sie Client-App-Code schreiben.
 
 Als Nächstes benötigen Sie ein Client-App-Projekt, in dem Sie den Code schreiben. Wenn Sie nicht bereits ein Client-App-Projekt eingerichtet haben, erstellen Sie ein einfaches Projekt in der Sprache Ihrer Wahl zur Verwendung in diesem Tutorial.
 
@@ -87,7 +87,7 @@ Sie können die Anmeldeinformationen für die verwaltete Identität wie folgt in
 
 Die [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential)-Methode ist für interaktive Anwendungen gedacht und startet einen Webbrowser für die Authentifizierung. Sie können dies anstelle von `DefaultAzureCredential` in Fällen verwenden, in denen Sie interaktive Authentifizierung benötigen.
 
-Wenn Sie die interaktiven Browseranmeldeinformationen verwenden möchten, benötigen Sie eine **App-Registrierung**, die über Berechtigungen für die Azure Digital Twins-APIs verfügt. Schritte zum Einrichten dieser App-Registrierung finden Sie unter [*Vorgehensweise: Erstellen einer App-Registrierung*](how-to-create-app-registration.md). Nachdem Sie die App-Registrierung eingerichtet haben, benötigen Sie Folgendes...
+Wenn Sie die interaktiven Browseranmeldeinformationen verwenden möchten, benötigen Sie eine **App-Registrierung**, die über Berechtigungen für die Azure Digital Twins-APIs verfügt. Schritte zum Einrichten dieser App-Registrierung finden Sie unter [Vorgehensweise: Erstellen einer App-Registrierung](how-to-create-app-registration.md). Nachdem Sie die App-Registrierung eingerichtet haben, benötigen Sie Folgendes...
 * Die *Anwendungs-ID (Client-ID)* der App-Registrierung ([Anleitungen zur Ermittlung](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * Die *Verzeichnis-ID (Mandanten-ID)* der App-Registrierung ([Anleitungen zur Ermittlung](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * Die URL der Azure Digital Twins-Instanz ([Anweisungen für die Ermittlung](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
@@ -101,12 +101,12 @@ Im Folgenden finden Sie ein Beispiel für den Code zum Erstellen eines authentif
 
 #### <a name="other-notes-about-authenticating-azure-functions"></a>Weitere Hinweise zum Authentifizieren von Azure Functions
 
-Weitere Informationen finden Sie unter [*Vorgehensweise: Einrichten einer Azure-Funktion zum Verarbeiten von Daten*](how-to-create-azure-function.md). Hier finden Sie ein ausführlicheres Beispiel, anhand dessen einige wichtige Konfigurationsoptionen im Zusammenhang mit Funktionen erläutert werden.
+Weitere Informationen finden Sie unter [Vorgehensweise: Einrichten einer Azure-Funktion zum Verarbeiten von Daten](how-to-create-azure-function.md). Hier finden Sie ein ausführlicheres Beispiel, anhand dessen einige wichtige Konfigurationsoptionen im Zusammenhang mit Funktionen erläutert werden.
 
 Wenn Sie die Authentifizierung in einer Funktion verwenden möchten, müssen Sie zudem Folgendes beachten:
 * [Aktivieren der verwalteten Identität](../app-service/overview-managed-identity.md?tabs=dotnet)
 * Verwenden von [Umgebungsvariablen](/sandbox/functions-recipes/environment-variables?tabs=csharp) nach Bedarf
-* Zuweisen von Berechtigungen zur Funktions-App, um dieser den Zugriff auf die Digital Twins-APIs zu ermöglichen. Weitere Informationen zu Azure Functions-Prozessen finden Sie unter [*Vorgehensweise: von Azure Functions-Apps für die Verarbeitung von Daten*](how-to-create-azure-function.md).
+* Zuweisen von Berechtigungen zur Funktions-App, um dieser den Zugriff auf die Digital Twins-APIs zu ermöglichen. Weitere Informationen zu Azure Functions-Prozessen finden Sie unter [Vorgehensweise: von Azure Functions-Apps für die Verarbeitung von Daten](how-to-create-azure-function.md).
 
 ## <a name="authenticate-across-tenants"></a>Mandantenübergreifende Authentifizierung
 
@@ -124,12 +124,12 @@ Sie können auch den Basismandanten in den Anmeldeinformationsoptionen in Ihrem 
 
 ## <a name="other-credential-methods"></a>Andere Methoden für Anmeldeinformationen
 
-Wenn die oben genannten Authentifizierungsszenarien nicht die Anforderungen Ihrer App abdecken, können Sie andere Arten von Authentifizierung untersuchen, die auf der [**Microsoft Identity Platform**](../active-directory/develop/v2-overview.md#getting-started) angeboten werden. Die Dokumentation für diese Plattform behandelt zusätzliche Authentifizierungsszenarien, geordnet nach Anwendungstyp.
+Wenn die oben genannten Authentifizierungsszenarien nicht die Anforderungen Ihrer App abdecken, können Sie andere Arten von Authentifizierung untersuchen, die auf der [Microsoft Identity Platform](../active-directory/develop/v2-overview.md#getting-started) angeboten werden. Die Dokumentation für diese Plattform behandelt zusätzliche Authentifizierungsszenarien, geordnet nach Anwendungstyp.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr zum Thema Sicherheit in Azure Digital Twins:
-* [*Konzepte: Sicherheit für Azure Digital Twins-Lösungen*](concepts-security.md)
+* [Konzepte: Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md)
 
 Nachdem Sie die Authentifizierung eingerichtet haben, können Sie alternativ damit fortfahren, Modelle in Ihrer Instanz zu erstellen und zu verwalten:
-* [*Vorgehensweise: Verwalten von DTDL-Modellen*](how-to-manage-model.md)
+* [Vorgehensweise: Verwalten von DTDL-Modellen](how-to-manage-model.md)

@@ -3,14 +3,14 @@ title: Erstellen von Updatebereitstellungen für die Azure Automation-Updateverw
 description: In diesem Artikel wird beschrieben, wie Sie Updatebereitstellungen planen und deren Status anzeigen.
 services: automation
 ms.subservice: update-management
-ms.date: 03/19/2021
+ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6d35d6b49ab72d8aa7b25506011147ab624273fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e410e5de529bde122fe42d21b593a6fc483dcbc0
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104669677"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726675"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
@@ -69,15 +69,30 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
 
 7. Verwenden Sie den Bereich **Updateklassifizierungen**, um [Updateklassifizierungen](view-update-assessments.md#work-with-update-classifications) für Produkte anzugeben. Deaktivieren Sie für jedes Produkt alle unterstützten Updateklassifizierungen, die nicht in Ihre Updatebereitstellung eingeschlossen werden sollen.
 
+   :::image type="content" source="./media/deploy-updates/update-classifications-example.png" alt-text="Beispiel für die Auswahl bestimmter Updateklassifizierungen":::
+
     Wenn Ihre Bereitstellung nur für ausgewählte Updates gelten soll, ist es erforderlich, alle vorab ausgewählten Updateklassifizierungen zu deaktivieren, wenn die Option  **Updates einschließen/ausschließen** wie im nächsten Schritt beschrieben konfiguriert wird. Dadurch wird sichergestellt, dass nur die Updates, die Sie in diese Bereitstellung *einschließen* möchten, auf den Zielcomputern installiert werden.
 
+   >[!NOTE]
+   > Das Bereitstellen von Updates nach Updateklassifizierung funktioniert unter RTM-Versionen von CentOS nicht. Wählen Sie zum ordnungsgemäßen Bereitstellen von Updates für CentOS alle Klassifizierungen aus, um sicherzustellen, dass die Updates angewendet werden. Aktuell steht keine unterstützte Methode zur Verfügung, mit der unter CentOS eine native Verfügbarkeit von Klassifizierungsdaten implementiert werden kann. Weitere Informationen zu Updateklassifizierungen finden Sie [hier](overview.md#update-classifications).
+
 8. Über den Bereich **Updates ein-/ausschließen** können Sie ausgewählte Updates in die Bereitstellung einschließen oder von ihr ausschließen. Geben Sie auf der Seite **Updates ein-/ausschließen** die IDs der KB-Artikel ein, die bei Windows-Updates ein- oder ausgeschlossen werden sollen. Für unterstützte Linux-Distributionen geben Sie den Paketnamen an.
+
+   :::image type="content" source="./media/deploy-updates/include-specific-updates-example.png" alt-text="Beispiel für das Einschließen bestimmter Updates":::
 
    > [!IMPORTANT]
    > Denken Sie daran, dass Ausschlüsse eine höhere Priorität haben als Einschlüsse. Wenn Sie also beispielsweise die Ausschlussregel `*` definieren, schließt die Updateverwaltung alle Patches oder Pakete aus der Installation aus. Ausgeschlossene Patches werden weiterhin als auf dem Computer nicht vorhanden angezeigt. Wenn Sie für Linux-Computer ein Paket mit einem ausgeschlossenen abhängigen Paket einschließen, wird das Hauptpaket von der Updateverwaltung nicht installiert.
 
    > [!NOTE]
    > Sie können keine Updates angeben, die für die Aufnahme in die Updatebereitstellung ersetzt wurden.
+
+   Es folgen einige Beispielszenarien zur gleichzeitigen Verwendung von Ein- und Ausschlüssen sowie Updateklassifizierung in Updatebereitstellungen:
+
+   * Wenn Sie nur eine bestimmte Liste von Updates installieren möchten, sollten Sie keine **Updateklassifizierungen** auswählen und eine Liste der Updates angeben, die mit der Option **Einschließen** angewandt werden sollen.
+
+   * Wenn Sie nur Sicherheits- und kritische Updates zusammen mit mindestens einem optionalen Treiberupdate installieren möchten, sollten Sie unter **Updateklassifizierungen** die Optionen **Sicherheitsupdates** und **Wichtige Updates** auswählen. Geben Sie dann unter der Option **Einschließen** die entsprechenden Treiberupdates an.
+
+   * Wenn Sie nur Sicherheits- und kritische Updates installieren möchten, jedoch Updates für Python überspringen möchten, um Fehler bei der Legacyanwendung zu vermeiden, sollten Sie unter **Updateklassifizierungen** die Optionen **Sicherheitsupdates** und **Wichtige Updates** auswählen. Fügen Sie dann unter der Option **Ausschließen** die zu überspringenden Python-Pakete hinzu.
 
 9. Wählen Sie **Zeitplaneinstellungen** aus. Der Standard-Startzeitpunkt liegt 30 Minuten nach der aktuellen Uhrzeit. Als Startzeit können Sie einen beliebigen Wert festlegen, er muss jedoch mindestens 10 Minuten in der Zukunft liegen.
 

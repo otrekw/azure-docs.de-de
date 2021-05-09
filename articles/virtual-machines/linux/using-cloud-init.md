@@ -1,20 +1,20 @@
 ---
 title: Übersicht über die Unterstützung von cloud-init für Linux-VMs in Azure
 description: Übersicht über cloud-init-Funktionen zum Konfigurieren einer VM zum Zeitpunkt der Bereitstellung in Azure
-author: danielsollondon
+author: srijang
 ms.service: virtual-machines
 ms.subservice: extensions
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 02/14/2021
-ms.author: danis
-ms.openlocfilehash: ac907c2ea2ae53bd192c01232c66e0467025daae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/27/2021
+ms.author: srijangupta
+ms.openlocfilehash: 406793d1e28f48a007cdf92ef87042e6f79bcbde
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563232"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208147"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init-Unterstützung für virtuelle Computer in Azure
 In diesem Artikel wird die vorhandene Unterstützung für [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren von virtuellen Computern (VMs) oder VM-Skalierungsgruppen während der Bereitstellung in Azure erläutert. Diese cloud-init-Konfigurationen werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden.  

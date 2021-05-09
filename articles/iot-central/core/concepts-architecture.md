@@ -8,18 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c2d5310d1a664aa2e22d4241d8066e41d9c82bd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bcda4ca252101ed1505f71a1b5f9fe9a0d8d16b9
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796719"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728390"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-Architektur
 
-Dieser Artikel enthält eine Übersicht über die Architektur von Microsoft Azure IoT Central.
-
-![Architektur im Überblick](media/concepts-architecture/architecture.png)
+Dieser Artikel bietet eine Übersicht über die wichtigsten Konzepte in der Azure IoT Central-Architektur.
 
 ## <a name="devices"></a>Geräte
 
@@ -28,7 +26,7 @@ Geräte tauschen Daten mit Ihrer Azure IoT Central-Anwendung aus. Ein Gerät kan
 - Senden von Messungen wie Telemetrie
 - Synchronisieren von Einstellungen mit Ihrer Anwendung
 
-In Azure IoT Central werden die Daten, die ein Gerät mit Ihrer Anwendung austauschen kann, in einer Gerätevorlage angegeben. Weitere Informationen zu Gerätevorlagen finden Sie unter [Metadatenverwaltung](#metadata-management).
+In Azure IoT Central werden die Daten, die ein Gerät mit Ihrer Anwendung austauschen kann, in einer Gerätevorlage angegeben. Weitere Informationen zu Gerätevorlagen finden Sie unter [Gerätevorlagen](concepts-device-templates.md).
 
 Um mehr darüber zu erfahren, wie Geräte eine Verbindung mit Ihrer Azure IoT Central-Anwendung herstellen können, lesen Sie [Gerätekonnektivität](concepts-get-connected.md).
 
@@ -117,29 +115,6 @@ Azure IoT Central speichert Anwendungsdaten in der Cloud. Zu den gespeicherten A
 
 Azure IoT Central verwendet einen Zeitreihenspeicher für die Messdaten, die von Ihren Geräten gesendet werden. Die Zeitreihendaten von Geräten werden vom Analysedienst verwendet.
 
-## <a name="analytics"></a>Analytics
-
-Der Analysedienst ist für das Generieren von benutzerdefinierten Berichterstellungsdaten zuständig, die die Anwendung anzeigt. Ein Operator kann die [Analysen anpassen](howto-create-analytics.md), die in der Anwendung angezeigt werden. Der Analysedienst basiert auf [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) und verarbeitet die von Ihren Geräten gesendeten Messdaten.
-
-## <a name="rules-and-actions"></a>Regeln und Aktionen
-
-[Regeln und Aktionen](tutorial-create-telemetry-rules.md) werden zur Automatisierung von Aufgaben in der Anwendung ausgiebig zusammen verwendet. Ein Ersteller kann Regeln basierend auf Gerätetelemetrie definieren, wie etwa Temperaturen, die einen definierten Schwellenwert definieren. Azure IoT Central verwendet einen Datenstromprozessor, um zu bestimmen, wann die Regelbedingungen erfüllt sind. Wenn eine Regelbedingung erfüllt ist, löst diese eine vom Ersteller definierte Aktion aus. Eine Aktion kann z.B. eine E-Mail senden, um einen Techniker darüber zu benachrichtigen, dass die Temperatur in einem Gerät zu hoch ist.
-
-## <a name="metadata-management"></a>Metadatenverwaltung
-
-In einer Azure IoT Central-Anwendung definieren Gerätevorlagen das Verhalten und die Funktion der Gerätetypen. So gibt z.B. die Gerätevorlage eines Kühlschranks die Telemetrie an, die ein Kühlschrank an Ihre Anwendung sendet.
-
-![Vorlagenarchitektur](media/concepts-architecture/template-architecture.png)
-
-In einer IoT Central-[Gerätevorlage](concepts-device-templates.md) gilt Folgendes:
-
-- Ein **Gerätemodell** gibt die Funktionen eines Geräts an, z. B. die vom Gerät gesendeten Telemetriedaten, die Eigenschaften, die den Gerätestatus definieren, und die Befehle, auf die das Gerät reagiert. Gerätefunktionen sind in einer oder mehreren Schnittstellen organisiert.
-- **Cloudeigenschaften** geben die Eigenschaften an, die IoT Central für ein Gerät speichert. Diese Eigenschaften werden nur in IoT Central gespeichert und nie an ein Gerät gesendet.
-- **Ansichten** geben die Dashboards und Formulare an, die der Generator erstellt, damit der Operator die Geräte überwachen und verwalten kann.
-- Durch **Anpassungen** kann der Generator einige der Definitionen im Gerätemodell überschreiben, damit sie für die IoT Central-Anwendung relevanter werden.
-
-Eine Anwendung kann ein oder mehrere simulierte und echte Geräte basierend auf den einzelnen Gerätevorlagen verwenden.
-
 ## <a name="data-export"></a>Datenexport
 
 In einer Azure IoT Central-Anwendung können Sie einen [fortlaufenden Export Ihrer Daten](howto-export-data.md) auf Ihre eigenen Azure Event Hubs und Azure Service Bus-Instanzen durchführen. Außerdem können Sie Ihre Daten in regelmäßigen Abständen in Ihr Azure-Blobspeicherkonto exportieren. Mit IoT Central können Messungen, Geräte und Gerätevorlagen exportiert werden.
@@ -160,13 +135,6 @@ Zu den Sicherheitsfeatures in Azure IoT Central gehören Folgende:
 - Die von Azure Active Directory oder vom Microsoft-Konto bereitgestellte Authentifizierung. Unterstützung für zweistufige Authentifizierung
 - Vollständige Mandantenisolation
 - Sicherheit auf Geräteebene
-
-## <a name="ui-shell"></a>UI Shell
-
-Die UI Shell ist eine moderne, reaktionsfähige und browserbasierte HTML5-Anwendung.
-Ein Administrator kann die Benutzeroberfläche der Anwendung anpassen, indem er benutzerdefinierte Designs anwendet und die Hilfelinks so ändert, dass sie auf die eigenen benutzerdefinierten Hilferessourcen verweisen. Weitere Informationen zur Anpassung der Benutzeroberfläche finden Sie im Artikel [Anpassen der Azure IoT Central-Benutzeroberfläche](howto-customize-ui.md).
-
-Ein Bediener kann personalisierte Anwendungsdashboards erstellen. Sie können über mehrere Dashboards mit verschiedene Daten verfügen und zwischen diesen wechseln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

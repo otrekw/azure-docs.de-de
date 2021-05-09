@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 4e22d93d3037c190193f53b7cfdbc87cff2da6ed
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 499cb3c978a67f9ef71e6ad9dd03be9f05b45729
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504395"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726968"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-Ereignisquellen
 
@@ -31,6 +31,9 @@ Eine Ereignisquelle ist die Verknüpfung zwischen Ihrem Hub und der Azure Time S
 
 Zum Erstellen, Bearbeiten oder Entfernen von Ereignisquellen in Ihrer Umgebung können Sie das [Azure-Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), die [Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source), [Azure Resource Manager-Vorlagen](time-series-insights-manage-resources-using-azure-resource-manager-template.md) sowie die [REST-API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) nutzen.
 
+> [!WARNING]
+> Schränken Sie den öffentlichen Internetzugriff nicht auf einen Hub oder eine Ereignisquelle ein, der bzw. die von Time Series Insights verwendet wird. Andernfalls wird die erforderliche Verbindung unterbrochen.
+
 ## <a name="start-options"></a>Startoptionen
 
 Beim Erstellen einer Ereignisquelle können Sie angeben, welche bereits vorhandenen Daten gesammelt werden sollen. Diese Einstellung ist optional. Die folgenden Optionen sind verfügbar:
@@ -46,18 +49,17 @@ Beim Erstellen einer Ereignisquelle können Sie angeben, welche bereits vorhande
 > - Wenn Sie „EarliestAvailable“ auswählen und über eine große Menge bereits vorhandener Daten verfügen, kann es anfänglich zu einer hohen Latenz kommen, da die Azure Time Series Insights Gen2-Umgebung alle Daten verarbeitet.
 > - Die Latenz sollte mit zunehmender Indizierung der Daten abnehmen. Senden Sie ein Supportticket über das Azure-Portal, falls es bei Ihnen zu einer dauerhaft hohen Latenz kommt.
 
-* EarliestAvailable
+- EarliestAvailable
 
 ![EarliestAvailable-Diagramm](media/concepts-streaming-event-sources/event-source-earliest-available.png)
 
-* EventSourceCreationTime
+- EventSourceCreationTime
 
 ![EventSourceCreationTime-Diagramm](media/concepts-streaming-event-sources/event-source-creation-time.png)
 
-* CustomEnqueuedTime
+- CustomEnqueuedTime
 
 ![CustomEnqueuedTime-Diagramm](media/concepts-streaming-event-sources/event-source-custom-enqueued-time.png)
-
 
 ## <a name="streaming-ingestion-best-practices"></a>Bewährte Methoden für die Streamingerfassung
 
@@ -113,9 +115,9 @@ Zeitstempel müssen im ISO 8601-Format gesendet werden und werden im UTC-Format 
 
 Der Zeitzonenoffset sollte eines der folgenden Formate aufweisen:
 
-±HHMMZ</br>
-±HH:MM</br>
-±HH:MMZ</br>
+±HHMMZ<br />
+±HH:MM<br />
+±HH:MMZ
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mode-portal
-ms.openlocfilehash: 3333097b4bd55173725aa33bc4bfbae318510cf1
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a01400e494d673fc59737007d4461b3e2a3ded25
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538548"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165675"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal
 
@@ -60,7 +60,7 @@ Nachdem Sie nun über ein Batch-Konto verfügen, können Sie einen Beispielpool 
   
    |Einstellung  |Wert  |
    |---------|---------|
-   |**Knotentarif**     |Standard A1|
+   |**Knotentarif**     |Standard_A1_v2|
    |**Ziel für dedizierte Knoten**     |2|
 
 1. Behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**, um den Pool zu erstellen.

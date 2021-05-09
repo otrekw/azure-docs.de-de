@@ -13,12 +13,12 @@ ms.date: 04/16/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 1d117ecaed626c6226a381c34b3d9a0f4f21175b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fc1b5356ab607ecb60a457a7295831958e6815e1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126793"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727058"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
 
@@ -53,7 +53,7 @@ Der erste Dienstprinzipaltyp ist die lokale Darstellung (bzw. Anwendungsinstanz)
 
 Wenn eine Anwendung die Berechtigung zum Zugriff auf Ressourcen in einem Mandanten erhält (bei der Registrierung oder [Zustimmung](developer-glossary.md#consent)), wird ein Dienstprinzipalobjekt erstellt. Sie können auch mit [Azure PowerShell](howto-authenticate-service-principal-powershell.md), der [Azure-Befehlszeilenschnittstelle](/cli/azure/create-an-azure-service-principal-azure-cli), [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http), im [Azure-Portal][AZURE-Portal] und mit anderen Tools Dienstprinzipalobjekte in einem Mandanten erstellen. Wenn Sie das Portal verwenden, wird beim Registrieren einer Anwendung automatisch ein Dienstprinzipal erstellt.
 
-Der zweite Dienstprinzipaltyp repräsentiert eine [verwaltete Identität](../managed-identities-azure-resources/overview.md). Dank verwalteter Identitäten müssen Entwickler keine Anmeldeinformationen mehr verwalten. Verwaltete Identitäten stellen eine Identität bereit, mit deren Hilfe Anwendungen eine Verbindung mit Ressourcen herstellen können, die die Azure AD-Authentifizierung unterstützen. Wenn eine verwaltete Identität aktiviert ist, wird in Ihrem Mandanten ein Dienstprinzipal erstellt, der diese verwaltete Identität repräsentiert. Dienstprinzipale, die verwaltete Identitäten repräsentieren, können Zugriff und Berechtigungen erhalten, sie können jedoch nicht direkt aktualisiert oder geändert werden.
+Der zweite Dienstprinzipaltyp repräsentiert eine [verwaltete Identität](/azure/active-directory/managed-identities-azure-resources/overview). Dank verwalteter Identitäten müssen Entwickler keine Anmeldeinformationen mehr verwalten. Verwaltete Identitäten stellen eine Identität bereit, mit deren Hilfe Anwendungen eine Verbindung mit Ressourcen herstellen können, die die Azure AD-Authentifizierung unterstützen. Wenn eine verwaltete Identität aktiviert ist, wird in Ihrem Mandanten ein Dienstprinzipal erstellt, der diese verwaltete Identität repräsentiert. Dienstprinzipale, die verwaltete Identitäten repräsentieren, können Zugriff und Berechtigungen erhalten, sie können jedoch nicht direkt aktualisiert oder geändert werden.
 
 Der dritte Dienstprinzipaltyp repräsentiert eine Legacy-App (eine App, die vor der Einführung von App-Registrierungen oder über eine Legacybenutzeroberfläche erstellt wurden). Ein Legacydienstprinzipal kann Anmeldeinformationen, Dienstprinzipalnamen, Antwort-URLs und andere Eigenschaften aufweisen, die von einem autorisierten Benutzer bearbeitet werden können. Dieser Dienstprinzipaltyp kann jedoch keiner App-Registrierung zugeordnet werden. Ein Legacydienstprinzipal kann nur in dem Mandanten verwendet werden, in dem er erstellt wurde.
 

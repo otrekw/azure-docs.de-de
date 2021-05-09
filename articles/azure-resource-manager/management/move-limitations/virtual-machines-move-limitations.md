@@ -2,13 +2,14 @@
 title: Verschieben virtueller Azure-Computer in ein neues Abonnement oder in eine neue Ressourcengruppe
 description: Verwenden Sie Azure Resource Manager, um virtuelle Computer in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: ad7023f309f1ca948711eaa9bdf3867d2ef7a6f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/23/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 389b06429959bf1f6f515fb0bae877caa8ea788d
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104908"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316765"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Anleitung zum Verschieben virtueller Computer
 
@@ -56,7 +57,7 @@ Von Marketplace-Ressourcen erstellte virtuelle Computer, an die Pläne angefügt
 
 ## <a name="virtual-machines-with-azure-backup"></a>Virtuelle Computer mit Azure Backup
 
-Um mit Azure Backup konfigurierte virtuelle Computer zu verschieben, müssen Sie die Wiederherstellungspunkte im Tresor löschen.
+Um mit Azure Backup konfigurierte virtuelle Computer zu verschieben, müssen Sie die Wiederherstellungspunktsammlungen (Momentaufnahmen) im Tresor löschen. Wiederherstellungspunkte, die bereits in den Tresor kopiert wurden, können beibehalten und verschoben werden.
 
 Wenn [vorläufiges Löschen](../../../backup/soft-delete-virtual-machines.md) für Ihren virtuellen Computer aktiviert ist, können Sie den virtuellen Computer nicht verschieben, solange diese Wiederherstellungspunkte noch vorhanden sind. [Deaktivieren Sie entweder vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete), oder warten Sie 14 Tage nach dem Löschen der Wiederherstellungspunkte.
 
@@ -73,7 +74,7 @@ Wenn [vorläufiges Löschen](../../../backup/soft-delete-virtual-machines.md) f�
    6. Nach Abschluss des Löschvorgangs können Sie den virtuellen Computer verschieben.
 
 3. Verschieben Sie die VM in die Zielressourcengruppe.
-4. Nehmen Sie die Sicherung wieder auf.
+4. Konfigurieren Sie die Sicherung neu.
 
 ### <a name="powershell"></a>PowerShell
 

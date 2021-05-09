@@ -1,18 +1,22 @@
 ---
 title: Aktivieren der VM-Erweiterung mithilfe von Azure PowerShell
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
-ms.date: 01/05/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9b1f83ad976aa3471430a912280fac25dc5c5c0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d5723655b61040c7ddf99e5f11488fff379d96a0
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97916183"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832876"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe von Azure PowerShell
 
 In diesem Artikel erfahren Sie, wie Sie Azure-VM-Erweiterungen, die von Azure Arc-fähigen Servern unterstützt werden, auf einem Linux- oder Windows-Hybridcomputer unter Verwendung von Azure PowerShell bereitstellen oder deinstallieren.
+
+> [!NOTE]
+> Server mit Azure Arc-Unterstützung unterstützen das Bereitstellen und Verwalten von VM-Erweiterungen auf virtuellen Azure-Computern nicht. Informationen zu virtuellen Azure-Computern finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

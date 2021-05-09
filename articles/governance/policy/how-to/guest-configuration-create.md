@@ -3,17 +3,17 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 9bcf7c5b7a70808730f427321bf00d47226d2cd0
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: e1c71acd8544073c861a8ad62fb06d78e9d139c5
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108006744"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165333"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
 Vor dem Erstellen von benutzerdefinierten Richtliniendefinitionen empfiehlt es sich, die allgemeinen Informationen zur [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) zu lesen.
- 
+
 Informationen zum Erstellen von Richtlinien für Gastkonfigurationen für Linux finden Sie auf der Seite [Erstellen von Richtlinien für Gastkonfigurationen für Linux](./guest-configuration-create-linux.md)
 
 Beim Überwachen von Windows wird für die Gastkonfiguration ein [DSC](/powershell/scripting/dsc/overview/overview)-Ressourcenmodul (Desired State Configuration) zum Erstellen der Konfigurationsdatei verwendet. Die DSC-Konfiguration definiert den Zustand, in dem sich der Computer befinden soll. Wenn bei der Auswertung der Konfiguration ein Fehler auftritt, wird die Richtlinienauswirkung **auditIfNotExists** ausgelöst, und der Computer wird als **nicht konform** eingestuft.
@@ -324,11 +324,11 @@ Das Cmdlet `Publish-GuestConfigurationPolicy` akzeptiert den Pfad von der PowerS
 
 ```azurepowershell-interactive
 New-GuestConfigurationPolicy `
- -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
+  -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
   -DisplayName 'Audit BitLocker service.' `
   -Description 'Audit if the BitLocker service is not enabled on Windows machine.' `
   -Path './policies' `
- | Publish-GuestConfigurationPolicy
+| Publish-GuestConfigurationPolicy
 ```
 
 Bei der in Azure erstellten Richtlinie ist der letzte Schritt das Zuweisen der Definition. Informieren Sie sich darüber, wie Sie die Definition über das [Portal](../assign-policy-portal.md), die [Azure CLI](../assign-policy-azurecli.md) oder über [Azure PowerShell](../assign-policy-powershell.md) zuweisen können.

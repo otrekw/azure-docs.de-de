@@ -6,13 +6,13 @@ ms.author: hemin
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: d40675faeec8975cc78e39818477495139ebbf0d
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 04/28/2021
+ms.openlocfilehash: 275c77107faf8fd639d714b92828ab8efe623f26
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906366"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164901"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
 
@@ -179,7 +179,7 @@ Corporation
 
 ### <a name="escaping-single-quote-character"></a>Versehen eines einfachen Anführungszeichens mit Escapezeichen
 
-Ausdrucksfunktionen verwenden einfache Anführungszeichen für Zeichenfolgenwertparameter. Verwenden Sie zwei einfache Anführungszeichen, um ein '-Zeichen in Zeichenfolgenfunktionen mit Escapezeichen zu versehen. Der Ausdruck `@concat('Baba', ''' ', 'book store')` gibt beispielsweise das folgende Ergebnis zurück.
+Ausdrucksfunktionen verwenden einfache Anführungszeichen für Zeichenfolgenwertparameter. Verwenden Sie zwei einfache Anführungszeichen, um ein '-Zeichen in Zeichenfolgenfunktionen mit Escapezeichen zu versehen. Der Ausdruck `@concat('Baba', '''s ', 'book store')` gibt beispielsweise das folgende Ergebnis zurück.
 
 ```
 Baba's book store

@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: a50c8b083c1cd453dbe3c51c63ec9cf53859c3bd
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 5d6386d7ed97868f73d994f272c8069f922a1f04
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587264"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207265"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>Erstellen eines kostenlosen Azure Active Directory-Entwicklermandanten
 
@@ -28,7 +28,7 @@ ms.locfileid: "107587264"
 Es gibt zwei einfache Möglichkeiten, eine kostenlose Azure Active Directory-Instanz mit einer P2-Testlizenz zu erstellen, um den Dienst zum Ausstellen von Nachweisen installieren und die Erstellung und Validierung von Nachweisen testen zu können:
 
 - [Nehmen Sie am kostenlosen Microsoft 365-Entwicklerprogramm teil](https://aka.ms/o365devprogram), und erhalten Sie eine kostenlose Sandbox sowie Tools und andere Ressourcen wie etwa eine Azure Active Directory-Instanz mit P2-Lizenzen, konfigurierte Benutzer, Gruppen, Postfächer usw.
-- Erstellen Sie einen neuen [Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant), und aktivieren Sie darin eine [kostenlose Testversion](https://azure.microsoft.com/trial/get-started-active-directory/) von Azure AD Premium P1 oder P2.
+- Erstellen Sie einen neuen [Mandanten](../develop/quickstart-create-new-tenant.md), und aktivieren Sie darin eine [kostenlose Testversion](https://azure.microsoft.com/trial/get-started-active-directory/) von Azure AD Premium P1 oder P2.
 
 Die Registrierung für das kostenlose Microsoft 365-Entwicklerprogramm ist ganz einfach:
 
@@ -45,7 +45,7 @@ Die Registrierung für das kostenlose Microsoft 365-Entwicklerprogramm ist ganz
 
 Sie haben nun einen Mandanten mit 25 E5-Benutzerlizenzen erstellt. Die E5-Lizenzen enthalten Azure AD P2-Lizenzen. Sie können optional Beispieldatenpakete mit Benutzern, Gruppen, E-Mails und SharePoint hinzufügen, um das Testen in der Entwicklungsumgebung zu erleichtern. Für den Dienst zum Ausstellen von Nachweisen sind sie allerdings nicht erforderlich.
 
-Der Einfachheit halber können Sie Ihr eigenes Geschäftskonto in dem neu erstellten Mandanten als [Gast](/azure/active-directory/external-identities/b2b-quickstart-add-guest-users-portal) hinzufügen und dieses Konto zum Verwalten des Mandanten verwenden. Um die Verwaltung des Nachweisdiensts über das Gastkonto zu ermöglichen, muss dem entsprechenden Benutzer die Rolle „Globaler Administrator“ zugewiesen werden.
+Der Einfachheit halber können Sie Ihr eigenes Geschäftskonto in dem neu erstellten Mandanten als [Gast](../external-identities/b2b-quickstart-add-guest-users-portal.md) hinzufügen und dieses Konto zum Verwalten des Mandanten verwenden. Um die Verwaltung des Nachweisdiensts über das Gastkonto zu ermöglichen, muss dem entsprechenden Benutzer die Rolle „Globaler Administrator“ zugewiesen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

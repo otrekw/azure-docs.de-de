@@ -6,12 +6,13 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 5eff593075db118b23d74147e33b40eb4402193c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ad938d15f8e21ed34014c0a743b5ba891f5476e0
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031156"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316837"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Abfragen exportierter Daten aus Azure Monitor mit Azure Data Explorer (Vorschau)
 Das Exportieren von Daten aus Azure Monitor in ein Azure Storage-Konto ermöglicht eine kostengünstige Aufbewahrung und bietet die Möglichkeit, Protokolle verschiedenen Regionen neu zuzuordnen. Verwenden Sie Azure Data Explorer, um Daten abzufragen, die aus Ihrem Log Analytics-Arbeitsbereich exportiert wurden. Nach der Konfiguration stehen unterstützte Tabellen, die von Ihren Arbeitsbereichen an ein Azure Storage-Konto gesendet werden, als Datenquelle für Azure Data Explorer bereit.
