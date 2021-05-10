@@ -1,28 +1,27 @@
 ---
-title: 'Tutorial: Bereitstellen und Konfigurieren von VMware HCX'
+title: Bereitstellen und Konfigurieren von VMware HCX
 description: Erfahren Sie, wie Sie eine VMware HCX-Lösung für Ihre private Azure VMware Solution-Cloud bereitstellen und konfigurieren.
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: 9ee451ce4be59c51299d66e4042ed344026100cf
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 04/23/2021
+ms.openlocfilehash: a75d7f0ea8fba9649715e2207c086c9bd7ac2019
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010999"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945717"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Bereitstellen und Konfigurieren von VMware HCX
 
-In diesem Artikel erfahren Sie, wie Sie den lokalen VMware HCX-Connector für Ihre private Azure VMware Solution-Cloud bereitstellen und konfigurieren. Mit VMware HCX können Sie Ihre VMware-Workloads zu Azure VMware Solution und zu anderen verbundenen Standorten über verschiedene Migrationstypen migrieren. Da Azure VMware Solution den HCX-Cloud-Manager bereitstellt und konfiguriert, müssen Sie den HCX-Connector in Ihr lokales VMware-Rechenzentrum herunterladen und ihn aktivieren und konfigurieren.
+In diesem Tutorial stellen Sie den lokalen VMware HCX-Connector für Ihre private Azure VMware Solution-Cloud bereitstellen und konfigurieren ihn. Mit VMware HCX können Sie Ihre VMware-Workloads zu Azure VMware Solution und zu anderen verbundenen Standorten über verschiedene Migrationstypen migrieren. Da Azure VMware Solution HCX Cloud Manager bereitstellt und konfiguriert, müssen Sie den HCX-Connector in Ihr lokales VMware-Rechenzentrum herunterladen und ihn aktivieren und konfigurieren.
 
-VMware HCX Advanced Connector wird in Azure VMware Solution vorab bereitgestellt. Er unterstützt bis zu drei Standortverbindungen (lokal-zu-Cloud oder Cloud-zu-Cloud). Wenn Sie mehr als drei Standortverbindungen benötigen, senden Sie eine [Supportanfrage](https://portal.azure.com/#create/Microsoft.Support), um das Add-On [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) zu aktivieren.  
+VMware HCX Advanced Connector wird in Azure VMware Solution vorab bereitgestellt. Er unterstützt bis zu drei Standortverbindungen (lokal-zu-Cloud oder Cloud-zu-Cloud). Wenn Sie mehr als drei Standortverbindungen benötigen, verwenden Sie das [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)-Add-On, und lassen Sie es anschließend über eine [Supportanfrage](https://portal.azure.com/#create/Microsoft.Support) aktivieren. 
 
->[!TIP]
->Obwohl das Tool „VMware Configuration Maximum“ angibt, dass die maximale Anzahl von Standortpaaren zwischen dem lokalen Connector und Cloud Manager gleich 25 ist, schränkt die Lizenzierung dies auf 3 für HCX Advanced und 10 für HCX Enterprise Edition ein.
+>[!IMPORTANT]
+>Obwohl das Tool „VMware Configuration Maximum“ angibt, dass die maximale Anzahl von Standortpaaren zwischen dem lokalen HCX-Connector und HCX Cloud Manager gleich 25 ist, schränkt die Lizenzierung dies auf 3 für HCX Advanced und 10 für HCX Enterprise Edition ein.
+>
+>VMware HCX Enterprise ist mit Azure VMware Solution als Vorschaudienst verfügbar. Der Dienst ist kostenlos und unterliegt den Nutzungsbedingungen für einen Vorschaudienst. Wenn der VMware HCX Enterprise-Dienst allgemein verfügbar ist, erhalten Sie eine Benachrichtigung, dass in 30 Tagen die Abrechnung umgestellt wird. Sie haben auch die Möglichkeit, den Dienst zu deaktivieren bzw. abzuwählen. Eine Herabstufung von HCX Enterprise auf HCX Advanced ist ohne erneute Bereitstellung möglich. Sie müssen jedoch ein Supportticket für diese Aktion erstellen. Wenn Sie eine Herabstufung planen, stellen Sie sicher, dass keine Migrationen anstehen und keine Features wie RAV/MON verwendet werden.
 
->[!NOTE]
->VMware HCX Enterprise ist mit Azure VMware Solution als Vorschaudienst verfügbar. Der Dienst ist kostenlos und unterliegt den Nutzungsbedingungen für einen Vorschaudienst. Wenn der VMware HCX Enterprise-Dienst allgemein verfügbar ist, erhalten Sie eine Benachrichtigung, dass in 30 Tagen die Abrechnung umgestellt wird. Sie haben auch die Möglichkeit, den Dienst zu deaktivieren bzw. abzuwählen. Eine Herabstufung von HCx Enterprise auf HCX Advanced ist ohne erneute Bereitstellung möglich. Sie müssen jedoch ein Supportticket für diese Aktion erstellen. Wenn Sie eine Herabstufung planen, stellen Sie sicher, dass keine Migrationen anstehen und keine Features wie CSV/MON verwendet werden.
-
-Machen Sie sich zuerst mit den [Vorbereitungen](#before-you-begin), der [erforderlichen Softwareversionen](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html) und den [Voraussetzungen](#prerequisites) vertraut. 
+Machen Sie sich zuerst mit den Abschnitten zu [Vorbereitungen](#before-you-begin), [erforderlichen Softwareversionen](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html) und [Voraussetzungen](#prerequisites) vertraut. 
 
 Danach werden alle erforderlichen Schritte beschrieben:
 
@@ -49,8 +48,7 @@ Im Zuge der Vorbereitung Ihrer Bereitstellung sollten Sie sich mit der folgenden
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie VMware HCX Enterprise verwenden möchten, vergewissern Sie sich, dass Sie die Aktivierung über die Azure VMware Solution-Supportkanäle angefordert haben.
-
+Wenn Sie VMware HCX Enterprise verwenden möchten, stellen Sie sicher, dass Sie das [ VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)-Add-On über eine [Supportanfrage](https://portal.azure.com/#create/Microsoft.Support) aktiviert haben.
 
 ### <a name="on-premises-vsphere-environment"></a>Lokale vSphere-Umgebung
 
@@ -66,7 +64,7 @@ Stellen Sie sicher, dass Ihre lokale vSphere-Umgebung (Quellumgebung) die [Minde
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
    
-## <a name="download-the-vmware-hcx-connector-ova"></a>Herunterladen der OVA-Datei für den VMware HCX-Connector
+## <a name="step-1-download-the-vmware-hcx-connector-ova"></a>Schritt 1: Herunterladen der OVA-Datei für den VMware HCX-Connector
 
 Bevor Sie das virtuelle Gerät (Appliance) in Ihrer lokalen vCenter-Instanz bereitstellen, müssen Sie die OVA-Datei für den VMware HCX-Connector herunterladen.  
 
@@ -92,12 +90,11 @@ Bevor Sie das virtuelle Gerät (Appliance) in Ihrer lokalen vCenter-Instanz bere
 
 1. Wählen Sie die gewünschte Option aus, um die OVA-Datei des VMware HCX-Connectors herunterzuladen.
 
-## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>Lokales Bereitstellen der OVA-Datei für den VMware HCX-Connector
+## <a name="step-2-deploy-the-vmware-hcx-connector-ova-on-premises"></a>Schritt 2: Lokales Bereitstellen der OVA-Datei für den VMware HCX-Connector
 
 1. Wählen Sie in Ihrer lokalen vCenter-Instanz eine [OVF-Vorlage](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) aus, um den VMware HCX-Connector in Ihrer lokalen vCenter-Instanz bereitzustellen. 
 
-   > [!TIP]
-   > Wählen Sie die OVA-Datei aus, die Sie im vorherigen Abschnitt heruntergeladen haben.  
+1. Navigieren Sie zu der heruntergeladenen OVA-Datei, wählen Sie sie aus, und wählen Sie dann **Öffnen** aus.
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-ovf-template.png" alt-text="Screenshot: Navigieren zu einer OVF-Vorlage." lightbox="media/tutorial-vmware-hcx/select-ovf-template.png":::
 
@@ -122,23 +119,20 @@ Bevor Sie das virtuelle Gerät (Appliance) in Ihrer lokalen vCenter-Instanz bere
 Eine umfassende Übersicht über diese Vorgehensweise vermittelt das Video [Azure VMware Solution: Bereitstellung der HCX-Appliance](https://www.youtube.com/embed/UKmSTYrL6AY). 
 
 
-## <a name="activate-vmware-hcx"></a>Aktivieren von VMware HCX
+## <a name="step-3-activate-vmware-hcx"></a>Schritt 3: Aktivieren von VMware HCX
 
 Nachdem Sie den VMware HCX-Connector lokal bereitgestellt und die Appliance gestartet haben, sind Sie bereit für die Aktivierung. Zunächst müssen Sie einen Lizenzschlüssel aus dem Azure VMware Solution-Portal abrufen.
 
 1. Navigieren Sie im Azure VMware Solution-Portal zu **Manage** > **Connectivity** (Verwalten > Konnektivität), wählen Sie die Registerkarte **HCX** aus, und wählen Sie dann **Add** (Hinzufügen) aus.
 
-1. Verwenden Sie die **Administrator** anmeldeinformationen, um sich beim lokalen VMware-HCX-Manager unter `https://HCXManagerIP:9443` anzumelden. 
+1. Verwenden Sie die **Administrator** anmeldeinformationen, um sich beim lokalen VMware-HCX-Manager unter `https://HCXManagerIP:9443` anzumelden.  Geben Sie die Portnummer `9443` mit der IP-Adresse des VMware HCX Managers an.
 
    > [!TIP]
    > Das Benutzerkennwort für den **Administrator** wurde im Rahmen der Bereitstellung der OVA-Datei für den VMware-HCX-Manager definiert.
 
-   > [!IMPORTANT]
-   > Geben Sie die Portnummer `9443` mit der IP-Adresse des VMware HCX Managers an.
-
 1. Geben Sie unter **Licensing** (Lizenzierung) Ihren Schlüssel für **HCX Advanced Key** (Erweiterter HCX-Schlüssel) ein, und wählen Sie **Activate** (Aktivieren) aus.  
    
-    > [!NOTE]
+    > [!IMPORTANT]
     > Für den VMware HCX Manager muss offener Internetzugriff möglich oder ein Proxy konfiguriert sein.
 
 1. Geben Sie unter **Datacenter Location** (Standort des Rechenzentrums) den nächstgelegenen Standort für die lokale Installation des VMware-HCX-Managers an. Klicken Sie anschließend auf **Weiter**.
@@ -171,7 +165,7 @@ Eine umfassende Übersicht über diese Vorgehensweise vermittelt das Video [Azur
    > [!IMPORTANT]
    > Unter Umständen muss der Patch aus dem [KB-Artikel 81558](https://kb.vmware.com/s/article/81558) von VMware installiert werden. Dies gilt sowohl bei Verwendung von HCX Advanced als auch bei Verwendung von HCX Enterprise. 
 
-## <a name="configure-the-vmware-hcx-connector"></a>Konfigurieren des VMware HCX-Connectors
+## <a name="step-4-configure-the-vmware-hcx-connector"></a>Schritt 4. Konfigurieren des VMware HCX-Connectors
 
 Nun können Sie eine Standortkopplung (Site Pairing) hinzufügen, ein Netzwerk- und Computeprofil erstellen und Dienste wie Migration, Netzwerkerweiterung (Network Extension) oder Notfallwiederherstellung (Disaster Recovery) aktivieren. 
 
@@ -199,7 +193,7 @@ Eine umfassende Übersicht über diese Vorgehensweise vermittelt das Video [Azur
 
 ### <a name="create-network-profiles"></a>Erstellen von Netzwerkprofilen
 
-Vom VMware HCX-Connector wird eine Teilmenge virtueller Geräte (automatisiert) bereitgestellt, die mehrere IP-Segmente erfordern. Verwenden Sie bei der Erstellung Ihrer Netzwerkprofile die IP-Segmente, die Sie im Rahmen der [Vorbereitungs- und Planungsphase für die Bereitstellung der VMware HCX-Netzwerksegmente](production-ready-deployment-steps.md#vmware-hcx-network-segments) ermittelt haben.
+Vom VMware HCX-Connector wird eine Teilmenge virtueller Geräte (automatisiert) bereitgestellt, die mehrere IP-Segmente erfordern. Verwenden Sie bei der Erstellung Ihrer Netzwerkprofile die IP-Segmente, die Sie im Rahmen der [Vorbereitungs- und Planungsphase für die Bereitstellung der VMware HCX-Netzwerksegmente](production-ready-deployment-steps.md#define-vmware-hcx-network-segments) ermittelt haben.
 
 Sie erstellen vier Netzwerkprofile:
 
@@ -344,9 +338,9 @@ Im nächsten Schritt konfigurieren Sie ein Service Mesh zwischen dem lokalen Sta
 
 Eine umfassende Übersicht über diese Vorgehensweise vermittelt das Video [Azure VMware Solution: Service Mesh](https://www.youtube.com/embed/COY3oIws108).
 
-### <a name="optional-create-a-network-extension"></a>(Optional) Erstellen einer Netzwerkerweiterung
+### <a name="step-5-create-a-network-extension"></a>Schritt 5: Erstellen einer Netzwerkerweiterung
 
-Wenn Sie Netzwerke aus Ihrer lokalen Umgebung um Azure VMware Solution erweitern möchten, führen Sie die folgenden Schritte aus:
+Dies ist ein optionaler Schritt zum Erweitern von Netzwerken aus Ihrer lokalen Umgebung um Azure VMware Solution.
 
 1. Wählen Sie unter **Services** (Dienste) Folgendes aus: **Network Extension** > **Create a Network Extension** („Netzwerkerweiterung“ > „Netzwerkerweiterung erstellen“).
 

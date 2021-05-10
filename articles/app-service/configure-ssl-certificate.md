@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 99dc8cb2acf06faae16df6d3a48c4d38b1be46d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e05435f364cc30b351275439a04caff47c35512
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577783"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871793"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
@@ -217,7 +217,7 @@ Nach Abschluss des Vorgangs wird das Zertifikat in der Liste **Private Schlüsse
 ![Import des Key Vault-Zertifikats abgeschlossen](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
 
 > [!NOTE]
-> Wenn Sie Ihr Zertifikat in Key Vault mit einem neuen Zertifikat aktualisieren, synchronisiert App Service Ihr Zertifikat automatisch innerhalb von 48 Stunden.
+> Wenn Sie Ihr Zertifikat in Key Vault mit einem neuen Zertifikat aktualisieren, synchronisiert App Service Ihr Zertifikat automatisch innerhalb von 24 Stunden.
 
 > [!IMPORTANT] 
 > Sie müssen noch eine Zertifikatsbindung erstellen, um eine benutzerdefinierte Domäne mit diesem Zertifikat zu schützen. Führen Sie die Schritte unter [Erstellen einer Bindung](configure-ssl-bindings.md#create-binding) aus.
@@ -325,7 +325,7 @@ Bei erneuter Schlüsselerstellung für Ihr Zertifikat wird von der Zertifizierun
 Wenn der Vorgang zur erneuten Schlüsselerstellung abgeschlossen ist, klicken Sie auf **Synchronisierung**. Der Synchronisierungsvorgang aktualisiert automatisch die Hostnamenbindungen für das Zertifikat in App Service, ohne dass es zu Downtime für Ihre Apps kommt.
 
 > [!NOTE]
-> Wenn Sie nicht auf **Synchronisierung** klicken, synchronisiert App Service Ihr Zertifikat innerhalb von 48 Stunden.
+> Wenn Sie nicht auf **Synchronisierung** klicken, synchronisiert App Service Ihr Zertifikat automatisch innerhalb von 24 Stunden.
 
 ### <a name="renew-certificate"></a>Verlängern des Zertifikats
 
@@ -340,7 +340,7 @@ Um das Zertifikat stattdessen manuell zu verlängern, klicken Sie auf **Manuelle
 Wenn der Verlängerungsvorgang abgeschlossen ist, klicken Sie auf **Synchronisierung**. Der Synchronisierungsvorgang aktualisiert automatisch die Hostnamenbindungen für das Zertifikat in App Service, ohne dass es zu Downtime für Ihre Apps kommt.
 
 > [!NOTE]
-> Wenn Sie nicht auf **Synchronisierung** klicken, synchronisiert App Service Ihr Zertifikat innerhalb von 48 Stunden.
+> Wenn Sie nicht auf **Synchronisierung** klicken, synchronisiert App Service Ihr Zertifikat automatisch innerhalb von 24 Stunden.
 
 ### <a name="export-certificate"></a>Exportieren des Zertifikats
 

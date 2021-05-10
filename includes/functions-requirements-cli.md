@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: f102a5dd5b7dccba6643176d06d17a2a65171c90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a390c0d19a37ea18f9eac8636683ec35ecbc844
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904069"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107880696"
 ---
 ## <a name="configure-your-local-environment"></a>Konfigurieren Ihrer lokalen Umgebung
 
@@ -39,7 +39,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 + [Python 3.8 (64 Bit)](https://www.python.org/downloads/release/python-382/), [Python 3.7 (64 Bit)](https://www.python.org/downloads/release/python-375/), [Python 3.6 (64 Bit)](https://www.python.org/downloads/release/python-368/). Diese Versionen werden von Azure Functions unterstützt. 
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
-+ [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
++ Das [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
 + [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), Version 8 oder 11. 

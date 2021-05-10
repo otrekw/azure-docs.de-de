@@ -12,20 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1e99e8ff25d895ba2248ddd1ba2520e9f14871a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ba36b80fc6a521b22dc812bdf67c3985a455ff4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022805"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071886"
 ---
-# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA mithilfe des Autorisierungscodeflows mit PKCE 
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA mithilfe des Autorisierungscodeflows mit PKCE
 
-In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine JavaScript-Single-Page-Webanwendung Benutzer anmelden und Microsoft Graph mithilfe des Autorisierungscodeflow mit PKCE (Proof Key for Code Exchange) aufrufen kann. Das Codebeispiel veranschaulicht das Abrufen eines Zugriffstokens zum Aufrufen der Microsoft Graph-API oder einer beliebigen Web-API. 
+In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine JavaScript-Single-Page-Webanwendung Benutzer anmelden und Microsoft Graph mithilfe des Autorisierungscodeflow mit PKCE (Proof Key for Code Exchange) aufrufen kann. Das Codebeispiel veranschaulicht das Abrufen eines Zugriffstokens zum Aufrufen der Microsoft Graph-API oder einer beliebigen Web-API.
 
 Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
-
-In dieser Schnellstartanleitung wird MSAL.js v2 mit dem Autorisierungscodeflow verwendet. Eine ähnliche Schnellstartanleitung, bei der MSAL.js v1 mit dem impliziten Flow verwendet wird, finden Sie unter [Schnellstart: Anmelden von Benutzern in JavaScript-Single-Page-Webanwendungen](./quickstart-v2-javascript.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -87,7 +85,7 @@ In dieser Schnellstartanleitung wird MSAL.js v2 mit dem Autorisierungscodeflow 
 > Öffnen Sie im Ordner *app* die Datei *authConfig.js*, und aktualisieren Sie die Werte `clientID`, `authority` und `redirectUri` im `msalConfig`-Objekt.
 >
 > ```javascript
-> // Config object to be passed to Msal on creation
+> // Config object to be passed to MSAL on creation
 > const msalConfig = {
 >   auth: {
 >     clientId: "Enter_the_Application_Id_Here",
@@ -107,13 +105,13 @@ In dieser Schnellstartanleitung wird MSAL.js v2 mit dem Autorisierungscodeflow 
 
 > [!div renderon="docs"]
 >
-> Ändern Sie die Werte im Abschnitt `msalConfig`, wie hier beschrieben:
+> Ändern Sie die Werte im Abschnitt `msalConfig`:
 >
 > - `Enter_the_Application_Id_Here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
 >
 >    Den Wert für **Anwendungs-ID (Client)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung.
-> - `Enter_the_Cloud_Instance_Id_Here` ist die Instanz der Azure-Cloud. Geben Sie für die Azure-Hauptcloud oder für die globale Azure-Cloud `https://login.microsoftonline.com/` ein. Informationen zu **nationalen** Clouds (etwa für China) finden Sie unter [Nationale Clouds](authentication-national-cloud.md).
-> - `Enter_the_Tenant_info_here` wird auf eine der folgenden Optionen festgelegt:
+> - `Enter_the_Cloud_Instance_Id_Here` ist die Azure-Cloudinstanz. Geben Sie für die Azure-Hauptcloud oder für die globale Azure-Cloud `https://login.microsoftonline.com/` ein. Informationen zu **nationalen** Clouds (etwa für China) finden Sie unter [Nationale Clouds](authentication-national-cloud.md).
+> - `Enter_the_Tenant_info_here` ist einer der folgenden Werte:
 >   - Wenn Ihre Anwendung *Nur Konten in diesem Organisationsverzeichnis* unterstützt, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen**. Beispiel: `contoso.microsoft.com`.
 >
 >    Den Wert für **Verzeichnis-ID (Mandant)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung.
@@ -133,11 +131,12 @@ In dieser Schnellstartanleitung wird MSAL.js v2 mit dem Autorisierungscodeflow 
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit
+>
 > Wir haben das Projekt mit Werten der Eigenschaften ihrer App konfiguriert.
 
 > [!div renderon="docs"]
 >
-> Bearbeiten Sie dann im selben Ordner die Datei *graphConfig.js*, und aktualisieren Sie die Werte `graphMeEndpoint` und `graphMailEndpoint` im `apiConfig`-Objekt.
+> Öffnen Sie als Nächstes die Datei *graphConfig.js*, um die Werte `graphMeEndpoint` und `graphMailEndpoint` im `apiConfig`-Objekt zu aktualisieren.
 >
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -154,9 +153,9 @@ In dieser Schnellstartanleitung wird MSAL.js v2 mit dem Autorisierungscodeflow 
 >
 > [!div renderon="docs"]
 >
-> `Enter_the_Graph_Endpoint_Here` ist der Endpunkt, für den API-Aufrufe ausgeführt werden. Geben Sie für den Microsoft Graph-API-Hauptdienst (global) `https://graph.microsoft.com/` (einschließlich des nachstehenden Schrägstrichs) ein. Weitere Informationen zu Microsoft Graph in nationalen Clouds finden Sie unter [Bereitstellungen nationaler Clouds](/graph/deployments).
+> `Enter_the_Graph_Endpoint_Here` ist der Endpunkt, an den API-Aufrufe gerichtet werden. Geben Sie für den Microsoft Graph-API-Hauptdienst (global) `https://graph.microsoft.com/` (einschließlich des nachstehenden Schrägstrichs) ein. Weitere Informationen zu Microsoft Graph in nationalen Clouds finden Sie unter [Bereitstellungen nationaler Clouds](/graph/deployments).
 >
-> Die Werte `graphMeEndpoint` und `graphMailEndpoint` in der Datei *authConfig.js* sollten ähnlich wie folgt aussehen, wenn Sie den Microsoft Graph-API-Hauptdienst (global) verwenden:
+> Die Werte `graphMeEndpoint` und `graphMailEndpoint` in der Datei *graphConfig.js* sollten etwa wie folgt aussehen, wenn Sie den Microsoft Graph-API-Hauptdienst (global) verwenden:
 >
 > ```javascript
 > graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
@@ -165,18 +164,20 @@ In dieser Schnellstartanleitung wird MSAL.js v2 mit dem Autorisierungscodeflow 
 >
 > #### <a name="step-4-run-the-project"></a>Schritt 4: Ausführen des Projekts
 
-Führen Sie das Projekt mit einem Webserver unter Verwendung von „Node.js“ aus:
+Führen Sie das Projekt mit einem Webserver unter Verwendung von Node.js aus.
 
 1. Führen Sie im Projektverzeichnis die folgenden Befehle aus, um den Server zu starten:
+
     ```console
     npm install
     npm start
     ```
-1. Navigieren Sie zu `http://localhost:3000/`.
+
+1. Wechseln Sie zu `http://localhost:3000/`.
 
 1. Wählen Sie **Anmelden** aus, um den Anmeldevorgang zu starten, und rufen Sie anschließend die Microsoft Graph-API auf.
 
-    Bei der ersten Anmeldung werden Sie aufgefordert, einzuwilligen, dass die Anwendung auf Ihr Profil zugreifen und Sie anmelden darf. Bei erfolgreicher Anmeldung sollten Ihre Benutzerprofilinformationen auf der Seite angezeigt werden.
+    Bei der ersten Anmeldung werden Sie aufgefordert, einzuwilligen, dass die Anwendung auf Ihr Profil zugreifen und Sie anmelden darf. Bei erfolgreicher Anmeldung werden Ihre Benutzerprofilinformationen auf der Seite angezeigt.
 
 ## <a name="more-information"></a>Weitere Informationen
 
@@ -184,7 +185,7 @@ Führen Sie das Projekt mit einem Webserver unter Verwendung von „Node.js“ a
 
 ![Diagramm, in dem der Autorisierungscodeflow für eine Single-Page-Webanwendung dargestellt ist.](media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png)
 
-### <a name="msaljs"></a>msal.js
+### <a name="msaljs"></a>MSAL.js
 
 Über die MSAL.js-Bibliothek werden Benutzer angemeldet und die Token angefordert, die für den Zugriff auf eine durch Microsoft Identity Platform geschützte API verwendet werden. Die Datei *index.html* des Beispiels enthält einen Verweis auf die Bibliothek:
 

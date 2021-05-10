@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: 16112ffe7ba5fbc23335f9b60cdcbc045ea7cd2b
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7a5a4415a581cca63719cf77c0a3a5566e8aee42
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725143"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931753"
 ---
 Erste Schritte mit der Custom Vision-Clientbibliothek für Java zum Erstellen eines Objekterkennungsmodells. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Bilderkennungsanwendung.
 
@@ -179,7 +179,7 @@ Mit dieser Methode wird die erste Trainingsiteration im Projekt erstellt. Der Di
 
 ## <a name="publish-the-current-iteration"></a>Veröffentlichen der aktuellen Iteration
 
-Mit dieser Methode wird die aktuelle Iteration des Modells zum Abfragen verfügbar gemacht. Sie können den Modellnamen als Referenz zum Senden von Vorhersageanforderungen verwenden. Hierbei ist es erforderlich, dass Sie Ihren eigenen Wert für `predictionResourceId` eingeben. Sie finden die Vorhersageressourcen-ID im Azure-Portal auf der Registerkarte **Übersicht** der Ressource, wo sie als **Abonnement-ID** angegeben ist.
+Mit dieser Methode wird die aktuelle Iteration des Modells zum Abfragen verfügbar gemacht. Sie können den Modellnamen als Referenz zum Senden von Vorhersageanforderungen verwenden. Hierbei ist es erforderlich, dass Sie Ihren eigenen Wert für `predictionResourceId` eingeben. Sie finden die Vorhersageressourcen-ID im Azure-Portal auf der Registerkarte **Eigenschaften** der Ressource, wo sie als **Ressourcen-ID** angegeben ist.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_publishOD)]
 

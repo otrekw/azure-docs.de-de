@@ -4,12 +4,12 @@ description: In diesem Schnellstart erstellen Sie eine .NET-Anwendung für Azure
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 15e2180e44acaa5ebefb403b2da3755396a45ba4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 665376a7616e146dbbf86caf0b4a2b62de7e5506
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96575889"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136893"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Schnellstart: Bereitstellen einer .NET Reliable Services-Anwendung in Service Fabric
 
@@ -114,7 +114,7 @@ Beim Abstimmen in der Anwendung treten die folgenden Ereignisse ein:
 
 ## <a name="debug-in-visual-studio"></a>Debuggen in Visual Studio
 
-Die Anwendung sollte reibungslos funktionieren. Sie können jedoch den Debugger verwenden, um die Funktion wichtiger Komponenten der Anwendung zu überprüfen. Beim Debuggen der Anwendung in Visual Studio verwenden Sie einen lokalen Service Fabric-Entwicklungscluster. Sie können Ihre Oberfläche für das Debuggen an Ihr Szenario anpassen. In dieser Anwendung werden Daten mithilfe eines zuverlässigen Wörterbuchs in einem Back-End-Dienst gespeichert. Standardmäßig wird die Anwendung von Visual Studio entfernt, wenn Sie den Debugger beenden. Die Entfernung der Anwendung führt dazu, dass auch die Daten im Back-End-Dienst entfernt werden. Um die Daten zwischen den Debugsitzungen beizubehalten, können Sie den **Debugmodus für die Anwendung** als Eigenschaft im Projekt **Voting** in Visual Studio ändern.
+Die Anwendung sollte reibungslos funktionieren. Sie können jedoch den Debugger verwenden, um die Funktion wichtiger Komponenten der Anwendung zu überprüfen. Beim Debuggen der Anwendung in Visual Studio verwenden Sie einen lokalen Service Fabric-Entwicklungscluster. Sie können Ihre Oberfläche für das Debuggen an Ihr Szenario anpassen. In dieser Anwendung werden Daten mithilfe eines zuverlässigen Wörterbuchs in einem Back-End-Dienst gespeichert. Standardmäßig wird die Anwendung von Visual Studio entfernt, wenn Sie den Debugger beenden. Die Entfernung der Anwendung führt dazu, dass auch die Daten im Back-End-Dienst entfernt werden. Um die Daten zwischen Debugsitzungen beizubehalten, öffnen Sie die **Eigenschaften** des Projekts *Voting*, und ändern Sie den [**Anwendungsdebugmodus**](service-fabric-manage-application-in-visual-studio.md#to-set-the-application-debug-mode-property) in *Automatisches Upgrade*.
 
 Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
 
@@ -159,7 +159,7 @@ Gehen Sie zum Aktualisieren der Anwendung wie folgt vor:
 
     ![Dialogfeld zum Ändern der Version](./media/service-fabric-quickstart-dotnet/change-version.png)
 7. Aktivieren Sie im Dialogfeld **Service Fabric-Anwendung veröffentlichen** das Kontrollkästchen **Upgrade der Anwendung ausführen**.
-8.  Ändern Sie **Zielprofil** in **PublishProfiles\Local.5Node.xml**, und stellen Sie sicher, dass **Verbindungsendpunkt** auf **Lokaler Cluster** festgelegt ist. 
+8.  Ändern Sie **Zielprofil** in **PublishProfiles\Local.5Node.xml**, und stellen Sie sicher, dass **Verbindungsendpunkt** auf **Lokaler Cluster** festgelegt ist.
 9. Wählen Sie dann **Upgrade der Anwendung ausführen** aus.
 
     ![Dialogfeld „Veröffentlichen“ – Einstellung für Upgrade](./media/service-fabric-quickstart-dotnet/upgrade-app.png)

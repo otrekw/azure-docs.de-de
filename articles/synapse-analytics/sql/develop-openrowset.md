@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 28c54865ab9c2876d998896f5f536a11088962f8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 90ff0a42a9d82fc0bf4f9235e235c774a2d0e75d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566425"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146561"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -227,6 +227,7 @@ Einzelheiten zu CSV-Parserversion 2.0:
 - Die maximale Zeilengröße beträgt 8 MB.
 - Die folgenden Optionen werden nicht unterstützt: DATA_COMPRESSION.
 - Eine leere Zeichenfolge in Anführungszeichen ("") wird als leere Zeichenfolge interpretiert.
+- Die Option DATEFORMAT SET wird nicht berücksichtigt.
 - Unterstütztes Format für DATE-Datentyp: JJJJ-MM-TT
 - Unterstütztes Format für TIME-Datentyp: HH:MM:SS[.Sekundenbruchteile]
 - Unterstütztes Format für DATETIME2-Datentyp: YYYY-MM-DD HH:MM:SS[.Sekundenbruchteile]
@@ -256,7 +257,7 @@ Parquet-Dateien enthalten Spaltenmetadaten, die gelesen werden. Typzuordnungen f
 Bei CSV-Dateien können Spaltennamen aus der Kopfzeile gelesen werden. Mithilfe des Arguments „HEADER_ROW“ können Sie angeben, ob eine Kopfzeile vorhanden ist. Bei „HEADER_ROW = FALSE“ werden generische Spaltennamen verwendet: C1, C2, ... Cn, wobei „n“ die Anzahl von Spalten in der Datei ist. Datentypen werden aus den ersten 100 Datenzeilen abgeleitet. Beispiele finden Sie unter [Lesen von CSV-Dateien ohne Angabe eines Schemas](#read-csv-files-without-specifying-schema).
 
 > [!IMPORTANT]
-> Es kann vorkommen, dass der passende Datentyp aufgrund fehlender Informationen nicht abgeleitet werden kann und stattdessen ein größerer Datentyp verwendet wird. Dies führt zu Mehraufwand und ist insbesondere für Zeichenspalten relevant, die als „varchar(8000)“ abgeleitet werden. Um eine optimale Leistung zu erzielen, [überprüfen Sie die abgeleiteten Datentypen](best-practices-sql-on-demand.md#check-inferred-data-types), und [verwenden Sie passende Datentypen](best-practices-sql-on-demand.md#use-appropriate-data-types).
+> Es kann vorkommen, dass der passende Datentyp aufgrund fehlender Informationen nicht abgeleitet werden kann und stattdessen ein größerer Datentyp verwendet wird. Dies führt zu Mehraufwand und ist insbesondere für Zeichenspalten relevant, die als „varchar(8000)“ abgeleitet werden. Um eine optimale Leistung zu erzielen, [überprüfen Sie die abgeleiteten Datentypen](./best-practices-serverless-sql-pool.md#check-inferred-data-types), und [verwenden Sie passende Datentypen](./best-practices-serverless-sql-pool.md#use-appropriate-data-types).
 
 ### <a name="type-mapping-for-parquet"></a>Typzuordnung für Parquet
 
@@ -403,4 +404,4 @@ AS [r]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Machen Sie sich mit den [bewährten Methoden](best-practices-sql-on-demand.md) vertraut, um eine optimale Leistung zu erzielen. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.
+Weitere Beispiele finden Sie im [Schnellstart zum Abfragen von Daten im Speicher](query-data-storage.md). Dort erfahren Sie, wie Sie `OPENROWSET` zum Lesen von [CSV](query-single-csv-file.md)-, [PARQUET](query-parquet-files.md)- und [JSON](query-json-files.md)-Dateiformaten verwenden. Machen Sie sich mit den [bewährten Methoden](./best-practices-serverless-sql-pool.md) vertraut, um eine optimale Leistung zu erzielen. Sie erfahren außerdem, wie Sie die Ergebnisse Ihrer Abfrage mithilfe von [CETAS](develop-tables-cetas.md) in Azure Storage speichern.

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: cb54c5f7334120f6cd01ed1704939c5c1a55e7c6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "91371965"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645281"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
@@ -39,9 +39,9 @@ Zum Anzeigen von Kostendaten für Azure EA-Abonnements muss ein Benutzer mindest
 | Abrechnungskonto<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Unternehmensadministrator | Keine | Alle Abonnements aus dem Enterprise Agreement |
 | Department | [https://ea.azure.com](https://ea.azure.com/) | Abteilungsadministrator | **Gebühren anzeigen** für Abteilungsadministratoren aktiviert | Alle Abonnements, die zu einem Registrierungskonto gehören, das mit der Abteilung verknüpft ist |
 | Registrierungskonto<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Kontobesitzer | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Abonnements aus dem Registrierungskonto |
-| Verwaltungsgruppe | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Leser) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Abonnements unter der Verwaltungsgruppe |
-| Subscription | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Leser) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Ressourcen/Ressourcengruppen im Abonnement |
-| Resource group | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Leser) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Ressourcen in der Ressourcengruppe |
+| Verwaltungsgruppe | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Mitwirkender) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Abonnements unter der Verwaltungsgruppe |
+| Subscription | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Mitwirkender) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Ressourcen/Ressourcengruppen im Abonnement |
+| Resource group | [https://portal.azure.com](https://portal.azure.com/) | Cost Management-Leser (oder Mitwirkender) | **AO view charges** (Gebühren anzeigen für Kontobesitzer) aktiviert | Alle Ressourcen in der Ressourcengruppe |
 
 <sup>1</sup> Das Abrechnungskonto wird auch als Enterprise Agreement oder Registrierung bezeichnet.
 
@@ -52,8 +52,8 @@ Zum Anzeigen von Kostendaten für Azure EA-Abonnements muss ein Benutzer mindest
 
 Zum Anzeigen von Kostendaten für andere Azure-Abonnements muss ein Benutzer mindestens über Lesezugriff auf einen oder mehrere der folgenden Bereiche verfügen:
 
-- Azure-Konto
 - Verwaltungsgruppe
+- Subscription
 - Resource group
 
 Nachdem Partner Kunden in eine Microsoft-Kundenvereinbarung aufgenommen haben, stehen verschiedene Bereiche zur Verfügung. CSP-Kunden können Features von Cost Management verwenden, wenn sie von ihrem CSP-Partner aktiviert werden. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Cost Management für Partner](get-started-partners.md).

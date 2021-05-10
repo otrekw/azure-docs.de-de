@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fc92543f5954cda9db42e53cab18db1d8f3366c3
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 73971d4e7b7e05a03ed0490ff013977e57721b8d
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284203"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896619"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Häufig gestellte Fragen zu Azure Spatial Anchors
 
@@ -88,7 +88,7 @@ Für Azure Spatial Anchors werden [Servicevertrag & Bestimmungen](https://go.mic
 
 **F: In welchen Regionen ist Azure Spatial Anchors verfügbar?**
 
-**A:** Azure Spatial Anchors ist derzeit in den folgenden Regionen verfügbar: „USA, Westen 2“, „USA, Osten“, „USA, Osten 2“, „USA, Süden-Mitte“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“ und „Australien, Osten“. Weitere Regionen werden im Laufe der Zeit verfügbar.
+**A:** Azure Spatial Anchors ist derzeit in den folgenden Regionen verfügbar: „USA, Westen 2“, „USA, Osten“, „USA, Osten 2“, „USA, Süden-Mitte“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“, „Australien, Osten“, „Asien, Südosten“ und „Südkorea, Mitte“. Weitere Regionen werden im Laufe der Zeit verfügbar.
 
 Dies bedeutet, dass sich sowohl die Compute- als auch die Speicherressourcen dieses Diensts in diesen Regionen befinden. Es gelten aber keine Einschränkungen in Bezug darauf, wo sich Ihre Clients befinden. 
 

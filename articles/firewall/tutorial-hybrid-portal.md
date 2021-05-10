@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/17/2020
+ms.date: 04/27/2021
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 86e27c190b269763d8dd2f562a207b3f2020da29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fbf0e4df1e9ee7dca7219891acc296c3493be9e
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98051070"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074959"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal
 
@@ -32,7 +32,6 @@ In diesem Tutorial erstellen Sie drei virtuelle Netzwerke:
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Deklarieren der Variablen
 > * Erstellen des virtuellen Firewall-Hub-Netzwerks
 > * Erstellen des virtuellen Spoke-Netzwerks
 > * Erstellen des lokalen virtuellen Netzwerks
@@ -43,17 +42,20 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen der virtuellen Computer
 > * Testen der Firewall
 
-Falls Sie anstelle dieser Prozedur Azure PowerShell verwenden möchten, wechseln Sie zu [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell](tutorial-hybrid-ps.md).
+Falls Sie anstelle dieses Tutorials Azure PowerShell verwenden möchten, wechseln Sie zu [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell](tutorial-hybrid-ps.md).
+
+> [!NOTE]
+> In diesem Tutorial werden für die Verwaltung der Firewall klassische Firewallregeln verwendet. Die bevorzugte Methode ist die Verwendung einer [Firewallrichtlinie](../firewall-manager/policy-overview.md). Informationen zum Absolvieren dieses Tutorials mithilfe einer Firewallrichtlinie finden Sie unter [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall und einer Richtlinie in einem Hybridnetzwerk über das Azure-Portal](tutorial-hybrid-portal-policy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Ein Hybridnetzwerk nutzt das Modell der Hub-and-Spoke-Architektur zur Weiterleitung von Datenverkehr zwischen Azure-VNETs und lokalen Netzwerken. Für die Hub-and-Spoke-Architektur gelten die folgenden Anforderungen:
 
-- Legen Sie für das Peering von VNET-Hub mit VNET-Spoke **AllowGatewayTransit** fest. In der Hub-and-Spoke-Netzwerkarchitektur ermöglicht der Gatewaytransit die gemeinsame Nutzung des VPN-Gateways im Hub, anstatt VPN-Gateways in jedem virtuellen Spoke-Netzwerk bereitzustellen. 
+- Legen Sie **Gateway oder Routenserver dieses virtuellen Netzwerks verwenden** für das Peering von VNet-Hub mit VNet-Spoke fest. In der Hub-and-Spoke-Netzwerkarchitektur ermöglicht der Gatewaytransit die gemeinsame Nutzung des VPN-Gateways im Hub, anstatt VPN-Gateways in jedem virtuellen Spoke-Netzwerk bereitzustellen. 
 
    Darüber hinaus werden Routen zu den mit dem Gateway verbundenen virtuellen Netzwerken oder lokalen Netzwerken über den Gatewaytransit automatisch an die Routingtabellen für die virtuellen Netzwerke mit Peeringbeziehung verteilt. Weitere Informationen finden Sie unter [Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
 
-- Legen Sie für das Peering von VNET-Spoke mit VNET-Hub **UseRemoteGateways** fest. Wenn **UseRemoteGateways** und für das Remotepeering **AllowGatewayTransit** festgelegt ist, verwendet das virtuelle Spoke-Netzwerk Gateways des virtuellen Remotenetzwerks für den Transit.
+- Legen Sie **Gateway oder Routenserver des virtuellen Remotenetzwerks verwenden** für das Peering von VNet-Spoke mit VNet-Hub fest. Wenn **Gateway oder Routenserver des virtuellen Remotenetzwerks verwenden** und außerdem **Gateway oder Routenserver dieses virtuellen Netzwerks verwenden** für das Remotepeering festgelegt ist, verwendet das virtuelle Spoke-Netzwerk Gateways des virtuellen Remotenetzwerks für die Übertragung.
 - Zum Weiterleiten des Spoke-Subnetzdatenverkehrs durch die Hub-Firewall können Sie eine benutzerdefinierte Route (User Defined Route, UDR) verwenden, die auf die Firewall verweist, während die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist. Wenn die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist, wird die Routenverteilung für die Spoke-Subnetze verhindert. Dadurch wird verhindert, dass erlernte Routen mit Ihrer UDR in Konflikt stehen. Wenn Sie **Routenverteilung des Gateways für virtuelle Netzwerke** aktiviert lassen möchten, definieren Sie unbedingt spezifische Routen für die Firewall, um die Routen außer Kraft zu setzen, die aus einer lokalen Umgebung über BGP veröffentlicht werden.
 - Konfigurieren Sie eine UDR im Hub-Gatewaysubnetz, die auf die Firewall-IP-Adresse als nächsten Hop auf dem Weg zu den Spoke-Netzwerken verweist. Für das Azure Firewall-Subnetz ist keine UDR erforderlich, da es die Routen über BGP erlernt.
 
@@ -154,6 +156,7 @@ Stellen Sie nun die Firewall im virtuellen Firewall-Hub-Netzwerk bereit.
    |Resource group     |**FW-Hybrid-Test** |
    |Name     |**AzFW01**|
    |Region     |**USA, Osten**|
+   |Firewallverwaltung|**Use Firewall rules (classic) to manage this firewall** (Firewallregeln (klassisch) zum Verwalten dieser Firewall verwenden)|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**:<br> **VNet-hub**|
    |Öffentliche IP-Adresse     |Neu hinzufügen: <br>**fw-pip**. |
 
@@ -173,27 +176,27 @@ Fügen Sie zunächst eine Netzwerkregel hinzu, um Webdatenverkehr zuzulassen.
 3. Wählen Sie **Netzwerkregelsammlung hinzufügen** aus.
 4. Geben Sie unter **Name** den Namen **RCNet01** ein.
 5. Geben Sie unter **Priorität** den Wert **100** ein.
-6. Wählen Sie für **Aktion** die Option **Zulassen** aus.
+6. Wählen Sie unter **Regelsammlungsaktion** die Option **Zulassen** aus.
 6. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **AllowWeb** ein.
-7. Wählen Sie für **Protokoll** die Option **TCP** aus.
 8. Wählen Sie unter **Quelltyp** die Option **IP-Adresse** aus.
 9. Geben Sie unter **Quelle** die Adresse **192.168.1.0/24** ein.
-10. Wählen Sie unter **Zieltyp** die Option **IP-Adresse** aus.
-11. Geben Sie unter **Zieladresse** die Zeichenfolge **10.6.0.0/16** ein.
-12. Geben Sie unter **Zielports** den Wert **80** ein.
+7. Wählen Sie für **Protokoll** die Option **TCP** aus.
+1. Geben Sie unter **Zielports** den Wert **80** ein.
+1. Wählen Sie unter **Zieltyp** die Option **IP-Adresse** aus.
+1. Geben Sie unter **Ziel** die Adresse **10.6.0.0/16** ein.
 
 Fügen Sie nun eine Regel hinzu, um RDP-Datenverkehr zuzulassen.
 
 Geben Sie in der zweiten Regel Zeile die folgenden Informationen ein:
 
 1. Geben Sie unter **Name** den Namen **AllowRDP** ein.
-2. Wählen Sie für **Protokoll** die Option **TCP** aus.
 3. Wählen Sie unter **Quelltyp** die Option **IP-Adresse** aus.
 4. Geben Sie unter **Quelle** die Adresse **192.168.1.0/24** ein.
-5. Wählen Sie unter **Zieltyp** die Option **IP-Adresse** aus.
-6. Geben Sie unter **Zieladresse** die Zeichenfolge **10.6.0.0/16** ein.
-7. Geben Sie unter **Zielports** den Wert **3389** ein.
-8. Wählen Sie **Hinzufügen**.
+2. Wählen Sie für **Protokoll** die Option **TCP** aus.
+1. Geben Sie unter **Zielports** den Wert **3389** ein.
+1. Wählen Sie unter **Zieltyp** die Option **IP-Adresse** aus.
+1. Geben Sie unter **Ziel** die Adresse **10.6.0.0/16** ein.
+1. Wählen Sie **Hinzufügen**.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>Erstellen und Verbinden der VPN-Gateways
 
@@ -422,6 +425,8 @@ Mit diesem virtuellen Computer wird eine Remotedesktopverbindung mit der öffent
 8. Wählen Sie **Weiter: Verwaltung** aus.
 10. Wählen Sie unter **Startdiagnose** die Option **Deaktivieren** aus.
 10. Wählen Sie **Überprüfen + erstellen** aus, überprüfen Sie die Einstellungen auf der Zusammenfassungsseite, und wählen Sie anschließend **Erstellen** aus.
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="test-the-firewall"></a>Testen der Firewall
 

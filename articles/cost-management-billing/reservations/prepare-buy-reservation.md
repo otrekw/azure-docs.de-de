@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: a70d434b06fd19071f3576f9333579e0bd2b85e7
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: b2cdb106ab1c77c23626258f7e0708a20ffd3c4e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574973"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772251"
 ---
 # <a name="buy-a-reservation"></a>Kaufen einer Reservierung
 
@@ -36,7 +36,7 @@ Sie können den Bereich für eine Reservierung auf ein Abonnement oder eine Ress
 Ihnen stehen je nach Bedarf drei Optionen zur Verfügung, mit denen Sie den Bereich einer Reservierung definieren können:
 
 - **Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
-- **Einzelabonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
+- **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
 - **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an.
     - Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Der Reservierungsbereich für die gemeinsame Nutzung umfasst mehrere Active Directory-Mandanten in einer Registrierung.
     - Für Microsoft-Kundenvereinbarung-Kunden ist der Abrechnungsbereich das Abrechnungsprofil.
@@ -44,9 +44,9 @@ Ihnen stehen je nach Bedarf drei Optionen zur Verfügung, mit denen Sie den Bere
 
 Während Reservierungsrabatte auf Ihre Nutzung angewendet werden, verarbeitet Azure die Reservierung in der folgenden Reihenfolge:
 
-1. Reservierungen mit einem Bereich für eine Ressourcengruppe
-2. Reservierungen mit einem einzelnen Bereich
-3. Reservierungen mit einem gemeinsam genutzten Bereich
+1. Reservierungen mit dem Bereich „Einzelne Ressourcengruppe“
+2. Reservierungen mit dem Bereich „Einzelabonnement“
+3. Reservierungen mit einem gemeinsam genutzten Bereich (mehrere Abonnements), wie weiter oben beschrieben
 
 Sie können den Bereich nach dem Erwerb einer Reservierung immer aktualisieren. Navigieren Sie zu diesem Zweck zu der Reservierung, klicken Sie auf **Konfiguration**, und legen Sie den Bereich für die Reservierung erneut fest. Das Neuzuweisen eines Bereichs für eine Reservierung ist keine kommerzielle Transaktion. Die Reservierungsbedingungen ändern sich nicht. Weitere Informationen zum Aktualisieren des Bereichs finden Sie unter [Aktualisieren des Bereichs nach dem Erwerb einer Reservierung](manage-reserved-vm-instance.md#change-the-reservation-scope).
 
@@ -133,4 +133,8 @@ Für Kunden mit Einzelabonnements:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Weitere Informationen zu Reservierungsberechtigungen](view-reservations.md)
 - [Verwalten von Reservierungen für Azure-Ressourcen](manage-reserved-vm-instance.md)
+- [Automatisieren mithilfe von REST-APIs](/rest/api/reserved-vm-instances/reservationorder)
+- [Automatisieren mithilfe von Azure PowerShell](/powershell/module/az.reservations)
+- [Automatisieren mithilfe der CLI](/cli/azure/reservations)

@@ -7,16 +7,16 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: quickstart
-ms.date: 12/02/2020
+ms.topic: include
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01149eed5cc4195ca501507e7fe1d66fffecb84d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2f01b1d222470c49505638be64180948b6f7e046
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107326991"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728252"
 ---
 Verwenden Sie die optische Zeichen Erkennungs-REST-API, um gedruckten und handschriftlichen Text zu lesen.
 
@@ -37,6 +37,8 @@ Verwenden Sie die optische Zeichen Erkennungs-REST-API, um gedruckten und handsc
 
 Der OCR-Dienst kann sichtbaren Text in einem Bild lesen und in eine Zeichenfolge konvertieren. Weitere Informationen zur Texterkennung finden Sie in der Übersicht [Optische Zeichenerkennung (OCR)](../overview-ocr.md).
 
+### <a name="call-the-read-api"></a>Aufrufen der Lese-API
+
 Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte aus:
 
 1. Kopieren Sie den folgenden Befehl, und fügen Sie ihn in einen Text-Editor ein.
@@ -53,6 +55,8 @@ curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/r
 ```
 
 Die Antwort enthält einen Header vom Typ `Operation-Location`, bei dessen Wert es sich um eine eindeutige URL handelt. Diese URL wird verwendet, um die Ergebnisse des Lesevorgangs abzufragen. Die URL ist 48 Stunden lang gültig.
+
+### <a name="get-read-results"></a>Abrufen der Leseergebnisse
 
 1. Kopieren Sie den folgenden Befehl in Ihren Text-Editor.
 1. Ersetzen Sie die URL durch den Wert `Operation-Location`, den Sie im vorherigen Schritt kopiert haben.
@@ -131,7 +135,9 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich näher mit der OCR-API vertraut. Um schnell mit der API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005/console) aus.
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Read-REST-API aufrufen. Informieren Sie sich als Nächstes ausführlicher über die Funktionen der Lese-API.
 
 > [!div class="nextstepaction"]
-> [Erkunden Sie die OCR-API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
+>[Aufrufen der Lese-API](../Vision-API-How-to-Topics/call-read-api.md)
+
+* [OCR-Übersicht](../overview-ocr.md)

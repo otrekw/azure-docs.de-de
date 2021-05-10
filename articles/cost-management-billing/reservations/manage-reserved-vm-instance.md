@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 04/21/2021
 ms.author: banders
-ms.openlocfilehash: 717cf5acb63ee04852ccbb9aae2f7aed2b3c179a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 64a6b3a313f5078368563af29ab97a871b4c3ae0
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392271"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288668"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -57,8 +57,8 @@ Der Bereich gilt nur für einzelne Abonnements mit nutzungsbasierter Zahlung (An
 
 Die folgenden Benutzer können Reservierungen standardmäßig anzeigen und verwalten:
 
-- Die Person, die eine Reservierung erwirbt, und der Kontoadministrator des Abrechnungsabonnements, mit dem die Reservierung erworben wird, werden der Reservierungsreihenfolge hinzugefügt.
-- Abrechnungsadministratoren für Konzernvertrag (Enterprise Agreement, EA) und Microsoft-Kundenvereinbarung.
+- Die Person, die die Reservierung gekauft hat, und der Kontobesitzer für das Abrechnungsabonnement erhalten Azure RBAC-Zugriff auf den Reservierungsauftrag.
+-  Abrechnungsmitwirkende für Enterprise Agreement und Microsoft-Kundenvereinbarung können alle Reservierungen verwalten, wenn sie „Cost Management + Billing“ > „Reservierungstransaktionen“ und dann das blaue Banner auswählen.
 
 Damit andere Personen Reservierungen verwalten können, haben Sie zwei Optionen:
 
@@ -81,8 +81,14 @@ Damit andere Personen Reservierungen verwalten können, haben Sie zwei Optionen:
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>Anzeigen oder Verwalten von Reservierungen durch Abrechnungsadministratoren
 
-1. Wechseln Sie zu **Cost Management + Billing*** , und wählen Sie auf der linken Seite **Reservierungstransaktionen** aus.
-2. Wenn Sie die erforderlichen Abrechnungsberechtigungen haben, können Sie Reservierungen anzeigen und verwalten. Wenn keine Reservierungen angezeigt werden, vergewissern Sie sich, dass Sie mit dem Azure AD-Mandanten angemeldet sind, in dem die Reservierungen erstellt wurden.
+Führen Sie als Abrechnungsadministrator die folgenden Schritte aus, um alle Reservierungen und Reservierungstransaktionen anzuzeigen und zu verwalten.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Kostenverwaltung + Abrechnung**.
+    - Wenn Sie EA-Administrator sind, wählen Sie im Menü auf der linken Seite die Option **Abrechnungsbereiche** und dann in der Liste der Abrechnungsbereiche einen Bereich aus.
+    - Wenn Sie Besitzer eines Abrechnungsprofils für eine Microsoft-Kundenvereinbarung sind, wählen Sie im linken Menü **Abrechnungsprofile** aus. Wählen Sie in der Liste der Abrechnungsprofile ein Profil aus.
+2. Wählen Sie im Menü auf der linken Seite **Produkte und Dienste** > **Reservierungen** aus.
+3. Die vollständige Liste der Reservierungen für Ihr EA-Registrierungsprofil oder -Abrechnungsprofil wird angezeigt.
+4. Abrechnungsadministratoren können den Besitz einer Reservierung übernehmen, indem sie sie auswählen und dann im angezeigten Fenster die Option **Zugriff gewähren** auswählen.
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Aufteilten einer einzelnen Reservierung in zwei Reservierungen
 
@@ -177,23 +183,8 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
-
-- [Was sind Azure-Reservierungen?](save-compute-costs-reservations.md)
-
-Kaufen eines Serviceplans:
-- [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../../azure-sql/database/reserved-capacity-overview.md)
-- [Vorauszahlen für Azure Cosmos DB-Ressourcen mit reservierter Azure Cosmos DB-Kapazität](../../cosmos-db/cosmos-db-reserved-capacity.md)
-
-Kaufen eines Softwareplans:
-- [Vorauszahlen für Red Hat-Softwarepläne aus Azure-Reservierungen](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Vorauszahlen für SUSE-Softwarepläne aus Azure-Reservierungen](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-Grundlegendes zu Rabatt und Nutzung:
-- [Grundlegendes zur Anwendung des Rabatts für VM-Reservierungen](../manage/understand-vm-reservation-charges.md)
-- [Grundlegendes zur Anwendung des Rabatts für den Red Hat Linux Enterprise-Softwareplan](understand-rhel-reservation-charges.md)
-- [Grundlegendes zur Anwendung des Rabatts für den SUSE Linux Enterprise-Softwareplan](understand-suse-reservation-charges.md)
-- [Grundlegendes zur Anwendung anderer Reservierungsrabatte](understand-reservation-charges.md)
-- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](understand-reserved-instance-usage.md)
-- [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](understand-reserved-instance-usage-ea.md)
-- [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](reserved-instance-windows-software-costs.md)
+ - [Anzeigen der Reservierungsnutzung](reservation-utilization.md)
+ - [Umtausch und Rückerstattung](exchange-and-refund-azure-reservations.md)
+ - [Verlängern von Reservierungen](reservation-renew.md)
+ - [Übertragungen zwischen Mandanten](troubleshoot-reservation-transfers-between-tenants.md)
+ - [Ermitteln eines Reservierungskäufers über Azure-Protokolle](find-reservation-purchaser-from-logs.md)

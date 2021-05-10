@@ -6,12 +6,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0d70ed8b906c171c001c5bda81a79ca9b65febac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 083c7bf6edc7da1fd617487e91b0a3848fb401fe
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101658743"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811810"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-microsoft-connected-cache-within-an-azure-iot-edge-for-industrial-iot-configuration"></a>Bereitstellungsszenariobeispiel für Microsoft Connected Cache Vorschau: Microsoft Connected Cache in einer Azure IoT Edge for Industrial IoT-Konfiguration
 
@@ -35,8 +35,8 @@ Der Schlüssel zum Konfigurieren von Microsoft Connected Cache-Bereitstellungen 
 
 3. Der OT-Proxy muss der Zulassungsliste den L4-MCC-FQDN bzw. die IP-Adresse hinzufügen.
 
-Um zu überprüfen, ob Microsoft Connected Cache ordnungsgemäß funktioniert, führen Sie den folgenden Befehl im Terminal des IoT Edge-Geräts, das das Modul hostet, oder eines beliebigen Geräts im Netzwerk aus.
+Um zu überprüfen, ob Microsoft Connected Cache ordnungsgemäß funktioniert, führen Sie den folgenden Befehl im Terminal des IoT Edge-Geräts, das das Modul hostet, oder eines beliebigen Geräts im Netzwerk aus. Ersetzen Sie \<Azure IoT Edge Gateway IP\> durch die IP-Adresse oder den Hostnamen Ihres IoT Edge-Gateways. (Informationen zur Sichtbarkeit dieses Berichts finden Sie in den Details zur Umgebungsvariablen.)
 
 ```bash
-    wget "http://<L3 IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
+    wget http://<L3 IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
 ```

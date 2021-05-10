@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: a49ede283899cec42898672f5a376221265dea10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3f4d883dcc9b79ddab77bb8779e52e629226631
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104723517"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950342"
 ---
 # <a name="3---deploy-the-search-enabled-website"></a>3\. Bereitstellen der Website mit Suchunterstützung
 
@@ -62,15 +62,18 @@ Die statische Web-App pullt Informationen und Dateien für die Bereitstellung un
 
 1. Speichern Sie diesen Abfrageschlüssel. Er wird im nächsten Abschnitt benötigt. Der Abfrageschlüssel kann zum Abfragen Ihres Index verwendet werden. 
 
-## <a name="add-configuration-settings-in-visual-studio-code"></a>Hinzufügen von Konfigurationseinstellungen in Visual Studio Code
+## <a name="add-configuration-settings-in-azure-portal"></a>Hinzufügen von Konfigurationseinstellungen im Azure-Portal
 
 Von der Azure-Funktions-App werden keine Suchdaten zurückgegeben, solange die Suchgeheimnisse nicht in den Einstellungen angegeben wurden. 
 
-1. Wählen Sie über die Aktivitätsleiste die Option **Azure** und anschließend über die Seitenleiste die Option **Static Web Apps** aus. 
-1. Erweitern Sie Ihre neue statische Web-App, bis die **Anwendungseinstellungen** angezeigt werden.
-1. Klicken Sie mit der rechten Maustaste auf **Anwendungseinstellungen**, und wählen Sie **Neue Einstellung hinzufügen** aus.
+1. Wählen Sie auf der Aktivitätsleiste **Azure** aus. 
+1. Klicken Sie mit der rechten Maustaste auf Ihre statische Web-App-Ressource, und wählen Sie dann **Im Portal öffnen** aus.
 
-    :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-static-web-app-configure-settings.png" alt-text="Klicken Sie mit der rechten Maustaste auf **Anwendungseinstellungen**, und wählen Sie **Neue Einstellung hinzufügen** aus.":::
+    :::image type="content" source="media/tutorial-javascript-static-web-app/open-static-web-app-in-azure-portal.png" alt-text="Rechtsklicken auf die statische JavaScript-Web-App-Ressource und Auswählen von „Im Portal öffnen“":::
+
+1. Wählen Sie **Konfiguration** und dann **+ Hinzufügen** aus.
+
+    :::image type="content" source="media/tutorial-javascript-static-web-app/add-new-application-setting-to-static-web-app-in-portal.png" alt-text="Auswählen von „Konfiguration“ und „Hinzufügen“ für Ihre JavaScript-App":::
 
 1. Fügen Sie die folgenden Einstellungen hinzu:
 
@@ -80,6 +83,17 @@ Von der Azure-Funktions-App werden keine Suchdaten zurückgegeben, solange die S
     |SearchServiceName|Der Name Ihrer Suchressource|
     |SearchIndexName|`good-books`|
     |SearchFacets|`authors*,language_code`|
+
+    Azure Cognitive Search erfordert zum Filtern von Auflistungen eine andere Syntax als für Zeichenfolgen. Fügen Sie nach einem Feldnamen `*` hinzu, um anzugeben, dass das Feld vom Typ `Collection(Edm.String)` ist. Dadurch kann die Azure-Funktion Filter ordnungsgemäß zu Abfragen hinzufügen.
+
+1. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern. 
+
+    :::image type="content" source="media/tutorial-javascript-static-web-app/save-new-application-setting-to-static-web-app-in-portal.png" alt-text="Auswählen von „Speichern“, um die Einstellungen zu speichern":::
+
+1. Kehren Sie zu VS Code zurück. 
+1. Aktualisieren Sie Ihre statische Web-App, um die Anwendungseinstellungen der statischen Web-App anzuzeigen. 
+
+    :::image type="content" source="media/tutorial-javascript-static-web-app/visual-studio-code-extension-fresh-resource.png" alt-text="Aktualisieren der statischen Web-App, um die Anwendungseinstellungen der statischen Web-App anzuzeigen":::
 
 ## <a name="use-search-in-your-static-web-app"></a>Verwenden der Suche in Ihrer statischen Web-App
 

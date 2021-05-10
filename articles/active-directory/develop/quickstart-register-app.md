@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 7b7adde8a6e60042bec7695e4553d6470e548316
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: df89335880802680e6074c467227ca49a841d5ca
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055686"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016651"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -129,6 +129,7 @@ Weitere Informationen zu Empfehlungen im Zusammenhang mit der Anwendungssicherhe
 1. Wählen Sie **Hinzufügen**.
 1. *Notieren Sie sich den Wert des Geheimnisses*, das in Ihrem Clientanwendungscode verwendet werden soll. Dieser Geheimniswert kann nach Verlassen dieser Seite *nicht erneut angezeigt werden*.
 
+Aus Sicherheitsgründen beschränkt Microsoft derzeit die Erstellung von Clientschlüsseln, die länger als 24 Monate gelten, und empfiehlt, dass Sie dies auf einen Wert von weniger als 12 Monaten festlegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

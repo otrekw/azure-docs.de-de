@@ -3,18 +3,18 @@ title: 'Tutorial: Erstellen und Verwalten von exportierten Daten aus Azure Cost 
 description: Dieser Artikel erläutert, wie Sie aus Azure Cost Management exportierte Daten erstellen und verwalten können, um sie in externen Systemen zu verwenden.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/7/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 37804be38918713cdfa7aea59763054e444daa7e
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400351"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015715"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -33,11 +33,14 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Überprüfen, ob Daten gesammelt wurden
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Datenexport ist für verschiedene Azure-Kontotypen einschließlich [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)-Kunden und Kunden mit [Microsoft-Kundenvereinbarung](get-started-partners.md) verfügbar. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Die folgenden Azure-Berechtigungen oder Bereiche werden pro Abonnement für den Datenexport nach Benutzer und Gruppe unterstützt. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
 - Besitzer – kann geplante Exporte für ein Abonnement erstellen, ändern oder löschen.
-- Mitwirkende – kann eigene geplante Exporte erstellen, ändern oder löschen. Kann den Namen der von anderen Personen erstellten Exporte ändern.
+- Mitwirkender – kann eigene geplante Exporte erstellen, ändern oder löschen. Kann den Namen der von anderen Personen erstellten Exporte ändern.
 - Leser – kann Exporte planen, für die er die Berechtigung hat.
+
+Weitere Informationen zu Bereichen, einschließlich des Zugriffs, der zum Konfigurieren von Exporten für Bereiche für Enterprise Agreement und Microsoft-Kundenvereinbarung erforderlich ist, finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
 Für Azure Storage-Konten:
 - Um das konfigurierte Speicherkonto zu ändern, sind unabhängig von den Berechtigungen für den Export Schreibberechtigungen erforderlich.
@@ -81,11 +84,13 @@ Zunächst kann es 12 –24 Stunden dauern, bis der Export ausgeführt wird. Bi
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
+Beim programmgesteuerten Erstellen eines Exports müssen Sie den Ressourcenanbieter `Microsoft.CostManagementExports` manuell bei dem Abonnement registrieren, in dem sich das Speicherkonto befindet. Die Registrierung erfolgt automatisch, wenn Sie den Export mithilfe des Azure-Portal erstellen. Weitere Informationen zum Registrieren eines Ressourcenanbieters finden Sie unter [Registrieren des Ressourcenanbieters](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+
 Bereiten Sie zunächst Ihre Umgebung für die Azure-Befehlszeilenschnittstelle vor:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-1. Verwenden Sie nach der Anmeldung den Befehl [az costmanagement export list](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_list), um Ihre aktuellen Exporte anzuzeigen:
+1. Verwenden Sie nach der Anmeldung den Befehl [az costmanagement export list](/cli/azure/costmanagement/export#az_costmanagement_export_list), um Ihre aktuellen Exporte anzuzeigen:
 
    ```azurecli
    az costmanagement export list --scope "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -108,7 +113,7 @@ Bereiten Sie zunächst Ihre Umgebung für die Azure-Befehlszeilenschnittstelle v
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. Führen Sie den Befehl [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) aus, um den Export zu erstellen:
+1. Führen Sie den Befehl [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) aus, um den Export zu erstellen:
 
    ```azurecli
    az costmanagement export create --name DemoExport --type ActualCost \
@@ -122,14 +127,14 @@ Bereiten Sie zunächst Ihre Umgebung für die Azure-Befehlszeilenschnittstelle v
 
    In diesem Beispiel wird `MonthToDate` verwendet. Durch den Export wird täglich eine Exportdatei Ihrer Kosten für den bisherigen Kalendermonat erstellt. Die neuesten Daten werden aus vorhergehenden täglichen Exporten des aktuellen Monats aggregiert.
 
-1. Verwenden Sie zum Anzeigen der Details Ihres Exportvorgangs den Befehl [az costmanagement export show](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_show):
+1. Verwenden Sie zum Anzeigen der Details Ihres Exportvorgangs den Befehl [az costmanagement export show](/cli/azure/costmanagement/export#az_costmanagement_export_show):
 
    ```azurecli
    az costmanagement export show --name DemoExport \
       --scope "subscriptions/00000000-0000-0000-0000-000000000000"
    ```
 
-1. Aktualisieren Sie einen Export mithilfe des Befehls [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update):
+1. Aktualisieren Sie einen Export mithilfe des Befehls [az costmanagement export update](/cli/azure/costmanagement/export#az_costmanagement_export_update):
 
    ```azurecli
    az costmanagement export update --name DemoExport
@@ -141,13 +146,15 @@ Bereiten Sie zunächst Ihre Umgebung für die Azure-Befehlszeilenschnittstelle v
 >[!NOTE]
 >Zunächst kann es 12 –24 Stunden dauern, bis der Export ausgeführt wird. Es kann jedoch länger dauern, bis die Daten in exportierten Dateien angezeigt werden.
 
-Zum Löschen eines Exports kann der Befehl [az costmanagement export delete](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_delete) verwendet werden:
+Zum Löschen eines Exports kann der Befehl [az costmanagement export delete](/cli/azure/costmanagement/export#az_costmanagement_export_delete) verwendet werden:
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Beim programmgesteuerten Erstellen eines Exports müssen Sie den Ressourcenanbieter `Microsoft.CostManagementExports` manuell bei dem Abonnement registrieren, in dem sich das Speicherkonto befindet. Die Registrierung erfolgt automatisch, wenn Sie den Export mithilfe des Azure-Portal erstellen. Weitere Informationen zum Registrieren eines Ressourcenanbieters finden Sie unter [Registrieren des Ressourcenanbieters](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 Bereiten Sie zunächst Ihre Umgebung für Azure PowerShell vor:
 

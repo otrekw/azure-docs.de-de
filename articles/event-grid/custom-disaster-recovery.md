@@ -2,14 +2,14 @@
 title: Notfallwiederherstellung für benutzerdefinierte Themen in Azure Event Grid
 description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie Ihre Ereignisarchitektur einrichten, um eine Wiederherstellung durchzuführen, wenn in einer Region Fehler für den Event Grid-Dienst auftreten.
 ms.topic: tutorial
-ms.date: 07/07/2020
+ms.date: 04/22/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4b387a673cf49f30d40b44bb8d5e1f4dac51d0c
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020142"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895701"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Erstellen einer eigenen Notfallwiederherstellung für benutzerdefinierte Themen in Event Grid
 Die Notfallwiederherstellung konzentriert sich auf die Wiederherstellung nach einem schwerwiegenden Ausfall der Anwendungsfunktionalität. In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie Ihre Ereignisarchitektur einrichten, um eine Wiederherstellung durchzuführen, wenn in einer bestimmten Region Fehler des Event Grid-Diensts auftreten.
@@ -84,13 +84,16 @@ Sie sollten nun über Folgendes verfügen:
    * Ein sekundäres Thema in Ihrer sekundären Region
    * Ein sekundäres Ereignisabonnement, das Ihr primäres Thema mit der Ereignisempfänger-Website verbindet
 
-## <a name="implement-client-side-failover"></a>Implementieren des clientseitigen Failovers
+## <a name="implement-client-side-failover&quot;></a>Implementieren des clientseitigen Failovers
 
 Da Sie nun über ein regional redundantes Themen- und Abonnementpaar verfügen, können Sie das clientseitige Failover implementieren. Dazu stehen mehrere Möglichkeiten zur Auswahl, alle Failoverimplementierungen besitzen jedoch die folgende Funktion: Wenn ein Thema nicht mehr fehlerfrei ist, wird Datenverkehr zum anderen Thema umgeleitet.
 
-### <a name="basic-client-side-implementation"></a>Grundlegende clientseitige Implementierung
+### <a name=&quot;basic-client-side-implementation&quot;></a>Grundlegende clientseitige Implementierung
 
 Der folgende Code ist ein einfacher .NET-Herausgeber, der immer zuerst versucht, die Veröffentlichung in Ihrem primären Thema vorzunehmen. Wenn dies nicht möglich ist, erfolgt dann ein Failover zum sekundären Thema. In beiden Fällen wird außerdem mit einem GET-Vorgang für `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` die Integritäts-API des anderen Themas überprüft. Ein fehlerfreies Thema sollte immer mit **200 OK** antworten, wenn ein GET-Vorgang für den Endpunkt **/api/Health** ausgeführt wird.
+
+> [!NOTE]
+> Der folgende Beispielcode dient nur zu Demonstrationszwecken und ist nicht für die Verwendung in der Produktion vorgesehen. 
 
 ```csharp
 using System;
@@ -102,10 +105,10 @@ using Newtonsoft.Json;
 
 namespace EventGridFailoverPublisher
 {
-    // This captures the "Data" portion of an EventGridEvent on a custom topic
+    // This captures the &quot;Data&quot; portion of an EventGridEvent on a custom topic
     class FailoverEventData
     {
-        [JsonProperty(PropertyName = "teststatus")]
+        [JsonProperty(PropertyName = &quot;teststatus")]
         public string TestStatus { get; set; }
     }
 

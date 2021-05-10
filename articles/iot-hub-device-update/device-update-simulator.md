@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 90e72bd12d9115e5ff95213428ae4ac37979dcf3
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 77bfab51cf7ccc9ec6ffe3b0018c0a488b601a0a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120094"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070207"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Device Update for Azure IoT Hub: Tutorial zum Verwenden des Ubuntu (18.04 x64) Simulator Reference Agent
 
@@ -112,7 +112,7 @@ Sobald der Device Update-Agent auf einem IoT-Gerät ausgeführt wird, muss das G
 
 1. Starten Sie im Azure-Portal Device Update for IoT Hub.
 2. Erstellen Sie ein neues Gerät.
-3. Navigieren Sie auf der linken Seite der Seite zu „Explorers > IoT Devices“ (Explorers > IoT-Geräte), und wählen Sie „New“ (Neu) aus.
+3. Navigieren Sie auf der linken Seite der Seite zu „IoT-Geräte“, und wählen Sie „Neu“ aus.
 4. Geben Sie unter „Device ID“ (Geräte-ID) einen Namen für das Gerät an. Stellen Sie sicher, dass das Kontrollkästchen „Autogenerate keys“(Schlüssel automatisch generieren) aktiviert ist.
 5. Wählen Sie „Save“ (Speichern) aus.
 6. Nun wird die Seite „Devices“ (Geräte) erneut angezeigt, und das von Ihnen erstellte Gerät sollte in der Liste enthalten sein. Wählen Sie dieses Gerät aus.

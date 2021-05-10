@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 163bd7dbdac4de7b7d9c1657ac3debf45382a27a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 746845004a7a1baf1cafb872aae9322177879b6b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027270"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011101"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Informationen zum Übertragen des Abrechnungsbesitzes für ein Azure-Abonnement
 
@@ -30,16 +30,30 @@ Wenn Sie ein Kunde mit Enterprise Agreement (EA) sind, können Administratoren i
 
 Nur der Abrechnungsadministrator eines Kontos kann den Besitz eines Abonnements übertragen.
 
-## <a name="determine-account-billing-administrator"></a>Ermitteln des Abrechnungsadministrators
+## <a name="determine-if-you-are-a-billing-administrator"></a>Ermitteln, ob Sie Abrechnungsadministrator sind
 
 <a name="whoisaa"></a>
 
-Der Abrechnungsadministrator ist die Person, die über Berechtigungen zum Verwalten der Abrechnung für ein Konto verfügt. Sie ist berechtigt, im [Azure-Portal](https://portal.azure.com) auf die Abrechnung zuzugreifen und verschiedene Abrechnungsaufgaben durchzuführen (Abonnements erstellen, Rechnungen anzeigen und bezahlen, Zahlungsmethoden aktualisieren und Ähnliches).
+Suchen Sie die Person, die Zugriff zum Verwalten der Abrechnung für ein Konto hat, um die Übertragung durchführen zu können. Sie ist berechtigt, im [Azure-Portal](https://portal.azure.com) auf die Abrechnung zuzugreifen und verschiedene Abrechnungsaufgaben durchzuführen (Abonnements erstellen, Rechnungen anzeigen und bezahlen, Zahlungsmethoden aktualisieren und Ähnliches).
 
-Um Konten zu identifizieren, für die Sie der Abrechnungsadministrator sind, besuchen Sie die Seite [„Kostenverwaltung + Abrechnung“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview). Wählen Sie dann im linken Bereich die Option **Alle Abrechnungsbereiche** aus. Auf der Seite „Abonnements“ werden alle Abonnements aufgelistet, für die Sie als Abrechnungsadministrator fungieren.
+### <a name="check-if-you-have-billing-access"></a>Überprüfen, ob Sie über Abrechnungszugriff verfügen
 
-Wenn Sie sich nicht sicher sind, wer der Kontoadministrator für ein Abonnement ist, besuchen Sie die [Seite „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Wählen Sie dann das zu überprüfende Abonnement aus, und sehen Sie unter **Einstellungen** nach. Wählen Sie **Eigenschaften** aus, und der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
+1. Um Konten zu identifizieren, für die Sie Abrechnungszugriff besitzen, besuchen Sie die Seite [„Kostenverwaltung + Abrechnung“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
 
+2. Wählen Sie im linken Menü die Option **Abrechnungskonten** aus.
+
+3. Auf der Auflistungsseite **Abrechnungsbereich** werden alle Abonnements angezeigt, für die Sie Zugriff auf die Abrechnungsdetails haben.
+
+### <a name="check-by-subscription"></a>Überprüfen nach Abonnement
+
+1. Wenn Sie sich nicht sicher sind, wer der Kontoadministrator für ein Abonnement ist, besuchen Sie die [Seite „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). 
+
+2. Wählen Sie das Abonnement aus, das Sie überprüfen möchten.
+
+3. Wählen Sie unter der Überschrift **Einstellungen** die Option **Eigenschaften** aus. Im Feld **Kontoadministrator** erfahren Sie, wer der Kontoadministrator des Abonnements ist.
+
+   > [!NOTE]
+   > Nicht für alle Abonnementtypen werden die Eigenschaften angezeigt.
 
 ## <a name="supported-subscription-types"></a>Unterstützte Abonnementtypen
 

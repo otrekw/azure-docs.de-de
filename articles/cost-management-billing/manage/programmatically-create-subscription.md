@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/11/2021
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 546ed24b5f9e7892f40c9d425b668f60ad705f8f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ce08ebf473b11eecae327c7de050c791f5bc1b1a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493887"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379008"
 ---
 # <a name="create-azure-subscriptions-programmatically"></a>Programmgesteuertes Erstellen von Azure-Abonnements
 
@@ -36,9 +36,9 @@ Neueste APIs:
 - [Erstellen von MCA-Abonnements](programmatically-create-subscription-microsoft-customer-agreement.md)
 - [Erstellen von MPA-Abonnements](programmatically-create-subscription-microsoft-partner-agreement.md)
 
-Falls Sie noch [Vorschau-APIs](programmatically-create-subscription-preview.md) verwenden, können Sie damit auch weiterhin Abonnements erstellen. 
+In diesen Artikeln wird außerdem gezeigt, wie Sie Abonnements mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen. Eine ARM-Vorlage dient als Hilfe bei der Automatisierung des Prozesses zum Erstellen von Abonnements.
 
-Darüber hinaus können Sie [Abonnements auch mit einer ARM-Vorlage erstellen](create-subscription-template.md). Eine ARM-Vorlage dient als Hilfe bei der Automatisierung des Prozesses zum Erstellen von Abonnements mit REST-APIs. 
+Falls Sie noch [Vorschau-APIs](programmatically-create-subscription-preview.md) verwenden, können Sie damit auch weiterhin Abonnements erstellen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

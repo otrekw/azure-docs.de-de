@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: d7b5f1ae6db633bd1af10b1a0de1392c2a1fbcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 37093900bf49e8a7613e2e3f4311548675791ceb
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685532"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220882"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Reaktivieren eines deaktivierten Azure-Abonnements
 
@@ -23,7 +23,7 @@ Ihr Azure-Abonnement kann deaktiviert werden, weil Ihr Guthaben abgelaufen ist, 
 
 ## <a name="your-credit-is-expired"></a>Ihre Gutschrift ist abgelaufen
 
-Wenn Sie sich für ein kostenloses Azure-Konto registrieren, erhalten Sie ein kostenloses Testabonnement, das Ihnen eine Azure-Gutschrift in Höhe von 200 $ für 30 Tage sowie 12 Monate kostenlose Dienste zur Verfügung stellt. Nach Ablauf der 30 Tage deaktiviert Azure Ihr Abonnement. Ihr Abonnement wird deaktiviert, um zu verhindern, dass versehentlich Kosten für die Nutzung anfallen, die die für das Abonnement festgelegte Gutschrift und die kostenlosen Dienste übersteigen. Um Azure-Dienste weiterhin zu verwenden, ist [ein Upgrade Ihres Abonnements](upgrade-azure-subscription.md) erforderlich. Nach dem Upgrade hat Ihr Abonnement noch 12 Monate lang Zugriff auf kostenlose Dienste. Ihnen wird nur die Nutzung in Rechnung gestellt, die über die Mengengrenzwerte für kostenlose Dienste hinausgeht.
+Wenn Sie sich für ein kostenloses Azure-Konto registrieren, erhalten Sie ein kostenloses Testabonnement, bei dem Sie über eine Azure-Gutschrift in Höhe von 200 US-Dollar in Ihrer Abrechnungswährung für 30 Tage sowie 12 Monate lang über kostenlose Dienste verfügen. Nach Ablauf der 30 Tage deaktiviert Azure Ihr Abonnement. Ihr Abonnement wird deaktiviert, um zu verhindern, dass versehentlich Kosten für die Nutzung anfallen, die die für das Abonnement festgelegte Gutschrift und die kostenlosen Dienste übersteigen. Um Azure-Dienste weiterhin zu verwenden, ist [ein Upgrade Ihres Abonnements](upgrade-azure-subscription.md) erforderlich. Nach dem Upgrade hat Ihr Abonnement noch 12 Monate lang Zugriff auf kostenlose Dienste. Ihnen wird nur die Nutzung in Rechnung gestellt, die über die Mengengrenzwerte für kostenlose Dienste hinausgeht.
 
 ## <a name="you-reached-your-spending-limit"></a>Sie haben Ihr Ausgabenlimit erreicht
 

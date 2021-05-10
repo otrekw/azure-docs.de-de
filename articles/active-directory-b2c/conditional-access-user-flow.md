@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6325a890ea297a3aa2bdad76a1d95c10448a7b61
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: cc163f02873cf1827af515791e254261149fc4f9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033912"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124435"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Hinzufügen von bedingtem Zugriff zu Benutzerflows in Azure Active Directory B2C
 
@@ -161,9 +161,78 @@ Nachdem Sie die Azure AD Richtlinie für bedingten Zugriff hinzugefügt haben, a
 
 Mehrere Richtlinien für bedingten Zugriff können jederzeit auf einen einzelnen Benutzer angewendet werden. In diesem Fall hat die strenge Zugriffssteuerungsrichtlinie Vorrang. Wenn z. B. eine Richtlinie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erfordert, während eine andere den Zugriff blockiert, wird der Benutzer blockiert.
 
+## <a name="conditional-access-template-1-sign-in-risk-based-conditional-access"></a>Vorlage 1 für bedingten Zugriff: Risikobasierter bedingter Zugriff beim Anmelden
+
+Die meisten Benutzer weisen ein normales Verhalten auf, das nachverfolgt werden kann. Wenn sie sich aber außerhalb dieser Norm bewegen, ist es ggf. riskant, ihnen das Anmelden ohne Weiteres zu erlauben. Es kann ratsam sein, den entsprechenden Benutzer zu blockieren oder ggf. einfach um die Durchführung einer mehrstufigen Authentifizierung zu bitten. So kann bewiesen werden, ob es sich auch wirklich um die Person handelt, die vorgegeben wird.
+
+Ein Anmelderisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Authentifizierungsanforderung vom Identitätsbesitzer nicht autorisiert wurde. Organisationen mit P2-Lizenzen können Richtlinien für bedingten Zugriff erstellen, die [Azure AD Identity Protection-Risikoerkennungen](../active-directory/identity-protection/concept-identity-protection-risks.md#sign-in-risk) enthalten. Beachten Sie die [Einschränkungen bei Identity Protection-Erkennungen für B2C](./identity-protection-investigate-risk.md?pivots=b2c-user-flow#service-limitations-and-considerations).
+
+Wenn Risiken erkannt werden, können die Benutzer die mehrstufige Authentifizierung zur Eigenwartung durchführen und das riskante Anmeldeereignis schließen, um unnötigen Aufwand für Administratoren zu vermeiden.
+
+Organisationen sollten eine der folgenden Optionen auswählen, um eine Richtlinie für den risikobasierten bedingten Zugriff beim Anmelden zu aktivieren, für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erforderlich ist, wenn das Anmelderisiko mittel ODER hoch ist.
+
+### <a name="enable-with-conditional-access-policy"></a>Aktivieren mit einer Richtlinie für bedingten Zugriff
+
+1. Melden Sie sich beim **Azure-Portal** an.
+2. Navigieren Sie zu **Azure AD B2C** > **Sicherheit** > **Bedingter Zugriff**.
+3. Wählen Sie **Neue Richtlinie**.
+4. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
+5. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
+   2. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
+   3. Wählen Sie **Fertig** aus.
+6. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Alle Cloud-Apps** aus.
+7. Legen Sie unter **Bedingungen** > **Anmelderisiko** die Option **Konfigurieren** auf **Ja** fest. Wählen Sie unter **Anmelderisikostufe auswählen, auf die diese Richtlinie angewendet werden soll** 
+   1. entweder **Hoch** oder **Mittel** aus.
+   2. Wählen Sie **Fertig** aus.
+8. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
+9. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+10. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
+
+### <a name="enable-with-conditional-access-apis"></a>Aktivieren mit APIs für bedingten Zugriff
+
+Informationen zum Erstellen einer Richtlinie für den risikobasierten bedingten Zugriff beim Anmelden mit APIs für bedingten Zugriff finden Sie in der Dokumentation zu [APIs für bedingten Zugriff](../active-directory/conditional-access/howto-conditional-access-apis.md#graph-api).
+
+Mit der folgenden Vorlage kann eine Richtlinie für bedingten Zugriff mit dem Anzeigenamen „CA002: Require MFA for medium+ sign-in risk“ im Modus „Nur melden“ erstellt werden.
+
+```json
+{
+    "displayName": "Template 1: Require MFA for medium+ sign-in risk",
+    "state": "enabledForReportingButNotEnforced",
+    "conditions": {
+        "signInRiskLevels": [ "high" ,
+            "medium"
+        ],
+        "applications": {
+            "includeApplications": [
+                "All"
+            ]
+        },
+        "users": {
+            "includeUsers": [
+                "All"
+            ],
+            "excludeUsers": [
+                "f753047e-de31-4c74-a6fb-c38589047723"
+            ]
+        }
+    },
+    "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+            "mfa"
+        ]
+    }
+}
+```
+
 ## <a name="enable-multi-factor-authentication-optional"></a>Aktivieren der mehrstufigen Authentifizierung (optional)
 
-Wenn Sie einem Benutzerflow bedingten Zugriff hinzufügen, sollten Sie die Verwendung von **mehrstufiger Authentifizierung (Multi-Factor Authentication, MFA)** in Betracht ziehen. Benutzer können für die mehrstufige Authentifizierung einen Einmalcode per SMS oder Sprachanruf oder ein Einmalkennwort per E-Mail erhalten. MFA-Einstellungen sind unabhängig von Einstellungen für bedingten Zugriff. Sie können MFA auf **Immer aktiv** festlegen, damit MFA unabhängig von der Konfiguration des bedingten Zugriffs immer erforderlich ist. Alternativ können Sie MFA auf **Bedingt** festlegen, damit MFA nur erforderlich ist, wenn dies durch eine aktive Richtlinie für bedingten Zugriff angefordert wird.
+Wenn Sie einem Benutzerflow bedingten Zugriff hinzufügen, sollten Sie die Verwendung von **mehrstufiger Authentifizierung (Multi-Factor Authentication, MFA)** in Betracht ziehen. Benutzer können für die mehrstufige Authentifizierung einen Einmalcode per SMS oder Sprachanruf oder ein Einmalkennwort per E-Mail erhalten. MFA-Einstellungen sind unabhängig von Einstellungen für bedingten Zugriff. Sie können zwischen den folgenden MFA-Optionen wählen:
+
+   - **Deaktiviert:** MFA wird während der Anmeldung nie erzwungen, und Benutzer werden während der Registrierung oder Anmeldung nicht aufgefordert, sich für MFA zu registrieren.
+   - **Immer aktiv:** MFA ist unabhängig von der Konfiguration des bedingten Zugriffs immer erforderlich. Wenn Benutzer noch nicht für MFA registriert sind, werden sie während der Anmeldung aufgefordert, sich zu registrieren. Während der Registrierung werden Benutzer aufgefordert, sich für MFA zu registrieren.
+   - **Bedingt (Vorschau):** MFA ist nur erforderlich, wenn dies durch eine aktive Richtlinie für bedingten Zugriff angefordert wird. Wenn das Ergebnis der Auswertung des bedingten Zugriffs eine MFA-Abfrage ohne Risiko ist, wird MFA während der Anmeldung erzwungen. Wenn das Ergebnis eine MFA-Abfrage aufgrund eines Risikos ist *und* der Benutzer nicht für MFA registriert ist, wird die Anmeldung blockiert. Während der Registrierung werden Benutzer nicht aufgefordert, sich für MFA zu registrieren.
 
 > [!IMPORTANT]
 > Wenn die Richtlinie für bedingten Zugriff den Zugriff mit MFA gewährt, der Benutzer aber keine Telefonnummer registriert hat, wird der Benutzer möglicherweise blockiert.
@@ -184,9 +253,9 @@ Um bedingten Zugriff für einen Benutzerflow zu aktivieren, stellen Sie sicher, 
  
    ![Konfigurieren von MFA und bedingtem Zugriff in den Eigenschaften](media/conditional-access-user-flow/add-conditional-access.png)
 
-1. Wählen Sie im Abschnitt **Mehrstufige Authentifizierung** die gewünschte **MFA-Methode** und anschließend unter **Erzwingung der MFA** die Option **Bedingt (empfohlen)** aus.
+1. Wählen Sie im Abschnitt **Mehrstufige Authentifizierung** den gewünschten **Methodentyp** und anschließend unter **Erzwingung der MFA** die Option **Bedingt (Vorschau)** aus.
  
-1. Aktivieren Sie im Abschnitt **Bedingter Zugriff** das Kontrollkästchen **Richtlinien für bedingten Zugriff erzwingen**.
+1. Aktivieren Sie im Abschnitt **Bedingter Zugriff (Vorschau)** das Kontrollkästchen **Richtlinien für bedingten Zugriff erzwingen**.
 
 1. Wählen Sie **Speichern** aus.
 

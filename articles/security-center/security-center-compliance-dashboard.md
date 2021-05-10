@@ -1,24 +1,18 @@
 ---
 title: 'Tutorial: Überprüfungen der Einhaltung gesetzlicher Bestimmungen: Azure Security Center'
 description: 'Tutorial: Es wird beschrieben, wie Sie die Einhaltung gesetzlicher Bestimmungen verbessern, indem Sie Azure Security Center verwenden.'
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/10/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 06a42629df1f22eeb7a90ef5ce4da2ef53162391
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739006"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123157"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Tutorial: Verbessern der Einhaltung gesetzlicher Vorschriften
 
@@ -26,7 +20,7 @@ Mit Azure Security Center kann der Prozess zur Einhaltung von Anforderungen gese
 
 Von Security Center wird Ihre Hybrid Cloud-Umgebung kontinuierlich bewertet, um die Risikofaktoren gemäß den Kontrollen und bewährten Methoden in den Standards, die auf Ihre Abonnements angewendet wurden, zu analysieren. Das Dashboard gibt den Status Ihrer Einhaltung dieser Standards wieder. 
 
-Wenn Sie Security Center für ein Azure-Abonnement aktivieren, wird diesem Abonnement automatisch der [Azure-Sicherheitsvergleichstest](https://docs.microsoft.com/security/benchmark/azure/introduction) zugewiesen. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
+Wenn Sie Security Center für ein Azure-Abonnement aktivieren, wird diesem Abonnement automatisch der [Azure-Sicherheitsvergleichstest](/security/benchmark/azure/introduction) zugewiesen. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
 
 Im Dashboard zur Einhaltung gesetzlicher Bestimmungen wird der Status aller Bewertungen angezeigt, die in Ihrer Umgebung für Ihre ausgewählten Standards und Bestimmungen durchgeführt werden. Wenn Sie aufgrund der Empfehlungen Maßnahmen ergreifen und die Risikofaktoren Ihrer Umgebung reduzieren, verbessert sich Ihr Konformitätsstatus.
 
@@ -135,14 +129,15 @@ Es kann beispielsweise sein, dass von Security Center eine E-Mail an einen besti
 - [Wie kann ich einen Bericht mit Konformitätsdaten in einem PDF-fremden Format herunterladen?](#how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf)
 - [Wie kann ich Ausnahmen für einige der Richtlinien im Dashboard für die Einhaltung gesetzlicher Bestimmungen erstellen?](#how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard)
 - [Welche Azure Defender-Pläne oder -Lizenzen benötige ich, um das Dashboard für die Einhaltung gesetzlicher Bestimmungen verwenden zu können?](#what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard)
+- [Woher weiß ich, welche Benchmark oder welcher Standard verwendet werden soll?](#how-do-i-know-which-benchmark-or-standard-to-use)
 
 ### <a name="what-standards-are-supported-in-the-compliance-dashboard"></a>Welche Standards werden auf dem Compliancedashboard unterstützt?
 Standardmäßig wird auf dem Dashboard für die Einhaltung gesetzlicher Bestimmungen der Azure-Sicherheitsvergleichstest angezeigt. Beim Azure-Sicherheitsvergleichstest handelt es sich um von Microsoft erstellte, Azure-spezifische Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Weitere Informationen finden Sie in der [Einführung zum Vergleichstest für die Azure-Sicherheit](../security/benchmarks/introduction.md)
 
 Wenn Sie Ihre Konformität mit einem anderen Standard nachverfolgen möchten, müssen Sie ihn explizit Ihrem Dashboard hinzufügen.
  
-Sie können unter anderem folgende Standards hinzufügen: Azure CIS 1.1.0 (neu), NIST SP 800-53 R4, NIST SP 800-171 R2, SWIFT CSP CSCF-v2020, UK Official und UK NHS, HIPAA HITRUST, Canada Federal PBMM, ISO 27001, SOC2-TSP und PCI-DSS 3.2.1.  
- 
+Sie können weitere Standards hinzufügen, etwa: Azure CIS 1.3.0, NIST SP 800-53, NIST SP 800-171, SWIFT CSP CSCF-v2020, UK Official und UK NHS, HIPAA, Canada Federal PBMM, ISO 27001, SOC2-TSP und PCI-DSS 3.2.1.  
+
 Dem Dashboard werden weitere Standards hinzugefügt und in die Informationen unter [Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen](update-regulatory-compliance-packages.md) eingeschlossen.
 
 ### <a name="why-do-some-controls-appear-grayed-out"></a>Warum sind einige Kontrollen abgeblendet?
@@ -195,7 +190,12 @@ Für andere Richtlinien können Sie direkt in der Richtlinie eine Ausnahme erste
 Wenn für einen beliebigen Ihrer Azure-Ressourcentypen eines der Azure Defender-Pakete aktiviert ist, haben Sie in Security Center Zugriff auf das Dashboard für die Einhaltung gesetzlicher Bestimmungen mit sämtlichen zugehörigen Daten.
 
 
+### <a name="how-do-i-know-which-benchmark-or-standard-to-use"></a>Woher weiß ich, welche Benchmark oder welcher Standard verwendet werden soll?
+[Azure Security Benchmark](/security/benchmark/azure/introduction) (ASB) ist der kanonische Satz von Sicherheitsempfehlungen und bewährten Methoden, die von Microsoft definiert wurden und auf allgemeine Compliancekontrollframeworks ausgerichtet sind, einschließlich [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/) und [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final). ASB ist eine sehr umfassende Benchmark und wurde entwickelt, um die neuesten Sicherheitsfunktionen einer Vielzahl von Azure-Diensten zu empfehlen. Wir empfehlen ASB Kunden, deren Sicherheitsstatus maximiert werden soll und die die Möglichkeit haben, ihren Konformitätsstatus an Branchenstandards auszurichten.
 
+Die [CIS-Benchmark](https://www.cisecurity.org/benchmark/azure/) wird von einer unabhängigen Entität – Center for Internet Security (CIS) – erstellt und enthält Empfehlungen für eine Teilmenge der wichtigsten Azure-Dienste. Wir arbeiten mit CIS zusammen, um sicherzustellen, dass die Empfehlungen die neuesten Optimierungen in Azure beinhalten, hin und wieder sind sie jedoch trotzdem veraltet. Dennoch nutzen einige Kunden diese objektive Drittanbieterbewertung von CIS gerne als erste und primäre Sicherheitsbaseline.
+
+Seit der Veröffentlichung von Azure Security Benchmark haben sich viele Kunden dazu entschieden, sie als Ersatz für die CIS-Benchmarks einzusetzen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

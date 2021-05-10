@@ -6,15 +6,15 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 04/05/2021
-ms.openlocfilehash: 090d38a92da126cd4fd8423231f856d22ea9a64c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/22/2021
+ms.openlocfilehash: efa5502c89a68be05ef8f7dc1d3d57c57e732caa
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106835"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987072"
 ---
-# <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – Flexible Server
+# <a name="overview---azure-database-for-postgresql---flexible-server"></a>Übersicht: Azure Database for PostgreSQL – Flexible Server
 
 [Azure Database for PostgreSQL](../overview.md) auf Grundlage der PostgreSQL Community Edition ist in drei Bereitstellungsmodi verfügbar:
 
@@ -85,6 +85,10 @@ Flexible Server-Instanzen ermöglichen den vollständigen privaten Zugriff auf d
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 
 Der Flexible Server-Dienst verfügt über integrierte Funktionen für Leistungsüberwachung und Warnungen. Alle Azure-Metriken werden im Minutentakt erfasst, und für jede Metrik steht ein Verlauf von 30 Tagen zur Verfügung. Sie können Warnungen für die Metriken konfigurieren. Der Dienst macht Hostservermetriken verfügbar, um die Ressourcenauslastung zu überwachen, und ermöglicht die Konfiguration von Protokollen langsamer Abfragen. Mit diesen Tools können Sie Ihre Workloads schnell optimieren und Ihren Server für optimale Leistung konfigurieren.
+
+## <a name="built-in-pgbouncer"></a>Integrierte PgBouncer-Instanz
+
+Der flexible Server verfügt über eine integrierte PgBouncer-Instanz, eine Verbindungspoolfunktion. Sie können sie optional aktivieren und Ihre Anwendungen über PgBouncer unter Verwendung des gleichen Hostnamens und des Ports 6432 mit Ihrem Datenbankserver verbinden.
 
 ## <a name="azure-regions"></a>Azure-Regionen
 

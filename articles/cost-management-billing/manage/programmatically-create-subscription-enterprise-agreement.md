@@ -1,20 +1,20 @@
 ---
 title: Programmgesteuertes Erstellen von Azure Enterprise Agreement-Abonnements mit den neuesten APIs
-description: Hier erfahren Sie, wie Sie mithilfe der neuesten Versionen der REST-API, der Azure CLI und von Azure PowerShell programmgesteuert Azure Enterprise Agreement-Abonnements erstellen.
+description: Hier erfahren Sie, wie Sie mithilfe der neuesten Versionen der REST-API, der Azure CLI, von Azure PowerShell und der Azure Resource Manager-Vorlagen programmgesteuert Azure Enterprise Agreement-Abonnements erstellen.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 4de89892d27bb811be6670c1a14ca85859342ecc
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e57f385dce6446ebb3aa2df0ceb48f97a7e0c2f4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218909"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877898"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Programmgesteuertes Erstellen von Azure Enterprise Agreement-Abonnements mit den neuesten APIs
 
@@ -31,7 +31,8 @@ Wenn Sie ein Azure-Abonnement programmgesteuert erstellen, unterliegt es der Ver
 Sie müssen über die Rolle „Besitzer“ für ein Registrierungskonto verfügen, um ein Abonnement zu erstellen. Es gibt zwei Möglichkeiten, wie Sie die Rolle erhalten:
 
 * Der Enterprise-Administrator Ihrer Registrierung kann [Sie zum Kontobesitzer machen](https://ea.azure.com/helpdocs/addNewAccount) (Anmeldung erforderlich), damit Sie zum Besitzer des Registrierungskontos werden.
-* Ein vorhandener Besitzer des Registrierungskontos kann [Ihnen Zugriff gewähren](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Wenn Sie einen Dienstprinzipal verwenden möchten, um ein EA-Abonnement zu erstellen, müssen Sie entsprechend [diesem Dienstprinzipal die Berechtigung zum Erstellen von Abonnements erteilen](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). 
+* Ein vorhandener Besitzer des Registrierungskontos kann [Ihnen Zugriff gewähren](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Wenn Sie einen Dienstprinzipal verwenden möchten, um ein EA-Abonnement zu erstellen, müssen Sie entsprechend [diesem Dienstprinzipal die Berechtigung zum Erstellen von Abonnements erteilen](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put).  
+    Wenn Sie Abonnements mithilfe eines SPN erstellen, verwenden Sie die Objekt-ID (ObjectId) der Azure AD-Anwendungsregistrierung als Dienstprinzipalobjekt-ID mit [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) oder der [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list).
   > [!NOTE]
   > Stellen Sie sicher, dass Sie die richtige API-Version verwenden, um dem Registrierungskonto Besitzerberechtigungen zu erteilen. Verwenden Sie für diesen Artikel und die darin dokumentierten APIs die API [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Wenn Sie zur Verwendung der neueren APIs eine Migration durchführen, müssen Sie die Besitzerberechtigung mithilfe von [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) erneut erteilen. Die vorherige Konfiguration, die mit der [Version 2015-07-01](grant-access-to-create-subscription.md) erstellt wurde, wird nicht automatisch für die Verwendung mit den neueren APIs konvertiert.
 
@@ -41,7 +42,7 @@ Nachdem Sie einem Registrierungskonto hinzugefügt wurden, das einem Kontobesitz
 
 Um die folgenden Befehle ausführen zu können, müssen Sie im *Basisverzeichnis* des Kontobesitzers angemeldet sein. Dies ist das Verzeichnis, in dem Abonnements standardmäßig erstellt werden.
 
-### <a name="rest"></a>[REST](#tab/rest-getEnrollments)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Fordern Sie eine Liste aller Registrierungskonten an, auf die Sie zugreifen können:
 
@@ -91,17 +92,13 @@ In der API-Antwort sind alle Registrierungskonten aufgelistet, auf die Sie Zugri
 
 ```
 
-Der Wert für einen Abrechnungsbereich und `id` sind identisch. Die ID (`id`) für Ihr Registrierungskonto ist der Abrechnungsbereich, unter dem die Abonnementanforderung initiiert wird. Es ist wichtig, die ID zu kennen, da sie ein erforderlicher Parameter ist, den Sie später im Artikel zum Erstellen eines Abonnements verwenden.
+Die Werte für einen Abrechnungsbereich und `id` sind identisch. Die ID (`id`) für Ihr Registrierungskonto ist der Abrechnungsbereich, unter dem die Abonnementanforderung initiiert wird. Es ist wichtig, die ID zu kennen, da sie ein erforderlicher Parameter ist, den Sie später im Artikel zum Erstellen eines Abonnements verwenden.
 
-<!-- 
-### [PowerShell](#tab/azure-powershell-getEnrollments)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+Rufen Sie diesen Wert mithilfe der Azure CLI oder der REST-API ab.
 
--->
-
-
-### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-getEnrollments)
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Fordern Sie eine Liste aller Registrierungskonten an, auf die Sie zugreifen können:
 
@@ -159,7 +156,8 @@ In der Antwort sind alle Registrierungskonten aufgelistet, auf die Sie Zugriff h
     "type": "Microsoft.Billing/billingAccounts"
   },
 ```
-Der Wert für einen Abrechnungsbereich und `id` sind identisch. Die ID (`id`) für Ihr Registrierungskonto ist der Abrechnungsbereich, unter dem die Abonnementanforderung initiiert wird. Es ist wichtig, die ID zu kennen, da sie ein erforderlicher Parameter ist, den Sie später im Artikel zum Erstellen eines Abonnements verwenden.
+
+Die Werte für einen Abrechnungsbereich und `id` sind identisch. Die ID (`id`) für Ihr Registrierungskonto ist der Abrechnungsbereich, unter dem die Abonnementanforderung initiiert wird. Es ist wichtig, die ID zu kennen, da sie ein erforderlicher Parameter ist, den Sie später im Artikel zum Erstellen eines Abonnements verwenden.
 
 ---
 
@@ -167,7 +165,7 @@ Der Wert für einen Abrechnungsbereich und `id` sind identisch. Die ID (`id`) f�
 
 Im folgenden Beispiel wird ein Abonnement namens *Dev Team Subscription* in Registrierungskonto erstellt, das im vorherigen Schritt ausgewählt wurde. 
 
-### <a name="rest"></a>[REST](#tab/rest-EA)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Rufen Sie die PUT-API auf, um eine Anforderung bzw. einen Alias für die Abonnementerstellung zu generieren.
 
@@ -227,14 +225,14 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 Der Status „In Bearbeitung“ wird unter `provisioningState` als Status `Accepted` zurückgegeben.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-EA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Führen Sie `Install-Module Az.Subscription` aus, um die neueste Version des Moduls zu installieren, das das Cmdlet `New-AzSubscriptionAlias` enthält. Eine aktuelle Version von PowerShellGet finden Sie unter [Abrufen des PowerShellGet-Moduls](/powershell/scripting/gallery/installing-psget).
 
 Führen Sie den folgenden Befehl [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) aus, und verwenden Sie dabei den Abrechnungsbereich `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`. 
 
 ```azurepowershell-interactive
-New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload 'Production"
+New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload "Production"
 ```
 
 Sie erhalten die Abonnement-ID (subscriptionId) als Teil der Befehlsantwort.
@@ -251,11 +249,11 @@ Sie erhalten die Abonnement-ID (subscriptionId) als Teil der Befehlsantwort.
 }
 ```
 
-### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-EA)
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Installieren Sie zunächst die Erweiterung, indem Sie `az extension add --name account` und `az extension add --name alias` ausführen.
 
-Führen Sie den folgenden Befehl [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create) aus, und geben Sie `billing-scope` und `id` von einem Ihrer Registrierungskonten (`enrollmentAccounts`) an. 
+Führen Sie den folgenden Befehl [az account alias create](/cli/azure/account/alias#az_account_alias_create) aus, und geben Sie `billing-scope` und `id` von einem Ihrer Registrierungskonten (`enrollmentAccounts`) an. 
 
 ```azurecli-interactive
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/654321" --display-name "Dev Team Subscription" --workload "Production"
@@ -277,6 +275,113 @@ Sie erhalten die Abonnement-ID (subscriptionId) als Teil der Befehlsantwort.
 
 ---
 
+## <a name="use-arm-template"></a>Verwenden einer ARM-Vorlage
+
+Im vorherigen Abschnitt wurde gezeigt, wie Sie ein Abonnement mit PowerShell, der CLI oder der REST-API erstellen. Wenn Sie das Erstellen von Abonnements automatisieren müssen, verwenden Sie ggf. eine Azure Resource Manager-Vorlage (ARM-Vorlage).
+
+Mit der folgenden Vorlage wird ein Abonnement erstellt. Geben Sie für `billingScope` die ID des Registrierungskontos an. Geben Sie für `targetManagementGroup` die Verwaltungsgruppe an, in der Sie das Abonnement erstellen möchten.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionAliasName": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide a name for the alias. This name will also be the display name of the subscription."
+            }
+        },
+        "billingScope": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the full resource ID of billing scope to use for subscription creation."
+            }
+        },
+        "targetManagementGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the target management group to place the subscription."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "name": "[parameters('subscriptionAliasName')]",
+            "type": "Microsoft.Subscription/aliases",
+            "apiVersion": "2020-09-01",
+            "properties": {
+                "workLoad": "Production",
+                "displayName": "[parameters('subscriptionAliasName')]",
+                "billingScope": "[parameters('billingScope')]",
+                "managementGroupId": "[tenantResourceId('Microsoft.Management/managementGroups/', parameters('targetManagementGroup'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Stellen Sie die Vorlage auf [Verwaltungsgruppenebene](../../azure-resource-manager/templates/deploy-to-management-group.md) bereit.
+
+### <a name="rest"></a>[REST](#tab/rest)
+
+```json
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
+```
+
+Mit dem Anforderungstext:
+
+```json
+{
+  "location": "eastus",
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json"
+    },
+    "parameters": {
+      "subscriptionAliasName": {
+        "value": "sampleAlias"
+      },
+      "billingScope": {
+        "value": "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"
+      },
+      "targetManagementGroup": {
+        "value": "mg2"
+      }
+    },
+    "mode": "Incremental"
+  }
+}
+```
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -Name exampledeployment `
+  -Location eastus `
+  -ManagementGroupId mg1 `
+  -TemplateFile azuredeploy.json `
+  -subscriptionAliasName sampleAlias `
+  -billingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" `
+  -targetManagementGroup mg2
+```
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli-interactive
+az deployment mg create \
+  --name exampledeployment \
+  --location eastus \
+  --management-group-id mg1 \
+  --template-file azuredeploy.json \
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321' targetManagementGroup=mg2
+```
+
+---
+
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Einschränkungen der Azure Enterprise-Abonnementerstellungs-API
 
 - Nur Azure Enterprise-Abonnements werden mithilfe der API erstellt.
@@ -289,3 +394,4 @@ Sie erhalten die Abonnement-ID (subscriptionId) als Teil der Befehlsantwort.
 
 * Da Sie nun ein Abonnement erstellt haben, können Sie diese Möglichkeit auch für andere Benutzer und Dienstprinzipale eröffnen. Weitere Informationen finden Sie unter [Gewähren des Zugriffs zum Erstellen von Azure Enterprise-Abonnements (Vorschau) ](grant-access-to-create-subscription.md).
 * Weitere Informationen zum Verwalten einer großen Anzahl von Abonnements mithilfe von Verwaltungsgruppen finden Sie unter [Was sind Azure-Verwaltungsgruppen?](../../governance/management-groups/overview.md).
+* Informationen zum Ändern der Verwaltungsgruppe für ein Abonnement finden Sie unter [Verschieben von Abonnements](../../governance/management-groups/manage.md#move-subscriptions).

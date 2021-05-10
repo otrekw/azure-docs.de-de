@@ -3,17 +3,17 @@ title: Tutorial zur Verwendung benutzerdefinierter Zuweisungsrichtlinien bei Azu
 description: Tutorial zur Verwendung benutzerdefinierter Zuweisungsrichtlinien beim Azure IoT Hub Device Provisioning-Dienst (Azure IoT Hub Device Provisioning Service, DPS)
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/23/2020
+ms.date: 04/23/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f19f43b89cd2527a67827d7434f2e054ee40001e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 823c154a07fed2bc3734993c25accb37aa33a228
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227380"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929919"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Tutorial: Verwenden von benutzerdefinierten Zuweisungsrichtlinien bei Device Provisioning Service (DPS)
 
@@ -207,11 +207,30 @@ Verwenden Sie für das Beispiel in diesem Artikel die folgenden beiden Gerätere
 * **contoso-toaster-007**
 * **contoso-heatpump-088**
 
-Ersetzen Sie den Wert der Variablen **KEY** durch den **Primärschlüssel**, den Sie sich nach der Erstellung Ihrer Registrierungsgruppe notiert haben. Der Schlüsselwert und die Ausgabe, die mit dem nachstehenden Code gezeigt werden, sind nur ein Beispiel.
 
-#### <a name="powershell"></a>[PowerShell](#tab/powershell)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Die IoT-Erweiterung für die Azure CLI stellt den Befehl [`compute-device-key`](/cli/azure/iot/dps?view=azure-cli-latest&preserve-view=true#az_iot_dps_compute_device_key) zum Generieren abgeleiteter Geräteschlüssel bereit. Dieser Befehl kann auf Windows- oder Linux-Systemen, über PowerShell oder eine Bash-Shell verwendet werden.
+
+Ersetzen Sie den Wert des `--key`-Arguments durch den **Primärschlüssel** aus Ihrer Registrierungsgruppe.
+
+```azurecli
+az iot dps compute-device-key --key oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA== --registration-id contoso-toaster-007
+
+"JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs="
+```
+
+```azurecli
+az iot dps compute-device-key --key oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA== --registration-id contoso-heatpump-088
+
+"6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg="
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Wenn Sie eine Windows-Arbeitsstation verwenden, können Sie die abgeleiteten Geräteschlüssel mit PowerShell generieren, wie im folgenden Beispiel gezeigt.
+
+Ersetzen Sie den Wert der Variablen **KEY** durch den **Primärschlüssel**, den Sie sich nach der Erstellung Ihrer Registrierungsgruppe notiert haben. Der Schlüsselwert und die Ausgabe, die mit dem nachstehenden Code gezeigt werden, sind nur ein Beispiel.
 
 ```powershell
 $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
@@ -234,9 +253,12 @@ contoso-toaster-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
 contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 ```
 
-#### <a name="bash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 Wenn Sie eine Linux-Arbeitsstation verwenden, können Sie Ihre abgeleiteten Geräteschlüssel mit OpenSSL generieren, wie im folgenden Beispiel zu Bash gezeigt wird.
+
+Ersetzen Sie den Wert der Variablen **KEY** durch den **Primärschlüssel**, den Sie sich nach der Erstellung Ihrer Registrierungsgruppe notiert haben. Der Schlüsselwert und die Ausgabe, die mit dem nachstehenden Code gezeigt werden, sind nur ein Beispiel.
+
 
 ```bash
 KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==

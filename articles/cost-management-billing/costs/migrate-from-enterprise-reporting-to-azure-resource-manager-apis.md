@@ -6,14 +6,14 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: reference
-ms.date: 11/19/2020
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 93dda4fc3a152b0a07a95ff327c9ea619f25787c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 24fbf52c8fd0338537862a54e15e8a249541a701
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355815"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635789"
 ---
 # <a name="migrate-from-enterprise-reporting-to-azure-resource-manager-apis"></a>Migrieren von der Unternehmensberichterstellung zu Azure Resource Manager-APIs
 
@@ -51,28 +51,7 @@ Nachdem Sie einen Dienstprinzipal zum programmgesteuerten Aufrufen der Azure Res
 
 ### <a name="azure-billing-hierarchy-access"></a>Zugriff auf Azure-Abrechnungshierarchie
 
-Verwenden Sie zum Zuweisen von Dienstprinzipalberechtigungen zu den Bereichen „Abrechnungskonto des Unternehmens“, „Abteilungen“ oder „Registrierungskonto“ die APIs vom Typ [Berechtigungen für die Abrechnung](/rest/api/billing/2019-10-01-preview/billingpermissions), [Definitionen von Abrechnungsrollen](/rest/api/billing/2019-10-01-preview/billingroledefinitions) und [Zuweisungen von Abrechnungsrollen](/rest/api/billing/2019-10-01-preview/billingroleassignments).
-
-- Verwenden Sie die APIs vom Typ „Berechtigungen für die Abrechnung“, zum Identifizieren der Berechtigungen, über die ein Dienstprinzipal für einen bestimmten Bereich, z. B. ein Abrechnungskonto oder eine Abteilung, bereits verfügt.
-- Verwenden Sie die APIs vom Typ „Definitionen von Abrechnungsrollen“ zum Enumerieren der verfügbaren Rollen, die Ihrem Dienstprinzipal zugewiesen werden können.
-  - Derzeit können Dienstprinzipalen nur die Rollen vom Typ „Unternehmensadministrator ohne Schreibberechtigungen“ und „Abteilungsadministrator ohne Schreibberechtigungen“ zugewiesen werden.
-- Verwenden Sie die APIs vom Typ „Zuweisungen von Abrechnungsrollen“, um Ihrem Dienstprinzipal eine Rolle zuzuweisen.
-
-Im folgenden Beispiel wird veranschaulicht, wie Sie die API für Rollenzuweisungen aufrufen, um für einen Dienstprinzipal den Zugriff auf Ihr Abrechnungskonto zu gewähren. Wir empfehlen die Verwendung von [Postman](https://postman.com), um diese einmaligen Berechtigungskonfigurationen durchzuführen.
-
-```json
-POST https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/createBillingRoleAssignment?api-version=2019-10-01-preview
-```
-
-#### <a name="request-body"></a>Anforderungstext
-
-```json
-{
-  "principalId": "00000000-0000-0000-0000-000000000000",
-  "billingRoleDefinitionId": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.Billing/billingRoleDefinition/10000000-aaaa-bbbb-cccc-100000000000"
-}
-
-```
+Informationen zum Zuweisen von Dienstprinzipalberechtigungen zu den Bereichen „Abrechnungskonto des Unternehmens“, „Abteilungen“ oder „Registrierungskonto“ finden Sie unter [Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen](../manage/assign-roles-azure-service-principals.md).
 
 ### <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 

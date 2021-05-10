@@ -3,12 +3,12 @@ title: Einführung
 description: Hier finden Sie Informationen zu den Features und Vorteilen von Azure VMware Solution für die Bereitstellung und Verwaltung VMware-basierter Workloads in Azure. Die SLA für Azure VMware Solution garantiert, dass Azure VMware-Verwaltungstools (vCenter Server und NSX Manager) mindestens 99,9 Prozent der Zeit verfügbar sind.
 ms.topic: overview
 ms.date: 04/20/2021
-ms.openlocfilehash: 9471aa2e427d28e0b8211dc8b25b2e61a4bfa8c4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 8a75038d9552e62b1bc67265ff2965fea9d8b8d6
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752640"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950872"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Was ist Azure VMware Solution?
 
@@ -40,7 +40,7 @@ Die vSAN-Verschlüsselung ruhender Daten ist standardmäßig aktiviert und dient
 
 ## <a name="host-and-software-lifecycle-maintenance"></a>Verwaltung des Host- und Softwarelebenszyklus
 
-Durch regelmäßige Upgrades der privaten Azure VMware Solution-Cloud und der VMware-Software wird gewährleistet, dass die Sicherheit, Stabilität und Features Ihrer privaten Clouds immer auf dem neuesten Stand sind. Weitere Informationen finden Sie unter [Azure VMware Solution: Updates und Upgrades für private Clouds](concepts-upgrades.md).
+Durch regelmäßige Upgrades der privaten Azure VMware Solution-Cloud und der VMware-Software wird gewährleistet, dass die Sicherheit, Stabilität und Features Ihrer privaten Clouds immer auf dem neuesten Stand sind. Weitere Informationen finden Sie unter [Hostwartung und Lebenszyklusverwaltung](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management).
 
 ## <a name="monitoring-your-private-cloud"></a>Überwachen Ihrer privaten Cloud
 

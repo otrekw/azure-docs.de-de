@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 4f6187ccb143f065fed236495128add7a2ab1ee4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d70580a34e832d6465571adbc8f0524abeba609a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928529"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767923"
 ---
 # <a name="reservation-recommendations"></a>Reservierungsempfehlungen
 
@@ -65,5 +65,5 @@ Empfehlungen für den Reservierungserwerb stehen in Azure Advisor zur Verfügung
 - Bei Verwendung eines Rückblickzeitraums von sieben Tagen erhalten Sie möglicherweise keine Empfehlungen, wenn virtuelle Computer länger als einen Tag heruntergefahren waren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
+- Rufen Sie [Reservierungsempfehlungen mithilfe von REST-APIs](/rest/api/consumption/reservationrecommendations/list) ab.
 - Informationen zur [Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](../manage/understand-vm-reservation-charges.md)

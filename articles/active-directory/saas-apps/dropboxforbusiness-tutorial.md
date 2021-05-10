@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 41f6db8cf2454c224addac525e9d039954a95712
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30c3ecb64b8fdb2ff1bf3569803b07d9f0646347
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601498"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138047"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Tutorial: Integrieren von Dropbox Business in Azure Active Directory
 
@@ -85,6 +85,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     
      b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** den folgenden Wert ein: `Dropbox`.
     
+    c. Geben Sie im Feld **Antwort-URL** die URL `https://www.dropbox.com/saml_login` ein.
     > [!NOTE]
     > Die **Dropbox-ID für einmaliges Anmelden** finden Sie auf der Dropbox-Website unter „Dropbox“ > „Admin console“ (Administratorkonsole) > „Settings“ (Einstellungen) > „Single sign-on“ (Einmaliges Anmelden) > „SSO sign-in URL“ (Anmelde-URL für SSO).
 

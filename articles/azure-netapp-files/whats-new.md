@@ -12,20 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 04/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 3c6da2137f2db43284ce7a533ff763e9ef157f35
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: fa028d8fffd2a4097b5bf7d7326d355ae56aebd7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726644"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862811"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Neues in Azure NetApp Files
 
 Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Übersicht über die neuesten Features und Verbesserungen. 
 
 ## <a name="april-2021"></a>April 2021
+
+* [Unterstützung von SMB-Freigaben für fortlaufende Verfügbarkeit (Continuous Availability, CA) für FSLogix-Benutzerprofilcontainer](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Vorschau)  
+
+    [FSLogix](/fslogix/overview) ist eine Zusammenstellung von Lösungen, mit denen sich nicht persistente Windows-Datenverarbeitungsumgebungen verbessern, aktivieren und vereinfachen lassen. FSLogix-Lösungen eignen sich für virtuelle Umgebungen in öffentlichen und privaten Clouds. Mit FSLogix-Lösungen können auch portierbarere Sitzungen erstellt werden, wenn physische Geräte zum Einsatz kommen. Mit FSLogix kann dynamischer Zugriff auf persistente Benutzerprofilcontainer bereitgestellt werden, die im freigegebenen SMB-Netzwerkspeicher gespeichert sind, einschließlich Azure NetApp Files. Um die FSLogix-Resilienz bei Wartungsereignissen des Speicherdiensts weiter zu verbessern, bietet Azure NetApp Files erweiterte Unterstützung für SMB Transparent Failover über [SMB-CA-Freigaben in Azure NetApp Files](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) für Benutzerprofilcontainer. Weitere Informationen finden Sie unter [Windows Virtual Desktop](azure-netapp-files-solution-architectures.md#windows-virtual-desktop).  
 
 * [SMB3-Protokollverschlüsselung](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Vorschau) 
 

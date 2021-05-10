@@ -6,22 +6,23 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 04/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 1ceed171b0516e293ffe58bca0225d3d3dfdb414
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 7331f9a894d36ee15702a8fe53804efd53049762
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094667"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284118"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Verwalten von Azure Enterprise Agreement-Rollen
 
-Azure-Kunden mit einem Enterprise Agreement können als Hilfe bei der Verwaltung Ihrer Organisation und deren Ausgaben fünf verschiedene Administratorrollen zuweisen:
+Azure-Kunden mit einem Enterprise Agreement können als Hilfe bei der Verwaltung der Nutzung und den Ausgaben Ihrer Organisation sechs verschiedene Administratorrollen zuweisen:
 
 - Unternehmensadministrator
 - Unternehmensadministrator (nur Leseberechtigung)<sup>1</sup>
+- EA purchaser (EA-Einkäufer)
 - Abteilungsadministrator
 - Abteilungsadministrator (nur Leseberechtigung)
 - Kontobesitzer<sup>2</sup>
@@ -61,6 +62,7 @@ Das folgende Diagramm veranschaulicht einfache Azure EA-Hierarchien.
 Die folgenden administrativen Benutzerrollen sind Teil Ihrer Unternehmensregistrierung:
 
 - Unternehmensadministrator
+- EA purchaser (EA-Einkäufer)
 - Abteilungsadministrator
 - Kontobesitzer
 - Dienstadministrator
@@ -80,12 +82,24 @@ Benutzer mit dieser Rolle verfügen über die höchste Zugriffsebene. Sie könne
 - Verwalten anderer Unternehmensadministratoren
 - Verwalten von Abteilungsadministratoren
 - Verwalten von Benachrichtigungskontakten
+- Erwerben von Azure-Diensten, einschließlich Reservierungen
 - Anzeigen der Nutzung für alle Konten
 - Anzeigen nicht in Rechnung gestellter Gebühren für alle Konten
 - Zeigen Sie alle Reservierungsaufträge und Reservierungen an, die für das Enterprise Agreement gelten, und verwalten Sie sie.
   - Der Unternehmensadministrator (schreibgeschützt) kann Reservierungsaufträge und Reservierungen anzeigen. Er kann sie nicht verwalten.
 
 In einer Unternehmensregistrierung kann es mehrere Unternehmensadministratoren geben. Sie können Unternehmensadministratoren Lesezugriff gewähren. Sie erben alle die Abteilungsadministratorrolle.
+
+### <a name="ea-purchaser"></a>EA purchaser (EA-Einkäufer)
+
+Benutzer mit dieser Rolle verfügen über Berechtigungen zum Erwerben von Azure-Diensten, dürfen jedoch keine Konten verwalten. Sie können folgende Aktionen ausführen:
+
+- Erwerben von Azure-Diensten, einschließlich Reservierungen
+- Anzeigen der Nutzung für alle Konten
+- Anzeigen nicht in Rechnung gestellter Gebühren für alle Konten
+- Zeigen Sie alle Reservierungsaufträge und Reservierungen an, die für das Enterprise Agreement gelten, und verwalten Sie sie.
+
+Die Rolle „EA purchaser“ (EA-Einkäufer) ist derzeit nur für SPN-basierten Zugriff aktiviert. Informationen zum Zuweisen der Rolle zu einem Dienstprinzipalnamen finden Sie unter [Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen](assign-roles-azure-service-principals.md).
 
 ### <a name="department-administrator"></a>Abteilungsadministrator
 
@@ -126,6 +140,7 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 |---|---|
 |Unternehmensadministrator|Unbegrenzt|
 |Unternehmensadministrator (nur Leseberechtigung)|Unbegrenzt|
+| Einem SPN zugewiesener EA-Einkäufer | Unbegrenzt |
 |Abteilungsadministrator|Unbegrenzt|
 |Abteilungsadministrator (nur Leseberechtigung)|Unbegrenzt|
 |Kontobesitzer|Einer pro Konto<sup>3</sup>|
@@ -134,18 +149,19 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Organisationsstruktur und Berechtigungen nach Rolle
 
-|Aufgaben| Unternehmensadministrator|Unternehmensadministrator (nur Leseberechtigung)|Abteilungsadministrator|Abteilungsadministrator (nur Leseberechtigung)|Kontobesitzer| Partner|
-|---|---|---|---|---|---|---|
-|Anzeigen von Unternehmensadministratoren|✔|✔|✘|✘|✘|✔|
-|Hinzufügen und Entfernen von Unternehmensadministratoren|✔|✘|✘|✘|✘|✘|
-|Anzeigen von Benachrichtigungskontakten<sup>4</sup> |✔|✔|✘|✘|✘|✔|
-|Hinzufügen und Entfernen von Benachrichtigungskontakten<sup>4</sup> |✔|✘|✘|✘|✘|✘|
-|Erstellen und Verwalten von Abteilungen |✔|✘|✘|✘|✘|✘|
-|Anzeigen von Abteilungsadministratoren|✔|✔|✔|✔|✘|✔|
-|Hinzufügen und Entfernen von Abteilungsadministratoren|✔|✘|✔|✘|✘|✘|
-|Anzeigen von Konten in der Registrierung |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
-|Hinzufügen von zur Registrierung und Ändern des Kontobesitzers|✔|✘|✔<sup>5</sup>|✘|✘|✘|
-|Erstellen und Verwalten von Abonnements und Abonnementberechtigungen|✘|✘|✘|✘|✔|✘|
+|Aufgaben| Unternehmensadministrator|Unternehmensadministrator (nur Leseberechtigung)| EA Purchaser (EA-Einkäufer) | Abteilungsadministrator|Abteilungsadministrator (nur Leseberechtigung)|Kontobesitzer| Partner|
+|---|---|---|---|---|---|---|---|
+|Anzeigen von Unternehmensadministratoren|✔|✔| ✔|✘|✘|✘|✔|
+|Hinzufügen und Entfernen von Unternehmensadministratoren|✔|✘|✘|✘|✘|✘|✘|
+|Anzeigen von Benachrichtigungskontakten<sup>4</sup> |✔|✔|✔|✘|✘|✘|✔|
+|Hinzufügen und Entfernen von Benachrichtigungskontakten<sup>4</sup> |✔|✘|✘|✘|✘|✘|✘|
+|Erstellen und Verwalten von Abteilungen |✔|✘|✘|✘|✘|✘|✘|
+|Anzeigen von Abteilungsadministratoren|✔|✔|✔|✔|✔|✘|✔|
+|Hinzufügen und Entfernen von Abteilungsadministratoren|✔|✘|✘|✔|✘|✘|✘|
+|Anzeigen von Konten in der Registrierung |✔|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
+|Hinzufügen von zur Registrierung und Ändern des Kontobesitzers|✔|✘|✘|✔<sup>5</sup>|✘|✘|✘|
+|Erwerben von Reservierungen|✔|✘|✔|✘|✘|✘|✘|
+|Erstellen und Verwalten von Abonnements und Abonnementberechtigungen|✘|✘|✘|✘|✘|✔|✘|
 
 - <sup>4</sup> Benachrichtigungskontakte erhalten E-Mail-Benachrichtigungen zum Azure Enterprise Agreement.
 - <sup>5</sup> Die Aufgabe ist auf Konten in Ihrer Abteilung beschränkt.
@@ -166,14 +182,14 @@ Weitere Informationen zum Hinzufügen eines Abteilungsadministrators finden Sie 
 
 ## <a name="usage-and-costs-access-by-role"></a>Zugriff auf Nutzung und Kosten nach Rolle
 
-|Aufgaben| Unternehmensadministrator|Unternehmensadministrator (nur Leseberechtigung)|Abteilungsadministrator|Abteilungsadministrator (nur Leseberechtigung) |Kontobesitzer| Partner|
-|---|---|---|---|---|---|---|
-|Anzeigen des Guthabens einschließlich Azure-Vorauszahlung|✔|✔|✘|✘|✘|✔|
-|Anzeigen von Ausgabenkontingenten der Abteilungen|✔|✔|✘|✘|✘|✔|
-|Festlegen von Ausgabenkontingenten der Abteilungen|✔|✘|✘|✘|✘|✘|
-|Anzeigen der EA-Preisliste der Organisation|✔|✔|✘|✘|✘|✔|
-|Anzeigen von Nutzungs- und Kostendetails|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
-|Verwalten von Ressourcen im Azure-Portal|✘|✘|✘|✘|✔|✘|
+|Aufgaben| Unternehmensadministrator|Unternehmensadministrator (nur Leseberechtigung)|EA Purchaser (EA-Einkäufer)|Abteilungsadministrator|Abteilungsadministrator (nur Leseberechtigung) |Kontobesitzer| Partner|
+|---|---|---|---|---|---|---|---|
+|Anzeigen des Guthabens einschließlich Azure-Vorauszahlung|✔|✔|✔|✘|✘|✘|✔|
+|Anzeigen von Ausgabenkontingenten der Abteilungen|✔|✔|✔|✘|✘|✘|✔|
+|Festlegen von Ausgabenkontingenten der Abteilungen|✔|✘|✘|✘|✘|✘|✘|
+|Anzeigen der EA-Preisliste der Organisation|✔|✔|✔|✘|✘|✘|✔|
+|Anzeigen von Nutzungs- und Kostendetails|✔|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
+|Verwalten von Ressourcen im Azure-Portal|✘|✘|✘|✘|✘|✔|✘|
 
 - <sup>6</sup> Erfordert die Aktivierung der Richtlinie **DA-Ansichtsgebühren** im Enterprise Portal durch den Unternehmensadministrator. Der Abteilungsadministrator kann dann Kostendetails für die Abteilung einsehen.
 - <sup>7</sup> Erfordert die Aktivierung der Richtlinie **AO-Ansichtsgebühren** im Enterprise Portal durch den Unternehmensadministrator. Der Kontobesitzer kann dann Kostendetails für das Konto einsehen.
@@ -198,8 +214,6 @@ Die folgende Tabelle zeigt die Beziehungen zwischen den Enterprise Agreement-Adm
 |Keine|Nicht verfügbar |Besitzer|Einzelhandelspreise|
 
 Sie legen die Enterprise-Administratorrolle und die Richtlinien zum Anzeigen von Gebühren im Enterprise-Portal fest. Die Azure-Rolle kann im Azure-Portal aktualisiert werden. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

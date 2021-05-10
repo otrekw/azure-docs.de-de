@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: af3f54778882df9aaa06297f291c12a0f4b1577c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bc35f79bae0cd75b24b119e951f27b289ebef704
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046044"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007356"
 ---
 # <a name="register-and-scan-sap-ecc-source-preview"></a>Registrieren und Überprüfen einer SAP ECC-Quelle (Vorschauversion)
 
@@ -35,7 +35,7 @@ Die SAP ECC-Quelle unterstützt die **vollständige Überprüfung**, um Metadate
 
     :::image type="content" source="media/register-scan-sapecc-source/requirement.png" alt-text="Voraussetzung" border="true":::
 
-5.  Der Connector liest Metadaten aus SAP mithilfe der Java-Connector-API (JCo) 3.0. Stellen Sie darum sicher, dass der Java-Connector auf dem virtuellen Computer verfügbar ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
+5.  Der Connector liest Metadaten aus SAP mithilfe der [SAP Java-Connector-API 3.0 (JCo)](https://support.sap.com/en/product/connectors/jco.html). Stellen Sie darum sicher, dass der Java-Connector auf dem virtuellen Computer verfügbar ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
     Stellen Sie sicher, dass Sie die richtige JCo-Verteilung für Ihre Umgebung verwenden. Stellen Sie z. B. auf einem Microsoft Windows-Computer sicher, dass die Dateien „sapjco3.jar“ und „sapjco3.dll“ verfügbar sind.
 
     > [!Note] 

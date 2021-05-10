@@ -1,14 +1,14 @@
 ---
 title: 'Bereitstellen des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“'
 description: 'Bereitstellungsschritte für das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“, einschließlich Details zum Blaupausenartefaktparameter'
-ms.date: 02/05/2021
+ms.date: 04/23/2021
 ms.topic: sample
-ms.openlocfilehash: 5c329a9d7175772e80ea6d9d8da3baf85ce0d170
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2bc0d0b206ae9fa484c73f1b67c14b115f20883
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104669643"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949072"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Bereitstellung des Blaupausenbeispiels „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
@@ -93,7 +93,7 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
      - **Name der Organisation:** Geben Sie einen Kurznamen für Ihre Organisation ein. Diese Eigenschaft wird in erster Linie zum Benennen von Ressourcen verwendet.
      - **Abonnement-ID für gemeinsame Dienste:** ID des Abonnements, dem das Blaupausenbeispiel [ISO 27001: Gemeinsame Dienste](../iso27001-shared/index.md) zugewiesen wird.
      - **Adresspräfix für Standardsubnetz:** Die CIDR-Notation für das Standardsubnetz des virtuellen Netzwerks.
-       Der Standardwert ist _10.1.0.0/16_.
+       Der Standardwert ist _10.1.0.0/24_.
      - **Standort für Workload:** Bestimmt den Standort, an dem die Artefakte bereitgestellt werden. Nicht alle Dienste sind an allen Standorten verfügbar. Artefakte, die diese Dienste bereitstellen, enthalten eine Parameteroption für den Standort, an dem das entsprechende Artefakt bereitgestellt wird.
 
    - Artefaktparameter
@@ -120,21 +120,23 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Netzwerkressourcengruppe|Resource group|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Netzwerksicherheitsgruppen-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Private IP-Adresse von Azure Firewall|Konfiguriert die private IP-Adresse von [Azure Firewall](../../../../firewall/overview.md). Sollte Teil der CIDR-Notation sein, die in _ISO 27001: Gemeinsame Dienste_ im Artefaktparameter **Adresspräfix für Azure Firewall-Subnetz** definiert ist. Der Standardwert ist _10.0.4.4_.|
-|Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Abonnement-ID für gemeinsame Dienste|Wert, der zum Aktivieren des VNET-Peerings zwischen einer Workload und gemeinsamen Diensten verwendet wird.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Adresspräfix für Virtual Network|Die CIDR-Notation für das virtuelle Netzwerk. Der Standardwert ist _10.1.0.0/16_.|
-|Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Adresspräfix für Standardsubnetz|Die CIDR-Notation für das Standardsubnetz des virtuellen Netzwerks. Der Standardwert ist _10.1.0.0/16_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|ADDS-IP-Adresse|IP-Adresse der ersten ADDS-VM. Dieser Wert wird als benutzerdefinierter VNET-DNS verwendet.|
+|Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
+|Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Name des Peerings für virtuelle Netzwerke|Wert, der zum Aktivieren des VNET-Peerings zwischen einer Workload und gemeinsamen Diensten verwendet wird.|
 |Schlüsseltresor-Ressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-kv-rg`, sodass die Ressourcengruppe eindeutig ist.|
 |Schlüsseltresor-Ressourcengruppe|Resource group|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|AAD-Objekt-ID|Der AAD-Objektbezeichner des Kontos, das Zugriff auf die Key Vault-Instanz benötigt. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Wählen Sie auf der Seite _Benutzerprofil_ das Symbol „Klicken Sie zum Kopieren“ neben der _Objekt-ID_ aus.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Key Vault-SKU|Gibt die SKU der erstellten Key Vault-Instanz an. Der Standardwert ist _Premium_.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Azure SQL Server-Administratorbenutzername|Der Benutzername für den Zugriff auf Azure SQL Server. Muss mit dem Eigenschaftswert in **Vorlage für Azure SQL-Datenbank** übereinstimmen. Der Standardwert ist _sql-admin-user_.|
+|Key Vault-Vorlage|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort|Das Kennwort für den Azure SQL Server-Administratorbenutzernamen|
 |Azure SQL-Datenbank-Ressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-azsql-rg`, sodass die Ressourcengruppe eindeutig ist.|
 |Azure SQL-Datenbank-Ressourcengruppe|Resource group|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorbenutzername|Benutzername für Azure SQL Server. Muss mit dem Eigenschaftswert in **Key Vault-Vorlage** übereinstimmen. Der Standardwert ist _sql-admin-user_.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Ressourcen-ID)|Die Ressourcen-ID der Key Vault-Instanz. Verwenden Sie „/subscriptions/{subscriptionId}/resourceGroups/{orgName}-workload-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv“, und ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{orgName}` durch den Blaupausenparameter **Name der Organisation**.|
-|Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Geheimnisname)|Benutzername des SQL Server-Administrators. Muss mit dem Wert in der Eigenschaft **Azure SQL Server-Administratorbenutzername** von **Key Vault-Vorlage** übereinstimmen.|
+|Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Geheimnisname)|Benutzername des SQL Server-Administrators. Muss mit dem Wert in der Eigenschaft **Azure SQL Server-Administratorbenutzername** von **Key Vault-Vorlage** übereinstimmen.|
+|Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Version des Key Vault-Geheimnisses)|Version des Schlüsseltresorgeheimnisses (für neue Bereitstellungen leer lassen)|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|AAD-Administratorobjekt-ID|AAD-Objekt-ID des Benutzers, der als Active Directory-Administrator zugewiesen wird. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Wählen Sie auf der Seite _Benutzerprofil_ das Symbol „Klicken Sie zum Kopieren“ neben der _Objekt-ID_ aus.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|AAD-Administratoranmeldung|Derzeit können Microsoft-Konten (z. B. live.com oder outlook.com) nicht als Administrator festgelegt werden. Nur Benutzer und Sicherheitsgruppen in Ihrer Organisation können als Administrator festgelegt werden. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Kopieren Sie den _Benutzernamen_ auf der Seite _Benutzerprofil_.|

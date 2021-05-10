@@ -7,16 +7,18 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: e9c583db7493afc04b2c66553801f62d364b0a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dce3dd10843bc6abf2878600ad1aba17a4318c80
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419607"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017935"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Schnellstart: Erstellen und Konfigurieren einer Route Server-Instanz mithilfe der Azure-Befehlszeilenschnittstelle 
 
 In diesem Artikel wird beschrieben, wie Sie Azure Route Server mithilfe der Azure-Befehlszeilenschnittstelle für das Peering mit virtuellen Netzwerkgeräten (Network Virtual Appliances, NVAs) in Ihrem virtuellen Netzwerk konfigurieren. Azure Route Server lernt Routen vom NVA und programmiert sie für die virtuellen Computer im virtuellen Netzwerk. Außerdem kündigt Azure Route Server die virtuellen Netzwerkrouten für das NVA an. Weitere Informationen finden Sie unter [Azure Route Server](overview.md).
+
+:::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Diagramm: Route Server-Bereitstellungsumgebung mit der Azure CLI" border="false":::
 
 > [!IMPORTANT]
 > Azure Route Server (Vorschau) befindet sich derzeit in der öffentlichen Vorschauphase.
@@ -94,7 +96,7 @@ Verwenden Sie den folgenden Befehl, um das Peering zwischen der Route Server-In
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA1_name" 
+az network routeserver peering create --routeserver "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA1_name" 
 
 ``` 
 
@@ -104,7 +106,7 @@ Wenn Sie das Peering mit einem anderen NVA oder einer anderen Instanz desselben 
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA2_name" 
+az network routeserver peering create --routeserver "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA2_name" 
 ``` 
 
 ## <a name="complete-the-configuration-on-the-nva"></a>Abschließen der Konfiguration auf dem NVA 
@@ -169,7 +171,7 @@ Wenn Sie die Azure Route Server-Instanz nicht mehr benötigen, verwenden Sie di
 1. Entfernen Sie das BGP-Peering zwischen Azure Route Server und einem NVA mit dem folgenden Befehl:
 
 ```azurecli-interactive
-az network routeserver peering delete --routeserver-name "myRouteServer" -g "RouteServerRG" -n "NVA2_name" 
+az network routeserver peering delete --routeserver "myRouteServer" -g "RouteServerRG" -n "NVA2_name" 
 ``` 
 
 2. Entfernen Sie die Azure Route Server-Instanz mit dem folgenden Befehl: 

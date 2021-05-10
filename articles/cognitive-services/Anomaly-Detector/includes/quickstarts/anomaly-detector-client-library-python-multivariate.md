@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 9b848f6c86f2ff2e95fa5cc191b088b7175f2311
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 789f493640e9795c58fd278db6cc0b11902c1cfa
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318759"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107925353"
 ---
 Hier finden Sie Informationen zu den ersten Schritten mit der multivariaten Clientbibliothek für die Anomalieerkennung für Python. Führen Sie diese Schritte aus, um das Paket zu installieren und mit der Verwendung der vom Dienst zur Verfügung gestellten Algorithmen zu beginnen. Die neuen APIs für die multivariate Anomalieerkennung ermöglichen Entwicklern die einfache Integration fortschrittlicher KI zur Erkennung von Anomalien in Metrikgruppen ganz ohne Machine Learning-Kenntnisse oder gekennzeichnete Daten. Abhängigkeiten und Interkorrelationen zwischen verschiedenen Signalen werden automatisch als Schlüsselfaktoren gewertet. Dadurch können Sie Ihre komplexen Systeme leichter proaktiv vor Fehlern schützen.
 
@@ -22,6 +22,8 @@ Die Clientbibliothek für die multivariate Anomalieerkennung für Python kann f�
 * Erkennen von Anomalien auf Systemebene in einer Gruppe von Zeitreihen
 * Betrachten sämtlicher Signale, um ein Problem zu erkennen, wenn die Betrachtung einzelner Zeitreihen nicht ausreicht
 * Prädikative Wartung teurer physischer Ressourcen mit dutzenden bis hunderten verschiedenen Arten von Sensoren zur Messung diverser Aspekte der Systemintegrität
+
+[Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [Paket (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [Beispielcode](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py) | [Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -70,7 +72,7 @@ pip install --upgrade azure-ai-anomalydetector
 Diese Codeausschnitte veranschaulichen, wie folgende Vorgänge mit der Anomalieerkennungs-Clientbibliothek für Python ausgeführt werden:
 
 * [Authentifizieren des Clients](#authenticate-the-client)
-* [Modelltraining](#train-the-model)
+* [Trainieren des Modells](#train-the-model)
 * [Erkennen von Anomalien](#detect-anomalies)
 * [Exportieren des Modells](#export-model)
 * [Löschen des Modells](#delete-model)
@@ -124,8 +126,7 @@ def train(self, start_time, end_time, max_tryout=500):
     model_status = None
     tryout_count = 0
     while (tryout_count < max_tryout and model_status != "READY"):
-        model_status = self.ad_client.get_multivariate_model(trained_model_id).additional_properties["summary"][
-            "status"]
+        model_status = self.ad_client.get_multivariate_model(trained_model_id).model_info.status
         tryout_count += 1
         time.sleep(2)
     
@@ -234,6 +235,11 @@ if __name__ == '__main__':
 
 ```
 
+Vor der Ausführung kann es hilfreich sein, Ihr Projekt anhand des [vollständigen Beispielcodes](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) zu überprüfen, von dem diese Schnellstartanleitung abgeleitet ist.
+
+Darüber hinaus gibt es ein [ausführliches Jupyter Notebook-Beispiel](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb), das Ihnen den Einstieg erleichtert.
+
 Führen Sie die Anwendung mit dem Befehl `python` und Ihrem Dateinamen aus.
+
 
 [!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]

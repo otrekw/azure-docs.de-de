@@ -2,19 +2,34 @@
 title: Neuerungen in Azure Defender für IoT
 description: In diesem Artikel wird beschrieben, welche Neuerungen das aktuelle Release von Defender für IoT enthält.
 ms.topic: overview
-ms.date: 04/19/2021
-ms.openlocfilehash: da5358ccf0f69ca2ba8f5722b75889b6b7c92c07
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.date: 04/25/2021
+ms.openlocfilehash: f7631caedcb26227abf65d6fad216fc629d41dd4
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752604"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987091"
 ---
-# <a name="whats-new-in-azure-defender-for-iot"></a>Neuerungen in Azure Defender für IoT
+# <a name="whats-new-in-azure-defender-for-iot"></a>Neuerungen in Azure Defender für IoT  
 
 In diesem Artikel sind neue und verbesserte Features von Defender für IoT aufgeführt.
 
 Die genannten Features befinden sich in der Vorschauphase. Die [ergänzenden Bestimmungen für Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
+## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Versionsverwaltung und Unterstützung für Azure Defender für IoT 
+
+Nachfolgend sind die Unterstützung, die Breaking Change-Richtlinien für Defender für IoT sowie die derzeit verfügbaren Versionen von Azure Defender für IoT aufgeführt. 
+
+### <a name="servicing-information-and-timelines"></a>Wartungsinformationen und Zeitachsen 
+
+Microsoft plant, mindestens vierteljährlich Updates für Azure Defender für IoT zu veröffentlichen. Jede allgemein verfügbare Version des Sensors mit Azure Defender für IoT und der lokalen Verwaltungskonsole wird nach der Veröffentlichung bis zu neun Monate lang unterstützt. Korrekturen und neue Funktionen werden auf die aktuelle allgemein verfügbare Version angewendet, die derzeit unterstützt wird. Sie werden nicht auf ältere allgemein verfügbare Versionen angewendet.
+
+### <a name="versions-and-support-dates"></a>Versionen und Supportdaten
+
+| Version | Veröffentlichungsdatum | Ablauf des Supports |
+|--|--|--|
+| 10.0 | 01/2021 | 10/2021 |
+| 10.3 | 04/2021 | 02/2022 |
 
 ## <a name="april-2021"></a>April 2021
 

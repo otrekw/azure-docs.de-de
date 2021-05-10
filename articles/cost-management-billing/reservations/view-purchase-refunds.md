@@ -5,18 +5,32 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 04/27/2021
 ms.author: banders
-ms.openlocfilehash: b986aa2bfce203be85adbcde8e2966c167bf7ca1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8366ba41ee302747fd5ede3cddc72814f29d30ec
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151772"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147449"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>Anzeigen von Transaktionen für Reservierungseinkäufe und -erstattungen
 
 Es gibt verschiedene Möglichkeiten zum Anzeigen von Transaktionen für Reservierungseinkäufe und -erstattungen. Sie können das Azure-Portal, Power BI und REST-APIs verwenden.
+
+## <a name="view-reservation-purchases-in-the-azure-portal"></a>Anzeigen von Reservierungskäufen im Azure-Portal
+
+Abrechnungsleser für Enterprise Agreement und Microsoft-Kundenvereinbarung können akkumulierte Käufe für Reservierungen in der Kostenanalyse anzeigen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Navigieren Sie zu **Kostenverwaltung und Abrechnung**.
+1. Wählen Sie im Menü auf der linken Seite die Option „Kostenanalyse“ aus.
+1. Wenden Sie einen Filter für  **Preismodell** an, und wählen Sie dann **Reservierung** aus.
+1. Wenden Sie zum Anzeigen von Käufen für Reservierungen einen Filter für  **Gebührentyp** an, und wählen Sie dann **Kaufen** aus.
+1. Legen Sie  **Granularität** auf  **Monatlich** fest.
+1. Legen Sie den Diagrammtyp auf  **Säule (gestapelt)** fest.
+
+:::image type="content" source="./media/view-purchase-refunds/reservation-purchase-cost-analysis.png" alt-text="Screenshot: Reservierungskäufe in der Kostenanalyse" lightbox="./media/view-purchase-refunds/reservation-purchase-cost-analysis.png" :::
 
 ## <a name="view-reservation-transactions-in-the-azure-portal"></a>Anzeigen von Reservierungstransaktionen im Azure-Portal
 
@@ -28,7 +42,7 @@ Ein Rechnungsadministrator für die Unternehmensregistrierung oder Microsoft-Kun
 1. Wählen Sie zum Filtern der Ergebnisse **Zeitraum**, **Typ** oder **Beschreibung** aus.
 1. Wählen Sie **Übernehmen**.
 
-[![Screenshot: Anzeigen von Reservierungstransaktionen im Azure-Portal](./media/view-purchase-refunds/azure-portal-reservation-transactions.png)](./media/view-purchase-refunds/azure-portal-reservation-transactions.png#lightbox)
+[![Screenshot: Reservierungstransaktionen im Azure-Portal](./media/view-purchase-refunds/azure-portal-reservation-transactions.png)](./media/view-purchase-refunds/azure-portal-reservation-transactions.png#lightbox)
 
 ## <a name="view-reservation-transactions-in-power-bi"></a>Anzeigen von Reservierungstransaktionen in Power BI
 

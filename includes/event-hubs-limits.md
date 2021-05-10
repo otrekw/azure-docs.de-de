@@ -10,7 +10,7 @@ Die folgenden Grenzwerte sind gängig für alle Ebenen:
 
 | Begrenzung |  Notizen | Wert |
 | --- |  --- | --- |
-| Anzahl von Event Hubs-Namespaces pro Abonnement |- |100 |
+| Anzahl von Event Hubs-Namespaces pro Abonnement | Service Bus-Namespaces sind in diesem Grenzwert enthalten. |100 |
 | Anzahl von Event Hubs pro Namespace | Nachfolgende Anforderungen für die Erstellung eines neuen Event Hub werden zurückgewiesen. |10 |
 | Größe eines Event Hub-Namens |- | 256 Zeichen |
 | Größe eines Consumergruppennamens | Das Kafka-Protokoll erfordert nicht die Erstellung einer Consumergruppe. | <p>Kafka: 256 Zeichen</p><p>AMQP: 50 Zeichen |
@@ -45,7 +45,7 @@ Informationen zum Erstellen eines dedizierten Event Hubs-Clusters mithilfe des 
 | Funktion | Standard | Dediziert |
 | --- |:---|:---|
 | Bandbreite | 20 TUs (bis zu 40 TUs) | 20 CUs |
-| Namespaces |  1 | 50 pro CU |
+| Namespaces |  100 pro Abonnement | 50 pro CU (100 pro Abonnement) |
 | Event Hubs |  10 pro Namespace | 1000 pro Namespace |
 | Eingangsereignisse | Bezahlung pro Million Ereignisse | Enthalten |
 | Nachrichtengröße | 1 Million Bytes | 1 Million Bytes |

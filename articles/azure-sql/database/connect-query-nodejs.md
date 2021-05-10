@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-js
-ms.openlocfilehash: 44530577972839aacb803d1722fa97716088fa0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0eb06e756601f987b9a0f652f13943ea876252df
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91325435"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929469"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Abfragen einer Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance mithilfe von Node.js
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -114,6 +114,34 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
         encrypt: true
       }
     };
+    
+    /* 
+        //Use Azure VM Managed Identity to connect to the SQL database
+        const connection = new Connection({
+        server: process.env["db_server"],
+        authentication: {
+            type: 'azure-active-directory-msi-vm',
+        },
+        options: {
+            database: process.env["db_database"],
+            encrypt: true,
+            port: 1433
+        }
+    });
+        //Use Azure App Service Managed Identity to connect to the SQL database
+        const connection = new Connection({
+        server: process.env["db_server"],
+        authentication: {
+            type: 'azure-active-directory-msi-app-service',
+        },
+        options: {
+            database: process.env["db_database"],
+            encrypt: true,
+            port: 1433
+        }
+    });
+
+    */
 
     const connection = new Connection(config);
 
@@ -153,6 +181,9 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
       connection.execSql(request);
     }
     ```
+
+> [!NOTE]
+> Weitere Informationen zur Verwendung der verwalteten Identität für die Authentifizierung finden Sie im Tutorial zum [Zugreifen auf Daten über die verwaltete Identität](../../app-service/app-service-web-tutorial-connect-msi.md).
 
 > [!NOTE]
 > Im Codebeispiel wird die Beispieldatenbank **AdventureWorksLT** in Azure SQL-Datenbank verwendet.

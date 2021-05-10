@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3b365e347802824e855797afb8c68e5249bf0adb
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 772cc22a0f8163e0d99599ebf1f4cdfd1ab1d103
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579620"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128191"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Tutorial: Konfigurieren von Bastion und Herstellen einer Verbindung mit einer Windows-VM über einen Browser
 
@@ -21,7 +21,8 @@ In diesem Tutorial erfahren Sie, wie Sie über Ihren Browser eine Verbindung mit
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Bastionhosts für Ihr VNET
+> * Erstellen eines Bastionhosts für Ihr VNet
+> * Entfernen der öffentlichen IP-Adresse von einem virtuellen Computer
 > * Herstellen einer Verbindung mit einem virtuellen Windows-Computer
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -55,7 +56,7 @@ In diesem Abschnitt erfahren Sie, wie Sie das Bastionhostobjekt in Ihrem VNET er
 1. Klicken Sie auf **Erstellen**.
 1. Konfigurieren Sie auf der Seite **Bastion-Instanz erstellen** eine neue Bastion-Ressource.
 
-   :::image type="content" source="./media/tutorial-create-host-portal/bastion-basics.png" alt-text="Erstellen eines Bastionhosts" lightbox="./media/tutorial-create-host-portal/bastion-basics.png":::
+   :::image type="content" source="./media/tutorial-create-host-portal/create.png" alt-text="Screenshot: Portalseite „Bastion-Instanz erstellen“" lightbox="./media/tutorial-create-host-portal/create-expand.png":::
 
     * **Abonnement**: Das Azure-Abonnement, das Sie zum Erstellen einer neuen Bastion-Ressource verwenden möchten.
     * **Ressourcengruppe**: Die Azure-Ressourcengruppe, in der die neue Bastion-Ressource erstellt wird. Erstellen Sie eine Ressourcengruppe, wenn noch keine vorhanden ist.
@@ -68,14 +69,20 @@ In diesem Abschnitt erfahren Sie, wie Sie das Bastionhostobjekt in Ihrem VNET er
          * Das Subnetz muss mindestens die Größe „/27“ haben.
 
       Weitere Angaben sind nicht erforderlich. Wählen Sie **OK** und anschließend oben auf der Seite die Option **Bastion-Instanz erstellen** aus, um zur Bastion-Konfigurationsseite zurückzukehren.
-    * **Öffentliche IP-Adresse:** Die öffentliche IP-Adresse der Bastion-Ressource für den RDP-/SSH-Zugriff (über den Port 443). Erstellen Sie eine neue öffentliche IP-Adresse. Die öffentliche IP-Adresse muss sich in der gleichen Region befinden wie die Bastion-Ressource, die Sie erstellen. Diese IP-Adresse hat nichts mit den virtuellen Computern zu tun, mit denen Sie eine Verbindung herstellen möchten. Vielmehr handelt es sich dabei um die öffentliche IP-Adresse für die Bastionhostressource.
+    * **Öffentliche IP-Adresse:** Die öffentliche IP-Adresse der Bastion-Ressource für den RDP-/SSH-Zugriff (über Port 443). Erstellen Sie eine neue öffentliche IP-Adresse. Die öffentliche IP-Adresse muss sich in der gleichen Region befinden wie die Bastion-Ressource, die Sie erstellen. Diese IP-Adresse hat nichts mit den virtuellen Computern zu tun, mit denen Sie eine Verbindung herstellen möchten. Vielmehr handelt es sich dabei um die öffentliche IP-Adresse für die Bastionhostressource.
     * **Öffentliche IP-Adresse**: Der Name der öffentlichen IP-Adressressource. Für dieses Tutorial können Sie den Standardwert beibehalten.
     * **SKU der öffentlichen IP-Adresse**: Diese Einstellung ist standardmäßig bereits auf **Standard** festgelegt. Azure Bastion verwendet/unterstützt nur die SKU „Standard“ für die öffentliche IP-Adresse.
     * **Zuweisung**: Diese Einstellung ist standardmäßig bereits auf **Statisch** festgelegt.
 
 1. Wählen Sie nach Angabe der Einstellungen die Option **Überprüfen und erstellen** aus. Daraufhin werden die Werte überprüft. Nach erfolgreicher Überprüfung können Sie die Bastion-Ressource erstellen.
-1. Klicken Sie auf **Erstellen**.
+
+   :::image type="content" source="./media/tutorial-create-host-portal/validation.png" alt-text="Screenshot: Überprüfungsseite":::
+1. Überprüfen Sie Ihre Einstellungen. Wählen Sie anschließend am unteren Rand der Seite die Option **Erstellen** aus.
 1. Daraufhin wird eine Meldung mit dem Hinweis angezeigt, dass Ihre Bereitstellung ausgeführt wird. Der Status der Ressourcenerstellung wird auf dieser Seite angezeigt. Die Erstellung und Bereitstellung der Bastion-Ressource dauert etwa fünf Minuten.
+
+## <a name="remove-a-vm-public-ip-address"></a>Entfernen einer öffentlichen IP-Adresse eines virtuellen Computers
+
+[!INCLUDE [Remove a public IP address from a VM](../../includes/bastion-remove-ip.md)]
 
 ## <a name="connect-to-a-vm"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 
@@ -91,7 +98,7 @@ Falls Sie diese Anwendung nicht weiterverwenden möchten, löschen Sie Ihre Ress
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen Bastionhost erstellt, den Bastionhost einem virtuellen Netzwerk zugeordnet und anschließend eine Verbindung mit einem virtuellen Windows-Computer hergestellt. Falls gewünscht, können Sie Netzwerksicherheitsgruppen mit Ihrem Azure Bastion-Subnetz verwenden. Weitere Informationen finden Sie hier:
+In diesem Tutorial haben Sie einen Bastionhost erstellt und einem virtuellen Netzwerk zugeordnet. Anschließend haben Sie die öffentliche IP-Adresse von einem virtuellen Computer entfernt und eine Verbindung mit ihm hergestellt. Falls gewünscht, können Sie Netzwerksicherheitsgruppen mit Ihrem Azure Bastion-Subnetz verwenden. Weitere Informationen finden Sie hier:
 
 > [!div class="nextstepaction"]
 > [Arbeiten mit NSGs](bastion-nsg.md)

@@ -8,19 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 03/30/2021
+ms.date: 04/26/2021
 ms.author: pafarley
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: c580828d29e92ecef7ecc73b8f3e5843c3ecd23d
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: fc61f94969311fedaa3fadb8c26e710537198f45
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078879"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018599"
 ---
 # <a name="whats-new-in-face-service"></a>Neuerungen im Dienst „Gesichtserkennung“
 
 Der Azure-Dienst „Gesichtserkennung“ wird fortlaufend aktualisiert. In diesem Artikel finden Sie aktuelle Informationen zu Featureverbesserungen, Fixes und Dokumentationsaktualisierungen.
+
+## <a name="april-2021"></a>April 2021
+
+### <a name="persondirectory"></a>PersonDirectory
+
+* Um Gesichtserkennungsvorgänge wie „Identifizieren“ und „Ähnliches suchen“ durchzuführen, müssen Kunden der Gesichtserkennungs-API eine gemischte Liste mit Objekten vom Typ **Person** erstellen. Das neue **PersonDirectory**-Element ist eine Datenstruktur, die eindeutige IDs, optionale Namenszeichenfolgen und optionale Benutzermetadaten-Zeichenfolgen für jede **Person**-Identität enthält, die dem Verzeichnis hinzugefügt wird. Derzeit bietet die Gesichtserkennungs-API die **LargePersonGroup**-Struktur, die über ähnliche Funktionen verfügt, aber auf 1 Mio. Identitäten beschränkt ist. Die **PersonDirectory**-Struktur kann auf bis zu 75 Milo. Identitäten hochskaliert werden. Ein weiterer wichtiger Unterschied zwischen **PersonDirectory** und vorherigen Datenstrukturen besteht darin, dass Sie nach dem Hinzufügen von Gesichtern zu einem **Person**-Objekt keine Train-Aufrufe mehr tätigen müssen – der Aktualisierungsprozess erfolgt automatisch. Weitere Informationen finden Sie unter [Verwenden der PersonDirectory-Struktur](Face-API-How-to-Topics/use-persondirectory.md).
+
 
 ## <a name="february-2021"></a>Februar 2021
 

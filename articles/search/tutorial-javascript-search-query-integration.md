@@ -1,7 +1,7 @@
 ---
 title: 'JavaScript-Tutorial: Highlights der Suchintegration'
 titleSuffix: Azure Cognitive Search
-description: Hier finden Sie grundlegende Informationen zu den JavaScript SDK-Suchabfragen, die auf Website mit Suchunterstützung verwendet werden.
+description: In diesem Cheatsheet finden Sie grundlegende Informationen zu den JavaScript SDK-Suchintegrationsabfragen, die auf Website mit Suchunterstützung verwendet werden.
 manager: nitinme
 author: diberry
 ms.author: diberry
@@ -10,16 +10,20 @@ ms.topic: tutorial
 ms.date: 03/09/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: cf4e1b1ecf209b587a45ca4c43607bfa95155aee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f6c23c7b0870fe8caed1f82e8ce102539aa2e950
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104723499"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950223"
 ---
-# <a name="4---search-integration-highlights"></a>4: Highlights der Suchintegration
+# <a name="4---javascript-search-integration-cheat-sheet"></a>4\. Cheatsheet für die JavaScript-Suchintegration
 
 In den vorherigen Lektionen haben Sie einer statischen Web-App eine Suchfunktion hinzugefügt. In dieser Lektion werden die wesentlichen Schritte zum Einrichten der Integration hervorgehoben. Dieser Artikel kann als Cheat Sheet für die Integration von Suchfunktionen in Ihre JavaScript-App herangezogen werden.
+
+Die Anwendung ist hier verfügbar: 
+* [Beispiel](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/search-website)
+* [Demowebsite: aka.ms/azs-good-books](https://aka.ms/azs-good-books)
 
 ## <a name="azure-sdk-azuresearch-documents"></a>Azure SDK @azure/search-documents 
 
