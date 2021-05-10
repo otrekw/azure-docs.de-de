@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4f7179a5ad35b4d3ca9a92119fb7b492e2aff779
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575465"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122525"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Erste Schritte mit Ihrem aktualisierten Azure-Abrechnungskonto
 
@@ -26,11 +26,11 @@ Die Verwaltung der Kosten und Rechnungen ist eine der Hauptkomponenten Ihrer Clo
 
 Das folgende Diagramm enthält einen Vergleich Ihres alten und neuen Abrechnungskontos:
 
-![Diagramm: Vergleich zwischen der Abrechnungshierarchie im alten und neuen Konto](./media/mosp-new-customer-experience/comparison-old-new-account.png)
+:::image type="content" source="./media/mosp-new-customer-experience/comparison-old-new-account.png" alt-text="Diagramm: Vergleich zwischen der Abrechnungshierarchie im alten und neuen Konto" border="false" lightbox="./media/mosp-new-customer-experience/comparison-old-new-account.png":::
 
 Ihr neues Abrechnungskonto enthält ein oder mehrere Abrechnungsprofile, mit denen Sie Ihre Rechnungen und Zahlungsmethoden verwalten können. Jedes Abrechnungsprofil enthält einen oder mehrere Rechnungsabschnitte, mit denen Sie die Kosten auf der Rechnung des Abrechnungsprofils organisieren können.
 
-![Diagramm: Neue Abrechnungshierarchie](./media/mosp-new-customer-experience/new-billing-account-hierarchy.png)
+:::image type="content" source="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png" alt-text="Diagramm: Neue Abrechnungshierarchie" border="false" lightbox="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png":::
 
 Die Rollen für das Abrechnungskonto verfügen über die höchste Berechtigungsstufe. Diese Rollen sollten Benutzern zugewiesen werden, die Rechnungen anzeigen müssen und Kosten für Ihr gesamtes Konto nachverfolgen, z. B. Finanz- oder IT-Manager einer Organisation, oder der Person, die sich für ein Konto registriert hat. Weitere Informationen finden Sie unter [Rollen und Aufgaben für ein Abrechnungskonto](../manage/understand-mca-roles.md#billing-account-roles-and-tasks). Bei der Aktualisierung Ihres Kontos erhält der Benutzer, der für das alte Abrechnungskonto über die Rolle „Kontoadministrator“ verfügt, die Rolle „Besitzer“ für das neue Konto.
 
@@ -60,7 +60,21 @@ Ihre neue Benutzeroberfläche enthält die folgenden Funktionen für die Kostenv
 
 **Besser vorhersagbarer monatlicher Abrechnungszeitraum**: Bei Ihrem neuen Konto beginnt der Abrechnungszeitraum am ersten Tag des Monats und endet am letzten Tag des Monats. Dies gilt unabhängig davon, wann Sie sich für die Nutzung von Azure registrieren. Eine Rechnung wird am Anfang jedes Monats generiert und enthält alle Gebühren des vorherigen Monats.
 
-**Nur eine monatliche Rechnung für mehrere Abonnements**: Sie können flexibel wählen, ob Sie eine monatliche Rechnung für jedes Abonnement oder nur eine Gesamtrechnung für mehrere Abonnements erhalten möchten.
+**Nur eine monatliche Rechnung für mehrere Abonnements:** In Ihrem vorhandenen Konto erhalten Sie eine Rechnung für jedes Azure-Abonnement. Wenn Ihr Konto aktualisiert wird, bleibt dieses Verhalten bestehen. Sie haben jedoch die Möglichkeit, die Gebühren Ihrer Abonnements in einer einzelnen Rechnung zu konsolidieren. Führen Sie nach der Aktualisierung Ihres Kontos die folgenden Schritte aus, um Ihre Gebühren in einer einzelnen Rechnung zu konsolidieren:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.  
+   ![Screenshot: Suche im Azure-Portal nach „Kostenverwaltung + Abrechnung“](./media/mosp-new-customer-experience/billing-search-cost-management-billing.png)
+3. Wählen Sie auf der linken Seite des Bildschirms die Option **Azure-Abonnements** aus. 
+4. In der Tabelle werden Azure-Abonnements aufgeführt, für die Sie bezahlen. Die Spalte „Abrechnungsprofil“ enthält das Abrechnungsprofil, das für das Abonnement abgerechnet wird. Die Abonnementgebühren werden auf der Rechnung für das Abrechnungsprofil ausgewiesen. Um die Gebühren für alle Ihre Abonnements in einer einzelnen Rechnung zu konsolidieren, müssen alle Ihre Abonnements mit einem einzelnen Abrechnungsprofil verknüpft werden.  
+    :::image type="content" source="./media/mosp-new-customer-experience/list-azure-subscriptions.png" alt-text="Screenshot: Liste mit Azure-Abonnements" lightbox="./media/mosp-new-customer-experience/list-azure-subscriptions.png" :::
+5. Wählen Sie ein Abrechnungsprofil aus, das Sie verwenden möchten. 
+6. Wählen Sie ein Abonnement aus, das nicht mit dem in Schritt 5 ausgewählten Abrechnungsprofil verknüpft ist. Klicken Sie für das Abonnement auf die Auslassungspunkte (drei Punkte). Wählen Sie **Rechnungsabschnitt ändern** aus.  
+    :::image type="content" source="./media/mosp-new-customer-experience/select-change-invoice-section.png" alt-text="Screenshot: Position der Option zum Ändern des Rechnungsabschnitts" lightbox="./media/mosp-new-customer-experience/select-change-invoice-section-zoomed-in.png" :::
+7. Wählen Sie das in Schritt 5 ausgewählte Abrechnungsprofil aus.  
+    :::image type="content" source="./media/mosp-new-customer-experience/change-invoice-section.png" alt-text="Screenshot: Vorgehensweise zum Ändern des Rechnungsabschnitts" lightbox="./media/mosp-new-customer-experience/change-invoice-section-zoomed-in.png" :::
+8. Wählen Sie **Ändern** aus.
+9. Wiederholen Sie die Schritte 6 bis 8 für alle anderen Abonnements. 
 
 **Nur eine monatliche Rechnung für Azure-Abonnements, Supportpläne und Azure Marketplace-Produkte**: Sie erhalten eine monatliche Rechnung mit allen Gebühren, einschließlich der Nutzungsgebühren für Azure-Abonnements, Supportpläne und Azure Marketplace-Käufe.
 
@@ -98,6 +112,12 @@ Für die Vorbereitung auf Ihre neue Benutzeroberfläche empfehlen wir Ihnen Folg
 
 Auf der neuen Benutzeroberfläche wird Ihre Rechnung jeweils ungefähr am neunten Tag des Monats generiert und enthält alle Gebühren des vorherigen Monats. Dieses Datum kann sich von dem Datum unterscheiden, an dem Ihre Rechnung unter dem alten Konto generiert wird. Falls Sie Ihre Rechnungen für andere Personen freigeben, sollten Sie diese über das geänderte Datum informieren.
 
+
+**Rechnungen im ersten Monat nach der Migration**
+
+Am Tag der Kontoaktualisierung werden Ihre noch nicht in Rechnung gestellten Gebühren finalisiert. Sie erhalten die Rechnungen für diese Gebühren an dem Tag, an dem Sie normalerweise Ihre Rechnungen erhalten. Ein Beispiel: John besitzt zwei Azure-Abonnements: „Azure sub 01“ mit Abrechnungszeitraum vom fünften Tag des Monats bis zum vierten Tag des Folgemonats und „Azure sub 02“ mit Abrechnungszeitraum vom zehnten Tag des Monats bis zum neunten Tag des Folgemonats. John erhält Rechnungen für beide Azure-Abonnements in der Regel am fünften Tag des Monats. Wenn Johns Konto nun am 4. April aktualisiert wird, werden die Gebühren für „Azure sub 01“ vom 5. März bis 4. April sowie Gebühren für „Azure sub 02“ vom 10. März bis 4. April finalisiert. John erhält am 5. April zwei Rechnungen (je eine pro Abonnement). Nach der Aktualisierung des Kontos basiert der Abrechnungszyklus von John auf dem Kalendermonat und deckt alle Gebühren ab, die zwischen Anfang und Ende des jeweiligen Kalendermonats anfallen.  Die Rechnung für die Gebühren des vorherigen Kalendermonats steht jeweils am neunten Tag des Monats zur Verfügung. Im obigen Beispiel erhält John also am 5. Mai eine weitere Rechnung für den Abrechnungszeitraum vom 5. April bis 30. April. 
+
+
 **Neue APIs für Abrechnung und Kostenverwaltung**
 
 Falls Sie APIs für die Kostenverwaltung und Abrechnung nutzen, um Ihre Abrechnungs- oder Kostendaten abzufragen, müssen Sie neue APIs verwenden. In der Tabelle unten sind die APIs, die für das neue Abrechnungskonto nicht funktionieren, und die Änderungen aufgeführt, die Sie am neuen Abrechnungskonto vornehmen müssen.
@@ -106,6 +126,7 @@ Falls Sie APIs für die Kostenverwaltung und Abrechnung nutzen, um Ihre Abrechnu
 |---------|---------|
 |[Billing Accounts – List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | In der API für die Auflistung von Abrechnungskonten (Billing Accounts – List) verfügt Ihr altes Abrechnungskonto für „agreementType“ über den Wert **MicrosoftOnlineServiceProgram**. In Ihrem neuen Abrechnungskonto wird **MicrosoftCustomerAgreement** als „agreementType“ verwendet. Falls Sie eine Abhängigkeit von „agreementType“ nutzen, sollten Sie diese aktualisieren. |
 |[Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Diese API gibt nur Rechnungen zurück, die vor der Aktualisierung Ihres Kontos generiert wurden. Sie müssen die API vom Typ [Invoices – List By Billing Account](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) verwenden, um Rechnungen abzurufen, die unter Ihrem neuen Abrechnungskonto generiert werden. |
+
 
 ## <a name="cost-management-updates-after-account-update"></a>Cost Management-Updates nach Kontoupdate
 
@@ -141,7 +162,7 @@ Bei Verwendung Ihres aktualisierten Kontos erhalten Sie nur eine Rechnung für a
 
 Wenn der Abrechnungszeitraum für Ihr altes Konto beispielsweise der Zeitraum vom 24. November bis zum 23. Dezember war, gilt nach dem Upgrade der Zeitraum 1. November bis 30. November, 1. Dezember bis 31. Dezember usw.
 
-:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="Abbildung: Vergleich zwischen alten und neuen Abrechnungszeiträumen" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="Screenshot: Vergleich zwischen altem und neuem Abrechnungszeitraum" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
 
 #### <a name="budgets"></a>Budgets
 
@@ -156,7 +177,7 @@ Ihr neues Abrechnungskonto verfügt über verbesserte Exportfunktionen. Beispiel
 
 Bei einem Abrechnungszeitraum vom 23. Dezember bis zum 22. Januar enthält die exportierte CSV-Datei beispielsweise die Kosten- und Nutzungsdaten für diesen Zeitraum. Nach dem Update enthält der Export Daten für den Kalendermonat. Beispiel: 1. Januar bis 31. Januar usw.
 
-:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="Abbildung: Vergleich zwischen alten und neuen Exportdetails" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="Screenshot: Vergleich zwischen alten und neuen Exportdetails" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 

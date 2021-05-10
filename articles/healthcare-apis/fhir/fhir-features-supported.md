@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: e012bc2bc3c9ec1ab9351ed937e2c5049eef20d5
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 1ff2a069b7690817c8fc431d920e93a8cb6c3544
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316009"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656198"
 ---
 # <a name="features"></a>Features
 
@@ -40,13 +40,13 @@ Derzeit ebenfalls unterstützte vorherige Versionen: `3.0.2`
 | history                        | Ja       | Ja       | Ja       |                                                     |
 | create                         | Ja       | Ja       | Ja       | Unterstützung für POST/PUT                               |
 | create (bedingt)           | Ja       | Ja       | Ja       | Issue [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| search                         | Teilweise   | Teilweise   | Teilweise   | Weitere Informationen finden Sie [unter Übersicht über die FHIR-Suche.](overview-of-search.md)                           |
-| Verkettete Suche                 | Teilweise       | Ja       | Teilweise   | Siehe Hinweis 2 weiter unten.                                   |
-| Umgekehrte verkettete Suche         | Teilweise       | Ja       | Teilweise   | Siehe Hinweis 2 weiter unten.                                   |
+| search                         | Partial   | Partial   | Partial   | Weitere Informationen finden Sie [unter Übersicht über die FHIR-Suche.](overview-of-search.md)                           |
+| Verkettete Suche                 | Partial       | Ja       | Teilweise   | Siehe Hinweis 2 weiter unten.                                   |
+| Umgekehrte verkettete Suche         | Partial       | Ja       | Teilweise   | Siehe Hinweis 2 weiter unten.                                   |
 | capabilities                   | Ja       | Ja       | Ja       |                                                     |
 | Batch                          | Ja       | Ja       | Ja       |                                                     |
 | transaction                    | Nein        | Ja       | Nein        |                                                     |
-| paging                         | Teilweise   | Teilweise   | Teilweise   | `self` und `next` werden unterstützt                     |
+| paging                         | Teilweise   | Partial   | Teilweise   | `self` und `next` werden unterstützt                     |
 | intermediaries                 | Nein        | Nein        | Nein        |                                                     |
 
 > [!Note]
@@ -56,7 +56,7 @@ Derzeit ebenfalls unterstützte vorherige Versionen: `3.0.2`
  **Hinweis 2**
 * Fügt MVP-Unterstützung für verkettete und umgekehrt verkettete FHIR-Suche in CosmosDB hinzu. 
 
-  Im Azure API for FHIR und auf dem Open-Source-FHIR-Server, der von Cosmos unterstützt wird, ist die verkettete Suche und umgekehrte verkettete Suche eine MVP-Implementierung. Um die verkettete Suche auf Cosmos DB durchzuführen, führt die Implementierung den Suchausdruck durch und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Verwenden Sie den Header , um die verkettete Suche für Cosmos DB zu `x-ms-enable-chained-search: true` verwenden. Weitere Informationen finden Sie unter [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
+  Im Azure API for FHIR und auf dem Open-Source-FHIR-Server, der von Cosmos unterstützt wird, ist die verkettete Suche und die umgekehrte verkettete Suche eine MVP-Implementierung. Um die verkettete Suche auf Cosmos DB durchzuführen, führt die Implementierung den Suchausdruck durch und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Verwenden Sie den Header , um die verkettete Suche für Cosmos DB zu `x-ms-enable-chained-search: true` verwenden. Weitere Informationen finden Sie unter [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
 
 ## <a name="extended-operations"></a>Erweiterte Vorgänge
 
@@ -68,7 +68,7 @@ Alle unterstützten Vorgänge zur Erweiterung der RESTful-API.
 | Patient/$export        | Ja       | Ja       | Ja       |         |
 | Gruppe/$export          | Ja       | Ja       | Ja       |         |
 | $convert-data          | Ja       | Ja       | Ja       |         |
-
+| $validate          | Ja       | Ja       | Ja       |         |
 
 ## <a name="persistence"></a>Persistenz
 

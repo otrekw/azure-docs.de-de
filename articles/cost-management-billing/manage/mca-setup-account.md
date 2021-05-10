@@ -1,19 +1,19 @@
 ---
 title: Einrichten der Abrechnung für eine Microsoft-Kundenvereinbarung – Azure
-description: Erfahren Sie, wie Sie Ihr Abrechnungskonto für eine Microsoft-Kundenvereinbarung einrichten. Informieren Sie sich über Voraussetzungen für die Einrichtung, und zeigen Sie zusätzliche verfügbare Ressourcen an.
+description: Erfahren Sie, wie Sie Ihr Abrechnungskonto für eine Microsoft-Kundenvereinbarung einrichten. Informieren Sie sich über Voraussetzungen für die Einrichtung, und sehen Sie sich andere verfügbare Ressourcen an.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 03/19/2021
 ms.author: banders
-ms.openlocfilehash: 7e930ca938b2531fb001c327132f79f703b2ea74
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 15aa3acab9fe98a4c2f5103ba211dde34220c54e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316408"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255681"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung
 
@@ -49,31 +49,54 @@ Bevor Sie mit dem Einrichten beginnen, sollten Sie die folgenden Aktionen ausfü
 
 Zum Abschließen der Einrichtung benötigen Sie die folgenden Zugriffsrechte:
 
-- Besitzer des Abrechnungsprofils, das bei Unterzeichnung der Microsoft-Kundenvereinbarung erstellt wurde. Weitere Informationen zu Abrechnungsprofilen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](../understand/mca-overview.md#billing-profiles).
-
+- Besitzer des Abrechnungsprofils, das bei Unterzeichnung der Microsoft-Kundenvereinbarung erstellt wurde. Weitere Informationen zu Abrechnungsprofilen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](../understand/mca-overview.md#billing-profiles).  
+&mdash; Und &mdash;
 - Unternehmensadministrator für die Registrierung, die erneuert wird.
+
+### <a name="start-migration-and-get-permission-needed-to-complete-setup"></a>Starten der Migration und Erhalten der erforderlichen Berechtigung zum Abschließen der Einrichtung
+
+Sie können die folgenden Optionen verwenden, um die Migration Ihrer EA-Registrierung zu Ihrer Microsoft-Kundenvereinbarung zu starten.
+
+
+- Melden Sie sich beim Azure-Portal über den Link in der E-Mail an, die bei Unterzeichnung der Microsoft-Kundenvereinbarung an Sie gesendet wurde.
+
+- Alternativ können Sie sich auch über den folgenden Link anmelden. Ersetzen Sie `enrollmentNumber` durch die Nummer Ihrer Enterprise Agreement-Registrierung, die erneuert wurde.
+
+  `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+
+Wenn Sie über die Rollen „Unternehmensadministrator“ und „Besitzer des Abrechnungskontos“ oder über die Rolle „Besitzer des Abrechnungsprofils“ verfügen, wird im Azure-Portal die folgende Seite angezeigt. Sie können mit der Einrichtung Ihrer EA-Registrierungen und Ihres Microsoft-Kundenvereinbarungskontos für die Umstellung fortfahren.
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-page.png" alt-text="Screenshot: Seite „Abrechnungskonto einrichten“" lightbox="./media/mca-setup-account/setup-billing-account-page.png" :::
+
+Wenn Sie nicht über die Rolle „Unternehmensadministrator“ für das Enterprise Agreement oder über die Rolle „Besitzer des Abrechnungsprofils“ für die Microsoft-Kundenvereinbarung verfügen, verwenden Sie die folgenden Informationen, um den für die Einrichtung erforderlichen Zugriff zu erhalten.
 
 ### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>Wenn Sie kein Unternehmensadministrator für die Registrierung sind
 
-Sie können die Unternehmensadministratoren für die Registrierung bitten, die Einrichtung Ihres Abrechnungskontos abzuschließen.
+Wenn Sie über die Rolle „Besitzer des Abrechnungskontos“ oder „Besitzer des Abrechnungsprofils“ verfügen, aber kein Unternehmensadministrator sind, wird im Azure-Portal die folgende Seite angezeigt:
 
-1. Melden Sie sich beim Azure-Portal über den Link in der E-Mail an, die bei Unterzeichnung der Microsoft-Kundenvereinbarung an Sie gesendet wurde.
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-page-not-ea-administrator.png" alt-text="Screenshot: Vorbereiten der Umstellung Ihrer Enterprise Agreement-Registrierungen auf der Seite „Abrechnungskonto einrichten“" lightbox="./media/mca-setup-account/setup-billing-account-page-not-ea-administrator.png" :::
 
-2. Alternativ können Sie sich auch über den folgenden Link anmelden. Ersetzen Sie `<enrollmentNumber>` durch die Nummer Ihrer Enterprise Agreement-Registrierung, die erneuert wurde.
+Sie haben zwei Möglichkeiten:
 
-   `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+- Bitten Sie den Unternehmensadministrator der Registrierung, Ihnen die Rolle „Unternehmensadministrator“ zuzuweisen. Weitere Informationen finden Sie unter [Erstellen eines weiteren Unternehmensadministrators](ea-portal-administration.md#create-another-enterprise-administrator).
+-  Sie können einem Unternehmensadministrator die Rolle „Besitzer des Abrechnungskontos“ oder „Besitzer des Abrechnungsprofils“ zuweisen. Weitere Informationen finden Sie unter [Verwalten von Abrechnungsrollen im Azure-Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
-3. Wählen Sie die Unternehmensadministratoren aus, denen Sie die Anforderung senden möchten.
-
-   ![Screenshot der Einladung von Unternehmensadministratoren](./media/mca-setup-account/ea-mca-invite-admins.png)
-
-4. Klicken Sie auf **Anforderung senden** .
-
-   Die Administratoren erhalten eine E-Mail mit Anweisungen zum Abschließen der Einrichtung.
+Wenn Sie die Rolle „Unternehmensadministrator“ erhalten, kopieren Sie den Link auf der Seite „Abrechnungskonto einrichten“. Öffnen Sie ihn in Ihrem Webbrowser, um die Einrichtung Ihrer Microsoft-Kundenvereinbarung fortzusetzen. Senden Sie ihn andernfalls an den Unternehmensadministrator.
 
 ### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>Wenn Sie kein Besitzer des Abrechnungsprofils sind
 
-Der Benutzer in Ihrer Organisation, der die Microsoft-Kundenvereinbarung unterzeichnet hat, wird als der Besitzer des Abrechnungsprofils hinzugefügt. Bitten Sie den Benutzer, Sie als Besitzer hinzuzufügen, damit Sie die Einrichtung abschließen können.
+Wenn Sie Unternehmensadministrator sind, aber für Ihre Microsoft-Kundenvereinbarung nicht über die Rolle „Besitzer des Abrechnungskontos“ oder „Besitzer des Abrechnungsprofils“ verfügen, wird im Azure-Portal die folgende Seite angezeigt.
+
+Falls die folgende Meldung angezeigt wird und Sie der Meinung sind, dass Sie über Abrechnungsprofilbesitzer-Zugriff auf die richtige Microsoft-Kundenvereinbarung verfügen, vergewissern Sie sich, dass Sie sich im richtigen Mandanten für Ihre Organisation befinden. Unter Umständen müssen Sie in ein anderes Verzeichnis wechseln.
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-page-not-billing-account-profile-owner.png" alt-text="Screenshot: Seite „Abrechnungskonto einrichten“: Abrechnungskonto der Microsoft-Kundenvereinbarung" lightbox="./media/mca-setup-account/setup-billing-account-page-not-billing-account-profile-owner.png" :::
+
+Sie haben zwei Möglichkeiten:
+
+- Bitten Sie einen vorhandenen Besitzer des Abrechnungskontos, Ihnen die Rolle „Besitzer des Abrechnungskontos“ oder „Besitzer des Abrechnungsprofils“ zuzuweisen. Weitere Informationen finden Sie unter [Verwalten von Abrechnungsrollen im Azure-Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+- Weisen Sie einem vorhandenen Besitzer des Abrechnungskontos die Rolle „Unternehmensadministrator“ zu. Weitere Informationen finden Sie unter [Erstellen eines weiteren Unternehmensadministrators](ea-portal-administration.md#create-another-enterprise-administrator).
+
+Wenn Sie die Rolle „Besitzer des Abrechnungskontos“ oder Besitzer des Abrechnungsprofils“ erhalten, kopieren Sie den Link auf der Seite „Abrechnungskonto einrichten“. Öffnen Sie ihn in Ihrem Webbrowser, um die Einrichtung Ihrer Microsoft-Kundenvereinbarung fortzusetzen. Senden Sie den Link andernfalls an den Besitzer des Abrechnungskontos.
 
 ## <a name="understand-changes-to-your-billing-hierarchy"></a>Erläuterungen zu den Änderungen an Ihrer Abrechnungshierarchie
 
@@ -199,11 +222,11 @@ Zum Abschließen der Einrichtung benötigen Sie Zugriff sowohl auf das neue Abre
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
+2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png)
 
-3. Wählen sie das Abrechnungskonto aus. Das Abrechnungskonto ist vom Typ **Microsoft-Kundenvereinbarung** .
+3. Wählen sie das Abrechnungskonto aus. Das Abrechnungskonto ist vom Typ **Microsoft-Kundenvereinbarung**.
 
 4. Wählen Sie auf der linken Seite **Azure-Abonnements** aus.
 
@@ -219,7 +242,7 @@ Azure-Reservierungen in Ihrer Enterprise Agreement-Registrierung werden zum neue
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
+2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png)
 
@@ -235,7 +258,7 @@ Unternehmensadministratoren sind als Besitzer des Abrechnungskontos aufgeführt,
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
+2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png)
 
@@ -251,7 +274,7 @@ Unternehmensadministratoren sind als Besitzer des Abrechnungsprofils aufgeführt
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
+2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png).
 
@@ -263,7 +286,7 @@ Unternehmensadministratoren sind als Besitzer des Abrechnungsprofils aufgeführt
 
     ![Screenshot mit dem Zugriff von Abteilungs- und Kontoadministratoren nach der Umstellung](./media/mca-setup-account/mca-department-account-admins-access-post-transition.png)
 
-Unternehmensadministratoren und Abteilungsadministratoren sind als Besitzer des Rechnungsabschnitts oder Benutzer mit Leseberechtigung für den Rechnungsabschnitt aufgeführt, während Kontobesitzer in der Abteilung als Azure-Abonnementersteller aufgeführt sind. Wiederholen Sie den Schritt für alle Rechnungsabschnitte, um den Zugriff für alle Abteilungen in Ihrer Enterprise Agreement-Registrierung zu überprüfen. Kontobesitzer, die nicht Teil einer Abteilung waren, erhalten die Berechtigungen für einen Rechnungsabschnitt mit dem Namen **Standardrechnungsabschnitt** . Wenn Sie der Meinung sind, dass der Zugriff für einen Administrator fehlt, können Sie diesem im Azure-Portal die Zugriffsberechtigung erteilen. Weitere Informationen finden Sie unter [Verwalten von Abrechnungsrollen im Azure-Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+Unternehmensadministratoren und Abteilungsadministratoren sind als Besitzer des Rechnungsabschnitts oder Benutzer mit Leseberechtigung für den Rechnungsabschnitt aufgeführt, während Kontobesitzer in der Abteilung als Azure-Abonnementersteller aufgeführt sind. Wiederholen Sie den Schritt für alle Rechnungsabschnitte, um den Zugriff für alle Abteilungen in Ihrer Enterprise Agreement-Registrierung zu überprüfen. Kontobesitzer, die nicht Teil einer Abteilung waren, erhalten die Berechtigungen für einen Rechnungsabschnitt mit dem Namen **Standardrechnungsabschnitt**. Wenn Sie der Meinung sind, dass der Zugriff für einen Administrator fehlt, können Sie diesem im Azure-Portal die Zugriffsberechtigung erteilen. Weitere Informationen finden Sie unter [Verwalten von Abrechnungsrollen im Azure-Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 
