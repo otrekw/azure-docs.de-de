@@ -2,14 +2,14 @@
 title: Sperren von Ressourcen, um Änderungen zu verhindern
 description: Verhindern Sie, dass Benutzer Azure-Ressourcen aktualisieren oder löschen, indem Sie eine Sperre für alle Benutzer und Rollen anwenden.
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1cc96a855c2bfe79bbf5876f0476c016d36ca9a4
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 04/28/2021
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 52e61dd1c84e0f5fa6267e687ab55ce386d5767b
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030065"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314803"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
@@ -47,6 +47,8 @@ Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vor
 * Eine Löschschutzsperre für eine **Ressourcengruppe** verhindert, dass mit Azure Resource Manager automatisch Bereitstellungen aus dem Verlauf [gelöscht](../templates/deployment-history-deletions.md) werden. Wenn im Verlauf 800 Bereitstellungen erreicht werden, treten bei weiteren Bereitstellungen Fehler auf.
 
 * Eine vom **Azure Backup-Dienst** erstellte Löschschutzsperre für die **Ressourcengruppe** führt dazu, dass Sicherungen fehlschlagen. Der Dienst unterstützt maximal 18 Wiederherstellungspunkte. Bei einer Sperrung kann der Sicherungsdienst Wiederherstellungspunkte nicht bereinigen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Sichern von Azure-VMs](../../backup/backup-azure-vm-backup-faq.yml).
+
+* Eine Nichtlöschsperre für eine **Resourcengruppe** verhindert, dass **Azure Machine Learning** [Azure Machine Learning-Computeclusters](../../machine-learning/concept-compute-target.md#azure-machine-learning-compute-managed) automatisch skaliert, um nicht verwendete Knoten zu entfernen.
 
 * Eine Schreibschutzsperre für ein **Abonnement** verhindert, dass **Azure Advisor** ordnungsgemäß funktioniert. Advisor kann die Ergebnisse seiner Abfragen nicht speichern.
 
@@ -278,7 +280,7 @@ Remove-AzResourceLock -LockId $lockId
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Sperren Sie bereitgestellte Ressourcen mit der Azure CLI, indem Sie den Befehl [az lock create](/cli/azure/lock#az-lock-create) verwenden.
+Sperren Sie bereitgestellte Ressourcen mit der Azure CLI, indem Sie den Befehl [az lock create](/cli/azure/lock#az_lock_create) verwenden.
 
 Geben Sie zum Sperren einer Ressource den Namen der Ressource, ihren Ressourcentyp und ihren Ressourcengruppennamen an.
 
@@ -292,7 +294,7 @@ Geben Sie zum Sperren einer Ressourcengruppe ihren Namen an.
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-Verwenden Sie zum Abrufen von Informationen zu einer Sperre [az lock list](/cli/azure/lock#az-lock-list). Rufen Sie alle Sperren im Abonnement mit dem folgenden Befehl ab:
+Verwenden Sie zum Abrufen von Informationen zu einer Sperre [az lock list](/cli/azure/lock#az_lock_list). Rufen Sie alle Sperren im Abonnement mit dem folgenden Befehl ab:
 
 ```azurecli
 az lock list

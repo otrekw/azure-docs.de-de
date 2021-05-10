@@ -1,18 +1,18 @@
 ---
 title: Anzeigen von Azure VPN Gateway-Metriken
-description: Schritte zum Anzeigen von VPN Gateway-Metriken
+description: Erfahren Sie, wie VPN Gateway-Metriken angezeigt werden.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 04/29/2021
 ms.author: alzam
-ms.openlocfilehash: 4b33af3e64726e124373f57920836bce145cd891
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cff09df246bf83618b5bc7e2593657c9b30094c7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89443176"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289496"
 ---
 # <a name="view-vpn-gateway-metrics"></a>Anzeigen von VPN Gateway-Metriken
 

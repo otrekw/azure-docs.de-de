@@ -5,12 +5,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.date: 04/01/2021
-ms.openlocfilehash: 6529aa49d06e64947deb5ae54db0c39ad2575569
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 547242c70986c3216a4052ca3763701264dd4282
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106288624"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108211382"
 ---
 ## <a name="business-disaster-recovery"></a>Business Disaster Recovery
 
@@ -64,6 +64,7 @@ Bei Auftreten eines Ereignisses:
 
 1. Wenn Ihre primäre Region während eines Notfalls betroffen ist, leiten Sie den Betrieb in die Azure Time Series Insights-Sicherungsumgebung um.
 1. Da Hubsequenznummern nach dem Failover von 0 an neu beginnen, erstellen Sie die Ereignisquelle in beiden Regionen/Umgebungen mit unterschiedlichen Consumergruppen neu, um zu vermeiden, dass etwas wie doppelte Ereignisse erstellt wird.
+1. Löschen Sie die primäre Ereignisquelle, die jetzt inaktiv ist, um eine verfügbare Ereignisquelle für Ihre Umgebung frei zu machen. (Pro Umgebung gibt es ein Limit von zwei aktiven Ereignisquellen.)
 1. Verwenden Sie Ihre zweite Region zum Sichern und Wiederherstellen aller Azure Time Series Insights-Telemetrie- und -Abfragedaten.
 
 > [!IMPORTANT]

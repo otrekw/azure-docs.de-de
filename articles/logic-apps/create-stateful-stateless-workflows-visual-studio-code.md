@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/30/2021
-ms.openlocfilehash: 4010f7e2d0d20216107a45109056478694c940ca
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/23/2021
+ms.openlocfilehash: 0099e039c87ccf29848ecb602bc5eeff8b82f689
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772503"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163623"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Erstellen zustandsbehafteter und zustandsloser Workflows in Visual Studio Code mit der Erweiterung „Azure Logic Apps (Vorschau)“
 
@@ -1028,7 +1028,10 @@ In Visual Studio Code können Sie alle bereitgestellten Logik-Apps in Ihrem Azur
 
 1. Öffnen Sie die Logik-App, die Sie verwalten möchten. Wählen Sie im Kontextmenü der Logik-App die Aufgabe aus, die Sie durchführen möchten.
 
-   Beispielsweise können Sie Aufgaben wie das Beenden, Starten, Neustarten oder Löschen Ihrer bereitgestellten Logik-App auswählen.
+   Beispielsweise können Sie Aufgaben wie das Beenden, Starten, Neustarten oder Löschen Ihrer bereitgestellten Logik-App auswählen. Sie können [einen Workflow mithilfe des Azure-Portals deaktivieren oder aktivieren.](create-stateful-stateless-workflows-azure-portal.md#disable-enable-workflows)
+
+   > [!NOTE]
+   > Die Vorgänge „Logik-App beenden“ und „Logik-App löschen“ wirken sich auf unterschiedliche Weise auf Workflow-Instanzen aus. Weitere Informationen hierzu sind unter [Überlegungen zum Beenden von Logik-Apps](#considerations-stop-logic-apps) und [Überlegungen zum Löschen von Logik-Apps](#considerations-delete-logic-apps) zu lesen.
 
    ![Screenshot, der Visual Studio Code dem geöffneten Bereich der Erweiterung „Azure Logic Apps (Vorschau)“ und dem bereitgestellten Workflow zeigt.](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-visual-studio-code.png)
 
@@ -1052,11 +1055,45 @@ In Visual Studio Code können Sie alle bereitgestellten Logik-Apps in Ihrem Azur
 
    ![Screenshot, der das Azure-Portal und die Suchleiste mit Suchergebnissen für die bereitgestellte Logik-App zeigt, die ausgewählt angezeigt wird.](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-azure-portal.png)
 
+<a name="considerations-stop-logic-apps"></a>
+
+### <a name="considerations-for-stopping-logic-apps"></a>Überlegungen zum Beenden von Logik-Apps
+
+Das Beenden einer Logik-App wirkt sich wie folgt auf Workflow-Instanzen aus:
+
+* Der Logic Apps-Dienst bricht alle laufenden und ausstehenden Ausführungen sofort ab.
+
+* Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
+
+* Trigger werden nicht ausgelöst, wenn die definierten Bedingungen beim nächsten Mal erfüllt werden. Triggerzustände merken sich jedoch die Punkte, an denen die Logik-App beendet wurde. Wenn Sie die Logik-App erneut starten, wird der Trigger für alle nicht verarbeiteten Elemente seit der letzten Ausführung ausgelöst.
+
+  Um das Auslösen eines Triggers für nicht verarbeitete Elemente seit der letzten Ausführung zu verhindern, löschen Sie den Triggerstatus, bevor Sie die Logik-App erneut starten:
+
+  1. Wählen Sie in Visual Studio Code in der linken Symbolleiste das Symbol Azure aus. 
+  1. Wählen Sie im Bereich **Azure: Logic Apps (Vorschau)** Ihr Abonnement, in dem alle bereitgestellten Logik-Apps für dieses Abonnement angezeigt werden.
+  1. Erweitern Sie Ihre Logik-App, und erweitern Sie dann den **Workflows**-Knoten.
+  1. Öffnen Sie einen Workflow, und bearbeiten Sie einen beliebigen Teil des Triggers dieses Workflows.
+  1. Speichern Sie die Änderungen. Durch diesen Schritt wird der aktuelle Status des Triggers zurückgesetzt.
+  1. Wiederholen Sie dies für jeden Workflow.
+  1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App neu.
+
+<a name="considerations-delete-logic-apps"></a>
+
+### <a name="considerations-for-deleting-logic-apps"></a>Überlegungen zum Beenden von Logik-Apps
+
+Das Löschen einer Logik-App wirkt sich wie folgt auf Workflow-Instanzen aus:
+
+* Der Logic Apps-Dienst wird in Bearbeitung und ausstehende Ausführungen sofort abgebrochen, führt jedoch keine Bereinigungsaufgaben für den von der App verwendeten Speicher aus.
+
+* Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
+
+* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls schlagen Aufrufe des neu erstellten Workflows mit einem `Unauthorized` Fehler fehl. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten und Workflows verwenden, welche Azure-Funktionen aufrufen.
+
 <a name="manage-deployed-apps-portal"></a>
 
 ## <a name="manage-deployed-logic-apps-in-the-portal"></a>Verwalten bereitgestellter Logik-Apps im Portal
 
-Im Azure-Portal können Sie alle bereitgestellten Logik-Apps anzeigen, die in Ihrem Azure-Abonnement enthalten sind, unabhängig davon, ob es sich um den ursprünglichen **Logic Apps**-Ressourcentyp oder den **Logik-App (Vorschau)** -Ressourcentyp handelt. Zurzeit wird jeder Ressourcentyp in Azure als separate Kategorien organisiert und verwaltet. Um Logik-Apps zu finden, die vom Ressourcentyp **Logik-App (Vorschau)** sind, gehen Sie wie folgt vor:
+Wenn Sie eine Logik-App im Azure-Portal von Visual Studio Code einsetzen, können Sie alle bereitgestellten Logik-Apps anzeigen, die in Ihrem Azure-Abonnement enthalten sind, unabhängig davon, ob es sich um den ursprünglichen **Logik-App**-Ressourcentyp oder den **Logik-App (Vorschau)** -Ressourcentyp handelt. Zurzeit wird jeder Ressourcentyp in Azure als separate Kategorien organisiert und verwaltet. Um Logik-Apps zu finden, die vom Ressourcentyp **Logik-App (Vorschau)** sind, gehen Sie wie folgt vor:
 
 1. Geben Sie in das Suchfeld des Azure-Portals `logic app preview` ein. Wenn die Ergebnisliste angezeigt wird, wählen Sie unter **Dienste** die Option **Logik-App (Vorschau)** aus.
 

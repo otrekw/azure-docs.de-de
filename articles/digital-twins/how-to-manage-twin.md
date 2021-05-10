@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 02ea87bba8c28f0217479ffc65ccc65903fc0442
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 68127a7603db2d408ed1bbdb244f49de4eb21031
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903036"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208489"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
-Entitäten in Ihrer Umgebung werden durch [digital Zwillinge](concepts-twins-graph.md) dargestellt. Die Verwaltung digitaler Zwillinge kann das Erstellen, Ändern und Löschen umfassen. Für diese Vorgänge können Sie die [**Digital Twins-APIs**](/rest/api/digital-twins/dataplane/twins), das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder die [Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md) verwenden.
+Entitäten in Ihrer Umgebung werden durch [digital Zwillinge](concepts-twins-graph.md) dargestellt. Die Verwaltung digitaler Zwillinge kann das Erstellen, Ändern und Löschen umfassen. Für diese Vorgänge können Sie die [Digital Twins-APIs](/rest/api/digital-twins/dataplane/twins), das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) oder die [Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md) verwenden.
 
-In diesem Artikel wird die Verwaltung digitaler Zwillinge beschrieben. Informationen zum Arbeiten mit Beziehungen und dem [Zwillingsgraph](concepts-twins-graph.md) insgesamt finden Sie unter [*Gewusst wie: Verwalten des Zwillingsgraphen mit Beziehungen*](how-to-manage-graph.md).
+Dieser Artikel beschreibt die Verwaltung digitaler Zwillinge. Informationen zum Arbeiten mit Beziehungen und dem [Zwillingsgraph](concepts-twins-graph.md) als Ganzes finden Sie unter [Gewusst wie: Verwalten des Zwillingsgraphen mit Beziehungen](how-to-manage-graph.md).
 
 > [!TIP]
 > Alle SDK-Funktionen sind in synchronen und asynchronen Versionen enthalten.
@@ -55,7 +55,7 @@ Die Modell- und alle ursprünglichen Eigenschaftswerte werden über den `initDat
 
 Sie können die Eigenschaften eines Zwillings zum Zeitpunkt der Erstellung des Zwillings initialisieren. 
 
-Die Zwillingserstellungs-API akzeptiert ein Objekt, das in eine gültige JSON-Beschreibung der Zwillingseigenschaften serialisiert wird. Unter [*Konzepte: digitale Zwillinge und das Zwillingsdiagramm*](concepts-twins-graph.md) finden Sie eine Beschreibung des JSON-Formats für einen Zwilling. 
+Die Zwillingserstellungs-API akzeptiert ein Objekt, das in eine gültige JSON-Beschreibung der Zwillingseigenschaften serialisiert wird. Unter [Konzepte: digitale Zwillinge und das Zwillingsdiagramm](concepts-twins-graph.md) finden Sie eine Beschreibung des JSON-Formats für einen Zwilling. 
 
 Zunächst können Sie ein Datenobjekt erstellen, das den Zwilling und seine Eigenschaftsdaten darstellt. Sie können ein Parameterobjekt entweder manuell oder mithilfe einer bereitgestellten Hilfsklasse erstellen. Im Folgenden finden Sie Beispiele für beides.
 
@@ -93,7 +93,7 @@ Beim Abrufen eines Zwillings mit der Methode `GetDigitalTwin()` werden nur Eigen
 >[!TIP]
 >Der `displayName` für einen Zwilling ist ein Teil seiner Modellmetadaten und wird daher nicht angezeigt, wenn Daten für die Zwillingsinstanz abgerufen werden. Um diesen Wert zu sehen, können Sie [ihn aus dem Modell abrufen](how-to-manage-model.md#retrieve-models).
 
-Informationen zum Abrufen mehrerer Zwillinge mithilfe eines einzelnen API-Aufrufs finden Sie in den Beispielen zur Abfrage-API unter [*Gewusst wie: des Zwillingsdiagramms von Azure Digital Twins*](how-to-query-graph.md).
+Informationen zum Abrufen mehrerer Zwillinge mithilfe eines einzelnen API-Aufrufs finden Sie in den Beispielen zur Abfrage-API unter [Gewusst wie: Abfragen des Zwillingsgraphen](how-to-query-graph.md).
 
 Beachten Sie das folgende Modell (geschrieben in [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)), das einen *Moon* definiert:
 
@@ -135,7 +135,7 @@ Die definierten Eigenschaften des digitalen Zwillings werden als Eigenschaften d
   - Der Synchronisierungsstatus für jede schreibbare Eigenschaft. Dies ist besonders hilfreich für Geräte, bei denen es möglich ist, dass der Dienst und das Gerät abweichende Status aufweisen (z. B. wenn ein Gerät offline ist). Derzeit gilt diese Eigenschaft nur für physische Geräte, die mit IoT Hub verbunden sind. Mit den Daten im Metadatenabschnitt erfahren Sie den vollständigen Status einer Eigenschaft sowie die Zeitstempel der letzten Änderung. Weitere Informationen zum Synchronisierungsstatus erhalten Sie in [diesem IoT Hub-Tutorial](../iot-hub/tutorial-device-twins.md) zum Synchronisieren des Gerätestatus.
   - Dienstspezifische Metadaten, wie z. B. aus IoT Hub oder Azure Digital Twins 
 
-Weitere Informationen zu den Serialisierungshilfsklassen wie `BasicDigitalTwin` finden Sie unter [ *Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md).
+Weitere Informationen zu den Serialisierungshilfsklassen wie `BasicDigitalTwin` finden Sie unter  [Verwenden der Azure Digital Twins-APIs und SDKs](how-to-use-apis-sdks.md).
 
 ## <a name="view-all-digital-twins"></a>Anzeigen aller digitalen Zwillinge
 
@@ -214,7 +214,7 @@ Hier folgt ein Beispiel für den Code zum Löschen von Zwillingen und ihren Bezi
 
 ### <a name="delete-all-digital-twins"></a>Löschen aller digitalen Zwillinge
 
-Ein Beispiel für das gleichzeitige Löschen aller Zwillinge finden Sie in der Beispiel-App im [*Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App*](tutorial-command-line-app.md). In der Datei *CommandLoop.cs* wird dies in einer `CommandDeleteAllTwins()`-Funktion durchgeführt.
+Ein Beispiel für das gleichzeitige Löschen aller Zwillinge finden Sie in der Beispiel-App im [Tutorial: Untersuchen der Grundlagen mit einer Beispielclient-App](tutorial-command-line-app.md). In der Datei *CommandLoop.cs* wird dies in einer `CommandDeleteAllTwins()`-Funktion durchgeführt.
 
 ## <a name="runnable-digital-twin-code-sample"></a>Ausführbares Codebeispiel für digitale Zwillinge
 
@@ -222,7 +222,7 @@ Sie können das folgende ausführbare Codebeispiel verwenden, um einen Zwilling 
 
 ### <a name="set-up-the-runnable-sample"></a>Einrichten des ausführbaren Beispiels
 
-Der Codeausschnitt verwendet die [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json)-Modelldefinition aus dem [*Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App*](tutorial-command-line-app.md). Sie können diesen Link verwenden, um direkt zu der Datei zu wechseln, oder sie als Teil des vollständigen End-to-End-Beispielprojekts [hier](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) herunterladen.
+Der Codeausschnitt verwendet die [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json)-Modelldefinition aus dem [Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App](tutorial-command-line-app.md). Sie können diesen Link verwenden, um direkt zu der Datei zu wechseln, oder sie als Teil des vollständigen [End-to-End-Beispielprojekts](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) herunterzuladen.
 
 Bevor Sie das Beispiel ausführen, gehen Sie wie folgt vor:
 1. Laden Sie die Modelldatei herunter, platzieren Sie sie in Ihrem Projekt, und ersetzen Sie den Platzhalter `<path-to>` im Code unten, um Ihrem Programm mitzuteilen, wo sie zu finden ist.
@@ -250,4 +250,4 @@ Hier ist die Konsolenausgabe des obigen Programms:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie Beziehungen zwischen Ihren digitalen Zwillingen erstellen und verwalten können:
-* [*Verwenden Verwalten des Zwillingsgraphen mit Beziehungen*](how-to-manage-graph.md)
+* [Gewusst wie: Verwalten des Zwillingsgraphen mit Beziehungen](how-to-manage-graph.md)

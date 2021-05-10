@@ -3,12 +3,12 @@ title: Verwalten von Warnungsereignissen
 description: Hier erfahren Sie, wie Sie Warnungsereignisse verwalten können, die im Netzwerk erkannt werden.
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 2995ff0d2246929efb534bc21d888bad3a2cf24a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 124584026bd9ee1662ab39130b5b4dea8b61896c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781788"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209065"
 ---
 # <a name="manage-alert-events"></a>Verwalten von Warnungsereignissen
 
@@ -23,15 +23,28 @@ Die folgenden Optionen sind für die Verwaltung von Warnungsereignissen verfügb
 Sie können auch Warnungsinformationen exportieren.
 ## <a name="about-learning-and-unlearning-events"></a>Informationen zum Erlernen und Verlernen von Ereignissen
 
-Ereignisse, die auf Abweichungen des gelernten Netzwerks hindeuten, spiegeln möglicherweise zulässige Netzwerkänderungen wider. Beispiele hierfür sind ein neues autorisiertes Gerät, das dem Netzwerk hinzugefügt wurde, oder ein autorisiertes Firmwareupdate.
+Ereignisse, die auf Abweichungen des gelernten Netzwerks hindeuten, spiegeln möglicherweise zulässige Netzwerkänderungen wider. Wenn Sie diese Änderungen genehmigen möchten, können Sie Defender für IoT anweisen, das Verhalten zu *erlernen*. Beispiele:
 
-Wenn Sie **Learn** (Erlernen) auswählen, werden Datenverkehr, Konfigurationen oder Aktivitäten vom Sensor als zulässig betrachtet. Dies bedeutet, dass Warnungen für das Ereignis nicht mehr ausgelöst werden. Dies bedeutet auch, dass das Ereignis nicht einbezogen wird, wenn der Sensor eine Risikobewertung, einen Angriffsvektor und andere Berichte generiert.
+- Auf einem vorhandenen Gerät wurde eine neue Aktivität erkannt. Beispielsweise hat ein autorisiertes Gerät versucht, auf eine neue Ressource auf einem anderen Gerät zuzugreifen.
 
-Beispielsweise könnten Sie eine Warnung erhalten, die auf ein Gerät verweist, das von einem Netzwerkscanner zuvor nicht definiert wurde. Wenn dieses Gerät zum Zweck der Überprüfung zum Netzwerk hinzugefügt wurde, können Sie den Sensor anweisen, das Gerät als Scangerät zu erlernen.
+- Dem Netzwerk wird ein neues Gerät hinzugefügt.  
+
+- Die Firmwareversion ändert sich gemäß den folgenden Standardwartungsverfahren.
+
+- Ein neues Gerät hat einen Lese-/Schreibvorgang auf einem Zielcontroller ausgeführt.
+
+- Ein neues Gerät führt einen Lese-/Schreibvorgang auf einem Zielcontroller aus und sollte als Programmiergerät definiert werden.
+
+- Es wird eine neue legitime Überprüfung durchgeführt, und das Gerät sollte als Überprüfungsgerät definiert werden.
+
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/detected.png" alt-text="Fenster „Address Scan Detected“ (Address-Scan erkannt)":::
 
-Erlernte Ereignisse können verlernt werden. Wenn der Sensor Ereignisse verlernt, löst er Warnungen im Zusammenhang mit diesem Ereignis danach wieder aus.
+In Warnungen reflektierte Aktivitäten werden beim Generieren von Data Mining-, Risikobewertungs- und Angriffsvektorberichten berechnet. Wenn Sie diese Ereignisse verwalten, aktualisiert der Sensor die Berichte entsprechend.
+
+Wenn Sie **Learn** (Erlernen) auswählen, werden Datenverkehr, Konfigurationen oder Aktivitäten vom Sensor als zulässig betrachtet. Dies bedeutet, dass Warnungen für das Ereignis nicht mehr ausgelöst werden. Dies bedeutet auch, dass das Ereignis nicht einbezogen wird, wenn der Sensor eine Risikobewertung, einen Angriffsvektor und andere Berichte generiert.
+
+Erlernte Ereignisse können verlernt werden. Wenn der Sensor Ereignisse verlernt, löst er danach wieder Warnungen im Zusammenhang mit diesem Ereignis aus.
 
 ## <a name="about-acknowledging-and-unacknowledging-events"></a>Informationen zum Bestätigen und Aufheben der Bestätigung von Ereignissen
 
@@ -123,5 +136,7 @@ So erfolgt das Exportieren
 1. Wählen Sie „Export Extended Alerts“ (Erweiterte Warnungen exportieren) aus, um für jede Warnung, die mehrere Geräte abdeckt, Warnungsinformationen in separaten Zeilen zu exportieren. Wenn „Export Extended Alerts“ (Erweiterte Warnungen exportieren) ausgewählt ist, wird in der CSV-Datei eine duplizierte Zeile des Warnungsereignisses mit den eindeutigen Elementen in jeder Zeile erstellt. Die Verwendung dieser Option vereinfacht die Untersuchung exportierter Warnungsereignisse.
 
 ## <a name="see-also"></a>Weitere Informationen
+
+[Warnungstypen und -beschreibungen](alert-engine-messages.md)
 
 [Steuern des zu überwachenden Datenverkehrs](how-to-control-what-traffic-is-monitored.md)

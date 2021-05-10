@@ -1,18 +1,19 @@
 ---
-title: 'Azure-VPN Gateway: Point-to-Site-VPN-Sitzungsverwaltung'
-description: Dieser Artikel unterstützt Sie beim Anzeigen und Trennen von Point-to-Site-VPN-Sitzungen.
+title: Point-to-Site-VPN-Sitzungsverwaltung
+titleSuffix: Azure VPN Gateway
+description: Erfahren Sie, wie Sie Point-to-Site-VPN-Sitzungen anzeigen und trennen.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 0b0a4c712333516dcdd20dcde9ef4b9c74b5f228
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 79432bfd65feeae79017a883be990d88134cbb10
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018653"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202531"
 ---
 # <a name="point-to-site-vpn-session-management"></a>Point-to-Site-VPN-Sitzungsverwaltung
 

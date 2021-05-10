@@ -6,14 +6,14 @@ ms.date: 04/05/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 description: Verwenden benutzerdefinierter Speicherorte zum Bereitstellen von Azure-PaaS-Diensten in Kubernetes-Clustern mit Azure Arc-Unterstützung
-ms.openlocfilehash: b3a0d89f0c352b8344aea68a613653eae43a41e4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d8e1c11069a1097b0bfea3319eeb90fcee3eec82
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147767"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287733"
 ---
 # <a name="custom-locations-on-azure-arc-enabled-kubernetes"></a>Benutzerdefinierte Speicherorte in Kubernetes-Clustern mit Azure Arc-Unterstützung
 
@@ -29,7 +29,7 @@ Eine konzeptionelle Übersicht zu diesem Feature finden Sie im Artikel [„Benut
 
 - [Installieren oder aktualisieren Sie Azure CLI](/cli/azure/install-azure-cli) auf eine Version >= 2.16.0.
 
-- Azure CLI-Erweiterungen `connectedk8s` (Version >= 1.1.0), `k8s-extension` (Version >= 0.2.0) und `customlocation` (Version >= 0.1.0). Installieren Sie diese Azure CLI-Erweiterungen, indem Sie die folgenden Befehle ausführen:
+- Azure CLI-Erweiterungen`connectedk8s` (Version >= 1.1.0), `k8s-extension` (Version >= 0.2.0), and `customlocation` (Version >= 0.1.0). Installieren Sie diese Azure CLI-Erweiterungen, indem Sie die folgenden Befehle ausführen:
   
     ```azurecli
     az extension add --name connectedk8s
@@ -74,6 +74,7 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 > [!NOTE]
 > 1. Das Feature „Benutzerdefinierte Speicherorte“ ist vom Cluster Connect-Feature abhängig. Daher müssen beide Features aktiviert werden, damit „Benutzerdefinierte Speicherorte“ funktioniert.
 > 2. `az connectedk8s enable-features` muss auf einem Computer ausgeführt werden, auf dem die `kubeconfig`-Datei auf den Cluster verweist, auf dem die Features aktiviert werden sollen.
+> 3. Wenn Sie mithilfe Azure CLI Dienstprinzipals bei einem Dienstprinzipal angemeldet sind, müssen dem Dienstprinzipal [zusätzliche Berechtigungen](troubleshooting.md#enable-custom-locations-using-service-principal) erteilt werden, bevor sie das benutzerdefinierte Speicherort-Feature aktivieren.
 
 ## <a name="create-custom-location"></a>Erstellen eines benutzerdefinierten Speicherorts
 

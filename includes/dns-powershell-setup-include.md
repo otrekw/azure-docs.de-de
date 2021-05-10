@@ -5,15 +5,15 @@ services: dns
 author: subsarma
 ms.service: dns
 ms.topic: include file for PowerShell for Azure DNS
-ms.date: 03/21/2018
+ms.date: 04/28//2021
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 32c516ccee3a9f4f7604a3e330285703a776b47d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3634850a78db5ba03624a4363bbb72397460af38
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "67133072"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203257"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Einrichten des Azure PowerShell für Azure DNS
 
@@ -26,50 +26,26 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 * Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 * Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager installieren. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
-Zur Verwendung von Private Zones (Public Preview) benötigen Sie zudem folgende PowerShell-Module und -Versionen: 
-* AzureRM.Dns: mindestens [Version 4.1.0](https://www.powershellgallery.com/packages/AzureRM.Dns/4.1.0)
-* AzureRM.Network: mindestens [Version 5.4.0](https://www.powershellgallery.com/packages/AzureRM.Network/5.4.0)
-
-```powershell 
-Find-Module -Name AzureRM.Dns 
-``` 
- 
-```powershell 
-Find-Module -Name AzureRM.Network 
-``` 
- 
-In der Ausgabe der obigen Befehle muss die AzureRM.Dns-Version mindestens 4.1.0 und die AzureRM.Network-Version mindestens 5.4.0 sein.  
-
-Sollten in Ihrem System ältere Versionen vorhanden sein, können Sie entweder die neueste Version von Azure PowerShell installieren oder die obigen Module aus dem PowerShell-Katalog herunterladen und installieren. Verwenden Sie dazu die obigen Links neben den Modulversionen. Anschließend können Sie sie mithilfe der weiter unten bereitgestellten Befehle installieren. Beide Module sind erforderlich und vollständig abwärtskompatibel. 
-
-```powershell
-Install-Module -Name AzureRM.Dns -Force
-```
-
-```powershell
-Install-Module -Name AzureRM.Network -Force
-```
-
 ### <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
 
-Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Weitere Informationen finden Sie unter [Anmelden mit AzureRM](/powershell/azure/azurerm/authenticate-azureps).
+Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Weitere Informationen finden Sie unter [Anmelden mit Azure PowerShell](/powershell/azure/azurerm/authenticate-azureps).
 
-```powershell
-Connect-AzureRmAccount
+```azurepowershell-interactive
+Connect-AzAccount
 ```
 
 ### <a name="select-the-subscription"></a>Auswählen des Abonnements
  
 Überprüfen Sie die Abonnements für das Konto.
 
-```powershell
-Get-AzureRmSubscription
+```azurepowershell-interactive
+Get-AzSubscription
 ```
 
 Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
 
-```powershell
-Select-AzureRmSubscription -SubscriptionName "your_subscription_name"
+```azurepowershell-interactive
+Select-AzSubscription -SubscriptionName "your_subscription_name"
 ```
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -78,14 +54,6 @@ Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort 
 
 Dieser Schritt kann übersprungen werden, wenn Sie eine vorhandene Ressourcengruppe verwenden.
 
-```powershell
-New-AzureRmResourceGroup -Name MyAzureResourceGroup -location "West US"
-```
-
-### <a name="register-resource-provider"></a>Registrieren des Ressourcenanbieters
-
-Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. Ihr Azure-Abonnement muss für die Verwendung dieses Ressourcenanbieters registriert werden, bevor Sie Azure DNS verwenden können. Dieser Schritt muss einmal für jedes Abonnement ausgeführt werden.
-
-```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+```azurepowershell-interactive
+New-AzResourceGroup -Name MyDNSResourceGroup -location "West US"
 ```

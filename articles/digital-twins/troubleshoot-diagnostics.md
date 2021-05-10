@@ -4,25 +4,25 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie die Protokollierung mit Diagnoseeinstellungen aktivieren und die Protokolle für eine sofortige Anzeige abfragen.
 author: baanders
 ms.author: baanders
-ms.date: 11/9/2020
+ms.date: 2/24/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 797de242b4b4464c0bfb5ae18af05710ab36bce6
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 4ca6989a6c446c543c35d8e35e5e27aefef118c2
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285478"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205681"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
 
 Azure Digital Twins kann Protokolle für Ihre Dienstinstanz zur Überwachung von Leistung, Zugriff und anderen Daten erfassen. Anhand dieser Protokolle können Sie eine Vorstellung davon erhalten, was in Ihrer Azure Digital Twins-Instanz geschieht, und eine Ursachenanalyse für Probleme durchführen, ohne sich an den Azure-Support wenden zu müssen.
 
-In diesem Artikel wird das [**Konfigurieren von Diagnoseeinstellungen**](#turn-on-diagnostic-settings) im [Azure-Portal](https://portal.azure.com) erläutert, um mit der Erfassung von Protokollen von Ihrer Azure Digital Twins-Instanz zu beginnen. Sie können auch angeben, wo die Protokolle gespeichert werden sollen (z. B. Log Analytics oder ein Speicherkonto Ihrer Wahl).
+In diesem Artikel wird das [Konfigurieren von Diagnoseeinstellungen](#turn-on-diagnostic-settings) im [Azure-Portal](https://portal.azure.com) erläutert, um mit der Erfassung von Protokollen von Ihrer Azure Digital Twins-Instanz zu beginnen. Sie können auch angeben, wo die Protokolle gespeichert werden sollen (z. B. Log Analytics oder ein Speicherkonto Ihrer Wahl).
 
 Dieser Artikel enthält außerdem Listen aller [Protokollkategorien](#log-categories) und [Protokollschemas](#log-schemas), die von Azure Digital Twins erfasst werden.
 
-Nachdem Sie Protokolle eingerichtet haben, können Sie die [**Protokolle abfragen**](#view-and-query-logs), um schnell benutzerdefinierte Einblicke zu gewinnen.
+Nachdem Sie Protokolle eingerichtet haben, können Sie die [Protokolle abfragen](#view-and-query-logs), um schnell benutzerdefinierte Einblicke zu gewinnen.
 
 ## <a name="turn-on-diagnostic-settings"></a>Aktivieren von Diagnoseeinstellungen 
 
@@ -43,7 +43,7 @@ Aktivieren Sie Diagnoseeinstellungen, um mit dem Erfassen von Protokollen in Ihr
         - QueryOperation
         - AllMetrics
         
-        Weitere Details zu diesen Kategorien und den darin enthaltenen Informationen finden Sie im Abschnitt [*Protokollkategorien*](#log-categories) weiter unten.
+        Weitere Details zu diesen Kategorien und den darin enthaltenen Informationen finden Sie im Abschnitt [Protokollkategorien](#log-categories) weiter unten.
      * **Zieldetails:** Wählen Sie aus, wohin die Protokolle gesendet werden sollen. Sie können eine beliebige Kombination der drei Optionen auswählen:
         - An Log Analytics senden
         - In einem Speicherkonto archivieren
@@ -57,7 +57,7 @@ Aktivieren Sie Diagnoseeinstellungen, um mit dem Erfassen von Protokollen in Ihr
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Anschließend werden die Protokolle im konfigurierten Ziel auf der Seite **Diagnoseeinstellungen** für Ihre Instanz angezeigt. 
 
-Ausführlichere Informationen zu Diagnoseeinstellungen und deren Einrichtungsoptionen finden Sie unter [*Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele*](../azure-monitor/essentials/diagnostic-settings.md).
+Ausführlichere Informationen zu Diagnoseeinstellungen und deren Einrichtungsoptionen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/essentials/diagnostic-settings.md).
 
 ## <a name="log-categories"></a>Protokollkategorien
 
@@ -68,7 +68,7 @@ Nachfolgend finden Sie weitere Details zu den Protokollkategorien, die von Azure
 | ADTModelsOperation | Protokolliert alle API-Aufrufe im Zusammenhang mit Modellen. |
 | ADTQueryOperation | Protokolliert alle API-Aufrufe im Zusammenhang mit Abfragen. |
 | ADTEventRoutesOperation | Protokolliert alle API-Aufrufe im Zusammenhang mit Ereignisrouten sowie ausgehende Ereignisse von Azure Digital Twins an einen Endpunktdienst wie Event Grid, Event Hubs und Service Bus. |
-| ADTDigitalTwinsOperation | Protokolliert alle API-Aufrufe im Zusammenhang mit Azure Digital Twins. |
+| ADTDigitalTwinsOperation | Protokollieren aller API-Aufrufe im Zusammenhang mit einzelnen Zwillingen |
 
 Jede Protokollkategorie besteht aus Schreib-, Lese-, Lösch- und Aktionsvorgängen.  Diese lassen sich REST-API-Aufrufen wie folgt zuordnen:
 
@@ -104,11 +104,13 @@ Im Folgenden finden Sie eine umfassende Liste der Vorgänge und entsprechenden [
 
 Jede Protokollkategorie verfügt über ein Schema, das definiert, wie Ereignisse in dieser Kategorie gemeldet werden. Jeder einzelne Protokolleintrag wird als Text gespeichert und als JSON-Blob formatiert. Die Felder im Protokoll und die JSON-Beispieltexte werden für jeden unten angegebenen Protokolltyp bereitgestellt. 
 
-`ADTDigitalTwinsOperation`, `ADTModelsOperation` und `ADTQueryOperation` verwenden ein konsistentes API-Protokollschema. `ADTEventRoutesOperation` verfügt über ein eigenes separates Schema.
+`ADTDigitalTwinsOperation`, `ADTModelsOperation` und `ADTQueryOperation` verwenden ein konsistentes API-Protokollschema. `ADTEventRoutesOperation` erweitert das Schema so, dass es ein `endpointName`-Feld in den Eigenschaften enthält.
 
 ### <a name="api-log-schemas"></a>API-Protokollschemas
 
-Dieses Protokollschema ist für `ADTDigitalTwinsOperation`, `ADTModelsOperation` und `ADTQueryOperation` konsistent. Es enthält Informationen, die für API-Aufrufe an eine Azure Digital Twins-Instanz relevant sind.
+Dieses Protokollschema ist für `ADTDigitalTwinsOperation`, `ADTModelsOperation` und `ADTQueryOperation` konsistent. Dasselbe Schema wird auch für `ADTEventRoutesOperation` verwendet, mit **Ausnahme** des `Microsoft.DigitalTwins/eventroutes/action` Vorgangsnamens (weitere Informationen zu diesem Schema finden Sie im nächsten Abschnitt: [Ausgangsprotokollschemas](#egress-log-schemas)).
+
+Das Schema enthält Informationen, die für API-Aufrufe an eine Azure Digital Twins-Instanz relevant sind.
 
 Im Folgenden finden Sie die Feld- und Eigenschaftsbeschreibungen für API-Protokolle.
 
@@ -125,9 +127,15 @@ Im Folgenden finden Sie die Feld- und Eigenschaftsbeschreibungen für API-Protok
 | `DurationMs` | String | Zeit für die Ausführung des Ereignisses in Millisekunden |
 | `CallerIpAddress` | String | Maskierte Quell-IP-Adresse für das Ereignis |
 | `CorrelationId` | Guid | Vom Kunden angegebener eindeutiger Bezeichner für das Ereignis |
-| `Level` | String | Protokollschweregrad des Ereignisses |
+| `ApplicationId` | Guid | Bei der Bearer-Autorisierung verwendete Anwendungs-ID |
+| `Level` | Int | Protokollschweregrad des Ereignisses |
 | `Location` | String | Region, in der das Ereignis aufgetreten ist |
 | `RequestUri` | Uri | Während des Ereignisses verwendeter Endpunkt |
+| `TraceId` | String | `TraceId` aus dem [W3C-Ablaufverfolgungskontext](https://www.w3.org/TR/trace-context/). Die ID der gesamten Ablaufverfolgung, die zur systemübergreifenden eindeutigen Identifizierung einer verteilten Ablaufverfolgung verwendet wird |
+| `SpanId` | String | `SpanId` aus dem [W3C-Ablaufverfolgungskontext](https://www.w3.org/TR/trace-context/). Die ID dieser Anforderung in der Ablaufverfolgung |
+| `ParentId` | String | `ParentId` aus dem [W3C-Ablaufverfolgungskontext](https://www.w3.org/TR/trace-context/). Eine Anforderung ohne übergeordnete ID ist der Stamm der Ablaufverfolgung. |
+| `TraceFlags` | String | `TraceFlags` aus dem [W3C-Ablaufverfolgungskontext](https://www.w3.org/TR/trace-context/). Steuert Ablaufverfolgungsflags wie Sampling, Ablaufverfolgungsebene usw. |
+| `TraceState` | String | `TraceState` aus dem [W3C-Ablaufverfolgungskontext](https://www.w3.org/TR/trace-context/). Zusätzliche herstellerspezifische Informationen zur Ablaufverfolgungsidentifizierung, die verschiedene Systeme für die verteilte Ablaufverfolgung umfassen sollen. |
 
 Im Folgenden finden Sie Beispiel-JSON-Texte für diese Arten von Protokollen.
 
@@ -143,12 +151,25 @@ Im Folgenden finden Sie Beispiel-JSON-Texte für diese Arten von Protokollen.
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": "314",
+  "durationMs": 8,
   "callerIpAddress": "13.68.244.*",
   "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31"
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
 ```
 
@@ -164,12 +185,25 @@ Im Folgenden finden Sie Beispiel-JSON-Texte für diese Arten von Protokollen.
   "resultType": "Success",
   "resultSignature": "201",
   "resultDescription": "",
-  "durationMs": "935",
+  "durationMs": "80",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
 ```
 
@@ -185,18 +219,67 @@ Im Folgenden finden Sie Beispiel-JSON-Texte für diese Arten von Protokollen.
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": "255",
+  "durationMs": "314",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
+```
+
+#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+
+Hier sehen Sie einen JSON-Beispieltext für `ADTEventRoutesOperation`, der **nicht** vom `Microsoft.DigitalTwins/eventroutes/action`-Typ ist (weitere Informationen zu diesem Schema finden Sie im nächsten Abschnitt: [Ausgangsprotokollschemas](#egress-log-schemas)).
+
+```json
+  {
+    "time": "2020-10-30T22:18:38.0708705Z",
+    "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+    "operationName": "Microsoft.DigitalTwins/eventroutes/write",
+    "operationVersion": "2020-10-31",
+    "category": "EventRoutesOperation",
+    "resultType": "Success",
+    "resultSignature": "204",
+    "resultDescription": "",
+    "durationMs": 42,
+    "callerIpAddress": "212.100.32.*",
+    "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
+    "identity": {
+      "claims": {
+        "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+      }
+    },
+    "level": "4",
+    "location": "southcentralus",
+    "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/EventRoutes/egressRouteForEventHub?api-version=2020-10-31",
+    "properties": {},
+    "traceContext": {
+      "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+      "spanId": "b630da57026dd046",
+      "parentId": "9f0de6dadae85945",
+      "traceFlags": "01",
+      "tracestate": "k1=v1,k2=v2"
+    }
+  },
 ```
 
 ### <a name="egress-log-schemas"></a>Ausgangsprotokollschemas
 
-Dies ist das Schema für `ADTEventRoutesOperation`-Protokolle. Diese enthalten Details zu Ausnahmen und den API-Vorgängen für Ausgangsendpunkte, die mit einer Instanz von Azure Digital Twins verbunden sind.
+Dies ist das Schema für `ADTEventRoutesOperation`-Protokolle, die für den Vorgangsnamen `Microsoft.DigitalTwins/eventroutes/action` spezifisch sind. Diese enthalten Details zu Ausnahmen und den API-Vorgängen für Ausgangsendpunkte, die mit einer Instanz von Azure Digital Twins verbunden sind.
 
 |Feldname | Datentyp | BESCHREIBUNG |
 |-----|------|-------------|
@@ -205,28 +288,55 @@ Dies ist das Schema für `ADTEventRoutesOperation`-Protokolle. Diese enthalten D
 | `OperationName` | String  | Typ der Aktion, die während des Ereignisses ausgeführt wurde |
 | `Category` | String | Typ der auszugebenden Ressource |
 | `ResultDescription` | String | Weitere Details zum Ereignis |
-| `Level` | String | Protokollschweregrad des Ereignisses |
+| `CorrelationId` | Guid | Vom Kunden angegebener eindeutiger Bezeichner für das Ereignis |
+| `ApplicationId` | Guid | Bei der Bearer-Autorisierung verwendete Anwendungs-ID |
+| `Level` | Int | Protokollschweregrad des Ereignisses |
 | `Location` | String | Region, in der das Ereignis aufgetreten ist |
+| `TraceId` | String | `TraceId` aus dem [W3C-Ablaufverfolgungskontext](https://www.w3.org/TR/trace-context/). Die ID der gesamten Ablaufverfolgung, die zur systemübergreifenden eindeutigen Identifizierung einer verteilten Ablaufverfolgung verwendet wird |
+| `SpanId` | String | `SpanId` aus dem [W3C-Ablaufverfolgungskontext](https://www.w3.org/TR/trace-context/). Die ID dieser Anforderung in der Ablaufverfolgung |
+| `ParentId` | String | `ParentId` aus dem [W3C-Ablaufverfolgungskontext](https://www.w3.org/TR/trace-context/). Eine Anforderung ohne übergeordnete ID ist der Stamm der Ablaufverfolgung. |
+| `TraceFlags` | String | `TraceFlags` aus dem [W3C-Ablaufverfolgungskontext](https://www.w3.org/TR/trace-context/). Steuert Ablaufverfolgungsflags wie Sampling, Ablaufverfolgungsebene usw. |
+| `TraceState` | String | `TraceState` aus dem [W3C-Ablaufverfolgungskontext](https://www.w3.org/TR/trace-context/). Zusätzliche herstellerspezifische Informationen zur Ablaufverfolgungsidentifizierung, die verschiedene Systeme für die verteilte Ablaufverfolgung umfassen sollen. |
 | `EndpointName` | String | Name des Ausgangsendpunkts, der in Azure Digital Twins erstellt wurde |
 
 Im Folgenden finden Sie Beispiel-JSON-Texte für diese Arten von Protokollen.
 
-#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+#### <a name="adteventroutesoperation-for-microsoftdigitaltwinseventroutesaction"></a>ADTEventRoutesOperation für Microsoft.DigitalTwins/eventroutes/action
+
+Hier sehen Sie einen JSON-Beispieltext für `ADTEventRoutesOperation` vom Typ `Microsoft.DigitalTwins/eventroutes/action`.
 
 ```json
 {
   "time": "2020-11-05T22:18:38.0708705Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/eventroutes/action",
+  "operationVersion": "",
   "category": "EventRoutesOperation",
-  "resultDescription": "Unable to send EventGrid message to [my-event-grid.westus-1.eventgrid.azure.net] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "resultType": "",
+  "resultSignature": "",
+  "resultDescription": "Unable to send EventHub message to [myPath] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "durationMs": -1,
+  "callerIpAddress": "",
   "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
-  "level": "3",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
+  "level": "4",
   "location": "southcentralus",
+  "uri": "",
   "properties": {
-    "endpointName": "endpointEventGridInvalidKey"
+    "endpointName": "myEventHub"
+  },
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
   }
-}
+},
 ```
 
 ## <a name="view-and-query-logs"></a>Anzeigen und Abfragen von Protokollen
@@ -255,10 +365,10 @@ Nachfolgend wird beschrieben, wie Sie die Protokolle für Ihre Instanz abfragen.
     - Die Registerkarte *Abfragen* enthält die Beispielabfragen, die Sie in den Editor laden können.
     - Mithilfe der Registerkarte *Filter* können Sie eine gefilterte Ansicht der Daten festlegen, die von der Abfrage zurückgegeben werden.
 
-Ausführlichere Informationen zu Protokollabfragen und deren Erstellung finden Sie in der [*Übersicht über Protokollabfragen in Azure Monitor*](../azure-monitor/logs/log-query-overview.md).
+Ausführlichere Informationen zu Protokollabfragen und deren Erstellung finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Konfigurieren von Diagnosen finden Sie unter [*Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen*](../azure-monitor/essentials/platform-logs-overview.md).
-* Informationen zu den Azure Digital Twins-Metriken finden Sie unter [*Problembehandlung: Anzeigen von Metriken mit Azure Monitor*](troubleshoot-metrics.md).
-* Informationen zur Aktivierung von Warnungen für Ihre Metriken finden Sie unter [*Problembehandlung: Einrichten von Warnungen*](troubleshoot-alerts.md).
+* Weitere Informationen zur Konfiguration von Diagnosen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/essentials/platform-logs-overview.md).
+* Informationen zu den Azure Digital Twins-Metriken finden Sie unter [Problembehandlung: Anzeigen von Metriken mit Azure Monitor](troubleshoot-metrics.md).
+* Informationen zur Aktivierung von Warnungen für Ihre Metriken finden Sie unter [Problembehandlung: Einrichten von Warnungen](troubleshoot-alerts.md).

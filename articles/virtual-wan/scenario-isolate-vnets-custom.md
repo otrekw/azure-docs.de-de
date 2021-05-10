@@ -1,23 +1,23 @@
 ---
 title: 'Szenario: Benutzerdefinierte Isolation für VNETs'
 titleSuffix: Azure Virtual WAN
-description: 'Routingszenarien: Verhindern, dass ausgewählte VNETs einander erreichen können'
+description: Erfahren Sie mehr über Virtual WAN Routing von benutzerdefinierten Isolationsszenarien, um zu verhindern, dass bestimmte VNET-Sets eine andere bestimmte Gruppe von VNETs erreichen können, aber die VNETs müssen alle Branches erreichen.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56a0fe561d026f1b01f27cf3015c31820e8110bb
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92461820"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162039"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Szenario: Benutzerdefinierte Isolation für VNETs
 
-Wenn Sie mit Virtual WAN-Routing für virtuelle Hubs arbeiten, stehen Ihnen eine ganze Reihe von Szenarien zur Verfügung. In einem Szenario mit benutzerdefinierter Isolation für VNETs besteht das Ziel darin, zu verhindern, dass bestimmte VNETs eine andere bestimmte Gruppe von VNETs erreichen können. Allerdings müssen die VNETs alle Zweige (VPN, ExpressRoute und Benutzer-VPN) erreichen können. Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
+Wenn Sie mit Virtual WAN-Routing für virtuelle Hubs arbeiten, stehen Ihnen eine ganze Reihe von Szenarien zur Verfügung. In einem Szenario mit benutzerdefinierter Isolation für VNETs besteht das Ziel darin, zu verhindern, dass ein bestimmtes VNET-Set eine andere bestimmte Gruppe von VNETs erreichen können. Allerdings müssen die VNETs alle Zweige (VPN, ExpressRoute und Benutzer-VPN) erreichen können. Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
 
 ## <a name="design"></a><a name="design"></a>Entwurf
 
