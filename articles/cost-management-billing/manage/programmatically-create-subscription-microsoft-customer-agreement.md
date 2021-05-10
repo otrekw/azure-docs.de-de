@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 324ca849e0f9c1282dc4b47ceba4654c76c07b35
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: fef8859e01b019cb174faee160bdfda135a23c4b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870821"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293312"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements für eine Microsoft-Kundenvereinbarung mit den neuesten APIs
 
@@ -30,7 +30,7 @@ Wenn Sie ein Azure-Abonnement programmgesteuert erstellen, unterliegt es der Ver
 
 Sie müssen über die Rolle „Besitzer“, „Mitwirkender“ oder „Azure-Abonnementersteller“ für einen Rechnungsabschnitt oder die Rolle „Besitzer“ oder „Mitwirkender“ für ein Abrechnungsprofil oder -konto verfügen, um Abonnements erstellen zu können. Sie können die gleiche Rolle auch einem Dienstprinzipalnamen (Service Principal Name, SPN) zuweisen. Weitere Informationen zu Rollen und zum Zuweisen von Berechtigungen finden Sie unter [Rollen und Aufgaben für die Abonnementabrechnung](understand-mca-roles.md#subscription-billing-roles-and-tasks).
 
-Wenn Sie Abonnements mithilfe eines SPN erstellen, verwenden Sie die Objekt-ID (ObjectId) der Azure AD-Anwendungsregistrierung als Dienstprinzipalobjekt-ID mit [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) oder der [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list). 
+Wenn Sie Abonnements mithilfe eines SPN erstellen, verwenden Sie die Objekt-ID (ObjectId) der Azure AD-Anwendungsregistrierung als Dienstprinzipalobjekt-ID mit [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true) oder der [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list). 
 
 Wenn Sie nicht wissen, ob Sie Zugriff auf ein Konto für eine Microsoft-Kundenvereinbarung haben, finden Sie weitere Informationen unter [Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement).
 

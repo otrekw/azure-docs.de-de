@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/25/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8c7ab1038cbe62d6f15faf56796193df12b38546
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0149858e4e63e4110af2a18a31b9c66a99ff79c9
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568765"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318584"
 ---
 # <a name="tutorial-add-modules-to-azure-resource-manager-bicep-file"></a>Tutorial: Hinzufügen von Variablen zu Azure Resource Manager-Bicep-Dateien
 
@@ -111,8 +112,8 @@ Sie können die Bereitstellung überprüfen, indem Sie sich die Ressourcengruppe
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Menü **Ressourcengruppen** aus.
-1. Sie sehen die beiden neuen Ressourcengruppen, die Sie in diesem Tutorial bereitgestellt haben.
-1. Wählen Sie eine davon aus, und zeigen Sie die bereitgestellten Ressourcen an. Beachten Sie, dass Sie mit den Werten übereinstimmen, die Sie in der Parameterdatei für diese Umgebung angegeben haben.
+1. Sie sehen die neue Ressourcengruppe, die Sie in diesem Tutorial bereitgestellt haben.
+1. Wählen Sie die Ressourcengruppe aus, und zeigen Sie die bereitgestellten Ressourcen an. Beachten Sie, dass sie mit den Werten übereinstimmen, die Sie in der Vorlagendatei angegeben haben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

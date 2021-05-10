@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/23/2021
 ms.custom: devx-track-csharp
 ms.devlang: dotnet
-ms.openlocfilehash: 504116f9bbed178889cd2e6d370c0c912da0ad00
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 0f4f2b2c87f295aa98257521c420902a4e7302f7
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107981944"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163587"
 ---
 # <a name="4---net-search-integration-cheat-sheet"></a>4\. Cheatsheet für die .NET-Suchintegration
 
@@ -85,7 +85,7 @@ Die Vorschlagsfunktions-API wird in der React-App unter `\src\components\SearchB
 
 ## <a name="azure-function-get-specific-document"></a>Azure-Funktion: Abrufen eines bestimmten Dokuments 
 
-Die [API](https://github.com/Azure-Samples/azure-search-dotent-samples/blob/master/search-website/api/Lookup.cs) `Lookup` akzeptiert eine ID und gibt das Dokumentobjekt aus dem Suchindex zurück. 
+Die [API](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/search-website/api/Lookup.cs) `Lookup` akzeptiert eine ID und gibt das Dokumentobjekt aus dem Suchindex zurück. 
 
 :::code language="csharp" source="~/azure-search-dotnet-samples/search-website/api/Lookup.cs" highlight="19-21, 42" :::
 

@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: banders
-ms.openlocfilehash: 64a6b3a313f5078368563af29ab97a871b4c3ae0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: e8a5e6d40b745efb7fcd50919cd27664b3406b7d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288668"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862847"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -81,14 +81,8 @@ Damit andere Personen Reservierungen verwalten können, haben Sie zwei Optionen:
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>Anzeigen oder Verwalten von Reservierungen durch Abrechnungsadministratoren
 
-Führen Sie als Abrechnungsadministrator die folgenden Schritte aus, um alle Reservierungen und Reservierungstransaktionen anzuzeigen und zu verwalten.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Kostenverwaltung + Abrechnung**.
-    - Wenn Sie EA-Administrator sind, wählen Sie im Menü auf der linken Seite die Option **Abrechnungsbereiche** und dann in der Liste der Abrechnungsbereiche einen Bereich aus.
-    - Wenn Sie Besitzer eines Abrechnungsprofils für eine Microsoft-Kundenvereinbarung sind, wählen Sie im linken Menü **Abrechnungsprofile** aus. Wählen Sie in der Liste der Abrechnungsprofile ein Profil aus.
-2. Wählen Sie im Menü auf der linken Seite **Produkte und Dienste** > **Reservierungen** aus.
-3. Die vollständige Liste der Reservierungen für Ihr EA-Registrierungsprofil oder -Abrechnungsprofil wird angezeigt.
-4. Abrechnungsadministratoren können den Besitz einer Reservierung übernehmen, indem sie sie auswählen und dann im angezeigten Fenster die Option **Zugriff gewähren** auswählen.
+1. Wechseln Sie zu **Cost Management + Billing*** , und wählen Sie auf der linken Seite **Reservierungstransaktionen** aus.
+2. Wenn Sie die erforderlichen Abrechnungsberechtigungen haben, können Sie Reservierungen anzeigen und verwalten. Wenn keine Reservierungen angezeigt werden, vergewissern Sie sich, dass Sie mit dem Azure AD-Mandanten angemeldet sind, in dem die Reservierungen erstellt wurden.
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Aufteilten einer einzelnen Reservierung in zwei Reservierungen
 
@@ -188,3 +182,4 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
  - [Verlängern von Reservierungen](reservation-renew.md)
  - [Übertragungen zwischen Mandanten](troubleshoot-reservation-transfers-between-tenants.md)
  - [Ermitteln eines Reservierungskäufers über Azure-Protokolle](find-reservation-purchaser-from-logs.md)
+ - [Verlängern einer Reservierung](reservation-renew.md)

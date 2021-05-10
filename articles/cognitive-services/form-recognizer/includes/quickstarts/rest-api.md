@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: dc537f76790a50c33cc7925633d4ce79692e5f66
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: cd9cf0e4a2abec1ad29d5b34f3d6f473ca5bf71d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108285062"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564589"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -1097,6 +1097,8 @@ Verwenden Sie den folgenden cURL-Befehl, um mit dem Analysieren eines Ausweisdok
 1. Ersetzen Sie `{endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{your ID document URL}` mit der URL-Adresse eines Verkaufsbelegbilds.
 1. Ersetzen Sie `{subscription key}` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
+
+### <a name="v21-previewtabv2-1"></a>[Vorschauversion v2.1](#tab/v2-1
 
 ```bash
 curl -i -X POST "https://{endpoint}/formrecognizer/v2.1-preview.3/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your  ID document URL}'}"

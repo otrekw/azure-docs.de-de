@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 331d8eb6ed74880a855934fad4d3e1afc9b29109
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 4f1f65da9f05b8bc623158bedd029f113d4f300c
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313394"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903158"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure Communication Services-Bibliothek zum Einbetten von Teams für Android einer Microsoft Teams-Besprechung beitreten.
 
@@ -303,7 +303,7 @@ private void createMeetingClient() {
 
 ## <a name="setup-token-refreshing"></a>Das Einrichtungstoken wird aktualisiert
 
-Erstellen Sie eine aufrufbare `tokenRefresher`-Methode. Erstellen Sie dann eine `fetchToken`-Methode, um das Benutzertoken zu erhalten. [Eine Anleitung dazu finden Sie hier](../../access-tokens.md?pivots=programming-language-java)
+Erstellen Sie eine aufrufbare `tokenRefresher`-Methode. Erstellen Sie dann eine `fetchToken`-Methode, um das Benutzertoken zu erhalten. [Eine Anleitung dazu finden Sie hier](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-java)
 
 ```java
 Callable<String> tokenRefresher = () -> {

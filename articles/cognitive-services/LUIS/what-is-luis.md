@@ -5,14 +5,14 @@ keywords: Azure, künstliche Intelligenz, KI, Verarbeitung natürlicher Sprache,
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 04/13/2021
+ms.date: 04/16/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: f46586b3f120cf191d88b7de9cf8686ca9b16cca
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 3a7484269f16cc55fa16597e74b1d0671d16d980
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503767"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290594"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
 
@@ -20,7 +20,7 @@ ms.locfileid: "107503767"
 
 Language Understanding (LUIS) ist ein cloudbasierter Konversations-KI-Dienst, der benutzerdefinierte Machine Learning-Intelligenz auf natürliche Konversationssprachtexte eines Benutzers anwendet, um die allgemeine Bedeutung vorherzusagen sowie relevante und detaillierte Informationen abzurufen. LUIS bietet Zugriff über das [benutzerdefinierte Portal](https://www.luis.ai), über [APIs][endpoint-apis] und über [SDK-Clientbibliotheken](client-libraries-rest-api.md).
 
-Wenn Sie LUIS zum ersten Mal verwenden, führen Sie die Schritte zum [Anmelden beim LUIS-Portal](sign-in-luis-portal.md "Anmelden beim LUIS-Portal") aus. Für den Einstieg können Sie [LUIS-Apps mit vordefinierter Domäne](luis-get-started-create-app.md) ausprobieren oder [Ihre eigene App erstellen](get-started-portal-build-app.md).
+Wenn Sie LUIS zum ersten Mal verwenden, führen Sie die Schritte zum [Anmelden beim LUIS-Portal](sign-in-luis-portal.md "Anmelden beim LUIS-Portal") aus. Für den Einstieg können Sie eine [LUIS-Apps mit vordefinierter Domäne](luis-get-started-create-app.md) ausprobieren.
 
 Diese Dokumentation enthält die folgenden Arten von Artikeln:  
 
@@ -31,15 +31,15 @@ Diese Dokumentation enthält die folgenden Arten von Artikeln:
 
 ## <a name="what-does-luis-offer"></a>Das Angebot von LUIS 
 
-* **Einfachheit:** Dank LUIS benötigen Sie keine interne KI-Erfahrung und keinerlei Machine Learning-Vorkenntnisse. Mit einigen wenigen Klicks können Sie Ihre eigene Anwendung mit Konversations-KI erstellen. Zur Erstellung Ihrer benutzerdefinierten Anwendung können Sie eine unserer [Schnellstartanleitungen](get-started-portal-build-app.md) durchlaufen oder eine unserer [Apps mit vordefinierter Domäne](luis-get-started-create-app.md) verwenden.
+* **Einfachheit:** Dank LUIS benötigen Sie keine interne KI-Erfahrung und keinerlei Machine Learning-Vorkenntnisse. Mit einigen wenigen Klicks können Sie Ihre eigene Anwendung mit Konversations-KI erstellen. Zur Erstellung Ihrer benutzerdefinierten Anwendung können Sie eine unserer [Schnellstartanleitungen](luis-get-started-create-app.md) durchlaufen oder eine unserer [Apps mit vordefinierter Domäne](luis-get-started-create-app.md) verwenden.
 * **Sicherheit, Datenschutz und Compliance:** LUIS basiert auf der Azure-Infrastruktur und bietet Sicherheit, Datenschutz und Compliance auf Unternehmensniveau. Ihre Daten gehören Ihnen und können jederzeit von Ihnen gelöscht werden. Im gespeicherten Zustand sind Ihre Daten verschlüsselt. Weitere Informationen dazu finden Sie [hier](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy).
-* **Integration:** Ihre LUIS-App lässt sich problemlos in andere Microsoft-Dienste wie [Microsoft Bot Framework](https://docs.microsoft.com/composer/tutorial/tutorial-luis), [QnA Maker](../QnAMaker/choose-natural-language-processing-service.md) und [Speech](../Speech-Service/quickstarts/intent-recognition.md) integrieren.
+* **Integration:** Ihre LUIS-App lässt sich problemlos in andere Microsoft-Dienste wie [Microsoft Bot Framework](/composer/tutorial/tutorial-luis), [QnA Maker](../QnAMaker/choose-natural-language-processing-service.md) und [Speech](../speech-service/get-started-intent-recognition.md) integrieren.
 
 
 ## <a name="luis-scenarios"></a>LUIS-Szenarien
-* [Erstellen eines für Unternehmen konzipierten interaktiven Bots:](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/conversational-bot) Diese Referenzarchitektur beschreibt, wie Sie mit Azure Bot Framework einen interaktiven Bot (Chatbot) auf Unternehmensniveau erstellen.
-* [Kommerzieller Chatbot für Kundendienst:](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/commerce-chatbot) Wenn Entwickler den Azure Bot Service und den Language Understanding-Dienst gemeinsam nutzen, können sie Konversationsschnittstellen für verschiedene Szenarien wie Bankgeschäfte, Reisen und Unterhaltung erstellen.
-* [Steuern von IoT-Geräten mithilfe eines Sprachassistenten:](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/iot-controlling-devices-with-voice-assistant) Erstellen Sie nahtlose Konversationsschnittstellen mit allen Ihren internetfähigen Geräten – von Ihrem vernetzten Fernsehgerät oder Kühlschrank bis hin zu Geräten in einem vernetzten Kraftwerk.
+* [Erstellen eines für Unternehmen konzipierten interaktiven Bots:](/azure/architecture/reference-architectures/ai/conversational-bot) Diese Referenzarchitektur beschreibt, wie Sie mit Azure Bot Framework einen interaktiven Bot (Chatbot) auf Unternehmensniveau erstellen.
+* [Kommerzieller Chatbot für Kundendienst:](/azure/architecture/solution-ideas/articles/commerce-chatbot) Wenn Entwickler den Azure Bot Service und den Language Understanding-Dienst gemeinsam nutzen, können sie Konversationsschnittstellen für verschiedene Szenarien wie Bankgeschäfte, Reisen und Unterhaltung erstellen.
+* [Steuern von IoT-Geräten mithilfe eines Sprachassistenten:](/azure/architecture/solution-ideas/articles/iot-controlling-devices-with-voice-assistant) Erstellen Sie nahtlose Konversationsschnittstellen mit allen Ihren internetfähigen Geräten – von Ihrem vernetzten Fernsehgerät oder Kühlschrank bis hin zu Geräten in einem vernetzten Kraftwerk.
 
 
 ## <a name="application-development-life-cycle"></a>Anwendungsentwicklungszyklus
@@ -50,7 +50,7 @@ Diese Dokumentation enthält die folgenden Arten von Artikeln:
 -   **Erstellen:** Verwenden Sie Ihre Erstellungsressource, um Ihre App zu entwickeln. Definieren Sie zunächst [Absichten](luis-concept-intent.md) und [Entitäten](luis-concept-entity-types.md). Fügen Sie dann [Trainingsäußerungen](luis-concept-utterance.md) für die einzelnen Absichten hinzu. 
 -   **Testen und Verbessern:** Testen Sie Ihr Modell mit anderen Äußerungen, um ein Gefühl für das Verhalten der App zu bekommen, und entscheiden Sie, ob Verbesserungsbedarf besteht. Bewährte Methoden zur Verbesserung Ihrer Anwendung finden Sie [hier](luis-concept-best-practices.md). 
 -   **Veröffentlichen:** Stellen Sie Ihre App für Vorhersagen bereit, und fragen Sie den Endpunkt mithilfe Ihrer Vorhersageressource ab. Weitere Informationen zu Erstellungs- und Vorhersageressourcen finden Sie [hier](luis-how-to-azure-subscription.md#luis-resources). 
--   **Verbinden:** Stellen Sie eine Verbindung mit anderen Diensten wie [Microsoft Bot Framework](https://docs.microsoft.com/composer/tutorial/tutorial-luis), [QnA Maker](../QnAMaker/choose-natural-language-processing-service.md) und [Speech](../Speech-Service/quickstarts/intent-recognition.md) her. 
+-   **Verbinden:** Stellen Sie eine Verbindung mit anderen Diensten wie [Microsoft Bot Framework](/composer/tutorial/tutorial-luis), [QnA Maker](../QnAMaker/choose-natural-language-processing-service.md) und [Speech](../speech-service/get-started-intent-recognition.md) her. 
 -   **Optimieren:** [Überprüfen Sie Endpunktäußerungen](luis-concept-review-endpoint-utterances.md), um Ihre Anwendung mit Beispielen aus der Praxis zu verbessern.
 
 Weitere Informationen zur Planung und Erstellung Ihrer Anwendung finden Sie [hier](luis-how-plan-your-app.md).
