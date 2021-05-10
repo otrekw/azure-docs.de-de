@@ -6,17 +6,17 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b0ea5728618c7b69403fcc4c0a3575b70fac6038
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: devx-track-java, devx-track-azurecli, subject-rbac-steps
+ms.openlocfilehash: 2ff56857eca112ebd808a96f3aaa097ab4be5c18
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482601"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291530"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
 
-**Dieser Artikel gilt für:** âœ”ï¸ Java âœ”ï¸ C#
+**Dieser Artikel gilt für:** âœ”ï¸ Java âœ”ï¸ C#
 
 In diesem Tutorial wird erläutert, wie Sie eine Azure Spring Cloud-Instanz in Ihrem virtuellen Netzwerk bereitstellen. Diese Bereitstellung wird manchmal als VNET-Einschleusung bezeichnet.
 
@@ -88,16 +88,9 @@ Wählen Sie das virtuelle Netzwerk **azure-spring-cloud-vnet** aus, das Sie zuvo
 
     ![Screenshot: Bildschirm „Zugriffssteuerung“.](./media/spring-cloud-v-net-injection/access-control.png)
 
-1. Geben Sie im Dialogfeld **Rollenzuweisung hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus:
+1. Weisen Sie die [azure-spring-cloud-data-reader](../role-based-access-control/built-in-roles.md#azure-spring-cloud-data-reader)-Rolle [user | group | service-principal | managed-identity] unter [management-group | subscription | resource-group | resource] scope zu.
 
-    |Einstellung  |Wert                                             |
-    |---------|--------------------------------------------------|
-    |Role     |Wählen Sie **Besitzer** aus.                                 |
-    |Select   |Geben Sie **Azure Spring Cloud-Ressourcenanbieter** ein.   |
-
-    Wählen Sie dann **Azure Spring Cloud-Ressourcenanbieter** aus, und klicken Sie auf **Speichern**.
-
-    ![Screenshot: Auswählen des Azure Spring Cloud-Ressourcenanbieters.](./media/spring-cloud-v-net-injection/grant-azure-spring-cloud-resource-provider-to-vnet.png)
+    Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 Das gleiche Ergebnis erzielen Sie, wenn Sie den folgenden Azure CLI-Befehl ausführen:
 

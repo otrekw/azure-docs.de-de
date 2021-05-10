@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e8bdb843ab6304f2f38228f37d8709e4084ee52e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6b6e6de7eba912fec62adf7c661128afadec0bf6
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775329"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208795"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrieren von Azure Digital Twins in Azure SignalR Service
 
@@ -24,14 +24,14 @@ Mithilfe der in diesem Artikel beschriebenen Lösung können Sie Telemetriedaten
 
 Folgende Voraussetzungen müssen erfüllt sein, bevor Sie fortfahren können:
 
-* Bevor Sie Ihre Lösung in Azure SignalR Service integrieren, sollten Sie das folgende Azure Digital Twins-Tutorial durcharbeiten: [_**Tutorial: Verbinden einer End-to-End-Lösung**_](tutorial-end-to-end.md). Der Grund ist, dass die Vorgehensweise in diesem Artikel hierauf aufbaut. Das Tutorial führt Sie durch das Einrichten einer Azure Digital Twins-Instanz, die mit einem virtuellen IoT-Gerät funktioniert, um Updates für digitale Zwillinge auszulösen. In diesem Artikel zur Vorgehensweise werden diese Updates per Azure SignalR Service mit einer Beispiel-Web-App verbunden.
+* Bevor Sie Ihre Lösung in Azure SignalR Service integrieren, sollten Sie das folgende Azure Digital Twins-Tutorial durcharbeiten: [Tutorial: Verbinden einer End-to-End-Lösung](tutorial-end-to-end.md). Der Grund ist, dass die Vorgehensweise in diesem Artikel hierauf aufbaut. Das Tutorial führt Sie durch das Einrichten einer Azure Digital Twins-Instanz, die mit einem virtuellen IoT-Gerät funktioniert, um Updates für digitale Zwillinge auszulösen. In diesem Artikel zur Vorgehensweise werden diese Updates per Azure SignalR Service mit einer Beispiel-Web-App verbunden.
 
 * Sie benötigen die folgenden Werte aus dem Tutorial:
   - Event Grid-Thema
   - Resource group
   - App-Dienst-/Funktions-App-Name
     
-* Auf Ihrem Computer muss [**Node.js**](https://nodejs.org/) installiert sein.
+* Auf Ihrem Computer muss [Node.js](https://nodejs.org/) installiert sein.
 
 Sie sollten sich auch mit Ihrem Azure-Konto direkt am [Azure-Portal](https://portal.azure.com/) anmelden.
 
@@ -44,13 +44,13 @@ Sie fügen Azure SignalR Service über den unten angegebenen Pfad an Azure Digit
 ## <a name="download-the-sample-applications"></a>Herunterladen der Beispielanwendungen
 
 Laden Sie zunächst die erforderlichen Beispiel-Apps herunter. Sie benötigen Folgendes:
-* [**End-to-End-Beispiele für Azure Digital Twins:**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) Dieses Beispiel enthält eine *AdtSampleApp* mit zwei Azure-Funktionen zum Verschieben von Daten in eine Azure Digital Twins-Instanz (weitere Informationen zu diesem Szenario finden Sie unter [*Tutorial: Verbinden einer End-to-End-Lösung*](tutorial-end-to-end.md)). Es enthält auch eine *DeviceSimulator*-Beispielanwendung, die ein IOT-Gerät simuliert und jede Sekunde einen neuen Temperaturwert generiert.
-    - Wenn Sie das Beispiel nicht bereits als Teil des Tutorials unter [*Voraussetzungen*](#prerequisites) heruntergeladen haben, navigieren Sie zum [Link](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) des Beispiels und wählen die Schaltfläche *Code durchsuchen* unterhalb des Titels aus. Dadurch gelangen Sie zum GitHub-Repository für die Beispiele, die Sie als *ZIP-Datei* herunterladen können. Wählen Sie hierzu die Schaltfläche *Code* und anschließend *ZIP herunterladen* aus.
+* [End-to-End-Beispiele für Azure Digital Twins:](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)  Dieses Beispiel enthält eine *AdtSampleApp* mit zwei Azure-Funktionen zum Verschieben von Daten in eine Azure Digital Twins-Instanz (weitere Informationen zu diesem Szenario finden Sie unter [Tutorial: Verbinden einer End-to-End-Lösung](tutorial-end-to-end.md)). Es enthält auch eine *DeviceSimulator*-Beispielanwendung, die ein IOT-Gerät simuliert und jede Sekunde einen neuen Temperaturwert generiert.
+    - Wenn Sie das Beispiel nicht bereits als Teil des Tutorials unter [Voraussetzungen](#prerequisites) heruntergeladen haben, [navigieren Sie zum Beispiel](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), und wählen die Schaltfläche *Code durchsuchen* unter dem Titel aus. Dadurch gelangen Sie zum GitHub-Repository für die Beispiele, die Sie als *ZIP-Datei* herunterladen können. Wählen Sie hierzu die Schaltfläche *Code* und anschließend *ZIP herunterladen* aus.
 
         :::image type="content" source="media/includes/download-repo-zip.png" alt-text="Ansicht des Repositorys „digital-twins-samples“ auf GitHub. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/includes/download-repo-zip.png":::
 
     Dadurch wird eine Kopie des Beispielrepositorys als **digital-twins-samples-master.zip** auf Ihren Computer heruntergeladen. Entpacken Sie den Ordner.
-* [**Web-App-Beispiel für SignalR-Integration**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Dies ist eine Beispiel-Web-App (React), für die Azure Digital Twins-Telemetriedaten über eine Azure SignalR Service-Instanz genutzt werden.
+* [Web-App-Beispiel für SignalR-Integration](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Dies ist eine Beispiel-Web-App (React), für die Azure Digital Twins-Telemetriedaten über eine Azure SignalR Service-Instanz genutzt werden.
     -  Navigieren Sie zum Link des Beispiels, und führen Sie den gleichen Downloadprozess durch, um eine Kopie des Beispiels auf Ihren Computer herunterzuladen (_**digitaltwins-signalr-webapp-sample-main.zip**_). Entpacken Sie den Ordner.
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
@@ -78,7 +78,7 @@ Starten Sie Visual Studio (oder einen anderen Code-Editor Ihrer Wahl), und öffn
 
     Dadurch sollten alle Abhängigkeitsprobleme in der Klasse behoben werden.
 
-1. Veröffentlichen Sie Ihre Funktion in Azure. Verwenden Sie hierfür die Schritte, die im Abschnitt [*Veröffentlichen der App*](tutorial-end-to-end.md#publish-the-app) des Tutorials *Verbinden einer End-to-End-Lösung* beschrieben sind. Sie können sie in der gleichen App Service-/Funktions-App veröffentlichen, die Sie im End-to-End-[Voraussetzungstutorial](#prerequisites) verwendet haben, oder Sie erstellen eine neue App. Wahrscheinlich möchten Sie jedoch dieselbe App verwenden, um Duplizierungen zu minimieren. 
+1. Veröffentlichen Sie Ihre Funktion in Azure. Verwenden Sie hierfür die Schritte, die im Abschnitt [Veröffentlichen der App](tutorial-end-to-end.md#publish-the-app) des Tutorials *Verbinden einer End-to-End-Lösung* beschrieben sind. Sie können sie in der gleichen App Service-/Funktions-App veröffentlichen, die Sie im End-to-End-[Voraussetzungstutorial](#prerequisites) verwendet haben, oder Sie erstellen eine neue App. Wahrscheinlich möchten Sie jedoch dieselbe App verwenden, um Duplizierungen zu minimieren. 
 
 Konfigurieren Sie als Nächstes die Funktionen für die Kommunikation mit Ihrer Azure SignalR-Instanz. Zunächst ermitteln Sie die **Verbindungszeichenfolge** der SignalR-Instanz und fügen diese dann den Einstellungen der Funktions-App hinzu.
 
@@ -139,7 +139,7 @@ Konfigurieren Sie als Nächstes die Beispielclient-Web-App. Ermitteln Sie zunäc
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Ansicht des Azure-Portals mit der „negotiate“-Funktion. Die Schaltfläche „Funktions-URL abrufen“ ist hervorgehoben, ebenso der Teil der URL vom Anfang bis zu „/api“":::
 
-1. Öffnen Sie mithilfe von Visual Studio oder einem beliebigen Code-Editor Ihrer Wahl den entpackten Ordner _**digitaltwins-signalr-webapp-sample-main**_, den Sie im Abschnitt [*Herunterladen der Beispielanwendungen*](#download-the-sample-applications) heruntergeladen haben.
+1. Öffnen Sie mithilfe von Visual Studio oder einem beliebigen Code-Editor Ihrer Wahl den entpackten Ordner _**digitaltwins-signalr-webapp-sample-main**_, den Sie im Abschnitt [Herunterladen der Beispielanwendungen](#download-the-sample-applications) heruntergeladen haben.
 
 1. Öffnen Sie die Datei *src/App.js*, und ersetzen Sie die Funktions-URL in `HubConnectionBuilder` durch die HTTP-Endpunkt-URL der **negotiate**-Funktion, die Sie im vorherigen Schritt gespeichert haben:
 
@@ -210,7 +210,7 @@ Löschen Sie abschließend die Projektbeispielordner, die Sie auf Ihren lokalen 
 In diesem Artikel richten Sie Azure-Funktionen mit SignalR ein, um Azure Digital Twins-Telemetrieereignisse an eine Clientbeispielanwendung zu senden.
 
 Erfahren Sie dann über Azure SignalR Service:
-* [*Was ist Azure SignalR Service?*](../azure-signalr/signalr-overview.md)
+* [Was ist Azure SignalR Service?](../azure-signalr/signalr-overview.md)
 
 Erfahren Sie mehr über Azure SignalR Service-Authentifizierung mit Azure Functions:
-* [*Azure SignalR Service-Authentifizierung*](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)
+* [Azure SignalR Service-Authentifizierung](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)

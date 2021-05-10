@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b1a3563d766f0f4636086024a1f23d157e8e9a06
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773078"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228602"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie unter [Verbindungszeichenfolgen](../azure-monit
 
 Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfung, um API-Aufrufe von Proxys direkt an Funktionen in der gleichen Functions-App zu senden. Die Verknüpfung wird anstelle einer neuen HTTP-Anforderung verwendet. Diese Einstellung ermöglicht das Deaktivieren dieses Verknüpfungsverhaltens.
 
-|Schlüssel|Wert|Beschreibung|
+|Schlüssel|Wert|BESCHREIBUNG|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden nicht direkt an die Funktion gesendet. Stattdessen werden die Anforderungen wieder an das HTTP-Front-End für die Funktions-App zurückgeleitet.|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden direkt an die Funktion weitergeleitet. Dies ist der Standardwert. |
@@ -55,7 +55,7 @@ Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfun
 
 Diese Einstellung steuert, ob die Zeichen `%2F` in Routenparametern als Schrägstrich decodiert werden, wenn sie in die Back-End-URL eingefügt werden. 
 
-|Schlüssel|Wert|Beschreibung|
+|Schlüssel|Wert|BESCHREIBUNG|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Routenparameter mit codierten Schrägstrichen werden decodiert. |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Alle Routenparameter werden unverändert weitergegeben (Standardverhalten). |
@@ -205,6 +205,45 @@ Gültige Werte:
 | `powershell` | [PowerShell](functions-reference-powershell.md) |
 | `python` | [Python](functions-reference-python.md) |
 
+## <a name="mdmaxbackgroundupgradeperiod"></a>MDMaxBackgroundUpgradePeriod 
+
+Steuert den Zeitraum für Hintergrundupdates von verwalteten Abhängigkeiten für PowerShell-Funktions-Apps. Der Standardwert ist `7.00:00:00` (wöchentlich). 
+
+Jeder PowerShell-Workerprozess löst die Überprüfung auf Modulupgrades im PowerShell-Katalog beim Start des Prozesses und alle `MDMaxBackgroundUpgradePeriod` danach aus. Wenn im PowerShell-Katalog eine neue Modulversion verfügbar ist, wird sie im Dateisystem installiert und PowerShell-Workern zur Verfügung gestellt. Wenn Sie diesen Wert verringern, erhält Ihre Funktions-App schneller eine neuere Modulversion. Dies steigert aber auch den App-Ressourceneinsatz (Netzwerk-E/A, CPU, Speicher). Wenn Sie diesen Wert erhöhen, wird der App-Ressourceneinsatz verringert, aber auch die Bereitstellung neuer Modulversionen für Ihre App verzögert. 
+
+|Schlüssel|Beispielwert|
+|---|------------|
+|MDMaxBackgroundUpgradePeriod|7.00:00:00|
+
+Weitere Informationen finden Sie unter [Abhängigkeitsverwaltung](functions-reference-powershell.md#dependency-management).
+
+## <a name="mdnewsnapshotcheckperiod"></a>MDNewSnapshotCheckPeriod
+
+Gibt an, wie oft jeder PowerShell-Worker überprüft, ob Upgrades verwalteter Abhängigkeiten installiert wurden. Die Standardhäufigkeit ist `01:00:00` (stündlich). 
+
+Nach der Installation neuer Modulversionen im Dateisystem müssen alle PowerShell-Workerprozesse neu gestartet werden. Das Neustarten von PowerShell-Workern wirkt sich auf die Verfügbarkeit der App aus, da dadurch die Ausführung der aktuellen Funktion unterbrochen werden kann. Bis zum Abschluss des Neustarts aller PowerShell-Workerprozesse können Funktionsaufrufe entweder die alte oder neue Modulversion verwenden. Alle PowerShell-Worker werden innerhalb von `MDNewSnapshotCheckPeriod` neu gestartet. 
+
+In jeder `MDNewSnapshotCheckPeriod` überprüft der PowerShell-Worker, ob Upgrades verwalteter Abhängigkeiten installiert wurden. Falls Upgrades installiert wurden, wird ein Neustart initiiert. Das Erhöhen dieses Wert verringert die Häufigkeit von Unterbrechungen durch Neustarts. Die Erhöhung kann jedoch auch die Zeit verlängern, in der Funktionsaufrufe nicht deterministisch entweder die alte oder die neue Modulversion verwenden können. 
+
+|Schlüssel|Beispielwert|
+|---|------------|
+|MDNewSnapshotCheckPeriod|01:00:00|
+
+Weitere Informationen finden Sie unter [Abhängigkeitsverwaltung](functions-reference-powershell.md#dependency-management).
+
+
+## <a name="mdminbackgroundupgradeperiod"></a>MDMinBackgroundUpgradePeriod
+
+Zeitraum nach einer vorherigen Überprüfung auf Upgrades verwalteter Abhängigkeiten, bevor eine weitere Upgradeüberprüfung gestartet wird. Der Standardwert ist `1.00:00:00` (täglich). 
+
+Um übermäßige Modulupgrades bei häufigen Workerneustarts zu vermeiden, wird die Überprüfung auf Modulupgrades nicht durchgeführt, wenn ein Worker diese Prüfung bereits innerhalb der letzten `MDMinBackgroundUpgradePeriod` ausgelöst hat. 
+
+|Schlüssel|Beispielwert|
+|---|------------|
+|MDMinBackgroundUpgradePeriod|1.00:00:00|
+
+Weitere Informationen finden Sie unter [Abhängigkeitsverwaltung](functions-reference-powershell.md#dependency-management).
+
 ## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
 Durch den Wert für diese Einstellung wird eine benutzerdefinierte Paketindex-URL für Python-Apps angegeben. Verwenden Sie diese Einstellung, wenn Sie einen Remotebuild mit benutzerdefinierten Abhängigkeiten ausführen müssen, die sich in einem zusätzlichen Paketindex befinden.   
@@ -265,7 +304,7 @@ Der Dateipfad für den Funktions-App-Code und die Konfiguration in einem ereigni
 
 Wird nur bei der Bereitstellung für einen Premium-Plan oder Verbrauchsplan verwendet, der unter Windows ausgeführt wird. Wird nicht für Verbrauchspläne unter Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
 
-Wenn Sie während der Bereitstellung Azure Resource Manager zum Erstellen einer Funktions-App verwenden, schließen Sie WEBSITE_CONTENTSHARE nicht in die Vorlage ein. Diese Anwendungseinstellung wird während der Bereitstellung generiert. Weitere Informationen finden Sie unter [Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions](functions-infrastructure-as-code.md#windows).   
+Wenn Sie während der Bereitstellung eine Azure Resource Manager-Vorlage zum Erstellen einer Funktions-App verwenden, schließen Sie WEBSITE_CONTENTSHARE nicht in die Vorlage ein. Diese Anwendungseinstellung wird während der Bereitstellung generiert. Weitere Informationen finden Sie unter [Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions](functions-infrastructure-as-code.md#windows).   
 
 ## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
 
@@ -274,6 +313,10 @@ Legt den von einer App verwendeten DNS-Server beim Auflösen von IP-Adressen fes
 |Schlüssel|Beispielwert|
 |---|------------|
 |WEBSITE\_DNS\_SERVER|168.63.129.16|
+
+## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING 
+
+Steuert, ob Brotli-Codierung für die Komprimierung anstelle der GZIP-Standardkomprimierung verwendet wird. Wenn `WEBSITE_ENABLE_BROTLI_ENCODING` auf `1` festgelegt ist, wird Brotli-Codierung verwendet, andernfalls wird GZIP-Codierung verwendet. 
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
