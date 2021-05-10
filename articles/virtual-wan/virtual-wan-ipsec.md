@@ -1,19 +1,19 @@
 ---
 title: IPsec-Site-to-Site-Richtlinien für Virtual WAN
 titleSuffix: Azure Virtual WAN
-description: Hier erfahren Sie mehr über Azure Virtual WAN-IPSec-Konnektivitätsrichtlinien, einschließlich der Standardinitiator- und -beantworterrichtlinien und benutzerdefinierter Richtlinienkombinationen.
+description: Hier erfahren Sie mehr über Azure Virtual WAN-IPSec-Konnektivitätsrichtlinien, einschließlich der Standardinitiator- und -antowrtdienstrichtlinien und benutzerdefinierter Richtlinienkombinationen.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 02/24/2021
 ms.author: cherylmc
-ms.openlocfilehash: 94225ea6ef8b53a83388b2be6ea3b32c1e5204bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c34401a039c7752e7b868a251c64aff8f6e95cdc
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726681"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163947"
 ---
 # <a name="site-to-site-ipsec-policies"></a>IPsec-Richtlinien für Site-to-site-Verbindungen
 

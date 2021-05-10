@@ -1,6 +1,6 @@
 ---
 title: Löschen eines Gateways für virtuelle Netzwerke über das Portal Azure klassisch
-description: Löschen eines Gateways des virtuellen Netzwerks mithilfe von PowerShell im klassischen Bereitstellungsmodell.
+description: Erfahren Sie, wie Sie ein Gateway des virtuellen Netzwerks mithilfe von PowerShell im klassischen Bereitstellungsmodell löschen.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 39585a68c5cddc50cd04e82caca71209270f7b68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e26c317295081531f295042efa812f091f06814a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91874117"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291080"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Löschen eines Gateways des virtuellen Netzwerks mit PowerShell (klassisch)
 

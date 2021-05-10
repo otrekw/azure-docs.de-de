@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/14/2021
+ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 00e51d2c9515191b6d127355f49eeed3000a46ed
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d59df677fda920be5ed9547bee3855d4c9511187
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514710"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330834"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Vordefiniertes ID-Modell der Formularerkennung für Ausweise
 
-Mit der Azure-Formularerkennung können Informationen aus amtlichen Ausweisen unter Verwendung des vordefinierten ID-Modells analysiert und extrahiert werden. Dabei werden unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/overview-ocr.md) mit ID-Erkennungsfunktionen kombiniert, um wesentliche Informationen aus internationalen Reisepässen und US-Führerscheinen (alle 50 Bundesstaaten und D.C.) zu extrahieren. Mit der ID-API werden wesentliche Informationen aus diesen Ausweisdokumenten extrahiert, z. B. Vorname, Nachname, Geburtsdatum und Dokumentnummer. Diese API ist in der Vorschauversion 2.1 der Formularerkennung als Clouddienst und als lokaler Container verfügbar.
+Mit der Azure-Formularerkennung können Informationen aus amtlichen Ausweisen unter Verwendung des vordefinierten ID-Modells analysiert und extrahiert werden. Dabei werden unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/overview-ocr.md) mit ID-Erkennungsfunktionen kombiniert, um wesentliche Informationen aus internationalen Reisepässen und US-amerikanischen Führerscheinen (alle 50 Bundesstaaten). Mit der ID-API werden wesentliche Informationen aus diesen Ausweisdokumenten extrahiert, z. B. Vorname, Nachname, Geburtsdatum und Dokumentnummer. Diese API ist in der Vorschauversion 2.1 der Formularerkennung als Clouddienst und als lokaler Container verfügbar.
 
 ## <a name="what-does-the-id-service-do"></a>Funktionsweise des ID-Diensts
 
-Mit dem vordefinierten ID-Dienst werden die Schlüsselwerte aus internationalen Reisepässen und US-Führerscheinen extrahiert und in einer organisierten strukturierten JSON-Antwort zurückgegeben.
+Der vorgefertigte ID-Dienst extrahiert die Schlüsselwerte aus den internationalen Reisepässen und den US-Führerscheinen und gibt Sie in einer organisierten strukturierten JSON-Antwort zurück.
 
 ### <a name="drivers-license-example"></a>**Führerschein als Beispiel**
 
@@ -35,7 +35,7 @@ Mit dem vordefinierten ID-Dienst werden die Schlüsselwerte aus internationalen 
 
 ### <a name="fields-extracted"></a>Extrahierte Felder
 
-|Name| type | Beschreibung | Wert |
+|Name| type | BESCHREIBUNG | Wert |
 |:-----|:----|:----|:----|
 |  Land | country | Ländercode, konform zu ISO 3166-Standard | „USA“ |
 |  DateOfBirth | date | Geburtsdatum im Format JJJJ-MM-TT | „1980-01-01“ |
@@ -48,7 +48,7 @@ Mit dem vordefinierten ID-Dienst werden die Schlüsselwerte aus internationalen 
 |  MachineReadableZone | Objekt | Maschinenlesbarer zweizeiliger Bereich (Machine Readable Zone, MRZ) mit jeweils 44 Zeichen | „P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816“ |
 |  DocumentType | Zeichenfolge | Dokumenttyp, z. B. Pass oder Führerschein | „passport“ |
 |  Adresse | Zeichenfolge | Extrahierte Adresse (nur beim Führerschein) | „123 STREET ADDRESS YOUR CITY WA 99999-1234“|
-|  Region | Zeichenfolge | Extrahierter Wert für Region, Bundesstaat, Provinz usw. (nur beim Führerschein) | „Washington“ |
+|  Region | Zeichenfolge | Extrahierte Region, Bundesstaat, Provinz usw. (nur Führerschein) | „Washington“ |
 
 ### <a name="additional-features"></a>Zusätzliche Features
 
@@ -56,7 +56,7 @@ Mit der ID-API werden außerdem die folgenden Informationen zurückgegeben:
 
 * Feldvertrauensgrad (jedes Feld gibt einen zugehörigen Vertrauenswert zurück)
 * OCR-Rohtext (OCR-extrahierte Textausgabe für den gesamten Beleg)
-* Begrenzungsrahmen für jedes extrahierte Feld in US-Führerscheinen
+* Begrenzungsrahmen für jedes extrahierte Feld bei US-Führerscheinen
 * Begrenzungsrahmen für jeden maschinenlesbaren Bereich in Reisepässen
 
   > [!NOTE]
@@ -75,7 +75,11 @@ Zum Testen des ID-Diensts der Formularerkennung wechseln Sie zum Onlinetool für
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-id-types"></a>Unterstützte ID-Typen
+## <a name="supported-locales"></a>Unterstützte Gebietsschemas
+
+ **Die vorgefertigte ID v2.1-preview.3** (Vorschauversion) unterstützt Identitätsdokumente im Gebietsschema **en-us**.
+
+## <a name="supported-identity-document-types"></a>Unterstützte Identitätsdokumenttypen
 
 * **Pre-built IDs v2.1-preview.3:** Extrahiert die Schlüsselwerte aus internationalen Reisepässen und US-Führerscheinen.
 
@@ -84,7 +88,7 @@ Zum Testen des ID-Diensts der Formularerkennung wechseln Sie zum Onlinetool für
   >
   > Derzeit werden als ID-Typen internationale Reisepässe und US-Führerscheine unterstützt. Wir arbeiten aktiv daran, die Unterstützung auf andere Ausweisdokumente auf der ganzen Welt auszuweiten.
 
-## <a name="post-analyze-id-document"></a>POST Analyze Id Document
+## <a name="post-analyze-id-document"></a>POST Analyze ID Document
 
 Beim Vorgang [Analyze ID](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7daad1f2612c46f5822) wird ein Bild oder eine PDF-Datei eines Ausweisdokuments als Eingabe verwendet und die relevanten Werte extrahiert. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
 
@@ -98,7 +102,7 @@ Beim Vorgang [Analyze ID](https://westus.dev.cognitive.microsoft.com/docs/servic
 Need to update this with updated APIM links when available
 -->
 
-Im zweiten Schritt wird der Vorgang [**Get Analyze idDocument Result**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeFormResult) aufgerufen. Bei diesem Vorgang wird die Ergebnis-ID, die durch den Vorgang „Analyze ID“ erstellt wurde, als Eingabe verwendet. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
+Im zweiten Schritt wird der Vorgang [**Get Analyze idDocument Result**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7738978e467c5fb8707) aufgerufen. Bei diesem Vorgang wird die Ergebnis-ID, die durch den Vorgang „Analyze ID“ erstellt wurde, als Eingabe verwendet. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
 
 |Feld| type | Mögliche Werte |
 |:-----|:----:|:----|

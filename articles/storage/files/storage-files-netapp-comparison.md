@@ -8,12 +8,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 3/19/2021
 ms.author: jeffpatt
-ms.openlocfilehash: 90a8fd3344936e09604f058cdf381fda2ae4c609
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: afdcfe553d7dc2e236b0bda28212bd09360a0fba
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108122995"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330852"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Vergleich von Azure Files und Azure NetApp Files
 
@@ -26,7 +26,7 @@ Die meisten Workloads, die Clouddateispeicher erfordern, funktionieren gut für 
 | Category | Azure Files | Azure NetApp Files |
 |---------|-------------------------|---------|
 | BESCHREIBUNG | [Azure Files](https://azure.microsoft.com/services/storage/files/) ist ein vollständig verwalteter, hochverfügbarer Dienst für Unternehmen, der für Workloads mit willkürlichem Zugriff und direkten Datenaktualisierungen optimiert ist.<br><br> Azure Files basiert auf derselben Azure Storage-Plattform wie andere Dienste wie Azure-Blobs. | [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) ist ein vollständig verwalteter, hochverfügbarer NAS-Dienst auf Unternehmensniveau, der die anspruchsvollsten, hochleistungsfähigen Workloads mit geringer Latenz verarbeiten kann, die erweiterte Datenverwaltungsfunktionen erfordern. Der Dienst ermöglicht die Migration von Workloads, die ohne ihn als „nicht migrierbar“ angesehen werden.<br><br>  ANF basiert auf dem Bare-Metal-System von NetApp mit einem ONTAP-Speicherbetriebssystem, das im Azure-Rechenzentrum ausgeführt wird, um eine konsistente Azure-Umgebung und eine Leistung zu erzielen, die einer lokalen Leistung entspricht. |
-| Protokolle | Premium<br><ul><li>SMB 2.1, 3.0</li><li>NFS 4.1 (Vorschau)</li><li>REST</li></ul><br>Standard<br><ul><li>SMB 2.1, 3.0</li><li>REST</li></ul><br> Weitere Informationen finden Sie unter [Azure-Dateifreigabeprotokolle](./storage-files-compare-protocols.md). | Alle Ebenen<br><ul><li>SMB 1, 2.x, 3.x</li><li>NFS 3.0, 4.1</li><li>Dual-Protokollzugriff (NFSv3/SMB)</li></ul><br> Weitere Informationen zum Erstellen von [NFS](../../azure-netapp-files/azure-netapp-files-create-volumes.md)-, [SMB](../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md)- oder [Dual-Protokoll](../../azure-netapp-files/create-volumes-dual-protocol.md)-Volumes. |
+| Protokolle | Premium<br><ul><li>SMB 2.1, 3.0, 3.1.1</li><li>NFS 4.1 (Vorschau)</li><li>REST</li></ul><br>Standard<br><ul><li>SMB 2.1, 3.0, 3.1.1</li><li>REST</li></ul><br> Weitere Informationen finden Sie unter [Azure-Dateifreigabeprotokolle](./storage-files-compare-protocols.md). | Alle Ebenen<br><ul><li>SMB 1, 2.x, 3.x</li><li>NFS 3.0, 4.1</li><li>Dual-Protokollzugriff (NFSv3/SMB)</li></ul><br> Weitere Informationen zum Erstellen von [NFS](../../azure-netapp-files/azure-netapp-files-create-volumes.md)-, [SMB](../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md)- oder [Dual-Protokoll](../../azure-netapp-files/create-volumes-dual-protocol.md)-Volumes. |
 | Regionale Verfügbarkeit | Premium<br><ul><li>mehr als 30 Regionen</li></ul><br>Standard<br><ul><li>Alle Regionen</li></ul><br> Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage). | Alle Ebenen<br><ul><li>mehr als 25 Regionen</li></ul><br> Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage). |
 | Redundanz | Premium<br><ul><li>LRS</li><li>ZRS</li></ul><br>Standard<br><ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul><br> Weitere Informationen finden Sie unter [Redundanz](./storage-files-planning.md#redundancy). | Alle Ebenen<br><ul><li>Integrierte lokale Hochverfügbarkeit</li><li>[Regionsübergreifende Replikation](../../azure-netapp-files/cross-region-replication-introduction.md)</li></ul> |
 | Vereinbarung zum Servicelevel (SLA)<br><br> Beachten Sie, dass SLAs für Azure Files und Azure NetApp Files unterschiedlich berechnet werden. | [SLA für AZure Files](https://azure.microsoft.com/support/legal/sla/storage/) | [SLA für Azure NetApp Files](https://azure.microsoft.com/support/legal/sla/netapp) |  
@@ -42,11 +42,11 @@ Die meisten Workloads, die Clouddateispeicher erfordern, funktionieren gut für 
 
 | Category | Azure Files | Azure NetApp Files |
 |---------|---------|---------|
-| Mindestgröße für Freigabe/Volume | Premium<br><ul><li>100 GB</li></ul><br>Standard<br><ul><li>1 GiB</li></ul> | Alle Ebenen<br><ul><li>100 GiB (Mindestgröße des Kapazitätspools: 4 TiB)</li></ul> |
-| Maximale Größe für Freigabe/Volume | Premium<br><ul><li>ca. 100 TiB</li></ul><br>Standard<br><ul><li>ca. 100 TiB</li></ul> | Alle Ebenen<br><ul><li>100 TiB (500 TiB bei Kapazitätspool)</li></ul><br>Bis zu 12,5 PIB pro Azure NetApp-Konto |
+| Mindestgröße für Freigabe/Volume | Premium<br><ul><li>100 GB</li></ul><br>Standard<br><ul><li>Keine Mindestanforderungen.</li></ul> | Alle Ebenen<br><ul><li>100 GiB (Mindestgröße des Kapazitätspools: 4 TiB)</li></ul> |
+| Maximale Größe für Freigabe/Volume | ca. 100 TiB | Alle Ebenen<br><ul><li>100 TiB (500 TiB bei Kapazitätspool)</li></ul><br>Bis zu 12,5 PIB pro Azure NetApp-Konto |
 | Maximale IOPS für Freigabe/Volume | Premium<br><ul><li>Bis zu 100.000</li></ul><br>Standard<br><ul><li>Bis zu 10.000</li></ul> | Ultra und Premium<br><ul><li>Bis zu 450.000 </li></ul><br>Standard<br><ul><li>Bis zu 320.000</li></ul> |
 | Maximaler Durchsatz für Freigabe/Volume | Premium<br><ul><li>Bis zu 10 GiB/s</li></ul><br>Standard<br><ul><li>Bis zu 300 MiB/s</li></ul> | Ultra und Premium<br><ul><li>Bis zu 4,5 GiB/s</li></ul><br>Standard<br><ul><li>Bis zu 3,2 Gib/s</li></ul> |
-| Maximale Dateigröße | Premium<br><ul><li>4 TiB</li></ul><br>Standard<br><ul><li>1TiB</li></ul> | Alle Ebenen<br><ul><li>16 TiB</li></ul> |
+| Maximale Dateigröße | 4 TiB | 16 TiB |
 | Maximaler IOPS pro Datei | Premium<br><ul><li>Bis zu 8.000</li></ul><br>Standard<br><ul><li>1\.000</li></ul> | Alle Ebenen<br><ul><li>Volumelimit</li></ul> |
 | Maximaler Durchsatz pro Datei | Premium<br><ul><li>300 MiB/s (bis zu 1 GiB/s bei SMB Multichannel)</li></ul><br>Standard<br><ul><li>60 MiB/s</li></ul> | Alle Ebenen<br><ul><li>Volumelimit</li></ul> |
 | SMB Multichannel | Ja ([Vorschau](./storage-files-smb-multichannel-performance.md)) | Ja |

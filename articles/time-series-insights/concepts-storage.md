@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: cd26df1de86ee4bdb33050d0bc4769663707733e
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 70a0ecb6e9ff2707401517e185964edf512a94c9
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725024"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204259"
 ---
 # <a name="data-storage"></a>Datenspeicherung
 
@@ -72,7 +72,7 @@ Azure Time Series Insights Gen2 behält bis zu zwei Kopien jedes Ereignisses in 
 Alle Ihre Daten werden mit unbegrenzter Dauer in Ihrem Azure Storage-Konto gespeichert.
 
 > [!WARNING]
-> Schränken Sie den öffentlichen Internetzugriff nicht auf einen Hub oder eine Ereignisquelle ein, der bzw. die von Time Series Insights verwendet wird. Andernfalls wird die erforderliche Verbindung unterbrochen.
+> Schränken Sie den öffentlichen Internetzugriff auf das Konto, das von Time Series Insights verwendet wird, nicht ein. Andernfalls wird die erforderliche Verbindung unterbrochen.
 
 #### <a name="writing-and-editing-blobs"></a>Schreiben und Bearbeiten von Blobs
 

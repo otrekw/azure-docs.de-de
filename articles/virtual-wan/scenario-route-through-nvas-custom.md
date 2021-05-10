@@ -1,20 +1,20 @@
 ---
 title: Weiterleiten von Datenverkehr über virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) mithilfe benutzerdefinierter Einstellungen
 titleSuffix: Azure Virtual WAN
-description: Dieses Szenario hilft Ihnen beim Weiterleiten von Datenverkehr über NVAs mithilfe eines anderen NVA für Internetdatenverkehr.
+description: Erfahren Sie mehr über Virtual WAN-Routingszenarien zum Weiterleiten von Datenverkehr über virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs). In diesem Szenario leiten Sie Datenverkehr über NVAs mithilfe eines anderen NVAs für Internetdatenverkehr sowie mit benutzerdefinierten Einstellungen weiter.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 153e3dd64546dfa713abefcff106652fc061a6a2
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036863"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165819"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Szenario: Weiterleiten von Datenverkehr über virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) mithilfe benutzerdefinierter Einstellungen
 

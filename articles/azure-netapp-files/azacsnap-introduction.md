@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 1cd22ad59da4961644c4e4d05150ba8565bf47a0
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 86783df03a395e287a6656b52099cffc579ee31f
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929757"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226280"
 ---
 # <a name="what-is-azure-application-consistent-snapshot-tool"></a>Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?
 
@@ -44,7 +44,7 @@ AzAcSnap nutzt die Funktionen für Momentaufnahmen und Replikation von Volumes v
 - **Klonen von Speichervolumes** Diese Funktion bietet speichereffiziente Klone von Speichervolumes für Entwicklungs- und Testzwecke.
 - **Unterstützung der Notfallwiederherstellung** AzAcSnap nutzt die Replikation von Speichervolumes, um Optionen für die Wiederherstellung replizierter, konsistenter Momentaufnahmen von Anwendungen an einem Remotestandort bereitzustellen.
 
-AzAcSnap ist eine einzelne Binärdatei,  die keine zusätzlichen Agents oder Plug-Ins benötigt, um mit der Datenbank oder dem Speicher zu interagieren (Azure NetApp Files über Azure Resource Manager und Azure [große Instanz] über SSH).  AzAcSnap muss auf einem System installiert werden, das mit Datenbank und Speicher verbunden ist.  Die flexible Installation und Konfiguration ermöglicht jedoch entweder eine einzelne zentrale Installation oder eine vollständig verteilte Installation mit Kopien für jede Datenbankinstallation.
+AzAcSnap ist eine einzelne Binärdatei,  die keine zusätzlichen Agents oder Plug-Ins benötigt, um mit der Datenbank oder dem Speicher zu interagieren (Azure NetApp Files über Azure Resource Manager und Azure [große Instanz] über SSH).  AzAcSnap muss auf einem System installiert werden, das mit Datenbank und Speicher verbunden ist.  Die flexible Installation und Konfiguration ermöglicht jedoch entweder eine einzelne zentrale Installation (nur Azure NetApp Files) oder eine vollständig verteilte Installation (Azure NetApp Files und Azure (große Instanzen)) mit Kopien für jede Datenbankinstallation.
 
 ## <a name="architecture-overview"></a>Übersicht über die Architektur
 

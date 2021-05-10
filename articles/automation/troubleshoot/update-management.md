@@ -3,14 +3,15 @@ title: Beheben von Problemen bei der Azure Automation-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Azure Automation-Updateverwaltung beheben.
 services: automation
 ms.subservice: update-management
-ms.date: 04/16/2021
+ms.date: 04/18/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: f23632ba6a6b83f92b2bfc90beb4c1a8613c090a
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5d73f7232afc9dcd6f7e069297efac763c242f7b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587362"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164253"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
@@ -393,10 +394,10 @@ Windows Update lässt sich über mehrere Registrierungsschlüssel modifizieren, 
 
 ### <a name="issue"></a>Problem
 
-Ein Computer zeigt einen `Failed to start`-Status an. Wenn Sie sich die Detailinformationen für den Computer ansehen, wird der folgende Fehler angezeigt:
+Ein Computer zeigt den Status `Failed to start` oder `Failed` an. Wenn Sie sich die Detailinformationen für den Computer ansehen, wird der folgende Fehler angezeigt:
 
 ```error
-Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
+For one or more machines in schedule, UM job run resulted in either Failed or Failed to start state. Guide available at https://aka.ms/UMSucrFailed.
 ```
 
 ### <a name="cause"></a>Ursache
@@ -410,6 +411,8 @@ Dieser Fehler kann aus einem der folgenden Gründe auftreten:
 * Die Ausführung des Updates wurde gedrosselt, wenn das Limit von 200 gleichzeitigen Aufträgen in einem Automation-Konto erreicht wurde. Jede Bereitstellung kann als Auftrag betrachtet werden, und jeder Computer in einer Updatebereitstellung zählt als Auftrag. Jeder andere Automatisierungsauftrag oder jede Updatebereitstellung, der bzw. die in Ihrem Automation-Konto ausgeführt wird, wird auf das Limit für gleichzeitige Aufträge angerechnet.
 
 ### <a name="resolution"></a>Lösung
+
+Sie können weitere Details programmgesteuert mithilfe der REST-API abrufen. Informationen zum Abrufen einer Liste von Updatekonfigurations-Computerausführungen oder einer einzelnen Softwareupdatekonfigurations-Computerausführung anhand der ID finden Sie unter [Softwareupdatekonfigurations-Computerausführungen](/rest/api/automation/softwareupdateconfigurationmachineruns).
 
 Verwenden Sie [dynamische Gruppen](../update-management/configure-groups.md) (falls vorhanden) für Ihre Updatebereitstellungen. Außerdem können Sie die folgenden Schritte ausführen.
 
@@ -505,11 +508,13 @@ Der Hybrid Runbook Worker konnte kein selbstsigniertes Zertifikat generieren.
 
 ### <a name="issue"></a>Problem
 
-Das Standardwartungsfenster für Updates beträgt 120 Minuten. Sie können das Wartungsfenster auf maximal sechs Stunden oder 360 Minuten erhöhen.
+Das Standardwartungsfenster für Updates beträgt 120 Minuten. Sie können das Wartungsfenster auf maximal sechs Stunden oder 360 Minuten erhöhen. Möglicherweise wird die Fehlermeldung `For one or more machines in schedule, UM job run resulted in Maintenance Window Exceeded state. Guide available at https://aka.ms/UMSucrMwExceeded.` angezeigt.
 
 ### <a name="resolution"></a>Lösung
 
 Um zu ermitteln, warum dieses Problem während der Ausführung eines Updates nach dem erfolgreichen Start auftritt, [überprüfen Sie die Auftragsausgabe](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment) des von der Ausführung betroffenen Computers. Möglicherweise finden Sie spezifische Fehlermeldungen von Ihren Computern, die Sie untersuchen können, um dann Maßnahmen zu ergreifen.  
+
+Sie können weitere Details programmgesteuert mithilfe der REST-API abrufen. Informationen zum Abrufen einer Liste von Updatekonfigurations-Computerausführungen oder einer einzelnen Softwareupdatekonfigurations-Computerausführung anhand der ID finden Sie unter [Softwareupdatekonfigurations-Computerausführungen](https://docs.microsoft.com/rest/api/automation/softwareupdateconfigurationmachineruns).
 
 Bearbeiten Sie alle fehlgeschlagenen, geplanten Updatebereitstellungen, und vergrößern Sie das Wartungsfenster.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 9dcb5b84faa47b7307ce8441003e8591d7c2757b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4d96d116bc4350a3326722c87f65e887d5a54791
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604786"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326541"
 ---
 # <a name="set-map-style-android-sdk"></a>Festlegen eines Kartenstils (Android SDK)
 
@@ -23,6 +23,10 @@ In diesem Artikel werden Ihnen zwei Möglichkeiten gezeigt, Kartenstile mit dem 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie sicher, dass Sie die Schritte im Dokument [Schnellstart: Erstellen einer Android-App](quick-android-map.md) ausführen.
+
+>[!important]
+>Das Verfahren in diesem Abschnitt erfordert ein Azure Maps-Konto im Tarif „Gen 1“ oder „Gen 2“. Weitere Informationen zu Tarifen finden Sie unter [Auswählen des richtigen Tarifs in Azure Maps](choose-pricing-tier.md).
+
 
 ## <a name="set-map-style-in-the-layout"></a>Festlegen des Kartenstils im Layout
 

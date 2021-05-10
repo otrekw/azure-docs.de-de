@@ -1,18 +1,19 @@
 ---
-title: Beispielkonfiguration für das Verbinden von Cisco ASA-Geräten mit Azure-VPN-Gateways
-description: Dieser Artikel enthält eine Beispielkonfiguration für das Verbinden von Cisco ASA-Geräten mit Azure-VPN-Gateways.
+title: Beispielkonfiguration für das Verbinden von Cisco ASA-Geräten mit VPN-Gateways
+titleSuffix: Azure VPN Gateway
+description: Anzeigen von Beispielkonfigurationen für das Verbinden von Cisco ASA-Geräten mit Azure VPN-Gateways.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 04/29/2021
 ms.author: yushwang
-ms.openlocfilehash: 82e00e0b519040c57fdfd798d8992086c61e5481
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9de069b657f991444d84f5bff5f61d1150c0b0f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89426170"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292142"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Beispielkonfiguration: Cisco ASA-Gerät (IKEv2/no BGP)
 Dieser Artikel enthält Beispielkonfigurationen für das Verbinden von Cisco ASA-Geräten (Adaptive Security Appliance) mit Azure-VPN-Gateways. Das Beispiel gilt für Cisco ASA-Geräte, auf denen IKEv2 ohne Border Gateway Protocol (BGP) ausgeführt wird. 

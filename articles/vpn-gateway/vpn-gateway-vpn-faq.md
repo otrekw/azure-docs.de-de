@@ -1,18 +1,18 @@
 ---
 title: Häufig gestellte Fragen zu VPN Gateway
-description: Häufig gestellte Fragen zum VPN-Gateway. Häufig gestellte Fragen zu standortübergreifenden Verbindungen, Verbindungen mit Hybridkonfiguration und VPN Gateways von Microsoft Azure Virtual Network.
+description: Erfahren Sie mehr über häufig gestellte Fragen zu standortübergreifenden VPN Gateway-Verbindungen, Hybridkonfigurationsverbindungen und virtuellen Netzwerkgateways. Diese häufig gestellten Fragen enthalten umfassende Informationen zu Point-to-Site-, Site-to-Site- und VNet-zu-VNet-Konfigurationseinstellungen.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: yushwang
-ms.openlocfilehash: 3d29e99f3b539fdbea2a19df7ffc25d4e41a5376
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0fee7a7a58a6aabc7d545981b1f8b56033bf9857
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731257"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203755"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -258,7 +258,7 @@ Nein. Nur der Datenverkehr mit einer IP-Zieladresse, die innerhalb der angegeben
 
 ## <a name="virtual-network-faq"></a><a name="faq"></a>FAQs zu virtuellen Netzwerken
 
-Weitere Informationen zu virtuellen Netzwerken finden Sie in den [FAQs zu virtuellen Netzwerken](../virtual-network/virtual-networks-faq.md).
+Weitere Informationen zu virtuellen Netzwerken finden Sie in den [Häufig gestellten Fragen zu virtuellen Netzwerken](../virtual-network/virtual-networks-faq.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
