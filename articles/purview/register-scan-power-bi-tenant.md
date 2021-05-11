@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 8fb4c797df7961726ca785a56a6ab25807999842
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 402618872c5a3ee8dd01c35021656312f1fe3371
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600861"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228440"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
 
@@ -99,6 +99,7 @@ Nachdem Sie nun der verwalteten Purview-Identität die Berechtigung erteilt habe
     > [!Note]
     > * Wenn Sie die Konfiguration einer Überprüfung so wechseln, dass ein persönlicher Arbeitsbereich ein- oder ausgeschlossen wird, wird eine vollständige Überprüfung der Power BI-Quelle ausgelöst.
     > * Der Überprüfungsname muss zwischen 3 und 63 Zeichen lang sein und darf nur Buchstaben, Ziffern, Unterstriche und Bindestriche enthalten. Leerzeichen sind nicht zulässig.
+    > * Das Schema ist auf der Registerkarte „Schema“ nicht verfügbar.
 
 5. Richten Sie einen Auslöser für die Überprüfung ein. Ihre Optionen sind **Einmal**, **Alle 7 Tage** und **Alle 30 Tage**.
 

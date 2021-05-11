@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 04/28/2021
 ms.author: b-juche
-ms.openlocfilehash: b581470a886ff73739edfee7f45c64295eeeb1f0
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 5282c806f5c6011418dabc14d6f82d6b9c0df251
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388606"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206347"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 
@@ -59,6 +59,9 @@ Sie finden Metriken für einen Kapazitätspool oder ein Volume, indem Sie den **
    Größe aller Momentaufnahmen in einem Volume  
 
 ## <a name="performance-metrics-for-volumes"></a>Leistungsmetriken für Volumes
+
+> [!NOTE] 
+> Die Volumelatenz für die *durchschnittliche Leselatenz* und die *durchschnittliche Schreiblatenz* wird im Speicherdienst gemessen und umfasst keine Netzwerklatenz.
 
 - *Durchschnittliche Wartezeit beim Lesevorgang*   
     Die durchschnittliche Dauer von Lesevorgängen vom Volume in Millisekunden.

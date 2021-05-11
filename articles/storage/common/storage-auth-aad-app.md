@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: baad1a0b173ae89fec9d160572224c6cb0aa615d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2de1dc71579e6915a54e3815edd2858532ba263
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574627"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075931"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
 
@@ -69,7 +69,7 @@ Im Bereich **API-Berechtigungen** wird jetzt angezeigt, dass Ihre registrierte A
 
 ### <a name="create-a-client-secret"></a>Erstellen eines Clientgeheimnisses
 
-Die Anwendung benötigt zum Beweis ihrer Identität einen geheimen Clientschlüssel, wenn sie ein Token anfordert. Führen Sie folgende Schritte aus, um den geheimen Clientschlüssel hinzuzufügen:
+Die Anwendung benötigt zum Beweis ihrer Identität einen geheimen Clientschlüssel, wenn sie ein Token anfordert. Aus Sicherheitsgründen beschränkt Microsoft derzeit die Erstellung von Clientschlüsseln, die länger als 24 Monate gelten, und empfiehlt, dass Sie dies auf einen Wert von weniger als 12 Monaten festlegen. Führen Sie folgende Schritte aus, um den geheimen Clientschlüssel hinzuzufügen:
 
 1. Navigieren Sie im Azure-Portal zu Ihrer App-Registrierung.
 1. Klicken Sie auf die Einstellung **Certificates & secrets** (Zertifikate & Geheime Schlüssel).

@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 62db56ac9791cea7d6f1a40f794241ed68fa90fa
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b21915b6cf0cd018ccbf7b79fc9a5ab8dc222925
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483573"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076079"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Verschieben einer Azure Digital Twins-Instanz in eine andere Azure-Region
 
@@ -95,9 +95,9 @@ Richten Sie dann Berechtigungen für Azure Digital Twins-Explorer ein, und konfi
 
 Jetzt sollte die Azure Digital Twins-Explorer-Beispiel-App in einem Browser auf Ihrem Computer ausgeführt werden. Das Beispiel sollte mit Ihrer ursprünglichen Azure Digital Twins-Instanz verbunden sein.
 
-:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt Azure Digital Twins-Explorer und enthält Felder für einen Abfrage-Explorer, eine Modellansicht, eine Graphansicht und einen Eigenschaften-Explorer. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/explorer-blank.png":::
+:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="Browserfenster mit einer unter „localhost:3000“ ausgeführten App. Die App heißt Azure Digital Twins-Explorer und enthält Felder für Abfrage-Explorer, Modelle, Zwillingsgraph und Eigenschaften. Es sind noch keine Daten vorhanden." lightbox="media/how-to-move-regions/explorer-blank.png":::
 
-Zur Überprüfung der Verbindung wählen Sie die Schaltfläche **Run Query** (Abfrage ausführen) aus, um die Standardabfrage auszuführen, die alle Zwillinge und Beziehungen im Graphen im Feld **GRAPH EXPLORER** (Graph-Explorer) anzeigt.
+Zur Überprüfung der Verbindung wählen Sie die Schaltfläche **Abfrage ausführen** aus, um die Standardabfrage auszuführen, die alle Zwillinge und Beziehungen im Graphen im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) anzeigt.
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Eine Schaltfläche „Run Query“ (Abfrage ausführen) in der oberen rechten Ecke des Fensters ist hervorgehoben." lightbox="media/how-to-move-regions/run-query.png":::
 
@@ -107,13 +107,13 @@ Sie können Azure Digital Twins-Explorer weiterhin ausführen, weil Sie den Expl
 
 Laden Sie als nächstes die Modelle, Zwillinge und Graphen in Ihrer Lösung auf Ihren Computer herunter.
 
-Um alle diese Elemente gleichzeitig herunterzuladen, stellen Sie zunächst sicher, dass der vollständige Graph im Feld **GRAPH VIEW** (Graphansicht) angezeigt wird. Wenn der vollständige Graph noch nicht angezeigt wird, führen Sie die Standardabfrage `SELECT * FROM digitaltwins` im Feld **QUERY EXPLORER** (Abfrage-Explorer) erneut aus.
+Um alle diese Elemente gleichzeitig herunterzuladen, stellen Sie zunächst sicher, dass der vollständige Graph im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) angezeigt wird. Wenn der vollständige Graph noch nicht angezeigt wird, führen Sie die Standardabfrage `SELECT * FROM digitaltwins` im Feld **QUERY EXPLORER** (Abfrage-Explorer) erneut aus.
  
-Wählen Sie dann das Symbol **Export Graph** (Graph exportieren) im Feld **GRAPH VIEW** (Graphansicht) aus.
+Wählen Sie dann das Symbol **Export Graph** (Graph exportieren) im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) aus.
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Feld „Graph View“ (Graphansicht) mit einem hervorgehobenen Symbol. Es zeigt einen Pfeil, der aus einer Wolke heraus nach unten zeigt." lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Feld „TWIN GRAPH“ (ZWILLINGSGRAPH) mit einem hervorgehobenen Symbol. Es zeigt einen Pfeil, der aus einer Wolke heraus nach unten zeigt." lightbox="media/how-to-move-regions/export-graph.png":::
 
-Durch diese Aktion wird ein Link **Download** in der **GRAPH VIEW** (Graphansicht) aktiviert. Wählen Sie ihn aus, um eine JSON-basierte Darstellung des Abfrageergebnisses herunterzuladen (einschließlich Ihrer Modelle, Zwillinge und Beziehungen). Diese Aktion sollte eine JSON-Datei auf Ihren Computer herunterladen.
+Durch diese Aktion wird ein Link **Download** im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) aktiviert. Wählen Sie ihn aus, um eine JSON-basierte Darstellung des Abfrageergebnisses herunterzuladen (einschließlich Ihrer Modelle, Zwillinge und Beziehungen). Diese Aktion sollte eine JSON-Datei auf Ihren Computer herunterladen.
 
 >[!NOTE]
 >Wenn die heruntergeladene Datei eine andere Dateierweiterung aufweist, versuchen Sie, die Erweiterung direkt zu bearbeiten und sie in JSON zu ändern.
@@ -155,15 +155,15 @@ Wählen Sie **Verbinden**. Möglicherweise werden Sie aufgefordert, sich erneut 
 
 Als nächstes laden Sie die Lösungskomponenten, die Sie zuvor heruntergeladen haben, auf Ihre neue Instanz hoch.
 
-Um Ihre Modelle, Zwillinge und Graphen hochzuladen, wählen Sie das Symbol **Import Graph** (Graph importieren) im Feld **GRAPH VIEW** (Graphansicht) aus. Mit dieser Option werden alle drei Komponenten gleichzeitig hochgeladen. Es werden sogar Modelle hochgeladen, die derzeit nicht im Graphen verwendet werden.
+Um Ihre Modelle, Zwillinge und Graphen hochzuladen, wählen Sie das Symbol **Import Graph** (Graph importieren) im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) aus. Mit dieser Option werden alle drei Komponenten gleichzeitig hochgeladen. Es werden sogar Modelle hochgeladen, die derzeit nicht im Graphen verwendet werden.
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Feld „Graph View“ (Graphansicht) mit einem hervorgehobenen Symbol. Es zeigt einen auf eine Wolke gerichteten Pfeil." lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Feld „TWIN GRAPH“ (ZWILLINGSGRAPH) mit einem hervorgehobenen Symbol. Es zeigt einen auf eine Wolke gerichteten Pfeil." lightbox="media/how-to-move-regions/import-graph.png":::
 
 Navigieren Sie im Dateiauswahlfeld zu Ihrem heruntergeladenen Graphen. Wählen Sie die **JSON**-Graphdatei aus, und wählen Sie dann **Open** (Öffnen) aus.
 
 Nach wenigen Sekunden wird von Azure Digital Twins-Explorer eine Ansicht **Import** mit einer Vorschau des zu ladenden Graphen angezeigt.
 
-Wählen Sie zum Bestätigen des Graphuploads in der oberen rechten Ecke des Felds **GRAPH VIEW** (Graphansicht) das Symbol **Speichern** aus.
+Wählen Sie zum Bestätigen des Graphuploads in der rechten oberen Ecke des Felds **TWIN GRAPH** (ZWILLINGSGRAPH) das Symbol **Speichern** aus.
 
 :::row:::
     :::column:::
@@ -181,17 +181,15 @@ Azure Digital Twins-Explorer lädt nun Ihre Modelle und Graphen (einschließlich
     :::column-end:::
     :::column:::
     :::column-end:::
-    :::column:::
-    :::column-end:::
 :::row-end:::
 
-Um zu überprüfen, ob alles erfolgreich hochgeladen wurde, wählen Sie die Schaltfläche **Run Query** (Abfrage ausführen) im Feld **GRAPH EXPLORER** (Graph-Explorer) aus, um die Standardabfrage auszuführen, die alle Zwillinge und Beziehungen im Graphen anzeigt. Durch diese Aktion wird auch die Liste der Modelle im Feld **MODEL VIEW** (Modellansicht) aktualisiert.
+Um zu überprüfen, ob alles erfolgreich hochgeladen wurde, navigieren Sie zur Registerkarte **TWIN GRAPH** (ZWILLINGSGRAPH) zurück und wählen die Schaltfläche **Abfrage ausführen** im Feld **ABFRAGE-EXPLORER** aus. Damit führen Sie die Standardabfrage aus, die alle Zwillinge und Beziehungen im Graphen anzeigt. Durch diese Aktion wird auch die Liste der Modelle im Feld **MODELLE** aktualisiert.
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Hervorhebung der Schaltfläche „Run Query“ (Abfrage ausführen) in der oberen rechten Ecke des Fensters." lightbox="media/how-to-move-regions/run-query.png":::
 
-Der Graph sollte mit all seinen Zwillingen und Beziehungen im Feld **GRAPH EXPLORER** (Graph-Tester) angezeigt werden. Ihre Modelle sollten auch im Feld **MODEL VIEW** (Modellansicht) aufgelistet sein.
+Der Graph sollte mit all seinen Zwillingen und Beziehungen im Feld **TWIN GRAPH** (ZWILLINGSGRAPH) angezeigt werden. Ihre Modelle sollten auch im Feld **MODELLE** aufgelistet sein.
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Eine Ansicht von Azure Digital Twins-Explorer mit zwei Modellen, die im Feld „Model View“ (Modellansicht) hervorgehoben sind, und ein Graph, der im Feld „Graph Explorer“ (Graph-Explorer) hervorgehoben ist" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Eine Ansicht von Azure Digital Twins-Explorer mit zwei Modellen, die im Feld „MODELLE“ hervorgehoben sind, und ein Graph, der im Feld „TWIN GRAPH“ (ZWILLINGSGRAPH) hervorgehoben ist" lightbox="media/how-to-move-regions/post-upload.png":::
 
 Diese Ansichten bestätigen, dass Ihre Modelle, Zwillinge und Graphen erneut in die neue Instanz in der Zielregion hochgeladen wurden.
 

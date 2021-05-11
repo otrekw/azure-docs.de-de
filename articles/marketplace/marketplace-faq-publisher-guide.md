@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: 15816d58105841ee53f3724158ebcbfa65df4877
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5579aa764eaa9f367364dce6ca5db09184e04fa2
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133131"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330168"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Häufig gestellte Fragen zum kommerziellen Marketplace von Microsoft
 
@@ -68,6 +68,12 @@ Auf welche Weise die Kunden Ihr Angebot im kommerziellen Marketplace nutzen kön
 Nachdem Sie sich registriert und die Herausgebervereinbarung akzeptiert haben, können Sie auf die Seite „Kommerzieller Marketplace“ im Partner Center zugreifen. Hier können Sie Angebote erstellen und verwalten sowie Analyseberichte anzeigen. Für Microsoft 365-Apps müssen Sie auch das Office Store-Programm im Partner Center aktivieren.
 
 Weitere Informationen finden Sie unter [Willkommen beim kommerziellen Marketplace](index.yml) und [Monetarisieren Ihres Microsoft 365-Add-Ins über den kommerziellen Microsoft-Marketplace](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+
+### <a name="how-can-my-own-employees-use-our-offers-from-the-marketplace-without-being-charged"></a>Wie können meine Mitarbeiter unsere Angebote im Marketplace nutzen, ohne dass Gebühren erhoben werden?
+
+Um zu verhindern, dass Microsoft Ihr Angebot für Ihre Mitarbeiter in Rechnung stellt und beim Verkauf Ihres Angebots eine Store-Servicegebühr erhoben wird, müssen Sie zunächst einen [privaten Plan](/azure/marketplace/private-offers) für das Angebot mit einem Preis von 0 US-Dollar erstellen und das Angebot an die internen Benutzer senden, die es kaufen möchten.
+
+Sie können auch den [Private Marketplace](/marketplace/create-manage-private-azure-marketplace) verwenden, um sicherzustellen, dass interne Benutzer nur bestimmte Angebote kaufen, die von Ihrem Administrator genehmigt wurden.
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Wie erhalte ich Unterstützung für den kommerziellen Marketplace?
 

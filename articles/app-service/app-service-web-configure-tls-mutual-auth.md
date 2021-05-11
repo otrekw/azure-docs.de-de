@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a5b0a576e2994bd852ee5b0a356543882601fc0
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97347722"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076237"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurieren der gegenseitigen TLS-Authentifizierung für Azure App Service
 
@@ -44,11 +44,11 @@ Wenn Sie die gegenseitige Authentifizierung für Ihre Anwendung aktivieren, erfo
 
 1. Klicken Sie neben **Client exclusion paths** (Clientausschlusspfade) auf das Bearbeitungssymbol.
 
-1. Klicken Sie auf **Neuer Pfad**, geben Sie einen Pfad an, und klicken Sie auf **OK**.
+1. Klicken Sie auf **Neuer Pfad**, geben Sie einen Pfad oder eine Liste von Pfaden an, die durch `,` oder `;` getrennt sind, und klicken Sie auf **OK**.
 
 1. Klicken Sie oben auf der Seite auf **Speichern**.
 
-Im folgenden Screenshot wird für alle Verzeichnisse unter dem Pfad `/public` für Ihre App kein Clientzertifikat angefordert.
+Im folgenden Screenshot wird für alle Pfade Ihrer App, die mit `/public` beginnen, kein Clientzertifikat angefordert. Bei der Pfadzuordnung wird die Groß-/Kleinschreibung nicht berücksichtigt.
 
 ![Zertifikatausschlusspfade][exclusion-paths]
 

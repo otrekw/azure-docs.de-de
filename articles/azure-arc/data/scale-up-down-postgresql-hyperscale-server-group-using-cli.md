@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4461fb6904d51ee8d740b633a2d0028658ac2ced
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efad54e9e6d69f4b1b9c8cef0d93e0286c6c8203
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687548"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286803"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Zentrales Hoch- und Herunterskalieren einer Azure Database for PostgreSQL Hyperscale-Servergruppe mithilfe der CLI (azdata oder kubectl)
 
@@ -43,158 +43,162 @@ azdata arc postgres server show -n <server group name>
 ### <a name="cli-with-kubectl"></a>CLI mit kubectl
 
 ```console
-kubectl describe postgresql-12/<server group name> [-n <namespace name>]
+kubectl describe postgresql/<server group name> -n <namespace name>
 ```
-> [!NOTE]
-> Wenn Sie eine Servergruppe mit PostgreSQL-Version 11 erstellt haben, führen Sie stattdessen `kubectl describe postgresql-11/<server group name>` aus.
 
 Die Konfiguration der Servergruppe wird zurückgegeben. Wenn Sie die Servergruppe mit den Standardeinstellungen erstellt haben, sollte die Definition wie folgt angezeigt werden:
 
-```console
-"scheduling": {
-      "default": {
-        "resources": {
-          "requests": {
-            "memory": "256Mi"
-          }
-        }
-      }
-    },
+```json
+Spec:
+  Dev:  false
+  Engine:
+    Extensions:
+      Name:   citus
+    Version:  12
+  Scale:
+    Workers:  2
+  Scheduling:
+    Default:
+      Resources:
+        Requests:
+          Memory:  256Mi
+...
 ```
 
 ## <a name="interpret-the-definition-of-the-server-group"></a>Interpretieren der Definition der Servergruppe
 
-In der Definition einer Servergruppe ist der Abschnitt, der die Einstellungen der minimalen/maximalen Anzahl virtueller Kerne pro Knoten und die minimale/maximale Größe des Arbeitsspeichers pro Knoten festlegt, der Abschnitt **„scheduling“** . In diesem Abschnitt werden die maximalen Einstellungen in einem Unterabschnitt namens **„limits“** und die minimalen Einstellungen im Unterabschnitt **„requests“** persistent gespeichert.
+In der Definition einer Servergruppe ist der Abschnitt, der die Einstellungen der minimalen/maximalen Anzahl virtueller Kerne pro Knoten und die minimale/maximale Größe des Arbeitsspeichers pro Knoten festlegt, der Abschnitt **scheduling**. In diesem Abschnitt werden die maximalen Einstellungen in einem Unterabschnitt namens **limits** und die minimalen Einstellungen im Unterabschnitt **requests** persistent gespeichert.
 
 Wenn Sie minimale Einstellungen festlegen, die sich von den maximalen Einstellungen unterscheiden, gewährleistet die Konfiguration, dass der Servergruppe bei Bedarf die angeforderten Ressourcen zugewiesen werden. Die von Ihnen festgelegten Grenzwerte werden nicht überschritten.
 
-Die Ressourcen (virtuelle Kerne und Arbeitsspeicher), die tatsächlich von der Servergruppe verwendet werden, entsprechen den maximalen Einstellungen und sind von den Workloads und den Ressourcen abhängig, die auf dem Cluster verfügbar sind. Wenn Sie die Einstellungen nicht durch ein Maximum begrenzen, kann Ihre Servergruppe alle Ressourcen verwenden, die der Kubernetes-Cluster den Kubernetes-Knoten zuweist, auf denen Ihre Servergruppe geplant ist.
+Die Ressourcen (virtuelle Kerne und Arbeitsspeicher), die tatsächlich von der Servergruppe verwendet werden, entsprechen den maximalen Einstellungen und sind von den Workloads und den Ressourcen abhängig, die im Cluster verfügbar sind. Wenn Sie die Einstellungen nicht durch ein Maximum begrenzen, kann Ihre Servergruppe alle Ressourcen verwenden, die der Kubernetes-Cluster den Kubernetes-Knoten zuweist, auf denen Ihre Servergruppe geplant ist.
 
-Diese Einstellungen für virtuelle Kerne und Arbeitsspeicher gelten für die einzelnen PostgreSQL Hyperscale-Knoten (Koordinatorknoten und Workerknoten). Das separate Festlegen der Definitionen des Koordinatorknotens und des Workerknotens wird noch nicht unterstützt.
+Diese Einstellungen für virtuelle Kerne und Arbeitsspeicher gelten für alle Rollen der Postgres-Instanzen, die die PostgreSQL Hyperscale-Servergruppe bilden: Koordinator und Worker. Sie können Anforderungen und Grenzwerte pro Rolle definieren. Sie können für jede Rolle unterschiedliche Einstellungen für Anforderungen und Grenzwerte definieren. Abhängig von Ihren Anforderungen können sie auch gleich sein.
 
 In einer Standardkonfiguration ist nur der Mindestspeicher auf 256Mi festgelegt, da dies die Mindestmenge an Speicher ist, die für die Ausführung von PostgreSQL Hyperscale empfohlen wird.
 
 > [!NOTE]
-> Das Festlegen eines Mindestwerts bedeutet nicht, dass die Servergruppe diesen Mindestwert notwendigerweise verwendet. Das bedeutet, dass garantiert wird, dass der Servergruppe mindestens dieses Minimum zugewiesen wird, wenn sie es benötigt. Nehmen wir beispielsweise an, dass wir `--minCpu 2` festlegen. Dies bedeutet nicht, dass die Servergruppe immer mindestens 2 virtuelle Kerne verwendet. Es bedeutet vielmehr, dass die Servergruppe weniger als 2 virtuelle Kerne verwenden kann, wenn sie nicht so viel benötigt, und es wird garantiert, dass mindestens 2 virtuelle Kerne zugewiesen werden, wenn diese später benötigt werden. Dies impliziert, dass der Kubernetes-Cluster Ressourcen anderen Workloads so zuordnet, dass er der Servergruppe 2 virtuelle Kerne zuordnen kann, wenn sie benötigt werden.
+> Das Festlegen eines Mindestwerts bedeutet nicht, dass die Servergruppe diesen Mindestwert notwendigerweise verwendet. Das bedeutet, dass garantiert wird, dass der Servergruppe mindestens dieses Minimum zugewiesen wird, wenn sie es benötigt. Nehmen wir beispielsweise an, dass wir `--minCpu 2` festlegen. Dies bedeutet nicht, dass die Servergruppe immer mindestens 2 virtuelle Kerne verwendet. Es bedeutet vielmehr, dass die Servergruppe weniger als 2 virtuelle Kerne verwenden kann, wenn sie nicht so viel benötigt, und es wird garantiert, dass mindestens 2 virtuelle Kerne zugewiesen werden, wenn diese später benötigt werden. Dies impliziert, dass der Kubernetes-Cluster Ressourcen anderen Workloads so zuordnet, dass er der Servergruppe 2 virtuelle Kerne zuordnen kann, wenn sie benötigt werden. Außerdem ist das Hoch- und Herunterskalieren kein Onlinevorgang, da es einen Neustart der Kubernetes-Pods erfordert.
 
 >[!NOTE]
 >Bevor Sie die Konfiguration Ihres Systems ändern, stellen Sie sicher, dass Sie sich [hier](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities) mit dem Kubernetes-Ressourcenmodell vertraut machen.
 
-## <a name="scale-up-the-server-group"></a>Zentrales Hochskalieren der Servergruppe
+## <a name="scale-up-and-down-the-server-group"></a>Hoch- und Herunterskalieren der Servergruppe
 
-Die Einstellungen, die Sie festlegen, müssen innerhalb der Konfiguration berücksichtigt werden, die Sie für den Kubernetes-Cluster festlegen. Stellen Sie sicher, dass Sie keine Werte festlegen, die ihr Kubernetes-Cluster nicht erfüllen kann. Dies kann zu Fehlern oder unvorhersehbarem Verhalten führen. Wenn der Status Ihrer Servergruppe beispielsweise lange Zeit nach der Änderung der Konfiguration im Status _updating_ (wird aktualisiert) verbleibt, kann das ein Hinweis darauf sein, dass Sie die unten aufgeführten Parameter auf Werte festlegen, die Ihr Kubernetes-Cluster nicht erfüllen kann. Wenn dies der Fall ist, machen Sie die Änderung rückgängig, oder lesen Sie den Abschnitt zur Problembehandlung.
+Das Hochskalieren bezeichnet das Erhöhen der Einstellungswerte für virtuelle Kerne oder Arbeitsspeicher Ihrer Servergruppe.
+Das Herunterskalieren bezeichnet das Verringern der Einstellungswerte für virtuelle Kerne oder Arbeitsspeicher Ihrer Servergruppe.
 
-Angenommen, Sie möchten beispielsweise die Definition der Servergruppe wie folgt zentral hochskalieren:
+Die Einstellungen, die Sie festlegen, müssen innerhalb der Konfiguration berücksichtigt werden, die Sie für den Kubernetes-Cluster festlegen. Stellen Sie sicher, dass Sie keine Werte festlegen, die ihr Kubernetes-Cluster nicht erfüllen kann. Dies kann zu Fehlern oder unvorhersehbarem Verhalten wie der Nichtverfügbarkeit der Datenbankinstanz führen. Wenn der Status Ihrer Servergruppe beispielsweise lange Zeit nach der Änderung der Konfiguration im Status _updating_ (wird aktualisiert) verbleibt, kann das ein Hinweis darauf sein, dass Sie die unten aufgeführten Parameter auf Werte festlegen, die Ihr Kubernetes-Cluster nicht erfüllen kann. Wenn dies der Fall ist, machen Sie die Änderung rückgängig, oder lesen Sie den Abschnitt zur Problembehandlung.
 
-- Min vCore = 2 (Minimale Anzahl virtueller Kerne = 2)
-- Max vCore = 4 (Maximale Anzahl virtueller Kerne = 4)
-- Min memory = 512Mb (Mindestwert Arbeitsspeicher = 512 MB)
-- Max Memory = 1Gb (Maximalwert Arbeitsspeicher = 1 GB)
+Welche Einstellungen sollten festgelegt werden?
+- Den Mindestwert für virtuelle Kerne legen Sie mit `--cores-request` fest.
+- Den Höchstwert für virtuelle Kerne legen Sie mit `--cores-limit` fest.
+- Den Mindestwert für den Arbeitsspeicher legen Sie mit `--memory-request` fest.
+- Den Höchstwert für den Arbeitsspeicher legen Sie mit `--memory-limit` fest.
 
-Sie können einen der folgenden Ansätze verwenden:
+Wie geben Sie an, für welche Rolle eine Einstellung gilt?
+- Zum Konfigurieren der Einstellung für die Koordinatorrolle geben Sie `coordinator=<value>` an.
+- Zum Konfigurieren der Einstellung für die Workerrolle (die angegebene Einstellung wird auf allen Workern auf den gleichen Wert festgelegt) geben Sie `worker=<value>` an.
 
-### <a name="cli-with-azdata"></a>CLI mit azdata
-
-```console
-azdata arc postgres server edit -n <name of your server group> --cores-request <# core-request>  --cores-limit <# core-limit>  --memory-request <# memory-request>Mi  --memory-limit <# memory-limit>Mi
-```
 
 > [!CAUTION]
-> Das folgende Beispiel veranschaulicht, wie Sie den Befehl verwenden können. Stellen Sie vor dem Ausführen eines Bearbeitungsbefehls sicher, dass die Parameter auf Werte festgelegt sind, die der Kubernetes-Cluster akzeptieren kann.
+> Bei Kubernetes wird beim Konfigurieren einer Grenzwerteinstellung ohne Konfiguration der entsprechenden Anforderungseinstellung der Anforderungswert erzwungen auf den Grenzwert festgelegt. Dies kann dazu führen, dass Ihre Servergruppe nicht verfügbar ist, da ihre Pods möglicherweise nicht neu geplant werden, wenn kein Kubernetes-Knoten mit ausreichenden Ressourcen verfügbar ist. Um diese Situation zu vermeiden, veranschaulichen die folgenden Beispiele, wie Sie sowohl die Anforderung als auch die Grenzwerteinstellungen festlegen.
+
+
+**Die allgemeine Syntax sieht wie folgt aus:**
 
 ```console
-azdata arc postgres server edit -n <name of your server group> --cores-request 2  --cores-limit 4  --memory-request 512Mi  --memory-limit 1024Mi
+azdata arc postgres server edit -n <servergroup name> --memory-limit/memory-request/cores-request/cores-limit <coordinator=val1,worker=val2>
 ```
 
-Der Befehl wird erfolgreich ausgeführt, wenn Folgendes angezeigt wird:
+Der Wert, den Sie für die Arbeitsspeichereinstellung angeben, ist eine Zahl gefolgt von einer Volumeneinheit. Um beispielsweise 1 GB anzugeben, geben Sie „1024Mi“ oder „1Gi“ an.
+Um eine Anzahl von Kernen anzugeben, übergeben Sie einfach eine Zahl ohne Einheit. 
 
+### <a name="examples-using-the-azdata-cli"></a>Beispiele für die Verwendung von azdata an der Befehlszeilenschnittstelle
+
+
+
+
+
+**Konfigurieren Sie die Koordinatorrolle so, dass sie höchstens zwei Kerne verwendet, und die Workerrolle so, dass sie höchstens vier Kerne verwendet:**
 ```console
-<name of your server group> is Ready
+ azdata arc postgres server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2
+ azdata arc postgres server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4
+```
+
+oder
+```console
+azdata arc postgres server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4
 ```
 
 > [!NOTE]
 > Weitere Informationen zu diesen Parametern erhalten Sie, wenn Sie `azdata arc postgres server edit --help` ausführen.
 
-### <a name="cli-with-kubectl"></a>CLI mit kubectl
+### <a name="example-using-kubernetes-native-tools-like-kubectl"></a>Beispiel für die Verwendung nativer Kubernetes-Tools wie `kubectl`
 
+Führen Sie den folgenden Befehl aus: 
 ```console
-kubectl edit postgresql-12/<server group name> [-n <namespace name>]
+kubectl edit postgresql/<servergroup name> -n <namespace name>
 ```
 
-Sie gelangen in den vi-Editor, in dem Sie navigieren und die Konfiguration ändern können. Verwenden Sie Folgendes, um die gewünschte Einstellung dem Namen des Felds in der Spezifikation zuzuordnen:
+Sie starten damit den `vi`-Editor, in dem Sie navigieren und die Konfiguration ändern können. Verwenden Sie Folgendes, um die gewünschte Einstellung dem Namen des Felds in der Spezifikation zuzuordnen:
 
 > [!CAUTION]
 > Das folgende Beispiel veranschaulicht, wie Sie die Konfiguration bearbeiten können. Stellen Sie vor dem Aktualisieren der Konfiguration sicher, dass die Parameter auf Werte festgelegt sind, die der Kubernetes-Cluster akzeptieren kann.
 
-Beispiel:
-- Min vCore = 2 -> scheduling\default\resources\requests\cpu
-- Max vCore = 4 -> scheduling\default\resources\limits\cpu
-- Min memory = 512Mb -> scheduling\default\resources\requests\cpu
-- Max Memory = 1Gb ->  scheduling\default\resources\limits\cpu
+Angenommen, Sie möchten die folgenden Einstellungen für die Koordinator- und Workerrollen auf die folgenden Werte festlegen:
+- Mindestanzahl virtueller Kerne = `2` 
+- Maximale Anzahl virtueller Kerne = `4`
+- Mindestgröße des Arbeitsspeichers = `512Mb`
+- Maximale Größe des Arbeitsspeichers = `1Gb` 
 
-Wenn Sie mit dem vi-Editor nicht vertraut sind, finden Sie [hier](https://www.computerhope.com/unix/uvi.htm) eine Beschreibung der Befehle, die Sie möglicherweise benötigen:
+Dazu würden Sie die Definition Ihrer Servergruppe so festlegen, dass sie der folgenden Konfiguration entspricht:
+
+```json
+  scheduling:
+    default:
+      resources:
+        requests:
+          memory: 256Mi
+    roles:
+      coordinator:
+        resources:
+          limits:
+            cpu: "4"
+            memory: 1Gi
+          requests:
+            cpu: "2"
+            memory: 512Mi
+      worker:
+        resources:
+          limits:
+            cpu: "4"
+            memory: 1Gi
+          requests:
+            cpu: "2"
+            memory: 512Mi
+```
+
+Wenn Sie mit dem `vi`-Editor nicht vertraut sind, finden Sie [hier](https://www.computerhope.com/unix/uvi.htm) eine Beschreibung der Befehle, die Sie möglicherweise benötigen:
 - Bearbeitungsmodus: `i`
 - Navigation mit Pfeiltasten
-- _stop editing (Bearbeitung beenden): `esc`
-- _exit without saving (ohne Speichern beenden): `:qa!`
-- _exit after saving (nach Speichern beenden): `:qw!`
+- Beenden der Bearbeitung: `esc`
+- Beenden ohne Speichern: `:qa!`
+- Beenden nach Speichern: `:qw!`
 
-
-## <a name="show-the-scaled-up-definition-of-the-server-group"></a>Anzeigen der hochskalierten Definition der Servergruppe
-
-Führen Sie den Befehl erneut aus, um die Definition der Servergruppe anzuzeigen, und vergewissern Sie sich, dass sie wie gewünscht festgelegt ist:
-
-### <a name="cli-with-azdata"></a>CLI mit azdata
-
-```console
-azdata arc postgres server show -n <the name of your server group>
-```
-### <a name="cli-with-kubectl"></a>CLI mit kubectl
-
-```console
-kubectl describe postgresql-12/<server group name>  [-n <namespace name>]
-```
-> [!NOTE]
-> Wenn Sie eine Servergruppe mit PostgreSQL-Version 11 erstellt haben, führen Sie stattdessen `kubectl describe postgresql-11/<server group name>` aus.
-
-
-Die neue Definition der Servergruppe wird angezeigt:
-
-```console
-"scheduling": {
-      "default": {
-        "resources": {
-          "limits": {
-            "cpu": "4",
-            "memory": "1024Mi"
-          },
-          "requests": {
-            "cpu": "2",
-            "memory": "512Mi"
-          }
-        }
-      }
-    },
-```
-
-## <a name="scale-down-the-server-group"></a>Herunterskalieren der Servergruppe
-
-Zum horizontalen Herunterskalieren der Servergruppe führen Sie denselben Befehl aus, legen jedoch für die Einstellungen, die Sie zentral herunterskalieren möchten, geringere Werte fest. Um die Anforderungen und/oder Grenzwerte zu entfernen, geben Sie die entsprechenden Werte als leere Zeichenfolge an.
 
 ## <a name="reset-to-default-values"></a>Zurücksetzen auf Standardwerte
-Zum Zurücksetzen der Parameter für Kerne/Arbeitsspeichergrenzwerte/Anforderungen auf ihre Standardwerte bearbeiten Sie sie und übergeben eine leere Zeichenfolge anstelle eines tatsächlichen Werts. Wenn Sie beispielsweise den Parameter für den Kerngrenzwert (cl) zurücksetzen möchten, führen Sie die folgenden Befehle aus:
-- auf einem Linux-Client:
+Zum Zurücksetzen der Parameter für Kerne/Arbeitsspeichergrenzwerte/Anforderungen auf ihre Standardwerte bearbeiten Sie sie und übergeben eine leere Zeichenfolge anstelle eines tatsächlichen Werts. Wenn Sie beispielsweise den Parameter für den Kerngrenzwert zurücksetzen möchten, führen Sie die folgenden Befehle aus:
 
 ```console
-    azdata arc postgres server edit -n <servergroup name> -cl ""
+azdata arc postgres server edit -n postgres01 --cores-request coordinator='',worker=''
+azdata arc postgres server edit -n postgres01 --cores-limit coordinator='',worker=''
 ```
 
-- auf einem Windows-Client: 
- 
+oder 
 ```console
-    azdata arc postgres server edit -n <servergroup name> -cl '""'
+azdata arc postgres server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker=''
 ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

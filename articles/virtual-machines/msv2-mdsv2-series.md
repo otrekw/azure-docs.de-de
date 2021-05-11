@@ -1,5 +1,5 @@
 ---
-title: Msv2-Serie (Vorschau) – Azure Virtual Machines
+title: Msv2/Mdsv2-Serie mit mittlerem Arbeitsspeicher – Azure Virtual Machines
 description: Hier finden Sie Spezifikationen für VMs der Msv2-Serie.
 author: ayshakeen
 ms.service: virtual-machines
@@ -7,34 +7,23 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: a7f4757467523837423d52998eb6b8204090e627
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 696125f75e41d39b4f9aaa1ff852b03eff589fb0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562570"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204241"
 ---
-# <a name="msv2-and-mdsv2-series-medium-memory-preview"></a>Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher (Vorschau)
-
-
-> [!IMPORTANT]
-> Wenn Sie an der Vorschau teilnehmen möchten, füllen Sie das Formular unter **https://aka.ms/Mv2MedMemoryPreview** aus.  
+# <a name="msv2-and-mdsv2-series-medium-memory"></a>Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher
 
 Die VM-Serien „Msv2“ und „Mdsv2“ mit mittlerem Arbeitsspeicher verfügen über einen Intel® Xeon® Platinum 8280-Prozessor (Cascade Lake) mit einer Kernbasisfrequenz von 2,7 GHz und einer maximalen Einzelkern-Turbofrequenz von 4,0 GHz. Mit diesen VMs erhalten Kunden größere Flexibilität durch Optionen mit lokalen Datenträgern und ohne Datenträger. Außerdem erhalten Kunden Zugriff auf eine Reihe neuer isolierter VM-Größen mit mehr CPU-Leistung und Arbeitsspeicher, die bis zu 192 vCPUs mit 4 TiB Arbeitsspeicher reichen. 
 
-
-VMs der Msv2- und Mdsv2-Serie sind nur als Generation 2 erhältlich und unterstützen eine Teilmenge der unterstützten Images der Generation 2. Unten finden Sie eine vollständige Liste der unterstützten Images für die Msv2- und Mdsv2-Serie.  
-
-- Windows Server 2019 oder höher
-- SUSE Linux Enterprise Server 12 SP4 oder höher, oder SUSE Linux Enterprise Server 15 SP1 oder höher
-- Red Hat Enterprise Linux 7.6, 7.7, 8.1 oder höher 
-- Oracle Enterprise Linux 7.7 oder höher
-
-Weitere Informationen zu VMs der Generation 2 finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./generation-2.md).
+> [!NOTE]
+> Msv2- und Mdsv2-VMs mit mittlerem Arbeitsspeicher sind nur als Generation 2 erhältlich. Weitere Informationen zu VMs der Generation 2 finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./generation-2.md).
 
 
 
-[Storage Premium:](premium-storage-performance.md) Unterstützt<br>
+[Storage Premium](premium-storage-performance.md): Unterstützt<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>

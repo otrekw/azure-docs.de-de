@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: ae94ac9719a827a2d1af258398988f0972e61b3a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d1cc59fe2eb3a2938dc776fd62e6645aec62bb1f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305513"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291794"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -65,6 +65,10 @@ Datenverkehr zwischen NFSv3- oder SMB3-Clients und Azure NetApp Files-Volumes is
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Kann der Speicher im Ruhezustand verschlüsselt werden?
 
 Alle Azure NetApp Files-Volumes werden mit dem FIPS 140-2-Standard verschlüsselt. Alle Schlüssel werden vom Azure NetApp Files-Dienst verwaltet. 
+
+### <a name="is-azure-netapp-files-cross-region-replication-traffic-encrypted"></a>Wird der Datenverkehr bei der regionsübergreifenden Replikation in Azure NetApp Files verschlüsselt?
+
+Alle zwischen dem Quellvolume und dem Zielvolume übertragenen Daten werden bei der regionsübergreifenden Replikation in Azure NetApp Files per TLS 1.2 AES-256 GCM-Verschlüsselung verschlüsselt. Diese Verschlüsselung erfolgt zusätzlich zur [Azure MACSec-Verschlüsselung](../security/fundamentals/encryption-overview.md), die standardmäßig für den gesamten Azure-Datenverkehr aktiviert ist, auch für den Datenverkehr bei der regionsübergreifenden Replikation in Azure NetApp Files. 
 
 ### <a name="how-are-encryption-keys-managed"></a>Wie werden Verschlüsselungsschlüssel verwaltet? 
 
@@ -133,10 +137,6 @@ Informationen zu den Sicherheitsoptionen für NFSv4.1, den getesteten Leistungsv
 Damit beim Starten oder Neustarten einer VM automatisch ein NFS-Volume eingebunden wird, fügen Sie einen Eintrag für die Datei `/etc/fstab` zum Host hinzu. 
 
 Weitere Informationen finden Sie unter [Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md).  
-
-### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>Warum zeigt der DF-Befehl auf dem NFS-Client die Größe des bereitgestellten Volumes nicht an?
-
-Die in DF gemeldete Volumegröße ist die maximale Größe, auf die das Azure NetApp Files-Volume vergrößert werden kann. Die Größe des Azure NetApp Files-Volumes im DF-Befehl spiegelt nicht das Kontingent oder die Größe des Volumes wieder.  Sie können die Größe und das Kontingent des Azure NetApp Files-Volumes über das Azure-Portal oder die API abrufen.
 
 ### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Welche NFS-Version wird von Azure NetApp Files unterstützt?
 
@@ -214,23 +214,65 @@ Die Verwaltung von `SMB Shares`, `Sessions` und `Open Files` über die Computerv
 
 Verwenden Sie den Link **JSON-Ansicht** im Bereich mit der Volumeübersicht, und suchen Sie unter **properties** -> **mountTargets** nach dem Bezeichner **startIp**.
 
+### <a name="can-an-azure-netapp-files-smb-share-act-as-an-dfs-namespace-dfs-n-root"></a>Kann eine Azure NetApp Files-SMB-Freigabe als Stamm für den DFS-Namespace (DFS-N) fungieren?
+
+Nein. Azure NetApp Files-SMB-Freigaben können jedoch als Ordnerziel für den DFS-Namespace (DFS-N) dienen.   
+Um eine Azure NetApp Files-SMB-Freigabe als DFS-N-Ordnerziel zu verwenden, geben Sie den UNC-Einbindungspfad (Universal Naming Convention) der Azure NetApp Files-SMB-Freigabe entsprechend den Schritten zum [Hinzufügen von Ordnerzielen](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target) an.  
+
+### <a name="smb-encryption-faqs"></a>Häufig gestellte Fragen zur SMB-Verschlüsselung
+
+In diesem Abschnitt werden häufig gestellte Fragen zur SMB-Verschlüsselung (SMB 3.0 und SMB 3.1.1) beantwortet.
+
+#### <a name="what-is-smb-encryption"></a>Was ist die SMB-Verschlüsselung?  
+
+[SMB-Verschlüsselung](/windows-server/storage/file-server/smb-security) sorgt für End-to-End-Verschlüsselung von SMB-Daten und schützt Daten vor Lauschangriffen in nicht vertrauenswürdigen Netzwerken. Die SMB-Verschlüsselung wird ab SMB 3.0 unterstützt. 
+
+#### <a name="how-does-smb-encryption-work"></a>Wie funktioniert die SMB-Verschlüsselung?
+
+Wenn eine Anforderung an den Speicher gesendet wird, verschlüsselt der Client die Anforderung, und der Speicher entschlüsselt sie wieder. Antworten werden analog dazu vom Server verschlüsselt und vom Client entschlüsselt.
+
+#### <a name="which-clients-support-smb-encryption"></a>Welche Clients unterstützen die SMB-Verschlüsselung?
+
+Die SMB-Verschlüsselung wird von Windows 10, Windows 2012 und höheren Versionen unterstützt.
+
+#### <a name="with-azure-netapp-files-at-what-layer-is-smb-encryption-enabled"></a>Auf welcher Ebene wird die SMB-Verschlüsselung mit Azure NetApp Files aktiviert?  
+
+Die SMB-Verschlüsselung wird auf Freigabeebene aktiviert.
+
+#### <a name="what-forms-of-smb-encryption-are-used-by-azure-netapp-files"></a>Welche Arten der SMB-Verschlüsselung werden von Azure NetApp Files verwendet?
+
+Von SMB 3.0 wird der AES-CCM-Algorithmus eingesetzt, von SMB 3.1.1 der AES-GCM-Algorithmus.
+
+#### <a name="is-smb-encryption-required"></a>Ist die SMB-Verschlüsselung erforderlich?
+
+Die SMB-Verschlüsselung ist nicht erforderlich. Sie wird daher nur für eine bestimmte Freigabe aktiviert, wenn der Benutzer dies bei Azure NetApp Files anfordert. Azure NetApp Files-Freigaben werden niemals für das Internet verfügbar gemacht. Der Zugriff ist nur innerhalb eines bestimmten VNET per VPN oder ExpressRoute möglich. Dadurch sind Azure NetApp Files-Freigaben von Natur aus sicher. Die Entscheidung, die SMB-Verschlüsselung zu aktivieren, liegt allein beim Benutzer. Beachten Sie die zu erwartenden Leistungseinbußen, bevor Sie dieses Feature aktivieren.
+
+#### <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a><a name="smb_encryption_impact"></a>Welche Auswirkungen hat die SMB-Verschlüsselung auf Clientworkloads?
+
+Die SMB-Verschlüsselung wirkt sich zwar sowohl auf den Client (CPU-Mehraufwand für das Verschlüsseln und Entschlüsseln von Nachrichten) als auch auf den Speicher (Verringerung des Durchsatzes) aus, in der folgenden Tabelle werden allerdings nur die Auswirkungen auf den Speicher veranschaulicht. Es empfiehlt sich, die verschlüsselungsbedingten Leistungsauswirkungen mit Ihren eigenen Anwendungen zu testen, bevor Sie Workloads in der Produktion bereitstellen.
+
+|     E/A-Profil       |     Auswirkung        |
+|-  |-  |
+|     Lese- und Schreibworkloads      |     10 bis 15 Prozent        |
+|     Metadatenintensiv        |     5 %    |
+
 ## <a name="capacity-management-faqs"></a>Häufig gestellte Fragen zur Kapazitätsverwaltung
 
 ### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Wie überwache ich die Nutzung für den Kapazitätspool und das Volume von Azure NetApp Files? 
 
 Azure NetApp Files stellt Nutzungsmetriken für Kapazitätspool und Volume bereit. Sie können auch Azure Monitor verwenden, um die Nutzung für Azure NetApp Files zu überwachen. Ausführliche Informationen finden Sie unter [Metriken für Azure NetApp Files](azure-netapp-files-metrics.md). 
 
-### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Kann ich Azure NetApp Files über den Azure Storage-Explorer verwalten?
-
-Nein. Azure NetApp Files wird vom Azure Storage-Explorer nicht unterstützt.
-
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Wie bestimme ich, ob ein Verzeichnis dabei ist, sein Größenlimit zu erreichen?
 
-Sie können den Befehl `stat` von einem Client aus verwenden, um festzustellen, ob sich ein Verzeichnis der maximal zulässigen Größe für Verzeichnismetadaten (320 MB) nähert.   
+Sie können den Befehl `stat` von einem Client aus verwenden, um festzustellen, ob sich ein Verzeichnis der [maximal zulässigen Größe](azure-netapp-files-resource-limits.md#resource-limits) für Verzeichnismetadaten (320 MB) nähert.
+Informationen zum Grenzwert und zur Berechnung finden Sie unter [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md#directory-limit). 
 
-Bei einem Verzeichnis mit 320 MB beträgt die Anzahl der Blöcke 655.360, wobei jeder Block eine Größe von 512 Bytes hat.  (Berechnung: 320 · 1.024 · 1.024 : 512.) Daraus ergibt sich für ein Verzeichnis mit 320 MB ein Maximum von etwa vier Millionen Dateien. Die tatsächliche maximale Anzahl von Dateien ist jedoch ggf. geringer. Dies hängt von Faktoren wie etwa der Anzahl von Dateien mit ASCII-fremden Zeichen im Verzeichnis ab. Verwenden Sie daher den Befehl `stat` wie folgt, um zu ermitteln, ob der Grenzwert Ihres Verzeichnisses bald erreicht ist.  
+<!-- 
+You can use the `stat` command from a client to see whether a directory is approaching the maximum size limit for directory metadata (320 MB).   
 
-Beispiele:
+For a 320-MB directory, the number of blocks is 655360, with each block size being 512 bytes.  (That is, 320x1024x1024/512.)  This number translates to approximately 4 million files maximum for a 320-MB directory. However, the actual number of maximum files might be lower, depending on factors such as the number of files containing non-ASCII characters in the directory. As such, you should use the `stat` command as follows to determine whether your directory is approaching its limit.  
+
+Examples:
 
 ```console
 [makam@cycrh6rtp07 ~]$ stat bin
@@ -245,7 +287,28 @@ Size: 12288           Blocks: 24         IO Block: 65536  directory
 File: 'tmp1'
 Size: 4096            Blocks: 8          IO Block: 65536  directory
 ```
+--> 
 
+### <a name="does-snapshot-space-count-towards-the-usable--provisioned-capacity-of-a-volume"></a>Zählt der Speicherplatz für Momentaufnahmen zur nutzbaren oder bereitgestellten Kapazität eines Volumes?
+
+Ja, die für Momentaufnahmen [genutzte Kapazität](azure-netapp-files-cost-model.md#capacity-consumption-of-snapshots) zählt zum bereitgestellten Speicherplatz im Volume. Wenn das Volume vollständig ausgelastet ist, kommen folgende Maßnahmen in Frage:
+
+* [Ändern Sie die Größe des Volumes](azure-netapp-files-resize-capacity-pools-or-volumes.md).
+* [Entfernen Sie ältere Momentaufnahmen](azure-netapp-files-manage-snapshots.md#delete-snapshots), um Speicherplatz auf dem Hostingvolume freizugeben. 
+
+### <a name="does-azure-netapp-files-support-auto-grow-for-volumes-or-capacity-pools"></a>Wird in Azure NetApp Files die automatische Vergrößerung für Volumes oder Kapazitätspools unterstützt?
+
+Nein, Volumes und Kapazitätspools werden in Azure NetApp Files beim Auffüllen nicht automatisch vergrößert. Weitere Informationen finden Sie unter [Kostenmodell für Azure NetApp Files](azure-netapp-files-cost-model.md).   
+
+Sie können das von der Community unterstützte [Logic Apps-Tool ANFCapacityManager](https://github.com/ANFTechTeam/ANFCapacityManager) verwenden, um kapazitätsbasierte Warnungsregeln zu verwalten. Das Tool kann die Volumegröße automatisch erhöhen, um zu verhindern, dass auf Ihren Volumes kein Speicherplatz mehr verfügbar ist.
+
+### <a name="does-the-destination-volume-of-a-replication-count-towards-hard-volume-quota"></a>Wird das Zielvolume einer Replikation auf das feste Volumekontingent angerechnet?  
+
+Nein, das Zielvolume einer Replikation wird nicht auf das feste Volumekontingent angerechnet.
+
+### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Kann ich Azure NetApp Files über den Azure Storage-Explorer verwalten?
+
+Nein. Azure NetApp Files wird vom Azure Storage-Explorer nicht unterstützt.
 
 ## <a name="data-migration-and-protection-faqs"></a>Häufig gestellte Fragen zu Datenmigration und -schutz
 
@@ -266,6 +329,8 @@ Für die Datenmigration aus einer lokalen Umgebung nach Azure NetApp Files gelte
 ### <a name="how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region"></a>Wie erstelle ich eine Kopie eines Azure NetApp Files-Volumes in einer anderen Azure-Region?
     
 Azure NetApp Files stellt NFS- und SMB-Volumes bereit.  Sie können jedes dateibasierte Kopiertool zum Replizieren von Daten zwischen Azure-Regionen verwenden. 
+
+Mit der Funktion zur [regionsübergreifenden Replikation](cross-region-replication-introduction.md) können Sie Daten asynchron aus einem Azure NetApp Files-Volume (Quelle) in einer Region in ein anderes Azure NetApp Files-Volume (Ziel) in einer anderen Region replizieren.  Außerdem können Sie [unter Verwendung einer Momentaufnahme eines vorhandenen Volumes ein neues Volume erstellen](azure-netapp-files-manage-snapshots.md#restore-a-snapshot-to-a-new-volume).
 
 NetApp bietet eine SaaS-basierte Lösung: [NetApp Cloud Sync](https://cloud.netapp.com/cloud-sync-service).  Die Lösung ermöglicht es Ihnen, NFS- oder SMB-Daten in Azure NetApp Files-NFS-Exporte oder SMB-Dateifreigaben zu replizieren. 
 
@@ -294,6 +359,10 @@ Sie können NFS-Volumes von Azure NetApp Files auf Windows-VMs oder Linux-VMs vo
 ### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Welche Regionen werden für die Verwendung von NFS- oder SMB-Volumes von Azure NetApp Files mit Azure VMware Solution (AVS) unterstützt?
 
 Die Verwendung von NFS- oder SMB-Volumes von Azure NetApp Files mit AVS wird in den folgenden Regionen unterstützt: „USA, Osten“, „USA, Westen“, „Europa, Westen“ und „Australien, Osten“.
+
+### <a name="does-azure-netapp-files-work-with-azure-policy"></a>Kann Azure NetApp Files mit Azure Policy verwendet werden?
+
+Ja. Azure NetApp Files ist ein Erstanbieterdienst. Er entspricht vollständig den Standards für Azure-Ressourcenanbieter. Somit kann Azure NetApp Files über *benutzerdefinierte Richtliniendefinitionen* in Azure Policy integriert werden. Informationen zum Implementieren von benutzerdefinierten Richtlinien für Azure NetApp Files finden Sie in der Microsoft Tech Community unter [Azure Policy now available for Azure NetApp Files](https://techcommunity.microsoft.com/t5/azure/azure-policy-now-available-for-azure-netapp-files/m-p/2282258) (Azure Policy jetzt für Azure NetApp Files verfügbar). 
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

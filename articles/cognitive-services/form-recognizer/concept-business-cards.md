@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 5211c1263af599eb5fd09ad276545c725ce5c867
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7fb5eeb90a26d85b3e56706e0c2b32ceadc8d11
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466989"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330888"
 ---
-# <a name="form-recognizer-prebuilt-business-cards-model"></a>Vordefiniertes Visitenkartenmodell der Formularerkennung 
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>Vordefiniertes Visitenkartenmodell der Formularerkennung
 
-Mit der Azure-Formularerkennung können Kontaktinformationen aus Visitenkarten mithilfe des vordefinierten Modells für Visitenkarten analysiert und extrahiert werden. Hierbei werden die leistungsstarken Funktionen der optischen Zeichenerkennung (Optical Character Recognition, OCR) mit unserem Modell zur Visitenkartenerfassung kombiniert, um die wichtigsten Informationen auf Visitenkarten zu extrahieren (in englischer Sprache). Dabei werden persönliche Kontaktinformationen, der Firmenname, die Position und weitere Details extrahiert. Die vordefinierte Visitenkarten-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar. 
+Mit der Azure-Formularerkennung können Kontaktinformationen aus Visitenkarten mithilfe des vordefinierten Modells für Visitenkarten analysiert und extrahiert werden. Hierbei werden die leistungsstarken Funktionen der optischen Zeichenerkennung (Optical Character Recognition, OCR) mit unserem Modell zur Visitenkartenerfassung kombiniert, um die wichtigsten Informationen auf Visitenkarten zu extrahieren (in englischer Sprache). Dabei werden persönliche Kontaktinformationen, der Firmenname, die Position und weitere Details extrahiert. Die vordefinierte Visitenkarten-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar.
 
 ## <a name="what-does-the-business-card-service-do"></a>Wozu wird der Dienst für Visitenkarten eingesetzt?
 
@@ -27,32 +27,40 @@ Die vorgefertigte Visitenkarten-API extrahiert wichtige Felder von Visitenkarten
 
 ![FOTT- und JSON-Ausgabe mit Contoso-Logo](./media/business-card-example.jpg)
 
-
-
 ### <a name="fields-extracted"></a>Extrahierte Felder:
 
-|Name| type | BESCHREIBUNG | Text | 
+|Name| type | BESCHREIBUNG | Text |
 |:-----|:----|:----|:----|
 | ContactNames | Array von Objekten | Aus der Visitenkarte extrahierter Name des Kontakts | [{ "FirstName": "John", "LastName": "Doe" }] |
-| FirstName | Zeichenfolge | Vorname des Kontakts | „John“ | 
-| LastName | Zeichenfolge | Nachname des Kontakts |     „Doe“ | 
-| CompanyNames | array of strings | Aus der Visitenkarte extrahierter Unternehmensname | ["Contoso"] | 
-| Departments | array of strings | Abteilung oder Organisation des Kontakts | ["R&D"] | 
-| JobTitles | array of strings | Aufgeführte Position des Kontakts | ["Software Engineer"] | 
-| E-Mails | array of strings | Aus der Visitenkarte extrahierte E-Mail-Adresse des Kontakts | ["johndoe@contoso.com"] | 
-| Websites | array of strings | Aus der Visitenkarte extrahierte Website | ["https://www.contoso.com"] | 
-| Adressen | array of strings | Aus der Visitenkarte extrahierte Adresse | ["123 Main Street, Redmond, WA 98052"] | 
+| FirstName | Zeichenfolge | Vorname des Kontakts | „John“ |
+| LastName | Zeichenfolge | Nachname des Kontakts |     „Doe“ |
+| CompanyNames | array of strings | Aus der Visitenkarte extrahierter Unternehmensname | ["Contoso"] |
+| Departments | array of strings | Abteilung oder Organisation des Kontakts | ["R&D"] |
+| JobTitles | array of strings | Aufgeführte Position des Kontakts | ["Software Engineer"] |
+| E-Mails | array of strings | Aus der Visitenkarte extrahierte E-Mail-Adresse des Kontakts | ["johndoe@contoso.com"] |
+| Websites | array of strings | Aus der Visitenkarte extrahierte Website | ["https://www.contoso.com"] |
+| Adressen | array of strings | Aus der Visitenkarte extrahierte Adresse | ["123 Main Street, Redmond, WA 98052"] |
 | MobilePhones | Array aus Telefonnummern | Aus der Visitenkarte extrahierte Mobiltelefonnummer | ["+19876543210"] |
 | Faxnummern | Array aus Telefonnummern | Aus der Visitenkarte extrahierte Faxnummer | ["+19876543211"] |
 | WorkPhones | Array aus Telefonnummern | Aus der Visitenkarte extrahierte geschäftliche Telefonnummer | ["+19876543231"] |
 | OtherPhones     | Array aus Telefonnummern | Aus der Visitenkarte extrahierte weitere Telefonnummern | ["+19876543233"] |
 
 
-Darüber hinaus kann die Visitenkarten-API auch den gesamten erkannten Text auf der Visitenkarte zurückgeben. Diese OCR-Ausgabe ist in der JSON-Antwort enthalten.  
+Darüber hinaus kann die Visitenkarten-API auch den gesamten erkannten Text auf der Visitenkarte zurückgeben. Diese OCR-Ausgabe ist in der JSON-Antwort enthalten.
 
-### <a name="input-requirements"></a>Eingabeanforderungen 
+### <a name="input-requirements"></a>Eingabeanforderungen
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
+
+## <a name="supported-locales"></a>Unterstützte Gebietsschemas
+
+**Vordefinierte Visitenkarten v2.1-preview.3** (Vorschauversion) unterstützen die folgenden Gebietsschemas:
+
+* **de-de**
+* **en-au**
+* **en-ca**
+* **en-gb**
+* **en-in**
 
 ## <a name="the-analyze-business-card-operation"></a>Der Vorgang zur Analyse der Visitenkarte
 
@@ -79,7 +87,7 @@ Wenn im Feld **status** der Wert **succeeded** angezeigt wird, enthält die JSON
 Die Antwort auf den Vorgang zum Abrufen des Ergebnisses der Visitenkartenanalyse ist die strukturierte Darstellung der Visitenkarte mit allen extrahierten Informationen.  Hier finden Sie eine [Beispieldatei für eine Visitenkarte](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-english.jpg) und deren strukturierte Ausgabe ([Beispiel für eine Visitenkartenausgabe](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json)).
 
 Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
-* Der Knoten `"readResults"` enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert. 
+* Der Knoten `"readResults"` enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert.
 * Der Knoten `"documentResults"` enthält die visitenkartenspezifischen Werte, die vom Modell erkannt wurden. Er enthält nützliche Kontaktinformationen wie Vorname, Nachname, Firmenname usw.
 
 ```json
@@ -96,7 +104,7 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-                   "lines": 
+                   "lines":
                              {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
@@ -115,7 +123,7 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
                                 "boundingBox": [
                                     419,
                             ]
-    
+
             }
         ],
         "documentResults": [
@@ -384,14 +392,14 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
 
 Befolgen Sie den [Schnellstart](./QuickStarts/client-library.md), um den Vorgang zum Extrahieren von Visitenkartendaten mit Python und der REST-API zu implementieren.
 
-## <a name="customer-scenarios"></a>Kundenszenarien  
+## <a name="customer-scenarios"></a>Kundenszenarien
 
 Die Daten, die mit der Visitenkarten-API extrahiert werden, können für eine Vielzahl von Aufgaben eingesetzt werden. Durch das Extrahieren dieser Kontaktinformationen wird der Zeitaufwand für Benutzer mit Kundenkontakt deutlich reduziert. Im Folgenden finden Sie einige Beispiele dafür, was unsere Kunden mit der Visitenkarten-API erreicht haben:
 
-* Extrahieren der Kontaktinformationen von Visitenkarten und schnelles Erstellen von Telefonkontakten. 
-* Integration in CRM, um Kontakte automatisch anhand von Visitenkartenbildern zu erstellen. 
-* Verfolgen von Vertriebsleads.  
-* Extrahieren von Kontaktinformationen von vorhandenen Visitenkartenbildern als Massenvorgang. 
+* Extrahieren der Kontaktinformationen von Visitenkarten und schnelles Erstellen von Telefonkontakten.
+* Integration in CRM, um Kontakte automatisch anhand von Visitenkartenbildern zu erstellen.
+* Verfolgen von Vertriebsleads.
+* Extrahieren von Kontaktinformationen von vorhandenen Visitenkartenbildern als Massenvorgang.
 
 Die Visitenkarten-API unterstützt zudem die [AI Builder-Funktion zur Verarbeitung von Visitenkarten](/ai-builder/prebuilt-business-card).
 
