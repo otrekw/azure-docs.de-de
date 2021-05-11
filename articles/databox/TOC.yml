@@ -75,7 +75,7 @@
             - name: Sicherheit
               items:
                 - name: Sicherheitsbaseline
-                  href: security-baseline.md
+                  href: /security/benchmark/azure/baselines/databox-security-baseline?context=/azure/databox/context/context
                 - name: Sicherheitskontrollen von Azure Policy
                   href: ./security-controls-policy.md
                 - name: Sicherheit überprüfen
@@ -109,7 +109,7 @@
                 - name: Zu SharePoint Online
                   href: /sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=%2fazure%2fdatabox%2fcontext%2fcontext
                 - name: Zu Azure-Dateisynchronisierung
-                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                  href: ../storage/file-sync/file-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: Aus HDFS-Speicher
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: Zu Azure Backup
@@ -232,20 +232,20 @@
                 - name: Zu SharePoint Online
                   href: data-box-heavy-migrate-spo.md
                 - name: Zu Azure-Dateisynchronisierung
-                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                  href: ../storage/file-sync/file-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: Aus HDFS-Speicher
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: Verweis
       items:
         - name: Azure CLI
-          href: /cli/azure/ext/databox/databox
+          href: /cli/azure/databox
         - name: Azure PowerShell
           href: /powershell/module/az.databox
         - name: .NET-APIs
           href: /dotnet/api/overview/azure/databox/management
         - name: .NET SDK
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DataBox/'
-        - name: Azure Policy-Integrationen
+        - name: Integrierte Azure Policy-Aktionen
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
     - name: Ressourcen

@@ -212,6 +212,8 @@
               href: backup-azure-system-state.md
         - name: Restore
           items:
+            - name: Übersicht
+              href: about-restore-microsoft-azure-recovery-services.md
             - name: Wiederherstellen von Dateien aus Azure für Windows Server
               href: backup-azure-restore-windows-server.md
             - name: Wiederherstellen aller Dateien auf einem Volume
@@ -240,10 +242,18 @@
       items:
         - name: Übersicht
           href: blob-backup-overview.md
-        - name: Konfigurieren und Verwalten
-          href: blob-backup-configure-manage.md
-        - name: Restore
-          href: blob-restore.md
+        - name: Über das Azure-Portal
+          items:
+            - name: Konfigurieren und Verwalten
+              href: blob-backup-configure-manage.md
+            - name: Restore
+              href: blob-restore.md
+        - name: Mit PowerShell
+          items:
+            - name: Backup
+              href: backup-blobs-storage-account-ps.md
+            - name: Restore
+              href: restore-blobs-storage-account-ps.md
     - name: Sichern von Azure-Dateifreigaben
       items:
         - name: Übersicht
@@ -460,7 +470,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Sicherheitsbaseline
-          href: /security/benchmark/azure/baselines/backup-security-baseline
+          href: /security/benchmark/azure/baselines/backup-security-baseline?toc=/azure/backup/toc.json
     - name: Zugriffsebene
       items:
         - name: Archivzugriffsebene
@@ -512,7 +522,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Kompatibilität
+    - name: Compliance
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

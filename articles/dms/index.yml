@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: a154a3a6579ff3414502b16dcfe6d60748840a6c
-  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+  ms.openlocfilehash: 51fbcc1431b77aca794df3b7142e239f9f09ed8f
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102183299"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108766401"
 landingContent:
 - title: Informationen zu Azure Database Migration Service
   linkLists:
@@ -120,23 +120,15 @@ landingContent:
     - text: Leitfaden zur Datenbankmigration
       url: https://datamigration.microsoft.com/
     - text: Datenmigrations-Assistent
-      url: /sql/dma/dma-overview?view=sql-server-2017
+      url: /sql/dma/dma-overview
     - text: SQL Server Migration Assistant
-      url: /sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+      url: /sql/ssma/sql-server-migration-assistant
     - text: Assistent für Datenbankexperimente
-      url: /sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+      url: /sql/dea/database-experimentation-assistant-overview
     - text: Data Access Migration Toolkit
       url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
 - title: Migration von Oracle zu Azure
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Onlinemigration zu Azure Database for PostgreSQL (Einzelserver)
-      url: tutorial-oracle-azure-postgresql-online.md
-  - linkListType: reference
-    links:
-    - text: 'Bekannte Probleme: Onlinemigration zu Azure Database for PostgreSQL (Einzelserver)'
-      url: known-issues-oracle-azure-postgresql-online.md
   - linkListType: video
     links:
     - text: Migration zu einer Einzeldatenbank in SQL-Datenbank

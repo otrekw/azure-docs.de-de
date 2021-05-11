@@ -59,7 +59,7 @@
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/container-instances-security-baseline?toc=/azure/container-instances/TOC.json
         - name: Sicherheitshinweise
           href: container-instances-image-security.md
     - name: Virtuelle Netzwerke
@@ -136,7 +136,7 @@
           href: container-instances-troubleshooting.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/container
     - name: REST
       href: /rest/api/container-instances
@@ -156,6 +156,9 @@
       href: container-instances-reference-yaml.md
     - name: Connector
       href: /connectors/aci
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

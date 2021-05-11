@@ -68,7 +68,7 @@
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/devtest-labs-security-baseline?toc=/azure/devtest-labs/TOC.json
 - name: Anleitungen
   items:
     - name: Konfigurieren eines Labs
