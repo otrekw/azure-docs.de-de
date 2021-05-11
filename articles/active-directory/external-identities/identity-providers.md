@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdef929b27c636b3908dd7a88eb93adc2382a53f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 184ef66a0175c301497fa536c86eddc169995698
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687741"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315361"
 ---
 # <a name="identity-providers-for-external-identities"></a>Identitätsanbieter für externe Identitäten
 
@@ -32,7 +32,7 @@ Zusätzlich zu Azure AD-Konten bietet External Identities verschiedene Identit�
 
 - **Google**: Mit dem Google-Verbund können externe Benutzer Ihre Einladungen einlösen, indem sie sich mit ihren eigenen Gmail-Konten bei Ihren Apps anmelden. Der Google-Verbund kann auch in Ihren Benutzerflows mit Self-Service-Registrierung verwendet werden. Weitere Informationen finden Sie unter [Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer](google-federation.md).
    > [!IMPORTANT]
-   > **Am 4. Januar 2021** wird Google [die Unterstützung für die WebView-Anmeldung einstellen](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Wenn Sie einen Google-Verbund oder die Self-Service-Registrierung mit Gmail verwenden, sollten Sie [Ihre nativen Branchenanwendungen auf Kompatibilität testen](google-federation.md#deprecation-of-webview-sign-in-support).
+   > **Ab der zweiten Hälfte des Jahres 2021** [stellt Google die Unterstützung für die Anmeldung in der Webansicht ein](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie die Google Föderation für B2B-Einladungen oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden, oder wenn Sie die Selbstbedienungsanmeldung mit Google Mail verwenden, können sich Google Gmail-Benutzer nicht anmelden, wenn Ihre Apps die Benutzer anhand einer eingebetteten Webanzeige authentifizieren. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
 
 - **Facebook**: Beim Entwickeln einer App können Sie die Self-Service-Registrierung konfigurieren und den Facebook-Verbund aktivieren, damit sich Benutzer mit ihren eigenen Facebook-Konten für Ihre App registrieren können. Facebook kann nur für Benutzerflows mit Self-Service-Registrierung verwendet werden und steht nicht als Anmeldeoption zur Verfügung, wenn Benutzer Ihre Einladungen einlösen. Weitere Informationen finden Sie unter [Hinzufügen von Facebook als Identitätsanbieter für externe Identitäten](facebook-federation.md).
 

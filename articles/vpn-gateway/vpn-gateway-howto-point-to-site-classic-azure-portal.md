@@ -1,19 +1,19 @@
 ---
 title: 'Herstellen einer P2S-Verbindung zwischen einem Computer und einem virtuellen Netzwerk unter Verwendung der Zertifikatauthentifizierung: Azure-Portal – klassisch'
 titleSuffix: Azure VPN Gateway
-description: Erstellen Sie eine klassische P2S-VPN-Gatewayverbindung (Point-to-Site) mit dem Azure-Portal.
+description: Erfahren Sie, wie Sie eine klassische Point-to-Site-VPN-Gateway-Verbindung mit dem Azure-Portal erstellen.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 42b0945de55775f55f20cefdeb547cb5d6492c06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90f2c6dd8d82b40f6a12195c2ce89b28ca4e9305
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94657073"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228908"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurieren einer Point-to-Site-Verbindung unter Verwendung der Zertifikatauthentifizierung (klassisch)
 

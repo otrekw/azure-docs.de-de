@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97c07f010fad6c12424b1684d4ff5e12c7cac3ce
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3b785a8853e37e1a24e3eb9bd4fd13c49be39069
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553242"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229394"
 ---
 # <a name="operating-system-upgrade"></a>Betriebssystemupgrade
 In diesem Dokument werden die Details zu Betriebssystemupgrades für SAP HANA (große Instanzen) beschrieben.
@@ -153,4 +153,4 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zur SKU von Typ I für Betriebssystemsicherungen finden Sie unter [Sicherung und Wiederherstellung](hana-overview-high-availability-disaster-recovery.md).
-- Unter [OS-Sicherung und -Wiederherstellung für Typ-II-SKUs](os-backup-type-ii-skus.md) finden Sie weitere Informationen zu SKU-Klassen des Typs II.
+- Informationen zum [OS Backup](./large-instance-os-backup.md) für HLI.

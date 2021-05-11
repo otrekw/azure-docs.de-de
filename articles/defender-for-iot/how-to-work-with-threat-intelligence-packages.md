@@ -3,12 +3,12 @@ title: Aktualisieren von Threat Intelligence-Daten
 description: Das Threat Intelligence-Datenpaket wird mit jeder neuen Defender für IoT-Version oder bei Bedarf zwischen den Releases bereitgestellt.
 ms.date: 04/17/2021
 ms.topic: how-to
-ms.openlocfilehash: bb38d0a2486bda336d6881ec6f4c5d680906c973
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: f5282002f406c62341f5d104c14aa1cbe9ad32dd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750462"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208885"
 ---
 # <a name="threat-intelligence-research-and-packages"></a>Forschung und Pakete zur Bedrohungsanalyse #
 ## <a name="overview"></a>Übersicht ##
@@ -32,7 +32,9 @@ Diese Intelligenz bietet kontextbezogene Informationen, um die Analysen der Micr
 
 ## <a name="when-are-packages-delivered"></a>Wann werden Pakete übermittelt? ##
 
-Threat Intelligence-Pakete werden ungefähr einmal im Monat oder bei Bedarf häufiger bereitgestellt. Ankündigungen zu neuen Paketen sind unter https://techcommunity.microsoft.com/t5/azure-defender-for-iot/bd-p/AzureDefenderIoT verfügbar. 
+Threat Intelligence-Pakete werden ungefähr einmal im Monat oder bei Bedarf häufiger bereitgestellt. Ankündigungen zu neuen Paketen sind unter https://techcommunity.microsoft.com/t5/azure-defender-for-iot/bd-p/AzureDefenderIoT verfügbar.
+
+Sie können das aktuellste gelieferte Paket vom **Threat Intelligence-Aktualisierungsbereich** der Seite **Aktualisierungen** auf dem Defender for IoT-Portal abrufen.  
 
 ## <a name="update-threat-intelligence-packages-to-your-sensors"></a>Aktualisieren von Threat Intelligence-Paketen auf Ihren Sensoren ##
 
@@ -124,7 +126,7 @@ So überprüfen Sie Threat Intelligence-Informationen
 1. Überprüfen Sie den **Threat Intelligence-Modus**. *Automatisch* gibt an, dass neu verfügbare Pakete automatisch auf Sensoren installiert werden, sobald sie von Defender für IoT veröffentlicht werden. *Manuell* gibt an, dass Sie neu verfügbare Pakete bei Bedarf direkt an Sensoren pushen können.
 1. Überprüfen Sie den **Status des Threat Intelligence-Updates**. Die folgenden Status werden möglicherweise angezeigt:
 
-- Fehler
+- Fehlgeschlagen
 - Vorgang wird ausgeführt
 - Update verfügbar
 - OK,

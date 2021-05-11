@@ -2,33 +2,30 @@
 title: 'Konzepte: API Management'
 description: Hier erfahren Sie, wie auf virtuellen AVS-Computern (Azure VMware Solution) ausgeführte APIs durch API Management geschützt werden.
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.openlocfilehash: 958cc52c48d1121a69dca2fc901289ad1ed671cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/28/2021
+ms.openlocfilehash: aba60f255019701722b38036c87bcb592a0a4410
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94541962"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204529"
 ---
-# <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>API Management zum Veröffentlichen und Schützen von APIs, die auf virtuellen Azure VMware Solution-basierten Computern ausgeführt werden
+# <a name="publish-and-protect-apis-running-on-azure-vmware-solution-vms"></a>Veröffentlichen und Schützen von APIs, die auf Azure VMware Solution-VMs ausgeführt werden
 
-Microsoft Azure [API Management](https://azure.microsoft.com/services/api-management/) ermöglicht Ihnen die sichere Veröffentlichung für interne oder externe Consumer.  Die Azure Virtual Network-Integration für die Veröffentlichung von APIs, die in Azure VMware Solution-Workloads ausgeführt werden, steht nur in der Developer- und in der Premium-SKU zur Verfügung.  Diese beiden SKUs ermöglichen eine sichere Konnektivität zwischen dem API Management-Dienst und dem Back-End. 
+Microsoft Azure [API Management](https://azure.microsoft.com/services/api-management/) ermöglicht Ihnen die sichere Veröffentlichung für externe oder interne Consumer.  Die Azure Virtual Network-Integration für die Veröffentlichung von APIs, die in Azure VMware Solution-Workloads ausgeführt werden, steht nur in der Developer- (Entwicklung) und in der Premium-SKU (Produktion) zur Verfügung.  Beide SKUs ermöglichen die Konnektivität zwischen dem API Management-Dienst und dem Back-End. 
 
->[!NOTE]
->Die Developer-SKU ist für Entwicklungs- und Testzwecke vorgesehen, die Premium-SKU für Produktionsbereitstellungen.
-
-Die API Management-Konfiguration ist für Back-End-Dienste identisch, die auf Azure VMware Solution-VMs (virtuelle Computer) und lokal ausgeführt werden. Von API Management wird bei beiden Bereitstellungen die virtuelle IP-Adresse (VIP) des Lastenausgleichs als Back-End-Endpunkt konfiguriert, wenn der Back-End-Server hinter einem NSX-Lastenausgleich in Azure VMware Solution platziert wird. 
+Die API Management-Konfiguration ist für Back-End-Dienste identisch, die auf Azure VMware Solution-VMs (virtuelle Computer) und lokal ausgeführt werden. Von API Management wird bei beiden Bereitstellungen die virtuelle IP-Adresse des Lastenausgleichs als Back-End-Endpunkt konfiguriert, wenn der Back-End-Server hinter einem NSX-Lastenausgleich in Azure VMware Solution platziert wird. 
 
 
 ## <a name="external-deployment"></a>Externe Bereitstellung
 
-Bei einer externen Bereitstellung werden APIs veröffentlicht, die von externen Benutzern über einen öffentlichen Endpunkt verwendet werden. Entwickler und DevOps-Engineers können APIs über das Azure-Portal oder mithilfe von PowerShell sowie über das API Management-Entwicklerportal verwalten.
+Bei einer externen Bereitstellung werden APIs veröffentlicht, die von externen Benutzern über einen öffentlichen Endpunkt verwendet werden. Entwickler und DevOps-Techniker können APIs über das Azure-Portal oder mithilfe von PowerShell sowie über das API Management-Entwicklerportal verwalten.
 
 Das Diagramm für die externe Bereitstellung zeigt den gesamten Prozess und die beteiligten Akteure (ganz oben). Zu den Akteuren zählen:
 
 - **Administrator(en):** Das Administrator- oder DevOps-Team, das Azure VMware Solution über das Azure-Portal sowie über Automatisierungsmechanismen wie PowerShell oder Azure DevOps verwaltet.
 
-- **Benutzer:**  Die Consumer der verfügbar gemachten APIs (sowohl Benutzer als auch Dienste).
+- **Benutzer:** Die Consumer der verfügbar gemachten APIs (sowohl Benutzer als auch Dienste).
 
 Die Daten durchlaufen die API Management-Instanz, von der die in das virtuelle Hub-Netzwerk eingebundenen Back-End-Dienste abstrahiert werden. Der Datenverkehr wird vom ExpressRoute-Gateway an den Kanal „ExpressRoute Global Reach“ weitergeleitet und erreicht einen NSX-Lastenausgleich, durch den der eingehende Datenverkehr auf die verschiedenen Back-End-Dienstinstanzen verteilt wird.
 
@@ -39,9 +36,9 @@ API Management verfügt über eine öffentliche Azure-API, und es empfiehlt sic
 
 ## <a name="internal-deployment"></a>Interne Bereitstellung
 
-Bei einer internen Bereitstellung werden APIs veröffentlicht, die von internen Benutzern oder Systemen genutzt werden. DevOps-Team und API-Entwickler verwenden die gleichen Verwaltungstools und das gleiche Entwicklerportal wie bei der externen Bereitstellung.
+Bei einer internen Bereitstellung werden APIs veröffentlicht, die von internen Benutzern oder Systemen genutzt werden. DevOps-Teams und API-Entwickler verwenden die gleichen Verwaltungstools und das gleiche Entwicklerportal wie bei der externen Bereitstellung.
 
-Interne Bereitstellungen können [mit Azure Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md) durchgeführt werden, um einen öffentlichen und sicheren Endpunkt für die API zu erstellen.  Die Funktionen des Gateways werden zum Erstellen einer Hybridbereitstellung verwendet, die verschiedene Szenarios ermöglicht.  
+Verwenden Sie [Azure Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md) für interne Bereitstellungen, um einen öffentlichen und sicheren Endpunkt für die API zu erstellen.  Die Funktionen des Gateways werden zum Erstellen einer Hybridbereitstellung verwendet, die verschiedene Szenarios ermöglicht.  
 
 * Verwenden der gleichen API Management-Ressource für die Nutzung durch interne und externe Consumer
 

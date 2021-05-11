@@ -3,12 +3,12 @@ title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
 ms.date: 04/26/2021
-ms.openlocfilehash: fd148c88eaace70caa237ce8cb694d0167db9338
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: b99422d48e3c5fe633f8fb34366d78d941fef303
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064975"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320563"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -178,7 +178,7 @@ Führen Sie die folgenden Schritte aus, um den Schutz zu beenden und die Sicheru
        >[!NOTE]
        >Die PIN ist nur fünf Minuten lang gültig.
     1. Fügen Sie die PIN in der Verwaltungskonsole ein, und klicken Sie anschließend auf **Senden**.
-       ![Sicherheits-PIN eingeben](./media/backup-azure-delete-vault/enter-security-pin.png)
+       ![Geben Sie den Sicherheits-PIN zum Löschen von Sicherungsartikeln aus der MABS- und DPM-Verwaltungskonsole ein](./media/backup-azure-delete-vault/enter-security-pin.png)
 
 4. Wenn Sie zuvor im Dialogfeld **Schutz beenden** die Option **Onlinespeicher löschen** ausgewählt haben, ignorieren Sie diesen Schritt. Klicken Sie mit der rechten Maustaste auf die inaktive Schutzgruppe, und wählen Sie **Inaktiven Schutz entfernen** aus.
 
@@ -204,7 +204,7 @@ Führen Sie die folgenden Schritte aus, um den Schutz zu beenden und die Sicheru
        >[!NOTE]
        >Die PIN ist nur fünf Minuten lang gültig.
     1. Fügen Sie die PIN in der Verwaltungskonsole ein, und klicken Sie anschließend auf **Senden**.
-       ![Sicherheits-PIN eingeben](./media/backup-azure-delete-vault/enter-security-pin.png)
+       ![Geben Sie den Sicherheits-PIN zum Löschen von Sicherungsartikeln aus der MABS- und DPM-Verwaltungskonsole ein](./media/backup-azure-delete-vault/enter-security-pin.png)
  
      Der Status des geschützten Mitglieds ändert sich in *Inaktives Replikat verfügbar*.
 

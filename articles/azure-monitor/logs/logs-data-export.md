@@ -2,16 +2,16 @@
 title: Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 description: Der Log Analytics-Datenexport ermöglicht es Ihnen, Daten ausgewählter Tabellen aus Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren.
 ms.topic: conceptual
-ms.custom: references_regions, devx-track-azurecli
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 6ff856c526beaf999d03b816f6f20e3eaf765106
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 4f3e5a22b9692823f1e9542fb3a6d9ad42fe79cf
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987995"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321139"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -44,7 +44,8 @@ Mit dem Datenexport im Log Analytics-Arbeitsbereich werden kontinuierlich Daten 
   - Brasilien, Südosten
   - Norwegen, Osten
   - Vereinigte Arabische Emirate, Norden
-- Sie können zwei Exportregeln in einem Arbeitsbereich erstellen: eine Regel für den Event Hub und eine Regel für das Speicherkonto.
+- In Ihrem Arbeitsbereich können bis zu 10 Regeln aktiviert sein. Zusätzliche Regeln über 10 können im Deaktivierungszustand erstellt werden. 
+- Ein Ziel muss für alle Exportregeln in Ihrem Arbeitsbereich eindeutig sein.
 - Das Zielspeicherkonto oder der Ziel-Event Hub muss sich in derselben Region wie der Log Analytics-Arbeitsbereich befinden.
 - Die Namen der zu exportierenden Tabellen dürfen bei einem Speicherkonto nicht länger als 60 Zeichen und bei einem Event Hub nicht länger als 47 Zeichen sein. Tabellen mit längeren Namen werden nicht exportiert.
 - Die Unterstützung zum Anfügen von Blobs für Azure Data Lake Storage ist jetzt in der [eingeschränkten Public Preview](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/) verfügbar.
@@ -75,16 +76,16 @@ Durch den Log Analytics-Datenexport können Anfügeblobs in unveränderliche Spe
 Daten werden, sobald sie Azure Monitor erreichen, nahezu in Echtzeit an Event Hub gesendet. Für jeden Datentyp, den Sie exportieren, wird ein Event Hub mit dem Namen *am-* erstellt, gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Event Hub mit dem Namen *am-SecurityEvent* gesendet. Wenn für die exportierten Daten ein bestimmter Event Hub als Ziel verwendet werden soll oder Sie eine Tabelle mit einem Namen haben, der den Grenzwert von 47 Zeichen überschreitet, können Sie den Namen Ihrer eigenen Event Hub-Instanz angeben und alle Daten für definierte Tabelle in diese exportieren.
 
 > [!IMPORTANT]
-> Die [Anzahl unterstützter Event Hubs pro Namespace ist 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). Wenn Sie mehr als zehn Tabellen exportieren, müssen Sie einen eigenen Event Hub-Namen angeben, damit alle Ihre Tabellen zu diesem Event Hub exportiert werden.
+> Die [Anzahl der unterstützten Event Hubs pro 'Basic'- und 'Standard'-Namensraumstufe beträgt 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). Wenn Sie mehr als 10 Tabellen exportieren, teilen Sie die Tabellen entweder auf mehrere Exportregeln zu verschiedenen Event-Hub-Namensräumen auf oder geben Sie den Event-Hub-Namen in der Exportregel an und exportieren alle Tabellen zu diesem Event-Hub.
 
 Überlegungen:
-1. Die Event Hub SKU „Basic“ unterstützt ein niedrigeres [Limit](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) der Ereignisgröße, und einige Protokolle in Ihrem Arbeitsbereich können diese überschreiten und gelöscht werden. Es wird empfohlen, das Event Hub „Standard“ oder „Dedicated“ als Exportziel zu verwenden.
+1. Die "Basic" Event-Hub-Stufe unterstützt eine geringere [Ereignisgröße](../../event-hubs/event-hubs-quotas.md) und einige Protokolle in Ihrem Arbeitsbereich können diese überschreiten und verworfen werden. Es wird empfohlen, das Event Hub „Standard“ oder „Dedicated“ als Exportziel zu verwenden.
 2. Die Menge der exportierten Daten nimmt im Laufe der Zeit häufig zu, und die Event Hub-Skalierung muss erhöht werden, um größere Übertragungsraten zu bewältigen und Drosselungsszenarien und Datenlatenz zu vermeiden. Verwenden Sie die Funktion „Automatische Vergrößerung“ von Event Hubs, um die Anzahl von Durchsatzeinheiten automatisch hochzuskalieren und so den Nutzungsanforderungen gerecht zu werden. Weitere Informationen finden Sie unter [Automatisches Hochskalieren von Azure Event Hubs-Durchsatzeinheiten](../../event-hubs/event-hubs-auto-inflate.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Im Folgenden sind die Voraussetzungen aufgeführt, die vor der Konfiguration des Log Analytics-Datenexports erfüllt sein müssen.
 
-- Das Speicherkonto bzw. der Event Hub muss bereits erstellt worden sein, und zwar in derselben Region wie der Log Analytics-Arbeitsbereich. Wenn Sie Ihre Daten in andere Speicherkonten replizieren müssen, können Sie eine der [Azure Storage Redundanzoptionen](../../storage/common/storage-redundancy.md) verwenden.  
+- Die Ziele müssen vor der Konfiguration der Exportregel erstellt werden und sollten sich in demselben Bereich befinden wie Ihr Log Analytics-Arbeitsbereich. Wenn Sie Ihre Daten in andere Speicherkonten replizieren müssen, können Sie eine der [Azure Storage Redundanzoptionen](../../storage/common/storage-redundancy.md) verwenden.  
 - Beim Speicherkonto muss es sich um StorageV1 oder StorageV2 handeln. Klassischer Speicher wird nicht unterstützt  
 - Wenn Sie Ihr Speicherkonto so konfiguriert haben, dass der Zugriff von ausgewählten Netzwerken aus möglich ist, müssen Sie eine Ausnahme in den Einstellungen Ihres Speicherkontos hinzufügen, damit Azure Monitor in den Speicher schreiben darf.
 
@@ -114,7 +115,12 @@ Wenn Sie Ihr Speicherkonto so konfiguriert haben, dass der Zugriff von ausgewäh
 [![„Firewalls und virtuelle Netzwerke“ unter Ihrem Speicherkonto](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 ### <a name="create-or-update-data-export-rule"></a>Erstellen oder Aktualisieren der Datenexportregel
-Eine Datenexportregel definiert die Tabellen, für die Daten exportiert werden, und das Ziel. Sie können derzeit für jedes Ziel eine einzelne Regel erstellen.
+Eine Datenexportregel definiert die Tabellen, für die Daten exportiert werden, und das Ziel. Sie können 10 aktivierte Regeln in Ihrem Arbeitsbereich haben, wenn sich jede zusätzliche Regel über 10 im deaktivierten Zustand befinden muss. Ein Ziel muss für alle Exportregeln in Ihrem Arbeitsbereich eindeutig sein.
+
+> [!NOTE]
+> Der Datenexport sendet Protokolle an Ziele, deren Eigentümer Sie sind, während diese einige Einschränkungen aufweisen: die [Skalierbarkeit von Speicherkonten](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts), [Event Hub-Namespace-Kontingent](../../event-hubs/event-hubs-quotas.md). Es wird empfohlen, dass Sie Ihre Ziele auf Drosselung überwachen und Maßnahmen anwenden, wenn sie sich dem Ziel-Grenzwert nähern. Beispiel: 
+> - Stellen Sie die automatische Vergrößerungsfunktion im Event-Hub ein, um die Anzahl der TUs (Durchsatzeinheiten) automatisch zu vergrößern und zu erhöhen. Sie können weitere TUs anfordern, wenn die automatische Erhöhung maximal ist
+> - Aufteilen von Tabellen auf mehrere Exportregeln, wobei jede auf verschiedene Ziele verteilt ist
 
 Die Exportregel sollte Tabellen enthalten, die in Ihrem Arbeitsbereich enthalten sind. Führen Sie diese Abfrage für eine Liste verfügbarer Tabellen in Ihrem Arbeitsbereich aus.
 

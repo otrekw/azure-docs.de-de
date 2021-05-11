@@ -4,14 +4,14 @@ description: In diesem Thema wird der Umgang mit dem XML-Format in Azure Data Fa
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 04/29/2021
 ms.author: jingwang
-ms.openlocfilehash: a4082e1e00ecb1d3b0157fcc35616704eaab0aae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a7e56040a58d87cab34fdba4ebbac77757b2226
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386355"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289564"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>XML-Format in Azure Data Factory
 
@@ -91,7 +91,7 @@ Unterstützte **XML-Leseeinstellungen** unter `formatSettings`:
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
-Bei Zuordnungsdatenflüssen können Sie in den folgenden Datenspeichern das XML-Format lesen und schreiben: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties). Sie können auf XML-Dateien mit einem XML-Dataset oder einem [Inlinedataset](data-flow-source.md#inline-datasets) verweisen.
+In Zordnungsdatenflüssen können Sie das XML-Format in den folgenden Datenspeichern lesen: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties), und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties). Sie können auf XML-Dateien mit einem XML-Dataset oder einem [Inlinedataset](data-flow-source.md#inline-datasets) verweisen.
 
 ### <a name="source-properties"></a>Quelleigenschaften
 

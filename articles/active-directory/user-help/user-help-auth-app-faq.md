@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/28/2021
+ms.date: 04/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8ddc02075d2cdeba4a4fa83a2475ec20c3f18d6e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5f7db6b360769b7a3c2e3ffdafe66f94c2582aa
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103418078"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108178302"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -26,6 +26,30 @@ In diesem Artikel werden häufig gestellte Fragen zur Microsoft Authenticator-Ap
 Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die empfohlene App für Azure AD Multi-Factor Authentication. Die Microsoft Authenticator-App ist für [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) und [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458) verfügbar.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+### <a name="permission-to-access-your-location"></a>Berechtigung für den Zugriff auf Ihren Standort
+
+**F:** Ich wurde in einer Eingabeaufforderung dazu aufgefordert, der App die Berechtigung für den Zugriff auf meinen Standort zu erteilen. Warum wird dies angezeigt?
+
+**A:** Von Microsoft Authenticator wird eine Eingabeaufforderung angezeigt, in der der Zugriff auf Ihren Standort angefordert wird, wenn Ihr IT-Administrator eine Richtlinie erstellt hat, gemäß der Sie vor dem Zugriff auf bestimmte Ressourcen Ihren GPS-Standort freigeben müssen. Sie müssen Ihren Standort einmal pro Stunde freigeben, um sicherzustellen, dass Sie sich weiterhin in einem Land befinden, in dem Sie auf die Ressource zugreifen dürfen.
+
+Unter iOS empfiehlt Microsoft, der App immer den Zugriff auf den Standort zu erlauben. Befolgen Sie die Anweisungen für iOS, um diese Berechtigung zu erteilen. Die einzelnen Berechtigungsebenen bedeuten Folgendes für Sie:
+
+- **Allow while using the app** (Bei Verwendung der App zulassen): Wenn Sie diese Option auswählen, werden Sie zur Auswahl von zwei weiteren Optionen aufgefordert.
+- **Always allow (recommended)** (Immer zulassen (empfohlen)): Während des Zugriffs auf die geschützte Ressource wird in den nächsten 24 Stunden Ihr Standort automatisch einmal pro Stunde vom Gerät freigegeben, sodass Sie die Freigabe nicht manuell stündlich genehmigen müssen.
+- **Keep only while using** (Nur bei Verwendung zulassen): Während des Zugriffs auf die geschützte Ressource müssen Sie die Anforderung stündlich manuell genehmigen.
+- **Einmal erlauben:** Sie müssen stündlich während des Zugriffs auf die Ressource oder beim nächsten Zugriff auf die Ressource erneut die Berechtigung erteilen. Sie müssen zu den Einstellungen wechseln und die Berechtigung manuell aktivieren. 
+- **Don‘t allow** (Nicht zulassen): Bei Auswahl dieser Option wird Ihr Zugriff auf die Ressource gesperrt. Wenn Sie Ihre Meinung ändern, müssen Sie zu den Einstellungen wechseln und die Berechtigung manuell aktivieren.
+
+Unter Android empfiehlt Microsoft, der App immer den Zugriff auf den Standort zu erlauben. Befolgen Sie die Anweisungen für Android, um diese Berechtigung zu erteilen. Die einzelnen Berechtigungsebenen bedeuten Folgendes für Sie:
+
+- **Allow all the time (recommended)** (Immer zulassen (empfohlen)): Während des Zugriffs auf die geschützte Ressource wird in den nächsten 24 Stunden Ihr Standort automatisch einmal pro Stunde vom Gerät freigegeben, sodass Sie die Freigabe nicht manuell stündlich genehmigen müssen.
+- **Allow only while using the app** (Nur bei Verwendung der App zulassen): Während des Zugriffs auf die geschützte Ressource müssen Sie die Anforderung stündlich manuell genehmigen.
+- **Deny and don’t ask again** (Ablehnen und nicht mehr fragen): Bei Auswahl dieser Option wird Ihr Zugriff auf die Ressource gesperrt.
+
+**F:** Wie werden meine Standortinformationen verwendet und gespeichert?
+
+**A:** Die Authenticator-App erfasst Ihre GPS-Informationen, um zu bestimmen, in welchem Land Sie sich befinden. Der Name des Landes und die Standortkoordinaten werden zurück an das System gesendet, um zu ermitteln, ob Sie auf die geschützte Ressource zugreifen dürfen. Der Name des Landes wird gespeichert und an Ihren IT-Administrator gemeldet. Ihre tatsächlichen Koordinaten werden jedoch nie auf Microsoft-Servern gespeichert.
 
 ### <a name="registering-a-device"></a>Registrieren eines Geräts
 

@@ -3,18 +3,18 @@ title: Rendern von benutzerdefinierten Daten auf einer Rasterkarte | Microsoft A
 description: Hier erfahren Sie, wie Sie Ortsmarken, Bezeichnungen und geometrische Formen zu einer Rasterkarte hinzufügen. Informieren Sie sich zu diesem Zweck über die Verwendung des statischen Bilddiensts in Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/26/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5c70835c11bafb3fd06645ba51099b33d1eb6149
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80919473d5d3f4b34ce8d621d82bf4bc458b8b58
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96906079"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326847"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 
@@ -35,7 +35,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Verfahren müssen Sie zunäch
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Rendern von Ortsmarken mit Bezeichnungen und benutzerdefinierten Bildern
 
 > [!Note]
-> Für die in diesem Abschnitt erläuterte Vorgehensweise ist ein Azure Maps-Konto in den Tarifen „S0“ oder „S1“ erforderlich.
+> Der Vorgang in diesem Abschnitt erfordert ein Azure Maps-Konto in der Preisstufe Gen 1 oder Gen 2.
 
 Azure Maps-Konten im Tarif „S0“ unterstützen nur eine einzelne Instanz des Parameters `pins`. Sie können bis zu fünf Ortsmarken rendern, die in der URL-Anforderung mit einem benutzerdefinierten Bild festgelegt werden.
 
@@ -60,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um Ortsmarken mit Bezeichnungen und eine
 ## <a name="get-data-from-azure-maps-data-storage"></a>Abrufen von Daten aus dem Azure Maps-Datenspeicher
 
 > [!Note]
-> Für die in diesem Abschnitt erläuterte Vorgehensweise ist ein Azure Maps-Konto im Tarif „S1“ erforderlich.
+> Der Vorgang in diesem Abschnitt erfordert ein Azure Maps-Konto in der Preisstufe Gen 1 (S1) oder Gen 2.
 
 Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe der [Datenupload-API](/rest/api/maps/data/uploadpreview) abrufen. Gehen Sie folgendermaßen vor, um die Daten zu Pfaden und Ortsmarken hochladen.
 
@@ -169,7 +169,7 @@ Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe
 ## <a name="render-a-polygon-with-color-and-opacity"></a>Rendern eines Polygons mit Farbe und Transparenz
 
 > [!Note]
-> Für die in diesem Abschnitt erläuterte Vorgehensweise ist ein Azure Maps-Konto im Tarif „S1“ erforderlich.
+> Der Vorgang in diesem Abschnitt erfordert ein Azure Maps-Konto in der Preisstufe Gen 1 (S1) oder Gen 2.
 
 
 Sie können das Aussehen eines Polygons ändern, indem Sie Stilmodifikatoren mit dem Parameter [path](/rest/api/maps/render/getmapimage#uri-parameters) verwenden.
@@ -189,7 +189,7 @@ Sie können das Aussehen eines Polygons ändern, indem Sie Stilmodifikatoren mit
 ## <a name="render-a-circle-and-pushpins-with-custom-labels"></a>Rendern von Kreisen und Ortsmarken mit benutzerdefinierten Bezeichnungen
 
 > [!Note]
-> Für die in diesem Abschnitt erläuterte Vorgehensweise ist ein Azure Maps-Konto im Tarif „S1“ erforderlich.
+> Der Vorgang in diesem Abschnitt erfordert ein Azure Maps-Konto in der Preisstufe Gen 1 (S1) oder Gen 2.
 
 
 Sie können die Darstellung der Ortsmarken durch Hinzufügen von Stilmodifizierern ändern. Sie können Ortsmarken und ihre Bezeichnungen beispielsweise vergrößern oder verkleinern, indem Sie den „Skalierungsstil“-Modifizierer `sc` verwenden. Dieser Modifizierer akzeptiert Werte über 0 (null). Der Wert 1 ist die Standardskalierung. Werte größer als 1 machen die Ortsmarken größer, und Werte kleiner als 1 machen sie kleiner. Weitere Informationen zu den Modifizierern finden Sie unter [static image service path parameters (Parameter für statische Bilddienstpfade)](/rest/api/maps/render/getmapimage#uri-parameters).

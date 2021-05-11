@@ -8,18 +8,18 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: troubleshooting
 ms.service: azure-communication-services
-ms.openlocfilehash: b9ed71a8fc9346ecd454eba98dcbb3b13186eba2
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 5fe3760d5baeae4b532e0af7e28b090d170e0945
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276041"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331302"
 ---
 # <a name="known-issues-azure-communication-services-calling-sdks"></a>Bekannte Probleme: Azure Communication Services Calling SDKs
 Dieser Artikel enthält Informationen zu Einschränkungen und bekannten Problemen im Zusammenhang mit Azure Communication Services Calling SDKs.
 
 > [!IMPORTANT]
-> Es gibt mehrere Faktoren, die sich auf die Qualität von Anrufen auswirken können. Weitere Informationen zur Netzwerkkonfiguration und zu bewährten Testmethoden für Communication Services finden Sie in der **[Dokumentation zu Netzwerkanforderungen](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements)** .
+> Es gibt mehrere Faktoren, die sich auf die Qualität von Anrufen auswirken können. Weitere Informationen zur Netzwerkkonfiguration und zu bewährten Testmethoden für Communication Services finden Sie in der **[Dokumentation zu Netzwerkanforderungen](./voice-video-calling/network-requirements.md)** .
 
 
 ## <a name="javascript-sdk"></a>JavaScript SDK
@@ -38,7 +38,7 @@ Wenn der Benutzer vor der Aktualisierung Videodaten übertragen hat, behält die
 
 
 ### <a name="its-not-possible-to-render-multiple-previews-from-multiple-devices-on-web"></a>Es ist nicht möglich, mehrere Vorschauen von mehreren Geräten im Web zu rendern.
-Dies ist eine bekannte Einschränkung. Weitere Informationen finden Sie in der [Übersicht über das Calling SDK](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features).
+Dies ist eine bekannte Einschränkung. Weitere Informationen finden Sie in der [Übersicht über das Calling SDK](./voice-video-calling/calling-sdk-features.md).
 
 ### <a name="enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados"></a>In Safari können keine Geräte aufgezählt werden, wenn die Anwendung unter iOS oder iPadOS ausgeführt wird.
 
@@ -110,4 +110,16 @@ Wenn Zugriff auf Geräte erteilt wird, werden die Geräteberechtigungen nach ein
 <br/>Betriebssystem: iOS
 
 ###  <a name="sometimes-it-takes-a-long-time-to-render-remote-participant-videos"></a>Das Rendern der Videostreams von Remoteteilnehmern dauert manchmal sehr lange.
-Während eines laufenden Gruppenanrufs sendet _Benutzer A_ Videodaten, und _Benutzer B_ tritt dem Anruf bei. Manchmal wird Benutzer B das Video von Benutzer A nicht angezeigt, oder das Video von Benutzer A wird erst nach einer langen Verzögerung gerendert. Dieses Problem kann auf eine Netzwerkumgebung zurückzuführen sein, die weiter konfiguriert werden muss. Informationen zur Netzwerkkonfiguration finden Sie in der [Dokumentation zu Netzwerkanforderungen](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements).
+Während eines laufenden Gruppenanrufs sendet _Benutzer A_ Videodaten, und _Benutzer B_ tritt dem Anruf bei. Manchmal wird Benutzer B das Video von Benutzer A nicht angezeigt, oder das Video von Benutzer A wird erst nach einer langen Verzögerung gerendert. Dieses Problem kann auf eine Netzwerkumgebung zurückzuführen sein, die weiter konfiguriert werden muss. Informationen zur Netzwerkkonfiguration finden Sie in der [Dokumentation zu Netzwerkanforderungen](./voice-video-calling/network-requirements.md).
+
+### <a name="using-3rd-party-libraries-to-access-gum-during-the-call-may-result-in-audio-loss"></a>Die Verwendung von Drittanbieterbibliotheken für den Zugriff auf GUM während des Anrufs kann zu Audioverlusten führen.
+Die separate Verwendung von „getUserMedia“ innerhalb der Anwendung führt zu einem Verlust des Audiodatenstroms, da eine Drittanbieterbibliothek den Gerätezugriff von der ACS-Bibliothek übernimmt.
+Entwicklern wird empfohlen, folgende Schritte zu unternehmen:
+1. Verwenden Sie während des Anrufs keine Drittanbieterbibliotheken, die intern die GetUserMedia-API verwenden.
+2. Wenn Sie dennoch die Drittanbieterbibliothek verwenden müssen, besteht die einzige Möglichkeit zur Wiederherstellung darin, entweder das ausgewählte Gerät zu wechseln (wenn der Benutzer über mehrere verfügt) oder den Anruf neu zu starten.
+
+<br/>Browser: Safari
+<br/>Betriebssystem: iOS
+
+#### <a name="possible-causes"></a>Mögliche Ursachen
+In einigen Browsern (z. B. Safari) hat das Abrufen Ihres eigenen Datenstroms vom selben Gerät den Nebeneffekt, dass Racebedingungen eintreten. Das Abrufen von Datenströmen von anderen Geräten kann dazu führen, dass der Benutzer nicht über genügend USB-/E/A-Bandbreite verfügt und die „SourceUnavailableError“-Rate extrem steigt.  

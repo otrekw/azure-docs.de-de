@@ -3,21 +3,24 @@ title: Unterstützte integrierte Azure Maps-Kartenstile
 description: Hier erfahren Sie mehr über die von Azure Maps unterstützten integrierten Kartenstile, etwa „road“, „blank_accessible“, „satellite“, „satellite_road_labels“, „road_shaded_relief“ und „night“.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/24/2020
+ms.date: 04/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b3404c02dc159309ed1e9fcd6f9f6bb593fc7552
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aae17a1071949ea935d7094539d31e85a354da08
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896938"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326595"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>In Azure Maps unterstützte integrierte Kartenstile
 
 Azure Maps unterstützt mehrere integrierte Kartenstile, die im Folgenden beschrieben werden.
+
+>[!important]
+>Der Vorgang in diesem Abschnitt erfordert ein Azure Maps-Konto der Preisstufe Gen 1 oder Gen 2. Weitere Informationen zu den Preisstufen finden Sie unter [Wählen der korrekten Preisstufe in Azure Maps](choose-pricing-tier.md).
 
 ## <a name="road"></a>Straße
 

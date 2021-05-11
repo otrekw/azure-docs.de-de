@@ -5,22 +5,24 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 04/16/2021
+ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f5bdae17126048da153f70bf27609bcc4b92fe21
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 7f9a10aca24203b69ff38ff5fab7960681145af5
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599586"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227828"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Bekannte Probleme bei virtuellen Computern der H-Serie und der N-Serie
 
 Dieser Artikel versucht, die jüngsten häufigen Probleme und ihre Lösungen bei der Verwendung der HPC- und GPU-VMs der [H-Serie](../../sizes-hpc.md) und [N-Serie](../../sizes-gpu.md) aufzulisten.
 
-## <a name="qp0-access-restriction"></a>qp0-Zugriffseinschränkung
+## <a name="cache-topology-on-standard_hb120rs_v3"></a>Cachetopologie auf Standard_HB120rs_v3
+`lstopo` zeigt eine falsche Cachetopologie auf der VM-Größe „Standard_HB120rs_v3 VM“ an. Möglicherweise wird angezeigt, dass pro NUMA nur 32 MB L3 verfügbar sind. In der Praxis gibt es jedoch tatsächlich wie erwartet 120 MB L3 pro NUMA, da die gleichen 480 MB L3 für den gesamten virtuellen Computer verfügbar sind, wie bei den anderen HBv3-VM-Größen mit eingeschränkten Kernen. Dies ist ein kosmetischer Fehler beim Anzeigen des richtigen Werts, der sich nicht auf Workloads auswirken sollte.
 
+## <a name="qp0-access-restriction"></a>qp0-Zugriffseinschränkung
 Um Zugriffe auf Low-Level-Hardware zu verhindern, die zu Sicherheitsrisiken führen können, haben virtuelle Gastcomputer keinen Zugriff auf das Warteschlangenpaar 0. Dies ist in der Regel nur für Aktionen im Zusammenhang mit der Verwaltung der ConnectX InfiniBand NIC oder mit der Ausführung einiger InfiniBand-Diagnosen (beispielsweise „ibdiagnet“) relevant, nicht aber für Endbenutzeranwendungen.
 
 ## <a name="mofed-installation-on-ubuntu"></a>MOFED-Installation auf Ubuntu

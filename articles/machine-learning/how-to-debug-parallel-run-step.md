@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: pansav
 author: psavdekar
 ms.date: 09/23/2020
-ms.openlocfilehash: 619123cc2723fcf8e4bd80410c6b098b113d61c6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 6c486b5085ee5e3152367229944b7782f04dc854
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286316"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204457"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>Behandeln von Problemen mit „ParallelRunStep“
 
@@ -152,11 +152,11 @@ Aufgrund der verteilten Struktur von ParallelRunStep-Aufträgen gibt es Protokol
 
 Protokolle, die mit dem EntryScript-Hilfsprogramm aus dem Eingabeskript generiert wurden, sowie Druckanweisungen finden Sie in den folgenden Dateien:
 
-- `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`: Diese Dateien sind die Protokolle, die von „entry_script“ mithilfe des EntryScript-Hilfsprogramms geschrieben wurden.
+- `~/logs/user/entry_script_log/<node_id>/<process_name>.log.txt`: Diese Dateien sind die Protokolle, die von „entry_script“ mithilfe des EntryScript-Hilfsprogramms geschrieben wurden.
 
-- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: Bei diesen Dateien handelt es sich um die Protokolle von stdout (z. B. eine Pprint-Anweisung) von entry_script.
+- `~/logs/user/stdout/<node_id>/<process_name>.stdout.txt`: Bei diesen Dateien handelt es sich um die Protokolle von stdout (z. B. eine Pprint-Anweisung) von entry_script.
 
-- `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`: Diese Dateien sind die Protokolle von stderr von entry_script.
+- `~/logs/user/stderr/<node_id>/<process_name>.stderr.txt`: Diese Dateien sind die Protokolle von stderr von entry_script.
 
 Für ein präzises Verständnis von Fehlern in Ihrem Skript gibt es Folgendes:
 
@@ -168,7 +168,7 @@ Weitere Informationen zu Fehlern in Ihrem Skript finden Sie hier:
 
 Wenn Sie detailliert erfahren möchten, wie die einzelnen Knoten das Bewertungsskript ausgeführt haben, sehen Sie sich die jeweiligen Prozessprotokolle für jeden Knoten an. Die Prozessprotokolle befinden sich im Ordner `sys/node`, gruppiert nach Workerknoten:
 
-- `~/logs/sys/node/<ip_address>/<process_name>.txt`: Diese Datei enthält ausführliche Informationen zu den einzelnen Minibatches, die von einem Worker abgerufen oder abgeschlossen werden. Für jeden Minibatch umfasst diese Datei Folgendes:
+- `~/logs/sys/node/<node_id>/<process_name>.txt`: Diese Datei enthält ausführliche Informationen zu den einzelnen Minibatches, die von einem Worker abgerufen oder abgeschlossen werden. Für jeden Minibatch umfasst diese Datei Folgendes:
 
     - Die IP-Adresse und die PID des Workerprozesses. 
     - Die Gesamtzahl der Elemente, die Anzahl der erfolgreich verarbeiteten Elemente und die Anzahl der nicht erfolgreichen Elemente.
@@ -176,7 +176,7 @@ Wenn Sie detailliert erfahren möchten, wie die einzelnen Knoten das Bewertungss
 
 Sie können für jeden Knoten auch die Ergebnisse regelmäßiger Prüfungen der Ressourcennutzung anzeigen. Die Protokoll- und Setupdateien befinden sich in diesem Ordner:
 
-- `~/logs/perf`: Legen Sie `--resource_monitor_interval` fest, um das Prüfintervall in Sekunden zu ändern. Das Standardintervall ist `600` (ungefähr 10 Minuten). Um die Überwachung zu beenden, legen Sie den Wert auf `0` fest. Jeder Ordner `<ip_address>` enthält Folgendes:
+- `~/logs/perf`: Legen Sie `--resource_monitor_interval` fest, um das Prüfintervall in Sekunden zu ändern. Das Standardintervall ist `600` (ungefähr 10 Minuten). Um die Überwachung zu beenden, legen Sie den Wert auf `0` fest. Jeder Ordner `<node_id>` enthält Folgendes:
 
     - `os/`: Informationen zu allen laufenden Prozessen im Knoten. Bei einer Prüfung wird ein Betriebssystembefehl ausgeführt und das Ergebnis in einer Datei gespeichert. Unter Linux ist der Befehl `ps`. Verwenden Sie für Windows `tasklist`.
         - `%Y%m%d%H`: Der Name des Unterordners ist die Uhrzeit zur vollen Stunde.
@@ -194,14 +194,14 @@ ParallelRunStep kann mehrere Prozesse auf einem Knoten entsprechend dem process_
 from azureml_user.parallel_run import EntryScript
 
 def init():
-    """ Initialize the node."""
+    """Init once in a worker process."""
     entry_script = EntryScript()
     logger = entry_script.logger
     logger.debug("This will show up in files under logs/user on the Azure portal.")
 
 
 def run(mini_batch):
-    """ Accept and return the list back."""
+    """Call once for a mini batch. Accept and return the list back."""
     # This class is in singleton pattern and will return same instance as the one in init()
     entry_script = EntryScript()
     logger = entry_script.logger
@@ -209,6 +209,29 @@ def run(mini_batch):
     ...
 
     return mini_batch
+```
+
+### <a name="where-does-the-message-from-python-logging-sink-to"></a>In welche Senke gelangt die Nachricht von `logging` in Python?
+„ParallelRunStep“ legt einen Handler für die Stammprotokollierung fest, der die Nachricht an die Senke `logs/user/stdout/<node_id>/processNNN.stdout.txt` schickt.
+
+`logging` hat standardmäßig die Stufe `WARNING`. Standardmäßig werden niedrigere Stufen als `WARNING` nicht angezeigt, also z. B. `INFO` oder `DEBUG`.
+
+### <a name="where-is-the-message-from-subprocess-created-with-popen"></a>Wo befindet sich die Nachricht aus dem Unterprozess, der mit „Popen()“ erstellt wurde?
+Wenn weder `stdout` noch `stderr` angegeben ist, erbt ein Unterprozess die Einstellung des Workerprozesses.
+
+`stdout` schreibt in `logs/sys/node/<node_id>/processNNN.stdout.txt` und `stderr` in `logs/sys/node/<node_id>/processNNN.stderr.txt`.
+
+### <a name="how-could-i-write-to-a-file-to-show-up-in-the-portal"></a>Wie kann ich in eine Datei schreiben, die im Portal angezeigt werden soll?
+Dateien im Ordner `logs` werden ins Portal hochgeladen und dort angezeigt.
+Sie können den Ordner `logs/user/entry_script_log/<node_id>` wie unten gezeigt abrufen und ihren Dateipfad zum Schreiben zusammenstellen:
+```python
+from pathlib import Path
+def init():
+    """Init once in a worker process."""
+    entry_script = EntryScript()
+    folder = entry_script.log_dir
+
+    fil_path = Path(folder) / "<file_name>"
 ```
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Wie könnte ich eine seitliche Eingabe, z. B. eine oder mehrere Dateien mit einer Nachschlagetabelle, an alle meine Mitarbeiter weitergeben?

@@ -4,15 +4,15 @@ description: Bearbeiten, Aktualisieren, Verwalten, Hinzufügen zur Quellcodeverw
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
-ms.topic: article
+ms.topic: conceptual
 ms.custom: mvc
-ms.date: 04/29/2020
-ms.openlocfilehash: 56b74e440fcb09ab206bbb069517dd756221f809
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/23/2021
+ms.openlocfilehash: 443dd0a1172c98b67282b50659ffeb3611470413
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639555"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163767"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -241,31 +241,59 @@ Um den Status zu überprüfen und Probleme mit Logik-App-Ausführungen zu diagno
 
    ![Eingaben und Ausgaben für jeden Schritt anzeigen](./media/manage-logic-apps-with-visual-studio/view-run-history-inputs-outputs.png)
 
-## <a name="disable-or-enable-logic-app"></a>Deaktivieren oder Aktivieren der Logik-App
+<a name="disable-enable-logic-apps"></a>
 
-Ohne Ihre Logik-App zu löschen, können Sie verhindern, dass der Trigger ausgelöst wird, wenn die Auslöserbedingung das nächste Mal erfüllt ist. Das Deaktivieren Ihrer Logik-App verhindert, dass das Logic Apps-Modul zukünftige Workflowinstanzen für Ihre Logik-App erstellt und ausführt. Öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Deaktivieren** aus.
+## <a name="disable-or-enable-logic-apps"></a>Deaktivieren oder Aktivieren von Logik-Apps
+
+Um zu verhindern, dass der Trigger das nächste Mal ausgelöst wird, wenn die Triggerbedingung erfüllt ist, deaktivieren Sie Ihre Logik-App. Das Deaktivieren einer Logik-App wirkt sich wie folgt auf Workflowinstanzen aus:
+
+* Der Logic Apps-Dienst setzt alle aktiven und ausstehenden Ausführungen fort, bis sie abgeschlossen sind. Basierend auf dem Volume oder Backlog kann es einige Zeit dauern, bis dieser Prozess abgeschlossen ist.
+
+* Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
+
+* Der Trigger wird nicht ausgelöst, wenn die definierten Bedingungen beim nächsten Mal erfüllt werden.
+
+* Der Triggerstatus merkt sich den Punkt, an dem die Logik-App angehalten wurde. Wenn Sie die Logik-App erneut aktivieren, wird der Trigger für alle nicht verarbeiteten Elemente seit der letzten Ausführung ausgelöst.
+
+  Wenn Sie die Auslösung eines Triggers für nicht verarbeitete Elemente seit der letzten Ausführung verhindern möchten, löschen Sie den Triggerstatus, bevor Sie die Logik-App wieder aktivieren:
+
+  1. Bearbeiten Sie in der Logik-App einen beliebigen Teil des Workflowtriggers.
+  1. Speichern Sie die Änderungen. Durch diesen Schritt wird der aktuelle Status Ihres Triggers zurückgesetzt.
+  1. [Aktivieren Sie Ihre Logik-App wieder.](#enable-logic-apps)
+
+<a name="disable-logic-apps"></a>
+
+### <a name="disable-logic-apps"></a>Deaktivieren von Logik-Apps
+
+Öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Deaktivieren** aus.
 
 ![Deaktivieren Ihrer Logik-App im Cloud-Explorer](./media/manage-logic-apps-with-visual-studio/disable-logic-app-cloud-explorer.png)
 
-> [!NOTE]
-> Wenn Sie eine Logik-App deaktivieren, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden bis zum Ende fortgesetzt, was einige Zeit in Anspruch nehmen kann.
+<a name="enable-logic-apps"></a>
 
-Um Ihre Logik-App erneut zu aktivieren, öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie dann **Aktivieren** aus.
+### <a name="enable-logic-apps"></a>Aktivieren von Logik-Apps
+
+Öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Aktivieren** aus.
 
 ![Deaktivieren der Logik-App im Cloud-Explorer](./media/manage-logic-apps-with-visual-studio/enable-logic-app-cloud-explorer.png)
 
-## <a name="delete-your-logic-app"></a>Löschen Ihrer Logik-App
+<a name="delete-logic-apps"></a>
+
+## <a name="delete-logic-apps"></a>Löschen von Logik-Apps
+
+Das Löschen einer Logik-App wirkt sich wie folgt auf Workflowinstanzen aus:
+
+* Der Logic Apps-Dienst unterbricht alle aktiven und ausstehenden Ausführungen so gut wie möglich.
+
+  Selbst bei einer großen Menge oder einem umfangreichen Backlog werden die meisten Ausführungen abgebrochen, bevor sie abgeschlossen oder gestartet werden. Es kann jedoch einige Zeit dauern, bis der Abbruchvorgang abgeschlossen ist. In der Zwischenzeit werden möglicherweise einige Ausführungen gestartet, während die Runtime den Abbruchprozess durchläuft.
+
+* Der Logic Apps-Dienst erstellt keine neuen Workflowinstanzen und führt keine neuen Workflowinstanzen aus.
+
+* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls schlagen Aufrufe des neu erstellten Workflows mit einem `Unauthorized` Fehler fehl. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten und Workflows verwenden, welche Azure-Funktionen aufrufen.
 
 Um Ihre Logik-App aus dem Azure-Portal zu löschen, öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Löschen** aus.
 
 ![Löschen Ihrer Logik-App aus dem Azure-Portal](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
-
-> [!NOTE]
-> Wenn Sie eine Logik-App löschen, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden abgebrochen. Bei Tausenden von Ausführungen kann der Abbruch möglicherweise erhebliche Zeit in Anspruch nehmen.
-
-> [!NOTE]
-> Wenn Sie eine untergeordnete Logik-App löschen und neu erstellen, müssen Sie die übergeordnete Logik-App erneut speichern. Die neu erstellte untergeordnete App besitzt andere Metadaten.
-> Wenn Sie die übergeordnete Logik-App nach dem erneuten Erstellen der untergeordneten App nicht erneut speichern, schlagen ihre Aufrufe der untergeordneten Logik-App mit dem Fehler „Nicht autorisiert“ fehl. Dieses Verhalten gilt für über- und untergeordnete Logik-Apps, z. B. solche, die Artefakte in Integrationskonten verwenden oder Azure-Funktionen aufrufen.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
