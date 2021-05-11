@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6774e172c4e8607bfadd95f947d650afa62a984f
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 16edc850382ba9023b54eb34cebb7ebafb539161
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550421"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286670"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -125,7 +125,7 @@ Deaktivieren oder löschen Sie in Azure AD registrierte Geräte in Azure AD.
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Bereinigen veralteter Geräte im Azure-Portal  
 
-Sie können veraltete Geräte zwar im Azure-Portal bereinigen, aber es ist effizienter, für diesen Vorgang ein PowerShell-Skript zu verwenden. Verwenden Sie das aktuelle PowerShell V1-Modul, um den Zeitstempelfilter zu nutzen und vom System verwaltete Geräte herauszufiltern, z. B. Autopilot. An diesem Punkt ist die Nutzung von PowerShell V2 nicht zu empfehlen.
+Sie können veraltete Geräte zwar im Azure-Portal bereinigen, aber es ist effizienter, für diesen Vorgang ein PowerShell-Skript zu verwenden. Verwenden Sie das aktuelle PowerShell V2-Modul, um den Zeitstempelfilter zu nutzen und vom System verwaltete Geräte (z. B. Autopilot) herauszufiltern.
 
 Eine typische Routine umfasst die folgenden Schritte:
 

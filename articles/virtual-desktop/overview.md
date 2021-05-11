@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a6d98f827c39f973714441e308dcc4f2bd061c9b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 7e5c94cad817f398ae56fb1aa9cbbd1c43cd47a4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835576"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291818"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop?
 
@@ -121,10 +121,10 @@ Weitere Informationen zu URLs, die Sie für die Verwendung der Clients entsperre
 
 ## <a name="supported-virtual-machine-os-images"></a>Unterstützte Betriebssystemimages virtueller Computer
 
-Windows Virtual Desktop unterstützt die folgenden Images von x64-Betriebssystemen:
+Windows Virtual Desktop hält sich an die [Microsoft-Lebenszyklusrichtlinie](https://docs.microsoft.com/lifecycle/) und unterstützt die folgenden x64-Betriebssystemimages:
 
-* Windows 10 Enterprise mit mehreren Sitzungen, Version 1809 oder höher
-* Windows 10 Enterprise, Version 1809 oder höher (nur halbjährlicher Kanal)
+* Windows 10 Enterprise (mehrere Sitzungen)
+* Windows 10 Enterprise
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
@@ -136,10 +136,8 @@ Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab,
 
 |Betriebssystem|Azure-Imagekatalog|Manuelle VM-Bereitstellung|Integration von Azure Resource Manager-Vorlagen|Bereitstellungshost-Pools auf Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (mehrere Sitzungen), Version 2004|Ja|Ja|Ja|Ja|
-|Windows 10 Enterprise (mehrere Sitzungen), Version 1909|Ja|Ja|Ja|Ja|
-|Windows 10 Enterprise (mehrere Sitzungen), Version 1903|Ja|Ja|Nein|Nein|
-|Windows 10 Enterprise (mehrere Sitzungen), Version 1809|Ja|Ja|Nein|Nein|
+|Windows 10 Enterprise mit mehreren Sitzungen, Version 1909 oder höher|Ja|Ja|Ja|Ja|
+|Windows 10 Enterprise, Version 1909 oder höher|Ja|Ja|Ja|Ja|
 |Windows 7 Enterprise|Ja|Ja|Nein|Nein|
 |Windows Server 2019|Ja|Ja|Nein|Nein|
 |Windows Server 2016|Ja|Ja|Ja|Ja|

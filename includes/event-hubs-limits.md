@@ -10,69 +10,40 @@ Die folgenden Grenzwerte sind gängig für alle Ebenen:
 
 | Begrenzung |  Notizen | Wert |
 | --- |  --- | --- |
-| Anzahl von Event Hubs-Namespaces pro Abonnement | Service Bus-Namespaces sind in diesem Grenzwert enthalten. |100 |
-| Anzahl von Event Hubs pro Namespace | Nachfolgende Anforderungen für die Erstellung eines neuen Event Hub werden zurückgewiesen. |10 |
-| Größe eines Event Hub-Namens |- | 256 Zeichen |
+ Größe eines Event Hub-Namens |- | 256 Zeichen |
 | Größe eines Consumergruppennamens | Das Kafka-Protokoll erfordert nicht die Erstellung einer Consumergruppe. | <p>Kafka: 256 Zeichen</p><p>AMQP: 50 Zeichen |
 | Anzahl nicht epochenbezogener Empfänger pro Consumergruppe |- |5 |
 | Anzahl von Autorisierungsregeln pro Namespace | Nachfolgende Anforderungen zur Erstellung von Autorisierungsregeln werden abgelehnt.|12 |
 | Die Anzahl der Aufrufe der GetRuntimeInformation-Methode |  - | 50 pro Sekunde | 
 | Anzahl von virtuellen Netzwerken (VNETs) | - | 128 | 
 | Anzahl von IP-Konfigurationsregeln | - | 128 | 
+| Maximale Länge eines Schemagruppennamens | | 50 |  
+| Maximale Länge eines Schemanamens | | 100 |    
+| Größe in Bytes pro Schema | | 1 MB |   
+| Anzahl von Eigenschaften pro Schemagruppe | | 1024 |
+| Größe in Bytes pro Schemagruppen-Eigenschaftenschlüssel | | 256 | 
+| Größe in Bytes pro Schemagruppen-Eigenschaftenwert | | 1024 | 
 
-### <a name="basic-vs-standard-tiers"></a>Basic- und Standard-Tarif
-Die folgende Tabelle enthält die Grenzwerte, die sich für die Ebenen „Basic“ und „Standard“ unter Umständen unterscheiden: 
+### <a name="basic-vs-standard-vs-dedicated-tiers"></a>Vergleich der Tarife Basic, Standard und Dedicated (Dediziert)
+Die folgende Tabelle enthält die Grenzwerte, die sich für die Tarife „Basic“, „Standard“ und „Dedicated“ unterscheiden können. In der Tabelle steht CU für [Kapazitätseinheit](../articles/event-hubs/event-hubs-dedicated-overview.md) und TU für [Durchsatzeinheit](../articles/event-hubs/event-hubs-faq.yml#what-are-event-hubs-throughput-units-). 
 
-| Begrenzung | Notizen | Basic | Standard |
-|---|---|--|---|
-| Maximale Größe der Event Hubs-Veröffentlichung| &nbsp; | 256 KB | 1 MB |
-| Anzahl von Consumergruppen pro Event Hub | &nbsp; |1 |20 |
-| Anzahl von AMQP-Verbindungen pro Namespace | Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und der aufrufende Code empfängt eine Ausnahme. |100 |5\.000|
-| Maximale Aufbewahrungsdauer von Ereignisdaten | &nbsp; |1 Tag |1–7 Tage |
-| Maximale Durchsatzeinheiten |Bei einer Überschreitung dieses Grenzwerts werden Ihre Daten gedrosselt, und es wird die [Ausnahme „Server ausgelastet“](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) ausgelöst. Um eine höhere Anzahl von Durchsatzeinheiten für den Tarif „Standard“ anzufordern, erstellen Sie eine [Supportanfrage](../articles/azure-portal/supportability/how-to-create-azure-support-request.md). [Zusätzliche Durchsatzeinheiten](../articles/event-hubs/event-hubs-auto-inflate.md) sind für einen festgelegten Kaufpreis in 20er-Blöcken verfügbar. |20 | 20 | 
-| Anzahl von Partitionen pro Event Hub | |32 | 32 | 
+| Begrenzung | Basic | Standard | Dediziert |
+| ----- | ----- | -------- | -------- | 
+| Maximale Größe der Event Hubs-Veröffentlichung | 256 KB | 1 MB | 1 MB |
+| Anzahl von Consumergruppen pro Event Hub | 1 | 20 | Kein Limit pro CU, 1000 pro Event Hub |
+| Anzahl von AMQP-Verbindungen pro Namespace | 100 | 5\.000 | 100.000 enthalten, gleichzeitig Max. |
+| Maximale Aufbewahrungsdauer von Ereignisdaten | 1 Tag | 1–7 Tage | 90 Tage, 10 TB enthalten pro CU |
+| Maximale Anzahl von TUs oder CUs |20 TUs | 20 TUs | 20 CUs |
+| Anzahl von Partitionen pro Event Hub | 32 | 32 | 1\.024 pro Event Hub
+2000 pro CU |
+| Anzahl von Namespaces pro Abonnement | 100 | 100 | 100 (50 pro CU) |
+| Anzahl von Event Hubs pro Namespace | 10 | 10 | 1000 |
+| Eingangsereignisse | | Bezahlung pro Million Ereignisse | Enthalten|
+| Erfassung | – | Bezahlung pro Stunde | Enthalten |
+| Größe der Schemaregistrierung (Namespace) in Megabytes | – | 25 |  1024 |
+| Anzahl von Schemagruppen in einer Schemaregistrierung oder einem Namespace | – | 1 (ohne Standardgruppe) | 1000 |
+| Anzahl von Schemaversionen in allen Schemagruppen | – | 25 | 10000 |
 
 > [!NOTE]
->
-> Sie können Ereignisse einzeln oder als Batch veröffentlichen. 
-> Der Veröffentlichungsgrenzwert gilt (je nach SKU) unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von Ereignissen, die größer als der maximale Schwellenwert sind, wird abgelehnt.
+> Sie können Ereignisse einzeln oder als Batch veröffentlichen. Der Veröffentlichungsgrenzwert gilt (je nach SKU) unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von Ereignissen, die größer als der maximale Schwellenwert sind, wird abgelehnt.
 
-### <a name="dedicated-tier-vs-standard-tier"></a>Dedicated- und Standard-Tarif
-Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Minimum von vier Stunden Nutzung in Rechnung gestellt. Der Dedicated-Tarif umfasst die Funktionen des Standard-Tarifs, jedoch mit Kapazitäten und Limits auf Unternehmensniveau für Kunden mit anspruchsvollen Workloads. 
-
-Informationen zum Erstellen eines dedizierten Event Hubs-Clusters mithilfe des Azure-Portals finden Sie in [diesem Dokument](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md).
-
-| Funktion | Standard | Dediziert |
-| --- |:---|:---|
-| Bandbreite | 20 TUs (bis zu 40 TUs) | 20 CUs |
-| Namespaces |  100 pro Abonnement | 50 pro CU (100 pro Abonnement) |
-| Event Hubs |  10 pro Namespace | 1000 pro Namespace |
-| Eingangsereignisse | Bezahlung pro Million Ereignisse | Enthalten |
-| Nachrichtengröße | 1 Million Bytes | 1 Million Bytes |
-| Partitionen | 32 pro Event Hub | 1\.024 pro Event Hub<br/>2000 pro CU |
-| Verbrauchergruppen | 20 pro Event Hub | Kein Limit pro CU, 1000 pro Event Hub |
-| Brokerverbindungen | 1\.000 enthalten, max. 5.000 | 100.000 enthalten, gleichzeitig Max. |
-| Nachrichtenaufbewahrung | 7 Tage, 84 GB enthalten pro TU | 90 Tage, 10 TB enthalten pro CU |
-| Erfassung | Bezahlung pro Stunde | Enthalten |
-
-
-### <a name="schema-registry-limitations"></a>Einschränkungen der Schemaregistrierung
-
-#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Grenzwerte, die für die Ebenen Standard und Dedicated identisch sind 
-| Funktion | Begrenzung | 
-|---|---|
-| Maximale Länge eines Schemagruppennamens | 50 |  
-| Maximale Länge eines Schemanamens | 100 |    
-| Größe in Bytes pro Schema | 1 MB |   
-| Anzahl von Eigenschaften pro Schemagruppe | 1024 |
-| Größe in Bytes pro Gruppeneigenschaftenschlüssel | 256 | 
-| Größe in Bytes pro Gruppeneigenschaftswert | 1024 | 
-
-
-#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Grenzwerte, die sich für die Ebenen Standard und Dedicated unterscheiden 
-
-| Begrenzung | Standard | Dediziert | 
-|---|---|--|
-| Größe der Schemaregistrierung (Namespace) in Megabytes | 25 |  1024 |
-| Anzahl von Schemagruppen in einer Schemaregistrierung oder einem Namespace | 1 (ohne Standardgruppe) | 1000 |
-| Anzahl von Schemaversionen in allen Schemagruppen | 25 | 10000 |

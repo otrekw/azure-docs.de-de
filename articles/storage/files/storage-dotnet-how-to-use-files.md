@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c00f001ae3cba9420a137a42f9f696619584d50
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96492198"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817375"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET
 
@@ -60,7 +60,7 @@ Fügen Sie alle Codebeispiele in diesem Artikel der Klasse `Program` in der Date
 
 Verweisen Sie in Ihrem Projekt auf die folgenden Pakete:
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 - [Azure Core-Bibliothek für .NET](https://www.nuget.org/packages/Azure.Core/): Dieses Paket ist die Implementierung der Azure-Clientpipeline.
 - [Azure Storage Blob-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Storage.Blobs/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Blobressourcen in Ihrem Speicherkonto.
@@ -80,7 +80,7 @@ Sie können die Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
    - **Azure.Storage.Files.Shares**
    - **System.Configuration.ConfigurationManager**
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 - [Allgemeine Microsoft Azure Storage-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf allgemeine Ressourcen in Ihrem Speicherkonto.
 - [Microsoft Azure Storage Blob-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Blobressourcen in Ihrem Speicherkonto.
@@ -105,13 +105,13 @@ Sie können die Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 
 Als Nächstes speichern Sie Ihre Anmeldeinformationen in der Datei *App.config* des Projekts. Doppelklicken Sie im **Projektmappen-Explorer** auf `App.config`, und bearbeiten Sie die Datei so, dass sie dem folgenden Beispiel ähnelt.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 Ersetzen Sie `myaccount` durch den Namen Ihres Speicherkontos und `mykey` durch Ihren Speicherkontoschlüssel.
 
 :::code language="xml" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/app.config" highlight="5,6,7":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 Ersetzen Sie `myaccount` durch den Namen Ihres Speicherkontos und `StorageAccountKeyEndingIn==` durch Ihren Speicherkontoschlüssel.
 
@@ -137,11 +137,11 @@ Ersetzen Sie `myaccount` durch den Namen Ihres Speicherkontos und `StorageAccoun
 
 Öffnen Sie im **Projektmappen-Explorer** die Datei *Program.cs*, und fügen Sie am Anfang der Datei mithilfe von using-Anweisungen Folgendes hinzu.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_UsingStatements":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -158,13 +158,13 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 Fügen Sie in der Datei *Program.cs* folgenden Code hinzu, um programmgesteuert auf die Dateifreigabe zuzugreifen.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 Die folgende Methode erstellt eine Dateifreigabe, falls noch keine vorhanden ist. Zuerst erstellt die Methode ein [ShareClient](/dotnet/api/azure.storage.files.shares.shareclient)-Objekt aus einer Verbindungszeichenfolge. Das Beispiel versucht dann, eine Datei herunterzuladen, die wir zu einem früheren Zeitpunkt erstellt haben. Rufen Sie diese Methode aus `Main()` auf.
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CreateShare":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 Fügen Sie als Nächstes den folgenden Inhalt zur `Main()`-Methode (nach dem oben angegebenen Code) hinzu, um die Verbindungszeichenfolge abzurufen. Dieser Code ruft einen Verweis auf die zuvor erstellte Datei ab und gibt deren Inhalt aus.
 
@@ -212,11 +212,11 @@ Eine Festlegung des Kontingents für eine Freigabe begrenzt die Gesamtgröße de
 
 Das folgende Beispiel zeigt, wie Sie die aktuelle Nutzung einer Freigabe überprüfen und das Kontingent für die Freigabe festlegen.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_SetMaxShareSize":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -254,13 +254,13 @@ if (share.Exists())
 
 Ab Version 5.x der Azure Files-Clientbibliothek können Sie eine SAS (Shared Access Signature) für eine Dateifreigabe oder für eine einzelne Datei generieren.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 Die folgende Beispielmethode gibt eine SAS in einer Datei in der angegebenen Freigabe zurück.
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_GetFileSasUri":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 Sie können auch eine gespeicherte Zugriffsrichtlinie für eine Dateifreigabe erstellen, um Shared Access Signatures zu verwalten. Es wird empfohlen, eine gespeicherte Zugriffsrichtlinie zu erstellen, weil Sie die SAS widerrufen können, wenn sie gefährdet ist. Im folgenden Beispiel wird eine gespeicherte Zugriffsrichtlinie für eine Freigabe erstellt. Diese Richtlinie wird verwendet, um die Einschränkungen bei einer SAS für eine Datei in der Freigabe bereitzustellen.
 
@@ -325,11 +325,11 @@ Sie können auch AzCopy verwenden, um eine Datei in eine andere oder ein Blob in
 
 Im folgenden Beispiel wird eine Datei in eine andere Datei in derselben Freigabe kopiert. Für den Kopiervorgang können Sie die [Authentifizierung mit gemeinsam verwendetem Schlüssel](/rest/api/storageservices/authorize-with-shared-key) verwenden, weil dieser Vorgang Dateien innerhalb ein und desselben Speicherkontos kopiert.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CopyFile":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -379,11 +379,11 @@ if (share.Exists())
 
 Im folgenden Beispiel wird eine Datei erstellt und in ein Blob im selben Speicherkonto kopiert. In dem Beispiel wird für die Quelldatei eine SAS erstellt, die der Dienst dazu verwendet, während des Kopiervorgangs den Zugriff auf die Quelldatei zu autorisieren.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CopyFileToBlob":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -441,11 +441,11 @@ Ab Version 8.5 der Azure Files-Clientbibliothek können Sie eine Freigabemoment
 
 Im folgenden Beispiel wird eine Freigabemomentaufnahme erstellt.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CreateShareSnapshot":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 storageAccount = CloudStorageAccount.Parse(ConnectionString); 
@@ -462,11 +462,11 @@ var snapshotShare = myShare.Snapshot();
 
 Das folgende Beispiel listet die Momentaufnahmen in einer Freigabe auf.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_ListShareSnapshots":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
@@ -478,11 +478,11 @@ var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
 
 Das folgende Beispiel durchsucht Dateien und Verzeichnisse in Freigabemomentaufnahmen.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_ListSnapshotContents":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); 
@@ -498,11 +498,11 @@ Die Erstellung einer Momentaufnahme von einer Dateifreigabe ermöglicht die Wied
 
 Zum Wiederherstellen einer Datei aus einer Dateifreigabemomentaufnahme können Sie die Freigabemomentaufnahmen einer Dateifreigabe abfragen. Danach können Sie eine Datei abrufen, die zu einer bestimmten Freigabemomentaufnahme gehört. Verwenden Sie diese Version, um die Datei direkt zu lesen oder wiederherzustellen.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_RestoreFileFromSnapshot":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 CloudFileShare liveShare = fClient.GetShareReference(baseShareName);
@@ -533,11 +533,11 @@ fileInliveShare.StartCopyAsync(new Uri(sourceUri));
 
 Im folgenden Beispiel wird eine Freigabemomentaufnahme gelöscht.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_DeleteSnapshot":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
@@ -553,11 +553,11 @@ Die Metriken für Azure Files können über das [Azure-Portal](https://portal.az
 
 Das folgende Codebeispiel zeigt, wie Sie die .NET-Clientbibliothek zum Aktivieren von Metriken für Azure Files verwenden.
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_UseMetrics":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 Fügen Sie Ihrer Datei *Program.cs* zunächst die folgenden `using`-Anweisungen zusätzlich zu den oben hinzugefügten Anweisungen hinzu:
 

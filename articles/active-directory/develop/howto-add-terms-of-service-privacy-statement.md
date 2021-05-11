@@ -12,26 +12,26 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 311dfd976610c392909a0ec3d91fecaa4d733539
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ca10c54cff14bd9301e06a891bcb1f7013959f9
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104194"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176466"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gewusst wie: Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
 
-Entwickler, die Apps erstellen und verwalten, die in Azure Active Directory (Azure AD) und Microsoft-Konten integriert sind, sollten Links zu den Nutzungsbedingungen und Datenschutzbestimmungen der Apps einfügen. Die Nutzungsbedingungen und Datenschutzbestimmungen werden auf der Oberfläche für die Benutzerzustimmung angezeigt. Auf diese Weise wissen Benutzer, dass sie Ihren Apps vertrauen können. Die Nutzungsbedingungen und Datenschutzbestimmungen sind besonders wichtig für benutzerseitige mehrinstanzenfähige Apps, d.h. Apps, die in mehreren Verzeichnissen verwendet werden oder für alle Microsoft-Konten verfügbar sind.
+Entwickler, die mehrinstanzenfähige Apps erstellen und verwalten, die in Azure Active Directory (Azure AD) und Microsoft-Konten integriert werden können, sollten Links zu den Nutzungsbedingungen und Datenschutzbestimmungen der Apps einfügen. Die Nutzungsbedingungen und Datenschutzbestimmungen werden auf der Oberfläche für die Benutzerzustimmung angezeigt. Auf diese Weise wissen Benutzer, dass sie Ihren Apps vertrauen können. Die Nutzungsbedingungen und Datenschutzbestimmungen sind besonders wichtig für benutzerseitige mehrinstanzenfähige Apps, d.h. Apps, die in mehreren Verzeichnissen verwendet werden oder für alle Microsoft-Konten verfügbar sind.
 
 Sie sind verantwortlich für die Erstellung der Dokumente zu den Nutzungsbedingungen und Datenschutzbestimmungen für Ihre App sowie für die Bereitstellung der URLs zu diesen Dokumenten. Bei mehrinstanzenfähigen Apps, für die diese Links nicht angegeben sind, wird auf der Oberfläche für die Benutzerzustimmung für die jeweilige App eine Warnung angezeigt. Dies schreckt möglicherweise Benutzer davon ab, Ihrer App zuzustimmen.
 
 > [!NOTE]
-> * Bei Apps mit nur einem Mandanten wird keine Warnung angezeigt.
+> * Die Links zu den Nutzungsbedingungen und Datenschutzbestimmungen gelten nicht für Einzelmandanten-Apps.
 > * Wenn eine oder beide der zwei Links fehlen, wird in Ihrer App eine Warnung angezeigt.
 
 ## <a name="user-consent-experience"></a>Oberfläche für die Benutzerzustimmung
 
-In den folgenden Beispielen ist die Oberfläche für die Benutzerzustimmung dargestellt, wenn die Nutzungsbedingungen und Datenschutzbestimmungen konfiguriert sind und wenn diese Links nicht konfiguriert sind.
+Im folgenden Beispiel ist die Oberfläche für die Benutzerzustimmung für eine mehrinstanzenfähige App dargestellt, wenn die Nutzungsbedingungen und Datenschutzbestimmungen konfiguriert und diese Links nicht konfiguriert sind.
 
 ![Screenshots mit und ohne bereitgestellte Datenschutzbestimmungen und Nutzungsbedingungen](./media/howto-add-terms-of-service-privacy-statement/user-consent-exp-privacy-statement-terms-service.png)
 

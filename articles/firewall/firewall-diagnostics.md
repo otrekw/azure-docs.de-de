@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 52c6ef9edfc42bf1ad3b3279e0fa4e19b4cf502c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a682523b9486886d5be3c96a372fe36c81582649
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98788263"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988634"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Überwachen von Azure Firewall-Protokollen und -Metriken
 
@@ -39,13 +39,12 @@ Nach dem Aktivieren der Diagnoseprotokollierung kann es noch einige Minuten daue
 
    * AzureFirewallApplicationRule
    * AzureFirewallNetworkRule
-   * AzureFirewallThreatIntelLog
    * AzureFirewallDnsProxy
 
 
 3. Klicken Sie auf **Diagnoseeinstellung hinzufügen**. Auf der Seite **Diagnoseeinstellungen** befinden sich die Einstellungen für die Diagnoseprotokolle.
 5. Da die Protokolle in diesem Beispiel in Azure Monitor-Protokollen gespeichert werden, geben Sie **Firewall log analytics** als Name ein.
-6. Wählen Sie unter **Protokoll** die Einträge **AzureFirewallApplicationRule**, **AzureFirewallNetworkRule**, **AzureFirewallThreatIntelLog** und **AzureFirewallDnsProxy** aus, um die Protokolle zu erfassen.
+6. Wählen Sie unter **Log** die Optionen **AzureFirewallApplicationRule**, **AzureFirewallNetworkRule** und **AzureFirewallDnsProxy**, um die Protokolle zu sammeln.
 7. Klicken Sie auf **An Log Analytics senden**, um Ihren Arbeitsbereich zu konfigurieren.
 8. Wählen Sie Ihr Abonnement aus.
 9. Wählen Sie **Speichern** aus.

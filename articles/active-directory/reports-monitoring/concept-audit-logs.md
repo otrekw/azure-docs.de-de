@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/26/2021
+ms.date: 04/30/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7da93343e7380a327b7d2586b90dd5a5df1e006f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f7ccca25bf140a51755c229f8c438e053a7ac7de
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136856"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319256"
 ---
 # <a name="audit-logs-in-azure-active-directory"></a>Überwachungsprotokolle in Azure Active Directory 
 
@@ -37,9 +37,9 @@ Um Sie bei diesem Ziel zu unterstützen, bietet Ihnen das Azure Active Directory
 Dieser Artikel bietet eine Übersicht über die Überwachungsprotokolle.
 
 
-## <a name="what-can-you-do-with-it"></a>Was können Sie damit machen?
+## <a name="what-is-it"></a>Was ist das?
 
-Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten zu Compliancezwecken bereit.
+Durch die Überwachungsprotokolle in Azure AD erhalten Sie Zugriff auf Datensätze mit Systemaktivitäten zu Compliancezwecken.
 Die am häufigsten verwendeten Ansichten dieses Protokolls basieren auf den folgenden Kategorien:
 
 - Benutzerverwaltung
@@ -49,7 +49,7 @@ Die am häufigsten verwendeten Ansichten dieses Protokolls basieren auf den folg
 - Anwendungsverwaltung  
 
 
-Mit einer benutzer- oder gruppenorientierten Ansicht können Sie Antworten auf beispielsweise folgende Fragen erhalten:
+Mit einer benutzerorientierten Ansicht können Sie Antworten auf beispielsweise folgende Fragen erhalten:
 
 - Welche Typen von Updates wurden auf Benutzer angewendet?
 
@@ -59,6 +59,9 @@ Mit einer benutzer- oder gruppenorientierten Ansicht können Sie Antworten auf b
 
 - Welche Schritte hat ein Administrator in einem Verzeichnis ausgeführt?
 
+
+Mit einer gruppenorientierten Ansicht können Sie Antworten auf beispielsweise folgende Fragen erhalten:
+
 - Welche Gruppen wurden hinzugefügt?
 
 - Sind Gruppen mit Änderungen der Mitgliedschaft vorhanden?
@@ -66,7 +69,6 @@ Mit einer benutzer- oder gruppenorientierten Ansicht können Sie Antworten auf b
 - Haben sich die Besitzer der Gruppe geändert?
 
 - Welche Lizenzen wurden einer Gruppe oder einem Benutzer zugewiesen?
-
 
 Mit einer anwendungsorientierten Ansicht können Sie Antworten auf beispielsweise folgende Fragen erhalten:
 
@@ -81,6 +83,10 @@ Mit einer anwendungsorientierten Ansicht können Sie Antworten auf beispielsweis
 - Wer hat die Zustimmung zu einer Anwendung erteilt?
 
  
+## <a name="what-license-do-i-need"></a>Welche Lizenz benötige ich?
+
+Der Überwachungsaktivitätsbericht ist in allen Editionen von Azure AD verfügbar.
+
 ## <a name="who-can-access-it"></a>Wer kann auf sie zugreifen?
 
 Um auf die Überwachungsprotokolle zugreifen zu können, muss Ihnen eine der folgenden Rollen zugewiesen sein: 
@@ -91,13 +97,16 @@ Um auf die Überwachungsprotokolle zugreifen zu können, muss Ihnen eine der fol
 - Globaler Leser
 - Globaler Administrator
 
-## <a name="where-can-you-find-it-in-the-azure-portal"></a>Wo finden Sie die Protokolle im Azure-Portal?
+## <a name="where-can-i-find-it"></a>Wo finde ich es?
 
 Das Azure-Portal bietet Ihnen mehrere Optionen für den Zugriff auf das Protokoll. Im Azure Active Directory-Menü können Sie beispielsweise im Abschnitt **Überwachung** öffnen.  
 
-![Bereitstellungsprotokolle öffnen](./media/concept-provisioning-logs/provisioning-logs-menu.png)
+![Öffnen von Überwachungsprotokollen](./media/concept-audit-logs/audit-logs-menu.png)
 
-Darüber hinaus können Sie über den folgenden Link direkt zu den Überwachungsprotokollen gelangen: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/ProvisioningEvents](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/ProvisioningEvents)
+Darüber hinaus können Sie über [diesen Link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/ProvisioningEvents) direkt zu den Überwachungsprotokollen gelangen.
+
+
+Sie können auch über die Microsoft Graph-API auf das Überwachungsprotokoll zugreifen.
 
 
 ## <a name="what-is-the-default-view"></a>Was ist die Standansicht?
@@ -124,7 +133,6 @@ Sie können dann weitere Felder anzeigen oder Felder entfernen, die bereits ange
 Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Informationen zu erhalten.
 
 ![Element auswählen](./media/concept-audit-logs/details.png "Element auswählen")
-
 
 ## <a name="filtering-audit-logs"></a>Filtern von Überwachungsprotokollen
 
@@ -211,7 +219,6 @@ Beim Auswählen eines benutzerdefinierten Zeitraums können Sie eine Startzeit u
 Sie können die gefilterten Daten (bis zu 250.000 Datensätze) auch herunterladen, indem Sie die Schaltfläche **Herunterladen** auswählen. Sie können die Protokolle im CSV- oder JSON-Format herunterladen. Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.
 
 ![Herunterladen von Daten](./media/concept-audit-logs/download.png "Herunterladen von Daten")
-
 
 
 

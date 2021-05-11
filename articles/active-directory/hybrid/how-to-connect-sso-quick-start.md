@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 349aef1bb9382eec19d9ad9c7f6d4579c82b62de
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba3bdc3f58395f17911042c699a0aca3cbae92a2
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043936"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290630"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -208,7 +208,7 @@ Das Rollout der Azure AD-URL für Firefox und Google Chrome unter Mac mithilfe v
 
 #### <a name="known-browser-limitations"></a>Bekannte Browsereinschränkungen
 
-Das nahtlose einmalige Anmelden funktioniert in den Browsern Firefox und Microsoft Edge (Vorgängerversion) nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird. In der nächsten Version von Microsoft Edge auf Chromium-Basis wird das einmalige Anmelden unterstützt und kann im InPrivate- und Gastmodus erfolgen.
+Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird. In der nächsten Version von Microsoft Edge auf Chromium-Basis wird das einmalige Anmelden unterstützt und kann im InPrivate- und Gastmodus erfolgen. Microsoft Edge (Legacyversion) wird nicht mehr unterstützt.
 
 ## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
 

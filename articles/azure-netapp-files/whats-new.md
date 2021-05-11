@@ -12,20 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/21/2021
+ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: fa028d8fffd2a4097b5bf7d7326d355ae56aebd7
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 46e84814e27562097a4c5dc4e3daa1e5b36669f7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862811"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287825"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Neues in Azure NetApp Files
 
 Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Übersicht über die neuesten Features und Verbesserungen. 
 
 ## <a name="april-2021"></a>April 2021
+
+* [Manuelle Volume- und Kapazitätspoolverwaltung](volume-quota-introduction.md) (hartes Kontingent) 
+
+    Das Verhalten der Volume- und Kapazitätspoolbereitstellung von Azure NetApp Files wurde in einen manuellen und kontrollierbaren Mechanismus geändert. Die Speicherkapazität eines Volumes ist auf die festgelegte Größe (Kontingent) des Volumes beschränkt. Wenn der Volumeverbrauch ein Maximum erreicht, wächst weder das Volume noch der zugrunde liegende Kapazitätspool automatisch. Stattdessen erhält das Volume den Zustand „Kein Speicherplatz mehr“. Sie können jedoch [die Größe des Kapazitätspools oder eines Volumes nach Bedarf ändern](azure-netapp-files-resize-capacity-pools-or-volumes.md). Sie sollten die [Kapazität eines Volumes](monitor-volume-capacity.md) und den zugrunde liegenden Kapazitätspool aktiv überwachen.
+
+    Diese Verhaltensänderung ist ein Ergebnis der folgenden Hauptanforderungen, die von vielen Benutzern gestellt wurden:
+
+    * Vorher wurde VM-Clients nur die schlank zugewiesene Kapazität (100 TiB) eines bestimmten Volumes angezeigt, wenn der Betriebssystemspeicherplatz oder Kapazitätsüberwachungstools verwendet wurden.  Diese Situation konnte zu einer ungenauen Anzeige der Kapazität auf Client- oder Anwendungsseite führen. Dieses Verhalten wurde nun korrigiert.  
+    * Das bisherige automatische Vergrößerungsverhalten von Kapazitätspools hat Anwendungsbesitzern keine Kontrolle über den bereitgestellten Kapazitätspoolspeicher (und die damit verbundenen Kosten) gegeben. Diese Situation war besonders in Umgebungen umständlich, in denen „Endlosprozesse“ ausgeführt wurden, die die bereitgestellte Kapazität schnell auslasten und so die bereitgestellte Kapazität erhöhen konnten. Dieses Verhalten wurde korrigiert.  
+    * Benutzer möchten eine direkte Korrelation zwischen Volumegröße (Kontingent) und Leistung sehen. Das vorherige Verhalten ließ (implizite) Überabonnements eines Volumes (Kapazität) und die automatische Vergrößerung von Kapazitätspools zu. Daher konnten Benutzer erst dann eine direkte Korrelation herstellen, wenn das Volumekontingent aktiv festgelegt oder zurückgesetzt wurde. Dieses Verhalten wurde nun korrigiert.
+
+    Benutzer haben die direkte Kontrolle über die bereitgestellte Kapazität gefordert. Benutzer möchten die Speicherkapazität und -auslastung kontrollieren und ausgleichen. Zudem möchten Sie die Kosten, die anwendungs- und clientseitige Sichtbarkeit der verfügbaren, genutzten und bereitgestellten Kapazität sowie die Leistung ihrer Anwendungsvolumes kontrollieren. Mit diesem neuen Verhalten wurden nun alle diese Funktionen aktiviert.
 
 * [Unterstützung von SMB-Freigaben für fortlaufende Verfügbarkeit (Continuous Availability, CA) für FSLogix-Benutzerprofilcontainer](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Vorschau)  
 
