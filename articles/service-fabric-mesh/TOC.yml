@@ -1,0 +1,33 @@
+- name: Service Fabric Mesh-Dokumentation
+  href: index.yml
+- name: Übersicht
+  expanded: true
+- name: Schnellstarts
+- name: Tutorials
+  items:
+    - name: Erstellen und Bereitstellen einer Mesh-App mit Visual Studio
+    - name: 'Bereitstellen, Skalieren und Aktualisieren einer Service Fabric Mesh-App mithilfe einer Vorlage'
+- name: Konzepte
+- name: Anleitungen
+- name: Verweis
+  items:
+    - name: Ressourcenanbieter-REST-APIs in Service Fabric Mesh
+      href: /rest/api/servicefabric/sfmeshrp-index
+    - name: Referenz zur Service Fabric Mesh-Befehlszeilenschnittstelle
+      href: /cli/azure/mesh
+    - name: Ressourcen-REST-APIs im Service Fabric-Client
+      href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
+- name: Ressourcen
+  items:
+    - name: Beispielanwendungen
+      href: 'https://github.com/Azure-Samples/service-fabric-mesh'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
+    - name: Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=service-fabric-mesh'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'

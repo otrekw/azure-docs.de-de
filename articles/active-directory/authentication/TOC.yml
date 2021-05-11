@@ -57,7 +57,7 @@
         - name: MFA für Office 365
           href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication
         - name: Häufig gestellte Fragen
-          href: multi-factor-authentication-faq.md
+          href: multi-factor-authentication-faq.yml
     - name: Kennwortschutz
       items:
         - name: Entfernen unsicherer Kennwörter in der Cloud
@@ -151,7 +151,7 @@
         - name: Problembehandlung
           href: howto-password-ban-bad-on-premises-troubleshoot.md
         - name: Häufig gestellte Fragen
-          href: howto-password-ban-bad-on-premises-faq.md
+          href: howto-password-ban-bad-on-premises-faq.yml
         - name: Verlauf der Agent-Version
           href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Verwenden eines befristeten Zugriffspasses (Vorschau)
@@ -232,9 +232,9 @@
         - name: SSPR-Rückschreiben
           href: troubleshoot-sspr-writeback.md
         - name: Häufig gestellte Fragen zu SSPR
-          href: active-directory-passwords-faq.md
+          href: active-directory-passwords-faq.yml
         - name: Häufig gestellte Fragen zu MFA
-          href: multi-factor-authentication-faq.md
+          href: multi-factor-authentication-faq.yml
         - name: NPS-Erweiterung
           href: howto-mfa-nps-extension-errors.md
 - name: Verweis

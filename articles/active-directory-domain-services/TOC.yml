@@ -149,10 +149,17 @@
               href: alert-service-principal.md
             - name: Secure LDAP-Warnungen
               href: alert-ldaps.md
+- name: Verweis
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.addomainservices/
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
-      href: faqs.md
+      href: faqs.yml
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
     - name: Preise
