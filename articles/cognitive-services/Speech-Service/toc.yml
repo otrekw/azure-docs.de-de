@@ -43,8 +43,6 @@
           items:
             - name: Was ist Custom Speech?
               href: custom-speech-overview.md
-            - name: Testen eines Modells mithilfe von Audiodateien in Speech Studio
-              href: quickstarts/speech-studio-test-model.md
             - name: Vorbereiten von Daten für Custom Speech
               href: how-to-custom-speech-test-and-train.md
             - name: "Überprüfen von Custom\_Speech-Daten"
@@ -586,9 +584,7 @@
     - name: Speech Studio
       items:
         - name: Übersicht über Speech Studio
-          href: 'https://speech.microsoft.com'
-        - name: Erstellen einer App für benutzerdefinierte Befehle mit Speech Studio
-          href: ./quickstart-custom-commands-application.md
+          href: speech-studio-overview.md
     - name: Unternehmensfähigkeit
       items:
         - name: Unterstützung für Regionen
