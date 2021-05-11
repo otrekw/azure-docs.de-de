@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a4c63cc686b08d179e20e6f3e3a7aa1efa69a5f8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: eeba3cb579c6ef9158379403a3206f99a2cfb060
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447079"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830626"
 ---
 # <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Daten- und Metadatenstandorte für Windows Virtual Desktop
 
@@ -25,7 +25,7 @@ Windows Virtual Desktop ist zurzeit für alle geografischen Standorte verfügbar
 >Microsoft kontrolliert oder beschränkt nicht die Regionen, in denen Sie oder Ihre Benutzer auf Ihre benutzer- und App-spezifischen Daten zugreifen können.
 
 >[!IMPORTANT]
->Windows Virtual Desktop speichert globale Metadateninformationen wie Mandantennamen, Hostpoolnamen, App-Gruppennamen und Benutzerprinzipalnamen in einem Rechenzentrum. Wenn ein Kunde ein Dienstobjekt erstellt, muss er einen Standort für das Dienstobjekt eingeben. Der eingegebene Standort bestimmt, wo die Metadaten für das Objekt gespeichert werden. Der Kunde wählt eine Azure-Region aus, und die Metadaten werden in der zugehörigen Geografie gespeichert. Eine Liste aller Azure-Regionen und zugehöriger Geografien finden Sie unter [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/).
+>Windows Virtual Desktop speichert globale Metadateninformationen wie Arbeitsbereichsnamen, Hostpoolnamen, App-Gruppennamen und Benutzerprinzipalnamen in einem Rechenzentrum. Wenn ein Kunde ein Dienstobjekt erstellt, muss er einen Standort für das Dienstobjekt eingeben. Der eingegebene Standort bestimmt, wo die Metadaten für das Objekt gespeichert werden. Der Kunde wählt eine Azure-Region aus, und die Metadaten werden in der zugehörigen Geografie gespeichert. Eine Liste aller Azure-Regionen und zugehöriger Geografien finden Sie unter [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 Derzeit wird das Speichern von Metadaten in den folgenden geografischen Regionen unterstützt:
 

@@ -6,12 +6,12 @@ ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
-ms.openlocfilehash: fd08dc98fa47617bbc7c8d1fff895377837a7327
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01184a4eb2aac81bbcabcebf89ef10afeabddbe8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736733"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872963"
 ---
 # <a name="time-series-model-variables"></a>Zeitreihenmodellvariablen
 
@@ -32,7 +32,7 @@ Die folgende Tabelle zeigt die Eigenschaften, die für die jeweilige Variablenar
 | Variableneigenschaft | BESCHREIBUNG |
 | --- | ---|
 | Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
-| Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen oder mithilfe von Zeitreihenausdrücken transformiert werden. Numerische Variablen müssen den Typ *Double* aufweisen.|
+| Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen oder mithilfe von Zeitreihenausdrücken transformiert werden. Numerische Typ-Variablen müssen entweder `Double` oder `Long` sein, um dem Datentyp der eingehenden Daten zu entsprechen.|
 | Variableninterpolation | Die Interpolation gibt an, wie ein Signal anhand von vorhandenen Daten rekonstruiert wird. Für numerische Variablen sind die Interpolationsoptionen *Schritt* und *linear* verfügbar. |
 | Variablenaggregation | Führen Sie Berechnungen über die unterstützten [Aggregationsfunktionen für numerische Variablen](/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind) durch. |
 
@@ -62,7 +62,7 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
 | Variableneigenschaft | BESCHREIBUNG |
 | --- | ---|
 | Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
-| Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen. Kategorische Variablen müssen entweder den Typ *Long* oder den Typ *String* aufweisen. |
+| Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen. Kategorische Typ-Variablen müssen entweder `Long` oder `String` sein, um dem Datentyp der eingehenden Daten zu entsprechen. |
 | Variableninterpolation | Die Interpolation gibt an, wie ein Signal anhand von vorhandenen Daten rekonstruiert wird. Die Option *Schrittinterpolation* ist für kategorische Variablen verfügbar. |
 | Variablenkategorien | Kategorien sorgen für die Zuordnung zwischen den aus einem Gerät oder Sensor stammenden Werten und einer Bezeichnung. |
 | Standardkategorie für Variablen | Die Standardkategorie steht für alle Werte zur Verfügung, die nicht in der Eigenschaft „Kategorien“ zugeordnet werden. |

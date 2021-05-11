@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 5fda7ebb5a72dd9bbfab0ba72511540cf141563f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/22/2021
+ms.openlocfilehash: cd78d6802f6b7f71794785d9149b5cda854bf21e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608849"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166413"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>Unterstützte Haupt- und Nebenversionen von PostgreSQL für Azure Database for PostgreSQL – Flexible Server
 
@@ -22,11 +22,11 @@ Azure Database for PostgreSQL – Flexible Server unterstützt derzeit die folg
 
 ## <a name="postgresql-version-12"></a>PostgreSQL Version 12
 
-Das aktuelle Nebenrelease ist 12.5. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/12/static/release-12-4.html).
+Die aktuelle Nebenversion ist **12.6**. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/12/static/release-12-6.html). Mit dieser Nebenversion werden neue Server erstellt. Ihre vorhandenen Server werden automatisch auf die neueste unterstützte Nebenversion in Ihrem künftigen geplanten Wartungsfenster aktualisiert.
 
 ## <a name="postgresql-version-11"></a>PostgreSQL Version 11
 
-Das aktuelle Nebenrelease ist 11.10. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-9.html).
+Das aktuelle Nebenrelease ist **11.11**. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-11.html). Mit dieser Nebenversion werden neue Server erstellt. Ihre vorhandenen Server werden automatisch auf die neueste unterstützte Nebenversion in Ihrem künftigen geplanten Wartungsfenster aktualisiert.
 
 ## <a name="postgresql-version-10-and-older"></a>PostgreSQL Version 10 und früher
 

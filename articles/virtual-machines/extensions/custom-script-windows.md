@@ -8,12 +8,12 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 08/31/2020
-ms.openlocfilehash: 13b4c4ef50ea37cabe30474d339acb19176cef97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6341e3abbf591d0e6e0395e17ccf15ec73a3ac43
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553900"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835450"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -74,7 +74,7 @@ Befindet sich Ihr Skript auf einem lokalen Server, müssen eventuell dennoch wei
 
 In der Konfiguration der benutzerdefinierten Skripterweiterung werden Aspekte wie der Skriptspeicherort und der auszuführende Befehl angegeben. Sie können diese Konfiguration in Konfigurationsdateien speichern oder sie in der Befehlszeile oder in einer Azure Resource Manager-Vorlage angeben.
 
-Sie können sensible Daten in einer geschützten Konfiguration speichern. Diese ist verschlüsselt und wird nur auf dem virtuellen Computer entschlüsselt. Die geschützte Konfiguration ist hilfreich, wenn der Ausführungsbefehl vertrauliche Informationen (beispielsweise ein Kennwort) enthält.
+Sie können sensible Daten in einer geschützten Konfiguration speichern. Diese ist verschlüsselt und wird nur auf dem virtuellen Computer entschlüsselt. Die geschützte Konfiguration ist nützlich, wenn der Ausführungsbefehl Geheimnisse wie ein Kennwort oder einen SAS-Dateiverweis (Shared Access Signature) enthält, der geschützt werden soll.
 
 Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration mit den geschützten Einstellungen der Erweiterung angegeben werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt.
 
@@ -97,16 +97,16 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
         "typeHandlerVersion": "1.10",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "fileUris": [
-                "script location"
-            ],
             "timestamp":123456789
         },
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
             "storageAccountName": "myStorageAccountName",
             "storageAccountKey": "myStorageAccountKey",
-            "managedIdentity" : {}
+            "managedIdentity" : {},
+            "fileUris": [
+                "script location"
+            ]
         }
     }
 }
@@ -142,7 +142,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 #### <a name="property-value-details"></a>Details zu Eigenschaftswerten
 
 * `commandToExecute` (**erforderlich**, Zeichenfolge): Das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, wenn der Befehl Geheimnisse (z.B. Kennwörter) enthält oder die „fileUris“ vertraulich sind.
-* `fileUris` (optional, Zeichenfolgenarray): die URLs für die herunterzuladenden Dateien.
+* `fileUris` (optional, Zeichenfolgenarray): die URLs für die herunterzuladenden Dateien. Wenn URLs vertraulich sind (z. B. URLs mit Schlüsseln), sollte dieses Feld in protectedSettings angegeben werden.
 * `timestamp` (optional, 32-Bit-Integer): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.  Jeder Integerwert ist akzeptabel; er muss sich lediglich vom vorherigen Wert unterscheiden.
 * `storageAccountName` (optional, Zeichenfolge): der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen `fileUris` um URLs für Azure-Blobs handeln.
 * `storageAccountKey` (optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
@@ -153,6 +153,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 Die folgenden Werte können in öffentlichen oder geschützten Einstellungen festgelegt werden. Die Erweiterung lehnt jedoch jede Konfiguration ab, bei der die Werte sowohl in öffentlichen als auch in geschützten Einstellungen festgelegt sind.
 
 * `commandToExecute`
+* `fileUris`
 
 Die Verwendung öffentlicher Einstellungen kann zwar beim Debuggen hilfreich sein, es wird jedoch empfohlen, geschützte Einstellungen zu verwenden.
 

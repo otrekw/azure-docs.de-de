@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: e48d669321ad8c58681e8a92e68f2089962bdc17
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a33256ae30cc26ef581128d89f43ab02dd2ec148
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102429849"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017101"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Plug-In für die automatische Erfassung von Klickanalysen für das Application Insights-JavaScript-SDK
 
@@ -59,7 +59,7 @@ appInsights.loadAppInsights();
 1. Aus Klickereignissen generierte Telemetriedaten werden als `customEvents` im Application Insights-Abschnitt des Azure-Portals gespeichert.
 2. Der `name` von customEvent wird den folgenden Regeln entsprechend aufgefüllt:
     1.  Die in `data-*-id` bereitgestellte `id` wird als customEvent-Name verwendet. Wenn das HTML-Element, auf das geklickt wird, beispielsweise das Attribut „data-sample-id“=„button1“ aufweist, wird „button1“ als customEvent-Name verwendet.
-    2. Wenn kein solches Attribut vorhanden ist und `useDefaultContentNameOrId` in der Konfiguration auf `true` festgelegt ist, wird die HTML-Attribut-`id` des Elements, auf das geklickt wurde, oder der Inhaltsname des Elements als customEvent-Name verwendet.
+    2. Wenn kein solches Attribut vorhanden ist und `useDefaultContentNameOrId` in der Konfiguration auf `true` festgelegt ist, wird die HTML-Attribut-`id` des Elements, auf das geklickt wurde, oder der Inhaltsname des Elements als customEvent-Name verwendet. Sind sowohl `id` als auch Inhaltsname vorhanden, hat `id` Vorrang.
     3. Wenn `useDefaultContentNameOrId` FALSE ist, lautet der customEvent-Name „not_specified“.
 
     > [!TIP]
@@ -77,16 +77,42 @@ appInsights.loadAppInsights();
     - Der Name darf kein Semikolon (U+003A) enthalten.
     - Der Name darf keine Großbuchstaben enthalten.
 
+## <a name="what-data-does-the-plugin-collect"></a>Welche Daten sammelt das Plugin
+
+Nachfolgend werden einige der Schlüsseleigenschaften angezeigt, die standardmäßig erfasst werden, wenn das Plug-In aktiviert ist:
+
+### <a name="custom-event-properties"></a>Eigenschaften des benutzerdefinierten Ereignisses
+| Name                  | Beschreibung                            | Beispiel          |
+| --------------------- | ---------------------------------------|-----------------|
+| name                  | Die `name` des customEvent. Weitere Informationen zum Aufbau dieses Feldes finden Sie [hier](#how-to-effectively-use-the-plugin).| Info              |
+| itemType              | Ereignistyp.                                      | CustomEvent      |
+|sdkVersion             | Version des Application Insights SDK zusammen mit dem Click-Plug-In|javascript:2.6.2_ClickPlugin2.6.2|
+
+### <a name="custom-dimensions"></a>Benutzerdefinierte Dimensionen
+| Name                  | Beschreibung                            | Beispiel          |
+| --------------------- | ---------------------------------------|-----------------|
+| actionType            | Aktionstyp, der das Klickereignis verursacht hat. Kann mit links oder rechts angeklickt werden. | CL              |
+| baseTypeSource        | Basistypquelle des benutzerdefinierten Ereignisses.                                      | ClickEvent      |
+| clickCoordinates      | Koordinaten, an denen das Klickereignis ausgelöst wird.                            | 659X47          |
+| Inhalt               | Platzhalter zum Speichern zusätzlicher `data-*` Attribute und Werte.            | [{sample1:value1, sample2:value2}] |
+| pageName              | Titel der Seite, auf der das Klickereignis ausgelöst wird.                      | Beispieltitel    |
+| parentId              | ID oder Name des übergeordneten Elements                                           | navbarContainer |
+
+### <a name="custom-measurements"></a>Benutzerdefinierte Messungen
+| Name                  | Beschreibung                            | Beispiel          |
+| --------------------- | ---------------------------------------|-----------------|
+| timeToAction          | Zeit in Millisekunden, die der Benutzer seit dem ersten Laden der Seite benötigt, um das Element anzuklicken | 87407              |
+
 ## <a name="configuration"></a>Konfiguration
 
 | Name                  | type                               | Standard | Beschreibung                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
-| autoCapture           | boolean                            | true    | Konfiguration der automatischen Erfassung.                                                                                                         |
-| Rückruf              | [IValueCallback](#ivaluecallback)  | NULL    | Rückrufkonfiguration.                                                                                                                 |
-| pageTags              | Zeichenfolge                             | NULL    | Seitentags.                                                                                                                               |
-| dataTags              | [ICustomDataTags](#icustomdatatags)| NULL    | Benutzerdefinierte Datentags zum Überschreiben von Standardtags, die zum Erfassen von Klickdaten verwendet werden.                                                           |
-| urlCollectHash        | boolean                            | false   | Aktiviert die Protokollierung von Werten nach einem #-Zeichen in der URL.                                                                          |
-| urlCollectQuery       | boolean                            | false   | Aktiviert die Protokollierung der Abfragezeichenfolge der URL.                                                                                      |
+| autoCapture           | boolean                            | true    | Konfiguration der automatischen Erfassung.                                |
+| Rückruf              | [IValueCallback](#ivaluecallback)  | NULL    | Rückrufkonfiguration.                               |
+| pageTags              | Zeichenfolge                             | NULL    | Seitentags.                                             |
+| dataTags              | [ICustomDataTags](#icustomdatatags)| NULL    | Benutzerdefinierte Datentags zum Überschreiben von Standardtags, die zum Erfassen von Klickdaten verwendet werden. |
+| urlCollectHash        | boolean                            | false   | Aktiviert die Protokollierung von Werten nach einem #-Zeichen in der URL.                |
+| urlCollectQuery       | boolean                            | false   | Aktiviert die Protokollierung der Abfragezeichenfolge der URL.                            |
 | behaviorValidator     | Funktion                           | NULL  | Rückruffunktion, die für die `data-*-bhvr`-Wertüberprüfung verwendet werden soll. Weitere Informationen finden Sie im [Abschnitt „behaviorValidator“](#behaviorvalidator).|
 | defaultRightClickBhvr | Zeichenfolge (oder) Zahl                 | ''      | Wert für das Standardverhalten, wenn ein Rechtsklickereignis aufgetreten ist. Dieser Wert wird überschrieben, wenn das Element das `data-*-bhvr`-Attribut aufweist. |
 | dropInvalidEvents     | boolean                            | false   | Flag zum Löschen von Ereignissen, die keine nützlichen Klickdaten aufweisen.                                                                                   |

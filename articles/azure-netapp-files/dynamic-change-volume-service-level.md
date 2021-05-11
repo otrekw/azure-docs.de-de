@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 04/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 7b5bbad1f0691f76c12f161d1dd1f9d6ddc43270
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21233d946ba3cb1ae2c47ccf63582ef832408635
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184320"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903432"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Dynamisches Ändern der Dienstebene eines Volumes
 
@@ -42,6 +42,8 @@ Der Kapazitätspool, in den Sie das Volume verschieben möchten, muss bereits vo
 
 Die Funktion zum Verschieben eines Volumes in einen anderen Kapazitätspool befindet sich derzeit in der Vorschauphase. Wenn Sie diese Funktion zum ersten Mal verwenden, müssen Sie sie zuerst registrieren.
 
+Falls Sie mehrere Azure-Abonnements haben, vergewissern Sie sich, dass Sie sich für das gewünschte Abonnement registrieren, indem Sie den Befehl ['Set-AzContext'](/powershell/module/az.accounts/set-azcontext) verwenden. <!-- GitHub #74191 --> 
+
 1. Registrieren Sie die Funktion: 
 
     ```azurepowershell-interactive
@@ -51,7 +53,7 @@ Die Funktion zum Verschieben eines Volumes in einen anderen Kapazitätspool befi
 2. Überprüfen Sie den Status der Funktionsregistrierung: 
 
     > [!NOTE]
-    > Der **RegistrationState** kann für bis zu 60 Minuten den Status `Registering` aufweisen, bevor der Wechsel in `Registered` erfolgt. Warten Sie, bis der Status **Registriert** lautet, bevor Sie fortfahren.
+    > Der **RegistrationState** kann bis zu 60 Minuten lang den Wert `Registering` aufweisen, bevor er sich in `Registered` ändert. Warten Sie, bis der Status **Registriert** lautet, bevor Sie fortfahren.
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange

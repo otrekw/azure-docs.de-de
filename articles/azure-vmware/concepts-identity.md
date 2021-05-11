@@ -3,18 +3,16 @@ title: Konzepte – Identität und Zugriff
 description: Informationen zu den Identitäts- und Zugriffskonzepten von Azure VMware Solution
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 1d49ce27ee74621874281a555651c09a73048928
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 352daaec87c2df7a0bc062abd38a96ad0285180a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109814"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069829"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Identitätskonzepte von Azure VMware Solution
 
-Private Azure VMware Solution-Clouds werden mit vCenter Server und NSX-T Manager bereitgestellt. vCenter dient der Verwaltung von VM-Workloads und NSX-T Manager der Verwaltung und Erweiterung der privaten Cloud. Bei der Zugriffs- und Identitätsverwaltung werden die Rolle „CloudAdmin“ für vCenter und eingeschränkte Administratorrechte für NSX-T Manager verwendet. 
-
-Weitere Informationen finden Sie im Artikel [Azure VMware Solution: Updates und Upgrades für private Clouds][concepts-upgrades].
+Private Azure VMware Solution-Clouds werden mit vCenter Server und NSX-T Manager bereitgestellt. vCenter dient der Verwaltung von VM-Workloads und NSX-T Manager der Verwaltung und Erweiterung der privaten Cloud. Zugriffs- und Identitätsverwaltung übernehmen die Rolle CloudAdmin für vCenter und eingeschränkte Administratorrechte für NSX-T Manager. 
 
 ## <a name="vcenter-access-and-identity"></a>vCenter – Zugriff und Identität
 
@@ -95,19 +93,21 @@ Um die Erstellung von Rollen zu verhindern, die nicht zugewiesen oder gelöscht 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Manager – Zugriff und Identität
 
 >[!NOTE]
->NSX-T 2.5 wird derzeit unterstützt.
+>NSX-T 2.5 wird derzeit von allen neuen Private Clouds unterstützt.
 
-Verwenden Sie das Konto *administrator*, um auf den NSX-T Manager zuzugreifen. Es verfügt über umfassende Berechtigungen und ermöglicht Ihnen, Tier-1-Gateways (T1), Segmente (logische Switches) und alle Dienste zu erstellen und zu verwalten. Durch die Berechtigungen erhalten Sie Zugriff auf das NSX-T-Tier-0-Gateway (T0). Eine Änderung am T0-Gateway kann dazu führen, dass die Netzwerkleistung beeinträchtigt wird oder nicht auf die private Cloud zugegriffen werden kann. Erstellen Sie im Azure-Portal eine Supportanfrage, um Änderungen an Ihrem NSX-T-T0-Gateway anzufordern.
+Für den Zugriff auf NSX-T Manager verwenden Sie das Konto *Administrator*. Es verfügt über umfassende Berechtigungen und ermöglicht Ihnen, Tier-1-Gateways (T1), Segmente (logische Switches) und alle Dienste zu erstellen und zu verwalten. Durch die Berechtigungen erhalten Sie Zugriff auf das NSX-T-Tier-0-Gateway (T0). Eine Änderung am T0-Gateway kann dazu führen, dass die Netzwerkleistung beeinträchtigt wird oder nicht auf die private Cloud zugegriffen werden kann. Erstellen Sie im Azure-Portal eine Supportanfrage, um Änderungen an Ihrem NSX-T-T0-Gateway anzufordern.
+
+>[!TIP]
+>Alternativ zur Verwendung von NSX-T Manager können Sie die [vereinfachte NSX-Funktion im Azure-Portal](configure-nsx-network-components-azure-portal.md) verwenden.
 
  
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich mit den Zugriffs- und Identitätskonzepten von Azure VMware Solution vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
 
-- [Private Cloud-Aktualisierungskonzepte](concepts-upgrades.md)
 - [So aktivieren Sie die Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
 - [Details der einzelnen Berechtigungen](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
-- [Wie die Azure VMware Solution private Clouds überwacht und repariert](concepts-monitor-repair-private-cloud.md)
+- [Wie die Azure VMware Solution private Clouds überwacht und repariert](/azure/azure-vmware/concepts-private-clouds-clusters#host-monitoring-and-remediation)
 - [So aktivieren Sie die Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
 
 
@@ -115,4 +115,4 @@ Nachdem Sie sich mit den Zugriffs- und Identitätskonzepten von Azure VMware Sol
 [VMware product documentation]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html
 
 <!-- LINKS - internal -->
-[concepts-upgrades]: ./concepts-upgrades.md
+[concepts-upgrades]: ./concepts-private-clouds-clusters#host-maintenance-and-lifecycle-management

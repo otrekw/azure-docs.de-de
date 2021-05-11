@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3a4e9649d921c6af34d99ab290adb96be3ad1282
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 20870a62b6ea074837db070b39d5a9edf3db19ac
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058526"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069883"
 ---
 # <a name="what-is-virtual-network-nat"></a>Was ist Virtual Network NAT?
 
@@ -142,5 +142,6 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Unter [UserVoice fü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Erfahren Sie [wie Sie mit einem Azure NAT Gateway](https://www.youtube.com/watch?v=2Ng_uM0ZaB4) bessere ausgehende Konnektivität erhalten.
 * Informieren Sie sich über [NAT-Gatewayressourcen](./nat-gateway-resource.md).
 * [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)

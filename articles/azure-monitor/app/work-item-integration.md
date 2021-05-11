@@ -2,22 +2,17 @@
 title: Integration von Arbeitselementen (Vorschau) – Application Insights
 description: Erfahren Sie, wie Sie Arbeitselemente in GitHub oder Azure DevOps mit darin eingebetteten Application Insights-Daten erstellen.
 ms.topic: conceptual
-ms.date: 02/9/2021
-ms.openlocfilehash: ba0a67bad3ba47191414d6b406ab6cb4e6b7da78
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/22/2021
+ms.openlocfilehash: 57eae6b0cda7a0f77a83ecbe453aca56eaf2504b
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731917"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930399"
 ---
-# <a name="work-item-integration-preview"></a>Integration von Arbeitselementen (Vorschau)
+# <a name="work-item-integration"></a>Integration von Arbeitselementen 
 
 Die Funktion zur Integration von Arbeitselementen ermöglicht Ihnen das einfache Erstellen von Arbeitselementen in GitHub oder Azure DevOps, in die relevante Application Insights-Daten eingebettet sind.
-
-> [!IMPORTANT]
-> Die Integration von Arbeitselementen befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-and-configure-a-work-item-template"></a>Erstellen und Konfigurieren einer Arbeitselementvorlage
 
@@ -32,6 +27,8 @@ Die Funktion zur Integration von Arbeitselementen ermöglicht Ihnen das einfache
 2. Nachdem Sie **Neue Vorlage erstellen** ausgewählt haben, können Sie die Nachverfolgungssysteme auswählen, der Arbeitsmappe einen Namen geben, eine Verknüpfung mit dem ausgewählten Nachverfolgungssystem erstellen und eine Region zum Speichern der Verlage auswählen (dies ist standardmäßig die Region, in der sich Ihre Application Insights Ressource befindet). Die URL-Parameter sind die Standard-URL für Ihr Repository, z. B. `https://github.com/myusername/reponame` oder `https://mydevops.visualstudio.com/myproject`.
 
     :::image type="content" source="./media/work-item-integration/create-workbook.png" alt-text=" Screenshot zum Erstellen einer neuen Arbeitsmappenvorlage für Arbeitselemente":::
+
+    Sie können spezifische Workitem-Eigenschaften direkt in der Vorlage selbst einstellen. Dies umfasst den Zugewiesenen, den Iterationspfad, Projekte und mehr, abhängig von Ihrem Versionskontrollanbieter.
 
 ## <a name="create-a-work-item"></a>Erstellen eines Arbeitselements
 

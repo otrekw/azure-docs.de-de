@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/20/2021
+ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: f8931fedb380cf81d72b7b5280a5795498daaa57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc499e54ebc700f87edbc904165000155211ca1b
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99251980"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007122"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Verknüpfen von Azure AD-Daten (Azure Active Directory) mit Azure Sentinel
 
 Sie können den in Azure Sentinel integrierten Connector verwenden, um Daten aus [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) zu erfassen und in Azure Sentinel zu streamen. Der Connector ermöglicht das Streamen folgender Protokolltypen:
 
-- [**Anmeldeprotokolle**](../active-directory/reports-monitoring/concept-all-sign-ins.md): Diese Protokolle enthalten Informationen zu [interaktiven Benutzeranmeldungen](../active-directory/reports-monitoring/concept-all-sign-ins.md#user-sign-ins), bei denen ein Benutzer einen Authentifizierungsfaktor bereitstellt.
+- [**Anmeldeprotokolle**](../active-directory/reports-monitoring/concept-all-sign-ins.md): Diese Protokolle enthalten Informationen zu interaktiven Benutzeranmeldungen, bei denen ein Benutzer einen Authentifizierungsfaktor bereitstellt.
 
     Der Azure AD-Connector beinhaltet nun drei zusätzliche Kategorien von Anmeldeprotokollen (aktuell in der **VORSCHAUPHASE**):
     
@@ -44,7 +44,7 @@ Sie können den in Azure Sentinel integrierten Connector verwenden, um Daten aus
 > Wie bereits erwähnt, befinden sich einige der verfügbaren Protokolltypen derzeit in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Jede Azure AD-Lizenz (Free/O365/P1/P2) ist für das Erfassen von Anmeldeprotokollen in Azure Sentinel ausreichend. Für Azure Monitor (Log Analytics) und Azure Sentinel können zusätzliche Gebühren auf Gigabytebasis anfallen.
+- Für die Aufnahme von Anmeldeprotokollen in Azure Sentinel ist eine Azure Active Directory P1- oder P2-Lizenz erforderlich. Eine beliebige Azure AD-Lizenz (Free/O365/P1/P2) reicht aus, um die anderen Protokolltypen zu ingestieren. Für Azure Monitor (Log Analytics) und Azure Sentinel können zusätzliche Gebühren auf Gigabytebasis anfallen.
 
 - Ihrem Benutzer muss die Rolle „Azure Sentinel-Mitwirkender“ für den Arbeitsbereich zugewiesen sein.
 

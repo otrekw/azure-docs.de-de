@@ -5,20 +5,24 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: b6689220873aaeb65337ba480e346e5d2c8020ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/22/2021
+ms.openlocfilehash: eb54ad3e5e7d3db5fc1a399c473de81531e27178
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91707862"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988584"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Logische Replikation und Decodierung in Azure Database for PostgreSQL – Flexible Server
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – Flexible Server befindet sich in der Vorschau.
 
-Die PostgreSQL-Features zur logischen Replikation und logischen Decodierung werden in Azure Database for PostgreSQL – Flexible Server für Version 11 von Postgres unterstützt.
+Azure Database für PostgreSQL - Flexible Server unterstützt die folgenden Methoden der logischen Datenextraktion und -replikation:
+1. **Logische Replikation**
+   1. Verwendung Sie PostgreSQL [native logische Replikation](https://www.postgresql.org/docs/12/logical-replication.html), um Datenobjekte zu replizieren. Die logische Replikation ermöglicht eine detaillierte Kontrolle über die Datenreplikation, einschließlich der Datenreplikation auf Tabellenebene.
+   2. Mit der Erweiterung [pglogical](https://github.com/2ndQuadrant/pglogical), die logische Streaming-Replikation sowie zusätzliche Funktionen wie das Kopieren des Anfangsschemas der Datenbank, Unterstützung für TRUNCATE, die Möglichkeit, DDL zu replizieren usw. bietet.
+2. **Logische Dekodierung**, die durch [Dekodierung](https://www.postgresql.org/docs/12/logicaldecoding-explanation.html) des Inhalts des Write-Ahead-Logs (WAL) realisiert wird. 
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>Vergleich der logischen Replikation mit der logischen Decodierung
 Die logische Replikation und die logische Decodierung weisen Ähnlichkeiten auf. Folgendes gilt für beide Konzepte:
@@ -35,8 +39,7 @@ Die beiden Technologien unterscheiden sich wie folgt: Logische Replikation
 
 Logische Decodierung 
 * Extrahiert Änderungen aus allen Tabellen in einer Datenbank 
-* Kann Daten nicht direkt zwischen PostgreSQL-Instanzen senden
-
+* kann keine Daten direkt zwischen PostgreSQL-Instanzen senden.
 
 ## <a name="pre-requisites-for-logical-replication-and-logical-decoding"></a>Voraussetzungen für die logische Replikation und die logische Decodierung
 
@@ -48,10 +51,9 @@ Logische Decodierung
    ALTER ROLE <adminname> WITH REPLICATION;
    ```
 
-
 ## <a name="using-logical-replication-and-logical-decoding"></a>Verwenden der logischen Replikation und der logischen Decodierung
 
-### <a name="logical-replication"></a>Logische Replikation
+### <a name="native-logical-replication"></a>Native logische Replikation
 Bei der logischen Replikation wird üblicherweise vom „Verleger“ und vom „Abonnenten“ gesprochen. 
 * Beim Verleger handelt es sich um die PostgreSQL-Datenbank, **von** der die Daten gesendet werden. 
 * Beim Abonnenten handelt es sich um die PostgreSQL-Datenbank, **an** die die Daten gesendet werden.
@@ -89,6 +91,31 @@ Sie können der Tabelle des Verlegers weitere Zeilen hinzufügen und die Änderu
 
 Weitere Informationen über die [logische Replikation](https://www.postgresql.org/docs/current/logical-replication.html) finden Sie in der PostgreSQL-Dokumentation.
 
+
+### <a name="pglogical-extension"></a>pglogische Erweiterung
+
+Im Folgenden finden Sie ein Beispiel für die Konfiguration von pglogical auf dem Provider-Datenbankserver und dem Teilnehmer. Einzelheiten dazu finden Sie in der Dokumentation zur pglogical-Erweiterung.
+
+1. Installieren Sie die pglogische Erweiterung sowohl auf dem Anbieterserver als auch auf den Abonnentendatenbankservern.
+    ```SQL
+   CREATE EXTENSION pglogical;
+   ```
+2. Legen Sie auf dem Anbieter-Datenbankserver den Anbieterknoten an.
+   ```SQL
+   select pglogical.create_node( node_name := 'provider1', dsn := ' host=myProviderDB.postgres.database.azure.com port=5432 dbname=myDB');
+   ```
+3. Tabellen im testUser-Schema zum Standardreplikationssatz hinzufügen.
+    ```SQL
+   SELECT pglogical.replication_set_add_all_tables('default', ARRAY['testUser']);
+   ```
+4. Erstellen Sie am Abonnentenserver einen Abonnentenknoten.
+   ```SQL
+   select pglogical.create_node( node_name := 'subscriber1', dsn := ' host=mySubscriberDB.postgres.database.azure.com port=5432 dbname=myDB');
+   ```
+5. Erstellen Sie ein Abonnement, um den Synchronisierungs- und Replikationsprozess zu starten.
+    ```SQL
+   select pglogical.create_subscription( subscription_name := 'subscription1', provider_dsn := ' host=myProviderDB.postgres.database.azure.com port=5432 dbname=myDB');
+   ```
 ### <a name="logical-decoding"></a>Logische Decodierung
 Die logische Decodierung kann über das Streamingprotokoll oder die SQL-Schnittstelle genutzt werden. 
 
@@ -175,7 +202,8 @@ SELECT * FROM pg_replication_slots;
 [Legen Sie Benachrichtigungen](howto-alert-on-metrics.md) für die Servermetriken **Maximum Used Transaction IDs** (Maximal verwendete Transaktions-IDs) and **Verwendeter Speicher** fest, damit Sie informiert werden, wenn die normalen Schwellenwerte überschritten werden. 
 
 ## <a name="limitations"></a>Einschränkungen
-* **Lesereplikate:** Lesereplikate von Azure Database for PostgreSQL werden für flexible Server derzeit nicht unterstützt.
+* Es gelten **logische Replikationseinschränkungen**, wie [hier](https://www.postgresql.org/docs/12/logical-replication-restrictions.html) dokumentiert.
+* **Lesereplikate:** Lesereplikate von Azure Database for PostgreSQL werden mit flexible Server derzeit nicht unterstützt.
 * **Slots und Hochverfügbarkeitsfailover:** Logische Replikationsslots auf dem primären Server sind auf dem Standbyserver in der sekundären Verfügbarkeitszone nicht verfügbar. Dies gilt für Sie, wenn der Server die Option für die zonenredundante Hochverfügbarkeit verwendet. Im Fall eines Failovers auf den Standbyserver sind logische Replikationsslots im Standbymodus nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte

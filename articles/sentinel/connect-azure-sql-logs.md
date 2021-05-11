@@ -1,19 +1,19 @@
 ---
-title: Verbinden von Diagnose- und Überwachungsprotokollen von Azure SQL-Datenbank mit Azure Sentinel
-description: Erfahren Sie, wie Sie Diagnose- und Sicherheitsüberwachungsprotokolle von Azure SQL-Datenbank mit Azure Sentinel verbinden.
+title: Verbinden von sämtlichen Diagnose- und Überwachungsprotokollen von Azure SQL-Datenbank mit Azure Sentinel
+description: Erfahren Sie, wie Sie mithilfe von Azure Policy die Verbindung der Azure SQL-Datenbank-Diagnoseprotokolle und Sicherheitsüberwachungsprotokolle mit Azure Sentinel erzwingen können.
 author: yelevin
 manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: a3a09ceffc75e2d396d7bd7aeedd97b7f2b6ec2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba4cefaca7225f25076efa5cdcb81de46aa5cd60
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99807732"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891318"
 ---
 # <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>Verbinden von Diagnose- und Überwachungsprotokollen von Azure SQL-Datenbank
 
@@ -25,7 +25,7 @@ Mit dem Azure SQL-Datenbank-Connector können Sie die Überwachungs- und Diagnos
 
 - Durch das Verbinden von Überwachungsprotokollen können Sie Sicherheitsüberwachungsprotokolle aus allen Azure SQL-Datenbanken auf Serverebene streamen.
 
-Weitere Informationen finden Sie unter [Überwachung in Azure SQL-Datenbanken](../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
+Erfahren Sie mehr über [Azure SQL-Datenbank Diagnosetelemetriedaten](../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) und über [Azure SQL-Server-Überwachung](../azure-sql/database/auditing-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,79 +33,57 @@ Weitere Informationen finden Sie unter [Überwachung in Azure SQL-Datenbanken](.
 
 - Zum Verbinden von Überwachungsprotokollen müssen Sie über Lese- und Schreibberechtigungen für die Azure SQL Server-Überwachungs Einstellungen verfügen.
 
+- Wenn Sie Azure Policy verwenden möchten, um eine Richtlinie zum Protokollstreaming in Azure SQL-Datenbank-Ressourcen anzuwenden, müssen Sie die Rolle „Besitzer“ für den Zuweisungsbereich der Richtlinie besitzen.
+
 ## <a name="connect-to-azure-sql-database"></a>Herstellen einer Verbindung mit Azure SQL-Datenbank
-    
+
+Dieser Connector verwendet Azure Policy, um eine einzelne Konfiguration zum Azure SQL-Protokollstreaming auf eine Sammlung von Instanzen anzuwenden, die als Bereich definiert sind. Der Azure SQL-Datenbank Connector sendet zwei Arten von Protokollen an Azure Sentinel: Diagnoseprotokolle (aus SQL-Datenbanken) und Überwachungsprotokolle (auf SQL Server-Ebene). Die in Azure SQL-Datenbanken und -Server erfassten Protokolltypen werden links auf der Connectorseite unter **Datentypen** angezeigt.
+
 1. Klicken Sie im Azure Sentinel-Navigationsmenü auf **Data connectors** (Datenconnectors).
 
-1. Wählen Sie im Katalog für Datenconnectors **Azure SQL-Datenbank** und dann im Vorschaubereich **Connectorseite öffnen** aus.
+1. Wählen Sie im Katalog für Datenconnectors **Azure SQL-Datenbanken** und dann im Vorschaubereich **Connectorseite öffnen** aus.
 
 1. Beachten Sie im Abschnitt **Konfiguration** der Connectorseite die beiden Kategorien von Protokollen, die Sie verbinden können.
 
 ### <a name="connect-diagnostics-logs"></a>Verbinden von Diagnoseprotokollen
 
-1. Erweitern Sie unter **Diagnoseprotokolle** die Option **Diagnoseprotokolle für jede Ihrer Azure SQL-Datenbanken manuell aktivieren**.
+1. **Streamen Sie Diagnoseprotokolle von Ihren Azure SQL-Datenbanken großflächig** erweitern.
 
-1. Wählen Sie den Link **Azure SQL öffnen >** aus, um das Ressourcenblatt **Azure SQL** zu öffnen.
+1. Wählen Sie die Schaltfläche **Azure Policy-Zuweisungs-Assistent starten** aus.
 
-1. **(Optional)** Um die Datenbankressourcen auf einfache Weise zu finden, wählen Sie **Filter hinzufügen** oben auf der Filterleiste aus.
-    1. Wählen Sie in der Dropdown Liste **Filter** die Option **Ressourcentyp** aus.
-    1. Deaktivieren Sie in der Dropdownliste **Wert** die Option **Alle auswählen**, und wählen Sie dann **SQL-Datenbank** aus.
-    1. Klicken Sie auf **Anwenden**.
-    
-1. Wählen Sie die Datenbankressource aus, deren Diagnoseprotokolle an Azure Sentinel gesendet werden sollen.
+    Der Richtlinienzuweisungs-Assistent wird geöffnet, und Sie können eine neue Richtlinie mit dem Namen **Bereitstellen: Diagnoseeinstellungen für Azure SQL-Datenbanken in Protokollanalyse-Arbeitsbereich konfigurieren** erstellen.
 
-    > [!NOTE]
-    > Sie müssen diesen Vorgang ab diesem Schritt für jede Datenbankressource wiederholen, deren Protokolle Sie erfassen möchten.
+    1. Klicken Sie auf der Registerkarte **Grundlagen** unter **Bereich** auf die Schaltfläche mit den drei Punkten, um Ihr Abonnement (und optional eine Ressourcengruppe) auszuwählen. Sie können auch eine Beschreibung hinzufügen.
 
-1. Wählen Sie auf der Ressourcenseite der Datenbank, die Sie ausgewählt haben, unter **Überwachung** im Navigationsmenü **Diagnoseeinstellungen** aus.
+    1. Lassen Sie auf der Registerkarte **Parameter** die ersten beiden Einstellungen unverändert. Wählen Sie in der Dropdownliste **Log Analytics-Arbeitsbereich** Ihren Azure Sentinel-Arbeitsbereich aus. Die übrigen Dropdownfelder stellen die verfügbaren Diagnoseprotokolltypen dar. Behalten Sie für alle Protokolltypen, die erfasst werden sollen, die Markierung „True“ bei.
 
-    1. Wählen Sie am Ende der Tabelle **+ Diagnoseeinstellung hinzufügen** aus.
+    1. Die Richtlinie wird auf Ressourcen angewendet, die in Zukunft hinzugefügt werden. Wählen Sie zum Anwenden der Richtlinie auf Ihre vorhandenen Ressourcen die Registerkarte **Wartung** aus, und aktivieren Sie das Kontrollkästchen **Wartungstask erstellen**.
 
-    1. Geben Sie auf dem Bildschirm **Diagnoseeinstellung** einen Namen in das Feld **Name der Diagnoseeinstellungen** ein.
-    
-    1. Aktivieren Sie in der Spalte **Zieldetails** das Kontrollkästchen **An Log Analytics-Arbeitsbereich senden**. Zwei neue Felder werden darunter angezeigt. Wählen Sie das relevante **Abonnement** und den **Log Analytics-Arbeitsbereich** (in dem sich Azure Sentinel befindet) aus.
-
-    1. Aktivieren Sie in der Spalte **Kategoriedetails** die Kontrollkästchen für die Protokoll- und Metriktypen, die Sie erfassen möchten. Es wird empfohlen, alle verfügbaren Typen unter **Protokoll** und **Metrik** auszuwählen.
-
-    1. Wählen Sie im oberen Bereich des Bildschirms **Speichern** aus.
-
-- Alternativ können Sie das bereitgestellten **PowerShell-Skript** verwenden, um die Diagnoseprotokolle zu verbinden.
-    1. Erweitern Sie unter **Diagnoseprotokolle** die Option **Durch PowerShell-Skript aktivieren**.
-
-    1. Kopieren Sie den Codeblock, und fügen Sie ihn in PowerShell ein.
+    1. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**. Damit ist die Richtlinie dem ausgewählten Bereich zugewiesen.
 
 ### <a name="connect-audit-logs"></a>Verbinden von Überwachungsprotokollen
 
-1. Erweitern Sie unter **Überwachungsprotokolle (Vorschau)** die Option **Überwachungsprotokolle für alle Azure SQL-Datenbanken aktivieren (auf Serverebene)** .
+1. Erweitern Sie, nachdem Sie wieder auf der Connector-Seite sind, **Stream-Auditing-Protokolle von Ihren Azure SQL-Datenbanken auf Serverebene großflächig**.
 
-1. Wählen Sie den Link **Azure SQL öffnen >** aus, um das Ressourcenblatt **SQL-Server** zu öffnen.
+1. Wählen Sie die Schaltfläche **Azure Policy-Zuweisungs-Assistent starten** aus.
 
-1. Wählen Sie den SQL-Server aus, dessen Überwachungsprotokolle an Azure Sentinel gesendet werden sollen.
+    Der Richtlinienzuweisungs-Assistent wird geöffnet, und Sie können eine neue Richtlinie mit dem Namen **Bereitstellen: Auditingeinstellungen für Azure SQL-Datenbanken in Protokollanalyse-Arbeitsbereich konfigurieren** erstellen.
 
-    > [!NOTE]
-    > Sie müssen diesen Vorgang ab diesem Schritt für jede Serverressource wiederholen, deren Protokolle Sie erfassen möchten.
+    1. Klicken Sie auf der Registerkarte **Grundlagen** unter **Bereich** auf die Schaltfläche mit den drei Punkten, um Ihr Abonnement (und optional eine Ressourcengruppe) auszuwählen. Sie können auch eine Beschreibung hinzufügen.
 
-1. Wählen Sie auf der Ressourcenseite des Servers, den Sie ausgewählt haben, unter **Sicherheit** im Navigationsmenü **Überwachung** aus.
+    1. Wählen Sie auf der Registerkarte **Parameter** Ihren Azure Sentinel-Arbeitsbereich in der Dropdownliste **Log Analytics-Arbeitsbereich** aus. Lassen Sie die Einstellung **Effekt** unverändert.
 
-    1. Verschieben Sie den Umschalter **Azure SQL-Überwachung aktivieren** auf **EIN**.
+    1. Die Richtlinie wird auf Ressourcen angewendet, die in Zukunft hinzugefügt werden. Wählen Sie zum Anwenden der Richtlinie auf Ihre vorhandenen Ressourcen die Registerkarte **Wartung** aus, und aktivieren Sie das Kontrollkästchen **Wartungstask erstellen**.
 
-    1. Wählen Sie unter **Ziel des Überwachungsprotokolls** die Option **Log Analytics (Vorschau)** aus.
-    
-    1. Wählen Sie in der Liste der Arbeitsbereiche, die angezeigt wird, Ihren Arbeitsbereich aus (in dem sich Azure Sentinel befindet).
-
-    1. Wählen Sie im oberen Bereich des Bildschirms **Speichern** aus.
-
-- Alternativ können Sie das bereitgestellten **PowerShell-Skript** verwenden, um die Diagnoseprotokolle zu verbinden.
-    1. Erweitern Sie unter **Überwachungsprotokolle** die Option **Durch PowerShell-Skript aktivieren**.
-
-    1. Kopieren Sie den Codeblock, und fügen Sie ihn in PowerShell ein.
-
+    1. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**. Damit ist die Richtlinie dem ausgewählten Bereich zugewiesen.
 
 > [!NOTE]
 >
-> Mit diesem speziellen Datenconnector werden die Konnektivitätsstatusindikatoren (ein Farbstreifen im Datenconnectors-Katalog sowie Verbindungssymbole neben den Datentypnamen) nur dann als *verbunden* (grün) angezeigt, wenn Daten irgendwann innerhalb der letzten zwei Wochen erfasst wurden. Wenn zwei Wochen ohne Datenerfassung vergangen sind, wird der Connector als „getrennt“ angezeigt. In dem Moment, in dem weitere Daten den Connector passieren, wird der Status wieder als *verbunden* angezeigt.
+> Mit diesem speziellen Datenconnector werden die Konnektivitätsstatusindikatoren (ein Farbstreifen im Datenconnectors-Katalog sowie Verbindungssymbole neben den Datentypnamen) nur dann als *verbunden* (grün) angezeigt, wenn Daten irgendwann innerhalb der letzten 14 Tage erfasst wurden. Wenn 14 Tage ohne Datenerfassung vergangen sind, wird der Connector als „getrennt“ angezeigt. In dem Moment, in dem weitere Daten den Connector passieren, wird der Status wieder als *verbunden* angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument haben Sie erfahren, wie Sie Diagnose- und Überwachungsprotokolle von Azure SQL-Datenbank mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+
+In diesem Dokument haben Sie gelernt, wie Sie die Azure Policy verwenden, um Azure SQL-Datenbankdiagnose und Audit-Protokolle mit Azure Sentinel zu verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
