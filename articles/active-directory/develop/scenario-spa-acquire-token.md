@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/20/2019
+ms.date: 04/2/2021
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: d3fe7369d3463b8508f65345729898481815070f
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 2e4369c729fc5497f615f64c1f7235d19c293f98
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947571"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227738"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Single-Page-Webanwendung: Abrufen eines Tokens zum Aufrufen einer API
 
-Das Muster für das Abrufen von Token für APIs mit MSAL.js besteht darin, zuerst zu versuchen, eine automatische Tokenanforderung mithilfe der `acquireTokenSilent`-Methode zu senden. Wenn diese Methode aufgerufen wird, überprüft die Bibliothek zuerst den Cache im Browserspeicher, um festzustellen, ob ein gültiges Token vorhanden ist, und dann wird das Token zurückgegeben. Wenn kein gültiges Token im Cache vorhanden ist, sendet sie aus einem ausgeblendeten IFrame eine automatische Tokenanforderung an Azure Active Directory (Azure AD). Diese Methode ermöglicht der Bibliothek auch, Token zu erneuern. Weitere Informationen zu SSO-Sitzungen und Werten für die Tokengültigkeitsdauer in Azure AD finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)](active-directory-configurable-token-lifetimes.md).
+Das Muster für das Abrufen von Token für APIs mit [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js) besteht darin, zuerst zu versuchen, eine automatische Tokenanforderung mithilfe der `acquireTokenSilent`-Methode zu senden. Wenn diese Methode aufgerufen wird, überprüft die Bibliothek zuerst den Cache im Browserspeicher, um festzustellen, ob ein gültiges Token vorhanden ist, und dann wird das Token zurückgegeben. Wenn sich kein gültiges Token im Cache befindet, wird versucht, das Token mit dem zugehörigen Aktualisierungstoken abzurufen. Wenn die 24-stündige Gültigkeitsdauer des Aktualisierungstokens abgelaufen ist, öffnet MSAL.js einen ausgeblendeten IFrame, um automatisch einen neuen Autorisierungscode anzufordern, der gegen ein neues gültiges Aktualisierungstoken ausgetauscht wird. Weitere Informationen zu SSO-Sitzungen und Werten für die Tokengültigkeitsdauer in Azure AD finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)](active-directory-configurable-token-lifetimes.md).
 
-Beim Senden von automatischen Tokenanforderungen an Azure AD können beispielsweise aufgrund einer abgelaufenen Azure AD-Sitzung oder einer Kennwortänderung Fehler auftreten. In diesem Fall können Sie eine der interaktiven Methoden aufrufen (die den Benutzer zur Eingabe auffordern), um Token abzurufen:
+Beim Senden von automatischen Tokenanforderungen an Azure AD können beispielsweise aufgrund einer Kennwortänderung oder aktualisierter Richtlinien für bedingten Zugriff Fehler auftreten.  Häufiger sind auftretende Fehler darauf zurückzuführen, dass die 24-stündige Gültigkeitsdauer des Aktualisierungstokens abläuft und [der Browser Cookies von Drittanbietern blockiert](reference-third-party-cookies-spas.md), wodurch die Verwendung von ausgeblendeten IFrames zur weiteren Authentifizierung des Benutzers verhindert wird.  In diesen Fällen sollten Sie zum Abrufen von Token eine der interaktiven Methoden aufrufen (die den Benutzer dazu auffordern):
 
 * [Popupfenster](#acquire-a-token-with-a-pop-up-window) mithilfe von `acquireTokenPopup`
 * [Umleitung](#acquire-a-token-with-a-redirect) mithilfe von `acquireTokenRedirect`

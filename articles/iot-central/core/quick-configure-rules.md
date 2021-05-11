@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: f65614de97e8ff6eed732e624ae30c3f2b70bd60
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 94dab0124a1f5e0144aab2e271fbf89e02111d3a
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589005"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206797"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Schnellstart: Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central
 
@@ -31,13 +31,13 @@ Erstellen Sie zunächst mithilfe der beiden vorherigen Schnellstartanleitungen [
 
 1. Geben Sie als Regelname **Environmental humidity** (Luftfeuchtigkeit der Umgebung) ein.
 
-1. Wählen Sie im Abschnitt **Zielgeräte** die Gerätevorlage **Sensor Controller** aus. Diese Option filtert die Geräte, auf die die Regel angewendet wird, nach Gerätevorlagentyp. Sie können weitere Filterkriterien hinzufügen, indem Sie **+ Filter** auswählen.
+1. Wählen Sie im Abschnitt **Zielgeräte** unter **Gerätevorlage** die Vorlage **Sensor Controller** aus. Diese Option filtert die Geräte, auf die die Regel angewendet wird, nach Gerätevorlagentyp. Sie können weitere Filterkriterien hinzufügen, indem Sie **+ Filter** auswählen.
 
 1. Im Abschnitt **Bedingungen** definieren Sie, wodurch Ihre Regel ausgelöst wird. Verwenden Sie die folgenden Informationen, um eine Bedingung basierend auf Temperaturtelemetrie zu definieren:
 
     | Feld        | Wert            |
     | ------------ | ---------------- |
-    | Messung  | SensorHumid      |
+    | Telemetrie    | SensorHumid      |
     | Operator     | größer als  |
     | Wert        | 55               |
 
@@ -60,7 +60,7 @@ Erstellen Sie zunächst mithilfe der beiden vorherigen Schnellstartanleitungen [
 
     :::image type="content" source="media/quick-configure-rules/action.png" alt-text="Screenshot: Regel mit hinzugefügter E-Mail-Aktion":::
 
-1. Wählen Sie **Speichern** aus. Ihre Regel ist auf der Seite **Regeln** aufgeführt.
+1. Wählen Sie **Speichern** aus. Ihre Regel ist nun auf der Seite **Regeln** aufgeführt.
 
 ## <a name="test-the-rule"></a>Testen der Regel
 

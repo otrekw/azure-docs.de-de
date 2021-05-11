@@ -12,12 +12,12 @@ ms.date: 02/12/2021
 ms.author: iangithinji
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1af80979a4712f6d25d994835128f9d5d2205f42
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: d4dc415d4ce7b32c1581618c7a351110af8edaa3
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534725"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160761"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -39,7 +39,7 @@ Der Benutzer wird zu einem der folgenden Identitätsanbieter weitergeleitet, um 
 
 ## <a name="auto-acceleration"></a>Automatische Beschleunigung
 
-Einige Unternehmen konfigurieren Domänen in ihrem Azure Active Directory-Mandanten so, dass er mit einem anderen Identitätsanbieter wie AD FS zur Benutzerauthentifizierung einen Verbund bildet.  
+Einige Unternehmen konfigurieren Domänen in ihrem Azure Active Directory-Mandanten so, dass er mit einem anderen Identitätsanbieter wie AD FS zur Benutzerauthentifizierung einen Verbund bildet.
 
 Wenn sich ein Benutzer bei einer Anwendung anmeldet, wird zunächst eine Azure AD-Anmeldeseite angezeigt. Falls er sich in einer Verbunddomäne befindet, wird er nach Eingabe seines UPN zur Anmeldeseite des Identitätsanbieters für diese Domäne weitergeleitet. Unter bestimmten Umständen können Administratoren Benutzer auf die Anmeldeseite weiterleiten, wenn sie sich bei bestimmten Anwendungen anmelden.
 
@@ -47,8 +47,8 @@ Daher können Benutzer die erste Seite von Azure Active Directory überspringen.
 
 In den Fällen, in denen der Mandant mit einem anderen IdP für die Anmeldung einen Verbund bildet, wird die Benutzeranmeldung durch die automatische Beschleunigung optimiert.  Sie können die automatische Beschleunigung für einzelne Anwendungen konfigurieren.
 
->[!NOTE]
->Wenn Sie eine Anwendung für die automatische Beschleunigung konfigurieren, können Benutzer keine verwalteten Anmeldeinformationen (beispielsweise FIDO) verwenden, und Gastbenutzer können sich nicht anmelden. Wenn Sie einen Benutzer direkt an einen Verbund-IdP für die Authentifizierung weiterleiten, gibt es für ihn keine Möglichkeit, zur Anmeldeseite von Azure Active Directory zurückzukehren. Gastbenutzer, die möglicherweise an andere Mandanten oder an einen externen IdP wie ein Microsoft-Konto weitergeleitet werden müssen, können sich nicht bei dieser Anwendung anmelden, weil sie den Schritt „Startbereichsermittlung“ (Home Realm Discovery, HDR) überspringen.  
+> [!NOTE]
+> Wenn Sie eine Anwendung für die automatische Beschleunigung konfigurieren, können Benutzer keine verwalteten Anmeldeinformationen (beispielsweise FIDO) verwenden, und Gastbenutzer können sich nicht anmelden. Wenn Sie einen Benutzer direkt an einen Verbund-IdP für die Authentifizierung weiterleiten, gibt es für ihn keine Möglichkeit, zur Anmeldeseite von Azure Active Directory zurückzukehren. Gastbenutzer, die möglicherweise an andere Mandanten oder an einen externen IdP wie ein Microsoft-Konto weitergeleitet werden müssen, können sich nicht bei dieser Anwendung anmelden, weil sie den Schritt „Startbereichsermittlung“ (Home Realm Discovery, HDR) überspringen.
 
 Die automatische Beschleunigung für einen Verbundidentitätsanbieter kann auf drei Arten gesteuert werden:
 
@@ -58,7 +58,7 @@ Die automatische Beschleunigung für einen Verbundidentitätsanbieter kann auf d
 
 ### <a name="domain-hints"></a>Domänenhinweise
 
-Domänenhinweise sind in der Authentifizierungsanforderung einer Anwendung enthaltene Anweisungen. Sie können verwendet werden, um die beschleunigte Anmeldung des Benutzers auf der Anmeldeseite seines Verbundidentitätsanbieters zu ermöglichen. Sie können auch von einer Anwendung für mehrere Mandanten verwendet werden, um den Benutzer beschleunigt direkt zur organisationsspezifischen Azure AD-Anmeldeseite für ihren Mandanten zu leiten.  
+Domänenhinweise sind in der Authentifizierungsanforderung einer Anwendung enthaltene Anweisungen. Sie können verwendet werden, um die beschleunigte Anmeldung des Benutzers auf der Anmeldeseite seines Verbundidentitätsanbieters zu ermöglichen. Sie können auch von einer Anwendung für mehrere Mandanten verwendet werden, um den Benutzer beschleunigt direkt zur organisationsspezifischen Azure AD-Anmeldeseite für ihren Mandanten zu leiten.
 
 Die Anwendung „largeapp.com“ könnte es z.B. ihren Kunden ermöglichen, auf die Anwendung über eine benutzerdefinierte URL wie „contoso.largeapp.com“ zuzugreifen. Dabei könnte die App einen Domänenhinweis auf „contoso.com“ in die Authentifizierungsanforderung einbeziehen.
 
@@ -79,16 +79,16 @@ Wenn sich der Domänenhinweis nicht auf eine überprüfte Verbunddomäne bezieht
 
 Weitere Informationen zur automatischen Beschleunigung unter Verwendung der Domänenhinweise, die von Azure Active Directory unterstützt werden, finden Sie im Blog [Enterprise Mobility + Security](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/11/using-azure-ad-to-land-users-on-their-custom-login-page-from-within-your-app/).
 
->[!NOTE]
->Wenn ein Domänenhinweis in einer Authentifizierungsanforderung enthalten ist und [berücksichtigt werden soll](#home-realm-discovery-policy-to-prevent-auto-acceleration), wird die automatische Beschleunigung außer Kraft gesetzt, die in der Richtlinie zur Startbereichsermittlung für die Anwendung festgelegt ist.
+> [!NOTE]
+> Wenn ein Domänenhinweis in einer Authentifizierungsanforderung enthalten ist und [berücksichtigt werden soll](#home-realm-discovery-policy-to-prevent-auto-acceleration), wird die automatische Beschleunigung außer Kraft gesetzt, die in der Richtlinie zur Startbereichsermittlung für die Anwendung festgelegt ist.
 
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>Richtlinie zur Startbereichsermittlung für die automatische Beschleunigung
 
-Einige Anwendungen bieten keine Möglichkeit, die von ihnen ausgegebene Authentifizierungsanforderung zu konfigurieren. In diesen Fällen ist es nicht möglich, Domänenhinweise zur Steuerung der automatischen Beschleunigung zu verwenden. Die automatische Beschleunigung kann mithilfe einer Richtlinie für die Startbereichsermittlung konfiguriert werden, um das gleiche Verhalten zu erreichen.  
+Einige Anwendungen bieten keine Möglichkeit, die von ihnen ausgegebene Authentifizierungsanforderung zu konfigurieren. In diesen Fällen ist es nicht möglich, Domänenhinweise zum Steuern der automatischen Beschleunigung zu verwenden. Die automatische Beschleunigung kann mithilfe einer Richtlinie für die Startbereichsermittlung konfiguriert werden, um das gleiche Verhalten zu erreichen.
 
 ### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>Richtlinie für die Startbereichsermittlung zur Vermeidung der automatischen Beschleunigung
 
-Einige Microsoft- und SaaS-Anwendungen enthalten automatisch Domänenhinweise. (`https://outlook.com/contoso.com` resultiert beispielsweise in einer Anmeldeanforderung, an die `&domain_hint=contoso.com` angefügt ist.) Dies kann das Rollout von verwalteten Anmeldeinformationen wie FIDO behindern.  Mithilfe einer [Richtlinie für die Startbereichsermittlung](/graph/api/resources/homeRealmDiscoveryPolicy) können Domänenhinweise von bestimmten Apps oder für bestimmte Domänen beim Rollout verwalteter Anmeldeinformationen ignoriert werden.  
+Einige Microsoft- und SaaS-Anwendungen enthalten automatisch Domänenhinweise. (`https://outlook.com/contoso.com` resultiert beispielsweise in einer Anmeldeanforderung, an die `&domain_hint=contoso.com` angefügt ist.) Dies kann das Rollout von verwalteten Anmeldeinformationen wie FIDO behindern.  Mithilfe einer [Richtlinie für die Startbereichsermittlung](/graph/api/resources/homeRealmDiscoveryPolicy) können Domänenhinweise von bestimmten Apps oder für bestimmte Domänen beim Rollout verwalteter Anmeldeinformationen ignoriert werden.
 
 ## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Aktivieren der direkten ROPC-Authentifizierung von Verbundbenutzern für Legacyanwendungen
 
@@ -109,21 +109,21 @@ Um in einer Anwendung für die automatische Beschleunigung bei der Verbundanmeld
 
 Richtlinien treten für eine bestimmte Anwendung nur in Kraft, wenn sie an einen Dienstprinzipal angefügt werden.
 
-Es kann immer nur eine Richtlinie zur Startbereichsermittlung auf einem Dienstprinzipal aktiv sein.  
+Es kann immer nur eine Richtlinie zur Startbereichsermittlung auf einem Dienstprinzipal aktiv sein.
 
 Sie können eine Richtlinie zur Startbereichsermittlung mit den Azure Active Directory PowerShell-Cmdlets erstellen und verwalten.
 
 Das folgende Beispiel zeigt eine Definition für eine Richtlinie zur Startbereichsermittlung:
 
- ```JSON
-   {  
-    "HomeRealmDiscoveryPolicy":
-    {  
+```json
+{  
+  "HomeRealmDiscoveryPolicy":
+  {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
     "AllowCloudPasswordValidation":false,    
-    }
-   }
+  }
+}
 ```
 
 Der Richtlinientyp lautet [HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy).
@@ -174,13 +174,13 @@ In den folgenden Beispielen erstellen, aktualisieren, verknüpfen und löschen S
 
 2. Nach dem Herunterladen der Azure AD PowerShell-Cmdlets führen Sie den Befehl „Connect“ aus, um sich bei Azure AD mit Ihrem Administratorkonto anzumelden:
 
-    ``` powershell
+    ```powershell
     Connect-AzureAD -Confirm
     ```
 
 3. Führen Sie den folgenden Befehl aus, um alle Richtlinien in Ihrer Organisation anzuzeigen:
 
-    ``` powershell
+    ```powershell
     Get-AzureADPolicy
     ```
 
@@ -198,25 +198,25 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die eine der folgenden Aktione
 
 Wenn Ihr Mandant eine einzige Domäne aufweist, werden Benutzer beim Anmelden bei einer Anwendung durch die folgende Richtlinie automatisch beschleunigt zu einem AD FS-Anmeldebildschirm weitergeleitet.
 
-``` powershell
+```powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 Wenn Ihr Mandant mehrere Verbunddomänen aufweist, werden Benutzer durch die folgende Richtlinie automatisch beschleunigt zu einem AD FS-Anmeldebildschirm weitergeleitet. Wenn mehrere Verbunddomänen vorliegen, die Benutzer für Anwendungen authentifizieren, müssen Sie die Domäne für die automatische Beschleunigung angeben.
 
-``` powershell
+```powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true, `"PreferredDomain`":`"federated.example.edu`"}}") -DisplayName MultiDomainAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 Um eine Richtlinie zum Aktivieren der direkten Authentifizierung von Verbundbenutzern bei Azure Active Directory über Benutzername/Kennwort für bestimmte Anwendungen zu erstellen, führen Sie den folgenden Befehl aus:
 
-``` powershell
+```powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuthPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 Um Ihre neue Richtlinie und deren **ObjectId** abzurufen, führen Sie den folgenden Befehl aus:
 
-``` powershell
+```powershell
 Get-AzureADPolicy
 ```
 
@@ -230,7 +230,7 @@ Sie können das Portal verwenden, oder Sie können [Microsoft Graph](/graph/api/
 
 Da Sie PowerShell verwenden, können Sie das folgende Cmdlet verwenden, um die Dienstprinzipale sowie deren IDs aufzulisten.
 
-``` powershell
+```powershell
 Get-AzureADServicePrincipal
 ```
 
@@ -238,19 +238,19 @@ Get-AzureADServicePrincipal
 
 Nachdem Sie über die **ObjectID** des Dienstprinzipals der Anwendung verfügen, für die Sie automatische Beschleunigung konfigurieren möchten, führen Sie den folgenden Befehl aus. Dieser Befehl ordnet die Richtlinie zur Startbereichsermittlung, die Sie in Schritt 1 erstellt haben, dem Dienstprinzipal zu, den Sie in Schritt 2 ermittelt haben.
 
-``` powershell
+```powershell
 Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
 ```
 
 Sie können diesen Befehl für jeden Dienstprinzipal wiederholen, dem Sie die Richtlinie hinzufügen möchten.
 
-Falls einer Anwendung bereits eine HomeRealmDiscovery-Richtlinie zugewiesen wurde, können Sie keine zweite hinzufügen.  In diesem Fall ändern Sie die Definition der Richtlinie zur Startbereichsermittlung, die der Anwendung zugewiesen ist, und fügen Sie zusätzliche Parameter hinzu.
+Falls einer Anwendung bereits eine HomeRealmDiscovery-Richtlinie zugewiesen ist, können Sie keine zweite hinzufügen.  In diesem Fall ändern Sie die Definition der Richtlinie zur Startbereichsermittlung, die der Anwendung zugewiesen ist, und fügen Sie zusätzliche Parameter hinzu.
 
 #### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>Schritt 4: Überprüfen, welchen Anwendungsdienstprinzipalen Ihre Richtlinie zur Startbereichsermittlung zugewiesen ist
 
 Um zu überprüfen, welche Anwendungen über eine konfigurierte Richtlinie zur Startbereichsermittlung verfügen, verwenden Sie das Cmdlet **Get-AzureADPolicyAppliedObject**. Übergeben Sie ihm die **ObjectID** der Richtlinie, die Sie überprüfen möchten.
 
-``` powershell
+```powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
@@ -262,15 +262,15 @@ Testen Sie die Anwendung, um zu überprüfen, ob die neue Richtlinie funktionier
 
 #### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>Schritt 1: Auflisten aller Richtlinien, die in Ihrer Organisation erstellt wurden
 
-``` powershell
+```powershell
 Get-AzureADPolicy
 ```
 
 Notieren Sie sich die **ObjectID** der Richtlinie, für die Sie Zuordnungen auflisten möchten.
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>Schritt 2: Auflisten der Dienstprinzipale, denen die Richtlinie zugewiesen ist  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>Schritt 2: Auflisten der Dienstprinzipale, denen die Richtlinie zugewiesen ist
 
-``` powershell
+```powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
@@ -280,15 +280,15 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 
 Verwenden Sie das vorherige Beispiel, um die **ObjectID** der Richtlinie und die ObjectID des Anwendungsdienstprinzipals abzurufen, von dem Sie sie entfernen möchten.
 
-#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>Schritt 2: Entfernen der Richtlinienzuordnung vom Anwendungsdienstprinzipal  
+#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>Schritt 2: Entfernen der Richtlinienzuordnung vom Anwendungsdienstprinzipal
 
-``` powershell
+```powershell
 Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>Schritt 3: Überprüfen der Entfernung durch Auflisten der Dienstprinzipale, denen die Richtlinie zugewiesen ist
 
-``` powershell
+```powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
