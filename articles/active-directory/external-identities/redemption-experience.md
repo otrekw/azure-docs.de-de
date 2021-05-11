@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cd0febe5ffbc1b17718043d5fc97b804f87cc46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e436427a790a3c4ebdbbedb4570c399966ab8c95
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199724"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317863"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen
 
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt die Möglichkeiten, wie Gastbenutzer auf Ihre Ressourc
 Wenn Sie Ihrem Verzeichnis einen Gastbenutzer hinzufügen, hat das Gastbenutzerkonto einen Zustimmungsstatus (in PowerShell einsehbar), der zunächst auf **PendingAcceptance** festgelegt ist. Diese Einstellung bleibt bestehen, bis der Gast Ihre Einladung annimmt und Ihrer Datenschutzerklärung und Ihren Nutzungsbedingungen zustimmt. Danach ändert sich der Zustimmungsstatus in **Accepted** (Akzeptiert), und die Zustimmungsseiten werden dem Gast nicht mehr angezeigt.
 
    > [!IMPORTANT]
-   > - **Am 4. Januar 2021** wird Google [die Unterstützung für die WebView-Anmeldung einstellen](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Wenn Sie einen Google-Verbund oder die Self-Service-Registrierung mit Gmail verwenden, sollten Sie [Ihre nativen Branchenanwendungen auf Kompatibilität testen](google-federation.md#deprecation-of-webview-sign-in-support).
+   > - **Ab der zweiten Hälfte des Jahres 2021** [stellt Google die Unterstützung für die Anmeldung in der Webansicht ein](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie den Google-Verbund für B2B-Einladungen oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden oder die Self-Service-Registrierung mit Gmail verwenden, können sich Google Gmail-Benutzer nicht anmelden, wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
    > - **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf raten wir Kunden, sich für die [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) zu entscheiden. Wir freuen uns über Ihr Feedback zu diesem Feature, das sich derzeit in der öffentlichen Vorschauphase befindet, und möchten noch mehr Möglichkeiten zur Zusammenarbeit schaffen.
 
 ## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>Einlösen und Anmelden über einen gemeinsamen Endpunkt

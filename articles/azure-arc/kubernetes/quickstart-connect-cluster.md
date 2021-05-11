@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/03/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, Cluster
-ms.openlocfilehash: 8da5ba5c4408cb96008c3d9802ce3a5ccdc25f1f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: de701e79677f7e862d953eb5f03534b4eaefb367
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140171"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290738"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Schnellstart: Herstellen einer Verbindung eines vorhandenen Kubernetes-Clusters mit Azure Arc 
 
@@ -48,11 +48,8 @@ In diesem Schnellstart werden wir die Vorteile von Kubernetes mit Azure Arc-Akti
   az extension add --name connectedk8s
   ```
 
-
-
 >[!TIP]
 > Wenn die Erweiterung `connectedk8s` bereits installiert ist, können Sie sie mit dem folgenden Befehl auf die neueste Version aktualisieren: `az extension update --name connectedk8s`
-
 
 >[!NOTE]
 >Die Liste der Regionen, die von Azure Arc-aktiviertem Kubernetes unterstützt werden, finden Sie [hier](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
@@ -148,6 +145,9 @@ eastus      AzureArcTest
 
 > [!TIP]
 > Mit dem obigen Befehl ohne den angegebenen location-Parameter wird die Kubernetes-Ressource mit Azure Arc-Unterstützung am gleichen Standort wie die Ressourcengruppe erstellt. Wenn Sie die Kubernetes-Ressource mit Azure Arc-Unterstützung an einem anderen Standort erstellen möchten, geben Sie bei Ausführung des Befehls `az connectedk8s connect` entweder `--location <region>` oder `-l <region>` an.
+
+> [!NOTE]
+> Wenn Sie mithilfe eines Dienstprinzipals bei Azure CLI angemeldet sind, sind [zusätzliche Berechtigungen](troubleshooting.md#enable-custom-locations-using-service-principal) für den Dienstprinzipal erforderlich, um das Feature für benutzerdefinierte Speicherorte zu aktivieren, wenn der Cluster mit Azure Arc verbunden wird.
 
 ## <a name="verify-cluster-connection"></a>Überprüfen der Clusterverbindung
 

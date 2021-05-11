@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab840b46503aed1a318e3b39a4e8fe3e4d11735c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59664a0b5127e9fde8f2890cd396bec120eff29d
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579126"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330655"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -120,7 +120,7 @@ Diese Einstellung funktioniert mit allen Browsern. Die folgenden Betriebssysteme
 | macOS | Chrome, Safari |
 
 > [!NOTE]
-> Bei Microsoft Edge 85+ muss der Benutzer beim Browser angemeldet sein, um die Geräteidentität ordnungsgemäß zu übergeben. Andernfalls ist das Verhalten vergleichbar mit Chrome ohne Kontoerweiterung. Diese Anmeldung erfolgt in einem Azure AD Hybrid Join-Szenario möglicherweise nicht automatisch. 
+> Bei Microsoft Edge 85+ muss der Benutzer beim Browser angemeldet sein, um die Geräteidentität ordnungsgemäß zu übergeben. Andernfalls ist das Verhalten vergleichbar mit Chrome ohne Kontoerweiterung. Diese Anmeldung erfolgt in einem Azure AD Hybrid Join-Szenario möglicherweise nicht automatisch. Safari wird für den gerätebasierten bedingten Zugriff unterstützt, kann jedoch die Bedingungen **Genehmigte Client-App erforderlich** und **App-Schutzrichtlinie erforderlich** nicht erfüllen. Ein verwalteter Browser wie Microsoft Edge erfüllt diese Anforderungen („Genehmigte Client-App erforderlich“ und „App-Schutzrichtlinie erforderlich“).
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Warum wird im Browser eine Aufforderung zur Clientzertifikatauswahl angezeigt?
 

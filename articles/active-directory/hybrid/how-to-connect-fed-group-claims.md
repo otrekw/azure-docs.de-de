@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 868d1280179d63bd07b7e01d5e807339439c02f0
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96349349"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163605"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory
 
@@ -29,9 +29,9 @@ Azure Active Directory kann Informationen zur Gruppenmitgliedschaft eines Benutz
 > [!IMPORTANT]
 > Bei dieser Funktion sind einige Einschränkungen zu beachten:
 >
->- Die Unterstützung für die Verwendung lokal synchronisierter sAMAccountName -und SID-Attribute (Sicherheits-ID) soll das Verschieben vorhandener Anwendungen aus AD FS und anderen Identitätsanbietern ermöglichen. In Azure AD verwaltete Gruppen umfassen nicht die Attribute, die für die Ausgabe dieser Ansprüche erforderlich sind.
->- In größeren Organisationen kann die Anzahl der Gruppen, bei denen ein Benutzer Mitglied ist, den Grenzwert übersteigen, den Azure Active Directory zu einem Token hinzufügt. Dieser beträgt 150 Gruppen für ein SAML-Token und 200 Gruppen für ein JWT-Token. Dies kann zu unvorhersehbaren Ergebnissen führen. Wenn die Benutzer über eine große Anzahl von Gruppenmitgliedschaften verfügen, wird die Option zum Einschränken der in Ansprüchen ausgegebenen Gruppen auf die relevanten Gruppen für die Anwendung empfohlen.  
->- Für die Entwicklung neuer Anwendungen oder in Fällen, in denen die Anwendung nicht hierfür konfiguriert werden kann und in denen keine Unterstützung für geschachtelte Gruppen erforderlich ist, empfehlen wir, die In-App-Autorisierung auf Anwendungsrollen anstatt auf Gruppen zu basieren.  Diese Vorgehensweise schränkt die Menge an Informationen ein, die in das Token aufgenommen werden müssen, sie ist sicherer und trennt die Benutzerzuweisung von der App-Konfiguration.
+> - Die Unterstützung für die Verwendung lokal synchronisierter sAMAccountName -und SID-Attribute (Sicherheits-ID) soll das Verschieben vorhandener Anwendungen aus AD FS und anderen Identitätsanbietern ermöglichen. In Azure AD verwaltete Gruppen umfassen nicht die Attribute, die für die Ausgabe dieser Ansprüche erforderlich sind.
+> - In größeren Organisationen kann die Anzahl der Gruppen, bei denen ein Benutzer Mitglied ist, den Grenzwert übersteigen, den Azure Active Directory zu einem Token hinzufügt. Dieser beträgt 150 Gruppen für ein SAML-Token und 200 Gruppen für ein JWT-Token. Dies kann zu unvorhersehbaren Ergebnissen führen. Wenn die Benutzer über eine große Anzahl von Gruppenmitgliedschaften verfügen, wird die Option zum Einschränken der in Ansprüchen ausgegebenen Gruppen auf die relevanten Gruppen für die Anwendung empfohlen.
+> - Für die Entwicklung neuer Anwendungen oder in Fällen, in denen die Anwendung nicht hierfür konfiguriert werden kann und in denen keine Unterstützung für geschachtelte Gruppen erforderlich ist, empfehlen wir, die In-App-Autorisierung auf Anwendungsrollen anstatt auf Gruppen zu basieren.  Diese Vorgehensweise schränkt die Menge an Informationen ein, die in das Token aufgenommen werden müssen, sie ist sicherer und trennt die Benutzerzuweisung von der App-Konfiguration.
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>Gruppenansprüche für aus AD FS und anderen Identitätsanbietern migrierte Anwendungen
 
@@ -57,7 +57,7 @@ Anwendungen können den MS Graph-Gruppenendpunkt aufrufen, um Gruppeninformation
 Wenn jedoch eine vorhandene Anwendung erwartet, Gruppeninformationen zu Ansprüchen zu erhalten, kann Azure Active Directory mit einer Reihe unterschiedlicher Anspruchsformate konfiguriert werden.  Ziehen Sie folgende Möglichkeiten in Betracht:
 
 - Wenn Sie die Gruppenmitgliedschaft für die anwendungsinterne Autorisierung verwenden, empfiehlt es sich, die ObjectID der Gruppe zu verwenden. Die ObjectID der Gruppe ist unveränderlich und in Azure Active Directory eindeutig, und sie ist für alle Gruppen verfügbar.
-- Wenn Sie den lokalen sAMAccountName der Gruppe für die Autorisierung nutzen, sollten Sie qualifizierte Domänennamen verwenden. Diese bergen ein geringeres Risiko von Namenskonflikten. Der sAMAccountName kann innerhalb einer Active Directory-Domäne eindeutig sein. Wenn jedoch mehrere Active Directory-Domänen mit einem Azure Active Directory-Mandanten synchronisiert werden, besteht die Möglichkeit, dass mehrere Gruppen den gleichen Namen aufweisen.
+- Wenn Sie den sAMAccountName der lokalen Gruppe für die Autorisierung nutzen, sollten Sie qualifizierte Domänennamen verwenden. Diese bergen ein geringeres Risiko von Namenskonflikten. Der sAMAccountName kann innerhalb einer Active Directory-Domäne eindeutig sein. Wenn jedoch mehrere Active Directory-Domänen mit einem Azure Active Directory-Mandanten synchronisiert werden, besteht die Möglichkeit, dass mehrere Gruppen den gleichen Namen aufweisen.
 - Erwägen Sie die Verwendung von [Anwendungsrollen](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md), um eine Dereferenzierungsschicht zwischen der Gruppenmitgliedschaft und der Anwendung bereitzustellen.   Die Anwendung trifft dann anhand der Rollenansprüche im Token interne Autorisierungsentscheidungen.
 - Wenn die Anwendung für den Abruf von Gruppenattributen konfiguriert ist, die aus Active Directory synchronisiert werden, und ein Group-Objekt diese Attribute nicht enthält, wird die entsprechende Gruppe nicht in die Ansprüche eingeschlossen.
 - Gruppenansprüche in Token enthalten geschachtelte Gruppen, sofern nicht die Option zum Einschränken von Gruppenansprüchen auf Gruppen, die der Anwendung zugewiesen sind, verwendet wird.  Wenn ein Benutzer Mitglied von Gruppe B und Gruppe B Mitglied von Gruppe A ist, enthalten die Gruppenansprüche für den Benutzer sowohl Gruppe A als auch Gruppe B. Wenn eine Organisationen Benutzer mit sehr vielen Gruppenmitgliedschaften aufweist, kann die Anzahl der in den Token enthaltenen Gruppen die Tokengröße erhöhen.  Azure Active Directory begrenzt die Anzahl von Gruppen, die in einem Token ausgegeben werden, auf 150 für SAML-Assertionen und 200 für JWT.  Wenn ein Benutzer Mitglied von sehr vielen Gruppen ist, werden die Gruppen ausgelassen, und es wird ein Link zu dem Graph-Endpunkt bereitgestellt, über den weitere Gruppeninformationen abgerufen werden können.
@@ -70,13 +70,13 @@ Die Konfiguration von Azure Active Directory für die Ausgabe von Gruppennamen f
 
 1. **Synchronisieren von Gruppennamen aus Active Directory**: Bevor Azure Active Directory Gruppennamen oder lokale Gruppen-SIDs in Gruppen- oder Rollenansprüchen ausgeben kann, müssen die erforderlichen Attribute aus Active Directory synchronisiert werden.  Sie müssen Azure AD Connect 1.2.70 oder höher ausführen.   Bei Versionen vor 1.2.70 synchronisiert Azure AD Connect die Gruppenobjekte aus Active Directory, schließt aber die erforderlichen Gruppennamenattribute nicht ein.  Führen Sie ein Upgrade auf die aktuelle Version aus.
 
-2. **Konfigurieren der Anwendungsregistrierung in Azure Active Directory, sodass Gruppenansprüche in Token eingeschlossen werden:** Gruppenansprüche können im Abschnitt „Unternehmensanwendungen“ im Portal oder mithilfe des Anwendungsmanifests im Abschnitt „Anwendungsregistrierungen“ konfiguriert werden.  Informationen zum Konfigurieren von Gruppenansprüchen im Anwendungsmanifest finden Sie im Abschnitt „Konfigurieren der Azure AD-Anwendungsregistrierung für Gruppenattribute“ weiter unten.
+2. **Konfigurieren der Anwendungsregistrierung in Azure Active Directory, sodass Gruppenansprüche in Token eingeschlossen werden:** Gruppenansprüche können im Abschnitt „Unternehmensanwendungen“ im Portal oder mithilfe des Anwendungsmanifests im Abschnitt „Anwendungsregistrierungen“ konfiguriert werden.  Informationen zum Konfigurieren von Gruppenansprüchen im Anwendungsmanifest finden Sie weiter unten im Abschnitt „Konfigurieren der Azure AD-Anwendungsregistrierung für Gruppenattribute“.
 
 ## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>Hinzufügen von Gruppenansprüchen zu Token für SAML-Anwendungen mithilfe der SSO-Konfiguration
 
 Um Gruppenansprüche für eine SAML-Anwendung (aus dem Katalog oder nicht aus dem Katalog) zu konfigurieren, öffnen Sie **Unternehmensanwendungen**, klicken Sie in der Liste auf die Anwendung, und wählen Sie **SSO-Konfiguration** und dann **Benutzerattribute und Ansprüche** aus.
 
-Klicken auf **Gruppenanspruch hinzufügen**  
+Klicken auf **Gruppenanspruch hinzufügen**
 
 ![Screenshot: Seite „Benutzerattribute und Ansprüche“ mit ausgewählter Option „Gruppenanspruch hinzufügen“](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
@@ -183,11 +183,11 @@ Gültige Werte sind:
    | **name:** | Muss „groups“ lauten. |
    | **source:** | Wird nicht verwendet. Auslassen oder NULL angeben. |
    | **essential:** | Wird nicht verwendet. Auslassen oder FALSE angeben. |
-   | **additionalProperties:** | Liste zusätzlicher Eigenschaften.  Gültige Optionen sind „sam_account_name“, „dns_domain_and_sam_account_name“, „netbios_domain_and_sam_account_name“, „emit_as_roles“. |
+   | **additionalProperties:** | Liste zusätzlicher Eigenschaften.  Gültige Optionen sind "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name" und "emit_as_roles". |
 
-   In „additionalProperties“ ist nur eine dieser Optionen erforderlich: „sam_account_name“, „dns_domain_and_sam_account_name“, „netbios_domain_and_sam_account_name“.  Wenn mehrere dieser Optionen vorhanden sind, wird die erste verwendet, alle weiteren werden ignoriert.
+   In „additionalProperties“ ist nur eine dieser Optionen erforderlich: "sam_account_name", "dns_domain_and_sam_account_name" oder "netbios_domain_and_sam_account_name".  Wenn mehrere dieser Optionen vorhanden sind, wird die erste verwendet, alle weiteren werden ignoriert.
 
-   Einige Anwendungen erfordern Gruppeninformationen über Benutzer im Rollenanspruch.  Um den Anspruchstyp von einem Gruppenanspruch zu einem Rollenanspruch zu ändern, fügen Sie „emit_as_roles“ zu den zusätzlichen Eigenschaften hinzu.  Die Gruppenwerte werden im Rollenanspruch ausgegeben.
+   Einige Anwendungen erfordern Gruppeninformationen über Benutzer im Rollenanspruch.  Fügen Sie "emit_as_roles" zu den zusätzlichen Eigenschaften hinzu, um den Anspruchstyp von einem Gruppenanspruch in einen Rollenanspruch zu ändern.  Die Gruppenwerte werden im Rollenanspruch ausgegeben.
 
    > [!NOTE]
    > Wenn „emit_as_roles“ verwendet wird, sind konfigurierte Anwendungsrollen, denen der Benutzer zugewiesen ist, nicht im Rollenanspruch enthalten.
@@ -203,7 +203,7 @@ Ausgeben von Gruppen als Gruppennamen in OAuth-Zugriffstoken im Format „dnsDom
         "additionalProperties": ["dns_domain_and_sam_account_name"]
     }]
 }
- ```
+```
 
 Ausgeben von Gruppennamen, die im Format „netbiosDomain\samAccountName“ als Rollenanspruch in SAML- und OIDC-ID-Token zurückgegeben werden sollen:
 
@@ -218,8 +218,8 @@ Ausgeben von Gruppennamen, die im Format „netbiosDomain\samAccountName“ als 
         "name": "groups",
         "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
     }]
- }
- ```
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

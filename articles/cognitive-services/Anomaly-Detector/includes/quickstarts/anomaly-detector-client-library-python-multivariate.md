@@ -6,14 +6,14 @@ author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/25/2020
+ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 789f493640e9795c58fd278db6cc0b11902c1cfa
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 8884dce5fed3b5c5125f0169521429658b80a7e9
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107925353"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108333444"
 ---
 Hier finden Sie Informationen zu den ersten Schritten mit der multivariaten Clientbibliothek für die Anomalieerkennung für Python. Führen Sie diese Schritte aus, um das Paket zu installieren und mit der Verwendung der vom Dienst zur Verfügung gestellten Algorithmen zu beginnen. Die neuen APIs für die multivariate Anomalieerkennung ermöglichen Entwicklern die einfache Integration fortschrittlicher KI zur Erkennung von Anomalien in Metrikgruppen ganz ohne Machine Learning-Kenntnisse oder gekennzeichnete Daten. Abhängigkeiten und Interkorrelationen zwischen verschiedenen Signalen werden automatisch als Schlüsselfaktoren gewertet. Dadurch können Sie Ihre komplexen Systeme leichter proaktiv vor Fehlern schützen.
 
@@ -72,7 +72,7 @@ pip install --upgrade azure-ai-anomalydetector
 Diese Codeausschnitte veranschaulichen, wie folgende Vorgänge mit der Anomalieerkennungs-Clientbibliothek für Python ausgeführt werden:
 
 * [Authentifizieren des Clients](#authenticate-the-client)
-* [Trainieren des Modells](#train-the-model)
+* [Modelltraining](#train-the-model)
 * [Erkennen von Anomalien](#detect-anomalies)
 * [Exportieren des Modells](#export-model)
 * [Löschen des Modells](#delete-model)
@@ -81,7 +81,18 @@ Diese Codeausschnitte veranschaulichen, wie folgende Vorgänge mit der Anomaliee
 
 Um einen neuen Anomalieerkennungsclient zu instanziieren, müssen Sie den Abonnementschlüssel der Anomalieerkennung sowie den zugeordneten Endpunkt übergeben. Außerdem richten wir noch eine Datenquelle ein.  
 
-Um die multivariaten APIs für die Anomalieerkennung verwenden zu können, müssen wir unser eigenes Modell vor der Erkennung trainieren. Für das Training wird ein Batch von Zeitreihendaten verwendet. Die einzelnen Zeitreihen müssen jeweils im CSV-Format mit zwei Spalten (Zeitstempel und Wert) vorliegen. Alle Zeitreihen müssen in einer ZIP-Datei zusammengefasst und in [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs) hochgeladen werden. Standardmäßig wird der Dateiname verwendet, um die Variable für die Zeitreihe darzustellen. Alternativ kann eine zusätzliche Datei vom Typ „meta.json“ in die ZIP-Datei eingeschlossen werden, wenn sich der Name der Variablen vom Namen der ZIP-Datei unterscheiden soll. Nach dem Generieren der [BLOB-SAS-URL (Shared Access Signatures)](../../../../storage/common/storage-sas-overview.md) können wir die URL der ZIP-Datei für das Training verwenden.
+Wenn Sie die multivariaten APIs für die Anomalieerkennung verwenden möchten, müssen Sie zunächst Ihre eigenen Modelle trainieren. Bei den Trainingsdaten handelt es sich um mehrere Zeitreihen, die die folgenden Anforderungen erfüllen:
+
+Bei den Zeitreihen muss es sich jeweils um eine CSV-Datei mit genau zwei Spalten in der Headerzeile handeln: „timestamp“ und „value“ (in Kleinbuchstaben). Die „timestamp“-Werte müssen ISO 8601 entsprechen. Für „value“ können ganze Zahlen oder Dezimalzahlen mit einer beliebigen Anzahl von Dezimalstellen verwendet werden. Beispiel:
+
+|timestamp | value|
+|-------|-------|
+|2019-04-01T00:00:00Z| 5|
+|2019-04-01T00:01:00Z| 3.6|
+|2019-04-01T00:02:00Z| 4|
+|`...`| `...` |
+
+Jede CSV-Datei muss nach einer anderen Variablen benannt werden, die für das Modelltraining verwendet wird. Beispiel: „temperature.csv“ und „humidity.csv“. Alle CSV-Dateien müssen ohne Unterordner in einer ZIP-Datei verpackt werden. Die ZIP-Datei kann einen beliebigen Namen haben. Die ZIP-Datei muss in Azure Blob Storage hochgeladen werden. Nach dem Generieren der Blob-SAS-URL (Shared Access Signature) für die ZIP-Datei kann sie für das Training verwendet werden. Informationen zum Generieren von SAS-URLs aus Azure Blob Storage finden Sie in diesem Dokument.
 
 ```python
 def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None):

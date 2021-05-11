@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70222f493e73c1b46dcb7dfdaedfa3ad2c30714a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: c07e9604d0b95562f6c32b149b74d58fd4bf0932
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060249"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007320"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -57,7 +57,7 @@ Lesen aller Konfigurationen | Globaler Leser |
 Lesen von B2C-Überwachungsprotokollen | Globaler Leser (siehe [Dokumentation](../../active-directory-b2c/faq.md)) | 
 
 > [!NOTE]
-> Globale Azure AD B2C-Leser haben nicht die gleichen Berechtigungen wie globale Azure AD-Administratoren. Wenn Sie über globale Azure AD B2C-Administratorrechte verfügen, stellen Sie sicher, dass Sie sich in einem Azure AD B2C-Verzeichnis und nicht in einem Azure AD-Verzeichnis befinden.
+> Azure AD B2C Global-Administratoren haben nicht die gleichen Berechtigungen wie Azure AD Global-Administratoren. Wenn Sie über globale Azure AD B2C-Administratorrechte verfügen, stellen Sie sicher, dass Sie sich in einem Azure AD B2C-Verzeichnis und nicht in einem Azure AD-Verzeichnis befinden.
 
 ## <a name="company-branding"></a>Unternehmensbranding
 
