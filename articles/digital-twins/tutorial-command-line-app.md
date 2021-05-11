@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: c18366fd4bc510f32ac0ef255b27709797a3b626
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 419e609c4b78007f215d67ab4a69671bc9cbb198
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493702"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205627"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>Tutorial: Erstellen eines Azure Digital Twins-Graphen unter Verwendung Beispielclient-App
 
 [!INCLUDE [digital-twins-tutorial-selector.md](../../includes/digital-twins-tutorial-selector.md)]
 
-In diesem Tutorial wird in Azure Digital Twins ein Graph mit Modellen, Zwillingen und Beziehungen erstellt. Als Tool wird in diesem Tutorial eine **exemplarische Befehlszeilenclientanwendung** für die Interaktion mit einer Azure Digital Twins-Instanz verwendet. Die Client-App ähnelt der unter [*Tutorial: Codieren einer Client-App*](tutorial-code.md) geschriebenen App.
+In diesem Tutorial wird in Azure Digital Twins ein Graph mit Modellen, Zwillingen und Beziehungen erstellt. Als Tool wird in diesem Tutorial eine **exemplarische Befehlszeilenclientanwendung** für die Interaktion mit einer Azure Digital Twins-Instanz verwendet. Die Client-App ähnelt der unter [Tutorial: Codieren einer Client-App](tutorial-code.md) geschriebenen App.
 
 Sie können dieses Beispiel verwenden, um grundlegende Azure Digital Twins-Aktionen auszuführen, etwa Hochladen von Modellen, Erstellen und Ändern von Zwillingen und Erstellen von Beziehungen. Sie können sich auch den [Code des Beispiels](https://github.com/Azure-Samples/digital-twins-samples/tree/master/) ansehen, um mehr über die Azure Digital Twins-APIs zu erfahren, und die Implementierung eigener Befehle üben, indem Sie das Beispielprojekt wunschgemäß anpassen.
 
@@ -55,7 +55,7 @@ Führen Sie die Projektkonsole für die restlichen Schritte in diesem Tutorial w
 
 Nachdem die Azure Digital Twins-Instanz und die Beispiel-App eingerichtet sind, können Sie mit der Erstellung eines Szenariographen beginnen. 
 
-Beim Erstellen einer Azure Digital Twins-Lösung werden zunächst [**Zwillingsmodelle**](concepts-models.md) für Ihre Umgebung definiert. 
+Beim Erstellen einer Azure Digital Twins-Lösung werden zunächst [Zwillingsmodelle](concepts-models.md) für Ihre Umgebung definiert. 
 
 Modelle ähneln Klassen in objektorientierten Programmiersprachen. Sie stellen benutzerdefinierte Vorlagen für [digitale Zwillinge](concepts-twins-graph.md) bereit, die später eingesetzt und instanziiert werden. Sie sind in einer JSON-ähnlichen Sprache namens **Digital Twins Definition Language (DTDL)** geschrieben und können die *Eigenschaften*, *Telemetriedaten*, *Beziehungen* und *Komponenten* eines Zwillings festlegen.
 
@@ -95,7 +95,7 @@ CreateModels Room
 ```
 
 Da Modelle nicht überschrieben werden können, wird jetzt ein Dienstfehler zurückgegeben.
-Ausführliche Informationen zum Löschen von vorhandenen Modellen finden Sie unter [*Anleitungen: Verwalten von DTDL-Modellen*](how-to-manage-model.md).
+Ausführliche Informationen zum Löschen von vorhandenen Modellen finden Sie unter [Anleitungen: Verwalten von DTDL-Modellen](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -112,7 +112,7 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="create-digital-twins"></a>Erstellen digitaler Zwillinge
 
-Sie haben einige Modelle in Ihre Azure Digital Twins-Instanz hochgeladen und können nun basierend auf den Modelldefinitionen [**digitale Zwillinge**](concepts-twins-graph.md) erstellen. Digitale Zwillinge stellen die Entitäten in Ihrer Geschäftsumgebung dar, etwa Sensoren in einer Farm, Räume in einem Gebäude oder Beleuchtung in einem Fahrzeug. 
+Sie haben einige Modelle in Ihre Azure Digital Twins-Instanz hochgeladen und können nun basierend auf den Modelldefinitionen [digitale Zwillinge](concepts-twins-graph.md) erstellen. Digitale Zwillinge stellen die Entitäten in Ihrer Geschäftsumgebung dar, etwa Sensoren in einer Farm, Räume in einem Gebäude oder Beleuchtung in einem Fahrzeug. 
 
 Zum Erstellen eines digitalen Zwillings verwenden Sie den Befehl `CreateDigitalTwin`. Sie müssen auf das Modell verweisen, auf dem der Zwilling basiert, und können optional Anfangswerte für Eigenschaften im Modell definieren. Sie müssen in dieser Phase keine Beziehungsinformationen übergeben.
 
@@ -157,9 +157,9 @@ Sie können auch die Eigenschaften eines von Ihnen erstellten Zwillings ändern.
 
 ## <a name="create-a-graph-by-adding-relationships"></a>Erstellen eines Graphen durch Hinzufügen von Beziehungen
 
-Im nächsten Schritt können Sie einige **Beziehungen** zwischen diesen Zwillingen erstellen, um Sie in einem [**Zwillingsgraphen**](concepts-twins-graph.md) zu verbinden. Zwillingsgraphen werden verwendet, um eine gesamte Umgebung darzustellen. 
+Im nächsten Schritt können Sie einige **Beziehungen** zwischen diesen Zwillingen erstellen, um Sie in einem [Zwillingsgraphen](concepts-twins-graph.md) zu verbinden. Zwillingsgraphen werden verwendet, um eine gesamte Umgebung darzustellen. 
 
-Die Arten von Beziehungen, die Sie zwischen Zwillingen erstellen können, werden in den zuvor hochgeladenen [Modellen](#model-a-physical-environment-with-dtdl) definiert. In den [Modelldefinition für *Floor*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) ist angegeben, dass Etagen eine Beziehung vom Typ *contains* (enthält) haben können. Dies ermöglicht die Erstellung einer Beziehung vom Typ *enthält* zwischen jedem Etagenzwilling (*Floor*) und dem entsprechenden enthaltenen Raum.
+Die Arten von Beziehungen, die Sie zwischen Zwillingen erstellen können, werden in den zuvor hochgeladenen [Modellen](#model-a-physical-environment-with-dtdl) definiert. In der [Modelldefinition für „Floor“](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) ist angegeben, dass Etagen eine Beziehung vom Typ *contains* (enthält) haben können. Dies ermöglicht die Erstellung einer Beziehung vom Typ *enthält* zwischen jedem Etagenzwilling (*Floor*) und dem entsprechenden enthaltenen Raum.
 
 Verwenden Sie zum Hinzufügen einer Beziehung den Befehl `CreateRelationship`. Geben Sie den Zwilling, von dem die Beziehung ausgeht, die Art der Beziehung sowie den Zwilling an, mit dem die Beziehung hergestellt wird. Geben Sie abschließend eine eindeutige ID für die Beziehung an.
 
@@ -171,7 +171,7 @@ Verwenden Sie zum Hinzufügen einer Beziehung den Befehl `CreateRelationship`. G
     ```
 
     >[!TIP]
-    >Da die Beziehung vom Typ *contains* (enthält) im [Modell *Floor* (Etage)](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) mit zwei Zeichenfolgeneigenschaften (`ownershipUser` und `ownershipDepartment`) definiert wurde, können Sie beim Erstellen der Beziehungen auch Argumente mit den Anfangswerten für diese Eigenschaften angeben.
+    >Da die Beziehung vom Typ *contains* (enthält) im Modell [Floor (Etage)](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) mit zwei Zeichenfolgeneigenschaften (`ownershipUser` und `ownershipDepartment`) definiert wurde, können Sie beim Erstellen der Beziehungen auch Argumente mit den Anfangswerten für diese Eigenschaften angeben.
     > Hier sehen Sie eine alternative Version des obigen Befehls zum Erstellen von *relationship0*, bei der auch Anfangswerte für diese Eigenschaften angegeben werden:
     > ```cmd/sh
     > CreateRelationship floor0 contains room0 relationship0 ownershipUser string MyUser ownershipDepartment string myDepartment
@@ -279,4 +279,4 @@ In diesem Tutorial haben Sie die ersten Schritte mit Azure Digital Twins durchge
 
 Im nächsten Tutorial wird eine Kombination aus Azure Digital Twins und anderen Azure-Diensten in einem datengesteuerten End-to-End-Szenario verwendet:
 > [!div class="nextstepaction"]
-> [*Tutorial: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md)
+> [Tutorial: Erstellen einer End-to-End-Lösung](tutorial-end-to-end.md)

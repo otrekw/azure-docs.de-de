@@ -1,21 +1,21 @@
 ---
-title: 'Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal'
-description: In diesem Tutorial erfahren Sie, wie Sie Azure Firewall über das Azure-Portal bereitstellen und konfigurieren.
+title: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
+description: In diesem Artikel erfahren Sie, wie Sie Azure Firewall unter Verwendung des Azure-Portals bereitstellen und konfigurieren.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 02/19/2021
+ms.topic: how-to
+ms.date: 04/29/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 54900b7b9089d4a4c6cbc742ecf09aa19ff2a550
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 951e2406a387ed2aaedc4cec875c62a14cf5bb2e
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741955"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291944"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
+# <a name="deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
 Die Steuerung des ausgehenden Netzwerkzugriffs ist ein wichtiger Teil eines umfassenden Netzwerksicherheitsplans. Vielleicht möchten Sie beispielsweise den Zugriff auf Websites einschränken. Mitunter kann es auch empfehlenswert sein, die verfügbaren Ports einzuschränken.
 
@@ -26,16 +26,16 @@ Eine Möglichkeit zur Steuerung des ausgehenden Netzwerkzugriffs aus einem Subne
 
 Die konfigurierten Firewallregeln werden auf den Netzwerkdatenverkehr angewendet, wenn Sie Ihren Netzwerkdatenverkehr an die Firewall als Subnetz-Standardgateway weiterleiten.
 
-In diesem Tutorial erstellen Sie der Einfachheit halber ein einzelnes vereinfachtes VNET mit zwei Subnetzen.
+In diesem Artikel erstellen Sie für eine einfache Bereitstellung ein einzelnes vereinfachtes VNet mit zwei Subnetzen.
 
 Für Produktionsbereitstellungen wird ein [Hub-Spoke-Modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) empfohlen, bei dem sich die Firewall in einem eigenen VNET befindet. Die Workloadserver befinden sich in per Peering verknüpften VNETs in derselben Region mit einem oder mehreren Subnetzen.
 
 * **AzureFirewallSubnet:** Das Subnetz mit der Firewall.
 * **Workload-SN:** Das Subnetz mit dem Workloadserver. Der Netzwerkdatenverkehr dieses Subnetzes durchläuft die Firewall.
 
-![Netzwerkinfrastruktur des Tutorials](media/tutorial-firewall-deploy-portal/tutorial-network.png)
+![Netzwerkinfrastruktur](media/tutorial-firewall-deploy-portal/tutorial-network.png)
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Einrichten einer Netzwerkumgebung zu Testzwecken
@@ -46,7 +46,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Konfigurieren einer NAT-Regel, um einen Remotedesktop für den Testserver zuzulassen
 > * Testen der Firewall
 
-Sie können dieses Tutorial auch mit [Azure PowerShell](deploy-ps.md) durcharbeiten.
+> [!NOTE]
+> In diesem Artikel werden für die Verwaltung der Firewall klassische Firewallregeln verwendet. Die bevorzugte Methode ist die Verwendung einer [Firewallrichtlinie](../firewall-manager/policy-overview.md). Informationen zum Absolvieren dieses Verfahrens mithilfe einer Firewallrichtlinie finden Sie unter [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall und einer Richtlinie über das Azure-Portal](tutorial-firewall-deploy-portal-policy.md).
+
+Sie können für dieses Verfahren auch [Azure PowerShell](deploy-ps.md) verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,7 +61,7 @@ Erstellen Sie zunächst eine Ressourcengruppe für die Ressourcen, die zum Berei
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Die Ressourcengruppe enthält alle Ressourcen für das Tutorial.
+Die Ressourcengruppe enthält alle Ressourcen, die in diesem Verfahren verwendet werden.
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie auf einer beliebigen Seite nach *Ressourcengruppen*, und wählen Sie diese Option anschließend aus. Wählen Sie anschließend **Hinzufügen**.
@@ -111,7 +114,7 @@ Erstellen Sie nun den virtuellen Workloadcomputer, und ordnen Sie ihn im Subnetz
    |Resource group     |**Test-FW-RG**|
    |Name des virtuellen Computers     |**Srv-Work**|
    |Region     |Wie zuvor|
-   |Image|Windows Server 2019 Datacenter|
+   |Image|Windows Server 2016 Datacenter|
    |Benutzername des Administrators     |Geben Sie einen Benutzernamen ein.|
    |Kennwort     |Geben Sie ein Kennwort ein.|
 
@@ -123,6 +126,8 @@ Erstellen Sie nun den virtuellen Workloadcomputer, und ordnen Sie ihn im Subnetz
 11. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie **Weiter: Verwaltung** aus.
 12. Wählen Sie **Deaktivieren** aus, um die Startdiagnose zu deaktivieren. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie dann auf **Bewerten + erstellen**.
 13. Überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und wählen Sie dann **Erstellen** aus.
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="deploy-the-firewall"></a>Bereitstellen der Firewall
 
@@ -241,7 +246,7 @@ Mit dieser Regel können Sie eine Remotedesktopverbindung mit dem virtuellen Com
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Ändern der primären und sekundären DNS-Adresse für die Netzwerkschnittstelle **Srv-Work**
 
-In diesem Tutorial konfigurieren Sie zu Testzwecken die primäre und sekundäre DNS-Adresse des Servers. Hierbei handelt es sich nicht um eine generelle Azure Firewall-Anforderung.
+Sie konfigurieren zu Testzwecken die primäre und sekundäre DNS-Adresse des Servers. Hierbei handelt es sich nicht um eine generelle Azure Firewall-Anforderung.
 
 1. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie auf einer beliebigen Seite nach *Ressourcengruppen*, und wählen Sie diese Option anschließend aus. Wählen Sie die Ressourcengruppe **Test-FW-RG** aus.
 2. Wählen Sie die Netzwerkschnittstelle für die VM **Srv-Work** aus.
@@ -272,9 +277,8 @@ Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können die Firewallressourcen für das nächste Tutorial behalten oder die Ressourcengruppe **Test-FW-RG** löschen, wenn Sie sie nicht mehr benötigen. Dadurch werden alle firewallbezogenen Ressourcen gelöscht.
+Sie können die Firewallressourcen für weitere Tests behalten oder die Ressourcengruppe **Test-FW-RG** löschen, wenn Sie sie nicht mehr benötigen. Dadurch werden alle firewallbezogenen Ressourcen gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md)
+[Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md)

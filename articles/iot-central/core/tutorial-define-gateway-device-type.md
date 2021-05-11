@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: cdace22072e4122150c878d43b99765cd6fd59e1
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 7d2321189e32c77d9360ff6d772fcebf9c6abb1d
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490776"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324561"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen IoT-Gatewaygerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -45,15 +45,15 @@ In diesem Tutorial werden Gerätevorlagen für ein Gerät vom Typ **S1 Sensor** 
 
 So erstellen sie eine Gerätevorlage für ein Gerät vom Typ **S1 Sensor**:
 
-1. Wählen Sie im linken Bereich **Gerätevorlagen** aus. Wählen Sie anschließend **+** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
+1. Wählen Sie im linken Bereich **Gerätevorlagen** aus. Wählen Sie anschließend **+ Neu** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
 
-1. Scrollen Sie nach unten zur Kachel für das Gerät **S1 Sensor**. Wählen Sie die Kachel und anschließend **Weiter: Anpassen**.
+1. Scrollen Sie nach unten zur Kachel für das Gerät **Minew S1**. Wählen Sie die Kachel und anschließend **Weiter: Anpassen**.
 
 1. Wählen Sie auf der Seite **Überprüfen** die Option **Erstellen** aus, um die Gerätevorlage Ihrer Anwendung hinzuzufügen. 
 
 So erstellen sie eine Gerätevorlage für ein Gerät vom Typ **RS40 Occupancy Sensor**:
 
-1. Wählen Sie im linken Bereich **Gerätevorlagen** aus. Wählen Sie anschließend **+** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
+1. Wählen Sie im linken Bereich **Gerätevorlagen** aus. Wählen Sie anschließend **+ Neu** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
 
 1. Scrollen Sie nach unten zur Kachel für das Gerät **RS40 Occupancy Sensor**. Wählen Sie die Kachel und anschließend **Weiter: Anpassen**.
 
@@ -70,19 +70,28 @@ In diesem Tutorial erstellen Sie von Grund auf eine Gerätevorlage für ein Gate
 
 So fügen Sie Ihrer Anwendung eine neue Gatewaygerätevorlage hinzu:
 
-1. Wählen Sie im linken Bereich **Gerätevorlagen** aus. Wählen Sie anschließend **+** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
+1. Wählen Sie im linken Bereich **Gerätevorlagen** aus. Wählen Sie anschließend **+ Neu** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
 
 1. Wählen Sie auf der Seite **Vorlagentyp auswählen** die Kachel **IoT-Gerät** und anschließend **Weiter: Anpassen**.
 
-1. Aktivieren Sie auf der Seite **Gerät anpassen** das Kontrollkästchen **Gatewaygerät**.
+1. Aktivieren Sie auf der Seite **Gerät anpassen** das Kontrollkästchen **Dies ist ein Gatewaygerät.** .
+
+1. Geben Sie als Vorlagenname **Smart Building gateway device** ein, und wählen Sie dann **Weiter: Überprüfen** aus.
 
 1. Wählen Sie auf der Seite **Überprüfen** die Option **Erstellen** aus. 
 
-1. Geben Sie **Smart Building gateway device** als Vorlagenname ein.
 
-1. Wählen Sie auf der Seite **Funktionsmodell erstellen** die Kachel **Benutzerdefiniert** aus.
 
-1. Wählen Sie **+** aus, um eine Schnittstelle hinzuzufügen.  Wählen Sie die Standardschnittstelle **Geräteinformationen** aus.
+1. Wählen Sie auf der Seite **Modell erstellen** die Kachel **Benutzerdefiniertes Modell** aus.
+
+1. Wählen Sie **Funktion hinzufügen** aus, um eine Funktion hinzuzufügen.
+
+1. Geben Sie als Anzeigename **Zu sendende Daten** ein, und wählen Sie als Funktionstyp **Eigenschaft** aus.
+
+1. Wählen Sie **+ Funktion hinzufügen** aus, um eine weitere Funktion hinzuzufügen. Geben Sie als Anzeigename **Boolean Telemetry** (Boolesche Telemetriedaten) ein, und wählen Sie als Funktionstyp **Telemetriedaten** und als Schema **Boolesch** aus.
+
+1. Wählen Sie **Speichern** aus.
+
 
 ### <a name="add-relationships"></a>Hinzufügen von Beziehungen
 
@@ -152,7 +161,7 @@ So erstellen Sie ein simuliertes Gatewaygerät:
 
 1. Wählen Sie auf der Seite **Geräte** in der Liste mit den Gerätevorlagen die Vorlage **Smart Building gateway device** aus.
 
-1. Wählen Sie **+** aus, um mit dem Hinzufügen eines neuen Geräts zu beginnen.
+1. Wählen Sie **+ Neu** aus, um mit dem Hinzufügen eines neuen Geräts zu beginnen.
 
 1. Behalten Sie die generierten Werte für **Geräte-ID** und **Gerätename** bei. Stellen Sie sicher, dass die Option **Simuliert** auf **Ein** festgelegt ist. Klicken Sie auf **Erstellen**.
 
@@ -160,13 +169,13 @@ So erstellen Sie die simulierten nachgeschalteten Geräte:
 
 1. Wählen Sie auf der Seite **Geräte** in der Liste mit den Gerätevorlagen die Vorlage **RS40 Occupancy Sensor** aus.
 
-1. Wählen Sie **+** aus, um mit dem Hinzufügen eines neuen Geräts zu beginnen.
+1. Wählen Sie **+ Neu** aus, um mit dem Hinzufügen eines neuen Geräts zu beginnen.
 
 1. Behalten Sie die generierten Werte für **Geräte-ID** und **Gerätename** bei. Stellen Sie sicher, dass die Option **Simuliert** auf **Ein** festgelegt ist. Klicken Sie auf **Erstellen**.
 
 1. Wählen Sie auf der Seite **Geräte** in der Liste mit den Gerätevorlagen die Vorlage **S1 Sensor** aus.
 
-1. Wählen Sie **+** aus, um mit dem Hinzufügen eines neuen Geräts zu beginnen.
+1. Wählen Sie **+ Neu** aus, um mit dem Hinzufügen eines neuen Geräts zu beginnen.
 
 1. Behalten Sie die generierten Werte für **Geräte-ID** und **Gerätename** bei. Stellen Sie sicher, dass die Option **Simuliert** auf **Ein** festgelegt ist. Klicken Sie auf **Erstellen**.
 
@@ -178,11 +187,11 @@ Nachdem die simulierten Geräte nun in Ihrer Anwendung vorhanden sind, können S
 
 1. Wählen Sie auf der Seite **Geräte** in der Liste mit den Gerätevorlagen die Vorlage **S1 Sensor** und anschließend Ihr simuliertes Gerät **S1 Sensor** aus.
 
-1. Wählen Sie **Connect to gateway** (Mit Gateway verbinden) aus.
+1. Wählen Sie **An Gateway anfügen** aus.
 
-1. Wählen Sie im Dialogfeld **Connect to a gateway** (Verbindung mit einem Gateway herstellen) die Vorlage **Smart Building gateway device** und anschließend die simulierte Instanz aus, die Sie zuvor erstellt haben.
+1. Wählen Sie im Dialogfeld **An Gateway anfügen** die Vorlage **Smart Building gateway device** und anschließend die simulierte Instanz aus, die Sie zuvor erstellt haben.
 
-1. Wählen Sie **Beitreten**.
+1. Wählen Sie **Anfügen** aus.
 
 1. Wählen Sie auf der Seite **Geräte** in der Liste mit den Gerätevorlagen die Vorlage **RS40 Occupancy Sensor** und anschließend Ihr simuliertes Gerät **RS40 Occupancy Sensor** aus.
 
@@ -190,13 +199,12 @@ Nachdem die simulierten Geräte nun in Ihrer Anwendung vorhanden sind, können S
 
 1. Wählen Sie im Dialogfeld **Connect to a gateway** (Verbindung mit einem Gateway herstellen) die Vorlage **Smart Building gateway device** und anschließend die simulierte Instanz aus, die Sie zuvor erstellt haben.
 
-1. Wählen Sie **Beitreten**.
+1. Wählen Sie **Anfügen** aus.
 
 Beide simulierten nachgeschalteten Geräte sind nun mit Ihrem simulierten Gatewaygerät verbunden. In der Ansicht **Nachgeschaltete Geräte** für Ihr Gatewaygerät werden die zugehörigen nachgeschalteten Geräte angezeigt:
 
 ![Ansicht „Nachgeschaltete Geräte“](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
 
-Wählen Sie eine Gatewaygerätevorlage und eine Gatewaygeräteinstanz und dann **Verbinden** aus.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: ddb61a79e6af402b06fe8c18df8c62f9287437a3
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: cacf317e433ec89b3bc82f86844e5e6b5e143547
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209713"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330552"
 ---
 # <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
 
@@ -64,8 +64,8 @@ Gehen Sie wie folgt vor, um Ihrem Azure-Konto eine Ressource des Sprachdiensts (
 1. Geben Sie im Fenster **Neu** die Zeichenfolge „Speech“ in das Suchfeld ein, und drücken Sie die EINGABETASTE.
 
 1. Wählen Sie in den Suchergebnissen **Sprache** aus.
-
-   ![Suchergebnisse für „Speech“](media/index/speech-search.png)
+   
+   :::image type="content" source="media/index/speech-search.png" alt-text="Erstellen einer Speech-Ressource im Azure-Portal":::
 
 1. Wählen Sie **Erstellen** aus, und führen Sie dann folgende Schritte aus:
 

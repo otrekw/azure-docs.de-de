@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
-ms.date: 11/23/2020
-ms.openlocfilehash: afc39673a30f5c99455696c7a075cb1a6a33ecd1
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 04/23/2021
+ms.openlocfilehash: 48d71d3736737e88825bbae19e0a5274bacd21a1
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875501"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161085"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Logik-Apps mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -43,22 +43,18 @@ Wenn Sie noch nicht mit Logic Apps vertraut sind, können Sie sich auch darüber
 Sollten Sie noch nicht über eine Ressourcengruppe für Ihre Logik-App verfügen, erstellen Sie die Gruppe mithilfe des Befehls `az group create`. Mit dem folgenden Befehl wird beispielsweise eine Ressourcengruppe namens `testResourceGroup` am Standort `westus` erstellt:
 
 ```azurecli-interactive
-
 az group create --name testResourceGroup --location westus
-
 ```
 
 In der Ausgabe wird `provisioningState` als `Succeeded` angezeigt, wenn Ihre Ressourcengruppe erfolgreich erstellt wurde:
 
 ```output
-
 <...>
   "name": "testResourceGroup",
   "properties": {
     "provisioningState": "Succeeded"
   },
 <...>
-
 ```
 
 ## <a name="workflow-definition"></a>Workflowdefinition
@@ -72,7 +68,6 @@ Beim Ausführen der Befehle zum Erstellen oder Aktualisieren Ihrer Logik-App wir
 Für die Erstellung eines Logik-App-Workflows über die Azure-Befehlszeilenschnittstelle können Sie den Befehl [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) mit einer JSON-Datei für die Definition verwenden.
 
 ```azurecli
-
 az logic workflow create --definition
                          --location
                          --name
@@ -83,7 +78,6 @@ az logic workflow create --definition
                          [--integration-service-environment]
                          [--state {Completed, Deleted, Disabled, Enabled, NotSpecified, Suspended}]
                          [--tags]
-
 ```
 
 Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/logic/workflow#az_logic_workflow_create-required-parameters) enthalten:
@@ -94,6 +88,7 @@ Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/logic/workfl
 | Standort | `--location -l` | Die Azure-Region, in der sich Ihre Logik-App befindet. |
 | Name | `--name -n` | Der Name Ihrer Logik-App. Der Name darf nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`()`) und Punkte (`.`) enthalten. Außerdem muss der Name regionsübergreifend eindeutig sein. |
 | Ressourcengruppenname | `--resource-group -g` | Die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), in der Sie Ihre Logik-App erstellen möchten. Sollte noch keine Ressourcengruppe für Ihre Logik-App vorhanden sein, [erstellen Sie eine Ressourcengruppe](#example---create-resource-group), bevor Sie beginnen. |
+||||
 
 Sie können auch zusätzliche [optionale Parameter](/cli/azure/logic/workflow#az_logic_workflow_create-optional-parameters) hinzufügen, um die Zugriffssteuerung, die Endpunkte, das Integrationskonto, die Integrationsdienstumgebung, den Zustand und die Ressourcentags Ihrer Logik-App zu konfigurieren.
 
@@ -102,9 +97,7 @@ Sie können auch zusätzliche [optionale Parameter](/cli/azure/logic/workflow#az
 In diesem Beispiel wird ein Workflow namens `testLogicApp` in der Ressourcengruppe `testResourceGroup` am Standort `westus` erstellt. Die JSON-Datei `testDefinition.json` enthält die Workflowdefinition.
 
 ```azurecli-interactive
-
 az logic workflow create --resource-group "testResourceGroup" --location "westus" --name "testLogicApp" --definition "testDefinition.json"
-
 ```
 
 Wenn Ihr Workflow erfolgreich erstellt wurde, wird von der Befehlszeilenschnittstelle der JSON-Code Ihrer neuen Workflowdefinition angezeigt. War die Workflowerstellung nicht erfolgreich, finden Sie weitere Informationen in der [Liste möglicher Fehler](#errors).
@@ -116,7 +109,6 @@ Der Workflow einer Logik-App kann über die Azure-Befehlszeilenschnittstelle auc
 Der Befehl muss die gleichen [erforderlichen Parameter](/cli/azure/logic/workflow#az_logic_workflow_create-required-parameters) enthalten wie beim [Erstellen von Logik-Apps über die Befehlszeilenschnittstelle](#create-logic-apps-from-cli). Darüber hinaus können Sie die gleichen [optionalen Parameter](/cli/azure/logic/workflow#az_logic_workflow_create-optional-parameters) hinzufügen wie beim Erstellen einer Logik-App.
 
 ```azurecli
-
 az logic workflow create --definition
                          --location
                          --name
@@ -127,7 +119,6 @@ az logic workflow create --definition
                          [--integration-service-environment]
                          [--state {Completed, Deleted, Disabled, Enabled, NotSpecified, Suspended}]
                          [--tags]
-
 ```
 
 ### <a name="example---update-logic-app"></a>Beispiel: Aktualisieren einer Logik-App
@@ -135,9 +126,7 @@ az logic workflow create --definition
 In diesem Beispiel wird der [im vorherigen Abschnitt erstellte Beispielworkflow](#example---create-logic-app) mit einer anderen JSON-Definitionsdatei (`newTestDefinition.json`) aktualisiert. Außerdem werden zwei Ressourcentags (`testTag1` und `testTag2`) mit Beschreibungswerten hinzugefügt.
 
 ```azurecli-interactive
-
 az logic workflow create --resource-group "testResourceGroup" --location "westus" --name "testLogicApp" --definition "newTestDefinition.json" --tags "testTag1=testTagValue1" "testTag2=testTagValue"
-
 ```
 
 Wenn Ihr Workflow erfolgreich aktualisiert wurde, wird von der Befehlszeilenschnittstelle die aktualisierte Workflowdefinition Ihrer Logik-App angezeigt. War die Aktualisierung nicht erfolgreich, finden Sie weitere Informationen in der [Liste möglicher Fehler](#errors).
@@ -152,23 +141,20 @@ Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/logic/workfl
 | --------- | ----- | ----------- |
 | Name | `--name -n` | Der Name Ihrer Logik-App. |
 | Ressourcengruppenname | `-resource-group -g` | Die Ressourcengruppe, in der sich Ihre Logik-App befindet. |
+||||
 
 Sie können auch den [optionalen Parameter](/cli/azure/logic/workflow#az_logic_workflow_delete-optional-parameters) `--yes -y` einschließen, um Bestätigungsaufforderungen zu überspringen.
 
 ```azurecli
-
 az logic workflow delete --name
                          --resource-group
                          [--yes]
-
 ```
 
 Anschließend werden Sie von der Befehlszeilenschnittstelle aufgefordert, das Löschen Ihrer Logik-App zu bestätigen. Wenn Sie die Bestätigungsaufforderung überspringen möchten, können Sie dem Befehl den optionalen Parameter `--yes -y` hinzufügen.
 
-```azurecli
-
+```output
 Are you sure you want to perform this operation? (y/n):
-
 ```
 
 Zur Bestätigung der Löschung einer Logik-App können Sie [Ihre Logik-Apps über die Befehlszeilenschnittstelle auflisten](#list-logic-apps-in-cli) oder Ihre Logik-Apps im Azure-Portal anzeigen.
@@ -178,22 +164,30 @@ Zur Bestätigung der Löschung einer Logik-App können Sie [Ihre Logik-Apps übe
 In diesem Beispiel wird der [in einem vorherigen Abschnitt erstellte Beispielworkflow](#example---create-logic-app) gelöscht.
 
 ```azurecli-interactive
-
 az logic workflow delete --resource-group "testResourceGroup" --name "testLogicApp"
-
 ```
 
 Nachdem Sie auf die Bestätigungsaufforderung mit `y` reagiert haben, wird die Logik-App gelöscht.
+
+### <a name="considerations---delete-logic-app"></a>Überlegungen: Löschen einer Logik-App
+
+Das Löschen einer Logik-App wirkt sich wie folgt auf Workflow-Instanzen aus:
+
+* Der Logic Apps-Dienst unterbricht alle aktiven und ausstehenden Ausführungen so gut wie möglich.
+
+  Selbst bei einer großen Menge oder einem umfangreichen Backlog werden die meisten Ausführungen abgebrochen, bevor sie abgeschlossen oder gestartet werden. Es kann jedoch einige Zeit dauern, bis der Abbruchvorgang abgeschlossen ist. In der Zwischenzeit werden möglicherweise einige Ausführungen gestartet, während die Runtime den Abbruchprozess durchläuft.
+
+* Vom Logic Apps-Dienst werden keine neuen Workflowinstanzen erstellt oder ausgeführt.
+
+* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls tritt bei Aufrufen des neu erstellten Workflows der Fehler `Unauthorized` auf. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten verwenden, sowie Workflows, die Azure-Funktionen aufrufen.
 
 ## <a name="show-logic-apps-in-cli"></a>Anzeigen von Logik-Apps über die Befehlszeilenschnittstelle
 
 Ein bestimmter Logik-App-Workflow kann mithilfe des Befehls [`az logic workflow show`](/cli/azure/logic/workflow#az_logic_workflow_show) abgerufen werden.
 
 ```azurecli
-
 az logic workflow show --name
                        --resource-group
-
 ```
 
 Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/logic/workflow#az_logic_workflow_show-required-parameters) enthalten:
@@ -202,15 +196,14 @@ Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/logic/workfl
 | --------- | ----- | ----------- |
 | Name | `--name -n` | Der Name Ihrer Logik-App. |
 | Ressourcengruppenname | `--resource-group -g` | Der Name der Ressourcengruppe, in der sich Ihre Logik-App befindet. |
+||||
 
 ### <a name="example---get-logic-app"></a>Beispiel: Abrufen einer Logik-App
 
 In diesem Beispiel wird die Logik-App `testLogicApp` in der Ressourcengruppe `testResourceGroup` mit vollständigen Protokollen für das Debuggen zurückgegeben.
 
 ```azurecli-interactive
-
 az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp" --debug
-
 ```
 
 ## <a name="list-logic-apps-in-cli"></a>Auflisten von Logik-Apps über die Befehlszeilenschnittstelle
@@ -224,13 +217,12 @@ Die Ergebnisse können nach folgenden [optionalen Parametern](/cli/azure/logic/w
 | Ressourcengruppenname | `--resource-group -g` | Der Name der Ressourcengruppe, nach der Sie Ihre Ergebnisse filtern möchten. |
 | Anzahl von Elementen | `--top` | Die Anzahl von Elementen in Ihren Ergebnissen. |
 | Filtern | `--filter` | Die Art von Filter, den Sie für Ihre Liste verwenden möchten. Sie können nach Zustand (`State`), nach Trigger (`Trigger`) und nach dem Bezeichner der referenzierten Ressource (`ReferencedResourceId`) filtern. |
+||||
 
 ```azurecli
-
 az logic workflow list [--filter]
                        [--resource-group]
                        [--top]
-
 ```
 
 ### <a name="example---list-logic-apps"></a>Beispiel: Auflisten von Logik-Apps
@@ -238,9 +230,7 @@ az logic workflow list [--filter]
 In diesem Beispiel werden alle aktivierten Workflows in der Ressourcengruppe `testResourceGroup` in einem ASCII-Tabellenformat zurückgegeben.
 
 ```azurecli-interactive
-
 az logic workflow list --resource-group "testResourceGroup" --filter "(State eq 'Enabled')" --output "table"
-
 ```
 
 ## <a name="errors"></a>Errors
@@ -248,17 +238,13 @@ az logic workflow list --resource-group "testResourceGroup" --filter "(State eq 
 Der folgende Fehler gibt an, dass die Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle nicht installiert ist. [Installieren Sie die Logic Apps-Erweiterung](#prerequisites) auf Ihrem Computer, wie in den Voraussetzungen beschrieben.
 
 ```output
-
 az: 'logic' is not in the 'az' command group. See 'az --help'. If the command is from an extension, please make sure the corresponding extension is installed. To learn more about extensions, please visit https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview
-
 ```
 
 Der folgende Fehler deutet ggf. darauf hin, dass der Dateipfad zum Hochladen Ihrer Workflowdefinition nicht korrekt ist:
 
 ```output
-
 Expecting value: line 1 column 1 (char 0)
-
 ```
 
 ## <a name="global-parameters"></a>Globale Parameter
@@ -273,6 +259,7 @@ Befehle vom Typ `az logic` können mit folgenden optionalen globalen Parametern 
 | Debuggen | `--debug` | Dient zum Anzeigen aller Debugprotokolle. |
 | Hilfemeldung | `--help -h` | Dient zum Anzeigen des Hilfedialogfelds. |
 | Abfrage | `--query` | Dient zum Festlegen einer JMESPath-Abfragezeichenfolge für eine JSON-Ausgabe. |
+||||
 
 ## <a name="next-steps"></a>Nächste Schritte
 

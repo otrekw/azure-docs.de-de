@@ -7,12 +7,12 @@ ms.date: 11/16/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a7d26eebb24662a448d8ccb44d037e7706fe776b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cc9c0825761099f7f5f665cd3a7f27c88f9cdbc
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99832843"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325317"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Tutorial: Verwenden von Gerätegruppen zum Analysieren von Gerätetelemetriedaten
 
@@ -37,15 +37,13 @@ Fügen Sie vor dem Erstellen einer Gerätegruppe mindestens fünf simulierte Ger
 
 :::image type="content" source="media/tutorial-use-device-groups/simulated-devices.png" alt-text="Screenshot: Fünf simulierte Geräte vom Typ „Sensor Controller“":::
 
-Verwenden Sie bei vier der simulierten Sensorgeräte die Ansicht **Gerät verwalten**, um den Kundennamen auf *Contoso* festzulegen:
+Verwenden Sie bei vier der simulierten Sensorgeräte die Ansicht **Gerät verwalten**, um den Kundennamen auf *Contoso* festzulegen, und wählen Sie **Speichern** aus.
 
 :::image type="content" source="media/tutorial-use-device-groups/customer-name.png" alt-text="Screenshot: Festlegen der Cloudeigenschaft „Kundenname“":::
 
 ## <a name="create-a-device-group"></a>Erstellen einer Gerätegruppe
 
-Gehen Sie wie folgt vor, um eine Gerätegruppe zu erstellen:
-
-1. Wählen Sie im linken Bereich **Gerätegruppen** aus.
+1. Wählen Sie im linken Bereich **Gerätegruppen** aus, um zur Seite „Gerätegruppen“ zu navigieren.
 
 1. Wählen Sie **+ Neu** aus.
 

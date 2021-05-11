@@ -1,14 +1,14 @@
 ---
 title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
-ms.date: 01/14/2021
+ms.date: 05/01/2021
 ms.topic: overview
-ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d261cc958a104b4a11a6f82a8f86352159c0275
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98220727"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323697"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -166,7 +166,7 @@ Eine Zuweisung ist eine zugewiesene Richtliniendefinition oder -initiative, die 
 
 Im Abonnementbereich können Sie beispielsweise eine Definition zuweisen, die die Erstellung von Netzwerkressourcen verhindert. Sie können eine Ressourcengruppe in diesem Abonnement ausschließen, die für die Netzwerkinfrastruktur vorgesehen ist. Sie gewähren Benutzern, denen Sie in Bezug auf das Erstellen von Netzwerkressourcen vertrauen, dann Zugriff auf diese Netzwerkressourcengruppe.
 
-Als weiteres Beispiel möchten Sie möglicherweise eine Definition für eine Ressourcentyp-Zulassungsliste auf der Verwaltungsgruppenebene zuweisen. Dann weisen Sie einer untergeordneten Verwaltungsgruppe (oder sogar Abonnements direkt) eine weniger restriktive Richtlinie zu, die mehr Ressourcentypen zulässt. Dieses Beispiel funktioniert jedoch nicht, da es sich bei Azure Policy um ein explizites Verbotssystem handelt. Stattdessen müssen Sie die untergeordnete Verwaltungsgruppe oder das Abonnement aus der Zuweisung auf der Verwaltungsgruppenebene ausschließen. Anschließend müssen Sie die weniger restriktive Definition auf der Ebene der untergeordneten Verwaltungsgruppe oder des Abonnements zuweisen. Falls eine Ressource aufgrund einer Zuweisung abgelehnt wird, muss zum Zulassen der Ressource die ablehnende Zuweisung geändert werden.
+Als weiteres Beispiel möchten Sie möglicherweise eine Definition für eine Ressourcentyp-Positivliste auf der Verwaltungsgruppenebene zuweisen. Dann weisen Sie einer untergeordneten Verwaltungsgruppe (oder sogar Abonnements direkt) eine weniger restriktive Richtlinie zu, die mehr Ressourcentypen zulässt. Dieses Beispiel funktioniert jedoch nicht, da es sich bei Azure Policy um ein explizites Verbotssystem handelt. Stattdessen müssen Sie die untergeordnete Verwaltungsgruppe oder das Abonnement aus der Zuweisung auf der Verwaltungsgruppenebene ausschließen. Anschließend müssen Sie die weniger restriktive Definition auf der Ebene der untergeordneten Verwaltungsgruppe oder des Abonnements zuweisen. Falls eine Ressource aufgrund einer Zuweisung abgelehnt wird, muss zum Zulassen der Ressource die ablehnende Zuweisung geändert werden.
 
 Weitere Informationen zum Einrichten von Zuweisungen über das Portal finden Sie unter [Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen in Ihrer Azure-Umgebung](./assign-policy-portal.md). Schritte für [PowerShell](./assign-policy-powershell.md) und die [Azure-Befehlszeilenschnittstelle](./assign-policy-azurecli.md) sind ebenfalls verfügbar. Informationen zur Zuweisungsstruktur finden Sie unter [Zuweisungsstruktur](./concepts/assignment-structure.md).
 

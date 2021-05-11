@@ -9,18 +9,18 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 04/06/2021
 ms.topic: overview
-ms.openlocfilehash: 220618f167237d5937766eb5e28b9b6569cef76a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 91bf9674bfc49458dd2e8b1824b521a37b446a0a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031353"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289280"
 ---
 #  <a name="deploy-azure-arc-data-controller--direct-connect-mode"></a>Bereitstellen eines Azure Arc-Datencontrollers | Direkter Verbindungsmodus
 
 In diesem Artikel wird beschrieben, wie Sie den Azure Arc-Datencontroller während der aktuellen Vorschau dieses Features im direkten Verbindungsmodus bereitstellen. 
 
-Derzeit können Sie den Azure Arc-Datencontroller über das Azure-Portal erstellen. Andere Tools für Azure Arc-fähige Datendienste unterstützen das Erstellen des Datencontrollers im direkten Verbindungsmodus nicht. Ausführliche Informationen finden Sie unter [Bekannte Probleme: Azure Arc-fähige Datendienste (Vorschauversion)](known-issues.md).
+Derzeit können Sie den Azure Arc-Datencontroller über das Azure-Portal erstellen. Andere Tools für Azure Arc-fähige Datendienste unterstützen das Erstellen des Datencontrollers im direkten Verbindungsmodus nicht. Ausführliche Informationen finden Sie in den [Versionshinweisen](release-notes.md).
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 

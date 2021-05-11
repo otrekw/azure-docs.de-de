@@ -2,23 +2,22 @@
 title: 'Tutorial: Konfigurieren des Nachrichtenroutings für Azure IoT Hub über die Azure-Befehlszeilenschnittstelle'
 description: 'Tutorial: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mit der Azure CLI und dem Azure-Portal'
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 03/12/2019
+ms.date: 04/04/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: d7a10aac82286616273f7283bc3fba74f2c58f35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 965738a735052947940ec3763c664e5e90909ee1
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625214"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278282"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Tutorial: Verwenden der Azure CLI und des Azure-Portals zum Konfigurieren des IoT Hub-Nachrichtenroutings
 
@@ -159,7 +158,7 @@ Richten Sie jetzt die Weiterleitung für das Speicherkonto ein. Wechseln Sie zum
    >
    > Bei Verwendung des Standardformats für Blobdateinamen sieht der Blobname beispielsweise wie folgt aus, wenn der Hubname „ContosoTestHub“ lautet und als Datum bzw. Uhrzeit „30. Oktober 2018 um 10:56 Uhr“ verwendet wird: `ContosoTestHub/0/2018/10/30/10/56`.
    > 
-   > Die Blobs werden im Avro-Format geschrieben.
+   > Die Blobs werden standardmäßig im AVRO-Format geschrieben.
    >
 
 8. Wählen Sie **Erstellen**, um den Speicherendpunkt zu erstellen und der Route hinzuzufügen. Sie wechseln zurück zum Bereich **Route hinzufügen**.

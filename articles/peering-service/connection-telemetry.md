@@ -1,42 +1,63 @@
 ---
-title: Azure Peering Service-Verbindungstelemetrie
-description: Erfahren Sie etwas über die Verbindungstelemetrie für Microsoft Azure Peering Service.
+title: 'Azure Peering Service: Zugreifen auf Verbindungstelemetrie '
+description: In diesem Tutorial lernen Sie, wie Sie auf Verbindungstelemetrie zugreifen.
 services: peering-service
-author: derekolo
+author: gthareja
 ms.service: peering-service
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 05/18/2020
-ms.author: derekol
-ms.openlocfilehash: 0e54b20cc6aefa69226c24f557ae02166dc4b4b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: tutorial
+ms.date: 04/06/2021
+ms.author: gatharej
+ms.openlocfilehash: 2b019596c87ef3beca1ff26a9366250d188bdfbc
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84871300"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202675"
 ---
-# <a name="peering-service-connection-telemetry"></a>Peering Service-Verbindungstelemetrie
+# <a name="tutorial-accessing-peering-service-connection-telemetry"></a>Tutorial: Zugreifen auf Peering Service-Verbindungstelemetrie
 
-Die Verbindungstelemetrie bietet Einblicke, die für die Konnektivität zwischen dem Standort des Kunden und dem Microsoft-Netzwerk erfasst werden. Kunden können Telemetrie für die Azure Peering Service-Verbindung abrufen, indem sie die Verbindung im Azure-Portal registrieren. Dieses Feature bietet Präfixsicherheit und Erkenntnisse zur Netzwerkleistung.
+ In diesem Tutorial erfahren Sie, wie Sie auf die Telemetrie für Ihre Peering Service-Verbindungen zugreifen.
+ 
+ Die Verbindungstelemetrie bietet Einblicke, die für die Konnektivität zwischen dem Standort des Kunden und dem Microsoft-Netzwerk erfasst werden. In diesem Artikel erfahren Sie, wie Sie den Latenzbericht und Präfixstatus für eine bestimmte Azure Peering Service-Verbindung anzeigen. 
+
+Zum Zugreifen auf Peering Service-Verbindungstelemetrie müssen Sie eine Peering Service-Verbindung im Azure-Portal erstellen. Informationen zum Erstellen einer Verbindung finden Sie unter [Erstellen einer Peering Service-Verbindung – Azure-Portal](azure-portal.md).
 
 
-Die Verbindungstelemetrie setzt sich aus den folgenden Bereichen zusammen:
+## <a name="view-a-latency-report"></a>Anzeigen eines Latenzberichts
 
-### <a name="latency-measurement"></a>Latenzmessung
+Führen Sie zum Anzeigen eines Latenzberichts für eine bestimmte Peering Service-Verbindung die folgenden Schritte aus.
 
- Die Latenz wird vom Client zum Microsoft Edge-PoP für die registrierten Präfixe in Peering Service gemessen.
+1. Wählen Sie im linken Bereich **Alle Ressourcen** und dann die Peering Service-Verbindung aus. Wählen Sie dann unter **Präfixe** die Option **Öffnen** aus. 
 
-### <a name="route-prefix-monitoring-and-protection"></a>Überwachung und Schutz des Routenpräfix
+   ![Auswählen der Peering Service-Verbindung](./media/peering-service-measure/peering-service-measure-menu.png)
 
-Routingpfade werden auf verdächtige Aktivitäten überwacht, die dann in Ereignisprotokollen aufgezeichnet werden. Beispielsweise werden Ereignisprotokolle für einige dieser Faktoren erstellt:
+2. Eine Latenzberichtseite für alle Präfixe, die dieser Peering Service-Verbindung zugeordnet sind, wird angezeigt. **Die Peering Service-Verbindungen unterstützen Latenzdaten nur für das Präfix „/24“ oder größere Präfixe.**
 
-- Präfixhijacking
-- Präfixwiderruf
-- Routenleaks
+      ![Seite „Latenzbericht“](./media/peering-service-measure/peering-service-latency-report.png)
+
+3. Der Bericht wird standardmäßig für jede Stunde aktualisiert, die auf dieser Seite angezeigt wird. Wenn Sie den Bericht für andere Zeitachsen anzeigen möchten, wählen Sie die entsprechende Option aus **Datenanzeige für die letzten:** aus. 
+
+## <a name="view-prefix-state-report"></a>Anzeigen des Präfixstatusberichts
+
+1. Wenn Sie die Ereignisse für ein bestimmtes Präfix anzeigen möchten, wählen Sie dessen Namen und dann im linken Bereich **Präfixereignisse** aus. Die erfassten Ereignisse werden angezeigt.
+
+
+   ![Präfixereignisse](./media/peering-service-measure/peering-service-prefix-event.png)
+
+ Einige der möglichen Ereignisse, die in der Liste **Präfixereignisse** erfasst werden, werden hier gezeigt.
+
+| **Präfixereignisse** | **Ereignistyp**|**Erläuterung**|
+|-----------|---------|---------|
+| PrefixAnnouncementEvent |Information|Eine Präfixankündigung wurde empfangen.|
+| PrefixWithdrawalEvent|Warnung| Eine Zurücknahme des Präfixes wurde empfangen. |
+| PrefixBackupRouteAnnouncementEvent |Information|Eine Ankündigung der Präfixsicherungsroute wurde empfangen. |
+| PrefixBackupRouteWithdrawalEvent|Warnung|Eine Zurücknahme der Präfixsicherungsroute wurde empfangen. |
+| PrefixActivePath |Information| Aktuelle aktive Präfixroute   |
+| PrefixBackupPath | Information|Aktuelle Präfixsicherungsroute   |
+| PrefixOriginAsChangeEvent|Kritisch| Ein exaktes Präfix wurde mit anderer ursprünglicher autonomer Systemnummer (für aktive Route) empfangen.| 
+| PrefixBackupRouteOriginAsChangeEvent  | Fehler|Ein Präfix wurde mit anderer ursprünglicher autonomer Systemnummer (für Sicherungsroute) empfangen.  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zur Peering Service-Verbindung finden Sie unter [Peering Service-Verbindung](connection.md).
-- Informationen zum Onboarding einer Peering Service-Verbindung finden Sie unter [Onboarding eines Peering Service-Modells](onboarding-model.md).
-- Informationen zum Messen der Telemetrie finden Sie unter [Messen der Verbindungstelemetrie](measure-connection-telemetry.md).
+- Informationen zur Peering Service-Verbindungstelemetrie finden Sie unter [Peering Service-Verbindungstelemetrie](connection-telemetry.md).

@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Geschäftsprozesse über Ihre App Serv
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 6b15c09162146de7aef8abfcdba40627eb77621c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 04bdab82c9d1efed6da3f533617f19b82cf0781e
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830932"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290702"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Tutorial: Senden von E-Mails und Aufrufen anderer Geschäftsprozesse aus App Service
 
@@ -54,13 +54,13 @@ Stellen Sie eine App über das Sprachframework Ihrer Wahl für App Service berei
 
 ## <a name="create-the-logic-app"></a>Erstellen der Logik-App
 
-1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine leere Logik-App, indem Sie die Anleitung unter [Erstellen Ihrer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app) befolgen. Kehren Sie zu diesem Tutorial zurück, wenn der **Designer für Logik-Apps** angezeigt wird.
+1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine leere Logik-App, indem Sie die Anleitung unter [Schnellstart: Erstellen Ihres ersten Logic Apps-Workflows – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) befolgen. Kehren Sie zu diesem Tutorial zurück, wenn der **Designer für Logik-Apps** angezeigt wird.
 1. Wählen Sie auf der Begrüßungsseite des Designers für Logik-Apps unter **Starten Sie mit einem gängigen Trigger** die Option **Beim Empfang einer HTTP-Anforderung** aus.
 
     ![Screenshot der Begrüßungsseite des Designers für Logik-Apps mit hervorgehobener Option „Beim Empfang einer H T T P-Anforderung“.](./media/tutorial-send-email/receive-http-request.png)
 1. Wählen Sie im Dialogfeld unter **Beim Empfang einer HTTP-Anforderung** die Option **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
 
-    ![Screenshot mit dem Dialogfeld „Beim Empfang einer H T T P-Anforderung“ und der ausgewählten Option „Beispielnutzlast zum Generieren eines Schemas verwenden“. ](./media/tutorial-send-email/generate-schema-with-payload.png)
+    ![Screenshot mit Dialogfeld „Beim Empfang einer HTTP-Anforderung“ und ausgewählter Option „Beispielnutzlast zum Generieren eines Schemas verwenden“ ](./media/tutorial-send-email/generate-schema-with-payload.png)
 
 1. Kopieren Sie den folgenden JSON-Beispielcode in das Textfeld, und wählen Sie **Fertig** aus.
 
@@ -81,7 +81,7 @@ Stellen Sie eine App über das Sprachframework Ihrer Wahl für App Service berei
 
     Diese HTTP-Anforderungsdefinition ist der Ausgangspunkt für alle Schritte, die Sie in dieser Logik-App ausführen möchten, z. B. Gmail oder etwas anderes. Später rufen Sie diese URL dann in Ihrer App Service-App auf. Weitere Informationen zum Anforderungstrigger finden Sie in der [Referenz zu HTTP-Anforderung/-Antwort](../connectors/connectors-native-reqres.md).
 
-1. Klicken Sie unten im Designer auf **Neuer Schritt**, geben Sie im Suchfeld für Aktionen **Gmail** ein, und wählen Sie **E-Mail senden (V2)** aus, nachdem diese Option gefunden wurde.
+1. Klicken Sie unten im Designer auf **Neuer Schritt**, und geben Sie im Suchfeld für Aktionen **Gmail** ein. Suchen Sie nach **E-Mail senden (V2)** , und wählen Sie die Option aus.
     
     > [!TIP]
     > Sie können auch nach anderen Arten von Integrationen suchen, z. B. SendGrid, MailChimp, Microsoft 365 und Salesforce. Weitere Informationen hierzu finden Sie in der [Logic Apps-Dokumentation](../logic-apps/index.yml).

@@ -3,18 +3,18 @@ title: 'Tutorial: Routenplanung für Elektrofahrzeuge mithilfe von Azure Notebo
 description: Tutorial zur Routenplanung für Elektrofahrzeuge mit den Microsoft Azure Maps-Routenplanungs-APIs und Azure Notebooks
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce6cb60754ed0afae27c5b5d316a7158961b55a3
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98680331"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323373"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Tutorial: Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python)
 
@@ -34,16 +34,13 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > * Rendern der Grenze des erreichbaren Bereichs und der Ladestationen auf einer Karte
 > * Ermitteln und Visualisieren einer Route zur nächstgelegenen Ladestation basierend auf der Fahrtzeit
 
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="prerequisites"></a>Voraussetzungen 
+1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account) und [Auswählen des Tarifs „Gen 2“ oder „S1“](choose-pricing-tier.md)
+2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
 
-Für dieses Tutorial müssen Sie zuerst ein Azure Maps-Konto erstellen und Ihren Primärschlüssel (Abonnementschlüssel) abrufen. 
+Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
-Gehen Sie zum Erstellen eines Azure Maps-Kontoabonnements wie unter [Erstellen eines Kontos mit Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account) beschrieben vor. Sie benötigen ein Azure Maps-Kontoabonnement mit dem Tarif „S1“. 
-
-Gehen Sie wie unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) beschrieben vor, um den primären Abonnementschlüssel für Ihr Konto abzurufen.
-
-Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
 ## <a name="create-an-azure-notebooks-project"></a>Erstellen eines Azure Notebooks-Projekts
 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f43e5b77580b7071ce48b39190c26a53f99f8cf5
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: ae84d62f8f028158450b1127abc81c5dc4416502
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107740159"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315379"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Tutorial: Anzeigen eines per Remotezugriff gerenderten Modells
 
@@ -125,6 +125,9 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob die Projekteinste
 1. Überprüfen Sie das Fenster **ValidateProject** auf Fehler und beheben Sie ggf. die Projekteinstellungen.
 
     ![Projektüberprüfung im Unity-Editor](./media/remote-render-unity-validation.png)
+
+> [!NOTE]
+> Wenn Sie MRTK in Ihrem Projekt verwenden und das Kamerasubsystem aktivieren, überschreibt MRTK manuelle Änderungen, die Sie auf die Kamera anwenden. Dazu gehören Fixes aus dem ValidateProject-Tool.
 
 ## <a name="create-a-script-to-coordinate-azure-remote-rendering-connection-and-state"></a>Erstellen eines Skripts zum Koordinieren der Azure Remote Rendering-Verbindung und des Zustands
 

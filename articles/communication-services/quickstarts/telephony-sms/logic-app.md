@@ -9,16 +9,16 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 11cce223a0802c20c5fc144eed681327f989a949
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cabf4ba9ea17c1ad2d8af9fd17e7d6f09838e745
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103488379"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293150"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>Schnellstart: Senden von SMS-Nachrichten in Azure Logic Apps mithilfe von Azure Communication Services
 
-Mithilfe des [Azure Communication Services SMS](../../overview.md)-Connectors und [Azure Logic Apps](../../../logic-apps/logic-apps-overview.md) können Sie automatisierte Workflows oder *Logik-Apps* erstellen, die SMS-Nachrichten versenden können. In dieser Schnellstartanleitung erfahren Sie, wie automatisch Textnachrichten als Antwort auf ein Triggerereignis gesendet werden können, was der erste Schritt in einem Logik-App-Workflow ist. Ein Triggerereignis kann eine eingehende E-Mail-Nachricht, ein Wiederholungszeitplan, ein [Azure Event Grid](../../../event-grid/overview.md)-Ressourcenereignis oder jeder andere [Trigger sein, der von Azure Logic Apps](/connectors/connector-reference/connector-reference-logicapps-connectors) unterstützt wird.
+Mithilfe des [Azure Communication Services SMS](../../overview.md)-Connectors und [Azure Logic Apps](../../../logic-apps/logic-apps-overview.md) können Sie automatisierte Workflows erstellen, die SMS-Nachrichten versenden können. In dieser Schnellstartanleitung erfahren Sie, wie automatisch Textnachrichten als Antwort auf ein Triggerereignis gesendet werden können, was der erste Schritt in einem Logik-App-Workflow ist. Ein Triggerereignis kann eine eingehende E-Mail-Nachricht, ein Wiederholungszeitplan, ein [Azure Event Grid](../../../event-grid/overview.md)-Ressourcenereignis oder jeder andere [Trigger sein, der von Azure Logic Apps](/connectors/connector-reference/connector-reference-logicapps-connectors) unterstützt wird.
 
 :::image type="content" source="./media/logic-app/azure-communication-services-connector.png" alt-text="Der Screenshot zeigt das Azure-Portal, das für den Logic App Designer geöffnet ist, und zeigt ein Logik-App-Beispiel, das die Aktion „SMS senden“ für den Azure Communication Services-Connector verwendet.":::
 
@@ -73,11 +73,11 @@ Um die Aktion **SMS senden** als neuen Schritt in Ihrem Workflow mithilfe des SM
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
-Führen Sie als nächstes Ihre Logik-App zum Testen aus.
+Führen Sie als Nächstes Ihren Logik-App-Workflow zum Testen aus.
 
 ## <a name="test-your-logic-app"></a>Testen Ihrer Logik-App
 
-Wählen Sie auf der Symbolleiste des Designers die Option **Ausführen** aus, um Ihre Logik-App manuell zu starten. Oder Sie können auf die Auslösung Ihrer Logik-App warten. In beiden Fällen sollte die Logik-App eine SMS-Nachricht an Ihre angegebene Zieltelefonnummer senden. Weitere Informationen zum Ausführen Ihrer Logik-App finden Sie unter [Ausführen Ihrer Logik-App](../../../logic-apps/quickstart-create-first-logic-app-workflow.md#run-your-logic-app).
+Wählen Sie auf der Symbolleiste des Designers die Option **Ausführen** aus, um Ihren Workflow manuell zu starten. Sie können auch warten, bis der Trigger ausgelöst wird. In beiden Fällen sollte der Workflow eine SMS-Nachricht an Ihre angegebene Zieltelefonnummer senden. Weitere Informationen finden Sie im Abschnitt zum [Ausführen Ihres Workflows](../../../logic-apps/quickstart-create-first-logic-app-workflow.md#run-workflow).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

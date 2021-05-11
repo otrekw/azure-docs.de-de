@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Erstellen von Richtlinien zur Konformitätserzwingung'
 description: In diesem Tutorial verwenden Sie Richtlinien zum Erzwingen von Standards, Steuern der Kosten, Gewährleisten der Sicherheit und Erzwingen von unternehmensweiten Entwurfsprinzipien.
-ms.date: 01/29/2021
+ms.date: 05/01/2021
 ms.topic: tutorial
-ms.openlocfilehash: a643e7ccede4966719972694ea29eeb77789595e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68621ee5a4cdfcb3bdbdddb2baa423d443eba36a
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99221192"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325209"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -496,7 +496,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 ## <a name="remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion"></a>Entfernen einer nicht konformen oder abgelehnten Ressource aus dem Bereich mithilfe eines Ausschlusses
 
-Nachdem eine Richtlinieninitiative zugewiesen wurde, um einen bestimmten Standort vorzuschreiben, werden an einem anderen Standort erstellte Ressourcen abgelehnt. In diesem Abschnitt erfahren Sie, wie Sie das Problem einer verweigerten Anforderung zum Erstellen einer Ressource durch Erstellen eines Ausschlusses für eine einzelne Ressourcengruppe lösen. Der Ausschluss verhindert die Erzwingung der Richtlinie (oder Initiative) für diese Ressourcengruppe. Im folgenden Beispiel ist in der ausgeschlossenen Ressourcengruppe jeder Standort erlaubt. Ein Ausschluss kann für ein Abonnement, für eine Ressourcengruppe oder für einzelne Ressourcen gelten.
+Nachdem eine Richtlinieninitiative zugewiesen wurde, um einen bestimmten Standort vorzuschreiben, werden an einem anderen Standort erstellte Ressourcen abgelehnt. In diesem Abschnitt erfahren Sie, wie Sie das Problem einer verweigerten Anforderung zum Erstellen einer Ressource durch Erstellen eines Ausschlusses für eine einzelne Ressourcengruppe lösen. Der Ausschluss verhindert die Erzwingung der Richtlinie (oder Initiative) für diese Ressourcengruppe. Im folgenden Beispiel ist in der ausgeschlossenen Ressourcengruppe jeder Standort erlaubt. Ein Ausschluss kann für ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource gelten.
 
 > [!NOTE]
 > Mithilfe einer [Richtlinienausnahme](../concepts/exemption-structure.md) kann auch die Auswertung einer Ressource übersprungen werden. Weitere Informationen finden Sie unter [Erläuterungen zum Bereich in Azure Policy](../concepts/scope.md).

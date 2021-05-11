@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: iangithinji
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 202ccf6f540ec78c2bb30e0f0a0173609bba578c
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 820f27e770e3168277e12b85e7766cd16975ef7f
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751452"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315001"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Optionen für einmaliges Anmelden in Azure AD
 
@@ -76,7 +76,7 @@ Informationen zum Konfigurieren einer SaaS-Anwendung für SAML-basiertes einmali
 
 Um eine Anwendung für den WS-Verbund zu konfigurieren, führen Sie die gleichen Anweisungen wie zum Konfigurieren der Anwendung für SAML-basiertes einmaliges Anmelden aus. Im Schritt zum Konfigurieren der Anwendung für die Verwendung von Azure AD müssen Sie die Azure AD-Anmelde-URL für den WS-Verbund-Endpunkt `https://login.microsoftonline.com/<tenant-ID>/wsfed` ersetzen.
 
-Informationen zum Konfigurieren einer lokalen Anwendung für SAML-basiertes einmaliges Anmelden finden Sie unter [SAML-SSO (einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-on-premises-apps.md).
+Informationen zum Konfigurieren einer lokalen Anwendung für SAML-basiertes einmaliges Anmelden finden Sie unter [SAML-SSO (einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy](../app-proxy/application-proxy-configure-single-sign-on-on-premises-apps.md).
 
 Weitere Informationen zum SAML-Protokoll finden Sie unter [SAML-Protokoll für einmaliges Anmelden](../develop/single-sign-on-saml-protocol.md).
 
@@ -107,7 +107,7 @@ Das kennwortbasierte einmalige Anmelden wird für jede cloudbasierte Anwendung u
 
 Informationen zum Konfigurieren einer Cloudanwendung für kennwortbasiertes einmaliges Anmelden finden Sie unter [Konfigurieren des einmaligen Anmeldens per Kennwort](configure-password-single-sign-on-non-gallery-applications.md).
 
-Informationen zum Konfigurieren einer lokalen Anwendung für einmaliges Anmelden über den Anwendungsproxy finden Sie unter [Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy](application-proxy-configure-single-sign-on-password-vaulting.md).
+Informationen zum Konfigurieren einer lokalen Anwendung für einmaliges Anmelden über den Anwendungsproxy finden Sie unter [Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy](../app-proxy/application-proxy-configure-single-sign-on-password-vaulting.md).
 
 ### <a name="how-authentication-works-for-password-based-sso"></a>Funktionsweise der Authentifizierung für kennwortbasiertes einmaliges Anmelden
 
@@ -157,16 +157,16 @@ Hinweis: Wenn Sie die Anwendung für das SP-initiierte und SAML-basierte einmali
 
 ## <a name="integrated-windows-authentication-iwa-sso"></a>Einmaliges Anmelden mit der integrierten Windows-Authentifizierung (IWA)
 
-Der [Anwendungsproxy](application-proxy.md) ermöglicht einmaliges Anmelden (SSO) für Anwendungen, die die [integrierte Windows-Authentifizierung (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) verwenden oder Ansprüche unterstützen. Wenn Ihre Anwendung die integrierte Windows-Authentifizierung verwendet, authentifiziert sich der Anwendungsproxy mithilfe der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) bei der Anwendung. Bei einer Anwendung, die Ansprüche unterstützt und Azure Active Directory vertraut, funktioniert das einmalige Anmelden, da der Benutzer bereits über Azure AD authentifiziert wurde.
+Der [Anwendungsproxy](../app-proxy/application-proxy.md) ermöglicht einmaliges Anmelden (SSO) für Anwendungen, die die [integrierte Windows-Authentifizierung (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) verwenden oder Ansprüche unterstützen. Wenn Ihre Anwendung die integrierte Windows-Authentifizierung verwendet, authentifiziert sich der Anwendungsproxy mithilfe der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) bei der Anwendung. Bei einer Anwendung, die Ansprüche unterstützt und Azure Active Directory vertraut, funktioniert das einmalige Anmelden, da der Benutzer bereits über Azure AD authentifiziert wurde.
 
 Wählen Sie den Modus für einmaliges Anmelden für die integrierte Windows-Authentifizierung (IWA) aus, um einmaliges Anmelden für eine lokale App mit IWA zur Verfügung zu stellen.
 
-Informationen zum Konfigurieren einer lokalen App für IWA finden Sie unter [Eingeschränkte Kerberos-Delegierung für einmaliges Anmelden bei Ihren Anwendungen mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md).
+Informationen zum Konfigurieren einer lokalen App für IWA finden Sie unter [Eingeschränkte Kerberos-Delegierung für einmaliges Anmelden bei Ihren Anwendungen mit dem Anwendungsproxy](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md).
 
 ### <a name="how-single-sign-on-with-kcd-works"></a>So funktioniert das einmalige Anmelden mit KCD
 Dieses Diagramm erläutert die Vorgänge, die bei einem Zugriff eines Benutzers auf eine lokale Anwendung, die IWA verwendet, ablaufen.
 
-![Flussdiagramm für die Microsoft Azure AD-Authentifizierung](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![Flussdiagramm für die Microsoft Azure AD-Authentifizierung](../app-proxy/media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
 1. Der Benutzer gibt die URL ein, um über den Anwendungsproxy auf die lokale Anwendung zuzugreifen.
 1. Der Anwendungsproxy leitet die Anforderung zur Vorauthentifizierung an Azure AD-Authentifizierungsdienste weiter. Zu diesem Zeitpunkt wendet Azure AD alle gültigen Authentifizierungs- und Autorisierungsrichtlinien an, wie z. B. mehrstufige Authentifizierung. Nachdem der Benutzer überprüft wurde, erstellt Azure AD ein Token und sendet es an den Benutzer.
@@ -183,10 +183,10 @@ Das headerbasierte einmalige Anmelden funktioniert für Anwendungen, die für di
 
 Wählen Sie headerbasiertes einmaliges Anmelden aus, wenn ein Anwendungsproxy für die lokale Anwendung konfiguriert ist.
 
-Weitere Informationen zur headerbasierten Authentifizierung finden Sie unter [Headerbasiertes einmaliges Anmelden für lokale Apps mit Azure AD-App-Proxy (Vorschau)](application-proxy-configure-single-sign-on-with-headers.md).
+Weitere Informationen zur headerbasierten Authentifizierung finden Sie unter [Headerbasiertes einmaliges Anmelden für lokale Apps mit Azure AD-App-Proxy (Vorschau)](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md)
 * [Planen einer Bereitstellung für einmaliges Anmelden](plan-sso-deployment.md)
-* [Einmaliges Anmelden mit lokalen Apps](application-proxy-config-sso-how-to.md)
+* [Einmaliges Anmelden mit lokalen Apps](../app-proxy/application-proxy-config-sso-how-to.md)

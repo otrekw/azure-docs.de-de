@@ -113,7 +113,7 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Azure Time Series Insights Ge
    | **IoT Hub-Name** | Wählen Sie den Namen des IoT-Hubs aus, den Sie für den Gerätesimulator erstellt haben. |
    | **Zugriffsrichtlinie für IoT Hub** | Wählen Sie **iothubowner** aus. |
    | **IoT Hub-Consumergruppe** | Wählen Sie **Neu** aus, geben Sie einen eindeutigen Namen ein, und wählen Sie anschließend **+ Hinzufügen** aus. Bei der Consumergruppe muss es sich um einen eindeutigen Wert in Azure Time Series Insights Gen2 handeln. |
-   | **Startoptionen** | Wählen Sie **Beginning now** (Jetzt beginnen) aus. |
+   | **Startoptionen** | Wählen Sie **Beginning now** (Wird jetzt gestartet) aus. |
    | **Timestamp property** (Timestamp-Eigenschaft) | Mit diesem Wert wird die Eigenschaft **Zeitstempel** in Ihren eingehenden Telemetriedaten identifiziert. Lassen Sie das Feld für dieses Tutorial leer. Dieser Simulator verwendet den aus IoT Hub eingehenden Zeitstempel, der standardmäßig von Azure Time Series Insights Gen2 verwendet wird. |
 
    :::image type="content" source="media/tutorial-set-up-environment/configure-event-source.png" alt-text="Konfigurieren des erstellten IoT-Hubs als Ereignisquelle" lightbox="media/tutorial-set-up-environment/configure-event-source.png":::

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/12/2021
+ms.date: 04/28/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3d53c96c4b0306911b0c8a0b8576f35a73419db0
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9a39a1b0df364aeed970f3ed0e0d99d4d31585b2
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498151"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175476"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial: Entwickeln eines SCIM-Endpunkts und Planen seiner Bereitstellung
 
@@ -213,10 +213,11 @@ Verwenden Sie bei der Implementierung eines SCIM-Endpunkts die allgemeinen Richt
 * Das Attribut „entitlements“ wird nicht unterstützt.
 * HTTPS-Unterstützung auf Ihrem SCIM-Endpunkt
 * [Schema Ermittlung](#schema-discovery)
-  * Die Schema Ermittlung wird derzeit in der benutzerdefinierten Anwendung nicht unterstützt, wird jedoch in bestimmten Katalog Anwendungen verwendet. In Zukunft wird die Schema Ermittlung als primäre Methode verwendet, um einem Connector zusätzliche Attribute hinzuzufügen. 
+  * Die Schema Ermittlung wird derzeit in der benutzerdefinierten Anwendung nicht unterstützt, wird jedoch in bestimmten Katalog Anwendungen verwendet. In Zukunft wird die Schemaermittlung als einzige Methode verwendet, um einem vorhandenen Connector zusätzliche Attribute hinzuzufügen. 
   * Wenn kein Wert vorhanden ist, senden Sie keine NULL-Werte.
   * Eigenschaftswerte sollten Kamel Schreibweise sein (z. b. "Read Write").
   * Muss eine Listen Antwort zurückgeben.
+  * Die Anforderung vom Typ „/schemas“ wird jedes Mal vom Azure AD-SCIM-Client gesendet, wenn ein Benutzer die Bereitstellungskonfiguration im Azure-Portal speichert oder wenn ein Benutzer auf die Seite „Bereitstellung bearbeiten“ im Azure-Portal gelangt. Alle zusätzlichen ermittelten Attribute werden Kunden in den Attributzuordnungen unter der Zielattributliste angezeigt. Die Schemaermittlung führt nur dazu, dass zusätzliche Zielattribute hinzugefügt werden. Sie führt nicht dazu, dass Attribute entfernt werden. 
   
 ### <a name="user-provisioning-and-deprovisioning"></a>Benutzerbereitstellung und Aufheben der Bereitstellung
 

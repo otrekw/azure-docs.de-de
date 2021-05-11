@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/22/2020
+ms.date: 04/16/2021
 ms.author: apimpm
-ms.openlocfilehash: 0dd460bce01b86c72d0b8fd70351fdcc85c69bd4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6825e5d7849f97aac4627d4856d26b3e08ab6761
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93146959"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "108230569"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Importieren einer Logik-App als API
 
@@ -29,7 +29,6 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 >
 > -   Importieren einer Logik-App als API
 > -   Testen der API im Azure-Portal
-> -   Testen der API im Entwicklerportal
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,43 +40,61 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
 
 1. Navigieren Sie im Azure-Portal zu Ihrem API Management-Dienst, und wählen Sie im Menü **APIs** aus.
-2. Wählen Sie **Logik-App** in der Liste **Neue API hinzufügen** aus.
+1. Wählen Sie **Logik-App** in der Liste **Neue API hinzufügen** aus.
 
-    ![Logik-App](./media/import-logic-app-as-api/logic-app-api.png)
+    :::image type="content" source="./media/import-logic-app-as-api/logic-app-select.png" alt-text="Auswählen der Logik-App-Kategorie":::
 
-3. Klicken Sie auf **Durchsuchen**, um die Liste der Logik-Apps mit HTTP-Trigger in Ihrem Abonnement anzuzeigen. (Beachten Sie, dass Logik-Apps ohne HTTP-Trigger nicht in der Liste aufgeführt sind.)
-4. Wählen Sie die App aus. API Management sucht den Swagger, der der ausgewählten App zugeordnet ist, ruft ihn ab und importiert ihn.
-5. Fügen Sie ein API-URL-Suffix hinzu. Das Suffix ist ein Name, der diese spezifische API in dieser API Management-Instanz identifiziert. Es muss in dieser API Management-Instanz eindeutig sein.
-6. Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. In diesem Fall wird das Produkt „_Unlimited_“ verwendet. Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.
+1. Klicken Sie auf **Durchsuchen**, um die Liste der Logik-Apps mit HTTP-Trigger in Ihrem Abonnement anzuzeigen. 
+    * Logik-Apps *ohne* HTTP-Trigger sind nicht in der Liste aufgeführt.
 
-    Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs einfügen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. Wenn Sie die API Management-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.
+    :::image type="content" source="./media/import-logic-app-as-api/browse-logic-apps.png" alt-text="Suchen nach vorhandenen Logik-Apps mit dem richtigen Trigger":::
 
-    Standardmäßig enthält jede API Management-Instanz zwei Beispielprodukte:
+1. Wählen Sie die Logik-App aus. 
 
-    - **Starter**
-    - **Unbegrenzt**
+    :::image type="content" source="./media/import-logic-app-as-api/select-logic-app-import-2.png" alt-text="Auswählen der Logik-App":::
 
-7. Geben Sie weitere API-Einstellungen ein. Sie können die Werte während der Erstellung festlegen oder später über die Registerkarte **Einstellungen** konfigurieren. Die Einstellungen werden im Tutorial [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md#import-and-publish-a-backend-api) erläutert.
-8. Klicken Sie auf **Erstellen**.
+1. API Management sucht den Swagger, der der ausgewählten App zugeordnet ist, ruft ihn ab und importiert ihn.
+1. Fügen Sie ein API-URL-Suffix hinzu. 
+    * Das Suffix identifiziert eindeutig diese spezifische API in dieser API Management-Instanz.
+
+    :::image type="content" source="./media/import-logic-app-as-api/create-from-logic-app.png" alt-text="Ausfüllen der Felder":::
+
+1. Wenn die API veröffentlicht werden und für Entwickler verfügbar sein soll, wechseln Sie in den **Vollbildmodus**, und ordnen Sie sie einem **Produkt** zu. In diesem Beispiel wird das Produkt *Unlimited* verwendet. 
+    * Sie können Ihre API einem Produkt entweder während der Erstellung oder später über die Registerkarte **Einstellungen** hinzufügen.
+
+    >[!NOTE]
+    > Produkte sind Zuordnungen einer oder mehrerer APIs, die Entwicklern über das Entwicklerportal angeboten werden. Entwickler müssen zunächst ein Produkt abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonniert haben, erhalten sie einen Abonnementschlüssel für jede API in diesem Produkt. Als Ersteller der API Management-Instanz sind Sie Administrator und haben dadurch standardmäßig alle Produkte abonniert.
+    >
+    > Jede API Management-Instanz enthält zwei Standardbeispielprodukte:
+    > - **Starter**
+    > - **Unbegrenzt**
+
+1. Geben Sie weitere API-Einstellungen ein. 
+    * Sie können diese Werte während der Erstellung oder später über die Registerkarte **Einstellungen** festlegen. Die Einstellungen werden im Tutorial [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md#import-and-publish-a-backend-api) erläutert.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="test-the-api-in-the-azure-portal"></a>Testen der API im Azure-Portal
 
 Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein einfacher Weg, die Vorgänge einer API anzuzeigen und zu testen.
 
+:::image type="content" source="./media/import-logic-app-as-api/test-logic-app-api.png" alt-text="Testen der Logik-App":::
+
 1. Wählen Sie die API aus, die Sie im vorherigen Schritt erstellt haben.
 2. Wählen Sie die Registerkarte **Testen** aus.
-3. Wählen Sie einen Vorgang aus.
+3. Wählen Sie den Vorgang aus, den Sie testen möchten.
 
-    Die Seite zeigt Felder für Abfrageparameter und Felder für die Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Wenn Sie die API Management-Instanz erstellt haben, sind Sie bereits Administrator, sodass der Schlüssel automatisch eingetragen wird.
+    * Auf der Seite werden Felder für Abfrageparameter und Header angezeigt. 
+    * Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. 
+    * Als Ersteller der API Management-Instanz sind Sie bereits Administrator, sodass der Schlüssel automatisch eingetragen wird.
 
 4. Klicken Sie auf **Senden**.
 
-    Das Back-End antwortet mit **200 OK** und einigen Daten.
+    * Wenn der Test erfolgreich ist, antwortet das Back-End mit **200 OK** und einigen Daten.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 >[!NOTE]
->Jede Logik-App enthält den Vorgang **manual-invoke**. Wenn Sie Ihre API aus mehreren Logik-Apps zusammensetzen möchten, müssen Sie die Funktion umbenennen, damit keine Namenskonflikte auftreten.
+>Jede Logik-App enthält den Vorgang **manual-invoke**. Um Ihre API aus mehreren Logik-Apps zusammenzusetzen und Konflikte zu vermeiden, müssen Sie die Funktion umbenennen.
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

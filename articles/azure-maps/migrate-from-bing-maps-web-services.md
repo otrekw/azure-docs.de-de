@@ -3,18 +3,18 @@ title: 'Tutorial: Migrieren von Webdiensten aus Bing Karten | Microsoft Azure Ma
 description: Tutorial zum Migrieren von Webdiensten aus Bing Karten zu Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f108062c04292c322d07980155fea9c8808beb0a
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97679067"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326739"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>Tutorial: Migrieren von Webdiensten aus Bing Karten
 
@@ -281,8 +281,8 @@ In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichb
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints`: Übergibt diese Punkte an den Text der Post-Anforderung.  |
 | `interpolate`              | –                                                                 |
-| `includeSpeedLimit`        | Nicht zutreffend                                                                 |
-| `includeTruckSpeedLimit`   | Nicht zutreffend                                                                 |
+| `includeSpeedLimit`        | –                                                                 |
+| `includeTruckSpeedLimit`   | –                                                                 |
 | `speedUnit`                | –                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key`: Weitere Informationen finden Sie auch in der Dokumentation zur [Authentifizierung mit Azure Maps](./azure-maps-authentication.md). |
@@ -343,7 +343,7 @@ In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichb
 | `mapLayer` (`ml`)        | –                                            |
 | `mapSize` (`ms`)         | `width` und `height`: Es sind Größen bis 8.192 × 8.192 möglich. |
 | `declutterPins` (`dcl`)  | –                                            |
-| `dpi`                    | Nicht zutreffend                                            |
+| `dpi`                    | –                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | –                                            |
 | `pitch`                  | N/V: Straßenansicht wird nicht unterstützt.                |
@@ -615,9 +615,9 @@ Batchgeocodierung ist der Vorgang des Annehmens einer großen Anzahl von Adresse
 
 Bing Karten erlaubt die Übergabe von bis zu 200.000 Adressen in einer einzelnen Geocoding-Batchanforderung. Diese Anforderung wird einer Warteschlange übergeben und in der Regel über einen Zeitraum abgearbeitet, der zwischen wenigen Minuten bis zu einigen Stunden dauern kann, abhängig von der Größe des Datasets und der Auslastung des Diensts. Für jede Adresse in der Anforderung wird eine Transaktion generiert.
 
-Azure Maps verfügt über einen Dienst zur Batchgeocodierung, der jedoch nur die Übergabe von bis zu 10.000 Adressen in einer einzelnen Anforderung zulässt. Diese werden innerhalb von Sekunden bis hin zu einigen Minuten verarbeitet, je nach dem Umfang des Datasets und der Auslastung des Diensts. Für jede Adresse in der Anforderung wird eine Transaktion generiert. In Azure Maps steht der Dienst zur Batchgeocodierung nur im S1-Tarif zur Verfügung.
+Azure Maps verfügt über einen Dienst zur Batchgeocodierung, der jedoch nur die Übergabe von bis zu 10.000 Adressen in einer einzelnen Anforderung zulässt. Diese werden innerhalb von Sekunden bis hin zu einigen Minuten verarbeitet, je nach dem Umfang des Datasets und der Auslastung des Diensts. Für jede Adresse in der Anforderung wird eine Transaktion generiert. In Azure Maps steht der Dienst zur Batchgeocodierung nur im Gen2- oder S1-Tarif zur Verfügung. Weitere Informationen zu Tarifen finden Sie unter [Auswählen des richtigen Tarifs in Azure Maps](choose-pricing-tier.md).
 
-Eine weitere Möglichkeit für die Geocodierung einer großen Anzahl von Adressen mit Azure Maps besteht darin, parallele Anforderungen an die Standard-Such-APIs zu senden. Diese Dienste akzeptieren nur eine einzelne Adresse pro Anforderung, können aber im S0-Tarif verwendet werden, der auch Grenzwerte für die kostenlose Nutzung beinhaltet. Im S0-Tarif sind bis zu 50 Anforderungen pro Sekunde an die Azure Maps-Plattform von einem einzelnen Konto aus möglich. Wenn Sie die Verarbeitung so gestalten, dass dieser Grenzwert eingehalten wird, können mehr als 180.000 Adressen pro Stunde geocodiert werden. Für den Tarif S1 ist keine Beschränkung für die Anzahl der Abfragen pro Sekunde dokumentiert, die von einem Konto durchgeführt werden können. Daher können bei Verwendung dieses Tarifs viel mehr Daten schneller verarbeitet werden. Vor allem hilft der Dienst zur Batchgeocodierung aber, die Gesamtmenge der übertragenen Daten zu reduzieren, sodass sich der Datenverkehr im Netzwerk drastisch reduziert.
+Eine weitere Möglichkeit für die Geocodierung einer großen Anzahl von Adressen mit Azure Maps besteht darin, parallele Anforderungen an die Standard-Such-APIs zu senden. Diese Dienste akzeptieren nur eine einzelne Adresse pro Anforderung, können aber im S0-Tarif verwendet werden, der auch Grenzwerte für die kostenlose Nutzung beinhaltet. Im S0-Tarif sind bis zu 50 Anforderungen pro Sekunde an die Azure Maps-Plattform von einem einzelnen Konto aus möglich. Wenn Sie die Verarbeitung so gestalten, dass dieser Grenzwert eingehalten wird, können mehr als 180.000 Adressen pro Stunde geocodiert werden. Für den Tarif „Gen 2“ oder „S1“ ist keine Beschränkung für die Anzahl der Abfragen pro Sekunde dokumentiert, die von einem Konto durchgeführt werden können. Daher können bei Verwendung dieses Tarifs viel mehr Daten schneller verarbeitet werden. Vor allem hilft der Dienst zur Batchgeocodierung aber, die Gesamtmenge der übertragenen Daten zu reduzieren, sodass sich der Datenverkehr im Netzwerk drastisch reduziert.
 
 -   [Freiform-Geocodierung von Adressen](/rest/api/maps/search/getsearchaddress): Geben Sie eine einzelne Adresszeichenfolge (wie `"1 Microsoft way, Redmond, WA"`) an, und verarbeiten Sie die Anforderung sofort. Dieser Dienst wird zur schnellen Geocodierung einzelner Adressen empfohlen.
 -   [Strukturierte Geocodierung von Adressen](/rest/api/maps/search/getsearchaddressstructured):  Geben Sie die Teile einer einzelnen Adresse an, z. B. den Namen der Straße, die Stadt, das Land bzw. die Region und die Postleitzahl, und verarbeiten Sie die Anforderung sofort. Dieser Dienst wird empfohlen, wenn Sie einzelne Adressen schnell geocodieren müssen und die Daten bereits als einzelne Adressbestandteile analysiert haben.

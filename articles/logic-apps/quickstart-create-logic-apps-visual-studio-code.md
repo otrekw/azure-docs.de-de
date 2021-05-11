@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/24/2021
-ms.openlocfilehash: 03cfb49dabd5039453f84ef0e636d3948af70d8d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/23/2021
+ms.openlocfilehash: 0163b58017599ceb26f52f0e47cbc87e161f6ed2
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764835"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161236"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Schnellstart: Erstellen und Verwalten von Logik-App-Workflowdefinitionen mit Visual Studio Code
 
@@ -224,24 +224,6 @@ Führen Sie die folgenden Schritte aus, um Ihre Logik-App im Azure-Portal zu üb
 
    ![Ihre neue Logik-App im Azure-Portal](./media/quickstart-create-logic-apps-visual-studio-code/published-logic-app-in-azure.png)
 
-<a name="disable-enable-logic-app"></a>
-
-## <a name="disable-or-enable-logic-app"></a>Deaktivieren oder Aktivieren der Logik-App
-
-Wenn Sie in Visual Studio Code eine veröffentlichte Logik-App bearbeiten und die Änderungen speichern, *überschreiben* Sie Ihre bereits bereitgestellte App. Um zu vermeiden, Ihre in der Produktionsumgebung befindliche Logik-App zu beschädigen, und um die Unterbrechung zu minimieren, deaktivieren Sie Ihre Logik-App zunächst. Anschließend können Sie Ihre Logik-App reaktivieren, nachdem Sie sich vergewissert haben, dass sie weiterhin funktioniert.
-
-1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#access-azure).
-
-1. Erweitern Sie im Azure-Fenster unter **Logik-Apps** Ihr Azure-Abonnement, sodass Sie alle Logik-Apps in diesem Abonnement sehen können.
-
-   1. Um die gewünschte Logik-App zu deaktivieren, öffnen Sie das Menü der Logik-App, und wählen Sie **Deaktivieren** aus.
-
-      ![Ihre Logik-App deaktivieren](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
-
-   1. Wenn Sie bereit sind, Ihre Logik-App zu reaktivieren, öffnen Sie das Menü der Logik-App, und wählen Sie **Aktivieren** aus.
-
-      ![Ihre Logik-App aktivieren](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
-
 <a name="edit-logic-app"></a>
 
 ## <a name="edit-deployed-logic-app"></a>Bearbeiten der bereitgestellten Logik-App
@@ -249,13 +231,13 @@ Wenn Sie in Visual Studio Code eine veröffentlichte Logik-App bearbeiten und di
 In Visual Studio Code können Sie die Workflowdefinition für eine bereits in Azure bereitgestellte Logik-App öffnen und bearbeiten.
 
 > [!IMPORTANT] 
-> Bevor Sie eine aktive, in der Produktionsumgebung ausgeführte Logik-App bearbeiten, vermeiden Sie das Risiko, diese Logik-App zu beschädigen, und minimieren Sie die Unterbrechung, indem Sie [Ihre Logik-App deaktivieren](#disable-enable-logic-app).
+> Bevor Sie eine aktive, in der Produktionsumgebung ausgeführte Logik-App bearbeiten, vermeiden Sie das Risiko, diese Logik-App zu beschädigen, und minimieren Sie die Unterbrechung, indem Sie [Ihre Logik-App deaktivieren](#disable-enable-logic-apps).
 
 1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#access-azure).
 
 1. Erweitern Sie im Azure-Fenster unter **Logik-Apps** Ihr Azure-Abonnement, und wählen Sie die gewünschte Logik-App aus.
 
-1. Öffnen Sie das Menü der Logik-App, und wählen Sie **In Editor öffnen** aus. Alternativ können Sie neben dem Namen Ihrer Logik-App das Bearbeitungssymbol auswählen.
+1. Öffnen Sie das Logik-App-Menü, und wählen Sie **In Editor öffnen** aus. Alternativ können Sie neben dem Namen Ihrer Logik-App das Bearbeitungssymbol auswählen.
 
    ![Öffnen des Editors für eine vorhandene Logik-App](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
@@ -278,7 +260,7 @@ In Visual Studio Code können Sie die Workflowdefinition für eine bereits in Az
 In Visual Studio Code können Sie die früheren Versionen der Logik-App öffnen und überprüfen. Sie können auch eine frühere Version auf die aktuelle Version höher stufen.
 
 > [!IMPORTANT] 
-> Bevor Sie eine aktive, in der Produktionsumgebung ausgeführte Logik-App ändern, vermeiden Sie das Risiko, diese Logik-App zu beschädigen, und minimieren Sie die Unterbrechung, indem Sie [Ihre Logik-App deaktivieren](#disable-enable-logic-app).
+> Bevor Sie eine aktive, in der Produktionsumgebung ausgeführte Logik-App ändern, vermeiden Sie das Risiko, diese Logik-App zu beschädigen, und minimieren Sie die Unterbrechung, indem Sie [Ihre Logik-App deaktivieren](#disable-enable-logic-apps).
 
 1. Erweitern Sie im Azure-Fenster unter **Logik-Apps** Ihr Azure-Abonnement, sodass Sie alle Logik-Apps in diesem Abonnement sehen können.
 
@@ -307,6 +289,61 @@ In Visual Studio Code können Sie die früheren Versionen der Logik-App öffnen 
       ![Bestätigen des Höherstufens der früheren Version](./media/quickstart-create-logic-apps-visual-studio-code/confirm-promote-version.png)
 
       Visual Studio Code stuft die ausgewählte Version auf die aktuelle Version herauf und weist der höher gestuften Version eine neue Nummer zu. Die zuvor aktuelle Version wird jetzt unter der höher gestuften Version angezeigt.
+
+<a name="disable-enable-logic-apps"></a>
+
+## <a name="disable-or-enable-logic-apps"></a>Deaktivieren oder Aktivieren von Logik-Apps
+
+Wenn Sie in Visual Studio Code eine veröffentlichte Logik-App bearbeiten und die Änderungen speichern, *überschreiben* Sie Ihre bereits bereitgestellte App. Deaktivieren Sie Ihre Logik-App zunächst, um eine Beschädigung Ihrer Logik-App zu vermeiden und die Unterbrechung zu minimieren. Anschließend können Sie Ihre Logik-App wieder aktivieren, nachdem Sie sich vergewissert haben, dass sie weiterhin funktioniert.
+
+> [!NOTE]
+> Das Deaktivieren einer Logik-App wirkt sich wie folgt auf Workflowinstanzen aus:
+>
+> * Der Logic Apps-Dienst setzt alle aktiven und ausstehenden Ausführungen fort, bis sie abgeschlossen sind. Basierend auf der Menge oder dem Backlog kann es einige Zeit dauern, bis dieser Prozess abgeschlossen ist.
+>
+> * Vom Logic Apps-Dienst werden keine neuen Workflowinstanzen erstellt oder ausgeführt.
+>
+> * Der Trigger wird nicht ausgelöst, wenn die definierten Bedingungen beim nächsten Mal erfüllt werden. Der Triggerstatus merkt sich den Punkt, an dem die Logik-App angehalten wurde. Wenn Sie die Logik-App erneut aktivieren, wird der Trigger für alle nicht verarbeiteten Elemente seit der letzten Ausführung ausgelöst.
+>
+>   Wenn Sie die Auslösung eines Triggers für nicht verarbeitete Elemente seit der letzten Ausführung verhindern möchten, löschen Sie den Triggerstatus, bevor Sie die Logik-App wieder aktivieren:
+>
+>   1. Bearbeiten Sie in der Logik-App einen beliebigen Teil des Workflowtriggers.
+>   1. Speichern Sie die Änderungen. Durch diesen Schritt wird der aktuelle Status Ihres Triggers zurückgesetzt.
+>   1. Aktivieren Sie Ihre Logik-App wieder.
+
+1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#access-azure).
+
+1. Erweitern Sie im Azure-Fenster unter **Logik-Apps** Ihr Azure-Abonnement, sodass Sie alle Logik-Apps in diesem Abonnement sehen können.
+
+   1. Um die gewünschte Logik-App zu deaktivieren, öffnen Sie das Menü der Logik-App, und wählen Sie **Deaktivieren** aus.
+
+      ![Ihre Logik-App deaktivieren](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
+
+   1. Wenn Sie bereit sind, Ihre Logik-App wieder zu aktivieren, öffnen Sie das Logik-App-Menü, und wählen Sie **Aktivieren** aus.
+
+      ![Ihre Logik-App aktivieren](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
+
+<a name="delete-logic-apps"></a>
+
+## <a name="delete-logic-apps"></a>Löschen von Logik-Apps
+
+Das Löschen einer Logik-App wirkt sich wie folgt auf Workflowinstanzen aus:
+
+* Der Logic Apps-Dienst unterbricht alle aktiven und ausstehenden Ausführungen so gut wie möglich.
+
+  Selbst bei einer großen Menge oder einem umfangreichen Backlog werden die meisten Ausführungen abgebrochen, bevor sie abgeschlossen oder gestartet werden. Es kann jedoch einige Zeit dauern, bis der Abbruchvorgang abgeschlossen ist. In der Zwischenzeit werden möglicherweise einige Ausführungen gestartet, während der Dienst den Abbruchprozess durchläuft.
+
+* Vom Logic Apps-Dienst werden keine neuen Workflowinstanzen erstellt oder ausgeführt.
+
+* Wenn Sie einen Workflow löschen und dann denselben Workflow neu erstellen, hat der neu erstellte Workflow nicht die gleichen Metadaten wie der gelöschte Workflow. Sie müssen jeden Workflow, der den gelöschten Workflow aufgerufen hat, neu speichern. Auf diese Weise ruft der Aufrufer die richtigen Informationen für den neu erstellten Workflow ab. Andernfalls tritt bei Aufrufen des neu erstellten Workflows der Fehler `Unauthorized` auf. Dieses Verhalten gilt auch für Workflows, die Artefakte in Integrationskonten verwenden, sowie Workflows, die Azure-Funktionen aufrufen.
+
+1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#access-azure).
+
+1. Erweitern Sie im Azure-Fenster unter **Logik-Apps** Ihr Azure-Abonnement, sodass Sie alle Logik-Apps in diesem Abonnement sehen können.
+
+1. Navigieren Sie zu der Logik-App, die Sie löschen möchten, öffnen Sie das Menü der Logik-App, und wählen Sie **Löschen** aus.
+
+   ![Löschen Ihrer Logik-App](./media/quickstart-create-logic-apps-visual-studio-code/delete-logic-app.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

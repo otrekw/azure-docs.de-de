@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Verbinden eines lokalen Netzwerks mit einem virtuellen Netzwerk: Azure-Portal'
-description: Hier erfahren Sie, wie Sie unter Verwendung des Portals eine Site-to-Site-VPN Gateway-IPsec-Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk über das öffentliche Internet herstellen.
+description: In diesem Tutorial erfahren Sie, wie Sie über Ihr lokales Netzwerk eine S2S-VPN-Gateway-IPsec-Verbindung mit einem VNet herstellen.
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 12/04/2020
-ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/28/2021
+ms.openlocfilehash: 83c2e42db4cc3e1a287341592f4917afce7309e2
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945207"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204223"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung im Azure-Portal
 
