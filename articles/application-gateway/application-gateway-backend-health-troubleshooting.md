@@ -8,18 +8,17 @@ ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 87c022ee7ccf3f1de2d9420ee799157ba96aa353
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 3bb3a89443cdefeedbe5df254d215dfcec770983
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317647"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737845"
 ---
-<a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
-==================================================
+# <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 
-<a name="overview"></a>Übersicht
---------
+## <a name="overview"></a>Übersicht
+
 
 Standardmäßig testet Application Gateway Back-End-Server, um deren Integritätsstatus zu überprüfen und zu prüfen, ob sie bereit sind, Anforderungen zu verarbeiten. Benutzer können auch benutzerdefinierte Tests erstellen, um den Hostnamen, den zu überprüfenden Pfad und die Statuscodes, die als fehlerfrei akzeptiert werden sollen, anzugeben. Wenn der Back-End-Server nicht erfolgreich antwortet, wird der Server von Application Gateway in jedem Fall als fehlerhaft markiert, und die Anforderung wird nicht mehr an den Server weitergeleitet. Nachdem der Server erfolgreich reagiert hat, setzt Application Gateway das Weiterleiten der Anforderungen fort.
 
@@ -37,8 +36,7 @@ Der Status, der von einer dieser Methoden abgerufen wird, kann einer der folgend
 
 Wenn der Back-End-Integritätsstatus für einen Server fehlerfrei ist, bedeutet dies, dass Application Gateway die Anforderungen an diesen Server weiterleitet. Wenn jedoch die Back-End-Integrität für alle Server in einem Back-End-Pool fehlerhaft oder unbekannt ist, kann es zu Problemen kommen, wenn Sie versuchen, auf Anwendungen zuzugreifen. In diesem Artikel werden die Symptome, Ursachen und Lösungen für jeden der dargestellten Fehler beschrieben.
 
-<a name="backend-health-status-unhealthy"></a>Back-End-Integritätsstatus: Fehlerhaft
--------------------------------
+## <a name="backend-health-status-unhealthy"></a>Back-End-Integritätsstatus: Fehlerhaft
 
 Wenn der Back-End-Integritätsstatus „Fehlerhaft“ ist, ähnelt die Portalansicht dem folgenden Screenshot:
 
@@ -77,6 +75,7 @@ BackendAddressPoolsText : [
                             }
                         ]
 ```
+
 Nachdem Sie den Back-End-Serverstatus „Fehlerhaft“ für alle Server in einem Back-End-Pool erhalten haben, werden die Anforderungen nicht an die Server weitergeleitet, und Application Gateway gibt den Fehler „502 Bad Gateway“ an den anfordernden Client zurück. Um das Problem zu beheben, überprüfen Sie die Spalte **Details** auf der Registerkarte **Back-End-Integrität**.
 
 Die in der Spalte **Details** angezeigte Meldung bietet ausführlichere Einblicke in das Problem. Basierend auf diesen Informationen können Sie mit der Problembehandlung beginnen.
@@ -84,9 +83,10 @@ Die in der Spalte **Details** angezeigte Meldung bietet ausführlichere Einblick
 > [!NOTE]
 > Die Standardtestanforderung wird in diesem Format gesendet: \<protocol\>://127.0.0.1:\<port\>/. Beispielsweise http://127.0.0.1:80 für einen HTTP-Test an Port 80. Nur HTTP-Statuscodes von 200 bis 399 gelten als fehlerfrei. Das Protokoll und der Zielport werden von den HTTP-Einstellungen geerbt. Wenn Application Gateway auf ein anderes Protokoll, einen anderen Hostnamen oder einen anderen Pfad testen und einen anderen Statuscode als fehlerfrei erkennen soll, konfigurieren Sie einen benutzerdefinierten Test, und ordnen Sie ihn den HTTP-Einstellungen zu.
 
-<a name="error-messages"></a>Fehlermeldungen
-------------------------
-#### <a name="backend-server-timeout"></a>Timeout des Back-End-Servers
+## <a name="error-messages"></a>Fehlermeldungen
+
+
+### <a name="backend-server-timeout"></a>Timeout des Back-End-Servers
 
 **Nachricht:** Time taken by the backend to respond to application gateway\'s health probe is more than the time-out threshold in the probe setting. (Die Zeit, die das Back-End für die Reaktion auf den Application Gateway-Integritätstest benötigt, liegt über dem Timeoutschwellenwert in der Testeinstellung.)
 
@@ -104,7 +104,7 @@ Um den Wert des Timeouts zu erhöhen, führen Sie die folgenden Schritte aus:
 
 1.  Speichern Sie die benutzerdefinierten Testeinstellungen, und überprüfen Sie, ob die Back-End-Integrität jetzt als „Fehlerfrei“ angezeigt wird.
 
-#### <a name="dns-resolution-error"></a>Fehler bei der DNS-Auflösung
+### <a name="dns-resolution-error"></a>Fehler bei der DNS-Auflösung
 
 **Nachricht:** Application gateway could not create a probe for this backend. (Application Gateway konnte keinen Test für dieses Back-End erstellen.) This usually happens when the FQDN of the backend has not been entered correctly. (Dies ist normalerweise der Fall, wenn der FQDN des Back-Ends nicht ordnungsgemäß eingegeben wurde.) 
 
@@ -122,7 +122,7 @@ Um den Wert des Timeouts zu erhöhen, führen Sie die folgenden Schritte aus:
 
 1.  Wenn die Domäne privat oder intern ist, versuchen Sie, Sie von einem virtuellen Computer aus im selben virtuellen Netzwerk aufzulösen. Wenn Sie sie auflösen können, starten Sie Application Gateway neu, und überprüfen Sie es noch mal. Um Application Gateway neu zu starten, müssen Sie die in diesen verlinkten Ressourcen beschriebenen PowerShell-Befehle zum [Beenden (stop)](/powershell/module/azurerm.network/stop-azurermapplicationgateway) und [Starten (start)](/powershell/module/azurerm.network/start-azurermapplicationgateway) verwenden.
 
-#### <a name="tcp-connect-error"></a>TCP-Verbindungsfehler
+### <a name="tcp-connect-error"></a>TCP-Verbindungsfehler
 
 **Nachricht:** Application Gateway could not connect to the backend. (Application Gateway konnte keine Verbindung mit dem Back-End herstellen.)
 Please check that the backend responds on the port used for the probe. (Überprüfen Sie, ob das Back-End am für den Test verwendeten Port antwortet.)
@@ -188,7 +188,7 @@ Oder, wenn Sie der Ansicht sind, dass die Antwort legitim ist und Sie möchten, 
 
 Um einen benutzerdefinierten Test zu erstellen, führen Sie die [diese Schritte](./application-gateway-create-probe-portal.md) aus.
 
-#### <a name="http-response-body-mismatch"></a>Konflikt im HTTP-Antworttext
+### <a name="http-response-body-mismatch"></a>Konflikt im HTTP-Antworttext
 
 **Nachricht:** Body of the backend\'s HTTP response did not match the probe setting. (Der Text der HTTP-Antwort des Back-Ends stimmte nicht mit der Testeinstellung überein.) Received response body does not contain {string}. (Der empfangene Antworttext enthält nicht {Zeichenfolge}.)
 
@@ -208,7 +208,7 @@ Weitere Informationen zum [Testabgleich von Application Gateway](./application-g
 > Bei Fehlermeldungen im Zusammenhang mit TLS finden Sie weitere Informationen zum SNI-Verhalten und zu den Unterschieden zwischen der v1-SKU und der v2-SKU auf der Seite mit der [Übersicht über TLS](ssl-overview.md).
 
 
-#### <a name="backend-server-certificate-invalid-ca"></a>Ungültige Zertifizierungsstelle für das Zertifikat des Back-End-Servers
+### <a name="backend-server-certificate-invalid-ca"></a>Ungültige Zertifizierungsstelle für das Zertifikat des Back-End-Servers
 
 **Nachricht:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (Das vom Back-End verwendete Serverzertifikat ist nicht von einer bekannten Zertifizierungsstelle (CA) signiert.) Allow the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (Lassen Sie das Back-End für Application Gateway zu, indem Sie das Stammzertifikat des Serverzertifikats hochladen, das vom Back-End verwendet wird.)
 
@@ -241,7 +241,7 @@ Alternativ können Sie das Stammzertifikat von einem Clientcomputer exportieren,
 
 Weitere Informationen zum Extrahieren und Hochladen vertrauenswürdiger Stammzertifikate in Application Gateway finden Sie unter [Exportieren eines 0vertrauenswürdigen Stammzertifikats (für v2-SKU)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku).
 
-#### <a name="trusted-root-certificate-mismatch"></a>Konflikt eines vertrauenswürdigen Stammzertifikats
+### <a name="trusted-root-certificate-mismatch"></a>Konflikt eines vertrauenswürdigen Stammzertifikats
 
 **Nachricht:** The root certificate of the server certificate used by the backend does not match the trusted root certificate added to the application gateway. (Das Stammzertifikat des Serverzertifikats, das vom Back-End verwendet wird, stimmt nicht mit dem vertrauenswürdigen Stammzertifikat überein, das Application Gateway hinzugefügt wurde.) Ensure that you add the correct root certificate to allowlist the backend. (Stellen Sie sicher, dass Sie das richtige Stammzertifikat hinzufügen, um das Back-End in die Zulassungsliste aufzunehmen.)
 
@@ -255,6 +255,7 @@ Das Zertifikat, das in die HTTP-Einstellungen von Application Gateway hochgelade
 Führen Sie die Schritte 1 bis 11 aus der vorangehenden Methode aus, um das richtige vertrauenswürdige Stammzertifikat in Application Gateway hochzuladen.
 
 Weitere Informationen zum Extrahieren und Hochladen vertrauenswürdiger Stammzertifikate in Application Gateway finden Sie unter [Exportieren eines 0vertrauenswürdigen Stammzertifikats (für v2-SKU)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku).
+
 > [!NOTE]
 > Dieser Fehler kann auch auftreten, wenn der Back-End-Server nicht die gesamte Kette des Zertifikats (einschließlich Root -> Intermediate (sofern zutreffend) -> Leaf) im Rahmen des TLS-Handshakes austauscht. Um dies zu überprüfen, können Sie OpenSSL-Befehle von jedem beliebigen Client aus verwenden und mithilfe der konfigurierten Einstellungen im Application Gateway-Test eine Verbindung mit dem Back-End-Server herstellen.
 
@@ -262,6 +263,7 @@ Beispiel:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
+
 Wenn die Ausgabe nicht die Rückgabe der gesamten Kette des Zertifikats enthält, exportieren Sie das Zertifikat erneut mit der vollständigen Kette (einschließlich des Stammzertifikats). Konfigurieren Sie dieses Zertifikat auf Ihrem Back-End-Server. 
 
 ```
@@ -281,7 +283,7 @@ Wenn die Ausgabe nicht die Rückgabe der gesamten Kette des Zertifikats enthält
   \-----END CERTIFICATE-----
 ```
 
-#### <a name="backend-certificate-invalid-common-name-cn"></a>Ungültiger allgemeiner Name (CN) des Back-End-Zertifikats
+### <a name="backend-certificate-invalid-common-name-cn"></a>Ungültiger allgemeiner Name (CN) des Back-End-Zertifikats
 
 **Nachricht:** The Common Name (CN) of the backend certificate does not match the host header of the probe. (Der allgemeine Name (CN) des Back-End-Zertifikats stimmt nicht mit dem Hostheader des Tests überein.)
 
@@ -322,7 +324,7 @@ Für Linux mit OpenSSL:
 
 2.  Suchen Sie in den angezeigten Eigenschaften den CN des Zertifikats, und geben Sie im Feld „Hostname“ der HTTP-Einstellungen denselben Wert ein. Wenn dies nicht der gewünschte Hostname für Ihre Website ist, benötigen Sie ein Zertifikat für diese Domäne, oder geben Sie den richtigen Hostnamen in der Konfiguration des benutzerdefinierten Tests oder der HTTP-Einstellung ein.
 
-#### <a name="backend-certificate-is-invalid"></a>Back-End-Zertifikat ungültig
+### <a name="backend-certificate-is-invalid"></a>Back-End-Zertifikat ungültig
 
 **Nachricht:** Backend certificate is invalid. (Das Back-End-Zertifikat ist ungültig.) Current date is not within the \"Valid from\" and \"Valid to\" date range on the certificate. (Das aktuelle Datum entspricht nicht den Datumsbereichen „Gültig ab“ und „Gültig bis“ für das Zertifikat.)
 
@@ -336,7 +338,7 @@ Für Linux mit OpenSSL:
 
 1.  Entfernen Sie das alte Zertifikat mithilfe des Symbols **Löschen** neben dem Zertifikat, und wählen Sie dann **Speichern** aus.
 
-#### <a name="certificate-verification-failed"></a>Fehler bei der Zertifikatüberprüfung
+### <a name="certificate-verification-failed"></a>Fehler bei der Zertifikatüberprüfung
 
 **Nachricht:** The validity of the backend certificate could not be verified. (Die Gültigkeit des Back-End-Zertifikats konnte nicht bestätigt werden.) To find out the reason, check Open SSL diagnostics for the message associated with error code {errorCode}. (Um den Grund zu ermitteln, überprüfen Sie die OpenSSL-Diagnose für die Meldung, die dem Fehlercode {fehlerCode} zugeordnet ist.)
 
@@ -344,8 +346,8 @@ Für Linux mit OpenSSL:
 
 **Lösung:** Um dieses Problem zu beheben, überprüfen Sie, ob das Zertifikat auf dem Server ordnungsgemäß erstellt wurde. Beispielsweise können Sie mit [OpenSSL](https://www.openssl.org/docs/man1.0.2/man1/verify.html) das Zertifikat und seine Eigenschaften überprüfen und dann versuchen, das Zertifikat erneut in die HTTP-Einstellungen von Application Gateway hochzuladen.
 
-<a name="backend-health-status-unknown"></a>Back-End-Integritätsstatus „Unbekannt“
--------------------------------
+## <a name="backend-health-status-unknown"></a>Back-End-Integritätsstatus „Unbekannt“
+
 Wenn die Back-End-Integrität als „Fehlerhaft“ angezeigt wird, ähnelt die Portalansicht dem folgenden Screenshot:
 
 ![Back-End-Integrität von Application Gateway: Unbekannt](./media/application-gateway-backend-health-troubleshooting/appgwunknown.png)
@@ -396,7 +398,6 @@ Dieses Verhalten kann aus einem oder mehreren der folgenden Gründe auftreten:
 
 1.  Um zu überprüfen, ob Application Gateway fehlerfrei ist und ausgeführt wird, wechseln Sie im Portal zur Option **Ressourcenintegrität**, und überprüfen Sie, ob der Zustand **Fehlerfrei** lautet. Wenn Sie den Zustand **Fehlerhaft** oder [Beeinträchtigt](https://azure.microsoft.com/support/options/) sehen, **wenden Sie sich an den Support**.
 
-<a name="next-steps"></a>Nächste Schritte
-----------
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu [Diagnose und Protokollen in Application Gateway](./application-gateway-diagnostics.md).

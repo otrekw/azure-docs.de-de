@@ -1,19 +1,19 @@
 ---
 title: Konfigurieren des Routings für virtuelle Hubs
 titleSuffix: Azure Virtual WAN
-description: In diesem Artikel wird beschrieben, wie Sie das Routing für virtuelle Hubs konfigurieren.
+description: Hier erfahren Sie, wie Sie das Routing virtueller Hubs in Virtual WAN konfigurieren.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: cae74a5f4859d208765c9a7e5cde05ff3c0c3096
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1211f7adf9555014316dd8160c9493b5541e4a9f
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91313687"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163407"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Konfigurieren des Routings für virtuelle Hubs
 

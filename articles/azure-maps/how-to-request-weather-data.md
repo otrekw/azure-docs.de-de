@@ -3,18 +3,18 @@ title: Anfordern von Echtzeit- und prognostizierten Wetterdaten mit Azure Maps-W
 description: Es wird beschrieben, wie Sie Echtzeitwetterdaten (aktuell) und prognostizierte Wetterdaten (minütlich, stündlich oder täglich) über die Wetterinfodienste von Microsoft Azure Maps anfordern.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 46d9847e8463d5413409ebcacc7cd62d68f13e65
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 77bc1b435e92861cdabce7b0ce0ac7e9b4212138
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259403"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326703"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Anfordern von Echtzeit- und prognostizierten Wetterdaten mit Azure Maps-Wetterinfodiensten
 
@@ -40,7 +40,7 @@ Dieses Video enthält Beispiele dafür, wie REST-Aufrufe für die Wetterinfodien
 2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt) Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
     >[!IMPORTANT]
-    >Für die [Get Minute Forecast-API](/rest/api/maps/weather/getminuteforecast) ist ein Schlüssel für den Tarif S1 erforderlich. Für alle anderen APIs ist ein Schlüssel für den Tarif S0 erforderlich.
+    >Für die [Get Minute Forecast-API](/rest/api/maps/weather/getminuteforecast) ist der Tarif „Gen 1 (S1)“ oder „Gen 2“ erforderlich.  Für alle anderen APIs ist ein Schlüssel für den Tarif S0 erforderlich.
 
 In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwendet. Sie können aber auch eine andere API-Entwicklungsumgebung verwenden.
 
@@ -290,7 +290,7 @@ In diesem Beispiel verwenden Sie die [Get Severe Weather Alerts-API](/rest/api/m
 Mit der [Get Daily Forecast-API](/rest/api/maps/weather/getdailyforecast) werden Daten für die ausführliche tägliche Wettervorhersage zurückgegeben, z. B. Temperatur und Windgeschwindigkeit. Hierbei kann angegeben werden, für wie viele Tage Daten zurückgegeben werden sollen: 1, 5, 10, 15, 25 oder 45 Tage für einen bestimmten Koordinatenstandort. Die Antwort enthält Details wie Temperatur, Windgeschwindigkeit, Niederschlag, Luftqualität und UV-Index.  In diesem Beispiel fordern wir Daten für fünf Tage an, indem wir `duration=5` angeben.
 
 >[!IMPORTANT]
->Im Tarif S0 können Sie die tägliche Vorhersage für die nächsten 1, 5, 10 und 15 Tage anfordern. Im Tarif S1 können Sie auch die tägliche Vorhersage für die nächsten 25 und 45 Tage anfordern.
+>Im Tarif S0 können Sie die tägliche Vorhersage für die nächsten 1, 5, 10 und 15 Tage anfordern. Im Tarif „Gen 1 (S1)“ oder „Gen 2“ können Sie eine tägliche Vorhersage für die nächsten 25 Tage und 45 Tage anfordern.
 
 In diesem Beispiel verwenden Sie die [Get Daily Forecast-API](/rest/api/maps/weather/getdailyforecast), um die 5-Tage-Wettervorhersage für einen Koordinatenstandort in Seattle (WA) abzurufen.
 
@@ -538,7 +538,7 @@ In diesem Beispiel verwenden Sie die [Get Daily Forecast-API](/rest/api/maps/wea
 Mit der [Get Hourly Forecast-API](/rest/api/maps/weather/gethourlyforecast) wird die ausführliche stündliche Wettervorhersage für die nächsten 1, 12, 24 (1 Tag), 72 (3 Tage), 120 (5 Tage) und 240 Stunden (10 Tage) für den angegebenen Koordinatenstandort zurückgegeben. Von der API werden Details wie Temperatur, Luftfeuchtigkeit, Windgeschwindigkeit, Niederschlag und UV-Index zurückgegeben.
 
 >[!IMPORTANT]
->Im Tarif S0 können Sie die stündliche Vorhersage für die nächsten 1, 12, 24 (1 Tag) und 72 Stunden (3 Tage) anfordern. Im Tarif S1 können Sie auch die stündliche Vorhersage für die nächsten 120 (5 Tage) und 240 Stunden (10 Tage) anfordern.
+>Im Tarif S0 können Sie die stündliche Vorhersage für die nächsten 1, 12, 24 (1 Tag) und 72 Stunden (3 Tage) anfordern. Im Tarif „Gen 1 (S1)“ oder „Gen 2“ können Sie eine stündliche Vorhersage für die nächsten 120 Stunden (5 Tage) und 240 Stunden (10 Tage) anfordern.
 
 In diesem Beispiel verwenden Sie die [Get Hourly Forecast-API](/rest/api/maps/weather/gethourlyforecast), um die stündliche Wettervorhersage für die nächsten zwölf Stunden für einen Koordinatenstandort in Seattle (WA) abzurufen.
 

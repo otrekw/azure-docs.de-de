@@ -3,12 +3,12 @@ title: 'Azure Service Fabric: Checkliste für die Produktionsbereitschaft'
 description: Bereiten Sie Ihre Service Fabric-Anwendung und den Cluster anhand der folgenden bewährten Methoden auf die Produktion vor.
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5872de420b72f9b453c4b64cd7790a14c0d5d305
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87835866"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732198"
 ---
 # <a name="production-readiness-checklist"></a>Prüfliste für die Produktionsbereitschaft
 
@@ -34,7 +34,7 @@ Sind Ihre Anwendung und Ihr Cluster bereit für den Produktionsdatenverkehr? Das
 1. Deaktivieren Sie automatische Upgrades in Produktionsclustern, und aktivieren Sie sie für Entwicklungs- und Staging-Cluster (Rollback nach Bedarf). 
 1. Richten Sie ein Recovery Point Objective (RPO) für Ihren Dienst und einen [Notfallwiederherstellungsprozess](service-fabric-disaster-recovery.md) ein, und testen Sie ihn.
 1. Planen Sie die manuelle oder programmgesteuerte [Skalierung](service-fabric-cluster-scaling.md) Ihres Clusters.
-1. Planen Sie das [Patchen](service-fabric-patch-orchestration-application.md) der Clusterknoten. 
+1. Planen Sie das [Patchen](how-to-patch-cluster-nodes-windows.md) der Clusterknoten. 
 1. Richten Sie eine CI/CD-Pipeline ein, sodass die letzten Änderungen fortlaufend getestet werden. Beispiel für die Verwendung von [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) oder [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster)
 1. Testen Sie Ihre Entwicklungs- und Stagingcluster unter Last mit dem [Fault Analysis Service](service-fabric-testability-overview.md), und induzieren Sie kontrolliertes [Chaos](service-fabric-controlled-chaos.md). 
 1. Planen Sie die [Skalierung](service-fabric-concepts-scalability.md) Ihrer Anwendungen. 

@@ -5,18 +5,18 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ce6a33b569a86cd539de99264dd8e7f583559a6f
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 8ff365200828b786b4cf770508e5a811983abd58
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018329"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732738"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Erste Schritte mit Azure Automation State Configuration
 
 Dieser Artikel bietet eine Schritt-für-Schritt-Anleitung zum Ausführen der gängigsten Aufgaben mit Azure Automation State Configuration, z. B. Erstellen, Importieren und Kompilieren von Konfigurationen, Aktivieren zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über State Configuration finden Sie unter [Übersicht über Azure Automation State Configuration](automation-dsc-overview.md). Die DSC-Dokumentation (Desired State Configuration, Konfiguration des gewünschten Zustands) finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/scripting/dsc/overview/overview).
 
-Wenn Sie eine bereits eingerichtete Beispielumgebung verwenden möchten, ohne die in diesem Artikel beschriebenen Schritte auszuführen, können Sie die [Vorlage für verwaltete Azure Automation-Knoten](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration) verwenden. Mit dieser Vorlage wird eine vollständige Umgebung für State Configuration eingerichtet, einschließlich eines virtuellen Azure-Computers, der von State Configuration (DSC) verwaltet wird.
+Wenn Sie eine bereits eingerichtete Beispielumgebung verwenden möchten, ohne die in diesem Artikel beschriebenen Schritte auszuführen, können Sie die [Vorlage für verwaltete Azure Automation-Knoten](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.automation/automation-configuration) verwenden. Mit dieser Vorlage wird eine vollständige Umgebung für State Configuration eingerichtet, einschließlich eines virtuellen Azure-Computers, der von State Configuration (DSC) verwaltet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -216,7 +216,7 @@ Sie können einen Knoten einer anderen Knotenkonfiguration als der ursprünglich
 
 ## <a name="unregister-a-node"></a>Aufheben der Registrierung eines Knotens
 
-Wenn ein Knoten nicht mehr von State Configuration verwaltet werden soll, können Sie seine Registrierung aufheben. Siehe [Entfernen einer Konfiguration und eines Knotens aus Automation State Configuration](./how-to/remove-desired-state-configuration-package.md).
+Wenn ein Knoten nicht mehr von State Configuration verwaltet werden soll, können Sie seine Registrierung aufheben. Siehe [Entfernen einer Konfiguration und eines Knotens aus Automation State Configuration](./state-configuration/remove-node-and-configuration-package.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

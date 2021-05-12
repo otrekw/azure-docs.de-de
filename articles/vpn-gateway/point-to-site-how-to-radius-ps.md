@@ -1,18 +1,19 @@
 ---
-title: 'Herstellen einer Point-to-Site-Verbindung zwischen einem Computer und einem virtuellen Netzwerk unter Verwendung der RADIUS-Authentifizierung: PowerShell | Azure'
-description: Herstellen einer sicheren Verbindung von Windows und OS X-Clients mit einem virtuellen Netzwerk unter Verwendung von P2S und der RADIUS-Authentifizierung
+title: 'Herstellen einer Point-to-Site-Verbindung zwischen einem Computer und einem virtuellen Netzwerk unter Verwendung der RADIUS-Authentifizierung: PowerShell'
+titleSuffix: Azure VPN Gateway
+description: Hier erfahren Sie, wie Sie eine sichere Verbindung zwischen Windows- und OS X-Clients und einem virtuellen Netzwerk unter Verwendung von P2S und der RADIUS-Authentifizierung herstellen.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9d962d3a4757b4c7b2d217f91aaf73d6ad4164d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1dbfc83a24b1c4db09625a73cf0684acedfb2355
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94964846"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228116"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der RADIUS-Authentifizierung: PowerShell
 

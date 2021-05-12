@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 04/28/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 57dec4187ea42476ff1c0a993b751a7389da5639
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 033893ac0f939929eda597a1eb978e0dde4c57d9
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490351"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181488"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)
 
@@ -96,21 +96,42 @@ Ein Client kann über einen öffentlichen oder einen [privaten Endpunkt](../comm
 > [!IMPORTANT]
 > Wenn Sie eine Verbindung aus einem lokalen Netzwerk heraus herstellen, stellen Sie sicher, dass Ihr Client die ausgehende Kommunikation über die Ports 111 und 2048 zulässt. Das NFS 3.0-Protokoll verwendet diese Ports.
 
-## <a name="azure-storage-features-not-yet-supported"></a>Noch nicht unterstützte Azure Storage-Funktionen
+<a id="azure-storage-features-not-yet-supported"></a>
 
-Die folgenden Azure Storage-Funktionen werden nicht unterstützt, wenn Sie das NFS 3.0-Protokoll für Ihr Konto aktivieren. 
+## <a name="support-for-azure-storage-features"></a>Unterstützung für Azure Storage-Features
 
-- Azure Active Directory (AD)-Sicherheit
+In der folgenden Tabelle sind die aktuellen Unterstützungsebenen für Azure Storage-Features in Konten angegeben, für die das NFS 3.0-Feature aktiviert ist. 
 
-- POSIX-ähnliche Zugriffssteuerungslisten (Access Control Lists, ACLs)
+Der Status der Elemente in dieser Tabelle ändert sich im Laufe der Zeit, da die Unterstützung laufend erweitert wird.
 
-- Die Möglichkeit zum Aktivieren der NFS 3.0-Unterstützung für vorhandene Speicherkonten
+| Storage-Feature | Premium | Standard |Storage-Feature | Premium | Standard |
+|-----------------|---------|----------|----------------|---------|----------|
+| [REST-API des Blob-Diensts](/rest/api/storageservices/blob-service-rest-api)  | ✔️ |  ⛔ | [Azure Data Lake Store-REST-API](/rest/api/storageservices/data-lake-storage-gen2) | ⛔ |    ⛔ |
+| [Zugriffsebenen für Azure Blob Storage](storage-blob-storage-tiers.md) |    ✔️ |    ⛔ | [Blobindextags](storage-blob-index-how-to.md) |   ⛔ | ⛔ |
+| [Azure Blob Storage-Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md) | ✔️  |   ⛔ | [Azure Storage Analytics-Protokollierung](../common/storage-analytics-logging.md?toc=/azure/storage/blobs/toc.json) | ⛔ |   ⛔ |
+|  [Azure Storage-Blobbestand](blob-inventory.md) |  ✔️  |   ⛔ | [Änderungsfeed](storage-blob-change-feed.md) |    ⛔ | ⛔ |
+| [Azure Monitor](monitor-blob-storage.md) |    ✔️ |    ⛔ | [Blobversionsverwaltung](versioning-enable.md) | ⛔ |   ⛔ |
+| [Blobmomentaufnahmen](snapshots-overview.md) | ✔️  |   ⛔ | [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md) | ⛔ |    ⛔ |
+| [Private Endpunkte](../common/storage-private-endpoints.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ⛔ | [Azure Backup-Integration](/azure/backup/blob-backup-overview) | ⛔ |    ⛔ |
+| [Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) | ✔️  |  ⛔ | [Vorläufiges Löschen für Container](soft-delete-container-overview.md) |   ⛔ | ⛔ |
+| [Firewallregeln](../common/storage-network-security.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ⛔ | [Vorläufiges Löschen für Blobs](soft-delete-blob-overview.md) | ⛔ | ⛔ |
+| [Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln](../common/shared-key-authorization-prevent.md)  | ✔️ |    ⛔ | [Nachverfolgung des Zeitpunkts des letzten Zugriffs für die Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md#move-data-based-on-last-accessed-date-preview) |  ⛔|  ⛔ |
+| [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](../common/customer-managed-keys-overview.md) |   ✔️ |    ⛔ | [Kundenseitig angegebene Schlüssel für die Azure Storage-Verschlüsselung](encryption-customer-provided-keys.md)  |  ⛔ | ⛔ |
+| [Unveränderlicher Blobspeicher](storage-blob-immutable-storage.md) | ✔️    | ⛔ | [Hosten von statischen Websites](storage-blob-static-website.md) | ⛔  |    ⛔ |
+| [Anfügeblobs](storage-blobs-introduction.md#blobs) | ✔️   |  ⛔ | [Seitenblobs](storage-blobs-introduction.md#blobs) | ⛔ | ⛔ |
+| [Azure Active Directory (AD)-Sicherheit](../common/storage-auth-aad.md?toc=/azure/storage/blobs/toc.json) | ⛔ | ⛔ | [Verschlüsselungsbereiche](encryption-scope-overview.md)  |    ⛔ | ⛔ |
+| [Objektreplikation für Blockblobs](object-replication-overview.md) | ⛔  |   ⛔ | [Failover für kundenseitig verwaltetes Konto](../common/storage-disaster-recovery-guidance.md?toc=/azure/storage/blobs/toc.json) | ⛔ |    ⛔ |
 
-- Die Möglichkeit zum Deaktivieren der NFS 3.0-Unterstützung in einem Speicherkonto (nachdem Sie sie aktiviert haben)
-
-- Die Möglichkeit zum Schreiben in Blobs mithilfe von REST-APIs oder SDKs. 
   
-## <a name="nfs-30-features-not-yet-supported"></a>Noch nicht unterstützte NFS 3.0-Funktionen
+## <a name="known-issues"></a>Bekannte Probleme
+
+- Die Unterstützung von NFS 3.0 kann für vorhandene Speicherkonten nicht aktiviert werden.
+
+- Die Unterstützung von NFS 3.0 kann in einem Speicherkonto nicht mehr deaktiviert werden, nachdem Sie sie aktiviert haben.
+
+-  Dateien können weder im Azure-Portal noch im Azure Storage-Explorer angezeigt werden. Sie müssen entweder einen [Blob Storage-Container per NFS 3.0-Protokoll einbinden](network-file-system-protocol-support-how-to.md) oder die [Blob-Dienst-REST-API](/rest/api/storageservices/blob-service-rest-api) verwenden, um Dateien und Verzeichnisse aufzulisten.
+
+### <a name="nfs-30-features-not-yet-supported"></a>Noch nicht unterstützte NFS 3.0-Funktionen
 
 Die folgenden Features von NFS 3.0 werden noch nicht unterstützt.
 
@@ -128,7 +149,7 @@ Die folgenden Features von NFS 3.0 werden noch nicht unterstützt.
 
 - Schreibgeschütztes Exportieren eines Containers
 
-## <a name="nfs-30-clients-not-yet-supported"></a>Noch nicht unterstützte NFS 3.0-Clients
+### <a name="nfs-30-clients-not-yet-supported"></a>Noch nicht unterstützte NFS 3.0-Clients
 
 Die folgenden NFS 3.0-Clients werden noch nicht unterstützt.
 

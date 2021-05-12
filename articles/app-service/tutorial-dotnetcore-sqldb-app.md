@@ -3,15 +3,15 @@ title: 'Tutorial: ASP.NET Core mit Azure SQL-Datenbank'
 description: Hier erfahren Sie, wie Sie eine .NET Core-App in Azure App Service mit einer Verbindung mit einer Azure SQL-Datenbank ausführen.
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 04/29/2021
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: de37965ad092423b067d7f3e310a5a07e563c9d4
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 92b58249441340397cbb7f8e030317b137dfb566
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204979"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754509"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Tutorial: Erstellen einer ASP.NET Core- und Azure SQL-Datenbank-App in Azure App Service
 

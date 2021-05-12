@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
-ms.openlocfilehash: c5f536295bce07e70606f1ff286b08f8465d59f9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3a42de2ac948a583f9d2de130626f37658dfc9e
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048946"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732252"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 
@@ -35,7 +35,7 @@ Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie
 Die Azure-Diagnoseerweiterung verwendet eine Feature namens **Datensenken**, um Metriken und Protokolle an verschiedene Orte zu leiten. Die folgenden Schritte zeigen, wie Sie eine Resource Manager-Vorlage und PowerShell verwenden, um eine VM mit der neuen Datensenke „Azure Monitor“ bereitzustellen. 
 
 ## <a name="author-a-resource-manager-template"></a>Erstellen einer Resource Manager-Vorlage 
-Für dieses Beispiel können Sie eine öffentlich verfügbare [Beispielvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale) verwenden:  
+Für dieses Beispiel können Sie eine öffentlich verfügbare [Beispielvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-windows-autoscale) verwenden:  
 
 - **Azuredeploy.json** ist eine vorkonfigurierte Resource Manager-Vorlage für die Bereitstellung einer VM-Skalierungsgruppe.
 

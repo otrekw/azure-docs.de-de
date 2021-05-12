@@ -9,19 +9,19 @@ ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 46de182c7acfaf75b2e65fa318717348dd1c4b73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8824ea38121b8f440f1b0ef1f07737f46e8b7295
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667351"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732882"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedizierte Azure-Hosts
 
 Azure Dedicated Host ist ein Dienst zum Bereitstellen physischer Server, die virtuelle Computer hosten können und ausschließlich für ein Azure-Abonnement reserviert sind. Dedizierte Hosts sind die in unseren Rechenzentren verwendeten physischen Server, die als Ressource bereitgestellt werden. Sie können dedizierte Hosts in einer Region, einer Verfügbarkeitszone und einer Fehlerdomäne bereitstellen. Anschließend können Sie VMs direkt in Ihren bereitgestellten Hosts platzieren, und zwar in einer beliebigen Konfiguration, die Ihren Anforderungen am besten entspricht.
 
 
-## <a name="benefits"></a>Vorteile 
+## <a name="benefits"></a>Vorteile
 
 Die Reservierung des gesamten Hosts bietet die folgenden Vorteile:
 
@@ -30,7 +30,7 @@ Die Reservierung des gesamten Hosts bietet die folgenden Vorteile:
 -   Mit dem Azure-Hybridvorteil können Sie Ihre eigenen Lizenzen für Windows und SQL in Azure nutzen. Die Verwendung des Hybridvorteils bietet noch mehr Vorteile. Weitere Informationen finden Sie unter [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 
-## <a name="groups-hosts-and-vms"></a>Gruppen, Hosts und VMs  
+## <a name="groups-hosts-and-vms"></a>Gruppen, Hosts und VMs
 
 ![Ansicht der neuen Ressourcen für dedizierte Hosts.](./media/virtual-machines-common-dedicated-hosts/dedicated-hosts2.png)
 
@@ -39,7 +39,7 @@ Eine **Hostgruppe** ist eine Ressource, die eine Sammlung dedizierter Hosts dars
 Ein **Host** ist eine Ressource, die einem physischen Server in einem Azure-Rechenzentrum zugeordnet ist. Der physische Server wird beim Erstellen des Hosts zugewiesen. Ein Host wird in einer Hostgruppe erstellt. Für jeden Host gilt eine SKU, die beschreibt, welche VM-Größen erstellt werden können. Auf jedem Host können mehrere VMs unterschiedlicher Größen gehostet werden, sofern sie aus derselben Größenserie stammen.
 
 
-## <a name="high-availability-considerations"></a>Überlegungen zur Hochverfügbarkeit 
+## <a name="high-availability-considerations"></a>Überlegungen zur Hochverfügbarkeit
 
 Für Hochverfügbarkeit sollten Sie mehrere VMs bereitstellen, die über mehrere Hosts verteilt sind (mindestens 2). Mit dedizierten Azure-Hosts können Sie Ihre Infrastruktur auf unterschiedliche Weise bereitstellen, um Ihre Fehlerisolationsgrenzen zu strukturieren.
 
@@ -63,45 +63,45 @@ Bei virtuellen Computern, die auf Hosts mit unterschiedlichen Fehlerdomänen ber
 
 Sie können beide Funktionen kombinieren, um eine noch höhere Fehlerisolation zu erzielen. In diesem Fall geben Sie die Verfügbarkeitszone und die Anzahl der Fehlerdomänen für jede Hostgruppe an und weisen jedem Host in der Gruppe eine Fehlerdomäne und jeder VM eine Verfügbarkeitszone zu.
 
-[Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) finden Sie die Resource Manager-Beispielvorlage, die für maximale Resilienz in einer Region Zonen und Fehlerdomänen zum Verteilen der Hosts verwendet.
+[Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md) finden Sie die Resource Manager-Beispielvorlage, die für maximale Resilienz in einer Region Zonen und Fehlerdomänen zum Verteilen der Hosts verwendet.
 
 
-## <a name="manual-vs-automatic-placement"></a>Manuelle und automatische Platzierung 
+## <a name="manual-vs-automatic-placement"></a>Manuelle und automatische Platzierung
 
-Wenn Sie eine VM in Azure erstellen, können Sie den dedizierten Host auswählen, der verwendet werden soll. Sie können darüber hinaus die Option zum automatischen Platzieren von VMs auf vorhandenen Hosts innerhalb einer Hostgruppe verwenden. 
+Wenn Sie eine VM in Azure erstellen, können Sie den dedizierten Host auswählen, der verwendet werden soll. Sie können darüber hinaus die Option zum automatischen Platzieren von VMs auf vorhandenen Hosts innerhalb einer Hostgruppe verwenden.
 
-Achten Sie beim Erstellen einer neuen Hostgruppe darauf, dass die Einstellung für automatische VM-Platzierung ausgewählt ist. Wählen Sie beim Erstellen Ihrer VM die Hostgruppe aus, und lassen Sie Azure den besten Host für Ihre VM wählen. 
+Achten Sie beim Erstellen einer neuen Hostgruppe darauf, dass die Einstellung für automatische VM-Platzierung ausgewählt ist. Wählen Sie beim Erstellen Ihrer VM die Hostgruppe aus, und lassen Sie Azure den besten Host für Ihre VM wählen.
 
-Hostgruppen, die für automatische Platzierung aktiviert sind, erfordern keine automatische Platzierung aller VMs. Sie können trotzdem noch einen Host explizit auswählen, selbst wenn für die Hostgruppe automatische Platzierung aktiviert ist. 
+Hostgruppen, die für automatische Platzierung aktiviert sind, erfordern keine automatische Platzierung aller VMs. Sie können trotzdem noch einen Host explizit auswählen, selbst wenn für die Hostgruppe automatische Platzierung aktiviert ist.
 
 ### <a name="limitations"></a>Einschränkungen
 
 Bekannte Probleme und Einschränkungen bei der Verwendung der automatischen VM-Platzierung:
 
 - Sie können für Ihre dedizierten Hosts keine Azure-Hybridvorteile anwenden.
-- Sie können Ihre VMs nicht erneut bereitstellen. 
-- Sie können in Verbindung mit dedizierten Hosts keine VMs der Serien Lsv2, NVasv4, NVsv3, Msv2 oder M verwenden. 
+- Sie können Ihre VMs nicht erneut bereitstellen.
+- Sie können in Verbindung mit dedizierten Hosts keine VMs der Serien Lsv2, NVasv4, NVsv3, Msv2 oder M verwenden.
 
 
 ## <a name="virtual-machine-scale-set-support"></a>Unterstützung für VM-Skalierungsgruppe
 
-Mithilfe von VM-Skalierungsgruppen können Sie eine Gruppe von virtuellen Computern als einzelne Ressource behandeln und Verfügbarkeits-, Verwaltungs-, Skalierungs- und Orchestrierungsrichtlinien als Gruppe anwenden. Ihre vorhandenen dedizierten Hosts können ebenfalls für VM-Skalierungsgruppen verwendet werden. 
+Mithilfe von VM-Skalierungsgruppen können Sie eine Gruppe von virtuellen Computern als einzelne Ressource behandeln und Verfügbarkeits-, Verwaltungs-, Skalierungs- und Orchestrierungsrichtlinien als Gruppe anwenden. Ihre vorhandenen dedizierten Hosts können ebenfalls für VM-Skalierungsgruppen verwendet werden.
 
 Beim Erstellen einer VM-Skalierungsgruppe können Sie eine vorhandene Hostgruppe angeben, die alle VM-Instanzen aufnimmt, die auf dedizierten Hosts erstellt werden.
 
 Die folgenden Anforderungen gelten für das Erstellen einer VM-Skalierungsgruppe in einer dedizierten Hostgruppe:
 
 - Die automatische Platzierung der VM muss aktiviert sein.
-- Die Verfügbarkeitseinstellung Ihrer Hostgruppe sollte mit Ihrer Skalierungsgruppe übereinstimmen. 
+- Die Verfügbarkeitseinstellung Ihrer Hostgruppe sollte mit Ihrer Skalierungsgruppe übereinstimmen.
     - Für regionale Skalierungsgruppen sollte eine regionale Hostgruppe (die ohne Angabe einer Verfügbarkeitszone erstellt wurde) verwendet werden.
-    - Die Hostgruppe und die Skalierungsgruppe müssen die gleiche Verfügbarkeitszone verwenden. 
+    - Die Hostgruppe und die Skalierungsgruppe müssen die gleiche Verfügbarkeitszone verwenden.
     - Die Anzahl von Fehlerdomänen für die Hostgruppenebene sollte mit der Anzahl der Fehlerdomänen für die Skalierungsgruppe übereinstimmen. Im Azure-Portal können Sie die *Maximale Zuweisung* für Ihre Skalierungsgruppe angeben, die die Anzahl der Fehlerdomänen auf 1 festlegt.
 - Dedizierte Hosts mit ausreichender Kapazität und gleichen Einstellungen für Skalierungsgruppenzonen und Fehlerdomänen sollten zuerst erstellt werden.
 - Die unterstützten VM-Größen für Ihre dedizierten Hosts sollten mit der für Ihre Skalierungsgruppe verwendeten übereinstimmen.
 
-Nicht alle Orchestrierungs- und Optimierungseinstellungen für Skalierungsgruppen werden von dedizierten Hosts unterstützt. Wenden Sie die folgenden Einstellungen auf Ihre Skalierungsgruppe an: 
-- Überbereitstellung wird nicht empfohlen und ist standardmäßig deaktiviert. Sie können Überbereitstellung aktivieren, aber die Zuteilung der Skalierungsgruppe wird einen Fehler verursachen, wenn die Hostgruppe nicht über ausreichende Kapazität für alle VMs – einschließlich der Instanzen aus der Überbereitstellung – verfügt. 
-- Verwenden Sie den Orchestrierungsmodus „ScaleSetVM“ 
+Nicht alle Orchestrierungs- und Optimierungseinstellungen für Skalierungsgruppen werden von dedizierten Hosts unterstützt. Wenden Sie die folgenden Einstellungen auf Ihre Skalierungsgruppe an:
+- Überbereitstellung wird nicht empfohlen und ist standardmäßig deaktiviert. Sie können Überbereitstellung aktivieren, aber die Zuteilung der Skalierungsgruppe wird einen Fehler verursachen, wenn die Hostgruppe nicht über ausreichende Kapazität für alle VMs – einschließlich der Instanzen aus der Überbereitstellung – verfügt.
+- Verwenden Sie den Orchestrierungsmodus „ScaleSetVM“
 - Verwenden Sie keine Näherungsplatzierungsgruppen für die gemeinsame Anordnung
 
 
@@ -123,7 +123,7 @@ Nach der Bereitstellung eines dedizierten Hosts weist Azure ihn dem physischen S
 Es gibt zwei Arten von Kontingenten, die beim Bereitstellen eines dedizierten Hosts genutzt werden.
 
 1. vCPU-Kontingent des dedizierten Hosts. Die standardmäßige Kontingentgrenze beträgt 3.000 vCPUs pro Region.
-1. Kontingent der VM-Größenfamilie. Beispielsweise ist für ein Abonnement mit **nutzungsbasierter Bezahlung** in der Region „USA, Osten“ möglicherweise nur ein Kontingent von 10 vCPUs für die Größenserie Dsv3 verfügbar. Zur Bereitstellung eines dedizierten Dsv3-Hosts müssen Sie eine Kontingenterhöhung auf mindestens 64 vCPUs anfordern, bevor Sie den dedizierten Host bereitstellen können. 
+1. Kontingent der VM-Größenfamilie. Beispielsweise ist für ein Abonnement mit **nutzungsbasierter Bezahlung** in der Region „USA, Osten“ möglicherweise nur ein Kontingent von 10 vCPUs für die Größenserie Dsv3 verfügbar. Zur Bereitstellung eines dedizierten Dsv3-Hosts müssen Sie eine Kontingenterhöhung auf mindestens 64 vCPUs anfordern, bevor Sie den dedizierten Host bereitstellen können.
 
 Erstellen Sie eine Supportanfrage im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), um eine Kontingenterhöhung anzufordern.
 
@@ -147,17 +147,17 @@ Softwarelizenzierung, Speicher und Netzwerknutzung werden separat vom Host und d
 Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
 Sie können auch mit einer [reservierten Instanz von Azure Dedicated Hosts](prepay-dedicated-hosts-reserved-instances.md) Kosten einsparen.
- 
+
 ## <a name="sizes-and-hardware-generations"></a>Größen und Hardwaregenerationen
 
-Eine SKU ist für einen Host definiert und stellt die Größenserie und den Typ der VM dar. Sie können mehrere VMs unterschiedlicher Größe innerhalb eines einzelnen Hosts kombinieren, solange diese derselben Größenserie angehören. 
+Eine SKU ist für einen Host definiert und stellt die Größenserie und den Typ der VM dar. Sie können mehrere VMs unterschiedlicher Größe innerhalb eines einzelnen Hosts kombinieren, solange diese derselben Größenserie angehören.
 
-Der *Typ* ist die Hardwaregeneration. Die unterschiedlichen Hardwaretypen der einzelnen VM-Serien stammen von unterschiedlichen CPU-Anbietern und weisen andere CPU-Generationen und Anzahlen von Kernen auf. 
+Der *Typ* ist die Hardwaregeneration. Die unterschiedlichen Hardwaretypen der einzelnen VM-Serien stammen von unterschiedlichen CPU-Anbietern und weisen andere CPU-Generationen und Anzahlen von Kernen auf.
 
 Die Größen und Hardwaretypen variieren je nach Region. Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
 > [!NOTE]
-> Nach der Bereitstellung eines dedizierten Hosts können Sie Größe und Typ nicht mehr ändern. Wenn Sie eine andere Größe oder einen anderen Typ benötigen, müssen Sie einen neuen Host erstellen.  
+> Nach der Bereitstellung eines dedizierten Hosts können Sie Größe und Typ nicht mehr ändern. Wenn Sie eine andere Größe oder einen anderen Typ benötigen, müssen Sie einen neuen Host erstellen.
 
 ## <a name="host-life-cycle"></a>Hostlebenszyklus
 
@@ -176,6 +176,6 @@ Azure überwacht und verwaltet den Integritätsstatus Ihrer Hosts. Die folgenden
 
 - Sie können einen dedizierten Host über [Azure PowerShell](./windows/dedicated-hosts-powershell.md), das [Portal](./dedicated-hosts-portal.md) und die [Azure-Befehlszeilenschnittstelle](./linux/dedicated-hosts-cli.md) bereitstellen.
 
-- [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) finden Sie eine Beispielvorlage, die sowohl Zonen als auch Fehlerdomänen für maximale Resilienz in einer Region verwendet.
+- [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md) finden Sie eine Beispielvorlage, die sowohl Zonen als auch Fehlerdomänen für maximale Resilienz in einer Region verwendet.
 
 - Sie können auch mit einer [reservierten Instanz von Azure Dedicated Hosts](prepay-dedicated-hosts-reserved-instances.md) Kosten einsparen.

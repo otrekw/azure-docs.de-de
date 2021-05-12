@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5487e51ad73ab903e7b61de266e2c28d282a56c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5b17df9e074375b8cdbe769c840aaf030eaff8af
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568657"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317431"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Behandeln von Replikationsproblemen bei der Migration virtueller VMware-Computer ohne Agent
 
@@ -240,7 +240,7 @@ Dieser Fehler kann auf die folgenden zwei Arten behoben werden:
 - Wenn Sie sich dafür entschieden haben, die Replikation automatisch reparieren zu lassen, indem Sie „Ja“ ausgewählt haben, als Sie die Replikation des virtuellen Computers initiiert haben, startet das Tool einen Reparaturversuch. Klicken Sie mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie „Replikation reparieren“ aus.
 - Wenn Sie die Replikation nicht automatisch reparieren lassen wollten oder der oben angegebene Schritt nicht funktioniert hat, beenden Sie die Replikation für den virtuellen Computer, [setzen Changed Block Tracking für den virtuellen Computer zurück](https://go.microsoft.com/fwlink/?linkid=2139203) und konfigurieren die Replikation dann neu.
 
-Ein bekanntes Problem dieser Art, das eine CBT-Zurücksetzung des virtuellen Computers unter VMware vSphere 5.5 verursachen kann, ist in [VMware KB 2048201: Changed Block Tracking](https://go.microsoft.com/fwlink/?linkid=2138888) is reset after a storage vMotion operation in vSphere 5.x (Changed Block Tracking wird nach einem Storage vMotion-Vorgang in vSphere 5.x zurückgesetzt) beschrieben. Wenn Sie VMware vSphere 5.5 verwenden, installieren Sie unbedingt die in dieser KB beschriebenen Updates.
+Ein bekanntes Problem dieser Art, das eine CBT-Zurücksetzung des virtuellen Computers unter VMware vSphere 5.5 verursachen kann, ist in [VMware KB 1020128: Changed Block Tracking wird nach einem Storage vMotion-Vorgang in vSphere 5.x zurückgesetzt](https://kb.vmware.com/s/article/1020128) beschrieben. Wenn Sie VMware vSphere 5.5 verwenden, installieren Sie unbedingt die in dieser KB beschriebenen Updates.
 
 Alternativ können Sie VMware Changed Block Tracking auf einem virtuellen Computer mithilfe von VMware PowerCLI zurücksetzen.
 

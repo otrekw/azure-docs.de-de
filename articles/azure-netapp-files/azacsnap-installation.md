@@ -14,16 +14,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: bf3921762c94695f0c03e653c6ea06ebc145501b
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 16e758ac520c8584a11c88c0823fac7cfec43c0b
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929775"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226298"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool"></a>Installieren des Tools für konsistente Momentaufnahmen
 
-Dieser Artikel enthält eine Installationsanleitung für das Tool für anwendungskonsistente Momentaufnahmen in Azure, das Sie mit Azure NetApp Files verwenden können.
+Dieser Artikel enthält eine Installationsanleitung für das Tool für anwendungskonsistente Momentaufnahmen in Azure, das Sie mit Azure NetApp Files oder großen Azure-Instanzen verwenden können.
+
+> [!IMPORTANT]
+> Verteilte Installationen sind die einzige Option für **große Azure-Instanzen**, da sie in einem privaten Netzwerk bereitgestellt werden.  Daher müssen AzAcSnap-Installationen auf jedem System durchgeführt werden, um die Konnektivität sicherzustellen.
 
 ## <a name="introduction"></a>Einführung
 

@@ -1,17 +1,17 @@
 ---
 title: 'Azure Data Factory: Häufig gestellte Fragen '
 description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Azure Data Factory.
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 2027e3555a7eb616ad024ec00bf6b0f8f452167c
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 04/29/2021
+ms.openlocfilehash: d3cc2d73fb3f1076af62b8ea028260bfd5e600ed
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258519"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317989"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 
@@ -231,6 +231,94 @@ Die selbstgehostete IR ist ein ADF-Pipelinekonstrukt, das Sie mit der Kopierakti
 ### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Bedient die Datenfluss-Computerengine mehrere Mandanten?
 
 Cluster werden nie gemeinsam genutzt. Wir garantieren die Isolation für jede Auftragsausführung in Produktionsläufen. Bei einem Debugszenario erhält eine einzige Person einen Cluster, und alle Debuggingfehler werden in diesen Cluster verschoben, der von dem betreffenden Benutzer gestartet wird.
+
+### <a name="is-there-a-way-to-write-attributes-in-cosmos-db-in-the-same-order-as-specified-in-the-sink-in-adf-data-flow"></a>Gibt es eine Möglichkeit, Attribute in Cosmos DB in derselben Reihenfolge zu schreiben, in der sie in der Senke im ADF-Datenfluss angegeben sind?    
+
+Bei Cosmos DB ist das zugrunde liegende Format jedes Dokuments ein JSON-Objekt. Hierbei handelt es sich um einen ungeordneten Satz von Name-Wert-Paaren, sodass die Reihenfolge nicht reserviert werden kann. Der Datenfluss erstellt einen Cluster auch in der Integration Runtime mit einer TTL-Konfiguration von 15 Minuten. Eine Datenflussempfehlung hinsichtlich TTL und Kosten finden Sie im Problembehandlungsdokument zur [Datenflussleistung](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance#time-to-live).
+
+
+###  <a name="why-an-user-is-unable-to-use-data-preview-in-the-data-flows"></a>Warum kann ein Benutzer die Datenvorschau in den Datenflüssen nicht verwenden?   
+
+Sie sollten die Berechtigungen für die benutzerdefinierte Rolle überprüfen. An der Vorschau von Dataflowdaten sind mehrere Aktionen beteiligt. Zunächst überprüfen Sie den Netzwerkdatenverkehr während des Debuggens in Ihrem Browser. Folgen Sie allen Aktionen. Ausführliche Informationen finden Sie unter [Ressourcenanbieter](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdatafactory).
+
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Bedient die Datenfluss-Computerengine mehrere Mandanten?   
+
+Das folgende Dokument zur Problembehandlung kann Ihnen helfen, das Problem zu lösen: [Mehrere Mandanten](https://docs.microsoft.com/azure/data-factory/frequently-asked-questions#does-the-data-flow-compute-engine-serve-multiple-tenants).
+
+
+###  <a name="in-adf-can-i-calculate-value-for-a-new-column-from-existing-column-from-mapping"></a>Kann ich in ADF den Wert für eine neue Spalte anhand einer vorhandenen Spalte aus der Zuordnung berechnen?  
+
+Sie können die Ableitungstransformation im Zuordnungsdatenfluss verwenden, um eine neue Spalte für die gewünschte Logik zu erstellen. Beim Erstellen einer abgeleiteten Spalte können Sie entweder eine neue Spalte generieren oder eine vorhandene Spalte aktualisieren. Geben Sie im Textfeld Spalte die Spalte ein, die Sie erstellen. Wenn Sie eine vorhandene Spalte in Ihrem Schema überschreiben möchten, können Sie die Dropdownliste für Spalten verwenden. Um den Ausdruck der abgeleiteten Spalte zu erstellen, klicken Sie auf das Textfeld Ausdruck eingeben. Sie können entweder mit dem Eingeben des Ausdrucks beginnen oder den Ausdrucks-Generator öffnen, um die Logik zu erstellen.
+
+### <a name="why-mapping-data-flow-preview-failing-with-gateway-timeout"></a>Warum tritt bei der Vorschau des Zuordnungsdatenflusses ein Fehler mit Gatewaytimeout auf? 
+
+Versuchen Sie, einen größeren Cluster zu verwenden, und setzen Sie die Zeilengrenzwerte in den Debugeinstellungen auf einen kleineren Wert, um die Größe der Debugausgabe zu reduzieren.
+
+### <a name="how-to-parameterize-column-name-in-dataflow"></a>Wie wird der Spaltenname im Datenfluss parametrisiert?
+
+Der Spaltenname kann ähnlich wie andere Eigenschaften parametrisiert werden. Wie bei einer abgeleiteten Spalte kann der Kunde **$ColumnNameParam = toString(byName($myColumnNameParamInData))** verwenden. Diese Parameter können von der Pipelineausführung an Datenflüsse weitergegeben werden.
+
+
+
+## <a name="wrangling-data-flow-data-flow-power-query"></a>Wranglingdatenfluss (Power Query für Datenfluss)
+
+### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Welche Regionen werden für den Wranglingdatenfluss unterstützt?
+
+Data Factory ist in den folgenden [Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory) verfügbar.
+Das Power Query-Feature wird derzeit in allen Regionen eingeführt. Wenn das Feature in Ihrer Region nicht verfügbar ist, wenden Sie sich an den Support.
+
+### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow-"></a>Welche Einschränkungen bestehen beim Wranglingdatenfluss?
+
+Datasetnamen dürfen nur alphanumerische Zeichen enthalten. Die folgenden Datenspeicher werden unterstützt:
+
+* DelimitedText-Dataset in Azure Blob Storage mithilfe der Kontoschlüsselauthentifizierung
+* DelimitedText-Dataset in Azure Data Lake Storage gen2 mithilfe der Kontoschlüssel- oder Dienstprinzipalauthentifizierung
+* DelimitedText-Dataset in Azure Data Lake Storage gen1 mithilfe der Dienstprinzipalauthentifizierung
+* Azure SQL-Datenbank und Data Warehouse mithilfe der SQL-Authentifizierung. Siehe unterstützte SQL-Typen weiter unten. Es gibt keine PolyBase- oder Stagingunterstützung für Data Warehouse.
+
+Derzeit wird die Key Vault-Integration verknüpfter Dienste in Wranglingdatenflüssen nicht unterstützt.
+
+### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>Was ist der Unterschied zwischen Zuordnungsdatenflüssen und Wranglingdatenflüssen?
+
+Mit Zuordnungsdatenflüssen können Sie Daten nach Maß transformieren, ohne Code schreiben zu müssen. Sie können einen Datentransformationsauftrag auf der Datenflusscanvas entwerfen, indem Sie eine Reihe von Transformationen erstellen. Beginnen Sie mit einer beliebigen Anzahl von Quelltransformationen, gefolgt von Datentransformationsschritten. Vervollständigen Sie Ihren Datenfluss mit einer Senke, damit Ihre Ergebnisse an ein Ziel gelangen. Der Zuordnungsdatenfluss eignet sich besonders für das Zuordnen und Transformieren von Daten mit bekannten und unbekannten Schemas in den Senken und Quellen.
+
+Wranglingdatenflüsse ermöglichen Ihnen das Vorbereiten und Durchsuchen agiler Daten mithilfe des Power Query Online-Mashup-Editors in jeder Größenordnung per Spark-Ausführung. Mit dem Anstieg von Data Lakes ist es manchmal erforderlich, ein Dataset zu durchsuchen oder ein Dataset im Lake zu erstellen. Sie nehmen keine Zuordnung zu einem bekannten Ziel vor. Wranglingdatenflüsse werden für weniger formale und modellbasierte Analyseszenarien verwendet.
+
+### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Was ist der Unterschied zwischen Power Platform-Dataflows und Wranglingdatenflüssen?
+
+Mithilfe von Power Platform-Dataflows können Benutzer Daten aus einer Vielzahl von Datenquellen in Common Data Service und Azure Data Lake importieren und transformieren, um PowerApps-Anwendungen, Power BI-Berichten oder Flow-Automatisierungen zu erstellen. Power Platform-Dataflows verwenden die bestehenden Power Query-Oberflächen für die Datenvorbereitung, ähnlich wie Power BI und Excel. Power Platform-Dataflows ermöglichen außerdem die einfache Wiederverwendung innerhalb einer Organisation und die automatische Orchestrierung (z.B. automatisches Aktualisieren von Datenflüssen, die von einem anderen Datenfluss abhängig sind, wenn Erstere aktualisiert werden).
+
+Azure Data Factory (ADF) ist ein verwalteter Datenintegrationsdienst, mit dem Datentechniker und Datenintegratoren ohne Programmiererfahrung komplexe Hybridworkflows mit ETL (Extract-Transform-Load) und ELT (Extract-Load-Transform) erstellen können. Wranglingdatenflüsse in ADF stellen Benutzern eine codefreie, serverlose Umgebung bereit, die die Datenvorbereitung in der Cloud vereinfacht und ohne jegliche Infrastrukturverwaltung auf jede Datengröße skaliert werden kann. Hierbei wird die Datenvorbereitungstechnologie von Power Query (auch in Power Platform-Dataflows, Excel, Power BI verwendet) zum Vorbereiten und Formen der Daten verwendet. Wranglingdatenflüsse sind darauf ausgelegt, mit sämtlichen Komplexitäten und Skalierungsherausforderungen von Big Data-Integrationen umzugehen und ermöglichen Benutzern, Daten schnell in jeder Größenordnung per Spark-Ausführung vorzubereiten. Mit unserer browserbasierten Schnittstelle können Benutzer resiliente Datenpipelines in einer zugänglichen visuellen Umgebung erstellen und ADF die komplexe Spark-Ausführung überlassen. Erstellen Sie Zeitpläne für Ihre Pipelines, und überwachen Sie Ihre Datenflussausführungen über das ADF-Überwachungsportal. Verwalten Sie Datenverfügbarkeits-SLAs ganz einfach mit der umfangreichen Verfügbarkeitsüberwachung und den Warnungen von ADF. Nutzen Sie integrierte Funktionen für Continuous Integration und Continuous Deployment zum Speichern und Verwalten Ihrer Flüsse in einer verwalteten Umgebung. Richten Sie Warnungen ein, und zeigen Sie Ausführungspläne an, um beim Feinabstimmen Ihrer Datenflüsse sicherzustellen, dass Ihre Logik wie geplant abläuft.
+
+### <a name="supported-sql-types"></a>Unterstützte SQL-Typen
+
+Der Wranglingdatenfluss unterstützt die folgenden Datentypen in SQL. Bei Verwendung eines nicht unterstützten Datentyps wird ein Validierungsfehler angezeigt.
+
+* short
+* double
+* real
+* float
+* char
+* NCHAR
+* varchar
+* NVARCHAR
+* integer
+* INT
+* bit
+* boolean
+* SMALLINT
+* TINYINT
+* BIGINT
+* long
+* text
+* date
+* datetime
+* datetime2
+* smalldatetime
+* timestamp
+* UNIQUEIDENTIFIER
+* Xml
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

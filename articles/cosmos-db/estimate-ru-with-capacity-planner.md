@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: dech
-ms.openlocfilehash: 4e31cb989ded35f5f9773343340a6e252f9912a2
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 6329935c780494722a78e00e82446834f72aa37b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064717"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209299"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner---sql-api"></a>Schätzen Sie die RU/s anhand des Azure Cosmos DB-Capacity Planners - SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,19 +26,19 @@ Navigieren Sie zum [Capacity Planner](https://cosmos.azure.com/capacitycalculato
 
 |**Input** (Eingabe)  |**Beschreibung**  |
 |---------|---------|
-| API |Wählen Sie die SQL(Kern)-API |
+| API |Wählen Sie die SQL-API (Core-API) aus. |
 |Number of regions (Anzahl von Regionen)|Azure Cosmos DB ist in allen Azure-Regionen verfügbar. Wählen Sie die Anzahl von Regionen aus, die für Ihre Workload erforderlich ist. Sie können Ihrem Cosmos-Konto eine beliebige Anzahl von Regionen zuordnen. Ausführlichere Informationen finden Sie in Azure Cosmos DB unter [Globale Verteilung](distribute-data-globally.md).|
 |Schreibvorgänge in mehreren Regionen|Wenn Sie [Multi-region writes](distribute-data-globally.md#key-benefits-of-global-distribution) (Schreibvorgänge in mehreren Regionen) aktivieren, kann Ihre Anwendung Lese- und Schreibvorgänge für alle Azure-Regionen durchführen. Bei einer Deaktivierung der Schreibvorgänge in mehreren Regionen kann Ihre Anwendung Daten in einer Region schreiben. <br/><br/> Aktivieren Sie Schreibvorgänge in mehreren Regionen, wenn Sie mit einer Aktiv-Aktiv-Workload rechnen, für die Schreibvorgänge mit geringer Latenz in mehreren Regionen erforderlich sind. Ein Beispiel hierfür ist eine IoT-Workload, bei der große Datenmengen in unterschiedlichen Regionen in die Datenbank geschrieben werden. <br/><br/> Für Schreibvorgänge in mehreren Regionen ist eine Lese- und Schreibverfügbarkeit von 99,999 % garantiert. Für Schreibvorgänge in mehreren Regionen ist im Vergleich mit dem Schreiben in einzelnen Regionen ein höherer Durchsatz erforderlich. Weitere Informationen finden Sie in dem Artikel, in dem beschrieben wird, [wie sich Anforderungseinheiten (RUs) für Schreibvorgänge in einzelne und mehrere Regionen unterscheiden](optimize-cost-regions.md).|
 |Gesamtanzahl der im Transaktionsspeicher gespeicherten Daten |Gesamtzahl der geschätzten gespeicherten Daten (GB) im Transaktionsspeicher in einer einzelnen Region.|
-|Verwenden Sie den Analysespeicher| Wählen Sie **Ein**, wenn Sie den Analysespeicher verwenden möchten. Geben Sie die **Gesamtzahl der im analytischen Speicher** gespeicherten Daten ein, d. h. die geschätzten Daten (GB), die im analytischen Speicher in einer einzelnen Region gespeichert sind.  |
+|Verwenden Sie den Analysespeicher| Wählen Sie **Ein**, wenn Sie den Analysespeicher verwenden möchten. Geben Sie die **Gesamtzahl der im analytischen Speicher gespeicherten Daten** ein, d. h. die geschätzten Daten (GB), die im analytischen Speicher in einer einzelnen Region gespeichert sind.  |
 |Elementgröße|Die geschätzte Größe des Datenelements (z. B. des Dokuments), die von 1 KB bis 2 MB reicht. |
 |Abfragen/s |Anzahl der erwarteten Abfragen pro Sekunde pro Region. Die durchschnittliche RU-Last zum Ausführen einer Abfrage wird auf 10 RUs geschätzt. |
 |Punktlesungs-Vorgänge/Sek |Anzahl der erwarteten Punktlesungen pro Sekunde. Punktlesungen sind die Schlüssel/Wert-Suche auf einer einzelnen Element-ID und einem Partitionsschlüssel. Weitere Informationen zu Punktlese-Funktionen finden Sie im Artikel [Optionen zum Lesen von Daten.](optimize-cost-reads-writes.md#reading-data-point-reads-and-queries) |
 |Erstellungen/Sekunde |Anzahl der erwarteten Erstellungs-Vorgänge pro Sekunde. |
-|Aktualisierungen/Sek |Anzahl der erwarteten Aktualisierungen pro Sekunde. |
+|Aktualisierungen/Sek |Anzahl der erwarteten Aktualisierungen pro Sekunde. Wenn Sie die automatische Indizierung auswählen, werden die geschätzten RU/s für den Aktualisierungsvorgang als eine Eigenschaft berechnet, die pro Aktualisierung geändert wird. |
 |Löschvorgänge/Sek |Anzahl der erwarteten Löschvorgänge pro Sekunde, pro Region. |
 
-Wählen Sie **Berechnen**, nachdem Sie die erforderlichen Angaben eingefügt haben. Auf der Registerkarte **Kostenschätzung** werden die Gesamtkosten für den Speicher und den bereitgestellten Durchsatz angezeigt. Sie können die Anzeige über den Link **Details anzeigen** auf dieser Registerkarte erweitern, um eine Aufstellung der Aufschlüsselung zu erhalten, die für Lese- und Schreibanforderungen jeweils benötigt wird. Wählen Sie bei jeder Änderung des Werts eines Felds die Option **Berechnen**, um die geschätzten Kosten neu zu berechnen.
+Wählen Sie **Berechnen**, nachdem Sie die erforderlichen Angaben eingefügt haben. Auf der Registerkarte **Kostenschätzung** werden die Gesamtkosten für den Speicher und den bereitgestellten Durchsatz angezeigt. Sie können die Anzeige über den Link **Details anzeigen** auf dieser Registerkarte erweitern, um eine Aufstellung des Durchsatzes zu erhalten, der für verschiedene CRUD- und Abfrageanforderungen benötigt wird. Wählen Sie bei jeder Änderung des Werts eines Felds die Option **Berechnen**, um die geschätzten Kosten neu zu berechnen.
 
 :::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode-sql-api.png" alt-text="Capacity Planner: Modus „Basic“" border="true":::
 
@@ -72,12 +72,6 @@ Sie können auch die Schaltfläche **Save Estimate** (Schätzung speichern) verw
 :::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode-sql-api.png" alt-text="Capacity Planner: Modus „Advanced“" border="true":::
 
 Die im Azure Cosmos DB Capacity Planner angezeigten Preise sind Schätzungen, die auf den öffentlichen Preisen für Durchsatz und Speicher basieren. Alle Preise sind in US-Dollar angegeben. Auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) sind alle Preise nach Region aufgeführt.  
-
-## <a name="estimating-throughput-for-queries"></a>Schätzen des Durchsatzes für Abfragen
-
-Der Azure Cosmos-Kapazitätsrechner geht von Punktlesevorgängen (ein Lesevorgang eines einzelnen Elements, z. B. eines Dokuments, nach ID und Partitionsschlüsselwert) und Schreibvorgängen für die Workload aus. Führen Sie Ihre Abfrage zum Schätzen des Durchsatzes, der für Abfragen benötigt wird, für ein repräsentatives Dataset in einem Cosmos-Container aus, und [ermitteln Sie die Gebühr für Anforderungseinheiten](find-request-unit-charge.md). Multiplizieren Sie die Gebühren für Anforderungseinheiten (RUs) mit der Anzahl von Abfragen, deren Ausführung Sie pro Sekunde erwarten, um die insgesamt benötigten Anforderungseinheiten pro Sekunde (RU/s) zu erhalten. 
-
-Falls für Ihre Workload beispielsweise eine Abfrage wie ``SELECT * FROM c WHERE c.id = 'Alice'`` erforderlich ist, die 100-mal pro Sekunde ausgeführt wird und über 10 RUs verfügt, benötigen Sie für diese Anforderungen insgesamt 100 Abfragen/s · 10 RUs/Abfrage = 1.000 RU/s. Addieren Sie diese Anforderungen pro Sekunde (RU/s) zu den Anforderungen pro Sekunde, die für die Lese- oder Schreibvorgänge Ihrer Workload erforderlich sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

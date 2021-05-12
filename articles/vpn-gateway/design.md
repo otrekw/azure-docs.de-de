@@ -1,18 +1,18 @@
 ---
-title: Informationen zu Azure VPN Gateway-Entwurf
-description: Hier erfahren Sie, wie Sie eine VPN-Gatewaytopologie für Verbindungen mit virtuellen Azure-Netzwerken entwerfen können.
+title: Azure VPN Gateway-Topologien und -Entwurf
+description: Hier erfahren Sie mehr über VPN Gateway-Topologien und -Entwürfe, um lokale Standorte mit virtuellen Netzwerken zu verbinden.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2283af1f2fc64e5a0d547fb462695a7442cad2f5
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ce2bf657b54ae824410fe4607e1c37bdfd84ac54
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108122941"
+ms.locfileid: "108205879"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway-Entwurf
 

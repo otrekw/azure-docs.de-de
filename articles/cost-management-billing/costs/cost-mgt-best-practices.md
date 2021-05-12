@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: e333b4aadce33e5303820951051ce83c7e65eaf9
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: bb40946bc01b6bd241f542b3987e8a2e7d570794
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222383"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331662"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Optimieren der Cloudinvestitionen mit Azure Cost Management
 
@@ -91,7 +91,7 @@ Weitere Informationen zu den verschiedenen Optionen finden Sie unter [Azure erwe
 #### <a name="free"></a>[Free](https://azure.microsoft.com/free/)
 
 - 12 Monate kostenlose Nutzung beliebter Dienste
-- Guthaben über 200 USD zum Erkunden von Diensten – 30 Tage lang
+- Guthaben über 200 USD zum Erkunden von Diensten – 30 Tage lang
 - Über 25 Dienste jederzeit kostenlos
 
 #### <a name="pay-as-you-go"></a>[Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p)

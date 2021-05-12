@@ -3,12 +3,12 @@ title: Allgemeines Warnungsschema für Azure Monitor-Warnungen
 description: Enthält grundlegende Informationen zum allgemeinen Warnungsschema, zu den Vorteilen der Nutzung und zur Vorgehensweise bei der Aktivierung.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 39ea469b4109f4715db0d0a73ad069121058a46f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea05c010ff9ee732302054a07c8157e02e3e0034
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038256"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739797"
 ---
 # <a name="common-alert-schema"></a>Allgemeines Warnungsschema
 
@@ -32,7 +32,6 @@ Das allgemeine Warnungsschema manifestiert sich hauptsächlich in Ihren Warnungs
 
 | Aktion | Erweiterungen|
 |:---|:---|
-| sms | Eine einheitliche SMS-Vorlage für alle Warnungstypen. |
 | Email | Eine einheitliche und detaillierte E-Mail-Vorlage, mit der Sie Probleme leicht auf einen Blick diagnostizieren können. Mit eingebetteten Deep-Links für die Warnungsinstanz im Portal und die betroffene Ressource wird sichergestellt, dass Sie schnell mit dem Lösungsprozess beginnen können. |
 | Webhook/Logik-App/Azure-Funktion/Automation-Runbook | Eine einheitliche JSON-Struktur für alle Warnungstypen, um Ihnen das einfache Entwickeln von Integrationen für die unterschiedlichen Warnungstypen zu ermöglichen. |
 
