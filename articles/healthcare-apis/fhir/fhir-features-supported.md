@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: 1ff2a069b7690817c8fc431d920e93a8cb6c3544
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 92f6f5c449b5f47b0a9a59f432c130446b324091
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656198"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783565"
 ---
 # <a name="features"></a>Features
 
@@ -56,7 +56,7 @@ Derzeit ebenfalls unterstützte vorherige Versionen: `3.0.2`
  **Hinweis 2**
 * Fügt MVP-Unterstützung für verkettete und umgekehrt verkettete FHIR-Suche in CosmosDB hinzu. 
 
-  Im Azure API for FHIR und auf dem Open-Source-FHIR-Server, der von Cosmos unterstützt wird, ist die verkettete Suche und die umgekehrte verkettete Suche eine MVP-Implementierung. Um die verkettete Suche auf Cosmos DB durchzuführen, führt die Implementierung den Suchausdruck durch und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Verwenden Sie den Header , um die verkettete Suche für Cosmos DB zu `x-ms-enable-chained-search: true` verwenden. Weitere Informationen finden Sie unter [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
+  Im Azure API for FHIR und auf dem Open-Source-FHIR-Server, der von Cosmos unterstützt wird, ist die verkettete Suche und umgekehrte verkettete Suche eine MVP-Implementierung. Um die verkettete Suche auf Cosmos DB durchzuführen, führt die Implementierung den Suchausdruck durch und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Verwenden Sie den Header , um die verkettete Suche für Cosmos DB zu `x-ms-enable-chained-search: true` verwenden. Weitere Informationen finden Sie unter [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
 
 ## <a name="extended-operations"></a>Erweiterte Vorgänge
 
@@ -94,9 +94,13 @@ Derzeit werden die zulässigen Aktionen für eine bestimmte Rolle *global* auf d
 
 * **Datengröße:** Daten/Dokumente müssen jeweils etwas kleiner als 2 MB sein.
 
+* **Abonnementlimit:** Standardmäßig ist jedes Abonnement auf maximal 10 FHIR-Serverinstanzen beschränkt. Wenn Sie mehr Instanzen pro Abonnement benötigen, öffnen Sie ein Supportticket, und geben Sie Details zu Ihren Anforderungen an.
+
+* **Gleichzeitige Verbindungen und Instanzen:** Standardmäßig verfügen Sie über 15 gleichzeitige Verbindungen auf zwei Instanzen im Cluster (für insgesamt 30 gleichzeitige Anforderungen). Wenn Sie weitere gleichzeitige Anforderungen benötigen, öffnen Sie ein Supportticket, und geben Sie Details zu Ihren Anforderungen an.
+
 ## <a name="performance-expectations"></a>Erwartung an die Leistung
 
-Die Leistung des Systems hängt von der Anzahl der RUs, den gleichzeitigen Verbindungen und der Art der ausgeführten Vorgänge ab (PUT, POST usw.). Im Folgenden finden Sie einige allgemeine Bereiche, die auf der Grundlage der konfigurierten RUs zu erwarten sind. Im Allgemeinen wird die Leistung linear mit einer Erhöhung der RUs skaliert:
+Die Leistung des Systems hängt von der Anzahl der RUs, gleichzeitigen Verbindungen und der Art der vorgänge ab, die Sie ausführen (Put, Post usw.). Im Folgenden finden Sie einige allgemeine Bereiche, die auf der Grundlage der konfigurierten RUs zu erwarten sind. Im Allgemeinen wird die Leistung linear mit einer Erhöhung der RUs skaliert:
 
 | Anzahl der RUs | Ressourcen/s |    Max. Speicher (GB)*    |
 |----------|---------------|--------|                 

@@ -1,17 +1,17 @@
 ---
 title: 'Schnellstart: Erstellen einer freigegebenen Abfrage mit Vorlagen'
 description: In dieser Schnellstartanleitung verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage), um eine freigegebene Resource Graph-Abfrage zu erstellen, mit der virtuelle Computer nach Betriebssystem gezählt werden.
-ms.date: 05/01/2021
+ms.date: 05/11/2021
 ms.topic: quickstart
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 60df3f4ab005252b392302fd487cd6e927569489
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 970c8633c0b7d5cb62520ad3778626d1423857b5
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325893"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750859"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Schnellstart: Erstellen einer freigegebenen Abfrage unter Verwendung einer Resource Manager-Vorlage
 
@@ -21,7 +21,7 @@ Resource Graph-Abfragen können als _private Abfrage_ oder _freigegebene Abfrag
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen der ARM-Vorlage zum Erstellen einer freigegebenen Abfrage für Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen der ARM-Vorlage zum Erstellen einer freigegebenen Abfrage für Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdemos%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +33,7 @@ In dieser Schnellstartanleitung erstellen Sie eine freigegebene Abfrage namens _
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/).
 
-:::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/demos/resourcegraph-sharedquery-countos/azuredeploy.json":::
 
 In der Vorlage ist die folgende Ressource definiert:
 
@@ -46,7 +46,7 @@ In der Vorlage ist die folgende Ressource definiert:
 
 1. Wählen Sie die folgende Abbildung aus, um sich am Azure-Portal anzumelden und die Vorlage zu öffnen:
 
-   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen der ARM-Vorlage zum Erstellen einer freigegebenen Abfrage für Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
+   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen der ARM-Vorlage zum Erstellen einer freigegebenen Abfrage für Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdemos%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
 
 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein:
 

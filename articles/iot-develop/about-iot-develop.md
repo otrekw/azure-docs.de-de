@@ -6,12 +6,12 @@ ms.author: rywinter
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 01/11/2021
-ms.openlocfilehash: dd4e53eebe6593db457798f009d3d05ddcbd77b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38c21ff71971868f6597856c4048ec179faf4e01
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100654765"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759434"
 ---
 # <a name="what-is-azure-iot-device-and-application-development"></a>Worum handelt es sich bei der Entwicklung von Azure IoT-Geräten und -Anwendungen?
 
@@ -74,5 +74,5 @@ Weitere Informationen zum Auswählen von Anwendungsplattform und Tools finden Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wählen Sie die Reihe mit Schnellstartanleitungen aus, die für Ihre Entwicklungsrolle am relevantesten ist. Diese Artikel veranschaulichen folgende Grundlagen: Entwickeln einer Azure IoT-Anwendung zum Hosten von Geräten, Verwenden eines SDK, Herstellen einer Verbindung mit einem Gerät und Senden von Telemetriedaten.  
-- Entwicklung von Geräteanwendungen: [Schnellstart: Senden von Telemetriedaten von einem Gerät an Azure IoT Central](quickstart-send-telemetry-python.md)
+- Entwicklung von Geräteanwendungen: [Schnellstart: Senden von Telemetriedaten von einem Gerät an Azure IoT Central](quickstart-send-telemetry-central.md)
 - Entwicklung von eingebetteten Geräten: [Erste Schritte bei der Entwicklung von eingebetteten Azure IoT-Geräten](quickstart-device-development.md)

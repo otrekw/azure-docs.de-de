@@ -6,13 +6,13 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/1/2021
-ms.custom: references_regions
-ms.openlocfilehash: c364a27b7885877231e76a694472a7ad81fe3e29
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 6f441572ea57789f6700194a24e7f1af663d0f4f
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147011"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750355"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-with-azure-cli"></a>Verwalten von zonenredundanter Hochverfügbarkeit für Azure Database für MySQL Flexible Server mit Azure CLI
 
@@ -28,8 +28,8 @@ Die Hochverfügbarkeitsfunktion stellt ein physisch getrenntes primäres und Sta
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- Installieren oder aktualisieren Sie Azure CLI auf die neueste Version. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
--  Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az-login) im Azure-Konto an. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
+- Installieren Sie die Azure CLI, oder upgraden Sie sie auf die neueste Version. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
+-  Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az_login) beim Azure-Konto an. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
     ```azurecli-interactive
     az login

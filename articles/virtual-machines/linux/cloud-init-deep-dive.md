@@ -3,17 +3,17 @@ title: Grundlegendes zu cloud-init
 description: Ausführliche Informationen zum Bereitstellen einer Azure-VM mit cloud-init.
 author: danielsollondon
 ms.service: virtual-machines
-ms.subservice: imaging
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 94dd57310375febb4bc9a55efa704a5fbf4e80e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: cloud-init
+ms.openlocfilehash: 63bc821648348c2936d437fef7fdd89314fad3c5
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559442"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783223"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>Tiefere Einblicke in cloud-init
 Um sich tiefergehendes Wissen zu [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) anzueignen oder Problembehandlung für cloud-init auf einer tieferen Ebene auszuführen, müssen Sie verstehen, wie cloud-init funktioniert. In diesem Dokument werden die wichtigen Teile hervorgehoben, und es werden die Azure-Besonderheiten erläutert.
