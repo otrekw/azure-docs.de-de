@@ -5,22 +5,43 @@ description: Neue und aktualisierte Dokumentation für die Microsoft Identity Pl
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 12/15/2020
+ms.date: 04/30/2021
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 5e40f7a84b08983c6541a134e75e1f418577fb07
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 05d8e2e9555dbd24a812d626ce4be8900991230a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130843"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748689"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Dokumentation zur Microsoft Identity Platform: Neues
 
 Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platform. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden.
+
+## <a name="april-2021"></a>April 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Richtlinientyp einer Anspruchszuordnung](reference-claims-mapping-policy-type.md)
+- [Migrieren einer Node.js-Anwendung von ADAL zu MSAL](msal-node-migration.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)](active-directory-configurable-token-lifetimes.md)
+- [Konfigurieren von Richtlinien zur Tokenlebensdauer (Vorschau)](configure-token-lifetimes.md)
+- [Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow](v2-oauth2-auth-code-flow.md)
+- [Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth 2.0](v2-oauth2-on-behalf-of-flow.md)
+- [Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Node-Web-App mithilfe des Autorisierungscodeflows](quickstart-v2-nodejs-webapp-msal.md)
+- [Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Angular-Single-Page-Webanwendung](quickstart-v2-angular.md)
+- [Single-Page-Webanwendung: Abrufen eines Tokens zum Aufrufen einer API](scenario-spa-acquire-token.md)
+- [Single-Page-Webanwendung: Codekonfiguration](scenario-spa-app-configuration.md)
+- [Single-Page-Webanwendung: An- und Abmeldung](scenario-spa-sign-in.md)
+- [Verwenden der MSAL in einer nationalen Cloudumgebung](msal-national-cloud.md)
+- [Grundlegendes zur Zustimmung für Azure AD-Anwendungen](application-consent-experience.md)
 
 ## <a name="march-2021"></a>März 2021
 
@@ -71,26 +92,3 @@ Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platfor
 - [Schnellstart: Einrichten eines Mandanten](quickstart-create-new-tenant.md)
 - [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](quickstart-register-app.md)
 - [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Java-Konsolen-App anhand der Identität der App](quickstart-v2-java-daemon.md)
-
-## <a name="january-2021"></a>Januar 2021
-
-### <a name="new-articles"></a>Neue Artikel
-
-- [Protokollierung in MSAL für Android](msal-logging-android.md)
-- [Protokollierung in MSAL.NET](msal-logging-dotnet.md)
-- [Protokollierung in MSAL für iOS/macOS](msal-logging-ios.md)
-- [Protokollierung in MSAL für Java](msal-logging-java.md)
-- [Protokollierung in MSAL.js](msal-logging-js.md)
-- [Protokollierung in MSAL für Python](msal-logging-python.md)
-
-### <a name="updated-articles"></a>Aktualisierte Artikel
-
-- [Problembehandlung bei der Herausgeberüberprüfung](troubleshoot-publisher-verification.md)
-- [Anwendungsmodell](application-model.md)
-- [Authentifizierung im Vergleich zu Autorisierung](authentication-vs-authorization.md)
-- [Gewusst wie: Einschränken Ihrer Azure AD-App auf eine Gruppe von Benutzern in einem Azure AD-Mandanten](howto-restrict-your-app-to-a-set-of-users.md)
-- [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](v2-permissions-and-consent.md)
-- [Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)](active-directory-configurable-token-lifetimes.md)
-- [Konfigurieren von Richtlinien zur Tokenlebensdauer (Vorschau)](configure-token-lifetimes.md)
-- [Microsoft Identity Plattform: Authentifizierungsbibliotheken](reference-v2-libraries.md)
-- [Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow](v2-oauth2-auth-code-flow.md)

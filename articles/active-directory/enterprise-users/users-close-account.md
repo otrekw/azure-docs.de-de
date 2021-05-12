@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/03/2020
+ms.date: 05/04/2021
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 252c993f5679d80cda97a6fade08f5f92489840d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aadf4cb638c1b9c16df934a9ee3c0a992a3e8a7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96575583"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748671"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Schließen Ihres Geschäfts-, Schul- oder Unikontos in einer nicht verwalteten Azure AD-Organisation
 
@@ -43,7 +43,7 @@ Bevor Sie Ihr Konto schließen, sollten Sie Folgendes sicherstellen:
 
 Führen Sie diese Schritte aus, um ein nicht verwaltetes Geschäfts-, Schul- oder Unikonto zu schließen:
 
-1. Melden Sie sich an der [Seite für das Schließen Ihres Kontos](https://go.microsoft.com/fwlink/?linkid=873123) mit dem zu schließenden Konto an.
+1. Melden Sie sich an der [Seite für das Schließen Ihres Kontos](https://portal.azure.com/#blade/Microsoft_AAD_IAM/PrivacyDataRequests) mit dem zu schließenden Konto an.
 
 1. Wählen Sie unter **Meine Datenanforderungen**  die Option **Konto schließen**.
 

@@ -1,22 +1,25 @@
 ---
 title: Warnungstypen und -beschreibungen
 description: Lesen Sie die Beschreibungen der Warnungen zu Defender für IoT.
-ms.date: 4/8/2021
+ms.date: 04/28/2021
 ms.topic: how-to
-ms.openlocfilehash: 483563b53a5849b0354986269568bc42b9124cc2
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: bc2adabe4183420f79972d8fd58b132b38864efe
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107477994"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226478"
 ---
 # <a name="alert-types-and-descriptions"></a>Warnungstypen und -beschreibungen
 
-In diesem Artikel werden sämtliche Warnungstypen beschrieben, die von den Defender für IoT-Engines generiert werden können. Warnungen werden im Fenster „Warnungen“ angezeigt. Dort können Sie das Warnungsereignis verwalten. 
+Dieser Artikel enthält Informationen zu den Benachrichtigungstypen, Beschreibungen und dem Schweregrad, die von den Defender for IoT-Engines generiert werden können. Diese Informationen können verwendet werden, um Warnungen Playbooks zu zuordnen, Weiterleitungsregeln, Ausschlussregeln und benutzerdefinierte Warnungen zu definieren und die entsprechenden Regeln innerhalb des SIEM zu definieren. Warnungen werden im Fenster „Warnungen“ angezeigt. Dort können Sie das Warnungsereignis verwalten. 
 
 ## <a name="policy-engine-alerts"></a>Warnungen der Richtlinien-Engine
 
 Die Warnungen der Richtlinien-Engine beschreiben erkannte Abweichungen vom gelernten normalen Verhalten.
+
+>[!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 | Titel  | BESCHREIBUNG | severity |
 |--|--|--|

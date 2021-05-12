@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
-ms.date: 04/24/2021
-ms.openlocfilehash: 99ec792937a85122fc3e6886309f1f9b24eecafc
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.date: 04/29/2021
+ms.openlocfilehash: 8a753d598c55653536284679f2848c24dd571f2a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108007518"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289370"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Konnektivitätsarchitektur für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -87,7 +87,7 @@ Wenn Verbindungen ihren Ausgangspunkt in SQL Managed Instance haben (wie bei Sic
 
 Um Kundensicherheit und Verwaltbarkeitsanforderungen zu berücksichtigen, wird SQL Managed Instance gerade von der manuellen auf die dienstgestützte Subnetzkonfiguration umgestellt.
 
-Mit dienstgestützter Subnetzkonfiguration kann der Benutzer den Datenverkehr (Tabular Data Stream, TDS) vollständig kontrollieren, während SQL Managed Instance die Verantwortung übernimmt, den ununterbrochenen Fluss des Verwaltungsdatenverkehrs sicherzustellen und so eine Vereinbarung zum Servicelevel (Service Level Agreement, SLA) zu erfüllen.
+Mit dienstgestützter Subnetzkonfiguration kann der Kunde den Datenverkehr (Tabular Data Stream, TDS) vollständig kontrollieren, während die Steuerungsebene von SQL Managed Instance dafür zuständig ist, den ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu gewährleisten und so eine Vereinbarung zum Servicelevel (Service Level Agreement, SLA) zu erfüllen.
 
 Die dienstgestützte Subnetzkonfiguration baut auf dem Feature [Subnetzdelegierung](../../virtual-network/subnet-delegation-overview.md) für virtuelle Netzwerke auf, um eine automatische Verwaltung der Netzwerkkonfiguration zu ermöglichen und Dienstendpunkte zu aktivieren. 
 
@@ -100,7 +100,7 @@ Dienstendpunkte können zum Konfigurieren von Firewallregeln für virtuelle Netz
 
 Stellen Sie SQL Managed Instance in einem dedizierten Subnetz im virtuellen Netzwerk bereit. Das Subnetz muss diese Merkmale aufweisen:
 
-- **Dediziertes Subnetz**: Das Subnetz von SQL Managed Instance darf keinen anderen Clouddienst enthalten, der mit ihm verknüpft ist, und es darf kein Gatewaysubnetz sein. Das Subnetz darf keine Ressourcen außer SQL Managed Instance enthalten, und Sie können später keine anderen Ressourcentypen im Subnetz hinzufügen.
+- **Dediziertes Subnetz**: Das Subnetz der verwalteten Instanz darf keinen anderen Clouddienst enthalten, der mit ihm verbunden ist (andere verwaltete Instanzen sind jedoch zulässig), und darf kein Gatewaysubnetz sein. Das Subnetz darf keine Ressourcen außer den verwalteten Instanzen enthalten, und Sie können später keine Arten von Ressourcen im Subnetz hinzufügen.
 - **Subnetzdelegierung:** Das Subnetz von SQL Managed Instance muss an den Ressourcenanbieter `Microsoft.Sql/managedInstances` delegiert werden.
 - **Netzwerksicherheitsgruppe (NSG)** : Eine NSG muss dem Subnetz von SQL Managed Instance zugeordnet werden. Sie können eine NSG verwenden, um den Zugriff auf den Datenendpunkt von SQL Managed Instance zu steuern, indem Sie Datenverkehr an Port 1433 und die Ports 11000 bis 11999 filtern, wenn SQL Managed Instance für Verbindungsumleitungen konfiguriert ist. Der Dienst stellt automatisch die [Regeln](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) zur Verfügung, die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, und hält sie auf dem neuesten Stand.
 - **Benutzerdefinierte Routingtabelle (User Defined Route, UDR):** Eine UDR-Tabelle muss dem Subnetz von SQL Managed Instance zugeordnet werden. Sie können der Routingtabelle Einträge hinzufügen, um Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über das virtuelle Netzwerkgateway oder das virtuelle Netzwerkgerät (Network Appliance, NVA) zu leiten. Der Dienst stellt automatisch die [Einträge](#mandatory-user-defined-routes-with-service-aided-subnet-configuration) zur Verfügung, die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, und hält sie auf dem neuesten Stand.

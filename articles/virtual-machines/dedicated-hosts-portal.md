@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: 3bc7909f38e63256d7d708ec189c628662cf8837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b10e281c20703f563fb2e0d3929ee936b094f26
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667333"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753451"
 ---
-# <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>Bereitstellen von VMs und Skalierungsgruppen auf dedizierten Hosts über das Portal 
+# <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>Bereitstellen von VMs und Skalierungsgruppen auf dedizierten Hosts über das Portal
 
-Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
+Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs).
 
 
 ## <a name="limitations"></a>Einschränkungen
@@ -26,18 +26,18 @@ Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](d
 
 ## <a name="create-a-host-group"></a>Erstellen einer Hostgruppe
 
-Eine **Hostgruppe** ist eine Ressource, die eine Sammlung dedizierter Hosts darstellt. Sie erstellen eine Hostgruppe in einer Region und einer Verfügbarkeitszone und fügen ihr Hosts hinzu. Bei der Planung für Hochverfügbarkeit stehen zusätzliche Optionen zur Verfügung. Sie können eine oder beide der folgenden Optionen mit Ihren dedizierten Hosts verwenden: 
+Eine **Hostgruppe** ist eine Ressource, die eine Sammlung dedizierter Hosts darstellt. Sie erstellen eine Hostgruppe in einer Region und einer Verfügbarkeitszone und fügen ihr Hosts hinzu. Bei der Planung für Hochverfügbarkeit stehen zusätzliche Optionen zur Verfügung. Sie können eine oder beide der folgenden Optionen mit Ihren dedizierten Hosts verwenden:
 - Ausdehnen über mehrere Verfügbarkeitszonen. In diesem Fall muss in jeder Zone, die Sie verwenden möchten, eine Hostgruppe vorhanden sein.
-- Ausdehnen über mehrere Fehlerdomänen, die physischen Racks zugeordnet sind. 
- 
-In beiden Fällen müssen Sie die Anzahl der Fehlerdomänen für Ihre Hostgruppe angeben. Wenn Ihre Gruppe keine Fehlerdomänen umfassen soll, verwenden Sie die Anzahl 1 von Fehlerdomänen. 
+- Ausdehnen über mehrere Fehlerdomänen, die physischen Racks zugeordnet sind.
 
-Sie können auch sowohl Verfügbarkeitszonen als auch Fehlerdomänen verwenden. 
+In beiden Fällen müssen Sie die Anzahl der Fehlerdomänen für Ihre Hostgruppe angeben. Wenn Ihre Gruppe keine Fehlerdomänen umfassen soll, verwenden Sie die Anzahl 1 von Fehlerdomänen.
 
-In diesem Beispiel erstellen Sie eine Hostgruppe mit einer Verfügbarkeitszone und zwei Fehlerdomänen. 
+Sie können auch sowohl Verfügbarkeitszonen als auch Fehlerdomänen verwenden.
+
+In diesem Beispiel erstellen Sie eine Hostgruppe mit einer Verfügbarkeitszone und zwei Fehlerdomänen.
 
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Wählen Sie links oben **Ressource erstellen** aus.
 1. Suchen Sie nach **Hostgruppe**, und wählen Sie dann in den Ergebnissen **Hostgruppen** aus.
 1. Wählen Sie auf der Seite **Hostgruppen** die Option **Erstellen** aus.
@@ -60,7 +60,7 @@ Erstellen Sie nun einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem
 
 Weitere Informationen zu den Host-SKUs und Preisen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
-Beim Festlegen der Anzahl der Fehlerdomänen für die Hostgruppe werden Sie aufgefordert, die Fehlerdomäne für den Host anzugeben.  
+Beim Festlegen der Anzahl der Fehlerdomänen für die Hostgruppe werden Sie aufgefordert, die Fehlerdomäne für den Host anzugeben.
 
 1. Wählen Sie links oben **Ressource erstellen** aus.
 1. Suchen Sie nach **Dedizierter Host**, und wählen Sie dann in den Ergebnissen **Dedizierter Host** aus.
@@ -76,7 +76,7 @@ Beim Festlegen der Anzahl der Fehlerdomänen für die Hostgruppe werden Sie aufg
 
 1. Klicken Sie links oben im Azure-Portal auf **Ressource erstellen**.
 1. Suchen Sie im Suchfeld über der Liste mit den Azure Marketplace-Ressourcen nach dem gewünschten Image, wählen Sie es aus, und klicken Sie anschließend auf **Erstellen**.
-1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann *myDedicatedHostsRG* als **Ressourcengruppe** aus. 
+1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann *myDedicatedHostsRG* als **Ressourcengruppe** aus.
 1. Geben Sie unter **Instanzdetails** *myVM* als **Namen des virtuellen Computers** ein, und wählen Sie *USA, Osten* als Ihre **Ort** aus.
 1. Wählen Sie unter **Verfügbarkeitsoptionen** die Option **Verfügbarkeitszone** aus, und wählen Sie in der Dropdownliste *1* aus.
 1. Wählen Sie für die Größe **Größe ändern** aus. Wählen Sie in der Liste der verfügbaren Größen eine der Esv3-Serie aus, z. B. **Standard E2s v3**. Möglicherweise müssen Sie den Filter löschen, um alle verfügbaren Größen anzuzeigen.
@@ -88,7 +88,7 @@ Beim Festlegen der Anzahl der Fehlerdomänen für die Hostgruppe werden Sie aufg
 
 Die Bereitstellung des virtuellen Computers dauert ein paar Minuten.
 
-## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe 
+## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
 
 Wenn Sie eine Skalierungsgruppe bereitstellen, geben Sie die Hostgruppe an.
 
@@ -98,11 +98,11 @@ Wenn Sie eine Skalierungsgruppe bereitstellen, geben Sie die Hostgruppe an.
 1. Wählen Sie auf der Registerkarte **Erweitert** für **Zuweisungsalgorithmus** die Option **Maximale Zuweisung** aus.
 1. Wählen Sie bei **Hostgruppe** die gewünschte Hostgruppe in der Dropdownliste aus. Wenn Sie die Gruppe vor kurzem erstellt haben, kann es eine Minute dauern, bis diese in der Liste hinzugefügt wurde.
 
-## <a name="add-an-existing-vm"></a>Hinzufügen eines vorhandenen virtuellen Computers 
+## <a name="add-an-existing-vm"></a>Hinzufügen eines vorhandenen virtuellen Computers
 
 Sie können einem dedizierten Host einen vorhandene virtuellen Computer hinzufügen. Der virtuelle Computer muss allerdings zuerst beendet bzw. seine Zuordnung aufgehoben werden. Vergewissern Sie sich vor dem Verschieben eines virtuellen Computers auf einen dedizierten Host, dass die VM-Konfiguration unterstützt wird:
 
-- Die VM-Größe muss sich in der gleichen Größenfamilie befinden wie der dedizierte Host. Wenn der dedizierte Host z. B. DSv3 ist, kann die VM-Größe Standard_D4s_v3, aber nicht Standard_A4_v2 sein. 
+- Die VM-Größe muss sich in der gleichen Größenfamilie befinden wie der dedizierte Host. Wenn der dedizierte Host z. B. DSv3 ist, kann die VM-Größe Standard_D4s_v3, aber nicht Standard_A4_v2 sein.
 - Der virtuelle Computer muss sich in der gleichen Region befinden wie der dedizierte Host.
 - Der virtuelle Computer darf nicht Teil einer Näherungsplatzierungsgruppe sein. Entfernen Sie den virtuellen Computer aus der Näherungsplatzierungsgruppe, bevor Sie ihn auf einen dedizierten Host verschieben. Weitere Informationen finden Sie unter [Verschieben einer vorhandenen VM aus einer Näherungsplatzierungsgruppe](./windows/proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group).
 - Der virtuelle Computer darf sich nicht in einer Verfügbarkeitsgruppe befinden.
@@ -122,6 +122,6 @@ Verschieben Sie den virtuellen Computer mithilfe des [Portals](https://portal.az
 
 - Weitere Informationen finden Sie in der Übersicht zu [dedizierten Hosts](dedicated-hosts.md).
 
-- [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) finden Sie eine Beispielvorlage, die sowohl Zonen als auch Fehlerdomänen für maximale Resilienz in einer Region verwendet.
+- [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md) finden Sie eine Beispielvorlage, die sowohl Zonen als auch Fehlerdomänen für maximale Resilienz in einer Region verwendet.
 
 - Sie können einen dedizierten Host auch über die [Azure CLI](./linux/dedicated-hosts-cli.md) oder [PowerShell](./windows/dedicated-hosts-powershell.md) bereitstellen.

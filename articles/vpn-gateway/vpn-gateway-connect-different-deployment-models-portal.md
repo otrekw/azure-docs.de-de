@@ -1,18 +1,19 @@
 ---
-title: 'Verbinden von klassischen virtuellen Netzwerken mit Azure Resource Manager-VNETs: Portal | Microsoft Docs'
-description: Schritte zum Verbinden klassischer VNETs mit Resource Manager-VNETs mithilfe von VPN Gateway und des Portals
+title: 'Verbinden von klassischen virtuellen Netzwerken mit Azure Resource Manager-VNets: Portal'
+titleSuffix: Azure VPN Gateway
+description: Hier erfahren Sie, wie Sie klassische VNets mithilfe des Portals mit Resource Manager-VNets verbinden.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9d31bcaad01b9b762e57bd619d45c1f53ffb201e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8511c09b863550a8e5e71b2a4e6a91a4a3f757c
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376801"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229106"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
 

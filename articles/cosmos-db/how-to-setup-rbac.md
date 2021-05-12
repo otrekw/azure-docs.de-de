@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: thweiss
-ms.openlocfilehash: 209d18dfbadea89f14fd90da9a1bc57b3ccf0dfe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 9de41835e33d50a670a44089cb10d44cc57e92a7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728071"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818697"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurieren der rollenbasierten Zugriffssteuerung mit Azure Active Directory für Ihr Azure Cosmos DB-Konto (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -330,9 +330,10 @@ Wenn Sie Azure Cosmos DB-RBAC in Ihrer Anwendung verwenden möchten, müssen Si
 
 Die Methode zur Erstellung einer `TokenCredential`-Instanz wird in diesem Artikel nicht behandelt. Es gibt viele Möglichkeiten, eine solche Instanz zu erstellen, die vom Typ der zu verwendenden AAD-Identität abhängen (Benutzerprinzipal, Dienstprinzipal, Gruppe usw.). Am wichtigsten ist, dass Ihre `TokenCredential`-Instanz in die Identität (Prinzipal-ID) aufgelöst werden muss, der Sie die Rollen zugewiesen haben. Beispiele für das Erstellen einer `TokenCredential`-Klasse finden Sie hier:
 
-- [in .NET](/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [in Java](/java/api/overview/azure/identity-readme#credential-classes)
-- [in JavaScript](/javascript/api/overview/azure/identity-readme#credential-classes)
+- [In .NET](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [In Java](/java/api/overview/azure/identity-readme#credential-classes)
+- [In JavaScript](/javascript/api/overview/azure/identity-readme#credential-classes)
+- In REST-API
 
 In den folgenden Beispielen wird ein Dienstprinzipal mit einer `ClientSecretCredential`-Instanz verwendet.
 
@@ -379,6 +380,12 @@ const client = new CosmosClient({
     aadCredentials: servicePrincipal
 });
 ```
+
+### <a name="in-rest-api"></a>In REST-API
+
+Azure Cosmos DB RBAC wird derzeit in der Version 2021-03-15 der REST-API unterstützt. Legen Sie beim Erstellen des [Autorisierungsheaders](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) den Parameter **type** auf **aad** und die Hashsignatur **(sig)** auf das **OAuth-Token** fest, wie im folgenden Beispiel gezeigt:
+
+`type=aad&ver=1.0&sig=<token-from-oauth>`
 
 ## <a name="auditing-data-requests"></a>Überwachen von Datenanforderungen
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/25/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4c2b680f4bc1816e58f37d2633f36792abd6b9e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0efe61b33d5946fd09e2e32fe981ac35144cec5
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96615759"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484635"
 ---
 > [!IMPORTANT]
 > Die folgenden Funktionen für Geräte, die die Authentifizierung der X.509-Zertifizierungsstelle (Certificate Authority, CA) verwenden, sind noch nicht allgemein verfügbar, und der [Vorschaumodus muss aktiviert werden](../articles/iot-hub/iot-hub-preview-mode.md):
@@ -21,5 +21,5 @@ ms.locfileid: "96615759"
 > - HTTPS, MQTT über WebSockets und AMQP über WebSockets-Protokolle.
 > - Dateiuploads (alle Protokolle).
 >
-> Dieses Feature ist auf Geräten, die die X.509-Fingerabdruckauthentifizierung verwenden, allgemein verfügbar. Weitere Informationen zur X.509-Authentifizierung mit IoT Hub finden Sie unter [Unterstützte X.509-Zertifikate](../articles/iot-hub/iot-hub-devguide-security.md#supported-x509-certificates).  
+> Dieses Feature ist auf Geräten, die die X.509-Fingerabdruckauthentifizierung verwenden, allgemein verfügbar. Weitere Informationen zur X.509-Authentifizierung mit IoT Hub finden Sie unter [Unterstützte X.509-Zertifikate](../articles/iot-hub/iot-hub-dev-guide-sas.md#supported-x509-certificates).  
 >

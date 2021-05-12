@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 04/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d707106d66c77ad1f3a1156906add8bb85fd0ce0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 374fa4db4441dc82f9d14eef9cdd7589a9a82fad
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305972"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126847"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -53,7 +53,7 @@ Die fortlaufende Zugriffsevaluierung wird implementiert, indem für Dienste wie 
 Dies ermöglicht ein Szenario, bei dem Benutzer innerhalb von wenigen Minuten nach einem dieser kritischen Ereignisse den Zugriff auf SharePoint Online-Dateien, E-Mails, Kalender oder Aufgaben der Organisation und Teams aus Microsoft 365-Client-Apps verlieren. 
 
 > [!NOTE] 
-> Teams unterstützt noch keine Benutzerrisikoereignisse.
+> Benutzerrisikoereignisse werden von Teams und SharePoint Online noch nicht unterstützt.
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>Auswertung von Richtlinien für bedingten Zugriff (Vorschau)
 
@@ -130,8 +130,12 @@ Im folgenden Beispiel hat ein Administrator für den bedingten Zugriff eine stan
 1. Melden Sie sich als Administrator für bedingten Zugriff, Sicherheitsadministrator oder globaler Administrator beim **Azure-Portal** an.
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Fortlaufende Zugriffsevaluierung**.
 1. Wählen Sie **Vorschau aktivieren** aus.
+1. Wählen Sie **Speichern**.
 
 Auf dieser Seite können Sie optional die Benutzer und Gruppen für die Vorschau einschränken.
+
+> [!WARNING]
+> Um die fortlaufende Zugriffsauswertung zu deaktivieren, wählen Sie **Vorschau aktivieren** und dann **Vorschau deaktivieren** und **Speichern** aus.
 
 ![Aktivieren der Vorschau der fortlaufenden Zugriffsevaluierung im Azure-Portal](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 

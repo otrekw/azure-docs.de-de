@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 04/19/2021
 ms.author: alkohli
-ms.openlocfilehash: d733f2642df4ff9f74d8013d45d67159fbb032f8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cdb87e691828db23e8c441fe9933204556fb8417
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139271"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734142"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Was ist Azure Stack Edge Mini R?
 
@@ -68,6 +68,7 @@ Die Azure Stack Edge Mini R-Lösung umfasst eine Azure Stack Edge Pro R-Ressou
 
 * **Lokale Webbenutzeroberfläche von Azure Stack Edge Mini R:** Eine browserbasierte lokale Benutzeroberfläche auf Ihrem Azure Stack Edge Mini R-Gerät, die in erster Linie der anfänglichen Konfiguration des Geräts dient. Über die lokale Webbenutzeroberfläche können Sie zudem Diagnosen ausführen, das Azure Stack Edge Pro-Gerät herunterfahren und neu starten, Kopierprotokolle anzeigen und den Microsoft-Support kontaktieren, um eine Serviceanfrage zu stellen.
 
+    [!INCLUDE [azure-stack-edge-gateway-local-web-ui-languages](../../includes/azure-stack-edge-gateway-local-web-ui-languages.md)]
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
