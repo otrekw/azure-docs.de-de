@@ -1,17 +1,17 @@
 ---
 title: Aktivität „Metadaten abrufen“ in Azure Data Factory
 description: Erfahren Sie, wie Sie die Aktivität „Metadaten abrufen“ in einer Data Factory-Pipeline verwenden.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
-ms.author: jingwang
-ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: jianleishen
+ms.openlocfilehash: e4715802f7b284bd9e6ce9a41b44c3750c33c260
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178540"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482757"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
 

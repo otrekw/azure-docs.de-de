@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2020
+ms.date: 4/23/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 2d14ca2423d34926a9e297823a6515c2c5dde06a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b068fd00402fc281001e8572f9e03662c8ffd55
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607115"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951790"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -92,6 +92,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **DataFactory**  | Azure Data Factory | Beide | Nein | Nein |
 | **DataFactoryManagement** | Verwaltungsdatenverkehr für Azure Data Factory | Ausgehend | Nein | Nein |
 | **Dynamics365ForMarketingEmail** | Die Adressbereiche für den Marketing-E-Mail-Dienst von Dynamics 365. | Ausgehend | Ja | Nein |
+| **EOPExternalPublishedIPs** | Dieses Tag stellt die IP-Adressen dar, die für Security & Compliance Center PowerShell verwendet werden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Security & Compliance Center-PowerShell mithilfe des Moduls EXO V2](https://docs.microsoft.com/powershell/exchange/connect-to-scc-powershell). <br/><br/> *Hinweis: Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.* | Beide | Nein | Ja |
 | **EventHub** | Azure Event Hubs. | Ausgehend | Ja | Ja |
 | **GatewayManager** | Verwaltungsdatenverkehr für dedizierte Azure VPN Gateway- und Application Gateway-Bereitstellungen. | Eingehend | Nein | Nein |
 | **GuestAndHybridManagement** | Azure Automation und Gastkonfiguration | Ausgehend | Nein | Ja |
@@ -135,11 +136,13 @@ Sie können die aktuelle Liste der Diensttags zusammen mit Details zum IP-Adress
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
-- [Azure-Befehlszeilenschnittstelle](/cli/azure/network#az-network-list-service-tags)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/network#az_network_list_service_tags)
 
 > [!NOTE]
-> Obwohl sie sich in der öffentlichen Vorschauphase befindet, gibt die Ermittlungs-API u. U. weniger aktuelle Informationen zurück als die Informationen, die von den JSON-Downloads zurückgegeben werden. (Siehe nächster Abschnitt.)
+> Es dauert bis zu 4 Wochen, bis neue Diensttagdaten in den API-Ergebnissen weitergeleitet werden. Die Änderungsnummer in den Antwortmetadaten wird in diesem Fall erhöht. Es kann temporäre Unterschiede in den Ergebnissen geben, wenn unterschiedliche Speicherortwerte angegeben werden. Wenn Sie die Ergebnisse zum Erstellen von NSG-Regeln verwenden, sollten Sie den Standortparamater so festlegen, dass er mit der Region der NSG übereinstimmt. 
 
+> [!NOTE]
+> Die API-Daten stellen diese Tags dar, die mit NSG-Regeln verwendet werden können. Dies ist eine Teilmenge der Tags, die sich derzeit in der herunterladbaren JSON-Datei befindet. In der öffentlichen Vorschau können wir nicht garantieren, dass die Daten von einem Update zum nächsten gleich bleiben. 
 
 ### <a name="discover-service-tags-by-using-downloadable-json-files"></a>Ermitteln von Diensttags mithilfe von herunterladbaren JSON-Dateien 
 Sie können JSON-Dateien mit der aktuellen Liste der Diensttags zusammen mit Details zum IP-Adressbereich herunterladen. Diese Listen werden wöchentlich aktualisiert und veröffentlicht. Hier finden Sie die Speicherorte für die einzelnen Clouds:

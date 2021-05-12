@@ -6,15 +6,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 04/29/2021
 ms.author: banders
 ms.reviewer: baolcsva
-ms.openlocfilehash: f32c43b08b8259467fb00a75ca2e7089d7ec87e8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 60d42598da2e0b7f29bfea832d27dc5156761556
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107485583"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108322057"
 ---
 # <a name="key-next-steps-after-accepting-your-microsoft-customer-agreement"></a>Wichtige nächste Schritte nach dem Akzeptieren Ihrer Microsoft-Kundenvereinbarung
 
@@ -45,7 +45,7 @@ Wenn Sie ein neuer Kunde sind, erstellt Azure automatisch ein Standardabonnement
 
 Nachdem Ihre Abonnements verschoben wurden, bleibt der Zugriff auf die Abonnements für Ihre Benutzer unverändert. Der gesamte Verbrauch für die Abonnements wird weitergeleitet und unter Ihrem neuen Vertrag abgerechnet.
 
-Wenn Sie mit der Nutzung von Azure-Diensten beginnen, wird Ihre neue Rechnung unter der Microsoft-Kundenvereinbarung am fünften Tag jedes Monats generiert. Stellen Sie sicher, dass Sie [Ihre Auftragsnummer in Ihrem Abrechnungsprofil aktualisieren](../manage/change-azure-account-profile.md). Ihre Standardzahlungsmethode ist die Überweisung. Informationen zum Einrichten Ihrer Zahlungsmethode, um Verzögerungen zu vermeiden, finden Sie unter [Bezahlen Ihrer Rechnung für Microsoft Azure](../understand/pay-bill.md#wire-bank-details). In diesem Artikel wird erläutert, wie Sie die erforderlichen Bankzahlungsinformationen abrufen.
+Wenn Sie mit der Nutzung von Azure-Diensten beginnen, wird Ihre neue Rechnung unter der Microsoft-Kundenvereinbarung am fünften Tag jedes Monats generiert. Ihre Standardzahlungsmethode ist die Überweisung. Informationen zum Einrichten Ihrer Zahlungsmethode, um Verzögerungen zu vermeiden, finden Sie unter [Bezahlen Ihrer Rechnung für Microsoft Azure](../understand/pay-bill.md#wire-bank-details). In diesem Artikel wird erläutert, wie Sie die erforderlichen Bankzahlungsinformationen abrufen.
 
 ## <a name="confirm-payment-details"></a>Bestätigen der Zahlungsdetails
 
@@ -67,6 +67,22 @@ Wenn Sie von einer nutzungsbasierten Bezahlung oder einem Enterprise Agreement z
 ## <a name="complete-outstanding-payments"></a>Abschließen ausstehender Zahlungen
 
 Schließen Sie unbedingt alle ausstehenden Zahlungen für Ihre älteren Rechnungen für die [nutzungsbasierte Bezahlung](../understand/download-azure-invoice.md) oder das [EA](../manage/ea-portal-enrollment-invoices.md)-Vertragsabonnement ab. Weitere Informationen finden Sie unter [Begriffe auf der Rechnung und entsprechende Beschreibungen](../understand/mca-understand-your-invoice.md#billing-period).
+
+## <a name="update-a-po-number"></a>Aktualisieren einer Auftragsnummer
+
+Standardmäßig ist einer Rechnung für das Abrechnungsprofil keine Auftragsnummer zugeordnet. Nachdem Sie eine Auftragsnummer für ein Abrechnungsprofil hinzugefügt haben, wird sie auf Rechnungen für das Abrechnungsprofil angezeigt.
+
+Wenn Sie die Auftragsnummer für ein Abrechnungsprofil hinzufügen oder ändern möchten, führen Sie die folgenden Schritte aus:
+
+1.  Melden Sie sich beim Azure-Portal an.
+1.  Suchen Sie nach **Cost Management + Billing**, und wählen Sie **Abrechnungsbereiche** aus.
+1.  Wählen Sie Ihren Abrechnungsbereich aus.
+1.  Wählen Sie im Menü auf der linken Seite unter **Abrechnung** die Option **Abrechnungsprofile** aus.
+1.  Wählen Sie das entsprechende Abrechnungsprofil aus.
+1.  Wählen Sie im linken Menü unter **Einstellungen** die Option **Eigenschaften** aus.
+1.  Wählen Sie **Auftragsnummer aktualisieren** aus.
+1.  Geben Sie eine Auftragsnummer ein, und wählen Sie dann **Aktualisieren** aus.
+
 
 ## <a name="update-your-tax-id"></a>Aktualisieren Ihrer Steuernummer
 

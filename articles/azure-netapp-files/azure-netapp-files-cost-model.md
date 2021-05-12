@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: 9c4eebae6909c9ef0969bc85bcb9a985db2a7c02
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e232651d273f1e32beef152b2fa3c062da38b06
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91325605"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291872"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Kostenmodell für Azure NetApp Files 
 
@@ -31,66 +31,25 @@ Informationen zu speziellen Kostenmodellen für die regionsübergreifende Replik
 
 Azure NetApp Files wird nach bereitgestellter Speicherkapazität in Rechnung gestellt.  Die Zuweisung bereitgestellter Kapazität erfolgt durch Anlegen von Kapazitätspools.  Kapazitätspools werden basierend auf EUR/bereitgestellte GiB/Monat in stündlichen Schritten abgerechnet. Die Mindestgröße eines einzelnen Kapazitätspools beträgt 4 TiB, und Kapazitätspools können nachträglich in 1-TiB-Schritten vergrößert werden. Innerhalb von Kapazitätspools werden Volumes erstellt.  Jedem Volume ist ein Kontingent zugeordnet, das sich entsprechend der bereitgestellten Poolkapazität verringert. Das Kontingent, das den Volumes zugeordnet werden kann, reicht von mindestens 100 GiB bis maximal 100 TiB.  
 
-Bei einem aktiven Volume basiert die Kapazitätsnutzung im Vergleich zum Kontingent auf der logischen (effektiven) Kapazität.
+Bei einem aktiven Volume basiert die Kapazitätsnutzung im Vergleich zum Kontingent auf der logischen (effektiven) Kapazität (aktives Dateisystem oder Momentaufnahmedaten). Ein Volume kann nur so viele Daten wie die festgelegte Größe (Kontingent) enthalten.
 
-Wenn die tatsächliche Kapazitätsnutzung eines Volumes sein Speicherkontingent überschreitet, kann das Volume weiter anwachsen. Schreibvorgänge sind weiterhin zulässig, solange die tatsächliche Volumegröße kleiner als der Systemgrenzwert (100 TiB) ist.  
+Die gesamte genutzte Kapazität in einem Kapazitätspool im Vergleich zu seinem bereitgestellten Umfang ist die Summe der tatsächlichen Nutzung aller Volumes innerhalb des Pools: 
 
-Die gesamte genutzte Kapazität in einem Kapazitätspool im Vergleich zu seinem bereitgestellten Umfang ist die Summe von entweder dem zugewiesenen Kontingent oder der tatsächlichen Nutzung aller Volumes innerhalb des Pools, je nachdem, welcher Wert größer ist: 
-
-   ![Berechnung der insgesamt genutzten Kapazität](../media/azure-netapp-files/azure-netapp-files-total-used-capacity.png)
-
-Die folgende Abbildung veranschaulicht diese Konzepte.  
-* Wir haben einen Kapazitätspool mit einer bereitgestellten Kapazität von 4 TiB.  Der Pool enthält drei Volumes.  
-    * Volume 1 hat ein Kontingent von 2 TiB bei einer Nutzung von 800 GiB.  
-    * Volume 2 hat ein Kontingent von 1 TiB bei einer Nutzung von 100 GiB.  
-    * Volume 3 hat ein Kontingent von 500 GiB bei einer Nutzung von 800 GiB (Überschreitung).  
-* Der Kapazitätspool hat eine bereitgestellte Größe von 4 TiB.  
-    3,8 TiB der Kapazität werden genutzt (2 TiB und 1 TiB der Kontingente der Volumes 1 und 2 und 800 GiB tatsächlicher Nutzung durch Volume 3). 200 GiB Kapazität sind ungenutzt.
-
-   ![Kapazitätspool mit drei Volumes](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-three-vols.png)
-
-## <a name="overage-in-capacity-consumption"></a>Überschreitung der Kapazitätsnutzung  
-
-Wenn die insgesamt genutzte Kapazität eines Pools dessen bereitgestellte Kapazität überschreitet, sind Datenschreibvorgänge weiterhin zulässig.  Wenn nach Ablauf der Karenzzeit (eine Stunde) die genutzte Kapazität des Pools seine bereitgestellte Kapazität immer noch überschreitet, wird die Poolgröße automatisch in Schritten von 1 TiB erhöht, bis die bereitgestellte Kapazität größer als die gesamte genutzte Kapazität ist.  Wenn beispielsweise in der obigen Abbildung das Volume 3 weiter wächst und die tatsächliche Nutzung 1,2 TiB erreicht, wird der Pool nach Ablauf der Karenzzeit automatisch auf 5 TiB verkleinert.  Das Ergebnis ist, dass die bereitgestellten Poolkapazität (5 TiB) die genutzte Kapazität (4,2 TiB) überschreitet.  
-
-Der Kapazitätspool wird zwar automatisch vergrößert, um die Anforderungen des Volumes zu erfüllen, aber nicht automatisch verkleinert, wenn die Volumegröße abnimmt. Wenn Sie den Kapazitätspool verkleinern möchten, nachdem die Volumegröße abgenommen hat (etwa nach der Datenbereinigung eines Volumes), müssen Sie die Größe des Kapazitätspools manuell _verringern_.
-
-## <a name="manual-changes-of-the-pool-size"></a>Manuelle Änderungen der Poolgröße  
-
-Sie können die Poolgröße manuell erhöhen oder verringern. Es gelten jedoch die folgenden Einschränkungen:
-* Minimale und maximale Grenzwerte für den Dienst  
-    Siehe den Artikel zu [Ressourcenlimits](azure-netapp-files-resource-limits.md).
-* Ein 1-TiB-Schritt nach anfänglichem Kauf der Mindestgröße von 4 TiB
-* Mindestabrechnungsschritt von einer Stunde
-* Die Größe des bereitgestellten Pools darf nicht kleiner sein als die gesamte im Pool genutzte Kapazität.
-* Bei Kapazitätspools mit manueller QoS kann die Poolgröße nur verringert werden, wenn der aufgrund der Größe und Dienstebene bereitgestellte Durchsatz höher ist als der tatsächlich zugewiesene Durchsatz aller Volumes.
-
-## <a name="behavior-of-maximum-size-pool-overage"></a>Verhalten bei Überschreitung der maximalen Poolgröße   
-
-Die maximale Größe eines Kapazitätspools, den Sie anlegen oder dessen Größe Sie ändern können, beträgt 500 TiB.  Wenn die gesamte genutzte Kapazität in einem Kapazitätspool 500 TiB überschreitet, treten die folgenden Sachverhalte auf:
-* Datenschreibvorgänge sind weiterhin zulässig (wenn das Volume unter dem Systemmaximum von 100 TiB liegt).
-* Nach Ablauf der einstündigen Karenzzeit wird die Größe des Pools automatisch in 1-TiB-Schritten angepasst, bis die bereitgestellte Kapazität des Pools die gesamte genutzte Kapazität überschreitet.
-* Die zusätzlich bereitgestellte und abgerechnete Poolkapazität, die 500 TiB übersteigt, kann nicht zur Zuteilung von Volumekontingenten verwendet werden. Sie kann nicht auch verwendet werden, um QoS-Grenzwerte zu erweitern.  
-    Unter [Dienstebenen](azure-netapp-files-service-levels.md) erfahren Sie mehr zu Leistungsgrenzwerten und QoS-Größenanpassung.
-
-Das folgende Diagramm veranschaulicht diese Konzepte:
-* Wir haben einen Kapazitätspool mit einem Storage Premium-Tarif und einer Kapazität von 500 TiB. Der Pool enthält neun Volumes.
-    * Den Volumes 1 bis 8 ist ein Kontingent von je 60 TiB zugewiesen.  Die insgesamt genutzte Kapazität ist 480 TiB.  
-        Jedes Volume hat einen QoS-Grenzwert von 3,75 GiB/s Durchsatz (60 TiB x 64 MiB/s).  
-    * Volume 9 ist ein Kontingent von 20 TiB zugewiesen.  
-        Volume 9 hat einen QoS-Grenzwert von 1,25 GiB/s Durchsatz (20 TiB x 64 MiB/s).
-* Volume 9 stellt ein Überschreitungsszenario dar. 25 TiB werden tatsächlich genutzt.  
-    * Nach Ablauf der einstündigen Karenzzeit wird die Größe des Kapazitätspools in 505 TiB geändert.  
-        Das heißt: insgesamt genutzte Kapazität = 8 x 60-TiB-Kontingent für die Volumes 1 bis 8 und 25 TiB tatsächliche Nutzung für Volume 9.
-    * Die abgerechnete Kapazität ist 505 TiB.
-    * Das Volumekontingent für Volume 9 kann nicht erhöht werden (da das insgesamt zugeteilte Kontingent für den Pool 500 TiB nicht überschreiten darf).
-    * Zusätzlicher QoS-Durchsatz kann möglicherweise nicht zugeteilt werden (da der gesamte QoS-Wert für den Pool immer noch auf 500 TiB basiert).
-
-   ![Kapazitätspool mit neun Volumes](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-nine-vols.png)
+   ![Ausdruck, der die Berechnung der insgesamt genutzten Kapazität zeigt](../media/azure-netapp-files/azure-netapp-files-total-used-capacity.png)
 
 ## <a name="capacity-consumption-of-snapshots"></a>Kapazitätsnutzung von Momentaufnahmen 
 
-Die Kapazitätsnutzung von Momentaufnahmen in Azure NetApp Files wird mit dem Kontingent des übergeordneten Volumes verrechnet.  Daher gilt der gleiche Abrechnungstarif wie für den Kapazitätspool, zu dem das Volume gehört.  Im Gegensatz zum aktiven Volume wird die Nutzung von Momentaufnahmen jedoch anhand der genutzten inkrementellen Kapazität gemessen.  Azure NetApp Files-Momentaufnahmen sind standardmäßig differenziell. Je nach Änderungsrate der Daten belegen die Momentaufnahmen oft deutlich weniger Kapazität als die logische Kapazität des aktiven Volumes. Nehmen wir zum Beispiel an, dass Sie eine Momentaufnahme eines 500-GiB-Volumes haben, das nur 10 GiB differenzieller Daten enthält. Die Kapazität, die mit dem Volumekontingent für diese Momentaufnahme verrechnet wird, beträgt 10 GiB, nicht 500 GiB. 
+Die Kapazitätsnutzung von Momentaufnahmen in Azure NetApp Files wird mit dem Kontingent des übergeordneten Volumes verrechnet.  Daher gilt der gleiche Abrechnungstarif wie für den Kapazitätspool, zu dem das Volume gehört.  Im Gegensatz zum aktiven Volume wird die Nutzung von Momentaufnahmen jedoch anhand der genutzten inkrementellen Kapazität gemessen.  Azure NetApp Files-Momentaufnahmen sind standardmäßig differenziell. Je nach Änderungsrate der Daten belegen die Momentaufnahmen oft deutlich weniger Kapazität als die logische Kapazität des aktiven Volumes. Nehmen wir zum Beispiel an, dass Sie eine Momentaufnahme eines 500-GiB-Volumes haben, das nur 10 GiB differenzieller Daten enthält. Die Kapazitätsnutzung, die auf das Volumekontingent für das aktive Dateisystem und die Momentaufnahme angerechnet wird, beträgt 510 GiB, nicht 1.000 GiB. Sie können im Allgemeinen davon ausgehen, dass für die Speicherung der Momentaufnahmedaten einer Woche eine empfohlene Kapazität von 20 Prozent beansprucht wird (abhängig von der Momentaufnahmehäufigkeit und den täglichen Änderungsraten auf Blockebene der Anwendung). 
+
+Das folgende Diagramm veranschaulicht die Konzepte. 
+
+* Angenommen, es wird ein Kapazitätspool mit einer bereitgestellten Kapazität von 40 TiB verwendet. Der Pool enthält drei Volumes:    
+    * Volume 1 hat ein Kontingent von 20 TiB bei einer Nutzung von 13 TiB (12 TiB aktiv, 1 TiB Momentaufnahmen).
+    * Volume 2 hat ein Kontingent von 1 TiB bei einer Nutzung von 450 GiB.
+    * Volume 3 hat ein Kontingent von 14 TiB bei einer Nutzung von 8,8 TiB (8 TiB aktiv, 800 GiB Momentaufnahmen).   
+* Der Kapazitätspool hat eine bereitgestellte Größe von 40 TiB. 22,25 TiB der Kapazität werden genutzt (13 TiB, 450 GiB und 8,8 TiB der Kontingente der Volumes 1, 2 und 3). Der Kapazitätspool verfügt noch über eine Kapazität von 17,75 TiB.   
+
+![Diagramm: Kapazitätspool mit drei Volumes](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-three-vols.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -98,3 +57,7 @@ Die Kapazitätsnutzung von Momentaufnahmen in Azure NetApp Files wird mit dem Ko
 * [Dienstebenen für Azure NetApp Files](azure-netapp-files-service-levels.md)
 * [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Kostenmodell für die regionsübergreifende Replikation](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)
+* [Grundlegendes zum Volumekontingent](volume-quota-introduction.md)
+* [Überwachen der Kapazität eines Volumes](monitor-volume-capacity.md)
+* [Ändern der Größe eines Kapazitätspools oder Volumes](azure-netapp-files-resize-capacity-pools-or-volumes.md)
+* [Häufig gestellte Fragen zur Kapazitätsverwaltung](azure-netapp-files-faqs.md#capacity-management-faqs)

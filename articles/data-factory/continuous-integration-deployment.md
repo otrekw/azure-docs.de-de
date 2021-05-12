@@ -6,13 +6,13 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: d6daf9788a632d329714dad186203c58f304aa21
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 04/27/2021
+ms.openlocfilehash: fad2fce019848c752217f15aaba8ba4c28a7c874
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904296"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177342"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -181,9 +181,9 @@ Das Data Factory-Team hat am Ende dieses Artikels ein [Beispielskript für vor u
 
 ## <a name="manually-promote-a-resource-manager-template-for-each-environment"></a>Manuelles Höherstufen einer Resource Manager-Vorlage für jede Umgebung
 
-1. Wählen Sie in der Liste **ARM-Vorlage** den Eintrag **Export ARM template** (ARM-Vorlage exportieren) aus, um die Resource Manager-Vorlage für Ihre Data Factory in die Entwicklungsumgebung zu exportieren.
+1. Wechseln Sie in Ihrer Data Factory zu **Hub verwalten**, und wählen Sie im Abschnitt „Quellcodeverwaltung“ die Option **ARM-Vorlage** aus. Wählen Sie im Bereich **ARM-Vorlage** den Eintrag **Export ARM template** (ARM-Vorlage exportieren) aus, um die Resource Manager-Vorlage für Ihre Data Factory in die Entwicklungsumgebung zu exportieren.
 
-   ![Exportieren einer Resource Manager-Vorlage](media/continuous-integration-deployment/continuous-integration-image1.png)
+   ![Exportieren einer Resource Manager-Vorlage](media/continuous-integration-deployment/continuous-integration-image-1.png)
 
 1. Wählen Sie in den Test- und Produktionsfactorys den Eintrag **Import ARM template** (ARM-Vorlage importieren) aus. Mit dieser Aktion gelangen Sie zum Azure-Portal, in dem sie die exportierte Vorlage importieren können. Wählen Sie **Eigene Vorlage im Editor erstellen** aus, um den Editor für Resource Manager-Vorlagen zu öffnen.
 

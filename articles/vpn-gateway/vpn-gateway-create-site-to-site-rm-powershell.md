@@ -1,19 +1,19 @@
 ---
-title: 'Verbinden Ihres lokalen Netzwerks mit einem virtuellen Azure-Netzwerk: Site-to-Site-VPN: PowerShell'
-description: Erstellen Sie eine IPsec-Site-to-Site-VPN-Gateway-Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk über das öffentliche Internet mit PowerShell.
+title: 'Verbinden Ihres lokalen Netzwerks mit einem Azure VNet: Site-to-Site-VPN: PowerShell'
+description: Erfahren Sie, wie Sie mithilfe von PowerShell eine Site-to-Site-VPN Gateway-Verbindung zwischen Ihrem lokalen Netzwerk und einem Azure-VNet erstellen.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1488aa6f48c05a8c2dfa2c6162c1bd1df35d4f58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f9b408cd6f6fbeb9123f8e2dc506b14fe0427a1
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380487"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229700"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Erstellen eines VNET mit einer Site-to-Site-VPN-Verbindung per PowerShell
 

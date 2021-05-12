@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 3c6f75eafad51c99f60b78ce49862d2488d5926f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48a56500646e4bd5e24cdcf3e076f46f1de94741
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102230949"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743901"
 ---
 # <a name="configure-qna-maker-resources"></a>Konfigurieren von QnA Maker-Ressourcen
 
@@ -18,7 +18,7 @@ Benutzer können QnA Maker für die Verwendung einer anderen Cognitive Search-
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
-### <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>Konfigurieren von QnA Maker zur Verwendung einer anderen Cognitive Search-Ressource
+## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>Konfigurieren von QnA Maker zur Verwendung einer anderen Cognitive Search-Ressource
 
 Wenn Sie einen QnA-Dienst und dessen Abhängigkeiten (z.B. Search) über das Portal erstellen, wird automatisch ein Suchdienst erstellt und mit dem QnA Maker-Dienst verknüpft. Nachdem diese Ressourcen erstellt wurden, können Sie die App Service-Einstellung aktualisieren, um einen bereits vorhandenen Suchdienst zu nutzen und den soeben erstellten Suchdienst zu entfernen.
 
@@ -47,7 +47,7 @@ Wenn Sie einen QnA-Dienst über Azure Resource Manager-Vorlagen erstellen, könn
 
 Weitere Informationen zum Konfigurieren der App Service-Anwendungseinstellungen finden Sie [hier](../../../app-service/configure-common.md#configure-app-settings).
 
-### <a name="get-the-latest-runtime-updates"></a>Abrufen der neuesten Runtime-Updates
+## <a name="get-the-latest-runtime-updates"></a>Abrufen der neuesten Runtime-Updates
 
 Die QnA Maker-Runtime ist Teil der Azure App Service-Instanz, die beim [Erstellen eines QnA Maker-Diensts](./set-up-qnamaker-service-azure.md) im Azure-Portal bereitgestellt wird. Updates für die Runtime werden in regelmäßigen Abständen bereitgestellt. Die QnA Maker App Service-Instanz befindet sich nach der Websiteerweiterung vom April 2019 (Version 5+) im automatischen Updatemodus. Dieses Update ist so konzipiert, dass es während Upgrades keine Downtime berücksichtigt.
 
@@ -68,7 +68,7 @@ Sehen Sie sich die aktuelle Version unter https://www.qnamaker.ai/UserSettings a
 
     ![Neustarten der QnA Maker App Service-Instanz](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-### <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>Konfigurieren der App Service-Leerlaufeinstellung zur Vermeidung von Timeouts
+## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>Konfigurieren der App Service-Leerlaufeinstellung zur Vermeidung von Timeouts
 
 Die App Service-Instanz, von der die QnA Maker-Vorhersageruntime für eine veröffentlichte Wissensdatenbank bereitgestellt wird, verfügt über eine Leerlauftimeoutkonfiguration, durch die standardmäßig automatisch ein Timeout ausgelöst wird, wenn sich der Dienst im Leerlauf befindet. Dies hat für QnA Maker zur Folge, dass für die generateAnswer-API Ihrer Vorhersageruntime gelegentlich ein Timeout auftritt, wenn eine Weile kein Datenverkehr übermittelt wurde.
 
@@ -87,7 +87,7 @@ Legen Sie den Leerlauf auf „Immer aktiv“ fest, um zu gewährleisten, dass di
 
 Weitere Informationen zum Konfigurieren der allgemeinen App Service-Einstellungen finden Sie [hier](../../../app-service/configure-common.md#configure-general-settings).
 
-### <a name="business-continuity-with-traffic-manager"></a>Geschäftskontinuität mit Traffic Manager
+## <a name="business-continuity-with-traffic-manager"></a>Geschäftskontinuität mit Traffic Manager
 
 Das Hauptziel des Geschäftskontinuitätsplans besteht darin, einen ausfallsicheren Wissensdatenbank-Endpunkt zu erstellen, der sicherstellen kann, dass keine Ausfallzeiten für den Bot oder die ihn verwendende Anwendung entstehen.
 
@@ -112,7 +112,7 @@ Das oben dargestellte allgemeine Konzept lautet wie folgt:
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
 
-### <a name="configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource"></a>Konfigurieren des QnA Maker verwaltet (Vorschau)-Diensts zur Verwendung einer anderen Cognitive Search-Ressource
+## <a name="configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource"></a>Konfigurieren des QnA Maker verwaltet (Vorschau)-Diensts zur Verwendung einer anderen Cognitive Search-Ressource
 
 Wenn Sie einen QnA-Dienst verwaltet (Vorschau) und dessen Abhängigkeiten (z. B. Search) über das Portal erstellen, wird automatisch ein Suchdienst für Sie erstellt und mit dem QnA Maker verwaltet (Vorschau)-Dienst verknüpft. Nachdem diese Ressourcen erstellt wurden, können Sie den Suchdienst auf der Registerkarte **Konfiguration** aktualisieren.
 

@@ -1,18 +1,19 @@
 ---
-title: 'Erstellen eines routenbasierten Azure-VPN-Gateways: Befehlszeilenschnittstelle (CLI)'
-description: Erstellen Sie schnell ein routenbasiertes Azure-VPN-Gateway mit der Azure CLI für eine VPN-Verbindung mit Ihrem lokalen Netzwerk oder um virtuelle Netzwerke zu verbinden.
+title: 'Erstellen eines routenbasierten VNET-Gateways: CLI'
+titleSuffix: Azure VPN Gateway
+description: Hier erfahren Sie, wie Sie ein routenbasiertes VNET-Gateway für eine VPN-Verbindung mit einem lokalen Netzwerk oder zum Verbinden virtueller Netzwerke erstellen.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 87e3490711990944e017d2d463090f3c8697956c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 239cc90b49cc4b13762a02fe136a5b77a15544ee
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484217"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325677"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Erstellen eines routenbasierten VPN-Gateways mithilfe von CLI
 

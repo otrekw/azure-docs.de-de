@@ -3,12 +3,12 @@ title: Bereitstellen des Blaupausenbeispiels „Azure Security Benchmark Foundat
 description: Bereitstellungsschritte für das Blaupausenbeispiel „Azure Security Benchmark Foundation“, einschließlich Details zum Blaupausenartefaktparameter
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: af41dd50c976ac6c0570b8a089211fa310ef4ef1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6afdc94624d39ce60b96ad33639721f130a056ef
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232612"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765177"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „Azure Security Benchmark Foundation“
 
@@ -82,7 +82,7 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
    - Blaupausenparameter
 
      Die in diesem Abschnitt definierten Parameter werden in vielen der Artefakte in der Blaupausendefinition verwendet, um Konsistenz zu gewährleisten.
-    
+
      - **Präfix für Ressourcen und Ressourcengruppen**: Diese Zeichenfolge wird als Präfix für alle Ressourcen- und Ressourcengruppennamen verwendet.
      - **Hub-Name:** Name des Hubs
      - **Protokollbeibehaltung (Tage)** : Anzahl der Tage, für die Protokolle beibehalten werden. Bei der Eingabe von „0“ werden Protokolle unbegrenzt beibehalten.
@@ -92,9 +92,9 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
      - **Network Watcher-Name**: Name der Network Watcher-Ressource
      - **Network Watcher-Ressourcengruppenname**: Name der Network Watcher-Ressourcengruppe
      - **Aktivieren von DDoS Protection**: Geben Sie „true“ oder „false“ ein, um anzugeben, ob DDoS Protection im virtuellen Netzwerk aktiviert ist.
-     
-    > [!NOTE] 
-    > Wenn Network Watcher bereits aktiviert ist, wird empfohlen, die vorhandene Network Watcher-Ressourcengruppe zu verwenden. Außerdem müssen Sie den Speicherort für die vorhandene Network Watcher-Ressourcengruppe für den Artefaktparameter **Network Watcher-Speicherort für Ressourcengruppen** angeben.
+
+     > [!NOTE]
+     > Wenn Network Watcher bereits aktiviert ist, wird empfohlen, die vorhandene Network Watcher-Ressourcengruppe zu verwenden. Außerdem müssen Sie den Speicherort für die vorhandene Network Watcher-Ressourcengruppe für den Artefaktparameter **Network Watcher-Speicherort für Ressourcengruppen** angeben.
 
    - Artefaktparameter
 
@@ -115,7 +115,7 @@ Die folgende Tabelle enthält eine Aufstellung der Blaupausenparameter:
 |Hubressourcengruppe|Resource group|Ressourcengruppenstandort|Gesperrt: Verwendet den Hubspeicherort.|
 |Azure Firewall-Vorlage|Resource Manager-Vorlage|Private IP-Adresse für Azure Firewall||
 |Vorlage für Azure Log Analytics und Diagnose|Resource Manager-Vorlage|Log Analytics-Arbeitsbereich – Standort|Der Standort, an dem der Log Analytics-Arbeitsbereich erstellt wird. Führen Sie `Get-AzLocation | Where-Object Providers -like 'Microsoft.OperationalInsights' | Select DisplayName` in Azure PowerShell aus, um verfügbare Regionen anzuzeigen.|
-|Vorlage für Azure Log Analytics und Diagnose|Resource Manager-Vorlage|Azure Automation-Konto-ID (optional)|Ressourcen-ID des Automation-Kontos. Wird zum Erstellen eines verknüpften Diensts zwischen Log Analytics und einem Automation-Konto verwendet.|
+|Vorlage für Azure Log Analytics und Diagnose|Resource Manager-Vorlage|Azure Automation-Konto-ID (optional) |Ressourcen-ID des Automation-Kontos. Wird zum Erstellen eines verknüpften Diensts zwischen Log Analytics und einem Automation-Konto verwendet.|
 |Azure-Vorlage für Netzwerksicherheitsgruppen|Resource Manager-Vorlage|Aktivieren von NSG-Datenflussprotokollen|Geben Sie „true“ oder „false“ ein, um NSG-Datenflussprotokolle zu aktivieren oder deaktivieren.|
 |Vorlage für Azure Virtual Network-Hubs|Resource Manager-Vorlage|Adresspräfix des virtuellen Netzwerks|Adresspräfix des virtuellen Netzwerks für das virtuelle Hubnetzwerk|
 |Vorlage für Azure Virtual Network-Hubs|Resource Manager-Vorlage|Adresspräfix des Firewallsubnetzes|Adresspräfix des Firewallsubnetzes für das virtuelle Hubnetzwerk|

@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 09/21/2016
+ms.date: 05/03/2021
 ms.author: rohink
-ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9360555ff108937b51f9b9b491b6eec006b4f2e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76937250"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745053"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Funktionsweise von Azure DNS mit anderen Azure-Diensten
 
@@ -31,7 +31,7 @@ Azure DNS ist ein gehosteter Dienst für die DNS-Verwaltung und -Namensauflösun
 
 Die folgende Tabelle enthält die unterstützten Eintragstypen, die Sie für verschiedene Azure-Dienste verwenden können. Wie in der Tabelle zu sehen, unterstützt Azure DNS nur DNS-Einträge für Netzwerkressourcen mit Internetzugriff. Azure DNS kann nicht für die Namensauflösung interner, privater Adressen verwendet werden.
 
-| Azure-Dienst | Netzwerkschnittstelle | BESCHREIBUNG |
+| Azure-Dienst | Netzwerkschnittstelle | Beschreibung |
 | --- | --- | --- |
 | Azure Application Gateway |[Öffentliche IP-Adresse des Front-Ends](dns-custom-domain.md#public-ip-address) |Sie können einen DNS A- oder CNAME-Eintrag erstellen. |
 | Azure Load Balancer |[Öffentliche IP-Adresse des Front-Ends](dns-custom-domain.md#public-ip-address) |Sie können einen DNS A- oder CNAME-Eintrag erstellen. Load Balancer kann über eine öffentliche IPv6-Adresse verfügen, die dynamisch zugewiesen wird. Erstellen Sie einen CNAME-Eintrag für eine IPv6-Adresse. |
@@ -40,3 +40,8 @@ Die folgende Tabelle enthält die unterstützten Eintragstypen, die Sie für ver
 | Azure App Service | [Externe IP-Adresse](dns-custom-domain.md#app-service-web-apps) |Für externe IP-Adressen können Sie einen DNS A-Eintrag erstellen. Andernfalls müssen Sie einen CNAME-Eintrag erstellen, der dem „azurewebsites.net“-Namen zugeordnet ist. Weitere Informationen finden Sie unter [Zuordnen eines benutzerdefinierten Domänennamens zu einer Azure-App](../app-service/app-service-web-tutorial-custom-domain.md) |
 | Virtuelle Azure Resource Manager-Computer |[Öffentliche IP-Adresse](dns-custom-domain.md#public-ip-address) |Virtuelle Azure Resource Manager-Computer können öffentliche IP-Adressen besitzen. Ein virtueller Computer mit einer öffentlichen IP-Adresse kann sich auch hinter einem Lastenausgleich befinden. Sie können einen DNS-Eintrag vom Typ A oder CNAME oder einen Aliaseintrag für die öffentliche Adresse erstellen. Dieser benutzerdefinierte Name kann verwendet werden, um die VIP-Adresse des Lastenausgleichs zu umgehen. |
 | Klassische virtuelle Computer |[Öffentliche IP-Adresse](dns-custom-domain.md#public-ip-address) |Klassische virtuelle Computer, die mithilfe von PowerShell oder über die Befehlszeilenschnittstelle erstellt werden, können mit einer dynamischen oder statischen (reservierten) virtuellen IP-Adresse konfiguriert werden. Sie können einen DNS-Eintrag vom Typ CNAME oder A erstellen. |
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Erfahren Sie, wie Sie [Ressourceneintragssätze und Einträge in Ihrer DNS-Zone verwalten](./dns-getstarted-portal.md).

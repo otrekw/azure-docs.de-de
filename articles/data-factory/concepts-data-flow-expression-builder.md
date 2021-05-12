@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/04/2021
-ms.openlocfilehash: 753f201fbde5d9e7100b6e257f8dc79e4462d7b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/29/2021
+ms.openlocfilehash: e335176b5cd7c6c35477ac9318cf20ce4b64b82d
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99584922"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291008"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Erstellen von Ausdrücken im Zuordnungsdatenfluss
 
@@ -71,7 +71,7 @@ Wenn Sie Spaltennamen mit Sonder- oder Leerzeichen haben, setzen Sie den Namen i
 
 ### <a name="parameters"></a>Parameter
 
-Parameter sind Werte, die von einer Pipeline zur Laufzeit an einen Datenfluss übergeben werden. Um auf einen Parameter zu verweisen, klicken Sie entweder in der Ansicht **Ausdruckselemente** auf den Parameter, oder verweisen Sie darauf mit einem Dollarzeichen vor seinem Namen. Beispielsweise wird mit `$parameter1` auf einen Parameter mit dem Namen „parameter1“ verwiesen. Weitere Informationen finden Sie unter [Parametrisieren von Zuordnungsdatenflüssen](parameters-data-flow.md).
+Parameter sind Werte, die von einer Pipeline zur Laufzeit an einen Datenfluss übergeben werden. Um auf einen Parameter zu verweisen, klicken Sie entweder in der Ansicht **Ausdruckselemente** auf den Parameter, oder verweisen Sie darauf mit einem Dollarzeichen vor seinem Namen. Beispielsweise wird mit `$parameter1` auf einen Parameter mit dem Namen „parameter1“ verwiesen. Weitere Informationen finden Sie unter [Parametrisieren von Zuordnungsdatenflüssen](parameters-data-flow.md). 
 
 ### <a name="cached-lookup"></a>Zwischengespeicherte Suche
 
@@ -169,6 +169,12 @@ Das nachgestellte „l“ am Ende des vorstehenden Ausdrucks gibt eine Konvertie
 ### <a name="find-time-from-epoch-or-unix-time"></a>Zeit aus Epochen- oder Unix-Zeit finden
 
 toLong( currentTimestamp() - toTimestamp('1970-01-01 00:00:00.000', 'yyyy-MM-dd HH:mm:ss.SSS') ) * 1000l
+
+### <a name="data-flow-time-evaluation"></a>Auswertung der Datenflusszeit
+
+Der Datenfluss wird millisekundengenau verarbeitet. Für *2018-07-31T20:00:00.2170000* wird in der Ausgabe *2018-07-31T20:00:00.217* angezeigt.
+Im ADF-Portal wird der Zeitstempel in der **aktuellen Browsereinstellung** angezeigt. Dadurch wird „217“ unter Umständen entfernt. Wenn Sie den Datenfluss jedoch vollständig ausführen, wird „217“ (der Teil im Millisekundenbereich) ebenfalls verarbeitet. Sie können „toString(myDateTimeColumn)“ als Ausdruck verwenden und Daten mit vollständiger Genauigkeit in der Vorschau anzeigen. Verarbeiten Sie datetime für alle praktischen Zwecke als datetime und nicht als Zeichenfolge.
+ 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

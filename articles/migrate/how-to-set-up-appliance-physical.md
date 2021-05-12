@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 9052cbd3dc728b50b62c33f3a11a5e36a7504f29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c185fc20c68dab549461f64d9ff8f0540a2b06a
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771565"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753095"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Einrichten einer Appliance für physische Server
 
@@ -37,7 +37,7 @@ Die Einrichtung der Appliance umfasst Folgendes:
 
 ### <a name="generate-the-project-key"></a>Generieren des Projektschlüssels
 
-1. Wählen Sie unter **Migration Goals** > **Windows, Linux and SQL Servers** > **Azure Migrate: Discovery and assessment** („Migrationsziele“ > „Windows, Linux und SQL Server“ > „Azure Migrate-Tool für die Ermittlung und Bewertung) die Option **Ermitteln** aus.
+1. Wählen Sie unter **Migrationsziele** > **Windows, Linux and SQL Servers (Windows-/Linux-Server und SQL Server-Instanzen)**  > **Azure Migrate: Ermittlung und Bewertung** die Option **Ermitteln** aus.
 2. Wählen Sie unter **Discover servers** > **Are your servers virtualized?** („Server ermitteln“ > „Sind Ihre Server virtualisiert?“) die Option **Physical or other (AWS, GCP, Xen, etc.)** (Physische oder andere (AWS, GCP, Xen usw.)) aus.
 3. Geben Sie unter **1: Generate project key** (Projektschlüssel generieren) einen Namen für die Azure Migrate-Appliance ein, die Sie für die Ermittlung physischer oder virtueller Server einrichten. Für den Namen können bis zu 14 alphanumerische Zeichen angegeben werden.
 1. Klicken Sie auf **Schlüssel generieren**, um mit der Erstellung der erforderlichen Azure-Ressourcen zu beginnen. Schließen Sie die Seite „Discover servers“ (Server ermitteln) nicht, während die Ressourcen erstellt werden.
@@ -70,7 +70,7 @@ Das Installationsskript führt folgende Schritte aus:
 
 - Installation der Agents und einer Webanwendung für die Ermittlung und Bewertung physischer Server.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
 - Erstellung der folgenden Dateien in diesem Pfad:
     - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config

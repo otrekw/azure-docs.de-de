@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Java zum Festlegen von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
+title: Verwenden von Java zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 description: Verwenden Sie Azure Storage-Bibliotheken für Java, um Zugriffssteuerungslisten (Access Control Lists, ACLs) in Speicherkonten zu verwalten, für die der hierarchische Namespace aktiviert ist.
 author: normesta
 ms.service: storage
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: e7d6156fe5cd8ab32ff159bda64e0c06cfbac406
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75f65c87d47232aa0809475d38a82ffe68203df6
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653694"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633697"
 ---
 # <a name="use-java-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von Java zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 

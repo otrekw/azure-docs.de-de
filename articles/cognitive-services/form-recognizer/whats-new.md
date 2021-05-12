@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/14/2021
+ms.date: 04/28/2021
 ms.author: lajanuar
-ms.openlocfilehash: e952d481daf53b1806dc3cfbb658c8c0c21f6984
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 58430c94fa1b22954ca640188ced5bfb1fb197d0
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516296"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293319"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -25,9 +25,11 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 ## <a name="april-2021"></a>April 2021
 <!-- markdownlint-disable MD029 -->
 
-### <a name="sdk-updates-api--version-21-preview3"></a>SDK-Updates (API-Version 2.1-preview.3)
+### <a name="sdk-preview-updates-for-api--version-21-preview3"></a>SDK-Vorschauupdates für API-Version 2.1-preview.3
 
-### <a name="c-version-310-beta4"></a>**C#-Version 3.1.0-beta.4**
+### <a name="c"></a>[**C#** ](#tab/csharp)
+
+NuGet package version 3.1.0-beta.4
 
 * **Neue Methoden zum Analysieren von Daten aus Identitätsdokumenten:**
 
@@ -35,7 +37,7 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
    **[StartRecognizeIdDocumentsAsync](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizeiddocumentsasync?view=azure-dotnet-preview&preserve-view=true)**
 
-   Eine Liste der Feldwerte finden Sie in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](concept-identification-cards.md#fields-extracted).
+   Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](concept-identification-cards.md#fields-extracted).
 
 * Die Gruppe der Dokumentsprachen, die für die Methode **[StartRecognizeContent](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizecontent?view=azure-dotnet-preview&preserve-view=true)** angegeben werden können, wurde erweitert.
 
@@ -46,7 +48,7 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
    **[RecognizeInvoicesOptions](/dotnet/api/azure.ai.formrecognizer.recognizeinvoicesoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
    **[RecognizeReceiptsOptions](/dotnet/api/azure.ai.formrecognizer.recognizereceiptsoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
 
-   Mit der Eigenschaft `Pages` können Sie bei PDF- und TIFF-Dokumenten mit mehreren Seiten einzelne Seiten oder einen Seitenbereich auswählen. Geben Sie für einzelne Seiten die Seitenzahl ein (beispielsweise `3`). Geben Sie für einen Seitenbereich (beispielsweise Seite 2 und Seiten 5 bis 7) die Seitennummern und Bereiche in einem kommagetrennten Format ein: `2, 5-7`.    
+   Mit der Eigenschaft `Pages` können Sie bei PDF- und TIFF-Dokumenten mit mehreren Seiten einzelne Seiten oder einen Seitenbereich auswählen. Geben Sie für einzelne Seiten die Seitenzahl ein (beispielsweise `3`). Geben Sie für einen Seitenbereich (beispielsweise Seite 2 und Seiten 5 bis 7) die Seitennummern und Bereiche in einem kommagetrennten Format ein: `2, 5-7`.
 
 * **Neue Eigenschaft `ReadingOrder`, die für die folgende Klasse unterstützt wird:**
 
@@ -54,13 +56,15 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
   Die Eigenschaft `ReadingOrder` ist ein optionaler Parameter, mit dem Sie angeben können, welcher Algorithmus für die Lesereihenfolge (`basic` oder `natural`) angewendet werden soll, um die Extraktionsreihenfolge von Textelementen zu bestimmen. Wenn Sie hier nichts angeben, lautet der Standardwert `basic`.
 
-#### <a name="breaking-changes"></a>Breaking Changes
+#### <a name="breaking-changes"></a>Aktuelle Änderungen
 
 * Der Client verwendet standardmäßig die neueste unterstützte Dienstversion (aktuell **2.1-preview.3**).
 
 * Von der Methode **[StartRecognizeCustomForms](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizecustomforms?view=azure-dotnet-preview&preserve-view=true#Azure_AI_FormRecognizer_FormRecognizerClient_StartRecognizeCustomForms_System_String_System_IO_Stream_Azure_AI_FormRecognizer_RecognizeCustomFormsOptions_System_Threading_CancellationToken_)** wird jetzt eine Ausnahme vom Typ `RequestFailedException()` ausgelöst, wenn eine ungültige Datei übergeben wird.
 
-### <a name="java-version-310-beta3"></a>**Java-Version 3.1.0-beta.3**
+### <a name="java"></a>[**Java**](#tab/java)
+
+Maven artifact package dependency version 3.1.0-beta.3
 
 * **Neue Methoden zum Analysieren von Daten aus Identitätsdokumenten:**
 
@@ -68,7 +72,7 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
   **[beginRecognizeIdDocuments](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizeiddocuments?view=azure-java-preview&preserve-view=true)**
 
-   Eine Liste der Feldwerte finden Sie in der Dokumentation zur Formularerkennung unter _Extrahierte Felder_.
+   Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](concept-identification-cards.md#fields-extracted).
 
 * **Unterstützung von Bitmapbilddateien (.bmp) für benutzerdefinierte Formulare und Trainingsmethoden in der Enumeration `FormContentType`:**
 
@@ -89,14 +93,16 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
 * **Neues Schlüsselwortargument `ReadingOrder`, das für die folgenden Methoden unterstützt wird:**
 
-* **[beginRecognizeContent](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizecontent?view=azure-java-preview&preserve-view=true)**</br>
+* **[beginRecognizeContent](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizecontent?preserve-view=true&view=azure-java-preview)**</br>
 **[beginRecognizeContentFromUrl](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizecontentfromurl?view=azure-java-preview&preserve-view=true)**</br>
 
    Das Schlüsselwortargument `ReadingOrder` ist ein optionaler Parameter, mit dem Sie angeben können, welcher Algorithmus für die Lesereihenfolge (`basic` oder `natural`) angewendet werden soll, um die Extraktionsreihenfolge von Textelementen zu bestimmen. Wenn Sie hier nichts angeben, lautet der Standardwert `basic`.
 
 * Der Client verwendet standardmäßig die neueste unterstützte Dienstversion (aktuell **2.1-preview.3**).
 
-### <a name="javascript-version-310-beta3"></a>**JavaScript-Version 3.1.0-beta.3**
+### <a name="javascript"></a>[**JavaScript**](#tab/javascript)
+
+npm package version 3.1.0-beta.3
 
 * **Neue Methoden zum Analysieren von Daten aus Identitätsdokumenten:**
 
@@ -104,22 +110,24 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
     **[beginRecognizeIdDocuments](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-preview&preserve-view=true&branch=main#beginRecognizeIdDocuments_FormRecognizerRequestBody__BeginRecognizeIdDocumentsOptions_)**
 
-    Eine Liste der Feldwerte finden Sie in der Dokumentation zur Formularerkennung unter _Extrahierte Felder_.
+    Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](concept-identification-cards.md#fields-extracted).
 
 * **Neue Feldwerte für die FieldValue-Schnittstelle:**
 
     `gender`: Mögliche Werte sind `M`, `F` oder `X`.</br>
    `country`: Mögliche Werte sind dreistellige Ländercodezeichenfolgen gemäß [ISO Alpha-3](https://www.iso.org/obp/ui/#search).
 
-* **Neue Option `pages`, die von allen Formularerkennungsmethoden unterstützt wird (benutzerdefinierte Formulare und alle vordefinierten Modelle). Mit dem Argument können Sie bei PDF- und TIFF-Dokumenten mit mehreren Seiten einzelne Seiten oder einen Seitenbereich auswählen. Geben Sie für einzelne Seiten die Seitenzahl ein (beispielsweise `3`). Geben Sie für einen Seitenbereich (beispielsweise Seite 2 und Seiten 5 bis 7) die Seitennummern und Bereiche in einem kommagetrennten Format ein: `2, 5-7`.
+* Neue Option `pages`, die von allen Formularerkennungsmethoden unterstützt wird (benutzerdefinierte Formulare und alle vordefinierten Modelle). Mit dem Argument können Sie bei PDF- und TIFF-Dokumenten mit mehreren Seiten einzelne Seiten oder einen Seitenbereich auswählen. Geben Sie für einzelne Seiten die Seitenzahl ein (beispielsweise `3`). Geben Sie für einen Seitenbereich (beispielsweise Seite 2 und Seiten 5 bis 7) die Seitennummern und Bereiche in einem kommagetrennten Format ein: `2, 5-7`.
 
 * Den Inhaltserkennungsmethoden wurde die Unterstützung des Typs **[ReadingOrder](/javascript/api/@azure/ai-form-recognizer/readingorder?view=azure-node-preview&preserve-view=true)** hinzugefügt. Mithilfe dieser Option können Sie den Algorithmus steuern, mit dem der Dienst bestimmt, wie erkannte Textzeilen sortiert werden sollen. Sie können angeben, welcher Algorithmus für die Lesereihenfolge (`basic` oder `natural`) angewendet werden soll, um die Extraktionsreihenfolge von Textelementen zu bestimmen. Wenn Sie hier nichts angeben, lautet der Standardwert `basic`.
 
-* Der Typ **[FormField](/javascript/api/@azure/ai-form-recognizer/formfield?view=azure-node-preview&preserve-view=true)** wurde auf mehrere verschiedene Schnittstellen aufgeteilt. Dies sollte nur in bestimmten Grenzfällen (undefinierter Werttyp) zu API-Kompatibilitätsproblemen führen.
+* Der Typ **[FormField](/javascript/api/@azure/ai-form-recognizer/formfield?view=azure-node-preview&preserve-view=true)** wurde auf mehrere verschiedene Schnittstellen aufgeteilt. Dieses Update sollte nur in bestimmten Grenzfällen (undefinierter Werttyp) zu API-Kompatibilitätsproblemen führen.
 
 * Für alle REST-API-Aufrufe wurde zur Version **2.1-preview.3** des Formularerkennungsdiensts migriert.
 
-### <a name="python-version--310b4"></a>**Python-Version 3.1.0b4**
+### <a name="python"></a>[**Python**](#tab/python)
+
+pip-Paketversion 3.1.0b4
 
 * **Neue Methoden zum Analysieren von Daten aus Identitätsdokumenten:**
 
@@ -127,7 +135,7 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
   **[begin_recognize_id_documents](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true)**
 
-  Eine Liste der Feldwerte finden Sie in der Dokumentation zur Formularerkennung unter _Extrahierte Felder_.
+  Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](concept-identification-cards.md#fields-extracted).
 
 * **Neue Feldwerte für die Enumeration [FieldValueType](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.fieldvaluetype?view=azure-python-preview&preserve-view=true):**
 
@@ -167,6 +175,8 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
    Das Schlüsselwortargument `readingOrder` ist ein optionaler Parameter, mit dem Sie angeben können, welcher Algorithmus für die Lesereihenfolge (`basic` oder `natural`) angewendet werden soll, um die Extraktionsreihenfolge von Textelementen zu bestimmen. Wenn Sie hier nichts angeben, lautet der Standardwert `basic`.
 
+---
+
 ## <a name="march-2021"></a>März 2021
 
 **Die öffentliche Vorschauversion 3 der Formularerkennung v2.1 ist jetzt verfügbar.** v2.1-preview.3 wurde veröffentlicht und enthält die folgenden Funktionen:
@@ -201,31 +211,30 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
 **Die öffentliche Vorschauversion 2 der Formularerkennung v2.1 ist jetzt verfügbar.** v2.1-preview.2 wurde veröffentlicht und enthält die folgenden Funktionen:
 
-- **Neues vordefiniertes Rechnungsmodell:** Mit dem neuen vordefinierten Rechnungsmodell können Kunden Rechnungen in verschiedenen Formaten erstellen und strukturierte Daten zurückgeben, um die Rechnungsverarbeitung zu automatisieren. Es kombiniert unsere leistungsstarken Funktionen zur optischen Zeichenerkennung (Optical Character Recognition, OCR) mit Deep Learning-Modellen zum Rechnungsverständnis, um wichtige Informationen aus Rechnungen in englischer Sprache zu extrahieren. Es extrahiert wichtige Angaben, Tabellen und Informationen wie Kunde, Anbieter, Rechnungs-ID, Fälligkeitsdatum für die Rechnung, Summe, fälliger Betrag, Steuerbetrag, Lieferadresse und Rechnungsadresse.
+* **Neues vordefiniertes Rechnungsmodell:** Mit dem neuen vordefinierten Rechnungsmodell können Kunden Rechnungen in verschiedenen Formaten erstellen und strukturierte Daten zurückgeben, um die Rechnungsverarbeitung zu automatisieren. Es kombiniert unsere leistungsstarken Funktionen zur optischen Zeichenerkennung (Optical Character Recognition, OCR) mit Deep Learning-Modellen zum Rechnungsverständnis, um wichtige Informationen aus Rechnungen in englischer Sprache zu extrahieren. Es extrahiert wichtige Angaben, Tabellen und Informationen wie Kunde, Anbieter, Rechnungs-ID, Fälligkeitsdatum für die Rechnung, Summe, fälliger Betrag, Steuerbetrag, Lieferadresse und Rechnungsadresse.
 
   > [Weitere Informationen zum vordefinierten Rechnungsmodell](concept-invoices.md)
 
   :::image type="content" source="./media/invoice-example.jpg" alt-text="Beispiel für Rechnung" lightbox="./media/invoice-example.jpg":::
 
-- **Erweiterte Tabellenextraktion** – Die Formularerkennung bietet jetzt eine verbesserte Tabellenextraktion, die unsere leistungsstarken OCR-Funktionen (Optical Character Recognition, Optische Zeichenerkennung) mit einem Deep Learning-Modell für Tabellenextraktion kombiniert. Die Formularerkennung kann Daten aus Tabellen extrahieren, einschließlich komplexer Tabellen mit zusammengeführten Spalten, Zeilen, ohne Rahmen und mehr.
+* **Erweiterte Tabellenextraktion** – Die Formularerkennung bietet jetzt eine verbesserte Tabellenextraktion, die unsere leistungsstarken OCR-Funktionen (Optical Character Recognition, Optische Zeichenerkennung) mit einem Deep Learning-Modell für Tabellenextraktion kombiniert. Die Formularerkennung kann Daten aus Tabellen extrahieren, einschließlich komplexer Tabellen mit zusammengeführten Spalten, Zeilen, ohne Rahmen und mehr.
 
   :::image type="content" source="./media/tables-example.jpg" alt-text="Beispiel für Tabellen" lightbox="./media/tables-example.jpg":::
 
-
   > [Weitere Informationen zur Layoutextraktion](concept-layout.md)
 
-- **Update der Clientbibliothek:** Die aktuelle Version der [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript unterstützt die Formularerkennung 2.1-API.
-- **Neue unterstützte Sprache: Japanisch** – Die folgenden neuen Sprachen werden jetzt unterstützt: für `AnalyzeLayout` und `AnalyzeCustomForm`: Japanisch (`ja`). [Sprachunterstützung](language-support.md)
-- **Textzeilenstilanzeige (handschriftlich/anders) (nur lateinische Sprachen)**  – Die Formularerkennung gibt jetzt ein `appearance`-Objekt aus, das – zusammen mit einer Zuverlässigkeitsbewertung – klassifiziert, ob jede Textzeile von Hand geschrieben wurde oder nicht. Dieses Feature wird nur für lateinische Sprachen unterstützt.
-- **Qualitätsverbesserungen** – Extraktionsverbesserungen, einschließlich Verbesserungen der einstelligen Extraktion.
-- **Neues Feature „try-it-out“ im Tool für die Beschriftung von Beispielen für die Formularerkennung** – Möglichkeit zum Ausprobieren von vordefinierten Modellen für Rechnungen, Belege und Visitenkarten sowie der Layout-API mithilfe dieses Tools. Sehen Sie sich an, wie Ihre Daten extrahiert werden, ohne Code schreiben zu müssen.
+* **Update der Clientbibliothek:** Die aktuelle Version der [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript unterstützt die Formularerkennung 2.1-API.
+* **Neue unterstützte Sprache: Japanisch** – Die folgenden neuen Sprachen werden jetzt unterstützt: für `AnalyzeLayout` und `AnalyzeCustomForm`: Japanisch (`ja`). [Sprachunterstützung](language-support.md)
+* **Textzeilenstilanzeige (handschriftlich/anders) (nur lateinische Sprachen)**  – Die Formularerkennung gibt jetzt ein `appearance`-Objekt aus, das – zusammen mit einer Zuverlässigkeitsbewertung – klassifiziert, ob jede Textzeile von Hand geschrieben wurde oder nicht. Dieses Feature wird nur für lateinische Sprachen unterstützt.
+* **Qualitätsverbesserungen** – Extraktionsverbesserungen, einschließlich Verbesserungen der einstelligen Extraktion.
+* **Neues Feature „try-it-out“ im Tool für die Beschriftung von Beispielen für die Formularerkennung** – Möglichkeit zum Ausprobieren von vordefinierten Modellen für Rechnungen, Belege und Visitenkarten sowie der Layout-API mithilfe dieses Tools. Sehen Sie sich an, wie Ihre Daten extrahiert werden, ohne Code schreiben zu müssen.
 
   > [Ausprobieren des Beispieltools für die Formularerkennung](https://fott-preview.azurewebsites.net/)
 
   ![Beispiel für FOTT](./media/ui-preview.jpg)
 
-- **Feedbackschleife:** Wenn Sie Dateien über das Tool für die Beschriftung von Beispielen analysieren, können Sie es jetzt auch dem Trainingssatz hinzufügen und die Bezeichnungen bei Bedarf anpassen und trainieren, um das Modell zu verbessern.
-- **Automatisches Bezeichnen von Dokumenten:** Bezeichnet zusätzliche Dokumente automatisch basierend auf zuvor bezeichneten Dokumenten im Projekt
+* **Feedbackschleife:** Wenn Sie Dateien über das Tool für die Beschriftung von Beispielen analysieren, können Sie es jetzt auch dem Trainingssatz hinzufügen und die Bezeichnungen bei Bedarf anpassen und trainieren, um das Modell zu verbessern.
+* **Automatisches Bezeichnen von Dokumenten:** Bezeichnet zusätzliche Dokumente automatisch basierend auf zuvor bezeichneten Dokumenten im Projekt
 
 ## <a name="august-2020"></a>August 2020
 
@@ -233,25 +242,24 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
 **Die öffentliche Vorschau der Formularerkennung v2.1 ist jetzt verfügbar.** V2.1-preview.1 wurde veröffentlicht, einschließlich der folgenden Features:
 
-
-- **REST-API-Referenz ist verfügbar**: [v2.1-preview.1-Referenz](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) anzeigen
-- **Zusätzlich zu Englisch werden neue Sprachen unterstützt.** Die folgenden [Sprachen](language-support.md) werden jetzt unterstützt: für `Layout` und `Train Custom Model`: Englisch (`en`), Chinesisch (vereinfacht) (`zh-Hans`), Niederländisch (`nl`), Französisch (`fr`), Deutsch (`de`), Italienisch (`it`), Portugiesisch (`pt`) und Spanisch (`es`).
-- **Kontrollkästchen-/Auswahlmarkierungserkennung**: Die Formularerkennung unterstützt das Erkennen und Extrahieren von Auswahlmarkierungen, z. B. von Kontrollkästchen und Optionsfeldern. Auswahlmarkierungen werden in `Layout` extrahiert, und Sie können jetzt auch `Train Custom Model` - _mit Bezeichnungen trainieren_, um Schlüssel-Wert-Paare für Auswahlmarkierungen zu extrahieren.
-- **Model Compose** – Ermöglicht das Zusammensetzen und Aufrufen mehrerer Modelle mit einer einzigen Modell-ID. Wenn Sie ein Dokument zur Analyse mit einer zusammengesetzten Modell-ID übermitteln, wird zunächst ein Klassifizierungsschritt durchgeführt, um es an das richtige benutzerdefinierte Modell weiterzuleiten. Model Compose steht für das `Train Custom Model` - _Trainieren mit Bezeichnungen_ zur Verfügung.
-- **Modellname** – Fügen Sie Ihren benutzerdefinierten Modellen einen Anzeigenamen zur einfacheren Verwaltung und Nachverfolgung hinzu.
-- **[Neues vordefiniertes Modell für Visitenkarten](concept-business-cards.md)** zum Extrahieren allgemeiner Felder auf Visitenkarten in englischer Sprache.
-- **[Neue Gebietsschemas für vordefinierte Belege](concept-receipts.md)** : Neben en-US ist jetzt zusätzliche Unterstützung für en-AU, en-CA, en-GB und en-IN verfügbar.
-- **Qualitätsverbesserungen** für `Layout`, `Train Custom Model` - _Trainieren ohne Bezeichnungen_ und _Trainieren mit Bezeichnungen_.
+* **REST-API-Referenz ist verfügbar**: [v2.1-preview.1-Referenz](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) anzeigen
+* **Zusätzlich zu Englisch werden neue Sprachen unterstützt.** Die folgenden [Sprachen](language-support.md) werden jetzt unterstützt: für `Layout` und `Train Custom Model`: Englisch (`en`), Chinesisch (vereinfacht) (`zh-Hans`), Niederländisch (`nl`), Französisch (`fr`), Deutsch (`de`), Italienisch (`it`), Portugiesisch (`pt`) und Spanisch (`es`).
+* **Kontrollkästchen-/Auswahlmarkierungserkennung**: Die Formularerkennung unterstützt das Erkennen und Extrahieren von Auswahlmarkierungen, z. B. von Kontrollkästchen und Optionsfeldern. Auswahlmarkierungen werden in `Layout` extrahiert, und Sie können jetzt auch `Train Custom Model` - _mit Bezeichnungen trainieren_, um Schlüssel-Wert-Paare für Auswahlmarkierungen zu extrahieren.
+* **Model Compose** – Ermöglicht das Zusammensetzen und Aufrufen mehrerer Modelle mit einer einzigen Modell-ID. Wenn Sie ein Dokument zur Analyse mit einer zusammengesetzten Modell-ID übermitteln, wird zunächst ein Klassifizierungsschritt durchgeführt, um es an das richtige benutzerdefinierte Modell weiterzuleiten. Model Compose steht für das `Train Custom Model` - _Trainieren mit Bezeichnungen_ zur Verfügung.
+* **Modellname** – Fügen Sie Ihren benutzerdefinierten Modellen einen Anzeigenamen zur einfacheren Verwaltung und Nachverfolgung hinzu.
+* **[Neues vordefiniertes Modell für Visitenkarten](concept-business-cards.md)** zum Extrahieren allgemeiner Felder auf Visitenkarten in englischer Sprache.
+* **[Neue Gebietsschemas für vordefinierte Belege](concept-receipts.md)** : Neben en-US ist jetzt zusätzliche Unterstützung für en-AU, en-CA, en-GB und en-IN verfügbar.
+* **Qualitätsverbesserungen** für `Layout`, `Train Custom Model` - _Trainieren ohne Bezeichnungen_ und _Trainieren mit Bezeichnungen_.
 
 **v2.0** enthält das folgende Update:
 
-- Die [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript sind nun allgemein verfügbar.
+* Die [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript sind nun allgemein verfügbar.
 
 **Neue Beispiele** sind auf GitHub verfügbar.
 
-- Unter [Knowledge Extraction Recipes - Forms Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) werden bewährte Methoden aus echten Kundenengagements mit der Formularerkennung gesammelt und nützliche Codebeispiele, Checklisten und Beispielpipelines für die Entwicklung dieser Projekte bereitgestellt.
-- Das [Samplebezeichnungstool](https://github.com/microsoft/OCR-Form-Tools) wurde aktualisiert, um die neue Funktionalität von v2.1 zu unterstützen. Informationen zu den ersten Schritten mit dem Tool finden Sie in diesem [Schnellstart](quickstarts/label-tool.md).
-- Im Formularerkennungsbeispiel [Intelligent Kiosk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) wird gezeigt, wie `Analyze Receipt` und `Train Custom Model` - _Trainieren ohne Bezeichnungen_ integriert werden.
+* Unter [Knowledge Extraction Recipes - Forms Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) werden bewährte Methoden aus echten Kundenengagements mit der Formularerkennung gesammelt und nützliche Codebeispiele, Checklisten und Beispielpipelines für die Entwicklung dieser Projekte bereitgestellt.
+* Das [Samplebezeichnungstool](https://github.com/microsoft/OCR-Form-Tools) wurde aktualisiert, um die neue Funktionalität von v2.1 zu unterstützen. Informationen zu den ersten Schritten mit dem Tool finden Sie in diesem [Schnellstart](quickstarts/label-tool.md).
+* Im Formularerkennungsbeispiel [Intelligent Kiosk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) wird gezeigt, wie `Analyze Receipt` und `Train Custom Model` - _Trainieren ohne Bezeichnungen_ integriert werden.
 
 ## <a name="july-2020"></a>Juli 2020
 
@@ -315,7 +323,6 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
   * `integer`
 
   Weitere Informationen zur Verwendung dieses Features finden Sie in der Anleitung zum [Tool zum Beschriften von Beispielen](./quickstarts/label-tool.md#specify-tag-value-types).
-
 
 * **Visualisierung von Tabellen** Im Tool für die Beschriftung von Beispielen werden nun im Dokument erkannte Tabellen angezeigt. Mithilfe dieses Features können Sie die im Dokument erkannten und aus dem Dokument extrahierten Tabellen anzeigen, bevor Sie die Beschriftung und Analyse durchführen. Dieses Feature kann mithilfe der Ebenenoption aktiviert bzw. deaktiviert werden.
 

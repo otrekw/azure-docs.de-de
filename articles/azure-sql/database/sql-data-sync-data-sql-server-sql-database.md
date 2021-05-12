@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 695409740348e78ae51b263b44d9ed1cbadc1054
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 660297beacb6594058a3d83fb622ddeb579c223b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531930"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951718"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -201,7 +201,7 @@ Nachdem die Synchronisierungsgruppe erstellt und bereitgestellt wurde, können S
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Kosten für den SQL-Datensynchronisierungsdienst
 
-Für den SQL-Datensynchronisierungsdienst selbst fallen keine Kosten an. Es fallen aber weiterhin Datenübertragungsgebühren für die ein- und ausgehende Datenverschiebung für Ihre SQL-Datenbankinstanz an. Weitere Informationen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
+Für den SQL-Datensynchronisierungsdienst selbst fallen keine Kosten an. Es fallen aber weiterhin Datenübertragungsgebühren für die ein- und ausgehende Datenverschiebung für Ihre SQL-Datenbankinstanz an. Weitere Informationen finden Sie unter [Datenübertragungsgebühren](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 ### <a name="what-regions-support-data-sync"></a>Für die Datensynchronisierung unterstützte Regionen
 

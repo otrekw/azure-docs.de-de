@@ -8,13 +8,13 @@ ms.author: susabat
 ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 07/16/2020
-ms.openlocfilehash: 14d96e3c8892106f67125bbd3b7bce565de13812
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 05/10/2021
+ms.openlocfilehash: 6e99d0d78b87d68cf5b7a94d3b1b9f576ea4913f
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904872"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753955"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Schnellstart: Erstellen einer Azure Data Factory-Instanz mithilfe einer ARM-Vorlage
 
@@ -33,7 +33,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure R
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datafactory%2Fdata-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,7 +56,7 @@ Speichern Sie die Datei im Ordner **C:\ADFv2QuickStartPSH**. (Erstellen Sie den 
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-data-factory-v2-blob-to-blob-copy/).
 
-:::code language="json" source="~/quickstart-templates/101-data-factory-v2-blob-to-blob-copy/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.datafactory/data-factory-v2-blob-to-blob-copy/azuredeploy.json":::
 
 In der Vorlage werden Azure-Ressourcen definiert:
 
@@ -72,7 +72,7 @@ Weitere Azure Data Factory-Vorlagenbeispiele finden Sie im [Schnellstartvorlagen
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt ein Azure Data Factory-Konto, ein Speicherkonto und einen Blobcontainer.
 
-    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
+    [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datafactory%2Fdata-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
 
 2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
@@ -130,9 +130,9 @@ Lassen Sie die Seite „Container“ geöffnet, da Sie dort am Ende dieses Schne
 
 ### <a name="start-trigger"></a>Starten des Triggers
 
-1. Navigieren Sie zur Seite **Data Factorys**, und wählen Sie die von Ihnen erstellte Data Factory aus. 
+1. Navigieren Sie zur Seite **Data Factorys**, und wählen Sie die von Ihnen erstellte Data Factory aus.
 
-2. Wählen Sie die Kachel **Erstellen und überwachen** aus. 
+2. Wählen Sie die Kachel **Erstellen und überwachen** aus.
 
     :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="Erstellen und überwachen":::
 
@@ -158,13 +158,13 @@ Lassen Sie die Seite „Container“ geöffnet, da Sie dort am Ende dieses Schne
 
 ### <a name="verify-the-output-file"></a>Überprüfen der Ausgabedatei
 
-Die Pipeline erstellt automatisch einen Ausgabeordner im Blobcontainer Anschließend wird die Datei „emp.txt“ aus dem Eingabe- in den Ausgabeordner kopiert. 
+Die Pipeline erstellt automatisch einen Ausgabeordner im Blobcontainer Anschließend wird die Datei „emp.txt“ aus dem Eingabe- in den Ausgabeordner kopiert.
 
-1. Wählen Sie im Azure-Portal auf der Seite **Container** die Option **Aktualisieren** aus, um den Ausgabeordner anzuzeigen. 
+1. Wählen Sie im Azure-Portal auf der Seite **Container** die Option **Aktualisieren** aus, um den Ausgabeordner anzuzeigen.
 
 2. Wählen Sie in der Ordnerliste **output** aus.
 
-3. Überprüfen Sie, ob die Datei **emp.txt** in den Ausgabeordner kopiert wurde. 
+3. Überprüfen Sie, ob die Datei **emp.txt** in den Ausgabeordner kopiert wurde.
 
     :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="Ausgabe":::
 
@@ -172,13 +172,13 @@ Die Pipeline erstellt automatisch einen Ausgabeordner im Blobcontainer Anschlie�
 
 Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwei Arten bereinigt werden. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/management/delete-resource-group.md) einschließlich aller darin enthaltenen Ressourcen löschen. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die Data Factory, die Sie in diesem Tutorial erstellt haben.
 
-Wenn Sie eine Ressourcengruppe löschen, werden alle Ressourcen einschließlich enthaltener Data Factorys gelöscht. Führen Sie den folgenden Befehl aus, um die gesamte Ressourcengruppe zu löschen: 
+Wenn Sie eine Ressourcengruppe löschen, werden alle Ressourcen einschließlich enthaltener Data Factorys gelöscht. Führen Sie den folgenden Befehl aus, um die gesamte Ressourcengruppe zu löschen:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
-Wenn Sie nur die Data Factory und nicht die gesamte Ressourcengruppe löschen möchten, führen Sie den folgenden Befehl aus: 
+Wenn Sie nur die Data Factory und nicht die gesamte Ressourcengruppe löschen möchten, führen Sie den folgenden Befehl aus:
 
 ```azurepowershell-interactive
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
