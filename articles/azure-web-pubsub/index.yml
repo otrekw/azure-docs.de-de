@@ -1,0 +1,42 @@
+### YamlMime:Landing
+title: Dokumentation zum Azure Web PubSub-Dienst
+summary: Der Azure Web PubSub-Dienst ist ein verwalteter Azure-Dienst, der Entwicklern die einfache Erstellung von Webanwendungen mit Echtzeitfunktionen und einem Veröffentlichen-Abonnieren-Muster ermöglicht.
+metadata:
+  title: Dokumentation zum Azure Web PubSub-Dienst
+  description: Basierend auf WebSocket können Sie einfach Echtzeit-Web-Apps erstellen und skalieren. Dieses Protokoll unterstützt eine Vielzahl von Sprachen und Frameworks.
+  ms.service: azure-web-pubsub
+  ms.topic: landing-page
+  author: yjin81
+  ms.author: yajin1
+  ms.date: 01/27/2021
+  ms.openlocfilehash: 468e003f209f4d1acd3f1f6cb80d8ca166495672
+  ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108166792"
+landingContent:
+- title: Informationen zum Azure Web PubSub-Dienst
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Worum handelt es sich beim Azure Web PubSub-Dienst?
+      url: overview.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erste Schritte mit einer Livedemo
+      url: quickstart-live-demo.md
+    - text: Beginnen Sie mit einer einfachen serverlosen Chatroomanwendung.
+      url: quickstart-serverless.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Web PubSub-Instanz
+      url: howto-develop-create-instance.md
+    - text: Veröffentlichen und Abonnieren von Nachrichten
+      url: https://azure.github.io/azure-webpubsub/getting-started/publish-messages/js-publish-message
+    - text: Verwenden von Unterprotokollen
+      url: https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols
+    - text: Authentifizierung und Berechtigungen
+      url: https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions

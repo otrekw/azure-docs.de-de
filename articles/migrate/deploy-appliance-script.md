@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: ff05a01ad8173923ff614657d0231f743f38ba1c
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: dfa96948b7e582457a9f09eed89d5cbe3bbc762d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714756"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750391"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Einrichten einer Appliance mit einem Skript
 
@@ -62,7 +62,7 @@ Funktion des Skripts:
 
 - Installation von Agents und einer Webanwendung.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
 - Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
     - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config
@@ -109,7 +109,7 @@ Funktion des Skripts:
 
 - Installation von Agents und einer Webanwendung.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
 - Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
     - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config

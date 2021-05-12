@@ -1,17 +1,17 @@
 ---
 title: Kopieren von Daten aus Teradata Vantage mithilfe von Azure Data Factory
 description: Mit dem Teradata-Connector des Data Factory-Diensts können Sie Daten aus einer Teradata  Vantage-Instanz in Datenspeicher kopieren, die von Data Factory als Senken unterstützt werden.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2021
-ms.author: jingwang
-ms.openlocfilehash: c65b295dca16a3453b2ee5472b9a3ee5e8d62df7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 9ebf320dc92ef8a39bc8b7569272ce2d0e2b2a68
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381765"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486753"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopieren von Daten aus Teradata Vantage mithilfe von Azure Data Factory
 
@@ -41,13 +41,13 @@ Der Teradata-Connector unterstützt insbesondere Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 Wenn Sie die selbstgehostete Integration Runtime verwenden, beachten Sie, dass ein integrierter Teradata-Treiber ab Version 3.18 enthalten ist. Es ist keine manuelle Treiberinstallation erforderlich. Für den Treiber muss „Visual C++ Redistributable 2012 Update 4“ auf dem Computer mit der selbstgehosteten Integration Runtime vorhanden sein. Sollte diese Komponente noch nicht installiert sein, können Sie sie [hier](https://www.microsoft.com/en-sg/download/details.aspx?id=30679) herunterladen.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren spezifischer Data Factory-Entitäten für den Teradata-Connector verwendet werden.
 

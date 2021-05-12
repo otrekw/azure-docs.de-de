@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6271875c368f637140010401cf2ebe21039be9a9
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: a9afef0e2616664578e66be3735104c47bfcffa9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897359"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760749"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen 
 
@@ -252,7 +252,7 @@ from azureml.core import Workspace
 
 ### <a name="download-a-configuration-file"></a>Herunterladen einer Konfigurationsdatei
 
-Wenn Sie eine [Compute-Instanz](tutorial-1st-experiment-sdk-setup.md#azure) erstellen, überspringen Sie diesen Schritt.  Die Compute-Instanz hat bereits eine Kopie dieser Datei für Sie erstellt.
+Wenn Sie eine [Compute-Instanz](quickstart-create-resources.md) erstellen, überspringen Sie diesen Schritt.  Die Compute-Instanz hat bereits eine Kopie dieser Datei für Sie erstellt.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -391,8 +391,7 @@ Der Azure Machine Learning-Arbeitsbereich verwendet für einige Operationen die 
 ## <a name="examples"></a>Beispiele
 
 Beispiele für das Erstellen eines Arbeitsbereichs:
-* Verwenden des Azure-Portals zum [Erstellen eines Arbeitsbereichs und einer Compute-Instanz](tutorial-1st-experiment-sdk-setup.md)
-* Verwenden des Python SDK zum [Erstellen eines Arbeitsbereichs in Ihrer eigenen Umgebung](tutorial-1st-experiment-sdk-setup-local.md)
+* Verwenden des Azure-Portals zum [Erstellen eines Arbeitsbereichs und einer Compute-Instanz](quickstart-create-resources.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

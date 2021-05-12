@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 12/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0a720b1b51c2f1bafa581e75cb8ab00b15a4b2d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97725019"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750427"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Sovereign Cloud-Parität für Azure Machine Learning
 
@@ -180,7 +180,7 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 | VNET-Unterstützung (virtuelles Netzwerk) zu Trainingszwecken                                | Allgemein verfügbar               | YES       | –        |
 | VNET-Unterstützung (virtuelles Netzwerk) für Rückschlüsse                               | Allgemein verfügbar               | YES       | –        |
 | Bewerten der Endpunktauthentifizierung                                            | Öffentliche Vorschau   | YES       | –        |
-| Private Link für Arbeitsplätze                                                     | Öffentliche Vorschau   | Nein        | –        |
+| Private Link für Arbeitsplätze                                                     | Allgemein verfügbar               | Nein        | –        |
 | ACI hinter VNET                                                            | Öffentliche Vorschau   | Nein        | –        |
 | ACR hinter VNET                                                            | Öffentliche Vorschau   | Nein        | –        |
 | Private IP-Adresse des AKS-Clusters                                                  | Öffentliche Vorschau   | Nein        | –        |

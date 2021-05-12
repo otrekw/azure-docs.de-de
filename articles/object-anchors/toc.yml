@@ -40,6 +40,8 @@
       href: 'https://github.com/Azure/azure-object-anchors/releases'
     - name: Ressourcenverwaltungs-REST-API von Azure Mixed Reality
       href: /rest/api/mixedreality/
+    - name: Fehlercodes bei der Modellkonvertierung
+      href: model-conversion-error-codes.md
     - name: Häufig gestellte Fragen
       href: faq.md
     - name: Stack Overflow

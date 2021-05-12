@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2462b585bb37db769aafafbb0d224557c53ee81d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f9518466aacddee9e31d8bc15f3b89c1f214ab58
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127081"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737997"
 ---
 # <a name="tutorial-configure-biocatch-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von BioCatch mit Azure Active Directory B2C
 
@@ -74,7 +74,7 @@ Wenden Sie sich an [BioCatch](https://www.biocatch.com/contact-us), und erstelle
 
 Es wird empfohlen, das Feld für die Clientsitzungs-ID auszublenden. Verwenden Sie zum Ausblenden des Felds CSS, JavaScript oder eine andere Methode. Zu Testzwecken können Sie das Feld (wieder) einblenden. Mit JavaScript wird das Eingabefeld beispielsweise wie folgt ausgeblendet:
 
-```
+```JavaScript
 document.getElementById("clientSessionId").style.display = 'none';
 ```
 
@@ -84,7 +84,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 2. Erstellen Sie eine neue Datei, die von der Erweiterungsdatei erbt.
 
-    ```
+    ```XML
     <BasePolicy> 
 
         <TenantId>tenant.onmicrosoft.com</TenantId> 
@@ -96,7 +96,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 3. Erstellen Sie unter der BuildingBlocks-Ressource einen Verweis auf die benutzerdefinierte Benutzeroberfläche, um das Eingabefeld auszublenden.
 
-    ```
+    ```XML
     <ContentDefinitions> 
 
         <ContentDefinition Id="api.selfasserted"> 
@@ -112,7 +112,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 4. Fügen Sie unter der BuildingBlocks-Ressource die folgenden Ansprüche hinzu.
 
-    ```
+    ```XML
     <ClaimsSchema> 
 
           <ClaimType Id="riskLevel"> 
@@ -146,7 +146,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 5. Konfigurieren Sie den selbstbestätigten Anspruchsanbieter für das Feld für die Clientsitzungs-ID.
 
-    ```
+    ```XML
     <ClaimsProvider> 
 
           <DisplayName>Client Session ID Claims Provider</DisplayName> 
@@ -190,7 +190,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 6. Konfigurieren Sie den REST-API-Anspruchsanbieter für BioCatch. 
 
-    ```
+    ```XML
     <TechnicalProfile Id="BioCatch-API-GETSCORE"> 
 
           <DisplayName>Technical profile for BioCatch API to return session information</DisplayName> 
@@ -247,7 +247,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
    1. Wenn der zurückgegebene Anspruch für die *Risikostufe* den Wert *LOW* aufweist, überspringen Sie den Schritt für die mehrstufige Authentifizierung. Andernfalls erzwingen Sie die mehrstufige Authentifizierung für den Benutzer.
 
-    ```
+    ```XML
     <OrchestrationStep Order="8" Type="ClaimsExchange"> 
 
               <ClaimsExchanges> 
@@ -296,7 +296,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
     Es ist sinnvoll, die von BioCatch zurückgegebenen Informationen als Ansprüche im Token an Ihre Anwendung zu übergeben, insbesondere die Risikostufe (*riskLevel*) und die Bewertung (*score*).
 
-    ```
+    ```XML
     <RelyingParty> 
 
         <DefaultUserJourney ReferenceId="SignUpOrSignInMfa" /> 
@@ -373,7 +373,7 @@ Führen Sie die folgenden Schritte aus, um Azure AD B2C die Richtliniendateien
 
 4. Führen Sie den Registrierungsflow aus, und erstellen Sie ein Konto. Das an JWT.MS zurückgegebene Token sollte 2 Ansprüche für „riskLevel“ und „score“ enthalten. Folgen Sie dem Beispiel.  
 
-    ```
+    ```JavaScript
     { 
 
       "typ": "JWT", 
