@@ -1,18 +1,18 @@
 ---
 title: Erstellen eines Sprach-Assistenten mit Azure Percept DK und Azure Percept-Audio
 description: Es wird beschrieben, wie Sie ohne Code eine Sprachlösung erstellen und für Ihr Azure Percept DK bereitstellen.
-author: elqu20
-ms.author: v-elqu
+author: philmea
+ms.author: philmea
 ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 76333e11916641be71c72ce6142cd59b496a17e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 441d0b4b76e0c543bd82c5546e0ca89250e418e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023162"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748167"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Erstellen eines Sprach-Assistenten mit Azure Percept DK und Azure Percept-Audio
 

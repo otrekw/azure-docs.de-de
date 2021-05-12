@@ -3,12 +3,12 @@ title: 'Tutorial: Implementieren von Azure Policy-as-Code mit GitHub'
 description: In diesem Tutorial implementieren Sie einen Azure Policy-as-Code-Workflow mit Export, GitHub Actions und GitHub-Workflows.
 ms.date: 03/31/2021
 ms.topic: tutorial
-ms.openlocfilehash: 64957671597ad6df237f92176e10280dc45018c9
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d7ad4d0487d8a6ead6c89834569e130c7b9945f5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092754"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752029"
 ---
 # <a name="tutorial-implement-azure-policy-as-code-with-github"></a>Tutorial: Implementieren von Azure Policy-as-Code mit GitHub
 
@@ -46,7 +46,7 @@ Führen Sie die folgenden Schritte aus, um eine Richtliniendefinition aus dem Az
    - **Verzeichnis:** Der _Ordner auf Stammebene_, in den die Azure Policy-Ressourcen exportiert werden sollen. Die Unterordner in diesem Verzeichnis werden auf Basis der exportierten Ressourcen erstellt.
 
 1. Legen Sie auf der Registerkarte **Richtlinien** den Suchbereich fest, indem Sie die Auslassungspunkte und dann eine Kombination von Verwaltungsgruppen, Abonnements oder Ressourcengruppen auswählen.
-   
+
 1. Suchen Sie mit der Schaltfläche **Richtliniendefinition(en) hinzufügen** den Bereich, für den Objekte exportiert werden sollen. Wählen Sie im daraufhin geöffneten seitlichen Fenster die einzelnen zu exportierenden Objekte aus. Filtern Sie die Auswahl nach Suchfeld oder Typ. Nachdem Sie alle zu exportierenden Objekte ausgewählt haben, verwenden Sie die Schaltfläche **Hinzufügen** am unteren Rand der Seite.
 
 1. Wählen Sie für jedes ausgewählte Objekt die gewünschten Exportoptionen für eine Richtliniendefinition aus, z. B. _Nur Definition_ oder _Definition und Zuweisung(en)_ . Wählen Sie dann die Registerkarte **Überprüfen + exportieren** oder die Schaltfläche **Weiter: Überprüfen + exportieren** am unteren Rand der Seite aus.
@@ -98,29 +98,27 @@ Die Azure Policy-Ressourcen werden in die folgende Struktur innerhalb des ausgew
 
 Mithilfe der [Aktion „Azure Policy-Complianceüberprüfung“](https://github.com/marketplace/actions/azure-policy-compliance-scan) können Sie von Ihrem [GitHub-Workflow](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows) aus für eine oder mehrere Ressourcen, Ressourcengruppen oder Abonnements bei Bedarf eine Compliancebewertungsprüfung auslösen und den Workflowpfad basierend auf dem Compliancestatus dieser Ressourcen ändern. Sie können den Workflow auch so konfigurieren, dass er zu einer geplanten Zeit abläuft, um zu einem geeigneten Zeitpunkt den neuesten Konformitätsstatus zu erhalten. Optional kann mit dieser GitHub-Aktion auch ein Bericht über den Konformitätsstatus der überprüften Ressourcen zur weiteren Analyse oder zur Archivierung erstellt werden.
 
-Im folgenden Beispiel wird eine Konformitätsprüfung für ein Abonnement ausgeführt. 
+Im folgenden Beispiel wird eine Konformitätsprüfung für ein Abonnement ausgeführt.
 
 ```yaml
 
 on:
-  schedule:    
+  schedule:
     - cron:  '0 8 * * *'  # runs every morning 8am
 jobs:
-  assess-policy-compliance:    
+  assess-policy-compliance:
     runs-on: ubuntu-latest
-    steps:         
+    steps:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}} 
+        creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    
     - name: Check for resource compliance
       uses: azure/policy-compliance-scan@v0
       with:
         scopes: |
           /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-
 ```
 
 ## <a name="review"></a>Überprüfung
