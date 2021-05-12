@@ -11,12 +11,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: fff4b9157c30203f47c65a74b211e3dbf6426d92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc1f9aaa0409300f99535b0b64f5719f8e8c97ad
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093033"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484611"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -224,7 +224,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
     }
     ```
 
-Alle oben genannten Vorgänge unterstützen die [optimistische Nebenläufigkeit](iot-hub-devguide-device-twins.md#optimistic-concurrency) und erfordern die Berechtigung **ServiceConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
+Alle oben genannten Vorgänge unterstützen die [optimistische Nebenläufigkeit](iot-hub-devguide-device-twins.md#optimistic-concurrency) und erfordern die Berechtigung **ServiceConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-dev-guide-sas.md) definiert.
 
 Neben diesen Vorgängen kann das Lösungs-Back-End auch folgende Aktionen ausführen:
 
@@ -242,7 +242,7 @@ Die Geräte-App greift mithilfe folgender atomarer Vorgänge auf den Gerätezwil
 
 * **Beobachten gewünschter Eigenschaften**. Das derzeit verbundene Gerät kann benachrichtigt werden, sobald die gewünschten Eigenschaften aktualisiert werden. Das Gerät erhält die gleiche Form der Aktualisierung (partielle oder vollständige Ersetzung), die durch das Lösungs-Back-End ausgeführt wird.
 
-Alle oben genannten Vorgänge erfordern die Berechtigung **DeviceConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
+Alle oben genannten Vorgänge erfordern die Berechtigung **DeviceConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-dev-guide-sas.md) definiert.
 
 Die [Azure IoT-Geräte-SDKs](iot-hub-devguide-sdks.md) vereinfachen die Verwendung der oben beschriebenen Vorgänge, die mit vielen Sprachen und Plattformen erstellt wurden. Weitere Informationen zu den Details der IoT Hub-Grundtypen für die Synchronisierung gewünschter Eigenschaften finden Sie im [Ablauf zur Wiederherstellung der Geräteverbindung](iot-hub-devguide-device-twins.md#device-reconnection-flow).
 

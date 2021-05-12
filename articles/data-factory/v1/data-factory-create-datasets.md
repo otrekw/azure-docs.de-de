@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 355d36d58935372e9d8a92599e8f810fec9ebf19
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4c50c7de84f92f1050b88a9c5c7179c69211bb42
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785341"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766931"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Datasets in Azure Data Factory (Version 1)
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -140,7 +140,7 @@ Wie Sie sehen, definiert der verknüpfte Dienst das Herstellen einer Verbindung 
 ## <a name="dataset-type"></a><a name="Type"></a> Dataset: type
 Der Typ des Datasets hängt von dem Datenspeicher ab, den Sie verwenden. In der folgenden Tabelle finden Sie eine Liste der von Data Factory unterstützten Datenspeicher. Klicken Sie auf einen Datenspeicher, um Informationen zum Erstellen eines verknüpften Diensts und eines Datasets für diesen Datenspeicher zu erhalten.
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > Datenspeicher mit * können lokal oder auf Azure IaaS (Infrastructure-as-a-Service) vorhanden sein. Für diese Datenspeicher müssen Sie [Datenverwaltungsgateway](data-factory-data-management-gateway.md) installieren.

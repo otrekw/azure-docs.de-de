@@ -1,18 +1,18 @@
 ---
 title: Erstellen einer Azure Data Factory-Pipeline mithilfe von privaten Endpunkten
 description: Dieses Tutorial enthält detaillierte Anweisungen zur Erstellung einer Data Factory mit Pipeline mithilfe des Azure-Portals. Die Pipeline verwendet die Kopieraktivität, um Daten aus Azure Blob Storage in eine Azure SQL-Datenbank zu kopieren.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/14/2021
-ms.author: jingwang
-ms.openlocfilehash: 191ad61990e10fdb718eebf1a8f57d8edaadcf35
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.author: jianleishen
+ms.openlocfilehash: 555316ddf722e857914d5e99d7fadcd6539e1b8b
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515452"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482577"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Sicheres Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von privaten Endpunkten
 

@@ -8,18 +8,18 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffa7e35bed1713a5ef9e04b59a8dbdb692b9630f
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371939"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790953"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Vorgehensweise beim Planen eines Angebots für verwaltete Dienste für den kommerziellen Microsoft-Marketplace
 
 In diesem Artikel werden die Anforderungen zum Veröffentlichen eines Angebots für verwaltete Dienste für den kommerziellen Marketplace von Microsoft über das Partner Center erläutert.
 
-Verwaltete Dienste sind Azure Marketplace-Angebote, die mandantenübergreifende und mehrinstanzenfähige Verwaltung mit Azure Lighthouse ermöglichen. Weitere Informationen finden Sie unter [Was ist Azure Lighthouse?](../lighthouse/overview.md) Wenn ein Kunde ein Angebot für verwaltete Dienste erwirbt, kann er ein oder mehrere Abonnements oder Ressourcengruppen delegieren. Anschließend können Sie mithilfe der Funktionen für die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) von Azure Lighthouse mit diesen Ressourcen arbeiten.
+Verwaltete Dienste sind Azure Marketplace-Angebote, die mandantenübergreifende und mehrinstanzenfähige Verwaltung mit Azure Lighthouse ermöglichen. Weitere Informationen finden Sie unter [Was ist Azure Lighthouse?](../lighthouse/overview.md) Wenn ein Kunde ein Angebot für verwaltete Dienste erwirbt, kann er ein oder mehrere Abonnements oder Ressourcengruppen delegieren. Anschließend können Sie mithilfe der Funktionen für die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/architecture.md) von Azure Lighthouse mit diesen Ressourcen arbeiten.
 
 ## <a name="eligibility-requirements"></a>Qualifizierungsanforderungen
 

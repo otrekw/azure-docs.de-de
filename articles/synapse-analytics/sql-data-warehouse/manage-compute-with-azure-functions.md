@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f0731f0deaf46ec419cfe43037804e10f2b73fd4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d471991be570cd5242b5e163409e319e5af4094
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96448374"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790341"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-for-your-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Verwenden von Azure Functions zum Verwalten der Computeressourcen für Ihren dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics
 
@@ -42,7 +42,8 @@ Stellen Sie diese Vorlage bereit, nachdem Sie die zuvor angegebenen Informatione
 
 Nach dem Bereitstellen der Vorlage sollten drei neue Ressourcen vorhanden sein: ein kostenloser Azure App Service-Plan, ein nutzungsbasierter Funktionen-App-Plan und ein Speicherkonto für die Verarbeitung der Protokollierung und der Warteschlange für die Vorgänge. Fahren Sie mit dem Lesen der anderen Abschnitte fort, um zu erfahren, wie Sie die bereitgestellten Funktionen an Ihre Anforderungen anpassen.
 
-## <a name="change-the-compute-level"></a>Ändern der Computeebene
+## <a name="change-the-time-of-the-scale-operation"></a>Ändern des Zeitpunkts des Skalierungsvorgangs
+
 
 1. Navigieren Sie zu Ihrem Funktionen-App-Dienst. Wenn Sie die Vorlage mit den Standardwerten bereitgestellt haben, sollte dieser Dienst den Namen *DWOperations* haben. Nach dem Öffnen Ihrer Funktionen-App sollte zu sehen sein, dass für Ihren Funktionen-App-Dienst fünf Funktionen bereitgestellt wurden.
 
@@ -66,7 +67,7 @@ Nach dem Bereitstellen der Vorlage sollten drei neue Ressourcen vorhanden sein: 
 
    *"0 30 9 * * 1-5"* steht beispielsweise für eine Auslösung an jedem Werktag um 9:30 Uhr. Weitere Informationen finden Sie im Artikel mit den [Zeitplanbeispielen](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example) für Azure Functions.
 
-## <a name="change-the-time-of-the-scale-operation"></a>Ändern des Zeitpunkts des Skalierungsvorgangs
+## <a name="change-the-compute-level"></a>Ändern der Computeebene
 
 1. Navigieren Sie zu Ihrem Funktionen-App-Dienst. Wenn Sie die Vorlage mit den Standardwerten bereitgestellt haben, sollte dieser Dienst den Namen *DWOperations* haben. Nach dem Öffnen Ihrer Funktionen-App sollte zu sehen sein, dass für Ihren Funktionen-App-Dienst fünf Funktionen bereitgestellt wurden.
 

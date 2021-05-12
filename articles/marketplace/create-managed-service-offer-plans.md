@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 12/23/2020
-ms.openlocfilehash: 9b5526af03bdbefeb54633c49bbd43743555f60b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a20571e411b2849c3487582a9c316f0f0b35c91d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383227"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790935"
 ---
 # <a name="how-to-create-plans-for-your-managed-service-offer"></a>Erstellen von Plänen für Ihr Angebot für den verwalteten Dienst
 
@@ -79,7 +79,7 @@ So fügen Sie bis zu 10.000 Abonnement-IDs mit einer CSV-Datei manuell hinzu:
 
 ## <a name="technical-configuration"></a>Technische Konfiguration
 
-In diesem Abschnitt wird ein Manifest mit Autorisierungsinformationen zum Verwalten von Kundenressourcen erstellt. Diese Informationen werden benötigt, um die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) zu aktivieren.
+In diesem Abschnitt wird ein Manifest mit Autorisierungsinformationen zum Verwalten von Kundenressourcen erstellt. Diese Informationen werden benötigt, um die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/architecture.md) zu aktivieren.
 
 Unter [Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien](../lighthouse/concepts/tenants-users-roles.md#best-practices-for-defining-users-and-roles) erfahren Sie, welche Rollen unterstützt werden und welche bewährten Methoden für das Definieren von Autorisierungen gelten.
 

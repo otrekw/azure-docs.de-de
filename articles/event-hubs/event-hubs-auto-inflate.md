@@ -3,12 +3,12 @@ title: Automatisches zentrales Hochskalieren von Durchsatzeinheiten – Azure E
 description: Aktivieren der automatischen Vergrößerung in einem Namespace zur automatischen Erweiterung der Durchsatzeinheiten
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4e54282b7f455f661238b0129dd1f8f9c70d9d6
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020805"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738102"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatische Erweiterung der Azure Event Hub-Durchsatzeinheiten
 Azure Event Hubs ist eine extrem skalierbare Datenstreamingplattform. Daher nimmt die Event Hubs-Nutzung häufig zu, nachdem mit der Nutzung des Diensts begonnen wurde. Für solche Nutzung müssen die vordefinierten [Durchsatzeinheiten](event-hubs-scalability.md#throughput-units) zur Skalierung von Event Hubs und zur Verarbeitung größerer Übertragungsraten erweitert werden. Das Feature **Automatische Vergrößerung** von Event Hubs wird automatisch durch Erhöhung der Anzahl von Durchsatzeinheiten zentral hochskaliert, um den Nutzungsanforderungen gerecht zu werden. Zusätzliche Durchsatzeinheiten verhindern Drosselungsszenarien, bei denen Folgendes vorliegt:
@@ -31,7 +31,7 @@ Der Datenverkehr von Event Hubs wird von [Durchsatzeinheiten](event-hubs-scalabi
 Sie können automatische Vergrößerung in einem Event Hubs-Namespace des Standard-Tarifs mit einer der folgenden Methoden aktivieren oder deaktivieren:
 
 - [Azure-Portal](https://portal.azure.com)
-- Eine [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate)
+- Eine [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-enable-inflate)
 
 > [!NOTE]
 > Event Hubs-Namespaces des Tarifs Basic unterstützen keine automatische Vergrößerung.
@@ -39,28 +39,28 @@ Sie können automatische Vergrößerung in einem Event Hubs-Namespace des Standa
 ### <a name="enable-auto-inflate-through-the-portal"></a>Aktivieren der automatischen Vergrößerung über das Portal
 
 
-#### <a name="enable-at-the-time-of-creation"></a>Aktivieren zum Zeitpunkt der Erstellung 
+#### <a name="enable-at-the-time-of-creation"></a>Aktivieren zum Zeitpunkt der Erstellung
 Sie können die Funktion für die automatische Vergrößerung aktivieren, **wenn Sie einen Event Hubs-Namespace erstellen**:
- 
+
 ![Aktivieren der automatischen Vergrößerung zum Zeitpunkt der Event Hub-Erstellung](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
 Wenn diese Option aktiviert ist, können Sie mit wenigen Durchsatzeinheiten beginnen und die Anzahl mit zunehmenden Nutzungsanforderungen anpassen. Die Obergrenze für die Vergrößerung hat keine direkte Auswirkungen auf den Preis. Dieser hängt von der Anzahl von genutzten Durchsatzeinheiten pro Stunde ab.
 
 #### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Aktivieren der automatischen Vergrößerung für einen vorhandenen Event Hub
-Mithilfe der folgenden Anweisungen können Sie auch die Funktion der automatischen Vergrößerung aktivieren und deren Einstellungen ändern: 
- 
-1. Wählen Sie auf der Seite **Event Hubs-Namespace** die Option **Deaktiviert** unter **Auto-inflate throughput units** (Durchsatzeinheiten automatisch vergrößern) aus.  
+Mithilfe der folgenden Anweisungen können Sie auch die Funktion der automatischen Vergrößerung aktivieren und deren Einstellungen ändern:
+
+1. Wählen Sie auf der Seite **Event Hubs-Namespace** die Option **Deaktiviert** unter **Auto-inflate throughput units** (Durchsatzeinheiten automatisch vergrößern) aus.
 
     ![Auswählen von Durchsatzeinheiten auf der Seite des Event Hubs-Namespace](./media/event-hubs-auto-inflate/select-throughput-units.png)
 2. Aktivieren Sie auf der Seite **Scale Settings** (Skalierungseinstellungen) das Kontrollkästchen **Aktivieren** (sofern die Autoskalierungsfunktion nicht aktiviert war).
 
     ![Auswählen von „Aktivieren“](./media/event-hubs-auto-inflate/scale-settings.png)
-3. Geben Sie die **maximale** Anzahl von Durchsatzeinheiten ein, oder verwenden Sie die Scrollleiste, um den Wert festzulegen. 
-4. (optional) Aktualisieren Sie die **minimale** Anzahl von Durchsatzeinheiten am oberen Rand dieser Seite. 
+3. Geben Sie die **maximale** Anzahl von Durchsatzeinheiten ein, oder verwenden Sie die Scrollleiste, um den Wert festzulegen.
+4. (optional) Aktualisieren Sie die **minimale** Anzahl von Durchsatzeinheiten am oberen Rand dieser Seite.
 
 
 > [!NOTE]
-> Wenn Sie die Konfiguration zur automatischen Vergrößerung anwenden, um die Durchsatzeinheiten zu erhöhen, sendet der Event Hubs-Dienst Diagnoseprotokolle, die Informationen dazu enthalten, warum und wann der Durchsatz gestiegen ist. Um die Diagnoseprotokollierung für einen Event Hub zu aktivieren, wählen Sie im Azure-Portal auf der „Event Hub“-Seite im linken Menü **Diagnoseeinstellungen** aus. Weitere Informationen finden Sie unter [Einrichten von Diagnoseprotokollen für einen Event Hub in Azure](event-hubs-diagnostic-logs.md). 
+> Wenn Sie die Konfiguration zur automatischen Vergrößerung anwenden, um die Durchsatzeinheiten zu erhöhen, sendet der Event Hubs-Dienst Diagnoseprotokolle, die Informationen dazu enthalten, warum und wann der Durchsatz gestiegen ist. Um die Diagnoseprotokollierung für einen Event Hub zu aktivieren, wählen Sie im Azure-Portal auf der „Event Hub“-Seite im linken Menü **Diagnoseeinstellungen** aus. Weitere Informationen finden Sie unter [Einrichten von Diagnoseprotokollen für einen Event Hub in Azure](event-hubs-diagnostic-logs.md).
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Aktivieren der automatischen Vergrößerung mithilfe einer Azure Resource Manager-Vorlage
 
@@ -107,7 +107,7 @@ Sie können die automatische Vergrößerung bei der Bereitstellung einer Azure R
     ]
 ```
 
-Die vollständige Vorlage finden Sie unter [Create Event Hubs namespace and enable inflate (Erstellen eines Event Hubs-Namespace und aktivieren der Vergrößerung)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Create Event Hubs namespace and enable inflate (Erstellen eines Event Hubs-Namespace und aktivieren der Vergrößerung)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-enable-inflate) auf GitHub.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

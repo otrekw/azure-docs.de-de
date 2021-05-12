@@ -1,18 +1,19 @@
 ---
 title: Site-to-Site-VPN-Verbindungen über privates ExpressRoute-Peering
-description: Dieser Artikel hilft Ihnen, Site-to-Site-VPN über privates ExpressRoute-Peering zu aktivieren, um Datenverkehr zu verschlüsseln.
+titleSuffix: Azure VPN Gateway
+description: Hier erfahren Sie, wie Sie Site-to-Site-VPN-Verbindungen über privates ExpressRoute-Peering konfigurieren, um Datenverkehr zu verschlüsseln.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c84b46fe3265b5ada792cbe47d92768e602fa20
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880524"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229034"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>Konfigurieren einer Site-to-Site-VPN-Verbindung über privates ExpressRoute-Peering
 

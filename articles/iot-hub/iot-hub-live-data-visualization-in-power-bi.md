@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: 0b099f4ce91fd24e8d7baec054bcfc5a6cf0b032
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 6ff0a0bb8bc1ca9b26968d002bb44d206c36e158
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567110"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483909"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Verwenden von Power BI zum Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit
 
@@ -74,7 +74,7 @@ Als Erstes erstellen wir einen Stream Analytics-Auftrag. Nachdem Sie den Auftrag
 
    **Endpunkt**: Wählen Sie **Messaging** aus.
 
-   **Name der SAS-Richtlinie**: Wählen Sie den Namen der SAS-Richtlinie aus, die vom Stream Analytics-Auftrag für Ihren IoT Hub verwendet werden soll. Für dieses Tutorial können Sie *service* auswählen. Die Richtlinie *service* wird standardmäßig auf neuen IoT Hubs erstellt und erteilt die Berechtigung zum Senden und Empfangen an cloudseitigen Endpunkten, die vom IoT Hub verfügbar gemacht werden. Weitere Informationen finden Sie unter [Access Control und Berechtigungen](iot-hub-devguide-security.md#access-control-and-permissions).
+   **Name der SAS-Richtlinie**: Wählen Sie den Namen der SAS-Richtlinie aus, die vom Stream Analytics-Auftrag für Ihren IoT Hub verwendet werden soll. Für dieses Tutorial können Sie *service* auswählen. Die Richtlinie *service* wird standardmäßig auf neuen IoT Hubs erstellt und erteilt die Berechtigung zum Senden und Empfangen an cloudseitigen Endpunkten, die vom IoT Hub verfügbar gemacht werden. Weitere Informationen finden Sie unter [Access Control und Berechtigungen](iot-hub-dev-guide-sas.md#access-control-and-permissions).
 
    **Schlüssel für SAS-Richtlinie**: Dieses Feld wird auf Grundlage des von Ihnen ausgewählten Namens der SAS-Richtlinie automatisch ausgefüllt.
 
