@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2021
 ms.author: Zhchia
-ms.openlocfilehash: a2c4e151ba6acb4b9fc308459b7bcd8c063edba8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 99857aab921d1c09de09db04dededef187094ae5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124183"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740013"
 ---
 # <a name="tutorial-configure-bentley---automatic-user-provisioning-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Bentley Automatic User Provisioning für die automatische Benutzerbereitstellung
 
@@ -150,9 +150,6 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 1. Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
 2. Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
 3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).
-
-## <a name="connector-limitations"></a>Connector-Einschränkungen
-* Das Enterprise Extension-Attribut "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager" wird nicht unterstützt und entfernt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

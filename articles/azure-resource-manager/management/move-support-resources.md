@@ -3,12 +3,12 @@ title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste der Azure-Ressourcentypen, die in eine neue Ressourcengruppe, ein neues Abonnement oder eine neue Region verschoben werden können.
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.openlocfilehash: 90fd683a12dcc9f9d63003f1fd87332db5f2b9aa
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 5a347a9041423c7e466499cdd65fe27e6623ab98
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945987"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737403"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -400,7 +400,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
 > | ------------- | ----------- | ---------- | ----------- |
-> | batchaccounts | Ja | Ja | Batch-Konten können nicht direkt aus einer Region in eine andere verschoben werden, Sie können jedoch eine Vorlage verwenden, um eine Vorlage zu exportieren, sie zu ändern und dann die Vorlage in der neuen Region bereitzustellen. <br/><br/> Informationen zum [Verschieben eines Batch-Kontos zwischen Regionen](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
+> | batchaccounts | Ja | Ja | Batch-Konten können nicht direkt aus einer Region in eine andere verschoben werden, Sie können jedoch eine Vorlage verwenden, um eine Vorlage zu exportieren, sie zu ändern und dann die Vorlage in der neuen Region bereitzustellen. <br/><br/> Informationen zum [Verschieben eines Batch-Kontos zwischen Regionen](../../batch/account-move.md) |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 

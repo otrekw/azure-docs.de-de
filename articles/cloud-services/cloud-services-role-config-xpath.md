@@ -3,17 +3,18 @@ title: XPath-Spickzettel für die Rollenkonfiguration in Cloud Services (klassis
 description: Die verschiedenen XPath-Einstellungen, die Sie in der Clouddienst-Rollenkonfiguration verwenden können, um Einstellungen als Umgebungsvariable verfügbar zu machen.
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 397bc6845dc8d2d8bc44c00c27f6c12037651337
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 243d66ee82dc49776f89c3753e39ae90dfd400ca
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98741382"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108735945"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Verfügbarmachen von Rollenkonfigurationseinstellungen als Umgebungsvariable mit XPath
 

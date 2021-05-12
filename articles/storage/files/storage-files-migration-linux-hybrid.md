@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: ff26318cafdf493579961fc718643f831ae9efeb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30a0269b5729516d8e8e378c700c493262e77f10
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564253"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "108756177"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migration von Linux zu einer Hybrid-Cloud-Bereitstellung mit der Azure-Dateisynchronisierung
 
@@ -48,9 +48,9 @@ Wenn Sie Samba nicht auf Ihrem Linux-Server ausführen und stattdessen Ordner zu
 * Erstellen Sie eine Instanz von Windows Server 2019 als virtuellen Computer oder physischen Server. Es ist mindestens Windows Server 2012 R2 erforderlich. Ein Windows Server-Failovercluster wird ebenfalls unterstützt.
 * Stellen Sie einen direkt angeschlossenen Speicher bereit, oder fügen Sie ihn hinzu. Network Attached Storage (NAS) wird nicht unterstützt.
 
-  Die bereitgestellte Speichermenge kann kleiner sein als jene, die Sie zurzeit auf Ihrem Linux-Samba-Server verwenden, wenn Sie das [Cloudtiering](storage-sync-cloud-tiering-overview.md)-Feature der Azure-Dateisynchronisierung verwenden. 
+  Die bereitgestellte Speichermenge kann kleiner sein als jene, die Sie zurzeit auf Ihrem Linux-Samba-Server verwenden, wenn Sie das [Cloudtiering](../file-sync/file-sync-cloud-tiering-overview.md)-Feature der Azure-Dateisynchronisierung verwenden. 
 
-Die von Ihnen bereitgestellte Speichermenge kann kleiner sein als diejenige, die Sie zurzeit auf Ihrem Linux-Samba-Server verwenden. Diese Konfigurationsoption erfordert, dass Sie auch das Feature [Cloudtiering](storage-sync-cloud-tiering-overview.md) der Azure-Dateisynchronisierung nutzen. Wenn Sie jedoch Ihre Dateien in einer späteren Phase aus dem größeren Linux-Samba-Serverbereich in das kleinere Windows Server-Volume kopieren, müssen Sie in Batches arbeiten:
+Die von Ihnen bereitgestellte Speichermenge kann kleiner sein als diejenige, die Sie zurzeit auf Ihrem Linux-Samba-Server verwenden. Diese Konfigurationsoption erfordert, dass Sie auch das Feature [Cloudtiering](../file-sync/file-sync-cloud-tiering-overview.md) der Azure-Dateisynchronisierung nutzen. Wenn Sie jedoch Ihre Dateien in einer späteren Phase aus dem größeren Linux-Samba-Serverbereich in das kleinere Windows Server-Volume kopieren, müssen Sie in Batches arbeiten:
 
   1. Verschieben Sie eine Dateimenge, die auf den Datenträger passt.
   2. Lassen Sie die Dateisynchronisierung und das Cloudtiering interagieren.
@@ -60,7 +60,7 @@ Die von Ihnen bereitgestellte Speichermenge kann kleiner sein als diejenige, die
 
 Die Ressourcenkonfiguration (Compute und RAM) der von Ihnen bereitgestellten Windows Server-Instanz hängt größtenteils von der Anzahl der Elemente (Dateien und Ordner) ab, die synchronisiert werden sollen. Wenn Sie Bedenken haben, empfiehlt es sich, eine leistungsstärkere Konfiguration zu verwenden.
 
-[Erfahren Sie, wie Sie die Größe einer Windows Server-Instanz basierend auf der Anzahl der zu synchronisierenden Elemente (Dateien und Ordner) anpassen.](storage-sync-files-planning.md#recommended-system-resources)
+[Erfahren Sie, wie Sie die Größe einer Windows Server-Instanz basierend auf der Anzahl der zu synchronisierenden Elemente (Dateien und Ordner) anpassen.](../file-sync/file-sync-planning.md#recommended-system-resources)
 
 > [!NOTE]
 > Der zuvor verknüpfte Artikel enthält eine Tabelle mit einem Bereich für den Serverarbeitsspeicher (RAM). Sie können sich an der geringeren Zahl für Ihren Server orientieren, müssen jedoch davon ausgehen, dass die anfängliche Synchronisierung wesentlich mehr Zeit in Anspruch nehmen kann.
@@ -109,7 +109,7 @@ Erstellen Sie die erste lokale Kopie in Ihrem Windows Server-Zielordner:
 
 Mit dem folgenden Robocopy-Befehl werden Dateien vom Speicher Ihres Linux-Samba-Servers in den Windows Server-Zielordner kopiert. Windows-Server synchronisiert diesen Ordner mit den Azure-Dateifreigaben. 
 
-Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben als Ihre Daten auf dem Linux-Samba-Server verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll ist, beginnt das [Cloudtiering](storage-sync-cloud-tiering-overview.md) für die Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopiervorgang vom Linux-Samba-Server fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
+Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben als Ihre Daten auf dem Linux-Samba-Server verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll ist, beginnt das [Cloudtiering](../file-sync/file-sync-cloud-tiering-overview.md) für die Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopiervorgang vom Linux-Samba-Server fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
 
 Robocopy verschiebt die Dateien möglicherweise zu schnell für den Synchronisierungsvorgang mit der Cloud und führt dann ein lokales Tiering durch. Dadurch kann der Speicherplatz auf dem lokalen Datenträger knapp werden. Robocopy führt dann zu einem Fehler. Es wird empfohlen, die Freigaben nacheinander abzuarbeiten, um dieses Problem zu verhindern. Beispielsweise sollten Sie nicht für alle Freigaben gleichzeitig Robocopy-Aufträge starten. Sie können auch Freigaben verschieben, für die der aktuell freie Speicherplatz auf der Windows Server-Instanz ausreicht. Falls Ihr Robocopy-Auftrag fehlschlägt, können Sie den Befehl jederzeit erneut ausführen, wenn Sie die folgende Option zum Spiegeln/Bereinigen verwenden:
 
@@ -161,6 +161,6 @@ Unter dem Link im folgenden Abschnitt finden Sie Informationen zur Behandlung vo
 
 Machen Sie sich weiter mit Azure-Dateifreigaben und der Azure-Dateisynchronisierung vertraut. In den folgenden Artikeln werden erweiterte Optionen, bewährte Methoden und Ansätze zum Troubleshooting erläutert. Diese Artikel sind mit der entsprechenden [Dokumentation zur Azure-Dateifreigabe](storage-files-introduction.md) verlinkt.
 
-* [Azure-Dateisynchronisierung – Übersicht](./storage-sync-files-planning.md)
-* [Azure-Dateisynchronisierung – Bereitstellungsleitfaden](./storage-how-to-create-file-share.md)
-* [Azure-Dateisynchronisierung – Troubleshooting](storage-sync-files-troubleshoot.md)
+* [Azure-Dateisynchronisierung – Übersicht](../file-sync/file-sync-planning.md)
+* [Bereitstellen der Azure-Dateisynchronisierung](../file-sync/file-sync-deployment-guide.md)
+* [Azure-Dateisynchronisierung – Troubleshooting](../file-sync/file-sync-troubleshoot.md)

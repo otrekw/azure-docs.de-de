@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.openlocfilehash: 757d765f44f09eeb6f7a24644abeb1ce4577f664
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9a633e9201c78bda0ff2c88abd6a5dd2e67acdf3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107508935"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738861"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Konfigurieren von Überwachungsprotokollen für Azure Database for MySQL Flexible Server und Zugreifen auf diese Protokolle über die Azure CLI
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie [Überwachungsprotokolle](concepts-audit
 ## <a name="prerequisites"></a>Voraussetzungen
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 - Installieren Sie die Azure CLI, oder upgraden Sie sie auf die neueste Version. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
--  Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az-login) beim Azure-Konto an. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
+-  Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az_login) beim Azure-Konto an. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
     ```azurecli-interactive
     az login
