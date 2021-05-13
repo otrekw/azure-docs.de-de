@@ -6,21 +6,22 @@ documentationcenter: ''
 author: mathapli
 manager: rochakm
 ms.service: virtual-machine-scale-sets
+ms.subservice: azure-hybrid-benefit
 ms.collection: linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: fb5f00cf2e7078ab8d85f0ac1c2a2d54be907f89
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: afbdd490a429c86f1842b83fb62c3ce6a023a0ed
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127171"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750943"
 ---
-# <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set-public-preview"></a>Azure-Hybridvorteil für Skalierungssätze für VM-Skalierungsgruppe (Public Preview)
+# <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set"></a>Azure-Hybridvorteil für eine Linux-VM-Skalierungsgruppe
 
-**Azure-Hybridvorteil für Linux VM-Skalierungsgruppe ist im Public Review jetzt**. Der Azure-Hybridvorteil kann Ihnen helfen, die Kosten für die Ausführung ihrer RHEL-und SLES-VM- [Skalierungs Gruppen](./overview.md)zu reduzieren.
+**Der Azure-Hybridvorteil für eine Linux-VM-Skalierungsgruppe ist nun allgemein verfügbar.** Der Azure-Hybridvorteil kann Ihnen helfen, die Kosten für die Ausführung ihrer RHEL-und SLES-VM- [Skalierungs Gruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)zu reduzieren.
 
 Mit diesem Vorteil zahlen Sie nur die Infrastrukturkosten für Ihr Skalierungsgruppe. Der Vorteil ist für alle RHEL- und SLES-Images im Marketplace mit nutzungsbasierter Bezahlung verfügbar.
 
@@ -71,7 +72,23 @@ So beginnen Sie mit der Verwendung des Vorteils für SUSE:
 
 
 ## <a name="enable-and-disable-the-benefit-on-azure-portal"></a>Aktivieren und Deaktivieren der Leistung im Azure-Portal 
-Die Portal Darstellung zum Aktivieren und Deaktivieren von AHB in der VM-Skalierungsgruppe ist **zurzeit nicht verfügbar**.
+### <a name="azure-portal-example-to-enable-the-benefit-during-creation"></a>Beispiel für das Aktivieren des Vorteils während der Erstellung über das Azure-Portal:
+1. Öffnen Sie das [Microsoft Azure-Portal](https://portal.azure.com/).
+1. Navigieren Sie im Portal zur Seite „VM-Skalierungsgruppe erstellen“.
+ ![Azure-Hybridvorteil beim Erstellen einer VMSS](./media/azure-hybrid-benefit-linux/create-vmss-ahb.png)
+1. Aktivieren Sie das Kontrollkästchen, um die AHB-Konvertierung zu aktivieren und Cloudzugriffslizenzen zu verwenden.
+ ![Kontrollkästchen für den Azure-Hybridvorteil beim Erstellen einer VMSS](./media/azure-hybrid-benefit-linux/create-vmss-ahb-checkbox.png)
+1. Erstellen Sie anhand der folgenden Anweisungen eine VM-Skalierungsgruppe.
+1. Überprüfen Sie auf dem Blatt **Konfiguration**, ob die Option aktiviert ist. 
+![Azure-Hybridvorteil: Blatt für das Betriebssystem nach der Erstellung](./media/azure-hybrid-benefit-linux/create-vmss-ahb-os-blade.png)
+
+### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-virtual-machine-scale-set"></a>Beispiel für das Aktivieren des Vorteils für eine vorhandene VM-Skalierungsgruppe über das Azure-Portal:
+1. Öffnen Sie das [Microsoft Azure-Portal](https://portal.azure.com/).
+1. Öffnen Sie die Seite „VM-Skalierungsgruppe“, auf die Sie die Konvertierung anwenden möchten.
+1. Navigieren Sie auf der linken Seite zur Option **Betriebssystem**. Der Abschnitt „Lizenzierung“ wird angezeigt. Aktivieren Sie das Optionsfeld „Ja“ und das Kontrollkästchen zur Bestätigung, um die AHB-Konvertierung zu aktivieren.
+![Blatt für die AHB-Konfiguration nach dem Erstellen](./media/azure-hybrid-benefit-linux/create-vmss-ahb-os-blade.png)
+
+
 
 ## <a name="enable-and-disable-the-benefit-using-azure-cli"></a>Aktivieren und Deaktivieren der Leistung mit Azure CLI
 

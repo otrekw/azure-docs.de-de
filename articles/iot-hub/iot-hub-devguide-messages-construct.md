@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 05/07/2021
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 21f22f9aa31210b1690d0be562643d94901ce58a
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: ff56bd488fb1e9d776b99461ae1c40c9941fae0b
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079045"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633931"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Erstellen und Lesen von IoT Hub-Nachrichten
 
@@ -61,8 +61,8 @@ Weitere Informationen zum Codieren und Decodieren von Nachrichten, die über ver
 | iothub-connection-module-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Sie enthält die **moduleId** des Geräts, das die Nachricht sendet. | Nein | connectionModuleId |
 | iothub-connection-auth-generation-id |Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Sie enthält die **connectionDeviceGenerationId** (gemäß [Geräteidentitätseigenschaften](iot-hub-devguide-identity-registry.md#device-identity-properties)) des Geräts, das die Nachricht gesendet hat. | Nein |connectionDeviceGenerationId |
 | iothub-connection-auth-method |Eine von IoT Hub für D2C-Nachrichten festgelegte Authentifizierungsmethode. Diese Eigenschaft enthält Informationen zu der Methode, die zum Authentifizieren des Geräts verwendet wird, das die Nachricht sendet.| Nein | connectionAuthMethod |
-| dt-dataschema | Dieser Wert wird von IoT Hub für Gerät-zu-Cloud-Nachrichten festgelegt. Er enthält die in der Geräteverbindung festgelegte Gerätemodell-ID. | Nein | – |
-| dt-subject | Der Name der Komponente, die die Gerät-zu-Cloud-Nachrichten sendet. | Ja | N/V |
+| dt-dataschema | Dieser Wert wird von IoT Hub für Gerät-zu-Cloud-Nachrichten festgelegt. Er enthält die in der Geräteverbindung festgelegte Gerätemodell-ID. | Nein | $dt-dataschema |
+| dt-subject | Der Name der Komponente, die die Gerät-zu-Cloud-Nachrichten sendet. | Ja | $dt-subject |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>Systemeigenschaften von **C2D**-IoT Hub-Nachrichten
 
@@ -71,7 +71,7 @@ Weitere Informationen zum Codieren und Decodieren von Nachrichten, die über ver
 | message-id |Eine vom Benutzer festgelegte Kennung für die Nachricht; wird für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`besteht.  |Ja|
 | sequence-number |Eine Nummer (für jede Gerätewarteschlange eindeutig), die jeder C2D-Nachricht von IoT Hub zugewiesen wird |Nein|
 | zu |Ein Ziel, das in [C2D](iot-hub-devguide-c2d-guidance.md) -Nachrichten angegeben wird. |Nein|
-| absolute-expiry-time |Datum und Uhrzeit des Nachrichtenablaufs. |Nein| 
+| absolute-expiry-time |Datum und Uhrzeit des Nachrichtenablaufs. |Ja| 
 | correlation-id |Eine Zeichenfolgeneigenschaft in einer Antwortnachricht, die normalerweise die Nachrichten-ID der Anforderung im Anforderung-Antwort-Muster enthält. |Ja|
 | user-id |Eine ID zum Festlegen des Ursprungs von Nachrichten. Wenn IoT Hub Nachrichten generiert, wird diese Eigenschaft auf `{iot hub name}`festgelegt. |Ja|
 | iothub-ack |Ein Feedbacknachrichtengenerator. Diese Eigenschaft wird in C2D-Nachrichten verwendet, um IoT Hub anzuweisen, als Ergebnis der Nachrichtenverarbeitung durch das Gerät Feedbacknachrichten zu generieren. Mögliche Werte: **Kein** (Standardeinstellung): Es wird keine Feedbacknachricht generiert. **Positiv**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht abgeschlossen wurde. **Negativ**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht ohne vollständige Verarbeitung durch das Gerät abgelaufen ist (oder die maximale Anzahl von Zustellversuchen erreicht wurde). **Voll**: Feedback wird sowohl bei erfolgreicher als auch nicht erfolgreicher Nachrichtenverarbeitung generiert. |Ja|

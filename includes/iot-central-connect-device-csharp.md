@@ -4,20 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 0383949dd9b0aeaa185613474d91d0416169ab1f
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 85fda9b645385e38ea53728dad33bf997024fef8
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491143"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719041"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen:
 
-* Eine Azure IoT Central-Anwendung, die mit der Vorlage **Benutzerdefinierte Anwendung** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](../articles/iot-central/core/quick-deploy-iot-central.md). Die Anwendung muss am 14. Juli 2020 oder nach diesem Datum erstellt worden sein.
-* Einen Entwicklungscomputer mit [Visual Studio (Community, Professional oder Enterprise)](https://visualstudio.microsoft.com/downloads/)
-* Eine lokale Kopie des GitHub-Repositorys mit [Microsoft Azure IoT-Beispielen für C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp), das den Beispielcode enthält. Laden Sie über den folgenden Link eine Kopie des Repositorys herunter: [ZIP herunterladen](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Entzippen Sie anschließend die Datei an einem geeigneten Speicherort auf Ihrem lokalen Computer.
+[!INCLUDE [iot-central-prerequisites-basic](iot-central-prerequisites-basic.md)]
+
+- Einen Entwicklungscomputer mit [Visual Studio (Community, Professional oder Enterprise)](https://visualstudio.microsoft.com/downloads/)
+
+- Eine lokale Kopie des GitHub-Repositorys mit [Microsoft Azure IoT-Beispielen für C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp), das den Beispielcode enthält. Laden Sie über den folgenden Link eine Kopie des Repositorys herunter: [ZIP herunterladen](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Entzippen Sie anschließend die Datei an einem geeigneten Speicherort auf Ihrem lokalen Computer.
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 

@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 04/23/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 73bef1648b08f5c1e0664ef1da15375bc44149cc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9cb84d15c12ae823462291b2e7008653306b2b55
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045347"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773717"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Das Speicherkonto stellt einen eindeutigen Namespace für Ihre Azure Storage-Daten bereit, auf den von jedem Ort der Welt aus über HTTP oder HTTPS zugegriffen werden kann. Daten in Ihrem Azure Storage-Konto sind dauerhaft und hochverfügbar, sicher und extrem skalierbar.
+Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen und Tabellen. Das Speicherkonto stellt einen eindeutigen Namespace für Ihre Azure Storage-Daten bereit, auf den von jedem Ort der Welt aus über HTTP oder HTTPS zugegriffen werden kann. Weitere Informationen zu Azure-Speicherkonten finden Sie unter [Speicherkonto – Übersicht](storage-account-overview.md).
 
-In diesem Artikel erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com/), [Azure PowerShell](/powershell/azure/), die [Azure-Befehlszeilenschnittstelle](/cli/azure) oder eine [Azure Resource Manager-Vorlage](../../azure-resource-manager/management/overview.md) ein Speicherkonto erstellen.  
+In diesem Artikel erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com/), [Azure PowerShell](/powershell/azure/), die [Azure-Befehlszeilenschnittstelle](/cli/azure) oder eine [Azure Resource Manager-Vorlage](../../azure-resource-manager/management/overview.md) ein Speicherkonto erstellen.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -35,7 +35,7 @@ Keine.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Wenn Sie ein Azure Storage-Konto mit PowerShell erstellen möchten, stellen Sie sicher, dass Sie das Azure PowerShell-Modul Az 0.7 oder höher installiert haben. Weitere Informationen finden Sie unter [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
+Wenn Sie ein Azure-Speicherkonto mit PowerShell erstellen möchten, stellen Sie sicher, dass Sie das [Az PowerShell-Modul](https://www.powershellgallery.com/packages/Az) Az 0.7 oder höher installiert haben. Weitere Informationen finden Sie unter [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
 
 Führen Sie den folgenden Befehl aus, um Ihre aktuelle Version zu ermitteln:
 
@@ -43,7 +43,7 @@ Führen Sie den folgenden Befehl aus, um Ihre aktuelle Version zu ermitteln:
 Get-InstalledModule -Name "Az"
 ```
 
-Informationen zur Installation oder zum Upgrade von Azure PowerShell finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps).
+Informationen zur Installation oder zum Upgrade von Azure PowerShell finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -72,7 +72,7 @@ Keine.
 
 ---
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+Als nächstes melden Sie sich bei Azure an.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -90,7 +90,7 @@ Connect-AzAccount
 
 Melden Sie sich zum Starten von Azure Cloud Shell beim [Azure-Portal](https://portal.azure.com) an.
 
-Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index#az-login) aus:
+Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den Befehl [az login](/cli/azure/reference-index#az_login) aus:
 
 ```azurecli-interactive
 az login
@@ -104,35 +104,112 @@ az login
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In diesem Artikel wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
+Ein Speicherkonto ist eine Azure Resource Manager Ressource. Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure. Weitere Informationen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 
-Ein **universelles v2**-Speicherkonto bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. In den hier beschriebenen Schritten wird ein Speicherkonto vom Typ „Universell v2“ erstellt. Die Schritte für die Erstellung einer anderen Art von Speicherkonto sind jedoch ähnlich. Weitere Informationen zu den Arten von Speicherkonten und anderen Speicherkontoeinstellungen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md).
+Jede Resource Manager-Ressource, einschließlich eines Azure-Speicherkontos, muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In dieser Anleitung wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+Führen Sie die folgenden Schritte aus, um ein Speicherkonto im Azure-Portal zu erstellen:
+
+1. Wählen Sie im Menü des linken Portals **Speicherkonten** aus, um eine Liste Ihrer Speicherkonten anzuzeigen.
+1. Klicken Sie auf der Seite **Speicherkonten** auf **Neu**.
+
+Die Optionen für Ihr neues Speicherkonto sind auf der Seite **Speicherkonto erstellen** auf Registerkarten organisiert. In den folgenden Abschnitten werden die einzelnen Registerkarten und ihre Optionen beschrieben.
+
+### <a name="basics-tab"></a>Registerkarte „Grundeinstellungen“
+
+Geben Sie auf der Registerkarte **Grundlagen** die grundlegenden Informationen für Ihr Speicherkonto an. Nachdem Sie die Registerkarte **Grundlagen** abgeschlossen haben, können Sie Ihr neues Speicherkonto weiter anpassen, indem Sie Optionen auf den anderen Registerkarten festlegen, oder Sie können **Überprüfen + erstellen** auswählen, um die Standardoptionen zu übernehmen und mit der Überprüfung und Erstellung des Kontos fortzufahren.
+
+In der folgenden Tabelle werden die Felder der Registerkarte **Grundlagen** beschrieben.
+
+| `Section` | Feld | Erforderlich oder optional | Beschreibung |
+|--|--|--|--|
+| Projektdetails | Abonnement | Erforderlich | Wählen Sie das Abonnement für das neue Speicherkonto aus. |
+| Projektdetails | Ressourcengruppe | Erforderlich | Erstellen Sie eine neue Ressourcengruppe für dieses Speicherkonto oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen finden Sie unter [Ressourcengruppen](../../azure-resource-manager/management/overview.md#resource-groups). |
+| Instanzendetails | Speicherkontoname | Erforderlich | Wählen Sie einen eindeutigen Namen für Ihr Speicherkonto aus. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. |
+| Instanzendetails | Region | Erforderlich | Wählen Sie die passende Region für Ihr Speicherkonto aus. Weitere Informationen finden Sie unter [Regionen und Verfügbarkeitszonen in Azure](../../availability-zones/az-overview.md).<br /><br />Nicht alle Regionen werden für alle Arten von Speicherkonten oder Redundanzkonfigurationen unterstützt. Weitere Informationen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).<br /><br />Die Wahl der Region kann sich auf die Abrechnung auswirken. Weitere Informationen finden Sie unter [Speicherkontoabrechnung](storage-account-overview.md#storage-account-billing). |
+| Instanzendetails | Leistung | Erforderlich | Wählen Sie **Standard** performance for general-purpose v2 storage accounts (default) (Standardleistung für Speicherkonten vom Standardversions-V2-Speicherkonto (Standard)) aus. Diese Art von Konto wird von Microsoft für die meisten Szenarien empfohlen. Weitere Informationen finden Sie unter [Speicherkontentypen](storage-account-overview.md#types-of-storage-accounts).<br /><br />Wählen Sie **Premium** für Szenarien mit geringer Latenz aus. Wählen Sie nach dem Auswählen von **Premium** den Typ des zu erstellenden Premium-Speicherkontos aus. Die folgenden Arten von Premium-Speicherkonten sind verfügbar: <ul><li>[Blockblobs](../blobs/storage-blob-performance-tiers.md)</li><li>[Dateifreigaben](../files/storage-files-planning.md#management-concepts)</li><li>[Seitenblobs](../blobs/storage-blob-pageblob-overview.md)</li></ul> |
+| Instanzendetails | Redundanz | Erforderlich | Wählen Sie die gewünschte Redundanzkonfiguration aus. Nicht alle Redundanzoptionen sind für alle Arten von Speicherkonten in allen Regionen verfügbar. Weitere Informationen zu Redundanzkonfigurationen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).<br /><br />Wenn Sie eine georedundante Konfiguration (GRS oder GZRS) auswählen, werden Ihre Daten in ein Rechenzentrum in einer anderen Region repliziert. Wählen Sie für den Lesezugriff auf Daten in der sekundären Region die Option **Lesezugriff auf Daten verfügbar machen** aus, wenn die regionale Nichtverfügbarkeit nicht möglich ist. |
+
+Die folgende Abbildung zeigt eine Standardkonfiguration für ein neues Speicherkonto.
+
+:::image type="content" source="media/storage-account-create/create-account-basics-tab.png" alt-text="Screenshot der Standardkonfiguration für ein neues Speicherkonto – Registerkarte „Grundlagen“":::
+
+### <a name="advanced-tab"></a>Registerkarte „Erweitert“
+
+Auf der Registerkarte **Erweitert** können Sie zusätzliche Optionen konfigurieren und die Standardeinstellungen für Ihr neues Speicherkonto ändern. Einige dieser Optionen können auch konfiguriert werden, nachdem das Speicherkonto erstellt wurde, während andere zum Zeitpunkt der Erstellung konfiguriert werden müssen.
+
+In der folgenden Tabelle werden die Felder der Registerkarte **Erweitert** beschrieben.
+
+| `Section` | Feld | Erforderlich oder optional | BESCHREIBUNG |
+|--|--|--|--|
+| Sicherheit | Enable secure transfer (Sichere Übertragung aktivieren) | Optional | Aktivieren Sie die sichere Übertragung, um zu fordern, dass eingehende Anforderungen an dieses Speicherkonto nur über HTTPS (Standard) gesendet werden. Empfohlen für optimale Sicherheit. Weitere Informationen finden Sie unter [Erzwingen einer sicheren Übertragung für sichere Verbindungen](storage-require-secure-transfer.md). |
+| Sicherheit | Infrastrukturverschlüsselung aktivieren | Optional | Die Infrastrukturverschlüsselung ist standardmäßig nicht aktiviert. Aktivieren Sie die Infrastrukturverschlüsselung, um Ihre Daten sowohl auf Dienstebene als auch auf Infrastrukturebene zu verschlüsseln. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos mit aktivierter Infrastrukturverschlüsselung für die doppelte Datenverschlüsselung](infrastructure-encryption-enable.md). |
+| Sicherheit | Enable blob public access (Öffentlichen Blobzugriff aktivieren) | Optional | Wenn diese Einstellung aktiviert ist, kann ein Benutzer mit den entsprechenden Berechtigungen anonymen öffentlichen Zugriff auf einen Container im Speicherkonto aktivieren (Standard). Wenn Sie diese Einstellung deaktivieren, wird der anonyme öffentliche Zugriff auf das Speicherkonto verhindert. Weitere Informationen finden Sie unter [Verhindern des anonymem, öffentlichen Lesezugriffs auf Container und Blobs](../blobs/anonymous-read-access-prevent.md).<br> <br> Die Aktivierung des öffentlichen Zugriffs macht Blobdaten nicht verfügbar, sofern der Benutzer nicht in einem zusätzlichen Schritt explizit die Containereinstellung für den öffentlichen Zugriff konfiguriert. |
+| Sicherheit | Zugriff auf Speicherkontoschlüssel aktivieren (Vorschau) | Optional | Wenn diese Einstellung aktiviert ist, können Clients Anforderungen an das Speicherkonto entweder mit den Kontozugriffsschlüsseln oder einem Azure Active Directory-Konto (Azure AD) autorisieren (Standard). Wenn Sie diese Einstellung deaktivieren, wird die Autorisierung mit den Kontozugriffsschlüsseln verhindert. Weitere Informationen finden Sie unter [Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto (Vorschau)](shared-key-authorization-prevent.md). |
+| Sicherheit | TLS-Mindestversion | Erforderlich | Wählen Sie die erforderliche Mindestversion der Transport Layer Security (TLS) für eingehende Anforderungen an ein Speicherkonto. Der Standardwert ist TLS-Version 1.2. Wenn dieser Wert auf den Standardwert festgelegt ist, werden eingehende Anforderungen mit TLS 1.0 oder TLS 1.1 abgelehnt. Weitere Informationen finden Sie unter [Erzwingen der erforderliche Mindestversion der Transport Layer Security (TLS) für Anforderungen an ein Speicherkonto](transport-layer-security-configure-minimum-version.md). |
+| Data Lake Storage Gen2 | Aktivieren Sie hierarchische Namespace | Optional | Wenn Sie dieses Speicherkonto für Azure Data Lake Storage Gen2 verwenden möchten, müssen Sie einen hierarchischen Namespace konfigurieren. Weitere Informationen hierzu finden Sie unter [Einführung in Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md). |
+| Blob-Speicher | Aktivieren der Netzwerkdateifreigabe (NFS) v3 (Vorschau) | Optional | NFS v3 bietet Linux-Dateisystemkompatibilität bei Objektspeicherskalierung und ermöglicht es Linux-Clients, einen Container aus einem virtuellen Azure-Computer (VM) oder einem lokalen Computer in Blob Storage einzubinden. Weitere Informationen finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](../blobs/network-file-system-protocol-support.md). |
+| Blob-Speicher | Zugriffsebene | Erforderlich | Mit Blobzugriffsebenen können Sie Blobdaten basierend auf der Nutzung auf die kostengünstigste Weise speichern. Wählen Sie die heiße Zugriffsebene (Standard) für Daten aus, auf die häufig zugegriffen wird. Wählen Sie die kalte Zugriffsebene für Daten aus, auf die selten zugegriffen wird. Weitere Informationen finden Sie unter [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md). |
+| Azure Files | Aktivieren großer Dateifreigaben | Optional | Nur für Storage Premium-Konten für Dateifreigaben verfügbar. Weitere Informationen finden Sie unter [Aktivieren von Standard-Dateifreigaben für bis zu 100 TiB](../files/storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib). |
+| Tabellen und Warteschlangen | Unterstützung für kundenseitig verwaltete Schlüssel aktivieren | Optional | Um den Support für kundenseitig verwaltete Schlüssel für Tabellen und Warteschlangen zu aktivieren, müssen Sie diese Einstellung zum Zeitpunkt der Erstellung des Speicherkontos auswählen. Weitere Informationen finden Sie unter [Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Tabellen und Warteschlangen unterstützt](account-encryption-key-create.md). |
+
+### <a name="networking-tab"></a>Registerkarte „Netzwerk“
+
+Auf der Registerkarte **Netzwerk** können Sie Einstellungen für Netzwerkkonnektivität und Routingeinstellungen für Ihr neues Speicherkonto konfigurieren. Diese Optionen können auch konfiguriert werden, nachdem das Speicherkonto erstellt wurde.
+
+In der folgenden Tabelle werden die Felder der Registerkarte **Netzwerk** beschrieben.
+
+| `Section` | Feld | Erforderlich oder optional | Beschreibung |
+|--|--|--|--|
+| Netzwerkkonnektivität | Konnektivitätsmethode | Erforderlich | Standardmäßig wird der eingehende Netzwerkdatenverkehr an den öffentlichen Endpunkt für Ihr Speicherkonto weitergeleitet. Sie können angeben, dass Datenverkehr über ein virtuelles Azure-Netzwerk an den öffentlichen Endpunkt weitergeleitet werden muss. Sie können auch private Endpunkte für Ihr Speicherkonto konfigurieren. Weitere Informationen finden Sie unter [Verwenden privater Endpunkte für Azure Storage](storage-private-endpoints.md). |
+| Netzwerkrouting | Routingpräferenz | Erforderlich | Die Netzwerkroutingpräferenz legt fest, wie Netzwerkdatenverkehr von Clients über das Internet zum öffentlichen Endpunkt Ihres Speicherkontos geleitet wird. Standardmäßig verwendet ein neues Speicherkonto das Microsoft-Netzwerkrouting. Sie können auch Netzwerkdatenverkehr über den POP weiterleiten, der dem Speicherkonto am nächsten liegt, was die Netzwerkkosten senken kann. Weitere Informationen dazu finden Sie unter [Netzwerkroutingpräferenz für Azure Storage](network-routing-preference.md). |
+
+### <a name="data-protection-tab"></a>Registerkarte „Datenschutz“
+
+Auf der Registerkarte **Datenschutz** können Sie Datenschutzoptionen für Blobdaten in Ihrem neuen Speicherkonto konfigurieren.  Diese Optionen können auch konfiguriert werden, nachdem das Speicherkonto erstellt wurde. Eine Übersicht über die Datenschutzoptionen in Azure Storage finden Sie unter [Übersicht über den Datenschutz.](../blobs/data-protection-overview.md)
+
+In der folgenden Tabelle werden die Felder auf der Registerkarte **Datenschutz** beschrieben.
+
+| `Section` | Feld | Erforderlich oder optional | Beschreibung |
+|--|--|--|--|
+| Wiederherstellung | Zeitpunktwiederherstellung für Container aktivieren | Optional | Point-in-Time-Wiederherstellung bietet Schutz vor versehentlichem Löschen oder Beschädigungen, da Sie Blockblobdaten in einem früheren Zustand wiederherstellen können. Weitere Informationen finden Sie unter [Zeitpunktwiederherstellung – Blockblobs](../blobs/point-in-time-restore-overview.md).<br /><br />Das Aktivieren der Zeitpunktwiederherstellung ermöglicht auch die Blobversionsierung, das vorläufig gelöschte Blob und den Blobänderungsfeed. Diese erforderlichen Features können sich auf die Kosten auswirken. Weitere Informationen finden Sie unter [Preise und Abrechnung](../blobs/point-in-time-restore-overview.md#pricing-and-billing) für die Zeitpunktwiederherstellung. |
+| Wiederherstellung | Aktivieren von „Vorläufiges Löschen“ für Blobs | Optional | Das Feature für das vorläufige Löschen von Blobs schützt einzelne Blobs, Momentaufnahmen oder Versionen vor einer versehentlichen Löschung oder Überschreibung, weil die gelöschten Daten für einen Aufbewahrungszeitraum im System beibehalten werden. Während des Aufbewahrungszeitraums können Sie den Zustand eines vorläufig gelöschten Objekts zum Zeitpunkt der Löschung wiederherstellen. Weitere Informationen finden Sie unter [Vorläufiges Löschen von Blobs](../blobs/soft-delete-blob-overview.md).<br /><br />Microsoft empfiehlt die Aktivierung des vorläufigen Löschens von Blobs für Ihre Speicherkonten und die Festlegung eines Aufbewahrungszeitraums von mindestens sieben Tagen. |
+| Wiederherstellung | Vorläufiges Löschen für Container (Vorschau) aktivieren | Optional | Das Feature für das vorläufige Löschen von Containers schützt einen Container und seinen Inhalt vor einer versehentlichen Löschung, weil die gelöschten Daten für einen Aufbewahrungszeitraum im System beibehalten werden. Während des Aufbewahrungszeitraums können Sie den Zustand eines vorläufig gelöschten Containers zum Zeitpunkt der Löschung wiederherstellen. Weitere Informationen finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](../blobs/soft-delete-container-overview.md).<br /><br />Microsoft empfiehlt die Aktivierung des vorläufigen Löschens von Containern für Ihre Speicherkonten und die Festlegung eines Aufbewahrungszeitraums von mindestens sieben Tagen. |
+| Wiederherstellung | Vorläufiges Löschen für Dateifreigaben aktivieren | Optional | Das Feature für das vorläufige Löschen von Dateifreigaben schützt eine Dateifreigabe und ihren Inhalt vor einer versehentlichen Löschung, weil die gelöschten Daten für einen Aufbewahrungszeitraum im System beibehalten werden. Während des Aufbewahrungszeitraums können Sie den Zustand einer vorläufig gelöschten Dateifreigabe zum Zeitpunkt der Löschung wiederherstellen. Weitere Informationen finden Sie unter [Verhindern des versehentlichen Löschens von Azure-Dateifreigaben.](../files/storage-files-prevent-file-share-deletion.md)<br /><br />Microsoft empfiehlt die Aktivierung des vorläufigen Löschens für Dateifreigaben Azure Files Workloads und die Festlegung eines Aufbewahrungszeitraums von mindestens sieben Tagen. |
+| Nachverfolgung | Versionsverwaltung für Blobs aktivieren | Optional | Bei der Blobversionsierung wird der Status eines Blobs automatisch in einer früheren Version gespeichert, wenn das Blob überschrieben wird. Weitere Informationen finden Sie unter [Blobversionsverwaltung (Vorschau)](../blobs/versioning-overview.md).<br /><br />Microsoft empfiehlt die Aktivierung der Blobversionsverarbeitung für einen optimalen Datenschutz für das Speicherkonto. |
+| Nachverfolgung | Blob-Änderungsfeed aktivieren | Optional | Der Blob-Änderungsfeed stellt Transaktionsprotokolle aller Änderungen an allen Blobs in Ihrem Speicherkonto sowie an ihren Metadaten bereit. Weitere Informationen finden Sie unter [Änderungsfeed in Azure Blob Storage](../blobs/storage-blob-change-feed.md). |
+
+### <a name="tags-tab"></a>Registerkarte „Tags“
+
+Auf der Registerkarte **Tags** können Sie Resource Manager-Tags angeben, um Ihre Azure-Ressourcen zu organisieren. Weitere Informationen finden Sie unter [Markieren von Ressourcen, Ressourcengruppen und Abonnements für die logische Organisation](../../azure-resource-manager/management/tag-resources.md).
+
+### <a name="review--create-tab"></a>Registerkarte „Überprüfen und erstellen“
+
+Wenn Sie zur Registerkarte **Überprüfen + erstellen** navigieren, führt Azure die Überprüfung der ausgewählten Speicherkontoeinstellungen aus. Wenn die Überprüfung erfolgreich ist, können Sie mit dem Erstellen des Speicherkontos fortfahren.
+
+Wenn die Überprüfung fehlschlägt, gibt das Portal an, welche Einstellungen geändert werden müssen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Erstellen Sie zunächst mit PowerShell unter Verwendung des Befehls [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine neue Ressourcengruppe:
+Legen Sie zum Erstellen eines Speicherkontos vom Typ „Allgemein v2“ mit PowerShell zunächst eine neue Ressourcengruppe an, indem Sie den Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) aufrufen:
 
-```powershell
-# put resource group in a variable so you can use the same group name going forward,
-# without hard-coding it repeatedly
-$resourceGroup = "storage-resource-group"
-$location = "westus"
+```azurepowershell-interactive
+$resourceGroup = "<resource-group>"
+$location = "<location>"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
 Falls Sie nicht wissen, welche Region Sie für den `-Location`-Parameter angeben sollen, können Sie mit dem Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation) eine Liste der unterstützten Regionen für Ihr Abonnement abrufen:
 
-```powershell
+```azurepowershell-interactive
 Get-AzLocation | select Location
 ```
 
-Erstellen Sie als Nächstes ein Speicherkonto vom Typ „Universell v2“ mit georedundantem Speicher mit Lesezugriff (RA-GRS) über den Befehl [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Denken Sie daran, dass der Name Ihres Speicherkontos innerhalb von Azure eindeutig sein muss, ersetzen Sie daher den Platzhalterwert in Klammern durch Ihren eigenen eindeutigen Wert:
+Erstellen Sie als Nächstes ein standardmäßiges Speicherkonto vom Typ „Universell v2“ mit georedundantem Speicher mit Lesezugriff (RA-GRS) über den Befehl [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Denken Sie daran, dass der Name Ihres Speicherkontos innerhalb von Azure eindeutig sein muss, ersetzen Sie daher den Platzhalterwert in Klammern durch Ihren eigenen eindeutigen Wert:
 
-```powershell
+```azurepowershell-interactive
 New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name <account-name> `
   -Location $location `
@@ -140,62 +217,60 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2
 ```
 
-> [!IMPORTANT]
-> Wenn Sie [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) verwenden möchten, schließen Sie `-EnableHierarchicalNamespace $True` in diese Parameterliste ein.
+Um einen hierarchischen Namespace für das Speicherkonto für die Verwendung von [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) zu aktivieren, fügen Sie den `-EnableHierarchicalNamespace $True`-Parameter für den Aufruf des Befehls **New-AzStorageAccount** ein.
 
-Um ein Speicherkonto vom Typ „Universell v2“ mit einer anderen Replikationsoption zu erstellen, setzen Sie für den Parameter **SkuName** den gewünschten Wert in der folgenden Tabelle ein.
+Die folgende Tabelle zeigt, welche Werte für die `-SkuName`- und `-Kind`-Parameter und verwendet werden sollen, um einen bestimmten Speicherkontotyp mit der gewünschten Redundanzkonfiguration zu erstellen.
 
-|Replikationsoption  |SkuName-Parameter  |
-|---------|---------|
-|Lokal redundanter Speicher (LRS)     |Standard_LRS         |
-|Zonenredundanter Speicher (ZRS)     |Standard_ZRS         |
-|Georedundanter Speicher (GRS)     |Standard_GRS         |
-|Georedundanter Speicher mit Lesezugriff (RA-GRS)     |Standard_RAGRS         |
-|Geozonenredundanter Speicher (GZRS)    |Standard_GZRS         |
-|Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)    |Standard_RAGZRS         |
+| Speicherkontotyp | Unterstützte Redundanzkonfigurationen | Wert für den -Varianten-Parameter | Mögliche Werte für den Parameter -SkuName | Unterstützt hierarchischen Namespace |
+|--|--|--|--|--|
+| Standard, Universell V2 | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Ja |
+| Premium-Blockblobs | LRS / ZRS | BlockBlobStorage | Premium_LRS / Premium_ZRS | Ja |
+| Premium-Dateifreigaben | LRS / ZRS | FileStorage | Premium_LRS / Premium_ZRS | Nein |
+| Premium-Seitenblobs | LRS | StorageV2 | Premium_LRS | Nein |
+| Legacy-Standard „Allgemein v1“ | LRS / GRS / RA-GRS | Storage | Standard_LRS / Standard_GRS / Standard_RAGRS | Nein |
+| Legacy-Blobspeicher | LRS / GRS / RA-GRS | BlobStorage | Standard_LRS / Standard_GRS / Standard_RAGRS | Nein |
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Erstellen Sie zuerst eine neue Ressourcengruppe über die Azure-Befehlszeilenschnittstelle, und verwenden Sie hierzu den Befehl [az group create](/cli/azure/group#az_group_create).
+Legen Sie zum Erstellen eines Speicherkontos vom Typ „Allgemein v2“ mit Azure CLI zunächst eine neue Ressourcengruppe an, indem Sie den Befehl [az group create](/cli/azure/group#az_group_create) aufrufen.
 
 ```azurecli-interactive
 az group create \
-    --name storage-resource-group \
-    --location westus
+  --name storage-resource-group \
+  --location westus
 ```
 
 Falls Sie nicht wissen, welche Region Sie für den `--location`-Parameter angeben sollen, können Sie mit dem Befehl [az account list-locations](/cli/azure/account#az_account_list) eine Liste der unterstützten Regionen für Ihr Abonnement abrufen.
 
 ```azurecli-interactive
 az account list-locations \
-    --query "[].{Region:name}" \
-    --out table
+  --query "[].{Region:name}" \
+  --out table
 ```
 
-Erstellen Sie als Nächstes ein Speicherkonto vom Typ „Universell v2“ mit georedundantem Speicher mit Lesezugriff über den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create). Denken Sie daran, dass der Name Ihres Speicherkontos innerhalb von Azure eindeutig sein muss, ersetzen Sie daher den Platzhalterwert in Klammern durch Ihren eigenen eindeutigen Wert:
+Erstellen Sie als Nächstes ein standardmäßiges Speicherkonto vom Typ „Allgemein v2“ mit georedundantem Speicher mit Lesezugriff über den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create). Denken Sie daran, dass der Name Ihres Speicherkontos innerhalb von Azure eindeutig sein muss, ersetzen Sie daher den Platzhalterwert in Klammern durch Ihren eigenen eindeutigen Wert:
 
 ```azurecli-interactive
 az storage account create \
-    --name <account-name> \
-    --resource-group storage-resource-group \
-    --location westus \
-    --sku Standard_RAGRS \
-    --kind StorageV2
+  --name <account-name> \
+  --resource-group storage-resource-group \
+  --location westus \
+  --sku Standard_RAGRS \
+  --kind StorageV2
 ```
 
-> [!IMPORTANT]
-> Wenn Sie [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) verwenden möchten, schließen Sie `--enable-hierarchical-namespace true` in diese Parameterliste ein.
+Um einen hierarchischen Namespace für das Speicherkonto für die Verwendung von [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) zu aktivieren, fügen Sie den `--enable-hierarchical-namespace true`-Parameter für den Aufruf des Befehls **az storage account create** ein. Zum Erstellen eines hierarchischen Namespace Azure CLI Version 2.0.79 oder höher erforderlich.
 
-Um ein Speicherkonto vom Typ „Universell v2“ mit einer anderen Replikationsoption zu erstellen, setzen Sie für den Parameter **sku** den gewünschten Wert in der folgenden Tabelle ein.
+Die folgende Tabelle zeigt, welche Werte für die `-sku`- und `-kind`-Parameter und verwendet werden sollen, um einen bestimmten Speicherkontotyp mit der gewünschten Redundanzkonfiguration zu erstellen.
 
-|Replikationsoption  |sku-Parameter  |
-|---------|---------|
-|Lokal redundanter Speicher (LRS)     |Standard_LRS         |
-|Zonenredundanter Speicher (ZRS)     |Standard_ZRS         |
-|Georedundanter Speicher (GRS)     |Standard_GRS         |
-|Georedundanter Speicher mit Lesezugriff (RA-GRS)     |Standard_RAGRS         |
-|Geozonenredundanter Speicher (GZRS)    |Standard_GZRS         |
-|Geozonenredundanter Speicher mit Lesezugriff (RA-GZRS)    |Standard_RAGZRS         |
+| Speicherkontotyp | Unterstützte Redundanzkonfigurationen | Wert für den -Varianten-Parameter | Mögliche Werte für den -sku-Parameter | Unterstützt hierarchischen Namespace |
+|--|--|--|--|--|
+| Standard, Universell V2 | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Ja |
+| Premium-Blockblobs | LRS / ZRS | BlockBlobStorage | Premium_LRS / Premium_ZRS | Ja |
+| Premium-Dateifreigaben | LRS / ZRS | FileStorage | Premium_LRS / Premium_ZRS | Nein |
+| Premium-Seitenblobs | LRS | StorageV2 | Premium_LRS | Nein |
+| Legacy-Standard „Allgemein v1“ | LRS / GRS / RA-GRS | Storage | Standard_LRS / Standard_GRS / Standard_RAGRS | Nein |
+| Legacy-Blobspeicher | LRS / GRS / RA-GRS | BlobStorage | Standard_LRS / Standard_GRS / Standard_RAGRS | Nein |
 
 # <a name="template"></a>[Vorlage](#tab/template)
 
@@ -206,7 +281,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 
 New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json"
 ```
 
 ```azurecli-interactive
@@ -215,11 +290,11 @@ read resourceGroupName &&
 echo "Enter the location (i.e. centralus):" &&
 read location &&
 az group create --name $resourceGroupName --location "$location" &&
-az deployment group create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+az deployment group create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json"
 ```
 
 > [!NOTE]
-> Diese Vorlage dient nur als Beispiel. Es gibt viele Speicherkontoeinstellungen, die in dieser Vorlage nicht konfiguriert sind. Wenn Sie z. B. [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) verwenden möchten, ändern Sie diese Vorlage, indem Sie die `isHnsEnabledad`-Eigenschaft des Objekts `StorageAccountPropertiesCreateParameters` auf `true` festlegen. 
+> Diese Vorlage dient nur als Beispiel. Es gibt viele Speicherkontoeinstellungen, die in dieser Vorlage nicht konfiguriert sind. Wenn Sie z. B. [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) verwenden möchten, ändern Sie diese Vorlage, indem Sie die `isHnsEnabledad`-Eigenschaft des Objekts `StorageAccountPropertiesCreateParameters` auf `true` festlegen.
 
 Informationen zum Ändern dieser Vorlage und zum Erstellen neuer Vorlagen finden Sie unter:
 
@@ -231,7 +306,12 @@ Informationen zum Ändern dieser Vorlage und zum Erstellen neuer Vorlagen finden
 
 ## <a name="delete-a-storage-account"></a>Löschen von Speicherkonten
 
-Durch das Löschen eines Speicherkontos wird das gesamte Konto gelöscht, einschließlich aller Daten im Konto. Dieser Vorgang kann nicht rückgängig gemacht werden.
+Durch das Löschen eines Speicherkontos wird das gesamte Konto gelöscht, einschließlich aller Daten im Konto. In der Regel kann dieser Vorgang nicht rückgängig gemacht werden. Die Wiederherstellung eines Speicherkontos ist nur unter bestimmten Umständen möglich und nicht garantiert. Weitere Informationen finden Sie unter [Wiederherstellen eines gelöschten Speicherkontos](storage-account-recover.md).
+
+> [!WARNING]
+> Sichern Sie alle Inhalte, die Sie speichern möchten, bevor Sie das Konto löschen. Es ist in der Regel nicht möglich, ein gelöschtes Speicherkonto wiederherzustellen oder Ressourcen abzurufen, die das Konto vor dem Löschen enthielt.
+
+Wenn Sie versuchen, ein Speicherkonto zu löschen, das einem virtuellen Azure-Computer zugewiesen ist, wird unter Umständen ein Fehler mit dem Hinweis angezeigt, dass das Speicherkonto noch verwendet wird. Hilfe zum Beheben dieses Fehlers finden Sie unter [Beheben von Fehlern beim Löschen von Speicherkonten](/troubleshoot/azure/virtual-machines/storage-resource-deletion-errors).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -248,7 +328,7 @@ Remove-AzStorageAccount -Name <storage-account> -ResourceGroupName <resource-gro
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie zum Löschen des Speicherkontos den Befehl [az storage account delete](/cli/azure/storage/account#az-storage-account-delete):
+Verwenden Sie zum Löschen des Speicherkontos den Befehl [az storage account delete](/cli/azure/storage/account#az_storage_account_delete):
 
 ```azurecli-interactive
 az storage account delete --name <storage-account> --resource-group <resource-group>
@@ -276,14 +356,9 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 Alternativ können Sie die Ressourcengruppe löschen, wodurch das Speicherkonto und alle anderen Ressourcen in dieser Ressourcengruppe gelöscht werden. Weitere Informationen zum Löschen einer Ressourcengruppe finden Sie unter [Löschen von Ressourcengruppe und Ressourcen](../../azure-resource-manager/management/delete-resource-group.md).
 
-> [!WARNING]
-> Es ist nicht möglich, ein gelöschtes Speicherkonto wiederherzustellen oder Inhalte abzurufen, die das Konto vor dem Löschen enthielt. Sichern Sie alle Inhalte, die Sie speichern möchten, bevor Sie das Konto löschen. Dies gilt auch für alle Ressourcen im Konto – gelöschte Blobs, Tabellen, Warteschlangen oder Dateien können nicht wiederhergestellt werden.
->
-> Wenn Sie versuchen, ein Speicherkonto zu löschen, das einem virtuellen Azure-Computer zugewiesen ist, wird unter Umständen ein Fehler mit dem Hinweis angezeigt, dass das Speicherkonto noch verwendet wird. Hilfe zum Beheben dieses Fehlers finden Sie unter [Beheben von Fehlern beim Löschen von Speicherkonten](/troubleshoot/azure/virtual-machines/welcome-virtual-machines).
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Speicherkontoübersicht](storage-account-overview.md)
 - [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](storage-account-upgrade.md)
-- [Verschieben eines Azure Storage-Kontos in eine andere Region](storage-account-move.md)
+- [Verschieben eines Speicherkontos in eine andere Region](storage-account-move.md)
 - [Wiederherstellen eines gelöschten Speicherkontos](storage-account-recover.md)

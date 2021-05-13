@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/06/2021
-ms.openlocfilehash: 8970fc2d5f11d106f34cf2f4c05a1c61bdc6c438
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: ee5ccd377ccfe65a061f3fda8967a90501737953
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107413"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632653"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Senkentransformation in einem Zuordnungsdatenfluss
 
@@ -48,7 +48,7 @@ Der Zuordnungsdatenfluss folgt einem Ansatz zum Extrahieren, Laden und Transform
 | [Azure Database for MySQL](connector-azure-database-for-mysql.md) |  | ✓/✓ |
 | [Azure-Datenbank für PostgreSQL](connector-azure-database-for-postgresql.md) |  | ✓/✓ |
 | [Azure SQL-Datenbank](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure SQL Managed Instance (Vorschau)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
+| [Verwaltete Azure SQL-Datenbank-Instanz](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 

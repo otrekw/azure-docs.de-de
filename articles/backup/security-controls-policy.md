@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Backup
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy auf, die für Azure Backup verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.topic: sample
 author: v-amallick
 ms.author: v-amallick
 ms.service: backup
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: ae9d649f6a3f79c59f8fade86ee3dfbba77a98f0
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 3e2da4fb5e11366ff2a433c5ab01de8637bc0bf4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108180145"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745617"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-backup"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Backup
 

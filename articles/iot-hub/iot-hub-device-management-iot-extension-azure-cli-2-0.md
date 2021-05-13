@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: a5bc7e195efd62f430fdf2aa0cb606dbcff79528
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: a6bf14691e583190c4485ae854de78b187d95211
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567195"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773897"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Verwenden der IoT-Erweiterung für Azure CLI für die Verwaltung von Azure IoT Hub-Geräten
 
@@ -82,7 +82,7 @@ Legen Sie mit folgendem Befehl für die gewünschte Eigenschaft ein Intervall vo
 
 ```azurecli
 az iot hub device-twin update -n <your hub name> \
-  -d <your device id> --set properties.desired.interval = 3000
+  -d <your device id> --set properties.desired.interval=3000
 ```
 
 Diese Eigenschaft kann von Ihrem Gerät gelesen werden.
@@ -111,7 +111,7 @@ Fügen Sie mit folgendem Befehl dem Gerät eine Feldrolle „temperature&humidit
 az iot hub device-twin update \
   --hub-name <your hub name> \
   --device-id <your device id> \
-  --set tags = '{"role":"temperature&humidity"}}'
+  --set tags='{"role":"temperature&humidity"}'
 ```
 
 ## <a name="device-twin-queries"></a>Gerätezwillingabfragen

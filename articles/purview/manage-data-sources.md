@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 90a873b7de6ccc1ba21a05bf4c0e288ed668cac0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8eefda763765fd17fbf86bcf3205e854459a9f6
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694460"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656240"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>Verwalten von Datenquellen in Azure Purview (Vorschau)
 
@@ -30,11 +30,11 @@ Verwenden Sie die folgenden Schritte, um eine neue Quelle zu registrieren.
 
    :::image type="content" source="media/manage-data-sources/select-source-type.png" alt-text="Auswählen eines Datenquellentyps auf der Seite „Quellen registrieren“":::
 
-1. Füllen Sie das Formular auf der Seite **Quellen registrieren** aus. Wählen Sie einen Namen für Ihre Quelle aus, und geben Sie die entsprechenden Informationen ein. Wenn Sie **Aus Azure-Abonnement** als Kontoauswahlmethode ausgewählt haben, werden die Quellen in Ihrem Abonnement in einer Dropdownliste angezeigt. Alternativ können Sie Ihre Quellinformationen auch manuell eingeben.
+2. Füllen Sie das Formular auf der Seite **Quellen registrieren** aus. Wählen Sie einen Namen für Ihre Quelle aus, und geben Sie die entsprechenden Informationen ein. Wenn Sie **Aus Azure-Abonnement** als Kontoauswahlmethode ausgewählt haben, werden die Quellen in Ihrem Abonnement in einer Dropdownliste angezeigt. 
 
    :::image type="content" source="media/manage-data-sources/register-sources-form.png" alt-text="Formular für Datenquelleninformationen":::
 
-1. Wählen Sie **Fertig stellen** aus.
+3. Wählen Sie **Registrieren**.
 
 ## <a name="view-sources"></a>Anzeigen von Quellen
 
