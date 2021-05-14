@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5dddaabf47a261f741b3b1cb8d3319d589c4e474
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 03917b332d6ce204cda0ec072d213a0844690b94
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480767"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787831"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verbinden von Funktions-Apps in Azure für die Verarbeitung von Daten
 
@@ -132,14 +132,14 @@ Um sicherzustellen, dass das Bearertoken übergeben wird, richten Sie Berechtigu
 1. Verwenden Sie den folgenden Befehl, um die Details der systemseitig verwalteten Identität für die Funktion anzuzeigen. Beachten Sie in der Ausgabe das Feld `principalId`.
 
     ```azurecli-interactive 
-    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    az functionapp identity show --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>   
     ```
 
     >[!NOTE]
     > Falls die Ergebnisanzeige leer ist und keine Details einer Identität angezeigt werden, sollten Sie mit diesem Befehl eine neue systemseitig verwaltete Identität erstellen:
     > 
     >```azurecli-interactive    
-    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>    
     >```
     >
     > In der Ausgabe werden Details zur Identität angezeigt, z. B. der für den nächsten Schritt benötigte Wert für `principalId`. 
@@ -158,7 +158,7 @@ Machen Sie die URL Ihrer Instanz für Ihre Funktion zugänglich, indem Sie dafü
 > Die URL der Azure Digital Twins-Instanz wird durch das Hinzufügen von *https://* am Anfang des Hostnamens der Instanz erstellt. Um den Hostnamen mit allen Eigenschaften der Instanz anzuzeigen, führen Sie Folgendes aus: `az dt show --dt-name <your-Azure-Digital-Twins-instance>`.
 
 ```azurecli-interactive 
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
+az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
 
 # <a name="azure-portal"></a>[Azure-Portal](#tab/portal)

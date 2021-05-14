@@ -3,16 +3,16 @@ title: 'Azure Service Fabric: Anwendungsressourcenmodell'
 description: Dieser Artikel bietet eine Übersicht über die Verwaltung einer Azure Service Fabric-Anwendung mit Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: 0019f154f301d2b688d4c16c9adb36ec386adef2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba030abbfed4908b9d98d70bf1dce259e0d06da3
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98790722"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738768"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric: Anwendungsressourcenmodell
 
-Sie haben für die Bereitstellung von Azure Service Fabric-Anwendungen in Ihrem Service Fabric-Cluster mehrere Optionen. Es wird empfohlen, Azure Resource Manager zu verwenden. Bei Verwenden von Resource Manager können Anwendungen und Dienste in JSON beschrieben und anschließend in der gleichen Resource Manager-Vorlage wie der Cluster bereitgestellt werden. Im Unterschied zur Verwendung von PowerShell oder Azure CLI zur Bereitstellung und Verwaltung von Anwendungen müssen Sie bei Einsatz von Resource Manager nicht darauf warten, dass der Cluster bereit ist. Die Registrierung und Bereitstellung von Anwendungen kann in einem Schritt erfolgen. Resource Manager ist die beste Möglichkeit, den Anwendungslebenszyklus in Ihrem Cluster zu verwalten. Weitere Informationen finden Sie unter [Bewährte Methoden: Infrastructure-as-Code](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources).
+Sie haben für die Bereitstellung von Azure Service Fabric-Anwendungen in Ihrem Service Fabric-Cluster mehrere Optionen. Es wird empfohlen, Azure Resource Manager zu verwenden. Bei Verwenden von Resource Manager können Anwendungen und Dienste in JSON beschrieben und anschließend in der gleichen Resource Manager-Vorlage wie der Cluster bereitgestellt werden. Im Unterschied zur Verwendung von PowerShell oder Azure CLI zur Bereitstellung und Verwaltung von Anwendungen müssen Sie bei Einsatz von Resource Manager nicht darauf warten, dass der Cluster bereit ist. Die Registrierung und Bereitstellung von Anwendungen kann in einem Schritt erfolgen. Resource Manager ist die beste Möglichkeit, den Anwendungslebenszyklus in Ihrem Cluster zu verwalten. Weitere Informationen finden Sie unter [Bewährte Methoden: Infrastructure-as-Code](service-fabric-best-practices-infrastructure-as-code.md#service-fabric-resources).
 
 Das Verwalten Ihrer Anwendungen als Ressourcen in Resource Manager kann Ihnen helfen, Verbesserungen in diesen Bereichen zu erzielen:
 
@@ -91,7 +91,7 @@ Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.
 >
 
 
-| Parameter              | BESCHREIBUNG                                 | Beispiel                                                      | Kommentare                                                     |
+| Parameter              | Beschreibung                                 | Beispiel                                                      | Kommentare                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Der Name des Clusters, in dem die Bereitstellung erfolgt | sf-cluster123                                                |                                                              |
 | application            | Der Name der Anwendung.                 | Voting                                                       |
@@ -189,7 +189,7 @@ Weitere Informationen zum Anwendungsressourcenmodell:
 
 * [Modellieren einer Anwendung in Service Fabric](service-fabric-application-model.md)
 * [Service Fabric-Anwendungs- und -Dienstmanifeste](service-fabric-application-and-service-manifests.md)
-* [Bewährte Methoden: Infrastructure-as-Code](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
+* [Bewährte Methoden: Infrastructure-as-Code](service-fabric-best-practices-infrastructure-as-code.md#service-fabric-resources)
 * [Verwalten von Anwendungen und Diensten als Azure-Ressourcen](service-fabric-best-practices-infrastructure-as-code.md)
 
 

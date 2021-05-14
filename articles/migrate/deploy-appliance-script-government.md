@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: b0bc2b69a4a1ec31cfa560d51920378fe1ab52b8
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: edc74f0379a15c9119d2e3ed4f207832c367866b
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714792"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804032"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Einrichten einer Appliance in Azure Government 
 
@@ -62,7 +62,7 @@ Funktion des Skripts:
 
 - Installation von Agents und einer Webanwendung.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
 - Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
     - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config
@@ -117,7 +117,7 @@ Funktion des Skripts:
 
 - Installation von Agents und einer Webanwendung.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
 - Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
     - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config
@@ -170,7 +170,7 @@ Funktion des Skripts:
 
 - Installation von Agents und einer Webanwendung.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
 - Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
     - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config

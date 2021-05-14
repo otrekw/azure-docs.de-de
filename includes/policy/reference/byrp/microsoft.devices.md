@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fca7c948fe641d200e42511d0b0d6c301368b61c
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 246ffedffaa52c8ae226934d5f5342c6657b8cf9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108174871"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749686"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure IoT Hub muss einen kundenseitig verwalteten Schlüssel zum Verschlüsseln ruhender Daten verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Durch die Verschlüsselung ruhender IoT Hub-Daten mithilfe eines kundenseitig verwalteten Schlüssels wird zusätzlich zur Standardverschlüsselung mit dienstseitig verwalteten Schlüsseln eine weitere Verschlüsselungsebene bereitgestellt. Der Kunde erhält die Kontrolle über die Schlüssel, kann benutzerdefinierte Richtlinien für die Rotation festlegen und durch eine Schlüsselzugriffskontrolle den Zugriff auf die Daten steuern. Kundenseitig verwaltete Schlüssel müssen während der Erstellung des IoT-Hubs konfiguriert werden. Weitere Informationen zum Konfigurieren kundenseitig verwalteter Schlüssel finden Sie unter [https://aka.ms/iotcmk](https://aka.ms/iotcmk). |Audit, Deny, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[IoT Hub Device Provisioning-Instanz zum Deaktivieren des Zugriffs über öffentliche Netzwerke konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F859dfc91-ea35-43a6-8256-31271c363794) |Deaktivieren Sie für Ihre IoT Hub Device Provisioning-Instanz den Zugriff über öffentliche Netzwerke, sodass sie nicht über das öffentliche Internet zugänglich ist. Dies kann das Risiko von Datenlecks verringern. Weitere Informationen finden Sie unter [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet). |Modify, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DisablePublicNetworkAccess_Modify.json) |

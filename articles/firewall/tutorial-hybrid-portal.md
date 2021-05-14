@@ -1,35 +1,35 @@
 ---
-title: 'Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal'
-description: In diesem Tutorial erfahren Sie, wie Sie Azure Firewall über das Azure-Portal bereitstellen und konfigurieren.
+title: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal
+description: In diesem Artikel erfahren Sie, wie Sie Azure Firewall unter Verwendung des Azure-Portals bereitstellen und konfigurieren.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 04/27/2021
+ms.topic: how-to
+ms.date: 04/29/2021
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 2fbf0e4df1e9ee7dca7219891acc296c3493be9e
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 36605d6bf17c7652e7f21b89a83af08972765a30
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074959"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287601"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal
+# <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal
 
 Wenn Sie Ihr lokales Netzwerk mit einem virtuellen Azure-Netzwerk verbinden, um ein Hybridnetzwerk zu erstellen, ist das Steuern des Zugriffs auf Ihre Azure-Netzwerkressourcen ein wichtiger Bestandteil des globalen Sicherheitsplans.
 
 Mit Azure Firewall können Sie den Netzwerkzugriff in einem Hybridnetzwerk mithilfe von Regeln steuern, die den zulässigen und verweigerten Netzwerkdatenverkehr definieren.
 
-In diesem Tutorial erstellen Sie drei virtuelle Netzwerke:
+Für diesen Artikel erstellen Sie drei virtuelle Netzwerke:
 
 - **VNet-Hub**: In diesem virtuellen Netzwerk befindet sich die Firewall.
 - **VNet-Spoke**: Das virtuelle Spoke-Netzwerk stellt die Workload in Azure dar.
-- **VNet-Onprem**: Das lokale virtuelle Netzwerk stellt ein lokales Netzwerk dar. Bei einer tatsächlichen Bereitstellung kann die Verbindung dafür entweder mit einer VPN- oder einer ExpressRoute-Verbindung hergestellt werden. Der Einfachheit halber wird in diesem Tutorial eine VPN-Gatewayverbindung genutzt, und ein virtuelles Netzwerk in Azure wird als lokales Netzwerk verwendet.
+- **VNet-Onprem**: Das lokale virtuelle Netzwerk stellt ein lokales Netzwerk dar. Bei einer tatsächlichen Bereitstellung kann die Verbindung dafür entweder mit einer VPN- oder einer ExpressRoute-Verbindung hergestellt werden. Der Einfachheit halber wird in dieser Prozedur eine VPN-Gatewayverbindung verwendet, und ein in Azure eingerichtetes virtuelles Netzwerk wird als lokales Netzwerk verwendet.
 
 ![Firewall in einem Hybridnetzwerk](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen des virtuellen Firewall-Hub-Netzwerks
@@ -42,10 +42,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen der virtuellen Computer
 > * Testen der Firewall
 
-Falls Sie anstelle dieses Tutorials Azure PowerShell verwenden möchten, wechseln Sie zu [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell](tutorial-hybrid-ps.md).
+Falls Sie anstelle dieser Prozedur Azure PowerShell verwenden möchten, wechseln Sie zu [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell](tutorial-hybrid-ps.md).
 
 > [!NOTE]
-> In diesem Tutorial werden für die Verwaltung der Firewall klassische Firewallregeln verwendet. Die bevorzugte Methode ist die Verwendung einer [Firewallrichtlinie](../firewall-manager/policy-overview.md). Informationen zum Absolvieren dieses Tutorials mithilfe einer Firewallrichtlinie finden Sie unter [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall und einer Richtlinie in einem Hybridnetzwerk über das Azure-Portal](tutorial-hybrid-portal-policy.md).
+> In diesem Artikel werden für die Verwaltung der Firewall klassische Firewallregeln verwendet. Die bevorzugte Methode ist die Verwendung einer [Firewallrichtlinie](../firewall-manager/policy-overview.md). Informationen zum Absolvieren dieser Prozedur mithilfe einer Firewallrichtlinie finden Sie unter [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall und einer Richtlinie in einem Hybridnetzwerk über das Azure-Portal](tutorial-hybrid-portal-policy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,7 +59,7 @@ Ein Hybridnetzwerk nutzt das Modell der Hub-and-Spoke-Architektur zur Weiterleit
 - Zum Weiterleiten des Spoke-Subnetzdatenverkehrs durch die Hub-Firewall können Sie eine benutzerdefinierte Route (User Defined Route, UDR) verwenden, die auf die Firewall verweist, während die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist. Wenn die Option **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert ist, wird die Routenverteilung für die Spoke-Subnetze verhindert. Dadurch wird verhindert, dass erlernte Routen mit Ihrer UDR in Konflikt stehen. Wenn Sie **Routenverteilung des Gateways für virtuelle Netzwerke** aktiviert lassen möchten, definieren Sie unbedingt spezifische Routen für die Firewall, um die Routen außer Kraft zu setzen, die aus einer lokalen Umgebung über BGP veröffentlicht werden.
 - Konfigurieren Sie eine UDR im Hub-Gatewaysubnetz, die auf die Firewall-IP-Adresse als nächsten Hop auf dem Weg zu den Spoke-Netzwerken verweist. Für das Azure Firewall-Subnetz ist keine UDR erforderlich, da es die Routen über BGP erlernt.
 
-Informationen zur Erstellung dieser Routen finden Sie in diesem Tutorial im Abschnitt [Erstellen von Routen](#create-the-routes).
+Informationen zur Erstellung dieser Routen finden Sie in diesem Artikel im Abschnitt [Erstellen von Routen](#create-the-routes).
 
 >[!NOTE]
 >Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Ihr Subnetz „AzureFirewallSubnet“ eine Standardroute zu Ihrem lokalen Netzwerk über BGP erfasst, müssen Sie diese mit der benutzerdefinierten Route 0.0.0.0/0 überschreiben. Legen Sie dabei den Wert **NextHopType** auf **Internet** fest, um die direkte Internetkonnektivität beizubehalten.
@@ -73,7 +73,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>Erstellen des virtuellen Firewall-Hub-Netzwerks
 
-Erstellen Sie zunächst die Ressourcengruppe für die in diesem Tutorial verwendeten Ressourcen:
+Erstellen Sie zunächst die Ressourcengruppe für die Ressourcen:
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie auf der Startseite des Azure-Portals **Ressourcengruppen** > **Hinzufügen** aus.
@@ -462,11 +462,10 @@ Schließen Sie alle vorhandenen Remotedesktops, bevor Sie die geänderten Regeln
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können die Firewallressourcen für das nächste Tutorial behalten oder die Ressourcengruppe **FW-Hybrid-Test** löschen, wenn Sie sie nicht mehr benötigen. Hierdurch werden alle firewallbezogenen Ressourcen gelöscht.
+Sie können die Firewallressourcen für weitere Tests behalten oder die Ressourcengruppe **FW-Hybrid-Test** löschen, wenn Sie sie nicht mehr benötigen. Dadurch werden alle firewallbezogenen Ressourcen gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Als Nächstes können Sie die Azure Firewall-Protokolle überwachen.
 
-> [!div class="nextstepaction"]
-> [Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md)
+[Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md)

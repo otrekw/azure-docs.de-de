@@ -4,12 +4,12 @@ description: Beschreibung von Warteschlangen für unzustellbare Nachrichten in A
 ms.topic: article
 ms.date: 04/08/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 6293a3a9a760ece137644578d8ee7dccebc63d95
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 9a7eaf3cee7af4ba0f0049ee8b7a8dd0b271a94a
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812370"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804464"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten
 
@@ -50,7 +50,7 @@ Die Anzahl der Übermittlungsversuche von Nachrichten für Service Bus-Warteschl
 ## <a name="time-to-live"></a>Gültigkeitsdauer
 Wenn Sie unzustellbare Nachrichten für Warteschlangen oder Abonnements aktivieren, werden alle Nachrichten nach ihrem Ablauf in die Warteschlange für unzustellbare Nachrichten verschoben. Der Ursachencode für die unzustellbare Nachricht wird auf TTLExpiredException gesetzt.
 
-Abgelaufene Nachrichten werden nur bereinigt und in die Warteschlange für unzustellbare Nachrichten verschoben, wenn mindestens ein aktiver Empfänger den Pullvorgang aus der Hauptwarteschlange oder dem Abonnement durchführt. Die zurückgestellten Nachrichten werden ebenfalls nicht gelöscht oder in die Warteschlange für unzustellbare Nachrichten verschoben, nachdem sie abgelaufen sind. Dieses Verhalten ist beabsichtigt.
+Die zurückgestellten Nachrichten werden ebenfalls nicht gelöscht oder in die Warteschlange für unzustellbare Nachrichten verschoben, nachdem sie abgelaufen sind. Dieses Verhalten ist beabsichtigt.
 
 ## <a name="errors-while-processing-subscription-rules"></a>Fehler beim Verarbeiten von Regeln für Abonnements
 Wenn Sie unzustellbare Nachrichten bei Ausnahmen für die Filterauswertung aktivieren, werden alle Fehler, die während der Ausführung der SQL-Filterregel eines Abonnements auftreten, zusammen mit der verursachenden Nachricht in der Warteschlange für unzustellbare Nachrichten erfasst. Verwenden Sie diese Option nicht in einer Produktionsumgebung, in der nicht alle Nachrichtentypen über Abonnenten verfügen.

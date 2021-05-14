@@ -3,18 +3,18 @@ title: Anfordern von Höhendaten mithilfe des Azure Maps-Höhenangabendiensts (V
 description: Erfahren Sie, wie Sie mit dem Azure Maps-Höhenangabendienst (Vorschau) Höhendaten anfordern.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efdaf8d2d64a3865027f5211e4382458e1323b10
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98684054"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325119"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Anfordern von Höhendaten mithilfe des Azure Maps-Höhenangabendiensts (Vorschau)
 
@@ -26,7 +26,7 @@ Der Azure Maps-[Höhenangabendienst](/rest/api/maps/elevation) umfasst APIs, üb
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. [Erstellen eines Azure Maps-Kontos mit dem Tarif S1](quick-demo-map-app.md#create-an-azure-maps-account)
+1. [Erstellen eines Azure Maps-Kontos im Tarif „Gen 1 (S1)“ oder „Gen 2“](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
 
 Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).

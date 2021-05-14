@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.openlocfilehash: b2b405e7f6babf84ef8297310a5a7a34c3f2dc11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b11a6082a5c86526e04a8b78db30650c37d467fc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102623346"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108791750"
 ---
 Mit Cognitive Services werden zwei Dienste für die Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) bereitgestellt: [Language Understanding](../luis/what-is-luis.md) und [QnA Maker](../qnamaker/overview/overview.md). Beide dienen jeweils einem anderen Zweck. Machen Sie sich damit vertraut, wann Sie diese Dienste einsetzen sollten und wie sie sich gegenseitig ergänzen.
 
@@ -73,7 +73,7 @@ Falls Ihr Chatbot mehr Informationen benötigt, als von den Diensten bereitgeste
 
 Nutzen Sie das Bot Framework-Tool **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** , um einen Prozess zu erstellen, bei dem beide Dienste verwendet werden. Mit diesem Tool wird eine übergeordnete LUIS-App für Absichten erstellt, für die LUIS und QnA Maker als untergeordnete Apps genutzt werden. [Erfahren Sie mehr](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs) zur Integration mit LUIS, QnA Maker und Bot Framework.
 
-Verwenden Sie das Bot Builder-Beispiel **NLP mit Dispatch** in [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) oder [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch), um diese Art von Chatbot zu implementieren.
+Verwenden Sie das Bot Builder-Beispiel **NLP mit Dispatch** in [C#](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/csharp_dotnetcore/14.nlp-with-orchestrator) oder [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/javascript_nodejs/14.nlp-with-orchestrator), um diese Art von Chatbot zu implementieren.
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
