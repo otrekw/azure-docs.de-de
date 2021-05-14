@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 04/20/2021
-ms.openlocfilehash: c24baa6a89b70a8b0b6409be20e1a8d4923d12ae
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 04/30/2021
+ms.openlocfilehash: f1404417854f34b1e8a1f3ecef84c914130cab43
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820129"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320779"
 ---
 # <a name="review-and-publish-a-dynamics-365-cepa-offer"></a>Überprüfen und Veröffentlichen eines Dynamics 365 CE&PA-Angebots
 
@@ -54,6 +54,9 @@ Sobald alle Seiten vollständig sind und Sie zutreffende Prüfhinweise eingegebe
 1. Wählen Sie **Überprüfen und veröffentlichen** aus.
 1. Wählen Sie **Liveschalten**, um das Angebot öffentlich zugänglich zu machen.
 
+Nachdem Sie **Überprüfen und veröffentlichen** ausgewählt haben, führen wir Zertifizierungs- und andere Überprüfungsprozesse durch, bevor Ihr Angebot in AppSource veröffentlicht wird. Wir benachrichtigen Sie, wenn Ihr Angebot in der Vorschau verfügbar ist, damit Sie es live schalten können. Wenn ein Problem vorliegt, stellen wir Ihnen die Details und Anleitungen zur Behebung bereit.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Wenn Sie die _Verwaltung von Drittanbieter-App-Lizenzen über Microsoft_ für Ihr Angebot aktiviert haben, müssen Sie nach dem Verkauf Ihres Angebots den Deal in Partner Center registrieren. Weitere Informationen finden Sie unter [Verwalten der Lizenzierung in Marketplace-Angeboten](/partner-center/csp-commercial-marketplace-licensing).
 - [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](partner-center-portal/update-existing-offer.md)

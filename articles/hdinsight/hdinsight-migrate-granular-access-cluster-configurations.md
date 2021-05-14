@@ -1,17 +1,15 @@
 ---
 title: Präziser rollenbasierter Zugriff – Azure HDInsight-Clusterkonfigurationen
 description: Informationen zu den Änderungen, die im Rahmen der Migration zum differenzierten rollenbasierten Zugriff für HDInsight-Clusterkonfigurationen erforderlich sind.
-author: tylerfox
-ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: afb30f4648f1649bf6cc6cc6a3bf02f433f49d45
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1ab7e8e9a85ebbb822e1b1a1d53298a48a85cb85
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774929"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770999"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrieren zu präzisem rollenbasiertem Zugriff für Clusterkonfigurationen
 

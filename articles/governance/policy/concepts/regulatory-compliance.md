@@ -3,12 +3,12 @@ title: Einhaltung gesetzlicher Bestimmungen in Initiativendefinitionen
 description: In diesem Artikel wird beschrieben, wie Sie mit einer Initiativendefinition Richtlinien nach gesetzlichen Bereichen (wie z. B. Zugriffssteuerung, Konfigurationsverwaltung usw.) gruppieren können.
 ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 08173cd94e0841fa7a18fd55d53aa97281724ede
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d408d4c2c720a81de315680f774482592b7552b3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094063"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752685"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Einhaltung gesetzlicher Bestimmungen in Azure Policy
 
@@ -29,7 +29,7 @@ Informationen zum Verknüpfen einer benutzerdefinierten Initiative der Funktion 
 
 ## <a name="regulatory-compliance-in-portal"></a>Einhaltung gesetzlicher Bestimmungen im Portal
 
-Wurde eine Initiativendefinition mithilfe von [Gruppen](./initiative-definition-structure.md#policy-definition-groups) erstellt, enthält die Detailseite **Compliance** für diese Initiative im Portal weitere Informationen. 
+Wurde eine Initiativendefinition mithilfe von [Gruppen](./initiative-definition-structure.md#policy-definition-groups) erstellt, enthält die Detailseite **Compliance** für diese Initiative im Portal weitere Informationen.
 
 Der Seite wird eine neue Registerkarte mit den Namen **Steuerungen** hinzugefügt. Es kann nach **Compliancebereichen** gefiltert werden, und Richtliniendefinitionen werden nach dem `title`-Feld des **policyMetadata**-Objekts gruppiert. Jede Zeile stellt eine **Steuerung** mit dem jeweiligen Konformitätszustand dar, ihrem **Compliancebereich**, Informationen zur Zuständigkeit sowie der Anzahl der nicht konformen und konformen Richtliniendefinitionen dieser **Steuerung**.
 

@@ -3,12 +3,12 @@ title: Benutzerdefinierte Themen in Azure Event Grid
 description: Enthält eine Beschreibung der benutzerdefinierten Themen in Azure Event Grid.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8f48824989c8ec51b766385188ad99e9e59cf621
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c211e529e5382fd655fca6d78ab32409cbff4453
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86113784"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736644"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Benutzerdefinierte Themen in Azure Event Grid
 Ein Event Grid-Thema stellt einen Endpunkt bereit, an den die Ereignisquelle Ereignisse sendet. Der Herausgeber erstellt das Thema und legt fest, ob eine Ereignisquelle ein Thema oder mehrere Themen benötigt. Ein Event Grid-Thema wird für eine Sammlung ähnlicher Ereignisse verwendet. Um auf bestimmte Arten von Ereignissen zu reagieren, legen Abonnenten fest, welche Themen sie abonnieren.
@@ -65,8 +65,8 @@ Die folgenden Abschnitte enthalten Links zu Tutorials zur Erstellung von benutze
 ## <a name="arm-template-tutorials"></a>Tutorials zu ARM-Vorlagen
 |Titel  |BESCHREIBUNG  |
 |---------|---------|
-| [Resource Manager-Vorlage: Benutzerdefiniertes Thema und WebHook-Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Eine Resource Manager-Vorlage, mit der ein benutzerdefiniertes Thema und ein Abonnement für dieses benutzerdefinierte Thema erstellt werden. Sendet Ereignisse an einen WebHook. |
-| [Resource Manager-Vorlage: Benutzerdefiniertes Thema und Event Hubs-Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Eine Resource Manager-Vorlage, mit der ein Abonnement für ein benutzerdefiniertes Thema erstellt wird. Sendet Ereignisse an Azure Event Hubs. |
+| [Resource Manager-Vorlage: Benutzerdefiniertes Thema und WebHook-Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid) | Eine Resource Manager-Vorlage, mit der ein benutzerdefiniertes Thema und ein Abonnement für dieses benutzerdefinierte Thema erstellt werden. Sendet Ereignisse an einen WebHook. |
+| [Resource Manager-Vorlage: Benutzerdefiniertes Thema und Event Hubs-Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-event-hubs-handler)| Eine Resource Manager-Vorlage, mit der ein Abonnement für ein benutzerdefiniertes Thema erstellt wird. Sendet Ereignisse an Azure Event Hubs. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln: 

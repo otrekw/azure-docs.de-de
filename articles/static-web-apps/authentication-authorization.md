@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 0728b45a72f7d4fe67807be5c9c2b5290af11c51
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8b8f42d75a0d214bdc504c8cc0adb6f234ea036e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143465"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751119"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Authentifizierung und Autorisierung für Azure Static Web Apps (Vorschau)
 
@@ -20,8 +20,6 @@ Mit Azure Static Web Apps wird der Authentifizierungsablauf optimiert, indem die
 
 - Azure Active Directory
 - GitHub
-- Facebook
-- Google<sup>1</sup>
 - Twitter
 
 Mit anbieterspezifischen [Einladungen](#invitations) werden Benutzer Rollen zugeordnet, und autorisierten Benutzern wird Zugriff auf [Routen](configuration.md#routes) mithilfe von Regeln gewährt, die in der Datei _staticwebapp.config.json_ definiert wurden.
@@ -56,9 +54,7 @@ Einladungen gelten spezifisch für einzelne Autorisierungsanbieter. Aus diesem G
 | Autorisierungsanbieter | Offenlegung von Benutzerdaten |
 | ---------------------- | ---------------- |
 | Azure Active Directory | E-Mail-Adresse    |
-| Facebook               | E-Mail-Adresse    |
 | GitHub                 | username         |
-| Google<sup>1</sup>     | E-Mail-Adresse    |
 | Twitter                | username         |
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einer Static Web Apps-Ressource.
@@ -132,9 +128,7 @@ Verwenden Sie die folgende Tabelle, um die anbieterspezifische Anmelderoute zu e
 | Autorisierungsanbieter | Anmelderoute             |
 | ---------------------- | ----------------------- |
 | Azure Active Directory | `/.auth/login/aad`      |
-| Facebook               | `/.auth/login/facebook` |
 | GitHub                 | `/.auth/login/github`   |
-| Google<sup>1</sup>     | `/.auth/login/google`   |
 | Twitter                | `/.auth/login/twitter`  |
 
 Wenn Sie sich beispielsweise mit GitHub anmelden möchten, können Sie einen Anmeldelink wie den folgenden Codeausschnitt einfügen:

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 2e169bb4f7be8b52657d2caf8f05643875a8348c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b481c021a1bb90b9839c5ee014bc9caf54bd7911
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180376"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785653"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>Entwickeln für Azure NetApp Files per REST-API mit PowerShell
 
@@ -40,7 +40,7 @@ Die REST-API-Spezifikation für Azure NetApp Files wird über [GitHub](https://g
 
    2. Geben Sie über die Azure-Befehlszeilenschnittstelle den folgenden Befehl ein:  
 
-      ```azurepowershell
+      ```azurecli
       $RBAC_SP = az ad sp create-for-rbac --name <YOURSPNAMEGOESHERE> | ConvertFrom-Json         
       ```
 

@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie durch die Aktivierung von Zonenredundanz
 author: dlepow
 ms.service: api-management
 ms.topic: how-to
-ms.date: 04/13/2021
+ms.date: 05/07/2021
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 817aebab6af8de59071b5d767b24d15cf46d59d9
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 6e8352a93575ec6222be463daea14aee28f08a7c
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107558744"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634813"
 ---
 # <a name="availability-zone-support-for-azure-api-management"></a>Unterstützung von Verfügbarkeitszonen für Azure API Management 
 
@@ -30,13 +30,16 @@ Das Konfigurieren von API Management für Zonenredundanz wird derzeit in den fol
 * Brasilien Süd
 * Kanada, Mitte
 * Indien, Mitte
+* USA (Mitte)
 * East US
 * USA (Ost) 2
 * Frankreich, Mitte
 * Japan, Osten
+* Nordeuropa
 * USA Süd Mitte
 * Asien, Südosten
 * UK, Süden
+* Europa, Westen
 * USA, Westen 2
 * USA, Westen 3
 

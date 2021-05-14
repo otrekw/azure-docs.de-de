@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ff7cfb8c7aa8469111d4531da17c7cd184920f9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42a82a59483a582e0d395092558665b12e1cd5a3
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727565"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684359"
 ---
 # <a name="tutorial-create-a-connected-waste-management-app"></a>Tutorial: Erstellen einer App für die vernetzte Abfallwirtschaft
 
@@ -53,8 +53,6 @@ In diesem Abschnitt wird die Vorlage für vernetzte Abfallwirtschaft verwendet, 
     * **Anwendungsname**: Standardmäßig wird für die Anwendung der Name **Vernetzte Abfallwirtschaft** verwendet, gefolgt von einer eindeutigen ID-Zeichenfolge, die von Azure IoT Central generiert wird. Sie können optional einen benutzerfreundlichen Anzeigenamen wählen. Der Anwendungsname kann auch später noch geändert werden.
     * **URL**. Sie können optional die gewünschte URL auswählen. Die URL kann später noch geändert werden. 
     * **Tarif**: Falls Sie über ein Azure-Abonnement verfügen, geben Sie Ihr Verzeichnis, Ihr Azure-Abonnement und Ihre Region in die entsprechenden Felder des Dialogfelds **Abrechnungsinformationen** ein. Sollten Sie über kein Abonnement verfügen, wählen Sie die Option **Free** aus, um die kostenlose 7-Tage-Testversion zu aktivieren, und geben Sie die erforderlichen Kontaktinformationen an.  
-
-    Weitere Informationen zu Verzeichnissen und Abonnements finden Sie unter [Schnellstart: Erstellen einer Azure IoT Central-Anwendung](../core/quick-deploy-iot-central.md).
 
 1. Wählen Sie am unteren Rand der Seite die Option **Erstellen** aus. 
 

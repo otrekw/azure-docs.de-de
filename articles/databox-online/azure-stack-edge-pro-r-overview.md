@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 02/22/2021
+ms.date: 04/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 01e274ebb9746004713c3f3e6a36f9088a597802
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b07fe5ad07cca8c8e151e8232e3ab165dc476be2
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140732"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732672"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Was ist Azure Stack Edge Pro R?
 
@@ -67,6 +67,8 @@ Die Azure Stack Edge Pro R-Lösung umfasst eine Azure Stack Edge Pro R-Ressour
 - **Azure Stack Edge-Ressource:** Eine Ressource im Azure-Portal, mit der Sie ein robustes Azure Stack Edge Pro R-Gerät über eine zentrale Webbenutzeroberfläche verwalten können, auf die von verschiedenen geografischen Standorten aus zugegriffen werden kann. Verwenden Sie die Azure Stack Edge-Ressource, um Ressourcen zu erstellen und zu verwalten, Geräte und Warnungen anzuzeigen und zu verwalten sowie Freigaben zu verwalten.  
 
 - **Lokale Webbenutzeroberfläche von Azure Stack Edge Pro R**: Eine browserbasierte lokale Benutzeroberfläche auf Ihrem Azure Stack Edge Pro R-Gerät, die in erster Linie der anfänglichen Konfiguration des Geräts dient. Über die lokale Webbenutzeroberfläche können Sie zudem Diagnosen ausführen, das Azure Stack Edge Pro-Gerät herunterfahren und neu starten, Kopierprotokolle anzeigen und den Microsoft-Support kontaktieren, um eine Serviceanfrage zu stellen.
+
+    [!INCLUDE [azure-stack-edge-gateway-local-web-ui-languages](../../includes/azure-stack-edge-gateway-local-web-ui-languages.md)]
 
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit

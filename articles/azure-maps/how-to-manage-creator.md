@@ -3,17 +3,17 @@ title: Verwalten von Microsoft Azure Maps Creator (Vorschau)
 description: In diesem Artikel erfahren Sie, wie Sie Microsoft Azure Maps Creator (Vorschau) verwalten.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 02/16/2021
+ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d26df4287032bc59cc58dd1d832d9d5a9c40afcd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24a462fdb2c68bcccd539c9d18252822e2730bd6
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100559217"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326883"
 ---
 # <a name="manage-azure-maps-creator-preview"></a>Verwalten von Azure Maps Creator (Vorschau) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "100559217"
 > Azure Maps Creator-Dienste befinden sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Maps Creator ermöglicht die Erstellung privater Gebäudeplandaten. Mit der Azure Maps-API und dem Modul für Gebäudepläne können Sie interaktive und dynamische Gebäudeplan-Webanwendungen entwickeln. Aktuell steht Creator nur in den USA im Tarif S1 zur Verfügung.
+Azure Maps Creator ermöglicht die Erstellung privater Gebäudeplandaten. Mit der Azure Maps-API und dem Modul für Gebäudepläne können Sie interaktive und dynamische Gebäudeplan-Webanwendungen entwickeln. Aktuell steht Creator nur in den USA in den Tarifen „Gen 2“ und „Gen 1 (S1)“ zur Verfügung.
 
 In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Creator-Ressource in einem Azure Maps-Konto erstellen und löschen.
 
