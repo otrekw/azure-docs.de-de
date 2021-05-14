@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 61488b88b00206cb78beed4fe773bf9377848701
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 69af7e2129136128e87b4c9b28806b2f02f09e27
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861047"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205393"
 ---
 # <a name="np-series"></a>NP-Serie 
 Die virtuellen Computer der NP-Serie basieren auf [Xilinx U250](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html)-FPGAs zum Beschleunigen von Workloads einschließlich Machine Learning-Rückschluss, Videotranscodierung und Datenbanksuche und Analysen. VMs der NP-Serie werden auch mit Intel Xeon 8171m-CPUs (Skylake) mit einem Turbotakt von 3,2 GHz für alle Kerne betrieben.
@@ -43,10 +43,17 @@ Unterstützung von VM-Generationen: Generation 1<br>
 
 **A:** Xilinx empfiehlt [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html)
 
-
 **F:** Muss ich NP VMs verwenden, um meine Lösung zu entwickeln? 
 
-**A:** Nein, Sie können lokal entwickeln und in der Cloud bereitstellen! Stellen Sie sicher, dass Sie die Nachweisdokumentation befolgen, um auf NP-VMS bereitzustellen. 
+**A:** Nein, Sie können lokal entwickeln und in der Cloud bereitstellen! Stellen Sie sicher, dass Sie für die Bereitstellung auf NP-VMs die [Nachweisdokumentation](https://docs.microsoft.com/azure/virtual-machines/field-programmable-gate-arrays-attestation) befolgen. 
+
+**F:** Welche vom Nachweis zurückgegebene Datei sollte ich beim Programmieren meines FPGA auf einer NP-VM verwenden?
+
+**A:** Der Nachweis gibt zwei Dateien vom Typ „xclbin“ zurück: **design.bit.xclbin** und **design.azure.xclbin**. Verwenden Sie **design.azure.xclbin**.
+
+**F:** Wo sollte ich alle XRT-/Plattformdateien abrufen?
+
+**A:** Sie finden alle Dateien auf der Website [Microsoft-Azure](https://www.xilinx.com/microsoft-azure.html) von Xilinx.
 
 **F:** Welche Version von XRT sollte ich verwenden?
 

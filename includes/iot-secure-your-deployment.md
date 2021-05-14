@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 597bcf9d7654b88cb4a3f9b7df32ea1c7b770da2
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010696"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109508473"
 ---
 Dieser Artikel bietet weitere Details zum Schützen Ihrer auf Azure IoT basierenden IoT-Infrastruktur (Internet of Things, Internet der Dinge). Geboten werden Links zu Details auf Implementierungsebene für die Konfiguration und Bereitstellung der einzelnen Komponenten. Darüber hinaus finden Sie Vergleiche, um aus verschiedenen konkurrierenden Methoden die gewünschte zu wählen.
 
@@ -43,13 +43,13 @@ IoT Hub verwendet Sicherheitstoken zum Authentifizieren von Geräten und Dienste
 
 Weitere Informationen zur Struktur des Sicherheitstokens und seiner Verwendung finden Sie in den folgenden Artikeln:
 
-* [Struktur von Sicherheitstoken](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
+* [Struktur von Sicherheitstoken](../articles/iot-hub/iot-hub-dev-guide-sas.md#security-token-structure)
 
-* [Verwenden von SAS-Token als Gerät](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)
+* [Verwenden von SAS-Token als Gerät](../articles/iot-hub/iot-hub-dev-guide-sas.md#use-sas-tokens-as-a-device)
 
-Jeder IoT Hub verfügt über eine [Identitätsregistrierung](../articles/iot-hub/iot-hub-devguide-identity-registry.md), die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Hierzu zählt beispielsweise eine Warteschlange mit gesendeten C2D-Nachrichten. Außerdem wird der Zugriff auf geräteseitige Endpunkte ermöglicht. Die IoT Hub-Identitätsregistrierung ermöglicht die sichere Speicherung von Geräteidentitäten und Sicherheitsschlüsseln für eine Lösung. Geräteidentitäten können einzeln oder in Gruppen einer Zulassungsliste oder Blockierungsliste hinzugefügt werden, um die vollständige Kontrolle über den Gerätezugriff zu haben. Die folgenden Artikel enthalten weitere Informationen zur Struktur der Identitätsregistrierung und zu unterstützten Vorgängen.
+Jeder IoT Hub verfügt über eine [Identitätsregistrierung](../articles/iot-hub/iot-hub-devguide-identity-registry.md), die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Hierzu zählt beispielsweise eine Warteschlange mit gesendeten C2D-Nachrichten. Außerdem wird der Zugriff auf geräteseitige Endpunkte ermöglicht. Die IoT Hub-Identitätsregistrierung ermöglicht die sichere Speicherung von Geräteidentitäten und Sicherheitsschlüsseln für eine Lösung. Geräteidentitäten können einzeln oder in Gruppen einer Positivliste oder Sperrliste hinzugefügt werden, um die vollständige Kontrolle über den Gerätezugriff zu haben. Die folgenden Artikel enthalten weitere Informationen zur Struktur der Identitätsregistrierung und zu unterstützten Vorgängen.
 
-[IoT Hub unterstützt Protokolle wie MQTT, AMQP und HTTP](../articles//iot-hub/iot-hub-devguide-security.md). Jedes dieser Protokolle verwendet Sicherheitstoken des IoT-Geräts für IoT Hub unterschiedlich:
+[IoT Hub unterstützt Protokolle wie MQTT, AMQP und HTTP](../articles//iot-hub/iot-hub-dev-guide-sas.md). Jedes dieser Protokolle verwendet Sicherheitstoken des IoT-Geräts für IoT Hub unterschiedlich:
 
 * AMQP: SASL PLAIN- und AMQP Claims-basierte Sicherheit (`{policyName}@sas.root.{iothubName}` bei Token auf Ebene des IoT-Hubs, `{deviceId}` bei auf Geräte bezogenen Token).
 
@@ -57,11 +57,11 @@ Jeder IoT Hub verfügt über eine [Identitätsregistrierung](../articles/iot-hub
 
 * HTTP: Ein gültiges Token befindet sich im Autorisierungsheader der Anforderung.
 
-Mithilfe der Identitätsregistrierung von IoT Hub können Sie Sicherheitsanmeldeinformationen und die Zugriffssteuerung gerätebezogen konfigurieren. Auch wenn eine IoT-Lösung bereits erheblichen Anteil an einer [benutzerdefinierten Geräteidentitätsregistrierung bzw. einem Authentifizierungsschema](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication) hat, können Sie diese in eine vorhandene Infrastruktur in IoT Hub integrieren, indem ein Tokendienst erstellt wird.
+Mithilfe der Identitätsregistrierung von IoT Hub können Sie Sicherheitsanmeldeinformationen und die Zugriffssteuerung gerätebezogen konfigurieren. Auch wenn eine IoT-Lösung bereits erheblichen Anteil an einer [benutzerdefinierten Geräteidentitätsregistrierung bzw. einem Authentifizierungsschema](../articles/iot-hub/iot-hub-dev-guide-sas.md#create-a-token-service-to-integrate-existing-devices) hat, können Sie diese in eine vorhandene Infrastruktur in IoT Hub integrieren, indem ein Tokendienst erstellt wird.
 
 ### <a name="x509-certificate-based-device-authentication"></a>Auf X.509-Zertifikat basierende Geräteauthentifizierung
 
-Die Verwendung eines [gerätebasierten X.509-Zertifikats](../articles/iot-hub/iot-hub-devguide-security.md) und des zugehörigen Paares aus privatem und öffentlichem Schlüssel ermöglicht eine zusätzliche Authentifizierung in der Bitübertragungsschicht. Der private Schlüssel wird sicher auf dem Gerät gespeichert und ist außerhalb des Geräts nicht ermittelbar. Das X.509-Zertifikat enthält Informationen zum Gerät, z.B. die Geräte-ID und andere organisatorische Details. Eine Signatur des Zertifikats wird mithilfe des privaten Schlüssels generiert.
+Die Verwendung eines [gerätebasierten X.509-Zertifikats](../articles/iot-hub/iot-hub-dev-guide-sas.md) und des zugehörigen Paares aus privatem und öffentlichem Schlüssel ermöglicht eine zusätzliche Authentifizierung in der Bitübertragungsschicht. Der private Schlüssel wird sicher auf dem Gerät gespeichert und ist außerhalb des Geräts nicht ermittelbar. Das X.509-Zertifikat enthält Informationen zum Gerät, z.B. die Geräte-ID und andere organisatorische Details. Eine Signatur des Zertifikats wird mithilfe des privaten Schlüssels generiert.
 
 Allgemeiner Ablauf der Gerätebereitstellung:
 
@@ -81,7 +81,7 @@ Die Internetverbindung zwischen IoT-Gerät und IoT Hub wird standardmäßig mit 
 
 ## <a name="securing-the-cloud"></a>Schützen der Cloud
 
-Azure IoT Hub ermöglicht für jeden Sicherheitsschlüssel die Definition von [Richtlinien für die Zugriffssteuerung](../articles/iot-hub/iot-hub-devguide-security.md). IoT Hub verwendet den folgenden Satz von Berechtigungen, um Zugriff auf die Endpunkte jedes IoT Hubs zu gewähren. Berechtigungen beschränken den Zugriff auf einen IoT-Hub basierend auf der Funktionalität.
+Azure IoT Hub ermöglicht für jeden Sicherheitsschlüssel die Definition von [Richtlinien für die Zugriffssteuerung](../articles/iot-hub/iot-hub-dev-guide-sas.md). IoT Hub verwendet den folgenden Satz von Berechtigungen, um Zugriff auf die Endpunkte jedes IoT Hubs zu gewähren. Berechtigungen beschränken den Zugriff auf einen IoT-Hub basierend auf der Funktionalität.
 
 * **RegistryRead**. Diese Berechtigung gewährt Lesezugriff auf die Identitätsregistrierung. Weitere Informationen finden Sie unter [Identitätsregistrierung](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
@@ -91,9 +91,9 @@ Azure IoT Hub ermöglicht für jeden Sicherheitsschlüssel die Definition von [R
 
 * **DeviceConnect**. Diese Berechtigung gewährt Zugriff auf die geräteseitigen Endpunkte. Beispielsweise wird die Berechtigung zum Senden von D2C-Nachrichten und das Empfangen von C2D-Nachrichten erteilt. Diese Berechtigung wird von Geräten verwendet.
 
-Es gibt zwei Methoden zum Abrufen von **DeviceConnect**-Berechtigungen mit IoT Hub mit [Sicherheitstoken](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): Identitätsschlüssel für das Gerät oder Shared Access-Schlüssel. Darüber hinaus ist zu beachten, dass alle Funktionen, auf die auf Geräten zugegriffen werden kann, für Endpunkte mit dem Präfix `/devices/{deviceId}`absichtlich verfügbar gemacht werden.
+Es gibt zwei Methoden zum Abrufen von **DeviceConnect**-Berechtigungen mit IoT Hub mit [Sicherheitstoken](../articles/iot-hub/iot-hub-dev-guide-sas.md#use-sas-tokens-as-a-device): Identitätsschlüssel für das Gerät oder Shared Access-Schlüssel. Darüber hinaus ist zu beachten, dass alle Funktionen, auf die auf Geräten zugegriffen werden kann, für Endpunkte mit dem Präfix `/devices/{deviceId}`absichtlich verfügbar gemacht werden.
 
-[Dienstkomponenten können nur Sicherheitstoken mithilfe von SAS-Richtlinien generieren](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components), die die entsprechenden Berechtigungen erteilen.
+[Dienstkomponenten können nur Sicherheitstoken mithilfe von SAS-Richtlinien generieren](../articles/iot-hub/iot-hub-dev-guide-sas.md#use-security-tokens-from-service-components), die die entsprechenden Berechtigungen erteilen.
 
 Azure IoT Hub und andere Dienste, die möglicherweise Teil der Lösung sind, erlauben die Verwaltung von Benutzern mithilfe von Azure Active Directory.
 

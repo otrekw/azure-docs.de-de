@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: 3fc50ef5a50c2c499b1c886bcf5aa73b11ba7c45
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 04/16/2021
+ms.openlocfilehash: 7a5e4375ebe289bb5ae012f94ba9dd050563bbbb
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133347"
+ms.locfileid: "108209857"
 ---
 # <a name="co-sell-requirements"></a>Co-Selling-Anforderungen
 
@@ -30,6 +30,9 @@ In der folgenden Tabelle werden alle möglichen Co-Selling-Status aufgeführt:
 |||
 
 ## <a name="requirements-for-co-sell-ready-status"></a>Anforderungen für den Status „Co-Sell Ready“
+
+> [!NOTE]
+> Jedes Angebot, das über das Entwicklerprogramm des kommerziellen Marketplace in Partner Center veröffentlicht wird, ist für den Status „Co-Sell Ready“ berechtigt, sofern die entsprechenden Anforderungen erfüllt sind. Office-Apps und -Add-Ins sind nicht berechtigt (z. B. Teams, SharePoint-Lösungen, Outlook, Excel).
 
 Damit ein Angebot den Status „Co-Sell Ready“ erhalten kann, müssen die folgenden Anforderungen erfüllt werden:
 

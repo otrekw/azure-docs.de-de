@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: chuye
-ms.openlocfilehash: ef02842d189746a1801d97f91b92f249947c832d
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 26ce15bfe474f96aaef17f186f56e36ce42b7239
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568643"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950530"
 ---
 # <a name="sign-in-to-storage-explorer"></a>Anmelden bei Storage-Explorer
 
@@ -48,7 +48,7 @@ Wenn Sie Ihr gesamtes Azure-Konto entfernen möchten, klicken Sie neben dem Kont
 
 Die Anmeldung erfolgt standardmäßig im **Standardwebbrowser** Ihres Betriebssystems. Die Anmeldung mit Ihrem Standardwebbrowser optimiert den Zugriff auf Ressourcen, die über Richtlinien für bedingten Zugriff (etwa MFA) geschützt sind. Wenn die Anmeldung über den **Standardwebbrowser** Ihres Betriebssystems aus irgendeinem Grund nicht funktioniert, können Sie ändern, wo oder wie Storage-Explorer die Anmeldung durchführt.
 
-Suchen Sie unter **Einstellungen** > **Anwendung** > **Anmeldung** nach der Einstellung **Anmelden mit**. Drei Optionen stehen zur Verfügung:
+Suchen Sie in den **Einstellungen (Zahnradsymbol auf der linken Seite) unter**  > **Anwendung** > **Anmelden** nach der Einstellung **Anmelden mit**. Drei Optionen stehen zur Verfügung:
 - **Standardwebbrowser:** Die Anmeldung erfolgt im **Standardwebbrowser** Ihres Betriebssystems. Diese Option wird empfohlen.
 - **Integrierte Anmeldung:** Die Anmeldung erfolgt in einem Storage-Explorer-Fenster. Diese Option kann nützlich sein, wenn Sie versuchen, sich mit mehreren Microsoft-Konten (MSAs) gleichzeitig anzumelden. Unter Umständen treten Probleme mit einigen CA-Richtlinien auf, wenn Sie diese Option auswählen.
 - **Gerätecodeflow:** Sie erhalten einen Code von Storage-Explorer, den Sie in ein Browserfenster eingeben können. Von der Verwendung dieser Option wird abgeraten. Der Gerätecodeflow ist mit vielen CA-Richtlinien nicht kompatibel.
@@ -56,3 +56,8 @@ Suchen Sie unter **Einstellungen** > **Anwendung** > **Anmeldung** nach der Eins
 ## <a name="troubleshooting-sign-in-issues"></a>Behandeln von Problemen bei der Anmeldung
 
 Wenn Sie Probleme bei der Anmeldung haben oder nach der Anmeldung Probleme mit einem Azure-Konto auftreten, lesen Sie den [Abschnitt „Probleme bei der Anmeldung“ im Azure Storage-Explorer-Leitfaden zur Problembehandlung](./storage-explorer-troubleshooting.md#sign-in-issues).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Verwalten von Azure Blob Storage-Ressourcen mit Storage-Explorer](../../vs-azure-tools-storage-explorer-blobs.md)
+* [Problembehandlung bei Anmeldeproblemen](./storage-explorer-troubleshooting.md#sign-in-issues)

@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 04/25/2021
 ms.author: mjbrown
-ms.openlocfilehash: b13f5bfffced9afd80663d606e30e028e52643ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04f79c4ab67dc2fa2e1e969bfdff169042f0d576
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94563834"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227558"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Verwalten von Ressourcen für die Core (SQL)-API von Azure Cosmos mit der Azure CLI
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,7 +21,7 @@ Der folgende Leitfaden erläutert die gängigen Befehle zum Automatisieren der V
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Für diesen Artikel ist mindestens Version 2.12.1 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
+- Für diesen Artikel ist mindestens Version 2.22.1 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 Azure CLI-Beispiele für andere APIs finden Sie unter [CLI-Beispiele für die Cassandra-API](cli-samples-cassandra.md), [CLI-Beispiele für die MongoDB-API](cli-samples-mongodb.md), [CLI-Beispiele für die Gremlin-API](cli-samples-gremlin.md) und [CLI-Beispiele für die Tabellen-API](cli-samples-table.md).
 
@@ -70,6 +70,8 @@ Erstellen Sie ein Azure Cosmos-Konto mit zwei Regionen, fügen Sie eine Region h
 > Sie können nicht gleichzeitig Regionselemente vom Typ `locations` hinzufügen oder entfernen und andere Eigenschaften für ein Azure Cosmos-Konto ändern. Die Anpassung von Regionen muss getrennt von anderen Änderungen an der Kontoressource vorgenommen werden.
 > [!NOTE]
 > Mit diesem Befehl können Sie Regionen hinzufügen und entfernen, aber weder Failoverprioritäten anpassen noch ein manuelles Failover auslösen. Weitere Informationen finden Sie unter [Festlegen der Failoverpriorität](#set-failover-priority) und [Auslösen eines manuellen Failovers](#trigger-manual-failover).
+> [!TIP]
+> Wenn eine neue Region hinzugefügt wird, müssen alle Daten vollständig repliziert und in die neue Region committet werden, bevor die Region als verfügbar markiert wird. Wie lange dieser Vorgang dauert, hängt davon ab, wie viele Daten in dem Konto gespeichert werden.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'

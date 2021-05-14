@@ -9,12 +9,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 04/15/2021
   ms.author: banders
-  ms.openlocfilehash: e96ba3c42ddce1ed12ad560b2d73b99a35c61f8b
-  ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+  ms.openlocfilehash: 4d56dcf2d6aed950723170f542a45f5ab5a9e405
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/19/2021
-  ms.locfileid: "107730689"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108765609"
 title: Häufig gestellte Fragen zu Azure Cost Management and Billing
 summary: ''
 sections:
@@ -95,10 +95,10 @@ sections:
       Ja. Sie können [mit Power BI Desktop eine Verbindung mit Cost Management-Daten herstellen](/power-bi/connect-data/desktop-connect-azure-cost-management) oder die [Cost Management-Power BI-App für EAs](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md) verwenden.
   - question: Welche Angebotstypen werden in Cost Management unterstützt?
     answer: >
-      Entsprechende Informationen finden Sie unter [Unterstützte Microsoft Azure-Angebote](/costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers).
+      Entsprechende Informationen finden Sie unter [Unterstützte Microsoft Azure-Angebote](/azure/cost-management-billing/costs/understand-cost-mgt-data#supported-microsoft-azure-offers).
   - question: Wie schnell werden meine Kosten- und Nutzungsdaten in Azure Cost Management angezeigt?
     answer: >
-      Entsprechende Informationen finden Sie unter [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](/costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention).
+      Entsprechende Informationen finden Sie unter [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention).
   - question: Stehen in Azure Cost Management alle kostenbezogenen Informationen zur Verfügung?
     answer: >
       Entsprechende Informationen finden Sie unter [In Cost Management enthaltene Kosten](costs/understand-cost-mgt-data.md#costs-included-in-cost-management).
@@ -140,7 +140,7 @@ sections:
     answer: >
       Einsparungen können auf verschiedene Arten angezeigt werden.
 
-      -  Als EA-Kunde können Sie die Azure Cost Management-Power BI-App für EA verwenden, um den Bericht [RI Savings](/costs/analyze-cost-data-azure-cost-management-power-bi-template-app#reports-available-with-the-app.md) (Einsparungen für reservierte Instanzen) anzuzeigen.
+      -  Als EA-Kunde können Sie die Azure Cost Management-Power BI-App für EA verwenden, um den Bericht [RI Savings](/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app#reports-available-with-the-app.md) (Einsparungen für reservierte Instanzen) anzuzeigen.
 
       -  Verwenden Sie die Datendatei „Verbrauch + Gebühren“ zum manuellen [Bestimmen von Reservierungseinsparungen](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings).
   - question: Wie zeige ich Unterauslastung für Reservierungen an?
@@ -151,7 +151,7 @@ sections:
       Ausführliche Informationen finden Sie unter [Rückbuchen von Azure-Reservierungskosten](reservations/charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json).
   - question: Wie kann ich angefallene Gebühren für virtuelle Spotcomputer anzeigen?
     answer: >
-      Entsprechende Informationen finden Sie unter [Anzeigen der Gebühren für Spot-VMs](/costs/cost-analysis-common-uses.md#view-your-spot-vm-charges).
+      Entsprechende Informationen finden Sie unter [Anzeigen der Gebühren für Spot-VMs](/azure/cost-management-billing/costs/cost-analysis-common-uses#view-your-spot-vm-charges).
   - question: Wie erhalte ich einen Bericht mit Reservierungsdetails?
     answer: >
       Informationen zum [Generieren eines Berichts mit Reservierungsdetails](/rest/api/cost-management/generatereservationdetailsreport) finden Sie in der API-Dokumentation.

@@ -4,12 +4,12 @@ description: Hier finden Sie Informationen zur Konfiguration von Ethernetschnitt
 ms.topic: reference
 ms.subservice: workloads
 ms.date: 04/14/2021
-ms.openlocfilehash: c57cbc86d17090d6960a334c2790d80b43420aca
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: c381d06c5f152ef1bfecfb76747bf26dbb24f06e
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588886"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516955"
 ---
 # <a name="ethernet-configuration-of-baremetal-for-oracle"></a>Ethernetkonfiguration von Bare-Metal für Oracle
 
@@ -58,7 +58,7 @@ Für Bare-Metal-Instanzen stehen standardmäßig neun zugewiesene IP-Adressen au
 - Ethernet „C“ muss über eine zugewiesene IP-Adresse verfügen, die für die Kommunikation mit NFS-Speicher verwendet wird. Diese Art von Adresse darf nicht im Verzeichnis „etc/hosts“ verwaltet werden.
 - Ethernet „D“ darf ausschließlich für die Global Reach-Einrichtung verwendet werden, um den Zugriff auf Bare-Metal-Instanzen in Ihrer DR-Region zu ermöglichen.
 
-## <a name="next-step"></a>Nächster Schritt
+## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über die Architektur der Bare-Metal-Infrastruktur für Oracle:
 

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 04/27/2021
 ms.author: tisande
-ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd77d8fe2e934ebfe9d4fad994e8aa9c6644ef8e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100378807"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165657"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -337,7 +337,7 @@ Die Indizierungsrichtlinie eines Containers kann jederzeit [im Azure-Portal oder
 > Indextransformation ist ein Vorgang, der [Anforderungseinheiten](request-units.md) verbraucht. Von einer Indextransformation verbrauchte Anforderungseinheiten werden derzeit nicht in Rechnung gestellt, wenn Sie [serverlose](serverless.md) Container verwenden. Diese Anforderungseinheiten werden in Rechnung gestellt, sobald serverlos allgemein verfügbar wird.
 
 > [!NOTE]
-> Es ist möglich, den Fortschritt der Indextransformation [mit einem der SDKs](how-to-manage-indexing-policy.md) zu verfolgen.
+> Sie können den Status der Indextransformation im Azure-Portal oder [mit einem der SDKs](how-to-manage-indexing-policy.md) nachverfolgen.
 
 Es gibt keine Auswirkung auf die Schreibverfügbarkeit während der Indextransformationen. Die Indextransformation verwendet Ihre bereitgestellten RUs, allerdings mit einer niedrigeren Priorität als die CRUD-Vorgänge oder -Abfragen.
 

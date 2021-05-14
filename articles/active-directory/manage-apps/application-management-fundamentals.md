@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: iangithinji
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c895d77b9c6ab48c60b7a337dd8c44414d8d9b5
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e9f77ff371bfb53cff08d860be6cc0160debe491
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318511"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765987"
 ---
 # <a name="application-management-best-practices"></a>Bewährte Methoden für die Anwendungsverwaltung
 
@@ -55,4 +55,3 @@ Dieser Artikel enthält Empfehlungen und bewährte Methoden für das Verwalten v
 | Platzieren der Connectorserver in der Nähe der Anwendungsserver und Sicherstellen, dass sich die Server in derselben Domäne befinden | Platzieren Sie den Connectorserver physisch in der Nähe der Anwendungsserver, um die Leistung zu optimieren (siehe [Aspekte der Netzwerktopologie](../app-proxy/application-proxy-network-topology.md)). Außerdem müssen der Connectorserver und die Webanwendungsserver derselben Active Directory-Domäne angehören oder vertrauenswürdige Domänen umfassen. Diese Konfiguration ist für einmaliges Anmelden mit integrierter Windows-Authentifizierung (IWA) und eingeschränkter Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) erforderlich. Wenn sich die Server in unterschiedlichen Domänen befinden, müssen Sie die ressourcenbasierte Delegierung für einmaliges Anmelden verwenden (siehe [Eingeschränkte Kerberos-Delegierung für die einmalige Anmeldung mit dem Anwendungsproxy](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md)). |
 | Aktivieren automatischer Updates für Connectors | Aktivieren Sie automatische Updates für Ihre Connectors, um die neuesten Features und Fehlerbehebungen zu erhalten. Microsoft bietet direkte Unterstützung für die neueste Connectorversion und die unmittelbare Vorgängerversion. (Weitere Informationen finden Sie unter [Versionsverlauf des Anwendungsproxys](../app-proxy/application-proxy-release-version-history.md).) |
 | Umgehen Ihres lokalen Proxys | Um die Wartung zu vereinfachen, konfigurieren Sie den Connector so, dass Ihr lokaler Proxy umgangen wird, damit eine direkte Verbindung mit den Azure-Diensten hergestellt wird. (Weitere Informationen finden Sie unter [Anwendungsproxyconnectors und Proxyserver](../app-proxy/application-proxy-configure-connectors-with-proxy-servers.md).) |
-| Bevorzugen des Azure AD-Anwendungsproxys gegenüber dem Webanwendungsproxy | Verwenden Sie in den meisten lokalen Szenarien den Azure AD-Anwendungsproxy. Der Webanwendungsproxy wird nur in Szenarien bevorzugt, in denen ein Proxyserver für AD FS erforderlich ist und Sie in Azure Active Directory keine benutzerdefinierten Domänen verwenden können. (Weitere Informationen finden Sie unter [Vergleichen von Remotezugriffslösungen](../app-proxy/application-proxy-migration.md).) |

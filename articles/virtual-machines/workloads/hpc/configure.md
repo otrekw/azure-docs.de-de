@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 486bb13b1603f239d04d8805020713aaf3a7333f
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 7269309a3ed682da4d67e2509508276a3133601e
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227774"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516864"
 ---
 # <a name="configure-and-optimize-vms"></a>Konfigurieren und Optimieren von virtuellen Computern
 
@@ -48,7 +48,7 @@ Beachten Sie außerdem, dass alle oben genannten VM-Größen Gen2-VMs unterstüt
 
 #### <a name="sr-iov-enabled-vms"></a>SR-IOV unterstützende VMs
 Für SR-IOV- und [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances) sind VM-Images von CentOS-HPC 7.6 und höher geeignet. Diese VM-Images sind optimiert und vorab mit den Mellanox-OFED-Treibern für RDMA sowie verschiedenen gängigen MPI-Bibliotheken und Paketen für wissenschaftliches Computing geladen.
-- Sie können die verfügbaren oder neuesten Versionen der VM-Images über die [Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list) oder im [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) mit den folgenden Informationen auflisten.
+- Sie können die verfügbaren oder neuesten Versionen der VM-Images über die [Befehlszeilenschnittstelle](/cli/azure/vm/image#az_vm_image_list) oder im [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) mit den folgenden Informationen auflisten.
    ```bash
    "publisher": "OpenLogic",
    "offer": "CentOS-HPC",
@@ -73,7 +73,7 @@ Für [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances) ohne Aktivier
 
 ### <a name="ubuntu-hpc-vm-images"></a>Ubuntu-HPC-VM-Images
 Für SR-IOV- und [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances) sind Ubuntu-HPC-VM-Images ab Version 18.04 geeignet. Diese VM-Images sind optimiert und vorab mit den Mellanox-OFED-Treibern für RDMA, mit Nvidia-GPU-Treibern, dem GPU-Computesoftwarestapel (CUDA, NCCL) sowie verschiedenen gängigen MPI-Bibliotheken und Paketen für wissenschaftliches Computing geladen.
-- Sie können die verfügbaren oder neuesten Versionen der VM-Images über die [Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list) oder im [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-hpc?tab=overview) mit den folgenden Informationen auflisten.
+- Sie können die verfügbaren oder neuesten Versionen der VM-Images über die [Befehlszeilenschnittstelle](/cli/azure/vm/image#az_vm_image_list) oder im [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-hpc?tab=overview) mit den folgenden Informationen auflisten.
    ```bash
    "publisher": "Microsoft-DSVM",
    "offer": "Ubuntu-HPC",

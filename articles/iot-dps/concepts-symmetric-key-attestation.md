@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0455fe634b44465b4b16d48145fcf51f733f121d
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 32ad3bb4f9a845ded60694d42d0b2708a61aea6a
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929361"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483297"
 ---
 # <a name="symmetric-key-attestation"></a>Nachweis des symmetrischen Schlüssels
 
@@ -37,7 +37,7 @@ Sie können auch Ihre eigenen symmetrischen Schlüssel für Registrierungen verw
 
 ## <a name="detailed-attestation-process"></a>Detaillierter Nachweisprozess
 
-Der Nachweis des symmetrischen Schlüssels mit Device Provisioning Service wird mit den gleichen [Sicherheitstoken](../iot-hub/iot-hub-devguide-security.md#security-token-structure) ausgeführt, die von IoT-Hubs zum Identifizieren von Geräten unterstützt werden. Diese Sicherheitstoken sind [SAS-Token (Shared Access Signature)](../service-bus-messaging/service-bus-sas.md). 
+Der Nachweis des symmetrischen Schlüssels mit Device Provisioning Service wird mit den gleichen [Sicherheitstoken](../iot-hub/iot-hub-dev-guide-sas.md#security-token-structure) ausgeführt, die von IoT-Hubs zum Identifizieren von Geräten unterstützt werden. Diese Sicherheitstoken sind [SAS-Token (Shared Access Signature)](../service-bus-messaging/service-bus-sas.md). 
 
 SAS-Token haben eine *Hashsignatur*, die mit dem symmetrischen Schlüssel erstellt wird. Die Signatur wird von Device Provisioning Service neu erstellt, um zu überprüfen, ob ein während der Bestätigung angegebenes Sicherheitstoken authentisch ist.
 
@@ -57,7 +57,7 @@ Jedes Token enthält die folgenden Komponenten:
 
 Wenn ein Gerät die Bestätigung mit einer individuellen Registrierung vornimmt, verwendet es den im individuellen Registrierungseintrag definierten symmetrischen Schlüssel zum Erstellen der Hashsignatur für das SAS-Token.
 
-Codebeispiele für die Erstellung eines SAS-Tokens finden Sie unter [Sicherheitstoken](../iot-hub/iot-hub-devguide-security.md#security-token-structure).
+Codebeispiele für die Erstellung eines SAS-Tokens finden Sie unter [Sicherheitstoken](../iot-hub/iot-hub-dev-guide-sas.md#security-token-structure).
 
 Die Erstellung von Sicherheitstoken für den Nachweis des symmetrischen Schlüssels wird vom Azure IoT C SDK unterstützt. Ein Beispiel zur Verwendung des Azure IoT C SDK für die Gerätebestätigung mit einer individuellen Registrierung finden Sie unter [Bereitstellen eines simulierten Geräts mit symmetrischen Schlüsseln](quick-create-simulated-device-symm-key.md).
 
@@ -83,7 +83,7 @@ Die IoT-Erweiterung für die Azure CLI stellt den [`compute-device-key`](/cli/az
 
 Ersetzen Sie den Wert des `--key`-Arguments durch den **Primärschlüssel** aus Ihrer Anmeldegruppe.
 
-Ersetzen Sie den Wert des `--registration-id`-Arguments durch Ihre Registrierungs-ID.
+Ersetzen Sie den Wert des Arguments `--registration-id` durch Ihre Registrierungs-ID.
 
 ```azurecli
 az iot dps compute-device-key --key 8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw== --registration-id sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6

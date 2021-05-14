@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-ms.openlocfilehash: 7c3ae14cd409e7bfc9be77c1a593964b73a12ddc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 36987789487e97f42a51ff509df58ee0ff2dd2ed
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791047"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951250"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Virtuelles Netzwerkgerät in einem Azure Virtual WAN-Hub (Vorschauversion)
 
@@ -77,7 +77,7 @@ NVAs im virtuellen Hub sind in den folgenden Regionen als Vorschauversion verfü
 
 |Geopolitische Region | Azure-Regionen|
 |---|---|
-| Nordamerika| „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „USA, Westen-Mitte“, „USA, Westen“, „USA, Westen 2“ |
+| Nordamerika| Kanada, Mitte; Kanada, Osten; USA, Mitte; USA, Osten; USA, Osten 2; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; USA, Westen; USA, Westen 2 |
 | Südamerika | „Brasilien, Süden“, „Brasilien, Südosten“ |
 | Europa | „Frankreich, Mitte“, „Frankreich, Süden“, „Deutschland, Norden“, „Deutschland, Westen-Mitte“, „Europa, Norden“, „Norwegen, Osten“, „Norwegen, Westen“, „Schweiz, Norden“, „Schweiz, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“|
 |  Naher Osten | Vereinigte Arabische Emirate, Norden |

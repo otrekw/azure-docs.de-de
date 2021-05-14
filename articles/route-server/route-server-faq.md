@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 04/16/2021
+ms.date: 04/22/2021
 ms.author: duau
-ms.openlocfilehash: 0bbe16fb63a4546b4b4745df16074f6a4b0cb26b
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 77b9cd7590b381a29fc0dc19b2a80b72afceca0a
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599535"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930297"
 ---
 # <a name="azure-route-server-preview-faq"></a>Häufig gestellte Fragen zu Azure Route Server (Vorschau)
 
@@ -81,6 +81,7 @@ Azure Route Server weist die folgenden Grenzwerte auf (pro Bereitstellung).
 | Anzahl unterstützter BGP-Peers | 8 |
 | Anzahl von Routen, die jeder BGP-Peer für Azure Route Server ankündigen kann | 200 |
 | Anzahl von Routen, die Azure Route Server für ein ExpressRoute- oder VPN-Gateway ankündigen kann | 200 |
+| Anzahl der virtuellen Computer im virtuellen Netzwerk (einschließlich VNets mit Peering), die vom Azure Route Server unterstützt werden | 6000 |
 
 Wenn Ihr NVA mehr Routen als den Grenzwert ankündigt, wird die BGP-Sitzung gelöscht. Wenn dies für das Gateway und Azure Route Server geschieht, geht die Konnektivität zwischen Ihrem lokalen Netzwerk und Azure verloren. Weitere Informationen finden Sie unter [Diagnose des Routingproblems einer Azure-VM](../virtual-network/diagnose-network-routing-problem.md).
 
