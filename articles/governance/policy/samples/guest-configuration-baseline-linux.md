@@ -1,15 +1,15 @@
 ---
 title: 'Referenz: Azure Policy-Gastkonfigurationsbaseline für Linux'
 description: Details der Linux-Baseline in Azure, die durch die Azure Policy-Gastkonfiguration implementiert wird.
-ms.date: 04/05/2021
+ms.date: 05/11/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: adee82dd9802be47a777a9666a7c680d5b5c6204
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b22f8f2d40470ed436f8502ea41351e59e7afc8b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448726"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789052"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-linux"></a>Azure Policy-Gastkonfigurationsbaseline für Linux
 

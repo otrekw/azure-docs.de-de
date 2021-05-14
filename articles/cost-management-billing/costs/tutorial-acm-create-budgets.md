@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 60b7cfa744de244015f99a2e42070eb3430878c7
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 757de37fdc3f55170d8c620a69adf104b8884b14
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015661"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204277"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -71,7 +71,7 @@ Die folgenden Azure-Berechtigungen (oder Bereich) werden pro Abonnement für Bud
 - Mitwirkender und Mitwirkender für Cost Management – kann eigene Budgets erstellen, ändern oder löschen. Kann den Betrag für von anderen Personen erstellten Budgets ändern.
 - Leser und Leser für Cost Management – kann Budgets anzeigen, für die er die Berechtigung hat.
 
-Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md). Weitere Informationen zum Zuweisen der Berechtigung für Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Daten in Cost Management](./assign-access-acm-data.md).
+**Weitere Informationen zu Bereichen, einschließlich des Zugriffs, der zum Konfigurieren von Exporten für Bereiche für Enterprise Agreement und Microsoft-Kundenvereinbarung erforderlich ist, finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md)** . Weitere Informationen zum Zuweisen der Berechtigung für Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Daten in Cost Management](./assign-access-acm-data.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

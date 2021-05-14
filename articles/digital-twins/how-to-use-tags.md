@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5972882a582a0e612ecbed3f6a4ab70be8ba393c
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: a99f5ebf0fd4f3c4684446a868e1c4e342f3785e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207481"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783836"
 ---
 # <a name="add-tags-to-digital-twins"></a>Hinzufügen von Tags zu digitalen Zwillingen 
 
-Sie können das Konzept der Tags verwenden, um Ihre digitalen Zwillinge genauer zu anzugeben und zu kategorisieren. Insbesondere möchten Benutzer möglicherweise Tags aus vorhandenen Systemen wie etwa [Haystack-Tags](https://project-haystack.org/doc/TagModel) in ihren Azure Digital Twins-Instanzen replizieren. 
+Sie können das Konzept der Tags verwenden, um Ihre digitalen Zwillinge genauer zu anzugeben und zu kategorisieren. Insbesondere möchten Benutzer möglicherweise Tags aus vorhandenen Systemen wie etwa [Haystack-Tags](https://project-haystack.org/doc/appendix/tags) in ihren Azure Digital Twins-Instanzen replizieren. 
 
 In diesem Artikel werden Muster beschrieben, die zum Implementieren von Tags für digitale Zwillinge verwendet werden können.
 

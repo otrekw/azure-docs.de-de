@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: f11677d9ebc31f1c1f7cc6332b07b69f8e35ad52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8581bf3ec4170b6914409d060b64a50c8bff2d2
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561176"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715608"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Azure Disk Encryption-Beispielskripts für virtuelle Linux-Computer
 
@@ -267,7 +267,7 @@ Konfigurieren Sie die Verschlüsselung während der Installation einer Distribut
 
    ![openSUSE 13.2-Setup: Passphrase beim Starten angeben](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. Bereiten Sie die VM für das Hochladen in Azure mithilfe der Anweisungen im Abschnitt zum [Vorbereiten einer SLES- oder openSUSE-VM für Azure](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-131) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
+3. Bereiten Sie die VM für das Hochladen in Azure mithilfe der Anweisungen im Abschnitt zum [Vorbereiten einer SLES- oder openSUSE-VM für Azure](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-152) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
 
 Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schritte ausführen:
 1. Bearbeiten Sie die Datei „/etc/dracut.conf“, und fügen Sie die folgende Zeile hinzu:

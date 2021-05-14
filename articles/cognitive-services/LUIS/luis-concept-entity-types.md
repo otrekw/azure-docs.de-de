@@ -4,13 +4,13 @@ description: Eine Entität extrahiert zur Vorhersagelaufzeit Daten aus einer Ben
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/13/2021
-ms.openlocfilehash: 44cffecd653ec2ec748e73d01dc86a87cfcd7de9
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 04/26/2021
+ms.openlocfilehash: a075a84322dc11be352470d50478979b975f0292
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500327"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140891"
 ---
 # <a name="entities-in-luis"></a>Entitäten in LUIS
 
@@ -33,7 +33,7 @@ Entitäten sind optional, werden aber empfohlen. Sie müssen nicht für jedes Ko
 
 Um eine Entität zu erstellen, müssen Sie ihr einen Namen und einen Typ zuweisen. Es gibt mehrere Arten von Entitäten in LUIS. 
 
-### <a name="list-entity"></a>Entität vom Typ „List“
+## <a name="list-entity"></a>Entität vom Typ „List“
 
 Eine Listenentität stellt einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. Sie können Listenentitäten verwenden, um mehrere Synonyme oder Variationen zu erkennen und dafür eine normalisierte Ausgabe zu extrahieren. Suchen Sie mithilfe der Option *Empfehlung* nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. 
 
@@ -49,7 +49,7 @@ Beim Abgleich in Listenentitäten ist die Groß-/Kleinschreibung relevant, und n
 
 Weitere Informationen finden Sie im [Referenzartikel zu Listenentitäten](reference-entity-list.md).
 
-### <a name="regex-entity"></a>RegEx-Entität
+## <a name="regex-entity"></a>RegEx-Entität
 
 Eine RegEx-Entität extrahiert eine Entität anhand eines regulären Ausdrucks, den Sie bereitstellen. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert. Reguläre Ausdrücke eignen sich am besten für strukturierten Text oder eine vordefinierte Sequenz alphanumerischer Werte, die in einem bestimmten Format erwartet werden. Beispiel:
 
@@ -60,7 +60,7 @@ Eine RegEx-Entität extrahiert eine Entität anhand eines regulären Ausdrucks, 
 
 Weitere Informationen finden Sie im [Referenzartikel zu RegEx-Entitäten](reference-entity-regular-expression.md).
 
-### <a name="prebuilt-entity"></a>Vordefinierte Entität
+## <a name="prebuilt-entity"></a>Vordefinierte Entität
 
 LUIS bietet eine Reihe vordefinierter Entitäten zum Erkennen gängiger Datentypen wie Name, Datum, Zahl und Währung.  Das Verhalten der vordefinierten Entitäten kann nicht geändert werden. Die Unterstützung vordefinierter Entitäten variiert je nach Kultur der LUIS-App. Beispiel:
 
@@ -71,7 +71,7 @@ LUIS bietet eine Reihe vordefinierter Entitäten zum Erkennen gängiger Datentyp
 
 Weitere Informationen finden Sie im [Referenzartikel zu vordefinierten Entitäten](./luis-reference-prebuilt-entities.md).
 
-### <a name="patternany-entity"></a>Pattern.Any-Entität
+## <a name="patternany-entity"></a>Pattern.Any-Entität
 
 Eine Pattern.Any-Entität ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um den Beginn und das Ende der Entität zu markieren. Diese Entität folgt einer bestimmten Regel oder einem bestimmten Muster und wird am besten für Sätze mit fester lexikalischer Struktur verwendet. Beispiel:
 
@@ -83,7 +83,7 @@ Eine Pattern.Any-Entität ist ein Platzhalter variabler Länge, der nur in der V
 
 Weitere Informationen finden Sie im [Referenzartikel zu Pattern.Any-Entitäten](./reference-entity-pattern-any.md).
 
-### <a name="machine-learned-ml-entity"></a>Durch maschinelles Lernen (ML) erworbene Entität
+## <a name="machine-learned-ml-entity"></a>Durch maschinelles Lernen (ML) erworbene Entität
 
 Eine durch maschinelles Lernen erworbene Entität verwendet Kontext, um Entitäten basierend auf beschrifteten Beispielen zu extrahieren. Diese Entität stellt die bevorzugte Entität für das Erstellen von LUIS-Anwendungen dar. Sie basiert auf Algorithmen für maschinelles Lernen und erfordert Beschriftungen, um erfolgreich auf Ihre Anwendung zugeschnitten zu werden. Verwenden Sie eine ML-Entität, um Daten zu identifizieren, die nicht immer optimal formatiert sind, aber dieselbe Bedeutung aufweisen. 
 
@@ -109,7 +109,7 @@ Eine ML-Entität kann aus kleineren untergeordneten Entitäten bestehen, von den
     * Land: USA
 
 
-### <a name="building-effective-ml-entities"></a>Erstellen effektiver ML-Entitäten
+## <a name="building-effective-ml-entities"></a>Erstellen effektiver ML-Entitäten
 
 Befolgen Sie die folgenden bewährten Methoden, um durch maschinelles Lernen erworbene Entitäten effektiv zu erstellen:
 
@@ -123,7 +123,7 @@ Befolgen Sie die folgenden bewährten Methoden, um durch maschinelles Lernen erw
 
 Eine weitere wichtige Funktion von Entitäten besteht darin, sie als Features oder Unterscheidungsmerkmale für andere Absichten oder Entitäten zu verwenden, damit Ihr System sie beobachtet und daraus lernt.
 
-### <a name="entities-as-features-for-intents"></a>Entitäten als Features für Absichten
+## <a name="entities-as-features-for-intents"></a>Entitäten als Features für Absichten
 
 Sie können Entitäten als Signal für eine Absicht verwenden. Beispielsweise kann das Vorhandensein einer bestimmten Entität in der Äußerung kennzeichnen, welcher Absicht sie zuzuordnen ist.
 
@@ -132,7 +132,7 @@ Sie können Entitäten als Signal für eine Absicht verwenden. Beispielsweise ka
 |Buche mir einen *Flug nach New York*.|City|Flug buchen|
 |Buche mir den *Hauptkonferenzraum*.|Raum|Raum reservieren|
 
-### <a name="entities-as-feature-for-entities"></a>Entitäten als Feature für Entitäten
+## <a name="entities-as-feature-for-entities"></a>Entitäten als Feature für Entitäten
 
 Sie können Entitäten auch als Indikator für das Vorhandensein anderer Entitäten verwenden. Ein gängiges Beispiel hierfür ist die Verwendung einer vordefinierten Entität als Feature für eine andere ML-Entität.
 Wenn Sie ein Flugbuchungssystem erstellen und Ihre Äußerung „Buche mir einen Flug von Kairo nach Seattle“ lautet, verfügen Sie über die ML-Entitäten *Abflugort* und *Zielort*. Eine bewährte Methode wäre die Verwendung der vordefinierten Entität `GeographyV2` als Feature für beide Entitäten.

@@ -4,16 +4,18 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 097886e5e1942dd957b8fa3d9b8599177c229747
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 00e0eb3bbf8784c16a6f305813191143ce4f8c2a
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491206"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719316"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Schritte in diesem Artikel benötigen Sie eine Azure IoT Central-Anwendung, die mit der Vorlage **Benutzerdefinierte Anwendung** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](../articles/iot-central/core/quick-deploy-iot-central.md). Die Anwendung muss am 14. Juli 2020 oder nach diesem Datum erstellt worden sein.
+Zum Durchführen der Schritte in diesem Tutorial benötigen Sie Folgendes:
+
+[!INCLUDE [iot-central-prerequisites-basic](iot-central-prerequisites-basic.md)]
 
 Sie können dieses Tutorial unter Linux oder Windows durcharbeiten. Die Shellbefehle in diesem Tutorial entsprechen der Linux-Konvention für die Pfadtrennzeichen `/`. Wenn Sie den Anleitungen unter Windows folgen, sollten Sie diese Trennzeichen durch `\` ersetzen.
 

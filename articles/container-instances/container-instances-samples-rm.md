@@ -3,12 +3,12 @@ title: Beispiele für Azure Resource Manager-Vorlagen
 description: Hier finden Sie Beispiele für Azure Resource Manager-Vorlagen zum Bereitstellen von Azure Container Instances in verschiedenen Konfigurationen.
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12ecfc5c1066aad39ef2e3c10832d461426b5158
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86169645"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733692"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Resource Manager-Vorlagen für Azure Container Instances
 
@@ -49,14 +49,14 @@ Sie können zwischen verschiedenen Optionen für das Bereitstellen von Ressource
 <!-- LINKS - External -->
 [app-nav]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-dynamicsnav
 [app-wp]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress
-[az-files]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-storage-file-share
-[net-publicip]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-linuxcontainer-public-ip
-[net-udp]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-udp
+[az-files]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-storage-file-share
+[net-publicip]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-linuxcontainer-public-ip
+[net-udp]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-udp
 [net-vnet]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 [repo]: https://github.com/Azure/azure-quickstart-templates
-[vol-emptydir]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-emptydir
-[vol-gitrepo]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-gitrepo
-[vol-secret]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-secret
+[vol-emptydir]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-linuxcontainer-volume-emptydir
+[vol-gitrepo]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-linuxcontainer-volume-gitrepo
+[vol-secret]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-linuxcontainer-volume-secret
 
 <!-- LINKS - Internal -->
 [deploy-cli]: ../azure-resource-manager/templates/deploy-cli.md

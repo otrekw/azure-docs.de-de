@@ -3,14 +3,14 @@ title: Unterstützte Browser und Geräte für das Azure-Portal
 description: Sie können das Azure-Portal auf allen modernen Geräten und mit den neuesten Browserversionen verwenden. Lesen Sie diesen Artikel, um sicherzustellen, dass Ihr Browser unterstützt wird.
 ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 05/06/2021
 ms.custom: accessibility
-ms.openlocfilehash: 2637dd6112d1cf1f9a3131cb9043a8b6aac2884f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75d763b3249bb0a95b260bcdcba83d44581fed1f
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735825"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481335"
 ---
 # <a name="supported-devices"></a>Unterstützte Geräte
 
@@ -23,7 +23,6 @@ Wenn Sie Azure-Ressourcen über ein mobiles Gerät verwalten müssen, testen Sie
 Es wird empfohlen, den neuesten Browser zu verwenden, der mit Ihrem Betriebssystem kompatibel ist. Die folgenden Browser werden unterstützt:
 
 * Microsoft Edge (neueste Version)
-* Internet Explorer 11 (wird bis 31. März 2021 unterstützt)
 * Safari (neueste Version, nur auf Mac)
 * Chrome (neueste Version)
 * Firefox (neueste Version)

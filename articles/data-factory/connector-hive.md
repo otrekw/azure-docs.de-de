@@ -1,17 +1,17 @@
 ---
 title: Kopieren von Daten aus Hive mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Hive mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.author: jingwang
-ms.openlocfilehash: 8f6e85d82c01663e404f7046f84706feb209ba5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 88f91ca27bad44f0b9d6235d257b141ce277b191
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100367026"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485061"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Kopieren und Transformieren von Daten aus Hive mithilfe von Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,11 +31,11 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Hive-Connector verwendet werden.
 

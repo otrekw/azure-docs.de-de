@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 80a0b4634a2e84181271b515d2f6f63271cce7f2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5af424ff79cb8dc919590db7e236323b2d16fc4e
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784963"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752893"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
-Abhängig davon, wie Sie Azure zum Hosten von IaaS, PaaS und Hybridlösungen verwenden, müssen Sie für die virtuellen Computer und andere Ressourcen, die in einem virtuellen Netzwerk bereitgestellt werden, die Kommunikation untereinander zulassen. Sie können diese Kommunikation zwar über IP-Adressen aktivieren, doch ist es deutlich einfacher, Namen zu verwenden, die leicht zu merken sind und sich nicht verändern. 
+Abhängig davon, wie Sie Azure zum Hosten von IaaS, PaaS und Hybridlösungen verwenden, müssen Sie für die virtuellen Computer und andere Ressourcen, die in einem virtuellen Netzwerk bereitgestellt werden, die Kommunikation untereinander zulassen. Sie können diese Kommunikation zwar über IP-Adressen aktivieren, doch ist es deutlich einfacher, Namen zu verwenden, die leicht zu merken sind und sich nicht verändern.
 
 Wenn in einem virtuellen Netzwerk bereitgestellte Ressourcen Domänennamen in interne IP-Adressen auflösen müssen, können sie eine dieser drei Methoden verwenden:
 
@@ -36,7 +36,8 @@ Welche Art der Namensauflösung Sie verwenden, hängt davon ab, wie die Ressourc
 > Private Azure DNS-Zonen sind die bevorzugte Lösung und bieten Ihnen Flexibilität bei der Verwaltung Ihrer DNS-Zonen und -Einträge. Weitere Informationen finden Sie unter [Verwenden von Azure DNS für private Domänen](../dns/private-dns-overview.md).
 
 > [!NOTE]
-> Wenn Sie von Azure bereitgestelltes DNS verwenden, wird Ihren virtuellen Computern das entsprechende DNS-Suffix automatisch zugewiesen. Für alle anderen Optionen müssen Sie entweder vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) verwenden oder Ihren virtuellen Computern das entsprechende DNS-Suffix manuell zuweisen.
+> Wenn Sie von Azure bereitgestelltes DNS verwenden, wird Ihren virtuellen Computern das entsprechende DNS-Suffix automatisch zugewiesen.
+> Für alle anderen Optionen müssen Sie entweder vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) verwenden oder Ihren virtuellen Computern das entsprechende DNS-Suffix manuell zuweisen.
 
 | **Szenario** | **Lösung** | **DNS-Suffix** |
 | --- | --- | --- |
@@ -57,7 +58,7 @@ Die von Azure bereitgestellte Namensauflösung bietet nur grundlegende autoritat
 Zusammen mit der Auflösung des öffentlichen DNS-Namens bietet Azure die Auflösung interner Namen für virtuelle Computer und Rolleninstanzen, die sich innerhalb des gleichen virtuellen Netzwerks oder Clouddiensts befinden. Virtuelle Computer und Instanzen in einem Clouddienst verwenden das gleiche DNS-Suffix gemeinsam, sodass der Hostname allein ausreichend ist. In virtuellen Netzwerken, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden, weisen verschiedene Clouddienste jedoch unterschiedliche DNS-Suffixe auf. In diesem Fall benötigen Sie den FQDN zum Auflösen von Namen zwischen verschiedenen Clouddiensten. In virtuellen Netzwerken, die mit dem Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden, ist das DNS-Suffix aller virtuellen Computer in einem virtuellen Netzwerk einheitlich, sodass der FQDN nicht benötigt wird. DNS-Namen können virtuellen Computern und Netzwerkschnittstellen zugewiesen werden. Obwohl für die von Azure durchgeführte Namensauflösung keine Konfiguration erforderlich ist, ist sie nicht für alle Bereitstellungsszenarien die beste Lösung (siehe die vorherige Tabelle).
 
 > [!NOTE]
-> Bei Verwendung von Clouddienstweb- und Workerrollen können Sie auf die internen IP-Adressen von Rolleninstanzen über die REST-API für die Azure-Dienstverwaltung zugreifen. Weitere Informationen finden Sie unter [Referenz zur REST-API der Dienstverwaltung](/previous-versions/azure/ee460799(v=azure.100)). Die Adresse basiert auf dem Rollennamen und der Instanznummer. 
+> Bei Verwendung von Clouddienstweb- und Workerrollen können Sie auf die internen IP-Adressen von Rolleninstanzen über die REST-API für die Azure-Dienstverwaltung zugreifen. Weitere Informationen finden Sie unter [Referenz zur REST-API der Dienstverwaltung](/previous-versions/azure/ee460799(v=azure.100)). Die Adresse basiert auf dem Rollennamen und der Instanznummer.
 >
 
 ### <a name="features"></a>Features
@@ -67,7 +68,7 @@ Die von Azure bereitgestellte Namensauflösung umfasst die folgenden Features:
 * Hochverfügbarkeit. Sie müssen Cluster Ihrer eigenen DNS-Server weder erstellen noch verwalten.
 * Sie können den Dienst in Verbindung mit Ihren eigenen DNS-Servern zum Auflösen von lokalen und Azure-Hostnamen verwenden.
 * Sie können die Namensauflösung zwischen VMs und Rolleninstanzen im gleichen Clouddienst verwenden, ohne dass ein FQDN erforderlich ist.
-* Sie können die Namensauflösung zwischen virtuellen Computern in virtuellen Netzwerken verwenden, die das Azure Resource Manager-Bereitstellungsmodell verwenden, ohne dass ein FQDN erforderlich ist. Virtuelle Netzwerke im klassischen Bereitstellungsmodell erfordern einen FQDN beim Auflösen von Namen in verschiedenen Clouddiensten. 
+* Sie können die Namensauflösung zwischen virtuellen Computern in virtuellen Netzwerken verwenden, die das Azure Resource Manager-Bereitstellungsmodell verwenden, ohne dass ein FQDN erforderlich ist. Virtuelle Netzwerke im klassischen Bereitstellungsmodell erfordern einen FQDN beim Auflösen von Namen in verschiedenen Clouddiensten.
 * Sie können Hostnamen verwenden, die Ihre Bereitstellungen am besten beschreiben, und müssen nicht mit automatisch generierten Namen arbeiten.
 
 ### <a name="considerations"></a>Überlegungen
@@ -111,8 +112,8 @@ Es sind mehrere unterschiedliche DNS-Cachingpakete verfügbar (z.B. dnsmasq). So
   * Installieren Sie das dnsmasq-Paket mit `sudo apt-get install dnsmasq`.
 * **SUSE (verwendet netconf)** :
   * Installieren Sie das dnsmasq-Paket mit `sudo zypper install dnsmasq`.
-  * Aktivieren Sie den dnsmasq-Dienst mit `systemctl enable dnsmasq.service`. 
-  * Starten Sie den dnsmasq-Dienst mit `systemctl start dnsmasq.service`. 
+  * Aktivieren Sie den dnsmasq-Dienst mit `systemctl enable dnsmasq.service`.
+  * Starten Sie den dnsmasq-Dienst mit `systemctl start dnsmasq.service`.
   * Bearbeiten Sie **/etc/sysconfig/network/config**, und ändern Sie *NETCONFIG_DNS_FORWARDER=""* in *dnsmasq*.
   * Aktualisieren Sie „resolv.conf“ mit `netconfig update`, um den Cache als lokalen DNS-Resolver festzulegen.
 * **CentOS** (verwendet NetworkManager):
@@ -125,12 +126,12 @@ Es sind mehrere unterschiedliche DNS-Cachingpakete verfügbar (z.B. dnsmasq). So
 > [!NOTE]
 > Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie dessen Eignung für Ihre besonderen Bedürfnisse und außerdem, ob kein anderer Cache installiert ist.
 
-    
+
 ### <a name="client-side-retries"></a>Clientseitige Wiederholungsversuche
 
 DNS ist in erster Linie ein UDP-Protokoll. Da das UDP-Protokoll keine Nachrichtenübermittlung garantiert, wird die Wiederholungslogik im DNS-Protokoll selbst behandelt. Jeder DNS-Client (Betriebssystem) kann je nach Vorliebe des Erstellers eine unterschiedliche Wiederholungslogik aufweisen:
 
-* Windows-Betriebssysteme starten nach einer Sekunde einen Wiederholungsversuch und dann erneut nach weiteren zwei Sekunden, vier Sekunden und weiteren vier Sekunden. 
+* Windows-Betriebssysteme starten nach einer Sekunde einen Wiederholungsversuch und dann erneut nach weiteren zwei Sekunden, vier Sekunden und weiteren vier Sekunden.
 * Das standardmäßige Linux-Setup führt nach fünf Sekunden einen Wiederholungsversuch aus. Es wird empfohlen, die Wiederholungsversuchspezifikationen in fünf Wiederholungsversuche in Intervallen von einer Sekunde zu ändern.
 
 Überprüfen Sie die aktuellen Einstellungen auf einem virtuellen Linux-Computer mit `cat /etc/resolv.conf`. Sehen Sie sich beispielsweise die Zeile *options* an:
@@ -161,7 +162,7 @@ Ihre Namensauflösungsanforderungen gehen möglicherweise über die von Azure be
 
 DNS-Server in einem virtuellen Netzwerk können DNS-Abfragen an die rekursiven Resolver in Azure weiterleiten. Dadurch können Sie Hostnamen innerhalb dieses virtuellen Netzwerks auflösen. Beispielsweise kann ein in Azure ausgeführter Domänencontroller (DC) auf DNS-Abfragen für die eigenen Domänen antworten und alle anderen Abfragen an Azure weiterleiten. Durch das Weiterleiten von Abfragen sind sowohl Ihre lokalen Ressourcen (über den DC) als auch die von Azure bereitgestellten Hostnamen (über die Weiterleitung) für die virtuellen Computer sichtbar. Der Zugriff auf die rekursiven Resolver in Azure wird über die virtuelle IP-Adresse 168.63.129.16 bereitgestellt.
 
-Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuellen Netzwerken ermöglicht, sodass die lokalen Computer von Azure bereitgestellte Hostnamen auflösen können. Um den Hostnamen eines virtuellen Computers aufzulösen, muss sich die DNS-Server-VM im selben virtuellen Netzwerk befinden und zur Weiterleitung von Abfragen für Hostnamen an Azure konfiguriert sein. Da jedes virtuelle Netzwerk ein eigenes DNS-Suffix verwendet, können Sie mithilfe von Regeln für die bedingte Weiterleitung DNS-Abfragen zur Auflösung an das richtige virtuelle Netzwerk senden. In der folgenden Abbildung sind zwei virtuelle Netzwerke und ein lokales Netzwerk dargestellt, in dem eine DNS-Auflösung zwischen virtuellen Netzwerken mithilfe dieser Methode ausgeführt wird. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) zur Verfügung.
+Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuellen Netzwerken ermöglicht, sodass die lokalen Computer von Azure bereitgestellte Hostnamen auflösen können. Um den Hostnamen eines virtuellen Computers aufzulösen, muss sich die DNS-Server-VM im selben virtuellen Netzwerk befinden und zur Weiterleitung von Abfragen für Hostnamen an Azure konfiguriert sein. Da jedes virtuelle Netzwerk ein eigenes DNS-Suffix verwendet, können Sie mithilfe von Regeln für die bedingte Weiterleitung DNS-Abfragen zur Auflösung an das richtige virtuelle Netzwerk senden. In der folgenden Abbildung sind zwei virtuelle Netzwerke und ein lokales Netzwerk dargestellt, in dem eine DNS-Auflösung zwischen virtuellen Netzwerken mithilfe dieser Methode ausgeführt wird. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/demos/dns-forwarder/) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) zur Verfügung.
 
 > [!NOTE]
 > Eine Rolleninstanz kann die Namensauflösung von virtuellen Computern innerhalb des gleichen virtuellen Netzwerks ausführen. Diese erfolgt mithilfe des FQDN, der aus dem Hostnamen des virtuellen Computers und dem DNS-Suffix **internal.cloudapp.net** besteht. In diesem Fall ist die Namensauflösung jedoch nur erfolgreich, wenn für die Rolleninstanz der Namen des virtuellen Computers im [Rollenschema (CSCFG-Datei)](/previous-versions/azure/reference/jj156212(v=azure.100)) definiert ist.
@@ -181,7 +182,7 @@ Bei Bedarf kann das interne DNS-Suffix mithilfe von PowerShell oder der API ermi
 
 Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, sollten Sie eine eigene DNS-Lösung bereitstellen. Die DNS-Lösung muss Folgendes leisten:
 
-* Bereitstellung einer geeigneten Hostnamensauflösung, z.B. über [DDNS](virtual-networks-name-resolution-ddns.md). Bei Verwendung von DDNS muss möglicherweise die DNS-Eintragsbereinigung deaktiviert werden. Die Azure DHCP-Leases sind sehr lange gültig, und die DNS-Einträge werden durch eine Bereinigung möglicherweise zu früh entfernt. 
+* Bereitstellung einer geeigneten Hostnamensauflösung, z.B. über [DDNS](virtual-networks-name-resolution-ddns.md). Bei Verwendung von DDNS muss möglicherweise die DNS-Eintragsbereinigung deaktiviert werden. Die Azure DHCP-Leases sind sehr lange gültig, und die DNS-Einträge werden durch eine Bereinigung möglicherweise zu früh entfernt.
 * Bereitstellung einer geeigneten rekursiven Lösung, um eine Auflösung externer Domänennamen zu ermöglichen.
 * Möglichkeit zum Zugriff (TCP und UDP auf Port 53) von den Clients, die Dienste beziehen, und für den Internetzugriff.
 * Schutz vor einem Zugriff aus dem Internet, um mögliche Bedrohungen durch externe Agents zu minimieren.
@@ -198,7 +199,7 @@ Angenommen, Sie müssen Namensauflösung aus Ihrer Web-App, die mithilfe von App
 
 Wenn Sie eine Namensauflösung von Ihrer mit App Service erstellten und mit einem virtuellen Netzwerk verknüpften Web-App aus in virtuelle Computer in einem anderen virtuellen Netzwerk durchführen müssen, müssen Sie in beiden virtuellen Netzwerken folgendermaßen benutzerdefinierte DNS-Server verwenden:
 
-* Richten Sie einen DNS-Server im virtuellen Zielnetzwerk auf einem virtuellen Computer ein, der auch Abfragen an den rekursiven Resolver in Azure (virtuelle IP-Adresse 168.63.129.16) weiterleiten kann. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/301-dns-forwarder) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) zur Verfügung. 
+* Richten Sie einen DNS-Server im virtuellen Zielnetzwerk auf einem virtuellen Computer ein, der auch Abfragen an den rekursiven Resolver in Azure (virtuelle IP-Adresse 168.63.129.16) weiterleiten kann. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/demos/dns-forwarder) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) zur Verfügung.
 * Richten Sie eine DNS-Weiterleitung im virtuellen Quellnetzwerk auf einem virtuellen Computer ein. Konfigurieren Sie diese DNS-Weiterleitung für das Weiterleiten von Abfragen an den DNS-Server in Ihrem virtuellen Zielnetzwerk.
 * Konfigurieren Sie den DNS-Quellserver in den Einstellungen für Ihr virtuelles Quellnetzwerk.
 * Aktivieren Sie die Integration virtueller Netzwerke für Ihre Web-App, um eine Verknüpfung mit dem virtuellen Quellnetzwerk herzustellen. Befolgen Sie dazu die Anweisungen unter [Integrieren Ihrer App in ein virtuelles Netzwerk](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
