@@ -8,19 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d36bae57a9e1609e053326cf7288b5b1bc470cef
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: a91d26139fae80b38383e7f65f7ae2f58358e6f6
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166886"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795310"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Bereitstellen von Cloud Services (erweiterter Support) mithilfe des Azure SDK
 
 In diesem Artikel erfahren Sie, wie Sie das [Azure SDK](https://azure.microsoft.com/downloads/) verwenden, um eine Instanz von Cloud Services (erweiterter Support) mit mehreren Rollen (Webrolle und Workerrolle) sowie mit der Remotedesktoperweiterung bereitzustellen. Cloud Services (erweiterter Support) ist ein Bereitstellungsmodell von Azure Cloud Services, das auf dem Azure Resource Manager basiert.
-
-> [!IMPORTANT]
-> Cloud Services (erweiterter Support) befindet sich derzeit in der Public Preview-Phase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Vorbereitung
 
