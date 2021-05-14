@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 4f1f65da9f05b8bc623158bedd029f113d4f300c
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: cbf56f6567c3c7857afcd71ed9f6dc67be48f9d1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903158"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108791183"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure Communication Services-Bibliothek zum Einbetten von Teams für Android einer Microsoft Teams-Besprechung beitreten.
 
@@ -76,7 +76,7 @@ Aktualisieren Sie die Werte in der Datei `build.gradle`:
 
 ### <a name="install-the-teams-embed-package"></a>Installieren des Teams Embed-Pakets
 
-Laden Sie das [`MicrosoftTeamsSDK`-Paket](https://github.com/Azure/communication-teams-embed/releases) herunter.
+Laden Sie das [`MicrosoftTeamsSDK`-Paket](https://github.com/Azure/communication) herunter.
 
 Entpacken Sie anschließend den Ordner `MicrosoftTeamsSDK` in Ihren Projektordner für Apps. Ex. `TeamsEmbedAndroidGettingStarted/app/MicrosoftTeamsSDK`.
 
@@ -303,7 +303,7 @@ private void createMeetingClient() {
 
 ## <a name="setup-token-refreshing"></a>Das Einrichtungstoken wird aktualisiert
 
-Erstellen Sie eine aufrufbare `tokenRefresher`-Methode. Erstellen Sie dann eine `fetchToken`-Methode, um das Benutzertoken zu erhalten. [Eine Anleitung dazu finden Sie hier](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-java)
+Erstellen Sie eine aufrufbare `tokenRefresher`-Methode. Erstellen Sie dann eine `fetchToken`-Methode, um das Benutzertoken zu erhalten. [Eine Anleitung dazu finden Sie hier](../../access-tokens.md?pivots=programming-language-java)
 
 ```java
 Callable<String> tokenRefresher = () -> {

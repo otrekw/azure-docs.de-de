@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a83b94a94831e96dc1851f2ded5f911e7d6cc5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 74735e80326e1d05e3f8820fc2b94c8fe930fcb3
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288902"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784231"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -119,7 +119,8 @@ Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltun
 
 **A:** Ja. Wenn die Funktion „Kennwort zurückschreiben“ aktiviert ist, werden die von einem Administrator ausgeführten Kennwortvorgänge in Ihre lokale Umgebung zurückgeschrieben.  
 
-<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellte Fragen zur Kennwortverwaltung](../authentication/active-directory-passwords-faq.yml).
+Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellte Fragen zur Kennwortverwaltung](../authentication/active-directory-passwords-faq.yml).
+
 ---
 **F:  Was kann ich tun, wenn ich mein vorhandenes Microsoft 365-/Azure AD-Kennwort ändern möchte, aber das Kennwort vergessen habe?**
 
@@ -132,8 +133,8 @@ Für Azure AD-Konten können Administratoren Kennwörter mit einer der folgenden
 - [Zurücksetzen der Konten im Azure-Portal](active-directory-users-reset-password-azure-portal.md)
 - [Mithilfe von PowerShell](/powershell/module/msonline/set-msoluserpassword)
 
-
 ---
+
 ## <a name="security"></a>Sicherheit
 **F: Werden Konten nach einer bestimmten Anzahl misslungener Anmeldeversuche gesperrt, oder wird eine ausgereiftere Strategie angewandt?**
 

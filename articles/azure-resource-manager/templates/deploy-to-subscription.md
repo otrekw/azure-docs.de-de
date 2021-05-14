@@ -3,13 +3,13 @@ title: Bereitstellen von Ressourcen in einem Abonnement
 description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4514067a4f8601e7774c0bfbdf1f65d8ef3a3e09
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: a2b9fedbd2916953b0ff2166bc7fddb5f877ee07
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314587"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754084"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>Abonnementbereitstellungen mit ARM-Vorlagen
 

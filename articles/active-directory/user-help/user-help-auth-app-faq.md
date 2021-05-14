@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/28/2021
+ms.date: 04/30/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: e5f7db6b360769b7a3c2e3ffdafe66f94c2582aa
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 6cc64c9b3ad3f177d50f3e659e8ea628ba485159
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178302"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764169"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -203,7 +203,13 @@ Unter Android empfiehlt Microsoft, der App immer den Zugriff auf den Standort zu
 
 **F:** Warum treten Probleme bei meiner Apple Watch unter watchOS 7 auf?
 
-**A:** Es liegt ein Problem beim Genehmigen von Benachrichtigungen unter watchOS 7 vor, und wir arbeiten mit Apple zusammen, um dies zu beheben. In der Zwischenzeit sollten alle Benachrichtigungen, die die Microsoft Authenticator-App unter watchOS erfordern, stattdessen auf Ihrem Smartphone genehmigt werden.
+**A:** Manchmal wird beim Genehmigen oder Ablehnen einer Sitzung unter watchOS 7 die folgende Fehlermeldung angezeigt: „Fehler bei der Kommunikation mit dem Smartphone. Stellen Sie sicher, dass Sie die Anzeige Ihrer Watch bei zukünftigen Anforderungen aktiv halten. Weitere Informationen finden Sie in den FAQ.“ Es gibt ein bekanntes Problem bei Benachrichtigungen, wenn die App-Sperre aktiviert ist oder ein Nummernabgleich erforderlich ist. Wir arbeiten mit Apple zusammen an der Behebung dieses Problems. In der Zwischenzeit sollten alle Benachrichtigungen, die die Microsoft Authenticator-App unter watchOS erfordern, stattdessen auf Ihrem Smartphone genehmigt werden.
+
+### <a name="signing-into-an-ios-app"></a>Anmelden bei einer iOS-App
+
+**F:** Ich versuche, mich bei einer iOS-App anzumelden, und muss eine Benachrichtigung in der Authenticator-App genehmigen. Wenn ich zurück zur iOS-App gehe, bleibt diese hängen. Was kann ich tun?
+
+**A:** Dies ist ein bekanntes Problem unter iOS 13+. Wenden Sie sich an Ihren Supportadministrator, um Unterstützung zu erhalten, und geben Sie die folgenden Details an: `Use Azure MFA, not MFA server.`.
 
 ### <a name="apple-watch-doesnt-show-accounts"></a>Keine Konten auf Apple Watch
 

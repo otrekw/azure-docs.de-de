@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 33adaf33ba15b49b0a7e4d3e8f1b2a8c435a7966
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 215ff68cd560062d15a90c52847c7f1a0ec6b4a0
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449034"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684629"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Hinzufügen einer API zu Azure Static Web Apps (Vorschau) mit Azure Functions
 
@@ -251,13 +251,7 @@ Fügen Sie als Nächstes die folgenden Builddetails hinzu.
 
 1. Klicken Sie auf die Schaltfläche **Zu Ressource wechseln**, um zur Seite _Übersicht_ der Web-App zu gelangen.
 
-    Während die App im Hintergrund erstellt wird, können Sie auf das Banner mit dem Link klicken, um den Buildstatus anzuzeigen.
-
-    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub-Workflow":::
-
-1. Sobald die Bereitstellung abgeschlossen ist, können Sie zu der Web-App navigieren, indem Sie auf den _URL_-Link klicken, der auf der Seite _Übersicht_ angezeigt wird.
-
-    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Zugreifen auf die URL der statischen App über das Azure-Portal":::
+[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

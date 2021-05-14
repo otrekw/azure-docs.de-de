@@ -7,17 +7,14 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3772918d1a7e505b3994afa7849568bb309bd0cf
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91295735"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715410"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Erstellen von Benutzern in Azure Database for PostgreSQL: Hyperscale (Citus)
-
-> [!NOTE]
-> Der Begriff „Benutzer“ bezieht sich auf Benutzer innerhalb einer Hyperscale (Citus)-Servergruppe. Um stattdessen mehr über Azure-Abonnementbenutzer und ihre Berechtigungen zu erfahren, lesen Sie den Artikel zur [Rollenbasierten Azure-Zugriffssteuerung (Azure RBAC) ](../role-based-access-control/built-in-roles.md), oder informieren Sie sich darüber, [wie Rollen angepasst werden können](../role-based-access-control/custom-roles.md).
 
 ## <a name="the-server-admin-account"></a>Das Serveradministratorkonto
 

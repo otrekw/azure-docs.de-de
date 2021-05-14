@@ -3,12 +3,12 @@ title: 'Muster: Bereitstellen von Ressourcen mit einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster enthält ein Beispiel für die Bereitstellung von Ressourcen mit einer Richtliniendefinition vom Typ „deployIfNotExists“.
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 1dda3d5f2d4bef57919931ec3c1635310723e0c8
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 2220a0c66cecac3dc9dfd342fe6b802df41c1f10
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093399"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752452"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy-Muster: Bereitstellen von Ressourcen
 
@@ -43,7 +43,7 @@ Der Bereitstellungsteil (**deployment**) der Richtliniendefinition enthält eine
 - Vorlage (**template**): Diese Eigenschaft enthält die eigentliche Vorlage. In diesem Beispiel wird mithilfe des Vorlagenparameters **location** der Ort der neuen Network Watcher-Ressource festgelegt.
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="30-44":::
-  
+
 - Parameter (**parameters**): Diese Eigenschaft dient zum Definieren von Parametern für die Vorlage (**template**). Die Parameternamen müssen den Definitionen in **template** entsprechen. In diesem Beispiel heißt der abzugleichende Parameter **location**. Der Wert von **location** verwendet erneut die Funktion `field()`, um den Wert der ausgewerteten Ressource zu erhalten. Hierbei handelt es sich um das virtuelle Netzwerk im Block **policyRule.if**.
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="45-49":::

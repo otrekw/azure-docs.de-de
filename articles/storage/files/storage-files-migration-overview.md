@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: a6335d90625f860984ccbfd224955a97a32b731f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 44fa4fb953399622d75f0239d3e7d626557629f7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785215"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744693"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrieren zu Azure-Dateifreigaben
 
@@ -81,11 +81,11 @@ Für ein Szenario ohne Link wurde derzeit noch kein Migrationsleitfaden veröffe
 | `Source` | Ziel: </br>Hybridbereitstellung | Ziel: </br>Reine Cloudbereitstellung |
 |:---|:--|:--|
 | | Toolkombination:| Toolkombination: |
-| Windows Server 2012 R2 und höher | <ul><li>[Azure-Dateisynchronisierung ](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure-Dateisynchronisierung und Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li><li>Über Azure-Dateisynchronisierung</li></ul> |
-| Windows Server 2012 und früher | <ul><li>Über DataBox und Azure-Dateisynchronisierung zum aktuellen Serverbetriebssystem</li><li>Über den Speichermigrationsdienst auf den zuletzt verwendeten Server mit Azure-Dateisynchronisierung, dann Upload</li></ul> | <ul><li>Über den Speichermigrationsdienst auf den zuletzt verwendeten Server mit Azure-Dateisynchronisierung</li><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li></ul> |
-| Network Attached Storage (NAS) | <ul><li>[Über Upload von Azure-Dateisynchronisierung](storage-files-migration-nas-hybrid.md)</li><li>[Über DataBox + Azure-Dateisynchronisierung](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[Via DataBox](storage-files-migration-nas-cloud-databox.md)</li><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li></ul> |
-| Linux/Samba | <ul><li>[Azure-Dateisynchronisierung und RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe</li></ul> |
-| Microsoft Azure StorSimple Cloud Appliance 8100 oder StorSimple Cloud Appliance 8600 | <ul><li>[Über den dedizierten Clouddienst für Datenmigration](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| Windows Server 2012 R2 und höher | <ul><li>[Azure-Dateisynchronisierung ](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure-Dateisynchronisierung und Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>[Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe](storage-files-migration-robocopy.md)</li><li>Über Azure-Dateisynchronisierung</li></ul> |
+| Windows Server 2012 und früher | <ul><li>Über DataBox und Azure-Dateisynchronisierung zum aktuellen Serverbetriebssystem</li><li>Über den Speichermigrationsdienst auf den zuletzt verwendeten Server mit Azure-Dateisynchronisierung, dann Upload</li></ul> | <ul><li>Über den Speichermigrationsdienst auf den zuletzt verwendeten Server mit Azure-Dateisynchronisierung</li><li>[Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe](storage-files-migration-robocopy.md)</li></ul> |
+| Network Attached Storage (NAS) | <ul><li>[Über Upload von Azure-Dateisynchronisierung](storage-files-migration-nas-hybrid.md)</li><li>[Über DataBox + Azure-Dateisynchronisierung](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[Via DataBox](storage-files-migration-nas-cloud-databox.md)</li><li>[Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe](storage-files-migration-robocopy.md)</li></ul> |
+| Linux/Samba | <ul><li>[Azure-Dateisynchronisierung und RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>[Über RoboCopy in eine bereitgestellte Azure-Dateifreigabe](storage-files-migration-robocopy.md)</li></ul> |
+| Microsoft Azure StorSimple Cloud Appliance 8100 oder StorSimple Cloud Appliance 8600 | <ul><li>[Über den dedizierten Clouddienst für Datenmigration](storage-files-migration-storsimple-8000.md)</li></ul> | <ul><li>[Über den dedizierten Clouddienst für Datenmigration](storage-files-migration-storsimple-8000.md)</li></ul> |
 | StorSimple Cloud Appliance 1200 | <ul><li>[Über Azure-Dateisynchronisierung](storage-files-migration-storsimple-1200.md)</li></ul> | |
 
 ## <a name="migration-toolbox"></a>Toolbox für die Migration

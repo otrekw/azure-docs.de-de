@@ -3,12 +3,12 @@ title: Bedingte Bereitstellung mit Vorlagen
 description: Beschreibt, wie eine Ressource in einer Azure Resource Manager-Vorlage (ARM-Vorlage) bedingt bereitgestellt werden kann.
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 409d258d7dfe3ed186e5cf97cc0dbe6dc149b849
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8be42b4e57e628e41afa5cd914f9dcf72ebe4ab7
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741173"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736950"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>Bedingte Bereitstellung in ARM-Vorlagen
 
@@ -58,7 +58,7 @@ resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = if (deployZone) {
 
 ---
 
-Ein komplexeres Beispiel finden Sie unter [Logischer Azure SQL-Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server).
+Ein komplexeres Beispiel finden Sie unter [Logischer Azure SQL-Server](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-logical-server).
 
 ## <a name="new-or-existing-resource"></a>Neue oder vorhandene Ressource
 
@@ -138,7 +138,7 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 
 Wenn der Parameter `newOrExisting` auf **new** festgelegt ist, wird die Bedingung zu „true“ ausgewertet. Das Speicherkonto wird bereitgestellt. Ist `newOrExisting` dagegen auf **existing** festgelegt, wird die Bedingung zu „false“ ausgewertet, und das Speicherkonto wird nicht bereitgestellt.
 
-Eine vollständige Beispielvorlage, die das `condition`-Element verwendet, finden Sie unter [VM mit einem neuen oder vorhandenen virtuellen Netzwerk, Speicher und einer neuen oder vorhandenen öffentlichen IP-Adresse](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+Eine vollständige Beispielvorlage, die das `condition`-Element verwendet, finden Sie unter [VM mit einem neuen oder vorhandenen virtuellen Netzwerk, Speicher und einer neuen oder vorhandenen öffentlichen IP-Adresse](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-new-or-existing-conditions).
 
 ## <a name="runtime-functions"></a>Laufzeitfunktionen
 

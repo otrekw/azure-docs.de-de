@@ -3,12 +3,12 @@ title: 'Mediengraphkonzept: Azure'
 description: Mit einem Mediengraph können Sie definieren, von welchem Ort Medien erfasst, wie diese verarbeitet und wohin die Ergebnisse übermittelt werden sollen. Dieser Artikel bietet eine detaillierte Beschreibung des Konzepts eines Mediengraphs.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: ad23acbbbdd0c15e92e471ee22a229470a8a3a75
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 83c51bc87321633339f75ac57b480116d450bca7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557665"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770603"
 ---
 # <a name="media-graph"></a>Mediendiagramm
 
@@ -112,7 +112,8 @@ Ein Knoten der Medienobjektsenke ermöglicht Ihnen das Schreiben von Mediendaten
 
 Der Dateisenkknoten ermöglicht Ihnen das Schreiben von Mediendaten (Video und/oder Audio) an einen Speicherort im lokalen Dateisystem des IoT Edge-Geräts. Es kann nur einen Dateisenkknoten in einem Mediengraph geben, und dieser muss im Datenstrom unterhalb eines Signalgate-Verarbeitungsknotens liegen. Dadurch wird die Dauer der Ausgabedateien auf die Werte beschränkt, die in den Eigenschaften des Signalgate-Verarbeitungsknotens angegeben sind. Um sicherzustellen, dass auf Ihrem Edgegerät genügend Speicherplatz zur Verfügung steht, können Sie auch die maximale Größe festlegen, die das „Live Video Analytics in IoT Edge“-Modul zum Speichern von Daten verwenden kann.  
 > [!NOTE]
-Wenn die Dateisenke voll ist, werden die ältesten Daten vom „Live Video Analytics in IoT Edge“-Modul gelöscht und durch die neuen ersetzt.
+> Wenn die Dateisenke voll ist, werden die ältesten Daten vom „Live Video Analytics in IoT Edge“-Modul gelöscht und durch die neuen ersetzt.
+
 #### <a name="iot-hub-message-sink"></a>IoT Hub-Nachrichtensenke  
 
 Ein Knoten der IoT Hub-Nachrichtensenke ermöglicht Ihnen das Veröffentlichen von Ereignissen im IoT Edge-Hub. Der IoT Edge-Hub kann auf diese Weise Daten an andere Module oder Apps auf dem Edge-Gerät oder an IoT Hub in der Cloud weiterleiten (über Routen, die im Bereitstellungsmanifest angegeben sind). Der Knoten der IoT Hub-Nachrichtensenke kann Ereignisse von im Datenstrom aufwärts gelegenen Verarbeitungsknoten annehmen, etwa von einem Verarbeitungsknoten für die Bewegungserkennung oder einem externen Rückschlussdienst über einen Verarbeitungsknoten für die HTTP-Erweiterung.
