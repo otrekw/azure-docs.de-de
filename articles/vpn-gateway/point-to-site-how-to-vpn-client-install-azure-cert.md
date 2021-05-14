@@ -1,18 +1,19 @@
 ---
-title: 'Azure VPN Gateway: Installieren eines Point-to-Site-Clientzertifikats'
-description: Installieren eines Clientzertifikats für die P2S-Zertifikatauthentifizierung – Windows, Mac, Linux.
+title: Installieren eines Point-to-Site-Clientzertifikats
+titleSuffix: Azure VPN Gateway
+description: Hier erfahren Sie, wie Sie Clientzertifikate für die P2S-Zertifikatauthentifizierung unter Windows, Mac und Linux installieren.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8c4d37f67d89ad1b7973a85fb6c2a9f7e818a028
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: faa2d1924b0953bbf8da660ac7702c959fe7b272
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89421661"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292232"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>Installieren eines Clientzertifikats für die Zertifikatauthentifizierung bei P2S-Verbindungen
 

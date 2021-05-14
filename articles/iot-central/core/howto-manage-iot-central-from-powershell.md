@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: philmea
-ms.openlocfilehash: a870b72d1dda04ab29dbb5f056873d47f888b837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 932b2a5e09c335564273a1161c471182738e40b0
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501361"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685331"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Verwalten von IoT Central über Azure PowerShell
 
@@ -79,7 +79,11 @@ Das Skript erstellt zuerst für die Anwendung eine Ressourcengruppe in der Regio
 |Vorlage          | Die zu verwendende Anwendungsvorlage. Ausführlichere Informationen finden Sie in der unten stehenden Tabelle. |
 |DisplayName       |Der Name der Anwendung, wie er in der Benutzeroberfläche angezeigt wird. |
 
+### <a name="application-templates"></a>Anwendungsvorlagen
+
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
+
+Wenn Sie Ihre eigene Anwendungsvorlage erstellt haben, können Sie damit eine neue Anwendung erstellen. Wenn Sie nach einer Anwendungsvorlage gefragt werden, geben Sie die App-ID ein, die unter dem Abschnitt [Export der Anwendungsvorlage](howto-use-app-templates.md#create-an-application-template) Ihrer App im freigabefähigen URL-Link der exportierten App angezeigt wird.
 
 ## <a name="view-your-iot-central-applications"></a>Anzeigen Ihrer IoT Central-Anwendungen
 

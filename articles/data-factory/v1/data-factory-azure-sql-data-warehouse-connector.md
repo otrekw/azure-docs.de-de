@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 35aa0110106f121adb9373f83ff29d299ce049fc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e46d4c07f3de2441f53648b228ab7a9d2a41ab61
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135975"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753358"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure Synapse Analytics mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -30,11 +30,11 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 Sie können Daten **aus Azure Synapse Analytics** in die folgenden Datenspeicher kopieren:
 
-[!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sinks](includes/data-factory-supported-sinks.md)]
 
 Sie können Daten aus den folgenden Datenspeichern **in Azure Synapse Analytics** kopieren:
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 > [!TIP]
 > Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure Synapse Analytics kann Data Factory die Tabelle, wenn sie im Zielspeicher nicht vorhanden ist, anhand des Schemas der Tabelle im Quelldatenspeicher automatisch in Azure Synapse Analytics erstellen. Einzelheiten finden Sie unter [Automatische Tabellenerstellung](#auto-table-creation).
@@ -325,7 +325,7 @@ Data Factory erstellt die Tabelle im Zielspeicher mit dem gleichen Tabellennamen
 | NVarChar | NVarChar (maximal 4000) |
 | Xml | Varchar (maximal 8000) |
 
-[!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
+[!INCLUDE [data-factory-type-repeatability-for-sql-sources](includes/data-factory-type-repeatability-for-sql-sources.md)]
 
 ## <a name="type-mapping-for-azure-synapse-analytics"></a>Typzuordnung für Azure Synapse Analytics
 Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität mithilfe der folgenden beiden Schritte automatische Typkonvertierungen von Quelltypen in Senkentypen durch:

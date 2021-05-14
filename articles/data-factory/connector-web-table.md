@@ -1,17 +1,17 @@
 ---
 title: Kopieren von Daten aus einer Webtabelle mithilfe von Azure Data Factory
 description: Erfahren Sie mehr über den Webtabellenconnector von Azure Data Factory, mit dem Sie Daten aus einer Webtabelle als Senken in von Data Factory unterstützte Datenspeicher kopieren können.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: jingwang
-ms.openlocfilehash: 1ab45868afd8d1b7ba1f61f5eaacca283817e6d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: d3035220f719bb4afde4dec8ff8417114b6569ee
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100367009"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484755"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopieren von Daten aus einer Webtabelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -44,7 +44,7 @@ Um diesen Webtabellenconnector verwenden zu können, müssen Sie eine selbstgeho
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Webtabellenconnector verwendet werden.
 

@@ -1,17 +1,17 @@
 ---
 title: Kopieren von Daten aus HubSpot mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus HubSpot mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.author: jingwang
-ms.openlocfilehash: 7f2ab069be7985376c44f2cd2ae3ccdd728d4e2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: ff50962baf4337f977406739da16876ab878a2d7
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385658"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484935"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Kopieren von Daten aus HubSpot mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,7 +32,7 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den HubSpot-Connector verwendet werden:
 

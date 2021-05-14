@@ -1,17 +1,17 @@
 ---
 title: Kopieren von Daten aus Vertica mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Vertica mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: jingwang
-ms.openlocfilehash: a95cbc459da3935a39d2830a074f4e5d8e72e617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: f8b9cba39005c7c6a69789ee29a03be4ab56bae8
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384043"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484737"
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory"></a>Kopieren von Daten aus Vertica mithilfe von Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>Erste Schritte
 

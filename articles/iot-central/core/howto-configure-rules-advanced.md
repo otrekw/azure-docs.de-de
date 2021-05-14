@@ -7,16 +7,14 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: af6adcf408c9790b09830e986cd1cac00774a2ec
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 9cbcfa355198b94a60242503745f5cfc183e170d
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491932"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683754"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Integrieren Ihrer Azure IoT Central-Anwendung in andere Clouddienste mithilfe von Workflows
-
-*Dieser Artikel richtet sich an Lösungsentwickler.*
 
 Sie können Regeln in IoT Central erstellen, um als Reaktion auf telemetriebasierte Bedingungen (etwa eine Gerätetemperatur, die einen Schwellenwert übersteigt) Aktionen wie etwa das Senden einer E-Mail auszulösen.
 
@@ -27,9 +25,9 @@ Der Azure IoT Central V3-Connector für Power Automate und Azure Logic Apps erm
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die in dieser Anleitung aufgeführten Schritte ausführen zu können, benötigen Sie ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Zum Ausführen der Schritte in dieser Anleitung ist Folgendes erforderlich:
 
-Zum Einrichten der Lösung ist eine IoT Central-Anwendung der Version 3 erforderlich. Informationen zum Überprüfen Ihrer Anwendungsversion finden Sie unter [Über Ihre Anwendung](./howto-get-app-info.md). Informationen zum Erstellen einer IoT Central--Anwendung finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md).
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 > [!NOTE]
 > Wenn Sie eine IoT Central-Anwendung der Version 2 verwenden, lesen Sie [Erstellen von Workflows mit dem IoT Central-Connector in Azure Logic Apps](/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) auf der Dokumentationswebsite der vorherigen Version, und verwenden Sie den Azure IoT Central V2-Connector
@@ -87,7 +85,7 @@ Verwenden Sie diese Aktion, um ein Gerät in Ihrer IoT Central-Anwendung zu ers
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des Geräts, das erstellt oder aktualisiert werden soll. |
 | Genehmigt | Wählen Sie aus, ob für das Gerät die Verbindungsherstellung mit IoT Central genehmigt wurde. |
 | Gerätebeschreibung | Eine detaillierte Beschreibung des Geräts. |
@@ -101,7 +99,7 @@ Verwenden Sie diese Aktion, um ein Gerät aus Ihrer IoT Central-Anwendung zu l�
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 
 ### <a name="execute-a-device-command"></a>„Execute a device command“ (Gerätebefehl ausführen)
@@ -110,7 +108,7 @@ Verwenden Sie diese Aktion, um einen Befehl auszuführen, der in einer der Schni
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | „Device Component“ (Gerätekomponente) | Die Schnittstelle in der Gerätevorlage, die den Befehl enthält. |
 | Gerätebefehl | Wählen Sie einen der Befehle für die ausgewählte Schnittstelle aus. |
@@ -126,7 +124,7 @@ Verwenden Sie diese Aktion, um die Details des Geräts abzurufen.
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 
 Die zurückgegebenen Details können in den dynamischen Ausdrücken in anderen Aktionen verwendet werden. Folgende Gerätedetails werden zurückgegeben: **Genehmigt**, **Text**, **Gerätebeschreibung**, **Gerätename**, **Gerätevorlage**, **Bereitgestellt** und **Simuliert**.
@@ -137,7 +135,7 @@ Verwenden Sie diese Aktion, um die Cloudeigenschaftswerte für ein bestimmtes Ge
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 
@@ -149,7 +147,7 @@ Verwenden Sie diese Aktion, um die Eigenschaftswerte für ein bestimmtes Gerät 
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 
@@ -161,7 +159,7 @@ Verwenden Sie diese Aktion, um die Telemetriewerte für ein bestimmtes Gerät ab
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 
@@ -173,7 +171,7 @@ Verwenden Sie diese Aktion, um die Cloudeigenschaftswerte für ein bestimmtes Ge
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 | Cloudeigenschaften | Nach dem Auswählen einer Gerätevorlage wird ein Feld für jede Cloudeigenschaft hinzugefügt, die in der Vorlage definiert ist. |
@@ -184,7 +182,7 @@ Verwenden Sie diese Aktion, um die beschreibbaren Eigenschaftswerte für ein bes
 
 | Feld | BESCHREIBUNG |
 | ----- | ----------- |
-| Application | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
+| Anwendung | Wählen Sie eine Anwendung aus der Liste mit IoT Central-Anwendungen aus. |
 | Sicherungsmedium | Die eindeutige ID des zu löschenden Geräts. |
 | Gerätevorlage | Wählen Sie eine Vorlage aus der Liste mit Gerätevorlagen in Ihrer IoT Central-Anwendung aus. |
 | Schreibbare Eigenschaften | Nach dem Auswählen einer Gerätevorlage wird ein Feld für jede beschreibbare Eigenschaft hinzugefügt, die in der Vorlage definiert ist. |

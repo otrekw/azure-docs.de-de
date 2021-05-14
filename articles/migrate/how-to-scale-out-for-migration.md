@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 5ca821cb4f85deb77595e4a9029cc10298dbb884
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0f5bf01080d89e6dc6d6843312d96243b8526ba
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611972"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484539"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Skalieren der Migration von virtuellen VMware-Computern zu Azure ohne Agents
 
@@ -76,7 +76,7 @@ Das Installationsskript führt folgende Schritte aus:
 
 - Der Gateway-Agent und der Appliancekonfigurations-Manager werden installiert, um mehr gleichzeitige Serverreplikationen durchführen zu können.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
 - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
 - Erstellung der folgenden Dateien in diesem Pfad:
     - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config

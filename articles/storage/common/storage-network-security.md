@@ -9,12 +9,12 @@ ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5e8123c252d99b2999eeef42fecae189a05e382b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 51e0205fddf9c3e6e3d622465204e647c0099f53
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778119"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715806"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -597,7 +597,7 @@ Die folgende Tabelle enthält eine Liste mit Diensten, die Zugriff auf Ihre Spei
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Ermöglicht den Zugriff auf Speicherkonten über die ADF Runtime. |
 | Azure Data Share               | Microsoft.DataShare/accounts           | Ermöglicht den Zugriff auf Speicherkonten über Data Share. |
 | Azure DevTest Labs             | Microsoft.DevTestLab/labs              | Ermöglicht den Zugriff auf Speicherkonten über DevTest Labs. |
-| Azure IoT Hub                  | Microsoft.Devices/IotHubs              | Ermöglicht das Schreiben von Daten aus einem IoT-Hub in den Blobspeicher. [Weitere Informationen](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
+| Azure IoT Hub                  | Microsoft.Devices/IotHubs              | Ermöglicht das Schreiben von Daten aus einem IoT-Hub in den Blobspeicher. [Weitere Informationen](../../iot-hub/virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources) |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) |
 | Azure Machine Learning-Dienst | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage und lesen die Daten. [Weitere Informationen](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources) |
 | Azure Media Services           | Microsoft.Media/mediaservices          | Ermöglicht den Zugriff auf Speicherkonten über Media Services. |
